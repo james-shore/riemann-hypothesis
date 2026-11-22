@@ -24,7 +24,7 @@ theorem ad_mul {l m n : ℕ} (A : Mx D l m) (B : Mx D m n) :
 
 theorem cA_incA_sig (e : D.host.E) : cA D (incA D e) = incA D (D.sp.cm.sig e) := by
   simp only [cA, sigR, incA, inclR, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
-    Algebra.TensorProduct.includeRight_apply, Algebra.TensorProduct.map_tmul, AlgHom.id_apply, map_one]
+    Algebra.TensorProduct.includeRight_apply, Algebra.TensorProduct.map_tmul, map_one]
 
 theorem ad_map {m n : ℕ} (A : Matrix (Fin m) (Fin n) D.host.E) :
     ad (A.map (incA D) : Mx D m n) = (adj D A).map (incA D) := by

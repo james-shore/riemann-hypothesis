@@ -94,9 +94,9 @@ theorem eq_of_expandsAt_of_chartExpOn : ∀ (R : Type) [CommRing R] [IsDomain R]
     rw [sum_attach_eq_sum_of_subset Finset.subset_union_right F _ (fun x => ?_) hz2] at E2V
     rotate_left
     · simp only [F, dif_pos (Finset.mem_union_right S₁ x.2), tV]
-      congr 1 <;> first | rfl | exact map_res_homOfLE _ _ _ | exact map_map_homOfLE _ _ _
+      congr 1 <;> first | rfl | exact map_res_homOfLE _ _ _
     · simp only [F, dif_pos (Finset.mem_union_left S₂ x.2), tV]
-      congr 1 <;> first | rfl | exact map_res_homOfLE _ _ _ | exact map_map_homOfLE _ _ _
+      congr 1 <;> first | rfl | exact map_res_homOfLE _ _ _
     refine ⟨U.expW e p i' (S₁ ∪ S₂) jf jt ⊓ W, inf_le_right, ⟨hmem _, hy⟩, ?_⟩
     rw [map_map_homOfLE]
     exact ((Units.isUnit _).pow k).mul_left_cancel (E1V.trans E2V.symm)

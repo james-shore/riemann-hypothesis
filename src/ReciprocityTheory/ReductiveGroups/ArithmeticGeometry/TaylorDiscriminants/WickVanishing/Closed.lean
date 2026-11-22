@@ -41,7 +41,6 @@ private theorem prod_mem_pow_of_mem_pow_of_sum_le {R A : Type} [CommRing R] [Com
   have h1 : (1 : A) ∈ J ^ c := by
     first
       | simpa using Submodule.pow_mem_pow J hJ c
-      | simpa using Submodule.pow_mem_pow hJ c
   have hm := Submodule.mul_mem_mul (hprod Finset.univ) h1
   rwa [mul_one, ← pow_add, ← hc] at hm
 

@@ -29,8 +29,8 @@ theorem mul_det_evM_update {r : ℕ} (s : Fin r → SL(2, ℤ)) (w : Fin r → �
       (evM s w F τ).updateCol j₀ (fun i => (G ∣[w'] s i) τ) := by
     ext i j
     by_cases hj : j = j₀
-    · subst hj; simp [evM, Matrix.updateCol_apply]
-    · simp [evM, Matrix.updateCol_apply, hj, Function.update_of_ne hj]
+    · subst hj; simp [evM]
+    · simp [evM, hj]
   rw [hM, ← Matrix.det_updateCol_smul]
   have hc : (E τ • fun i => (G ∣[w'] s i) τ) =
       fun i => ∑ j, (fun j => e j τ) j • (evM s w F τ) i j := by

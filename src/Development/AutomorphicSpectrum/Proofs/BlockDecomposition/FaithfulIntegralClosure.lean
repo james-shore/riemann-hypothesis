@@ -217,7 +217,7 @@ private theorem det_rowop_lemma {n K : Type*} [Fintype n] [DecidableEq n] [CommR
         by_cases hk' : k' = k
         · subst hk'
           simp [hks, hjs, sub_eq_add_neg, mul_comm]
-        · simp [Matrix.updateRow_ne hk', hk']
+        · simp [hk']
       rw [heq, Matrix.det_updateRow_add_smul_self _ hjk, ih hjs]
   have h1 := key (Finset.univ.erase j) (Finset.notMem_erase j _)
   rw [← h1]
@@ -253,7 +253,7 @@ private theorem val_det_lt_lemma_3 {n K Γ : Type*} [Fintype n] [DecidableEq n] 
       by_cases hm : m = l
       · subst hm
         simp
-      · simp [Pi.single_apply, hm]
+      · simp [hm]
     · rw [Matrix.updateRow_ne hk]
       exact h k m
   exact lt_of_le_of_lt (mul_le_of_le_one_right' hadj) (hj l)

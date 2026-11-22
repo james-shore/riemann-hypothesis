@@ -62,7 +62,7 @@ theorem exists_genPtMap {R R' : Type} [CommRing R] [IsDomain R] [CommRing R'] [I
   simp only [jK, spMap, ← Spec.map_comp]
   congr 1
   ext x
-  simp [IsLocalization.lift_eq]
+  simp
 
 end GlobalTheory.PolDeg.SymCoc
 
@@ -124,13 +124,11 @@ theorem half_symm_cocycle : ∀ (R : Type) [CommRing R] [IsDomain R] (R' : Type)
     (fun a b => val (D.tau a b) (𝟙 _) z J') (fun a a' b => cubV D.cub z J' (x a) (x a') (x b)) ψ r
     (fun a b => h₅ κ hκ a b z J J' hJ hJ') hP
     (fun a b => by
-      beta_reduce
       rw [(laws a a b).1, hqs a b])
     (fun a a' b => by
       have e₁ := (laws a a' b).2 (y a) (y a') (y b) (hy a) (hy a') (hy b)
       rw [← hx] at e₁
       have e₂ := hq a a' b
-      beta_reduce
       apply Additive.ofMul.injective
       have e₁' := congrArg Additive.ofMul e₁
       have e₂' := congrArg Additive.ofMul e₂

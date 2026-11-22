@@ -144,7 +144,7 @@ theorem coeff_charpolyRev_map {A B r : Type} [CommRing A] [CommRing B] [Fintype 
   rw [← Polynomial.coeff_map, charpolyRev, charpolyRev, ← Polynomial.coe_mapRingHom, RingHom.map_det]
   congr 2
   ext i k : 2
-  by_cases h : i = k <;> simp [h, Matrix.one_apply]
+  by_cases h : i = k <;> simp [h]
 
 theorem dbarAt_chernAt : ∀ {n : ℕ} {r : Type} [Fintype r] [DecidableEq r] (H : V n → Matrix r r ℂ) (s : Set (V n)),
     IsOpen s → (∀ a b, ContDiffOn ℝ ∞ (fun v => H v a b) s) → (∀ v ∈ s, IsUnit (H v).det) → ∀ (j : ℕ), ∀ v ∈ s,

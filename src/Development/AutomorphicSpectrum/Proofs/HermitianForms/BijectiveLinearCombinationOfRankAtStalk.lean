@@ -58,7 +58,7 @@ theorem selfDual_euclid {W : Type} [NormedAddCommGroup W] [InnerProductSpace ℝ
   have hi2 : Integrable (fun y => 𝓕 Φ (S y)) := by
     have := hi.smul c⁻¹
     refine this.congr (Filter.Eventually.of_forall fun y => ?_)
-    simp [smul_smul, hc0.ne']
+    simp [hc0.ne']
   have hi3 : Integrable (𝓕 Φ) := by
     have h1 : Integrable (𝓕 Φ) (Measure.map S volume) := hm.integrable_map_iff.mpr hi2
     rw [hmap, integrable_smul_measure hne' ENNReal.ofReal_ne_top] at h1

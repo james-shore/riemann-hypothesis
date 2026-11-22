@@ -125,14 +125,14 @@ theorem zm_norm_eq (hI : IsSplit P I) (hP : Ext.PackingCount) {s : (Fin 1 → Vs
     rw [Submodule.coe_inner, inner_uc (IR I) _ _ (Ib hI i).2, cp_pair]
     by_cases h : j = i
     · subst h; simp
-    · simp [h, Pi.single_apply, Ne.symm h]
+    · simp [h, Ne.symm h]
   have hgl := gauss_lin (Col.ob (IR I)) (fun j => (⟨uc (IR I) (cp hI j), uc_mem _ _⟩ : IR I))
     (Ib hI) hub
   have hnorm : ∀ a : Fin (Module.finrank ℝ (IR I)) → ℝ,
       ‖∑ j, a j • (⟨uc (IR I) (cp hI j), uc_mem _ _⟩ : IR I)‖ = ‖∑ j, a j • uc (IR I) (cp hI j)‖ :=
     fun a => by
       have h : ((∑ j, a j • (⟨uc (IR I) (cp hI j), uc_mem _ _⟩ : IR I) : IR I) : Vsp X.dim) =
-          ∑ j, a j • uc (IR I) (cp hI j) := by simp [Submodule.coe_sum]
+          ∑ j, a j • uc (IR I) (cp hI j) := by simp
       rw [← h]; rfl
   simp only [hnorm] at hgl
   have hl0 : 0 ≤ (YB hI hP 1).l2 1 (zmB hI s) := by

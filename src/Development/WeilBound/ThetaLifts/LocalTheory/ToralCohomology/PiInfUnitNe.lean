@@ -196,7 +196,7 @@ theorem exists_mod (hD : Dic) {B : Base F E} {a a' : ℕ} {G : Geo σ a a'} {X :
       refine Eq.trans ?_ this
       simp only [LinearMap.comp_apply, MultilinearMap.toLinearMap_apply]
       congr 3
-      simp only [a1, act1, chiTr, LinearMap.sub_apply, LinearMap.add_apply, LinearMap.smul_apply, Module.End.one_apply,
+      simp only [a1, act1, chiTr, LinearMap.add_apply, LinearMap.smul_apply, Module.End.one_apply,
         LinearMap.smulRight_apply, Matrix.traceLinearMap_apply, smul_eq_mul, sub_eq_add_neg, ← neg_smul]
       congr 2
       push_cast; ring)

@@ -78,7 +78,6 @@ theorem base_χ_cont (l : ℕ) [Fact l.Prime] : Continuous (χ : GQ l → ℚ_[l
     first
     | exact PadicInt.continuous_coe
     | exact continuous_subtype_val
-    | exact (Isometry.of_dist_eq fun _ _ => rfl).continuous
   exact h2.comp h1
 
 theorem base_ι_Bst (l : ℕ) [Fact l.Prime] : ∀ x, ι l x ∈ Bst l := by

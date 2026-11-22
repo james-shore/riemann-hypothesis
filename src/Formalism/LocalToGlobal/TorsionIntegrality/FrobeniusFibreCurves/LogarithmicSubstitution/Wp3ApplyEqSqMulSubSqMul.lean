@@ -23,9 +23,9 @@ theorem tau_derivative_rule_holds : TauRule := by
   have x00 : pd 0 (MvPowerSeries.X 0 : MvPowerSeries (Fin 2) K) = 1 := MvPowerSeries.pderiv_X_self
   have x11 : pd 1 (MvPowerSeries.X 1 : MvPowerSeries (Fin 2) K) = 1 := MvPowerSeries.pderiv_X_self
   have x01 : pd 0 (MvPowerSeries.X 1 : MvPowerSeries (Fin 2) K) = 0 := by
-    simp [MvPowerSeries.pderiv_X]
+    simp
   have x10 : pd 1 (MvPowerSeries.X 0 : MvPowerSeries (Fin 2) K) = 0 := by
-    simp [MvPowerSeries.pderiv_X]
+    simp
   rw [hW]
   simp only [pd, Derivation.leibniz, map_sub, Derivation.leibniz_pow, smul_eq_mul, nsmul_eq_mul] at x00 x11 x01 x10 e0 e1 p0 p1 ⊢
   rw [x00, x11, x01, x10]
@@ -156,7 +156,7 @@ theorem X_mul_dYt {g2 g3 : K} {P : PowerSeries K} (hP : IsWp g2 g3 P) (j : Fin 3
     MvPowerSeries.X j * dYt P j =
       6 * Xt P j ^ 2 - MvPowerSeries.C (g2 / 2) * MvPowerSeries.X j ^ 4 + 3 * Yt P j := by
   have h' := congrArg (PowerSeries.substAlgHom (R := K) (PowerSeries.HasSubst.X (S := K) (τ := Fin 3) j)) (wpReduced K g2 g3 P hP).2
-  simp only [map_add, map_sub, map_mul, map_pow, map_neg, map_ofNat, map_one, PowerSeries.coe_substAlgHom,
+  simp only [map_add, map_sub, map_mul, map_pow, map_ofNat, PowerSeries.coe_substAlgHom,
     PowerSeries.subst_X (R := K) (PowerSeries.HasSubst.X (S := K) j), PowerSeries.subst_C] at h'
   simp only [dYt, Xt, Yt, Formalism.InvariantFactorPaths.G7.at1]
   linear_combination MvPowerSeries.X j ^ 2 * h'

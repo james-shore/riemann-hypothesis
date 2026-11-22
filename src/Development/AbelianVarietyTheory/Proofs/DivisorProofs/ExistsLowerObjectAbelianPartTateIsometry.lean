@@ -353,7 +353,7 @@ theorem exists_lowObj : ∀ {E : Type} [Field E] [NumberField E] [IsCMField E] {
   have hζ0 : (J0.ζ l.M' : F0) = lowF C F0 (baseKA (lowLevel l)).ζ := by
     rw [hJ0ζ, hX0.1]
     exact congrArg (toF C F0) (Subtype.ext (by
-      simp only [IntermediateField.coe_inclusion, zeta_val]; rfl))
+      simp only; rfl))
   let o' : Obj D' (lowLevel l) (baseKA (lowLevel l)) (lowS C) :=
     { t := abTriple C.P
       proper := C.P.D.toPre.P.isAb.proper

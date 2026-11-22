@@ -38,7 +38,7 @@ theorem GlobalTheory.UPoinc.exists_endo_of_generic {Z W : Scheme.{0}} [IsIntegra
     · rw [Category.assoc, hΦ.1.lift_fst, pullback.lift_fst]
     · rw [Category.assoc, hΦ.1.lift_snd, ← Category.assoc, pullback.lift_snd, pullback.condition]
   have hFm : ((Over.pullback m).map F).left ≫ pullback.fst G.hom m = pullback.fst G.hom m ≫ F.left := by
-    first | exact pullback.lift_fst _ _ _ | (simp [Over.pullback, pullback.map]) | (erw [pullback.lift_fst])
+    first | exact pullback.lift_fst _ _ _
   have key : F₀ = f₀ := by
     apply GlobalTheory.T.abelianScheme_endomorphism_ext_of_dense_point W G₀ hab Ω pt hd
     apply hΦ.1.hom_ext

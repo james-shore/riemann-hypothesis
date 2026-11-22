@@ -23,7 +23,7 @@ def lineMap {k : ℕ} (c : Fin k → R) : EpsAlg R k →ₐ[R] DualNumber R :=
         MvPolynomial (Fin k) R →ₐ[R] DualNumber R) := by
       rw [sqIdeal, Ideal.span_le]
       rintro _ ⟨a, rfl⟩
-      simp [RingHom.mem_ker, sq, TrivSqZeroExt.inr_mul_inr]
+      simp [RingHom.mem_ker, sq]
     exact this hp)
 
 theorem lineMap_mk {k : ℕ} (c : Fin k → R) (p : MvPolynomial (Fin k) R) :

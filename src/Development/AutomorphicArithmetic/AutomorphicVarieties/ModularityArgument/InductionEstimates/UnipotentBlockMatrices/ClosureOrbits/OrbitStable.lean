@@ -138,7 +138,7 @@ theorem kfin {V : Submodule ℂ (L2 μ)} (hV : IsSummand μ V) {v : L2 μ} (hv :
   have hq : FiniteDimensional ℂ (U ⧸ Fᗮ.comap ι) := by
     have e : Fᗮ.comap ι = LinearMap.ker ((F.orthogonalProjection : L2 μ →ₗ[ℂ] F) ∘ₗ ι) := by
       ext x
-      simp [Submodule.orthogonalProjection_eq_zero_iff]
+      simp
     rw [e]
     exact (LinearMap.quotKerEquivRange _).symm.finiteDimensional
   obtain ⟨q, hqm, hqd, hqN⟩ := exists_monic_aeval_mem C (Fᗮ.comap ι) (hCS _ hFo)

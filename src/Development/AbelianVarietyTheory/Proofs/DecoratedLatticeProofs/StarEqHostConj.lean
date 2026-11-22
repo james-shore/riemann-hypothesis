@@ -44,6 +44,6 @@ theorem exists_line (D : D7) (X : HidaSetting D) (u : D.what₂.Word) :
   refine ⟨negLine D, ((π : 𝓞 D.host.E) : D.host.E)⁻¹, inv_ne_zero hπ0, rfl, ?_, fun i j => ?_⟩
   · rw [X.zu_norm]; exact neg_ne_zero.2 hT0
   · rw [negLine_gram, X.zu_norm, star_inv₀, star_eq_hostConj, ← hπ]
-    field_simp <;> ring
+    field_simp
 
 end GlobalTheory.RankOneLine

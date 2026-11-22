@@ -89,6 +89,6 @@ theorem levIdx_pf :
     (fun i hi k hk => (hK k).1 hk i (hposition i hi))
   rw [hEq, key, Finset.prod_product]
   refine Finset.prod_congr rfl fun w _ => ?_
-  simp [Fintype.prod_bool, sq]
+  simp [sq]
 
 end UpperTheory.V.Z.Mult.Pi

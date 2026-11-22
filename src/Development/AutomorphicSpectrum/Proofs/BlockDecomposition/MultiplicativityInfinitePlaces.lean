@@ -81,7 +81,7 @@ theorem mulI_of_detMono : DetMono → MulI := by
   · simp only [nI]
     rw [gram_mul_det, Complex.re_ofReal_mul, mul_comm]
   · have h := gram_mul_det (1 : Matrix κ κ ℂ) s
-    simp only [Matrix.one_mul, conjTranspose_one, Matrix.mul_one, det_one, mul_one] at h
+    simp only [Matrix.one_mul, conjTranspose_one, det_one, mul_one] at h
     simp only [nI]
     rw [h, Complex.ofReal_re]
 

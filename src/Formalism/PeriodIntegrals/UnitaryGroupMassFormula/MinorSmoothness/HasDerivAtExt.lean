@@ -43,7 +43,7 @@ lemma hpart2_skew (Z : Mx k r) :
 lemma skew_real (X : Mx k r) (hX : Xᴴ = -(Hpk k r * X * Hpk k r)) (t : ℝ) :
     ((t : ℂ) • X)ᴴ = -(Hpk k r * ((t : ℂ) • X) * Hpk k r) := by
   rw [conjTranspose_smul, hX]
-  simp [Complex.star_def, Complex.conj_ofReal, mul_smul_comm, smul_mul_assoc]
+  simp [Complex.conj_ofReal]
 
 lemma exp_mem_UH (Y : Mx k r) (hY : Yᴴ = -(Hpk k r * Y * Hpk k r)) :
     NormedSpace.exp Y ∈ UH (Hpk k r) := by
@@ -128,7 +128,7 @@ lemma unit_col (i : Fin (r + 1)) (p q : Fin (mdim k r i)) (c : Fin (2 * r + k + 
     (Matrix.single (posL k r i p) (posL k r i q) (1 : ℂ)) x c = 0 ∧
     (Hpk k r * (Matrix.single (posL k r i p) (posL k r i q) (1 : ℂ))ᴴ * Hpk k r) x c = 0 := by
   constructor
-  · simp [Matrix.single_apply, hcq, Ne.symm hcq]
+  · simp [Ne.symm hcq]
   · rw [Matrix.mul_apply]
     refine Finset.sum_eq_zero fun l _ => ?_
     by_cases hl : l = posL k r i p
@@ -136,7 +136,7 @@ lemma unit_col (i : Fin (r + 1)) (p q : Fin (mdim k r i)) (c : Fin (2 * r + k + 
     · have h0 : (Hpk k r * (Matrix.single (posL k r i p) (posL k r i q) (1 : ℂ))ᴴ) x l = 0 := by
         rw [Matrix.mul_apply]
         refine Finset.sum_eq_zero fun m _ => ?_
-        simp [Matrix.conjTranspose_apply, Matrix.single_apply, hl, Ne.symm hl]
+        simp [Matrix.conjTranspose_apply, Ne.symm hl]
       rw [h0, zero_mul]
 
 lemma posL_ne (i : Fin (r + 1)) (q : Fin (mdim k r i)) (a : Fin r) (ha : a.val < i.val) :

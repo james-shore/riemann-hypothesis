@@ -84,7 +84,7 @@ theorem UpperTheory.ConvolutionTheory.R2.I.actN :
   refine ⟨?_, fun X => ?_⟩
   · have : Matrix.GeneralLinearGroup.det (nbar D v θ s) = 1 := by
       apply Units.ext
-      simp [nbar, Matrix.det_fin_two]
+      simp [nbar]
     rw [nu, this, map_one]
   set a := sg v (s / 2) with ha
   set b := sg v (-(s / (2 * θ))) with hb

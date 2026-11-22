@@ -50,8 +50,6 @@ theorem equiv_of_isSubquotient (G : Type) [Group G] (V Y W : Type) [AddCommGroup
     rw [hX]
     first
       | rfl
-      | exact Submodule.top_coe
-      | simp
   have h : isotypicComponent (MonoidAlgebra ℂ G) R.asModule ρ.asModule = ⊤ := by
     rw [← GlobalTheory.CuspFactor.spanRep_asSubmodule R ρ hρ]
     exact htop
@@ -61,12 +59,10 @@ theorem equiv_of_isSubquotient (G : Type) [Group G] (V Y W : Type) [AddCommGroup
   have hj : Function.Injective j := by
     first
       | exact Subtype.val_injective
-      | (intro x y hxy; exact Subtype.val_injective hxy)
   let f' := Representation.IntertwiningMap.equivLinearMapAsModule _ _ f
   have hf' : Function.Surjective f' := by
     first
       | exact hf
-      | (intro y; obtain ⟨x, hx⟩ := hf y; exact ⟨x, hx⟩)
   exact (GlobalTheory.CuspFactor.nonempty_equiv_iff σ ρ).2
     (GlobalTheory.CompanionTheory.IsoSub.nonempty_equiv_of_isotypic h j hj f' hf' hσs)
 

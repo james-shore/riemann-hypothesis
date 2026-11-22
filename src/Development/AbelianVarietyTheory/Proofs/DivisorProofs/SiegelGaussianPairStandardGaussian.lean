@@ -15,8 +15,8 @@ theorem siegelGauss_pair_standard (l : Type) [Fintype l] [DecidableEq l] (τ : M
     · have : σ.map Complex.im = τ.map Complex.im + 1 := by
         ext i j
         by_cases hij : i = j
-        · subst hij; simp [σ, Matrix.one_apply]
-        · simp [σ, Matrix.one_apply, hij]
+        · subst hij; simp [σ]
+        · simp [σ, hij]
       rw [this]
       exact hτ.2.add_posSemidef Matrix.PosSemidef.one
   have hint : ∀ x : l → ℝ, c * cexp (π * I * ((fun i => (x i : ℂ)) ⬝ᵥ τ *ᵥ fun i => (x i : ℂ))) * conj (cexp (-π * ((x ⬝ᵥ x : ℝ) : ℂ)))

@@ -54,11 +54,6 @@ theorem cup1_one (x : Cn F 1) : cup1 F 0 x 1 = x := by
   first
     | exact (GlobalTheory.CompanionTheory.HopfC.pr_congr (n := 1) (m := 1) (e := GlobalTheory.CompanionTheory.HopfC.fr 0) (e' := OrderHom.id)
         (fun i => Fin.ext rfl) x).trans (GlobalTheory.CompanionTheory.HopfC.pr_id x)
-    | exact (GlobalTheory.CompanionTheory.HopfC.pr_congr (n := 1) (m := 1) (e := GlobalTheory.CompanionTheory.HopfC.fr 0) (e' := OrderHom.id)
-        (fun i => by ext; simp [GlobalTheory.CompanionTheory.HopfC.fr]) x).trans (GlobalTheory.CompanionTheory.HopfC.pr_id x)
-    | exact calc GlobalTheory.CompanionTheory.HopfC.pr F (GlobalTheory.CompanionTheory.HopfC.fr 0) x = GlobalTheory.CompanionTheory.HopfC.pr F OrderHom.id x :=
-          GlobalTheory.CompanionTheory.HopfC.pr_congr (fun i => Fin.ext rfl) x
-        _ = x := GlobalTheory.CompanionTheory.HopfC.pr_id x
 
 variable [Finite (Fin (0 + 1) ⥤ C)] [Finite (Fin (1 + 1) ⥤ C)]
 

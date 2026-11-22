@@ -202,8 +202,8 @@ theorem poly : ∀ (K : Type) [Field K] [NumberField K] (i : ℕ) (F F' : HermLa
     simp only [h2, Q, map_sum, map_mul, map_C, Finset.mul_sum, map_X]
     refine Finset.sum_congr rfl fun j _ => ?_
     by_cases hj : j = j₀
-    · simp only [W, hj, if_true, map_mul]; ring
-    · simp only [W, hj, if_false, map_mul, map_one]; ring
+    · simp only [W, hj, if_true]; ring
+    · simp only [W, hj, if_false, map_one]; ring
   have hamπ : (C (am π) : MvPolynomial ι K) ≠ 0 := by
     rw [Ne, C_eq_zero]
     exact fun h => hπ ((map_eq_zero_iff am RingOfIntegers.coe_injective).1 h)
@@ -248,7 +248,7 @@ theorem poly : ∀ (K : Type) [Field K] [NumberField K] (i : ℕ) (F F' : HermLa
       intro l
       have := congrFun (hM t) l
       simpa [Finset.sum_apply] using this
-    simp only [h3, h4, Q, map_sum, map_mul, map_C, map_X, coe_eval₂Hom, eval₂_mul, eval₂_C, eval₂_X, Finset.mul_sum]
+    simp only [h3, h4, Q, map_sum, map_mul, map_C, map_X, coe_eval₂Hom, eval₂_C, eval₂_X, Finset.mul_sum]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun l _ => ?_
     rw [← mul_assoc, ← C_mul, hMl, map_sum, Finset.sum_mul]

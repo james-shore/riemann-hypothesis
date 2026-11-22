@@ -263,7 +263,7 @@ theorem continuous_chart_symm (D : D7) (A : HSp D) (μ : D.host.E) (hμ : IsSkew
     have := e g⁻¹
     rw [map_inv] at this
     rw [Function.comp_apply, ← this]
-    simp only [Function.comp_apply, map_inv]
+    simp only [Function.comp_apply]
     rfl
 
 theorem height_bound : ∀ (D : D7) (r : ℕ), ∃ H' : G D (r + 1) → ℝ≥0, PositivityTheory.Rg.Rsw.IsHt H' ∧ ∃ B : ℝ, ∀ ε : ℝ, 0 < ε → ε ≤ 1 →

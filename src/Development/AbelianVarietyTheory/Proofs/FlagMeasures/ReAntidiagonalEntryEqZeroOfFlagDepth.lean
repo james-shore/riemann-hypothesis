@@ -17,15 +17,15 @@ theorem re_corner_eq_zero (k r : ℕ) (x : Matrix (Fin (2 * r + k + 1)) (Fin (2 
     intro i hi hne
     have h0 := hd i s (by
       simp only [pos]
-      split_ifs <;> first | rfl | omega | (exfalso; omega))
+      split_ifs <;> first | rfl | omega)
     rw [Matrix.sub_apply, Matrix.one_apply_ne hne, sub_zero] at h0; exact h0
   have hss : x s s = 1 := by
-    have h0 := hd s s (by simp only [pos]; split_ifs <;> first | rfl | omega | (exfalso; omega))
+    have h0 := hd s s (by simp only [pos]; split_ifs <;> first | rfl | omega)
     rw [Matrix.sub_apply, Matrix.one_apply_eq, sub_eq_zero] at h0; exact h0
   have hU := congrFun (congrFun hx.1 s) s
   have hH : Hpk k r s s = 0 := by
-    simp only [Hpk, Fin.ext_iff, and_true]
-    split_ifs <;> first | rfl | omega | (exfalso; omega)
+    simp only [Hpk, and_true]
+    split_ifs <;> first | rfl | omega
   rw [hH] at hU
   have key : ∀ i j : Fin (2 * r + k + 1), star (x i s) * Hpk k r i j * x j s =
       (if i = s ∧ j = e then x j s else 0) + (if i = e ∧ j = s then star (x i s) else 0) := by
@@ -33,12 +33,12 @@ theorem re_corner_eq_zero (k r : ℕ) (x : Matrix (Fin (2 * r + k + 1)) (Fin (2 
     by_cases h1 : i = s ∧ j = e
     · rw [h1.1, h1.2]
       have hes : e ≠ s := fun h => by have := congrArg Fin.val h; omega
-      have : Hpk k r s e = 1 := by simp only [Hpk, Fin.ext_iff, and_true]; split_ifs <;> first | rfl | omega | (exfalso; omega)
+      have : Hpk k r s e = 1 := by simp only [Hpk, Fin.ext_iff]; split_ifs <;> first | rfl | omega
       simp [hes, hes.symm, this, hss]
     by_cases h2 : i = e ∧ j = s
     · rw [h2.1, h2.2]
       have hes : e ≠ s := fun h => by have := congrArg Fin.val h; omega
-      have : Hpk k r e s = 1 := by simp only [Hpk, Fin.ext_iff, and_true]; split_ifs <;> first | rfl | omega | (exfalso; omega)
+      have : Hpk k r e s = 1 := by simp only [Hpk, Fin.ext_iff]; split_ifs <;> first | rfl | omega
       simp [hes, hes.symm, this, hss]
     rw [if_neg h1, if_neg h2, add_zero]
     have hi : i = s ∨ i.val ≤ a.val ∨ x i s = 0 := by
@@ -63,16 +63,16 @@ theorem re_corner_eq_zero (k r : ℕ) (x : Matrix (Fin (2 * r + k + 1)) (Fin (2 
       · subst hi; subst hj; simp [hH]
       · have : Hpk k r i j = 0 := by
           rw [hI] at hi
-          simp only [Hpk, Fin.ext_iff, and_true]; split_ifs <;> first | rfl | omega | (exfalso; omega)
+          simp only [Hpk, Fin.ext_iff]; split_ifs <;> first | rfl | omega
         simp [this]
       · simp [hj]
     · rcases hj with hj | hj | hj
       · have : Hpk k r i j = 0 := by
           rw [hI] at hj
-          simp only [Hpk, Fin.ext_iff, and_true]; split_ifs <;> first | rfl | omega | (exfalso; omega)
+          simp only [Hpk, Fin.ext_iff]; split_ifs <;> first | rfl | omega
         simp [this]
       · have : Hpk k r i j = 0 := by
-          simp only [Hpk, Fin.ext_iff, and_true]; split_ifs <;> first | rfl | omega | (exfalso; omega)
+          simp only [Hpk, Fin.ext_iff]; split_ifs <;> first | rfl | omega
         simp [this]
       · simp [hj]
     · simp [hi]
@@ -80,7 +80,7 @@ theorem re_corner_eq_zero (k r : ℕ) (x : Matrix (Fin (2 * r + k + 1)) (Fin (2 
     simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Finset.sum_mul]
     rw [Finset.sum_comm]
     simp_rw [key, Finset.sum_add_distrib]
-    simp [ite_and, hss]
+    simp [ite_and]
   rw [hsum] at hU
   have := congrArg Complex.re hU
   simp at this

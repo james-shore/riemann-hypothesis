@@ -143,21 +143,21 @@ theorem nu_rot (hk : 1 ≤ k) (w s : ℂ) (φ : ℝ) :
   ext i j
   simp only [dOne, dTwo, Matrix.diagonal_mul, Matrix.mul_diagonal, Matrix.smul_apply, smul_eq_mul]
   rcases eq_or_ne i 0 with rfl | hi0 <;> rcases eq_or_ne j 0 with rfl | hj0
-  · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hl, hl.symm]
+  · simp [nu, vecMulVec, Pi.single_apply, hl]
     linear_combination (-(Complex.exp (↑φ * Complex.I) * (starRingEnd ℂ) w)) * he
   · rcases eq_or_ne j (Fin.last k) with rfl | hjl
-    · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hl, hl.symm]
-    · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hl, hl.symm, hj0, hjl, Ne.symm hj0, Ne.symm hjl]
+    · simp [nu, vecMulVec, Pi.single_apply, hl, hl.symm]
+    · simp [nu, vecMulVec, Pi.single_apply, hl, hj0, hjl, Ne.symm hj0]
   · rcases eq_or_ne i (Fin.last k) with rfl | hil
-    · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hl, hl.symm]
+    · simp [nu, vecMulVec, Pi.single_apply, hl, hl.symm]
       ring
-    · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hl, hl.symm, hi0, hil, Ne.symm hi0, Ne.symm hil]
+    · simp [nu, vecMulVec, Pi.single_apply, hl, hi0, hil]
   · rcases eq_or_ne i (Fin.last k) with rfl | hil <;> rcases eq_or_ne j (Fin.last k) with rfl | hjl
-    · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hl, hl.symm]
+    · simp [nu, vecMulVec, Pi.single_apply, hl.symm]
       ring
-    · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hl, hl.symm, hj0, hjl, Ne.symm hj0, Ne.symm hjl]
-    · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hl, hl.symm, hi0, hil, Ne.symm hi0, Ne.symm hil]
-    · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hi0, hil, hj0, hjl, Ne.symm hi0, Ne.symm hil, Ne.symm hj0, Ne.symm hjl]
+    · simp [nu, vecMulVec, Pi.single_apply, hj0, hjl, Ne.symm hjl]
+    · simp [nu, vecMulVec, Pi.single_apply, hl.symm, hi0, hil]
+    · simp [nu, vecMulVec, Matrix.one_apply, Pi.single_apply, hil, hj0, hjl]
 
 theorem wZ_rot (T T' : ℝ) (ζ e : ℂ) : wZ T T' (ζ * e) = wZ T T' ζ * e := by
   unfold wZ; ring
@@ -201,8 +201,8 @@ theorem dOne_fix_last (φ : ℝ) (c : ℂ) :
   simp only [dOne]
   rw [mulVec_diagonal]
   by_cases hj : j = Fin.last k
-  · simp [dOne, hj]
-  · simp [dOne, hj, Pi.single_apply]
+  · simp [hj]
+  · simp [hj]
 
 theorem dTwo_fix_last (hk : 1 ≤ k) (φ : ℝ) (c : ℂ) :
     dTwo k φ *ᵥ (c • Pi.single (Fin.last k) 1) = c • Pi.single (Fin.last k) 1 := by
@@ -215,8 +215,8 @@ theorem dTwo_fix_last (hk : 1 ≤ k) (φ : ℝ) (c : ℂ) :
       have := congrArg Fin.val h
       simp at this
       omega
-    simp [dTwo, hj, h0]
-  · simp [dTwo, hj, Pi.single_apply]
+    simp [hj, h0]
+  · simp [hj]
 
 end block2
 

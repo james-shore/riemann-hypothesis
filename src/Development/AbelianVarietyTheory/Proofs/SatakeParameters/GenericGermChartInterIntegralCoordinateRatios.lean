@@ -44,12 +44,12 @@ theorem germ_const (p : Z ⟶ Sp ℂ) [inst : Algebra ℂ Z.functionField] (hins
       algebraMap ℂ Z.functionField c := by
   subst hinst hφ
   rw [GlobalTheory.ProjSpace.algebraMap_sections_eq]
-  simp only [Scheme.Hom.appLE, ffAlg, RingHom.algebraMap_toAlgebra, CommRingCat.hom_comp, RingHom.comp_apply,
+  simp only [Scheme.Hom.appLE, RingHom.algebraMap_toAlgebra, CommRingCat.hom_comp, RingHom.comp_apply,
     Scheme.Hom.comp_appTop]
   generalize (CommRingCat.Hom.hom (Scheme.Hom.app (PSpace.str ℂ d) ⊤))
     ((CommRingCat.Hom.hom (Scheme.ΓSpecIso (CommRingCat.of ℂ)).inv) c) = w
   have e := ConcreteCategory.congr_hom (φ.naturality (homOfLE (le_top : chart d a ≤ ⊤)).op) w
-  simp only [ConcreteCategory.comp_apply] at e
+  simp only at e
   erw [e, TopCat.Presheaf.germ_res_apply]
   rfl
 

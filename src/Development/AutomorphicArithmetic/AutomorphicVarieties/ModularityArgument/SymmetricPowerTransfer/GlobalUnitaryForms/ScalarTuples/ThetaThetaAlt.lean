@@ -184,18 +184,15 @@ theorem UpperTheory.V.Z.Sym.Glob.gqG :
       (fun v => orb (ιv v) (Cint (Ov v) (cv v τ)) (theta (cv v Δ)) (D.Jv v) (D.fGv t v) (((ι δ).1 v)))
       (by
         intro v hv
-        beta_reduce
         rw [hfS v hv, hJS v hv]
         exact (hGorb v hv).2.1)
       (by
         intro v hv
-        beta_reduce
         rw [hfN v hv, hJN v hv]
         exact (hfin v hv).1)
       (by
         intro v hv
         have hs := (hgood v hv).1
-        beta_reduce
         rw [← (hfin v hs).1]
         rw [Tf.orbOne _ _ (ιv v) _ (theta (cv v Δ)) _ _ _ ?_ (hcomm v) (hmapKU v hv) (hy v hv)]
         · simp [one, (hgood v hv).2.1]

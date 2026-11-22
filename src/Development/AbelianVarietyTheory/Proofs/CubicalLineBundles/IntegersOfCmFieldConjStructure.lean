@@ -50,8 +50,6 @@ theorem exists_coord (H : Host E) {a : 𝓞 E} (ha : a ∈ OK H) : ∃ u v : ℤ
   | exact @_root_.GlobalTheory.CMGeneratorSquare.main
   | exact _root_.GlobalTheory.CMGeneratorSquare.main
   | (apply _root_.GlobalTheory.CMGeneratorSquare.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CMGeneratorSquare.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CMGeneratorSquare.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CMGeneratorSquare.main ..)
 
 theorem coord_eq_zero (H : Host E) {u v : ℤ} (h : (u : 𝓞 E) + v * H.w0 = 0) : u = 0 ∧ v = 0 := by

@@ -207,7 +207,7 @@ theorem cdag_unitMap (A : Fr S) (B : Fr T) (τ : D.what₂.Tau) (i : Fin T.rank)
   have e3 : (Matrix.single j i (1 : ℂ))ᴴ = Matrix.single i j (1 : ℂ) := by
     ext k l
     simp only [Matrix.conjTranspose_apply, Matrix.single_apply]
-    by_cases h1 : i = k <;> by_cases h2 : j = l <;> simp [h1, h2, eq_comm]
+    by_cases h1 : i = k <;> by_cases h2 : j = l <;> simp [h1, h2]
   simp only [unitMap, Fr.onb, Matrix.nonsing_inv_nonsing_inv _ ha, Matrix.nonsing_inv_nonsing_inv _ hb, cdag]
   rw [Matrix.conjTranspose_mul, Matrix.conjTranspose_mul, e3]
   calc (gramAt D T τ)⁻¹ * ((B.fr τ)ᴴ * (Matrix.single i j (1 : ℂ) * ((A.fr τ)⁻¹)ᴴ)) * gramAt D S τ

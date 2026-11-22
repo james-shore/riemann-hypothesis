@@ -49,7 +49,7 @@ private theorem mem_eig {rc : IrrGL (w.adicCompletion E) → WD h} (H : IsRec h 
   have e' : rc (algNorm σ) = WD.mk (WDRep.diag h fun i => (α i)⁻¹ * qPow w ((1 - (n : ℝ)) / 2)) := by
     rw [rec_algNorm H, e, WD.lpTw_mk]
     refine WD.sound ⟨.refl _ _, fun g v => funext fun i => ?_, fun v => rfl⟩
-    simp [mul_zpow, mul_comm, mul_left_comm, mul_assoc]
+    simp [mul_zpow, mul_comm, mul_left_comm]
   simp only [hBα, algSat, Multiset.map_map, Multiset.pure_def, Multiset.bind_def, Multiset.bind_singleton,
     Multiset.mem_map] at hb
   obtain ⟨i, -, rfl⟩ := hb

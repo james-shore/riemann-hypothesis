@@ -97,15 +97,15 @@ theorem UpperTheory.ConvolutionTheory.R2.I.omSL :
   have hlow : ∀ (g : SL v) (c : Kv v), g.1 = !![1, 0; c, 1] → g ∈ H := by
     intro g c hg a ha φ hφ
     have e1 : (!![0, 1; -1, 0] * !![0, -1; 1, 0] : M2 v) = 1 := by
-      simp [Matrix.mul_fin_two, Matrix.one_fin_two]
+      simp [Matrix.one_fin_two]
     have e2 : (!![0, -1; 1, 0] * !![0, 1; -1, 0] : M2 v) = 1 := by
-      simp [Matrix.mul_fin_two, Matrix.one_fin_two]
+      simp [Matrix.one_fin_two]
     have e3 : (!![1, -c; 0, 1] * !![1, c; 0, 1] : M2 v) = 1 := by
-      simp [Matrix.mul_fin_two, Matrix.one_fin_two]
+      simp [Matrix.one_fin_two]
     have e4 : (!![1, c; 0, 1] * !![1, -c; 0, 1] : M2 v) = 1 := by
-      simp [Matrix.mul_fin_two, Matrix.one_fin_two]
+      simp [Matrix.one_fin_two]
     have e5 : (!![0, 1; -1, 0] * (!![1, -c; 0, 1] * !![0, -1; 1, 0]) : M2 v) = !![1, 0; c, 1] := by
-      simp [Matrix.mul_fin_two]
+      simp
     have ha0 := sbMul ha !![0, -1; 1, 0] !![0, 1; -1, 0] e2 e1
     obtain ⟨φ0, h0⟩ := exPhi hu ha0
     have h1 : W.Om (wW F) φ0 = φ := by
@@ -125,7 +125,7 @@ theorem UpperTheory.ConvolutionTheory.R2.I.omSL :
       apply Subtype.ext
       show (j g).1 * (wW F).1 = (wW F).1 * (nU (sg v (-c))).1
       rw [ej, sgNeg]
-      simp [wW, nU, Matrix.mul_fin_two]
+      simp [wW, nU]
     have h2 := hn u _ (-c) φ0 h0
     have ha1 := sbMul ha0 !![1, -c; 0, 1] !![1, c; 0, 1] e3 e4
     have h3 := hw _ ha1 (W.Om (nU (sg v (-c))) φ0) h2

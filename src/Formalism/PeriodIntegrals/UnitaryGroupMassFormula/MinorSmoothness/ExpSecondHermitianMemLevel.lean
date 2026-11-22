@@ -238,7 +238,7 @@ lemma qminor_eq {t : ℕ} (α β : Fin t → Fin (mdim k r i)) (u : ℂ) (f : Mx
     qminorOp (EH k r) (fun j => posL k r i (α j)) (fun j => posL k r i (β j)) u f =
       ∑ σ : Equiv.Perm (Fin t), (((Equiv.Perm.sign σ : ℤ) : ℂ) •
         foldP k r i (List.ofFn fun m : Fin t => (u - ((m : ℕ) : ℂ), α (σ m), β m)) f) := by
-  simp only [qminorOp, foldP, List.map_ofFn, Function.comp_def] <;> rfl
+  simp only [qminorOp, foldP, List.map_ofFn, Function.comp_def]
 
 lemma qminor_smooth (hD : IsOpen D) {t : ℕ} (α β : Fin t → Fin (mdim k r i)) (u : ℂ)
     (f : Mx k r → E) (hf : SmoothLev k r i D f) :

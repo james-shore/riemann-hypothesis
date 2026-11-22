@@ -18,8 +18,6 @@ theorem exists_den {N : ℕ} (L : Submodule (𝓞 E) (Fin N → E)) (hfg : L.FG)
   | exact @_root_.GlobalTheory.CommonDenominatorLemma.exists_common_denominator
   | exact _root_.GlobalTheory.CommonDenominatorLemma.exists_common_denominator
   | (apply _root_.GlobalTheory.CommonDenominatorLemma.exists_common_denominator <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CommonDenominatorLemma.exists_common_denominator <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CommonDenominatorLemma.exists_common_denominator <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CommonDenominatorLemma.exists_common_denominator ..)
 
 theorem exists_extension {N : ℕ} (L : Submodule (𝓞 E) (Fin N → E)) (hL : IsSDLat E N L)
@@ -63,7 +61,7 @@ theorem exists_extension {N : ℕ} (L : Submodule (𝓞 E) (Fin N → E)) (hL : 
     refine Finset.sum_congr rfl fun i _ => ?_
     rw [hub i]
     simp only [w]
-    first | (field_simp; ring) | field_simp
+    first | (field_simp) | field_simp
   refine ⟨fun i => star (w i), ?_, ?_⟩
   · rw [hdual]
     intro y hy

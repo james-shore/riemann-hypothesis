@@ -76,7 +76,7 @@ private theorem monomialRed_lemma_2 {K G : Type} [Field K] [Group G] {n : ℕ}
     by_cases hil : i = l
     · subst hil
       simp
-    · simp [hil, Finsupp.single_apply, Ne.symm hil]
+    · simp [hil]
   rw [h, Matrix.charpoly_diagonal]
 
 private theorem roots_prod_X_sub_C_fin_eq_map_univ {F : Type} [Field F] {n : ℕ} (f : Fin n → F) :

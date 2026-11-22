@@ -64,7 +64,7 @@ theorem UpperTheory.exists_nat_combination_isUnit_of_isUnit_combination :
     rw [h1, RingHom.map_det]
     congr 1
     ext j k
-    simp [Matrix.sum_apply, Finset.sum_apply]
+    simp [Matrix.sum_apply]
   have hiff : ∀ y : Fin m → ∀ w, K w, IsUnit (∑ i, y i • z i) ↔
       ∀ w, MvPolynomial.eval (fun i => y i w) (P w) ≠ 0 := by
     intro y

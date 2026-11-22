@@ -71,19 +71,19 @@ theorem pderiv_inl_liftX (f : PS k 1 d) (j : Fin d) :
   unfold liftX
   rw [LogPf.pderiv_subst (fun _ => MvPowerSeries.constantCoeff_X _) f (Sum.inl j)]
   rw [Finset.sum_eq_single ((0 : Fin 1), j)]
-  · simp [MvPowerSeries.pderiv_X]
+  · simp
   · intro p _ hp
     have hp' : p.2 ≠ j := by
       intro h
       exact hp (Prod.ext (Subsingleton.elim _ _) h)
-    simp [MvPowerSeries.pderiv_X, Pi.single_apply, hp']
+    simp [hp']
   · simp
 
 theorem pderiv_inr_liftX (f : PS k 1 d) (i : Fin d) : pderiv k (Sum.inr i) (liftX k f) = 0 := by
   classical
   unfold liftX
   rw [LogPf.pderiv_subst (fun _ => MvPowerSeries.constantCoeff_X _) f (Sum.inr i)]
-  simp [MvPowerSeries.pderiv_X, Pi.single_apply]
+  simp
 
 def cf (B : FB R d O) (h : PS k 2 d) (u φ : Fin d → k) : Fin d ⊕ Fin d → AA k d :=
   Sum.elim (fun j => liftX k (∑ i : Fin d, C (u i) * ev (n := 1) ![pt k d 0, 0] (pderiv k ((1 : Fin 2), i) (B.FK k j))))

@@ -85,7 +85,7 @@ theorem loc (hB : BallSt) : LocSt := by
       (⟨_, hind x⟩ : SB (Matrix (Fin n) (Fin r) k)) := by
     apply Subtype.ext
     refine hsum.trans ?_
-    simp [Submodule.coe_sum, Submodule.coe_smul]
+    simp
   rw [hΦeq]
   exact P.sum_mem hterm
 

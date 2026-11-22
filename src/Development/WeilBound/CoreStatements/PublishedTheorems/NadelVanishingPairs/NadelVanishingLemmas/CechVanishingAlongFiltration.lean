@@ -254,7 +254,7 @@ theorem GlobalTheory.DI.cechZero_of_hypZero_filtered : ∀ {ι : Type} [LinearOr
   refine ⟨fun s => if s.card = b then y' s else 0, ⟨?_, fun s => ?_, fun s hs => if_neg hs⟩, ?_⟩
   · by_cases hb : b = 0
     · simp [hb, hy'N.1]
-    · simp [hb, Ne.symm hb]
+    · simp [Ne.symm hb]
   · dsimp only
     split_ifs with hs
     · exact hy'N.2.1 a s (by omega)

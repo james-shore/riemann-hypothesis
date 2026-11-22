@@ -54,7 +54,7 @@ private theorem summable_exp_neg_mul_norm_add_sq {E : Type} [NormedAddCommGroup 
         rw [sub_neg_eq_add, hz, norm_zero, Real.zero_rpow]
         have : (0 : ℝ) < N := by positivity
         linarith
-      simp [hz, h0]
+      simp [hz]
     · have hu : 0 < ‖(z : E) + w‖ := norm_pos_iff.2 hz
       simp only [hz, if_false, add_zero, sub_neg_eq_add]
       exact key _ hu

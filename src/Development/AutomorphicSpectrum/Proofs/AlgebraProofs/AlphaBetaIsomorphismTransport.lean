@@ -240,7 +240,7 @@ theorem am_rel (h : IsIso B B₂ φ ψ lam) :
   have k := congrArg (fun f => bil f p 1) key
   have z : p • bil lam p 1 = 0 := by
     ext i j
-    simp [nsmul_eq_mul, CharP.cast_eq_zero R p]
+    simp [nsmul_eq_mul]
   beta_reduce at k
   rw [bil_mul a1 a2, bil_mul (axOne_pow h.ax p) a3, bil_E_ptPow hp1 ax₂, bil_E_ptPow hp1 aL,
     bil_E_ptPow hp1 aG, bil_pow h.ax hp, z, zero_add, bil_E cV₂ cI h.ax, bil_E cF h.c₁ ax, lV₂, b₂, b,

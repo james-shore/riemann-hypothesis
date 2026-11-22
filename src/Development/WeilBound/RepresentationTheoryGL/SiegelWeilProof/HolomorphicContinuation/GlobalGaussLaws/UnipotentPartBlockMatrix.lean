@@ -84,7 +84,7 @@ theorem gramX_eq {m n : ℕ} (ε : Fin m → Bool) (u : Matrix (Fin m) (Fin n) �
   refine Finset.sum_congr rfl fun a _ => ?_
   rw [Finset.sum_eq_single a (fun k _ hk => by rw [if_neg hk, mul_zero]) (by simp), if_pos rfl]
   unfold sgn
-  cases ε a <;> simp <;> ring
+  cases ε a <;> simp
 
 theorem psi_unip {θ : InfFam D} (hθ : IsInfFam θ) {ψ : AddChar (AF D.host.F) ℂ} {l : D.what₂.Tau → ℝ}
     (hl : HasRealPar ψ θ l) {V : HSp D} {n : ℕ} (τ : D.what₂.Tau) (ε : Fin V.rank → Bool)

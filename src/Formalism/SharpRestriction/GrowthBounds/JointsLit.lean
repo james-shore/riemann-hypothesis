@@ -119,8 +119,8 @@ theorem span_inf_span {A K : Type*} [CommRing A] [IsDedekindDomain A] [Field K] 
     convert h using 1
     funext i
     rcases i with i | i
-    · ext <;> simp [φ', b', Module.Basis.prod_apply_inl_fst, Module.Basis.prod_apply_inl_snd]
-    · ext <;> simp [φ', b', Module.Basis.prod_apply_inr_fst, Module.Basis.prod_apply_inr_snd]
+    · ext <;> simp [φ', b']
+    · ext <;> simp [φ', b']
   let U : Submodule K (V × V) := LinearMap.range ((LinearMap.id : V →ₗ[K] V).prod LinearMap.id)
   have key := (FBC.flat_ext (V := V × V) (W := W × W) w σ hσ φ' hφ' b' hb').2 (L1.prod L2) U
   have hL : ∀ y ∈ Submodule.span O (φ '' (L1 : Set V)), (y, (0 : W)) ∈ Submodule.span O (φ' '' ((L1.prod L2 : Submodule A (V × V)) : Set (V × V))) := by

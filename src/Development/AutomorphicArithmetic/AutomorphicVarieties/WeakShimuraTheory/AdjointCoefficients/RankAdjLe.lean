@@ -24,7 +24,7 @@ private noncomputable def cmp {k : Type} [Field k] (p : M4 k) :
     rw [Matrix.mulVecLin_add, LinearMap.add_comp, LinearMap.comp_add]
   map_smul' a X := by
     ext v i
-    simp [Matrix.smul_mulVec, Matrix.mulVec_smul]
+    simp
 
 private theorem cmp_zero {k : Type} [Field k] (p X : M4 k) (h : cmp p X = 0) : p * X * p = 0 := by
   apply Matrix.toLin'.injective

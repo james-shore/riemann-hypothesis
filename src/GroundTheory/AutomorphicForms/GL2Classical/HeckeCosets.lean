@@ -286,7 +286,7 @@ theorem exists_heckeReps_inv_mul_mem {k : FiniteAdelicGL ℚ 2} (hk : k ∈ Gamm
   have hkα : ((k * finiteDiagonal ℚ 2 (heckeAlpha p) : FiniteAdelicGL ℚ 2) : Matrix (Fin 2) (Fin 2) 𝔸f) =
       !![K 0 0 * p, K 0 1; K 1 0 * p, K 1 1] := by
     rw [Units.val_mul, coe_finiteDiagonal, ← hK, Matrix.eta_fin_two K]
-    simp [Matrix.mul_fin_two, coe_upperHecke]
+    simp [coe_upperHecke]
   by_cases hdp : K 1 1 ∈ levelIdeal p
   · have hpN : ¬ p ∣ N := by
       intro hpN
@@ -305,7 +305,7 @@ theorem exists_heckeReps_inv_mul_mem {k : FiniteAdelicGL ℚ 2} (hk : k ∈ Gamm
     refine inv_mul_mem_Gamma0Level_of N _ _ !![K 0 0 * p, K 0 1; K 1 0, t] ?_ ?_ hcN
       (Matrix.GeneralLinearGroup.det k) ?_ (inv_det_mem_of_mem_Gamma0Level N hk)
     · rw [hkα, coe_finiteDiagonal, hdt]
-      simp [Matrix.mul_fin_two, coe_lowerHecke]
+      simp [coe_lowerHecke]
       ring_nf
     · intro i j
       fin_cases i <;> fin_cases j
@@ -322,7 +322,7 @@ theorem exists_heckeReps_inv_mul_mem {k : FiniteAdelicGL ℚ 2} (hk : k ∈ Gamm
       !![K 0 0 + (j : ℕ) * K 1 0, t; p * K 1 0, K 1 1] ?_ ?_ (natCast_mul_mem_levelIdeal' hcN)
       (Matrix.GeneralLinearGroup.det k) ?_ (inv_det_mem_of_mem_Gamma0Level N hk)
     · rw [hkα, coe_finiteDiagonal]
-      simp [Matrix.mul_fin_two, coe_upperHecke]
+      simp [coe_upperHecke]
       exact ⟨⟨by ring, by linear_combination -hjt⟩, by ring⟩
     · intro i j'
       fin_cases i <;> fin_cases j'
@@ -364,7 +364,7 @@ theorem eq_of_inv_mul_mem_Gamma0Level {ξ ξ' : GL (Fin 2) ℚ} (hξ : ξ ∈ he
   · have e := hA 0 1
     rw [Units.val_mul, Matrix.mul_apply, Fin.sum_univ_two, coe_upperHecke_inv, coe_upperHecke] at e
     simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-      Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_cons] at e
+      Matrix.empty_val', Matrix.cons_val_fin_one] at e
     have e2 : (A 0 1 : ℚ) * p = (i : ℕ) - (j : ℕ) := by
       rw [e]; field_simp; push_cast; ring
     have e3 : A 0 1 * (p : ℤ) = ((i : ℕ) : ℤ) - ((j : ℕ) : ℤ) := by exact_mod_cast e2

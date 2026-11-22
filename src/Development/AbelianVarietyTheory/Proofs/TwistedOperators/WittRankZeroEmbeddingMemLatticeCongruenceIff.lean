@@ -50,7 +50,7 @@ theorem map_eq_of_one {G H : Type} [Group G] [TopologicalSpace G] [IsTopological
     rw [show (μ.map e) = μ.map e.toHomeomorph.toMeasurableEquiv from rfl, MeasurableEquiv.map_apply]
     exact hS'
   have h2 := congrArg (fun m : Measure G => m S) hc
-  simp only [Measure.smul_apply, h1, hS, smul_eq_mul, mul_one] at h2
+  simp only [Measure.smul_apply, h1, hS] at h2
   have h3 : Measure.haarScalarFactor ν (μ.map e) = 1 := by
     have : ((Measure.haarScalarFactor ν (μ.map e) : NNReal) : ENNReal) = 1 := by
       rw [ENNReal.smul_def] at h2; simpa using h2.symm

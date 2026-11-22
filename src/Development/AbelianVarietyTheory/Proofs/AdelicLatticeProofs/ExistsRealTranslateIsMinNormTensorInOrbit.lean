@@ -28,7 +28,7 @@ private lemma posDef_det_one_eq_unitary_conj_exp_diagonal {ι : Type} [Fintype �
     rw [Unitary.conjStarAlgAut_apply, Matrix.star_eq_conjTranspose]
     congr 3
     funext i
-    simp only [Function.comp_apply, RCLike.ofReal_real_eq_id, id]
+    simp only [Function.comp_apply]
     rw [mul_div_cancel₀ _ two_ne_zero, Real.exp_log (hP.eigenvalues_pos i)]
     rfl
 
@@ -274,7 +274,7 @@ theorem _root_.GlobalTheory.ClassFin.exists_real_translate_isMinVec : ∀ (ι : 
       star_trivial, Complex.re_sum]
     rw [← Finset.sum_add_distrib]
     refine Finset.sum_congr rfl fun k _ => ?_
-    simp [Complex.mul_re] <;> ring
+    simp [Complex.mul_re]
   have hRpsd : R.PosSemidef := by
     rw [hRAB]
     exact (posSemidef_self_mul_conjTranspose _).add (posSemidef_self_mul_conjTranspose _)

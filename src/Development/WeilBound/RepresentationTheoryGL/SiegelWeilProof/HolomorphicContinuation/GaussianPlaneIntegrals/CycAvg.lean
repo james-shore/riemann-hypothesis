@@ -119,8 +119,7 @@ theorem unitary_of_mem {w : Matrix (Fin m) (Fin m) ℂ} (h : w ∈ Formalism.REA
 
 theorem evX_Qp (i j : Fin n) (x : Fin m → Fin n → ℂ) :
     evX (Qp ε i j) x = star (fun b => x b i) ⬝ᵥ (Matrix.diagonal (sgn ε) *ᵥ fun b => x b j) := by
-  simp only [Qp, Qb, evX_eq, map_sub, map_sum, map_mul, eval_X, pt, if_true, Bool.false_eq_true, if_false,
-    Finset.sum_filter, dotProduct, Matrix.mulVec_diagonal, Pi.star_apply]
+  simp only [Qp, Qb, evX_eq, map_sub, map_sum, Finset.sum_filter, dotProduct, Matrix.mulVec_diagonal, Pi.star_apply]
   rw [← Finset.sum_sub_distrib]
   refine Finset.sum_congr rfl fun a _ => ?_
   cases h : ε a <;> simp [sgn, h, pt]

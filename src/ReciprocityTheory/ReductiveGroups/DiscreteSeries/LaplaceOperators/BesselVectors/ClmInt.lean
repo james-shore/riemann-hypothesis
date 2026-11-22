@@ -42,7 +42,6 @@ theorem integral_ne_zero_of_apply (s : α → ℂ) (A : α → V →L[ℂ] V) (h
       first
       | (field_simp; done)
       | (field_simp; rfl)
-      | (rw [mul_div_assoc, div_self (pow_ne_zero _ hnC), mul_one])
     refine Integrable.mono' (g := fun p => ‖ξ‖⁻¹ * ‖s p • A p ξ‖) (hint2.norm.const_mul _)
       (hs.smul hA) ?_
     filter_upwards [hu] with p hp

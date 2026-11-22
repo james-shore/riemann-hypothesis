@@ -54,7 +54,7 @@ def evalMod (A : Type*) [CommRing A] [Algebra A S] (J : Ideal S) {s : S} (hs : s
     rw [← Ideal.Quotient.mk_algebraMap, Ideal.Quotient.eq,
       ← (Polynomial.aeval (R := A) s).commutes a]
     refine aeval_sub_mem_pow hs fun i hi => ?_
-    simp [coeff_trunc, hi, Polynomial.coeff_C, coeff_C, PowerSeries.algebraMap_apply]
+    simp [coeff_trunc, hi, Polynomial.coeff_C, coeff_C]
 
 theorem factor_comp_evalMod (J : Ideal S) {s : S} (hs : s ∈ J) {m n : ℕ} (hle : m ≤ n) :
     (Ideal.Quotient.factorₐ A (Ideal.pow_le_pow_right hle)).comp (evalMod A J hs n) =
@@ -120,7 +120,7 @@ theorem map_C_sup_span_X :
     · rw [Ideal.map_le_iff_le_comap]
       intro a ha
       simpa using ha
-    · simp [Ideal.span_singleton_le_iff_mem]
+    · simp
   · intro f hf
     rw [f.eq_X_mul_shift_add_const]
     exact add_mem

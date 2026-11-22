@@ -34,7 +34,7 @@ theorem piTensor_mulSingle_eq_map {α : Type} [DecidableEq α] {Γ X : α → Ty
   funext b
   by_cases h : b = a
   · subst h; simp
-  · simp [h, Pi.mulSingle_eq_of_ne h]
+  · simp [h]
 
 theorem exists_mem_adjoin_eq {G V : Type} [Group G] [AddCommGroup V] [Module ℂ V]
     (π : Representation ℂ G V) (hirr : π.IsIrreducible)

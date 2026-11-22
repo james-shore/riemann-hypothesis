@@ -131,7 +131,7 @@ theorem gdeg_up : GlobalTheory.Published.ArCalc → ∀ (k : Type) [CommRing k] 
     rw [LinearMap.comp_apply, AlgHom.toLinearMap_apply] at this
     rw [← this]
     congr 1
-    simp [lin, Fin.sum_univ_three, MvPolynomial.aeval_rename, MvPolynomial.algebraMap_eq, eA]
+    simp [lin, Fin.sum_univ_three, eA]
     ring
   have chB : ∀ b : ℤ, Φ (X 0 * (X 1 + C (b : ℝ) * X 2) ^ D) = 1 / 2 * gdeg (comb ![L, U] ![1, b]) D := by
     intro b
@@ -139,7 +139,7 @@ theorem gdeg_up : GlobalTheory.Published.ArCalc → ∀ (k : Type) [CommRing k] 
     rw [LinearMap.comp_apply, AlgHom.toLinearMap_apply] at this
     rw [gdeg, ← this]
     congr 1
-    simp [lin, Fin.sum_univ_two, MvPolynomial.aeval_rename, MvPolynomial.algebraMap_eq, eB]
+    simp [lin, Fin.sum_univ_two, eB]
 
   have iso : ∀ c b : ℤ, (comb G ![c, 1, b]).Isometric ((comb ![L, U] ![1, b]).raise (fun _ _ => (c : ℝ) * 1)
       (fun σ y => cInfAt_const _ y) (fun _ _ _ _ _ _ _ => rfl)) := by
@@ -174,7 +174,6 @@ theorem gdeg_up : GlobalTheory.Published.ArCalc → ∀ (k : Type) [CommRing k] 
       have h := coeff_eq_zero_of_const (d + 1)
         (fun m => ((d + 1).choose m : ℝ) * Φ (X 2 * X 0 ^ m * (X 1 + C (b : ℝ) * X 2) ^ (d + 1 - m)))
         (1 / 2 * chInt (comb G ![0, 1, b]) (d + 1) u.u) (fun c => by
-          beta_reduce
           rw [← map_mul_add_pow, ← hind c b, ← chA c b]
           push_cast
           rfl) (le_refl 1) (by omega)

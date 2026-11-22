@@ -16,9 +16,8 @@ private theorem fin_rev_between_of_between (ρ t : Fin n) (h1 : ρ < t) (h2 : t 
 
 private theorem neg_mul_neg_div_self (a p : L) (hp : p ≠ 0) : -p * (-a / p) = a := by
   first
-    | (rw [neg_mul_neg, mul_div_assoc']; exact mul_div_cancel_left₀ a hp)
-    | (field_simp; done)
-    | (field_simp; ring)
+    | (rw [neg_mul_neg, mul_div_assoc'])
+    | (field_simp)
 
 theorem fIwasawa_tri_succ_of_max_pivot (hσ : ∀ x, σ (σ x) = x) (hσv : ∀ x, Valued.v (σ x) = Valued.v x)
     (M : Matrix (Fin n) (Fin n) L) (hM : fIwasawaUn σ M) (r : ℕ) (hT : fIwasawaTri r M)
@@ -91,7 +90,7 @@ theorem fIwasawa_tri_succ_of_max_pivot (hσ : ∀ x, σ (σ x) = x) (hσv : ∀ 
       σ (M ρ ρ) * M ρ ρ * S = 0 := by
     have hiso := fIwasawa_iso (σ := σ) M hM ρ hρ
     rw [Fintype.sum_congr _ _ key] at hiso
-    simp only [Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ,
+    simp only [Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.mem_univ,
       ↓reduceIte, ← Finset.mul_sum] at hiso
     rw [hSeq]
     simpa only [fIwasawaH] using hiso
@@ -102,7 +101,6 @@ theorem fIwasawa_tri_succ_of_max_pivot (hσ : ∀ x, σ (σ x) = x) (hσv : ∀ 
     first
       | linear_combination hA
       | linear_combination -hA
-      | linear_combination (-1 : L) * hA
   have hzv : ∀ i, Valued.v (z i) ≤ 1 := by
     intro i
     by_cases h : ρ < i ∧ i < Fin.rev ρ
@@ -113,14 +111,14 @@ theorem fIwasawa_tri_succ_of_max_pivot (hσ : ∀ x, σ (σ x) = x) (hσv : ∀ 
         _ ≤ (Valued.v (M ρ ρ))⁻¹ * Valued.v (M ρ ρ) := by gcongr
         _ = 1 := inv_mul_cancel₀ hvp
     · rw [hzout i h, Valuation.map_zero]
-      first | exact zero_le' | exact zero_le _ | simp
+      first | exact zero_le'
   have hSv : Valued.v S ≤ 1 := by
     rw [hSeq]
     simp only [fIwasawaH]
     refine Valuation.map_sum_le _ (fun j _ => ?_)
     rw [Valuation.map_mul, hσv]
     calc Valued.v (z (Fin.rev j)) * Valued.v (z j) ≤ 1 * 1 := by
-          first | exact mul_le_one' (hzv _) (hzv _) | (gcongr <;> exact hzv _)
+          first | exact mul_le_one' (hzv _) (hzv _)
       _ = 1 := mul_one 1
   have hcv : Valued.v c ≤ 1 := by
     have hb := hmax (Fin.rev ρ) (le_of_lt hρ) le_rfl
@@ -135,13 +133,12 @@ theorem fIwasawa_tri_succ_of_max_pivot (hσ : ∀ x, σ (σ x) = x) (hσv : ∀ 
     rw [hceq]
     first
       | exact Valuation.map_sub_le _ h1 hbp
-      | exact le_trans (Valuation.map_sub _ _ _) (max_le h1 hbp)
   have he : ∀ i, Valued.v ((Pi.single (Fin.rev ρ) (1 : L) : Fin n → L) i) ≤ 1 := by
     intro i
     by_cases h : i = Fin.rev ρ
-    · (rw [h, Pi.single_eq_same, Valuation.map_one]) <;> exact le_rfl
+    · (rw [h, Pi.single_eq_same, Valuation.map_one])
     · rw [Pi.single_eq_of_ne h, Valuation.map_zero]
-      first | exact zero_le' | exact zero_le _ | simp
+      first | exact zero_le'
   have hee : fIwasawaH σ (Pi.single (Fin.rev ρ) (1 : L)) (Pi.single (Fin.rev ρ) (1 : L)) = 0 := by
     rw [fIwasawa_H_single_left (σ := σ), Fin.rev_rev, Pi.single_eq_of_ne hne]
   have hez : fIwasawaH σ (Pi.single (Fin.rev ρ) (1 : L)) z = 0 := by
@@ -152,8 +149,6 @@ theorem fIwasawa_tri_succ_of_max_pivot (hσ : ∀ x, σ (σ x) = x) (hσv : ∀ 
     intro A i j
     first
       | rfl
-      | simp [Matrix.mul_apply, Matrix.mulVec, dotProduct]
-      | simp [Matrix.mul_apply, Matrix.mulVec, Matrix.dotProduct]
   refine ⟨fIwasawaE σ (Pi.single (Fin.rev ρ) 1) z c,
     And.intro (fIwasawa_E_un (σ := σ) hσ _ z c hee hez hc0)
       (fIwasawa_int_E (σ := σ) hσv _ z c he hzv hcv), ?_⟩
@@ -176,8 +171,6 @@ theorem fIwasawa_tri_succ_of_max_pivot (hσ : ∀ x, σ (σ x) = x) (hσv : ∀ 
     · rw [h, Pi.single_eq_same, hzout (Fin.rev ρ) (fun h' => lt_irrefl (Fin.rev ρ) h'.2), hceq]
       first
         | (field_simp; ring)
-        | (field_simp; done)
-        | (simp only [mul_zero, mul_one, add_zero]; field_simp; ring)
     · rw [Pi.single_eq_of_ne (ne_of_gt h), hcz i h, hzout i (fun h' => lt_asymm h h'.2)]
       ring
 

@@ -317,7 +317,7 @@ theorem flt_op_valS {R : Type*} [CommRing R] {ι : Type} {n : ℕ} [NeZero n] (L
       | top => exact le_top
       | coe x =>
         rw [hF] at hcon
-        norm_cast at hcon ⊢ <;> omega
+        norm_cast at hcon ⊢
     have hm := flt_op_mem_val LL S ht al be N hN
     rw [← flt_le_valS, hv] at hm
     norm_cast at hm <;> omega

@@ -76,8 +76,6 @@ theorem cg_hf_right (K L : Type) [Field K] [Fintype K] [Field L] [Algebra K L] {
        have h := map_sum (iterateFrobenius L p n) f s
        simp only [iterateFrobenius_def] at h
        exact h)
-    | (haveI : ExpChar L p := ExpChar.prime hp
-       simp)
   have hfrob : ∀ b, (∑ l, c l * y l b) ^ Fintype.card K =
       ∑ l, c l ^ Fintype.card K * y l b ^ Fintype.card K := by
     intro b
@@ -121,8 +119,6 @@ theorem cg_map_mul (K L : Type) [Field K] [Fintype K] [Field L] [Algebra K L] {m
        have h := map_sum (iterateFrobenius L p n) f s
        simp only [iterateFrobenius_def] at h
        exact h)
-    | (haveI : ExpChar L p := ExpChar.prime hp
-       simp)
   ext i j
   simp only [Matrix.map_apply, Matrix.mul_apply]
   rw [hfr]

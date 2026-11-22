@@ -143,9 +143,9 @@ theorem UpperTheory.Gal.productCup_of_system.thMuLat_of :
         (by
           intro a m
           rcases hx : ofLex (e a) with i | l
-          · simp only [hx, Sum.elim_inl]
+          · simp only [Sum.elim_inl]
             exact zero_mem _
-          · simp only [hx, Sum.elim_inr, sub_mul, ite_mul, zero_mul]
+          · simp only [Sum.elim_inr, sub_mul, ite_mul, zero_mul]
             rw [← Units.val_mul, ← Units.val_mul]
             refine sub_mem ?_ ?_
             · split_ifs
@@ -154,7 +154,6 @@ theorem UpperTheory.Gal.productCup_of_system.thMuLat_of :
             · split_ifs
               · exact hT.memY I J hI j hj _
               · exact zero_mem _)
-      beta_reduce at hdet
       refine ⟨s, hs, ?_⟩
       rw [hdet, hcard]
     · rw [dif_neg h]

@@ -116,7 +116,7 @@ theorem existsUnique_coeff {ε : ι → LinearMap.BilinForm ℤ X} (hε : IsSymB
     rw [Finset.prod_comm]
     refine Finset.prod_congr rfl fun p _ => ?_
     rw [← zpow_sumF, ← hc p]
-    simp [LinearMap.sum_apply, mul_comm]
+    simp [LinearMap.sum_apply]
   refine ⟨fun k => ∏ p, q (e p.1) (e p.2) ^ c p k, fun x y => ?_, fun σ hσ => funext fun k => ?_⟩
   · rw [hF]
     have := bimul_ext e q (fun x y => ∏ p : Fin (Module.finrank ℤ X) × Fin (Module.finrank ℤ X),

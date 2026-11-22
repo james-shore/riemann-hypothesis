@@ -45,8 +45,6 @@ theorem blk_mul (hαa : α * a = 1) (hβb : β * b = 1) (hαb : α * b = 0) (hβ
   | exact @_root_.GlobalTheory.SquareDistanceExpansion.main
   | exact _root_.GlobalTheory.SquareDistanceExpansion.main
   | (apply _root_.GlobalTheory.SquareDistanceExpansion.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SquareDistanceExpansion.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SquareDistanceExpansion.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SquareDistanceExpansion.main ..)
 
 theorem blk_unitary (s : R →+* R) (Jm : Matrix (Fin n) (Fin n) R)
@@ -100,7 +98,6 @@ theorem blkCols_gram {n r l d : ℕ} (h : l + d ≤ r) (σ : E →ₐ[F] E) (J :
         (fun j : Fin d => (⟨l + j.val, by omega⟩ : Fin r)) := by
   first
   | rfl
-  | (ext i j; simp [Matrix.mul_apply, blkCols, cT])
 
 def embMat (σ : E →ₐ[F] E) (Φ : AF F ⊗[F] E ≃+* AdeleRing (𝓞 E) E) {n d : ℕ}
     (a b : Matrix (Fin n) (Fin d) (AF F ⊗[F] E)) (α β : Matrix (Fin d) (Fin n) (AF F ⊗[F] E))

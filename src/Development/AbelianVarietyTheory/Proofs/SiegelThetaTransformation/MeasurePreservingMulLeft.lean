@@ -61,7 +61,7 @@ theorem _root_.GlobalTheory.SW.Slab.exists_bound_upper {r : ℕ} (d : Fin r → 
       simp only [Finset.mem_filter, Finset.mem_univ, true_and, not_lt] at hj
       exact hzero j (lt_of_le_of_ne hj (Ne.symm hjk))
     have hfk : ‖f k‖ = ‖b k k‖ * ‖b k c‖ := by
-      simp [f, norm_mul, hd]
+      simp [f, hd]
     have hsum : ‖∑ j ∈ Finset.univ.filter (· < k), f j‖ ≤ r * C ^ 2 := by
       calc ‖∑ j ∈ Finset.univ.filter (· < k), f j‖
           ≤ ∑ j ∈ Finset.univ.filter (· < k), ‖f j‖ := norm_sum_le _ _

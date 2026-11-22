@@ -28,8 +28,7 @@ theorem im_mob (g : GQ) (z : ℂ) : (mob g z).im =
     (ent g 0 0 * ent g 1 1 - ent g 0 1 * ent g 1 0 : ℚ) * z.im /
       Complex.normSq ((ent g 1 0 : ℂ) * z + (ent g 1 1 : ℂ)) := by
   rw [mob, Complex.div_im]
-  simp only [Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.ofReal_re,
-    Complex.ratCast_re, Complex.ratCast_im]
+  simp only [Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.ratCast_re, Complex.ratCast_im]
   push_cast
   rw [div_sub_div_same]
   congr 1
@@ -69,7 +68,7 @@ theorem mob_diff (g : GQ) : DifferentiableOn ℂ (mob g) Hs := by
 theorem toGQ_SL (γ : SL(2, ℤ)) : toGQ (γ : Matrix (Fin 2) (Fin 2) ℤ) = ofSL γ := by
   have h : (0 : ℤ) < (γ : Matrix (Fin 2) (Fin 2) ℤ).det := by rw [γ.2]; norm_num
   apply Subtype.ext; apply Units.ext; ext i j
-  simp [toGQ, h, ofSL]
+  simp [toGQ, ofSL]
 
 theorem toGQ_mul (m m' : Matrix (Fin 2) (Fin 2) ℤ) (hm : 0 < m.det) (hm' : 0 < m'.det) :
     toGQ (m * m') = toGQ m * toGQ m' := by

@@ -225,7 +225,6 @@ theorem lin_levG (g : HA R σ J) :
   first
   | rfl
   | (unfold lin; simp [levG, levU, HA.mat]; exact Matrix.toLin'_toMatrix' _)
-  | (unfold lin; simp [levG, levU, HA.mat]; exact LinearMap.ext fun x => LinearMap.toMatrix'_mulVec _ x)
 
 theorem lin_levG_inv (g : HA R σ J) (x : Fin M → R ⊗[F] E) :
     lin R σ J (levG hσσ hJ hP g)⁻¹ x =
@@ -234,8 +233,6 @@ theorem lin_levG_inv (g : HA R σ J) (x : Fin M → R ⊗[F] E) :
   simp [levG, levU, HA.mat]
   first
   | exact LinearMap.toMatrix'_mulVec _ x
-  | (show (LinearMap.toMatrix' (levL (datR R σ J P T) (uI R σ J P g) (cj R σ (uT R σ J P g)))).mulVec x = _
-     exact LinearMap.toMatrix'_mulVec _ x)
 
 theorem levG_mem (g : HA R σ J) : levG hσσ hJ hP g ∈ Asub R σ J P := by
   have H : (datR R σ J P T).Hyp := datR_hyp hσσ hJ hP

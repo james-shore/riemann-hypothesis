@@ -61,7 +61,7 @@ theorem avoid_card_irreducible_le {g : ℕ} [Fact g.Prime] (c : (ZMod g)ˣ) (d :
     (minpoly.eq_of_irreducible_of_monic hirr (mem_aroots.1 hy).2 hm).symm
   have hdvd : P ∣ X ^ (l ^ a) - C ((c : ZMod g) ^ (l ^ a)) := by
     rw [← hmin x hx, minpoly.dvd_iff]
-    simp [ha, hc']
+    simp [ha]
   have hcard : (P.aroots (AlgebraicClosure (ZMod g))).toFinset.card = d := by
     have hsep : P.Separable := PerfectField.separable_of_irreducible hirr
     have := Polynomial.card_rootSet_eq_natDegree (K := AlgebraicClosure (ZMod g)) hsep (IsAlgClosed.splits _)

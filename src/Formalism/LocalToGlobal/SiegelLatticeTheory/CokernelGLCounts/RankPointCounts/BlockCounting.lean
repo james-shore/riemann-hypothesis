@@ -133,7 +133,7 @@ theorem bd_eq_one_iff {x : Matrix (Fin n) (Fin n) R} (hx : IsLoUni x) :
 theorem rvM_mul (M N : Matrix (Fin n) (Fin n) R) : rvM a (M * N) = rvM a M * rvM a N := by
   ext i j
   simp only [rvM, Matrix.mul_apply]
-  exact (Fintype.sum_equiv ⟨rv a, rv a, rv_rv a, rv_rv a⟩ _ _ (fun k => by simp [rv_rv])).symm
+  exact (Fintype.sum_equiv ⟨rv a, rv a, rv_rv a, rv_rv a⟩ _ _ (fun k => by simp)).symm
 
 theorem rvM_one : rvM a (1 : Matrix (Fin n) (Fin n) R) = 1 := by
   ext i j

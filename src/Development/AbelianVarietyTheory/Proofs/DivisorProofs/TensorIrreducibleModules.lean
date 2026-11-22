@@ -105,7 +105,7 @@ theorem stable_map (N : Submodule ℂ (⨂[ℂ] i, V i))
         funext j
         by_cases h : j = a
         · subst h; simp [ha]
-        · simp [Function.update_of_ne h, Finset.mem_insert, h]
+        · simp [Finset.mem_insert, h]
       rw [e]
       exact hN a _ _ (ih y hy)
   intro y hy

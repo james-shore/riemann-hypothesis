@@ -186,7 +186,7 @@ theorem homE_vec_integral {f : PowerSeries K} (hf : IntegralPS f) (i : Fin 2) :
   unfold IntegralMv
   intro e
   fin_cases i <;> simp only [Fin.zero_eta, Fin.mk_one, Matrix.cons_val_zero, Matrix.cons_val_one,
-    Matrix.head_cons, atX, atY, mvPowerSeries_coeff_subst_X_eq_ite_single]
+    atX, atY, mvPowerSeries_coeff_subst_X_eq_ite_single]
   all_goals split_ifs
   all_goals first | exact hf _ | simp
 
@@ -196,7 +196,7 @@ theorem homE_vec_divBy {x : K} {f h : PowerSeries K} (hfh : DivBy x (f - h)) (i 
   unfold DivByMv
   intro e
   fin_cases i <;> simp only [Fin.zero_eta, Fin.mk_one, Matrix.cons_val_zero, Matrix.cons_val_one,
-    Matrix.head_cons, atX, atY, map_sub, mvPowerSeries_coeff_subst_X_eq_ite_single]
+    atX, atY, map_sub, mvPowerSeries_coeff_subst_X_eq_ite_single]
   all_goals split_ifs
   all_goals first | (rw [← map_sub]; exact hfh _) | simp
 

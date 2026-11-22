@@ -282,7 +282,7 @@ theorem coverQ (lev : Fin n → ℕ) {V : Type} [AddCommGroup V] [Module ℂ V] 
     have e2 := LinearMap.congr_fun (hP.2.2 a' b c e).eq w
     simp only [Module.End.mul_apply] at e1 e2
     simp only [F1, F2, Module.End.mul_apply, LinearMap.add_apply, LinearMap.rTensor_tmul, LinearMap.lTensor_tmul,
-      map_add, e1, e2, TensorProduct.add_tmul, TensorProduct.tmul_add]
+      map_add, e1, e2]
     abel
   let S : ℕ → Set (V ⊗[ℂ] W) := fun k => {t | ∃ v z, z ∈ Fil k ∧ t = v ⊗ₜ z}
   have hin : ∀ {k : ℕ} (v : V) {z : W}, z ∈ Fil k → v ⊗ₜ[ℂ] z ∈ Submodule.span ℂ (S k) :=

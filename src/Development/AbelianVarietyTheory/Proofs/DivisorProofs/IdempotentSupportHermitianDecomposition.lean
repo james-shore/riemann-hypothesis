@@ -29,8 +29,6 @@ theorem exists_nat_smul_mem (L L' : Submodule (𝓞 E) (Fin n → E)) (hL : L.FG
   | exact @_root_.GlobalTheory.NatMultipleIntegralSmulBound.exists_nat_smul_le
   | exact _root_.GlobalTheory.NatMultipleIntegralSmulBound.exists_nat_smul_le
   | (apply _root_.GlobalTheory.NatMultipleIntegralSmulBound.exists_nat_smul_le <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatMultipleIntegralSmulBound.exists_nat_smul_le <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatMultipleIntegralSmulBound.exists_nat_smul_le <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NatMultipleIntegralSmulBound.exists_nat_smul_le ..)
 
 theorem fg_colLat (B : GL (Fin n) E) : (colLat B).FG :=

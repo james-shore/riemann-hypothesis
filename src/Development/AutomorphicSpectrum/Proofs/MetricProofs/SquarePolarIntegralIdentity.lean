@@ -95,7 +95,7 @@ theorem ae_ne (d : ℕ) : ∀ᵐ z : Fin (d + 2) → ℂ, z 0 ≠ z 1 := by
   have hs : LinearMap.ker L ≠ ⊤ := by
     intro h
     have h1 : (Pi.single 0 1 : Fin (d + 2) → ℂ) ∈ LinearMap.ker L := by rw [h]; trivial
-    simp [L, LinearMap.mem_ker, Pi.single_apply] at h1
+    simp [L, LinearMap.mem_ker] at h1
   have h0 := Measure.addHaar_submodule (volume : Measure (Fin (d + 2) → ℂ)) (LinearMap.ker L) hs
   refine measure_mono_null ?_ h0
   intro z hz

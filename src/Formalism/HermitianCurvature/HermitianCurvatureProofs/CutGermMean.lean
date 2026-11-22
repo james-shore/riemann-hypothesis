@@ -129,7 +129,7 @@ variable (hG : PBK.GermD s β ε' ({()} : Finset Unit) (fun _ => ut) (fun _ => b
 theorem inner_uL_uL {x x' : ℂ} (hx : x ≠ 0) (hx' : x' ≠ 0) :
     ⟪uL hG x, uL hG x'⟫_ℂ =
       PBK.gramL volume (PBK.Uc s fun _ => ut) (PBK.Uc s fun _ => ut) ((), x) ((), x') := by
-  simp only [uL, aL, dif_pos hx, dif_pos hx']
+  simp only [uL, dif_pos hx, dif_pos hx']
   rw [MeasureTheory.L2.inner_def, PBK.gramL]
   refine integral_congr_ae ?_
   filter_upwards [((PBK.memLp_cvec s ut x hx).1 (hG.memU () (Finset.mem_singleton_self _) x hx)).coeFn_toLp, ((PBK.memLp_cvec s ut x' hx').1 (hG.memU () (Finset.mem_singleton_self _) x' hx')).coeFn_toLp] with D h1 h2
@@ -150,7 +150,7 @@ theorem inner_uL_aL {x x' : ℂ} (hx : x ≠ 0) (hx' : x' ≠ 0) :
 theorem inner_aL_aL {x x' : ℂ} (hx : x ≠ 0) (hx' : x' ≠ 0) :
     ⟪aL hG x, aL hG x'⟫_ℂ =
       PBK.gramL volume (PBK.Ac s β ε' fun _ => bt) (PBK.Ac s β ε' fun _ => bt) ((), x) ((), x') := by
-  simp only [uL, aL, dif_pos hx, dif_pos hx']
+  simp only [aL, dif_pos hx, dif_pos hx']
   rw [MeasureTheory.L2.inner_def, PBK.gramL]
   refine integral_congr_ae ?_
   filter_upwards [((PBK.memLp_cvec s (fun x D => PBK.mainD s β ε' bt x D) x hx).1

@@ -87,7 +87,7 @@ theorem encard_setOf_index_eq_le [Module.Free ℤ M] [Module.Finite ℤ M] {m : 
   | zero => exact absurd rfl hm
   | one =>
     have : {H : AddSubgroup M | H.index = 1} = {⊤} := by ext H; simp
-    simp [this]
+    simp
   | prime_mul p a hp ih =>
     have ha : a ≠ 0 := fun h => hm (by simp [h])
     have hsub : {H : AddSubgroup M | H.index = p * a} ⊆

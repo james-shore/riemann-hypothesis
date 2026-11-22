@@ -123,7 +123,7 @@ theorem T_sum {ι : Type} (s : Finset ι) (f : ι → Fin n → E ⊗[F] Af F)
 theorem ivec_zsum (z : Fin k → ℤ) :
     ivec (F := F) (∑ i, z i • m i) = ∑ i, incA F E (z i : Af F) • ivec (F := F) (m i) := by
   funext r
-  simp [ivec, Finset.sum_apply, map_sum, map_zsmul, Int.cast_smul_eq_zsmul]
+  simp [ivec, Finset.sum_apply, map_sum, Int.cast_smul_eq_zsmul]
 
 theorem T_gen {L : Submodule (𝓞 E) (Fin n → E)}
     (hgen : ∀ l ∈ L, ∃ z : Fin k → ℤ, l = ∑ i, z i • m i) {x : Fin n → E} (hx : x ∈ L) :
@@ -221,7 +221,7 @@ theorem exists_nat_R (r : E ⊗[F] Af F) : ∃ N : ℕ, 0 < N ∧ (N : E ⊗[F] 
 theorem exists_nat_L {L : Submodule (𝓞 E) (Fin n → E)}
     {z : Fin n → E} (hz : z ∈ Submodule.span E (L : Set (Fin n → E))) :
     ∃ N : ℕ, 0 < N ∧ N • z ∈ L := by
-  first | exact Bl.NatMulIsIntegral.goal1 .. | (apply Bl.NatMulIsIntegral.goal1 <;> assumption) | (intros; apply Bl.NatMulIsIntegral.goal1 <;> assumption)
+  first | exact Bl.NatMulIsIntegral.goal1 .. | (apply Bl.NatMulIsIntegral.goal1 <;> assumption)
 
 theorem exists_nat_vec {L : Submodule (𝓞 E) (Fin n → E)}
     (hspan : Submodule.span E (L : Set (Fin n → E)) = ⊤) (w : Fin n → E ⊗[F] Af F) :
@@ -239,7 +239,7 @@ theorem exists_nat_vec {L : Submodule (𝓞 E) (Fin n → E)}
       funext j
       by_cases h : j = i
       · subst h; simp [ivec]
-      · simp [ivec, Pi.single_apply, h]
+      · simp [ivec, h]
     have e2 : (A * B) • ((w i) • (Pi.single i 1 : Fin n → E ⊗[F] Af F)) =
         ((A : E ⊗[F] Af F) * w i) • ivec (F := F) (B • (Pi.single i 1 : Fin n → E)) := by
       rw [e1, smul_smul, ← Nat.cast_smul_eq_nsmul (E ⊗[F] Af F), smul_smul]

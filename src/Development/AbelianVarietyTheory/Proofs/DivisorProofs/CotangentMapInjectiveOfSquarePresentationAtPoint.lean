@@ -15,13 +15,13 @@ def firstOrderKer (η : MvPolynomial σ B →+* O) : Ideal (MvPolynomial σ B) w
   zero_mem' := ⟨by simp, fun l => by simp⟩
   smul_mem' := by
     rintro G F ⟨hF, hF'⟩
-    exact ⟨by simp [hF], fun l => by simp [pderiv_mul, hF, hF' l]⟩
+    exact ⟨by simp [hF], fun l => by simp [hF, hF' l]⟩
 
 theorem pderiv_comb [Fintype σ] (η : MvPolynomial σ B →+* O) (f g : σ → MvPolynomial σ B)
     (hf : ∀ i, η (f i) = 0) (k : MvPolynomial σ B) (hk : k ∈ firstOrderKer η) (l : σ) :
     η (pderiv l (∑ i, g i * f i + k)) = ∑ i, η (g i) * η (pderiv l (f i)) := by
   have := hk.2 l
-  simp [map_sum, pderiv_mul, hf, this]
+  simp [map_sum, hf, this]
 
 theorem det_ne_zero_of_mul_eq [Fintype σ] [DecidableEq σ] [IsDomain O] {N J : Matrix σ σ O}
     {c : O} (hc : c ≠ 0) (h : N * J = c • (1 : Matrix σ σ O)) : J.det ≠ 0 := by
@@ -47,7 +47,7 @@ theorem cotangent_map_injective_of_square_presentation : ∀ (O B A σ : Type) [
     rw [pow_two]
     refine Ideal.mul_le.2 fun a ha b' hb' => ?_
     rw [hqmem] at ha hb'
-    exact ⟨by simp [ha, hb'], fun l => by simp [pderiv_mul, ha, hb']⟩
+    exact ⟨by simp [ha, hb'], fun l => by simp [ha, hb']⟩
   have hkerL : RingHom.ker Ψ ≤ Ideal.span (Set.range f) ⊔ q ^ 2 := by
     refine hker.trans (sup_le_sup_left ?_ _)
     rw [pow_two]; exact Ideal.mul_mono_right hkerq
@@ -93,8 +93,8 @@ theorem cotangent_map_injective_of_square_presentation : ∀ (O B A σ : Type) [
     rw [← e1, hF]
     by_cases hjl : j = l
     · subst hjl
-      simp [pderiv_X_self, hη, hΨ, ← IsScalarTower.algebraMap_apply]
-    · simp [hjl, pderiv_X_of_ne (Ne.symm hjl)]
+      simp [hη, hΨ, ← IsScalarTower.algebraMap_apply]
+    · simp [hjl]
   choose g hg using hrow
   let N : Matrix σ σ O := fun j i => η (g j i)
   have hNJ : N * Jac = c • (1 : Matrix σ σ O) := by

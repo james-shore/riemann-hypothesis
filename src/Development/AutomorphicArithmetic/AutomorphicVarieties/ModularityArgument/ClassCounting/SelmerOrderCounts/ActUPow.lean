@@ -25,7 +25,6 @@ private theorem dat_nm_apply_ofMul_eq_ofMul_nrm {L F : Type} [Field L] [NumberFi
     apply inv_eq_of_mul_eq_one_right
     rw [← pow_add, Nat.sub_add_cancel hj', pow_orderOf_eq_one]
   rw [hinv]
-  push_cast
   exact natCast_zsmul _ _
 
 theorem UpperTheory.V.ZK.Ct.fewLe :

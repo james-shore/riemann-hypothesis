@@ -14,7 +14,7 @@ theorem UpperTheory.V.Ws.Rt.splitMod :
   have hom : D.om γ = 1 := hdec hγ
   have hbar := hD.om_bar γ
   simp only [Raw.bar, hom, chiO, MonoidHom.comp_apply, Units.coe_map, Units.val_one, map_one,
-    MonoidHom.coe_coe, hγl] at hbar
+    hγl] at hbar
   have hbar' : residue c.O (algebraMap ℤ_[l] c.O (w : ℤ_[l])) = 1 := hbar.symm
   have hint : Algebra.IsIntegral ℤ_[l] c.O := by
     haveI := c.fin

@@ -37,11 +37,11 @@ theorem plab_swap (χ : Fin n → ℂ) (L : Fin n → Fin 3) (r s : Fin n) (h : 
   · subst h1
     by_cases h2 : t = s
     · subst h2; simp
-    · simp [h, h2, Pi.single_apply]
+    · simp [h, h2]
   · by_cases h2 : t = s
     · subst h2
-      simp [h, h1, Pi.single_apply]
-    · simp [Equiv.swap_apply_of_ne_of_ne h1 h2, h1, h2, Pi.single_apply]
+      simp [h]
+    · simp [Equiv.swap_apply_of_ne_of_ne h1 h2, h1, h2]
 
 theorem isLabel_swap {j : ℕ} {L : Fin n → Fin 3} (h : IsLabel j L) (r s : Fin n) : IsLabel j (L ∘ Equiv.swap r s) := by
   classical
@@ -68,7 +68,7 @@ theorem entry_eq_of_capP (χ : Fin n → ℂ) (r s : Fin n)
     refine Finset.prod_congr rfl fun t ht => ?_
     have h1 : t ≠ s := (Finset.mem_erase.1 ht).1
     have h2 : t ≠ r := (Finset.mem_erase.1 (Finset.mem_erase.1 ht).2).1
-    simp [Pi.single_apply, h1, h2]
+    simp [h1, h2]
   rw [hc] at hY'
   have hP : ∏ t ∈ (Finset.univ.erase r).erase s, (Y + (χ + Pi.single s 1 : Fin n → ℂ) t) ≠ 0 := by
     refine Finset.prod_ne_zero_iff.2 fun t ht => ?_
@@ -76,8 +76,8 @@ theorem entry_eq_of_capP (χ : Fin n → ℂ) (r s : Fin n)
     simpa [Pi.single_apply, h1] using hne t
   generalize (∏ t ∈ (Finset.univ.erase r).erase s, (Y + (χ + Pi.single s 1 : Fin n → ℂ) t)) = Pr at hY' hP
   have e1 : (χ + Pi.single r 1 : Fin n → ℂ) r = χ r + 1 := by simp
-  have e2 : (χ + Pi.single r 1 : Fin n → ℂ) s = χ s := by simp [Pi.single_apply, Ne.symm hrs]
-  have e3 : (χ + Pi.single s 1 : Fin n → ℂ) r = χ r := by simp [Pi.single_apply, hrs]
+  have e2 : (χ + Pi.single r 1 : Fin n → ℂ) s = χ s := by simp [Ne.symm hrs]
+  have e3 : (χ + Pi.single s 1 : Fin n → ℂ) r = χ r := by simp [hrs]
   have e4 : (χ + Pi.single s 1 : Fin n → ℂ) s = χ s + 1 := by simp
   rw [e1, e2, e3, e4] at hY'
   have h0 : Pr * (χ r - χ s) = 0 := by linear_combination -hY'
@@ -212,7 +212,7 @@ theorem block_raise (hS : StepChar) (hT : TensDecomp) (P Q : GMod n) (d : Fin 3 
           simp [χ']
           try ring
         · have : (e' a).1 ≠ (e' r).1 := fun h0 => har (e'.injective (Subtype.ext h0))
-          simp [χ', Pi.single_apply, har, this]
+          simp [χ', har, this]
           try ring
       rw [h6, h5, h7]
     · have h8 : plab (χ + Pi.single (e' r).1 1) L i Y = plab χ L i Y := by
@@ -220,7 +220,7 @@ theorem block_raise (hS : StepChar) (hT : TensDecomp) (P Q : GMod n) (d : Fin 3 
         refine Finset.prod_congr rfl fun t ht => ?_
         have hti : L t = i := (Finset.mem_filter.1 ht).2
         have : t ≠ (e' r).1 := fun h0 => hik (by rw [← hti, h0]; exact (e' r).2)
-        simp [Pi.single_apply, this]
+        simp [this]
       rw [h8, hΦa, map_sum, Finset.smul_sum]
       refine Finset.sum_congr rfl fun p _ => ?_
       have h9 := qdet_lin (θ (ι p)) (bops P d h i) (bops Q d h i) (fun a b y => by
@@ -458,12 +458,12 @@ theorem grad_shift {A : Matrix (Fin n) (Fin n) ℂ} (B : GradBasis A) (p q : Fin
     ext i c
     by_cases hi : i = p
     · subst hi; simp [hD, Matrix.diagonal_mul, Matrix.single_apply, hd, bl]
-    · simp [hD, Matrix.diagonal_mul, Matrix.single_apply, hi, Ne.symm hi]
+    · simp [hD, Matrix.diagonal_mul, Ne.symm hi]
   have h2 : Matrix.single p q 1 * D = (dI (bl B q) : ℂ) • Matrix.single p q (1 : ℂ) := by
     ext i c
     by_cases hc : c = q
     · subst hc; simp [hD, Matrix.mul_diagonal, Matrix.single_apply, hd, bl]
-    · simp [hD, Matrix.mul_diagonal, Matrix.single_apply, hc, Ne.symm hc]
+    · simp [hD, Matrix.mul_diagonal, Ne.symm hc]
   have e1 : A * (B.U * Matrix.single p q 1 * B.Ui) = B.U * (D * Matrix.single p q 1) * B.Ui := by
     calc A * (B.U * Matrix.single p q 1 * B.Ui) = B.U * D * B.Ui * (B.U * Matrix.single p q 1 * B.Ui) :=
           congrArg (fun T => T * (B.U * Matrix.single p q 1 * B.Ui)) hA

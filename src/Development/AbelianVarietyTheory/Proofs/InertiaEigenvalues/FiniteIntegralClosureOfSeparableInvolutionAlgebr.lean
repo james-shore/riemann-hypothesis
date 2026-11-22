@@ -18,8 +18,6 @@ theorem isIntegral_matrix_trace {R F : Type} [CommRing R] [Field F] [Algebra R F
   | exact @_root_.GlobalTheory.TargetStatementAlt.target
   | exact _root_.GlobalTheory.TargetStatementAlt.target
   | (apply _root_.GlobalTheory.TargetStatementAlt.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TargetStatementAlt.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TargetStatementAlt.target <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TargetStatementAlt.target ..)
 
 variable {K : UQ} (B : InvAlg K)

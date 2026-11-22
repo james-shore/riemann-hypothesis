@@ -522,7 +522,7 @@ def tensorEquiv : AugCot (tensorAug εA εB) ≃ₗ[R] AugCot εA × AugCot εB 
       induction x with
       | zero => simp
       | add x y hx hy => simp only [map_add, hx, hy]
-      | tmul a b => simp [d_mul, d_tmul a b])
+      | tmul a b => simp [d_tmul a b])
 
 @[simp] lemma tensorEquiv_symm_apply (x : AugCot εA) (y : AugCot εB) :
     (tensorEquiv εA εB).symm (x, y) =

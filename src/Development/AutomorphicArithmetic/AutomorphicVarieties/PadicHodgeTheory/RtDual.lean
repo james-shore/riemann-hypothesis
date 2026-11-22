@@ -75,7 +75,7 @@ private theorem tc_mul (x y : GG m (DualNumber κ)) : tc (x * y) = tc x + (GG.ma
       sn_mul, Matrix.map_mul, Matrix.add_mul, Matrix.mul_assoc, h1]
   · simp only [tc, GG.mat, SemidirectProduct.mul_left, sgnAct_neg_one, h, if_false, _root_.mul_inv_rev,
       Units.val_mul, theta_val, theta_inv_val, thetaLie, sn_mul, sn_J, Matrix.map_mul, Jmat_map,
-      Matrix.transpose_map, sn_inv, Matrix.add_mul, Matrix.mul_add, Matrix.mul_assoc, Matrix.zero_mul,
+      Matrix.transpose_map, sn_inv, Matrix.add_mul, Matrix.mul_assoc, Matrix.zero_mul,
       Matrix.mul_zero, zero_add, add_zero, Matrix.transpose_neg, Matrix.transpose_mul, Matrix.neg_mul,
       Matrix.mul_neg, hJ, h2]
 

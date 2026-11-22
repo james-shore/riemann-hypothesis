@@ -39,7 +39,7 @@ theorem eq_of_mul_conj {Z : Type} {F : Mat n → Z}
     have e1 : b⁻¹ * a * (b⁻¹ * a)ᴴ = b⁻¹ * (a * aᴴ) * b⁻¹ᴴ := by
       simp only [conjTranspose_mul, Matrix.mul_assoc]
     have e2 : b⁻¹ * (b * bᴴ) * b⁻¹ᴴ = (b⁻¹ * b) * (b⁻¹ * b)ᴴ := by
-      simp only [conjTranspose_mul, conjTranspose_conjTranspose, Matrix.mul_assoc]
+      simp only [conjTranspose_mul, Matrix.mul_assoc]
     rw [e1, h, e2, Matrix.nonsing_inv_mul b hd, conjTranspose_one, Matrix.one_mul]
   have hmem : b⁻¹ * a ∈ Matrix.unitaryGroup (Fin n) ℂ := by
     rw [Matrix.mem_unitaryGroup_iff, Matrix.star_eq_conjTranspose]

@@ -160,7 +160,7 @@ theorem step (z : ℂ) (k l : Fin n) (c : ℕ → E n → ℂ) (M : ℕ) (hc : �
   rw [dirC_mul (diff_of (contDiff_W_apply z) y) hS, dirC_sum _ (fun j _ => hdz j), hW]
   simp only [TD, mul_sub, Finset.sum_sub_distrib]
   rw [Finset.sum_range_succ, Finset.sum_range_succ']
-  simp only [sh, mul_zero, Dkl, hcM, add_zero, pow_zero, one_mul]
+  simp only [sh, mul_zero, Dkl, hcM, add_zero, pow_zero]
   have e1 : ∀ j ∈ Finset.range M, dirC (fun x => z ^ j * c j x) (vkl k l) y = z ^ j * dirC (c j) (vkl k l) y :=
     fun j _ => dirC_const_mul (hd j) _ _
   rw [Finset.sum_congr rfl e1]

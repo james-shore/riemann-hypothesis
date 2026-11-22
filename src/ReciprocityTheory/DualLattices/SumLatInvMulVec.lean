@@ -34,7 +34,7 @@ lemma sumLat_inv_mulVec {n s : ℕ} (Mτ : Fin n → Lat v (Fin s)) (w : Fin n �
     Equiv.prodComm_symm, Equiv.prodComm_apply, Prod.swap_prod_mk, Matrix.blockDiagonal_apply,
     Fintype.sum_prod_type, ite_mul, zero_mul]
   rw [Finset.sum_comm]
-  simp only [Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only [Finset.sum_ite_eq, Finset.mem_univ, if_true]
 
 lemma v_mulVec_le {m k : Type} [Fintype k] (P : Matrix m k C) (x : k → C)
     (hP : ∀ i j, v (P i j) ≤ 1) (hx : ∀ j, v (x j) ≤ 1) (i : m) : v ((P *ᵥ x) i) ≤ 1 := by

@@ -89,8 +89,7 @@ theorem proj_sum {E R : Type} [Field E] [CommRing R] {w v : ℕ} (ι : E →+* R
   simp only [Matrix.sub_apply, sandwich_single_apply, map_sub, sub_mul, Finset.sum_sub_distrib, Fintype.sum_prod_type,
     map_mul]
   have h3 : ∑ p' : Fin w, ∑ q' : Fin v, ι (Matrix.single p' q' (1 : E) p q) * x p' q' = x p q := by
-    simp only [Matrix.single_apply, ite_and, apply_ite ι, map_one, map_zero, ite_mul, one_mul, zero_mul,
-      Finset.sum_ite_eq', Finset.mem_univ, if_true]
+    simp only [Matrix.single_apply, ite_and, apply_ite ι, map_one, map_zero, ite_mul, one_mul, zero_mul]
     rw [Fintype.sum_eq_single p (fun p' hp' => by simp [hp']), Fintype.sum_eq_single q (fun q' hq' => by simp [hq'])]
     simp
   rw [h3, Finset.sum_comm, sub_eq_self]
@@ -163,7 +162,7 @@ theorem core (ι : E →+* R) (P : Matrix (Fin w) (Fin a) E) (Q : Matrix (Fin b)
   let B : Fin (Module.finrank E (Cm ⊓ K : Submodule E (Matrix (Fin w) (Fin v) E))) → Matrix (Fin w) (Fin v) E :=
     fun i => (bZ i : Matrix (Fin w) (Fin v) E)
   have hBZ : ∀ c : Fin (Module.finrank E (Cm ⊓ K : Submodule E (Matrix (Fin w) (Fin v) E))) → E, ∑ i, c i • B i = ((∑ i, c i • bZ i : (Cm ⊓ K : Submodule E _)) : Matrix (Fin w) (Fin v) E) :=
-    fun c => by simp [B, Submodule.coe_sum]
+    fun c => by simp [B]
   have hind : ∀ (c : Fin (Module.finrank E (Cm ⊓ K : Submodule E (Matrix (Fin w) (Fin v) E))) → E) (y : Matrix (Fin a) (Fin b) E), ∑ i, c i • B i + P * y * Q = 0 → c = 0 ∧ y = 0 := by
     intro c y h
     have h1 : ∑ i, c i • B i = P * (-y) * Q := by
@@ -344,7 +343,7 @@ theorem T_zero_of_orth (x : WO V W) (h : ∀ y : Mx D a b, symplO V W x (GlobalT
     ext i j
     simp only [adj, Matrix.transpose_apply, Matrix.map_apply, Matrix.single_apply]
     by_cases h1 : r = j <;> by_cases h2 : s = i <;>
-      simp only [h1, h2, and_true, true_and, and_false, false_and, if_true, if_false, map_zero,
+      simp only [h1, h2, and_true, and_false, if_true, if_false, map_zero,
         GlobalTheory.DualPairCheck.cA_incA, star_star]
   rw [symplO_eq, hO_emb, h2, trace_single_mul, ← mul_assoc, ← map_mul,
     mul_inv_cancel_left₀ (GlobalTheory.DualPairCompare.embedding_xi_zero_ne_zero D)] at h1

@@ -56,7 +56,7 @@ theorem exists_relation_gradient {R A k ι : Type} [CommRing R] [CommRing A] [Fi
         rw [pderiv_mul, pderiv_X]
         by_cases hj : j = n
         · subst hj; simp; ring
-        · simp [hj, Pi.single_apply, Ne.symm hj]; ring
+        · simp [hj, Ne.symm hj]; ring
       simp only [this, Finset.sum_add_distrib, Finset.sum_mul]
       simp [add_comm]
   have hker : RingHom.ker ev ≤ RingHom.ker ψ := by
@@ -118,7 +118,7 @@ theorem taylor_bound [Fintype ι] [DecidableEq ι] (c : R →+* K) (hc : ∀ w, 
       rw [pderiv_mul, pderiv_X]
       by_cases hj : j = n
       · subst hj; simp [eval₂_mul]; ring
-      · simp [hj, Pi.single_apply, Ne.symm hj, eval₂_mul]; ring
+      · simp [hj, Ne.symm hj, eval₂_mul]; ring
     have hL : ‖∑ j, eval₂ c x (pderiv j p) * (y j - x j)‖ ≤ r := by
       refine norm_sum_le_of_le _ hr fun j => ?_
       rw [norm_mul]

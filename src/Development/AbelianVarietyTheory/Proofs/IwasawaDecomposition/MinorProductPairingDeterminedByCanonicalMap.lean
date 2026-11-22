@@ -26,7 +26,7 @@ theorem aeval_map_nablaX {Lt : Type} [Fintype Lt] [DecidableEq Lt] (l : ℕ) [Fa
   rw [RingHom.map_det, RingHom.map_det, AlgHom.map_det]
   congr 1
   ext i k
-  simp [MvPolynomial.map_X, MvPolynomial.aeval_X, map_sum, map_mul]
+  simp [MvPolynomial.map_X, map_sum, map_mul]
 
 theorem ww_unique : ∀ (D : D7) {p : ℕ} [Fact p.Prime] (N0 N1 : ℕ) (hN : N0 ≤ N1) (nu : Bool × HH D → YoungDiagram)
     (hnu : ∀ z, (nu z).colLen 0 ≤ N0) (Th : MvPowerSeries ((Bool × HH D) × Fin N0 × Fin N1) ℂ_[p])

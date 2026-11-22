@@ -22,7 +22,6 @@ private theorem tor_entry_mem_expLe_one_expGe_zero (h : ExpBasic) (a k : ℕ) (A
     · simp only [Circle.toUnits]
       first
         | rfl
-        | simp [unitSphereToUnits_apply_coe]
     · simp
   rw [heq]
   constructor

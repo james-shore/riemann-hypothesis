@@ -20,4 +20,4 @@ theorem _root_.GlobalTheory.T.integralClosureOverGenericFibre_hartogs : ∀ (A R
         GlobalTheory.KeyOriginNoeth.baseHom A R D (algebraMap A R a₀) * d) →
     letI := GlobalTheory.KeyOriginNoeth.closureAlg A R D
     GlobalTheory.GoodEtale.Hart A R (GlobalTheory.KeyOriginNoeth.closure A R D) := by
-  first | (exact @GlobalTheory.ClosureHartogs.closure_hart) | (exact GlobalTheory.ClosureHartogs.closure_hart) | (intros; apply GlobalTheory.ClosureHartogs.closure_hart  <;> assumption)
+  first | (exact @GlobalTheory.ClosureHartogs.closure_hart)

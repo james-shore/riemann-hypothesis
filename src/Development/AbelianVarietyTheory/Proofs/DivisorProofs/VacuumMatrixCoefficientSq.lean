@@ -28,7 +28,7 @@ theorem GlobalTheory.vacuum_coef_sq : ∀ (l : Type) [Fintype l] [DecidableEq l]
   rw [hJ] at h2
   have hdet2 : (1 - I • (I • (1 : Matrix l l ℂ))).det = 2 ^ Fintype.card l := by
     have : (1 - I • (I • (1 : Matrix l l ℂ))) = (2:ℂ) • (1 : Matrix l l ℂ) := by
-      rw [smul_smul, I_mul_I]; ext i j; by_cases h : i = j <;> simp [h, Matrix.one_apply]; norm_num
+      rw [smul_smul, I_mul_I]; ext i j; by_cases h : i = j <;> simp [h]; norm_num
     rw [this, det_smul, det_one, mul_one]
   rw [hdet2, one_pow] at h2
   have hprod : (1 - I • (-(Q * P⁻¹))) * P = (2:ℂ) • GlobalTheory.Published.Metaplectic.holPart s := by

@@ -70,8 +70,6 @@ theorem fib_of_tens {F E : Type} [Field F] [Field E] [Algebra F E] {σ : E →�
     first
       | infer_instance
       | exact hCl.isClosedEmbedding_subtypeVal.isInducing.secondCountableTopology
-      | exact hCl.isClosedEmbedding_subtypeVal.isEmbedding.isInducing.secondCountableTopology
-      | exact hCl.isClosedEmbedding_subtypeVal.toIsEmbedding.toIsInducing.secondCountableTopology
   haveI : BorelSpace (HermR R σ a) := by
     first
       | infer_instance

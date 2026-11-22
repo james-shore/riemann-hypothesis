@@ -11,4 +11,4 @@ theorem _root_.GlobalTheory.T.flat_of_finite_flat_geometric_fibres_over_base : �
     LocallyOfFinitePresentation Y.hom → IsFinite f.left →
     (∀ (k : Type) [Field k] [IsAlgClosed k] (t : Sp k ⟶ S), Flat ((Over.pullback t).map f).left) →
     Flat f.left := by
-  first | (exact @GlobalTheory.flat_of_isFinite_of_flat_geometric_fibres_over) | (exact GlobalTheory.flat_of_isFinite_of_flat_geometric_fibres_over) | (intros; apply GlobalTheory.flat_of_isFinite_of_flat_geometric_fibres_over <;> assumption)
+  first | (exact @GlobalTheory.flat_of_isFinite_of_flat_geometric_fibres_over)

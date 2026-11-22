@@ -316,7 +316,6 @@ theorem UpperTheory.V.Z.InvariantSubmoduleMonicPolynomial.sideEstX :
     rw [map_mul]
     field_simp
   rw [← Finset.sum_filter_add_sum_filter_not sp (η < ·), mul_add, ← sub_sub, ← hK₁] at E1
-  beta_reduce
   rw [s1, s2]
   have hq : 0 ≤ (4 / η) ^ (j / p) := by positivity
   have x3 := Real.exp_pos (c₁ * j)

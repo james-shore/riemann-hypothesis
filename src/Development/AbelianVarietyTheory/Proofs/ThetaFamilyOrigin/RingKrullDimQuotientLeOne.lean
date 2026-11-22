@@ -95,7 +95,7 @@ private theorem exists_mem_notMem_homogeneous_prime_of_finite_points {K T : Type
     intro ψ hψ h0
     obtain ⟨-, i, hi⟩ := Finset.mem_filter.mp hψ
     have hc := congrArg (fun p : K[X] => p.coeff (i : ℕ)) h0
-    simp [pol, Polynomial.finset_sum_coeff, Polynomial.coeff_C_mul, Polynomial.coeff_X_pow,
+    simp [pol, Polynomial.coeff_C_mul, Polynomial.coeff_X_pow,
       Fin.val_inj] at hc
     exact hi hc
   have hp : (∏ ψ ∈ G, pol ψ) ≠ 0 := Finset.prod_ne_zero_iff.mpr hpol

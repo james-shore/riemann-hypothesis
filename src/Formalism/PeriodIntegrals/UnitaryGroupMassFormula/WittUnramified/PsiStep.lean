@@ -95,7 +95,6 @@ theorem psi_surjective (ψ : W →+* WittVector p k) (res : W →+* k) (hres : F
     rw [hbc]
     first
     | rw [WittVector.mul_coeff_zero, WittVector.coeff_p_zero, zero_mul]
-    | simp
   exact ⟨L, (sub_eq_zero.mp hzero).symm⟩
 
 end PI.WittUnramWork

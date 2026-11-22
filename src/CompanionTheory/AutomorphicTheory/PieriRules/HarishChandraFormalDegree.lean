@@ -83,7 +83,7 @@ theorem one_le_pOf (hk : 1 ≤ k) (hP : IsCayleyU k r ε P) : 1 ≤ pOf ε := by
     exact h0 (Finset.card_pos.2 ⟨a, by simpa using ha⟩)
   have hJ : PI.UpqRep.Jm ε = -1 := by
     ext i j
-    by_cases h : i = j <;> simp [PI.UpqRep.Jm, hall, h, Matrix.one_apply]
+    by_cases h : i = j <;> simp [PI.UpqRep.Jm, hall, h]
   have h1 := hP.1.2
   rw [hJ, Matrix.mul_neg, Matrix.mul_one, Matrix.neg_mul, show Pᴴ * P = 1 from Matrix.mem_unitaryGroup_iff'.1 hP.2]
     at h1

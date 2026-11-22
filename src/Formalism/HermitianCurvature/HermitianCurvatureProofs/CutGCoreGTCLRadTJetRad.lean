@@ -58,8 +58,7 @@ theorem zero_comp {D G : Type*} [NormedAddCommGroup D] [NormedSpace ℝ D] [Norm
         linarith
       refine h1.trans ?_
       first
-        | exact le_self_pow₀ hD1 (by omega)
-        | exact le_self_pow hD1 (by omega))
+        | exact le_self_pow₀ hD1 (by omega))
   rw [← norm_le_zero_iff, ← iteratedFDerivWithin_of_isOpen j hs hx]
   simpa using key
 
@@ -93,7 +92,6 @@ theorem jet_radial_holds : GTCLRJetRad := by
   have hpair : ContDiff ℝ ∞ (fun ζ : ℂ => (q.1, ζ)) := by
     first
       | exact contDiff_const.prodMk contDiff_id
-      | exact contDiff_const.prod contDiff_id
   have hψs : ContDiffOn ℝ ∞ ψ tt := hmem.1.comp hpair.contDiffOn hmapQ
   have hψval : ∀ ζ ∈ tt, ψ ζ = (Φ : Q.Fn P.k P.r (Wq →L[ℂ] Wp)) q.1 (NF.muZ P.k P.r Bs.μsec ζ) := by
     intro ζ hζ

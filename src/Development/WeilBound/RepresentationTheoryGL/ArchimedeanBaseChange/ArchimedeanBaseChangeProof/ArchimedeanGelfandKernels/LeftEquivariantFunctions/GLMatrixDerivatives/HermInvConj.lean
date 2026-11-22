@@ -21,7 +21,7 @@ theorem hOf_single (i : Fin n × Fin n) : hOf (Pi.single i (1 : ℝ)) = hb i := 
   rw [Finset.sum_eq_single i]
   · simp
   · intro p _ hp
-    simp [Pi.single_apply, hp]
+    simp [hp]
   · simp
 
 theorem herm_inv_conj {x H : Mat n} (hH : H.IsHermitian) : (x⁻¹ * H * xᴴ⁻¹).IsHermitian := by
@@ -32,10 +32,10 @@ def phiL {V : Type} [NormedAddCommGroup V] [NormedSpace ℂ V] (Fr k : Mat n →
     Mat n →ₗ[ℝ] (V →L[ℂ] V) where
   toFun X := fderiv ℝ Fr 1 X * k w + Ld X k w
   map_add' X Y := by
-    simp only [Ld, map_add, add_mul, Matrix.add_mul, neg_add]
+    simp only [Ld, map_add, add_mul, neg_add]
     abel
   map_smul' r X := by
-    simp only [Ld, map_smul, smul_mul_assoc, Matrix.smul_mul, RingHom.id_apply, smul_add, smul_neg]
+    simp only [Ld, map_smul, smul_mul_assoc, RingHom.id_apply, smul_add, smul_neg]
 
 private theorem smul_add_smul_mul_mul_smul_add_smul_of_mul_eq_zero (hH : HbFacts) {H : Mat n} (h : H.IsHermitian) :
     ∑ p, coords H p • hb p = H := by
@@ -184,7 +184,6 @@ theorem halfOne_of (hH : HbFacts) (hF : FrameDer) (hO : ∀ n, IsOpen (cone n)) 
     rw [hxX] at h5
     first
       | rw [two_smul] at h5
-      | rw [two_nsmul] at h5
     rw [hc2, map_add] at h5
     have hder : (fderiv ℝ F x) (x * (x⁻¹ * hb i * xᴴ⁻¹))
         = Fr x * φ (x⁻¹ * hb i * xᴴ⁻¹) * Γ * T * Fr y⁻¹ :=

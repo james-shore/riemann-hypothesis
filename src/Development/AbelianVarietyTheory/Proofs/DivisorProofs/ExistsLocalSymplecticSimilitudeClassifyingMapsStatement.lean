@@ -16,4 +16,4 @@ theorem _root_.GlobalTheory.T.exists_local_symplecticSimilitude_classifyingMaps 
     ∀ (T : Scheme.{0}) (t : T ⟶ Sp R) (o : Obj b N t) (x x' : T ⟶ X), x ≫ s = t → x' ≫ s = t →
       Nonempty (ObjMap o u x) → Nonempty (ObjMap o u x') →
       ∀ q : T, ∃ (V : T.Opens) (a : sympSimGrp h M), q ∈ V ∧ V.ι ≫ x ≫ ρ a = V.ι ≫ x' := by
-  first | (exact @GlobalTheory.HTLocSim.exists_local_similitude) | (exact GlobalTheory.HTLocSim.exists_local_similitude) | (intros; apply GlobalTheory.HTLocSim.exists_local_similitude  <;> assumption)
+  first | (exact @GlobalTheory.HTLocSim.exists_local_similitude)

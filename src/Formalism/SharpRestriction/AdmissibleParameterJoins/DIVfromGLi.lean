@@ -17,8 +17,6 @@ theorem mEatT_nat (D : D7) (u : D.what₂.Word) (w : D.what₂.places.Pl) : ∃ 
   split_ifs with hs
   · first
     | simp only [Formalism.MainNotions.G.Nm]
-    | simp only [Formalism.Nm]
-    | skip
     refine ⟨D.R.m * (2 * ∑ τ : D.what₂.Tau, Wtau D u τ) + D.R.m * D.R.f * D.R.N D.R.m +
       (topsOf D.host D.eTau).card * (b + 1) * a * (2 * a + 1), ?_⟩
     push_cast

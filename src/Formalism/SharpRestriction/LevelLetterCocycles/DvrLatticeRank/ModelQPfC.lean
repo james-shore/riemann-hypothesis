@@ -61,7 +61,7 @@ theorem hlet_of [IsDomain O] (s' : ℕ) (hs : 1 ≤ s') (π' : LetA O n) (w₁ :
       simp only [Pi.mul_apply, hg', letE, Pi.single_eq_same, one_mul]
       rw [π_at s' π' w₁ hπ i, hG']
       linear_combination (PowerSeries.X ^ s' * G') * unit_comp w₁ i
-    · simp [hg', letE, Pi.single_apply, hi]
+    · simp [hg', letE, hi]
   have hcancel : ∀ x y : LetA O n, π' * x = π' * y → x = y := by
     intro x y hxy
     funext i

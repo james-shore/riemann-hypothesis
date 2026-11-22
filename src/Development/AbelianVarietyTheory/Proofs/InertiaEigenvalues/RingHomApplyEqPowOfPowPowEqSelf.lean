@@ -10,10 +10,6 @@ theorem ringHom_apply_eq_pow_of_pow_pow_eq_self :
       ∀ (z : k), z ^ p ^ N = z → ∃ e : ℕ, τ z = z ^ p ^ e := by
   first
   | exact @_root_.GlobalTheory.FixedOfPower.ringHom_apply_eq_pow
-  | exact _root_.GlobalTheory.FixedOfPower.ringHom_apply_eq_pow
-  | (apply _root_.GlobalTheory.FixedOfPower.ringHom_apply_eq_pow <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FixedOfPower.ringHom_apply_eq_pow <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FixedOfPower.ringHom_apply_eq_pow <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FixedOfPower.ringHom_apply_eq_pow ..)
 
 end GlobalTheory

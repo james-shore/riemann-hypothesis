@@ -38,11 +38,6 @@ theorem complete_of_finite (R S : Type) [CommRing R] [IsLocalRing R] [IsNoetheri
     [Algebra R S] [Module.Finite R S] : IsAdicComplete (maximalIdeal S) S := by
   first
   | (rename_i h_2 h_3 h_4 h_5 h_6 h_7 h_8 h_9; revert R S h_2 h_3 h_4 h_5 h_6 h_7 h_8 h_9; exact @_root_.GlobalTheory.AdicCompleteFinite.isAdicComplete_of_finite)
-  | exact @_root_.GlobalTheory.AdicCompleteFinite.isAdicComplete_of_finite
-  | exact _root_.GlobalTheory.AdicCompleteFinite.isAdicComplete_of_finite
-  | (apply _root_.GlobalTheory.AdicCompleteFinite.isAdicComplete_of_finite <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AdicCompleteFinite.isAdicComplete_of_finite <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AdicCompleteFinite.isAdicComplete_of_finite <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AdicCompleteFinite.isAdicComplete_of_finite ..)
 
 theorem tors_of_nsmul (l : ℕ) [Fact l.Prime] (Λ : Type) [CommRing Λ] [IsLocalRing Λ] [Algebra ℤ_[l] Λ]

@@ -218,7 +218,7 @@ theorem congruence_lift_of_basis {σ : E →ₐ[F] E} {n : ℕ} {J : Matrix (Fin
         hU, SD.fst_proj_split_matrix_mulVec, hk1e, Matrix.map_add f (map_add f), Matrix.map_one f (map_zero f) (map_one f), add_mulVec,
         one_mulVec, Pi.add_apply, add_sub_cancel_left]
       simp only [mulVec, dotProduct, Matrix.map_apply, Matrix.smul_apply, smul_eq_mul, map_mul,
-        Finset.mul_sum, hf, Subring.coe_subtype]
+        Finset.mul_sum, hf]
       refine Finset.sum_congr rfl fun j _ => ?_
       rw [map_natCast]; ring
     · intro i
@@ -226,7 +226,7 @@ theorem congruence_lift_of_basis {σ : E →ₐ[F] E} {n : ℕ} {J : Matrix (Fin
         hU, SD.snd_proj_split_matrix_mulVec, hk1i, Matrix.map_add f (map_add f), Matrix.map_one f (map_zero f) (map_one f), add_mulVec,
         one_mulVec, Pi.add_apply, add_sub_cancel_left]
       simp only [mulVec, dotProduct, Matrix.map_apply, Matrix.smul_apply, smul_eq_mul, map_mul,
-        Finset.mul_sum, hf, Subring.coe_subtype]
+        Finset.mul_sum, hf]
       refine Finset.sum_congr rfl fun j _ => ?_
       rw [map_natCast]; ring
 

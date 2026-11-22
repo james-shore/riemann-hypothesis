@@ -14,7 +14,7 @@ theorem stdBlocks_one {n : ℕ} (hd : ∑ _a : Fin n, 1 = n) (a : Fin n) (i : Fi
     omega
   apply Fin.ext
   rw [stdBlocks_val]
-  simp [hi]
+  simp
 
 theorem blk_stdBlocks {n : ℕ} (hd : ∑ _a : Fin n, 1 = n) (i : Fin n) :
     blk (stdBlocks (fun _ : Fin n => 1) hd) i = i := by
@@ -37,7 +37,7 @@ theorem unipRad_stdBlocks (k : Type) [Field k] {n : ℕ} (hd : ∑ _a : Fin n, 1
     simp only [stdBlocks_one] at h
     simp only [points_apply]
     rw [h]
-    simp [Matrix.one_apply]
+    simp
   · rintro ⟨h1, h2⟩
     refine ⟨h1, fun a i j => ?_⟩
     have h := h2 a () ()
@@ -45,7 +45,7 @@ theorem unipRad_stdBlocks (k : Type) [Field k] {n : ℕ} (hd : ∑ _a : Fin n, 1
     simp only [stdBlocks_one]
     obtain rfl : i = j := Subsingleton.elim i j
     rw [h]
-    simp [Matrix.one_apply]
+    simp
 
 theorem leviEmb_stdBlocks (k : Type) [Field k] {n : ℕ} (hd : ∑ _a : Fin n, 1 = n)
     (t : Levi k fun _ : Fin n => Fin 1) :
@@ -61,7 +61,7 @@ theorem leviEmb_stdBlocks (k : Type) [Field k] {n : ℕ} (hd : ∑ _a : Fin n, 1
     have hpq : p = q := Subsingleton.elim _ _
     subst hpq
     rw [leviEmb_apply_same, stdBlocks_one]
-    simp [Matrix.GeneralLinearGroup.val_det_apply, Matrix.det_fin_one, Subsingleton.elim p 0]
+    simp [Matrix.GeneralLinearGroup.val_det_apply, Subsingleton.elim p 0]
   · rw [leviEmb_apply_ne k _ t hab, stdBlocks_one, stdBlocks_one, Matrix.diagonal_apply_ne _ hab]
 
 theorem deltaHalf_stdBlocks (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k]

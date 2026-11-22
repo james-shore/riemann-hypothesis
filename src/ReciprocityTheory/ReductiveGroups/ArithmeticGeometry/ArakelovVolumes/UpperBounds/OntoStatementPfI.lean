@@ -103,7 +103,6 @@ private lemma measurable_cpt : Measurable (cpt X x0) := by
     first
       | exact measurable_pi_apply _
       | exact (EuclideanSpace.proj _).continuous.measurable
-      | fun_prop
   · exact measurable_const
   · exact measurable_const
 

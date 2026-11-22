@@ -68,7 +68,7 @@ theorem multiProd_scalar {α n : Type} {m : α → Type} [Fintype α] [LinearOrd
       rw [leviEmb_apply_same]
       simp [GeneralLinearGroup.scalar, diagonal_apply]
     · rw [leviEmb_apply_ne k e _ hab]
-      simp [GeneralLinearGroup.scalar, diagonal_apply, hab]
+      simp [GeneralLinearGroup.scalar, hab]
   refine Subtype.ext (Subtype.ext (funext fun x => ?_))
   have h2 := parInd_law e _ f ⟨_, leviEmb_mem_parab k e fun a => GeneralLinearGroup.scalar (m a) z⟩ x
   rw [leviProj_leviEmb, deltaHalf_scalar, piTensor_scalar ρ _ _ fun a => h a z] at h2

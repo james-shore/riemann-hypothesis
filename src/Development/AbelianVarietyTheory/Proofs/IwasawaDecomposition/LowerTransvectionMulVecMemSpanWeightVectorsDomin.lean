@@ -76,14 +76,13 @@ theorem diagonal_mul_transvection {n : ℕ} {i j : Fin n} (h : i ≠ j) (d : Fin
     (hdj : d j ≠ 0) (s : ℂ) :
     diagonal d * transvection i j s = transvection i j (s * (d i / d j)) * diagonal d := by
   ext a b
-  simp only [transvection, Matrix.mul_add, Matrix.add_mul, Matrix.mul_one, Matrix.one_mul,
-    Matrix.add_apply, diagonal_mul, mul_diagonal, Matrix.single_apply]
+  simp only [transvection, Matrix.add_apply, diagonal_mul, mul_diagonal, Matrix.single_apply]
   by_cases h2 : i = a ∧ j = b
   · obtain ⟨rfl, rfl⟩ := h2
     simp only [and_self, if_true, one_apply_ne h]
     field_simp
     ring
-  · simp only [h2, if_false, mul_zero, zero_mul, add_zero]
+  · simp only [h2, if_false, add_zero]
     by_cases hab : a = b
     · subst hab; simp
     · simp [one_apply_ne hab]

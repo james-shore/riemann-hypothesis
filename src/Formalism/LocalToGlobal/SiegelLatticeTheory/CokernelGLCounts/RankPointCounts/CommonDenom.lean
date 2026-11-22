@@ -19,7 +19,6 @@ theorem topE (M : Loc.Model F E) : IsTopologicalRing E := by
   haveI : Module.Finite F E := Module.finite_of_finrank_pos (by rw [M.L.rank]; norm_num)
   first
     | exact IsModuleTopology.isTopologicalRing F E
-    | exact IsModuleTopology.topologicalRing F E
 
 theorem t2E (M : Loc.Model F E) : T2Space E := by
   haveI := M.L.top
@@ -34,14 +33,10 @@ theorem t2E (M : Loc.Model F E) : T2Space E := by
 theorem int_mem {x : F} (h : IsIntegral 𝒪[F] x) : x ∈ 𝒪[F] := by
   first
     | exact (Valuation.integer.integers (ValuativeRel.valuation F)).mem_of_integral h
-    | (obtain ⟨y, hy⟩ := (Valuation.integer.integers (ValuativeRel.valuation F)).mem_of_integral h
-       rw [← hy]
-       exact y.2)
 
 theorem alg_int (x : 𝒪[F]) : algebraMap F E (x : F) = algebraMap 𝒪[F] E x := by
   first
     | rfl
-    | exact (IsScalarTower.algebraMap_apply 𝒪[F] F E x).symm
 
 private theorem R_eq_O_of_split_eq_none (M : Loc.Model F E) (hg : M.split = none) : M.R = M.L.O := by
   simp only [Loc.Model.R, hg]
@@ -67,7 +62,6 @@ theorem alg_mem_R (M : Loc.Model F E) (a : 𝒪[F]) : algebraMap F E (a : F) ∈
     rw [AlgEquiv.commutes]
     first
       | rfl
-      | simp
 
 private theorem splitG_e_mem_integers_of_mem_O (L : Loc.LocE F E) (g : Loc.SplitG L) {z : E} (hz : z ∈ L.O) :
     (g.e z).1 ∈ 𝒪[F] ∧ (g.e z).2 ∈ 𝒪[F] := by
@@ -103,7 +97,6 @@ theorem R_denom (M : Loc.Model F E) (y : E) : ∃ a : 𝒪[F], a ≠ 0 ∧ algeb
   haveI : Nontrivial E := by
     first
       | exact Module.nontrivial_of_finrank_pos (R := F) (by rw [M.L.rank]; norm_num)
-      | exact Module.nontrivial_of_finrank_eq_succ M.L.rank
   haveI : IsFractionRing 𝒪[F] F := ValuationRing.instIsFractionRingInteger (ValuativeRel.valuation F)
   have hinj : ∀ x : 𝒪[F], algebraMap 𝒪[F] E x = 0 → x = 0 := by
     intro x hx

@@ -20,7 +20,6 @@ theorem UpperTheory.TP.RP.expFirst :
     congr 2
     rw [Matrix.trace_kronecker, Matrix.trace_one]
     simp only [Fintype.card_sum, Fintype.card_fin, add_zero]
-    push_cast
     linear_combination (-(Y.trace / 2)) * hc
   have hgm : (g : Matrix (Fin n) (Fin n) ℂ) =
       (NormedSpace.exp Y).submatrix (Equiv.sumEmpty (Fin n) (Fin 0)).symm

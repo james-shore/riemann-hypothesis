@@ -54,7 +54,7 @@ theorem UpperTheory.V.AlgebraTools.groupRing_ker :
       exact Ideal.mul_mem_left _ _ (Ideal.mul_mem_right _ _ hlC)
     have hsum := Ideal.sum_mem _ key
     simp only [pow_zero, one_pow, mul_one, Nat.choose_zero_right, Nat.choose_self, Nat.cast_one,
-      Nat.sub_zero, one_mul] at hsum ⊢
+      Nat.sub_zero] at hsum ⊢
     convert hsum using 1
     ring
   have hIφ : ∀ a ∈ I, φ a = 0 := fun a ha => hle ha

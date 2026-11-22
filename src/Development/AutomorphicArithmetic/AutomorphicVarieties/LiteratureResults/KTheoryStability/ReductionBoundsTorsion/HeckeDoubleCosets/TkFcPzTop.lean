@@ -57,18 +57,18 @@ theorem fc_pz_gt {l i : ℕ} (h : i + 1 < l) : fc l (pz v i f) = pz v i (fc (l -
 theorem fc_pz_diag (i : ℕ) : fc (i + 1) (pz v i f) = fc (i + 1) (pz v (i + 1) f) := by
   funext j
   simp only [fc, pz]
-  split_ifs <;> first | rfl | (exfalso; omega) | (congr 1; omega) | (congr 2; omega)
+  split_ifs <;> first | rfl | (exfalso; omega)
 
 theorem fc_pz_zero : fc 0 (pz v 0 f) = fun j => v (f j) := by
   funext j
   simp only [fc, pz]
-  split_ifs <;> first | rfl | (exfalso; omega) | (congr 1; omega) | (congr 2; omega)
+  split_ifs <;> first | rfl | (exfalso; omega)
 
 theorem tk_fc_pz_top (m : ℕ) : tk (m + 2) (fc (m + 2) (pz v (m + 2) f)) = tk (m + 2) f := by
   funext j
   simp only [tk, fc, pz]
   have := j.isLt
-  split_ifs <;> first | rfl | (exfalso; omega) | (congr 1; omega) | (congr 2; omega)
+  split_ifs <;> first | rfl | (exfalso; omega)
 
 theorem tk_pz_ext (m : ℕ) {i : ℕ} (hi : i ≤ m) (g : ℕ → Y) :
     tk (m + 2) (pz v i (ext (tk (m + 1) g))) = tk (m + 2) (pz v i g) := by

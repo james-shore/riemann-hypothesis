@@ -99,7 +99,7 @@ private theorem prod_factorial_add_single_one_eq_succ_mul_prod_factorial (B : κ
     refine Finset.prod_congr rfl fun y hy => ?_
     have hyx : y ≠ x := Finset.ne_of_mem_erase hy
     have hxy : x ≠ y := Ne.symm hyx
-    simp [Finsupp.single_apply, hxy]
+    simp [hxy]
   rw [h2]
   simp [Nat.factorial_succ]
   ring
@@ -122,7 +122,7 @@ private theorem pairing_X_mul_eq_pairing_pderiv (x : κ) (F G : MvPolynomial κ 
         ext y
         by_cases hy : x = y
         · subst hy; simp; omega
-        · simp [Finsupp.single_apply, hy]
+        · simp [hy]
       have hAx : (A - Finsupp.single x 1 : κ →₀ ℕ) x + 1 = A x := by simp; omega
       have hf : (A.prod fun _ e => (e.factorial : C)) =
           ((A x : ℕ) : C) * ((A - Finsupp.single x 1).prod fun _ e => (e.factorial : C)) := by

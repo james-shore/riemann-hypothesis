@@ -47,8 +47,8 @@ theorem germ_comp_of_spec {X Y : Scheme.{0}} {x : X} {y : Y} (φ : Y.presheaf.st
       f.appLE V U h ≫ (X.fromSpecStalk x).appLE U ⊤ (fromSpecStalk_preimage_top x U hx) := by
     exact (Scheme.Hom.appLE_comp_appLE _ _ _ _ _ _ _).symm
   have eT : (Spec.map φ).appLE ⊤ ⊤ (by simp) = (Spec.map φ).appTop := by
-    simp only [Scheme.Hom.appLE, Scheme.Hom.preimage_top, Category.comp_id]
-    first | rfl | simp
+    simp only [Scheme.Hom.appLE, Scheme.Hom.preimage_top]
+    first | rfl
   rw [eL, eR, eT, fromSpecStalk_appLE_top y V hy, fromSpecStalk_appLE_top x U hx, Category.assoc,
     ← Scheme.ΓSpecIso_inv_naturality, ← Category.assoc, ← Category.assoc] at key
   exact (cancel_mono _).1 key

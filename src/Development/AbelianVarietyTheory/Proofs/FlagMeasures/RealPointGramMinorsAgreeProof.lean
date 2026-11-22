@@ -83,7 +83,7 @@ theorem phiV_span (C : Choice X 1) (τ : D.what₂.Tau) :
     ext j
     by_cases h : j = i
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   rw [eq_top_iff]
   intro w _
   have e : C.Qi τ * (X.B.I.P (vOf X τ))⁻¹ * X.B.I.P (vOf X τ) * C.Q τ = 1 := by

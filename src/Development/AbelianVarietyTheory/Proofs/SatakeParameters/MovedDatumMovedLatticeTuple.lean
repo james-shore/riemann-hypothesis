@@ -31,7 +31,7 @@ theorem inFr_stdG_homRe {D : D7} {a b N N' : ℕ} (hr : a = N) (hr' : b = N') (J
   simp only [Formalism.L2.Col.inFr, LinearMap.comp_apply, LinearEquiv.coe_coe, h1, homRe, eMat]
   congr 2
   ext i
-  simp [Matrix.toLin'_apply, LinearMap.toMatrix'_mulVec]
+  simp
 
 end GlobalTheory.TwV.Xc
 

@@ -274,7 +274,7 @@ theorem moments_thInd : ∀ (X : Fields) (A : Amb X) (a b : ℕ) (S SG : Finset 
   replace b3 := b3 x hx hxϖ t ht htx
   have hE : (ϖ : X.E) * star (ϖ : X.E) = p := by
     have := congrArg (fun r : 𝓞 X.E => (r : X.E)) hϖ
-    simp only [map_mul, map_natCast, RingOfIntegers.coe_eq_algebraMap] at this
+    simp only [map_mul, map_natCast] at this
     exact this
   have hpE : (p : X.E) ≠ 0 := Nat.cast_ne_zero.2 hp.ne_zero
   have hϖ0 : (ϖ : X.E) ≠ 0 := left_ne_zero_of_mul (hE ▸ hpE)

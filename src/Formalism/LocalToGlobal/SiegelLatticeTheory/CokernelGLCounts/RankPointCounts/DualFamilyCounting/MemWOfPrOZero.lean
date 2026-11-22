@@ -32,10 +32,6 @@ theorem mem_W_of_prO_zero {x : V} (hx : prO hc x = 0) : x ∈ orthK h U ∧ prO 
   rw [prO_apply]
   first
   | exact Submodule.projection_apply_mem ..
-  | exact Submodule.projection_apply_mem _ _
-  | exact Submodule.projection_apply_mem _ _ _
-  | exact Submodule.projection_apply_mem _
-  | simp
 
 theorem prO_symm_locF (hp : 𝔭.IsPrime) {N : Submodule (𝓞 K) V} {y : V} (hy : y ∈ locF 𝔭 N) :
     prO hc.symm y ∈ locF 𝔭 (N.map (prO hc.symm)) := by

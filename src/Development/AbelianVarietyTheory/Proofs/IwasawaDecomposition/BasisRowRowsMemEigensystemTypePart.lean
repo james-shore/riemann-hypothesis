@@ -134,14 +134,13 @@ theorem eec_le_of_agree : ∀ (D : D7) (G : Type) [Group G] [Fintype G] (Pl0 I0 
       (by rw [one_pow, Nat.cast_one]; exact fun h1 => P.isPrime.ne_top ((Ideal.eq_top_iff_one _).2 h1))
       (fun PP hPP => hG PP (hPP.imp id fun h => absurd h (Finset.notMem_empty _)))
   have hYlab : GlobalTheory.Hk3.IsLab (Yc D 0) P d := ⟨B, ((levY.2.1 R.SF d B).1 hB).2⟩
-  have hdd : dualLab (dualLab d) = d := by simp [dualLab, List.map_reverse, List.map_map, Function.comp_def]
+  have hdd : dualLab (dualLab d) = d := by simp [dualLab, List.map_reverse, List.map_map]
   have hWlab : GlobalTheory.Hk3.IsLab (Wc D i) P (dualLab d) := by
     have h := ((GlobalTheory.LabEq.isLab_W_iff (s := 1) R.toRealDat F.lv2 hCore i P (dualLab d) hG).1).2
     rw [hdd] at h
     exact h hYlab
   obtain ⟨B', hB'⟩ := hWlab
   have e1 := hag P (dualLab d) B' ((levW.2.1 R.SF (dualLab d) B').2 ⟨hoff, hB'⟩)
-  beta_reduce
   rw [e1]
 
 theorem exists_isEigOf_of_vec : ∀ (D : D7) (G : Type) [Group G] [Fintype G] (Pl0 I0 T : Type) (A3 : FamIn3 D.what₂.LL G Pl0 I0 (List ℕ) T D.R.m) (Ks : Type) [Field Ks] [NumberField Ks] [Algebra Ks D.what₂.LL] (R : RealDat3 D A3 Ks) (F : Face3 D A3) (cG : G0 R.Pg D.R.r ≃* G0g D.nd) (X0 : BaseLevelRowSide D) (Y : Read (A3 := A3) R.toRealDat F.lv2 X0), Pins R F cG → Holds R F → ∀ (π : Formalism.L2.NG.FinTyp D.host.E D.R.r) (i : Fin D.R.m), (∃ x ∈ π.S, x ≠ 0 ∧ principalLevelFrame.IsTypeVec ((Y.PW i).ψ ⁻¹' (levS _ (R.βW i) (R.datWp i (R.toRealDat.levL F.lv2 false (sg0 D A3.A))))) (fun κ => (levChi _ (R.βW i) (R.datWp i (R.toRealDat.levL F.lv2 false (sg0 D A3.A)))) ((Y.PW i).ψ κ)) x) → ∃ c, principalLevelFrame.IsEigOf (Y.PW i) (levS _ (R.βW i) (R.datWp i (R.toRealDat.levL F.lv2 false (sg0 D A3.A)))) (levChi _ (R.βW i) (R.datWp i (R.toRealDat.levL F.lv2 false (sg0 D A3.A)))) R.SF π c := by

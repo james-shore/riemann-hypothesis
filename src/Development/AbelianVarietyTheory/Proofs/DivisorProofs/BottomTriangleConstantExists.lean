@@ -67,7 +67,7 @@ theorem isFinPt_one (V : HSp D) {n : ℕ} (e : V.rank = n) :
   rw [map_one]
   by_cases h : i = j
   · subst h; simp
-  · simp [Matrix.one_apply, h]
+  · simp [h]
 
 theorem reads_of_fock {ψ : AddChar (AF D.host.F) ℂ} {θ : InfFam D} {S T : HSp D} {a d : ℕ}
     (hS : S.rank = a) (hT : T.rank = d) {cc : Ideal (𝓞 D.host.K)} {δ : ℂ} {r : D.host.E} (hset : Setup ψ θ S T cc δ r)

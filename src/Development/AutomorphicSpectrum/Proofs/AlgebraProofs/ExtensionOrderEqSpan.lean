@@ -19,8 +19,6 @@ theorem extOrder_eq_span : ∀ (R : Type) [CommRing R] (T : Type) [CommGroup T] 
   have hdef : extOrder φ A = Algebra.adjoin R' S := by
     first
     | rfl
-    | (unfold extOrder; congr 1)
-    | (unfold extOrder; congr 1; ext x; simp only [hS, Set.mem_setOf_eq, Set.mem_range, Set.mem_image, Subtype.exists, exists_prop, SetLike.mem_coe]; constructor <;> rintro ⟨f, hf, h⟩ <;> exact ⟨f, hf, h.symm⟩)
   rw [hdef, ← Subalgebra.mem_toSubmodule, hspan]
 
 end GlobalTheory.CompanionTheory.Ar.BT.ExtSpan

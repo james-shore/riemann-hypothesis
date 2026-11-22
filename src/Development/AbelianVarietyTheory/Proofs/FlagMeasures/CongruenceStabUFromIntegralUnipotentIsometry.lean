@@ -533,8 +533,8 @@ theorem main_gen {Λ : Submodule (𝓞 E) S.V} (hΛ : Formalism.HermitianLattice
         rw [Matrix.mulVec_mulVec, ← hLZ, ← Matrix.mulVec_mulVec, lo_mulVec hL _ hy]
       rw [Matrix.sub_mulVec, Matrix.one_mulVec, cancel_lemma hZdet h2, sub_self]
     rw [hn, add_sub_cancel_left, ← hu, Fintype.sum_sum_type, hAm1, Matrix.fromBlocks_mulVec]
-    simp only [Sum.elim_inl, Sum.elim_inr, Matrix.zero_mulVec, add_zero, zero_add, hau, Pi.zero_apply, zero_smul,
-      Finset.sum_const_zero, hvdef, Pi.add_apply]
+    simp only [Sum.elim_inl, Sum.elim_inr, Matrix.zero_mulVec, add_zero, hau, Pi.zero_apply, zero_smul,
+      Finset.sum_const_zero, hvdef]
     exact comb_mem_X F _ (up_last hbU _)
   have horthF' : ∀ x ∈ orth S (Xsp F'), n x - x ∈ Xsp F' := by
     intro x hx
@@ -557,7 +557,7 @@ theorem main_gen {Λ : Submodule (𝓞 E) S.V} (hΛ : Formalism.HermitianLattice
       rw [Matrix.sub_mulVec, Matrix.one_mulVec, cancel_lemma hZH (cancel_lemma haH h2), sub_self]
     rw [hn, add_sub_cancel_left, ← hu, Fintype.sum_sum_type, hAm1, Matrix.fromBlocks_mulVec]
     simp only [Sum.elim_inl, Sum.elim_inr, Matrix.zero_mulVec, add_zero, zero_add, hbu, Pi.zero_apply, zero_smul,
-      Finset.sum_const_zero, hvdef, Pi.add_apply]
+      Finset.sum_const_zero, hvdef]
     exact comb_mem_X F' _ (up_last haU _)
   exact ⟨n, ⟨⟨hAut, fun j => flag_step F n hbU hnF j, horthF⟩, ⟨hAut, fun j => flag_step F' n haU hnF' j, horthF'⟩⟩,
     hnF'⟩
@@ -648,7 +648,7 @@ theorem Dr1_ne_zero {T' : ℕ} (F : LFlag S r T) (F' : LFlag S r (T' : E)) (τ :
     have h2 : (starRingEnd ℂ (τ (w (Fin.last r))) * τ (w (Fin.last r)) * -(T' : ℂ)).re =
         -(T' : ℝ) * Complex.normSq (τ (w (Fin.last r))) := by
       rw [mul_comm (starRingEnd ℂ _), Complex.mul_conj]
-      simp [Complex.ofReal_mul]
+      simp
       ring
     rw [h2] at hp
     have h3 : 0 ≤ (T' : ℝ) * Complex.normSq (τ (w (Fin.last r))) :=

@@ -115,6 +115,6 @@ theorem range_eE_and_norm : ∀ (D : D7) (G : Type) [Group G] [Fintype G] (Pl0 I
       have h1 : (Y.Ish.jE x).1 = 0 := by
         rw [Y.eE_read, h0, map_zero]; exact map_zero _
       have hx0 : x = 0 := (LinearEquiv.map_eq_zero_iff _).1 (Submodule.coe_eq_zero.1 h1)
-      simp [h0, hx0]
+      simp [hx0]
 
 end GlobalTheory.Mem.R3.RowsLvl

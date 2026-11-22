@@ -171,7 +171,7 @@ theorem eJ_coeff (ψ : AddChar (ZMod g) ℂ) (v : GL (Fin N) (ZMod g)) :
   unfold eJ eDat
   simp only [MonoidAlgebra.coeff_smul, MonoidAlgebra.coeff_sum, MonoidAlgebra.coeff_single] at *
   simp
-  simp only [Finsupp.single_apply, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_filter, Finset.mem_univ,
+  simp only [Finsupp.single_apply, Finset.sum_ite_eq', Finset.mem_filter, Finset.mem_univ,
     true_and]
   unfold PJ
   split_ifs <;> simp [div_eq_inv_mul]

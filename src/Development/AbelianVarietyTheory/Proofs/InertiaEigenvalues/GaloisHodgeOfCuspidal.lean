@@ -50,7 +50,7 @@ variable {Γ k : Type} [Group Γ] [Field k] {a : ℕ}
 theorem coe_scalar (u : kˣ) : ((GeneralLinearGroup.scalar (Fin a) u : GL (Fin a) k) : Matrix (Fin a) (Fin a) k) =
     (u : k) • (1 : Matrix (Fin a) (Fin a) k) := by
   ext i j
-  by_cases h : i = j <;> simp [GeneralLinearGroup.scalar, Matrix.diagonal, Matrix.one_apply, h]
+  by_cases h : i = j <;> simp [GeneralLinearGroup.scalar, Matrix.diagonal, h]
 
 def twistBy (c : Γ →* kˣ) (r : Γ →* GL (Fin a) k) : Γ →* GL (Fin a) k where
   toFun g := GeneralLinearGroup.scalar (Fin a) (c g) * r g

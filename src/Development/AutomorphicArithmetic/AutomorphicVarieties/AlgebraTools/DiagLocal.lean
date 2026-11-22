@@ -52,7 +52,7 @@ private theorem pivot {R : Type} [CommRing R] [IsLocalRing R] {ι : Type} [Finty
         = H i i + 2 * c * H i j + c * c * H j j := by
       intro c
       simp [transvection, Matrix.mul_apply, Matrix.add_apply, Matrix.one_apply, Matrix.single_apply,
-        add_mul, mul_add, Finset.sum_add_distrib, ite_mul, mul_ite, Ne.symm hij, hij, hji]
+        add_mul, mul_add, Finset.sum_add_distrib, ite_mul, mul_ite, hji]
       ring
     by_cases hp : IsUnit (H i i + 2 * 1 * H i j + 1 * 1 * H j j)
     · exact ⟨transvection j i 1, by rw [det_transvection_of_ne j i hij]; exact isUnit_one,

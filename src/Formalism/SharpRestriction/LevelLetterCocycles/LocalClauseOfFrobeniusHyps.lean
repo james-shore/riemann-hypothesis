@@ -371,7 +371,7 @@ theorem key_id {T : LocLat G Qp LL O} (σ J K : ℕ) (e : ℕ → ℕ) (he : ∀
           rw [hrs, pow_add]
           ring
   rw [lO_smul, map_sub, map_sum, φ_lA]
-  simp only [φ_lA, φD_smulA, map_pow, map_natCast]
+  simp only [φD_smulA, map_pow, map_natCast]
   rw [smul_sub, smul_sub, Finset.smul_sum, Finset.smul_sum, smul_smul, smul_smul,
     mul_comm (((PD.p : ℕ) : LetA O n) ^ J), sub_add, sub_right_inj, ← Finset.sum_sub_distrib]
   refine Finset.sum_congr rfl fun y hy => ?_

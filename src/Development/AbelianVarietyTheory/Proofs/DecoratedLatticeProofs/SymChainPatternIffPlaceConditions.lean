@@ -74,7 +74,7 @@ theorem places_to_pattern (F : Type) [Zero F] [One F] (κ ρ l τ j : ℕ) (R : 
         omega
       · have := i.isLt
         have := j'.isLt
-        simp only [zPos, FreeIx, FreeTop, Fin.lt_iff_val_lt_val] at hab hne hs1 hs2 ⊢
+        simp only [zPos, FreeIx, FreeTop] at hab hne hs1 hs2 ⊢
         omega
       · left
         simp only [zPos]
@@ -83,7 +83,7 @@ theorem places_to_pattern (F : Type) [Zero F] [One F] (κ ρ l τ j : ℕ) (R : 
       rcases a with (i | i) | ⟨s, u⟩
       · have := i.isLt
         have := j'.isLt
-        simp only [zPos, FreeIx, FreeTop, Fin.lt_iff_val_lt_val] at hab hne hs1 hs2 ⊢
+        simp only [zPos, FreeIx, FreeTop] at hab hne hs1 hs2 ⊢
         omega
       · have := i.isLt
         have := j'.isLt
@@ -133,13 +133,13 @@ theorem pattern_to_places (F : Type) [Zero F] [One F] (κ ρ l τ j : ℕ) (R : 
           omega
         · have := i.isLt
           have := i'.isLt
-          simp only [zPos, FreeIx, FreeTop, Fin.lt_iff_val_lt_val] at hcond hne hs1 hs2 ⊢
+          simp only [zPos, FreeIx, FreeTop] at hcond hne hs1 hs2 ⊢
           omega
         · simp [FreeIx]
       · rcases c with (i' | i') | ⟨s, u⟩
         · have := i.isLt
           have := i'.isLt
-          simp only [zPos, FreeIx, FreeTop, Fin.lt_iff_val_lt_val] at hcond hne hs1 hs2 ⊢
+          simp only [zPos, FreeIx, FreeTop] at hcond hne hs1 hs2 ⊢
           omega
         · have := i.isLt
           have := i'.isLt

@@ -65,7 +65,7 @@ theorem fst_base {K o V : Type} [Field K] [CommRing o] [AddCommGroup V] [Module 
     [IsCentralScalar K V] (β : o →+* K) :
     spMap (TrivSqZeroExt.fstHom K K V).toRingHom ≫ spMap ((algebraMap K (TrivSqZeroExt K V)).comp β) = spMap β := by
   rw [← spMap_comp']
-  congr 1 <;> exact RingHom.ext fun z => (TrivSqZeroExt.fstHom K K V).commutes (β z)
+  congr 1
 
 theorem constPt_base {K o : Type} [Field K] [CommRing o] {X : Scheme.{0}} (β : o →+* K) (x : Sp (DualNumber K) ⟶ X)
     (s : X ⟶ Sp o) (hx : x ≫ s = spMap ((algebraMap K (DualNumber K)).comp β)) :
@@ -95,7 +95,7 @@ theorem bij_drop_last (K : Type) [Field K] (d : ℕ) : Function.Bijective ((drop
   refine ⟨fun v w hvw => ?_, fun p => ⟨Fin.snoc p.1 p.2, ?_⟩⟩
   · have h1 := congrArg Prod.fst hvw
     have h2 := congrArg Prod.snd hvw
-    simp only [LinearMap.prod_apply, Pi.prod] at h1 h2
+    simp only [LinearMap.prod_apply] at h1 h2
     funext i
     refine Fin.lastCases ?_ (fun j => ?_) i
     · exact h2
@@ -109,7 +109,7 @@ theorem lam_decomp (K : Type) [Field K] (d : ℕ) (lam : (Fin (d + 1) → K) →
     funext i
     refine Fin.lastCases ?_ (fun j => ?_) i
     · simp [incl]
-    · simp [incl, drop, Pi.single_apply, Fin.castSucc_ne_last]
+    · simp [incl, drop, Fin.castSucc_ne_last]
   conv_lhs => rw [hv]
   simp [lastC, mul_comm]
 

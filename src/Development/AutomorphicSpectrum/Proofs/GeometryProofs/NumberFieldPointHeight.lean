@@ -247,7 +247,7 @@ theorem arInt_map (e : ∀ k, ι k ≃ Fin (n k + 1)) {P : Ideal (MRing ι)} (hP
 theorem mConeMap_ren {Ω : Type} [Field Ω] (e : ∀ k, ι k ≃ Fin (n k + 1)) (y : Coord n → Ω) (f : MRing ι) :
     mConeMap (ι := blockIdx n) y (ren e f) = mConeMap (y ∘ sig e) f := by
   induction f using MvPolynomial.induction_on with
-  | C a => simp [mConeMap, ren_C]
+  | C a => simp [mConeMap]
   | add p q hp hq => simp only [map_add, hp, hq]
   | mul_X p q hp =>
     rw [map_mul, map_mul, map_mul, hp]

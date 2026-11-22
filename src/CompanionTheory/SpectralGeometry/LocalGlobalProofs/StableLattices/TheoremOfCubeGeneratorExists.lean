@@ -151,7 +151,7 @@ theorem pr_sg {W : Over S} (a b : W ⟶ A ⊗ X) (h) :
     lift (a ≫ fst A X) (𝟙 W) ≫ aH A (pr q a b h) = pr q a b h ≫ sg A q := by
   apply CartesianMonoidalCategory.hom_ext
   · have := pr_one q a b h
-    simp only [aH, sg, comp_lift, lift_fst, Category.assoc, lift_snd_assoc, Category.id_comp, Category.comp_id]
+    simp only [aH, sg, comp_lift, lift_fst, lift_snd_assoc, Category.id_comp, Category.comp_id]
     rw [← Category.assoc, this]
   · simp [aH, sg]
 

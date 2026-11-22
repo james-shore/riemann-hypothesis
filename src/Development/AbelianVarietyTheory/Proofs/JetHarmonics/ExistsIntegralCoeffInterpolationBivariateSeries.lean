@@ -13,8 +13,6 @@ theorem norm_coeff_prod_X_sub_C_le_pow {K : Type} [NormedField K] [IsUltrametric
   | exact @_root_.GlobalTheory.RootProductCoeffBound.main
   | exact _root_.GlobalTheory.RootProductCoeffBound.main
   | (apply _root_.GlobalTheory.RootProductCoeffBound.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RootProductCoeffBound.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RootProductCoeffBound.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RootProductCoeffBound.main ..)
 
 theorem exists_pow_eq_interpolation {K : Type} [NormedField K] [IsUltrametricDist K]

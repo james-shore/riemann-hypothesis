@@ -63,7 +63,7 @@ theorem pair_irr (hF : FactorIrr k) {h N : ℕ} (y : Fin h → IrrGL k) (i j : F
         fin_cases c
         · simp only [Function.comp_apply]
           show y i = _
-          congr 1 <;> ext <;> simp
+          congr 1 <;> ext
         · simp only [Function.comp_apply]
           show y j = _
           congr 1 <;> ext <;> simp [hij]
@@ -255,12 +255,12 @@ theorem moveFirst : FactorIrr k → Comm2Irr k → MoveFirst k := by
         have e0 : Fin.cast (Nat.add_comm 1 r) (Fin.castAdd r a) = 0 := by
           ext
           have := a.2
-          simp <;> omega
+          simp
         simp only [Function.comp_apply, e0, Fin.cons_zero]
       · rw [Fin.append_right]
         have e1 : Fin.cast (Nat.add_comm 1 r) (Fin.natAdd 1 b) = b.succ := by
           ext
-          simp [Nat.add_comm]
+          simp
         simp only [Function.comp_apply, e1, Fin.cons_succ]
     have hy : ∑ _a : Fin 1, (x j).1 = (x j).1 := by simp
     have hApp : ∑ a, (Fin.append (fun _ : Fin 1 => x j) (x ∘ j.succAbove) a).1 =

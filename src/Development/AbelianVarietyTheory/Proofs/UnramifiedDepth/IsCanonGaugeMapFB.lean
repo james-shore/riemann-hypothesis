@@ -20,7 +20,7 @@ theorem isCanonGauge_mapFB {R k : Type} [CommRing R] [Algebra ℚ R] [CommRing k
   have hid : ∀ {σ : Type} (g : MvPowerSeries σ k), MvPowerSeries.map (algebraMap k k) g = g := by
     intro σ g
     ext m
-    simp [MvPowerSeries.coeff_map]
+    simp
   have hF : (GlobalTheory.FBMap.mapFB f B).FK k = B.FK k := funext fun i => hid _
   have hA : ∀ a, (GlobalTheory.FBMap.mapFB f B).actK k a = B.actK k a := fun a => funext fun i => hid _
   refine ⟨h1.ax0, h1.ax1, ?_, ?_, ?_, fun a => ?_⟩

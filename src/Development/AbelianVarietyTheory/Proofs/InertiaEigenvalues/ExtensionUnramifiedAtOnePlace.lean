@@ -29,7 +29,7 @@ def idealBelow (K : Type) [Field K] [NumberField K] [Algebra K Ω] (A : Valuatio
   zero_mem' := by show A.valuation (algebraMap K Ω ((0 : 𝓞 K) : K)) < 1; simp
   smul_mem' c b hb := by
     show A.valuation (algebraMap K Ω ((c * b : 𝓞 K) : K)) < 1
-    simp only [map_mul, Valuation.map_mul]
+    simp only [map_mul]
     calc A.valuation (algebraMap K Ω (c : K)) * A.valuation (algebraMap K Ω (b : K))
         ≤ 1 * A.valuation (algebraMap K Ω (b : K)) := mul_le_mul_left (val_le_one_of_int A c) _
       _ < 1 := by rw [one_mul]; exact hb
@@ -50,7 +50,7 @@ instance isPrime_idealBelow (K : Type) [Field K] [NumberField K] [Algebra K Ω] 
     simp only [not_or, not_lt] at hn
     have ha := le_antisymm (val_le_one_of_int A a) hn.1
     have hb := le_antisymm (val_le_one_of_int A b) hn.2
-    simp only [map_mul, Valuation.map_mul, ha, hb, one_mul] at hab
+    simp only [map_mul, ha, hb, one_mul] at hab
     exact lt_irrefl _ hab
 
 def placeBelow (K : Type) [Field K] [NumberField K] [Algebra K Ω] (A : ValuationSubring Ω) (x₀ : 𝓞 K)
@@ -77,7 +77,7 @@ theorem fix_adjoin {E : Type} [Field E] [Algebra E Ω] (β : Ω) (hβ : IsIntegr
 theorem aeval_apply_eq_zero {E : Type} [Field E] [Algebra E Ω] (τ : Ω ≃ₐ[E] Ω) (f : ℤ[X]) {β : Ω}
     (h : aeval β f = 0) : aeval (τ β) f = 0 := by
   have := Polynomial.aeval_algHom_apply ((τ : Ω →ₐ[E] Ω).restrictScalars ℤ) β f
-  simp only [AlgHom.coe_restrictScalars', AlgHom.coe_coe] at this
+  simp only [AlgHom.coe_restrictScalars'] at this
   exact this.trans (by rw [h, map_zero])
 
 theorem adjoin_gen_eq_top (E : Type) [Field E] [Algebra E Ω] (β : Ω) (hβ : IsIntegral E β) :
@@ -288,7 +288,7 @@ theorem exists_unramified_ext : ∀ (E Ω : Type) [Field E] [NumberField E] [Fie
       refine GlobalTheory.UnrCycExt.core h hg1 hg2 hN 1 hn α f hfm hαf ?_ ?_ 1 (by simpa using IsPrimitiveRoot.one)
         (IntermediateField.one_mem _) (Or.inr ⟨-1, 2, by rw [← hα']; push_cast; ring, by norm_num⟩)
       · have hd : aeval α (derivative f) = -(1 - 2 * α) := by
-          simp [f, derivative_X_pow, map_ofNat]
+          simp [f, map_ofNat]
         rw [hd, Valuation.map_neg]
         have hαA : A.valuation α ≤ 1 := (A.valuation_le_one_iff α).mpr
           (ReciprocityTheory.Gal.mem_of_isIntegral_int A ⟨f, hfm, by rw [← aeval_def]; exact hαf⟩)
@@ -322,7 +322,7 @@ theorem exists_unramified_ext : ∀ (E Ω : Type) [Field E] [NumberField E] [Fie
         (by simpa using IsPrimitiveRoot.neg_one 0 (by norm_num))
         (neg_mem (IntermediateField.one_mem _)) (Or.inr ⟨0, 2, by rw [← hα']; push_cast; ring, by norm_num⟩)
       · have hd : aeval α (derivative f) = 2 * α := by
-          simp [f, derivative_X_pow, map_ofNat]
+          simp [f, map_ofNat]
         rw [hd]
         intro hlt
         have hsq := pow_lt_one₀ zero_le hlt (two_ne_zero)

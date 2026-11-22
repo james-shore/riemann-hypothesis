@@ -81,7 +81,7 @@ theorem exists_int_cong_tg : ∀ (D : D7) (k : Fin 2) (v : D.nd.PlG k), ∃ (u :
     have : ((a.val : ℕ) : 𝓞 D.host.E) = 0 := by exact_mod_cast h
     rw [this]; exact zero_mem _
   · have e : algebraMap D.host.E D.nd.Om (((a.val : ℕ) : 𝓞 D.host.E) : D.host.E) = ((a.val : ℕ) : D.nd.Om) := by
-      simp only [RingOfIntegers.coe_eq_algebraMap, map_natCast]
+      simp only [map_natCast]
     rw [e]
     exact hcong
 

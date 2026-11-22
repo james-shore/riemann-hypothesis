@@ -32,7 +32,7 @@ private theorem gdelta_apply' (κ : I → J → K) (R : MvPolynomial (I ⊕ J) K
 theorem commute_gdelta_pd (κ : I → J → K) (c : I ⊕ J) : Commute (gdelta κ) (pd c) := by
   refine LinearMap.ext fun R => ?_
   show gdelta κ (pderiv c R) = pderiv c (gdelta κ R)
-  simp only [gdelta_apply', map_sum, map_smul, Derivation.map_smul]
+  simp only [gdelta_apply', map_sum, Derivation.map_smul]
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
   rw [pderiv_comm c (Sum.inl i), pderiv_comm c (Sum.inr j)]
 

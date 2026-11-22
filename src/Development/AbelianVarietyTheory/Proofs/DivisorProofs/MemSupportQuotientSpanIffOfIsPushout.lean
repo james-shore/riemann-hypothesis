@@ -13,10 +13,6 @@ theorem mem_support_quotient_span_iff_of_isPushout :
         PrimeSpectrum.comap ba.hom p ∈ Module.support R (S ⧸ Submodule.span R (Set.range s)))) := by
   first
   | exact @_root_.GlobalTheory.QuotientSupportBaseChange.mem_support_quotient_iff
-  | exact _root_.GlobalTheory.QuotientSupportBaseChange.mem_support_quotient_iff
-  | (apply _root_.GlobalTheory.QuotientSupportBaseChange.mem_support_quotient_iff <;> assumption)
-  | (intros; apply _root_.GlobalTheory.QuotientSupportBaseChange.mem_support_quotient_iff <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.QuotientSupportBaseChange.mem_support_quotient_iff <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.QuotientSupportBaseChange.mem_support_quotient_iff ..)
 
 end GlobalTheory.SupportBC

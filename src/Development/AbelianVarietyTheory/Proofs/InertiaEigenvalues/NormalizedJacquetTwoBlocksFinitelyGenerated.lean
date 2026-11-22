@@ -18,8 +18,6 @@ theorem span_orbit_eq_top {G V : Type} [Group G] [AddCommGroup V] [Module ℂ V]
   | exact @_root_.GlobalTheory.SpanOrbitTop.span_orbit_eq_top
   | exact _root_.GlobalTheory.SpanOrbitTop.span_orbit_eq_top
   | (apply _root_.GlobalTheory.SpanOrbitTop.span_orbit_eq_top <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SpanOrbitTop.span_orbit_eq_top <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SpanOrbitTop.span_orbit_eq_top <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SpanOrbitTop.span_orbit_eq_top ..)
 
 theorem jacquet_fg : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k]

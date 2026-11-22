@@ -91,11 +91,9 @@ theorem valuation_mapPl (j : E ≃+* L) (w : HeightOneSpectrum (𝓞 E)) (x : E)
   have ha' : j (algebraMap (𝓞 E) E a) = algebraMap (𝓞 L) L (RingOfIntegers.mapRingEquiv j a) := by
     first
       | rfl
-      | simp
   have hb' : j (algebraMap (𝓞 E) E b) = algebraMap (𝓞 L) L (RingOfIntegers.mapRingEquiv j b) := by
     first
       | rfl
-      | simp
   rw [map_div₀, map_div₀, map_div₀, ha', hb', HeightOneSpectrum.valuation_of_algebraMap,
     HeightOneSpectrum.valuation_of_algebraMap, HeightOneSpectrum.valuation_of_algebraMap,
     HeightOneSpectrum.valuation_of_algebraMap, intValuation_mapPl, intValuation_mapPl]

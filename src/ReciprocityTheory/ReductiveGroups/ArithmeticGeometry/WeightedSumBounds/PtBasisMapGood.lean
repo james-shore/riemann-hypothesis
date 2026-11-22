@@ -38,7 +38,7 @@ theorem ptOn_lin (a : Fin d) {ga : Fin d → PowerSeries C} (h : IsCurve v ga) (
   by_cases hs : s = a
   · subst hs
     simp [tangent]
-  · simp [Finsupp.single_apply, hs, Ne.symm hs]
+  · simp [hs, Ne.symm hs]
 
 theorem ptOn_lg (G : LogFGL v d) (a : Fin d) {ga : Fin d → PowerSeries C} (h : IsCurve v ga)
     (b : Fin d) :
@@ -63,7 +63,7 @@ theorem ptBasisMap_lin (G : LogFGL v d) {γ : Fin d → Fin d → PowerSeries C}
     obtain ⟨a, rfl⟩ : ∃ a, ptOn a (γ a) = x := by simpa [List.mem_ofFn] using hx
     exact (ptOn_good a (hγ a) c).1
   rw [ptBasisMap, ptSumL_lin G _ hc b s, List.map_ofFn, List.sum_ofFn]
-  simp [Function.comp_def, ptOn_lin _ (hγ _)]
+  simp [ptOn_lin _ (hγ _)]
 
 theorem ptBasisMap_lg (G : LogFGL v d) {γ : Fin d → Fin d → PowerSeries C}
     (hγ : ∀ a, IsCurve v (γ a)) (b : Fin d) :

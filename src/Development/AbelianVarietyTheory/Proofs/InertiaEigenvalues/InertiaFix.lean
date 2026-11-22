@@ -12,8 +12,6 @@ theorem eq_one_of_pow_eq_one {K : Type*} [NormedField K] [IsUltrametricDist K] (
   | exact @_root_.GlobalTheory.PowerEqOneClose.eq_one_of_pow_eq_one
   | exact _root_.GlobalTheory.PowerEqOneClose.eq_one_of_pow_eq_one
   | (apply _root_.GlobalTheory.PowerEqOneClose.eq_one_of_pow_eq_one <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PowerEqOneClose.eq_one_of_pow_eq_one <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PowerEqOneClose.eq_one_of_pow_eq_one <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PowerEqOneClose.eq_one_of_pow_eq_one ..)
 
 theorem inertia_fix : ∀ (l : ℕ) [Fact l.Prime] (n : ℕ), 0 < n → ∀ σ : GQ l,

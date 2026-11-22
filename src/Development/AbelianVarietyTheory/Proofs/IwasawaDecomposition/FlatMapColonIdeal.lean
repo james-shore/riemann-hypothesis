@@ -43,7 +43,7 @@ theorem _root_.GlobalTheory.ideal_map_colon_eq_of_flat : ∀ {A R : Type} [CommR
     have hxf : x ∘ₗ f = 0 := by
       refine LinearMap.ext fun v => ?_
       simp [f, x, Algebra.smul_def, Fintype.sum_prod_type, Fintype.linearCombination_apply,
-        LinearMap.pi_apply, map_sum, Finset.sum_mul]
+        LinearMap.pi_apply, map_sum]
       rw [← sub_eq_add_neg, sub_eq_zero]
       refine Finset.sum_congr rfl fun i _ => ?_
       have e : ∑ j, algebraMap A R (b j) * algebraMap A R (v i) * c i j
@@ -74,8 +74,7 @@ theorem _root_.GlobalTheory.ideal_map_colon_eq_of_flat : ∀ {A R : Type} [CommR
       have hw1 : w.1 = a i := by simp [hw, f, Fintype.linearCombination_apply]
       have hw2 : ∀ p, w.2 p ∈ Ideal.span (Set.range b) := by
         intro p
-        simp only [hw, f, LinearMap.prod_apply, Pi.prod, LinearMap.pi_apply, LinearMap.smul_apply,
-          LinearMap.proj_apply, smul_eq_mul]
+        simp only [hw, f, LinearMap.prod_apply]
         exact Ideal.mul_mem_right _ _ (neg_mem (Ideal.subset_span ⟨p.2, rfl⟩))
       have h0 := DFunLike.congr_fun (hdec w) q
       rw [show g w = 0 from LinearMap.congr_fun hgf _] at h0

@@ -424,7 +424,7 @@ theorem phiTopCoords : PhiTopCoords := by
   refine Filter.Eventually.of_forall fun q => ?_
   obtain ⟨y, u⟩ := q
   simp only [hg, he, MeasurableEquiv.prodCongr, MeasurableEquiv.coe_mk, Equiv.prodCongr_apply, Prod.map,
-    Dx2.SL.reE, MeasurableEquiv.refl_apply, Equiv.coe_fn_mk]
+    Dx2.SL.reE, Equiv.coe_fn_mk]
   rw [conj_lowW, psi_conj, supS_eq, psi_star, ← subS_eq]
   congr 1
   have : U.headH σ d' (fun l => y ((iota σ).symm l)) u = lowP σ.symm y * C2.monoP σ.symm d' * G.upper u := by

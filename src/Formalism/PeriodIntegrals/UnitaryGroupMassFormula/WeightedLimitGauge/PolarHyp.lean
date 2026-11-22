@@ -33,7 +33,7 @@ theorem lintegral_fun_norm {E : Type*} [NormedAddCommGroup E] [InnerProductSpace
           (f := fun r : Ioi (0 : ℝ) => ENNReal.ofReal ((r : ℝ) ^ (Module.finrank ℝ E - 1))) (by fun_prop)
           (g := fun y : Ioi (0 : ℝ) => F y) (hF.comp measurable_subtype_coe)
         rw [Measure.volumeIoiPow, hw]
-        simp only [Pi.mul_apply, Function.comp_apply]
+        simp only [Pi.mul_apply]
         rw [lintegral_subtype_comap measurableSet_Ioi (fun y : ℝ => ENNReal.ofReal (y ^ (Module.finrank ℝ E - 1)) * F y)]
 
 theorem finrank_ck (k : ℕ) : Module.finrank ℝ (EuclideanSpace ℂ (Fin k)) = 2 * k := by

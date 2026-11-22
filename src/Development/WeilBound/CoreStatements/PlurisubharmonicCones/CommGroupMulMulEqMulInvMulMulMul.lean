@@ -314,7 +314,7 @@ theorem exists_quot (hb : Function.Bijective form) (halt : ∀ x, form x x = 0) 
     { carrier := {x | ∀ y ∈ I, form x y = 0}
       add_mem' := by
         intro x z hx hz y hy
-        simp only [Set.mem_setOf_eq, map_add, LinearMap.add_apply, hx y hy, hz y hy, add_zero]
+        simp only [map_add, LinearMap.add_apply, hx y hy, hz y hy, add_zero]
       zero_mem' := by
         intro y _
         simp

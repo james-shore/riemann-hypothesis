@@ -87,7 +87,6 @@ theorem chase (hI : ∀ n, Injective (I.X n)) {K1 KA KB K3 : Cx R} (φ : K1 ⟶ 
   have hc3' : pc (biprod.desc u v) c3 = _ := hc3
   have hz : pc (biprod.desc u v) (δ n (n + 1) c3 - z.1) = 0 := by
     rw [pc_sub, ← pc_δ]
-    change δ n (n + 1) (pc (biprod.desc u v) c3) - _ = 0
     rw [hc3', δ_sub, δ_sub, δ_δ, hδb2, hb]; simp
   have := (hC (n + 1)).2.2 _ hz
   exact (CohomologyClass.mk_eq_zero_iff _).2 ⟨n, rfl, c3, sub_eq_zero.1 this⟩

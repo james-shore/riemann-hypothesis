@@ -21,7 +21,7 @@ theorem coeff_alg_mul (o : O) (F : PowerSeries LL) (j : ℕ) :
     coeff j (algebraMap O (PowerSeries LL) o * F) = algebraMap O LL o * coeff j F := by
   rw [IsScalarTower.algebraMap_apply O LL (PowerSeries LL)]
   first
-    | rw [← PowerSeries.smul_eq_C_mul]; simp
+    | rw [← PowerSeries.smul_eq_C_mul]
     | simp [Algebra.algebraMap_eq_smul_one]
 
 theorem dv_smul' (T : LocLat G Qp LL O) (e : ℕ) {d : ℕ} (b : Fin d → W.DD T) (r : LL) (c : Fin d → LL) :
@@ -68,7 +68,7 @@ theorem secIn_of_fil (C : Formalism.MainNotions.UnusedSlot80.LevC.Ctx W) (A : Ar
     have h2 : dvO W T (e + 1) b (Pi.single m 1) = dv W T (e + 1) b (Pi.single m 1) := by
       unfold dvO; congr 1; funext k; by_cases hk : k = m
       · subst hk; simp
-      · simp [Pi.single_apply, hk]
+      · simp [hk]
     rwa [h2] at h1
   obtain ⟨I, P, Q, h, hPQ, hPG, hlev, hvan⟩ :=
     Formalism.MainNotions.UnusedSlot80.CrA.adapted Gf hGa (-(H : ℤ)) (H : ℤ) (by omega) hGtop
@@ -125,7 +125,6 @@ theorem secIn_of_fil (C : Formalism.MainNotions.UnusedSlot80.LevC.Ctx W) (A : Ar
         LU * ps W 0 ^ ((k i : ℤ) - H).toNat := by
       rw [Finset.prod_range_succ', hLU, lamUp_eq]
       congr 1
-      all_goals (try (refine Finset.prod_congr rfl fun s _ => ?_; simp only [α, if_neg (Nat.succ_ne_zero s), Int.toNat_natCast]))
     have hden : ∏ s ∈ Finset.range (e + 1), ps W s ^ (-(α i s)).toNat =
         ps W 0 ^ ((H : ℤ) - k i).toNat := by
       rw [Finset.prod_range_succ']
@@ -181,7 +180,7 @@ theorem secIn_of_fil (C : Formalism.MainNotions.UnusedSlot80.LevC.Ctx W) (A : Ar
       rw [h3, ← h1]
       by_cases hmm : m = m'
       · subst hmm; simp
-      · simp [hmm, Pi.single_apply, Ne.symm hmm]
+      · simp [hmm]
     show lE W (κ1 + κ2) * f m = ∑ i, g i * algebraMap O W.EE (c₀ i m)
     simp only [g, c₀, Finset.sum_mul]
     rw [Finset.sum_comm]

@@ -19,7 +19,7 @@ theorem ker_baseChange_tower (R A K Q P : Type) [CommRing R] [CommRing A] [CommR
       | zero => simp
       | add x y hx hy => simp only [tmul_add, map_add, hx, hy]
       | tmul a q =>
-        simp [e₁, e₂, LinearMap.baseChange_tmul, TensorProduct.smul_tmul']
+        simp [e₁, e₂, LinearMap.baseChange_tmul]
   refine ⟨LinearEquiv.ofSubmodules e₁ _ _ ?_⟩
   ext y
   simp only [Submodule.mem_map, LinearMap.mem_ker]

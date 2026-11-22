@@ -280,11 +280,9 @@ theorem bkBCore_of_integralDuality : ∀ (l : ℕ) [Fact l.Prime] (P : LocPrime 
   let PQ : A.V →ₗ[ℚ_[l]] A'.V →ₗ[ℚ_[l]] ℚ_[l] := LinearMap.mk₂ ℚ_[l] (fun x y => lam (Pr x y))
     (fun x x' y => by beta_reduce; rw [map_add, LinearMap.add_apply, map_add])
     (fun c x y => by
-      beta_reduce
       rw [← algebraMap_smul LL c x, map_smul, LinearMap.smul_apply, smul_eq_mul, ← Algebra.smul_def, map_smul])
     (fun x y y' => by beta_reduce; rw [map_add, map_add])
     (fun c x y => by
-      beta_reduce
       rw [← algebraMap_smul LL c y, map_smul, smul_eq_mul, ← Algebra.smul_def, map_smul])
   have hPQ : ∀ x y, PQ x y = lam (Pr x y) := fun _ _ => rfl
   have hdRQ : IsDR (P.PD K) (GlobalTheory.PstCoeff.resQ A.ρ) := (GlobalTheory.PstCoeff.isDR_resQ_iff P A.ρ).mpr hdR

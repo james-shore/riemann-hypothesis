@@ -261,8 +261,6 @@ theorem fZ_multiHomogeneous_degree_sum (hd : d.AxH 𝒜) (h : d.S1) (c : ι) (F 
     have h2 := congrArg (fun i : Fin (d.D + 1) => (i : ℕ)) h1
     first
     | (simp only [Fin.val_zero, Fin.val_one', Nat.mod_eq_of_lt (show 1 < d.D + 1 by omega)] at h2; omega)
-    | (simp at h2; omega)
-    | (simp [Fin.val_one'] at h2; omega)
   obtain ⟨s, hs⟩ : F.support.Nonempty := by
     rw [Finset.nonempty_iff_ne_empty, Ne, MvPolynomial.support_eq_empty]
     exact hF0

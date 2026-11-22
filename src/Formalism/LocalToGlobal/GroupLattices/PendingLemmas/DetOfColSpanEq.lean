@@ -98,7 +98,7 @@ theorem exists_mul_of_le {k : ℕ} (g g' : Matrix (Fin k) (Fin k) Qq) (h : colSp
   refine Matrix.ext fun r c => ?_
   rw [Matrix.mul_apply]
   have h1 := congrFun (ha c) r
-  simp only [Finset.sum_apply, Pi.smul_apply, Algebra.smul_def] at h1
+  simp only [Finset.sum_apply, Algebra.smul_def] at h1
   rw [← h1]
   refine Finset.sum_congr rfl fun i _ => ?_
   simp [Matrix.of_apply, Matrix.map_apply, mul_comm]
@@ -207,8 +207,6 @@ theorem len_edge : ∀ j (v' : Fin (X.Pj j).nV) (i : ℕ) (L : (X.Pj j).Tup)
   have hu : Function.update L v' L'' v' = L'' := by
     first
     | exact Function.update_self _ _ _
-    | exact Function.update_same _ _ _
-    | exact dif_pos rfl
   rw [hu]
   exact lenLat_edge hS.p_unif hS.res_card (by have := hS.five_le; omega) (by have := hS.two_le; omega) _ he
 
@@ -224,8 +222,6 @@ theorem len_other : ∀ j (v' : Fin (X.Pj j).nV) (v : X.Pl) (L : (X.Pj j).Tup)
   have hu : Function.update L v' L'' (X.vJ j v) = L (X.vJ j v) := by
     first
     | exact Function.update_of_ne hne _ _
-    | exact Function.update_noteq hne _ _
-    | exact dif_neg hne
   rw [hu]
 
 end Global

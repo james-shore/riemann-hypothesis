@@ -82,7 +82,7 @@ theorem herm_eI {k r : ℕ} (v : Fin (2 * r + k + 1) → ℂ) (a : Fin r) :
   unfold Formalism.QuantumDeterminants.herm Formalism.QuantumDeterminants.bvec
   have hs : star (Pi.single (Formalism.QuantumDeterminants.eI k r a) (1 : ℂ) : Fin (2 * r + k + 1) → ℂ) =
       (Pi.single (Formalism.QuantumDeterminants.eI k r a) (1 : ℂ) : Fin (2 * r + k + 1) → ℂ) := by
-    ext j; by_cases h : j = Formalism.QuantumDeterminants.eI k r a <;> simp [Pi.single_apply, h]
+    ext j; by_cases h : j = Formalism.QuantumDeterminants.eI k r a <;> simp [h]
   rw [hs, single_one_dotProduct, Matrix.mulVec, dotProduct]
   rw [Finset.sum_eq_single (Formalism.QuantumDeterminants.esI k r a)]
   · simp [Formalism.QuantumDeterminants.Hpk, Formalism.QuantumDeterminants.eI, Formalism.QuantumDeterminants.esI]
@@ -260,7 +260,7 @@ theorem frameC_holds : FrameC := by
     | smul c x _ hx => rw [hBl, hx, mul_zero]
   have hset : ∀ a : Fin D.R.rS, {b : Fin D.R.rS | b < a} = {b | b.val < a.castSucc.val} := fun a => rfl
   have hsetU : {b : Fin D.R.rS | b.val < (Fin.last D.R.rS).val} = Set.univ := by
-    ext b; simp [b.isLt]
+    ext b; simp
   have hzz0 : (HV D).B (X.zu u) (X.zu u) ≠ 0 := by
     rw [hBdef, X.zu_norm u]
     exact neg_ne_zero.2 (tu_ne D u)

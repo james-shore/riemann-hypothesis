@@ -25,12 +25,10 @@ private theorem subst_rename_lemma {σ τ υ R : Type} [CommRing R] [Finite σ] 
     first
     | exact MvPowerSeries.HasSubst.of_constantCoeff_zero ha
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero ha
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun s => by rw [ha s]; exact IsNilpotent.zero)
   have h2 : MvPowerSeries.HasSubst (fun t => a (ρ t)) := by
     first
     | exact MvPowerSeries.HasSubst.of_constantCoeff_zero (fun t => ha (ρ t))
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero (fun t => ha (ρ t))
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun t => by rw [ha (ρ t)]; exact IsNilpotent.zero)
   rw [← MvPowerSeries.coe_substAlgHom h1, ← MvPowerSeries.coe_substAlgHom h2]
   erw [MvPowerSeries.substAlgHom_coe, MvPowerSeries.substAlgHom_coe, MvPolynomial.aeval_rename]
   rfl

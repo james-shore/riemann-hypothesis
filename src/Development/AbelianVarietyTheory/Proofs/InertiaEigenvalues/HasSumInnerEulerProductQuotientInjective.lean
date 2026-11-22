@@ -101,8 +101,8 @@ theorem hasSum_inner_quotient_eulerProduct_injective : ∀ (Γ : Type) [Group Γ
         simp only [mul_inv_rev, map_mul, map_inv, hidem, hcγ, inv_one, mul_one, inv_mul_cancel]
         exact K.one_mem
       · rw [Function.update_of_ne hw, hfγ' w, QuotientGroup.eq, Subgroup.mem_comap]
-        simp only [hγ, mul_inv_rev, inv_inv, map_mul, map_inv, horth v w _ hw.symm, inv_one, mul_one,
-          one_mul, inv_mul_cancel]
+        simp only [hγ, map_mul, map_inv, horth v w _ hw.symm, inv_one, mul_one,
+          inv_mul_cancel]
         exact K.one_mem
     have hupd : Function.update f v (x0 v) = f := by
       rw [← hv]; exact Function.update_eq_self v f

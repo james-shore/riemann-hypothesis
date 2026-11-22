@@ -24,7 +24,7 @@ theorem map_aeval_commute_of_commute {K R : Type} [Field K] [CommRing R] [Algebr
       have h2 : ((algebraMap K R).mapMatrix (m := Fin n)) (algebraMap K (Matrix (Fin n) (Fin n) K) a)
           = (algebraMap K R a) • (1 : Matrix (Fin n) (Fin n) R) := by
         ext i j
-        simp [Matrix.algebraMap_matrix_apply, Matrix.one_apply, Algebra.algebraMap_eq_smul_one]
+        simp [Matrix.one_apply, Algebra.algebraMap_eq_smul_one]
       rw [h2]
       exact (Commute.one_right X).smul_right _
   exact key h

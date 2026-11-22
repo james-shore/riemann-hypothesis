@@ -43,7 +43,6 @@ theorem sum_mul_vecMul {n : Type} [Fintype n] (A : Matrix n n E) (w : n → E) (
 theorem herm {hT : V →ₗ⋆[E] V →ₗ[E] E} (hS : hT.IsSymm) (x y : V) : hT x y = star (hT y x) := by
   first
     | exact (hS.eq y x).symm
-    | exact (hS y x).symm
 
 theorem left_sub_sum (hT : V →ₗ⋆[E] V →ₗ[E] E) {ι : Type} [Fintype ι] (z : V) (c : ι → E)
     (f : ι → V) (x : V) :

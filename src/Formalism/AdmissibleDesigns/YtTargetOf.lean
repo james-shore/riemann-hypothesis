@@ -21,7 +21,7 @@ theorem nzsd_R' : NoZeroSMulDivisors (D.nd.O i) Dd.R' := by
   first
   | exact inferInstance
   | (haveI : NoZeroSMulDivisors (D.nd.O i) (FractionRing (D.nd.O i)) :=
-        NoZeroSMulDivisors.of_algebraMap_injective (IsFractionRing.injective _ _); exact inferInstance)
+        NoZeroSMulDivisors.of_algebraMap_injective (IsFractionRing.injective _ _))
   | exact ⟨fun {c x} h => by
       by_cases hc : c = 0
       · exact Or.inl hc
@@ -51,7 +51,6 @@ theorem fd_yt {w : HeightOneSpectrum (𝓞 D.host.E)} {hw : w ∈ placesOver D.h
   obtain ⟨m, xs, φ, hφ, -⟩ := hemb
   first
   | exact FiniteDimensional.of_injective φ hφ
-  | exact Module.Finite.of_injective φ hφ
 
 private theorem continuous_of_injective_linearMap_comp {K V W G : Type*} [Field K] [TopologicalSpace K]
     {_a : AddCommMonoid V} {_m : Module K V} [TopologicalSpace V] [ContinuousAdd V] [IsModuleTopology K V]
@@ -63,7 +62,6 @@ private theorem continuous_of_injective_linearMap_comp {K V W G : Type*} [Field 
   haveI : ContinuousSMul K V := by
     first
     | exact inferInstance
-    | exact IsModuleTopology.toContinuousSMul K V
   obtain ⟨ψ, hψ⟩ := LinearMap.exists_leftInverse_of_injective φ (LinearMap.ker_eq_bot.mpr hφ)
   have hψc : Continuous ψ := IsModuleTopology.continuous_of_linearMap ψ
   have e1 : f = fun g => ψ (φ (f g)) := funext fun g => (LinearMap.congr_fun hψ (f g)).symm
@@ -80,7 +78,6 @@ theorem cont_yt {w : HeightOneSpectrum (𝓞 D.host.E)} {hw : w ∈ placesOver D
   refine continuous_pi fun a => ?_
   first
   | exact (hc' (xs a)).matrix_mulVec continuous_const
-  | fun_prop
 
 def ytY (hfin : Module.Finite (D.nd.O i) Dd.R') {w : HeightOneSpectrum (𝓞 D.host.E)}
     {hw : w ∈ placesOver D.host.E (D.nd.l i)} (hemb : YtEmbW i dc r Dd hw) (hc : MsContW i r hw) :
@@ -124,7 +121,6 @@ theorem ytPsi_rec (hfin : Module.Finite (D.nd.O i) Dd.R') {w : HeightOneSpectrum
   haveI := nzsd_R' i Dd
   first
   | apply ytG_psi
-  | (unfold ytY; apply ytG_psi)
 
 theorem jump_pi (hF : TruncatedSeriesCountingIdentities.FontaineAtPlacesOverL i) (hG2 : TruncatedSeriesCountingIdentities.admG2 i r ρ π) {w : HeightOneSpectrum (𝓞 D.host.E)}
     (hw : w ∈ placesOver D.host.E (D.nd.l i)) (hc : MsContW i r hw) (x : D.nd.X i) (τ) (a : ℤ)

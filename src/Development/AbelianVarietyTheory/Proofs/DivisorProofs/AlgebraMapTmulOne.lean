@@ -34,8 +34,6 @@ theorem ringHom_ext {g h : A ⊗[R] B →+* C} (h1 : ∀ a : A, g (a ⊗ₜ[R] (
   | exact @_root_.GlobalTheory.RingHomTensorExtensionality.ringHom_ext_tensor
   | exact _root_.GlobalTheory.RingHomTensorExtensionality.ringHom_ext_tensor
   | (apply _root_.GlobalTheory.RingHomTensorExtensionality.ringHom_ext_tensor <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RingHomTensorExtensionality.ringHom_ext_tensor <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RingHomTensorExtensionality.ringHom_ext_tensor <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RingHomTensorExtensionality.ringHom_ext_tensor ..)
 
 theorem algebraMap_tmul_one (r : R) :

@@ -55,12 +55,6 @@ theorem intInt (t : HeightOneSpectrum (𝓞 F)) {z : F} (hz : IsIntegral ℤ z) 
   obtain ⟨r, rfl⟩ : ∃ r : 𝓞 F, algebraMap (𝓞 F) F r = z := ⟨⟨z, hz⟩, rfl⟩
   first
   | exact HeightOneSpectrum.coe_mem_adicCompletionIntegers t r
-  | (rw [HeightOneSpectrum.mem_adicCompletionIntegers, HeightOneSpectrum.valuedAdicCompletion_eq_valuation',
-      HeightOneSpectrum.valuation_of_algebraMap]
-     exact HeightOneSpectrum.intValuation_le_one t r)
-  | (rw [HeightOneSpectrum.mem_adicCompletionIntegers]
-     simp [HeightOneSpectrum.valuedAdicCompletion_eq_valuation', HeightOneSpectrum.valuation_of_algebraMap,
-       HeightOneSpectrum.intValuation_le_one])
 
 theorem tcoord_bound {ι : Type} (B : Module.Basis ι F E) (m : ℤ)
     (hm : ∀ x ∈ PI.UnitaryApproxDefs.intOE E, ∀ k, IsIntegral ℤ ((m : F) * B.coord k x)) (t : HeightOneSpectrum (𝓞 F))
@@ -187,7 +181,6 @@ theorem tensLocX_of (hI : LocInt) : TensLoc := by
     intro x
     first
     | rfl
-    | rw [← IsScalarTower.algebraMap_apply, ← IsScalarTower.algebraMap_apply]
   have key : ∀ k, ((D : 𝓞 F) : F) * ((m : F) * B.coord k e) = (c : F) * ((a k * q k : 𝓞 F) : F) := by
     intro k
     have h1 : ((D : 𝓞 F) : F) = ((d k * q k : 𝓞 F) : F) := congrArg (fun x : 𝓞 F => (x : F)) (hq k)
@@ -210,7 +203,7 @@ theorem tensLocX_of (hI : LocInt) : TensLoc := by
   rw [Algebra.smul_def, ← Module.Basis.coord_apply]
   have hk2 := congrArg (algebraMap F E) (key k)
   push_cast at hk2 ⊢
-  simp only [map_mul, map_intCast] at hk2 ⊢
+  simp only [map_intCast] at hk2 ⊢
   linear_combination ((n : E) * B k) * hk2
 
 end PI.UnitaryGroupMassFormula.UJClassMass

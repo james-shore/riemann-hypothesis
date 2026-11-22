@@ -36,7 +36,7 @@ abbrev chMod (p q : ℕ) (x : ℚ) : GKMod p q where
   lie := by
     intro X Y
     ext
-    simp [chAct_apply, Matrix.trace_sub, Matrix.trace_mul_comm X Y]
+    simp [chAct_apply, Matrix.trace_mul_comm X Y]
     ring
   kfin := fun _ => ⟨⊤, inferInstance, Submodule.mem_top, fun _ _ _ _ => Submodule.mem_top⟩
   wts := fun v => by
@@ -55,7 +55,7 @@ abbrev shiftMod {r s : ℕ} (M : GKMod r s) (t : ℚ) : GKMod r s where
     have h := LinearMap.congr_fun (M.lie X Y) v
     simp only [LinearMap.sub_apply, LinearMap.smulRight_apply, LinearMap.smul_apply,
       Matrix.traceLinearMap_apply, Module.End.mul_apply, LinearMap.id_apply, map_sub, map_smul,
-      Matrix.trace_sub, Matrix.trace_mul_comm X Y, sub_self, smul_zero, zero_smul, sub_zero] at h ⊢
+      Matrix.trace_mul_comm X Y] at h ⊢
     linear_combination (norm := module) h
   kfin := fun v => by
     obtain ⟨W, fW, hv, sW⟩ := M.kfin v

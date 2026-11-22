@@ -16,7 +16,6 @@ theorem decayMin : DecayMin := by
     have h2 : x ^ A ≤ (1 + x) ^ A := Real.rpow_le_rpow hx.le (by linarith) hA
     first
       | exact inv_anti₀ h1 h2
-      | exact inv_le_inv_of_le h1 h2
 
 theorem scaleMatch : ScaleMatch := by
   have e1 : ∀ x : ℂ, (cStd * (starRingEnd ℂ) x).re = (betaU * x).re := by

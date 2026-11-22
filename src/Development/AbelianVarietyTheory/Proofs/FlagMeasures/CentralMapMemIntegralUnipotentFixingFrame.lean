@@ -68,7 +68,7 @@ theorem cen_isom (e : Fin r → S.V) (he : ∀ a b, S.hT (e a) (e b) = 0) (c : M
   have hcross : ∀ x y, S.hT (nil e c x) y + S.hT x (nil e c y) = 0 := by
     intro x y
     simp only [nil_apply, map_sum, LinearMap.sum_apply, LinearMap.map_smulₛₗ, LinearMap.smul_apply,
-      LinearMap.map_smul, smul_eq_mul, map_mul, RingHom.id_apply, hstar, hsym]
+      smul_eq_mul, map_mul, RingHom.id_apply, hstar, hsym]
     rw [Finset.sum_comm, ← Finset.sum_add_distrib]
     refine Finset.sum_eq_zero fun a _ => ?_
     rw [← Finset.sum_add_distrib]

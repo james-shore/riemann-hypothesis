@@ -34,7 +34,7 @@ theorem eq_of_const_nonzero : ∀ (k : Type) [Field k] [IsAlgClosed k] (Y : Sche
       (PrimeSpectrum.basicOpen _).isOpen.isLocallyClosed ?_ ?_ ?_
     · refine IsOpen.dense (X := PrimeSpectrum (Polynomial k)) (PrimeSpectrum.basicOpen _).isOpen
         ⟨⟨⊥, Ideal.isPrime_bot⟩, ?_⟩
-      simp [PrimeSpectrum.mem_basicOpen, Polynomial.X_ne_zero]
+      simp [Polynomial.X_ne_zero]
     · intro x hx hcl
       have hp := pointOfClosedPoint_comp (f ≫ q) x hcl
       have hpx := pointOfClosedPoint_apply (f ≫ q) x hcl (IsLocalRing.closedPoint k)

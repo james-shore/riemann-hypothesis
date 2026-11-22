@@ -14,7 +14,7 @@ theorem isFrac_add {A M : Type} [CommRing A] [AddCommGroup M] [Module A M] {d : 
   unfold IsFrac at *
   rw [h, LocalizedModule.mk_eq]
   refine ⟨1, ?_⟩
-  simp only [Submonoid.smul_def, one_smul, smul_smul, pow_add, mul_comm]
+  simp only [Submonoid.smul_def, one_smul, smul_smul, pow_add]
 
 theorem isFrac_le {A M : Type} [CommRing A] [AddCommGroup M] [Module A M] {d : A}
     {y : LocalizedModule (Submonoid.powers d) M} {m : M} {k a : ℕ} (h : IsFrac d y m k) (hka : k ≤ a) :
@@ -28,7 +28,7 @@ theorem isFrac_smul {A M : Type} [CommRing A] [AddCommGroup M] [Module A M] {d :
   unfold IsFrac at h
   rw [h, LocalizedModule.smul'_mk, LocalizedModule.mk_eq]
   refine ⟨1, ?_⟩
-  simp only [Submonoid.smul_def, one_smul, OneMemClass.coe_one]
+  simp only [Submonoid.smul_def, one_smul]
 
 theorem exists_common_den {R : Type} [CommRing R] (x : R) {ι : Type} [Finite ι]
     (f : ι → Localization.Away x) : ∃ (n : ℕ) (g : ι → R), ∀ i, algebraMap R _ (g i) = x ^ n • f i := by

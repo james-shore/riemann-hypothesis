@@ -22,7 +22,6 @@ theorem side_well_formed {s : ℕ} (h : A3.fam3.Ok3 s) (P : Subgroup G) (ψ : P 
   first
   | exact DefFam3.side_well_formed h P ψ Zs hst hin hsep
   | exact A3.fam3.side_well_formed h P ψ Zs hst hin hsep
-  | exact DefFam3.side_well_formed (F3 := A3.fam3) h P ψ Zs hst hin hsep
 
 end FamIn3
 

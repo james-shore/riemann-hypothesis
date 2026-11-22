@@ -101,7 +101,7 @@ theorem mud_unitary (hk : 1 ≤ k) (d : ℂ) (hd : 1 < ‖d‖) : (mud k d)ᴴ *
   rcases eq_or_ne j 0 with rfl | hj0
   · rw [mul_mud_blk hk d _ _ _ (Or.inl rfl), hP, hP, Hb_apply]
     rcases eq_or_ne i 0 with rfl | hi0
-    · simp only [character_first_entry hk, character_last_entry hk, if_true, if_neg h0L, if_neg h0L.symm, star_neg, hss, Complex.star_def, Complex.conj_conj]
+    · simp only [character_first_entry hk, character_last_entry hk, if_true, if_neg h0L, star_neg, hss, Complex.star_def, Complex.conj_conj]
       linear_combination -hs
     rcases eq_or_ne i (Fin.last k) with rfl | hiL
     · simp only [mud0L hk, mudLL hk, character_first_entry hk, character_last_entry hk, if_true, if_neg h0L, if_neg h0L.symm, hss,
@@ -112,11 +112,11 @@ theorem mud_unitary (hk : 1 ≤ k) (d : ℂ) (hd : 1 < ‖d‖) : (mud k d)ᴴ *
   rcases eq_or_ne j (Fin.last k) with rfl | hjL
   · rw [mul_mud_blk hk d _ _ _ (Or.inr rfl), hP, hP, Hb_apply]
     rcases eq_or_ne i 0 with rfl | hi0
-    · simp only [character_first_entry hk, character_last_entry hk, mud0L hk, mudLL hk, if_true, if_neg h0L, if_neg h0L.symm, star_neg, hss, Complex.star_def,
+    · simp only [character_first_entry hk, character_last_entry hk, mud0L hk, mudLL hk, if_true, if_neg h0L, star_neg, hss, Complex.star_def,
         Complex.conj_conj]
       ring
     rcases eq_or_ne i (Fin.last k) with rfl | hiL
-    · simp only [mud0L hk, mudLL hk, if_true, if_neg h0L, if_neg h0L.symm, hss, Complex.star_def]
+    · simp only [mud0L hk, mudLL hk, if_true, if_neg h0L, hss, Complex.star_def]
       linear_combination hs
     · simp only [mud_col hk d hi0 hiL, if_neg (Ne.symm hi0), if_neg (Ne.symm hiL), if_neg hiL]
       simp
@@ -145,7 +145,7 @@ theorem mud_conj_mul (hk : 1 ≤ k) (d : ℂ) (hd : 1 < ‖d‖) : (mud k d).map
   rcases eq_or_ne j (Fin.last k) with rfl | hjL
   · rw [mul_mud_blk hk d _ _ _ (Or.inr rfl), hc, hc, one_apply]
     rcases eq_or_ne i 0 with rfl | hi0
-    · simp only [character_first_entry hk, mud0L hk, mudLL hk, if_neg h0L, if_neg h0L.symm, map_neg, hsc, Complex.conj_conj]
+    · simp only [character_first_entry hk, mud0L hk, mudLL hk, if_neg h0L, map_neg, hsc, Complex.conj_conj]
       ring
     rcases eq_or_ne i (Fin.last k) with rfl | hiL
     · simp only [character_last_entry hk, mudLL hk, mud0L hk, if_true, map_neg, hsc]
@@ -183,7 +183,7 @@ theorem wbE_smul {r : ℕ} (a : ℂ) (v : Fin (k + 1) → ℂ) : wbE k r (a • 
 
 theorem bvec_wI {r : ℕ} (j : Fin (k + 1)) : bvec (wI k r j) = wbE k r (Pi.single j 1) := by
   funext i
-  simp only [bvec, wI, wbE, Pi.single_apply, Fin.ext_iff, Fin.val_mk]
+  simp only [bvec, wI, wbE, Pi.single_apply, Fin.ext_iff]
   split_ifs <;> first | rfl | omega
 
 end ReciprocityTheory.ChartRestriction.DS.Mult1.RepsA

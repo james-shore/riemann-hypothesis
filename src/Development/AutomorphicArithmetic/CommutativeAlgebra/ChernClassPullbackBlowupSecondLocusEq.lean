@@ -103,7 +103,5 @@ theorem UpperTheory.chernClass_pullback_blowupSecondLocus_eq :
       intro U x
       rw [lineUnit_map, lineUnit_map, lineUnit_line]
       first
-        | exact (mul_div_cancel _ _).symm
-        | exact (mul_div_cancel_left _ _).symm
-        | exact (mul_div_cancel'_right _ _).symm)
+        | exact (mul_div_cancel _ _).symm)
   rw [hsum, h0, add_zero]

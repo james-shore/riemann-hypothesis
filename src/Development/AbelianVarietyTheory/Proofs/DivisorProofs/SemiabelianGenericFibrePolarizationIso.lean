@@ -24,8 +24,6 @@ theorem exists_shift {R : Type} [CommRing R] [IsDomain R] [IsNoetherianRing R] (
   | exact @_root_.GlobalTheory.ClosingLemmaSecond.main
   | exact _root_.GlobalTheory.ClosingLemmaSecond.main
   | (apply _root_.GlobalTheory.ClosingLemmaSecond.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ClosingLemmaSecond.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ClosingLemmaSecond.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ClosingLemmaSecond.main ..)
 
 section
@@ -59,7 +57,7 @@ theorem exists_term_ne_zero [IsNoetherianRing R] (hI : I ≤ Ideal.jacobson ⊥)
       have hB : (lift (toUnit T) b).left ≫ (snd _ D.P.A).left = b.left := by rw [← Over.comp_left, lift_snd]
       have hF : (lift (toUnit T) b).left ≫ (fst _ D.P.A).left = (lift (toUnit T) x).left ≫ (fst _ G).left := by
         rw [← Over.comp_left, ← Over.comp_left, lift_fst, lift_fst]
-      have hi : lift (toUnit T) x = x ≫ (λ_ G).inv := by ext1 <;> simp [toUnit_unique]
+      have hi : lift (toUnit T) x = x ≫ (λ_ G).inv := by ext1 <;> simp
       have hi' : (lift (toUnit T) x).left = (𝟙 _ ≫ (fstG I e G).left) ≫ (λ_ G).inv.left := by
         rw [hi, Category.id_comp]; rfl
       obtain ⟨J, hJ⟩ := exists_good_pt (Z := T.left) D.P.isLB z

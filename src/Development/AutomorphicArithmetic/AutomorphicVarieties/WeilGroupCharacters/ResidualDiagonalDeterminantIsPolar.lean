@@ -23,7 +23,7 @@ private theorem chi_ofRep {n : ℕ} {A G : Type} [CommRing A] [Group G] (ρ : G 
   rw [map_sub]
   congr 2
   ext i j : 2
-  by_cases h : i = j <;> simp [GDet.repAlg, Matrix.one_apply, Matrix.diagonal_apply, h]
+  by_cases h : i = j <;> simp [GDet.repAlg, h]
 
 private theorem star_single {l : ℕ} [Fact l.Prime] (F : GFrame l) (O : Type) [CommRing O] [Algebra ℤ_[l] O]
     (R : Type) [CommRing R] [Algebra O R] (n : ℕ) (g : F.G₀) (b : R) :

@@ -38,7 +38,7 @@ theorem isUnit_gs_pow {X Y : Scheme.{0}} (f : Y ⟶ X) (y : Y) (U : X.Opens) (h 
 theorem dvd_of_eq_sum {P : Scheme.{0}} {x : P} {W : P.Opens} (hmem : x ∈ W) {κ : Type} {S : Finset κ}
     {a b : κ → Γ(P, W)} {L : Γ(P, W)} (c : P.presheaf.stalk x) (heq : L = ∑ i ∈ S, a i * b i)
     (h : ∀ i ∈ S, c ∣ gs (𝟙 P) x W (a i)) : c ∣ gs (𝟙 P) x W L := by
-  have hx : (𝟙 P) x ∈ W := by first | exact hmem | simpa using hmem
+  have hx : (𝟙 P) x ∈ W := by first | exact hmem
   subst heq
   rw [gs_fsum (𝟙 P) x W hx]
   refine Finset.dvd_sum fun i hi => ?_

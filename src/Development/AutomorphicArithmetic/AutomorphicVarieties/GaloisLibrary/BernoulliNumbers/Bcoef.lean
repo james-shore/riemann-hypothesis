@@ -12,7 +12,6 @@ theorem UpperTheory.V.Bern.b_egf :
     PowerSeries.rescale_rescale] at h
   have hc : ((a : ℚ) / N) * N = a := by field_simp
   rw [hc] at h
-  beta_reduce at h
   have hmk : (PowerSeries.mk fun k => bcoef N k a / (k.factorial : ℚ)) =
       PowerSeries.C (1 / (N : ℚ)) * PowerSeries.mk (fun n => (N : ℚ) ^ n *
         (Polynomial.aeval ((a : ℚ) / N)) ((1 / (n.factorial : ℚ)) • Polynomial.bernoulli n)) := by

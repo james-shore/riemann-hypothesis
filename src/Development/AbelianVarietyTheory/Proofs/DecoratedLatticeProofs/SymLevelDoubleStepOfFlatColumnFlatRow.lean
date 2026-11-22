@@ -82,7 +82,7 @@ theorem hat_box {ψ : AddChar k Circle} (hψ : HasConductor ψ 1) (ν : Measure 
       intro l
       by_cases hl : l = i
       · subst hl
-        simp only [hy₀def, Pi.single_eq_same, map_neg, map_div₀]
+        simp only [hy₀def, Pi.single_eq_same]
         rw [Units.val_inv_eq_inv_val, map_inv₀]
         rw [hxdef, map_mul, Units.val_inv_eq_inv_val, map_inv₀] at hy1
         have h2 := mul_le_mul' hy1 (le_refl (valuation k (u l))⁻¹)
@@ -151,7 +151,7 @@ theorem conj_rowE (j c : ℕ) (H : j + 1 + (c + 1) = s) (r : ℕ) (v : XIx (Fin 
   congr 1
   rw [Units.val_mul, Units.val_mul, e, e2]
   change _ * fromBlocks 1 0 _ 1 * _ = _
-  simp only [fromBlocks_multiply, Matrix.one_mul, Matrix.mul_one, Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add,
+  simp only [fromBlocks_multiply, Matrix.mul_one, Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add,
     diagonal_mul_diagonal]
   congr 1
   · ext l x

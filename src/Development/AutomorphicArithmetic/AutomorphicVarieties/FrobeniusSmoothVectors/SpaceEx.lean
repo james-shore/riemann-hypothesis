@@ -38,7 +38,7 @@ private theorem tri_diag (hn : n = 2 ∨ n = 3) (T : H → Matrix (Fin n) (Fin n
   have e : ∀ j, T g₀ - ψ j g₀ • (1 : Matrix (Fin n) (Fin n) C) = diagonal fun i => d i - ψ j g₀ := fun j => by
     rw [hd]
     ext x y
-    by_cases h : x = y <;> simp [h, Matrix.one_apply]
+    by_cases h : x = y <;> simp [h]
   have h := congrFun (congrFun (ho (Function.update (fun _ => g₀) a s)) a) b
   have k : ∀ i j, i ≠ j → ∀ x, ((d i - ψ j g₀) * x = 0 ↔ x = 0) ∧ (x * (d i - ψ j g₀) = 0 ↔ x = 0) :=
     fun i j hij x => ⟨(hu i j hij).mul_right_eq_zero, (hu i j hij).mul_left_eq_zero⟩

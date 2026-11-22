@@ -74,7 +74,7 @@ theorem locineq : ∀ (x y : ℂ) (T : ℝ), 0 ≤ T → T < 1 → ‖x‖ ^ 2 *
   have h : ∀ i j, ‖z i * conj (z j) * T‖ < 1 := by
     intro i j
     fin_cases i <;> fin_cases j <;>
-      simp [z, hnT, Complex.norm_conj, abs_of_nonneg hT0] <;> nlinarith
+      simp [z, abs_of_nonneg hT0] <;> nlinarith
   have key := locineq_exp_prod z T hT0 h
   have c1 : ‖1 - conj x * T‖ = ‖1 - x * T‖ := by
     rw [← Complex.norm_conj (1 - x * T)]; simp

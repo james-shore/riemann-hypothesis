@@ -30,9 +30,6 @@ theorem psiA_zero : psiA F 0 = 1 := by
 theorem norm_exp_real (t : ℝ) : ‖Complex.exp (2 * Real.pi * Complex.I * (t : ℂ))‖ = 1 := by
   first
     | (rw [Complex.norm_exp]; simp)
-    | simp [Complex.norm_exp]
-    | (rw [(show (2 * Real.pi * Complex.I * (t : ℂ)) = ((2 * Real.pi * t : ℝ) : ℂ) * Complex.I by push_cast; ring)]
-       exact Complex.norm_exp_ofReal_mul_I _)
 
 theorem continuous_psiA : Continuous (psiA F) := by
   have hp : ∀ w : InfinitePlace F, Continuous (fun x : Ainf F => x w) := fun w => continuous_apply w
@@ -40,7 +37,6 @@ theorem continuous_psiA : Continuous (psiA F) := by
     intro w
     first
       | exact (InfinitePlace.Completion.isometry_extensionEmbedding w).continuous
-      | exact UniformSpace.Completion.continuous_extension
   have hs : Continuous (fun x : Ainf F =>
       (∑ w : InfinitePlace F, (InfinitePlace.Completion.extensionEmbedding w (x w)).re : ℝ)) :=
     continuous_finset_sum _ (fun w _ => Complex.continuous_re.comp ((hc w).comp (hp w)))
@@ -76,15 +72,12 @@ theorem trR_int [IsTotallyReal F] (d : 𝓞 F) : ∃ n : ℤ, trR F (algebraMap 
     rw [h']
     first
       | rw [← trace_eq_sum_embeddings (E := ℂ) (x := a)]
-      | rw [← Algebra.trace_eq_sum_embeddings (E := ℂ) (x := a)]
     first
       | rw [eq_ratCast (algebraMap ℚ ℂ), Complex.ratCast_re]
-      | simp
   have hint : IsIntegral ℤ (Algebra.trace ℚ F (algebraMap (𝓞 F) F d)) := by
     apply Algebra.isIntegral_trace
     first
       | exact RingOfIntegers.isIntegral_coe d
-      | exact d.2
   obtain ⟨n, hn⟩ := IsIntegrallyClosed.isIntegral_iff.mp hint
   refine ⟨n, ?_⟩
   rw [htr, ← hn]
@@ -114,12 +107,10 @@ theorem exists_psiF [IsTotallyReal F] : ∃ f : Af F →+ AddCircle (1 : ℝ),
     rw [hn]
     first
       | exact (QuotientAddGroup.eq_zero_iff _).mpr (AddSubgroup.intCast_mem_zmultiples_one n)
-      | (rw [AddCircle.coe_eq_zero_iff]; exact ⟨n, by simp⟩)
   have hj : Function.Injective (QuotientAddGroup.kerLift j) := QuotientAddGroup.kerLift_injective j
   have hB : Module.Baer ℤ (AddCircle (1 : ℝ)) := by
     first
       | exact Module.Baer.of_divisible _
-      | exact @Module.Baer.of_divisible _ _ (QuotientAddGroup.divisibleBy _)
   obtain ⟨g, hg⟩ := hB.extension_property (QuotientAddGroup.kerLift j).toIntLinearMap hj
     (QuotientAddGroup.lift j.ker h hker).toIntLinearMap
   refine ⟨g.toAddMonoidHom.comp (QuotientAddGroup.mk' U), ?_, ?_⟩
@@ -141,13 +132,12 @@ def psiFin (z : Af F) : ℂ := ((AddCircle.toCircle (-((exists_psiF F).choose z)
 theorem psiFin_add (z w : Af F) : psiFin F (z + w) = psiFin F z * psiFin F w := by
   unfold psiFin
   rw [map_add, neg_add, AddCircle.toCircle_add]
-  first | rfl | simp
+  first | rfl
 
 theorem psiFin_int (z : Af F) (hz : z ∈ Formalism.UG.intAd F) : psiFin F z = 1 := by
   have h0 := (exists_psiF F).choose_spec.1 z hz
   first
     | simp [psiFin, h0, AddCircle.toCircle_zero]
-    | simp [psiFin, h0]
 
 theorem psiFin_zero : psiFin F 0 = 1 := psiFin_int F 0 (Formalism.UG.intAd F).zero_mem
 
@@ -164,9 +154,6 @@ theorem norm_psiFin (z : Af F) : ‖psiFin F z‖ = 1 := by
   unfold psiFin
   first
     | exact Circle.norm_coe _
-    | exact Circle.abs_coe _
-    | exact mem_sphere_zero_iff_norm.mp (AddCircle.toCircle _).2
-    | simp [Circle.norm_coe]
 
 theorem continuous_psiFin : Continuous (psiFin F) := by
   have hU : IsOpen ((Formalism.UG.intAd F : Set (Af F))) := by
@@ -184,8 +171,6 @@ theorem continuous_psiFin : Continuous (psiFin F) := by
   unfold psiFin
   first
     | exact continuous_subtype_val.comp hc
-    | exact Circle.continuous_coe.comp hc
-    | fun_prop
 
 def psiStd : AddChar (AF F) ℂ where
   toFun x := psiA F x.1 * psiFin F x.2
@@ -204,7 +189,6 @@ theorem ext_alg (w : InfinitePlace F) (a : F) :
   first
     | exact InfinitePlace.Completion.extensionEmbedding_coe w a
     | simp [InfinitePlace.Completion.extensionEmbedding_coe]
-    | rfl
 
 theorem psiStd_isChar : IsCharAF F (psiStd F) := by
   have hfun : (⇑(psiStd F) : AF F → ℂ) = fun x => psiA F x.1 * psiFin F x.2 := funext (psiStd_apply F)

@@ -43,7 +43,7 @@ theorem sim_cut {A B : Type} [CommRing A] [CommRing B] (σ : A →+* A) (i : B �
     ext a b
     by_cases hab : a = b
     · subst hab; simp [hσ]
-    · simp [hσ, Matrix.one_apply, hab, Ne.symm hab]
+    · simp [hσ, hab, Ne.symm hab]
   have h4 : i e * (1 - i e) = 0 := by rw [mul_sub, mul_one, hie, sub_self]
   have h5 : (1 - i e) * (1 - i e) = 1 - i e := by rw [sub_mul, one_mul, h4, sub_zero]
   rw [hv, h3, add_mul, mul_add, mul_add]
@@ -87,6 +87,6 @@ theorem primeProj_holds : PrimeProj := by
   have hc : ∀ (g : GUf E n) (w : Plc E) a b, (comp w g).val a b = pLoc E w (g.1.1.val a b) := fun _ _ _ _ => rfl
   refine ⟨π, fun g w => ⟨fun h => ?_, fun h => ?_⟩⟩ <;> ext a b <;> rw [hc, hπ]
   · simp [hp, h, hc]
-  · by_cases hab : a = b <;> simp [hp, h, hab, Matrix.one_apply]
+  · by_cases hab : a = b <;> simp [hp, h, hab]
 
 end UpperTheory.Gal.Int.Geo.Pl

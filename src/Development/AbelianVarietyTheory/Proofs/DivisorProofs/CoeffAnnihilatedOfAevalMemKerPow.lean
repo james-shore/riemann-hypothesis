@@ -84,7 +84,7 @@ theorem der_aeval {R B : Type} [CommRing R] [CommRing B] [Algebra R B] {d : ℕ}
     · exact Finset.sum_congr rfl fun j _ => by ring
     · rw [Finset.sum_eq_single i]
       · simp
-      · intro j _ hj; simp [Pi.single_apply, hj]
+      · intro j _ hj; simp [hj]
       · simp
 
 theorem coeff_iterPD {R : Type} [CommRing R] {d : ℕ} :

@@ -28,7 +28,7 @@ theorem mem_std {n : ℕ} (x : Fin n → w.adicCompletion E) :
     · rintro _ ⟨j, rfl⟩ i
       by_cases h : i = j
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     · intro i; simp
     · intro a b _ _ ha hb i
       simpa using (Valued.v.map_add (a i) (b i)).trans (max_le (ha i) (hb i))
@@ -40,7 +40,7 @@ theorem mem_std {n : ℕ} (x : Fin n → w.adicCompletion E) :
   · intro hx
     have e : x = ∑ i, (⟨x i, hx i⟩ : w.adicCompletionIntegers E) • Pi.basisFun (w.adicCompletion E) (Fin n) i := by
       ext j
-      rw [Finset.sum_apply, Finset.sum_eq_single j (fun b _ hb => by simp [Pi.single_apply, Ne.symm hb]) (by simp)]
+      rw [Finset.sum_apply, Finset.sum_eq_single j (fun b _ hb => by simp [Ne.symm hb]) (by simp)]
       simp only [Pi.basisFun_apply, Pi.smul_apply, Pi.single_eq_same]
       rw [Algebra.smul_def]
       simp
@@ -59,7 +59,7 @@ theorem mem_glMap_diag {n : ℕ} {ϖ : w.adicCompletion E} (hϖ : IsUnifV E w ϖ
   have hϖ0 : ϖ ≠ 0 := fun h0 => by simp [IsUnifV, h0] at hϖ
   have hf0 : ∀ i, dEnt w ϖ S i ≠ 0 := fun i => by unfold dEnt; split_ifs <;> simp [hϖ0]
   simp only [glMap, Submodule.mem_map, LinearMap.coe_restrictScalars, Matrix.toLin'_apply, hd,
-    Matrix.mulVec_diagonal, mem_std]
+    mem_std]
   constructor
   · rintro ⟨y, hy, rfl⟩ i
     rw [Matrix.mulVec_diagonal, map_mul]

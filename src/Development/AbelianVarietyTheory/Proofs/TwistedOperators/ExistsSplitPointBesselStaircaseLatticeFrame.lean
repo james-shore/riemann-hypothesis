@@ -194,7 +194,7 @@ theorem exists_frame {A B : HSp D} {c : ℕ} {ε : D.host.E} (d : HermitianOrtho
             · subst hq; simpa using hu
             · rw [Pi.single_eq_of_ne hq]; exact (𝔟 q').zero_mem
           · funext i
-            simp [mulVec_single, mul_comm]
+            simp [mulVec_single]
         have h3 := int_mul_mem (sec_mem_intAt p _ (mul_mem ho (hx (σ (Sum.inr q))))) hz
         convert h3 using 2 with i
         rw [sec_mul_right, sec_mul_right, hso, map_mul (incA D), map_mul p.pr, emb_apply]

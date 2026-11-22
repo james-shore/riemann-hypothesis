@@ -20,7 +20,6 @@ theorem mem_orth_iff {U : Submodule D.host.E (VS D).V} {x : (VS D).V} : x ∈ or
   simp only [Submodule.mem_iInf, LinearMap.mem_ker]
   first
     | exact Iff.rfl
-    | (constructor <;> intro h <;> exact h)
 
 theorem act_of_dec (hN : Formalism.L2.SG.PoincareInHH.Cut.NeatKu X u' Y.hK) (q : {Λ // Λ ∈ Y.what₂ u'})
     {s s' : TT Y u u'} (hq : s.lam' = q.1) (hl : s.lam = s'.lam) (hl' : s.lam' = s'.lam')

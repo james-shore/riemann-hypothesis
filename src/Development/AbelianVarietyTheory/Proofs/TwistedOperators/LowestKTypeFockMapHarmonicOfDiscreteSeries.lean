@@ -321,7 +321,7 @@ theorem ioHarm_holds (D : D7) : IoHarm D := by
     GlobalTheory.LowSmooth.shape_at M' τ (D.hc τ) hrk (hpq τ) rfl
   have hBS : ∀ τ, (BV τ)ᴴ * gramAt D (Vc D i) τ * BV τ = 1 := fun τ => adapted_one (hf τ).onS
   have hBu : ∀ τ, IsUnit (BV τ) := fun τ => IsUnit.of_mul_eq_one_right _ (hBS τ)
-  obtain ⟨τ₀⟩ : Nonempty D.what₂.Tau := ⟨D.eTau.symm ⟨1, by simp [Formalism.FrobeniusOrbits.Psi]⟩⟩
+  obtain ⟨τ₀⟩ : Nonempty D.what₂.Tau := ⟨D.eTau.symm ⟨1, by simp⟩⟩
   have hth : IsThetaFunO ψ (Vc D i) (Wc D i) f := (hf τ₀).theta
   set pt := pureTensorO ψ θ (Vc D i) (Wc D i) (fun _ => 1) (cart M') BV (onb M') f with hpt_def
   have hptθ : ∀ P, IsThetaFunO ψ (Vc D i) (Wc D i) (pt P) := fun P =>
@@ -465,7 +465,7 @@ theorem ioHarm_holds (D : D7) : IoHarm D := by
               _ = _ := by simp only [Matrix.mul_assoc]
           · rw [hs.2.2 ρ hρ, Matrix.one_mul, Matrix.mul_one]
         exact anti_conj (infMat_mul_inv θ (Wc D i) ρ h) hcomm hcX
-      · simp only [Prod.mk_mul_mk, one_mul, mul_one]
+      · simp only [Prod.mk_mul_mk, mul_one]
         rw [oneP_mul hθ hh hX t]
     intro v
     exact GlobalTheory.DefLift.mem_of_translates hLS hLI Bf N v₀ (fun ρ h0 => by

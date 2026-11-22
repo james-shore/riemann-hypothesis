@@ -52,7 +52,7 @@ theorem lgSum_mulMatrix {d M : ℕ} (p : ℕ) (c : Fin d → ℕ → Fin d → C
     (t : Fin d → MvPowerSeries (Fin M) C) (N : Matrix (Fin d) (Fin d) C) (b : Fin d) :
     lgSum p (fun a n b => ∑ e, c a n e * N e b) t b = ∑ e, N e b • lgSum p c t e := by
   ext α
-  simp only [lgSum, map_sum, coeff_smul, smul_eq_mul]
+  simp only [map_sum, coeff_smul]
   show (∑ n ∈ Finset.range (Finsupp.degree α + 1), ∑ a, (∑ e, c a n e * N e b) * coeff α (t a ^ p ^ n))
     = ∑ e, N e b * (∑ n ∈ Finset.range (Finsupp.degree α + 1), ∑ a, c a n e * coeff α (t a ^ p ^ n))
   simp only [Finset.sum_mul, Finset.mul_sum]

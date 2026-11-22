@@ -45,7 +45,7 @@ theorem UpperTheory.Up_operator_maps_lattice_of_control_values :
           simp [Frame.rpF, Frame.rp, rtr]
         rw [Frame.unt_apply, LinearMap.smul_apply, Pi.smul_apply, Pi.smul_apply, e1,
           hF' i (g * (1, n * X.I.z))]
-        simp only [Prod.snd_mul, mul_one, map_mul, Units.val_mul, Matrix.mulVec_smul,
+        simp only [Prod.snd_mul, map_mul, Units.val_mul, Matrix.mulVec_smul,
           Matrix.mulVec_mulVec, ← mul_assoc]
         rw [← Units.val_mul, inv_mul_cancel, Units.val_one, one_mul, Matrix.mul_smul, Matrix.smul_mulVec]
       rw [e]

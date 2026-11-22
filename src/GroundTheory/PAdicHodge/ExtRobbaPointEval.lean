@@ -206,7 +206,7 @@ theorem ptEvalSeq_shift (a : ℤ → L) (N : ℤ) :
       have e : T.ptTerm hξ a = (fun k => T.ptPi hξ ^ N * T.ptTerm hξ (fun k => a (k + N)) k) ∘
           (Equiv.addRight N).symm := by
         funext j
-        simp only [Function.comp, Equiv.coe_addRight, Equiv.addRight_symm, ptTerm, sub_add_cancel]
+        simp only [Function.comp, Equiv.coe_addRight, Equiv.addRight_symm, ptTerm]
         rw [← mul_assoc, ← zpow_add₀ (T.ptPi_ne_zero hξ)]
         congr 2 <;> ring_nf
       rw [e]

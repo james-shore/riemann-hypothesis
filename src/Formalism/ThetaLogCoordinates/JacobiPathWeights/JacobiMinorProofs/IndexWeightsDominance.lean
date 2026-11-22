@@ -339,7 +339,7 @@ theorem cnt_init {n : ℕ} (J : Finset (Fin n)) (h j : ℕ) (hJ : J.card = (rows
     ((rowsLt n j).filter fun m => m ∈ J).card ≤ ((rowsLt n j).filter fun m => m ∈ rowsLt n h).card := by
   have e : ((rowsLt n j).filter fun m => m ∈ rowsLt n h) = rowsLt n (min j h) := by
     ext m
-    simp [rowsLt, lt_min_iff]
+    simp [rowsLt]
   rw [e, card_rowsLt_lemma]
   have h1 := Finset.card_le_card (Finset.filter_subset (fun m => m ∈ J) (rowsLt n j))
   have h2 : ((rowsLt n j).filter fun m => m ∈ J).card ≤ J.card :=
@@ -523,7 +523,7 @@ theorem weight_letter {n : ℕ} (i : ℕ) (e : ℕ × Fin n →₀ ℕ) :
     · by_cases hi : x1 = i
       · subst hi
         simp [Finsupp.single_apply]
-      · simp [Finsupp.single_apply, hi]
+      · simp [hi]
     · simp
 
 def mkMon {n N : ℕ} (d : Fin N → (Fin n →₀ ℕ)) : ℕ × Fin n →₀ ℕ :=

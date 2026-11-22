@@ -41,19 +41,16 @@ theorem exists_h0_iso (K L : CochainComplex (ModuleCat.{0} R) ℕ) (ε : K.X 0 �
     have := congrArg (fun φ => ModuleCat.Hom.hom φ x) (GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι_d K)
     first
       | exact this
-      | simpa using this
   have hL : ∀ y, (L.d 0 1).hom ((GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι L).hom y) = 0 := fun y => by
     have := congrArg (fun φ => ModuleCat.Hom.hom φ y) (GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι_d L)
     first
       | exact this
-      | simpa using this
   have h1 : (GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι K ≫ ε.hom) ≫ L.d 0 1 = 0 := by
     apply ModuleCat.hom_ext
     apply LinearMap.ext
     intro x
     first
       | exact (h _).1 (hK x)
-      | simpa using (h _).1 (hK x)
   have h2 : (GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι L ≫ ε.inv) ≫ K.d 0 1 = 0 := by
     apply ModuleCat.hom_ext
     apply LinearMap.ext
@@ -65,7 +62,6 @@ theorem exists_h0_iso (K L : CochainComplex (ModuleCat.{0} R) ℕ) (ε : K.X 0 �
     have := (h (ε.inv.hom ((GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι L).hom y))).2 (by rw [hε]; exact hL y)
     first
       | exact this
-      | simpa using this
   obtain ⟨f₁, hf₁⟩ := GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι_lift L (GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι K ≫ ε.hom) h1
   obtain ⟨f₂, hf₂⟩ := GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι_lift K (GlobalTheory.CompanionTheory.Hodge.DimShift.h0ι L ≫ ε.inv) h2
   refine ⟨⟨f₁, f₂, ?_, ?_⟩, hf₁⟩

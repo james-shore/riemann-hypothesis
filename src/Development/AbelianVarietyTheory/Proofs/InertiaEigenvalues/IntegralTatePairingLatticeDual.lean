@@ -54,7 +54,7 @@ theorem cup_coboundary_right (hopen : IsOpen (Set.range (algebraMap O LL))) (c :
     cupModuloIntegers PD hd L1 hL1 c d (g, h)
   rw [cup_apply_alt]
   simp only [hcg, map_neg, ← torsionPairing_equivariant, lattice_cocycle_mul, map_mul, Module.End.mul_apply, map_add,
-    map_sub, LinearMap.add_apply, LinearMap.sub_apply]
+    map_sub, LinearMap.sub_apply]
   abel
 
 end Gen

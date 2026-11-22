@@ -79,7 +79,7 @@ theorem IsDerFam.norm_taylor_exp_le {F : List (Mx n) → Mx n → ℂ} (hF : IsD
     have := (hF.hasDerivAt_exp hw hX hz s).fun_sub ((hasDerivAt_id s).smul_const (F (X :: w) z))
     simpa only [id, one_smul] using this
   have h := norm_sub_le_of_deriv_Icc hd (abs_nonneg t) h1 (t := t) ⟨neg_abs_le t, le_abs_self t⟩
-  simp only [exp_zero_smul_mx, Matrix.mul_one, zero_smul, sub_zero, NormedSpace.exp_zero] at h
+  simp only [Matrix.mul_one, zero_smul, sub_zero, NormedSpace.exp_zero] at h
   have e : F w (z * NormedSpace.exp (t • X)) - F w z - t • F (X :: w) z =
       F w (z * NormedSpace.exp (t • X)) - t • F (X :: w) z - F w z := by abel
   rw [e]
@@ -168,7 +168,7 @@ theorem hasFDerivAt_derFam_prodExp : ∀ (n : ℕ) (ε : Fin n → Bool) (N : �
   obtain ⟨C, -, hC⟩ := hF.taylor_prod hG hl d b hb {g} isCompact_singleton (Set.singleton_subset_iff.2 hg)
   rw [hasFDerivAt_iff_isLittleO_nhds_zero]
   have e0 : (List.ofFn fun i => NormedSpace.exp ((0 : Fin d → ℝ) i • b i)).prod = 1 := by
-    simp [List.prod_ofFn]
+    simp
   refine Asymptotics.IsBigO.trans_isLittleO ?_ (Asymptotics.isLittleO_norm_pow_id (n := 2) one_lt_two)
   refine Asymptotics.IsBigO.of_bound C ?_
   filter_upwards [Metric.closedBall_mem_nhds (0 : Fin d → ℝ) one_pos] with h hh

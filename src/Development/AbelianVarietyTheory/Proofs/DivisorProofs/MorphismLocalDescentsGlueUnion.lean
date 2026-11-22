@@ -40,8 +40,6 @@ theorem descend_glue : ∀ (R : Type) [CommRing R] [IsDomain R] [IsNoetherianRin
         rw [ha]
         first
           | exact ⟨_, rfl⟩
-          | (rw [Scheme.comp_base]; exact ⟨_, rfl⟩)
-          | exact ⟨_, (Scheme.Hom.comp_apply _ _ _).symm⟩
       rw [Scheme.Opens.range_ι] at hx
       exact hx
     refine Scheme.Cover.hom_ext ((pullback (p ∣_ (⨆ i, V i)) (p ∣_ (⨆ i, V i))).openCoverOfIsOpenCover _ hcov)

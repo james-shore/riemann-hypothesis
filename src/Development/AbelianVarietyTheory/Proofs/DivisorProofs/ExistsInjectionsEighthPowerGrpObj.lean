@@ -40,7 +40,7 @@ theorem eighthPower_inj_exists : ∀ {S : Scheme.{0}} (P C : Over S) [GrpObj P] 
   intro b
   haveI := hpr b
   rw [Fin.prod_univ_eight]
-  simp only [MonObj.mul_comp, Category.assoc, hinj, MonObj.comp_one, Category.id_comp, Category.comp_id]
+  simp only [MonObj.mul_comp, Category.assoc, hinj, Category.id_comp]
   fin_cases b <;> simp
 
 end GlobalTheory

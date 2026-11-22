@@ -28,7 +28,7 @@ theorem fstHom_comp_dualMap' (f : R →+* R') :
   RingHom.ext fun x => by simp [dualMap]
 
 theorem fst_comp_algebraMap_dual : (TrivSqZeroExt.fstHom R R R).toRingHom.comp (algebraMap R (DualNumber R)) = RingHom.id R :=
-  RingHom.ext fun x => by simp [TrivSqZeroExt.algebraMap_eq_inl]
+  RingHom.ext fun x => by simp
 
 theorem dualMap_comp_dualMap_ring (f : R →+* R') (f' : R' →+* R'') : (dualMap f').comp (dualMap f) = dualMap (f'.comp f) := by
   ext x <;> simp [dualMap]

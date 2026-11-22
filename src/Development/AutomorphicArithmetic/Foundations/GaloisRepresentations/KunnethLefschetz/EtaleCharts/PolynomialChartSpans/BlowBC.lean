@@ -54,7 +54,7 @@ private lemma loc_pb (D : E.LineData Y) (c : Y' ⟶ Y) (h : sSup (Pb.𝒱D D) = 
 
 private lemma topIso_nat (c : Y' ⟶ Y) (C : Y.Opens) :
     c.app C ≫ (c ⁻¹ᵁ C).topIso.inv = C.topIso.inv ≫ (c ∣_ C).appTop := by
-  simp [Scheme.Hom.appTop, morphismRestrict_app, Scheme.Opens.topIso_inv]
+  simp [Scheme.Hom.appTop, Scheme.Opens.topIso_inv]
   rw [Scheme.Hom.app_eq_appLE, Scheme.Hom.appLE_map]
 
 private lemma eqn_pb {π : Y ⟶ Z} {π' : Y' ⟶ Z'} {a : Z' ⟶ Z} {c : Y' ⟶ Y} (h : IsPullback c π' π a) (V : Z.Opens)

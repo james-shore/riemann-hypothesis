@@ -48,7 +48,7 @@ private theorem hasTypes_apply_mul_left_of_mem_J_KO {k : Type} [Field k] [Valuat
     _root_.GlobalTheory.SplitWeil.nabs_eq_one_of_valuation_eq_one (_root_.GlobalTheory.StepData.valuation_det_of_mem_KO (inv_mem hgi))
   have hl : Q.lam ⟨g⁻¹, inv_mem hg⟩ = (Q.lam ⟨g, hg⟩)⁻¹ := map_inv Q.lam ⟨g, hg⟩
   rw [map_inv] at hn
-  simp only [_root_.GlobalTheory.SplitWeil.om, Pi.smul_apply, Units.smul_def, inv_inv, Matrix.mul_one, hl, hn, map_one, Real.one_rpow, Units.val_one, one_mul, map_inv, Units.val_inv_eq_inv_val, Complex.ofReal_one, mul_one, Units.val_one, _root_.GlobalTheory.SplitWeil.nabs_one, smul_eq_mul] at key
+  simp only [_root_.GlobalTheory.SplitWeil.om, Pi.smul_apply, inv_inv, Matrix.mul_one, hl, hn, map_one, Real.one_rpow, Units.val_one, one_mul, map_inv, Complex.ofReal_one, mul_one, Units.val_one, _root_.GlobalTheory.SplitWeil.nabs_one, smul_eq_mul] at key
   rw [mul_right_comm, ← key, mul_comm, ← mul_assoc, inv_mul_cancel₀ (Units.ne_zero _), one_mul]
 
 open MeasureTheory ValuativeRel Matrix in
@@ -57,7 +57,7 @@ private theorem hasTypes_apply_mul_right_of_mem_J_KO {k : Type} [Field k] [Valua
   have key := congrFun (hΦ.1 ⟨g, hg⟩) B
   have hn : _root_.GlobalTheory.SplitWeil.nabs k (GeneralLinearGroup.det g) = 1 :=
     _root_.GlobalTheory.SplitWeil.nabs_eq_one_of_valuation_eq_one (_root_.GlobalTheory.StepData.valuation_det_of_mem_KO hgi)
-  simp only [_root_.GlobalTheory.SplitWeil.om, Pi.smul_apply, Units.smul_def, inv_one, Matrix.one_mul, hn, map_one, Real.one_rpow, Units.val_one, one_mul, inv_one, Complex.ofReal_one, mul_one, _root_.GlobalTheory.SplitWeil.nabs_one, smul_eq_mul] at key
+  simp only [_root_.GlobalTheory.SplitWeil.om, Pi.smul_apply, inv_one, Matrix.one_mul, hn, map_one, Real.one_rpow, Units.val_one, inv_one, Complex.ofReal_one, mul_one, _root_.GlobalTheory.SplitWeil.nabs_one, smul_eq_mul] at key
   rw [mul_right_comm, ← key, mul_comm, ← mul_assoc, inv_mul_cancel₀ (Units.ne_zero _), one_mul]
 
 open MeasureTheory ValuativeRel Matrix in

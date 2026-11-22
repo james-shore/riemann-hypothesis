@@ -118,7 +118,7 @@ def phi {B O : Type} [CommRing B] [Algebra ℂ B] [CommRing O] [Algebra ℂ O] (
     refine TrivSqZeroExt.ext (by simp) ?_
     have : (a * b).snd = a.fst • b.snd + b.fst • a.snd := TrivSqZeroExt.snd_mul a b
     rw [TrivSqZeroExt.snd_mul]
-    simp [this, h]
+    simp [h]
 
 theorem fst_phi {B O : Type} [CommRing B] [Algebra ℂ B] [CommRing O] [Algebra ℂ O] (α : B →ₐ[ℂ] O) (ℓ : Ω[B⁄ℂ] →+ (Fin g → O))
     (h : ∀ (b : B) ω, ℓ (b • ω) = α b • ℓ ω) (c : TrivSqZeroExt B Ω[B⁄ℂ]) : (phi α ℓ h c).fst = α c.fst := add_zero _

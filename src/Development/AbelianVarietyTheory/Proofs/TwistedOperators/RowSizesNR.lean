@@ -26,7 +26,6 @@ theorem rowSizes_nR (D : D7) (j : ℕ) : (rowSizes D).nR j = rankX D j := by
   have h2 := D.R.m_add_three_le_k
   simp only [Sizes.nR, rowSizes, rankX, rankP, nRk, sLen, Ranks.r]
   zify [show 1 ≤ D.R.k + D.R.m by omega, show 1 ≤ D.R.k + D.R.m - 1 + 6 by omega] at *
-  push_cast
   ring_nf
 
 theorem rowSizes_nC (D : D7) (i : ℕ) : (rowSizes D).nC i = rankV D i D.R.m := by

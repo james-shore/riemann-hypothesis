@@ -22,8 +22,6 @@ lemma lineSecondVariation_add_I (ε : ℝ) (x a S : ℂ) :
     intro u v
     first
     | (rw [Complex.inner]; simp; ring)
-    | (simp [Complex.inner_def]; ring)
-    | (rw [Complex.real_inner_eq_re_inner]; simp; ring)
   unfold lineSecondVariation
   simp only [hi, Complex.mul_re, Complex.mul_im, Complex.one_re, Complex.one_im, Complex.I_re,
     Complex.I_im]
@@ -80,8 +78,6 @@ lemma integrable_of_bounded_of_isCompact {T : Set (V n)} (hT : IsCompact T) {h :
   have hon : IntegrableOn h T := by
     first
     | exact Integrable.of_bound hm C hb'
-    | exact Integrable.of_bound hm hb'
-    | exact Measure.integrableOn_of_bounded (M := C) hT.measure_lt_top.ne hm hb'
   have he : h = T.indicator h := by
     funext z
     by_cases hz : z ∈ T

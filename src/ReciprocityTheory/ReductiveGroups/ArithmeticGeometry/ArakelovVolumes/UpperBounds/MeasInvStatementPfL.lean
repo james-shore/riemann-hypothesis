@@ -105,7 +105,7 @@ theorem lintegral_muX {x0 : Frame X.Ψ r} {φ : Frame X.Ψ r → ENNReal} (hφm 
     ← lintegral_indicator hS, ← lintegral_ΦC]
   congr 1
   funext z
-  simp only [GLo, Set.indicator, Set.mem_setOf_eq, Pi.mul_apply, Function.comp_apply, ← cpt_eq]
+  simp only [GLo, Set.indicator, Set.mem_setOf_eq, Pi.mul_apply, ← cpt_eq]
   split_ifs <;> simp [mul_comm]
 
 theorem lintegral_cpt_muX_indep_of_isOrtho {x0 x0' : Frame X.Ψ r} (hx0 : X.IsOrtho x0) (hx0' : X.IsOrtho x0') {φ : Frame X.Ψ r → ENNReal}

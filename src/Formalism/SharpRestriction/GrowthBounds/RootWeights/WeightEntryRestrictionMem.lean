@@ -33,7 +33,7 @@ private theorem ring_choose_self_of_eq (x : ℤ) (k : ℕ) (h : x = k) : Ring.ch
 
 private theorem ring_choose_neg_one (k : ℕ) : Ring.choose (-1 : ℤ) k = (-1) ^ k := by
   induction k with
-  | zero => simp [Ring.choose_zero_right]
+  | zero => simp
   | succ k ih =>
     have h := Ring.choose_succ_succ (-1 : ℤ) k
     rw [neg_add_cancel, Ring.choose_zero_succ, ih] at h
@@ -49,7 +49,7 @@ theorem binomialFunctions_window_indicator (w0 : ℤ) (B : ℕ) : ∃ f ∈ bino
     intro w h1 h2
     have hw : w = 0 := by omega
     subst hw
-    simp [Ring.choose_zero_right]
+    simp
   | succ B ih =>
     obtain ⟨f, hf, hfw⟩ := ih
     have hg1 : (fun w : ℤ => Ring.choose (w + B) (2 * B + 1)) ∈ binomialFunctions := binomialFunctions_shift_mem _ _
@@ -194,7 +194,7 @@ theorem binomial_stable_contains_components : BinomialStableContainsComponents :
         ext m
         rw [coeff_monomialRestriction, coeff_monomialRestriction, coeff_monomialRestriction]
         by_cases h1 : wtS LL S m a = nu a <;> by_cases h2 : ∀ b ∈ s, wtS LL S m b = nu b <;>
-          simp [h1, h2, Finset.forall_mem_insert]
+          simp [h1, h2]
       rw [e]
       exact weightEntry_restriction_mem LL S W hW a (nu a) _ ih
   have e : weightComponent LL S nu x = monomialRestriction (fun m => ∀ a ∈ Finset.univ, wtS LL S m a = nu a) x := by

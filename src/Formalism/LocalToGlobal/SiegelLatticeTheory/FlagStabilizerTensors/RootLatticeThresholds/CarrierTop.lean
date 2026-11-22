@@ -215,8 +215,7 @@ theorem zx_sc (u u' : D.what₂.Word) (sc : ℝ) (γ : X.B.I.Ginf) (v : Infinite
     ZX X u u' sc γ v = Matrix.diagonal (cS D.R.rS sc) * ZX X u u' 1 γ v * Matrix.diagonal (cS D.R.rS sc) := by
   ext a b
   simp only [ZX, Zhat, frm, famSc, Formalism.L2.SG.HidaSetting.hJ, Matrix.mul_diagonal, Matrix.diagonal_mul, cS]
-  simp only [Complex.ofReal_one, one_pow, inv_one, one_smul, Matrix.mulVec_smul, star_smul, smul_eq_mul,
-    Complex.star_def, map_inv₀, map_pow, Complex.conj_ofReal]
+  simp only [Complex.ofReal_one, one_pow, inv_one, one_smul, Matrix.mulVec_smul, star_smul, Complex.star_def, map_inv₀, map_pow, Complex.conj_ofReal]
   simp only [smul_dotProduct, dotProduct_smul, smul_eq_mul]
   ring
 

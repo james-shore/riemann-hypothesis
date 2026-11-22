@@ -72,7 +72,7 @@ theorem real_form_trace {β : Type} [Fintype β] [DecidableEq β] (τ : Matrix �
     simp only [ξ0, P, smul_comm I r, smul_add, map_add, map_smul, real_smul]
     ring
   have is : ∀ A, ξ0 (I • A) = I * ξ0 A := fun A => by
-    simp only [ξ0, P, smul_smul, I_mul_I, neg_smul, one_smul, smul_add, map_add, map_smul, map_neg, real_smul, smul_neg]
+    simp only [ξ0, P, smul_smul, I_mul_I, neg_smul, one_smul, smul_add, map_add, map_smul, map_neg, real_smul]
     linear_combination ((((1 / 2 : ℝ) : ℂ) * ζ (I • A) + ((1 / 2 : ℝ) : ℂ) * ζ (τ (I • A)))) * I_mul_I
   let ξ : Matrix β β ℂ →ₗ[ℂ] ℂ :=
     { toFun := ξ0

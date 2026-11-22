@@ -32,7 +32,7 @@ theorem thA_small (u : Weight Dw) (n : ℕ) (τ : Psi H) (i : ℕ) (hi : i < Dw.
 theorem thA_out (u : Weight Dw) (n : ℕ) (τ : E →+* ℂ) (i : ℕ) (h : Dw.mult τ ≤ i) : thA Dw u n (τ, i) = 0 := by
   unfold Datum.mult at h
   simp only [thA, wtOf]
-  split_ifs at h ⊢ <;> first | omega | simp
+  split_ifs at h ⊢ <;> first | omega
 
 theorem psi_or_conj (τ : E →+* ℂ) : (∃ τ' : Psi H, τ = τ'.1) ∨ ∃ τ' : Psi H, τ = conjEmb τ'.1 := by
   by_cases h : τ (H.rt : E) = H.rt0

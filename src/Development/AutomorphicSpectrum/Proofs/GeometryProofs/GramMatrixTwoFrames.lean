@@ -58,8 +58,7 @@ theorem gramAt_change (E : Type) [Field E] [NumberField E] [IsCMField E] (H : Ho
   ext p q
   rw [e2]
   simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, e1, map_sum, LinearMap.sum_apply, map_smul,
-    map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, Finset.sum_mul, Finset.mul_sum, RCLike.star_def,
-    RingHom.id_apply]
+    map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, Finset.sum_mul, Finset.mul_sum, RCLike.star_def]
   refine Finset.sum_congr rfl fun j _ => Finset.sum_congr rfl fun i _ => ?_
   ring
 

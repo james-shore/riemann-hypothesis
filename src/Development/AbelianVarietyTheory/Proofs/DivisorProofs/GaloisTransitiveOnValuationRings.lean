@@ -22,11 +22,6 @@ theorem mem_of_isIntegral {R : Type} [CommRing R] [Algebra R Ω] (A : ValuationS
     (hR : ∀ r : R, algebraMap R Ω r ∈ A) {b : Ω} (hb : IsIntegral R b) : b ∈ A := by
   first
   | (rename_i h_1 h_3 h_4; revert Ω h_1 R h_3 h_4 A hR b hb; exact @_root_.GlobalTheory.IntegralInValuationSubring.mem_valuationSubring_of_isIntegral)
-  | exact @_root_.GlobalTheory.IntegralInValuationSubring.mem_valuationSubring_of_isIntegral
-  | exact _root_.GlobalTheory.IntegralInValuationSubring.mem_valuationSubring_of_isIntegral
-  | (apply _root_.GlobalTheory.IntegralInValuationSubring.mem_valuationSubring_of_isIntegral <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralInValuationSubring.mem_valuationSubring_of_isIntegral <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralInValuationSubring.mem_valuationSubring_of_isIntegral <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegralInValuationSubring.mem_valuationSubring_of_isIntegral ..)
 
 variable (S : Type) [CommRing S] [IsDomain S] [IsDedekindDomain S] [Algebra S Ω] [IsFractionRing S Ω]
@@ -35,11 +30,6 @@ theorem exists_den (A : ValuationSubring Ω) (hS : ∀ s : S, algebraMap S Ω s 
     ∃ s t : S, A.valuation (algebraMap S Ω s) = 1 ∧ algebraMap S Ω s * x = algebraMap S Ω t := by
   first
   | (rename_i h_1 h_3 h_4 h_5 h_6 h_7; revert Ω h_1 S h_3 h_4 h_5 h_6 h_7 A hS x hx; exact @_root_.GlobalTheory.ClosingLemma.main)
-  | exact @_root_.GlobalTheory.ClosingLemma.main
-  | exact _root_.GlobalTheory.ClosingLemma.main
-  | (apply _root_.GlobalTheory.ClosingLemma.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ClosingLemma.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ClosingLemma.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ClosingLemma.main ..)
 
 theorem le_of_valuation_lt_one_iff {A A' : ValuationSubring Ω} (hS : ∀ s : S, algebraMap S Ω s ∈ A)

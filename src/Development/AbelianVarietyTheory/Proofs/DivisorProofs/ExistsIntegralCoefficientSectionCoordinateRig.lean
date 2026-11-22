@@ -51,6 +51,6 @@ theorem exists_coeff_gt : ∀ (R : Type) [CommRing R] [IsDomain R] (D : DegPre R
   rw [ha Z r z J hJ, val_mul hJ, val_mul hJ, val_inv, val_inv, val_pow, val_pow, _root_.mul_assoc, _root_.mul_assoc,
     ← Units.val_mul, ← Units.val_mul]
   congr 2
-  simp only [mul_comm, _root_.mul_assoc, mul_left_comm, inv_mul_cancel_left, mul_inv_cancel_left, mul_inv_cancel, inv_mul_cancel, _root_.mul_one]
+  simp only [mul_comm, _root_.mul_assoc, mul_left_comm, inv_mul_cancel_left]
 
 end GlobalTheory.GtCoeff

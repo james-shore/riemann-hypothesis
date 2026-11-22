@@ -29,7 +29,7 @@ theorem stepRep_eq_one_at_typePrimes {X : Fields} {Pr : Primes X} {R : Ranks} (C
       simp only [twNext, hq, dif_neg, not_false_eq_true]
     · by_cases h2 : i + 1 = m2 + 1
       · revert b
-        rw [show twSt Ch sel mu cst m2 (i+1) = twUnitSt _ (i+1) by simp [twSt, h1, h2]]
+        rw [show twSt Ch sel mu cst m2 (i+1) = twUnitSt _ (i+1) by simp [twSt, h2]]
         intro b; rfl
       · revert b
         rw [show twSt Ch sel mu cst m2 (i+1) = twEmptySt _ (i+1) by simp only [twSt, if_neg h1, if_neg h2]]

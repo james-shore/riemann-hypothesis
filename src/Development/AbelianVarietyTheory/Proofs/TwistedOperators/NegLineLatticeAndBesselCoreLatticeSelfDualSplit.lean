@@ -44,7 +44,7 @@ theorem isSelfDualC_latPi {S : HSp D} (hg : S.gram = -1) {I : FractionalIdeal (�
     refine Finset.sum_congr rfl fun a _ => ?_
     rw [Finset.sum_eq_single a]
     · simp
-    · intro b _ hb; simp [Matrix.neg_apply, Matrix.one_apply, Ne.symm hb]
+    · intro b _ hb; simp [Matrix.neg_apply, Ne.symm hb]
     · simp
   have hIeq : I = J⁻¹ := eq_inv_of_mul_eq_one_left hII
   obtain ⟨a0, ha0, ha00⟩ : ∃ a ∈ I, a ≠ 0 := by

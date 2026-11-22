@@ -36,7 +36,7 @@ theorem frame_hermForm_sum_right {g n : ℕ} (Hm : Matrix (Fin g) (Fin g) ℂ) (
     rw [star_sum]
     refine Finset.sum_congr rfl fun i _ => ?_
     ext k
-    simp [mul_comm]
+    simp
   simp only [hermForm, hs, Matrix.mulVec_sum, Matrix.mulVec_smul, dotProduct_sum, dotProduct_smul, smul_eq_mul]
 
 theorem frame_col {g r : ℕ} (l : Fin r → Fin g → ℂ) (ε : Matrix (Fin g) (Fin r) ℚ) (i : Fin g) :
@@ -123,7 +123,7 @@ theorem riemann_relations_frame : ∀ (g r : ℕ) (Hm : Matrix (Fin g) (Fin g) �
     have h := hFE j k
     rw [hFτ j, frame_hermForm_sum_left] at h
     simp only [hAr, Complex.im_sum, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im,
-      mul_zero, add_zero, zero_add] at h
+      mul_zero, zero_add] at h
     rw [Matrix.mul_apply, Matrix.one_apply, ← h]
     refine Finset.sum_congr rfl fun i _ => ?_
     simp only [hY, Matrix.map_apply]
@@ -166,7 +166,7 @@ theorem riemann_relations_frame : ∀ (g r : ℕ) (Hm : Matrix (Fin g) (Fin g) �
     ext i j
     rw [Matrix.map_apply, ← hAr i j]
     simp only [hermForm, dotProduct, Matrix.mulVec, Matrix.mul_apply, Matrix.transpose_apply,
-      Matrix.conjTranspose_apply, Pi.star_apply, Matrix.map_apply, hE, Finset.mul_sum, Finset.sum_mul]
+      Matrix.conjTranspose_apply, Pi.star_apply, hE, Finset.mul_sum, Finset.sum_mul]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun y _ => Finset.sum_congr rfl fun x _ => ?_
     ring

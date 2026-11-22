@@ -23,7 +23,7 @@ theorem conv_op_eq {G V : Type} [Group G] [Fintype G] [AddCommGroup V] [Module �
   refine Finset.sum_congr rfl fun y _ => ?_
   rw [← Equiv.sum_comp (Equiv.mulLeft y)]
   refine Finset.sum_congr rfl fun z _ => ?_
-  simp [map_mul, smul_mul_smul_comm, smul_smul, mul_comm]
+  simp [map_mul, smul_smul, mul_comm]
 
 def convL {G : Type} [Group G] [Fintype G] (Y : G → ℂ) : (G → ℂ) →ₗ[ℂ] (G → ℂ) :=
   ∑ g, star (Y g) • LinearMap.funLeft ℂ ℂ (fun z => g * z)
@@ -83,7 +83,7 @@ theorem kills_iff_conv : ∀ (G : Type) [Group G] [Finite G] (φ Y : G → ℂ),
       intro a ha
       have := congrFun (congrArg Subtype.val (LinearMap.congr_fun hK' ⟨a, ha⟩)) 1
       simp only [LinearMap.sum_apply, LinearMap.smul_apply, Submodule.coe_sum, Submodule.coe_smul,
-        Finset.sum_apply, Pi.smul_apply, regKer_apply, smul_eq_mul, LinearMap.zero_apply,
+        Finset.sum_apply, Pi.smul_apply, smul_eq_mul, LinearMap.zero_apply,
         Submodule.coe_zero, Pi.zero_apply] at this
       have e : ∀ x, ((regKer Y x ⟨a, ha⟩ : LinearMap.ker (convL Y)) : G → ℂ) 1 = a x := fun x => by
         show a (1 * x) = a x

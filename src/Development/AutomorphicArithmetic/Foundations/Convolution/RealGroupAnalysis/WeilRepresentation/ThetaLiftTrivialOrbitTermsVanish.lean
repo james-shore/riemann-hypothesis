@@ -56,5 +56,5 @@ theorem UpperTheory.ConvolutionTheory.R2.dih :
       have := (mul_eq_zero.1 h5).resolve_right hT
       simpa using eq_neg_of_add_eq_zero_right this)
     rw [h2, if_neg hn, h6]
-    simp [Multiset.cons_swap]
+    simp
     exact Multiset.pair_comm _ _

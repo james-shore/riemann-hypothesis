@@ -70,12 +70,12 @@ theorem exists_E {w : Matrix (Fin n) (Fin n) k} (hw : w ∈ B0 Z) : ∃ u, E Z u
 omit [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k] in
 theorem dot_D (u : Fin (d Z) → k) (x : Matrix (Fin n) (Fin n) k) : u ⬝ᵥ D Z x = trace (E Z u * x) := by
   rw [E_apply, Finset.sum_mul, trace_sum]
-  simp [dotProduct, D, smul_mul_assoc, trace_smul]
+  simp [dotProduct, D, trace_smul]
 
 omit [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k] in
 theorem D_E (u : Fin (d Z) → k) : D Z (E Z u) = G Z *ᵥ u := by
   funext i
-  simp [D, G, E_apply, mulVec, dotProduct, Finset.mul_sum, trace_sum, mul_smul_comm, trace_smul, mul_comm]
+  simp [D, G, E_apply, mulVec, dotProduct, Finset.mul_sum, trace_sum, trace_smul, mul_comm]
 
 omit [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k] in
 theorem D_add (x y : Matrix (Fin n) (Fin n) k) : D Z (x + y) = D Z x + D Z y := by

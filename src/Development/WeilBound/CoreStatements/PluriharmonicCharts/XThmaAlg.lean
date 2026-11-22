@@ -16,7 +16,7 @@ noncomputable def pml {σ : Type} [Fintype σ] (n : ℕ) (a : (Fin n → σ) →
 
 theorem pml_apply {σ : Type} [Fintype σ] (n : ℕ) (a : (Fin n → σ) → ℝ) (c : Fin n → σ → ℝ) :
     pml n a c = polar n a c := by
-  simp [pml, polar, MultilinearMap.sum_apply, mul_comm]
+  simp [pml, polar, mul_comm]
 
 theorem pml_symm {σ : Type} [Fintype σ] (n : ℕ) (a : (Fin n → σ) → ℝ)
     (ha : ∀ (π : Equiv.Perm (Fin n)) w, a (w ∘ π) = a w) : IsSymmForm (pml n a) := by
@@ -25,7 +25,7 @@ theorem pml_symm {σ : Type} [Fintype σ] (n : ℕ) (a : (Fin n → σ) → ℝ)
   unfold polar
   refine Fintype.sum_equiv (π.arrowCongr (Equiv.refl σ)) _ _ ?_
   intro w
-  simp only [Equiv.arrowCongr_apply, Equiv.coe_refl, Function.comp_apply, Function.id_comp]
+  simp only [Equiv.arrowCongr_apply, Equiv.coe_refl, Function.comp_apply]
   congr 1
   · exact Fintype.prod_equiv π _ _ (fun r => by simp)
   · have h := ha π (w ∘ π.symm)

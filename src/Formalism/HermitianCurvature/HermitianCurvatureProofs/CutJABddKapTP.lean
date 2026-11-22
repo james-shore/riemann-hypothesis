@@ -98,7 +98,6 @@ theorem typeProj_of (hPE : PRho.PRhoExists) (hGL : PRho.GaugeLines) (hDU : SSn.R
       have hh1 : h⁻¹ * h = 1 := by
         first
           | exact Matrix.nonsing_inv_mul _ hu
-          | exact Matrix.nonsing_inv_mul _ ((Matrix.isUnit_iff_isUnit_det _).1 hu)
       have key : ∀ y, (T v).base.π h⁻¹ ((T v).base.π h y) = y := by
         intro y
         rw [← ContinuousLinearMap.comp_apply, ← (T v).base.π_rep.2 _ hinv _ hh, hh1, (T v).base.π_rep.1]

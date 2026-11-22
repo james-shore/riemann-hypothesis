@@ -172,7 +172,6 @@ theorem PositivityTheory.Xgn.test_group_point_exists : GlobalTheory.CompanionThe
     congr 2
     first
       | exact IsCMField.complexConj_apply_apply E _
-      | simp [HT.cmConj]
   · let f : Ix E (D.p + D.q) → ((Fin (labelRk D (e τ)) → C) →ₗ[C] C) := fun m =>
       ∑ m', (Eg m m' : C) • (LinearMap.proj m' ∘ₗ ((Jm _ s).map (algebraMap RC C)).mulVecLin ∘ₗ TestPt.bcLin C (i τ)) +
         ∑ k, ev (b (e τ) k) (fun j => (Hm j m : C)) • LinearMap.proj k

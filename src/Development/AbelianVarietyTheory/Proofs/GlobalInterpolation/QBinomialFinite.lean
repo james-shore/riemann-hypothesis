@@ -16,7 +16,7 @@ theorem qBinom_zero_right (t : ℂ) (ht : ‖t‖ < 1) (m : ℕ) : qBinom t m 0 
 
 theorem qBinom_self (t : ℂ) (ht : ‖t‖ < 1) (m : ℕ) : qBinom t m m = 1 := by
   have h := (qPoch_tendsto t ht).2.2 m
-  unfold qBinom; simp [Nat.sub_self]; rw [show qPoch t 0 = 1 by simp [qPoch]]; field_simp
+  unfold qBinom; simp; rw [show qPoch t 0 = 1 by simp [qPoch]]; field_simp
 
 theorem qBinom_pascal (t : ℂ) (ht : ‖t‖ < 1) (m k : ℕ) (hk : k < m) :
     qBinom t (m + 1) (k + 1) = qBinom t m (k + 1) + t ^ (m - k) * qBinom t m k := by

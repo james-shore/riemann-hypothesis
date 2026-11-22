@@ -68,7 +68,7 @@ theorem similitude_bij_mod (h N m : ℕ) (T : (Fin h ⊕ Fin h → ℤ) →ₗ[�
     rw [map_sum]
     refine Finset.sum_congr rfl fun j _ => ?_
     rw [show Pi.single j (a j) = a j • (Pi.single j 1 : Fin h ⊕ Fin h → ℤ) by
-      ext i; by_cases hi : i = j <;> simp [Pi.single_apply, hi], map_smul]
+      ext i; by_cases hi : i = j <;> simp [hi], map_smul]
   have reduction_uniformizerPoint : ∀ a, red (T a) = TN (red a) := by
     intro a; funext i
     simp only [red, TN, M]
@@ -194,7 +194,7 @@ theorem part_two (h N : ℕ) (B : Type) [CommRing B] (b : TBase B N) (hN : Odd N
     have hext : f₁ = f₂ := by
       refine AddMonoidHom.functions_ext _ _ _ fun i k => ?_
       rw [show (Pi.single i k : Fin h ⊕ Fin h → ℤ) = k • Pi.single i 1 by
-        ext j; by_cases hj : j = i <;> simp [Pi.single_apply, hj], map_zsmul, map_zsmul]
+        ext j; by_cases hj : j = i <;> simp [hj], map_zsmul, map_zsmul]
       congr 1
       show Additive.ofMul (ψ (p (Pi.single i 1))) = Additive.ofMul (toUnit Tx ≫ C.lev (T (Pi.single i 1)))
       rw [← ha' i]

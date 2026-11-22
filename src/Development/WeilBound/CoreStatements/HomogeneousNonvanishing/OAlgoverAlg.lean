@@ -71,7 +71,7 @@ theorem ev_ne_of_notMem {y : (Σ k, ι k) → Ω} {f : MRing ι} {d : K → ℕ}
     ((map_ev (C : Ω →+* MvPolynomial K Ω) y f).symm.trans (by rw [h, map_zero]))))
   refine (map_ev (RingHom.id (MvPolynomial K Ω)) _ f).trans ?_
   simp only [RingHom.id_apply, mul_comm (C (y _))]
-  first | rfl | (congr 2; exact Subsingleton.elim _ _)
+  first | rfl
 
 theorem coord_ne {y : (Σ k, ι k) → Ω} {z : (Σ k, ι k) → ℂ} (hz : z ∈ mcPts (mCoordIdeal y)) {p : Σ k, ι k}
     (hp : z p ≠ 0) : y p ≠ 0 := fun h => hp (by

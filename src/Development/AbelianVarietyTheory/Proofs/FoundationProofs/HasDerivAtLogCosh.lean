@@ -179,7 +179,7 @@ theorem pderiv_dil (u : Ix p q → ℝ) (l : Ln p q n 0) (P : Pol p q n 0) :
         · subst e
           rw [Finsupp.tsub_apply, Finsupp.single_eq_same, Nat.cast_sub (Nat.pos_of_ne_zero h)]
           push_cast; ring
-        · simp [Finsupp.single_apply, Ne.symm e]
+        · simp [Ne.symm e]
       rw [Finset.sum_congr rfl fun l' _ => this l', Finset.sum_add_distrib]
       simp
 

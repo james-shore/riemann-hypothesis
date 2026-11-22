@@ -11,7 +11,7 @@ private theorem inv_map_sub {G P : Type} [Group G] [Group P] [MeasurableSpace G]
     Measure.restrict_apply (hf hE)]
   have h : f ⁻¹' E⁻¹ ∩ (U : Set G) = (f ⁻¹' E ∩ (U : Set G))⁻¹ := by
     ext x
-    simp [Set.mem_inv, map_inv, Subgroup.inv_mem_iff]
+    simp [Set.mem_inv, map_inv]
   rw [h, Measure.measure_inv]
 
 private theorem inv_all {P : Type} [Group P] [MeasurableSpace P] [MeasurableInv P] (ν : Measure P)

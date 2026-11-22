@@ -704,7 +704,7 @@ theorem second_deriv_additive_first (be : MvPowerSeries (Fin 2) KK) :
   simp only [sub_zero, map_sub]
   rw [pd2 _ h01 (constantCoeff_X_fin_three 2), pd2 _ (constantCoeff_X_fin_three 0) (constantCoeff_X_fin_three 2), pd2 _ (constantCoeff_X_fin_three 1) (constantCoeff_X_fin_three 2)]
   simp only [map_add, pderiv_X_self, pderiv_X_of_ne (show (0 : Fin 3) ≠ 1 by decide),
-    pderiv_X_of_ne (show (2 : Fin 3) ≠ 1 by decide), mul_zero, add_zero, mul_one, zero_add, sub_zero]
+    pderiv_X_of_ne (show (2 : Fin 3) ≠ 1 by decide), mul_zero, add_zero, mul_one, zero_add]
   rw [pd2 _ h01 (constantCoeff_X_fin_three 2), pd2 _ (constantCoeff_X_fin_three 1) (constantCoeff_X_fin_three 2)]
   simp [pderiv_X_self, pderiv_X_of_ne (show (1 : Fin 3) ≠ 0 by decide),
     pderiv_X_of_ne (show (2 : Fin 3) ≠ 0 by decide)]
@@ -718,7 +718,7 @@ theorem second_deriv_additive_second (be : MvPowerSeries (Fin 2) KK) :
   simp only [sub_zero, map_sub]
   rw [pd2 _ (constantCoeff_X_fin_three 0) h12, pd2 _ (constantCoeff_X_fin_three 0) (constantCoeff_X_fin_three 1), pd2 _ (constantCoeff_X_fin_three 0) (constantCoeff_X_fin_three 2)]
   simp only [map_add, pderiv_X_self, pderiv_X_of_ne (show (0 : Fin 3) ≠ 2 by decide),
-    pderiv_X_of_ne (show (1 : Fin 3) ≠ 2 by decide), mul_zero, add_zero, mul_one, zero_add, sub_zero]
+    pderiv_X_of_ne (show (1 : Fin 3) ≠ 2 by decide), mul_zero, add_zero, mul_one, zero_add]
   rw [pd2 _ (constantCoeff_X_fin_three 0) h12, pd2 _ (constantCoeff_X_fin_three 0) (constantCoeff_X_fin_three 2)]
   simp [pderiv_X_self, pderiv_X_of_ne (show (0 : Fin 3) ≠ 1 by decide),
     pderiv_X_of_ne (show (2 : Fin 3) ≠ 1 by decide)]

@@ -77,7 +77,7 @@ theorem htMap_quot {K : Type} [Field K] [NumberField K] [StarRing K] {n d D : �
   have hm : ∀ {a b : ℕ} (M : Matrix (Fin b) (Fin a) K),
       LinearMap.toMatrix (Pi.basisFun K (Fin a)) (Pi.basisFun K (Fin b)) M.mulVecLin = M := fun M => by
     ext i j
-    simp [LinearMap.toMatrix_apply, Matrix.mulVec, dotProduct, Pi.single_apply]
+    simp [LinearMap.toMatrix_apply]
   rw [hm, hm]
   have e : ∀ {a b : ℕ} (M : Matrix (Fin a) (Fin b) ℂ),
       ‖LinearMap.toContinuousLinearMap (Matrix.toEuclideanLin M)‖ = ‖M‖ := fun M => (l2_opNorm_def M).symm

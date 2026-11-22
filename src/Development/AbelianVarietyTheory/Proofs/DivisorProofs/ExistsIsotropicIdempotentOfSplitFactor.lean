@@ -84,8 +84,7 @@ theorem exists_root (K : Type) [Field K] [Algebra F K] (h2 : Module.finrank F E 
   let ι := algebraMap K (K ⊗[F] E)
   have hι : ∀ c : F, ι (algebraMap F K c) = (1 : K) ⊗ₜ algebraMap F E c := by
     intro c
-    simp [ι, Algebra.TensorProduct.algebraMap_apply, Algebra.algebraMap_eq_smul_one,
-      TensorProduct.smul_tmul]
+    simp [ι, Algebra.algebraMap_eq_smul_one]
     rw [Algebra.TensorProduct.one_def]
   have hA : A * A = ι (algebraMap F K t) * A - ι (algebraMap F K s) := by
     simp only [hι, A, Algebra.TensorProduct.tmul_mul_tmul, mul_one, ← TensorProduct.tmul_sub, hts]
@@ -232,24 +231,24 @@ theorem exists_isotropic_idempotent : ∀ {F E : Type} [Field F] [CharZero F] [F
   have Q1 : y * y = y := by
     ext j; by_cases h : j = i
     · subst h; simp [y]
-    · simp [y, Pi.single_apply, h]
+    · simp [y, h]
   have Q2 : y * x = x := by
     ext j; by_cases h : j = i
     · subst h; simp [y, x]
-    · simp [y, x, Pi.single_apply, h]
+    · simp [y, x, h]
   have Q3 : w + x = algebraMap F _ t * y := by
     ext j; by_cases h : j = i
     · subst h; simp [y, w, x, Pi.algebraMap_apply, T']
-    · simp [y, w, x, Pi.single_apply, h]
+    · simp [y, w, x, h]
   have Q4 : w * x = algebraMap F _ s * y := by
     ext j; by_cases h : j = i
     · subst h; simp [y, w, x, Pi.algebraMap_apply, T']
       linear_combination -hβ
-    · simp [y, w, x, Pi.single_apply, h]
+    · simp [y, w, x, h]
   have Q5 : z * (w - x) = y := by
     ext j; by_cases h : j = i
     · subst h; simp [y, w, x, z, inv_mul_cancel₀ hdisc]
-    · simp [y, w, x, z, Pi.single_apply, h]
+    · simp [y, w, x, z, h]
   let φ : (∀ j, K j) →ₐ[F] genAlg (γ : Matrix (Fin n) (Fin n) E) :=
     (plusAlg σ J (γ : Matrix (Fin n) (Fin n) E)).val.comp
       (e.symm : (∀ j, K j) →ₐ[F] plusAlg σ J (γ : Matrix (Fin n) (Fin n) E))

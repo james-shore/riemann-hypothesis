@@ -69,7 +69,7 @@ theorem msub {R B : Type} [CommRing R] [CommRing B] {m n : Type} (f : R →+* B)
 
 theorem map_smul_one {R B : Type} [CommRing R] [CommRing B] {n : Type} [DecidableEq n] (f : R →+* B) (a : R) :
     (a • (1 : Matrix n n R)).map f = f a • (1 : Matrix n n B) := by
-  ext i j; by_cases h : i = j <;> simp [Matrix.one_apply, Matrix.map_apply, Matrix.smul_apply, h]
+  ext i j; by_cases h : i = j <;> simp [Matrix.map_apply, Matrix.smul_apply, h]
 
 theorem exists_of_mem_sup {R : Type} [CommRing R] {a b x : R} (h : x ∈ Ideal.span {a} ⊔ Ideal.span {b}) :
     ∃ u v, x = b * u + a * v := by

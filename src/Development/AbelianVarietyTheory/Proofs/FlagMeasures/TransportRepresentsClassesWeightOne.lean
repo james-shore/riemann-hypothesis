@@ -44,6 +44,6 @@ theorem classes_and_weight : ∀ (D : D7) (X : HidaSetting D) (u : D.what₂.Wor
     have : Nat.card ((D.mem u).C.stab 0 c) = 1 := by
       haveI : Unique ((D.mem u).C.stab 0 c) := uniqueOfSubsingleton 1
       exact Nat.card_unique
-    simp [Formalism.BasicNotions.ColumnChain.wt, this]
+    simp [Formalism.BasicNotions.ColumnChain.wt]
 
 end GlobalTheory.ColClass

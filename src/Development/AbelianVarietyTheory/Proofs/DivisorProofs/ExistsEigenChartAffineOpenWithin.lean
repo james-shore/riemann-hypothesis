@@ -25,7 +25,7 @@ theorem exists_factor_idem {L : Type} [Field L] {n m : ℕ} (e : Matrix (Fin n) 
     have : (N.subtype ∘ₗ b.equivFun.symm.toLinearMap) ∘ₗ (b.equivFun.toLinearMap ∘ₗ P) = e.mulVecLin := by
       apply LinearMap.ext
       intro v
-      simp [P, LinearMap.codRestrict_apply]
+      simp [P]
       rfl
     rw [this]
     exact LinearMap.toMatrix'_toLin' e
@@ -61,7 +61,7 @@ theorem det_smul_of_factor {T : Type} [CommRing T] {n m : ℕ} (U : Matrix (Fin 
         ((U.submatrix s id).adjugate * U.submatrix s id) * V := by
     simp only [Matrix.mul_assoc]
   rw [e1, mul_adjugate, adjugate_mul]
-  simp only [Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_one, smul_smul, mul_comm]
+  simp only [Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_one, smul_smul]
 
 theorem idem_minors {R L : Type} [CommRing R] [Field L] (φ : R →+* L) (hφ : Function.Injective φ) {n m : ℕ}
     (e : Matrix (Fin n) (Fin n) R) (he : e * e = e) (N : Submodule L (Fin n → L))
@@ -97,7 +97,7 @@ theorem exists_split {R S : Type} [CommRing R] [CommRing S] {n m : ℕ} (e : Mat
     rw [Matrix.smul_mul, ← Matrix.map_mul, Matrix.mul_assoc, h1, adjugate_mul]
     have hs : ((e.submatrix s s).det • (1 : Matrix (Fin m) (Fin m) R)).map φ =
         φ (e.submatrix s s).det • (1 : Matrix (Fin m) (Fin m) S) := by
-      ext i j; by_cases h : i = j <;> simp [h, Matrix.one_apply]
+      ext i j; by_cases h : i = j <;> simp [h]
     rw [hs, smul_smul, IsUnit.val_inv_mul, one_smul]
   · rw [Matrix.mul_smul, ← Matrix.map_mul, ← Matrix.mul_assoc, ← hid]
     have hs : ((e.submatrix s s).det • e).map φ = φ (e.submatrix s s).det • e.map φ := by

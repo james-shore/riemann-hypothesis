@@ -11,7 +11,7 @@ open PositivityTheory.Rg.Sw PositivityTheory.Rg.Sw.LVs
 variable {n : ℕ}
 
 theorem det_nU (H : Matrix (Fin n) (Fin n) ℂ) : (nU H).det = 1 := by
-  simp [nU, Matrix.det_fromBlocks_zero₂₁]
+  simp [nU]
 
 theorem fz_twist (m : ℕ) (e : ℤ) (z : ℂ) (y : M2 n) : fz m e z y = y.det ^ e * fz m 0 z y := by
   simp [fz, mul_assoc]

@@ -49,7 +49,7 @@ theorem det_flw (hG : ∀ a b, τ (G b a) = conj (τ (G a b))) (e : Fin r → �
   congr 1
   rw [Matrix.det_unique]
   simp only [Matrix.add_apply, Matrix.one_apply_eq, Matrix.mul_apply, replicateCol, replicateRow,
-    Matrix.of_apply, Finset.univ_unique, Finset.sum_singleton, GramDeterminantReal.mt, Finset.mul_sum,
+    Matrix.of_apply, GramDeterminantReal.mt, Finset.mul_sum,
     Finset.sum_mul]
   congr 1
   rw [Finset.sum_comm]

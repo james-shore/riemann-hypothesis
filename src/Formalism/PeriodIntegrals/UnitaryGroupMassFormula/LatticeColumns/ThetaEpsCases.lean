@@ -18,8 +18,7 @@ theorem psiV_sigA (X : HidaSetting D) (p : TypX X) (t : X.B.I.E ⊗[X.B.I.F] Af 
   | zero => simp
   | tmul e a =>
     simp only [PI.FinKW.psiV, sigA, Formalism.UG.sigR, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.sigR, AlgHom.toRingHom_eq_coe,
-      RingHom.coe_coe, AlgHom.comp_apply, AlgEquiv.toAlgHom_eq_coe, AlgHom.coe_coe,
-      AlgEquiv.coe_algHom, Algebra.TensorProduct.map_tmul, Algebra.TensorProduct.comm_tmul, AlgHom.id_apply]
+      RingHom.coe_coe, AlgHom.comp_apply, AlgEquiv.coe_algHom, Algebra.TensorProduct.map_tmul, Algebra.TensorProduct.comm_tmul, AlgHom.id_apply]
   | add x y hx hy => simp only [map_add, hx, hy]
 
 theorem theta_eps_cases (X : HidaSetting D) (p : TypX X) (θ : TpX X p ≃ₐ[FpX X p] FpX X p × FpX X p)

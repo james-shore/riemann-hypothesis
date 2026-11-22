@@ -110,7 +110,7 @@ theorem congCc (ob : Bool) (hsew : sg X.B.I X.ew - (if ob then 0 else 1) ∈ Wq 
     · show CongW p (sg X.B.I (hhat X.B.I _ _)) _
       rw [sg_swap]
       have := hN' (wI (hrD D) (rv ⟨i.1 + 1, h⟩)) (wI (hrD D) (rv i))
-      simp only [hob, Bool.false_eq_true] at this ⊢
+      simp only [hob] at this ⊢
       rwa [frd_wf, fr_wf, rv_rv, rv_rv] at this
     · rw [map_zero]; exact congW_zero_of (zero_mem _)
 

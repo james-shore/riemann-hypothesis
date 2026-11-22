@@ -68,7 +68,7 @@ private theorem isSquare_neg_padic_of_dvd_sq_add_of_not_dvd (q : ℕ) [Fact q.Pr
       simp
     have e2 : (Polynomial.X ^ 2 + Polynomial.C d : Polynomial ℤ).derivative.aeval (n : ℤ_[q]) =
         ((2 * n : ℤ) : ℤ_[q]) := by
-      simp [Polynomial.derivative_X_pow]
+      simp
       left
       exact map_ofNat _ 2
     rw [e1, e2]

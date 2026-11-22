@@ -65,7 +65,6 @@ theorem sum_sign_prod_ell (β : Matrix (Fin n) (Fin n) ℂ) :
       ((Fintype.equivFin (Fin n)).symm i)) = ∏ a : Fin n, β (σ a) a from
     Fintype.prod_equiv (Fintype.equivFin (Fin n)).symm _ _ (fun _ => rfl)]
   rw [Units.smul_def, zsmul_eq_mul]
-  push_cast
   ring
 
 theorem fourier_test (β : Matrix (Fin n) (Fin n) ℂ) (hdet : β.det = 0) {φ : Vr n → ℂ} (hφ : IsT Set.univ φ) :

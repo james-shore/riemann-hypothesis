@@ -63,8 +63,7 @@ private theorem Pz_iff_pos {W : Type} [AddCommGroup W] [Module ℝ W] [FiniteDim
 private theorem actOn_tmul {C V : Type} [Ring C] [Algebra ℚ C] [AddCommGroup V] [Module ℚ V]
     (rep : C →ₐ[ℚ] Module.End ℚ V) (r s : ℝ) (c : C) (v : V) :
     actOn rep ℝ (r ⊗ₜ c) (s ⊗ₜ v) = (r * s) ⊗ₜ rep c v := by
-  simp only [actOn, Algebra.TensorProduct.lift_tmul, Algebra.ofId_apply, Module.End.mul_apply,
-    Algebra.algebraMap_eq_smul_one]
+  simp only [actOn]
   change r • (((1 : Module.End ℝ (ℝ ⊗[ℚ] V))) ((rep c).baseChange ℝ (s ⊗ₜ v))) = _
   rw [LinearMap.baseChange_tmul, Module.End.one_apply, TensorProduct.smul_tmul', smul_eq_mul]
 
@@ -128,7 +127,7 @@ private theorem E_adj {p : ℕ} [Fact p.Prime] {D : Datum p} {G : HTGroup p} (L 
     | tmul s v =>
       induction y using TensorProduct.induction_on with
       | zero => simp
-      | add y y' h h' => simp only [map_add, LinearMap.add_apply, h, h']
+      | add y y' h h' => simp only [map_add, h, h']
       | tmul t w =>
         have h := L.adj c v w
         rw [show sh G c = (G.star c).unop from rfl] at h
@@ -146,8 +145,8 @@ private theorem Pz_matrix {n : ℕ} (H M : Matrix (Fin n) (Fin n) ℂ) (hH : H.P
   let π : Matrix (Fin n) (Fin n) ℂ →ₐ[ℝ] Module.End ℝ (Fin n → ℂ) :=
     AlgHom.ofLinearMap
       { toFun := fun m => (Matrix.mulVecLin m).restrictScalars ℝ
-        map_add' := fun a b => LinearMap.ext fun x => by simp [Matrix.add_mulVec]
-        map_smul' := fun r a => LinearMap.ext fun x => by simp [Matrix.smul_mulVec] }
+        map_add' := fun a b => LinearMap.ext fun x => by simp
+        map_smul' := fun r a => LinearMap.ext fun x => by simp }
       (LinearMap.ext fun x => by simp)
       (fun a b => LinearMap.ext fun x => by
         change (a * b) *ᵥ x = a *ᵥ (b *ᵥ x)

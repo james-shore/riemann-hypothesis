@@ -32,7 +32,6 @@ theorem resG_constFn' {O₀ O : Y.Opens} (h : O ≤ O₀) (r : A) : resG Y h (co
   rw [← RingHom.comp_apply, ← CommRingCat.hom_comp]
   first
     | (erw [Scheme.Hom.appLE_map])
-    | (simp only [Scheme.Hom.appLE, Category.assoc, ← Functor.map_comp]; rfl)
 
 theorem rsT_add' {O₀ : Y.Opens} (s t : Γ(Y, O₀)) (O : Y.Opens) : rsT (s + t) O = rsT s O + rsT t O := by
   unfold rsT; split_ifs <;> simp
@@ -142,7 +141,7 @@ theorem comb_eq {n : ℕ} (φ b : Fin n → C1 U) (P : Matrix (Fin n) (Fin n) A)
     ∑ a, kapH q U (c a) * φ a - ∑ k, kapH q U ((c ᵥ* P) k) * b k =
       ∑ a, kapH q U (c a) * (φ a - ∑ k, kapH q U (P a k) * b k) := by
   simp only [Matrix.vecMul, dotProduct, map_sum, map_mul, Finset.sum_mul, mul_sub, Finset.sum_sub_distrib,
-    Finset.mul_sum, mul_assoc]
+    Finset.mul_sum]
   rw [Finset.sum_comm]
   congr 1
   exact Finset.sum_congr rfl fun x _ => Finset.sum_congr rfl fun i _ => mul_assoc _ _ _

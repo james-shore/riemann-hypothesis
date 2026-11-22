@@ -92,9 +92,6 @@ theorem actA_mul (P : M.Par) (a b : MA.A P (MA.DQ P)) (x : M.Ty P → MA.SmQ P.r
     rw [Matrix.mul_apply, pr_fst_sum]
     first
       | exact (LinearMap.sum_apply _ _ _).trans (Finset.sum_congr rfl fun i _ => rfl)
-      | exact (ContinuousLinearMap.sum_apply _ _ _).trans (Finset.sum_congr rfl fun i _ => rfl)
-      | exact (op_sum_apply P Finset.univ _ _).trans (Finset.sum_congr rfl fun i _ => rfl)
-      | (simp; rfl)
   rw [Finset.sum_congr rfl fun π' _ => e π', Finset.sum_comm]
   refine Finset.sum_congr rfl fun σ _ => ?_
   rw [map_sum]
@@ -118,7 +115,7 @@ theorem actA_one (P : M.Par) (x : M.Ty P → MA.SmQ P.r P.TT) : MA.actA P 1 x = 
   simp only [Formalism.FourierDecayAlt.MA.actA, Matrix.one_apply]
   erw [Finset.sum_eq_single π (fun b _ hb => by simp only [if_neg (Ne.symm hb)]; rfl)
     (fun h => absurd (Finset.mem_univ π) h)]
-  simp only [if_pos rfl]
+  simp only
   rfl
 
 theorem initial_coefficient_of_start_matrix (P : M.Par) (l : ℕ) (Y : ℂ) :

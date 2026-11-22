@@ -46,7 +46,7 @@ theorem ev_resG_top {V : (Sp Ω).Opens} (hV : ⊤ ≤ V) (x : Ω) :
     ev V hV (resG (Sp Ω) le_top ((Scheme.ΓSpecIso (CommRingCat.of Ω)).inv.hom x)) = x := by
   have e : (homOfLE (hV.trans le_top) : (⊤ : (Sp Ω).Opens) ⟶ ⊤) = 𝟙 _ := Subsingleton.elim _ _
   simp only [ev, RingHom.comp_apply, resG_resG]
-  simp [resG, e]
+  simp [resG]
 
 theorem ev_appLE {X : Scheme.{0}} (x : Sp Ω ⟶ X) {U : X.Opens} {V : (Sp Ω).Opens} (hV : ⊤ ≤ V) (h : V ≤ x ⁻¹ᵁ U)
     (f : Γ(X, U)) : ev V hV ((x.appLE U V h).hom f) = valF x U f := by
@@ -139,7 +139,7 @@ theorem exists_lb_of_hasDiv : ∀ (o Ω : Type) [CommRing o] [Field Ω] [Algebra
       have hv' : valF M.pt (U (j PUnit.unit)) ((t i).f (j PUnit.unit)) = v i / v (j PUnit.unit).1 :=
         ht i (j PUnit.unit) hne
       refine ev_injective _ (hW j) ?_
-      simp only [map_mul, hτ]
+      simp only [map_mul]
       rw [ev_appLE, ev_resG_top]
       change _ = v i * ev _ (hW j) (resG (Sp Ω) le_top ((Scheme.ΓSpecIso (CommRingCat.of Ω)).inv.hom (v (j PUnit.unit).1)⁻¹))
       rw [ev_resG_top, hv', div_eq_mul_inv]

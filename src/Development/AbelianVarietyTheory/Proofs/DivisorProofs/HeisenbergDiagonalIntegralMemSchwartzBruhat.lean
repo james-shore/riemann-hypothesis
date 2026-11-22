@@ -35,7 +35,7 @@ theorem diagW_eq (ψ : AddChar (Fv F v) ℂ) (μ : @Measure (κ → Fv F v) (bor
   rw [← integral_const_mul]
   congr 1
   funext x
-  simp only [schr, elim_dot_elim, dotProduct_zero, zero_dotProduct, add_zero, elim_add_elim]
+  simp only [schr, elim_dot_elim, dotProduct_zero, add_zero, elim_add_elim]
   rw [AddChar.map_add_eq_mul]
   ring
 
@@ -96,7 +96,7 @@ theorem diagG_schr (ψ : AddChar (Fv F v) ℂ) (μ : @Measure (κ → Fv F v) (b
     congr 1 <;> abel
   rw [e, ← mul_assoc, ← mul_assoc, ← AddChar.map_add_eq_mul, ← AddChar.map_add_eq_mul]
   congr 2
-  simp only [add_dotProduct, sub_dotProduct, dotProduct_add, dotProduct_sub]
+  simp only [add_dotProduct, sub_dotProduct, dotProduct_add]
   ring
 
 theorem sb_mul {X : Type} [TopologicalSpace X] {f g : X → ℂ} (hf : IsLocallyConstant f) (hg : g ∈ SB X) :

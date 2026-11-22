@@ -127,8 +127,6 @@ theorem formulaF_sigLam (hgap : StdGap ε lam) (hP : IsPsiFor ε lam T Ψ) (hv�
       | exact K.sub_orthogonalProjectionOnto_mem_orthogonal y
       | exact sub_orthogonalProjection_mem_orthogonal y
       | exact Submodule.sub_starProjection_mem_orthogonal y
-      | exact K.sub_starProjection_mem_orthogonal y
-      | (rw [Submodule.mem_orthogonal']; intro u hu; exact K.orthogonalProjectionOnto_inner_eq_zero y u hu)
   have h0 : inner ℂ a (y - (K.orthogonalProjectionOnto y : L2 ε)) = 0 :=
     Submodule.inner_right_of_mem_orthogonal ha horth
   rw [inner_sub_right, sub_eq_zero] at h0
@@ -167,9 +165,6 @@ theorem dec_sigLam (hgap : StdGap ε lam) (hP : IsPsiFor ε lam T Ψ) (hv₀ : v
     have hk : (S7.toMK k)ᴴ * Jm ε * S7.toMK k = Jm ε := by
       first
         | exact (k : S7.UJ ε).2
-        | exact (k : S7.UJ ε).prop
-        | (simp only [S7.toMK]; exact (k : S7.UJ ε).2)
-        | (unfold S7.toMK; clear * - k; done)
     calc (NormedSpace.exp X)ᴴ * (S7.toMK k)ᴴ * Jm ε * (S7.toMK k * NormedSpace.exp X)
         = (NormedSpace.exp X)ᴴ * ((S7.toMK k)ᴴ * Jm ε * S7.toMK k) * NormedSpace.exp X := by
           simp only [Matrix.mul_assoc]

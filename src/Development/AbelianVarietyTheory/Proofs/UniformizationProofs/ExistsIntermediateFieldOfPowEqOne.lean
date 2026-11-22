@@ -23,11 +23,6 @@ theorem exists_intermediateField {k Ω : Type} [Field k] [Field Ω] [Algebra k �
         Spec.map (CommRingCat.ofHom (algebraMap K Ω)) ≫ b = a := by
   first
   | (rename_i h_2 h_3 h_4 h_7 h_8; revert k Ω h_2 h_3 h_4 X p h_7 h_8 a ha; exact @_root_.GlobalTheory.FiniteSeparablePoints.exists_finite_separable_point)
-  | exact @_root_.GlobalTheory.FiniteSeparablePoints.exists_finite_separable_point
-  | exact _root_.GlobalTheory.FiniteSeparablePoints.exists_finite_separable_point
-  | (apply _root_.GlobalTheory.FiniteSeparablePoints.exists_finite_separable_point <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiniteSeparablePoints.exists_finite_separable_point <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiniteSeparablePoints.exists_finite_separable_point <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiniteSeparablePoints.exists_finite_separable_point ..)
 
 theorem exists_intermediateField_of_pow_eq_one {V : Type} [CommRing V]

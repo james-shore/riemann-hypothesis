@@ -197,9 +197,9 @@ theorem Wf_rmul_UF {y : Frame X.Ψ r} (hy : y ∈ X.dom) {y' : UpI X.Ψ r → �
   unfold Wf
   by_cases h : Lβ (β0 X y) y' ∈ Cy X.Ψ r
   · have h2 := key.2 h
-    simp [Set.indicator_apply, h, h2]
+    simp [h, h2]
   · have h2 : rmul y (UF X y') ∉ SW X := fun h' => h (key.1 h')
-    simp [Set.indicator_apply, h, h2]
+    simp [h, h2]
 
 def invF (b : Frame X.Ψ r) : Frame X.Ψ r := fun τ => ((mat b τ)⁻¹ : Matrix (Fin r) (Fin r) ℂ)
 
@@ -234,7 +234,7 @@ theorem Wf_rmul_not_dom {y b : Frame X.Ψ r} (hy : y ∉ X.dom) (hb : b ∈ Bor 
     apply hy
     have h2 := mem_dom_rmul X h1 (invF_mem' X hb)
     rwa [rmul_invF X hb] at h2
-  simp [Set.indicator_apply, h]
+  simp [h]
 
 lemma isClosed_imp {P : Prop} {S : Set ℂ} (hS : IsClosed S) : IsClosed {z : ℂ | P → z ∈ S} := by
   by_cases h : P

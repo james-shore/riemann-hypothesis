@@ -16,7 +16,7 @@ theorem symm_multiset_centre_unique : ∀ (s : Multiset ℤ) (x y : ℤ), s ≠ 
     intro z hz
     have h1 : (s.map (z - ·)).sum = (Multiset.card s : ℤ) * z - s.sum := by
       rw [Multiset.sum_map_sub, Multiset.map_const', Multiset.sum_replicate, Multiset.map_id']
-      simp [nsmul_eq_mul]
+      simp
     have h2 : s.sum = (Multiset.card s : ℤ) * z - s.sum := by
       conv_lhs => rw [hz]
       exact h1

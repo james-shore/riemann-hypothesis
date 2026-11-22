@@ -47,8 +47,6 @@ theorem exists_root (K : Type) [Field K] [CharZero K] (N : ℕ) (hN : N ≠ 0) :
   haveI : Module.Finite K (CyclotomicField N K) := by
     first
       | exact IsCyclotomicExtension.finiteDimensional {N} K _
-      | exact IsCyclotomicExtension.finite {N} K _
-      | exact Polynomial.IsSplittingField.finiteDimensional _ (Polynomial.cyclotomic N K)
   exact ⟨CyclotomicField N K, inferInstance, algebraMap _ _, RingHom.finite_algebraMap.2 inferInstance,
     IsCyclotomicExtension.zeta N K _, IsCyclotomicExtension.zeta_spec N K _⟩
 
@@ -89,8 +87,7 @@ theorem exists_field : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (H
   obtain ⟨i₂, h₂⟩ := exists_factor (M.ξ ≫ f) (genPt ξ₁) (by
     rw [← hfe]
     first
-      | rfl
-      | simp [GlobalTheory.CompanionTheory.Ar.genPt])
+      | rfl)
   have hdom : GlobalTheory.CompanionTheory.Ar.Dominates M.ξ (Y.X.fromSpecResidueField (genPt ξ₁)) f i₂ := h₂
   have hi₂ : i₂.Finite := HodgeExists.finite_of_dominates M.tie.gen f hdom
   obtain ⟨Ω₂, _, a, b, ha, hab⟩ := exists_compositum _ Ω₁ Ω' i₁ i₂ hi₂

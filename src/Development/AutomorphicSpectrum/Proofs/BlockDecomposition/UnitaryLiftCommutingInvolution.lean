@@ -47,14 +47,11 @@ theorem exists_unitary_assemble : ∀ {n D m : ℕ} (J : Matrix (Fin n) (Fin n) 
   · rw [Matrix.mem_unitaryGroup_iff, star_eq_conjTranspose]
     simp only [Matrix.add_mul, Matrix.mul_add, conjTranspose_add, conjTranspose_mul,
       conjTranspose_conjTranspose, hJh, Matrix.mul_assoc, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10,
-      hCC, c2, hCR, hRR, hRC, hJJ, hJR, hRJ, hk₀, hkR, Matrix.mul_zero, Matrix.zero_mul,
-      add_zero, zero_add, Matrix.mul_one, Matrix.one_mul]
+      Matrix.mul_zero, add_zero, zero_add]
     rw [← hs]
   all_goals
     simp only [Matrix.add_mul, Matrix.mul_add, conjTranspose_add, conjTranspose_mul,
-      conjTranspose_conjTranspose, hJh, Matrix.mul_assoc, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10,
-      a11, hCC, c2, hCR, hRR, hRC, hJJ, hJR, hRJ, hk₀, hkR, hkRJ, Matrix.mul_zero, Matrix.zero_mul,
-      add_zero, zero_add, Matrix.mul_one, Matrix.one_mul]
+      conjTranspose_conjTranspose, hJh, Matrix.mul_assoc, a3, a6, a7, a8, a11, hCC, c2, hCR, hRR, hRC, hJJ, hJR, hRJ, Matrix.mul_zero, add_zero, zero_add, Matrix.mul_one]
     try abel
 
 end GlobalTheory.CompanionTheory.UnitaryAssembly

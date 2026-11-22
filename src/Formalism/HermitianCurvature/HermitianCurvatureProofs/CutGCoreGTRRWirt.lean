@@ -24,7 +24,6 @@ theorem rotation_wirtinger_holds : GTRRWirt := by
       ((0 : Fin r → ℂ), x.2 * Complex.I) 0 := by
     first
     | exact (hasDerivAt_const (0 : ℝ) x.1).prodMk h2
-    | exact (hasDerivAt_const (0 : ℝ) x.1).prod h2
   have hx : x = ((x.1, x.2 * Complex.exp ((((0 : ℝ) : ℂ)) * Complex.I)) : MA.E r) := by simp
   have hc := hu.hasFDerivAt.comp_hasDerivAt_of_eq (0 : ℝ) hγ hx
   have hdir1 : MA.dirE (M.vz (r := r)) = ((0 : Fin r → ℂ), (1 : ℂ)) := by simp [MA.dirE, M.vz]

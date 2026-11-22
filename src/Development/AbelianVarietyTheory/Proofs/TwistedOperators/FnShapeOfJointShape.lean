@@ -79,7 +79,7 @@ theorem pad_getD {x y : List ℤ} (hx : ∀ v ∈ x, 0 < v) (hy : ∀ v ∈ y, v
   · rw [List.getD_append_right _ _ _ _ (not_lt.mp h1), posFn_eq_zero (not_lt.mp h1)]
     by_cases h2 : (i : ℕ) - x.length < n - x.length - y.length
     · rw [List.getD_append _ _ _ _ (by simpa using h2), negFn_eq_zero (by omega)]
-      simp [List.getD_eq_getElem?_getD, List.getElem?_replicate, h2]
+      simp [List.getD_eq_getElem?_getD, h2]
     · rw [List.getD_append_right _ _ _ _ (by simp; omega)]
       simp only [List.length_replicate]
       have hj : n - ((i : ℕ) + 1) < y.length := by omega

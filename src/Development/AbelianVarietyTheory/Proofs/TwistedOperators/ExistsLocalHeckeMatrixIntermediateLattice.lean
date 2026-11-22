@@ -252,7 +252,7 @@ theorem exists_local_matrix : ∀ (D : D7) (P : Formalism.L2.DIV.Pl D.host.E) (e
     obtain ⟨u, hu⟩ : ∃ u, u = (t⁻¹ • (T⁻¹).1) *ᵥ (Pi.single j 1 : Fin n → Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.Fv D.host.F v) := ⟨_, rfl⟩
     have hTu : (t • T.1) *ᵥ u = Pi.single j 1 := by
       rw [hu, Matrix.mulVec_mulVec]
-      simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, inv_mul_cancel₀ ht, mul_inv_cancel₀ ht, one_smul,
+      simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, inv_mul_cancel₀ ht, one_smul,
         Units.mul_inv, Matrix.one_mulVec]
     have hy := (hΛ (fun i => finPart D (s (u i)))).2 (by
       intro l
@@ -362,7 +362,7 @@ theorem exists_local_matrix : ∀ (D : D7) (P : Formalism.L2.DIV.Pl D.host.E) (e
     obtain ⟨u, hud⟩ : ∃ u, u = (t⁻¹ • (T⁻¹).1) *ᵥ (fun j => (b j : v.adicCompletion D.host.F)) := ⟨_, rfl⟩
     have hTu : (t • T.1) *ᵥ u = fun j => (b j : v.adicCompletion D.host.F) := by
       rw [hud, Matrix.mulVec_mulVec]
-      simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, inv_mul_cancel₀ ht, mul_inv_cancel₀ ht, one_smul,
+      simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, inv_mul_cancel₀ ht, one_smul,
         Units.mul_inv, Matrix.one_mulVec]
     have hy := (hΛ (fun i => finPart D (s (u i)))).2 (by
       intro l

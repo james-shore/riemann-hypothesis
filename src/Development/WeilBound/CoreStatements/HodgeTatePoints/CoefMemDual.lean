@@ -157,7 +157,7 @@ variable {A K : Type} [CommRing A] [Field K] [Algebra A K] {E : Type} [Field E] 
   (D : HTChart A K c p R N Ω)
 
 theorem omHT_fg (σ : E →+* K) : (D.omHT σ).FG :=
-  by apply _root_.UpperTheory.Reformulated.B.FinitelyGeneratedHomology.omHT_fg <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.FinitelyGeneratedHomology.omHT_fg
 
 end
 

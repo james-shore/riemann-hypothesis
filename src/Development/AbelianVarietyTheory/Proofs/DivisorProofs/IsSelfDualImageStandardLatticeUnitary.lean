@@ -43,7 +43,7 @@ theorem selfDual_matLat_stdLat {O K : Type} [CommRing O] [Field K] [Algebra O K]
       intro i
       by_cases hij : i = j
       · subst hij; exact ⟨1, by simp⟩
-      · exact ⟨0, by simp [Pi.single_apply, hij]⟩
+      · exact ⟨0, by simp [hij]⟩
     have := h _ hx
     rw [herm_mulVec_right] at this
     simpa [herm, Pi.single_apply, map_one] using this

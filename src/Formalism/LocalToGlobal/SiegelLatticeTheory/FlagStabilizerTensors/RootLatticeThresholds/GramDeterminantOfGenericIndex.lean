@@ -78,8 +78,8 @@ theorem det_sub_lastDiag (M : Matrix (Fin (r + 1)) (Fin (r + 1)) E) (c : E) :
       by_cases hb : b = Fin.last r
       · subst hb
         simp [lastDiag]
-      · simp [lastDiag, hb, Pi.single_apply]
-    · simp [lastDiag, Matrix.updateRow_ne ha, ha]
+      · simp [lastDiag, hb]
+    · simp [lastDiag, ha]
   rw [h1, sub_eq_add_neg (M (Fin.last r)), ← neg_smul, Matrix.det_updateRow_add, Matrix.updateRow_eq_self,
     Matrix.det_updateRow_smul, neg_mul, ← sub_eq_add_neg]
   congr 2
@@ -87,9 +87,9 @@ theorem det_sub_lastDiag (M : Matrix (Fin (r + 1)) (Fin (r + 1)) E) (c : E) :
   · simp [Matrix.updateRow_self, Fin.succAbove_last]
     congr 1
     ext a b
-    simp [Matrix.updateRow_ne (Fin.castSucc_lt_last a).ne]
+    simp
   · intro j _ hj
-    simp [Matrix.updateRow_self, Pi.single_apply, hj]
+    simp [Matrix.updateRow_self, hj]
   · simp
 
 theorem leadMinor_full (B : Matrix (Fin (r + 1)) (Fin (r + 1)) E) : leadMinorE B (r + 1) = B.det := by
@@ -387,7 +387,6 @@ theorem detUUC_of (hGI : GenIdxPseudo) : DetUUC := by
     Finset.card_univ, D.what₂.card_Tau, hW]
   congr 1
   rw [inv_pow, inv_pow]
-  congr 1
   simp only [← pow_mul]
   ring_nf
 

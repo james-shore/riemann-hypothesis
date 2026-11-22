@@ -174,7 +174,7 @@ theorem exists_kFin_ne_zero_of_cwCont : PI.KFinSmooth → ∀ (k r : ℕ) (ε : 
         = ∫ x, innerSL ℂ (Bm v) (p x • Bm (R.σ (κ x) v)) ∂(Formalism.REAL.muK ε) := by
           congr 1
           funext x
-          simp [φ, inner_smul_right]
+          simp [φ]
       _ = innerSL ℂ (Bm v) (∫ x, p x • Bm (R.σ (κ x) v) ∂(Formalism.REAL.muK ε)) :=
           (innerSL ℂ (Bm v)).integral_comp_comm hfi
       _ = 0 := by rw [← hI, ← hu, hB0, map_zero]

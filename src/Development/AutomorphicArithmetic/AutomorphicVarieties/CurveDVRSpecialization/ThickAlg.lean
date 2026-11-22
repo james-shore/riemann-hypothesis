@@ -55,7 +55,7 @@ theorem chi_ofRep (σ : G →* Matrix (Fin n) (Fin n) Q) (y : MonoidAlgebra Q G)
   simp [map_sub, key]
   congr 2
   ext i k
-  simp [GDet.repAlg, MonoidAlgebra.lift_single, Matrix.diagonal, Matrix.one_apply, Algebra.smul_def]
+  simp [GDet.repAlg, MonoidAlgebra.lift_single, Matrix.diagonal, Matrix.one_apply]
 
 private theorem gdet_map_chi_mapRingHom {n : ℕ} {A Q G : Type} [CommRing A] [CommRing Q] [Group G]
     (D : GDet n A G) (f : A →+* Q) (y : MonoidAlgebra A G) :
@@ -189,7 +189,7 @@ variable {κ K G : Type} [Field κ] [Field K] [Group G]
 theorem root_row {R : Type} [CommRing R] (M : Matrix (Fin 3) (Fin 3) R) (h0 : M 1 0 = 0) (h2 : M 1 2 = 0) :
     M.charpoly.eval (M 1 1) = 0 := by
   rw [Matrix.charpoly, Matrix.det_fin_three]
-  simp [Matrix.charmatrix_apply, h0, h2]
+  simp [h0, h2]
 
 theorem th_row {A R : Type} [CommRing A] [CommRing R] (j : A →+* R) (σ : G →* Matrix (Fin 3) (Fin 3) R)
     (hσ : ∀ g, σ g 1 0 = 0 ∧ σ g 1 2 = 0) (y : MonoidAlgebra A G) : th j σ y 1 0 = 0 ∧ th j σ y 1 2 = 0 := by
@@ -243,7 +243,7 @@ private theorem repAlg_surjective_of_matIrr_fin_three {κ G : Type} [Field κ] [
       map_add' := fun v w => Matrix.mulVec_add _ _ _
       map_smul' := fun e v => by
         obtain ⟨c, rfl⟩ := hschur.2 e
-        simp [Module.End.smul_def, Module.algebraMap_end_apply, Matrix.mulVec_smul] }
+        simp [Matrix.mulVec_smul] }
   obtain ⟨r, hr⟩ := jacobson_density f (Finset.univ.image fun i : Fin 3 => (Pi.single i 1 : Fin 3 → κ))
   refine ⟨r, ?_⟩
   ext a b
@@ -281,7 +281,7 @@ theorem not_irr [IsAlgClosed κ] (j : κ →+* K) (σ : G →* Matrix (Fin 3) (F
   have h1 := L (1 - (e 0 0 + e 1 1 + e 2 2)) (by
     rw [map_sub, map_add, map_add, he, he, he, map_one]
     ext i k
-    fin_cases i <;> fin_cases k <;> simp [Matrix.single_apply, Matrix.one_apply])
+    fin_cases i <;> fin_cases k <;> simp)
   rw [map_sub, map_one, map_add, map_add, hd 0 1, hd 1 2, hd 2 0, hsq 0 1 (by decide),
     hsq 1 2 (by decide), hsq 2 0 (by decide)] at h1
   simp at h1
@@ -319,7 +319,7 @@ theorem split_of_ss [IsAlgClosed κ] (j : κ →+* K) (σ : G →* Matrix (Fin 3
       (I.ringCon.mk' y) • v = th j σ y *ᵥ v := by
     intro y v
     show ψ (I.ringCon.mk' y) v = _
-    simp [ψ, τ, RingCon.lift_mk']
+    simp [ψ, τ]
   let W : Submodule I.ringCon.Quotient (Fin 3 → K) :=
     { carrier := {v | v 1 = 0}
       add_mem' := by
@@ -375,7 +375,7 @@ theorem chi_res {u : G.St} {g : G.G₀} (hg : g ∈ r.Ip u) (f : B.B →+* Q)
       (res O B.B : B.B →+* ResidueField O) := by
     ext x
     simp only [res, RingHom.coe_comp, Function.comp_apply]
-    simp only [AlgHom.coe_ringHom_mk, RingHom.coe_mk, RingEquiv.toRingHom_eq_coe, RingHom.coe_comp,
+    simp only [AlgHom.coe_ringHom_mk, RingEquiv.toRingHom_eq_coe, RingHom.coe_comp,
       RingEquiv.coe_toRingHom, Function.comp_apply]
     rw [← ResidueField.map_residue]
     congr 1

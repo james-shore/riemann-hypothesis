@@ -123,8 +123,6 @@ theorem norm_zpow_sub_one_le (u : C) (hu : ‖u - 1‖ < 1) (i : ℤ) : ‖u ^ i
   | exact @_root_.GlobalTheory.CloseToUnitNorm.norm_zpow_sub_one_le
   | exact _root_.GlobalTheory.CloseToUnitNorm.norm_zpow_sub_one_le
   | (apply _root_.GlobalTheory.CloseToUnitNorm.norm_zpow_sub_one_le <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CloseToUnitNorm.norm_zpow_sub_one_le <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CloseToUnitNorm.norm_zpow_sub_one_le <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CloseToUnitNorm.norm_zpow_sub_one_le ..)
 
 end Abstract

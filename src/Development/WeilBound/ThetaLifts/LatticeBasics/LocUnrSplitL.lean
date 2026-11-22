@@ -43,7 +43,7 @@ theorem zeta (h : LF O (ϖ : k) nrm q) {A : kˣ →* ℂ} (hA : ∀ u : kˣ, nrm
   · have h0 : x ≠ 0 := fun h0 => by rw [h0, map_zero] at hx; exact (zpow_pos hq _).ne hx
     have : A (Units.mk0 x h0 * (ϖ ^ m)⁻¹) = 1 := hA _ (by
       simp only [Units.val_mul, Units.val_mk0, Units.val_inv_eq_inv_val, Units.val_zpow_eq_zpow_val, map_mul, map_inv₀,
-        map_zpow₀, hx, h.nrm_pi, _root_.inv_zpow', ne_eq]
+        map_zpow₀, hx, h.nrm_pi, _root_.inv_zpow']
       exact mul_inv_cancel₀ (zpow_pos hq _).ne')
     rw [map_mul, map_inv, map_zpow, mul_inv_eq_one₀ (zpow_ne_zero _ hϖ)] at this
     beta_reduce

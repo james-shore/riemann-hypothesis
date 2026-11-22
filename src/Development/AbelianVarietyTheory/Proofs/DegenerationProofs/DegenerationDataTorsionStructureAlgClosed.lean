@@ -67,7 +67,7 @@ theorem chr_basis (u : ι → U) (i : ι) : chr v u (Multiplicative.ofAdd (v i))
   rw [chr_apply, Finset.prod_eq_single i]
   · simp
   · intro j _ hj
-    simp [Finsupp.single_apply, hj.symm]
+    simp [hj.symm]
   · simp
 
 theorem chr_eq (t : Multiplicative X →* U) : chr v (fun i => t (Multiplicative.ofAdd (v i))) = t := by

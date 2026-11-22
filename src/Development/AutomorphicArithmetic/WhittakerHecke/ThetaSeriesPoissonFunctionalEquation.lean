@@ -36,12 +36,12 @@ private theorem sc_mulVec (a : (A ℚ)ˣ) (x : GL (Fin 2) (A ℚ)) (v : Fin 2 �
       fun j => (a : A ℚ) * ((x : Matrix (Fin 2) (Fin 2) (A ℚ)) *ᵥ v) j := by
   funext j
   simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two]
-  fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two] <;> ring
+  fin_cases j <;> simp <;> ring
 
 private theorem det_sc (a : (A ℚ)ˣ) : Matrix.GeneralLinearGroup.det (sc a) = a * a := by
   apply Units.ext
   rw [Matrix.GeneralLinearGroup.val_det_apply]
-  simp [Matrix.det_fin_two, sq]
+  simp [sq]
 
 private theorem det_tInv (x : GL (Fin 2) (A ℚ)) :
     Matrix.GeneralLinearGroup.det (PositivityTheory.RgEis.tInv x) = (Matrix.GeneralLinearGroup.det x)⁻¹ := by
@@ -186,7 +186,7 @@ private theorem rv_w (ξ : Fin 2 → ℚ) :
   have hw : ((gl (wW ℚ) : GL (Fin 2) (A ℚ)) : Matrix (Fin 2) (Fin 2) (A ℚ)) = !![0, 1; -1, 0] := rfl
   rw [hw]
   funext j
-  fin_cases j <;> simp [Matrix.vecMul, dotProduct, Fin.sum_univ_two, UpperTheory.ConvolutionTheory.R2.rt]
+  fin_cases j <;> simp [Matrix.vecMul, dotProduct, Fin.sum_univ_two]
   · exact (map_neg (algebraMap ℚ (A ℚ)) (ξ 1)).symm
   · rfl
 

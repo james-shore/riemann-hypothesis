@@ -29,7 +29,7 @@ theorem thetaSys_gen_tuple (o Ω : Type) [CommRing o] [Field Ω] [Algebra o Ω] 
     intro y hy
     apply Subfield.subset_closure
     refine Or.inr ⟨(x₀, none), (x₀, some ⟨y, hy⟩), ?_⟩
-    simp only [t₀, mul_one]
+    simp only [t₀]
     field_simp
   let KA : Subalgebra o Ω :=
     { K.toSubring with algebraMap_mem' := hbase }

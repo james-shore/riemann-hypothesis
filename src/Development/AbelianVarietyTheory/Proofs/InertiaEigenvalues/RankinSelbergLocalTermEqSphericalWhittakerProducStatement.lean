@@ -21,4 +21,4 @@ theorem _root_.GlobalTheory.T.rankinSelbergLocalTerm_eq_sphericalWhittaker_produ
     (((q : ℝ) ^ GlobalTheory.CellDec.wtS n v : ℝ) : ℂ) *
       (GlobalTheory.JSW.sphW q α (fun i => (v i).toNat) * conj (GlobalTheory.JSW.sphW q β (fun i => (v i).toNat))) *
       (((q : ℝ) ^ (-x * ∑ i, (v i : ℝ)) : ℝ) : ℂ) = GlobalTheory.ZEul.rsTerm q α β x v := by
-  first | (exact @GlobalTheory.ZEulLocal.localTerm_eq) | (exact GlobalTheory.ZEulLocal.localTerm_eq) | (intros; apply GlobalTheory.ZEulLocal.localTerm_eq  <;> assumption)
+  first | (exact @GlobalTheory.ZEulLocal.localTerm_eq)

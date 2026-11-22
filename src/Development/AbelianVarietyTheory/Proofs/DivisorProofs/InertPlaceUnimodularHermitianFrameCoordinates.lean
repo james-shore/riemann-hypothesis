@@ -83,7 +83,7 @@ theorem GlobalTheory.InertLocFrame.frame : ∀ (F E : Type) [Field F] [NumberFie
     rw [GlobalTheory.T.frame_coordinates_action_of_identity_off_place F E σ a (a + a') G.V G.W L ι hmul PV PW _ _ (iV g) (iW h) (hiV g) (hiW h) x,
       GlobalTheory.InertLocFrame.xm_apply]
     congr 1
-    simp only [Matrix.transpose_mul, Matrix.transpose_transpose, Matrix.mul_assoc, e1, e2]
+    simp only [Matrix.transpose_mul, Matrix.mul_assoc, e1, e2]
   · intro g hg
     refine GlobalTheory.T.mem_latticeStabilizer_of_frame_conj_integral F E σ v a G.V L ι hinj him hmul hint PV hPV (iV g)
       (((g : GL (Fin a) L)⁻¹ : GL (Fin a) L) : Matrix (Fin a) (Fin a) L)ᵀ ((g : GL (Fin a) L) : Matrix (Fin a) (Fin a) L)ᵀ

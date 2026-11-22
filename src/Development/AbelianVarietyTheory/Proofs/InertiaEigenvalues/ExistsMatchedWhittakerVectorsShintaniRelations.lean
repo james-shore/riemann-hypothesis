@@ -36,8 +36,6 @@ theorem _root_.GlobalTheory.Tx.exists_unipotentInvariant_compactlySupported_weig
       (∀ g, ContDiffOn ℝ ∞ (chart (fun h => (κ h : ℂ)) g) (invSet E (m + 1))) ∧ 0 < κ x₀ := by
   first
   | exact @GlobalTheory.KappaCut.exists_kappa
-  | exact GlobalTheory.KappaCut.exists_kappa
-  | (intros; apply GlobalTheory.KappaCut.exists_kappa <;> assumption)
 end
 
 section
@@ -48,7 +46,7 @@ set_option maxHeartbeats 1000000 in
 
 theorem _root_.GlobalTheory.Tx.contDiffOn_chart_globalWhittakerCoefficient : ∀ (E : Type) [Field E] [NumberField E] [IsTotallyComplex E] (a : ℕ) (φ : Sm E a),
     IsAutForm φ → ∀ g, ContDiffOn ℝ ∞ (chart (GlobalTheory.JSW.whit φ.1) g) (invSet E a) := by
-  first | (exact @GlobalTheory.JSW.WhitSmooth.whit_contDiffOn) | (exact GlobalTheory.JSW.WhitSmooth.whit_contDiffOn) | (intros; apply GlobalTheory.JSW.WhitSmooth.whit_contDiffOn  <;> assumption)
+  first | (exact @GlobalTheory.JSW.WhitSmooth.whit_contDiffOn)
 end
 
 open NumberField IsDedekindDomain MeasureTheory GlobalTheory.CuspRep GlobalTheory.JSW Formalism.UG GlobalTheory.LFun Formalism.L2.Host

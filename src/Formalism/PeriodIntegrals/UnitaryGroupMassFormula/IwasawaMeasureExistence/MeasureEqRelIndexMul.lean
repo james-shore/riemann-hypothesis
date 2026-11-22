@@ -78,8 +78,6 @@ theorem haar_map_eq_relIndex (φ : G ≃ₜ* G) (U : Subgroup G) (hUo : IsOpen (
   have hW'set : ((U.comap φ.toMulEquiv.toMonoidHom : Subgroup G) : Set G) = φ ⁻¹' (U : Set G) := by
     first
       | rfl
-      | (ext x; rfl)
-      | (ext x; simp)
   have hUm : MeasurableSet (U : Set G) := hUo.measurableSet
   have hW'o : IsOpen ((U.comap φ.toMulEquiv.toMonoidHom : Subgroup G) : Set G) := by
     rw [hW'set]; exact hUo.preimage φ.continuous
@@ -99,27 +97,16 @@ theorem haar_map_eq_relIndex (φ : G ≃ₜ* G) (U : Subgroup G) (hUo : IsOpen (
     haveI hreg : Regular (haar : Measure G) := by
       first
         | infer_instance
-        | exact regular_haarMeasure
     haveI : IsHaarMeasure ((haar : Measure G).map φ) := by
       first
         | infer_instance
-        | exact ContinuousMulEquiv.isHaarMeasure_map (haar : Measure G) φ
-        | exact φ.isHaarMeasure_map (haar : Measure G)
-        | exact isHaarMeasure_map (haar : Measure G) φ.toMulEquiv.toMonoidHom φ.continuous
-            φ.surjective φ.toHomeomorph.isClosedEmbedding.tendsto_cocompact
     haveI : Regular ((haar : Measure G).map φ) := by
       first
         | infer_instance
         | exact Regular.map (μ := (haar : Measure G)) φ.toHomeomorph
-        | exact hreg.map φ.toHomeomorph
     first
       | exact ⟨_, (isMulLeftInvariant_eq_smul_of_regular ((haar : Measure G).map φ)
           (haar : Measure G)).trans (ENNReal.smul_def _ _)⟩
-      | exact ⟨_, (isMulLeftInvariant_eq_smul_of_regular ((haar : Measure G).map φ)
-          (haar : Measure G)).trans rfl⟩
-      | exact ⟨_, haarMeasure_unique ((haar : Measure G).map φ) _⟩
-      | exact ⟨_, (isMulLeftInvariant_eq_smul_of_regular ((haar : Measure G).map φ)
-          (haar : Measure G)).trans (by ext s _; simp)⟩
   have hνU : (haar : Measure G).map φ (U : Set G) = (c • (haar : Measure G)) (U : Set G) := by
     rw [hc]
   rw [Measure.map_apply hφm hUm, ← hW'set, Measure.smul_apply, smul_eq_mul, eU, eW,
@@ -129,10 +116,6 @@ theorem haar_map_eq_relIndex (φ : G ≃ₜ* G) (U : Subgroup G) (hUo : IsOpen (
     first
       | exact ((ENNReal.mul_eq_mul_right hV0 hVtop).mp hνU).symm
       | exact ((ENNReal.mul_left_inj hV0 hVtop).mp hνU).symm
-      | (have h' := congrArg (· / (haar : Measure G)
-            ((U ⊓ U.comap φ.toMulEquiv.toMonoidHom : Subgroup G) : Set G)) hνU
-         simp only [ENNReal.mul_div_cancel_right hV0 hVtop] at h'
-         exact h'.symm)
   rw [hc]
   congr 1
   rw [ENNReal.ofReal_div_of_pos (Nat.cast_pos.mpr (Nat.pos_of_ne_zero h1)), ENNReal.ofReal_natCast,

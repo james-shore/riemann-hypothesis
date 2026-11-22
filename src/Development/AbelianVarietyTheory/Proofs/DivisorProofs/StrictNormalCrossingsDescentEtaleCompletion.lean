@@ -163,7 +163,7 @@ theorem exists_rsp_of_isEtaleCompletion : ∀ (A : Type) [CommRing A] [IsLocalRi
       simpa using h
     · intro j _ hj
       rw [bdParam, MvPowerSeries.X_def, MvPowerSeries.coeff_mul_monomial, if_neg]
-      simp [Finsupp.single_le_iff, Finsupp.single_apply, hj.symm]
+      simp [Finsupp.single_le_iff, hj.symm]
     · simp
 
 end GlobalTheory.SncDescent

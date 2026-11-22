@@ -43,7 +43,6 @@ theorem star_range [StarRing E] {x : E} (hx : x ∈ (algebraMap (𝓞 E) E).rang
   have hint : IsIntegral ℤ (starRingEnd E (algebraMap (𝓞 E) E o)) := by
     first
     | exact (RingOfIntegers.isIntegral_coe o).map (starRingEnd E).toIntAlgHom
-    | exact (o.2).map (starRingEnd E).toIntAlgHom
   exact RingHom.mem_range.mpr ⟨⟨_, hint⟩, rfl⟩
 
 theorem mem_oLat {k : ℕ} (v : Fin k → E) :
@@ -51,8 +50,6 @@ theorem mem_oLat {k : ℕ} (v : Fin k → E) :
   unfold oLat
   first
   | (rw [LinearMap.mem_range]; rfl)
-  | exact Iff.rfl
-  | (simp [LinearMap.mem_range, LinearMap.compLeft]; rfl)
 
 theorem dualL_oLat (k : ℕ) : dualL (oLat E k) = oLat E k := by
   ext t
@@ -63,7 +60,7 @@ theorem dualL_oLat (k : ℕ) : dualL (oLat E k) = oLat E k := by
       intro c
       have hs : (Pi.single c 1 : Fin k → E) ∈ oLat E k := by
         rw [mem_oLat]
-        exact ⟨Pi.single c 1, by funext d; by_cases h : d = c <;> simp [Pi.single_apply, h]⟩
+        exact ⟨Pi.single c 1, by funext d; by_cases h : d = c <;> simp [h]⟩
       have := ht' _ hs
       simpa [dotProduct, Pi.single_apply] using this
     choose x hx using fun c => RingHom.mem_range.mp (h1 c)
@@ -232,7 +229,6 @@ theorem lattice_indexOf : IndexOf := by
       have e : Finsupp.linearCombination I.E v (hδu.repr ⟨δ *ᵥ z, hδspan z⟩) = δ *ᵥ z := by
         first
         | exact hδu.linearCombination_repr _
-        | exact hδu.total_repr _
       rw [Finsupp.linearCombination_apply, Finsupp.sum_fintype _ _ (by simp)] at e
       exact e.symm
     have hGu : ∀ c, G (u c) = Finsupp.single c 1 := fun c => hδu.repr_eq_single c _ rfl

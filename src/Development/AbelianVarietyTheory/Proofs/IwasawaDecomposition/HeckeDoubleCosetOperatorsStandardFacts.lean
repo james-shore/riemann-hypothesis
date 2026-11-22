@@ -75,7 +75,7 @@ theorem mem_Umax_of_loc (s : SplitPlace L) (x : GAf L n) (hx : TrivOutside {s.v}
       refine (Valuation.map_sub _ _ _).trans (max_le (h2 j i) ?_)
       by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
   have := add_mem hz (show (1 : Matrix (Fin n) (Fin n) (AL L)) i j ∈ ALint L by
-    by_cases hij : i = j <;> simp [Matrix.one_apply, hij, Subring.one_mem, Subring.zero_mem])
+    by_cases hij : i = j <;> simp [Matrix.one_apply, hij])
   simpa using this
 
 theorem mem_GLint_iff {F : Type} [Field F] {O : Subring F} {x : GL (Fin n) F} :
@@ -165,7 +165,7 @@ theorem exists_cong_conj (a : GAf L n) : ∃ N : ℕ, 0 < N ∧ ∀ κ, NG.Cong 
   show (((a⁻¹ * κ * a : GAf L n).1 : GL (Fin n) (AL L)) : Matrix (Fin n) (Fin n) (AL L)) i j ∈ ALint L
   rw [e, Matrix.add_apply]
   refine add_mem ?_ ?_
-  · by_cases hij : i = j <;> simp [Matrix.one_apply, hij, Subring.one_mem, Subring.zero_mem]
+  · by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
   · simp only [Matrix.mul_apply, Matrix.smul_apply, smul_eq_mul, Matrix.of_apply]
     exact sum_mem fun l _ => mul_mem (sum_mem fun l' _ => mul_mem (h' i l') (hy l' l)) (h l j)
 
@@ -530,7 +530,7 @@ theorem exists_pow_denom (s : SplitPlace L) {x : GAf L n} (hx : TrivOutside {s.v
     ∃ e : ℕ, ∀ i j, ((s.q ^ e : ℕ) : AL L) * (x.1 : Matrix (Fin n) (Fin n) (AL L)) i j ∈ ALint L := by
   obtain ⟨ε, he, he'⟩ := GlobalTheory.SplitSep.exists_sep L s
   have one_mem' : ∀ a b : Fin n, (1 : Matrix (Fin n) (Fin n) (AL L)) a b ∈ ALint L := fun a b => by
-    by_cases h : a = b <;> simp [Matrix.one_apply, h, Subring.one_mem, Subring.zero_mem]
+    by_cases h : a = b <;> simp [Matrix.one_apply, h]
   let z : Fin n → Fin n → AL L := fun i j =>
     (x.1 : Matrix (Fin n) (Fin n) (AL L)) i j - (1 : Matrix (Fin n) (Fin n) (AL L)) i j
   choose e₁ h₁ using fun p : Fin n × Fin n => exists_pow_val s (s.proj (z p.1 p.2))

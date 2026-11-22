@@ -77,9 +77,6 @@ theorem sum_single_toList (k : σ →₀ ℕ) :
         Multiset.toFinsupp_singleton]
   first
     | (rw [← Multiset.sum_coe, ← Multiset.map_coe, Multiset.coe_toList, h, Finsupp.toMultiset_toFinsupp])
-    | (have h2 := h (Finsupp.toMultiset k)
-       rw [Finsupp.toMultiset_toFinsupp] at h2
-       rw [← h2, ← Multiset.sum_coe, ← Multiset.map_coe, Multiset.coe_toList])
 
 theorem eq_of_cc (F G : MvPowerSeries σ ℂ)
     (h : ∀ l : List σ, constantCoeff (l.foldr (fun q H => pderiv ℂ q H) F) =
@@ -135,8 +132,6 @@ theorem isTayF_tay {θ : (Fin g → ℂ) → ℂ} (hθ : ContDiffAt ℂ ω θ 0)
     first
       | (rw [map_add, Finsupp.toMultiset_single, Multiset.map_add, one_nsmul, Multiset.map_singleton, add_comm,
           Multiset.singleton_add])
-      | (simp [Finsupp.toMultiset_add, Finsupp.toMultiset_single, add_comm, Multiset.singleton_add])
-      | (simp [map_add, Finsupp.toMultiset_single]; rw [add_comm, Multiset.singleton_add])
   have hf : ∀ (k : Fin 1 × Fin g →₀ ℕ) (q : Fin 1 × Fin g),
       fct (k + Finsupp.single q 1) = fct k * ((k q : ℂ) + 1) := by
     intro k q
@@ -149,7 +144,7 @@ theorem isTayF_tay {θ : (Fin g → ℂ) → ℂ} (hθ : ContDiffAt ℂ ω θ 0)
         push_cast
         ring
       · rw [if_neg hp, Finsupp.add_apply, mul_one]
-        simp [Finsupp.single_apply, Ne.symm hp]
+        simp [Ne.symm hp]
     unfold fct
     rw [Finset.prod_congr rfl (fun p _ => h p), Finset.prod_mul_distrib, Finset.prod_ite_eq']
     simp
@@ -161,7 +156,6 @@ theorem isTayF_tay {θ : (Fin g → ℂ) → ℂ} (hθ : ContDiffAt ℂ ω θ 0)
   · ext k
     have h1 : ((k q : ℂ) + 1) ≠ 0 := Nat.cast_add_one_ne_zero _
     have h2 := hf0 k
-    beta_reduce
     rw [MvPowerSeries.coeff_pderiv, hc, hc, hd, hf, Multiset.cons_add, ← Multiset.add_cons]
     field_simp
   · rw [← MvPowerSeries.coeff_zero_eq_constantCoeff_apply, hc]
@@ -176,8 +170,6 @@ theorem cc_subst {σ τ : Type} [Fintype σ] {L : σ → MvPowerSeries τ ℂ} (
     first
       | exact MvPowerSeries.HasSubst.of_constantCoeff_zero hL0
       | exact MvPowerSeries.hasSubst_of_constantCoeff_zero hL0
-      | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun p => by rw [hL0 p]; exact IsNilpotent.zero)
-      | exact MvPowerSeries.hasSubst_of_constantCoeff_nilpotent (fun p => by rw [hL0 p]; exact IsNilpotent.zero)
   rw [MvPowerSeries.constantCoeff_subst hL, finsum_eq_single _ 0]
   · simp [MvPowerSeries.coeff_zero_eq_constantCoeff_apply]
   · intro e he
@@ -202,8 +194,6 @@ private theorem pderiv_tay_eq_tay_cons_single (θ : (Fin g → ℂ) → ℂ) (s 
     first
       | (rw [map_add, Finsupp.toMultiset_single, Multiset.map_add, one_nsmul, Multiset.map_singleton, add_comm,
           Multiset.singleton_add])
-      | (simp [Finsupp.toMultiset_add, Finsupp.toMultiset_single, add_comm, Multiset.singleton_add])
-      | (simp [map_add, Finsupp.toMultiset_single]; rw [add_comm, Multiset.singleton_add])
   have hf : ∀ (k : Fin 1 × Fin g →₀ ℕ) (q : Fin 1 × Fin g),
       fct (k + Finsupp.single q 1) = fct k * ((k q : ℂ) + 1) := by
     intro k q
@@ -216,7 +206,7 @@ private theorem pderiv_tay_eq_tay_cons_single (θ : (Fin g → ℂ) → ℂ) (s 
         push_cast
         ring
       · rw [if_neg hp, Finsupp.add_apply, mul_one]
-        simp [Finsupp.single_apply, Ne.symm hp]
+        simp [Ne.symm hp]
     unfold fct
     rw [Finset.prod_congr rfl (fun p _ => h p), Finset.prod_mul_distrib, Finset.prod_ite_eq']
     simp
@@ -238,8 +228,6 @@ theorem isTayF_subst {τ : Type} [Fintype τ] (f : (Fin g → ℂ) → ℂ) (hf 
     first
       | exact MvPowerSeries.HasSubst.of_constantCoeff_zero hL0
       | exact MvPowerSeries.hasSubst_of_constantCoeff_zero hL0
-      | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun p => by rw [hL0 p]; exact IsNilpotent.zero)
-      | exact MvPowerSeries.hasSubst_of_constantCoeff_nilpotent (fun p => by rw [hL0 p]; exact IsNilpotent.zero)
   have hcf : ∀ (s : Multiset (Fin g → ℂ)) (k : Fin 1 × Fin g →₀ ℕ),
       coeff k (tay f s) = mD f 0 (dirs k + s) / fct k := fun _ _ => rfl
   have lin : ∀ (c : Fin 1 × Fin g → ℂ) (T : Multiset (Fin g → ℂ)),
@@ -277,7 +265,6 @@ def diagCLM (c : Fin g → ℂ) : (Fin g → ℂ) →L[ℂ] (Fin g → ℂ) :=
 theorem diagCLM_apply (c z : Fin g → ℂ) : diagCLM c z = fun i => c i * z i := by
   first
     | rfl
-    | (funext i; simp [diagCLM])
 
 theorem partA (f : (Fin g → ℂ) → ℂ) (hf : ContDiffAt ℂ ω f 0) (c : Fin g → ℂ) :
     tay (fun z => f fun i => c i * z i) 0 = subst (fun p : Fin 1 × Fin g => C (c p.2) * X p) (tay f 0) := by
@@ -294,18 +281,17 @@ theorem partA (f : (Fin g → ℂ) → ℂ) (hf : ContDiffAt ℂ ω f 0) (c : Fi
       rw [← MvPowerSeries.smul_eq_C_mul]
       first
         | rw [Derivation.map_smul, MvPowerSeries.pderiv_X]
-        | rw [LinearMap.map_smul_of_tower, MvPowerSeries.pderiv_X]
       by_cases h : p = q
       · subst h
         simp [MvPowerSeries.smul_eq_C_mul]
-      · simp [h, Pi.single_apply, Ne.symm h])
+      · simp [h])
   have hv : ∀ q : Fin 1 × Fin g, diagCLM c (Pi.single q.2 1) =
       ∑ p : Fin 1 × Fin g, (if p = q then c p.2 else 0) • (Pi.single p.2 1 : Fin g → ℂ) := by
     intro q
     rw [diagCLM_apply]
     simp only [ite_smul, zero_smul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
     funext i
-    by_cases h : i = q.2 <;> simp [Pi.single_apply, h]
+    by_cases h : i = q.2 <;> simp [h]
   have h3 := isTayF_comp hf (diagCLM c) (w := fun p : Fin 1 × Fin g => (Pi.single p.2 1 : Fin g → ℂ)) hv h2
   rw [← e] at h3
   exact h3

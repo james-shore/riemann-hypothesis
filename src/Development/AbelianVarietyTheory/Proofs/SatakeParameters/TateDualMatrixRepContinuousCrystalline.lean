@@ -20,7 +20,6 @@ theorem tateDual_matRep_crys : ∀ {l : ℕ} [Fact l.Prime] (P : LocPrime l) (K 
   haveI : IsTopologicalRing ↥LL.1 := by
     first
       | infer_instance
-      | exact Subring.instIsTopologicalRing LL.1.toSubring
       | exact inferInstanceAs (IsTopologicalRing ↥LL.1.toSubfield.toSubring)
   have hχ := GlobalTheory.T.continuous_cyclotomicCharacter_periodDatum P K LL
   have hinv : Continuous fun g : ↥(GK K) => M g⁻¹ := hM.comp continuous_inv

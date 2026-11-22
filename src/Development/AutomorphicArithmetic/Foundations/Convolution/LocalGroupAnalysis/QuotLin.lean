@@ -93,5 +93,4 @@ theorem UpperTheory.ConvolutionTheory.G.quotLin_of :
       integral_smul_nnreal_measure, NNReal.smul_def, Complex.real_smul]
     simp only [mul_toReal]
     rw [integral_const_mul]
-    push_cast
     field_simp

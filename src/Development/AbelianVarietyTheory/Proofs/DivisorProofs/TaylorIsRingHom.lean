@@ -47,14 +47,14 @@ theorem sum_antidiagonal_succ {M : Type} [AddCommMonoid M] {n : ℕ} (α : Fin (
   refine Finset.sum_nbij' (fun p => ((p.1 0, p.2 0), (p.1.tail, p.2.tail)))
     (fun x => (Finsupp.cons x.1.1 x.2.1, Finsupp.cons x.1.2 x.2.2)) ?_ ?_ ?_ ?_ ?_
   · rintro ⟨p1, p2⟩ h
-    simp only [mem_coe, HasAntidiagonal.mem_antidiagonal] at h
-    simp only [mem_coe, mem_product, HasAntidiagonal.mem_antidiagonal]
+    simp only [HasAntidiagonal.mem_antidiagonal] at h
+    simp only [mem_product, HasAntidiagonal.mem_antidiagonal]
     subst h
     refine ⟨by simp, ?_⟩
     ext i; simp [Finsupp.tail_apply]
   · rintro ⟨⟨j, k⟩, ⟨r1, r2⟩⟩ h
-    simp only [mem_coe, mem_product, HasAntidiagonal.mem_antidiagonal] at h
-    simp only [mem_coe, HasAntidiagonal.mem_antidiagonal]
+    simp only [mem_product, HasAntidiagonal.mem_antidiagonal] at h
+    simp only [HasAntidiagonal.mem_antidiagonal]
     ext i
     refine Fin.cases ?_ (fun i => ?_) i
     · simp [h.1]

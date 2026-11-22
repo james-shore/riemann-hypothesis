@@ -42,7 +42,7 @@ theorem ad_invariant_eq_zero_of_isIrr {K : Type} [Field K] [IsAlgClosed K] [Char
     rw [this, Matrix.smul_apply, Matrix.one_apply, smul_eq_mul]
     by_cases hij : i = j
     · subst hij; simp
-    · simp [hij, Pi.single_apply, Ne.symm hij]
+    · simp [hij]
   have htr : (2 : K) * μ = 0 := by
     have := trace_ofCoord v
     rw [← hY, hYμ, Matrix.trace_smul, Matrix.trace_one] at this

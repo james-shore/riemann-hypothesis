@@ -263,8 +263,6 @@ theorem vanish_off : (MeasInvStatement (E := E)) → (VanishAtSStatement (E := E
     | exact (((hg1.pow_const 2).mul hg2).mul
         ((Finset.measurable_sum (f := fun k x => U.indicator (X.pnorm L (s k)) x ^ 2) Finset.univ
           fun k _ => (hg3 k).pow_const 2).pow_const _)).ennreal_ofReal
-    | fun_prop
-    | measurability
   have hφinv : ∀ x ∈ X.dom, ∀ b ∈ Bor X.Ψ r, φ (rmul x b) = φ x := by
     intro x hx b hb
     rw [hφ]
@@ -308,8 +306,6 @@ theorem vanish_off : (MeasInvStatement (E := E)) → (VanishAtSStatement (E := E
       rw [mul_assoc]
       first
       | exact le_div_self (by positivity) hka0 hka1
-      | (rw [le_div_iff₀ hka0]; nlinarith [mul_nonneg (sq_nonneg ‖P (cpt X x0 z)‖)
-          (mul_nonneg (Real.exp_pos (-phla X la (cpt X x0 z))).le (Real.exp_pos (-ψ (cpt X x0 z))).le)])
     · simp only [Set.indicator_apply, if_neg hz]
       simp
   have hR : ∫⁻ z, φ (cpt X x1 z) ∂muF X x1 < ⊤ := by
@@ -396,8 +392,6 @@ theorem vanish_off : (MeasInvStatement (E := E)) → (VanishAtSStatement (E := E
     first
     | exact Finset.measurable_prod _ fun τ _ => Finset.measurable_prod _ fun i _ =>
         ((ReciprocityTheory.ChartRestriction.G.AR.Up.OntoB.cd_dmin X x1 τ _).continuous.norm.measurable).pow_const _
-    | fun_prop
-    | measurability
   have hφcm : Measurable fun z => φ (cpt X x1 z) := hφm.comp hcc.measurable
   have hfin : ∫⁻ z in Metric.ball (0 : V (nd X)) ρ,
       ENNReal.ofReal (‖P (cpt X x1 z)‖ ^ 2 * (∑ k, ‖s k (cpt X x1 z)‖ ^ 2) ^ (-(nd X : ℝ))) < ⊤ := by
@@ -417,7 +411,6 @@ theorem vanish_off : (MeasInvStatement (E := E)) → (VanishAtSStatement (E := E
       _ < ⊤ := by
           first
           | exact ENNReal.mul_lt_top ENNReal.ofReal_lt_top hR
-          | exact ENNReal.mul_lt_top ENNReal.ofReal_ne_top hR.ne
   exact hVS r X x1 hn ho1 hx1d P w0 s ρ hρ
     ((ReciprocityTheory.ChartRestriction.G.AR.Up.OntoB.hol_comp X x1 hP.1).mono hBO)
     (fun k => (ReciprocityTheory.ChartRestriction.G.AR.Up.OntoB.hol_comp X x1 (hs k).1).mono hBO)

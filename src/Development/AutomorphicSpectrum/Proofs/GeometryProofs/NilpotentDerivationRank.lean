@@ -138,7 +138,7 @@ noncomputable def coeffMap (p : ℕ) (D : Derivation k R R) (z : R) :
     (Fin p → LinearMap.ker (D : R →ₗ[k] R)) →ₗ[k] R where
   toFun a := ∑ i, (a i : R) * z ^ (i : ℕ)
   map_add' a b := by simp [add_mul, Finset.sum_add_distrib]
-  map_smul' r a := by simp [Finset.smul_sum, smul_mul_assoc]
+  map_smul' r a := by simp [Finset.smul_sum]
 
 theorem coeffMap_bijective (p : ℕ) [Fact p.Prime] [CharP k p] (D : Derivation k R R) {z : R}
     (hz : D z = 1) (hnil : ∀ a : R, (⇑D)^[p] a = 0) :

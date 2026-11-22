@@ -43,18 +43,16 @@ def mulM (x y : Mt k r) : Mt k r := Matrix.of x * Matrix.of y
 theorem continuous_mulM : Continuous fun p : Mt k r × Mt k r => mulM p.1 p.2 := by
   first
     | exact Continuous.matrix_mul continuous_fst continuous_snd
-    | fun_prop
 
 theorem isClosed_GV : IsClosed {x : Mt k r | Matrix.of x ∈ GV k r} := by
   show IsClosed {x : Mt k r | (Matrix.of x)ᴴ * Hpk k r * Matrix.of x = Hpk k r}
   refine isClosed_eq ?_ continuous_const
   first
     | fun_prop
-    | exact (continuous_id.matrix_conjTranspose.matrix_mul continuous_const).matrix_mul continuous_id
 
 theorem isClosed_UW (z : Fin (2 * r + k + 1) → ℂ) : IsClosed {x : Mt k r | Matrix.of x ∈ UWset k r z} := by
   have hmv : ∀ v : Fin (2 * r + k + 1) → ℂ, IsClosed {x : Mt k r | Matrix.of x *ᵥ v = v} := fun v =>
-    isClosed_eq (by first | fun_prop | exact continuous_id.matrix_mulVec continuous_const) continuous_const
+    isClosed_eq (by first | fun_prop) continuous_const
   have e : {x : Mt k r | Matrix.of x ∈ UWset k r z} = {x : Mt k r | Matrix.of x ∈ GV k r} ∩
       ((⋂ a : Fin r, ({x : Mt k r | Matrix.of x *ᵥ bvec (eI k r a) = bvec (eI k r a)} ∩
         {x : Mt k r | Matrix.of x *ᵥ bvec (esI k r a) = bvec (esI k r a)})) ∩ {x : Mt k r | Matrix.of x *ᵥ z = z}) := by
@@ -91,10 +89,6 @@ theorem continuous_ell (z : Fin (2 * r + k + 1) → ℂ) : Continuous fun x : Mt
   refine continuous_finset_sum _ fun a _ => ?_
   first
     | (split_ifs <;> fun_prop)
-    | (by_cases h : a.val + 1 < r <;> simp [h] <;> fun_prop)
-    | (split_ifs
-       · exact (continuous_apply _).comp (continuous_apply _)
-       · exact (continuous_apply _).comp (Continuous.matrix_mulVec continuous_id continuous_const))
 
 theorem continuous_lam (z : Fin (2 * r + k + 1) → ℂ) : Continuous fun x : Mt k r => lam k r z (Matrix.of x) := by
   exact Complex.continuous_re.comp (continuous_const.mul (continuous_ell z))
@@ -109,11 +103,11 @@ variable {k r : ℕ} {Wp Wq : Type} [NormedAddCommGroup Wp] [InnerProductSpace �
 theorem sfG (D : RealPlaceData k r Wp Wq) : SigmaFinite D.μG := by
   exact sf D.haarG
 theorem sfW (D : RealPlaceData k r Wp Wq) : SigmaFinite D.μW := by
-  first | exact sf D.haarW | exact sf D.haarU | exact sf D.haarUW
+  first | exact sf D.haarW
 theorem sfN (D : RealPlaceData k r Wp Wq) : SigmaFinite D.μN := by
-  first | exact sf D.haarN | exact sf D.haarNN
+  first | exact sf D.haarN
 theorem sfW' (D : RealPlaceData k r Wp Wq) : SigmaFinite D.μW' := by
-  first | exact sf D.haarW' | exact sf D.haarU' | exact sf D.haarUW'
+  first | exact sf D.haarW'
 
 attribute [local instance] sfG sfW sfN sfW'
 
@@ -127,16 +121,16 @@ theorem ae_inSS (D : RealPlaceData k r Wp Wq) : ∀ᵐ p ∂D.μSS, D.inSS p := 
   show ∀ᵐ p ∂((D.μW.prod D.μN).prod (D.μW'.prod D.μN)), D.inSS p
   have q1 : ∀ᵐ p ∂((D.μW.prod D.μN).prod (D.μW'.prod D.μN)), Matrix.of p.1.1 ∈ UWset k r D.z :=
     (Measure.quasiMeasurePreserving_fst.comp Measure.quasiMeasurePreserving_fst).ae
-      (ae_mem (by first | exact D.haarW | exact D.haarU | exact D.haarUW))
+      (ae_mem (by first | exact D.haarW))
   have q2 : ∀ᵐ p ∂((D.μW.prod D.μN).prod (D.μW'.prod D.μN)), Matrix.of p.1.2 ∈ Nset k r :=
     (Measure.quasiMeasurePreserving_snd.comp Measure.quasiMeasurePreserving_fst).ae
-      (ae_mem (by first | exact D.haarN | exact D.haarNN))
+      (ae_mem (by first | exact D.haarN))
   have q3 : ∀ᵐ p ∂((D.μW.prod D.μN).prod (D.μW'.prod D.μN)), Matrix.of p.2.1 ∈ UWset k r D.z' :=
     (Measure.quasiMeasurePreserving_fst.comp Measure.quasiMeasurePreserving_snd).ae
-      (ae_mem (by first | exact D.haarW' | exact D.haarU' | exact D.haarUW'))
+      (ae_mem (by first | exact D.haarW'))
   have q4 : ∀ᵐ p ∂((D.μW.prod D.μN).prod (D.μW'.prod D.μN)), Matrix.of p.2.2 ∈ Nset k r :=
     (Measure.quasiMeasurePreserving_snd.comp Measure.quasiMeasurePreserving_snd).ae
-      (ae_mem (by first | exact D.haarN | exact D.haarNN))
+      (ae_mem (by first | exact D.haarN))
   filter_upwards [q1, q2, q3, q4] with p a b c d using ⟨a, b, c, d⟩
 
 theorem continuous_xi (D : RealPlaceData k r Wp Wq) :
@@ -250,8 +244,6 @@ theorem measurable_bcWeight (T T' : ℝ) : Measurable (bcWeight k r T T') := by
   · first
       | exact (Finset.measurable_prod _ fun a _ => ((measurable_pi_apply a).comp measurable_fst).norm.pow_const _).mul
           ((hn.sub_const _).pow_const _)
-      | fun_prop
-      | measurability
 
 theorem measurableSet_Qset (D : RealPlaceData k r Wp Wq) : MeasurableSet (Qset D) := by
   exact measurableSet_lt measurable_const (measurable_bcWeight _ _)
@@ -310,13 +302,11 @@ theorem meas_mulM {α : Type*} [MeasurableSpace α] {f g : α → Mt k r} (hf : 
     Measurable fun a => mulM (f a) (g a) := by
   first
     | exact continuous_mulM.measurable.comp (hf.prodMk hg)
-    | exact continuous_mulM.measurable.comp (hf.prod_mk hg)
 
 theorem sgsM_eq (p : SS k r) (x : Mt k r) :
     sgsM p x = mulM (mulM (mulM (mulM (invM p.1.1) (invM p.1.2)) x) p.2.2) p.2.1 := by
   first
     | rfl
-    | (simp only [sgsM, sgs, mulM, invM]; rfl)
 
 theorem measurable_sgsM : Measurable fun a : SS k r × Mt k r => sgsM a.1 a.2 := by
   have e : (fun a : SS k r × Mt k r => sgsM a.1 a.2) = fun a =>
@@ -341,8 +331,6 @@ theorem sm_RM (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} 
   first
     | exact isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable
         (f1.prodMk (isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable (f2.prodMk f3)))
-    | exact isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable
-        (f1.prod_mk (isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable (f2.prod_mk f3)))
 
 theorem RM_eq (D : RealPlaceData k r Wp Wq) (F : Mat k r → (Wq →L[ℂ] Wp)) {p : SS k r} (hp : D.inSS p)
     {x : Mt k r} (hx : Matrix.of x ∈ GV k r) : RM D F p x = rho D p F (Matrix.of x) := by
@@ -392,8 +380,6 @@ theorem sm_A (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} (
   first
     | exact isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable
         (f1.prodMk (isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable (f2.prodMk f3)))
-    | exact isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable
-        (f1.prod_mk (isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable (f2.prod_mk f3)))
 
 theorem sm_B (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} (hF : ContinuousOn F (GV k r)) :
     StronglyMeasurable fun b : ((ℝ × ℝ) × ((Fin r → ℂ) × ℂ)) × SS k r =>
@@ -401,14 +387,12 @@ theorem sm_B (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} (
   have hx : Measurable fun b : ((ℝ × ℝ) × ((Fin r → ℂ) × ℂ)) × SS k r => xiTau D b.1.1 b.2 := by
     first
       | exact (measurable_xi D).comp (measurable_fst.fst.prodMk measurable_snd)
-      | exact (measurable_xi D).comp (measurable_fst.fst.prod_mk measurable_snd)
   exact hx.stronglyMeasurable.smul (sm_A D hF)
 
 theorem sm_JM (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} (hF : ContinuousOn F (GV k r)) :
     StronglyMeasurable fun a : (ℝ × ℝ) × ((Fin r → ℂ) × ℂ) => JM D F a.1 a.2 := by
   first
     | exact (sm_B D hF).integral_prod_right'
-    | exact (sm_B D hF).integral_prod_right
 
 theorem ae_RM_eq (D : RealPlaceData k r Wp Wq) (F : Mat k r → (Wq →L[ℂ] Wp)) {q : (Fin r → ℂ) × ℂ} (hq : q ∈ Q0 D) :
     ∀ᵐ p ∂D.μSS, RM D F p (gqM D q) = rho D p F (gq D q) := by
@@ -666,7 +650,6 @@ theorem d_pi_smul {ι : Type*} [Fintype ι] {α : ι → Type*} [∀ i, Measurab
   first
     | simp only [Measure.smul_apply, Measure.pi_pi, ENNReal.smul_def, smul_eq_mul, ENNReal.coe_finset_prod,
         Finset.prod_mul_distrib]
-    | simp [Finset.prod_mul_distrib]
 
 theorem d_map_mul (ρ : ℝ) (hρ : 0 < ρ) :
     (volume : Measure ℂ).map (fun x => (ρ : ℂ) * x) = (Real.toNNReal ((ρ ^ 2)⁻¹)) • (volume : Measure ℂ) := by
@@ -706,8 +689,6 @@ theorem d_emb_S (s : ℝ) (hs : 0 < s) : MeasurableEmbedding (d_S r s) := by
     show Measurable fun q : (Fin r → ℂ) × ℂ => ((fun a : Fin r => ((u ^ (r - a.val) : ℝ) : ℂ) * q.1 a), q.2)
     first
       | fun_prop
-      | exact (by fun_prop : Continuous fun q : (Fin r → ℂ) × ℂ => ((fun a : Fin r => ((u ^ (r - a.val) : ℝ) : ℂ) * q.1 a), q.2)).measurable
-      | measurability
   have key : ∀ (u v : ℝ), u * v = 1 → ∀ q, d_S r u (d_S r v q) = q := by
     intro u v huv q
     refine Prod.ext (funext fun a => ?_) rfl
@@ -723,7 +704,6 @@ theorem d_hsVec_smul [FiniteDimensional ℂ Wq] (x : ℝ) (A : Wq →L[ℂ] Wp) 
   have e : hsVec (x • A) = x • hsVec A := by
     first
       | (ext i; simp [hsVec])
-      | (unfold hsVec; rw [← WithLp.toLp_smul]; congr 1; funext i; simp)
   rw [e, norm_smul, Real.norm_eq_abs]
 
 theorem d_stepDilBeta : Formalism.FourierDecayAlt.B.StepDilBeta := by
@@ -814,8 +794,6 @@ theorem jc_meas_E (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] W
   show Measurable fun q => ∫⁻ p, ‖FM F (sgsM p (gqM D q))‖ₑ ∂D.μSS
   first
     | exact (jc_sm_FPhi D hF).enorm.lintegral_prod_right'
-    | exact (jc_sm_FPhi D hF).ennnorm.lintegral_prod_right'
-    | exact (jc_sm_FPhi D hF).measurable.enorm.lintegral_prod_right'
 
 theorem jc_formula (D : RealPlaceData k r Wp Wq) (hI : IntFormula D) {F : Mat k r → (Wq →L[ℂ] Wp)}
     (hF : ContinuousOn F (GV k r)) :
@@ -869,8 +847,6 @@ private theorem stronglyMeasurable_rm_comp (D : RealPlaceData k r Wp Wq) {F : Ma
   first
     | exact isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable
         (f1.prodMk (isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable (f2.prodMk f3)))
-    | exact isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable
-        (f1.prod_mk (isBoundedBilinearMap_comp.continuous.comp_stronglyMeasurable (f2.prod_mk f3)))
 
 theorem jc_integrable_of (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} (hF : ContinuousOn F (GV k r))
     {q : (Fin r → ℂ) × ℂ} (hq : q ∈ Q0 D) (hE : jc_E D F q < ∞) :
@@ -884,7 +860,6 @@ theorem jc_integrable_of (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L
   have h1 : ‖rho D p F (gq D q)‖ₑ ≤ ‖F (sgs p (gq D q))‖ₑ := by
     first
       | exact enorm_le_iff_norm_le.2 (norm_rho_le D hp F _)
-      | exact ENNReal.coe_le_coe.2 (norm_rho_le D hp F _)
   have h2 : FM F (sgsM p (gqM D q)) = F (sgs p (gq D q)) := by
     rw [gqM_eq D hq]
     exact FM_eq F (x := sgsM p (gq D q)) (sgs_mem D hp hg)
@@ -903,21 +878,18 @@ theorem jc_cont_tau (D : RealPlaceData k r Wp Wq) (F : Mat k r → (Wq →L[ℂ]
   have hxm : ∀ τ : ℝ × ℝ, Measurable fun p : SS k r => xiTau D τ p := fun τ => by
     first
       | exact (measurable_xi D).comp (measurable_const.prodMk measurable_id)
-      | exact (measurable_xi D).comp (measurable_const.prod_mk measurable_id)
   refine continuous_of_dominated (bound := fun p => ‖rho D p F g‖) (fun τ => ?_)
     (fun τ => ae_of_all _ fun p => ?_) h.norm (ae_of_all _ fun p => ?_)
   · exact (hxm τ).aestronglyMeasurable.smul h.aestronglyMeasurable
   · simp [norm_smul, norm_xi]
   · first
       | exact ((continuous_xi D).comp (continuous_id.prodMk continuous_const)).smul continuous_const
-      | exact ((continuous_xi D).comp (continuous_id.prod_mk continuous_const)).smul continuous_const
 
 theorem jc_aesm_J (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} (hF : ContinuousOn F (GV k r))
     (τ : ℝ × ℝ) : AEStronglyMeasurable (fun q => Jtau D τ F (gq D q)) (volume.restrict (Qset D)) := by
   have hx : Measurable fun b : ((Fin r → ℂ) × ℂ) × SS k r => xiTau D τ b.2 := by
     first
       | exact (measurable_xi D).comp (measurable_const.prodMk measurable_snd)
-      | exact (measurable_xi D).comp (measurable_const.prod_mk measurable_snd)
   have hb : StronglyMeasurable fun b : ((Fin r → ℂ) × ℂ) × SS k r => xiTau D τ b.2 • RM D F b.2 (gqM D b.1) :=
     hx.stronglyMeasurable.smul (stronglyMeasurable_rm_comp D hF measurable_snd ((measurable_gqM D).comp measurable_fst))
   have hs : StronglyMeasurable fun q => JM D F τ q := hb.integral_prod_right'
@@ -1080,8 +1052,6 @@ theorem sfNu (D : RealPlaceData k r Wp Wq) : SigmaFinite (nuQ D) := by
   unfold nuQ
   first
     | exact SigmaFinite.withDensity_ofReal _
-    | exact SigmaFinite.withDensity_ofReal (measurable_bcWeight _ _)
-    | infer_instance
 
 theorem u_meas_w (D : RealPlaceData k r Wp Wq) :
     Measurable fun q : (Fin r → ℂ) × ℂ => ENNReal.ofReal (bcWeight k r (Tz k r D.z) (Tz k r D.z') q) := by
@@ -1116,7 +1086,6 @@ theorem sm_KM (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} 
   have hp : StronglyMeasurable fun a : SS k r × Mt k r => (RM D F a.1 a.2, FM F a.2) := by
     first
       | exact (sm_RM D hF).prodMk ((sm_FM hF).comp_measurable measurable_snd)
-      | exact (sm_RM D hF).prod_mk ((sm_FM hF).comp_measurable measurable_snd)
   exact hc.comp_stronglyMeasurable hp
 
 theorem u_int_test {w : ℝ → ℝ} (h : IsTest w) : Integrable w := by
@@ -1135,11 +1104,9 @@ theorem u_continuous_om {w : ℝ → ℝ} (h : IsTest w) : Continuous (om w) := 
     first
       | exact (Complex.continuous_ofReal.comp hw).mul (Complex.continuous_exp.comp
           (continuous_const.mul (Complex.continuous_ofReal.comp (continuous_id.mul continuous_const))))
-      | fun_prop
   · first
       | exact continuous_const.mul (Complex.continuous_exp.comp
           (continuous_const.mul (Complex.continuous_ofReal.comp (continuous_const.mul continuous_id))))
-      | fun_prop
 
 theorem u_meas_Om (D : RealPlaceData k r Wp Wq) {w₁ w₂ : ℝ → ℝ} (h₁ : IsTest w₁) (h₂ : IsTest w₂) :
     Measurable (Om D w₁ w₂) := by
@@ -1169,12 +1136,9 @@ theorem u_sgs_eq (p : SS k r) (g : Mat k r) :
     sgs p g = (Matrix.of p.1.2 * Matrix.of p.1.1)⁻¹ * g * (Matrix.of p.2.2 * Matrix.of p.2.1) := by
   first
     | rw [sgs]
-    | unfold sgs
   rw [Matrix.mul_inv_rev]
   first
-    | (simp only [Matrix.mul_assoc]; done)
-    | (simp only [mul_assoc]; done)
-    | simp only [Matrix.mul_assoc, mul_assoc]
+    | (simp only [Matrix.mul_assoc])
 
 theorem u_enorm_KM_le (D : RealPlaceData k r Wp Wq) (F : Mat k r → (Wq →L[ℂ] Wp)) {p : SS k r} (hp : D.inSS p)
     {x : Mt k r} (hx : Matrix.of x ∈ GV k r) :
@@ -1393,7 +1357,6 @@ theorem v_kint {P E : Type*} [MeasurableSpace P] {μ : Measure P} [SFinite μ] [
   have hsec : ∀ᵐ p ∂μ, AEStronglyMeasurable (fun p' => k p p') μ := by
     first
       | exact hkm.prodMk_left
-      | exact hkm.prod_mk_left
   rw [integrable_prod_iff hkm]
   constructor
   · filter_upwards [hS, hsec] with p hp hpm
@@ -1487,7 +1450,6 @@ theorem w_hkm (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} 
   have hx : Measurable fun a : SS k r × SS k r => PhiM D (q, a.1) := by
     first
       | exact (measurable_PhiM D).comp (measurable_const.prodMk measurable_fst)
-      | exact (measurable_PhiM D).comp (measurable_const.prod_mk measurable_fst)
   have h1 : StronglyMeasurable fun a : SS k r × SS k r => RM D F a.2 (PhiM D (q, a.1)) :=
     stronglyMeasurable_rm_comp D hF measurable_snd hx
   have h2 : StronglyMeasurable fun a : SS k r × SS k r => FM F (PhiM D (q, a.1)) := (sm_FM hF).comp_measurable hx
@@ -1497,12 +1459,10 @@ theorem w_hkm (D : RealPlaceData k r Wp Wq) {F : Mat k r → (Wq →L[ℂ] Wp)} 
     (hv.comp continuous_snd).inner (hv.comp continuous_fst)
   first
     | exact hc.comp_stronglyMeasurable (h1.prodMk h2)
-    | exact hc.comp_stronglyMeasurable (h1.prod_mk h2)
 
 theorem w_meas_xi (D : RealPlaceData k r Wp Wq) (τ : ℝ × ℝ) : Measurable (xiTau D τ) := by
   first
     | exact (measurable_xi D).comp (measurable_const.prodMk measurable_id)
-    | exact (measurable_xi D).comp (measurable_const.prod_mk measurable_id)
 
 theorem w_hJ (D : RealPlaceData k r Wp Wq) (F : Mat k r → (Wq →L[ℂ] Wp)) (g : Mat k r)
     (hint : Integrable (fun p => rho D p F g) D.μSS) (τ : ℝ × ℝ) :

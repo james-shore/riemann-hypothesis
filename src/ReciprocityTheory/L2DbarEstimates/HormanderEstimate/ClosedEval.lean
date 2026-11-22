@@ -57,12 +57,12 @@ theorem evalPt (n : ℕ) (M : Type*) [TopologicalSpace M] [T2Space M]
     by_cases hy : y ∈ Metric.ball (e x0) (r / 2)
     · have hyt : y ∈ e.target := hcb (Metric.ball_subset_closedBall hy)
       have hyK : e.symm y ∈ K := ⟨y, Metric.ball_subset_closedBall hy, rfl⟩
-      simp [Set.indicator_apply, hy, hyt, hyK, hfdef]
-    · simp [Set.indicator_apply, hy]
+      simp [hy, hyt, hyK, hfdef]
+    · simp [hy]
   have h3 : ∫⁻ y in e.target, f (e.symm y) = ∫⁻ x, f x ∂vol n z := by
     refine (lintegral_vol_chart n z hz e he f hfm (fun x hx => ?_)).symm
     have hxK : x ∉ K := fun h => hx (hKs h)
-    simp [hfdef, Set.indicator_apply, hxK]
+    simp [hfdef, hxK]
   have h4 : ∫⁻ x, f x ∂vol n z = ∫⁻ x in K, ‖F x‖ₑ ^ 2 ∂vol n z := by
     rw [hfdef, lintegral_indicator (hs := hKc.isClosed.measurableSet)]
   have h5 : ∫⁻ x in K, ‖F x‖ₑ ^ 2 ∂vol n z ≤ ENNReal.ofReal (max c 0) * wint n z F ψ :=

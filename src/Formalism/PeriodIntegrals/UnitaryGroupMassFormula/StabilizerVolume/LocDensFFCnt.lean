@@ -239,7 +239,5 @@ theorem card_diag (q : ℕ) (hq0 : 0 < q) (hK : Fintype.card K = q ^ 2) (hσ : �
     all_goals first
       | (refine Finset.prod_congr rfl (fun j _ => ?_)
          simp only [Fin.val_succ, hsub j])
-      | simp only [Fin.val_zero, Nat.sub_zero]
-      | rfl
 
 end PI.VolStabS.FFHS

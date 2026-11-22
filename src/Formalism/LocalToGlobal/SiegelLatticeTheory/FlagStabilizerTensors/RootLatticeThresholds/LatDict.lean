@@ -1012,7 +1012,7 @@ theorem prV_of_perp {w : (VS D).V} (he : ∀ a, (VS D).hT (X.eX a) w = 0) (hf : 
 theorem smulMem {K W : Type} [Field K] [NumberField K] [AddCommGroup W] [Module K W] [Module (𝓞 K) W]
     [IsScalarTower (𝓞 K) K W] (Λ : Submodule (𝓞 K) W) [hΛ : Submodule.IsLattice K Λ] (v : W) :
     ∃ s : 𝓞 K, s ≠ 0 ∧ s • v ∈ Λ := by
-  first | exact Bl.general_b_fact_third_ter_form.goal1 .. | (apply Bl.general_b_fact_third_ter_form.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_third_ter_form.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_third_ter_form.goal1 ..
 
 theorem uniform_mul {K W : Type} [Field K] [NumberField K] [AddCommGroup W] [Module K W] [Module (𝓞 K) W]
     [IsScalarTower (𝓞 K) K W] {A B : Submodule (𝓞 K) W} (hA : A.FG) [hB : Submodule.IsLattice K B] :

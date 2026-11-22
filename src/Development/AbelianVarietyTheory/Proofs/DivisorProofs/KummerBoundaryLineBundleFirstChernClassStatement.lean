@@ -20,5 +20,3 @@ theorem _root_.GlobalTheory.T.kummerBoundary_lineBundle_firstChernClass : ∀ (q
     HK.ext ℤ _ z 1 (1 + 1) rfl y = s • restrH (Int.castRingHom (ZMod q)) E (tw q 1) (1 + 1) (c1 q L) := by
   first
   | exact @GlobalTheory.EtC.KumPic.kummer_boundary_picClass
-  | exact GlobalTheory.EtC.KumPic.kummer_boundary_picClass
-  | (intros; apply GlobalTheory.EtC.KumPic.kummer_boundary_picClass <;> assumption)

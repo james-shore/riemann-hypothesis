@@ -71,7 +71,7 @@ private theorem norm_term (W : Weil D) {y : GL (Fin 2) (Cinf E)} (hy : One F y) 
   have hy' : nu F (infGL E 2 y) = 1 := hy
   rw [map_mul, map_mul, Module.End.mul_apply, Module.End.mul_apply, om_L_comm W hy, W.Om_n, W.Om_m,
     W.L_apply, hy', ab_one]
-  simp only [norm_mul, norm_ψ, one_mul, norm_eta, inv_one, Complex.ofReal_one, norm_one]
+  simp only [norm_mul, norm_ψ, one_mul, norm_eta, inv_one, Complex.ofReal_one]
   rw [Complex.norm_real, Real.norm_of_nonneg (by positivity)]
   rfl
 
@@ -105,7 +105,7 @@ theorem UpperTheory.ConvolutionTheory.R2.Ff.thMaj :
     rw [norm_term W hy, hk']
     set u := D.act (infGL E 2 y)⁻¹ (sc a ξ) with hu
     have hval : (∑ i, cf i • e i : S4 F).1 u = ∑ i, cf i * (e i).1 u := by
-      simp [Submodule.coe_sum, Finset.sum_apply]
+      simp [Finset.sum_apply]
     have hb : ‖(∑ i, cf i • e i : S4 F).1 u‖ ≤ n * B * wt K N u := by
       rw [hval]
       calc ‖∑ i, cf i * (e i).1 u‖ ≤ ∑ i, ‖cf i * (e i).1 u‖ := norm_sum_le _ _

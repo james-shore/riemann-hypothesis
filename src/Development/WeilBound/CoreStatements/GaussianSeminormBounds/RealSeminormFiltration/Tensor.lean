@@ -121,7 +121,7 @@ theorem map_mem_of_one_op [Fintype ι] (N : Submodule ℂ (PiTensorProduct ℂ M
         funext j
         by_cases hj : j = i
         · subst hj; simp [hi]
-        · simp [hj, Function.update_of_ne hj]
+        · simp [hj]
       rw [e]
       exact hN i (f i) _ ih
   simpa using key Finset.univ

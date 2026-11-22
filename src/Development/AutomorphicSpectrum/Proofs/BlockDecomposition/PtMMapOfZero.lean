@@ -42,7 +42,7 @@ theorem cT_ptM (σ : R →+* R) {e : R} (he : e * e = e) (hσ : σ e = e) (M : M
   by_cases h : i = j
   · subst h
     simp [Formalism.UG.cT, ptM_apply, hσ]
-  · simp [Formalism.UG.cT, ptM_apply, hσ, Matrix.one_apply, h, Ne.symm h]
+  · simp [Formalism.UG.cT, ptM_apply, hσ, h, Ne.symm h]
 
 theorem ptM_unitary (σ : R →+* R) {e : R} (he : e * e = e) (hσ : σ e = e) {J M : Matrix m m R}
     (hM : Formalism.UG.cT σ M * J * M = J) : Formalism.UG.cT σ (ptM e he M) * J * ptM e he M = J := by
@@ -127,7 +127,7 @@ theorem weyl_map (φ : R →+* R') :
   obtain ⟨i, rfl⟩ := finSumFinEquiv.surjective i
   obtain ⟨j, rfl⟩ := finSumFinEquiv.surjective j
   rw [Matrix.map_apply, blk_apply, blk_apply]
-  rcases i with i | i <;> rcases j with j | j <;> by_cases h : i = j <;> simp [Matrix.one_apply, h]
+  rcases i with i | i <;> rcases j with j | j <;> by_cases h : i = j <;> simp [h]
 
 theorem map_compl_zero (φ : R →+* R') {e : R} (h : φ e = 1) : φ (1 - e) = 0 := by
   rw [map_sub, map_one, h, sub_self]
@@ -183,14 +183,14 @@ theorem ptM_map_of_zero (φ : R →+* R') {f : R} (hf : f * f = f) (h : φ f = 0
   ext i j
   by_cases e : i = j
   · subst e; simp [ptM_apply, h]
-  · simp [ptM_apply, h, Matrix.one_apply, e]
+  · simp [ptM_apply, h, e]
 
 theorem ptM_map_of_one (φ : R →+* R') {f : R} (hf : f * f = f) (h : φ f = 1) (M : Matrix m m R) :
     (ptM f hf M).map φ = M.map φ := by
   ext i j
   by_cases e : i = j
   · subst e; simp [ptM_apply, h]
-  · simp [ptM_apply, h, Matrix.one_apply, e]
+  · simp [ptM_apply, h, e]
 
 end Map
 

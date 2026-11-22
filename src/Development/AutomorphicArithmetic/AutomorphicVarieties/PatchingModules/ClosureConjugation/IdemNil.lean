@@ -8,7 +8,7 @@ open scoped TensorProduct
 private theorem charpoly_single {F : Type} [CommRing F] {m : ℕ} (i : Fin (m + 1)) :
     (single i i (1 : F)).charpoly = X ^ (m + 1) - X ^ m := by
   rw [← Matrix.diagonal_single, Matrix.charpoly_diagonal, Fin.prod_univ_succAbove _ i]
-  simp [Pi.single_apply, Fin.succAbove_ne]
+  simp [Fin.succAbove_ne]
   ring
 
 theorem UpperTheory.V.Pa.idem_nil :

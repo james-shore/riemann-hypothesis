@@ -77,7 +77,7 @@ theorem exists_sec_twist_mem_nonzeroLocus : ∀ (S : Scheme.{0}) (P : PolAV S) (
       ![(snd (Over.mk t) P.A).left, (translPt P.A c).left] ![((2 : ℕ) : ℤ) - 1, 1] := by
     refine formEq_of_add fun U _ h => ?_
     simp only [Fintype.sum_sum_type, Fin.sum_univ_succ, Fin.sum_univ_zero, Sum.elim_inl, Sum.elim_inr, Matrix.cons_val_zero,
-      Matrix.cons_val_succ, Matrix.cons_val_one, Matrix.head_cons]
+      Matrix.cons_val_succ]
     rw [trY_snd, trY_snd, mul_inv_cancel_right]
     simp
     abel

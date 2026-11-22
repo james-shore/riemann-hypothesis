@@ -205,7 +205,7 @@ lemma covA_span (K : Type) [Field K] [NumberField K] (d : ℕ) [Fact d.Prime] (h
     · exact ⟨u - v, by rw [hu, hv]; ring⟩
   refine ⟨m, B, ?_⟩
   apply FaithfulSMul.algebraMap_injective (𝓞 K) K
-  simp only [map_add, map_mul, map_intCast]
+  simp only [map_add, map_intCast]
   change (y : K) = (m : K) + (B : K) * ((1 + x) / 2)
   rw [hab]
   have ha2 : (2 : K) * a = A := by exact_mod_cast hA.symm

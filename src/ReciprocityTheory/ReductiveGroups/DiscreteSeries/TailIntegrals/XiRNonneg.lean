@@ -52,7 +52,7 @@ theorem dot_H (v w : Fin (2 * r + k + 1) → ℂ) :
     star (Hpk k r *ᵥ v) ⬝ᵥ (Hpk k r *ᵥ w) = star v ⬝ᵥ w := by
   have h := HE_adj (HE k r (WithLp.toLp 2 v)) (WithLp.toLp 2 w)
   rw [HE_HE] at h
-  simp only [HE_apply, EuclideanSpace.inner_eq_star_dotProduct, WithLp.ofLp_toLp] at h
+  simp only [HE_apply, EuclideanSpace.inner_eq_star_dotProduct] at h
   rw [dotProduct_comm (star (Hpk k r *ᵥ v)), ← h, dotProduct_comm]
 
 theorem ga_H (l : Fin (r + 1)) (Y : Fin (r + 1) → Fin (2 * r + k + 1) → ℂ) :

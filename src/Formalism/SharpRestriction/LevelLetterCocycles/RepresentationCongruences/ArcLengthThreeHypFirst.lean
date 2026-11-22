@@ -108,7 +108,7 @@ theorem arc_length_three_hyp_first (W : LocWach PD LL O v n) (hcase : Formalism.
       fun k => if k = k₀ then letE a * R * lA W ^ σ else 0, ?_, ?_, ?_⟩
     · intro k
       by_cases hk : k = k₀
-      · subst hk; simp only [if_pos rfl]; exact TypesA.IsHorTr_smul W κ₁ hHh
+      · subst hk; simp only; exact TypesA.IsHorTr_smul W κ₁ hHh
       · simp only [if_neg hk]; rw [add_comm]; exact TypesA.IsHorTr_smul W κ (hHh1 k)
     · intro k
       by_cases hk : k = k₀
@@ -176,7 +176,7 @@ theorem arc_length_three_hyp_first (W : LocWach PD LL O v n) (hcase : Formalism.
     · simp only [Fin.sum_univ_one, lE, pow_zero, one_mul]
       by_cases hk : k = k₀
       · subst hk; simp
-      · simp [if_neg hk, Pi.single_apply, hk]
+      · simp [hk]
   obtain ⟨y, hyΔ, hyl, hxy⟩ := hN
   rw [← ha, hxy, one_smul]
   exact ⟨hyΔ, ⟨y, hyΔ.1, by simpa using hyl⟩⟩

@@ -18,12 +18,12 @@ theorem toBlocks₁₁_mul' (A B : M2 n) :
   simp
 
 theorem mul_cm₁₁ (x : M2 n) : (x * Cm n).toBlocks₁₁ = Complex.I • x.toBlocks₁₁ + x.toBlocks₁₂ := by
-  simp [toBlocks₁₁_mul', Cm, Matrix.mul_smul]
+  simp [toBlocks₁₁_mul', Cm]
 
 theorem cmS : (Cm n)ᴴ * JJ n * Cm n = fromBlocks ((-2 * Complex.I) • (1 : Matrix (Fin n) (Fin n) ℂ)) 0 0
     ((2 * Complex.I) • (1 : Matrix (Fin n) (Fin n) ℂ)) := by
   simp only [Cm, JJ, fromBlocks_conjTranspose, fromBlocks_multiply]
-  congr 1 <;> ext i j <;> simp [Matrix.one_apply] <;> split_ifs <;> ring_nf <;> simp [Complex.I_sq] <;> ring
+  congr 1 <;> ext i j <;> simp [Matrix.one_apply] <;> split_ifs <;> ring_nf <;> simp [Complex.I_sq]
 
 theorem cmiH_cmi : (Cmi n)ᴴ * Cmi n = (1 / 2 : ℂ) • (1 : M2 n) := by
   rw [← fromBlocks_one, fromBlocks_smul]
@@ -112,7 +112,7 @@ theorem fib : Fib := by
       _ = 0 := by rw [Matrix.mul_assoc, h1, Matrix.mul_zero]
   have hc' : (D.toBlocks₂₂)ᴴ * D.toBlocks₂₂ = 1 := by
     rw [hB] at s22
-    simp only [Matrix.conjTranspose_zero, Matrix.zero_mul, Matrix.mul_zero, zero_add, smul_zero] at s22
+    simp only [Matrix.conjTranspose_zero, Matrix.mul_zero, zero_add, smul_zero] at s22
     have := congrArg (fun M => (2 * Complex.I)⁻¹ • M) s22
     simpa [smul_smul, inv_mul_cancel₀ hI'] using this
   have hDD : Dᴴ * D = 1 := by
@@ -125,7 +125,7 @@ theorem fib : Fib := by
   have hcm2 : (Cm n)ᴴ * Cm n = (2 : ℂ) • (1 : M2 n) := by
     rw [← fromBlocks_one, fromBlocks_smul]
     simp only [Cm, fromBlocks_conjTranspose, fromBlocks_multiply]
-    congr 1 <;> ext i j <;> simp [Matrix.one_apply] <;> split_ifs <;> ring_nf <;> simp [Complex.I_sq] <;> ring
+    congr 1 <;> ext i j <;> simp [Matrix.one_apply] <;> split_ifs <;> ring_nf <;> simp [Complex.I_sq]
   calc kᴴ * k = (Cmi n)ᴴ * (Dᴴ * ((Cm n)ᴴ * Cm n) * D) * Cmi n := by
         rw [hkD]; simp only [Matrix.conjTranspose_mul, Matrix.mul_assoc]
     _ = (2 : ℂ) • ((Cmi n)ᴴ * Cmi n) := by

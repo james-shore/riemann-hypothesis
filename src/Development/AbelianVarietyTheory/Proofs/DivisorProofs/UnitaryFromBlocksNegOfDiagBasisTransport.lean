@@ -21,7 +21,7 @@ theorem GlobalTheory.fromBlocks_unitary_transfer : ∀ (A O : Type) [CommRing A]
       = (Matrix.fromBlocks JL 0 0 (-JL)).map ι := by
     rw [Matrix.fromBlocks_transpose, Matrix.fromBlocks_multiply, Matrix.fromBlocks_map,
       Matrix.fromBlocks_multiply, Matrix.fromBlocks_map, hneg, ← hP]
-    simp [Matrix.mul_neg, Matrix.neg_mul]
+    simp
   have hc : (G.map c).map ι = (G.map ι).map γ := by
     ext i j; simp [hγ]
   apply Matrix.map_injective hinj

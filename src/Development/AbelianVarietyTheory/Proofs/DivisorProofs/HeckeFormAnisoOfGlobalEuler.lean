@@ -143,17 +143,17 @@ theorem prod_range_sub_eq_prod_Icc (f : ℤ → ℂ) (a h : ℕ) (e : ℤ) (he :
     ∏ i ∈ Finset.range a, f ((h : ℤ) - i) = ∏ s ∈ Finset.Icc (1 - e) (h : ℤ), f s := by
   refine Finset.prod_nbij' (fun i => (h : ℤ) - i) (fun s => ((h : ℤ) - s).toNat) ?_ ?_ ?_ ?_ ?_
   · intro i hi
-    simp only [Finset.coe_range, Set.mem_Iio, Finset.mem_coe, Finset.mem_range] at hi
-    simp only [Finset.coe_Icc, Set.mem_Icc, Finset.mem_coe, Finset.mem_Icc]
+    simp only [Finset.mem_range] at hi
+    simp only [Finset.mem_Icc]
     omega
   · intro s hs
-    simp only [Finset.coe_Icc, Set.mem_Icc, Finset.mem_coe, Finset.mem_Icc] at hs
-    simp only [Finset.coe_range, Set.mem_Iio, Finset.mem_coe, Finset.mem_range]
+    simp only [Finset.mem_Icc] at hs
+    simp only [Finset.mem_range]
     omega
   · intro i _
     simp
   · intro s hs
-    simp only [Finset.coe_Icc, Set.mem_Icc, Finset.mem_coe, Finset.mem_Icc] at hs
+    simp only [Finset.mem_Icc] at hs
     omega
   · intro i _
     rfl

@@ -41,7 +41,7 @@ theorem germ_eval_comb : ∀ (Rg : Type) [CommRing Rg] (A₀ T X : Scheme.{0}) (
     have n2 : (Scheme.ΓSpecIso (CommRingCat.of (MvPolynomial (Fin (mA * mB)) Rg))).inv (MvPolynomial.C r) =
         (affπ Rg (mA * mB)).appTop ((Scheme.ΓSpecIso (CommRingCat.of Rg)).inv r) := by
       rw [← CommRingCat.comp_apply, ← Scheme.ΓSpecIso_inv_naturality]; rfl
-    simp only [ψ, RingHom.comp_apply, ringOf, gc, MapIff.gsH, RingHom.coe_comp, Function.comp_apply]
+    simp only [ψ, RingHom.comp_apply, ringOf, gc, MapIff.gsH]
     rw [n2, Scheme.Hom.comp_appTop, Scheme.Hom.comp_appTop]
     rfl
   have hcomb : comb a φ p (matOf g) z q =

@@ -32,13 +32,13 @@ private theorem sub_C_mem_lemma {κ : Type} (r : MvPolynomial κ R) : r - C (con
   · intro p i _
     have e : p * X i - C (constantCoeff (p * X i)) = p * X i := by simp
     rw [e]
-    exact Ideal.mul_mem_left _ _ (by first | exact Ideal.subset_span ⟨i, rfl⟩ | (unfold orig; exact Ideal.subset_span ⟨i, rfl⟩))
+    exact Ideal.mul_mem_left _ _ (by first | exact Ideal.subset_span ⟨i, rfl⟩)
 
 private theorem aug_mk_lemma_2 {κ : Type} (r : MvPolynomial κ R) :
     (jetAug : Jet R κ (0 + 1) →ₐ[R] R) (Ideal.Quotient.mk (orig R κ ^ (0 + 1 + 1)) r) = constantCoeff r := by
   have e : (jetAug : Jet R κ (0 + 1) →ₐ[R] R) (Ideal.Quotient.mk (orig R κ ^ (0 + 1 + 1)) r)
       = (aeval fun _ : κ => (0 : R)) r := by
-    first | rfl | simp [jetAug, liftJet]
+    first | rfl
   rw [e]
   refine MvPolynomial.induction_on (motive := fun r => (aeval fun _ : κ => (0 : R)) r = constantCoeff r) r ?_ ?_ ?_
   · intro a
@@ -49,7 +49,7 @@ private theorem aug_mk_lemma_2 {κ : Type} (r : MvPolynomial κ R) :
     simp
 
 private theorem orig_sq_lemma_3 {κ : Type} : orig R κ ^ (0 + 1 + 1) = orig R κ * orig R κ := by
-  first | exact pow_two _ | rw [pow_succ, pow_succ, pow_zero, one_mul]
+  first | exact pow_two _
 
 private theorem mul_zz_lemma_4 {κ : Type} (c : Jet R κ (0 + 1)) (i : κ) :
     c * zz (0 + 1) i = algebraMap R (Jet R κ (0 + 1)) ((jetAug : Jet R κ (0 + 1) →ₐ[R] R) c) * zz (0 + 1) i := by
@@ -58,7 +58,7 @@ private theorem mul_zz_lemma_4 {κ : Type} (c : Jet R κ (0 + 1)) (i : κ) :
   change Ideal.Quotient.mk (orig R κ ^ (0 + 1 + 1)) r * Ideal.Quotient.mk (orig R κ ^ (0 + 1 + 1)) (X i)
     = Ideal.Quotient.mk (orig R κ ^ (0 + 1 + 1)) (C (constantCoeff r)) * Ideal.Quotient.mk (orig R κ ^ (0 + 1 + 1)) (X i)
   rw [← map_mul, ← map_mul, Ideal.Quotient.eq, ← sub_mul, orig_sq_lemma_3]
-  exact Ideal.mul_mem_mul (sub_C_mem_lemma r) (by first | exact Ideal.subset_span ⟨i, rfl⟩ | (unfold orig; exact Ideal.subset_span ⟨i, rfl⟩))
+  exact Ideal.mul_mem_mul (sub_C_mem_lemma r) (by first | exact Ideal.subset_span ⟨i, rfl⟩)
 
 private theorem aug_zero_mem_lemma_5 {κ : Type} (p : Jet R κ (0 + 1)) (h : (jetAug : Jet R κ (0 + 1) →ₐ[R] R) p = 0) :
     p ∈ Ij R κ (0 + 1) := by
@@ -74,7 +74,7 @@ private theorem ker_aug_sq_lemma_6 {κ : Type} :
     RingHom.ker (jetAug : Jet R κ (0 + 1) →ₐ[R] R) ^ (1 + 1) = ⊥ := by
   have e : RingHom.ker (jetAug : Jet R κ (0 + 1) →ₐ[R] R) ^ (1 + 1)
       = RingHom.ker (jetAug : Jet R κ (0 + 1) →ₐ[R] R) * RingHom.ker (jetAug : Jet R κ (0 + 1) →ₐ[R] R) := by
-    first | exact pow_two _ | rw [pow_succ, pow_one]
+    first | exact pow_two _
   rw [e, eq_bot_iff, Ideal.mul_le]
   intro r hr s hs
   rw [RingHom.mem_ker] at hr hs
@@ -102,7 +102,6 @@ theorem eq_zero_of_tan {κ : Type} [Fintype κ] [DecidableEq κ] (p : Jet R κ (
       Finset.mem_univ, if_true] at h
     first
       | (rw [← Algebra.smul_def] at h; simpa using congrArg TrivSqZeroExt.snd h)
-      | simpa using congrArg TrivSqZeroExt.snd h
   simp only [ha, map_zero, zero_mul, Finset.sum_const_zero]
 
 abbrev fstA : DualNumber R →ₐ[R] R := TrivSqZeroExt.fstHom R R R
@@ -119,14 +118,14 @@ private theorem fst_tan_lemma_7 {κ : Type} [DecidableEq κ] (ℓ : κ) :
 
 theorem ker_fst_sq : RingHom.ker (fstA (R := R)) ^ (1 + 1) = ⊥ := by
   have e : RingHom.ker (fstA (R := R)) ^ (1 + 1) = RingHom.ker (fstA (R := R)) * RingHom.ker (fstA (R := R)) := by
-    first | exact pow_two _ | rw [pow_succ, pow_one]
+    first | exact pow_two _
   rw [e, eq_bot_iff, Ideal.mul_le]
   intro r hr s hs
   rw [RingHom.mem_ker] at hr hs
   rw [Ideal.mem_bot]
   have hr' : r.fst = 0 := by simpa [fstA] using hr
   have hs' : s.fst = 0 := by simpa [fstA] using hs
-  first | (ext <;> simp [hr', hs']) | exact TrivSqZeroExt.ext (by simp [hr', hs']) (by simp [hr', hs'])
+  first | (ext <;> simp [hr', hs'])
 
 section Univ
 
@@ -142,7 +141,7 @@ private theorem one_eq_lemma_8 {A : Type} [CommRing A] [Algebra R A] :
     apply Ideal.Quotient.algHom_ext
     apply MvPolynomial.algHom_ext
     intro i
-    first | rfl | simp [ReciprocityTheory.ChartRestriction.G.Chart.jetAug, ReciprocityTheory.ChartRestriction.G.Chart.jetZeroR]
+    first | rfl
   rw [e, ← spMap_comp, Category.assoc, hx.2.1 1, comp_one']
 
 private theorem eq_triv_lemma_9 {A : Type} [CommRing A] [Algebra R A] (aug : A →ₐ[R] R)

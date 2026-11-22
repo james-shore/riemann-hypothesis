@@ -24,6 +24,6 @@ theorem defectSec_res : ∀ (Q q : ℕ) [NeZero Q], q ∣ Q → ∀ (U : Scheme.
   refine GlobalTheory.T.kummerReductionChernDefect_restrict Q q hqQ U u hQ W (h ≫ g) v ?_
   rw [hv]
   ext
-  simp [Scheme.Hom.comp_appTop] <;> rfl
+  simp <;> rfl
 
 end GlobalTheory.EtC.RedChern

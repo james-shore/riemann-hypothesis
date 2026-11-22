@@ -37,7 +37,7 @@ theorem psi_zero_rig_const : ∀ (V : Type) [CommRing V] [IsDomain V] (D : DegPr
     show (Geo.Tor.val (D.psi 0) (jFK (R := V) (FractionRing V)) z J).val * _ = _
     rw [a₁, a₂, ← Units.val_mul, ← Units.val_mul]
     congr 1
-    simp only [Fintype.prod_unique, Finset.prod_const, Finset.card_univ, Fintype.card_unique, pow_one, zpow_neg,
+    simp only [Finset.prod_const, Finset.card_univ, Fintype.card_unique, pow_one, zpow_neg,
       zpow_one, id]
     rw [_root_.mul_mul_mul_comm, inv_mul_cancel, _root_.one_mul]
 

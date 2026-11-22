@@ -79,7 +79,7 @@ theorem genVal_phi (h : u.IsAH Hm χ) {b : TF (R := ℂ) ℂ ⟶ D.P.A} {bt : Fi
   have hd : Differentiable ℂ U := by
     have := differentiable_genVal D.P.isLB hw (sect D).left (q := id) differentiable_id
       (z := fun z => phiLift c c' bt z)
-      (by rintro (i | i) <;> fin_cases i <;> simp [phiLift] <;> fun_prop) (fun z => isLift_phi hb hc hc' z)
+      (by rintro (i | i) <;> fin_cases i <;> simp [phiLift]) (fun z => isLift_phi hb hc hc' z)
     simpa only [id, ← hU] using this
   have hper : ∀ (m : u.Λ) z, U (z + m) = Complex.exp (-(Real.pi * hermForm Hm l m)) * U z := fun m z => by
     have e : phiLift c c' bt (z + m) = fun i => phiLift c c' bt z i +
@@ -94,7 +94,7 @@ theorem genVal_phi (h : u.IsAH Hm χ) {b : TF (R := ℂ) ℂ ⟶ D.P.A} {bt : Fi
     simp only [hermForm_add_left, mul_add, Complex.exp_add, exp_nsmul] at e'
     simp only [Fintype.prod_sum_type, Fin.prod_univ_four, DegPre.deltaε, DegPre.famε, phiLift, Sum.elim_inl,
       Sum.elim_inr, Matrix.cons_val, ahFactor_zero D.P.isLB h, ahFactor_translate, zpow_neg, mul_zpow,
-      zpow_one, one_zpow, _root_.mul_one, zpow_sub₀ n, zpow_sub₀ n', zpow_natCast, Complex.exp_neg]
+      zpow_one, _root_.mul_one, zpow_sub₀ n, zpow_sub₀ n', zpow_natCast, Complex.exp_neg]
     field_simp
     linear_combination -e'
   have dH : Differentiable ℂ fun z => hermForm Hm z l := by

@@ -26,7 +26,7 @@ theorem isoSub_summand_of_isInternal {Γ L : Type} [Group Γ] [Field L] {a n : �
       apply DirectSum.linearMap_ext
       intro k
       apply LinearMap.ext; intro x
-      simp only [LinearMap.comp_apply, DirectSum.lof_eq_of, DFinsupp.mapRange.linearMap_apply]
+      simp only [LinearMap.comp_apply, DirectSum.lof_eq_of]
       rw [show (DirectSum.of (fun i => Us i) k x) = DFinsupp.single k x from rfl]
       rw [show DFinsupp.mapRange.linearMap (φ g) (DFinsupp.single k x) = DFinsupp.single k (φ g k x) from
         DFinsupp.mapRange_single (hf := fun i => map_zero _)]
@@ -102,7 +102,7 @@ theorem isoSub_summand_of_isInternal {Γ L : Type} [Group Γ] [Field L] {a n : �
     obtain ⟨y, ⟨v, hv, rfl⟩, hy⟩ := hu
     exact ⟨⟨v, hv⟩, Subtype.ext hy⟩
   refine ⟨LinearEquiv.ofBijective f ⟨hinj, hsurj⟩, fun g v h => ?_⟩
-  simp only [LinearEquiv.ofBijective_apply, f, LinearMap.comp_apply, Submodule.coe_subtype]
+  simp only [f]
   have := hequiv g m (v : Fin a → L)
   rw [hTv, hTv] at this
   exact this

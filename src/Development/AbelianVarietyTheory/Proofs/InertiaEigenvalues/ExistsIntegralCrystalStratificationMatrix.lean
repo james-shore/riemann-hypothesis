@@ -93,8 +93,7 @@ theorem exists_stratification : GlobalTheory.Published.BhattScholzeCrystallineLa
         · subst h; simp
         · simp [Pi.single_eq_of_ne h]
       simp only [h1] at hE
-      simp only [Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.sum_ite_eq,
-        Finset.mem_univ, if_true] at hE
+      simp only [Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true] at hE
       simp only [Matrix.map_apply] at hE ⊢
       rw [hE, Finset.mul_sum]
       refine Finset.sum_congr rfl fun m _ => ?_

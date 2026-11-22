@@ -287,7 +287,7 @@ theorem invX_of (hR : RingA W) (C : Coord W I T) : (latOf C).Inv PowerSeries.X :
 
 theorem isUnit_add_of_mem_jacobson {R : Type} [CommRing R] {u z : R} (hu : IsUnit u)
     (hz : z ∈ (⊥ : Ideal R).jacobson) : IsUnit (u + z) := by
-  first | exact Bl.FirstBlockLemmaI.goal1 .. | (apply Bl.FirstBlockLemmaI.goal1 <;> assumption) | (intros; apply Bl.FirstBlockLemmaI.goal1 <;> assumption) | (apply @Bl.FirstBlockLemmaI.goal1 <;> assumption) | (intros; apply @Bl.FirstBlockLemmaI.goal1 <;> assumption) | (apply @Bl.FirstBlockLemmaI.goal1 <;> first | assumption | infer_instance) | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› u z hu hz | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› u z hu | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› u z | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› u | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› | exact @Bl.FirstBlockLemmaI.goal1 R
+  first | exact Bl.FirstBlockLemmaI.goal1 .. | (apply Bl.FirstBlockLemmaI.goal1 <;> assumption) | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› u z hu hz | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› u z hu | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› u z | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› u | exact @Bl.FirstBlockLemmaI.goal1 R ‹_› | exact @Bl.FirstBlockLemmaI.goal1 R
 
 theorem isUnit_pS (hR : RingA W) (hT : ToolsAlg W) (s : ℕ) :
     IsUnit (algebraMap (LetA O n) W.EE (pS W s)) := by

@@ -60,8 +60,6 @@ theorem resChar_mem (w : D.what₂.places.Pl) :
   refine (HeightOneSpectrum.valuation_lt_one_iff_mem (K := D.what₂.LL) _ _).mp ?_
   first
     | exact hlt
-    | (simpa using hlt)
-    | (convert hlt using 2; exact map_natCast _ _)
 
 theorem resChar_eq_iff (p : ℕ) [hp : Fact p.Prime] (w : D.what₂.places.Pl) :
     D.what₂.places.resChar w = p ↔ ((p : ℕ) : 𝓞 D.what₂.LL) ∈ (D.plEq w).asIdeal := by

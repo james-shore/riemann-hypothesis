@@ -28,7 +28,7 @@ theorem blockM_mul_diag (a : ℕ) (h : 2 * (a + 2) ≤ n) (X Y X' Y' : Matrix (F
       have hb : ∀ r, cI n a h p ≠ cJ n a h r := cI_ne_cJ a h p
       rw [blockM_out a h _ _ (Or.inr heI) (Or.inl hb), blockM_out a h _ _ (Or.inr heI) (Or.inl hb)]
       have hne : cI n a h p ≠ e := fun hh => heI p hh.symm
-      simp [Matrix.one_apply, hne]
+      simp [hne]
   · push_neg at hbI
     by_cases hbJ : ∃ p, b = cJ n a h p
     · obtain ⟨p, rfl⟩ := hbJ
@@ -38,13 +38,13 @@ theorem blockM_mul_diag (a : ℕ) (h : 2 * (a + 2) ≤ n) (X Y X' Y' : Matrix (F
       · push_neg at heJ
         rw [blockM_out a h _ _ (Or.inl hbI) (Or.inr heJ), blockM_out a h _ _ (Or.inl hbI) (Or.inr heJ)]
         have hne : cJ n a h p ≠ e := fun hh => heJ p hh.symm
-        simp [Matrix.one_apply, hne]
+        simp [hne]
     · push_neg at hbJ
       rw [blockM_out a h _ _ (Or.inl hbI) (Or.inl hbJ), blockM_out a h _ _ (Or.inl hbI) (Or.inl hbJ)]
       by_cases hbe : b = e
       · subst hbe
         simp [hO b hbI hbJ]
-      · simp [Matrix.one_apply, hbe]
+      · simp [hbe]
 
 theorem partner_nU (σ : L →+* L) (x : L) : partner σ (nU x) = !![1, -σ x; 0, 1] := by
   have hc : cT σ (!![1, -x; 0, 1] : Matrix (Fin 2) (Fin 2) L) = !![1, 0; -σ x, 1] := by
@@ -70,7 +70,7 @@ theorem diag_unitary (σ : L →+* L) (t : GU σ n) (d : Fin n → L)
     by_cases hbe : b = e
     · subst hbe; simp [cT]
     · have : e ≠ b := fun hh => hbe hh.symm
-      simp [cT, Matrix.diagonal_apply, hbe, this]
+      simp [cT, hbe, this]
   rw [hc] at h2
   have h3 := congrFun (congrFun h2 p) r
   rw [Matrix.mul_diagonal, Matrix.diagonal_mul] at h3
@@ -119,9 +119,9 @@ theorem sR_conj_val (σ : L →+* L) (hσ : ∀ x, σ (σ x) = x) (a : ℕ) (h :
       Matrix.diagonal (dS a h d) * blockM a h (w2 L) (w2 L) := by
     refine blockM_mul_diag a h _ _ _ _ d _ ?_ ?_ ?_
     · intro p r
-      fin_cases p <;> fin_cases r <;> simp [w2, dS, n01, n01.symm]
+      fin_cases p <;> fin_cases r <;> simp [w2, dS, n01.symm]
     · intro p r
-      fin_cases p <;> fin_cases r <;> simp [w2, dS, m01, m01.symm, (hne _ _).symm]
+      fin_cases p <;> fin_cases r <;> simp [w2, dS, m01.symm, (hne _ _).symm]
     · intro b h1 h2
       simp [dS, h1, h2]
   have hs : (((sR σ hσ a h : GU σ n) : GL (Fin n) L) : Matrix (Fin n) (Fin n) L) = blockM a h (w2 L) (w2 L) := by

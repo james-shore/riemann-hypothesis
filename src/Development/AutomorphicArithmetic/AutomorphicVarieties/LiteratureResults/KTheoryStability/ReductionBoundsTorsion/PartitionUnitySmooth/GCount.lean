@@ -50,7 +50,7 @@ private theorem qR_smul_place_vec {L : Type} [Field L] [NumberField L] {N : ℕ}
   refine Finset.sum_congr rfl fun w _ => ?_
   simp only [Pi.smul_apply, star_smul, Matrix.mulVec_smul, dotProduct_smul, smul_dotProduct,
     star_trivial]
-  simp [Complex.smul_re, pow_two, mul_assoc]
+  simp [pow_two, mul_assoc]
 
 private theorem qR_le_two_mul_qR_sub_add_two_mul_of_mem_Pos {L : Type} [Field L] [NumberField L] {N : ℕ} {h : HS L N}
     (hh : h ∈ Pos L N) (x a : InfinitePlace L → Fin N → ℂ) :

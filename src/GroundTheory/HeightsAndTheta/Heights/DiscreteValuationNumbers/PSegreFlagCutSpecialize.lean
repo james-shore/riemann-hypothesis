@@ -123,7 +123,7 @@ theorem SegreFlagCutSpecialize.proof : SegreFlagCutSpecialize.Statement := by
         map (ev : (MvPolynomial (Fin N) Ω) →+* Φ) (eval₂ (C.comp algA) (fun p => C (cA j p) * X p.1) s) := by
       intro j
       rw [map_coneMap, hevA, hcoord]
-      simp only [pointConeMap, aeval_def, MvPolynomial.algebraMap_eq]
+      simp only [pointConeMap, aeval_def]
       rfl
     have ksub : map (sub : (MvPolynomial (Fin N) Ω) →+* (MvPolynomial (Fin N) Ω)) (eval₂ (C.comp algA) (fun p => C (cA (k + 1) p) * X p.1) s) =
         eval₂ (C.comp algA) (fun p => C (cA k p) * X p.1) s := by

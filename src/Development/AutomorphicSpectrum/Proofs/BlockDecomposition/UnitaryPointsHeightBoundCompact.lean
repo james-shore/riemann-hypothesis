@@ -107,7 +107,7 @@ theorem exists_isCompact_trHom_set {d : ℕ} (b : Module.Basis (Fin d) K E) (hH 
     change _ * (resScalar (ι := ι) b j).map (Algebra.ofId K 𝔸[K]) =
       (resScalar (ι := ι) b j).map (Algebra.ofId K 𝔸[K]) * _
     rw [e]
-    simp only [MonoidHom.comp_apply, Subgroup.coe_subtype]
+    simp only
     rw [trHom_val]
     exact resHom_commute_scalar b 𝔸[K] _ _
   obtain ⟨C, hC, hred⟩ := exists_isCompact_centralizer_reduction_set (resScalar (ι := ι) b) G hG1 hGL hε

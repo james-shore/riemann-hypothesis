@@ -380,7 +380,7 @@ theorem entire_cBar {F : VC D N N' → ℂ} (hF : Differentiable ℂ F) :
   exact h
 
 theorem cBar_cBar (F : VC D N N' → ℂ) : cBar D (cBar D F) = F := by
-  funext z; simp [cBar, vBar_invol]
+  funext z; simp [cBar]
 
 theorem rhoBar_rhoBar (M : IntermediateField ℚ ℂ) (ρ : M →ₐ[ℚ] ℂ) : rhoBar M (rhoBar M ρ) = ρ := by
   ext x; simp [rhoBar]

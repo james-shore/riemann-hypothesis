@@ -71,8 +71,6 @@ theorem cap_exists_denom (L : Submodule (𝓞 E) (Fin n → E))
   | exact @_root_.GlobalTheory.NatMulMemUnitaryExistence.target
   | exact _root_.GlobalTheory.NatMulMemUnitaryExistence.target
   | (apply _root_.GlobalTheory.NatMulMemUnitaryExistence.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatMulMemUnitaryExistence.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatMulMemUnitaryExistence.target <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NatMulMemUnitaryExistence.target ..)
 
 end RationalPoints

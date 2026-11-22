@@ -22,8 +22,6 @@ theorem castGL_symm_apply {a b : ℕ} (h : a = b) (R : Type) [CommRing R] (g : G
     ((castGL h R).symm g : Matrix (Fin a) (Fin a) R) x y = (g : Matrix (Fin b) (Fin b) R) (Fin.cast h x) (Fin.cast h y) := by
   first
   | rfl
-  | (subst h; rfl)
-  | simp [castGL]
 
 variable {R : Ranks} {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E]
     [StarRing E] [Algebra F E] {sp : Spaces R F E} {gp : Fin 2 → ℕ}

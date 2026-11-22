@@ -72,7 +72,7 @@ theorem chiDet_absC_cpt (s : ℂ) (k : Kinf E a) :
       simpa using h3
     nlinarith [norm_nonneg ((k.1.det : Cinf E) w)]
   have e : ∀ w, ‖((Matrix.GeneralLinearGroup.det (Unitary.toUnits k) : (Cinf E)ˣ) : Cinf E) w‖ = 1 := hn
-  simp [e, hn]
+  simp [hn]
 
 theorem dchi_absC_trace (s : ℂ) :
     dchi (Model.absC E s) (Matrix.of (oneL E a)).trace = s * (a * (2 * Fintype.card (InfinitePlace E))) := by

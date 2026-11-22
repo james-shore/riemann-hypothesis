@@ -68,7 +68,7 @@ theorem locH_sub_trace_mem : ∀ (L : Type) [Field L] [Valued L (WithZero (Multi
     rw [← hPdef, ← hTdef, this, cT_sub', cT_one']
     congr 1
     rw [hRdef, hZdef]
-    simp only [Matrix.sub_mul, Matrix.mul_sub, Matrix.one_mul, Matrix.mul_one, Matrix.mul_assoc]
+    simp only [Matrix.sub_mul, Matrix.mul_sub, Matrix.one_mul, Matrix.mul_assoc]
     rw [← Matrix.mul_assoc J P, hJP, Matrix.one_mul]
   have h2 : δ * Matrix.trace (E * P * Formalism.UG.cT σ y * T * y) = δ * Matrix.trace (E * Z) := by
     rw [hZdef]; simp only [Matrix.mul_assoc]

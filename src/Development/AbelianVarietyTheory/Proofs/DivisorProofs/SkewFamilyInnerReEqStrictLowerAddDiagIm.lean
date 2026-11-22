@@ -9,8 +9,7 @@ theorem skew_family_inner_re_split : ∀ {ι : Type} [Fintype ι] {r : ℕ} (s :
   have key : ∀ τ a b, F τ b a = F τ a b := by
     intro τ a b
     have h2 : (s a * s b) * (s a * s b) = 1 := by rw [mul_mul_mul_comm, hs, hs, one_mul]
-    simp only [hF, hY τ a b, hY' τ a b, map_mul, map_neg, Complex.conj_conj, Complex.conj_ofReal,
-      Complex.mul_re, Complex.neg_re, Complex.ofReal_re, Complex.ofReal_im, Complex.conj_re,
+    simp only [hF, hY τ a b, hY' τ a b, Complex.mul_re, Complex.neg_re, Complex.ofReal_re, Complex.ofReal_im, Complex.conj_re,
       Complex.conj_im, Complex.mul_im, Complex.neg_im]
     linear_combination ((Y (τ, a, b)).re * (Y' (τ, a, b)).re + (Y (τ, a, b)).im * (Y' (τ, a, b)).im) * h2
   have diag : ∀ τ a, F τ a a = (Y (τ, a, a)).im * (Y' (τ, a, a)).im := by

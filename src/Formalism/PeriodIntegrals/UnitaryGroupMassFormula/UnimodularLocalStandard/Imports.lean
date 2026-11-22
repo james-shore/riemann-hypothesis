@@ -160,7 +160,6 @@ theorem stepC : StepC := by
     refine Module.End.hasEigenvalue_of_hasEigenvector (x := x) ?_
     first
       | exact Module.End.hasEigenvector_iff.2 ⟨Module.End.mem_eigenspace_iff.2 hgx, hx0⟩
-      | exact ⟨Module.End.mem_eigenspace_iff.2 hgx, hx0⟩
   · unfold relIdx
     rw [himg]
     exact hi1

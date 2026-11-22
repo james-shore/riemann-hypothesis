@@ -335,12 +335,10 @@ theorem exists_right_translate (hT : IsTriple B G X om om') (dV : G.V.J.det ≠ 
     (fun l => schr (GlobalTheory.LatVac.psiAt B.ψ v) (GlobalTheory.LatVac.locCo G.M.co v (uM (Matrix.of fun k j => l (Matrix.single k j 1)))))
     (fun C x hx => ⟨hsb _ x hx, funext fun Y => by
         rw [Heisenberg₂ _ (t1 C) (by rw [t3, p0]) x hx, t2, t3, p0, AddChar.map_zero_eq_one, one_mul], funext fun Y => by
-        beta_reduce
         rw [hcomm _ (t1 C) x hx, Heisenberg₂ _ (hat _ (t1 C)) (by rw [eY, t3, Matrix.zero_mul, p0]) _ (hSB x hx), eX, eY, t2, t3,
           Matrix.zero_mul, p0, AddChar.map_zero_eq_one, one_mul, Matrix.add_mul]⟩)
     (fun l x hx => ⟨hsb _ x hx, funext fun Y => by
         rw [Heisenberg₂ _ (m1 _) (by rw [m2, p1]) x hx, m2, m3, add_zero, ← linForm_eq], funext fun Y => by
-        beta_reduce
         rw [hcomm _ (m1 _) x hx, Heisenberg₂ _ (hat _ (m1 _)) (by rw [eX, m2, Matrix.zero_mul, p1]) _ (hSB x hx), eX, eY, m2, m3,
           Matrix.zero_mul, add_zero, linForm_eq l Y, pairM_eq_trace, pairM_eq_trace, transpose_mul, Matrix.mul_assoc,
           ← Matrix.mul_assoc H.valᵀ, ← transpose_mul, Units.inv_mul, transpose_one, Matrix.one_mul]⟩)
@@ -427,8 +425,8 @@ theorem smul_blk_sub_one {R S : Type} [Ring S] [SMulZeroClass R S] {p q d : ℕ}
   have c2 := fun r s => congrFun (congrFun hB r) s
   rcases r with r | r <;> rcases s with s | s
   · simpa [GlobalTheory.IndefiniteRowSideFullHecke.UnitaryConjugation.blk, Matrix.one_apply] using c1 r s
-  · simp [GlobalTheory.IndefiniteRowSideFullHecke.UnitaryConjugation.blk, Matrix.one_apply]
-  · simp [GlobalTheory.IndefiniteRowSideFullHecke.UnitaryConjugation.blk, Matrix.one_apply]
+  · simp [GlobalTheory.IndefiniteRowSideFullHecke.UnitaryConjugation.blk]
+  · simp [GlobalTheory.IndefiniteRowSideFullHecke.UnitaryConjugation.blk]
   · simpa [GlobalTheory.IndefiniteRowSideFullHecke.UnitaryConjugation.blk, Matrix.one_apply] using c2 r s
 
 attribute [local instance] GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.measFv GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.borelFv

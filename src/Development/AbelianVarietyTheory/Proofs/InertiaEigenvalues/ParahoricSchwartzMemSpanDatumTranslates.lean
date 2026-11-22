@@ -158,7 +158,7 @@ theorem mem_span_sum (O K : Type) [CommRing O] [IsDomain O] [IsDiscreteValuation
     funext x
     rw [hA]
     simp only [D, lawD _ _ (hl _)]
-    simp [← mul_assoc]
+    simp
   have key : ∀ y : Matrix (Fin r ⊕ Fin t) (Fin r) K,
       ∑ g, ((ξ (Matrix.GeneralLinearGroup.det g) : ℂˣ) : ℂ) *
         (if ∃ z : Matrix (Fin r ⊕ Fin t) (Fin r) O, D g * y = (e + ϖ • z).map (algebraMap O K) then 1 else 0) = Φ₀ y := by

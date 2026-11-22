@@ -26,7 +26,7 @@ theorem noShortVectorLowerBound_holds : NoShortVectorLowerBound (E := E) := by
   have hepne : ep0 ≠ 0 := hep.ne'
   obtain ⟨d, hd⟩ : ∃ d : VT (X := X.toData) z ξ, ∀ u ∈ X.Uz z ξ, ∀ τ : X.Ψ,
       δ τ (u τ) = X.Hf z τ (u τ) (d.val τ) := by
-    apply FinrankRieszBounds.riesz <;> assumption
+    apply FinrankRieszBounds.riesz
   obtain ⟨d', hd'⟩ : ∃ d' : VT (X := X.toData) z ξ,
       d' = (2 / (dE E * X.k0 ^ 2)) • Bmap z ξ d := ⟨_, rfl⟩
   obtain ⟨μ, hμ⟩ : ∃ μ : X.Λp ξ, ‖d' - phi z ξ hξ μ‖ ≤
@@ -43,7 +43,7 @@ theorem noShortVectorLowerBound_holds : NoShortVectorLowerBound (E := E) := by
   have hd_eq : (-(dE E / 2)) • Bmap z ξ d' = d := by
     rw [hd', map_smul, DiscreteLatticeMinimum.Bmap_Bmap, smul_smul, smul_smul]
     convert one_smul ℝ d using 2
-    field_simp <;> ring
+    field_simp
   have hw_eq : w = d - (-(dE E / 2)) • Bmap z ξ (phi z ξ hξ μ) := by
     rw [hw, map_sub, smul_sub, hd_eq]
   have hwn : ‖w‖ = dE E / 2 * (X.k0 * D) := by

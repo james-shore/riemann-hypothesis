@@ -113,7 +113,7 @@ theorem card_fixed_eq (l : ℕ) [Fact l.Prime] (R : Type) [CommRing R] [Finite R
   have hYYv : ∀ v : Fin 2 → R, Y *ᵥ (Y *ᵥ v) = s • v := fun v => by
     rw [Matrix.mulVec_mulVec, hYY]
     ext i
-    fin_cases i <;> simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two, Matrix.one_apply]
+    fin_cases i <;> simp [Matrix.mulVec, dotProduct, Matrix.one_apply]
   have hXYv : ∀ v : Fin 2 → R, X *ᵥ (Y *ᵥ v) = -(Y *ᵥ (X *ᵥ v)) := fun v => by
     rw [Matrix.mulVec_mulVec, hXY, Matrix.neg_mulVec, Matrix.mulVec_mulVec]
   have hsu : ((hs.unit⁻¹ : Rˣ) : R) * s = 1 := by simp

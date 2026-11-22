@@ -13,11 +13,11 @@ private theorem sq_of_norm {K R : Type} [Field K] [Field R] (f : K →+* R) {Δ 
   obtain ⟨⟨p0, q0⟩, ⟨p1, q1⟩⟩ := d
   have h1 : p0 ^ 2 - Δ * q0 ^ 2 - (p1 ^ 2 - Δ * q1 ^ 2) = 0 := by
     have := congrArg (fun z : EL Δ τ => z.re.re) hd
-    simp [sigL, ofE, QuadraticAlgebra.re_one, QuadraticAlgebra.im_one] at this
+    simp [sigL, ofE] at this
     linear_combination this
   have h2 : 2 * (p0 * p1 - Δ * q0 * q1) + τ * (p1 ^ 2 - Δ * q1 ^ 2) = 1 := by
     have := congrArg (fun z : EL Δ τ => z.im.re) hd
-    simp [sigL, ofE, QuadraticAlgebra.re_one, QuadraticAlgebra.im_one] at this
+    simp [sigL, ofE, QuadraticAlgebra.re_one] at this
     linear_combination this
   have g1 := congrArg f h1
   have g2 := congrArg f h2
@@ -98,7 +98,7 @@ private theorem tr_re {K : Type} [Field K] {Δ τ : K} (y : EL Δ τ) :
     (QuadraticAlgebra.trace (y * star (sigL y))).re =
       2 * (y.re.re ^ 2 + τ * y.re.re * y.im.re + y.im.re ^ 2) - 2 * Δ * (y.re.im ^ 2 + τ * y.re.im * y.im.im + y.im.im ^ 2) := by
   obtain ⟨⟨p0, q0⟩, ⟨p1, q1⟩⟩ := y
-  simp [sigL, QuadraticAlgebra.trace_def, two_mul, QuadraticAlgebra.re_one, QuadraticAlgebra.im_one]
+  simp [sigL, QuadraticAlgebra.trace_def, two_mul]
   ring
 
 private theorem q_nonneg {t : ℝ} (ht : t ^ 2 - 4 < 0) (p q : ℝ) : 0 ≤ p ^ 2 + t * p * q + q ^ 2 := by
@@ -126,7 +126,7 @@ private theorem tr_pos {K : Type} [Field K] {Δ τ : K} (σ : K →+* ℝ) (hΔ 
   exact hy (by ext <;> simp [e1.1, e1.2, e2.1, e2.2])
 
 private theorem sig_mul {K : Type} [Field K] {Δ τ : K} (x y : EL Δ τ) : sigL (x * y) = sigL x * sigL y := by
-  ext <;> simp [sigL] <;> ring
+  ext <;> simp [sigL]
 
 private theorem sig_sig {K : Type} [Field K] {Δ τ : K} (x : EL Δ τ) : sigL (sigL x) = x := by
   ext <;> simp [sigL]

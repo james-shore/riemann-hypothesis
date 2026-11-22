@@ -28,7 +28,7 @@ private theorem mMap_mem_GV_of_isUnit_det_of_mem_GV {k j ρ : ℕ} (Z : Matrix (
   have hwh : (G.wMat j).conjTranspose = G.wMat j := by
     ext a b
     simp only [G.wMat, Matrix.conjTranspose_apply, Matrix.of_apply]
-    split_ifs with h1 h2 h2 <;> simp_all [hr]
+    split_ifs with h1 h2 h2 <;> simp_all
   have hZ' : IsUnit Z.conjTranspose.det := by
     rw [Matrix.det_conjTranspose]
     exact hZ.star

@@ -55,7 +55,7 @@ theorem eta_pow_M {E : Type} [Field E] [NumberField E] [IsCMField E] {H : Host E
   have hM : ((l.M : ℕ) : 𝓞 E) ∈ l.Mb := by
     have : ((l.M : ℕ) : 𝓞 E) ∈ Ideal.span {((l.M : ℕ) : 𝓞 E)} := Ideal.subset_span rfl
     rw [← l.prod] at this
-    first | exact Ideal.mul_le_left this | exact Ideal.mul_le_right this
+    first | exact Ideal.mul_le_left this
   rw [← Nat.cast_smul_eq_nsmul (𝓞 E)]
   exact Submodule.smul_mem_smul hM Submodule.mem_top
 

@@ -94,7 +94,7 @@ lemma vNormSq_lt (p : ℕ) (ε : Fin n → Bool) (hε : ∀ a, ε a = decide ((a
       ring
     rw [sum_root_mul, sum_root_mul] at h2
     have h3 : root a0 c0 a0 - root a0 c0 c0 = 2 := by
-      simp [root, Pi.single_apply, hne, hne.symm]; norm_num
+      simp [root, hne, hne.symm]; norm_num
     linarith
   have h1 : vNormSq ε Λ - vNormSq ε μ = ∑ k, root a c k * (L + M) k + ∑ k, γ k * (L + M) k := by
     simp only [vNormSq, nsq, dot, ← Finset.sum_sub_distrib, ← Finset.sum_add_distrib]

@@ -288,7 +288,6 @@ theorem exists_isTgLift (hN : IsClosed (N : Set G)) (z : cocycles (Rep.res N.sub
   refine ⟨fun g => b g + A.ρ (s g) (X (sectionRetraction N hsec g)), ⟨?_, ?_, ?_⟩, ?_⟩
   · simp [b, hs1, hr1, hX1]
   · intro g n
-    beta_reduce
     rw [mk_mul_mem N g n, sectionRetraction_mul N hsec, hXc, map_add, ← Module.End.mul_apply,
       ← map_mul, section_mul_sectionRetraction N hsec]
     abel

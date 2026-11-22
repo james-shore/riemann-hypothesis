@@ -27,7 +27,7 @@ private theorem gb_ext {k : Type} [CommRing k] {X Y : Gb k (-2)} (h : X.val 2 0 
     exact h
   · have hw : UpperTheory.V.U3.wt a b ≠ -2 := by
       revert hab
-      fin_cases a <;> fin_cases b <;> first | decide | simp [UpperTheory.V.U3.wt, UpperTheory.V.U3.wt1]
+      fin_cases a <;> fin_cases b <;> first | decide
     exact (hX a b hw).trans (hY a b hw).symm
 
 private theorem gb_add {k : Type} [CommRing k] (X Y : Gb k (-2)) : (X + Y).val 2 0 = X.val 2 0 + Y.val 2 0 := rfl

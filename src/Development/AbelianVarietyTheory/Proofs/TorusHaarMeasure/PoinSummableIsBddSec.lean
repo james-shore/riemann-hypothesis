@@ -212,7 +212,7 @@ theorem _root_.GlobalTheory.PoinHol.poin_summable_isBddSec :
     rw [← tsum_mul_left]
     conv_rhs => rw [← (Equiv.mulRight (⟨γ0, hγ0⟩ : X.Γ)).tsum_eq]
     refine tsum_congr fun γ => ?_
-    simp only [Equiv.coe_mulRight, Subgroup.coe_mul, Subgroup.coe_mk]
+    simp only [Equiv.coe_mulRight, Subgroup.coe_mul]
     rw [lact_lact_eq_lact_mul', X.χ_mul la γ γ.2 γ0 hγ0, mul_inv]
     have h0 := _root_.ReciprocityTheory.ChartRestriction.G.AR.Up.IC.chi_ne_zero X la hγ0
     calc _ = X.χ la γ0 * (X.χ la γ0)⁻¹ *

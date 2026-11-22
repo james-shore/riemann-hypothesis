@@ -505,7 +505,7 @@ theorem herm_last (m : Mat k r) (a b : ℝ) :
       rw [this, zero_mul]
     · intro h; exact absurd (Finset.mem_univ _) h
   simp only [herm, bvec, star_smul, Pi.star_single, star_one, smul_dotProduct, single_dotProduct, one_mul,
-    mulVec_smul, Pi.smul_apply, dotProduct_smul, h, mulVec_single_one, Matrix.col_apply, smul_eq_mul]
+    mulVec_smul, dotProduct_smul, h, mulVec_single_one, Matrix.col_apply, smul_eq_mul]
   simp only [Complex.star_def, Complex.conj_ofReal]
   push_cast
   ring

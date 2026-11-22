@@ -69,24 +69,19 @@ private theorem leviV_add {n : ℕ} (g1 g2 : V n → ℂ) (y : V n)
   have hev : ∀ k, wdb n k (fun w => g1 w + g2 w) =ᶠ[nhds y] fun w => wdb n k g1 w + wdb n k g2 w := by
     intro k
     filter_upwards [h1, h2] with w hw1 hw2
-    have d1 : DifferentiableAt ℝ g1 w := hw1.differentiableAt (by first | norm_num | simp)
-    have d2 : DifferentiableAt ℝ g2 w := hw2.differentiableAt (by first | norm_num | simp)
+    have d1 : DifferentiableAt ℝ g1 w := hw1.differentiableAt (by first | norm_num)
+    have d2 : DifferentiableAt ℝ g2 w := hw2.differentiableAt (by first | norm_num)
     unfold wdb
     first
       | rw [fderiv_fun_add d1 d2]
-      | rw [fderiv_add' d1 d2]
-      | rw [show (fun w => g1 w + g2 w) = g1 + g2 from rfl, fderiv_add d1 d2]
     simp only [ContinuousLinearMap.add_apply]
     ring
   have hdiff : ∀ g : V n → ℂ, ContDiffAt ℝ ∞ g y → ∀ k, DifferentiableAt ℝ (wdb n k g) y := by
     intro g hg k
     have hf : ContDiffAt ℝ 1 (fderiv ℝ g) y := hg.fderiv_right (by
       first
-        | exact WithTop.coe_le_coe.mpr le_top
-        | exact_mod_cast (le_top : (2 : ℕ∞) ≤ ⊤)
-        | (norm_num; done)
-        | (simp; done))
-    have hfd : DifferentiableAt ℝ (fderiv ℝ g) y := hf.differentiableAt (by first | exact one_ne_zero | exact le_rfl | simp)
+        | exact WithTop.coe_le_coe.mpr le_top)
+    have hfd : DifferentiableAt ℝ (fderiv ℝ g) y := hf.differentiableAt (by first | exact one_ne_zero)
     have ha : DifferentiableAt ℝ (fun w => fderiv ℝ g w (bas n k)) y :=
       hfd.clm_apply (differentiableAt_const _)
     have hb : DifferentiableAt ℝ (fun w => fderiv ℝ g w (Complex.I • bas n k)) y :=
@@ -107,9 +102,6 @@ private theorem leviV_add {n : ℕ} (g1 g2 : V n → ℂ) (y : V n)
     rw [(hev k).fderiv_eq]
     first
       | rw [fderiv_fun_add (hdiff g1 h1.self_of_nhds k) (hdiff g2 h2.self_of_nhds k)]
-      | rw [fderiv_add' (hdiff g1 h1.self_of_nhds k) (hdiff g2 h2.self_of_nhds k)]
-      | rw [show (fun w => wdb n k g1 w + wdb n k g2 w) = wdb n k g1 + wdb n k g2 from rfl,
-          fderiv_add (hdiff g1 h1.self_of_nhds k) (hdiff g2 h2.self_of_nhds k)]
     simp only [ContinuousLinearMap.add_apply]
     ring
   rw [e1]
@@ -121,7 +113,6 @@ theorem exhaustF_holds : ExhaustFStatement (E := E) := by
   have hz : IsLocalHomeomorph (Subtype.val : OmF X x0 → _) := by
     first
       | exact hU.isOpenEmbedding_subtypeVal.isLocalHomeomorph
-      | exact hU.openEmbedding_subtype_val.isLocalHomeomorph
   have hgE : ∀ w ∈ OmF X x0, ContDiffAt ℝ ∞ (fun w => ((eF X x0 w : ℝ) : ℂ)) w := fun w hw =>
     Complex.ofRealCLM.contDiff.contDiffAt.comp w (ExF.eF_contDiffAt X x0 ho hw)
   have hg1 : ∀ w ∈ OmF X x0, ContDiffAt ℝ ∞ (fun w => ((rhF X x0 w : ℝ) : ℂ)) w := fun w hw =>

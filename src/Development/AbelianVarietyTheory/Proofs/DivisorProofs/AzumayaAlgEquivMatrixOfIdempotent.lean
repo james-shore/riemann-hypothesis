@@ -14,7 +14,7 @@ noncomputable def leftIdealMulAlgHom (A : Type) [CommRing A] {Λ : Type} [Ring �
     rintro _ ⟨y, rfl⟩
     exact ⟨l * y, by simp [mul_assoc]⟩)
   map_one' := by ext p; simp [LinearMap.restrict_apply]
-  map_mul' x y := by ext p; simp [LinearMap.restrict_apply, mul_assoc]
+  map_mul' x y := by ext p; simp [LinearMap.restrict_apply]
   map_zero' := by ext p; simp [LinearMap.restrict_apply]
   map_add' x y := by ext p; simp [LinearMap.restrict_apply, add_mul]
   commutes' c := by ext p; simp [LinearMap.restrict_apply, Algebra.smul_def]

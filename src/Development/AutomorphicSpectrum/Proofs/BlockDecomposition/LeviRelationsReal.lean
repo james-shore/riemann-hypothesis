@@ -128,12 +128,12 @@ theorem sum_adCL {lev : Fin n → ℕ} (hm : Monotone lev) (s : Bool) {p q : Fin
   refine congrArg₂ _ ?_ ?_
   · by_cases hq : q = l.2.1.1
     · have hlt : p < l.2.1.2 := GlobalTheory.CompanionTheory.LevChainRel.lt_of_lev hm (by rw [hpq, hq]; exact hl)
-      simp only [hq, eq_self_iff_true, true_and, if_true]
+      simp only [hq, true_and, if_true]
       exact GlobalTheory.CompanionTheory.LevChainRel.pick _ _ _ hlt G
     · simp [hq]
   · by_cases hp : l.2.1.2 = p
     · have hlt : l.2.1.1 < q := GlobalTheory.CompanionTheory.LevChainRel.lt_of_lev hm (by rw [← hpq, ← hp]; exact hl)
-      simp only [hp, eq_self_iff_true, true_and, if_true]
+      simp only [hp, true_and, if_true]
       exact GlobalTheory.CompanionTheory.LevChainRel.pick _ _ _ hlt G
     · simp [hp]
 
@@ -288,7 +288,7 @@ theorem xS_comm {E1 E2 : Fin n → Fin n → Module.End ℂ V} (h : IsPairA E1 E
       (if b = c then E2 a d else 0) - (if d = a then E2 c b else 0) := h2 a b c d
   cases s <;> cases t <;>
     simp only [GlobalTheory.CompanionTheory.LevChainRel.xS, PositivityTheory.RgBcC.RealD.kA, PositivityTheory.RgBcC.RealD.pA,
-      Bool.false_eq_true, eq_self_iff_true, if_true, if_false, Bool.false_xor, Bool.true_xor,
+      Bool.false_eq_true, if_true, if_false, Bool.false_xor, Bool.true_xor,
       Bool.not_true, Bool.not_false]
   · rw [GlobalTheory.CompanionTheory.LevChainRel.comm_kk (h12 a b c d) (h12 c d a b), e1, e2]
     split_ifs <;> abel
@@ -392,7 +392,7 @@ theorem levRel : LevRel := by
     split_ifs with hbc hda hda
     · rw [GlobalTheory.CompanionTheory.LevChainRel.leviFamilyOne_eq_half_sum E1 E2 (show lev a = lev d by rw [hab, hbc, hcd]),
         GlobalTheory.CompanionTheory.LevChainRel.leviFamilyOne_eq_half_sum E1 E2 (show lev c = lev b by rw [hcd, hda, hab])]
-      simp only [smul_add, smul_sub, smul_zero]
+      simp only [smul_add, smul_sub]
       abel
     · rw [GlobalTheory.CompanionTheory.LevChainRel.leviFamilyOne_eq_half_sum E1 E2 (show lev a = lev d by rw [hab, hbc, hcd])]
       simp only [smul_add, smul_sub, smul_zero]
@@ -407,15 +407,15 @@ theorem levRel : LevRel := by
     split_ifs with hbc hda hda
     · rw [GlobalTheory.CompanionTheory.LevChainRel.leviFamilyTwo_eq_half_diff E1 E2 (show lev a = lev d by rw [hab, hbc, hcd]),
         GlobalTheory.CompanionTheory.LevChainRel.leviFamilyTwo_eq_half_diff E1 E2 (show lev c = lev b by rw [hcd, hda, hab])]
-      simp only [smul_add, smul_sub, smul_zero]
+      simp only [smul_sub]
       abel
     · rw [GlobalTheory.CompanionTheory.LevChainRel.leviFamilyTwo_eq_half_diff E1 E2 (show lev a = lev d by rw [hab, hbc, hcd])]
-      simp only [smul_add, smul_sub, smul_zero]
+      simp only [smul_sub, smul_zero]
       abel
     · rw [GlobalTheory.CompanionTheory.LevChainRel.leviFamilyTwo_eq_half_diff E1 E2 (show lev c = lev b by rw [hcd, hda, hab])]
-      simp only [smul_add, smul_sub, smul_zero]
+      simp only [smul_sub, smul_zero]
       abel
-    · simp only [smul_add, smul_sub, smul_zero]
+    · simp only [smul_sub, smul_zero]
       abel
   · rw [GlobalTheory.CompanionTheory.LevChainRel.leviFamilyOne_eq_half_sum E1 E2 hab, GlobalTheory.CompanionTheory.LevChainRel.leviFamilyTwo_eq_half_diff E1 E2 hcd]
     exact GlobalTheory.CompanionTheory.LevChainRel.half_sum_commute_half_diff h1 h2 h3 h4

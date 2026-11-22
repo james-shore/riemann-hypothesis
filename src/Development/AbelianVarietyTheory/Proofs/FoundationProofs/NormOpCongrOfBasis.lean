@@ -18,12 +18,12 @@ theorem trace_basis_pow {B A : Type} [CommRing B] [CommRing A] [Algebra B A] (p 
     by_cases h : (i : ℕ) + j < p
     · rw [← hb ⟨_, h⟩, b.repr_self, Finsupp.single_apply]
       by_cases hi : (i : ℕ) = 0
-      · rw [if_pos hi, if_pos (Fin.ext (by simp only [Fin.val_mk]; omega))]
-      · rw [if_neg hi, if_neg (fun h' => hi (by have := congrArg Fin.val h'; simp only [Fin.val_mk] at this; omega))]
+      · rw [if_pos hi, if_pos (Fin.ext (by simp only; omega))]
+      · rw [if_neg hi, if_neg (fun h' => hi (by have := congrArg Fin.val h'; simp only at this; omega))]
     · have e : x ^ ((i : ℕ) + j) = y • b ⟨(i : ℕ) + j - p, by omega⟩ := by
         rw [hb, Algebra.smul_def, ← hx, ← pow_add]
         congr 1
-        simp only [Fin.val_mk]
+        simp only
         omega
       rw [e, map_smul, b.repr_self, Finsupp.smul_apply, Finsupp.single_apply, if_neg, smul_zero, if_neg]
       · omega

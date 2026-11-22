@@ -170,13 +170,13 @@ theorem exists_blocks {r t : ℕ} (y : GL (Fin (r + t)) 𝒪[k]) (hy : red k (r 
     (fun i j => y.val (Fin.castAdd t i) (Fin.castAdd t j))
     (GlobalTheory.SmGL.leviProj 𝓀[k] (part r t) ⟨_, hy⟩ false) (fun i j => by
       rw [GlobalTheory.SmGL.leviProj_apply, blockIndex_false_eq_castAdd, blockIndex_false_eq_castAdd]
-      simp only [Subgroup.coe_mk]
+      simp only
       rw [red_val])
   obtain ⟨d, hd⟩ := GlobalTheory.TypeDim.Coset.exists_unit (k := k)
     (fun i j => y.val (Fin.natAdd r i) (Fin.natAdd r j))
     (GlobalTheory.SmGL.leviProj 𝓀[k] (part r t) ⟨_, hy⟩ true) (fun i j => by
       rw [GlobalTheory.SmGL.leviProj_apply, blockIndex_true_eq_natAdd, blockIndex_true_eq_natAdd]
-      simp only [Subgroup.coe_mk]
+      simp only
       rw [red_val])
   refine ⟨a, d, ?_⟩
   unfold HasBlocks
@@ -268,6 +268,6 @@ theorem coset : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] [
     rw [hh, hcancel, hy, hκ₁]
     group
   rw [hg, ← hκ', hκeq, map_mul, map_mul, map_mul, incl_permO, incl_diagO_one]
-  simp only [Subgroup.coe_mk, mul_assoc]
+  simp only [mul_assoc]
 
 end GlobalTheory.TypeDim.Coset

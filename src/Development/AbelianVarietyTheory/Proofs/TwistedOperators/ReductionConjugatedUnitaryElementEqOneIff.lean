@@ -165,10 +165,8 @@ theorem red_kap_eq_one_iff : ∀ {D : D7} {G : Type} [Group G] [Fintype G] {Pl0 
       fin_cases q
       · first
         | exact dvd_mul_right _ _
-        | simp
       · first
         | exact dvd_mul_left _ _
-        | simp
     obtain ⟨c, hc⟩ := hdvd (plg.symm ⟨PP, hP⟩).1
     rw [hc, Nat.cast_mul]
     exact Ideal.mul_mem_right _ _ hq

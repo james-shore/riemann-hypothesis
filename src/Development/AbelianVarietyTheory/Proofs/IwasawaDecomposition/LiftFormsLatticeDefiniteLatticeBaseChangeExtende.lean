@@ -38,7 +38,7 @@ theorem map_mulVec_fun (φ : K →+* K') {m n : ℕ} (θ : Matrix (Fin m) (Fin n
 theorem cpt_single (σ : K' →+* ℂ) {n : ℕ} (k : Fin n) : cpt σ (Pi.single k (1 : K')) = Pi.single k 1 := by
   funext i; by_cases h : i = k
   · subst h; simp [cpt]
-  · simp [cpt, Pi.single_apply, h]
+  · simp [cpt, h]
 
 theorem kOf_apply (σ : K' →+* ℂ) (a : K') : kOf σ (σ a) = a := by
   classical
@@ -75,7 +75,7 @@ theorem matLat_relMat_of_heq (φ : K →+* K') (σ : K →+* ℂ) (σ' : K' →+
     have hs : (Pi.basisFun K' (Fin dZ)) i = fun k => φ ((Pi.single i (1 : K) : Fin dZ → K) k) := by
       rw [Pi.basisFun_apply]; funext k; by_cases h : k = i
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     rw [hs]
     simpa [cptL, Matrix.mulVecLin_apply] using hb (Pi.single i 1)
 

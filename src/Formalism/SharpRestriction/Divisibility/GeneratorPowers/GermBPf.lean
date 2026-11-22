@@ -52,8 +52,7 @@ theorem subst_psIn (m : ℕ) {n n' : ℕ} (r : Fin n → Fin n') (g : Fin d → 
       MvPolynomial.rename fun p : Fin n × Fin d => (r p.1, p.2) := MvPolynomial.algHom_ext fun q => by simp
   apply jet_hom_ext
   intro p
-  simp only [jetSubstP, jetRen, AlgHom.comp_apply, jetMap_mk, MvPolynomial.aeval_X, map_sub, MvPolynomial.aeval_C,
-    MvPolynomial.algebraMap_eq, psIn, MvPolynomial.constantCoeff_rename, hr, MvPolynomial.rename_C]
+  simp only [jetSubstP, jetRen, AlgHom.comp_apply, jetMap_mk, MvPolynomial.aeval_X, map_sub, psIn, MvPolynomial.constantCoeff_rename, hr, MvPolynomial.rename_C]
 
 end Pts
 
@@ -261,7 +260,7 @@ theorem exists_first_face_unit (hch : IsChartG t x0 d F act tg uvec x) (i0 : t.P
       (ReciprocityTheory.ChartRestriction.G.DVR.invGen_isGen _ _ _ _ (hpe m _)) (ReciprocityTheory.ChartRestriction.G.DVR.invGen_isGen _ _ _ _ (hpe m _))))
     (fun m U _ h => by
       simp only [Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr, th_pt, pe_pt, pt_sub, Matrix.cons_val_zero,
-        Matrix.cons_val_one, Matrix.head_cons, pt_X, pt_law hch, zpow_neg, Finset.prod_inv_distrib]
+        Matrix.cons_val_one, pt_X, pt_law hch, zpow_neg, Finset.prod_inv_distrib]
       erw [prod_cube3 t.G (fun p : jOG x0 d m 3 ⟶ t.G => h p.left)]
       rw [prod_cube2 t.G (fun p : jOG x0 d m 3 ⟶ t.G => h p.left),
         prod_cube2 t.G (fun p : jOG x0 d m 3 ⟶ t.G => h p.left), prod_cube2 t.G (fun p : jOG x0 d m 3 ⟶ t.G => h p.left)]
@@ -327,7 +326,7 @@ theorem exists_second_face_unit (hch : IsChartG t x0 d F act tg uvec x) (i0 : t.
       (ReciprocityTheory.ChartRestriction.G.DVR.invGen_isGen _ _ _ _ (hpe m _)) (ReciprocityTheory.ChartRestriction.G.DVR.invGen_isGen _ _ _ _ (hpe m _))))
     (fun m U _ h => by
       simp only [Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr, th_pt, pe_pt, pt_sub, Matrix.cons_val_zero,
-        Matrix.cons_val_one, Matrix.head_cons, pt_X, pt_law hch, zpow_neg, Finset.prod_inv_distrib]
+        Matrix.cons_val_one, pt_X, pt_law hch, zpow_neg, Finset.prod_inv_distrib]
       erw [prod_cube3 t.G (fun p : jOG x0 d m 3 ⟶ t.G => h p.left)]
       rw [prod_cube2_swap (fun p : jOG x0 d m 3 ⟶ t.G => h p.left),
         prod_cube2_swap (fun p : jOG x0 d m 3 ⟶ t.G => h p.left), prod_cube2_swap (fun p : jOG x0 d m 3 ⟶ t.G => h p.left)]
@@ -365,11 +364,11 @@ theorem ex_sy (hch : IsChartG t x0 d F act tg uvec x) (i0 : t.PP.L.ι) (hi0 : (e
       ![fun j => MvPolynomial.X ((1 : Fin 2), j), fun j => MvPolynomial.X ((0 : Fin 2), j)])
     (fun m => hpe m _) (fun m => fr hch i0 hi0 m) heg
     (fun m U _ h => by
-      try simp only [pe_pt, pt_sub, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, pt_X]
+      try simp only [pe_pt, pt_sub, Matrix.cons_val_zero, Matrix.cons_val_one, pt_X]
       try simp only [cφG]
       rw [prod_cube2_swap (fun p : jOG x0 d m 2 ⟶ t.G => h p.left)]
       erw [prod_cube2 t.G (fun p : jOG x0 d m 2 ⟶ t.G => h p.left)]
-      simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+      simp only [Matrix.cons_val_zero, Matrix.cons_val_one]
       apply ofMul_eq
       simp only [ofMul_mul, ofMul_inv, _root_.mul_one]
       abel!)
@@ -423,7 +422,7 @@ theorem ex_ad (hch : IsChartG t x0 d F act tg uvec x) (i0 : t.PP.L.ι) (hi0 : (e
     (fun m => hpe m _)
     (fun m U _ h => by
       simp only [Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr, wl_pt, wl_pt', pe_pt, pt_sub, Matrix.cons_val_zero,
-        Matrix.cons_val_one, Matrix.head_cons, pt_X, pt_act hch, zpow_neg, Finset.prod_inv_distrib]
+        Matrix.cons_val_one, pt_X, pt_act hch, zpow_neg, Finset.prod_inv_distrib]
       simp only [inv_mul_cancel_right])
     (fun m y J hJ => (val_mul hJ _ _ _).trans (Eq.trans (congrArg₂ (· * ·)
       ((val_pull hJ _ _ _).trans ((congrArg (fun r => val wL r y J) (pair_point_truncation hch m)).trans (val_pull hJ _ _ _).symm))
@@ -458,13 +457,13 @@ theorem ex_ad (hch : IsChartG t x0 d F act tg uvec x) (i0 : t.PP.L.ι) (hi0 : (e
         (val_pull hI _ _ _).trans ((congrArg (fun r => val (fr hch i0 hi0 0) r y I) (Category.id_comp _)).trans
           (val_fr_one hch i0 hi0 0 (T := jOG x0 d 0 2) _ (1 ≫ t.act.act a) 1
             (by rw [pt_sub]; simp only [Matrix.cons_val_zero]; rw [pt_act hch, hj0])
-            (by rw [pt_sub]; simp only [Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_zero]; rw [pt_X, hj0]) (Or.inr rfl) y I hI))
+            (by rw [pt_sub]; simp only [Matrix.cons_val_one, Matrix.cons_val_zero]; rw [pt_X, hj0]) (Or.inr rfl) y I hI))
       have hB : val (peG t x0 d x (fr hch i0 hi0) 0
           ![fun j => MvPolynomial.X ((0 : Fin 2), j), fun j => psIn d 0 ![1] (act (H.bar a) j)]) (𝟙 _) y I = 1 :=
         (val_pull hI _ _ _).trans ((congrArg (fun r => val (fr hch i0 hi0 0) r y I) (Category.id_comp _)).trans
           (val_fr_one hch i0 hi0 0 (T := jOG x0 d 0 2) _ 1 (1 ≫ t.act.act (H.bar a))
             (by rw [pt_sub]; simp only [Matrix.cons_val_zero]; rw [pt_X, hj0])
-            (by rw [pt_sub]; simp only [Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_zero]; rw [pt_act hch, hj0]) (Or.inl rfl)
+            (by rw [pt_sub]; simp only [Matrix.cons_val_one, Matrix.cons_val_zero]; rw [pt_act hch, hj0]) (Or.inl rfl)
             y I hI))
       rw [val_mul hI, hA1, hA2, hB, _root_.one_mul, _root_.mul_one] at e1
       rw [map_one]

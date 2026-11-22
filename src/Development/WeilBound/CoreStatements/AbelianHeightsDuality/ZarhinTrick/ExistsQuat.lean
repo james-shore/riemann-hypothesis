@@ -14,6 +14,6 @@ theorem exists_quat (n : ℕ) : ∃ α : Matrix (Fin 4) (Fin 4) ℤ,
   · rw [hn]
     ext i j
     fin_cases i <;> fin_cases j <;>
-      simp [Matrix.mul_apply, Fin.sum_univ_four, Matrix.one_apply] <;> ring
+      simp [Matrix.mul_apply, Fin.sum_univ_four] <;> ring
 
 end PositivityTheory.PrwZar

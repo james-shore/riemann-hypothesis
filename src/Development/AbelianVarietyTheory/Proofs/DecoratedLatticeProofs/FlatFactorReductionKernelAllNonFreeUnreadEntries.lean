@@ -285,8 +285,8 @@ private theorem twist_invariant_of_lowerEntry_lemma_4 (ψ : AddChar k Circle) (�
       intro h
       rw [Fin.ext_iff, hi₀v] at h
       omega
-    simp [hu, _root_.GlobalTheory.FlatFactor.LowStage.tv, Matrix.transvection, Matrix.one_apply, hne,
-      Matrix.single_apply, hne', Ne.symm hne']
+    simp [hu, _root_.GlobalTheory.FlatFactor.LowStage.tv, Matrix.transvection, hne,
+      Ne.symm hne']
   obtain ⟨Θu, hΘu⟩ : ∃ Θu : _root_.GlobalTheory.SplitWeil.SB (Matrix (n ⊕ Fin c) (n' ⊕ Fin (c + 1)) k),
       ∀ t, (Θu : Matrix (n ⊕ Fin c) (n' ⊕ Fin (c + 1)) k → ℂ) t =
         (Θ : Matrix (n ⊕ Fin c) (n' ⊕ Fin (c + 1)) k → ℂ)
@@ -316,15 +316,15 @@ private theorem twist_invariant_of_lowerEntry_lemma_4 (ψ : AddChar k Circle) (�
     unfold _root_.GlobalTheory.RootEx.simpleSum
     rw [hg, hβv, Fintype.sum_eq_single i₀, Fintype.sum_eq_single L]
     · by_cases h : (L : ℕ) = (i₀ : ℕ) + 1 <;>
-        simp [h, Matrix.one_apply, Matrix.single_apply, Fin.ext_iff] <;> omega
+        simp [h, Fin.ext_iff]
     · intro j hj
       by_cases h : (j : ℕ) = (i₀ : ℕ) + 1 <;>
-        simp [h, Matrix.one_apply, Matrix.single_apply, Fin.ext_iff, hj] <;> omega
+        simp [h, Matrix.single_apply, Fin.ext_iff] <;> omega
     · intro i hi
       apply Finset.sum_eq_zero
       intro j _
       by_cases h : (j : ℕ) = (i : ℕ) + 1 <;>
-        simp [h, Matrix.one_apply, Matrix.single_apply, Fin.ext_iff, hi] <;> omega
+        simp [h, Matrix.single_apply, Fin.ext_iff] <;> omega
   have hTw' := hTw u hmem hblock Θ Θu ((ψ (b * β) : ℂ) • Θ') hΘu (by
     intro t
     rw [Submodule.coe_smul, Pi.smul_apply, smul_eq_mul, hΘ', hchar, ← mul_assoc, ← Circle.coe_mul,

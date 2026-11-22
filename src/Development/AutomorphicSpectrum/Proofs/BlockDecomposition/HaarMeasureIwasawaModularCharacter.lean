@@ -84,8 +84,8 @@ theorem lintegral_mul_right_of_modular_law : ∀ (G : Type) [Group G] [Topologic
     rw [hMdef, ← lintegral_indicator (hEm.preimage measurable_subtype_coe)]
     refine lintegral_congr fun q => ?_
     by_cases hq : q.1 ∈ E
-    · simp [Set.indicator_apply, hq]
-    · simp [Set.indicator_apply, hq]
+    · simp [hq]
+    · simp [hq]
   have hMtop : M ≠ ⊤ := by
     rw [hMeq]
     exact (setLIntegral_lt_top_of_isCompact hT.measure_lt_top.ne hT hδc).ne

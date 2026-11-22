@@ -39,10 +39,10 @@ theorem UpperTheory.V.PropA.detFactor :
       ext i j
       by_cases hij : i = j
       · subst hij
-        simp [Matrix.sub_apply, Matrix.one_apply]
+        simp [Matrix.sub_apply]
         field_simp
         ring
-      · simp [Matrix.sub_apply, Matrix.one_apply, hij]
+      · simp [Matrix.sub_apply, hij]
     rw [hmat, Matrix.det_smul, heval, hz, Fintype.card_fin, ← Fin.prod_const, ← Finset.prod_mul_distrib]
     refine Finset.prod_congr rfl (fun i _ => ?_)
     field_simp

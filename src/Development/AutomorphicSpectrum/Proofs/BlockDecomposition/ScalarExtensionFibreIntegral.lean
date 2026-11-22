@@ -37,8 +37,8 @@ theorem compact_finite_block : ∀ (F E : Type) [Field F] [NumberField F] [Field
   have e0 : gramR R σ (blockOne (algebraMap F E t) J) (fun _ : Fin 1 => Fin.cons 1 fun _ => 0) =
       (hermScal R σ (algebraMap F R t) : HermR R σ 1) := by
     funext a a'
-    simp only [gramR, hR, HeckeCharacterZeroLocus.SiegelWeilU.hR, hform, JR, blockOne, Fin.sum_univ_succ, hermScal, Fin.cons_zero, Fin.cons_succ,
-      map_one, map_zero, one_mul, mul_one, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, Matrix.map_apply,
+    simp only [gramR, HeckeCharacterZeroLocus.SiegelWeilU.hR, hform, JR, blockOne, Fin.sum_univ_succ, hermScal, Fin.cons_zero, Fin.cons_succ,
+      map_one, map_zero, one_mul, mul_one, mul_zero, Finset.sum_const_zero, add_zero, Matrix.map_apply,
       Matrix.of_apply]
     exact (Algebra.TensorProduct.includeRight : E →ₐ[F] R ⊗[F] E).commutes t
   obtain ⟨s, sm, s1, s2⟩ := GlobalTheory.T.rank_one_gram_measurable_section F E σ hcm _ _ hJ' R hR (fun _ : Fin 1 => Fin.cons 1 fun _ => 0) (by

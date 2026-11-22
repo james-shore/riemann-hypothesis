@@ -49,4 +49,4 @@ theorem UpperTheory.orbitalFiber_det_eq_one :
   rw [← hz, MonoidHom.comp_apply, ← hw]
   apply Units.ext
   ext i j : 1
-  by_cases hij : i = j <;> simp [hij, Matrix.diagonal_apply]
+  by_cases hij : i = j <;> simp [hij]

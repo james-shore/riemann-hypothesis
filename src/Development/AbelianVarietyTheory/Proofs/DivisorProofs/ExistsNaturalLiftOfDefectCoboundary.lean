@@ -70,7 +70,7 @@ theorem exists_natLift_of_defect : ∀ (R R₀ : Type) [CommRing R] [CommRing R�
     have hn : mp (OAff s₀) (n.G.map a) (L.p _ b) = L.p _ (L.ρ (n.G.map a) b) := (L.nat (n.G.map a) b).symm
     rw [hn] at h0
     have h1 := (hκ T T' a).der b
-    simp only [α, AlgHom.coe_comp, Function.comp_apply] at h1
+    simp only [AlgHom.coe_comp, Function.comp_apply] at h1
     rw [hψv, hψv, map_add]
     linear_combination h0 - h1
 

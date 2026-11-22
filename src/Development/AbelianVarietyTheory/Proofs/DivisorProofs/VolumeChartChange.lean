@@ -35,7 +35,7 @@ theorem altMap_add_smul_self {n : ℕ} (f : M [⋀^Fin n]→ₗ[R] N) (v : Fin n
           funext j
           by_cases hj : j = a
           · subst hj; simp
-          · simp [hg, Function.update_of_ne hj, Finset.mem_insert, hj]
+          · simp [hg, Finset.mem_insert, hj]
         have e2 : Function.update g a (v a) = g := by
           funext j
           by_cases hj : j = a
@@ -78,7 +78,7 @@ theorem altMap_sub_succAbove {d : ℕ} (f : M [⋀^Fin d]→ₗ[R] N) (θ : Fin 
       funext j
       by_cases hj : j = j0
       · subst hj; simp [hw, hc, hσ0, h0]
-      · simp [hw, hc, hj, hσ0, h0, Function.update_of_ne hj]
+      · simp [hw, hc, hj, hσ0, h0]
     set τ : Fin d → Fin (d + 1) := Function.update i.succAbove j0 i with hτ
     have e2 : Function.update (θ ∘ i.succAbove) j0 (θ i) = θ ∘ τ := by
       funext j

@@ -17,8 +17,6 @@ private theorem algebraMap_int_F_to_K_eq_algebraMap_F_K (n : 𝓞 F) :
   rw [← IsScalarTower.algebraMap_apply]
   first
   | exact IsScalarTower.algebraMap_apply (𝓞 F) F K n
-  | (rw [IsScalarTower.algebraMap_apply (𝓞 F) F K]; rfl)
-  | simp
 
 theorem exists_exact_near (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF : IsFixF K F)
     {h : V →ₗ⋆[K] V →ₗ[K] K} (hs : h.IsSymm) (hd : IsTotPosDef h) {A₀ : Submodule (𝓞 K) V}

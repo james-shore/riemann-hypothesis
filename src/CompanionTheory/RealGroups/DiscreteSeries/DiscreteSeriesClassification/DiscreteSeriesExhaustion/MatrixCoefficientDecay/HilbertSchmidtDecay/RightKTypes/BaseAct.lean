@@ -25,18 +25,18 @@ theorem ba_der (hK : CompanionTheory.D.LK.IsKMod ε σ D E) : IsDerivedOn ε σ 
   refine ⟨hK.gl, fun k hk v hv => ba_kst hK k hk v hv, fun X hX v => ?_⟩
   have h := hK.real X hX v
   convert h using 1
-  simp [ReciprocityTheory.ChartRestriction.DS.actM, LinearMap.sum_apply, Submodule.coe_sum]
+  simp [ReciprocityTheory.ChartRestriction.DS.actM, LinearMap.sum_apply]
 
 theorem ba_actM_single {M : Type} [AddCommGroup M] [Module ℂ M] (F : Fin n → Fin n → Module.End ℂ M)
     (a b : Fin n) : ReciprocityTheory.ChartRestriction.DS.actM F (Matrix.single a b 1) = F a b := by
   unfold ReciprocityTheory.ChartRestriction.DS.actM
-  rw [Fintype.sum_eq_single a (fun c hc => Finset.sum_eq_zero fun d _ => by simp [Matrix.single_apply, Ne.symm hc]),
-    Fintype.sum_eq_single b (fun d hd => by simp [Matrix.single_apply, Ne.symm hd])]
+  rw [Fintype.sum_eq_single a (fun c hc => Finset.sum_eq_zero fun d _ => by simp [Ne.symm hc]),
+    Fintype.sum_eq_single b (fun d hd => by simp [Ne.symm hd])]
   simp
 
 theorem ba_conj_single (k l : Matrix (Fin n) (Fin n) ℂ) (a b c d : Fin n) :
     (k * Matrix.single a b (1 : ℂ) * l) c d = k c a * l b d := by
-  simp [Matrix.mul_apply, Matrix.single_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', mul_ite, ite_mul]
+  simp [Matrix.mul_apply, Matrix.single_apply, ite_and, Finset.sum_ite_eq, mul_ite, ite_mul]
 
 theorem base_mem (hK : CompanionTheory.D.LK.IsKMod ε σ D E) (hU : Formalism.MainNotions.S.IsURepOn (Formalism.MainNotions.S.UJset ε) σ)
     (k : S7.KG ε) (v : H) (hv : v ∈ D) : σ (S7.toMK k) v ∈ D := by
@@ -100,7 +100,7 @@ theorem baseRho_compat (hK : CompanionTheory.D.LK.IsKMod ε σ D E) (hU : Formal
     have hcomm : Commute (-((t : ℂ) • X)) ((t : ℂ) • X) := (Commute.refl _).neg_left
     calc J * NormedSpace.exp (-((t : ℂ) • X)) * J * J * NormedSpace.exp ((t : ℂ) • X)
         = J * (NormedSpace.exp (-((t : ℂ) • X)) * NormedSpace.exp ((t : ℂ) • X)) := by
-          simp only [Matrix.mul_assoc, hJJ', hJJ, Matrix.one_mul]
+          simp only [Matrix.mul_assoc, hJJ, Matrix.one_mul]
       _ = J := by
           rw [← Matrix.exp_add_of_commute _ _ hcomm, neg_add_cancel, NormedSpace.exp_zero, Matrix.mul_one]
   have hKunit : IsUnit K := ⟨⟨K, Kᴴ, hKKs, hKinv⟩, rfl⟩

@@ -127,7 +127,7 @@ theorem mixS_support_integral : ∀ {D : D7} (ψ : AddChar (AF D.host.F) ℂ), I
   let U' : AddSubgroup (AE D) := ⨅ i, ⨅ j, U.comap ((d.extY X).comp (g i j))
   have hU'o : IsOpen (U' : Set (AE D)) := by
     have e : (U' : Set (AE D)) = ⋂ i, ⋂ j, ((d.extY X).comp (g i j)) ⁻¹' (U : Set (WO V X)) := by
-      ext c; simp [U', AddSubgroup.mem_iInf]
+      ext c; simp [U']
     rw [e]
     exact isOpen_iInter_of_finite fun i => isOpen_iInter_of_finite fun j => hUo.preimage (hf i j)
   obtain ⟨N, hN, hNden⟩ := annih_den D ψ hψ U' hU'o

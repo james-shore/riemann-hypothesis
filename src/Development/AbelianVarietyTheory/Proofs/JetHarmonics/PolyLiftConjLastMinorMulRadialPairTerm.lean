@@ -85,7 +85,7 @@ theorem conj_prod {a b : A} (h1 : a * b = 1) (h2 : b * a = 1) (l : List A) :
   | nil => simpa using h1
   | cons x l ih =>
     rw [List.map_cons, List.prod_cons, List.prod_cons, ← ih]
-    calc a * (x * l.prod) * b = a * x * (b * a) * l.prod * b := by rw [h2]; simp only [mul_assoc, one_mul, mul_one]
+    calc a * (x * l.prod) * b = a * x * (b * a) * l.prod * b := by rw [h2]; simp only [mul_assoc, mul_one]
       _ = _ := by simp only [mul_assoc]
 
 theorem pt_ofFn : ∀ (p : ℕ) (x h : Fin p → A),
@@ -138,7 +138,7 @@ theorem alt_average {p t : ℕ} (H : (Fin p → Fin (p + t)) → A) (W : (Fin t 
     rw [← Equiv.sum_comp (Equiv.mulRight (blk π ρ))]
     refine Finset.sum_congr rfl fun σ _ => ?_
     simp only [Equiv.coe_mulRight, Equiv.Perm.coe_mul, Function.comp, blk_left, blk_right, Equiv.Perm.sign_mul, blk_sign,
-      Units.val_mul, Int.cast_mul, ← zsmul_eq_mul, smul_mul_assoc, mul_smul_comm, mul_smul]
+      Units.val_mul, Int.cast_mul, ← zsmul_eq_mul, smul_mul_assoc, mul_smul_comm]
     simp only [smul_smul]
     congr 1
     ring

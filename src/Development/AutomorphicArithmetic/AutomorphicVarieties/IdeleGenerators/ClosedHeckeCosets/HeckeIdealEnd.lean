@@ -104,7 +104,7 @@ theorem stab [IsTotallyReal F] {l : ℕ} [Fact l.Prime] (ι : Qbar l ≃+* ℂ) 
   obtain ⟨α, β, rfl, h2, h3⟩ := sat_two w (hB.2 x hx hx0)
   set r : ℂ := (((normV w : ℝ) ^ (1 / 2 : ℝ) : ℝ) : ℂ) with hr
   have h9 : algSat 2 (normV w) {α, β} = {r * α, r * β} := by
-    simp only [algSat, hr, Multiset.insert_eq_cons, Multiset.map_cons, Multiset.map_singleton]
+    simp only [algSat, hr, Multiset.insert_eq_cons]
     norm_num
   have hrr : r * r = normV w := by
     rw [hr, ← Complex.ofReal_mul, ← Real.rpow_add' (by positivity) (by norm_num)]

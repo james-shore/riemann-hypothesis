@@ -39,8 +39,6 @@ theorem exists_smul_mem [IsNonarchimedeanLocalField F] {Λ : Submodule L.O (Fin 
   | exact @_root_.GlobalTheory.CommonDenominator.main
   | exact _root_.GlobalTheory.CommonDenominator.main
   | (apply _root_.GlobalTheory.CommonDenominator.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CommonDenominator.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CommonDenominator.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CommonDenominator.main ..)
 
 noncomputable def shear {m : ℕ} (b d : Fin m → Fin n → E) (hdb : ∀ i j, hf L Hm (d i) (b j) = 0) :

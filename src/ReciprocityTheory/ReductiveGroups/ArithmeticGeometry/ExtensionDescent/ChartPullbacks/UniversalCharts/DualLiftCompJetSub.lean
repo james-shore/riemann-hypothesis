@@ -16,7 +16,6 @@ private theorem jetAug_zR_lemma {κ : Type} {m : ℕ} (j : κ) : jetAug R κ m (
   first
   | (show MvPolynomial.aeval (fun _ : κ => (0 : R)) (MvPolynomial.X j) = 0
      simp)
-  | simp [jetAug, zR, Ideal.Quotient.liftₐ_apply, Ideal.Quotient.lift_mk]
 
 theorem sum_smul_zR_mem {a : ℕ} (m : ℕ) (c : Fin a → R) :
     ∑ i, c i • zR (R := R) m i ∈ RingHom.ker (jetAug R (Fin a) m) := by
@@ -91,9 +90,6 @@ private theorem sum_inr_lemma_5 {I : Type} (s : Finset I) (f : I → R) :
     ∑ i ∈ s, (TrivSqZeroExt.inr (f i) : DualNumber R) = TrivSqZeroExt.inr (∑ i ∈ s, f i) := by
   first
   | exact (map_sum (TrivSqZeroExt.inrHom R R) f s).symm
-  | (induction s using Finset.cons_induction with
-     | empty => simp
-     | cons a s ha ih => rw [Finset.sum_cons, Finset.sum_cons, ih, TrivSqZeroExt.inr_add])
 
 theorem dualLift_comp_jetSub {a b : ℕ} (T : (Fin a → R) →ₗ[R] (Fin b → R)) (c : Fin a → R) :
     (dualLift c).comp (jetSub T 1) = dualLift (T c) := by

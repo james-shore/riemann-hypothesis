@@ -19,8 +19,6 @@ theorem intAE_mul {s t : FiniteAdeleRing (𝓞 F) F ⊗[F] E} (hs : s ∈ HeckeC
   | exact @_root_.GlobalTheory.IntegralAdeleProducts.intAE_mul_mem
   | exact _root_.GlobalTheory.IntegralAdeleProducts.intAE_mul_mem
   | (apply _root_.GlobalTheory.IntegralAdeleProducts.intAE_mul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralAdeleProducts.intAE_mul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralAdeleProducts.intAE_mul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegralAdeleProducts.intAE_mul_mem ..)
 
 theorem intAE_one : (1 : FiniteAdeleRing (𝓞 F) F ⊗[F] E) ∈ HeckeCharacterZeroLocus.ThmBIn.intAE F E := by

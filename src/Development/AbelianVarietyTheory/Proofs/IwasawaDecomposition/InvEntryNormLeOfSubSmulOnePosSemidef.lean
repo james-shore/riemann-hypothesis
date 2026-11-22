@@ -37,7 +37,7 @@ theorem inv_entry_norm_le_of_sub_posSemidef (g : ℕ) (Y : Matrix (Fin g) (Fin g
   have hYw : Y *ᵥ w = Pi.single j 1 := by
     rw [hw, mulVec_mulVec, hYinv, one_mulVec]
   have hwi : ∀ k, w k = Y⁻¹ k j := by
-    intro k; simp [hw, mulVec_single_one]
+    intro k; simp [hw]
   have hqw : c * (w ⬝ᵥ w) ≤ w j := by
     have := hq w
     rw [hYw, dotProduct_single, mul_one] at this

@@ -64,7 +64,7 @@ theorem unitAt_discr {F : Type} [Field F] [NumberField F] {q : Cpt ξ} [CharZero
   rcases Int.natAbs_eq (discr F) with e | e
   · rw [e]; simpa using hu
   · rw [e]
-    simp only [Int.cast_neg, Int.cast_natCast, Int.natAbs_neg, Int.natAbs_natCast]
+    simp only [Int.cast_neg, Int.cast_natCast]
     exact ⟨neg_ne_zero.2 hu.1, neg_mem hu.2.1, by rw [inv_neg]; exact neg_mem hu.2.2⟩
 
 theorem natAbs_discr_mem_different (F : Type) [Field F] [NumberField F] :

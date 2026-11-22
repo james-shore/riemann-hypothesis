@@ -52,8 +52,6 @@ theorem exists_trait (R R₂ W : Type) [CommRing R] [IsDomain R] [IsLocalRing R]
   | exact @_root_.GlobalTheory.FiniteCompletionLocalHom.exists_extension
   | exact _root_.GlobalTheory.FiniteCompletionLocalHom.exists_extension
   | (apply _root_.GlobalTheory.FiniteCompletionLocalHom.exists_extension <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiniteCompletionLocalHom.exists_extension <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiniteCompletionLocalHom.exists_extension <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiniteCompletionLocalHom.exists_extension ..)
 
 end GlobalTheory.FieldTraitExt

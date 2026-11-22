@@ -196,7 +196,7 @@ private theorem exists_I (h2 : (2 : K) ≠ 0) :
     rw [hI, ha]
     unfold ind
     rw [integral_indicator_const _ hU.measurableSet]
-    simp only [Measure.real, smul_eq_mul, Complex.real_smul, mul_one]
+    simp only [Measure.real, Complex.real_smul, mul_one]
     exact_mod_cast (ENNReal.toReal_ne_zero.2 ⟨hpos, hfin⟩)
 
 end

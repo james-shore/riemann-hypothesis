@@ -242,7 +242,7 @@ theorem shcAd_add' (y : PCoord ε → ℂ) (W W' : Matrix (Fin n) (Fin n) ℂ) :
   rw [← Matrix.add_mul, ← Matrix.mul_add]
   congr 2
   ext i j
-  simp only [Matrix.of_apply, Matrix.add_apply, Matrix.mul_add, Matrix.add_mul, mul_add]
+  simp only [Matrix.of_apply, Matrix.add_apply, Matrix.add_mul, mul_add]
 
 theorem shcAd_smul' (y : PCoord ε → ℂ) (c : ℝ) (W : Matrix (Fin n) (Fin n) ℂ) :
     shcAd y (c • W) = c • shcAd y W := by

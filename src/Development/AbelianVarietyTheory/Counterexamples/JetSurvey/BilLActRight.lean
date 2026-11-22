@@ -148,7 +148,7 @@ theorem bilL_mixed (G : FGLaw S d) (cc : Fin d → Fin d → S) (i l : Fin d) :
     have := congrFun (congrFun (cc_om G) a) c
     simpa [Matrix.one_apply] using this
   simp only [bilL, lg, map_sum, Derivation.map_smul, Derivation.leibniz, smul_eq_mul, d_evX, d_evY, pderiv_second_ev_first_point_eq_zero, pderiv_first_ev_second_point_eq_zero,
-    pderiv_logOf, mul_zero, add_zero, zero_add, map_add, map_mul, constantCoeff_smul, cc_ev czX, cc_ev czY, hO]
+    pderiv_logOf, mul_zero, add_zero, zero_add, map_mul, constantCoeff_smul, cc_ev czX, cc_ev czY, hO]
   simp
 
 theorem bilL_injective (G : FGLaw S d) : Function.Injective (bilL G) := fun c c' h => by

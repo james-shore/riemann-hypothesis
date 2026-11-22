@@ -50,10 +50,10 @@ theorem finite_specialisations_of_finite_open {R : Type} [CommRing R] {X : Schem
     have hc : (l ≫ gs ≫ U.ι) (IsLocalRing.closedPoint V) = y' (IsLocalRing.closedPoint V) := by
       rw [reassoc_of% hl2', hy''f]
     calc s₀ (l (IsLocalRing.closedPoint V)) = (l ≫ gs ≫ U.ι) (IsLocalRing.closedPoint V) := by
-          rw [hgs]; first | rfl | simp
+          rw [hgs]; first | rfl
       _ = u := hc.trans h3
   · rw [← h4, ← hlz]
-    first | rfl | simp
+    first | rfl
 
 theorem isSeparated_structure_morphism_model {p : ℕ} [Fact p.Prime] {D : Datum p} {R : Type} [CommRing R] {b : Base D R} {N : ℕ}
     (M : Model b N) : IsSeparated M.s := by

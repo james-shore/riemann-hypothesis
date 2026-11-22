@@ -290,7 +290,7 @@ lemma vector_complexified_derivative_commutator (hl : RdLinV) (hb : RdBracketV) 
     Bk _ _ hZ1 hW1, Bk _ _ hZ1 hW2, Bk _ _ hZ2 hW1, Bk _ _ hZ2 hW2, hC, hc1, hc2,
     vector_right_derivative_sub hl hf (inG_commutator' hZ1 hW1) (inG_commutator' hZ2 hW2) hg,
     vector_right_derivative_add hl hf (inG_commutator' hZ1 hW2) (inG_commutator' hZ2 hW1) hg]
-  simp only [smul_add, smul_sub, smul_smul, Complex.I_mul_I, neg_one_smul]
+  simp only [smul_add, smul_smul, Complex.I_mul_I, neg_one_smul]
   abel
 
 end EabGl

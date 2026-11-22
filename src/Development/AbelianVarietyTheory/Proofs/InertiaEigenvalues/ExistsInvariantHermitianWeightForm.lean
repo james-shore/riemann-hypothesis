@@ -78,9 +78,9 @@ theorem exists_form_of_bounded {ι : Type} [Fintype ι] [DecidableEq ι]
     refine Continuous.integral_pos_of_hasCompactSupport_nonneg_nonzero (x := 1)
       (Complex.continuous_re.comp (hφc x x)) (HasCompactSupport.of_compactSpace _) ?_ ?_
     · intro k
-      simp only [Pi.zero_apply, Function.comp_apply, hre]
+      simp only [Pi.zero_apply, hre]
       exact Finset.sum_nonneg fun i _ => sq_nonneg _
-    · simp only [Function.comp_apply, hre]
+    · simp only [hre]
       have hN1 : N 1 = 1 := by simp [N]
       rw [hN1, Matrix.one_mulVec]
       obtain ⟨i, hi⟩ := Function.ne_iff.mp hx
@@ -106,8 +106,6 @@ theorem norm_eval_le {σ : Type} (P : MvPolynomial σ ℂ) (v : σ → ℂ) (hv 
   | exact @_root_.GlobalTheory.EvalNormCoefficientBound.norm_eval_le_sum_norm_coeff
   | exact _root_.GlobalTheory.EvalNormCoefficientBound.norm_eval_le_sum_norm_coeff
   | (apply _root_.GlobalTheory.EvalNormCoefficientBound.norm_eval_le_sum_norm_coeff <;> assumption)
-  | (intros; apply _root_.GlobalTheory.EvalNormCoefficientBound.norm_eval_le_sum_norm_coeff <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.EvalNormCoefficientBound.norm_eval_le_sum_norm_coeff <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.EvalNormCoefficientBound.norm_eval_le_sum_norm_coeff ..)
 
 theorem norm_emb_le_one {L : Type} [Field L] [NumberField L] [IsCMField L] {n : ℕ}

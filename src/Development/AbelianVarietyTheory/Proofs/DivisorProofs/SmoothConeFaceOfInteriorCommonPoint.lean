@@ -49,7 +49,7 @@ theorem intCone_face : ∀ (O : Type) [CommRing O] (bar : O → O) (φ : InvFun 
   intro O _ bar φ X _ _ _ _ r r' γ γ' hγ hγ' c c' hc he j
   obtain ⟨k, d, hk, hd⟩ := intCone_absorb hγ.mem hγ.nonneg hγ.linear hγ' c c' he j (hc j)
   have hd' : ∑ i, d i • γ' i = ∑ l, (Pi.single j k : Fin r → ℕ) l • γ l := by
-    rw [← hd, Finset.sum_eq_single j (fun l _ hl => by simp [Pi.single_apply, hl]) (by simp)]
+    rw [← hd, Finset.sum_eq_single j (fun l _ hl => by simp [hl]) (by simp)]
     simp
   have habs : ∀ i, 0 < d i → ∃ (k' : ℕ) (e : Fin r → ℕ), 0 < k' ∧ k' • γ' i = ∑ l, e l • γ l :=
     fun i hi => intCone_absorb hγ'.mem hγ'.nonneg hγ'.linear hγ d _ hd' i hi
@@ -134,7 +134,7 @@ theorem intCone_face : ∀ (O : Type) [CommRing O] (bar : O → O) (φ : InvFun 
   rw [hej] at hEj
   refine ⟨i, LinearMap.ext₂ fun x y => ?_⟩
   have h3 := LinearMap.congr_fun₂ (congrArg Subtype.val hEj) x y
-  simp only [G, G', Submodule.coe_smul, LinearMap.smul_apply, nsmul_eq_mul] at h3
+  simp only [G, G'] at h3
   exact (mul_left_cancel₀ (by exact_mod_cast hk'.ne' : (k' : ℤ) ≠ 0) h3).symm
 
 end IntCone

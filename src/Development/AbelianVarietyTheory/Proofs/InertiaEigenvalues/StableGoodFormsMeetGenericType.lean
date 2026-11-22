@@ -117,13 +117,13 @@ theorem GlobalTheory.TwInputs.meetsAll_of_ties : GlobalTheory.Published.GreenCus
       rw [e2, map_inv₀, hψval, Units.val_inv_eq_inv_val]
     · refine MonoidAlgebra.ext (Finsupp.ext fun g => ?_)
       rw [MonoidAlgebra.coeff_mapRingHom]
-      simp only [eE, MonoidAlgebra.coeff_ofCoeff, Finsupp.coe_equivFunOnFinite_symm]
+      simp only [eE, Finsupp.coe_equivFunOnFinite_symm]
       rw [hj, ← D.nStage_trivialCharacter_coeff_eq]
       rfl
   have hK1 : MonoidAlgebra.mapRingHom (G0g D.nd) E.subtype eE = D.nexp.eAlg i b := by
     refine MonoidAlgebra.ext (Finsupp.ext fun g => ?_)
     rw [MonoidAlgebra.coeff_mapRingHom, D.nexp.eAlg_def]
-    simp only [eE, MonoidAlgebra.coeff_ofCoeff, Finsupp.coe_equivFunOnFinite_symm]
+    simp only [eE, Finsupp.coe_equivFunOnFinite_symm]
     rfl
   obtain ⟨vE, hvE⟩ := GlobalTheory.T.monoidAlgebra_exists_right_inv_of_map_field jE (uElt D.nexp.U fE eE) ⟨vC, by rw [hC1]; exact hvC⟩
   have hvK := congrArg (MonoidAlgebra.mapRingHom (G0g D.nd) E.subtype) hvE

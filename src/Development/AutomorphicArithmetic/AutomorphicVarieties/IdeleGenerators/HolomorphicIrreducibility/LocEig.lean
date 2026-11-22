@@ -31,7 +31,7 @@ private theorem bor_val {K : Type} [Field K] (a d : Kˣ) (x : K) :
       !![(a : K), d * x; 0, d] := by
   ext i j
   fin_cases i <;> fin_cases j <;>
-    simp [Matrix.GeneralLinearGroup.scalar, aff_val, Matrix.mul_apply, Fin.sum_univ_succ, Matrix.diagonal_apply, mul_div_cancel₀]
+    simp [Matrix.GeneralLinearGroup.scalar, aff_val, Matrix.mul_apply, Matrix.diagonal_apply, mul_div_cancel₀]
 
 private theorem dec1 {K : Type} [Field K] (g : GL (Fin 2) K) (h : g 1 1 ≠ 0) :
     ∃ (a d : Kˣ) (x : K), g = Matrix.GeneralLinearGroup.scalar (Fin 2) d * aff (a / d) x * low (g 1 0 / g 1 1) := by

@@ -118,7 +118,6 @@ theorem deltaHalf_drop (hm : StrictMono o) (hne : ∀ j, d j ≠ 0 → j ∈ Set
   · rw [GlobalTheory.CompanionTheory.FineProd.JmDrop.modExp_drop hm hne a]
     first
     | rfl
-    | skip
 
 variable {n : Type} [Fintype n] [DecidableEq n]
   {e : (Σ j, Fin (d j)) ≃ n} {e' : (Σ a, Fin (d (o a))) ≃ n}

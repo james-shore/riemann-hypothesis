@@ -10,9 +10,9 @@ noncomputable def trxForm {F E : Type} [NontriviallyNormedField F] [Nontrivially
     [StarRing E] (A : Et F E) (x : A.K) : LinearMap.BilinForm F A.K :=
   LinearMap.mk₂ F (fun u b => Algebra.trace F A.K (x * u * b))
     (fun m₁ m₂ n => by simp [mul_add, add_mul])
-    (fun c m n => by simp [mul_smul_comm, smul_mul_assoc])
+    (fun c m n => by simp)
     (fun m n₁ n₂ => by simp [mul_add])
-    (fun c m n => by simp [mul_smul_comm, smul_mul_assoc])
+    (fun c m n => by simp)
 
 theorem selfDual_kx_exists : ∀ (F E : Type) [NontriviallyNormedField F] [NontriviallyNormedField E] [NormedAlgebra F E] [StarRing E] [Unram F E] (A : Et F E) (ψ : AddChar F ℂ), IsStdChar ψ → ∀ x : A.Kˣ, ∃ ν : Measure A.K, SelfDual ν (Hyp.kx A ψ x) := by
   intro F E _ _ _ _ _ A ψ hψ x
@@ -20,7 +20,7 @@ theorem selfDual_kx_exists : ∀ (F E : Type) [NontriviallyNormedField F] [Nontr
   obtain ⟨hL, -⟩ := hT
   have hsymm : (trxForm A (x : A.K)).IsSymm := by
     refine ⟨fun u b => ?_⟩
-    simp only [trxForm, LinearMap.mk₂_apply, RingHom.id_apply]
+    simp only [trxForm, LinearMap.mk₂_apply]
     ring_nf
   have hleft : ∀ u : A.K, (∀ b, trxForm A (x : A.K) u b = 0) → u = 0 := by
     intro u hu

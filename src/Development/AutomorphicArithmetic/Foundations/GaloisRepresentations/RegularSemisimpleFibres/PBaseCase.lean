@@ -13,7 +13,7 @@ private theorem cm_id {K : Type} [Field K] [NumberField K] (v : HeightOneSpectru
     (x : v.adicCompletion K) : completionMap v (selfPl v).1 x = x := by
   refine congrFun ((HeightOneSpectrum.denseRange_algebraMap K v).equalizer
     (continuous_completionMap v (selfPl v).1) continuous_id (funext fun y => ?_)) x
-  simp only [Function.comp_apply, id]
+  simp only [Function.comp_apply]
   rw [completionMap_algebraMap]
   rfl
 

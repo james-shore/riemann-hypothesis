@@ -45,7 +45,7 @@ theorem li_one_tmul_of_li {O K' M : Type} [CommRing O] [IsDomain O] [Field K'] [
       AlgHom.toLinearMap_apply]
     by_cases h : k = a
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   refine LinearIndependent.of_comp F ?_
   have : (F ∘ fun a => ((1 : K') ⊗ₜ[O] m a : K' ⊗[O] M)) = fun a => Pi.single a (1 : K') := funext hF
   rw [this]

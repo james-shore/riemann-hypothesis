@@ -40,7 +40,7 @@ theorem thetaJ_flip (ε : Fin m → Bool) (Y : Matrix (Fin m) (Fin m) ℂ) :
     PI.DSInfCharCap.thetaJ (fun a => !ε a) Y = PI.DSInfCharCap.thetaJ ε Y := by
   unfold PI.DSInfCharCap.thetaJ
   rw [GlobalTheory.CompanionTheory.NegDS.Jm_flip (ε := ε) (ε' := fun a => !ε a) (fun a => rfl)]
-  simp [Matrix.mul_neg, Matrix.neg_mul]
+  simp
 
 theorem dsigC_flip (ε : Fin m → Bool) (σ : Matrix (Fin m) (Fin m) ℂ → (H →L[ℂ] H)) (Y : Matrix (Fin m) (Fin m) ℂ) (v : H) :
     PI.DSInfCharCap.dsigC (fun a => !ε a) σ Y v = PI.DSInfCharCap.dsigC ε σ Y v := by

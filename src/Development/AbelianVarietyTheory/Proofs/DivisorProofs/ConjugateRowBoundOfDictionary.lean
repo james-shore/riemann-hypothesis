@@ -72,7 +72,7 @@ theorem applyAt0_tr (D : D7) {a b : ℕ} {H : VC D b a → ℂ} (hH : Differenti
   have h := taylorDir_comp_clm (LinearMap.toContinuousLinearMap (trL D a b)) (coordV D) han
   have hc : ∀ k, trL D a b (coordV D k) = coordV D (trI D a b k) := fun k => by
     funext τ i j
-    simp only [trL, trI, coordV, LinearMap.coe_mk, AddHom.coe_mk, Function.Embedding.coeFn_mk]
+    simp only [trL, trI, coordV, LinearMap.coe_mk, AddHom.coe_mk]
     congr 1
     exact propext (by tauto)
   simp only [LinearMap.coe_toContinuousLinearMap', hc] at h

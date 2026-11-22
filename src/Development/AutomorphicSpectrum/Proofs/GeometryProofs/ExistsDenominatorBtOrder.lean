@@ -108,6 +108,6 @@ theorem GlobalTheory.CompanionTheory.Ar.BT.btOrder_full_rank : ∀ (R : Type) [C
   refine ⟨∏ x, e x, Finset.prod_ne_zero_iff.2 fun x _ => he x, fun f => ?_⟩
   have hf : (∏ x, e x) • f = ∑ s, f s • ((∏ x, e x) • δ s) := by
     funext h
-    simp [δ, Finset.sum_apply, _root_.mul_comm, _root_.mul_left_comm, _root_.mul_assoc, Finset.mul_sum]
+    simp [δ, Finset.sum_apply, _root_.mul_comm]
   rw [hf]
   exact Subalgebra.sum_mem _ fun s _ => Subalgebra.smul_mem _ (hmem s) _

@@ -32,7 +32,7 @@ theorem multiInv {A S : Type} [CommRing A] [CommRing S] [Algebra A S] (r : ℕ)
       by_cases hw : w.2 = midI r j0
       · simp [hw, hf, Finset.sum_insert hj0, hz]
         try ring
-      · simp [hw, hf, Finset.sum_insert hj0, hz]
+      · simp [hw, hf, Finset.sum_insert hj0]
         try ring
     rw [← hφ, AlgHom.comp_apply, h0, MvPolynomial.aeval_rename]
     exact ih
@@ -47,7 +47,7 @@ theorem caseC (j0 : Fin r) (c : K) (b : Bool) (v : MvPolynomial (Fin (r + 1 + 1)
   have hmidOf_midI : ∀ j : Fin r, midOf (midI r j) = some j := by
     intro j
     unfold midOf midI
-    rw [dif_pos (by first | (simp [Fin.val_succ]; done) | (simp [Fin.val_succ]; omega))]
+    rw [dif_pos (by first | (simp [Fin.val_succ]))]
     exact congrArg some (Fin.ext (by simp [Fin.val_succ]))
   have hsome : ∀ (t : Fin (r + 1 + 1)) (j : Fin r), midOf t = some j → t = midI r j := by
     intro t j h
@@ -55,7 +55,7 @@ theorem caseC (j0 : Fin r) (c : K) (b : Bool) (v : MvPolynomial (Fin (r + 1 + 1)
     split_ifs at h with h1
     cases h
     apply Fin.ext
-    simp [midI, Fin.val_succ]
+    simp [midI]
     omega
   have hnone : ∀ (t : Fin (r + 1 + 1)) (j : Fin r), midOf t = none → t ≠ midI r j := by
     intro t j h ht
@@ -112,7 +112,7 @@ theorem caseC (j0 : Fin r) (c : K) (b : Bool) (v : MvPolynomial (Fin (r + 1 + 1)
           simp only [psiB, map_mul, coe_eval₂Hom, eval₂_C, eval₂_X, Formalism.GradedWeylDivisibility.colAdd, aeval_X]
           by_cases hi : i = j0
           · subst hi
-            simp [e, MvPolynomial.algebraMap_apply, MvPolynomial.algebraMap_eq]
+            simp [e, MvPolynomial.algebraMap_eq]
             ring
           · simp [hmid i hi, hi]
         rw [e1, hz, map_sum, Finset.sum_congr rfl (fun i _ => hterm i), Finset.sum_add_distrib]

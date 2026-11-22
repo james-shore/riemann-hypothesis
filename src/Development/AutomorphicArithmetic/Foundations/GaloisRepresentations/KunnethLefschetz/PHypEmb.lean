@@ -23,13 +23,13 @@ private theorem sec_sub (k : Type) [Field k] (d : ℕ) (a : MvPolynomial (Fin (d
     cases n using Fin.cases with
     | zero =>
       have h0 : killCompl (R := k) (Fin.succ_injective (d + 1)) (X 0) = 0 := by
-        simp [killCompl, aeval_X, Fin.succ_ne_zero]
+        simp [killCompl]
       rw [h0, map_zero, mul_zero, sub_zero]
       exact Ideal.mul_mem_left _ _ (Ideal.subset_span rfl)
     | succ j =>
       have h1 : rename Fin.succ (killCompl (R := k) (Fin.succ_injective (d + 1)) (X j.succ)) =
           X j.succ := by
-        simp [killCompl, aeval_X]
+        simp [killCompl]
       rw [h1, ← sub_mul]
       exact Ideal.mul_mem_right _ _ hp
 
@@ -49,7 +49,7 @@ private theorem off_hyp (k : Type) [Field k] (d : ℕ) :
   constructor
   · rintro hx ⟨y, rfl⟩
     have hb := GlobalTheory.ProjSpace.linearι_preimage_chart_of_notMem k (Fin.succ_injective (d + 1))
-      (k := 0) (by simp [Fin.succ_ne_zero])
+      (k := 0) (by simp)
     have hy : y ∈ GlobalTheory.ProjSpace.linearι k (Fin.succ_injective (d + 1)) ⁻¹ᵁ
         GlobalTheory.ProjSpace.chart k (d + 1) 0 := hx
     rw [hb] at hy

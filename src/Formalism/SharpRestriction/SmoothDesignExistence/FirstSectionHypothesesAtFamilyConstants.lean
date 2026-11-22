@@ -40,19 +40,15 @@ theorem first_section_hypotheses_at_family_constants {eps : ℝ} (Fm : FamP eps)
   have eCkLow : (Fm.params x hx1 i).CkLow = Fm.CkLow := by
     first
       | (unfold FamP.CkLow; rw [← hK]; rfl)
-      | simp [FamP.CkLow, ← hK, parConsts]
   have eCCount : (Fm.params x hx1 i).CCount = Fm.CCount := by
     first
       | (unfold FamP.CCount; rw [← hK]; rfl)
-      | simp [FamP.CCount, ← hK, parConsts]
   have eCgap : (Fm.params x hx1 i).Cgap = Fm.Cgap := by
     first
       | (unfold FamP.Cgap; rw [← hK]; rfl)
-      | simp [FamP.Cgap, ← hK, parConsts]
   have eCYL : (Fm.params x hx1 i).CYL = Fm.CYL := by
     first
       | (unfold FamP.CYL; rw [← hK]; rfl)
-      | simp [FamP.CYL, ← hK, parConsts]
   show StandingHypotheses (Fm.D x i) (Fm.L x i) (sC' Fm) (sCl Fm) (Fm.CYL + 1) (1 / 4) 3 (1 / 2) Fm.CTu
   unfold sC'
   rw [← eCkLow, ← eCYL]

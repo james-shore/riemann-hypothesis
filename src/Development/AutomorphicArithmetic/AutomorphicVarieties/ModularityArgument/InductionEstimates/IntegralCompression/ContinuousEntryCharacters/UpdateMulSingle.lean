@@ -186,14 +186,12 @@ theorem UpperTheory.V.Z.InvariantSubmoduleMonicPolynomial.EA.extPi :
     · refine fix_prod μK (fun m => bd m 1) hb1 (fun i => T (n i) (q i)) (fun i => continuous_alt _ _)
         (fun y => Φ (y * x)) (hΦ.comp (continuous_id.mul continuous_const)) ?_ g
       intro i g
-      beta_reduce
       simp only [hsl Φ i g]
       rw [hsl0 Φ i g]
       exact ((hE i).fix _ (hcontS Φ hΦ i _) (fix_slice μ e hidem Φ hΦ hR i _) (g i)).1
     · refine fix_prod μK (fun m => bd 1 m) hb2 (fun i => T (n' i) (q' i)) (fun i => continuous_alt _ _)
         (fun y => Φ (y * x)) (hΦ.comp (continuous_id.mul continuous_const)) ?_ g
       intro i g
-      beta_reduce
       simp only [hsl Φ i g]
       rw [hsl0 Φ i g]
       exact ((hE i).fix _ (hcontS Φ hΦ i _) (fix_slice μ e hidem Φ hΦ hR i _) (g i)).2

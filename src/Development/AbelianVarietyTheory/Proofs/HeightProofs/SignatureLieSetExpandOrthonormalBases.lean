@@ -15,7 +15,7 @@ theorem sum_get {α M : Type*} [AddCommMonoid M] (l : List α) (f : α → M) :
   rfl
 
 theorem trace_mul_unitE (U : Mx n) (a b : Fin n) : trace (U * unitE a b) = U b a := by
-  simp [trace, mul_apply, single_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq']
+  simp [trace, mul_apply, single_apply, ite_and, Finset.sum_ite_eq]
 
 theorem sum_flatMap {α M : Type*} [AddCommMonoid M] (l : List α) (f : α → List M) :
     (l.flatMap f).sum = (l.map fun a => (f a).sum).sum := by
@@ -100,17 +100,17 @@ theorem decomp (U : Mx n) :
   ext r t
   simp only [Matrix.add_apply, Matrix.sum_apply, apply_ite (fun M : Mx n => M r t), pairTerm, Matrix.smul_apply,
     single_apply, smul_eq_mul, Matrix.zero_apply]
-  simp [ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq']
+  simp [ite_and, Finset.sum_ite_eq']
   rcases lt_trichotomy r t with h | rfl | h
   · rw [Finset.sum_eq_single r (fun x _ hx => Finset.sum_eq_zero fun y _ => by split_ifs <;> grind) (by simp),
       Finset.sum_eq_single t (fun y _ hy => by split_ifs <;> grind) (by simp)]
-    simp [h, h.ne, not_lt.mpr h.le]
-  · simp only [lt_self_iff_false, if_true]
+    simp [h, h.ne]
+  · simp only [if_true]
     rw [Finset.sum_eq_zero fun x _ => Finset.sum_eq_zero fun y _ => by split_ifs <;> grind]
     simp
   · rw [Finset.sum_eq_single t (fun x _ hx => Finset.sum_eq_zero fun y _ => by split_ifs <;> grind) (by simp),
       Finset.sum_eq_single r (fun y _ hy => by split_ifs <;> grind) (by simp)]
-    simp [h, h.ne, h.ne', not_lt.mpr h.le]
+    simp [h, h.ne, h.ne']
 
 theorem pairs_split (U : Mx n) :
     ((pairs ε true).map (pairTerm U)).sum + ((pairs ε false).map (pairTerm U)).sum =

@@ -11,11 +11,11 @@ theorem norm_one_add_conj_mul (z : ℂ) : ‖1 + (starRingEnd ℂ) z * z‖ = 1 
     Complex.norm_of_nonneg (by positivity)]
 
 theorem gB_one (w : Low 3 → ℂ) : gB 1 w = (1 + ‖w ⟨(2, 1), by decide⟩‖ ^ 2) ^ (-2 : ℤ) := by
-  simp [gB, Fin.prod_univ_two, colGram, lminor, Matrix.det_fin_one, Matrix.mul_apply, Fin.sum_univ_two, blkW, lowMat]
+  simp [gB, Fin.prod_univ_two, colGram, lminor, Matrix.mul_apply, Fin.sum_univ_two, blkW, lowMat]
   rw [norm_one_add_conj_mul]
 
 theorem gB_two (w : Low 3 → ℂ) : gB 2 w = (1 + ‖w ⟨(1, 0), by decide⟩‖ ^ 2) ^ (-2 : ℤ) := by
-  simp [gB, Fin.prod_univ_two, colGram, lminor, Matrix.det_fin_one, Matrix.mul_apply, Fin.sum_univ_two, blkW, lowMat]
+  simp [gB, Fin.prod_univ_two, colGram, lminor, Matrix.mul_apply, Fin.sum_univ_two, blkW, lowMat]
   rw [norm_one_add_conj_mul]
 
 noncomputable def dom (x : ℂ) : ℝ≥0∞ :=

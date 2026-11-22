@@ -218,7 +218,7 @@ lemma dup (h : W.toAffine.Equation x y) (hy : y ≠ W.toAffine.negY x y) :
     rw [WeierstrassCurve.Affine.slope_of_Y_ne rfl hy, ← hdd, div_mul_cancel₀ _ hden]
   rw [← psi_eq h, WeierstrassCurve.Affine.addX]
   rw [WeierstrassCurve.Affine.equation_iff] at h
-  simp only [WeierstrassCurve.b₂, WeierstrassCurve.b₄, WeierstrassCurve.b₆, WeierstrassCurve.b₈]
+  simp only [WeierstrassCurve.b₄, WeierstrassCurve.b₆, WeierstrassCurve.b₈]
   linear_combination (W.toAffine.slope x x y y * (2 * y + W.a₁ * x + W.a₃)
       + (3 * x ^ 2 + 2 * W.a₂ * x + W.a₄ - W.a₁ * y) + W.a₁ * (2 * y + W.a₁ * x + W.a₃)) * hl
     + (-(W.a₁ ^ 2 + 4 * W.a₂ + 8 * x)) * h

@@ -22,7 +22,7 @@ theorem qnRuleTorus : Formalism.FourierDecayAlt.Q.RuleTorus := by
       ⟨_, _, (Complex.re_add_im _).symm⟩
     rw [hab]
     simp only [Complex.mul_re, Complex.mul_im, Complex.add_re, Complex.add_im, Complex.ofReal_re,
-      Complex.ofReal_im, Complex.I_re, Complex.I_im, Complex.neg_re, Complex.neg_im]
+      Complex.ofReal_im, Complex.I_re, Complex.I_im]
     match_scalars <;> simp [Complex.ext_iff] <;> ring
   · simp only [EH, EabH]
     rw [first_hermitian_part_diagonal, second_hermitian_part_diagonal, rdV_dz' l D f hf c hcl g₁ hg₁ hmem _ _ h3,

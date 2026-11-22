@@ -64,7 +64,7 @@ private theorem eI_star (D : Dat F E) (k : GL (Fin 2) (Af E)) :
     by_cases hab : a = b
     · subst hab; simp
     · have hba : b ≠ a := fun h => hab h.symm
-      simp [Matrix.one_apply, hab, hba]
+      simp [hab, hba]
   rw [this]
 
 private theorem act_eI (D : Dat F E) (k : GL (Fin 2) (Af E)) (v : V4 F) :

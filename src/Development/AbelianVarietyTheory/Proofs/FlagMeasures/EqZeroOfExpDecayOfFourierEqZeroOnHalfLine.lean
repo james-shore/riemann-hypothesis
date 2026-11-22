@@ -13,8 +13,6 @@ theorem integrable_exp_neg_mul_abs_line {c : ℝ} (hc : 0 < c) :
   | exact @_root_.GlobalTheory.IntegrableExpNegAbs.integrable_exp_neg_mul_abs
   | exact _root_.GlobalTheory.IntegrableExpNegAbs.integrable_exp_neg_mul_abs
   | (apply _root_.GlobalTheory.IntegrableExpNegAbs.integrable_exp_neg_mul_abs <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegrableExpNegAbs.integrable_exp_neg_mul_abs <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegrableExpNegAbs.integrable_exp_neg_mul_abs <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegrableExpNegAbs.integrable_exp_neg_mul_abs ..)
 
 theorem eq_zero_of_exp_decay_of_fourier_eq_zero_on_halfLine :

@@ -111,8 +111,8 @@ theorem UpperTheory.V.Th.coc :
     simp only [Matrix.mul_smul, Matrix.smul_mul, Matrix.smul_apply]
     refine ⟨fun i j hij => ?_, fun hg i => ?_⟩
     · have := (hY g).1 i j hij
-      simp only [Matrix.mul_smul, Matrix.smul_mul, Matrix.smul_apply] at this
+      simp only at this
       rw [this, smul_zero]
     · have := (hY g).2 hg i
-      simp only [Matrix.mul_smul, Matrix.smul_mul, Matrix.smul_apply] at this
+      simp only at this
       rw [this, smul_zero]

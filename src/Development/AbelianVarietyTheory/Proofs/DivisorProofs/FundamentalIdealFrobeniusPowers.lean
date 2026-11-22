@@ -58,7 +58,7 @@ theorem mem_span_unip (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k]
       simp [Matrix.one_apply]
     · rw [Matrix.fromBlocks_apply₁₂, Matrix.of_apply]
     · rw [hent _ _ (by rw [h2, h2]; simp), Matrix.fromBlocks_apply₂₁]
-      simp [Matrix.one_apply]
+      simp
     · rw [hent _ _ (by rw [h2, h2]; simp), Matrix.fromBlocks_apply₂₂]
       simp [Matrix.one_apply]
   rw [← hn]

@@ -1005,7 +1005,7 @@ theorem rInvC_of (hNC : Formalism.L2.SG.TermOp.Vanish.NilradicalConjLevel) : RIn
     subst hrx
     refine Prod.ext ?_ ?_
     · simp
-    · simp only [Prod.snd_mul, Prod.snd_one]
+    · simp only [Prod.snd_mul]
       group
   have hγ : RatLink X t.pt t.lin := t.rep.2.1
   have hy : RatLink X (t.pt⁻¹ * xr * t.pt) (t.lin⁻¹ * m * t.lin) :=

@@ -144,6 +144,5 @@ theorem hasPeriod_formalLog_char : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Fiel
     ring
   first
   | exact ⟨hex, hcong⟩
-  | exact hcong
 
 end GlobalTheory.CharPeriod

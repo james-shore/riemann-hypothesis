@@ -269,7 +269,7 @@ private theorem grpSchemeSquareProductMap_comp {A B C : Over S} [GrpObj A] [IsCo
     [GrpObj C] [IsCommMonObj C] (f : A ⟶ B) (g : B ⟶ C) : sq2 (f ≫ g) = sq2 f ≫ sq2 g := by
   simp only [sq2, ← Over.comp_left]
   congr 1
-  ext <;> simp [Category.assoc]
+  ext <;> simp
 
 private theorem square_axis_left_comm {A B : Over S} [GrpObj A] [IsCommMonObj A] [GrpObj B] [IsCommMonObj B]
     (f : A ⟶ B) [IsMonHom f] :

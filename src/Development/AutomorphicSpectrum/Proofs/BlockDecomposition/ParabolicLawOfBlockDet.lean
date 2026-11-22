@@ -11,7 +11,7 @@ variable {E R : Type} [Field E] [CommRing R] [TopologicalSpace R] [IsTopological
   [LocallyCompactSpace R] [SecondCountableTopology R]
 
 theorem continuous_circle_coe : Continuous (fun z : Circle => (z : ℂ)) := by
-  first | fun_prop | exact continuous_subtype_val | exact continuous_induced_dom
+  first | fun_prop
 
 theorem stab_univ_eq_top {κ : Type} [Fintype κ] [DecidableEq κ] : stab R (Set.univ : Set κ) = ⊤ := by
   refine eq_top_iff.2 fun g _ r hr => ?_

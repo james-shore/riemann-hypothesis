@@ -156,7 +156,7 @@ theorem sg_move (h : DC Λ F y y' n m) (a b : S.V) (al al' : E) :
     · exact add_mem ((mem_X' h).mp hU') (Submodule.smul_mem _ _ (mem_XLam.mp (mz_sub h)).2)
     · have e2 : n.symm a - n.symm b = n.symm (a - b) := by simp
       rw [e2, e, h.hzt]
-      simp only [map_add, map_sub, map_smul, LinearEquiv.symm_apply_apply, smul_sub]
+      simp only [map_add, map_smul, LinearEquiv.symm_apply_apply, smul_sub]
       abel
 
 end Move

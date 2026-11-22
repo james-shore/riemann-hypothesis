@@ -85,7 +85,6 @@ theorem UpperTheory.ConvolutionTheory.Sph.sphConj :
     obtain ⟨j, hj⟩ := e.surjective u
     obtain ⟨k, hk⟩ := e.surjective u'
     have hQ : Q (e k) := round_cycle (P := fun i => Q (e i)) hstep j k (by
-      change Q (e j)
       rw [hj]
       exact h)
     rw [hk] at hQ

@@ -21,7 +21,7 @@ theorem _root_.GlobalTheory.SnMass.VolN.IntG.Hpk_mulVec_esI (k r : ℕ) (a : Fin
     omega
   · intro j _ hj
     have hj' : (j : ℕ) ≠ a := fun h => hj (Fin.ext (by simp [_root_.Formalism.QuantumDeterminants.eI, h]))
-    simp only [_root_.Formalism.QuantumDeterminants.Hpk, _root_.Formalism.QuantumDeterminants.esI, Matrix.of_apply, Fin.val_mk]
+    simp only [_root_.Formalism.QuantumDeterminants.Hpk, _root_.Formalism.QuantumDeterminants.esI, Fin.val_mk]
     have c1 : ¬(2 * r + k - (a : ℕ) < r ∧ 2 * r + k - (a : ℕ) + (j : ℕ) = 2 * r + k) := by omega
     have c2 : ¬((j : ℕ) < r ∧ 2 * r + k - (a : ℕ) + (j : ℕ) = 2 * r + k) := by omega
     have c3 : ¬(2 * r + k - (a : ℕ) ≤ r + k) := by omega
@@ -162,7 +162,7 @@ private lemma modelEntry_eq_sq_mul_pairing_lemma_6 (σ : E →+* E) {k r : ℕ}
       ← Matrix.star_mulVec, hf, star_smul, smul_dotProduct,
       show star (Pi.single (_root_.Formalism.QuantumDeterminants.esI k r a) 1 : Fin (2 * r + k + 1) → ℂ) =
         Pi.single (_root_.Formalism.QuantumDeterminants.esI k r a) 1 by
-          ext i; by_cases h : i = _root_.Formalism.QuantumDeterminants.esI k r a <;> simp [Pi.single_apply, h],
+          ext i; by_cases h : i = _root_.Formalism.QuantumDeterminants.esI k r a <;> simp [h],
       single_dotProduct, one_mul, _root_.GlobalTheory.SnMass.VolN.IntG.Hpk_mulVec_esI]
     simp [Complex.conj_ofReal]
   rw [h1, h2]

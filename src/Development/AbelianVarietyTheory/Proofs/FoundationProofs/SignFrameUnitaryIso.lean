@@ -93,7 +93,7 @@ def hom0 : GArch σ J w →* (Matrix (Fin n) (Fin n) ℂ)ˣ :=
 
 theorem coe_archimedeanFrameConjMatrixHom (g : GArch σ J w) : ((hom0 σ J τ b g : (Matrix (Fin n) (Fin n) ℂ)ˣ) : Matrix (Fin n) (Fin n) ℂ) =
     GlobalTheory.IndefiniteRowSideFullHecke.RealRankSubgroupMembership.inFrame σ J τ b g := by
-  simp [hom0, GlobalTheory.IndefiniteRowSideFullHecke.RealRankSubgroupMembership.inFrame, MulAut.conj_apply]
+  simp [hom0, GlobalTheory.IndefiniteRowSideFullHecke.RealRankSubgroupMembership.inFrame]
 
 include h in
 theorem exists_inFrame_eq (hb : GlobalTheory.IndefiniteRowSideFullHecke.RealRankSubgroupMembership.IsSignFrame σ J ε b) (a : Formalism.REAL.UJ ε) :
@@ -125,7 +125,7 @@ theorem exists_inFrame_eq (hb : GlobalTheory.IndefiniteRowSideFullHecke.RealRank
   rw [inFrame_eq σ J h, MulEquiv.apply_symm_apply]
   change Bi * (yU : Matrix (Fin n) (Fin n) ℂ) * B = x
   rw [hy]
-  simp only [← Matrix.mul_assoc, fBi_mul, Matrix.one_mul]
+  simp only [← Matrix.mul_assoc]
   rw [Matrix.mul_assoc, fBi_mul, Matrix.mul_one, Matrix.one_mul]
 
 def frameHom (hb : GlobalTheory.IndefiniteRowSideFullHecke.RealRankSubgroupMembership.IsSignFrame σ J ε b) : GArch σ J w →* Formalism.REAL.UJ ε :=

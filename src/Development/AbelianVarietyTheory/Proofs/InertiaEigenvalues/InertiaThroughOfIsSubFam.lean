@@ -17,8 +17,6 @@ theorem subIner_component_mem {L Y I α : Type} [Field L] [AddCommGroup Y] [Modu
   | exact @_root_.GlobalTheory.EigenvectorOfSum.eigenvector_mem_of_sum_mem
   | exact _root_.GlobalTheory.EigenvectorOfSum.eigenvector_mem_of_sum_mem
   | (apply _root_.GlobalTheory.EigenvectorOfSum.eigenvector_mem_of_sum_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.EigenvectorOfSum.eigenvector_mem_of_sum_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.EigenvectorOfSum.eigenvector_mem_of_sum_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.EigenvectorOfSum.eigenvector_mem_of_sum_mem ..)
 
 theorem subIner_pullback {L X Y I α J : Type} [Field L] [AddCommGroup X] [Module L X]

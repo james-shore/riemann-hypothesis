@@ -34,7 +34,7 @@ private theorem root_of_hasMu (l : ℕ) (A : AbF) (L : Type) [Field L] [NumberFi
 private theorem unitsMap_nat {m n a : ℕ} (h : m ∣ n) (u : (ZMod n)ˣ) (e : (u : ZMod n) = (a : ZMod n)) :
     ((ZMod.unitsMap h u : (ZMod m)ˣ) : ZMod m) = (a : ZMod m) := by
   rw [ZMod.unitsMap_def]
-  simp [Units.coe_map, ZMod.castHom_apply, e, ZMod.cast_natCast h]
+  simp [Units.coe_map, e]
 
 private theorem ker_sup {A B : AbF} {a : ℕ} (h : (A.sup B).ker a) : A.ker a ∧ B.ker a := by
   obtain ⟨u, ⟨hu1, hu2⟩, e⟩ := h

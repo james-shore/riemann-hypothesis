@@ -66,8 +66,6 @@ theorem one_le_det_one_add_of_posSemidef {D : Matrix n n 𝕜} (hD : D.PosSemide
   | exact @_root_.GlobalTheory.OneLeDetOneAdd.one_le_det_one_add
   | exact _root_.GlobalTheory.OneLeDetOneAdd.one_le_det_one_add
   | (apply _root_.GlobalTheory.OneLeDetOneAdd.one_le_det_one_add <;> assumption)
-  | (intros; apply _root_.GlobalTheory.OneLeDetOneAdd.one_le_det_one_add <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.OneLeDetOneAdd.one_le_det_one_add <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.OneLeDetOneAdd.one_le_det_one_add ..)
 
 theorem det_le_det_of_posSemidef_of_le {A B : Matrix n n 𝕜} (hA : A.PosSemidef) (h : A ≤ B) :

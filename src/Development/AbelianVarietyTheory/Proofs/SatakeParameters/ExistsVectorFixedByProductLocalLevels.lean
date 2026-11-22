@@ -73,9 +73,9 @@ theorem avg_fixed {f : UA E a → ℂ} (hf : ∀ k ∈ K', RU E a ((k : K) : UA 
     have e : (⟨k, hk⟩ : K) * Quotient.out q = Quotient.out ((⟨k, hk⟩ : K) • q) *
         ((Quotient.out ((⟨k, hk⟩ : K) • q))⁻¹ * ((⟨k, hk⟩ : K) * Quotient.out q)) := (mul_inv_cancel_left _ _).symm
     have e' := congrArg (fun z : K => (z : UA E a)) e
-    simp only [Subgroup.coe_mul, Subgroup.coe_inv, Subgroup.coe_mk] at e'
+    simp only [Subgroup.coe_mul, Subgroup.coe_inv] at e'
     have hm' := hf _ hm
-    simp only [Subgroup.coe_mul, Subgroup.coe_inv, Subgroup.coe_mk] at hm'
+    simp only [Subgroup.coe_mul, Subgroup.coe_inv] at hm'
     rw [← rU_mul, e', rU_mul, hm']
   rw [Finset.sum_congr rfl fun q _ => key q]
   exact Fintype.sum_equiv (MulAction.toPerm (⟨k, hk⟩ : K)) _ _ (fun q => rfl)

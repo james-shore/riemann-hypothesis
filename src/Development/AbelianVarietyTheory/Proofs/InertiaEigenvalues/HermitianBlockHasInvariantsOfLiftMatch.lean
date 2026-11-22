@@ -78,10 +78,10 @@ theorem full_act (g : GL (Fin r) k) (Y : Gl r k) :
   · simp
   · ext i j; simp [Matrix.mul_apply, Matrix.mulVec, dotProduct]
   · ext i j; simp [Matrix.mul_apply, Matrix.vecMul, dotProduct]
-  · ext i j; simp [Matrix.mul_apply]
+  · ext i j; simp
 
 theorem det_embHom (h : Matrix (Fin r) (Fin r) k) : (embHom r k h).det = h.det := by
-  simp [embHom, Matrix.det_reindex_self, Matrix.det_fromBlocks_zero₂₁]
+  simp [embHom]
 
 end Blocks
 
@@ -120,7 +120,7 @@ theorem hasInv_of_lift : ∀ (F E : Type) [NontriviallyNormedField F] [Nontrivia
     intro i
     have := congrFun h2 i
     rw [Matrix.mulVec_smul, eL, Matrix.mulVec_single_one] at this
-    simp only [Pi.smul_apply, smul_eq_mul, Matrix.transpose_apply] at this
+    simp only [Pi.smul_apply, smul_eq_mul] at this
     rw [mul_comm]
     exact this
   have hrow : eL r E ᵥ* G = (star ν)⁻¹ • eL r E := by

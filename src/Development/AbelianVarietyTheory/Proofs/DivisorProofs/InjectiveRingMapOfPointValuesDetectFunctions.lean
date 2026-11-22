@@ -30,7 +30,7 @@ theorem valR_top_comp (R : Type) [CommRing R] (G : Over (Sp R)) (Ω : Type) [Com
   rw [h1]
   have h2 := congrArg (fun g => g.hom ((Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom r))
     (Scheme.ΓSpecIso_naturality (CommRingCat.ofHom φ))
-  simp only [CommRingCat.comp_apply] at h2
+  simp only at h2
   rw [CommRingCat.comp_apply, CommRingCat.comp_apply, Iso.inv_hom_id_apply] at h2
   exact h2
 

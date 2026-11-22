@@ -128,9 +128,9 @@ private lemma inG_cpart2_formal_degree_ratio {n : ℕ} (ε : Fin n → Bool) (Z 
     rw [← Matrix.mul_assoc, Jm_mul_self_eq_oneFormalDegreeRatio, Matrix.one_mul]
   unfold inG cpart2
   simp only [Matrix.conjTranspose_smul, Matrix.conjTranspose_add, Matrix.conjTranspose_mul,
-    Matrix.conjTranspose_conjTranspose, Jm_conjTranspose_eq_selfFormalDegreeRatio, hs, Matrix.smul_mul, Matrix.mul_smul, Matrix.add_mul,
-    Matrix.mul_add, Matrix.mul_assoc, Jm_mul_self_eq_oneFormalDegreeRatio, Matrix.mul_one, hJJ, smul_add, neg_smul]
-  simp only [neg_smul, one_smul, Matrix.neg_mul, Matrix.smul_mul, Matrix.mul_assoc, Jm_mul_self_eq_oneFormalDegreeRatio,
+    Matrix.conjTranspose_conjTranspose, Jm_conjTranspose_eq_selfFormalDegreeRatio, hs, Matrix.mul_smul, Matrix.add_mul,
+    Matrix.mul_add, Matrix.mul_assoc, hJJ, smul_add, neg_smul]
+  simp only [Matrix.neg_mul, Matrix.smul_mul, Matrix.mul_assoc, Jm_mul_self_eq_oneFormalDegreeRatio,
     Matrix.mul_one]
   abel
 
@@ -242,7 +242,7 @@ lemma io_Tm_rep {F : Matrix (Fin n) (Fin n) ℂ → E} {x : ioS ε E} (h : IORep
   split_ifs with hab
   · simp only [LinearMap.add_apply, Module.algebraMap_end_apply, Submodule.coe_add, Submodule.coe_smul,
       Pi.add_apply, Pi.smul_apply, h g hg, ioE_rep h a b g hg]
-  · simp only [LinearMap.add_apply, LinearMap.zero_apply, zero_add, ioE_rep h a b g hg]
+  · simp only [zero_add, ioE_rep h a b g hg]
 
 lemma io_foldr_rep (l : List (ℂ × Fin n × Fin n)) {F : Matrix (Fin n) (Fin n) ℂ → E}
     {x : ioS ε E} (h : IORep F x.1) :

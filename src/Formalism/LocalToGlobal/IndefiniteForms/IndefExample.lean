@@ -271,7 +271,7 @@ abbrev cd : ColData (dc K v0) (sp K v0) (dat K v0) where
   sE := conjLinearRankOne 1
 
 theorem l1b : (cd K v0).PairingFactorsThroughPeriods := by
-  refine ⟨fun u t φ F => by simp [cd, dc, dat, df], fun _ => rfl, fun _ _ => one_ne_zero,
+  refine ⟨fun u t φ F => by simp [dc, dat, df], fun _ => rfl, fun _ _ => one_ne_zero,
     fun _ w => ValuationRepresentative.vw_one w⟩
 
 theorem l1e : (cd K v0).L1e := by
@@ -375,8 +375,6 @@ theorem l1c (ha : a ≠ 0) (hk : ∀ v, 0 < kap v) (hl : ∀ v, 0 < l v) : (dat 
     rw [maj_scale _ (fun v => mul_pos (hk v) (hl v)) _ (fun v => fr_unit v)]
     cases t
     · simp only [mp, cond_false, Matrix.one_mulVec, Fintype.prod_unique]
-      all_goals push_cast
-      all_goals ring
     · simp only [mp, cond_true, smul_one_mulVec, maj_smul, Fintype.prod_unique]
       all_goals push_cast
       all_goals ring

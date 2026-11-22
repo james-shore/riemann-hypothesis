@@ -55,6 +55,6 @@ theorem latInt_pull : ∀ (q : ℕ) [Fact q.Prime] (ι : ℂ ≃+* ℂ_[q]) (V :
   have e := g.iteratedFDeriv_comp_right hG 0 (i := k) le_top
   have e2 : iteratedFDeriv ℂ k (fun z => G (g z)) 0 = iteratedFDeriv ℂ k (G ∘ g) 0 := rfl
   rw [e2, e]
-  simp [ContinuousMultilinearMap.compContinuousLinearMap_apply, Function.comp_def, map_smul]
+  simp [ContinuousMultilinearMap.compContinuousLinearMap_apply, map_smul]
 
 end GlobalTheory.MomN

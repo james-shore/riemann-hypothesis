@@ -259,7 +259,7 @@ theorem lift_row : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberF
       funext i
       simp [hy]
     rw [hent w, if_neg (nEW a j), if_neg (nWS j a), if_pos rfl, hlt w j, hAy]
-    simp [herm, Matrix.mulVec_neg, star_neg]
+    simp [herm, star_neg]
   · rcases β with p | b | p | b
     · change gM A _ w (eI k r p.1.1) (eI k r p.1.2) = 0
       have hne : p.1.1 ≠ p.1.2 := p.2.ne

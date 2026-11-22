@@ -82,7 +82,7 @@ theorem jet_sec_mul_coord : ∀ (E : Type) [Field E] [NumberField E] [IsCMField 
   have dfn : Differentiable ℂ (Λ.fn j α s₀) := by
     have := differentiable_secVal a.D₀.P.isLB s₀ (𝟙 _) (q := id) differentiable_id
       (z := fun z => ![z, z + Λ.A.ct α, Λ.A.ct α, 0])
-      (fun k => by fin_cases k <;> simp <;> fun_prop) (fun w => by rw [id, Category.comp_id]; exact lf w)
+      (fun k => by fin_cases k <;> simp) (fun w => by rw [id, Category.comp_id]; exact lf w)
     simp only [id, Category.comp_id] at this
     exact this
   have dP : DifferentiableAt ℂ (fun v : Λ.A.V => Λ.fn j α s₀ v.2 * eTwoPi (v.1 α)) 0 := by

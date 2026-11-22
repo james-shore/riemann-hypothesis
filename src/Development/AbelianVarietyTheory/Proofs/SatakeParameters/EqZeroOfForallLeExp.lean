@@ -98,8 +98,6 @@ theorem exists_extension {K : Type} [Field K] [NumberField K] {R L : Type} [Comm
   | exact @_root_.GlobalTheory.ValuationExtensionContinuous.exists_extension
   | exact _root_.GlobalTheory.ValuationExtensionContinuous.exists_extension
   | (apply _root_.GlobalTheory.ValuationExtensionContinuous.exists_extension <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ValuationExtensionContinuous.exists_extension <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ValuationExtensionContinuous.exists_extension <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ValuationExtensionContinuous.exists_extension ..)
 
 end GlobalTheory.DenseCompl

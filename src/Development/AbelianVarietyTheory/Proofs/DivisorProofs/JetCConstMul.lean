@@ -177,7 +177,7 @@ theorem block : GlobalTheory.IndefiniteRowSideFullHecke.PaddedLastEntry.BlockBou
       ((e.prod fun _ n => (n.factorial : TaylorLogMetric.Qbar)) * ⟨_, hFQ (Finsupp.equivMapDomain (s.iT.prodCongr (Equiv.refl (Fin b × Fin a))) e)⟩))
     have h3 : ∀ τ, ρ' ⟨cD (s.iT τ), hq τ⟩ = cD' τ := fun τ => (cj_coe TaylorLogMetric.Qbar ρ' ⟨_, hq τ⟩).symm.trans (hρ' _ (hcM _)).2
     refine Eq.trans (congrArg _ ?_) (h2.trans ?_)
-    · simp only [Finsupp.prod, IntermediateField.coe_mul, IntermediateField.coe_prod, IntermediateField.coe_pow]
+    · simp only [Finsupp.prod, IntermediateField.coe_mul]
       simp [hA, ambOf]
     · simp only [Finsupp.prod, map_mul, map_prod, map_pow, map_natCast, h3]
       rw [← cj_coe TaylorLogMetric.Qbar ρ']

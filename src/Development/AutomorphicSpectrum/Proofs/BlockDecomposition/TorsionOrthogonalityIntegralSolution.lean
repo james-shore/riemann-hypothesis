@@ -72,7 +72,7 @@ theorem sO_mem_tor (σ : E →ₐ[F] E) (hinv : ∀ x, σ (σ x) = x)
       by_cases h : i = j
       · subst h
         exact ⟨1, by simp⟩
-      · exact ⟨0, by simp [Pi.single_apply, h]⟩
+      · exact ⟨0, by simp [h]⟩
     have hent : ∀ j, ∃ o : 𝓞 E, algebraMap (𝓞 E) E o = a' j := by
       intro j
       have h1 := hL _ (Submodule.mem_sup_left (hstd j) : _ ∈ lam c)
@@ -89,7 +89,7 @@ theorem sO_mem_tor (σ : E →ₐ[F] E) (hinv : ∀ x, σ (σ x) = x)
       obtain ⟨p, hp⟩ := h1
       refine ⟨p, ?_⟩
       rw [hp]
-      simp [dotProduct, Matrix.mulVec_single_one, Matrix.col_apply]
+      simp [dotProduct, Matrix.col_apply]
     have hy : (fun j => sO σ (o j)) ∈ Kc c := by
       intro i
       obtain ⟨p, hp⟩ := hcol i

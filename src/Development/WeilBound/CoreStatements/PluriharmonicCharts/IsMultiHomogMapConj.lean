@@ -104,7 +104,7 @@ theorem nd_smul (a : K → ℕ) (c : K → ℂ) (z : (Σ k, J k) → ℂ) :
   rw [← Finset.prod_mul_distrib]
   refine Finset.prod_congr rfl fun k _ => ?_
   have : ∑ i, ‖c k * z ⟨k, i⟩‖ ^ 2 = ‖c k‖ ^ 2 * ∑ i, ‖z ⟨k, i⟩‖ ^ 2 := by
-    simp [norm_mul, mul_pow, Finset.mul_sum]
+    simp [mul_pow, Finset.mul_sum]
   rw [this, mul_pow, ← pow_mul]
 
 theorem nd_conj (a : K → ℕ) (z : (Σ k, J k) → ℂ) : nd a (fun p => starRingEnd ℂ (z p)) = nd a z := by

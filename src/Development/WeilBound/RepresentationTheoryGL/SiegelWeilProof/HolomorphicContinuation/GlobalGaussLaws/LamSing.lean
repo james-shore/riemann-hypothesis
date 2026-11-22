@@ -39,8 +39,7 @@ namespace LamSingH
 
 theorem JJ_sq : JJ n * JJ n = -1 := by
   rw [JJ, Matrix.fromBlocks_multiply]
-  simp only [Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.mul_one, Matrix.mul_neg, Matrix.neg_mul,
-    Matrix.one_mul]
+  simp only [Matrix.mul_zero, add_zero, zero_add, Matrix.mul_one, Matrix.mul_neg]
   rw [← Matrix.fromBlocks_one, Matrix.fromBlocks_neg, neg_zero]
 
 def toGR (M : M2 n) (hM : InG M) : GR n :=
@@ -52,8 +51,7 @@ def toGR (M : M2 n) (hM : InG M) : GR n :=
         intro hJ0
         have h1 : JJ n * JJ n = -1 := by
           rw [JJ, Matrix.fromBlocks_multiply]
-          simp only [Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.mul_one, Matrix.mul_neg, Matrix.neg_mul,
-            Matrix.one_mul]
+          simp only [Matrix.mul_zero, add_zero, zero_add, Matrix.mul_one, Matrix.mul_neg]
           rw [← Matrix.fromBlocks_one, Matrix.fromBlocks_neg, neg_zero]
         have := congrArg Matrix.det h1
         rw [Matrix.det_mul, hJ0, zero_mul] at this
@@ -118,13 +116,13 @@ theorem gLsing_core (hFZ : FourierZeroN) (hTS : TwoSided) (hD : DenseTau) (hCD :
       change mR (nb' x) * nU (-herm x) = 1
       rw [hnb' x, nU, nU, Matrix.fromBlocks_multiply]
       simp only [Matrix.mul_one, Matrix.mul_zero, add_zero, Matrix.one_mul, Matrix.zero_mul, zero_add, Matrix.mul_neg,
-        add_neg_cancel, neg_add_cancel, neg_zero]
+        neg_add_cancel, neg_zero]
       exact (Matrix.fromBlocks_one : Matrix.fromBlocks (1 : Matrix (Fin n) (Fin n) ℂ) 0 0 1 = (1 : M2 n))
     have hi : Continuous fun x => (((nb' x : GL (Fin n ⊕ Fin n) ℂ)⁻¹ : GL (Fin n ⊕ Fin n) ℂ) : M2 n) := by
       rw [funext hinv]
       refine Continuous.matrix_fromBlocks continuous_const ?_ continuous_const continuous_const
       refine continuous_pi fun i => continuous_pi fun j => ?_
-      simp only [herm, Pi.neg_apply, Matrix.neg_apply]
+      simp only [herm, Matrix.neg_apply]
       fun_prop
     exact Continuous.subtype_mk (Units.continuous_iff.2 ⟨hv, hi⟩) _
   have hcomm : ∀ x c, ι (nb' x) * nb c = nb c * ι (nb' x) := by
@@ -162,7 +160,7 @@ theorem gLsing_core (hFZ : FourierZeroN) (hTS : TwoSided) (hD : DenseTau) (hCD :
           fun z : G D n × (Fin n → Fin n → ℝ) => (g0, z.2))).tendsto (g0, x)).eventually
             (Metric.ball_mem_nhds _ (half_pos hδ))
         filter_upwards [h1, h2] with z hz1 hz2
-        simp only [Metric.mem_ball, dist_eq_norm, Function.comp] at hz1 hz2
+        simp only [dist_eq_norm, Function.comp] at hz1 hz2
         calc ‖F (ι (nb' z.2) * z.1) - F (ι (nb' z.2) * g0)‖
             ≤ ‖F (ι (nb' z.2) * z.1) - F (ι (nb' x) * g0)‖ + ‖F (ι (nb' x) * g0) - F (ι (nb' z.2) * g0)‖ :=
               norm_sub_le_norm_sub_add_norm_sub _ _ _
@@ -199,7 +197,7 @@ theorem gLsing_core (hFZ : FourierZeroN) (hTS : TwoSided) (hD : DenseTau) (hCD :
         with hχ
       have hχadd : ∀ u v, χ (u + v) = χ u * χ v := by
         intro u v
-        simp only [hχ, AddSubgroup.coe_add, Matrix.mul_add, Matrix.trace_add, halfTr, map_add, mul_add, neg_add]
+        simp only [hχ, AddSubgroup.coe_add, Matrix.trace_add, halfTr, map_add, mul_add, neg_add]
         exact AddChar.map_add_eq_mul ψ _ _
       have hχper : ∀ l ∈ ratHerm D n, ∀ b, χ (l + b) = χ b := by
         intro l hl b
@@ -208,7 +206,7 @@ theorem gLsing_core (hFZ : FourierZeroN) (hTS : TwoSided) (hD : DenseTau) (hCD :
       have hχneg : ∀ x, χ (-(bx x)) = eTr β'' x := by
         intro x
         rw [← hβchar x (bx x) (hbx x)]
-        simp only [hχ, AddSubgroup.coe_neg, Matrix.mul_neg, Matrix.trace_neg, halfTr, map_neg, mul_neg, neg_neg]
+        simp only [hχ, AddSubgroup.coe_neg, Matrix.trace_neg, halfTr, map_neg, mul_neg, neg_neg]
       obtain ⟨M, hM⟩ : ∃ M, ∀ c : hermA D n, ‖F (nb c * g')‖ ≤ M := by
         obtain ⟨M, hM⟩ := (hK.image (hcont.mul continuous_const : Continuous fun c => nb c * g')).exists_bound_of_continuousOn
           hFc.continuousOn

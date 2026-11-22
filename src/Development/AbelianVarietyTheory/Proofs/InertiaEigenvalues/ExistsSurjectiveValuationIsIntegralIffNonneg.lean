@@ -18,7 +18,7 @@ theorem exists_surjective_valuation_isIntegral_iff (K : UQ) (L : Type) [Field L]
     (Units.map (P.valuation L).toMonoidWithZeroHom.toMonoidHom)
   have hu : ∀ x : Lˣ, ((u x : Multiplicative ℤ) : WithZero (Multiplicative ℤ)) = P.valuation L x := by
     intro x
-    simp [u, WithZero.coe_unitsWithZeroEquiv_eq_units_val]
+    simp [u]
   have key : ∀ x : L, x ≠ 0 → (IsIntegral K.O x ↔ P.valuation L x ≤ 1) := by
     intro x hx
     rw [← mem_integralClosure_iff]

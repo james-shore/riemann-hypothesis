@@ -198,7 +198,7 @@ private noncomputable def scaleEq (Δ : K) (s : Kˣ) (z : (Etau K τ)ˣ) : Sp Δ
       rw [← mul_assoc, ofE_inv, one_mul]
 
 private theorem sigL_ofE (z : Etau K τ) (x : EL Δ τ) : sigL (ofE Δ z * x) = ofE Δ z * sigL x := by
-  ext <;> simp [ofE, sigL] <;> ring
+  ext <;> simp [ofE, sigL]
 
 private theorem ofE_norm (z : Etau K τ) (m : EL Δ τ) : QuadraticAlgebra.norm z • m = m * (ofE Δ z * star (ofE Δ z)) := by
   ext <;> simp [ofE, QuadraticAlgebra.norm_def] <;> ring

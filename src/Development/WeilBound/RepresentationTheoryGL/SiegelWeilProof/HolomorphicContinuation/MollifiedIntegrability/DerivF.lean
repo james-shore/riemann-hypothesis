@@ -101,7 +101,7 @@ theorem FP_sum (hI : IntG) (hA : AlgA) (hc : 0 < c) {ι : Type*} (s : Finset ι)
   induction s using Finset.induction_on with
   | empty =>
     funext y
-    simp only [Finset.sum_empty, Finset.sum_apply, Pi.zero_apply]
+    simp only [Finset.sum_empty, Finset.sum_apply]
     rw [FP_eq_integral_Fi]
     simp [Fi, evX]
   | insert i s hi ih =>

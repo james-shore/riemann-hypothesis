@@ -92,7 +92,7 @@ theorem gram_col {k : ℕ} (hk : k ≤ r) {R : Type} [CommRing R] (s : R →+* R
 theorem gram_adMat (A B : Matrix (Fin n) (Fin r) E) :
     (cT (sigR (AF F) σ) (adMat F A) : Matrix (Fin r) (Fin n) (AF F ⊗[F] E)) * adMat F J * adMat F B =
       adMat F (cT (σ : E →+* E) A * J * B) := by
-  simp only [cT_adMat, adMat, JR, Matrix.map_mul]
+  simp only [cT_adMat, adMat, Matrix.map_mul]
 
 theorem fr_k (h : IsCMExt F E σ) (hJ : IsHermND σ J) (hW : IsWittFrame σ J X Y) {k : ℕ} (hk : k ≤ r) :
     Fr (sigR (AF F) σ) (adMat F J) (colK hk (adMat F X)) (colK hk (adMat F Y)) := by
@@ -338,7 +338,7 @@ theorem char_k (h : IsCMExt F E σ) (hJ : IsHermND σ J) (hW : IsWittFrame σ J 
         sub_zero, sub_self]
     have hPY : cT (σ : E →+* E) Y * J * (1 - X * (cT (σ : E →+* E) Y * J) - Y * (cT (σ : E →+* E) X * J)) = 0 := by
       simp only [Matrix.mul_sub, Matrix.mul_one, ← Matrix.mul_assoc, yx_eq_one hσ hJ hW, hW.yy, Matrix.zero_mul,
-        Matrix.one_mul, sub_zero, sub_self]
+        Matrix.one_mul, sub_self]
     refine fix_of_perp hk s (adMat F J) (adMat F X) (adMat F Y) _ _ _ (onX _) (onY _) (fun l hl => ?_) (fun l hl => ?_)
       ?_ Z h1 h2
     · rw [hek0 l (by omega), rId_zero', map_one]

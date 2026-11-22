@@ -29,13 +29,9 @@ private theorem subst_rename_lemma {σ τ υ R : Type} [CommRing R] [Finite σ] 
   have h1 : MvPowerSeries.HasSubst a := by
     first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero ha
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun s => by rw [ha s]; exact IsNilpotent.zero)
-    | exact MvPowerSeries.hasSubst_of_constantCoeff_nilpotent (fun s => by rw [ha s]; exact IsNilpotent.zero)
   have h2 : MvPowerSeries.HasSubst (fun t => a (ρ t)) := by
     first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero (fun t => ha (ρ t))
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun s => by rw [(fun t => ha (ρ t)) s]; exact IsNilpotent.zero)
-    | exact MvPowerSeries.hasSubst_of_constantCoeff_nilpotent (fun s => by rw [(fun t => ha (ρ t)) s]; exact IsNilpotent.zero)
   rw [← MvPowerSeries.coe_substAlgHom h1, ← MvPowerSeries.coe_substAlgHom h2]
   erw [MvPowerSeries.substAlgHom_coe, MvPowerSeries.substAlgHom_coe, MvPolynomial.aeval_rename]
   rfl
@@ -71,8 +67,6 @@ theorem ptm_pair (C : ChartAt Xo c y) (φ : Fin C.d → MvPowerSeries (Fin 1 × 
   have hs : MvPowerSeries.HasSubst (fun p : Fin 3 × Fin C.d => P3 C φ u0 u1 u2 p.1 p.2) := by
     first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero (fun p => hP p.1 p.2)
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_zero (fun p => hP p.1 p.2)
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun p => by rw [hP p.1 p.2]; exact IsNilpotent.zero)
   congr 1
   funext i j
   fin_cases i <;> simp [σ2, MvPolynomial.coe_X, MvPowerSeries.subst_X hs]

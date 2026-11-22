@@ -13,10 +13,6 @@ theorem resFin_holds : ResFin := by
   have hZ : (Λ.restrictScalars ℤ).FG := by
     first
       | exact Submodule.FG.restrictScalars hΛ
-      | (obtain ⟨t, ht⟩ := hΛ
-         obtain ⟨s0, hs0⟩ := (Module.Finite.fg_top : (⊤ : Submodule ℤ (𝓞 E)).FG)
-         rw [← ht, ← Submodule.span_smul_of_span_eq_top hs0]
-         exact Submodule.fg_def.2 ⟨_, s0.finite_toSet.smul t.finite_toSet, rfl⟩)
   obtain ⟨n, g, hg⟩ := Submodule.fg_iff_exists_fin_generating_family.1 hZ
   have hmem : ∀ x ∈ Λ, ∃ a : Fin n → ℤ, ∑ i, a i • g i = x := by
     intro x hx

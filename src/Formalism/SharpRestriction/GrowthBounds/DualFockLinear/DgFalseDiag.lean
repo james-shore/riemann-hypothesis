@@ -229,7 +229,7 @@ theorem key_inj (m : ℕ) (top vec : Bool) (d : ℕ) (ν : Fin (m + 1) → ℕ) 
         rw [Finset.sum_eq_single c]
         · simp [dg]
         · intro b _ hb
-          simp [dg, Finsupp.single_apply, hb]
+          simp [dg, hb]
         · intro hc
           exact absurd (Finset.mem_univ c) hc
       rw [hs1 α, hs1 α'] at he

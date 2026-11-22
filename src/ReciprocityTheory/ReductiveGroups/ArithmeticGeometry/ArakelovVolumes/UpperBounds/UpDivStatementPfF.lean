@@ -32,7 +32,6 @@ private theorem volume_ball_inter_zeroSet_eq_zero_of_ne_zero {U : Set (V n)} {g 
   have hcs : ∀ (u : ℝ) (w : V n), ((u : ℂ) • w) = u • w := fun u w => by
     first
       | exact Complex.coe_smul u w
-      | exact (RCLike.real_smul_eq_coe_smul (K := ℂ) u w).symm
   have hmaps : ∀ t : ℝ, ∀ x : V n, t ∈ Ioo (0:ℝ) 1 → x ∈ ball z0 R →
       z0 + t • (x - z0) ∈ ball z0 R := by
     intro t x ht hx
@@ -150,7 +149,6 @@ private theorem volume_ball_inter_zeroSet_eq_zero_of_ne_zero {U : Set (V n)} {g 
       rw [abs_of_pos (pow_pos (inv_pos.mpr ht0) _)]
       first
         | exact one_le_pow₀ hti
-        | exact one_le_pow_of_one_le' hti _
     exact hmeas.trans (measure_mono hsub)
   have hind : ∀ t, (Ioo (R' / R) 1).indicator (fun _ => volume (ball z0 R' ∩ {z | g z = 0})) t ≤
       volume (Prod.mk t ⁻¹' A) := by

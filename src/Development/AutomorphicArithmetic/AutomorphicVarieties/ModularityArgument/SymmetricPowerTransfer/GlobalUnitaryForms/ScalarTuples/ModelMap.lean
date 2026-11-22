@@ -40,21 +40,21 @@ private lemma herm_smul_left (c : K) (m : EL Δ τ) (a : Lsq K Δ) (x y : Sp Δ 
 
 private lemma herm_add_right (c : K) (m : EL Δ τ) (x y y' : Sp Δ τ) :
     herm c m x (y + y') = herm c m x y + herm c m x y' := by
-  simp only [herm, Prod.fst_add, Prod.snd_add, sigL_add, star_add, mul_add, add_mul, map_add]
+  simp only [herm, Prod.fst_add, Prod.snd_add, sigL_add, star_add, mul_add, map_add]
   ring
 
 private lemma herm_smul_right (c : K) (m : EL Δ τ) (a : Lsq K Δ) (x y : Sp Δ τ) :
     herm c m x (a • y) = star a * herm c m x y := by
   have e : m * x.2 * star (sigL (a • y.2)) = star a • (m * x.2 * star (sigL y.2)) := by
     rw [sigL_smul, star_smulE, mul_smul_comm]
-  simp only [herm, Prod.smul_fst, Prod.smul_snd, e, map_smul, smul_eq_mul, star_smul, star_mul']
+  simp only [herm, Prod.smul_fst, Prod.smul_snd, e, map_smul, smul_eq_mul, star_mul']
   ring
 
 private lemma semi_add (d : EL Δ τ) (x y : Sp Δ τ) : semi d (x + y) = semi d x + semi d y := by
   simp [semi, sigL_add, mul_add]
 
 private lemma semi_smul (d : EL Δ τ) (a : Lsq K Δ) (x : Sp Δ τ) : semi d (a • x) = star a • semi d x := by
-  simp [semi, sigL_smul, mul_smul_comm]
+  simp [semi, sigL_smul]
 
 end Generic
 
@@ -93,7 +93,7 @@ variable (Δ) in
 private def torL (z : (Etau K τ)ˣ) : Sp Δ τ →ₗ[Lsq K Δ] Sp Δ τ where
   toFun := tor Δ z
   map_add' x y := by simp [tor, mul_add]
-  map_smul' a x := by simp [tor, mul_smul_comm]
+  map_smul' a x := by simp [tor]
 
 private lemma tor_mul (a b : (Etau K τ)ˣ) (x : Sp Δ τ) : tor Δ (a * b) x = tor Δ a (tor Δ b x) := by
   simp [tor, quo_mul, ofE_mul, mul_assoc]

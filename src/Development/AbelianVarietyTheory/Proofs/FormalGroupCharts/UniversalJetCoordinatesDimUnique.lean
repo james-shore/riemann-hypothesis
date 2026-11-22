@@ -98,5 +98,5 @@ theorem GlobalTheory.ChartCmp.univJ_dim_unique : ∀ (V : Type) [CommRing V] [No
   obtain ⟨ψ', hψ'⟩ := JetDim.exists_surjective h' h 1
   have a := JetDim.card_le_of_surjective ψ hψ
   have b := JetDim.card_le_of_surjective ψ' hψ'
-  simp only [Fintype.card_prod, Fintype.card_fin, one_mul] at a b
+  simp only [Fintype.card_prod, Fintype.card_fin] at a b
   omega

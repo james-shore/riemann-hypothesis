@@ -107,6 +107,6 @@ theorem rowFun_at_gridA_alt : GlobalTheory.Published.DiscreteSeriesCover → Glo
       (fun Fm hc x hx i => ⟨(hτ Fm hc x hx i).2.1, (hτ Fm hc x hx i).2.2.1⟩)
   have key := hCF CF hle 𝒜 (_root_.GlobalTheory.Fc.summandSelection σ τ') hduty hrows
     (GlobalTheory.Fc.FourBoundsAtBundles.evW_of_atAll fun Fm hc x hx i => (hτ Fm hc x hx i).2.2.2.2.2)
-  first | exact key | exact ⟨τ', key⟩
+  first | exact key
 end GlobalTheory.Fc.StageOne
 end

@@ -85,7 +85,7 @@ theorem frame_tors : LL → AllU fun {R} _ _ {I} {D} {A} {G} _ _ U => ∀ (F : T
     have hinj : Function.Injective E.h := fun a b h => hsm (by simpa only [hEh] using h)
     obtain ⟨β₀, hβ₀⟩ := ThetaSum.exists_gen_pow U.LG U.cubG U.symG U.symG_gen N E.aG hEG
     obtain ⟨β, hβ, -⟩ := exists_gen U.LG.isLB (φ' := ![𝟙 _, E.aG.left]) (ε' := ![((k * N ^ 2 : ℕ) : ℤ), -(k : ℤ)])
-      (formEq_of_eq fun i => by fin_cases i <;> simp <;> push_cast <;> ring) (GeneratorPullback.powGen _ _ _ β₀ k)
+      (formEq_of_eq fun i => by fin_cases i <;> simp <;> push_cast) (GeneratorPullback.powGen _ _ _ β₀ k)
       (powGen_isGen _ _ _ _ hβ₀ k)
     obtain ⟨-, CT2⟩ := coef_twistPull hL R I hI D A G hG U F E hinj (k * N ^ 2) k hk1 hk'1 ⟨β, hβ⟩
     rw [hEB] at CT2

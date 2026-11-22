@@ -24,8 +24,8 @@ theorem aeval_dualPt {σ : Type} [Fintype σ] (t v : σ → ℂ) (G : MvPolynomi
   | mul_X p q hp =>
     refine ⟨by simp [hp.1, dualPt], ?_⟩
     simp only [map_mul, aeval_X, snd_mul, hp.1, hp.2, dualPt, fst_add, fst_inl, fst_inr, snd_add, snd_inl, snd_inr,
-      Derivation.leibniz, pderiv_X, eval_mul, eval_X, smul_eq_mul, op_smul_eq_mul, add_zero, zero_add, map_add]
-    simp [Pi.single_apply, mul_add, Finset.sum_add_distrib, Finset.mul_sum, Finset.sum_mul, mul_comm, mul_left_comm, mul_assoc]
+      Derivation.leibniz, pderiv_X, eval_X, smul_eq_mul, op_smul_eq_mul, add_zero, zero_add, map_add]
+    simp [Pi.single_apply, mul_add, Finset.sum_add_distrib, Finset.mul_sum, mul_comm, mul_left_comm]
 
 theorem snd_eq_zero_of_span {S : Type} [CommRing S] [Algebra ℚ S]
     (φ : S →ₐ[ℚ] TrivSqZeroExt ℂ ℂ) {e : ℕ} (z : Fin e → S)

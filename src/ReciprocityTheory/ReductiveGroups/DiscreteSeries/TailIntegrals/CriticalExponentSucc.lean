@@ -131,7 +131,7 @@ lemma ch_pt (p m : ℕ) (ν : Fin (p + 2) → ℝ) (y : TDom p m) :
     simp [bco, tailPt, Fin.sum_univ_succ]
     ring
   have hL1 : Lsq (tailPt ((a, b, r) : TDom p m)) 1 = 1 + ‖a 0‖ ^ 2 := by
-    simp [Lsq, tailPt, Fin.sum_univ_succ]
+    simp [Lsq, tailPt]
   have hd1 : de (tailPt ((a, b, r) : TDom p m)) 1 ^ 2 =
       (1 + ‖a 0‖ ^ 2) * rhoSq (tailPt ((a, b, r) : TDom p m)) 1 + ‖bco (tailPt ((a, b, r) : TDom p m)) 1‖ ^ 2 := by
     rw [de, Real.sq_sqrt (add_nonneg (mul_nonneg (by linarith [one_le_lsq (tailPt ((a, b, r) : TDom p m)) 1])

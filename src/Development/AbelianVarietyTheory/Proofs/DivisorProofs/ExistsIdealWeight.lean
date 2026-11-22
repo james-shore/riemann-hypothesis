@@ -106,8 +106,6 @@ theorem zpow_finset_sum {ι : Type} {z : ℂ} (hz : z ≠ 0) (s : Finset ι) (a 
   | exact @_root_.GlobalTheory.AbelianSumIdentityFirst.main
   | exact _root_.GlobalTheory.AbelianSumIdentityFirst.main
   | (apply _root_.GlobalTheory.AbelianSumIdentityFirst.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AbelianSumIdentityFirst.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AbelianSumIdentityFirst.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AbelianSumIdentityFirst.main ..)
 
 end GlobalTheory.BorelUMod

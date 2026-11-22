@@ -23,19 +23,19 @@ private theorem elementaryAct_map_mul (a b : Fin n) (s : ℂ) : Formalism.Graded
   congr 1
   · rw [Finset.sum_eq_single p]
     · simp
-    · intro x _ hx; simp [Matrix.one_apply, hx]
+    · intro x _ hx; simp [hx]
     · simp
   · by_cases hp : p = b
     · subst hp
       rw [Finset.sum_eq_single a]
-      · simp [Matrix.single_apply]
+      · simp
         exact mul_comm _ _
       · intro x _ hx
         have : a ≠ x := fun h => hx h.symm
-        simp [Matrix.single_apply, this]
+        simp [this]
       · simp
     · have : b ≠ p := fun h => hp h.symm
-      simp [Matrix.single_apply, this, hp]
+      simp [this, hp]
 
 theorem rowAct_eq_aeval (a b : Fin n) (s : ℂ) (f : MvPolynomial (Fin n × Fin n) ℂ) :
     Formalism.GradedWeylDivisibility.rowAct ℂ (n := n) (1 + single a b s)ᵀ f =

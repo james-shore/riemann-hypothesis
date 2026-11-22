@@ -93,7 +93,6 @@ theorem sumsq_div_eq {σ : G → (HH →L[ℂ] HH)} (hσ : IsUnitRep σ) {w : HH
       congr 1
       first
         | rw [mul_div_assoc', mul_div_cancel_left₀ _ hm]
-        | field_simp
     have hprod : ∫ x, (cnt μS Ω x.2.2).toReal • Fk σ w W x.1 x.2.1 x.2.2 ∂(ν.prod (ν.prod μS)) =
         ∫ z, ∫ z', ∫ q, (cnt μS Ω q).toReal • Fk σ w W z z' q ∂μS ∂ν ∂ν := by
       rw [integral_prod _ hfI]

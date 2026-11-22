@@ -17,7 +17,6 @@ private theorem pow_sub_pow_le_mul_sub_mul_pow {x y M : ℝ} (hy : 0 ≤ y) (hyx
       first
       | exact pow_le_pow_left hy (hyx.trans hxM) n
       | exact pow_le_pow_left₀ hy (hyx.trans hxM) n
-      | (gcongr <;> linarith)
     have hMn1 : M ^ n ≤ M ^ (n + 1) := by
       rw [pow_succ]; nlinarith [mul_nonneg hMn (sub_nonneg.2 hM)]
     have h1 : x * (x ^ n - y ^ n) ≤ x * (n * (x - y) * M ^ n) := mul_le_mul_of_nonneg_left ih hx

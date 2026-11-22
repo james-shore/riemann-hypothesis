@@ -437,7 +437,7 @@ theorem card_ne_one (i : ι) : Fintype.card {g : G i // g ≠ 1} = Fintype.card 
   rw [Fintype.card_subtype, Finset.filter_ne', Finset.card_erase_of_mem (Finset.mem_univ _), Finset.card_univ]
 
 theorem card_SzIdx : Fintype.card (SzIdx G) = ∏ i, (Fintype.card (G i) - 1) := by
-  simp [Fintype.card_pi, card_ne_one]
+  simp [Fintype.card_pi]
 
 theorem det_szGram1 (i : ι) : (szGram1 G i).det = (Fintype.card (G i) : ℤ) := by
   have h : szGram1 G i = 1 + Matrix.vecMulVec (fun _ => (1 : ℤ)) (fun _ => 1) := by
@@ -448,13 +448,9 @@ theorem det_szGram1 (i : ι) : (szGram1 G i).det = (Fintype.card (G i) : ℤ) :=
     first
     | (rw [Matrix.vecMulVec_eq (ι := Unit)]
        exact Matrix.det_one_add_replicateCol_mul_replicateRow (ι := Unit) _ _)
-    | (rw [Matrix.vecMulVec_eq Unit]
-       exact Matrix.det_one_add_replicateCol_mul_replicateRow _ _)
-    | (simp only [Matrix.vecMulVec_eq (ι := Unit)]
-       exact Matrix.det_one_add_replicateCol_mul_replicateRow (ι := Unit) _ _)
   have hpos : 1 ≤ Fintype.card (G i) := Fintype.card_pos
   rw [h, hdet]
-  simp [dotProduct, card_ne_one, Nat.cast_sub hpos]
+  simp [dotProduct, Nat.cast_sub hpos]
 
 theorem det_szGram : (szGram G).det =
     ∏ k, (Fintype.card (G k) : ℤ) ^ ∏ j ∈ Finset.univ.erase k, (Fintype.card (G j) - 1) := by

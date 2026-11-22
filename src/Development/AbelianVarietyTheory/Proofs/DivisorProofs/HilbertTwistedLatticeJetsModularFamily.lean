@@ -25,7 +25,6 @@ theorem isFam_hfun_twist : EisExp → ∀ (F : Type) [Field F] [NumberField F] [
   have h := GlobalTheory.T.quasiPeriod_normalised_jet_modular_transform hE F hF s N (twist N L (α i)) hs hN (GlobalTheory.T.hilbertLatticeTwist_hasLevel F N L (α i) hL) κ γ (Ch i)
     (Ch (act i γ)) τ ⟨_, GlobalTheory.T.hilbertLatticeTwist_hasLevel F N L (α (act i γ)) hL, htw⟩ (hC i γ τ)
   rw [zpow_natCast]
-  beta_reduce
   rw [h, htw]
 
 end GlobalTheory.HilbFam

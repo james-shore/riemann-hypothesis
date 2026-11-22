@@ -24,8 +24,6 @@ theorem fn_sum_le_totalDegree {m : Fin n →₀ ℕ} (hm : m ∈ De.support) :
   have h := MvPolynomial.le_totalDegree hm
   first
     | (rwa [Finsupp.sum_fintype _ _ (fun _ => rfl)] at h)
-    | (simpa [Finsupp.degree, Finsupp.sum_fintype] using h)
-    | (rwa [Finsupp.degree_eq_sum] at h)
 
 theorem fn_hom_of_ne {a : ℂ} (ha : a ≠ 0) (b : Fin n → ℂ) :
     fnHom De a b = a ^ (De.totalDegree + 1) * MvPolynomial.eval (fun k => b k / a) De := by
@@ -73,14 +71,6 @@ theorem fn_diffOn_hom {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E] {S 
     ((ha.pow _).mul (fn_diffOn_prod Finset.univ (fun k x => b k x ^ m k) (fun k => (hb k).pow _))).const_mul _
   first
     | exact DifferentiableOn.fun_sum hterm
-    | exact DifferentiableOn.sum hterm
-    | (have e : (fun x => ∑ m ∈ De.support, MvPolynomial.coeff m De *
-          (a x ^ (De.totalDegree + 1 - ∑ k, m k) * ∏ k, (fun k => b k x) k ^ m k)) =
-          ∑ m ∈ De.support, fun x => MvPolynomial.coeff m De *
-          (a x ^ (De.totalDegree + 1 - ∑ k, m k) * ∏ k, (fun k => b k x) k ^ m k) := by
-         ext x; simp [Finset.sum_apply]
-       rw [e]
-       exact DifferentiableOn.sum hterm)
 
 theorem fn_eq_zero_of_eval {v0 : V n}
     (h : ∀ᶠ v in 𝓝 v0, MvPolynomial.eval (fun k => v k) De = 0) : De = 0 := by
@@ -212,8 +202,6 @@ theorem fn_not_ev (hD : A.D0 L w w0 s) (hF : A.Flat w0 s De) {P : Y} (hP : P ∈
   have hstr : HasStrictFDerivAt (A.zLoc w0 s i) (fderiv ℂ (A.zLoc w0 s i) c) c := by
     first
     | exact hcda.hasStrictFDerivAt (by simp)
-    | exact hcda.hasStrictFDerivAt (by norm_num)
-    | exact hcda.hasStrictFDerivAt (by exact_mod_cast le_top)
   have hdet : LinearMap.det (fderiv ℂ (A.zLoc w0 s i) c : V n →ₗ[ℂ] V n) ≠ 0 := hD.coord P hP
   let e : V n ≃L[ℂ] V n :=
     (LinearMap.equivOfDetNeZero (fderiv ℂ (A.zLoc w0 s i) c : V n →ₗ[ℂ] V n) hdet).toContinuousLinearEquiv

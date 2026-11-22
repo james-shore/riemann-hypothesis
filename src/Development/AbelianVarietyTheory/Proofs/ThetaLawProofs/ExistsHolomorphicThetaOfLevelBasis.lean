@@ -231,7 +231,7 @@ theorem rho_eq {τ : Matrix (Fin g) (Fin g) ℂ} {a b : Fin g → ℂ} {al : Mat
           exact congrArg (·.left) (hy c)) (1 : 𝟙_ (Over (Sp ℂ)) ⟶ Out.powObj x.P.A 4).left ((hp' _).trans e1.symm)]
     have := hC 0 1 hy (Sum.elim (fun r => J (u.ex (tors τ al m k n r)).left) fun _ => J (u.ex 0).left)
       (fun r => by rw [ez]; exact mem _) (fun c => mem 0)
-    simp only [ez, Pi.zero_apply, dotProduct_zero, Finset.sum_const_zero, mul_zero, Complex.exp_zero, _root_.mul_one] at this
+    simp only [Pi.zero_apply, dotProduct_zero, Finset.sum_const_zero, mul_zero, Complex.exp_zero, _root_.mul_one] at this
     simpa only [smul_zero, Finset.sum_const_zero, zero_add, Sum.elim_inl, Sum.elim_inr] using this
   have vc : ev (gs (𝟙_ (Over (Sp ℂ))).hom y₀ ⊤ (cst (𝟙 (Sp ℂ)) ⊤ rho)) = rho := by
     refine (hev _ _ _ _ (Set.mem_univ _)).trans ?_
@@ -284,8 +284,6 @@ theorem mul_transpose_eq {al : Matrix (Fin 4) (Fin 4) ℤ} {m : ℕ} (hm : 1 ≤
   | exact @_root_.GlobalTheory.TransposeMulCommute.mul_transpose_eq_of_transpose_mul_eq
   | exact _root_.GlobalTheory.TransposeMulCommute.mul_transpose_eq_of_transpose_mul_eq
   | (apply _root_.GlobalTheory.TransposeMulCommute.mul_transpose_eq_of_transpose_mul_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TransposeMulCommute.mul_transpose_eq_of_transpose_mul_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TransposeMulCommute.mul_transpose_eq_of_transpose_mul_eq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TransposeMulCommute.mul_transpose_eq_of_transpose_mul_eq ..)
 
 omit x u in
@@ -306,7 +304,7 @@ theorem eq_tors_add {τ : Matrix (Fin g) (Fin g) ℂ} {al : Matrix (Fin 4) (Fin 
       simp only [Matrix.mul_apply, Matrix.transpose_apply, Matrix.smul_apply, Matrix.one_apply, smul_eq_mul] at this
       rw [← Finset.sum_smul, this]
       split_ifs <;> simp
-    simp only [this, Finset.sum_ite_eq, Finset.mem_univ, if_true, natCast_zsmul, Nat.cast_smul_eq_nsmul]
+    simp only [this, Finset.sum_ite_eq, Finset.mem_univ, if_true, Nat.cast_smul_eq_nsmul]
   rw [tors]
   simp only [h1]
   rw [h2, smul_smul, inv_mul_cancel₀ hmc, one_smul, sub_add_cancel]

@@ -35,8 +35,8 @@ theorem sharp_zero (A : PAlg l) : A.sharp 0 = 0 := by
   have h : WittVector.teichmuller l (0 : A.A) = 0 := by
     ext n
     cases n with
-    | zero => simp [WittVector.teichmuller_coeff_zero]
-    | succ n => simp [WittVector.teichmuller_coeff_pos]
+    | zero => simp
+    | succ n => simp
   change A.th (WittVector.teichmuller l (0 : A.A)) = 0
   rw [h, map_zero]
 

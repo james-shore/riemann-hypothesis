@@ -58,7 +58,6 @@ theorem t_GGNumeric : GGNumeric := by
   calc (∏ i ∈ Icc 1 k, (1 - g⁻¹ ^ i))⁻¹ ≤ (1 - 3 / 2 * g⁻¹)⁻¹ := by
         first
           | exact inv_anti₀ hpos hP
-          | exact inv_le_inv_of_le hpos hP
     _ = (1 - 3 / 2 * g⁻¹)⁻¹ * 1 := (mul_one _).symm
     _ ≤ (1 - 3 / 2 * g⁻¹)⁻¹ * ((1 - 3 / 2 * g⁻¹) * (1 + 3 * g⁻¹)) :=
         mul_le_mul_of_nonneg_left hab (inv_nonneg.mpr hpos.le)
@@ -184,7 +183,6 @@ lemma price_exponential_bound (f k : ℕ) (b g : ℝ) (hb : 1 ≤ b) (hk : 1 ≤
   have hdiv : (f:ℝ) / g ≤ (b ^ 7)⁻¹ := by
     first
       | exact (div_le_iff₀ hg0).mpr hfb
-      | exact (div_le_iff hg0).mpr hfb
   have hpos0 : 0 ≤ 1 + 3 / g := by
     have := div_pos (show (0:ℝ) < 3 by norm_num) hg0
     linarith
@@ -243,7 +241,7 @@ theorem t_EtaZero : SqrtSumSqLeOneAddInvPowSix := by
     exact one_div_le_one_div_of_le (by norm_num) hb7
   have hw : (0:ℝ) ≤ 1 / 1000 - u := by linarith
   have h14 : (b ^ 14)⁻¹ = u ^ 2 := by
-    rw [hu, inv_pow, ← pow_mul] <;> norm_num
+    rw [hu, inv_pow, ← pow_mul]
   have h6 : 16 * u ≤ (b ^ 6)⁻¹ := by
     have e : (b ^ 6)⁻¹ = b * u := by
       have hbne : b ≠ 0 := hb0.ne'
@@ -368,11 +366,8 @@ theorem t_SubFamily : SubFamily := by
     · rw [Set.indicator_of_mem hp, Set.indicator_of_mem hp, Real.norm_eq_abs]
       first
           | exact Complex.abs_re_le_norm _
-          | exact Complex.abs_re_le_abs _
-          | exact RCLike.abs_re_le_norm _
     · first
         | rw [Set.indicator_of_notMem hp, Set.indicator_of_notMem hp]
-        | rw [Set.indicator_of_not_mem hp, Set.indicator_of_not_mem hp]
       simp
   have hsr : Summable (fun p : τ × τ =>
       ‖Q.indicator (fun p : τ × τ => (inner ℂ (X.vec p.1) (X.vec p.2)).re) p‖) :=
@@ -385,7 +380,6 @@ theorem t_SubFamily : SubFamily := by
       fun p => Set.indicator_le_indicator_of_subset hQ (fun _ => norm_nonneg _) p
     first
       | exact Summable.tsum_le_tsum hle (hs.indicator Q) (hs.indicator Q')
-      | exact tsum_le_tsum hle (hs.indicator Q) (hs.indicator Q')
   · show |X.Gam1 * _| ≤ X.Gam1 * _
     rw [abs_mul, abs_of_pos hA'.2.2]
     refine mul_le_mul_of_nonneg_left ?_ hG
@@ -397,7 +391,6 @@ theorem t_SubFamily : SubFamily := by
       _ ≤ ∑' p, Q.indicator (fun p : τ × τ => ‖inner ℂ (X.vec p.1) (X.vec p.2)‖) p := by
           first
             | exact Summable.tsum_le_tsum hb hsr (hs.indicator Q)
-            | exact tsum_le_tsum hb hsr (hs.indicator Q)
 
 theorem t_PairBoundAbstract : PairBoundAbstract := by
   intro hPI hEI hPS hSF τ Rw I H H₁ _ _ _ _ _ _ X Pg A ε ε' dd hPg hdd hA hNX hGG hRO hCP hIZ
@@ -563,8 +556,6 @@ theorem summable_re (f : τ → H₁) (hf : Summable (fun t => ‖f t‖)) :
         rw [Real.norm_eq_abs]
         first
           | exact Complex.abs_re_le_norm _
-          | exact Complex.abs_re_le_abs _
-          | exact RCLike.abs_re_le_norm _
     _ ≤ ‖f p.1‖ * ‖f p.2‖ := norm_inner_le_norm _ _
 
 theorem norm_sq_tsum [CompleteSpace H₁] (f : τ → H₁) (hf : Summable (fun t => ‖f t‖)) :
@@ -573,7 +564,6 @@ theorem norm_sq_tsum [CompleteSpace H₁] (f : τ → H₁) (hf : Summable (fun 
   have h1 : ‖∑' t, f t‖ ^ 2 = (inner ℂ (∑' t, f t) (∑' t, f t)).re := by
     first
       | exact norm_sq_eq_re_inner (𝕜 := ℂ) _
-      | exact (inner_self_eq_norm_sq (𝕜 := ℂ) _).symm
   have h2 : ∀ b, (inner ℂ (∑' t, f t) (f b)).re = ∑' a, (inner ℂ (f b) (f a)).re := by
     intro b
     rw [← inner_conj_symm, Complex.conj_re]
@@ -583,8 +573,6 @@ theorem norm_sq_tsum [CompleteSpace H₁] (f : τ → H₁) (hf : Summable (fun 
   have hg := summable_re f hf
   first
     | exact (Summable.tsum_prod hg).symm
-    | exact (tsum_prod' hg (fun b => hg.prod_factor b)).symm
-    | exact (Summable.tsum_prod' hg (fun b => hg.prod_factor b)).symm
 
 end
 

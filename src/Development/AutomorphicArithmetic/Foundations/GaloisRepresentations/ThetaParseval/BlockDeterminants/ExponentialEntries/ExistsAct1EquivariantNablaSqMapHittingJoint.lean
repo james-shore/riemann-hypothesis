@@ -13,7 +13,7 @@ private theorem sAlg_rowAct {n d : ℕ} (h : n ≤ d) (g : Matrix (Fin n) (Fin n
   have key : (sAlg h).comp (Formalism.GradedWeylDivisibility.rowAct ℂ (n := n) g.transpose) = (leftSub g).comp (sAlg h) := by
     apply MvPolynomial.algHom_ext
     intro v
-    simp [sAlg, Formalism.GradedWeylDivisibility.rowAct, leftSub, xv, Matrix.transpose_apply, map_sum, aeval_X, MvPolynomial.algebraMap_eq]
+    simp [sAlg, Formalism.GradedWeylDivisibility.rowAct, leftSub, xv, Matrix.transpose_apply, map_sum, MvPolynomial.algebraMap_eq]
   exact congrArg (fun φ => φ f) key
 
 private theorem rowAct_lp {n : ℕ} (g : Matrix (Fin n) (Fin n) ℂ) :
@@ -25,7 +25,7 @@ private theorem rowAct_lp {n : ℕ} (g : Matrix (Fin n) (Fin n) ℂ) :
       (Matrix.of fun p q : Fin n => (X (Fin.castLE le_rfl p, Fin.castLE le_rfl q) : MvPolynomial (Fin n × Fin n) ℂ)) =
       (g.map C).transpose * Matrix.of fun p q : Fin n => (X (Fin.castLE le_rfl p, Fin.castLE le_rfl q) : MvPolynomial (Fin n × Fin n) ℂ) := by
     ext p q
-    simp [Formalism.GradedWeylDivisibility.rowAct, Matrix.mul_apply, aeval_X, Matrix.transpose_apply, MvPolynomial.algebraMap_eq]
+    simp [Formalism.GradedWeylDivisibility.rowAct, Matrix.mul_apply, Matrix.transpose_apply]
   rw [hM, Matrix.det_mul, Matrix.det_transpose]
   congr 1
   exact (RingHom.map_det (C : ℂ →+* MvPolynomial (Fin n × Fin n) ℂ) g).symm
@@ -36,7 +36,7 @@ private theorem sAlg_lp {n d : ℕ} (h : n ≤ d) (k : ℕ) (hk : k ≤ n) :
   rw [AlgHom.map_det, AlgHom.map_det, ← Matrix.det_transpose]
   congr 1
   ext p q
-  simp [sAlg, ofTall, xv, aeval_X, rename_X, Matrix.transpose_apply, Fin.castLE_castLE]
+  simp [sAlg, ofTall, xv, rename_X, Matrix.transpose_apply, Fin.castLE_castLE]
 
 private theorem key_succ {m d : ℕ} (h : m + 1 ≤ d) (ν μ : Fin (m + 1) → ℕ) (t : ℕ)
     (hν : ∀ k, μ k = ν k + t) (hl : ν (Fin.last m) = 0) :

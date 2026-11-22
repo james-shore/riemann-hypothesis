@@ -146,7 +146,7 @@ theorem apOp_coefVF {U : Set (E d)} (hU : IsOpen U) (m : ℕ) (a : (n : ℕ) →
       have : n ≤ m := Nat.lt_succ_iff.mp (Finset.mem_range.mp hn)
       rw [sum_cons]
       refine Finset.sum_congr rfl fun j _ => Finset.sum_congr rfl fun w _ => ?_
-      simp [coefA, this, List.ofFn_cons]
+      simp [coefA, this]
   rw [hL, hR]
 
 end GlobalTheory.VFComp

@@ -32,8 +32,8 @@ theorem substF_minorPol_eq_sum : ∀ (D : D7) {a d : ℕ} {m : D.what₂.Tau →
         (Matrix.of fun (i : Fin a) (k : Fin d) => (MvPolynomial.C (K τ k (s i)) : MvPolynomial (Formalism.MainNotions.GL3Theta.Idx D a d) ℂ)) *
         (Matrix.of fun (k : Fin d) (i' : Fin a) => (MvPolynomial.X (τ, k, i') : MvPolynomial (Formalism.MainNotions.GL3Theta.Idx D a d) ℂ)) := by
       refine Matrix.ext fun i i' => ?_
-      simp only [RingHom.mapMatrix_apply, AlgHom.coe_toRingHom, Matrix.map_apply, Matrix.of_apply,
-        GlobalTheory.CompactHowe.substF_X, Matrix.mul_apply, Matrix.one_apply]
+      simp only [Matrix.of_apply,
+        Matrix.mul_apply]
       rw [AlgHom.mapMatrix_apply, Matrix.map_apply, Matrix.of_apply, GlobalTheory.CompactHowe.substF_X]
       refine Finset.sum_congr rfl fun k _ => ?_
       rw [Finset.sum_eq_single i']

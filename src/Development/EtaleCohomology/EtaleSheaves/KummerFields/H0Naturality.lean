@@ -15,7 +15,7 @@ theorem resι_nat {F G : Shv ℤ} (φ : F ⟶ G) : resι ℤ F ≫ (resMap ℤ �
   rw [HomologicalComplex.extendMap_f _ _ (i := 0) (by rfl)]
   simp only [Category.assoc, Iso.inv_hom_id_assoc, Iso.inv_hom_id_assoc]
   rw [reassoc_of% h]
-  first | rfl | simp | (congr 1)
+  first | rfl
 
 theorem free_ext (X : Scheme.{0}) {I : Shv ℤ}
     (f g : (free ℤ).obj ((sch.obj X).obj (op (SimplexCategory.mk 0))) ⟶ I)

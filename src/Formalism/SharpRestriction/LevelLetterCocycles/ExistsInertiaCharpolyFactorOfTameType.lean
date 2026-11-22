@@ -815,7 +815,7 @@ theorem quad_of_split {w : PlE H} {x : N.X i} (h : SplitI N r w x) (γ' γ : GE 
   have h3 : (algebraMap (N.O i) (Kf N i)).mapMatrix (chi1 N i γ • (1 : Matrix (Fin R.nV) (Fin R.nV) (N.O i))) =
       algebraMap (N.O i) (Kf N i) (chi1 N i γ) • 1 := by
     ext a b
-    by_cases hab : a = b <;> simp [hab, Matrix.one_apply]
+    by_cases hab : a = b <;> simp [hab]
   rw [h3]
   exact h1
 

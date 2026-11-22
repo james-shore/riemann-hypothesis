@@ -123,7 +123,6 @@ theorem sbarDbar (n : ℕ) (M : Type*) [TopologicalSpace M] [T2Space M]
     intro v w
     first
       | exact hcd.isSymmSndFDerivAt (by simp) v w
-      | exact hcd.isSymmSndFDerivAt (by simp [minSmoothness_of_isRCLikeNormedField]) v w
   have hloc : ∀ k : Fin n,
       ((fun y => db n z k g y) ∘ e0.symm) =ᶠ[𝓝 (z x)] wdb n k (g ∘ e0.symm) := by
     intro k

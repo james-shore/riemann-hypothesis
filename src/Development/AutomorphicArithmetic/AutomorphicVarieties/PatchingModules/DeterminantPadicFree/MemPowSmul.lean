@@ -168,7 +168,6 @@ theorem UpperTheory.V.Pa.Det.z1Fg :
     obtain ⟨m, rfl⟩ := Submodule.mkQ_surjective _ m
     first
       | exact hρ 1 m
-      | (convert hρ 1 m using 1; funext g; simp [ρbar])
   let Ψ := (Ideal.span {(PowerSeries.X : PowerSeries K)} • (⊤ : Submodule (PowerSeries K) C)).liftQ Φ hle
   have hinj : Function.Injective Ψ := by
     rw [← LinearMap.ker_eq_bot]

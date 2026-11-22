@@ -10,17 +10,17 @@ private theorem coeffB {F : Type} [Field F] [NumberField F] (δ : F) (hδ : δ �
     ∃ c : F, c ≠ 0 ∧ ∃ i : Fin 4, ∀ (a₀ : A F) (v : V4 F), B4 δ (Pi.single i a₀) v = a₀ * (rt c * v j) := by
   fin_cases j
   · refine ⟨-1, by simp, 1, fun a₀ v => ?_⟩
-    simp [B4, Pi.single_apply]
+    simp [B4]
   · refine ⟨-1, by simp, 0, fun a₀ v => ?_⟩
-    simp [B4, Pi.single_apply]
+    simp [B4]
   · refine ⟨2, by simp, 2, fun a₀ v => ?_⟩
     have h2 : rt (2 : F) = (2 : A F) := map_ofNat _ 2
-    simp [B4, Pi.single_apply]
+    simp [B4]
     rw [h2]
     ring
   · refine ⟨-2 * δ, by simp [hδ], 3, fun a₀ v => ?_⟩
     have h2 : algebraMap F (A F) 2 = (2 : A F) := map_ofNat _ 2
-    simp [B4, Pi.single_apply]
+    simp [B4]
     rw [h2]
     ring
 
@@ -39,7 +39,7 @@ private theorem fixCpt {F : Type} [Field F] [NumberField F] (δ : F) (hδ : δ �
       by_cases hl : l = i j
       · subst hl
         simpa using ⟨ha1, ha2⟩
-      · simp [Pi.single_eq_of_ne hl, Λ.zero_mem]
+      · simp [Pi.single_eq_of_ne hl]
     have h := (hφ _ hmem v).2
     rw [hi j a v] at h
     exact mul_right_cancel₀ hv (by rw [h, one_mul])
@@ -61,7 +61,7 @@ theorem UpperTheory.ConvolutionTheory.R2.Fo.vacFd :
       simp only [Set.setOf_forall]
       exact isOpen_iInter_of_finite fun i =>
         Λ.isOpen.preimage ((continuous_apply i).sub continuous_const)
-    exact ho.mem_nhds fun i => by simp [Λ.zero_mem]
+    exact ho.mem_nhds fun i => by simp
   obtain ⟨t, -, ht⟩ := hK'.elim_nhds_subcover _ hU
   let T : ↥(Vac D.δ ⊓ Fix D.δ Λ) →ₗ[ℂ] (t → ℂ) :=
     { toFun := fun φ y => φ.1.1 (fun i => ((0, y.1 i) : A F))

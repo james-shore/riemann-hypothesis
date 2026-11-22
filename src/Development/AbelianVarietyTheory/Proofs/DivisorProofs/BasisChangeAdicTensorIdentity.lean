@@ -14,4 +14,4 @@ theorem _root_.GlobalTheory.T.basis_change_adic_tensor_identity : ∀ (L : Type)
         (∑ i'', Algebra.TensorProduct.map (AlgHom.id ℚ (v.adicCompletion ℚ)) ι (β i'') *
           ((1 : v.adicCompletion ℚ) ⊗ₜ[ℚ] e i'')) * ((1 : v.adicCompletion ℚ) ⊗ₜ[ℚ] c k) =
       Algebra.TensorProduct.map (AlgHom.id ℚ (v.adicCompletion ℚ)) ι (β i') * ((1 : v.adicCompletion ℚ) ⊗ₜ[ℚ] e i) := by
-  first | (exact @GlobalTheory.adicCompletion_tensor_matrixUnit_identity) | (exact GlobalTheory.adicCompletion_tensor_matrixUnit_identity) | (intros; apply GlobalTheory.adicCompletion_tensor_matrixUnit_identity  <;> assumption)
+  first | (exact @GlobalTheory.adicCompletion_tensor_matrixUnit_identity)

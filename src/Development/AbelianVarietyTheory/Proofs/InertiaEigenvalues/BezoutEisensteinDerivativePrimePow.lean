@@ -40,8 +40,8 @@ theorem bezout_Ep_derivative : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk :
   have key : Polynomial.C d₂ * A * bk.Ep + Polynomial.C d₁ * B * Polynomial.derivative bk.Ep =
       Polynomial.C (d₁ * d₂) := by
     apply Polynomial.map_injective (algebraMap (Wq l bk.a) F) (IsFractionRing.injective (Wq l bk.a) F)
-    simp only [Polynomial.map_add, Polynomial.map_mul, Polynomial.map_C, hA, hB, Polynomial.derivative_map]
-    simp only [Algebra.smul_def, Polynomial.algebraMap_apply, map_mul, Polynomial.C_mul]
+    simp only [Polynomial.map_add, Polynomial.map_mul, Polynomial.map_C, hA, hB]
+    simp only [Algebra.smul_def, Polynomial.algebraMap_apply, map_mul]
     linear_combination (Polynomial.C (algebraMap (Wq l bk.a) F d₁) * Polynomial.C (algebraMap (Wq l bk.a) F d₂)) * hab
   obtain ⟨m, u, hu⟩ := WittVector.exists_eq_pow_p_mul' (p := l) (k := Fq l bk.a) (d₁ * d₂) hd
   refine ⟨m, Polynomial.C ((↑u⁻¹ : Wq l bk.a) * d₂) * A, Polynomial.C ((↑u⁻¹ : Wq l bk.a) * d₁) * B, ?_⟩

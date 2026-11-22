@@ -33,7 +33,7 @@ theorem isMonHom_mul' (f g : G ⟶ G) [IsMonHom f] [IsMonHom g] : IsMonHom (f * 
       rw [MonObj.mul_eq_mul, MonObj.comp_mul]
       simp
     rw [MonObj.comp_mul, IsMonHom.mul_hom, IsMonHom.mul_hom, h, h, MonObj.mul_eq_mul, MonObj.comp_mul]
-    simp only [← Category.assoc, tensorHom_fst, tensorHom_snd, MonObj.comp_mul]
+    simp only [tensorHom_fst, tensorHom_snd, MonObj.comp_mul]
     exact mul_mul_mul_comm _ _ _ _
 
 def evId (e : AddMonoid.End (Additive (G ⟶ G))) : G ⟶ G := (e (Additive.ofMul (𝟙 _))).toMul

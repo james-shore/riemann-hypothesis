@@ -76,7 +76,7 @@ theorem irreducible_admissible_integralOp_transport : ∀ (G G' : Type) [Group G
     have hfun : ((fun g' => f' g' * l ((σ.comp Φ.symm.toMulEquiv.toMonoidHom) g' v)) ∘ e) = fun g => f g * l (σ g v) := by
       funext g; simp only [Function.comp_apply, he, hf, hcomp]
     have hfun' : (fun g => f' (e g) * l ((σ.comp Φ.symm.toMulEquiv.toMonoidHom) (e g) v)) = fun g => f g * l (σ g v) := by
-      funext g; simp only [Function.comp_apply, he, hf, hcomp]
+      funext g; simp only [he, hf, hcomp]
     rw [hfun, hfun']
 
 end GlobalTheory.TransportIso

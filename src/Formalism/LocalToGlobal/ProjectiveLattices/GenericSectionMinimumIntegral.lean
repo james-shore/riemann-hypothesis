@@ -107,7 +107,7 @@ theorem isIntegral_xr (hfd : FiniteDimensional (Kp X la N) (OsK X la w)) (k : Fi
     intro u hu'
     obtain ⟨u', hu''⟩ := hu'.exists_right_inv
     have e := congrArg (fun z => V.valuation (algebraMap (Op X la N) (OsK X la w ⧸ m) z)) hu''
-    simp only [map_mul, Valuation.map_mul, map_one, Valuation.map_one] at e
+    simp only [map_mul, map_one] at e
     refine le_antisymm (hOle u) ?_
     calc (1 : _) = V.valuation (algebraMap (Op X la N) (OsK X la w ⧸ m) u) *
           V.valuation (algebraMap (Op X la N) (OsK X la w ⧸ m) u') := e.symm

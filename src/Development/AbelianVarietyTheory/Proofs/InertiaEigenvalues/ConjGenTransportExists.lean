@@ -19,7 +19,7 @@ theorem symm_alg (c : Ω ≃+* Ω) (τ : E ≃+* E) (hτ : ∀ x, c (algebraMap 
 def conjG (c : Ω ≃+* Ω) (τ : E ≃+* E) (hτ : ∀ x, c (algebraMap E Ω x) = algebraMap E Ω (τ x)) :
     G E Ω →* G E Ω where
   toFun g := AlgEquiv.ofRingEquiv (f := c.symm.trans (g.toRingEquiv.trans c)) (fun x => by
-    simp only [RingEquiv.trans_apply, symm_alg c τ hτ, AlgEquiv.toRingEquiv_eq_coe, AlgEquiv.coe_ringEquiv,
+    simp only [RingEquiv.trans_apply, symm_alg c τ hτ, AlgEquiv.coe_ringEquiv,
       AlgEquiv.commutes, hτ, RingEquiv.apply_symm_apply])
   map_one' := by ext y; simp
   map_mul' g h := by ext y; simp

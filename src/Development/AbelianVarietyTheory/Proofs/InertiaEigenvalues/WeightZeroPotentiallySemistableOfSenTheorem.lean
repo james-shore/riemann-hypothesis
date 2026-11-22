@@ -126,7 +126,7 @@ theorem senStep : SenStep := by
     exact hmain g
   let Θ := θ.mapMatrix (m := n × Fin r)
   have hMM : Θ XS * Θ YS = 1 := by rw [← map_mul, hXY, map_one]
-  let Mu : GL (n × Fin r) ℂ_[l] := ⟨Θ XS, Θ YS, hMM, (by first | exact mul_eq_one_comm.mp hMM | exact Matrix.mul_eq_one_comm.1 hMM)⟩
+  let Mu : GL (n × Fin r) ℂ_[l] := ⟨Θ XS, Θ YS, hMM, (by first | exact mul_eq_one_comm.mp hMM)⟩
   have hSen : ∀ g : ↥(GK K), (ρ₀ g : Matrix (n × Fin r) (n × Fin r) ℚ_[l]).map (algebraMap ℚ_[l] ℂ_[l]) *
       (Mu : Matrix (n × Fin r) (n × Fin r) ℂ_[l]).map (Formalism.Per.σC (g : GQ l)) = Mu := by
     intro g

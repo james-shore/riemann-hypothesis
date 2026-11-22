@@ -47,7 +47,7 @@ theorem aeval_chartGen (y : Fin (D + 1) → Ω) (g : MvPolynomial {k : Fin (D + 
     ((MvPolynomial.aeval (chartGen y) g : fnField y) : Ω) =
       deh y 0 (MvPolynomial.rename Subtype.val g) := by
   induction g using MvPolynomial.induction_on with
-  | C a => simp [deh_apply]
+  | C a => simp
   | add p q hp hq => simp only [map_add, AddMemClass.coe_add, hp, hq]
   | mul_X p i hp =>
     simp only [map_mul, MvPolynomial.aeval_X, MvPolynomial.rename_X, MulMemClass.coe_mul, hp]

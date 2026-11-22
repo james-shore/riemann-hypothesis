@@ -80,7 +80,7 @@ theorem topU_dense {U : Subgroup (GL (Fin n) (AfE F E))} {Λ : LevFam E K n SG} 
       have e3 : t⁻¹ * ((k * t) * z * (k * t)⁻¹) * t⁻¹⁻¹ = t⁻¹ * k * t * z * t⁻¹ * k⁻¹ * t := by group
       show rhoP F P.1 (t⁻¹ * ((k * t) * z * (k * t)⁻¹) * t⁻¹⁻¹) = _
       rw [e3]
-      simp only [map_mul, map_inv, hrk P, inv_one, mul_one, inv_mul_cancel, one_mul, mul_inv_cancel_right]
+      simp only [map_mul, map_inv, hrk P, inv_one, mul_one, inv_mul_cancel, one_mul]
       group
     refine Subgroup.mem_comap.2 ?_
     rw [e2]

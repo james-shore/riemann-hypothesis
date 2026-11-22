@@ -57,13 +57,13 @@ noncomputable def hE (Ω : Type) [Field Ω] (D N : ℕ) (j0 : Fin (N + 1)) :
 variable {K : Type} [Field K] {Ω : Type} [Field Ω] {D N : ℕ}
 
 theorem hL_C (r : K) : hL K D N (MvPolynomial.C r) = MvPolynomial.C (MvPolynomial.C r) := by
-  simp [hL, MvPolynomial.sumRingEquiv_C, MvPolynomial.sumRingEquiv_X_inl, MvPolynomial.sumRingEquiv_X_inr]
+  simp [hL, MvPolynomial.sumRingEquiv_C]
 
 theorem hL_X (v : TVar D N) : hL K D N (MvPolynomial.X v) =
     if h : v.1 = 0 then MvPolynomial.X v.2 else MvPolynomial.C (MvPolynomial.X ⟨v, h⟩) := by
   by_cases h : v.1 = 0
-  · simp [hL, eT, h, MvPolynomial.sumRingEquiv_C, MvPolynomial.sumRingEquiv_X_inl, MvPolynomial.sumRingEquiv_X_inr]
-  · simp [hL, eT, h, MvPolynomial.sumRingEquiv_C, MvPolynomial.sumRingEquiv_X_inl, MvPolynomial.sumRingEquiv_X_inr]
+  · simp [hL, eT, h, MvPolynomial.sumRingEquiv_X_inl]
+  · simp [hL, eT, h, MvPolynomial.sumRingEquiv_X_inr]
 
 theorem hL_rename (p : MvPolynomial {v : TVar D N // v.1 ≠ 0} K) :
     hL K D N (MvPolynomial.rename Subtype.val p) = MvPolynomial.C p := by
@@ -74,7 +74,7 @@ theorem hL_rename (p : MvPolynomial {v : TVar D N // v.1 ≠ 0} K) :
 
 theorem hE_C (j0 : Fin (N + 1)) (r : Ω) :
     hE Ω D N j0 (MvPolynomial.C r) = MvPolynomial.C (MvPolynomial.C r) := by
-  simp [hE, MvPolynomial.sumRingEquiv_C, MvPolynomial.sumRingEquiv_X_inl, MvPolynomial.sumRingEquiv_X_inr]
+  simp [hE, MvPolynomial.sumRingEquiv_C]
 
 end FractionFieldVariableLift
 

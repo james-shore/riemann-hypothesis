@@ -91,6 +91,6 @@ theorem contDiff_of_heis_closed : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ),
         rfl
       rw [e]
       convert hasDerivAt_line h hψ hM hMf (hD (u + L t)) using 1
-      simp only [Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, one_mul]
+      simp only [Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, one_mul]
 
 end GlobalTheory.HeisSmooth

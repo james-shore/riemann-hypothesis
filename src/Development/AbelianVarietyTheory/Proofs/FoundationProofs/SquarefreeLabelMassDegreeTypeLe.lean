@@ -218,7 +218,7 @@ private theorem prod_pow_count_mul_factorial_cons (d : ℕ) (ν : Multiset ℕ) 
     intro e _
     by_cases h : e = d
     · subst h
-      simp only [if_pos rfl, Multiset.count_cons_self, pow_succ, Nat.factorial_succ]
+      simp only [Multiset.count_cons_self, pow_succ, Nat.factorial_succ]
       push_cast
       ring
     · simp [Multiset.count_cons_of_ne h, h]

@@ -34,7 +34,7 @@ theorem diag_coe {ϖ : F} (hϖ : ϖ ≠ 0) :
       Matrix (Fin 2) (Fin 2) F) = !![ϖ, 0; 0, ϖ⁻¹] := by
   simp only [Matrix.SpecialLinearGroup.coe_mul, nS_coe, wS_coe, wS_inv_coe]
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two, hϖ] <;> field_simp <;> ring
+  fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two, hϖ] <;> field_simp
 
 theorem conj_step {ϖ : F} (hϖ : ϖ ≠ 0) (t : F) :
     (nS ϖ * ((wS F)⁻¹ * nS ϖ⁻¹ * wS F) * nS ϖ * (wS F)⁻¹)⁻¹ * nS t *
@@ -42,7 +42,7 @@ theorem conj_step {ϖ : F} (hϖ : ϖ ≠ 0) (t : F) :
   rw [mul_assoc, inv_mul_eq_iff_eq_mul]
   ext i j
   simp only [Matrix.SpecialLinearGroup.coe_mul, diag_coe hϖ, nS_coe]
-  fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two] <;> field_simp <;> ring
+  fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two] <;> field_simp
 
 theorem decomp (g : SpecialLinearGroup (Fin 2) F) (hc : (g : Matrix (Fin 2) (Fin 2) F) 1 0 ≠ 0) :
     g = nS (((g : Matrix (Fin 2) (Fin 2) F) 0 0 - 1) / (g : Matrix (Fin 2) (Fin 2) F) 1 0) *
@@ -53,7 +53,7 @@ theorem decomp (g : SpecialLinearGroup (Fin 2) F) (hc : (g : Matrix (Fin 2) (Fin
   ext i j
   simp only [Matrix.SpecialLinearGroup.coe_mul, nS_coe, wS_coe, wS_inv_coe]
   fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two] <;> field_simp <;>
-    first | ring1 | linear_combination -hdet | linear_combination -2 * hdet | linear_combination hdet |
+    first | ring1 | linear_combination -hdet |
       linear_combination 2 * hdet
 
 theorem eq_top_of (H : Subgroup (SpecialLinearGroup (Fin 2) F)) (hw : wS F ∈ H) (hn : ∀ t, nS t ∈ H) :

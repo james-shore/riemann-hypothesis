@@ -24,7 +24,7 @@ private theorem blockPoly_map_lemma {A B : Type*} [CommRing A] [CommRing B] (f :
   rw [← Polynomial.coe_mapRingHom, RingHom.map_det]
   congr 1
   ext i j
-  by_cases h : i = j <;> simp [h, Matrix.one_apply]
+  by_cases h : i = j <;> simp [h]
 
 theorem blockPoly_bc (x : X) :
     blockPoly ((bcM O' eB x).map (algebraMap O' (FractionRing O')))
@@ -170,7 +170,7 @@ theorem bcR'_mem (hD : RingDef O T r π χ₁ ε g₀ eB e₁ s D)
     fun g => hmem _ (hc g), ?_⟩
   funext y'
   ext i j
-  simp [Finset.sum_apply, Matrix.sum_apply, map_sum, hr, hr', hσ1, hκ, bcR, bcM]
+  simp [Finset.sum_apply, Matrix.sum_apply, map_sum, hr, hr', hσ1, bcR, bcM]
   refine Finset.sum_congr rfl fun g _ => ?_
   rw [Algebra.smul_def, Algebra.smul_def, map_mul, hκ, hκ, ← IsScalarTower.algebraMap_apply O O' (FractionRing O')]
 

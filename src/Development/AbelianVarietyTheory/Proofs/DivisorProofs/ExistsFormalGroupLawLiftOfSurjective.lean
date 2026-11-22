@@ -48,7 +48,7 @@ theorem coeff_subst_elim_zero {R : Type} [CommRing R] {d : ℕ}
   rw [if_pos]
   rintro (i | i) hi
   · simp at hi
-  · simp [Finsupp.embDomain_apply]
+  · simp
 
 theorem exists_isLift : ∀ (B O : Type) [CommRing B] [CommRing O] (θ : B →+* O), Function.Surjective θ → ∀ (d : ℕ) (μ : Fin d → MvPowerSeries (Fin d ⊕ Fin d) O), IsLaw μ → ∃ μ' : Fin d → MvPowerSeries (Fin d ⊕ Fin d) B, IsLift θ μ' ∧ ∀ i, map θ (μ' i) = μ i := by
   intro B O _ _ θ hθ d μ hμ

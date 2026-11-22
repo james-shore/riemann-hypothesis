@@ -232,7 +232,6 @@ theorem preparation : ∀ (F : Type) [NontriviallyNormedField F] [IsUltrametricD
       simp [this, prepV_zero]
   · refine prep_identity p e (k + 1) M _ A (by simp [prepV_zero]) (fun n hn => ?_) h0
     have : k + 1 - n = (k + 1 - (n + 1)) + 1 := by omega
-    beta_reduce
     rw [this, prepV_succ]
 
 end GlobalTheory.PMonE

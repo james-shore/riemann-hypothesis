@@ -37,7 +37,7 @@ theorem projective_baseChange_presentation_matrix : ∀ (R B M : Type) [CommRing
         have : e ((f.lTensor B) (x ⊗ₜ c)) = ∑ b, (x * algebraMap R B (c b)) • (fun l => algebraMap R B (r b l)) := by
           ext l
           simp [e, f, Fintype.linearCombination_apply, Finset.sum_apply, Algebra.smul_def, Finset.mul_sum,
-            Finset.sum_mul, mul_comm, mul_left_comm]
+            mul_comm, mul_left_comm]
         rw [this]
         exact Submodule.sum_mem _ fun b _ => Submodule.smul_mem _ _ (Submodule.subset_span ⟨b, rfl⟩)
     | add a b ha hb => rw [map_add, map_add]; exact N.add_mem ha hb

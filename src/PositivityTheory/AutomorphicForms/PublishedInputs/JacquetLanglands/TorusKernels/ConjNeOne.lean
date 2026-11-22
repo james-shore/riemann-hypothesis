@@ -83,7 +83,7 @@ theorem cayley_val (k : ℕ) (m : GL (Fin 2) ℝ) (a b : ℝ) (h00 : m 0 0 = a) 
     rw [mul_assoc, huu, ← Complex.ofReal_pow] at h
     have := congrArg Complex.im h
     simp only [Complex.sub_im, Complex.add_im, Complex.mul_im, Complex.ofReal_im, Complex.ofReal_re,
-      Complex.I_re, Complex.I_im, Complex.sub_re, Complex.mul_re, Complex.add_re, Complex.zero_im] at this
+      Complex.I_re, Complex.I_im, Complex.sub_re, Complex.mul_re, Complex.zero_im] at this
     have h3 : b * (1 + r ^ 2) = 0 := by
       linear_combination this
     rcases mul_eq_zero.1 h3 with h4 | h4

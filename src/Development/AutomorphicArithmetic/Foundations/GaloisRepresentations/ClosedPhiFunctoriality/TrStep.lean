@@ -35,7 +35,7 @@ private theorem core {Z R B : Type} [CommRing Z] [CommRing R] [CommRing B] (f : 
     intro i
     rw [hM, hE, hq, Pi.sub_apply, ← RingHom.map_mulVec, ← RingHom.map_mulVec, ← map_mul, ← map_sub]
     congr 1
-    simp only [Matrix.mulVec, dotProduct, Pi.sub_apply, Matrix.smul_apply, Matrix.of_apply, smul_eq_mul, Finset.mul_sum, mul_sub]
+    simp only [Matrix.mulVec, dotProduct, Matrix.smul_apply, Matrix.of_apply, smul_eq_mul, Finset.mul_sum, mul_sub]
     congr 1 <;> exact Finset.sum_congr rfl fun j _ => by ring
   have h2 : ∀ j, (V'.map f *ᵥ fun i => zb (e' i)) j = f ((V' *ᵥ fun i => zc (e' i)) j) := by
     intro j; rw [hE, ← RingHom.map_mulVec]

@@ -32,8 +32,6 @@ lemma b_sub_gs_mem (b : Fin d → E) (k : Fin d) : b k - gs b k ∈ span ℝ (b 
   apply hsub
   first
     | exact Submodule.coe_mem _
-    | exact Submodule.starProjection_apply_mem _ _
-    | simp
 
 lemma inner_gs_span (b : Fin d → E) (k : Fin d) {y : E} (hy : y ∈ span ℝ (b '' Set.Iio k)) :
     ⟪gs b k, y⟫_ℝ = 0 := by
@@ -103,7 +101,6 @@ private lemma mu_mul_norm_gs_sq (b : Fin d → E) (hb : LinearIndependent ℝ b)
   unfold mu
   first
     | exact div_mul_cancel₀ _ hne
-    | field_simp
 
 lemma b_eq_sum (b : Fin d → E) (hb : LinearIndependent ℝ b) (i : Fin d) :
     b i = ∑ j, mu b i j • gs b j := by

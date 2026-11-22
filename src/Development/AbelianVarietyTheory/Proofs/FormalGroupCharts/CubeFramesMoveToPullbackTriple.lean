@@ -73,7 +73,7 @@ theorem frames_pull_back : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E
     intro m
     funext J
     let U : Over.mk ((jOG (𝟙 (Sp S)) d m 2).hom ≫ x0) ⟶ jOG x0 d m 2 :=
-      Over.homMk (𝟙 _) (by simp [overAt])
+      Over.homMk (𝟙 _) (by simp)
     have hj : ∀ i : Fin 2, pushPt mp.cart.1.w (jptG t' (𝟙 (Sp S)) d x' m i) = U ≫ jptG t x0 d x m i := fun i =>
       Over.OverMorphism.ext (by
         show ((homAt (𝟙 (Sp S)) (jetCopy d m i)).left ≫ (x' m).left) ≫ mp.φ =

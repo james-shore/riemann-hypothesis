@@ -110,8 +110,6 @@ theorem exists_level (D : D7) (V : HSp D) (N : Lat V) (A B : Finset (Pl D)) (JA 
   | exact @_root_.GlobalTheory.CompactOpenIntegers.exists_level
   | exact _root_.GlobalTheory.CompactOpenIntegers.exists_level
   | (apply _root_.GlobalTheory.CompactOpenIntegers.exists_level <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CompactOpenIntegers.exists_level <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CompactOpenIntegers.exists_level <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CompactOpenIntegers.exists_level ..)
 
 theorem split_off (D : D7) (V : HSp D) (A B : Finset (Pl D)) (hAB : Disjoint B A) (z : GA D V)

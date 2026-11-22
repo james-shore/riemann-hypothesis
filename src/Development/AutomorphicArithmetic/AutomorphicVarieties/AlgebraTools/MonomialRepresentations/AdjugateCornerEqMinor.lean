@@ -49,7 +49,7 @@ private theorem dsc_ne_zero_of_valuation_strict_chain {F : Type} [Field F] (v : 
   have hL : v (b ^ 2 * c ^ 2 * d ^ 2) = WithZero.exp (2 * w0 + 2 * (w0 + w1) + 2 * (w0 + w1 + w2)) := by
     rw [map_mul, map_mul, map_pow, map_pow, map_pow, hb, hc, hd]
     simp only [← WithZero.exp_nsmul, ← WithZero.exp_add, nsmul_eq_mul]
-    congr 1 <;> ring
+    congr 1
   rw [key] at h0
   have hR : v (tm b c d e 256 0 0 0 3 + tm b c d e (-192) 1 0 1 2
       + tm b c d e (-128) 0 2 0 2 + tm b c d e 144 0 1 2 1 + tm b c d e (-27) 0 0 4 0
@@ -85,7 +85,7 @@ private theorem dsc_ne_zero_of_valuation_c_le {F : Type} [Field F] (v : Valuatio
   have hL : v (-(4 * (b ^ 3 * d ^ 3))) = WithZero.exp (3 * w0 + 3 * (w0 + w1 + w2)) := by
     rw [Valuation.map_neg, map_mul, map_mul, map_pow, map_pow, h4, hb, hd, one_mul]
     simp only [← WithZero.exp_nsmul, ← WithZero.exp_add, nsmul_eq_mul]
-    congr 1 <;> ring
+    congr 1
   rw [key] at h0
   have hR : v (tm b c d e 256 0 0 0 3 + tm b c d e (-192) 1 0 1 2
       + tm b c d e (-128) 0 2 0 2 + tm b c d e 144 0 1 2 1 + tm b c d e (-27) 0 0 4 0
@@ -148,7 +148,7 @@ private theorem charpoly_fin_four_eq {R : Type} [CommRing R] (A : Matrix (Fin 4)
       + C (-(m3 A 0 1 2 + m3 A 0 1 3 + m3 A 0 2 3 + m3 A 1 2 3)) * X + C A.det := by
   simp only [Matrix.charpoly, Matrix.det_succ_row_zero, Fin.sum_univ_succ, Fin.sum_univ_zero,
     Matrix.det_fin_zero, charmatrix_apply, Matrix.submatrix_apply, m2, m3]
-  simp [Fin.succAbove, Fin.lt_def, Matrix.one_apply, Matrix.diagonal_apply, Fin.ext_iff]
+  simp [Fin.succAbove, Fin.lt_def, Fin.ext_iff]
   ring
 
 private theorem valuation_add_eq_of_valuation_lt {F : Type} [Field F] (v : Valuation F (WithZero (Multiplicative ℤ)))
@@ -216,7 +216,6 @@ theorem UpperTheory.V.AlgebraTools.disc4 :
   have hdet : A.det = φ x.det * RatFunc.X ^ (w 0 + w 1 + w 2 + w 3) := by
     rw [hAdef, Matrix.det_mul, hdm, Matrix.det_diagonal, Fin.prod_univ_four]
     simp only [zpow_add₀ hX0]
-    all_goals ring
   have hadj' : m3 x 0 1 2 ≠ 0 := by
     have hh : x.adjugate 3 3 = m3 x 0 1 2 := by
       rw [Matrix.adjugate_fin_succ_eq_det_submatrix, Matrix.det_fin_three]

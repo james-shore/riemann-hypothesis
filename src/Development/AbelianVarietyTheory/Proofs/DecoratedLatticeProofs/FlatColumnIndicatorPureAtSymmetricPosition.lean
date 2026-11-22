@@ -154,7 +154,7 @@ theorem mem_box_of_Phi_ne_zero (hpat : S.Pattern t) (j c : ℕ) (H : j + 1 + c =
     have hnf : ¬ FreeIx S.ρ i b ∧ i ≠ b := by
       rcases i with (e' | l) | ⟨q, u⟩
       · refine ⟨?_, by simp [b]⟩
-        simp only [FreeIx, FreeTop, b, Fin.mk_lt_mk, not_lt]
+        simp only [FreeIx, FreeTop, b, not_lt]
         exact hρ
       · have hl : c + 1 ≤ l.val := by
           by_contra hl

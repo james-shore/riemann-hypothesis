@@ -12,8 +12,6 @@ theorem exists_factor_one {U : Set ℂ} {g : ℂ → ℂ} (hg : AnalyticOnNhd �
   | exact @_root_.GlobalTheory.FactorOrderExistence.exists_factor_order
   | exact _root_.GlobalTheory.FactorOrderExistence.exists_factor_order
   | (apply _root_.GlobalTheory.FactorOrderExistence.exists_factor_order <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FactorOrderExistence.exists_factor_order <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FactorOrderExistence.exists_factor_order <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FactorOrderExistence.exists_factor_order ..)
 
 theorem exists_factor {U : Set ℂ} {f : ℂ → ℂ} (hf : AnalyticOnNhd ℂ f U) (S : Finset ℂ)

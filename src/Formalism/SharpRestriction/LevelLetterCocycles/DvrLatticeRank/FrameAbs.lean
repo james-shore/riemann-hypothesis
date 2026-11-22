@@ -11,7 +11,7 @@ open Matrix
 variable {A : Type*} [CommRing A] {d : ℕ}
 
 def MatIn (I : Ideal A) (H : Matrix (Fin d) (Fin d) A) : Prop := by
-  first | exact @Bl.FirstLemmaO.goal1 A ‹_› d I H | exact @Bl.FirstLemmaO.goal1 A ‹_› d I | exact @Bl.FirstLemmaO.goal1 A ‹_› d | exact @Bl.FirstLemmaO.goal1 A ‹_› | exact @Bl.FirstLemmaO.goal1 A | exact @Bl.FirstLemmaO.goal1
+  first | exact @Bl.FirstLemmaO.goal1 A ‹_› d I H
 
 def IsFrame (σ : A →+* A) (Γ : Matrix (Fin d) (Fin d) A) (π c : A) (M : ℕ)
     (H : Matrix (Fin d) (Fin d) A) : Prop :=
@@ -97,11 +97,11 @@ theorem span_pow_le (π : A) {n : ℕ} (h : 1 ≤ n) : Ideal.span {π ^ n} ≤ I
 
 theorem map_smul_ring (σ : A →+* A) (a : A) (X : Matrix (Fin d) (Fin d) A) :
     (a • X).map σ = σ a • X.map σ := by
-  first | exact Bl.MatrixMapSmul.goal1 .. | (apply Bl.MatrixMapSmul.goal1 <;> assumption) | (intros; apply Bl.MatrixMapSmul.goal1 <;> assumption) | (apply @Bl.MatrixMapSmul.goal1 <;> assumption) | (intros; apply @Bl.MatrixMapSmul.goal1 <;> assumption) | (apply @Bl.MatrixMapSmul.goal1 <;> first | assumption | infer_instance) | exact @Bl.MatrixMapSmul.goal1 A ‹_› d σ a X | exact @Bl.MatrixMapSmul.goal1 A ‹_› d σ a | exact @Bl.MatrixMapSmul.goal1 A ‹_› d σ | exact @Bl.MatrixMapSmul.goal1 A ‹_› d | exact @Bl.MatrixMapSmul.goal1 A ‹_› | exact @Bl.MatrixMapSmul.goal1 A
+  first | exact Bl.MatrixMapSmul.goal1 .. | exact @Bl.MatrixMapSmul.goal1 A ‹_› d σ a X | exact @Bl.MatrixMapSmul.goal1 A ‹_› d σ a | exact @Bl.MatrixMapSmul.goal1 A ‹_› d σ | exact @Bl.MatrixMapSmul.goal1 A ‹_› d | exact @Bl.MatrixMapSmul.goal1 A ‹_› | exact @Bl.MatrixMapSmul.goal1 A
 
 theorem map_sub_ring (σ : A →+* A) (X Y : Matrix (Fin d) (Fin d) A) :
     (X - Y).map σ = X.map σ - Y.map σ := by
-  first | exact Bl.MatrixMapSub.goal1 .. | (apply Bl.MatrixMapSub.goal1 <;> assumption) | (intros; apply Bl.MatrixMapSub.goal1 <;> assumption) | (apply @Bl.MatrixMapSub.goal1 <;> assumption) | (intros; apply @Bl.MatrixMapSub.goal1 <;> assumption) | (apply @Bl.MatrixMapSub.goal1 <;> first | assumption | infer_instance) | exact @Bl.MatrixMapSub.goal1 A ‹_› d σ X Y | exact @Bl.MatrixMapSub.goal1 A ‹_› d σ X | exact @Bl.MatrixMapSub.goal1 A ‹_› d σ | exact @Bl.MatrixMapSub.goal1 A ‹_› d | exact @Bl.MatrixMapSub.goal1 A ‹_› | exact @Bl.MatrixMapSub.goal1 A
+  first | exact Bl.MatrixMapSub.goal1 .. | exact @Bl.MatrixMapSub.goal1 A ‹_› d σ X Y | exact @Bl.MatrixMapSub.goal1 A ‹_› d σ X | exact @Bl.MatrixMapSub.goal1 A ‹_› d σ | exact @Bl.MatrixMapSub.goal1 A ‹_› d | exact @Bl.MatrixMapSub.goal1 A ‹_› | exact @Bl.MatrixMapSub.goal1 A
 
 theorem cancel_pow {π x : A} (hπ : π ∈ nonZeroDivisors A) {y : ℕ}
     (hx : π ^ y * x ∈ Ideal.span ({π ^ (y + 1)} : Set A)) : x ∈ Ideal.span ({π} : Set A) := by
@@ -267,7 +267,7 @@ end Const
 theorem mul_comm_of_mul_eq_smul {R : Type*} [CommRing R] {n : ℕ} (P Q : Matrix (Fin n) (Fin n) R)
     (c : R) (hc : c ∈ nonZeroDivisors R) (h : Q * P = c • (1 : Matrix (Fin n) (Fin n) R)) :
     P * Q = c • (1 : Matrix (Fin n) (Fin n) R) := by
-  first | exact Bl.FirstLemmaB.goal1 .. | (apply Bl.FirstLemmaB.goal1 <;> assumption) | (intros; apply Bl.FirstLemmaB.goal1 <;> assumption) | (apply @Bl.FirstLemmaB.goal1 <;> assumption) | (intros; apply @Bl.FirstLemmaB.goal1 <;> assumption) | (apply @Bl.FirstLemmaB.goal1 <;> first | assumption | infer_instance) | exact @Bl.FirstLemmaB.goal1 R ‹_› n P Q c hc h | exact @Bl.FirstLemmaB.goal1 R ‹_› n P Q c hc | exact @Bl.FirstLemmaB.goal1 R ‹_› n P Q c | exact @Bl.FirstLemmaB.goal1 R ‹_› n P Q | exact @Bl.FirstLemmaB.goal1 R ‹_› n P | exact @Bl.FirstLemmaB.goal1 R ‹_› n | exact @Bl.FirstLemmaB.goal1 R ‹_› | exact @Bl.FirstLemmaB.goal1 R
+  first | exact Bl.FirstLemmaB.goal1 .. | (apply Bl.FirstLemmaB.goal1 <;> assumption) | exact @Bl.FirstLemmaB.goal1 R ‹_› n P Q c hc h | exact @Bl.FirstLemmaB.goal1 R ‹_› n P Q c hc | exact @Bl.FirstLemmaB.goal1 R ‹_› n P Q c | exact @Bl.FirstLemmaB.goal1 R ‹_› n P Q | exact @Bl.FirstLemmaB.goal1 R ‹_› n P | exact @Bl.FirstLemmaB.goal1 R ‹_› n | exact @Bl.FirstLemmaB.goal1 R ‹_› | exact @Bl.FirstLemmaB.goal1 R
 
 theorem quot_sq_nzd {I : Ideal A} {c : A} (hc : ∀ a : A, c * a ∈ I → a ∈ I) :
     Ideal.Quotient.mk I (c ^ 2) ∈ nonZeroDivisors (A ⧸ I) := by

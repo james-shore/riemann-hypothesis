@@ -24,7 +24,7 @@ private theorem hermForm_cols {g : ℕ} (N P Q : Matrix (Fin g) (Fin g) ℂ) (i 
     hermForm N (P *ᵥ Pi.single i 1) (Q *ᵥ Pi.single j 1) =
       (Pᵀ * N * Q.map (starRingEnd ℂ)) i j := by
   simp only [mulVec_single_one, hermForm]
-  simp [Matrix.mul_apply, dotProduct, mulVec, Finset.sum_mul, Finset.mul_sum, mul_assoc, col_apply]
+  simp [Matrix.mul_apply, dotProduct, mulVec, Finset.sum_mul, Finset.mul_sum, col_apply]
   rw [Finset.sum_comm]
   exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring
 

@@ -13,7 +13,7 @@ theorem csApprox_val_int (v : HeightOneSpectrum (𝓞 F)) (r : 𝓞 F) :
     Valued.v (algebraMap (𝓞 F) (v.adicCompletion F) r) = v.intValuation r := by
   rw [IsScalarTower.algebraMap_apply (𝓞 F) F (v.adicCompletion F)]
   first
-  | (rw [valuedAdicCompletion_eq_valuation' v]; exact valuation_of_algebraMap v r)
+  | (rw [valuedAdicCompletion_eq_valuation' v])
   | simp [valuedAdicCompletion_eq_valuation', valuation_of_algebraMap]
   | (erw [valuedAdicCompletion_eq_valuation']; exact valuation_of_algebraMap v r)
 

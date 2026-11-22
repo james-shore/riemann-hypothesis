@@ -53,7 +53,7 @@ theorem exists_isUnitTau : ∀ {R : Type} [CommRing R] [IsDomain R] (Q : DegPre 
     intro U _ h
     simp only [Fintype.prod_sum_type, Fin.prod_univ_four, Finset.univ_unique, Finset.prod_singleton, Sum.elim_inl,
       Sum.elim_inr, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.cons_val_three, hc0', neg_neg]
-    simp [Matrix.vecHead, Matrix.vecTail, hc0']
+    simp [Matrix.vecHead, Matrix.vecTail]
   obtain ⟨τ₀, hτ, hv⟩ := exists_gen Q.P.isLB hF T hT
   refine ⟨τ₀, hτ, ?_⟩
 

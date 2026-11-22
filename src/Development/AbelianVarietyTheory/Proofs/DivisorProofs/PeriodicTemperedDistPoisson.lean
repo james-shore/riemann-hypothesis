@@ -63,7 +63,7 @@ theorem dirac_comb_unique : ∀ (n : ℕ) (T : SchwartzMap (Fin n → ℝ) ℂ �
       have hi : ∀ i, ∃ z : ℤ, μ i = z := by
         intro i
         obtain ⟨z, hz⟩ := hμ (Pi.single i 1) ((mem_intLat _).2 ⟨Pi.single i 1, by
-          funext j; by_cases h : j = i <;> simp [Pi.single_apply, h]⟩)
+          funext j; by_cases h : j = i <;> simp [h]⟩)
         refine ⟨z, ?_⟩
         rw [← hz, dotForm_apply]
         simp [Pi.single_apply]

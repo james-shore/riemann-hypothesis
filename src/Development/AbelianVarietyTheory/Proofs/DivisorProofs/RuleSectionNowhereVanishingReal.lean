@@ -60,8 +60,6 @@ theorem exists_factor (T : CDVR) {F : Type} [Field F] (io : F →+* T.Fr) (hio :
   | exact @_root_.GlobalTheory.LiftAndFactorization.exists_factor
   | exact _root_.GlobalTheory.LiftAndFactorization.exists_factor
   | (apply _root_.GlobalTheory.LiftAndFactorization.exists_factor <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LiftAndFactorization.exists_factor <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LiftAndFactorization.exists_factor <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LiftAndFactorization.exists_factor ..)
 
 end GlobalTheory.BdryUnitVal

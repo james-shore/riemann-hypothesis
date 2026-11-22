@@ -8,4 +8,4 @@ theorem _root_.GlobalTheory.T.etale_integralClosure_tensor : ∀ (S₁ K₁ T : 
     [Algebra S₁ K₁] [IsFractionRing S₁ K₁] [CommRing T] [Algebra S₁ T],
     Algebra.Etale S₁ T → Algebra.IsIntegral S₁ T →
     Algebra.Etale S₁ (integralClosure S₁ (K₁ ⊗[S₁] T)) := by
-  first | (exact @GlobalTheory.etale_integralClosure_tensor_of_etale_of_isIntegral) | (exact GlobalTheory.etale_integralClosure_tensor_of_etale_of_isIntegral) | (intros; apply GlobalTheory.etale_integralClosure_tensor_of_etale_of_isIntegral  <;> assumption)
+  first | (exact @GlobalTheory.etale_integralClosure_tensor_of_etale_of_isIntegral)

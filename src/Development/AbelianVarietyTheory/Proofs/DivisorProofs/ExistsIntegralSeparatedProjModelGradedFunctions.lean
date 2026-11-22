@@ -93,7 +93,7 @@ theorem mem [IsIntegral (Proj (piece hN))] {k : ℕ} (hk : 1 ≤ k) {b : F} (hb 
     · refine (psi_algebraMap hN z _).trans ?_
       erw [RingEquiv.apply_symm_apply]
       rw [psiAt_mk]
-      simp only [nd, coe_hel_pow, coeff_monomial, if_pos (mul_comm k l), if_pos rfl, ↓reduceIte]
+      simp only [nd, coe_hel_pow, coeff_monomial, if_pos (mul_comm k l), ↓reduceIte]
   · rintro ⟨v, ⟨w, hwu, rfl⟩, hv⟩ hg
     rw [psi_algebraMap] at hv
     obtain ⟨g, hg'⟩ := mk_surjective (Proj.stalkIso' (piece hN) z w)

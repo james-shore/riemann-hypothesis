@@ -113,7 +113,7 @@ theorem frames_match_lattices : ∀ {D : D7} {V V' : HSp D} {n : ℕ} (hF : D.ho
     · obtain ⟨y, hy, rfl⟩ := (hM z).1 hz
       have h1 := nsm V' N2 _ (sm V' φ hφint _ (hB1 y hy))
       convert h1 using 1
-      simp only [Matrix.mulVec_smul, smul_smul, Nat.cast_mul]
+      simp only [smul_smul, Nat.cast_mul]
       congr 1
       ring
   have c4 : ∀ g : GA D V', g ∈ KsphC V' ∅ → SuppF V' f g → ∀ z ∈ M,

@@ -92,7 +92,7 @@ theorem natFamily_existsUnique : ∀ (R : Type) [CommRing R] (X : Over (Sp R)) (
   let θ : E →ₐ[R] Localization.Away (ψ s) := locAlg R (ψ s)
   let θ' : Localization.Away s →ₐ[R] Localization.Away (ψ s) := Localization.awayMapₐ ψ s
   have hc : θ'.comp (locAlg R s) = θ.comp ψ := AlgHom.ext fun z ↦ by
-    simp [θ', θ, Localization.awayMapₐ, IsLocalization.Away.mapₐ, IsLocalization.Away.map, IsLocalization.map_eq]
+    simp [θ', θ, IsLocalization.Away.mapₐ, IsLocalization.Away.map, IsLocalization.map_eq]
   change θ (τ E ψ) = θ (ψ d)
   have e : τ _ (locAlg R s) = algebraMap D _ d := (hd ⟨s, hs⟩).symm
   rw [← hτ E _ ψ θ hψ, ← hc, ← key s hs _ _ θ' rfl, e]

@@ -27,7 +27,7 @@ theorem sub_of_red {E : Type} [Field E] [NumberField E] {n : ℕ} (M : ℕ) {A B
   clear e
   refine ⟨b, RingOfIntegers.isIntegral_coe b, ?_⟩
   have := congrArg (fun z : 𝓞 E => (z : E)) hb
-  simp only [map_mul, map_natCast, map_sub] at this
+  simp only [map_mul, map_natCast] at this
   rw [Matrix.sub_apply, mul_comm]
   exact this.symm
 

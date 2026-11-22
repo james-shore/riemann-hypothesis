@@ -241,7 +241,7 @@ theorem oneMapOf_of_serOf (hR : PreChar R) (hT : TieIn T R κ v₀) {O : OMDat T
     refine h2.trans ?_
     rw [mul_assoc (cc _ * _)]
     rfl
-  · obtain ⟨τ⟩ : Nonempty D.what₂.Tau := ⟨D.eTau.symm ⟨1, by simp [Formalism.FrobeniusOrbits.Psi]⟩⟩
+  · obtain ⟨τ⟩ : Nonempty D.what₂.Tau := ⟨D.eTau.symm ⟨1, by simp⟩⟩
     have hn : (κ i).n = (Vc D i).rank :=
       (hT.kap i τ).2.2.trans (D.sp.V_rank _ (Nat.le_add_left _ _) i.2).symm
     refine phRat_of_before O (κ i) _ cc hE (Half.chiIs_chiTop_of_tie T R κ v₀ hR.lev hT i) hR.thP.thG 1 fun x₀ => ?_

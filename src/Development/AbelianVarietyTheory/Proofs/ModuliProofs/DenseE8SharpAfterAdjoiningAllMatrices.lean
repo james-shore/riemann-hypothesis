@@ -67,7 +67,7 @@ theorem isSharp_ext {h : ℕ} {W : Matrix (Fin 8) (Fin 8) ℤ} {a : J → Matrix
     rw [hmat, he, List.prod_ofFn]
     split_ifs with hw
     · subst hw
-      rw [Finset.prod_eq_single v] <;> simp +contextual [Matrix.single_apply, eq_comm]
+      rw [Finset.prod_eq_single v] <;> simp +contextual [eq_comm]
     · refine Finset.prod_eq_one fun i _ => ?_
       simp [Ne.symm hw]
   rintro (j | m) w

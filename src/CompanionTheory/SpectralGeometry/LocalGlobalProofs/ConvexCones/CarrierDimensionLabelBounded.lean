@@ -50,7 +50,7 @@ private theorem isLocalizedModule_int_restrictScalars_mkLinearMap (O : Type) [Co
     simp only [Submonoid.smul_def, LinearMap.restrictScalars_apply, LocalizedModule.mkLinearMap_apply]
     rw [← Int.cast_smul_eq_zsmul O, LocalizedModule.smul'_mk, ← ho, LocalizedModule.mk_eq]
     refine ⟨1, ?_⟩
-    simp only [Submonoid.smul_def, OneMemClass.coe_one, one_smul, mul_smul]
+    simp only [Submonoid.smul_def, one_smul, mul_smul]
     exact smul_comm _ _ _
   · intro x₁ x₂ h
     simp only [LinearMap.restrictScalars_apply, LocalizedModule.mkLinearMap_apply,
@@ -58,7 +58,7 @@ private theorem isLocalizedModule_int_restrictScalars_mkLinearMap (O : Type) [Co
     obtain ⟨u, hu⟩ := h
     obtain ⟨n, hn0, o, ho⟩ := exists_int_ne_zero_eq_mul_of_ne_zero O u (nonZeroDivisors.ne_zero u.2)
     refine ⟨⟨n, mem_nonZeroDivisors_of_ne_zero hn0⟩, ?_⟩
-    simp only [Submonoid.smul_def, OneMemClass.coe_one, one_smul] at hu ⊢
+    simp only [Submonoid.smul_def, one_smul] at hu ⊢
     rw [← Int.cast_smul_eq_zsmul O, ← Int.cast_smul_eq_zsmul O, ← ho, mul_smul, mul_smul, hu]
 
 private theorem finrank_int_eq_mul_finrank (O : Type) [CommRing O] [IsDomain O] [CharZero O]

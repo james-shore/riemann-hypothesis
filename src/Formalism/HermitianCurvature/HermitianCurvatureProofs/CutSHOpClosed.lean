@@ -32,9 +32,9 @@ theorem opc_cc_line (j : ℕ) (hj : j + 1 ≤ P.r) (t v : ℂ) (s : ℝ) (c : Fi
   unfold cc consC
   by_cases hl : (l : ℕ) = 0
   · have e : l = ⟨0, by omega⟩ := Fin.ext hl
-    simp [hl, Pi.single_apply, e, Complex.real_smul]
+    simp [e, Complex.real_smul]
   · have hne : l ≠ ⟨0, by omega⟩ := fun h => hl (by rw [h])
-    simp [hl, Pi.single_apply, hne]
+    simp [hl, hne]
 
 theorem opc_mul (h2 : FamAlg) (h4 : RepLin) {T : D.LevTower P.k P.r Wp Wq}
     (hP : IsPlace P T.base.z T.base.z' T.base.π T.base.π') (hT : D.TowerNormalised T) {j : ℕ} {hj : j + 1 ≤ P.r}

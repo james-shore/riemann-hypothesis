@@ -97,7 +97,7 @@ theorem tz_support [DecidableEq I] (Z : Matrix I I ℂ) (d : I → ℂ) (M : (I 
       simp
     · simp [Pi.single_eq_of_ne hak]
   rw [s1, s2] at this
-  simp only [Pi.mul_apply, mulVec_single, MulOpposite.op_mul] at this
+  simp only [Pi.mul_apply, mulVec_single] at this
   simpa [mul_comm] using this.symm
 
 theorem tz_unique [DecidableEq I] (S : Set (I → ℂ)) (hS : Submodule.span ℝ S = ⊤) (A A' : (I → ℂ) ≃ₗ[ℂ] (I → ℂ))

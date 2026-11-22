@@ -53,7 +53,7 @@ theorem eq_block_of_fix {H' : Matrix κ κ A} {Y : Matrix (Unit ⊕ κ) (Unit �
 theorem form_col {H X : Matrix (Unit ⊕ κ) (Unit ⊕ κ) A} (hX : Xᴴ * H * X = H)
     (h00 : H (Sum.inl ()) (Sum.inl ()) = 1) : star (X *ᵥ e₀) ⬝ᵥ (H *ᵥ (X *ᵥ e₀)) = 1 := by
   rw [star_mulVec, ← dotProduct_mulVec, mulVec_mulVec, mulVec_mulVec, hX]
-  simp [e₀, mulVec_single_one, dotProduct, Fintype.sum_sum_type, h00]
+  simp [e₀, dotProduct, Fintype.sum_sum_type, h00]
 
 theorem card_split [Finite A] (H' : Matrix κ κ A)
     (htr : ∀ x : Unit ⊕ κ → A, star x ⬝ᵥ (HH H' *ᵥ x) = 1 →
@@ -67,8 +67,6 @@ theorem card_split [Finite A] (H' : Matrix κ κ A)
   have hinv : ∀ x hx, G' x hx * G x hx = 1 := fun x hx => by
     first
       | exact mul_eq_one_comm.mp (hG x hx).2.1
-      | exact Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _) (hG x hx).2.1
-      | exact (Matrix.mul_eq_one_comm (M := G x hx) (N := G' x hx)).mp (hG x hx).2.1
   have hG'form : ∀ x hx, (G' x hx)ᴴ * HH H' * G' x hx = HH H' := by
     intro x hx
     calc (G' x hx)ᴴ * HH H' * G' x hx = (G' x hx)ᴴ * ((G x hx)ᴴ * HH H' * G x hx) * G' x hx := by

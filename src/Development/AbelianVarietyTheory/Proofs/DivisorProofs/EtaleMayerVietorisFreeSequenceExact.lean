@@ -82,7 +82,7 @@ theorem exact_abstract (R : Type) [CommRing R] {X₁ X₂ X₃ X₄ : Scheme.{0}
   have rel : Finsupp.mapDomain (fun x : W ⟶ X₂ => x ≫ c) c2' + Finsupp.mapDomain (fun y : W ⟶ X₃ => y ≫ d) c3' = 0 := by
     rw [← hk', Finsupp.mapDomain_add, hc2', hc3', ← Finsupp.mapDomain_comp, ← Finsupp.mapDomain_comp,
       ← Finsupp.mapDomain_comp, ← Finsupp.mapDomain_comp]
-    congr 2 <;> (funext x; simp)
+    congr 2
   have hl : Loc W fun W' k'' => ∀ i : c3'.support × c3'.support, i.1.1 ≫ d = i.2.1 ≫ d →
       k'' ≫ i.1.1 = k'' ≫ i.2.1 ∨ G W' (k'' ≫ i.1.1 ≫ d) :=
     FreeMonoEpi.loc_fin _ fun i => by
@@ -151,7 +151,7 @@ theorem mv_exact : ∀ (R : Type) [CommRing R] (A A' : Type) [CommRing A] [CommR
     rw [← Spec.map_comp, ← Spec.map_comp]
     congr 1
     ext a
-    simp [Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
+    simp [Localization.awayMap, IsLocalization.Away.map]
   have w : biprod.lift ((free R).map (yoneda.map (Spec.map (CommRingCat.ofHom (Localization.awayMap (algebraMap A A') f))))) (-(free R).map (yoneda.map (Spec.map (CommRingCat.ofHom (algebraMap A' (Localization.Away (algebraMap A A' f))))))) ≫ biprod.desc ((free R).map (yoneda.map (Spec.map (CommRingCat.ofHom (algebraMap A (Localization.Away f)))))) ((free R).map (yoneda.map (Spec.map (CommRingCat.ofHom (algebraMap A A'))))) = 0 := by
     rw [biprod.lift_desc, Preadditive.neg_comp, ← Functor.map_comp, ← Functor.map_comp, ← Functor.map_comp,
       ← Functor.map_comp, hsq, add_neg_cancel]

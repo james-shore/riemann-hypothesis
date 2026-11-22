@@ -46,7 +46,7 @@ private theorem ptDer_eq_zero_of_vanish_on_X {l : ℕ} [Fact l.Prime] (c : Coef 
         refine TrivSqZeroExt.ext ?_ ?_ <;> simp
       map_add' := by
         intro f g
-        refine TrivSqZeroExt.ext ?_ ?_ <;> simp <;> ring
+        refine TrivSqZeroExt.ext ?_ ?_ <;> simp
       commutes' := by
         intro r
         refine TrivSqZeroExt.ext ?_ ?_

@@ -129,7 +129,6 @@ theorem contracts_chain : ∀ (m : ℕ) (G : Fin (m + 1) → Type) [∀ j, Monoi
       induction y using TensorProduct.induction_on with
       | zero =>
         simp only [map_zero, TensorProduct.zero_tmul]
-        all_goals exact (map_zero _).symm
       | tmul t a =>
         rw [he, hψ, hψ, LinearMap.lTensor_tmul, LinearMap.lTensor_tmul]
         have h0 : π₀ (φ 0 (g (Fin.castSucc 0), g (Fin.succ 0)) a ⊗ₜ σ 0 (g 0) v) =
@@ -155,7 +154,7 @@ theorem contracts_chain : ∀ (m : ℕ) (G : Fin (m + 1) → Type) [∀ j, Monoi
             gs (Fin.succ 0) = 1 ∧ (∀ j : Fin m, gs j.succ.castSucc = 1) ∧ (∀ j : Fin m, gs j.succ.succ = 1) ∧
             gs (Fin.last (m + 1)) = 1 :=
           ⟨Pi.mulSingle (Fin.castSucc 0) h, Pi.mulSingle_eq_same _ _, Pi.mulSingle_eq_same _ _,
-            Pi.mulSingle_eq_of_ne (by simp [Fin.ext_iff]) _, fun j => Pi.mulSingle_eq_of_ne (by simp [Fin.ext_iff]) _,
+            Pi.mulSingle_eq_of_ne (by simp) _, fun j => Pi.mulSingle_eq_of_ne (by simp [Fin.ext_iff]) _,
             fun j => Pi.mulSingle_eq_of_ne (by simp [Fin.ext_iff]) _, Pi.mulSingle_eq_of_ne (by simp [Fin.ext_iff]) _⟩
         have hinv := hl gs hgl (e (t ⊗ₜ a)) v
         rw [← hinv, he]

@@ -139,7 +139,7 @@ theorem dv_succ_of_pow_eq_one {q : ℕ} (hq : q.Prime) {v : Module.End ℤ_[l] (
   rw [hvD, (Commute.one_right D).add_pow, Finset.sum_range_succ', Finset.sum_range_succ'] at key
   simp only [LinearMap.add_apply, LinearMap.sum_apply, Module.End.mul_apply,
     one_pow, _root_.mul_one, Module.End.natCast_apply, map_nsmul, pow_zero, Nat.choose_zero_right,
-    Nat.choose_one_right, pow_one, Module.End.one_apply, one_smul, zero_add, Nat.cast_one] at key
+    Nat.choose_one_right, pow_one, Module.End.one_apply, zero_add, Nat.cast_one] at key
   have hS : Dv (k + 2) (∑ x ∈ Finset.range (r + 1),
       (r + 1 + 1).choose (x + 1 + 1) • (D ^ (x + 1 + 1)) t) :=
     dv_sum _ _ fun x _ => dv_nsmul _ (dv_mono (by nlinarith) (hpow (x + 1 + 1) t))

@@ -40,7 +40,7 @@ private theorem alt_cons_cons_lemma_5 {M A : Type*} [Monoid M] [CommRing A] (T :
       + ∑ i, ∑ l, if l = i then 0 else _root_.GlobalTheory.PsChar.alt T n
           (Function.update (Function.update r i (a * r i)) l (b * r l)) := by
   rw [pseudo_character_sum_cons_expand, Fin.sum_univ_succ]
-  simp only [Fin.cons_zero, Fin.cons_succ, Fin.update_cons_zero, Fin.cons_update, pseudo_character_sum_cons_expand]
+  simp only [Fin.cons_zero, Fin.cons_succ, Fin.update_cons_zero, pseudo_character_sum_cons_expand]
   have hin : ∀ i : Fin n, ∑ l, _root_.GlobalTheory.PsChar.alt T n
       (Function.update (Function.update r i (a * r i)) l
         (b * Function.update r i (a * r i) l)) =
@@ -56,7 +56,7 @@ private theorem alt_cons_cons_lemma_5 {M A : Type*} [Monoid M] [CommRing A] (T :
     by_cases hl : l = i
     · subst hl; simp [mul_assoc]
     · rw [if_neg hl, if_neg hl, zero_add, Function.update_of_ne hl]
-  simp only [← Fin.cons_update, pseudo_character_sum_cons_expand, Finset.sum_sub_distrib, Function.update_self]
+  simp only [← Fin.cons_update, pseudo_character_sum_cons_expand, Finset.sum_sub_distrib]
   simp only [hin, Finset.sum_add_distrib, ← Finset.mul_sum]
   ring
 

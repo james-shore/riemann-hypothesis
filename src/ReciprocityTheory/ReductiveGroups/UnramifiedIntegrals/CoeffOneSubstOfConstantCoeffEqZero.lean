@@ -120,11 +120,9 @@ theorem cW_unfold {K : Type} [Field K] (g2 g3 : K) (k : ℕ) : cW g2 g3 k =
     else 0 := by
   rw [cW]
   first
-    | (rw [Nat.strongRecOn_beta]; rfl)
-    | (rw [Nat.strongRecOn'_beta]; rfl)
+    | (rw [Nat.strongRecOn_beta])
+    | (rw [Nat.strongRecOn'_beta])
     | (rw [Nat.strongRecOn_eq]; rfl)
-    | (unfold Nat.strongRecOn; rw [Nat.strongRec_eq]; rfl)
-    | (exact (Nat.strongRecOn_beta' ..).trans rfl)
 
 theorem cW_map (k : ℕ) : φ (cW g2 g3 k) = cW (φ g2) (φ g3) k := by
   induction k using Nat.strong_induction_on with

@@ -122,9 +122,9 @@ theorem nat_hasVal (hz : z ∈ ptsOver L (mCoordIdeal y)) (n : ℕ) (hn : (n : L
     (n : Ω) ≠ 0 ∧ HasVal y (0 : K → ℤ) (n : Ω)⁻¹ z (n : L)⁻¹ := by
   have h : HasVal y (0 : K → ℤ) (n : Ω) z (n : L) := by
     refine ⟨0, 0, C (n : ℤ), 1, homog_const _, by simpa using homog_const (ι := ι) 1, fun k => by simp, ?_, ?_, ?_⟩
-    · simp [aeval_C]
     · simp
-    · simp [aeval_C]
+    · simp
+    · simp
   exact hasVal_inv hz h hn
 
 end Ev

@@ -36,7 +36,7 @@ theorem affine {k : Type} [Field k] {n n' : Type} [Fintype n] [DecidableEq n] [F
   simp only [Pi.add_apply]
   rw [h1]
   simp only [stepPt, Matrix.mul_apply, Matrix.add_apply, of_apply, mul_add, Finset.sum_add_distrib, Pi.zero_apply,
-    dite_eq_ite, ite_self, mul_zero, Finset.sum_const_zero, add_zero]
+    dite_eq_ite, ite_self, add_zero]
   ring
 
 theorem det_unip {k : Type} [Field k] {n n' : Type} [Fintype n] [DecidableEq n] [Fintype n'] [DecidableEq n'] {c : ℕ}
@@ -96,7 +96,7 @@ theorem mul_embX {k : Type} [Field k] {n n' : Type} [Fintype n] [DecidableEq n] 
   · simp only [stepLin, of_apply, hF, Matrix.mul_apply]
     split_ifs with h
     · simp
-    · simp [h]
+    · simp
   · intro s'' _ hs
     refine Finset.sum_eq_zero fun t _ => ?_
     simp [hF, Ne.symm hs]

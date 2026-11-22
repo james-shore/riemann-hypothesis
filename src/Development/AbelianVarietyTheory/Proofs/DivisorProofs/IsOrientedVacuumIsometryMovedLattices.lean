@@ -173,7 +173,7 @@ theorem cplxO_move (IS : IsoMat S S') (IT : IsoMat T T') (τ : D.what₂.Tau) (s
   rw [Matrix.mul_smul, Matrix.smul_mul]
   congr 1
   calc _ = IT.pT τ * sT * (IT.qT τ * IT.pT τ) * z * (IS.qT τ * IS.pT τ) * sS * IS.qT τ := by simp only [Matrix.mul_assoc]
-    _ = _ := by rw [IT.qT_pT, IS.qT_pT]; simp only [Matrix.mul_assoc, Matrix.mul_one, Matrix.one_mul]
+    _ = _ := by rw [IT.qT_pT, IS.qT_pT]; simp only [Matrix.mul_assoc, Matrix.mul_one]
 
 theorem isFockVacAt_trH (IS : IsoMat S S') (IT : IsoMat T T') (ψ : AddChar (AF D.host.F) ℂ) {θ : InfFam D} (hθ : IsInfFam θ)
     (τ : D.what₂.Tau) (sS : Matrix (Fin S.rank) (Fin S.rank) ℂ) (sT : Matrix (Fin T.rank) (Fin T.rank) ℂ) {f : WO S T → ℂ}

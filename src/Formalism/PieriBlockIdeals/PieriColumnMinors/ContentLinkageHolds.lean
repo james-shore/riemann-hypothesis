@@ -35,7 +35,7 @@ theorem contentLinkage_holds : Linkage := by
     rw [Multiset.map_map]
     apply Multiset.map_congr rfl
     intro a _
-    simp [ψ, map_intCast]
+    simp [ψ]
   rw [key U, key U'] at hr
   have h2 := Multiset.map_injective hψ hr
   have h3 := congrArg (Multiset.map fun z : ZMod l => -z - (c : ZMod l)) h2

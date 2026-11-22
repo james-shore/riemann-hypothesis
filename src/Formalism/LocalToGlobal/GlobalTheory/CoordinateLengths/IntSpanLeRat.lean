@@ -88,7 +88,7 @@ theorem fnOf_frame (B : GL (Fin (D.R.N 0)) D.host.E)
       simp [subP, Matrix.mul_apply]
   simp only [fnOf, LinearMap.coe_mk, AddHom.coe_mk, map_mul, MvPolynomial.eval_C, Pi.one_apply, Matrix.one_mul]
   rw [key _ (fun τ => y.1 τ)]
-  simp only [Matrix.det_mul, mul_zpow, mul_pow, Finset.prod_mul_distrib]
+  simp only [Matrix.det_mul, mul_zpow, Finset.prod_mul_distrib]
   ring
 
 theorem onto_tL (hRC : RatInC D u) (hRG : RatGL D u) (T : Forms0 D u) (hA : admS D u) (w : D.what₂.places.Pl)

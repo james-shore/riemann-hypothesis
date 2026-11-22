@@ -21,7 +21,7 @@ def slU (x y z t : E) (hx : c x = x) (hy : c y = y) (hz : c z = z) (ht : c t = t
   ⟨GeneralLinearGroup.mkOfDetNeZero !![x, y; z, t] (by rw [det_fin_two_of, h]; exact one_ne_zero), by
     show (!![x, y; z, t])ᵀ * _ * (!![x, y; z, t]).map c = _
     ext i j
-    fin_cases i <;> fin_cases j <;> simp [mul_apply, Fin.sum_univ_two, hx, hy, hz, ht, vecMul, dotProduct] <;>
+    fin_cases i <;> fin_cases j <;> simp [mul_apply, Fin.sum_univ_two, hx, hy, hz, ht] <;>
       first | ring1 | linear_combination h | linear_combination -h⟩
 
 theorem slU_val (x y z t : E) (hx : c x = x) (hy : c y = y) (hz : c z = z) (ht : c t = t) (h : x * t - y * z = 1) :

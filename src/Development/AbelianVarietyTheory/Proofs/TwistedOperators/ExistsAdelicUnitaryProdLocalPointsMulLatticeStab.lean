@@ -124,7 +124,7 @@ theorem phi_unitary {σ : E →ₐ[F] E} {e : AF F} (he : e * e = e) {J M : Matr
   have ht : (phi e M)ᵀ = (1 - e) • 1 + e • Mᵀ := by simp [phi, Matrix.transpose_add, Matrix.transpose_smul]
   rw [hm, ht]
   simp only [add_mul, mul_add, Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.one_mul, Matrix.mul_one,
-    h1, h2, h3, he, zero_smul, add_zero, zero_add, ← Matrix.mul_assoc, hM]
+    h1, h2, h3, he, zero_smul, add_zero, zero_add, hM]
   rw [← add_smul, sub_add_cancel, one_smul]
 
 section Loc

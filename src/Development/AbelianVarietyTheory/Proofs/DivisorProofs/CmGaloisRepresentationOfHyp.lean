@@ -59,7 +59,7 @@ theorem charpoly_eq_of_one {K : Type} [CommRing K] {N : ℕ} (hN : N = 1) (M : M
   subst hN
   rw [Matrix.det_fin_one]
   ext k
-  simp [Matrix.charpoly, Matrix.det_fin_one, Matrix.charmatrix_apply]
+  simp [Matrix.charpoly]
 
 theorem lift_eq (T : Multiset ℂˣ) :
     (T.map (fun z : ℂ => z) : Multiset ℂ) = T.map (fun z : ℂˣ => (z : ℂ)) := by
@@ -122,7 +122,7 @@ theorem crystallineHodgeTate_det_rankOne {E Ω : Type} [Field E] [NumberField E]
   have : GlobalTheory.TripleGal.rk1 (Matrix.GeneralLinearGroup.det.comp r) = r := by
     ext g i j
     fin_cases i; fin_cases j
-    simp [GlobalTheory.TripleGal.rk1, Matrix.det_fin_one]
+    simp [GlobalTheory.TripleGal.rk1]
   rwa [this]
 
 end GlobalTheory.GalAut

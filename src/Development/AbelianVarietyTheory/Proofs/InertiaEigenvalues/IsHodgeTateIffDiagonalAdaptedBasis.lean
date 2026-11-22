@@ -155,7 +155,6 @@ theorem GlobalTheory.BKLim.isHT_iff_diag : ∀ (l : ℕ) [Fact l.Prime] (K K' : 
             have : c k = 0 := by
               first
                 | exact (algebraMap (Om l) ℂ_[l]).injective (by simpa using h0)
-                | exact UniformSpace.Completion.coe_injective _ (by simpa using h0)
             rw [this, map_zero]
           · intro hn; apply hk; omega
         rw [hz, mul_zero, mul_zero]

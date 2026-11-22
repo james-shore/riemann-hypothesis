@@ -34,7 +34,7 @@ lemma epsScalePt_mul (a b : k) : epsScalePt x a ≫ epsScalePt x b = epsScalePt 
   rw [sqZeroMapPt_comp]
   congr 1
   refine LinearMap.ext_ring ?_
-  simp [mul_comm]
+  simp
 
 variable (G : Over S) [GrpObj G] [IsCommMonObj G]
 

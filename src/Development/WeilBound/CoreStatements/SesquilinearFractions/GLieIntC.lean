@@ -31,7 +31,6 @@ theorem lc (C : Out.PolAV (Sp R)) (v : epsR R ⟶ C.A) (hv : IsLieBasis ![v]) (V
   haveI : Smooth C.A.hom := by
     first
     | exact SmoothOfRelativeDimension.smooth C.g C.A.hom
-    | exact SmoothOfRelativeDimension.smooth C.g
     | exact SmoothOfRelativeDimension.smooth (n := C.g)
   have hbc : IsBaseChange V jR := GlobalTheory.T.lie_model_isBaseChange (Sp R) C.A R V (𝟙 _) E0 E1 M0 M1 jR (fun e => hj e)
   refine ⟨E1, i1, m1, M1, hbc.basis b0, ?_⟩

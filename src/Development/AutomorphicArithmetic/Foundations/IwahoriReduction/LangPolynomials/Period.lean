@@ -187,7 +187,6 @@ theorem UpperTheory.Kd.C7.pPeriod :
           refine Finset.sum_congr rfl fun m _ => ?_
           clear_value P Ci μ η s e1 Nb Na b f
           ring_nf
-          done
   refine ⟨∑ i, z i • β.e i, ?_⟩
   have hPz : P = fun i => f (z i) := funext fun i => (hz i).symm
   have hfin : Φ.lam β x * μ =

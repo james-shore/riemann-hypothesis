@@ -215,7 +215,7 @@ theorem ofX_toX (h2 : (2 : F) ≠ 0) (hb0 : b 0 = 1) (hσ : σ (b 1) = - b 1)
   conv_rhs => rw [← mk_rc R b (S i j)]
   simp only [ofX, toX]
   rcases lt_trichotomy i j with h | h | h
-  · simp [h, h.le, not_lt.2 h.le, not_le.2 h, (herm_rc hb0 hσ hS i j).2]
+  · simp [h, h.le, not_le.2 h, (herm_rc hb0 hσ hS i j).2]
   · subst h
     simp [herm_diag h2 hb0 hσ hS i]
   · simp [h, h.le, not_lt.2 h.le, not_le.2 h, (herm_rc hb0 hσ hS i j).1]

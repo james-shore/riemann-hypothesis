@@ -163,16 +163,14 @@ theorem UpperTheory.surjective_eval_coordBlowupSubst_pushout_of_flat :
       · apply CommRingCat.hom_ext; apply RingHom.ext; intro b
         have := congrArg (fun f => f.hom b) huL
         simp only [CommRingCat.hom_comp, RingHom.comp_apply, CommRingCat.hom_ofHom] at this
-        simp only [CommRingCat.hom_comp, RingHom.comp_apply, CommRingCat.hom_ofHom, CommRingCat.hom_id,
-          RingHom.id_apply, Category.comp_id]
+        simp only [CommRingCat.hom_comp, RingHom.comp_apply, CommRingCat.hom_ofHom, Category.comp_id]
         rw [this]
         change fB b * fP 1 = β b
         rw [map_one, mul_one]; rfl
       · apply CommRingCat.hom_ext; apply RingHom.ext; intro p
         have := congrArg (fun f => f.hom p) huR
         simp only [CommRingCat.hom_comp, RingHom.comp_apply, CommRingCat.hom_ofHom] at this
-        simp only [CommRingCat.hom_comp, RingHom.comp_apply, CommRingCat.hom_ofHom, CommRingCat.hom_id,
-          RingHom.id_apply, Category.comp_id]
+        simp only [CommRingCat.hom_comp, RingHom.comp_apply, CommRingCat.hom_ofHom, Category.comp_id]
         rw [this]
         change fB 1 * fP (up p) = ρ p
         rw [map_one, one_mul]

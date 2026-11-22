@@ -21,7 +21,7 @@ theorem noab_inv_det_one {K : Type} [Field K] (A : GL (Fin 2) K) (h : (A : Matri
 theorem noab_trace_eq {K : Type} [Field K] (Z : Matrix (Fin 2) (Fin 2) K) (h : (1 + Z).det = 1) : Z.trace = - Z.det := by
   rw [Matrix.det_fin_two] at h
   rw [Matrix.det_fin_two, Matrix.trace_fin_two]
-  simp [Matrix.add_apply, Matrix.one_apply] at h
+  simp [Matrix.add_apply] at h
   linear_combination h
 
 theorem noab_norm_two (l : ℕ) [Fact l.Prime] : ‖((l : ℕ) : Qbar l)‖ ≤ ‖(2 : Qbar l)‖ := by
@@ -43,7 +43,7 @@ theorem noab_pow : ∀ (l : ℕ) [Fact l.Prime] (ε : ℝ) (Z : Matrix (Fin 2) (
   | succ b ih =>
     have e : (1 + Z) ^ (b + 1) - 1 - ((b + 1 : ℕ) : Qbar l) • Z = ((1 + Z) ^ b - 1 - (b : Qbar l) • Z)
         + ((1 + Z) ^ b - 1 - (b : Qbar l) • Z) * Z + (b : Qbar l) • (Z * Z) := by
-      simp only [pow_succ, Nat.cast_succ, add_smul, one_smul, mul_add, add_mul, sub_mul, mul_one, one_mul,
+      simp only [pow_succ, Nat.cast_succ, add_smul, one_smul, mul_add, sub_mul, mul_one, one_mul,
         Matrix.smul_mul]
       abel
     rw [e]
@@ -116,7 +116,7 @@ theorem noab_comm : ∀ (l : ℕ) [Fact l.Prime] (ε : ℝ) (A A' Z Z' : Matrix 
     generalize (1 + Z) ^ β = P
     generalize (1 + Z') ^ β = P'
     simp only [mul_sub, sub_mul, mul_one, one_mul, Matrix.mul_smul, Matrix.smul_mul, smul_add, smul_sub, mul_assoc,
-      ← mul_assoc A A', hAA']
+      hAA']
     abel
   rw [e]
   have h1 : GlobalTheory.SmallMat.Sm (ε ^ 2) (A * ((1 + Z) ^ β - 1 - (β : Qbar l) • Z) * A') := by

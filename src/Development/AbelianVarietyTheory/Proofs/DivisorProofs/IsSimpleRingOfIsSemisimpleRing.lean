@@ -268,17 +268,17 @@ theorem isSimpleRing_of_isSemisimpleRing {R : Type} [Ring R] [Nontrivial R] [IsS
       funext i
       by_cases hi : i = i0
       · subst hi; simp [e]
-      · simp [e, Pi.single_apply, hi]
+      · simp [e, hi]
     have hid : φ.symm e * φ.symm e = φ.symm e := by
       rw [← map_mul]; congr 1; funext i
       by_cases hi : i = i0
       · subst hi; simp [e]
-      · simp [e, Pi.single_apply, hi]
+      · simp [e, hi]
     rcases h _ hcen hid with h0 | h1
     · have := congrFun (congrArg φ h0) i0
       simp [e] at this
     · have := congrFun (congrArg φ h1) i1
-      simp [e, Pi.single_apply, h01.symm] at this
+      simp [e, h01.symm] at this
 
 theorem Datum.actF_injective (D : Datum p) : Function.Injective D.actF := by
   haveI : Nontrivial D.endO := by

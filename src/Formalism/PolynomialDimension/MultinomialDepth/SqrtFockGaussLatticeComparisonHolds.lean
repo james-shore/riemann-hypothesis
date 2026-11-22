@@ -84,8 +84,7 @@ theorem glAct_hXY {K : Type} [Field K] {k : ℕ} (g : GL (Fin k) K) : glAct g (h
         rw [map_sum, Finset.sum_mul]
         exact Finset.sum_congr rfl fun i _ => by rw [map_mul]; ring
     _ = ∑ i : Fin k, X (Sum.inl i) * X (Sum.inr i) := by
-        simp only [hm, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq', Finset.sum_ite_eq,
-          Finset.mem_univ, if_true]
+        simp only [hm, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
 
 theorem glAct_inv_glAct {K : Type} [Field K] {k : ℕ} (g : GL (Fin k) K) (f : PolXY K k) :
     glAct g⁻¹ (glAct g f) = f := by
@@ -421,9 +420,9 @@ theorem yDeg_add {k : ℕ} (m n : XY k →₀ ℕ) : yDeg (m + n) = yDeg m + yDe
 theorem xDeg_single_inl {k : ℕ} (i : Fin k) (n : ℕ) : xDeg (Finsupp.single (Sum.inl i : XY k) n) = n := by
   simp [xDeg, Finsupp.single_apply]
 theorem xDeg_single_inr {k : ℕ} (i : Fin k) (n : ℕ) : xDeg (Finsupp.single (Sum.inr i : XY k) n) = 0 := by
-  simp [xDeg, Finsupp.single_apply]
+  simp [xDeg]
 theorem yDeg_single_inl {k : ℕ} (i : Fin k) (n : ℕ) : yDeg (Finsupp.single (Sum.inl i : XY k) n) = 0 := by
-  simp [yDeg, Finsupp.single_apply]
+  simp [yDeg]
 theorem yDeg_single_inr {k : ℕ} (i : Fin k) (n : ℕ) : yDeg (Finsupp.single (Sum.inr i : XY k) n) = n := by
   simp [yDeg, Finsupp.single_apply]
 

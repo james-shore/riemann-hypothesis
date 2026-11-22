@@ -26,9 +26,9 @@ theorem coeff_optionEquivLeft_extDerivation {τ : Type}
   | mul_X p n hp =>
     rw [Derivation.leibniz, MvPolynomial.mkDerivation_X]
     rcases n with _ | v
-    · simp only [smul_zero, zero_add, smul_eq_mul, mul_zero, map_mul, MvPolynomial.optionEquivLeft_X_none]
+    · simp only [zero_add, smul_eq_mul, mul_zero, map_mul, MvPolynomial.optionEquivLeft_X_none]
       rcases k with _ | k
-      · simp [Polynomial.coeff_mul_X_zero, mul_comm (Polynomial.X) _]
+      · simp [mul_comm (Polynomial.X) _]
       · rw [mul_comm Polynomial.X, Polynomial.coeff_mul_X, Polynomial.coeff_mul_X, hp]
     · simp only [smul_eq_mul, map_add, map_mul, MvPolynomial.optionEquivLeft_X_some, optionEquivLeft_rename_some_complex_eq_C,
         Polynomial.coeff_add, Polynomial.coeff_mul_C, Polynomial.coeff_C_mul, hp, Derivation.leibniz]

@@ -9,7 +9,7 @@ open Formalism.FourierDecayAlt.C3
 theorem succAbove_val {n : ℕ} (p : Fin (n + 1)) (l : Fin n) :
     (p.succAbove l).val = if l.val < p.val then l.val else l.val + 1 := by
   unfold Fin.succAbove
-  split_ifs with h1 h2 h2 <;> simp_all [Fin.lt_def] <;> omega
+  split_ifs with h1 h2 h2 <;> simp_all [Fin.lt_def]
 
 private theorem sgnW_succ' (s : ℕ) : sgnW (s + 1) = (-1) ^ s * sgnW s := by
   unfold sgnW
@@ -33,7 +33,7 @@ theorem zb_det (i0 s : ℕ) (h : Matrix (Fin i0) (Fin i0) ℂ) (t : ℂ) :
     show Matrix.det (Matrix.of fun a b : Fin i0 => Zb i0 0 h t a.val b.val) = _
     congr 1
     ext a b
-    simp [Zb, a.isLt, b.isLt]
+    simp [Zb]
   | succ s ih =>
     rw [Matrix.det_succ_row _ (⟨i0, by omega⟩ : Fin (i0 + s + 1)), Finset.sum_eq_single (Fin.last _)]
     · have hsub : (Matrix.of fun a b : Fin (i0 + (s + 1)) => Zb i0 (s + 1) h t a.val b.val).submatrix
@@ -46,7 +46,7 @@ theorem zb_det (i0 s : ℕ) (h : Matrix (Fin i0) (Fin i0) ℂ) (t : ℂ) :
         by_cases ha : (a : ℕ) < i0
         · simp only [ha, if_true]
           unfold Zb
-          split_ifs <;> first | rfl | omega
+          split_ifs <;> first | rfl
         · simp only [ha, if_false]
           unfold Zb
           split_ifs <;> first | rfl | omega
@@ -76,7 +76,7 @@ theorem derivative_leading_zb : DleadZb := by
   unfold Dlead
   congr 1
   ext a b
-  simp [Zb, a.isLt, b.isLt]
+  simp [Zb]
 
 theorem minors_first_case : MinorsFirstCase := by
   intro i0 s' h t c

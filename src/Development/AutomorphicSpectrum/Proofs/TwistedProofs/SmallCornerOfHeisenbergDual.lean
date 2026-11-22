@@ -27,8 +27,8 @@ theorem st_add (σ : L →+* L) (A B : Matrix (Fin N) (Fin N) L) : st σ (A + B)
 theorem st_one (σ : L →+* L) : st σ (1 : Matrix (Fin N) (Fin N) L) = 1 := by
   ext i j
   rcases eq_or_ne i j with rfl | h
-  · simp [st, Matrix.one_apply]
-  · simp [st, Matrix.one_apply, h, Ne.symm h, Fin.rev_inj]
+  · simp [st]
+  · simp [st, h, Ne.symm h, Fin.rev_inj]
 
 theorem dv_vecMul (σ : L →+* L) (x : Fin N → L) (A : Matrix (Fin N) (Fin N) L) :
     dv σ (x ᵥ* A) = st σ A *ᵥ dv σ x := by

@@ -21,7 +21,7 @@ theorem corner_left (L : Matrix (Fin (r + 1)) (Fin (r + 1)) K) (hL : ∀ i, L i 
   simp only [Matrix.mul_apply, cornerM, Matrix.of_apply, cjT, Matrix.transpose_apply, Matrix.map_apply]
   simp only [mul_ite, mul_zero, ite_and, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   rw [Finset.sum_eq_single (Fin.last r)]
-  · simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true, if_pos rfl]
+  · simp only [if_true]
     rw [hL i, hL j]
     by_cases hi : i = Fin.last r <;> by_cases hj : j = Fin.last r <;> simp [hi, hj, hcj]
   · intro b _ hb; simp [hb]

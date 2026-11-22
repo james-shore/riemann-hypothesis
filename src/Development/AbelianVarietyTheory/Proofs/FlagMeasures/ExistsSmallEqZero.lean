@@ -19,8 +19,6 @@ theorem exists_small_eq_zero (E : Type) [Field E] [NumberField E] (j : ℕ)
   | exact @_root_.GlobalTheory.SmallIntegerVanishing.main
   | exact _root_.GlobalTheory.SmallIntegerVanishing.main
   | (apply _root_.GlobalTheory.SmallIntegerVanishing.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SmallIntegerVanishing.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SmallIntegerVanishing.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SmallIntegerVanishing.main ..)
 
 theorem eventually_eq_one (E : Type) [Field E] [NumberField E] (j : ℕ)

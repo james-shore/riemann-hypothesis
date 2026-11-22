@@ -34,7 +34,6 @@ theorem det_change {V₁ V₂ : Type} [AddCommGroup V₁] [Module ℂ V₁] [Add
       Finset.mul_sum]
     first
       | (refine Finset.sum_congr rfl fun c _ => Finset.sum_congr rfl fun d _ => ?_; simp; ring)
-      | (rw [Finset.sum_comm]; refine Finset.sum_congr rfl fun c _ => Finset.sum_congr rfl fun d _ => ?_; simp; ring)
   rw [e]
   simp [Matrix.det_mul, Matrix.det_conjTranspose, hU, hU']
 

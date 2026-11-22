@@ -52,7 +52,7 @@ private theorem herm_im_zero {g : ℕ} (M : Matrix (Fin g) (Fin g) ℂ) (s : Set
 private theorem bil_dvd {M : Type} [AddCommGroup M] (Bf : LinearMap.BilinForm ℤ M) (n : ℕ) (x y e e' : M) :
     (n : ℤ) ∣ Bf (x + n • e) (y + n • e') - Bf x y := by
   refine ⟨Bf x e' + Bf e y + n * Bf e e', ?_⟩
-  simp [map_add, map_nsmul, LinearMap.add_apply, nsmul_eq_mul]
+  simp [map_add, map_nsmul, LinearMap.add_apply]
   ring
 
 private theorem form_step {p : ℕ} [Fact p.Prime] {D : Datum p} {G : HTGroup p} (L : Link D G) (h : G.GAf) (n : ℕ)

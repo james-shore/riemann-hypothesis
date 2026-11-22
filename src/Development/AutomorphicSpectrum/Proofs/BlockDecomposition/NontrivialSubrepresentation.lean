@@ -53,7 +53,6 @@ theorem nontrivial_subrepresentation : ∀ (k : Type) [Field k] [ValuativeRel k]
     rw [← hf1]
     first
     | rfl
-    | simp
 
 end GlobalTheory.CompanionTheory.DegPrinSeries
 end

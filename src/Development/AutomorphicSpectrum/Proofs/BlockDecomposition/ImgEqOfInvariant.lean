@@ -75,10 +75,10 @@ theorem exists_signs (ι : A → A) (hι : ∀ a, ι (ι a) = a) :
       · rintro ⟨j, ⟨rfl, h⟩ | ⟨rfl, h⟩⟩
         · by_contra hc
           simp only [e, hc, if_false] at h
-          split_ifs at h <;> exact absurd h (by decide)
+          split_ifs at h
         · by_contra hc
           simp only [e, hc, if_false] at h
-          split_ifs at h <;> exact absurd h (by decide)
+          split_ifs at h
       · intro ha
         have hna := hI a ha
         rcases lt_trichotomy a (ι a) with h | h | h

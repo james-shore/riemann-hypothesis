@@ -52,7 +52,7 @@ theorem ZM_map_im {F : Type} [Field F] [NumberField F] {ι : Type} [Fintype ι] 
   by_cases h : v = u
   · subst h
     simp [ZB, blockDiagonal_apply]
-  · simp [ZB, blockDiagonal_apply, h]
+  · simp [blockDiagonal_apply, h]
 
 theorem ZM_symm_posDef_gauss (F : Type) [Field F] [NumberField F] (ι : Type) [Fintype ι]
     [DecidableEq ι] [DecidableEq (InfinitePlace F)] (M : ℕ) (B : Matrix ι ι F)

@@ -54,8 +54,6 @@ theorem unit_of_notMem (t : 𝓞 X.B.I.F) (ht : t ∉ p.1.asIdeal) :
       | exact (IsDedekindDomain.HeightOneSpectrum.valuedAdicCompletion_eq_valuation' (K := X.B.I.F) p.1
           (t : X.B.I.F)).trans
           (IsDedekindDomain.HeightOneSpectrum.valuation_of_algebraMap (K := X.B.I.F) p.1 t)
-      | exact (IsDedekindDomain.HeightOneSpectrum.valuedAdicCompletion_eq_valuation (K := X.B.I.F) p.1 t).trans
-          (IsDedekindDomain.HeightOneSpectrum.valuation_of_algebraMap (K := X.B.I.F) p.1 t)
     rw [e1]
     exact le_antisymm hle (not_lt.mp hnlt)
   have hne : algebraMap X.B.I.F (FpX X p) (t : X.B.I.F) ≠ 0 := by

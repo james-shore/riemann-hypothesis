@@ -102,9 +102,7 @@ theorem bc_mem_UPts (σ : E →ₐ[F] E) (J : Matrix n n E) (R : Type) [CommRing
   have key : cT (sigR σ R) ((inclE (F := F) R).mapMatrix ((g : GL n E) : Matrix n n E)) =
       (inclE (F := F) R).mapMatrix (cT (σ : E →+* E) ((g : GL n E) : Matrix n n E)) := by
     first
-    | (unfold cT; ext i j; simp [sigR, inclE]; done)
-    | (unfold cT; ext i j; simp [sigR, inclE, Matrix.conjTranspose_apply]; done)
-    | (unfold cT sigR inclE; done)
+    | (unfold cT; ext i j; simp [sigR, inclE])
   rw [key]
   have h2 := congrArg (inclE (F := F) R).mapMatrix hg
   simpa only [map_mul, RingHom.mapMatrix_apply] using h2
@@ -280,7 +278,7 @@ def colsEquiv (ιi : Γ →* Gi) (ψ : K →* kˣ) (π : Representation k Gi V) 
     apply Subtype.ext
     ext ξ y
     obtain ⟨_, hT2⟩ := T.2
-    have e : y = ((1 : Gi), y.2) * (y.1, (1 : Gf)) := by simp [Prod.ext_iff]
+    have e : y = ((1 : Gi), y.2) * (y.1, (1 : Gf)) := by simp
     show (T : V →ₗ[k] (Gi × Gf → k)) (π y.1 ξ) (1, y.2) = (T : V →ₗ[k] (Gi × Gf → k)) ξ y
     rw [hT2, ← e]
   right_inv f := by

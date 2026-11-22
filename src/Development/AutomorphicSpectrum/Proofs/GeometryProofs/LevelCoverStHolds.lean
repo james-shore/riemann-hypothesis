@@ -22,8 +22,6 @@ theorem genPt_spMap_comp {X : Scheme.{0}} {K Ω : Type} [Field K] [Field Ω] (i 
   congr 1
   first
   | exact Subsingleton.elim _ _
-  | exact IsLocalRing.comap_closedPoint i
-  | exact (IsLocalRing.PrimeSpectrum.comap_closedPoint i)
 
 theorem finite_descResidueField_spMap_comp {X : Scheme.{0}} {K Ω : Type} [Field K] [Field Ω] (i : K →+* Ω)
     (hi : i.Finite) (ξ : Sp K ⟶ X) (hξ : Function.Surjective (Scheme.stalkClosedPointTo ξ).hom) :
@@ -36,7 +34,6 @@ theorem finite_descResidueField_spMap_comp {X : Scheme.{0}} {K Ω : Type} [Field
         ξ.stalkMap (closedPoint K) ≫ (stalkClosedPointIso (CommRingCat.of K)).hom := by
       first
       | rfl
-      | simp [Scheme.stalkClosedPointTo]
     intro y
     obtain ⟨a, ha⟩ := hξ ((stalkClosedPointIso (CommRingCat.of K)).hom y)
     refine ⟨a, ?_⟩
@@ -57,8 +54,6 @@ theorem finite_descResidueField_spMap_comp {X : Scheme.{0}} {K Ω : Type} [Field
     rw [← CommRingCat.hom_comp] at h3
     first
     | exact e2 ▸ h3
-    | exact (congrArg (fun φ => (CommRingCat.Hom.hom φ).Finite) e2).mpr h3
-    | (rw [e2]; exact h3)
   refine RingHom.Finite.of_comp_finite (f := (X.residue _).hom) ?_
   rw [← CommRingCat.hom_comp, Scheme.residue_descResidueField]
   exact hC
@@ -79,7 +74,6 @@ theorem levelCover : LevelCoverSt := by
   have hi : (algebraMap K Ω).Finite := by
     first
     | exact RingHom.finite_algebraMap.mpr hfd
-    | exact hfd
   have hfin := finite_descResidueField_spMap_comp (algebraMap K Ω) hi (y0 ≫ Y.j) hsurj
   obtain ⟨n, x, M, π, hMn, hπ, hMπ⟩ :=
     GlobalTheory.T.exists_finite_normal_model_of_residue_finite Y.X _ hproj Ω (spMap (algebraMap K Ω) ≫ (y0 ≫ Y.j)) hfin

@@ -40,9 +40,6 @@ theorem cont_cpt' (X : Data E r) (x0 : Frame X.Ψ r) : Continuous (cpt X x0) := 
     split_ifs
     · first
         | fun_prop
-        | exact (EuclideanSpace.proj _).continuous
-        | exact PiLp.continuous_apply _ _ _
-        | continuity
     · exact continuous_const
     · exact continuous_const
   exact continuous_const.matrix_mul hn
@@ -57,8 +54,6 @@ private theorem gram_continuous_comp {α : Type*} [TopologicalSpace α] (τ : E 
   refine ((hf.matrix_elem k a).mul continuous_const).mul ?_
   first
     | exact Complex.continuous_conj.comp (hf.matrix_elem l b)
-    | exact (hf.matrix_elem l b).star
-    | fun_prop
 
 theorem isOpen_Bset (X : Data E r) (x : Frame X.Ψ r) (ρ : ℝ) : IsOpen (Bset X x ρ) := by
   have hdom : IsOpen X.dom := by
@@ -71,14 +66,10 @@ theorem isOpen_Bset (X : Data E r) (x : Frame X.Ψ r) (ρ : ℝ) : IsOpen (Bset 
     · have hmat : Continuous fun y : Frame X.Ψ r => mat y τ := by
         first
           | exact continuous_apply τ
-          | (unfold mat; exact continuous_apply τ)
-          | fun_prop
       exact isOpen_ne_fun hmat.matrix_det continuous_const
     · have hmat : Continuous fun y : Frame X.Ψ r => mat y τ := by
         first
           | exact continuous_apply τ
-          | (unfold mat; exact continuous_apply τ)
-          | fun_prop
       have hdm : Continuous fun y : Frame X.Ψ r => dmin X.Gm y τ i := by
         unfold dmin lminor
         exact ((gram_continuous_comp τ.1 X.Gm hmat).matrix_submatrix _ _).matrix_det
@@ -134,8 +125,6 @@ private theorem apply_cc_eq_starRingEnd_apply (τ : E →+* ℂ) (z : E) : τ (c
   first
     | exact NumberField.IsCMField.complexEmbedding_complexConj τ z
     | exact NumberField.IsCMField.complexEmbedding_complexConj E τ z
-    | exact NumberField.IsCMField.complexEmbedding_complexConj (K := E) τ z
-    | simp
 
 private theorem gram_eq_transpose_mul_mul_map_conj (τ : E →+* ℂ) (G : Matrix (Fin r) (Fin r) E) (M : Matrix (Fin r) (Fin r) ℂ) :
     ReciprocityTheory.ChartRestriction.G.FD.gram τ G M = M.transpose * G.map τ * M.map (starRingEnd ℂ) := by
@@ -153,7 +142,7 @@ private theorem transpose_mul_mul_map_cc_eq_of_isUStab' {γ : GL (Fin r) E} {G :
     by_cases hb : b = q
     · subst hb
       simp [cc]
-    · simp [cc, hb, Pi.single_apply]
+    · simp [cc, hb]
   have hv : ∀ (j a : Fin r), ((γ : Matrix (Fin r) (Fin r) E) *ᵥ (Pi.single j (1 : E) : Fin r → E)) a =
       (γ : Matrix (Fin r) (Fin r) E) a j := by
     intro j a
@@ -214,8 +203,6 @@ private theorem differentiable_lact_upper_bounds (X : Data E r) (γ : GL (Fin r)
   simp only [lact, mat, Matrix.mul_apply, Matrix.of_apply]
   first
     | fun_prop
-    | exact Differentiable.sum fun k _ => ((differentiable_apply b).comp
-        ((differentiable_apply k).comp (differentiable_apply τ))).const_mul _
 
 theorem key_int (X : Data E r) (la : Wt X.Ψ r) (W : Frame X.Ψ r → ℝ≥0∞) (hW : IsMetricW X la W)
     {c : ℝ} (hc : 0 < c) (hcW : ∀ x ∈ X.dom, ENNReal.ofReal (c * Real.exp (-phla X la x)) ≤ W x)
@@ -270,8 +257,6 @@ theorem key_int (X : Data E r) (la : Wt X.Ψ r) (W : Frame X.Ψ r → ℝ≥0∞
         _ ≤ supR X la W ρ x ^ 2 := by
           first
             | exact pow_le_pow_left' h1 2
-            | exact pow_le_pow_left₀ (zero_le _) h1 2
-            | gcongr
     have he : e ≤ supR X la W ρ x ^ 2 * W (cpt X x w) := by
       calc e = e / W (cpt X x w) * W (cpt X x w) := (ENNReal.div_mul_cancel hW0 hWT).symm
         _ ≤ supR X la W ρ x ^ 2 * W (cpt X x w) := by gcongr
@@ -348,8 +333,6 @@ theorem ball_of (hA : SubMeanStatement (E := E)) (hS : SumBallStatement (E := E)
       ≤ ∑' γ : X.Γ, CA ^ (1 / 2 : ℝ) * supR X la W ρ x * (∫⁻ w in Bset X x ρ0, ‖P (lact γ.1 (cpt X x w))‖ₑ ^ 2 * W (lact γ.1 (cpt X x w))) ^ (1 / 2 : ℝ) := by
         first
           | exact ENNReal.tsum_le_tsum hpt
-          | exact ENNReal.tsum_mono hpt
-          | exact tsum_mono ENNReal.summable ENNReal.summable hpt
     _ = CA ^ (1 / 2 : ℝ) * supR X la W ρ x * ∑' γ : X.Γ, (∫⁻ w in Bset X x ρ0, ‖P (lact γ.1 (cpt X x w))‖ₑ ^ 2 * W (lact γ.1 (cpt X x w))) ^ (1 / 2 : ℝ) :=
         ENNReal.tsum_mul_left
     _ ≤ CA ^ (1 / 2 : ℝ) * supR X la W ρ x * CS := by

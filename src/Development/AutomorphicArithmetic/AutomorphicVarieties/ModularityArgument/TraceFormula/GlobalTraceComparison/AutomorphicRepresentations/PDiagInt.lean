@@ -15,5 +15,5 @@ theorem UpperTheory.V.Z.Tf.GlobalTraceComparison.Pi.diagInt_pf :
   have hb := fun b => (hH E n ι s m (p.w b) (p.mem b) (p.x b) (p.zero b)).1
   have hsum := MeasureTheory.integrable_finset_sum (Finset.univ : Finset p.B) fun b _ => hb b
   refine hsum.congr (Filter.Eventually.of_forall fun x => ?_)
-  simp only [Finset.sum_apply]
+  simp only
   exact (hp m x x).symm

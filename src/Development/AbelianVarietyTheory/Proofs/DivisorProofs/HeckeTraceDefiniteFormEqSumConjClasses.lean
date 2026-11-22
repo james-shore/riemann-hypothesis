@@ -167,7 +167,7 @@ theorem locPart_map_eq (ι₁ : Γ →* G₁) (ι₂ : Γ →* G₂) (K₁ : Sub
     GlobalTheory.LKLoc.locPart (C.map (ι₁.prod ι₂)) (K₁.prod K₂) x = (stab ι₁ ι₂ K₁ K₂ x ⊓ C).map (ι₁.prod ι₂) := by
   ext δ
   rw [GlobalTheory.FinTF.mem_locPart_iff]
-  simp only [Subgroup.mem_map, Subgroup.mem_inf, stab, Subgroup.mem_comap, mem_map_conj, Subgroup.mem_prod]
+  simp only [Subgroup.mem_map, Subgroup.mem_inf, stab, Subgroup.mem_comap, Subgroup.mem_prod]
   constructor
   · rintro ⟨⟨w, hw, rfl⟩, h1, h2⟩
     exact ⟨w, ⟨⟨(mem_map_conj _ _ _).2 (by simpa using h1), (mem_map_conj _ _ _).2 (by simpa using h2)⟩, hw⟩, rfl⟩
@@ -212,8 +212,7 @@ theorem emb_injective {G : HTGroup p} (B : GlobalTheory.LKDef.DForm G) : Functio
   have hq : Function.Injective (algebraMap ℚ (AfP p)) := (algebraMap ℚ (AfP p)).injective
   intro y z h
   have h1 := congrArg (fun w : G.GAf × Gr G 1 => ((w.1 : G.GAf) : (AfP p ⊗[ℚ] G.C)ˣ × (AfP p)ˣ)) h
-  simp only [GlobalTheory.LKDef.DForm.emb, GlobalTheory.LKDef.DForm.embAt, MonoidHom.prod_apply, GlobalTheory.LKCx.toAfF,
-    MonoidHom.codRestrict_apply] at h1
+  simp only [GlobalTheory.LKDef.DForm.emb, GlobalTheory.LKDef.DForm.embAt, MonoidHom.prod_apply, GlobalTheory.LKCx.toAfF] at h1
   obtain ⟨ha, hb⟩ := Prod.ext_iff.1 h1
   simp at ha hb
   have ha' := congrArg (fun u : (AfP p ⊗[ℚ] G.C)ˣ => (u : AfP p ⊗[ℚ] G.C)) ha

@@ -39,28 +39,14 @@ private theorem exists_unitary_diagonal_of_isHermitian {n : ℕ} (X : Matrix (Fi
       (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) = 1 := by
     first
       | exact hX.eigenvectorUnitary.2.1
-      | exact (Matrix.mem_unitaryGroup_iff'.mp hX.eigenvectorUnitary.2)
-      | exact Unitary.star_mul_self_of_mem hX.eigenvectorUnitary.2
-      | exact unitary.star_mul_self_of_mem hX.eigenvectorUnitary.2
   have h2 : (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) *
       star (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) = 1 := by
     first
       | exact hX.eigenvectorUnitary.2.2
-      | exact (Matrix.mem_unitaryGroup_iff.mp hX.eigenvectorUnitary.2)
-      | exact Unitary.mul_star_self_of_mem hX.eigenvectorUnitary.2
-      | exact unitary.mul_star_self_of_mem hX.eigenvectorUnitary.2
   refine ⟨hX.eigenvectorUnitary, hX.eigenvalues, h1, h2, ?_⟩
   first
     | (conv_lhs => rw [hX.spectral_theorem]); simp [Function.comp_def]
-    | (conv_lhs => rw [hX.spectral_theorem]); simp [Function.comp_def, Unitary.conjStarAlgAut_apply]
-    | (have h3 := hX.star_mul_self_mul_eq_diagonal
-       calc X = (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) *
-              (star (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) * X *
-                (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ)) *
-              star (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) := by
-             simp only [← Matrix.mul_assoc, h2, Matrix.one_mul]
-             rw [Matrix.mul_assoc, h2, Matrix.mul_one]
-         _ = _ := by rw [h3]; simp [Function.comp_def])
+    | (conv_lhs => rw [hX.spectral_theorem])
 
 theorem inst_qfamily {n : ℕ} (ε : Fin n → Bool) (Q : Matrix (Fin n) (Fin n) ℂ) (hQQ : Q * Q = Q)
     (hQJ : Qᴴ * Formalism.REAL.Jm ε = Formalism.REAL.Jm ε * Q) :
@@ -113,7 +99,6 @@ theorem inst_qfamily {n : ℕ} (ε : Fin n → Bool) (Q : Matrix (Fin n) (Fin n)
         simp only [hsdef, hμ, if_false, Complex.star_def, Complex.conj_ofReal]
         first
           | (push_cast; ring)
-          | push_cast
       simp only [Pi.star_apply]
       rw [hc, hsr, if_neg hμ]
       split_ifs <;> simp

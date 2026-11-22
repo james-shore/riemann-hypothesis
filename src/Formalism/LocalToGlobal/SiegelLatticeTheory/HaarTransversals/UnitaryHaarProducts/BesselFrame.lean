@@ -251,7 +251,6 @@ theorem Qi_mulVec (y : Fin (2 * r + k + 1) → ℂ) (i : Fin (2 * r + k + 1)) :
   unfold Qi
   rw [← Matrix.mulVec_mulVec, ← Matrix.mulVec_mulVec, Hpk_mulVec]
   congr 1
-  all_goals simp only [hJ, mulVec, dotProduct, conjTranspose_apply, Qm, Matrix.of_apply, Pi.star_apply]
 
 theorem sig_eI_eq (a : Fin r) : GBasic.sig k r (eI k r a) = esI k r a := Fin.ext (by rw [sig_eI, esI_val])
 
@@ -477,7 +476,7 @@ theorem Tz_zB {T : ℝ} (hT : 0 ≤ T) : Tz k r (zBv k r T) = T := by
 theorem inWb_zB (T : ℝ) : inWb k r (zBv k r T) := by
   intro i hi
   simp only [zBv, Pi.smul_apply, bvec, Pi.single_apply, smul_eq_mul]
-  rw [if_neg (fun h => by subst h; rw [wI_val] at hi; (simp at hi) <;> omega), mul_zero]
+  rw [if_neg (fun h => by subst h; rw [wI_val] at hi; (simp at hi)), mul_zero]
 
 theorem frameW_one (T : ℝ) (hT : 0 ≤ T) : IsFrameW k r (zBv k r T) 1 := by
   refine ⟨by show (1 : Matrix _ _ ℂ)ᴴ * Hpk k r * 1 = Hpk k r; simp, fun a => ⟨by simp, by simp⟩, ?_⟩

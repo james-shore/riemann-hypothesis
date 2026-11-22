@@ -60,7 +60,7 @@ private theorem std_ne (β ν : kˣ →* ℂˣ) (ϖ : kˣ) (c a a' : ℕ) (hϖ :
       intro e; have := congrArg Fin.val e; simp at this; omega
     simp [hne] at hij
   · ext i j
-    simp [blk₁, X0, invT_val, Matrix.one_apply]
+    simp [blk₁, X0, Matrix.one_apply]
 
 private theorem bigF_change (ν : kˣ →* ℂˣ) (ϖ : kˣ) (c a a' : ℕ) (hϖ : IsUnif ϖ) (g : GL (Fin a) k)
     (M : Matrix (Fin (a + a')) (Fin (a + a')) k) (X : Matrix (Fin a) (Fin (a + a')) k) :

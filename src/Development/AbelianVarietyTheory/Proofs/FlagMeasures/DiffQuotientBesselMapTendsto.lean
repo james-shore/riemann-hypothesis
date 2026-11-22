@@ -309,7 +309,7 @@ variable [CompleteSpace H]
 theorem dsigW_zero {σ : Mat k r → (H →L[ℂ] H)} (hσ : IsURepOn (GG k r) σ) (W : List (Mat k r))
     (hW : ∀ X ∈ W, InLieHpk k r X) : dsigW σ W 0 = 0 := by
   have h := dsigW_comb hσ W hW 1 (sm_zero σ) (sm_zero σ) (sm_zero σ)
-  simp only [sub_self, smul_zero, zero_sub, one_smul] at h
+  simp only [sub_self, smul_zero, zero_sub] at h
   have h2 : (2 : ℂ) • dsigW σ W 0 = 0 := by
     rw [two_smul]
     nth_rewrite 1 [h]

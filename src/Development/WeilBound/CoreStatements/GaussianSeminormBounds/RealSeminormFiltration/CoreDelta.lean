@@ -88,15 +88,15 @@ private theorem dl_pderiv_inl_X_eq_rTensor (a : Ix p q) (k : Fin r) (i : Ln p q 
       simp [Algebra.TensorProduct.one_def]
     · have h1 : ((b, Sum.inl m) : Ln p q r s) ≠ (a, Sum.inl k) := by simpa using h
       have h2 : ((b, Sum.inl m) : Ln p q r 0) ≠ (a, Sum.inl k) := by simpa using h
-      simp [pderiv_X, Pi.single_apply, h1, h2]
+      simp [pderiv_X, h1, h2]
   · rw [dl_XR, LinearMap.rTensor_tmul]
-    simp [pderiv_X, Pi.single_apply]
+    simp [pderiv_X]
 
 theorem dl_pdL (a : Ix p q) (k : Fin r) (f : Pol p q r s) :
     dl p q r s (pderiv (a, Sum.inl k) f) =
       (pderiv ((a, Sum.inl k) : Ln p q r 0)).toLinearMap.rTensor _ (dl p q r s f) := by
   induction f using MvPolynomial.induction_on with
-  | C c => simp [dl_C]
+  | C c => simp
   | add f g hf hg => simp only [map_add, hf, hg]
   | mul_X f i hf =>
     have h1 : pderiv (a, Sum.inl k) (f * X i) =
@@ -115,20 +115,20 @@ private theorem dl_pderiv_inr_X_eq_lTensor (a : Ix p q) (k : Fin s) (i : Ln p q 
       (pderiv ((a, Sum.inr k) : Ln p q 0 s)).toLinearMap.lTensor _ (dl p q r s (X i)) := by
   obtain ⟨b, m | m⟩ := i
   · rw [dl_XL, LinearMap.lTensor_tmul]
-    simp [pderiv_X, Pi.single_apply]
+    simp [pderiv_X]
   · rw [dl_XR, LinearMap.lTensor_tmul]
     by_cases h : b = a ∧ m = k
     · obtain ⟨rfl, rfl⟩ := h
       simp [Algebra.TensorProduct.one_def]
     · have h1 : ((b, Sum.inr m) : Ln p q r s) ≠ (a, Sum.inr k) := by simpa using h
       have h2 : ((b, Sum.inr m) : Ln p q 0 s) ≠ (a, Sum.inr k) := by simpa using h
-      simp [pderiv_X, Pi.single_apply, h1, h2]
+      simp [pderiv_X, h1, h2]
 
 theorem dl_pdR (a : Ix p q) (k : Fin s) (f : Pol p q r s) :
     dl p q r s (pderiv (a, Sum.inr k) f) =
       (pderiv ((a, Sum.inr k) : Ln p q 0 s)).toLinearMap.lTensor _ (dl p q r s f) := by
   induction f using MvPolynomial.induction_on with
-  | C c => simp [dl_C]
+  | C c => simp
   | add f g hf hg => simp only [map_add, hf, hg]
   | mul_X f i hf =>
     have h1 : pderiv (a, Sum.inr k) (f * X i) =
@@ -235,7 +235,7 @@ theorem dl_unit (a b : Ix p q) (f : Pol p q r s) :
       (fockAct1 p q 0 s (Eab a b)).lTensor _ (dl p q r s f) := by
   rw [act_unit, act_unit, act_unit, sumL, sumR]
   simp only [Fintype.sum_sum_type, LinearMap.add_apply, map_add, LinearMap.sum_apply, map_sum, dl_omL, dl_omR,
-    Finset.univ_eq_empty, Finset.sum_empty, add_zero, zero_add, Fin.sum_univ_zero]
+    Finset.univ_eq_empty, Finset.sum_empty, add_zero, zero_add]
 
 theorem eq_sum_units (Z : Mat p q) : Z = ∑ a, ∑ b, Z a b • Eab a b := by
   conv_lhs => rw [Matrix.matrix_eq_sum_single Z]

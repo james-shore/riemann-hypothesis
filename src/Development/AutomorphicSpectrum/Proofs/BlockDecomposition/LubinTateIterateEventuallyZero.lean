@@ -154,7 +154,7 @@ theorem exists_ltIter_mem_one (ϖ' : B) (hϖ : ϖ * ϖ' = 1) (θ : B →+* C) (h
   obtain ⟨N, hN⟩ := hc m
   obtain ⟨s, hs, hd⟩ := hN (n + N) (by omega)
   have e := (hθ _).mpr hd
-  simp only [map_sub, map_mul, map_pow, map_zero, sub_zero] at e
+  simp only [map_sub, map_mul, map_pow, sub_zero] at e
   have e2 : ‖θ ϖ‖ ^ c * (‖θ ϖ'‖ ^ (n + N) * ‖θ (ltIter ϖ q (n + N) Q)‖) = ‖θ ϖ‖ ^ m * ‖θ s‖ := by
     have := congrArg norm (sub_eq_zero.mp e)
     simpa only [norm_mul, norm_pow] using this

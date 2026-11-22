@@ -62,7 +62,7 @@ theorem isIntegral_half : IsIntegral ℤ ((1 + H.s) / 2) := by
   · monicity!
   · have hs := H.s_sq
     simp only [Polynomial.eval₂_add, Polynomial.eval₂_sub, Polynomial.eval₂_X_pow,
-      Polynomial.eval₂_X, Polynomial.eval₂_C, eq_intCast, Int.cast_natCast,
+      Polynomial.eval₂_X, eq_intCast, Int.cast_natCast,
       Polynomial.eval₂_natCast]
     linear_combination (1 / 4 : E) * hs - (1 / 4 : E) * hk'
 

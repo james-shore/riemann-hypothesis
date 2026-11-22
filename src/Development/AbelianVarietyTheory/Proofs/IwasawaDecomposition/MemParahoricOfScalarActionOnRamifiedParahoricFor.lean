@@ -59,23 +59,19 @@ theorem det_G (h : Matrix (Fin m) (Fin m) K) (i0 j0 : Fin m) (t : K) :
     (Gmat h i0 j0 t).det = 1 + h i0 j0 * t := by
   rw [Gmat, Matrix.det_one_add_mul_comm, Matrix.det_unique]
   simp [colVecAt, rowVecAt, Matrix.mul_apply]
-  done
 
 theorem det_P (h : Matrix (Fin m) (Fin m) K) (i0 j0 : Fin m) (t : K) :
     (Pmat h i0 j0 t).det = 1 + h i0 j0 * t := by
   rw [Pmat, Matrix.det_one_add_mul_comm, Matrix.det_unique]
   simp [colVecAt, rowVecAt, Matrix.mul_apply]
-  done
 
 theorem G_apply (h : Matrix (Fin m) (Fin m) K) (i0 j0 : Fin m) (t : K) (i j : Fin m) :
     Gmat h i0 j0 t i j = (1 : Matrix (Fin m) (Fin m) K) i j + if j = i0 then h i j0 * t else 0 := by
   simp [Gmat, colVecAt, rowVecAt, Matrix.mul_apply]
-  done
 
 theorem P_apply (h : Matrix (Fin m) (Fin m) K) (i0 j0 : Fin m) (t : K) (i j : Fin m) :
     Pmat h i0 j0 t i j = (1 : Matrix (Fin m) (Fin m) K) i j + if i = j0 then t * h i0 j else 0 := by
   simp [Pmat, colVecAt, rowVecAt, Matrix.mul_apply]
-  done
 
 theorem conj_G (h h' : Matrix (Fin m) (Fin m) K) (hh : h' * h = 1) (i0 j0 : Fin m) (t : K) :
     h' * Gmat h i0 j0 t * h = Pmat h i0 j0 t := by

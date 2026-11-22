@@ -85,7 +85,7 @@ theorem UpperTheory.V.Ws.normal :
       rw [← adj_mul', ← adj_mul', hgu]
     calc ν • (adj u * u) = adj u * (adj g * g) * u := by
           rw [hg']
-          simp [Matrix.mul_smul, Matrix.smul_mul]
+          simp
       _ = (adj u * adj g) * (g * u) := by simp only [Matrix.mul_assoc]
       _ = adj (Matrix.diagonal d) * adj u * (u * Matrix.diagonal d) := by rw [e1, hgu]
       _ = _ := by simp only [Matrix.mul_assoc]

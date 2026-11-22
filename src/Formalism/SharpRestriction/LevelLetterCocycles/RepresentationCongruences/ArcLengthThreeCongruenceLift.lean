@@ -176,7 +176,7 @@ theorem arc_length_three_congruence_lift [NeZero n] [Fintype (K →ₐ[Qp] LL)] 
       (W.AΔ.pow_mem (Formalism.MainNotions.UnusedSlot80.PhiPowers.φA_mem_AΔ W (hpk 0)) _)
   have hφJJ : W.φA (Formalism.MainNotions.LiftingTheory.JJ W 1 (2 * A.G₀) MA) = W.π₀ * aJ := by
     rw [Formalism.MainNotions.LiftingTheory.JJ, Finset.prod_range_one, map_mul, map_pow, map_pow, hT1, haJe]
-    have e0 : W.π₀ ^ MA = W.π₀ * W.π₀ ^ (MA - 1) := by rw [← pow_succ']; congr 1 <;> omega
+    have e0 : W.π₀ ^ MA = W.π₀ * W.π₀ ^ (MA - 1) := by rw [← pow_succ']; congr 1
     rw [e0]; ring
   rw [hφJJ] at h4e
 

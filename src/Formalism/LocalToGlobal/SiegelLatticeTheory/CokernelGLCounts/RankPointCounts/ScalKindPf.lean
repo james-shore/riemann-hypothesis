@@ -24,7 +24,7 @@ theorem det_updateCol_last_single (A : Matrix (Fin (r + 1)) (Fin (r + 1)) K) (c 
     have e : (A.updateCol (Fin.last r) (Pi.single (Fin.last r) c)).submatrix Fin.castSucc Fin.castSucc =
         A.submatrix Fin.castSucc Fin.castSucc := by
       ext i j
-      simp [Matrix.updateCol_ne (Fin.castSucc_lt_last j).ne]
+      simp
     rw [e, ← two_mul, pow_mul]
     simp
   · intro i _ hi
@@ -233,7 +233,7 @@ theorem zeta_core (k : ℕ) (F : LFlag S r T) (F' F'' : LFlag S r T') (β : S.V 
       rw [one_smul, map_add, hermitian_frame_z, hT_wv, hAv]
       by_cases hi : i = Fin.last r
       · subst hi; simp [hb]
-      · simp [hb, hi, Pi.single_eq_of_ne hi]
+      · simp [hb, hi]
     obtain ⟨v'', hl'', hv''⟩ := transfer 1 v hvz
     have hA''v : A'' *ᵥ v'' = b := funext fun i => by
       have := hv'' i

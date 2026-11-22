@@ -48,7 +48,7 @@ theorem lineVert_prod_weight [Fintype K] (m : (Σ k, ι k) →₀ ℕ) :
       Finset.prod_eq_single p.1]
     · simp [blockWeight]
     · intro k _ hk
-      simp [blockWeight, Pi.single_apply, hk]
+      simp [blockWeight, hk]
     · simp
 
 theorem lineVert_cone_homog [Fintype K] (y : (Σ k, ι k) → Ω) {h : MRing ι ℤ} {b : K → ℕ}

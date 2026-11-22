@@ -45,7 +45,6 @@ theorem exists_adjoint_similitude : ∀ (p : ℕ) [Fact p.Prime] (D : Datum p) (
   · intro x y
     have h := hE (g' x) (g' y)
     rw [h1, h1, map_nsmul, map_nsmul, LinearMap.smul_apply, smul_smul] at h
-    push_cast [hdiv]
     have hqZ : ((k : ℤ) ^ 2 / c) = q := by
       rw [show (k : ℤ) ^ 2 = ((k ^ 2 : ℕ) : ℤ) by push_cast; ring, hq]
       push_cast

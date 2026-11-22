@@ -48,7 +48,7 @@ theorem exists_lattice_map_of_symplecticBasis {La : Type} [AddCommGroup La] {g :
     rcases j with i | i
     · simp only [w, Sum.elim_inl, hrepr, nsmul_eq_mul]
       linear_combination (-(b.repr x (Sum.inl i))) * ht i
-    · simp [w, hrepr]
+    · simp [w]
   · refine ⟨∑ i, t i * (a (Sum.inl i) * c (Sum.inr i) - a (Sum.inr i) * c (Sum.inl i)), ?_⟩
     rw [hb.apply_eq_sum hB, omegaStd, Finset.mul_sum, ← Finset.sum_add_distrib]
     refine Finset.sum_congr rfl fun i _ => ?_

@@ -233,7 +233,7 @@ theorem tri_of_uni {S S₀ : HSp D} {ρ : ℕ} (d : HypDec S S₀ ρ) {Y : Type}
   · rw [k2']; rfl
   · rw [k3']; rfl
   · exact key (.inr (.inl i)) (.inr (.inl j)) (by simp only [wlev, Sum.elim_inl, Sum.elim_inr]; omega)
-  · exact key (.inr (.inr i)) (.inr (.inr j)) (by simp only [wlev, Sum.elim_inl, Sum.elim_inr]; omega)
+  · exact key (.inr (.inr i)) (.inr (.inr j)) (by simp only [wlev, Sum.elim_inr]; omega)
 
 theorem uni_of_flag {S S₀ : HSp D} {ρ : ℕ} (d : HypDec S S₀ ρ) {Y : Type} [Fintype Y] [DecidableEq Y]
     {F : Matrix (Fin S.rank) Y K} {Γ : Matrix Y (Fin S.rank) K} {l : Y → ℕ} (hF : Adapted π d F l) (h1 : Γ * F = 1)

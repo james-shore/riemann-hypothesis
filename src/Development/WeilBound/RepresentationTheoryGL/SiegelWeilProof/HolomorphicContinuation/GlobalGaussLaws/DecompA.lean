@@ -12,8 +12,8 @@ variable {n : ℕ}
 theorem jj_mul_jj : JJ n * JJ n = -1 := by
   unfold JJ
   rw [fromBlocks_multiply]
-  simp only [Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_neg,
-    Matrix.neg_mul, add_zero, zero_add, neg_zero]
+  simp only [Matrix.mul_zero, Matrix.mul_one, Matrix.mul_neg,
+    add_zero, zero_add, neg_zero]
   rw [← fromBlocks_one, fromBlocks_neg]
   simp
 
@@ -35,7 +35,7 @@ theorem inG_blocks {A B C D : Matrix (Fin n) (Fin n) ℂ} (h : InG (fromBlocks A
   unfold InG JJ at h
   rw [fromBlocks_conjTranspose, fromBlocks_multiply, fromBlocks_multiply, fromBlocks_inj] at h
   obtain ⟨h1, h2, -, h4⟩ := h
-  simp only [Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_neg,
+  simp only [Matrix.mul_zero, Matrix.mul_one, Matrix.mul_neg,
     Matrix.neg_mul, add_zero, zero_add] at h1 h2 h4
   refine ⟨?_, ?_, ?_⟩
   · rw [← sub_eq_zero, ← h1]

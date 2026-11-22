@@ -88,7 +88,7 @@ theorem etale_bc : ∀ (T O : Type) [CommRing T] [IsDomain T] [IsLocalRing T] [C
   · exact isZTorsor_bc β DA q hq actA htor
   · apply RingHom.ext; intro x
     rw [RingHom.comp_apply, IsScalarTower.algebraMap_apply A₁ (Ext f EA) (Loc₁ f i i₁ EA QA jA hcomp hj)]
-    simp only [reduceLoc, IsLocalization.lift_eq, algebraMap_ext, reduce_tmul]
+    simp only [reduceLoc, IsLocalization.lift_eq, algebraMap_ext]
     change Polynomial.eval 0 (Polynomial.C x) * _ = _
     simp
   · exact GlobalTheory.T.ker_baseChangedReduction_eq_span_X T O A A₁ f i i₁ EA QA jA hcomp hj ρ hρA hρX hunit hρker

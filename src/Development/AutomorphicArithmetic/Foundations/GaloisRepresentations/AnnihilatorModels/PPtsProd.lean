@@ -24,4 +24,4 @@ theorem UpperTheory.Gal.crystallineComparison.ptsProd_of :
   rw [Polynomial.map_pow, Polynomial.map_prod, Multiset.map_map]
   congr 1
   rw [Finset.prod_eq_multiset_prod]
-  simp [Function.comp_def, hf]
+  simp [hf]

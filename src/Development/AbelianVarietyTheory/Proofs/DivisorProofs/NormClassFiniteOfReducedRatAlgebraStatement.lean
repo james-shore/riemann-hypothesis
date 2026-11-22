@@ -13,4 +13,4 @@ theorem _root_.GlobalTheory.T.normClassFinite_of_reduced_rat_algebra : (∀ (K :
     (∀ ℓ : ℕ, ℓ.Prime → ℓ ∉ S → ∃ (b x y : E), IsUnit b ∧ a = x * (b * τ b) ∧ b * τ b = y * a ∧
       ∃ d : ℕ, ¬ ℓ ∣ d ∧ IsIntegral ℤ ((d : E) * x) ∧ IsIntegral ℤ ((d : E) * y)) →
     ∃ a₀ ∈ A, ∃ e : Eˣ, a = (e : E) * a₀ * τ e := by
-  first | (exact @GlobalTheory.normClassFinite_of_reduced) | (exact GlobalTheory.normClassFinite_of_reduced) | (intros; apply GlobalTheory.normClassFinite_of_reduced  <;> assumption)
+  first | (exact @GlobalTheory.normClassFinite_of_reduced)

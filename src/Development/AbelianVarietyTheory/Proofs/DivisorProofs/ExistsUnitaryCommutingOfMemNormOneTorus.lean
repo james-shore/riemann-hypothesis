@@ -52,7 +52,7 @@ theorem exists_unitary_of_torus : ∀ (E : Type) [Field E] [NumberField E] [IsCM
       have hp := hpres (Pi.single j 1) (Pi.single i 1)
       rw [Matrix.mulVec_single_one, Matrix.mulVec_single_one] at hp
       rw [Matrix.mul_one, Matrix.mul_apply, Matrix.one_apply]
-      simp only [stdH, Matrix.transpose_apply, Matrix.col_apply] at hp
+      simp only [stdH, Matrix.col_apply] at hp
       simp only [cT, Matrix.transpose_apply, Matrix.map_apply]
       rw [Finset.sum_congr rfl (fun k _ => mul_comm (cj w (h.val k i)) (h.val k j)), hp]
       by_cases hij : i = j
@@ -60,7 +60,7 @@ theorem exists_unitary_of_torus : ∀ (E : Type) [Field E] [NumberField E] [IsCM
       · rw [if_neg hij, Finset.sum_eq_zero]
         intro k _
         by_cases hk : k = j
-        · subst hk; simp [Pi.single_apply, Ne.symm hij, hij]
+        · subst hk; simp [Ne.symm hij]
         · simp [Pi.single_apply, hk]
   · apply Units.ext
     apply Matrix.toLin'.injective

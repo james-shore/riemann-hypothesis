@@ -118,8 +118,7 @@ theorem exists_isKer (ε : Fin n → Bool) (i : ℕ) : ∃ e, IsKer ε i e := by
     simp only [g, LinearMap.comp_apply, Submodule.subtype_apply, this, LinearMap.proj_apply]
   have hgU : ∀ q ∈ lowV ε i, g q = 0 := by
     intro q hq
-    simp only [g, LinearMap.comp_apply, (Submodule.Quotient.mk_eq_zero _).2 hq, Submodule.mkQ_apply, map_zero,
-      LinearMap.proj_apply]
+    simp only [g, LinearMap.comp_apply, (Submodule.Quotient.mk_eq_zero _).2 hq, Submodule.mkQ_apply, map_zero]
   obtain ⟨e, he⟩ := hsurj (g ∘ₗ (polyV ε i).subtype)
   refine ⟨e, e.2, fun q hq => ?_, fun p hp hpo => ?_⟩
   · have := LinearMap.congr_fun he ⟨q, hlow hq⟩

@@ -35,7 +35,6 @@ theorem exists_alp (D : D7) (p n : ℕ) (h : ModuliIntegralCharts.NHyp D p n) : 
     have h1 : ((mm : 𝓞 D.host.E) : D.host.E) = (mm : D.host.E) := by
       first
       | simp
-      | norm_cast
     rw [h1, map_natCast]
     push_cast
     ring

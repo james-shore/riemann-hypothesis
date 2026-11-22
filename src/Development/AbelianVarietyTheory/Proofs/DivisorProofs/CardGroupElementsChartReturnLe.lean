@@ -71,7 +71,7 @@ theorem gramPos_rmul (X : Data E r) (y : Frame X.Ψ r) {b : Frame X.Ψ r} (hb : 
   ext a c
   rw [Data.gramPos_apply, colP_rmul_eq X y hb, colP_rmul_eq X y hb, hermC_sum_left]
   simp only [Matrix.mul_apply, Matrix.transpose_apply, Matrix.map_apply, Data.gramPos_apply,
-    hermC_smul_left, hermC_sum_right, hermC_smul_right, Finset.sum_mul, Finset.mul_sum]
+    hermC_smul_left, hermC_sum_right, hermC_smul_right, Finset.sum_mul]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun l _ => Finset.sum_congr rfl fun k _ => by ring
 

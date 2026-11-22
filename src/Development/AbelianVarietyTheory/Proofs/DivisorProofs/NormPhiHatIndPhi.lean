@@ -34,7 +34,7 @@ theorem sum_emb_eq (H : ReciprocityTheory.ChartRestriction.G.Geo.Tor.Host E) {M 
   refine Fintype.sum_equiv
     ⟨fun τ => ⟨conjEmb τ.1, AllWt.conj_mem τ.2⟩, fun τ => ⟨conjEmb τ.1, AllWt.conj_not_mem τ⟩,
       fun τ => Subtype.ext (AllWt.conjEmb_conjEmb _), fun τ => Subtype.ext (AllWt.conjEmb_conjEmb _)⟩ _ _ fun τ => ?_
-  simp [AllWt.conjEmb_conjEmb]
+  simp
 
 theorem two_mul_card_psi (H : ReciprocityTheory.ChartRestriction.G.Geo.Tor.Host E) : 2 * Fintype.card (Psi H) = Module.finrank ℚ E := by
   have := sum_emb_eq H (fun _ => (1 : ℕ))

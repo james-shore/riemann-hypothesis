@@ -321,7 +321,6 @@ theorem vw_zpow (w : HeightOneSpectrum (𝓞 K)) {x : K} (hx : x ≠ 0) (z : ℤ
   obtain ⟨n, rfl | rfl⟩ := z.eq_nat_or_neg
   · rw [zpow_natCast, vw_npow w hx]
   · rw [zpow_neg, zpow_natCast, Formalism.DivisionValues.ValuationRepresentative.vw_inv, vw_npow w hx]
-    push_cast
     ring
 
 theorem ql_zpow (w : HeightOneSpectrum (𝓞 K)) {q : ℕ} (hq : q ≠ 0) {z : ℤ} {A : ℝ} (h : |(z : ℝ)| ≤ A) :

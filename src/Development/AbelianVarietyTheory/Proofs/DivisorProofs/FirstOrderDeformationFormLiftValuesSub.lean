@@ -132,8 +132,8 @@ theorem liftVal_sub_snd : ∀ (K : Type) [Field K] (A : Over (Sp K)) [GrpObj A] 
   have G := Finset.sum_congr rfl fun k (_ : k ∈ Finset.univ) ↦ congrArg (valR y₂ U (r k) * ·) (D k)
   refine (congrArg (fun z : DualNumber P.B ↦ (-z).snd) G).trans ?_
   simp only [TrivSqZeroExt.snd_neg, TrivSqZeroExt.snd_sum, TrivSqZeroExt.snd_mul, TrivSqZeroExt.fst_inr,
-    TrivSqZeroExt.snd_inr, f2, smul_eq_mul, MulOpposite.smul_eq_mul_unop, MulOpposite.op_zero,
-    MulOpposite.unop_zero, mul_zero, zero_smul, add_zero, neg_inj]
+    TrivSqZeroExt.snd_inr, f2, smul_eq_mul, MulOpposite.op_zero,
+    zero_smul, add_zero, neg_inj]
   simp only [← step2, Finset.mul_sum]
   clear H k1 e1 hdiff D G step2 f2 red
   conv_lhs => rw [Finset.sum_comm]

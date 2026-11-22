@@ -54,7 +54,7 @@ theorem upCl_of_crd (A : AtTTied u) (P : ∀ i hi, LvTied u A i hi) (i : ℕ) (h
   · apply Submodule.map_injective_of_injective inj
     rw [localization_map₂ hi, localization_map₂ hi, lc_gmap, eLd, Submodule.map_sup, eLd, Submodule.map_span, Set.image_singleton]
     convert h4 using 4
-    simp [crdL, toLd]
+    simp [toLd]
   · intro z hz
     rw [prH_eq A P hi v _ z, prH_eq A P hi v c ⟨_, hz⟩]
     have key : crdN D i hi (((D.mem u).A.T : D.host.E) • (gx i hi γ).1 (z : (D.sp.X i).V)) =

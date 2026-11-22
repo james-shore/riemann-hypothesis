@@ -131,7 +131,7 @@ theorem W_trans (hβ : β.IsGen) (hβ₀ : β₀.IsGen) (a : Over.mk x ⟶ A) (�
   rw [gv_trans hβ₀ (rpt a) cpt (fiberComplexPoint_mem_thetaTraceChart_of_mem a hk hj) (fiberComplexPoint_mem_thetaTraceChart_of_mem a hk' hj'),
     gv_trans hβ (rpt a) cpt (fiberComplexPoint_mem_thetaTraceIsoChart_of_comp a ψa ha hk hi) (fiberComplexPoint_mem_thetaTraceIsoChart_of_comp a ψa ha hk' hi'), e0, e0', e1, f1]
   apply Additive.ofMul.injective
-  simp only [ofMul_mul, ofMul_inv, ofMul_zpow, Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_zero]
+  simp only [ofMul_mul, ofMul_inv, ofMul_zpow, Matrix.cons_val_one, Matrix.cons_val_zero]
   abel
 
 end Core

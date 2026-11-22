@@ -102,7 +102,6 @@ theorem emb_conj (σ : D.host.E →+* ℂ) (z : D.host.E) : σ (D.host.conj z) =
   have hg : D.host.gal D.host.conj = D.R.cc := by
     first
     | exact MulEquiv.apply_symm_apply _ _
-    | simp [Formalism.HC.HostRaw.conj]
   exact (D.host.der.conj_iff σ D.host.conj).mpr hg z
 
 theorem embV_add (τ : D.what₂.Tau) (x y : Fin n → D.host.E) :
@@ -244,7 +243,6 @@ theorem meanLogSup_le {j : ℕ} {ka : Wt D j} (F : X.Cusp j ka) {b : ℝ}
     have h0 : 0 < Fintype.card (X.KO →+* ℂ) := by
       first
       | (rw [NumberField.Embeddings.card]; exact Module.finrank_pos)
-      | exact Fintype.card_pos
     exact_mod_cast h0
   rw [div_le_iff₀ hc]
   calc (∑ σ : X.KO →+* ℂ, Real.log (X.supN j ka σ F)) ≤ ∑ _σ : X.KO →+* ℂ, b :=

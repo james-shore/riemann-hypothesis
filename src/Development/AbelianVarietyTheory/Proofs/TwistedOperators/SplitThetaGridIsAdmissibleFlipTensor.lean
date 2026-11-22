@@ -123,7 +123,7 @@ theorem edgeFactor_square (i j : ℕ) (g : G.VertexGroup) (hg : g (i, j) = 1) (h
     apow_of_valuation_eq_one (valuation_gdet_of_mem_KO (Assignment.one.read_mem_KO (hK Y))) z
   have hap : ∀ z, apow (1 : kˣ) z = 1 := fun z => apow_of_valuation_eq_one (by simp) z
   simp only [Grid.edgeFactor, Edge.src, Edge.tgt, ha, mul_one, hg, map_one, hap]
-  simp only [Grid.kappa, Grid.blockChar, Grid.nu, gdet, map_one, MonoidHom.div_apply, Units.val_div_eq_div_val,
+  simp only [Grid.kappa, Grid.blockChar, Grid.nu, gdet, MonoidHom.div_apply, Units.val_div_eq_div_val,
     Units.val_inv_eq_inv_val, Units.val_one, inv_one, mul_one, one_mul]
   field_simp
 end

@@ -61,7 +61,7 @@ theorem flatGen_finNorm : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E]
     have hfin := hN V X.K j' X.β X.y v' w' Tm X.t X.m m'' hval hβ hF' hiv hiw
     have hchg := hline.chg X.K X.β X.y v w v' w' (δ • (1 : Matrix (Fin D.p) (Fin D.p) X.K))
       (δ' • (1 : Matrix (Fin D.q) (Fin D.q) X.K)) hF hF' hA hB
-    simp only [Matrix.det_smul, Matrix.det_one, mul_one, Fintype.card_fin] at hchg
+    simp only [Matrix.det_smul, Matrix.det_one, Fintype.card_fin] at hchg
     have hφ0 := hline.ne X.K X.β X.y v w hF
     have hφ'0 := hline.ne X.K X.β X.y v' w' hF'
     have horth : ∀ a b, sesq (FU.Di i) (x (.inl a)) (x (.inr b)) = 0 := fun a b =>

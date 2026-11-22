@@ -116,7 +116,7 @@ theorem antitone_omegaVec (N j : ℕ) : Antitone (Zls.omegaVec N j) := by
   intro a b hab
   have hab' : (a : ℕ) ≤ b := hab
   unfold Zls.omegaVec
-  split_ifs <;> first | omega | exact le_rfl | norm_num
+  split_ifs <;> first | omega
 
 theorem antitone_nsmul_omegaVec (N j r : ℕ) : Antitone (r • Zls.omegaVec N j) := by
   intro a b hab
@@ -242,7 +242,7 @@ theorem conj_entries {m r : ℕ} (hmr : m ≤ r) (x : GL (Fin N) k)
       rfl
     rw [hu]
     push_cast
-    simp only [neg_zero, zpow_zero, Units.val_one, mul_one, sub_zero]
+    simp only [neg_zero, zpow_zero, mul_one, sub_zero]
     rw [mul_assoc, ← pow_add, Nat.sub_add_cancel hmr, mul_comm]
   · have hne : i ≠ j := fun h => h1 (h ▸ h2)
     rw [if_neg h1, if_pos h2, Matrix.one_apply_ne hne, unipRad_lower d hd x hx i j (by omega) h2]

@@ -44,7 +44,7 @@ theorem linkRec_holds : LinkRec := by
       = (u * t) • (D4 * (Q₁.map φ * β₁')) - (u * s) • (Q * (D5 * β₁')) := by
     rw [hmap, e3, e1, e2, ← hu]
     simp only [Matrix.sub_mul, Matrix.smul_mul, smul_sub, smul_smul, Matrix.mul_assoc, h1,
-      Matrix.mul_smul, Matrix.mul_one, Matrix.mul_sub]
+      Matrix.mul_smul, Matrix.mul_one]
     module
   intro i j
   rw [key, Matrix.sub_apply, Matrix.smul_apply, Matrix.smul_apply, smul_eq_mul, smul_eq_mul,

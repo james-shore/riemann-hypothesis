@@ -31,6 +31,6 @@ theorem measurable_nsq_extend_and_psi : ∀ (n : ℕ) (Y : Type) [TopologicalSpa
       unfold WeightedAtlas.sqn
       exact Finset.measurable_sum _ fun k _ => hk k
     unfold psi
-    first | exact hq.log | fun_prop | measurability
+    first | exact hq.log | fun_prop
 
 end GlobalTheory.OTY

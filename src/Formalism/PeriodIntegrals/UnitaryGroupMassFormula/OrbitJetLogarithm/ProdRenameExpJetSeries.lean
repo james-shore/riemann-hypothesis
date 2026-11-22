@@ -104,7 +104,7 @@ private theorem prod_monomial_one_eq_monomial_sum {ι σ : Type*} (s : Finset ι
   induction s using Finset.induction_on with
   | empty =>
     rw [Finset.prod_empty, Finset.sum_empty]
-    first | rfl | simp
+    first | rfl
   | @insert i s hi ih =>
     rw [Finset.prod_insert hi, Finset.sum_insert hi, ih, MvPowerSeries.monomial_mul_monomial, one_mul]
 

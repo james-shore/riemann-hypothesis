@@ -37,7 +37,7 @@ theorem multiset_eq_map_neg_conj_of_polyEq :
   have hroots := congrArg Polynomial.roots hpoly
   rw [Polynomial.roots_multiset_prod_X_sub_C, Polynomial.roots_multiset_prod_X_sub_C] at hroots
   have hinv : (m'.map (starRingEnd ℂ)).map (starRingEnd ℂ) = m' := by
-    simp [Multiset.map_map, Function.comp_def]
+    simp [Multiset.map_map]
   rw [← hinv, ← hroots, Multiset.map_map]
   exact Multiset.map_congr rfl fun z _ => by simp
 

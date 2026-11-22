@@ -48,11 +48,9 @@ theorem pie_step1 (n b : ℕ) (al : Fin n → ℕ) : alt n al * hsymm (Fin n) �
   · intro s _
     first
     | simp [Sym.map_map]
-    | (apply Sym.ext; simp [Sym.coe_map, Multiset.map_map])
   · intro s _
     first
     | simp [Sym.map_map]
-    | (apply Sym.ext; simp [Sym.coe_map, Multiset.map_map])
   · intro s _
     rw [← Equiv.prod_comp σ (fun i => (X i : MvPolynomial (Fin n) ℤ) ^ pie_cnt s i),
       ← Finset.prod_mul_distrib]

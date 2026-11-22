@@ -18,7 +18,7 @@ theorem reindex_gl {H R : Type} [Group H] [CommRing R] {n ι : Type} [Fintype n]
   have key : ∀ i j, (((φ.toMonoidHom.comp ψ h : GL ι R) : Matrix ι ι R) - 1) i j =
       (((ψ h : GL n R) : Matrix n n R) - 1) (e.symm i) (e.symm j) := by
     intro i j
-    simp [φ, Matrix.sub_apply, Matrix.one_apply, Matrix.reindexAlgEquiv_apply, Matrix.reindex_apply]
+    simp [φ, Matrix.sub_apply, Matrix.one_apply, Matrix.reindex_apply]
   simp only [key]
   constructor
   · intro H i j

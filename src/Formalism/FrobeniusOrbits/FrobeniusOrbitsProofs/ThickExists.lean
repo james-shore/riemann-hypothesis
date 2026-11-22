@@ -10,7 +10,7 @@ namespace Formalism.FrobeniusOrbits.ThickExists
 
 lemma coeff_zero (B : ℤ) : ∀ {S : ℕ} (c : Fin S → ℤ), (∀ m, |c m| < B) →
     ∑ m, c m * B ^ (m : ℕ) = 0 → ∀ m, c m = 0 := by
-  first | exact Bl.general_b_fact_second_last.goal1 .. | (apply Bl.general_b_fact_second_last.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second_last.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_second_last.goal1 .. | (apply Bl.general_b_fact_second_last.goal1)
 
 lemma map_lt (B : ℕ) : ∀ {S : ℕ} (v : Fin S → ℕ), (∀ m, v m < B) → Behrend.map B v < B ^ S := by
   intro S

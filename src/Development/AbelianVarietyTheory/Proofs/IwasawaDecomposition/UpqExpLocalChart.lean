@@ -33,9 +33,7 @@ theorem sumAbs_mul_le (A B : Matrix n n ℂ) : sumAbs (A * B) ≤ sumAbs A * sum
   first
   | exact @_root_.GlobalTheory.EntrySumMulBound.entrySum_mul_le
   | exact _root_.GlobalTheory.EntrySumMulBound.entrySum_mul_le
-  | (apply _root_.GlobalTheory.EntrySumMulBound.entrySum_mul_le <;> assumption)
-  | (intros; apply _root_.GlobalTheory.EntrySumMulBound.entrySum_mul_le <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.EntrySumMulBound.entrySum_mul_le <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.EntrySumMulBound.entrySum_mul_le)
   | (intros; exact _root_.GlobalTheory.EntrySumMulBound.entrySum_mul_le ..)
 
 section Op

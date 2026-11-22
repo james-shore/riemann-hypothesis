@@ -28,7 +28,7 @@ theorem expand_of_tail (z : Fin (2 * r + k + 1) → ℂ) (hz : inWb k r z) (b : 
   ext i
   simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
   rw [← Finset.add_sum_erase _ _ (Finset.mem_univ b)]
-  simp only [coefOf, if_pos rfl, one_mul]
+  simp only [coefOf]
   have hrest : ∀ a ∈ Finset.univ.erase b, (if a = b then (1 : ℂ) else
       if h : a.val < b.val then y (eI k r ⟨a.val, by omega⟩) else 0) * fvec k r z a i =
       if h : a.val < b.val ∧ i.val = a.val then y i else 0 := by
@@ -47,7 +47,7 @@ theorem expand_of_tail (z : Fin (2 * r + k + 1) → ℂ) (hz : inWb k r z) (b : 
         simp [bvec]
       · rw [dif_neg (fun h => hia h.2)]
         have hi : i ≠ eI k r ⟨a.val, har⟩ := fun h => hia (by rw [h]; simp [eI])
-        simp [bvec, Pi.single_apply, hi]
+        simp [bvec, hi]
     · rw [dif_neg hlt, dif_neg (fun h => hlt h.1), zero_mul]
   rw [Finset.sum_congr rfl hrest]
   by_cases hib : b.val ≤ i.val
@@ -64,7 +64,7 @@ theorem expand_of_tail (z : Fin (2 * r + k + 1) → ℂ) (hz : inWb k r z) (b : 
           have := congrArg Fin.val h
           simp [eI] at this
           omega
-        simp [bvec, Pi.single_apply, hne]
+        simp [bvec, hne]
       · exact hz i (Or.inl hir)
     rw [hfb, mul_zero, zero_add]
     rw [Finset.sum_eq_single ⟨i.val, by omega⟩]

@@ -52,7 +52,7 @@ theorem halfSel_add (h2 : (2 : L) ≠ 0) (a : Fin n' → ℕ) (i j : Fin n') :
   · simp only [lt_irrefl, false_or, and_false, if_false, if_true]
     rw [← two_mul, mul_inv_cancel₀ h2]
   have hne' : (i : ℕ) ≠ (j : ℕ) := Fin.val_ne_of_ne hne
-  split_ifs <;> first | (exfalso; omega) | simp | rw [← two_mul, mul_inv_cancel₀ h2]
+  split_ifs <;> first | (exfalso; omega) | simp
 
 end GlobalTheory.Hk3.SquareDiag
 

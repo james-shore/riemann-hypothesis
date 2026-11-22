@@ -47,7 +47,7 @@ theorem sum_pow_star (n : ℕ) (B : Multiset ℂˣ) :
   rw [map_multiset_sum, Multiset.map_map, Multiset.map_map]
   congr 1
   refine Multiset.map_congr rfl fun b _ => ?_
-  simp [Units.coe_star, star_pow]
+  simp [Units.coe_star]
 
 theorem cpow_neg_eq (q : ℕ) (σ : ℝ) : (q : ℂ) ^ (-(σ : ℂ)) = (((q : ℝ) ^ (-σ) : ℝ) : ℂ) := by
   rw [ofReal_cpow (Nat.cast_nonneg _), ofReal_natCast, ofReal_neg]

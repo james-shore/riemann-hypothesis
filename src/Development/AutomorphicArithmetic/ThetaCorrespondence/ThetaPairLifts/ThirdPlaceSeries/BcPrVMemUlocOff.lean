@@ -80,7 +80,7 @@ theorem bc_prV_mem_Uloc_off_alt : ∀ {B : GlobalTheory.Mem.Base} {X : GlobalThe
     · obtain ⟨r, e, -⟩ := (hLb x).1 hx j
       exact ⟨r, e⟩
     · have h := (hx0 _).1 hx ((finCongr hn).symm j)
-      simp only [LinearMap.funLeft_apply, Function.comp_apply, Equiv.apply_symm_apply] at h
+      simp only [LinearMap.funLeft_apply, Equiv.apply_symm_apply] at h
       exact ⟨⟨x j, h⟩, rfl⟩
     · refine (hx0 _).2 fun i => ?_
       obtain ⟨r, hr, -⟩ := hint j (finCongr hn i)

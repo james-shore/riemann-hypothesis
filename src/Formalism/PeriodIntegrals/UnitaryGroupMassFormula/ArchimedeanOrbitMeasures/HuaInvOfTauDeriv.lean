@@ -108,7 +108,7 @@ theorem cplx_injective : Function.Injective (cplx (P := P) (Q := Q)) := by
   have h1 : Y + Complex.I • Z = 0 := h
   have hY' : sigJ Y = -Y := (mem_lieU_iff_sigJ Y).1 hY
   have hZ' : sigJ Z = -Z := (mem_lieU_iff_sigJ Z).1 hZ
-  have hs : star Complex.I = -Complex.I := by simp [Complex.star_def]
+  have hs : star Complex.I = -Complex.I := by simp
   have h2 : -Y + Complex.I • Z = 0 := by
     have h3 : sigJ (Y + Complex.I • Z) = 0 := by
       rw [h1]; simp [sigJ]
@@ -133,7 +133,7 @@ theorem cplx_surjective : Function.Surjective (cplx (P := P) (Q := Q)) := by
     intro V U
     simp only [sigJ, Matrix.conjTranspose_sub, Matrix.mul_sub, Matrix.sub_mul]
   have hh : star ((1 : ℂ) / 2) = 1 / 2 := by simp
-  have hi : star (-Complex.I / 2) = Complex.I / 2 := by simp [Complex.star_def]
+  have hi : star (-Complex.I / 2) = Complex.I / 2 := by simp
   have hI2 : Complex.I * (-Complex.I / 2) = 1 / 2 := by
     rw [mul_div_assoc', mul_neg, Complex.I_mul_I, neg_neg]
   have hY : ((1 : ℂ) / 2) • (W - sigJ W) ∈ lieU P Q := by

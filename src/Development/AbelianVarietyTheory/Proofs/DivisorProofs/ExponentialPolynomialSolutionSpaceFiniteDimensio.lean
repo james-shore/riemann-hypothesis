@@ -50,8 +50,7 @@ theorem expSol_finiteDimensional : ∀ l : List ℂ, FiniteDimensional ℂ (expS
             apply Subtype.ext
             have hf := (mem_expSol_cons.1 f.2).1
             funext x
-            simp only [Submodule.coe_smul, Pi.sub_apply, Pi.smul_apply, smul_eq_mul, RingHom.id_apply,
-              Submodule.coe_smul_of_tower]
+            simp only [Submodule.coe_smul, Pi.sub_apply, Pi.smul_apply, smul_eq_mul, RingHom.id_apply]
             rw [deriv_const_smul k (hf x)]; simp only [smul_eq_mul]; ring }
       have hker : ((LinearMap.ker φ).map (expSol (c :: l)).subtype) ≤
           Submodule.span ℂ {fun t : ℝ => Complex.exp (c * t)} := by

@@ -42,7 +42,6 @@ theorem reducedBasis_holds : ReducedBasisStatement := by
   have hliZ : LinearIndependent ℤ b := by
     first
     | exact hliR.restrict_scalars' ℤ
-    | exact hliR.restrict_scalars (fun a c h => by simpa using h)
   let bX : Fin (finrank ℝ E) → X := fun k => ⟨b k, hbX k⟩
   have hliX : LinearIndependent ℤ bX := LinearIndependent.of_comp X.subtype hliZ
   have hspX : ⊤ ≤ Submodule.span ℤ (Set.range bX) := by

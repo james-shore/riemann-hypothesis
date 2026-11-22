@@ -29,5 +29,5 @@ theorem UpperTheory.Gal.InertialTypesAlt.finSec :
     simp only [LinearMap.smul_apply, LinearMap.sum_apply, LinearMap.comp_apply, map_smul, map_sum]
     have : ∀ g : H, f (ρ g (s₀ (σ g⁻¹ x))) = x := fun g => by
       rw [hf, hs₀', ← hσ, mul_inv_cancel, hσ1]
-    simp only [this, Finset.sum_const, Finset.card_univ, Nat.cast_smul_eq_nsmul]
+    simp only [this, Finset.sum_const, Finset.card_univ]
     rw [← Nat.cast_smul_eq_nsmul ℂ, smul_smul, inv_mul_cancel₀ hc, one_smul]

@@ -28,7 +28,7 @@ private theorem dm_mul (X Z X' Z' : M4 O) : dm X Z * dm X' Z' = dm (X * X') (X *
   intro a b
   constructor
   · simp [Matrix.mul_apply, dm_fst, TrivSqZeroExt.fst_sum]
-  · simp [Matrix.mul_apply, dm_fst, dm_snd, TrivSqZeroExt.snd_sum, Matrix.add_apply, Finset.sum_add_distrib, mul_comm]
+  · simp [Matrix.mul_apply, dm_fst, dm_snd, TrivSqZeroExt.snd_sum, Matrix.add_apply, Finset.sum_add_distrib]
 
 private theorem dm_one : dm (1 : M4 O) 0 = 1 := by
   symm
@@ -37,7 +37,7 @@ private theorem dm_one : dm (1 : M4 O) 0 = 1 := by
   by_cases h : a = b
   · subst h
     simp
-  · simp [Matrix.one_apply, h]
+  · simp [h]
 
 private theorem dm_adj (X Z : M4 O) : adj (dm X Z) = dm (adj X) (adj Z) := by
   apply dm_ext
@@ -50,11 +50,11 @@ private theorem dm_smul (a : O) : algebraMap O (DualNumber O) a • (1 : M4 (Dua
   by_cases h : i = j
   · subst h
     simp [TrivSqZeroExt.algebraMap_eq_inl]
-  · simp [Matrix.one_apply, h]
+  · simp [h]
 
 private theorem adj_mul_eq_adj_mul_adj (A B : M4 O) : adj (A * B) = adj B * adj A := by
   ext i j
-  simp only [adj_apply, Matrix.mul_apply, Fin.sum_univ_four, Matrix.of_apply]
+  simp only [adj_apply, Matrix.mul_apply, Fin.sum_univ_four]
   fin_cases i <;> fin_cases j <;> simp [sgn] <;> ring
 
 private theorem adj_sub_eq_adj_sub_adj (A B : M4 O) : adj (A - B) = adj A - adj B := by
@@ -78,7 +78,7 @@ private theorem dm_gsp {ν : O} {X Y : M4 O} (hX : IsGSp ν X) (hY : Y ∈ sp4 O
 
 private theorem adj_one_eq_one : adj (1 : M4 O) = 1 := by
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Matrix.one_apply] <;> decide
+  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn]
 
 private theorem dm_sp {Y : M4 O} (hY : Y ∈ sp4 O) : IsGSp 1 (dm 1 Y) := by
   have hY' : adj Y = -Y := hY
@@ -205,7 +205,7 @@ theorem UpperTheory.exists_pointDerivation_framed_commutator_tangent :
       rw [dm_mul, dm_mul]
       congr 1
       · simp
-      · simp only [mul_sub, sub_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_assoc]
+      · simp only [mul_sub, sub_mul, Matrix.mul_one, Matrix.one_mul]
         abel
   obtain ⟨y, ⟨hyi, hyr, hyα⟩, -⟩ := F.univ (DualNumber c.O) i' r' α' hfr
   have hyR : ∀ g a b, y (F.r.hom g a b) = r'.hom g a b := by

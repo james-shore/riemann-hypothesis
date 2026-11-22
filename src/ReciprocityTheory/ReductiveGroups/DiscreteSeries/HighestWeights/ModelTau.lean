@@ -57,7 +57,6 @@ theorem tauC_mem_unitary (ε : Fin n → Bool) (m : Fin n → ℤ) (k : KG ε) :
     rw [← tauC_inner ε m k (tauC ε m k⁻¹ x) y, hinv]
   first
     | rw [Unitary.mem_iff, hadj]
-    | rw [unitary.mem_iff, hadj]
   constructor
   · ext f
     rw [ContinuousLinearMap.mul_apply, hinv', ContinuousLinearMap.one_apply]

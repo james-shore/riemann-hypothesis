@@ -77,7 +77,7 @@ theorem conj_involution_complex_comb {ε : Fin n → Bool} {A B : Matrix (Fin n)
   unfold stJ
   rw [Matrix.conjTranspose_add, Matrix.conjTranspose_smul, Matrix.mul_add, Matrix.add_mul,
     Matrix.mul_smul, Matrix.smul_mul, Jm_conjTranspose_Jm_eq_neg_of_inG hA, Jm_conjTranspose_Jm_eq_neg_of_inG hB]
-  simp [Complex.star_def, Complex.conj_I]
+  simp [Complex.conj_I]
 
 theorem actM_add_smul {M : Type*} [AddCommGroup M] [Module ℂ M] (E : Fin n → Fin n → Module.End ℂ M)
     (X Y : Matrix (Fin n) (Fin n) ℂ) (c : ℂ) :
@@ -166,7 +166,7 @@ private theorem exists_inG_add_I_smul_inG (ε : Fin n → Bool) (X : Matrix (Fin
       Matrix.conjTranspose_conjTranspose, Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_add,
       Matrix.add_mul, Matrix.mul_assoc, hJ, Matrix.mul_one, Jm_mul_Jm_mul_eq]
     have hc : star (1 / (2 * Complex.I)) = -(1 / (2 * Complex.I)) := by
-      simp [Complex.star_def, Complex.conj_I]
+      simp [Complex.conj_I]
     rw [hc, neg_smul, add_comm (Jm ε * (Xᴴ * Jm ε)) X]
   · have hI : Complex.I * (1 / (2 * Complex.I)) = 1 / 2 := by
       rw [mul_one_div, mul_comm 2 Complex.I, ← div_div, div_self Complex.I_ne_zero]

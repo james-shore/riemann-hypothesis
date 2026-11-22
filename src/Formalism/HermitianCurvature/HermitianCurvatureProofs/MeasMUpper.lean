@@ -64,13 +64,10 @@ theorem measM_rhoX {X : Type*} [MeasurableSpace X] {x : X → C2.Lstidx w → �
   have hg : Dx2.Rad.Good S γ w d := by
     first
     | exact good S hγ hd hZw hpos
-    | exact good S hγ hd hZw
-    | exact good S hγ hZw hd
   obtain ⟨-, hinj, -⟩ := hg
   have hs : ∀ x, rhoX S γ w x ∈ C6.Rset γ ∧ C2.uMap k r S.z (rhoX S γ w x) = (lowS w x)ᴴ := fun x => by
     first
     | exact rhoX_spec S hγ hd hZw hpos x
-    | exact rhoX_spec S hγ hd hZw x
 
   have hR : IsClosed (C6.Rset γ) := by
     have hN : IsClosed (Nset k r) := (Formalism.FourierDecayAlt.P.B2x2.closedN k r).closed

@@ -31,7 +31,7 @@ theorem lastTau_gram :
   refine Matrix.ext fun i j => ?_
   rw [pLine_gram]
   have h1 : ∀ a b : Fin (GlobalTheory.SeeSaw.Model.nLine D).rank, (GlobalTheory.SeeSaw.Model.nLine D).gram a b = -1 := nLine_gram
-  simp only [Matrix.mul_apply, conjTranspose_apply, lastTau, Matrix.of_apply, Matrix.smul_apply, h1]
+  simp only [Matrix.mul_apply, conjTranspose_apply, lastTau, Matrix.of_apply, h1]
   change ∑ x : Fin 1, star (-D.host.xi0) * ∑ y : Fin 1, (-1) * (-D.host.xi0) = (-(D.host.xi0 * star D.host.xi0)) * antiDiagonalSignGramMatrix (R := D.host.E) 1 1 i j
   have hij : i = j := Subsingleton.elim (α := Fin 1) _ _
   subst hij

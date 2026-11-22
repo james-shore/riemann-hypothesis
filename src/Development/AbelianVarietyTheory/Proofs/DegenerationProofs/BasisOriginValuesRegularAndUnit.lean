@@ -32,7 +32,7 @@ theorem ThetaSys.proj_column_mem_of_stable {o Ω : Type} [CommRing o] [Field Ω]
     funext j
     simp only [ThetaSys.proj, finsum_eq_sum_of_fintype, Matrix.smul_apply, Matrix.sum_apply, smul_eq_mul,
       Finset.mul_sum, map_sum, Finset.sum_apply, Pi.smul_apply, Matrix.mulVec_single_one, Matrix.col_apply,
-      Matrix.map_apply, algebraMap_smul, map_mul]
+      Matrix.map_apply, map_mul]
     refine Finset.sum_congr rfl fun t _ => ?_
     rw [Algebra.smul_def, map_mul, _root_.mul_assoc]
     rfl

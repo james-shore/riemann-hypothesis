@@ -60,7 +60,7 @@ theorem eigChar {A M ι K E T : Type} [CommRing A] [AddCommGroup M] [Module A M]
       rw [hρ, AlgHom.commutes, Module.algebraMap_end_apply, map_smul, b.repr_self]
       by_cases h : i = k
       · subst h; simp
-      · simp [h, Finsupp.single_apply, Ne.symm h]
+      · simp [h]
     rw [this, smul_mulVec, one_mulVec]
   have hall : ∀ u : T, ∃ c : K, ρ u *ᵥ w = c • w := by
     intro u

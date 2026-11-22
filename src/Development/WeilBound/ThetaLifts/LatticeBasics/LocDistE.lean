@@ -135,10 +135,10 @@ theorem eq_case (ξ : kˣ →* ℂˣ) (ϖ : kˣ) (hξ : ∀ t : ℝ, 0 < t → (
   have e : swap k t.i t.j * single t.i t.j t.c = single t.j t.j t.c := by
     ext a b
     by_cases h1 : a = t.i
-    · rw [h1, swap_mul_apply_left]; simp [single_apply, t.hij, t.hij.symm]
+    · rw [h1, swap_mul_apply_left]; simp [t.hij, t.hij.symm]
     by_cases h2 : a = t.j
     · rw [h2, swap_mul_apply_right]; simp [single_apply]
-    · rw [swap_mul_of_ne h1 h2]; simp [single_apply, Ne.symm h1, Ne.symm h2]
+    · rw [swap_mul_of_ne h1 h2]; simp [Ne.symm h1, Ne.symm h2]
   rw [TransvectionStruct.toMatrix, transvection, Matrix.mul_add, Matrix.mul_one, e, transpose_add, transpose_swap,
     transpose_single]
 

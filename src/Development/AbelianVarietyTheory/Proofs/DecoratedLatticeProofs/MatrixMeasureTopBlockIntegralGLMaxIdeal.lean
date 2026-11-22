@@ -200,7 +200,7 @@ theorem GlobalTheory.RectBlockVolume.vol_topBlock_KO : ∀ (k : Type) [Field k] 
   clear hset hpre htot
   have hq0 : (0 : ℝ) ≤ (GlobalTheory.SplitWeil.resCard k : ℝ) := Nat.cast_nonneg _
   simp only [Fintype.card_fin, Finset.sum_const_zero, neg_zero, zpow_zero, ENNReal.ofReal_one, mul_one,
-    Finset.sum_const, Finset.card_univ, smul_eq_mul, nsmul_eq_mul, Nat.add_sub_cancel_left]
+    Finset.sum_const, Finset.card_univ, nsmul_eq_mul, Nat.add_sub_cancel_left]
   simp only [ENNReal.toReal_mul, ENNReal.toReal_pow]
   rw [ENNReal.toReal_ofReal (zpow_nonneg hq0 _), GlobalTheory.RectBlockVolume.volKO_real]
   have hz : ∀ m n : ℕ, (GlobalTheory.SplitWeil.resCard k : ℝ) ^ (-((m : ℤ) * (n : ℤ))) = ((GlobalTheory.SplitWeil.resCard k : ℝ) ^ (n * m))⁻¹ := by

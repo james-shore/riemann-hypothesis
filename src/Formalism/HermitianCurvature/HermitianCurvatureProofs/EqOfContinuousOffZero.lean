@@ -31,8 +31,6 @@ theorem integral_nonneg_complex {α : Type*} [MeasurableSpace α] (ν : Measure 
   rw [hf]
   first
   | rw [integral_complex_ofReal]
-  | rw [integral_ofReal]
-  | rw [← RCLike.ofReal_eq_complex_ofReal, integral_ofReal]
   exact Complex.zero_le_real.mpr (integral_nonneg fun a => (Complex.le_def.mp (h a)).1)
 
 theorem continuous_fsv (s : ℂ) : Continuous (fsv s) := by

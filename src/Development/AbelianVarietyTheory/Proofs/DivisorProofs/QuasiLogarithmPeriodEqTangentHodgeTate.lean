@@ -132,7 +132,7 @@ private theorem dIn_univ_of_QL_of_isLaw {B Q : Type} [CommRing B] [CommRing Q] [
     have hleft : pderiv Q (Sum.inr i) (_root_.GlobalTheory.Katz.inL f) = 0 := by
       unfold _root_.GlobalTheory.Katz.inL
       rw [_root_.GlobalTheory.PSChain.pderiv_subst_chain _ (fun k => by simp) f (Sum.inr i)]
-      simp [pderiv_X]
+      simp
     have hright : pderiv Q (Sum.inr i) (_root_.GlobalTheory.Katz.inR f) =
         subst (fun k => (X (Sum.inr k) : MvPowerSeries (Fin d ⊕ Fin d) Q)) (pderiv Q i f) := by
       unfold _root_.GlobalTheory.Katz.inR
@@ -169,7 +169,7 @@ private theorem dIn_univ_of_QL_of_isLaw {B Q : Type} [CommRing B] [CommRing Q] [
       ext k
       by_cases hk : k = i
       · subst hk; simp; omega
-      · simp [Finsupp.single_apply, Ne.symm hk]
+      · simp [Ne.symm hk]
     have hαi : (((α - Finsupp.single i 1 : Fin d →₀ ℕ) i : ℕ) : Q) + 1 = (α i : Q) := by
       have : (α - Finsupp.single i 1 : Fin d →₀ ℕ) i + 1 = α i := by simp; omega
       rw [← this]

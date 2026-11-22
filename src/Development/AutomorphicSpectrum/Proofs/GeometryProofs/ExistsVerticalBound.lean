@@ -73,7 +73,7 @@ end Rings
 theorem map_aeval_int {σ A B : Type*} [CommRing A] [CommRing B] [Algebra ℤ A] [Algebra ℤ B] (π : A →+* B) (w : σ → A)
     (f : MvPolynomial σ ℤ) : π (aeval w f) = aeval (fun p => π (w p)) f := by
   induction f using MvPolynomial.induction_on with
-  | C a => simp only [aeval_C, eq_intCast, map_intCast]
+  | C a => simp only [eq_intCast, map_intCast]
   | add p q hp hq => simp [hp, hq]
   | mul_X p i hp => simp [hp]
 

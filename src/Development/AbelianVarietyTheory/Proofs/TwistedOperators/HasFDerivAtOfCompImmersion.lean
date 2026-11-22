@@ -16,8 +16,6 @@ theorem hasFDerivAt_of_comp_immersion : ∀ (E F : Type) [NormedAddCommGroup E] 
     simp only [LinearMap.comp_apply, LinearMap.id_apply, ContinuousLinearMap.coe_coe] at h
     first
       | exact h
-      | simpa [L] using h
-      | (rw [show (L : F → E) = g from LinearMap.coe_toContinuousLinearMap' g]; exact h)
 
   have hr : (fun y => Φ (ψ y) - Φ (ψ x) - A (ψ y - ψ x)) =o[nhds x] (fun y => ψ y - ψ x) :=
     hA.hasFDerivAt.isLittleO.comp_tendsto hψ

@@ -112,7 +112,7 @@ theorem const_match1 (k r : ℕ) (TT : ℝ) (b s : ℕ) (hb : 1 ≤ b) (hs : 2 �
     have hD' : ‖d0‖ ≠ 0 := norm_ne_zero_iff.2 hD
     rw [hn, Real.sqrt_mul (mul_nonneg hN0 (by positivity)), Real.sqrt_mul hN0, pow_mul,
       Real.sqrt_sq (by positivity), norm_inv, norm_mul, norm_pow, mul_pow]
-    simp only [inv_pow, inv_inv]
+    simp only [inv_pow]
     field_simp
     ring
   · have hsz3 : FourierDecayAlt.D.ptSize h = c := hsz
@@ -294,7 +294,6 @@ theorem top_level_germ_leading : TopCore1 := by
               G.OmLong U.betaU (m + 1) (U.PhiTop (p := D.ptSize h) (s := m + 1 + 1) U.betaU σh dh Ψ0) (l2T m * z)) := by
     rw [Finset.sum_insertNone, hroots,
       Finset.sum_image (fun a _ b _ hab => mul_left_cancel₀ (top_root_ne_zero m) hab)]
-    beta_reduce
     rw [hT0, hsum, smul_sub, sub_eq_add_neg]
   rw [heq, norm_smul, Complex.norm_real, Real.norm_eq_abs, abs_mul,
     abs_of_nonneg (pow_nonneg (norm_nonneg _) _)]

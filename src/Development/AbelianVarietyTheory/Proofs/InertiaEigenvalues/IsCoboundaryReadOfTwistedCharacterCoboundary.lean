@@ -15,7 +15,7 @@ theorem actT_latOne (hinj : Function.Injective (algebraMap O LL)) (ψ : G →* O
   apply LinearMap.ext
   rintro ⟨x, hx⟩
   apply Subtype.ext
-  simp only [Formalism.WeaklyAdmissibleFiltrations.actT, LinearMap.restrict_apply, LinearMap.smul_apply, LinearMap.id_apply, Submodule.coe_smul]
+  simp only [Formalism.WeaklyAdmissibleFiltrations.actT, LinearMap.smul_apply, LinearMap.id_apply, Submodule.coe_smul]
   show ((tableLineDegreeTwo.charL (LL := LL) ψ g : LLˣ) : LL) • x = ((ψ g : Oˣ) : O) • x
   simp [tableLineDegreeTwo.charL, Algebra.smul_def]
 
@@ -34,7 +34,7 @@ theorem actD_one (hinj : Function.Injective (algebraMap O LL)) (M : G →* Matri
   congr 1
   funext j
   fin_cases j
-  simp [stdLatG, matRep, mapM, Matrix.mulVec, dotProduct, Algebra.smul_def]
+  simp [matRep, mapM, Matrix.mulVec, dotProduct, Algebra.smul_def]
 
 theorem equivG (hinj : Function.Injective (algebraMap O LL)) (lam : O) (a : ℕ) (ψ χ : G →* Oˣ)
     (M : G →* Matrix (Fin 1) (Fin 1) O) (hM : ∀ g, M g 0 0 = (((χ g)⁻¹ * ψ g : Oˣ) : O)) (g : G)

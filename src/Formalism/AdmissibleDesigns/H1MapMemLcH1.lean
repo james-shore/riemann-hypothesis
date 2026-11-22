@@ -58,7 +58,6 @@ theorem h1Map_mem_lcH1 [TopologicalSpace G] {x : H1z ρ} (hx : x ∈ lcH1 ρ) : 
     exact hc.comp φ
   · first
       | exact (h1Map_mk ρ ρ' φ hφ c).symm
-      | rfl
 
 theorem resH1_h1Map_mem_Fsha (D : ℕ → Subgroup G) (Iq : ∀ w, Subgroup (D w)) (qs : Finset ℕ) (w : ℕ) {x : H1z ρ}
     (hx : resH1 ρ (D w) x ∈ Fsha ρ D Iq qs w) : resH1 ρ' (D w) (h1Map ρ ρ' φ hφ x) ∈ Fsha ρ' D Iq qs w := by
@@ -151,7 +150,7 @@ theorem chi_ratio (c' : Fin D.R.t) (g : GE D.nd) :
     simp [Fin.val_succ]
   rw [hc, hn]
   simp only [MonoidHom.mul_apply, Units.val_mul, Units.inv_mul_cancel_left]
-  simp [cycE, map_zpow]
+  simp [cycE]
 
 theorem uRep_blk (hE : EvS r π Dd) (hN : RepresentationBoundsCohomology.NormAt D.nd r ρ π) (c' : Fin D.R.t) (g : GE D.nd)
     (m : blockRestrictedRepresentationType (RepresentationBoundsCohomology.blk D.R) Dd.ρk c'.succ) :
@@ -174,7 +173,6 @@ theorem blkTw_of (hE : EvS r π Dd) (hN : RepresentationBoundsCohomology.NormAt 
     rw [h, map_smul]
     first
       | rfl
-      | simp [koE, Formalism.GaloisCohomology.scalRep]
 
 theorem blkTw_of_def {g0 : GE D.nd} {eB e₁ s : D.nd.X i → MatN D.nd i}
     (hD : RingDef (D.nd.O i) (D.nd.T i) (RepresentationBoundsCohomology.repX D.nd r) π (chiU D.nd i 1) (epsU D.nd i) g0 eB e₁ s Dd)

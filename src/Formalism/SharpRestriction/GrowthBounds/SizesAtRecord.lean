@@ -173,7 +173,6 @@ theorem thirteen_le {D : D7} (L : SizeData₂ D) (h13 : 13 ≤ ⌊L.sc.x ^ (L.sc
         first
           | exact Formalism.HC.HostRaw.d_mod_eight
           | exact Formalism.HC.HostRaw.d_mod_eight _
-          | exact Formalism.HC.HostRaw.d_mod_eight D.host.toHostAx
       have h2m : (-(D.host.d : ℤ)) % ((2:ℕ) : ℤ) = 1 := by push_cast; omega
       rw [jacobiSym.mod_left, h2m, jacobiSym.one_left]
     · exact D.host.split_small p hp h2 hle

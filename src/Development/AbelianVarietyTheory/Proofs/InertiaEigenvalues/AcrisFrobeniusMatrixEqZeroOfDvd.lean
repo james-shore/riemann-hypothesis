@@ -51,7 +51,7 @@ theorem GlobalTheory.BKLim.acris_frob_eq_zero : ∀ (l : ℕ) [Fact l.Prime] (K 
     | zero =>
       refine ⟨Matrix.of fun i j => (hdiv i j).choose, ?_⟩
       ext i j
-      simp only [mul_zero, pow_zero, pow_one, one_smul, Matrix.smul_apply, Matrix.of_apply, smul_eq_mul]
+      simp only [mul_zero, pow_zero, pow_one, Matrix.smul_apply, Matrix.of_apply, smul_eq_mul]
       rw [one_mul]; exact (hdiv i j).choose_spec
     | succ n ih =>
       obtain ⟨N, hN⟩ := ih

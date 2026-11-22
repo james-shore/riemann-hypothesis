@@ -20,8 +20,6 @@ theorem muInf_compact_pos : ∃ K : Set X.B.I.Ginf, IsCompact K ∧ 0 < Formalis
   refine ⟨K, hK, ?_, hK.measure_lt_top⟩
   first
     | exact Measure.measure_pos_of_mem_nhds _ hKn
-    | exact MeasureTheory.Measure.measure_pos_of_mem_nhds _ hKn
-    | exact (measure_pos_of_nonempty_interior _ ⟨1, mem_interior_iff_mem_nhds.mpr hKn⟩)
 
 theorem cooOf_eq (u u' : D.what₂.Word) (sc C : ℝ) (hC : 0 < C) (h : Disint X u u' sc C) : DisintegrationConstant X u u' sc = C := by
   have hex : ∃ C, 0 < C ∧ Disint X u u' sc C := ⟨C, hC, h⟩
@@ -200,7 +198,7 @@ theorem realBracket_of (hP : ProdExact) (hA : AprimeInf) (hS : PlaceSplit)
     refine Finset.prod_congr rfl fun v _ => ?_
     obtain ⟨h1, h2, h3, h4⟩ := hpos v
     simp only [hCvd]
-    first | (field_simp; ring) | field_simp
+    first | (field_simp) | field_simp
   have hF : (0 : ℝ) < ((D.R.k - 1).factorial : ℝ) := by exact_mod_cast Nat.factorial_pos _
   have hY : V ^ 2 / ((T * T') ^ D.R.k * W) = V * 2 ^ D.R.k * (Real.pi ^ D.R.k / ((D.R.k - 1).factorial : ℝ)) *
       (T ^ D.R.k)⁻¹ * (T' ^ D.R.k)⁻¹ := by
@@ -211,10 +209,10 @@ theorem realBracket_of (hP : ProdExact) (hA : AprimeInf) (hS : PlaceSplit)
   rw [hCoo, hAu, hvN, hvN', hA']
   have e1 : (∏ v, Cv v) * (∏ v, a v) * ((∏ v, κ v) * cN) * ((∏ v, κ' v) * cN') =
       ((∏ v, Cv v) * (∏ v, a v) * (∏ v, b v) * ((∏ v, κ v) * ∏ v, κ' v)) * (cN * cN') / ∏ v, b v := by
-    first | (field_simp; ring) | field_simp
+    first | (field_simp) | field_simp
   rw [e1, hprod, hcN, hY]
   simp only [_root_.zpow_neg, zpow_natCast, pow_mul, mul_pow, inv_pow]
-  first | (field_simp; ring) | field_simp | ring
+  first | (field_simp) | field_simp
 
 end Reduction
 

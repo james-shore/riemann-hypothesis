@@ -17,12 +17,12 @@ theorem UpperTheory.V.KH.kill :
   let fi : (Rep.trivial ℤ S ℤ).ρ.IntertwiningMap (permRep S S).ρ :=
     ⟨LinearMap.toSpanSingleton ℤ _ v, fun g => by
       apply LinearMap.ext_ring
-      simp [Rep.trivial_ρ, permRep, hv]⟩
+      simp [permRep, hv]⟩
   let gi : (permRep S S).ρ.IntertwiningMap (Rep.trivial ℤ S ℤ).ρ :=
     ⟨aug S, fun g => by
       apply Finsupp.lhom_ext
       intro x c
-      simp [Rep.trivial_ρ, permRep, perm_single, aug_single]⟩
+      simp [permRep, perm_single, aug_single]⟩
   have hcomp : ∀ a : Rep.trivial ℤ S ℤ,
       (Rep.Hom.hom (Rep.ofHom gi)) ((Rep.Hom.hom (Rep.ofHom fi)) a) = Nat.card S • a := by
     intro a

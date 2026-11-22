@@ -62,7 +62,6 @@ theorem bePos_inner_eq {k r : ℕ} {Wp : Type} [NormedAddCommGroup Wp] [InnerPro
   have hGae : ∀ᵐ g ∂D.μG, Matrix.of g ∈ GV k r := by
     first
     | exact ae_iff.2 D.haarG.conc
-    | exact measure_mono_null (fun a ha => ha) D.haarG.conc
   rw [hA, ← BesselPositivity.fubini1 D H hc ξ, ← integral_const_mul]
   apply integral_congr_ae
   filter_upwards [BesselPositivity.ae_SS (D := D)] with p hp

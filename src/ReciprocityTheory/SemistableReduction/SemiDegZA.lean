@@ -69,7 +69,7 @@ theorem latDeg_L_nonneg (hS : SelfDualIndexStatement) {K : Type} [Field K] [Numb
 theorem clear_denom {K : Type} [Field K] [NumberField K] {r : ℕ}
     (L : Submodule (𝓞 K) (Fin r → K)) (v : Fin r → K)
     (hv : v ∈ Submodule.span K (L : Set (Fin r → K))) : ∃ a : 𝓞 K, a ≠ 0 ∧ a • v ∈ L := by
-  first | exact Bl.general_b_fact_second_alt.goal1 .. | (apply Bl.general_b_fact_second_alt.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second_alt.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_second_alt.goal1 .. | (apply Bl.general_b_fact_second_alt.goal1 <;> assumption)
 
 theorem kBasis_card {K : Type} [Field K] [NumberField K] {r k : ℕ}
     (L : Submodule (𝓞 K) (Fin r → K)) (hL : IsLattice L) (b : Fin k → Fin r → K)

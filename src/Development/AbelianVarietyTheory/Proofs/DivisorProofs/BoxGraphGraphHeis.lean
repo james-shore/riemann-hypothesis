@@ -58,7 +58,7 @@ theorem symplO_add_left' (S T : HSp D) (x x' y : WO S T) : symplO S T (x + x') y
   simp only [symplO, hO, Matrix.add_apply, mul_add, Finset.sum_add_distrib, LinearMap.map_add]
 
 theorem symplO_add_right' (S T : HSp D) (x y y' : WO S T) : symplO S T x (y + y') = symplO S T x y + symplO S T x y' := by
-  simp only [symplO, hO, Matrix.add_apply, RingHom.map_add, map_add (cA D), mul_add, add_mul, Finset.sum_add_distrib,
+  simp only [symplO, hO, Matrix.add_apply, map_add (cA D), mul_add, add_mul, Finset.sum_add_distrib,
     LinearMap.map_add]
 
 theorem symplO_nsmul' (S T : HSp D) (k : ℕ) (x y : WO S T) : symplO S T (k • x) y = symplO S T x (k • y) := by

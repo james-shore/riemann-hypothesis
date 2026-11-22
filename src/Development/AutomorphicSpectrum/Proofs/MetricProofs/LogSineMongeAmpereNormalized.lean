@@ -148,7 +148,7 @@ theorem fibre_integral_normal : GroundTheory.Heights₂.Heights.Inter.FibreLocal
           simp only [DiagonalFibreFubini.wordCoef]
           split_ifs <;> rfl
         by_cases hr : (r : ℕ) < 2 * k
-        · simp only [hr, if_true, hcoef, hf, Fin.tail, Fin.cons_zero, Fin.cons_succ]
+        · simp only [hr, if_true, hcoef, hf, Fin.cons_zero]
           simp
         · simp [hr]
     simp_rw [hpt]

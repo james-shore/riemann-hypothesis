@@ -211,7 +211,7 @@ theorem coeffZero_approx : ∀ (O : Type) [CommRing O] (bar : O → O) (q s : �
     have h0 : (0 : Fin 1 × Fin s → Φ.X y) ∈ S := by
       by_contra h0
       have := htail 0 UnitZero.zero_mem_orbit h0
-      simp only [lin, qW, Pi.zero_apply, map_zero, LinearMap.zero_apply, mul_zero, Finset.sum_const_zero] at this
+      simp only [lin, qW, Pi.zero_apply, map_zero, mul_zero, Finset.sum_const_zero] at this
       omega
     rw [← Finset.add_sum_erase S _ h0] at hap
     have hz : (∏ i : Fin 1, Φ.u y (fun v => (0 : Fin 1 × Fin s → Φ.X y) (i, v)) c₀ *

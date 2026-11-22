@@ -43,7 +43,7 @@ theorem maximalIdeal_le_map {O R : Type} [CommRing O] [IsLocalRing O] [IsNoether
   have h2 := Ideal.mem_map_of_mem (e : AdicCompletion (maximalIdeal O) O →+* R) h1
   rw [Ideal.map_map] at h2
   have h3 : (e : AdicCompletion (maximalIdeal O) O →+* R).comp (algebraMap O _) = j := by
-    first | exact he | exact RingHom.ext he | exact he.symm
+    first | exact he | exact RingHom.ext he
   rw [h3] at h2
   simpa using h2
 

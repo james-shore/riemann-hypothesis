@@ -28,7 +28,7 @@ theorem tau_kappa0 (τ : X.Ψ) : τ.1 X.κ0 = -(I * X.c τ) := by
   have him := X.κ0_sign τ
   have hnorm : ‖τ.1 X.κ0‖ = X.c τ := by
     simp only [Data.c]
-    rcases X.κ0_xi with h | h <;> rw [h] <;> simp [map_mul, map_neg, norm_mul, map_ofNat]
+    rcases X.κ0_xi with h | h <;> rw [h] <;> simp [map_mul, map_neg, map_ofNat]
   have hz : τ.1 X.κ0 = ((τ.1 X.κ0).im : ℂ) * I := by
     apply Complex.ext <;> simp [hre]
   have habs : ‖τ.1 X.κ0‖ = -(τ.1 X.κ0).im := by
@@ -96,7 +96,6 @@ theorem Mmat_mul (u : Fin 2 → Fin r → E) (hu : ∀ i k, herm X.Gm (u i) (u k
     herm_smul_left_fundamental_domains, Fin.sum_univ_two, hu, mul_zero, add_zero, Matrix.add_apply]
   first
     | module
-    | (simp only [add_mul, mul_add, add_smul]; abel)
 
 noncomputable def gam (u : Fin 2 → Fin r → E) (hu : ∀ i k, herm X.Gm (u i) (u k) = 0)
     (β : Matrix (Fin 2) (Fin 2) E) : GL (Fin r) E :=
@@ -112,10 +111,6 @@ private lemma cc_herm_Gm_eq_herm_swap (x y : Fin r → E) : cc (herm X.Gm x y) =
        simp only [cc] at hg
        rw [hg]
        ring)
-    | (have hg := X.Gm_herm a b
-       simp only [cc] at hg
-       rw [hg]
-       ring)
 
 theorem herm_Mmat (u : Fin 2 → Fin r → E) (hu : ∀ i k, herm X.Gm (u i) (u k) = 0)
     (β : Matrix (Fin 2) (Fin 2) E) (hβ : ∀ i k, cc (β i k) = β k i) (v w : Fin r → E) :
@@ -124,7 +119,7 @@ theorem herm_Mmat (u : Fin 2 → Fin r → E) (hu : ∀ i k, herm X.Gm (u i) (u 
   have hb' : ∀ i k, IsCMField.complexConj E (β i k) = β k i := hβ
   have hh : ∀ x y, IsCMField.complexConj E (herm X.Gm x y) = herm X.Gm y x := cc_herm_Gm_eq_herm_swap X
   simp only [Mmat_mulVec_eq_add_sum, herm_add_left_fundamental_domains, herm_add_right_fundamental_domains', herm_smul_left_fundamental_domains,
-    herm_smul_right_eq_cc_mul', Fin.sum_univ_two, hu, mul_zero, add_zero, zero_add, cc, map_mul, map_add,
+    herm_smul_right_eq_cc_mul', Fin.sum_univ_two, hu, mul_zero, add_zero, cc, map_mul, map_add,
     hk, hb', hh]
   ring
 

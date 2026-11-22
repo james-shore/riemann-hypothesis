@@ -34,7 +34,7 @@ theorem exists_int_smul_mem {E : Type} [Field E] [NumberField E] {n : ℕ} (L : 
     convert h2 using 1
     funext j
     have : (r • N • x) j = (r : E) * ((N : E) * x j) := by
-      simp [Algebra.smul_def, zsmul_eq_mul]
+      simp [Algebra.smul_def]
     rw [this, hr]
     simp only [Pi.smul_apply, zsmul_eq_mul, smul_eq_mul, Int.cast_mul]
     ring

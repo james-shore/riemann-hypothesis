@@ -109,7 +109,7 @@ theorem conjAL_mem_ALint {x : AL L} (hx : x ∈ ALint L) : conjAL L x ∈ ALint 
     rintro x (⟨y, rfl⟩ | ⟨a, ha, rfl⟩)
     · refine Subring.subset_closure (Or.inl
         ⟨RingOfIntegers.mapRingEquiv (IsCMField.complexConj L).toRingEquiv y, ?_⟩)
-      simp [conjAL] <;> rfl
+      simp [conjAL]
     · refine Subring.subset_closure (Or.inr ⟨a, ha, ?_⟩)
       simp [conjAL]
   exact key hx

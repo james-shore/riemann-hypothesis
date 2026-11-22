@@ -476,7 +476,6 @@ theorem hypII_at (CLa' CD Csz : ℝ) :
     unfold Real.logb
     rw [mul_div_assoc']
     gcongr
-    all_goals first | exact hlp.le | exact hlogc
   have hlogb0 : 0 ≤ Real.logb p (⌈a⌉₊ : ℝ) := Real.logb_nonneg hp1 (by linarith)
   have hlogba : 0 ≤ Real.logb p a := Real.logb_nonneg hp1 (by linarith)
   refine ⟨?_, ?_⟩

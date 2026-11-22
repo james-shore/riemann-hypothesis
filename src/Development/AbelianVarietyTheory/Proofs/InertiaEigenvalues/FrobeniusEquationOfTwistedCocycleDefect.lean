@@ -55,7 +55,7 @@ theorem mul_comm_of_nzd {c : R} (hc : ∀ x : R, c * x = 0 → x = 0)
 theorem map_smul_one (f : R →+* R) (c : R) :
     (c • (1 : Matrix (Fin d) (Fin d) R)).map f = f c • (1 : Matrix (Fin d) (Fin d) R) := by
   ext i j
-  by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+  by_cases hij : i = j <;> simp [hij]
 
 theorem map_smul' (f : R →+* R) (c : R) (M : Matrix (Fin d) (Fin d) R) :
     (c • M).map f = f c • M.map f := by
@@ -142,7 +142,7 @@ theorem frobenius_defect_eq (R : Type) [CommRing R] (φ σ : R →+* R) (d N k :
           rw [h2, h4, h3]
       _ = ((e * e₀) ^ N * (σ e * e) ^ N * (σ e * e₀) ^ N) • (e₀ ^ (2 * N) • (Q' * ε * Q.map σ)) := by
           simp only [Matrix.mul_assoc, mul_left_of hAA', mul_left_of hBB', mul_left_of hσBB', hAA',
-            Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_one, smul_smul]
+            Matrix.mul_smul, Matrix.mul_one, smul_smul]
           congr 1; ring
   have hLφ : A₀ * (lr ^ (2 * k) • (1 : Matrix (Fin d) (Fin d) R)).map φ * A₀' =
       e₀ ^ (2 * N) • (lr ^ (2 * k) • (1 : Matrix (Fin d) (Fin d) R)) := by

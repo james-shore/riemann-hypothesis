@@ -8,7 +8,7 @@ theorem UpperTheory.Reformulated.B.LocallyConstantOpenPreimage.lc_of_open :
   intro x
   refine ⟨(fun y => x⁻¹ * y) ⁻¹' (ψ.ker : Set Γ),
     h.preimage (continuous_const.mul continuous_id), ?_, ?_⟩
-  · simp [MonoidHom.mem_ker]
+  · simp
   · intro y hy
     have hk : ψ (x⁻¹ * y) = 1 := MonoidHom.mem_ker.mp hy
     rw [map_mul, map_inv] at hk

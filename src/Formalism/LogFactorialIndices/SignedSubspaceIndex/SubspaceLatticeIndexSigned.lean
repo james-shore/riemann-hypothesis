@@ -28,7 +28,6 @@ theorem length_map_inj {O Y X : Type} [CommRing O] [AddCommGroup Y] [Module O Y]
       have := congrArg Subtype.val hwe
       first
         | exact this
-        | simpa using this
     · rintro ⟨w, hwQ, hwe⟩
       refine ⟨⟨y, hy⟩, ?_, ?_⟩
       · have : w = y := hι hwe

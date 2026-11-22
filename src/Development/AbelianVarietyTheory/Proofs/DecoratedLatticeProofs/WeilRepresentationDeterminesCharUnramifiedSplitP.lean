@@ -88,7 +88,6 @@ theorem exists_detUnit {e : AE D} (he : IsSplitIdem D e) (u : (AE D)ˣ) :
   have hab : (u : AE D) * ((u⁻¹ : (AE D)ˣ) : AE D) = 1 := u.mul_inv
   have hk := alg_key (cA D) he.1 he.2.1 hab
   refine ⟨⟨_, _, hk, by rw [mul_comm]; exact hk⟩, ?_, alg_supp (cA D) he.1 he.2.1, alg_at (cA D) he.1 he.2.1⟩
-  change _ * cA D _ = 1
   rw [alg_conj (cA D) Formalism.L2.Theta.cA_cA]
   exact hk
 

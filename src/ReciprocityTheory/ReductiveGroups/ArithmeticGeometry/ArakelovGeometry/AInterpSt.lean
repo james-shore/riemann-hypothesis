@@ -18,16 +18,16 @@ theorem fderiv2_lin_comb {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] 
   have hgz : ∀ y ∈ S, ContDiffAt ℝ 2 g y := fun y hy => hg.contDiffAt (hS.mem_nhds hy)
   have e1 : fderiv ℝ h =ᶠ[𝓝 z] fun y => a • fderiv ℝ f y + b • fderiv ℝ g y := by
     filter_upwards [hS.mem_nhds hz] with y hy
-    have hfd : DifferentiableAt ℝ f y := (hfz y hy).differentiableAt (by first | norm_num | simp)
-    have hgd : DifferentiableAt ℝ g y := (hgz y hy).differentiableAt (by first | norm_num | simp)
+    have hfd : DifferentiableAt ℝ f y := (hfz y hy).differentiableAt (by first | norm_num)
+    have hgd : DifferentiableAt ℝ g y := (hgz y hy).differentiableAt (by first | norm_num)
     have hev : h =ᶠ[𝓝 y] fun w => a * f w + b * g w := by
       filter_upwards [hS.mem_nhds hy] with w hw using hh w hw
     exact (((hfd.hasFDerivAt.const_mul a).add (hgd.hasFDerivAt.const_mul b)).congr_of_eventuallyEq hev).fderiv
   rw [e1.fderiv_eq]
   have hf1 : DifferentiableAt ℝ (fderiv ℝ f) z :=
-    ((hfz z hz).fderiv_right (m := 1) (by first | norm_num | rfl | simp)).differentiableAt (by first | norm_num | simp)
+    ((hfz z hz).fderiv_right (m := 1) (by first | norm_num)).differentiableAt (by first | norm_num)
   have hg1 : DifferentiableAt ℝ (fderiv ℝ g) z :=
-    ((hgz z hz).fderiv_right (m := 1) (by first | norm_num | rfl | simp)).differentiableAt (by first | norm_num | simp)
+    ((hgz z hz).fderiv_right (m := 1) (by first | norm_num)).differentiableAt (by first | norm_num)
   exact ((hf1.hasFDerivAt.const_smul a).add (hg1.hasFDerivAt.const_smul b)).fderiv
 
 theorem isGood_interp {x : Ix κ → Ω} {m₀ m₁ : ConeMetric ℂ (Ix κ)} {μ : Measure (Ix κ → ℂ)}
@@ -41,8 +41,6 @@ theorem isGood_interp {x : Ix κ → Ω} {m₀ m₁ : ConeMetric ℂ (Ix κ)} {�
     first
       | exact_mod_cast (le_top : (2 : ℕ∞) ≤ ⊤)
       | exact WithTop.coe_le_coe.mpr (le_top : (2 : ℕ∞) ≤ ⊤)
-      | (norm_cast; exact le_top)
-      | decide
   have hl0 : ContDiffOn ℝ 2 (fun z => Real.log (m₀.ρ z)) {z | z ≠ 0} :=
     (hsm0.of_le h2).log fun z hz => (m₀.pos z hz).ne'
   have hl1 : ContDiffOn ℝ 2 (fun z => Real.log (m₁.ρ z)) {z | z ≠ 0} :=

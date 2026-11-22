@@ -29,7 +29,7 @@ theorem BK.X_pow_eq_sub {l : ℕ} [Fact l.Prime] {K : FinExt l} (bk : BK K) :
   refine ⟨(q : bk.S), ?_⟩
   have := congrArg (Polynomial.coeToPowerSeries.ringHom (R := Wq l bk.a)) hq
   simp only [map_sub, map_pow, map_mul, Polynomial.coeToPowerSeries.ringHom_apply, Polynomial.coe_X,
-    Polynomial.coe_C, map_natCast] at this
+    map_natCast] at this
   linear_combination -this
 
 theorem isHausdorff_quot {l : ℕ} [Fact l.Prime] {R : Type} [CommRing R] (P : Obj l R) (d : P.A)

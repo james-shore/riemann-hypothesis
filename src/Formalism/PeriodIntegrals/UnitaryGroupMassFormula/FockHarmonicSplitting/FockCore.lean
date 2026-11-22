@@ -40,16 +40,14 @@ private lemma finiteDimensional_homog' [Fintype σ] (n : ℕ) :
            = MvPolynomial.coeff d p • MvPolynomial.monomial d (1 : ℂ) := by
          first
          | simp [MvPolynomial.smul_monomial]
-         | rw [MvPolynomial.smul_monomial, smul_eq_mul, mul_one]
        rw [hmono]
-       refine Submodule.smul_mem _ _ (Submodule.subset_span ⟨d, ⟨by first | exact zero_le | exact bot_le | simp, ?_⟩, rfl⟩)
+       refine Submodule.smul_mem _ _ (Submodule.subset_span ⟨d, ⟨by first | exact zero_le | simp, ?_⟩, rfl⟩)
        have hp0 : p ≠ 0 := by
          rintro rfl
          simp at hd
        have htd : p.totalDegree ≤ n := by
          first
          | exact hph.totalDegree_le
-         | exact (hph.totalDegree hp0).le
        have hsum : (d.sum fun _ e => e) ≤ n := (MvPolynomial.le_totalDegree hd).trans htd
        intro i
        have h1 : d i ≤ d.sum (fun _ e => e) := by
@@ -78,8 +76,6 @@ lemma exists_orth [Fintype σ] (K : Submodule ℂ (MvPolynomial σ ℂ)) (n : �
   letI : InnerProductSpace ℂ (FockV σ) := by
     first
     | exact InnerProductSpace.ofCore (fockCore (σ := σ)).toCore
-    | exact InnerProductSpace.ofCore (fockCore (σ := σ)).toPreInnerProductSpaceCore
-    | exact InnerProductSpace.ofCore (fockCore (σ := σ))
   haveI hproj : K'.HasOrthogonalProjection := inferInstance
   let g : FockV σ := f
   let P := K'.orthogonalProjection g

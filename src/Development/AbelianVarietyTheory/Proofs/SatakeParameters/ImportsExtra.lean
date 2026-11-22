@@ -25,7 +25,7 @@ theorem main : ∀ (M ι T : Type) [inst : AddCommGroup T] [inst_1 : Module ℚ 
     ext1; simp [L]
   rw [h2]
   simp only [g0, LinearMap.coe_comp, LinearEquiv.coe_coe, Function.comp_apply,
-    LinearMap.quotKerEquivRange_symm_apply_image, Submodule.liftQ_apply]
+    LinearMap.quotKerEquivRange_symm_apply_image]
   simp [L']
 
 end GlobalTheory.NormBoundTheorem

@@ -234,7 +234,7 @@ private theorem eq_one_of_blocks {R : Type} [CommRing R] {α n : Type} {m : α �
     rw [h1]
     simp [Matrix.one_apply]
   · rw [h0 _ _ (by simpa [UpperTheory.Reformulated.B.Qf33.blk] using hab)]
-    simp [Matrix.one_apply, hab]
+    simp [hab]
 
 theorem UpperTheory.Reformulated.B.Qf33.uniq :
     ∀ {R : Type} [inst : CommRing R] {α n : Type} {m : α → Type} [inst_1 : Fintype α] [inst_2 : LinearOrder α]

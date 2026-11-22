@@ -48,7 +48,7 @@ theorem spans_eq {κ ι : Type} [Fintype κ] [Fintype ι] {f : κ → V} {g : ι
 
 theorem form_pair (x y : V) (hxy : h x y = 0) (hyx : h y x = 0) (α β γ δ : K) :
     h (α • x + β • y) (γ • x + δ • y) = star α * γ * h x x + star β * δ * h y y := by
-  simp only [map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, map_smul, hxy, hyx,
+  simp only [map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, hxy, hyx,
     smul_eq_mul, starRingEnd_apply, RingHom.id_apply, mul_zero, add_zero, zero_add]
   ring
 
@@ -153,8 +153,8 @@ theorem rot2 (hS : IsHermSemilocal S) (hπ : IsUnif S π) (hs : h.IsSymm) {ι : 
     rw [eqZ]
     exact isUnitIn_mul_dual_family_counting (isUnitIn_mul_dual_family_counting (hu j) hY) (isUnitIn_inv (hu i₀))
   obtain ⟨c, hc0, hcj, hck⟩ : ∃ c : ι → V, c i₀ = Y ∧ c j = Z ∧ ∀ k, k ≠ i₀ → k ≠ j → c k = b k :=
-    ⟨Function.update (Function.update b i₀ Y) j Z, by simp [Function.update_apply, hij],
-      by simp [Function.update_apply], fun k h1 h2 => by simp [Function.update_apply, h1, h2]⟩
+    ⟨Function.update (Function.update b i₀ Y) j Z, by simp [hij],
+      by simp, fun k h1 h2 => by simp [h1, h2]⟩
   have hYk : ∀ k, k ≠ i₀ → k ≠ j → h Y (b k) = 0 := fun k h1 h2 =>
     form_pair_orth _ _ _ (ho i₀ k (Ne.symm h1)) (ho j k (Ne.symm h2)) α β
   have hZk : ∀ k, k ≠ i₀ → k ≠ j → h Z (b k) = 0 := fun k h1 h2 =>

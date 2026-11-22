@@ -55,7 +55,7 @@ theorem oneParam_eq_exp_lieU {n : ℕ} (G : Matrix (Fin n) (Fin n) ℂ) (u : ℝ
   let L : Matrix (Fin n) (Fin n) ℂ →ₗ[ℝ] Matrix (Fin n) (Fin n) ℂ :=
     { toFun := fun A => star A
       map_add' := fun A B => star_add A B
-      map_smul' := fun c A => by simp [Matrix.star_eq_conjTranspose, Matrix.conjTranspose_smul] }
+      map_smul' := fun c A => by simp [Matrix.star_eq_conjTranspose] }
   have hst : HasDerivAt (fun t => star (u t)) (star Y) 0 :=
     (LinearMap.toContinuousLinearMap L).hasFDerivAt.comp_hasDerivAt 0 hY0
   have hw := (hst.mul_const G).mul hY0

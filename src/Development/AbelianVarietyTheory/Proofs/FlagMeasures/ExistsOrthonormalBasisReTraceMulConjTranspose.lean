@@ -20,10 +20,10 @@ theorem inner_matrixEntriesEuclideanReal (n : ℕ) (X Y : Matrix (Fin n) (Fin n)
   change inner ℝ (WithLp.toLp 2 (fun p : Fin n × Fin n => Y p.1 p.2))
       (WithLp.toLp 2 (fun p : Fin n × Fin n => X p.1 p.2)) = _
   rw [PiLp.inner_apply]
-  simp only [WithLp.ofLp_toLp, Matrix.trace, Matrix.diag, Matrix.mul_apply,
+  simp only [Matrix.trace, Matrix.diag, Matrix.mul_apply,
     Matrix.conjTranspose_apply, Fintype.sum_prod_type, Complex.re_sum]
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
-  simp [Complex.inner, mul_comm]
+  simp [Complex.inner]
 
 theorem exists_orthonormal_basis_re_trace_mul_conjTranspose (n : ℕ)
     (U : Submodule ℝ (Matrix (Fin n) (Fin n) ℂ)) :

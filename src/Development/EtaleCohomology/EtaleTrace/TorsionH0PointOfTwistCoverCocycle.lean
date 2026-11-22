@@ -9,7 +9,7 @@ theorem freeGen_nat (R : Type) [CommRing R] (P : PSh) {V U : Scheme.{0}} (g : V 
     Sec.res g (freeGen R P U x) = freeGen R P V (P.map g.op x) := by
   have h := congrArg (fun f => f.hom (ModuleCat.freeMk (ULift.up x : uliftFunctor.{1, 0}.obj (P.obj (op U)))))
     ((toSheafify Scheme.etaleTopology ((freeP R).obj P)).naturality g.op)
-  simp only [ModuleCat.hom_comp, LinearMap.coe_comp, Function.comp_apply] at h
+  simp only [ModuleCat.hom_comp, LinearMap.coe_comp] at h
   simp only [Sec.res, freeGen]
   refine h.symm.trans ?_
   exact congrArg (ModuleCat.Hom.hom ((toSheafify Scheme.etaleTopology ((freeP R).obj P)).app (op V)))

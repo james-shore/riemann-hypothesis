@@ -15,4 +15,4 @@ theorem _root_.GlobalTheory.T.charpoly_deRhamHomology_endomorphism_eq_map_ladic 
       (∀ j (q : Over.mk (𝟙 (Sp k)) ⟶ A), q ^ (l ^ j) = 1 ↔ ∃ x, ev j x = q) →
       ∀ [Module.Finite k (HdR A)],
         LinearMap.charpoly (push (dp0 k) (𝟙 _) f) = (LinearMap.charpoly φ).map (Int.castRingHom k) := by
-  first | (exact @GlobalTheory.DeRham.charpoly_push_eq) | (exact GlobalTheory.DeRham.charpoly_push_eq) | (intros; apply GlobalTheory.DeRham.charpoly_push_eq  <;> assumption)
+  first | (exact @GlobalTheory.DeRham.charpoly_push_eq)

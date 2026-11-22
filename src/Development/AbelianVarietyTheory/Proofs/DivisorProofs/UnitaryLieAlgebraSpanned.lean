@@ -97,7 +97,7 @@ theorem mem_span_of_linearIndependent {r : ℕ} (A : Matrix (Fin r) (Fin r) ℂ)
     rw [mem_skewSub]
     have hc : (Complex.I • (1 : Matrix (Fin r) (Fin r) ℂ)).map (starRingEnd ℂ)
         = (-Complex.I) • (1 : Matrix (Fin r) (Fin r) ℂ) := by
-      ext i j; by_cases h : i = j <;> simp [Matrix.one_apply, h]
+      ext i j; by_cases h : i = j <;> simp [h]
     rw [hc, transpose_smul, transpose_one, Matrix.smul_mul, Matrix.mul_smul, Matrix.one_mul,
       Matrix.mul_one, neg_smul, add_neg_cancel]
   have hIsu : Complex.I • (1 : Matrix (Fin r) (Fin r) ℂ) ∉ su := by

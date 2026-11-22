@@ -47,7 +47,7 @@ theorem cong_of_loc : ∀ (L : Type) [Field L] [NumberField L] [IsCMField L] (n 
     obtain ⟨y, hy, hxy⟩ := H i j
     rw [sub_eq_iff_eq_add.1 hxy]
     refine add_mem (mul_mem (natCast_mem _ N) hy) ?_
-    by_cases hij : i = j <;> simp [Matrix.one_apply, hij, Subring.one_mem, Subring.zero_mem]
+    by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
   intro i j
   refine ⟨u * ((x.1 : Matrix (Fin n) (Fin n) (AL L)) i j - (1 : Matrix (Fin n) (Fin n) (AL L)) i j), ?_, ?_⟩
   · apply GlobalTheory.mem_ALint_of_supported_at_split L s e he he'
@@ -71,7 +71,7 @@ theorem cong_of_loc : ∀ (L : Type) [Field L] [NumberField L] [IsCMField L] (n 
           (1 : Matrix (Fin n) (Fin n) (s.v.adicCompletion (maximalRealSubfield L))) j i := by
         by_cases hij : i = j
         · simp [Matrix.one_apply, hij]
-        · simp [Matrix.one_apply, hij, Ne.symm hij]
+        · simp [hij, Ne.symm hij]
       rw [map_sub, e2, RingHom.comp_apply, conj_entry, e1]
       exact h2 j i
   · rw [← mul_assoc, hu, one_mul]

@@ -143,7 +143,7 @@ theorem pure_update
     by_cases h : w = v
     · subst h
       simp [ht]
-    · simp [ht, h, Function.update_of_ne h]
+    · simp [ht, h]
   unfold GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.pure
   rw [key, finprod_mul_distrib hts h1, finprod_eq_single t v fun w hw => if_neg hw]
   simp only [ht, if_true]

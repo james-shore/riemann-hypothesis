@@ -21,7 +21,6 @@ private theorem SideA_unrealify_RL (X : Mat k r) : unrealify (RL X) = X := by
   ext i j
   first
     | (apply Complex.ext <;> simp [unrealify, RL, realifyFun])
-    | (apply Complex.ext <;> rfl)
 
 private theorem SideA_rhoS_le (S : Set (Mat k r)) (X : Mat k r) (hX : RL X ∈ lieE S) (x : Mt k r)
     (hx : NormedSpace.exp X = Matrix.of x) :
@@ -35,8 +34,6 @@ private theorem SideA_rhoS_le (S : Set (Mat k r)) (X : Mat k r) (hX : RL X ∈ l
     _ = ENNReal.ofReal (‖RL X‖ ^ 2) := by
       first
         | (rw [← ENNReal.ofReal_coe_nnreal, coe_nnnorm, ENNReal.ofReal_pow (norm_nonneg _)])
-        | (rw [ENNReal.ofReal_pow (norm_nonneg _), ofReal_norm_eq_enorm]; rfl)
-        | simp [ENNReal.ofReal_pow]
 
 theorem sideA : SideA := by
   intro hNR hLG hLW hGU hPF hW0 hLEN hExpN hLI hCB k r ε hε hε1

@@ -22,8 +22,6 @@ theorem openCell (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] [IsN
   have e : φ (φ.symm F) = F := by
     first
       | exact φ.apply_symm_apply F
-      | exact φ.toLinearEquiv.apply_symm_apply F
-      | simp
   refine ⟨φ.symm F, φ.symm F, fun hmem => hF ?_, 0, fun i _ => ?_⟩
   · have := (equiv_mem_twKer φ _ _ (φ.symm F)).2 hmem
     rw [e] at this

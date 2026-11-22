@@ -96,8 +96,6 @@ theorem isLocS_of_irr (π : NG.FinTyp L n) (s : SplitPlace L) (W : Submodule ℂ
   | exact @_root_.GlobalTheory.blockFieldPairProjections.exists_local_component
   | exact _root_.GlobalTheory.blockFieldPairProjections.exists_local_component
   | (apply _root_.GlobalTheory.blockFieldPairProjections.exists_local_component <;> assumption)
-  | (intros; apply _root_.GlobalTheory.blockFieldPairProjections.exists_local_component <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.blockFieldPairProjections.exists_local_component <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.blockFieldPairProjections.exists_local_component ..)
 
 end Asm

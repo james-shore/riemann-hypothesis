@@ -8,4 +8,4 @@ theorem _root_.GlobalTheory.T.order_surjects_matrix_algebra_mod_prime_power : �
     (p : 𝓞 D.F) ∈ w0 →
     ∃ φ : D.O →ₐ[𝓞 D.F] Matrix (Fin D.m) (Fin D.m) (𝓞 D.F ⧸ w0 ^ r), Function.Surjective φ ∧
       ∀ b, φ b = 0 → b ∈ (w0 ^ r) • (⊤ : Submodule (𝓞 D.F) D.O) := by
-  first | (exact @GlobalTheory.UPel.HT.MatRed.exists_matRed) | (exact GlobalTheory.UPel.HT.MatRed.exists_matRed) | (intros; apply GlobalTheory.UPel.HT.MatRed.exists_matRed <;> assumption)
+  first | (exact @GlobalTheory.UPel.HT.MatRed.exists_matRed)

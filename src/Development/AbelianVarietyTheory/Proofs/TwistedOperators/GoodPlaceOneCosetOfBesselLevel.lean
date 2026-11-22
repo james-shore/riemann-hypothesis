@@ -48,7 +48,7 @@ theorem ell_mul {ρ : ℕ} (u : GL (Fin ρ) (AE D)) (hu : u ∈ UX D ρ) (j : Fi
 theorem yZero_mul {V₀ : HSp D} {ρ : ℕ} (z : Fin V₀.rank → D.host.E) (u : GL (Fin ρ) (AE D)) (hu : u ∈ UX D ρ) :
     yZero V₀ ρ z ⬝ u.1 = yZero V₀ ρ z := by
   ext k j
-  simp only [yZero, zEll, Matrix.neg_mul, Matrix.neg_apply, Matrix.mul_apply, vecMulVec_apply, neg_mul,
+  simp only [yZero, zEll, Matrix.neg_apply, Matrix.mul_apply, vecMulVec_apply, neg_mul,
     Finset.sum_neg_distrib, neg_inj]
   simp_rw [mul_assoc]
   rw [← Finset.mul_sum, ell_mul u hu j]

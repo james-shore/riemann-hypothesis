@@ -172,12 +172,10 @@ theorem val_main (h2 : finrank K L = 2) (hM : IsHerm (Fintype.card K) M) :
     have hW0 : W = ⊥ := by
       first
         | exact Submodule.finrank_eq_zero.mp hd
-        | exact finrank_eq_zero.mp hd
     subst hW0
     have h00 : hf (Fintype.card K) M 0 0 = 0 := by
       first
         | simp [hf]
-        | (unfold hf; simp [Fintype.card_ne_zero])
     by_cases ha0 : a = 0
     · subst ha0
       have hs : {v | v ∈ (⊥ : Submodule L (Fin n → L)) ∧ hf (Fintype.card K) M v v = 0} =
@@ -231,6 +229,5 @@ theorem valuation_count : ValCount := by
   intro K L _ _ _ _ _ h2 n M W hM hW a ha
   first
   | exact val_main h2 hM _ W hW rfl a ha
-  | convert val_main h2 hM _ W hW rfl a ha
 
 end DensInertW

@@ -43,7 +43,7 @@ private theorem corner_theta' {R : Type} [CommRing R] (a : GL (Fin 3) R)
   simp only [corner_eq']
   ext i j
   fin_cases i <;> fin_cases j <;>
-    simp [Matrix.mul_apply, Fin.sum_univ_three, Fin.sum_univ_two, Jmat, Fin.rev,
+    simp [Matrix.mul_apply, Fin.sum_univ_three, Jmat, Fin.rev,
       Matrix.diagonal, e00, e01, e10, e11]
 
 theorem UpperTheory.V.U3.exists_lieElement_middleBlockPart :
@@ -74,7 +74,7 @@ theorem UpperTheory.V.U3.exists_lieElement_middleBlockPart :
     rw [e]; exact hd k hk
   have hD : (Matrix.diagonal ![-1, 1] : Matrix (Fin 2) (Fin 2) R) * Matrix.diagonal ![-1, 1] = 1 := by
     ext i j
-    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two, Matrix.diagonal]
+    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Matrix.diagonal]
   have hp : ∀ g h, (r g).right = 1 →
       corner (r (g * h)).mat = corner (r g).mat * corner (r h).mat := by
     intro g h hg

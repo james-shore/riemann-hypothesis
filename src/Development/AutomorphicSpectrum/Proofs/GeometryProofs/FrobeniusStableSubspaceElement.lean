@@ -95,7 +95,7 @@ theorem exists_frobenius_fixed_or_killed :
           LinearMap.range (LinearMap.mulLeft k f) := by
         refine lt_of_le_of_ne ?_ ?_
         · rintro _ ⟨a, rfl⟩
-          exact ⟨q * a, by simp [hq, mul_assoc]⟩
+          exact ⟨q * a, by simp [hq]⟩
         · intro heq
           have hmem : f ∈ LinearMap.range (LinearMap.mulLeft k g) := by
             rw [heq]

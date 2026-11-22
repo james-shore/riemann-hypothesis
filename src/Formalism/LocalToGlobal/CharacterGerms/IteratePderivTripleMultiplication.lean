@@ -312,9 +312,6 @@ private theorem intS_ev_of_z0_of_intS {V : VF C} {m n : ℕ} {a : Fin m → Pt C
   have hs : MvPowerSeries.HasSubst (fun p : Fin m × Fin dd => a p.1 p.2) := by
     first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero (fun p => ha p.1 p.2)
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_zero' (fun p => ha p.1 p.2)
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun p => by rw [ha p.1 p.2]; exact IsNilpotent.zero)
-    | exact MvPowerSeries.hasSubst_of_constantCoeff_nilpotent (fun p => by rw [ha p.1 p.2]; exact IsNilpotent.zero)
   intro e
   show V.Ge 0 (coeff e (MvPowerSeries.subst (fun p : Fin m × Fin dd => a p.1 p.2) f))
   rw [MvPowerSeries.coeff_subst hs, finsum_eq_sum _ (MvPowerSeries.coeff_subst_finite hs f e)]

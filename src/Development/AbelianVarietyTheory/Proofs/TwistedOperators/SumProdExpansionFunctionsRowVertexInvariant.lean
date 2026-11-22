@@ -75,16 +75,16 @@ theorem scale_movFn_apply (S : GridChoice W U) {t : T} (j : ℕ) (hj : j + 1 < D
         v (.inr ⟨j + 1, hj⟩) (movPt S j hj k z (.inr ⟨j + 1, hj⟩)) :=
       (movFn_two S j hj k v (z (.inr ⟨j + 1, hj⟩))).trans (congrArg (v _) (movPt_two S j hj k z).symm)
     rw [Pi.smul_apply, smul_eq_mul, e1]
-    simp [scaleAt, Pi.mulSingle_apply, hne.symm]
+    simp [scaleAt, hne.symm]
   · by_cases h1' : a = .inr ⟨j, by omega⟩
     · subst h1'
       have e1 : movFn S j hj k v (.inr ⟨j, by omega⟩) (z (.inr ⟨j, by omega⟩)) =
           v (.inr ⟨j, by omega⟩) (movPt S j hj k z (.inr ⟨j, by omega⟩)) :=
         (movFn_one S j hj k v (z (.inr ⟨j, by omega⟩))).trans (congrArg (v _) (movPt_one S j hj k z).symm)
       rw [Pi.smul_apply, smul_eq_mul, e1]
-      simp [scaleAt, Pi.mulSingle_apply, hne, Function.update_of_ne hne]
+      simp [scaleAt, hne]
     · rw [Pi.smul_apply, smul_eq_mul, movFn_other S j hj k v a h1' h2', movPt_other S j hj k z a h1' h2']
-      simp [scaleAt, Pi.mulSingle_apply, h1', h2', Function.update_of_ne h1', Function.update_of_ne h2']
+      simp [scaleAt, h1', h2']
 
 end GlobalTheory.RowVertexInv
 

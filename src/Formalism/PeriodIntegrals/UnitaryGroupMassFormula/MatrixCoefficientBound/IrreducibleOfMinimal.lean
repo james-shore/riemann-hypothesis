@@ -72,7 +72,6 @@ theorem repGam_subrep {V : Type} [AddCommGroup V] [Module ℂ V] (ψ₀ : AddCha
   simp only [repGam, LinearMap.sum_apply, LinearMap.smul_apply, Submodule.coe_sum, Submodule.coe_smul]
   first
     | rfl
-    | simp
 
 theorem gam_one_real (ψ₀ : AddChar F ℂ) :
     gam ψ₀ (1 : GL (Fin k) F) = (((Fintype.card (GL (Fin k) F) : ℝ) / (cardU F k : ℝ) : ℝ) : ℂ) := by
@@ -91,7 +90,7 @@ theorem gam_one_real (ψ₀ : AddChar F ℂ) :
   unfold gam
   have h1 : ∀ y : GL (Fin k) F, y * 1 * y⁻¹ = 1 := fun y => by group
   have h2 : ∀ y : GL (Fin k) F, y * y⁻¹ = 1 := fun y => by group
-  simp only [h1, h2, hpsi, Finset.sum_const, Finset.card_univ, nsmul_eq_mul, mul_one]
+  simp only [h2, hpsi, Finset.sum_const, Finset.card_univ, nsmul_eq_mul, mul_one]
   push_cast
   ring
 
@@ -191,6 +190,5 @@ theorem local_place_bound : PlaceBound := by
     field_simp
   · first
       | (rw [div_le_iff₀ hpos]; linarith)
-      | (rw [div_le_iff hpos]; linarith)
 
 end PI.GGMatBoundW

@@ -25,7 +25,7 @@ private theorem ns_coeff {O σ : Type} [CommRing O] [DecidableEq σ] (s t : σ) 
   · rw [if_neg h, if_neg]
     intro hle
     have := hle t
-    simp [Finsupp.single_apply, Ne.symm h] at this
+    simp [Ne.symm h] at this
 
 private theorem ns_dec {O σ : Type} [CommRing O] [IsLocalRing O] [Fintype σ] (g : MvPowerSeries σ O)
     (hg : ∀ s, MvPowerSeries.coeff (Finsupp.single s 1) g ∈ maximalIdeal O) :

@@ -85,7 +85,7 @@ theorem exists_vecMul_eq_zero {W Ω ι κ : Type} [CommRing W] [IsDomain W] [Fie
     rw [← LinearMap.toMatrix'_mulVec G] at this
     rw [Matrix.mul_apply, Matrix.one_apply,
       show (if i = j then (1:L) else 0) = (Pi.single i (1:L) : ι → L) j by simp [Pi.single_apply, eq_comm], ← this]
-    simp [Matrix.mulVec, dotProduct, P, mul_comm, Matrix.vecMulLinear_apply]
+    simp [Matrix.mulVec, dotProduct, P, mul_comm]
   have hAf : AL.map g = A.map f := by ext i j; simp [AL, hg]
   have hP' : A.map f * (P.transpose.map g) = 1 := by
     rw [← hAf, ← Matrix.map_mul, hP, Matrix.map_one _ (map_zero g) (map_one g)]
@@ -147,7 +147,7 @@ theorem exists_primitive_annihilator : ∀ (F : Type) [Field F] [NumberField F] 
         τ (algebraMap (𝓞 F) F a) * τ (b' i) := by
       intro i τ
       have e := congrArg (fun t : 𝓞 F => τ (algebraMap (𝓞 F) F t)) (b.sum_repr (a * b i))
-      simp only [map_sum, map_zsmul, map_mul, zsmul_eq_mul] at e
+      simp only [map_sum, map_mul, zsmul_eq_mul] at e
       simpa [hb'] using e
     have := inj (fun j => ∑ i, x i * (b.repr (a * b i) j : Ω) - σ a * x j) (fun τ => by
       have key : ∑ j, (∑ i, x i * (b.repr (a * b i) j : Ω)) * τ (b' j) =

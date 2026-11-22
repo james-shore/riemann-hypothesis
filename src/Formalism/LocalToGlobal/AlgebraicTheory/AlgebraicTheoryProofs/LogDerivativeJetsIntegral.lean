@@ -66,7 +66,7 @@ theorem power_log_derivative_jets : PowLogDer := by
   | succ n =>
     have hd := congrArg (PowerSeries.derivative K) h
     rw [Derivation.leibniz_pow, Derivation.leibniz, PowerSeries.derivative_C] at hd
-    simp only [smul_eq_mul, nsmul_eq_mul, smul_zero, add_zero, add_tsub_cancel_right] at hd
+    simp only [smul_eq_mul, nsmul_eq_mul, add_tsub_cancel_right] at hd
     have hC : (PowerSeries.C (c ^ (n + 1)) : PowerSeries K) ≠ 0 := by
       intro h0
       apply pow_ne_zero (n + 1) hc

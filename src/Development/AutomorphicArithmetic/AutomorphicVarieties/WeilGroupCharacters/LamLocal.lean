@@ -142,7 +142,7 @@ private theorem units_pack (l : ℕ) [Fact l.Prime] (M : Type) [CommGroup M] (o 
         intro x y
         rw [← ofAdd_add]
         congr 1
-        ext <;> simp [smul_add, mul_add])
+        ext <;> simp [mul_add])
   let τ : Additive U →ₗ[ℤ_[l]] Additive U := LinearMap.id - s ∘ₗ f
   have hτ : ∀ z, f (τ z) = 0 := by intro z; simp [τ, hfs]
   have hττ : ∀ w, f w = 0 → τ w = w := by intro w hw; simp [τ, hw]
@@ -200,7 +200,7 @@ private theorem units_pack (l : ℕ) [Fact l.Prime] (M : Type) [CommGroup M] (o 
     have hdiv : ((l : ℤ) ^ k) ∣ (o x).toAdd := by
       rw [← PadicInt.norm_int_le_pow_iff_dvd, hy2, nsmul_eq_mul, norm_mul]
       have h1 : ‖((l ^ k : ℕ) : ℤ_[l])‖ = (l : ℝ) ^ (-k : ℤ) := by
-        simp [PadicInt.norm_p_pow]
+        simp
       rw [h1]
       exact mul_le_of_le_one_right (by positivity) (PadicInt.norm_le_one _)
     obtain ⟨n0, hn0⟩ := hdiv

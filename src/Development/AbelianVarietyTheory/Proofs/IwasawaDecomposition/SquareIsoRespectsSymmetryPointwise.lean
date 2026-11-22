@@ -103,7 +103,7 @@ theorem sq_iso_respects_symmetry_pointwise : GlobalFnsSt → ∀ (R : Type) [Com
       have b := val_corr (good_of_sq hJ') U'.symG_rig (𝟙 _)
       rw [val_pull (good_of_sq hJ'), val_one, Category.id_comp] at b
       rw [val_sqGen _ hJ, val_sqGen _ hJ', a, b, Fin.prod_univ_two]
-      simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, oi, Category.comp_id]
+      simp only [Matrix.cons_val_zero, Matrix.cons_val_one, oi, Category.comp_id]
       simp
   set φ : Fin 2 → (G.left ⟶ G.left) := ![(ι[G]).left, 𝟙 G.left] with hφ
   have m1 : ∀ k, (r ≫ φ k) z ∈ (sqLB U.LG.L).U (fun _ => N (r ≫ φ k)) := fun k => mem_sq.2 (hN _)

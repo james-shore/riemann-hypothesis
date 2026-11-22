@@ -47,9 +47,6 @@ theorem expansion_nonneg_regular : RegularSectionNonneg := by
     refine le_inf le_rfl ?_
     first
       | exact le_rfl
-      | (simp only [Category.comp_id]; exact le_rfl)
-      | exact fun x hx => hx
-      | (intro x hx; simpa [LB.wchart] using hx)
   subst hsK
 
   have hEF : E = F := ((U.expand 1 le_rfl).1 _).unique hE hF
@@ -64,9 +61,7 @@ theorem expansion_nonneg_regular : RegularSectionNonneg := by
   refine ⟨1, fun _ => 1, fun _ => g' 0, fun _ => F.s 0, fun _ => hFg 0, fun _ => ?_, fun j => ?_⟩
   · first
       | simp
-      | (rw [AddValuation.map_one]; simp)
   · first
       | simp [DegPre.constBF]
-      | (simp only [DegPre.constBF, Fin.sum_univ_one, _root_.map_one, _root_.one_mul])
 
 end ReciprocityTheory.ChartRestriction.G.DVR

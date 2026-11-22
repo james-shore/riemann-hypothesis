@@ -297,7 +297,7 @@ theorem td_at_mul {p : Type} [Fintype p] {Z : Matrix (Fin d.m) p (AE F E)} (hZ :
     (N : Matrix p q (AE F E)) : At (evI F) (Z * N) := fun c hc => by rw [← Matrix.smul_mul, hZ c hc, Matrix.zero_mul]
 
 theorem incM_diagCols : incM F (diagCols (Fin d.n) : Matrix (Fin d.n ⊕ Fin d.n) (Fin d.n) E) = dg d := by
-  ext (i | i) j <;> by_cases h : i = j <;> simp [incM, diagCols, Matrix.one_apply, h]
+  ext (i | i) j <;> by_cases h : i = j <;> simp [incM, diagCols, h]
 
 theorem split_arch {u : Matrix (Fin d.m) (Fin d.n ⊕ Fin d.n) (AE F E)} (hu : At (evI F) u) :
     ∃ Z₁ Z₂ : Mx F E d.m d.n, At (evI F) Z₁ ∧ At (evI F) Z₂ ∧ u = Z₁ * (dg d)ᵀ + Z₂ * (b2 d)ᵀ := by
@@ -494,14 +494,14 @@ theorem theta_derivative_second_frame {Φ : d.Fn} (hΦ : Φ ∈ d.sch) {Z : Mx F
     obtain ⟨v, hv, ev⟩ := exists_at' (d := d) (Pi.single j 1)
     have := hsp v hv
     rw [sp_eq, ev, vec_eq_zero (at_fst hu) ha] at this
-    simp only [zero_dotProduct, dotProduct_zero, zero_sub, neg_eq_zero] at this
+    simp only [dotProduct_zero, zero_sub, neg_eq_zero] at this
     have e3 := congrArg (evI F) this
     rw [evI_dot] at e3
     have e4 : ∀ i, evI F (Dense.pt (Pi.single j (1 : mixedEmbedding.mixedSpace F)) 0 i) =
         (Pi.single j (1 : mixedEmbedding.mixedSpace F) : d.κ → mixedEmbedding.mixedSpace F) i := fun i =>
       congrFun (Dense.evI_pt (Pi.single j (1 : mixedEmbedding.mixedSpace F)) 0) i
     simp only [e4] at e3
-    rw [Finset.sum_eq_single j (fun i _ hi => by simp [Pi.single_apply, hi]) (by simp)] at e3
+    rw [Finset.sum_eq_single j (fun i _ hi => by simp [hi]) (by simp)] at e3
     have e0 : evI F (0 : AF F) = 0 := map_zero (InfiniteAdeleRing.ringEquiv_mixedSpace F)
     simpa [Box.nf, e0] using e3
   have hu0 : Z * (b2 d)ᵀ = 0 := eq_zero_of_nf hu ha h2

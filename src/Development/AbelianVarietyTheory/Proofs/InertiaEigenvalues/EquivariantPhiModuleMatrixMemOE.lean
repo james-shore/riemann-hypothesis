@@ -31,7 +31,7 @@ theorem main : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (d d' : �
   have hA : S.A.map bk.evW * S.A'.map bk.evW = bk.evW bk.E ^ S.b • (1 : Matrix (Fin d) (Fin d) (WCb l)) := by
     rw [← Matrix.map_mul, S.A_mul]
     ext i j
-    by_cases h : i = j <;> simp [h, Matrix.one_apply]
+    by_cases h : i = j <;> simp [h]
   have h1 : X = (u ^ (S'.a + S.b) * bk.evW bk.E ^ S.a) •
       (S'.A.map bk.evW * X.map (frobW l) * S.A'.map bk.evW) := by
     rw [mul_smul, ← Matrix.smul_mul, hφ, Matrix.smul_mul, Matrix.mul_assoc, hA, Matrix.mul_smul, Matrix.mul_one,

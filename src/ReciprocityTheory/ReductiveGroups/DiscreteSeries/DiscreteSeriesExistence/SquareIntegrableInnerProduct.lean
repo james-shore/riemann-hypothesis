@@ -39,7 +39,6 @@ theorem exists_unitary_preimage (ε : Fin n → Bool) {g : Matrix (Fin n) (Fin n
   have hr : g * (Formalism.REAL.Jm ε * gᴴ * Formalism.REAL.Jm ε) = 1 := by
     first
     | exact mul_eq_one_comm.mp hl
-    | (letI := Matrix.invertibleOfLeftInverse g _ hl; exact mul_invOf_self g)
   exact ⟨⟨⟨g, Formalism.REAL.Jm ε * gᴴ * Formalism.REAL.Jm ε, hr, hl⟩, h⟩, rfl⟩
 
 theorem unitary_matrix_injective (ε : Fin n → Bool) {x y : Formalism.REAL.UJ ε}

@@ -75,7 +75,7 @@ theorem T₁_mul_u₁_add_rem (ha : P.a < Dw.p + Dw.q) (τ : Psi H) (i : Fin (Dw
 
 theorem wt_apply (j : ℕ) (τ : Psi H) (i : Fin (Dw.p + Dw.q)) :
     P.wt j τ i = FlagTan.kap Dw τ i + P.rem τ i + ((dimFlag Dw : ℤ) + j + 1) * P.u₁ τ i := by
-  simp only [WtPar.wt, WtPar.uc, WtPar.u₂, Pi.add_apply, Pi.smul_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply]
+  simp only [WtPar.wt, WtPar.uc, WtPar.u₂, Pi.add_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply]
   ring
 
 end GlobalTheory.CovTop.WtRun

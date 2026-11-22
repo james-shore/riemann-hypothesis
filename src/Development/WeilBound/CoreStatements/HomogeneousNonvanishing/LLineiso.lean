@@ -60,7 +60,7 @@ theorem ll_Xpow [DecidableEq K] (k : K) (i : ι k) (n : ℕ) :
   · subst h
     simp [Finsupp.single_apply]
   · have : ∀ j : ι k', (⟨k, i⟩ : Σ k, ι k) ≠ ⟨k', j⟩ := fun j e => h (congrArg Sigma.fst e).symm
-    simp [this, h]
+    simp [h]
 
 noncomputable def llMon (c : ∀ k, ι k) (d : K → ℕ) : MRing ι := ∏ k, (X ⟨k, c k⟩ : MRing ι) ^ d k
 

@@ -109,7 +109,7 @@ instance (I : AutInst) (g : ℕ) : (KgSub I g).Normal := ⟨fun x hx k => by
     rw [← fmat_mul, ← Subgroup.coe_mul, mul_inv_cancel]; rfl
   rw [← Matrix.mulVec_smul, ← e, Subgroup.coe_mul, Subgroup.coe_mul, fmat_mul, fmat_mul]
   simp only [Matrix.sub_mulVec, Matrix.one_mulVec, Matrix.mulVec_mulVec, Matrix.mulVec_sub,
-    h1, mul_assoc, sub_mul, one_mul, mul_sub]⟩
+    h1, mul_assoc, sub_mul, one_mul]⟩
 
 end Inhab
 

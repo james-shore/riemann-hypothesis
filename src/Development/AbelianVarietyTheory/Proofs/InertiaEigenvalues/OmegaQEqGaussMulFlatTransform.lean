@@ -153,7 +153,7 @@ theorem omegaQ_eq_gauss_mul_flat_transform (D : D7) [inst : ∀ PP : Pl D.host.E
       convert GlobalTheory.FlatFourierQ.dite_prod' Q (fun PP => IsUnit (topL r (Y PP)).det) (fun PP h => ((ξ PP h.unit : ℂˣ) : ℂ))
     rw [e0, Finset.attach_eq_univ]
     refine Finset.prod_congr rfl fun PP _ => ?_
-    simp only [dif_pos PP.2, Subtype.coe_eta]
+    simp only [dif_pos PP.2]
   have hprod : (∏ PP ∈ Q, C PP) = ∏ PP : ↥Q, C PP := (Finset.prod_coe_sort Q C).symm
   show _ = (∏ PP ∈ Q, C PP)⁻¹ * _
   simp only [hf, ← Finset.prod_mul_distrib]

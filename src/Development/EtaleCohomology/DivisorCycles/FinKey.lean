@@ -19,7 +19,7 @@ namespace LateralTheory.Fin.Key
 theorem etale_matrix_units_system_of_key : LateralTheory.DivDb.MatrixUnits₂ := by
   apply LateralTheory.DivDb.MatrixUnitConstruction.MatUnits_of
 theorem etale_idempotent_conjugacy_of_key : LateralTheory.DivDb.IdemConj := by
-  apply LateralTheory.DivDb.ConjugateIdempotents.IdemConj_of <;> first | exact etale_matrix_units_system_of_key
+  apply LateralTheory.DivDb.ConjugateIdempotents.IdemConj_of
 theorem etale_unit_factorization_of_key : LateralTheory.DivDb.UnitFactorization := by
   apply LateralTheory.DivDb.UnitFactorizationTheorem.UnitFactor_of
 theorem etale_divisibility_chain_of_key : LateralTheory.DivDb.Chain := by

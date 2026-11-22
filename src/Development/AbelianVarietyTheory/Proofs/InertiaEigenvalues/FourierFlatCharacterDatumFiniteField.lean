@@ -23,7 +23,7 @@ theorem sum_addChar_trace_rectMatrix_mul {k : Type} [Field k] [Fintype k] {R : T
     simp only [Matrix.mul_zero, trace_zero, AddChar.map_zero_eq_one, Finset.sum_const, Finset.card_univ,
       nsmul_eq_mul, mul_one]
     rw [show Fintype.card (Matrix (Fin r) (Fin t) k) = Fintype.card (Fin r → Fin t → k) from rfl]
-    simp [Fintype.card_fun, ← pow_mul, mul_comm]
+    simp [← pow_mul, mul_comm]
   · obtain ⟨i, j, hij⟩ : ∃ i j, m i j ≠ 0 := by
       by_contra h; push_neg at h; exact hm (Matrix.ext h)
     have h1 := hψ hij

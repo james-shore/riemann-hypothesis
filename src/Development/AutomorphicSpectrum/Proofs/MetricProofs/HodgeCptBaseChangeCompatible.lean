@@ -100,7 +100,7 @@ theorem flat_ker {R R' : Type} [CommRing R] [CommRing R'] (φ : R →+* R') (hφ
     simp only [LinearMap.comp_apply, LinearMap.zero_apply, Finsupp.coe_zero, Pi.zero_apply] at h1
     have h2 : f (Pi.single k 1) = ∑ r, A k r • (Pi.single r 1 : Ix → R) := by
       funext t
-      simp [f, Matrix.mulVec_single_one, Finset.sum_apply, Pi.single_apply]
+      simp [f, Finset.sum_apply, Pi.single_apply]
     rw [h2, map_sum] at h1
     simpa [Matrix.mulVec, dotProduct, Finsupp.finset_sum_apply] using h1
   · have h1 := congrArg (fun g => g (Pi.single k 1)) hxy
@@ -308,7 +308,7 @@ theorem flat_dual (hφ : φ.Flat) (hφi : ∀ a, (φ a : Ω') = i a) (hj : IsExt
         rw [hω']
         exact Submodule.subset_span ⟨_, hm, rfl⟩)
       rw [hev] at h2
-      simp only [LinearMap.smul_apply, hBb, smul_eq_mul, mul_ite, mul_one, mul_zero, apply_ite i, map_natCast, map_zero,
+      simp only [LinearMap.smul_apply, hBb, smul_eq_mul, mul_ite, mul_zero, apply_ite i, map_zero,
         Finset.sum_ite_eq', Finset.mem_univ, if_true] at h2
       rw [_root_.mul_one, map_natCast] at h2
       rw [mul_comm]

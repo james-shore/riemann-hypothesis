@@ -66,16 +66,16 @@ theorem exists_comp (V : ι → Submodule ℂ M) (hV : iSupIndep V) (htop : (⨆
   · intro i w; simp
   · intro i v hv
     simp only [LinearMap.coe_comp, Function.comp_apply, Submodule.subtype_apply,
-      ← DirectSum.apply_eq_component, DirectSum.decomposeLinearEquiv_apply]
+      ← DirectSum.apply_eq_component]
     exact DirectSum.decompose_of_mem_same V hv
   · intro i j v hij hv
     simp only [LinearMap.coe_comp, Function.comp_apply, Submodule.subtype_apply,
-      ← DirectSum.apply_eq_component, DirectSum.decomposeLinearEquiv_apply]
+      ← DirectSum.apply_eq_component]
     exact DirectSum.decompose_of_mem_ne V hv hij.symm
   · intro w
     refine ⟨(DirectSum.decompose V w).support, ?_⟩
     simp only [LinearMap.coe_comp, Function.comp_apply, Submodule.subtype_apply,
-      ← DirectSum.apply_eq_component, DirectSum.decomposeLinearEquiv_apply]
+      ← DirectSum.apply_eq_component]
     exact (DirectSum.sum_support_decompose V w).symm
 
 end GlobalTheory.GradedFixed

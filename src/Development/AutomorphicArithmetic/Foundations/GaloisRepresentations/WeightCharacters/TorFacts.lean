@@ -57,7 +57,7 @@ private theorem tor_conj (a k : ℕ) (z : Circle) :
     rw [Circle.coe_inv]
     exact eq_inv_of_mul_eq_one_left (circ_mul_conj z)
   ext i j
-  simp only [Matrix.GeneralLinearGroup.map_apply, tor_coe, Matrix.map_apply, Matrix.diagonal_apply]
+  simp only [Matrix.GeneralLinearGroup.map_apply, tor_coe, Matrix.diagonal_apply]
   split_ifs <;> simp [hinv]
 
 theorem torFacts_of : TorFacts := fun a k z =>

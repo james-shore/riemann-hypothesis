@@ -32,8 +32,7 @@ theorem cauchy_schwarz (I : V →ₗ⋆[ℂ] V →ₗ[ℂ] ℂ) (hI : ∀ x : V,
     rw [hyx] at h
     simp only [Complex.add_re, Complex.mul_re, Complex.mul_im, Complex.conj_re, Complex.conj_im,
       Complex.neg_re, Complex.neg_im, Complex.ofReal_re, Complex.ofReal_im, map_mul, map_neg,
-      Complex.conj_ofReal, RingHom.map_neg, Complex.conj_conj, ← hb, Complex.add_im, mul_zero,
-      sub_zero, neg_zero, zero_mul, add_zero] at h
+      Complex.conj_ofReal, Complex.conj_conj, ← hb, Complex.add_im, sub_zero, neg_zero, zero_mul, add_zero] at h
     rw [← hy.2] at h
     nlinarith [h, hx.2, hy.2]
   have hd := discrim_le_zero hq

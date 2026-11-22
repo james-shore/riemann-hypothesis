@@ -390,7 +390,7 @@ theorem isClosedEmbedding_atP : ∀ (D : D7) (θ : InfFam D), IsInfFam θ → �
     refine ⟨Pi.single ⟨0, hC.1⟩ 1, fun h => hC.2.1.ne_zero ⟨0, hC.1⟩ ?_⟩
     funext j
     have := congrFun h j
-    simp only [hKdef, Matrix.mulVec_single_one, Matrix.transpose_apply, Matrix.map_apply, Pi.zero_apply] at this
+    simp only [hKdef, Matrix.mulVec_single_one, Pi.zero_apply] at this
     simpa using (map_eq_zero_iff _ (tauE D τ).injective).1 this
   obtain ⟨a₀, ha₀⟩ := hne
   exact ⟨W, GlobalTheory.FibreAtTauEmb.isIsoC_range hP hPG hG hKGK ha₀, ⟨⟨hind, hinj⟩, by rw [hrange]; exact GlobalTheory.Dec.isClosed_NW _ _⟩,

@@ -54,7 +54,7 @@ theorem crd_wirt (a : Fin m) (j : Fin n) (k : Fin m × Fin n × Bool) :
   rw [crd_apply, crd_apply]
   by_cases h : a' = a ∧ i' = j
   · obtain ⟨rfl, rfl⟩ := h
-    cases bb <;> simp <;> ring_nf <;> simp [Complex.I_sq] <;> ring
+    cases bb <;> simp <;> ring_nf <;> simp [Complex.I_sq]
   · have h' : ¬ ((a', i', bb) = (a, j, false)) := by intro e; simp at e; exact h ⟨e.1, e.2.1⟩
     simp [h, h']
 
@@ -78,9 +78,8 @@ theorem evX_pderiv_phiP (ε : Fin m → Bool) (c t : ℝ) (b : Matrix (Fin n) (F
     (a : Fin m) (j : Fin n) :
     evX (pderiv (a, j, false) (phiP ε c t b)) x = -∑ k, (Amat ε c t b a) k j * star (x a k) := by
   simp only [phiP, map_neg, map_sum, pderiv_mul, pderiv_C, pderiv_X, Pi.single_apply]
-  simp only [evX, map_neg, map_sum, map_mul, Prod.ext_iff]
-  simp only [mul_zero, mul_one, zero_mul, Pi.single_apply, Prod.mk.injEq, and_true, Bool.false_eq_true, and_false,
-    if_false, map_zero, add_zero, zero_add]
+  simp only [evX, map_neg, map_sum, Prod.ext_iff]
+  simp only [zero_mul, and_true, zero_add]
   rw [neg_inj, Finset.sum_eq_single a]
   · refine Finset.sum_congr rfl fun k _ => ?_
     rw [Finset.sum_eq_single j]

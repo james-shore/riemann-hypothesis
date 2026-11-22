@@ -141,7 +141,7 @@ private theorem rmul_mem_bor_of_mem {u v : Frame X.Ψ r} (hu : u ∈ Bor X.Ψ r)
 private theorem exists_mem_bor_rmul_rmul_eq {u : Frame X.Ψ r} (hu : u ∈ Bor X.Ψ r) :
     ∃ v ∈ Bor X.Ψ r, ∀ y : Frame X.Ψ r, rmul (rmul y u) v = y := by
   refine ⟨fun τ => ((mat u τ)⁻¹ : Matrix (Fin r) (Fin r) ℂ), ?_, fun y => ?_⟩
-  · simp only [Bor, Set.mem_setOf_eq]
+  · simp only [Bor]
     intro τ
     have hdu : IsUnit (mat u τ).det := (hu τ).1.isUnit
     letI : Invertible (mat u τ) := Matrix.invertibleOfIsUnitDet _ hdu

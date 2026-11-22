@@ -64,7 +64,7 @@ theorem gL_mem (ht : FrameTab (σ := σ) (J := J) P c T) {s : HA R σ J} (hs : s
   have := key (Pi.single i 1) (Pi.single j 1)
   have hsg : ∀ k, sigR R σ ((Pi.single i (1 : R ⊗[F] E) : Fin n → R ⊗[F] E) k) =
       (Pi.single i (1 : R ⊗[F] E) : Fin n → R ⊗[F] E) k := fun k => by
-    by_cases hk : k = i <;> simp [Pi.single_apply, hk]
+    by_cases hk : k = i <;> simp [hk]
   simp only [Formalism.UG.hform, hsg] at this
   simpa [Pi.single_apply] using this
 

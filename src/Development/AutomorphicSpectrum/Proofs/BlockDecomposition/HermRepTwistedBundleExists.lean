@@ -284,9 +284,9 @@ theorem prod_zpow_single {G : Type*} [CommGroup G] (f : Fin (m + 1) → G) (p q 
     ∏ k, f k ^ ((Pi.single p 1 + t • Pi.single q 1 : Fin (m + 1) → ℤ) k) = f p * f q ^ t := by
   simp only [Pi.add_apply, Pi.smul_apply, smul_eq_mul, zpow_add, Finset.prod_mul_distrib]
   congr 1
-  · rw [Finset.prod_eq_single p (fun k _ hk => by simp [Pi.single_apply, hk]) (by simp)]
+  · rw [Finset.prod_eq_single p (fun k _ hk => by simp [hk]) (by simp)]
     simp
-  · rw [Finset.prod_eq_single q (fun k _ hk => by simp [Pi.single_apply, hk]) (by simp)]
+  · rw [Finset.prod_eq_single q (fun k _ hk => by simp [hk]) (by simp)]
     simp
 
 variable {M : HermLB (mpStr ℤ m n)} {b : Fin m} {t : ℤ}

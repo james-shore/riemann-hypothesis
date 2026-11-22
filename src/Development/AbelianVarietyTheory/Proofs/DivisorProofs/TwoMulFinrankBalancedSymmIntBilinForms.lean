@@ -79,12 +79,12 @@ def symPart : GlobalTheory.BalRank.balBil H.bar X →ₗ[ℤ] balForms H.bar X w
   map_add' β γ := by
     apply Subtype.ext
     ext y z
-    simp only [Submodule.coe_add, LinearMap.add_apply, LinearMap.flip_apply, LinearMap.BilinForm.flip_apply]
+    simp only [Submodule.coe_add, LinearMap.add_apply, LinearMap.BilinForm.flip_apply]
     ring
   map_smul' n β := by
     apply Subtype.ext
     ext y z
-    simp only [SetLike.val_smul, LinearMap.add_apply, LinearMap.smul_apply, LinearMap.flip_apply, LinearMap.BilinForm.flip_apply, RingHom.id_apply, smul_eq_mul]
+    simp only [SetLike.val_smul, LinearMap.add_apply, LinearMap.smul_apply, LinearMap.BilinForm.flip_apply, RingHom.id_apply, smul_eq_mul]
     ring
 
 def antiPart : GlobalTheory.BalRank.balBil H.bar X →ₗ[ℤ] balForms H.bar X where
@@ -97,12 +97,12 @@ def antiPart : GlobalTheory.BalRank.balBil H.bar X →ₗ[ℤ] balForms H.bar X 
   map_add' β γ := by
     apply Subtype.ext
     ext y z
-    simp only [Submodule.coe_add, LinearMap.comp_apply, LinearMap.sub_apply, LinearMap.add_apply, LinearMap.flip_apply, LinearMap.BilinForm.flip_apply]
+    simp only [Submodule.coe_add, LinearMap.comp_apply, LinearMap.sub_apply, LinearMap.add_apply, LinearMap.BilinForm.flip_apply]
     ring
   map_smul' n β := by
     apply Subtype.ext
     ext y z
-    simp only [SetLike.val_smul, LinearMap.comp_apply, LinearMap.sub_apply, LinearMap.smul_apply, LinearMap.flip_apply, LinearMap.BilinForm.flip_apply,
+    simp only [SetLike.val_smul, LinearMap.comp_apply, LinearMap.sub_apply, LinearMap.smul_apply, LinearMap.BilinForm.flip_apply,
       RingHom.id_apply, smul_eq_mul]
     ring
 

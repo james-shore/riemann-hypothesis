@@ -63,7 +63,6 @@ theorem exists_coords (g m : ℕ) (Hm : Matrix (Fin g) (Fin g) ℂ) (hH : Hm.IsH
     rw [hT, innerₛₗ_apply_apply, EuclideanSpace.inner_eq_star_dotProduct]
     first
     | rfl
-    | simp [L]
   have hinj : Function.Injective L := by
     refine (injective_iff_map_eq_zero L).2 fun z hz => ?_
     by_contra hne

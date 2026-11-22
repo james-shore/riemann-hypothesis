@@ -108,12 +108,10 @@ private theorem re_star_dotProduct_self_eq_normSq {r : ℕ} (x : Fin r → ℂ) 
   simp only [dotProduct, Pi.star_apply, Complex.re_sum, normSq]
   refine Finset.sum_congr rfl fun k _ => ?_
   have h1 : (star (x k) * x k).re = (x k).re * (x k).re + (x k).im * (x k).im := by
-    simp [Complex.mul_re] <;> ring
+    simp [Complex.mul_re]
   rw [h1, ← Complex.normSq_apply]
   first
     | exact (Complex.sq_norm _).symm
-    | exact Complex.normSq_eq_norm_sq _
-    | simp [Complex.sq_abs]
 
 theorem sb_re_dot_J (p : ℕ) {r : ℕ} (v : Fin r → ℂ) :
     (star v ⬝ᵥ (signMat p r *ᵥ v)).re = posSq p v - negSq p v := by
@@ -124,13 +122,11 @@ theorem sb_cs {r : ℕ} (v w : Fin r → ℂ) : (star v ⬝ᵥ w).re ^ 2 ≤ nor
     have e1 : |(star v ⬝ᵥ w).re| ≤ ‖star v ⬝ᵥ w‖ := by
       first
         | exact Complex.abs_re_le_norm _
-        | exact RCLike.abs_re_le_norm _
-        | exact Complex.abs_re_le_abs _
     have e2 : ‖star v ⬝ᵥ w‖ ≤ ∑ k, ‖star (v k) * w k‖ := by
       unfold dotProduct
       exact norm_sum_le _ _
     have e3 : ∑ k, ‖star (v k) * w k‖ = ∑ k, ‖v k‖ * ‖w k‖ := by
-      simp [norm_mul, norm_star]
+      simp
     linarith
   have h2 := Finset.sum_mul_sq_le_sq_mul_sq Finset.univ (fun k => ‖v k‖) (fun k => ‖w k‖)
   have h3 : (star v ⬝ᵥ w).re ^ 2 ≤ (∑ k, ‖v k‖ * ‖w k‖) ^ 2 :=

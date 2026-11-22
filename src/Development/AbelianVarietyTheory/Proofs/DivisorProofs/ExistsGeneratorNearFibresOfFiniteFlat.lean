@@ -52,7 +52,7 @@ theorem exists_gen_near_of_finFlat : ∀ (R : Type) [CommRing R] [IsDomain R] [I
     have hz'O : z' ∈ k' ⁻¹ᵁ (p ⁻¹ᵁ Y.basicOpen f) := by
       show k' z' ∈ p ⁻¹ᵁ Y.basicOpen f
       rw [hz']
-      first | exact z₀.2 | simpa using z₀.2 | exact (Scheme.Opens.range_ι _).subset ⟨z₀, rfl⟩
+      first | exact z₀.2
     obtain ⟨w, hw⟩ : z' ∈ Set.range (k' ⁻¹ᵁ (p ⁻¹ᵁ Y.basicOpen f)).ι.base := by
       rw [Scheme.Opens.range_ι]; exact hz'O
     refine hu w (fun a ha => ?_) z₀ (by rw [← hz']; exact congrArg k'.base hw |>.symm)

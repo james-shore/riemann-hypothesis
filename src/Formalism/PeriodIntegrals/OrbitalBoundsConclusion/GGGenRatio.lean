@@ -45,8 +45,3 @@ theorem generic_ratio_bound : Formalism.L2.SG.GGMirabolic.GenericRatioOfBound :=
     field_simp
   rw [hR, Nat.cast_pow]
   gcongr
-  all_goals first
-    | exact hPD
-    | exact hP.le
-    | exact hP
-    | positivity

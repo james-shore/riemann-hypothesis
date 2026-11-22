@@ -29,10 +29,6 @@ theorem exists_dominant_lift {X X' : Scheme.{0}} (π : X' ⟶ X) {U W : X.Opens}
 theorem exists_isProjOver_isIso_morphismRestrict : ∀ (R : Type) [CommRing R] [IsNoetherianRing R] (X : Scheme.{0}) [IsIntegral X] (f : X ⟶ Sp R) [IsProper f], ∃ (X' : Scheme.{0}) (π : X' ⟶ X) (U : X.Opens), IsProjOver (π ≫ f) ∧ (U : Set X).Nonempty ∧ IsIso (π ∣_ U) := by
   first
   | exact @_root_.GlobalTheory.BasicOpenLocalExtension.chow_integral
-  | exact _root_.GlobalTheory.BasicOpenLocalExtension.chow_integral
-  | (apply _root_.GlobalTheory.BasicOpenLocalExtension.chow_integral <;> assumption)
-  | (intros; apply _root_.GlobalTheory.BasicOpenLocalExtension.chow_integral <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.BasicOpenLocalExtension.chow_integral <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.BasicOpenLocalExtension.chow_integral ..)
 
 end GlobalTheory.ChowLemma

@@ -27,7 +27,7 @@ private theorem norm_eval_le_sum_of_mem_degreeLT {w : ℕ} {p : ℂ[X]} (hp : p 
     (x : ℂ) : ‖p.eval x‖ ≤ ∑ j ∈ Finset.range (w + 1), ‖p.coeff j‖ * ‖x‖ ^ j := by
   rw [eval_eq_sum_range' (natDegree_lt_of_mem_degreeLT hp)]
   refine (norm_sum_le _ _).trans (le_of_eq ?_)
-  simp [norm_mul, norm_pow]
+  simp [norm_pow]
 
 open Polynomial UpperHalfPlane in
 open scoped MatrixGroups ModularForm in

@@ -66,10 +66,6 @@ theorem honF_subst_subst {ι κ : Type} (φ : PowerSeries K) {u : MvPowerSeries 
       (MvPowerSeries.HasSubst.of_constantCoeff_zero (fun _ => hu)) hb φ
   | exact MvPowerSeries.subst_comp_subst_apply
       (MvPowerSeries.hasSubst_of_constantCoeff_zero (fun _ => hu)) hb φ
-  | exact MvPowerSeries.subst_comp_subst_apply
-      ((PowerSeries.HasSubst.of_constantCoeff_zero hu).hasSubst) hb φ
-  | exact MvPowerSeries.subst_comp_subst_apply
-      ⟨fun _ => by rw [hu]; exact IsNilpotent.zero, by simp⟩ hb φ
 
 theorem honF_integral_subst {f g : PowerSeries K} (hf : IntegralPS f) (hg0 : constantCoeff g = 0)
     (hg : IntegralPS g) : IntegralPS (f.subst g) :=

@@ -34,8 +34,6 @@ theorem ohE_approx (N : ℕ) (hN : 1 ≤ N) (x : AE D) (hx : x ∈ OhE D) :
   | exact @_root_.GlobalTheory.AdeleTensorModule.main
   | exact _root_.GlobalTheory.AdeleTensorModule.main
   | (apply _root_.GlobalTheory.AdeleTensorModule.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AdeleTensorModule.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AdeleTensorModule.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AdeleTensorModule.main ..)
 
 theorem exists_rep {𝔪 : Ideal (𝓞 D.host.E)} (h𝔪 : 𝔪 ≠ ⊥) {x : AE D} (hx : x ∈ OhE D) :

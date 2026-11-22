@@ -36,9 +36,6 @@ theorem mulGen_thm : PI.FglPtW.MulGen := by
       rw [PowerSeries.coe_substAlgHom] at h2
       first
         | exact h2
-        | simp
-        | (simp only [MvPowerSeries.algebraMap_apply, Algebra.algebraMap_self, RingHom.id_apply] at h2
-           exact h2)
     · congr 1
       exact PowerSeries.subst_X has
   have key : PowerSeries.subst (MvPowerSeries.C c * PowerSeries.subst a l) ex =

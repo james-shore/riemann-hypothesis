@@ -81,7 +81,7 @@ theorem exists_cover_torsion_list : ∀ (S : Scheme.{0}) (G : Over S) [GrpObj G]
   have hc := h₁.comp hp
   have hcard : Fintype.card (Multiplicative (Fin (2 * g) → ZMod (m ^ 2))) = N := by
     rw [hN]
-    simp [Fintype.card_fun, ZMod.card, ← pow_mul]
+    simp [ZMod.card, ← pow_mul]
     ring_nf
   let e := (Fintype.equivFinOfCardEq hcard).symm
   let U : Over.mk (b ≫ x) ⟶ Over.mk ((𝟙_ (Over (Sp R₁))).hom ≫ b ≫ x) := Over.homMk (𝟙 _) (by simp)

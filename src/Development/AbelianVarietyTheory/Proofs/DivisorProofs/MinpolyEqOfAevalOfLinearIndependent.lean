@@ -68,8 +68,7 @@ theorem exists_unit_conj_baseChange : ∀ (S F B : Type) [Field S] [CharZero S] 
         algebraMap (L i) (L i ⊗[F] B) (algebraMap F (L i) c) := by
       intro c
       rw [hΦ1]
-      simp [Algebra.TensorProduct.algebraMap_apply, Algebra.algebraMap_eq_smul_one, TensorProduct.smul_tmul,
-        ← Algebra.TensorProduct.one_def]
+      simp [Algebra.algebraMap_eq_smul_one, ← Algebra.TensorProduct.one_def]
     have hy : aeval (Φ x i) ((minpoly F x₀).map (algebraMap F (L i))) = 0 := by
       have := congrArg (fun w => Φ w i) hP
       simp only [map_sum, map_mul, map_pow, map_zero, Finset.sum_apply, Pi.mul_apply, Pi.pow_apply,

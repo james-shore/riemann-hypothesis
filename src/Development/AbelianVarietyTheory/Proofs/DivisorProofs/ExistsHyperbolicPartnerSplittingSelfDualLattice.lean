@@ -44,12 +44,12 @@ theorem exists_partner : ∀ (D : D7) (S : HSp D) (Λ : Submodule (𝓞 D.host.E
   have hform : ∀ a b : S.V, S.hT a b = GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.form σ J (co b) (co a) := fun a b => by
     rw [GlobalTheory.RelFlag.hT_eq_form]
     simp only [GlobalTheory.SgAlg.form, GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.form, GlobalTheory.IntPair.co, dotProduct, Matrix.mulVec, hJ,
-      Matrix.transpose_apply, hσs, starRingEnd_apply, Finset.mul_sum, Finset.sum_mul]
+      Matrix.transpose_apply, hσs, starRingEnd_apply, Finset.mul_sum]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
     simp only [hco]; ring
   have hframe : ∀ i, co (S.frame i) = Pi.single i 1 := fun i => by
-    ext j; simp [hco, Module.Basis.equivFun_apply, Finsupp.single_apply, Pi.single_apply, eq_comm]
+    ext j; simp [hco, Pi.single_apply, eq_comm]
   have hherm : ∀ i j, σ (J j i) = J i j := fun i j => by
     have h1 := S.herm.eq (S.frame i) (S.frame j)
     have e1 : S.hT (S.frame i) (S.frame j) = J j i := by

@@ -66,7 +66,7 @@ theorem enorm_sq_le_lintegral {n : ℕ} {g : V n → ℂ} {c : V n} {r : ℝ} (h
     (MeasurableEquiv.addLeft c).measurableEmbedding (fun z => ‖g z‖ₑ ^ 2) (closedBall c r)
   have h3 : (fun z => c + z) ⁻¹' closedBall c r = closedBall 0 r := by
     ext z
-    simp [mem_closedBall_iff_norm]
+    simp
   rw [h3] at h2
   rw [← h2]
   simpa using h1

@@ -248,7 +248,6 @@ theorem plGG_mem_Psi (z : Bool × G.HH D) : G.plGG D z ∈ D.R.Psi := by
   rw [MonoidHom.mem_ker]
   split <;> first
     | rfl
-    | simp [Formalism.HC.Frame.chD, Formalism.HC.Frame.tau1, Formalism.HC.Frame.tau2]
 
 def tauOf (z : Bool × G.HH D) : D.what₂.Tau := D.eTau.symm ⟨G.plGG D z, plGG_mem_Psi D z⟩
 

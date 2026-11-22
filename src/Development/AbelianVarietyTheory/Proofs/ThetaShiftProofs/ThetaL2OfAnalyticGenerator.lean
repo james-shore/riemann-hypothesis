@@ -61,7 +61,7 @@ theorem mulVec_period {g : ℕ} {La : Type} [AddCommGroup La] (P : La →+ (Fin 
       funext i; by_cases hi : i = k <;> simp [Pi.single_apply, hi]
     · have := (per k).2
       have e : (fun i => ((Pi.single (Sum.inr k) 1 : Fin g ⊕ Fin g → ℤ) (.inr i) : ℂ)) = Pi.single k 1 := by
-        funext i; by_cases hi : i = k <;> simp [Pi.single_apply, hi]
+        funext i; by_cases hi : i = k <;> simp [hi]
       change h *ᵥ (P (bas (Pi.single (.inr k) 1))) = (fun i => ((Pi.single (Sum.inr k) 1 : Fin g ⊕ Fin g → ℤ) (.inl i) : ℂ)) + τ *ᵥ (fun i => ((Pi.single (Sum.inr k) 1 : Fin g ⊕ Fin g → ℤ) (.inr i) : ℂ))
       rw [this, e]
       funext i; simp

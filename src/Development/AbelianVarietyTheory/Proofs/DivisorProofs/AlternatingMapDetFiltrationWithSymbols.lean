@@ -115,10 +115,10 @@ theorem det_filtration_symbols : ∀ (E A' : Type) [Field E] [AddCommGroup A'] [
       refine Finset.sum_eq_zero fun i _ => ?_
       have hne : k ≠ ix ⟨a, i⟩ := by
         rintro rfl; rw [hβix] at hk'; exact lt_irrefl _ hk'
-      simp [Pi.single_apply, hne]
+      simp [hne]
     · intro i
       have h1 : c (ix ⟨a, i⟩) = 0 := hc0 _ (by simp [hβix])
-      simp [h1, Finset.sum_apply, Pi.single_apply, Sigma.mk.inj_iff]
+      simp [h1, Finset.sum_apply, Pi.single_apply]
   choose col hcolL hcol0 hcoldiag using hcol
   obtain ⟨N, hNix, hNout⟩ : ∃ N : Matrix (Fin d) (Fin d) E, (∀ q, N (ix q) = col q) ∧
       (∀ k, k ∉ Set.range ix → N k = Pi.single k 1) := by

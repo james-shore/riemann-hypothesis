@@ -28,7 +28,7 @@ theorem mem_span_indicator_lowerSets :
         | none => simp
         | some m =>
           have h1 : (∃ l', some m = some l' ∧ l' ≤ l) ↔ m ≤ l := by simp
-          simp only [Option.some.injEq, h1]
+          simp only [Option.some.injEq]
           rw [Finset.sum_ite_eq]
           simp only [Finset.mem_filter, Finset.mem_univ, true_and]
           by_cases hml : m = l

@@ -22,7 +22,7 @@ theorem lr_loc_of_mem_mirS {S : Finset (HeightOneSpectrum (𝓞 E))} {p : GA E (
   simp only [GlobalTheory.JSW.KirFin.lr]
   show ((pLoc E w).comp (pFin E)) ((p : Matrix (Fin (m + 1)) (Fin (m + 1)) (Ad E)) (Fin.last m) j) = _
   rw [h]
-  split_ifs with hj <;> simp [hj, Matrix.one_apply, eq_comm]
+  split_ifs with hj <;> simp [hj, eq_comm]
 
 theorem exists_cut_prod (ψ : ∀ w : HeightOneSpectrum (𝓞 E), AddChar (w.adicCompletion E) ℂ)
     (hψ : ∀ w x, ψ w x = GlobalTheory.JSW.psiLoc w x) (K : Subgroup (GL (Fin (m + 1)) (Af E)))

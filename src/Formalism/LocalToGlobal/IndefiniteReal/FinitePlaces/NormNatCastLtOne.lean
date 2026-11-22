@@ -23,7 +23,6 @@ theorem nat_ne_zero_fin (v : HeightOneSpectrum (𝓞 F)) {m : ℕ} (hm : m ≠ 0
 theorem natCast_apply' (N : ℕ) (v : HeightOneSpectrum (𝓞 F)) : (N : Af F) v = (N : v.adicCompletion F) := by
   first
   | rfl
-  | simp
 
 theorem natCast_mul_apply' (N : ℕ) (z : Af F) (v : HeightOneSpectrum (𝓞 F)) :
     ((N : Af F) * z) v = (N : v.adicCompletion F) * z v := by
@@ -41,8 +40,6 @@ theorem norm_natCast_lt_one' (v : HeightOneSpectrum (𝓞 F)) (c : ℕ) (hc : Id
     rw [map_natCast]
     first
     | exact (map_natCast (algebraMap F (v.adicCompletion F)) c).symm
-    | norm_cast
-    | rfl
   rw [h1, HeightOneSpectrum.valuedAdicCompletion_eq_valuation', HeightOneSpectrum.valuation_of_algebraMap]
   exact (v.intValuation_lt_one_iff_mem _).mpr hmem
 

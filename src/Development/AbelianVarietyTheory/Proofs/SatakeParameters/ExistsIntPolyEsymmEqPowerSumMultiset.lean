@@ -33,7 +33,7 @@ theorem exists_intPoly_psum_eq : ∀ a n : ℕ, 1 ≤ n → ∃ P : MvPolynomial
   rw [psum, map_sum]
   simp only [map_pow, aeval_X]
   conv_rhs => rw [← hsf]
-  simp [Multiset.map_map, Finset.sum_eq_multiset_sum]
+  simp [Finset.sum_eq_multiset_sum]
   rfl
 
 end GlobalTheory.PowerSumPoly

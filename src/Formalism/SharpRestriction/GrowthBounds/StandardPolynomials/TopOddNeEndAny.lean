@@ -156,7 +156,7 @@ theorem bMk_eq (C0 CE1 CE2 : ℝ) (β : GlobalTheory X) (j : Fin (numSeg X.TT)) 
         Finsupp.single ((topOdd X j i, false), 0) 1 : MonH X))) +
       Finsupp.single ((topStart X j, true), 0) (X.c * (X.m * (X.p ^ segG X.TT j - 1))))) = bMk C0 CE1 CE2 X β j := by
   unfold bMk
-  simp only [Finsupp.single_add, smul_add, Finset.sum_add_distrib, Finset.smul_sum, Finsupp.smul_single, smul_eq_mul]
+  simp only [Finsupp.single_add, smul_add, Finset.sum_add_distrib, Finsupp.smul_single, smul_eq_mul]
   ext k
   simp only [Finsupp.coe_add, Pi.add_apply, Finsupp.coe_finset_sum, Finset.sum_apply, Finsupp.single_apply]
   by_cases hs : ((topStart X j, true), (0 : Fin (X.m + 1))) = k
@@ -166,7 +166,7 @@ theorem bMk_eq (C0 CE1 CE2 : ℝ) (β : GlobalTheory X) (j : Fin (numSeg X.TT)) 
     try abel
     try ring_nf
   · simp only [hs, if_false, Finset.sum_const_zero, zero_add, add_zero]
-    try simp only [mul_comm, mul_left_comm]
+    try simp only [mul_comm]
     try abel
     try ring_nf
 

@@ -185,11 +185,11 @@ theorem key (n : ℕ) (i : ι k₀) (hi0 : (X (Q.v 0 ⟨k₀, i⟩) : MRing Q.ι
     by_cases ha : k = Q.κ 0 k₀
     · subst ha
       have hb : ¬ Q.κ 0 k₀ = Q.κ 1 k₀ := κ_ne Q
-      simp [Pi.single_apply, hb]
+      simp [hb]
     · by_cases hb : k = Q.κ 1 k₀
       · subst hb
-        simp [Pi.single_apply, ha]
-      · simp [Pi.single_apply, ha, hb]
+        simp [ha]
+      · simp [ha, hb]
   · simp only [map_pow, map_X, eval_X, norm_pow]
     exact hnorm z hz
 
@@ -242,7 +242,7 @@ theorem PositivityTheory.Xgp.t_sq_diag : ∀ (K : Type) [Fintype K] (ι : K → 
     exact PositivityTheory.Xgp.sq_diag.pull_norm Q A hc hk
   rcases le_or_gt 0 (A.a k₀) with hm | hm
   · obtain ⟨n, hn⟩ := Int.eq_ofNat_of_zero_le hm
-    refine PositivityTheory.Xgp.sq_diag.key Q n i hi0 hi1 A₀ A₁ (fun k => by rw [hdeg k, hn] <;> split_ifs <;> simp) fun z hz => ?_
+    refine PositivityTheory.Xgp.sq_diag.key Q n i hi0 hi1 A₀ A₁ (fun k => by rw [hdeg k, hn] <;> split_ifs) fun z hz => ?_
     obtain ⟨c, hc, hzc, hh⟩ := hnorm z hz
     rw [hh, hzc, hn, zpow_natCast, norm_mul, mul_pow]
     ring

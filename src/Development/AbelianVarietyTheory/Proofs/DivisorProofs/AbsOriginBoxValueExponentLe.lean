@@ -67,8 +67,8 @@ theorem mem_oppositePath_bound {m : ℕ} {b : Edge} (hb : b ∈ oppositePath m) 
     b.src.1 ≤ m ∧ b.src.2 ≤ m ∧ b.tgt.1 ≤ m ∧ b.tgt.2 ≤ m := by
   simp only [oppositePath, List.mem_append, List.mem_map, List.mem_range, List.mem_reverse] at hb
   rcases hb with ⟨i, hi, rfl⟩ | ⟨j, hj, rfl⟩
-  · simp only [Edge.src, Edge.tgt]; omega
-  · simp only [Edge.src, Edge.tgt]; omega
+  · simp only; omega
+  · simp only; omega
 
 theorem length_oppositePath (m : ℕ) : (oppositePath m).length = 2 * m := by
   simp [oppositePath]; ring

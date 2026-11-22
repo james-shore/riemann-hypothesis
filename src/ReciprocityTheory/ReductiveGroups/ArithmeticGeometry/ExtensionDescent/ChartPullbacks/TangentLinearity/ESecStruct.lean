@@ -21,9 +21,8 @@ lemma eSec_struct {S : Scheme.{0}} (H : Over S) [GrpObj H] (κ : Γ((𝟙_ (Over
   have key : eSec H ≫ H.hom = 𝟙 _ := by
     first
     | simp [eSec]
-    | (have h := Over.w (η[H]); simpa [eSec] using h)
   calc (eSec H).appTop.hom (H.hom.appTop.hom κ)
-      = (eSec H ≫ H.hom).appTop.hom κ := by first | rfl | simp
+      = (eSec H ≫ H.hom).appTop.hom κ := by first | rfl
     _ = κ := by rw [key]; simp
 
 set_option backward.isDefEq.respectTransparency false in

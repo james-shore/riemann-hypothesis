@@ -16,8 +16,6 @@ theorem exists_smul_mem {K V : Type} [Field K] [NumberField K] [AddCommGroup V] 
   | exact @_root_.GlobalTheory.NonzeroSmulMem.exists_ne_zero_smul_mem
   | exact _root_.GlobalTheory.NonzeroSmulMem.exists_ne_zero_smul_mem
   | (apply _root_.GlobalTheory.NonzeroSmulMem.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NonzeroSmulMem.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NonzeroSmulMem.exists_ne_zero_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NonzeroSmulMem.exists_ne_zero_smul_mem ..)
 
 theorem smul_mem_of_dvd {A V : Type} [CommRing A] [AddCommGroup V] [Module A V] {M : Submodule A V} {a b : A} {x : V}

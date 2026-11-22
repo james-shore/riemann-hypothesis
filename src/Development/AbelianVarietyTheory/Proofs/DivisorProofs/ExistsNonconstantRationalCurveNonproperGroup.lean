@@ -26,7 +26,7 @@ theorem comp_linear_ne_zero {p : Polynomial k} (hp : p ≠ 0) {c e : k} (hc : c 
   · exact hp h
   · have := congrArg (Polynomial.coeff · 1) h
     simp only [Polynomial.coeff_add, Polynomial.coeff_C_mul, Polynomial.coeff_X_one, Polynomial.coeff_C,
-      one_ne_zero, if_false, mul_one, add_zero] at this
+      one_ne_zero, if_false, add_zero] at this
     exact hc (by simpa using this)
 
 theorem exists_rational_family {G : Over (Sp k)} [GrpObj G] (hG : SmConn G)

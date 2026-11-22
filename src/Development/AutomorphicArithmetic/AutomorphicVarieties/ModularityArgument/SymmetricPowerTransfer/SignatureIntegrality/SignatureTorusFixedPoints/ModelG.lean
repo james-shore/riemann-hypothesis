@@ -75,10 +75,10 @@ private def A0 (Δ τ : K) : Matrix (Fin 3) (Fin 3) (Lsq K Δ) :=
   !![1, 0, 0; 0, 0, -1; 0, 1, algebraMap K _ τ]
 
 private theorem Am_crd (v : Fin 3 → Lsq K Δ) : Am (crd (τ := τ) v) = crd (A0 Δ τ *ᵥ v) := by
-  ext <;> simp [Am, crd, A0, ofE, Matrix.mulVec, dotProduct, Fin.sum_univ_three]
+  ext <;> simp [Am, crd, A0, ofE, dotProduct, Fin.sum_univ_three]
 
 private theorem companion_charpoly_factor : (A0 Δ τ).charpoly = (X - 1) * (X ^ 2 - C (algebraMap K _ τ) * X + 1) := by
-  simp [Matrix.charpoly, A0, Matrix.det_fin_three, Matrix.charmatrix_apply, Matrix.diagonal]
+  simp [Matrix.charpoly, A0, Matrix.det_fin_three]
   ring
 
 private theorem hasTau_of (hd : IsDat c d m) (h : Models c d m δ ι Q) : HasTau δ τ := by
@@ -88,9 +88,9 @@ private theorem hasTau_of (hd : IsDat c d m) (h : Models c d m δ ι Q) : HasTau
   have hB : ∀ v, B *ᵥ v = R v := fun v => by simp [B, LinearMap.toMatrix'_mulVec]
   have hB' : ∀ v, B' *ᵥ v = R.symm v := fun v => by simp [B', LinearMap.toMatrix'_mulVec]
   have h1 : B * B' = 1 := Matrix.toLin'.injective (LinearMap.ext fun v => by
-    simp [← Matrix.mulVec_mulVec, hB, hB'])
+    simp [hB, hB'])
   have h2 : B' * B = 1 := Matrix.toLin'.injective (LinearMap.ext fun v => by
-    simp [← Matrix.mulVec_mulVec, hB, hB'])
+    simp [hB, hB'])
   have h3 : ((δ * theta Δ δ : U3 Δ) : Matrix (Fin 3) (Fin 3) (Lsq K Δ)) * B = B * A0 Δ τ :=
     Matrix.toLin'.injective (LinearMap.ext fun v => by
       simp only [Matrix.toLin'_apply, ← Matrix.mulVec_mulVec, hB]
@@ -169,12 +169,12 @@ private theorem diag_of {T : Matrix (Fin 3) (Fin 3) K} {a b re im τ : K} (ha : 
       diagonal ![a, 1, b] * diagonal ![a, 1, b] - τ • diagonal ![a, 1, b] + 1) :
     T = diagonal ![re + im * a, 1, re + im * b] := by
   have e1 : (diagonal ![a, 1, b] - 1 : Matrix (Fin 3) (Fin 3) K) = diagonal ![a - 1, 0, b - 1] := by
-    ext i j; fin_cases i <;> fin_cases j <;> simp [Matrix.one_apply]
+    ext i j; fin_cases i <;> fin_cases j <;> simp
   have e2 : (re • (1 : Matrix (Fin 3) (Fin 3) K) + im • diagonal ![a, 1, b]) = diagonal ![re + im * a, re + im, re + im * b] := by
-    ext i j; fin_cases i <;> fin_cases j <;> simp [Matrix.one_apply]
+    ext i j; fin_cases i <;> fin_cases j <;> simp
   have e3 : (diagonal ![a, 1, b] * diagonal ![a, 1, b] - τ • diagonal ![a, 1, b] + 1 : Matrix (Fin 3) (Fin 3) K) =
       diagonal ![0, 2 - τ, 0] := by
-    ext i j; fin_cases i <;> fin_cases j <;> simp [Matrix.one_apply, hA, hB]
+    ext i j; fin_cases i <;> fin_cases j <;> simp [hA, hB]
     ring
   rw [e1, e2] at h1
   rw [e3] at h2

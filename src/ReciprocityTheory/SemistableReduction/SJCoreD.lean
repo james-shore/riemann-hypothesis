@@ -128,6 +128,6 @@ theorem polar_mean {n : ℕ} (hn : 0 < n) (c : EuclideanSpace ℂ (Fin n)) (hc :
     rw [div_eq_div_iff (mul_ne_zero hA0' hJ) hg]
     linear_combination (-gaussLogC ‖c‖) * e2 - (gaussLogC ‖c‖ * s) * hgn
   rw [hIL, ← hX]
-  field_simp <;> ring
+  field_simp
 
 end ReciprocityTheory.MultiplicativeHeights

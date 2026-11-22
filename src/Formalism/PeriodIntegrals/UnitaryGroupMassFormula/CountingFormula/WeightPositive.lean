@@ -123,7 +123,7 @@ theorem isotropic_zero (D : Formalism.BasicNotions.D7) (w : (VS D).V) (hE : ∀ 
       have hs := semidef D v hvE hvF hvz τ
       have hyw : (VS D).hT y w = star x := by rw [hswap]
       have e1 : (VS D).hT v v = -(2 * (n : D.host.E)) * (x * star x) + (VS D).hT y' y' := by
-        simp only [hv, map_sub, LinearMap.sub_apply, map_smulₛₗ, map_smul, LinearMap.smul_apply,
+        simp only [hv, map_sub, LinearMap.sub_apply, map_smulₛₗ, LinearMap.smul_apply,
           smul_eq_mul, starRingEnd_apply, star_natCast, h0, hy', star_star, hyw, ← hxdef, RingHom.id_apply]
         ring
       have e2 : (τ ((VS D).hT v v)).re =

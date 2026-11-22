@@ -85,7 +85,7 @@ theorem idAt_eq_zero_of_AA (hAA : D.host.AA = 0) {V V₀ W W₀ : HSp D} {ρ : �
       (fun hk => absurd (Finset.mem_univ k) hk), Pi.single_eq_same]
     congr 1
     rw [show ((o k : 𝓞 D.host.E) : D.host.E) = algebraMap (𝓞 D.host.E) D.host.E (o k) from rfl, ho k]
-    first | rfl | exact Algebra.smul_def _ _
+    first | rfl
   set t : D.host.E := N • ((b : 𝓞 D.host.E) : D.host.E) with htdef
   set c : AE D := ε ⊗ₜ[D.host.F] t with hcdef
   have hc : c ∈ idAt D (· = v) := GlobalTheory.FinPl.LatMem.tmul_mem_idAt hs.2 _

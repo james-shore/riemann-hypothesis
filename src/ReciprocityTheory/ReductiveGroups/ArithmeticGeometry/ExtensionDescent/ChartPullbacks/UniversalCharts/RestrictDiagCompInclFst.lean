@@ -33,7 +33,7 @@ def qD (i : Fin 2) : DualNumber R →ₐ[R] JetR R (Fin 2) 1 :=
       ring)
     (fun r a => by
       simp only [LinearMap.toSpanSingleton_apply, Algebra.smul_def, MulOpposite.smul_eq_mul_unop,
-        MulOpposite.unop_op, map_mul, Algebra.ofId_apply, Algebra.algebraMap_self, RingHom.id_apply]
+        MulOpposite.unop_op, map_mul, Algebra.ofId_apply]
       ring)
 
 theorem qD_apply (i : Fin 2) (a : DualNumber R) :
@@ -138,11 +138,11 @@ theorem tcoord_mul {w₁ w₂ : sp (R₀ := R) (DualNumber R) ⟶ G} (h₁ : IsT
     rw [MonObj.comp_mul, ← Category.assoc, ← Category.assoc, spMap_comp, spMap_comp, restrictDiag_comp_incl_fst, restrictDiag_comp_incl_snd]
   have e1 : w₁ = spMap (dualLift (fun j => (rD (LinearMap.fst R R R) (ψ (zR 1 j))).snd)) ≫ x 1 := by
     rw [← key, hval]
-    simp only [LinearMap.fst_apply, LinearMap.snd_apply]
+    simp only [LinearMap.fst_apply]
     rw [scaleD_one, spMap_id, Category.id_comp, spMap_scaleD_zero h₂, _root_.mul_one]
   have e2 : w₂ = spMap (dualLift (fun j => (rD (LinearMap.snd R R R) (ψ (zR 1 j))).snd)) ≫ x 1 := by
     rw [← key, hval]
-    simp only [LinearMap.fst_apply, LinearMap.snd_apply]
+    simp only [LinearMap.snd_apply]
     rw [scaleD_one, spMap_id, Category.id_comp, spMap_scaleD_zero h₁, _root_.one_mul]
   have e12 : w₁ * w₂ = spMap (dualLift (fun j =>
       (rD (LinearMap.fst R R R + LinearMap.snd R R R) (ψ (zR 1 j))).snd)) ≫ x 1 := by

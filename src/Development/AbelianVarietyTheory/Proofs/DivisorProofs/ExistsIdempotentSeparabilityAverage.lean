@@ -123,7 +123,7 @@ theorem exists_idempotent_average : ∀ (C O : Type) [CommRing C] [Ring O] (I : 
       noncomm_ring
     rw [← hu_def, huu, zero_mul] at e
     exact sub_eq_zero.mp e
-  · simp only [sub_mul, mul_assoc, hpε]
+  · simp only [sub_mul, mul_assoc]
     simp only [← mul_assoc, Commute.ofNat_left 3 ε |>.eq, Commute.ofNat_left 2 ε |>.eq]
     simp only [mul_assoc, hpε]
   · simp only [mul_sub, ← mul_assoc, hεp]

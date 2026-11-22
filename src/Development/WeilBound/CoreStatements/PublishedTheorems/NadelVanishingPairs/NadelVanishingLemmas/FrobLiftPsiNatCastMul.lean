@@ -21,9 +21,8 @@ theorem kaehlerD_aeval_fin_two (x : Fin 2 → K) (P : MvPolynomial (Fin 2) ℤ) 
   | C a => simp
   | add P Q hP hQ => simp [hP, hQ, add_smul, Finset.sum_add_distrib]
   | mul_X P i hP =>
-    simp only [map_mul, aeval_X, Derivation.leibniz, hP, Finset.smul_sum, smul_smul,
-      Derivation.leibniz, pderiv_X, Fin.sum_univ_two]
-    fin_cases i <;> simp [add_smul, mul_comm, smul_smul, Pi.single_apply] <;> abel
+    simp only [map_mul, aeval_X, Derivation.leibniz, hP, Derivation.leibniz, pderiv_X, Fin.sum_univ_two]
+    fin_cases i <;> simp [add_smul, smul_smul] <;> abel
 
 theorem ringHom_aeval_fin_two {Kt : Type} [CommRing Kt] (π : Kt →+* K) (x : Fin 2 → Kt)
     (P : MvPolynomial (Fin 2) ℤ) : π (aeval x P) = aeval (fun i => π (x i)) P := by
@@ -124,7 +123,7 @@ theorem frobLiftPsi_natCast_mul (hL : IsFlatLift p π) (hF : IsFrob p π F) (y :
     rw [← pow_succ', Nat.sub_add_cancel hp1]
   rw [frobLiftPsi_spec hL hF (w := F y - (p : Kt) ^ (p - 1) * y ^ p)
     (by rw [map_mul, map_natCast, mul_pow]; linear_combination (y ^ p) * e)]
-  simp [hpK, hF y, kaehlerD_pow_char p, zero_pow hp2]
+  simp [hF y, kaehlerD_pow_char p, zero_pow hp2]
 
 theorem frobLiftPsi_congr (hL : IsFlatLift p π) (hF : IsFrob p π F) {z z' : Kt} (h : π z = π z') :
     frobLiftPsi p π F hL hF z = frobLiftPsi p π F hL hF z' := by

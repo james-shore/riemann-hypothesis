@@ -67,8 +67,7 @@ theorem tri_sgn (a b c : Fin n) : tri sgn0 a b c = triT a b c := by
     rcases lt_trichotomy a c with h3 | h3 | h3 <;>
     first
     | (exfalso; order)
-    | (subst_vars; simp [*, ne_of_lt, ne_of_gt, not_lt_of_gt, lt_asymm]; done)
-    | (subst_vars; simp [*, ne_of_lt, ne_of_gt, not_lt_of_gt, lt_asymm]; norm_num; done)
+    | (subst_vars; simp [*, ne_of_lt, ne_of_gt, lt_asymm])
 
 theorem sum_sgn (a : Fin n) : ∑ b, sgn0 a b = 2 * rhoV n a := by
   have h : ∀ b, sgn0 a b = (if a < b then (1:ℝ) else 0) - (if b < a then (1:ℝ) else 0) := by

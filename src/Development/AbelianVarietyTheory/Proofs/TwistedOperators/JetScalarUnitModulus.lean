@@ -136,7 +136,6 @@ theorem normSq_real_form {D : D7} (ψ : AddChar (AF D.host.F) ℂ) (θ : InfFam 
     congr 2
     simp only [Complex.mul_conj']
     norm_cast
-    push_cast
     ring
   obtain ⟨U, hUo, hU⟩ := hf.level
   have hper := (GlobalTheory.ThetaSqInt.thetaO_norm_fin D ψ hψ S T μ 𝓕 hμ f hf).1

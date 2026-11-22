@@ -30,7 +30,7 @@ theorem tco_physSub_zero {y : TensorProduct ℂ N (Fock n)} (hy : y ∈ physical
   · intro S _ hS
     simp only [LinearMap.coe_comp, Function.comp_apply, lf_num_basis]
     split_ifs
-    · simp [Module.Basis.coord_apply, Finsupp.single_apply, Ne.symm hS]
+    · simp [Module.Basis.coord_apply, Ne.symm hS]
     · simp
   · simp
 

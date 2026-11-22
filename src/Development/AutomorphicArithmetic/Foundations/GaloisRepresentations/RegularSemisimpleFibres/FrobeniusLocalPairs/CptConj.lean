@@ -25,7 +25,7 @@ private theorem cptConj_map {G H : Type} [Group G] [TopologicalSpace G] [IsTopol
   have hc := cptConj_conj h⁻¹
   have key : ∀ x : G, (MulAut.conj h⁻¹).toMonoidHom x = h⁻¹ * x * h := by
     intro x
-    simp [MulAut.conj_apply]
+    simp
   unfold GlobalTheory.BCT.cptPart
   rw [MonoidHom.map_closure, MonoidHom.map_closure]
   congr 1
@@ -63,7 +63,7 @@ theorem UpperTheory.Gal.InertialTypesAlt.L.cptConj :
     rw [← hmap, Subgroup.mem_map]
     constructor
     · intro hx
-      exact ⟨x, hx, by simp [MulAut.conj_apply]⟩
+      exact ⟨x, hx, by simp⟩
     · rintro ⟨y, hy, hyx⟩
       have hyx' : y = (x : G) := by
         simpa [MulAut.conj_apply] using hyx

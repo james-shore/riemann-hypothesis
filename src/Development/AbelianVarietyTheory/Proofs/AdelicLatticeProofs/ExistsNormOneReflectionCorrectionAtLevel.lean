@@ -16,8 +16,6 @@ theorem exists_nat_smul_mem_of_span {E : Type} [Field E] [NumberField E] {n : â„
   | exact @_root_.GlobalTheory.NatMulIntegral.exists_nat_smul_mem
   | exact _root_.GlobalTheory.NatMulIntegral.exists_nat_smul_mem
   | (apply _root_.GlobalTheory.NatMulIntegral.exists_nat_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatMulIntegral.exists_nat_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatMulIntegral.exists_nat_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NatMulIntegral.exists_nat_smul_mem ..)
 
 theorem exists_nat_smul_map_mem {E : Type} [Field E] [NumberField E] {n : â„•}

@@ -871,7 +871,7 @@ theorem twist_coeff {R : Type} [CommRing R] (u : Multiplicative X →* R) (a : A
     by_cases h : x = 0
     · subst h
       simp
-    · simp [Finsupp.single_apply, h]
+    · simp [h]
 
 theorem const_apply {R : CommRingCat.{0}} (r : R) : (const X R).hom r = single 0 r := by
   simp [const, AddMonoidAlgebra.coe_algebraMap]

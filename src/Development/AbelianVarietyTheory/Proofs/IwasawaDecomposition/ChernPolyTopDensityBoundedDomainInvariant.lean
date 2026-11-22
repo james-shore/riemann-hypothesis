@@ -82,7 +82,7 @@ theorem det_flat_mul (A : ι → Matrix (Fin p) (Fin p) ℂ) (B : ι → Matrix 
     change unflat (L (flat x)) τ = A τ * x τ * B τ
     rw [hL]; rfl
   rw [← LinearMap.det_conj L E, key, LinearMap.det_pi]
-  simp only [GlobalTheory.ModuLR.det_lrLin, Fintype.card_fin]
+  simp only [GlobalTheory.ModuLR.det_lrLin]
 
 theorem model_smooth (h : Fintype.card (ι × Fin p × Fin q) = n) {u : ReciprocityTheory.L2DbarEstimates.V n}
     (hu : GlobalTheory.UnifDens.flatL h u ∈ DomFlat ι p q) (τ : ι) :

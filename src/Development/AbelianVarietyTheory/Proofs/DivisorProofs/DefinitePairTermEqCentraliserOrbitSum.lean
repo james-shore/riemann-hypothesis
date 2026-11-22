@@ -27,12 +27,12 @@ theorem finsum_dc_translate {H : Type} [Group H] (A B K : Subgroup H) (u : H)
       left_inv := fun q => by
         induction q using Quotient.inductionOn' with
         | h x =>
-          simp only [Quotient.map'_mk'', inv_mul_cancel_left, mul_inv_cancel_left]
+          simp only [Quotient.map'_mk'', inv_mul_cancel_left]
           rfl
       right_inv := fun q => by
         induction q using Quotient.inductionOn' with
         | h x =>
-          simp only [Quotient.map'_mk'', inv_mul_cancel_left, mul_inv_cancel_left]
+          simp only [Quotient.map'_mk'', mul_inv_cancel_left]
           rfl }
   have hF : ∀ x y : H, DoubleCoset.mk B K x = DoubleCoset.mk B K y → S₂ x = S₂ y := fun x y hxy => by
     obtain ⟨b, hb, k, hk, rfl⟩ := (DoubleCoset.eq B K x y).1 hxy
@@ -102,7 +102,7 @@ theorem termAt_eq (P : DPair G) (hm : (P.γ, P.c) ∈ GlobalTheory.LKCx.grp G P.
   have hle := cent_le_grp P
   have e1 : ∀ w, GlobalTheory.LKCx.toAfF G P.β x t hx (Subgroup.inclusion hle w) = P.toAf x t hx w := fun w => rfl
   have e2 : ∀ w, P.toQr 1 z w = z⁻¹ * GlobalTheory.LKCx.toP1 G P.β (Subgroup.inclusion hle w) * z := fun w => by
-    simp [DPair.toQr, GlobalTheory.LKCx.toP1, carry, MulAut.conj_apply]
+    simp [DPair.toQr, GlobalTheory.LKCx.toP1, carry]
   have eg : Subgroup.inclusion hle P.self = ⟨(P.γ, P.c), hm⟩ := rfl
   have hj2g : GlobalTheory.LKCx.toP1 G P.β ⟨(P.γ, P.c), hm⟩ = inclG G 1 P.atP := rfl
   have hC := centralizer_eq P hm
@@ -149,7 +149,6 @@ theorem termAt_eq (P : DPair G) (hm : (P.γ, P.c) ∈ GlobalTheory.LKCx.grp G P.
       rw [← map_inv, ← map_mul, ← map_mul, hvg]
     have g2 : ((GlobalTheory.LKCx.toP1 G P.β) v)⁻¹ * ((GlobalTheory.LKCx.toP1 G P.β) (⟨(P.γ, P.c), hm⟩ : GlobalTheory.LKCx.grp G P.β) * 1) * (GlobalTheory.LKCx.toP1 G P.β) v = (GlobalTheory.LKCx.toP1 G P.β) (⟨(P.γ, P.c), hm⟩ : GlobalTheory.LKCx.grp G P.β) * 1 := by
       rw [mul_one, ← map_inv, ← map_mul, ← map_mul, hvg]
-    beta_reduce
     rw [hcard]
     simp only [term, MonoidHom.prod_apply, Prod.fst_mul, Prod.snd_mul, MonoidHom.id_apply]
     rw [ef, ef', g1, g2]
@@ -173,7 +172,6 @@ theorem termAt_eq (P : DPair G) (hm : (P.γ, P.c) ∈ GlobalTheory.LKCx.grp G P.
     have hcard : Nat.card (stab (GlobalTheory.LKCx.toAfF G P.β x t hx) (GlobalTheory.LKCx.toP1 G P.β) Kf K' (((1 : G.GAf), z) * h) ⊓ Subgroup.centralizer {(⟨(P.γ, P.c), hm⟩ : GlobalTheory.LKCx.grp G P.β)} :
         Subgroup _) = Nat.card (stab (P.toAf x t hx) (P.toQr 1 z) Kf K' h) := by
       rw [hsub]; exact Subgroup.card_map_of_injective (Subgroup.inclusion_injective hle)
-    beta_reduce
     rw [hcard]
     simp only [term, Prod.fst_mul, Prod.snd_mul, MonoidHom.id_apply, one_mul, mul_one, GlobalTheory.LKCx.sigG_one]
     rw [← e1 P.self, eg, hδ', ← hj2g]

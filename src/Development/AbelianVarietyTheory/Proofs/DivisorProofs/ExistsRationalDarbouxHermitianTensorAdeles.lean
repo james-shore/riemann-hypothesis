@@ -25,9 +25,9 @@ def sympBil {R S : Type} [CommRing R] [CommRing S] [Algebra R S] (c : S →ₐ[R
     (fun a x y => by
       simp only [symp, hTens, Matrix.smul_apply, smul_mul_assoc, ← Finset.smul_sum, mul_smul_comm, map_smul])
     (fun x y y' => by
-      simp only [symp, hTens, Matrix.add_apply, add_mul, Finset.sum_add_distrib, mul_add, map_add])
+      simp only [symp, hTens, Matrix.add_apply, Finset.sum_add_distrib, mul_add, map_add])
     (fun a x y => by
-      simp only [symp, hTens, Matrix.smul_apply, smul_mul_assoc, ← Finset.smul_sum, mul_smul_comm, map_smul])
+      simp only [symp, hTens, Matrix.smul_apply, ← Finset.smul_sum, mul_smul_comm, map_smul])
 
 theorem exists_darboux_of_basis {R W κ : Type} [CommRing R] [Invertible (2 : R)] [AddCommGroup W] [Module R W]
     [Fintype κ] (B : LinearMap.BilinForm R W) (b : Basis (κ ⊕ κ) R W)
@@ -109,11 +109,11 @@ private theorem hTens_single (σ : E →ₐ[F] E) (JA : Matrix α α E) (JB : Ma
     rw [Finset.sum_eq_single k₀, Finset.sum_eq_single l₀]
     · simp
     · intro l _ hl
-      simp [Matrix.single_apply, Ne.symm hl]
+      simp [Ne.symm hl]
     · simp
     · intro k _ hk
       refine Finset.sum_eq_zero fun l _ => ?_
-      simp [Matrix.single_apply, Ne.symm hk]
+      simp [Ne.symm hk]
     · simp
   rw [h1, Matrix.mul_apply, Finset.sum_mul, Finset.sum_comm]
   refine Finset.sum_congr rfl fun j _ => ?_

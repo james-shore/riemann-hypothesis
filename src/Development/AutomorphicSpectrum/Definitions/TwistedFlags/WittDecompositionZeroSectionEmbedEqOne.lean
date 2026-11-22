@@ -24,7 +24,7 @@ theorem gram_cols (S : HSp D) {a b : ℕ} (M : Matrix (Fin S.rank) (Fin a) D.hos
     (i : Fin a) (l : Fin b) : (Mᴴ * S.gram * N) i l =
       S.hT (S.frame.equivFun.symm fun k => M k i) (S.frame.equivFun.symm fun k => N k l) := by
   simp only [Module.Basis.equivFun_symm_apply, Matrix.mul_apply, Matrix.conjTranspose_apply, map_sum, map_smul,
-    LinearMap.map_smulₛₗ₂, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul,
+    LinearMap.map_smulₛₗ₂, LinearMap.sum_apply, smul_eq_mul,
     starRingEnd_apply, Finset.sum_mul, Finset.mul_sum, HSpace.gram]
   refine Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => ?_
   ring

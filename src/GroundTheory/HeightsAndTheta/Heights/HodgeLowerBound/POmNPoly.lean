@@ -114,13 +114,11 @@ theorem log_NbarQ_affine (X : ComponentSetting D O Lt) (B : ℕ) (t : ℝ) {z : 
     intro q
     unfold ComponentSetting.NbarQ
     rw [smoothRep_h _ hz, log_hermOfFun _ _ hz']
-    beta_reduce
     rw [log_refNorm_lin _ _ _ _ hz', ← hEw, ← hVw, mul_pow, pow_one, Nat.cast_one, one_mul]
   have hM : Real.log ((muReg X.H X.S B t).h z) = Real.log (refNorm (muTwDeg X.H B) z) +
       Real.log (Ew * Vw / refNorm (muTwDeg X.H B) (orbitRep z)) := by
     unfold muReg
     rw [smoothRep_h _ hz, log_hermOfFun _ _ hz']
-    beta_reduce
     rw [hreg, ← hEw, ← hVw]
   have hLRw : ∀ q : ℕ, Real.log (refNorm ((q : ℤ) • muTwDeg X.H B + ((1 : ℕ) : ℤ) • D.a') (orbitRep z)) =
       q * Real.log (refNorm (muTwDeg X.H B) (orbitRep z)) + Real.log (refNorm D.a' (orbitRep z)) := fun q => by

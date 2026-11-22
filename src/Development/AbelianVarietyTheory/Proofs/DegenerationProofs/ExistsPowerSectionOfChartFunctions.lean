@@ -197,7 +197,7 @@ theorem reg_cubN (hJ : Good L.L y J) (k : ℕ) (m d : T ⊗ A ⟶ A) :
   obtain ⟨t, ht, hv⟩ := exists_cubN c (1 : T ⊗ A ⟶ A) m d k
   refine ⟨_, _, _, _, t, ht, fun U _ h => ?_, fun x => (hv _ (ptSecT A x) y J hJ).trans (by rw [MonObj.comp_one])⟩
   apply Additive.ofMul.injective
-  simp [Fin.prod_univ_succ, ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow]
+  simp [Fin.prod_univ_succ, ofMul_mul, ofMul_inv, ofMul_pow]
   module
 
 theorem reg_mulq (hJ : Good L.L y J) (s : LB.Gen (LB.LinComb L.L (K := Fin 2) ![(ι[A]).left, 𝟙 A.left] ![1, -1]))

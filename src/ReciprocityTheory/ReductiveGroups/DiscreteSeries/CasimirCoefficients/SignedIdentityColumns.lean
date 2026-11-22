@@ -231,8 +231,6 @@ lemma stdBasis_reprV {Q : Type} [Fintype Q] [DecidableEq Q] (x : Matrix (Fin n) 
     (Matrix.stdBasis ℂ (Fin n) Q).repr x (i, j) = x i j := by
   first
     | rfl
-    | (simp [Matrix.stdBasis]; done)
-    | (simp [Matrix.stdBasis, Basis.reindex_repr, Pi.basis_repr]; done)
 
 lemma LcV_det {Q : Type} [Fintype Q] [DecidableEq Q] (g : Matrix (Fin n) (Fin n) ℂ) :
     LinearMap.det (LcV (Q := Q) g) = g.det ^ Fintype.card Q := by

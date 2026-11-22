@@ -28,7 +28,7 @@ theorem spMap_epsMul_one {Y : Scheme.{0}} (v : Sp (DualNumber ℂ) ⟶ Y) : spMa
     ext <;> simp [epsMul]
   rw [e0]
   have : spMap (RingHom.id (DualNumber ℂ)) = 𝟙 _ := by
-    first | rfl | exact Spec.map_id _ | simp [spMap] | (rw [CommRingCat.ofHom_id]; exact Spec.map_id _)
+    first | rfl | exact Spec.map_id _
   rw [this, Category.id_comp]
 
 set_option maxHeartbeats 1000000 in

@@ -72,7 +72,7 @@ private theorem mem_span_image_lt_iff_exists_sum {S : Type} [CommRing S] {d : �
       rw [Finset.sum_eq_single j]
       · simp
       · intro b _ hb
-        simp [Pi.single_apply, hb]
+        simp [hb]
       · intro h
         exact absurd (Finset.mem_filter.mpr ⟨Finset.mem_univ _, hj⟩) h
     | zero => exact ⟨0, by simp⟩
@@ -263,7 +263,7 @@ theorem UpperTheory.Gal.productCup_of_system.locReg_of :
       · simp only [Pi.single_eq_same]
         exact smul_smul _ _ _
       · intro b _ hb
-        simp [Pi.single_apply, hb]
+        simp [hb]
       · intro h
         exact absurd (Finset.mem_filter.mpr ⟨Finset.mem_univ _, hj0⟩) h
   obtain ⟨a, ha, rfl⟩ := (hM m).mp hm

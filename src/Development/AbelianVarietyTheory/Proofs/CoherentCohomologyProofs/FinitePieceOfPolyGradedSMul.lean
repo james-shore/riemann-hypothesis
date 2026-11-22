@@ -15,7 +15,5 @@ theorem finite_piece_of_polyGradedSMul : ∀ (ι : Type) [LinearOrder ι] [Finty
   have := grSMul_mem ℳ (X_mem_polyGrading i) hm
   first
     | exact this
-    | exact add_comm k 1 ▸ this
-    | simpa [add_comm] using this
 
 end GlobalTheory

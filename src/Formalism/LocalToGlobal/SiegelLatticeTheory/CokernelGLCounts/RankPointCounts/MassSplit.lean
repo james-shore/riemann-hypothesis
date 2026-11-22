@@ -24,10 +24,8 @@ private theorem existsUnique_neg_section_add_mem {V : Type} [AddCommGroup V]
     rw [e]
     first
     | rw [QuotientAddGroup.eq, AddSubgroup.mem_addSubgroupOf]
-    | rw [QuotientAddGroup.eq', AddSubgroup.mem_addSubgroupOf]
     first
     | exact Iff.rfl
-    | simp
   exact ⟨QuotientAddGroup.mk ⟨m, hm⟩, (key _).2 rfl, fun q hq => (key q).1 hq⟩
 
 private theorem existsUnique_mem_iUnion_translate_preimage {V : Type} [AddCommGroup V]
@@ -91,11 +89,9 @@ theorem fund_index {V : Type} [AddCommGroup V] [MeasurableSpace V] [MeasurableAd
   haveI : MeasurableVAdd Λ V := by
     first
     | infer_instance
-    | exact ⟨fun c => measurable_const_add (c : V), fun v => (measurable_add_const v).comp measurable_subtype_coe⟩
   haveI : VAddInvariantMeasure Λ V μ := by
     first
     | infer_instance
-    | exact ⟨fun c s _ => measure_preimage_add μ (c : V) s⟩
   have hsurj : Function.Surjective (QuotientAddGroup.mk : L → L ⧸ Λ.addSubgroupOf L) :=
     QuotientAddGroup.mk_surjective
   obtain ⟨ρ, hρL, hρ⟩ : ∃ ρ : L ⧸ Λ.addSubgroupOf L → V,

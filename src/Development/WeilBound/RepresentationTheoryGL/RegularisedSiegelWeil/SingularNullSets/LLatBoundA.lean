@@ -49,7 +49,7 @@ theorem fullRank_col (D : D7) (a n n₀ : ℕ) (hn₀ : 0 < n₀) (f : SchwartzM
        right_inv := fun ξ => Subtype.ext (Matrix.transpose_transpose _) }, fun _ => rfl⟩
   rw [← T.tsum_eq]
   refine le_trans (le_of_eq (tsum_congr fun γ => ?_)) (hC (fun τ => (B τ)ᵀ) hBt)
-  simp only [SchwartzMap.compCLMOfContinuousLinearEquiv_apply, Function.comp_apply]
+  simp only [SchwartzMap.compCLMOfContinuousLinearEquiv_apply]
   congr 2
   funext τ i j
   rw [LinearEquiv.coe_toContinuousLinearEquiv']

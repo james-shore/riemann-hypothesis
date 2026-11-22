@@ -87,7 +87,7 @@ theorem exists_integralClosure_finite : ∀ {o₁ Ω₁ : Type} [CommRing o₁] 
       | add y z _ _ hy hz => exact A.add_mem hy hz
       | smul r y _ hy =>
         convert A.mul_mem (hR₁A r.1 (hs ▸ r.2)) hy using 1
-        first | rfl | exact Algebra.smul_def r (y : Ω₂) | simp [Algebra.smul_def]
+        first | rfl | exact Algebra.smul_def r (y : Ω₂)
   refine ⟨R, h, hfg, ?_, hh, hfin, hic, ?_⟩
   · intro x
     have hxi : IsIntegral Ω₁ x := Algebra.IsIntegral.isIntegral x

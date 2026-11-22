@@ -238,14 +238,12 @@ theorem commutator_matrix {n r k : ℕ} (s : R →+* R) (hs : ∀ x, s (s x) = x
   have hM1 : M - 1 = X + Y + t • (S + X * Y) := by rw [hM]; abel
   refine ⟨M, Mi, Ai, cT s c' * G * ν * q, ?_, ?_, AAi, ?_, ?_, ?_, ?_, ?_⟩
   · rw [hM, hMi]
-    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul,
-      Matrix.mul_smul, Matrix.smul_mul, smul_add, smul_sub, Matrix.mul_assoc, XX, XS, YX, YY, YS, SX, SY, SS, z XX, z XS,
-      z YX, z YY, z YS, z SX, z SY, z SS, Matrix.mul_zero, smul_zero]
+    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.mul_one, Matrix.one_mul,
+      Matrix.mul_smul, Matrix.smul_mul, smul_add, Matrix.mul_assoc, XX, XS, YX, YY, YS, SX, SY, SS, z XX, z YX, z SX, Matrix.mul_zero, smul_zero]
     module
   · rw [hM, hMi]
-    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul,
-      Matrix.mul_smul, Matrix.smul_mul, smul_add, smul_sub, Matrix.mul_assoc, XX, XS, YX, YY, YS, SX, SY, SS, z XX, z XS,
-      z YX, z YY, z YS, z SX, z SY, z SS, Matrix.mul_zero, smul_zero]
+    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul,
+      Matrix.mul_smul, Matrix.smul_mul, smul_add, smul_sub, Matrix.mul_assoc, XX, XS, YX, YY, YS, SX, SY, SS, z XX, z YX, z SX, Matrix.mul_zero, smul_zero]
     module
   · have hsM : adjG s G Gi M = 1 - Y - X + t • (X * Y - S + X * Y) := by
       rw [hM, adjG_add, adjG_add, adjG_add, adjG_one s G Gi hG2, adjG_smul, adjG_add, hadj X Y, stX, stY, stS, hst, ← Matrix.mul_assoc p N q, E1,
@@ -253,9 +251,9 @@ theorem commutator_matrix {n r k : ℕ} (s : R →+* R) (hs : ∀ x, s (s x) = x
       abel
     have e : adjG s G Gi M * M = 1 := by
       rw [hsM, hM]
-      simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul,
+      simp only [Matrix.mul_add, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul,
         Matrix.mul_smul, Matrix.smul_mul, smul_add, smul_sub, Matrix.mul_assoc, XX, XS, YX, YY, YS, SX, SY, SS, z XX,
-        z XS, z YX, z YY, z YS, z SX, z SY, z SS, Matrix.mul_zero, smul_zero]
+        z YX, z SX, Matrix.mul_zero, smul_zero]
       linear_combination (norm := module) ht • (X * Y)
     calc cT s M * G * M = G * (adjG s G Gi M * M) := by
           unfold adjG; simp only [Matrix.mul_assoc]; rw [← Matrix.mul_assoc G Gi, hG1, Matrix.one_mul]
@@ -288,9 +286,8 @@ theorem commutator_matrix {n r k : ℕ} (s : R →+* R) (hs : ∀ x, s (s x) = x
         Matrix.add_mul, AS, Matrix.smul_mul, SAi, AXY]
       module
     rw [AMAi, hMi, hνd]
-    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul,
-      Matrix.mul_smul, Matrix.smul_mul, smul_add, smul_sub, Matrix.mul_assoc, XX, XS, YX, YY, YS, SX, SY, SS, z XX, z XS,
-      z YX, z YY, z YS, z SX, z SY, z SS, Matrix.mul_zero, smul_zero]
+    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.mul_one, Matrix.one_mul,
+      Matrix.mul_smul, Matrix.smul_mul, smul_add, Matrix.mul_assoc, XX, XS, YX, YY, YS, SX, SY, SS, z XX, z YX, z SX, Matrix.mul_zero, smul_zero]
     linear_combination (norm := module) ht • (S + X * Y)
 
 theorem resolution {E : Type} [Field E] {n r k : ℕ} (s : E →+* E) (hs : ∀ x, s (s x) = x)

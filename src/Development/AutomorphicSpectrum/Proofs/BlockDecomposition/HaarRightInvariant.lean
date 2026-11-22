@@ -98,7 +98,7 @@ theorem restricted_eq_one {ι : Type*} [DecidableEq ι] {H : ι → Type*} [∀ 
       refine ih _ fun i hi => ?_
       by_cases hia : i = a
       · subst hia
-        simp [RestrictedProduct.mulSingle_eq_same, one_mem]
+        simp [one_mem]
       · simp only [RestrictedProduct.mul_apply, RestrictedProduct.inv_apply,
           RestrictedProduct.mulSingle_eq_of_ne A _ hia, inv_one, mul_one]
         exact hx i (by simp [hia, hi])
@@ -111,12 +111,12 @@ def singleHom {ι : Type*} [DecidableEq ι] {H : ι → Type*} [∀ i, Group (H 
   map_one' := by
     ext j
     by_cases h : j = i
-    · subst h; simp [RestrictedProduct.mulSingle_eq_same]
-    · simp [RestrictedProduct.mulSingle_eq_of_ne A _ h]
+    · subst h; simp
+    · simp
   map_mul' x y := by
     ext j
     by_cases h : j = i
-    · subst h; simp [RestrictedProduct.mulSingle_eq_same]
+    · subst h; simp
     · simp [RestrictedProduct.mulSingle_eq_of_ne A _ h]
 
 end Products

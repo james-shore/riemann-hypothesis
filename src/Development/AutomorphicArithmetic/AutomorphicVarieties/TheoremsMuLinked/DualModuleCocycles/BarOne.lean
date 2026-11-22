@@ -30,7 +30,7 @@ private theorem conj_id {O A : Type} [CommRing O] [Ring A] [Algebra O A] (c : O)
   have e1 : ∀ Z : A, W * (Wi * Z) = Z := fun Z => by rw [← mul_assoc, h2, one_mul]
   have e2 : ∀ Z : A, Wi * (W * Z) = Z := fun Z => by rw [← mul_assoc, h1, one_mul]
   have e3 : ∀ Z : A, P * (Pi * Z) = Z := fun Z => by rw [← mul_assoc, h3, one_mul]
-  simp only [mul_sub, sub_mul, mul_smul_comm, smul_mul_assoc, mul_assoc, e1, e2, e3, h1, h2, h3, mul_one]
+  simp only [mul_sub, sub_mul, mul_smul_comm, smul_mul_assoc, mul_assoc, e1, e2, e3, h1, mul_one]
 
 theorem UpperTheory.V.Th.Coc.locAt :
     ∀ {l : ℕ} [Fact l.Prime] {L : Loc} {G0 : Glob l L} {n : ℕ} {O : Type} [CommRing O] [IsDomain O] [IsLocalRing O] [Algebra ℤ_[l] O] (y : Pt G0.frame O n) (v : L.Vl), ∃ c₁ : O, c₁ ≠ 0 ∧ ∀ (G : Glob l L) (h : G.Hom G0) (R : Type) [CommRing R] [Algebra O R] (x : R →ₐ[O] O) (m : ℕ) (δ : R →ₗ[O] Om O m) (τ : MonoidAlgebra R G.G₀ → R) (c : O) (d : MonoidAlgebra R G.G₀ →+ Matrix (Fin n) (Fin n) (Om O m)) (ψ : Fin n → L.Gv v →* Rˣ), IsLift x δ (repR x (mat (y.ρ.comp h.p₀))) τ c d → (∀ i g, x (ψ i g : Rˣ) = (y.ψ v i g : Oˣ)) → (∀ g, repR x (mat (y.ρ.comp h.p₀)) (G.frame.oEl v ψ g) = 0 ∧ d (G.frame.oEl v ψ g) = 0) → (∀ i, ∀ g ∈ G.frame.mu v, δ (ψ i g : Rˣ) = 0) → ∃ Y, LocAt G.frame (y.ρm h m) (fun v => red m (y.w v)) (fun v => red m ((y.w v)⁻¹ : GL (Fin n) O)) (fun g => c₁ • (d (MonoidAlgebra.single g 1) * y.ρm h m g⁻¹)) v Y := by

@@ -42,7 +42,7 @@ theorem exists_pass_rat (p : ChPt (R := R) sel mu u j) (g : UF X.E (R.N j)) :
       unfold frsF
       rw [dif_neg hP, dif_neg hP]
       show g.1 * _ * (((1 : GLQ X.E (R.N j) (QE sel (mu : Chr X.F X.E X.K))) _)⁻¹).1 = _
-      simp [mul_assoc]
+      simp
       rfl
   choose κ hκ using h
   exact ⟨κ, fun P => (hκ P).1, fun P => (hκ P).2.1, fun P => (hκ P).2.2⟩

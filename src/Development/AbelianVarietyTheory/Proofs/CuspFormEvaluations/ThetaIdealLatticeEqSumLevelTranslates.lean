@@ -321,7 +321,7 @@ theorem theta_eq_sum_translates : ∀ (E : Type) [Field E] [NumberField E] [IsCM
       funext b'
       rcases eq_or_ne b' b with rfl | hb
       · simp
-      · simp [Pi.single_eq_of_ne hb, pv_zero, hb]
+      · simp [pv_zero, hb]
     · intro b' _ hb
       simp [Pi.single_eq_of_ne hb, pv_zero, fock_hx_zero_right]
     · simp

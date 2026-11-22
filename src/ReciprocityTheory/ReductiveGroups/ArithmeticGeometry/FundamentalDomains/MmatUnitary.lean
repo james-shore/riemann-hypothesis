@@ -89,7 +89,7 @@ theorem hf_eps (k l : Fin n) : hermC τ G (f k) (f l) = if k = l then eps p k el
 theorem Mmat_f (l : Fin n) : Mmat τ G p f g *ᵥ f l = g l := by
   rw [Mmat_mulVec]
   simp only [hf_eps τ G p f hG hf, mul_ite, mul_zero, ite_smul, zero_smul, Finset.sum_ite_eq,
-    Finset.sum_ite_eq', Finset.mem_univ, if_true, eps_sq, one_smul]
+    Finset.mem_univ, if_true, eps_sq, one_smul]
   abel
 
 theorem Mmat_fix (v : Fin r → ℂ) (hv : ∀ k, hermC τ G v (f k) = 0) : Mmat τ G p f g *ᵥ v = v := by
@@ -123,7 +123,7 @@ theorem Mmat_unitary (hgf : ∀ k, g k ∈ Submodule.span ℂ (Set.range f))
     · simp only [neg_smul, Finset.sum_neg_distrib]
       abel
     · rw [hermC_add_left', hermC_sum_smul_left]
-      simp only [hf_eps τ G p f hG hf, mul_ite, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq',
+      simp only [hf_eps τ G p f hG hf, mul_ite, mul_zero, Finset.sum_ite_eq',
         Finset.mem_univ, if_true]
       linear_combination (-hermC τ G u (f l)) * eps_sq p l
   have hperp : ∀ x : Fin r → ℂ, (∀ l, hermC τ G x (f l) = 0) → ∀ k, hermC τ G x (g k) = 0 := by

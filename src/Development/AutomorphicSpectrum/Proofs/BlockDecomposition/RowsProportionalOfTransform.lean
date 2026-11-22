@@ -83,8 +83,7 @@ theorem lowerRows_determine : ∀ {K : Type} [Field K] (σ : K →+* K), (∀ x,
   have hT₂₁ : T₂₁ = 0 := by
     simpa using e₃.symm
   subst hT₁₁ hT₂₁
-  simp only [Matrix.zero_mul, Matrix.mul_zero, Matrix.one_mul, Matrix.mul_neg, zero_add, add_zero,
-    neg_zero] at e₂ e₄ f₁ f₂ f₃ f₄
+  simp only [Matrix.zero_mul, Matrix.one_mul, Matrix.mul_neg, zero_add, neg_zero] at e₂ e₄ f₁ f₂ f₃ f₄
   refine ⟨⟨T₂₂, e₄, f₄⟩, ?_⟩
   intro hy ha hb hc hd
   subst ha hb hc hd

@@ -17,12 +17,11 @@ theorem mono_eq (π : Fin N → Fin N) (hπ : ∀ a, π (π a) = a) (c : Fin N �
   ext a b
   by_cases h : b = π a
   · subst h
-    simp [Formalism.L2.SG.PtCell.mono, Matrix.diagonal_mul, Equiv.Perm.permMatrix, PEquiv.toMatrix_apply,
-      Function.Involutive.coe_toPerm]
+    simp [Formalism.L2.SG.PtCell.mono, Matrix.diagonal_mul, Equiv.Perm.permMatrix, PEquiv.toMatrix_apply]
     exact fun e => absurd rfl e
   · have h' : ¬ π a = b := fun e => h e.symm
     simp [Formalism.L2.SG.PtCell.mono, Matrix.diagonal_mul, Equiv.Perm.permMatrix, PEquiv.toMatrix_apply,
-      Function.Involutive.coe_toPerm, h, h']
+      h]
     exact fun e => absurd e h'
 
 theorem norm_det_mono (π : Fin N → Fin N) (hπ : ∀ a, π (π a) = a) (c : Fin N → ℂ) :
@@ -67,7 +66,7 @@ open Formalism.L2.SG.PtCell
 
 theorem pperm_append : ∀ (L1 L2 : List (K × ℕ)) (i : ℕ),
     pperm (L1 ++ L2) i = if i < (L1.map Prod.snd).sum then pperm L1 i else (L1.map Prod.snd).sum + pperm L2 (i - (L1.map Prod.snd).sum)
-  | [], L2, i => by simp [pperm]
+  | [], L2, i => by simp
   | (t, s) :: L1, L2, i => by
     simp only [List.cons_append, pperm, List.map_cons, List.sum_cons]
     by_cases h1 : i < s
@@ -80,7 +79,7 @@ theorem pperm_append : ∀ (L1 L2 : List (K × ℕ)) (i : ℕ),
 
 theorem pval_append : ∀ (L1 L2 : List (K × ℕ)) (i : ℕ),
     pval (L1 ++ L2) i = if i < (L1.map Prod.snd).sum then pval L1 i else pval L2 (i - (L1.map Prod.snd).sum)
-  | [], L2, i => by simp [pval]
+  | [], L2, i => by simp
   | (t, s) :: L1, L2, i => by
     simp only [List.cons_append, pval, List.map_cons, List.sum_cons]
     by_cases h1 : i < s

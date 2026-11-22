@@ -38,7 +38,7 @@ theorem exists_intWeight_of_regDominant : ∀ (E : Type) [Field E] [NumberField 
       have h' : conjEmb τ (H.rt : E) = H.rt0 := Small.conjEmb_rt_of_ne h
       have hidx : Dw.p + Dw.q - 1 - (Dw.p + (Dw.q - 1 - i)) = i := by omega
       have hnp : ¬ Dw.p + (Dw.q - 1 - i) < Dw.p := by omega
-      simp [GlobalTheory.AllWt.wtOf, h, h', hq, u, hnp, hidx, GlobalTheory.AllWt.conjEmb_conjEmb]
+      simp [GlobalTheory.AllWt.wtOf, h, h', hq, u, hidx]
 
 theorem limsup_real_eq_of_growth : ∀ (D : ℕ) (r : ℕ → ℕ∞) (t : ℝ), 0 ≤ t → limsup (fun n : ℕ => (D.factorial : ENNReal) * (r n : ENNReal) / (n : ENNReal) ^ D) atTop = ENNReal.ofReal t → limsup (fun n : ℕ => (D.factorial : ℝ) * ((r n).toNat : ℝ) / (n : ℝ) ^ D) atTop = t := by
   intro D r t ht hlim
@@ -92,12 +92,12 @@ theorem regDominant_reW [DecidableEq (CMType H)] {u : GlobalTheory.AllWt.Weight 
 
 theorem vdm_inst (la : GlobalTheory.AllWt.Weight Dw) :
     @GlobalTheory.CompHt.vdm _ GlobalTheory.CompHt.fintypePsi _ ℤ _ la = GlobalTheory.CompHt.vdm la := by
-  first | rfl | convert rfl | congr 1
+  first | rfl | convert rfl
 
 theorem dimFlag_eq [DecidableEq (CMType H)] :
     GlobalTheory.CompHt.dimFlag Dw = Top.dimFl (CMType H) (Dw.p + Dw.q) := by
   simp only [GlobalTheory.CompHt.dimFlag, Formalism.DegreeFormula.dimFl, Top.dimFl]
-  first | rfl | (congr 1; convert rfl) | convert rfl
+  first | rfl | (congr 1; convert rfl)
 
 variable {l : Level H} {Xo : Moduli Dw l} {c : Coeff l} {r : ℕ}
 

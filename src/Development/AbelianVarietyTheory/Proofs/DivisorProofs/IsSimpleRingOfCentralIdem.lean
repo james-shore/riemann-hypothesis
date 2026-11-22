@@ -114,19 +114,19 @@ theorem isSimpleRing_of_central_idem {R : Type} [Ring R] [IsSemisimpleRing R] [N
       funext i
       by_cases hi : i = 0
       · subst hi; simp [s]
-      · simp [s, Pi.single_apply, hi]
+      · simp [s, hi]
     have hidem : IsIdempotentElem (φ.symm s) := by
       rw [IsIdempotentElem, ← map_mul]; congr 1
       funext i; by_cases hi : i = 0
       · subst hi; simp [s]
-      · simp [s, Pi.single_apply, hi]
+      · simp [s, hi]
     rcases h (φ.symm s) hidem (fun y => by
         apply φ.injective; rw [map_mul, map_mul, RingEquiv.apply_symm_apply, hs]) with h0 | h1
     · have : s = 0 := by rw [← map_zero φ.symm] at h0; exact φ.symm.injective h0
       exact hne 0 (by simpa [s] using congr_fun this 0)
     · have : s = 1 := by rw [← map_one φ.symm] at h1; exact φ.symm.injective h1
       have h1' := congr_fun this 1
-      simp [s, Pi.single_apply] at h1' <;> exact hne 1 h1'.symm
+      simp [s] at h1'
 
 theorem GDatum.isSemisimpleRing (G : GDatum) : IsSemisimpleRing (ℚ ⊗[ℤ] G.O) := by
   haveI := G.finO

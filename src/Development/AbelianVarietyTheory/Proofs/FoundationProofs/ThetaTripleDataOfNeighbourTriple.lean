@@ -120,7 +120,7 @@ theorem Hf_ptH (D : D7) (cc : Ideal (𝓞 D.host.K)) (δ : ℂ) (N : ℕ) {N' : 
       D.host.conj (algebraMap (𝓞 D.host.E) D.host.E s) := fun s => rfl
   rw [phiH, AddMonoidHom.mk'_apply]
   simp only [Hf, ptH_apply, pt_apply, mat, Algebra.smul_def,
-    RingOfIntegers.coe_eq_algebraMap, map_sum, map_mul, h1, embT_conj, Finset.sum_mul]
+    map_sum, map_mul, h1, embT_conj, Finset.sum_mul]
   congr 1
   refine Finset.sum_congr rfl fun τ _ => Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun k _ => ?_
   ring

@@ -162,7 +162,6 @@ theorem goodBound_ev : ∀ (ι : Type) [Fintype ι] (m : ι → ℕ) (ρ : PolyR
     fun τ ξ => (hG τ).conn (hu τ) (by norm_num) ξ
   refine ⟨?_, ?_, ?_, ?_, ?_⟩
   · intro i j
-    change ‖ρ.ev (G v) i j‖ ≤ _
     have := h1 B hB1 (fun w : EntIx m => G v w.1 w.2.1 w.2.2) hx (i, j)
     refine le_mul_pow_of_le (K := C1 * max c 1 ^ d1) (e := N * d1) ?_ (by linarith) hK1 hL (by omega)
     refine this.trans_eq ?_
@@ -201,7 +200,6 @@ theorem goodBound_ev : ∀ (ι : Type) [Fintype ι] (m : ι → ℕ) (ρ : PolyR
     refine hd2.trans_eq ?_
     rw [hBdef, mul_pow, mul_pow, mul_pow, ← pow_mul, ← pow_mul, ← pow_mul]; ring
   · intro a i j
-    change ‖conn (fun u => ρ.ev (G u)) v (coordVec a) i j‖ * poinWt S v a ≤ _
     have e := (hcvE (coordVec a)).self_of_nhds
     simp only at e
     rw [e]

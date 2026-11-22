@@ -41,7 +41,7 @@ theorem blockE_apply (Y : Fin m × Fin r → k) (i : Fin m) (j : Fin r) :
   congr 2
   all_goals
     apply Fin.ext
-    simp [rowI, colI]
+    simp [colI]
 
 theorem one_rowI_colI (i : Fin m) (j : Fin r) : (1 : Matrix (Fin (r + m)) (Fin (r + m)) k) (rowI i) (colI j) = 0 := by
   rw [Matrix.one_apply_ne]
@@ -71,7 +71,7 @@ theorem eq_one_add_blockE {u : Matrix (Fin (r + m)) (Fin (r + m)) k} (hu : IsBlo
     congr 1
     all_goals
       apply Fin.ext
-      simp only [rowI, colI]
+      simp only [colI]
       try omega
   · rw [dif_neg hij, add_zero]
     by_contra h

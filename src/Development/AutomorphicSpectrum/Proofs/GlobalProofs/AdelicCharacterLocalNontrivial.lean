@@ -23,7 +23,6 @@ theorem middle_core {K : Type} [Field K] {n r a d : ℕ} (hd : a + d + a = n)
   have hCC : C * Ci = 1 := by
     first
       | exact mul_eq_one_comm.mp hCi
-      | exact Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _) hCi
   obtain ⟨Cm, hCm⟩ : ∃ Cm : Matrix (Fin n) (Fin d) K, ∀ i t, Cm i t = C i ⟨a + t.val, by omega⟩ :=
     ⟨fun i t => C i ⟨a + t.val, by omega⟩, fun _ _ => rfl⟩
   obtain ⟨Cb, hCb⟩ : ∃ Cb : Matrix (Fin d) (Fin n) K, ∀ t i, Cb t i = Ci ⟨a + t.val, by omega⟩ i :=
@@ -148,13 +147,11 @@ theorem pair_vec (V : HSp D) {p : ℕ} (U : Matrix (Fin V.rank) (Fin p) D.host.E
       V.hT (V.frame.equivFun.symm fun k => U k i) (V.frame.equivFun.symm w) := by
   have hsig : ∀ x : D.host.E, (D.sp.cm.sig : D.host.E →+* D.host.E) x = starRingEnd D.host.E x :=
     fun _ => rfl
-  simp only [Module.Basis.equivFun_symm_apply, map_sum, LinearMap.map_smulₛₗ, LinearMap.map_smulₛₗ₂,
-    LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul, Matrix.mulVec,
+  simp only [Module.Basis.equivFun_symm_apply, map_sum, LinearMap.map_smulₛₗ, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul, Matrix.mulVec,
     dotProduct, Matrix.mul_apply, Formalism.UG.cT, Matrix.transpose_apply, Matrix.map_apply, hsig,
     Formalism.BasicNotions.HSpace.gram, Finset.mul_sum, Finset.sum_mul, RingHom.id_apply]
   first
     | (refine Finset.sum_congr rfl fun k _ => Finset.sum_congr rfl fun l _ => ?_; ring)
-    | (rw [Finset.sum_comm]; refine Finset.sum_congr rfl fun k _ => Finset.sum_congr rfl fun l _ => ?_; ring)
 
 theorem pair_frame (V V' : HSp D) (ι : V'.V →ₗ[D.host.E] V.V) {p : ℕ} (U : Matrix (Fin V.rank) (Fin p) D.host.E) (i : Fin p)
     (j : Fin V'.rank) :

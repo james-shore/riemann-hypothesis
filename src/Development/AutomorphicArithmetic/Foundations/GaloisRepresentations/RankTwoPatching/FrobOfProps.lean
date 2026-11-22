@@ -18,7 +18,7 @@ open private UpperTheory.V.Af.exists_sign from Development.AutomorphicArithmetic
 namespace UpperTheory.Gal.SV
 
 theorem rowB (h : RowT) : UpperTheory.GalStar.Row0b fun h rc => IsRecT h rc := by
-  first | exact h | exact UpperTheory.GalStar.Row0.row0b _ h
+  first | exact h
 
 theorem propsB_iso {Rc : UpperTheory.GalStar.RecNotion} {E Ω : Type} [Field E] [Field Ω] [Algebra E Ω] {l : ℕ} [Fact l.Prime] {m : ℕ}
     [NumberField E] [IsAlgClosure E Ω] [IsCMField E] {π : CuspSub E m}

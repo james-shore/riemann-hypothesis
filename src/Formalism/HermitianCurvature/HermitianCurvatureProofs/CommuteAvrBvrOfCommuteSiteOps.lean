@@ -178,7 +178,6 @@ theorem commute_Avr_Bvr_of_commute_siteOps {L : LevelData A r} {x : A} (hx : ∀
       | exact (hcb l).neg_right
       | exact hcb l
       | exact hcbi l
-      | exact Commute.zero_right x
   refine ⟨?_, ?_⟩
   · unfold R.LevelData.Avr R.LevelData.Tvprod
     exact key _ hT 0 0

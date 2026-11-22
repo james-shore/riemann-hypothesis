@@ -25,7 +25,7 @@ theorem continuous_sm_of_ker : ∀ (K : Type) [Field K] [NumberField K] (n : ℕ
     (hFx x).continuousOn.integrableOn_compact hs
   have e : ∀ x, sm ν β f x = ∫ y in tsupport β, F (x, y) ∂ν := fun x =>
     (setIntegral_eq_integral_of_forall_compl_eq_zero fun y hy => by
-      simp [hFdef, image_eq_zero_of_notMem_tsupport hy]).symm
+      simp [image_eq_zero_of_notMem_tsupport hy]).symm
   rw [continuous_iff_continuousAt]
   intro x₀
   rw [Metric.continuousAt_iff']

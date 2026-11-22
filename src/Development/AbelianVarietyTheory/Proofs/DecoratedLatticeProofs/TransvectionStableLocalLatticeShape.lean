@@ -28,7 +28,7 @@ theorem GlobalTheory.LatPairStab.stable_lattice_shape : ∀ (k : Type) [Field k]
     ext m
     by_cases hm : m = b
     · subst hm; simp [Subring.smul_def]
-    · simp [hm, Subring.smul_def]
+    · simp [hm]
 
   have ha : ∀ t : 𝒪[k], Pi.single a ((t : k) * c) ∈ L := by
     intro t

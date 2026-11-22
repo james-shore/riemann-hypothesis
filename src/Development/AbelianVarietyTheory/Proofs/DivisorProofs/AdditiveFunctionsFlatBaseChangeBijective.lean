@@ -18,7 +18,7 @@ theorem cobOne_baseChange :
     induction c with
     | zero => simp
     | add x y hx hy => simp only [tmul_add, map_add, hx, hy]
-    | tmul x y => simp [Bialgebra.comul_one, Algebra.TensorProduct.one_def]
+    | tmul x y => simp
   simp only [cobOne_apply, LinearMap.coe_comp, LinearEquiv.coe_coe, Function.comp_apply,
     LinearMap.baseChange_tmul, tmul_sub, map_sub, TensorProduct.comul_tmul, h,
     AlgebraTensorModule.distribBaseChange_tmul, Algebra.TensorProduct.one_def]

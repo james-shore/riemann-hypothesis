@@ -327,7 +327,7 @@ theorem integrate_entry : ∀ (k : Type) [Field k] [ValuativeRel k] [Topological
     rw [hΦ'r a x]
     have h8 := red_indicator k ψ ν R Q w β E I e heE heI Φ.1 {s : k | s - a ∈ U} (x + Matrix.single e.1 e.2 a)
     have hxe : (x + Matrix.single e.1 e.2 a) e.1 e.2 - a = x e.1 e.2 := by
-      simp [Matrix.add_apply, Matrix.single_apply]
+      simp [Matrix.add_apply]
     change red ψ ν w β E I (Set.indicator {t : Matrix R Q k | t e.1 e.2 ∈ {s : k | s - a ∈ U}} Φ.1) _ = _
     rw [h8]
     by_cases hx : x e.1 e.2 ∈ U

@@ -124,7 +124,7 @@ theorem exists_homog_poly {σ : Type} (c₀ : σ) (P : MvPolynomial σ ℚ) :
   | C q =>
     refine ⟨q.den, 0, C q.num, by exact_mod_cast q.den_nz, isHomogeneous_C _ _, fun R _ _ v _ => ?_⟩
     have hd : (q.den : R) ≠ 0 := by exact_mod_cast q.den_nz
-    simp only [algHom_C, algebraMap_eq, eq_intCast, eq_ratCast, Int.cast_natCast, map_intCast]
+    simp only [algHom_C, eq_intCast, eq_ratCast, Int.cast_natCast, map_intCast]
     rw [Rat.cast_def]
     field_simp
   | add P Q ihP ihQ =>

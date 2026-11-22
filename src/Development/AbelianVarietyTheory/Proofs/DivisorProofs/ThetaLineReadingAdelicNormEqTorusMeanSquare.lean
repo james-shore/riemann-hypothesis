@@ -84,7 +84,7 @@ theorem integral_eq_mean {G V : Type} [AddCommGroup G] [TopologicalSpace G] [IsT
     rw [hmA _ (measurable_const_add _ hA), hmA _ hA, ← measure_preimage_add ν p (Y ⁻¹' A ∩ _)]
     congr 1
     ext x
-    simp only [Set.mem_inter_iff, Set.mem_preimage, map_add, SetLike.mem_coe, Pi.add_apply, id]
+    simp only [Set.mem_inter_iff, Set.mem_preimage, map_add, SetLike.mem_coe]
     exact and_congr_right fun _ => (P.add_mem_cancel_left hp).symm
   haveI : m.IsAddLeftInvariant := (forall_measure_preimage_add_iff m).1 hinv
   have hm1 : m F0 = 1 := by rw [hmA _ hF0m, ← hone]; exact hfd.measure_eq h𝓕

@@ -213,7 +213,7 @@ theorem GlobalTheory.hwAt_of_hwAtF : ∀ (L : Type) [Field L] [NumberField L] [I
     simp only [hb', map_sum, map_smul, Module.Basis.repr_self]
     rw [Finsupp.finset_sum_apply]
     simp only [Finsupp.smul_apply, Finsupp.single_apply, smul_eq_mul, mul_ite, mul_one, mul_zero,
-      Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      Finset.sum_ite_eq', Finset.mem_univ, if_true]
     rw [hev]
     have h2 := congrFun (congrFun h1 i) j
     rw [LinearMap.toMatrix_apply] at h2

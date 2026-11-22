@@ -24,7 +24,7 @@ theorem finrank_le_card_of_isotropic {n : ℕ} (ε : Fin n → Bool) (V : Submod
       · simp [hx0 a ha]
       · have hb : ε a = !b := by cases h1 : ε a <;> cases b <;> simp_all
         rw [Complex.normSq_eq_conj_mul_self, hb]
-        cases b <;> simp [Complex.star_def] <;> ring
+        cases b <;> simp
     have h0 := hV x x.2
     simp only [Formalism.REAL.Jm, Matrix.mulVec_diagonal, dotProduct, Pi.star_apply, hterm,
       ← Finset.mul_sum] at h0
@@ -48,7 +48,7 @@ private theorem finrank_last_eq_sum_of_finrank_succ {n : ℕ} : ∀ (a : ℕ) (j
   induction a with
   | zero =>
     intro j W h0 _
-    simp [show Fin.last 0 = (0 : Fin 1) from rfl, h0]
+    simp [h0]
   | succ a ih =>
     intro j W h0 hstep
     have hprev := ih (fun i => j i.castSucc) (fun i => W i.castSucc) (by simpa using h0)

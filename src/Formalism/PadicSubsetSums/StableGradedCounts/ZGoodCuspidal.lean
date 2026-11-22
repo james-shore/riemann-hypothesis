@@ -43,7 +43,7 @@ theorem goodCuspidal_holds : GoodCuspidal := by
 
   have hr : r = ∑ l, n l := by
     rw [← hdeg v0, hprod v0, Polynomial.natDegree_prod _ _ (fun l _ => pow_ne_zero _ (hne l))]
-    simp [Polynomial.natDegree_pow, hd1, hhdeg]
+    simp [hd1, hhdeg]
   have hle : n i + n j ≤ ∑ l, n l := by
     classical
     rw [← Finset.sum_pair hij]

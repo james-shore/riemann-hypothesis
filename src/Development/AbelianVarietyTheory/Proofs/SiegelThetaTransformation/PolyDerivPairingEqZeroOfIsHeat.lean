@@ -200,17 +200,17 @@ theorem _root_.GlobalTheory.SW.polyDeriv_pairing_eq_zero_of_isHeat : ∀ (E : Ty
         by_cases hσ : σ = v.1
         · rw [if_pos hσ]
           subst hσ
-          by_cases hi : i = k <;> by_cases hj : j = v.2.1 <;> simp [Matrix.single_apply, Pi.single_apply, hi, hj, eq_comm (a := k), eq_comm (a := v.2.1)]
+          by_cases hi : i = k <;> by_cases hj : j = v.2.1 <;> simp [hi, hj, eq_comm (a := k), eq_comm (a := v.2.1)]
         · rw [if_neg hσ]
-          simp [Pi.single_apply, hσ]
+          simp [hσ]
       · funext σ i j
         change p.2.2 σ i j + s * (Pi.single (v.1, false, k, v.2.1) (1 : ℂ) : Ψ × Bool × Fin n × Fin N → ℂ) (σ, true, i, j) + t * (Pi.single (v.1, true, k, v.2.2) (1 : ℂ) : Ψ × Bool × Fin n × Fin N → ℂ) (σ, true, i, j) = p.2.2 σ i j + (if σ = v.1 then (single k v.2.2 t : Matrix (Fin n) (Fin N) ℂ) else 0) i j
         by_cases hσ : σ = v.1
         · rw [if_pos hσ]
           subst hσ
-          by_cases hi : i = k <;> by_cases hj : j = v.2.2 <;> simp [Matrix.single_apply, Pi.single_apply, hi, hj, eq_comm (a := k), eq_comm (a := v.2.2)]
+          by_cases hi : i = k <;> by_cases hj : j = v.2.2 <;> simp [hi, hj, eq_comm (a := k), eq_comm (a := v.2.2)]
         · rw [if_neg hσ]
-          simp [Pi.single_apply, hσ]
+          simp [hσ]
     have l1 : _root_.GlobalTheory.lineDerivList ℂ [ez v] (fun p : ((Ψ → Fin N → Fin N → ℂ) × (Ψ → Fin n → Fin N → ℂ) × (Ψ → Fin n → Fin N → ℂ)) => D p.1 p.2.1 p.2.2) p = deriv (fun s : ℂ => D (fun σ => (show Ψ → Matrix (Fin N) (Fin N) ℂ from p.1) σ + if σ = v.1 then single v.2.1 v.2.2 s else 0) p.2.1 p.2.2) 0 := by
       simp only [_root_.GlobalTheory.lineDerivList_cons, _root_.GlobalTheory.lineDerivList_nil, lineDeriv]
       congr 1
@@ -268,7 +268,7 @@ theorem _root_.GlobalTheory.SW.polyDeriv_pairing_eq_zero_of_isHeat : ∀ (E : Ty
       rw [lineDeriv, Filter.EventuallyEq.deriv_eq hline, deriv_const, mul_zero]
   have hG : (fun w : Ψ × Bool × Fin n × Fin N → ℂ => D Z (fun τ => Matrix.of fun k a => w (τ, false, k, a)) (fun τ => Matrix.of fun k a => w (τ, true, k, a))) = fun w => (fun q : ((Ψ → Fin N → Fin N → ℂ) × (Ψ → Fin n → Fin N → ℂ) × (Ψ → Fin n → Fin N → ℂ)) => D q.1 q.2.1 q.2.2) ((_root_.GlobalTheory.SW.HeatJet.emb Ψ : (Ψ × Bool × Fin n × Fin N → ℂ) →ₗ[ℂ] ((Ψ → Fin N → Fin N → ℂ) × (Ψ → Fin n → Fin N → ℂ) × (Ψ → Fin n → Fin N → ℂ))) w + ((show Ψ → Fin N → Fin N → ℂ from Z), 0, 0)) := by
     funext w
-    simp only [_root_.GlobalTheory.SW.HeatJet.emb, LinearMap.coe_mk, AddHom.coe_mk, Prod.fst_add, Prod.snd_add, zero_add, add_zero]
+    simp only [_root_.GlobalTheory.SW.HeatJet.emb, LinearMap.coe_mk, AddHom.coe_mk, Prod.fst_add, Prod.snd_add, add_zero]
     rw [show (0 + (show Ψ → Fin N → Fin N → ℂ from Z)) = Z from zero_add _]
     rfl
   rw [hG]

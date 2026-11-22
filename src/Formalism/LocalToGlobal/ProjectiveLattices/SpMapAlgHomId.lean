@@ -71,7 +71,6 @@ theorem evalAt_actL (hL : ActLaws pts mapR borR actR) (hWD : EvalWD pts mapR)
       have h2 := hL.mul g g⁻¹ _ _ _ _ (hm g y) (hm g⁻¹ (mvPt pts actR g y))
       first
         | rw [mul_inv_cancel] at h2
-        | rw [mul_right_inv] at h2
       have h3 := hL.func 1 _ _ _ _ h2 (hL.one _ y)
       exact ⟨p, φ, _, hTr _ _ φ _ _ _ h1 h3⟩
     unfold evalAt
@@ -130,14 +129,12 @@ theorem frMap_trans_id {c : Coeff l} :
   · rw [Category.assoc, hf1, ← Category.assoc, hf2, Category.assoc, e1]
     first
       | erw [Category.id_comp]
-      | simp
-      | rfl
   · intro i h
     have h2 := ppx_le pm2 hs2 i
     have h1 := ppx_le pm1 hs1 i
     rw [← hsec2 i h2, ← hsec1 i h1]
     first
-      | rw [← Scheme.appLE_comp_appLE pm2 pm1 _ _ _ h1 h2]; rfl
+      | rw [← Scheme.appLE_comp_appLE pm2 pm1 _ _ _ h1 h2]
       | rw [← Scheme.Hom.appLE_comp_appLE pm2 pm1 _ _ _ h1 h2]; rfl
 
 theorem levActR_res {c c' : Coeff l} (hle : c.F ≤ c'.F) {G : Type}
@@ -255,7 +252,6 @@ theorem goodEmb_ext {σ : c.F →+* ℂ} (hσ : GoodEmb c σ) {σ' : c'.F →+* 
   rw [← hσ, ← h]
   first
     | rfl
-    | simp [incF]
 
 theorem cuspBC_of (U : ∀ σ : c.F →+* ℂ, Unf Xo c σ r) (hS : SecBC Xo hle) : CuspBC hle U := by
   classical

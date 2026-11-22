@@ -66,7 +66,6 @@ theorem val_scalar (z : kˣ) :
       Matrix.diagonal fun _ => (z : k) := by
   first
   | rfl
-  | (ext i j; simp [Matrix.GeneralLinearGroup.scalar, Matrix.diagonal_apply])
 
 theorem agree_scalar {ω₁ ω₂ : kˣ →* ℂˣ} (h₁ : HasCentralChar π₁ ω₁) (h₂ : HasCentralChar π₂ ω₂)
     (hl₁ : IsFunctional ψ π₁ l₁) (hl₂ : IsFunctional ψ π₂ l₂)

@@ -69,11 +69,9 @@ theorem dRho_ptF_uniform : ∀ {D : D7} {V W : HSp D} (A : GlobalTheory.ChainFr.
       (if (B.ε τ i == A.ε τ j) then e i j else starRingEnd ℂ (e i j)) • (MvPolynomial.X (τ, i, j) * P) := by
     first
       | simp only [Δ₁, LinearMap.smul_apply, LinearMap.sum_apply, LinearMap.mulLeft_apply]
-      | simp [Δ₁, LinearMap.sum_apply]
   have hΔ₂ : Δ₂ P = ∑ k, c k • MvPolynomial.pderiv k P := by
     first
       | simp only [Δ₂, LinearMap.sum_apply, LinearMap.smul_apply, Derivation.coeFn_coe]
-      | simp [Δ₂, LinearMap.sum_apply]
   have hcr : crea (heisO ψ V W) θ τ (cplxO (A.cart τ) (B.cart τ)) zz (GlobalTheory.ChainFr.ptF ψ θ A B f P) =
       GlobalTheory.ChainFr.ptF ψ θ A B f (Δ₁ P) := by
     have h1 : ∀ (y : Matrix (Fin W.rank) (Fin V.rank) ℂ) g,

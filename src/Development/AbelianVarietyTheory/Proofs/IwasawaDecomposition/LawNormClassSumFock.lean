@@ -39,7 +39,7 @@ theorem classSum_gram_posDef (s : K →+* ℂ) {W : Type} [AddCommGroup W] [Modu
           B (∑ i, x i • ψ ((C.basis i : C.Cl → C.V) c)) (∑ j, x j • ψ ((C.basis j : C.Cl → C.V) c)) := by
         simp only [dotProduct, Matrix.mulVec, Matrix.map_apply, CSD.H, Matrix.of_apply, hc, map_sum, LinearMap.sum_apply,
           LinearMap.map_smulₛₗ, LinearMap.smul_apply, map_smul, smul_eq_mul, Finset.mul_sum, Finset.sum_mul, Pi.star_apply,
-          starRingEnd_apply, RingHom.id_apply]
+          starRingEnd_apply]
         rw [Finset.sum_comm]
         conv_rhs => rw [Finset.sum_comm]
         refine Finset.sum_congr rfl fun j _ => ?_

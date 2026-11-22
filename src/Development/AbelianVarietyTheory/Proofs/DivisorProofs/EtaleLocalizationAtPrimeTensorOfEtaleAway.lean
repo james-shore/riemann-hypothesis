@@ -42,7 +42,7 @@ theorem etale_localization_atPrime_tensor_of_etale_away : ∀ (R C : Type) [Comm
     simp [Φ, Ψ, g, hg0]
   have h2 : Ψ.comp Φ = AlgHom.id Rp _ := by
     ext x
-    simp only [AlgHom.comp_apply, AlgHom.id_apply]
+    simp only [AlgHom.comp_apply]
     change Ψ (Φ ((1 : Rp) ⊗ₜ[R] algebraMap C Cb x)) = (1 : Rp) ⊗ₜ[R] algebraMap C Cb x
     have : Φ ((1 : Rp) ⊗ₜ[R] algebraMap C Cb x) = (1 : Rp) ⊗ₜ[R] x := by
       simp [Φ, g, hg0]

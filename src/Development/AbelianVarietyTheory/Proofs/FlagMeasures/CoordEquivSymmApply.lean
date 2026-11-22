@@ -91,8 +91,7 @@ theorem exists_equiv (γ : Matrix (Fin (2 * D.R.rS + D.R.k + 1)) (Fin (2 * D.R.r
   have h1 : γ⁻¹ * γ = 1 := Matrix.nonsing_inv_mul γ hdet
   have h2 : γ * γ⁻¹ = 1 := Matrix.mul_nonsing_inv γ hdet
   refine ⟨(coordEquiv X).symm.trans ((Matrix.toLin'OfInv h1 h2).trans (coordEquiv X)), fun y => ?_⟩
-  simp only [LinearEquiv.trans_apply, coordEquiv_symm_apply, coordEquiv_apply, Matrix.toLin'OfInv_apply,
-    Matrix.toLin'_apply, crdH_vecOf]
+  simp only [LinearEquiv.trans_apply, coordEquiv_symm_apply, coordEquiv_apply, crdH_vecOf]
   rfl
 
 end GlobalTheory.CovDomGrp

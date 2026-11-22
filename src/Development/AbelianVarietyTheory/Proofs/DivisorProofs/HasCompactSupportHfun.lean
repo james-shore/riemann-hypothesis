@@ -123,7 +123,7 @@ theorem levOp_hfun {V : Type} [AddCommGroup V] [Module ℂ V] (ρ : Representati
   unfold levOp
   rw [finsum_eq_sum_of_support_subset _ hsupp, LinearMap.smul_apply, LinearMap.sum_apply]
   congr 1
-  simp only [hfun, Finset.sum_smul, LinearMap.sum_apply, LinearMap.smul_apply, LinearMap.comp_apply, LinearMap.id_apply, mul_ite,
+  simp only [hfun, Finset.sum_smul, LinearMap.sum_apply, mul_ite,
     mul_one, mul_zero, ite_smul, zero_smul, QuotientGroup.out_eq']
   rw [Finset.sum_comm (s := T)]
   refine Finset.sum_congr rfl fun q _ => ?_

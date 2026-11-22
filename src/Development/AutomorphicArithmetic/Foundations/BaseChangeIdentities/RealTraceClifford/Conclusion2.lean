@@ -33,7 +33,7 @@ theorem UpperTheory.RealTr.aux₃ :
   · have e1 : ν + rhoV n - ((2:ℝ) • rhoV n) ∘ ⇑(1 : Equiv.Perm (Fin n)) = ν - rhoV n := by
       funext a
       simp only [Pi.sub_apply, Pi.add_apply, Function.comp_apply, Equiv.Perm.coe_one, id_eq,
-        Pi.smul_apply, two_smul]
+        two_smul]
       ring
     rw [e1, ← hχS w0, ← hw0, c1]
     simp [sg]
@@ -51,7 +51,7 @@ theorem UpperTheory.RealTr.aux₃ :
           + 4 * (∑ a, rhoV n (w a) ^ 2 - ∑ a, rhoV n a ^ 2) := by
       simp only [nsq, Finset.mul_sum, ← Finset.sum_sub_distrib, ← Finset.sum_add_distrib]
       refine Finset.sum_congr rfl (fun a _ => ?_)
-      simp only [Pi.sub_apply, Pi.add_apply, Function.comp_apply, Pi.smul_apply, two_smul]
+      simp only [Pi.sub_apply, Pi.add_apply, Function.comp_apply, two_smul]
       ring
     rw [hsum] at hdiff
     linarith

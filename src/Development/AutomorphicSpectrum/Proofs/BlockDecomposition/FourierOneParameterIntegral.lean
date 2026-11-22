@@ -100,7 +100,6 @@ theorem integral_mul_char_eq_of_hasDerivAt (A : Type) [AddCommGroup A] [Topologi
       ring
     rw [h2, ← hswap, ← intervalIntegral.integral_const_mul]
     refine intervalIntegral.integral_congr fun u _ => ?_
-    beta_reduce
     have h3 : ∫ b, K * G (b + c u) * χ b ∂lam = K * ∫ b, G (b + c u) * χ b ∂lam := by
       rw [← integral_const_mul]
       refine integral_congr_ae (Filter.Eventually.of_forall fun b => ?_)

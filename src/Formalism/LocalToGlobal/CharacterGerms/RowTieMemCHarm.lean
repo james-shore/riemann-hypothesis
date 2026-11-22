@@ -19,10 +19,8 @@ theorem mem_vars_blkProdG {C : Type} [Field C] {V : VF C} {d : ℕ} [NeZero d] {
     (b, w) ∈ (prodAll (plAt n pl o) fun i => (blkAt L o i).poly (X o) (F o)).vars := by
   first
   | unfold blkProd at hx
-  | simp only [blkProd] at hx
   first
   | unfold toAll at hx
-  | simp only [toAll] at hx
   have h1 := MvPolynomial.vars_prod _ hx
   rw [Finset.mem_biUnion] at h1
   obtain ⟨o', -, h2⟩ := h1

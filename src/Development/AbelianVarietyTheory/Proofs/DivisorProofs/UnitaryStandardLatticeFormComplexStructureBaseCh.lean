@@ -22,7 +22,7 @@ theorem form_cx_basis (S : Matrix (Fin r) (Fin r) ℤ) (p q : Fin r × (Fin g �
   obtain ⟨i0, a⟩ := p
   obtain ⟨j0, b⟩ := q
   simp only [Module.Basis.repr_self, Finsupp.single_apply, Prod.mk.injEq]
-  simp [ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', eq_comm]
+  simp [ite_and, Finset.sum_ite_eq]
 
 theorem form_cx_baseChange_pos (S : Matrix (Fin r) (Fin r) ℤ) (hS : (S.map (Int.cast : ℤ → ℝ)).PosDef)
     (x : ℝ ⊗[ℤ] Lat ρ g) (hx : x ≠ 0) :
@@ -43,7 +43,7 @@ theorem form_cx_baseChange_pos (S : Matrix (Fin r) (Fin r) ℤ) (hS : (S.map (In
       ∑ α, v α ⬝ᵥ ((S.map (Int.cast : ℤ → ℝ)).mulVec (v α)) := by
     rw [key, Finset.sum_comm]
     simp only [Fintype.sum_prod_type, Int.cast_ite, Int.cast_zero, mul_ite, mul_zero,
-      Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, dotProduct, Matrix.mulVec,
+      Finset.sum_ite_eq, Finset.mem_univ, if_true, dotProduct, Matrix.mulVec,
       Matrix.map_apply, Finset.mul_sum, hv]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun α _ => Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_

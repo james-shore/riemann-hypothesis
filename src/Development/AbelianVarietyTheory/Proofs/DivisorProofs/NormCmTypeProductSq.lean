@@ -10,7 +10,7 @@ theorem cm_type_normSq_prod_eq_abs_norm (E : Type) [Field E] [NumberField E] (Ψ
     ‖∏ τ : Ψ, τ.1 d‖ ^ 2 = |((Algebra.norm ℚ d : ℚ) : ℝ)| := by
   classical
   have hcc : ∀ τ : E →+* ℂ, ComplexEmbedding.conjugate (ComplexEmbedding.conjugate τ) = τ := by
-    intro τ; ext x; simp [ComplexEmbedding.conjugate_coe_eq]
+    intro τ; ext x; simp
   have h1 : ((Algebra.norm ℚ d : ℚ) : ℂ) = ∏ τ : E →+* ℂ, τ d := by
     have := Algebra.norm_eq_prod_embeddings ℚ ℂ d
     rw [eq_ratCast] at this
@@ -19,10 +19,10 @@ theorem cm_type_normSq_prod_eq_abs_norm (E : Type) [Field E] [NumberField E] (Ψ
   have hcompl : ∏ τ ∈ Ψᶜ, τ d = ∏ τ ∈ Ψ, (starRingEnd ℂ) (τ d) := by
     refine Finset.prod_nbij' ComplexEmbedding.conjugate ComplexEmbedding.conjugate ?_ ?_ ?_ ?_ ?_
     · intro τ hτ
-      simp only [Finset.mem_compl, Finset.coe_compl, Set.mem_compl_iff, Finset.mem_coe] at hτ ⊢
+      simp only [Finset.mem_compl] at hτ ⊢
       rw [hΨ, hcc]; exact hτ
     · intro τ hτ
-      simp only [Finset.mem_compl, Finset.coe_compl, Set.mem_compl_iff, Finset.mem_coe] at hτ ⊢
+      simp only [Finset.mem_compl] at hτ ⊢
       exact (hΨ τ).mp hτ
     · intro τ _; exact hcc τ
     · intro τ _; exact hcc τ

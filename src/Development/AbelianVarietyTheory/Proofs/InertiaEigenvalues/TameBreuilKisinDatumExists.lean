@@ -19,9 +19,7 @@ theorem exists_pow_smul_mem {l : ℕ} [hl : Fact l.Prime] {O K : Type} [CommRing
   first
   | exact @_root_.GlobalTheory.NatCastNormLtOne.main
   | exact _root_.GlobalTheory.NatCastNormLtOne.main
-  | (apply _root_.GlobalTheory.NatCastNormLtOne.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatCastNormLtOne.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatCastNormLtOne.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.NatCastNormLtOne.main)
   | (intros; exact _root_.GlobalTheory.NatCastNormLtOne.main ..)
 
 end GlobalTheory.CocycleNat

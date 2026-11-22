@@ -34,14 +34,14 @@ theorem pderiv_rowSubst_X (h : Matrix (Fin ν) (Fin ν) ℂ) (k : Fin ν) (a : �
       if s.2 = a then C (h k s.1) else 0 := by
   rw [rowSubst_X, map_sum]
   by_cases hs : s.2 = a
-  · simp [pderiv_C_mul, pderiv_X, Pi.single_apply, hs]
-  · simp [pderiv_C_mul, pderiv_X, Pi.single_apply, hs]
+  · simp [pderiv_X, Pi.single_apply, hs]
+  · simp [pderiv_X, hs]
 
 theorem pderiv_rowSubst (h : Matrix (Fin ν) (Fin ν) ℂ) (k : Fin ν) (a : ι)
     (Q : MvPolynomial (Fin ν × ι) ℂ) :
     pderiv (k, a) (rowSubst h Q) = ∑ m, C (h k m) * rowSubst h (pderiv (m, a) Q) := by
   induction Q using MvPolynomial.induction_on with
-  | C c => simp [rowSubst_C]
+  | C c => simp
   | add p q hp hq => simp only [map_add, hp, hq, mul_add, Finset.sum_add_distrib]
   | mul_X p n hp =>
     have e1 : ∀ m, rowSubst h (pderiv (m, a) (X n : MvPolynomial (Fin ν × ι) ℂ)) =

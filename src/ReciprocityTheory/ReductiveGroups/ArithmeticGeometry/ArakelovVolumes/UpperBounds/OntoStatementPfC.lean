@@ -70,7 +70,6 @@ theorem dbar_ka (bb : ℝ) {f0 : Frame X.Ψ r → ℂ} (hf0 : DifferentiableOn �
     · simp only [nmat, dif_pos h]
       first
         | fun_prop
-        | exact (EuclideanSpace.proj _).differentiable
     · by_cases h' : a = b
       · simp only [nmat, dif_neg h, if_pos h']
         exact differentiable_const _

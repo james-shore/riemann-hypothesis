@@ -52,8 +52,6 @@ theorem adForm_eq_levelTrace_singleSeries' : GlobalTheory.Published.CuspRapidDec
   refine Submodule.subset_span ⟨(p.nexp.fi j).e.symm (b k), ((p.nexp.fi j).wk _).2 ?_, hk⟩
   first
     | exact hk.symm ▸ hbK k
-    | exact (congrArg (fun z => z ∈ (p.R.FW j).WK) hk).mpr (hbK k)
-    | (rw [hk]; exact hbK k)
 end GlobalTheory.BigOn.Exp
 end
 end

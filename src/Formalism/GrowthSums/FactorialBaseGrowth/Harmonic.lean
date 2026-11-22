@@ -70,7 +70,7 @@ theorem powerSumPolynomial : PowerSumPoly := by
   have hcoeff : (Polynomial.bernoulli (s + 1)).coeff (s + 1) = 1 := by
     rw [Polynomial.bernoulli_def, Polynomial.finset_sum_coeff,
       Finset.sum_eq_single (s + 1)]
-    · simp [Polynomial.coeff_monomial]
+    · simp
     · intro b _ hb
       rw [Polynomial.coeff_monomial, if_neg hb]
     · intro h

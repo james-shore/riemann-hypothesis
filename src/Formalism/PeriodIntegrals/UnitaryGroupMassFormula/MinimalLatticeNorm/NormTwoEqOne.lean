@@ -13,12 +13,9 @@ lemma norm_two_eq_one (hp2 : p ≠ 2) : ‖(2 : ℚ_[p])‖ = 1 := by
   have h1 : ‖((2 : ℤ) : ℚ_[p])‖ ≤ 1 := by
     first
       | exact Padic.norm_int_le_one 2
-      | exact padicNormE.norm_int_le_one 2
   have h3 : ¬ ‖((2 : ℤ) : ℚ_[p])‖ < 1 := fun h => h2 (by
     first
-      | exact Padic.norm_intCast_lt_one_iff.mp h
-      | exact (Padic.norm_int_lt_one_iff_dvd 2).1 h
-      | exact (padicNormE.norm_int_lt_one_iff_dvd 2).1 h)
+      | exact Padic.norm_intCast_lt_one_iff.mp h)
   have := le_antisymm h1 (not_lt.1 h3)
   exact_mod_cast this
 
@@ -37,13 +34,12 @@ lemma bound_span (B : V → V → ℚ_[p])
     rw [h0, norm_zero]; exact hM
   | add x y _ _ hx hy =>
     rw [hadd]
-    exact (show ‖B x w + B y w‖ ≤ max ‖B x w‖ ‖B y w‖ by first | exact Padic.nonarchimedean _ _ | exact IsUltrametricDist.norm_add_le_max _ _).trans (max_le hx hy)
+    exact (show ‖B x w + B y w‖ ≤ max ‖B x w‖ ‖B y w‖ by first | exact Padic.nonarchimedean _ _).trans (max_le hx hy)
   | smul c x _ hx =>
     rw [hsm, norm_mul]
     have hc : ‖(c : ℚ_[p])‖ ≤ 1 := by
       first
         | exact c.2
-        | simpa using PadicInt.norm_le_one c
     calc ‖(c : ℚ_[p])‖ * ‖B x w‖ ≤ 1 * ‖B x w‖ := mul_le_mul_of_nonneg_right hc (norm_nonneg _)
       _ ≤ M := by rw [one_mul]; exact hx
 
@@ -94,13 +90,12 @@ theorem main (hp2 : p ≠ 2) (B : V → V → ℚ_[p]) (L : Submodule ℤ_[p] V)
     refine ⟨a + b, habL, ?_⟩
     have e : B (a + b) (a + b) = 2 * B a b + (B a a + B b b) := by
       rw [hadd, hsym a haL _ habL, hsym b hbL _ habL, hadd, hadd, hsym b hbL a haL]; ring
-    have hlt : ‖B a a + B b b‖ < ‖B a b‖ := lt_of_le_of_lt (show ‖B a a + B b b‖ ≤ max ‖B a a‖ ‖B b b‖ by first | exact Padic.nonarchimedean _ _ | exact IsUltrametricDist.norm_add_le_max _ _)
+    have hlt : ‖B a a + B b b‖ < ‖B a b‖ := lt_of_le_of_lt (show ‖B a a + B b b‖ ≤ max ‖B a a‖ ‖B b b‖ by first | exact Padic.nonarchimedean _ _)
       (max_lt (lt_of_le_of_ne (hbound a haL a haL) haa) (lt_of_le_of_ne (hbound b hbL b hbL) hbb))
     have h2ab : ‖2 * B a b‖ = ‖B a b‖ := by rw [norm_mul, norm_two_eq_one hp2, one_mul]
     rw [e, (show ‖2 * B a b + (B a a + B b b)‖ = max ‖2 * B a b‖ ‖B a a + B b b‖ by
       first
-        | exact Padic.add_eq_max_of_ne (by rw [h2ab]; exact hlt.ne')
-        | exact IsUltrametricDist.norm_add_eq_max_of_norm_ne_norm (by rw [h2ab]; exact hlt.ne')), h2ab]
+        | exact Padic.add_eq_max_of_ne (by rw [h2ab]; exact hlt.ne')), h2ab]
     exact max_eq_left hlt.le
   obtain ⟨x, hxL, hxn⟩ := hx
   have hxx : B x x ≠ 0 := fun h => by rw [h, norm_zero] at hxn; linarith

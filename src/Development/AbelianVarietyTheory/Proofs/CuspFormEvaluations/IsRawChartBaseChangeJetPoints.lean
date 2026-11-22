@@ -82,7 +82,7 @@ def baseMap : overAt (spMap ψ ≫ x0) S' ⟶ overAt x0 S :=
   Over.homMk (spMap ψ) (by
     show spMap ψ ≫ spMap (algebraMap S S) ≫ x0 = spMap (algebraMap S' S') ≫ spMap ψ ≫ x0
     rw [← Category.assoc, ← Category.assoc, spMap_spMap, spMap_spMap]
-    first | done | rfl)
+    first | done)
 
 def dualPtMap : overAt (spMap ψ ≫ x0) (DualNumber S') ⟶ overAt x0 (DualNumber S) :=
   Over.homMk (spMap (dualMap ψ)) (by

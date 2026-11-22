@@ -30,7 +30,7 @@ def extF (D : Datum p) (f : D.La →ₗ[ℤ] ℤ) : AfP p ⊗[ℚ] VQ D →ₗ[A
 
 theorem extF_tmul (D : Datum p) (f : D.La →ₗ[ℤ] ℤ) (a : AfP p) (x : D.La) :
     extF D f (a ⊗ₜ ((1 : ℚ) ⊗ₜ x)) = a * ((f x : ℤ) : AfP p) := by
-  simp [extF, LinearMap.liftBaseChange_tmul, Algebra.smul_def]
+  simp [extF, LinearMap.liftBaseChange_tmul]
 
 theorem extF_mem (D : Datum p) (f : D.La →ₗ[ℤ] ℤ) {w : AfP p ⊗[ℚ] VQ D} (hw : w ∈ LaHat D) :
     extF D f w ∈ intAf p := by

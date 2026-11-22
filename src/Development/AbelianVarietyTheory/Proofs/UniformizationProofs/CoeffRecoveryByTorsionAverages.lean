@@ -68,7 +68,7 @@ theorem card_tors (F X : Type) [Field F] [IsAlgClosed F] [CharZero F] [AddCommGr
       rw [Finset.prod_eq_single i]
       · simp
       · intro j _ hj
-        simp [Finsupp.single_apply, hj.symm]
+        simp [hj.symm]
       · simp
   rw [Nat.card_congr (Equiv.ofBijective f hf), Nat.card_fun, HasEnoughRootsOfUnity.natCard_rootsOfUnity,
     Module.finrank_eq_card_chooseBasisIndex, Nat.card_eq_fintype_card]

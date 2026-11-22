@@ -305,10 +305,10 @@ def splitLift (J₁ : Matrix n n R) (hJ : IsUnit J₁.det) (u : GL n R) : GL n (
 
 private lemma pm_mul_lemma (X Y X' Y' : Matrix n n R) :
     pairMat X Y * pairMat X' Y' = pairMat (X * X') (Y * Y') := by
-  ext i j <;> simp [pairMat, Matrix.mul_apply, Prod.fst_sum, Prod.snd_sum, Prod.ext_iff]
+  ext i j <;> simp [pairMat, Matrix.mul_apply, Prod.fst_sum, Prod.snd_sum]
 
 private lemma pm_cT_lemma_2 (X Y : Matrix n n R) : cT (swapR R) (pairMat X Y) = pairMat Yᵀ Xᵀ := by
-  ext i j <;> simp [cT, swapR, pairMat, Prod.ext_iff]
+  ext i j <;> simp [cT, swapR, pairMat]
 
 theorem splitLift_mem (J₁ : Matrix n n R) (hJ : IsUnit J₁.det) (u : GL n R) :
     splitLift J₁ hJ u ∈ UJ (swapR R) (splitJ J₁) := by
@@ -382,7 +382,7 @@ theorem proGTransfer_of_cont (F E : Type) [Field F] [NumberField F] [Field E] [N
     exact hdet.map _
   set φ : E ⊗[F] K →+* K := (RingHom.fst K K).comp s.toRingHom with hφdef
   let θ : GL (Fin k) (E ⊗[F] K) →* GL (Fin k) K := (MulAut.conj h⁻¹).toMonoidHom.comp (bc φ)
-  have hθ : ∀ x, θ x = h⁻¹ * bc φ x * h := fun x => by simp [θ, MulAut.conj_apply]
+  have hθ : ∀ x, θ x = h⁻¹ * bc φ x * h := fun x => by simp [θ]
   let ψ : GL (Fin k) K → GL (Fin k) (E ⊗[F] K) :=
     fun a => bc (s.symm : K × K →+* E ⊗[F] K) (splitLift J1 hJ1 (h * a * h⁻¹))
   have hss : ∀ z : GL (Fin k) (E ⊗[F] K), bc (s.symm : K × K →+* E ⊗[F] K) (bc (s : E ⊗[F] K →+* K × K) z) = z :=

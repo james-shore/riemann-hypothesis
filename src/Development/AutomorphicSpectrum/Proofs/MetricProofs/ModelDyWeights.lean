@@ -125,13 +125,13 @@ theorem dy_left (h : ModelOK A x₀ m) (τ τ' : Ψ) (i : Fin (p + q)) (a : Fin 
   by_cases hp : (a : ℕ) + 1 = p
   · rw [dy_apply h, if_pos (fun r' e => ((key r').1 e).2.2 hp), twist_left τ τ' i a hp, neg_neg]
     rcases eq_or_ne τ' τ with rfl | hne
-    · simp only [eq_self_iff_true, true_and]
+    · simp only [true_and]
       split_ifs <;> omega
     · simp [hne, hne.symm]
   · rw [dy_apply h, if_neg (fun H => H (τ', ⟨(a : ℕ), by omega⟩) ((key _).2 ⟨rfl, rfl, hp⟩))]
     simp only [key]
     rcases eq_or_ne τ τ' with rfl | hne
-    · simp only [eq_self_iff_true, true_and]
+    · simp only [true_and]
       split_ifs <;> omega
     · simp [hne]
 
@@ -154,13 +154,13 @@ theorem dy_right (h : ModelOK A x₀ m) (τ τ' : Ψ) (i : Fin (p + q)) (a : Fin
   by_cases hq : (a : ℕ) + 1 = q
   · rw [dy_apply h, if_pos (fun r' e => ((key r').1 e).2.2 hq), twist_right τ τ' i a hq, neg_neg]
     rcases eq_or_ne τ' τ with rfl | hne
-    · simp only [eq_self_iff_true, true_and]
+    · simp only [true_and]
       split_ifs <;> omega
     · simp [hne, hne.symm]
   · rw [dy_apply h, if_neg (fun H => H (τ', ⟨p + (a : ℕ), by omega⟩) ((key _).2 ⟨rfl, rfl, hq⟩))]
     simp only [key]
     rcases eq_or_ne τ τ' with rfl | hne
-    · simp only [eq_self_iff_true, true_and]
+    · simp only [true_and]
       split_ifs <;> omega
     · simp [hne]
 

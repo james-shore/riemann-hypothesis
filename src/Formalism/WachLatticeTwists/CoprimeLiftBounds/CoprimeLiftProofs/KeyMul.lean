@@ -13,7 +13,7 @@ lemma key_mul {O A T' G : Type*} [CommRing O] [Ring A] [Algebra O A] [CommRing T
     [Group G] (r : G →* A) (χ : G →* T'ˣ) (g : G) (c : O) (b x : A) :
     (c • (((χ g : T'ˣ) : T') • (b * r g⁻¹))) * (uElt r χ g * x) = c • (b * x) := by
   have hr : r g⁻¹ * r g = 1 := by rw [← map_mul, inv_mul_cancel, map_one]
-  simp only [uElt, smul_mul_assoc, mul_smul_comm, smul_smul, Units.mul_inv, one_smul]
+  simp only [uElt, smul_mul_assoc, mul_smul_comm]
   rw [mul_assoc, ← mul_assoc (r g⁻¹), hr, one_mul]
   rw [smul_comm (((χ g)⁻¹ : T'ˣ) : T') c, smul_smul, Units.inv_mul, one_smul]
 

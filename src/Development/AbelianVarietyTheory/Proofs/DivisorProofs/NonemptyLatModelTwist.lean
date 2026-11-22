@@ -140,7 +140,6 @@ def twistModel (hP : Presents D L r)
     change tval r hM i₀ hi₀ W h (resM (twist F L) e s) = tval r hM i₀ hi₀ U (e h) s
     rw [tval_apply, tval_apply, coord_resM, val_resM]
   smul U h a s := by
-    change tval r hM i₀ hi₀ U h (a • s) = fnOf U h a • tval r hM i₀ hi₀ U h s
     rw [tval_apply, tval_apply, coord_smul, hM.smul, fnOf_resG, Units.smul_def, Units.smul_def,
       smul_smul, smul_smul, mul_comm]
 

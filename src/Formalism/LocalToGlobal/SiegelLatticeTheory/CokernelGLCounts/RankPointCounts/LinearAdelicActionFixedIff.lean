@@ -103,8 +103,6 @@ theorem prF_eq (t : Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.AF
     rw [tauF_tmul]
     first
     | rfl
-    | simp only [prF, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.sndA, cE, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
-        Algebra.TensorProduct.map_tmul, AlgHom.snd_apply, AlgHom.id_apply, Algebra.TensorProduct.comm_tmul]
   | add x y hx hy => rw [map_add, map_add, map_add, hx, hy]
 
 theorem kset_iff (x : I.Gf) : x ∈ I.Kset ↔
@@ -184,8 +182,6 @@ theorem mem_hsub_iff (x : X.B.I.Gf) :
         ratV (F := X.B.I.F) (Formalism.MainNotions.S.Af X.B.I.F) (tupH (frameOf X u) b) := by
     first
     | exact mem_stabT _ _ _ _ _
-    | exact mem_stabT _ _
-    | simp only [Hsub, mem_stabT]
   rw [hs]
   simp only [linear_adelic_action_fixed_iff]
   change (∀ y ∈ fixSet X u, _) ↔ _
@@ -237,8 +233,6 @@ theorem mem_gamR_iff (h : Hfin X u) : h ∈ gamR X u ↔
         HFin (Formalism.MainNotions.S.Af X.B.I.F) X.B.I.cm.sig X.B.I.J := by
     first
     | exact Iff.rfl
-    | (simp only [gamR, Subgroup.mem_comap, MulEquiv.coe_toMonoidHom, Subgroup.mem_subgroupOf, psiH_val,
-        HFinIn]; exact Iff.rfl)
   have e2 : psi0 X.B.I ((h : X.B.I.Gf) : GL (Fin X.B.I.n) (X.B.I.E ⊗[X.B.I.F] Formalism.MainNotions.S.Af X.B.I.F)) ∈
         HFin (Formalism.MainNotions.S.Af X.B.I.F) X.B.I.cm.sig X.B.I.J ↔
       ∃ M ∈ Formalism.UG.UJ (starRingEnd X.B.I.E) X.B.I.J,

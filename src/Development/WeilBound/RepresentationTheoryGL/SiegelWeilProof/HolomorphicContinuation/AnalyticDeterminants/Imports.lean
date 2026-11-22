@@ -28,7 +28,7 @@ theorem span_top (W : Submodule ℂ (M2 n))
     refine ⟨(1 / 2 : ℂ) • (B + Bᴴ), (-(Complex.I / 2)) • (B - Bᴴ), ?_, ?_, ?_⟩
     · rw [conjTranspose_smul, conjTranspose_add, conjTranspose_conjTranspose, add_comm]
       congr 1
-      simp [Complex.ext_iff]
+      simp
     · rw [conjTranspose_smul, conjTranspose_sub, conjTranspose_conjTranspose]
       rw [show (Bᴴ - B) = -(B - Bᴴ) by abel, smul_neg, ← neg_smul]
       congr 1
@@ -65,7 +65,7 @@ theorem span_top (W : Submodule ℂ (M2 n))
       · simp only [Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, Matrix.mul_smul]
         match_scalars <;> first | ring1 | linear_combination Complex.I_sq | linear_combination -Complex.I_sq
       · simp only [Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, Matrix.mul_smul]
-        match_scalars <;> first | ring1 | linear_combination Complex.I_sq | linear_combination -Complex.I_sq
+        match_scalars <;> first | ring1 | linear_combination Complex.I_sq
     rw [e]
     exact W.add_mem (W.add_mem (W.add_mem (hbr _ _ hb₁ hc₁) (W.smul_mem _ (hbr _ _ hb₁ hc₂)))
       (W.smul_mem _ (hbr _ _ hb₂ hc₁))) (W.smul_mem _ (hbr _ _ hb₂ hc₂))
@@ -105,7 +105,7 @@ theorem span_top (W : Submodule ℂ (M2 n))
     rw [Matrix.sum_apply]
     by_cases h : i = j
     · subst h; simp [Matrix.single_apply]
-    · simp [Matrix.single_apply, Matrix.one_apply, h]
+    · simp [Matrix.single_apply, h]
   have hST : ∑ a, ιA (Matrix.single a a 1) + ∑ k, ιD (Matrix.single k k 1) ∈ W := by
     rw [← map_sum, ← map_sum, one_sum]
     have : ιA 1 + ιD 1 = (1 : M2 n) := by simp [ιA, ιD, fromBlocks_add, ← fromBlocks_one]

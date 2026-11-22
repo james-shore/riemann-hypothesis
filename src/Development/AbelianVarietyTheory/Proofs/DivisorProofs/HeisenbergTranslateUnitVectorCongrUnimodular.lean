@@ -92,7 +92,7 @@ theorem wd_wd_unimod (D : D7) (T : Tor D) {N N' : ℕ} (a b : VC D N N') :
     Complex.exp ((Real.pi : ℂ) * (Hf D T b a - Hf D T a b) / 2), ?_, fun F => ?_⟩
   · have hre : ((Real.pi : ℂ) * (Hf D T b a - Hf D T a b) / 2).re = 0 := by
       rw [hf_swap D T a b]
-      simp [Complex.div_re, Complex.mul_re, Complex.conj_re, Complex.conj_im]
+      simp [Complex.mul_re, Complex.conj_re, Complex.conj_im]
     rw [norm_mul, norm_div, norm_mul, norm_wdPh, norm_wdPh, norm_wdPh, Complex.norm_exp, hre]
     simp
   funext z

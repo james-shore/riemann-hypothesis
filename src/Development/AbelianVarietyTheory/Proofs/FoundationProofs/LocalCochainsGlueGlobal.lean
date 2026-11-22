@@ -22,9 +22,7 @@ theorem norm_le_one (c : Coef l) (x : c.O) : ‖(x : Qbar l)‖ ≤ 1 := by
   first
   | exact @_root_.GlobalTheory.ScalarNormBound.norm_le_one
   | exact _root_.GlobalTheory.ScalarNormBound.norm_le_one
-  | (apply _root_.GlobalTheory.ScalarNormBound.norm_le_one <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ScalarNormBound.norm_le_one <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ScalarNormBound.norm_le_one <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.ScalarNormBound.norm_le_one)
   | (intros; exact _root_.GlobalTheory.ScalarNormBound.norm_le_one ..)
 
 def nbhd (c : Coef l) (n : ℕ) : AddSubgroup c.O where

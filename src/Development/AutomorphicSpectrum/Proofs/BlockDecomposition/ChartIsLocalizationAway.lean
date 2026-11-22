@@ -58,7 +58,6 @@ theorem one_bij (hL : OneLow) (hR : OneRes) {R : Type} [CommRing R] {ι : Type} 
       refine ⟨φ m x, ?_⟩
       change (A.coh a).cech.d m (φ m x) = _
       rw [hd]
-      change φ (m + 1) (P.cech.d m x) = _
       rw [show P.cech.d m x = ψ (m + 1) y from hx.trans (one_smul R _), hφψ, one_smul]
   obtain ⟨hz, -⟩ := hR R ι A a hD hO hres
   obtain ⟨-, hin', hex'⟩ := hL R ι A a hD hO

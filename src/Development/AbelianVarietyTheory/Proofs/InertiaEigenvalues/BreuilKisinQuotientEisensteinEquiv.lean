@@ -29,7 +29,7 @@ theorem bkStr_quotient_equiv : ∀ (l : ℕ) [Fact l.Prime] (a : ℕ) [NeZero a]
     apply e1.injective
     simp only [AlgEquiv.apply_symm_apply, e1]
     rfl
-  simp only [e, AlgEquiv.toRingEquiv_eq_coe, AlgEquiv.coe_ringEquiv, AlgEquiv.trans_apply, h1]
+  simp only [e, AlgEquiv.coe_ringEquiv, AlgEquiv.trans_apply, h1]
   simp [e2, Polynomial.IsDistinguishedAt.algEquivQuotient_apply]
 
 end GlobalTheory

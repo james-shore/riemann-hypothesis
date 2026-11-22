@@ -116,7 +116,7 @@ theorem heisH_apply (d b x : Matrix (Fin n) (Fin r) E) (φ : Matrix (Fin n) (Fin
       cexp (π * I * ((Algebra.trace ℚ E (b * ccT (x + x - d)).trace : ℚ) : ℂ)) := by
   unfold heisH
   congr 6
-  simp [Matrix.trace, Matrix.mul_apply, ccT, cc, two_mul]
+  simp [Matrix.mul_apply, ccT, cc, two_mul]
 
 theorem trace_unitary {h : Matrix (Fin n) (Fin n) E} (hu : ccT h * h = 1)
     (x y : Matrix (Fin n) (Fin r) E) : (h * x * ccT (h * y)).trace = (x * ccT y).trace := by

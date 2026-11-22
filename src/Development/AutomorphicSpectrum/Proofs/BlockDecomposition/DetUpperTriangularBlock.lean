@@ -181,8 +181,8 @@ theorem chi_one {χ : (AE D)ˣ →* Circle} {τ : D.host.E →ₐ[D.host.F] Fv D
   have hk' : proj D.sp.cm.sig (Jst D n) v k ∈ GlobalTheory.LocIntw.KUpFin D.sp.cm.sig (Jst D n) v :=
     (GlobalTheory.LocIntw.mem_KUpAd.1 hk.1).1 v
   have h := congrArg (fun y => ‖dV τ y‖) e
-  simp only [map_mul, dV_mul, dV_nb τ hnb, norm_mul, norm_one, norm_dV_of_mem τ hk₀, norm_dV_of_mem τ hk₁,
-    norm_dV_of_mem τ hk', mul_one, one_mul] at h
+  simp only [map_mul, dV_mul, dV_nb τ hnb, norm_mul, norm_dV_of_mem τ hk₀, norm_dV_of_mem τ hk₁,
+    norm_dV_of_mem τ hk', mul_one] at h
   exact h.symm
 
 end GlobalTheory.CompanionTheory.Jp.B3

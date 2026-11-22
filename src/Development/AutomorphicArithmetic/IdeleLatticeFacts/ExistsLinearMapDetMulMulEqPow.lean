@@ -33,6 +33,6 @@ theorem UpperTheory.exists_linearMap_det_mul_mul_eq_pow :
     ext ⟨i, j⟩ ⟨k, l⟩
     rw [LinearMap.toMatrix_apply, Matrix.stdBasis_eq_single, hrepr]
     simp [T, Matrix.kroneckerMap_apply, Matrix.mul_apply, Matrix.single_apply, ite_and,
-      Finset.sum_ite_eq', Finset.sum_ite_eq, ite_mul]
+      Finset.sum_ite_eq, ite_mul]
   rw [← LinearMap.det_toMatrix (Matrix.stdBasis K (Fin m) (Fin n)), hmat, Matrix.det_kronecker,
     Matrix.det_transpose, Fintype.card_fin, Fintype.card_fin]

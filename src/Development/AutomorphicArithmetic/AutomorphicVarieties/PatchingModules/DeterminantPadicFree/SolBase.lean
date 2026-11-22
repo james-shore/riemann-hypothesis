@@ -15,7 +15,7 @@ theorem UpperTheory.V.Pa.Det.solBase :
     ext a c
     have hac := congrArg (fun M => b.repr (M a c) k) (hX i)
     simp only [Matrix.smul_apply, Matrix.mul_apply, Matrix.map_apply, smul_eq_mul, Matrix.of_apply] at hac ⊢
-    simp only [hs, mul_comm (X _ _) (f _), ← Finset.smul_sum, map_sum, map_smul, Finsupp.smul_apply,
+    simp only [hs, mul_comm (X _ _) (f _), map_sum, map_smul, Finsupp.smul_apply,
       Finsupp.coe_finset_sum, Finset.sum_apply, smul_eq_mul] at hac
     rw [hac]
     exact Finset.sum_congr rfl fun m _ => mul_comm _ _

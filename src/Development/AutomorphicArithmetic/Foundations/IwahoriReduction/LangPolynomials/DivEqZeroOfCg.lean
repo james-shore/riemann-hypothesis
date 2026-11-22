@@ -30,7 +30,7 @@ private theorem norm_natCast_prime_lt_one_qbar (l : ℕ) [Fact (Nat.Prime l)] : 
 private theorem red_un_succ (l : ℕ) [Fact (Nat.Prime l)] (r : ℕ) (g : ℕ) (hg : ¬ l ∣ g) :
     red l r (un g hg (r + 1)) = un g hg r := by
   ext
-  simp [un, red, ZMod.unitOfCoprime, ZMod.cast_natCast (pow_dvd_pow l (Nat.le_succ r))]
+  simp [un, red, ZMod.unitOfCoprime]
 
 private theorem red_cycMod_succ (l : ℕ) [Fact (Nat.Prime l)] (Ω : Type) [Field Ω] [Algebra ℚ Ω] (r : ℕ)
     (s : G ℚ Ω) : red l r (cycMod ℚ Ω l (r + 1) s) = cycMod ℚ Ω l r s := by
@@ -132,14 +132,13 @@ theorem UpperTheory.Kd.C7.pDiv :
         (Z' r s y + Z' r t (y * (cycMod ℚ Ω l r s)⁻¹))) ?_ x
       · exact sub_eq_zero.mp key
       · intro y
-        beta_reduce
         have e1 := (hZ' r (s * t) hst).2 y
         have e2 := (hZ' r s hs).2 y
         have e3 := (hZ' r t ht).2 (y * (cycMod ℚ Ω l r s)⁻¹)
         rw [mul_right_comm y (cycMod ℚ Ω l r s)⁻¹ (un g hg r)] at e3
         have e4 : μ (s * t) r y = μ s r y + μ t r (y * (cycMod ℚ Ω l r s)⁻¹) := by
           rw [hμ, hμ, hμ, hZcoc r s hs t ht y, map_mul]
-          simp only [mul_inv_eq_iff_eq_mul, mul_inv_eq_one, one_mul,
+          simp only [mul_inv_eq_iff_eq_mul, one_mul,
             mul_comm (cycMod ℚ Ω l r t) (cycMod ℚ Ω l r s)]
           split_ifs <;> ring
         linear_combination -e1 + e2 + e3 + e4
@@ -147,7 +146,6 @@ theorem UpperTheory.Kd.C7.pDiv :
       have key := inj r (fun y => Z' r s y - ∑ x' with red l r x' = y, Z' (r + 1) s x') ?_ x
       · exact sub_eq_zero.mp key
       · intro y
-        beta_reduce
         have e1 := (hZ' r s hs).2 y
         have e2 := hμnrm s hs r y
         have e3 : ∑ x' with red l r x' = y * un g hg r, Z' (r + 1) s x' =

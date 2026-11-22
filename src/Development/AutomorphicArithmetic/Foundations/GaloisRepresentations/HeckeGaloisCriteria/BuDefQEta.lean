@@ -74,7 +74,7 @@ theorem NP_tr (Y : G.LatInst D) (u : D.what₂.Word) (w : D.what₂.places.Pl)
   have e1 : G.bL (ledTr Λ L) = G.bL L := rfl
   have e2 : ∀ a b p t, G.Sv (instTr Λ X) K a b p t = G.Sv X K a b p t := fun _ _ _ _ => rfl
   unfold G.NP
-  simp only [e0, e1, e2, VV_tr, tau_translate]
+  simp only [e0, e1, VV_tr, tau_translate]
   rfl
 
 end Local
@@ -125,7 +125,6 @@ theorem buDefQ_eta (h : Rows.BuDefQ D.what₂) : Rows.BuDefQ (rowsEta D.what₂ 
   have e : (rowsEta D.what₂ Λ.η Λ.hη).sec D.what₂.mu0 = D.what₂.sec D.what₂.mu0 := by
     first
       | rfl
-      | with_unfolding_all rfl
   intro u φ x
   have := h u φ x
   rw [← e] at this
@@ -138,7 +137,6 @@ theorem rrDefTr (h : DV.RRDef D) : DV.RRDef Λ.rec' := by
   have e : (rowsEta D.what₂ Λ.η Λ.hη).RRset = D.what₂.RRset := by
     first
       | rfl
-      | with_unfolding_all rfl
   intro x
   have := h x
   rw [← e] at this

@@ -10,7 +10,7 @@ theorem kummer_residue_aeval (T V : Type) [CommRing T] [IsLocalRing T] [CommRing
   induction p using Polynomial.induction_on with
   | C a => simp
   | add p q hp hq => simp [hp, hq]
-  | monomial n a hp => simp [hp, pow_succ, ← mul_assoc]
+  | monomial n a hp => simp [pow_succ, ← mul_assoc]
 
 theorem kummer_step_one (T V : Type) [CommRing T] [IsDomain T] [IsDiscreteValuationRing T]
     [CommRing V] [IsDomain V] [IsDiscreteValuationRing V] [Algebra T V]

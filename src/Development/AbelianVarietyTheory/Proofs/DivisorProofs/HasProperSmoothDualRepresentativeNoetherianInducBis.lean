@@ -118,7 +118,7 @@ theorem local_rep (R : Type) [CommRing R] [Algebra.FiniteType ℤ R] [IsReduced 
       (hasRep_quot a (comap_ne_bot_away f) A A' _ hφ g hJ)
   have h2 := ((GlobalTheory.T.hasProperSmoothDualRepresentative_grpPullback_iff _ _ (spMap a) A A' _ hφ g (𝟙_ _)).1).1 h1
   have h3 : HasRep A g (Over.mk (spMap a)) := by
-    convert h2 using 2 <;> first | rfl | exact (Category.id_comp _).symm
+    convert h2 using 2 <;> first | rfl
   have : IsOpenImmersion (spMap a) :=
     inferInstanceAs (IsOpenImmersion (Spec.map (CommRingCat.ofHom (algebraMap R (Localization.Away f)))))
   refine ⟨(spMap a).opensRange, hs, hasRep_opens (spMap a) A g _ (fun x hx => hx) h3⟩

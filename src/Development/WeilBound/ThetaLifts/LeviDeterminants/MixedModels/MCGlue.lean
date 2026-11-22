@@ -66,7 +66,7 @@ theorem rel_fin (ev : ∀ v : Pl F, ((κ → Fv F v) → ℂ) →ₗ[ℂ] ((κ �
       funext w
       rcases eq_or_ne w v with rfl | e
       · simp [hv]
-      · simp [Function.update_of_ne e, e]
+      · simp [e]
   have hfin : {v | ¬ (ev v (stdL F κ v) = stdL F κ v ∧ ∀ j ∈ s, φ j v = stdL F κ v)}.Finite :=
     eventually_cofinite.1 (hev.and ((eventually_all_finset s).2 fun j _ => hφ j))
   rw [← key hfin.toFinset]

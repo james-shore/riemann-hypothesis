@@ -15,7 +15,7 @@ theorem schurSquareMatrixToBlocks_blockDiagonal_one {R : Type} [CommRing R] (m r
     have hi := i.isLt
     have hj := j.isLt
     try intro
-    split_ifs <;> first | rfl | (exfalso; omega) | omega
+    split_ifs <;> first | rfl | (exfalso; omega)
 
 theorem schurF_blockGL (E : Type) [Field E] [NumberField E] [IsTotallyComplex E] (m r : ℕ)
     (β : GA E (m + 1) → ℂ) (b₁ : GA E (r + 1) → ℂ) (χ : (Fin (r + 1) → Fin (m + 1) → Cinf E) → ℝ)
@@ -48,7 +48,7 @@ theorem schurF_blockGL (E : Type) [Field E] [NumberField E] [IsTotallyComplex E]
     rw [chiF, h0]
     simp [zero_mem]
   rw [schurF, if_pos (by rw [hD]; simp), Xof, Scof, Yof, hA, hB, hC, hD]
-  simp only [inv_one, Matrix.mul_one, Matrix.zero_mul, Matrix.mul_zero, sub_zero, Matrix.zero_apply]
+  simp only [inv_one, Matrix.mul_one, Matrix.mul_zero, sub_zero, Matrix.zero_apply]
   rw [hpsi, hmk, hmk1, hchi, one_mul]
 
 end GlobalTheory.SchurExt

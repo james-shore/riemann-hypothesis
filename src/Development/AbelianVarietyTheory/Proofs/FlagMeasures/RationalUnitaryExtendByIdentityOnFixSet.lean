@@ -60,8 +60,7 @@ theorem rational_unitary_extend_by_identity : ∀ (D : D7) (X : HidaSetting D) (
     have e : ∀ j, X.crd (qFr wt j) = fun i => Q i (Sum.inl j) := fun j => funext fun i => (hq j i).symm
     rw [e j, col_mul_eq_mulVec, hMQ]
     funext r
-    simp only [e, Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Matrix.mul_apply, Fintype.sum_sum_type,
-      Matrix.fromBlocks_apply₁₁, Matrix.fromBlocks_apply₂₁, Matrix.zero_apply, mul_zero, Finset.sum_const_zero, add_zero]
+    simp only [e, Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
     erw [Matrix.mul_apply, Fintype.sum_sum_type]
     simp only [Matrix.fromBlocks_apply₁₁, Matrix.fromBlocks_apply₂₁, Matrix.zero_apply, mul_zero, Finset.sum_const_zero, add_zero]
     exact Finset.sum_congr rfl fun i _ => mul_comm _ _

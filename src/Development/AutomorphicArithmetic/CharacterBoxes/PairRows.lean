@@ -207,11 +207,11 @@ private theorem boxq_of_pair {M : ℕ} {eps Y X : ℝ} {q d : ℕ} (hM : 0 < M) 
     try ring
   · refine boxes_core hM h PChar.one hr1 h81 1 1 (Or.inl (by decide)) _ (fun a ha => ?_) _ (by simp)
     rw [hC a ha, hP a ha]
-    simp only [tw, hone, Fin.val_one, Fin.val_zero, pow_one, pow_zero]
+    simp only [tw, hone, Fin.val_one, pow_one]
     try ring
   · refine boxes_core hM h ρ hρr hρN 1 1 (Or.inl (by decide)) _ (fun a ha => ?_) _ (by simp)
     rw [hρv a ha, hC a ha, hP a ha]
-    simp only [tw, Fin.val_one, Fin.val_zero, pow_one, pow_zero]
+    simp only [tw, Fin.val_one, pow_one]
     try ring
 
 private theorem qdRows_kron_odd {p d : ℕ} (hp : ¬ 2 ∣ p) (h : p ∣ d + 1) : GlobalTheoryTheory.kronSym (-(d : ℤ)) p = 1 := by
@@ -317,7 +317,7 @@ private theorem qdq_of_pair {M : ℕ} {eps Y x : ℝ} {q d : ℕ} (he : 0 < eps)
     try ring
   · refine qdq_core he hx hY h 1 1 (Or.inl (by decide)) _ (fun a ha => ?_)
     rw [hC a ha, hP a ha]
-    simp only [tw, Fin.val_one, Fin.val_zero, pow_one, pow_zero]
+    simp only [tw, Fin.val_one, pow_one]
     try ring
 
 private theorem mul_le_exp_of_le_div_sq {eps C l : ℝ} (he : 0 < eps) (hC : 1 ≤ C) (hl : 41000 * C / eps ^ 2 ≤ l) :

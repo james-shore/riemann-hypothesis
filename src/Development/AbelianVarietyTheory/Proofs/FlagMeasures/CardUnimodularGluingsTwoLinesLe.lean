@@ -290,7 +290,7 @@ theorem _root_.GlobalTheory.GlueLines.card_gluings_le : ∀ (E : Type) [Field E]
         rw [this]
         exact M.1.sub_mem (M.1.sub_mem hx (M.1.smul_mem d (hv M))) ((M.2.2.2.1 _).1 hd)
       have : x = ![x 0 - d • u, 0] + d • ![u, v M'] + ![0, (x 1 - d • v M) + d • (v M - v M')] := by
-        funext i; fin_cases i <;> simp [smul_sub] <;> abel
+        funext i; fin_cases i <;> simp [smul_sub]
       rw [this]
       exact M'.1.add_mem (M'.1.add_mem ((M'.2.2.2.1 _).1 hd) (M'.1.smul_mem d (hv M')))
         ((M'.2.2.2.2 _).1 (N₂.add_mem h0 (N₂.smul_mem d hvv)))

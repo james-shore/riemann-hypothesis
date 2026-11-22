@@ -10,7 +10,7 @@ theorem specializes_lift_closedFibre_stalkBaseChange : ∀ {X Y : Scheme.{0}} (�
   let β : R →+* IsLocalRing.ResidueField (Y.presheaf.stalk z) := e.symm.toRingHom.comp (IsLocalRing.residue R)
   have hβ : β.comp i = IsLocalRing.residue _ := by
     ext x
-    simp only [β, RingHom.comp_apply, RingEquiv.coe_toRingHom]
+    simp only [β, RingHom.comp_apply]
     rw [← IsLocalRing.ResidueField.map_residue]
     exact e.symm_apply_apply (IsLocalRing.residue _ x)
   have hcomp : Spec.map (CommRingCat.ofHom β : CommRingCat.of R ⟶ Y.residueField z) ≫ Spec.map (CommRingCat.ofHom i) ≫ Y.fromSpecStalk z = Y.fromSpecResidueField z := by

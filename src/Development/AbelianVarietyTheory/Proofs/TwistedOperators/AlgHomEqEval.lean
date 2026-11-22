@@ -19,7 +19,7 @@ theorem algHom_eq_eval : ∀ {K : Type} [inst : Field K] {P : Type} [Fintype P] 
     ext x
     by_cases hx : x = p
     · subst hx; simp
-    · simp [Pi.single_apply, hx]
+    · simp [hx]
   have h2 := congrArg θ hz
   rw [map_mul, map_mul, AlgHom.commutes, Algebra.algebraMap_self, RingHom.id_apply] at h2
   exact mul_right_cancel₀ hp h2

@@ -66,7 +66,7 @@ theorem innerProduct_convergent : GlobalTheory.Published.CuspRapidDecay → Glob
 
   have hre : (A.rank : ℝ) / 2 < (sZero A B).re := by
     have e : (sZero A B).re = ((B.rank : ℝ) - A.rank) / 2 := by
-      simp [GlobalTheory.IndefiniteRowSideFullHecke.SphericalZero.sZero, Complex.div_re]
+      simp [GlobalTheory.IndefiniteRowSideFullHecke.SphericalZero.sZero]
     rw [e]
     have : (A.rank : ℝ) < t := by exact_mod_cast hat
     have hb' : (B.rank : ℝ) = A.rank + t := by exact_mod_cast hb

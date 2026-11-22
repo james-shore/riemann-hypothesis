@@ -62,7 +62,7 @@ theorem autLzFin_main (D : D7) : PI.AutLzFinite.AutLzFin D := by
   obtain ⟨hiso, hXa, hz⟩ := hγ
   have hiso' : ∀ x y, (VS D).hT (γ x) (γ y) = (VS D).hT x y := hiso
   have hXr : F0.Xa D.R.rS = F0.X := by
-    simp [FlagG.Xa, FlagG.X, Fin.is_lt, Set.setOf_true, Set.image_univ]
+    simp [FlagG.Xa, FlagG.X, Fin.is_lt, Set.image_univ]
   refine ⟨γ, hiso', hz, ?_, ?_, hφ⟩
   · intro x hx
     have h3 : γ x ∈ Formalism.HermitianLatticesTheory.gmap γ Λ := ⟨x, hx, rfl⟩

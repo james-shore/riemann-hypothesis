@@ -94,7 +94,7 @@ theorem apply_eq_mulVec (D : PLat O bar) (e : Module.Basis (Fin r) ℤ D.La) (P 
     P x = perM D e P *ᵥ (fun j => ((e.repr x j : ℤ) : ℂ)) := by
   conv_lhs => rw [← e.sum_repr x, map_sum]
   ext i
-  simp only [map_zsmul, Finset.sum_apply, Pi.smul_apply, zsmul_eq_mul, perM, Matrix.mulVec, dotProduct, Matrix.of_apply]
+  simp only [map_zsmul, Finset.sum_apply, zsmul_eq_mul, perM, Matrix.mulVec, dotProduct, Matrix.of_apply]
   exact Finset.sum_congr rfl fun j _ => mul_comm _ _
 
 theorem perM_mul_actM (D : PLat O bar) (e : Module.Basis (Fin r) ℤ D.La) (P : D.La →+ (Fin g → ℂ)) (a : O) :

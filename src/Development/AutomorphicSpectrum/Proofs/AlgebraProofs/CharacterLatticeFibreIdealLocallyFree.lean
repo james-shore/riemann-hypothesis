@@ -29,7 +29,7 @@ theorem stepCoord_surjective {n : ℕ} (i : Fin n) : Function.Surjective (stepCo
   intro c
   refine ⟨⟨Pi.single i c, mem_annSub_iff.2 fun j hj => ?_⟩, by simp [stepCoord_apply]⟩
   have : j ≠ i := by rintro rfl; exact lt_irrefl _ hj
-  simp [Pi.single_apply, this]
+  simp [this]
 
 theorem mem_ker_stepCoord {n : ℕ} (i : Fin n) (v : annSub Ω n i) :
     v ∈ LinearMap.ker (stepCoord Ω i) ↔ (v : Fin n → Ω) ∈ annSub Ω n ((i : ℕ) + 1) := by

@@ -72,7 +72,6 @@ theorem kerOps_gen_bounded : GlobalTheory.CompanionTheory.GE.GradedNoeth → ∀
     obtain ⟨y, hy⟩ : ∃ y : Γ(kerSeq M T e, (U : X.Opens)), secMap (kerι M T e) (U : X.Opens) y = x :=
       kernel_ι_app_exact (T (Fin.last k) e) (U : X.Opens) x hx
     subst hy
-    change secMap (T i e) (U : X.Opens) (secMap (kerι M T e) (U : X.Opens) y) ∈ _
     induction i using Fin.lastCases with
     | last =>
       rw [show secMap (T (Fin.last k) e) (U : X.Opens)

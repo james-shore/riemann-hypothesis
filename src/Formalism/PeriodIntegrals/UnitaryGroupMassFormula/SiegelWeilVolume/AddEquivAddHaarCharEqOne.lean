@@ -16,9 +16,6 @@ variable {K : Type} [CommRing K] [TopologicalSpace K] [IsTopologicalRing K] {n M
 theorem continuous_mulTup (D : Matrix (Fin n) (Fin n) K) : Continuous (mulTup (M := M) D) := by
   first
   | (unfold mulTup; fun_prop)
-  | (simp only [mulTup]; fun_prop)
-  | (unfold mulTup; continuity)
-  | fun_prop
 
 def tupEquiv (D : (Matrix (Fin n) (Fin n) K)ˣ) :
     (Fin n → Fin M → K) ≃ₜ+ (Fin n → Fin M → K) where
@@ -41,9 +38,6 @@ theorem continuous_hermMap [IsTopologicalRing (R ⊗[F] E)] (D : Matrix (Fin n) 
     Continuous (hermMap R σ hσ D) := by
   first
   | (unfold hermMap; fun_prop)
-  | (simp only [hermMap]; fun_prop)
-  | (unfold hermMap; exact Continuous.subtype_mk (by fun_prop) _)
-  | (unfold hermMap; continuity)
 
 def hermEquiv [IsTopologicalRing (R ⊗[F] E)] (D : (Matrix (Fin n) (Fin n) (R ⊗[F] E))ˣ) :
     HermR R σ n ≃ₜ+ HermR R σ n where

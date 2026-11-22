@@ -44,7 +44,7 @@ theorem eq_zero_of_thetaSum_rho : ∀ {F E : Type} [Field F] [NumberField F] [Fi
   have hs := (mul_eq_zero.mp hP.symm).resolve_left h0
   have h1 := ENNReal.tsum_eq_zero.mp hs 0
   have e : ((fun _ => (0 : AF F)) : Fin n × Fin d → AF F) + x = x := zero_add x
-  simp only [map_zero, enorm_eq_zero, ne_eq, OfNat.ofNat_ne_zero, not_false_eq_true, pow_eq_zero_iff] at h1
+  simp only [enorm_eq_zero, ne_eq, OfNat.ofNat_ne_zero, not_false_eq_true, pow_eq_zero_iff] at h1
   simpa [e] using h1
 
 end GlobalTheory.ThetaSeparates

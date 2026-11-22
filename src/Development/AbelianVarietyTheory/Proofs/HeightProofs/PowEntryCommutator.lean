@@ -28,9 +28,8 @@ theorem pow_entry_commutator {A : Type} [Ring A] {n : ℕ} (E : Fin n → Fin n 
     rw [hs, hs, hs, Finset.mul_sum, Finset.sum_mul, ← Finset.sum_sub_distrib]
     simp_rw [key, ih, hE a b]
     simp only [sub_mul, mul_sub, Finset.sum_add_distrib, Finset.sum_sub_distrib, ite_mul, mul_ite,
-      zero_mul, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true,
-      Finset.sum_const_zero]
-    split_ifs <;> simp [Finset.sum_sub_distrib] <;> abel
+      zero_mul, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+    split_ifs <;> simp <;> abel
 
 theorem target : ∀ {A : Type} [inst : Ring A] {n : ℕ} (E : Fin n → Fin n → A), Formalism.REAL.GlRel E →
     ∀ (a b : Fin n) (m : ℕ) (c e : Fin n),

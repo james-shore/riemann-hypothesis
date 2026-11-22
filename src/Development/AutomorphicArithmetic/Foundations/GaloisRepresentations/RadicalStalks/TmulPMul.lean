@@ -61,7 +61,7 @@ private lemma core (p : ℕ) [Fact p.Prime] (k : Type) [Field k] [CharP k p] (C 
       rw [TensorProduct.lift.tmul]
       by_cases h : i = j
       · subst h; simp [L, hφ1]
-      · simp [L, h, Finsupp.single_apply]
+      · simp [L, h]
     rw [Finset.sum_congr rfl step, Finset.sum_ite_eq' s j, if_pos hj, Ideal.Quotient.eq_zero_iff_mem] at h0
     exact Ideal.mem_span_singleton.mp h0
 

@@ -33,7 +33,7 @@ theorem pderiv_some_rename_mul (j : Fin 2) (P : MvPolynomial (Fin 2) ℝ) (m : �
     pderiv (some j) (rename some P * (X none : MvPolynomial (Option (Fin 2)) ℝ) ^ m) =
       rename some (pderiv j P) * X none ^ m := by
   have h0 : pderiv (some j) ((X none : MvPolynomial (Option (Fin 2)) ℝ) ^ m) = 0 := by
-    simp [Derivation.leibniz_pow, pderiv_X, Pi.single_apply]
+    simp [Derivation.leibniz_pow, pderiv_X]
   rw [Derivation.leibniz, h0, pderiv_rename (Option.some_injective _)]
   simp [mul_comm]
 

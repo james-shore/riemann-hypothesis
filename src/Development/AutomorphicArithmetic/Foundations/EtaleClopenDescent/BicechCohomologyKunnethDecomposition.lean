@@ -155,7 +155,7 @@ theorem tensor_kunneth (G : Gr k V) (G' : Gr k W) (n : ℤ) (t : V ⊗[k] W) (ht
       rw [de, map_zero] at this
       exact neg_eq_zero.1 this.symm
     simp only [H, Dt, LinearMap.add_apply, LinearMap.comp_apply, TensorProduct.map_tmul, LinearMap.id_apply, map_add,
-      e3, ed, eσ, hσ, G.σσ, map_zero, TensorProduct.zero_tmul, TensorProduct.tmul_zero, TensorProduct.neg_tmul]
+      e3, ed, eσ, hσ, G.σσ, map_zero, TensorProduct.zero_tmul, TensorProduct.neg_tmul]
     rw [e1, TensorProduct.add_tmul, TensorProduct.add_tmul, e2, TensorProduct.tmul_add, TensorProduct.tmul_add]
     abel
   have hH : ∀ x ∈ Tn G G' n, H x ∈ Tn G G' (n - 1) := by
@@ -366,7 +366,7 @@ theorem single_mem_coch (F : Finset ι → Submodule k E) {I : Finset ι} (h : I
     (LinearMap.single k (fun _ : Finset ι => E) I ∘ₗ (F I).subtype) x ∈ coch F := by
   refine mem_coch.2 ⟨?_, fun s => ?_⟩
   · have : (∅ : Finset ι) ≠ I := fun h' => by simp [← h'] at h
-    simp [Pi.single_apply, this]
+    simp [this]
   · simp only [LinearMap.comp_apply, Submodule.subtype_apply, LinearMap.coe_single, Pi.single_apply]
     split_ifs with h'
     · subst h'
@@ -385,7 +385,7 @@ theorem iL_val (F : Finset ι → Submodule k E) (I : Finset ι) (x : F I) (s : 
   · by_cases h' : s = I
     · subst h'
       simp [iL, h]
-    · simp [iL, h, h', Pi.single_apply]
+    · simp [iL, h, h']
   · simp [iL, h]
 
 theorem sum_iL [Fintype ι] (F : Finset ι → Submodule k E) (a : coch F) : ∑ I, iL F I (rL F I a) = a := by
@@ -514,8 +514,8 @@ theorem phi_surj [Fintype ι] [Fintype κ] (μ : E →ₗ[k] E' →ₗ[k] E'') (
         · have : ¬ (y.1 = x.1 ∧ y.2 = x.2) := fun h => hy (Prod.ext h.1 h.2)
           by_cases h1 : y.1 = x.1
           · have h2 : y.2 ≠ x.2 := fun h => this ⟨h1, h⟩
-            simp [boxC, iL_val, h2, hy, Pi.single_apply]
-          · simp [boxC, iL_val, h1, hy, Pi.single_apply]
+            simp [boxC, iL_val, h2, hy]
+          · simp [boxC, iL_val, h1, hy]
     exact hle hx
   · rw [Submodule.mem_bot] at hx
     rw [hx]

@@ -94,7 +94,7 @@ theorem e_sum_f (b : Fin r) (k : Fin r → ℂ) : hJ ε (e b) (∑ c, k c • f 
 
 theorem f_Pw (b : Fin r) (v : Fin n → ℂ) : hJ ε (f b) (Pw ε e f v) = 0 := by
   unfold Pw
-  simp only [hJ_sub, f_sum_e hG, f_sum_f hG, sub_self, sub_zero]
+  simp only [hJ_sub, f_sum_e hG, f_sum_f hG, sub_self]
 
 theorem e_Pw (b : Fin r) (v : Fin n → ℂ) : hJ ε (e b) (Pw ε e f v) = 0 := by
   unfold Pw
@@ -176,7 +176,7 @@ theorem hJ_A (s : Fin r → ℝ) (hs : ∀ b, s b ≠ 0) (x y : Fin n → ℂ) :
         ∑ b, (star (α b) * β' b + star (β b) * α' b) + hJ ε (Pw ε e f v) (Pw ε e f v') := by
     intro α β α' β' v v'
     simp only [addl, hJ_add, suml, hJ_sum, smull, hJ_smul, hG.ee, hG.ff, hG.ef, fe hG, ePw, fPw,
-      Pwe, Pwf, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, mul_ite, mul_one,
+      Pwe, Pwf, mul_zero, Finset.sum_const_zero, add_zero, zero_add, mul_ite, mul_one,
       Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, Finset.sum_add_distrib]
     try ring
   have dec : ∀ v, v = ∑ b, hJ ε (f b) v • e b + ∑ b, hJ ε (e b) v • f b + Pw ε e f v := fun v => by
@@ -192,7 +192,6 @@ theorem hJ_A (s : Fin r → ℝ) (hs : ∀ b, s b ≠ 0) (x y : Fin n → ℂ) :
   have hst : star (s b : ℂ) = s b := by
     first
       | simp
-      | exact Complex.conj_ofReal _
   rw [star_mul', star_mul', star_inv₀, hst]
   field_simp
   try ring

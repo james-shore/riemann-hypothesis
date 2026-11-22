@@ -101,7 +101,7 @@ theorem hasDerivAt_realAd_smul : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (
   let Λ : (D.what₂.Tau → ℝ) →+ WO S T :=
     ∑ τ, (lineAt θ τ (compAt θ τ w)).comp (Pi.evalAddMonoidHom (fun _ : D.what₂.Tau => ℝ) τ)
   have hΛ : ∀ s, Λ s = ∑ τ, lineAt θ τ (compAt θ τ w) (s τ) := fun s => by
-    simp [Λ, AddMonoidHom.finset_sum_apply]
+    simp [Λ]
   have hΛc : Continuous Λ := by
     rw [show (Λ : (D.what₂.Tau → ℝ) → WO S T) = fun s => ∑ τ, lineAt θ τ (compAt θ τ w) (s τ) from funext hΛ]
     exact continuous_finset_sum _ fun τ _ => (hL τ).1.comp (continuous_apply τ)
@@ -180,7 +180,7 @@ theorem hasDerivAt_realAd_smul : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (
       fun t => heisO ψ S T (lineAt θ τ (compAt θ τ w) t) f x := by
     funext t
     simp only [Function.comp, G, hΛ]
-    rw [Finset.sum_eq_single τ (fun b _ hb => by simp [Pi.single_apply, hb]) (by simp)]
+    rw [Finset.sum_eq_single τ (fun b _ hb => by simp [hb]) (by simp)]
     simp
   rw [e] at h3
   exact h3.deriv.symm

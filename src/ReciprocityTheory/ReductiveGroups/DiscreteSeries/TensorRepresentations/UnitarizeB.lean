@@ -47,7 +47,7 @@ theorem norm_entry_le (x : Matrix (Fin n) (Fin n) ℂ) (i j : Fin n) : ‖x i j�
   have h2 : ∑ j', ‖x i j'‖ ^ 2 ≤ ∑ i', ∑ j', ‖x i' j'‖ ^ 2 :=
     Finset.single_le_sum (f := fun i' => ∑ j', ‖x i' j'‖ ^ 2) (fun _ _ => by positivity) (Finset.mem_univ i)
   have h3 : ‖x i j‖ ^ 2 ≤ S7.hs x := by
-    simp only [S7.hs, Formalism.REAL.hs]
+    simp only [S7.hs]
     exact h1.trans h2
   have h4 := Real.abs_le_sqrt h3
   rwa [abs_of_nonneg (norm_nonneg _)] at h4

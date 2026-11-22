@@ -79,7 +79,7 @@ theorem GlobalTheory.SplitLeviDet.emb0Part : ∀ (D : D7) (S S₀ : HSp D) (ρ :
   have hN : (e + cA D e) • (mt S₀ g - 1) = mt S₀ g - 1 := (smul_iff _ _).2 hg
   have hm : mt S (d.emb0 g) = (1 : Mx D S.rank S.rank) + d.j0 ⬝ (mt S₀ g - 1) ⬝ d.p0 := by
     rw [d.unitaryMatrix_wittCoreEmbedding]; conv_rhs => rw [← d.sum_eq_one]
-    simp only [Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_assoc]; abel
+    simp only [Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.mul_assoc]; abel
   have hdet : (mt S (d.emb0 g)).det = (mt S₀ g).det := by
     rw [hm, Matrix.mul_assoc, Matrix.det_one_add_mul_comm, Matrix.mul_assoc, d.p0_j0, Matrix.mul_one, one_add_sub]
   refine ⟨?_, locU e h1 (detU S₀ g), ?_, ?_⟩
@@ -113,7 +113,7 @@ theorem GlobalTheory.SplitLeviDet.leviPart : ∀ (D : D7) (S S₀ : HSp D) (ρ :
       _ = adj ((a⁻¹).1 - 1 : Mx D ρ ρ) := by rw [hI]
   have hm : mt S (d.levi a) = (1 : Mx D S.rank S.rank) + (d.jX ⬝ (a.1 - 1 : Mx D ρ ρ) ⬝ d.pX + d.jY ⬝ (adj (a⁻¹).1 - 1 : Mx D ρ ρ) ⬝ d.pY) := by
     rw [d.mt_levi a]; conv_rhs => rw [← d.sum_eq_one]
-    simp only [Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_assoc]; abel
+    simp only [Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.mul_assoc]; abel
   have hdet : (mt S (d.levi a)).det = a.1.det * cA D (a⁻¹).1.det := by
     have h' : d.jX ⬝ (a.1 - 1 : Mx D ρ ρ) ⬝ d.pX + d.jY ⬝ (adj (a⁻¹).1 - 1 : Mx D ρ ρ) ⬝ d.pY =
         Matrix.fromCols d.jX d.jY ⬝ Matrix.fromRows ((a.1 - 1 : Mx D ρ ρ) ⬝ d.pX) ((adj (a⁻¹).1 - 1 : Mx D ρ ρ) ⬝ d.pY) := by

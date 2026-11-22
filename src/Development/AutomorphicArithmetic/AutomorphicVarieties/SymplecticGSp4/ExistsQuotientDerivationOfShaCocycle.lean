@@ -47,17 +47,17 @@ private theorem tw_gsp (A B : M4 O) (q : Q) (ν : O) (h1 : IsGSp ν A) (h2 : adj
   have h := tw_mul (adj A) (adj B) A B (adj B * A) q q (-1) rfl (by rw [h2]; simp)
   rw [tw_adj, ← h, h1]
   ext i j
-  · rw [tw_fst]; by_cases h : i = j <;> simp [Matrix.one_apply, h, TrivSqZeroExt.algebraMap_eq_inl]
-  · rw [tw_snd]; by_cases h : i = j <;> simp [Matrix.one_apply, h, TrivSqZeroExt.algebraMap_eq_inl]
+  · rw [tw_fst]; by_cases h : i = j <;> simp [h, TrivSqZeroExt.algebraMap_eq_inl]
+  · rw [tw_snd]; by_cases h : i = j <;> simp [h, TrivSqZeroExt.algebraMap_eq_inl]
 
 private theorem dg_comm (d : Fin 4 → O) (u : O) (h2 : d 2 = u * d 0) (h3 : d 3 = u * d 1) :
     Matrix.diagonal d * Xm O = u • (Xm O * Matrix.diagonal d) := by
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [Xm, Matrix.single_apply, Matrix.diagonal_mul, Matrix.mul_diagonal, Matrix.add_mul, Matrix.mul_add, h2, h3]
+  fin_cases i <;> fin_cases j <;> simp [Xm, Matrix.diagonal_mul, Matrix.mul_diagonal, Matrix.add_mul, h2, h3]
 
 private theorem adj_dg (d : Fin 4 → O) : adj (Matrix.diagonal d) = Matrix.diagonal fun i => d i.rev := by
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev, Matrix.diagonal_apply]
+  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev]
 
 private theorem dg_gsp (d : Fin 4 → O) (ν : O) (h : ∀ i, d i * d i.rev = ν) : IsGSp ν (Matrix.diagonal d) := by
   unfold IsGSp
@@ -71,15 +71,15 @@ private theorem dg_adj (d : Fin 4 → O) :
   rw [adj_dg]
   ext i j
   rw [Matrix.neg_apply, Matrix.mul_diagonal, Matrix.diagonal_mul, adj_apply, Matrix.mul_diagonal, Matrix.mul_diagonal]
-  fin_cases i <;> fin_cases j <;> simp [Xm, Matrix.single_apply, sgn, Fin.rev]
+  fin_cases i <;> fin_cases j <;> simp [Xm, sgn, Fin.rev]
 
 private theorem Xm_sp : Xm O ∈ sp4 O := by
   show adj _ = -_
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Xm, Fin.rev, Matrix.single_apply]
+  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Xm, Fin.rev]
 
 private theorem Xm_wt (i j : Fin 4) (h : wt i j ≠ -wPs) : Xm O i j = 0 := by
-  fin_cases i <;> fin_cases j <;> first | exact absurd (by decide) h | simp [Xm, Matrix.single_apply]
+  fin_cases i <;> fin_cases j <;> first | exact absurd (by decide) h | simp [Xm]
 
 private theorem ac_lc {Γ R : Type} [TopologicalSpace Γ] [CommRing R] (I : Ideal R) {f : Γ → R} (h : IsLocallyConstant f) :
     AdicCont I f := fun _ => h.comp _

@@ -216,8 +216,6 @@ theorem norm_eval_le {z : (Σ k, ι k) → ℂ} {c : ∀ k, ι k} (hz : ∀ k i,
     ‖eval z (map (Int.castRingHom ℂ) G)‖ ≤ coeffNorm G * ∏ k, ‖z ⟨k, c k⟩‖ ^ δ k := by
   first
   | exact @GroundTheory.Variant₂.N1.norm_eval_le_of_forall_norm_le _ _ _ _ _ _ hz _ _ hG
-  | exact GroundTheory.Variant₂.N1.norm_eval_le_of_forall_norm_le ..
-  | (intros; apply GroundTheory.Variant₂.N1.norm_eval_le_of_forall_norm_le <;> assumption)
 
 theorem zpow_combine {F : Type*} [Field F] {x : F} (hx : x ≠ 0) {du dw N D : ℕ} {a : ℤ}
     (hw : (dw : ℤ) = a + N) (hle : du + dw ≤ D) :

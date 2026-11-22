@@ -229,7 +229,7 @@ theorem adjoint_of_lbIso (P : GlobalTheory.Published.AbelianDeRham.Free) {R : Ty
     Subtype.ext (IsMor.pullCohomologyOne_id _ _)
   simp only [map_sum, map_add, hΛ, LinearMap.comp_apply, LinearEquiv.coe_coe, pullOver_pullOver,
     lift_fst_assoc, lift_snd_assoc, lift_fst, lift_snd, Category.id_comp, MonObj.one_comp, pullOver_one,
-    map_zero, v, v₁, mul_zero, zero_mul, sub_zero, zero_sub] at e
+    map_zero, v, v₁, mul_zero, sub_zero, zero_sub] at e
   simp only [wedgeForm_apply, push_apply, sub_eq_add_neg]
   exact e
 

@@ -91,7 +91,7 @@ theorem conj_schr (w : (κ → R) × (κ → R)) (φ : (κ → R) → ℂ) (x : 
 
 theorem conj_schr_inv (w : (κ → R) × (κ → R)) (φ : (κ → R) → ℂ) (x : κ → R) :
     starRingEnd ℂ (schr ψ⁻¹ w φ x) = schr ψ w (fun x => starRingEnd ℂ (φ x)) x := by
-  simp only [schr, map_mul, AddChar.inv_apply, conj_psi ψ hψ, inv_inv, neg_neg]
+  simp only [schr, map_mul, AddChar.inv_apply, conj_psi ψ hψ, neg_neg]
 
 end Heis
 

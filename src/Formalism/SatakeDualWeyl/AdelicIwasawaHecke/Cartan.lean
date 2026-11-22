@@ -233,8 +233,8 @@ theorem cartan_diag_perm {m : ℕ} (d : Fin m → L) (σ : Equiv.Perm (Fin m)) :
   ext i j
   by_cases h : i = j
   · subst h
-    simp [Matrix.diagonal_apply]
-  · simp [Matrix.diagonal_apply, h]
+    simp
+  · simp [h]
 
 theorem cartan_sort (ϖ : L) {m : ℕ} (a : Fin m → ℤ) :
     ∃ a' : Fin m → ℤ, Antitone a' ∧ ∃ S₁ ∈ GLint (Fin m) O, ∃ S₂ ∈ GLint (Fin m) O,
@@ -342,7 +342,6 @@ theorem cartan_mem_Ov (F : Type) [Field F] [NumberField F] (v : HeightOneSpectru
     (x : v.adicCompletion F) : x ∈ Ov F v ↔ Valued.v x ≤ 1 := by
   first
   | exact Iff.rfl
-  | exact HeightOneSpectrum.mem_adicCompletionIntegers F v
 
 theorem cartan_unif_ne_zero (F : Type) [Field F] [NumberField F] (v : HeightOneSpectrum (𝓞 F))
     (ϖ : v.adicCompletion F) (h : IsUnifV F v ϖ) : ϖ ≠ 0 := by
@@ -357,8 +356,6 @@ theorem cartan_unif_lt_one (F : Type) [Field F] [NumberField F] (v : HeightOneSp
   rw [h]
   first
   | exact WithZero.coe_lt_coe.mpr (by decide)
-  | exact WithZero.coe_lt_one.mpr (by decide)
-  | decide
 
 theorem cartan_val_pow (F : Type) [Field F] [NumberField F] (v : HeightOneSpectrum (𝓞 F))
     (ϖ : v.adicCompletion F) (h : IsUnifV F v ϖ) (x : v.adicCompletion F) (hx : x ≠ 0) :

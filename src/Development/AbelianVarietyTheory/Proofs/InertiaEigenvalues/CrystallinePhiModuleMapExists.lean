@@ -34,11 +34,6 @@ theorem bc_induction {A B M N : Type} [CommRing A] [CommRing B] [AddCommGroup M]
     (hu : ∀ x, p (u x)) (y : N) : p y := by
   first
   | (rename_i h_4 h_5 h_6 h_7 h_8 h_9; revert A B M N h_4 h_5 h_6 h_7 h_8 h_9 f u h p h0 hadd hs hu y; exact @_root_.GlobalTheory.BaseChangeInduction.baseChange_induction)
-  | exact @_root_.GlobalTheory.BaseChangeInduction.baseChange_induction
-  | exact _root_.GlobalTheory.BaseChangeInduction.baseChange_induction
-  | (apply _root_.GlobalTheory.BaseChangeInduction.baseChange_induction <;> assumption)
-  | (intros; apply _root_.GlobalTheory.BaseChangeInduction.baseChange_induction <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.BaseChangeInduction.baseChange_induction <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.BaseChangeInduction.baseChange_induction ..)
 
 theorem exists_crystalline_epsilon_combination {l : ℕ} [Fact l.Prime] {a e : ℕ} {O K : Type} [CommRing O] [NormedField K]

@@ -48,7 +48,7 @@ theorem ci_sglI_self (w : InfinitePlace F) (c : w.Completion) : ci w (sglI w c) 
 
 theorem ci_sglI_ne {w u : InfinitePlace F} (h : u ≠ w) (c : w.Completion) : ci u (sglI w c) = 0 := by
   classical
-  rw [ci_apply]; simp [sglI, Pi.single_apply, h]
+  rw [ci_apply]; simp [sglI, h]
 
 theorem cf_sglI (w : InfinitePlace F) (c : w.Completion) (v : HeightOneSpectrum (𝓞 F)) :
     cf v (sglI w c) = 0 := by

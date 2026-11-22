@@ -179,8 +179,6 @@ theorem jf_hasDerivAt (D : B.RealPlaceData k r Wp Wq) (G G' : ℂ → B.Mat k r 
     convert h3 using 1
     all_goals first
       | rfl
-      | (funext s'; simp [B.rho, B.sgs])
-      | simp [B.rho, B.sgs]
 
 end core
 
@@ -345,7 +343,6 @@ theorem family_orbital_derivative : CutSH.FamJFDeriv := by
   have hJ := jf_hasDerivAt (T.bs (j + 1)) G (famP j G v) t v hδ hγ hGcc hG'cc hd Φ hΦcc c hdom
   first
     | exact ((hasDerivAt_const (0 : ℝ) (_ : ℂ)).smul hJ).congr_deriv (by simp)
-    | exact ((hasDerivAt_const (0 : ℝ) (_ : ℝ)).smul hJ).congr_deriv (by simp)
 
 end Formalism.FourierDecayAlt.P.CutSHD
 

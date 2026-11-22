@@ -176,7 +176,7 @@ theorem side_assoc (m : Y ⊗ Y ⟶ Y) (hj : j ≫ Y.hom = A.hom ≫ s)
   have r : ∀ F : (Y ⊗ Y) ⊗ Y ⟶ Y, l ≫ F.left = (L ≫ F).left := fun F => rfl
   rw [r, r]
   congr 1
-  simp only [comp_lift_assoc, comp_lift, e₁, e₂, e₃]
+  simp only [comp_lift_assoc, e₁, e₂, e₃]
   rw [push_mul m hj k hk₁ hk₂ hm, push_mul m hj k hk₁ hk₂ hm, push_mul m hj k hk₁ hk₂ hm,
     push_mul m hj k hk₁ hk₂ hm, _root_.mul_assoc]
 

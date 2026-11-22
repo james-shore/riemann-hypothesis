@@ -349,9 +349,9 @@ theorem bc_prV_eq_one (S : HSp D) {P : GlobalTheory.FinPl.Pl D → Prop} {g : GA
   rw [h]
   by_cases hij : i = j
   · subst hij
-    simp [Matrix.one_apply]
+    simp
   · have hij' : (finCongr hm).symm i ≠ (finCongr hm).symm j := fun e => hij ((finCongr hm).symm.injective e)
-    simp [Matrix.one_apply, hij, hij']
+    simp [hij]
 
 end Split
 

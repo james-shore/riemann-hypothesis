@@ -43,7 +43,7 @@ theorem coord {Hm : Matrix (Fin n) (Fin n) ℂ} (hu : IsUnit Hm.det) : ∀ {k : 
     · refine ⟨fun _ => Xs (Fin.last k), contDiff_const, fun _ => hX _, fun t s => ?_⟩
       have e1 : Fin.init (t + s • Pi.single (Fin.last k) (1:ℝ)) = Fin.init t := by
         funext j
-        simp [Fin.init, Pi.single_apply, Fin.castSucc_ne_last]
+        simp [Fin.init, Fin.castSucc_ne_last]
       have e2 : (t + s • Pi.single (Fin.last k) (1:ℝ) : Fin (k + 1) → ℝ) (Fin.last k) = t (Fin.last k) + s := by simp
       rw [pr_succ, pr_succ Xs t, e1, e2, add_smul,
         Matrix.exp_add_of_commute _ _ (((Commute.refl (Xs (Fin.last k))).smul_left _).smul_right _), mul_assoc]
@@ -62,7 +62,7 @@ theorem coord {Hm : Matrix (Fin n) (Fin n) ℂ} (hu : IsUnit Hm.det) : ∀ {k : 
           funext j
           simp [Fin.init, Pi.single_apply]
         have e2 : (t + s • Pi.single (Fin.castSucc m') (1:ℝ) : Fin (k + 1) → ℝ) (Fin.last k) = t (Fin.last k) := by
-          simp [Pi.single_apply, (Fin.castSucc_lt_last m').ne']
+          simp [(Fin.castSucc_lt_last m').ne']
         rw [pr_succ, pr_succ Xs t, e1, e2, hYe]
         beta_reduce
         rw [Matrix.exp_neg]

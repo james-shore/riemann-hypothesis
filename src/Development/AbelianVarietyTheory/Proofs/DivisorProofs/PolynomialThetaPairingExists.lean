@@ -157,7 +157,7 @@ theorem pd_X (v w : Formalism.IndefR.Datum.FVar D b a) (P : PolF D b a) :
   rw [Derivation.leibniz, pderiv_X, smul_eq_mul, smul_eq_mul]
   by_cases h : v = w
   · subst h; simp
-  · simp [h, Pi.single_apply, Ne.symm h]
+  · simp [h, Ne.symm h]
 
 theorem pd_pd (v w : Formalism.IndefR.Datum.FVar D b a) (P : PolF D b a) :
     pderiv v (pderiv w P) = pderiv w (pderiv v P) := by
@@ -167,7 +167,7 @@ theorem pd_pd (v w : Formalism.IndefR.Datum.FVar D b a) (P : PolF D b a) :
   | add p q hp hq => simp [hp, hq]
   | mul_X p j hp =>
     rw [mul_comm, pd_X, pd_X, map_add, map_add, pd_X, pd_X, hp]
-    split_ifs <;> simp [add_assoc, add_comm, add_left_comm]
+    split_ifs <;> simp [add_comm, add_left_comm]
 
 theorem rai_rai (i l : Fin b) (j k : Fin a) :
     raiO τ ε ε' i j * raiO τ ε ε' l k = raiO τ ε ε' l k * raiO τ ε ε' i j := by
@@ -368,7 +368,7 @@ theorem killed_capelli (hψ : IsStdChar D ψ (-1)) (hθ : IsInfFam θ) (A : Fr V
       ext r s
       by_cases h : i = r
       · subst h; simp [Matrix.sum_apply, vecMulVec_apply, Matrix.single_apply]
-      · simp [Matrix.sum_apply, vecMulVec_apply, h, Pi.single_apply, Ne.symm h]
+      · simp [Matrix.sum_apply, vecMulVec_apply, h, Ne.symm h]
     have e4 : ∑ a, (v ᵥ* A.onb τ) a • unitMap (A.onb τ) (B.onb τ) i a =
         B.onb τ * (∑ a, (v ᵥ* A.onb τ) a • Matrix.single i a (1 : ℂ)) * (A.onb τ)⁻¹ := by
       simp only [unitMap, Matrix.mul_sum, Matrix.sum_mul, Matrix.mul_smul, Matrix.smul_mul]

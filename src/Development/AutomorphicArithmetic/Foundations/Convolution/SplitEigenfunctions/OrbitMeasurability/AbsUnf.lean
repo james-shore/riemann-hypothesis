@@ -161,7 +161,7 @@ theorem absUnf : AbsUnf := by
     have hI₂ : Integrable (h ∘ T₂) P₂ := by
       refine ((hci.comp_fst (ν.restrict DH)).norm.mul_const B₀).mono' (hh.comp hT₂).aestronglyMeasurable
         (ae_of_all _ fun q => ?_)
-      simp only [h, T₂, Function.comp, norm_mul, norm_norm]
+      simp only [h, T₂, Function.comp, norm_mul]
       gcongr
       exact hB₀ _
     have hI : Integrable h (P₂.map T₂) :=

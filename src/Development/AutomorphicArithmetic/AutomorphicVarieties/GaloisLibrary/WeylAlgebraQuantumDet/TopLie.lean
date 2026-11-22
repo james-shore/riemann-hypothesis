@@ -23,7 +23,7 @@ private theorem UpperTheory.V.Weyl.top_weight_lie_action (n : ℕ) (Ξ : Pre n) 
       have : ¬ (a = p ∧ b = q) := by
         rintro ⟨rfl, rfl⟩
         exact absurd hab (not_le.mpr hpq)
-      simp [Matrix.one_apply_ne hpq.ne', Matrix.single_apply, this]
+      simp [Matrix.one_apply_ne hpq.ne', this]
   rw [h2] at h1
   exact h1.unique (hf.mul_const (v i))
 
@@ -38,7 +38,7 @@ theorem UpperTheory.V.Weyl.topLie :
       rw [Finset.prod_eq_single a]
       · simp
       · intro k _ hk
-        simp [Matrix.single_apply, hk.symm]
+        simp [hk.symm]
       · simp
   · have := UpperTheory.V.Weyl.top_weight_lie_action n Ξ ν v h a b hab.le (fun _ => 1) 0 (hasDerivAt_const _ _) (by
       intro t
@@ -46,5 +46,5 @@ theorem UpperTheory.V.Weyl.topLie :
       have : ¬ (a = k ∧ b = k) := by
         rintro ⟨rfl, rfl⟩
         exact lt_irrefl _ hab
-      simp [Matrix.single_apply, this])
+      simp [this])
     simpa using this

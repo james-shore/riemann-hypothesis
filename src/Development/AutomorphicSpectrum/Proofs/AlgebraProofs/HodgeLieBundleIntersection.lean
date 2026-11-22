@@ -26,7 +26,7 @@ theorem algebraMap_ne_zero_of_model {O : Type} [CommRing O] [IsDomain O] [IsDisc
     show _ = _
     have : (C w : MvPolynomial (Σ k, ι k) O) = algebraMap O _ w := rfl
     rw [this, AlgHom.commutes]
-    simp [MvPolynomial.algebraMap_eq, h0]
+    simp [h0]
   rw [hm.2.2.1] at hmem
   simpa using hmem
 

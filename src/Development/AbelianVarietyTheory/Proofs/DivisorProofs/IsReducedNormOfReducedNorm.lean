@@ -152,9 +152,9 @@ theorem det_eq_reducedNorm {n : Type} [Fintype n] [DecidableEq n] (hn : Fintype.
   have h := isReducedNormOf_reducedNorm (F := F) (C := C) x L ι Ψ' (fun c ↦ by
     simp only [Ψ', RingHom.coe_comp, Function.comp_apply, hΨ]
     ext i j
-    simp [Matrix.reindexAlgEquiv_apply, Matrix.scalar_apply, Matrix.diagonal_apply])
+    simp [Matrix.scalar_apply, Matrix.diagonal_apply])
   rw [← h]
-  simp [Ψ', Matrix.reindexAlgEquiv_apply, Matrix.det_reindex_self]
+  simp [Ψ']
 
 theorem reducedNorm_mul (x y : C) :
     reducedNorm F C (x * y) = reducedNorm F C x * reducedNorm F C y := by

@@ -26,7 +26,7 @@ private theorem tot_range (hV : VInv) (l : ℕ) [Fact l.Prime] {W Z : Scheme.{0}
     refine (Submodule.mem_iInf _).2 fun g => ?_
     have e := congrArg (fun u : Htot l (sch.obj W) => u n) (hx g)
     simp only [pullTot, DirectSum.lmap_apply] at e
-    simp [LinearMap.mem_ker, sub_eq_zero, e]
+    simp [LinearMap.mem_ker, e]
   rw [← DirectSum.sum_support_of x]
   refine Submodule.sum_mem _ fun n _ => ?_
   obtain ⟨z, hz⟩ := key n

@@ -17,7 +17,7 @@ theorem exists_coord_pi {X : Type} [AddCommGroup X] [TopologicalSpace X] {k : �
     ContinuousLinearEquiv.ofFinrankEq (by simp)
   refine ⟨Module.finrank ℝ (κ → Fin k → ℝ), (Homeomorph.piCongrRight fun _ => e).trans L.toHomeomorph, ?_⟩
   intro x y
-  simp only [Homeomorph.trans_apply, Homeomorph.piCongrRight_apply, ContinuousLinearEquiv.coe_toHomeomorph]
+  simp only [Homeomorph.trans_apply, ContinuousLinearEquiv.coe_toHomeomorph]
   rw [← map_add]
   congr 1
   funext i

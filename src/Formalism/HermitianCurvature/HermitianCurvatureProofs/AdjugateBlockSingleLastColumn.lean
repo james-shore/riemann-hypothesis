@@ -21,7 +21,7 @@ theorem ptEntry_append (h l : C.LPt) (a b : ℕ) :
     have hs : D.ptSize ((s, t) :: rest) = s + D.ptSize rest := by simp [D.ptSize]
     rw [List.cons_append, hs]
     simp only [D.ptEntry, ih, Nat.sub_sub]
-    split_ifs <;> first | rfl | (exfalso; omega) | omega | simp_all
+    split_ifs <;> first | rfl | (exfalso; omega)
 
 theorem ptMatN_append_one (h : C.LPt) (ζ : ℂ) (j : ℕ) (hj : D.ptSize h = j) :
     D.ptMatN (h ++ [(1, ζ)]) (j + 1) =
@@ -256,9 +256,7 @@ theorem hpk_mulVec_e (u : Fin (2 * (j + 0) + k + 1) → ℂ) (a : Fin j) :
     (Hpk k (j + 0) *ᵥ u) (eB k j 0 (Sum.inl (Sum.inl a))) = u (eB k j 0 (Sum.inr a.rev)) := by
   rw [Ux3.hpkBlocks k j 0, mulVec_eB]
   simp only [Ux3.block3_apply]
-  simp [Fintype.sum_sum_type, Matrix.fromBlocks_apply₁₁, Matrix.fromBlocks_apply₁₂, Matrix.fromBlocks_apply₂₁,
-    Matrix.fromBlocks_apply₂₂, Matrix.fromRows_apply_inl, Matrix.fromRows_apply_inr, Matrix.fromCols_apply_inl,
-    Matrix.fromCols_apply_inr, G.wMat]
+  simp [Fintype.sum_sum_type, Matrix.fromBlocks_apply₁₁, Matrix.fromBlocks_apply₁₂, Matrix.fromRows_apply_inl, G.wMat]
 
 theorem hpk_mulVec_es (u : Fin (2 * (j + 0) + k + 1) → ℂ) (a : Fin j) :
     (Hpk k (j + 0) *ᵥ u) (eB k j 0 (Sum.inr a)) = u (eB k j 0 (Sum.inl (Sum.inl a.rev))) := by

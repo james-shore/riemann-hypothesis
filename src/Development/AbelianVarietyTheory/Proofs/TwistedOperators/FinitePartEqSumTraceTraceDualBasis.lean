@@ -26,7 +26,7 @@ theorem repr_eq_trace {F E : Type} [Field F] [Field E] [Algebra F E] [FiniteDime
       ((Algebra.traceForm F E).dualBasis (traceForm_nondegenerate F E) b l)) (b.sum_repr x)
   rw [map_sum] at h
   simp only [map_smul, LinearMap.BilinForm.apply_dualBasis_left, smul_eq_mul, mul_ite, mul_one,
-    mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true] at h
+    mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true] at h
   rw [Algebra.traceForm_apply] at h
   exact h.symm
 

@@ -26,7 +26,7 @@ theorem gM_transpose_mulVec {F : Type} [Field F] [NumberField F] {ι : Type} [Fi
     Matrix.one_apply, Fintype.sum_prod_type, smul_eq_mul]
   rw [Finset.mul_sum, Finset.sum_comm]
   refine Finset.sum_congr rfl fun w _ => ?_
-  simp [Finset.sum_ite_eq, mul_assoc]
+  simp [mul_assoc]
 
 theorem gM_DM_emb_eq_trace : ∀ (F : Type) [Field F] [NumberField F] (ι : Type) [Fintype ι] [DecidableEq ι] [DecidableEq (InfinitePlace F)] (M : ℕ) (B : Matrix ι ι F) (ρ : InfinitePlace F → (F →+* ℝ)) (P : InfinitePlace F → Matrix ι ι ℝ), QSetup M B ρ P → ∀ (b : InfinitePlace F → 𝓞 F) (N : ℕ) (y : ι → F), (gM ρ b N)ᵀ *ᵥ (DM B ρ *ᵥ emb ρ y) = fun p => (((N : ℚ) * Algebra.trace ℚ F ((b p.2 : F) * (B *ᵥ y) p.1) : ℚ) : ℝ) := by
   intro F _ _ ι _ _ _ M B ρ P hQ b N y

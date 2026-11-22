@@ -177,7 +177,7 @@ private theorem rows_succ {l L N p k : ℕ} [Fact l.Prime] [NeZero N] (x : ZMod 
     · exact twist_succ_eq_smul_of_inv_p_of_k_eq_one _ _ _ _ _ _ _ L hb1 hb0 ht k1
     · exact twist_succ_eq_smul_of_p_eq_zero _ _ _ _ _ _ _ L hpz
   · show ((rV l (L + 1) N p 1 : ℤ) : ZMod (N * l ^ L * p)) = (k : ZMod _) * ((rV l L N p 1 : ℤ) : ZMod _)
-    apply c1 <;> simp only [rV, Matrix.cons_val_one, Matrix.head_cons] <;> push_cast
+    apply c1 <;> simp only [rV, Matrix.cons_val_one] <;> push_cast
     · exact const_succ_eq_smul_of_inv_p_of_k_eq_one _ _ _ _ _ _ L hb1 hb0 hz k1
     · exact const_succ_eq_smul_of_p_eq_zero_of_k_eq_l _ _ _ _ _ _ L hpz k2
 

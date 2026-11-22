@@ -62,7 +62,7 @@ theorem exists_isChart (L : Flat.LogPeriods n a g Λ) : ∃ bas A T0 B c ρ, IsC
     have hwj : ∀ j : Fin a, w (Fin.castLE L.a_le j) = l j := by
       intro j
       have hj : (Fin.castLE L.a_le j).val < a := j.2
-      simp [w, hj]
+      simp [w]
     have hexp : expCover a w = z := by
       funext k
       by_cases hk : k.val < a

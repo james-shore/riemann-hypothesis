@@ -36,7 +36,7 @@ theorem isOpen_ne_one [IsSeparated G.hom] {V : Type} [NormedAddCommGroup V] [Nor
         (hc U 0).1.preimage continuous_subtype_val
       convert this using 1
       ext q
-      simp [q.2]
+      simp
     · have h := (hc U f).2.continuousOn.comp (f := fun q : D => (q : V)) continuous_subtype_val.continuousOn
         (t := {b ∈ D | ⊤ ≤ c b ⁻¹ᵁ U}) (s := {b : D | ⊤ ≤ c b ⁻¹ᵁ U}) fun q hq => ⟨q.2, hq⟩
       exact h

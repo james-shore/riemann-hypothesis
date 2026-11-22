@@ -11,4 +11,4 @@ theorem _root_.GlobalTheory.T.etale_integrallyClosed_in_localization : ∀ (S E 
     Function.Injective (algebraMap E (Localization (Algebra.algebraMapSubmonoid E M))) ∧
     ∀ x : Localization (Algebra.algebraMapSubmonoid E M), IsIntegral S x →
       x ∈ (algebraMap E (Localization (Algebra.algebraMapSubmonoid E M))).range := by
-  first | (exact @GlobalTheory.EtaleNormalLoc.etale_integrallyClosed_localization) | (exact GlobalTheory.EtaleNormalLoc.etale_integrallyClosed_localization) | (intros; apply GlobalTheory.EtaleNormalLoc.etale_integrallyClosed_localization <;> assumption)
+  first | (exact @GlobalTheory.EtaleNormalLoc.etale_integrallyClosed_localization)

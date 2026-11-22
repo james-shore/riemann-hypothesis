@@ -87,9 +87,9 @@ theorem sT_sES (E : Fin n → Fin n → Module.End ℂ M) (V : Submodule ℂ M) 
       map_sum, sT_single, wordAction_cons]
     rw [Finset.sum_eq_single d', Finset.sum_eq_single c]
     · simp
-    · intro c' _ hc'; simp [Pi.single_apply, hc']
+    · intro c' _ hc'; simp [hc']
     · simp
-    · intro d _ hd; simp [Pi.single_apply, Ne.symm hd]
+    · intro d _ hd; simp [Ne.symm hd]
     · simp
 
 theorem sθ_sES (V : Submodule ℂ M) (EM : Fin n → Fin n → Module.End ℂ MM) (φ : MM) (ℓ : V →ₗ[ℂ] ℂ)
@@ -105,9 +105,9 @@ theorem sθ_sES (V : Submodule ℂ M) (EM : Fin n → Fin n → Module.End ℂ M
       map_sum, sθ_single, wordAction_cons_dual]
     rw [Finset.sum_eq_single d', Finset.sum_eq_single c]
     · simp
-    · intro c' _ hc'; simp [Pi.single_apply, hc']
+    · intro c' _ hc'; simp [hc']
     · simp
-    · intro d _ hd; simp [Pi.single_apply, Ne.symm hd]
+    · intro d _ hd; simp [Ne.symm hd]
     · simp
 
 theorem tensorWord_prepend (E : Fin n → Fin n → Module.End ℂ M) (V : Submodule ℂ M) (a b : Fin n)
@@ -122,7 +122,7 @@ theorem tensorWord_prepend (E : Fin n → Fin n → Module.End ℂ M) (V : Submo
     rw [Finsupp.mapDomain_single, sT_single, sT_single, wordAction_cons]
     by_cases h : c' = c
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
 
 theorem sT_surj (E : Fin n → Fin n → Module.End ℂ M) (V : Submodule ℂ M) (f : Fin n → M)
     (hf : ∀ c, f c ∈ genSub E V) : ∃ x, sT E V x = f := by
@@ -147,7 +147,7 @@ theorem sT_surj (E : Fin n → Fin n → Module.End ℂ M) (V : Submodule ℂ M)
     rw [tensorWord_prepend, hx]
     by_cases h : c' = c
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   have hgen : genSub E V ≤ S := sInf_le ⟨hVS, hst⟩
   have hmem : f ∈ LinearMap.range (sT E V) := by
     rw [← Finset.univ_sum_single f]

@@ -77,7 +77,7 @@ theorem UpperTheory.finite_selmerModule_of_finite_cohomology :
     intro M
     have : z ⁻¹' {M} = ⋂ i, ⋂ j, (fun g => z g i j) ⁻¹' {M i j} := by
       ext g
-      simp [Matrix.ext_iff.symm, funext_iff]
+      simp [Matrix.ext_iff.symm]
     rw [this]
     exact isOpen_iInter_of_finite fun i => isOpen_iInter_of_finite fun j => (hij i j).isOpen_fiber _
   obtain ⟨y, hy, -, hyz⟩ := hP z hV hLC (by intro g k; rw [one_smul]; exact hco g k)

@@ -53,7 +53,7 @@ theorem exists_unitary_mul_eq {n : ℕ} {ι : Type} [Fintype ι] [DecidableEq ι
       generalize Matrix.toEuclideanLin.symm u.toLinearMap = U
       simp [Matrix.toLpLin_apply, Matrix.mulVec_mulVec]
     rw [e, Matrix.toEuclideanLin_conjTranspose_eq_adjoint, LinearMap.adjoint_inner_right]
-    simp [Matrix.toLpLin_apply]
+    simp
   · apply (Matrix.toEuclideanLin (𝕜 := ℂ) (m := Fin n) (n := ι)).injective
     ext1 x
     have e : Matrix.toEuclideanLin (Matrix.toEuclideanLin.symm u.toLinearMap * A) x

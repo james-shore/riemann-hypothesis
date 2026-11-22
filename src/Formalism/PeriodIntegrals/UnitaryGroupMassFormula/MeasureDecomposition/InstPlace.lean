@@ -138,7 +138,7 @@ theorem placeDecomp_of (hE : InstExpFix) (hAB : InstAdaptBasis) : InstPlaceDecom
     rw [hσdef, Matrix.mulVec_diagonal]
     by_cases hr : r = i
     · subst hr; simp [hi]
-    · simp [Pi.single_apply, hr]
+    · simp [hr]
   have hcol : ∀ i ∈ T, ∀ r, p' r i = if r = i then 1 else 0 := fun i hi r =>
     inst_col_entry p' i (hpfix i hi) r
   have hrow : ∀ i ∈ T, ∀ r, p' i r = if r = i then 1 else 0 := by

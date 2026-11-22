@@ -19,7 +19,7 @@ theorem wt_single (v : σ) (e : ℕ) : wt p (Finsupp.single v e) = if p v then e
   rw [Finset.sum_eq_single v]
   · simp
   · intro b _ hb
-    simp [Finsupp.single_apply, Ne.symm hb]
+    simp [Ne.symm hb]
   · intro h
     exact absurd (Finset.mem_univ v) h
 

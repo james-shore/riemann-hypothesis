@@ -44,10 +44,10 @@ theorem oMat_apply (d : ℕ) (k : Fin 8) (p q : Fin 4 ⊕ Fin 4) :
   simp [oMat, Matrix.single_apply]
 
 theorem sig_eq_inl (k : Fin 8) (i : Fin 4) : sig k = Sum.inl i ↔ Fin.castAdd 4 i = k := by
-  fin_cases k <;> fin_cases i <;> simp [sig] <;> decide
+  fin_cases k <;> fin_cases i <;> simp [sig]
 
 theorem sig_eq_inr (k : Fin 8) (j : Fin 4) : sig k = Sum.inr j ↔ Fin.natAdd 4 j = k := by
-  fin_cases k <;> fin_cases j <;> simp [sig] <;> decide
+  fin_cases k <;> fin_cases j <;> simp [sig]
 
 section Key
 
@@ -63,16 +63,16 @@ theorem inc_act_pa {T : Over S} (d : ℕ) (la : A ⟶ B) (mu : B ⟶ A) (y : T �
     y ≫ incZ A B ≫ actZ A B d la mu (oMat d k) ≫ pa A B i = if sig k = Sum.inl i then y else 1 := by
   rw [actZ, mkZ_pa]
   simp only [oMat_apply, Fin.prod_univ_four, comp_mul, GrpObj.comp_zpow, ← Category.assoc, incZ_pa]
-  simp only [true_and, if_true, Category.comp_id, reduceCtorEq, false_and, if_false, zero_div, zpow_zero,
-    mul_one, Sum.inl.injEq, Fin.reduceEq, comp_one, one_zpow]
+  simp only [true_and, if_true, Category.comp_id, reduceCtorEq, false_and, if_false, zpow_zero,
+    Sum.inl.injEq, Fin.reduceEq, comp_one]
   split_ifs <;> simp
 
 theorem inc_act_pb {T : Over S} (d : ℕ) (la : A ⟶ B) (mu : B ⟶ A) (y : T ⟶ A) (k : Fin 8) (j : Fin 4) :
     y ≫ incZ A B ≫ actZ A B d la mu (oMat d k) ≫ pb A B j = if sig k = Sum.inr j then y ≫ la else 1 := by
   rw [actZ, mkZ_pb]
   simp only [oMat_apply, Fin.prod_univ_four, comp_mul, GrpObj.comp_zpow, ← Category.assoc, incZ_pa, incZ_pb]
-  simp only [true_and, if_true, Category.comp_id, reduceCtorEq, false_and, if_false, zero_div, zpow_zero,
-    mul_one, one_mul, Sum.inl.injEq, Fin.reduceEq, comp_one, one_comp, one_zpow]
+  simp only [true_and, if_true, Category.comp_id, reduceCtorEq, false_and, if_false, zpow_zero,
+    Sum.inl.injEq, Fin.reduceEq, comp_one]
   split_ifs <;> simp
 
 end Key

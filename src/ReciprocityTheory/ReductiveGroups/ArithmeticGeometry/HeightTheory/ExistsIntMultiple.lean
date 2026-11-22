@@ -148,7 +148,6 @@ theorem relIndex_pi_const {M : Type*} [AddCommGroup M] (H L : AddSubgroup M) (k 
     refine ⟨fun i => ⟨(x : Fin k → M) i, ?_⟩, Subtype.ext rfl⟩
     first
     | exact x.2 i (Set.mem_univ i)
-    | exact AddSubgroup.mem_pi.mp x.2 i (Set.mem_univ i)
   have hcomap : AddSubgroup.comap f ((AddSubgroup.pi Set.univ fun _ : Fin k => H).addSubgroupOf
       (AddSubgroup.pi Set.univ fun _ : Fin k => L)) =
       AddSubgroup.pi Set.univ fun _ : Fin k => H.addSubgroupOf L := by

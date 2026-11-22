@@ -35,7 +35,7 @@ theorem GlobalTheory.Unf.cut_gram_base : ∀ (D : D7) (ψ : AddChar (AF D.host.F
     have h := (GlobalTheory.T.mixedThetaSeries_terms_laws_unipotent_rational D ψ V V₀ W ρ d χV χW om om' hW hW' vS Φ hΦ).1 x 0 1 c
     rw [d.nB_zero, Subgroup.coe_one, map_one, mul_one, mul_one] at h
     rw [h]
-    simp only [Subgroup.coe_one, Units.val_one, Matrix.mul_one, Matrix.mul_zero]
+    simp only [Units.val_one, Matrix.mul_one, Matrix.mul_zero]
     rfl
   have hsplit : ∀ g h : GA D V, om (g * h, 1) Ψ = om (g, 1) (om (h, 1) Ψ) := by
     intro g h

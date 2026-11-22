@@ -36,7 +36,7 @@ lemma colH_strip {n : ℕ} (nu mu' : Fin n → ℤ) (b : ℕ) (h : HStrip nu mu'
         simp only [em] at this
         exact hm.1.trans this
       · intro a ha b hb hab
-        simp only [Finset.coe_filter, Finset.mem_filter, Set.mem_ofPred_eq] at ha hb
+        simp only [Finset.coe_filter, Set.mem_ofPred_eq] at ha hb
         simp only [Fin.mk.injEq] at hab
         exact Fin.ext (by omega)
     omega

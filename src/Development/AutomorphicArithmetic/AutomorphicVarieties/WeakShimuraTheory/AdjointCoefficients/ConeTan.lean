@@ -67,7 +67,7 @@ theorem UpperTheory.V.Ws.X1.coneTan :
         simp only at h1 ⊢
         rw [e]
         exact (b v).sub_mem h1 h2
-      · simp [Submodule.mem_pi, hPn]
+      · simp [hPn]
     refine ⟨⟨_, hmem⟩, ?_⟩
     simp only [q, LinearMap.comp_apply, Submodule.mkQ_apply]
     rw [Submodule.Quotient.eq]
@@ -89,7 +89,7 @@ theorem UpperTheory.V.Ws.X1.coneTan :
       simp only
       rw [e]
       exact h2
-    · simp [Submodule.mem_pi, hPn]
+    · simp [hPn]
   let f : W →ₗ[k] S :=
     { toFun := fun X => ⟨_, fmem X⟩
       map_add' := fun X Y => by

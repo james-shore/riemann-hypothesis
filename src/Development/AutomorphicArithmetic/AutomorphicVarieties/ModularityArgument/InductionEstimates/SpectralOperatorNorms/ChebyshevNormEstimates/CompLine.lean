@@ -172,7 +172,6 @@ theorem UpperTheory.V.Z.InvariantSubmoduleMonicPolynomial.compLine :
       (centralSection_mul_comm _ g).symm
     change φ.1 (_ * (k : GlobalTheory.CuspRep.GA E (2 + 2))) = th F (unipOne E (2 + 2) 2 X * (lv y₁ y₂ ((a - a') / 2) * k))
     rw [← hth, ← hφ.cen (a + a') ((unipOne E (2 + 2) 2 X * (lv y₁ y₂ ((a - a') / 2) * k) : G1 E (2 + 2)) : GlobalTheory.CuspRep.GA E (2 + 2))]
-    congr 1
     rw [Subgroup.coe_mul, Subgroup.coe_mul, coe_unipOne, ← mul_assoc (unipGL X), hz, mul_assoc, mul_assoc]
   have hbU := (BW.cuspUmg E 2 b.f b.cusp).1
   have hbc : Continuous fun g : G1 E 2 => b.f.1 (g : GlobalTheory.CuspRep.GA E 2) := ((BW.umgOps E 2).2 b.f hbU).1.comp continuous_subtype_val

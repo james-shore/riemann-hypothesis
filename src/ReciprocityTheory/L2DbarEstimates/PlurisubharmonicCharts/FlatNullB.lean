@@ -54,7 +54,6 @@ theorem fn_mu_compl (hN : EXTNullStatement n) (hD : A.D0 L w w0 s) (hF : A.Flat 
     rw [A.mu_chart (A.pick x) T hTm (fun y hy => hy.1.1)]
     first
       | exact setLIntegral_measure_zero _ _ hvol
-      | simp [Measure.restrict_eq_zero.2 hvol]
   refine ⟨(A.Mset w0 s De)ᶜ ∩ ((A.chart (A.pick x)).source ∩
       (A.chart (A.pick x)) ⁻¹' Metric.ball ((A.chart (A.pick x)) x) r),
     inter_mem_nhdsWithin _ (hO1.mem_nhds ⟨hxs, Metric.mem_ball_self hr⟩), ?_⟩
@@ -245,8 +244,6 @@ theorem fn_loc (hD : A.D0 L w w0 s) {la : La} {F : ι → Y → ℂ}
           gcongr
           first
             | exact fun u (hu : u ∈ Metric.ball v r \ {u | fnG A w0 s De i u = 0}) => hball hu.1
-            | exact Measure.restrict_mono (fun u (hu : u ∈ Metric.ball v r \ {u | fnG A w0 s De i u = 0}) => hball hu.1) le_rfl
-            | exact lintegral_mono_set fun u (hu : u ∈ Metric.ball v r \ {u | fnG A w0 s De i u = 0}) => hball hu.1
     _ < ⊤ := ENNReal.mul_lt_top ENNReal.ofReal_lt_top hY
 theorem fn_sub_closure (hD : A.D0 L w w0 s) (hF : A.Flat w0 s De) (i : ι) {O : Set (V n)}
     (hO : IsOpen O) (hOt : O ⊆ (A.chart i).target) :

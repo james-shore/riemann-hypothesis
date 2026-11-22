@@ -64,11 +64,9 @@ private theorem poly_lemma (θ : E) (hθ : IntermediateField.adjoin ℚ {θ} = �
       | rw [← IntermediateField.adjoin_simple_toSubalgebra_of_isIntegral hint, hθ,
           IntermediateField.top_toSubalgebra]
       | rw [← IntermediateField.adjoin_algebraic_toSubalgebra (fun x hx => by
-            rw [Set.mem_singleton_iff.mp hx]; exact hint.isAlgebraic), hθ, IntermediateField.top_toSubalgebra]
+            rw [Set.mem_singleton_iff.mp hx]), hθ, IntermediateField.top_toSubalgebra]
       | rw [← IntermediateField.adjoin_toSubalgebra_of_isAlgebraic (fun x hx => by
             rw [Set.mem_singleton_iff.mp hx]; exact hint.isAlgebraic), hθ, IntermediateField.top_toSubalgebra]
-      | rw [← IntermediateField.adjoin_simple_toSubalgebra_of_isAlgebraic hint.isAlgebraic, hθ,
-          IntermediateField.top_toSubalgebra]
   have h2 : a ∈ Algebra.adjoin ℚ {θ} := by
     rw [h1]
     exact Algebra.mem_top

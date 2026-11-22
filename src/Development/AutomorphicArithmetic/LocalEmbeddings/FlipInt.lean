@@ -94,7 +94,6 @@ theorem fourierSum_mem {A D : Type} [Fintype A] [DecidableEq A] [Fintype D] [Dec
     · rw [mem_Lo, mul_inv_cancel₀ (pow_ne_zero _ (by exact_mod_cast hq))]
       exact isIntegral_one
     rw [← Valuation.mem_integer_iff]
-    change _ ∈ 𝒪[k]
     rw [pairCols, Finset.mul_sum]
     refine Subring.sum_mem _ fun i _ => ?_
     rw [Finset.mul_sum]
@@ -112,7 +111,6 @@ theorem invFourierSum_inv_mem {A D : Type} [Fintype A] [DecidableEq A] [Decidabl
   split_ifs with h
   · refine sum_mem fun S _ => Lo_mul (b := 0) (hΦ _) (Lo_zero (hψ _ ?_))
     rw [← Valuation.mem_integer_iff]
-    change _ ∈ 𝒪[k]
     have e1 : ((ϖ ^ e : kˣ) : k) * pairCols P T ((ϖ ^ e)⁻¹ • liftRes S) = ∑ i, ∑ j : P, liftRes S i j * T i j := by
       rw [pairCols, Finset.mul_sum]
       refine Finset.sum_congr rfl fun i _ => ?_

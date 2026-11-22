@@ -90,7 +90,7 @@ theorem dual : Dual := by
     by_cases h : i = j
     · subst h
       simp [cT]
-    · simp [cT, Matrix.one_apply, h, Ne.symm h]
+    · simp [cT, h, Ne.symm h]
   have hGJ : mat g * antiJ L N * cT σ (mat g) = antiJ L N := by
     have h1 : (antiJ L N * cT σ (mat g) * antiJ L N) * mat g = 1 := by
       rw [show antiJ L N * cT σ (mat g) * antiJ L N * mat g

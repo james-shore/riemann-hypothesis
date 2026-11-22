@@ -223,7 +223,7 @@ theorem actsD_Phi {ψ : AddChar (AF F) ℂ} (hψ : IsStd ψ) (M : Model σ X W)
     exact h4
   have h1 : HasDerivAt (fun t : ℝ => t * A + t ^ 2 * B0) A 0 := by
     have h := ((hasDerivAt_id' (0 : ℝ)).mul_const A).add ((hasDerivAt_pow 2 (0 : ℝ)).mul_const B0)
-    convert h using 1 <;> first | rfl | (funext t; simp) | simp
+    convert h using 1 <;> first | rfl | (funext t) | simp
   have h2 := ((h1.ofReal_comp).const_mul (-(2 * Real.pi * Complex.I))).cexp
   have h3 := h2.mul (hf.mul_const (r z))
   rw [show (fun t => M.heisLine ψ (Phi M w) t (tens (evI F) (⇑f) r) z) = _ from funext key]

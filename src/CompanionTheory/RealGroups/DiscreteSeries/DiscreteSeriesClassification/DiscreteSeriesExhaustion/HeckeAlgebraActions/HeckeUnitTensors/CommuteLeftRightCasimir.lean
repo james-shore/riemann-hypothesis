@@ -90,7 +90,7 @@ theorem right_casimir_add_eta_psi (H : Fin (m + 1) → Fin (m + 1) → X.V) (a d
   rw [Finset.sum_add_distrib]
   by_cases h : d = a
   · subst h; simp [Pi.single_eq_same]
-  · simp [h, Pi.single_eq_of_ne h]
+  · simp [h]
 
 def liftL (T : Module.End ℂ (Fin (m + 1) → X.V)) : Module.End ℂ (Fin (m + 1) → Fin (m + 1) → X.V) where
   toFun H := fun a d => T (fun c => H c d) a

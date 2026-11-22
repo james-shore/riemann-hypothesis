@@ -58,7 +58,6 @@ theorem fcoord_map (b : Basis ι K V) (X : InfinitePlace K → Matrix ι ι ℂ)
     rw [← LinearMap.toMatrix_mulVec_repr b b' φ x]
     first
       | simp [Matrix.mulVec, dotProduct, map_sum, map_mul, Formalism.HermitianLatticesTheory.vecAt]
-      | simp [Matrix.mulVec, Matrix.dotProduct, map_sum, map_mul, Formalism.HermitianLatticesTheory.vecAt]
   simp only [Formalism.HermitianLatticesTheory.fcoord, hv, Matrix.mulVec_mulVec, Matrix.mul_assoc, Matrix.mul_nonsing_inv _ (hX v),
     Matrix.mul_one]
 
@@ -73,8 +72,6 @@ theorem normAt_map_le (b : Basis ι K V) (X : InfinitePlace K → Matrix ι ι �
   convert this using 1
   all_goals first
     | rfl
-    | simp [Matrix.toEuclideanLin_apply]
-    | (congr 1; simp [Matrix.toEuclideanLin_apply])
 
 theorem opNormAt_smul (b : Basis ι K V) (X : InfinitePlace K → Matrix ι ι ℂ) (b' : Basis κ K W)
     (X' : InfinitePlace K → Matrix κ κ ℂ) (hX' : ∀ v, IsUnit (X' v).det) (c : InfinitePlace K → ℝ)
@@ -88,7 +85,6 @@ theorem opNormAt_smul (b : Basis ι K V) (X : InfinitePlace K → Matrix ι ι �
   simp only [opNormAt, hi, Matrix.smul_mul, map_smul, norm_smul]
   first
     | rw [norm_inv, Complex.norm_real, Real.norm_of_nonneg (hc v).le]
-    | simp [norm_inv, abs_of_pos (hc v)]
 
 theorem opNormAt_pos (b : Basis ι K V) (X : InfinitePlace K → Matrix ι ι ℂ) (b' : Basis κ K W)
     (X' : InfinitePlace K → Matrix κ κ ℂ) (hX : ∀ v, IsUnit (X v).det)

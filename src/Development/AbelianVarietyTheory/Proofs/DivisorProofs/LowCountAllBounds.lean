@@ -134,7 +134,7 @@ theorem rows_eq {i ex : ℕ} (α : Fin i × Fin i →₀ ℕ) (hdeg : Finsupp.de
   have hs : ∑ e : Fin i, ∑ c : Fin i, α (e, c) = ∑ e : Fin i, ex := by
     rw [← Fintype.sum_prod_type' (fun e c => α (e, c))]
     rw [Finsupp.degree_eq_sum] at hdeg
-    simp [hdeg, mul_comm]
+    simp [hdeg]
   intro e
   exact (Finset.sum_eq_sum_iff_of_le (fun e _ => hrow e)).1 hs e (Finset.mem_univ e)
 

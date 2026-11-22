@@ -49,7 +49,7 @@ theorem fam_eval (τ : L →+* K) (B : GL (Fin n) K) :
       Formalism.L2.NX.evPtF (IsCMField.complexConj L : L →+* L) τ B := by
   funext p
   simp only [fam, Formalism.L2.NX.evPtF]
-  split_ifs <;> simp_all [inside₂, Matrix.one_apply]
+  split_ifs <;> simp_all [inside₂]
 
 end Fam
 
@@ -156,7 +156,7 @@ theorem hw_eigvec_transport : ∀ (L : Type) [Field L] [NumberField L] [IsCMFiel
       (basis_toMatrix_mul_linearMap_toMatrix_mul_basis_toMatrix b' bD b' bD _).symm
     rw [hbD, DDHw.dd_toMatrix, DDHw.tenRepF_toMatrix emb lam γ _ hm] at h2
     rw [map_sub, ← h1, h2, map_sum]
-    simp only [map_sum, MvPolynomial.eval_mul, MvPolynomial.eval_C, Matrix.mul_apply, Finset.sum_mul]
+    simp only [map_sum, MvPolynomial.eval_mul, MvPolynomial.eval_C, Matrix.mul_apply]
     rw [sub_eq_zero, Finset.sum_comm]
     refine Finset.sum_congr rfl fun j _ => ?_
     erw [Matrix.mul_apply]

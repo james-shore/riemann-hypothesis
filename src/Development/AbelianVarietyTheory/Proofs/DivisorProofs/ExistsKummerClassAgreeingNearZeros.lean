@@ -31,9 +31,9 @@ theorem kum_spMap (q : ℕ) [NeZero q] {A B : Type} [CommRing A] [CommRing B] (�
   have h2 : (Spec.map (CommRingCat.ofHom φ)).appTop = (Scheme.ΓSpecIso (CommRingCat.of A)).hom ≫ CommRingCat.ofHom φ ≫
       (Scheme.ΓSpecIso (CommRingCat.of B)).inv := by
     rw [← Category.assoc, ← h]; simp
-  simp only [gU, Units.coe_map, MonoidHom.coe_coe]
+  simp only [gU, Units.coe_map]
   rw [h2]
-  simp only [CommRingCat.hom_comp, RingHom.coe_comp, Function.comp_apply, CommRingCat.hom_ofHom]
+  simp only [CommRingCat.hom_comp, CommRingCat.hom_ofHom]
   simp
 
 theorem kum_pow_eq (q : ℕ) [NeZero q] {A : Type} [CommRing A] (hq : IsUnit (q : A)) (u v : Aˣ) :

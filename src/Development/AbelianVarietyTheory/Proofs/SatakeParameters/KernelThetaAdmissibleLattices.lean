@@ -56,8 +56,6 @@ theorem isReps_image {Λ₁ Λ₂ M₁ M₂ : AddSubgroup V} {S : Finset V} (hS 
   | exact @_root_.GlobalTheory.TransportLemma.main
   | exact _root_.GlobalTheory.TransportLemma.main
   | (apply _root_.GlobalTheory.TransportLemma.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TransportLemma.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TransportLemma.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TransportLemma.main ..)
 
 omit [DecidableEq V] in

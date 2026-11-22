@@ -29,7 +29,6 @@ private theorem mem_weightSp_iff_forall_diag {n : ℕ} {K V : Type*} [Field K] [
     LinearMap.smul_apply, sub_eq_zero]
   first
   | simp only [Module.End.one_apply]
-  | simp only [LinearMap.one_apply]
 
 private theorem glRep_apply_mem_weightSp_shift {n : ℕ} {K V : Type*} [Field K] [AddCommGroup V] [Module K V]
     (E : GLOps n K V) (hE : IsGLRep E) (a b : Fin n) (ν : Fin n → ℤ) (y : V)
@@ -45,30 +44,26 @@ private theorem glRep_apply_mem_weightSp_shift {n : ℕ} {K V : Type*} [Field K]
   · subst hca
     by_cases hcb : c = b
     · subst hcb
-      simp only [eq_self_iff_true, if_true]
+      simp only [if_true]
       push_cast
       first
       | module
-      | (simp [add_smul, sub_smul])
     · have hbc : ¬ b = c := fun h => hcb h.symm
-      simp only [eq_self_iff_true, if_true, if_neg hbc, if_neg hcb, LinearMap.zero_apply, sub_zero]
+      simp only [if_true, if_neg hbc, if_neg hcb, LinearMap.zero_apply, sub_zero]
       push_cast
       first
       | module
-      | (simp [add_smul, sub_smul]; abel)
   · by_cases hcb : c = b
     · subst hcb
-      simp only [eq_self_iff_true, if_true, if_neg hca, LinearMap.zero_apply, zero_sub]
+      simp only [if_true, if_neg hca, LinearMap.zero_apply, zero_sub]
       push_cast
       first
       | module
-      | (simp [add_smul, sub_smul]; abel)
     · have hbc : ¬ b = c := fun h => hcb h.symm
       simp only [if_neg hca, if_neg hbc, if_neg hcb, LinearMap.zero_apply, sub_zero, zero_add]
       push_cast
       first
       | module
-      | simp
 
 private theorem glRep_pow_apply_mem_weightSp_shift {n : ℕ} {K V : Type*} [Field K] [AddCommGroup V] [Module K V]
     (E : GLOps n K V) (hE : IsGLRep E) (a b : Fin n) (k : ℕ) (ν : Fin n → ℤ) (y : V)
@@ -91,8 +86,6 @@ private theorem ppFac_apply_mem_weightSp_of_mem {n : ℕ} {K V : Type*} [Field K
   unfold ppFac
   first
   | rw [LinearMap.sum_apply]
-  | rw [LinearMap.coe_sum, Finset.sum_apply]
-  | rw [LinearMap.coe_fn_sum, Finset.sum_apply]
   refine Submodule.sum_mem _ fun k _ => ?_
   simp only [divPowE, LinearMap.smul_apply, Module.End.mul_apply, map_smul]
   refine Submodule.smul_mem _ _ (Submodule.smul_mem _ _ (Submodule.smul_mem _ _ ?_))

@@ -185,8 +185,8 @@ theorem place_of_tie : ∀ (D : D7) (sc : Scale) (Ce : ℝ)
           ((gatTiesC D sc Ce Lc I ψ hd).gat_pos u w hg ⟨v, s⟩) (if Even s.val then algebraMap D.host.F D.host.E (x : D.host.F)
             else sigD (recC D sc Ce Lc I ψ hd) (algebraMap D.host.F D.host.E (x : D.host.F))) := by
       by_cases he : Even s.val
-      · simp only [he, if_true, ite_true, ↓reduceIte]; rfl
-      · simp only [he, if_false, ite_false, ↓reduceIte, hsig]; rfl
+      · simp only [he, ↓reduceIte]; rfl
+      · simp only [he, ↓reduceIte, hsig]; rfl
     rw [e]
     exact hpos
   refine (tie_mem_iff ((hermitianLevelZeroOfRecursion D sc Ce Lc I ψ hd H0 hL).g u w hg) v x).trans ?_

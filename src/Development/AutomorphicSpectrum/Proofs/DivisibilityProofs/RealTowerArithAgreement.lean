@@ -104,7 +104,7 @@ theorem sum_coef_rootC (M : RootModel Ψ N) (lam : Wt Ψ N) (s : ℝ) (b : Optio
   | some q =>
     simp only [rootC, RootModel.coef, Int.cast_zero, mul_zero, zero_add]
     rw [Fintype.sum_prod_type, Finset.sum_eq_single q.1]
-    · simp only [if_true, mul_comm, neg_mul]
+    · simp only [if_true, neg_mul]
       have := sum_mul_rc (fun i => lam q.1 i) q.2
       simp only [PB.gapS, Option.elim, PB.gap, PB.gapX]
       rw [Finset.sum_neg_distrib, this]

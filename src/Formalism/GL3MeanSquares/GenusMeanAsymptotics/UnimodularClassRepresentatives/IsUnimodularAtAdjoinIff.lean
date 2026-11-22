@@ -64,7 +64,7 @@ theorem mem_adjoin_iff (L' : Submodule (𝓞 K) V') (v : V) :
     exact ⟨r, a, ha, by simp only [algebraMap_smul, LinearMap.coe_restrictScalars]⟩
   · rintro ⟨r, a, ha, rfl⟩
     exact ⟨r • S.x₀, Submodule.mem_span_singleton.mpr ⟨r, rfl⟩, S.ι a,
-      Submodule.mem_map.mpr ⟨a, ha, rfl⟩, by simp only [algebraMap_smul, LinearMap.coe_restrictScalars]⟩
+      Submodule.mem_map.mpr ⟨a, ha, rfl⟩, by simp only [algebraMap_smul]⟩
 
 theorem x₀_mem_adjoin' (L' : Submodule (𝓞 K) V') : S.x₀ ∈ S.adjoin L' := by
   unfold VecSplit.adjoin

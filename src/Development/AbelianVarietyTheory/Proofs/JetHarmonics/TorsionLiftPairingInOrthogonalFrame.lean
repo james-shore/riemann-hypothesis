@@ -311,7 +311,6 @@ theorem _root_.GlobalTheory.MomOne.kapFrame : ∀ (q : ℕ) [Fact q.Prime] (lam 
     push_cast
     have hai := ha0 i
     field_simp
-    all_goals ring
   have hherm_eq : ∀ z w : ℂ, _root_.GlobalTheory.MomOne.h1 S.d z w =
       ((2 / √(S.d : ℝ) : ℝ) : ℂ) * (z * starRingEnd ℂ w) := fun z w => rfl
   have hkey : _root_.Formalism.L2.Ker.JMB.hf S.Hm u Y = ∑ i, (N i : ℂ) * _root_.GlobalTheory.MomOne.h1 S.d 1 (y' i) +

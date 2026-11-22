@@ -25,7 +25,7 @@ theorem _root_.GlobalTheory.EtC.cochain_shortExact_of_injective :
     refine ⟨Cochain.mk (fun p q h =>
       (CokernelCofork.IsColimit.desc' (hp p).gIsCokernel (b.v p q h) (hb' p q h)).1), ?_⟩
     refine Cochain.ext _ _ (fun p q h => ?_)
-    simp only [Cochain.zero_cochain_comp_v, Cochain.ofHom_v, Cochain.mk_v]
+    simp only [Cochain.zero_cochain_comp_v, Cochain.ofHom_v]
     exact (CokernelCofork.IsColimit.desc' (hp p).gIsCokernel (b.v p q h) (hb' p q h)).2
   · refine Cochain.ext _ _ (fun p q h => ?_)
     have := Cochain.congr_v hc p q h

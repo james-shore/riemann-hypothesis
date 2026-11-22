@@ -109,11 +109,6 @@ theorem isAlgClosed_res [IsAlgClosed C] [IsLocalRing (ints F)]
     IsAlgClosed (IsLocalRing.ResidueField (ints F)) := by
   first
   | (rename_i h_1 h_2 h_4 h_5; revert C h_1 h_2 F h_4 h_5 hF; exact @_root_.GlobalTheory.NormEvalSubBound.main_theorem)
-  | exact @_root_.GlobalTheory.NormEvalSubBound.main_theorem
-  | exact _root_.GlobalTheory.NormEvalSubBound.main_theorem
-  | (apply _root_.GlobalTheory.NormEvalSubBound.main_theorem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NormEvalSubBound.main_theorem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NormEvalSubBound.main_theorem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NormEvalSubBound.main_theorem ..)
 
 theorem coe_ints_closure :

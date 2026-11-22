@@ -189,12 +189,10 @@ def QExpansionAlt (W : LocWach PD LL O v n) (a : ZMod n) (g : LetA O n) (F : Pow
 theorem trunc_add_alt (F G : PowerSeries O) (N : ℕ) : trunc N (F + G) = trunc N F + trunc N G := by
   ext m
   simp only [PowerSeries.coeff_trunc, Polynomial.coeff_add, map_add]
-  all_goals split_ifs <;> simp
 
 theorem trunc_sub_alt (F G : PowerSeries O) (N : ℕ) : trunc N (F - G) = trunc N F - trunc N G := by
   ext m
   simp only [PowerSeries.coeff_trunc, Polynomial.coeff_sub, map_sub]
-  all_goals split_ifs <;> simp
 
 theorem trunc_smul_alt (o : O) (F : PowerSeries O) (N : ℕ) : trunc N (o • F) = o • trunc N F := by
   ext m
@@ -232,7 +230,7 @@ theorem qExpansion_smul_alt {a : ZMod n} {g : LetA O n} {F : PowerSeries O} (o :
   intro N
   obtain ⟨h, hh, e1⟩ := hF N
   refine ⟨o • h, SMulMemClass.smul_mem o hh, ?_⟩
-  simp only [trunc_smul_alt, map_smul, mul_smul_comm, e1, smul_add]
+  simp only [map_smul, mul_smul_comm, e1, smul_add]
 
 theorem qExpansion_mul_alt (hR : Formalism.MainNotions.UnusedSlot80.ToolsR.RingP W) {a : ZMod n} {g g' : LetA O n}
     {F F' : PowerSeries O} (hF : QExpansionAlt W a g F) (hF' : QExpansionAlt W a g' F') :
@@ -1202,7 +1200,7 @@ theorem integral_coordinate_of_relation (hinj : Function.Injective (algebraMap O
     simp only [hlam, Finset.smul_sum, smul_smul, hv] at h1
     rw [Finset.sum_comm] at h1
     have h2 : ∑ j, (P R * vv j - ∑ k, cc R k * algebraMap O LL (mm k j)) • ((bas j : M') : Q) = 0 := by
-      simp only [sub_smul, Finset.sum_sub_distrib, Finset.sum_smul, smul_smul]
+      simp only [sub_smul, Finset.sum_sub_distrib, Finset.sum_smul]
       rw [sub_eq_zero, h1]
     intro j
     exact sub_eq_zero.mp (hind _ h2 j)

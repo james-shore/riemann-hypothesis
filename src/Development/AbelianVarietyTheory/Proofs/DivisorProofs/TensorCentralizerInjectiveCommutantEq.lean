@@ -38,7 +38,7 @@ theorem tensor_centralizer_flat : ∀ (K : Type) [Field K] [Algebra ℚ K] (C : 
     intro w
     induction w using TensorProduct.induction_on with
     | zero => simp
-    | tmul a b => simp [ad, TensorProduct.tmul_sub]
+    | tmul a b => simp [ad]
     | add a b ha hb => rw [map_add, ha, hb, add_mul, mul_add]; abel
   refine ⟨?_, ?_⟩
   · intro a b hab

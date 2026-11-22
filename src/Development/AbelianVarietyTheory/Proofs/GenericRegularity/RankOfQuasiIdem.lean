@@ -119,7 +119,7 @@ theorem loc_descr {K O A F : Type} [Field K] [CommRing O] [IsDomain O] [Algebra 
     obtain ⟨a, b, m, hb, h⟩ := hx
     obtain ⟨a', b', m', hb', h'⟩ := hy
     refine ⟨a * a', b * b', m + m', mul_ne_zero hb hb', ?_⟩
-    simp only [map_add, map_mul, map_pow] at h h' ⊢
+    simp only [map_mul, map_pow] at h h' ⊢
     rw [← h, ← h']; ring
 
 theorem loc_lift {K O A F L : Type} [Field K] [CommRing O] [IsDomain O] [Algebra O K] [IsFractionRing O K]

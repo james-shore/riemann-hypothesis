@@ -21,9 +21,7 @@ theorem bqOrigin : BqOriginSt := by
     intro e
     haveI := Xo.univ.t.act.hom e
     first
-      | (simp; done)
-      | (show (toUnit _ ≫ η[Xo.univ.t.G]) ≫ _ = toUnit _ ≫ η[Xo.univ.t.G]
-         rw [Category.assoc, IsMonHom.one_hom])
+      | (simp)
 
   have hF : lift (1 : overAt y.x S ⟶ Xo.univ.t.G) 1 ≫ faceMap Xo.univ.t.G 2 = lift 1 (lift 1 1) := by
     first
@@ -34,12 +32,11 @@ theorem bqOrigin : BqOriginSt := by
             lift_fst, lift_snd,
             show pzero Xo.univ.t.G (G2 Xo.univ.t.G) = (1 : G2 Xo.univ.t.G ⟶ Xo.univ.t.G) from rfl,
             ExpGD.comp_one'])
-      | (simp [faceMap, x2, pzero]; done)
 
   have hR : val C.wP (r ≫ (1 : overAt y.x S ⟶ Xo.univ.t.G).left) z J =
       val Xo.univ.t.PP.rig (r ≫ (toUnit (overAt y.x S)).left) z J := by
     rw [← val_corr hJ C.prim.2 (r ≫ (toUnit (overAt y.x S)).left), val_pull hJ, Category.assoc]
-    all_goals first | rfl | exact hJ
+    all_goals first | rfl
   have hP : ∀ e : 𝓞 E, val C.wP ((r ≫ (1 : overAt y.x S ⟶ Xo.univ.t.G).left) ≫
       (Xo.univ.t.act.act e).left) z J = val Xo.univ.t.PP.rig (r ≫ (toUnit (overAt y.x S)).left) z J := by
     intro e
@@ -54,7 +51,7 @@ theorem bqOrigin : BqOriginSt := by
       rw [hF, comp_lift, comp_lift, hA, hA, hA]
     rw [Category.assoc, ← Over.comp_left, hm, Over.comp_left, ← Category.assoc]
     refine (val_pull hJ _ _ _).symm.trans ((val_corr hJ (Xo.univ.t.cub.face 2) _).trans ?_)
-    first | exact val_one _ | exact val_one hJ _ | (simp [val_one, hJ]; done)
+    first | exact val_one _
 
   have hLa0 : val wLa ((r ≫ (1 : overAt y.x S ⟶ Xo.univ.t.G).left) ≫
       (lift (Xo.univ.t.act.act 1) (Xo.univ.t.act.act (a * H.w0))).left) z J = 1 := by
@@ -118,7 +115,7 @@ theorem bqOrigin : BqOriginSt := by
             (LB.pullGen Xo.univ.t.PP.L _ _ wLb (lift (Xo.univ.t.act.act a) (Xo.univ.t.act.act H.w0)).left)))))
     (r ≫ (1 : overAt y.x S ⟶ Xo.univ.t.G).left) z J *
       val Xo.univ.t.PP.rig (r ≫ (toUnit (overAt y.x S)).left) z J ^ (3 : ℤ) = 1
-  simp only [val_mul hJ, val_inv, val_pull hJ, hP, hR, hC, hLa0, hLb0, hJ]
+  simp only [val_mul hJ, val_inv, val_pull hJ, hP, hR, hLa0, hLb0]
   rw [hCB]
   clear hA hF hR hP hC hLa0 hLb0 hstar hLa hLb hCB
   generalize val Xo.univ.t.PP.rig (r ≫ (toUnit (overAt y.x S)).left) z J = R

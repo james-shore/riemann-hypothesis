@@ -28,7 +28,7 @@ theorem unip_pi_iff {ι S : Type} [Fintype ι] [DecidableEq ι] [CommRing S] {n 
         · show (∑ k, K j k * y' k) i' = 0
           rw [Finset.sum_apply]
           refine Finset.sum_eq_zero fun k _ => ?_
-          simp [y', Pi.single_apply, hi]
+          simp [y', hi]
       obtain ⟨a, ha⟩ := h2 y' hy'
       refine ⟨fun l => φ (a l), ?_⟩
       have h0 : (fun k => φ (y' k)) = y := by

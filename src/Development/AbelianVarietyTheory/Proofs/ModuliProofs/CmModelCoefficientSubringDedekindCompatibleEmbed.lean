@@ -78,7 +78,7 @@ theorem natCast_mul_mem_of_isIntegral (K : IntermediateField ℚ ℂ) [FiniteDim
   convert h2 using 1
   obtain ⟨m, rfl⟩ : ∃ m, n = m + 1 := ⟨n - 1, by omega⟩
   have hxc : (x : ℂ) = ζ := rfl
-  simp [derivative_X_pow, hxc]
+  simp [hxc]
   linear_combination (-(m + 1 : ℂ) * z) * hζ
 
 open IntermediateField in
@@ -90,8 +90,6 @@ theorem mem_of_isIntegral_quadratic {d : ℕ} (hd : d.Prime) (hd4 : d % 4 = 3) {
   | exact @_root_.GlobalTheory.RationalIntegralCoordinates.main
   | exact _root_.GlobalTheory.RationalIntegralCoordinates.main
   | (apply _root_.GlobalTheory.RationalIntegralCoordinates.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RationalIntegralCoordinates.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RationalIntegralCoordinates.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RationalIntegralCoordinates.main ..)
 
 end

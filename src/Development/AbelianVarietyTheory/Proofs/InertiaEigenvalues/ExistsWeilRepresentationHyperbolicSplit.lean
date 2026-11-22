@@ -37,7 +37,7 @@ theorem weilHyp_nS : ∀ (F E : Type) [NontriviallyNormedField F] [NontriviallyN
   funext p
   simp only [Hyp.pt, Hyp.rg, nS, fourB, Hyp.kx, Et.psiK]
   simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.empty_val',
-    Matrix.cons_val_fin_one, mul_one, mul_zero, add_zero, zero_add]
+    Matrix.cons_val_fin_one, mul_one, mul_zero, add_zero]
   congr 1
   funext b
   rw [show x * b * (p.1 * z + p.2) = z * x * (p.1 * b) + x * b * p.2 by ring, map_add, AddChar.map_add_eq_mul]

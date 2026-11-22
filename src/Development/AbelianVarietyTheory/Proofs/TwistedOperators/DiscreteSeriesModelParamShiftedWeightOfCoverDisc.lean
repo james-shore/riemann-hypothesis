@@ -35,7 +35,7 @@ theorem barRev_one {n : ℕ} : barRev (1 : Mn n) = 1 := by
   by_cases h : i = j
   · subst h; simp [barRev]
   · have h' : i.rev ≠ j.rev := fun h'' => h (Fin.rev_injective h'')
-    simp [barRev, Matrix.one_apply, h, h']
+    simp [barRev, h, h']
 
 theorem barRev_conjTranspose {n : ℕ} (g : Mn n) : barRev gᴴ = (barRev g)ᴴ := by
   ext i j
@@ -47,7 +47,7 @@ theorem barRev_Jm {n : ℕ} (ε : Fin n → Bool) : barRev (Formalism.REAL.Jm ε
   · subst h
     by_cases hε : ε i.rev <;> simp [barRev, Formalism.REAL.Jm, hε]
   · have h' : i.rev ≠ j.rev := fun h'' => h (Fin.rev_injective h'')
-    simp [barRev, Formalism.REAL.Jm, Matrix.diagonal_apply, h, h']
+    simp [barRev, Formalism.REAL.Jm, h, h']
 
 theorem barRev_mem_K {n : ℕ} {ε : Fin n → Bool} {g : Mn n} (hg : g ∈ Formalism.REAL.Kset ε) :
     barRev g ∈ Formalism.REAL.Kset (fun a => ε a.rev) := by
@@ -94,7 +94,7 @@ theorem Jm_rev {n : ℕ} (ε : Fin n → Bool) :
   by_cases h : i = j
   · subst h; simp [Formalism.REAL.Jm]
   · have h' : i.rev ≠ j.rev := fun h'' => h (Fin.rev_injective h'')
-    simp [Formalism.REAL.Jm, Matrix.diagonal_apply, h, h']
+    simp [Formalism.REAL.Jm, h, h']
 
 def barModel {D : D7} {V : HSp D} {S : D.what₂.Tau → SPar} (M : DSModel V S)
     (hds : ∀ τ, letI := M.nacg τ; letI := M.ips τ

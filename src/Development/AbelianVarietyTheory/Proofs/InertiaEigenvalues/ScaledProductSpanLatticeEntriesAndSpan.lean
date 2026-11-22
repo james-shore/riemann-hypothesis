@@ -26,7 +26,7 @@ theorem latT_entries_and_span : ∀ (l : ℕ) [Fact l.Prime] (Γ : Type) [Group 
     intro k y hy k' i j
     by_cases h : k' = k
     · subst h; simpa using hy i j
-    · simp [Pi.single_apply, h, (L k').1.zero_mem]
+    · simp [h, (L k').1.zero_mem]
   have hle : latT ρs t M ≤ S := by
     refine sup_le ?_ ?_
     · rw [Submodule.span_le]

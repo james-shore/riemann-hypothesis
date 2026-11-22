@@ -207,8 +207,7 @@ theorem eigSub_baseChange : ∀ (E : Type) [Field E] [NumberField E] (K C V A : 
       have hxk : ∀ k, x k = ∑ t, j (y t k) * c t := by
         intro k
         have h := congrArg (fun s : S => (s : C)) (bS.sum_repr ⟨x k, Submodule.subset_span ⟨k, rfl⟩⟩)
-        simp only [Submodule.coe_sum, Submodule.coe_smul, Submodule.coe_smul_of_tower,
-          Algebra.smul_def] at h
+        simp only [Submodule.coe_sum, Submodule.coe_smul, Algebra.smul_def] at h
         exact h.symm
       have hxsum : x = ∑ t, c t • (fun k => j (y t k)) := by
         funext k

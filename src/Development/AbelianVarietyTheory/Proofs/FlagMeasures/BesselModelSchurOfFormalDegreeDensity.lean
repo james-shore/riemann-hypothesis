@@ -115,8 +115,7 @@ theorem conj_emb {n : ℕ} (P : Matrix (Fin n) (Fin n) ℂ) (hP : IsUnit P) :
       invFun := fun y => Matrix.of.symm (P * Matrix.of y * P⁻¹)
       left_inv := fun x => by
         show Matrix.of.symm (P * (P⁻¹ * Matrix.of x * P) * P⁻¹) = x
-        simp [Matrix.mul_assoc, Matrix.mul_nonsing_inv _ hu, ← Matrix.mul_assoc P P⁻¹,
-          Matrix.mul_nonsing_inv_cancel_left _ _ hu]
+        simp [Matrix.mul_assoc, Matrix.mul_nonsing_inv _ hu, ← Matrix.mul_assoc P P⁻¹]
       right_inv := fun y => by
         show Matrix.of.symm (P⁻¹ * (P * Matrix.of y * P⁻¹) * P) = y
         simp [Matrix.mul_assoc, Matrix.nonsing_inv_mul _ hu, Matrix.nonsing_inv_mul_cancel_left _ _ hu] }

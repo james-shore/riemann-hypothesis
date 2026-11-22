@@ -64,7 +64,7 @@ private theorem lift_pt (hA : Adapted T (r := r))
           rw [Matrix.charpoly]
           congr 1
           ext i j : 2
-          by_cases hij : i = j <;> simp [GDet.repAlg, Matrix.charmatrix_apply, hij, Matrix.one_apply, Matrix.diagonal_apply]
+          by_cases hij : i = j <;> simp [GDet.repAlg, hij]
         rw [e2, (x.eig p.1).2]
         exact Polynomial.Splits.prod fun i _ => Polynomial.Splits.X_sub_C _) P hP h
   refine ⟨{ x' with commutes' := fun a => ?_ }, fun b => DFunLike.congr_fun h1 b, h2⟩

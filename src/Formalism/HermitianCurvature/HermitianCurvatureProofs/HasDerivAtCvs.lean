@@ -29,7 +29,7 @@ lemma prod_update_a (z z' : Fin (2 * r + k + 1) → ℂ) (a b : Fin (r + 2) → 
   · apply Finset.prod_congr rfl
     intro j hj
     have hjl : j ≠ l := Finset.ne_of_mem_erase hj
-    simp [fct, Pi.single_apply, hjl]
+    simp [fct, hjl]
   · simp [fct]
 
 lemma prod_update_b (z z' : Fin (2 * r + k + 1) → ℂ) (a b : Fin (r + 2) → ℕ) (g : Mat k r) (l : Fin (r + 2)) :
@@ -41,7 +41,7 @@ lemma prod_update_b (z z' : Fin (2 * r + k + 1) → ℂ) (a b : Fin (r + 2) → 
   · apply Finset.prod_congr rfl
     intro j hj
     have hjl : j ≠ l := Finset.ne_of_mem_erase hj
-    simp [fct, Pi.single_apply, hjl]
+    simp [fct, hjl]
   · simp [fct]
 
 theorem hasDerivAt_cvs (D : RealPlaceData k r Wp Wq) {nf : ℕ} (X g : Mat k r) (t : CT k r nf)

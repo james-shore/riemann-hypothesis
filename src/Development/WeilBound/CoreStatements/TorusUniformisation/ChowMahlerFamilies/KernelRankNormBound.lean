@@ -90,7 +90,7 @@ theorem charpoly_lsmul (E : Type) [Field E] [NumberField E] (Λ : Type) [AddComm
       (LinearMap.lsmul (𝓞 E) Λ (algebraMap ℤ (𝓞 E) t - a)).restrictScalars ℤ := by
     apply LinearMap.ext
     intro x
-    simp [sub_smul, Module.algebraMap_end_apply, Int.cast_smul_eq_zsmul]
+    simp [Int.cast_smul_eq_zsmul]
   have h2 : algebraMap ℤ (Module.End ℤ (𝓞 E)) t - (Algebra.lmul ℤ (𝓞 E) a : Module.End ℤ (𝓞 E)) =
       Algebra.lmul ℤ (𝓞 E) (algebraMap ℤ (𝓞 E) t - a) := by
     rw [map_sub, AlgHom.commutes]
@@ -122,7 +122,7 @@ theorem corank_le {M : Type} [AddCommGroup M] [Module.Free ℤ M] [Module.Finite
     by_cases hij : i = j
     · subst hij
       simp
-    · simp [Matrix.diagonal_apply, Finsupp.single_apply, hij, Ne.symm hij]
+    · simp [hij]
   have hQ : IsUnit (LinearMap.toMatrix t s (e : M →ₗ[ℤ] LinearMap.range f)).det := by
     have h1 : LinearMap.toMatrix s t (e.symm : LinearMap.range f →ₗ[ℤ] M) *
         LinearMap.toMatrix t s (e : M →ₗ[ℤ] LinearMap.range f) = 1 := by

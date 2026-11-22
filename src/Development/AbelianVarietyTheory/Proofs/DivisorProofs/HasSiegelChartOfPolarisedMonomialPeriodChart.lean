@@ -20,7 +20,7 @@ theorem hasChart_of_hasPolChart {o : Type} [CommRing o] {ζ : o} {g n : ℕ} (F 
   have ht0 : ∀ i, t i ≠ 0 := by
     intro i h0
     have := ht.2 (Pi.single i 1) (by
-      rw [Finset.sum_eq_single i (fun k _ hk => by simp [Pi.single_apply, hk]) (by simp)]
+      rw [Finset.sum_eq_single i (fun k _ hk => by simp [hk]) (by simp)]
       simp [h0]) i
     simp at this
   have hsym : ∀ i y z, ((n : ℤ) • δ i) y z = ((n : ℤ) • δ i) z y := fun i y z => by

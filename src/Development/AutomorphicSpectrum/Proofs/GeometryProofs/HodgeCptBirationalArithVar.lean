@@ -27,7 +27,7 @@ theorem flagged_model_dim : ∀ (E : Type) [Field E] [NumberField E] [IsCMField 
       Fintype.card (CMType H) * ((D.p + D.q) * (D.p + D.q - 1) / 2) := by
     have h1 : (D.p + D.q) * (D.p + D.q - 1) / 2 = D.p * (D.p - 1) / 2 + D.q * (D.q - 1) / 2 + D.p * D.q := by
       rw [← Nat.choose_two_right, ← Nat.choose_two_right, ← Nat.choose_two_right, Nat.add_choose_eq]
-      simp [Finset.Nat.antidiagonal_succ, Finset.sum_range_succ]
+      simp [Finset.Nat.antidiagonal_succ]
       ring
     rw [Fintype.sum_sum_type, h1, Datum.dim, ← hcard]
     simp [Finset.sum_const, Finset.card_univ, labelRk]

@@ -41,7 +41,7 @@ theorem isotropic_cvec_apply_basis_zero (σ : E →ₐ[F] E) {M : ℕ} (J : Matr
   have h1 : (Fin.cons 1 fun _ => 0 : Fin (M + 2) → R ⊗[F] E) 1 = 0 := rfl
   have h2 : (Fin.cons 1 fun _ => 0 : Fin (M + 2) → R ⊗[F] E) 0 = 1 := rfl
   conv_rhs => rw [← vH_eta x]
-  simp only [cvec, tHalf, ht, h0, h1, h2, hR_tail_zero, mul_zero, zero_mul, sub_zero, mul_one, one_mul, add_zero]
+  simp only [cvec, tHalf, ht, h0, h1, h2, hR_tail_zero, mul_zero, sub_zero, mul_one, one_mul, add_zero]
   congr 1
   funext i
   have : (Fin.cons 1 fun _ => 0 : Fin (M + 2) → R ⊗[F] E) i.succ.succ = 0 := rfl
@@ -72,7 +72,7 @@ theorem gramR_e0 (σ : E →ₐ[F] E) {M : ℕ} (J : Matrix (Fin M) (Fin M) E) :
   show hR R σ (hypOne J) (Fin.cons 1 fun _ => 0) (Fin.cons 1 fun _ => 0) = 0
   simp only [hR, hform, JR]
   rw [Fin.sum_univ_succ]
-  simp [Fin.sum_univ_succ, hypOne_zero_zero, hypOne_zero_one]
+  simp [Fin.sum_univ_succ, hypOne_zero_zero]
 
 end Local
 

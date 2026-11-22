@@ -29,8 +29,8 @@ theorem isLieBasis_tvE : ∀ {R : Type} [CommRing R] {G : Over (Sp R)} [GrpObj G
   intro R _ G _ _ n v
   have hE : (overAt (𝟙 (Sp R)) (DualNumber R)).hom = (epsR R).hom := by
     simp [epsR, overAt]
-  let e : epsR R ⟶ overAt (𝟙 (Sp R)) (DualNumber R) := Over.homMk (𝟙 _) (by simp [hE])
-  let f : overAt (𝟙 (Sp R)) (DualNumber R) ⟶ epsR R := Over.homMk (𝟙 _) (by simp [hE])
+  let e : epsR R ⟶ overAt (𝟙 (Sp R)) (DualNumber R) := Over.homMk (𝟙 _) (by simp)
+  let f : overAt (𝟙 (Sp R)) (DualNumber R) ⟶ epsR R := Over.homMk (𝟙 _) (by simp)
   have hfe : f ≫ e = 𝟙 _ := Over.OverMorphism.ext (by simp [e, f])
   have hef : e ≫ f = 𝟙 _ := Over.OverMorphism.ext (by simp [e, f])
 
@@ -39,7 +39,6 @@ theorem isLieBasis_tvE : ∀ {R : Type} [CommRing R] {G : Over (Sp R)} [GrpObj G
     apply Over.OverMorphism.ext
     first
     | (simp only [e, Over.comp_left, Over.homMk_left, Category.id_comp]; exact tvE_left x)
-    | simp [e, tvE_left x]
   have hadd : ∀ x y : TanM (𝟙 (Sp R)) G, tvE (x + y) = tvE x * tvE y := by
     intro x y; rw [htv, htv, htv, PullbackSections.tv_add, MonObj.comp_mul]
   have hzero : tvE (0 : TanM (𝟙 (Sp R)) G) = 1 := by
@@ -50,7 +49,6 @@ theorem isLieBasis_tvE : ∀ {R : Type} [CommRing R] {G : Over (Sp R)} [GrpObj G
     intro a x; rw [tvE_left, tvE_left, PullbackSections.tv_smul]
     first
     | rfl
-    | (simp only [smT.eq_1, Formalism.L2.Pj.homAt.eq_1, Over.comp_left, Over.homMk_left, tm.eq_1, epsScaleR.eq_1]; rfl)
   have hinj : ∀ x y : TanM (𝟙 (Sp R)) G, tvE x = tvE y → x = y := by
     intro x y h
     apply PullbackSections.tanM_ext
@@ -79,24 +77,18 @@ theorem isLieBasis_tvE : ∀ {R : Type} [CommRing R] {G : Over (Sp R)} [GrpObj G
     ext r; simp
   have hdual : spMap (TrivSqZeroExt.fstHom R R R).toRingHom ≫ spMap (algebraMap R (DualNumber R)) = 𝟙 _ := by
     simp only [spMap.eq_1, ← Spec.map_comp, ← CommRingCat.ofHom_comp, hfa, CommRingCat.ofHom_id, Spec.map_id]
-    all_goals rfl
   have hz : spMap (epsScaleR (0 : R)) =
       spMap (algebraMap R (DualNumber R)) ≫ spMap (TrivSqZeroExt.fstHom R R R).toRingHom := by
     have h0 : epsScaleR (0 : R) = (algebraMap R (DualNumber R)).comp (TrivSqZeroExt.fstHom R R R).toRingHom := by
       refine RingHom.ext fun x => TrivSqZeroExt.ext ?_ ?_
       all_goals first
         | (simp [epsScaleR]; done)
-        | (simp [epsScaleR, TrivSqZeroExt.algebraMap_eq_inl]; done)
-        | (simp [epsScaleR.eq_1, TrivSqZeroExt.algebraMap_eq_inl, TrivSqZeroExt.fstHom_apply,
-            TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]; done)
-        | rfl
-        | (simp [epsScaleR]; rfl)
+        | (simp [epsScaleR, TrivSqZeroExt.algebraMap_eq_inl])
     rw [h0]
     simp only [spMap.eq_1, CommRingCat.ofHom_comp, Spec.map_comp]
   have hu : (toUnit (overAt (𝟙 (Sp R)) (DualNumber R))).left = spMap (algebraMap R (DualNumber R)) := by
     first
     | simp [overAt]
-    | (have h := Over.w (toUnit (overAt (𝟙 (Sp R)) (DualNumber R))); simpa [overAt] using h)
   have hone : (1 : overAt (𝟙 (Sp R)) (DualNumber R) ⟶ G).left =
       spMap (algebraMap R (DualNumber R)) ≫ (η : 𝟙_ (Over (Sp R)) ⟶ G).left := by
     calc (1 : overAt (𝟙 (Sp R)) (DualNumber R) ⟶ G).left
@@ -111,7 +103,6 @@ theorem isLieBasis_tvE : ∀ {R : Type} [CommRing R] {G : Over (Sp R)} [GrpObj G
       rw [← Category.assoc, ← hz]
       first
       | rfl
-      | (simp only [smT.eq_1, Formalism.L2.Pj.homAt.eq_1, Over.comp_left, Over.homMk_left, tm.eq_1, epsScaleR.eq_1]; rfl)
     have he : ∀ t : overAt (𝟙 (Sp R)) (DualNumber R) ⟶ G, spMap (TrivSqZeroExt.fstHom R R R).toRingHom ≫ (e ≫ t).left =
         spMap (TrivSqZeroExt.fstHom R R R).toRingHom ≫ t.left := by
       intro t; simp [e]

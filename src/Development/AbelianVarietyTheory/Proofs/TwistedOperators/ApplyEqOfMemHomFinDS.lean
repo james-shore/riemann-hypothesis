@@ -36,7 +36,7 @@ theorem exists_clm_of_inner_eq {ι H K : Type} [NormedAddCommGroup H] [InnerProd
     intro f
     have h := congrArg norm (hin f f)
     rw [inner_self_eq_norm_sq_to_K, inner_self_eq_norm_sq_to_K, norm_mul, norm_pow, norm_pow] at h
-    simp only [RCLike.norm_ofReal, Complex.norm_real, abs_norm, norm_norm] at h
+    simp only [RCLike.norm_ofReal, abs_norm] at h
     rw [← Real.sqrt_sq (norm_nonneg (p' f)), h, Real.sqrt_mul (norm_nonneg c), Real.sqrt_sq (norm_nonneg _)]
   have hker : LinearMap.ker p ≤ LinearMap.ker p' := fun f hf => by
     rw [LinearMap.mem_ker] at hf ⊢
@@ -97,12 +97,12 @@ theorem exists_homIn_extend : ∀ (D : D7) (V : HSp D) (S : D.what₂.Tau → SP
 
   let B : W →ₗ[ℂ] W →ₛₗ[starRingEnd ℂ] ℂ := LinearMap.mk₂'ₛₗ (RingHom.id ℂ) (starRingEnd ℂ)
     (fun v w => bePi (T v) (T w))
-    (fun _ _ _ => by simp [bePi, inner_add_right]) (fun _ _ _ => by simp [bePi])
-    (fun _ _ _ => by simp [bePi, inner_add_left]) (fun _ _ _ => by simp [bePi, inner_smul_left, mul_comm])
+    (fun _ _ _ => by simp [bePi]) (fun _ _ _ => by simp [bePi])
+    (fun _ _ _ => by simp [bePi]) (fun _ _ _ => by simp [bePi, mul_comm])
   let C : W →ₗ[ℂ] W →ₛₗ[starRingEnd ℂ] ℂ := LinearMap.mk₂'ₛₗ (RingHom.id ℂ) (starRingEnd ℂ)
     (fun v w => bePi (T' v) (T' w))
-    (fun _ _ _ => by simp [bePi, inner_add_right]) (fun _ _ _ => by simp [bePi])
-    (fun _ _ _ => by simp [bePi, inner_add_left]) (fun _ _ _ => by simp [bePi, inner_smul_left, mul_comm])
+    (fun _ _ _ => by simp [bePi]) (fun _ _ _ => by simp [bePi])
+    (fun _ _ _ => by simp [bePi]) (fun _ _ _ => by simp [bePi, mul_comm])
   have hBpos : ∀ x, x ≠ 0 → 0 < (B x x).re := fun x hx =>
     bePi_self_pos hδ hπ (hTw x) ((map_ne_zero_iff T hinj).2 hx)
   have hB : ∀ g x y, B (σ g x) (σ g y) = B x y := fun g x y => by

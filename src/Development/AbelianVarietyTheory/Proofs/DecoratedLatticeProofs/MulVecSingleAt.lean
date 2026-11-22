@@ -89,7 +89,7 @@ theorem last_dot (w : Fin ρ → R) (j : Fin ρ) (hj : j.1 + 1 = ρ) : (fun i : 
 
 theorem mulVec_single_at {n : ℕ} (P : Matrix (Fin ρ) (Fin n) R) (J : Matrix (Fin n) (Fin ρ) R) (i j : Fin ρ) (s : R) :
     (0 : R) + ((0 : Fin ρ → R) + P *ᵥ (J *ᵥ Pi.single i s)) j = s * (P * J) j i := by
-  rw [Matrix.mulVec_mulVec]; simp [mul_comm]
+  rw [Matrix.mulVec_mulVec]; simp
 
 theorem zero_tidy (a : R) (l : Fin ρ → R) : 0 + a + l ⬝ᵥ 0 = a := by simp
 

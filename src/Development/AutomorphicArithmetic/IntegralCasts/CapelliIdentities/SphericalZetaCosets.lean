@@ -153,7 +153,7 @@ private theorem hnf_exists [IsDomain R] [IsDiscreteValuationRing R] {π : R} (h�
       · refine ⟨G.adjugate *ᵥ Pi.single i 1, ?_⟩
         rw [Matrix.mulVecLin_apply, Matrix.mulVec_mulVec, Matrix.mul_adjugate]
         funext l
-        by_cases h : l = i <;> simp [h, Matrix.smul_mulVec]
+        by_cases h : l = i <;> simp [h]
       · intro l hl
         simp [hl.ne']
     obtain ⟨n, hn⟩ := IsDiscreteValuationRing.ideal_eq_span_pow_irreducible hI hπ
@@ -214,7 +214,7 @@ private theorem hnf_exists [IsDomain R] [IsDiscreteValuationRing R] {π : R} (h�
         refine ⟨x + Pi.single i t, ?_⟩
         rw [Matrix.mulVec_add, ← hx]
         funext l
-        simp [hp, mul_comm]
+        simp [hp]
       · exact ih w hw fun l hl => absurd l.2 (by omega)
   choose x hx using huN
   choose y hy using fun j : Fin c => span c (G *ᵥ Pi.single j 1) ⟨Pi.single j 1, rfl⟩

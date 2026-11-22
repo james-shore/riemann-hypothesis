@@ -148,7 +148,7 @@ theorem null : Null := by
         refine h.trans ?_
         congr 1
         ext p q
-        simp [A, B, Matrix.add_apply]
+        simp [A, B]
         rfl
     _ = 0 := hdet
 

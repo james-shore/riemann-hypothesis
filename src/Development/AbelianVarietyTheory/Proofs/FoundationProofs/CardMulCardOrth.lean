@@ -111,8 +111,6 @@ theorem sum_comp_surj {G Q : Type} [AddCommGroup G] [AddCommGroup Q] [Fintype G]
   | exact @_root_.GlobalTheory.SumCompSurjective.sum_comp_surjective
   | exact _root_.GlobalTheory.SumCompSurjective.sum_comp_surjective
   | (apply _root_.GlobalTheory.SumCompSurjective.sum_comp_surjective <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SumCompSurjective.sum_comp_surjective <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SumCompSurjective.sum_comp_surjective <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SumCompSurjective.sum_comp_surjective ..)
 
 end

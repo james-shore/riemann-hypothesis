@@ -68,7 +68,7 @@ theorem tensor_map_eq (T O : Type) [CommRing T] [CommRing O] [Algebra T O] :
   induction x using TensorProduct.induction_on with
   | zero => simp
   | tmul o t =>
-    simp only [RingHom.comp_apply, AlgEquiv.toRingEquiv_eq_coe, RingEquiv.coe_toRingHom, AlgEquiv.coe_ringEquiv,
+    simp only [RingHom.comp_apply, RingEquiv.coe_toRingHom, AlgEquiv.coe_ringEquiv,
       Algebra.TensorProduct.rid_tmul, polyEquivTensor_apply, Polynomial.eval₂_C]
     simp only [AlgHom.toRingHom_eq_coe, RingHom.coe_coe, Algebra.TensorProduct.map_tmul, AlgHom.id_apply,
       Algebra.TensorProduct.includeLeft_apply, Algebra.ofId_apply, Polynomial.algebraMap_eq]
@@ -78,7 +78,7 @@ theorem tensor_map_eq (T O : Type) [CommRing T] [CommRing O] [Algebra T O] :
 theorem main : ∀ (q : ℕ) [NeZero q] (T : Type) [CommRing T] [IsDomain T], AIC T → IsUnit (q : T) → HInv q T := by
   intro q _ T _ _ hT hq i
   have hφ : ((Algebra.ofId T (Polynomial T)).toRingHom : T →+* Polynomial T) = Polynomial.C := by
-    ext x <;> simp [Algebra.ofId_apply]
+    ext x <;> simp
   rw [← hφ]
   refine GlobalTheory.T.etaleCohomology_local_to_global_ringMap_indEtale (ZMod q) (tw q i) (GlobalTheory.T.tateTwist_finitary q i) T T (Polynomial T) (Algebra.ofId T (Polynomial T)) ?_
   intro O _ _ hSH hInd

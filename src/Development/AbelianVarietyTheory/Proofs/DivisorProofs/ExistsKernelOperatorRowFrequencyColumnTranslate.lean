@@ -149,10 +149,10 @@ theorem eq_sum_unitVecInf (v : Fin n → Cinf E) :
     · simp only [Pi.add_apply, Pi.smul_apply, unitVecInf, Pi.single_eq_same, Complex.real_smul, mul_one]
       exact (Complex.re_add_im _).symm
     · intro w _ hw
-      simp [unitVecInf, Pi.single_apply, Ne.symm hw]
+      simp [unitVecInf, Ne.symm hw]
     · simp
   · intro j _ hj
-    simp [Finset.sum_apply, unitVecInf, Pi.single_apply, Ne.symm hj]
+    simp [Finset.sum_apply, unitVecInf, Ne.symm hj]
   · simp
 
 theorem dualVecInf_spec (ζ : (Fin n → Cinf E) →L[ℝ] ℝ) (v : Fin n → Cinf E) :

@@ -162,7 +162,7 @@ theorem gram_posDef {V : Type} [AddCommGroup V] [Module ℂ V] (h : V →ₗ⋆[
   · ext p q
     simp [Matrix.conjTranspose_apply, hh (v p) (v q)]
   · have e : star x ⬝ᵥ ((Matrix.of fun p q => h (v p) (v q)) *ᵥ x) = h (∑ p, x p • v p) (∑ q, x q • v q) := by
-      simp [dotProduct, Matrix.mulVec, map_sum, LinearMap.sum_apply, Finset.mul_sum, mul_comm, mul_left_comm]
+      simp [dotProduct, Matrix.mulVec, map_sum, LinearMap.sum_apply, Finset.mul_sum, mul_comm]
       rw [Finset.sum_comm]
       exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring
     rw [e]
@@ -237,7 +237,7 @@ theorem compare (h0 : val 0 = 0) (hadd : ∀ e ∈ Lm, ∀ e' ∈ Lm, val (e + e
   have hG : gramOf h val b' = Cᴴ * gramOf h val b * C := by
     ext p q
     simp only [gramOf, Matrix.of_apply, hval, Matrix.mul_apply, Matrix.conjTranspose_apply, map_sum,
-      LinearMap.sum_apply, LinearMap.map_smulₛₗ, LinearMap.smul_apply, Finset.sum_mul, Complex.star_def,
+      LinearMap.sum_apply, LinearMap.smul_apply, Finset.sum_mul, Complex.star_def,
       RingHom.id_apply, smul_eq_mul, map_smulₛₗ]
     refine Finset.sum_congr rfl fun m _ => ?_
     rw [Finset.mul_sum]
@@ -442,7 +442,7 @@ theorem interior_pol (𝔐 : HodgeCpt Y S y) (hβ : Function.Injective β) (z : 
     have hs : Y.s (𝔐.f (centre z)) = spMap β pt := by
       apply PrimeSpectrum.ext
       have e1 : Y.s (𝔐.f (centre z)) = Spec.map (CommRingCat.ofHom g) (IsLocalRing.closedPoint ℂ) := by
-        rw [e]; simp only [Scheme.Hom.comp_apply]; rfl
+        rw [e]; simp only; rfl
       rw [e1]
       exact (spec_injective_point g hg _).trans (spec_injective_point β hβ pt).symm
     obtain ⟨w, hw, -⟩ := Scheme.Pullback.exists_preimage_pullback (f := Y.s) (g := spMap β) _ _ hs

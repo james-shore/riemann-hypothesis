@@ -37,7 +37,7 @@ theorem cut_mul_cut {R n : Type} [CommRing R] [Fintype n] [DecidableEq n] {e f :
       (e + f) • A + (1 - (e + f) • (1 : Matrix n n R)) := by
   have h' : f * e = 0 := by rw [mul_comm, h]
   simp only [add_mul, mul_add, sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, one_mul, mul_one, smul_smul, smul_sub, smul_add,
-    h, h', zero_smul, add_smul]
+    h', zero_smul, add_smul]
   abel
 
 theorem mt_mul (V : HSp D) (x y : GA D V) :

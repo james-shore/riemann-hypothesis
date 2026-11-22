@@ -99,7 +99,7 @@ private theorem Hpk_apply_wp_eq_ite {i : Fin (2 * r + k + 1)} (hi : ¬ inB k r i
     split_ifs <;> first | rfl | (exfalso; omega)
   · refine ⟨⟨2 * r + k - i.val, by omega⟩, by unfold inB; simp only; omega, 1, one_ne_zero, fun b => ?_⟩
     have hbl := b.isLt
-    simp only [Hpk, Fin.ext_iff, Fin.val_mk]
+    simp only [Hpk, Fin.ext_iff]
     split_ifs <;> first | rfl | (exfalso; omega)
 
 theorem eq_blockW {c : Mx k r} (hc : c ∈ UH (Hpk k r))
@@ -233,7 +233,7 @@ theorem piAll : PiAll := by
     · by_cases hj : inB k r j
       · rw [blockW_in hi hj, Matrix.one_apply]
         unfold inB at hi hj
-        simp only [Fin.ext_iff, Fin.val_mk]
+        simp only [Fin.ext_iff]
         split_ifs <;> first | rfl | (exfalso; omega)
       · rw [blockW_in_out hi hj, if_neg (by rintro rfl; exact hj hi)]
     · rw [blockW_out hi]

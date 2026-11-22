@@ -20,8 +20,6 @@ theorem tensor_ringHom_ext {R S B C : Type} [CommRing R] [CommRing S] [CommRing 
   | exact @_root_.GlobalTheory.TensorRingHomExtensionality.ringHom_ext_tensor
   | exact _root_.GlobalTheory.TensorRingHomExtensionality.ringHom_ext_tensor
   | (apply _root_.GlobalTheory.TensorRingHomExtensionality.ringHom_ext_tensor <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TensorRingHomExtensionality.ringHom_ext_tensor <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TensorRingHomExtensionality.ringHom_ext_tensor <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TensorRingHomExtensionality.ringHom_ext_tensor ..)
 
 theorem one_tmul_algebraMap {R S B : Type} [CommRing R] [CommRing S] [CommRing B]
@@ -46,7 +44,7 @@ theorem mem_originIdeal_iff {R : Type} [CommRing R] [IsLocalRing R] (f : Polynom
         intro x hx
         rw [Set.mem_singleton_iff] at hx
         subst hx
-        simp [Ideal.mem_comap]
+        simp
     simpa [Ideal.mem_comap] using hle hf
   · intro hf
     have h1 : C (f.coeff 0) ∈ GlobalTheory.KeyOriginCut.originIdeal R :=
@@ -121,7 +119,6 @@ theorem exists_mul_mem_span_X {A EA : Type} [CommRing A] [IsNoetherianRing A] [C
       have h2 := Ideal.mul_mem_left N c this
       rw [smul_eq_mul]
       convert h2 using 1
-      push_cast
       ring
     | sup J₁ J₂ _ _ h₁ h₂ =>
       intro hle

@@ -391,7 +391,7 @@ theorem exists_finset_classes (L : Type) [Field L] [NumberField L] (c : L →ₐ
     by_cases hS : w.under ℤ ∈ S
     · have hWS : w ∈ WS := (finite_under L S).mem_toFinset.2 hS
       rw [if_neg (fun h => h.2 hS)]
-      simp only [n, hu, if_pos hS, hσa, Δ, Finset.mem_filter, hWS, true_and, not_true, and_false, if_false]
+      simp only [n, hu, if_pos hS, hσa, Δ, Finset.mem_filter, hWS, true_and]
       split_ifs with h2 <;> omega
     · have hnWS : w ∉ Δ := fun h => hS ((finite_under L S).mem_toFinset.1 (Finset.mem_filter.1 h).1)
       by_cases hT' : w.under ℤ ∈ T
@@ -408,7 +408,7 @@ theorem exists_finset_classes (L : Type) [Field L] [NumberField L] (c : L →ₐ
             WithZero.log_mul ((Valuation.ne_zero_iff _).2 hz0) ((Valuation.ne_zero_iff _).2 hcz0)]
           ring
         rw [e, ord_conj L c hc, if_pos ⟨hT', hS⟩]
-        simp only [n, hu, if_neg hS, if_pos hT', hnWS, if_false, hT', not_false_eq_true, and_self, if_true]
+        simp only [n, hu, if_neg hS, hnWS, if_false, hT', if_true]
         ring
       · have h1 := hT w hT'
         have e : ord w a = 0 := (ord_eq_zero_iff w ha0).2 h1

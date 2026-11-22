@@ -35,7 +35,7 @@ theorem zz_scale (Zh : Matrix (Fin (r + 1)) (Fin (r + 1)) E) (T T' : F)
     rw [map_sub, map_mul, map_add, map_mul, hZab]
     simp only [map_sub, AlgEquiv.apply_symm_apply, he1, he2, hcc, hα, map_mul]
     ext <;> simp <;> field_simp <;> ring
-  · simp only [ha, hb, and_false, if_false, if_true, and_true] at hZab ⊢
+  · simp only [ha, hb, and_false, if_false, if_true] at hZab ⊢
     push_cast
     simp only [sub_zero, add_zero] at hZab ⊢
     rw [map_mul, map_mul, hZab]
@@ -47,7 +47,7 @@ theorem zz_scale (Zh : Matrix (Fin (r + 1)) (Fin (r + 1)) E) (T T' : F)
     rw [map_mul, hZab]
     simp only [AlgEquiv.apply_symm_apply, he1, hα, map_mul]
     ext <;> simp <;> field_simp
-  · simp only [ha, hb, false_and, and_false, if_false] at hZab ⊢
+  · simp only [ha, hb, and_false, if_false] at hZab ⊢
     push_cast
     simp only [sub_zero, add_zero, one_mul, mul_one] at hZab ⊢
     rw [hZab]

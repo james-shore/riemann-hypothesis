@@ -54,8 +54,8 @@ theorem equiv_detRep_of_isIrreducible : ∀ (k : Type) [Field k] [ValuativeRel k
   refine ⟨(Representation.Equiv.mk e fun g => ?_).symm⟩
   ext c
   simp only [LinearMap.coe_comp, Function.comp_apply, LinearEquiv.coe_coe, e,
-    LinearEquiv.ofBijective_apply, LinearMap.toSpanSingleton_apply, detRep, ofChar_apply,
-    detChar_apply, hact, smul_smul, smul_eq_mul]
+    detRep, ofChar_apply,
+    detChar_apply, hact]
   rw [mul_one, ← LinearEquiv.map_smul, smul_eq_mul, mul_one]
 
 end GlobalTheory.GLOneChar

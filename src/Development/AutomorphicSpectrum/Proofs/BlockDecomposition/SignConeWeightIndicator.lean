@@ -204,7 +204,7 @@ theorem sdot_meet_join (e e' : Fin m → SignType) (a : Fin m → ℝ) :
   simp only [sdot, ← Finset.sum_add_distrib]
   refine Finset.sum_congr rfl fun i _ => ?_
   simp only [sMeet, sJoin]
-  cases h1 : e i <;> cases h2 : e' i <;> simp <;> ring
+  cases h1 : e i <;> cases h2 : e' i <;> simp
 
 open Classical in
 
@@ -219,8 +219,8 @@ theorem gam_eq_sum (y : (Fin m → SignType) → ℝ) (a : Fin m → ℝ) (h0 : 
   by_cases hA : ∀ e ∈ s, y e < sdot e a
   · by_cases hc : IsChain SLe (↑s : Set (Fin m → SignType))
     · have h0s : (0 : Fin m → SignType) ∉ s := fun h => h0 (hA 0 h)
-      simp [hA, hc, h0s]
-    · simp [hA, hc]
+      simp [hc, h0s]
+    · simp [hc]
   · simp [hA]
 
 theorem gam_eq_indicator : ∀ m : ℕ, ∀ (y : (Fin m → SignType) → ℝ) a, PosFam y →

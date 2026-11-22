@@ -82,7 +82,7 @@ lemma smul_zero' (r : ringOn X U) : r • (0 : DualSec P U) = 0 := by
   simp
 lemma smul_add' (r : ringOn X U) (φ ψ : DualSec P U) : r • (φ + ψ) = r • φ + r • ψ := by
   ext V h m; rw [add_app', smul_app', smul_app', smul_app']
-  simp [mul_add]
+  simp
 lemma add_smul' (r s : ringOn X U) (φ : DualSec P U) : (r + s) • φ = r • φ + s • φ := by
   ext V h m; rw [add_app', smul_app', smul_app', smul_app']
   simp [add_mul]

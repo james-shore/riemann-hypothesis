@@ -133,7 +133,7 @@ theorem exists_ker_evalAt_comp_eq {A : Type*} [CommRing A] [Algebra ℂ A]
   let ψ : LaurentRing n →ₐ[ℂ] ℂ := e'.symm.toAlgHom.comp (Ideal.Quotient.mkₐ ℂ Q)
   have hker : ∀ p, ψ p = 0 ↔ p ∈ Q := by
     intro p
-    simp only [ψ, AlgHom.comp_apply, AlgEquiv.toAlgHom_eq_coe, AlgEquiv.coe_algHom,
+    simp only [ψ, AlgHom.comp_apply, AlgEquiv.coe_algHom,
       Ideal.Quotient.mkₐ_eq_mk]
     rw [AlgEquiv.symm_apply_eq, map_zero, Ideal.Quotient.eq_zero_iff_mem]
   obtain ⟨w, hw⟩ := exists_eq_evalAt ψ

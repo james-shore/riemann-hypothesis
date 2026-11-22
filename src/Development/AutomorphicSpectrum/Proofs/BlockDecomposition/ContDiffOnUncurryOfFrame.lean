@@ -35,7 +35,7 @@ theorem contDiff_eps (p : Bool × Fin n × Fin n) : ContDiff ℝ ∞ (eps p : Ma
 theorem sum_eps (A : Mat n) : ∑ p, eps p A • (bs p : Mat n) = A := by
   ext a b
   simp only [Fintype.sum_prod_type, Fintype.sum_bool, eps, bs, Matrix.sum_apply, Matrix.smul_apply]
-  simp [Matrix.single_apply, Finset.sum_add_distrib, ite_and]
+  simp [Matrix.single_apply, ite_and]
 
 variable {V : Type} [NormedAddCommGroup V] [NormedSpace ℂ V]
 

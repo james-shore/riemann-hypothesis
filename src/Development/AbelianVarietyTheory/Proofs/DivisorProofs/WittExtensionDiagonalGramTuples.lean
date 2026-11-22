@@ -25,7 +25,7 @@ theorem exists_etale_kill_of_indEt : ∀ (q : ℕ) (B O : Type) [CommRing B] [Co
     have : spMap ((Under.forget _).mapCocone (Cocone.mk _ ι) |>.ι.app j).hom ≫ spMap (D.obj j).hom.hom
         = spMap (algebraMap B O) := by
       simp only [spMap, ← Functor.map_comp, ← Spec.map_comp]
-      congr 2 <;> simpa using hw
+      congr 2
     erw [this]; exact hy
   obtain ⟨k, f, hk⟩ := (GlobalTheory.T.etaleCohomology_twisted_filtered_colimit_continuity q (D ⋙ Under.forget _) _ hc' n i).2 j _ hqj hyj
   erw [← pull_comp] at hk
@@ -38,7 +38,7 @@ theorem exists_etale_kill_of_indEt : ∀ (q : ℕ) (B O : Type) [CommRing B] [Co
   · have : spMap ((D ⋙ Under.forget _).map f).hom ≫ spMap (D.obj j).hom.hom
         = spMap (algebraMap B (D.obj k).right) := by
       simp only [spMap, ← Functor.map_comp, ← Spec.map_comp]
-      congr 2 <;> simpa using hwk
+      congr 2
     erw [this] at hk; exact hk
 
 end GlobalTheory.EtC

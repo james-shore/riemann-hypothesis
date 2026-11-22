@@ -187,7 +187,7 @@ theorem main : ∀ (D : D7) (M : MtFam D) (i : D.nd.Loc), HeckeTied D M → Heck
       rw [hπ, Module.Basis.repr_self, Pi.basisFun_apply]
       by_cases hk : k' = k
       · subst hk; simp
-      · simp [Finsupp.single_apply, Pi.single_apply, hk, Ne.symm hk]
+      · simp [hk]
     rw [← this]
     exact hπr _
   let q := p ∘ₗ G.subtype

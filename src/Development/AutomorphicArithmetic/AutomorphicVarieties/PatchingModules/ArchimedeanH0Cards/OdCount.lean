@@ -28,7 +28,7 @@ theorem UpperTheory.V.Pa.B2.odCount :
     have hsum : ∑ w, dw w = d := by
       show ∑ w : L.Vl ⊕ L.St, dw w = d
       rw [Fintype.sum_sum_type]
-      simp [dw, hC.sum]
+      simp [hC.sum]
     rw [hsum]
     have h0pos : 0 < Nat.card (H0 D.M.ρ) := Nat.card_pos
     have key : Nat.card (H0 D.M.ρ) * Nat.card (H2 D.M.ρ) * N ^ d = Nat.card (H1 D.M.ρ) := by
@@ -74,6 +74,6 @@ theorem UpperTheory.V.Pa.B2.odCount :
   have hprod : ∏ w, e w = ∏ v, Nat.card (H0 (D.Q (inV G v)).ρ) := by
     show ∏ w : L.Vl ⊕ L.St, e w = _
     rw [Fintype.prod_sum_type]
-    simp [e]
+    simp
   calc Nat.card D.H2LocalConditions ≤ (Nat.card D.Sel * ∏ w, e w) * Nat.card D.Ck2 := hle
     _ ≤ _ := by rw [hprod]; exact Nat.mul_le_mul_left _ hck

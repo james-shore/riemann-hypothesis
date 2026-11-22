@@ -80,7 +80,7 @@ theorem block_part_diagonal_first (j : ℕ) (c c' : ℂ) (t : Matrix (Fin n) (Fi
     matrixBlockRestriction (blkA j) (blkA j) (bdiag j c c' t) = c • matrixBlockRestriction (blkA j) (blkA j) t := by
   ext a b
   by_cases ha : a ∈ blkA j <;> by_cases hb : b ∈ blkA j <;>
-    simp [matrixBlockRestriction, bdiag, blkB, ha, hb]
+    simp [matrixBlockRestriction, bdiag, ha, hb]
 
 theorem block_part_diagonal_second (j : ℕ) (c c' : ℂ) (t : Matrix (Fin n) (Fin n) ℂ) :
     matrixBlockRestriction (blkB j) (blkB j) (bdiag j c c' t) = c' • matrixBlockRestriction (blkB j) (blkB j) t := by

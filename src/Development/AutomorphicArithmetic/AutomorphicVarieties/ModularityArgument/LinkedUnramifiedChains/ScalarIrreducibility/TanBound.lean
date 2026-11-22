@@ -57,8 +57,7 @@ private theorem add_vanish {l : ℕ} [Fact l.Prime] {H : Type} [Group H] [Topolo
     let χ : H →* fm.range ⧸ N := (QuotientGroup.mk' N).comp fm.rangeRestrict
     have hker : ∀ h, χ h = 1 ↔ ‖f h‖ < ε := by
       intro h
-      simp only [χ, MonoidHom.comp_apply, QuotientGroup.mk'_apply, QuotientGroup.eq_one_iff,
-        Subgroup.mem_subgroupOf]
+      simp only [χ, MonoidHom.comp_apply, QuotientGroup.mk'_apply, QuotientGroup.eq_one_iff]
       rfl
     have hsurj : Function.Surjective χ :=
       (QuotientGroup.mk'_surjective N).comp fm.rangeRestrict_surjective

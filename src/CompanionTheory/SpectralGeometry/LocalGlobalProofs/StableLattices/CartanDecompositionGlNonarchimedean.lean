@@ -12,7 +12,7 @@ namespace GlobalTheory.CompanionTheory.CartGL.UnitBall
 variable (L : Type) [NontriviallyNormedField L] [IsUltrametricDist L]
 
 noncomputable def ball : ValuationSubring L :=
-  by apply _root_.UpperTheory.Reformulated.B.BallSubgroup.ball <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.BallSubgroup.ball
 
 variable {L}
 

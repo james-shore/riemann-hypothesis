@@ -10,4 +10,4 @@ theorem _root_.PositivityTheory.Mix.T.indicator_coset_scaledIntegral_eq_restrict
       (∀ᶠ v in cofinite, φ v = Set.indicator {x | ∀ i, x i ∈ v.adicCompletionIntegers F} 1) ∧
       ∀ y : κ → FiniteAdeleRing (𝓞 F) F, Set.indicator {y | y - r ∈ scaledInt F κ a} (fun _ => (1 : ℂ)) y =
         ∏ᶠ v, φ v fun i => evalV F v (y i) := by
-  first | exact @GlobalTheory.EvAdm.indicator_coset_scaledInt_eq_finprod | exact fun _ => @GlobalTheory.EvAdm.indicator_coset_scaledInt_eq_finprod | exact GlobalTheory.EvAdm.indicator_coset_scaledInt_eq_finprod | exact @GlobalTheory.EvAdm.indicator_coset_scaledInt_eq_finprod trivial
+  first | exact @GlobalTheory.EvAdm.indicator_coset_scaledInt_eq_finprod

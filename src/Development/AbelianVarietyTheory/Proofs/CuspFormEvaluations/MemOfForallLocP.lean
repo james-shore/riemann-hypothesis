@@ -38,7 +38,7 @@ theorem tauLat_stdLat {E K : Type} [Field E] [NumberField E] [Field K] [NumberFi
       · exact Submodule.mem_one.2 ⟨1, by simp [h]⟩
       · exact Submodule.mem_one.2 ⟨0, by simp [h]⟩
     · funext a
-      by_cases h : a = j <;> simp [h, Matrix.one_apply]
+      by_cases h : a = j <;> simp [h]
 
 theorem dualFr_colLat_one {K : Type} [Field K] [NumberField K] {n : ℕ} :
     dualFr (colLat (1 : GL (Fin n) K)) = colLat (1 : GL (Fin n) K) := by

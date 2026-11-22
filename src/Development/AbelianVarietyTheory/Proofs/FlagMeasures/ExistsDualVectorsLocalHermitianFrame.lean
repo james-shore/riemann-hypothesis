@@ -82,7 +82,7 @@ theorem GlobalTheory.LocDual.frameD_exists : ∀ {F : Type} [Field F] [Valuative
   · intro i j
     rw [hesR]
     simp only [hesL, hey', hy'e, hee, mul_zero, Finset.sum_const_zero, sub_zero, mul_ite, mul_one,
-      Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      Finset.sum_ite_eq', Finset.mem_univ, if_true]
     simp only [b, map_mul, hhalf]
     rw [← H.h_herm (y' j) (y' i)]
     linear_combination (-H.h (y' i) (y' j)) * hhalf2

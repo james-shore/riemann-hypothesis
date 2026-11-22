@@ -101,12 +101,8 @@ theorem pathFin : CompanionTheory.RgExh.Fin.PathFin := by
     · intro h
       first
         | exact (ih _ _).1 (locFin_step ε X _ h)
-        | exact locFin_step ε _ _ ((ih X χ).1 h)
-        | exact locFin_step ε _ _ ((ih _ _).1 h)
     · intro h
       first
         | exact (ih _ _).2 (intWt_step X _ h)
-        | exact intWt_step _ _ ((ih X χ).2 h)
-        | exact intWt_step _ _ ((ih _ _).2 h)
 
 end GlobalTheory.CompanionTheory.RgSteps

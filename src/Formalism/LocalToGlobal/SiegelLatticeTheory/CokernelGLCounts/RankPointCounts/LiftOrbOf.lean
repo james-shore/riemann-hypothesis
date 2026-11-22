@@ -137,7 +137,7 @@ theorem liftOrb_of (hSR : SRLift) : LiftOrb := by
     rw [this]
     by_cases h : j = Fin.last m
     · subst h; simp
-    · simp [Pi.single_apply, h, Ne.symm h]
+    · simp [h, Ne.symm h]
 
   have hlu : IsUnit (l.det) := hdet
   have honto : ∀ x, ∃ y, ρ₀.mulVec y = x := by

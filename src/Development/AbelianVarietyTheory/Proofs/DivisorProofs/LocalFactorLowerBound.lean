@@ -98,7 +98,6 @@ theorem prod_le_locFactor_of_isPrime (E : Type) [Field E] [NumberField E] [IsCMF
     { star := σ
       star_involutive := fun x => by
         obtain ⟨y, rfl⟩ := Ideal.Quotient.mk_surjective x
-        change σ (σ _) = _
         rw [hσ, hσ, hcc]
       star_mul := fun x y => by
         change σ (x * y) = σ y * σ x

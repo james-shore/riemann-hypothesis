@@ -44,7 +44,6 @@ lemma hwmf_diff_entry (i j : Fin n) : Differentiable ℂ (fun x : Matrix (Fin n)
     | exact ((ContinuousLinearMap.proj j).comp (ContinuousLinearMap.proj i) :
         (Fin n → Fin n → ℂ) →L[ℂ] ℂ).differentiable
     | fun_prop
-    | exact (differentiable_apply j).comp (differentiable_apply i)
 
 lemma hwmf_diff_prod {ι : Type} (s : Finset ι) (g : ι → Matrix (Fin n) (Fin n) ℂ → ℂ)
     (h : ∀ i, Differentiable ℂ (g i)) : Differentiable ℂ (fun x => ∏ i ∈ s, g i x) := by
@@ -63,10 +62,6 @@ lemma hwmf_diff_blkMinor (ε : Fin n → Bool) (a : Fin n) : Differentiable ℂ 
     | (apply Differentiable.fun_sum
        intro σ _
        exact (differentiable_const _).mul (hwmf_diff_prod _ _ (fun i => hwmf_diff_entry _ _)))
-    | fun_prop
-    | (apply Differentiable.sum
-       intro σ _
-       exact (differentiable_const _).mul (hwmf_diff_prod _ _ (fun i => hwmf_diff_entry _ _)))
 
 theorem differentiable_highest_weight_fn (ε : Fin n → Bool) (m : Fin n → ℤ) : Differentiable ℂ (f0 ε m) := by
   show Differentiable ℂ (fun x : Matrix (Fin n) (Fin n) ℂ => f0 ε m x)
@@ -78,7 +73,6 @@ theorem highest_weight_fn_K_one (ε : Fin n → Bool) (m : Fin n → ℤ) : f0K 
     first
       | exact toMK_one
       | simp [toMK]
-      | rfl
   unfold f0K f0 blkMinor
   rw [h1]
   simp [Matrix.submatrix_one _ Subtype.val_injective]
@@ -102,9 +96,7 @@ theorem hasDerivAt_f0K (ε : Fin n → Bool) (m : Fin n → ℤ) {X : Matrix (Fi
     intro a b
     first
       | exact toMK_mul a b
-      | (simp [toMK, toM]; done)
-      | (simp only [toMK]; exact map_mul _ _ _)
-      | (simp only [toMK, toM]; rfl)
+      | (simp [toMK, toM])
   have hfun : (fun t : ℝ => f0K ε m (x * kcurve ε X t)) =
       fun t : ℝ => f0 ε m (toMK x * NormedSpace.exp ((t : ℂ) • X)) := by
     funext t
@@ -124,28 +116,24 @@ lemma hwmf_cpart_sum (ε : Fin n → Bool) (Z : Matrix (Fin n) (Fin n) ℂ) :
   first
     | (simp
        linear_combination (-(1 / 2) * (Z i j + (Jm ε * Zᴴ * Jm ε) i j)) * Complex.I_sq)
-    | (simp [Complex.I_sq]; ring)
 
 private theorem inK_cp1_lemma (ε : Fin n → Bool) (Z : Matrix (Fin n) (Fin n) ℂ) :
     inK ε (cpart1 ε (bdPart ε Z)) := by
   unfold inK inG cpart1 Jm bdPart
   constructor <;> ext a b <;>
-    simp [Matrix.mul_diagonal, Matrix.diagonal_mul, Matrix.conjTranspose_apply, Matrix.sub_mul, Matrix.mul_sub,
-      Matrix.smul_mul, Matrix.mul_smul, Complex.star_def, map_div₀] <;>
+    simp [Matrix.mul_diagonal, Matrix.diagonal_mul, Matrix.conjTranspose_apply, Matrix.sub_mul, Matrix.mul_sub] <;>
     rcases Bool.eq_false_or_eq_true (ε a) with ha | ha <;>
     rcases Bool.eq_false_or_eq_true (ε b) with hb | hb <;>
-    simp [ha, hb, Complex.conj_ofNat, map_ofNat] <;> ring
+    simp [ha, hb] <;> ring
 
 private theorem inK_cp2_lemma_2 (ε : Fin n → Bool) (Z : Matrix (Fin n) (Fin n) ℂ) :
     inK ε (cpart2 ε (bdPart ε Z)) := by
   unfold inK inG cpart2 Jm bdPart
   constructor <;> ext a b <;>
-    simp [Matrix.mul_diagonal, Matrix.diagonal_mul, Matrix.conjTranspose_apply, Matrix.sub_mul, Matrix.mul_sub,
-      Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, Matrix.mul_smul, Complex.star_def, map_div₀,
-      Complex.conj_I] <;>
+    simp [Matrix.mul_diagonal, Matrix.diagonal_mul, Matrix.conjTranspose_apply, Matrix.add_mul, Matrix.mul_add, Complex.conj_I] <;>
     rcases Bool.eq_false_or_eq_true (ε a) with ha | ha <;>
     rcases Bool.eq_false_or_eq_true (ε b) with hb | hb <;>
-    simp [ha, hb, Complex.conj_ofNat, map_ofNat] <;> ring
+    simp [ha, hb, map_ofNat]
 
 lemma hwmf_rdc (ε : Fin n → Bool) (m : Fin n → ℤ) (Z : Matrix (Fin n) (Fin n) ℂ) (x : KG ε) :
     rdc ε Z (f0K ε m) x = fderiv ℂ (f0 ε m) (toMK x) (toMK x * bdPart ε Z) := by
@@ -183,7 +171,7 @@ lemma hwmf_mul_tv (x : Matrix (Fin n) (Fin n) ℂ) (a b : Fin n) (s : ℂ) (r q 
     rw [if_pos rfl, Matrix.mul_apply]
     simp [Matrix.single_apply]
   · rw [if_neg hq, Matrix.mul_apply]
-    simp [Matrix.single_apply, Ne.symm hq]
+    simp [Ne.symm hq]
 
 lemma hwmf_blk_tv (ε : Fin n → Bool) {a b : Fin n} (hab : a < b) (he : ε a = ε b) (c : Fin n)
     (x : Matrix (Fin n) (Fin n) ℂ) (s : ℂ) :

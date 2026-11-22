@@ -53,8 +53,8 @@ theorem perm_fix {m : ℕ} (i : Fin m) (k : Fin (m + 1)) (h1 : (k : ℕ) ≠ i) 
 private lemma sum_cf_mul_sum_cf_mul_eq_sum_sum_toReal_mul {A : Type*} [Ring A] {m : ℕ} (F : Fin (m + 1) → A) (i : Fin m) :
     (List.ofFn F).prod = ((List.ofFn F).take (i : ℕ)).prod * (F i.castSucc * F i.succ) *
       ((List.ofFn F).drop ((i : ℕ) + 2)).prod := by
-  have h0 : (i : ℕ) < (List.ofFn F).length := by simp <;> omega
-  have h1 : (i : ℕ) + 1 < (List.ofFn F).length := by simp <;> omega
+  have h0 : (i : ℕ) < (List.ofFn F).length := by simp
+  have h1 : (i : ℕ) + 1 < (List.ofFn F).length := by simp
   conv_lhs => rw [← List.take_append_drop (i : ℕ) (List.ofFn F)]
   rw [List.drop_eq_getElem_cons h0, List.drop_eq_getElem_cons h1]
   simp only [List.prod_append, List.prod_cons, List.getElem_ofFn, mul_assoc]

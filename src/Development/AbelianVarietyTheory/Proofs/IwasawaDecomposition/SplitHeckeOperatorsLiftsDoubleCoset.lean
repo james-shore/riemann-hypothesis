@@ -232,7 +232,7 @@ theorem op_eq_of_bij (X : Stages) {px : PreX X.B.toPre} (I : Col2.ColIn X.B px) 
   classical
   funext g
   rw [hR, Bridge.dcOp]
-  simp only [hR]
+  simp only
   erw [heckeCSD_symm_apply]
   rw [Formalism.L2.Col.heckeFam]
   erw [Formalism.L2.Col.heckeD_op_apply]

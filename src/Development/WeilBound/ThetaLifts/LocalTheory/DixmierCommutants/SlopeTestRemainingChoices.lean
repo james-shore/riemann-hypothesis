@@ -122,7 +122,7 @@ theorem rank_SB (V : Type) [TopologicalSpace V] [SecondCountableTopology V] [T2S
       rw [Finset.sum_apply, Finset.sum_eq_single (f y)]
       · simp
       · intro c _ hc
-        simp [Set.indicator_apply, hc.symm]
+        simp [hc.symm]
       · intro h
         have : f y = 0 := by
           by_contra h0

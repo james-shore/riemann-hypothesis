@@ -47,7 +47,7 @@ theorem covering_goodAt_shift : _root_.GlobalTheory.CovTop.PublishedHodgeBundleT
       simp only [Pi.smul_apply]
       unfold gap at this ⊢
       split_ifs at this ⊢ with h1
-      · simp only [Pi.smul_apply, smul_eq_mul, nsmul_eq_mul] at this ⊢
+      · simp only [Pi.smul_apply, nsmul_eq_mul] at this ⊢
         have hk : (1 : ℤ) ≤ ((k + 1 : ℕ) : ℤ) := by exact_mod_cast Nat.succ_pos k
         rw [← mul_sub]
         exact this.trans (le_mul_of_one_le_left (by linarith) hk)
@@ -73,5 +73,5 @@ open GlobalTheory.BadCount
 open scoped TensorProduct
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.covering_shift_preserves_goodAt : _root_.GlobalTheory.CovTop.PublishedHodgeBundleTheorems → ∀ (D : D7) (T : CoreJ D), LawsJ T → ∀ j : ℕ, 1 ≤ (T.Q.Dw j).p → 1 ≤ (T.Q.Dw j).q → 2 < Module.finrank ℚ D.host.E / 2 → InR D j → ∀ (Y : Deep T.toCore j) (e : ℕ) (o : ℝ), Y.Good e o → ∀ (a : (D.host.E →+* ℂ) × ℕ → ℕ) (n : ℕ) (s : ℤ), Even n → (∀ τ, Antitone ((laOf (T.Q.Dw j) a n + s • hodgeWt (T.Q.Dw j)) τ)) → (∀ τ, 1 ≤ gap ((laOf (T.Q.Dw j) a n + s • hodgeWt (T.Q.Dw j)) τ) ((T.Q.Dw j).p - 1)) → Y.GoodAt (shiftG (T.Q.Dw j) a n s) := by
-  first | exact @_root_.GlobalTheory.CovTop.ShiftGood.covering_goodAt_shift | exact _root_.GlobalTheory.CovTop.ShiftGood.covering_goodAt_shift | (intros; apply _root_.GlobalTheory.CovTop.ShiftGood.covering_goodAt_shift <;> assumption)
+  first | exact @_root_.GlobalTheory.CovTop.ShiftGood.covering_goodAt_shift
 end

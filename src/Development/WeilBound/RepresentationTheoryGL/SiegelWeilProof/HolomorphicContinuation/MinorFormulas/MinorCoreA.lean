@@ -61,10 +61,10 @@ theorem sum_del (ρ : ℕ) :
     congr 2
     ext p q
     by_cases h : q = c
-    · subst h; simp [Xm, updateCol_apply, Equiv.swap_apply_right]
+    · subst h; simp [Xm, Equiv.swap_apply_right]
     · have h3 : q.succ ≠ 0 := Fin.succ_ne_zero q
       have h4 : q.succ ≠ c.succ := fun e => h (Fin.succ_injective _ e)
-      simp [Xm, updateCol_apply, h, Equiv.swap_apply_of_ne_of_ne h3 h4]
+      simp [Xm, h, Equiv.swap_apply_of_ne_of_ne h3 h4]
   simp_rw [h1, Finset.mul_sum]
   rw [Finset.sum_comm]
   simp_rw [h2]

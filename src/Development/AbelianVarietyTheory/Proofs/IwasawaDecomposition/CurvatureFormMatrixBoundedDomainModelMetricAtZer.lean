@@ -93,7 +93,7 @@ theorem curvPoly_model_zero : ∀ (ι : Type) [Fintype ι] (p q n : ℕ) (h : Fi
     intro a c i j
     change curv (fun u => ((Formalism.DegreeFormula.hP (flatCoordinateMatrixBlock h τ u))⁻¹)ᵀ) 0 _ _ i j = _
     rw [curv_model h τ, Matrix.neg_apply, mul_apply]
-    simp [block_reshape_apply, EuclideanSpace.single_apply]
+    simp [block_reshape_apply]
   refine Matrix.ext fun i j => ?_
   simp only [GlobalTheory.GoodMetric.curvPoly, of_apply, e2, Matrix.neg_apply, blockSym_apply]
   simp only [map_neg, neg_mul, Finset.sum_neg_distrib, neg_inj, map_sum, Finset.sum_mul, mul_ite, ite_mul, one_mul,

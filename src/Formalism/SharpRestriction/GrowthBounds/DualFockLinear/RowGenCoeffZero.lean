@@ -51,7 +51,7 @@ theorem RE_eq_rowDiv (K : Type) [CommRing K] (k : ℕ) (a b : Fin k) (f : MvPoly
     RE K k a b f = rowDiv K a b 1 f := by
   unfold rowDiv
   induction f using MvPolynomial.induction_on with
-  | C r => rw [RE_C]; simp [rowGen, Polynomial.algebraMap_apply, MvPolynomial.algebraMap_eq, Polynomial.coeff_C]
+  | C r => rw [RE_C]; simp [rowGen, Polynomial.algebraMap_apply, MvPolynomial.algebraMap_eq]
   | add p q hp hq => rw [RE_add, map_add, Polynomial.coeff_add, hp, hq]
   | mul_X p v hp =>
     rw [RE_mul, map_mul, Polynomial.mul_coeff_one, rowGen_coeff_zero, rowGen_coeff_zero, hp, RE_X]

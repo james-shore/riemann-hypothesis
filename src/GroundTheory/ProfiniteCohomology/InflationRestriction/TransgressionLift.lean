@@ -102,7 +102,6 @@ theorem IsTgLift.tgDiff_out (hx : IsCocycleOne A N x) (hy : IsTgLift A N x y) (g
     tgDiff A y (Quotient.out (g : G ⧸ N)) (Quotient.out (h : G ⧸ N)) = tgDiff A y g h := by
   obtain ⟨m, hm⟩ := QuotientGroup.mk_out_eq_mul N g
   obtain ⟨n, hn⟩ := QuotientGroup.mk_out_eq_mul N h
-  change tgDiff A y (g : G ⧸ N).out (h : G ⧸ N).out = _
   rw [hm, hn, hy.tgDiff_mul_mul hx]
 
 omit [IsTopologicalGroup G] in

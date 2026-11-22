@@ -94,7 +94,7 @@ theorem level_form (hπ : W.π₀ ∈ W.AΔ) {a : ZMod n} {e s : ℕ} (hs : s �
     InFr W a (ps W s ^ x.toNat) (ps W s ^ (-x).toNat * ∏ t ∈ (Finset.range e).erase s, ps W t ^ H t) g := by
   simp only [InId] at hg
   rw [← Finset.mul_prod_erase _ _ hs, ← Finset.mul_prod_erase _ _ hs] at hg
-  simp only [Function.update_apply, if_pos rfl] at hg
+  simp only [Function.update_apply] at hg
   have e1 : (∏ t ∈ (Finset.range e).erase s, ps W t ^ (if t = s then x else α t).toNat) =
       ∏ t ∈ (Finset.range e).erase s, ps W t ^ (α t).toNat :=
     Finset.prod_congr rfl fun t ht => by rw [if_neg (Finset.ne_of_mem_erase ht)]
@@ -407,7 +407,7 @@ theorem inId_αk_iff {a : ZMod n} {e s : ℕ} (hs : s ∈ Finset.range e) (d : �
 theorem update_αk (e s : ℕ) (d : ℕ → ℕ) (k : ℕ) :
     Function.update (αk e s d k) s ((k : ℤ) + 1) = αk e s d (k + 1) := by
   funext t
-  by_cases h : t = s <;> simp [Function.update_apply, αk, h]
+  by_cases h : t = s <;> simp [αk, h]
 
 theorem inFr_pow_mono {a : ZMod n} {s k k' : ℕ} (hk : k ≤ k') {den : LetA O n} {f : W.EE}
     (hπ : W.π₀ ∈ W.AΔ) (h : InFr W a (ps W s ^ k') den f) : InFr W a (ps W s ^ k) den f := by

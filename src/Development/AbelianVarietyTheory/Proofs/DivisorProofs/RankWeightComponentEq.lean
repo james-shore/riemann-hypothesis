@@ -88,7 +88,7 @@ theorem coeff_heckePolyOf (n q : ℕ) (a : ℕ → L) (k : ℕ) :
   unfold heckePolyOf
   simp only [finset_sum_coeff, coeff_C_mul_X_pow]
   rw [Finset.sum_ite_eq]
-  simp [Nat.lt_succ_iff]
+  simp
 
 end Poly
 

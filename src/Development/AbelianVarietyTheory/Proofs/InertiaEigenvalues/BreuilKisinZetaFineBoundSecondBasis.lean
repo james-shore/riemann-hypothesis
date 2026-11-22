@@ -26,7 +26,7 @@ theorem zeta_Y'_fine_bound : ∀ (O K : Type) [CommRing O] [NormedField K] [IsUl
   refine ⟨p₂ - (l : K) ^ (3 * H - 2 * η) • p₁, sub_mem hp₂ (hsm _ _ hp₁),
     (l : K) ^ (l - 11 * H) • f₂ - (l : K) ^ (2 * H - 2 * η) • ((l : K) ^ (l - 10 * H) • f₁ + f),
     sub_mem (hsm _ _ hf₂) (hsm _ _ (add_mem (hsm _ _ hf₁) hf)), ?_⟩
-  simp only [zero_add, pow_one, zero_mul, add_zero, one_mul] at hB
+  simp only [zero_add, pow_one, zero_mul, add_zero] at hB
   rw [hD] at hB
   have hl0 : (l : K) ≠ 0 := l_ne_zero l
   have e1 : l - 10 * H = (l - 14 * H) + (3 * H - 2 * η) + (H + 2 * η) := by omega

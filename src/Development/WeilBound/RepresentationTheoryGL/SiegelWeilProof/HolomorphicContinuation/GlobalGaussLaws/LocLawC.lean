@@ -21,7 +21,7 @@ theorem alg_id (Z R : ℂ) (hZ : Z ≠ 0) (hR : R ≠ 0) (k j : ℤ) (p q m : �
   rw [← zpow_add₀ (div_ne_zero hZ (pow_ne_zero 2 hR)), hpq, hkj, hk]
   have hR2 : (R ^ 2 : ℂ) = R * R := by ring
   rw [hR2]
-  simp only [div_eq_mul_inv, mul_zpow, _root_.inv_zpow, zpow_add₀ hZ, zpow_add₀ hR, _root_.zpow_neg, zpow_natCast, inv_inv, mul_inv]
+  simp only [div_eq_mul_inv, mul_zpow, _root_.inv_zpow, zpow_add₀ hZ, zpow_add₀ hR, _root_.zpow_neg, zpow_natCast, mul_inv]
   have h1 : Z ^ m ≠ 0 := pow_ne_zero _ hZ
   have h2 : R ^ m ≠ 0 := pow_ne_zero _ hR
   have h3 : Z ^ j ≠ 0 := zpow_ne_zero _ hZ

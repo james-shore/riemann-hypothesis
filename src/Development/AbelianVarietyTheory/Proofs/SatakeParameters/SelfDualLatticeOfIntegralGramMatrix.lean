@@ -57,9 +57,9 @@ theorem GlobalTheory.Hk3.HoweG.selfDual_lattice_of_gram_int : ∀ (L : Type) [Fi
     intro j
     refine (ha _).mpr ⟨Pi.single j 1, fun i => ?_, ?_⟩
     · by_cases h : i = j
-      · subst h; simp [Subring.one_mem]
-      · simp [h, Subring.zero_mem]
-    · funext k; simp [Matrix.mulVec_single_one]
+      · subst h; simp
+      · simp [h]
+    · funext k; simp
   have hN : ∀ u : Fin n → L, (∀ i, u i ∈ Formalism.UG.intL L) → (∀ i, (x *ᵥ u) i ∈ Formalism.UG.intL L) →
       ∃ t : Fin n → L, (∀ i, t i ∈ Formalism.UG.intL L) ∧ u = (a : Matrix (Fin n) (Fin n) L) *ᵥ t := by
     intro u hu hxu
@@ -67,7 +67,7 @@ theorem GlobalTheory.Hk3.HoweG.selfDual_lattice_of_gram_int : ∀ (L : Type) [Fi
   have hY : ∀ w : Fin n' → L, (∀ i, w i ∈ Formalism.UG.intL L) →
       ∃ t : Fin n → L, (∀ i, t i ∈ Formalism.UG.intL L) ∧ y *ᵥ w = (a : Matrix (Fin n) (Fin n) L) *ᵥ t := by
     intro w hw
-    exact (ha _).mp ⟨0, w, fun _ => Subring.zero_mem _, by simp [Subring.zero_mem], hw, by simp⟩
+    exact (ha _).mp ⟨0, w, fun _ => Subring.zero_mem _, by simp, hw, by simp⟩
   have hformM : ∀ (M : Matrix (Fin n) (Fin n) L) (t : Fin n → L) (V : Matrix (Fin n) (Fin n) L) (j : Fin n),
       Formalism.UG.hform σ (JS : Matrix (Fin n) (Fin n) L) (M *ᵥ t) (fun l => V l j) =
         ∑ k, σ (t k) * (Formalism.UG.cT σ M * (JS : Matrix (Fin n) (Fin n) L) * V) k j := by

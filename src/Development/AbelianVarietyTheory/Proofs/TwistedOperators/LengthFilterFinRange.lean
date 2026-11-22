@@ -437,7 +437,6 @@ theorem exponentsSeparate (hG : Published.GeometricLemma) (hZ : Published.Zelevi
     obtain ⟨z, hz⟩ := exists_eq_torusChar hϖ (θ := χ * δ⁻¹) fun t ht => by
       simp [(hE i).unramified hm ht, hδ t ht]
     refine ⟨List.ofFn z, ?_⟩
-    beta_reduce
     rwa [hM, ← hz, inv_mul_cancel_right]
   · intro w
     by_cases hw : w.length = r

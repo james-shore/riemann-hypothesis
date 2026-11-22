@@ -47,7 +47,7 @@ theorem coeff_fold {ι : Type} (cd : ι → σ) (hc : Function.Injective cd) (m 
       apply List.map_congr_left
       intro l' hl'
       have hne : cd l ≠ cd l' := fun h => hnd.1 (by rw [hc h]; exact hl')
-      simp [Finsupp.single_apply, hne]
+      simp [hne]
     rw [hprod, List.map_cons, List.sum_cons, List.map_cons, List.prod_cons, add_assoc]
     ring
 

@@ -26,7 +26,6 @@ theorem GlobalTheory.Mum.toProj_secPull_secPull (R : Type) [CommRing R] (N : ℕ
   rw [_root_.one_mul]
   unfold GlobalTheory.secPull
   rw [GlobalTheory.chartSec_f, GlobalTheory.chartSec_f, GlobalTheory.chartSec_f (GlobalTheory.chartPullPull L (g ≫ h)) (s j) k]
-  simp only [ReciprocityTheory.ChartRestriction.G.Geo.Tor.resG, ← CommRingCat.comp_apply, Scheme.Hom.appLE_comp_appLE_assoc,
-    Scheme.Hom.appLE_map]
+  simp only [ReciprocityTheory.ChartRestriction.G.Geo.Tor.resG, ← CommRingCat.comp_apply, Scheme.Hom.appLE_map]
   rw [Scheme.Hom.appLE_comp_appLE, Scheme.Hom.appLE_map]
   rfl

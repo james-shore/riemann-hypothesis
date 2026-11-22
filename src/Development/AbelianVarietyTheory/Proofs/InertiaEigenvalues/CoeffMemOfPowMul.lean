@@ -23,7 +23,7 @@ theorem coeff_mem_of_mul {O : Type} [CommRing O] (I : Ideal O) {ι : Type} (K : 
       have hK' : ∀ j ∈ K, m' j = 0 := by
         intro j hj
         have hqj : q ≠ j := fun h => hq (h ▸ hj)
-        simp [hm', hK j hj, Finsupp.single_apply, hqj]
+        simp [hm', hK j hj, hqj]
       have hH := H m' hdeg' hK'
       rw [MvPolynomial.coeff_mul] at hH
       have hmem : (Finsupp.single q 1, m) ∈ Finset.HasAntidiagonal.antidiagonal m' := by

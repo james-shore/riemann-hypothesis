@@ -222,7 +222,7 @@ theorem evF_equiv : ∀ {D : D7} {G : Type} [Group G] [Fintype G] {Pl0 T : Type}
         by_cases hτ' : τ' = τ
         · subst hτ'
           simp
-        · simp [hτ', Function.update_of_ne hτ']
+        · simp [hτ']
       · rw [ih, mul_assoc, hstep τ s hτ]
   have hclaim' : ∀ z, S w' z = S (vecOf R X c y) (z * a Finset.univ) := by
     intro z

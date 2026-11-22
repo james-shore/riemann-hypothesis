@@ -63,7 +63,7 @@ theorem colFn_eq (ch : Choice R) (a : Fin ch.n) (g : GA D (ch.G.V (.top 0))) :
     congr_fun (pairVec_colOf ch.W.θ ch.ξ (ch.Psi a)) g
   rw [h1]
   unfold scal colFun
-  simp only [LinearMap.comp_apply, LinearEquiv.coe_coe]
+  simp only [LinearMap.comp_apply]
   rw [arg_eq]
   rfl
 

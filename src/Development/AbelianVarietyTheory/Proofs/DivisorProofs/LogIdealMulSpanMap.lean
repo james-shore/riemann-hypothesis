@@ -114,7 +114,7 @@ theorem embInd (G : HTGroup p) {ι : Type} [Fintype ι] (f : Module.Basis ι ℚ
     funext j
     have := hall (eqv j).toRingHom
     simp only [Matrix.vecMul, dotProduct, Algebra.embeddingsMatrixReindex, Algebra.embeddingsMatrix,
-      Matrix.reindex_apply, Matrix.submatrix_apply, Equiv.refl_apply, Equiv.symm_symm, Pi.zero_apply]
+      Matrix.reindex_apply, Matrix.submatrix_apply, Equiv.symm_symm, Pi.zero_apply]
     simpa [hv, Algebra.smul_def] using this
   have hv0 := Matrix.eq_zero_of_vecMul_eq_zero hdet hvM
   funext k

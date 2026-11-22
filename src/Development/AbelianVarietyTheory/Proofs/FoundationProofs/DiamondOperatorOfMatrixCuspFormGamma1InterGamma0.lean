@@ -27,7 +27,7 @@ theorem conj_mem_lev {N l : ℕ} {d : ℤ} {σ : SL(2, ℤ)} (hσ : IsDia N l d 
     simp only [Matrix.SpecialLinearGroup.coe_mul, Matrix.SpecialLinearGroup.coe_inv,
       Matrix.adjugate_fin_two, Matrix.mul_apply, Fin.sum_univ_two, Matrix.of_apply,
       Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.empty_val',
-      Matrix.cons_val_fin_one, Matrix.head_cons, Matrix.head_fin_const]
+      Matrix.cons_val_fin_one]
     push_cast
     rw [hN, hx, hw, hz] at *
     refine ⟨?_, ?_, ?_⟩
@@ -38,7 +38,7 @@ theorem conj_mem_lev {N l : ℕ} {d : ℤ} {σ : SL(2, ℤ)} (hσ : IsDia N l d 
     simp only [Matrix.SpecialLinearGroup.coe_mul, Matrix.SpecialLinearGroup.coe_inv,
       Matrix.adjugate_fin_two, Matrix.mul_apply, Fin.sum_univ_two, Matrix.of_apply,
       Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.empty_val',
-      Matrix.cons_val_fin_one, Matrix.head_cons, Matrix.head_fin_const]
+      Matrix.cons_val_fin_one]
     push_cast
     rw [hl, hg0]
     ring

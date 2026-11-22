@@ -144,7 +144,7 @@ theorem block_mem (ε : Fin n → Bool) (E : Fin n → Fin n → Module.End ℂ 
     obtain ⟨τ, hτ⟩ := this
     exact Finset.mem_image.mpr ⟨τ, Finset.mem_univ _, hτ⟩
   obtain ⟨k, j, hkj⟩ := h2
-  simp only [hf, Module.End.mul_apply, Module.End.intCast_apply]
+  simp only [Module.End.mul_apply, Module.End.intCast_apply]
   refine Submodule.smul_of_tower_mem _ _ (prod_mem _ _ ?_ ?_ _)
   · intro T hT
     obtain ⟨i, rfl⟩ := List.mem_ofFn.mp hT

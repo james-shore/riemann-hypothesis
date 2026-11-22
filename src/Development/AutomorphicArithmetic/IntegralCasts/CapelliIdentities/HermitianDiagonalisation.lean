@@ -54,15 +54,14 @@ private theorem Dz.sum {E A B : Type} [Field E] [StarRing E] [Fintype A] [Decida
       conjTranspose_conjTranspose, hXi, h4.eq, Matrix.mul_assoc]
   have key : Uᴴ * fromBlocks X Y Yᴴ W * U = fromBlocks X 0 0 S := by
     rw [hU, fromBlocks_conjTranspose, fromBlocks_multiply, fromBlocks_multiply]
-    simp only [conjTranspose_one, conjTranspose_zero, conjTranspose_neg, conjTranspose_mul, hXi,
-      h1.eq]
+    simp only [conjTranspose_one, conjTranspose_zero, conjTranspose_neg, conjTranspose_mul, hXi]
     have hXX' : X⁻¹ * X = 1 := nonsing_inv_mul X hu
     congr 1
     · simp
     · have hY : X * (X⁻¹ * Y) = Y := by rw [← Matrix.mul_assoc, hXX, Matrix.one_mul]
       simp [hY]
     · simp [Matrix.mul_assoc, hXX']
-    · simp [Matrix.mul_assoc, hXX, hXX', hS, Matrix.add_mul, Matrix.mul_add]
+    · simp [Matrix.mul_assoc, hXX', hS]
       abel
   refine Dz.of_congr hUdet ?_
   rw [key]

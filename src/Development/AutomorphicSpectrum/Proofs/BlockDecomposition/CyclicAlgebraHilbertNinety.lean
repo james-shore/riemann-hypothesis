@@ -112,9 +112,7 @@ theorem main : PositivityTheory.Rg.Tf.Loc.N1 → ∀ (O O' R : Type) [CommRing O
   letI : Algebra (IsLocalRing.ResidueField O) (R ⧸ J) :=
     (Ideal.Quotient.lift (IsLocalRing.maximalIdeal O) (algebraMap O (R ⧸ J)) fun c hc => by
       first
-        | exact Ideal.Quotient.eq_zero_iff_mem.mpr (hmJ (Ideal.mem_map_of_mem _ hc))
-        | (rw [← Ideal.Quotient.mk_algebraMap, Ideal.Quotient.eq_zero_iff_mem]
-           exact hmJ (Ideal.mem_map_of_mem _ hc))).toAlgebra
+        | exact Ideal.Quotient.eq_zero_iff_mem.mpr (hmJ (Ideal.mem_map_of_mem _ hc))).toAlgebra
   haveI : IsScalarTower O (IsLocalRing.ResidueField O) (R ⧸ J) :=
     IsScalarTower.of_algebraMap_eq fun c => rfl
   haveI : Module.Finite O (R ⧸ J) :=
@@ -185,8 +183,7 @@ theorem main : PositivityTheory.Rg.Tf.Loc.N1 → ∀ (O O' R : Type) [CommRing O
     induction t using TensorProduct.induction_on with
     | zero => simp only [map_zero]
     | tmul k w =>
-      simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, AlgEquiv.toAlgHom_eq_coe,
-        AlgEquiv.coe_algHom, tensorProduct_congr_refl_pow_tmul_lemma]
+      simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, AlgEquiv.coe_algHom, tensorProduct_congr_refl_pow_tmul_lemma]
     | add t₁ t₂ h₁ h₂ => simp only [map_add, h₁, h₂]
   refine ⟨hunit.unit, ?_⟩
   rw [IsUnit.unit_spec, ← hJ]
@@ -201,6 +198,5 @@ theorem main : PositivityTheory.Rg.Tf.Loc.N1 → ∀ (O O' R : Type) [CommRing O
       Algebra.TensorProduct.map g (AlgHom.id (IsLocalRing.ResidueField O) (R ⧸ J)) (sb : _)) (hmap j)
   · first
       | rfl
-      | simp [Units.coe_map]
 
 end GlobalTheory.CompanionTheory.FirstApprox

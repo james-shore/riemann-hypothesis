@@ -48,7 +48,7 @@ private theorem coeff_rename_map_lemma {σ τ : Type} (f : σ → τ) [Filter.Te
   · intro b hb hne
     exfalso
     apply hne
-    simp only [Set.Finite.mem_toFinset, Set.mem_preimage, Set.mem_singleton_iff, Set.mem_setOf_eq] at hb
+    simp only [Set.Finite.mem_toFinset, Set.mem_preimage, Set.mem_singleton_iff] at hb
     exact Finsupp.mapDomain_injective hf hb
 
 theorem coeff_include_three_mul (g : MvPowerSeries (Fin 2) K) (e : Fin 2 →₀ ℕ) (m j : ℕ) :
@@ -121,7 +121,7 @@ theorem coeff_subst_slice {f : MvPowerSeries (Fin 2) K} (hf : MvPowerSeries.cons
         if d 1 = m then MvPowerSeries.coeff e (f ^ d 0) else 0 := by
     intro d
     rw [Finsupp.prod_fintype _ _ (fun i => pow_zero _), Fin.prod_univ_two]
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one]
     rw [include_three_pow, coeff_include_three_mul]
   simp_rw [hterm]
   rw [finsum_eq_sum_of_support_subset _
@@ -374,7 +374,7 @@ theorem LemmaTwo_of (h1 : LemmaOne) (hL : LawSymm) : LemmaTwo := by
     refine ⟨N, le_rfl, ?_⟩
     have s := star ((p ^ 2) ^ N) m
     rw [LemTwo.coeff_g0F_even hp2 N, lg_pow N, lg_zero m hm, hB m] at s
-    simp only [mul_zero, zero_mul, add_zero, zero_add] at s
+    simp only [mul_zero, add_zero, zero_add] at s
     refine ultra (b := α' ((p ^ 2) ^ N) * PowerSeries.coeff m (g0F K p)) s ?_ (le_max_left _ _)
     rw [norm_mul]
     exact (mul_le_of_le_one_left (norm_nonneg _) (hα' _)).trans (le_max_right _ _)
@@ -388,7 +388,7 @@ theorem LemmaTwo_of (h1 : LemmaOne) (hL : LawSymm) : LemmaTwo := by
     have s2 := star ((p ^ 2) ^ N) 1
     rw [LemTwo.coeff_g0F_even hp2 N, lg_pow N, LemTwo.coeff_g0F_even hp2 l, lg_pow l, hB] at s1
     rw [LemTwo.coeff_g0F_even hp2 N, lg_pow N, g01, lg1, hB] at s2
-    simp only [mul_zero, zero_mul, add_zero, zero_add, mul_one] at s1 s2
+    simp only [mul_zero, zero_add, mul_one] at s1 s2
     have e : (β ((p ^ 2) ^ l) - β 1 * ((p : K) ^ l)⁻¹) * ((p : K) ^ N)⁻¹ =
         (β ((p ^ 2) ^ l) * ((p : K) ^ N)⁻¹ - β' ((p ^ 2) ^ N) * ((p : K) ^ l)⁻¹) -
           ((p : K) ^ l)⁻¹ * (β 1 * ((p : K) ^ N)⁻¹ - β' ((p ^ 2) ^ N)) := by ring

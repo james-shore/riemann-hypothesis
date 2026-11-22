@@ -20,7 +20,7 @@ def opOf (x : Formalism.L2.SG.PackageTie.HS Wq Wp) : Wq →L[ℂ] Wp :=
 
 theorem opOf_apply (x : Formalism.L2.SG.PackageTie.HS Wq Wp) (e : Wq) :
     opOf x e = ∑ i, inner ℂ (stdOrthonormalBasis ℂ Wq i) e • x i := by
-  simp [opOf, ContinuousLinearMap.sum_apply]
+  simp [opOf]
 
 theorem opOf_add (x y : Formalism.L2.SG.PackageTie.HS Wq Wp) : opOf (x + y) = opOf x + opOf y := by
   ext e
@@ -59,14 +59,12 @@ theorem blockOf_add (A B : PiLp 2 (fun _ : C' => V') →L[ℂ] PiLp 2 (fun _ : C
   ext v
   first
   | rfl
-  | simp [blockOf]
 
 theorem blockOf_smul (c : ℂ) (A : PiLp 2 (fun _ : C' => V') →L[ℂ] PiLp 2 (fun _ : C => V)) (ρ : C) (ρ' : C') :
     blockOf (c • A) ρ ρ' = c • blockOf A ρ ρ' := by
   ext v
   first
   | rfl
-  | simp [blockOf]
 
 def BlL (ρ : C) (ρ' : C') :
     Formalism.L2.SG.PackageTie.HS (PiLp 2 (fun _ : C' => V')) (PiLp 2 (fun _ : C => V)) →ₗ[ℂ]

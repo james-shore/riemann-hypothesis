@@ -186,7 +186,7 @@ theorem UpperTheory.V.Z.Gam.sideGCenOf :
     simp [e2, hone]
   have hfi0 : ∃ y, fi y ≠ 0 := ⟨_, left_ne_zero_of_mul (hf' 1 ▸ hF1')⟩
   obtain ⟨φ, φ', k, k', hk, hk', hAd, hA0, hsh, hsh'⟩ := hAS K n hn1 (T p) m (fun τ u => by
-    rw [← hTc τ u p (((m τ).map (u + ·)).prod • p) (show _ = _ by first | exact (hm τ u _ hmem).symm | exact ((hm τ).2 u _ hmem).symm | exact (hm τ _ hmem u).symm | exact ((hm τ).2 _ hmem u).symm), map_smul]) fi hfi hfi0 Measure.haar
+    rw [← hTc τ u p (((m τ).map (u + ·)).prod • p) (show _ = _ by first | exact (hm τ u _ hmem).symm | exact ((hm τ).2 u _ hmem).symm), map_smul]) fi hfi hfi0 Measure.haar
 
   have hz : ∀ v, ∃ z : Fin n → ℂˣ, v ∉ S →
       Spherical.IsSatakeParameter (F := v.adicCompletion K) (D.finite.π v) (localHaar n v) z ∧ B v = Finset.univ.val.map z :=

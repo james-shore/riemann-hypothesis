@@ -43,8 +43,6 @@ theorem map_evalRingHom_piAlgHom {O LL ι : Type} [CommRing O] [CommRing LL] [Al
     PowerSeries.map (Pi.evalRingHom (fun _ => LL) i) (piAlgHom ρ a) = ρ i a := by
   first
     | exact map_evalRingHom_ofPiFamily (fun i => ρ i a) i
-    | (simp only [piAlgHom, AlgHom.coe_mk, RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk]
-       exact map_evalRingHom_ofPiFamily _ i)
 
 theorem constantCoeff_piAlgHom {O LL ι : Type} [CommRing O] [CommRing LL] [Algebra O LL]
     (ρ : ι → (PowerSeries O →ₐ[O] PowerSeries LL)) (i : ι) (a : PowerSeries O) :
@@ -89,7 +87,6 @@ private theorem constantCoeff_exp_eq_one (A : Type) [Field A] [CharZero A] :
     constantCoeff (PowerSeries.exp A) = 1 := by
   first
     | simp
-    | (rw [← PowerSeries.coeff_zero_eq_constantCoeff_apply, PowerSeries.coeff_exp]; simp)
 
 private theorem cyclotomic_comp_pow_dvd_of_X_pow_dvd {O LL : Type} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O] [Field LL] [CharZero LL]
@@ -108,9 +105,6 @@ private theorem cyclotomic_comp_pow_dvd_of_X_pow_dvd {O LL : Type} [CommRing O] 
     intro z
     first
       | rw [← Polynomial.map_cyclotomic n (algebraMap O LL), Polynomial.aeval_map_algebraMap]
-      | rw [← Polynomial.map_cyclotomic_int n O, ← Polynomial.map_cyclotomic_int n LL,
-          ← algebraMap_int_eq, ← algebraMap_int_eq, Polynomial.aeval_map_algebraMap,
-          Polynomial.aeval_map_algebraMap]
   have hunit : ∀ ζ, IsPrimitiveRoot ζ n → ∃ w : (PowerSeries LL)ˣ,
       ρ ζ (((Polynomial.cyclotomic n O).comp (Polynomial.X + 1) : Polynomial O) : PowerSeries O) =
         (w : PowerSeries LL) * X := by
@@ -120,7 +114,6 @@ private theorem cyclotomic_comp_pow_dvd_of_X_pow_dvd {O LL : Type} [CommRing O] 
       haveI : NeZero (n : LL) := ⟨by exact_mod_cast hn.ne'⟩
       first
         | exact Polynomial.isRoot_cyclotomic_iff.mpr hζ
-        | exact Polynomial.isRoot_cyclotomic hn hζ
     obtain ⟨w, hw⟩ := cycloSimple LL LL n hn ζ (PowerSeries.exp LL) hroot hexp0
       (derivative_exp_eq_exp' LL)
     refine ⟨w, ?_⟩

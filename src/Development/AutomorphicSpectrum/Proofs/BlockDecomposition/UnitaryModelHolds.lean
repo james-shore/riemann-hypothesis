@@ -152,8 +152,8 @@ theorem diagonal_sigma {ι : Type} [DecidableEq ι] {κ : ι → Type} [∀ i, D
     by_cases h2 : a = b
     · subst h2
       simp [Matrix.blockDiagonal'_apply]
-    · simp [Matrix.blockDiagonal'_apply, Matrix.diagonal_apply, h2, Matrix.one_apply]
-  · simp [Matrix.blockDiagonal'_apply, Matrix.diagonal_apply, h]
+    · simp [Matrix.blockDiagonal'_apply, h2]
+  · simp [Matrix.blockDiagonal'_apply, h]
 
 theorem blockDiagonal_mulVec {ι : Type} [Fintype ι] [DecidableEq ι] {κ : ι → Type}
     [∀ i, Fintype (κ i)] (T : ∀ i, Matrix (κ i) (κ i) ℂ) (v : (Σ i, κ i) → ℂ) (i : ι) (α : κ i) :

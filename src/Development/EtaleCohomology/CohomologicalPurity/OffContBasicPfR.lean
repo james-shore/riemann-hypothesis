@@ -32,7 +32,7 @@ def awMap {R S : Type} [CommRing R] [CommRing S] (ψ : R →+* S) (g : R) (g' : 
 
 theorem awMap_alg {R S : Type} [CommRing R] [CommRing S] (ψ : R →+* S) (g : R) (g' : S) (hg : ψ g = g') :
     (awMap ψ g g' hg).comp (algebraMap R _) = (algebraMap S _).comp ψ := by
-  ext x; simp [awMap, IsLocalization.map_eq]
+  ext x; simp [awMap]
 
 theorem opIso_sq {R S : CommRingCat.{0}} (ψ : R ⟶ S) (g : R) (g' : S) (hg : ψ.hom g = g')
     (U : (Spec R).Opens) (hU : U = PrimeSpectrum.basicOpen g)

@@ -50,8 +50,7 @@ theorem rdLin_linearIndependent {D : D7} {L : SizeData₂ D} {hT : GatTies D} {G
     · have hy : castFrame (psi_eq ha c).symm x ∈ M.dom :=
         (mem_dom_iff ha c _).1 (by rw [castFrame_castFrame_symm]; exact hx)
       have := congrFun (congrFun hg c) ⟨_, hy⟩
-      simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Pi.zero_apply, rdLin_apply, rdFun,
-        castFrame_castFrame_symm] at this
+      simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Pi.zero_apply] at this
       exact this
     · exact Finset.sum_eq_zero fun k _ => by rw [hoff k (e c) x hx, mul_zero]
   funext k'

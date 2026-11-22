@@ -55,7 +55,7 @@ theorem inv_of_mem {R : Type} [CommRing R] [Algebra F R] [Invertible (2 : R)] (�
   let u : κ → (κ → F) × (κ → F) := fun i => (C *ᵥ Pi.single i 1, D *ᵥ Pi.single i 1)
   have e : (C.map (algebraMap F R) *ᵥ x, D.map (algebraMap F R) *ᵥ x) = ∑ i, x i • emb R (u i) := by
     refine Prod.ext (funext fun j => ?_) (funext fun j => ?_) <;>
-      simp [u, emb_apply, Prod.fst_sum, Prod.snd_sum, mulVec, dotProduct, mul_comm, Pi.single_apply]
+      simp [u, emb_apply, Prod.fst_sum, Prod.snd_sum, mulVec, dotProduct, mul_comm]
   rw [e]
   induction (Finset.univ : Finset κ) using Finset.induction_on with
   | empty => intro φ _; rw [Finset.sum_empty, schr_zero]

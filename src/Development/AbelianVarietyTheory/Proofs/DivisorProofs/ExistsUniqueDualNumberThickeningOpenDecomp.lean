@@ -29,11 +29,11 @@ theorem existsUnique_affine {R : Type} [CommRing R] {Z P : Scheme.{0}} (h : Z �
       (isAffineOpen_top _) hV)
   refine po.of_iso (Scheme.ΓSpecIso (.of R)) (Iso.refl _) (Scheme.ΓSpecIso (.of (DualNumber R))) (Iso.refl _)
     ?_ ?_ ?_ ?_
-  · ext x; simp [RelConstThickening.constHom, RingHom.comp_apply]
+  · ext x; simp [RelConstThickening.constHom]
   · rw [← Scheme.ΓSpecIso_naturality, Scheme.Hom.appTop, Scheme.Hom.app_eq_appLE]
     simp
   · simp [Scheme.Hom.app_eq_appLE]
-  · ext x; simp [RelConstThickening.constHom, RingHom.comp_apply]
+  · ext x; simp [RelConstThickening.constHom]
 
 theorem existsUnique_decomp : ∀ (R : Type) [CommRing R] {Z P : Scheme.{0}} (h : Z ⟶ Sp R) (p₁ : P ⟶ Sp (DualNumber R)) (p₂ : P ⟶ Z), IsPullback p₂ p₁ h (spMap (algebraMap R (DualNumber R))) → ∀ (O : Z.Opens) (F : Γ(P, p₂ ⁻¹ᵁ O)), ∃! ab : Γ(Z, O) × Γ(Z, O), F = (p₂.app O).hom ab.1 + constFn p₁ _ DualNumber.eps * (p₂.app O).hom ab.2 :=
   fun _ _ _ _ h p₁ p₂ H O F =>

@@ -123,7 +123,7 @@ theorem iwasawaExponent_leviProj (b : blockUpper F n (id : Fin n → Fin n)) :
     by_cases hij : i = j
     · subst hij
       simp [diagUnits]
-    · simp [hij, diagonal_apply_ne _ hij]
+    · simp [hij]
   rw [hD]
   conv_rhs => rw [show (b : GL (Fin n) F) = (b * (diagGL F n (diagUnits hb))⁻¹) *
     diagGL F n (diagUnits hb) by group]

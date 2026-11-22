@@ -27,7 +27,7 @@ theorem coord_isIntegral (V : HSp D) (hL : V.L0 = Submodule.span (𝓞 D.host.E)
       obtain ⟨j, rfl⟩ := hy
       by_cases h : j = k
       · exact ⟨1, by simp [h]⟩
-      · exact ⟨0, by simp [Finsupp.single_apply, h]⟩
+      · exact ⟨0, by simp [h]⟩
     | zero => exact ⟨0, by simp⟩
     | add y z _ _ hy hz =>
       obtain ⟨a, ha⟩ := hy
@@ -122,7 +122,7 @@ theorem card_stab_le (V : HSp D) (hg : V.gram = 1)
         ((inclR (Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.Af D.host.F)) ∘ (Pi.single b 1))) k =
           (inclR (Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.Af D.host.F)) ((u x : Matrix (Fin V.rank) (Fin V.rank) D.host.E) k b)
       rw [← RingHom.map_mulVec]
-      simp [Matrix.mulVec_single_one]
+      simp
     rw [e] at h2
     exact coord_isIntegral V hL (mem_lattice_of_rational_mem_completion V _ h2) a
   let f : Formalism.UG.stabAt (GlobalTheory.Mass.ratIn (Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.Af D.host.F) D.sp.cm.sig V.gram)

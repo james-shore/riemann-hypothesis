@@ -29,8 +29,6 @@ theorem hasRelCompl_sup {X U : Submodule K V} (hXs : StableUnder f X) (hUs : Sta
   | exact @_root_.GlobalTheory.ComplementedSup.complemented_sup
   | exact _root_.GlobalTheory.ComplementedSup.complemented_sup
   | (apply _root_.GlobalTheory.ComplementedSup.complemented_sup <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ComplementedSup.complemented_sup <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ComplementedSup.complemented_sup <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ComplementedSup.complemented_sup ..)
 
 end General

@@ -50,7 +50,7 @@ theorem lat_basis {F : Type} [Field F] [NumberField F] (v : HeightOneSpectrum (�
   refine ⟨Matrix.of fun i j => w (e j) i, ?_, ?_⟩
   · have hA : (Matrix.of fun i j => w (e j) i) = (Pi.basisFun (v.adicCompletion F) (Fin n)).toMatrix (bK.reindex e.symm) := by
       refine Matrix.ext fun i j => ?_
-      simp [Module.Basis.toMatrix_apply, Module.Basis.reindex_apply, bK, Module.Basis.mk_apply]
+      simp [Module.Basis.toMatrix_apply, bK]
     rw [hA]
     letI := (Pi.basisFun (v.adicCompletion F) (Fin n)).invertibleToMatrix (bK.reindex e.symm)
     exact isUnit_of_invertible _

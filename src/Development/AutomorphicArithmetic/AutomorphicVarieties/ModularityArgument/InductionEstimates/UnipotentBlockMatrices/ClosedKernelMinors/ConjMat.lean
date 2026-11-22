@@ -23,7 +23,7 @@ private theorem exBlock {R : Type} [CommRing R] (C : Matrix (Fin 2) (Fin 2) R) :
   obtain ⟨i, rfl⟩ := finSumFinEquiv.surjective i
   obtain ⟨j, rfl⟩ := finSumFinEquiv.surjective j
   rcases i with i | i <;> rcases j with j | j <;> fin_cases i <;> fin_cases j <;>
-    simp [unipMatrix, blockEntry_apply, Matrix.one_apply, Fin.ext_iff, vL, vR]
+    simp [unipMatrix, blockEntry_apply, vL, vR]
 
 private theorem triang {R : Type} [CommRing R] (a d : GL (Fin 2) R) (C : Matrix (Fin 2) (Fin 2) R) :
     ∃ Z : UPos (2 + 2) 2 → R,

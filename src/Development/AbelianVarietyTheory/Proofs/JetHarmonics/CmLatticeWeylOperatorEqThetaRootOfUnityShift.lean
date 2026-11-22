@@ -79,7 +79,7 @@ theorem not_half (d : ℕ) (hd : 0 < d) : ¬ InOK d (0 - 1 / 2) := by
   have hv : v = 0 := by
     rcases him with h | h
     · exact h
-    · exfalso; first | exact hs.ne' h | omega | (simp at h; omega)
+    · exfalso; first | exact hs.ne' h | omega
   subst hv
   have : (2 * u : ℝ) = -1 := by simp at hre; linarith
   have : 2 * u = -1 := by exact_mod_cast this

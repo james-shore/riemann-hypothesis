@@ -91,10 +91,8 @@ theorem exists_eval : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (d
         map_add' := Matrix.mulVec_add _
         map_smul' := fun c x => Matrix.mulVec_smul _ c x
         left_inv := fun x => by
-          change (S.ε (a₀.comp f) (h₀.comp g)).mulVec ((S.ε (h₀.comp g) (a₀.comp f)).mulVec x) = x
           rw [Matrix.mulVec_mulVec, hE2, Matrix.one_mulVec]
         right_inv := fun x => by
-          change (S.ε (h₀.comp g) (a₀.comp f)).mulVec ((S.ε (a₀.comp f) (h₀.comp g)).mulVec x) = x
           rw [Matrix.mulVec_mulVec, hE1, Matrix.one_mulVec] }
     let w0 : P →ₛₗ[h₀.f.comp a.f] (Fin d → Q₀.A) :=
       { toFun := fun x j => a₀.f (u x j)

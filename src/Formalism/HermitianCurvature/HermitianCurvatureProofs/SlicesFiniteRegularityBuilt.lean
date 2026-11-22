@@ -385,7 +385,6 @@ theorem castV_self {a : ℕ} (h : a = a) (v : Fin (2 * a + k + 1) → ℂ) : D.c
 theorem castF_self {a : ℕ} (h : a = a) (F : B.Mat k a → E) : D.castF h F = F := by
   first
     | rfl
-    | (funext g; simp [D.castF, D.castM])
 
 theorem castF_uwG {a b : ℕ} (e : a = b) (z z' : Fin (2 * b + k + 1) → ℂ) (F : B.Mat k b → E) (j : ℕ)
     (hj : j ≤ b) (hj' : j ≤ a) (w : List C.Letter) (x : Wd.Ix (Fin w.length)) :
@@ -449,7 +448,7 @@ theorem lowV_liftVec {k i ρ j : ℕ} (hj : j = i) (e : i + ρ = j + ρ) (v : Fi
   subst hj
   funext x
   have hx := x.isLt
-  simp only [U.lowV, D.castV, liftVec, Fin.cast_mk, Fin.coe_cast, Fin.val_mk]
+  simp only [U.lowV, D.castV, liftVec, Fin.cast_mk, Fin.val_mk]
   split_ifs with hcond
   · congr 1
     apply Fin.ext
@@ -578,7 +577,7 @@ theorem pos_levels (hL : LettersDD) (hP : PosCore) (hI : IntG) (hT : OrbitSliceI
     simp only [P5.mmUser, P5.nV, hPk, hPr, hnd]
   have hAU : P5.Auser P0 N = 127 * ((r : ℝ) + 1) ^ 3 * ((N : ℝ) * (nd : ℝ) ^ 2 + (nd : ℝ) ^ 3) := by
     simp only [P5.Auser, P5.nV, hPk, hPr, hnd]
-    try (push_cast; try ring)
+    try (push_cast)
   have hX1 : (1 : ℝ) ≤ (N : ℝ) * (nd : ℝ) ^ 2 + (nd : ℝ) ^ 3 := by exact_mod_cast b5
   have hAsR : (As : ℝ) = 11 * ((N : ℝ) * (nd : ℝ) ^ 2 + (nd : ℝ) ^ 3) + 5 := by
     rw [hAs]; push_cast; ring
@@ -659,7 +658,6 @@ theorem contDjU : Continuous (DjU k j ρ) := by
   unfold U.DjU U.Zh
   first
     | fun_prop
-    | exact Continuous.matrix_det (by fun_prop)
 
 section loc
 
@@ -1193,7 +1191,7 @@ lemma Zu_apply (n : ℕ) (t : ℂ) (u : G.UT (n + 1) → ℂ) (a b : Fin (n + 1)
 lemma Zu_entry (n : ℕ) (t : ℂ) (u : G.UT (n + 1) → ℂ) (q : G.UT (n + 1)) :
     Zu n t u q.1.1.rev q.1.2 = t * u q := by
   rw [Zu_apply, Fin.rev_rev]
-  simp [G.upper, G.strictUpper, Matrix.one_apply, ne_of_lt q.2, q.2]
+  simp [G.upper, G.strictUpper, ne_of_lt q.2, q.2]
 
 lemma norm_u_le (n : ℕ) {t : ℂ} (ht : t ≠ 0) (u : G.UT (n + 1) → ℂ) :
     ‖u‖ ≤ ‖t‖⁻¹ * ‖Zu n t u‖ := by
@@ -1244,7 +1242,7 @@ private theorem det_upper_eq_one' {d : ℕ} (u : G.UT d → ℂ) : (G.upper u).d
   · intro i j hij
     have hij' : j < i := hij
     have hne : i ≠ j := (ne_of_lt hij').symm
-    simp [G.upper, G.strictUpper, Matrix.one_apply, hne, not_lt.mpr hij'.le]
+    simp [G.upper, G.strictUpper, hne, not_lt.mpr hij'.le]
 
 lemma detM_Zu (n : ℕ) {t : ℂ} (ht : t ≠ 0) (u : G.UT (n + 1) → ℂ) : G.detM (Zu n t u) ≠ 0 := by
   show Matrix.det (t • G.wMat (n + 1) * G.upper u) ≠ 0
@@ -1306,13 +1304,10 @@ lemma cont_psiU (n : ℕ) : Continuous fun u : G.UT (n + 1) → ℂ => G.psi U.b
   unfold G.psi
   first
     | fun_prop
-    | exact Complex.continuous_exp.comp (continuous_const.mul (Complex.continuous_ofReal.comp
-        (Complex.continuous_re.comp (continuous_const.mul hSU))))
 
 lemma norm_psiU (β w : ℂ) : ‖G.psi β w‖ = 1 := by
   first
     | simp [G.psi, Complex.norm_exp]
-    | (rw [G.psi, mul_comm]; exact Complex.norm_exp_ofReal_mul_I _)
 
 end Formalism.FourierDecayAlt.P.JCTx6.Int
 
@@ -1552,8 +1547,6 @@ theorem ldV_cle (e : E ≃L[ℂ] E') (X : Mat k r) (f : Mat k r → E) :
   first
     | exact deriv_cle_comp ((e : E →L[ℂ] E').restrictScalars ℝ) ((e.symm : E' →L[ℂ] E).restrictScalars ℝ)
         (fun y => e.symm_apply_apply y) (fun t : ℝ => f (NormedSpace.exp (-((t : ℂ) • X)) * g)) 0
-    | exact deriv_cle_comp ((e : E →L[ℂ] E').restrictScalars ℝ) ((e.symm : E' →L[ℂ] E).restrictScalars ℝ)
-        (fun y => e.symm_apply_apply y) _ 0
 
 theorem rw_cle (e : E ≃L[ℂ] E') : ∀ (v : List (Mat k r)) (f : Mat k r → E),
     Rw v (fun g => e (f g)) = fun g => e (Rw v f g)
@@ -1656,7 +1649,6 @@ theorem cont_DjU (k j ρ : ℕ) : Continuous (fun g : B.Mat k (j + ρ) => U.DjU 
   unfold U.DjU U.Zh
   first
     | fun_prop
-    | exact Continuous.matrix_det (by fun_prop)
 
 theorem detM_Zv (n : ℕ) (t : ℂ) (u : G.UT (n + 1) → ℂ) :
     G.detM (G.ptLong (n + 1) t * G.upper u) = t ^ (n + 1) * (G.wMat (n + 1)).det := by
@@ -1697,8 +1689,6 @@ theorem Zv_decay (n : ℕ) {t : ℂ} (ht : t ≠ 0) (u : G.UT (n + 1) → ℂ) {
   rw [← Real.mul_rpow hm.le (by positivity)]
   first
     | exact Real.rpow_le_rpow_of_nonpos (by positivity) hxy (by linarith)
-    | (rw [Real.rpow_neg (by positivity), Real.rpow_neg (by positivity)]
-       exact inv_anti₀ (Real.rpow_pos_of_pos (by positivity) _) (Real.rpow_le_rpow (by positivity) hxy ha))
 
 end Formalism.FourierDecayAlt.P.JCTx6.Pos
 

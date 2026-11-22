@@ -43,7 +43,7 @@ theorem exists_lift_sys : ∀ (p : ℕ) [Fact p.Prime] (D : Datum p) (h₀ : Mod
     obtain ⟨i, rfl⟩ := hy
     obtain ⟨hw, e⟩ := (key n hn hnp i).choose_spec.choose_spec
     have hbi : h n (b i) = (key n hn hnp i).choose := by
-      rw [hh']; simp [Module.Basis.constr_basis]
+      rw [hh']; simp
     refine ⟨_, hw, e.trans ?_⟩
     rw [hbi]
   | zero =>

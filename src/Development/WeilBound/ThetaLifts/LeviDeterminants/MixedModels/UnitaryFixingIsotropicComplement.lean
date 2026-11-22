@@ -106,7 +106,7 @@ theorem PositivityTheory.Mix.unitary_fixing_isotropic_complement : ∀ (F E : Ty
     have e2 : (2 : AE F E) • (mat m *ᵥ (mat u *ᵥ vy)) = (2 * s₀ * 2) • vx + (2 : AE F E) • (ιM *ᵥ z₀) + vy := by
       simp only [huy, hr, Matrix.mulVec_add, Matrix.mulVec_smul, hmx, hmι, one_smul, smul_add, hmy]
       funext i
-      simp only [Pi.add_apply, Pi.sub_apply, Pi.smul_apply, smul_eq_mul]
+      simp only [Pi.add_apply, Pi.smul_apply, smul_eq_mul]
       ring
     rw [e, ← Matrix.mulVec_smul, ← Matrix.mulVec_smul, e2]
     simp only [Matrix.mulVec_add, Matrix.mulVec_sub, Matrix.mulVec_smul, hUiι, hUix, hUiy]
@@ -142,7 +142,7 @@ theorem PositivityTheory.Mix.unitary_fixing_isotropic_complement : ∀ (F E : Ty
       · rw [pow_succ, ← Matrix.mulVec_mulVec, hAy, Matrix.mulVec_add, Matrix.mulVec_smul, h3, h1]
         push_cast
         funext i
-        simp only [Pi.add_apply, Pi.sub_apply, Pi.smul_apply, smul_eq_mul]
+        simp only [Pi.add_apply, Pi.smul_apply, smul_eq_mul]
         ring
   have hext : ∀ P Q : Matrix (Fin n) (Fin n) (AE F E), (∀ v, P *ᵥ v = Q *ᵥ v) → P = Q := by
     intro P Q h
@@ -160,7 +160,7 @@ theorem PositivityTheory.Mix.unitary_fixing_isotropic_complement : ∀ (F E : Ty
       have hL : (t : AE F E) • ((mat m' * Am) *ᵥ vy) = vy + ((t : AE F E) * t * c₀) • vx := by
         rw [← Matrix.mulVec_mulVec, hAy, Matrix.mulVec_add, Matrix.mulVec_smul, hm'x, smul_add, hm'y]
         funext i
-        simp only [Pi.add_apply, Pi.sub_apply, Pi.smul_apply, smul_eq_mul]
+        simp only [Pi.add_apply, Pi.smul_apply, smul_eq_mul]
         ring
       have hR : (t : AE F E) • ((Am ^ (t ^ 2) * mat m') *ᵥ vy) = vy + ((t : AE F E) * t * c₀) • vx := by
         rw [← Matrix.mulVec_mulVec, ← Matrix.mulVec_smul, hm'y, (hpow _).2.2]

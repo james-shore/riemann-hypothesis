@@ -21,7 +21,7 @@ private theorem lin_E {A : Type} [Ring A] [Algebra ℂ A] {n : ℕ} (F : Fin n �
   · simp [E]
   · rintro ⟨k, l⟩ _ hb
     have : ¬ (i = k ∧ j = l) := fun h => hb (by rw [h.1, h.2])
-    simp [E, Matrix.single_apply, this]
+    simp [E, this]
   · simp
 
 private theorem lin_lie {A : Type} [Ring A] [Algebra ℂ A] {n : ℕ} (F : Fin n → Fin n → A)

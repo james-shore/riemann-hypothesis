@@ -25,7 +25,7 @@ theorem exists_haar_fundDom_mass_one : ∀ (G : Type) [Group G] [TopologicalSpac
     intro x hx
     obtain ⟨γ, hγ⟩ := hcov x
     refine Set.mem_iUnion.2 ⟨γ⁻¹, Set.mem_smul_set.2 ⟨γ • x, hγ, ?_⟩, hx⟩
-    simp [Subgroup.smul_def, smul_eq_mul, mul_assoc]
+    simp [Subgroup.smul_def, smul_eq_mul]
   have hfin : μ₀ 𝓕 < ⊤ :=
     calc μ₀ 𝓕 ≤ μ₀ (⋃ γ : Γ, γ • K ∩ 𝓕) := measure_mono hsub
       _ ≤ ∑' γ : Γ, μ₀ (γ • K ∩ 𝓕) := measure_iUnion_le _

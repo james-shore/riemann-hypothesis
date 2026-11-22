@@ -159,7 +159,7 @@ theorem key (𝓗 : HodgeLat L ρ bar (p + q)) {σ σ' : E →+* Ω} {v : Fin p 
     have hreg' : ∀ j, θ (b j) ∈ regAt ξ x := fun j => hθL _ (hbL j)
     have e : ((0 : V), θ) = ∑ j, (⟨θ (b j), hreg' j⟩ : regAt ξ x) • c j := by
       have e0 : ∀ j, (⟨θ (b j), hreg' j⟩ : regAt ξ x) • c j = θ (b j) • c j := fun j => rfl
-      simp only [e0, hc]
+      simp only [hc]
       refine Prod.ext ?_ ?_
       · simp [Prod.fst_sum]
       · simp only [Prod.snd_sum, Prod.smul_snd]

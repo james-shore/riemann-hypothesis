@@ -35,7 +35,7 @@ theorem rowGen_detPol (n : ℕ) (a b : Fin n) :
     by_cases hp : p = b
     · subst hp
       simp [rowGen, hA]
-    · simp [rowGen, hA, hp, Matrix.updateRow_ne hp]
+    · simp [rowGen, hA, hp]
   rw [h1]
   by_cases hab : a = b
   · subst hab

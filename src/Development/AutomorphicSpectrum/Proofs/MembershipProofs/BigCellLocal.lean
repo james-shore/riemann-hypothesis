@@ -52,10 +52,10 @@ theorem Wm_det : IsUnit (Wm A β).det := by
 theorem map_one' : (1 : Matrix β β A).map σ = 1 := Matrix.map_one _ (map_zero σ) (map_one σ)
 
 theorem iso_Wm : Iso σ (Wm A β) (Wm A β) (Wm A β) := by
-  simp [Iso, Wm, fromBlocks_multiply, fromBlocks_transpose, fromBlocks_map, map_one']
+  simp [Iso, Wm, fromBlocks_multiply, fromBlocks_transpose, fromBlocks_map]
 
 theorem iso_n {s : Matrix β β A} (hs : s.map σ = -sᵀ) : Iso σ (Wm A β) (Wm A β) (fromBlocks 1 s 0 1) := by
-  simp [Iso, Wm, fromBlocks_multiply, fromBlocks_transpose, fromBlocks_map, map_one', hs]
+  simp [Iso, Wm, fromBlocks_multiply, fromBlocks_transpose, fromBlocks_map, hs]
 
 theorem iso_col {a b c d : Matrix β β A} (h : Iso σ (Wm A β) (Wm A β) (fromBlocks a b c d)) :
     cᵀ * a.map σ + aᵀ * c.map σ = 0 := by

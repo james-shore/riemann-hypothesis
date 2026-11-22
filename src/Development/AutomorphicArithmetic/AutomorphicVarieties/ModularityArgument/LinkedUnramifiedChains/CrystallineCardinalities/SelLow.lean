@@ -75,7 +75,6 @@ theorem UpperTheory.V.Z.J.selLow :
   have hop : IsOpen ((adK B k).ker : Set F.Γ) := by
     first
       | exact adOpen l O F C₀ hF hl B k hc
-      | exact (adOpen l O F C₀ hF hl ρ B hρ hB hc k).1
   have hmain : (ZL F (adK B k) fun w => Z w).Finite ∧
       Nat.card (Matrix (Fin 3) (Fin 3) (Ok l O k)) * ∏ w, Nat.card (Z w) ≤
         (ZL F (adK B k) fun w => Z w).ncard * (HomMu l k F.eps (adK B k)).ncard *

@@ -117,7 +117,7 @@ theorem exists_op_of_UAt {F E : Type} [Field F] [NumberField F] [Field E] [Numbe
   set p : Fin n × Fin d → AF F := liftI (fun i => evI F (y i)) with hpdef
   have hyp : y + u • (-y) = p := by
     funext i
-    simp only [Pi.add_apply, Pi.smul_apply, Pi.neg_apply, smul_eq_mul, hudef, hpdef, liftI, evI,
+    simp only [Pi.add_apply, hudef, hpdef, liftI, evI,
       RingEquiv.symm_apply_apply]
     refine Prod.ext ?_ ?_
     · show (y i).1 + 0 * (-(y i)).1 = (y i).1

@@ -51,7 +51,7 @@ private lemma eq_zero_of_mem_span_single_of_not {r : ℕ} (p : Fin r → Prop) (
     obtain ⟨i, rfl⟩ := hy
     intro k hk
     have hne : k ≠ i.1 := fun h => hk (by rw [h]; exact i.2)
-    simp [Pi.single_apply, hne]
+    simp [hne]
   | zero => intro k _; rfl
   | add y z _ _ hy hz => intro k hk; simp [hy k hk, hz k hk]
   | smul a y _ hy => intro k hk; simp [hy k hk]
@@ -121,7 +121,7 @@ theorem exists_perm (ε : Fin r → Bool) (x : Fin r → ℝ) (hx : ∀ i, x i �
   rw [hJ] at h
   have hneg : Nᴴ * Matrix.diagonal (fun i => ((-s i : ℝ) : ℂ)) * N = Matrix.diagonal fun i => ((-x i : ℝ) : ℂ) := by
     have hd : ∀ v : Fin r → ℝ, Matrix.diagonal (fun i => ((-v i : ℝ) : ℂ)) = -Matrix.diagonal (fun i => (v i : ℂ)) := by
-      intro v; ext i j; by_cases hij : i = j <;> simp [Matrix.diagonal_apply, hij]
+      intro v; ext i j; by_cases hij : i = j <;> simp [hij]
     rw [hd, hd, Matrix.mul_neg, Matrix.neg_mul, h]
   have c1 := card_pos_le s x N h
   have c2 := card_pos_le (fun i => -s i) (fun i => -x i) N hneg
@@ -213,7 +213,7 @@ theorem exists_conj_diag (ε : Fin r → Bool) (x : Fin r → ℝ) (hx : ∀ i, 
     · by_cases hij : i = j
       · subst hij
         simp [permM]
-      · simp [permM, Matrix.one_apply, hij, Ne.symm hij]
+      · simp [permM, hij, Ne.symm hij]
     · intro k _ hk
       have hik : i ≠ y k := fun e => hk (by simp [e])
       simp [permM, hik]
@@ -479,7 +479,7 @@ theorem exists_matrix (hc : IsCMExt F E σ) (h1 : ∀ y i, Ψ (sigR w.Completion
     rw [e2, Matrix.diagonal_apply]
     by_cases hij : i = j
     · subst hij; simp
-    · simp [hij, Pi.single_apply, Ne.symm hij]
+    · simp [hij, Ne.symm hij]
   · have ht := torUnit_diagH_alphaRat_eq_one_tmul_alpha P w.Completion
     have hg : ((matHom w.Completion σ J (gam h) : GL (Fin r) (w.Completion ⊗[F] E)) :
         Matrix (Fin r) (Fin r) (w.Completion ⊗[F] E)) = mulMat φ (1 ⊗ₜ[F] alpha P) := by

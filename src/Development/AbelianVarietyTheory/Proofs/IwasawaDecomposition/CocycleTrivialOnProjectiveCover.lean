@@ -24,15 +24,12 @@ private theorem valR_ne_zero_of_mem_basicOpen {A : Type} [CommRing A] {X : Schem
     rw [← h3]
     first
       | exact (Iso.hom_inv_id_apply (Scheme.ΓSpecIso (CommRingCat.of A)) _).symm
-      | simp
   have h4 : z ∈ w ⁻¹ᵁ X.basicOpen s := hs
   rw [Scheme.preimage_basicOpen] at h4
   have e1 : (Sp A).basicOpen ((w.appLE V ⊤ h).hom s) = ⊤ ⊓ (Sp A).basicOpen ((w.app V).hom s) := by
     show (Sp A).basicOpen ((Sp A).presheaf.map (homOfLE h).op ((w.app V).hom s)) = _
     first
       | exact Scheme.basicOpen_res _ _ _
-      | rw [Scheme.basicOpen_res]
-      | simp only [Scheme.basicOpen_res]
   have h2 : z ∈ (Sp A).basicOpen ((w.appLE V ⊤ h).hom s) := by
     rw [e1, top_inf_eq]
     exact h4
@@ -198,7 +195,6 @@ theorem exists_cover {O : Type} [CommRing O] {X : Scheme.{0}} {s : X ⟶ Sp O} (
   · have ha : IsAffineOpen (Proj.basicOpen (grading O N) (F i)) := by
       first
         | exact Proj.isAffineOpen_basicOpen (grading O N) (F i) (hF i) hd
-        | exact Proj.isAffineOpen_basicOpen (grading O N) (F i) (f_deg := hF i) (hm := hd)
     exact ha.preimage e
   · exact eq_top_iff.mpr fun x _ => TopologicalSpace.Opens.mem_iSup.mpr (hcov x)
   · have h6 := Scheme.preimage_basicOpen e
@@ -240,18 +236,14 @@ private theorem le_preimage_basicOpen_of_valR_ne_zero {k : Type} [Field k] {X : 
         ((Scheme.ΓSpecIso (CommRingCat.of k)).hom.hom ((w.appLE V ⊤ h).hom s)) = (w.appLE V ⊤ h).hom s := by
       first
         | exact Iso.hom_inv_id_apply (Scheme.ΓSpecIso (CommRingCat.of k)) _
-        | simp
     rwa [e] at h3
   have h5 : (Sp k).basicOpen ((w.appLE V ⊤ h).hom s) = ⊤ := by
     first
       | exact Scheme.basicOpen_of_isUnit _ hu
-      | exact Scheme.basicOpen_of_isUnit hu
   have e1 : (Sp k).basicOpen ((w.appLE V ⊤ h).hom s) = ⊤ ⊓ (Sp k).basicOpen ((w.app V).hom s) := by
     show (Sp k).basicOpen ((Sp k).presheaf.map (homOfLE h).op ((w.app V).hom s)) = _
     first
       | exact Scheme.basicOpen_res _ _ _
-      | rw [Scheme.basicOpen_res]
-      | simp only [Scheme.basicOpen_res]
   rw [e1, top_inf_eq] at h5
   have h6 : w ⁻¹ᵁ X.basicOpen s = (Sp k).basicOpen ((w.app V).hom s) := Scheme.preimage_basicOpen w s
   exact (h6.trans h5).ge
@@ -284,7 +276,6 @@ private theorem valF_eq_valR_iwasawa_decomposition {k : Type} [Field k] {X : Sch
   unfold valF valR
   first
     | rfl
-    | (split_ifs <;> rfl)
 
 private theorem valR_one_iwasawa_decomposition {A : Type} [CommRing A] {X : Scheme.{0}} (x : Sp A ⟶ X) (V : X.Opens)
     (h : ⊤ ≤ x ⁻¹ᵁ V) : valR x V 1 = 1 := by

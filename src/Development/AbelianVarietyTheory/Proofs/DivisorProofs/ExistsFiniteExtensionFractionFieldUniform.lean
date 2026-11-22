@@ -25,8 +25,6 @@ theorem exists_split_ext (K : Type) [Field K] (C : Type) [CommRing C] (Ï† : K â†
   | exact @_root_.GlobalTheory.FiniteFieldOfPoints.exists_finite_field_of_points
   | exact _root_.GlobalTheory.FiniteFieldOfPoints.exists_finite_field_of_points
   | (apply _root_.GlobalTheory.FiniteFieldOfPoints.exists_finite_field_of_points <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiniteFieldOfPoints.exists_finite_field_of_points <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiniteFieldOfPoints.exists_finite_field_of_points <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiniteFieldOfPoints.exists_finite_field_of_points ..)
 
 end GlobalTheory.Mum.RatTors

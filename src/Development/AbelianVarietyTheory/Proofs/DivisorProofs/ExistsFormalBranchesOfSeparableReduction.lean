@@ -18,7 +18,7 @@ theorem constantCoeff_comp_shiftHom (D : ℕ) (c : Fin D → ℂ) :
   apply MvPolynomial.ringHom_ext
   · intro r
     simp only [shiftHom, RingHom.coe_comp, Function.comp_apply, AlgHom.toRingHom_eq_coe, AlgHom.coe_toRingHom, MvPolynomial.aeval_C, MvPolynomial.eval_C]
-    first | rfl | simp [MvPowerSeries.algebraMap_apply] | simp [Algebra.algebraMap_eq_smul_one]
+    first | rfl
   · intro i; simp [shiftHom]
 
 theorem shiftHom_injective (D : ℕ) (c : Fin D → ℂ) : Function.Injective (shiftHom D c) := by

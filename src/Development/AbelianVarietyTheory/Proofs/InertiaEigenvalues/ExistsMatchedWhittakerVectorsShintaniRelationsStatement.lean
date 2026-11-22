@@ -51,4 +51,4 @@ theorem _root_.GlobalTheory.T.exists_matchedWhittakerVectors_shintaniRelations :
       (∃ U : Subgroup (GL (Fin (m + 1)) (Af E)), IsOpen (U : Set (GL (Fin (m + 1)) (Af E))) ∧
         ∀ u ∈ U, ∀ h, κ (h * finGL E (m + 1) u) = κ h) ∧
       ∃ h₀ ∈ GlobalTheory.JSW.supS E (m + 1) S, 0 < κ h₀ ∧ GlobalTheory.JSW.whit φ' h₀ ≠ 0 := by
-  first | (exact @GlobalTheory.JSW.MatchedVec.matched_vectors) | (exact GlobalTheory.JSW.MatchedVec.matched_vectors) | (intros; apply GlobalTheory.JSW.MatchedVec.matched_vectors  <;> assumption)
+  first | (exact @GlobalTheory.JSW.MatchedVec.matched_vectors)

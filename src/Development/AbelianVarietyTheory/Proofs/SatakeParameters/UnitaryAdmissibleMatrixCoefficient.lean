@@ -15,8 +15,6 @@ theorem exists_mem_eq_on_of_finiteDimensional {V : Type} [AddCommGroup V] [Modul
   | exact @_root_.GlobalTheory.ExistsRepresentation.exists_represent
   | exact _root_.GlobalTheory.ExistsRepresentation.exists_represent
   | (apply _root_.GlobalTheory.ExistsRepresentation.exists_represent <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ExistsRepresentation.exists_represent <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ExistsRepresentation.exists_represent <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ExistsRepresentation.exists_represent ..)
 
 theorem finite_orbit {G V : Type} [Group G] [TopologicalSpace G] [IsTopologicalGroup G]

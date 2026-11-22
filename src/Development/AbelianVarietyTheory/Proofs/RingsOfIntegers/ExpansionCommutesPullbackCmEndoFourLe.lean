@@ -51,7 +51,7 @@ theorem unitK_endK (f : G ⟶ G) [IsMonHom f] : unitK (G := G) ≫ endK f = unit
   apply pullback.hom_ext
   · simp only [unitK, endK, Category.assoc, pullback.lift_fst, pullback.lift_fst_assoc]
     exact congrArg (jK V ≫ ·) he
-  · simp only [unitK, endK, Category.assoc, pullback.lift_snd, pullback.lift_snd_assoc, Category.comp_id]
+  · simp only [unitK, endK, Category.assoc, pullback.lift_snd, Category.comp_id]
 
 end
 

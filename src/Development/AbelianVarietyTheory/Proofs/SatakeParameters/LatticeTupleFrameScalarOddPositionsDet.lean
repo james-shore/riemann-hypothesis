@@ -92,7 +92,6 @@ theorem scal_tauV : ∀ {p : ℕ} [Fact p.Prime] (X : Sys p) (D : D7) (pos : (Σ
   rw [← Fintype.prod_equiv pos _ _ (fun _ => rfl), hkN, hkD, GlobalTheory.FrameB.sS, ← Finset.prod_inv_distrib,
     ← Finset.prod_mul_distrib, ← Finset.prod_mul_distrib]
   refine Finset.prod_congr rfl fun b _ => ?_
-  beta_reduce
   rw [Equiv.symm_apply_apply]
   by_cases ho : IsOddPos b.2
   · simp only [if_pos ho]

@@ -11,7 +11,7 @@ theorem pl_monic (s : Finset ℕ) (f : ℕ → ℂ) : (∏ i ∈ s, (X + C (f i)
 
 theorem pl_natDegree (s : Finset ℕ) (f : ℕ → ℂ) : (∏ i ∈ s, (X + C (f i))).natDegree = s.card := by
   rw [natDegree_prod_of_monic _ _ (fun i _ => monic_X_add_C (f i))]
-  simp [natDegree_X_add_C]
+  simp
 
 theorem pl_top (s : Finset ℕ) (f : ℕ → ℂ) : (∏ i ∈ s, (X + C (f i))).coeff s.card = 1 := by
   have h := (pl_monic s f).coeff_natDegree
@@ -65,7 +65,7 @@ theorem part_ex (P : M.Par) (m : ℕ) (hm : P.k = m + 2) (ρ : M.Ty P) (ex : Fin
     obtain ⟨l, hl, hlI⟩ := hex
     rw [h1] at hlI
     have hss : s ⊂ Finset.Icc 1 (m + 1) :=
-      (Finset.ssubset_iff_of_subset Finset.sdiff_subset).2 ⟨l, hlI, by simp [s, hl]⟩
+      (Finset.ssubset_iff_of_subset Finset.sdiff_subset).2 ⟨l, hlI, by simp [hl]⟩
     have := Finset.card_lt_card hss
     rwa [card_Icc_one] at this
   refine ⟨fun i => (∏ i ∈ s, (X + C (f i))).coeff i, fun u => ?_⟩

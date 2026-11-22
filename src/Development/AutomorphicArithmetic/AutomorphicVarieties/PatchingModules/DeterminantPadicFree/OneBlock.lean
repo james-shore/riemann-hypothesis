@@ -121,7 +121,7 @@ theorem UpperTheory.V.Pa.Det.oneBlock :
       apply Units.ext
       have t2m := congr_arg (fun M => Matrix.map M f₂) (hr' g)
       simp only [Matrix.map_mul, Matrix.map_map] at t2m
-      simp only [Units.val_mul, pushRep, MonoidHom.comp_apply, coe_generalLinearGroup_map_eq_map, Matrix.map_map]
+      simp only [Units.val_mul, coe_generalLinearGroup_map_eq_map, Matrix.map_map]
       have fe1 : (⇑(f₂.comp f₁) ∘ ⇑(algebraMap (PowerSeries K) (FractionRing (PowerSeries K)))) =
           (⇑f₂ ∘ fun a => algebraMap (PowerSeries K) (FractionRing (PowerSeries K)) (j₁ a)) :=
         funext fun a => by simp [hf₁]
@@ -130,8 +130,7 @@ theorem UpperTheory.V.Pa.Det.oneBlock :
         funext fun a => by simp [hf₂]
       rw [fe1, fe2]
       exact t2m
-    simp only [pushRep, MonoidHom.comp_apply, MulEquiv.coe_toMonoidHom, MulAut.conj_apply, MulAut.conj_inv_apply, map_mul, map_inv,
-      inv_inv] at t1 ⊢
+    simp only [pushRep, MonoidHom.comp_apply, MulEquiv.coe_toMonoidHom, MulAut.conj_inv_apply, map_mul, map_inv] at t1 ⊢
     calc _ = (GeneralLinearGroup.map (f₂.comp f₁) (r g) * GeneralLinearGroup.map (f₂.comp f₁) Q₀) *
           GeneralLinearGroup.map f₂ P *
           GeneralLinearGroup.map (algebraMap (PowerSeries K') (FractionRing (PowerSeries K'))) P₂ := by

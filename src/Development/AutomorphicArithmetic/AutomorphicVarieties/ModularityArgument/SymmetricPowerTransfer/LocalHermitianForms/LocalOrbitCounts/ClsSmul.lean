@@ -25,9 +25,9 @@ private theorem cls_smul (k : Kˣ) (Λ : Set (Etau K τ)) : cls τ (((k : K) •
   ext S
   constructor
   · rintro ⟨s, rfl⟩
-    exact ⟨s * k, by simp [← Set.image_comp, Function.comp_def, smul_smul]⟩
+    exact ⟨s * k, by simp [← Set.image_comp, smul_smul]⟩
   · rintro ⟨s, rfl⟩
-    exact ⟨s * k⁻¹, by simp [← Set.image_comp, Function.comp_def, smul_smul]⟩
+    exact ⟨s * k⁻¹, by simp [← Set.image_comp, smul_smul]⟩
 
 private theorem of_cls {Λ Λ' : Set (Etau K τ)} (h : cls τ Λ = cls τ Λ') : ∃ k : Kˣ, Λ = ((k : K) • ·) '' Λ' :=
   (h ▸ (⟨1, by simp⟩ : Λ ∈ cls τ Λ) : Λ ∈ cls τ Λ')
@@ -37,9 +37,9 @@ private theorem cls_mul (z : (Etau K τ)ˣ) (Λ : Set (Etau K τ)) :
   ext S
   constructor
   · rintro ⟨_, ⟨s, rfl⟩, rfl⟩
-    exact ⟨s, by simp [← Set.image_comp, Function.comp_def]⟩
+    exact ⟨s, by simp [← Set.image_comp]⟩
   · rintro ⟨s, rfl⟩
-    exact ⟨_, ⟨s, rfl⟩, by simp [← Set.image_comp, Function.comp_def]⟩
+    exact ⟨_, ⟨s, rfl⟩, by simp [← Set.image_comp]⟩
 
 private theorem norm_int (L : IsLoc O Δ) (hD : τ ^ 2 - 4 ≠ 0) {Λ : Set (Etau K τ)} (hΛ : IsLat O τ Λ) {x : Etau K τ} (hx : ∀ y ∈ Λ, x * y ∈ Λ) :
     QuadraticAlgebra.norm x ∈ (algebraMap O K).range := by

@@ -26,7 +26,6 @@ theorem isSeparated_toZ : ∀ {g n : ℕ} (F : SFam g n (zetaAway n)), IsSeparat
   have ht : toZ F.X = F.s ≫ toZ (Sp (cycAway n)) := by
     first
     | exact specULiftZIsTerminal.hom_ext _ _
-    | exact specZIsTerminal.hom_ext _ _
   rw [ht]
   infer_instance
 

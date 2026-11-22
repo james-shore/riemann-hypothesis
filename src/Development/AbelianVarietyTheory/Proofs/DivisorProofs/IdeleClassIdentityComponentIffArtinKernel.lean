@@ -69,8 +69,6 @@ theorem mk_mem_connectedComponent_iff {art : Ideles K →* GlobalTheory.HeckeGal
         rw [map_inv, mul_inv_rev]
         first
           | exact (inv_mul_cancel_comm _ _).symm
-          | (rw [mul_comm, mul_inv_cancel_left])
-          | simp [mul_comm, mul_assoc]
       show _ ∈ connectedComponent 1
       rw [e]
       have hg : Continuous (fun c : (InfiniteAdeleRing K)ˣ =>

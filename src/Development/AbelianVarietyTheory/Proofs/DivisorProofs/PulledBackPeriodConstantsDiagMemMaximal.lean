@@ -129,7 +129,7 @@ theorem periods_pos_diag : ∀ (n : ℕ) (V : Type) [CommRing V] [IsDomain V] [I
     unfold val
     refine gm_generic_of_closed _ _ V₁ (spMap f₁) z (Set.mem_iInter.2 fun k => ?_)
     have := hJc' (Sum.inr k)
-    simp only [Sum.elim_inr, Scheme.Hom.comp_apply] at this; exact this
+    simp only [Sum.elim_inr] at this; exact this
   obtain ⟨v₂, hv₂⟩ : ∃ v : V₁ˣ, isoVal w₁ (lift (toUnit (TK V₁) ≫ x a) (toUnit (TK V₁) ≫ x a)).left z J J' =
       gm (𝟙 _) z ⊤ (unitOn (Units.map (algebraMap V₁ (FractionRing V₁)).toMonoidHom v)) := by
     have hp : (lift (toUnit (TK V₁) ≫ x a) (toUnit (TK V₁) ≫ x a)).left = jK V₁ ≫ P := by
@@ -139,15 +139,15 @@ theorem periods_pos_diag : ∀ (n : ℕ) (V : Type) [CommRing V] [IsDomain V] [I
     refine gm_generic_of_closed _ _ V₁ P z ⟨Set.mem_iInter.2 fun _ => Set.mem_iInter.2 fun I => ?_,
       Set.mem_iInter.2 fun _ => Set.mem_iInter.2 fun I => ?_⟩
     · have := hJc (Sum.inl I)
-      simp only [Sum.elim_inl, Scheme.Hom.comp_apply] at this; exact this
+      simp only [Sum.elim_inl] at this; exact this
     · have := hJc' (Sum.inl I)
-      simp only [Sum.elim_inl, Scheme.Hom.comp_apply] at this; exact this
+      simp only [Sum.elim_inl] at this; exact this
   obtain ⟨v₃, hv₃⟩ : ∃ v : V₁ˣ, val (L.T.τ₀ ((n : ℤ) • a) ((n : ℤ) • a)) ((TK V₁).hom ≫ spMap κ₁) z J =
       gm (𝟙 _) z ⊤ (unitOn (Units.map (algebraMap V₁ (FractionRing V₁)).toMonoidHom v)) := by
     unfold val
     refine gm_generic_of_closed _ _ V₁ (spMap κ₁) z (Set.mem_iInter.2 fun k => ?_)
     have := hJc (Sum.inr k)
-    simp only [Sum.elim_inr, Scheme.Hom.comp_apply] at this; exact this
+    simp only [Sum.elim_inr] at this; exact this
   obtain ⟨k', hk', hkk⟩ := hfr z r₀ k hk
   rw [hkk, hv₁, hv₂, hv₃] at key
   have hmul : ∀ s t : (FractionRing V₁)ˣ,

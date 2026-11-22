@@ -77,7 +77,7 @@ private lemma formEq_eL_lemma_2 (m : ℕ) (g : Fin d → MvPowerSeries (Fin 1 ×
   erw [Ideal.Quotient.lift_mk]
   simp [psIn, hq]
   erw [Ideal.Quotient.lift_mk]
-  simp [psIn, hq]
+  simp
 
 theorem formEq_eL (hch : IsChartG t x0 d F act tg uvec x) (m : ℕ) (I : ULift (Finset (Fin 2))) :
     (x m).left ≫ cφG t ![𝟙 t.G, t.act.act H.w0] I =

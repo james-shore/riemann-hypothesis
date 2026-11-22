@@ -157,7 +157,7 @@ theorem commVal_eq (hG : GlobalFnsSt) (hA : IsAbelianScheme A) (hL : L.IsLB) {t 
       simp only [_root_.mul_one, _root_.one_mul]; abel) b hJ
   have v₂ : ∀ a b : Z ⟶ A, cubeVal t z J a b 1 = cubeVal t z J a 1 1 := fun a b => by
     simpa using (Rep.cube ht (fst Z A ≫ a) (snd Z A) 1).rigid hG hA hL (by
-      simp only [_root_.mul_one, _root_.one_mul]; abel) b hJ
+      simp only [_root_.mul_one]; abel) b hJ
   have v₃ : ∀ a b c : Z ⟶ A, cubeVal t z J a b c * (cubeVal t z J a c b)⁻¹ =
       cubeVal t z J a b 1 * (cubeVal t z J a 1 b)⁻¹ := fun a b c => by
     simpa using ((Rep.cube ht (fst Z A ≫ a) (fst Z A ≫ b) (snd Z A)).mul
@@ -187,7 +187,7 @@ theorem commVal_eq (hG : GlobalFnsSt) (hA : IsAbelianScheme A) (hL : L.IsLB) {t 
       hG hA hL (by
         rw [Category.assoc, Category.assoc, hx, ← hx', MonObj.comp_pow, _root_.mul_one, _root_.mul_one]
         module) y hJ
-    simp only [MonObj.comp_mul, MonObj.comp_one, lift_fst_assoc, lift_snd, Category.id_comp, _root_.mul_one] at e
+    simp only [MonObj.comp_one, lift_fst_assoc, lift_snd, Category.id_comp] at e
     have e' := congrArg Additive.ofMul e
     apply Additive.ofMul.injective
     simp only [ofMul_mul, ofMul_zpow, ofMul_inv] at e' ⊢
@@ -198,7 +198,7 @@ theorem commVal_eq (hG : GlobalFnsSt) (hA : IsAbelianScheme A) (hL : L.IsLB) {t 
       hG hA hL (by
         rw [Category.assoc, Category.assoc, hy, ← hy']
         module) x hJ
-    simp only [MonObj.comp_mul, MonObj.comp_one, lift_fst_assoc, lift_snd, Category.id_comp, _root_.mul_one] at e
+    simp only [MonObj.comp_one, lift_fst_assoc, lift_snd, Category.id_comp] at e
     have e' := congrArg Additive.ofMul e
     apply Additive.ofMul.injective
     simp only [ofMul_mul, ofMul_pow, ofMul_inv] at e' ⊢

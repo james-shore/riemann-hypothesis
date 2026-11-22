@@ -16,7 +16,7 @@ theorem boxEnt_norm_sq_eq {r : ℕ} (d : Fin r → ℝ) (hd : ∀ a, d a = 1 ∨
     · intro e; simp only [Prod.mk.injEq] at e; exact h.ne e.1
     · rintro ⟨a', b'⟩
       simp only [boxEnt, if_pos h, Prod.mk.injEq]
-      split_ifs <;> (try simp only [norm_neg, norm_mul, hdd, Complex.norm_I, norm_one, norm_zero]) <;> first | (norm_num; done) | (rename_i h1 h2; exact absurd (h1.1.symm.trans h2.1) h.ne)
+      split_ifs <;> (try simp only [norm_neg, hdd, norm_one, norm_zero]) <;> first | (norm_num; done) | (rename_i h1 h2; exact absurd (h1.1.symm.trans h2.1) h.ne)
   · subst h
     have haz : a ≠ z := fun e => hab (by rw [e])
     refine ⟨(a, a), (z, z), ?_, ?_⟩
@@ -28,7 +28,7 @@ theorem boxEnt_norm_sq_eq {r : ℕ} (d : Fin r → ℝ) (hd : ∀ a, d a = 1 ∨
     · intro e; simp only [Prod.mk.injEq] at e; exact h.ne e.1
     · rintro ⟨a', b'⟩
       simp only [boxEnt, if_neg (not_lt.2 h.le), if_pos h, Prod.mk.injEq]
-      split_ifs <;> (try simp only [norm_neg, norm_mul, hdd, Complex.norm_I, norm_one, norm_zero]) <;> first | (norm_num; done) | (rename_i h1 h2; exact absurd (h1.1.symm.trans h2.1) h.ne)
+      split_ifs <;> (try simp only [norm_mul, hdd, Complex.norm_I, norm_zero]) <;> first | (norm_num; done) | (rename_i h1 h2; exact absurd (h1.1.symm.trans h2.1) h.ne)
 
 theorem norm_boxVec : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (r : ℕ) (Ψ : Finset (E →+* ℂ)) (d : Ψ → Fin r → ℝ) (z : Fin r), (∀ τ a, d τ a = 1 ∨ d τ a = -1) → ∀ k, ‖boxVec d z k‖ = √2 := by
   intro E _ _ _ r Ψ d z hd k

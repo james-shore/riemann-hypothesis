@@ -54,7 +54,7 @@ theorem exists_mul_of_cellVan (hV : CellVan) {ι : Type} [DecidableEq ι] {H : �
       intro a ha ha1
       obtain ⟨e, he⟩ := h6 a ha ha1
       simp only [Fin.sum_univ_two, he]
-      simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+      simp only [Matrix.cons_val_zero, Matrix.cons_val_one]
       linear_combination e * hrel)
   simpa [Fin.sum_univ_two] using key
 

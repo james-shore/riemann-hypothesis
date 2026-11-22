@@ -88,7 +88,6 @@ theorem main : GlobalTheory.Published.HarishChandraFinite → GlobalTheory.Publi
             φ := φ
             φ_mem := hmem
             φ_inner := fun x y => by
-              beta_reduce
               rw [hT.mj j x y]
               change (∏ τ, ((Mult.dimK _ _ (kapAt (Wc D j) (sg0 D A3.A) τ) : ℚ) : ℂ)) *
                 Mult.ipM (R.MW j (sg0 D A3.A)) (ENNReal.ofReal (RealDat.nP F.lv2 false)⁻¹ • R.νW j) (R.fdW j) (φ x) (φ y) = _

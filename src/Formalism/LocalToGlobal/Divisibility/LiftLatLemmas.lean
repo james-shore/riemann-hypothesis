@@ -376,7 +376,6 @@ theorem equivFun_op (i : B.Pl × ℕ) (f : B.S.Forms) :
     B.S.basis.equivFun (B.op i f) = (B.opMat i).mulVec (B.S.basis.equivFun f) := by
   first
   | rw [Basis.equivFun_apply, Basis.equivFun_apply, BlockDat.opMat, LinearMap.toMatrix_mulVec_repr]
-  | (simp only [Basis.equivFun_apply, BlockDat.opMat]; exact (LinearMap.toMatrix_mulVec_repr _ _ _ _).symm)
 
 theorem I_opMat (i : B.Pl × ℕ) (x : Fin B.S.dim → K) :
     B.S.I ((B.opMat i).mulVec x) = (B.op i (B.S.basis.equivFun.symm x) : B.S.Cl → B.S.V) := by
@@ -407,7 +406,7 @@ theorem opMat_gaMat (hG : ∀ i g, Commute (B.op i) (B.r g)) (i : B.Pl × ℕ) (
 
 private theorem hform_eq_star_dotProduct_mulVec {n : ℕ} (H : Matrix (Fin n) (Fin n) K) (u v : Fin n → K) :
     hform H u v = star u ⬝ᵥ (H *ᵥ v) := by
-  simp [hform, Matrix.toLinearMapₛₗ₂'_apply, dotProduct, Matrix.mulVec, Finset.mul_sum, mul_assoc]
+  simp [hform, Matrix.toLinearMapₛₗ₂'_apply, dotProduct, Matrix.mulVec, Finset.mul_sum]
   simp only [starRingEnd_apply]
   exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring
 
@@ -448,7 +447,6 @@ theorem equivFun_end (g : Module.End K B.S.Forms) (f : B.S.Forms) :
     B.S.basis.equivFun (g f) = (LinearMap.toMatrix B.S.basis B.S.basis g).mulVec (B.S.basis.equivFun f) := by
   first
   | rw [Basis.equivFun_apply, Basis.equivFun_apply, LinearMap.toMatrix_mulVec_repr]
-  | (simp only [Basis.equivFun_apply]; exact (LinearMap.toMatrix_mulVec_repr _ _ g f).symm)
 
 variable (hc : Col.PairComm B.op) (hs : Col.SplitOver B.op)
 
@@ -541,9 +539,6 @@ theorem etaJ_ramw (j : J) (t : T) (w : HeightOneSpectrum (𝓞 K)) :
   have h := etaJ_units F P ψ Zs j t w
   first
   | exact_mod_cast h
-  | (have h' := congrArg (fun x : ℚ => (x : ℝ)) h
-     push_cast at h' ⊢
-     exact h')
 
 theorem JJ_ramw (j : J) (t : T) (w : HeightOneSpectrum (𝓞 K)) :
     ((F.JJ P ψ Zs j t w : ℚ) : ℝ) * (ramw w : ℝ) = (F.JJW P ψ Zs j t w : ℝ) := by
@@ -574,8 +569,6 @@ theorem coeff_dualPoly_of_lt (s : K) (R : K[X]) {i : ℕ} (hi : R.natDegree < i)
   have h1 : revAt R.natDegree i = i := by
     first
     | exact revAt_eq_self_of_lt hi
-    | (simp [revAt, revAtFun, not_le.mpr hi]; done)
-    | (simp only [revAt, revAtFun, Function.Embedding.coeFn_mk]; rw [if_neg (not_le.mpr hi)])
   rw [h1, coeff_eq_zero_of_natDegree_lt hi, zero_mul, mul_zero]
 
 theorem ne_zero_of_coeff_zero {R : K[X]} (h0 : R.coeff 0 = 1) : R ≠ 0 := by
@@ -639,9 +632,6 @@ theorem heckePoly_eval_zero {Pl : Type} (n : ℕ) (q : Pl → ℕ) (x : Pl × �
   first
   | (simp only [Col.heckePoly, Col.heckePolyOf]
      rw [eval_finset_sum, Finset.sum_eq_single 0 (fun b _ hb => by simp [hb]) (fun h => by simp at h)]
-     simp [h1])
-  | (simp only [Col.heckePoly, Col.heckePolyOf, eval_finset_sum, eval_mul, eval_C, eval_pow, eval_X]
-     rw [Finset.sum_range_succ']
      simp [h1])
 
 end Poly

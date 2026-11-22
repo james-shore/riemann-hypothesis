@@ -93,7 +93,7 @@ theorem rowAct_leadMinor (N h : ℕ) (hh : h ≤ N) (x : Fin N × Fin N → ℚ)
     rw [initMinor, AlgHom.map_det]
     congr 1
     ext p q
-    simp [rowAct, Matrix.mul_apply, aeval_X]
+    simp [rowAct, Matrix.mul_apply]
   rw [h1, cauchyBinet_oe]
   refine Finset.sum_congr rfl fun K _ => ?_
   congr 1

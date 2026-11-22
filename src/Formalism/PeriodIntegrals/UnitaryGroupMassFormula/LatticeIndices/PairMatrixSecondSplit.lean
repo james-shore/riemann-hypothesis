@@ -84,17 +84,16 @@ theorem surjCore (hJ : Formalism.UG.cT s J = J) (hJu : IsUnit J.det) : SurjCore 
   have hg : pm θ g1 g2 * pm θ gi1 gi2 = 1 := by
     apply matrix_ext_split θ
     · rw [Matrix.map_mul, pairMatrix_firstSplit, pairMatrix_firstSplit, Matrix.map_one _ (map_zero _) (map_one _)]
-      simp only [g1, gi1, Matrix.mul_assoc, c1, c3, hPP', Matrix.one_mul]
+      simp only [g1, gi1, Matrix.mul_assoc, c1, c3, hPP']
     · rw [Matrix.map_mul, pairMatrix_secondSplit, pairMatrix_secondSplit, Matrix.map_one _ (map_zero _) (map_one _)]
-      simp only [g2, gi2, g1, gi1, Matrix.transpose_mul, Matrix.mul_assoc, c1, c3, c7, c9, c12, c2, c4, c8, c10,
-        c11, t1', t2', t3', t4', t5', t6', hPP, hPP', hAA, hAiA, hJJ, hJiJ, Matrix.mul_one]
+      simp only [g2, gi2, g1, gi1, Matrix.transpose_mul, Matrix.mul_assoc, c7, c9, c12, c8, t5']
   have hg' : pm θ gi1 gi2 * pm θ g1 g2 = 1 := by
     apply matrix_ext_split θ
     · rw [Matrix.map_mul, pairMatrix_firstSplit, pairMatrix_firstSplit, Matrix.map_one _ (map_zero _) (map_one _)]
-      simp only [g1, gi1, Matrix.mul_assoc, c1, c4, hPP', Matrix.one_mul]
+      simp only [g1, gi1, Matrix.mul_assoc, c1, c4, hPP']
     · rw [Matrix.map_mul, pairMatrix_secondSplit, pairMatrix_secondSplit, Matrix.map_one _ (map_zero _) (map_one _)]
-      simp only [g2, gi2, g1, gi1, Matrix.transpose_mul, Matrix.mul_assoc, c1, c3, c7, c9, c12, c2, c4, c8, c10,
-        c11, t1', t2', t3', t4', t5', t6', hPP, hPP', hAA, hAiA, hJJ, hJiJ, Matrix.mul_one]
+      simp only [g2, gi2, g1, gi1, Matrix.transpose_mul, Matrix.mul_assoc, c7, c12, c8, c10,
+        t5']
   let g : GL n T := ⟨pm θ g1 g2, pm θ gi1 gi2, hg, hg'⟩
   have hcT1 : (Formalism.UG.cT s (pm θ g1 g2)).map (t1 θ) = g2ᵀ := by
     ext i j; simp [Formalism.UG.cT, firstSplit_conj hs, pm, secondSplit_apply]
@@ -105,18 +104,17 @@ theorem surjCore (hJ : Formalism.UG.cT s J = J) (hJu : IsUnit J.det) : SurjCore 
   · show Formalism.UG.cT s (pm θ g1 g2) * J * pm θ g1 g2 = J
     apply matrix_ext_split θ
     · rw [Matrix.map_mul, Matrix.map_mul, hcT1, pairMatrix_firstSplit, ← hJ1]
-      simp only [g2, g1, gi1, Matrix.transpose_mul, Matrix.transpose_transpose, Matrix.mul_assoc, c1, c3, c7,
-        c9, c12, c2, c4, c8, c10, c11, c5, c6, hPP, hPP', hAA, hAiA, hJJ, hJiJ, Matrix.mul_one]
+      simp only [g2, g1, gi1, Matrix.transpose_mul, Matrix.transpose_transpose, Matrix.mul_assoc, c1, c4, hPP', hJiJ, Matrix.mul_one]
     · rw [Matrix.map_mul, Matrix.map_mul, hcT2, pairMatrix_secondSplit, hJ2, ← hJ1]
-      simp only [g2, g1, gi1, Matrix.transpose_mul, Matrix.transpose_transpose, Matrix.mul_assoc, c1, c3, c7,
-        c9, c12, c2, c4, c8, c10, c11, c5, c6, hPP, hPP', hAA, hAiA, hJJ, hJiJ, Matrix.mul_one]
+      simp only [g2, g1, gi1, Matrix.transpose_mul, Matrix.mul_assoc, c7,
+        c12, c8, c10]
   · have e1 : (fun i => t1 θ (((g : Matrix n n T) *ᵥ x) i)) = g1 *ᵥ fun j => t1 θ (x j) := by
       rw [firstSplit_mulVec]; show (pm θ g1 g2).map (t1 θ) *ᵥ _ = _; rw [pairMatrix_firstSplit]
     have e2 : (fun i => t2 θ (((g : Matrix n n T) *ᵥ x) i)) = g2 *ᵥ fun j => t2 θ (x j) := by
       rw [secondSplit_mulVec]; show (pm θ g1 g2).map (t2 θ) *ᵥ _ = _; rw [pairMatrix_secondSplit]
     have f1 : Pi * g1 = Af * Pi := by simp only [g1, Matrix.mul_assoc, c1]
     have f2 : (Pmᵀ * J1ᵀ) * g2 = Afiᵀ * (Pmᵀ * J1ᵀ) := by
-      simp only [g2, gi1, Matrix.transpose_mul, Matrix.mul_assoc, c11, c12, c7, c8]
+      simp only [g2, gi1, Matrix.transpose_mul, Matrix.mul_assoc, c12, c7]
     show x ∈ Lat O θ J P ↔ (g : Matrix n n T) *ᵥ x ∈ Lat O θ J P
     simp only [Lat, Set.mem_ofPred_eq]
     rw [e1, e2, Matrix.mulVec_mulVec, Matrix.mulVec_mulVec, ← hJ1]

@@ -25,7 +25,7 @@ theorem addHaar_submodule_eq_zero (F : Type) [NontriviallyNormedField F] [Locall
       Submodule.closed_of_finiteDimensional _
     have h2 : (s : Set V) = h ⁻¹' ((s.map e₀.toLinearMap : Submodule F _) : Set _) := by
       ext v
-      simp [h, Submodule.mem_map]
+      simp [h]
     rw [h2]; exact h1.preimage h.continuous
 
   obtain ⟨x, hx⟩ : ∃ x, x ∉ s := by

@@ -149,7 +149,7 @@ theorem GlobalTheory.Poinc.approx_of_fpre : ∀ (O : Type) [CommRing O] [Module.
       exact φ.eval_of_subsingleton _
     refine ⟨1, ?_, fun y => Or.inl ?_⟩
     · simp [h0]
-    · simp [h0, Φ.ev_le]
+    · simp [h0]
   rw [not_subsingleton_iff_nontrivial] at hX₀
   have hPF := hφ (Φ.X y₀) (Φ.rank_le y₀)
   obtain ⟨r, γ, k₀, c₀, hγ, hk₀, hc₀, hβ₀⟩ :=

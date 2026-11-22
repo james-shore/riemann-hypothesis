@@ -233,14 +233,14 @@ theorem herm_zeta (σ : K →+* K) (hσ : ∀ x, σ (σ x) = x) {Z : Matrix (Fin
           - T * ((d * cT σ a - c * cT σ b - 1) * W) + T * ((c * cT σ d - d * cT σ c) * cT σ T) := by
       rw [hX, hY]
       simp only [cTa, cTm, cTc σ hσ, Matrix.add_mul, Matrix.mul_add, Matrix.mul_sub, Matrix.sub_mul,
-        Matrix.mul_assoc, Matrix.one_mul, Matrix.mul_one]
+        Matrix.mul_assoc, Matrix.one_mul]
       abel
     rw [sub_eq_zero.2 r2, sub_eq_zero.2 r1, sub_eq_zero.2 r1', sub_eq_zero.2 r3] at e
     simp only [Matrix.zero_mul, Matrix.mul_zero, add_zero, sub_zero] at e
     exact sub_eq_zero.1 e
   have e : cT σ (-Z + T * W) - (-Z + T * W) =
       ((-cT σ Z + X * cT σ Y) - (-Z + Y * cT σ X)) - ((X * cT σ Y - Y * cT σ X) - (cT σ W * cT σ T - T * W)) := by
-    simp only [cTa, cTn, cTm, cTc σ hσ]
+    simp only [cTa, cTn, cTm]
     abel
   rw [sub_eq_zero.2 h1, sub_eq_zero.2 key, sub_zero] at e
   exact sub_eq_zero.1 e
@@ -262,7 +262,7 @@ theorem normal_form : ∀ {K : Type} [Field K] (σ : K →+* K), (∀ x, σ (σ 
   obtain ⟨-, -, h6, h5⟩ := injB hn f2
   obtain ⟨h1, h2, -, h4⟩ := injB hn f3
   simp only [hm1, cTz, Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_neg, Matrix.neg_mul, Matrix.one_mul, Matrix.mul_one,
-    add_zero, zero_add] at h1 h2 h4 h5 h6 h7
+    zero_add] at h1 h2 h4 h5 h6 h7
   have r1 := rel_ad σ h2 h5
   have r2 := rel_ab σ hσ h1 h6 h7
   generalize a₄ + a₃ * X = a' at r1 r2 ⊢
@@ -277,7 +277,7 @@ theorem normal_form : ∀ {K : Type} [Field K] (σ : K →+* K), (∀ x, σ (σ 
     simp only [Matrix.one_mul, Matrix.zero_mul, Matrix.mul_zero, Matrix.neg_mul, neg_neg, add_zero, zero_add]
     rw [← hX]
   · rw [rowD, mulB, hη]
-    simp only [Matrix.one_mul, Matrix.zero_mul, Matrix.neg_mul, neg_neg, add_zero, zero_add]
+    simp only [Matrix.one_mul, Matrix.zero_mul, Matrix.neg_mul, neg_neg, zero_add]
     have e1 : -(-Z + T * W) + T * W = Z := by abel
     rw [e1, ← hY]
 

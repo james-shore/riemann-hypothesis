@@ -31,17 +31,16 @@ theorem exists_grpObj_of_cover : ∀ (S : Scheme.{0}) (I : Type) (U : I → S.Op
     intro i T' p
     have hp : p.left = T'.hom ≫ (U i).ι := by
       have h := Over.w p
-      first | simpa using h | simpa [Over.tensorUnit_hom] using h | exact (Category.comp_id _).symm.trans h
+      first | simpa using h
     have hT : (toUnit T').left = T'.hom := by
       have h := Over.w (toUnit T')
-      first | simpa using h | simpa [Over.tensorUnit_hom] using h | exact (Category.comp_id _).symm.trans h
+      first | simpa using h
     have h1' : (1 : T' ⟶ G i) = toUnit T' ≫ (1 : Out.baseOver (U i).toScheme ⟶ G i) := by
       rw [CategoryTheory.Hom.one_def, CategoryTheory.Hom.one_def, ← Category.assoc]
-      first | exact congrArg (· ≫ _) (toUnit_unique _ _) | (congr 1; exact toUnit_unique _ _)
+      first | exact congrArg (· ≫ _) (toUnit_unique _ _)
     rw [h1']
     first
       | (rw [Over.comp_left, Over.comp_left, Category.assoc, hone i, hp, hT, Category.assoc])
-      | (simp only [Over.comp_left, Category.assoc, hone i, hp, hT])
   have ax1 : e' ▷ A ≫ m = (λ_ A).hom := by
     apply GlobalTheory.CoverGlue.over_ext hU
     intro i T' r
@@ -82,7 +81,7 @@ theorem exists_grpObj_of_cover : ∀ (S : Scheme.{0}) (I : Type) (U : I → S.Op
     apply GlobalTheory.CoverGlue.over_ext hU
     intro i T' r
     obtain ⟨z, hz⟩ := hl i T' r
-    simp only [comp_lift_assoc, comp_lift, Category.comp_id]
+    simp only [comp_lift_assoc, Category.comp_id]
     rw [← Category.assoc r (toUnit A) e']
     apply Over.OverMorphism.ext
     rw [hm i T' _ _ z z⁻¹ hz (hn i T' r r z z hz hz), _root_.mul_inv_cancel, h1 i T' (r ≫ toUnit A)]

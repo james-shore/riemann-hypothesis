@@ -30,14 +30,14 @@ theorem trace_single_pair (Q : Matrix α α E) (y : Matrix α ν E) (i : α) (j 
 
 def prLin (Q : Matrix α α E) : Matrix α ν E →ₗ[F] Matrix α ν E →ₗ[F] F :=
   LinearMap.mk₂ F (fun x y => 2⁻¹ * Algebra.trace F E (Matrix.trace (Qᵀ * (x * (y.map c)ᵀ))))
-    (fun x x' y => by simp [Matrix.add_mul, Matrix.mul_add, mul_add])
-    (fun t x y => by simp [Matrix.smul_mul, Matrix.mul_smul, mul_left_comm])
+    (fun x x' y => by simp [Matrix.add_mul, mul_add])
+    (fun t x y => by simp [Matrix.smul_mul, mul_left_comm])
     (fun x y y' => by
       rw [show (y + y').map c = y.map c + y'.map c from Matrix.map_add _ (map_add c) _ _]
-      simp [Matrix.add_mul, Matrix.mul_add, mul_add])
+      simp [Matrix.mul_add, mul_add])
     (fun t x y => by
       rw [show (t • y).map c = t • y.map c from by ext i j; simp [map_smul]]
-      simp [Matrix.smul_mul, Matrix.mul_smul, mul_left_comm])
+      simp [Matrix.mul_smul, mul_left_comm])
 
 end PairAlg
 
@@ -86,7 +86,7 @@ theorem pr_alg : ∀ (F : Type) [Field F] [CharZero F] (E : Type) [Field E] [Alg
   ·
     have h : ((y * (a.map c)ᵀ).map c)ᵀ = a * (y.map c)ᵀ := by
       ext i j
-      simp [mul_apply, map_sum, hc, mul_comm]
+      simp [mul_apply, hc, mul_comm]
     rw [hap, hap, h, Matrix.mul_assoc]
 
 end GlobalTheory.KSp

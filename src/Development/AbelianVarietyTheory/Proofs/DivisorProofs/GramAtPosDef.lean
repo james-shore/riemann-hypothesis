@@ -61,7 +61,7 @@ theorem frAt_on {S : HSp D} (fr : GL (Fin S.rank) D.host.E)
   rw [← h2, frAt, gramAt]
   congr 2
   ext i j
-  simp [Formalism.UG.cT, Matrix.conjTranspose_apply, hs]
+  simp [Formalism.UG.cT, Matrix.conjTranspose_apply]
   exact (hs _).symm
 
 theorem gramAt_posDef {S : HSp D} (fr : GL (Fin S.rank) D.host.E)

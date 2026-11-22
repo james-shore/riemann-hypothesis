@@ -72,7 +72,7 @@ theorem norm_entry_le_opNorm {n : Type} [Fintype n] [DecidableEq n] (A : Matrix 
   have h2 := PiLp.norm_apply_le (Matrix.toEuclideanCLM (n := n) (𝕜 := ℂ) A (EuclideanSpace.single j 1)) i
   have h3 : (Matrix.toEuclideanCLM (n := n) (𝕜 := ℂ) A (EuclideanSpace.single j 1)) i = A i j := by
     change ∑ k, A i k * (EuclideanSpace.single j (1 : ℂ)) k = _
-    simp [Pi.single_apply]
+    simp
   rw [h3] at h2
   simpa [opNorm] using h2.trans h
 

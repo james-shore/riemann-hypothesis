@@ -95,14 +95,14 @@ theorem F_at_ia {W : WeierstrassCurve ℂ_[p]} {wq ex : PowerSeries ℂ_[p]} (hW
       PowerSeries.subst (MvPowerSeries.X 0 : MvPowerSeries (Fin 2) ℂ_[p]) (iW W wq)]
       (add (flog W wq) ex (MvPowerSeries.X 0) (MvPowerSeries.X 1)) = 0 := by
   rw [subst_pair_formal_add (flog_const W wq) (hasSubst2 (MvPowerSeries.constantCoeff_X 0) (constantCoeff_inverse_variable W wq 0))]
-  simp only [PI.FglChordFactor.add, PI.FglChordFactor.sub, PI.FglChordFactor.pt, PI.FglChordFactor.lg]
+  simp only [PI.FglChordFactor.add, PI.FglChordFactor.pt, PI.FglChordFactor.lg]
   rw [negsub hW (PowerSeries.HasSubst.of_constantCoeff_zero (MvPowerSeries.constantCoeff_X 0 : MvPowerSeries.constantCoeff (MvPowerSeries.X 0 : MvPowerSeries (Fin 2) ℂ_[p]) = 0)), add_neg_cancel, subst_zero_eq_zero_of_constantCoeff_zero hex0]
 
 theorem F'_at_aa {W : WeierstrassCurve ℂ_[p]} {wq ex : PowerSeries ℂ_[p]} (hex0 : PowerSeries.constantCoeff ex = 0) :
     MvPowerSeries.subst ![(MvPowerSeries.X 0 : MvPowerSeries (Fin 2) ℂ_[p]), MvPowerSeries.X 0]
       (sub (flog W wq) ex (MvPowerSeries.X 0) (MvPowerSeries.X 1)) = 0 := by
   rw [subst_bivariateSeries_difference_pair (flog_const W wq) (hasSubst2 (MvPowerSeries.constantCoeff_X 0) (MvPowerSeries.constantCoeff_X 0))]
-  simp only [PI.FglChordFactor.add, PI.FglChordFactor.sub, PI.FglChordFactor.pt, PI.FglChordFactor.lg]
+  simp only [PI.FglChordFactor.sub, PI.FglChordFactor.pt, PI.FglChordFactor.lg]
   rw [sub_self, subst_zero_eq_zero_of_constantCoeff_zero hex0]
 
 theorem F'_eq {W : WeierstrassCurve ℂ_[p]} {wq ex : PowerSeries ℂ_[p]} (hW : IsWq W wq) :
@@ -144,7 +144,7 @@ theorem formal_add_first_zero {W : WeierstrassCurve ℂ_[p]} {wq ex : PowerSerie
   have hX1 : PowerSeries.HasSubst (MvPowerSeries.X 1 : MvPowerSeries (Fin 2) ℂ_[p]) := PowerSeries.HasSubst.of_constantCoeff_zero (MvPowerSeries.constantCoeff_X 1 : MvPowerSeries.constantCoeff (MvPowerSeries.X 1 : MvPowerSeries (Fin 2) ℂ_[p]) = 0)
   have hl : PowerSeries.HasSubst (flog W wq) := PowerSeries.HasSubst.of_constantCoeff_zero (flog_const W wq)
   rw [subst_pair_formal_add (flog_const W wq) (hasSubst2 (map_zero _) (MvPowerSeries.constantCoeff_X 1))]
-  simp only [PI.FglChordFactor.add, PI.FglChordFactor.sub, PI.FglChordFactor.pt, PI.FglChordFactor.lg]
+  simp only [PI.FglChordFactor.add, PI.FglChordFactor.pt, PI.FglChordFactor.lg]
   rw [subst_zero_eq_zero_of_constantCoeff_zero (flog_const W wq), zero_add, ← PowerSeries.subst_comp_subst_apply hl hX1, hexl,
     PowerSeries.subst_X hX1]
 
@@ -158,7 +158,7 @@ theorem formal_sub_first_zero {W : WeierstrassCurve ℂ_[p]} {wq ex : PowerSerie
   have hi : PowerSeries.HasSubst (PowerSeries.subst (MvPowerSeries.X 1 : MvPowerSeries (Fin 2) ℂ_[p]) (iW W wq)) :=
     PowerSeries.HasSubst.of_constantCoeff_zero (constantCoeff_inverse_variable W wq 1)
   rw [subst_bivariateSeries_difference_pair (flog_const W wq) (hasSubst2 (map_zero _) (MvPowerSeries.constantCoeff_X 1))]
-  simp only [PI.FglChordFactor.add, PI.FglChordFactor.sub, PI.FglChordFactor.pt, PI.FglChordFactor.lg]
+  simp only [PI.FglChordFactor.sub, PI.FglChordFactor.pt, PI.FglChordFactor.lg]
   rw [subst_zero_eq_zero_of_constantCoeff_zero (flog_const W wq), zero_sub, ← negsub hW hX1, ← PowerSeries.subst_comp_subst_apply hl hi,
     hexl, PowerSeries.subst_X hi]
 

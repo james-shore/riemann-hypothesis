@@ -86,8 +86,6 @@ theorem split_low (N : ℕ) (w : A) (hw : w ∈ Submodule.span R (Set.range γ))
   | exact @_root_.GlobalTheory.IsolatedTheoremThree.main
   | exact _root_.GlobalTheory.IsolatedTheoremThree.main
   | (apply _root_.GlobalTheory.IsolatedTheoremThree.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IsolatedTheoremThree.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IsolatedTheoremThree.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IsolatedTheoremThree.main ..)
 
 end

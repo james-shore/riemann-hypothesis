@@ -48,7 +48,7 @@ theorem unit_of_proj {A : Type} [CommRing A] {n : Type} [Fintype n] [DecidableEq
     ext i j
     by_cases h : j = i
     · subst h; simp [Formalism.UG.cT]
-    · simp [Formalism.UG.cT, Matrix.one_apply, h, Ne.symm h]
+    · simp [Formalism.UG.cT, h, Ne.symm h]
   refine ⟨?_, ?_, ?_⟩
   · simp only [add_mul, mul_add, Matrix.smul_mul, Matrix.mul_smul, Matrix.one_mul, Matrix.mul_one, hPP, smul_smul]
     calc _ = (c * σ c) • (1 : Matrix n n A) + (1 - c * σ c) • P := by module

@@ -102,8 +102,7 @@ theorem dict_hk : ∀ (N l w : ℕ) (α : Matrix (Fin 2) (Fin 2) ℤ) (ι : Type
     exact ⟨_, fun z hz => incr hdet hF ⟨γ, hγ⟩ π g hg z hz⟩
   · funext γ
     have hex := exists_perm hδ γ
-    simp only [GlobalTheory.HeckeFamilyMatrices.hk, LinearMap.pi_apply, dif_pos hex, LinearMap.sum_apply, Finset.sum_apply,
-      LinearMap.comp_apply, LinearMap.proj_apply]
+    simp only [GlobalTheory.HeckeFamilyMatrices.hk, LinearMap.pi_apply, dif_pos hex, LinearMap.sum_apply, LinearMap.comp_apply, LinearMap.proj_apply]
     rw [cocP, incr hdet hF γ hex.choose (fun i => (hex.choose_spec i).choose)
       (fun i => (hex.choose_spec i).choose_spec) _ hI, map_sum]
     refine Finset.sum_congr rfl fun i _ => ?_

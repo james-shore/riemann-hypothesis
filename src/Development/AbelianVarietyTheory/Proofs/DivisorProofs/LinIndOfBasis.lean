@@ -49,7 +49,7 @@ theorem exists_avatar {K C X W M I : Type} [Field K] [Field C] [AddCommGroup X] 
     rw [← hB, hθ, B.repr_self, Finset.sum_eq_single i]
     · simp
     · intro j _ hj
-      simp [Finsupp.single_apply, hj.symm]
+      simp [hj.symm]
     · simp
   refine ⟨θ, hs, fun x => ?_, (injective_iff_map_eq_zero θ).2 fun w hw => ?_⟩
   · rw [← b.sum_repr x]

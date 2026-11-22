@@ -62,7 +62,7 @@ theorem famGram {e : Fin (k + 1) → Fin (2 * r + k + 1) → ℂ} (he : ONb k r 
   by_cases hi : r ≤ i.val ∧ i.val ≤ r + k <;> by_cases hj : r ≤ j.val ∧ j.val ≤ r + k
   · rw [fam_in hi, fam_in hj, he.2]
     simp only [Hpk]
-    split_ifs <;> (try simp only [Fin.ext_iff, Fin.val_mk] at *) <;> first | rfl | (exfalso; omega)
+    split_ifs <;> (try simp only [Fin.ext_iff] at *) <;> first | rfl | (exfalso; omega)
   · rw [fam_in hi, fam_out (i := j) (by omega), herm_w_bvec (i := j) (by omega) (he.1 _),
       (hpk_out_in (i := j) (j := i) (by omega) hi).1]
   · rw [fam_out (i := i) (by omega), fam_in hj, herm_bvec_w (i := i) (by omega) (he.1 _),

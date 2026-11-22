@@ -21,13 +21,13 @@ theorem cre_single {n : ℕ} {V : Type} [AddCommGroup V] [Module ℂ V] (f : Pos
   by_cases hA : A = insert f S
   · subst hA
     rw [if_pos (Finset.mem_insert_self f S), Finset.erase_insert h]
-    simp [Pi.single_apply]
+    simp
   · have hr : (CompanionTheory.D.LK.sg f (insert f S) • (Pi.single (insert f S) w : Cn n V)) A = 0 := by
-      simp [Pi.single_apply, hA]
+      simp [hA]
     rw [hr]
     split_ifs with hf
     · have hne : A.erase f ≠ S := fun he => hA (by rw [← he, Finset.insert_erase hf])
-      simp [Pi.single_apply, hne]
+      simp [hne]
     · rfl
 
 theorem sg_ne_zero {n : ℕ} (f : Pos n) (A : Finset (Pos n)) : CompanionTheory.D.LK.sg f A ≠ 0 := by

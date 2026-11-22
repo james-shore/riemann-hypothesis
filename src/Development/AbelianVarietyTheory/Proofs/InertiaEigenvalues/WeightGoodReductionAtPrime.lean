@@ -110,9 +110,7 @@ theorem quot_torsion [IsDomain O] [IsFractionRing O LL] (T : LocLat G Qp LL O)
   first
   | exact @_root_.GlobalTheory.QuotientLatticeTorsion.quotient_lattice_torsion
   | exact _root_.GlobalTheory.QuotientLatticeTorsion.quotient_lattice_torsion
-  | (apply _root_.GlobalTheory.QuotientLatticeTorsion.quotient_lattice_torsion <;> assumption)
-  | (intros; apply _root_.GlobalTheory.QuotientLatticeTorsion.quotient_lattice_torsion <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.QuotientLatticeTorsion.quotient_lattice_torsion <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.QuotientLatticeTorsion.quotient_lattice_torsion)
   | (intros; exact _root_.GlobalTheory.QuotientLatticeTorsion.quotient_lattice_torsion ..)
 
 omit [TopologicalSpace Qp] in

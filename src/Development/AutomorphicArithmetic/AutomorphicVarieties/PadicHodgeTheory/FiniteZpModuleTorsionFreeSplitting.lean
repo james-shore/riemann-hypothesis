@@ -70,7 +70,7 @@ theorem UpperTheory.finite_zp_module_torsion_free_splitting :
     apply hker
     intro i
     rw [← PadicInt.ker_toZModPow, RingHom.mem_ker]
-    simp [map_sub, ZMod.natCast_zmod_val]
+    simp [map_sub]
   · refine hq.isCoinducing.isOpen_preimage.mp ?_
     show IsOpen ((LinearMap.ker (t ∘ₗ g) : Submodule ℤ_[l] (Fin m → ℤ_[l])) : Set (Fin m → ℤ_[l]))
     refine Submodule.isOpen_mono (U := Submodule.pi Set.univ (fun _ => Ideal.span {(l : ℤ_[l]) ^ K})) ?_ ?_

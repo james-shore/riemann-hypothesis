@@ -52,7 +52,7 @@ private theorem theta_triM {A : GL (Fin 3) B} {t : Fin 3 → Bˣ} {x y z : B}
     rw [theta_inv_val, h]
     ext i j
     fin_cases i <;> fin_cases j <;>
-      simp [triM, Jmat, Matrix.mul_apply, Fin.sum_univ_three, Matrix.one_apply, Fin.rev] <;>
+      simp [triM, Jmat, Matrix.mul_apply, Fin.sum_univ_three, Fin.rev] <;>
       first
       | linear_combination y * h2
       | linear_combination z * h2 - x * y * h1
@@ -72,7 +72,7 @@ private theorem exists_triM (A : GL (Fin 3) B)
   have z21 := h 2 1 (by decide)
   have hd : IsUnit (A : Matrix (Fin 3) (Fin 3) B).det := Matrix.isUnits_det_units A
   rw [Matrix.det_fin_three, z10, z20, z21] at hd
-  simp only [mul_zero, zero_mul, sub_zero, add_zero, zero_sub, neg_zero, IsUnit.mul_iff] at hd
+  simp only [mul_zero, zero_mul, sub_zero, add_zero, IsUnit.mul_iff] at hd
   obtain ⟨⟨h0, h1⟩, h2⟩ := hd
   refine ⟨![h0.unit, h1.unit, h2.unit], (A : Matrix (Fin 3) (Fin 3) B) 0 1 * ↑h1.unit⁻¹,
     (A : Matrix (Fin 3) (Fin 3) B) 1 2 * ↑h2.unit⁻¹, (A : Matrix (Fin 3) (Fin 3) B) 0 2 * ↑h2.unit⁻¹, ?_⟩

@@ -101,7 +101,7 @@ theorem hasDerivAt_tensor_phi {g X : Matrix (Fin n) (Fin n) ℂ} (hg : inUJ ε g
 theorem tensor_coef_expand (dual : Bool) (σ : Matrix (Fin n) (Fin n) ℂ → (H →L[ℂ] H)) (η f : Fin n → H)
     (g : Matrix (Fin n) (Fin n) ℂ) :
     ∑ c, inner ℂ (η c) (tensGrp dual σ g f c) = ∑ c, ∑ d, oa1Phi dual g c d * inner ℂ (η c) (σ g (f d)) := by
-  simp [tensGrp, oa1Phi, inner_sum]
+  simp [tensGrp, oa1Phi]
 
 theorem hasDerivAt_tensor_coef (hσ : IsURepOn (UJset ε) σ) (hD : IsDerivedOn ε σ D E)
     {g X : Matrix (Fin n) (Fin n) ℂ} (hg : inUJ ε g) (hX : inG ε X) (dual : Bool) (η : Fin n → H)
@@ -145,7 +145,7 @@ theorem tensor_dphi_complex_comb (dual : Bool) (g : Matrix (Fin n) (Fin n) ℂ) 
     rw [h4]
     by_cases h : d = b
     · subst h; simp [Matrix.mul_apply, Matrix.single_apply]
-    · simp [Matrix.mul_apply, Matrix.single_apply, h, Ne.symm h]
+    · simp [Matrix.mul_apply, h, Ne.symm h]
   · have h3 : X1 * g⁻¹ + Complex.I • (X2 * g⁻¹) = Matrix.single a b 1 * g⁻¹ := by
       rw [hZ, Matrix.add_mul, Matrix.smul_mul]
     have h4 := congrFun (congrFun h3 d) c
@@ -199,7 +199,7 @@ theorem tensor_coef_Eab_action (dual : Bool) (hσ : IsURepOn (UJset ε) σ) (hD 
       intro d
       simp only [tensF, cond_true, tensVd_coord]
       by_cases h : d = b
-      · subst h; simp [mul_sub, inner_sub_right]
+      · subst h; simp [mul_sub]
       · simp [h]
     have hL : ∀ d, cond true (-(if d = a then (g⁻¹) b c else 0)) (if d = b then g c a else 0) *
         inner ℂ (η c) (σ g (f d : H)) = -(if d = a then (g⁻¹) b c * inner ℂ (η c) (σ g (f a : H)) else 0) := by

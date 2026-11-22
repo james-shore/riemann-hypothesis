@@ -42,7 +42,7 @@ theorem exists_pow_approx {l : ℕ} [hl : Fact l.Prime] (u : ℤ_[l]) (h2 : l �
         + (l : ℤ_[l]) ^ k * l * (w + l * y) ^ 2 * z) := by
       rw [dvd_iff_toZMod]
       simp only [map_sub, map_mul, map_add, map_pow, hl0, hu1, map_natCast, hj,
-        ZMod.natCast_zmod_val, ZMod.natCast_self]
+        ZMod.natCast_zmod_val]
       field_simp
       ring
     obtain ⟨d, hd⟩ := hd

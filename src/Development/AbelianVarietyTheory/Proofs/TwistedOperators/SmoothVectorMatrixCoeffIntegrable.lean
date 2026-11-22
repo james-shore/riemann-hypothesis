@@ -242,7 +242,7 @@ private theorem continuous_embOpt {m N : ℕ} (e : Option (Fin m) ≃ Fin N) : C
   obtain ⟨x, rfl⟩ := e.surjective a
   obtain ⟨y, rfl⟩ := e.surjective b
   cases x <;> cases y <;> simp [GlobalTheory.PackLoc.embOpt] <;>
-    first | fun_prop | exact (continuous_apply _).comp (continuous_apply _)
+    first | fun_prop
 
 private theorem continuous_exp_real_smul' {m : ℕ} (X : Matrix (Fin m) (Fin m) ℂ) :
     Continuous fun t : ℝ => NormedSpace.exp (t • X) := by

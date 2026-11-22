@@ -240,7 +240,6 @@ private theorem stdChar_finiteAdele_eq (E : Type) [Field E] [NumberField E]
         intro v
         first
           | rfl
-          | (rw [RestrictedProduct.nsmul_apply]; rfl)
       have hz'' : z' ∈ (↑I : Set (HeightOneSpectrum (𝓞 E))).pi t := by
         intro v hv
         have hvI : v ∈ I := Finset.mem_coe.mp hv

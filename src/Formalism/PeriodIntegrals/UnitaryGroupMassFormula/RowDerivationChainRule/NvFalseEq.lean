@@ -29,7 +29,7 @@ theorem keyCov : KeyCov := by
       rw [Matrix.updateRow_self, if_pos rfl]
       by_cases hj : j = Fin.last m
       · subst hj; simp
-      · simp [Pi.single_apply, hj]
+      · simp [hj]
     · rw [Matrix.updateRow_ne hic, hG, REder_X, if_neg hic]
   simp_rw [hrow]
   have hz : ∀ (M : Matrix (Fin (m + 1)) (Fin (m + 1)) (MvPolynomial (Fin (m + 1) × Fin (m + 1)) K))
@@ -52,7 +52,7 @@ theorem keyCov : KeyCov := by
     intro j
     split_ifs <;> rfl
   · intro h; exact absurd (Finset.mem_univ b) h
-  simp only [hbc, if_false, if_true, eq_self_iff_true, ite_true, ite_false]
+  simp only [hbc, if_false, if_true]
   by_cases hab : a = b
   · subst hab
     rw [if_pos rfl, if_neg hbc, sub_zero]

@@ -35,7 +35,7 @@ theorem ae_exists_pairGroup_smul_mem_shear : ∀ (H : Type) [Group H] [Topologic
   · simpa using hδN
   · refine ⟨(_, v • h), ⟨hδ, hv⟩, ?_⟩
     ext
-    · simp [shear, Subgroup.smul_def, Submonoid.smul_def, mul_assoc]
-    · simp [shear, Subgroup.smul_def, Submonoid.smul_def]
+    · simp [shear, Subgroup.smul_def, mul_assoc]
+    · simp [shear, Subgroup.smul_def]
 
 end GlobalTheory.UnfoldNormal

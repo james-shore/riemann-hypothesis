@@ -15,4 +15,4 @@ theorem _root_.GlobalTheory.T.relIndex_ne_zero_centralizer_parabolicCosetStabili
     (GlobalTheory.BCT.twCent (MonoidHom.id (GL ι K)) γ ⊓ (GlobalTheory.OrbDesc.blockPar e ⊓ K').map (MulAut.conj x).toMonoidHom).relIndex
       (GlobalTheory.BCT.twCent (MonoidHom.id (GL ι K)) γ ⊓
         ((GlobalTheory.OrbDesc.blockPar e ⊓ K') ⊔ GlobalTheory.OrbDesc.blockUni e).map (MulAut.conj x).toMonoidHom) ≠ 0 := by
-  first | (exact @GlobalTheory.OrbDesc.StabIndex.relIndex_twCent_inf_ne_zero) | (exact GlobalTheory.OrbDesc.StabIndex.relIndex_twCent_inf_ne_zero) | (intros; apply GlobalTheory.OrbDesc.StabIndex.relIndex_twCent_inf_ne_zero  <;> assumption)
+  first | (exact @GlobalTheory.OrbDesc.StabIndex.relIndex_twCent_inf_ne_zero)

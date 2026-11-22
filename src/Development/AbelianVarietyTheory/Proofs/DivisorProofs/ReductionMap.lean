@@ -42,7 +42,7 @@ theorem Katz.reductionMap : ∀ (p : ℕ) [Fact p.Prime] (k : Type) [Field k] [C
   have hlinsmul : ∀ (r : WittVector p k) (f : MvPowerSeries (Fin d) (Fr p k)),
       lin (r • f) = fun i => algebraMap _ (Fr p k) r * lin f i := by
     intro r f; funext i
-    simp only [lin, ← algebraMap_smul (Fr p k) r f, coeff_smul, smul_eq_mul]
+    simp only [lin, ← algebraMap_smul (Fr p k) r f, coeff_smul]
   have hcobs : ∀ (r : WittVector p k) (f : MvPowerSeries (Fin d) (Fr p k)),
       cob1 (fun i => Katz.lift p (μ i)) (r • f) = r • cob1 (fun i => Katz.lift p (μ i)) f := by
     intro r f

@@ -83,22 +83,22 @@ theorem sh_assocR (P : T ⟶ (G ⊗ G) ⊗ G) (m : G ⊗ G ⟶ G) :
   simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp <;> (simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp)
 theorem sh_oneL (P : T ⟶ G) (e : 𝟙_ (Over (Sp R)) ⟶ G) (m : G ⊗ G ⟶ G) :
     P ≫ (λ_ G).inv ≫ (e ▷ G) ≫ m = lift (toUnit T ≫ e) P ≫ m := by
-  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp <;> (simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp)
+  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp
 theorem sh_oneR (P : T ⟶ G) (e : 𝟙_ (Over (Sp R)) ⟶ G) (m : G ⊗ G ⟶ G) :
     P ≫ (ρ_ G).inv ≫ (G ◁ e) ≫ m = lift P (toUnit T ≫ e) ≫ m := by
-  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp <;> (simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp)
+  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp
 theorem sh_comm (P : T ⟶ G ⊗ G) (m : G ⊗ G ⟶ G) :
     P ≫ (β_ G G).hom ≫ m = lift (P ≫ snd _ _) (P ≫ fst _ _) ≫ m := by
-  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp <;> (simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp)
+  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp
 theorem sh_id (P : T ⟶ G ⊗ G) (m : G ⊗ G ⟶ G) :
     P ≫ m = lift (P ≫ fst _ _) (P ≫ snd _ _) ≫ m := by
   rw [← comp_lift, lift_fst_snd, Category.comp_id]
 theorem sh_invL (P : T ⟶ G) (i : G ⟶ G) (m : G ⊗ G ⟶ G) :
     P ≫ lift i (𝟙 G) ≫ m = lift (P ≫ i) P ≫ m := by
-  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp <;> (simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp)
+  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp
 theorem sh_invR (P : T ⟶ G) (i : G ⟶ G) (m : G ⊗ G ⟶ G) :
     P ≫ lift (𝟙 G) i ≫ m = lift P (P ≫ i) ≫ m := by
-  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp <;> (simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp)
+  simp only [← Category.assoc]; congr 1; apply CartesianMonoidalCategory.hom_ext <;> simp
 theorem sh_unit (P : T ⟶ G) (e : 𝟙_ (Over (Sp R)) ⟶ G) : P ≫ toUnit G ≫ e = toUnit T ≫ e := by
   rw [← Category.assoc, comp_toUnit]
 end shapes

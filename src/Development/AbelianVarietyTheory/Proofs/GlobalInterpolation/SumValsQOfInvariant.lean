@@ -12,8 +12,6 @@ theorem sum_range_mul_of_periodic {K : Type} [Field K] (g : ℕ → K) (N : ℕ)
   | exact @_root_.GlobalTheory.PeriodicSumShift.sum_range_mul_of_periodic
   | exact _root_.GlobalTheory.PeriodicSumShift.sum_range_mul_of_periodic
   | (apply _root_.GlobalTheory.PeriodicSumShift.sum_range_mul_of_periodic <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PeriodicSumShift.sum_range_mul_of_periodic <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PeriodicSumShift.sum_range_mul_of_periodic <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PeriodicSumShift.sum_range_mul_of_periodic ..)
 
 theorem sum_valsQ_of_invariant (E : Type) [Field E] [NumberField E]

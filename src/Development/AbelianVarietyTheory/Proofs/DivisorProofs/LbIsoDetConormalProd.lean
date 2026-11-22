@@ -44,7 +44,7 @@ theorem repr_left (hV : V ≤ U) (y : Γ(F, V)) (i : Fin n) :
       rw [IsFrame.basis_apply, Fin.append_right, ← app_resM, QCoh.coe_appLinear, QCoh.app_app, h₄]
       change _ = ((he₁.basis hV).repr 0) i
       rw [map_zero, Finsupp.single_apply]
-      simp only [Finsupp.coe_zero, Pi.zero_apply, ite_eq_right_iff, one_ne_zero, imp_false]
+      simp only [Finsupp.coe_zero, Pi.zero_apply, ite_eq_right_iff]
       intro e
       have := congrArg Fin.val e
       simp at this
@@ -65,7 +65,7 @@ theorem repr_right (hV : V ≤ U) (y : Γ(F, V)) (i : Fin m) :
       rw [IsFrame.basis_apply, Fin.append_left, ← app_resM, QCoh.coe_appLinear, QCoh.app_app, h₃]
       change _ = ((he₂.basis hV).repr 0) i
       rw [map_zero, Finsupp.single_apply]
-      simp only [Finsupp.coe_zero, Pi.zero_apply, ite_eq_right_iff, one_ne_zero, imp_false]
+      simp only [Finsupp.coe_zero, Pi.zero_apply, ite_eq_right_iff]
       intro e
       have := congrArg Fin.val e
       simp at this

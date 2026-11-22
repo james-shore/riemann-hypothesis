@@ -18,7 +18,7 @@ theorem isIntegrallyClosedIn_of_integers {C : Type} [Field C] {v : Valuation C N
 theorem exists_eq_apply_of_algHom {O : Type} [CommRing O] [IsDomain O] {N : ℕ}
     (f : (Fin N → O) →ₐ[O] O) : ∃ k, ∀ v, f v = v k := by
   have hsq : ∀ k, (Pi.single k (1 : O) : Fin N → O) * Pi.single k 1 = Pi.single k 1 := fun k => by
-    ext j; by_cases hj : j = k <;> simp [Pi.single_apply, hj]
+    ext j; by_cases hj : j = k <;> simp [hj]
   have hid : ∀ k, f (Pi.single k 1) = 0 ∨ f (Pi.single k 1) = 1 := fun k =>
     IsIdempotentElem.iff_eq_zero_or_one.1 (by
       change f _ * f _ = f _
@@ -36,7 +36,7 @@ theorem exists_eq_apply_of_algHom {O : Type} [CommRing O] [IsDomain O] {N : ℕ}
     exact zero_ne_one (h0.symm.trans hsum)
   refine ⟨k, fun v => ?_⟩
   have h1 : v * Pi.single k 1 = (v k) • (Pi.single k 1 : Fin N → O) := by
-    ext j; by_cases hj : j = k <;> simp [Pi.single_apply, hj]
+    ext j; by_cases hj : j = k <;> simp [hj]
   calc f v = f v * f (Pi.single k 1) := by rw [hk, mul_one]
     _ = v k := by rw [← map_mul, h1, map_smul, hk, smul_eq_mul, mul_one]
 
@@ -255,7 +255,7 @@ theorem omega_const : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsAlgCl
     choose c hc using fun n => level_span p C O G hG h b n (w.1 n)
     have hcompat : ∀ n i, (p : O) ^ n ∣ c (n + 1) i - c n i := fun n =>
       level_indep p C O G hG h b n _ (by
-        simp only [Pi.sub_apply, sub_smul, Finset.sum_sub_distrib]
+        simp only [sub_smul, Finset.sum_sub_distrib]
         rw [sub_eq_zero, hc n, ← w.2 n, ← hc (n + 1), map_sum]
         refine Finset.sum_congr rfl fun i _ => ?_
         rw [map_smul, (hodgeTate G (b i)).2 n])
@@ -270,7 +270,6 @@ theorem omega_const : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsAlgCl
       exact ⟨L, fun n => (hsmod n _ _).1 (hL n)⟩
     choose L hL using hL
     refine ⟨L, Subtype.ext (funext fun n => ?_)⟩
-    change (Φ L).1 n = w.1 n
     rw [hval, ← hc n, ← sub_eq_zero, ← Finset.sum_sub_distrib]
     refine Finset.sum_eq_zero fun i _ => ?_
     obtain ⟨d, hd⟩ := hL i n

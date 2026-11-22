@@ -35,8 +35,7 @@ theorem intOn_divAdj (L M : Submodule ℤ V) (e : Module.End ℚ V)
     refine Finset.sum_congr rfl fun t ht => ?_
     have ht' : t ≤ k := Nat.lt_succ_iff.mp (Finset.mem_range.mp ht)
     have hch := Nat.choose_mul_factorial_mul_factorial ht'
-    simp only [LinearMap.smul_apply, Module.End.mul_apply, map_smul, ← Int.cast_smul_eq_zsmul ℚ, smul_smul,
-      LinearMap.sum_apply, Finset.smul_sum]
+    simp only [LinearMap.smul_apply, Module.End.mul_apply, map_smul, ← Int.cast_smul_eq_zsmul ℚ, smul_smul]
     congr 1
     have h1 : ((k.choose t : ℕ) : ℚ) * (t.factorial : ℚ) * ((k - t).factorial : ℚ) = (k.factorial : ℚ) := by
       exact_mod_cast hch

@@ -33,7 +33,5 @@ theorem x_eq_of_inj (Xo : Moduli Dw l) {S T : Type} [CommRing S] [IsReduced S] [
   haveI : IsDominant (spMap φ) := spMap_isDominant φ hφ
   first
   | exact ext_of_isDominant_of_isSeparated Xo.s hs (spMap φ) h
-  | exact ext_of_isDominant_of_isSeparated Xo.s hs h
-  | exact ext_of_isDominant_of_isSeparated (s := Xo.s) hs (ι := spMap φ) h
 
 end Formalism.L2.Pj

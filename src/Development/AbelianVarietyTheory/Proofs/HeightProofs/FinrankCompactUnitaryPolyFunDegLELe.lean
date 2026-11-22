@@ -46,7 +46,7 @@ theorem finrank_polyV_le {n : ℕ} (ε : Fin n → Bool) (d : ℕ) :
         Submodule.finrank_mono hle
     _ ≤ Fintype.card ((Fin n × Fin n × Bool) → Fin (d + 1)) := finrank_range_le_card b
     _ = (d + 1) ^ (2 * n ^ 2) := by
-        simp [Fintype.card_fun, Fintype.card_prod, Fintype.card_fin, Fintype.card_bool]
+        simp [Fintype.card_prod, Fintype.card_fin, Fintype.card_bool]
         ring
 
 end GlobalTheory.KFourier

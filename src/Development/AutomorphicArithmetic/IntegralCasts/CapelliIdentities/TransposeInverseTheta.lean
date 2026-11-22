@@ -67,7 +67,7 @@ private theorem UpperTheory.Reformulated.B.TransposeInverseTheta.trInv_Jgl {m : 
   simp only [Matrix.transpose_apply, UpperTheory.Reformulated.B.TransposeInverseTheta.Jmat]
   by_cases h : j = i.rev
   · have h' : i = j.rev := by rw [h, Fin.rev_rev]
-    simp [h, ← h']
+    simp [h]
   · have h' : ¬ i = j.rev := fun e => h (by rw [e, Fin.rev_rev])
     simp [h, h']
 

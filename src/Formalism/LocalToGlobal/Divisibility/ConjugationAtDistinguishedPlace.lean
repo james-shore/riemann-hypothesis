@@ -32,7 +32,6 @@ def cLL (ι : Qb →+* ℂ) (LL : Fld) [Normal ℚ LL] : LL ≃ₐ[ℚ] LL := (c
 theorem cLL_coe (ι : Qb →+* ℂ) (LL : Fld) [Normal ℚ LL] (x : LL) : ((cLL ι LL x : LL) : Qb) = conjQb ι x := by
   first
   | exact AlgEquiv.restrictNormal_commutes (conjQb ι) LL x
-  | exact AlgEquiv.restrictNormal_commutes (conjQb ι) x
 
 theorem cLL_cLL (ι : Qb →+* ℂ) (LL : Fld) [Normal ℚ LL] (x : LL) : cLL ι LL (cLL ι LL x) = x := by
   apply Subtype.ext

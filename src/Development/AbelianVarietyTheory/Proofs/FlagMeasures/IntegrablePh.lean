@@ -81,8 +81,6 @@ theorem coeFn_sum_smul {X ι : Type} [MeasurableSpace X] (μ : Measure X) (s : F
   | exact @_root_.GlobalTheory.SumSmulAeEq.coeFn_sum_smul_ae_eq
   | exact _root_.GlobalTheory.SumSmulAeEq.coeFn_sum_smul_ae_eq
   | (apply _root_.GlobalTheory.SumSmulAeEq.coeFn_sum_smul_ae_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SumSmulAeEq.coeFn_sum_smul_ae_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SumSmulAeEq.coeFn_sum_smul_ae_eq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SumSmulAeEq.coeFn_sum_smul_ae_eq ..)
 
 theorem ae_eq_of_pairing {X ι : Type} [Fintype ι] [TopologicalSpace X] [T2Space X] [SigmaCompactSpace X]

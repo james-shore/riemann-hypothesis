@@ -130,7 +130,7 @@ theorem T_apply (E : Fin n → Fin n → Module.End ℂ M) (u : ℂ) (k : Fin n)
   simp [T, Om, lift, eAt, Tm, Finset.sum_add_distrib, LinearMap.add_apply]
   congr 1
   · rw [Finset.sum_eq_single (I k)]
-    · simp [sub_smul]
+    · simp
     · intro b _ hb
       simp [hb]
     · simp

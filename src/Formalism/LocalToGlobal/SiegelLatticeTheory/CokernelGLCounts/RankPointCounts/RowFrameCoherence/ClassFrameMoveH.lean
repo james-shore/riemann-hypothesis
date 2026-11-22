@@ -230,7 +230,7 @@ theorem wCoord_fix (M : Matrix (Fin n) (Fin n) ℂ) (he : ∀ c, M *ᵥ F.e c = 
   show hJ ε (F.wb i) (M *ᵥ x) = ∑ j, wm ε F.wb M i j * hJ ε (F.wb j) x
   rw [h2, Fintype.sum_sum_type, Fintype.sum_sum_type, Fintype.sum_sum_type]
   simp only [PtRepPf.Fr.bv, PtRepPf.Fr.dv, Sum.elim_inl, Sum.elim_inr, he, hf, hz, F.we, F.wf, F.wz, mul_zero,
-    Finset.sum_const_zero, zero_add, Fintype.sum_unique]
+    Finset.sum_const_zero, zero_add]
   exact Finset.sum_congr rfl fun j _ => mul_comm _ _
 
 theorem wCoord_N (N : Matrix (Fin n) (Fin n) ℂ) (hN : InN ε F.e F.z N) {x : Fin n → ℂ}
@@ -255,7 +255,7 @@ theorem wm_unitary (g : Formalism.REAL.UJ ε) (he : ∀ c, uMat g *ᵥ F.e c = F
   have hzw : ∀ m, hJ ε F.z (uMat g *ᵥ F.wb m) = 0 := fun m => by rw [← hz, PtRepPf.hJ_UJ, F.zw]
   have hew : ∀ m c, hJ ε (F.e c) (uMat g *ᵥ F.wb m) = 0 := fun m c => by rw [← he c, PtRepPf.hJ_UJ, F.ew]
   have hp := F.pair (uMat g *ᵥ F.wb j) (uMat g *ᵥ F.wb l) (hew j) (hew l)
-  simp only [hzw, mul_zero, zero_mul, star_zero, zero_add] at hp
+  simp only [hzw, mul_zero, star_zero, zero_add] at hp
   rw [PtRepPf.hJ_UJ, F.ww] at hp
   rw [Matrix.mul_apply, Matrix.one_apply, hp]
   refine Finset.sum_congr rfl fun i _ => ?_

@@ -24,7 +24,6 @@ theorem zxH_rfl (h : C.LPt) (v : XH h) : zxH h (D.ptSize h) rfl v = LeftFubiniLe
     U.hMat (D.ptPerm h) (D.ptDiag h) := by
   first
   | rfl
-  | simp [zxH]
 
 theorem supp_of (hW : PartialBesselProperness.PbWords) (hP : ProperDomP) : Supp := by
   intro Wp Wq _ _ _ _ _ _ P p F j hj w h hh γ hF hw hγ hΩ K _ hK0

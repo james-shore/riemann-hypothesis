@@ -120,7 +120,7 @@ private theorem dc_tr {H G V : Type} [Group H] [Group G] [AddCommGroup V] [Modul
   let β : H ≃* S := b.trans (MulAut.conjNormal x⁻¹)
   have hβ : ∀ g, ((β g : S) : G) = x⁻¹ * b g * x := by
     intro g
-    simp [β, MulAut.conjNormal_apply]
+    simp [β]
   have hCU' : CU = (U.subgroupOf S).comap β.toMonoidHom := by
     ext g
     rw [hCU, Subgroup.mem_comap, Subgroup.mem_subgroupOf]

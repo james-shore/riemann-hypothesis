@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.eigenvalue_normSq_of_similitude_hermitian_signatur
     Γᴴ * Q * Γ = (c : ℂ) • Q →
     (sigPosH hh = 0 ∨ ∃ (μ : ℂ) (x₀ : Fin n → ℂ), Γ *ᵥ x₀ = μ • x₀ ∧ 0 < (star x₀ ⬝ᵥ (Q *ᵥ x₀)).re) →
     ∀ (w : ℂ) (x : Fin n → ℂ), x ≠ 0 → Γ *ᵥ x = w • x → ‖w‖ ^ 2 = c := by
-  first | (exact @GlobalTheory.eig_norm_sq_of_similitude) | (exact GlobalTheory.eig_norm_sq_of_similitude) | (intros; apply GlobalTheory.eig_norm_sq_of_similitude <;> assumption)
+  first | (exact @GlobalTheory.eig_norm_sq_of_similitude)

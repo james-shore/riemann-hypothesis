@@ -415,7 +415,7 @@ theorem primitive_plane_local : Z0.PrimPlaneLoc := by
       rw [h1, h2] at h3
       have h4 : q ((s * h z g + a * h z e + d * h z f)⁻¹ • (s • g + a • e + d • f))
           ((s * h z g + a * h z e + d * h z f)⁻¹ • (s • g + a • e + d • f)) = 0 := by
-        simp only [map_smulₛₗ, LinearMap.smul_apply, map_smul, smul_eq_mul, hqX, mul_zero]
+        simp only [map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, hqX, mul_zero]
       rw [h4] at h3
       linear_combination -h3
   have hS0 : (0 : K) ∈ locRing p := (locRing p).zero_mem

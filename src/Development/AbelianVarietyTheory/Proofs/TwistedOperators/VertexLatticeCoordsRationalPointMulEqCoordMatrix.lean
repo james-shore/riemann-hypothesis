@@ -55,8 +55,7 @@ theorem finG_rat {D : D7} (V : HSp D) (fr : GL (Fin V.rank) D.host.E) (g : GfC V
   have hm : ((Formalism.L2.Theta.matHom V γ : GL (Fin V.rank) _) : Matrix (Fin V.rank) (Fin V.rank) _) =
       (fr.1 * U.1 * (fr⁻¹ : GL (Fin V.rank) D.host.E).1).map (incA D) := hmt
   unfold Formalism.L2.Theta.finHom
-  simp only [Formalism.UG.bc, MonoidHom.comp_apply, Units.coe_map, MonoidHom.coe_coe, RingHom.mapMatrix_apply, hm,
-    Matrix.map_map]
+  simp only [Formalism.UG.bc, MonoidHom.comp_apply, Units.coe_map, hm]
   ext i j
   exact key _
 

@@ -30,20 +30,20 @@ lemma pair_smul_left (r : ℝ) (σ z : V f) : pair (r • σ) z = r * pair σ z 
   unfold pair
   rw [Finset.mul_sum]
   refine Finset.sum_congr rfl (fun v _ => ?_)
-  simp [Complex.smul_re, smul_mul_assoc]
+  simp
   ring
 
 lemma pair_add_right (σ z z' : V f) : pair σ (z + z') = pair σ z + pair σ z' := by
   unfold pair
   rw [← Finset.sum_add_distrib]
   refine Finset.sum_congr rfl (fun v _ => ?_)
-  simp [add_mul, mul_add]
+  simp [mul_add]
 
 lemma pair_smul_right (r : ℝ) (σ z : V f) : pair σ (r • z) = r * pair σ z := by
   unfold pair
   rw [Finset.mul_sum]
   refine Finset.sum_congr rfl (fun v _ => ?_)
-  simp [Complex.smul_re, mul_smul_comm]
+  simp
   ring
 
 def pairL : V f →ₗ[ℝ] V f →ₗ[ℝ] ℝ :=

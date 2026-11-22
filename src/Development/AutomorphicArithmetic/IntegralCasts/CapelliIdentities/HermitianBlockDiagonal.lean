@@ -69,7 +69,7 @@ theorem UpperTheory.hermitian_block_diagonal :
   have PX : P * X = 0 := by
     rw [hP]
     simp only [Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc, hYX, hXX, Matrix.mul_one,
-      Matrix.mul_zero, sub_self, sub_zero]
+      Matrix.mul_zero, sub_self]
   have PY : P * Y = 0 := by
     rw [hP]
     simp only [Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc, hYY, hXY, Matrix.mul_one,
@@ -79,7 +79,7 @@ theorem UpperTheory.hermitian_block_diagonal :
     simp only [Matrix.mul_sub, Matrix.mul_one, XX, XY, sub_zero, sub_self]
   have YdP : Yd * P = 0 := by
     rw [hP]
-    simp only [Matrix.mul_sub, Matrix.mul_one, YX, YY, sub_zero, sub_self]
+    simp only [Matrix.mul_sub, Matrix.mul_one, YX, YY, sub_self]
   have PP : P * P = P := by
     calc P * P = (1 - X * Yd - Y * Xd) * P := by rw [← hP]
       _ = P := by
@@ -160,7 +160,7 @@ theorem UpperTheory.hermitian_block_diagonal :
     rw [hmJ]
     conv_lhs => rw [hm]
     simp only [Matrix.add_mul, Matrix.mul_add, Matrix.mul_assoc, XX, XY, YX, YY, XdP', YdP',
-      PX', PY', PP', XdP, YdP, hed', hde', Matrix.mul_zero, add_zero, zero_add, hmid,
+      PX', PY', PP', hed', hde', Matrix.mul_zero, add_zero, zero_add, hmid,
       Matrix.mul_sub, hPJ', PP]
     conv_rhs => rw [show J = J * (1 : Matrix (Fin n) (Fin n) S) from (Matrix.mul_one J).symm]
     rw [show (1 : Matrix (Fin n) (Fin n) S) = P + X * Yd + Y * Xd by rw [hP]; abel]

@@ -59,7 +59,6 @@ theorem isUnit_secMat (ρ j : Fin n) (hj : j ≤ ρ) (v : Fin n → ℂ) (hv : v
       · simp
   intro c d hcd
   have := key (c - d) (by
-    change (c - d) ᵥ* _ = 0
     rw [Matrix.sub_vecMul]
     exact sub_eq_zero.2 hcd)
   exact sub_eq_zero.1 this

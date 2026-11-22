@@ -96,7 +96,7 @@ theorem isTangent_iff_push (y : epsR k ⟶ (Over.pullback (spMap f)).obj G) :
     · rw [Category.assoc, Over.w y, Over.w η[(Over.pullback (spMap f)).obj G]]
       simp only [Over.mk_hom, spMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp]
       have : (TrivSqZeroExt.fstHom k k k).toRingHom.comp (algebraMap k (DualNumber k)) = RingHom.id k := by
-        ext s; simp [TrivSqZeroExt.algebraMap_eq_inl]
+        ext s; simp
       rw [this]
       simp
 

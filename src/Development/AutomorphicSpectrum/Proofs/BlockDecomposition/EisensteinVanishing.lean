@@ -69,7 +69,7 @@ theorem char_integral {ψ : AddChar (AF D.host.F) ℂ} (hψ : IsCharAF D.host.F 
     have h0 : (0 : Matrix (Fin V.rank) (Fin n) D.host.E).map (incA D) = 0 := by
       ext i j
       simp
-    simp only [h0, pairing_zero_left, setIntegral_const, smul_eq_mul, mul_one]
+    simp only [h0, pairing_zero_left, setIntegral_const]
     simp [Measure.real, hμ.2.2]
   · set ξ' : Mx D V.rank n := ξ.map (incA D) with hξ'
     have hrat : ξ' ∈ ratMx D V.rank n := ⟨ξ, rfl⟩

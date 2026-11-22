@@ -12,8 +12,8 @@ theorem jm_sq {n : ℕ} (ε : Fin n → Bool) : Formalism.REAL.Jm ε * Formalism
   rw [Matrix.diagonal_mul_diagonal]
   ext i j
   rcases eq_or_ne i j with rfl | h
-  · cases hε : ε i <;> simp [Matrix.diagonal_apply, hε]
-  · simp [Matrix.diagonal_apply, Matrix.one_apply, h]
+  · cases hε : ε i <;> simp [hε]
+  · simp [h]
 
 theorem jm_jm_mul {n : ℕ} (ε : Fin n → Bool) (M : Matrix (Fin n) (Fin n) ℂ) :
     Formalism.REAL.Jm ε * (Formalism.REAL.Jm ε * M) = M := by

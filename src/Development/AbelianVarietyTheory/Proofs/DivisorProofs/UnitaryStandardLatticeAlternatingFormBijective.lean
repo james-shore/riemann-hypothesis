@@ -11,8 +11,8 @@ theorem form_basis_basis {E : Type} [Field E] [NumberField E] {r : ℕ} (ρ : �
   rw [form_apply, Matrix.J]
   simp only [basis_apply, dotProduct]
   rcases a with k | k <;> rcases c with l | l <;>
-    simp [Pi.single_apply, Prod.ext_iff, Matrix.one_apply, Finset.sum_ite_eq, Finset.sum_ite_eq', eq_comm]
-  all_goals simp [ite_and, Finset.mul_sum, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel, mul_ite]
+    simp [Pi.single_apply, Prod.ext_iff, Matrix.one_apply, eq_comm]
+  all_goals simp [ite_and, Finset.sum_ite_eq, Finset.sum_ite_irrel, mul_ite]
   all_goals (split_ifs <;> simp_all)
 
 theorem toMatrix_basis_dualBasis_form {E : Type} [Field E] [NumberField E] {r : ℕ} (ρ : 𝓞 E →+* Matrix (Fin r) (Fin r) ℤ)

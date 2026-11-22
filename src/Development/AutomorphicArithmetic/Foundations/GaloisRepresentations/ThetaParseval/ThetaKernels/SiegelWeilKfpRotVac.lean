@@ -30,7 +30,7 @@ theorem om_place_k (hT : _root_.PositivityTheory.SiegelWeilFormula.TAll_k) (hLO 
   have hvt : d.T Ω = R.tens w (fP (1 : PX d.m d.n)) Ψ := by
     rw [hTΩ]
     funext X
-    simp only [_root_.PositivityTheory.SiegelWeilFormula.KFP.vac_k, _root_.PositivityTheory.SiegelWeilFormula.KFP.gau_k, _root_.PositivityTheory.SiegelWeilFormula.RD_k.tens, _root_.PositivityTheory.SiegelWeilFormula.KFP.fin_k, Ψ]
+    simp only [_root_.PositivityTheory.SiegelWeilFormula.KFP.vac_k, _root_.PositivityTheory.SiegelWeilFormula.KFP.gau_k, _root_.PositivityTheory.SiegelWeilFormula.RD_k.tens, Ψ]
     rw [← Finset.mul_prod_erase Finset.univ (fun w' => fP (1 : PX d.m d.n) (R.loc w' X)) (Finset.mem_univ w), mul_assoc]
     rfl
   have h1 := (hL y (fP (1 : PX d.m d.n)) (KFock.isSw_fP 1)).2 Ψ (_root_.PositivityTheory.SiegelWeilFormula.KFock.away_inv_k R w Ψ hΨ) Ω hΩ hvt

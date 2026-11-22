@@ -30,7 +30,7 @@ theorem exists_smul_mem_of_fg {R M : Type*} [CommRing R] [AddCommGroup M] [Modul
       rw [Finset.coe_insert, Submodule.mem_span_insert] at hx
       obtain ⟨r, y, hy, rfl⟩ := hx
       have e : (t * s) • (r • a + y) = (r * s) • (t • a) + t • (s • y) := by
-        simp only [smul_add, smul_smul, mul_comm, mul_assoc, mul_left_comm]
+        simp only [smul_add, smul_smul, mul_comm, mul_left_comm]
       rw [e]
       exact B.add_mem (B.smul_mem _ hta) (B.smul_mem _ (hsG y hy))
   exact key G subset_rfl
@@ -42,8 +42,6 @@ theorem exists_smul_mem_lattice {E : Type} [Field E] [NumberField E] {n : ℕ}
   | exact @_root_.GlobalTheory.SmulMemOfIsLattice.exists_smul_mem_of_isLattice
   | exact _root_.GlobalTheory.SmulMemOfIsLattice.exists_smul_mem_of_isLattice
   | (apply _root_.GlobalTheory.SmulMemOfIsLattice.exists_smul_mem_of_isLattice <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SmulMemOfIsLattice.exists_smul_mem_of_isLattice <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SmulMemOfIsLattice.exists_smul_mem_of_isLattice <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SmulMemOfIsLattice.exists_smul_mem_of_isLattice ..)
 
 theorem exists_pow_smul_le_of_localization_eq {E : Type} [Field E] [NumberField E] {n : ℕ}

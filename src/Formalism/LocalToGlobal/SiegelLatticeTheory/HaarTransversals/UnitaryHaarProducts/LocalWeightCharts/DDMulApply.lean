@@ -25,7 +25,6 @@ theorem pos_inj : Function.Injective (pos k r) := by
     | (congr 1; exact Fin.ext (by omega))
     | (congr 2; exact Fin.ext (by omega))
     | (exfalso; omega)
-    | skip
   all_goals (first | (exfalso; have := a.isLt; have := b.isLt; omega) | skip)
 
 theorem pos_bij : Function.Bijective (pos k r) := by

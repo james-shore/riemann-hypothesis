@@ -39,8 +39,6 @@ theorem latRank_iSup {K V ι : Type} [Field K] [NumberField K] [AddCommGroup V] 
   have hinj : Function.Injective (DirectSum.coeLinearMap fun i => Submodule.span K (N i : Set V)) := by
     first
     | exact hi.dfinsupp_lsum_injective
-    | exact (iSupIndep_iff_dfinsupp_lsum_injective _).1 hi
-    | exact DirectSum.coeLinearMap_injective_of_iSupIndep hi
   rw [← DirectSum.range_coeLinearMap, LinearMap.finrank_range_of_inj hinj, Module.finrank_directSum]
 
 end GlobalTheory.FlatCore.CMDiff

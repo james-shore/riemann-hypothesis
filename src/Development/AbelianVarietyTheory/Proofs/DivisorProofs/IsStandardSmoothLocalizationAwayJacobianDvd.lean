@@ -44,6 +44,6 @@ theorem isStandardSmoothOfRelativeDimension_localizationAway_of_det_dvd
   refine P'.isStandardSmoothOfRelativeDimension ?_
   change (Q.toPreSubmersivePresentation.comp P).dimension = _
   rw [Algebra.PreSubmersivePresentation.dimension_comp_eq_dimension_add_dimension]
-  simp [Algebra.Presentation.dimension, P]
+  simp [Algebra.Presentation.dimension]
 
 end GlobalTheory.Pinch

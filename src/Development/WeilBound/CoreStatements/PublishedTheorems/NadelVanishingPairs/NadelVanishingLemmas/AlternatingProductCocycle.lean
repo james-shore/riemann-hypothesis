@@ -259,7 +259,7 @@ private theorem Dtot_Lop_eq_zero_of_Dtot_eq_zero_of_empty_eq_zero (p : ℕ) (d :
           h m n v • ((-1 : ℤ) ^ s.card • x) = (-1 : ℤ) ^ s.card • (h m n v • x) :=
         fun x => smul_comm _ _ _
       rw [dif_pos h2, ← hn_eq, hSh, hLs', dsm, hD.dh, hys s', hc]
-      simp only [neg_smul, smul_neg, neg_neg, mul_neg, mul_sub, sub_mul, smul_add, smul_sub,
+      simp only [neg_smul, neg_neg, mul_neg, mul_sub, sub_mul, smul_add, smul_sub,
         mul_smul_comm, hε, hcomm]
       abel
     · have hs'e : s' = ∅ := Finset.not_nonempty_iff_eq_empty.mp h2

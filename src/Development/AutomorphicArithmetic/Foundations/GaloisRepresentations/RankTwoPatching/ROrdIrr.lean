@@ -81,9 +81,9 @@ private theorem chars_of_red {Γ : Type} [Group Γ] [TopologicalSpace Γ] {k : T
     rw [Matrix.trace_fin_two, Matrix.det_fin_two]
     refine mul_right_cancel₀ hi ?_
     fin_cases i
-    · simp only [Fin.zero_eta, Pi.zero_apply, mul_zero]
+    · simp only [Fin.zero_eta]
       linear_combination (r s 1 1 - c₀ s) * a0 - r s 0 1 * a1
-    · simp only [Fin.mk_one, Pi.zero_apply, mul_zero]
+    · simp only [Fin.mk_one]
       linear_combination (r s 0 0 - c₀ s) * a1 - r s 1 0 * a0
   have t : (r s : Matrix (Fin 2) (Fin 2) k).trace = c₀ s + (r s : Matrix (Fin 2) (Fin 2) k).det / c₀ s := by
     field_simp

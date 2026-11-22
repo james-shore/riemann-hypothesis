@@ -282,11 +282,11 @@ theorem sum_FY' (T : KType ε Λ) (μ : Fin n → ℤ) (lam : Fin n → ℝ) (h�
         rw [hDsmul, hD2smul1]
         ring)
       (fun X Y Y' => by
-        simp only [Matrix.mul_add, Matrix.add_mul]
+        simp only [Matrix.add_mul]
         rw [hDadd, hD2add2]
         ring)
       (fun c X Y => by
-        simp only [Matrix.mul_smul, Matrix.smul_mul, smul_eq_mul]
+        simp only [Matrix.smul_mul, smul_eq_mul]
         rw [hDsmul, hD2smul2]
         ring)
   have hB : ∀ X Y, B X Y = D (Matrix.of.symm (Y * X * zq)) +

@@ -14,7 +14,7 @@ private theorem symplectic_sum_pair_eq_J {A : Matrix (Fin g ⊕ Fin g) (Fin g �
   rw [SymplecticGroup.mem_iff, Matrix.transpose_transpose] at h
   rw [← h]
   simp only [Matrix.mul_apply, Fintype.sum_sum_type, Matrix.transpose_apply]
-  simp [Matrix.J, Matrix.fromBlocks, Matrix.one_apply, Finset.sum_sub_distrib, sub_eq_add_neg]
+  simp [Matrix.J, Matrix.fromBlocks, Matrix.one_apply, sub_eq_add_neg]
   rw [Finset.sum_add_distrib, Finset.sum_neg_distrib]
 
 private theorem symplectic_inl_inl_eq_zero_of_colsFixed {k : ℕ} {A : Matrix (Fin g ⊕ Fin g) (Fin g ⊕ Fin g) ℤ}
@@ -54,12 +54,11 @@ theorem phase2 (k : Fin g) (n : ℕ) : ∀ M ∈ symplecticGroup (Fin g) ℤ, Co
   have hEE' : E * E' = 1 := by
     ext c d
     simp [E, E', Matrix.mul_apply, Matrix.one_apply, sub_mul, mul_add, Finset.sum_add_distrib,
-      Finset.sum_sub_distrib, ite_and]
+      ite_and]
     split_ifs <;> simp_all
   have hE'E : E' * E = 1 := by
     ext c d
-    simp [E, E', Matrix.mul_apply, Matrix.one_apply, add_mul, mul_sub, Finset.sum_add_distrib,
-      Finset.sum_sub_distrib, ite_and]
+    simp [E, E', Matrix.mul_apply, Matrix.one_apply, add_mul, mul_sub, Finset.sum_sub_distrib, ite_and]
     split_ifs <;> simp_all
   let U : (Matrix (Fin g) (Fin g) ℤ)ˣ := ⟨E, E', hEE', hE'E⟩
   have hO1 : spDiag U ∈ spH g := spDiag_mem U
@@ -121,7 +120,7 @@ theorem move_col (k j : Fin g) (hjk : (k : ℕ) ≤ j) (hne : j ≠ k) (s : ℤ)
     ext a b
     simp only [P, Matrix.mul_apply, Matrix.of_apply, Matrix.one_apply]
     rw [Finset.sum_eq_single (Equiv.swap j k a)]
-    · simp [Equiv.swap_apply_self, eq_comm]
+    · simp [Equiv.swap_apply_self]
     · intro c _ hc
       simp [Ne.symm hc]
     · simp
@@ -133,13 +132,13 @@ theorem move_col (k j : Fin g) (hjk : (k : ℕ) ≤ j) (hne : j ≠ k) (s : ℤ)
     constructor <;> intro r <;> rcases r with a | a
     · have h1 : (Equiv.swap j k a = i) ↔ (a = i) := by rw [Equiv.swap_apply_eq_iff, hsw]
       simp [spDiag, U, P, Matrix.one_apply, Matrix.fromBlocks, h1]
-    · simp [spDiag, U, P, Matrix.one_apply, Matrix.fromBlocks]
-    · simp [spDiag, U, P, Matrix.one_apply, Matrix.fromBlocks]
+    · simp [spDiag, U, P, Matrix.fromBlocks]
+    · simp [spDiag, U, P, Matrix.fromBlocks]
     · have h1 : (i = a) ↔ (a = i) := eq_comm
       simp [spDiag, U, P, Matrix.one_apply, Matrix.fromBlocks, Matrix.transpose_apply, hsw, h1]
   · rw [Matrix.mul_apply, Fintype.sum_sum_type]
     rcases r with a | a <;>
-      simp [spDiag, U, P, hsupp, Matrix.one_apply, Matrix.fromBlocks, Equiv.swap_apply_eq_iff] <;>
+      simp [spDiag, U, P, hsupp, Matrix.fromBlocks, Equiv.swap_apply_eq_iff] <;>
       try (split_ifs <;> simp_all)
 
 theorem sign_col (k : Fin g) (s : ℤ) (hs : s = 1 ∨ s = -1)

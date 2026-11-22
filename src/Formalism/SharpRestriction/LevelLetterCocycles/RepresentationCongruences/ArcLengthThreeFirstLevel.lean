@@ -138,10 +138,10 @@ theorem arc_length_three_first_level [NeZero n] [Fintype (K →ₐ[Qp] LL)] [IsD
     rw [hty i] at h1
     cases hu : up i
     · simp only [hu, Mi', hi', Bool.false_eq_true, if_false, Formalism.MainNotions.LocalTheoryWindows.LT.win, Set.mem_union,
-        Set.mem_Icc, hAS, hAη, hAG] at h1 ⊢
+        Set.mem_Icc, hAS, hAη] at h1 ⊢
       push_cast
       omega
-    · simp only [hu, Mi', hi', if_true, Formalism.MainNotions.LocalTheoryWindows.LT.win, Set.mem_union, Set.mem_Icc, hAS, hAη, hAG] at h1 ⊢
+    · simp only [hu, Mi', hi', if_true, Formalism.MainNotions.LocalTheoryWindows.LT.win, Set.mem_union, Set.mem_Icc, hAS, hAη] at h1 ⊢
       push_cast
       omega
   have hwid : ∀ i, Mi' i + hi' i = size i + S + η := by

@@ -14,4 +14,4 @@ theorem _root_.GlobalTheory.T.eventually_integral_conj_of_integral_conj_generato
       IsIntB v b (↑X * ((1 : v.adicCompletion ℚ) ⊗ₜ[ℚ] (γ : G.C)) * ↑X⁻¹) →
       ∀ ρ, IsIntB v ℓ ρ →
         IsIntB v b (↑X * Algebra.TensorProduct.map (AlgHom.id ℚ (v.adicCompletion ℚ)) ι ρ * ↑X⁻¹) := by
-  first | (exact @GlobalTheory.ConjInt.isIntB_conj_map_of_isIntB_conj) | (exact GlobalTheory.ConjInt.isIntB_conj_map_of_isIntB_conj) | (intros; apply GlobalTheory.ConjInt.isIntB_conj_map_of_isIntB_conj  <;> assumption)
+  first | (exact @GlobalTheory.ConjInt.isIntB_conj_map_of_isIntB_conj)

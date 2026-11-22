@@ -109,8 +109,7 @@ theorem exists_rep (U : Submodule ℂ W) [FiniteDimensional ℂ U]
       map_smul' := by
         intro r z
         ext x
-        simp only [RingHom.id_apply, LinearMap.smul_apply, LinearMap.comp_apply, LinearMap.flip_apply,
-          Submodule.coe_smul]
+        simp only [RingHom.id_apply, LinearMap.smul_apply, LinearMap.comp_apply, LinearMap.flip_apply]
         rw [RCLike.real_smul_eq_coe_smul (K := ℂ) r z, Submodule.coe_smul, LinearMap.map_smulₛₗ, Complex.real_smul,
           RCLike.conj_ofReal, smul_eq_mul]
         rfl }

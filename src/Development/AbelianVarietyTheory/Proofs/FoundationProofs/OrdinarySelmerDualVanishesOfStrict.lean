@@ -199,7 +199,7 @@ theorem upgrade : GlobalTheory.Mem.LiteralAutomorphy.LitCoh → ∀ (l : ℕ) [F
   have hz1D : ∀ s ∈ Dec (F := ℚ) A, z1 s 1 = 0 := fun s hs => by
     rw [hz1s]
     have := hx s hs
-    simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two, hv0, hup' s hs] at this ⊢
+    simp [hv0, hup' s hs] at this ⊢
     rw [this]; ring
   have hy1unr : ∀ q : Pl, ((l : ℕ) : 𝓞 ℚ) ∉ q.asIdeal → ∀ B : ValuationSubring Ω, IsPlaceOver B q →
       ∃ x : Fin 2 → Qbar l, (∀ i, x i ∈ c2.O) ∧ ∀ s ∈ Ine (F := ℚ) B, y1 s = mat W s *ᵥ x - x := by
@@ -248,10 +248,10 @@ theorem upgrade : GlobalTheory.Mem.LiteralAutomorphy.LitCoh → ∀ (l : ℕ) [F
       by rw [mat_mul, Matrix.mul_apply, Fin.sum_univ_two, hup' t ht]; ring,
       by
         rw [coc_eq W hy1Z s t]
-        simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two, hup s hs]; ring,
+        simp [hup s hs]; ring,
       by
         rw [coc_eq (dual1 W) hz1Z s t]
-        simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two, hz1D t ht]⟩)
+        simp [hz1D t ht]⟩)
     (nontriv e S A W hW).1 (nontriv e S A W hW).2
     (fun n => kummerTower_coboundaryTwo_congr (hCobA n) fun s hs t ht => by
       simp only [cup, om, Matrix.mulVec, dotProduct, Fin.sum_univ_two, hz1D t ht, hup' s hs]; ring)
@@ -266,8 +266,8 @@ theorem upgrade : GlobalTheory.Mem.LiteralAutomorphy.LitCoh → ∀ (l : ℕ) [F
   · have hTriv : Triv (dual1 W) A z1 := ⟨![x', 0], fun s hs => by
       ext i
       fin_cases i
-      · simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two, hx' s hs]
-      · simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two, hup' s hs, hz1D s hs]⟩
+      · simp [hx' s hs]
+      · simp [hup' s hs, hz1D s hs]⟩
     have hB := hStr z1 hz1Z hz1U hTriv
     have hLk : L ^ k ≠ 0 := pow_ne_zero _ hL
     have e : z = (L ^ k)⁻¹ • (z1 + d0 (Loc.colRep (dual1 W)) v0) := by

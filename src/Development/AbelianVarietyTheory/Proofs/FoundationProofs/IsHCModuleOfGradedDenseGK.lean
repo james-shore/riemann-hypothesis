@@ -18,7 +18,7 @@ theorem kset_one (T : GrpData p q) : (1 : T.G) ∈ T.Kset := by
   have : a ≠ b := by
     rintro rfl
     cases a <;> simp [sameBlock] at hab
-  simp [Matrix.one_apply, this]
+  simp [this]
 
 theorem kset_mul (T : GrpData p q) {g h : T.G} (hg : g ∈ T.Kset) (hh : h ∈ T.Kset) :
     g * h ∈ T.Kset := by

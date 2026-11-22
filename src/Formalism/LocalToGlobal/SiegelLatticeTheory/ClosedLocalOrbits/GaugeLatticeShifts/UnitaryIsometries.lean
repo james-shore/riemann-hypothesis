@@ -276,12 +276,10 @@ theorem witt_of_gram {m : ℕ} (x y : Fin m → Fin n → ℂ) (hG : ∀ i j, hJ
     by
       first
         | exact Unitary.mul_star_self_of_mem hH.eigenvectorUnitary.2
-        | exact Matrix.mem_unitaryGroup_iff.1 hH.eigenvectorUnitary.2
   have hU2 : star (hH.eigenvectorUnitary : Matrix (Fin m) (Fin m) ℂ) * (hH.eigenvectorUnitary : Matrix (Fin m) (Fin m) ℂ) = 1 :=
     by
       first
         | exact Unitary.star_mul_self_of_mem hH.eigenvectorUnitary.2
-        | exact Matrix.mem_unitaryGroup_iff'.1 hH.eigenvectorUnitary.2
   have hs := hH.spectral_theorem
   have hΛ : star (hH.eigenvectorUnitary : Matrix (Fin m) (Fin m) ℂ) * gram ε x * (hH.eigenvectorUnitary : Matrix (Fin m) (Fin m) ℂ) =
       Matrix.diagonal (RCLike.ofReal ∘ hH.eigenvalues) := by

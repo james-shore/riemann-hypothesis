@@ -79,7 +79,7 @@ theorem climb {R S V : Type} [Ring R] [Ring S] [AddCommGroup V] [Module R V] [Mo
       have := hstep _ hj _ hy
       rw [← add_assoc]
       convert this using 1
-      simp [Polynomial.aeval_X, Polynomial.aeval_C, sub_eq_add_neg]
+      simp [Polynomial.aeval_X, sub_eq_add_neg]
       rw [add_smul]
       abel
     · have hT' : T ⊆ Finset.Ico m (m + k) := fun i hi => by

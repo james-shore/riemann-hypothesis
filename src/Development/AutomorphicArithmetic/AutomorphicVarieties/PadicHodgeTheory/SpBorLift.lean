@@ -33,7 +33,7 @@ theorem UpperTheory.V.Loc.cocLift (hP : LocalPublishedTheorems) {v l : ℕ} [Fac
         rw [hJ] at ha ⊢
         simp [ha]
       map_one' := by ext a; simp
-      map_mul' := fun g h => by ext a; simp [mul_assoc] }
+      map_mul' := fun g h => by ext a; simp }
   have hρ : ∀ g (a : J), (ρ g a : B) = χ g * a := fun _ _ => rfl
   have hρc : ContAction ρ := by
     unfold ReciprocityTheory.Gal.ContAction

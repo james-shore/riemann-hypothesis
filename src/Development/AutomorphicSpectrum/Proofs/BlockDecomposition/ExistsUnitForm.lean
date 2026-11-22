@@ -23,7 +23,7 @@ theorem norm_central (π : CuspSub E a) (H : π.V →ₗ⋆[ℂ] π.V →ₗ[ℂ
   have h2 := hi (GeneralLinearGroup.scalar (Fin a) z) x x
   rw [h1] at h2
   generalize ((ω.1 (finId E z) : ℂˣ) : ℂ) = c at h2 ⊢
-  simp only [map_smulₛₗ, map_smul, LinearMap.smul_apply, smul_eq_mul] at h2
+  simp only [map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul] at h2
   have hne : H x x ≠ 0 := fun e => by
     have h := hp x hx
     simp [e] at h
@@ -80,7 +80,7 @@ theorem exists_unit_form : G1 := by
     have hcc : starRingEnd ℂ c * c = 1 := by
       rw [Complex.conj_mul', ← hc, hn1 g]
       simp
-    simp only [LinearMap.compl₂_apply, LinearMap.comp_apply, LinearEquiv.coe_coe, map_smulₛₗ, map_smul, LinearMap.smul_apply,
+    simp only [LinearMap.compl₂_apply, LinearMap.comp_apply, LinearEquiv.coe_coe, map_smulₛₗ, LinearMap.smul_apply,
       LinearEquiv.symm_apply_apply, smul_eq_mul]
     rw [CuspSub.locRep_eq, h3, ← mul_assoc, RingHom.id_apply, mul_comm c, hcc, one_mul]
 

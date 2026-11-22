@@ -188,7 +188,7 @@ private theorem isDia_mul_inv_mem {N l : ℕ} {d : ℤ} {s t : SL(2, ℤ)} (hs :
   have e00 : (s * t⁻¹) 0 0 = s 0 0 * t 1 1 - s 0 1 * t 1 0 := by
     simp [Matrix.SpecialLinearGroup.coe_inv, Matrix.mul_apply, Fin.sum_univ_two, Matrix.adjugate_fin_two] <;> ring
   have e11 : (s * t⁻¹) 1 1 = - s 1 0 * t 0 1 + s 1 1 * t 0 0 := by
-    simp [Matrix.SpecialLinearGroup.coe_inv, Matrix.mul_apply, Fin.sum_univ_two, Matrix.adjugate_fin_two] <;> ring
+    simp [Matrix.SpecialLinearGroup.coe_inv, Matrix.mul_apply, Fin.sum_univ_two, Matrix.adjugate_fin_two]
   have e10 : (s * t⁻¹) 1 0 = s 1 0 * t 1 1 - s 1 1 * t 1 0 := by
     simp [Matrix.SpecialLinearGroup.coe_inv, Matrix.mul_apply, Fin.sum_univ_two, Matrix.adjugate_fin_two] <;> ring
   have ds' := congrArg (Int.cast : ℤ → ZMod N) ds

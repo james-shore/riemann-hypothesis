@@ -35,7 +35,7 @@ theorem exists_embOver (F E : Type) [Field F] [NumberField F] [Field E] [NumberF
       rw [← h2]
       change ψ = ComplexEmbedding.conjugate (InfinitePlace.mk ψ).embedding
       rw [e]
-      exact RingHom.ext fun x => by simp [ComplexEmbedding.conjugate_coe_eq]
+      exact RingHom.ext fun x => by simp
   exact ⟨w, ⟨φ, e⟩, rfl⟩
 
 theorem archMat_ratEmb {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E] {σ : E →ₐ[F] E}
@@ -66,7 +66,7 @@ theorem exists_denom : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Num
   obtain ⟨d, hd, h⟩ := GlobalTheory.T.compact_finite_adelic_denominator F E (⋃ q, f q '' Cf) (isCompact_iUnion fun q => hCf.image (hf q))
   refine ⟨d, hd, fun p hp a ha m hm γ hγ α β u v => h _ (Set.mem_iUnion.2 ⟨(α, β, u, v), projFin σ J (ratEmb σ J γ), ⟨(p, m), ⟨hp, hm⟩, ?_⟩, ?_⟩)⟩
   · have ha' : projFin σ J a = 1 := mem_infPts.1 ha
-    simp only [hγ, map_mul, map_inv, ha', mul_one, one_mul, inv_one]
+    simp only [hγ, map_mul, map_inv, ha', mul_one, inv_one]
   · have e : (matHom (Af F) σ J (projFin σ J (ratEmb σ J γ))).1 = γ.1.1.map (inclR (F := F) (Af F)) :=
       congrArg Units.val (GlobalTheory.CompanionTheory.ClassFin.projFin_ratEmb_val σ J γ)
     simp only [f, e]

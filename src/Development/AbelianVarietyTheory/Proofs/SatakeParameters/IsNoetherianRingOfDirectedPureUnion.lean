@@ -59,7 +59,7 @@ theorem mem_sup_pow_of_algebraMap_mem (K : Ideal S) (x : S)
   have hc : (AdicCompletion.evalₐ (maximalIdeal S) n).toRingHom.comp
       (algebraMap S (AdicCompletion (maximalIdeal S) S)) = Ideal.Quotient.mk _ := by
     ext y
-    simp [AlgHom.commutes, Ideal.Quotient.algebraMap_eq]
+    simp [Ideal.Quotient.algebraMap_eq]
   rw [hc] at h
   have h' : Ideal.Quotient.mk (maximalIdeal S ^ n) x ∈ K.map (Ideal.Quotient.mk _) := by
     have e : (AdicCompletion.evalₐ (maximalIdeal S) n).toRingHom

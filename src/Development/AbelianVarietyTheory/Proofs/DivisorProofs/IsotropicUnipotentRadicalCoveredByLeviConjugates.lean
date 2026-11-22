@@ -58,7 +58,7 @@ theorem skew_rest (hs : ∀ x, s (s x) = x) (hk : ∀ (c : k) x, s (c • x) = c
     calc cT s c = (c + cT s c + (X + (y + p)) * (K * cT s (X + (y + p)))) - c - (X + (y + p)) * (K * cT s (X + (y + p))) := by abel
       _ = _ := by rw [hc]; abel
   simp only [cT_add, cT_sub, cT_smul s hk, cT_pair s K hs hK, hcc]
-  simp only [cT_add, cT_pair s K hs hK, Matrix.mul_add, Matrix.add_mul, smul_add, neg_add, sub_eq_add_neg]
+  simp only [cT_add, cT_pair s K hs hK, Matrix.mul_add, Matrix.add_mul, neg_add, sub_eq_add_neg]
   module
 
 theorem rel_half (hs : ∀ x, s (s x) = x) (hk : ∀ (c : k) x, s (c • x) = c • s x) (hK : cT s K = K)

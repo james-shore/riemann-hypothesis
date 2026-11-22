@@ -52,11 +52,11 @@ theorem UpperTheory.Reformulated.B.ShiftMap.finite_translates_matrix_coefficient
     { toFun := fun g => (UpperTheory.Reformulated.B.ShiftMap.shift p g).restrict (hinv g)
       map_one' := by
         ext φ z
-        simp [UpperTheory.Reformulated.B.ShiftMap.shift_apply]
+        simp
       map_mul' := by
         intro g h
         ext φ z
-        simp [UpperTheory.Reformulated.B.ShiftMap.shift_apply, mul_assoc] }
+        simp [UpperTheory.Reformulated.B.ShiftMap.shift_apply] }
   have hσ : ∀ (g : G) (φ : V) (z : H), (σ g φ : H → ℂ) z = (φ : H → ℂ) ((p g)⁻¹ * z) :=
     fun _ _ _ => rfl
   let b := Module.finBasis ℂ V

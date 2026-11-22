@@ -93,7 +93,5 @@ theorem exists_affine_open_of_finset_closedFibre :
   have := hzW Ω z' t x a' rfl rfl hV' (closedPoint Ω)
   first
     | exact (Scheme.fromSpecResidueField_apply z _) ▸ this
-    | simpa only [hz'] using this
-    | (convert this using 1; exact (hz' _).symm)
 
 end GlobalTheory.Mum

@@ -17,7 +17,7 @@ namespace GlobalTheory.SeenSize
 variable {D : D7}
 
 theorem mt_mul_mt_inv (V : HSp D) (g : GA D V) : Formalism.L2.Theta.mt V g * Formalism.L2.Theta.mt V g⁻¹ = 1 := by
-  simp [Formalism.L2.Theta.mt, ← Units.val_mul, ← map_mul]
+  simp [Formalism.L2.Theta.mt]
 
 theorem mulVec_seen (V : HSp D) (g : GA D V) (ξ : Fin V.rank → D.host.E) :
     Formalism.L2.Theta.mt V g *ᵥ seen V g ξ = fun i => incA D (ξ i) := by
@@ -44,7 +44,7 @@ theorem entry_le_opNorm {n : ℕ} (y : Matrix (Fin n) (Fin n) ℂ) (i j : Fin n)
   have h2 := PiLp.nnnorm_apply_le (Matrix.toEuclideanCLM (n := Fin n) (𝕜 := ℂ) y (EuclideanSpace.single j 1)) i
   have h3 : Matrix.toEuclideanCLM (n := Fin n) (𝕜 := ℂ) y (EuclideanSpace.single j 1) i = y i j := by
     change ∑ k, y i k * (EuclideanSpace.single j (1 : ℂ)) k = _
-    simp [Pi.single_apply]
+    simp
   rw [h3] at h2
   refine h2.trans (h1.trans ?_)
   simp [opNorm]
@@ -156,7 +156,7 @@ theorem rat_size {n : ℕ} (ξ : Fin n → D.host.E) (hξ : ξ ≠ 0) :
   have hP := NumberField.prod_abs_eq_one hx
   simp only [hm, pow_one] at hP
   rw [← finprod_comp_equiv FinitePlace.equivHeightOneSpectrum.symm] at hP
-  simp only [FinitePlace.equivHeightOneSpectrum_symm_apply, FinitePlace.mk_apply] at hP
+  simp only [FinitePlace.equivHeightOneSpectrum_symm_apply] at hP
   have hQ : (∏ w : InfinitePlace D.host.F, ‖w.embedding (Algebra.norm D.host.F (ξ i))‖₊) *
       ∏ᶠ v, ‖algebraMap D.host.F (Fv D.host.F v) (Algebra.norm D.host.F (ξ i))‖₊ = 1 := by
     apply NNReal.coe_injective

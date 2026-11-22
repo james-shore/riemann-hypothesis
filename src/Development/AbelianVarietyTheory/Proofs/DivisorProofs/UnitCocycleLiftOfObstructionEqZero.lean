@@ -32,7 +32,7 @@ theorem lift_of_isObU_zero : ∀ (R R₀ : Type) [CommRing R] [CommRing R₀] (I
   refine ⟨fun T T' a ↦ v T T' a * unitOneSub (σ T' (f T T' a)) (mul_eq_zero_of_mem hI (hw T T' a) (hw T T' a)),
     fun T T' a ↦ ?_, fun T T' T'' a b ↦ ?_⟩
   · have h0 : L.p T' (σ T' (f T T' a)) = 0 := (L.ker T' _).2 (hw T T' a)
-    simp only [Units.val_mul, unitOneSub_val, map_mul, map_sub, map_one, h0, sub_zero, mul_one, hv]
+    simp only [Units.val_mul, unitOneSub_val, map_mul, map_sub, map_one, h0, sub_zero, hv]
     exact mul_one _
   · have hnat := (GlobalTheory.Obs.sig_natural R R₀ I hI π hπ hk R₁ α (L.B T') (F.obj T') (L.p T') (L.semi T') (L.surj T')
       (L.ker T') (L.B T'') (F.obj T'') (L.p T'') (L.semi T'') (L.surj T'') (L.ker T'') (L.ρ b) (mp F b)

@@ -127,7 +127,7 @@ theorem cut_mul_cut {n : Type} [Fintype n] [DecidableEq n] {a : AE D} (ha : a * 
   have h0' : (1 - a) * a = 0 := by rw [mul_comm, h0]
   have h1 : (1 - a) * (1 - a) = 1 - a := by rw [sub_mul, one_mul, h0, sub_zero]
   rw [sub_sub_cancel]
-  simp only [Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.one_mul, Matrix.mul_one]
+  simp only [Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, Matrix.mul_smul, Matrix.one_mul, Matrix.mul_one]
   simp only [smul_add, smul_smul, h0, h0', ha, h1, zero_smul, zero_add, add_zero]
   rw [← add_smul, sub_add_cancel, one_smul]
 

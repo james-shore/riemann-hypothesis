@@ -181,7 +181,6 @@ theorem lat_eq_span [Smooth 𝔐.t.G.hom] (P : ChartPack G O c') (q : Cpt 𝔐.�
     exact hsp z
   · rintro _ ⟨v, rfl⟩
     exact (𝔐.M.mem_lat_iff q _).2 ⟨Mq.pt (b₀ v), Mq.tan _, by
-      change (𝔐.M.pt (P.toLi v)).left = _
       rw [← hcomp]
       exact hjq _⟩
 

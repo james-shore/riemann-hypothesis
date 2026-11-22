@@ -72,7 +72,7 @@ theorem exists_unit_norm_one_det_ne_zero (L : Type) [Field L] [NumberField L] [I
   refine ⟨f t, hfu t, fun σ hσ => ht.2 ?_⟩
   simp only [Set.mem_preimage, B, Set.mem_iUnion]
   refine ⟨σ, ?_⟩
-  simp only [Set.mem_preimage, Finset.mem_coe, Multiset.mem_toFinset]
+  simp only [Finset.mem_coe, Multiset.mem_toFinset]
   rw [Polynomial.mem_roots (hp σ), Polynomial.IsRoot, eval_charpolyRev_neg]
   exact hσ
 

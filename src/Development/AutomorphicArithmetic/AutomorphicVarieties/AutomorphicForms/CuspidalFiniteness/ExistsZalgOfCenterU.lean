@@ -56,7 +56,7 @@ theorem exists_stdBasis (F : Type) [Field F] [NumberField F] (a : ℕ) :
   simp only [Module.Basis.coe_ofEquivFun]
   change (Pi.single (v, i, j) (1 : ℝ) : InfinitePlace F × Fin a × Fin a → ℝ) (v', i', j') = Matrix.single i j (Pi.single v (1 : ℝ) : TR.Rinf F) i' j' v'
   by_cases hi : i = i' <;> by_cases hj : j = j' <;> by_cases hv : v = v' <;>
-    simp [Pi.single_apply, Matrix.single_apply, hi, hj, hv, eq_comm]
+    simp [hi, hj, hv, eq_comm]
 
 theorem exists_Zalg_of_centerU {z : UEnv F a} (hz : z ∈ (isExpLieAlgebra F a).centerU) :
     ∃ z' ∈ TR.Zalg F a, ∀ φ, uAction z (toArch F a φ) = toArch F a (z' φ) := by

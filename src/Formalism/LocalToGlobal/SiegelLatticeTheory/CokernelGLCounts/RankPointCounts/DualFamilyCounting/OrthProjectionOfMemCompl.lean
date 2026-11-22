@@ -33,10 +33,6 @@ theorem mk_eq_iff {X : Submodule K V} {L : Submodule (𝓞 K) V} (a b : ↥(locF
 private theorem prO_mem' {X Y : Submodule K V} (hc : IsCompl X Y) (x : V) : prO hc x ∈ X := by
   first
   | exact (Submodule.linearProjOfIsCompl X Y hc x).2
-  | exact Submodule.projection_apply_mem hc x
-  | exact Submodule.projection_apply_mem X Y hc x
-  | simp [prO]
-  | simp [prO, Submodule.projection]
 
 private theorem prO_eq_zero_of_mem_compl {X Y : Submodule K V} (hc : IsCompl X Y) {x : V} (hx : x ∈ Y) :
     prO hc x = 0 := by

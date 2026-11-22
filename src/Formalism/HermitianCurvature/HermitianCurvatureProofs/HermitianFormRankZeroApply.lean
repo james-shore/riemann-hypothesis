@@ -66,7 +66,7 @@ lemma kap_skew (c1 c2 : Matrix (Fin (2 * ρ + k + 1)) (Fin j) ℂ) :
   have hH : (Hpk k ρ)ᴴ = Hpk k ρ := (hpkFacts k ρ).1
   rw [conjTranspose_smul, conjTranspose_sub, conjTranspose_mul, conjTranspose_mul, conjTranspose_mul,
     conjTranspose_mul, hH, conjTranspose_conjTranspose, conjTranspose_conjTranspose]
-  have hs : star (1 / 2 : ℂ) = 1 / 2 := by simp [Complex.ext_iff]
+  have hs : star (1 / 2 : ℂ) = 1 / 2 := by simp
   rw [hs]
   simp only [Matrix.mul_assoc]
   module
@@ -78,9 +78,8 @@ theorem rn_mul (x1 x2 : RC k j ρ) : Rn k j ρ x1 * Rn k j ρ x2 = Rn k j ρ (mu
   rw [Ux3.rn_eq, Ux3.rn_eq, Ux3.rn_eq, block3_mul]
   have hof : (Matrix.of (x1.1 + x2.1) : Matrix (Fin (2 * ρ + k + 1)) (Fin j) ℂ) = Matrix.of x1.1 + Matrix.of x2.1 := rfl
   simp only [mulC, hof, skewOf_add, kap, skewOf_skc (kap_skew _ _)]
-  refine block3_congr ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ <;> (try simp only [hof, conjTranspose_add]) <;>
-    simp [-Matrix.of_add_of, Matrix.mul_assoc, Matrix.mul_add, Matrix.add_mul, conjTranspose_add, Matrix.mul_sub, Matrix.sub_mul,
-      Matrix.mul_smul, Matrix.smul_mul] <;> module
+  refine block3_congr ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ <;> (try simp only [conjTranspose_add]) <;>
+    simp [-Matrix.of_add_of, Matrix.mul_assoc, Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.mul_smul] <;> module
 
 end law
 
@@ -144,7 +143,7 @@ lemma hpk_mulVec_wb {z : Fin (2 * r + k + 1) → ℂ} (hz : inWb k r z) (i : Fin
     · have : Hpk k r i j = 0 := by
         unfold Hpk
         have hne : i.val ≠ j.val := fun h => hji (Fin.ext h).symm
-        split_ifs with h1 h2 h3 <;> first | rfl | (exfalso; omega) | (exfalso; exact hne (by rw [h3.2.2]))
+        split_ifs with h1 h2 h3 <;> first | rfl | (exfalso; omega)
       simp [this]
     · have : z j = 0 := hz j (by omega)
       simp [this]
@@ -184,7 +183,7 @@ lemma hermitian_form_rank_zero_apply (y : Fin (2 * 0 + k + 1) → ℂ) (v : Fin 
     have : Hpk k 0 v j = 0 := by
       unfold Hpk
       have hne : v.val ≠ j.val := fun h => hjv (Fin.ext h).symm
-      split_ifs with h1 h2 h3 <;> first | rfl | (exfalso; omega) | (exfalso; exact hne (by rw [h3.2.2]))
+      split_ifs with h1 h2 h3 <;> first | rfl | (exfalso; omega)
     simp [this]
   · simp
 
@@ -208,7 +207,7 @@ lemma extC_add (z : Fin (2 * r + k + 1) → ℂ) (c c' : Fin (2 * 0 + k) → Fin
   refine Fin.lastCases ?_ (fun i => ?_) v
   · simp only [extC, Fin.lastCases_last, Pi.add_apply, lastRow]
     rw [← add_div]; congr 1
-    simp only [Pi.add_apply, add_mul, Finset.sum_add_distrib, neg_add]
+    simp only [add_mul, Finset.sum_add_distrib, neg_add]
   · simp [extC]
 
 def Cstr (z : Fin (2 * r + k + 1) → ℂ) (c : Fin (2 * 0 + k + 1) → Fin r → ℂ) : Prop :=
@@ -532,19 +531,19 @@ lemma det_UT {m : ℕ} {u : Matrix (Fin m) (Fin m) ℂ} (hu : u ∈ C2.UTset m) 
 
 lemma upper_mem {m : ℕ} (u : G.UT m → ℂ) : G.upper u ∈ C2.UTset m := by
   refine ⟨fun i j hij => ?_, fun i => ?_⟩
-  · simp [G.upper, G.strictUpper, Matrix.one_apply, ne_of_gt hij, not_lt.mpr hij.le]
+  · simp [G.upper, G.strictUpper, ne_of_gt hij, not_lt.mpr hij.le]
   · simp [G.upper, G.strictUpper]
 
 lemma utc_upper {m : ℕ} (u : G.UT m → ℂ) : StabilizerDisintegration.utc (G.upper u) = u := by
   funext q
-  simp [StabilizerDisintegration.utc, G.upper, G.strictUpper, q.2, ne_of_lt q.2, Matrix.one_apply]
+  simp [StabilizerDisintegration.utc, G.upper, G.strictUpper, q.2, ne_of_lt q.2]
 
 lemma upper_utc {m : ℕ} {M : Matrix (Fin m) (Fin m) ℂ} (hM : M ∈ C2.UTset m) : G.upper (StabilizerDisintegration.utc M) = M := by
   ext i j
   rcases lt_trichotomy i j with h | rfl | h
-  · simp [G.upper, G.strictUpper, StabilizerDisintegration.utc, h, ne_of_lt h, Matrix.one_apply]
+  · simp [G.upper, G.strictUpper, StabilizerDisintegration.utc, h, ne_of_lt h]
   · simp [G.upper, G.strictUpper, hM.2]
-  · simp [G.upper, G.strictUpper, h, ne_of_gt h, not_lt.mpr h.le, Matrix.one_apply, hM.1 i j h]
+  · simp [G.upper, G.strictUpper, ne_of_gt h, not_lt.mpr h.le, hM.1 i j h]
 
 lemma UT_mul {m : ℕ} {A B : Matrix (Fin m) (Fin m) ℂ} (hA : A ∈ C2.UTset m) (hB : B ∈ C2.UTset m) :
     A * B ∈ C2.UTset m := by
@@ -673,7 +672,7 @@ lemma mul_upper_sub {m : ℕ} {A : Matrix (Fin m) (Fin m) ℂ} (hA : A ∈ C2.UT
   rw [Matrix.mul_apply, Finset.sum_congr rfl fun l _ => hterm l, Finset.sum_add_distrib, Finset.sum_ite_eq']
   simp only [Finset.mem_univ, if_true]
   have hx : G.upper x i j = x ⟨(i, j), hij⟩ := by
-    simp [G.upper, G.strictUpper, hij, ne_of_lt hij, Matrix.one_apply]
+    simp [G.upper, G.strictUpper, hij, ne_of_lt hij]
   rw [hx]; ring
 
 theorem mp_UTleft {m : ℕ} {A : Matrix (Fin m) (Fin m) ℂ} (hA : A ∈ C2.UTset m) :
@@ -744,7 +743,7 @@ lemma Phi_S {z : Fin (2 * r + k + 1) → ℂ} (hz : C2.StdZ k r z) {a : B.Mat k 
   have hT1 := tau_N hz hAU
   unfold Phi lmulM
   rw [upper_utc hAU, bC_eq hz ha]
-  simp only [Matrix.of_symm_apply, Matrix.of_apply]
+  simp only
   show C2.tauM k r z (C2.uMap k r z a * G.upper p.1) * ((C2.tauM k r z (C2.uMap k r z a * G.upper p.1))⁻¹ * a *
       C2.tauM k r z (G.upper p.1) * Matrix.of p.2) = a * (C2.tauM k r z (G.upper p.1) * Matrix.of p.2)
   rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, ← Matrix.mul_assoc,

@@ -29,10 +29,6 @@ theorem cc_log (D : D7) (p : ℕ) [Fact p.Prime] {β : Type} (v : Pl D × β) :
 theorem degree_single' {σ : Type*} (v : σ) (k : ℕ) : (Finsupp.single v k).degree = k := by
   first
   | exact Finsupp.degree_single v k
-  | (rcases eq_or_ne k 0 with rfl | hk
-     · simp
-     · classical
-       simp [Finsupp.degree, Finsupp.support_single_ne_zero _ hk])
 
 theorem JetTdeg_eq_degree {σ : Type*} (m : σ →₀ ℕ) : JetTdeg m = m.degree := rfl
 
@@ -51,8 +47,6 @@ theorem jet_lin (l d : ℕ) [Fact l.Prime] {β : Type*} (w : ZMod d × β) (n : 
     have h3 : 1 < (l ^ 2) ^ e := by
       first
       | exact Nat.one_lt_pow he h2
-      | exact Nat.one_lt_pow (Nat.pos_of_ne_zero he) h2
-      | exact one_lt_pow₀ h2 he
     omega
   · intro h
     exact absurd (Finset.mem_range.mpr (Nat.succ_pos _)) h
@@ -66,8 +60,6 @@ theorem log_lin (D : D7) (p : ℕ) [Fact p.Prime] {β : Type} (v : Pl D × β) (
   · have h0 : backPl D p v.1 0 = v.1 := by
       first
       | simpa [backPl] using posPl_zero D p v.1
-      | simp [backPl, posPl_zero]
-      | simp [backPl, posPl, partner]
     simp [h0]
   · intro e _ he
     rw [if_neg]
@@ -77,8 +69,6 @@ theorem log_lin (D : D7) (p : ℕ) [Fact p.Prime] {β : Type} (v : Pl D × β) (
     have h3 : 1 < (p ^ 2) ^ e := by
       first
       | exact Nat.one_lt_pow he h2
-      | exact Nat.one_lt_pow (Nat.pos_of_ne_zero he) h2
-      | exact one_lt_pow₀ h2 he
     omega
   · intro h
     exact absurd (Finset.mem_range.mpr (Nat.succ_pos _)) h
@@ -114,7 +104,7 @@ theorem rename_jet (D : D7) (p : ℕ) [Fact p.Prime] {β : Type} (r : Pl D) (w :
       first
       | rw [Finsupp.mapDomain_add, Finsupp.mapDomain_single, Finsupp.degree_add, Finsupp.degree_add,
           degree_single', degree_single', ih]
-      | simp [Finsupp.mapDomain_add, Finsupp.mapDomain_single, degree_single', ih]
+      | simp [Finsupp.mapDomain_add, Finsupp.mapDomain_single, ih]
   have hidx : ∀ e : ℕ, Finsupp.single (backPl D p ((pE D p r β) w).1 (2 * e), ((pE D p r β) w).2) ((p ^ 2) ^ e)
       = Finsupp.mapDomain (pE D p r β) (Finsupp.single (w.1 - 2 * (e : ZMod (nP D p)), w.2) ((p ^ 2) ^ e)) := by
     intro e

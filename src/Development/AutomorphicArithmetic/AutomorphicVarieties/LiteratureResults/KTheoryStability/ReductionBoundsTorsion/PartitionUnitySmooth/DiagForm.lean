@@ -11,7 +11,7 @@ theorem exT {N : ℕ} (h : Matrix (Fin N) (Fin N) ℂ) (hh : h.PosDef) :
   have hH := hh.1
   have key := hH.conjStarAlgAut_star_eigenvectorUnitary
   rw [Unitary.conjStarAlgAut_apply] at key
-  simp only [Unitary.coe_star, star_star, Matrix.star_eq_conjTranspose, conjTranspose_conjTranspose] at key
+  simp only [Unitary.coe_star, Matrix.star_eq_conjTranspose, conjTranspose_conjTranspose] at key
   have hpos := hh.eigenvalues_pos
   refine ⟨(hH.eigenvectorUnitary : Matrix (Fin N) (Fin N) ℂ) * diagonal (fun i => ((Real.sqrt (hH.eigenvalues i))⁻¹ : ℂ)), ?_⟩
   rw [conjTranspose_mul, diagonal_conjTranspose]

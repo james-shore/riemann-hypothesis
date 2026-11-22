@@ -107,8 +107,6 @@ theorem gramH_eqU {r : ℕ} {t : Term V M r} (hg : GoodU H t) :
     · exact h0 a b (not_and_or.mp h)
   · first
       | exact H.h_herm _ _
-      | exact (H.h_herm _ _).symm
-      | simp [H.h_herm]
   · split_ifs with h
     · obtain ⟨rfl, rfl⟩ := h
       exact hT'

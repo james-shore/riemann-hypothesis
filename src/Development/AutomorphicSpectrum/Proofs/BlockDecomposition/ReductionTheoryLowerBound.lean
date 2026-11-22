@@ -283,7 +283,7 @@ theorem simple_bound : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Num
     exact e1.symm
   have hiso : hE σ J ((q : E) • Xᵀ j - c • Xᵀ 0) ((q : E) • Xᵀ j - c • Xᵀ 0) = 0 := by
     refine (hBf _ _).symm.trans ?_
-    simp only [map_sub, map_smulₛₗ, LinearMap.sub_apply, LinearMap.smul_apply, hg, smul_zero, mul_zero, sub_zero]
+    simp only [map_sub, map_smulₛₗ, LinearMap.sub_apply, LinearMap.smul_apply, hg, smul_zero, sub_zero]
   have hNM' := hNM.2.2 _ hu0 hiso
 
   obtain ⟨A, hAdef⟩ : ∃ A, A = Real.exp (-s 0) := ⟨_, rfl⟩

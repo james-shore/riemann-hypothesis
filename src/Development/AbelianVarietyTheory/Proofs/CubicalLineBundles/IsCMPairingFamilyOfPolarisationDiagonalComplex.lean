@@ -236,8 +236,8 @@ theorem isFam_of_isHomFamily : ThetaUnifAV → Out.Laws → ∀ (E : Type) [Fiel
         have hps := hpos (a : D.La) a.2 hne
         rw [Int.natCast_natAbs]
         rcases Int.units_eq_one_or ε with hε | hε <;> rw [hε] at hps ⊢ <;> norm_num at hps ⊢
-        · first | exact hps.le | exact abs_of_pos hps | linarith
-        · first | exact hps.le | exact abs_of_neg hps | linarith
+        · first | exact hps.le
+        · first | exact hps.le
     have hNC : (N : ℂ) ≠ 0 := by exact_mod_cast (show N ≠ 0 by omega)
     have habsC : (((D.EF (H.w0 • (a : D.La)) a).natAbs : ℕ) : ℂ) = ((ε : ℤ) : ℂ) * D.EF (H.w0 • (a : D.La)) a := by
       rw [← Int.cast_natCast (R := ℂ), habs, Int.cast_mul]

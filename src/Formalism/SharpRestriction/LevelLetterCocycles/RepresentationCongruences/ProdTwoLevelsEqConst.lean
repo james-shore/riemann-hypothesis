@@ -87,7 +87,7 @@ theorem letE_mul_AΔ (a : ZMod n) {u : LetA O n} (hu : u ∈ W.AΔ) :
   · subst h
     simp only [Pi.single_eq_same, one_mul]
     exact hU
-  · simp [Pi.single_apply, h]
+  · simp [h]
 
 theorem inFr_ea (a : ZMod n) {N D : PowerSeries O} {f : W.EE} (h : InFr W a (Br.cst N) (Br.cst D) f) :
     ∃ U : PowerSeries O, algebraMap (LetA O n) W.EE (Br.cst D) * f = ea Br a (N * U) := by

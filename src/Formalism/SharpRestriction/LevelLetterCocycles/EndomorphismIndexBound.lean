@@ -78,13 +78,11 @@ theorem coe_prod' {ι : Type*} (s : Finset ι) (h : ι → T) (z : X) :
     ((∏ y ∈ s, h y : T) : X → O) z = ∏ y ∈ s, ((h y : T) : X → O) z := by
   first
   | rw [SubmonoidClass.coe_finsetProd, Finset.prod_apply]
-  | simp [Finset.prod_apply]
 
 theorem coe_sum' {ι : Type*} (s : Finset ι) (h : ι → T) (z : X) :
     ((∑ y ∈ s, h y : T) : X → O) z = ∑ y ∈ s, ((h y : T) : X → O) z := by
   first
   | rw [AddSubmonoidClass.coe_finset_sum, Finset.sum_apply]
-  | simp [Finset.sum_apply]
 
 theorem exists_bump (hsep : ∀ x y : X, x ≠ y → ∃ f ∈ T, f x ≠ f y) (x : X) :
     ∃ g : T, (g : X → O) x ≠ 0 ∧ ∀ y, y ≠ x → (g : X → O) y = 0 := by

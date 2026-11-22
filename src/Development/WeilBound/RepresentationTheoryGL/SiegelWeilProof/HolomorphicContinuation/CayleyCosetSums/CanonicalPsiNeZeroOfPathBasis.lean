@@ -46,7 +46,7 @@ private theorem fromBlocks_I_mul_Cm_mul_fromBlocks_diag (A B : Matrix (Fin n) (F
   have h : fromBlocks (1 : Matrix (Fin n) (Fin n) ℂ) (Complex.I • 1) 0 0 * Cm n =
       fromBlocks ((2 * Complex.I) • 1) 0 0 0 := by
     simp only [Cm, fromBlocks_multiply]
-    congr 1 <;> ext i j <;> simp [Matrix.one_apply] <;> split_ifs <;> ring_nf <;> simp
+    congr 1 <;> ext i j <;> simp [Matrix.one_apply] <;> split_ifs <;> ring_nf
   rw [h, fromBlocks_multiply, fromBlocks_multiply]
   simp
 
@@ -168,7 +168,7 @@ theorem fderiv_fV_R (m : ℕ) (x : M2 n) (hx : x ∈ Dom n) (a0 b0 : Fin n) :
     rw [h]
     conv_lhs => rw [← fromBlocks_toBlocks (x * Cm n)]
     rw [fromBlocks_multiply]
-    simp [Matrix.mul_smul]
+    simp
   have hub : ∀ t : ℂ, ub1 (x * mX 1 0 (t • E) 1) = ub1 x := by
     intro t
     rw [inverse_first_block_mul_unipotent_domain x ⟨hdx, hd1, hd2, hdb⟩ 0 (t • E) (by simp) (by simp)]

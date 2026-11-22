@@ -26,7 +26,6 @@ lemma fstG_act {R : Type} [CommRing R] [IsDomain R] (I : Ideal R) (e : ℕ) {G :
   simp
   first
     | exact pullback.lift_fst _ _ _
-    | erw [pullback.lift_fst]
 
 lemma pG_act {R : Type} [CommRing R] [IsDomain R] {I : Ideal R} {D : DegData R I}
     {A : PolAV (Spec (CommRingCat.of (FractionRing R)))} {G : Over (Spec (CommRingCat.of R))}
@@ -43,7 +42,5 @@ lemma pG_act {R : Type} [CommRing R] [IsDomain R] {I : Ideal R} {D : DegData R I
   congr 1
   first
     | exact fstG_act I e (ιD.onB.act a)
-    | (unfold DegPre.prBe; simp; done)
-    | (unfold DegPre.prBe; simp; exact pullback.lift_fst _ _ _)
 
 end ReciprocityTheory.ChartRestriction.G.DVR

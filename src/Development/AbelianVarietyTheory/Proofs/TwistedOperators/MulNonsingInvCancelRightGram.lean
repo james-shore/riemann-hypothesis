@@ -75,7 +75,7 @@ theorem quad_basis {ι A : Type} [Fintype ι] [DecidableEq ι] [Ring A] [Algebra
   simp only [e1, e2]
   calc _ = ∑ k, ∑ a, (X * U) k a • (x (Pi.single k 1) * c • y ((U * Δ) *ᵥ Pi.single a 1)) := by
         refine Finset.sum_congr rfl fun k _ => ?_
-        simp only [Matrix.mul_apply, Finset.sum_smul, Finset.smul_sum, Finset.mul_sum, mul_smul_comm, smul_smul]
+        simp only [Matrix.mul_apply, Finset.smul_sum, Finset.mul_sum, mul_smul_comm, smul_smul]
         rw [Finset.sum_comm]
         refine Finset.sum_congr rfl fun _ _ => ?_
         rw [Finset.sum_mul, Finset.sum_smul]
@@ -377,7 +377,7 @@ theorem exists_raise_lower (h : GlobalTheory.FockCompare.Chart θ σ) (hψ : IsS
       have e : star (u l) ⬝ᵥ HM V W *ᵥ u k = ((uM A B)ᴴ * HM V W * uM A B) (l.2, l.1) (k.2, k.1) := by
         simp only [u]
         rw [star_mulVec, ← dotProduct_mulVec, mulVec_mulVec, mulVec_mulVec]
-        simp [← Pi.single_star]
+        simp
       rw [e, uM_gram, diagonal_apply]
       by_cases hkl : k = l
       · subst hkl

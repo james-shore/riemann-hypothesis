@@ -90,7 +90,7 @@ theorem algebraMap_residueField_span_X (f : O⟦X⟧) :
       algebraMap O (Ideal.span {X} : Ideal O⟦X⟧).ResidueField (constantCoeff f) := by
   rw [IsScalarTower.algebraMap_apply O O⟦X⟧, ← sub_eq_zero, ← map_sub,
     Ideal.algebraMap_residueField_eq_zero, mem_span_X_iff]
-  simp [PowerSeries.algebraMap_apply]
+  simp
 
 instance isFractionRing_residueField_span_X :
     IsFractionRing O (Ideal.span {X} : Ideal O⟦X⟧).ResidueField := by

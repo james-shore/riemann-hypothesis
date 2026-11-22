@@ -143,7 +143,7 @@ theorem pderiv_subst (g : κ → κ → R) (j : κ) (Q : MvPolynomial κ R) :
     pderiv j (subst g Q) = ∑ i, C (g i j) * subst g (pderiv i Q) := by
   classical
   induction Q using MvPolynomial.induction_on with
-  | C a => simp [subst_C]
+  | C a => simp
   | add p q hp hq => simp only [map_add, hp, hq, mul_add, Finset.sum_add_distrib]
   | mul_X p k hp =>
     have h1 : pderiv j (subst g (X k)) = C (g k j) := by

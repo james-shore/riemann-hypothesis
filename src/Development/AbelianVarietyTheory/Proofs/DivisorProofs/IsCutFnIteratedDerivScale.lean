@@ -15,7 +15,7 @@ theorem iteratedDeriv_scale_eq_zero {G : ℝ → ℝ} (hG : ∀ x, 1 ≤ x → G
     filter_upwards [hopen.mem_nhds hx] with y hy
     exact hG _ (le_of_lt hy)
   rw [hev.iteratedDeriv_eq k]
-  simp [iteratedDeriv_const]
+  simp
 
 theorem isCutFn_iteratedDeriv_scale {G : ℝ → ℝ} (hGs : ContDiff ℝ ∞ G) (hG : ∀ x, 1 ≤ x → G x = 0) {t : ℝ}
     (ht : 0 < t) (k : ℕ) : IsCutFn (iteratedDeriv k (fun y => G (t * y))) := by

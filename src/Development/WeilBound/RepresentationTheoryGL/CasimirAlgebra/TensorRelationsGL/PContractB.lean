@@ -90,7 +90,7 @@ theorem core (hQ : QdetFacts) (hW : WallAlg) (hT : TensorGK) (hL : LieInv)
     split_ifs <;> simp [hQap]
   have hQOm : ∀ (j : Fin m) y, Q (Om (E τ0) j y) = Om F1 j (Q y) := by
     intro j y
-    simp only [Om, LinearMap.sum_apply, map_sum, Module.End.mul_apply, hQeAt]
+    simp only [Om, LinearMap.sum_apply, map_sum, Module.End.mul_apply]
     refine Finset.sum_congr rfl (fun a _ => Finset.sum_congr rfl (fun b _ => ?_))
     rw [hQlift _ _ (hq1 a b), hQeAt]
   have hfib1 : fib (fun _ : Fin m => τ0) τ0 = Finset.univ := by

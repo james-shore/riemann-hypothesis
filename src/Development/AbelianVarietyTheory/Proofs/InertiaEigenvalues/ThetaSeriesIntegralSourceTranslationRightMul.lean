@@ -187,9 +187,9 @@ theorem om_src_move (hB : B.Good) (hS : S.SigOK) {ω : PairRep S T} (hω : B.IsW
         rw [one_mul]
         refine GlobalTheory.PlaceDatum.omegaG_congr _ _ _ _ fun PP hP => ?_
         change _ = y PP
-        simp [hred1 PP (Finset.mem_union_left _ hP) (hpg PP hP), finE_one, redFn_one])
+        simp [hred1 PP (Finset.mem_union_left _ hP) (hpg PP hP), redFn_one])
       (fun y => by
-        simp only [finE_one, inv_one, Units.val_one, Matrix.one_mul, one_mul]
+        simp only [finE_one, Units.val_one, Matrix.one_mul, one_mul]
         unfold Base.locFn
         congr 1
         · refine Finset.prod_congr rfl fun PP hP => ?_

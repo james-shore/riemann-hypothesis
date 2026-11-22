@@ -51,7 +51,7 @@ theorem herm_mulVec (H g : Matrix ι ι ℂ) (x y : ι → ℂ) :
 variable [DecidableEq ι]
 
 theorem herm_single (H : Matrix ι ι ℂ) (i j : ι) : herm H (Pi.single j 1) (Pi.single i 1) = H i j := by
-  simp [herm, ← Pi.single_star]
+  simp [herm]
 
 theorem mem_UH_of_herm {H g : Matrix ι ι ℂ} (h : ∀ x y, herm H (g *ᵥ x) (g *ᵥ y) = herm H x y) :
     gᴴ * H * g = H := by
@@ -258,7 +258,7 @@ theorem unitary_adapted_basis_transforms_form (k r : ℕ) (hk : 1 ≤ k) : (G0 k
     · by_cases hiq : i.val = r + k
       · rw [col_q hk hiq]
         have q : Hq k r i j = 1 := Q_qp hiq hjp
-        simp only [herm_smul_left, herm_smul_right, herm_add_left, herm_sub_right, herm_add_right, herm_bvec, star_inv_sqrt_two_bis, e1, e2, e3, e4, q]
+        simp only [herm_smul_left, herm_smul_right, herm_add_left, herm_sub_right, herm_bvec, star_inv_sqrt_two_bis, e1, e2, e3, e4, q]
         linear_combination 2 * hs
       · rw [col_o hip hiq]
         have q : Hq k r i j = 0 := Q_zp hiq hip hjp

@@ -36,7 +36,7 @@ theorem hasDerivAt_epart (D : RealPlaceData k r Wp Wq) {nf : ℕ} (fib : Fin nf 
   induction es with
   | nil =>
     intro _
-    simp only [C6.Epart, List.map_nil, List.prod_nil, Finset.univ_eq_empty, Finset.sum_empty]
+    simp only [C6.Epart, List.map_nil, List.prod_nil]
     exact hasDerivAt_const _ _
   | cons e es ih =>
     intro hes
@@ -68,7 +68,7 @@ lemma list_sum_smul {α : Type*} (L : List α) (f : α → ℂ) (E : C6.EndH Wp 
 lemma dscal_es (D : RealPlaceData k r Wp Wq) {nf : ℕ} (X : Mat k r) (t : CT k r nf) :
     ∀ t' ∈ dscal D X t, t'.es = t.es := by
   intro t' ht'
-  simp only [dscal, List.mem_append, List.mem_singleton, List.mem_ofFn, Set.mem_range] at ht'
+  simp only [dscal, List.mem_append, List.mem_singleton, List.mem_ofFn] at ht'
   rcases ht' with ((h | ⟨m, h⟩) | ⟨m, h⟩) | h <;> subst h <;> (try split_ifs) <;> rfl
 
 theorem hasDerivAt_cv (D : RealPlaceData k r Wp Wq) {nf : ℕ} (fib : Fin nf → Mat k r → C6.EndH Wp Wq)
@@ -109,7 +109,7 @@ private lemma dscal_support_prop_of_support_prop (D : RealPlaceData k r Wp Wq) {
     (P : Fin (r + 2) → Prop) (hP : ∀ l, (t.a l ≠ 0 ∨ t.b l ≠ 0) → P l) :
     ∀ t' ∈ dscal D X t, ∀ l, (t'.a l ≠ 0 ∨ t'.b l ≠ 0) → P l := by
   intro t' ht' l hl
-  simp only [dscal, List.mem_append, List.mem_singleton, List.mem_ofFn, Set.mem_range] at ht'
+  simp only [dscal, List.mem_append, List.mem_singleton, List.mem_ofFn] at ht'
   rcases ht' with ((h | ⟨m, h⟩) | ⟨m, h⟩) | h <;> subst h
   · exact hP l hl
   · split_ifs at hl with hm
@@ -138,13 +138,13 @@ lemma good_step (D : RealPlaceData k r Wp Wq) {nf : ℕ} {L : Finset (Fin (r + 2
     · simp only [dco, List.mem_append] at ht'
       rcases ht' with ht' | ht'
       · exact dscal_support_prop_of_support_prop D X e.1 _ hab t' ht'
-      · simp only [dfib, List.mem_ofFn, Set.mem_range] at ht'
+      · simp only [dfib, List.mem_ofFn] at ht'
         obtain ⟨i, rfl⟩ := ht'
         exact hab
     · simp only [dco, List.mem_append] at ht'
       rcases ht' with ht' | ht'
       · rw [dscal_es D X e.1 t' ht']; exact hes
-      · simp only [dfib, List.mem_ofFn, Set.mem_range] at ht'
+      · simp only [dfib, List.mem_ofFn] at ht'
         obtain ⟨i, rfl⟩ := ht'
         intro x hx Y hY
         rcases List.mem_or_eq_of_mem_set hx with hx | rfl

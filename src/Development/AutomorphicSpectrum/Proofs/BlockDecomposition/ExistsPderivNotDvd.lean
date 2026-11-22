@@ -28,7 +28,7 @@ theorem exists_pderiv_not_dvd {K σ : Type*} [Field K] [CharZero K] (π : MvPoly
     · subst hi
       simp
       omega
-    · simp [Finsupp.single_apply, Ne.symm hi]
+    · simp [Ne.symm hi]
   have hne : pderiv j π ≠ 0 := by
     intro h0
     have h2 := coeff_pderiv (i := j) π (m - Finsupp.single j 1)

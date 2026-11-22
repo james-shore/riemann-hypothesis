@@ -21,7 +21,7 @@ theorem chain_aeval {σ τ : Type} [Fintype σ] (S : MvPolynomial σ C →ₐ[C]
     pderiv ℓ (S p) = ∑ y, S (pderiv y p) * pderiv ℓ (S (X y)) := by
   induction p using MvPolynomial.induction_on with
   | C a =>
-    simp [MvPolynomial.algHom_C, MvPolynomial.pderiv_C]
+    simp [MvPolynomial.algHom_C]
   | add p q hp hq =>
     simp only [map_add, hp, hq, add_mul, Finset.sum_add_distrib]
   | mul_X p i hp =>
@@ -31,7 +31,7 @@ theorem chain_aeval {σ τ : Type} [Fintype σ] (S : MvPolynomial σ C →ₐ[C]
       by_cases h : i = y
       · subst h
         simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     conv_lhs => rw [map_mul S p (X i), Derivation.leibniz, hp]
     simp only [key, smul_eq_mul, add_mul, Finset.sum_add_distrib, ite_mul, zero_mul, Finset.sum_ite_eq,
       Finset.mem_univ, if_true, Finset.mul_sum, mul_assoc]

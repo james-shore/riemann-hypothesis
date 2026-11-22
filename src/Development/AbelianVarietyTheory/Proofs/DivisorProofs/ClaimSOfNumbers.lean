@@ -98,7 +98,6 @@ theorem claimS_of_numbers : ∀ (T D δ d y e : ℕ) (n Λ β Λ₀ ΛD ΛT Hf H
       (d - R * δ) * (T * c + T / 2 * Real.log β + Real.log ΛD + Real.log ΛT) := by
     field_simp
     ring
-  push_cast at expand ⊢
   rw [expand]; exact key
 
 end GlobalTheory.HSShortEnd

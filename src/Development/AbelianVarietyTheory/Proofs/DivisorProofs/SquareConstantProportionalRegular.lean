@@ -404,11 +404,11 @@ theorem standing {large₂ : SizeData₂ D} (hS : GlobalTheory.IndefiniteRowSide
     have hd' : p ≠ D.host.d := fun e => by
       have h := P.level_split p hp
       rw [Host.cls, primeClass] at h
-      split_ifs at h <;> contradiction
+      split_ifs at h
     have hq' : p ≠ D.host.q := fun e => by
       have h := P.level_split p hp
       rw [Host.cls, primeClass] at h
-      split_ifs at h <;> contradiction
+      split_ifs at h
     exact ((D.host.level_coprimeS p hp).mul_right ((Nat.coprime_primes hpp hq).2 hq')).mul_right
       ((Nat.coprime_primes hpp hd).2 hd')
   refine ⟨hx, fun w hw => ?_⟩

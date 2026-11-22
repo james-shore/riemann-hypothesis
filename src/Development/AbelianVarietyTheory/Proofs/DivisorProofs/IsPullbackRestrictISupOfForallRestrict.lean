@@ -24,7 +24,7 @@ theorem isPullback_iSup_of_forall : ∀ (P' X T S : Scheme.{0}) (a : X ⟶ P') (
   have hr1 : ∀ i, Set.range ((Wo i).ι ≫ U.ι) = Set.range (V i).ι := by
     intro i
     ext x
-    simp only [Scheme.Opens.range_ι, Scheme.Hom.comp_apply]
+    simp only [Scheme.Opens.range_ι]
     constructor
     · rintro ⟨y, rfl⟩
       exact y.2
@@ -62,7 +62,7 @@ theorem isPullback_iSup_of_forall : ∀ (P' X T S : Scheme.{0}) (a : X ⟶ P') (
     have R := (isPullback_morphismRestrict (pullback.fst (U.ι ≫ q) π) (Wo i)).flip
     have hr2 : Set.range ((L ⁻¹ᵁ O i).ι ≫ (a ⁻¹ᵁ U).ι) = Set.range (a ⁻¹ᵁ V i).ι := by
       ext x
-      simp only [Scheme.Opens.range_ι, Scheme.Hom.comp_apply]
+      simp only [Scheme.Opens.range_ι]
       constructor
       · rintro ⟨y, rfl⟩
         have hy := y.2

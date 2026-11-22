@@ -137,7 +137,7 @@ theorem afsplit_inj (y : E ⊗[F] 𝔸) (hy : ∀ w : HeightOneSpectrum (𝓞 F)
     intro z i
     induction z using TensorProduct.induction_on with
     | zero => simp
-    | tmul m n => simp [TensorProduct.equivFinsuppOfBasisLeft_apply_tmul_apply]
+    | tmul m n => simp
     | add x y hx hy => simp [hx, hy]
   apply (TensorProduct.equivFinsuppOfBasisLeft (N := 𝔸) b).injective
   rw [map_zero]

@@ -13,7 +13,7 @@ open scoped Kronecker ComplexOrder
 variable {n d : ℕ}
 
 theorem map_star_mul {a b c : Type} [Fintype b] (A : Matrix a b ℂ) (B : Matrix b c ℂ) : (A * B).map star = A.map star * B.map star := by
-  ext i j; simp [mul_apply, star_sum]
+  ext i j; simp [mul_apply]
 
 theorem cartan_comm {M θ : Matrix (Fin n) (Fin n) ℂ} (h : IsCartan M θ) : M * θ.map star = θᵀ * M := by
   obtain ⟨h1, h2, -⟩ := h
@@ -94,7 +94,7 @@ theorem tensor_cartan_invariant_pos : ∀ (n d : ℕ) (JX θX : Matrix (Fin n) (
         θW * (xᵀ * (θXᵀ * JX * θX.map star) * y.map star * (θW.map star)ᵀ * JWᵀ) := by
       rw [map_star_smulI, transpose_smul, map_star_mul, map_star_mul, transpose_mul, transpose_mul, transpose_transpose,
         transpose_map]
-      simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.mul_assoc, mul_neg, Complex.I_mul_I, neg_neg, one_smul, neg_mul]
+      simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.mul_assoc, Complex.I_mul_I, neg_neg, one_smul, neg_mul]
     have e2 : xᵀ * (θXᵀ * JX * θX.map star) * y.map star * (θW.map star)ᵀ * JWᵀ * θW =
         xᵀ * (θXᵀ * JX * θX.map star) * y.map star * (θWᵀ * JW * θW.map star)ᵀ := by
       simp only [transpose_mul, transpose_transpose, Matrix.mul_assoc]
@@ -108,7 +108,7 @@ theorem tensor_cartan_invariant_pos : ∀ (n d : ℕ) (JX θX : Matrix (Fin n) (
         rw [map_star_smulI, map_star_mul, map_star_mul, transpose_map, transpose_mul]
         simp only [Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_assoc]
       rw [h3, cX, cW]
-      simp only [Matrix.smul_mul, Matrix.mul_smul, transpose_smul, neg_smul, Matrix.mul_assoc]
+      simp only [Matrix.mul_smul, transpose_smul, neg_smul, Matrix.mul_assoc]
     rw [quadruple_sum_eq_trace_transpose_mul, e3, trace_neg, Complex.neg_re, neg_neg,
       ← quadruple_sum_eq_trace_transpose_mul (θXᵀ * JX) (θWᵀ * (Complex.I • JW)) x x, quadruple_sum_eq_kronecker_quadraticForm]
     have hK := (cartan_posDef hJX hX).kronecker (cartan_posDef hIW hW)

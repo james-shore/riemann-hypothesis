@@ -206,7 +206,7 @@ theorem average_kills_theta : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (S T
     have hΦw : ∀ w, Φ w = ∫ x, F (f - g) x w ∂μ := by
       intro w
       have e : ∀ x, F (f - g) x w = F f x w - F g x w := by
-        intro x; simp only [F, map_sub, LinearMap.sub_apply, Pi.sub_apply, mul_sub]
+        intro x; simp only [F, map_sub, Pi.sub_apply, mul_sub]
       simp_rw [e]
       rw [integral_sub (hint w) (hintg w), hgz g hgM w, sub_zero]
     let G : WO S T → X → ℝ≥0∞ := fun w x =>

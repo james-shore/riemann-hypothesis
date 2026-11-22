@@ -19,10 +19,10 @@ namespace GlobalTheory.Overlattice
 def imForm {g : ℕ} (Hm : Matrix (Fin g) (Fin g) ℂ) : LinearMap.BilinForm ℝ (Fin g → ℂ) :=
   LinearMap.mk₂ ℝ (fun y w => (hermForm Hm y w).im)
     (fun a b w => by simp [hermForm, add_dotProduct])
-    (fun c a w => by simp [hermForm, smul_dotProduct, Complex.smul_im])
+    (fun c a w => by simp [hermForm, smul_dotProduct])
     (fun y a b => by simp [hermForm, Matrix.mulVec_add, dotProduct_add])
     (fun c y a => by
-      simp [hermForm, star_smul, Matrix.mulVec_smul, dotProduct_smul, Complex.smul_im])
+      simp [hermForm, star_smul, Matrix.mulVec_smul, dotProduct_smul])
 
 theorem imForm_apply {g : ℕ} (Hm : Matrix (Fin g) (Fin g) ℂ) (y w : Fin g → ℂ) :
     imForm Hm y w = (hermForm Hm y w).im := rfl
@@ -239,7 +239,7 @@ theorem exists_unimodular_overlattice : ∀ (g : ℕ) (Λ : Submodule ℤ (Fin g
       intro j
       rw [hx_def, map_sum, LinearMap.sum_apply]
       simp only [map_smul, LinearMap.smul_apply, smul_eq_mul, hD,
-        LinearMap.BilinForm.apply_dualBasis_left, mul_ite, mul_one, mul_zero]
+        LinearMap.BilinForm.apply_dualBasis_left, mul_ite, mul_zero]
       simp
     have hmaps : ((imForm Hm x).restrictScalars ℤ).comp Λ₁.subtype = (Algebra.linearMap ℤ ℝ).comp φ :=
       b.ext fun j => by

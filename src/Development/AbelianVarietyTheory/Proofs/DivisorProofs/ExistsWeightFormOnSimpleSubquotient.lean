@@ -30,7 +30,7 @@ theorem exists_prodProj (O : Type) [CommRing O] (N : ℕ) (ι : Type) [Fintype �
     funext σ
     by_cases h : σ = τ
     · subst h; simp
-    · simp [Function.update_of_ne h, h]
+    · simp [h]
 
 theorem prodProj_mul_eq_zero (O : Type) [CommRing O] (N : ℕ) (ι : Type) [Fintype ι] [DecidableEq ι] (lam : ι → ℕ → ℕ)
     (w : ι → Fin N → ℕ) (e : Module.End O (NablaT O N lam))

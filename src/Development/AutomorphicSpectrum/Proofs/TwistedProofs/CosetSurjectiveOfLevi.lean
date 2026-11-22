@@ -45,7 +45,7 @@ theorem hf_single_left (a : Fin n) (y : Fin n → L) : hf σ (Pi.single a 1) y =
   · simp
   · intro b _ hb
     have hba : b.rev ≠ a := fun h => hb (by rw [← h, Fin.rev_rev])
-    simp [Pi.single_apply, hba]
+    simp [hba]
   · intro h
     exact absurd (Finset.mem_univ _) h
 
@@ -300,7 +300,7 @@ theorem exists_K_unit {N : ℕ} (hσσ : ∀ x, σ (σ x) = x) (hσ : ∀ x, Val
       have h3 : (mid j).rev ≠ 0 := by rw [← mid_rev]; exact mid_ne_zero _
       have h4 : (mid j).rev ≠ Fin.last (N + 1) := by rw [← mid_rev]; exact mid_ne_last _
       simp only [δ, if_neg h1, if_neg h2, if_neg h3, if_neg h4, map_one, one_mul]
-    · simp only [δ, Fin.rev_last, hN0, if_false, if_true, eq_self_iff_true, ↓reduceIte, map_inv₀, hσσ]
+    · simp only [δ, Fin.rev_last, hN0, ↓reduceIte, map_inv₀, hσσ]
       exact inv_mul_cancel₀ hz0
   have hDU : D ∈ GU σ (N + 2) := by
     show cT σ (Matrix.diagonal δ) * antiJ L (N + 2) * Matrix.diagonal δ = antiJ L (N + 2)

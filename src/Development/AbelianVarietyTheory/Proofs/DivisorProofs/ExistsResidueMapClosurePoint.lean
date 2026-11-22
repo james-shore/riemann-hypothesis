@@ -89,8 +89,6 @@ theorem residueMap : ∀ (X : Scheme.{0}) [IsIntegral X] [IsLocallyNoetherian X]
           p.appLE ⊤ ⊤ (le_top.trans (Scheme.Hom.preimage_top _).ge) ≫ i.appLE ⊤ (i ⁻¹ᵁ ⊤) le_rfl := by
         first
           | rw [Scheme.Hom.appLE_comp_appLE]
-          | (simp only [Scheme.Hom.comp_appLE, Scheme.Hom.appLE, Category.assoc,
-              Scheme.Hom.naturality_assoc]; rfl)
       simp only [algX, q, RingHom.comp_apply]
       rw [Scheme.Hom.app_eq_appLE, e, CommRingCat.comp_apply]
     rw [hc]

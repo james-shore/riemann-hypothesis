@@ -27,20 +27,16 @@ theorem chiQ_norm (P : LocPrime l) (h : GQ l) : ‖(P.χQ h : ℚ_[l])‖ = 1 :=
       have h2 : ‖((a : ℤ) : ℚ_[l])‖ ≤ (l : ℝ) ^ (-((0 : ℕ) : ℤ)) := by
         first
           | exact (Padic.norm_int_le_pow_iff_dvd (a : ℤ) 0).2 (by simp)
-          | exact (padicNormE.norm_int_le_pow_iff_dvd (a : ℤ) 0).2 (by simp)
       simpa using h2
     have hl1 : (l : ℝ) ^ (-((1 : ℕ) : ℤ)) ≤ 1 := by
       have h3 : (1 : ℝ) ≤ l := by exact_mod_cast hl.out.one_lt.le
       simp only [Nat.cast_one, zpow_neg, zpow_one]
       first
         | exact inv_le_one_of_one_le₀ h3
-        | exact inv_le_one h3
     calc ‖(P.χQ g : ℚ_[l])‖ = ‖((P.χQ g : ℚ_[l]) - a) + a‖ := by rw [sub_add_cancel]
       _ ≤ max ‖(P.χQ g : ℚ_[l]) - a‖ ‖(a : ℚ_[l])‖ := by
         first
           | exact Padic.nonarchimedean _ _
-          | exact padicNormE.nonarchimedean _ _
-          | exact IsUltrametricDist.norm_add_le_max _ _
       _ ≤ 1 := max_le (ha.trans hl1) hA
   have h1 := hle h
   have h2 := hle h⁻¹

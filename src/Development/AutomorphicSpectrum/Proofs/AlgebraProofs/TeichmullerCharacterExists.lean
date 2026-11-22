@@ -15,7 +15,6 @@ theorem fund_ex_relay : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsAlg
     have h1 : 1 < Fintype.card F := by
       first
         | exact Fintype.one_lt_card
-        | exact Fintype.one_lt_card_iff_nontrivial.mpr inferInstance
     rw [hq, pow_zero] at h1
     exact lt_irrefl _ h1
   have hqpos : 0 < p ^ f := Nat.pos_of_ne_zero (pow_ne_zero _ hpp.ne_zero)
@@ -113,8 +112,7 @@ theorem fund_ex_relay : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsAlg
   have : NeZero ((n : ℕ) : C) := ⟨Nat.cast_ne_zero.mpr hn.ne'⟩
   obtain ⟨ζ, hζ⟩ := IsAlgClosed.exists_root (Polynomial.cyclotomic n C) (by
     first
-      | exact (Polynomial.degree_cyclotomic_pos n C hn).ne'
-      | (rw [Polynomial.degree_cyclotomic]; exact_mod_cast (Nat.totient_pos.mpr hn).ne'))
+      | exact (Polynomial.degree_cyclotomic_pos n C hn).ne')
   have hζp : IsPrimitiveRoot ζ n := (Polynomial.isRoot_cyclotomic_iff).mp hζ
   have hζ1 : v ζ ≤ 1 := by
     by_contra hlt

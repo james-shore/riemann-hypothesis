@@ -218,8 +218,6 @@ theorem algK_eq (k : K) : algebraMap K (KTf K d.D d.N) k =
     algebraMap (KTp K d.D d.N) (KTf K d.D d.N) (C k) := by
   first
   | rfl
-  | exact IsScalarTower.algebraMap_apply K (KTp K d.D d.N) (KTf K d.D d.N) k
-  | simp [IsScalarTower.algebraMap_apply K (KTp K d.D d.N) (KTf K d.D d.N) k]
 
 theorem pf_fin (hd : d.AxH 𝒜) (h : d.S1) (c : ι) (y : OmS (Ω c) d.D d.N) (hy : y ≠ 0)
     (PA PB : KTp K d.D d.N) (hA : PA ≠ 0) (hB : PB ≠ 0)

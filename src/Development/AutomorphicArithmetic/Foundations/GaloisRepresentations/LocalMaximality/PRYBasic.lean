@@ -177,11 +177,11 @@ theorem UpperTheory.Gal.productCup_of_system.rYBasic_of :
       fun I I' J J' _ _ hI hJ => omB_mono' (hmono I I' J J' hI hJ) a,
       fun I J _ _ => omB_stab _ a, fun I J _ i hi b => ?_, fun I J _ j hj b => ?_⟩
     · have e : (((sysY x j2 a).X b * ((sysY x j2 a).X i)⁻¹ : K'ˣ) : K') = algebraMap F K' (xv x b / xv x i) := by
-        simp [sysY, map_div₀, div_eq_mul_inv]
+        simp [sysY, div_eq_mul_inv]
       rw [e]
       exact (le_sup_left : rB ℂ K' (xv x) I ≤ RY (xv x) j2 I J) (rA_mem_rB (xv x) (ratio_mem (xv x) hi b))
     · have e : (((sysY x j2 a).Y b * ((sysY x j2 a).Y j)⁻¹ : K'ˣ) : K') = j2 (algebraMap F K (xv x b / xv x j)) := by
-        simp [sysY, map_div₀, div_eq_mul_inv]
+        simp [sysY, div_eq_mul_inv]
       rw [e]
       exact (le_sup_right : R2 (xv x) j2 J ≤ RY (xv x) j2 I J)
         (j2_mem_R2_of_mem_rB (xv x) j2 (rA_mem_rB (xv x) (ratio_mem (xv x) hj b)))

@@ -37,7 +37,7 @@ theorem UpperTheory.Gal.W2.rdForm_of :
   unfold rd
   rw [actG_form_eq_sim, adj_actOn_afP, ← Module.End.mul_apply, ← map_mul, key, map_mul,
     AlgHom.commutes, Module.End.mul_apply, Module.algebraMap_end_apply]
-  simp only [inC, AlgHom.coe_toRingHom, RingHom.coe_coe, Algebra.TensorProduct.includeRight_apply]
+  simp only [inC, RingHom.coe_coe, Algebra.TensorProduct.includeRight_apply]
   rw [actOn_tmul_tmul', TensorProduct.smul_tmul', LinearMap.BilinForm.baseChange_tmul, formB,
     L.adj, hsh, Units.val_mul]
   simp only [smul_eq_mul]

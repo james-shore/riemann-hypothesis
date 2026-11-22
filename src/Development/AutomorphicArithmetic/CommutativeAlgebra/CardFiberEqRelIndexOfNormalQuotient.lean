@@ -70,7 +70,7 @@ theorem UpperTheory.card_fiber_eq_relIndex_of_normal_quotient :
       rw [h1, ← QuotientGroup.out_eq' c]
       refine QuotientGroup.eq.mpr ?_
       rw [Subgroup.mem_subgroupOf]
-      simp [Subgroup.mem_subgroupOf]
+      simp
     refine Prod.ext hc ?_
     show act (uu x) = act u
     congr 1

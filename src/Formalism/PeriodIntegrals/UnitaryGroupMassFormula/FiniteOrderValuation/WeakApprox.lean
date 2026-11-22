@@ -12,8 +12,6 @@ lemma val_alg (v : HeightOneSpectrum (𝓞 L)) (a : L) :
     Valued.v (algebraMap L (v.adicCompletion L) a) = v.valuation L a := by
   first
   | exact IsDedekindDomain.HeightOneSpectrum.valuedAdicCompletion_eq_valuation' v a
-  | exact IsDedekindDomain.HeightOneSpectrum.valuedAdicCompletion_eq_valuation v a
-  | simp
 
 lemma exists_pow_lt {δ : ℤᵐ⁰} (hδ : δ ≠ 0) : ∃ n : ℕ, exp (-(n : ℤ)) < δ := by
   obtain ⟨k, rfl⟩ : ∃ k : ℤ, exp k = δ := ⟨log δ, exp_log hδ⟩
@@ -124,7 +122,6 @@ theorem weakApprox (T : Finset (HeightOneSpectrum (𝓞 L)))
       rw [HeightOneSpectrum.valuation_of_algebraMap]
       first
       | exact (w.intValuation_le_pow_iff_mem _ _).mpr hmem
-      | exact (w.intValuation_le_pow_iff_dvd _ _).mpr (Ideal.dvd_span_singleton.mpr hmem)
     have hnum : algebraMap (𝓞 L) L (y - r ⟨w, hw⟩) = (a0 - b ⟨w, hw⟩) * dL := by
       rw [map_sub, hr, ha0, sub_mul, div_mul_cancel₀ _ hdL0, mul_comm dL]
     rw [hnum, Valuation.map_mul] at hval

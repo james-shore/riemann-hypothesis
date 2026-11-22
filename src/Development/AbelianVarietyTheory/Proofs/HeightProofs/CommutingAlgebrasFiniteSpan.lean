@@ -17,8 +17,6 @@ theorem exists_finiteDimensional_stable (M : Type) [AddCommGroup M] [Module ℂ 
   | exact @_root_.GlobalTheory.OrbitGrowth.main
   | exact _root_.GlobalTheory.OrbitGrowth.main
   | (apply _root_.GlobalTheory.OrbitGrowth.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.OrbitGrowth.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.OrbitGrowth.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.OrbitGrowth.main ..)
 
 end GlobalTheory.FiniteOrbit

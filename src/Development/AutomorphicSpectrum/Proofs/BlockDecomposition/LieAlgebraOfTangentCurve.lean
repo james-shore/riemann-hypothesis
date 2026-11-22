@@ -72,7 +72,7 @@ theorem tendsto_pow_of_hasDerivAt (h1 : ‖(1 : A)‖ ≤ 1) (γ : ℝ → A) (Y
     rw [e]
     refine (norm_add_le _ _).trans (add_le_add h1 (hk.trans ?_))
     have : ‖t / (k : ℝ) - 0‖ = |t| / k := by
-      simp [abs_div]
+      simp
     rw [this, hc, mul_div_assoc]
     gcongr
   have ha := hbound γ M1 ((le_max_left _ _).trans (le_max_left _ _)) h0 hM1
@@ -104,7 +104,7 @@ theorem tendsto_pow_of_hasDerivAt (h1 : ‖(1 : A)‖ ≤ 1) (γ : ℝ → A) (Y
       filter_upwards [(hlo.comp_tendsto hs).def hcε, eventually_gt_atTop 0] with k hk hk0
       have hk' : (0 : ℝ) < k := by exact_mod_cast hk0
       simp only [Function.comp] at hk
-      have e : ‖t / (k : ℝ)‖ = |t| / k := by simp [abs_div]
+      have e : ‖t / (k : ℝ)‖ = |t| / k := by simp
       rw [e] at hk
       rw [Real.dist_eq, sub_zero, abs_of_nonneg (by positivity)]
       calc (k : ℝ) * ‖γ (t / k) - E (t / k)‖ ≤ k * (ε / (|t| + 1) * (|t| / k)) := by gcongr

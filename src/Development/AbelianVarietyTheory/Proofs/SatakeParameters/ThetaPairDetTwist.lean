@@ -52,7 +52,7 @@ theorem _root_.GlobalTheory.GodementJacquet.parab_mul_eMat
   simp only [Matrix.mul_apply, hE, hL, mul_ite, ite_mul, mul_one, one_mul, mul_zero, zero_mul,
     Finset.sum_ite_eq', Finset.mem_univ, if_true]
   refine Fin.addCases (fun i => ?_) (fun i => ?_) i
-  · simp [eq_comm]
+  · simp
   · rw [hlow]
     refine (Finset.sum_eq_zero fun x _ => ?_).symm
     rw [if_neg]

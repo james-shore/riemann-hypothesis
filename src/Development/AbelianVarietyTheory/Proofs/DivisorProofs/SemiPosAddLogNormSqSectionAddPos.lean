@@ -99,7 +99,7 @@ theorem GlobalTheory.Mix.semiPosReg_addFn_log_nsq : ∀ (k : Type) [CommRing k] 
       rw [ReciprocityTheory.L2DbarEstimates.Y.leviV_const_mul hψ 1 (Real.log δ) ζ, Complex.ofReal_one, one_mul]
       exact hN i c y hy ζ
   have hpos : 0 < ∑ j, w j (c.e y) := by
-    simp only [Fin.sum_univ_two, w, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+    simp only [Fin.sum_univ_two, w, Matrix.cons_val_zero, Matrix.cons_val_one]
     exact add_pos_of_nonneg_of_pos (Complex.normSq_nonneg _) (Real.exp_pos _)
   have key := ReciprocityTheory.L2DbarEstimates.leviV_log_sum_nonneg hu hl hpos ξ
   have e : (fun v => (((N.φ.addFn fun y => Real.log (N.φ.nsq (secVal p σ t) y + δ)).φ i (c.e.symm v) : ℝ) : ℂ))
@@ -108,7 +108,7 @@ theorem GlobalTheory.Mix.semiPosReg_addFn_log_nsq : ∀ (k : Type) [CommRing k] 
     have hz : c.e.symm v ∈ ptsIn p σ (N.B.U i) := hv.2
     congr 1
     simp only [Weight.addFn, N.φ.nsq_eq (secVal_mem t) hz, Fin.sum_univ_two, w, Matrix.cons_val_zero,
-      Matrix.cons_val_one, Matrix.head_cons, Function.comp_apply, secVal_apply]
+      Matrix.cons_val_one, Function.comp_apply, secVal_apply]
     set a := N.φ.φ i (c.e.symm v)
     set b := ev p σ (N.B.U i) (t.f i) (c.e.symm v)
     have h1 : ‖b‖ ^ 2 * Real.exp (-a) + δ = Real.exp (-a) * (Complex.normSq b + Real.exp (1 * a + Real.log δ)) := by

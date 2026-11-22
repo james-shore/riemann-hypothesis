@@ -144,7 +144,6 @@ theorem convergenceRate_holds : ConvergenceRateStatement := by
     · simp only [h]; exact ⟨ht', htt'.trans ht_t₂⟩
   obtain ⟨hPP, hTR⟩ := hT _ hτ
   obtain ⟨-, hlogR⟩ := hTR ℓ hℓe
-  beta_reduce at hPP hlogR
   have hsm : ∀ i, A.Smooth (phT i (if c i then t else t')) := by
     intro i
     by_cases h : c i

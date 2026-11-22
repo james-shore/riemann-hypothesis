@@ -22,11 +22,9 @@ theorem card_residue (v : HeightOneSpectrum (𝓞 F)) :
     intro r
     rw [IsScalarTower.algebraMap_apply (𝓞 F) F (v.adicCompletion F)]
     first
-    | (rw [v.valuedAdicCompletion_eq_valuation']; exact v.valuation_of_algebraMap r)
-    | (rw [v.valuedAdicCompletion_eq_valuation]; exact v.valuation_of_algebraMap r)
+    | (rw [v.valuedAdicCompletion_eq_valuation'])
+    | (rw [v.valuedAdicCompletion_eq_valuation])
     | (erw [v.valuedAdicCompletion_eq_valuation']; exact v.valuation_of_algebraMap r)
-    | simp [v.valuedAdicCompletion_eq_valuation', v.valuation_of_algebraMap]
-    | simp [v.valuedAdicCompletion_eq_valuation, v.valuation_of_algebraMap]
   have hmem : ∀ r : 𝓞 F, r ∈ v.asIdeal ↔ v.intValuation r < 1 := by
     intro r
     exact (v.intValuation_lt_one_iff_mem r).symm

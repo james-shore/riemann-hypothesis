@@ -20,9 +20,7 @@ theorem exists_lim_series {R : Type} [CommRing R] (p : R) [IsPrecomplete (Ideal.
   first
   | exact @_root_.GlobalTheory.LimitSeriesPowSmul.target
   | exact _root_.GlobalTheory.LimitSeriesPowSmul.target
-  | (apply _root_.GlobalTheory.LimitSeriesPowSmul.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LimitSeriesPowSmul.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LimitSeriesPowSmul.target <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.LimitSeriesPowSmul.target)
   | (intros; exact _root_.GlobalTheory.LimitSeriesPowSmul.target ..)
 
 theorem approx {R A : Type} [CommRing R] [CommRing A] (ι : R →+* A) (p : ℕ)

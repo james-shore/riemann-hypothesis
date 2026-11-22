@@ -69,8 +69,8 @@ theorem lastLoc : ∀ (D : D7), LastLoc D := by
     obtain ⟨FL'', hFL'', TL, hTL, hTLeq⟩ := GlobalTheory.T.lineModel_kappa_transform_isLocalModel D k p ν hν ψ hψ ψk hχ B.L S L'' B.ζ τ hL hτ s z₀ hs hz n FS FL hFL TLS hTLS
     let P : SB (Matrix (Z ⊕ Unit) n k) →ₗ[ℂ] SB (Matrix n n' k × Matrix (Z ⊕ Unit) n k) :=
       { toFun := fun g => prodSB Ξ₁ g
-        map_add' := fun g g' => by apply Subtype.ext; funext q; simp [prodFn, mul_add]
-        map_smul' := fun c g => by apply Subtype.ext; funext q; simp [prodFn]; ring }
+        map_add' := fun g g' => by apply Subtype.ext; funext q; simp [mul_add]
+        map_smul' := fun c g => by apply Subtype.ext; funext q; simp; ring }
     let TX : SB (Matrix (Z ⊕ Unit) n k) →ₗ[ℂ] (WO S X → ℂ) := LinearMap.proj u ∘ₗ Λ ∘ₗ P
     have hTXa : ∀ g, TX g = Λ (prodSB Ξ₁ g) u := fun _ => rfl
     refine ⟨TX, GlobalTheory.T.local_model_box_product_orthogonal_sum_target D k p ψ S X T L'' o'' n Z FS FT FL'' FX ?_ T₂ TL hT₂ hTL TX ?_, ?_⟩

@@ -31,7 +31,7 @@ theorem goodProjW_idem : ∀ (D : D7) (S : RatDat D.ntw) (j : ℕ), D.ntw.Tw →
       by_contra h
       exact hg (hsupp g h))
   have heL : ∀ g, eL.coeff g = D.nexp.eLL0 g := fun g => by
-    simp only [eL, MonoidAlgebra.coeff_ofCoeff, Finsupp.onFinset_apply]
+    simp only [eL, Finsupp.onFinset_apply]
   have hmap : MonoidAlgebra.mapRingHom (G0g D.nd) rd eL = D.nexp.eAlg i true := by
     apply MonoidAlgebra.ext
     apply Finsupp.ext

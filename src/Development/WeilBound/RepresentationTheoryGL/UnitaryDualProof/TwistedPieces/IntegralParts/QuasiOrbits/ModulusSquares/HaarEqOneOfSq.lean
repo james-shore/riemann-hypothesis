@@ -42,8 +42,8 @@ theorem det_C_sq (Z : Subalgebra k (Matrix (Fin n) (Fin n) k)) (τ : Matrix (Fin
   let ψ : (Subalgebra.centralizer k (Z : Set (Matrix (Fin n) (Fin n) k))).toSubmodule →ₗ[k]
       Module.Dual k (Subalgebra.centralizer k (Z : Set (Matrix (Fin n) (Fin n) k))).toSubmodule :=
     LinearMap.mk₂ k (fun x y => τ ((x : Matrix (Fin n) (Fin n) k) * (y : Matrix (Fin n) (Fin n) k)))
-      (fun x x' y => by simp [add_mul]) (fun c x y => by simp [smul_mul_assoc])
-      (fun x y y' => by simp [mul_add]) (fun c x y => by simp [mul_smul_comm])
+      (fun x x' y => by simp [add_mul]) (fun c x y => by simp)
+      (fun x y y' => by simp [mul_add]) (fun c x y => by simp)
   have hψ : Function.Injective ψ := by
     rw [← LinearMap.ker_eq_bot, LinearMap.ker_eq_bot']
     intro x hx

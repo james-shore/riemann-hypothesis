@@ -113,7 +113,7 @@ theorem latDetH_pseudo [DecidableEq ι] (hK : IsCMUnram K) (h : V →ₗ⋆[K] V
     rw [Finset.sum_comm]
     exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring
   have hx1 : ∀ i x, h' (Pi.single i 1) x = (G *ᵥ x) i := fun i x => by
-    rw [hx, Finset.sum_eq_single i] <;> simp +contextual [Pi.single_apply]
+    rw [hx, Finset.sum_eq_single i] <;> simp +contextual
   have hs' : h'.IsSymm := ⟨fun x y => hs.eq _ _⟩
   have hr : ∀ x, (∀ y, h' y x = 0) → x = 0 := fun x H =>
     Matrix.eq_zero_of_mulVec_eq_zero hG (funext fun i => by rw [← hx1, H]; rfl)
@@ -204,9 +204,9 @@ theorem hT_fvec (F : FlagG S r T) (a b : Fin (r + 1)) :
   induction a using Fin.lastCases <;> induction b using Fin.lastCases
   · simp [FlagG.fvec, F.z_norm]
   · rename_i b
-    simp [FlagG.fvec, Formalism.MainNotions.hT_swap_zero (F.z_orth b), diagonal_apply, (Fin.castSucc_ne_last b).symm]
+    simp [FlagG.fvec, Formalism.MainNotions.hT_swap_zero (F.z_orth b), (Fin.castSucc_ne_last b).symm]
   · rename_i a
-    simp [FlagG.fvec, F.z_orth a, diagonal_apply, Fin.castSucc_ne_last]
+    simp [FlagG.fvec, F.z_orth a, Fin.castSucc_ne_last]
   · rename_i a b
     simp [FlagG.fvec, F.e_iso a b, diagonal_apply, Fin.castSucc_ne_last]
 

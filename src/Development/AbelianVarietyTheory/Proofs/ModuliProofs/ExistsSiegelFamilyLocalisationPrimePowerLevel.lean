@@ -69,7 +69,7 @@ theorem finiteType_of_isQProjOver {R : Type} [CommRing R] {X : Scheme.{0}} {f : 
 theorem dirMap_base {o K : Type} [CommRing o] [Field K] {r : ℕ} (β : o →+* K) (lam : (Fin r → K) →ₗ[K] K) :
     spMap (dirMap lam) ≫ spMap ((algebraMap K (TrivSqZeroExt K (Fin r → K))).comp β) =
       constPt (spMap (dirMap lam)) ≫ spMap ((algebraMap K (TrivSqZeroExt K (Fin r → K))).comp β) := by
-  simp only [constPt, Category.assoc, spMap_comp]
+  simp only [constPt, spMap_comp]
   congr 1
   ext x <;> simp [dirMap]
 

@@ -75,7 +75,7 @@ theorem exists_poly_approx_PPSet : ∀ (l : ℕ) [Fact l.Prime] (a e : ℕ) [NeZ
     · exact Finset.sum_ite_eq' _ _ _
     · intro x _
       obtain ⟨x1, x2⟩ := x
-      by_cases h1 : x1 = i <;> by_cases h2 : x2 = n <;> simp [h1, h2, Polynomial.coeff_monomial, Prod.ext_iff] <;> first | done | (subst h1; simp_all) | (split_ifs <;> simp_all)
+      by_cases h1 : x1 = i <;> by_cases h2 : x2 = n <;> simp [h1, h2, Polynomial.coeff_monomial, Prod.ext_iff]
   refine ⟨nn, b, ser w₁, ser c, Finset.prod_ne_zero_iff.2 fun x _ => hNpos x, ser_mem _ hw₁, ser_mem _ hc, ?_, ?_⟩
   · funext τ
     refine PowerSeries.ext fun i => PowerSeries.ext fun n => ?_

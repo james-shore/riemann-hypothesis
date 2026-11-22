@@ -44,8 +44,6 @@ theorem cvx (H : Type*) [NormedAddCommGroup H] [InnerProductSpace ℂ H] [Comple
     have h2 : ‖x m + x n‖ = 2 * ‖(2 : ℂ)⁻¹ • (x m + x n)‖ := by
       first
         | (rw [norm_smul, norm_inv, Complex.norm_two]; ring)
-        | (rw [norm_smul]; norm_num)
-        | (simp [norm_smul]; ring)
     have h3 : 4 * d n ^ 2 ≤ ‖x m + x n‖ ^ 2 := by
       rw [h2]; nlinarith [h1, hd0 n]
     have hpar := parallelogram_law_with_norm ℂ (x m) (x n)

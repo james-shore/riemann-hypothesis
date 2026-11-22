@@ -67,7 +67,6 @@ theorem exists_cay {Y : Matrix (Fin n) (Fin n) ℂ} (hY : Yᴴ * Y = 1) (h1 : (1
   have hYY : Y * Yᴴ = 1 := by
     first
       | exact mul_eq_one_comm.1 hY
-      | exact (Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _)).1 hY
   have hc : Commute (1 + Y) (Y - 1) :=
     ((Commute.one_left Y).add_left (Commute.refl Y)).sub_right (Commute.one_right _)
   have hcinv : (1 + Y)⁻¹ * (Y - 1) = (Y - 1) * (1 + Y)⁻¹ := by
@@ -133,7 +132,6 @@ theorem denseRange_emb [IsCMField L] :
   have hcx : ∀ w : InfinitePlace L, w.IsComplex := fun w => by
     first
     | exact NumberField.IsTotallyComplex.isComplex w
-    | exact IsTotallyComplex.isComplex w
   have hd : DenseRange (algebraMap L (InfiniteAdeleRing L)) :=
     InfiniteAdeleRing.denseRange_algebraMap L
   let g : InfiniteAdeleRing L → (InfinitePlace L → ℂ) := fun a w =>
@@ -154,9 +152,6 @@ theorem denseRange_emb [IsCMField L] :
   simp only [Function.comp_apply, g]
   first
   | exact (InfinitePlace.Completion.extensionEmbedding_coe w _).symm
-  | exact (InfinitePlace.Completion.extensionEmbedding_coe w (WithAbs.equiv w |>.symm x)).symm
-  | simp [InfinitePlace.Completion.extensionEmbedding_coe]
-  | rfl
 
 theorem denseRange_matEmb [IsCMField L] :
     DenseRange (fun b : Matrix (Fin n) (Fin n) L => fun (i j : Fin n) (w : InfinitePlace L) => w.embedding (b i j)) := by
@@ -181,7 +176,6 @@ theorem continuous_cpt_cay :
       fun a b => (continuous_apply w).comp ((continuous_apply b).comp (continuous_apply a))
     first
       | exact (hc i j).sub (hc j i).star
-      | fun_prop
   have hA : ∀ (w : InfinitePlace L) (i j : Fin n),
       Continuous fun z : Fin n → Fin n → InfinitePlace L → ℂ => cay (skewOf z w) i j := by
     intro w i j

@@ -108,7 +108,6 @@ theorem abel_oneVar_uW (r l N : ℕ) (i : Fin r) (v : (Fin r → ℕ) → ℚ) (
         ∑ c : Fin (N + 1), ∑' m, (OneVar.uW l N i v c m : ℂ) * DL (List.replicate (c : ℕ) i) g m := by
   refine ⟨fun c => ?_, fun c => ?_, fun c k hk hgk => ?_, fun c k hk hsk => ?_, fun g hs => ?_⟩
   · unfold OneVar.uW
-    beta_reduce
     split_ifs with h
     · have hc := OneVar.iterate_good_bdd hl hg hb c
       exact OneVar.bddW_sign _ (@GlobalTheory.CompanionTheory.Hypotheses₂.Shintani.Abel.aop_props r l i _ hl hc.1 hc.2).2.1
@@ -118,13 +117,11 @@ theorem abel_oneVar_uW (r l N : ℕ) (i : Fin r) (v : (Fin r → ℕ) → ℚ) (
       simp [OneVar.uW, h, Bop, hm]
     · exact Or.inl (by have := c.isLt; omega)
   · unfold OneVar.uW
-    beta_reduce
     split_ifs with h
     · exact OneVar.goodAt_smul _ ((@GlobalTheory.CompanionTheory.Hypotheses₂.Shintani.Abel.OtherVar.otherVar_main r l i k _ hk).1 (OneVar.iterate_good_other hk hgk c)).2
     · exact OneVar.goodAt_smul _ (OneVar.iterate_good_other hk hgk N)
   · intro m hm
     unfold OneVar.uW
-    beta_reduce
     split_ifs with h
     · simp [((@GlobalTheory.CompanionTheory.Hypotheses₂.Shintani.Abel.OtherVar.otherVar_main r l i k _ hk).2 (OneVar.iterate_supp_other hk hsk c)).2 m hm]
     · simp [OneVar.iterate_supp_other hk hsk N m hm]

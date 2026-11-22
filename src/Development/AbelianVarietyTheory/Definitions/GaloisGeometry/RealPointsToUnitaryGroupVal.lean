@@ -157,7 +157,7 @@ def invSqrtAbs : ℝˣ →* ℝˣ where
   map_one' := by ext; simp
   map_mul' a b := by
     ext
-    simp [abs_mul, Real.sqrt_mul (abs_nonneg _), mul_inv, mul_comm]
+    simp [abs_mul, Real.sqrt_mul (abs_nonneg _), mul_comm]
 
 theorem invSqrtAbs_sq (c : ℝˣ) : ((invSqrtAbs c : ℝˣ) : ℝ) * (invSqrtAbs c : ℝˣ) * c = SignType.sign (c : ℝ) := by
   have hc := c.ne_zero

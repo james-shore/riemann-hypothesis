@@ -94,7 +94,7 @@ theorem flagStep_min (b : Fin r → E) (i : ℕ) : flagStep Ω b i = flagStep Ω
   unfold flagStep
   congr 2
   ext k
-  simp [k.2]
+  simp
 
 theorem flagStep_last (b : Fin r → E) : flagStep Ω b r = Submodule.span Ω (Set.range b) := by
   unfold flagStep

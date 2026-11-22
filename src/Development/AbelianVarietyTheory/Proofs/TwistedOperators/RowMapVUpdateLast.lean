@@ -31,7 +31,7 @@ theorem fockComp_mul_right (B : VertexFrames G) (i : ℕ) (hi : (Pair.chi i D.R.
   have e1 : G.toPair (.chi i D.R.m : Pair T) (a : GA D (G.V (Pair.chi i D.R.m : Pair T).small))
       ((b * h : FinPt G (.grid (i + 1) D.R.m)) : GA D _) =
       G.toPair (.chi i D.R.m : Pair T) a b * G.toPair (.chi i D.R.m : Pair T) 1 h.1 := by
-    simp [GridData.toPair, Prod.ext_iff, map_mul]
+    simp [GridData.toPair, map_mul]
   have e2 : G.toPair (.chi i D.R.m : Pair T) 1 h.1 = (negGA _ h.1, (1 : GA D _)) := rfl
   rw [e1, map_mul, Module.End.mul_apply, e2]
   unfold fockIn

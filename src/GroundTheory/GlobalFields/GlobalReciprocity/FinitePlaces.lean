@@ -64,15 +64,11 @@ def powerSubgroup (U : Subgroup Gal(ℚ̄/ℚ)) (s : Gal(ℚ̄/ℚ))
     (hU : ∀ (k : ℤ), ∀ x ∈ U, s ^ k * x * (s ^ k)⁻¹ ∈ U) : Subgroup Gal(ℚ̄/ℚ) := by
   first
   | exact @GroundTheory.Variant₂.N1.mulZPowers U s hU
-  | exact GroundTheory.Variant₂.N1.mulZPowers ..
-  | (intros; apply GroundTheory.Variant₂.N1.mulZPowers <;> assumption)
 
 theorem le_powerSubgroup (U : Subgroup Gal(ℚ̄/ℚ)) (s : Gal(ℚ̄/ℚ))
     (hU : ∀ (k : ℤ), ∀ x ∈ U, s ^ k * x * (s ^ k)⁻¹ ∈ U) : U ≤ powerSubgroup U s hU := by
   first
   | exact @GroundTheory.Variant₂.N1.le_powerSubgroup₂ U s hU
-  | exact GroundTheory.Variant₂.N1.le_powerSubgroup₂ ..
-  | (intros; apply GroundTheory.Variant₂.N1.le_powerSubgroup₂ <;> assumption)
 
 section Fields
 

@@ -70,7 +70,7 @@ private theorem hom_iff (χ : Fin 4 → H →* Eˣ) (γ : H → M4 E) :
         show (if a = b then ((χ a (g * h) : Eˣ) : E) else 0) =
           ∑ c, (if a = c then ((χ a g : Eˣ) : E) else 0) * (if c = b then ((χ c h : Eˣ) : E) else 0)
         simp only [ite_mul, mul_ite, zero_mul, mul_zero,
-          Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, map_mul, Units.val_mul]
+          Finset.sum_ite_eq', Finset.mem_univ, if_true, map_mul, Units.val_mul]
         split_ifs with hab
         · subst hab
           rfl
@@ -97,7 +97,7 @@ private theorem ex_root [CharZero E] (a b : Fin 4) :
     ∃ X ∈ sp4 E, X a b ≠ 0 ∧ ∀ a' b', wt a' b' ≠ wt a b → X a' b' = 0 := by
   refine ⟨Matrix.of fun i j => if i = a ∧ j = b then (1 : E) else if i = b.rev ∧ j = a.rev then -((sgn a * sgn b : ℤ) : E) else 0, ?_, ?_, ?_⟩
   · rw [mem_sp4_iff]
-    fin_cases a <;> fin_cases b <;> intro a' b' <;> fin_cases a' <;> fin_cases b' <;> simp [sgn] <;> norm_num
+    fin_cases a <;> fin_cases b <;> intro a' b' <;> fin_cases a' <;> fin_cases b' <;> simp [sgn]
   · simp
   · intro a' b' h
     have h1 : ¬ (a' = a ∧ b' = b) := by
@@ -275,7 +275,7 @@ private theorem dim_zero (χ : Fin 4 → H →* Eˣ) (I : H → Prop) (σ : H)
       fin_cases a <;> simp [d, hua, hua'] <;> ring
     have hdrev : ∀ g a, d g a.rev = -d g a := by
       intro g a
-      fin_cases a <;> simp [d] <;> rfl
+      fin_cases a <;> simp [d]
     have hdI : ∀ g, I g → ∀ a, d g a = 0 := by
       intro g hg a
       fin_cases a <;> simp [d, huI g hg, huI' g hg]

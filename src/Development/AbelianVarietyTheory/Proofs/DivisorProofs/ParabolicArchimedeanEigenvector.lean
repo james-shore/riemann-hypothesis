@@ -32,13 +32,13 @@ theorem GlobalTheory.LineGlue.exists_idele_smul_of_local_lines : ∀ (F E : Type
     intro v
     rw [hX, adMat, Matrix.map_map]
     congr 1
-    try funext e; simp [compFin, inclR, Algebra.TensorProduct.includeRight_apply, Algebra.TensorProduct.map_tmul]
+    try funext e
   have hinclInf : ∀ w : InfinitePlace F,
       x.map (inclR (F := F) w.Completion) = X.map (compInf F E w) := by
     intro w
     rw [hX, adMat, Matrix.map_map]
     congr 1
-    try funext e; simp [compInf, inclR, Algebra.TensorProduct.includeRight_apply, Algebra.TensorProduct.map_tmul]
+    try funext e
   have hMX : U.1 * X = X * (P * U.1 * X) := by
     ext i j
     refine GlobalTheory.Doubling.adele_ext (fun w => ?_) (fun v => ?_)
@@ -63,4 +63,4 @@ theorem GlobalTheory.LineGlue.exists_idele_smul_of_local_lines : ∀ (F E : Type
   rw [hMX]
   ext i j
   fin_cases j
-  simp [Matrix.mul_apply, Fin.sum_univ_one, mul_comm]
+  simp [Matrix.mul_apply, mul_comm]

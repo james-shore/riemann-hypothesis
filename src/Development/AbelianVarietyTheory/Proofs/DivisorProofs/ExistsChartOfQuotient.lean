@@ -152,7 +152,7 @@ theorem IsChart.map {c : Fin N → Fin r → S} (hc : IsChart e σ c) (φ : S �
     IsChart e σ (fun m k => φ (c m k)) := by
   refine ⟨fun k k' => ?_, fun a m k => ?_⟩
   · show φ (c (σ k) k') = _
-    rw [hc.1]; by_cases h : k' = k <;> simp [Pi.single_apply, h]
+    rw [hc.1]; by_cases h : k' = k <;> simp [h]
   · have : mulDefect e σ (fun m k => φ (c m k)) a m k = φ (mulDefect e σ c a m k) := by
       simp [mulDefect, map_sub, map_sum, map_mul, AlgHom.commutes]
     rw [this, hc.2, map_zero]
@@ -220,7 +220,7 @@ theorem isChart_iff_aeval (c : Fin N → Fin r → S) :
     rw [← mulDefect_map]; simp
   have hs : ∀ k k' : Fin r, algebraMap A S (Pi.single (M := fun _ => A) k 1 k') =
       Pi.single (M := fun _ => S) k 1 k' := by
-    intro k k'; by_cases h : k' = k <;> simp [Pi.single_apply, h]
+    intro k k'; by_cases h : k' = k <;> simp [h]
   constructor
   · rintro ⟨ha, hb⟩ (⟨k, k'⟩ | ⟨a, m, k⟩)
     · simp [rels, ha, hs]

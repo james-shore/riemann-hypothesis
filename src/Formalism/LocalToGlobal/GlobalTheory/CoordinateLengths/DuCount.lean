@@ -98,8 +98,6 @@ theorem duCount_holds : ∀ (D : Formalism.BasicNotions.D7) (u : D.what₂.Word)
   rw [← h1]
   first
     | rfl
-    | (unfold Formalism.BasicNotions.D7.duS; rfl)
-    | simp [Formalism.BasicNotions.D7.duS]
 
 end Formalism.L2.GlobalTheoryTheory.LemB
 

@@ -58,7 +58,7 @@ theorem GlobalTheory.PDForm.rq_truncPoly : ∀ (R B : Type) [CommRing R] [CommRi
         obtain ⟨y, hy, rfl⟩ := hx
         simpa [hb] using hy
       · intro k a _
-        simp [hb]
+        simp
       · intro k
         cases k with
         | zero => change ε0 (Q.e 0) = _; rw [Q.e_zero, map_one, δ.dpow_zero J.zero_mem]

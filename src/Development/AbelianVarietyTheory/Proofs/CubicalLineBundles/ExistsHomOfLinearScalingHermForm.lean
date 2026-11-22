@@ -85,11 +85,6 @@ lemma exists_hom_of_values {S : Scheme.{0}} (q : Y ⟶ S) [IsSeparated q] [IsAff
     ∃ g : X ⟶ Y, ∀ z, ex z ≫ g = ey z := by
   first
   | (rename_i h_3 h_4 h_11 h_12; revert X Y p h_3 h_4 Z ex ey hon S q h_11 h_12 h; exact @_root_.GlobalTheory.SchemeHomsFromPoints.exists_hom)
-  | exact @_root_.GlobalTheory.SchemeHomsFromPoints.exists_hom
-  | exact _root_.GlobalTheory.SchemeHomsFromPoints.exists_hom
-  | (apply _root_.GlobalTheory.SchemeHomsFromPoints.exists_hom <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SchemeHomsFromPoints.exists_hom <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SchemeHomsFromPoints.exists_hom <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SchemeHomsFromPoints.exists_hom ..)
 
 end Criterion

@@ -14,7 +14,7 @@ theorem preimage_iUnion_eq_range_cells : ∀ (O K : Type) [CommRing O] [Field K]
     rw [← Category.assoc, hif, hP.base]
   have hjf : j ≫ ν ≫ p0 = f ≫ p0 := by rw [← Category.assoc, hjν]
   have hU : ((⨆ b, (V b).1 : X.Opens) : Set X) = ⋃ b, ((V b).1 : Set X) := by
-    simp [TopologicalSpace.Opens.coe_iSup]
+    simp
   rw [← hU]
   refine GlobalTheory.preimage_opens_eq_range_of_valuative F Z X j (ν ≫ p0) _ hj hd hsep hF ?_ ?_
   · rintro _ ⟨x, rfl⟩

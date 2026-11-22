@@ -276,7 +276,7 @@ lemma le_exp_mul_of_near_bound (N D A δ c : ℝ) (hNA : N ≤ A) (hD : A - δ �
   have hdiv : 2 * δ / A ≤ 2 * δ / c := by
     have e : 2 * δ / c - 2 * δ / A = 2 * δ * (A - c) / (c * A) := by
       first
-      | (field_simp; ring)
+      | (field_simp)
       | field_simp
     have : 0 ≤ 2 * δ * (A - c) / (c * A) :=
       div_nonneg (mul_nonneg (by linarith) (by linarith)) (mul_pos hc hA).le
@@ -285,7 +285,6 @@ lemma le_exp_mul_of_near_bound (N D A δ c : ℝ) (hNA : N ≤ A) (hD : A - δ �
     have e : (1 + 2 * δ / A) * (A - δ) = A + δ - 2 * δ ^ 2 / A := by
       first
       | (field_simp; ring)
-      | field_simp
     rw [e]
     have : 2 * δ ^ 2 / A ≤ δ := by
       rw [div_le_iff₀ hA]

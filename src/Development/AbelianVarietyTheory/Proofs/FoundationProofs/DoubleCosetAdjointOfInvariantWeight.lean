@@ -80,7 +80,7 @@ theorem abstract_double_coset_adjoint : ∀ (G X Γ ι κ : Type) [Group G] [Mea
       rw [smul_smul, ← mul_assoc, inv_mul_cancel, one_mul]
     have hx3 : (α q.1 * φ q.2) • x = φ (e.symm q).1 • β (e.symm q).2 • x := by
       rw [← h1, mul_smul]
-    simp only [hwQ, hwP, hFQ, hFP, hx1, hx2, h2, inv_smul_smul]
+    simp only [hwQ, hwP, hFQ, hFP, hx2, h2, inv_smul_smul]
     rw [hx3, Complex.real_smul, Complex.real_smul]
     ring
 

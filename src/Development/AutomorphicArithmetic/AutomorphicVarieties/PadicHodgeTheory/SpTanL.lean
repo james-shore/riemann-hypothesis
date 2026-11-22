@@ -278,7 +278,6 @@ private theorem ord_iff {H : Type} [Group H] (I : Subgroup H) (s₀ : H) (hs : s
       simp only [Polynomial.eval_prod, Polynomial.eval_sub, Polynomial.eval_X, Polynomial.eval_C] at hev
       have hz : ∏ i, (c' a - c' i) = 0 := Finset.prod_eq_zero (Finset.mem_univ a) (sub_self _)
       rw [hz, ← Finset.mul_prod_erase Finset.univ (fun j => c' a - inl (p j s₀)) (Finset.mem_univ a)] at hev
-      beta_reduce at hev
       have hunit : IsUnit (∏ j ∈ Finset.univ.erase a, (c' a - (inl (p j s₀) : DualNumber E))) := by
         rw [IsUnit.prod_iff]
         intro j hj

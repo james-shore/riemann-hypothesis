@@ -87,7 +87,7 @@ theorem act_eq_one_of_gen (t : SAB H S) (hK : KTriv t.G t.PP.L) (π : 𝓞 E) (a
     have h := (cls_eq_zero_iff (LB.isLB_linComb hL _ _)).2 ⟨α₀, hα⟩
     rw [cls_linComb hL, Fin.sum_univ_two] at h
     have h' := congrArg (pull x.left) h
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, map_add, map_zsmul, map_zero, ← pull_comp, Category.comp_id,
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, map_add, map_zero, ← pull_comp, Category.comp_id,
       ← Over.comp_left, neg_smul, natCast_zsmul, map_neg, map_nsmul] at h'
     exact add_neg_eq_zero.1 h'
   have Bab : ∀ {T : Over S} (x y : T ⟶ t.G), a • B x y = b • B (x ≫ t.act.act π) (y ≫ t.act.act π) := fun x y => by

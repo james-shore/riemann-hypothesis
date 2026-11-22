@@ -226,7 +226,7 @@ theorem levelL_of_fix (hΛ : ∀ x, x ∈ Λ ↔ ∀ y ∈ Λ, IsIntegral ℤ (h
         rw [Model.herm_one, Finset.mul_sum, Finset.sum_mul, Finset.smul_sum]
         refine Finset.sum_congr rfl fun k _ => ?_
         rw [Finset.sum_eq_single a (fun a' _ ha => by simp [hb, ha]) (by simp)]
-        simp only [hb, smul_zero, Matrix.zero_apply, cc_zero, Matrix.smul_apply, Matrix.of_apply,
+        simp only [hb, Matrix.zero_apply, cc_zero, Matrix.smul_apply, Matrix.of_apply,
           if_true, smul_eq_mul, Matrix.transpose_apply, Rat.smul_def, mul_zero]
         push_cast
         ring

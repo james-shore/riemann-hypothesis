@@ -28,13 +28,13 @@ theorem exists_der_fibre : ∀ (Z Z' X X' : Scheme.{0}) (p : Z ⟶ X) (p' : Z' �
     { toFun := fun f => TrivSqZeroExt.inl (α.hom f) + TrivSqZeroExt.inr (α.hom (δ f))
       map_one' := by ext <;> simp
       map_zero' := by ext <;> simp
-      map_add' := fun x y => by ext <;> simp <;> ring
+      map_add' := fun x y => by ext <;> simp
       map_mul' := fun x y => by ext <;> simp [Derivation.leibniz] <;> ring }
   let b : Γ(X', U'.1) →+* DualNumber Γ(Z', φ ⁻¹ᵁ O.1 ⊓ p' ⁻¹ᵁ U'.1) :=
     { toFun := fun r => TrivSqZeroExt.inl (β.hom r) + TrivSqZeroExt.inr (β.hom (D' r))
       map_one' := by ext <;> simp
       map_zero' := by ext <;> simp
-      map_add' := fun x y => by ext <;> simp <;> ring
+      map_add' := fun x y => by ext <;> simp
       map_mul' := fun x y => by ext <;> simp [Derivation.leibniz] <;> ring }
   have hw0 : ∀ s, α.hom ((p.appLE U.1 O.1 hO).hom s) = β.hom ((g.appLE U.1 U'.1 hU).hom s) :=
     fun s => congr($(P.w).hom s)

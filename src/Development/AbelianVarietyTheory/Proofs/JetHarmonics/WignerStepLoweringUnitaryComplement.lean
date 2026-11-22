@@ -27,7 +27,7 @@ theorem comp_adjoint_apply {V : Type} [NormedAddCommGroup V] [InnerProductSpace 
       PiLp.inner_apply, Finset.sum_eq_single c]
     · simp
     · intro b _ hb
-      simp [PiLp.single_apply, Pi.single_apply, hb]
+      simp [hb]
     · simp
   rw [h, ha]
   rfl

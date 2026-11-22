@@ -31,7 +31,6 @@ theorem main : ∀ {E : Type} [inst : Field E] [NumberField E] {j : ℕ}
         have h2 := coe_smul_mem Λ (n : 𝓞 E) hb
         convert Λ.add_mem h1 h2 using 1
         simp only [smul_add, smul_smul, map_intCast, Int.cast_mul]
-        push_cast
         rw [mul_comm (m : E) (n : E)]
       zero_mem' := ⟨1, one_ne_zero, by simp⟩
       smul_mem' := by

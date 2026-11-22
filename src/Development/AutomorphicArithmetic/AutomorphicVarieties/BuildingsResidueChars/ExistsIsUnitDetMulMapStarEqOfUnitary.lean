@@ -33,7 +33,7 @@ private theorem S_apply (B : Matrix (Fin 3) (Fin 3) (Lsq K Δ)) (v) : S B v = B 
 private theorem star_mulVec' (M : Matrix (Fin 3) (Fin 3) (Lsq K Δ)) (v : Fin 3 → Lsq K Δ) :
     star (M *ᵥ v) = M.map star *ᵥ star v := by
   funext i
-  simp [mulVec, dotProduct, star_sum, mul_comm]
+  simp [mulVec, dotProduct, star_sum]
 
 private theorem S_S {B : Matrix (Fin 3) (Fin 3) (Lsq K Δ)} (h : B * B.map star = 1) (v) : S B (S B v) = v := by
   rw [S_apply, S_apply, star_mulVec', star_star, mulVec_mulVec, h, one_mulVec]
@@ -115,8 +115,7 @@ theorem UpperTheory.exists_isUnit_det_mul_map_star_eq_of_unitary :
     refine ⟨fun j => algebraMap K (Lsq K Δ) (c j) + om K Δ * algebraMap K (Lsq K Δ) (d j), ?_⟩
     rw [s1, s2]
     funext i
-    simp only [mulVec, dotProduct, Q, Matrix.of_apply, Pi.add_apply, Pi.smul_apply, Finset.sum_apply, smul_eq_mul,
-      Algebra.smul_def, mul_add, Finset.sum_add_distrib, Finset.mul_sum]
+    simp only [mulVec, dotProduct, Q, Matrix.of_apply, Pi.add_apply, Finset.sum_apply, Algebra.smul_def, mul_add, Finset.sum_add_distrib, Finset.mul_sum]
     congr 1
     · exact Finset.sum_congr rfl fun j _ => mul_comm _ _
     · exact Finset.sum_congr rfl fun j _ => by simp only [Pi.mul_apply, Pi.algebraMap_apply, Algebra.algebraMap_self, RingHom.id_apply]; ring

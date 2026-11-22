@@ -59,7 +59,7 @@ theorem inK_iff {A B : Over (Sp k)} [GrpObj B] (π : A ⟶ B) {T : Scheme.{0}} (
   refine ⟨fun ⟨z, hz⟩ => ?_, fun h => ⟨_, h.symm⟩⟩
   have e : z = y ≫ A.hom := by
     have := congrArg (· ≫ B.hom) hz
-    simp only [Category.assoc, hη, Category.comp_id, Over.w π] at this
+    simp only [Category.assoc, hη, Over.w π] at this
     exact this
   rw [← hz, e]
 

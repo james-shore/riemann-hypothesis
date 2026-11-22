@@ -157,7 +157,7 @@ theorem uni_mem {v : Pl} (b : Qv v) (hb : b ∈ 𝒪[Qv v]) : uni2 b ∈ integra
   refine (GLnLocal.mem_integralGL_iff _ 2).2 ⟨fun i j => ?_, fun i j => ?_⟩
   · fin_cases i <;> fin_cases j <;> simp [uni2, hb, zero_mem, one_mem]
   · rw [inv_uni]
-    fin_cases i <;> fin_cases j <;> simp [uni2, hb', hb, zero_mem, one_mem]
+    fin_cases i <;> fin_cases j <;> simp [uni2, hb', zero_mem, one_mem]
 
 theorem dg_mem {v : Pl} (a d : (Qv v)ˣ) (ha : ord (a : Qv v) = 0) (hd : ord (d : Qv v) = 0) :
     dg2 a d ∈ integralGL (Qv v) 2 := by
@@ -348,7 +348,7 @@ theorem up_facts {p : ℕ} {P : ℚˣ} (hP : (P : ℚ) = p) (b : ℕ) :
   rw [← map_inv, inv_uni_dg, det_toReal]
   refine ⟨?_, ?_, ?_, ?_, ?_⟩
   · rw [Matrix.GeneralLinearGroup.val_det_apply]
-    simp [uni2, dg2, Matrix.det_fin_two, Matrix.mul_apply, Fin.sum_univ_two, hP]
+    simp [uni2, dg2, Matrix.det_fin_two, hP]
   all_goals
     rw [toReal_apply]
     simp [uni2, dg2, Matrix.mul_apply, Fin.sum_univ_two, hP]

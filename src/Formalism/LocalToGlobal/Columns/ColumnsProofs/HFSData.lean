@@ -27,7 +27,6 @@ theorem units_map_injective : Function.Injective (Units.map ι.toMonoidHom) := b
   intro a b h
   first
   | exact Units.ext (ι.injective (congrArg Units.val h))
-  | (apply Units.ext; apply ι.injective; have h' := congrArg Units.val h; simpa using h')
 
 theorem chrMap_ker (ξ : Chr F E K) : (chrMap ι ξ).ker = ξ.ker := by
   ext x
@@ -49,12 +48,9 @@ theorem chrMap_mem_tupGrp {S : Set ℕ} {ξ : Chr F E K} (h : ξ ∈ tupGrp F E 
     first
     | exact hζ.map (chrMap ι)
     | exact (chrMap ι).isOfFinOrder hζ
-    | exact hζ.map
   simp only [tupGrp, finChar, Subgroup.mem_inf, Subgroup.mem_iInf, mk, mk', mo, mo', CommGroup.mem_torsion, hk] at h ⊢
   first
   | exact ⟨⟨⟨⟨h.1.1.1.1, hT _ h.1.1.1.2⟩, h.1.1.2⟩, h.1.2⟩, h.2⟩
-  | exact ⟨⟨⟨⟨⟨h.1.1.1.1.1, h.1.1.1.1.2⟩, hT _ h.1.1.1.2⟩, h.1.1.2⟩, h.1.2⟩, h.2⟩
-  | (have hT' := hT _ h.1.1.1.2; tauto)
 
 def tupMap (S : Set ℕ) : Tup F E K S →* Tup F E L S :=
   ((chrMap ι).comp (tupGrp F E K S).subtype).codRestrict (tupGrp F E L S) fun x => chrMap_mem_tupGrp ι x.2
@@ -90,7 +86,6 @@ theorem tup_tame {S : Set ℕ} (μ : Tup F E K S) : ∀ v : HeightOneSpectrum (�
   have mk' : ∀ (H : Subgroup (AfE F E)ˣ) (ζ : Chr F E K), ζ ∈ kills Kˣ H ↔ H ≤ ζ.ker := fun _ _ => Iff.rfl
   first
   | exact (Subgroup.mem_iInf.mp (Subgroup.mem_inf.mp (Subgroup.mem_inf.mp μ.2).1).2) v
-  | (have h := μ.2; simp only [tupGrp, Subgroup.mem_inf, Subgroup.mem_iInf, mk'] at h; exact h.1.2 v)
 
 end TupMap
 
@@ -105,13 +100,10 @@ theorem coefMap_comp_inv {G : Type} [Group G] (f : G →* Kˣ) :
   refine MonoidHom.ext fun x => ?_
   first
   | simp only [MonoidHom.inv_apply, MonoidHom.comp_apply, map_inv]
-  | simp
 
 theorem Lev.coefMap_inv {κ : Type} [CommRing κ] {n : ℕ} (l : Lev κ K n) : (l.coefMap ι).inv = l.inv.coefMap ι := by
   first
   | exact congrArg (Lev.mk l.H) (coefMap_comp_inv ι l.lam)
-  | (show Lev.mk l.H ((Units.map ι.toMonoidHom).comp l.lam)⁻¹ = Lev.mk l.H ((Units.map ι.toMonoidHom).comp l.lam⁻¹)
-     exact congrArg (Lev.mk l.H) (coefMap_comp_inv ι l.lam))
 
 variable {E : Type} [Field E] [NumberField E] {n : ℕ}
 
@@ -152,11 +144,8 @@ theorem LevFam.coefMap_chr {SG : Finset (HeightOneSpectrum (𝓞 E))} (Λ : LevF
     intro y
     first
     | simp only [MonoidHom.finset_prod_apply, MonoidHom.comp_apply, map_prod]
-    | simp [MonoidHom.finset_prod_apply, map_prod]
   first
   | exact key x
-  | (simp only [LevFam.chr, piChar, LevFam.coefMap, Lev.coefMap]
-     exact key x)
 
 end LevMap
 
@@ -169,7 +158,6 @@ theorem detChar_coefMap (χ : ℕ → κˣ →* Kˣ) (a : ℕ) (bl : List ℕ) :
   refine MonoidHom.ext fun x => ?_
   first
   | simp only [detChar, MonoidHom.finset_prod_apply, MonoidHom.comp_apply, map_prod]
-  | simp [detChar, map_prod]
 
 theorem lamK_coefMap (χ : ℕ → κˣ →* Kˣ) (r : ℕ) (bl : List ℕ) :
     lamK (fun s => (Units.map ι.toMonoidHom).comp (χ s)) n r bl = (Units.map ι.toMonoidHom).comp (lamK χ n r bl) := by
@@ -216,18 +204,12 @@ theorem rowTyQ_coefMap {S : Set ℕ} (μ : Tup X.F X.E X.K S) (Q : Finset (Heigh
   first
   | exact congrArg (Lev.mk _) ((congrArg (fun f => f⁻¹) (lambdaAtPrime_characterMap ι _ (tup_tame μ) P.1 _ _ _)).trans
       (coefMap_comp_inv ι _))
-  | (show Lev.mk _ (lamQP (chrMap ι (μ : Chr X.F X.E X.K)) P.1 _ _ _)⁻¹ =
-        Lev.mk _ ((Units.map ι.toMonoidHom).comp (lamQP (μ : Chr X.F X.E X.K) P.1 _ _ _)⁻¹)
-     rw [lambdaAtPrime_characterMap ι _ (tup_tame μ), coefMap_comp_inv])
 
 variable (R) in
 theorem mtTyQ_coefMap {S : Set ℕ} (μ : Tup X.F X.E X.K S) (Q : Finset (HeightOneSpectrum (𝓞 X.E))) (P : Q) :
     mtTyQ (X := X.coefExt L ι) R (chrMap ι (μ : Chr X.F X.E X.K)) Q P = (mtTyQ R (μ : Chr X.F X.E X.K) Q P).coefMap ι := by
   first
   | exact congrArg (Lev.mk _) (lambdaAtPrime_characterMap ι _ (tup_tame μ) P.1 _ _ _)
-  | (show Lev.mk _ (lamQP (chrMap ι (μ : Chr X.F X.E X.K)) P.1 _ _ _) =
-        Lev.mk _ ((Units.map ι.toMonoidHom).comp (lamQP (μ : Chr X.F X.E X.K) P.1 _ _ _))
-     rw [lambdaAtPrime_characterMap ι _ (tup_tame μ)])
 
 variable (sel : HeightOneSpectrum (𝓞 X.F) → HeightOneSpectrum (𝓞 X.E)) {S : Set ℕ}
 

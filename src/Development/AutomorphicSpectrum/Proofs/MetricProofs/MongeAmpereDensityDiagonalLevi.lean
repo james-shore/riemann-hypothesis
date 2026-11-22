@@ -38,7 +38,7 @@ theorem matrix_eq_of_form {e : ℕ} (A B : Matrix (Fin e) (Fin e) ℂ)
     ext k
     by_cases hk : k = j
     · subst hk; simp
-    · simp [Pi.single_apply, hk]
+    · simp [hk]
   have := hpair (Pi.single i 1) (Pi.single j 1)
   rw [hs] at this
   simpa [C, sub_eq_zero] using this

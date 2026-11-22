@@ -114,10 +114,10 @@ theorem E_val_zero {n : ℕ} (g : GL (Fin n) k) (i l : Fin (n + 1)) :
   | last =>
     induction l using Fin.lastCases with
     | last => simp [glEmbMat]
-    | cast l => simp [glEmbMat, Matrix.one_apply, (Fin.castSucc_ne_last l).symm]
+    | cast l => simp [glEmbMat, (Fin.castSucc_ne_last l).symm]
   | cast i =>
     induction l using Fin.lastCases with
-    | last => simp [glEmbMat, Matrix.one_apply, Fin.castSucc_ne_last]
+    | last => simp [glEmbMat, Fin.castSucc_ne_last]
     | cast l => simp [glEmbMat]
 
 theorem E_val_succ {n j : ℕ} (g : GL (Fin n) k)
@@ -134,12 +134,12 @@ theorem E_val_succ {n j : ℕ} (g : GL (Fin n) k)
     have : ¬ ((n + j + 1 : ℕ) < n) := by omega
     induction l using Fin.lastCases with
     | last => simp [glEmbMat, this]
-    | cast l => simp [glEmbMat, Matrix.one_apply, (Fin.castSucc_ne_last l).symm, this]
+    | cast l => simp [glEmbMat, (Fin.castSucc_ne_last l).symm, this]
   | cast i =>
     induction l using Fin.lastCases with
     | last =>
       have : ¬ ((n + j + 1 : ℕ) < n) := by omega
-      simp [glEmbMat, Matrix.one_apply, Fin.castSucc_ne_last, this]
+      simp [glEmbMat, Fin.castSucc_ne_last, this]
     | cast l =>
       simp only [glEmbMat, Fin.lastCases_castSucc]
       rw [ih i l]
@@ -163,7 +163,7 @@ theorem stdSum_inj {n t N : ℕ} (h : n + t = N) {a b : Fin n ⊕ Fin t} : stdSu
 
 theorem one_std {n t N : ℕ} (h : n + t = N) (a b : Fin n ⊕ Fin t) :
     (1 : Matrix (Fin N) (Fin N) k) (stdSum h a) (stdSum h b) = (1 : Matrix (Fin n ⊕ Fin t) (Fin n ⊕ Fin t) k) a b := by
-  simp [Matrix.one_apply, stdSum_inj]
+  simp [Matrix.one_apply]
 
 theorem E_eq {n j : ℕ} (g : GL (Fin n) k) :
     ((E k j g : Mir k (n + j)) : GL (Fin (n + j + 1)) k) =

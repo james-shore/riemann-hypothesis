@@ -10,11 +10,11 @@ theorem exists_sum_add {X M : Type} [AddCommGroup M] [Module ℂ M] (S : Finset 
   refine ⟨insert y S, fun x => if x = y then (if y ∈ S then a y + b else b) else a x, fun c => ?_⟩
   by_cases hy : y ∈ S
   · rw [Finset.insert_eq_of_mem hy, ← Finset.add_sum_erase S _ hy, ← Finset.add_sum_erase S _ hy]
-    simp only [if_pos rfl, hy, if_true, ite_true, smul_add]
+    simp only [hy, if_true, smul_add]
     rw [Finset.sum_congr rfl (fun x hx => by rw [if_neg (Finset.ne_of_mem_erase hx)])]
     abel
   · rw [Finset.sum_insert hy]
-    simp only [if_neg hy, eq_self_iff_true, if_true, ite_true]
+    simp only [if_neg hy, if_true]
     rw [Finset.sum_congr rfl (fun x hx => by rw [if_neg (fun (h : x = y) => hy (h ▸ hx))]), add_comm]
 
 theorem exists_interpolation {X : Type} (V : Submodule ℂ (X → ℂ)) (F : Finset V) :
@@ -45,8 +45,7 @@ theorem exists_interpolation {X : Type} (V : Submodule ℂ (X → ℂ)) (F : Fin
         rw [hw]
         simp only [smul_sub, Finset.sum_sub_distrib, smul_smul, ← Finset.sum_smul,
           Submodule.coe_sub, Submodule.coe_sum, Submodule.coe_smul, Pi.sub_apply,
-          Finset.sum_apply, Pi.smul_apply, smul_eq_mul, sub_div, sub_smul, Finset.sum_div,
-          mul_div_assoc, div_eq_mul_inv, Finset.sum_mul, mul_assoc, sub_mul]
+          Finset.sum_apply, Pi.smul_apply, smul_eq_mul, sub_smul, div_eq_mul_inv, Finset.sum_mul, mul_assoc, sub_mul]
         abel
       refine ⟨T, w, fun f hf => ?_⟩
       rw [key]

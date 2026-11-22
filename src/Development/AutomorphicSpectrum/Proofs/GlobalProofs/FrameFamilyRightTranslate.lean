@@ -27,7 +27,6 @@ theorem foldr_lineDer_mul_right {F E : Type} [Field F] [NumberField F] [Field E]
     simp only [lineDer]
     congr 1
     funext t
-    congr 1
     simp only [mul_assoc, mul_inv_cancel_left]
 
 variable {D : D7}

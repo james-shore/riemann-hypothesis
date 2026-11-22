@@ -130,16 +130,16 @@ theorem eval_eq_zero_of_rat : ∀ (L : Type) [Field L] [NumberField L] [IsCMFiel
       ext i j
       by_cases hij : i = j
       · subst hij; simp [Matrix.scalar_apply, hcc, ha']
-      · simp [Matrix.scalar_apply, Matrix.one_apply, hij]
+      · simp [Matrix.scalar_apply, hij]
     have := hF _ hmem
     rw [hF'ev, ← this]
     refine congrArg (fun z => MvPolynomial.eval z F) ?_
     funext p
-    simp [upt, ratPt, hs, Matrix.scalar_apply, Matrix.smul_eq_diagonal_mul]
+    simp [upt, ratPt, hs, Matrix.scalar_apply]
   let X' : (L →+* ℂ) → Matrix (Fin n) (Fin n) ℂ := fun σ => σ a • X σ
   have hX' : IsUPt X' := by
     intro σ
-    simp only [X', Matrix.transpose_smul, Matrix.smul_mul, Matrix.mul_smul, smul_smul, hX σ, hemb, ← map_mul, ha, ha',
+    simp only [X', Matrix.transpose_smul, Matrix.smul_mul, Matrix.mul_smul, smul_smul, hX σ, hemb, ← map_mul, ha',
       map_one, one_smul]
   have h := vanish_generic L n F' hF' X' hX' hdet
   rw [hF'ev] at h

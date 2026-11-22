@@ -8,7 +8,7 @@ variable {K V : Type} [Field K] [StarRing K] [CharZero K] [AddCommGroup V] [Modu
 theorem expand (B : V →ₗ⋆[K] V →ₗ[K] K) (p u u' : V) (c c' : K) :
     B (u + c • p) (u' + c' • p) =
       B u u' + c' * B u p + star c * B p u' + star c * c' * B p p := by
-  simp only [map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, map_smul, smul_eq_mul,
+  simp only [map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, smul_eq_mul,
     starRingEnd_apply, RingHom.id_apply]
   generalize B u u' = A1
   generalize B u p = A2

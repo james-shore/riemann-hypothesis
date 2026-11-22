@@ -51,9 +51,9 @@ lemma sqAct_tv {r : ℕ} (ν : DomWeight r) (a b : Fin r) (hab : a ≠ b) (t : �
     simp only [Formalism.GradedWeylDivisibility.rowAct, Formalism.GradedWeylDivisibility.rowGen, MvPolynomial.aeval_X]
     by_cases hi : i = b
     · subst hi
-      simp [Formalism.UG.P.wlocal_E, add_mul, Finset.sum_add_distrib, ite_and]
+      simp [Formalism.UG.P.wlocal_E, add_mul, Finset.sum_add_distrib]
       rw [Finset.sum_eq_single a (fun x _ hx => by simp [hx]) (by simp), if_pos rfl, mul_comm]
-    · simp [Formalism.UG.P.wlocal_E, add_mul, Finset.sum_add_distrib, hi]
+    · simp [Formalism.UG.P.wlocal_E, hi]
 
 lemma embGL_tv {n N : ℕ} (h : n + 1 = N) (a b : Fin n) (hab : a ≠ b) (t : ℂ) :
     ((PI.embGL ℂ n N h (tvU a b hab t) : GL (Fin N) ℂ) : Matrix (Fin N) (Fin N) ℂ) =

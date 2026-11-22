@@ -15,4 +15,4 @@ theorem _root_.GlobalTheory.T.etale_localization_atPrime_tensor_of_etale_away' :
     Algebra.Etale R (Localization.Away (algebraMap R C b)) →
     ∀ (P : Ideal R) [P.IsPrime], b ∉ P →
       Algebra.Etale (Localization.AtPrime P) (TensorProduct R (Localization.AtPrime P) C) := by
-  first | (exact @GlobalTheory.etale_localization_atPrime_tensor_of_etale_away) | (exact GlobalTheory.etale_localization_atPrime_tensor_of_etale_away) | (intros; apply GlobalTheory.etale_localization_atPrime_tensor_of_etale_away <;> assumption)
+  first | (exact @GlobalTheory.etale_localization_atPrime_tensor_of_etale_away)

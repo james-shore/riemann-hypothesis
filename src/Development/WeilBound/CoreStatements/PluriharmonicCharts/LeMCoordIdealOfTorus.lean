@@ -100,7 +100,7 @@ theorem cond_of_bd {Ω : Type} [Field Ω] [CharZero Ω] {x : (Σ k, J k) → Ω}
       MvPolynomial.aeval (fun p : Σ k, J k => x p / x ⟨p.1, c p.1⟩) f := fun f => by
     show S.val.toRingHom (MvPolynomial.aeval ρS f) = _
     rw [MvPolynomial.aeval_def, MvPolynomial.aeval_def, MvPolynomial.eval₂_comp_left]
-    congr 1 <;> first | rfl | exact RingHom.ext_int _ _
+    congr 1
   have hwP : w ∈ mcPts (mCoordIdeal x) := by
     refine ⟨fun k => ⟨c k, ?_⟩, fun f hf => ?_⟩
     · have h1 : ρS ⟨k, c k⟩ = 1 := Subtype.ext (div_self (hc k))

@@ -187,7 +187,7 @@ theorem integral_rdS {D : D7} (θ : InfFam D) (hθ : IsInfFam θ) (V : HSp D) {n
   haveI : BorelSpace (GA D V) := ⟨rfl⟩
   haveI : T2Space (GA D V) := by
     have hT := GlobalTheory.Mem.AdelicGroupTop.adelic_unitary_topology D V
-    first | exact hT.1 | exact hT.2.1 | exact hT.2.2.1 | exact hT.2.2.2.1 | exact hT.2.2.2.2.1 | exact hT.2.2.2.2.2.1 | exact hT.2.2.2.2.2.2
+    first | exact hT.1 | exact hT.2.1 | exact hT.2.2.1
   haveI : CompactSpace (GinfC V) := isCompact_iff_compactSpace.1 (Formalism.IndefR.Eqv.isCompact_GinfC hS fun τ => Or.inl (hP τ))
   haveI : BorelSpace (GinfC V) := Subtype.borelSpace _
   have hone : ∀ τ, infM θ V rfl 1 τ = 1 := RdLaw.infM_fin θ V 1 (one_mem _)

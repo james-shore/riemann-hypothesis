@@ -51,7 +51,7 @@ theorem unfoldingAffineLinearMap_apply_single (x₀ : (Fin n' → E) →ₗ[E] (
     Loc.xx1 x₀ t (Pi.single j 1) i = if hf : Loc.IsFree n' n c i.1 j.1 then t ⟨(i, j), hf⟩
       else if hs : j.1 < n' then (if hl : i.1 < n then LinearMap.toMatrix' x₀ ⟨i.1, hl⟩ ⟨j.1, hs⟩ else 0)
       else if i.1 = n + (j.1 - n') then 1 else 0 := by
-  simp [Loc.xx1, Matrix.toLin'_apply, mulVec_single_one]
+  simp [Loc.xx1, Matrix.toLin'_apply]
 
 theorem affPt_eq (hc : 1 ≤ c) (he : IsOrd (yPos (fun a => (d a).val) n) e)
     (he' : IsOrd (yPos (fun a => (d' a).val) n') e') (x₀ : (Fin n' → E) →ₗ[E] (Fin n → E))
@@ -71,7 +71,7 @@ theorem affPt_eq (hc : 1 ≤ c) (he : IsOrd (yPos (fun a => (d a).val) n) e)
       · simp [basePt]
       · simp [Free] at h
       · simp only [Free] at h
-        simp [basePt, Fin.val_eq_val, h.ne]
+        simp [basePt, h.ne]
     rw [hb, zero_add]; rfl
   · have hf : ¬ Loc.IsFree n' n c (e r).val (e' s).val := fun h' => h (hF.2 h')
     rw [dif_neg hf]
@@ -95,7 +95,7 @@ theorem affPt_eq (hc : 1 ≤ c) (he : IsOrd (yPos (fun a => (d a).val) n) e)
     · have hs : ¬ (e' (.inr i)).val < n' := by rw [ord_inr' he']; omega
       rw [dif_neg hs]
       simp only [ord_inr he, ord_inr' he', basePt]
-      simp [Fin.val_eq_val]
+      simp
 end Coord2
 
 section Coord3
@@ -147,7 +147,7 @@ theorem typeFrame_bas_inv (ϖ : kˣ) :
 theorem coords_apply (ϖ : kˣ) (x : Matrix (V ⊕ Fin m) (V' ⊕ Fin m') k) (r : V ⊕ Fin m) (s : V' ⊕ Fin m') :
     (typeFrame ϖ (Equiv.refl (V ⊕ Fin m))).coords (typeFrame ϖ (Equiv.refl (V' ⊕ Fin m'))) x r s =
       (wt ϖ r)⁻¹ * x r s * wt ϖ s := by
-  simp only [LatFrame.coords, typeFrame_bas, typeFrame_bas_inv, submatrix_apply, Equiv.refl_apply]
+  simp only [LatFrame.coords, typeFrame_bas, typeFrame_bas_inv, submatrix_apply]
   rw [mul_diagonal, diagonal_mul]
   rfl
 
@@ -179,7 +179,7 @@ theorem basePt_free (x₀ : Matrix U U' k) (rs : (U ⊕ Fin c) × (U' ⊕ Fin (c
   · simp [basePt]
   · simp [Free] at h
   · simp only [Free] at h
-    simp [basePt, Fin.val_eq_val, h.ne]
+    simp [basePt, h.ne]
 
 theorem affPt_free (x₀ : Matrix U U' k) (u : {rs : (U ⊕ Fin c) × (U' ⊕ Fin (c + 1)) // Free 1 rs} → k)
     (rs : (U ⊕ Fin c) × (U' ⊕ Fin (c + 1))) (h : Free 1 rs) : affPt 1 x₀ u rs.1 rs.2 = u ⟨rs, h⟩ := by

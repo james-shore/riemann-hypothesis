@@ -36,7 +36,7 @@ def dirPt {n : ℕ} (e : MvPowerSeries (Fin n) O →ₐ[O] O) (c : Fin n → O) 
     (fun a b => by
       ext
       · simp [TrivSqZeroExt.fst_sum]
-      · simp [TrivSqZeroExt.snd_sum, Finset.mul_sum, ← Finset.sum_add_distrib, mul_add, mul_left_comm]
+      · simp [TrivSqZeroExt.snd_sum, Finset.mul_sum, ← Finset.sum_add_distrib, mul_add]
         exact Finset.sum_congr rfl fun _ _ => by ring)
     (fun _ _ => TrivSqZeroExt.inr_mul_inr _ _ _)
 

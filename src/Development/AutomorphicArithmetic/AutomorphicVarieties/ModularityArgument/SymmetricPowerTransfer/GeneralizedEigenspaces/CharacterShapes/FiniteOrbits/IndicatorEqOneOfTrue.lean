@@ -30,7 +30,7 @@ private theorem transfer {G : Type} [Group G] (S U2 : Subgroup G) (hS : S.Normal
     UpperTheory.V.AlgebraTools.FinOrb U U a ∧ (∀ y : S, y ∈ DC U a ↔ x⁻¹ * y * x ∈ DC U2 (a : G)) ∧
       (UF U2 (a : G) b → UF U a b) := by
   let e : G →* G := (MulAut.conj x⁻¹).toMonoidHom
-  have he : ∀ y, e y = x⁻¹ * y * x := fun y => by simp [e, MulAut.conj_apply]
+  have he : ∀ y, e y = x⁻¹ * y * x := fun y => by simp [e]
   have hbij : Function.Bijective e := (MulAut.conj x⁻¹).bijective
   have hfix : ∀ y : G, Commute x y → e y = y := fun y h => by
     rw [he, mul_assoc, ← h.eq, inv_mul_cancel_left]

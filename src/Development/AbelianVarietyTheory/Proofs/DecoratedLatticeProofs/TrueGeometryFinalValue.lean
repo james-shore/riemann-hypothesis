@@ -38,7 +38,7 @@ section Gen
 variable {D : D7}
 
 theorem idAt_le {P Q : GlobalTheory.FinPl.Pl D → Prop} (h : ∀ p, P p → Q p) {z : AE D} (hz : z ∈ idAt D P) : z ∈ idAt D Q := by
-  simp only [idAt, Submodule.mem_inf, idOff, Submodule.mem_iInf] at hz ⊢
+  simp only [idAt, Submodule.mem_inf, Submodule.mem_iInf] at hz ⊢
   exact ⟨hz.1, fun w => hz.2 ⟨w.1, fun hw => w.2 (h _ hw)⟩⟩
 
 theorem moves_mono {V : HSp D} {g : GA D V} {L : GlobalTheory.FinPl.Lat V} {P Q : GlobalTheory.FinPl.Pl D → Prop} (h : ∀ p, P p → Q p)

@@ -49,8 +49,7 @@ theorem UpperTheory.locallyConstant_comap_bijective :
       apply clopen_pre_inj φ h ((hCc y).inter (hCc z)) isClopen_empty
       rw [Set.preimage_inter, hC, hC, Set.preimage_empty]
       ext q
-      simp only [Set.mem_inter_iff, Set.mem_preimage, Set.mem_singleton_iff,
-        Set.mem_empty_iff_false, iff_false, not_and]
+      simp only [Set.mem_inter_iff, Set.mem_empty_iff_false, iff_false, not_and]
       exact fun h1 h2 => hyz (h1.symm.trans h2)
     have hcov : (⋃ y ∈ Set.range a', C y) = Set.univ := by
       apply clopen_pre_inj φ h

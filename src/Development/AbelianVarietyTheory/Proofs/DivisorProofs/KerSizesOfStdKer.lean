@@ -31,6 +31,6 @@ theorem kerSizes_of_stdKer : ∀ {B : Base} {X : PreX B.toPre} (I : TC B X), I.O
   · intro u
     have h := GlobalTheory.T.sizeInequalitiesNoLevelPrime_columnNormParameters (I.rec7 l Z) L CY hH u
     unfold GlobalTheory.ColumnNormCompare.codeRec at h
-    convert h using 1 <;> first | exact hNum.symm | exact HEq.rfl | rfl
+    convert h using 1 <;> first | exact hNum.symm
 
 end GlobalTheory.ColRows

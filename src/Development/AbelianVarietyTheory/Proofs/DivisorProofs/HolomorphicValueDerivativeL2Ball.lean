@@ -53,8 +53,6 @@ theorem norm_fderiv_le_of_ball {n : ℕ} {p : V n} {ρ R M : ℝ} (hρ : 0 < ρ)
   | exact @_root_.GlobalTheory.FrechetDerivativeBound.norm_fderiv_le_of_bounded
   | exact _root_.GlobalTheory.FrechetDerivativeBound.norm_fderiv_le_of_bounded
   | (apply _root_.GlobalTheory.FrechetDerivativeBound.norm_fderiv_le_of_bounded <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FrechetDerivativeBound.norm_fderiv_le_of_bounded <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FrechetDerivativeBound.norm_fderiv_le_of_bounded <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FrechetDerivativeBound.norm_fderiv_le_of_bounded ..)
 
 theorem l2_value_deriv_ball :

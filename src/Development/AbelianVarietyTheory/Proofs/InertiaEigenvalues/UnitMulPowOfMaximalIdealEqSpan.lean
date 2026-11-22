@@ -12,8 +12,6 @@ theorem unit_mul_pow_of_maximalIdeal_eq_span {S : Type} [CommRing S] [IsLocalRin
   | exact @_root_.GlobalTheory.PowMulUnit.exists_eq_pow_mul_unit
   | exact _root_.GlobalTheory.PowMulUnit.exists_eq_pow_mul_unit
   | (apply _root_.GlobalTheory.PowMulUnit.exists_eq_pow_mul_unit <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PowMulUnit.exists_eq_pow_mul_unit <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PowMulUnit.exists_eq_pow_mul_unit <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PowMulUnit.exists_eq_pow_mul_unit ..)
 
 theorem dvr_of_maximalIdeal_eq_span {S : Type} [CommRing S] [IsLocalRing S] [IsNoetherianRing S]

@@ -41,7 +41,6 @@ theorem framesOKg2_iff (Rl : RealDat3 D A3 Ks) :
     FramesOKg2 Rl ↔ NormalFrameConditionsDiagonal Rl.toRealDat.Pg Rl.toRealDat.βY Rl.toRealDat.βW := by
   first
   | exact Iff.rfl
-  | (unfold FramesOKg2 NormalFrameConditionsDiagonal; done)
 
 end Formalism.IndefR.Seed.Frm
 

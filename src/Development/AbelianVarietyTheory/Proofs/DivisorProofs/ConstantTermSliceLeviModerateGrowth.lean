@@ -86,7 +86,6 @@ theorem GlobalTheory.SliceTwo.Growth.norm_slice_le : ∀ (E : Type) [Field E] [N
     unfold GlobalTheory.SliceTwo.slice
     congr 1
     funext x
-    congr 2
     rw [GlobalTheory.SliceTwo.blkGL_mul_infGL, map_mul]
     simp only [mul_assoc]
     rw [← mul_assoc (infGL E a (blkGL hr (1, y))) (finGL E a t), infGL_comm]

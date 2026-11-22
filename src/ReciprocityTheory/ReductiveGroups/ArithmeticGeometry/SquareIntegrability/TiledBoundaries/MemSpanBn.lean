@@ -16,7 +16,6 @@ theorem Bn_repr (X : PT E) (n : ℕ) (v : Fin n → Vsp X.dim) (k : Fin n)
     (i : Fin (2 * Fintype.card (Idx X.dim))) : (Bn X n).repr v ⟨k, i⟩ = X.b.repr (v k) i := by
   first
     | exact Pi.basis_repr _ _ _
-    | simp [Bn, Pi.basis_repr]
 
 instance volHaar (X : PT E) (n : ℕ) : (volume : Measure (Fin n → Vsp X.dim)).IsAddHaarMeasure :=
   Measure.pi.isAddHaarMeasure (fun _ => volume)
@@ -105,7 +104,7 @@ theorem stepPos : StepPos := by
         show 0 < X.ptN2 q F (-g +ᵥ v) ↔ 0 < X.ptN2 q F v
         rw [per_span X n (X.ptN2 q F) hper (-g) v]
       have hfd := (fd_fund X n).measure_eq_tsum U
-      simp only [hinv, tsum_const] at hfd
+      simp only [hinv] at hfd
       rw [pos_iff_ne_zero]
       intro h0
       rw [h0] at hfd
@@ -122,7 +121,6 @@ theorem stepPos : StepPos := by
   refine mul_pos (inv_pos.mpr ?_) hpos
   first
     | (rw [measureReal_def]; exact ENNReal.toReal_pos (fd_ne_zero X n) (fd_ne_top X n))
-    | exact ENNReal.toReal_pos (fd_ne_zero X n) (fd_ne_top X n)
 
 theorem stepF : StepF := by
   intro E _ _ X n f hf
@@ -132,7 +130,6 @@ theorem stepF : StepF := by
   rw [setAverage_eq, setAverage_eq, hset, volume_pi]
   first
     | simp only [measureReal_def, Measure.pi_pi, Measure.restrict_pi_pi]
-    | simp only [Measure.real_def, Measure.pi_pi, Measure.restrict_pi_pi]
   rw [integral_fintype_prod_eq_prod (f := fun _ => f)]
   simp only [Finset.prod_const, Finset.card_univ, Fintype.card_fin, ENNReal.toReal_pow, smul_eq_mul]
   rw [mul_pow, inv_pow]

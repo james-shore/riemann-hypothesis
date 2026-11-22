@@ -28,10 +28,10 @@ lemma pp (hp : Sys p) (i j : Fin n) : p i * p j = if i = j then p i else 0 := by
 lemma sum_p (hp : Sys p) : ∑ j, p j = 1 := hp.1.complete
 
 lemma Dg_p (hp : Sys p) (d : Fin n → C) (i : Fin n) : Dg p d * p i = d i • p i := by
-  simp [Dg, Finset.sum_mul, smul_mul_assoc, pp hp]
+  simp [Dg, Finset.sum_mul, pp hp]
 
 lemma p_Dg (hp : Sys p) (d : Fin n → C) (i : Fin n) : p i * Dg p d = d i • p i := by
-  simp [Dg, Finset.mul_sum, mul_smul_comm, pp hp]
+  simp [Dg, Finset.mul_sum, pp hp]
 
 lemma Dg_mul (hp : Sys p) (a b : Fin n → C) : Dg p a * Dg p b = Dg p (a * b) := by
   conv_lhs => rw [Dg, Finset.sum_mul]

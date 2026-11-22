@@ -27,7 +27,7 @@ theorem siegel_unipotent_inv_bounded : ∀ n : ℕ, ∃ c : ℝ, ∀ u : Matrix 
         rw [Matrix.updateRow_self]
         by_cases hb : b = i
         · subst hb; simp
-        · simp [Pi.single_apply, hb]
+        · simp [hb]
       · rw [Matrix.updateRow_ne ha]
         rcases lt_trichotomy a b with h | h | h
         · linarith [hup a b h]

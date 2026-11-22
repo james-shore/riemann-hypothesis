@@ -24,7 +24,7 @@ theorem pairOK_allSites : AllSites (fun {D L hT Gi Gl Kc Dx cX ex u μ w hg Lv I
   intro D L hT Gi Gl Kc Dx cX ex u μ w hg Lv I H X _ std t J S hD
   intro j hj La La' hL hL'
   have hm : (sysS H X std).mm = D.R.m := by
-    first | (rfl; done) | exact X.fl_m | exact I.fl_m
+    first | (rfl) | exact X.fl_m
   have hjm : j + 1 ≤ D.R.m := hm ▸ hj
   have hSD0 := GlobalTheory.T.kernelLattice_selfDual_even_rank_at_site t std J hD j (by omega) La hL
   have hSD1 := GlobalTheory.T.kernelLattice_selfDual_even_rank_at_site t std J hD (j + 1) hjm La' hL'

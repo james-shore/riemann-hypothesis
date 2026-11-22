@@ -13,7 +13,7 @@ theorem dRho_apply_basis {l : Type} [Fintype l] [DecidableEq l] (w : l ⊕ l →
   rw [dRho_apply]
   have h1 : pPart w = ∑ b, w (.inl b) • EuclideanSpace.single b (1 : ℝ) := by
     ext i
-    simp [pPart, EuclideanSpace.single_apply, Pi.single_apply]
+    simp [pPart, Pi.single_apply]
   have h2 : inner ℝ (qPart w) x = ∑ b, w (.inr b) * x b := by
     simp [qPart, PiLp.inner_apply, mul_comm]
   rw [h1, map_sum, h2]
@@ -33,7 +33,7 @@ theorem fderiv_eq_of_annihilated : ∀ (l : Type) [Fintype l] [DecidableEq l] (s
     have e := congrArg (fun g : Sch l => g x) (hf j)
     simp only [SchwartzMap.smul_apply, smul_eq_mul, dRho_apply_basis] at e
     simp only [mulVec, dotProduct, Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq',
-      Finset.mem_univ, if_true, Sum.inl.injEq, Sum.inr.injEq, reduceCtorEq] at e
+      Finset.mem_univ, if_true] at e
     simp only [hP, hQ, sub_mul, Finset.sum_sub_distrib, mul_assoc, ← Finset.mul_sum]
     simp only [hu, hxC]
     linear_combination e

@@ -21,7 +21,7 @@ theorem pow_torsion_bounded {W : Type} [CommRing W] [IsNoetherianRing W] (r : W)
   · obtain ⟨c, rfl⟩ := Nat.exists_eq_add_of_le hkn
     rw [pow_add, mul_comm, mul_smul, ht, smul_zero]
   · have h1 : t ∈ f k := by
-      simp only [f, OrderHom.coe_mk, LinearMap.mem_ker, LinearMap.smul_apply, LinearMap.id_apply]
+      simp only [f]
       exact ht
     rw [← hn k hnk] at h1
     have h2 : t ∈ LinearMap.ker ((r ^ n) • LinearMap.id : T →ₗ[W] T) := h1

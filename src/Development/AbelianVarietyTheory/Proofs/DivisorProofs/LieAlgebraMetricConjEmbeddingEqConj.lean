@@ -65,7 +65,7 @@ theorem single_conj (hU : ThetaUnifAV) {P : Out.PolAV (Sp (𝓞 K))} (F : GenFib
   unfold hermForm
   rw [map_mul, Complex.conj_ofReal, star_star]
   congr 1
-  simp [dotProduct, Matrix.mulVec, map_sum, Complex.star_def]
+  simp [dotProduct, Matrix.mulVec, map_sum]
 
 theorem form_conj : ∀ (K : Type) [Field K] [NumberField K] (P : ReciprocityTheory.ChartRestriction.G.Out.PolAV (Sp (𝓞 K)))
     (F : GlobalTheory.CM.GenFib P) (h : ReciprocityTheory.GeometryOfNumbersTheory.HermFam K (Fin F.P₀.g → K)), F.IsHerm h → ∀ (σ : K →+* ℂ)

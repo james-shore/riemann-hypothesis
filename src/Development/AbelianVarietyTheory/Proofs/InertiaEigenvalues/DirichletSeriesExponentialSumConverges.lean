@@ -13,7 +13,7 @@ theorem units_coe_multiset (A : Multiset ℂˣ) :
 theorem powSum_conj (B : Multiset ℂ) (r : ℕ) :
     (B.map fun β => (starRingEnd ℂ β) ^ (r + 1)).sum = starRingEnd ℂ ((B.map fun β => β ^ (r + 1)).sum) := by
   rw [map_multiset_sum, Multiset.map_map]
-  simp [Function.comp_def, map_pow]
+  simp [map_pow]
 
 theorem natCast_cpow_eq_exp (q : ℕ) (hq : 1 < q) (r : ℕ) (x : ℝ) :
     (q : ℂ) ^ (-(((r : ℂ) + 1) * (x : ℂ))) = Complex.exp (-((((r : ℝ) + 1) * Real.log q : ℝ) : ℂ) * (x : ℂ)) := by
@@ -65,7 +65,7 @@ theorem fourProd_eq_exp (E : Type) [Field E] [NumberField E] [IsTotallyComplex E
       ← Complex.exp_add]
   case hs =>
     refine (congrArg (fun f => HasSum f _) (funext fun p => ?_)).mpr h
-    simp only [Pi.add_apply, units_coe_multiset]
+    simp only [units_coe_multiset]
     rw [four_terms _ _ _ (NumberField.HeightOneSpectrum.one_lt_absNorm p.1.1)]
     rfl
 

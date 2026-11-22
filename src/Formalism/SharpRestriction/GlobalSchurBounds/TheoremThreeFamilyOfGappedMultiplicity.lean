@@ -54,7 +54,6 @@ theorem finrank_lowK_eqG (hW : DiscreteSeriesWeylDimension.WeylForK) (hL : Discr
       first
         | exact unitary.star_mul_self_of_mem hu
         | exact Unitary.star_mul_self_of_mem hu
-        | exact (Matrix.mem_unitaryGroup_iff').mp hu
     rw [Matrix.star_eq_conjTranspose] at h1
     show Matrix.conjTranspose g * Formalism.REAL.Jm ε * g = Formalism.REAL.Jm ε
     rw [mul_assoc, ← hc, ← mul_assoc, h1, one_mul]

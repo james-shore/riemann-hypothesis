@@ -26,7 +26,7 @@ theorem equivFinsuppOfBasisRight_rTensor {K M N N' ι : Type*} [Field K] [AddCom
       f (TensorProduct.equivFinsuppOfBasisRight b x i) := by
   induction x using TensorProduct.induction_on with
   | zero => simp
-  | tmul m n => simp [TensorProduct.equivFinsuppOfBasisRight_apply_tmul_apply]
+  | tmul m n => simp
   | add x y hx hy => simp only [map_add, Finsupp.add_apply, hx, hy]
 
 theorem rTensor_eq_zero {K M N P Q ι : Type*} [Field K] [AddCommGroup M] [Module K M]

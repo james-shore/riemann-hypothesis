@@ -22,13 +22,6 @@ theorem local_component_additive_character_add {F : Type} [Field F] [NumberField
     unfold singleV
     first
     | exact Subtype.ext (Pi.single_add v r s)
-    | (apply Subtype.ext
-       exact Pi.single_add v r s)
-    | (apply Subtype.ext
-       funext w
-       show Pi.single v (r + s) w = Pi.single v r w + Pi.single v s w
-       rw [Pi.single_add]
-       rfl)
   have h2 : pairA F 0 (singleV F v (r + s)) = pairA F 0 (singleV F v r) + pairA F 0 (singleV F v s) := by
     rw [h1]
     show ((0 : Ainf F), singleV F v r + singleV F v s) = ((0 : Ainf F) + 0, singleV F v r + singleV F v s)

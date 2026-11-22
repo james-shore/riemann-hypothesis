@@ -250,7 +250,6 @@ theorem orthChange_core : OrthChange := by
     IntermediateField.coe_zero, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.mem_univ, if_true] at h
   first
   | exact h.symm
-  | (rw [← h]; split_ifs <;> simp)
 
 end IntegralOrthonormalChange
 

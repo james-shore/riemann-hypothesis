@@ -19,7 +19,7 @@ variable {D : D7}
 
 theorem negSp_neg (S : HSp D) : negSp (GlobalTheory.Grid.neg S) = S := by
   cases S
-  simp only [negSp, GlobalTheory.Grid.sgn, cond_true, neg_neg, Prod.swap_swap]
+  simp only [negSp, cond_true, neg_neg, Prod.swap_swap]
 
 theorem isAutFunSm_of_eq {θ : InfFam D} {S₂ S : HSp D} (e : S₂ = S) {F : GA D S₂ → ℂ} {F' : GA D S → ℂ}
     (hF : ∀ x y, x ≍ y → F x = F' y) (h : IsAutFunSm θ S₂ F) : IsAutFunSm θ S F' := by

@@ -70,7 +70,7 @@ theorem parseval : ∀ (D : D7) (V V' W : HSp D) (r : ℕ) (C : Matrix (Fin V.ra
       _ ≤ Cf ^ 2 * (μ.restrict 𝓨).real Set.univ := by
           rw [hI']
           exact norm_integral_le_of_norm_le_const (.of_forall fun y => hb _)
-      _ = Cf ^ 2 := by simp [Measure.real, Measure.restrict_apply_univ, hμ.2.2]
+      _ = Cf ^ 2 := by simp [Measure.real, hμ.2.2]
   have hb : ∀ x u, Summable (fun ξ : Matrix (Fin W.rank) (Fin r) D.host.E => ‖h x (ξ.map (incA D) + u)‖) ∧
       ∑' ξ : Matrix (Fin W.rank) (Fin r) D.host.E, ‖h x (ξ.map (incA D) + u)‖ ≤ (C₁ ^ 2 + C₂ ^ 2) / 2 := by
     intro x u

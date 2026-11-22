@@ -29,15 +29,12 @@ theorem continuous_crd (R : Type) [CommRing R] [Algebra F R] [TopologicalSpace R
   first
   | exact continuous_induced_dom
   | exact IsModuleTopology.continuous_of_linearMap (crd (F := F) (E := E) R).toLinearMap
-  | fun_prop
-  | (delta crd; exact LinearMap.continuous_of_finiteDimensional _)
 
 theorem continuous_crd_symm (R : Type) [CommRing R] [Algebra F R] [TopologicalSpace R]
     [IsTopologicalRing R] : Continuous (crd (F := F) (E := E) R).symm := by
   first
   | exact continuous_induced_rng.2 (by simpa [Function.comp_def] using continuous_id)
   | exact IsModuleTopology.continuous_of_linearMap (crd (F := F) (E := E) R).symm.toLinearMap
-  | fun_prop
 
 variable (R1 R2 : Type) [CommRing R1] [Algebra F R1] [CommRing R2] [Algebra F R2]
   [TopologicalSpace R1] [IsTopologicalRing R1] [TopologicalSpace R2] [IsTopologicalRing R2]
@@ -112,8 +109,6 @@ theorem continuous_lin (R : Type) [CommRing R] [Algebra F R] [TopologicalSpace R
     Continuous (lin R σ J g) := by
   first
   | exact IsModuleTopology.continuous_of_linearMap ((lin R σ J g).restrictScalars R)
-  | exact Continuous.matrix_mulVec continuous_const continuous_id
-  | (delta lin; fun_prop)
 
 end Top
 

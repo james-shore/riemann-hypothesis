@@ -56,7 +56,7 @@ private theorem comm_at {j j' : Fin q} (h : j ≠ j') (g : GLw n (w j)) (g' : GL
 
 private theorem mem_UC (m : M) :
     m ∈ fixd ρ (UC n w C) ↔ ∀ j, m ∈ fixd (ρ.comp (atJ n w j)) (iwC _ n (C j)) :=
-  by apply _root_.UpperTheory.Reformulated.B.Gr34.mem_UC <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.Gr34.mem_UC
 
 private theorem one_place (j : Fin q) (hq : IsUnit (qj w j : A)) :
     ∃ θ : (Fin n → ((w j).adicCompletion L)ˣ) →* (Module.End A (fixd ρ (UC n w C)))ˣ, ∀ t, Dom t →

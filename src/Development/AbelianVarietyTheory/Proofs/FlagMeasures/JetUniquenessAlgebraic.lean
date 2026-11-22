@@ -53,7 +53,7 @@ theorem jmW_zero (E : Fin n → Fin n → Module.End ℂ V) (α : Fin 0 → Fin 
 theorem jmW_succ (E : Fin n → Fin n → Module.End ℂ V) {j : ℕ} (α : Fin (j + 1) → Fin n × Fin n) :
     jmW E α = E (α (Fin.last j)).1 (α (Fin.last j)).2 * jmW E (Fin.init α) := by
   simp only [jmW, List.ofFn_succ', List.concat_eq_append, List.reverse_append, List.reverse_singleton,
-    List.singleton_append, ew, Fin.init]
+    List.singleton_append, ew]
   rfl
 
 private lemma update_castSucc_apply_last {X : Type*} {j : ℕ} (α : Fin (j + 1) → X) (k : Fin j) (x : X) :
@@ -108,17 +108,17 @@ private lemma sum_jmW_slotE_eq_sum_sub (E : Fin n → Fin n → Module.End ℂ V
     have hβ : Function.update β i (a, b) = β := by rw [← hb]; exact Function.update_eq_self i β
     by_cases h : a = d
     · subst h
-      simp [hb, hβ]
+      simp [hβ]
     · have h' : d ≠ a := Ne.symm h
-      simp [hb, h, h', Equiv.swap_apply_eq_iff]
+      simp [h, h', Equiv.swap_apply_eq_iff]
   · rw [sum_eq_sum_update_involutive i (fun x : Fin n × Fin n => (x.1, Equiv.swap c d x.2)) (by intro x; simp)]
     refine Finset.sum_congr rfl (fun β _ => ?_)
     rcases hb : β i with ⟨a, b⟩
     have hβ : Function.update β i (a, b) = β := by rw [← hb]; exact Function.update_eq_self i β
     by_cases h : b = c
     · subst h
-      simp [hb, hβ]
-    · simp [hb, h, Equiv.swap_apply_eq_iff]
+      simp [hβ]
+    · simp [h, Equiv.swap_apply_eq_iff]
 
 theorem jm_theta_equiv (E : Fin n → Fin n → Module.End ℂ V) (hE : GlRel E) {j : ℕ} (c d : Fin n)
     (F : Arr V n j) : thetaA E j (arrE E j c d F) = E c d (thetaA E j F) := by

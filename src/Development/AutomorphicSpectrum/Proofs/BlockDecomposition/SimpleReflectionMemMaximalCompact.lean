@@ -38,7 +38,7 @@ theorem cM_conj_int {n : ℕ} (c : Fin 2 → Fin n) (P : Matrix (Fin 2) (Fin 2) 
 
 theorem weyl_sub_one_entries_integral (p r : Fin 2) : Valued.v ((w2 L - 1) p r) ≤ 1 := by
   delta w2
-  fin_cases p <;> fin_cases r <;> simp [Matrix.one_apply]
+  fin_cases p <;> fin_cases r <;> simp
 
 theorem block_matrix_weyl_integral {n : ℕ} (a : ℕ) (h : 2 * (a + 2) ≤ n) :
     Formalism.UG.P.fIwasawaInt (blockM a h (w2 L) (w2 L)) := by

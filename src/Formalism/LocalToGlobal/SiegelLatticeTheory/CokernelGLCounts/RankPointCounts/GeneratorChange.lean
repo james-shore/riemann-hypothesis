@@ -251,7 +251,7 @@ theorem gen_change (t : Term V M r) (C Ci : Matrix (Fin (r + 1)) (Fin (r + 1)) E
       have hB'A : B' * A = 1 := by
         rw [hB'def, hAdef, Matrix.fromBlocks_multiply]
         simp only [Matrix.one_mul, Matrix.mul_one, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add,
-          hCiC, Matrix.mul_assoc, Matrix.neg_mul, neg_add_cancel]
+          hCiC, Matrix.mul_assoc, Matrix.neg_mul]
         rw [add_neg_cancel, Matrix.fromBlocks_one]
       have hwA : w = comb A v := by
         funext k

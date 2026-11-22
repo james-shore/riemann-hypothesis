@@ -19,8 +19,8 @@ theorem det_schur_bilinear_entry (B : Type) [Fintype B] [DecidableEq B]
   have hR : R.det = Q.det := Matrix.det_reindex_self e Q
   let Pz : Matrix (B ⊕ Unit) (B ⊕ Unit) ℂ := Matrix.fromBlocks 1 0 (Matrix.of fun _ b => z b) 1
   let Pz' : Matrix (B ⊕ Unit) (B ⊕ Unit) ℂ := Matrix.fromBlocks 1 0 (Matrix.of fun _ b => z' b) 1
-  have hPz : Pz.det = 1 := by simp [Pz, Matrix.det_fromBlocks_zero₁₂]
-  have hPz' : Pz'.det = 1 := by simp [Pz', Matrix.det_fromBlocks_zero₁₂]
+  have hPz : Pz.det = 1 := by simp [Pz]
+  have hPz' : Pz'.det = 1 := by simp [Pz']
   let u : B → ℂ := fun a => ∑ c, Q (some a) c * Option.elim c 1 z'
   let v : B → ℂ := fun b => ∑ c, Option.elim c 1 z * Q c (some b)
   let D : Matrix Unit Unit ℂ := Matrix.of fun _ _ => q
@@ -31,7 +31,7 @@ theorem det_schur_bilinear_entry (B : Type) [Fintype B] [DecidableEq B]
     ext i j
     rcases i with a | ⟨⟩ <;> rcases j with b | ⟨⟩ <;>
       simp [M, Pz, Pz', R, e, u, v, D, hq, Matrix.mul_apply, Fintype.sum_sum_type, Fintype.sum_option,
-        Matrix.one_apply, Finset.sum_add_distrib, Finset.mul_sum, Finset.sum_mul, mul_comm, mul_left_comm, mul_assoc, add_comm]
+        Matrix.one_apply, Finset.sum_add_distrib, mul_comm, mul_left_comm, mul_assoc, add_comm]
     all_goals
       simp only [mul_add, Finset.mul_sum, Finset.sum_add_distrib]
       congr 1
@@ -49,7 +49,7 @@ theorem det_schur_bilinear_entry (B : Type) [Fintype B] [DecidableEq B]
       q⁻¹ • ((Matrix.of fun a b => Q (some a) (some b)) - (Matrix.of fun a (_ : Unit) => u a) * ⅟D *
         (Matrix.of fun (_ : Unit) b => v b)) := by
     ext a b
-    simp [u, v, D, Matrix.mul_apply, invOf_eq_inv]
+    simp [u, v, D, Matrix.mul_apply]
     field_simp
   rw [hS, Matrix.det_smul, ← hdet, pow_succ, inv_pow]
   field_simp

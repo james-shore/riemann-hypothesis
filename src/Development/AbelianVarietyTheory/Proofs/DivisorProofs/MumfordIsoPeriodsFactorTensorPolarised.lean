@@ -413,7 +413,7 @@ theorem pairing_factor : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing R
         refine Finset.prod_eq_one fun j _ => ?_
         rw [Fin.prod_univ_four, if_neg hi]
         simp only [GlobalTheory.PolDeg.lamPts, Oε, _root_.one_mul]
-        simp [zpow_mul, zpow_neg]
+        simp
         apply Additive.ofMul.injective
         simp only [ofMul_mul, ofMul_zpow, ofMul_one]
         module)

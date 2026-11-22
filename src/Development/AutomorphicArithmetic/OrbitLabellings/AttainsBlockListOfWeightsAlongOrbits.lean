@@ -216,7 +216,7 @@ private theorem blocks_wt (hd : Odd d) (X : RowData C V (2 * d) I J) (ev : ZMod 
   have hrk : ∀ a, X.rkF 0 a ≤ K := fun a => le_trans (rk_le X 0 a) hK
   simp only [blocks, List.map_append, List.sum_append, List.map_map]
   rw [Finset.sum_map_toList, Finset.sum_map_toList, Finset.sum_map_toList]
-  simp [Function.comp_def, RF.GlobalTheory.wt, rst]
+  simp [RF.GlobalTheory.wt, rst]
   have hfirst : (if 1 ≤ k ∧ k ≤ K ∧ k ≤ X.rkF 0 s then ga s k else 0) = ga s k := by
     split_ifs with h
     · rfl

@@ -44,7 +44,7 @@ def mixOp (J : W → Matrix (Fin M) (Fin M) ℂ) : TupV W n M →ₗ[ℂ] TupV W
     simp [smul_add, Finset.sum_add_distrib]
   map_smul' c x := by
     ext k : 2
-    simp [Finset.smul_sum, smul_smul, mul_comm, mul_left_comm]
+    simp [Finset.smul_sum, smul_smul, mul_comm]
     exact Finset.sum_congr rfl fun _ _ => by ring
 
 @[simp] theorem mixOp_apply (J : W → Matrix (Fin M) (Fin M) ℂ) (z : TupV W n M) (k : W × Fin M) :

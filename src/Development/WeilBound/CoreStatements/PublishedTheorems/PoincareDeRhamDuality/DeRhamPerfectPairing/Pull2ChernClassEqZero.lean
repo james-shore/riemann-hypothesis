@@ -249,7 +249,6 @@ theorem exists_fun (hF : AbelianDeRham.Free) (hB : AbelianDeRham.BaseChange) (hA
       have hl : liftSemi m.pull (r ⊗ₜ c) = r • m.pull c := by
         first
         | rfl
-        | simp [liftSemi]
       rw [hl, Submodule.coe_smul, map_smul, ← hpt]
       exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨c, rfl⟩)
     | add a b ha hb =>

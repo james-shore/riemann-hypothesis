@@ -72,7 +72,7 @@ theorem main : ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing
   have fr : ∀ j, IsFlagFrame (joinCoord x z) (EB j) w (b j) := fun j => (hEB j).2
   have tri : ∀ i j : Fin N, i < j → w.repr (w i) j = 0 := by
     intro i j hij
-    simp [Module.Basis.repr_self, Finsupp.single_apply, ne_of_lt hij]
+    simp [Module.Basis.repr_self, ne_of_lt hij]
   have pair : ∀ i j, SameGeneric O (joinCoord x z) (EB i) (EB j) →
       SameGenericFibre ϖ (EB i) (EB j) ∧ ∃ f g : Fin N → MRing (Sum.elim ι ι') O,
         IsFlagPair ϖ (joinCoord x z) (EB i) (EB j) w w (b i) (b j) f g := fun i j hs =>

@@ -117,7 +117,7 @@ theorem pure_injective {B : ι → (X → ℂ) → (X → ℂ)} {c : ι → ℂ}
       congr 1
       by_cases h : i = j
       · subst h; simp
-      · simp [h, Pi.single_apply, Ne.symm h]
+      · simp [h, Ne.symm h]
   rw [injective_iff_map_eq_zero]
   refine eq_zero_of_pderiv_stable (K := fun Q => pureTensorL A f Q = 0) (fun Q i h => ?_) fun a h => ?_
   · have h1 := key i Q

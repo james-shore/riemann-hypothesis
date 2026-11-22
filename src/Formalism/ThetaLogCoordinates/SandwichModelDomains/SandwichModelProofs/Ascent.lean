@@ -66,7 +66,6 @@ theorem asc_map_weyl (O : Type) [CommRing O] {r n : ℕ} (hn : n ≤ r) (ν : Fi
     rw [map_zsmul]
     first
       | exact zsmul_mem hx c
-      | exact Submodule.smul_of_tower_mem _ c hx
 
 theorem ascent_domain_holds : AscentDomain := by
   intro p r n hn ν e h O _ _ hO x hx

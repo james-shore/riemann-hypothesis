@@ -133,7 +133,7 @@ theorem smith_mat (hv : v.Integers R) : ∀ (d n : ℕ) (A : Matrix (Fin d) (Fin
         by_cases hk : k = i0 <;> by_cases hl : l = j0
         · subst hk; subst hl; simp [hAj0, hu]
         · subst hk; simp [hl, hAi0, hs0]; ring
-        · subst hl; simp [hk, hAj0, hu, hs0]; ring
+        · subst hl; simp [hk, hAj0, hu]; ring
         · simp [hk, hl, hAj0, hAi0, hu]; ring
       set A'' : Matrix (Fin d) (Fin n) R := Matrix.of fun l k => B (i0.succAbove l) (j0.succAbove k)
       obtain ⟨P'', Q'', a'', hP'', hQ'', hD''⟩ := smith_mat hv d n A''

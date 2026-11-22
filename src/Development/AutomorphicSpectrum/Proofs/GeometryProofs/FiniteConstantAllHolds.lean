@@ -63,7 +63,7 @@ theorem exists_smul_iotaMulti {X : Scheme.{0}} {Ω : Type} [Field Ω] {ξ : Spec
 theorem norm_le_one_of_isIntegral (p : Nat.Primes) (R : Type) [CommRing R] (κ : R →+* ℂ_[p]) (x : R)
     (hx : IsIntegral ℤ x) : ‖κ x‖ ≤ 1 := by
   have hy : IsIntegral ℤ (κ x) := by
-    convert map_isIntegral_int κ hx using 1 <;> first | exact Subsingleton.elim _ _ | rfl
+    convert map_isIntegral_int κ hx using 1 <;> first | exact Subsingleton.elim _ _
   have h1 : IsIntegral (NormedField.valuation (K := ℂ_[p])).integer (κ x) := hy.tower_top
   have h2 := (Valuation.integer.integers (NormedField.valuation (K := ℂ_[p]))).mem_of_integral h1
   have h3 : ‖κ x‖₊ ≤ 1 := h2

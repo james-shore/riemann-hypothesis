@@ -85,7 +85,7 @@ theorem lift_abs {R R₁ R₂ : Type} [CommRing R] [CommRing R₁] [CommRing R�
     by_cases h : i = k <;> simp [lift, Matrix.one_apply, h, hs1]
   have lq : ∀ Z, (lift Z).map q = Z := by
     intro Z; ext i k
-    by_cases h : i = k <;> simp [lift, Matrix.one_apply, h, hs2]
+    by_cases h : i = k <;> simp [lift, h, hs2]
   have hmul : ∀ Z W : Matrix n n R₂, Z * W = 1 → lift Z * lift W = 1 := by
     intro Z W hZW
     apply ext

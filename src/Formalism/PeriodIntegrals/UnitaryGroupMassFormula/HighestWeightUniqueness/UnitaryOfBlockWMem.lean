@@ -174,14 +174,14 @@ private lemma Hpk_apply_wp_eq_ite (i l : Fin (2 * r + k + 1)) :
   have hi := i.isLt
   have hl := l.isLt
   simp only [Hpk, piI, epsI, Fin.ext_iff]
-  split_ifs <;> (try dsimp only at *) <;> first | rfl | (exfalso; omega) | norm_num
+  split_ifs <;> (try dsimp only at *) <;> first | rfl | (exfalso; omega)
 
 private lemma Hpk_apply_eq_ite_piI (l j : Fin (2 * r + k + 1)) :
     Hpk k r l j = if l = piI k r j then epsI k r j else 0 := by
   have hj := j.isLt
   have hl := l.isLt
   simp only [Hpk, piI, epsI, Fin.ext_iff]
-  split_ifs <;> (try dsimp only at *) <;> first | rfl | (exfalso; omega) | norm_num
+  split_ifs <;> (try dsimp only at *) <;> first | rfl | (exfalso; omega)
 
 private lemma mul_Hpk_apply_highest_weight_uniqueness (M : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ)
     (i j : Fin (2 * r + k + 1)) : (M * Hpk k r) i j = M i (piI k r j) * epsI k r j := by

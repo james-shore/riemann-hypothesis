@@ -84,7 +84,7 @@ lemma bmat_eq_of_decomp (B : V₁ →ₗ[ℂ] V₂ →ₗ⋆[ℂ] ℂ) {m : ℕ}
     (Matrix.of fun i j => B (u i) (w j)) = A * (Matrix.of fun k l => B (e k) (f l)) * Cᴴ := by
   ext i j
   rw [Matrix.of_apply, hu i, hw j, Matrix.mul_apply]
-  simp only [map_sum, LinearMap.map_smul, LinearMap.sum_apply, LinearMap.smul_apply, LinearMap.map_smulₛₗ,
+  simp only [map_sum, LinearMap.sum_apply, LinearMap.smul_apply, LinearMap.map_smulₛₗ,
     Matrix.mul_apply, Matrix.of_apply, Matrix.conjTranspose_apply, smul_eq_mul, Finset.sum_mul, Finset.mul_sum,
     starRingEnd_apply, RingHom.id_apply]
   refine Finset.sum_congr rfl fun k _ => Finset.sum_congr rfl fun l _ => ?_

@@ -46,8 +46,6 @@ lemma d_tau_single {N : ℕ} (z : Pr N) :
         (try exact neg_one_pow_eq_or ℤ _)
       · refine Finset.sum_congr rfl fun i _ => ?_
         congr 1; ring_nf
-        (try simp [pow_mul, mul_comm, mul_left_comm, mul_assoc])
-        (try exact neg_one_pow_eq_or ℤ _)
 
 lemma d_tau {N : ℕ} (c : Pr N →₀ ℤ) : Pr.d N (tau N c) = tau N (Pr.d N c) := by
   have : (Pr.d N).comp (tau N) = (tau N).comp (Pr.d N) := by

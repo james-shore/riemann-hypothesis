@@ -63,7 +63,7 @@ theorem triv_quad_iff {N : LB (A ⊗ T).left} (hN : N.IsLB) {Z : Over S} (x x' :
   rw [cls_linComb hN, Fin.sum_univ_four]
   have e : ∀ a b c d : Pic Z.left, (1 : ℤ) • a + (-1 : ℤ) • b + (-1 : ℤ) • c + (1 : ℤ) • d = a - b - c + d :=
     fun a b c d ↦ by simp only [one_smul, neg_smul]; abel
-  simp only [quad, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val, Matrix.head_cons]
+  simp only [quad, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val]
   rw [e]
   rfl
 

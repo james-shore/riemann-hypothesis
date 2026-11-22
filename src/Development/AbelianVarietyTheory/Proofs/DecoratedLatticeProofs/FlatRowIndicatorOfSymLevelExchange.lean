@@ -46,7 +46,7 @@ theorem lam_rowE_symLevel : ∀ (k : Type) [Field k] [ValuativeRel k] [Topologic
       have e := standardOrderExtendedBasis_apply_low_block (Fin κ) t j (c + 1 + 1) (l := s + 1) (by omega) ⟨r + 1, by omega⟩
       simp only at e
       rw [e] at this
-      exact this.trans (by simp [Matrix.one_apply])
+      exact this.trans (by simp)
   exact hl.trans hsym
 
 theorem pureRow_of_exchange : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k]
@@ -76,7 +76,7 @@ theorem pureRow_of_exchange : ∀ (k : Type) [Field k] [ValuativeRel k] [Topolog
     have hm := GlobalTheory.T.rootExchangeRowUnipotent_mem_sourceLevel k s κ S t hP j c H r hc _ hu
     have hl := lam_rowE_symLevel k s κ S t j c H r hc _ hm
     have hdet : Matrix.GeneralLinearGroup.det (rowE (c + 1 + 1) (r + 1) (x (Sum.inr ()))) = 1 := by
-      ext; simp [rowE, lowU, Matrix.det_fromBlocks_zero₁₂]
+      ext; simp [rowE, lowU]
     have hT := (HL.1 j (c + 1) (by omega)).1 ⟨_, hm⟩
     rw [hl] at hT
     have hfun : (fun z => Φ (z * (rowE (c + 1 + 1) (r + 1) (x (Sum.inr ()))).val)) = Φ := by

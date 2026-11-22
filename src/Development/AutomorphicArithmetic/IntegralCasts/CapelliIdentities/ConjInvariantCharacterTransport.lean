@@ -460,7 +460,7 @@ theorem UpperTheory.Reformulated.B.DYhc8.glEmb_mem_mirabolic :
   intro k _ n g
   change Matrix.vecMul (UpperTheory.Reformulated.B.DYhc8.eLast k n) (UpperTheory.Reformulated.B.DYhc8.glEmbMat k n (↑g)) = UpperTheory.Reformulated.B.DYhc8.eLast k n
   ext j
-  simp only [UpperTheory.Reformulated.B.DYhc8.eLast, Matrix.single_one_vecMul, UpperTheory.Reformulated.B.DYhc8.glEmbMat, Fin.lastCases_last]
+  simp only [UpperTheory.Reformulated.B.DYhc8.eLast, Matrix.single_one_vecMul]
   induction j using Fin.lastCases with
   | last => simp [UpperTheory.Reformulated.B.DYhc8.glEmbMat]
   | cast j => simp [UpperTheory.Reformulated.B.DYhc8.glEmbMat]

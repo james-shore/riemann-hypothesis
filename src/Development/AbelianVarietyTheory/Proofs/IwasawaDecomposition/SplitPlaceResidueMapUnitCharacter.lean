@@ -21,8 +21,6 @@ theorem mem_GLint_of_entries {K : Type} [Field K] {n : ℕ} (O : Subring K) (g :
   | exact @_root_.GlobalTheory.MemGlintOfEntries.mem_glint_of_entries
   | exact _root_.GlobalTheory.MemGlintOfEntries.mem_glint_of_entries
   | (apply _root_.GlobalTheory.MemGlintOfEntries.mem_glint_of_entries <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MemGlintOfEntries.mem_glint_of_entries <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MemGlintOfEntries.mem_glint_of_entries <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MemGlintOfEntries.mem_glint_of_entries ..)
 
 theorem blkOf_lt_iff {n r t : ℕ} (hn : n = r + t) (i j : Fin n) :

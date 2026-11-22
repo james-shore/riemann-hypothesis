@@ -7,8 +7,8 @@ private theorem sum_matrix_single_diag_one_eq_one {F : Type} [Field F] {n : Type
   ext u v
   by_cases h : u = v
   · subst h
-    simp [Matrix.sum_apply, Matrix.single_apply, Matrix.one_apply]
-  · simp [Matrix.sum_apply, Matrix.single_apply, Matrix.one_apply, h]
+    simp [Matrix.sum_apply, Matrix.single_apply]
+  · simp [Matrix.sum_apply, Matrix.single_apply, h]
     have he : (Finset.univ.filter fun w : n => w = u ∧ w = v) = ∅ := by
       rw [Finset.filter_eq_empty_iff]
       rintro w - ⟨rfl, rfl⟩
@@ -90,8 +90,8 @@ private theorem separate {F : Type} [Field F] {σ : Type} (d : σ → Type)
     ext u v
     by_cases h : u = v
     · subst h
-      simp [Matrix.sum_apply, Matrix.single_apply, Matrix.one_apply]
-    · simp [Matrix.sum_apply, Matrix.single_apply, Matrix.one_apply, h]
+      simp [Matrix.sum_apply, Matrix.single_apply]
+    · simp [Matrix.sum_apply, Matrix.single_apply, h]
       have he : (Finset.univ.filter fun w : d s => w = u ∧ w = v) = ∅ := by
         rw [Finset.filter_eq_empty_iff]
         rintro w - ⟨rfl, rfl⟩

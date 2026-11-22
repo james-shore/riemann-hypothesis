@@ -216,7 +216,7 @@ theorem gMat_mem_minusculeSet (S : Finset (Fin n)) (c : Pairs S → 𝓀[F]) :
       Matrix (Fin n) (Fin n) F)).det = _
     rw [det_mul, coe_torusPow, det_diagonal, prod_zpow_uniformizer, sum_lamS,
       det_of_isUpperTriangular (unipC_mem_unipotent S c).1]
-    simp only [(unipC_mem_unipotent S c).2, Finset.prod_const_one, one_mul, map_zpow₀, zpow_natCast,
+    simp only [(unipC_mem_unipotent S c).2, Finset.prod_const_one, one_mul, zpow_natCast,
       map_pow]
 
 theorem gMat_injective (S : Finset (Fin n)) :

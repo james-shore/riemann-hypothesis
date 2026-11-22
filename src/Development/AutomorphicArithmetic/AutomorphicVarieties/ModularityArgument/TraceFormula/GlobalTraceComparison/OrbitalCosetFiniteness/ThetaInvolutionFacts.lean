@@ -21,7 +21,7 @@ private lemma out_orbit {G : Type} [Group G] (θ : G →* G) (K : Subgroup G) (h
   have hc : h * δ = δ * θ h := hh
   refine ⟨k, hk, (θ k)⁻¹, K.inv_mem (hθ k hk), ?_⟩
   subst e
-  simp only [_root_.mul_inv_rev, map_mul, mul_assoc, mul_inv_cancel_left, mul_inv_cancel_right]
+  simp only [_root_.mul_inv_rev, map_mul, mul_assoc, mul_inv_cancel_left]
   rw [← mul_assoc δ (θ h), ← hc]
   simp [mul_assoc]
 

@@ -19,7 +19,7 @@ theorem genVal_map_mul (q r N n : ℕ) (B : Multiset ℂˣ) (c : ℂˣ) :
     genVal q r N (B.map (· * c)) n = (c : ℂ) ^ n * genVal q r N B n := by
   unfold genVal
   have e : ((B.map (· * c)).map fun b : ℂˣ => (b : ℂ)) = (B.map fun b : ℂˣ => (b : ℂ)).map (· * (c : ℂ)) := by
-    simp [Multiset.map_map, Function.comp_def]
+    simp [Multiset.map_map]
   rw [e, esymm_map_mul_const]
   ring
 

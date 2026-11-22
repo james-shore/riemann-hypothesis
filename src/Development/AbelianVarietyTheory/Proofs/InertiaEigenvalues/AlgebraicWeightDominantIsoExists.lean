@@ -109,8 +109,6 @@ theorem joint_upper {Φ : (ι → GL (Fin n) ℂ) → Matrix κ κ ℂ} (hone : 
   | exact @_root_.GlobalTheory.MulVecProduct.mulVec_eq_prod_smul
   | exact _root_.GlobalTheory.MulVecProduct.mulVec_eq_prod_smul
   | (apply _root_.GlobalTheory.MulVecProduct.mulVec_eq_prod_smul <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MulVecProduct.mulVec_eq_prod_smul <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MulVecProduct.mulVec_eq_prod_smul <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MulVecProduct.mulVec_eq_prod_smul ..)
 
 def trGL (B : GL (Fin n) ℂ) : GL (Fin n) ℂ :=

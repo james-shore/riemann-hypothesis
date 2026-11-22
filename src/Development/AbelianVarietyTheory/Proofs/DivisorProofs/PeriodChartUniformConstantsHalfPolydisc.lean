@@ -30,7 +30,7 @@ theorem quad_abs_le {m : Type} [Fintype m] (A : Matrix m m ℝ) (E : ℝ)
           intro j
           rw [Finset.sum_add_distrib, Finset.sum_const, Finset.card_univ, nsmul_eq_mul,
             Finset.mul_sum]
-        simp only [h5, Finset.sum_add_distrib, Finset.sum_const, Finset.card_univ, nsmul_eq_mul,
+        simp only [Finset.sum_add_distrib, Finset.sum_const, Finset.card_univ, nsmul_eq_mul,
           ← Finset.mul_sum, dotProduct, sq]
         ring
 

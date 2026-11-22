@@ -40,7 +40,7 @@ theorem projLine_map_const : ∀ (k : Type) [Field k] [IsAlgClosed k] (B : Over 
     rw [← Scheme.Hom.comp_apply, ← Spec.map_comp, ← CommRingCat.ofHom_comp]
     have : (Polynomial.mapRingHom (χ : L →+* k)).comp (algebraMap L (Polynomial L)) =
         (algebraMap k (Polynomial k)).comp (χ : L →+* k) := by
-      ext z; simp [Polynomial.algebraMap_apply]
+      ext z; simp
     rw [this, CommRingCat.ofHom_comp, Spec.map_comp, Scheme.Hom.comp_apply]
     congr 1
     exact hsub.elim _ _

@@ -11,4 +11,4 @@ theorem _root_.GlobalTheory.T.height_one_prime_over_constant_ideal : ∀ (A : Ty
     (∃ _ : IsDomain (Localization.AtPrime P), IsDiscreteValuationRing (Localization.AtPrime P)) ∧
       ∀ π : A, Irreducible (algebraMap A (Localization.AtPrime p) π) →
         Irreducible (algebraMap A (Localization.AtPrime P) π) := by
-  first | (exact @GlobalTheory.EtalePolyDvr.isDiscreteValuationRing_atPrime_of_etale_polynomial) | (exact GlobalTheory.EtalePolyDvr.isDiscreteValuationRing_atPrime_of_etale_polynomial) | (intros; apply GlobalTheory.EtalePolyDvr.isDiscreteValuationRing_atPrime_of_etale_polynomial  <;> assumption)
+  first | (exact @GlobalTheory.EtalePolyDvr.isDiscreteValuationRing_atPrime_of_etale_polynomial)

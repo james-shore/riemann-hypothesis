@@ -45,7 +45,7 @@ theorem glue_units {X : Scheme.{0}} {κ : Type} (U : κ → X.Opens) (hcov : ∀
     rw [map_mul, map_one, hs' i, ht' i, Units.mul_inv]
   refine ⟨⟨s, t, hst, by rw [mul_comm]; exact hst⟩, fun i => ?_⟩
   ext
-  simp only [Units.coe_map, MonoidHom.coe_coe, Units.val_mk]
+  simp only [Units.coe_map, MonoidHom.coe_coe]
   exact hs' i
 
 theorem exists_ratio_gen {X : Scheme.{0}} {M : LB X} (hcov : ∀ x : X, ∃ i, x ∈ M.U i) {g₁ g₂ : LB.Gen M}

@@ -71,7 +71,7 @@ theorem integral_count_dens (n f q a : ℕ) (j : Fin a → ℕ) (de lo M : ℝ) 
               ∏ i, 2 * (f : ℝ) * j i / τ i := by ring
         _ ≤ M * 2 * ∏ i, 2 * (f : ℝ) * j i / τ i :=
           mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_left h2 hM) hP
-    · simp [Set.indicator_apply, hl]
+    · simp [hl]
   have hcont : ContinuousOn (fun τ : Fin a → ℝ => M * 2 * ∏ i, 2 * (f : ℝ) * j i / τ i) S := by
     refine continuousOn_const.mul (continuousOn_finset_prod _ fun i _ => ?_)
     exact continuousOn_const.div (continuous_apply i).continuousOn

@@ -99,7 +99,7 @@ theorem valZ_scale {p : ℕ} [Fact p.Prime] (X : Sys p) (D : D7) (pos : (Σ v : 
     rw [zT_scale X D pos f f' hf τ₀ 2 two_ne_zero hf']
     by_cases hb : (⟨x.1, x.2.1⟩ : Σ v : Fin (X.Pj i).nV, Fin ((X.Pj i).n' v)) = (posJ X D pos i).symm τ₀
     · have e : posJ X D pos i ⟨x.1, x.2.1⟩ = τ₀ := by rw [hb]; simp
-      simp [e, hb]
+      simp [hb]
     · have e : posJ X D pos i ⟨x.1, x.2.1⟩ ≠ τ₀ := fun e => hb (by rw [← e]; simp)
       simp [e, hb]
   unfold valZ
@@ -154,12 +154,12 @@ theorem realises_blockHom : ∀ {p : ℕ} [Fact p.Prime] (X : Sys p) (D : D7) (p
       apply prod_scale
       intro τ
       rw [zT_scale X D pos f.1 f'.1 hfu τ₀ 2 two_ne_zero hf' τ]
-      split_ifs <;> simp [Matrix.det_smul]
+      split_ifs <;> simp
     have hdf : ∏ τ, (f'.1 τ).det ^ (-(a τ)) = (t ^ n) ^ (-(a τ₀)) * ∏ τ, (f.1 τ).det ^ (-(a τ)) := by
       apply prod_scale
       intro τ
       show (if τ = τ₀ then t • f.1 τ else f.1 τ).det = _
-      split_ifs <;> simp [Matrix.det_smul]
+      split_ifs <;> simp
     have hq : GL3Theta.evFr D Q f'.1 = t ^ (∑ r, ν τ₀ r) * GL3Theta.evFr D Q f.1 := evFr_scale D ν Q hQ τ₀ t ht0 f.1
     have hK : ((2:ℂ) ^ n) ^ eT X D pos i τ₀ ≠ 0 := zpow_ne_zero _ (pow_ne_zero _ two_ne_zero)
     have hE := e2.symm.trans e3

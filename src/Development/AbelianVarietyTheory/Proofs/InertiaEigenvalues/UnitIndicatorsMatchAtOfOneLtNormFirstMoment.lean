@@ -21,7 +21,7 @@ theorem dot_act {n : ℕ} {k : Type} [CommRing k] (g : GL (Fin n) k) (Y : Gl n k
 
 theorem dot_sec {r : ℕ} {k : Type} [CommRing k] (a : Inv (r + 1) k) :
     (sec a).2.2.1 ⬝ᵥ (sec a).2.1 = a.2.1 0 := by
-  simp [sec, dotProduct, Fin.sum_univ_succ]
+  simp [sec, dotProduct]
 
 theorem dot_actU {n : ℕ} {E : Type} [CommRing E] [StarRing E] (g : Matrix.unitaryGroup (Fin n) E)
     (b : Fin n → E) : star (g.1 *ᵥ b) ⬝ᵥ (g.1 *ᵥ b) = star b ⬝ᵥ b := by

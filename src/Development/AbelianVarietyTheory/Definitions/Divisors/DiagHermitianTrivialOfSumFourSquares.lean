@@ -146,8 +146,7 @@ theorem _root_.GlobalTheory.LKDef.DPair.rel_equivalence (G : _root_.GlobalTheory
   · obtain ⟨y, s, hs, hβ, hγ⟩ := h
     refine ⟨y⁻¹, s⁻¹, inv_pos.mpr hs, ?_, ?_⟩
     · rw [hβ]
-      simp only [← Algebra.smul_def, mul_smul_comm, smul_mul_assoc, smul_smul,
-        inv_mul_cancel₀ hs.ne', one_smul]
+      simp only [← Algebra.smul_def, mul_smul_comm, smul_mul_assoc, smul_smul]
       simp only [mul_assoc, Units.inv_mul_cancel_left, lkMid_sh_mul_sh_units_inv_eq_one, mul_one]
       rw [mul_inv_cancel₀ hs.ne', one_smul]
     · rw [hγ]; group
@@ -229,7 +228,7 @@ theorem signature_diagHermitian (τ : QI →+* ℂ) : sigPos isHermitian_diagHer
     · right; have : ((-1 : ℝ) : ℂ) = (hA.eigenvalues i : ℂ) := by simpa using hj
       exact_mod_cast this.symm
   have ht := hA.trace_eq_sum_eigenvalues
-  have htr : (gramAt H3 τ).trace = -1 := by rw [gramMatrix_diagHermitian]; simp [Matrix.trace_fin_three, Fin.sum_univ_three]
+  have htr : (gramAt H3 τ).trace = -1 := by rw [gramMatrix_diagHermitian]; simp [Fin.sum_univ_three]
   rw [htr, Fin.sum_univ_three] at ht
   have ht' : hA.eigenvalues 0 + hA.eigenvalues 1 + hA.eigenvalues 2 = -1 := by
     have : (((-1 : ℝ)) : ℂ) = ((hA.eigenvalues 0 + hA.eigenvalues 1 + hA.eigenvalues 2 : ℝ) : ℂ) := by

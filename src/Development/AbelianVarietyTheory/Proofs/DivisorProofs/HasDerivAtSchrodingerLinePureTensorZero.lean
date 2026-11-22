@@ -88,7 +88,7 @@ theorem phaseForm_apply (hF : IsTotallyReal F) (lam : InfinitePlace F → ℝ)
 
 private theorem re_fstA_eq_coord_arch (hF : IsTotallyReal F) (u : AF F) (w : InfinitePlace F) :
     re (fstA F u) w = coord hF w (arch u) := by
-  first | (rw [re_eq_coord hF, arch_apply]; rfl) | rw [re_eq_coord hF, arch_apply]
+  first | (rw [re_eq_coord hF, arch_apply]; rfl)
 
 theorem phase_line [Invertible (2 : AF F)] (hF : IsTotallyReal F) {ψ : AddChar (AF F) ℂ}
     {lam : InfinitePlace F → ℝ} (hlam : IsLam ψ lam) {M : ℝ →+ VA F N} (hM : IsRealLine M)
@@ -115,14 +115,6 @@ theorem phase_line [Invertible (2 : AF F)] (hF : IsTotallyReal F) {ψ : AddChar 
       | (simp only [Finset.mul_sum, ← Finset.sum_add_distrib]
          refine Finset.sum_congr rfl fun l _ => ?_
          ring)
-      | (have h1 : ∑ l, coord hF w (arch (z l)) * (s * coord hF w (arch ((M 1).2 l))) =
-            s * ∑ l, coord hF w (arch (z l)) * coord hF w (arch ((M 1).2 l)) := by
-           rw [Finset.mul_sum]; exact Finset.sum_congr rfl fun l _ => by ring
-         have h2 : ∑ l, s * coord hF w (arch ((M 1).1 l)) * (s * coord hF w (arch ((M 1).2 l))) =
-            s ^ 2 * ∑ l, coord hF w (arch ((M 1).1 l)) * coord hF w (arch ((M 1).2 l)) := by
-           rw [Finset.mul_sum]; exact Finset.sum_congr rfl fun l _ => by ring
-         rw [h1, h2]
-         ring)
   have key : ∑ w, lam w * re (fstA F (z ⬝ᵥ (M s).2 + ⅟(2 : AF F) * ((M s).1 ⬝ᵥ (M s).2))) w =
       s * phaseForm hF lam (fun l => arch ((M 1).2 l)) (fun l => arch (z l)) +
         s ^ 2 * ∑ w, lam w * (re (fstA F ⅟(2 : AF F)) w *
@@ -135,7 +127,7 @@ theorem phase_line [Invertible (2 : AF F)] (hF : IsTotallyReal F) {ψ : AddChar 
     ring
   calc ψ (z ⬝ᵥ (M s).2 + ⅟(2 : AF F) * ((M s).1 ⬝ᵥ (M s).2))
       = ψ (pairA F (fstA F (z ⬝ᵥ (M s).2 + ⅟(2 : AF F) * ((M s).1 ⬝ᵥ (M s).2))) 0) := by
-        first | (rw [← hsnd]; rfl) | rw [← hsnd]
+        first | (rw [← hsnd]; rfl)
     _ = _ := by
         have h2 := hlam.2 (fstA F (z ⬝ᵥ (M s).2 + ⅟(2 : AF F) * ((M s).1 ⬝ᵥ (M s).2)))
         rw [key] at h2
@@ -150,7 +142,6 @@ private theorem hasDerivAt_exp_quadratic_mul_schwartz_line_zero {E : Type} [Norm
     have h := ((hasDerivAt_id' (0:ℝ)).mul_const a).add (((hasDerivAt_id' (0:ℝ)).pow 2).mul_const b)
     first
       | exact h.congr_deriv (by simp)
-      | (convert h using 1 <;> simp)
   have h3 := (h1.ofReal_comp.const_mul (2 * Real.pi * Complex.I)).cexp
   have hl : HasDerivAt (fun s : ℝ => q + s • v) v 0 := by
     simpa using ((hasDerivAt_id (0:ℝ)).smul_const v).const_add q
@@ -165,7 +156,6 @@ private theorem hasDerivAt_exp_quadratic_mul_schwartz_line_zero {E : Type} [Norm
     | (simp only [Function.comp_apply]; done)
     | (simp; done)
     | (simp; ring)
-    | (funext s; simp [Function.comp_apply])
 
 end GlobalTheory.CompanionTheory.SchrLine
 
@@ -197,7 +187,6 @@ theorem GlobalTheory.CompanionTheory.SchrLine.exists_hasDerivAt_schr_pureA :
       rw [map_add, map_add]
       first
         | exact congrArg₂ (· + ·) rfl (arch_fst hM i s)
-        | (congr 1; exact arch_fst hM i s)
     have hz : (fun i => ((z + (M s).1) i).2) = zf := by
       funext i
       show sndA F (z i + (M s).1 i) = (z i).2
@@ -214,9 +203,6 @@ theorem GlobalTheory.CompanionTheory.SchrLine.exists_hasDerivAt_schr_pureA :
     SchwartzMap.lineDerivOp_apply_eq_fderiv]
   first
     | rfl
-    | (simp only [L, ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply,
-        Complex.ofRealCLM_apply, smul_eq_mul]; rfl)
-    | (simp [L, smul_eq_mul]; ring)
 
 end
 end

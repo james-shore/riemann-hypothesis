@@ -102,7 +102,7 @@ theorem main (N : ℕ) (hN : 0 < N) (hNp : N.Coprime p) :
         exact sub_mem (hb v) (mul_mem (natCast_mem _ m) (hb' v))
       · have e1 := hεb.symm.trans hεb'
         push_cast at e1 ⊢
-        simp only [map_sub, map_intCast]
+        simp only [map_intCast]
         linear_combination -e1
     · obtain ⟨e₁, he₁, r₁⟩ := hf (n * m) hnmp hnm a
       obtain ⟨e₂, he₂, r₂⟩ := hf n hn hnp a

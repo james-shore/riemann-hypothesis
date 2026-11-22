@@ -224,12 +224,12 @@ theorem capalg : ∀ (M : Type) [AddCommGroup M] [Module ℂ M] (a r : ℕ) (hr 
   have e1 : (fun p p' : Fin r => X (GlobalTheory.LeviGA.blkEquiv hr (Sum.inl p)) (GlobalTheory.LeviGA.blkEquiv hr (Sum.inl p'))) =
       fun p q => X (Fin.castAdd m p) (Fin.castAdd m q) := by
     funext p p'
-    congr 1 <;> exact Fin.ext (by simp)
+    congr 1
   have hm : r + m - r = m := by omega
   have e2 : (fun p p' : Fin (r + m - r) => X (GlobalTheory.LeviGA.blkEquiv hr (Sum.inr p)) (GlobalTheory.LeviGA.blkEquiv hr (Sum.inr p'))) =
       fun p p' => (fun p q : Fin m => X (Fin.natAdd r p) (Fin.natAdd r q)) (Fin.cast hm p) (Fin.cast hm p') := by
     funext p p'
-    congr 1 <;> exact Fin.ext (by simp)
+    congr 1
   have e3 : Formalism.REAL.qdet (fun p p' : Fin (r + m - r) => X (GlobalTheory.LeviGA.blkEquiv hr (Sum.inr p))
       (GlobalTheory.LeviGA.blkEquiv hr (Sum.inr p'))) u = Formalism.REAL.qdet (fun p q : Fin m => X (Fin.natAdd r p) (Fin.natAdd r q)) u := by
     rw [e2]; exact qdet_cast hm (fun p q : Fin m => X (Fin.natAdd r p) (Fin.natAdd r q)) u

@@ -80,7 +80,7 @@ theorem archIn_single (j : Fin (dimA F κ)) (s : ℝ) :
   funext i
   rw [archIn_apply]
   congr 1
-  rw [Module.Basis.equivFun_symm_apply, Fintype.sum_eq_single j (fun c hc => by simp [Pi.single_apply, hc])]
+  rw [Module.Basis.equivFun_symm_apply, Fintype.sum_eq_single j (fun c hc => by simp [hc])]
   simp
 
 theorem sobolev_schA {f : (κ → AF F) → ℂ} (hf : f ∈ schA F κ) (x : κ → AF F) (B : ℝ)

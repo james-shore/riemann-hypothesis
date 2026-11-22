@@ -42,7 +42,7 @@ theorem exists_away_fac {K A S L : Type} [CommRing K] [CommRing A] [Algebra K A]
   let p : PrimeSpectrum S := PrimeSpectrum.comap χ ⟨⊥, Ideal.isPrime_bot⟩
   have hp : p ∈ (W ⁻¹ᵁ j.opensRange : (Sp S).Opens) := by
     have e := congrArg (fun m : Sp L ⟶ X => m (⟨⊥, Ideal.isPrime_bot⟩ : PrimeSpectrum L)) h
-    simp only [Scheme.Hom.comp_apply] at e
+    simp only at e
     exact ⟨_, e.symm⟩
   obtain ⟨_, ⟨g, rfl⟩, hg, hle⟩ := PrimeSpectrum.isTopologicalBasis_basic_opens.exists_subset_of_mem_open
     hp (W ⁻¹ᵁ j.opensRange).isOpen

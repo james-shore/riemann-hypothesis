@@ -69,11 +69,11 @@ theorem thetaChar_empty [IsEmpty (Fin g)] (τ : Matrix (Fin g) (Fin g) ℂ) (a b
     thetaChar τ a b z = 1 := by
   unfold thetaChar
   rw [tsum_fintype, Fintype.sum_unique]
-  simp [dot_empty]
+  simp
 
 theorem autV_empty [IsEmpty (Fin g)] (τ : Matrix (Fin g) (Fin g) ℂ) (a b : Fin g → ℂ) (M N : Fin g → ℤ) (z : Fin g → ℂ) :
     autV τ a b M N z = 1 := by
-  simp [autV, dot_empty]
+  simp [autV]
 
 theorem posDef_empty [IsEmpty (Fin g)] (A : Matrix (Fin g) (Fin g) ℝ) : A.PosDef :=
   ⟨by ext i; exact isEmptyElim i, fun x hx => (hx (Subsingleton.elim _ _)).elim⟩

@@ -11,7 +11,7 @@ variable (R : Type) [CommRing R]
 
 theorem padMat_castLE {m n : ℕ} (h : m ≤ n) (A : Matrix (Fin m) (Fin m) R) (i j : Fin m) :
     (padMat R A : Matrix (Fin n) (Fin n) R) (Fin.castLE h i) (Fin.castLE h j) = A i j := by
-  simp [padMat, Fin.coe_castLE, i.2, j.2]
+  simp [padMat, i.2, j.2]
 
 theorem stab_injective {m n : ℕ} (h : m ≤ n) : Function.Injective (stab R m n h) := by
   intro g g' e
@@ -132,12 +132,4 @@ open CategoryTheory CategoryTheory.Limits GlobalTheory.HomStab GlobalTheory.SeqC
 theorem _root_.GlobalTheory.T.stabilizer_stdSeq_iso_GL_of_complement : ∀ (R : Type) [CommRing R] (n p : ℕ) (h : p ≤ n), Function.Injective (stab R (n - p) n (Nat.sub_le n p)) ∧ (stab R (n - p) n (Nat.sub_le n p)).range = MulAction.stabilizer (GL (Fin n) R) (stdSeq R n p h) := by
   first
   | exact @GlobalTheory.StabSeq.stab_injective_range_eq
-  | exact @GlobalTheory.StabSeq.range_eq
-  | exact @GlobalTheory.StabSeq.isPad_of_mem
-  | exact @GlobalTheory.StabSeq.stdSeq_fixed_iff
-  | exact @GlobalTheory.StabSeq.isPad_stab
-  | exact @GlobalTheory.StabSeq.mem_range_of_isPad
-  | exact @GlobalTheory.StabSeq.padMat_of_isPad
-  | exact @GlobalTheory.StabSeq.stab_injective
-  | exact @GlobalTheory.StabSeq.padMat_castLE
 end

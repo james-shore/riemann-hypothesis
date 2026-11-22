@@ -69,7 +69,7 @@ theorem deltaHalf_levZ (r m : ℕ) (z : kˣ) :
   have key : (deltaHalf k (fun a => Fin (dd r m a)) (levZ k r m z) : ℂ) =
       ((nabs k (GeneralLinearGroup.det (levZ k r m z 0)) : ℂ) ^ ((modExp (fun a => Fin (dd r m a)) 0 : ℂ) / 2)) *
       ((nabs k (GeneralLinearGroup.det (levZ k r m z 1)) : ℂ) ^ ((modExp (fun a => Fin (dd r m a)) 1 : ℂ) / 2)) := by
-    simp only [deltaHalf, Fin.prod_univ_two, MonoidHom.finset_prod_apply, Units.val_mul]
+    simp only [deltaHalf, Fin.prod_univ_two]
     rfl
   rw [key, h0, h1, hdet, map_one, modExp_two_one, nabs_pow]
   have hx : 0 ≤ nabs k z := by simp [nabs]

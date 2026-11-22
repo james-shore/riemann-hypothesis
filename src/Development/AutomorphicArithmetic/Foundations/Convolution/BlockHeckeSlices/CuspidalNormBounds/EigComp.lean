@@ -209,7 +209,7 @@ private theorem exists_fin {r : ℕ} (m : Multiset ℂ) (h : m.card = r) :
     refine ⟨l.get, fun u => ?_⟩
     rw [← List.prod_ofFn]
     conv_lhs => rw [← List.ofFn_get l]
-    simp [List.map_ofFn, Function.comp_def]
+    simp
 
 end UpperTheory.ConvolutionTheory.BW
 

@@ -58,6 +58,6 @@ theorem setIntegral_dbar_eq_zero {n : ℕ} (U K : Set (V n)) (g : V n → ℂ) (
     setIntegral_eq_integral_of_forall_compl_eq_zero, hE]
   intro v hv
   rw [dbar_congr (hout v fun h => hv (hKU h))]
-  simp [dbar_apply]
+  simp
 
 end GlobalTheory.GoodTop

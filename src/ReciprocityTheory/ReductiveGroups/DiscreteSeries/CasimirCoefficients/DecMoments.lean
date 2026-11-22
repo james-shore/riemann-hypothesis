@@ -86,8 +86,6 @@ lemma dm_range {ε : Fin n → Bool} {Y U : Matrix (Fin n) (Fin n) ℂ} {y : Fin
     refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
     first
       | (rw [Complex.star_def, Complex.mul_conj'])
-      | (rw [Complex.star_def, Complex.mul_conj, Complex.normSq_eq_norm_sq]; push_cast; ring)
-      | simp [Complex.mul_conj, Complex.normSq_eq_norm_sq]
   have hUU : Uᴴ * U = 1 := Matrix.mem_unitaryGroup_iff'.1 hU
   have h2 : ∀ M : Matrix (Fin n) (Fin n) ℂ, Uᴴ * (U * M) = M := fun M => by
     rw [← Matrix.mul_assoc, hUU, Matrix.one_mul]

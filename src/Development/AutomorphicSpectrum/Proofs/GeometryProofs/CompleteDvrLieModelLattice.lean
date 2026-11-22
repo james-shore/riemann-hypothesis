@@ -48,7 +48,6 @@ theorem _root_.GlobalTheory.CompanionTheory.Relay.complete_dvr_lie_model_lattice
     have := DFunLike.congr_fun (CommRingCat.hom_ext_iff.mp (exists_unitary_diagonal_of_isHermitian T zV c)) s
     first
       | exact this
-      | simpa only [CommRingCat.comp_apply, CommRingCat.hom_ofHom] using this
   have hsc : ∀ {x : L₀} {y : EC}, M.ValAt (FinRd.Roots.gen T zV) x (MC.pt y) →
       ∀ s : X.presheaf.stalk (centre (FinRd.Roots.gen T zV)),
         M.ValAt (FinRd.Roots.gen T zV) (genMap ξ ⟨centre (FinRd.Roots.gen T zV), hz⟩ s • x)

@@ -15,8 +15,6 @@ theorem norm_le_one_of_mem {l : ℕ} [Fact l.Prime] (c : Coef l) {x : Qbar l} (h
   | exact @_root_.GlobalTheory.BoundedScalarNorm.norm_le_one
   | exact _root_.GlobalTheory.BoundedScalarNorm.norm_le_one
   | (apply _root_.GlobalTheory.BoundedScalarNorm.norm_le_one <;> assumption)
-  | (intros; apply _root_.GlobalTheory.BoundedScalarNorm.norm_le_one <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.BoundedScalarNorm.norm_le_one <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.BoundedScalarNorm.norm_le_one ..)
 
 theorem cg_of_eq {l : ℕ} [Fact l.Prime] (c : Coef l) (n : ℕ) {a b z : Qbar l} (hz : z ∈ c.O)

@@ -121,8 +121,6 @@ theorem exists_smooth_basicOpen_iso : ∀ (R R' : Type) [CommRing R] [CommRing R
     refine ⟨w, ?_⟩
     first
       | exact (Scheme.Hom.comp_apply _ _ _).trans (congrArg l hw)
-      | exact (Scheme.comp_base_apply _ _ _).trans (congrArg l hw)
-      | exact congrArg l hw
   · let B := Localization.Away (algebraMap C (Localization.Away g) f)
     haveI : Algebra.Smooth R B := Algebra.Smooth.comp R (Localization.Away g) B
     haveI : Algebra.Smooth R A :=

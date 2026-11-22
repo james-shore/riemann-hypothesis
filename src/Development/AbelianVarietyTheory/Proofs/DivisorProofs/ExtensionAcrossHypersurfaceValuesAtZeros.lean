@@ -141,7 +141,7 @@ theorem GlobalTheory.OTY.extension_values_at_zeros : ∀ (n : ℕ) (Y : Type) [T
     have h0 : ∀ k, s k i (e.symm (e P)) = 0 := fun k => by rw [e.left_inv hPs]; exact hP' k
     ext k
     simp only [Z, WeightedAtlas.zLoc, PiLp.toLp_apply, div_one]
-    first | exact h0 k | simpa using h0 k | (simp; exact h0 k)
+    first | exact h0 k
   have hdet : (fderiv ℂ Z (e P)).det ≠ 0 := hjac P hP
   have hlam : ContinuousOn lam O :=
     ((A.smooth_ph L i).continuousOn).mono (fun v hv => hv.1)

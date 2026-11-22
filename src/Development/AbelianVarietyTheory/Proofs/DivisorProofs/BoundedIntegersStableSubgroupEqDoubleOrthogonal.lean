@@ -33,8 +33,7 @@ theorem exists_integral_form_separating {R K : Type} [CommRing R] [IsDomain R]
   have : Fintype (Module.Basis.sumExtendIndex hli) := Fintype.ofFinite _
   have hB : ∀ i, B (Sum.inl i) = a i := by
     intro i
-    simp only [B, Module.Basis.sumExtend, Module.Basis.reindex_apply, Module.Basis.coe_extend,
-      Equiv.symm_symm, Equiv.trans_apply, Equiv.sumCongr_apply]
+    simp only [B, Module.Basis.sumExtend, Module.Basis.reindex_apply, Module.Basis.coe_extend]
     rfl
 
   have key : ∀ f : (κ → K) →ₗ[K] K, (∀ i, f (a i) ∈ (algebraMap R K).range) →

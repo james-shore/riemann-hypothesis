@@ -26,7 +26,7 @@ theorem finiteSubsets_preimage {S : Scheme.{0}} (A : Over S) [GrpObj A] (L : LB 
 
 theorem transl_mul {S : Scheme.{0}} {A : Over S} [GrpObj A] (a c : 𝟙_ (Over S) ⟶ A) :
     Hecke.transl (a * c) = Hecke.transl a ≫ Hecke.transl c := by
-  simp only [Hecke.transl, comp_mul, Category.id_comp, Category.comp_id]
+  simp only [Hecke.transl, comp_mul, Category.comp_id]
   rw [← Category.assoc, toUnit_unique (_ ≫ toUnit A) (toUnit A)]
   exact (mul_assoc _ _ _).symm
 

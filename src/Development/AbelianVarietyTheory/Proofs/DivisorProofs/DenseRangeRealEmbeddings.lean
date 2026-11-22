@@ -53,7 +53,7 @@ theorem denseRange_realEmbeddings :
     have e3 : ((InfinitePlace.Completion.extensionEmbeddingOfIsReal (IsTotallyReal.isReal (g σ)))
         { toCompletion := ↑(WithAbs.toAbs (g σ).1 x) } : ℂ) = (g σ).embedding x := by
       rw [← e2]
-      simp only [RingEquiv.apply_symm_apply, WithAbs.equiv_symm_apply, WithAbs.equiv_apply] at e1
+      simp only [WithAbs.equiv_symm_apply, WithAbs.equiv_apply] at e1
       exact congrArg _ e1
     rw [e3, hemb σ]
     rfl

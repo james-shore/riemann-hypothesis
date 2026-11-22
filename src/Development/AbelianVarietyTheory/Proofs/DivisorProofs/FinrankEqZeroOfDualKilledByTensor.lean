@@ -96,7 +96,7 @@ theorem finrank_eq_zero_of_dual_killed : ∀ (F : Type) [Field F] [NumberField F
   have lin : ∀ (e : ι → ℤ) (χ : X) (r : Module.Free.ChooseBasisIndex ℤ X),
       B.repr (ρ (∑ i, e i • b i) χ) r = ∑ i, e i * B.repr (ρ (b i) χ) r := by
     intro e χ r
-    simp [map_sum, map_zsmul, LinearMap.sum_apply, Finsupp.finset_sum_apply]
+    simp [map_sum, LinearMap.sum_apply, Finsupp.finset_sum_apply]
   rcases CharP.char_is_prime_or_zero k (ringChar k) with hp | hp
   · set p := ringChar k with hpdef
     haveI : Fact p.Prime := ⟨hp⟩
@@ -116,7 +116,7 @@ theorem finrank_eq_zero_of_dual_killed : ∀ (F : Type) [Field F] [NumberField F
       push_cast
       refine Finset.sum_congr rfl fun i _ => ?_
       rw [map_zsmul, zsmul_eq_mul, hedef]
-      simp [ZMod.natCast_zmod_val, mul_comm]
+      simp [mul_comm]
     have h := GlobalTheory.dvd_coord_of_action_dvd F X ρ ι b p (by exact_mod_cast hp.ne_zero) _ hdiv i0
     rw [Module.Basis.repr_sum_self] at h
     apply hπ

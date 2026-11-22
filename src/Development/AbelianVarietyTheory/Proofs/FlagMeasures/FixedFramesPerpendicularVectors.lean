@@ -37,8 +37,6 @@ theorem exists_smul_mem {E W : Type} [Field E] [NumberField E] [AddCommGroup W] 
   | exact @_root_.GlobalTheory.ClearingDenominatorsInOrder.main
   | exact _root_.GlobalTheory.ClearingDenominatorsInOrder.main
   | (apply _root_.GlobalTheory.ClearingDenominatorsInOrder.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ClearingDenominatorsInOrder.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ClearingDenominatorsInOrder.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ClearingDenominatorsInOrder.main ..)
 
 theorem mem_perpE (D : D7) (P : LatW D) (v : (D.sp.X 0).V) :

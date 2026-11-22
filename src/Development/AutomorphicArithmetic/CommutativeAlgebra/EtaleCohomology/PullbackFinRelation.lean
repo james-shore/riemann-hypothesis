@@ -54,7 +54,7 @@ private theorem untilt_pow' (x : Ob l) (n : ℕ) :
     ((PreTilt.untilt (x ^ n) : OC l) : ℂ_[l]) = ((PreTilt.untilt x : OC l) : ℂ_[l]) ^ n := by
   induction n with
   | zero => simp
-  | succ n ih => rw [pow_succ, pow_succ, untilt_mul]; simp [ih]
+  | succ n ih => rw [pow_succ, pow_succ, untilt_mul]; simp
 
 private theorem gfix (r : Res l K) (g : Gal(PadicAlgCl l/K)) (a : r.k) : EigenWitt.galFlat g (r.s a) = r.s a := by
   obtain ⟨f, hf, haf⟩ := pow_fix r a

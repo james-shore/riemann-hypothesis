@@ -29,7 +29,7 @@ theorem nz_eq_nzOf_of_family : ∀ (E : Type) [Field E] [NumberField E] [IsCMFie
     have hof : R.nzOf σ (⊥ : Submodule (𝓞 E) Λ) y = 1 := by
       have hs : Submodule.span (𝓞 E) (Set.range y) = ⊥ := by
         simp [Set.range_eq_empty]
-      simp [RiemLat.nzOf, hs]
+      simp [RiemLat.nzOf]
     rw [hnz, hof]
     exact ⟨rfl, one_pos⟩
   · have hr : 1 ≤ r := by

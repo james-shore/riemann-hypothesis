@@ -28,7 +28,7 @@ theorem exps_eq {σ k : Type} [Field k] [IsDomain (MvPowerSeries σ k)] {m : ℕ
     rw [Ne, map_eq_zero_iff _ (IsFractionRing.injective _ K)]
     intro e0
     have := congrArg (MvPowerSeries.coeff (Finsupp.single (v i) 1)) e0
-    simp [MvPowerSeries.coeff_X] at this
+    simp at this
   have H : ∀ C : Fin m → ℤ, (∀ i, 0 ≤ C i + n i) →
       (∏ i, algebraMap _ K (MvPowerSeries.X (v i) : MvPowerSeries σ k) ^ C i) *
         ∏ i, algebraMap _ K (MvPowerSeries.X (v i) : MvPowerSeries σ k) ^ n i =
@@ -114,7 +114,7 @@ theorem exists_units_rel {R : Type} [CommRing R] [IsDomain R] (Q : DegPre R) {m 
     intro U _ h
     simp only [Fintype.prod_sum_type, Fin.prod_univ_four, Finset.univ_unique, Finset.prod_singleton, Sum.elim_inl,
       Sum.elim_inr, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.cons_val_three, hc0', neg_neg]
-    simp [Matrix.vecHead, Matrix.vecTail, hc0']
+    simp [Matrix.vecHead, Matrix.vecTail]
   obtain ⟨W', hW', hvW⟩ := exists_gen Q.P.isLB hF T hT
   let E : (FractionRing R)ˣ := e1 * e2⁻¹ * e3⁻¹
   have hu : ∀ a b : (FractionRing R)ˣ, unitOn (a * b) = unitOn a * unitOn b := fun a b => map_mul (Units.map _) a b

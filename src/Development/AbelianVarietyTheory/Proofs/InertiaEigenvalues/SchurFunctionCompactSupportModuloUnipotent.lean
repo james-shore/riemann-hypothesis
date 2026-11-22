@@ -35,7 +35,7 @@ theorem fromBlocks_decomp {a b : ℕ} (A : Matrix (Fin a) (Fin a) R) (B : Matrix
     rw [Matrix.mul_assoc (B * D⁻¹) uD, hD', Matrix.nonsing_inv_mul_cancel_right _ _ hD]
   have h3 : uD * (cD * (D⁻¹ * C)) = C := by
     rw [← Matrix.mul_assoc, hD', Matrix.mul_nonsing_inv_cancel_left _ _ hD]
-  simp only [Matrix.mul_zero, Matrix.zero_mul, zero_add, add_zero, h1, h2, h3, hD', hA, sub_add_cancel]
+  simp only [Matrix.mul_zero, Matrix.zero_mul, zero_add, h1, h2, h3, hD', hA, sub_add_cancel]
 
 end Mat
 

@@ -31,7 +31,7 @@ theorem sgm_ne_one (D : D7) : sgm D ≠ 1 := by
   simp [sgm] at this
 
 theorem sgm_mul_cc (D : D7) : sgm D * D.R.cc = ((1, -1), 1) := by
-  simp [sgm, Formalism.HC.Frame.cc, Formalism.FrobeniusOrbits.c0, Prod.ext_iff]
+  simp [sgm, Formalism.HC.Frame.cc, Formalism.FrobeniusOrbits.c0]
 
 theorem tauSg_invol_norm_conj_eq : ∀ (D : D7) (p : ℕ) [Fact p.Prime] (lam : Qbar →+* ℂ_[p]), p = D.host.d →
     ∀ (τ : D.what₂.Tau), tauSg D (tauSg D τ) = τ ∧ tauSg D τ ≠ τ ∧

@@ -96,7 +96,7 @@ theorem GlobalTheory.PosOne.exUp_represents : ∀ (k : Type) [Field k] [Valuativ
         (((continuous_induced_dom.comp hψ).comp
           ((continuous_snd.dotProduct continuous_fst))).mul (hg.1.1.continuous.comp continuous_snd))
     · obtain ⟨β, u⟩ := z
-      simp only [Function.uncurry_apply_pair, norm_mul, Circle.norm_coe, one_mul, norm_norm, le_refl]
+      simp only [Function.uncurry_apply_pair, norm_mul, Circle.norm_coe, one_mul, le_refl]
 
 noncomputable section
 namespace GlobalTheory.PosOne
@@ -107,7 +107,7 @@ theorem om_one_comp {k : Type} [Field k] [ValuativeRel k] [TopologicalSpace k] [
   funext x
   simp only [om, map_one, inv_one, Units.val_one, mul_one, one_mul, Matrix.mul_one, Matrix.one_mul]
   have : nabs k (1 : kˣ) = 1 := by simp [nabs]
-  simp only [this, Real.one_rpow, Complex.ofReal_one, mul_one, one_mul, Matrix.mul_assoc]
+  simp only [this, Real.one_rpow, Complex.ofReal_one, mul_one, Matrix.mul_assoc]
   ring
 
 open Classical in

@@ -48,7 +48,7 @@ theorem fac_bc {A B : Type} [CommRing A] [CommRing B] [Algebra A B] {T Z : Schem
     pullback.lift (φ ≫ pullback.fst _ _) (𝟙 Z) (by
         rw [Category.id_comp, Category.assoc, pullback.condition, Category.assoc]) ≫
       bc A B g (φ ≫ pullback.snd _ _) = φ := by
-  apply pullback.hom_ext <;> simp only [bc, pullback.map, Category.assoc, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc, Category.comp_id, Category.id_comp]
+  apply pullback.hom_ext <;> simp only [bc, pullback.map, Category.assoc, pullback.lift_fst, pullback.lift_snd, pullback.lift_snd_assoc, Category.comp_id, Category.id_comp]
 
 theorem lift_map_eq {A B : Type} [CommRing A] [CommRing B] [Algebra A B] {T T' Z : Scheme.{0}}
     (g : T ⟶ Spec (CommRingCat.of A)) (g' : T' ⟶ Spec (CommRingCat.of A))
@@ -62,9 +62,9 @@ theorem lift_map_eq {A B : Type} [CommRing A] [CommRing B] [Algebra A B] {T T' Z
     pullback.lift (φ' ≫ pullback.fst _ _) (𝟙 Z) (by
         rw [Category.id_comp, Category.assoc, pullback.condition, Category.assoc]) := by
   apply pullback.hom_ext
-  · simp only [bc, pullback.map, Category.assoc, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc, Category.comp_id, Category.id_comp]
+  · simp only [pullback.map, Category.assoc, pullback.lift_fst, Category.comp_id]
     exact e1
-  · simp only [bc, pullback.map, Category.assoc, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc, Category.comp_id, Category.id_comp]
+  · simp only [pullback.map, Category.assoc, pullback.lift_snd, Category.comp_id]
 
 theorem comap_eq_of_map_eq {A B : Type} [CommRing A] [CommRing B] [Algebra A B] {r : ℕ}
     {X X' Z : Scheme.{0}} (y : (functor A B r).obj (op X)) (y' : (functor A B r).obj (op X'))
@@ -131,11 +131,11 @@ theorem isSheaf_functor (A B : Type) [CommRing A] [CommRing B] [Algebra A B] (r 
     have p1 : ∀ k (b : Z ⟶ pullback (str A B) (𝒰.f k ≫ g)),
         (b ≫ pullback.map (str A B) (𝒰.f k ≫ g) (str A B) (x k).1 (𝟙 _) (𝟙 _) (𝟙 _)
           (by simp) (by simp [hg k])) ≫ pullback.fst _ _ = b ≫ pullback.fst _ _ := by
-      intro k b; simp only [bc, pullback.map, Category.assoc, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc, Category.comp_id, Category.id_comp]
+      intro k b; simp only [pullback.map, Category.assoc, pullback.lift_fst, Category.comp_id]
     have p2 : ∀ k (b : Z ⟶ pullback (str A B) (𝒰.f k ≫ g)),
         (b ≫ pullback.map (str A B) (𝒰.f k ≫ g) (str A B) (x k).1 (𝟙 _) (𝟙 _) (𝟙 _)
           (by simp) (by simp [hg k])) ≫ pullback.snd _ _ = b ≫ pullback.snd _ _ := by
-      intro k b; simp only [bc, pullback.map, Category.assoc, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc, Category.comp_id, Category.id_comp]
+      intro k b; simp only [pullback.map, Category.assoc, pullback.lift_snd, Category.comp_id]
     have e1 : a ≫ pullback.fst _ _ = a' ≫ pullback.fst _ _ := by
       rw [← f1 i, ← f1 j, ← Category.assoc, e, Category.assoc]
     have e2 : (a ≫ pullback.snd _ _) ≫ 𝒰.f i = (a' ≫ pullback.snd _ _) ≫ 𝒰.f j := by

@@ -14,9 +14,7 @@ theorem exists_single_mem_latLoc {F E : Type} [Field F] [NumberField F] [Field E
   first
   | exact @_root_.GlobalTheory.LocalLatticeIntegral.exists_single_mem_latLoc
   | exact _root_.GlobalTheory.LocalLatticeIntegral.exists_single_mem_latLoc
-  | (apply _root_.GlobalTheory.LocalLatticeIntegral.exists_single_mem_latLoc <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LocalLatticeIntegral.exists_single_mem_latLoc <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LocalLatticeIntegral.exists_single_mem_latLoc <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.LocalLatticeIntegral.exists_single_mem_latLoc)
   | (intros; exact _root_.GlobalTheory.LocalLatticeIntegral.exists_single_mem_latLoc ..)
 
 end GlobalTheory.AdelicU

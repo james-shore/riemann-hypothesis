@@ -86,7 +86,7 @@ theorem exists_finExt_split : ∀ (D : D7) (M : MtFam D) (C : NChoice D) (hR : H
     · change a ∈ ((p.map (ecC X j w)).map (iqC X j w)).roots at ha
       rw [hmap] at ha
       have haS : a ∈ S := by
-        simp only [S, Finset.coe_sort_coe, Finset.mem_coe, Multiset.mem_toFinset]
+        simp only [S, Finset.mem_coe, Multiset.mem_toFinset]
         exact ha
       exact iqC_surj X j w a (hF (IntermediateField.subset_adjoin _ _ haS))
   exact iSup_maxGen_baseChange op (fun x y => hcomm j w x.1 x.2 y.1 y.2) hp hsp (v, k)

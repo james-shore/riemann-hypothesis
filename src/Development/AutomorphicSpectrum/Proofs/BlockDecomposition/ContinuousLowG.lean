@@ -73,7 +73,7 @@ theorem det_lower_I_ne (y : GR n) :
   have hEE : (C + Complex.I • D) * (C + Complex.I • D)ᴴ = fromCols C D * (fromCols C D)ᴴ := by
     rw [conjTranspose_fromCols_eq_fromRows_conjTranspose, fromCols_mul_fromRows]
     simp only [conjTranspose_add, conjTranspose_smul, Matrix.add_mul, Matrix.mul_add,
-      Matrix.smul_mul, Matrix.mul_smul, hs, smul_smul, Complex.star_def, Complex.conj_I]
+      Matrix.smul_mul, Matrix.mul_smul, hs, Complex.star_def, Complex.conj_I]
     simp
     abel_nf
     simp [smul_smul]

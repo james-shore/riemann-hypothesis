@@ -12,7 +12,6 @@ private theorem dual_apply_eq_sum_mul_single {a : ℕ} (μ : Module.Dual K (Fin 
     ext j
     first
     | simp [Finset.sum_apply, Pi.single_apply]
-    | simp [Finset.sum_apply, Pi.single_apply, eq_comm]
   calc μ t = μ (∑ i, t i • (Pi.single i 1 : Fin a → K)) := congrArg μ ht
     _ = ∑ i, t i * μ (Pi.single i 1) := by simp [map_sum, map_smul]
 
@@ -24,12 +23,6 @@ theorem pi_surj {V : Type*} [AddCommGroup V] [Module K V] {a : ℕ} (ψ : Fin a 
     first
     | (obtain ⟨μ, hμ0, hμ⟩ := Submodule.exists_le_ker_of_lt_top _ (lt_top_iff_ne_top.mpr hne)
        exact ⟨μ, hμ0, fun v => LinearMap.mem_ker.mp (hμ (LinearMap.mem_range_self _ v))⟩)
-    | (obtain ⟨μ, hμ0, hμ⟩ := Submodule.exists_dual_map_eq_bot_of_lt_top (lt_top_iff_ne_top.mpr hne)
-       refine ⟨μ, hμ0, fun v => ?_⟩
-       have hm : μ (LinearMap.pi ψ v) ∈ (LinearMap.range (LinearMap.pi ψ)).map μ :=
-         Submodule.mem_map_of_mem (LinearMap.mem_range_self _ v)
-       rw [hμ] at hm
-       simpa using hm)
   have hsum : ∑ i, μ (Pi.single i 1) • ψ i = 0 := by
     refine LinearMap.ext fun v => ?_
     have hv := hμ v
@@ -55,18 +48,14 @@ theorem trans_tuple {V : Type*} [AddCommGroup V] [Module K V] [FiniteDimensional
   let e2 : CX ≃ₗ[K] CY := by
     first
     | exact LinearEquiv.ofFinrankEq _ _ hdim
-    | exact LinearEquiv.ofFinrankEq hdim
   let P : (Submodule.span K (Set.range x) × CX) ≃ₗ[K] (Submodule.span K (Set.range y) × CY) := by
     first
     | exact LinearEquiv.prodCongr e1 e2
-    | exact LinearEquiv.prod e1 e2
   have hsymm : ∀ j, (Submodule.prodEquivOfIsCompl _ _ hX).symm (x j) = (bx j, 0) := by
     intro j
     rw [LinearEquiv.symm_apply_eq]
     first
     | (rw [Submodule.coe_prodEquivOfIsCompl']; simp [bx, Module.Basis.span_apply])
-    | simp [bx, Module.Basis.span_apply]
-    | simp [bx]
   refine ⟨(Submodule.prodEquivOfIsCompl _ _ hX).symm.trans (P.trans (Submodule.prodEquivOfIsCompl _ _ hY)),
     fun j => ?_⟩
   rw [LinearEquiv.trans_apply, LinearEquiv.trans_apply, hsymm j]
@@ -75,13 +64,9 @@ theorem trans_tuple {V : Type*} [AddCommGroup V] [Module K V] [FiniteDimensional
     | (show (e1 (bx j), e2 0) = (bY j, 0)
        rw [map_zero]
        simp [e1, Module.Basis.equiv_apply])
-    | simp [P, e1, Module.Basis.equiv_apply]
-    | simp [P, e1]
   rw [hP]
   first
   | (rw [Submodule.coe_prodEquivOfIsCompl']; simp [bY, Module.Basis.span_apply])
-  | simp [bY, Module.Basis.span_apply]
-  | simp [bY]
 
 private theorem eq_zero_of_mem_of_disjoint {V : Type*} [AddCommGroup V] [Module K V] {S T : Submodule K V}
     (h : Disjoint S T) {v : V} (hS : v ∈ S) (hT : v ∈ T) : v = 0 :=
@@ -133,7 +118,6 @@ private theorem exists_common_complement_of_finrank_eq {V : Type*} [AddCommGroup
       have hm := S.smul_mem c⁻¹ hcv
       first
       | (rwa [smul_smul, inv_mul_cancel₀ hc, one_smul] at hm)
-      | simpa [hc] using hm
     have hinf : ∀ S : Submodule K V, v ∉ S → S ⊓ Submodule.span K {v} = ⊥ := by
       intro S hvS
       rw [eq_bot_iff]
@@ -200,13 +184,9 @@ theorem fix_tuple {V : Type*} [AddCommGroup V] [Module K V] [FiniteDimensional K
     have h0 : (t : V) = 0 := eq_zero_of_mem_of_disjoint hTΨ t.2 (LinearMap.mem_ker.mpr ht)
     first
     | exact Subtype.ext h0
-    | simpa using h0
   have hfsurj : Function.Surjective f := by
     first
     | exact (LinearMap.injective_iff_surjective_of_finrank_eq_finrank hTdim).mp hfinj
-    | exact LinearMap.range_eq_top.mp
-        ((LinearMap.ker_eq_bot_iff_range_eq_top_of_finrank_eq_finrank hTdim).mp
-          (LinearMap.ker_eq_bot.mpr hfinj))
   let eT : T ≃ₗ[K] (Fin a → K) := LinearEquiv.ofBijective f ⟨hfinj, hfsurj⟩
   let s : (Fin a → K) →ₗ[K] V := T.subtype ∘ₗ eT.symm.toLinearMap
   have hs : ∀ t, Ψ (s t) = t := by
@@ -214,7 +194,6 @@ theorem fix_tuple {V : Type*} [AddCommGroup V] [Module K V] [FiniteDimensional K
     have h1 : Ψ (s t) = eT (eT.symm t) := by
       first
       | rfl
-      | exact (LinearEquiv.ofBijective_apply f _ (eT.symm t)).symm
     rw [h1, LinearEquiv.apply_symm_apply]
   have hsT : ∀ t, s t ∈ T := fun t => (eT.symm t).2
   let B : V →ₗ[K] V := LinearMap.id + s ∘ₗ (Φ - Ψ)
@@ -222,7 +201,6 @@ theorem fix_tuple {V : Type*} [AddCommGroup V] [Module K V] [FiniteDimensional K
     intro v
     first
     | rfl
-    | simp [B]
   have hΨB : ∀ v, Ψ (B v) = Φ v := by
     intro v
     rw [hBv, map_add, hs]
@@ -242,10 +220,8 @@ theorem fix_tuple {V : Type*} [AddCommGroup V] [Module K V] [FiniteDimensional K
   refine ⟨LinearEquiv.ofInjectiveEndo B hinj, fun j => ?_, fun i v => ?_⟩
   · first
     | exact hBx j
-    | simpa using hBx j
   · first
     | exact congrFun (hΨB v) i
-    | simpa using congrFun (hΨB v) i
 
 theorem glPair {V : Type*} [AddCommGroup V] [Module K V] [FiniteDimensional K V] {a : ℕ}
     (x y : Fin a → V) (ξ η : Fin a → Module.Dual K V) (hx : LinearIndependent K x)
@@ -261,7 +237,6 @@ theorem glPair {V : Type*} [AddCommGroup V] [Module K V] [FiniteDimensional K V]
     have hgv := LinearMap.congr_fun hg (A0.symm v)
     first
     | simpa using hgv
-    | simpa [LinearMap.sum_apply] using hgv
   obtain ⟨B, hB1, hB2⟩ := fix_tuple x hx ξ
     (fun i => (η i).comp A0.toLinearMap) hξ hψ' (fun i j => by
       show ξ i (x j) = η i (A0 (x j))

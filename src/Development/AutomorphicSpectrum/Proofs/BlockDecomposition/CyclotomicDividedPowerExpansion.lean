@@ -44,7 +44,7 @@ theorem not_dvd_choose {p : ℕ} (hp : p.Prime) (a c : ℕ) (hc : c < p) :
   haveI : Fact p.Prime := ⟨hp⟩
   have h := Choose.choose_modEq_choose_mod_mul_choose_div_nat (p := p) (n := a * p + c) (k := c)
   have h1 : (a * p + c) % p = c := by
-    rw [Nat.mul_add_mod_of_lt hc] <;> simp
+    rw [Nat.mul_add_mod_of_lt hc]
   have h2 : c % p = c := Nat.mod_eq_of_lt hc
   have h3 : c / p = 0 := Nat.div_eq_of_lt hc
   rw [h1, h2, h3] at h

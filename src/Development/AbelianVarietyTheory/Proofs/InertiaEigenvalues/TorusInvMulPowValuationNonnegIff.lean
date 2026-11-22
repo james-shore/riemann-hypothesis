@@ -10,12 +10,12 @@ theorem torus_integral_iff : ∀ (G : Type) [CommGroup G] (τ : G →* G) (T : S
   have val1 : ∀ i, Multiplicative.toAdd (w i ((t : G)⁻¹ * α ^ k))
       = - Multiplicative.toAdd (w i t) + k * Multiplicative.toAdd (w i α) := by
     intro i
-    simp [map_mul, map_inv, map_pow, toAdd_mul, toAdd_inv, toAdd_pow, nsmul_eq_mul]
+    simp [map_mul, map_inv, map_pow, toAdd_mul, toAdd_inv, toAdd_pow]
   have val2 : ∀ i, Multiplicative.toAdd (w i (τ ((t : G)⁻¹ * α ^ k)))
       = Multiplicative.toAdd (w i t) + k * Multiplicative.toAdd (w i α) := by
     intro i
     rw [map_mul, map_inv, map_pow, hτt, hα, inv_inv]
-    simp [map_mul, map_pow, toAdd_mul, toAdd_pow, nsmul_eq_mul]
+    simp [map_mul, map_pow, toAdd_mul, toAdd_pow]
   have rhs : ∀ j, ((k * (Multiplicative.toAdd (w (e j) α)).toNat : ℕ) : ℤ)
       = k * Multiplicative.toAdd (w (e j) α) := by
     intro j

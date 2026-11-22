@@ -20,7 +20,7 @@ theorem exists_orthogonal_mul_upper (N : ℕ) (g : Matrix (Fin N) (Fin N) ℝ) :
     exact InnerProductSpace.gramSchmidtOrthonormalBasis_inv_triangular h f hij
   · ext i j
     have := congrArg (fun v : EuclideanSpace ℝ (Fin N) => v i) (b.sum_repr' (f j))
-    simp only [WithLp.ofLp_sum, Finset.sum_apply, PiLp.smul_apply, WithLp.ofLp_smul, Pi.smul_apply, smul_eq_mul] at this
+    simp only [WithLp.ofLp_sum, Finset.sum_apply, WithLp.ofLp_smul, Pi.smul_apply, smul_eq_mul] at this
     rw [Matrix.mul_apply]
     simp only [Matrix.of_apply]
     calc g i j = f j i := rfl

@@ -24,7 +24,7 @@ theorem exists_bumps_inf : (∀ (P : Type) [Fintype P] (a : P → ℝ), (∀ w, 
   have hpc : Continuous (psiInf F ψ) := hψ.1.comp (continuous_id.prodMk continuous_const)
   obtain ⟨a, ha, hχ⟩ := GlobalTheory.CompanionTheory.SW.SdPi.exists_form (GlobalTheory.CompanionTheory.SW.RealCoord.coord F) he' (psiInf F ψ) hpc (fun _ => hψ.2.1 _)
     (fun u v => by
-      simp only [psiInf, map_add, ← AddChar.map_add_eq_mul]
+      simp only [psiInf, ← AddChar.map_add_eq_mul]
       congr 1
       exact Prod.ext rfl (add_zero _).symm)
     (GlobalTheory.T.localComponents_nontrivial_adelic_character F ψ hψ).2.2

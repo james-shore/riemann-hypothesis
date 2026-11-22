@@ -11,4 +11,4 @@ theorem _root_.GlobalTheory.T.algebraicSard_shifted_functions_regularZeros : ∀
         (∀ j, CxPts.evHom hz (φ j) + c j = 0) →
         RingHom.ker (CxPts.evHom hz) ≤
           Ideal.span (Set.range fun j => φ j + ReciprocityTheory.ChartRestriction.G.DVR.FlatBC.algX p U (c j)) ⊔ RingHom.ker (CxPts.evHom hz) ^ 2 := by
-  first | (exact @GlobalTheory.AlgSard.main) | (exact GlobalTheory.AlgSard.main) | (intros; apply GlobalTheory.AlgSard.main  <;> assumption)
+  first | (exact @GlobalTheory.AlgSard.main)

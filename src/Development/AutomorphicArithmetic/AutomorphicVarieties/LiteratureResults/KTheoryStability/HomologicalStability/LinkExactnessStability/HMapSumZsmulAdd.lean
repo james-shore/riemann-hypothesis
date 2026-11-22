@@ -12,8 +12,8 @@ theorem chainsMap_id_add {k G : Type} [CommRing k] [Group G] {A B : Rep k G} (f 
   apply groupHomology.inhomogeneousChains.ext
   intro x
   ext a : 2
-  simp only [groupHomology.chainsMap_f_single, HomologicalComplex.add_f_apply]
-  simp [groupHomology.chainsMap_f_single]
+  simp only [HomologicalComplex.add_f_apply]
+  simp
   rw [← Finsupp.single_add]
   rfl
 
@@ -43,6 +43,4 @@ open CategoryTheory CategoryTheory.Limits GlobalTheory.HomStab
 theorem _root_.GlobalTheory.T.hMap_sum_zsmul_add : ∀ (k G : Type) [CommRing k] [Group G] (A B : Rep k G) (n : ℕ), (∀ f g : A ⟶ B, hMap (f + g) n = hMap f n + hMap g n) ∧ hMap (0 : A ⟶ B) n = 0 ∧ (∀ (m : ℤ) (f : A ⟶ B), hMap (m • f) n = m • hMap f n) ∧ ∀ (ι : Type) (T : Finset ι) (f : ι → (A ⟶ B)), hMap (∑ i ∈ T, f i) n = ∑ i ∈ T, hMap (f i) n := by
   first
   | exact @GlobalTheory.HomStab.hMap_additive
-  | exact @GlobalTheory.HomStab.hMap_add
-  | exact @GlobalTheory.HomStab.chainsMap_id_add
 end

@@ -28,7 +28,7 @@ theorem stdBlock_iff (a : ℕ) (y : Gn p (a + 1)) :
     · ext i j
       have hi : (i : ℕ) < a + 1 := by omega
       have hj : (j : ℕ) < a + 1 := by omega
-      have := h ⟨i, hi⟩ ⟨j, hj⟩ (by first | omega | simp | (simp; omega))
+      have := h ⟨i, hi⟩ ⟨j, hj⟩ (by first | omega | simp)
       simp only [tl, entN, hi, hj, and_self, dif_pos, Matrix.one_apply, Fin.ext_iff] at this ⊢
       exact this
   · rintro ⟨h1, h2⟩ i j hij

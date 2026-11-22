@@ -39,7 +39,7 @@ theorem exists_theta_local {S : Scheme.{0}} (G : Over S) [GrpObj G] (hA : IsAbel
         (φ' := ![(a ^ 0 * y).left, (a ^ 0).left, (a * y).left, a.left, y.left, (1 : Over.mk u ⊗ G ⟶ G).left])
         (ε' := ![1, -1, -((0 : ℕ) : ℤ), ((0 : ℕ) : ℤ), ((0 : ℕ) : ℤ) - 1, 1 - ((0 : ℕ) : ℤ)]) (fun V _ g => by
           simp only [Fin.prod_univ_succ, Fin.prod_univ_zero, Matrix.cons_val_zero, Matrix.cons_val_succ,
-            Matrix.cons_val_one, pow_zero, _root_.one_mul]
+            pow_zero, _root_.one_mul]
           apply Additive.ofMul.injective
           simp only [ofMul_mul, ofMul_zpow, ofMul_one]
           push_cast
@@ -57,7 +57,7 @@ theorem exists_theta_local {S : Scheme.{0}} (G : Over S) [GrpObj G] (hA : IsAbel
         (fun V _ g => by
           rw [Fintype.prod_sum_type]
           simp only [Sum.elim_inl, Sum.elim_inr, Fin.prod_univ_succ, Fin.prod_univ_zero, Matrix.cons_val_zero,
-            Matrix.cons_val_succ, Matrix.cons_val_one, e₁, e₂]
+            Matrix.cons_val_succ, e₂]
           apply Additive.ofMul.injective
           simp only [ofMul_mul, ofMul_zpow, ofMul_one]
           push_cast
@@ -76,7 +76,7 @@ theorem exists_theta_local {S : Scheme.{0}} (G : Over S) [GrpObj G] (hA : IsAbel
     (φ' := ![(snd (Over.mk u) G).left, (translPt G x).left]) (ε' := ![(n : ℤ), -(n : ℤ)]) (fun V _ g => by
       rw [Fintype.prod_sum_type]
       simp only [Sum.elim_inl, Sum.elim_inr, Fin.prod_univ_succ, Fin.prod_univ_zero, Matrix.cons_val_zero,
-        Matrix.cons_val_succ, Matrix.cons_val_one, han, h1, h2, h3, _root_.one_mul]
+        Matrix.cons_val_succ, han, h1, h2, h3, _root_.one_mul]
       apply Additive.ofMul.injective
       simp only [ofMul_mul, ofMul_zpow, ofMul_one]
       module)

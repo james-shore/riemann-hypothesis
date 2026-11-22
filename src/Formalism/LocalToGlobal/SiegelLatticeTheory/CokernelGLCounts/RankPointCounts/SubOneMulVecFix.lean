@@ -155,8 +155,6 @@ theorem hJ_rvc (v : InfinitePlace X.B.I.F) (p p' : (VS D).V) :
   rw [X.φ_eq, RingEquiv.apply_symm_apply]
   first
   | exact Formalism.L2.SG.PoincareInHH.Cut.hJ_crd X v p p'
-  | exact Formalism.L2.SG.PoincareInHH.Cut.hJ_crd v p p'
-  | exact Formalism.L2.SG.PoincareInHH.Cut.hJ_crd (X := X) v p p'
 
 theorem hJ_rvc_zero (v : InfinitePlace X.B.I.F) {p p' : (VS D).V} (h : (VS D).hT p p' = 0) :
     hJ (X.B.I.ε v) (rvc X v p) (rvc X v p') = 0 := by

@@ -105,7 +105,7 @@ theorem expMem : ExpMem := by
     have hX' : Xᴴ * Formalism.QuantumDeterminants.Hpk k r = -(Formalism.QuantumDeterminants.Hpk k r * X) := eq_neg_of_add_eq_zero_left hX
     have hAH : ((t : ℂ) • X)ᴴ * Formalism.QuantumDeterminants.Hpk k r = Formalism.QuantumDeterminants.Hpk k r * (-((t : ℂ) • X)) := by
       rw [Matrix.conjTranspose_smul, Matrix.smul_mul, hX', Matrix.mul_neg, Matrix.mul_smul, smul_neg]
-      simp [Complex.star_def, Complex.conj_ofReal]
+      simp [Complex.conj_ofReal]
     show (NormedSpace.exp ((t : ℂ) • X))ᴴ * Formalism.QuantumDeterminants.Hpk k r * NormedSpace.exp ((t : ℂ) • X) =
       Formalism.QuantumDeterminants.Hpk k r
     rw [← Matrix.exp_conjTranspose, hint _ _ _ hAH, mul_assoc,

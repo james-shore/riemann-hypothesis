@@ -82,7 +82,7 @@ theorem EF_adj (b x y : 𝓞 Qi) : EF (b * x) y = EF x (barO b * y) := by
 
 theorem EF_bO (i j : Fin 2) : EF (bO i) (bO j) = ![![0, -1], ![1, 0]] i j := by
   simp only [EF, LinearMap.mk₂_apply]
-  fin_cases i <;> fin_cases j <;> simp [Module.Basis.repr_self, Finsupp.single_apply]
+  fin_cases i <;> fin_cases j <;> simp [Module.Basis.repr_self]
 
 theorem EF_bij : Function.Bijective EF :=
   bijective_of_gram bO EF (by rw [EF_bO]; rfl) (by rw [EF_bO]; rfl) (by rw [EF_bO]; rfl) (by rw [EF_bO]; rfl)

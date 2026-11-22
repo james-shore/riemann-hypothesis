@@ -52,7 +52,7 @@ private theorem hom_alt {O : Type} [CommRing O] [IsDomain O] [IsPrincipalIdealRi
     refine ⟨(Finsupp.lapply i0) ∘ₗ (LinearMap.fst O _ _) ∘ₗ E.toLinearMap,
       (Finsupp.lapply i1) ∘ₗ (LinearMap.fst O _ _) ∘ₗ E.toLinearMap,
       E.symm (Finsupp.single i0 1, 0), E.symm (Finsupp.single i1 1, 0), ?_, ?_, ?_, ?_⟩ <;>
-    simp [i0, i1, Finsupp.single_apply]
+    simp [i0, i1]
   · right
     have hq : ∀ i, p i ^ e i ≠ 0 := fun i => pow_ne_zero _ (hp i).ne_zero
     haveI : ∀ i, Finite (O ⧸ Ideal.span {p i ^ e i}) := fun i => hfin _ (hq i)

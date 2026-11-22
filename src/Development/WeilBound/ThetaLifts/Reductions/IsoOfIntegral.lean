@@ -28,7 +28,7 @@ theorem Intw.smul {S : Sch l →L[ℂ] Sch l} {p q p' q' : Eu l} (hS : Intw S p 
     Intw (c • S) p q p' q' := fun f g h => by
   funext x
   have := congrFun (hS f g h) x
-  simp only [rf, ContinuousLinearMap.smul_apply, SchwartzMap.smul_apply, smul_eq_mul] at this ⊢
+  simp only [rf, ContinuousLinearMap.smul_apply, smul_eq_mul] at this ⊢
   rw [this]
   ring
 
@@ -121,7 +121,7 @@ theorem iso_dil {B : Eu l →L[ℝ] Eu l} (hB : IsUnit B) {c : ℝ} (hc : c ^ 2 
       B.continuous.aemeasurable (f.continuous.norm.rpow_const fun _ => Or.inr (by norm_num)).aestronglyMeasurable
     rw [Measure.map_linearMap_addHaar_eq_smul_addHaar _ hd, integral_smul_measure,
       ENNReal.toReal_ofReal (abs_nonneg _)] at h1
-    simp only [ContinuousLinearMap.smul_apply, SchwartzMap.smul_apply, dil_apply hB, norm_smul, norm_real, Real.rpow_two,
+    simp only [ContinuousLinearMap.smul_apply, dil_apply hB, norm_smul, norm_real, Real.rpow_two,
       mul_pow, Real.norm_eq_abs, sq_abs, hc, integral_const_mul] at h1 ⊢
     erw [← h1]
     rw [smul_eq_mul, ← mul_assoc, ← abs_mul, ContinuousLinearMap.det, mul_inv_cancel₀ hd, abs_one, one_mul]

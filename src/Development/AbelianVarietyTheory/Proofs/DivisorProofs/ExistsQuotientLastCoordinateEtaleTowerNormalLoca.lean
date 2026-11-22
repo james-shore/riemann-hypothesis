@@ -78,7 +78,7 @@ private lemma formallyEtale_quotient_last {A T : Type} [CommRing A] [CommRing T]
     · intro a; simp [σ, φ, φ']
     · intro j
       refine Fin.lastCases ?_ (fun i => ?_) j
-      · simp [σ, φ, φ', I, Ideal.Quotient.eq_zero_iff_mem, Ideal.mem_span_singleton_self]
+      · simp [σ, φ, φ', I]
       · simp [σ, φ, φ']
   letI := φ.toAlgebra
   letI := φ'.toAlgebra

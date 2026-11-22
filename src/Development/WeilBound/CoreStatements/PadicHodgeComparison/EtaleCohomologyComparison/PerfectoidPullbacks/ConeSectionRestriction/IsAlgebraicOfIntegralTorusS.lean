@@ -24,7 +24,6 @@ variable {K : Type} [Field K] {X : Scheme.{0}} {N d e : ℕ} (i : X ⟶ PSpace K
 theorem tV_isUnit (k : Fin d) : IsUnit (tV i y hy V hV k) := by
   first
     | exact GlobalTheory.T.torus_coordinate_isUnit ..
-    | (intros; apply GlobalTheory.T.torus_coordinate_isUnit <;> assumption)
 
 theorem tpow_mem_range (he : 0 < e) (S : Finset (Fin (d + 1)))
     (hS : V ≤ i ⁻¹ᵁ Proj.basicOpen (grK K N) (yS y S)) (ht : ∀ k, IsUnit (tV i y hy V hV k)) :

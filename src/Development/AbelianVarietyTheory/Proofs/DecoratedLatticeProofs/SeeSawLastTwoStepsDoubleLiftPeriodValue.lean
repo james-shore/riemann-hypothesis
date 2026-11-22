@@ -46,7 +46,7 @@ theorem grpAt_comm {V : HSp D} {P P' : Pl D → Prop} (hd : ∀ p, P p → ¬ P'
       have : p = p - a - (b - 1) + (a + b - 1) := by abel
       rw [this, h]
       abel
-    first | exact h5 _ _ _ _ h4 | exact h5 _ _ _ _ h4.symm
+    first | exact h5 _ _ _ _ h4
   exact Subtype.ext (Units.ext h3)
 
 theorem autFun_add {V : HSp D} {f g : GA D V → ℂ} (hf : IsAutFun V f) (hg : IsAutFun V g) : IsAutFun V (f + g) := by

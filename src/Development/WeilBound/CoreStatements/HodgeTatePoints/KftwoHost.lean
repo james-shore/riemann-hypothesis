@@ -83,7 +83,7 @@ theorem unramified {d : ℕ} (hd : d + 1 = 4 * m) (hp : d.Prime) :
     obtain ⟨r, hr⟩ := (IsCMField.ringOfIntegersComplexConj_eq_self_iff F (B.J * (B.W + B.W - 1))).1
       (RingOfIntegers.ext (by
         rw [IsCMField.coe_ringOfIntegersComplexConj, B.complexConj_eq hm]
-        simp only [RingOfIntegers.coe_eq_algebraMap, map_mul, map_sub, map_add, map_one, coe_W, coe_J, B.τi, B.τw,
+        simp only [map_mul, map_sub, map_add, map_one, coe_W, coe_J, B.τi, B.τw,
           B.σi, B.σw]
         ring))
     rw [← hr, Derivation.map_algebraMap]

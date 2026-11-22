@@ -107,7 +107,7 @@ private theorem gsp_map' {R R' : Type} [CommRing R] [CommRing R'] (f : R →+* R
   have e : adj (X.map f) = (adj X).map f := by ext i j; simp [adj_apply]
   rw [IsGSp, e, ← Matrix.map_mul, h]
   ext i j
-  by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+  by_cases hij : i = j <;> simp [hij]
 
 private theorem conj_trans {H R : Type} [Group H] [CommRing R] {r r' r'' : H →* M4 R} (h : IsConj4 r r') (h' : IsConj4 r' r'') :
     IsConj4 r r'' := by

@@ -12,13 +12,13 @@ theorem length_quot_range {O M : Type*} [CommRing O] [IsDomain O] [IsDiscreteVal
     [AddCommGroup M] [Module O M] [Module.Free O M] [Module.Finite O M]
     (φ : M →ₗ[O] M) (hφ : Function.Injective φ) :
     Module.length O (M ⧸ LinearMap.range φ) = IsDiscreteValuationRing.addVal O (LinearMap.det φ) := by
-  first | exact Bl.DiscreteValuationQuotients.goal1 .. | (apply Bl.DiscreteValuationQuotients.goal1 <;> assumption) | (intros; apply Bl.DiscreteValuationQuotients.goal1 <;> assumption)
+  first | exact Bl.DiscreteValuationQuotients.goal1 .. | (apply Bl.DiscreteValuationQuotients.goal1 <;> assumption)
 
 theorem length_tower {O Y : Type*} [CommRing O] [AddCommGroup Y] [Module O Y]
     (R S D E : Submodule O Y) (hD : ∀ y, y ∈ D ↔ y ∈ R ∧ y ∈ S) (hE : E ≤ D) :
     Module.length O (R ⧸ E.comap R.subtype) =
       Module.length O (R ⧸ S.comap R.subtype) + Module.length O (D ⧸ E.comap D.subtype) := by
-  first | exact Bl.general_b_fact_second'''.goal1 .. | (apply Bl.general_b_fact_second'''.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second'''.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_second'''.goal1 .. | (apply Bl.general_b_fact_second'''.goal1 <;> assumption)
 
 theorem arith (x y d va vb ve ve' : ℕ∞) (h1 : ve = x + d) (h2 : ve' = y + d)
     (h3 : ve + vb = ve' + va) (hve : ve ≠ ⊤) (hve' : ve' ≠ ⊤) (hva : va ≠ ⊤) (hvb : vb ≠ ⊤) :

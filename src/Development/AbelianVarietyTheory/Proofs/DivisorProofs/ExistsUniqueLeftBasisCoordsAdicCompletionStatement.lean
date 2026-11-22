@@ -12,4 +12,4 @@ theorem _root_.GlobalTheory.T.existsUnique_left_basis_coords_adicCompletion : �
     ∃! β : Fin r → v.adicCompletion ℚ ⊗[ℚ] L,
       y = ∑ i, Algebra.TensorProduct.map (AlgHom.id ℚ (v.adicCompletion ℚ)) ι (β i) *
         ((1 : v.adicCompletion ℚ) ⊗ₜ[ℚ] e i) := by
-  first | (exact @GlobalTheory.LeftBasisBC.existsUnique_coords_adicCompletion) | (exact GlobalTheory.LeftBasisBC.existsUnique_coords_adicCompletion) | (intros; apply GlobalTheory.LeftBasisBC.existsUnique_coords_adicCompletion  <;> assumption)
+  first | (exact @GlobalTheory.LeftBasisBC.existsUnique_coords_adicCompletion)

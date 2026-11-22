@@ -119,10 +119,8 @@ theorem clopen_of_idem (B : Type) [CommRing B] (hB : ∀ e : B, IsIdempotentElem
   obtain ⟨e, he, h⟩ := PrimeSpectrum.isClopen_iff.1 (show IsClopen (X := PrimeSpectrum B) s from hs)
   rcases hB e he with rfl | rfl
   · left
-    change (s : Set (PrimeSpectrum B)) = ∅
     rw [h]; simp <;> rfl
   · right
-    change (s : Set (PrimeSpectrum B)) = Set.univ
     rw [h]; simp <;> rfl
 
 end GlobalTheory.EtC.ConnectedGlobalSections

@@ -133,7 +133,7 @@ theorem schrodinger_type_inv : ∀ (D : D7) (G : Type) [Group G] [Fintype G] (Pl
   have hh' : ∀ a b, (h' : Matrix (Fin (Vc D i).rank) (Fin (Vc D i).rank) (OI v)) (e' a) (e' b) =
       (h : Matrix (Fin D.R.r ⊕ Fin D.R.t) (Fin D.R.r ⊕ Fin D.R.t) (OI v)) a b := by
     intro a b
-    simp [h', Matrix.reindexAlgEquiv_apply]
+    simp [h']
   obtain ⟨κ, hsupp, hGf, hSt, hgrp, hred', hoth, hact⟩ := hAct h'
   have hϖ0 : red ϖ = 0 := by
     haveI : PP.asIdeal.IsMaximal := PP.isMaximal

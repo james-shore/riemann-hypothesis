@@ -37,8 +37,6 @@ theorem sum_reps_invariant {G M : Type} [Group G] [AddCommMonoid M] (H N : Subgr
   | exact @_root_.GlobalTheory.LeftTransversalSum.sum_mul_left_transversal
   | exact _root_.GlobalTheory.LeftTransversalSum.sum_mul_left_transversal
   | (apply _root_.GlobalTheory.LeftTransversalSum.sum_mul_left_transversal <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LeftTransversalSum.sum_mul_left_transversal <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LeftTransversalSum.sum_mul_left_transversal <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LeftTransversalSum.sum_mul_left_transversal ..)
 
 variable {l : ℕ} [Fact l.Prime]

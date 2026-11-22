@@ -141,7 +141,7 @@ theorem complementNormIdentity : OmegaNorm := by
   have h2 : h om z = -(ζ * T) := by
     rw [hom]
     simp only [map_add, LinearMap.add_apply, map_smul, LinearMap.smul_apply, smul_eq_mul, hxz, hwz,
-      hzz, ← hz]
+      hzz]
     ring
   have hdet : Z.det = -(ζ * T) := h1.symm.trans h2
 
@@ -161,7 +161,7 @@ theorem complementNormIdentity : OmegaNorm := by
   have h4 : h om om = h w w - ζ * star ζ * T := by
     rw [hom]
     simp only [map_add, LinearMap.add_apply, map_smul, LinearMap.smul_apply, smul_eq_mul,
-      LinearMap.map_smulₛₗ, starRingEnd_apply, hxx, hxw, hwx, hxz, hwz, hzx, hzw, hzz, ← hz]
+      LinearMap.map_smulₛₗ, starRingEnd_apply, hxx, hxw, hwx, hxz, hwz, hzx, hzw, hzz]
     ring
   have hadj : Z.adjugate (Fin.last r) (Fin.last r) = (Z.submatrix Fin.castSucc Fin.castSucc).det := by
     rw [Matrix.adjugate_fin_succ_eq_det_submatrix, Fin.succAbove_last]

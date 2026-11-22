@@ -103,7 +103,7 @@ theorem mem_qLat {Λ : Submodule (𝓞 E) V} {W X : Submodule E V} {q : QW W X} 
 
 theorem exists_smul_mem (Λ : Submodule (𝓞 E) V) [hΛ : Submodule.IsLattice E Λ] (v : V) :
     ∃ s : 𝓞 E, s ≠ 0 ∧ s • v ∈ Λ := by
-  first | exact Bl.general_b_fact_third_form.goal1 .. | (apply Bl.general_b_fact_third_form.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_third_form.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_third_form.goal1 ..
 
 theorem qLat_isLattice (Λ : Submodule (𝓞 E) V) [hΛ : Submodule.IsLattice E Λ] (W X : Submodule E V) :
     Submodule.IsLattice E (qLat Λ W X) := by

@@ -18,7 +18,6 @@ private theorem prod_X_sub_C_dvd_of_eval_eq_zero_of_injOn {O : Type*} [CommRing 
     obtain ⟨Q', hQ'⟩ : (X - C (c a)) ∣ Q := by
       first
         | exact Polynomial.dvd_iff_isRoot.mpr hroot
-        | exact ⟨_, (Polynomial.mul_divByMonic_eq_iff_isRoot.mpr hroot).symm⟩
     have hinj' : Set.InjOn c (↑s : Set ℤ) :=
       hinj.mono (Finset.coe_subset.mpr (Finset.subset_insert a s))
     have hQ'0 : ∀ k ∈ s, Q'.eval (c k) = 0 := by
@@ -50,8 +49,6 @@ theorem smul_eq_zero_of_aeval_prod {O : Type*} [CommRing O] [IsDomain O] {V : Ty
     rw [hR, map_mul]
     first
       | (rw [Module.End.mul_apply, h₂, map_zero])
-      | (rw [LinearMap.mul_apply, h₂, map_zero])
-      | (simp [h₂])
   have hev : ∀ k ∈ S₁, R.eval (c k) = d := by
     intro k hk
     rw [hR, eval_mul, eval_finset_sum, eval_prod]
@@ -77,22 +74,17 @@ theorem smul_eq_zero_of_aeval_prod {O : Type*} [CommRing O] [IsDomain O] {V : Ty
   have hCx : aeval T (C d) x = d • x := by
     first
       | (rw [aeval_C, Module.algebraMap_end_apply])
-      | (simp [Algebra.algebraMap_eq_smul_one])
-      | simp
   have hP1F : aeval T ((∏ m ∈ S₁, (X - C (c m))) * F) x = 0 := by
     rw [mul_comm, map_mul]
     first
       | (rw [Module.End.mul_apply, h₁, map_zero])
-      | (rw [LinearMap.mul_apply, h₁, map_zero])
-      | (simp [h₁])
   rw [← hCx, hCd, map_sub, LinearMap.sub_apply, hRx, hP1F, sub_zero]
 
 private theorem emod_add_mul_ediv_eq (a b : ℤ) : a % b + b * (a / b) = a := by
   first
     | exact Int.emod_add_ediv a b
-    | (have h := Int.ediv_add_emod a b; linarith)
+    | (have h := Int.ediv_add_emod a b)
     | (rw [Int.emod_def]; ring)
-    | (have h := Int.emod_def a b; linarith)
 
 private theorem card_filter_dvd_sub_mul_le_Icc_length_add (q : ℤ) (hq : 0 < q) (lo hi r : ℤ) (hlh : lo ≤ hi) :
     (((Finset.Icc lo hi).filter (fun x => q ∣ r - x)).card : ℤ) * q ≤ hi - lo + q := by
@@ -153,14 +145,11 @@ private theorem padicValInt_eq_card_filter_pow_dvd (l : ℕ) [hl : Fact l.Prime]
     rw [← Nat.cast_pow, ← padicValNat_dvd_iff_le hn]
     first
       | exact Int.natCast_dvd
-      | exact Int.ofNat_dvd_left
-      | exact Int.coe_nat_dvd_left
   have hle : padicValNat l t.natAbs ≤ Nat.log l N := by
     have h1 : l ^ padicValNat l t.natAbs ∣ t.natAbs := pow_padicValNat_dvd
     have h2 : l ^ padicValNat l t.natAbs ≤ N := le_trans (Nat.le_of_dvd (Nat.pos_of_ne_zero hn) h1) htN
     first
       | exact Nat.le_log_of_pow_le hl.out.one_lt h2
-      | exact (Nat.pow_le_iff_le_log hl.out.one_lt (by omega)).1 h2
   have hfilt : (Finset.range (Nat.log l N)).filter (fun k => (l : ℤ) ^ (k + 1) ∣ t) =
       Finset.range (padicValNat l t.natAbs) := by
     ext k
@@ -190,14 +179,11 @@ private theorem geom_sum_inv_pow_succ_le_inv_sub_one (l : ℝ) (hl : 2 ≤ l) (K
       rw [Finset.sum_range_succ, mul_add, ih]
       first
         | (field_simp; ring)
-        | field_simp
-        | (rw [pow_succ]; field_simp; ring)
   have hpos : 0 < l - 1 := by linarith
   have h1 := key K
   have h2 : 0 < 1 / l ^ K := one_div_pos.mpr (pow_pos (by linarith) K)
   first
     | (rw [le_div_iff₀ hpos]; linarith)
-    | (rw [le_div_iff hpos]; linarith)
 
 private theorem sum_card_le_div_sub_one_add_mul_of_mul_pow_le (l : ℕ) (hl : 2 ≤ l) (K : ℕ) (w : ℝ) (hw : 0 ≤ w) (δ : ℝ) (f : ℕ → ℕ)
     (hf : ∀ k ∈ Finset.range K, (f k : ℝ) * (l : ℝ) ^ (k + 1) ≤ w + δ * (l : ℝ) ^ (k + 1)) :
@@ -209,13 +195,11 @@ private theorem sum_card_le_div_sub_one_add_mul_of_mul_pow_le (l : ℕ) (hl : 2 
     have h3 := hf k hk
     have h2 : w * (1 / (l : ℝ) ^ (k + 1)) + δ = (w + δ * (l : ℝ) ^ (k + 1)) / (l : ℝ) ^ (k + 1) := by
       first
-        | (field_simp; ring)
+        | (field_simp)
         | field_simp
-        | (rw [eq_div_iff hp.ne', add_mul, mul_assoc, one_div, inv_mul_cancel₀ hp.ne', mul_one])
     rw [h2]
     first
       | (rw [le_div_iff₀ hp]; exact h3)
-      | (rw [le_div_iff hp]; exact h3)
   calc (∑ k ∈ Finset.range K, (f k : ℝ))
         ≤ ∑ k ∈ Finset.range K, (w * (1 / (l : ℝ) ^ (k + 1)) + δ) := Finset.sum_le_sum h1
     _ = w * ∑ k ∈ Finset.range K, (1 / (l : ℝ) ^ (k + 1)) + δ * K := by
@@ -234,8 +218,6 @@ private theorem natLog_le_logb_of_one_le_of_two_le (l : ℕ) (hl : 2 ≤ l) (N :
   have hpow' : (l : ℝ) ^ Nat.log l N ≤ N := by exact_mod_cast hpow
   first
     | (rw [Real.le_logb_iff_rpow_le hl1 hN', Real.rpow_natCast]; exact hpow')
-    | exact (Real.le_logb_iff_rpow_le hl1 hN').2 (by simpa using hpow')
-    | exact (le_of_eq (by rw [Real.logb_pow, Real.logb_self_eq_one hl1, mul_one] : (Nat.log l N : ℝ) = Real.logb l ((l : ℝ) ^ Nat.log l N))).trans (Real.logb_le_logb_of_le hl1 (pow_pos (by linarith) _) hpow')
 
 theorem lemmaG_exp (l : ℕ) [Fact l.Prime] (a S η b : ℕ) (ha : 1 ≤ a) (hb : 2 * a + η + 1 ≤ b)
     (S₂ : Finset ℤ)

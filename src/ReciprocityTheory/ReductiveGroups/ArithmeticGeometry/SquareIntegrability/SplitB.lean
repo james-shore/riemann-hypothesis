@@ -19,8 +19,6 @@ structure Good (X : PT E) (c : ℝ) (I : Submodule ℤ (Vsp X.dim)) : Prop where
 private lemma act_zero_square_integrability {dim : (E →+* ℂ) → ℕ} (α : 𝓞 E) : act α (0 : Vsp dim) = 0 := by
   first
   | (ext i; simp [act])
-  | simp [act]
-  | (unfold act; ext i; simp)
 
 theorem Good.bot (X : PT E) (c : ℝ) : Good X c ⊥ where
   le := bot_le
@@ -51,14 +49,11 @@ private lemma act_add_square_integrability {dim : (E →+* ℂ) → ℕ} (α : �
     act α (v + w) = act α v + act α w := by
   first
   | (ext i; simp [act, mul_add])
-  | (unfold act; ext i; simp [mul_add])
 
 private lemma act_real_smul {dim : (E →+* ℂ) → ℕ} (α : 𝓞 E) (r : ℝ) (v : Vsp dim) :
     act α (r • v) = r • act α v := by
   first
   | (ext i; simp [act, Complex.real_smul]; ring)
-  | (ext i; simp [act, mul_smul_comm])
-  | (unfold act; ext i; simp [Complex.real_smul]; ring)
 
 theorem Good.IR_stable {X : PT E} {c : ℝ} {I : Submodule ℤ (Vsp X.dim)} (hI : Good X c I)
     (α : 𝓞 E) : ∀ v ∈ IR I, act α v ∈ IR I := by
@@ -81,15 +76,11 @@ private lemma im_Hf_real_smul_left {ι : Type} [Fintype ι] (r : ℝ) (v w : Euc
     (Hf (r • v) w).im = r * (Hf v w).im := by
   first
   | (simp only [Hf, PiLp.smul_apply, Complex.real_smul, mul_assoc, ← Finset.mul_sum]; simp [Complex.mul_im])
-  | (simp [Hf, Complex.real_smul, mul_assoc, ← Finset.mul_sum, Complex.mul_im])
-  | (simp [Hf, Finset.mul_sum, Complex.mul_im, Complex.real_smul])
 
 private lemma Hf_real_smul_right_im {ι : Type} [Fintype ι] (r : ℝ) (v w : EuclideanSpace ℂ ι) :
     (Hf v (r • w)).im = r * (Hf v w).im := by
   first
   | (simp only [Hf, PiLp.smul_apply, Complex.real_smul, map_mul, Complex.conj_ofReal, mul_left_comm _ (r : ℂ), ← Finset.mul_sum]; simp [Complex.mul_im])
-  | (simp [Hf, Complex.real_smul, mul_left_comm _ (r : ℂ), ← Finset.mul_sum, Complex.mul_im])
-  | (simp [Hf, Finset.mul_sum, Complex.mul_im, Complex.real_smul])
 
 theorem Good.IR_iso {X : PT E} {c : ℝ} {I : Submodule ℤ (Vsp X.dim)} (hI : Good X c I) :
     ∀ v ∈ IR I, ∀ w ∈ IR I, (Hf v w).im = 0 := by

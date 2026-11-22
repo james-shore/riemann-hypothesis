@@ -90,7 +90,7 @@ theorem bd_of_casimir (μ : Measure (GA D V)) [μ.IsHaarMeasure] (hθ : IsInfFam
   have e : ((‖io μ hθ φ‖ : ℂ) ^ 2) = ((‖io μ hθ φ‖ ^ 2 : ℝ) : ℂ) := by push_cast; rfl
   rw [show ((RCLike.ofReal ‖io μ hθ φ‖ : ℂ) ^ 2) = ((‖io μ hθ φ‖ ^ 2 : ℝ) : ℂ) from e] at h2
   have h3 := congrArg Complex.re h2
-  simp only [Complex.sub_re, Complex.re_sum, Complex.neg_re, Complex.ofReal_re, Complex.re_mul_ofReal,
+  simp only [Complex.re_sum, Complex.neg_re, Complex.ofReal_re, Complex.re_mul_ofReal,
     Finset.sum_neg_distrib, sub_neg_eq_add, Complex.add_re] at h3
   have h4 : ‖io μ hθ (der hθ τ (hX a) φ)‖ ^ 2 ≤ ∑ x, ‖io μ hθ (der hθ τ (hX x) φ)‖ ^ 2 :=
     Finset.single_le_sum (f := fun x => ‖io μ hθ (der hθ τ (hX x) φ)‖ ^ 2) (fun _ _ => sq_nonneg _)
@@ -379,7 +379,7 @@ theorem cuspFinite : ∀ (D : D7) (θ : D.what₂.Tau → (Ainf D.host.F ⊗[D.h
       rw [hg φ.1 (smooth_of_mem φ)] at h1
       refine Subtype.ext ?_
       rw [Submodule.coe_smul, ← h1]
-      simp [Submodule.coe_sum]) bK
+      simp) bK
     obtain ⟨_, b'⟩ := bd_span μ hθ (E : Set (Mc θ V))
       (Set.range X ∪ Set.range fun b => (fr τ)⁻¹ * y b * fr τ) (by
         rintro _ (⟨a, rfl⟩ | ⟨b, rfl⟩)

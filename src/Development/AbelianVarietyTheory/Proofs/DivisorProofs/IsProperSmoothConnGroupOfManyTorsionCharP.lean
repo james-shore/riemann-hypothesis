@@ -58,7 +58,6 @@ theorem main : ∀ (k : Type) [Field k] [IsAlgClosed k] (p : ℕ) [Fact p.Prime]
     change Nonempty (Sp k)
     first
     | infer_instance
-    | exact ⟨IsLocalRing.closedPoint k⟩
   have hne : Nonempty N.left := ⟨(1 : 𝟙_ (Over (Sp k)) ⟶ N).left hpt.some⟩
   have hgle : g' ≤ g := GlobalTheory.T.relDim_le_of_smooth_of_isClosedImmersion k N G ν hνci hne g g' hg hg'
 

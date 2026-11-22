@@ -52,7 +52,7 @@ private theorem det_ne_zero_posDef_and_eq_of_herm_normalization {k : ℕ} {Q P H
         rfl
       have him := congrArg Complex.im h3
       simp only [Matrix.mulVec, dotProduct, Complex.im_sum, Complex.mul_im, xc, Complex.ofReal_im,
-        Complex.ofReal_re, mul_zero, add_zero, hM] at him
+        Complex.ofReal_re, mul_zero, hM] at him
       simpa using him
     have h3 := hpos _ h2
     rw [h1, Complex.ofReal_re] at h3

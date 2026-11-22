@@ -42,7 +42,7 @@ theorem isCompact_stab (L : Submodule (𝓞 E) (Fin n → E))
       map_add' := fun A B => by funext i; exact Matrix.add_mulVec A B (b i)
       map_smul' := fun r A => by
         funext i j
-        simp [Matrix.mulVec, dotProduct, Finset.smul_sum, smul_mul_assoc] }
+        simp [Matrix.mulVec, dotProduct, Finset.smul_sum] }
   have hinj : LinearMap.ker Ψ = ⊥ := by
     rw [LinearMap.ker_eq_bot']
     intro A hA

@@ -88,7 +88,7 @@ theorem prod_pow_natDegree_coeff' {B : Type*} [CommRing B] {ι : Type*} (s : Fin
     (v : ι → B[X]) (d : ι → ℕ) (hv : ∀ i, (v i).natDegree ≤ 1) :
     (∏ i ∈ s, v i ^ d i).natDegree ≤ ∑ i ∈ s, d i ∧
       (∏ i ∈ s, v i ^ d i).coeff (∑ i ∈ s, d i) = ∏ i ∈ s, (v i).coeff 1 ^ d i := by
-  first | exact Bl.FirstLemmaA.goal1 .. | (apply Bl.FirstLemmaA.goal1 <;> assumption) | (intros; apply Bl.FirstLemmaA.goal1 <;> assumption) | (apply @Bl.FirstLemmaA.goal1 <;> assumption) | (intros; apply @Bl.FirstLemmaA.goal1 <;> assumption) | (apply @Bl.FirstLemmaA.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.FirstLemmaA.goal1 .. | (apply Bl.FirstLemmaA.goal1 <;> assumption)
 
 end Homog
 

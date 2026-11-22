@@ -44,7 +44,7 @@ theorem UpperTheory.V.AlgebraTools.indSymp :
       Matrix.fromBlocks_multiply, Matrix.fromBlocks_smul]
     simp only [Matrix.transpose_zero, Matrix.transpose_one, Matrix.mul_zero, Matrix.zero_mul,
       add_zero, zero_add, Matrix.mul_one, Matrix.one_mul,
-      smul_zero, Matrix.mul_smul, Matrix.smul_mul, h2, d, smul_smul]
+      smul_zero, Matrix.mul_smul, h2, d, smul_smul]
   intro g
   by_cases hg : g ∈ H
   · exact key1 g hg

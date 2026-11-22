@@ -81,9 +81,6 @@ theorem pair_mem_AA_AAbar : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : Consts
   have hAA : (D.host.AA : GlobalTheory.SeeSaw.FI D) ≠ 0 := by
     first
       | exact (GlobalTheory.SeeSaw.ChainIdeals.host_ne_zero D).2.1
-      | exact Formalism.IndefR.Fin.PDA.AA_ne_zero (D := D)
-      | exact GlobalTheory.IndefiniteRowSideFullHecke.TwistCoverDesign.AA_ne_zero D
-      | exact GlobalTheory.SeeSaw.LatAt.AA_ne_zero (D := D)
   have hAbar : (D.host.AAbar : GlobalTheory.SeeSaw.FI D) ≠ 0 := fun e =>
     hAA ((conjFI D).injective (by rw [GlobalTheory.SeeSaw.conjFI_AA, e, map_zero]))
   have hm : ((G.pl.modul sc : Ideal (𝓞 D.host.E)) : GlobalTheory.SeeSaw.FI D) ≠ 0 :=

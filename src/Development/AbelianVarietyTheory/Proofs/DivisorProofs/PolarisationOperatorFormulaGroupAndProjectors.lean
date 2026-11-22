@@ -125,12 +125,12 @@ theorem comp_rowAct_transvection {O : Type} [CommRing O] {N : ℕ} (a b : Fin N)
           · subst hcb; simp [hca]; omega
           · simp [hca, hcb]
       · have h0 : rowDiv O a b 1 h = 0 :=
-          eq_zero_of_rowZ_neg _ _ hs b (by simp [Pi.single_apply, Ne.symm hab]; omega)
+          eq_zero_of_rowZ_neg _ _ hs b (by simp [Ne.symm hab]; omega)
         simp [h0]
     · rw [if_neg hk1, if_neg]
       intro he
       have := congrFun he a
-      simp [Pi.single_apply, hab] at this
+      simp [hab] at this
       omega
   rw [Finset.sum_congr rfl hk, Finset.sum_ite_eq', if_pos (by simp)]
 
@@ -156,7 +156,7 @@ theorem polar_formula : ∀ (O : Type) [CommRing O] (N : ℕ) (ι : Type) [Finty
         PiTensorProduct.tprod O (Function.update x τ (cmp w)) :=
       fun w => hP τ w x (cmp w) rfl
     simp only [evalE, map_sum, map_smul, FreeAlgebra.lift_ι_apply, Sum.elim_inr, LinearMap.sum_apply,
-      Finset.sum_apply, LinearMap.smul_apply, hPx]
+      LinearMap.smul_apply, hPx]
     simp_rw [← MultilinearMap.map_update_smul]
     rw [← MultilinearMap.map_update_sum]
     congr 2
@@ -196,9 +196,9 @@ theorem polar_formula : ∀ (O : Type) [CommRing O] (N : ℕ) (ι : Type) [Finty
       funext σ
       by_cases hσ : σ = τ
       · subst hσ; simp [g]
-      · simp [g, hσ, Pi.mulSingle_eq_of_ne hσ]
+      · simp [g, hσ]
     simp only [evalE, map_sum, map_mul, FreeAlgebra.lift_ι_apply, Sum.elim_inr, Sum.elim_inl, LinearMap.sum_apply,
-      Finset.sum_apply, Module.End.mul_apply, hPz, hg, Function.update_self, Function.update_idem]
+      Module.End.mul_apply, hPz, hg, Function.update_self, Function.update_idem]
     rw [← MultilinearMap.map_update_sum]
     congr 2
     apply Subtype.ext

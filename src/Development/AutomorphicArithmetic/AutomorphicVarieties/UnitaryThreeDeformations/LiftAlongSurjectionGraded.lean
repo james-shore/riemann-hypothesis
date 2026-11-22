@@ -23,7 +23,7 @@ private theorem conj_conj {A D : Type} [CommRing A] [Group D] (h h' : GL (Fin 3)
     conjBy (h * h') r = conjBy h (conjBy h' r) := by
   ext1 g
   simp only [conjBy, MonoidHom.comp_apply, MulEquiv.coe_toMonoidHom, MulAut.conj_apply, map_mul,
-    _root_.mul_inv_rev, mul_assoc, MulAut.mul_apply]
+    mul_assoc, MulAut.mul_apply]
 
 private theorem conj_one {A D : Type} [CommRing A] [Group D] (r : D →* GG 3 A) : conjBy 1 r = r := by
   ext1 g
@@ -62,7 +62,7 @@ theorem UpperTheory.lift_along_surjection_graded :
     refine forall_congr' fun a => forall_congr' fun b => ?_
     rw [← hm]
     refine iff_of_eq (congrArg (· ∈ maximalIdeal R') ?_)
-    by_cases hab : a = b <;> simp [Matrix.one_apply, hab]
+    by_cases hab : a = b <;> simp [hab]
   obtain ⟨Ψ, h2, hM, hred⟩ := setup F hF g₁ hg r hr.toRed
   obtain ⟨Ψ', h2', hM', hred'⟩ := setup F hF g₁ hg r' hr'.toRed
   obtain ⟨h, hh, hN⟩ := exists_normalised F.η Ψ F.c g₁ r h2 hM hred

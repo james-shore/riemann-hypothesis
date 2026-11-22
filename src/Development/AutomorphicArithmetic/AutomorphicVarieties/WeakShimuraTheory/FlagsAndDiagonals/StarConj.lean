@@ -12,7 +12,7 @@ private theorem span_entry {K n Γ : Type} [Field K] [Fintype n] [DecidableEq n]
   let L : Matrix n n K →ₗ[K] K :=
     { toFun := fun X => (a * X * m) i j
       map_add' := by intro X Y; simp [Matrix.mul_add, Matrix.add_mul]
-      map_smul' := by intro c X; simp [Matrix.mul_smul, Matrix.smul_mul] }
+      map_smul' := by intro c X; simp }
   have hle : Submodule.span K (Set.range f) ≤ LinearMap.ker L :=
     Submodule.span_le.mpr (by rintro _ ⟨g, rfl⟩; exact hall g)
   rw [hf] at hle
@@ -150,7 +150,7 @@ theorem UpperTheory.V.Ws.Lab.starConj :
     have hinv2 : (adj m).submatrix ixB ixB * m.submatrix ixB ixB = 1 := by
       rw [← sub_mul_par _ hmPar, hma]
       ext p q
-      fin_cases p <;> fin_cases q <;> simp [ixB, hi0, hi1, Matrix.one_apply]
+      fin_cases p <;> fin_cases q <;> simp [ixB, hi0, hi1]
     obtain ⟨g1, hg1⟩ := span_entry (fun g => (r g).submatrix ixB ixB) _ _ hinv2 hspan 0 1
     obtain ⟨g2, hg2⟩ := span_entry (fun g => (r g).submatrix ixB ixB) _ _ hinv2 hspan 1 0
     rw [← hsub] at hg1 hg2

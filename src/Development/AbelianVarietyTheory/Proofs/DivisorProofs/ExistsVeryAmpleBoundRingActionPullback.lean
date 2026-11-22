@@ -33,7 +33,7 @@ theorem pull_inv (M : GlobalTheory.UU.CP B) (f : B ⟶ B) :
     pull (f⁻¹).left (cls M.L.L M.L.isLB) = pull f.left (cls M.L.L M.L.isLB) := by
   have h0 := (cls_eq_zero_iff (LB.isLB_linComb M.L.isLB _ _)).2 ⟨M.sym, M.sym_gen⟩
   rw [cls_linComb M.L.isLB, Fin.sum_univ_two] at h0
-  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, pull_id, one_zsmul,
+  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, pull_id, one_zsmul,
     neg_one_zsmul] at h0
   have hι : pull (ι[B]).left (cls M.L.L M.L.isLB) = cls M.L.L M.L.isLB := by
     rw [← sub_eq_zero, sub_eq_add_neg]; exact h0

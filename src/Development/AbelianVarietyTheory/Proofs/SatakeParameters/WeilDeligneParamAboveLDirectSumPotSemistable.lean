@@ -32,7 +32,7 @@ theorem mapRep_sumRep {Γ : Type} [Group Γ] {A B : Type} [CommRing A] [CommRing
   obtain ⟨i, rfl⟩ := finSumFinEquiv.surjective i
   obtain ⟨j, rfl⟩ := finSumFinEquiv.surjective j
   rcases i with i | i <;> rcases j with j | j <;>
-    simp [Matrix.reindexAlgEquiv_apply, Matrix.reindex_apply, MulEquiv.prodUnits]
+    simp [Matrix.reindex_apply, MulEquiv.prodUnits]
 end GlobalTheory.Pst.SumParam
 
 namespace GlobalTheory.Pst.SumParam

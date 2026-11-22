@@ -291,7 +291,7 @@ theorem unitriangularEichlerPartialProduct_initialVectors (hσ : ∀ e, σ (σ e
     · rw [dif_pos hk, Matrix.mulVec_add, unitriangularColumnEichlerMatrix_initialVectors x hσ hJ hP]
       by_cases hck : c.val < k
       · have hne : c ≠ ⟨k, hk⟩ := fun h => by rw [h] at hck; exact lt_irrefl _ hck
-        rw [if_pos hck, Mb_fix x hσ hJ hP _ _ (by rw [Fin.le_iff_val_le_val]; simp only [Fin.val_mk]; omega),
+        rw [if_pos hck, Mb_fix x hσ hJ hP _ _ (by rw [Fin.le_iff_val_le_val]; simp only; omega),
           if_pos (by omega : c.val < k + 1), if_neg hne, add_zero]
       · rw [if_neg hck, Matrix.mulVec_zero, add_zero]
         by_cases hce : c.val = k

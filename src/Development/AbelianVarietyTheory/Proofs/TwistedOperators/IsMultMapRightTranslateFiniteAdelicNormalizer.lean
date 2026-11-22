@@ -35,7 +35,6 @@ theorem isMultMap_rightTranslate_finite : ∀ {D : D7} {V : HSp D} {S : D.what�
     have h := hT.lev v _ hk1 (g * κ)
     rw [hk2] at h
     rw [← h]
-    congr 1
     group
   ·
     rw [LinearMap.compMultilinearMap_apply, hT.equiv τ g hg v w hw]

@@ -56,7 +56,7 @@ private theorem hasSum_sigma_mul_qParam_pow_modularForm_E {k : ℕ} (hk : 3 ≤ 
     first
     | rfl
     | (funext n <;> ring)
-    | (congr 1 <;> (rw [← ht]; apply tsum_congr; intro n; simp))
+    | (congr 1)
 
 theorem map_eisensteinFourInt : e4Z.map (Int.castRingHom ℂ) = qExpansion 1 E₄ := by
   have hE : E₄ = ModularForm.E (k := 4) (by norm_num) := rfl

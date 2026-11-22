@@ -26,8 +26,8 @@ theorem GlobalTheory.AV.AbVar.multilinear_quadratic_isHomogeneous' (P : Type*) [
   have he : ∀ i j, φ (e i j) = a i j := by
     intro i j
     simp only [φ, e, LinearMap.coe_mk, AddHom.coe_mk]
-    rw [Finset.sum_eq_single i (fun k _ hk => by simp [Pi.single_apply, hk]) (by simp)]
-    rw [Finset.sum_eq_single j (fun k _ hk => by simp [Pi.single_apply, hk]) (by simp)]
+    rw [Finset.sum_eq_single i (fun k _ hk => by simp [hk]) (by simp)]
+    rw [Finset.sum_eq_single j (fun k _ hk => by simp [hk]) (by simp)]
     simp
   obtain ⟨F, hF, hFe⟩ := GlobalTheory.multilinear_quadratic_isHomogeneous (Fin n → Fin n → ℤ) g n
     (M.compLinearMap (fun _ => φ)) e

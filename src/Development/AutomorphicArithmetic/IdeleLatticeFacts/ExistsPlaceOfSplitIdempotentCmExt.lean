@@ -56,7 +56,6 @@ private theorem exists_lift_sub_mem_pow_of_mem_wtPart_zero {F E : Type} [Field F
     first
       | exact h
       | exact congrArg _ h
-      | simpa [ev, evalV] using h
   have h1 := GlobalTheory.HeisThetaF.smul_eq_zero_of_infPartF hi
   have h2 := GlobalTheory.HeisThetaF.smul_eq_zero_of_finPartF hfin
   have h3 : pairA F 1 0 + pairA F 0 1 = (1 : AF F) := by

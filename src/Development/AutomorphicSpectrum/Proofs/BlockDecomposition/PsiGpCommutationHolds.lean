@@ -126,7 +126,7 @@ theorem det_unip (n : ℕ) (v : Multiplicative (Fin n → k)) : GeneralLinearGro
     have hne : a ≠ b := fun h => by
       subst h
       exact lt_irrefl _ hab
-    simp [colMat, hb, Matrix.one_apply, hne]
+    simp [colMat, hb, hne]
 
 theorem dpowM_levi (n : ℕ) (s : ℝ) (g : GL (Fin n) k) :
     dpowM n s (levi k n g) = dpow n s g := by
@@ -158,7 +158,7 @@ theorem scalar_id (m j : ℕ) (a b : kˣ) :
     push_cast
     ring
   rw [e1, e2, e3]
-  simp only [MonoidHom.mul_apply, MonoidHom.inv_apply, map_mul, mul_inv]
+  simp only [MonoidHom.mul_apply, MonoidHom.inv_apply, map_mul]
   generalize absPow k (1 / 2) a = A
   generalize absPow k (1 / 2) b = B
   generalize absPow k ((j : ℂ) / 2) a = P

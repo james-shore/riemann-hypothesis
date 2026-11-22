@@ -30,7 +30,7 @@ theorem exists_pow_eq_of_kaehler_D_eq_zero : ∀ (p : ℕ) [Fact p.Prime] (k : T
     { toFun := D
       map_add' := fun x y => map_add D x y
       map_smul' := fun a x => by
-        simp only [Algebra.smul_def, RingHom.id_apply, Derivation.leibniz, hD0, smul_eq_mul]
+        simp only [Algebra.smul_def, RingHom.id_apply, Derivation.leibniz, hD0]
         simp }
     (fun a b => D.leibniz a b)
   have h1 : D' f = 1 := hD

@@ -371,7 +371,7 @@ theorem core0 (D : D7) (t : Formalism.L2.Theta.GA D (D.sp.Y 0)) (PY : RowPsi (Yc
     have h3 := smul_conj_sub_one' ((β₀⁻¹ : GL _ _).val : Matrix (Fin (INST D).n) (Fin (INST D).n) (Formalism.IndefR.Lev.EAf D))
       (β₀.val : Matrix (Fin (INST D).n) (Fin (INST D).n) (Formalism.IndefR.Lev.EAf D)) MK β₀.inv_mul f hfK
     have h4 := congrFun (congrFun h3 (Fin.cast hn.symm i)) (Fin.cast hn.symm j)
-    simp only [Matrix.smul_apply, smul_eq_mul, Matrix.sub_apply, Matrix.zero_apply] at h4
+    simp only [Matrix.zero_apply] at h4
     have hfe : f = 1 - θ (ε₀ kv + conjAL D.host.E (ε₀ kv)) := by rw [hfdef, map_sub, map_one]
     rw [hfe, hMK] at h4
     have hd : (1 : Matrix (Fin (INST D).n) (Fin (INST D).n) (Formalism.IndefR.Lev.EAf D)) (Fin.cast hn.symm i) (Fin.cast hn.symm j) ∈

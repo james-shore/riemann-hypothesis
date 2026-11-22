@@ -93,7 +93,6 @@ theorem pol_int (hP : GlobalTheory.Published.Principalisation) (h : IsArithVar p
     have := GlobalTheory.T.polarisation_topChernDensity_eq_factorial_mixed k X p σ D L c y hy
     rw [← e] at this
     simp only [Fintype.sum_option, a, Lj, Option.elim, dens_const]
-    beta_reduce at this
     simp only [MLine.ofHerm] at this ⊢
     linarith
   have hi : ∀ j, Intg (Lj j) ((MLine.ofHerm M σ).logSec s) := fun j =>
@@ -101,7 +100,6 @@ theorem pol_int (hP : GlobalTheory.Published.Principalisation) (h : IsArithVar p
   have := GlobalTheory.T.linear_relation_mixed_densities_integrals k X p σ D _ a Lj hd _ hi
   simp only [Fintype.sum_option, a, Lj, Option.elim] at this
   rw [← e]
-  beta_reduce
   linarith
 
 end GlobalTheory.MixPolar

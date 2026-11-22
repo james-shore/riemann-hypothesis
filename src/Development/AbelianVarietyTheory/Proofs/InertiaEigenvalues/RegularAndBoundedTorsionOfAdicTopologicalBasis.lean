@@ -45,8 +45,6 @@ theorem exists_eq_of_mem_pow_succ_pair (a d : A) (n : ℕ) {x : A}
   | exact @_root_.GlobalTheory.PowerBound.main
   | exact _root_.GlobalTheory.PowerBound.main
   | (apply _root_.GlobalTheory.PowerBound.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PowerBound.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PowerBound.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PowerBound.main ..)
 
 theorem mem_pow_of_mul_mem_pow_pair (a d : A) (N : ℕ) (hd : d ∈ nonZeroDivisors A)

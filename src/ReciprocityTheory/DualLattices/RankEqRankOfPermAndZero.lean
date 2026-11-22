@@ -132,7 +132,7 @@ private lemma frob_fix [CharP (IsLocalRing.ResidueField R) p] (z : ℤ_[p]) :
   have key : IsLocalRing.residue R (algebraMap ℤ_[p] R z) =
       ((z.appr 1 : ℕ) : IsLocalRing.ResidueField R) := by
     have e := congrArg (fun w => IsLocalRing.residue R (algebraMap ℤ_[p] R w)) hz
-    simp only [map_add, map_mul, map_pow, map_natCast, hp0, pow_one, mul_zero, add_zero] at e
+    simp only [map_add, map_mul, map_natCast, hp0, pow_one, mul_zero, add_zero] at e
     exact e
   rw [key, map_natCast]
 

@@ -75,7 +75,7 @@ theorem key (p : ℕ) [Fact p.Prime] {m : ℕ} {n : Fin (m + 1) → ℕ} (a : Fi
       funext i
       refine Fin.cases ?_ (fun i => ?_) i
       · simp
-      · simp [Function.update_of_ne (Fin.succ_ne_zero i)]
+      · simp
     simp only [upd] at e
     have e0 : (Fin.cons L (fun _ : Fin d => L) : Fin (d + 1) → LB Z) = fun _ => L := by
       funext i

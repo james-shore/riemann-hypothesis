@@ -51,7 +51,7 @@ theorem hJ_single (J : Matrix (Fin n) (Fin n) E) (x : Fin n → E) (j : Fin n) :
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [Finset.sum_eq_single j]
   · simp
-  · intro b _ hb; simp [Pi.single_apply, hb]
+  · intro b _ hb; simp [hb]
   · simp
 
 theorem hJ_nondeg {J : Matrix (Fin n) (Fin n) E} (hdet : J.det ≠ 0) (x : Fin n → E)
@@ -116,7 +116,7 @@ theorem gl_of_isom {J : Matrix (Fin n) (Fin n) E} (g : (Fin n → E) ≃ₗ[E] (
     rw [hJ_single, Matrix.vecMul, dotProduct]
     rw [Finset.sum_eq_single k]
     · simp
-    · intro b _ hb; simp [Pi.single_apply, hb]
+    · intro b _ hb; simp [hb]
     · simp
   rw [hsingle] at e1
   rw [← e1, hJ_apply, Formalism.UG.hform]

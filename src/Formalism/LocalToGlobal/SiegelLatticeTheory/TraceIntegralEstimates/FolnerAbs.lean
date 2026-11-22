@@ -84,7 +84,6 @@ theorem haarSub_prop {S : Set G} {μ ν : Measure G} (hμ : LeftHaarSub S μ) (h
   haveI : SecondCountableTopology H := by
     first
       | exact inferInstanceAs (SecondCountableTopology (H : Set G))
-      | exact TopologicalSpace.Subtype.secondCountableTopology (H : Set G)
   haveI : MeasurableMul₂ H := ContinuousMul.measurableMul₂
   haveI : MeasurableInv H := ContinuousInv.measurableInv
   have heq : μ' = (μ' A / ν' A) • ν' := measure_eq_div_smul μ' ν' hn hνA
@@ -127,10 +126,6 @@ theorem map_cjB {S : Set G} {μ : Measure G} (hμ : LeftHaarSub S μ) (b : G) (h
       show SigmaFinite (μ.map M)
       first
         | exact M.sigmaFinite_map
-        | exact MeasurableEquiv.sigmaFinite_map M
-        | (refine SigmaFinite.of_map _ M.measurable.aemeasurable ?_
-           rw [Measure.map_map M.symm.measurable M.measurable, M.symm_comp_self, Measure.map_id]
-           exact hσ)
     · intro h
       exact h0 ((Measure.map_eq_zero_iff hcont.measurable.aemeasurable).1 h)
     · rw [hmap]
@@ -266,7 +261,6 @@ theorem isFolner_of_contract {S : Set G} {μS : Measure G} (hS : IsHaarSub S μS
     rw [← hVeq, ← hunion]
     first
       | exact tendsto_measure_iUnion_atTop hmonoSeq
-      | exact tendsto_measure_iUnion hmonoSeq
   have hlt : μS (L ρ) < (1 + ε) * μS (L ρ) := by
     rw [add_mul, one_mul]
     exact ENNReal.lt_add_right (hLfin ρ) (mul_ne_zero hε.ne' hV0)

@@ -65,7 +65,7 @@ theorem single_castAdd {m n : ℕ} (i : Fin m) :
       simp only [Fin.val_natAdd, Fin.val_castAdd] at h''
       have := i.isLt
       omega
-    simp [Pi.single_apply, hne]
+    simp [hne]
 
 theorem single_natAdd {m n : ℕ} (j : Fin n) :
     (Pi.single (Fin.natAdd m j) 1 : Fin (m + n) → R) = Fin.append 0 (Pi.single j 1) := by
@@ -76,7 +76,7 @@ theorem single_natAdd {m n : ℕ} (j : Fin n) :
       simp only [Fin.val_natAdd, Fin.val_castAdd] at h''
       have := i.isLt
       omega
-    simp [Pi.single_apply, hne]
+    simp [hne]
   · simp [Pi.single_apply]
 
 end Fin
@@ -213,7 +213,7 @@ theorem bQuot_symm (hb : ∀ x y, D.bb (Fin.append x y) = Fin.append (D₁.bb x)
   obtain ⟨q, rfl⟩ := Q.surjective u
   obtain ⟨z, rfl⟩ := D.Fil.mkQ_surjective q
   rw [LinearEquiv.symm_apply_apply, hQ]
-  simp only [bQuot, Submodule.mkQ_apply, Submodule.liftQ_apply]
+  simp only [bQuot, Submodule.mkQ_apply]
   conv_lhs => rw [← Fin.append_castAdd_natAdd (f := z)]
   exact hb _ _
 

@@ -57,7 +57,7 @@ theorem volume_eq_sqrt_gram_map {ι κ W : Type} [Fintype ι] [DecidableEq ι] [
     obtain ⟨j, s⟩ := p
     by_cases h : t = s
     · subst h; simp [Pi.single_apply]
-    · simp [Pi.single_apply, h]
+    · simp [h]
   have hcont : Continuous f := f.toLinearMap.continuous_of_finiteDimensional
   have : (Measure.map f volume).IsAddHaarMeasure := f.toContinuousLinearEquiv.isAddHaarMeasure_map volume
   have hm : b.addHaar = Measure.map f volume := by

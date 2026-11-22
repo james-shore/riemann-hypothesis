@@ -41,12 +41,12 @@ theorem repMat_unitary (σ : K →+* K) (hσ : ∀ x, σ (σ x) = x) {n r : ℕ}
       simp only [cT_sub, cT_one, cT_neg, cT_eId]
       congr 1
       · simp only [mul_zero, zero_add, add_zero, Matrix.mul_one, Matrix.mul_neg, neg_neg, Matrix.sub_mul,
-          Matrix.mul_sub, Matrix.one_mul, Matrix.neg_mul, e2]; abel
+          Matrix.mul_sub, Matrix.one_mul, e2]; abel
       · simp only [mul_zero, zero_add, add_zero, Matrix.mul_one, Matrix.mul_neg, neg_neg, Matrix.sub_mul,
+          Matrix.mul_sub, Matrix.one_mul, e2]; abel
+      · simp only [mul_zero, zero_add, add_zero, Matrix.mul_one, Matrix.mul_neg, Matrix.sub_mul,
           Matrix.mul_sub, Matrix.one_mul, Matrix.neg_mul, e2]; abel
-      · simp only [mul_zero, zero_add, add_zero, Matrix.mul_one, Matrix.mul_neg, neg_neg, Matrix.sub_mul,
-          Matrix.mul_sub, Matrix.one_mul, Matrix.neg_mul, e2]; abel
-      · simp only [mul_zero, zero_add, add_zero, Matrix.mul_one, Matrix.mul_neg, neg_neg, Matrix.sub_mul,
+      · simp only [mul_zero, zero_add, add_zero, Matrix.mul_one, Matrix.mul_neg, Matrix.sub_mul,
           Matrix.mul_sub, Matrix.one_mul, Matrix.neg_mul, e2]; abel
     · unfold IsUnitary nB Jm
       have hB : cT σ (extB (n := n) b) = extB b := by rw [cT_extB, hb]
@@ -66,7 +66,7 @@ theorem siegel_rep_iff (σ : K →+* K) (hσ : ∀ x, σ (σ x) = x) {n r : ℕ}
   rw [repMat_eq] at hu ⊢
   rw [inv_block_of_unitary σ hu, submatrix_fromBlocks_mul, is_siegel_parabolic_block_iff]
   simp only [cT_mul, cT_neg, cT_sub, cT_one, cT_eId, cT_extB, hb, cT_inv σ (isUnit_det_cT σ ha), cT_cT σ hσ,
-    neg_neg, Matrix.mul_neg, Matrix.mul_assoc]
+    neg_neg, Matrix.mul_assoc]
 
 theorem factor_of_siegel {n : ℕ} {g h : Matrix (Fin (n + n)) (Fin (n + n)) K} (hg : IsUnit g.det)
     (hh : IsUnit h.det) (hp : IsSiegelP (g * h⁻¹)) {A B C D A' B' C' D' : Matrix (Fin n) (Fin n) K}

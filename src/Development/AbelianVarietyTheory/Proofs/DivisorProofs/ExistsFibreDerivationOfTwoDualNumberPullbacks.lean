@@ -97,7 +97,7 @@ theorem GlobalTheory.KS.TwoPull.exists_locDerK_of_two_pullbacks : ∀ (k : Type)
   have hid : spMap (TrivSqZeroExt.fstHom k k k).toRingHom ≫ spMap (algebraMap k (DualNumber k)) = 𝟙 _ := by
     rw [← spMap_comp]
     have : ((TrivSqZeroExt.fstHom k k k).toRingHom.comp (algebraMap k (DualNumber k))) = RingHom.id k := by
-      ext x; simp [TrivSqZeroExt.algebraMap_eq_inl]
+      ext x; simp
     rw [this]; simp [spMap]
   have hcomp : 𝟙 A₀.left ≫ A₀.hom =
       (A₀.hom ≫ spMap (TrivSqZeroExt.fstHom k k k).toRingHom) ≫ spMap (algebraMap k (DualNumber k)) := by

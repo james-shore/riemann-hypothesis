@@ -21,8 +21,6 @@ theorem gf_eq_gPoly (k r : ℕ) (z z' : Fin (2 * r + k + 1) → ℂ) (g : B.Mat 
     Gf k r z z' g = gPoly (Tz k r z * Tz k r z') (Zhat k r z z' g) := by
   first
     | rfl
-    | (unfold Gf gPoly Dmin; rfl)
-    | (simp only [Gf, gPoly, Dmin]; rfl)
 
 theorem continuous_gPoly (r : ℕ) (TT : ℝ) : Continuous fun Z : G.Mat (r + 1) => gPoly TT (Matrix.of Z) := by
   have hc : Continuous fun Z : G.Mat (r + 1) =>

@@ -16,7 +16,7 @@ theorem hT_self_of_on {E : Type} [Field E] [NumberField E] [StarRing E] (S : HSp
   conv_lhs => rw [← b.sum_repr y]
   simp only [map_sum, LinearMap.map_smulₛₗ, LinearMap.sum_apply, LinearMap.smul_apply, map_smul, hb,
     smul_eq_mul, starRingEnd_apply]
-  simp [mul_ite, Finset.sum_ite_eq]
+  simp [mul_ite]
   exact Finset.sum_congr rfl fun _ _ => mul_comm _ _
 
 theorem posFrame_of_std (D : D7) (h : Formalism.L2.Herm.IsStd (D.sp.X 0)) : PosFrame D := by

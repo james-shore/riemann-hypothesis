@@ -260,7 +260,7 @@ theorem key_dual (𝓗 : HodgeLat L ρ bar (p + q)) {σ σ' : E →+* Ω} {v : F
     have hreg' : ∀ j, θ (b j) ∈ regAt ξ x := fun j => hθL _ (hbL j)
     have e : ((0 : V), θ) = ∑ j, (⟨θ (b j), hreg' j⟩ : regAt ξ x) • c j := by
       have e0 : ∀ j, (⟨θ (b j), hreg' j⟩ : regAt ξ x) • c j = θ (b j) • c j := fun j => rfl
-      simp only [e0, hc]
+      simp only [hc]
       refine Prod.ext ?_ ?_
       · simp [Prod.fst_sum]
       · simp only [Prod.snd_sum, Prod.smul_snd]
@@ -537,7 +537,7 @@ theorem exists_hodgeLat (𝔐 : HodgeCpt Y S y)
   obtain ⟨e, he, -⟩ := GlobalTheory.T.lie_model_existsUnique_equiv 𝔐.X 𝔐.t.G Ω 𝔐.ξ (Fin d → Ω) 𝔐.Li M 𝔐.M
   let ρ' : 𝓞 E →+* Module.End Ω (Fin d → Ω) := (e.symm.conjRingEquiv : _ ≃+* _).toRingHom.comp 𝔐.ρ
   have hρ' : ∀ a v, e (ρ' a v) = 𝔐.ρ a (e v) := fun a v => by
-    simp [ρ', LinearEquiv.conjRingEquiv, LinearEquiv.conj_apply]
+    simp [ρ', LinearEquiv.conjRingEquiv]
   have hact : M.IsActOf 𝔐.t.act.act ρ' := fun a v => by
     rw [← he, hρ', 𝔐.act a (e v), he]
   have hrho : ∀ a v, ρ' a v = (rho G.g₀.B a).mulVec v := fun a v => M.inj (by rw [G.act₀, hact a v])
@@ -555,7 +555,7 @@ theorem exists_hodgeLat (𝔐 : HodgeCpt Y S y)
     · obtain ⟨e1, e2⟩ := facts _ h
       have hcc : ComplexEmbedding.conjugate (ComplexEmbedding.conjugate τ') = τ' := by
         ext x
-        simp [ComplexEmbedding.conjugate_coe_eq]
+        simp
       rw [hcc] at e2
       rw [e1, e2, add_comm]
   have hC : HChar G.g₀.B (D.p + D.q) := GlobalTheory.T.hermitian_signature_character E Ω d (D.p + D.q) G.g₀.B ρ' hrho hcard hsum

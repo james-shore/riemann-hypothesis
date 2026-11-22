@@ -34,7 +34,7 @@ theorem flAt_all : ∀ r : ℕ, FLAt r := by
   obtain ⟨W₀, hW₀, heq⟩ := hW 0
   have he : ∀ j : n × Fin r, eps ((0 : Fin 1), ((x.2, x.1) : n × Fin r)) (0, (y.2, y.1)) (0, j) = eps x y (j.2, j.1) := by
     intro j
-    simp only [eps, Prod.mk.injEq, true_and, Prod.ext_iff]
+    simp only [eps, true_and, Prod.ext_iff]
     grind
   have heq' : (A₀ : Matrix (n × Fin r) (n × Fin r) P.R.B).map (ev P 0) = (U0 P ω hdet' U : Matrix (n × Fin r) (n × Fin r) P.R.BdR) *
       Matrix.diagonal (fun j : n × Fin r => tz P (eps x y (j.2, j.1))) * (W₀ : Matrix (n × Fin r) (n × Fin r) P.R.BdR) := by

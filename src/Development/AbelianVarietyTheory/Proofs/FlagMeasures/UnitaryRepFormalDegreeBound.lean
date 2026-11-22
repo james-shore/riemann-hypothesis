@@ -95,8 +95,6 @@ theorem decays_span_left {ρ : G → (H →L[ℂ] H)} {D : G → ℝ} {c : ℝ} 
   | exact @_root_.GlobalTheory.DecayOfMemSpan.decay_of_mem_span
   | exact _root_.GlobalTheory.DecayOfMemSpan.decay_of_mem_span
   | (apply _root_.GlobalTheory.DecayOfMemSpan.decay_of_mem_span <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DecayOfMemSpan.decay_of_mem_span <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DecayOfMemSpan.decay_of_mem_span <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DecayOfMemSpan.decay_of_mem_span ..)
 
 omit [Group G] [TopologicalSpace G] in
@@ -107,8 +105,6 @@ theorem decays_span_right {ρ : G → (H →L[ℂ] H)} {D : G → ℝ} {c : ℝ}
   | exact @_root_.GlobalTheory.SpanDecay.span_decay
   | exact _root_.GlobalTheory.SpanDecay.span_decay
   | (apply _root_.GlobalTheory.SpanDecay.span_decay <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SpanDecay.span_decay <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SpanDecay.span_decay <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SpanDecay.span_decay ..)
 
 theorem decays_translate {ρ : G → (H →L[ℂ] H)} (hρ : IsURep ρ) {D : G → ℝ} {c : ℝ} (hc : 0 ≤ c)
@@ -158,8 +154,7 @@ theorem form_add_le {V : Type} [AddCommGroup V] [Module ℂ V] (I : V →ₗ⋆[
       2 * a ^ 2 * (I x x).re + 2 * b ^ 2 * (I y y).re := by
   have h1 := (Complex.nonneg_iff.1 (h ((a : ℂ) • x - (b : ℂ) • y))).1
   simp only [map_add, map_sub, LinearMap.map_smulₛₗ, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.smul_apply,
-    map_smul, smul_eq_mul, Complex.conj_ofReal, Complex.add_re, Complex.sub_re, Complex.re_ofReal_mul,
-    RingHom.id_apply] at h1 ⊢
+    map_smul, smul_eq_mul, Complex.conj_ofReal, Complex.add_re, Complex.sub_re, Complex.re_ofReal_mul] at h1 ⊢
   nlinarith
 
 end General
@@ -316,8 +311,7 @@ theorem form_zero {ρ : G → (H →L[ℂ] H)} (hρ : IsURep ρ) {D : G → ℝ}
     simp only [LinearMap.comp_apply, hU, map_smul, Submodule.coe_smul, hR, hadd, act_mul hρ, smul_smul, mul_add,
       Real.exp_add, Complex.ofReal_mul]
   · intro s x y
-    simp only [hU, LinearMap.map_smulₛₗ, LinearMap.smul_apply, map_smul, smul_eq_mul, Complex.conj_ofReal,
-      RingHom.id_apply]
+    simp only [hU, LinearMap.map_smulₛₗ, LinearMap.smul_apply, map_smul, smul_eq_mul, Complex.conj_ofReal]
     rw [hI, hI, hR, hR, key, ← act_mul hρ, ← hadd, neg_add_cancel, ha0, hρ.1, ← mul_assoc, ← mul_assoc,
       ← Complex.ofReal_mul, ← Complex.ofReal_mul, ← Real.exp_add, ← Real.exp_add]
     have : κ / 2 * s + κ / 2 * s + κ * -s = 0 := by ring

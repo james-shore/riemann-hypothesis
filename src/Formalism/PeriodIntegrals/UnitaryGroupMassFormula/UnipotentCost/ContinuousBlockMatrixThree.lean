@@ -60,16 +60,16 @@ theorem det_zjH_ne {p s : ℕ} (σ : Equiv.Perm (Fin p)) (d : Fin p → ℂ) (hd
          simp [Matrix.one_apply]
        rw [hP, Matrix.det_permute]
        simp)
-    | (first | rw [Matrix.det_of_lowerTriangular _ ?_] | rw [Matrix.det_of_lowerTriangular ?_]
+    | (first | rw [Matrix.det_of_lowerTriangular _ ?_]
        · simp
        · intro i j hij
          have hij' : i < j := hij
-         simp [Matrix.one_apply, hij'.ne, not_lt.2 hij'.le])
-    | (first | rw [Matrix.det_of_upperTriangular ?_] | rw [Matrix.det_of_upperTriangular _ ?_]
+         simp [hij'.ne, not_lt.2 hij'.le])
+    | (first | rw [Matrix.det_of_upperTriangular ?_]
        · simp [G.strictUpper]
        · intro i j hij
          have hij' : j < i := hij
-         simp [G.strictUpper, Matrix.one_apply, hij'.ne', not_lt.2 hij'.le])
+         simp [G.strictUpper, hij'.ne', not_lt.2 hij'.le])
 
 theorem rn_mem_of (hR : RadicalParam) (k j ρ : ℕ) (x : RC k j ρ) : Rn k j ρ x ∈ B.GV k (j + ρ) := by
   unfold RadicalParam at hR

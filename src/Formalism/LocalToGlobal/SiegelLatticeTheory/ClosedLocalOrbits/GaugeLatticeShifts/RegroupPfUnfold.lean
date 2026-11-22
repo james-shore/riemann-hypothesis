@@ -38,7 +38,7 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
       ∫ y in Ω, ∑' c, F c y ∂μ = ∑' j, ∫ y in ΩJ j, F (r j) y ∂μ := by
   classical
   have hsm : ∀ (n : N) (y : H), n⁻¹ • y = (n : H)⁻¹ * y := fun n y => by
-    first | rfl | simp [Subgroup.smul_def]
+    first | rfl
   have hFeq' : ∀ (n : N) (j : J) (y : H), F (act n (r j)) y = F (r j) (n⁻¹ • y) := by
     intro n j y; rw [hFeq, hsm]
   have hrinj : Function.Injective r := fun j j' h => huniq j j' 1 (by rw [h1, h])
@@ -46,11 +46,9 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
   haveI : MeasurableConstSMul N H := by
     first
       | infer_instance
-      | exact ⟨fun n => measurable_const_mul (n : H)⟩
   haveI : SMulInvariantMeasure N H μ := by
     first
       | infer_instance
-      | exact ⟨fun n ⦃s⦄ _ => measure_preimage_mul μ (n : H) s⟩
 
   have hΩ : IsFundamentalDomain N Ω μ := by
     refine isFund_of_exact μ N Ω hΩm (fun x => ?_) (fun x hx g hg hgx => ?_)
@@ -75,7 +73,7 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
         refine hJu j _ hy1 _ e1 ?_
         have hh : ((n'⁻¹ * n : N) : H) * (n⁻¹ • y) = n'⁻¹ • y := by
           simp only [hsm]
-          first | simp [mul_assoc] | group
+          first | simp [mul_assoc]
         rw [hh]
         exact hy2
       obtain rfl : n = n' := (inv_mul_eq_one.mp e2).symm
@@ -86,7 +84,7 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
       have hmem : (n0 * s⁻¹)⁻¹ • y ∈ ΩJ j := by
         have hh : (n0 * s⁻¹)⁻¹ • y = (s : H) * (n0⁻¹ • y) := by
           simp only [hsm]
-          first | simp [mul_assoc] | group
+          first | simp [mul_assoc]
         rw [hh]
         exact hs2
       refine ⟨⟨(j, n0 * s⁻¹), hmem⟩, ?_⟩
@@ -110,10 +108,8 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
     by_cases h : p.2⁻¹ • y ∈ ΩJ p.1
     · first
         | simp only [Set.indicator_apply, Set.mem_setOf_eq, h, ↓reduceIte, hFeq']
-        | simp [Set.indicator_apply, h, hFeq']
     · first
         | simp only [Set.indicator_apply, Set.mem_setOf_eq, h, ↓reduceIte]
-        | simp [Set.indicator_apply, h]
   have hΨe : ∀ y p, ‖Ψ p y‖ₑ = ({p : J × N | p.2⁻¹ • y ∈ ΩJ p.1} : Set (J × N)).indicator
       (fun p => ‖F (act p.2 (r p.1)) y‖ₑ) p := by
     intro y p
@@ -121,10 +117,8 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
     by_cases h : p.2⁻¹ • y ∈ ΩJ p.1
     · first
         | simp only [Set.indicator_apply, Set.mem_setOf_eq, h, ↓reduceIte]
-        | simp [Set.indicator_apply, h]
     · first
         | simp only [Set.indicator_apply, Set.mem_setOf_eq, h, ↓reduceIte, enorm_zero]
-        | simp [Set.indicator_apply, h]
   have hΨm : ∀ p, Measurable (Ψ p) := by
     intro p
     subst hΨdef
@@ -161,8 +155,6 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
         | (show ∫⁻ x, ‖(ΩJ j).indicator (F (r j)) x‖ₑ ∂μ < ⊤
            rw [hrow]
            exact hlt)
-        | (rw [hasFiniteIntegral_iff_enorm, hrow]
-           exact hlt)
     calc ∫ y in ΩJ j, F (r j) y ∂μ = ∫ x, (ΩJ j).indicator (F (r j)) x ∂μ :=
           (integral_indicator (hJm j)).symm
       _ = ∑' n : N, ∫ x in Ω, (ΩJ j).indicator (F (r j)) (n⁻¹ • x) ∂μ :=
@@ -174,7 +166,6 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
     rw [← integral_tsum (fun p => (hΨm p).aestronglyMeasurable) hTfin]
     first
       | simp only [sumC]
-      | exact integral_congr_ae (Filter.Eventually.of_forall fun y => (sumC y).symm)
   have hsplit : ∑' p : J × N, ∫ y in Ω, Ψ p y ∂μ
       = ∑' j, ∑' n : N, ∫ y in Ω, Ψ (j, n) y ∂μ := by
     have hasum : Summable fun p : J × N => ∫ y in Ω, Ψ p y ∂μ := by
@@ -183,8 +174,6 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
       have h0 := norm_integral_le_lintegral_norm (μ := μ.restrict Ω) (Ψ p)
       first
         | simpa only [ofReal_norm_eq_enorm] using h0
-        | simpa using h0
-        | exact h0
     exact ((hasum.hasSum.prod_fiberwise fun j => (hasum.prod_factor j).hasSum).tsum_eq).symm
   refine ⟨?_, ?_⟩
   · have hEm : Measurable fun y => ∑' c, ‖F c y‖ₑ :=
@@ -195,12 +184,11 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
       have h0 := ENNReal.summable_toReal hy.ne
       first
         | simpa only [toReal_enorm] using h0
-        | simpa using h0
     have hgint : Integrable (fun y => (∑' c, ‖F c y‖ₑ).toReal) (μ.restrict Ω) :=
       integrable_toReal_of_lintegral_ne_top hEm.aemeasurable hint.ne
     have hbound : ∀ᵐ y ∂(μ.restrict Ω), ‖∑' c, F c y‖ ≤ (∑' c, ‖F c y‖ₑ).toReal := by
       filter_upwards [hfin_ae] with y hy
-      rw [ENNReal.tsum_toReal_eq (fun c => by first | exact enorm_ne_top | simp)]
+      rw [ENNReal.tsum_toReal_eq (fun c => by first | exact enorm_ne_top)]
       simp only [toReal_enorm]
       exact norm_tsum_le_tsum_norm (hsN y hy)
     have hgm : AEStronglyMeasurable (fun y => ∑' c, F c y) (μ.restrict Ω) := by
@@ -212,12 +200,9 @@ theorem orbit_unfold (μ : Measure H) [μ.IsMulLeftInvariant]
       have hfs : ∀ s : Finset C, Measurable fun y => ∑ c ∈ s, F c y := fun s => by
         first
           | exact Finset.measurable_sum s (fun c _ => hFm c)
-          | fun_prop
       first
         | exact aestronglyMeasurable_of_tendsto_ae Filter.atTop
             (fun s => (hfs s).aestronglyMeasurable) hlim
-        | exact (aemeasurable_of_tendsto_metrizable_ae Filter.atTop
-            (fun s => (hfs s).aemeasurable) hlim).aestronglyMeasurable
     exact Integrable.mono' hgint hgm hbound
   · rw [hmain, hsplit]
     exact tsum_congr fun j => (hIJ j).symm

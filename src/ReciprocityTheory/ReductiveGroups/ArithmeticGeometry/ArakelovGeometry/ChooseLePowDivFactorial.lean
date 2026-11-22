@@ -179,7 +179,6 @@ theorem pow_div_factorial_le_choose (m D : ℕ) : ((m : ℝ) ^ D) / (D.factorial
   rw [h1] at h2
   refine le_trans ?_ h2
   gcongr
-  push_cast
   linarith
 
 theorem choose_le_pow_div_factorial (N D : ℕ) : (N.choose D : ℝ) ≤ ((N : ℝ) ^ D) / (D.factorial : ℝ) := by

@@ -90,7 +90,7 @@ theorem abs_unimod {h : V →ₗ⋆[K] V →ₗ[K] K} (hs : h.IsSymm) {Λ : AddS
       (A.add_mem (A.mul_mem (A.mul_mem T'' (hA _ cA)) F) (A.mul_mem (A.mul_mem T'' T) hG))
     convert this using 1
     simp only [extForm_apply, map_sub, map_smul, LinearMap.map_smulₛₗ, LinearMap.smul_apply,
-      LinearMap.sub_apply, starRingEnd_apply, star_mul', smul_eq_mul, RingHom.id_apply]
+      LinearMap.sub_apply, starRingEnd_apply, star_mul', smul_eq_mul]
     field_simp
     ring
 

@@ -155,7 +155,6 @@ theorem rectInt_inv_sub {z w p : ℂ} (hp : p ∈ rectOpen z w) :
   have e1 := log_sub_log_neg_of_im_pos (a := (z.re : ℂ) + w.im * I - p) (by simp; linarith)
   have e2 := log_neg_sub_log_of_im_neg (b := (z.re : ℂ) + z.im * I - p) (by simp; linarith)
   rw [neg_sub] at e1 e2
-  beta_reduce
   linear_combination e1 + e2
 
 lemma sides_integrable {f : ℂ → ℂ} {z w : ℂ} (hf : ContinuousOn f (rectBdry z w)) :
@@ -385,7 +384,6 @@ theorem rect_residue {z w : ℂ} {H : ℂ → ℂ} (Z : Finset ℂ) (wt : ℂ �
   have hE : DifferentiableOn ℂ (fun s : ℂ => (u : ℂ) ^ s) (rectClosed z w) :=
     fun s _ => (hd s).differentiableAt.differentiableWithinAt
   rw [rect_residue_gen Z wt e h0 hH hE hZ]
-  beta_reduce
   rw [(hd 0).deriv, ofReal_log hu.le]
   simp only [cpow_zero, mul_one, one_mul]
 

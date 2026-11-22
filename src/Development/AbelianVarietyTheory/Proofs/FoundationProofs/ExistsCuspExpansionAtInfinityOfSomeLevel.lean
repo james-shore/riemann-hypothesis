@@ -33,7 +33,7 @@ theorem exists_isExp : ∀ (Ω : Type) [Field Ω] (ε : Ω →+* ℂ) (f : ℍ �
     induction k with
     | zero =>
       have := hconst 1
-      simp only [map_one, HahnSeries.C_one] at this
+      simp only [map_one] at this
       rw [pow_zero, pow_zero]
       exact this
     | succ k ih =>

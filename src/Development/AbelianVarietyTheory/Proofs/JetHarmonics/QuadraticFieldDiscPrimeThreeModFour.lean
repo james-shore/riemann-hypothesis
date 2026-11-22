@@ -47,7 +47,7 @@ theorem _root_.GlobalTheory.natAbs_discr_of_sq_eq_neg_prime (K : Type*) [Field K
   have hXY : X0 = (2 : ℤ) • Y0 - B 0 := by
     rw [h0, zsmul_eq_mul]
     apply FaithfulSMul.algebraMap_injective (𝓞 K) K
-    simp only [map_sub, map_mul, map_intCast, map_one, Int.cast_ofNat, map_ofNat]
+    simp only [map_sub, map_mul, map_one, Int.cast_ofNat, map_ofNat]
     rw [hX0, hY0]
     ring
   have hsq : X0 ^ 2 = -(q : 𝓞 K) := by
@@ -80,7 +80,7 @@ theorem _root_.GlobalTheory.natAbs_discr_of_sq_eq_neg_prime (K : Type*) [Field K
     apply _root_.GlobalTheory.sqrtNeg_not_mem_range q hq.pos x hx
     refine ⟨(a : ℚ), ?_⟩
     have hc := congrArg (algebraMap (𝓞 K) K) hX
-    simp only [zero_smul, add_zero, zsmul_eq_mul, h0, mul_one, map_intCast] at hc
+    simp only [zsmul_eq_mul, h0, mul_one] at hc
     rw [hX0] at hc
     simpa using hc
   have h2 : 2 * a + 2 * e * t = 0 := by

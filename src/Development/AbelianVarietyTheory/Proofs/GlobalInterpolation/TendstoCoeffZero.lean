@@ -173,12 +173,12 @@ lemma G_eq (L : PeriodPair) (z : ℍ) (hz : L.ω₁ = L.ω₂ * z) {k : ℕ} (hk
         congr 1
         funext v
         simp only [LinearEquiv.coe_toEquiv, PeriodPair.latticeEquiv_symm_apply, finTwoArrowEquiv_apply,
-          EisensteinSeries.eisSummand, zpow_natCast]
+          EisensteinSeries.eisSummand]
         have e : (v 0 : ℂ) * L.ω₁ + v 1 * L.ω₂ = L.ω₂ * (v 0 * z + v 1) := by rw [hz]; ring
         show (((v 0 : ℂ) * L.ω₁ + (v 1 : ℂ) * L.ω₂) ^ k)⁻¹ = _
         rw [e, mul_pow, mul_inv, inv_pow]
         congr 1
-        try simp [one_div]
+        try simp
     _ = (L.ω₂⁻¹) ^ k * (riemannZeta k * eisensteinSeries (N := 1) 0 (k : ℤ) z) := by
         rw [tsum_mul_left, tsum_eisSummand_eq_riemannZeta_mul_eisensteinSeries hk z]
     _ = _ := by rw [hE]; ring

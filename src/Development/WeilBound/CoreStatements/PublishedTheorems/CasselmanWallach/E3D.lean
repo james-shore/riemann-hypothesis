@@ -50,7 +50,6 @@ theorem e3d : SobolevNormDomination := by
       · have e : sobNorm σ (l :: S) w = ‖Dw σ l w‖ + sobNorm σ S w := by
           first
             | rfl
-            | simp [sobNorm]
         rw [e, Seminorm.add_apply]
         exact add_le_add (hw l hl w hw') (h' w hw')
   exact main S hS

@@ -99,8 +99,6 @@ theorem mulT_comm (e : ℕ) (t : ℤ) (S : Finset ι) (σ τ : SecOn (pw (N e) d
   unfold mulT
   first
   | (erw [coord_mulRight, coord_mulRight, coord_mulRight, coord_mulRight]; exact mul_right_comm _ _ _)
-  | (simp only [coord_mulRight]; exact mul_right_comm _ _ _)
-  | (simp only [coord_mulRight]; ring)
 
 def oneT (e : ℕ) (S : Finset ι) : Tm I Y N D d e 0 S :=
   SecOnR.of _ _ _ (oneOn (N e) (mul_zero d) (D e S))

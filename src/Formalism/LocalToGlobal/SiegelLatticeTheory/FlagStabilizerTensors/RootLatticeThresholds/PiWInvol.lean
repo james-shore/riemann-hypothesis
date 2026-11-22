@@ -59,7 +59,7 @@ theorem hZ_w (hw : OkPt X u u' w) (v : InfinitePlace X.B.I.F) (c b : Fin (D.R.rS
         ZX X u u' 1 (gamW X u u' w) v c b := by
     simp only [Zm, Matrix.of_apply, Fw, Gw, ZX, Formalism.L2.SG.RealObj.Zhat, frm, famSc, hJ, Matrix.mulVec_smul, star_smul,
       Complex.ofReal_one, one_pow, inv_one, one_smul]
-    simp [dotProduct_smul, smul_dotProduct, Matrix.mulVec_smul]
+    simp [dotProduct_smul, smul_dotProduct]
     ring
   have h2 := congrFun (congrFun (hrep v) c) b
   simp only [Formalism.L2.SG.RealObj.ZhatO] at h2
@@ -68,7 +68,7 @@ theorem hZ_w (hw : OkPt X u u' w) (v : InfinitePlace X.B.I.F) (c b : Fin (D.R.rS
     simp
   have hb : b.val < (w.1.map Prod.snd).sum := by rw [w.2.2]; exact b.2
   rw [hZ, mul_ne_zero_iff, h3]
-  simp only [mul_ne_zero (star_ne_zero.mpr (hk c)) (hk b), true_and, Formalism.L2.SG.RealObj.ptC, Matrix.map_apply, Formalism.MainNotions.S.ptMat]
+  simp only [Formalism.L2.SG.RealObj.ptC, Matrix.map_apply, Formalism.MainNotions.S.ptMat]
   rw [ptEntry_eq w.1 c.val b.val hb]
   simp only [ne_eq, map_eq_zero_iff _ (X.B.I.φ v).injective, EmbeddingLike.map_eq_zero_iff, ite_eq_right_iff,
     not_forall, exists_prop]

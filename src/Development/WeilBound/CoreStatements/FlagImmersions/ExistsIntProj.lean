@@ -87,7 +87,7 @@ private theorem exists_eigSp_projector_sum_mem_and_discr_smul (E : Type) [Field 
       _ = ∑ j, χ (a * z j) • ρ (B j) w := by
           refine Finset.sum_congr rfl fun j _ => ?_
           rw [hza a j, map_sum, Finset.sum_smul]
-          simp only [map_zsmul, zsmul_eq_mul, map_mul, map_intCast]
+          simp only [zsmul_eq_mul, map_mul, map_intCast]
       _ = χ a • ∑ k, χ (z k) • ρ (B k) w := by
           simp [Finset.smul_sum, smul_smul, map_mul]
   · intro hw
@@ -242,7 +242,7 @@ private theorem mem_lat_of_specializes {X : Scheme.{0}} {G : Over X} [GrpObj G] 
           (X.presheaf.stalk q.1) (X.presheaf.stalk q.1) (X.presheaf.stalk q.1)).toRingHom) := by
         rw [hφl, ← Spec.map_comp, ← Spec.map_comp]
         congr 1
-        ext a <;> simp [dualMap] <;> first | rfl | exact map_zero _
+        ext a <;> simp [dualMap] <;> first | rfl
       rw [Over.comp_left, ← Category.assoc, key, Category.assoc, hv1]
       let ψ : Over.mk (X.fromSpecStalk q'.1) ⟶ Over.mk (X.fromSpecStalk q.1) := Over.homMk _ hψ
       have h1 : ψ ≫ (1 : Over.mk (X.fromSpecStalk q.1) ⟶ G) = 1 := by
@@ -254,7 +254,7 @@ private theorem mem_lat_of_specializes {X : Scheme.{0}} {G : Over X} [GrpObj G] 
       congr 2
       have hg : ∀ s, genMap ξ q' ((X.presheaf.stalkSpecializes hs).hom s) = genMap ξ q s :=
         fun s => ProjectiveLinePlaces.genMap_specializes hs q'.2 q.2 s
-      ext a <;> simp [dualMap, hg] <;> first | rfl | exact (hg _).symm
+      ext a <;> simp [dualMap, hg]
   unfold LieModel.lat at he ⊢
   induction he using Submodule.span_induction with
   | mem x hx =>

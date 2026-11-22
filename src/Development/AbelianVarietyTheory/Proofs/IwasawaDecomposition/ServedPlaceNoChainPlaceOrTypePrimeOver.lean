@@ -51,7 +51,7 @@ theorem places_prime : ∀ {K : Ctx} {B : Base} {f : Fr B.toPre} {T : TwDat B} (
     have hmem : ((((w.D Z).what₂.places.resChar v : ℕ)) : 𝓞 B.host.E) ∈ (w.I.sel w').asIdeal := by
       rw [← hund] at hpw
       have := hpw
-      simp only [HeightOneSpectrum.under, Ideal.under, Ideal.mem_comap, map_natCast] at this
+      simp only [HeightOneSpectrum.under, Ideal.under] at this
       exact this
     have hQp := (hQ ((w.D Z).what₂.muAt v) ((w.D Z).what₂.places.resChar v)).2 ⟨hp, w.I.sel w', hPQ, hmem⟩
     exact Y.Qp_muAt v hQp

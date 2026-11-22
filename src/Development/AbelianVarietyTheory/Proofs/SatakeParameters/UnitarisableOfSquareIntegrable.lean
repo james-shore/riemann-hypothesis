@@ -119,7 +119,7 @@ theorem main : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] [I
     intro v w x
     obtain ⟨g, rfl⟩ := QuotientGroup.mk_surjective x
     rw [hΦ, hF1, hF1]
-    simp [f, norm_mul]
+    simp [f]
   have hint : ∀ v w, Integrable (Φ v w) μ := by
     intro v w
     refine Integrable.mono' ((hF2 v).integrable_mul (hF2 w)) (hΦc v w).aestronglyMeasurable

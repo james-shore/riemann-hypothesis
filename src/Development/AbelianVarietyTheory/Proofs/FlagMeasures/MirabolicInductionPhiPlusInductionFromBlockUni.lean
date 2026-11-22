@@ -144,7 +144,7 @@ theorem toG_tl_surj {m : ℕ} (y : Gn g m) : ∃ p ∈ mir g (m + 1), toG (tl m 
   have hp : p ∈ mir g (m + 1) := by
     intro i j hi
     obtain rfl : i = Fin.last m := Fin.ext (by simpa using hi)
-    induction j using Fin.lastCases <;> simp [p, ext1, Matrix.one_apply, (Fin.castSucc_lt_last _).ne']
+    induction j using Fin.lastCases <;> simp [p, ext1, (Fin.castSucc_lt_last _).ne']
   refine ⟨p, hp, Units.ext ?_⟩
   rw [coe_toG_tl hp]
   ext i j

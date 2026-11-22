@@ -22,8 +22,8 @@ theorem cT_aeval {K : Type} [Field K] (σ : K →+* K) {n : ℕ} (M : Matrix (Fi
       Algebra.algebraMap_eq_smul_one, smul_mul_assoc, one_mul, smul_mul_assoc, one_mul]
     have hp : ((M ^ k).map σ)ᵀ = ((M.map σ)ᵀ) ^ k := by
       rw [← Matrix.transpose_pow, ← RingHom.mapMatrix_apply, map_pow, RingHom.mapMatrix_apply]
-    simp only [cT, Matrix.map_smul', hp]
-    ext i j; simp [Matrix.transpose_smul]
+    simp only [cT]
+    ext i j; simp
     left; rw [← hp]; rfl
 
 def toFld {E : Type} [Field E] [NumberField E] [IsCMField E] {r : ℕ} (Q : SelfRecip E r) : E[X] →+* Fld Q :=

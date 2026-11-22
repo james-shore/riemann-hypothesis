@@ -43,6 +43,6 @@ theorem satEig_inv_normalised : ∀ (q n k : ℕ), 0 < q → k ≤ n → ∀ (α
   intro q n k hq hk α
   rw [esymm_map_mul_const', GlobalTheory.LFun.satEig, ← mul_assoc, ← mul_assoc, exponent_eq q n k hq hk]
   congr 2
-  simp [Multiset.map_map, Function.comp_def, Units.val_inv_eq_inv_val]
+  simp [Function.comp_def, Units.val_inv_eq_inv_val]
 
 end GlobalTheory.SatEigArith

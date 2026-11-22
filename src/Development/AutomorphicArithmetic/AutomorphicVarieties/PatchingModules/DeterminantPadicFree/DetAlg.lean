@@ -117,8 +117,7 @@ theorem UpperTheory.V.Pa.Det.detAlg :
       simp only [c, hRσ, hK.pol, Matrix.transpose_sum, Finset.smul_sum, Matrix.transpose_sub,
         Matrix.transpose_mul]
       refine Finset.sum_congr rfl fun k _ => ?_
-      simp only [neg_mul, mul_neg, mul_smul_comm, smul_mul_assoc, smul_sub, sub_neg_eq_add, neg_smul,
-        one_smul, smul_neg]
+      simp only [neg_mul, mul_neg, mul_smul_comm, smul_mul_assoc, smul_sub, sub_neg_eq_add, smul_neg]
       abel
     rw [hc, Matrix.transpose_sub, Matrix.transpose_smul, smul_sub, smul_comm s (D.χF g)]
   have htr : ∀ g ∈ D.G', (ψ g * D.r g).trace = 0 := fun g hg => by

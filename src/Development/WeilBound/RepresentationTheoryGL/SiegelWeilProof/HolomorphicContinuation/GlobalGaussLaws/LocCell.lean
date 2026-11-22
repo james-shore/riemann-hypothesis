@@ -161,7 +161,7 @@ theorem cov {m n : ℕ} (fr : Matrix (Fin m) (Fin m) ℂ) (hfr : IsUnit fr.det) 
     _ = ∫ y, f y ∂(Measure.map Te volume) := (integral_map_equiv Te f).symm
     _ = _ := by
       rw [hm, hmap, integral_smul_measure]
-      simp [ENNReal.toReal_ofReal (abs_nonneg _)]
+      simp
 
 theorem continuous_evX {m n : ℕ} (P : PX m n) : Continuous (evX P) := by
   unfold evX

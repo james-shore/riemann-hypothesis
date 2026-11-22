@@ -68,13 +68,13 @@ theorem qdet_adj {n : ℕ} {ε : Fin n → Bool} {E : Fin n → Fin n → Module
       congr 1
       · by_cases h : b = c
         · subst h
-          simp only [if_true, P, mkP, MulOpposite.unop_op, sgn]
+          simp only [if_true, P, mkP, sgn]
           congr 1
           cases ε a <;> cases ε b <;> cases ε d <;> simp
         · rw [if_neg h, if_neg (Ne.symm h), smul_zero]; rfl
       · by_cases h : d = a
         · subst h
-          simp only [if_true, P, mkP, MulOpposite.unop_op, sgn]
+          simp only [if_true, P, mkP, sgn]
           congr 1
           cases ε c <;> cases ε b <;> cases ε d <;> simp
         · rw [if_neg h, if_neg (Ne.symm h), smul_zero]; rfl

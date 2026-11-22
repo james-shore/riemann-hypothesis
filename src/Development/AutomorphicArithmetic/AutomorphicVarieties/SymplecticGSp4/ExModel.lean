@@ -180,7 +180,7 @@ private theorem rootVec (O : Type) [CommRing O] (k : Fin 6) :
     ext i j; fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev]
 
 private theorem Xm_wt (O : Type) [CommRing O] (a b : Fin 4) (h : wt a b ≠ -wPs) : Xm O a b = 0 := by
-  fin_cases a <;> fin_cases b <;> first | (exfalso; revert h; decide) | simp [Xm, Matrix.single_apply]
+  fin_cases a <;> fin_cases b <;> first | (exfalso; revert h; decide) | simp [Xm]
 
 private theorem card_prod {A B : Type} (p : B → Prop) : Nat.card {k : A × B // p k.2} = Nat.card A * Nat.card {b // p b} := by
   rw [← Nat.card_prod]

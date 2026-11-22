@@ -35,7 +35,7 @@ theorem coords_of_derivation_basis : ∀ (R A : Type) [CommRing R] [IsLocalRing 
     { toFun := fun x => dv a x
       map_add' := fun x y => hadd a x y
       map_smul' := fun r x => by
-        simp only [Submodule.coe_smul_of_tower, Algebra.smul_def, RingHom.id_apply, smul_eq_mul]
+        simp only [Submodule.coe_smul_of_tower, Algebra.smul_def, RingHom.id_apply]
         exact hsmul a r x }
   let ℓ : Fin n → Module.Dual R I.Cotangent := fun a => cotFun I (fa a) (fun x hx => hI2 a x hx)
   have hℓ : ∀ a (x : I), ℓ a (I.toCotangent x) = dv a x := fun _ _ => rfl
@@ -88,7 +88,7 @@ theorem coords_of_derivation_basis : ∀ (R A : Type) [CommRing R] [IsLocalRing 
       simp only [D]
       rw [key]
       simp only [map_add, LinearMap.map_smul_of_tower, hw0,
-        map_zero, add_zero, map_smul, smul_eq_mul]
+        add_zero, map_smul, smul_eq_mul]
     obtain ⟨c, hc, -⟩ := huniq D Dadd Dmul Dalg
     refine ⟨c, ?_⟩
     ext w
@@ -118,7 +118,7 @@ theorem coords_of_derivation_basis : ∀ (R A : Type) [CommRing R] [IsLocalRing 
     rw [this]
     by_cases h : a = i
     · subst h; simp
-    · simp [h, Pi.single_apply, Ne.symm h]
+    · simp [h, Ne.symm h]
   choose y hy using fun i => I.toCotangent_surjective (w i)
   have hzI : ∀ i, (y i : A) ∈ I := fun i => (y i).2
   have hdz : ∀ a i, dv a (y i : A) = if a = i then 1 else 0 := by

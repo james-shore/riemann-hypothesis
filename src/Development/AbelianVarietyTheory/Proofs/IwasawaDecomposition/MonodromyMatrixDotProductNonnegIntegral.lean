@@ -49,7 +49,7 @@ theorem monodromy_dotProduct_nonneg : ∀ (n a g : ℕ) (ha : a ≤ n) (ρ₁ : 
     ext i
     by_cases hi : i = j
     · subst hi; simp [u]
-    · simp [u, hi, Function.update_of_ne hi, Pi.single_apply]
+    · simp [u, hi]
   have hcast : v' ⬝ᵥ ((B k).map (Int.cast : ℤ → ℂ) *ᵥ v') = ((v ⬝ᵥ (B k *ᵥ v) : ℤ) : ℂ) := by
     simp [v', dotProduct, Matrix.mulVec, Matrix.map_apply]
   have hper : ∀ t : ℂ, t.re < Real.log ρ₁ → f (t + 2 * Real.pi * Complex.I) = f t + ((v ⬝ᵥ (B k *ᵥ v) : ℤ) : ℂ) := by

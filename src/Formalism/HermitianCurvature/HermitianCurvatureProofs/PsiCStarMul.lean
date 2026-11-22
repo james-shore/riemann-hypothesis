@@ -17,7 +17,7 @@ theorem hMat_monoP (σ : Equiv.Perm (Fin r)) (d : Fin r → ℂ) : U.hMat σ d =
   simp only [U.hMat, U.wP, C2.monoP, Matrix.mul_diagonal, Matrix.of_apply]
   by_cases h : σ i = a
   · have h' : i = σ.symm a := by rw [← h, Equiv.symm_apply_apply]
-    simp [h, h']
+    simp [h']
   · have h' : ¬ i = σ.symm a := fun hh => h (by rw [hh, Equiv.apply_symm_apply])
     simp [h, h']
 

@@ -21,9 +21,8 @@ theorem blkAt_apply (n N : ℕ) (h : n ≤ N) (g : GL (Fin n) k) (a b : Fin N) :
     ((blkAt k n N h g : GL (Fin N) k) : Matrix (Fin N) (Fin N) k) a b =
       if ha : (a : ℕ) < n then (if hb : (b : ℕ) < n then (g : Matrix (Fin n) (Fin n) k) ⟨a, ha⟩ ⟨b, hb⟩ else 0)
       else (if a = b then 1 else 0) := by
-  simp only [blkAt, blkGL, glCongr, blkHom, MonoidHom.comp_apply, Units.coe_map, MonoidHom.coe_comp,
-    MonoidHom.coe_mk, OneHom.coe_mk, Function.comp_apply]
-  simp [reindexAlgEquiv_apply, Matrix.reindex_apply, Matrix.submatrix_apply, blkAt_apply_lemma]
+  simp only [blkAt, blkGL, glCongr, blkHom, MonoidHom.comp_apply, Units.coe_map, MonoidHom.coe_mk, OneHom.coe_mk]
+  simp [Matrix.reindex_apply, Matrix.submatrix_apply, blkAt_apply_lemma]
   split_ifs with ha hb hab <;> simp_all [Fin.ext_iff]
   · omega
   · rw [Matrix.one_apply_ne]

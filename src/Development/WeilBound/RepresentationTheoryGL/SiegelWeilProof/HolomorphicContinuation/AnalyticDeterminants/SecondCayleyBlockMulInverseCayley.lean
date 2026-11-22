@@ -19,7 +19,7 @@ theorem cm_mul_cmi : Cm n * Cmi n = 1 := by
   rw [Cm, Cmi, fromBlocks_multiply, ← fromBlocks_one]
   congr 1 <;> ext i j <;> by_cases h : i = j <;>
     simp [Matrix.one_apply, h, Matrix.add_apply, Matrix.smul_apply] <;> ring_nf <;>
-    simp [Complex.I_sq] <;> ring_nf
+    simp [Complex.I_sq]
 
 theorem cm_inv : (Cm n)⁻¹ = Cmi n := Matrix.inv_eq_right_inv cm_mul_cmi
 

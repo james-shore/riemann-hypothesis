@@ -65,7 +65,7 @@ theorem exists_kernel_lift (hL : L.IsLB) (a : A ⟶ A) [IsMonHom a] {m k : ℤ}
     (fun U _ f => by
       refine (Fintype.prod_sum_type _).trans ?_
       simp only [Sum.elim_inl, Sum.elim_inr, Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, e₀, e₁,
-        zpow_neg, inv_inv, Pi.neg_apply]
+        zpow_neg, inv_inv]
       apply Additive.ofMul.injective
       simp only [ofMul_mul, ofMul_inv]
       abel)

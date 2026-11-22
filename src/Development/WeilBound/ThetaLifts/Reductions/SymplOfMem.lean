@@ -67,7 +67,7 @@ theorem scalar_lie {𝔸 : Type} [NormedRing 𝔸] [NormedAlgebra ℝ 𝔸] [Com
     have h2 := h1.scomp (0 : ℝ) (hasDerivAt_mul_const r)
     refine (h2.congr_deriv ?_).congr_of_eventuallyEq (.of_forall fun t => by simp only [smul_smul]; rfl)
     rw [Submodule.coe_smul, map_smul ρ, quad_smul]
-    simp [mul_add, mul_assoc])
+    simp [mul_assoc])
   have hst : ∀ (Z : 𝔤) f, HasDerivAt (fun t : ℝ => schwartzToL2 l (A (ex (t • Z)) f))
       (schwartzToL2 l ((quad (ρ Z) + z Z • 1 : Sch l →L[ℂ] Sch l) f)) 0 := fun Z =>
     strong (fun t => A (ex (t • Z))) _ (A0 Z) (Am Z) (hz Z)

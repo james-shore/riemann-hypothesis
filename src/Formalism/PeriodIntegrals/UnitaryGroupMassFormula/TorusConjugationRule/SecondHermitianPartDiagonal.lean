@@ -36,12 +36,12 @@ private lemma hpk_eq_lemma (i j : Fin (2 * r + k + 1)) :
   have hj := j.isLt
   unfold Hpk WeylGroupFacts.sgn
   simp only [Fin.ext_iff, tau_val_lemma]
-  split_ifs <;> first | rfl | omega | norm_num
+  split_ifs <;> first | rfl | omega
 
 private lemma hpk_sq_lemma : Hpk k r * Hpk k r = 1 := by
   ext i j
   rw [Matrix.mul_apply, Matrix.one_apply]
-  simp only [hpk_eq_lemma, ite_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, tau_tau_lemma, sgn_tau_lemma]
+  simp only [hpk_eq_lemma, ite_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ, if_true, tau_tau_lemma, sgn_tau_lemma]
   by_cases h : i = j
   · subst h
     simp [sgn_sq_lemma]
@@ -71,7 +71,7 @@ private lemma single_ct_lemma (a b : Fin (2 * r + k + 1)) (c : ℂ) :
 private lemma conj_single_lemma (A B : Mx k r) (a b : Fin (2 * r + k + 1)) (c : ℂ)
     (p q : Fin (2 * r + k + 1)) : (A * Matrix.single a b c * B) p q = A p a * c * B b q := by
   simp only [Matrix.mul_apply, Matrix.single_apply, ite_and, mul_ite, mul_zero, ite_mul, zero_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+    Finset.sum_ite_eq, Finset.mem_univ, if_true]
 
 lemma conj_single (x : Fin (2 * r + k + 1)) :
     Hpk k r * (single x x (1 : ℂ))ᴴ * Hpk k r =
@@ -103,16 +103,16 @@ lemma X1_eq (l : Fin r) : hpart1 (Hpk k r) (single (eI k r l) (eI k r l) 1) =
   unfold hpart1 dz
   rw [inv_conj_single, tau_e]
   ext p q
-  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, Matrix.single_apply,
+  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.single_apply,
     Matrix.diagonal_apply, smul_eq_mul]
   by_cases hpq : p = q
   · subst hpq
     by_cases h1 : p = eI k r l
     · subst h1
-      simp [hne, hne.symm] <;> (try norm_num) <;> (try ring)
+      simp [hne.symm] <;> (try norm_num)
     · by_cases h2 : p = esI k r l
       · subst h2
-        simp [hne, hne.symm] <;> (try norm_num) <;> (try ring)
+        simp [hne, hne.symm] <;> (try norm_num)
       · simp [h1, h2, Ne.symm h1, Ne.symm h2]
   · have a1 : ¬ (eI k r l = p ∧ eI k r l = q) := fun h => hpq (h.1.symm.trans h.2)
     have a2 : ¬ (esI k r l = p ∧ esI k r l = q) := fun h => hpq (h.1.symm.trans h.2)
@@ -124,13 +124,13 @@ lemma depthNumbers_threshold_eq (l : Fin r) : hpart2 (Hpk k r) (single (eI k r l
   unfold hpart2 dz
   rw [inv_conj_single, tau_e]
   ext p q
-  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, Matrix.single_apply,
+  simp only [Matrix.smul_apply, Matrix.add_apply, Matrix.single_apply,
     Matrix.diagonal_apply, smul_eq_mul]
   by_cases hpq : p = q
   · subst hpq
     by_cases h1 : p = eI k r l
     · subst h1
-      simp [hne, hne.symm] <;> (try norm_num) <;> (try ring)
+      simp [hne.symm] <;> (try norm_num) <;> (try ring)
     · by_cases h2 : p = esI k r l
       · subst h2
         simp [hne, hne.symm] <;> (try norm_num) <;> (try ring)
@@ -145,16 +145,16 @@ lemma first_hermitian_part_diagonal (l : Fin r) : hpart1 (Hpk k r) (single (esI 
   unfold hpart1 dz
   rw [inv_conj_single, tau_es]
   ext p q
-  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, Matrix.single_apply,
+  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.single_apply,
     Matrix.diagonal_apply, smul_eq_mul]
   by_cases hpq : p = q
   · subst hpq
     by_cases h1 : p = eI k r l
     · subst h1
-      simp [hne, hne.symm] <;> (try norm_num) <;> (try ring)
+      simp [hne.symm] <;> (try norm_num)
     · by_cases h2 : p = esI k r l
       · subst h2
-        simp [hne, hne.symm] <;> (try norm_num) <;> (try ring)
+        simp [hne, hne.symm] <;> (try norm_num)
       · simp [h1, h2, Ne.symm h1, Ne.symm h2]
   · have a1 : ¬ (eI k r l = p ∧ eI k r l = q) := fun h => hpq (h.1.symm.trans h.2)
     have a2 : ¬ (esI k r l = p ∧ esI k r l = q) := fun h => hpq (h.1.symm.trans h.2)
@@ -166,13 +166,13 @@ lemma second_hermitian_part_diagonal (l : Fin r) : hpart2 (Hpk k r) (single (esI
   unfold hpart2 dz
   rw [inv_conj_single, tau_es]
   ext p q
-  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, Matrix.single_apply,
+  simp only [Matrix.smul_apply, Matrix.add_apply, Matrix.single_apply,
     Matrix.diagonal_apply, smul_eq_mul]
   by_cases hpq : p = q
   · subst hpq
     by_cases h1 : p = eI k r l
     · subst h1
-      simp [hne, hne.symm] <;> (try norm_num) <;> (try ring)
+      simp [hne.symm] <;> (try norm_num) <;> (try ring)
     · by_cases h2 : p = esI k r l
       · subst h2
         simp [hne, hne.symm] <;> (try norm_num) <;> (try ring)
@@ -228,7 +228,7 @@ lemma phi_diff {E : Type} [NormedAddCommGroup E] [NormedSpace ℂ E] (l : Fin r)
   obtain ⟨U, F, hU, hgU, hF, hfF⟩ := hf _ ⟨w_mul_mem l (c l) hc g₁ hg₁, hD⟩
   have hγ := w_diff l g₁ c hc
   have hFd : DifferentiableAt ℝ F (w1 k r l (c l) * g₁) :=
-    (hF.differentiableOn (by first | simp | exact le_top | norm_num)).differentiableAt
+    (hF.differentiableOn (by first | simp)).differentiableAt
       (hU.mem_nhds hgU)
   have hev1 : ∀ᶠ c' in 𝓝 c, w1 k r l (c' l) * g₁ ∈ U :=
     hγ.continuousAt.preimage_mem_nhds (hU.mem_nhds hgU)

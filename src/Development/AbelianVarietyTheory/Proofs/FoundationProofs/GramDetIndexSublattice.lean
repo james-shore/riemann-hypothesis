@@ -26,7 +26,7 @@ theorem gram_det_index_sublattice (U V ι κ : Type) [AddCommGroup U] [NormedAdd
     ext i j
     simp only [Matrix.submatrix_apply, Matrix.gram_apply, Matrix.mul_apply, Matrix.transpose_apply, hAr]
     rw [hphi i, hphi j, inner_sum]
-    simp only [sum_inner, real_inner_smul_left, real_inner_smul_right, Finset.sum_mul, Finset.mul_sum]
+    simp only [sum_inner, real_inner_smul_left, real_inner_smul_right, Finset.sum_mul]
     refine Finset.sum_congr rfl fun b _ => Finset.sum_congr rfl fun a _ => ?_
     ring
   have hdetA : Ar.det = (Am.det : ℝ) := by

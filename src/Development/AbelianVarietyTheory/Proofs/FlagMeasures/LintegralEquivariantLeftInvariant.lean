@@ -319,7 +319,7 @@ theorem prod_coordinates : ∀ (n : ℕ) (ε : Fin n → Bool) (x : Fin n → �
     have h1 : ∀ i, ((if pW ε (i, l, true) then x l else 1) * (if pW ε (i, l, false) then x l else 1)) =
         (if l < i ∧ ε i = ε l then x l ^ 2 else 1) * (if i = l then x l else 1) := fun i => by
       rcases lt_trichotomy i l with h | h | h
-      · simp [pW, h.ne, h.le, h.not_gt]
+      · simp [pW, h.ne, h.not_gt]
       · subst h; simp [pW]
       · by_cases he : ε i = ε l <;> simp [pW, h, h.ne', he, sq]
     have h2 : ∀ j, ((if pW ε (l, j, true) then x l else 1) * (if pW ε (l, j, false) then x l else 1)) =
@@ -330,7 +330,7 @@ theorem prod_coordinates : ∀ (n : ℕ) (ε : Fin n → Bool) (x : Fin n → �
         · have he' : ¬ ε i = ε l := fun a => he a.symm
           simp [pW, h, h.ne, he, he']
       · subst h; simp [pW]
-      · simp [pW, h.ne, h.ne', h.le, h.not_gt]
+      · simp [pW, h.ne, h.ne', h.not_gt]
     simp only [h1, h2, Finset.prod_mul_distrib, ← Finset.prod_filter, Finset.prod_const]
     have hl := hx l
     simp only [Formalism.REAL.rhoC]
@@ -377,7 +377,7 @@ lemma haarSub (p : Fin n × Fin n × Bool → Prop) [DecidablePred p] (Γ : Subg
     simp [Rc, crd_emb]
   · intro x y
     refine LinearMap.ext fun v => ?_
-    simp [Lc, hmul _ _ (hΓ y) (hA v), mul_assoc]
+    simp [Lc, hmul _ _ (hΓ y) (hA v)]
   · intro x y
     refine LinearMap.ext fun v => ?_
     simp [Rc, hmul _ _ (hA v) (hΓ x), mul_assoc]

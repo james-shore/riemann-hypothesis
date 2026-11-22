@@ -13,9 +13,6 @@ theorem exists_rho {Λ A B K : Type} [CommRing Λ] [CommRing A] [CommRing B] [Fi
   have hunit : IsUnit (C.ℓ : B) := by
     first
     | exact hC.unit
-    | simpa using hC.unit.map C.ι
-    | simpa using hC.unit.map C.o
-    | simpa using (hC.unit.map C.lam).map C.ι
   obtain ⟨u, hu⟩ := hunit
   let w : C.W j := ((u⁻¹ : Bˣ) : B) ^ e • C.b j z
   let bs₀ := Module.finBasis K (C.V j)

@@ -154,7 +154,7 @@ theorem test (hR : RealTest) (hψ : IsStd ψ) (hP : P * P = P) (hb : bᵀ = b) :
       have e1 : (q (F := F)) ∘ (fun i => mk 0 (p i)) = 0 := funext fun i => q_upF _
       have e2 : (p2 (F := F)) ∘ (fun i => mk 0 (p i)) = p := rfl
       refine Eq.trans (congrArg l (Eq.trans ?_ (schr_pure hψ _ _ _).symm)) (h1 (fun i => mk 0 (p i)) _ (hmem f₀ _ (hc φ hφ)))
-      simp only [comp_mulVec, e1, e2, Matrix.map_mul, ← mulVec_mulVec, hp, mulVec_zero, dotProduct_zero, map_zero]
+      simp only [comp_mulVec, e1, e2, ← mulVec_mulVec, hp, mulVec_zero, dotProduct_zero, map_zero]
       rw [hm]
       congr 1
       · funext y; simp
@@ -206,7 +206,7 @@ theorem test (hR : RealTest) (hψ : IsStd ψ) (hP : P * P = P) (hb : bᵀ = b) :
       rw [← hT, ← hT]
       refine Eq.trans (congrArg l ?_) (h1 (fun i => upI (p i)) _ (hmem f _ hg))
       rw [schr_pure hψ]
-      simp only [comp_mulVec, e1, e2, Matrix.map_mul, ← mulVec_mulVec, hp, mulVec_zero, dotProduct_zero, map_zero]
+      simp only [comp_mulVec, e1, e2, ← mulVec_mulVec, hp, mulVec_zero, dotProduct_zero]
       congr 1
       · exact funext hf
       · funext z; simp

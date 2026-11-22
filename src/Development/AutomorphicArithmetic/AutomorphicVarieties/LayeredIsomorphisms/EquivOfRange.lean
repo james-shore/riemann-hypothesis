@@ -58,7 +58,6 @@ theorem UpperTheory.V.Win.abiso :
   haveI : IsGalois ℚ (AlgebraicClosure ℚ) := by
     first
       | exact @IsAlgClosure.isGalois ℚ (AlgebraicClosure ℚ) _ _ (AlgebraicClosure.instAlgebra ℚ) _ _
-      | convert @IsAlgClosure.isGalois ℚ (AlgebraicClosure ℚ) _ _ (AlgebraicClosure.instAlgebra ℚ) _ _
   let f : CyclotomicField N ℚ →ₐ[ℚ] AlgebraicClosure ℚ := IsAlgClosed.lift
   let f' : CyclotomicField N' ℚ →ₐ[ℚ] AlgebraicClosure ℚ := IsAlgClosed.lift
   refine equiv_of_fix (f.comp i) (f'.comp j) fun σ => ?_

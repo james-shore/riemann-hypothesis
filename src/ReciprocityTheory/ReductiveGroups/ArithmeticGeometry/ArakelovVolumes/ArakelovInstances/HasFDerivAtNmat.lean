@@ -37,7 +37,6 @@ theorem nmat_eq (z : V (nd X)) (τ : X.Ψ) : mat (nmat X z) τ = 1 + Lin X τ z 
   split_ifs with h1 h2 <;> first
     | (subst h2; exact absurd h1 (lt_irrefl _))
     | simp_all
-    | omega
 
 theorem hasFDerivAt_nmat (τ : X.Ψ) (z : V (nd X)) :
     HasFDerivAt (fun z' => mat (nmat X z') τ) (LinearMap.toContinuousLinearMap (Lin X τ)) z := by

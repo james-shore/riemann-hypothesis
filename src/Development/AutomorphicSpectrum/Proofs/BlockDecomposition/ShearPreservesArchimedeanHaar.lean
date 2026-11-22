@@ -37,7 +37,7 @@ theorem pi_map_update_add {V : Type} [AddCommGroup V] [MeasurableSpace V] [Measu
       = Function.update x a (y + T x) := by
     intro y
     simp [hTa]
-  simp only [Function.comp_def, key]
+  simp only [key]
   exact lintegral_add_right_eq_self
     (fun y => (Set.univ.pi s).indicator (1 : (Fin n → V) → ℝ≥0∞) (Function.update x a y)) (T x)
 

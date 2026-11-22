@@ -41,7 +41,7 @@ theorem form_map (τ : E →+* ℂ) (hτ : ∀ a, τ (σ a) = star (τ a)) (J : 
   simp only [form, dotProduct, Matrix.mulVec, Matrix.smul_apply, Matrix.map_apply, Pi.star_apply, smul_eq_mul,
     map_sum, map_mul, hτ, Finset.mul_sum]
   refine Finset.sum_congr rfl fun i _ => ?_
-  simp only [Finset.mul_sum, mul_assoc, mul_left_comm]
+  simp only [mul_assoc, mul_left_comm]
 
 end Helpers
 

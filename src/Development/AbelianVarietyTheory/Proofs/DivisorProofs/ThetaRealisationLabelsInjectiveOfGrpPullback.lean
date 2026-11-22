@@ -31,7 +31,7 @@ theorem realPt_inj_of_grpPullback : ∀ {o₂ Ω₂ : Type} [CommRing o₂] [Fie
   intro o₂ Ω₂ _ _ _ S₂ ρ₂ T G _ f φ hφ x y hxy
   have hpt : ρ₂.pt x = ρ₂.pt y := by
     ext
-    exact hφ.1.hom_ext hxy (by simp only [Category.assoc, Over.w])
+    exact hφ.1.hom_ext hxy (by simp only [Over.w])
   have hzero : ρ₂.pt 0 = 1 := by
     have h := ρ₂.pt_add 0 0
     rw [add_zero] at h
@@ -46,7 +46,7 @@ theorem realPt_inj_of_grpPullback : ∀ {o₂ Ω₂ : Type} [CommRing o₂] [Fie
     rw [← hsmul]
     have : (S₂.r * S₂.N) • a = 0 := by
       funext i
-      simp [Pi.smul_apply, nsmul_eq_mul, ZMod.natCast_self]
+      simp [Pi.smul_apply, nsmul_eq_mul]
     rw [this, hzero]
   let K := AlgebraicClosure Ω₂
   let x₀ : Sp K ⟶ Sp S₂.R := spMap ((algebraMap Ω₂ K).comp (S₂.R.val : S₂.R →+* Ω₂))

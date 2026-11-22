@@ -41,9 +41,6 @@ theorem gm_cont_of_smoothR (n : ℕ) (z : M → V n) (hz : IsLocalHomeomorph z) 
 private lemma natCast_le_coe_infty (k : ℕ) : (k : ℕ∞ω) ≤ ((⊤ : ℕ∞) : ℕ∞ω) := by
   first
     | exact WithTop.coe_le_coe.2 le_top
-    | exact_mod_cast le_top
-    | (norm_cast; exact le_top)
-    | simp
 
 theorem gm_exp_ck (n : ℕ) (z : M → V n) (ph : M → ℝ) (hph : SmoothR n z ph) (s : ℝ) (k : ℕ) :
     Ck n z k (fun y => (Real.exp (s * ph y) : ℂ)) := by
@@ -65,9 +62,6 @@ theorem gm_form_continuous {n : ℕ} (f : M → V n) (hf : ∀ k, Continuous fun
   first
     | exact continuous_pi hf
     | exact (PiLp.continuous_toLp 2 _).comp (continuous_pi hf)
-    | (have h1 : Continuous (fun x => WithLp.ofLp (f x)) := continuous_pi hf
-       simpa using (PiLp.continuous_toLp 2 _).comp h1)
-    | fun_prop
 
 theorem gm_form_hcs {n : ℕ} (f : M → V n) (hf : ∀ k, HasCompactSupport (fun x => f x k)) :
     HasCompactSupport f := by
@@ -78,7 +72,6 @@ theorem gm_form_hcs {n : ℕ} (f : M → V n) (hf : ∀ k, HasCompactSupport (fu
   ext k
   first
     | simpa using image_eq_zero_of_notMem_tsupport (hx k)
-    | simpa using image_eq_zero_of_nmem_tsupport (hx k)
 
 end helpers
 
@@ -149,7 +142,6 @@ private lemma continuous_d_of_ck_two {n : ℕ} {z : M → V n} (hz : IsLocalHome
     have hG : ContinuousOn (fun y => fderiv ℝ (g ∘ e0.symm) y) e0.target := by
       first
         | exact (hg e0 hc0).continuousOn_fderiv_of_isOpen e0.open_target (by norm_num)
-        | exact (hg e0 hc0).continuousOn_fderiv_of_isOpen e0.open_target (by simp)
     have hzc : ContinuousAt z x0 := by
       rw [he0]
       exact e0.continuousAt hx0
@@ -188,7 +180,6 @@ private lemma d_eq_zero_of_not_mem_tsupport {n : ℕ} {z : M → V n} {g : M →
     have hU : g =ᶠ[𝓝 x] 0 := by
       first
         | exact notMem_tsupport_iff_eventuallyEq.1 hx
-        | exact not_mem_tsupport_iff_eventuallyEq.1 hx
     have hT : Tendsto e.symm (𝓝 (e x)) (𝓝 x) := by
       have := (e.continuousAt_symm (e.map_source he.2)).tendsto
       rwa [e.left_inv he.2] at this
@@ -223,8 +214,6 @@ private lemma ck_one_of_ck_two {n : ℕ} {z : M → V n} {f : M → ℂ} (h : Ck
   refine (h e he).of_le ?_
   first
     | norm_num
-    | exact_mod_cast (show (1 : ℕ) ≤ 2 by norm_num)
-    | exact WithTop.coe_le_coe.2 (by norm_num)
 
 theorem gm_tstar_add (n : ℕ) (z : M → V n) (ph : M → ℝ) (hph : SmoothR n z ph)
     (f g : M → V n) (hf : IsTestForm n z f) (hg : IsTestForm n z g) (x : M) :
@@ -259,7 +248,6 @@ theorem gm_tstar_smul (n : ℕ) (z : M → V n) (ph : M → ℝ) (hph : SmoothR 
     funext y
     first
       | simp [mul_left_comm]
-      | (simp <;> ring)
   simp only [tstar, key, ← Finset.mul_sum]
   ring
 
@@ -289,9 +277,6 @@ theorem gm_memLp_two_iff {E : Type*} [NormedAddCommGroup E] {μ : Measure M} (g 
     | (simp only [MemLp, hg, true_and]
        rw [eLpNorm_lt_top_iff_lintegral_rpow_enorm_lt_top two_ne_zero ENNReal.ofNat_ne_top]
        simp)
-    | (rw [MemLp, and_iff_right hg, eLpNorm_eq_lintegral_rpow_enorm two_ne_zero ENNReal.ofNat_ne_top]
-       simp only [ENNReal.toReal_ofNat]
-       rw [ENNReal.rpow_lt_top_iff_of_pos (by norm_num)])
 
 theorem gm_norm_sq {E : Type*} [NormedAddCommGroup E] {μ : Measure M} (u : Lp E 2 μ) :
     ENNReal.ofReal (‖u‖ ^ 2) = ∫⁻ x, ‖u x‖ₑ ^ (2:ℝ) ∂μ := by
@@ -326,7 +311,6 @@ theorem gm_inner_toLp (n : ℕ) (z : M → V n) (ph : M → ℝ) (hph : Measurab
     first
       | exact RCLike.inner_apply _ _
       | (simp [RCLike.inner_apply]; ring)
-      | (simp; ring)
   have hint : Integrable (fun x => conj (u x) * g x) (wvol n z ph) := by
     refine (L2.integrable_inner (𝕜 := ℂ) u (hg.toLp g)).congr ?_
     filter_upwards [hg.coeFn_toLp] with x hx
@@ -350,7 +334,6 @@ theorem gm_hcs_of {E F : Type*} [Zero E] [Zero F] (t : M → E) (G : M → F) (h
     (h : ∀ x, t x = 0 → G x = 0) : HasCompactSupport G := by
   first
     | exact ht.mono fun x hx h0 => hx (h x h0)
-    | exact ht.mono' (closure_mono fun x hx h0 => hx (h x h0))
 
 theorem gm_memLp_tstar (n : ℕ) (z : M → V n) (hz : IsLocalHomeomorph z) (ph : M → ℝ)
     (hph : SmoothR n z ph) (f : M → V n) (hf : IsTestForm n z f) :
@@ -407,7 +390,6 @@ theorem gm_ipV_smul (n : ℕ) (z : M → V n) (ph : M → ℝ) (v : M → V n) (
   simp only [ipV, Pi.smul_apply, inner_smul_right, mul_assoc]
   first
     | exact integral_const_mul c _
-    | exact integral_mul_left c _
 
 def gmTheta (n : ℕ) (z : M → V n) (hz : IsLocalHomeomorph z) (ph : M → ℝ)
     (hph : SmoothR n z ph) : gmTestForms n z →ₗ[ℂ] Lp ℂ 2 (wvol n z ph) where
@@ -475,7 +457,7 @@ theorem gm_tstar_single (n : ℕ) (z : M → V n) (ph : M → ℝ) (φ : M → �
     · subst hk
       have hE : (Real.exp (-ph y) : ℂ) * (Real.exp (ph y) : ℂ) = 1 := by
         rw [← Complex.ofReal_mul, ← Real.exp_add, neg_add_cancel, Real.exp_zero, Complex.ofReal_one]
-      simp only [gmSingle, EuclideanSpace.single_apply, eq_self_iff_true, if_true, ← mul_assoc, hE,
+      simp only [gmSingle, EuclideanSpace.single_apply, if_true, ← mul_assoc, hE,
         one_mul]
     · simp [gmSingle, hk]
   have hd : ∀ k, d n z k (fun y => (Real.exp (-ph y) : ℂ) * gmSingle ph φ j y k) x =
@@ -484,14 +466,13 @@ theorem gm_tstar_single (n : ℕ) (z : M → V n) (ph : M → ℝ) (φ : M → �
     rw [hfun k]
     by_cases hk : k = j
     · subst hk
-      simp only [eq_self_iff_true, if_true]
+      simp only [if_true]
       exact d_conj_eq_conj_db φ k x
     · simp only [hk, if_false]
       apply d_eq_zero_of_not_mem_tsupport
       first
         | simp
-        | (rw [show (fun _ : M => (0 : ℂ)) = 0 from rfl, tsupport_zero]; simp)
-  simp only [tstar, hd, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only [tstar, hd, Finset.sum_ite_eq', Finset.mem_univ, if_true]
 
 theorem gm_ipV_single (n : ℕ) (z : M → V n) (ph : M → ℝ) (F0 φ : M → ℂ) (j : Fin n) :
     ipV n z (dbarF n z F0) (gmSingle ph φ j) ph = conj (∫ x, db n z j F0 x * φ x ∂vol n z) := by
@@ -502,8 +483,6 @@ theorem gm_ipV_single (n : ℕ) (z : M → V n) (ph : M → ℝ) (F0 φ : M → 
   have hE : (Real.exp (ph x) : ℂ) * (Real.exp (-ph x) : ℂ) = 1 := by
     rw [← Complex.ofReal_mul, ← Real.exp_add, add_neg_cancel, Real.exp_zero, Complex.ofReal_one]
   first
-    | (simp only [PiLp.toLp_apply, map_mul]
-       linear_combination (conj (db n z j F0 x) * conj (φ x)) * hE)
     | (simp only [map_mul]
        linear_combination (conj (db n z j F0 x) * conj (φ x)) * hE)
 
@@ -527,7 +506,6 @@ theorem locL2_sub_weightedL2 (n : ℕ) (z : M → V n) (hz : IsLocalHomeomorph z
     rw [wvol]
     first
       | exact withDensity_absolutelyContinuous' hm.aemeasurable hne
-      | exact withDensity_absolutelyContinuous' hm hne
   have hu : AEStronglyMeasurable (fun x => u x) (vol n z) := (Lp.aestronglyMeasurable u).mono_ac hac
   have hmeas : AEStronglyMeasurable (fun x => F0 x - u x) (vol n z) :=
     hF0.aestronglyMeasurable.sub hu
@@ -538,7 +516,6 @@ theorem locL2_sub_weightedL2 (n : ℕ) (z : M → V n) (hz : IsLocalHomeomorph z
   haveI : IsFiniteMeasure ((vol n z).restrict C) := by
     first
       | exact isFiniteMeasure_restrict.2 hCfin.ne
-      | exact ⟨by rw [Measure.restrict_apply_univ]; exact hCfin⟩
   have hF0C : MemLp F0 2 ((vol n z).restrict C) :=
     MemLp.of_bound hF0.aestronglyMeasurable.restrict B
       ((ae_restrict_iff' hC.measurableSet).2 (Eventually.of_forall hB))
@@ -555,7 +532,6 @@ theorem locL2_sub_weightedL2 (n : ℕ) (z : M → V n) (hz : IsLocalHomeomorph z
         (ENNReal.ofReal (Real.exp (-ph x)) * ‖u x‖ₑ ^ (2:ℝ)) ∂vol n z := by
     first
       | exact setLIntegral_le_lintegral _ _
-      | exact lintegral_mono' Measure.restrict_le_self le_rfl
   have huC : MemLp (fun x => u x) 2 ((vol n z).restrict C) := by
     rw [gm_memLp_two_iff _ hu.restrict]
     calc ∫⁻ x, ‖u x‖ₑ ^ (2:ℝ) ∂(vol n z).restrict C
@@ -583,7 +559,6 @@ theorem locL2_sub_weightedL2 (n : ℕ) (z : M → V n) (hz : IsLocalHomeomorph z
     intro x
     first
       | exact ENNReal.rpow_two _
-      | exact_mod_cast ENNReal.rpow_natCast _ 2
   simpa [e2] using hsub
 
 end loc

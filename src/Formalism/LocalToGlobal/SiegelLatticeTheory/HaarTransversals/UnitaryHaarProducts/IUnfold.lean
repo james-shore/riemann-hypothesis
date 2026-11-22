@@ -211,11 +211,11 @@ theorem one_mem_sinf : (1 : X.B.I.Ginf) ∈ X.SinfU u := by
   intro v
   have e : uMat ((1 : X.B.I.Ginf) v) = 1 := by simp [uMat]
   rw [e]
-  refine ⟨fun a => ?_, ?_⟩ <;> simp [Submodule.zero_mem]
+  refine ⟨fun a => ?_, ?_⟩ <;> simp
 
 theorem one_mem_sfin : (1 : X.B.I.Gf) ∈ SfinU X u := by
   have e : X.B.I.fmat 1 = 1 := by simp [AutInst.fmat]
-  refine ⟨fun a => ?_, ?_⟩ <;> simp [e, Submodule.zero_mem]
+  refine ⟨fun a => ?_, ?_⟩ <;> simp [e]
 
 theorem mem_sset_of_closure (hS : SGroup X u) {y : X.B.I.GA}
     (hy : y ∈ Subgroup.closure {y : X.B.I.GA | y.1 ∈ X.SinfU u ∧ y.2 ∈ SfinU X u}) :
@@ -525,7 +525,7 @@ theorem psiR_norm {n r : ℕ} (ε : Fin n → Bool) (gg : ℕ) (e f : Fin r → 
   unfold psiR
   rw [Complex.norm_exp]
   have him : ((∑ a, (rootCoord ε e f z g a + star (rootCoord ε e f z g a))) / (gg : ℂ)).im = 0 := by
-    simp [Complex.div_im, Complex.im_sum, Complex.star_def]
+    simp [Complex.div_im, Complex.im_sum]
   have hre : (2 * (Real.pi : ℂ) * Complex.I *
       ((∑ a, (rootCoord ε e f z g a + star (rootCoord ε e f z g a))) / (gg : ℂ))).re = 0 := by
     rw [Complex.mul_re, him]

@@ -60,8 +60,7 @@ theorem mem_Z1DΔ_iff (T : LocLat G Qp LL O) (p : W.DD T × W.DD T) :
       ∀ δ ∈ W.DelF, W.γD T δ p.1 = p.1 ∧ W.γD T δ p.2 = p.2 := by
   simp only [LocWach.wachCocyclesDelta, herrZ1Δ, herrCocycles, Submodule.mem_inf, LinearMap.mem_ker,
     LinearMap.coprod_apply, LinearMap.sub_apply, LinearMap.id_apply, LinearMap.neg_apply,
-    Submodule.mem_iInf, LinearMap.prodMap_apply, Prod.ext_iff, Prod.fst_sub, Prod.snd_sub,
-    Prod.fst_zero, Prod.snd_zero, sub_zero, add_neg_eq_zero, sub_eq_zero]
+    Submodule.mem_iInf, LinearMap.prodMap_apply, Prod.ext_iff, add_neg_eq_zero, sub_eq_zero]
 
 theorem map_mem_Z1DΔ {T₁ T₂ : LocLat G Qp LL O} (F : LatHom T₁.L T₂.L) (p : ↥(W.wachCocyclesDelta T₁)) :
     ((W.map F (p : W.DD T₁ × W.DD T₁).1, W.map F (p : W.DD T₁ × W.DD T₁).2) : W.DD T₂ × W.DD T₂) ∈

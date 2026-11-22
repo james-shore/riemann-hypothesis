@@ -14,8 +14,6 @@ theorem tensor_eq_zero_of_forall_contract {V W : Type} [AddCommGroup V] [Module 
   | exact @_root_.GlobalTheory.CoefficientContraction.eq_zero_of_contractions
   | exact _root_.GlobalTheory.CoefficientContraction.eq_zero_of_contractions
   | (apply _root_.GlobalTheory.CoefficientContraction.eq_zero_of_contractions <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CoefficientContraction.eq_zero_of_contractions <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CoefficientContraction.eq_zero_of_contractions <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CoefficientContraction.eq_zero_of_contractions ..)
 
 theorem aeval_sum_elim_eq_zero_of_tensor {ι : Type} [Fintype ι] [DecidableEq ι] (Γ : Set (Matrix ι ι ℂ))

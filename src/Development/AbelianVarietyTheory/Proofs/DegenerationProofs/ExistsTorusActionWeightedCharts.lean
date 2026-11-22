@@ -379,7 +379,7 @@ theorem exists_split : Out.Laws → Out.Laws2 → ∀ (k : Type) [Field k] [IsAl
   let f : Φ.E.X ≃+ (Fin (Module.finrank ℤ Φ.E.X) → ℤ) := b.equivFun.toAddEquiv
   have hf : ∀ n, f.toAddMonoidHom (b n) = Pi.single n 1 := fun n => by
     ext n'
-    simp [f, Pi.single_apply, Finsupp.single_apply, eq_comm]
+    simp [f, Pi.single_apply, eq_comm]
   have := Φ.D.i_hom
   have := SplitTorusPow.isMonHom_torusMap (S := Sp k) f.toAddMonoidHom
   refine ⟨fun n => cl (b n), (isSemiAbelian_of_isGt _ Φ.E Φ.G ⟨Φ.D⟩).geomConnected,

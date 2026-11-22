@@ -60,14 +60,13 @@ theorem gF_iso (w : Spec (CommRingCat.of (IsLocalRing.ResidueField A)) ⟶ W) (h
   refine ⟨⟨hF w hw, ?_, ?_⟩⟩
   · apply pullback.hom_ext
     · apply pullback.hom_ext
-      · simp only [hF, gF, Category.assoc, pullback.lift_fst, pullback.lift_fst_assoc, Category.id_comp]
+      · simp only [hF, gF, Category.assoc, pullback.lift_fst, Category.id_comp]
       · rw [← cancel_mono ι]
-        simp only [hF, gF, Category.assoc, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc,
-          pullback.lift_snd_assoc, Category.id_comp]
+        simp only [hF, gF, Category.assoc, pullback.lift_fst, pullback.lift_snd, pullback.lift_snd_assoc, Category.id_comp]
         rw [hw, eZ]
     · simp only [hF, gF, Category.assoc, pullback.lift_snd, Category.id_comp]
   · apply pullback.hom_ext <;> simp only [hF, gF, Category.assoc, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc,
-      pullback.lift_snd_assoc, Category.id_comp]
+      Category.id_comp]
 end geo
 
 theorem proper_base_change_closed_fiber_strictly_henselian_equivalence_holds : ProperBaseChangeClosedFiberStrictlyHenselianEquivalence := by

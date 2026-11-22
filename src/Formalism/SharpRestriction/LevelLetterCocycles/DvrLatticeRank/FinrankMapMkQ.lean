@@ -30,20 +30,17 @@ theorem match_fil (I D Oth : Submodule LL X) [FiniteDimensional LL ↥I] [Finite
     intro P
     first
       | rw [Submodule.map_sup, Submodule.mkQ_map_self, sup_bot_eq]
-      | simp [Submodule.map_sup]
   have hmap : D.map Oth.mkQ ≤ I.map Oth.mkQ := by
     calc D.map Oth.mkQ ≤ (I ⊔ Oth).map Oth.mkQ := Submodule.map_mono hDI
       _ = I.map Oth.mkQ := hsupmap I
   haveI hfin : FiniteDimensional LL ↥(I.map Oth.mkQ) := by
     first
       | infer_instance
-      | exact Module.Finite.map I Oth.mkQ
   have hDmap : finrank LL ↥(D.map Oth.mkQ) = finrank LL ↥D :=
     finrank_map_mkQ Oth D hDO
   have hIle : finrank LL ↥(I.map Oth.mkQ) ≤ finrank LL ↥I := by
     first
       | exact Submodule.finrank_map_le _ _
-      | apply Submodule.finrank_map_le
   have hle2 : finrank LL ↥(D.map Oth.mkQ) ≤ finrank LL ↥(I.map Oth.mkQ) := by
     first
       | exact Submodule.finrank_le_finrank_of_le hmap
@@ -58,8 +55,6 @@ theorem match_fil (I D Oth : Submodule LL X) [FiniteDimensional LL ↥I] [Finite
   have hkb : LinearMap.ker (Oth.mkQ ∘ₗ I.subtype) = ⊥ := by
     first
       | exact Submodule.finrank_eq_zero.mp hk
-      | exact (Submodule.finrank_eq_zero (S := LinearMap.ker (Oth.mkQ ∘ₗ I.subtype))).mp hk
-      | (haveI := Module.finrank_zero_iff.mp hk; exact Submodule.eq_bot_of_subsingleton)
   have hinj : Function.Injective (Oth.mkQ ∘ₗ I.subtype) := LinearMap.ker_eq_bot.mp hkb
   have hdisj : Disjoint I Oth := by
     rw [Submodule.disjoint_def]
@@ -69,11 +64,9 @@ theorem match_fil (I D Oth : Submodule LL X) [FiniteDimensional LL ↥I] [Finite
       show Oth.mkQ x = 0
       first
         | (rw [Submodule.mkQ_apply, Submodule.Quotient.mk_eq_zero]; exact hxO)
-        | simp [hxO]
     have h2 := hinj h1
     first
       | exact congrArg Subtype.val h2
-      | simpa using congrArg Subtype.val h2
   refine ⟨hdisj, fun F hF => ?_⟩
   have hFO : Disjoint F Oth := hDO.mono_left hF
   have hJO : Disjoint (I ⊓ (F ⊔ Oth)) Oth := hdisj.mono_left inf_le_left
@@ -92,7 +85,6 @@ theorem match_fil (I D Oth : Submodule LL X) [FiniteDimensional LL ↥I] [Finite
       have hi : i ∈ F ⊔ Oth := by
         first
           | simpa using h3
-          | (rw [add_sub_cancel] at h3; exact h3)
       exact Submodule.mem_map.mpr ⟨i, Submodule.mem_inf.mpr ⟨hiI, hi⟩, hif⟩
   calc finrank LL ↥(I ⊓ (F ⊔ Oth))
         = finrank LL ↥((I ⊓ (F ⊔ Oth)).map Oth.mkQ) :=

@@ -49,7 +49,7 @@ theorem xyC_single (a b a' : Fin m) (r : ℂ) (i : Fin n) (β : Bool) :
     · intro x _ hx
       simp [Ne.symm hx]
     · simp
-  · simp [xyC, Matrix.single_apply, h, Ne.symm h]
+  · simp [xyC, h, Ne.symm h]
 
 theorem sgn_star (ε : Fin m → Bool) (a : Fin m) : star (sgn ε a) = sgn ε a := by
   unfold sgn; split_ifs <;> simp
@@ -69,7 +69,7 @@ theorem zRe_add_zIm_star (ε : Fin m → Bool) (a b : Fin m) :
   have h2 : (starRingEnd ℂ) (2 : ℂ) = 2 := map_ofNat _ 2
   ext i j
   simp only [zRe, zIm, Matrix.add_apply, Matrix.smul_apply, Matrix.sub_apply, Matrix.map_apply,
-    smul_eq_mul, Matrix.neg_apply, Matrix.single_apply, Complex.star_def]
+    smul_eq_mul, Matrix.single_apply, Complex.star_def]
   split_ifs <;> simp [map_add, map_mul, map_neg, map_sub, hs, ht, h2, Complex.conj_I] <;> ring_nf <;>
     simp [Complex.I_sq] <;> ring
 

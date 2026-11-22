@@ -128,8 +128,7 @@ theorem mem_grpAt {S : HSp D} {P : Pl D → Prop} {g : GA D S} :
   constructor
   · intro h i j
     have := congrArg (fun g : GL (Fin S.rank) (AE D ⧸ idAt D P) => g.1 i j) h
-    simp only [MonoidHom.comp_apply, Matrix.GeneralLinearGroup.map, Units.coe_map, MonoidHom.coe_coe,
-      RingHom.mapMatrix_apply, Matrix.map_apply, Units.val_one] at this
+    simp only [MonoidHom.comp_apply, Matrix.GeneralLinearGroup.map, Units.coe_map, Units.val_one] at this
     have h2 : Ideal.Quotient.mk (idAt D P) (mt S g i j) =
         Ideal.Quotient.mk (idAt D P) ((1 : Matrix (Fin S.rank) (Fin S.rank) (AE D)) i j) := by
       refine this.trans ?_
@@ -139,8 +138,7 @@ theorem mem_grpAt {S : HSp D} {P : Pl D → Prop} {g : GA D S} :
     apply Units.ext
     ext i j
     have h2 := Ideal.Quotient.eq.2 (h i j)
-    simp only [MonoidHom.comp_apply, Matrix.GeneralLinearGroup.map, Units.coe_map, MonoidHom.coe_coe,
-      RingHom.mapMatrix_apply, Matrix.map_apply, Units.val_one]
+    simp only [MonoidHom.comp_apply, Matrix.GeneralLinearGroup.map, Units.coe_map, Units.val_one]
     refine h2.trans ?_
     rw [Matrix.one_apply, Matrix.one_apply]; split_ifs <;> simp
 
@@ -229,7 +227,7 @@ theorem exists_list (S : HSp D) (L : Lat S) (P : Pl D → Prop) {κ : GA D S} (h
     (T : Finset (Pl D)) (hT : ∀ v ∈ T, P v) :
     ∃ l : List (GA D S), (∀ y ∈ l, ∃ v, P v ∧ InK S L (· = v) y) ∧ mt S l.prod = locM (peT D T) (mt S κ) := by
   induction T using Finset.induction_on with
-  | empty => exact ⟨[], by simp, by simp [peT, locM_zero, mt_one]⟩
+  | empty => exact ⟨[], by simp, by simp [peT, locM_zero]⟩
   | insert v T hv ih =>
     obtain ⟨l, hl, hp⟩ := ih fun u hu => hT u (Finset.mem_insert_of_mem hu)
     have hPv := hT v (Finset.mem_insert_self v T)

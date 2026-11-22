@@ -32,6 +32,6 @@ theorem exists_maj_cart : ∀ (D : D7) (θ : InfFam D) (A : HSp D) (sA : RealMat
     simp only [Matrix.mul_assoc]
   rw [this, hε, Matrix.diagonal_mul_diagonal]
   ext i j
-  by_cases h : i = j <;> simp [Matrix.diagonal_apply, h, Matrix.one_apply] <;> split_ifs <;> simp
+  by_cases h : i = j <;> simp [h, Matrix.one_apply] <;> split_ifs <;> simp
 
 end GlobalTheory.Core.Rk.MajFrame

@@ -213,7 +213,6 @@ theorem model : ∀ (R : Type) [CommRing R] (q N : ℕ) (I : Cx R) (F : PSh) (n 
       apply (jsec_bij R q N I n U).1
       change Jsec _ = Jsec _
       rw [← jsec_d hn', hc', ← ev_δ_zero hn' β' U n' n (by simp) (by simp) x]
-      change ev (δ n' n β') 0 n _ U x = _
       rw [hβ']
       exact hS0 n γ.1 U x
     have huniq := (glue R q N I F n (fun U x => ptPull γ.1 x) (fun V U g x => ptPull_res γ.1 g x)).unique

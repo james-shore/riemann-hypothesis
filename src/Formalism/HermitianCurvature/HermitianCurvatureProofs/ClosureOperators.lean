@@ -144,7 +144,6 @@ theorem etaK_comm {n : ℕ} {E : Fin (n + 1) → Fin (n + 1) → Module.End ℂ 
 theorem exists_castSucc {n : ℕ} (a : Fin (n + 1)) (h : a ≠ Fin.last n) : ∃ a' : Fin n, a = a'.castSucc := by
   first
   | exact ⟨a.castPred h, (Fin.castSucc_castPred a h).symm⟩
-  | (obtain ⟨j, hj⟩ := Fin.exists_castSucc_eq.mpr h; exact ⟨j, hj.symm⟩)
 
 theorem top_of_stab {N : ℕ} {E : Fin N → Fin N → Module.End ℂ V} (hI : Irr E) (S : Submodule ℂ V) (hS : Stab E S)
     (v : V) (hv : v ∈ S) (hv0 : v ≠ 0) : S = ⊤ := by

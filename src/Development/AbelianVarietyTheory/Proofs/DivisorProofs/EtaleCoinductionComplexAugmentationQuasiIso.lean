@@ -139,7 +139,7 @@ theorem coindQ_sc_exact {S : Type} [CommRing S] (φ : R →+* S) (J : Shv R) : (
   let c : scalarsMod φ ⟶ J.obj.obj (op U) :=
     (HomologicalComplex.singleObjXSelf (ComplexShape.down ℕ) 0 (scalarsMod φ)).inv ≫ l
   have hc : coindQ_p φ ≫ c = b' := by
-    simp only [c, coindQ_p, Category.assoc, Iso.hom_inv_id_assoc]
+    simp only [c, coindQ_p, Category.assoc]
     exact hl
   let a : Sec ((restr φ).obj ((coind φ).obj J)) U := (ModuleCat.CoextendScalars.equiv (liftHom φ) _).symm c.hom
   have key : Sec.map (coindQ_sc φ J).f a = b := by
@@ -163,9 +163,9 @@ theorem coindAug_quasiIso : ∀ (R S : Type) [CommRing R] [CommRing S] (φ : R �
     rw [CochainComplex.quasiIsoAt₀_iff, ShortComplex.quasiIso_iff_of_zeros]
     · refine (ShortComplex.exact_and_mono_f_iff_of_iso ?_).2 ⟨coindQ_sc_exact φ J, coindQ_sc_mono φ J⟩
       refine ShortComplex.isoMk (HomologicalComplex.singleObjXSelf (ComplexShape.up ℕ) 0 _) (Iso.refl _) (Iso.refl _) ?_ ?_
-      · simp only [Iso.refl_hom, Category.comp_id]
+      · simp only [Iso.refl_hom]
         exact (coindAug_f_zero φ J).symm
-      · simp only [Iso.refl_hom, Category.comp_id, Category.id_comp]
+      · simp only [Iso.refl_hom]
         exact (coindCx_d φ J 0).symm
     all_goals rfl
   | succ n =>

@@ -175,16 +175,14 @@ theorem vAct_bracket (hρ : Formalism.QuantumDeterminants.IsCRepOn (UJset ε) ρ
         (X1 * Y1 - Y1 * X1) + Complex.I • (X1 * Y2 - Y2 * X1) + Complex.I • (X2 * Y1 - Y1 * X2) -
           (X2 * Y2 - Y2 * X2) := by
     intro X1 X2 Y1 Y2
-    simp only [add_mul, mul_add, smul_mul_assoc, mul_smul_comm, smul_smul, Complex.I_mul_I, neg_one_smul,
-      smul_sub, smul_add, smul_neg, neg_smul, Complex.I_mul_I]
+    simp only [add_mul, mul_add, smul_mul_assoc, mul_smul_comm, smul_smul, Complex.I_mul_I, smul_sub, smul_add, neg_smul, Complex.I_mul_I]
     module
   have h := hm (cre ε X) (cim ε X) (cre ε Y) (cim ε Y)
   rw [cre_add_cim, cre_add_cim] at h
   rw [h, map_sub, map_add, map_add, map_smul, map_smul, vAct_bracket_of_mem hρ hV (cre_mem X) (cre_mem Y),
     vAct_bracket_of_mem hρ hV (cre_mem X) (cim_mem Y), vAct_bracket_of_mem hρ hV (cim_mem X) (cre_mem Y),
     vAct_bracket_of_mem hρ hV (cim_mem X) (cim_mem Y), vAct_decomp hρ hV X, vAct_decomp hρ hV Y]
-  simp only [add_mul, mul_add, smul_mul_assoc, mul_smul_comm, smul_smul, Complex.I_mul_I, neg_one_smul,
-    smul_sub, smul_add, smul_neg, neg_smul, Complex.I_mul_I]
+  simp only [add_mul, mul_add, smul_mul_assoc, mul_smul_comm, smul_smul, Complex.I_mul_I, smul_sub, smul_add, neg_smul, Complex.I_mul_I]
   module
 
 def vE (hρ : Formalism.QuantumDeterminants.IsCRepOn (UJset ε) ρ) (hV : IsGKSub ε ρ V) (a b : Fin n) : Module.End ℂ V :=
@@ -194,7 +192,7 @@ theorem actM_vE (hρ : Formalism.QuantumDeterminants.IsCRepOn (UJset ε) ρ) (hV
     ReciprocityTheory.ChartRestriction.DS.actM (vE hρ hV) X = vAct hρ hV X := by
   have hX : X = ∑ a, ∑ b, X a b • single a b (1 : ℂ) := by
     ext i j
-    simp [Matrix.sum_apply, single_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq']
+    simp [Matrix.sum_apply, single_apply, ite_and, Finset.sum_ite_eq']
   conv_rhs => rw [hX]
   simp only [map_sum, map_smul, ReciprocityTheory.ChartRestriction.DS.actM, vE]
 
@@ -311,7 +309,7 @@ theorem mem_of_mem_closure [CompleteSpace H] (hU : IsURepOn (UJset ε) ρ) (hV :
     intro y hy
     refine Submodule.iSup_induction (vIso ε ρ V) (motive := fun y => ⟪w', y⟫_ℂ = 0)
       (le_iSup_vIso hUK hty hV hy) (fun Λ y hyΛ => ?_) (by simp)
-      (fun y₁ y₂ h₁ h₂ => by simp [inner_add_right, h₁, h₂])
+      (fun y₁ y₂ h₁ h₂ => by simp [h₁, h₂])
     by_cases hΛ : Λ ∈ s
     · exact Submodule.inner_left_of_mem_orthogonal
         ((Finset.le_sup (f := vIso ε ρ V) hΛ) hyΛ) hperpA
@@ -328,8 +326,8 @@ theorem mem_of_mem_closure [CompleteSpace H] (hU : IsURepOn (UJset ε) ρ) (hV :
 
 theorem casimir_eq_etr {M : Type} [AddCommGroup M] [Module ℂ M] (E : Fin n → Fin n → Module.End ℂ M) :
     ReciprocityTheory.ChartRestriction.DS.casimir E = etr E 2 := by
-  simp only [ReciprocityTheory.ChartRestriction.DS.casimir, etr, Formalism.REAL.epow, Finset.sum_mul, ite_mul, one_mul, zero_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only [ReciprocityTheory.ChartRestriction.DS.casimir, etr, Formalism.REAL.epow, ite_mul, one_mul, zero_mul,
+    Finset.sum_ite_eq, Finset.mem_univ, if_true]
 
 def vK (hV : IsGKSub ε ρ V) (κ : Matrix (Fin n) (Fin n) ℂ) (hκ : κ ∈ Kset ε) : Module.End ℂ V :=
   (ρ κ : H →ₗ[ℂ] H).restrict (fun x hx => hV.kStable κ hκ x hx)

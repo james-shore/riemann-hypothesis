@@ -273,8 +273,7 @@ theorem bad_le (κ : K ≃+* (W → ℂ)) (μ : Measure (Fin n → Fin M → K))
     obtain ⟨w, a, s, ⟨hsa, hsb⟩, hN⟩ := hU
     choose t ht hst using fun b => exists_grid hL (s b) (hsb b)
     refine Set.mem_biUnion (x := (w, a, t)) ?_ ?_
-    · simp only [I, Finset.coe_product, Set.mem_prod, Finset.mem_coe, Finset.mem_univ,
-        Fintype.mem_piFinset, true_and, Finset.coe_univ, Set.mem_univ]
+    · simp only [I, Finset.coe_product, Set.mem_prod, Finset.mem_coe, Fintype.mem_piFinset, true_and, Finset.coe_univ, Set.mem_univ]
       exact ht
     · refine ⟨_, shear_mem κ w a s t hε hL' (by linarith) hLε hsa hst hX hN, ?_⟩
       exact shearK_neg_shearK a _ (sig_self κ w a t) X

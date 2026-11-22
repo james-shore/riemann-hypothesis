@@ -67,7 +67,7 @@ theorem repF_unique {k : ℕ} {ρ : D.toPre.X} {m : ℕ}
     (h : RepF bF t c) (h' : RepF bF t c') : c = c' := by
   have hsub : ∀ (y : (DegPre.BF D.toPre F).left) (a b : Γ((DegPre.BF D.toPre F).left, ⊤)),
       gs (𝟙 _) y ⊤ (a - b) = gs (𝟙 _) y ⊤ a - gs (𝟙 _) y ⊤ b :=
-    fun y a b => gs_sub _ y ⊤ (by first | trivial | simp) a b
+    fun y a b => gs_sub _ y ⊤ (by first | trivial) a b
   have h0 := hU (c - c') (fun y J hy => by
     have e1 := h y J hy
     have e2 := h' y J hy

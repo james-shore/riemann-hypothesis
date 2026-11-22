@@ -32,7 +32,7 @@ theorem trU_pull (L : LB X) (a b : Y ⟶ X) (j j' : L.ι) (V : Y.Opens)
         Units.map ((h ≫ c).appLE _ V' hC').hom.toMonoidHom (L.g j j') := by
     intro c hC hC'
     ext
-    simp only [Units.coe_map, MonoidHom.coe_coe]
+    simp only [Units.coe_map]
     have := Scheme.Hom.appLE_comp_appLE h c _ V V' hC hV
     exact congrArg (fun q => q.hom (L.g j j' : Γ(X, L.U j ⊓ L.U j'))) this
   rw [trU, trU, map_mul, map_inv, e a hA hA', e b hB hB']

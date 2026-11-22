@@ -67,7 +67,7 @@ theorem main : GlobalTheory.Published.WeilRepresentationUnitaryPair → GlobalTh
   have hyn : 0 < ‖θ x‖ := norm_pos_iff.2 hy0
   have h' : ‖θ x‖ ^ 2 = c * ‖x‖ ^ 2 := by
     have h2 : ((‖θ x‖ ^ 2 : ℝ) : ℂ) = ((c * ‖x‖ ^ 2 : ℝ) : ℂ) := by
-      first | (push_cast; exact h) | (push_cast; simpa using h) | (simp only [RCLike.ofReal_pow, Complex.ofReal_pow, Complex.ofReal_mul] at h ⊢; exact h) | (rw [Complex.ofReal_pow, Complex.ofReal_mul, Complex.ofReal_pow]; exact h)
+      first | (push_cast; exact h)
     exact Complex.ofReal_injective h2
   by_contra hcn
   push_neg at hcn

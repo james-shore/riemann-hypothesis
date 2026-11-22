@@ -60,7 +60,7 @@ theorem map_cocycleEquiv (i : G ≃ₜ* Γ) (rho : Representation R Γ M) :
     have e := congrFun hcf (i.symm p.1, i.symm p.2)
     change _ = f.1 (i.symm p.1, i.symm p.2)
     rw [← e]
-    simp [d1, symm_apply']
+    simp [d1]
     exact congrArg (fun g => rho g (c (i.symm p.2))) (apply_symm' i p.1).symm
 
 theorem natCard_H2_comp (i : G ≃ₜ* Γ) (rho : Representation R Γ M) :

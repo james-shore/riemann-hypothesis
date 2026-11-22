@@ -23,7 +23,7 @@ theorem exists_conj_of_algHom {B : Type} [CommRing B] [IsLocalRing B] {r : ℕ}
     rw [Matrix.sum_apply, Finset.sum_eq_single p]
     · simp [Matrix.single_apply, Matrix.one_apply]
     · intro j _ hj
-      simp [Matrix.single_apply, hj]
+      simp [hj]
     · simp
   have hne : θ (Matrix.single i0 i0 (1 : B)) ≠ 0 := by
     intro h0
@@ -82,7 +82,7 @@ theorem exists_conj_of_algHom {B : Type} [CommRing B] [IsLocalRing B] {r : ℕ}
     rw [Matrix.sum_apply, Finset.sum_eq_single p]
     · simp [Matrix.single_apply, Matrix.diagonal_apply]
     · intro j _ hj
-      simp [Matrix.single_apply, hj]
+      simp [hj]
     · simp
   have hJ : IsUnit (∑ l, θ (Matrix.single l i0 (1 : B)) * Matrix.single b l 1).det := by
     have h5 := congrArg Matrix.det hKJ

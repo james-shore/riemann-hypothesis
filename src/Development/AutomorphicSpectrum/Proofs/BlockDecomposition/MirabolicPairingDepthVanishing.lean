@@ -37,7 +37,7 @@ theorem twist_integral_eq_JJ_shear : ∀ {k : Type} [Field k] [ValuativeRel k] [
       (((GlobalTheory.CompanionTheory.MirPair.shearGL n b : GL (Fin (n + 1)) k) : Matrix (Fin (n + 1)) (Fin (n + 1)) k) *ᵥ y) *
       GlobalTheory.CompanionTheory.MirPair.coef T B v v' y)
   rw [hdet, hset] at key
-  simp only [hgg, Complex.ofReal_one, NNReal.coe_one, one_mul] at key
+  simp only [hgg, Complex.ofReal_one, one_mul] at key
   rw [GlobalTheory.CompanionTheory.MirPair.JJ]
   simp_rw [hcoef]
   rw [key]

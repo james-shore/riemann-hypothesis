@@ -332,7 +332,7 @@ lemma lift_one (hS : HodgeTateSetting p v R O σ cp) (hp2 : p ≠ 2) {H : HodgeT
     obtain ⟨t, ht⟩ : ∃ t : TT p g, t = fun k => (((y k).val : ℕ) : ℤ_[p]) := ⟨_, rfl⟩
     have hy : red p g t = y := by
       funext k
-      simp [red, ht, map_natCast, ZMod.natCast_zmod_val]
+      simp [red, ht]
     have hT : (algebraMap ℤ_[p] R ∘ t) = fun k => ((y k).val : R) := by
       funext k
       rw [ht]

@@ -96,7 +96,7 @@ theorem normSq_theta_modGrowth_big : GlobalTheory.Published.WeilSiegelFormulaUni
   obtain ⟨k, hk⟩ := hReg (sZero A B)
   have hre : (A.rank : ℝ) / 2 < (sZero A B).re := by
     have e : (sZero A B).re = ((B.rank : ℝ) - A.rank) / 2 := by
-      simp [GlobalTheory.IndefiniteRowSideFullHecke.SphericalZero.sZero, Complex.div_re]
+      simp [GlobalTheory.IndefiniteRowSideFullHecke.SphericalZero.sZero]
     rw [e]
     have : (2 * A.rank : ℝ) < B.rank := by exact_mod_cast h2ab
     linarith

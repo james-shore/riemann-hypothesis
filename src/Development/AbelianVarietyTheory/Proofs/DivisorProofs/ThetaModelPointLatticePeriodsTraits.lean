@@ -57,7 +57,7 @@ theorem one_lattice {g n : ℕ} {o : Type} [CommRing o] {ζ : o} {F : SFam g n �
     rw [this]
     by_cases hu : u = 0
     · subst hu; simp
-    · simp [Pi.single_apply, hu]
+    · simp [hu]
   have hinj : Function.Injective π := by
     rw [injective_iff_map_eq_zero]
     intro z hz

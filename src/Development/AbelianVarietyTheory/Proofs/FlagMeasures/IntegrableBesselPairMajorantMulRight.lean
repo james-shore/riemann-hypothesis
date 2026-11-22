@@ -112,7 +112,7 @@ theorem inner_eq {k r : ℕ} (L : LocBessel k r) (a : Matrix (Fin (2 * r + k + 1
   have hH : Measurable fun n' : Mt k r => ∫⁻ h'', f (x, (h'', n')) ∂L.μW' := hH'.lintegral_prod_left'
   have hfx : Measurable fun y : Mt k r × Mt k r => f (x, y) := hfm.comp (measurable_const.prodMk measurable_id)
   rw [lintegral_prod _ hG.aemeasurable, lintegral_prod _ hfx.aemeasurable]
-  simp only [lintegral_const, L.hμW'.2, one_mul]
+  simp only [lintegral_const, L.hμW'.2]
   have e1 : ∫⁻ n', ∫⁻ h'', f (x, (h'', conjM a n')) ∂L.μW' ∂L.μN =
       ∫⁻ n', ∫⁻ h'', f (x, (h'', n')) ∂L.μW' ∂(L.μN.map (conjM a)) := by
     rw [lintegral_map hH hconj]

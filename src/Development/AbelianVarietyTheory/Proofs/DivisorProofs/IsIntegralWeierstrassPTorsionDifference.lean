@@ -38,9 +38,9 @@ theorem isIntegral_sq_mul_wp_sub_div : ∀ (N : ℕ) [NeZero N] (τ : ℍ) (ω :
     simpa using this
   let R : Subring ℂ := (integralClosure ℤ ℂ).toSubring
   have hmem : ∀ z : ℂ, z ∈ R ↔ IsIntegral ℤ z := fun z => by
-    simp [R, Subalgebra.mem_toSubring, mem_integralClosure_iff]
+    simp [R, mem_integralClosure_iff]
   have hNx : ∀ v : Fin 2 → ZMod N, N • v = 0 := fun v => by
-    funext i; simp [nsmul_eq_mul, ZMod.natCast_self]
+    funext i; simp [nsmul_eq_mul]
   have hQ : ∀ p : ι, QAll (· ∈ R) N (fun τ => (N : ℂ) ^ 2 * (wp N p.1.1 τ - wp N p.1.2 τ)) := by
     intro p
     refine ⟨fun n => (N : ℂ) ^ 2 * (cP N p.1.1 n - cP N p.1.2 n), ?_, fun n => ?_⟩

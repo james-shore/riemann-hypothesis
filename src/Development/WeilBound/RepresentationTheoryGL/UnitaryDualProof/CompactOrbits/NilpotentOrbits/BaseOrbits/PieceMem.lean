@@ -139,7 +139,7 @@ theorem core (hcomm : ∀ a b : G, a * b = b * a) (hcont : ∀ g : G, Continuous
     have hΦsum : Φ = ∑ q ∈ Q, fun p : Y × W => Φ p * if Quotient.mk (rel (K i)) p.2 = q then 1 else 0 := by
       funext p
       rw [Finset.sum_apply]
-      simp only [← Finset.mul_sum, Finset.sum_ite_eq, Finset.sum_const_zero]
+      simp only [← Finset.mul_sum, Finset.sum_ite_eq]
       by_cases hp : p.2 ∈ B
       · obtain ⟨r, hr, g, hg, hgr⟩ := mem_iUnion₂.1 (hbcov hp)
         have : Quotient.mk (rel (K i)) p.2 ∈ Q :=
@@ -210,7 +210,7 @@ theorem core (hcomm : ∀ a b : G, a * b = b * a) (hcont : ∀ g : G, Continuous
   have hfsum : f = ∑ q ∈ Q, fun p : Y × W => f p * if Quotient.mk (rel (K i)) p.2 = q then 1 else 0 := by
     funext p
     rw [Finset.sum_apply]
-    simp only [← Finset.mul_sum, Finset.sum_ite_eq, Finset.sum_const_zero]
+    simp only [← Finset.mul_sum, Finset.sum_ite_eq]
     by_cases hp : f p = 0
     · simp [hp]
     · obtain ⟨r, hr, g, hg, hgr⟩ := mem_iUnion₂.1 (hbcov ⟨p, hp, rfl⟩)

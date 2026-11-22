@@ -188,7 +188,6 @@ theorem GlobalTheory.PlaceInt.chBound_zero_of_isUnit_discr : ∀ (E : Type) [Fie
       (io.comp (embK c τ)) (star a) := by
     intro τ a
     refine congrArg io (Subtype.ext ?_)
-    change ((embK c _ a : c.F) : ℂ) = ((embK c _ _ : c.F) : ℂ)
     simp only [embK_coe]
     rw [ComplexEmbedding.conjugate_coe_eq, hstar, H.bar_eq, NumberField.IsCMField.complexEmbedding_complexConj]
   have hsep : ∀ τ τ' : E →+* ℂ, τ ≠ τ' → ∃ a, IsUnit ((io.comp (embK c τ)) a - (io.comp (embK c τ')) a) := by

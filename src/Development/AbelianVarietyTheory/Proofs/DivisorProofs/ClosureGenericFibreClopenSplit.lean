@@ -66,7 +66,7 @@ theorem GlobalTheory.closure_generic_fibre_clopen_split : ∀ (R A : Type) [Comm
   have hpre : φ ⁻¹' (PrimeSpectrum.basicOpen a : Set (PrimeSpectrum A)) = φ ⁻¹' C := by
     rw [hεS, ← hfa]
     ext x
-    simp [φ, PrimeSpectrum.mem_basicOpen]
+    simp [φ]
   have hCa : C ⊆ (PrimeSpectrum.basicOpen a : Set (PrimeSpectrum A)) := by
     intro x hx
     have hxF : x ∈ Set.range φ := hF ▸ hU ▸ Or.inl hx

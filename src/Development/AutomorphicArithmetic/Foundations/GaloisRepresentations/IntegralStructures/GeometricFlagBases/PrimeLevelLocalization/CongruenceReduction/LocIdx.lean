@@ -267,7 +267,7 @@ private theorem relIndex_eq (n j : ℕ) (hj : j ≤ n) (ϖ : L) (hϖ : ϖ ≠ 0)
     obtain ⟨g, rfl⟩ := (tjcosets_iso n O).surjective k
     rw [Subgroup.mem_subgroupOf, Subgroup.mem_comap, Subgroup.mem_comap, tjcosets_iso_coe,
       ← conj_mem_iff e n j hj ϖ hϖ hϖO hmax g, ht]
-    simp [MulAut.conj_apply]
+    simp
   rw [Subgroup.relIndex, hEq, Subgroup.index_comap_of_surjective _ (red_surjective O e n),
     index_stabS]
 

@@ -43,7 +43,6 @@ lemma IsBaseChangeAt.comp {f : W ⟶ T} {g : T ⟶ U} {N : U.Modules} {O : U.Ope
   have hsm : ∀ (t : Γ(T, g ⁻¹ᵁ O)) (q : Q), t • q = f.app (g ⁻¹ᵁ O) t • q := fun _ _ => rfl
   obtain ⟨ψ₁, hψ₁, u₁⟩ := hg Q ψ (fun a n => by
     rw [hψ, hsm]
-    change (f ≫ g).app O a • ψ n = (f.app (g ⁻¹ᵁ O)) ((g.app O) a) • ψ n
     rw [Scheme.Hom.comp_app]
     rfl)
   obtain ⟨ψ₂, hψ₂, u₂⟩ := hf Q ψ₁.toAddMonoidHom (fun t x => ψ₁.map_smul t x)
@@ -57,7 +56,6 @@ lemma IsBaseChangeAt.comp {f : W ⟶ T} {g : T ⟶ U} {N : U.Modules} {O : U.Ope
   let Φ : Γ((Scheme.Modules.pullback (f ≫ g)).obj N, O') →ₗ[Γ(W, O')] Q :=
     { toFun := fun x => ψ₂ (c.inv.app O' x)
       map_add' := fun x y => by
-        change ψ₂ (c.inv.app O' (x + y)) = ψ₂ (c.inv.app O' x) + ψ₂ (c.inv.app O' y)
         erw [map_add, map_add]
       map_smul' := fun w x => by
         change ψ₂ (c.inv.app O' (w • x)) = w • ψ₂ (c.inv.app O' x)
@@ -71,7 +69,6 @@ lemma IsBaseChangeAt.comp {f : W ⟶ T} {g : T ⟶ U} {N : U.Modules} {O : U.Ope
         f ⁻¹ᵁ (g ⁻¹ᵁ O)) →ₗ[Γ(W, f ⁻¹ᵁ (g ⁻¹ᵁ O))] Q :=
       { toFun := fun y => ψ'' (c.hom.app O' y)
         map_add' := fun x y => by
-          change ψ'' (c.hom.app O' (x + y)) = ψ'' (c.hom.app O' x) + ψ'' (c.hom.app O' y)
           erw [map_add, map_add]
         map_smul' := fun w y => by
           change ψ'' (c.hom.app O' (w • y)) = w • ψ'' (c.hom.app O' y)
@@ -86,7 +83,6 @@ lemma IsBaseChangeAt.comp {f : W ⟶ T} {g : T ⟶ U} {N : U.Modules} {O : U.Ope
     let χ₁ : Γ((Scheme.Modules.pullback g).obj N, g ⁻¹ᵁ O) →ₗ[Γ(T, g ⁻¹ᵁ O)] Q :=
       { toFun := fun x => χ (Etale.pullbackUnitApp f _ (g ⁻¹ᵁ O) x)
         map_add' := fun x y => by
-          change χ (Etale.pullbackUnitApp f _ (g ⁻¹ᵁ O) (x + y)) = _
           erw [map_add, map_add]
         map_smul' := fun t x => by
           change χ (Etale.pullbackUnitApp f _ (g ⁻¹ᵁ O) (t • x)) =
@@ -152,7 +148,6 @@ lemma IsBaseChangeAt.of_comp_isOpenImmersion {f : W ⟶ T} [IsOpenImmersion f] {
   let ψ' : Γ((Scheme.Modules.pullback g).obj N, g ⁻¹ᵁ O) →ₗ[Γ(T, g ⁻¹ᵁ O)] Q :=
     { toFun := fun x => Ψ (c.hom.app O' (e x))
       map_add' := fun x y => by
-        change Ψ (c.hom.app O' (e (x + y))) = Ψ (c.hom.app O' (e x)) + Ψ (c.hom.app O' (e y))
         erw [map_add, map_add, map_add]
       map_smul' := fun t x => by
         change Ψ (c.hom.app O' (Etale.pullbackUnitApp f _ (g ⁻¹ᵁ O) (t • x))) =
@@ -172,8 +167,6 @@ lemma IsBaseChangeAt.of_comp_isOpenImmersion {f : W ⟶ T} [IsOpenImmersion f] {
   · let χ : Γ((Scheme.Modules.pullback (f ≫ g)).obj N, O') →ₗ[Γ(W, O')] Q :=
       { toFun := fun x => ψ'' (e.symm (c.inv.app O' x))
         map_add' := fun x y => by
-          change ψ'' (e.symm (c.inv.app O' (x + y))) =
-            ψ'' (e.symm (c.inv.app O' x)) + ψ'' (e.symm (c.inv.app O' y))
           erw [map_add, map_add, map_add]
         map_smul' := fun w x => by
           change ψ'' (e.symm (c.inv.app O' (w • x))) = ρ.inv w • ψ'' (e.symm (c.inv.app O' x))

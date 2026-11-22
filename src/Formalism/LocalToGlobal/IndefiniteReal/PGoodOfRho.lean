@@ -81,7 +81,6 @@ theorem iCg_fix {s : ℕ} (hH : I.Hyp s)
   erw [map_sum, map_sum]
   refine Finset.sum_congr rfl fun g _ => ?_
   erw [LinearMap.map_smulₛₗ, map_smul]
-  first | done | rfl
 
 theorem pGood_of_rho (hρ : I.PRho) {S : Type} [Fintype S] {Ws : S → Type} [∀ s, AddCommGroup (Ws s)]
     [∀ s, Module K (Ws s)] (τ : ∀ s, Representation K G (Ws s)) : I.PGood τ := by

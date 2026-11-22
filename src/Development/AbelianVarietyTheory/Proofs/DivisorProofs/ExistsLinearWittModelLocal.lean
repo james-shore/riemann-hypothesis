@@ -59,9 +59,7 @@ theorem pairM_chart {K : Type} [Field K] {n d : ℕ} (A : Matrix (Fin n) (Fin n)
   first
   | exact @_root_.GlobalTheory.PairingTraceExpansion.main
   | exact _root_.GlobalTheory.PairingTraceExpansion.main
-  | (apply _root_.GlobalTheory.PairingTraceExpansion.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PairingTraceExpansion.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PairingTraceExpansion.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.PairingTraceExpansion.main)
   | (intros; exact _root_.GlobalTheory.PairingTraceExpansion.main ..)
 
 theorem sum_four_swap_pairs_alt {R α β : Type} [AddCommMonoid R] [Fintype α] [Fintype β] (f : α → β → α → β → R) :
@@ -69,9 +67,7 @@ theorem sum_four_swap_pairs_alt {R α β : Type} [AddCommMonoid R] [Fintype α] 
   first
   | exact @_root_.GlobalTheory.FourTermSumSwap.sum_four_swap
   | exact _root_.GlobalTheory.FourTermSumSwap.sum_four_swap
-  | (apply _root_.GlobalTheory.FourTermSumSwap.sum_four_swap <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FourTermSumSwap.sum_four_swap <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FourTermSumSwap.sum_four_swap <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.FourTermSumSwap.sum_four_swap)
   | (intros; exact _root_.GlobalTheory.FourTermSumSwap.sum_four_swap ..)
 
 theorem piW_cA {σ : E →ₐ[F] E} {v : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.Pl F} (τ : E →ₐ[F] Fv F v) (w : AE F E) :
@@ -106,7 +102,7 @@ theorem evFin_symp {σ : E →ₐ[F] E} (hcm : IsCMExt F E σ) {n d : ℕ} (X : 
   rw [GlobalTheory.T.adelicTrace_supportedAtSplitPlace hcm v t _ hz, GlobalTheory.LatVac.evFin_liftV]
   rw [pairM_comm (GlobalTheory.FlipMatch.coY σ X Y t b c x), GlobalTheory.FlipMatch.coX, GlobalTheory.FlipMatch.coX, GlobalTheory.FlipMatch.coY,
     GlobalTheory.FlipMatch.coY, pairM_chart, pairM_chart]
-  simp only [map_mul, map_neg, map_one, neg_one_mul, GlobalTheory.WeilM.hTens, map_sum, piW_cA, piW_incl,
+  simp only [map_mul, map_neg, neg_one_mul, GlobalTheory.WeilM.hTens, map_sum, piW_cA, piW_incl,
     GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.incM, Matrix.map_apply, hss, AlgHom.comp_apply, hX, hY]
   rw [sub_eq_add_neg]
   congr 1

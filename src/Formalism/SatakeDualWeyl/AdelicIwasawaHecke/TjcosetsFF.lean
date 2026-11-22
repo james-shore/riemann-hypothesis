@@ -80,7 +80,6 @@ private theorem exists_linearIndependent_extension_fin (N : ℕ) (d k : ℕ) (hd
   induction d with
   | zero =>
     refine ⟨fun i => v (Fin.cast (Nat.zero_add k) i), hv.comp _ (Fin.cast_injective _), fun i => ?_⟩
-    congr 1
     ext
     simp
   | succ d ih =>

@@ -46,8 +46,8 @@ theorem gi_be_tau (P : MvPolynomial (BVar N r D.T.t) (KK O)) :
     apply MvPolynomial.algHom_ext
     rintro (a | ⟨i, _ | _⟩)
     · simp [tau, tauF, beF, giF]
-    · simp [tau, tauF, beF, giF]
-    · simp only [AlgHom.comp_apply, tau, aeval_X, tauF, map_add, map_mul, beF, one_mul, giF, map_one]
+    · simp [tau, tauF, beF]
+    · simp only [AlgHom.comp_apply, tau, aeval_X, tauF, map_add, map_mul, beF, one_mul, giF]
       rw [qq_fix D (beF D) (fun _ => rfl), qq_fix D (giF D) (fun _ => rfl)]
       ring
   exact DFunLike.congr_fun h P

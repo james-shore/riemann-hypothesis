@@ -69,15 +69,11 @@ private theorem pow_mul_div_pow_succ_eq_div (η X : ℝ) (hη : η ≠ 0) (j : �
     η ^ j * (X / η ^ (j + 1)) = X / η := by
   first
   | rw [mul_div_assoc', pow_succ η j, mul_div_mul_left _ _ (pow_ne_zero j hη)]
-  | (field_simp; done)
-  | (field_simp; ring)
 
 private theorem pow_mul_div_mul_pow_eq_div (η M X : ℝ) (hη : η ≠ 0) (j : ℕ) :
     η ^ j * (X / (M * η ^ j)) = X / M := by
   first
   | rw [mul_div_assoc', mul_comm M (η ^ j), mul_div_mul_left _ _ (pow_ne_zero j hη)]
-  | (field_simp; done)
-  | (field_simp; ring)
 
 set_option maxHeartbeats 800000 in
 
@@ -144,16 +140,12 @@ theorem ub_terms (a : ℕ) (CP CF cZ cS c₂ κ L ℓ lam η Mr K : ℝ) (j : �
   have hy : Real.exp 1 * (CP * ℓ * η) / (j : ℝ) ≤ 1 / rr a := by
     first
     | (rw [div_le_div_iff₀ hJpos hRpos]; linarith)
-    | (rw [div_le_div_iff hJpos hRpos]; linarith)
-    | (rw [div_le_div_iff_of_pos hJpos hRpos]; linarith)
   have b2 : η ^ j * ((CP * ℓ) ^ j / ((j - 1).factorial : ℝ)) ≤ ((j : ℝ) + 1) ^ 2 / rr a ^ j := by
     calc η ^ j * ((CP * ℓ) ^ j / ((j - 1).factorial : ℝ)) = (CP * ℓ * η) ^ j / ((j - 1).factorial : ℝ) := by ring
       _ ≤ (j : ℝ) * (Real.exp 1 * (CP * ℓ * η) / j) ^ j := fact_bound _ hx0 j hj
       _ ≤ (j : ℝ) * (1 / rr a) ^ j := by
           first
           | exact mul_le_mul_of_nonneg_left (pow_le_pow_left₀ (by positivity) hy j) hJpos.le
-          | exact mul_le_mul_of_nonneg_left (pow_le_pow_left (by positivity) hy j) hJpos.le
-          | gcongr (j : ℝ) * ?_ ^ j
       _ = (j : ℝ) / rr a ^ j := by rw [one_div_pow, mul_one_div]
       _ ≤ ((j : ℝ) + 1) ^ 2 / rr a ^ j := by gcongr
   have b5 : η ^ j * (CF * L * 25 ^ j) ≤ rr a * (((j : ℝ) + 1) ^ 2 / rr a ^ j) := by
@@ -170,7 +162,6 @@ theorem ub_terms (a : ℕ) (CP CF cZ cS c₂ κ L ℓ lam η Mr K : ℝ) (j : �
       _ ≤ ((k + 1 : ℕ) : ℝ) * (1 / rr a) ^ k := by
           first
           | exact mul_le_mul hcl (pow_le_pow_left₀ (by positivity) h25 k) (by positivity) (by positivity)
-          | exact mul_le_mul hcl (pow_le_pow_left (by positivity) h25 k) (by positivity) (by positivity)
       _ = ((k + 1 : ℕ) : ℝ) / rr a ^ k := by rw [one_div_pow, mul_one_div]
       _ ≤ (((k + 1 : ℕ) : ℝ) + 1) ^ 2 / rr a ^ k := by gcongr
       _ = rr a * ((((k + 1 : ℕ) : ℝ) + 1) ^ 2 / rr a ^ (k + 1)) := by

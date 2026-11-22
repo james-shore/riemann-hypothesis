@@ -111,7 +111,7 @@ theorem decomp [Fintype κ] [DecidableEq κ] (f : MvPowerSeries κ R) :
   simp_rw [X, coeff_monomial_mul, one_mul, coeff_cof]
   by_cases hd : d = 0
   · subst hd
-    simp [Finsupp.single_le_iff]
+    simp
   · rw [if_neg hd, zero_add]
     obtain ⟨k0, -⟩ := Finsupp.support_nonempty_iff.2 hd
     have hterm : ∀ k, (if single k 1 ≤ d then

@@ -328,10 +328,10 @@ theorem _root_.GlobalTheory.SnMass.VolN.row_mem_homLat : ∀ (F E : Type) [Field
       rw [hvec, Matrix.mulVec_sub, Matrix.mulVec_sub, Matrix.mulVec_sum, Matrix.mulVec_sum]
       simp only [Matrix.mulVec_smul, h1, h2]
       simp [_root_.Formalism.QuantumDeterminants.herm, _root_.Formalism.QuantumDeterminants.bvec, star_sub, sub_dotProduct, star_sum, sum_dotProduct, star_smul,
-        smul_dotProduct, Matrix.mulVec_single_one, hz1, hz2]
+        smul_dotProduct, hz1, hz2]
     calc _root_.GlobalTheory.SnMass.VolN.gM A γ w (_root_.Formalism.QuantumDeterminants.eI k r a) (_root_.Formalism.QuantumDeterminants.wI k r l)
         = ((A w * γ.map τ * (A w)⁻¹) *ᵥ _root_.Formalism.QuantumDeterminants.bvec (_root_.Formalism.QuantumDeterminants.wI k r l)) (_root_.Formalism.QuantumDeterminants.eI k r a) := by
-          simp [_root_.GlobalTheory.SnMass.VolN.gM, _root_.Formalism.QuantumDeterminants.bvec, Matrix.mulVec_single_one, τ]
+          simp [_root_.GlobalTheory.SnMass.VolN.gM, _root_.Formalism.QuantumDeterminants.bvec, τ]
       _ = _root_.Formalism.QuantumDeterminants.herm (_root_.Formalism.QuantumDeterminants.Hpk k r) ((A w * γ.map τ * (A w)⁻¹) *ᵥ _root_.Formalism.QuantumDeterminants.bvec (_root_.Formalism.QuantumDeterminants.wI k r l))
             (_root_.Formalism.QuantumDeterminants.bvec (_root_.Formalism.QuantumDeterminants.esI k r a)) := by
           exact (_root_.GlobalTheory.SnMass.VolN.mulVec_esI k r a _).trans

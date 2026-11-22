@@ -19,7 +19,7 @@ theorem vdet_le_of_span_le (v : Valuation C NNReal) (hv : ∀ r : R, v (algebraM
   have hB : B = B' * (Matrix.of fun i j => c j i).map (algebraMap R C) := by
     ext x j
     have := congrFun (hc j) x
-    simp only [Finset.sum_apply, Pi.smul_apply, Algebra.smul_def] at this
+    simp only [Finset.sum_apply, Algebra.smul_def] at this
     rw [← this, Matrix.mul_apply]
     exact Finset.sum_congr rfl fun i _ => by simp [mul_comm]
   have hd : ((Matrix.of fun i j => c j i).map (algebraMap R C)).det

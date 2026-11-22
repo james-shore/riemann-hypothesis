@@ -127,7 +127,7 @@ theorem GlobalTheory.BSP.exists_topBasis_of_levels (A : Type) [CommRing A] (L : 
       exact uniq _ k _ fun n => ⟨_, single_approx n k, by simp⟩
     c_ne := fun j k hjk => by
       simp only [AddMonoidHom.mk'_apply]
-      exact uniq _ j _ fun n => ⟨_, single_approx n k, by simp [Finsupp.single_apply, Ne.symm hjk]⟩
+      exact uniq _ j _ fun n => ⟨_, single_approx n k, by simp [Ne.symm hjk]⟩
     fin := fun x n => by
       obtain ⟨c, hc⟩ := exA n x
       refine c.support.finite_toSet.subset fun k hk => ?_

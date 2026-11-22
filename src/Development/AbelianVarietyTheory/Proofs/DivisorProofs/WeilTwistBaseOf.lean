@@ -26,7 +26,7 @@ theorem weil_twist_base_of : ∀ (D : D7) (G : Type) [Group G] [Fintype G] (Pl0 
   congr 2
   show _ * (R.mu0 _ x * χ x * (R.mu0 _ x * R.xi A.μ0 x)⁻¹) = χ x
   rw [GlobalTheory.TwistFactorCompare.eq_one_of_chrEq_one (χ := R.xi A.μ0) (hR.lev.xi_base ▸ hR.lev.xi A.μ0) x]
-  simp only [map_one, mul_inv_cancel, inv_one, one_mul, mul_one]
+  simp only [map_one, inv_one, one_mul, mul_one]
   rw [mul_comm (R.mu0 _ x), mul_inv_cancel_right]
 
 end GlobalTheory.OnCmp

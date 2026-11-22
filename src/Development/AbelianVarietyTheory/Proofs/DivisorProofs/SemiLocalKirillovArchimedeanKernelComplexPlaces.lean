@@ -47,7 +47,7 @@ theorem infGL_apply_of_ne (y : GL (Fin a) (Cinf E)) {i j : Fin a} (h : i ≠ j) 
   refine ad_ext ?_ ?_
   · rw [← ent, pInf_infGL, pInf_sInf]
   · rw [← ent, pFin_infGL, pFin_sInf]
-    simp [Matrix.one_apply, h]
+    simp [h]
 
 theorem infGL_mem_NA {u : GL (Fin a) (Cinf E)} (hu : u ∈ GlobalTheory.SmGL.unipB (Cinf E) (Fin a)) :
     infGL E a u ∈ GlobalTheory.JSW.NA E a := by
@@ -55,7 +55,7 @@ theorem infGL_mem_NA {u : GL (Fin a) (Cinf E)} (hu : u ∈ GlobalTheory.SmGL.uni
   refine ⟨fun i j hji => ?_, fun i => ?_⟩
   · refine ad_ext ?_ ?_
     · rw [map_zero, ← ent, pInf_infGL]; exact h1 i j hji
-    · rw [map_zero, ← ent, pFin_infGL]; simp [Matrix.one_apply, hji.ne']
+    · rw [map_zero, ← ent, pFin_infGL]; simp [hji.ne']
   · refine ad_ext ?_ ?_
     · rw [map_one, ← ent, pInf_infGL]; exact h2 i
     · rw [map_one, ← ent, pFin_infGL]; simp

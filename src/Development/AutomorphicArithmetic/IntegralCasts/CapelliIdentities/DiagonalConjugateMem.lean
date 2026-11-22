@@ -18,7 +18,7 @@ private lemma liftUnitri {R K : Type} [CommRing R] [CommRing K] (f : R →+* K) 
     · have : Ideal.Quotient.mk I (a i j) = 0 := Ideal.Quotient.eq_zero_iff_mem.mpr (hI i j hij)
       simpa [H, Matrix.one_apply, hij.ne] using this
     · simp [H, hd]
-    · simp [H, hlow i j hij, Matrix.one_apply, hij.ne']
+    · simp [H, hlow i j hij, hij.ne']
   · ext i j
     simp [H, ha]
 

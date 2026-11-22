@@ -100,7 +100,7 @@ private theorem not_irr_of_line {Γ k : Type} [Group Γ] [Field k] (r : Γ →* 
       exact Submodule.mem_top
     obtain ⟨a, ha⟩ := Submodule.mem_span_singleton.mp hmem
     have := congrFun ha (j + 1)
-    simp [Pi.single_apply, hj] at this
+    simp [hj] at this
 
 private theorem ti_of {l : ℕ} [Fact l.Prime] {k : Type} [Field k] {F : Fr.Frame l k} {K : Type} [CommRing K]
     (ρ : Fr.NRep F 3 K) (p : Ideal K) (H : ∀ j : Fin 3, ¬ ∀ g i, i ≠ j → ρ.r g i j ∈ p) : ρ.TI p := by
@@ -112,7 +112,7 @@ private theorem ti_of {l : ℕ} [Fact l.Prime] {k : Type} [Field k] {F : Fr.Fram
   · intro g i hi
     refine hle (Ideal.subset_span ⟨g, i, 1, ?_, rfl⟩)
     revert hi
-    fin_cases i <;> simp [Fr.w] <;> decide
+    fin_cases i <;> simp [Fr.w]
 
 end UpperTheory.V.J
 

@@ -955,6 +955,5 @@ theorem _root_.GlobalTheory.DegCnt.NF.geometry : ∀ (K V : Type) [Field K]
       exact_mod_cast Algebra.norm_ne_zero_iff.2 (_root_.GlobalTheory.DegCnt.NFGeom.Dl_ne N)
     · first
         | exact zpow_ne_zero _ hI
-        | exact (Real.rpow_pos_of_pos (lt_of_le_of_ne (Nat.cast_nonneg _) (Ne.symm hI)) _).ne'
 
 end GlobalTheory.DegCnt

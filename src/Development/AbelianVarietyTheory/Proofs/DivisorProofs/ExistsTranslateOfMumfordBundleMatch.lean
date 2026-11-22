@@ -23,7 +23,7 @@ theorem pull_inv_cls {R : Type} [CommRing R] [IsLocalRing R] (P : PolAV (Sp R)) 
   obtain rfl : U = ⊤ := DVR.eq_top_of_closedPoint_mem U hU
   have h := (cls_eq_zero_iff (LB.isLB_linComb P.isLB _ _)).2 ⟨t, ht⟩
   rw [cls_linComb P.isLB, Fin.sum_univ_two] at h
-  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, one_smul, neg_smul, pull_comp] at h
+  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, one_smul, neg_smul, pull_comp] at h
   obtain ⟨m, hm⟩ : ∃ m : P.A.left ⟶ (P.A.hom ⁻¹ᵁ ⊤).toScheme, m ≫ (P.A.hom ⁻¹ᵁ ⊤).ι = 𝟙 _ :=
     ⟨P.A.left.topIso.inv, P.A.left.topIso.inv_hom_id⟩
   have h' := congrArg (pull m) h

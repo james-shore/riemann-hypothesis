@@ -69,19 +69,19 @@ theorem sum_sub_eq_sum_Ioc (j0 : ℤ) (k0 k1 : ℕ) (T : Finset ℤ)
     ∑ j ∈ T, padicValInt l (j0 - j) = ∑ m ∈ Ioc k0 k1, padicValNat l m := by
   refine Finset.sum_nbij' (fun j => (j0 - j).toNat) (fun m => j0 - (m : ℤ)) ?_ ?_ ?_ ?_ ?_
   · intro a ha
-    simp only [Finset.mem_coe, Finset.mem_Ioc, hT] at ha ⊢
+    simp only [Finset.mem_Ioc, hT] at ha ⊢
     omega
   · intro a ha
-    simp only [Finset.mem_coe, Finset.mem_Ioc, hT] at ha ⊢
+    simp only [Finset.mem_Ioc, hT] at ha ⊢
     omega
   · intro a ha
-    simp only [Finset.mem_coe, hT] at ha ⊢
+    simp only [hT] at ha ⊢
     omega
   · intro a ha
-    simp only [Finset.mem_coe, Finset.mem_Ioc] at ha ⊢
+    simp only [Finset.mem_Ioc] at ha ⊢
     omega
   · intro a ha
-    simp only [Finset.mem_coe, hT] at ha
+    simp only [hT] at ha
     simp only [padicValInt]
     congr 1
     omega
@@ -91,19 +91,19 @@ theorem sum_sub_eq_sum_Ioc_of_sub (j0 : ℤ) (k0 k1 : ℕ) (T : Finset ℤ)
     ∑ j ∈ T, padicValInt l (j0 - j) = ∑ m ∈ Ioc k0 k1, padicValNat l m := by
   refine Finset.sum_nbij' (fun j => (j - j0).toNat) (fun m => j0 + (m : ℤ)) ?_ ?_ ?_ ?_ ?_
   · intro a ha
-    simp only [Finset.mem_coe, Finset.mem_Ioc, hT] at ha ⊢
+    simp only [Finset.mem_Ioc, hT] at ha ⊢
     omega
   · intro a ha
-    simp only [Finset.mem_coe, Finset.mem_Ioc, hT] at ha ⊢
+    simp only [Finset.mem_Ioc, hT] at ha ⊢
     omega
   · intro a ha
-    simp only [Finset.mem_coe, hT] at ha ⊢
+    simp only [hT] at ha ⊢
     omega
   · intro a ha
-    simp only [Finset.mem_coe, Finset.mem_Ioc] at ha ⊢
+    simp only [Finset.mem_Ioc] at ha ⊢
     omega
   · intro a ha
-    simp only [Finset.mem_coe, hT] at ha
+    simp only [hT] at ha
     simp only [padicValInt]
     congr 1
     omega
@@ -186,7 +186,6 @@ theorem sum_erase_add_sum_le (a b S η h : ℕ) (hb : 2 * a + η ≤ b) (hbh : b
   have hlog : Real.logb l ((b - p + η - 1 : ℕ) : ℝ) ≤ Real.logb l ((h + η : ℕ) : ℝ) := by
     first
     | exact Real.logb_le_logb_of_le hl1 hx hxy
-    | exact (Real.logb_le_logb hl1 hx (by linarith)).mpr hxy
   have hnum : ((a - 1 - p : ℕ) : ℝ) + ((p + S + a : ℕ) : ℝ) +
       (((b - p + η - 1) - (b - p - η - a - 1) : ℕ) : ℝ) = 3 * (a : ℝ) + S + 2 * η - 1 := by
     have e4 : (b - p + η - 1) - (b - p - η - a - 1) = 2 * η + a := by omega

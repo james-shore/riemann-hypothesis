@@ -119,7 +119,7 @@ theorem baseEdge (j : Fin k) :
     constructor
     · rintro ⟨y, rfl⟩
       refine ⟨_, rfl, ?_⟩
-      simp only [if_pos rfl]
+      simp only
       exact Ideal.mul_mem_right _ _ (Ideal.mem_span_singleton_self _)
     · rintro ⟨y, rfl, hy⟩
       obtain ⟨z, hz⟩ := Ideal.mem_span_singleton'.1 hy

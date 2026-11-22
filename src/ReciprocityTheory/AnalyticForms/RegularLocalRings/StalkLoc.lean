@@ -59,8 +59,6 @@ theorem ptOf_eq_ptIdeal (x : W) (hx : x ∈ P.V) (hc : IsClosed {x}) :
     have h := (Scheme.homeoOfIso P.iso).isClosedMap _ hcV
     first
     | (convert h using 1; exact Set.image_singleton.symm)
-    | (convert h using 1; ext z; simp)
-    | (simp only [Set.image_singleton] at h; exact h)
   have hmax : (P.iso.hom.base ⟨x, hx⟩).asIdeal.IsMaximal :=
     (PrimeSpectrum.isClosed_singleton_iff_isMaximal _).mp hcy
   have hmax' : (P.ptOf x hx).IsMaximal :=
@@ -74,7 +72,6 @@ theorem ptOf_eq_ptIdeal (x : W) (hx : x ∈ P.V) (hc : IsClosed {x}) :
     first
     | rw [MvPolynomial.coe_aeval_eq_eval]
     | exact Iff.rfl
-    | simp [MvPolynomial.aeval_eq_eval]
   have hcoord : P.coord x hx = q := by
     funext j
     have hex : ∃ c : ℂ, X j - C c ∈ P.ptOf x hx := by
@@ -199,12 +196,10 @@ theorem isRegularLocalRing_stalk_iff (x : W) (hx : x ∈ P.V) (hc : IsClosed {x}
     haveI := h
     first
     | exact IsRegularLocalRing.of_ringEquiv (P.stalkEquiv x hx hc)
-    | exact IsRegularLocalRing.of_ringEquiv (e := P.stalkEquiv x hx hc)
   · intro h
     haveI := h
     first
     | exact IsRegularLocalRing.of_ringEquiv (P.stalkEquiv x hx hc).symm
-    | exact IsRegularLocalRing.of_ringEquiv (e := (P.stalkEquiv x hx hc).symm)
 
 theorem ringKrullDim_stalk (x : W) (hx : x ∈ P.V) (hc : IsClosed {x}) :
     ringKrullDim (W.presheaf.stalk x) = ringKrullDim (locRing P.K (P.coord x hx)) := by
@@ -260,9 +255,6 @@ theorem exists_mk_locRing {n : ℕ} (K : Ideal (MvPolynomial (Fin n) ℂ)) (p : 
   · first
     | rw [← Ideal.Quotient.mk_algebraMap, ← Ideal.Quotient.mk_algebraMap, ← map_mul,
         IsLocalization.mk'_spec]
-    | (show Ideal.Quotient.mk _ (IsLocalization.mk' _ a ⟨b, hb⟩) *
-          Ideal.Quotient.mk _ (algebraMap _ _ b) = Ideal.Quotient.mk _ (algebraMap _ _ a)
-       rw [← map_mul, IsLocalization.mk'_spec])
 
 end
 

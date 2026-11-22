@@ -147,7 +147,7 @@ theorem word_map {K : Type} [NormedAddCommGroup K] [InnerProductSpace ℂ K] (ρ
     by_cases h : τ = p.1
     · subst h; simp [lettersAt]
     · have h' : ¬ p.1 = τ := fun e => h e.symm
-      simp [lettersAt, Function.update_of_ne h, List.filter_cons, h']
+      simp [lettersAt, Function.update_of_ne h, h']
 
 theorem sum_bound {α β : Type} (a b : α → β → ℝ) (hb : ∀ l w, 0 ≤ b l w) (L : List α)
     (h : ∀ l ∈ L, ∃ c, ∀ w, a l w ≤ c * b l w) :

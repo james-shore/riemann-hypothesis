@@ -14,7 +14,7 @@ private theorem smithMatrix_lemma {O : Type} [CommRing O] [IsDomain O] [IsPrinci
   let s : LinearMap.range φ →ₗ[O] (Fin n → O) := snf.bN.constr O x
   have hs : ∀ y : LinearMap.range φ, φ (s y) = y := by
     have : φ ∘ₗ s = (LinearMap.range φ).subtype :=
-      snf.bN.ext fun i => by simp [s, Module.Basis.constr_basis, hx]
+      snf.bN.ext fun i => by simp [s, hx]
     intro y
     exact LinearMap.congr_fun this y
   have hsi : Function.Injective s := fun y y' h => Subtype.ext (by rw [← hs y, ← hs y', h])
@@ -40,7 +40,7 @@ private theorem smithMatrix_lemma {O : Type} [CommRing O] [IsDomain O] [IsPrinci
     (bS.prod bK).map (Submodule.prodEquivOfIsCompl _ _ hc)
   have hB1 : ∀ i, B (Sum.inl i) = x i := by
     intro i
-    simp [B, bS, Module.Basis.constr_basis, s]
+    simp [B, bS, s]
   have hB2 : ∀ l, B (Sum.inr l) ∈ LinearMap.ker f := by
     intro l
     simp [B]

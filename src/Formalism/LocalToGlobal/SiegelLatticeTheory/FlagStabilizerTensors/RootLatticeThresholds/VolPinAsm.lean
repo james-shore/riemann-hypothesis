@@ -152,8 +152,6 @@ private theorem relIndex_map_of_injective' {G G' : Type*} [Group G] [Group G'] (
   | exact Subgroup.relIndex_map_map_of_injective f hf
   | exact Subgroup.relIndex_map_map_of_injective hf
   | exact Subgroup.relIndex_map_map_of_injective H K hf
-  | (rw [← Subgroup.relIndex_comap, Subgroup.comap_map_eq_self_of_injective hf])
-  | exact Subgroup.relindex_map_map_of_injective f hf
 
 private theorem H_affine_combination_eq_of_quadratic_relation (t : TT Y u u') (w : Point D.host.E (D.R.rS + 1))
     (F' : LFlag (VS D) D.R.rS ((Tu D u' : ℕ) : D.host.E)) (L : Formalism.L2.SG.PairVal.MatR D)

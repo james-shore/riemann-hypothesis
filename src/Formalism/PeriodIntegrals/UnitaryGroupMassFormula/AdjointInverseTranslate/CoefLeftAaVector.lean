@@ -137,7 +137,7 @@ theorem coef_left_aa_vector : CoefLeftAAv := by
         have := a.isLt
         refine ⟨⟨j.val, by omega⟩, ?_⟩
         apply Fin.ext
-        simp only [lf_eI_val, Fin.coe_castLE, Fin.val_mk]
+        simp only [lf_eI_val, Fin.coe_castLE]
     · exact Finset.sum_congr rfl (fun _ _ => mul_comm _ _)
   rw [key]
   apply lx_det_tri

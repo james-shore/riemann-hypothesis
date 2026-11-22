@@ -19,7 +19,7 @@ theorem lT_fnOf (G : ι → Matrix (Fin n) (Fin n) ℂ) (lam : ι → DomWeight 
   have e1 : ∀ τ, ((invTrK u⁻¹ τ : GL (Fin n) ℂ) : Matrix (Fin n) (Fin n) ℂ)ᵀ = (u τ : Matrix (Fin n) (Fin n) ℂ) := fun τ => by
     rw [invTrK_coe, Matrix.transpose_transpose, Pi.inv_apply, inv_inv]
   simp only [lT_apply, fnOf, LinearMap.coe_mk, AddHom.coe_mk, Pi.one_apply, Matrix.one_mul, frL, rhoP, MonoidHom.coe_mk,
-    OneHom.coe_mk, actP, trAct, detTwK, LinearMap.smul_apply, AlgHom.toLinearMap_apply, smul_eq_mul, MvPolynomial.smul_eval,
+    OneHom.coe_mk, actP, trAct, detTwK, LinearMap.smul_apply, AlgHom.toLinearMap_apply, MvPolynomial.smul_eval,
     Formalism.GradedWeylDivisibility.blockAct, eval_aeval_poly, e1, map_sum, map_mul, MvPolynomial.eval_C, MvPolynomial.eval_X]
   have e2 : ∀ τ, detPow ℂ n (invTrK u⁻¹ τ) (lam τ).detShift = (u τ : Matrix (Fin n) (Fin n) ℂ).det ^ (lam τ).detShift :=
     fun τ => by rw [detPow, Units.val_zpow_eq_zpow_val, Matrix.GeneralLinearGroup.val_det_apply, ← Matrix.det_transpose, e1]

@@ -95,7 +95,7 @@ private theorem chineseRemainder_finiteCover {F K : Type} [Field F] [Field K] [A
     exact this ha
   let L : fib ℂ K x → ((rB ℂ K x {0} ⧸ I) →ₐ[ℂ] ℂ) := fun e => Ideal.Quotient.liftₐ I e.1 (hker e)
   have hL : ∀ e b, L e (mk b) = e.1 b := fun e b => by
-    first | rfl | exact Ideal.Quotient.lift_mk _ _ _
+    first | rfl
   have hinj : Function.Injective L := by
     intro e e' h
     refine Subtype.ext (AlgHom.ext fun b => ?_)

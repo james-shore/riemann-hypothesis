@@ -22,8 +22,6 @@ theorem eqv_baseChange (q : ℕ) (A : Type) [CommRing A] (i : ℤ) (A' : Type) [
   | exact @_root_.GlobalTheory.PolynomialPushoutEquivalence.main
   | exact _root_.GlobalTheory.PolynomialPushoutEquivalence.main
   | (apply _root_.GlobalTheory.PolynomialPushoutEquivalence.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PolynomialPushoutEquivalence.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PolynomialPushoutEquivalence.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PolynomialPushoutEquivalence.main ..)
 
 theorem homotopy_invariance_etale : GlobalTheory.EtC.C4 := by

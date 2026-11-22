@@ -78,7 +78,7 @@ theorem tensor_eq_top_or_le_ker_map : ∀ {ι : Type} [Fintype ι] [DecidableEq 
     intro x₀ hx₀ y hy
     apply hGU
     simp only [G, Finset.coe_image]
-    exact ⟨(x₀, y), by simp [hx₀, Fintype.mem_piFinset, hy], rfl⟩
+    exact ⟨(x₀, y), by simp [hx₀, hy], rfl⟩
   obtain ⟨N', hNN', hS', hN'top, hmax⟩ := GlobalTheory.T.exists_maximal_operatorStable_of_finset_generating _ N G hgen N le_rfl hS hN
   have h0' := GlobalTheory.T.tensor_maximalStable_contains_leftKernel Op₀ (piOps Op) Rel₀ (LinearMap.ker p₀) hL₀ hloc₀ h0 hK₀ N'
     (fun x hx y => hNN' (hN₀ x hx y)) hS' hmax

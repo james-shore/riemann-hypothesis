@@ -73,7 +73,7 @@ private theorem ex_mem_UH_of_lie {n : ℕ} {Hm X : Mat n} (hsq : Hm * Hm = 1) (h
       _ = Hm * (-X) * Hm := by rw [h1, Matrix.mul_neg]
   have hconj : ((t : ℂ) • X)ᴴ = Hm * (-((t : ℂ) • X)) * Hm⁻¹ := by
     rw [Matrix.conjTranspose_smul, hXH, hinv]
-    simp [Matrix.mul_smul, Matrix.smul_mul, Complex.conj_ofReal]
+    simp [Complex.conj_ofReal]
   show (NormedSpace.exp ((t : ℂ) • X))ᴴ * Hm * NormedSpace.exp ((t : ℂ) • X) = Hm
   rw [← Matrix.exp_conjTranspose, hconj, Matrix.exp_conj _ _ hU, hinv, mul_assoc (Hm * _) Hm Hm, hsq,
     mul_one, mul_assoc, ← Matrix.exp_add_of_commute _ _ (Commute.neg_left (Commute.refl ((t : ℂ) • X))),

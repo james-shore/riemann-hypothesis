@@ -43,7 +43,7 @@ theorem pow_dualFam (E : Fin n → Fin n → Module.End ℂ V) (m : ℕ) (a b : 
   | zero =>
     by_cases h : a = b
     · subst h; simp
-    · simp [Matrix.one_apply, h, Ne.symm h]
+    · simp [h, Ne.symm h]
   | succ m ih =>
     rw [pow_succ', pow_succ, Matrix.mul_apply, Matrix.mul_apply, LinearMap.sum_apply, LinearMap.sum_apply,
       LinearMap.sum_apply, map_sum]

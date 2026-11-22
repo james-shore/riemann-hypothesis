@@ -53,7 +53,7 @@ theorem centIm_right {r s : ℕ} (V : Submodule ℂ (Sm E s)) {c : ℂ} (hc : pE
   refine centIm_tw V (-c) _ ?_ hV
   have h := re_of_pE (E := E) hc
   have e1 : (-c + (r : ℂ) / 2 * s * (Module.finrank ℚ E : ℂ)).re = -c.re + (r : ℝ) / 2 * s * (Module.finrank ℚ E : ℝ) := by
-    simp [Complex.add_re, Complex.mul_re, Complex.neg_re] <;> ring_nf
+    simp [Complex.add_re, Complex.mul_re, Complex.neg_re]
   rw [e1, h]; ring
 
 end PositivityTheory.Rg.BcB.SpectralAccumulation.Cz.BlockTwistCharacters

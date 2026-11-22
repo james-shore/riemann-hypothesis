@@ -72,7 +72,7 @@ private theorem ce_compl (v : HeightOneSpectrum (𝓞 F)) (w : HeightOneSpectrum
       have hfa : completionMap v w a ≠ 0 := (map_ne_zero_iff _ (completionMap v w).injective).2 ha0
       have hopen := Valued.isOpen_ball (w.adicCompletion E) ((Valued.v : Valuation (w.adicCompletion E) _).restrict (completionMap v w a))
       have hmem : (0 : w.adicCompletion E) ∈ {x | (Valued.v : Valuation (w.adicCompletion E) _).restrict x < (Valued.v : Valuation (w.adicCompletion E) _).restrict (completionMap v w a)} := by
-        simp only [Set.mem_ofPred_eq, Set.mem_setOf_eq, Valuation.restrict_lt_iff, map_zero]
+        simp only [Set.mem_ofPred_eq, Valuation.restrict_lt_iff, map_zero]
         exact zero_lt_iff.2 ((Valuation.ne_zero_iff _).2 hfa)
       refine Filter.mem_comap.2 ⟨_, hopen.mem_nhds hmem, fun x hx => hγ ?_⟩
       have h1 : Valued.v (completionMap v w x) < Valued.v (completionMap v w a) := by

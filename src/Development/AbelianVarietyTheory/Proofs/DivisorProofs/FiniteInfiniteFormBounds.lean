@@ -22,8 +22,6 @@ theorem bigC_and {Q Q' : ChQ} (h : BigC Q) (h' : BigC Q') : BigC fun F ch C b =>
   | exact @_root_.GlobalTheory.BigConstantConjunction.bigC_and
   | exact _root_.GlobalTheory.BigConstantConjunction.bigC_and
   | (apply _root_.GlobalTheory.BigConstantConjunction.bigC_and <;> assumption)
-  | (intros; apply _root_.GlobalTheory.BigConstantConjunction.bigC_and <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.BigConstantConjunction.bigC_and <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.BigConstantConjunction.bigC_and ..)
 
 theorem bigC_mono {Q Q' : ChQ} (h : BigC Q) (hQ : ∀ {D : D7} {Γ : Type} [Group Γ] [Fintype Γ] {Pl0 T : Type}

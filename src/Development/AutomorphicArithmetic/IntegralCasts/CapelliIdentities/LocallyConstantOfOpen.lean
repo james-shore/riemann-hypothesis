@@ -9,7 +9,7 @@ theorem UpperTheory.Reformulated.B.LocallyConstantOfOpen.ho_locConst :
   refine ⟨(fun y => x⁻¹ * y) ⁻¹' (ψ.ker : Set Γ),
     h.preimage (continuous_const.mul continuous_id), ?_, ?_⟩
   · change x⁻¹ * x ∈ ψ.ker
-    simp [MonoidHom.mem_ker]
+    simp
   · intro y hy
     have hy' : ψ (x⁻¹ * y) = 1 := hy
     rw [map_mul, map_inv, inv_mul_eq_one] at hy'

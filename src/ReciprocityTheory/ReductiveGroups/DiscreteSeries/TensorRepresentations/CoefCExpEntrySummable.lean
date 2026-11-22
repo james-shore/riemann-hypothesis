@@ -78,6 +78,6 @@ theorem coefC_choose_coef (s : ℂ) (j k : ℕ) :
   have h2 : (j.factorial : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr (Nat.factorial_ne_zero _)
   have h3 : (k.factorial : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr (Nat.factorial_ne_zero _)
   rw [Nat.cast_choose ℂ (Nat.le_add_right j k), Nat.add_sub_cancel_left, pow_add]
-  field_simp <;> ring
+  field_simp
 
 end ReciprocityTheory.ChartRestriction.DS

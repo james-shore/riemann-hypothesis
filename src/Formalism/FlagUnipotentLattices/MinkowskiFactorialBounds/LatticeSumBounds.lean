@@ -421,7 +421,6 @@ theorem minBoundSecond' : MinII' := by
             CT ^ k * loss := by
           rw [hDD]
           gcongr
-          all_goals first | assumption | positivity | skip
       _ = loss * loss' ^ 2 * (6 * Real.exp 1 * Real.pi * CT / (k * g ^ (2 * r + 2))) ^ k := by
           ring
 
@@ -592,7 +591,7 @@ theorem prodMinLeOfProdRatio : SmallTerm := by
     simp only [e]
     rw [Finset.prod_mul_distrib, Finset.prod_const, Finset.card_univ, Finset.prod_pow]
     have hc : T * T' / g ^ 2 * (T' / T * g ^ 2) = T' ^ 2 := by
-      first | (field_simp; ring) | field_simp
+      first | (field_simp) | field_simp
     calc (T' ^ 2) ^ Fintype.card ι * (∏ v, (min 1 (sh₁ v) * min 1 (sh₂ v))) ^ 2
           = ((∏ v, (min 1 (sh₁ v) * min 1 (sh₂ v))) ^ 2 * (T * T' / g ^ 2) ^ Fintype.card ι) *
             (T' / T * g ^ 2) ^ Fintype.card ι := by
@@ -914,7 +913,7 @@ lemma one_le_mul_factorialPiWeight (v : ℝ) (hv : 1 ≤ v) (k : ℕ) (hk : 1 �
   unfold s5bA
   have e0 : (Real.exp 1 / k) ^ k = (Real.exp 1 * Real.pi / (k * v)) ^ k * (v / Real.pi) ^ k := by
     rw [← mul_pow]; congr 1
-    first | (field_simp; ring) | field_simp
+    first | (field_simp) | field_simp
   have e : (Real.exp 1 * Real.pi / (k * v)) ^ k * Real.sqrt (k / (2 * Real.pi)) *
       (((k - 1).factorial : ℝ) * (v / Real.pi) ^ k) =
       ((Real.exp 1 / k) ^ k * Real.sqrt (k / (2 * Real.pi))) * ((k - 1).factorial : ℝ) := by

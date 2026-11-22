@@ -44,7 +44,7 @@ theorem update_mul (w : InfinitePlace F) (z z' : ℂ) :
   funext v
   by_cases h : v = w
   · subst h; simp
-  · simp [Function.update_apply, h]
+  · simp [h]
 
 theorem uW_mul (w : InfinitePlace F) (z z' : ℂ) : d.uW w (z * z') = d.uW w z * d.uW w z' := by
   rw [uW_eq, uW_eq, uW_eq, update_mul, (sec_spec d).2.2.2.2, add_mul, mul_add, mul_add, sec_mul_e, e_mul_sec, e_mul_e]
@@ -117,7 +117,7 @@ theorem chiW_pos_pf (w : InfinitePlace F) : ∀ r : ℝ, 0 < r → d.chiW w (r :
       rw [Place.piInf_cA d.cm, KC.uW_eq, map_add, (KC.sec_spec d).2.1, Place.piInf_finOne, add_zero]
       by_cases h : w' = w
       · subst h; simp
-      · simp [Function.update_apply, h]
+      · simp [h]
     · rw [← map_smul, KC.uW_eq, smul_add, (KC.sec_spec d).2.2.1, zero_add, smul_smul, KC.finOne_mul_self, map_smul,
         map_one]
   have huw : d.uW w (r : ℂ) = d.uW w t * cA σ (d.uW w t) := by

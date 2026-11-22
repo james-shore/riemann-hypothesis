@@ -66,7 +66,7 @@ theorem smul_mem_hatMx_of_mem_latO {D : D7} {T : Type} {L : LevCh D T} {sc : Con
           rw [mul_comm, ← Algebra.smul_def]; exact Submodule.smul_mem _ o ha
         convert hx _ ha' using 4
         ext i j
-        simp only [Matrix.of_apply, Pi.smul_apply, Algebra.smul_def]
+        simp only [Pi.smul_apply, Algebra.smul_def]
         ring_nf
     exact key t ht a ha
   | zero => rw [smul_zero]; exact zero_mem _

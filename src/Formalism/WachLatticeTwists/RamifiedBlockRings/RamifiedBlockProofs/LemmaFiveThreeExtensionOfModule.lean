@@ -41,8 +41,6 @@ theorem blockPoly_separable_splits {O : Type} (O' : Type) [CommRing O] [IsDomain
     rw [blockPoly_map, he]
     first
       | exact Polynomial.Splits.prod fun i _ => Polynomial.Splits.X_sub_C _
-      | exact Polynomial.splits_prod_X_sub_C _
-      | simp
 
 theorem lemma_five_three_extension_of_module (hM : StatModuleBc) : LemmaFiveThreeOverExtension := by
   intro O _ _ _ X _ d G _ _ _ t ht bl T r π χ₁ ε g₀ eB e₁ s hP hA hI hX D hD _ _ Z NN _ _ g n hn hφ

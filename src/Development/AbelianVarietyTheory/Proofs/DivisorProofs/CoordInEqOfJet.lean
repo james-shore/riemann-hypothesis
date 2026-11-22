@@ -32,7 +32,7 @@ theorem exists_perm {K E : Type} [Field K] [Field E] [NumberField E] [Algebra K 
     · exfalso
       obtain ⟨x, hx⟩ := hr
       have := congrArg (fun f : E →+* ℂ => f (algebraMap K E x)) hj
-      simp only [RingHom.comp_apply, ComplexEmbedding.conjugate_coe_eq, Function.comp_apply, e] at this
+      simp only [RingHom.comp_apply, ComplexEmbedding.conjugate_coe_eq, e] at this
       rw [RingEquiv.coe_toRingHom, hg] at this
       exact hx this.symm
   choose π hπ using h1

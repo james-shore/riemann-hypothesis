@@ -15,7 +15,7 @@ def wtTorus {N : ℕ} (θ : Fin N → ℝ) : Matrix (Fin N) (Fin N) ℂ :=
 theorem wt_char_real (f : ℝ → ℂ) (hc : Continuous f) (hm : ∀ s t, f (s + t) = f s * f t)
     (h0 : f 0 = 1) (hn : ∀ t, ‖f t‖ = 1) :
     ∃ m : ℝ, ∀ t, f t = Complex.exp (((m * t : ℝ) : ℂ) * Complex.I) := by
-  first | exact Bl.general_b_fact_left_variant.goal1 .. | (apply Bl.general_b_fact_left_variant.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_left_variant.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_left_variant.goal1 .. | (apply Bl.general_b_fact_left_variant.goal1 <;> assumption)
 
 theorem wt_common_eigvec {H : Type} [NormedAddCommGroup H] [InnerProductSpace ℂ H] {ι : Type}
     (A : ι → (H →L[ℂ] H)) (W : Submodule ℂ H) [FiniteDimensional ℂ W] (hW : W ≠ ⊥)

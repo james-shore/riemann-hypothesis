@@ -26,7 +26,7 @@ theorem trF_dualPoint_of_isPull : ∀ (V : Type) [CommRing V] [IsDomain V] (D : 
   set e : TE V C ⟶ TF (R := V) C := Over.homMk (spMap (algebraMap C (DualNumber C))) rfl with he
   refine ⟨?_, Over.w _, ?_⟩
   · have h1 : lift e gm.b ≫ DegPre.trF D C mu ≫ DegPre.prB D C = k ≫ padd D.P.A gm₀.b (toUnit _ ≫ D.c mu) := by
-      simp only [DegPre.trF, DegPre.prB, lift_snd, padd, comp_lift_assoc, comp_lift, hb, Category.assoc, comp_toUnit_assoc]
+      simp only [DegPre.trF, DegPre.prB, lift_snd, padd, comp_lift_assoc, hb, comp_toUnit_assoc]
     have h2 := congrArg CommaMorphism.left h1
     simpa [k] using h2
   · have h1 : lift e gm.b ≫ DegPre.trF D C mu ≫ fst _ _ = e := by

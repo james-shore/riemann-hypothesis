@@ -138,7 +138,7 @@ theorem orth_of_comp (hiso : ∀ e, IsoStab d (Wof e)) (hmono : ∀ e e', SLe e 
   have h2 : SLe f u := fun i hi => by
     by_cases he : e i = 0
     · simp [u, he]
-    · simp [u, he, h i he hi]
+    · simp [u, h i he hi]
   exact (hmono _ _ h1).trans ((hiso u).2.trans (perpD_anti d (hmono _ _ h2)))
 
 theorem comp_of_orth (hiso : ∀ e, IsoStab d (Wof e)) (hu : ∀ W, IsoStab d W → ∃! e, Wof e = W)

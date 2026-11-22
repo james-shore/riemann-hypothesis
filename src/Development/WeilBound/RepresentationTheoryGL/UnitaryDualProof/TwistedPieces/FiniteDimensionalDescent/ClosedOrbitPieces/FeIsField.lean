@@ -30,7 +30,7 @@ variable (hA : ∀ a ∈ A, ∀ b ∈ A, a * b = b * a) (he : e ∈ A)
 lemma Th_rho (a : A) : Th e (rho hA he a) = e * a.1 := by
   apply mat_ext; intro v
   rw [Th_mulVec, rho_apply]
-  simp [Matrix.mulVecLin_apply, Matrix.mulVec_mulVec, hA _ a.2 _ he]
+  simp [Matrix.mulVec_mulVec, hA _ a.2 _ he]
 
 abbrev Fe : Subalgebra k (Module.End k (Wd e)) := (rho hA he).range
 

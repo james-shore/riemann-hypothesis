@@ -19,9 +19,9 @@ private def blk {H K : Type} [Group H] [CommRing K] (ρ : H →* GL (Fin 3) K)
         obtain ⟨a1, a2, a3, a4⟩ := hz g
         obtain ⟨b1, b2, b3, b4⟩ := hz h
         ext i j
-        simp only [map_mul, Matrix.mul_apply, Matrix.submatrix_apply, Matrix.transpose_apply]
+        simp only [map_mul, Matrix.mul_apply, Matrix.submatrix_apply]
         fin_cases i <;> fin_cases j <;>
-          simp [map_mul, Matrix.mul_apply, Fin.sum_univ_three, Fin.sum_univ_two, a1, a2, a3, a4, b1, b2, b3, b4] }
+          simp [Fin.sum_univ_three, Fin.sum_univ_two, a1, a4, b2, b3] }
 
 private def mid {H K : Type} [Group H] [CommRing K] (ρ : H →* GL (Fin 3) K)
     (hz : ∀ g, mat ρ g 0 1 = 0 ∧ mat ρ g 1 0 = 0 ∧ mat ρ g 1 2 = 0 ∧ mat ρ g 2 1 = 0) :
@@ -34,9 +34,9 @@ private def mid {H K : Type} [Group H] [CommRing K] (ρ : H →* GL (Fin 3) K)
       map_mul' := fun g h => by
         obtain ⟨a1, a2, a3, a4⟩ := hz g
         ext i j
-        simp only [map_mul, Matrix.mul_apply, Matrix.submatrix_apply, Matrix.transpose_apply]
+        simp only [map_mul, Matrix.mul_apply, Matrix.submatrix_apply]
         fin_cases i; fin_cases j
-        simp [map_mul, Matrix.mul_apply, Fin.sum_univ_three, a2, a3] }
+        simp [Fin.sum_univ_three, a2, a3] }
 
 private def eqv : Fin 3 ≃ Fin 2 ⊕ Fin 1 where
   toFun := ![.inl 0, .inr 0, .inl 1]
@@ -122,7 +122,7 @@ private theorem blk_form {K : Type} [CommRing K] (X Y : Matrix (Fin 3) (Fin 3) K
     simp only [Matrix.mul_apply, Matrix.transpose_apply, Matrix.submatrix_apply, Matrix.smul_apply,
       Fin.sum_univ_two, Fin.sum_univ_three] at this ⊢
     fin_cases i <;> fin_cases j <;>
-      simp [Jmat, x1, x2, x3, x4, y1, y2, y3, y4] at this ⊢ <;>
+      simp [Jmat, x2, x3, y2, y3] at this ⊢ <;>
       linear_combination this
   · ext i j
     have := he 1 1
@@ -130,7 +130,7 @@ private theorem blk_form {K : Type} [CommRing K] (X Y : Matrix (Fin 3) (Fin 3) K
       Fin.sum_univ_one, Fin.sum_univ_three] at this ⊢
     fin_cases i
     fin_cases j
-    simp [Jmat, x1, x2, x3, x4, y1, y2, y3, y4] at this ⊢
+    simp [Jmat, x1, x4, y1, y4] at this ⊢
     linear_combination this
 
 private def JU (K : Type) [CommRing K] (n : ℕ) : GL (Fin n) K := ⟨Jmat K n, Jmat K n, Jmat_mul_Jmat n, Jmat_mul_Jmat n⟩

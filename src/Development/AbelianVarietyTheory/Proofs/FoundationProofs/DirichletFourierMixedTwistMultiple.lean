@@ -53,9 +53,9 @@ theorem hat_mix_twist : ∀ (N l : ℕ) (ν : DirichletCharacter ℂ N) (ω : Di
     rw [Finset.mul_sum]
     refine Fintype.sum_congr _ _ (fun q => ?_)
     have hN1 : ZMod.castHom (Dvd.intro l rfl : N ∣ N * l) (ZMod N) (f (p, q)) = p * l := by
-      simp only [f, hcN]; push_cast; simp [ZMod.natCast_self]
+      simp only [f, hcN]; push_cast; simp
     have hl1 : ZMod.castHom (Dvd.intro_left N rfl : l ∣ N * l) (ZMod l) (f (p, q)) = q * N := by
-      simp only [f, hcl]; push_cast; simp [ZMod.natCast_self]
+      simp only [f, hcl]; push_cast; simp
     have htq := htw ((a : ZMod l) * N) q haN
     have hval : ν (-(c : ZMod N) * ZMod.castHom (Dvd.intro l rfl : N ∣ N * l) (ZMod N) (f (p, q))) *
         φ ((a : ZMod l) * ZMod.castHom (Dvd.intro_left N rfl : l ∣ N * l) (ZMod l) (f (p, q)))

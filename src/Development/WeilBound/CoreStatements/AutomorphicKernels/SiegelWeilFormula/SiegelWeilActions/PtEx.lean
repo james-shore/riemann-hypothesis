@@ -25,8 +25,6 @@ theorem ptEx' (d : SD σ) {ε : ℤˣ} (hε : d.b.1ᵀ * dbl d.Y.J * d.b.1.map �
   have hM'M : ∀ c, M' c * M c = 1 := fun c => by
     first
     | exact mul_eq_one_comm.mp (h c)
-    | exact Matrix.mul_eq_one_comm.mp (h c)
-    | exact Matrix.mul_eq_one_symm (h c)
   let N : X → Matrix (Fin d.n ⊕ Fin d.n) (Fin d.n ⊕ Fin d.n) (AE F E) :=
     fun c => incM F d.b.1 * M c * incM F (d.b⁻¹).1
   let N' : X → Matrix (Fin d.n ⊕ Fin d.n) (Fin d.n ⊕ Fin d.n) (AE F E) :=

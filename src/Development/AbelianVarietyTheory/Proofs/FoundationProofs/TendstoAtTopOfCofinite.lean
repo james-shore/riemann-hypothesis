@@ -56,7 +56,6 @@ lemma symS_shift_tendsto (r : ℕ) : ∀ f : ℤ → ℂ, Tendsto f cofinite (�
     refine (tendsto_congr fun R => ?_).1 this
     have e : (fun d : ℤ => f (d + ((r + 1 : ℕ) : ℤ))) = fun d => f (d + (r : ℤ) + 1) := by
       funext d; push_cast; ring_nf
-    beta_reduce
     rw [e]; ring
 
 noncomputable def mean (L : ℕ) (k : ℤ → ℂ) (d : ℤ) : ℂ := (L : ℂ)⁻¹ * ∑ r ∈ Finset.range L, k (d + r)

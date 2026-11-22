@@ -151,12 +151,7 @@ theorem span_inner {n : ℕ} (L M : Hn n →L[ℂ] Hn n) (s t : Set (Hn n))
     ∀ u ∈ Submodule.span ℂ s, ∀ z ∈ Submodule.span ℂ t, ⟪L u, z⟫_ℂ + ⟪u, M z⟫_ℂ = 0 := by
   first
   | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact @_root_.GlobalTheory.InnerSumZeroSpan.main
-  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact _root_.GlobalTheory.InnerSumZeroSpan.main
-  | exact @_root_.GlobalTheory.InnerSumZeroSpan.main
-  | exact _root_.GlobalTheory.InnerSumZeroSpan.main
-  | (apply _root_.GlobalTheory.InnerSumZeroSpan.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.InnerSumZeroSpan.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.InnerSumZeroSpan.main <;> first | assumption | infer_instance)
+  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll]))
   | (intros; exact _root_.GlobalTheory.InnerSumZeroSpan.main ..)
 
 theorem sp_orth (w : InfinitePlace I.E) {A B : Submodule (𝓞 I.E) (Fin I.n → I.E)}

@@ -29,7 +29,7 @@ theorem aeval_ringHom {σ A B : Type*} [CommRing A] [CommRing B] {algA : Algebra
     (φ : A →+* B) (a : σ → A) (P : MvPolynomial σ ℤ) :
     MvPolynomial.aeval (fun i => φ (a i)) P = φ (MvPolynomial.aeval a P) := by
   induction P using MvPolynomial.induction_on with
-  | C c => simp only [MvPolynomial.aeval_C, eq_intCast, map_intCast]
+  | C c => simp only [eq_intCast, map_intCast]
   | add p q hp hq => simp only [map_add, hp, hq]
   | mul_X p i hp => simp only [map_mul, hp, MvPolynomial.aeval_X]
 

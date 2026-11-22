@@ -66,12 +66,6 @@ theorem rk_filV_sep (x : V ⊗[Qp] BdR) (hx : ∀ a, x ∈ FilV PD (LL := LL) (V
     first
     | exact ⟨TensorProduct.equivFinsuppOfBasisLeft (Module.Free.chooseBasis Qp V), fun v y i =>
         TensorProduct.equivFinsuppOfBasisLeft_apply_tmul_apply _ _ _ _⟩
-    | exact ⟨TensorProduct.equivFinsuppOfBasisLeft (Module.Free.chooseBasis Qp V), fun v y i => by
-        simp [TensorProduct.equivFinsuppOfBasisLeft]⟩
-    | exact ⟨(TensorProduct.congr (Module.Free.chooseBasis Qp V).repr (LinearEquiv.refl Qp BdR)).trans
-        (TensorProduct.finsuppScalarLeft _ _ _), fun v y i => by simp⟩
-    | exact ⟨(TensorProduct.congr (Module.Free.chooseBasis Qp V).repr (LinearEquiv.refl Qp BdR)).trans
-        TensorProduct.finsuppScalarLeft, fun v y i => by simp⟩
   have hmem : ∀ a, ∀ z ∈ FilV PD (LL := LL) (V := V) a, ∀ i, e z i ∈ PD.Fil a := by
     intro a z hz i
     obtain ⟨y, rfl⟩ := hz

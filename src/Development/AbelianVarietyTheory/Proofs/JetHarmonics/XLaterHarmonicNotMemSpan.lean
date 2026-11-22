@@ -44,7 +44,7 @@ theorem isHarmonic_iff_cmType {n : ℕ} (P : MvPolynomial (LtN Dw n) c.F) :
         ∑ b : Fin n, MvPolynomial.pderiv (⟨τ, i, b⟩ : LtN Dw n)
           (MvPolynomial.pderiv (⟨ComplexEmbedding.conjugate τ, i', b⟩ : LtN Dw n) P) = 0 := by
     simp only [harmK, Submodule.mem_iInf, LinearMap.mem_ker, lap,
-      LinearMap.sum_apply, LinearMap.smul_apply, Matrix.one_apply, ite_smul, one_smul, zero_smul,
+      LinearMap.sum_apply, Matrix.one_apply, ite_smul, one_smul, zero_smul,
       Finset.sum_ite_eq, Finset.mem_univ, if_true]
     rfl
   rw [e]

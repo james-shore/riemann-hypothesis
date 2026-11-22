@@ -451,7 +451,7 @@ theorem _root_.GlobalTheory.CycFr.exists_frame [IsDiscreteValuationRing O]
       intro b
       set g : O⟦X⟧ →ₐ[O] O⟦X⟧ := σ'.toAlgHom.comp (j.comp (lev τ).symm.toAlgHom) with hg
       have hgX : X ∣ g X := by
-        simp only [hg, AlgHom.comp_apply, AlgEquiv.toAlgHom_eq_coe, AlgHom.coe_coe]
+        simp only [hg, AlgHom.comp_apply]
         show X ∣ σ' (j ((lev τ).symm X))
         rw [hσinv, map_sub, hjX, hjC, hw, map_mul, map_sub, hσ', hσ'C, add_sub_cancel_right]
         exact dvd_mul_right _ _
@@ -466,8 +466,8 @@ theorem _root_.GlobalTheory.CycFr.exists_frame [IsDiscreteValuationRing O]
       rw [pow_one] at h1
       obtain ⟨q, hq⟩ := h1
       have h2 := congrArg (fun y => constantCoeff (σ' y)) hq
-      simp only [map_sub, map_mul, map_pow, map_add, map_one, hσ', hσ'C, constantCoeff_X,
-        constantCoeff_C, zero_add, add_sub_cancel_left, hζτ.pow_eq_one, sub_self, zero_mul] at h2
+      simp only [map_sub, map_mul, map_pow, map_add, map_one, hσ', constantCoeff_X,
+        constantCoeff_C, zero_add] at h2
       rw [add_sub_cancel, hζτ.pow_eq_one, sub_self, zero_mul] at h2
       exact sub_eq_zero.mp h2
     have hB : ∀ b, constantCoeff (σ' (_root_.GlobalTheory.CycFr.act O (u : ℤ_[l]) b)) =
@@ -499,8 +499,7 @@ theorem _root_.GlobalTheory.CycFr.exists_frame [IsDiscreteValuationRing O]
         zero_mul, zero_add] at hd1
       rw [← hd1, hP]
       simp only [map_sub, _root_.GlobalTheory.CycFr.act_X, _root_.GlobalTheory.CycFr.act_C,
-        derivative_C, Derivation.map_one_eq_zero, sub_zero, map_zero,
-        _root_.GlobalTheory.CycFr.derivative_bin, map_mul, hσ'C, constantCoeff_C]
+        derivative_C, Derivation.map_one_eq_zero, sub_zero, _root_.GlobalTheory.CycFr.derivative_bin, map_mul, hσ'C, constantCoeff_C]
       rw [← _root_.GlobalTheory.CycFr.act_one_add_X,
         hB2 ((u : ℤ_[l]) - 1) ((0 : ℕ) : ℤ_[l]) _ (by rw [Nat.cast_zero, sub_zero]; exact hu.symm.dvd),
         _root_.GlobalTheory.CycFr.act_one_add_X, _root_.GlobalTheory.CycFr.bin_nat, pow_zero,

@@ -316,7 +316,7 @@ theorem ubasis_at (ξ : Fin r → E) (z0 x0 : Frame X.Ψ r) (hξ0 : ξ ≠ 0) (h
           refine Finset.sum_congr rfl fun a _ => ?_
           ring
       _ = ∑ k, c k * conj (c k) := by
-          simp only [hO, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq',
+          simp only [hO, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq',
             Finset.mem_univ, if_true]
       _ = ((∑ k, ‖c k‖ ^ 2 : ℝ) : ℂ) := by
           push_cast

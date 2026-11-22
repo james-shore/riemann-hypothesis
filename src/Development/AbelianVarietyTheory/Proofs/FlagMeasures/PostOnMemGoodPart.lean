@@ -34,7 +34,6 @@ theorem isMultMap_rTr {J J' : Set (GA D V)} {χ χ' : GA D V → ℂ} {x : GA D 
   lev v k hk g := by
     change T v (g * k * x) = χ' k * T v (g * x)
     rw [(hJ k hk).2, ← h.lev v _ (hJ k hk).1]
-    congr 1
     group
   equiv τ g hg v w hw := by
     funext y

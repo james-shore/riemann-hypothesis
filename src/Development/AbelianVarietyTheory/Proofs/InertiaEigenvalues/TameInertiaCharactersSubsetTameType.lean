@@ -43,7 +43,7 @@ theorem xi_mem_MMl {O K : Type} [CommRing O] [NormedField K] [IsUltrametricDist 
   refine ⟨n, ?_⟩
   have h1 : (((l : S O K e) : K⟦X⟧)) ^ n * cst d τ i = algebraMap O K⟦X⟧ b := by
     rw [IsScalarTower.algebraMap_apply O K K⟦X⟧, ← hb]
-    simp [cst, PowerSeries.algebraMap_apply]
+    simp [cst]
   rw [h1]
   exact Subalgebra.algebraMap_mem _ b
 

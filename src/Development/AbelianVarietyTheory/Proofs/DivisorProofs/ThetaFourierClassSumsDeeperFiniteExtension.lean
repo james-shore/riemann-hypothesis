@@ -30,7 +30,5 @@ theorem classSums_deeper : ∀ (g n : ℕ) (F : SFam g n (zetaAway n)) (W : Matr
   rw [smul_zero, add_zero]
   first
   | (rw [hm]; exact map_zsmul γ c x)
-  | (simp only [hm]; exact map_zsmul γ c x)
-  | exact map_smul γ c x
 
 end GlobalTheory.Poinc

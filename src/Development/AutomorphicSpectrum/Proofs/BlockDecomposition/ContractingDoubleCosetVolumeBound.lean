@@ -46,7 +46,7 @@ theorem sum_modExp {h : ℕ} (d : Fin h → ℕ) (j : Fin h) :
         split_ifs <;> ring
       · have hb' : j < b := not_le.1 hb
         have h3 : a < b := lt_of_le_of_lt ha hb'
-        simp [hb, hb', h3, h3.le, not_lt.2 h3.le]
+        simp [hb, hb', h3, not_lt.2 h3.le]
     · simp [ha]
   rw [Finset.sum_congr rfl fun a _ => h2 a, Finset.sum_add_distrib, ← hT, hT0, zero_add,
     Finset.sum_mul]

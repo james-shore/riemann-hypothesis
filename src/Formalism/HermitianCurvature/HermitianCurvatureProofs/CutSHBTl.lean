@@ -32,8 +32,7 @@ theorem boundary_torus_adjoin : CutSH.BTlAdjoin := by
     intro Y i j
     fin_cases i <;> fin_cases j <;>
       simp only [Wd.Ts, site, Formalism.YangianSpanCharacter.T.Tm, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero,
-        Matrix.cons_val_one, Matrix.head_cons, Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_fin_const,
-        Fin.zero_eta, Fin.mk_one]
+        Matrix.cons_val_one, Matrix.empty_val', Matrix.cons_val_fin_one, Fin.zero_eta, Fin.mk_one]
     · exact gadd _ _ (galg Y) gp
     · exact gneg _ gc
     · exact gci

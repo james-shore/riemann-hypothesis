@@ -51,7 +51,7 @@ theorem cmp_semilinear_pair : ∀ (l : ℕ) [Fact l.Prime] (a e : ℕ) [NeZero a
     have hcB : (fun k => toB l O (c k)) = (Pi.single i 1 : ι → OB l O) := by
       funext k; by_cases hk : k = i
       · subst hk; simp [hc]
-      · simp [hc, Pi.single_apply, hk]
+      · simp [hc, hk]
     obtain ⟨z, hz⟩ := hL (inclL t ϖ P c) ⟨c, rfl⟩
     rw [hsmulL] at hz
     have hz1 : toB l O μ • jB (Pi.single i 1) = TWincl (toB l O) T z := by
@@ -59,7 +59,7 @@ theorem cmp_semilinear_pair : ∀ (l : ℕ) [Fact l.Prime] (a e : ℕ) [NeZero a
     have hσc : (fun k => σA ((μ • c) k)) = σA μ • c := by
       funext k; by_cases hk : k = i
       · subst hk; simp [hc]
-      · simp [hc, Pi.single_apply, hk]
+      · simp [hc, hk]
     have hF : I.j (inclL t ϖ P (σA μ • (Γ *ᵥ c))) =
         TWincl (inclO l O) T (lam • TensorProduct.map σA.toLinearMap h z) := by
       rw [← Matrix.mulVec_smul, ← hσc, ← h5, map_smul, h3, hz, hmapW, GlobalTheory.Cyc.Decomp.TWincl_smul]
@@ -97,7 +97,7 @@ theorem cmp_semilinear_pair : ∀ (l : ℕ) [Fact l.Prime] (a e : ℕ) [NeZero a
     have : (fun k => σB ((Pi.single i 1 : ι → OB l O) k)) = Pi.single i 1 := by
       funext k; by_cases hk : k = i
       · subst hk; simp
-      · simp [Pi.single_apply, hk]
+      · simp [hk]
     rw [this, Matrix.mulVec_single]
     convert key i using 2
     funext k; simp

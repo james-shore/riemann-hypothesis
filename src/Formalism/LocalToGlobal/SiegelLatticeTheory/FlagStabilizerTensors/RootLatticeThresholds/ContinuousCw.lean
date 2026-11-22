@@ -58,7 +58,7 @@ theorem comb_mem (X : Formalism.L2.SG.HidaSetting.HidaSetting D) (w : D.what₂.
   by_cases h : (A - 1) a'' a' = 0
   · rw [h, zero_smul]; exact Submodule.zero_mem _
   · have hne : a'' ≠ a' := by intro he; subst he; apply h; simp [hA.1]
-    have hA0 : A a'' a' ≠ 0 := by intro h0; apply h; simp [h0, Matrix.one_apply, hne]
+    have hA0 : A a'' a' ≠ 0 := by intro h0; apply h; simp [h0, hne]
     have hlt : a'' < a' := lt_of_le_of_ne (hA.2 _ _ hA0).1 hne
     exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨a'', hlt, rfl⟩)
 

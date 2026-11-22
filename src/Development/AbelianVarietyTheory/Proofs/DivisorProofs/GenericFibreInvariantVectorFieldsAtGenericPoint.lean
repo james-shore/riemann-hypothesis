@@ -45,7 +45,7 @@ theorem red_of_isTr {R : Type} [CommRing R] {G : Over (Sp R)} [GrpObj G] [IsComm
   have e0 : spMap (TrivSqZeroExt.fstHom S S S).toRingHom ≫ spMap (algebraMap S (DualNumber S)) = 𝟙 _ := by
     rw [sp_comp]
     have : (TrivSqZeroExt.fstHom S S S).toRingHom.comp (algebraMap S (DualNumber S)) = RingHom.id S := by
-      ext r; simp [TrivSqZeroExt.algebraMap_eq_inl]
+      ext r; simp
     rw [this]; exact Spec.map_id _
   let red : Over.mk (g ≫ G.hom) ⟶ tEpsG (g ≫ G.hom) :=
     Over.homMk (spMap (TrivSqZeroExt.fstHom S S S).toRingHom) (by

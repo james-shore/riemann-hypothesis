@@ -54,7 +54,7 @@ private theorem algNorm_diag {a : Weil h →* (w.adicCompletion E)ˣ} {ha : IsLo
   have e := GlobalTheory.RecT.SphLaw.sat ((GlobalTheory.RecT.lawsT_iff a ha rc).2 L) (IrrGL.of σ.ρ σ.smooth σ.irred) α hx
   rw [algNorm, L.nu, e, WD.lpTw_mk]
   refine WD.sound ⟨.refl _ _, fun g v => funext fun i => ?_, fun v => rfl⟩
-  simp [mul_zpow, mul_comm, mul_left_comm, mul_assoc]
+  simp [mul_zpow, mul_comm, mul_assoc]
   change (_ : ℂ) * ((_ : ℂ) * v i) = _ * (_ * v i)
   ring
 end UpperTheory.V.Z.Kato.WeilSphericalRecords

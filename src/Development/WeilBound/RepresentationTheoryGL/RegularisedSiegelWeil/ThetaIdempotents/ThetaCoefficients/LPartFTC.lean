@@ -90,7 +90,7 @@ theorem gQ_unit {K : Type} [Field K] (σ : K →+* K) (hn : r + t = n) :
   unfold PositivityTheory.GramSchwartzFunctions.EC.IsUnitary PositivityTheory.GramSchwartzFunctions.EC.Jm
   rw [cT_blk4, cT_PmT, cT_zero]
   simp only [GlobalTheory.CompanionTheory.EisCovar.submatrix_fromBlocks_mul, Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add, Matrix.mul_one,
-    Matrix.mul_neg, Matrix.neg_mul, Pm_mul_alt, Matrix.one_mul, neg_zero]
+    Matrix.mul_neg, Matrix.neg_mul, Pm_mul_alt, neg_zero]
 
 theorem wr_unit {K : Type} [Field K] (σ : K →+* K) (hn : r + t = n) :
     IsUnit (wr K n r).det ∧ IsUnitary σ (PositivityTheory.GramSchwartzFunctions.EC.Jm K n) (wr K n r) := by

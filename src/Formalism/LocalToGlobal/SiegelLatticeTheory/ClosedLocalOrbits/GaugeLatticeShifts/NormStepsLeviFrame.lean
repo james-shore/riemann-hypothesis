@@ -158,7 +158,7 @@ theorem lf_det_adj_cong {A : Type*} [CommRing A] {κ : Type*} [Fintype κ] [Deci
   let t' : Matrix κ κ O := fun i j => ⟨t i j, ht i j⟩
   have hmap : 1 + (g : A) • t = (1 + (g : O) • t').map O.subtype := by
     ext i j
-    by_cases h : i = j <;> simp [Matrix.one_apply, h, t'] <;> rfl
+    by_cases h : i = j <;> simp [h, t'] <;> rfl
   have hg : Ideal.Quotient.mk (Ideal.span {(g : O)}) (g : O) = 0 :=
     Ideal.Quotient.eq_zero_iff_mem.2 (Ideal.subset_span rfl)
   have hone : (1 + (g : O) • t').map (Ideal.Quotient.mk (Ideal.span {(g : O)})) = 1 := by

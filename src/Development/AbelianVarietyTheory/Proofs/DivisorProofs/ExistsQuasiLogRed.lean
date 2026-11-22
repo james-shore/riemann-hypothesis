@@ -23,8 +23,6 @@ theorem exists_seq_of_step {A : Type} (P : ℕ → A → Prop) (Q : ℕ → A �
   | exact @_root_.GlobalTheory.SequenceFromIteration.exists_seq_of_step
   | exact _root_.GlobalTheory.SequenceFromIteration.exists_seq_of_step
   | (apply _root_.GlobalTheory.SequenceFromIteration.exists_seq_of_step <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SequenceFromIteration.exists_seq_of_step <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SequenceFromIteration.exists_seq_of_step <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SequenceFromIteration.exists_seq_of_step ..)
 
 theorem exists_limit_of_steps {R σ : Type} [CommRing R] (F : ℕ → MvPowerSeries σ R)

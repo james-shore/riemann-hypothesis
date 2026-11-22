@@ -65,7 +65,6 @@ theorem good_stage : ∀ (T O : Type) [CommRing T] [IsDomain T] [IsLocalRing T] 
     first
       | exact Localization.AtPrime.comap_maximalIdeal (Localization.AtPrime P) P
       | exact Localization.AtPrime.comap_maximalIdeal
-      | simpa [Ideal.under] using Localization.AtPrime.comap_maximalIdeal (Localization.AtPrime P) P
   obtain ⟨A', _, _, _, _, _, _, ι, α, hια, hα⟩ := GlobalTheory.T.exists_local_hom_to_strictly_henselian_normal T hT A i hil
   obtain ⟨E', _, _, _, Q', _, hQ', β, γ, h1, h2, h3⟩ :=
     GlobalTheory.T.exists_localStage_tensor_polynomial_origin T O hO A i hil EA QA hQA jA hjA A' ι α hια hα

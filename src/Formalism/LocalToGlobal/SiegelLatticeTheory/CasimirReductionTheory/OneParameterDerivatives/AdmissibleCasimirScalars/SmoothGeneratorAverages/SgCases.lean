@@ -45,7 +45,7 @@ theorem gen_mem (ε : Fin n → Bool) (p : Fin n × Fin n) : inG ε (gen ε p) :
     simp only [if_true, Matrix.smul_apply, smul_eq_mul, Matrix.single_apply]
     by_cases h : a = i ∧ a = j
     · obtain ⟨rfl, rfl⟩ := h
-      cases ha : ε a <;> simp [ha]
+      cases ha : ε a <;> simp
     · have h' : ¬ (a = j ∧ a = i) := fun h2 => h ⟨h2.2, h2.1⟩
       simp [h, h']
   · have hba : ¬ b = a := Ne.symm hab
@@ -54,10 +54,10 @@ theorem gen_mem (ε : Fin n → Bool) (p : Fin n × Fin n) : inG ε (gen ε p) :
         Matrix.single_apply]
       by_cases h1 : a = i ∧ b = j
       · obtain ⟨rfl, rfl⟩ := h1
-        cases ha : ε a <;> cases hb : ε b <;> simp [ha, hb, hab, hba]
+        cases ha : ε a <;> cases hb : ε b <;> simp [hab, hba]
       · by_cases h2 : b = i ∧ a = j
         · obtain ⟨rfl, rfl⟩ := h2
-          cases ha : ε a <;> cases hb : ε b <;> simp [ha, hb, hab, hba]
+          cases ha : ε a <;> cases hb : ε b <;> simp [hab, hba]
         · have h1' : ¬ (a = j ∧ b = i) := fun h => h2 ⟨h.2, h.1⟩
           have h2' : ¬ (b = j ∧ a = i) := fun h => h1 ⟨h.2, h.1⟩
           simp [h1, h2, h1', h2']
@@ -65,10 +65,10 @@ theorem gen_mem (ε : Fin n → Bool) (p : Fin n × Fin n) : inG ε (gen ε p) :
         Matrix.single_apply]
       by_cases h1 : a = i ∧ b = j
       · obtain ⟨rfl, rfl⟩ := h1
-        cases ha : ε a <;> cases hb : ε b <;> simp [ha, hb, hab, hba] <;> ring1
+        cases ha : ε a <;> cases hb : ε b <;> simp [hab, hba]
       · by_cases h2 : b = i ∧ a = j
         · obtain ⟨rfl, rfl⟩ := h2
-          cases ha : ε a <;> cases hb : ε b <;> simp [ha, hb, hab, hba] <;> ring1
+          cases ha : ε a <;> cases hb : ε b <;> simp [hab, hba]
         · have h1' : ¬ (a = j ∧ b = i) := fun h => h2 ⟨h.2, h.1⟩
           have h2' : ¬ (b = j ∧ a = i) := fun h => h1 ⟨h.2, h.1⟩
           simp [h1, h2, h1', h2']
@@ -86,11 +86,11 @@ theorem sum_eq (hC : Calc ε σ D) {c : ℝ} (hc : ∀ v ∈ D, Cas ε σ v = (c
     refine Finset.sum_congr rfl fun p _ => ?_
     rw [inner_smul_left, hC.skew _ (hgen p) _ (hC.mem _ (hgen p) v hv) v hv,
       inner_self_eq_norm_sq_to_K]
-    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im] <;> ring
+    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im]
   have h2 : ((c * ‖v‖ ^ 2 : ℝ) : ℂ) =
       ((∑ p, wt p * sg ε p * ‖dS σ (gen ε p) v‖ ^ 2 : ℝ) : ℂ) := by
     rw [Complex.ofReal_sum, ← key, hc v hv, inner_smul_left, inner_self_eq_norm_sq_to_K]
-    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im] <;> ring
+    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im]
   exact (Complex.ofReal_inj.1 h2).symm
 
 end GeneratorWeights

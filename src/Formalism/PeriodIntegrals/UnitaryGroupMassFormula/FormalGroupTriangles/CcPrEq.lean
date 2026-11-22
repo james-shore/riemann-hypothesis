@@ -17,8 +17,6 @@ theorem cc_pr_eq {x y : MvPowerSeries (Fin 3) ℂ_[p]} (hx : MvPowerSeries.const
   have ha : MvPowerSeries.HasSubst ![x, y] := by
     first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero hz
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun i => by rw [hz i]; exact IsNilpotent.zero)
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_zero' hz
   rw [MvPowerSeries.constantCoeff_subst ha, finsum_eq_single _ 0]
   · simp
   · intro d hd

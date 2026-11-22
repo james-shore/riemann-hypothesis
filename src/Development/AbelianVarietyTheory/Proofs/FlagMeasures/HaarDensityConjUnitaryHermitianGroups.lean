@@ -227,7 +227,7 @@ theorem volume_adL {m : ℕ} {H H' A B : Matrix (Fin m) (Fin m) ℂ} (hH : Hᴴ 
   refine volume_image_eq (adL hAB h h') σ τ (fun x => Subtype.ext (cj_cj hH2 _))
     (fun x => Subtype.ext (cj_cj hH2' _)) (fun x y => ?_) s
   rw [Submodule.coe_inner, Submodule.coe_inner]
-  simp only [σ, τ, LinearMap.restrict_coe_apply, LinearEquiv.coe_coe, adL_coe]
+  simp only [σ, τ, LinearMap.restrict_coe_apply, adL_coe]
   simp only [cj_apply, unrealify_rl]
   rw [← rl_unrealify (y : EE m), inner_rl, inner_rl, unrealify_rl]
   congr 1

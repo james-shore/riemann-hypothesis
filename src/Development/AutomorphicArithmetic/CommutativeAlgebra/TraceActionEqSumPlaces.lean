@@ -29,7 +29,7 @@ private theorem psiE_F {p : ℕ} [Fact p.Prime] (G : HTGroup p) (σ : G.F →+* 
       (InfinitePlace.embedding_mk_eq σ).resolve_left h
     rw [RingHom.comp_apply, G.psi_F, h2]
     ext i j
-    by_cases hij : i = j <;> simp [Matrix.scalar_apply, Matrix.diagonal_apply, hij, ComplexEmbedding.conjugate_coe_eq]
+    by_cases hij : i = j <;> simp [Matrix.scalar_apply, hij, ComplexEmbedding.conjugate_coe_eq]
 
 private theorem sum_psiE {p : ℕ} [Fact p.Prime] (G : HTGroup p) (c : G.C) :
     ∑ σ : G.F →+* ℂ, Matrix.trace (psiE G σ c) =

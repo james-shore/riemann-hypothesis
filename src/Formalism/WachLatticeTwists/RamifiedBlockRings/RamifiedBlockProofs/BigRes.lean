@@ -15,7 +15,6 @@ theorem exists_irreducible_big (k : Type) [Field k] [Finite k] (N : ℕ) :
   haveI hKinf : Infinite (AlgebraicClosure k) := by
     first
     | exact inferInstance
-    | exact IsAlgClosed.instInfinite
   obtain ⟨S, hS⟩ := Infinite.exists_subset_card_eq (AlgebraicClosure k) (N + 1)
   haveI hfd : FiniteDimensional k (IntermediateField.adjoin k (S : Set (AlgebraicClosure k))) :=
     IntermediateField.finiteDimensional_adjoin (fun x _ => Algebra.IsIntegral.isIntegral x)
@@ -25,7 +24,6 @@ theorem exists_irreducible_big (k : Type) [Field k] [Finite k] (N : ℕ) :
       IntermediateField.adjoin k {α} = ⊤ := by
     first
     | exact Field.exists_primitive_element_of_finite_top k _
-    | exact Field.exists_primitive_element k _
   have hint : IsIntegral k α := Algebra.IsIntegral.isIntegral α
   refine ⟨minpoly k α, minpoly.monic hint, minpoly.irreducible hint, ?_⟩
   have e1 : Cardinal.mk (AdjoinRoot (minpoly k α)) =

@@ -141,7 +141,7 @@ theorem pWp_span (H : D.Hyp) {x : n → A} (hx : x ∈ Submodule.span A (Set.ran
     pWp D x = 0 := by
   rw [Submodule.mem_span_range_iff_exists_fun] at hx
   obtain ⟨c, rfl⟩ := hx
-  simp [pWp_apply, pXap_lemma_10, pXvap_lemma_11, hRsum_lemma_5, hRsmul_lemma_4, H.ee, hfe_lemma_7 H]
+  simp [pWp_apply, pXap_lemma_10, pXvap_lemma_11, H.ee, hfe_lemma_7 H]
 
 theorem pWp_e (H : D.Hyp) (c : Fin r) : pWp D (D.e c) = 0 := pWp_span H (Submodule.subset_span ⟨c, rfl⟩)
 

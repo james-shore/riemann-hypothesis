@@ -205,7 +205,6 @@ theorem tc_left_int {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (hχ : 
     have hu' : -T < u ∧ u ≤ T := by
       first
         | exact hu
-        | (rw [Set.uIoc_of_le (by linarith)] at hu; exact hu)
     exact hpt u (abs_le.2 ⟨hu'.1.le, hu'.2⟩)
   rw [intervalIntegral.integral_const_mul]
   apply mul_le_mul_of_nonneg_left _ hK

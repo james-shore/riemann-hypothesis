@@ -57,7 +57,7 @@ theorem sgStar_cube_det_cplx : ∀ (Λ : AddSubgroup ℂ), IsLat Λ → ∀ v : 
       (fun h => hy 0 ((hL _).2 h)) (fun h => hy 1 ((hL _).2 h)) (fun h => hy 2 ((hL _).2 h))
     rw [← hσ] at h
     rw [Matrix.det_fin_three] at h ⊢
-    simp [Matrix.vecHead, Matrix.vecTail] at h ⊢
+    simp at h ⊢
     rw [hB _ (hy 0), hB _ (hy 1), hB _ (hy 2), hC _ (hy 0), hC _ (hy 1), hC _ (hy 2)]
     simp only [colA]
     linear_combination h

@@ -16,7 +16,7 @@ theorem UpperTheory.Gal.CertificateRingHomMap.pLevCompact_of :
   obtain ⟨F, -, hF⟩ := hJ.elim_nhds_subcover
     (fun a => {y : GLw n w₀ | a⁻¹ * y ∈ GlobalTheory.LFun.KGL w₀ n}) (fun a _ => by
       refine IsOpen.mem_nhds (hKo.preimage (continuous_const.mul continuous_id)) ?_
-      simp [Subgroup.one_mem])
+      simp)
   have hcov : IsCompact (⋃ a ∈ F, (fun x : GUf E n => loc hw₀ a * x) ''
       (lev (E := E) (n := n) ∅ (fun _ => ⊤) : Set (GUf E n))) :=
     F.isCompact_biUnion fun a _ => hK₁.image (continuous_const.mul continuous_id)

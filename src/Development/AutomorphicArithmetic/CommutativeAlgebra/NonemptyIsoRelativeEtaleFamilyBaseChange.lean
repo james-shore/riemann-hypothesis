@@ -28,12 +28,12 @@ private def swapI {B Y W : Scheme.{0}} (p : Y ⟶ B) (ι : W ⟶ B) (U : B.Etale
   inv := swapB p ι U
   hom_inv_id := by
     apply pullback.hom_ext
-    · apply pullback.hom_ext <;> simp [swapF, swapB, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
-    · simp [swapF, swapB, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+    · apply pullback.hom_ext <;> simp [swapF, swapB, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc]
+    · simp [swapF, swapB, pullback.lift_snd, pullback.lift_fst_assoc]
   inv_hom_id := by
     apply pullback.hom_ext
-    · apply pullback.hom_ext <;> simp [swapF, swapB, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
-    · simp [swapF, swapB, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+    · apply pullback.hom_ext <;> simp [swapF, swapB, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc]
+    · simp [swapF, swapB, pullback.lift_snd, pullback.lift_fst_assoc]
 
 private def baseI {B : Scheme.{0}} (U : B.Etale) : U.left ≅ pullback (𝟙 B) U.hom where
   hom := pullback.lift U.hom (𝟙 _) (by simp)
@@ -55,13 +55,13 @@ theorem UpperTheory.nonempty_iso_relativeEtaleFamily_baseChange :
   · intro U U' a
     apply pullback.hom_ext
     · apply pullback.hom_ext <;>
-        simp [swapI, swapF, gYW, gY, resY, resYW, pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
-    · simp [swapI, swapF, gYW, gY, resY, resYW, pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+        simp [swapI, swapF, gYW, gY, resY, resYW, pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc]
+    · simp [swapI, swapF, gYW, gY, resY, resYW, pullback.map, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
   · intro U U' a
     have hw : a.left ≫ U'.hom = U.hom := by simpa using a.w
-    apply pullback.hom_ext <;> simp [baseI, gB, gY, resY, pullback.map, hw, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+    apply pullback.hom_ext <;> simp [baseI, gB, gY, resY, pullback.map, hw, pullback.lift_fst, pullback.lift_snd, pullback.lift_snd_assoc]
   · intro U U' a
     apply pullback.hom_ext <;>
-      simp [gBW, gY, resY, resBW, pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+      simp [gBW, gY, resY, resBW, pullback.map, pullback.lift_fst, pullback.lift_snd]
 
 end

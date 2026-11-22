@@ -96,7 +96,7 @@ theorem pp_of_equiv {σ ι : Type} (f : σ ≃ ι) (hσ : PP σ) : PP ι := by
       · rw [Function.update_of_ne h]
         exact (Function.update_of_ne (β := fun i => M i →ₗ[ℂ] M i) (a := f j) (a' := f s)
           (fun h' => h (f.injective h')) g (fun i => LinearMap.id)).symm
-    simp only [piOp, LinearEquiv.coe_coe]
+    simp only [piOp]
     rw [hu, PiTensorProduct.map_reindex]
 
 theorem simpleOver_sum {α β : Type} (hα : PP α) (hβ : PP β) [DecidableEq (α ⊕ β)]

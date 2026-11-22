@@ -11,8 +11,6 @@ theorem continuous_uMat_at (I : AutInst) (v : InfinitePlace I.F) :
     Continuous fun s : I.Ginf => uMat (s v) := by
   first
   | exact Units.continuous_val.comp (continuous_subtype_val.comp (continuous_apply v))
-  | fun_prop
-  | continuity
 
 theorem isClosed_mulVec_mem {n : ℕ} (x : Fin n → ℂ) (W : Submodule ℂ (Fin n → ℂ)) :
     IsClosed {M : Matrix (Fin n) (Fin n) ℂ | (M - 1) *ᵥ x ∈ W} := by

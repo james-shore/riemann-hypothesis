@@ -96,7 +96,6 @@ theorem fiber_count (ι : H →* G) (hι : Injective ι) (Γ : Subgroup G) (hΓ 
     rw [← hδ₀]
     first
     | rfl
-    | simp [Subgroup.smul_def, MulAction.Quotient.smul_mk]
   have hfo : (fun δ : H ⧸ T => DoubleCoset.mk Γ' K ((ι (Quotient.out δ))⁻¹ * x)) ⁻¹'
       {DoubleCoset.mk Γ' K ((ι h₀)⁻¹ * x)} = MulAction.orbit S δ₀ := by
     ext δ
@@ -121,7 +120,7 @@ theorem fiber_count (ι : H →* G) (hι : Injective ι) (Γ : Subgroup G) (hΓ 
       obtain ⟨t, ht⟩ := QuotientGroup.mk_out_eq_mul T ((s : H) * h₀)
       rw [hsm, ht, DoubleCoset.eq]
       refine ⟨ι t, (hT t).1 t.2, x⁻¹ * ι s * x, (hS s).1 s.2, ?_⟩
-      simp only [map_mul, map_inv]
+      simp only [map_mul]
       group
   obtain ⟨g', k, hg', hk, hy⟩ := DoubleCoset.mk_out_eq_mul Γ' K ((ι h₀)⁻¹ * x)
   set y := Quotient.out (DoubleCoset.mk Γ' K ((ι h₀)⁻¹ * x)) with hydef

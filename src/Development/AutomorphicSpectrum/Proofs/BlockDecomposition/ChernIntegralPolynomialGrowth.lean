@@ -84,7 +84,7 @@ theorem exists_poly_mInt (A : FinHolAtlas e X) (P Q : LocPot X) (hP : IsPotentia
         funext i
         by_cases e' : i = a
         · subst e'; simp
-        · simp [Function.update_of_ne e', hΨ, e']
+        · simp [hΨ, e']
       have e₁ : ∀ T : LocPot X, Function.update Ψ a T =
           fun i => if i ∈ S then P + Q.rsmul t else Function.update Φ a T i := by
         intro T

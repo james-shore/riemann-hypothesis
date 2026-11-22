@@ -117,7 +117,7 @@ theorem spread_out : ∀ (T A : Type) [CommRing T] [CommRing A] [Algebra T A]
       rw [AlgEquiv.symm_apply_eq]; rfl
     show sq (e.symm (π q)) = ψ q
     rw [this]
-    simp only [sq, Ideal.Quotient.liftₐ_apply, Ideal.Quotient.lift_mk]
+    simp only [sq, Ideal.Quotient.liftₐ_apply]
     rfl
   have huι : IsUnit ((Algebra.ofId T (Localization.AtPrime p)) f) :=
     IsLocalization.map_units (Localization.AtPrime p) (⟨f, hfp⟩ : p.primeCompl)

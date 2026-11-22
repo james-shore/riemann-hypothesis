@@ -34,7 +34,7 @@ theorem ti_cp_off (g : Matrix (Fin 2) (Fin 2) k) (p q : k) (h : p ^ 2 - q ^ 2 = 
 
 theorem ti_tn_ker (c a : k) (h : c * a = 1) : tn (c • (1 : Matrix (Fin 2) (Fin 2) k)) !![a, 0; 0, a] = 1 := by
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [tn] <;> first | linear_combination h | linear_combination -h
+  fin_cases i <;> fin_cases j <;> simp [tn] <;> first | linear_combination h
 
 theorem ti_sq_mat (p q : k) (h : p ^ 2 - q ^ 2 = 1) :
     !![p, q; -q, -p] * !![p, q; -q, -p] = (1 : Matrix (Fin 2) (Fin 2) k) := by
@@ -45,8 +45,7 @@ theorem ti_conj_mat (a b p q : k) (h : p ^ 2 - q ^ 2 = 1) :
     (!![p, q; -q, -p] * !![a, b; b, a] * !![p, q; -q, -p]) 0 0 +
       (!![p, q; -q, -p] * !![a, b; b, a] * !![p, q; -q, -p]) 0 1 = a - b := by
   first
-  | (simp [Matrix.mul_fin_two]; linear_combination (a - b) * h)
-  | (simp [Matrix.mul_apply, Fin.sum_univ_two]; linear_combination (a - b) * h)
+  | (simp; linear_combination (a - b) * h)
 
 theorem ti_cp_conj {n : ℕ} (c : k) (M : GL (Fin n) k) (N : Matrix (Fin n) (Fin n) k) :
     (c • ((M : Matrix (Fin n) (Fin n) k) * N * ((M⁻¹ : GL (Fin n) k) : Matrix (Fin n) (Fin n) k))).charpoly =
@@ -201,8 +200,6 @@ theorem tenInd : TenInd := by
     · intro h
       first
       | exact (mem_fixingSubgroup_iff _).2 fun y hy => h.commutes ⟨y, hy⟩
-      | exact fun y => h.commutes y
-      | (rw [IntermediateField.fixingSubgroup, mem_fixingSubgroup_iff]; intro y hy; exact h.commutes ⟨y, hy⟩)
     · intro x
       have e := congrArg Units.val (hP x)
       rwa [MonoidHom.coe_toHomUnits, Units.val_mul, Units.val_mul] at e
@@ -218,7 +215,7 @@ theorem tenInd : TenInd := by
         show τ x 0 0 ^ 2 - τ x 1 0 ^ 2 = 1 by linear_combination h, map_one]
     · intro h
       rw [hτ.val h, mapRep_apply, mapRep_apply, ← map_add]
-      first | rfl | simp
+      first | rfl
   exact ⟨fun t ht g g' hg' => TenInd.ti_on hy t ht g g' hg', fun t ht g hg => TenInd.ti_off hy t ht g hg,
     fun t ht g g' hg' h1 h1' => TenInd.ti_ker hy t ht g g' hg' h1 h1'⟩
 

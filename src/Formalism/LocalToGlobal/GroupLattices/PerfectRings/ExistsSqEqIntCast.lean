@@ -312,9 +312,7 @@ theorem jW_finite : (jW p n).Finite := by
           c j • b j := by
         intro j
         rw [map_mul, Algebra.smul_def]
-        congr 1 <;> first
-          | exact WittVector.teichmuller_coeff_zero p (b j)
-          | (show (jW p n _).coeff 0 = _; rw [jW_coeff, WittVector.teichmuller_coeff_zero])
+        congr 1
       simp only [h1]
       rw [sub_eq_zero, hc, b.sum_repr]
       rfl
@@ -355,7 +353,7 @@ theorem jW_finite : (jW p n).Finite := by
     obtain ⟨d, rfl⟩ := Nat.exists_eq_add_of_le hab
     have h1 : s a j - s (a + d) j = -((p : WQ p n) ^ a *
         ∑ l ∈ Finset.range d, (p : WQ p n) ^ l * A (Rm^[a + l] w) j) := by
-      simp only [Pi.sub_apply, hsdef, Finset.sum_range_add, Finset.mul_sum, pow_add]
+      simp only [hsdef, Finset.sum_range_add, Finset.mul_sum, pow_add]
       ring
     rw [Pi.sub_apply, h1, Ideal.span_singleton_pow]
     exact neg_mem (Ideal.mul_mem_right _ _ (Ideal.mem_span_singleton_self _))
@@ -435,7 +433,7 @@ theorem sq_lift (c : W2 p n) (y0 : F2 p n) (hc : c.coeff 0 = y0 * y0) (hy00 : y0
     apply WittVector.isUnit_of_coeff_zero_ne_zero
     show WittVector.constantCoeff _ ≠ 0
     simp only [Polynomial.derivative_sub, Polynomial.derivative_X_pow, Polynomial.derivative_C,
-      sub_zero, Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_pow, Polynomial.eval_X,
+      sub_zero, Polynomial.eval_mul, Polynomial.eval_pow, Polynomial.eval_X,
       Polynomial.eval_natCast, map_mul, map_pow, map_natCast, ha00]
     norm_num
     exact ⟨h2, hy00⟩

@@ -485,7 +485,7 @@ theorem genE_smul_left (c z : EAf D) (τ : Fin T.rank → EAf D) (σ : Fin S.ran
 
 theorem genE_zero_left (c : EAf D) (σ : Fin S.rank → EAf D) : genE (T := T) c 0 σ = 0 := by
   ext i j
-  simp [genE, Matrix.vecMulVec_apply, liftE_zero]
+  simp [genE, liftE_zero]
 
 theorem genE_add_right (c : EAf D) (τ : Fin T.rank → EAf D) (σ σ' : Fin S.rank → EAf D) :
     genE c τ (σ + σ') = genE (S := S) c τ σ + genE c τ σ' := by

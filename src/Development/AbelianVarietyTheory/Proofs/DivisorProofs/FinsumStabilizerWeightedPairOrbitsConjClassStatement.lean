@@ -13,4 +13,4 @@ theorem _root_.GlobalTheory.T.finsum_stabilizer_weighted_pair_orbits_conjClass :
       ∑ᶠ b : MulAction.orbitRel.Quotient (Γ ⊓ Subgroup.centralizer {(γ₀ : G)} : Subgroup G) X,
         (1 / (Nat.card (MulAction.stabilizer (Γ ⊓ Subgroup.centralizer {(γ₀ : G)} : Subgroup G)
           (Quotient.out b)) : ℂ)) * Φ γ₀ (Quotient.out b) := by
-  first | (exact @GlobalTheory.MassConj.finsum_pairOrbit_fibre) | (exact GlobalTheory.MassConj.finsum_pairOrbit_fibre) | (intros; apply GlobalTheory.MassConj.finsum_pairOrbit_fibre  <;> assumption)
+  first | (exact @GlobalTheory.MassConj.finsum_pairOrbit_fibre)

@@ -152,7 +152,7 @@ theorem ramIdx_mulIsogeny_mul_card_ker (n : ℤ) (hn : n ≠ 0) :
       · rw [if_neg hT, if_neg (fun h' => hT (hmem.mp h'))]
   have hdeg := divisorDegree_divisorOf E ha
   rw [hD, map_add, map_sum, divisorDegree_single] at hdeg
-  simp only [divisorDegree_single, Finset.sum_const, Finset.card_erase_of_mem h0S, smul_eq_mul] at hdeg
+  simp only [divisorDegree_single, Finset.sum_const, Finset.card_erase_of_mem h0S] at hdeg
   have hS : 1 ≤ S.card := Finset.card_pos.mpr ⟨0, h0S⟩
   rw [hcard]
   rw [nsmul_eq_mul, Nat.cast_sub hS] at hdeg

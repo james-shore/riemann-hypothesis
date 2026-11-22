@@ -22,9 +22,7 @@ theorem UpperTheory.GalN.V.L.monosep :
             Module.finrank ℂ (Module.End.maxGenEigenspace (a.ρ g) β) :=
           Submodule.finrank_mono (by
             first
-              | exact (Module.End.genEigenspace (a.ρ g) β).monotone le_top
-              | exact Module.End.genEigenspace_le_maximal _ _ _
-              | exact fun x hx => Module.End.mem_maxGenEigenspace _ _ _ |>.2 ⟨1, by simpa using hx⟩)
+              | exact (Module.End.genEigenspace (a.ρ g) β).monotone le_top)
         rw [LinearMap.finrank_maxGenEigenspace_eq, ← Polynomial.count_roots] at h1
         exact h1.trans (Multiset.nodup_iff_count_le_one.1 hnd β)
       have hne : Module.End.eigenspace (a.ρ g) β ≠ ⊥ := fun hb => hv0 (by simpa [hb] using hv)
@@ -43,7 +41,6 @@ theorem UpperTheory.GalN.V.L.monosep :
         rcases smul_eq_zero.1 hz with h2 | h2
         · first
             | exact pow_eq_zero_iff (by rintro rfl; simp at h2) |>.1 h2
-            | exact eq_zero_of_pow_eq_zero h2
         · exact absurd h2 hv0
       exact h0 (by rw [hc', hc0, zero_smul])
     have top : ⨆ β : ℂ, Module.End.eigenspace (a.ρ g) β = ⊤ := (a.semisimple g).iSup_eigenspace_eq_top

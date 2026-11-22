@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.height_one_contraction_of_etale_prime : ∀ (A : T
     (P.comap (algebraMap A (Localization.AtPrime Q))).height = 1 ∧
       P.comap (algebraMap A[X] (Localization.AtPrime Q)) =
         (P.comap (algebraMap A (Localization.AtPrime Q))).map (Polynomial.C : A →+* A[X]) := by
-  first | (exact @GlobalTheory.EtaleHeightOne.height_one_and_comap_eq_map_C) | (exact GlobalTheory.EtaleHeightOne.height_one_and_comap_eq_map_C) | (intros; apply GlobalTheory.EtaleHeightOne.height_one_and_comap_eq_map_C  <;> assumption)
+  first | (exact @GlobalTheory.EtaleHeightOne.height_one_and_comap_eq_map_C)

@@ -24,4 +24,4 @@ theorem _root_.GlobalTheory.T.whittaker_partial_coeff_block : ∀ (E : Type) [Fi
     Continuous φ → ∀ h : GA E (m + 1),
     GlobalTheory.JSW.whit (fun h => partialCoeff φ (m + 1) (blockGL (by omega : m + 1 ≤ k + 1) h)) h =
       GlobalTheory.JSW.whit φ (blockGL (by omega : m + 1 ≤ k + 1) h) := by
-  first | (exact @GlobalTheory.RSnm.whit_partialCoeff_comp_blockGL) | (exact GlobalTheory.RSnm.whit_partialCoeff_comp_blockGL) | (intros; apply GlobalTheory.RSnm.whit_partialCoeff_comp_blockGL  <;> assumption)
+  first | (exact @GlobalTheory.RSnm.whit_partialCoeff_comp_blockGL)

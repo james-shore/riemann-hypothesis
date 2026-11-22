@@ -19,7 +19,7 @@ theorem linearMap_pi_continuous_coord : ∀ {l : ℕ} [Fact l.Prime] {O M ι : T
     rw [LinearMap.pi_apply_eq_sum_univ f c]
     refine Finset.sum_congr rfl fun i _ => ?_
     have hc : (fun j => if i = j then (1:O) else 0) = Pi.single i 1 := by
-      funext j; by_cases h : i = j <;> simp [Pi.single_apply, h, eq_comm]
+      funext j; by_cases h : i = j <;> simp [h, eq_comm]
     rw [hc]
     conv_lhs => rw [← bO.sum_equivFun (c i)]
     rw [Finset.sum_smul]

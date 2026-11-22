@@ -101,11 +101,9 @@ theorem herm_bound {y : X.Ψ → Matrix (Fin r) (Fin r) ℂ} (hy : IntegralBasis
       first
       | (rw [show ComplexEmbedding.conjugate (ComplexEmbedding.conjugate σ) = σ from star_star σ]
          exact hσ)
-      | simpa using hσ
     have h := herm_bound_psi X hy ⟨_, hc⟩ p q
     first
     | simpa [ComplexEmbedding.conjugate_coe_eq] using h
-    | (simp only [ComplexEmbedding.conjugate_coe_eq, Complex.norm_conj] at h; exact h)
 
 theorem Qy_smul (y : X.Ψ → Matrix (Fin r) (Fin r) ℂ) (α : E) (p : Fin r → E) :
     Qy X y (α • p) ≤ (∑ τ : X.Ψ, ‖τ.1 α‖ ^ 2) * Qy X y p := by

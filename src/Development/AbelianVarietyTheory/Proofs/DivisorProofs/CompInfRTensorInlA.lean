@@ -29,9 +29,7 @@ theorem mem_span_cols_iff (C : Matrix (Fin n) (Fin r) A) (I : Set (Fin r)) (y : 
   first
   | exact @_root_.GlobalTheory.ColumnSumLemma.main
   | exact _root_.GlobalTheory.ColumnSumLemma.main
-  | (apply _root_.GlobalTheory.ColumnSumLemma.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ColumnSumLemma.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ColumnSumLemma.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.ColumnSumLemma.main)
   | (intros; exact _root_.GlobalTheory.ColumnSumLemma.main ..)
 
 variable (P : Fin r → Fin r → Prop) (hPt : ∀ i l j, P i l → P l j → P i j) (hPlt : ∀ i l, P i l → i < l)

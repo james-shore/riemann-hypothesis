@@ -130,7 +130,7 @@ private theorem bar_Phi (D : Raw Ω c) (hG : D.Good) (hd : l - 1 ∣ 2 * D.e) (p
     have e3 : chi D true 3 = D.Psi := rfl
     have ep : Phi D true k = chiO ℚ Ω l c.O ^ (k - 1) * (D.ξ * D.ψ⁻¹) := rfl
     rw [ep, e0, e3, zpow_neg_one, eP]
-    simp only [bar_mul, bar_inv, bar_pow, bar_zpow, bar_one, hcu, hue]
+    simp only [bar_mul, bar_inv, bar_pow, bar_zpow, hcu, hue]
     constructor
     · rw [mul_inv, hinv]
       ring

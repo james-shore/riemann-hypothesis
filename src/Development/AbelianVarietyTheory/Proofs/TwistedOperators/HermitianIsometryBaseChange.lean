@@ -205,7 +205,7 @@ theorem isIsom_map {J : Matrix (Fin n) (Fin n) E} {x : k ⊗[F] Fld P}
     induction y' using TensorProduct.induction_on with
     | zero => simp [hx, hform_zero_left]
     | add y₁ y₂ h₁ h₂ =>
-      rw [map_add, hform_add_left, h₁, h₂]; simp only [hx, add_mul, mul_add, map_add]
+      rw [map_add, hform_add_left, h₁, h₂]; simp only [hx, mul_add, map_add]
     | tmul a' l' =>
       rw [tmul_eq_smul P a l, tmul_eq_smul P a' l', map_smul, map_smul, hform_smul_left, hform_smul_right, base]
       simp only [hx, Algebra.smul_def, RingHom.algebraMap_toAlgebra]
@@ -237,7 +237,7 @@ theorem torEmb_map {J : Matrix (Fin n) (Fin n) E} {x : k ⊗[F] Fld P} {x' : k' 
     rw [LinearEquiv.apply_symm_apply]
     by_cases hij : i = j
     · subst hij; simp
-    · simp [Pi.single_apply, hij]
+    · simp [hij]
   rw [hs, ← hφ', mulMat_mulVec, ht, ← map_mul, hφ']
   funext i
   rw [← mulMat_mulVec φ, LinearEquiv.apply_symm_apply]

@@ -54,7 +54,6 @@ theorem norm_proportional_of_irreducible (p q : ℕ) (M : GKMod p q) (Λ : Ix p 
     intro x y
     first
       | rfl
-      | simp [ψ]
   have hψinv : ∀ Z x y, ψ (M.act Z x) y = ψ x (M.act (adjZ Z) y) := by
     intro Z x y
     rw [hψ, hψ, h₁, h₂]

@@ -116,7 +116,6 @@ theorem index_split {r : ℕ} (M : Submodule O (Fin (r+1) → O)) :
   have := index_eq_mul_of_exact _ hπ _ hι M.toAddSubgroup
   rw [this]
   congr 2
-  all_goals (ext x; simp)
 
 theorem le_of_lift {r : ℕ} (M1 M2 : Submodule O (Fin (r+1) → O)) (g : O)
     (hI : M1.map (headL r) ≤ Ideal.span {g}) (hc : M1.comap (consL r) ≤ M2.comap (consL r))

@@ -37,7 +37,6 @@ theorem logDefect_coeff_eq_zero : ∀ (n i j : ℕ), i + j < n →
   have hd : (Finsupp.single (0 : Fin 2) i + Finsupp.single 1 j).degree < n := by
     first
       | simpa [Finsupp.degree_single] using hij
-      | simpa [Finsupp.degree, Finsupp.support_single_ne_zero] using hij
   have := hφ _ hd
   rw [MvPolynomial.coeff_map] at this
   simpa using this

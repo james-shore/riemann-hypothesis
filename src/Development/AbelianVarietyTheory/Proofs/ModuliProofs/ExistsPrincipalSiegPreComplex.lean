@@ -63,7 +63,6 @@ theorem exists_lev_of_rel {k g : ℕ} {G U : Type} [CommGroup G] [CommGroup U] {
   let l : (Fin g ⊕ Fin g → ℤ) → T := fun a => ∏ i, u i ^ a i
   refine ⟨fun a => (l a).1, fun x y => ?_, fun x => (l x).2, fun x y => ?_⟩
   · rw [← Subgroup.coe_mul]
-    congr 1
     simp only [l, Pi.add_apply, zpow_add, Finset.prod_mul_distrib]
   · have : w (l x) (l y) = ze ^ omegaStd x y := by
       show e (l x) (l y) = _

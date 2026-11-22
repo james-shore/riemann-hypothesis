@@ -42,7 +42,7 @@ theorem nonneg_add_smul {r : ℕ} {x : Fin r → ℝ} (hx : ∀ i, 0 ≤ x i) (c
     refine mul_nonneg hτ ?_
     by_cases h : k = c
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   simpa using add_nonneg (hx k) this
 
 theorem sum_add_single {ι : Type} [Fintype ι] [DecidableEq ι] (β : ι → ℕ) (j : ι) :

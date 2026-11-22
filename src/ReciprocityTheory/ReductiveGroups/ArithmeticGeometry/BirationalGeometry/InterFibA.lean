@@ -98,7 +98,7 @@ theorem fibSys_finite {W : Type*} [Fintype W] (r : W → ℕ) (H : W → MvPolyn
       rw [hΦ, Finset.sum_eq_single ⟨b, hb⟩]
       · simp
       · intro b' _ hb'
-        simp [Pi.single_apply, hb']
+        simp [hb']
       · simp
     | zero => exact ⟨0, fun t => by simp [hΦ]⟩
     | add x y _ _ hx hy =>

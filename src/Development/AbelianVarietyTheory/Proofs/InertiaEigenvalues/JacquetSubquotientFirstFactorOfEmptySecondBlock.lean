@@ -54,7 +54,7 @@ theorem deltaHalf_eq_one (hc : c true = 0) (g : Levi k (fun j => Fin (c j))) :
   have h2 : Matrix.GeneralLinearGroup.det (g true) = 1 := by
     ext; simp [Matrix.det_isEmpty]
   have h0 : absPow k 0 = 1 := by
-    ext x; simp [val_absPow]
+    ext x; simp
   rw [h1, h2]
   simp [h0]
 

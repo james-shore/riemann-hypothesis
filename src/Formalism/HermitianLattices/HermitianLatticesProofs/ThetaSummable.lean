@@ -141,7 +141,6 @@ lemma thetaSummable_coercive (G : Matrix ι ι ℚ)
   have hcont : Continuous fun v : ι → ℝ => v ⬝ᵥ (M *ᵥ v) := by
     first
     | fun_prop
-    | exact continuous_id.dotProduct (continuous_const.matrix_mulVec continuous_id)
   have hGnn : ∀ w : ι → ℚ, 0 ≤ w ⬝ᵥ (G *ᵥ w) := by
     intro w
     by_cases hw : w = 0
@@ -320,17 +319,6 @@ lemma thetaSummable_main (h : V →ₗ⋆[K] V →ₗ[K] K)
   haveI : Module.IsTorsionFree ℤ L := by
     first
     | infer_instance
-    | (constructor
-       intro r hr a b hab
-       have hr0 : r ≠ 0 := hr.ne_zero
-       apply Subtype.ext
-       have hab' : r • (a : V) = r • (b : V) := by
-         have := congrArg (fun y : L => (y : V)) hab
-         simpa using this
-       have h1 : (r : K) • ((a : V) - (b : V)) = 0 := by
-         rw [smul_sub, Int.cast_smul_eq_zsmul K, Int.cast_smul_eq_zsmul K, hab', sub_self]
-       have hrK : (r : K) ≠ 0 := Int.cast_ne_zero.mpr hr0
-       exact sub_eq_zero.mp ((smul_eq_zero.mp h1).resolve_left hrK))
   haveI : Module.Free ℤ L := Module.free_of_finite_type_torsion_free'
   obtain ⟨ι, _, _, ⟨b⟩⟩ : ∃ (ι : Type) (_ : Fintype ι) (_ : DecidableEq ι),
       Nonempty (Module.Basis ι ℤ L) :=

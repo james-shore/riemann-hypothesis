@@ -61,8 +61,7 @@ theorem coeff_unique (p : ℕ) [Fact p.Prime] (Lt T : Type) [Fintype Lt] [Decida
   funext κ'
   have h1 := congrArg (fockB (ten fun s => map (algebraMap ℚ ℂ_[p]) (b s (κ' s)))) h0
   rw [← fockBL_apply, ← fockBL_apply, map_sum, map_zero] at h1
-  simp only [map_smul, fockBL_apply, hP, fockB_ten_dual ι b g Nc hbg, smul_eq_mul, mul_ite, mul_zero,
-    Finset.sum_ite_eq', Finset.mem_univ, if_true] at h1
+  simp only [map_smul, fockBL_apply, hP, fockB_ten_dual ι b g Nc hbg, smul_eq_mul, mul_ite, mul_zero] at h1
   have hne : ∏ s, (Nc s : ℂ_[p]) ≠ 0 :=
     Finset.prod_ne_zero_iff.mpr fun s _ => by exact_mod_cast hNc s
   simpa [hne] using h1

@@ -9,7 +9,7 @@ theorem star_mulVec_single_dot (ι : Type) [Fintype ι] [DecidableEq ι]
     (T M : Matrix ι ι ℂ) (i : ι) :
     star (T *ᵥ Pi.single i 1) ⬝ᵥ M *ᵥ (T *ᵥ Pi.single i 1) = (Tᴴ * M * T) i i := by
   rw [Matrix.star_mulVec, ← Matrix.dotProduct_mulVec, Matrix.mulVec_mulVec, Matrix.mulVec_mulVec]
-  simp [Matrix.mulVec_single, dotProduct_single]
+  simp [Matrix.mulVec_single]
 
 theorem det_re_le_pow_mul_det_re (ι : Type) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι ℂ)
     (κ : ℝ) (hA : A.PosDef) (hB : B.PosDef)

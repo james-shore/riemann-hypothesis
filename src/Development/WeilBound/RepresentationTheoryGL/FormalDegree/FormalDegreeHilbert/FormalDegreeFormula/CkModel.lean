@@ -82,11 +82,11 @@ theorem cpart2_Eaa (ε : Fin n → Bool) (a : Fin n) :
   by_cases hi : i = a
   · subst hi
     by_cases hj : j = i
-    · subst hj; simp [single_apply]; ring
-    · simp [single_apply, hj, Ne.symm hj]
+    · subst hj; simp; ring
+    · simp [Ne.symm hj]
   · by_cases hj : j = a
-    · subst hj; simp [single_apply, hi, Ne.symm hi]
-    · simp [single_apply, hi, hj, Ne.symm hi, Ne.symm hj]
+    · subst hj; simp [Ne.symm hi]
+    · simp [Ne.symm hi, Ne.symm hj]
 
 theorem exp_Eaa (a : Fin n) (t : ℝ) :
     NormedSpace.exp ((t : ℂ) • ((-Complex.I) • single a a (1 : ℂ))) =
@@ -95,10 +95,10 @@ theorem exp_Eaa (a : Fin n) (t : ℝ) :
       diagonal (fun c => if c = a then -(Complex.I * t) else 0) := by
     ext i j
     by_cases hi : i = a <;> by_cases hj : j = a
-    · subst hi; subst hj; simp [diagonal_apply, single_apply]; ring
-    · subst hi; simp [diagonal_apply, single_apply, Ne.symm hj]
-    · subst hj; simp [diagonal_apply, single_apply, Ne.symm hi, hi]
-    · simp [diagonal_apply, single_apply, hi, hj, Ne.symm hi, Ne.symm hj]
+    · subst hi; subst hj; simp; ring
+    · subst hi; simp [Ne.symm hj]
+    · subst hj; simp [Ne.symm hi, hi]
+    · simp [diagonal_apply, hi, Ne.symm hi, Ne.symm hj]
   rw [e, Matrix.exp_diagonal]
   congr 1
   funext c
@@ -177,7 +177,7 @@ theorem not_cone_neg_root {a b : Fin n} (hab : a < b) (c : Fin n → Fin n → �
     refine Finset.sum_congr rfl fun a' _ => ?_
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun b' _ => ?_
-    simp [Pi.single_apply, mul_sub, Finset.sum_sub_distrib, ← Finset.mul_sum]
+    simp [Pi.single_apply, mul_sub, Finset.sum_sub_distrib]
     ring
   rw [hl, hr] at key
   have hneg : ∑ a', ∑ b', (c a' b' : ℝ) * (((a' : ℕ) : ℝ) - (b' : ℕ)) ≤ 0 := by

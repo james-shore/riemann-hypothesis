@@ -23,7 +23,6 @@ variable {K : Type} [Field K] [NumberField K]
 private theorem nn_add (X Y : UPos (2 + 2) 2 → 𝔸[K]) : nn X * nn Y = nn (X + Y) := by
   first
     | exact (unipOne_add 2 X Y).symm
-    | exact unipOne_add 2 X Y
 
 private theorem nn_continuous : Continuous (nn (K := K)) := continuous_unipOne 2
 
@@ -347,7 +346,6 @@ theorem UpperTheory.V.Z.InvariantSubmoduleMonicPolynomial.intertw :
     · have := slice μ₂ τ₂ h₂.closed (bf β f) B R hP.cont hB hR hP.rat (fun m => lv m₂ m 0)
         (lvc₂ m₂)
         (fun γ hγ m => ⟨lv 1 γ 0, hP₂ γ hγ, by
-          beta_reduce
           rw [hmul, one_mul, add_zero]⟩)
         (fun m y => (hh_lv m₂ m 0 y).trans (zero_add _))
         (fun y => by
@@ -360,7 +358,6 @@ theorem UpperTheory.V.Z.InvariantSubmoduleMonicPolynomial.intertw :
     · have := slice μ₂ τ₁ h₁.closed (bf β f) B R hP.cont hB hR hP.rat (fun m => lv m m₁ 0)
         (lvc₁ m₁)
         (fun γ hγ m => ⟨lv γ 1 0, hP₁ γ hγ, by
-          beta_reduce
           rw [hmul, one_mul, add_zero]⟩)
         (fun m y => (hh_lv m m₁ 0 y).trans (zero_add _))
         (fun y => by

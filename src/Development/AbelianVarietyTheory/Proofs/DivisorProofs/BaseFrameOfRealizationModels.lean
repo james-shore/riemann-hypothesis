@@ -69,8 +69,6 @@ theorem refl_mem (hH : Hm.IsHermitian) (v : Fin n → ℂ) (z : ℂ)
   | exact @_root_.GlobalTheory.UnitaryPerturbation.one_add_smul_mem_unitary
   | exact _root_.GlobalTheory.UnitaryPerturbation.one_add_smul_mem_unitary
   | (apply _root_.GlobalTheory.UnitaryPerturbation.one_add_smul_mem_unitary <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UnitaryPerturbation.one_add_smul_mem_unitary <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UnitaryPerturbation.one_add_smul_mem_unitary <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UnitaryPerturbation.one_add_smul_mem_unitary ..)
 
 theorem polar (x y : Fin n → ℂ) : vecMulVec x (star y) = (1 / 2 : ℂ) •

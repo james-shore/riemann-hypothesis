@@ -30,7 +30,6 @@ theorem shiftZ_sgFl (L : SizeData₂ D) (u : D.what₂.Word) (z : HeightOneSpect
   first
   | rfl
   | (simp [shiftZ, sgFl])
-  | (unfold shiftZ sgFl; simp)
 
 theorem shiftIdeal_sgFl (L : SizeData₂ D) (u : D.what₂.Word) : Formalism.DivisionValues.shiftIdeal (shiftZ (sgFl L u)) = Iu D L u := by
   unfold Formalism.DivisionValues.shiftIdeal Iu
@@ -54,8 +53,6 @@ theorem Iu_ne_zero (L : SizeData₂ D) (u : D.what₂.Word) : Iu D L u ≠ 0 := 
   apply zpow_ne_zero
   first
   | exact FractionalIdeal.coeIdeal_ne_zero.mpr (D.plEq x).ne_bot
-  | exact (FractionalIdeal.coeIdeal_ne_zero).2 (HeightOneSpectrum.ne_bot _)
-  | simp [(D.plEq x).ne_bot]
 
 theorem nu_map_eq (L : SizeData₂ D) (hN : NprimeDef D L) (u : D.what₂.Word) {d : ℕ}
     (e : (Fin d → D.what₂.LL) ≃ₗ[D.what₂.LL] (D.div.Nu u).V) (NuC Nu : Submodule (𝓞 D.what₂.LL) (Fin d → D.what₂.LL))

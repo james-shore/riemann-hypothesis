@@ -26,7 +26,7 @@ private theorem lin_part {E : Type} [Field E] {n : ℕ} (f : MvPowerSeries (Fin 
       rw [MvPowerSeries.X, coeff_monomial_mul, if_neg]
       intro h
       have := h i
-      simp [Finsupp.single_apply, hij.symm] at this
+      simp [hij.symm] at this
     · simp
   simp only [hc]
   rw [hg, ← Finset.sum_sub_distrib]

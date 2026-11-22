@@ -15,7 +15,7 @@ theorem mul_eq_mul_diagonal_of_comm {R : Type} [CommRing R] {n r : ℕ} {G : Mat
     G * C = C * Matrix.diagonal (fun i => (L * (G * C)) i i) := by
   ext k i
   have h := congrArg (fun M => (M * C) k i) (hc i)
-  simp only [Matrix.mul_assoc, Matrix.vecMulVec_mul, Matrix.mul_vecMulVec, Matrix.vecMulVec_apply] at h
+  simp only [Matrix.vecMulVec_mul, Matrix.mul_vecMulVec, Matrix.vecMulVec_apply] at h
   have h1 : (L i ᵥ* C) i = 1 := by
     have := congrFun (congrFun hL i) i
     simpa [Matrix.mul_apply, Matrix.vecMul, dotProduct] using this

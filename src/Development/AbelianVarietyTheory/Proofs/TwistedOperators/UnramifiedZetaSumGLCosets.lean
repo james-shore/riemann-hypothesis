@@ -252,11 +252,11 @@ theorem zeta_sum_GL : GlobalTheory.Published.UnramifiedDoublingGL → ∀ (E : T
     have hqC : (qV E w : ℂ) ≠ 0 := by exact_mod_cast qV_ne_zero w
     refine Finset.prod_nbij' (fun i => r + t - i) (fun j => r + t - j) (fun i hi => ?_) (fun j hj => ?_)
       (fun i hi => ?_) (fun j hj => ?_) (fun i hi => ?_)
-    · simp only [Finset.mem_range, Finset.mem_Ioc, Finset.mem_coe] at hi ⊢; omega
-    · simp only [Finset.mem_range, Finset.mem_Ioc, Finset.mem_coe] at hj ⊢; omega
-    · simp only [Finset.mem_range, Finset.mem_coe] at hi; omega
-    · simp only [Finset.mem_Ioc, Finset.mem_coe] at hj; omega
-    · simp only [Finset.mem_range, Finset.mem_coe] at hi
+    · simp only [Finset.mem_range, Finset.mem_Ioc] at hi ⊢; omega
+    · simp only [Finset.mem_range, Finset.mem_Ioc] at hj ⊢; omega
+    · simp only [Finset.mem_range] at hi; omega
+    · simp only [Finset.mem_Ioc] at hj; omega
+    · simp only [Finset.mem_range] at hi
       have hp : (qV E w : ℂ) ^ (r + t) = (qV E w : ℂ) ^ (r + t - i) * (qV E w : ℂ) ^ i := by
         rw [← pow_add]; congr 1; omega
       rw [hX2, hp]

@@ -71,7 +71,7 @@ theorem lie_eq_sum (X : Matrix (Fin a) (Fin a) (TR.Rinf F)) :
   let L : Matrix (Fin a) (Fin a) (TR.Rinf F) →ₗ[ℝ] Module.End ℂ (TR.Sm F a) := TR.lie F a
   have e : X = ∑ v, ∑ i, ∑ j, X i j v • Matrix.single i j (Pi.single v 1 : TR.Rinf F) := by
     ext i j v
-    simp [Matrix.sum_apply, Matrix.single_apply, ite_and, Pi.single_apply, ite_apply]
+    simp [Matrix.sum_apply, Matrix.single_apply, ite_and, Pi.single_apply]
   change L X = _
   conv_lhs => rw [e]
   simp only [map_sum, map_smul]

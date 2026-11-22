@@ -99,7 +99,7 @@ private theorem Chart.rep_smul (r : R) {φ : X.presheaf.stalk p →+* R}
   obtain ⟨g, h1, h2, h3⟩ := h
   refine ⟨(epsMul r).comp g, fun b => ?_, fun b => ?_, ?_⟩
   · simp [epsMul, h1]
-  · simp [epsMul, h2, Finset.mul_sum, mul_left_comm]
+  · simp [epsMul, h2, mul_left_comm]
   · rw [h3, CommRingCat.ofHom_comp, Spec.map_comp, Category.assoc]
 
 private theorem Chart.rep_exists (φ : X.presheaf.stalk p ⟶ CommRingCat.of R) (x : Spec (CommRingCat.of R) ⟶ X)

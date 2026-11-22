@@ -51,7 +51,7 @@ theorem mat_frOf {n : ℕ} {M : Matrix (Fin n) (Fin n) (𝓞 E)} (h : IsUnit (ma
     mat (frOf M) i j = algebraMap (𝓞 E) E (M i j) := by
   show frOf M (Pi.single j 1) i = _
   rw [frOf_apply h]
-  simp [matE, Matrix.mulVec_single_one]
+  simp [matE]
 
 theorem isFr_frOf {n : ℕ} {P : HeightOneSpectrum (𝓞 E)} {M : Matrix (Fin n) (Fin n) (𝓞 E)} (hM : M.det ∉ P.asIdeal) :
     IsUnit (matE M).det ∧ CharValCompare.IsFr P (stdLat E n) (frOf M) := by

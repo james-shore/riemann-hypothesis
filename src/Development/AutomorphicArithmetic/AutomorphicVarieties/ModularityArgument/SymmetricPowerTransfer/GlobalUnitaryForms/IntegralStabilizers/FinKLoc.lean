@@ -241,7 +241,7 @@ theorem shape_nat (n : ℕ) {m : Matrix (Fin 2) (Fin 2) (Lsq K Δ)} (h : Shape m
     Shape ((n : Matrix (Fin 2) (Fin 2) (Lsq K Δ)) * m) := by
   obtain ⟨h1, h2⟩ := h
   rw [← Matrix.diagonal_natCast']
-  constructor <;> simp [Matrix.diagonal_mul, h1, h2, mul_comm]
+  constructor <;> simp [Matrix.diagonal_mul, h1, h2]
 
 theorem den_mat {c : ℕ} (hc0 : (c : K) ≠ 0) (hc : IsIntegral O ((c : K) * Δ)) (hd : ∀ x : K, ∃ n : ℕ, n ≠ 0 ∧ IsIntegral O ((n : K) * x))
     {m : Matrix (Fin 2) (Fin 2) (Lsq K Δ)} (h : Shape m) :

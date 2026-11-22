@@ -11,7 +11,7 @@ def Good (r : ℚ) : Prop :=
 
 theorem norm_padicNat (p : Nat.Primes) (n : ℕ) : ‖(n : ℂ_[p])‖ = padicNorm p n := by
   haveI : Fact (p : ℕ).Prime := ⟨p.2⟩
-  have : ((n : ℚ_[p]) : ℂ_[p]) = (n : ℂ_[p]) := by first | simp | norm_cast | exact map_natCast _ n
+  have : ((n : ℚ_[p]) : ℂ_[p]) = (n : ℂ_[p]) := by first | simp
   rw [← this, PadicComplex.norm_extends', ← Rat.cast_natCast, Padic.eq_padicNorm]
 
 theorem good_mul {x y : ℚ} (hx0 : x ≠ 0) (hy0 : y ≠ 0) (hx : Good x) (hy : Good y) : Good (x * y) := by
@@ -57,7 +57,7 @@ theorem good_prime (q : ℕ) (hq : q.Prime) : Good q := by
   refine ⟨(Set.finite_singleton (⟨q, hq⟩ : Nat.Primes)).subset ?_, ?_⟩
   · intro (p : Nat.Primes) hp
     have hp' := hp
-    simp only [Set.mem_setOf_eq, e] at hp'
+    simp only [e] at hp'
     have h2 : (if (p : ℕ) = q then -Real.log q else 0) ≠ 0 := hp'
     by_cases h : (p : ℕ) = q
     · exact Set.mem_singleton_iff.2 (Subtype.ext h)

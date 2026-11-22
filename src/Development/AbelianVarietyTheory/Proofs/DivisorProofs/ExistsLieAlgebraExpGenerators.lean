@@ -74,7 +74,7 @@ theorem coords_second_kind_of_spanning : ∀ (𝔸 : Type) [NormedRing 𝔸] [No
     refine (hP.mul' h2).congr_fderiv ?_
     ext1 z
     have e1 : (List.ofFn fun i => NormedSpace.exp ((0 : Fin d → ℝ) i • Z i)).prod = 1 := by simp
-    simp [e1, hpc]
+    simp [hpc]
   have hΦ0 : Φ 0 = 1 := by
     show (List.ofFn fun i => NormedSpace.exp (c 0 i • Z i)).prod * NormedSpace.exp (0 - p 0) = 1
     simp

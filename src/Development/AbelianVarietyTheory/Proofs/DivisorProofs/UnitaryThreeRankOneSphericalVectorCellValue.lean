@@ -65,7 +65,7 @@ theorem heis_mem_GU_iff (σ : L →+* L) {n : ℕ} {i j k : Fin n} (hij : i ≠ 
     have h1 := h i j
     have h2 := h j k
     have h3 := h i k
-    simp [heisM_apply, hij, hjk, hik, hij.symm, hjk.symm, hik.symm] at h1 h2 h3
+    simp [heisM_apply, hij, hjk, hik, hij.symm, hjk.symm] at h1 h2 h3
     exact ⟨h1.symm, h2.symm, h3.symm⟩
   · rintro ⟨h1, h2, h3⟩ s t
     rw [h1, h2, h3]
@@ -135,7 +135,7 @@ theorem ordL_monomial_entry {n : ℕ} {t : Equiv.Perm (Fin n)} {Y : GL (Fin n) L
 
 theorem isBorelU_one (σ : L →+* L) (n : ℕ) : IsBorelU (1 : GU σ n) := by
   intro i j h
-  simp [Matrix.one_apply, ne_of_gt h]
+  simp [ne_of_gt h]
 
 theorem chiDeltaU_one (σ : L →+* L) (n m q : ℕ) (α : Fin m → ℂ) : chiDeltaU q α (1 : GU σ n) = 1 := by
   unfold chiDeltaU

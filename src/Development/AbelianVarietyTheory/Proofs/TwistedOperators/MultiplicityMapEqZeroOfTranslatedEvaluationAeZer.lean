@@ -207,7 +207,6 @@ theorem GlobalTheory.TranslatedEvalInj.eq_zero : ∀ {D : D7} {G : Type} [Group 
         ((iotaX X h).symm_apply_apply _)).trans ?_
       first
         | exact inv_mul_cancel_right g t
-        | simp
     rw [e] at h2
     exact h2
   exact GlobalTheory.TranslatedEvalInj.eq_zero_of_value hT v₀ hv₀ h0

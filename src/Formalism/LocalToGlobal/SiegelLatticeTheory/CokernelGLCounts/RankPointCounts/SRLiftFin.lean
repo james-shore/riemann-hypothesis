@@ -30,8 +30,6 @@ theorem finite_max_of_equiv {R S : Type*} [CommRing R] [CommRing S] (e : R ≃+*
   refine ⟨Ideal.map e m, Ideal.map_isMaximal_of_equiv e, ?_⟩
   first
   | exact Ideal.comap_map_of_bijective _ e.bijective
-  | exact Ideal.comap_map_of_bijective e e.bijective
-  | simp
 
 variable {F : Type} [Field F] [ValuativeRel F] [TopologicalSpace F]
   {E : Type} [CommRing E] [Algebra F E] [TopologicalSpace E] [MeasurableSpace E]

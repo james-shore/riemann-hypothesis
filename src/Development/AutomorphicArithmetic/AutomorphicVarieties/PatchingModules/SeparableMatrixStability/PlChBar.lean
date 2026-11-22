@@ -78,7 +78,7 @@ private theorem chi_diag {n : ℕ} {k G : Type} [CommRing k] [Group G] (χ : Fin
       show diagonal (fun i => (χ i g : k)) = 1
       simp [h]
     ext1 a b
-    by_cases hab : a = b <;> simp [GDet.repAlg, e, hab, Matrix.one_apply]
+    by_cases hab : a = b <;> simp [GDet.repAlg, e, hab]
   rw [this, det_diagonal]
   simp
 

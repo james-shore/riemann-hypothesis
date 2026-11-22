@@ -36,7 +36,7 @@ theorem fFun_transpose_mul_of_mem_KO : ∀ {k : Type} [Field k] [ValuativeRel k]
     rw [hh', gdet_mul, gdet_invT]
     congr 2
     ext
-    simp [m, P, Matrix.GeneralLinearGroup.val_det_apply, det_submatrix_equiv_self, det_fromBlocks_zero₂₁]
+    simp [m, P, Matrix.GeneralLinearGroup.val_det_apply, det_submatrix_equiv_self]
   have hv : valuation k ((gdet u)⁻¹ : kˣ) = 1 := by
     rw [← map_inv]; exact valuation_gdet_of_mem_KO (inv_mem hu)
   rw [e1, splitTheta_fFun_frameFirstBlock_mul, splitTheta_fFun_frameFirstBlock_mul, e2, e3, apow_mul, apow_of_valuation_eq_one hv, map_mul, Units.val_mul, map_inv]

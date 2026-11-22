@@ -56,7 +56,7 @@ theorem omTwo_datum_inv : ∀ (k : Type) [Field k] [ValuativeRel k] [Topological
     have := hμ _ hdetv
     rwa [MonoidHom.mul_apply, MonoidHom.inv_apply, mul_inv_eq_one] at this
   simp only [omTwo, om, Pi.smul_apply, smul_eq_mul, nabs_det_of_mem_KO hK, MonoidHom.mul_apply, MonoidHom.inv_apply,
-    map_one, inv_one, Units.val_one, one_mul, Real.one_rpow, Complex.ofReal_one, mul_one, inv_inv]
+    map_one, Units.val_one, one_mul, Real.one_rpow, Complex.ofReal_one, mul_one, inv_inv]
   rw [show nabs k 1 = 1 by simp [nabs], Real.one_rpow, Complex.ofReal_one, mul_one, Matrix.mul_one, Units.val_mul,
     hμj]
   have hT : (μT (GeneralLinearGroup.det j) : ℂ) ≠ 0 := Units.ne_zero _

@@ -27,10 +27,10 @@ theorem UpperTheory.V.AlgebraTools.lemma_L :
     (MonoidAlgebra.lift R (Matrix (Fin n) (Fin n) R) Γ ((Units.coeHom _).comp r) z) with he
   have hρ : MonoidAlgebra.lift R (Matrix (Fin n) (Fin n) R) Γ ((Units.coeHom _).comp r)
       (MonoidAlgebra.of R Γ s) = ((r s : GL (Fin n) R) : Matrix (Fin n) (Fin n) R) := by
-    simp [MonoidAlgebra.lift_of]
+    simp
   have hχ : ∀ i, MonoidAlgebra.lift R R Γ ((Units.coeHom R).comp (ψ i)) (MonoidAlgebra.of R Γ s)
       = ((ψ i s : Rˣ) : R) := fun i => by
-    simp [MonoidAlgebra.lift_of]
+    simp
   have hinv : ((g⁻¹ : GL (Fin n) R) : Matrix (Fin n) (Fin n) R) * (g : Matrix (Fin n) (Fin n) R) = 1 :=
     Units.inv_mul g
   have key : ∀ i j, ((g * r s * g⁻¹ : GL (Fin n) R) : Matrix (Fin n) (Fin n) R) i j =
@@ -39,7 +39,6 @@ theorem UpperTheory.V.AlgebraTools.lemma_L :
     intro i j
     refine (UpperTheory.V.AlgebraTools.entry_of_single (((g * r s * g⁻¹ : GL (Fin n) R) : Matrix (Fin n) (Fin n) R)) i j).symm.trans ?_
     rw [← hg i, ← hg j]
-    congr 1
     simp only [Units.val_mul, Matrix.mul_assoc]
     simp only [← Matrix.mul_assoc (((g⁻¹ : GL (Fin n) R) : Matrix (Fin n) (Fin n) R)), hinv, Matrix.one_mul]
   refine ⟨fun i j hji => ?_, fun i => ?_⟩

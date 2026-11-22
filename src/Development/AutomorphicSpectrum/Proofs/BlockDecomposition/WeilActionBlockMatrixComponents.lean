@@ -89,8 +89,8 @@ theorem colJoin_mul_eId {m r s : ℕ} (y₁ : Mx D m r) (y₂ : Mx D m s) :
       colJoin y₁ (0 : Mx D m s) := by
   ext i k
   refine Fin.addCases (fun j => ?_) (fun j => ?_) k
-  · simp [eId, Matrix.mul_apply, Matrix.diagonal_apply, Matrix.map_apply]
-  · simp [eId, Matrix.mul_apply, Matrix.diagonal_apply, Matrix.map_apply]
+  · simp [eId, Matrix.mul_apply, Matrix.diagonal_apply]
+  · simp [eId, Matrix.mul_apply, Matrix.diagonal_apply]
 
 theorem colJoin_mul_extB {m r s : ℕ} (y₁ : Mx D m r) (y₂ : Mx D m s) (b : Matrix (Fin r) (Fin r) D.host.E) :
     (HMul.hMul (colJoin y₁ y₂) ((extB b : Matrix (Fin (r + s)) (Fin (r + s)) D.host.E).map (incA D)) : Mx D m (r + s)) =
@@ -98,7 +98,7 @@ theorem colJoin_mul_extB {m r s : ℕ} (y₁ : Mx D m r) (y₂ : Mx D m s) (b : 
   ext i k
   refine Fin.addCases (fun j => ?_) (fun j => ?_) k
   · simp [Matrix.mul_apply, Fin.sum_univ_add, extB_castAdd, extB_natAdd_left, rat]
-  · simp [Matrix.mul_apply, Fin.sum_univ_add, extB_natAdd_right]
+  · simp [Matrix.mul_apply, extB_natAdd_right]
 
 theorem parts : ∀ (D : D7) (m r s : ℕ) (b : Matrix (Fin r) (Fin r) D.host.E) (a : Matrix (Fin (r + s)) (Fin (r + s)) D.host.E)
     (y₁ : Mx D m r) (y₂ : Mx D m s),

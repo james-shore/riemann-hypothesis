@@ -54,8 +54,6 @@ theorem nfac_meas (la : Wt X.Ψ r) : Measurable (X.nfac la) := by
     intro τ i
     first
       | (unfold dmin lminor gram mat hermC col; fun_prop)
-      | (unfold dmin lminor gram mat hermC col; continuity)
-      | (unfold dmin lminor gram mat hermC col; exact Nat.zero)
   unfold Data.nfac
   refine Finset.measurable_prod _ fun τ _ => Finset.measurable_prod _ fun i _ => ?_
   exact (((hc τ _).measurable.div (hc τ _).measurable).norm).pow_const _

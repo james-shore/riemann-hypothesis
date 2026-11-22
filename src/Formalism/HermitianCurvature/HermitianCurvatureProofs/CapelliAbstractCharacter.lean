@@ -169,7 +169,6 @@ theorem ch_abstract {W : Type} [AddCommGroup W] [Module ℂ W] (G : Submodule �
     rw [LinearMap.smul_apply, pow_succ']
     first
       | rw [Module.End.mul_apply]
-      | rw [LinearMap.mul_apply]
     exact h1.symm
   rw [Finset.sum_congr rfl hterm, Finset.sum_range_succ, Finset.sum_sub_distrib]
   have hg : ∀ i ∈ Finset.range d, (if i < d then A i ((K ^ (i + 1)) X) else 0) =
@@ -214,7 +213,7 @@ theorem isCov_D (hE : GlRel E) {η : Fin n → A} (h : IsCov E η) : IsCov E (fu
   by_cases hbc : b = c
   · subst hbc
     simp [sub_mul, Finset.sum_add_distrib, Finset.sum_sub_distrib]
-  · simp [hbc, sub_mul, Finset.sum_add_distrib, Finset.sum_sub_distrib]
+  · simp [hbc, Finset.sum_add_distrib]
 
 end ring
 
@@ -254,9 +253,7 @@ theorem EE_mem (hE : GlRel E) {v : V} {X : Fin (N + 1) → V} (hX : X ∈ Gd E v
   refine (mem_Gd E).mpr ⟨fun j => ∑ l, E j l * η l, isCov_D hE hη, fun j => ?_⟩
   rw [EE_apply]
   first
-    | (simp [hXη]; done)
-    | (simp [hXη, Module.End.mul_apply]; done)
-    | (simp [hXη, LinearMap.mul_apply]; done)
+    | (simp [hXη])
 
 theorem Tm_apply (w : ℂ) (j l : Fin (N + 1)) (y : V) :
     Tm E w j l y = (if j = l then w • y else 0) + E j l y := by
@@ -306,7 +303,7 @@ theorem eval_prod_lin {ι : Type} (S : Finset ι) (m : ι → ℂ) (u : ℂ) :
 theorem deg_prod_lin {ι : Type} (S : Finset ι) (m : ι → ℂ) :
     (∏ j ∈ S, ((Polynomial.X : ℂ[X]) + C (m j))).natDegree ≤ S.card := by
   refine (Polynomial.natDegree_prod_le _ _).trans ?_
-  simp [Polynomial.natDegree_X_add_C]
+  simp
 
 theorem basis_mul {N : ℕ} (m : Fin (N + 1) → ℂ) (i : Fin (N + 1)) :
     ∃ w : ℂ, ((Polynomial.X : ℂ[X]) + C (m i)) * Lagrange.basis Finset.univ (fun j => -m j) i =
@@ -320,7 +317,6 @@ theorem basis_mul {N : ℕ} (m : Fin (N + 1) → ℂ) (i : Fin (N + 1)) :
     refine Finset.prod_congr rfl (fun j _ => ?_)
     simp only [Lagrange.basisDivisor, map_neg, sub_neg_eq_add]
   rw [hb]
-  beta_reduce
   ring
 
 section main
@@ -330,7 +326,7 @@ variable {V : Type} [AddCommGroup V] [Module ℂ V] {N : ℕ} (E : Fin (N + 1) �
 def KK : Module.End ℂ (Fin (N + 1) → V) := ((N : ℂ) + 1) • 1 - EE E
 
 theorem KK_apply (X : Fin (N + 1) → V) : KK E X = ((N : ℂ) + 1) • X - EE E X := by
-  first | rfl | (simp [KK]; done)
+  first | rfl
 
 theorem KK_mem (hE : GlRel E) {v : V} {X : Fin (N + 1) → V} (hX : X ∈ Gd E v) : KK E X ∈ Gd E v := by
   rw [KK_apply]
@@ -346,7 +342,6 @@ theorem star (hE : GlRel E) {m : Fin (N + 1) → ℂ} {v : V} (hv : v ∈ CapSp 
     simp only [map_add, map_sub, map_smul, Pi.add_apply, Pi.sub_apply, Pi.smul_apply]
     first
       | module
-      | (simp only [sub_smul, add_smul, one_smul]; abel)
   rw [lin, h1, h2, Pi.smul_apply, add_sub_cancel_right]
 
 theorem Th_pol : ∃ A : ℕ → (Fin (N + 1) → V) → (Fin (N + 1) → V), ∀ (u : ℂ) (X : Fin (N + 1) → V),
@@ -433,11 +428,9 @@ theorem covUp_succ (η : Fin (N + 1) → Module.End ℂ V) (hE : GlRel E) (hη :
       rw [hw, map_mul, Polynomial.aeval_C]
       first
         | rw [Module.End.mul_apply, charId E hE hv Z hZ, map_zero]
-        | rw [LinearMap.mul_apply, charId E hE hv Z hZ, map_zero]
     rw [map_mul] at h1
     first
       | rw [Module.End.mul_apply] at h1
-      | rw [LinearMap.mul_apply] at h1
     rw [map_add, Polynomial.aeval_X, Polynomial.aeval_C, LinearMap.add_apply,
       Module.algebraMap_end_apply] at h1
     rw [hYdef, neg_smul]
@@ -456,7 +449,6 @@ theorem covUp_succ (η : Fin (N + 1) → Module.End ℂ V) (hE : GlRel E) (hη :
     rw [LinearMap.mem_ker, LinearMap.sub_apply, LinearMap.smul_apply, sub_eq_zero]
     first
       | rw [Module.End.one_apply]
-      | rw [LinearMap.one_apply]
     rw [detCov E hE hv (hY i) w x, Th_eigen E hE hv i (hY i) (hKY i) w, Pi.smul_apply, ← add_smul]
     congr 1
     have hP : ∏ j ∈ Finset.univ.erase i, (w + Function.update m i (m i + 1) j) =

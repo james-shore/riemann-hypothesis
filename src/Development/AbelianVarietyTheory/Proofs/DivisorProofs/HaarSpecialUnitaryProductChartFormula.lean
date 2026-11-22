@@ -100,7 +100,6 @@ theorem haar_map_mul_right_of_compact {G : Type} [Group G] [TopologicalSpace G] 
     first
     | exact ((ENNReal.mul_eq_mul_right hpos hfin).1 h2).symm
     | exact ((ENNReal.mul_left_inj hpos hfin).1 h2).symm
-    | exact (ENNReal.mul_right_cancel hpos hfin h2).symm
   have hΔ' : Measure.modularCharacterFun g = 1 := by exact_mod_cast hΔ
   rw [hm, hΔ', one_smul]
 
@@ -333,7 +332,6 @@ theorem haar_chart_formula : ∀ (E : Type) [Field E] [NumberField E] [IsCMField
         · refine ht_per _ _ fun i k => ⟨-toIocDiv Real.two_pi_pos (-Real.pi) (θ i k), ?_⟩
           have := toIocMod_add_toIocDiv_zsmul Real.two_pi_pos (-Real.pi) (θ i k)
           rw [zsmul_eq_mul] at this
-          beta_reduce
           push_cast
           linarith
       · rintro _ ⟨θ, -, rfl⟩; exact ⟨θ, rfl⟩

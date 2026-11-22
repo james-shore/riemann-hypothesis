@@ -24,7 +24,7 @@ theorem conj_prod_sub (A B : Multiset ℂ) (hA : ∀ x ∈ A, ‖x‖ = 1) (hB :
         (A.prod ^ Multiset.card B * B.prod ^ Multiset.card A) =
       (-1) ^ (Multiset.card A * Multiset.card B) * ((A ×ˢ B).map fun ij => ij.1 - ij.2).prod := by
   have h := prod_product_mul A B id id
-  simp only [Multiset.map_id, id, Multiset.map_id'] at h
+  simp only [id, Multiset.map_id'] at h
   rw [← h, map_multiset_prod, Multiset.map_map, ← Multiset.prod_map_mul]
   have hc : ∀ ij ∈ A ×ˢ B, ((starRingEnd ℂ) ∘ fun ij : ℂ × ℂ => ij.1 - ij.2) ij * (ij.1 * ij.2) =
       (-1) * (ij.1 - ij.2) := by

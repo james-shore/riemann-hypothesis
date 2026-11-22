@@ -13,8 +13,6 @@ theorem exists_common_eigenvector_commuting {k ι V : Type} [Field k] [IsAlgClos
   | exact @_root_.GlobalTheory.CommonEigenvectorExistenceInertiaEigenvalues.target
   | exact _root_.GlobalTheory.CommonEigenvectorExistenceInertiaEigenvalues.target
   | (apply _root_.GlobalTheory.CommonEigenvectorExistenceInertiaEigenvalues.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CommonEigenvectorExistenceInertiaEigenvalues.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CommonEigenvectorExistenceInertiaEigenvalues.target <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CommonEigenvectorExistenceInertiaEigenvalues.target ..)
 
 theorem exists_common_eigenvector : ∀ (k ι : Type) [Field k] [IsAlgClosed k] (n : ℕ)
@@ -37,10 +35,6 @@ theorem exists_unit_col_zero : ∀ (k : Type) [Field k] (n : ℕ) (v : Fin (n+1)
     ∃ P : Matrix (Fin (n+1)) (Fin (n+1)) k, IsUnit P ∧ ∀ a, P a 0 = v a := by
   first
   | exact @_root_.GlobalTheory.IntegralCriterion.main
-  | exact _root_.GlobalTheory.IntegralCriterion.main
-  | (apply _root_.GlobalTheory.IntegralCriterion.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralCriterion.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralCriterion.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegralCriterion.main ..)
 
 end GlobalTheory.CommTriang

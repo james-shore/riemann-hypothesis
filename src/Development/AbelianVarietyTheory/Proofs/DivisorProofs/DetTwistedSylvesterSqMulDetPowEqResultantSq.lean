@@ -26,8 +26,7 @@ theorem det_adL_sq_mul_det_pow : ∀ (k : Type) [Field k] (a b : ℕ) (A : GL (F
     intro ψ
     obtain ⟨X, rfl⟩ := e.surjective ψ
     simp only [LinearMap.comp_apply, LinearEquiv.coe_coe, LinearEquiv.symm_apply_apply,
-      LinearMap.sub_apply, F, G, e, LinearMap.llcomp_apply, LinearMap.lcomp_apply,
-      GlobalTheory.LeviDesc.adL, LinearMap.coe_mk, AddHom.coe_mk]
+      LinearMap.sub_apply, F, G, e, GlobalTheory.LeviDesc.adL, LinearMap.coe_mk, AddHom.coe_mk]
     change Matrix.toLin' A.val ∘ₗ Matrix.toLin' (X - (A⁻¹ : GL (Fin a) k).val * X * B)
       = Matrix.toLin' A.val ∘ₗ Matrix.toLin' X - Matrix.toLin' X ∘ₗ Matrix.toLin' B
     rw [← Matrix.toLin'_mul, ← Matrix.toLin'_mul, ← Matrix.toLin'_mul, ← map_sub]

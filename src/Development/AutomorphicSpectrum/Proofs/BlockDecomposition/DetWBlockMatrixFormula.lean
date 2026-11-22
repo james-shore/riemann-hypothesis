@@ -21,10 +21,10 @@ theorem one_add_I_blkM_eq {n : ℕ} (b : Matrix (Fin n) (Fin n) ℂ) (u : Fin n 
   · simp [blkM, Matrix.one_apply]
   · have h : ¬Fin.castAdd 1 i' = Fin.natAdd n j' := by
       rw [Fin.ext_iff]; simp; omega
-    simp [blkM, Matrix.one_apply, h]
+    simp [blkM, h]
   · have h : ¬Fin.natAdd n i' = Fin.castAdd 1 j' := by
       rw [Fin.ext_iff]; simp; omega
-    simp [blkM, Matrix.one_apply, h]
+    simp [blkM, h]
   · obtain rfl := Subsingleton.elim i' j'
     simp [blkM]
 
@@ -53,7 +53,7 @@ theorem det_one_add_I_blkM {n : ℕ} (b : Matrix (Fin n) (Fin n) ℂ) (v : Fin n
     · simp
     · ext i j
       have hI : Complex.I * Complex.I = -1 := Complex.I_mul_I
-      simp [Matrix.mul_apply, dotProduct, Finset.mul_sum, mul_assoc, mul_left_comm]
+      simp [Matrix.mul_apply, dotProduct, Finset.mul_sum]
       simp only [← mul_assoc, hI, neg_mul, one_mul, Finset.sum_neg_distrib, neg_neg]
       ring
   have hdet := congrArg Matrix.det hmul

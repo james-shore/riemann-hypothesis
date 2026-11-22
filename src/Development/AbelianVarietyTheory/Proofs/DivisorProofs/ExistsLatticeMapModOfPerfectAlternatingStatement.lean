@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.exists_lattice_map_mod_of_perfect_alternating : �
   ∃ L : (Fin (Module.finrank ℤ La / 2) ⊕ Fin (Module.finrank ℤ La / 2) → ℤ) →+ La,
     (∀ a, (∃ y, L a = M • y) ↔ ∃ c, a = M • c) ∧ (∀ x, ∃ a y, x = L a + M • y) ∧
     ∀ a c, ∃ k : ℤ, EF (L a) (L c) = omegaStd a c + M * k := by
-  first | (exact @GlobalTheory.exists_lattice_map_mod_of_perfect) | (exact GlobalTheory.exists_lattice_map_mod_of_perfect) | (intros; apply GlobalTheory.exists_lattice_map_mod_of_perfect  <;> assumption)
+  first | (exact @GlobalTheory.exists_lattice_map_mod_of_perfect)

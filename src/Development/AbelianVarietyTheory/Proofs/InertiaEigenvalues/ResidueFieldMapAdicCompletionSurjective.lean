@@ -37,7 +37,7 @@ theorem finite_residueField_of_dominating (D : Type*) [CommRing D] [IsDomain D] 
     intro x
     obtain ⟨⟨b, c⟩, hbc⟩ := IsLocalization.surj (nonZeroDivisors D) (x : FractionRing D)
     refine ⟨c, nonZeroDivisors.coe_ne_zero c, b, Subtype.ext ?_⟩
-    simp only [Subalgebra.coe_mul] at hbc ⊢
+    simp only at hbc ⊢
     change algebraMap D (FractionRing D) c * x = algebraMap D (FractionRing D) b
     rw [mul_comm]; exact hbc
   have hm : maximalIdeal D ≠ ⊥ := fun h => hD (isField_iff_maximalIdeal_eq.mpr h)

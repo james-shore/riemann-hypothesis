@@ -88,7 +88,7 @@ theorem leafGenericNbhd : LeafGenericNbhd := by
     intro c hc
     by_cases h0 : c.f = 0
     · refine ⟨1, one_ne_zero, fun z hz => absurd ?_ hz.2⟩
-      simp [h0, PrimeSpectrum.mem_zeroLocus]
+      simp [h0]
     · by_cases hg : ∃ i, c.g i ≠ 0
       · obtain ⟨i, hi⟩ := hg
         exact ⟨c.g i, hi, fun z hz => hz.1 ⟨i, rfl⟩⟩
@@ -102,7 +102,7 @@ theorem leafGenericNbhd : LeafGenericNbhd := by
             exact h0 (by simpa [η, PrimeSpectrum.mem_zeroLocus] using h)
         have hηT : η ∈ T := by
           rw [← hC]
-          simp only [PrimeSpectrum.ConstructibleSetData.toSet, Set.mem_iUnion]
+          simp only [PrimeSpectrum.ConstructibleSetData.toSet]
           exact Set.mem_iUnion₂.mpr ⟨c, hc, hηc⟩
         exact hgen _ hηT hη
   choose! a ha using hne

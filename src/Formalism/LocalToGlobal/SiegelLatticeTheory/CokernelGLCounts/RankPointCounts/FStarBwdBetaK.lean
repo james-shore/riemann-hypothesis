@@ -78,14 +78,10 @@ variable {T T' : D.host.E}
 theorem fvec_cs' (F : LFlag (VS D) D.R.rS T) (i : Fin D.R.rS) : frame F i.castSucc = F.fl.e i := by
   first
   | exact PI.UnitaryGroupMassFormula.BetaLUniq.GN.fvec_castSucc F.fl i
-  | simp [frame]
-  | rfl
 
 theorem fvec_last' (F : LFlag (VS D) D.R.rS T) : frame F (Fin.last _) = F.fl.z := by
   first
   | exact PI.UnitaryGroupMassFormula.BetaLUniq.GN.fvec_last F.fl
-  | simp [frame]
-  | rfl
 
 theorem e_of_frame (β : (VS D).V ≃ₗ[D.host.E] (VS D).V) (F F₂ : LFlag (VS D) D.R.rS T')
     (h : ∀ b, β (frame F b) = frame F₂ b) (i : Fin D.R.rS) : β (F.fl.e i) = F₂.fl.e i := by
@@ -155,7 +151,6 @@ private theorem Hp_le_orth_Xsp (Λ : Submodule (𝓞 D.host.E) (VS D).V) (hΛ : 
     have hd' : algebraMap (𝓞 D.host.E) D.host.E d ≠ 0 := by
       first
       | exact (map_ne_zero_iff _ (IsFractionRing.injective (𝓞 D.host.E) D.host.E)).mpr hd0
-      | simpa using hd0
     have hx' : x = (algebraMap (𝓞 D.host.E) D.host.E d)⁻¹ • (d • x) := by
       rw [← algebraMap_smul D.host.E d x, smul_smul, inv_mul_cancel₀ hd', one_smul]
     rw [hx']

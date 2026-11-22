@@ -109,7 +109,7 @@ private theorem assemble0 {d : ℕ} (γ : Fin d → ℝ → Eu d →L[ℂ] ℂ) 
     rw [this]
     ext1
     simp
-  · simp [ContinuousLinearMap.sum_apply, Finset.sum_apply, Pi.single_apply]
+  · simp [Finset.sum_apply, Pi.single_apply]
 
 private theorem int_app {Y E F : Type*} [TopologicalSpace Y] [MeasurableSpace Y] [OpensMeasurableSpace Y] (μ : Measure Y)
     [IsFiniteMeasureOnCompacts μ] [NormedAddCommGroup E] [NormedSpace ℂ E] [NormedAddCommGroup F] [NormedSpace ℂ F]

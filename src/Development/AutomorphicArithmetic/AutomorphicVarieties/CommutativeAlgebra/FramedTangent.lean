@@ -134,7 +134,7 @@ private theorem dual_basis {k H S : Type} [Field k] [AddCommGroup H] [Module k H
   · obtain ⟨x, hx⟩ := (Module.evalEquiv k H).surjective (b.coord t)
     have : ∀ t', l (a t') x = b.coord t (b t') := fun t' => by rw [← hx, hb]; rfl
     refine ⟨x, by simp [this], fun t' h => ?_⟩
-    simp [this, Finsupp.single_apply, h]
+    simp [this, h]
 
 private theorem abstract {S X : Type} (z : S → R) (hz : ∀ s, z s ∈ maximalIdeal R) (wt : S → X) (H : X → Type)
     [∀ j, AddCommGroup (H j)] [∀ j, Module (ResidueField O) (H j)]
@@ -252,7 +252,7 @@ private theorem mfst_one : (1 : Matrix ι ι (DualNumber k)).map fst = 1 := by
 omit [Fintype ι] in
 private theorem msnd_one : (1 : Matrix ι ι (DualNumber k)).map snd = 0 := by
   ext a b
-  by_cases e : a = b <;> simp [Matrix.one_apply, e]
+  by_cases e : a = b <;> simp [e]
 
 omit [Fintype ι] [DecidableEq ι] [CommRing k] in
 private theorem lc_mat [Finite ι] {Γ : Type} [TopologicalSpace Γ] {c : Γ → Matrix ι ι k}

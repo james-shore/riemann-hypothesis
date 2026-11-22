@@ -154,10 +154,6 @@ theorem exists_mem_inertia_eq_on : ∀ (R K Ω : Type) [CommRing R] [IsDomain R]
     ∃ σ ∈ inertia K V, ∀ y : L, σ (y : Ω) = (τ y : Ω) := by
   first
   | exact @_root_.GlobalTheory.IntegralFractionLift.inertia_surjective
-  | exact _root_.GlobalTheory.IntegralFractionLift.inertia_surjective
-  | (apply _root_.GlobalTheory.IntegralFractionLift.inertia_surjective <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralFractionLift.inertia_surjective <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralFractionLift.inertia_surjective <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegralFractionLift.inertia_surjective ..)
 
 end GlobalTheory.InertiaRestrict

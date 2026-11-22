@@ -65,7 +65,7 @@ theorem HasLev.mul {I J : Ideal A} (hIJ : I ⊔ J = ⊤) (hI : HasLev O L M I) (
     obtain ⟨y₂, hy₂⟩ := s₂ (a • g) fun c hc => by
       rw [smul_smul, mul_comm]; exact hg _ (Ideal.mul_mem_mul ha hc)
     refine ⟨b • y₁ + a • y₂, ?_⟩
-    simp only [LinearMap.add_apply, map_add, LinearMap.map_smul_of_tower, smul_add]
+    simp only [LinearMap.add_apply, map_add, LinearMap.map_smul_of_tower]
     rw [u₁, u₂, t₁ a ha, t₂ b hb, hy₁, hy₂, add_zero, zero_add, ← add_smul, add_comm, hab, one_smul]
 
 theorem hasLev_of_prime_pow [IsDedekindDomain A] (q : A) (hq : q ≠ 0) (e : ℕ)

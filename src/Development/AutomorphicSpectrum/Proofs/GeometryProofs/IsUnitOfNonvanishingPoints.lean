@@ -83,7 +83,7 @@ theorem isUnit_res_of_forall_point {X : Scheme.{0}} (s : X ⟶ Sp ℂ) [LocallyO
   rw [← val_germ x U hxU a]
   have e1 := congrArg (fun f => f.hom (X.presheaf.map (homOfLE hVU).op a)) (germ_comp_stalkClosedPointTo_eq hV χ' hxV)
   have e2 := TopCat.Presheaf.germ_res_apply X.presheaf (homOfLE hVU) _ hxV a
-  simp only [CommRingCat.comp_apply] at e1
+  simp only at e1
   erw [← e2]
   exact e1.trans hχ
 

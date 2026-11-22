@@ -38,7 +38,7 @@ theorem inverse_first_block_eq_conjTranspose {x : M2 n} (hx : InG x) : ub1 x = (
   conv_lhs => rw [← fromBlocks_toBlocks x]
   simp only [JJ, fromBlocks_conjTranspose, fromBlocks_multiply, fromBlocks_neg, toBlocks_fromBlocks₁₁,
     toBlocks_fromBlocks₂₁]
-  simp [Matrix.conjTranspose_add, Matrix.conjTranspose_smul, sub_eq_add_neg]
+  simp [Matrix.conjTranspose_add, Matrix.conjTranspose_smul]
   abel
 
 theorem det_first_block_ne_zero_group {x : M2 n} (hx : InG x) : (u1 x).det ≠ 0 := by
@@ -70,7 +70,7 @@ theorem lowQ_eq (Q : Matrix (Fin n) (Fin n) ℂ) : lowQ Q = Nq Q := by
 theorem Nq_blocks (Q : Matrix (Fin n) (Fin n) ℂ) :
     Nq Q = fromBlocks (-(1 / 2 : ℂ) • Q) ((Complex.I / 2) • Q) ((Complex.I / 2) • Q) ((1 / 2 : ℂ) • Q) := by
   rw [Nq, Cm, Cmi, fromBlocks_multiply, fromBlocks_multiply]
-  congr 1 <;> ext i j <;> simp [Matrix.mul_apply, Matrix.one_apply, Matrix.smul_apply] <;> ring_nf <;>
+  congr 1 <;> ext i j <;> simp [Matrix.smul_apply] <;> ring_nf <;>
     simp [Complex.I_sq] <;> ring
 
 theorem inv_mul_lower {x : M2 n} (hx : IsUnit x) (Q : Matrix (Fin n) (Fin n) ℂ) (s : ℂ) :

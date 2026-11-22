@@ -12,11 +12,6 @@ theorem val_alg {F : Type} [Field F] [NumberField F] (v : HeightOneSpectrum (�
   first
     | exact (HeightOneSpectrum.valuedAdicCompletion_eq_valuation' v (x : F)).trans
         (HeightOneSpectrum.valuation_of_algebraMap v x)
-    | (rw [HeightOneSpectrum.valuedAdicCompletion_eq_valuation', HeightOneSpectrum.valuation_of_algebraMap]; rfl)
-    | simp [HeightOneSpectrum.valuedAdicCompletion_eq_valuation', HeightOneSpectrum.valuation_of_algebraMap]
-    | simp [HeightOneSpectrum.valuedAdicCompletion_eq_valuation, HeightOneSpectrum.valuation_of_algebraMap]
-    | (rw [HeightOneSpectrum.adicCompletion.algebraMap_eq_coe, HeightOneSpectrum.valuedAdicCompletion_eq_valuation,
-        HeightOneSpectrum.valuation_of_algebraMap])
 
 theorem diffExists_main {F : Type} [Field F] [NumberField F]
     (v : HeightOneSpectrum (𝓞 F)) : DiffExists v := by
@@ -26,9 +21,6 @@ theorem diffExists_main {F : Type} [Field F] [NumberField F]
   have hne : ∀ x : 𝓞 F, x ≠ 0 → v.intValuation x ≠ 0 := fun x hx => by
     first
       | exact v.intValuation_ne_zero x hx
-      | exact v.intValuation_ne_zero' x hx
-      | exact (map_ne_zero _).2 hx
-      | simpa using hx
   let f : 𝓞 F → ℕ := fun x =>
     if hx : x = 0 then 0 else (-(Multiplicative.toAdd (WithZero.unzero (hne x hx)))).toNat
   have hfdef : ∀ z (hz : z ≠ 0), f z = (-(Multiplicative.toAdd (WithZero.unzero (hne z hz)))).toNat :=

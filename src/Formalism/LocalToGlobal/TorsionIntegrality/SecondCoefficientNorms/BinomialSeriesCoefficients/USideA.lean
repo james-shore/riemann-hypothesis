@@ -127,7 +127,7 @@ theorem subst_wpShift_zero {a : PowerSeries K} (ha : PowerSeries.HasSubst a) (e 
     PowerSeries.subst a (wpShift e 0) = 1 + a ^ 2 * PowerSeries.subst a e := by
   unfold wpShift
   rw [← PowerSeries.coe_substAlgHom ha]
-  simp only [map_add, map_one, map_mul, map_pow, map_sub, map_zero, sub_zero,
+  simp only [map_add, map_one, map_mul, map_pow, map_zero, sub_zero,
     PowerSeries.coe_substAlgHom, PowerSeries.subst_X ha]
 
 end Log
@@ -156,7 +156,7 @@ theorem veluXOfSigma' : VeluXFromZ := by
   rw [← PowerSeries.coe_substAlgHom hl] at F3
   simp only [map_add, map_mul, map_sum, map_sub, PowerSeries.coe_substAlgHom] at F3
   simp only [subst_C'] at F3
-  simp only [hw, ← hZr, map_pow, map_add] at F3
+  simp only [hw, ← hZr, map_pow] at F3
   have hsum : ∑ P, (xs P + PowerSeries.C c0 - (PowerSeries.C (xP P) + PowerSeries.C c0)) =
       ∑ P, (xs P - PowerSeries.C (xP P)) := Finset.sum_congr rfl (fun P _ => by ring)
   rw [hsum] at F3

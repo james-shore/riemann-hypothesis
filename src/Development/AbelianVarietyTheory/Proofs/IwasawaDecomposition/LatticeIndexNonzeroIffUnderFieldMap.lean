@@ -184,7 +184,7 @@ theorem lidx_ne_zero_iff : ∀ (K K' : Type) [Field K] [NumberField K] [Field K'
       simp only [ψ, Function.comp_apply, LinearMap.comp_apply, LinearMap.restrictScalars_apply]
       congr 1
       funext k
-      by_cases hk : k = i <;> simp [hk, Pi.single_apply]
+      by_cases hk : k = i <;> simp [hk]
     rw [e]
     exact h
   obtain ⟨e, he, h⟩ := exists_lidx_eq_mul K K' ψ hψ P P'

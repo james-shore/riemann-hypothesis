@@ -116,7 +116,7 @@ theorem UpperTheory.V.ZK.sCoc : UpperTheory.V.ZK.SCoc := by
     | single g c =>
       have := F_coc u w (fun a b c => by simp only [hu]; exact_mod_cast congrArg (Int.cast : ℤ → ZMod q) (hc a b c))
         (fun a b => by simp [hw]) _ g
-      simp only [bd, Finsupp.linearCombination_single, map_smul, map_add, map_sum, one_smul, smul_eq_mul, one_mul]
+      simp only [bd, Finsupp.linearCombination_single, map_smul, map_add, map_sum, smul_eq_mul, one_mul]
       exact mul_eq_zero_of_right _ this
   · have key : ∑ j : ZMod q, u (chi q ζ hζ.pow_eq_one x (Multiplicative.ofAdd j))
         (chi q ζ hζ.pow_eq_one x (Multiplicative.ofAdd 1)) = x := by
@@ -138,7 +138,7 @@ theorem UpperTheory.V.ZK.sCoc : UpperTheory.V.ZK.SCoc := by
     have hp : ∀ h : Fin (2 * e + 1 + 1) → kˣ, Finsupp.linearCombination (ZMod q) (F u w _)
         (prism (ZMod q) g _ (Finsupp.single h 1)) = F u w (2 * (e + 1)) h * w g := fun h => by
       rw [← F_ins u w (fun a b => by simp only [hu, hs a b]) g (e + 1) h]
-      simp only [prism, Finsupp.linearCombination_single, one_smul, map_sum, map_smul, smul_eq_mul, mul_one, one_mul,
+      simp only [prism, Finsupp.linearCombination_single, one_smul, map_sum, map_smul, smul_eq_mul, one_mul,
         inv_mul_cancel_comm, ite_self]
       rfl
     simp only [zc, map_sum, cm, Finsupp.lmapDomain_apply, Finsupp.mapDomain_single, hp, F_prod]

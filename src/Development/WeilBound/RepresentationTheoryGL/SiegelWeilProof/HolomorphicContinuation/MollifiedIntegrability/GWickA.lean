@@ -22,7 +22,7 @@ theorem ent_apply (a : Fin m) (i : Fin n) (v : Fin m → Fin n → ℂ) : ent a 
 
 theorem crd_apply (k : Fin m × Fin n × Bool) (v : Fin m → Fin n → ℂ) :
     crd k v = if k.2.2 then star (v k.1 k.2.1) else v k.1 k.2.1 := by
-  unfold crd; split_ifs <;> simp [ent_apply, Complex.conjCLE_apply]
+  unfold crd; split_ifs <;> simp [ent_apply]
 
 theorem evX_eq (P : PX m n) (x : Fin m → Fin n → ℂ) : evX P x = MvPolynomial.eval (fun k => crd k x) P := by
   simp only [evX, crd_apply]
@@ -32,7 +32,7 @@ theorem evX_pderiv_mul_X (p : PX m n) (k b : Fin m × Fin n × Bool) (x : Fin m 
   rw [pderiv_mul, pderiv_X]
   by_cases h : k = b
   · subst h; simp [evX_eq]
-  · simp [evX_eq, Pi.single_apply, h]
+  · simp [evX_eq, h]
 
 def dEv (P : PX m n) (x : Fin m → Fin n → ℂ) : (Fin m → Fin n → ℂ) →L[ℝ] ℂ :=
   ∑ k, evX (pderiv k P) x • crd k

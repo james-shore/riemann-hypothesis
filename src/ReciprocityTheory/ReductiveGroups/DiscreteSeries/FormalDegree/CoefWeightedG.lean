@@ -25,15 +25,11 @@ theorem coefWeightedN {n : ℕ} (ε : Fin n → Bool) (lam : Fin n → ℝ) {H :
   haveI hH : Measure.IsHaarMeasure (μ : Measure (S7.UJ ε)) := by
     first
     | assumption
-    | exact ‹_›
-    | exact inferInstanceAs (Measure.IsHaarMeasure (μ : Measure (Formalism.REAL.UJ ε)))
-    | (unfold S7.UJ; assumption)
   have hI : Integrable (fun g : S7.UJ ε =>
       ‖⟪w, σ (S7.toM g) w⟫_ℂ‖ * ‖Matrix.toEuclideanCLM (𝕜 := ℂ) (S7.toM g)‖ ^ N) μ := by
     rcases Nat.eq_zero_or_pos (S7.q0 ε) with hq | hq
     · first
       | exact @integrable_opPow_of_compact _ _ hq _ hcont hle _ hN μ hH
-      | exact @integrable_opPow_of_compact _ _ hq _ hcont hle _ hN μ (by first | exact ‹_› | infer_instance)
       | exact @integrable_opPow_of_compact _ _ hq _ hcont hle _ hN μ (by unfold S7.UJ at *; exact ‹_›)
     · have hq1 : 1 ≤ S7.q0 ε := hq
       obtain ⟨hstd, h8'⟩ := hthr hq1
@@ -51,8 +47,6 @@ theorem coefWeightedN {n : ℕ} (ε : Fin n → Bool) (lam : Fin n → ℝ) {H :
       first
       | exact @integrable_opPow_of_dec _ _ _ hcont hle _ hq1
           (fun k X hX => coef_dec_of_isDS hDS hlam hgap hq1 h8 hstd hw k hX) _ hN h8' μ hH
-      | exact @integrable_opPow_of_dec _ _ _ hcont hle _ hq1
-          (fun k X hX => coef_dec_of_isDS hDS hlam hgap hq1 h8 hstd hw k hX) _ hN h8' μ (by exact ‹_›)
   refine lt_of_le_of_lt (le_of_eq ?_) hI.hasFiniteIntegral
   refine lintegral_congr fun g => ?_
   have hpos : 0 ≤ ‖Matrix.toEuclideanCLM (𝕜 := ℂ) (Formalism.MainNotions.S.uMat g)‖ ^ N :=

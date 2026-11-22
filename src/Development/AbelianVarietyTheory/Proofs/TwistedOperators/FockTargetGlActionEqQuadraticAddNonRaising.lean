@@ -98,7 +98,7 @@ theorem term_mem (i l : Fin b) (j : Fin a) :
     exact Submodule.zero_mem _
   · simp only [hi, hl, if_true, false_and, if_false, LinearMap.mulLeft_zero_eq_zero, sub_zero, neg_mul]
     exact Submodule.neg_mem _ (mul_mem (pderiv_mem _) (pderiv_mem _))
-  · simp only [hi, hl, if_true, false_and, if_false, LinearMap.mulLeft_zero_eq_zero, sub_zero, neg_mul]
+  · simp only [hi, hl, false_and, if_false, LinearMap.mulLeft_zero_eq_zero, sub_zero, neg_mul]
     exact Submodule.neg_mem _ (pderiv_mul_mem _ _)
 
 def quadAll (Y : Matrix (Fin b) (Fin b) ℂ) : PolF D b a :=

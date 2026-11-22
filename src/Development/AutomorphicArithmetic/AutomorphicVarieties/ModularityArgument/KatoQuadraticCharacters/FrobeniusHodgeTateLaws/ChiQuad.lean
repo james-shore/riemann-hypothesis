@@ -162,7 +162,7 @@ theorem UpperTheory.V.Z.Kato.Joint.chiQuad :
       rw [map_inv]
       rfl
     rw [hw] at hdet
-    simp only [mul_inv_rev, inv_inv, Units.val_mul, Units.val_pow_eq_pow_val, Units.val_zpow_eq_zpow_val,
+    simp only [mul_inv_rev, inv_inv, Units.val_mul, Units.val_zpow_eq_zpow_val,
       Units.val_inv_eq_inv_val, map_mul, map_pow, map_inv₀, map_zpow₀, hcyc, map_natCast] at hdet
     set a := ι ((χ σ : (Qbar l)ˣ) : Qbar l) with ha_def
     set δ := ι ((dt W σ : (Qbar l)ˣ) : Qbar l) with hδ_def

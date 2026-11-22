@@ -102,9 +102,9 @@ theorem form_coords (E : LinearMap.BilinForm ℤ Λ)
   conv_lhs => rw [← sum_coords bas x, ← sum_coords bas y]
   simp only [mk, map_add, map_sum, map_zsmul, LinearMap.add_apply, LinearMap.sum_apply,
     LinearMap.smul_apply, smul_eq_mul, (hE _ _).1, (hE _ _).2.1, (hE _ _).2.2, hba,
-    mul_zero, Finset.sum_const_zero, add_zero, zero_add, mul_ite, mul_one, mul_neg,
-    Finset.sum_ite_eq, Finset.mem_univ, if_true, Finset.sum_neg_distrib, dotProduct]
-  simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true, mul_one, mul_neg, Finset.sum_neg_distrib]
+    mul_zero, Finset.sum_const_zero, add_zero, zero_add, mul_ite, mul_neg,
+    dotProduct]
+  simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true, mul_neg, Finset.sum_neg_distrib]
   rw [sub_eq_add_neg]
   congr 1
   · exact Finset.sum_congr rfl fun _ _ => by ring
@@ -528,7 +528,7 @@ theorem at_point {n a g : ℕ} {Λ : Type} [AddCommGroup Λ] (L : Flat.LogPeriod
       simp only [hperF, uCo_mk, vCo_mk, cst_zero, mulVec_zero, add_zero] at h1
       have h2 : star ((A z)ᵀ *ᵥ cst u) = (A z)ᴴ *ᵥ cst u := by
         funext i
-        simp [cst, mulVec, dotProduct, Matrix.conjTranspose_apply, map_sum]
+        simp [cst, mulVec, dotProduct, Matrix.conjTranspose_apply]
       rw [h2] at h1
       rw [hG, ← Matrix.mulVec_mulVec, ← Matrix.mulVec_mulVec]
       have h3 : Hb *ᵥ ((A z)ᴴ *ᵥ (fun k => (u k : ℂ))) = 0 := h1
@@ -593,7 +593,7 @@ theorem bounded_on_limit_lattice : ∀ (n a g : ℕ) (Λ : Type) [AddCommGroup �
     have hwj : ∀ j : Fin a, w (Fin.castLE L.a_le j) = l j := by
       intro j
       have hj : (Fin.castLE L.a_le j).val < a := j.2
-      simp [w, hj]
+      simp [w]
     have hexp : expCover a w = z := by
       funext k
       by_cases hk : k.val < a

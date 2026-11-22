@@ -530,7 +530,7 @@ private lemma pc_top (x : MonoidAlgebra B G) : pc n x n = 1 := by
   refine Finset.prod_congr rfl fun i _ => ?_
   simp only [lin, sub_eq_add_neg, coeff_add, coeff_neg, Finsupp.add_apply, Finsupp.neg_apply,
     coeff_single_apply, coeff_mapRingHom, Pi.one_apply, one_def]
-  split_ifs <;> simp [Polynomial.coeff_C]
+  split_ifs <;> simp
 
 open Polynomial in
 private lemma position_lin (x : MonoidAlgebra B G) (i : Fin n) :
@@ -718,7 +718,7 @@ private theorem law_eq_det
     rw [← nat, Matrix.diagonal_map (map_zero _)]
     congr 2
     funext j
-    by_cases h : j = i <;> simp [Function.update_apply, h]
+    by_cases h : j = i <;> simp [h]
   have d1 : ∀ (B : Type) [CommRing B] [Algebra A B] (i : Fin n) (b : B),
       Δ B (Matrix.diagonal (Function.update 1 i b)) = b := by
     intro B _ _ i b
@@ -726,14 +726,14 @@ private theorem law_eq_det
     rw [← d0, ← d0, ← d0, ← map_mul, Matrix.diagonal_mul_diagonal]
     congr 2
     funext j
-    by_cases h : j = i <;> simp [Function.update_apply, h]
+    by_cases h : j = i <;> simp [h]
   have sm : ∀ (B : Type) [CommRing B] [Algebra A B] (M : Matrix (Fin n) (Fin n) B) (i : Fin n) (b : B)
       (v : Fin n → B), Δ B (M.updateRow i (b • v)) = b * Δ B (M.updateRow i v) := by
     intro B _ _ M i b v
     conv_rhs => rw [← d1 B i b, ← map_mul]
     congr 1
     ext p q
-    by_cases h : p = i <;> simp [Matrix.diagonal_mul, Matrix.updateRow_apply, Function.update_apply, h]
+    by_cases h : p = i <;> simp [Matrix.diagonal_mul, Matrix.updateRow_apply, h]
   have ad : ∀ (M : Matrix (Fin n) (Fin n) B) (i : Fin n) (v w : Fin n → B),
       Δ B (M.updateRow i (v + w)) = Δ B (M.updateRow i v) + Δ B (M.updateRow i w) := by
     intro M i v w
@@ -1209,7 +1209,7 @@ private theorem main [IsLocalRing A] [IsAdicComplete (IsLocalRing.maximalIdeal A
         simp only [y, map_add, map_one]
         congr 1
         ext g : 2
-        simp [coeff_single_one_mul, -Polynomial.X_mul_C]
+        simp [-Polynomial.X_mul_C]
         ring
       rw [h3, h1, map_one, ← Polynomial.comp_eq_aeval] at h2
       have h4 := congrArg (fun q => Polynomial.coeff q 1) h2
@@ -1221,7 +1221,7 @@ private theorem main [IsLocalRing A] [IsAdicComplete (IsLocalRing.maximalIdeal A
           simp only [y, map_add, map_one]
           congr 1
           ext g : 2
-          simp [coeff_single_one_mul]
+          simp
         rw [← Polynomial.coeff_map, ← nat_poly, e, hD, map_add, map_one, map_smul, hC, ← hπ, ← hmk, h,
           Matrix.coeff_det_one_add_X_smul_one]
         simp

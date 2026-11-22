@@ -57,7 +57,7 @@ def cocone : Cocone (diag A S) where
   ι := { app := fun t => CommRingCat.ofHom (laurentMap (Algebra.adjoin A (t : Set S)).val.toRingHom)
          naturality := fun t u h => by
            ext1
-           simp only [diag, Functor.const_obj_map, Category.comp_id, CommRingCat.hom_comp,
+           simp only [diag, Functor.const_obj_map, CommRingCat.hom_comp,
              CommRingCat.hom_ofHom]
            rw [laurentMap_comp]
            rfl }

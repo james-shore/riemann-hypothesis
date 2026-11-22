@@ -14,4 +14,4 @@ theorem _root_.PositivityTheory.Mix.T.adapted_plane_pair_seesaw_identity : ∀ (
       ∀ e, IsEv B M M₁ H.ι 1 {u | ∃ z, u = Matrix.vecMulVec (incV F H.x) z} e →
       ∀ (t : (AE F E)ˣ) (g₁ : UA σ X₁.J) (m : UA σ X.J), IsLevi H t g₁ m → ∀ Φ ∈ schA F (Fin n × Fin d),
         e (om (m, 1) Φ) = ((χW t : ℂ) * (((absE F E t : ℝ) ^ ((d : ℝ) / 2) : ℝ) : ℂ)) • om₁ (g₁, 1) (e Φ) := by
-  first | exact @PositivityTheory.Mix.theta_tower_hermitian_second_holds | exact @PositivityTheory.Mix.theta_tower_hermitian_second_holds | exact PositivityTheory.Mix.theta_tower_hermitian_second_holds | exact @PositivityTheory.Mix.theta_tower_hermitian_second_holds trivial
+  first | exact @PositivityTheory.Mix.theta_tower_hermitian_second_holds

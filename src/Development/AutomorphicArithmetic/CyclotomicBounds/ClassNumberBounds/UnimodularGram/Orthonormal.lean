@@ -70,8 +70,8 @@ private theorem exists_orthonormal_basis_unimodular [IsLocalRing R] (hR : UnramD
     ext i j
     refine Fin.cases ?_ (fun i => ?_) i <;> refine Fin.cases ?_ (fun j => ?_) j
     · simp [gram, hx]
-    · simp [gram, h2, Matrix.one_apply, (Fin.succ_ne_zero j).symm]
-    · simp [gram, h1, Matrix.one_apply]
+    · simp [gram, h2, (Fin.succ_ne_zero j).symm]
+    · simp [gram, h1]
     · simp [gram, h3, Matrix.one_apply]
 
 theorem exists_congr_one [IsLocalRing R] (hR : UnramDatum R) {n : Type*} [Fintype n]
@@ -84,7 +84,7 @@ theorem exists_congr_one [IsLocalRing R] (hR : UnramDatum R) {n : Type*} [Fintyp
         simp [Matrix.mulVec_smul, starRingEnd_apply])
   have hg : gram h (Pi.basisFun R n) = G := by
     ext i j
-    simp [gram, h, ← Pi.single_star]
+    simp [gram, h]
   have hh : IsHerm h := (isHerm_iff_gram h (Pi.basisFun R n)).2 (by rw [hg]; exact hG)
   have hu : IsUnimod h := (isUnimod_iff_gram h (Pi.basisFun R n)).2 (by rw [hg]; exact hd)
   obtain ⟨b, hb⟩ := exists_orthonormal_basis_unimodular hR (Fintype.card n) (n → R) h hh hu

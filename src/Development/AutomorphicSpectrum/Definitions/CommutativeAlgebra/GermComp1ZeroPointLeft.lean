@@ -146,7 +146,7 @@ theorem beta_apply (B : FB R d O) (p : ℕ) (y : (Fin d → R) × (Fin d → R))
 theorem transH_apply (φ ψ : Pt R 1 d) (lam : PS R 2 d) (y : (Fin d → R) × (Fin d → R)) :
     transH φ ψ lam y = ((lin φ 1).mulVec y.1,
       (lin ψ 1).transpose.mulVec (y.2 + (bil lam 1 1).transpose.mulVec y.1)) := by
-  simp only [transH, LinearMap.prod_apply, Function.prod_apply, Pi.prod, LinearMap.add_apply, LinearMap.comp_apply,
+  simp only [transH, LinearMap.prod_apply, Function.prod_apply, LinearMap.add_apply, LinearMap.comp_apply,
     Matrix.toLin'_apply, LinearMap.fst_apply, LinearMap.snd_apply]
 
 theorem rhoH_inr (B : FB R d O) (a : O) (φ : Fin d → R) :
@@ -160,8 +160,7 @@ theorem rhoH_fst (B : FB R d O) (a : O) (y : (Fin d → R) × (Fin d → R)) :
 theorem dotProduct_beta (B : FB R d O) (p : ℕ) (u : Fin d → R) (y : (Fin d → R) × (Fin d → R)) :
     u ⬝ᵥ beta B p y = pairH B (alpha B p u) y := by
   rw [beta_apply, alpha_apply]
-  simp only [pairH, Matrix.sub_mulVec, dotProduct_sub, Matrix.dotProduct_mulVec, Matrix.vecMul_transpose,
-    ← Matrix.mulVec_mulVec, Matrix.mulVec_transpose]
+  simp only [pairH, Matrix.sub_mulVec, dotProduct_sub, Matrix.dotProduct_mulVec, ← Matrix.mulVec_mulVec, Matrix.mulVec_transpose]
   have key : u ⬝ᵥ Matrix.vecMul ((bil B.sy 1 1).mulVec y.1) (hw B p) =
       Matrix.vecMul ((hw B p).mulVec u) (bil B.sy 1 1) ⬝ᵥ y.1 := by
     rw [dotProduct_comm, ← Matrix.dotProduct_mulVec, dotProduct_comm, Matrix.dotProduct_mulVec]

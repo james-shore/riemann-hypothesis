@@ -35,7 +35,6 @@ theorem evalOne_injective {G W : Type} [Group G] [TopologicalSpace G] [IsTopolog
   rw [key, h0, map_zero]
   first
   | rfl
-  | simp
 
 theorem dichotomy {V X T : Type} [AddCommGroup V] [Module ℂ V] [AddCommGroup X] [Module ℂ X]
     [AddCommGroup T] [Module ℂ T] [Module.Finite ℂ X] (hX : Module.finrank ℂ X ≤ 1)
@@ -60,9 +59,7 @@ theorem dichotomy {V X T : Type} [AddCommGroup V] [Module ℂ V] [AddCommGroup X
   refine ⟨c, LinearMap.ext fun w => ?_⟩
   obtain ⟨t, ht⟩ := (finrank_eq_one_iff_of_nonzero' v hv0).mp hV1 w
   first
-  | (rw [← ht, map_smul, map_smul, LinearMap.smul_apply, ← hc]; done)
-  | (rw [← ht, ← hc]; simp [smul_comm])
-  | (subst ht; simp [← hc, smul_smul, mul_comm])
+  | (rw [← ht, map_smul, map_smul, LinearMap.smul_apply, ← hc])
 
 variable {k : Type} [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k]
 
@@ -73,7 +70,6 @@ theorem sizeMatrix_true_false {a b : ℕ}
   have hc := B.2.2 false
   first
   | (rw [Fintype.sum_bool] at hr hc; omega)
-  | (simp only [Fintype.sum_bool] at hr hc; omega)
 
 theorem relParab_eq_top {a b : ℕ}
     (B : SizeMatrix (Two (Fin a) (Fin b)) (Two (Fin a) (Fin b))) (h : B.1 false true = 0)
@@ -100,15 +96,11 @@ theorem diag_cell_at_most_one_map : ∀ (k : Type) [Field k] [ValuativeRel k] [T
   have hT : Module.finrank ℂ (ℂ ⊗[ℂ] ℂ) = 1 := by
     first
     | rw [Module.finrank_tensorProduct, Module.finrank_self]
-    | simp [Module.finrank_tensorProduct]
-    | simp
   refine GlobalTheory.CompanionTheory.CellDiag.dichotomy ?_ hT
     (GlobalTheory.CompanionTheory.CellDiag.evalOne _ _)
     (GlobalTheory.CompanionTheory.CellDiag.evalOne_injective _ (GlobalTheory.CompanionTheory.CellDiag.relParab_eq_top (k := k) B h g) _)
     φ.toLinearMap ψ.toLinearMap
   first
   | exact (Submodule.finrank_quotient_le _).trans hT.le
-  | exact (Submodule.finrank_quotient_le _).trans (le_of_eq hT)
-  | (refine (Submodule.finrank_quotient_le _).trans ?_; simp)
 
 end GlobalTheory.CompanionTheory.CellDiag

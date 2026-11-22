@@ -28,14 +28,11 @@ theorem rll_incl_int (r : 𝓞 E) : ιv (algebraMap (𝓞 E) E r) ∈ 𝒪v := b
   exact Subring.subset_closure (Or.inl ⟨⟨algebraMap (𝓞 E) E r, by
     first
     | exact ⟨r, rfl⟩
-    | exact r.2
-    | simp [Formalism.UG.intOE]
     | simp [Formalism.BasicNotions.intOE]⟩, rfl⟩)
 
 theorem rll_sigV_incl (e : E) : sigR hc.sig (v.adicCompletion F) (ιv e) = ιv (star e) := by
   first
   | simp [sigR, inclE, Formalism.BasicNotions.CMData.sig, starRingEnd_apply]
-  | rfl
 
 theorem rll_sigV_mem {s : Rv} (hs : s ∈ 𝒪v) : sigR hc.sig (v.adicCompletion F) s ∈ 𝒪v := by
   have key : 𝒪v ≤ (𝒪v).comap (sigR hc.sig (v.adicCompletion F)) := by
@@ -89,8 +86,6 @@ theorem rll_mulVec_single (M : Matrix (Fin n) (Fin n) Rv) (j : Fin n) (x : Rv) (
     (M *ᵥ Pi.single j x) i = M i j * x := by
   first
   | simp [Matrix.mulVec, dotProduct, Pi.single_apply]
-  | simp [Matrix.mulVec_single]
-  | (rw [Matrix.mulVec_single]; simp)
 
 variable (h : BasePi ST π)
 include h

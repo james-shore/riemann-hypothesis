@@ -59,14 +59,14 @@ theorem muMax_le_mon {V κ : Type} [AddCommGroup V] [Module K V] [Module (𝓞 K
     intro m _
     by_cases hm : m = s
     · subst hm
-      simp [Pi.single_apply, hst]
+      simp [hst]
     · simp [Pi.single_apply, hm]
   have hline : ∀ m, muMaxDef (Pi.basisFun K (MonI lam)) (fun _ : InfinitePlace K => (monD lam)⁻¹)
       (𝓞 K ∙ (Pi.single m (1 : K) : MonI lam → K)) ≤ -Real.log c0 := by
     intro m
     refine max_slope_line_neg_log _ _ hX' _ ?_ c0 hc0 fun v => ?_
     · simp
-    · rw [monH_norm, Finset.sum_eq_single m (fun b _ hb => by simp [Pi.single_apply, hb]) (by simp)]
+    · rw [monH_norm, Finset.sum_eq_single m (fun b _ hb => by simp [hb]) (by simp)]
       simpa using hc m
   have hmain := Formalism.BranchingDeterminantCap.OrthogonalSumAlt.main (Pi.basisFun K (MonI lam)) (fun _ : InfinitePlace K => (monD lam)⁻¹) hX'
     (fun m => 𝓞 K ∙ (Pi.single m (1 : K) : MonI lam → K)) (fun m => Submodule.fg_span_singleton _) horth

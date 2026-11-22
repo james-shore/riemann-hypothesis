@@ -31,7 +31,7 @@ theorem gram_flagV {M R : Type} [Zero M] [Ring R] (S : AddSubgroup R) (B : M →
     | (exfalso; omega)
     | (rw [sub_zero]; first | exact heb _ _ | exact hez _ | exact hef _ _ | exact hbe _ _ | exact hbz _ | exact hbf _ _ | exact hze _ | exact hzb _ | exact hzf _ | exact hfe _ _ | exact hfb _ _ | exact hfz _)
     | exact hzz
-    | (convert hee _ _ using 2; simp only [Fin.mk.injEq]; split_ifs <;> first | rfl | (exfalso; omega))
+    | (convert hee _ _ using 2; simp only [Fin.mk.injEq]; split_ifs <;> first | rfl)
     | (convert hbb _ _ using 2; simp only [Fin.mk.injEq]; split_ifs <;> first | rfl | (exfalso; omega))
     | (convert hff _ _ using 2; simp only [Fin.mk.injEq]; split_ifs <;> first | rfl | (exfalso; omega))
 

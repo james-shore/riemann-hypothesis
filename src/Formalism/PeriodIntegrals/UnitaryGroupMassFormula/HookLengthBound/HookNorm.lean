@@ -45,7 +45,7 @@ theorem Pn_last_zero (n : ℕ) (ν : Fin (n + 1) → ℕ) (h : ν (Fin.last n) =
   refine Finset.prod_congr rfl fun i _ => ?_
   rw [prod_Ioi_castSucc]
   simp only [Fin.coe_castSucc, Fin.val_last, h]
-  congr 1 <;> omega
+  congr 1
 
 theorem Qn_last_zero (n : ℕ) (ν : Fin (n + 1) → ℕ) (h : ν (Fin.last n) = 0) :
     Qn ν = (∏ i : Fin n, (ν (Fin.castSucc i) + (n - i))) * Qn (fun i : Fin n => ν (Fin.castSucc i)) := by

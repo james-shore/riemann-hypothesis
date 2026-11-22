@@ -152,7 +152,6 @@ theorem UpperTheory.ConvolutionTheory.R2.H.unrInert :
     ring
   have e1 : WE D y.1 (lc w (dL ϖ' 1) * h₀) = WE D y.1 (aE (idl w ϖ') * h₀) := by rw [(lcLaws E w).2.2.2.1]
   have e2 : WE D y.1 (lc w 1 * h₀) = WE D y.1 h₀ := by simp
-  beta_reduce at t1
   rw [e1, e2, r1] at t1
   have hcard : ∀ {K : Type} [Field K] [NumberField K] (u : P K), q u = (normV u : ℂ) := fun u => by
     simp [q, normV, Ideal.absNorm_apply, Submodule.cardQuot_apply]

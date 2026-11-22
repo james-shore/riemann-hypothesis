@@ -100,8 +100,6 @@ theorem exists_isRoot_norm_lt {h : ℂ[X]} (hm : h.Monic) {ε : ℝ} (hε : 0 �
   | exact @_root_.GlobalTheory.RootNormBound.exists_root_norm_lt
   | exact _root_.GlobalTheory.RootNormBound.exists_root_norm_lt
   | (apply _root_.GlobalTheory.RootNormBound.exists_root_norm_lt <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RootNormBound.exists_root_norm_lt <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RootNormBound.exists_root_norm_lt <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RootNormBound.exists_root_norm_lt ..)
 
 theorem exists_apply_eq_zero_and_eq_one {K : Type*} [Field K] [Algebra K A] (p : A →ₐ[K] K)

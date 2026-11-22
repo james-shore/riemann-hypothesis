@@ -81,7 +81,7 @@ theorem deltaTerm_eq : ∀ (Ψ : Type) [Fintype Ψ] [DecidableEq Ψ] (N : ℕ) (
       rw [← tsum_mul_right]
       exact tsum_congr (fun n => by rw [hrank]; ring)
     simp only [deltaTerm, restTerm, hsum]
-    simp only [if_true, Nat.one_lt_ofNat, Nat.not_ofNat_le_one, if_false]
+    simp only [if_true, Nat.not_ofNat_le_one, if_false]
     field_simp
     ring
   · have h2 : 2 ≤ k := by omega

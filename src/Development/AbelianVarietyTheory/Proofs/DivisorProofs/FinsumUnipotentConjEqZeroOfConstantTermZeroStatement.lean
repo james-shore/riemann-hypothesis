@@ -17,4 +17,4 @@ theorem _root_.GlobalTheory.T.finsum_unipotentConj_eq_zero_of_constantTerm_zero 
   ∀ γ ∈ GlobalTheory.OrbDesc.blockPar e, (γ : Matrix ι ι K).charpoly.Separable →
   ∑ᶠ q : GL ι K ⧸ (GlobalTheory.OrbDesc.blockUni e ⊓ (GlobalTheory.OrbDesc.blockPar e ⊓ K')),
     (if Quotient.out q ∈ GlobalTheory.OrbDesc.blockUni e then f ((Quotient.out q)⁻¹ * γ * Quotient.out q) else 0) = 0 := by
-  first | (exact @GlobalTheory.OrbDesc.NSum.finsum_conj_eq_zero) | (exact GlobalTheory.OrbDesc.NSum.finsum_conj_eq_zero) | (intros; apply GlobalTheory.OrbDesc.NSum.finsum_conj_eq_zero  <;> assumption)
+  first | (exact @GlobalTheory.OrbDesc.NSum.finsum_conj_eq_zero)

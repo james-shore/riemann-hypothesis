@@ -56,8 +56,6 @@ theorem exists_nat_posDef {n : ℕ} (E A : Matrix (Fin n) (Fin n) ℝ) (hE : E.P
     have h5 : x ⬝ᵥ ((κ : ℝ) • E) *ᵥ x = κ * (x ⬝ᵥ E *ᵥ x) := by
       first
         | rw [Matrix.smul_mulVec, dotProduct_smul, smul_eq_mul]
-        | rw [Matrix.smul_mulVec_assoc, dotProduct_smul, smul_eq_mul]
-        | simp [Matrix.mulVec, dotProduct, Finset.mul_sum, mul_assoc, mul_left_comm]
     simp only [star_trivial, Matrix.sub_mulVec, dotProduct_sub, h5]
     linarith
 
@@ -160,7 +158,7 @@ theorem exists_bound_relAmple : ∀ (W : Matrix (Fin 8) (Fin 8) ℤ), IsE8 W →
     rw [map_zsmul, ← pull_comp, ← Over.comp_left, comp_lift, hact i uv.1, hact i uv.2]
     rfl
   rw [cls_linComb hL, cls_linComb c.isLB, Fin.sum_univ_two]
-  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.vecHead]
+  simp only [Matrix.cons_val_zero, Matrix.cons_val_one]
   rw [pull_id, hpf, hPL]
   simp only [Matrix.sub_apply, Matrix.smul_apply, smul_eq_mul, sub_smul, mul_smul, Finset.sum_sub_distrib,
     Finset.smul_sum]
@@ -169,7 +167,5 @@ theorem exists_bound_relAmple : ∀ (W : Matrix (Fin 8) (Fin 8) ℤ), IsE8 W →
   refine Finset.sum_congr rfl fun x _ => ?_
   first
     | exact neg_one_smul ℤ _
-    | exact neg_one_zsmul _
-    | simp
 
 end GlobalTheory.Poinc.Sep.E8Fibration.AmpleBound

@@ -79,7 +79,7 @@ theorem rel_smul {j : ℕ} (s : W) {x : C.H j} {v : A.H (j + 1)} (h : Rel f g j 
   refine ⟨s • z, s • β, s • w, rfl, rfl, ?_, ?_⟩
   · rw [map_smul, h1]; rfl
   · change f.f (j + 1) (s • w.1) = _
-    simp only [map_smul, h2, RingHom.id_apply]
+    simp only [map_smul, h2]
 
 theorem rel_zero (hS : Ses f g) {j : ℕ} {v : A.H (j + 1)} (h : Rel f g j 0 v) : v = 0 := by
   obtain ⟨z, β, w, hz, rfl, h1, h2⟩ := h

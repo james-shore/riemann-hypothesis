@@ -123,7 +123,7 @@ def bc {E : Spc} {S : Scheme.{0}} (p : E ⟶ sch.obj S) : Over S ⥤ Spc where
   map {U V} g := pullback.map p (sch.map U.hom) p (sch.map V.hom) (𝟙 _) (sch.map g.left) (𝟙 _) (by simp)
     (by rw [Category.comp_id, ← sch.map_comp, Over.w g])
   map_id U := by apply pullback.hom_ext <;> simp
-  map_comp f g := by apply pullback.hom_ext <;> simp [pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+  map_comp f g := by apply pullback.hom_ext <;> simp [pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_snd_assoc]
 
 def bcMap {E E' : Spc} {S : Scheme.{0}} (α : E ⟶ E') (p : E' ⟶ sch.obj S) : bc (α ≫ p) ⟶ bc p where
   app U := pullback.map (α ≫ p) (sch.map U.hom) p (sch.map U.hom) α (𝟙 _) (𝟙 _) (by simp) (by simp)

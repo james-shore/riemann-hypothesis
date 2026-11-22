@@ -63,7 +63,6 @@ theorem trc_mapDomain {V : HSp D} (ε : GA D V →₀ ℂ) (b : GA D V) (f : GA 
   change (ε.mapDomain (· * b)).sum (fun g c => c • rTrans g f) = ε.sum (fun g c => c • rTrans g (rTrans b f))
   rw [Finsupp.sum_mapDomain_index (fun _ => by simp) (fun _ _ _ => by simp [add_smul])]
   refine Finset.sum_congr rfl fun g _ => ?_
-  congr 1
   funext z
   simp [rTrans, mul_assoc]
 
@@ -148,7 +147,6 @@ theorem valX : ∀ (D : D7) (c : Comm D) (v : VCom c) (𝒯 : Type) (t : 𝒯 �
   have hct := ctr_indep c j σ h ((t s).sBF j (σ + 1) h) ((t s₀).sBF j (σ + 1) h) ((t s).sFB j σ h) ((t s₀).sFB j σ h)
     _ _ hV₁.1 hV₂.1
   rw [hct] at hrhs
-  beta_reduce at hrhs
   have hper : ∀ (k : ℂ) φ' f', (c.B (j + 1 + 1) σ (idx_step h)).per c.ψ (k • φ') f' =
       k * (c.B (j + 1 + 1) σ (idx_step h)).per c.ψ φ' f' := by
     intro k φ' f'

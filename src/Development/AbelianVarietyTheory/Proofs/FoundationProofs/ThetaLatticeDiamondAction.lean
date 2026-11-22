@@ -50,8 +50,7 @@ private theorem exists_isDiam_of_coprime {N l d : ℕ} (hNl : Nat.Coprime N l) (
     · simp
     · simp
   · simp only [en]
-    simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_one, Matrix.head_cons,
-      Matrix.cons_val_fin_one, Matrix.head_fin_const, Int.cast_natCast]
+    simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_one, Matrix.cons_val_fin_one, Int.cast_natCast]
     exact (ZMod.natCast_eq_natCast_iff _ _ _).mpr heN
 
 private theorem conj_mem_Gamma1_of_mem_Gamma0 {N : ℕ} {σ γ : SL(2, ℤ)} (hσ : σ ∈ CongruenceSubgroup.Gamma0 N)

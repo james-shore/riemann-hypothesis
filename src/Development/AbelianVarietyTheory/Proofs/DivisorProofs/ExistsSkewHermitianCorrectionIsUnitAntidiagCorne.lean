@@ -36,7 +36,7 @@ theorem GlobalTheory.HermBlockChange.exists_unit_lower_block : ∀ (O : Type) [C
     rw [hT, Matrix.fromBlocks_transpose]; simp
   have hTc : T.map c = T := by
     rw [hT, Matrix.fromBlocks_map]; simp
-    ext i j; by_cases h : i = j <;> simp [Matrix.one_apply, h]
+    ext i j; by_cases h : i = j <;> simp [h]
   have hTT : T * T = (2 : O) • 1 := by
     rw [hT, Matrix.fromBlocks_multiply, ← Matrix.fromBlocks_one, Matrix.fromBlocks_smul]
     simp [two_smul]
@@ -55,7 +55,7 @@ theorem GlobalTheory.HermBlockChange.exists_unit_lower_block : ∀ (O : Type) [C
   have hmapsmul : ∀ (b : O) (M : Matrix (Fin n ⊕ Fin n) (Fin n ⊕ Fin n) O), (b • M).map c = c b • M.map c := by
     intro b M; ext i j; simp
   have hgt : gᵀ = a • (T * Gᵀ * T) := by
-    simp only [hg, Matrix.transpose_smul, Matrix.transpose_mul, Matrix.transpose_transpose, hTt, Matrix.mul_assoc]
+    simp only [hg, Matrix.transpose_smul, Matrix.transpose_mul, hTt, Matrix.mul_assoc]
   have hgc : g.map c = a • (T * G.map c * T) := by
     rw [hg, hTt, hmapsmul, Matrix.map_mul, Matrix.map_mul, hTc, hca]
   have hgK : gᵀ * K * g.map c = K := by

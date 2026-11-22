@@ -252,7 +252,7 @@ theorem dRepC_diag (hσ : IsURepOn (UJset ε) σ) {μ : Fin n → ℝ} {v : H} (
       · subst hij
         rw [Matrix.diagonal_apply_eq]
         by_cases hia : i = a
-        · subst hia; simp [Matrix.single, Complex.real_smul] <;> ring
+        · subst hia; simp [Matrix.single, Complex.real_smul]
         · simp [Matrix.single, hia, Ne.symm hia]
       · rw [Matrix.diagonal_apply_ne _ hij]
         simp only [Matrix.smul_apply, Matrix.single, Matrix.of_apply]
@@ -278,8 +278,8 @@ theorem dRepC_diag (hσ : IsURepOn (UJset ε) σ) {μ : Fin n → ℝ} {v : H} (
   rw [hd.deriv, smul_smul]
   congr 1
   first
-    | (simp only [mul_zero, neg_zero, Complex.ofReal_zero, zero_mul, Complex.exp_zero, one_mul, mul_one,
-        Complex.ofReal_neg, Complex.ofReal_mul, Complex.ofReal_one]
+    | (simp only [mul_one,
+        Complex.ofReal_neg]
        linear_combination (-(μ a : ℂ)) * Complex.I_mul_I)
     | simp [Complex.ext_iff]
 

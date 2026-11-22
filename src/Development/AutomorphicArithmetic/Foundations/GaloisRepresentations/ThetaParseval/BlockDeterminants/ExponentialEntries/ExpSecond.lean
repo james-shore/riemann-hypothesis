@@ -20,7 +20,7 @@ private theorem derR_X {n d : ℕ} (Y : Mat d 0) (b : Ix n 0) (f : Ix d 0) :
     derR (n := n) Y (X (b, f)) = ∑ c, Y c f • (X (b, c) : PP n d) := by
   unfold derR
   simp only [der_sum_apply, Derivation.smul_apply, pderiv_X, Pi.single_apply, Prod.mk.injEq]
-  simp [ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq']
+  simp [ite_and, Finset.sum_ite_eq]
 
 private theorem om_eq {n d : ℕ} (a : Ix n 0) (c e : Ix d 0) :
     FockH1Action.omE (p := n) (q := 0) (r := d) (s := 0) (a, c) (a, e) =

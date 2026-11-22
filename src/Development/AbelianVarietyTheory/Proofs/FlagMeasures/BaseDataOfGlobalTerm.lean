@@ -127,8 +127,6 @@ theorem base_data_of_global_term : ∀ (D : D7) (Z : LocDat D), ∀ (u u' : D.wh
     exact Submodule.mem_span_singleton.mpr ⟨⟨Qa p a b - Qb p a b, sub_mem (hqa a b) (hqb a b)⟩, by
       first
         | exact (Subring.smul_def _ _).trans (mul_one _)
-        | exact mul_one _
-        | (show _ * _ = _; exact mul_one _)
         | rfl⟩
   · rw [hf'eq p]; exact (hQb p).2
 

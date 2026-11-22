@@ -203,7 +203,7 @@ theorem htImage_norm_placePart {P ι : Type*} [Fintype P] [Fintype ι] {v : P}
     apply Finset.sum_congr rfl
     intro i _
     rw [Fin.sum_univ_two]
-    simp only [PiLp.toLp_apply, htImageCv, Complex.sq_norm, Complex.normSq_apply,
+    simp only [htImageCv, Complex.sq_norm, Complex.normSq_apply,
       Real.norm_eq_abs, sq_abs]
     ring
   · intro w _ hw
@@ -220,7 +220,7 @@ theorem htImage_map_norm {P ι κ : Type*} [Fintype P] [Fintype ι] [Fintype κ]
   rw [htImage_norm_placePart (htImage_map_mem M hy), htImage_norm_placePart hy, htImageCv_map]
   refine le_of_eq_of_le ?_
     ((LinearMap.toContinuousLinearMap (Matrix.toEuclideanLin (M v))).le_opNorm _)
-  simp [Matrix.toEuclideanLin_apply]
+  simp
 
 variable {K : Type*} [Field K] [NumberField K] [StarRing K]
   {V ι : Type*} [AddCommGroup V] [Module K V] [Fintype ι] [DecidableEq ι]

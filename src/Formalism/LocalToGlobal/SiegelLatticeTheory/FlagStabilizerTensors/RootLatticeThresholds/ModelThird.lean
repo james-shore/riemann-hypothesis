@@ -58,8 +58,7 @@ theorem low_R_mono (hd : ∀ a, d a ≠ 0) (x' : Formalism.FourierDecayAlt.C2.Ls
     Finset.sum_eq_single ((wPt pN) i) (fun a _ ha => by
       have hia : i ≠ (wPt pN) a := fun hi => ha (by rw [hi, wPt_invol])
       simp [Formalism.FourierDecayAlt.C2.monoP, hia]) (by simp)]
-  simp only [Formalism.FourierDecayAlt.C2.monoP, Matrix.of_apply, Matrix.conjTranspose_apply, wPt_invol, eq_self_iff_true,
-    if_true]
+  simp only [Formalism.FourierDecayAlt.C2.monoP, Matrix.of_apply, Matrix.conjTranspose_apply, wPt_invol, if_true]
   rw [low_apply', low_apply']
   by_cases h1 : i = (wPt pN) b
   · subst h1
@@ -87,7 +86,7 @@ theorem mono_mul_inv (hd : ∀ a, d a ≠ 0) :
   ext i b
   simp only [Formalism.FourierDecayAlt.C2.monoP, Matrix.mul_apply, Matrix.of_apply, Matrix.one_apply]
   rw [Finset.sum_eq_single ((wPt pN).symm b)]
-  · simp only [Equiv.apply_symm_apply, eq_self_iff_true, if_true]
+  · simp only [Equiv.apply_symm_apply, if_true]
     split_ifs with h
     · exact mul_inv_cancel₀ (hd _)
     · exact zero_mul _

@@ -22,8 +22,6 @@ theorem multilinear_mem_span {ι : Type} [Fintype ι] [DecidableEq ι] {M : ι �
   | exact @_root_.GlobalTheory.MultilinearSpanImage.multilinear_apply_mem_span_image
   | exact _root_.GlobalTheory.MultilinearSpanImage.multilinear_apply_mem_span_image
   | (apply _root_.GlobalTheory.MultilinearSpanImage.multilinear_apply_mem_span_image <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MultilinearSpanImage.multilinear_apply_mem_span_image <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MultilinearSpanImage.multilinear_apply_mem_span_image <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MultilinearSpanImage.multilinear_apply_mem_span_image ..)
 
 theorem span_smallRep_unitary (n : ℕ) (mu : DomWeight n) :

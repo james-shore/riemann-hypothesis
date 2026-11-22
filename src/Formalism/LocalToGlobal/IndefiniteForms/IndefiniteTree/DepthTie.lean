@@ -181,10 +181,8 @@ theorem nuLevel (hpr : O.g1 = Dd.Q.g1 ∧ O.g2 = Dd.Q.g2 ∧ O.q1 = Dd.Q.q1 ∧ 
   rw [key _ ?_ j]
   · first
       | rw [Formalism.EigenvalueLevelCeiling.plc_conjPl]
-      | rw [Formalism.L2.DIV.plc_conjPl]
   · first
       | (rw [Formalism.EigenvalueLevelCeiling.plc_conjPl]; exact hw)
-      | (rw [Formalism.L2.DIV.plc_conjPl]; exact hw)
 
 theorem tieScale : TieScale S (nuT Xo c Dd ι) (nuWT Xo c Dd ι) (sWT Xo c Dd ι) := by
   unfold TieScale AtPair
@@ -216,7 +214,6 @@ theorem bar_bar (a : 𝓞 E) : H.bar (H.bar a) = a := by
   first
     | exact IsCMField.complexConj_apply_apply (a : E)
     | exact IsCMField.complexConj_apply_apply E (a : E)
-    | simp
 
 def Nsig (Q : DepPage) (DFL DFF : ℕ) : ℕ := Q.q ^ (Q.f * Q.r * Q.n') * Q.Z1 DFL DFF
 
@@ -228,7 +225,6 @@ theorem vw_nonneg_of_isIntegral [StarRing K] (v : HeightOneSpectrum (𝓞 K)) (x
     simp only [vw, FractionalIdeal.spanSingleton_zero]
     first
       | simp [FractionalIdeal.count_zero]
-      | simp [FractionalIdeal.count]
   · let r : 𝓞 K := ⟨x, hx⟩
     have hr : algebraMap (𝓞 K) K r = x := rfl
     have hr0 : r ≠ 0 := by
@@ -244,7 +240,6 @@ omit [StarRing K] [StarRing (𝓞 E)] in
 theorem isIntegral_alg (a : 𝓞 E) : IsIntegral ℤ (algebraMap (𝓞 E) K a) := by
   first
     | exact IsIntegral.algebraMap (Algebra.IsIntegral.isIntegral a)
-    | exact IsIntegral.algebraMap (NumberField.RingOfIntegers.isIntegral a)
 
 omit [StarRing K] [StarRing (𝓞 E)] in
 theorem sigAt_eq (Dw' : Datum H) (j : ℕ) :
@@ -312,7 +307,6 @@ private theorem vw_mul_lemma (v : HeightOneSpectrum (𝓞 K)) (a b : K) (ha : a 
     FractionalIdeal.spanSingleton_eq_zero_iff.not.mpr hb
   first
     | exact FractionalIdeal.count_mul K v h1 h2
-    | exact FractionalIdeal.count_mul h1 h2
 
 theorem vw_sig (hsp : PiSplit (H := H) Dd) (hprime : Dd.Q.g1.Prime ∧ Dd.Q.g2.Prime ∧ Dd.Q.q1.Prime ∧ Dd.Q.dd.Prime)
     (v : HeightOneSpectrum (𝓞 K)) (Dw' : Datum H) (j : ℕ) :

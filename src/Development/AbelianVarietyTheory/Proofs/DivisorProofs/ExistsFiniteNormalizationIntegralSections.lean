@@ -19,10 +19,6 @@ theorem exists_finite_of_isFinSub : ∀ {S : Scheme.{0}} {K : Type} [Field K] (g
         (gp'.appLE (h ⁻¹ᵁ V) (gp ⁻¹ᵁ V) (le_preimage_of_comp_eq gp gp' h hgp V)).hom c = x := by
   first
   | exact @_root_.GlobalTheory.RelativeSpectrum.exists_finite_cover
-  | exact _root_.GlobalTheory.RelativeSpectrum.exists_finite_cover
-  | (apply _root_.GlobalTheory.RelativeSpectrum.exists_finite_cover <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RelativeSpectrum.exists_finite_cover <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RelativeSpectrum.exists_finite_cover <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RelativeSpectrum.exists_finite_cover ..)
 
 end

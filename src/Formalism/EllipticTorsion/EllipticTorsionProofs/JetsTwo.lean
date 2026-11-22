@@ -27,7 +27,7 @@ theorem ccd_F (F : MvPowerSeries (Fin 2) K) {x y : MvPowerSeries (Fin 2) K}
   unfold ccd
   rw [pderiv_subst (hv hx hy), map_sum, Fin.sum_univ_two]
   simp only [map_mul, Formalism.G.LogP.constantCoeff_subst_of_zero _ (hv hx hy), Matrix.cons_val_zero,
-    Matrix.cons_val_one, Matrix.head_cons]
+    Matrix.cons_val_one]
 
 theorem ccd_single (F : MvPowerSeries (Fin 2) K) (i : Fin 2) :
     ccd i F = MvPowerSeries.coeff (Finsupp.single i 1) F := by

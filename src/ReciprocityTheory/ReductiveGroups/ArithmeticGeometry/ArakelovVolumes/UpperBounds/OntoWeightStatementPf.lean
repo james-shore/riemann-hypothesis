@@ -26,7 +26,7 @@ theorem mem_satB_self (x1 : Frame X.Ψ r) {ρ : ℝ} (hρ : 0 < ρ) : x1 ∈ Sat
     simp only [nmat]
     split_ifs with h1 h2
     · rw [Matrix.one_apply_ne (ne_of_lt h1).symm]
-      first | rfl | simp | exact PiLp.zero_apply _ _
+      first | rfl
     · subst h2; exact (Matrix.one_apply_eq a).symm
     · exact (Matrix.one_apply_ne h2).symm
   refine ⟨1, X.Γ.one_mem, fun _ => (1 : Matrix (Fin r) (Fin r) ℂ), ?_, 0, Metric.mem_ball_self hρ, ?_⟩

@@ -92,10 +92,10 @@ theorem fvec_lift (z : Fin (2 * r' + k + 1) → ℂ) :
     apply Fin.ext
     simp [eI, lev_val]
   · exfalso
-    simp only [Fin.val_zero, Fin.val_mk] at h1 h2
+    simp only [Fin.val_zero] at h1 h2
     omega
   · exfalso
-    simp only [Fin.val_zero, Fin.val_mk] at h1 h2
+    simp only [Fin.val_zero] at h1 h2
     omega
   · rfl
 
@@ -199,7 +199,7 @@ theorem second_capelli_minor_cast {t₁ t₂ : ℕ} (h : t₁ = t₂) (pos₁ : 
 end Ops
 
 theorem mdim_lev (k i r' : ℕ) : mdim k (i + r') ⟨i, by omega⟩ = mdim k r' 0 := by
-  simp only [mdim, Fin.val_zero, Fin.val_mk]
+  simp only [mdim, Fin.val_zero]
   omega
 
 theorem posL_lev (k i r' : ℕ) (j : Fin (mdim k (i + r') ⟨i, by omega⟩)) :

@@ -167,7 +167,7 @@ lemma den_analyticAt (hb : SgStarBasic) (z : ℂ) : AnalyticAt ℂ (den L α S) 
 
 private lemma add_self_eq_two_mul_extended_int (x : WithTop ℤ) : x + x = 2 * x := by
   cases x with
-  | top => first | rfl | decide | simp
+  | top => first | rfl
   | coe a =>
     rw [← WithTop.coe_add, show (2 : WithTop ℤ) = ((2 : ℤ) : WithTop ℤ) from rfl, ← WithTop.coe_mul,
       two_mul]

@@ -224,7 +224,6 @@ theorem maximal_ideal_eq_joint_eigen : ∀ (l : ℕ) [Fact l.Prime] (O : Type) [
             rw [← MvPolynomial.algebraMap_eq]
             first
               | exact Ideal.Quotient.mk_algebraMap _ _ _
-              | rfl
         _ = Ideal.Quotient.mkₐ O m (Polynomial.aeval q P) := e
         _ = 0 := by rw [Ideal.Quotient.mkₐ_eq_mk]; exact hP
     have hu0 : IsUnit (P.coeff 0) := by

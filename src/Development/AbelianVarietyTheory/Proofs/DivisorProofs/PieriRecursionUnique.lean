@@ -31,7 +31,7 @@ theorem pieri_recursion_zero (n : ℕ) (c : ℕ → ℂ) (D : (Fin n → ℕ) �
     have hsum : ∀ J : Finset (Fin n),
         ∑ i, ((l + (fun i => if i ∈ J then 1 else 0) : Fin n → ℕ)) i = ∑ i, l i + J.card := by
       intro J
-      simp [Finset.sum_add_distrib, Finset.sum_boole]
+      simp [Finset.sum_add_distrib]
     have hDl : D l = 0 := by
       have hlt : ∑ i, l i < s := by
         rw [← hs]

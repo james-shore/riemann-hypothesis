@@ -27,8 +27,7 @@ private lemma entry_eq_sum_of_mul_eq_mul_kronecker (K : Type) [Field K] (h : ℕ
   have hX : ∀ u v : Fin 8, (Ei * (Matrix.single u v (1 : ℤ)).transpose * Em).map
       (Int.cast : ℤ → K) = Matrix.of fun c d => (Ei c v : K) * (Em u d : K) := by
     intro u v; ext c d
-    simp [Matrix.mul_apply, Matrix.single_apply, Matrix.transpose_apply, Finset.sum_ite_eq',
-      Finset.sum_ite_eq, ite_and]
+    simp [Matrix.mul_apply, Matrix.single_apply, Finset.sum_ite_eq, ite_and]
   have hA : ∀ u v : Fin 8, (Matrix.single u v (1 : ℤ)).map (Int.cast : ℤ → K) =
       Matrix.single u v (1 : K) := by
     intro u v; ext a b

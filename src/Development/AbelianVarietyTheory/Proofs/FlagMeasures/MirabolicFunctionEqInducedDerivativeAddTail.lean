@@ -60,7 +60,7 @@ theorem inMir_Em (h : Mt g m) (v) : InMir (Em h v) := by
   intro i j hi
   have : i = Fin.last m := Fin.ext (by simp; omega)
   subst this
-  induction j using Fin.lastCases <;> simp [Matrix.one_apply, (Fin.castSucc_ne_last _).symm]
+  induction j using Fin.lastCases <;> simp [(Fin.castSucc_ne_last _).symm]
 
 theorem eq_Em {M : Mt g (m + 1)} (hM : InMir M) : M = Em (tl m M) fun i => M i.castSucc (Fin.last m) := by
   ext i j

@@ -28,7 +28,7 @@ theorem hasVal_coord {D : DegPre V} {χ : D.X} {n : ℤ} {r : V} (hn : QForm.QVa
   obtain ⟨c, hc, eV, hce⟩ := genHasVal_top D.P.L (fun _ : PUnit => (D.c χ).left) (fun _ => -1) (D.psi χ) hn j htop h
   have hnat := congrArg (fun f => (CommRingCat.Hom.hom f) (DegPre.toOpen (R := V) ⊤ r))
     (Scheme.ΓSpecIso_naturality (CommRingCat.ofHom (algebraMap V (FractionRing V))))
-  simp only [CommRingCat.comp_apply, CommRingCat.hom_ofHom] at hnat
+  simp only at hnat
   have hid : (Scheme.ΓSpecIso (CommRingCat.of V)).hom.hom (DegPre.toOpen ⊤ r) = r := by
     simp only [DegPre.toOpen, RingHom.coe_comp, Function.comp_apply]
     have : (homOfLE (le_top : (⊤ : (Spec (CommRingCat.of V)).Opens) ≤ ⊤)).op = 𝟙 _ := Subsingleton.elim _ _
@@ -92,9 +92,9 @@ theorem main : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (H : Geo.T
   let β : P.D.toPre.X →ₗ[ℤ] P.D.toPre.X →ₗ[ℤ] ℝ :=
     LinearMap.mk₂ ℤ (fun a b => (QForm.bHom hϖ P.D hQ' a b : ℝ))
       (fun a a' b => by simp only [map_add, AddMonoidHom.add_apply, Int.cast_add])
-      (fun c a b => by simp only [map_zsmul, AddMonoidHom.smul_apply, smul_eq_mul, Int.cast_mul, zsmul_eq_mul, Int.cast_id])
+      (fun c a b => by simp only [map_zsmul, AddMonoidHom.smul_apply, smul_eq_mul, Int.cast_mul, zsmul_eq_mul])
       (fun a b b' => by simp only [map_add, Int.cast_add])
-      (fun c a b => by simp only [map_zsmul, smul_eq_mul, Int.cast_mul, zsmul_eq_mul, Int.cast_id])
+      (fun c a b => by simp only [map_zsmul, smul_eq_mul, Int.cast_mul, zsmul_eq_mul])
   have hβ : ∀ a b, β a b = (QForm.bOf P.D.toPre Q a b : ℝ) := fun _ _ => rfl
   refine ⟨Q, ⟨β, fun a b => ?_, fun c c' hc a b => ?_⟩, hQ', h0, hβ, fun a => ?_, fun C _ f p _ hf a b => ?_⟩
   · rw [hβ, hβ, QForm.bOf_comm]

@@ -16,10 +16,6 @@ lemma mv_sum {ι : Type*} (M : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)
     (v : ι → Fin (2 * r + k + 1) → ℂ) : M *ᵥ (∑ i ∈ s, v i) = ∑ i ∈ s, M *ᵥ v i := by
   first
   | exact Matrix.mulVec_sum M s v
-  | simpa using map_sum (Matrix.mulVecLin M) v s
-  | (induction s using Finset.cons_induction with
-     | empty => simp
-     | cons a s ha ih => rw [Finset.sum_cons, Finset.sum_cons, Matrix.mulVec_add, ih])
 
 lemma hm_sum_l {ι : Type*} (s : Finset ι) (c : ι → ℂ) (v : ι → Fin (2 * r + k + 1) → ℂ)
     (w : Fin (2 * r + k + 1) → ℂ) :
@@ -54,17 +50,17 @@ lemma herm_bvec_eI (v : Fin (2 * r + k + 1) → ℂ) (a : Fin r) :
       simp only [Hpk, eI, esI, Fin.val_mk]
       have h3 : ¬ r ≤ (a : ℕ) := by omega
       simp only [h3, false_and, if_false]
-      split_ifs <;> first | rfl | (exfalso; omega) | omega
+      split_ifs <;> first | rfl | (exfalso; omega)
     · rw [if_neg hj]
       have hj' : (j : ℕ) ≠ (esI k r a : ℕ) := fun h => hj (Fin.ext h)
       simp only [Hpk, eI, esI, Fin.val_mk] at hj' ⊢
       have h3 : ¬ r ≤ (a : ℕ) := by omega
       simp only [h3, false_and, if_false]
-      split_ifs <;> first | rfl | (exfalso; omega) | omega
+      split_ifs <;> first | rfl | (exfalso; omega)
   unfold herm bvec
   have hs : star (Pi.single (eI k r a) (1 : ℂ) : Fin (2 * r + k + 1) → ℂ) = Pi.single (eI k r a) 1 := by
     ext i
-    by_cases h : i = eI k r a <;> simp [Pi.single_apply, h]
+    by_cases h : i = eI k r a <;> simp [h]
   rw [hs]
   simp [key, Matrix.mulVec, dotProduct, Pi.single_apply]
 
@@ -73,8 +69,6 @@ lemma fvec_lt (z : Fin (2 * r + k + 1) → ℂ) (a : Fin r) :
   unfold fvec
   first
   | exact dif_pos a.isLt
-  | simp
-  | rfl
 
 lemma wb_N {n : B.Mat k r} (hn : n ∈ Nset k r) {v : Fin (2 * r + k + 1) → ℂ}
     (hv : ∀ a : Fin r, v (esI k r a) = 0) : PI.UnitaryGroupMassFormula.GsFr.wbPart k r (n *ᵥ v) = PI.UnitaryGroupMassFormula.GsFr.wbPart k r v := by

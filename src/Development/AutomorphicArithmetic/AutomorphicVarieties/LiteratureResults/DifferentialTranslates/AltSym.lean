@@ -72,7 +72,7 @@ theorem altSym : AltSym := by
     by_cases hj : j' = j
     · subst hj
       simp [Fin.removeNth_apply, Y, M]
-    · simp [Fin.removeNth_apply, Y, M, Function.update_of_ne hj, Fin.succAbove_ne i j', hj]
+    · simp [Fin.removeNth_apply, Y, M, Fin.succAbove_ne i j', hj]
   rw [← hsum]
   exact Finset.sum_congr rfl fun i _ => hrow i
 

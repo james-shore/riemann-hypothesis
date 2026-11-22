@@ -9,7 +9,7 @@ theorem mul_transvection_apply' {n : ℕ} (a b : Fin n) (c : ℂ) (M : Matrix (F
   congr 1
   by_cases hy : y = b
   · subst hy; simp [Matrix.mul_apply, single_apply]
-  · simp [Matrix.mul_apply, single_apply, hy, Ne.symm hy]
+  · simp [Matrix.mul_apply, hy, Ne.symm hy]
 
 theorem unitriangular_induction_transvection :
     ∀ (n : ℕ) (P : GL (Fin n) ℂ → Prop), P 1 → (∀ A B, P A → P B → P (A * B)) →

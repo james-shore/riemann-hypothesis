@@ -125,7 +125,7 @@ private theorem four (hb : ∀ X Y, D X * D Y - D Y * D X = D (X * Y - Y * X)) (
   · rw [hb]; congr 1; simp [smul_sub]
   · rw [hb]; congr 1; simp [smul_sub]
   · rw [hb, ← map_neg]; congr 1
-    simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Complex.I_mul_I, smul_sub]
+    simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Complex.I_mul_I]
     simp only [neg_smul, one_smul]
     abel
 
@@ -264,8 +264,8 @@ theorem trPw_conj (hs : ∀ (r : ℝ) X, D ((r : ℂ) • X) = (r : ℂ) • D X
   have hxy : x * y = 1 := mul_eq_one_comm.mp hyx
   have hT : ∀ X, TX D s X * ρ = ρ * TX D s (y * X * x) := by
     intro X
-    have e : y * (Complex.I • X) * x = Complex.I • (y * X * x) := by simp [Matrix.mul_smul, Matrix.smul_mul]
-    simp only [TX, smul_mul_assoc, mul_smul_comm, add_mul, mul_add, hρ, e]
+    have e : y * (Complex.I • X) * x = Complex.I • (y * X * x) := by simp
+    simp only [TX, smul_mul_assoc, mul_smul_comm, add_mul, mul_add, hρ]
   set S₀ : Matrix (Fin n) (Fin n) ℂ := ((cs s).mapMatrix y)ᵀ with hS₀
   set S₁ : Matrix (Fin n) (Fin n) ℂ := ((cs s).mapMatrix x)ᵀ with hS₁
   have h10 : S₁ * S₀ = 1 := by

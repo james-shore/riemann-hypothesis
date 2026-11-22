@@ -31,4 +31,4 @@ theorem _root_.GlobalTheory.T.exists_whittaker_bump_extension_schur_complement :
         ∀ u ∈ U, ∀ g, b (g * finGL E (m + r + 1 + 1) u) = b g) ∧
       (∀ g, ContDiffOn ℝ ∞ (chart b g) (invSet E (m + r + 1 + 1))) ∧
       ∀ h ∈ GlobalTheory.JSW.supS E (m + 1) S, b (GroundTheory.Automorphic.FourierWhittaker.blockGL (by omega : m + 1 ≤ m + r + 1 + 1) h) = β h := by
-  first | (exact @GlobalTheory.SchurExt.exists_ext) | (exact GlobalTheory.SchurExt.exists_ext) | (intros; apply GlobalTheory.SchurExt.exists_ext <;> assumption)
+  first | (exact @GlobalTheory.SchurExt.exists_ext)

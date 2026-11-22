@@ -108,13 +108,12 @@ private theorem evX_one_mul_gs_mul_cexp_eq_prod (b : Matrix (Fin n) (Fin n) ℂ)
   simp only [evX, map_one, one_mul, gs]
   rw [← Complex.exp_add]
   congr 1
-  simp only [Matrix.add_mulVec, Matrix.smul_mulVec, Matrix.one_mulVec, dotProduct_add, dotProduct_smul,
-    Finset.sum_add_distrib, Matrix.trace, Matrix.diag, Matrix.mul_apply, gramX_tr_g, dotProduct, Matrix.mulVec,
-    Matrix.transpose_apply, Pi.star_apply, smul_eq_mul, Pi.smul_apply]
+  simp only [Matrix.trace, Matrix.diag, Matrix.mul_apply, gramX_tr_g, dotProduct, Matrix.mulVec,
+    Pi.star_apply]
   push_cast
-  simp only [hn, Finset.mul_sum, Finset.sum_neg_distrib, Matrix.add_apply, Matrix.smul_apply, Matrix.one_apply,
+  simp only [hn, Finset.mul_sum, Matrix.add_apply, Matrix.smul_apply, Matrix.one_apply,
     Matrix.transpose_apply, smul_eq_mul, mul_add, add_mul, Finset.sum_add_distrib, ite_mul, mul_ite, zero_mul,
-    mul_zero, mul_one, one_mul, Finset.sum_ite_eq, Finset.mem_univ, if_true]
+    mul_zero, mul_one, Finset.sum_ite_eq, Finset.mem_univ, if_true]
   congr 1
   · rw [← Finset.sum_neg_distrib]
     refine Finset.sum_congr rfl fun a _ => ?_
@@ -137,7 +136,7 @@ private theorem F0_jG_mul_nG_eq (sg : ℤˣ) (e : ℤ) (b : Matrix (Fin n) (Fin 
     simp [JJ, nU, Matrix.fromBlocks_multiply]
   have hD : (mR (jG n * nG b)).det = (JJ n).det := by
     rw [mR_mul, mR_jG, mR_nG hb, Matrix.det_mul]
-    simp [nU, Matrix.det_fromBlocks_zero₂₁]
+    simp [nU]
   simp only [F0, f0, u1, u2]
   rw [hD, hmR]
   simp only [Matrix.toBlocks_fromBlocks₂₁, Matrix.toBlocks_fromBlocks₂₂]

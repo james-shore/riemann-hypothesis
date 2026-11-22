@@ -46,8 +46,7 @@ theorem aeval_intertwine {K : Type} [Field K] {n : ℕ} (B C H : Matrix (Fin n) 
       induction d with
       | zero => simp
       | succ d ih => rw [pow_succ, Matrix.mul_assoc, h, ← Matrix.mul_assoc, ih, Matrix.mul_assoc, ← pow_succ]
-    simp only [aeval_monomial, Algebra.algebraMap_eq_smul_one, smul_mul_assoc, one_mul, Matrix.smul_mul,
-      Matrix.mul_smul, hpow]
+    simp only [aeval_monomial, Algebra.algebraMap_eq_smul_one, smul_mul_assoc, one_mul, Matrix.mul_smul, hpow]
 
 theorem tmul_split {R A B : Type} [CommRing R] [CommRing A] [CommRing B] [Algebra R A] [Algebra R B] (a : A) (y : B) :
     (a ⊗ₜ[R] (1 : B)) * ((1 : A) ⊗ₜ[R] y) = a ⊗ₜ[R] y := by
@@ -306,7 +305,7 @@ theorem assembly (j : K ≃+* k ⊗[maximalRealSubfield E] E) (hj1 : ∀ e : E, 
   have hBA : aeval A R * A = 1 := by
     have := congrArg (fun p : E[X] => aeval A (p.map (algebraMap E K))) hab
     simp only [Polynomial.map_add, Polynomial.map_mul, map_add, map_mul, hCH, Polynomial.map_X, aeval_X,
-      Polynomial.map_one, map_one, mul_zero, add_zero, zero_mul] at this
+      Polynomial.map_one, map_one, mul_zero, add_zero] at this
     exact this
   have hAB : A * aeval A R = 1 := by
     rw [show A * aeval A R = aeval A (X * R) by simp, mul_comm, map_mul, aeval_X, hBA]

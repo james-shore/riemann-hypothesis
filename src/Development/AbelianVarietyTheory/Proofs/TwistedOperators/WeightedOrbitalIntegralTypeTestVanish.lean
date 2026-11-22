@@ -97,7 +97,7 @@ theorem diag_cond_iff (k : Type) [Field k] (r a : ℕ) (S : Matrix (Fin r) (Fin 
       ∀ i j : Fin r, S i j ≠ (1 : Matrix (Fin r) (Fin r) k) i j → i.val < a ∧ a ≤ j.val := by
   have h1P : (1 : Matrix (Fin r) (Fin r) k) - Matrix.diagonal (fun i : Fin r => if i.val < a then (1 : k) else 0) =
       Matrix.diagonal (fun j : Fin r => 1 - if j.val < a then (1 : k) else 0) := by
-    ext i j; by_cases h : i = j <;> simp [Matrix.one_apply, Matrix.diagonal, h]
+    ext i j; by_cases h : i = j <;> simp [Matrix.diagonal, h]
   have hent : ∀ i j, (Matrix.diagonal (fun i : Fin r => if i.val < a then (1 : k) else 0) * (S - 1) * (1 - Matrix.diagonal (fun i : Fin r => if i.val < a then (1 : k) else 0))) i j =
       (if i.val < a then (1 : k) else 0) * (S - 1) i j * (1 - if j.val < a then (1 : k) else 0) := by
     intro i j; rw [h1P, Matrix.mul_diagonal, Matrix.diagonal_mul]

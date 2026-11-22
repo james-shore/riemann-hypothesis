@@ -114,7 +114,6 @@ theorem tsum_int_lt_top_of_le_geom₂ {a : ℤ → ℝ≥0∞} {M r₁ r₂ : �
       _ < ∞ := ENNReal.mul_lt_top hM.lt_top (ENNReal.inv_lt_top.2 (tsub_pos_of_lt hr₁))
   · calc ∑' k : ℕ, a (-(k + 1 : ℤ)) ≤ ∑' k : ℕ, M * r₂ ^ k := ENNReal.tsum_le_tsum fun k => by
           have := h₂ k
-          push_cast at this ⊢
           exact this
       _ = M * (1 - r₂)⁻¹ := by rw [ENNReal.tsum_mul_left, ENNReal.tsum_geometric]
       _ < ∞ := ENNReal.mul_lt_top hM.lt_top (ENNReal.inv_lt_top.2 (tsub_pos_of_lt hr₂))

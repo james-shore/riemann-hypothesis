@@ -121,7 +121,7 @@ theorem chiV_props (hC : KComm) (hL : LiftU) (hJ : MatVInj) (hU : MatVU) (hK : K
     by_cases hw : w = v
     · rw [hw]
       have hc := congrArg Subtype.val (hs ⟨_, hU I v x⟩)
-      simp only [Subgroup.coe_mul, Subgroup.coe_mk] at hc
+      simp only [Subgroup.coe_mul] at hc
       rw [hyv, hc, mul_inv_cancel_right]
     · rw [hys w hw, one_mul, inv_one, mul_one]
   · obtain ⟨m, hm, hsm⟩ := hs

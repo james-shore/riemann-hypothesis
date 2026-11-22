@@ -62,7 +62,7 @@ theorem adelic_bounds : AdelBounds := by
     have : (fun l => g' l i * inclR (F := F) (Af F) (((k * m : ℕ) : E) * e)) =
         k • (fun l => (m • g' l i) * inclR (F := F) (Af F) e) := by
       funext l
-      simp only [Pi.smul_apply, smul_eq_mul, map_mul, map_natCast, nsmul_eq_mul, Nat.cast_mul]
+      simp only [Pi.smul_apply, map_mul, map_natCast, nsmul_eq_mul, Nat.cast_mul]
       ring
     rw [this]
     exact low_vec L hkL fun l => Oh_mul (hmO l i) (incl_mem_Oh he)

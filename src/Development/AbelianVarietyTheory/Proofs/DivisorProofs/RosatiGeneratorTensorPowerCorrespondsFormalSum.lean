@@ -107,7 +107,7 @@ theorem formEq_sig (T : Tens D D' W) (A A' : Matrix (Fin r) (Fin r) ℤ) :
     rw [ofMul_prod]
     simp only [ofMul_zpow]
     rw [Finset.sum_coe_sort (sig W A A').support (fun v => sig W A A' v • H v)]
-    simp only [F, Finsupp.liftAddHom_apply, zmultiplesHom_apply]
+    simp only [F, Finsupp.liftAddHom_apply]
     rfl
   apply Additive.ofMul.injective
   rw [hR]

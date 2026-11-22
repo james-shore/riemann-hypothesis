@@ -24,7 +24,6 @@ theorem msW_apply {w : HeightOneSpectrum (𝓞 D.host.E)} (hw : w ∈ placesOver
   rw [msW_entry]
   first
   | rfl
-  | simp [Matrix.map_apply]
 
 set_option maxHeartbeats 2000000 in
 set_option synthInstance.maxHeartbeats 400000 in

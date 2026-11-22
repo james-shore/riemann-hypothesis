@@ -43,7 +43,7 @@ theorem map_row {N N' : ℕ} (γ : Matrix.unitaryGroup (Fin N) D.host.E) (x : Ta
     rowE D N N' (phiU γ 1 x) i = phiU γ 1 (rowE D N N' x i) := by
   funext τ a j
   rw [rowE_apply', phiU_apply, phiU_apply]
-  simp [gM, Matrix.mul_apply, Matrix.one_apply, rowE_apply', Fin.fin_one_eq_zero a]
+  simp [gM, Matrix.mul_apply, rowE_apply', Fin.fin_one_eq_zero a]
 
 theorem map_col {N N' : ℕ} (γ' : Matrix.unitaryGroup (Fin N') D.host.E) (x : TaylorLogMetric.VC D N N') (j : Fin N) :
     colE D N N' (phiU 1 γ' x) j = phiU (cjU γ') 1 (colE D N N' x j) := by

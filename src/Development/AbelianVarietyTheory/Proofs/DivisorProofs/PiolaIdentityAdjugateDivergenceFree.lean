@@ -50,7 +50,7 @@ theorem piola {ι : Type} [Fintype ι] [DecidableEq ι] (δ : ι → Derivation 
     simp only [updateRow_self]
     by_cases hl : l = j
     · subst hl; simp
-    · simp [Pi.single_apply, hl]
+    · simp [hl]
   have hpair : ∀ i k, i ≠ k → f (i, k) + f (k, i) = 0 := by
     intro i k hik
     set D : ι → R := fun l => δ i (M k l) with hD
@@ -64,9 +64,9 @@ theorem piola {ι : Type} [Fintype ι] [DecidableEq ι] (δ : ι → Derivation 
       simp only [hf]
       congr 1
       ext a b
-      simp only [submatrix_apply, id, updateRow_apply, updateRow_ne hik, hD]
+      simp only [submatrix_apply, id, updateRow_apply, hD]
       by_cases hai : a = i
-      · subst hai; simp [Equiv.swap_apply_left, hik, Ne.symm hik, hM]
+      · subst hai; simp [Equiv.swap_apply_left, hik, hM]
       · by_cases hak : a = k
         · subst hak; simp [Equiv.swap_apply_right, hik, Ne.symm hik]
         · rw [Equiv.swap_apply_of_ne_of_ne hai hak]; simp [hai, hak]

@@ -72,29 +72,29 @@ theorem transvection_mul_upperFactor {i j : Fin m} (hji : j < i) {x : k} (hx : x
     rw [single_mul_apply_same]
     by_cases hb : b = a
     · subst hb
-      simp [upperFactor, swapLine, transvection, diagonal_mul, single_apply, one_apply,
-        Function.update_apply, hij, hij.symm, hx]
+      simp [upperFactor, swapLine, transvection, diagonal_mul, one_apply,
+        hij.symm, hx]
     · by_cases hbj : b = j
       · subst hbj
-        simp [upperFactor, swapLine, transvection, diagonal_mul, single_apply, one_apply,
-          Function.update_apply, hij, hij.symm, hx]
-      · simp [upperFactor, swapLine, transvection, diagonal_mul, single_apply, one_apply,
-          Function.update_apply, hij, hij.symm, hx, hb, hbj, Ne.symm hb, Ne.symm hbj]
+        simp [upperFactor, swapLine, transvection, diagonal_mul, one_apply,
+          hij, hij.symm, hx]
+      · simp [upperFactor, swapLine, transvection, diagonal_mul, one_apply,
+          hij.symm, Ne.symm hb, Ne.symm hbj]
   · rw [single_mul_apply_of_ne _ _ _ _ _ ha, add_zero]
     by_cases haj : a = j
     · subst haj
       by_cases hb : b = a
       · subst hb
-        simp [upperFactor, swapLine, transvection, diagonal_mul, single_apply, one_apply,
-          Function.update_apply, hij, hij.symm, hx]
+        simp [upperFactor, swapLine, transvection, diagonal_mul, one_apply,
+          hij, hij.symm]
       · by_cases hbi : b = i
         · subst hbi
-          simp [upperFactor, swapLine, transvection, diagonal_mul, single_apply, one_apply,
-            Function.update_apply, hij, hij.symm, hx]
-        · simp [upperFactor, swapLine, transvection, diagonal_mul, single_apply, one_apply,
-            Function.update_apply, hij, hij.symm, hx, hb, hbi, Ne.symm hb, Ne.symm hbi]
-    · simp [upperFactor, swapLine, transvection, diagonal_mul, single_apply, one_apply,
-        Function.update_apply, hij, hij.symm, hx, ha, haj, Ne.symm ha, Ne.symm haj]
+          simp [upperFactor, swapLine, transvection, diagonal_mul, one_apply,
+            hij, hij.symm, hx]
+        · simp [upperFactor, swapLine, transvection, diagonal_mul, one_apply,
+            hij, hij.symm, Ne.symm hb, Ne.symm hbi]
+    · simp [upperFactor, swapLine, transvection, diagonal_mul, one_apply,
+        ha, haj, Ne.symm ha, Ne.symm haj]
 
 end Lower
 

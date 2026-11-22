@@ -187,7 +187,7 @@ theorem hermForm_smul_eq_sum {g : ℕ} (ty : Fin g → (E →+* ℂ)) (Hm : Matr
     · simp [tyPart, h]
       ring
     · intro σ _ hσ
-      simp [tyPart, Ne.symm hσ, hσ]
+      simp [tyPart, Ne.symm hσ]
     · simp
   · rw [hb j k h]
     simp only [mul_zero, zero_mul]

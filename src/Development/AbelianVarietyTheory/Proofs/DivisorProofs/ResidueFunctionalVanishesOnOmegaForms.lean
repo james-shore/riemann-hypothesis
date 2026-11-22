@@ -16,8 +16,6 @@ theorem prod_zpow_add (x : Fin (d + 1) → F) (hx : ∀ i, x i ≠ 0) (m n : Fin
   | exact @_root_.GlobalTheory.ProductZpowAdd.prod_zpow_add
   | exact _root_.GlobalTheory.ProductZpowAdd.prod_zpow_add
   | (apply _root_.GlobalTheory.ProductZpowAdd.prod_zpow_add <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ProductZpowAdd.prod_zpow_add <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ProductZpowAdd.prod_zpow_add <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ProductZpowAdd.prod_zpow_add ..)
 
 def monoA (x : Fin (d + 1) → F) (hx : ∀ i, x i ≠ 0) (I : Finset (Fin (d + 1))) : Submonoid F where
@@ -34,8 +32,8 @@ theorem prod_single_sub (x : Fin (d + 1) → F) (hx : ∀ i, x i ≠ 0) (i j : F
   simp_rw [zpow_sub₀ (hx _)]
   rw [Finset.prod_div_distrib]
   congr 1
-  · rw [Fintype.prod_eq_single j (fun l hl => by simp [Pi.single_apply, hl])]; simp
-  · rw [Fintype.prod_eq_single i (fun l hl => by simp [Pi.single_apply, hl])]; simp
+  · rw [Fintype.prod_eq_single j (fun l hl => by simp [hl])]; simp
+  · rw [Fintype.prod_eq_single i (fun l hl => by simp [hl])]; simp
 
 theorem prod_exp (x : Fin (d + 1) → F) (hx : ∀ i, x i ≠ 0) (i0 : Fin (d + 1)) :
     (∏ j, x j ^ ((1 : ℤ) - if j = i0 then ((d : ℤ) + 1) else 0)) * ∏ j, x i0 / x j = 1 := by

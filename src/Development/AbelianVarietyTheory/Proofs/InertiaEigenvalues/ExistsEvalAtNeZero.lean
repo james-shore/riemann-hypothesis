@@ -158,9 +158,9 @@ theorem span_of_products : ∀ (D : D7) (T : CoreJ D), LawsJ T → ∀ j, Formal
     simp only [h1, Finset.sum_sub_distrib]
     congr 1
     · rw [Fintype.sum_sigma, Finset.sum_eq_single e.1 (fun i' _ hi' => by simp [hi']) (by simp)]
-      simp [Finset.sum_mul, smul_mul_assoc]
+      simp [Finset.sum_mul]
     · rw [Fintype.sum_sigma, Finset.sum_eq_single e.2 (fun i' _ hi' => by simp [hi']) (by simp)]
-      simp [Finset.sum_mul, smul_mul_assoc]
+      simp [Finset.sum_mul]
   let z : κ → ℂ := fun q => cf q.1 q.2
   have hz : ∀ e, ∑ q, z q • rdU (T.U j σ) (A q e) = 0 := by
     intro e
@@ -201,9 +201,9 @@ theorem span_of_products : ∀ (D : D7) (T : CoreJ D), LawsJ T → ∀ j, Formal
         simp only [h1, Finset.sum_sub_distrib]
         congr 1
         · rw [Fintype.sum_sigma, Finset.sum_eq_single i (fun i'' _ hi'' => by simp [hi'']) (by simp)]
-          simp [g', Finset.sum_mul, smul_mul_assoc]
+          simp [g', Finset.sum_mul]
         · rw [Fintype.sum_sigma, Finset.sum_eq_single i' (fun i'' _ hi'' => by simp [hi'']) (by simp)]
-          simp [g', Finset.sum_mul, smul_mul_assoc]
+          simp [g', Finset.sum_mul]
       have := hc (i, i')
       rw [hrowR] at this
       exact sub_eq_zero.1 this

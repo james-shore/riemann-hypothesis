@@ -66,7 +66,7 @@ private theorem near_one {Ω : Type} [Field Ω] [Algebra ℚ Ω] {ε : Ω →+* 
   rcases hw1 with e | e
   · have e' : φ w = φ' w := e
     rw [e']
-    simp only [Set.mem_setOf_eq, max_lt_iff] at hw3
+    simp only [max_lt_iff] at hw3
     exact (hB w hw3.1.2).trans (hs _ hw3.1.1.le)
   · exact absurd hw2 e
 

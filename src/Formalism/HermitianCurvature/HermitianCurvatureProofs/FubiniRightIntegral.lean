@@ -95,7 +95,7 @@ theorem lifted_minus {f : FrameData (Fin n) A} {f' : FrameData (Fin (n + 1)) A} 
     simp only [liftM_mul, liftM_zero, liftM_one, io_lift]
   · simp only [FrameData.minus]
     rw [← ins_succ, matrix_two_map_lift]
-    simp only [liftM_add, liftM_sub, liftM_mul, liftM_neg, liftM_smul, liftM_zero, liftM_one, hf.ee, hf.x, hf.xi,
+    simp only [liftM_add, liftM_sub, liftM_mul, liftM_neg, liftM_smul, liftM_zero, hf.ee, hf.x, hf.xi,
       hf.q, lifted_DD hf, tz_lift]
   · simp only [FrameData.minus]
     rw [hf.x, liftM_mul, ← ins_succ, matrix_two_map_lift]

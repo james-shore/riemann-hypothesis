@@ -18,15 +18,12 @@ theorem casimirConjugation_apply (E : GLOps n K V) (c : Fin n) (s : Finset (Fin 
 theorem casimirPowerW_zero (E : GLOps n K V) (c : Fin n) (s : Finset (Fin n)) : casimirPower E c s 0 = 1 := by
   first
   | rfl
-  | simp [casimirPower]
-  | unfold casimirPower
     done
 
 theorem casimirPowerW_succ (E : GLOps n K V) (c : Fin n) (s : Finset (Fin n)) (q : ℕ) :
     casimirPower E c s (q + 1) = ∑ i ∈ s, E c i * casimirPower E c s q * E i c := by
   first
   | rw [casimirPower, casimirPower, pow_succ', Module.End.mul_apply, casimirConjugation_apply]
-  | unfold casimirPower
     done
 
 theorem casimirPowerW_succ_apply (E : GLOps n K V) (c : Fin n) (s : Finset (Fin n)) (q : ℕ) (y : V) :

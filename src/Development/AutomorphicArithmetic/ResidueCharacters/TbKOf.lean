@@ -52,7 +52,6 @@ theorem tbK_of (D : D7) (HW : HWOf D.loc) (F : FonOf D.loc D.locA HW) (l : ℕ) 
     haveI : (Subgroup.inclusion hle).range.FiniteIndex := ⟨hi0⟩
     have hcoc : ∀ a b, φ (ρy (a * b) e₀ - e₀) = φ (ρy a e₀ - e₀) + actD Le a (φ (ρy b e₀ - e₀)) := fun a b => by
       rw [← hφ a _ (Ly.T.sub_mem (Ly.stable b e₀ he₀) he₀) (by rw [map_sub, hp, sub_self]), ← map_add, map_sub, map_mul]
-      congr 1
       simp
     have hcor := CorD.index_smul_mem ((D.loc l).PD K') ((D.loc l).PD K) (Subgroup.inclusion hle)
       (continuous_subtype_val.subtype_mk _) (Topology.IsEmbedding.inclusion hle)

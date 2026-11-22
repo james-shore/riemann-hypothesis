@@ -30,7 +30,7 @@ theorem eventually_isIntV_map (G : HTGroup p) (y : AfP p ⊗[ℚ] G.C) :
         algebraMap ℚ (Qv v) ((Module.finBasis ℚ G.C).repr c i) ∈ v.1.adicCompletionIntegers ℚ := by
       simp only [Filter.eventually_all]; intro i; exact eventually_rat_mem_integers _
     filter_upwards [h1, h2] with v hv1 hv2 i
-    simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, IsIntV, basV,
+    simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, basV,
       Algebra.TensorProduct.basis_repr_tmul, Finsupp.smul_apply, Finsupp.mapRange_apply, smul_eq_mul]
     exact Subring.mul_mem _ hv1 (hv2 i)
   | add y z hy hz =>

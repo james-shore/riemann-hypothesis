@@ -40,10 +40,10 @@ theorem avg_intervalIntegral_swap {G : Type} [AddCommGroup G] [TopologicalSpace 
   borelize G
   unfold GlobalTheory.CuspGeneric.avg
   split_ifs with h
-  · try simp only [dif_pos h]
+  · try simp only
     haveI : IsFiniteMeasure (h.choose.1.restrict h.choose.2) :=
       ⟨by rw [Measure.restrict_apply_univ, h.choose_spec.2.2]; exact ENNReal.one_lt_top⟩
     exact integral_intervalIntegral_comm_of_continuous_norm_le _ F hF t C hbound
-  · simp only [dif_neg h, intervalIntegral.integral_zero]
+  · simp only [intervalIntegral.integral_zero]
 
 end GlobalTheory.CompanionTheory.AvgSwap

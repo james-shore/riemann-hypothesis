@@ -70,7 +70,7 @@ lemma lift_sw {I J K : Cx R} (μ : Pair I J K) (U : Scheme.{0}) (w : ℤ) (x : T
     simp only [LinearMap.comp_apply]
     rw [sw_lof, map_zsmul, lift_lof]
     erw [lift_lof (flipPair μ) U w (swIx p) b a]
-    simp only [flipPair, LinearMap.smul_apply, LinearMap.flip_apply]
+    simp only [flipPair]
     exact negOnePow_smul_smul _ _
   exact LinearMap.congr_fun key x
 

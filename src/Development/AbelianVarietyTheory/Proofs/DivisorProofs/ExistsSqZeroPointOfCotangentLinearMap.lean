@@ -431,7 +431,6 @@ theorem exists_Phi_eq_of_linearMap : ∀ (O : Type) [CommRing O] (A : Over (Sp O
     rfl
   let D := omegaHomEquiv A (pushO O M) φ
   have hD : VanD O M A D := fun W V h f => by
-    change toBase.app V (D.app h f) = 0
     rw [omegaHomEquiv_app]
     change (φ ≫ toBase).app V _ = 0
     rw [hφ0]

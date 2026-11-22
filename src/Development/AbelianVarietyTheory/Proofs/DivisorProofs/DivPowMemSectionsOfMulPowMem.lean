@@ -29,7 +29,6 @@ theorem Pair.div_pow_mem_H_of_mul_pow : ∀ (k : Type) [CommRing k] (X : Scheme.
   have e1 : P.loc N m u i j * P.loc (-1) b t i j ^ N / P.loc 0 1 s i j ^ m =
       P.loc 0 ((b * N : ℕ) : ℤ) (u * t ^ N / s ^ m) i j := by
     simp only [loc, zpow_zero, zpow_one, mul_one, zpow_natCast, zpow_neg, mul_pow, inv_pow]
-    push_cast
     rw [← zpow_natCast, ← zpow_natCast, ← zpow_natCast]
     simp only [zpow_natCast]
     field_simp

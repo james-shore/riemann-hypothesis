@@ -97,7 +97,6 @@ theorem FrameMeasStatement_holds : FrameMeasStatement (E := E) := by
   refine hin.trans ?_
   rw [e4]
   gcongr
-  all_goals exact hlast
 
 end
 

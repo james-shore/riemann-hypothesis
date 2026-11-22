@@ -45,8 +45,7 @@ theorem gam_free : ∀ (N l : ℕ), 4 ≤ N → ∀ γ ∈ Gam N l, ∀ z ∈ Hs
   have hy : 0 < z.im := hz
   have hre := congrArg Complex.re hfix
   have him := congrArg Complex.im hfix
-  simp only [Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.intCast_re,
-    Complex.intCast_im, Complex.ratCast_re, Complex.ratCast_im] at hre him
+  simp only [Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.ratCast_re, Complex.ratCast_im] at hre him
   push_cast at hre him
   simp at hre him
   obtain ⟨k, hk⟩ := (ZMod.intCast_eq_intCast_iff_dvd_sub 1 (A 0 0) N).1 (by simpa using ha1.symm)

@@ -81,7 +81,7 @@ theorem law {a b : ℕ} {V W W' : Type} [AddCommGroup V] [Module ℂ V] [AddComm
     have hj := j.2
     rw [Formalism.MainNotions.ArithmeticCylinders.entN, dif_pos ⟨by omega, by omega⟩]
     show ((q : GL (Fin (a + b)) ℚ_[g]) : Matrix (Fin (a + b)) (Fin (a + b)) ℚ_[g]) (stdSum (rfl : a + b = a + b) (.inl i)) (stdSum (rfl : a + b = a + b) (.inl j)) = _
-    congr 1 <;> exact Fin.ext (stdSum_inl _ _)
+    congr 1
   have hy : ∀ i j : Fin b, (Y : Matrix (Fin b) (Fin b) ℚ_[g]) i j =
       Formalism.MainNotions.ArithmeticCylinders.entN ((q : GL (Fin (a + b)) ℚ_[g]) : Matrix (Fin (a + b)) (Fin (a + b)) ℚ_[g]) (a + i) (a + j) := by
     intro i j
@@ -89,7 +89,7 @@ theorem law {a b : ℕ} {V W W' : Type} [AddCommGroup V] [Module ℂ V] [AddComm
     have hj := j.2
     rw [Formalism.MainNotions.ArithmeticCylinders.entN, dif_pos ⟨by omega, by omega⟩]
     show ((q : GL (Fin (a + b)) ℚ_[g]) : Matrix (Fin (a + b)) (Fin (a + b)) ℚ_[g]) (stdSum (rfl : a + b = a + b) (.inr i)) (stdSum (rfl : a + b = a + b) (.inr j)) = _
-    congr 1 <;> exact Fin.ext (stdSum_inr _ _)
+    congr 1
   rw [hΛ q X Y h0 hx hy w, hL, MulEquiv.symm_apply_apply, deltaHalf_two, extTensor_twist_apply, smul_smul,
     ← Units.val_mul, detChar_apply, detChar_apply]
   simp only [Fintype.card_fin]

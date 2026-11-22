@@ -18,8 +18,6 @@ theorem mem_range_map_subtype_of_contr (ι : Type) [Fintype ι] (K : ι → Type
   | exact @_root_.GlobalTheory.TensorContraction.mem_range_map
   | exact _root_.GlobalTheory.TensorContraction.mem_range_map
   | (apply _root_.GlobalTheory.TensorContraction.mem_range_map <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TensorContraction.mem_range_map <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TensorContraction.mem_range_map <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TensorContraction.mem_range_map ..)
 
 end GlobalTheory.Chain.IoLift

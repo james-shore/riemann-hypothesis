@@ -51,7 +51,7 @@ def intLat : Submodule (𝓞 K) ((E →+* K) → K) :=
 def pair [Fintype (E →+* K)] (y : E) : ((E →+* K) → K) →ₗ[𝓞 K] K where
   toFun v := ∑ σ, σ y * v σ
   map_add' u v := by simp [mul_add, Finset.sum_add_distrib]
-  map_smul' c v := by simp [Finset.smul_sum, mul_smul_comm]
+  map_smul' c v := by simp [Finset.smul_sum]
 
 theorem pair_mem [Fintype (E →+* K)] (hc : Fintype.card (E →+* K) = Module.finrank ℚ E) {y : E}
     (hy : y ∈ FractionalIdeal.dual ℤ ℚ (1 : FractionalIdeal (𝓞 E)⁰ E)) {v : (E →+* K) → K}
@@ -111,7 +111,7 @@ def tmap (φ : Fin N → E) : ((E →+* K) → Fin N → K) →ₗ[𝓞 K] ((E �
     simp [mul_add, Finset.sum_add_distrib]
   map_smul' c v := by
     funext σ
-    simp [Finset.smul_sum, mul_smul_comm]
+    simp [Finset.smul_sum]
 
 theorem tmap_gen (φ : Fin N → E) (u : Fin N → E) (σ : E →+* K) :
     tmap φ (fun (τ : E →+* K) a => τ (u a)) σ = σ (∑ n, u n * φ n) := by
@@ -123,7 +123,7 @@ theorem tmap_single [DecidableEq (E →+* K)] (φ : Fin N → E) (s : E →+* K)
   by_cases h : σ = s
   · subst h
     simp [tmap]
-  · simp [tmap, Pi.single_apply, h]
+  · simp [tmap, h]
 
 theorem exists_smul_mem (I : Submodule (𝓞 E) (Fin N → E)) {v : Fin N → E}
     (hv : v ∈ Submodule.span E (I : Set (Fin N → E))) :
@@ -287,7 +287,7 @@ theorem diffLat_le [Fintype (E →+* K)] (I : Submodule (𝓞 E) (Fin N → E)) 
     by_cases h : σ = s
     · subst h
       simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   rw [e]
   exact Submodule.sum_mem _ fun k _ => Submodule.smul_mem _ _
     (Submodule.subset_span ⟨_, I.smul_mem _ hy, rfl⟩)

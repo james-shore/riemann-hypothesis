@@ -88,7 +88,7 @@ lemma range_toM (ε : Fin n → Bool) : Set.range (fun g : UJ ε => toM g) = {g 
     exact ⟨⟨⟨g, Jm ε * gᴴ * Jm ε, h1, h2⟩, hg⟩, rfl⟩
 
 lemma isClosedEmbedding_toM (ε : Fin n → Bool) : IsClosedEmbedding (fun g : UJ ε => toM g) := by
-  first | exact UpperTheory.Reformulated.B.Qk16.isClosedEmbedding_toM .. | (apply UpperTheory.Reformulated.B.Qk16.isClosedEmbedding_toM <;> assumption) | (intros; apply UpperTheory.Reformulated.B.Qk16.isClosedEmbedding_toM <;> assumption) | (apply @UpperTheory.Reformulated.B.Qk16.isClosedEmbedding_toM <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.Qk16.isClosedEmbedding_toM <;> assumption) | (apply @UpperTheory.Reformulated.B.Qk16.isClosedEmbedding_toM <;> first | assumption | infer_instance)
+  first | exact UpperTheory.Reformulated.B.Qk16.isClosedEmbedding_toM ..
 
 instance (ε : Fin n → Bool) : LocallyCompactSpace (UJ ε) := by
   have : LocallyCompactSpace (Matrix (Fin n) (Fin n) ℂ) :=

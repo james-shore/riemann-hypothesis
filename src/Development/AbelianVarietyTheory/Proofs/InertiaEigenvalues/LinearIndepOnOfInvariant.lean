@@ -18,11 +18,6 @@ theorem linearIndepOn_of_invariant {K B W G ι : Type} [Field K] [CommRing B] [I
     (s : Finset ι) (h : LinearIndepOn K v s) : LinearIndepOn B v s := by
   first
   | (rename_i h_5 h_6 h_7 h_8 h_9 h_10 h_11 h_12 h_13; revert K B W G ι h_5 h_6 h_7 h_8 h_9 h_10 h_11 h_12 h_13 a σ hσ hreg v hv s h; exact @_root_.GlobalTheory.SimpStatement.main)
-  | exact @_root_.GlobalTheory.SimpStatement.main
-  | exact _root_.GlobalTheory.SimpStatement.main
-  | (apply _root_.GlobalTheory.SimpStatement.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SimpStatement.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SimpStatement.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SimpStatement.main ..)
 
 section General

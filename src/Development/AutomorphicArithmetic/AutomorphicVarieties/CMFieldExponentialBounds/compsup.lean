@@ -96,7 +96,6 @@ private theorem indep (A : AbF) {M : Type} [Field M] [NumberField M] (hM : IsAbF
   haveI : Normal ℚ (AlgebraicClosure ℚ) := by
     first
       | exact @IsAlgClosure.normal ℚ (AlgebraicClosure ℚ) _ _ (AlgebraicClosure.instAlgebra ℚ) _
-      | convert @IsAlgClosure.normal ℚ (AlgebraicClosure ℚ) _ _ (AlgebraicClosure.instAlgebra ℚ) _
   let f : CyclotomicField N ℚ →ₐ[ℚ] AlgebraicClosure ℚ := IsAlgClosed.lift
   let f' : CyclotomicField N' ℚ →ₐ[ℚ] AlgebraicClosure ℚ := IsAlgClosed.lift
   obtain ⟨σ, hσ⟩ := exists_lift f τ

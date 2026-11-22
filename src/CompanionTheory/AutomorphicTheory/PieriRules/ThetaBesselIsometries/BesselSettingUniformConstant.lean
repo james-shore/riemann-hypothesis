@@ -37,7 +37,7 @@ theorem hsInner_sum_sum {m : ℕ} (A C : Fin m → (Wq →L[ℂ] Wp)) :
   have h : ∀ A : Fin m → (Wq →L[ℂ] Wp), B.hsVec (∑ i, A i) = ∑ i, B.hsVec (A i) := by
     intro A
     ext t
-    simp [B.hsVec, ContinuousLinearMap.sum_apply]
+    simp [B.hsVec]
   unfold B.hsInner
   rw [h, h, inner_sum]
   exact Finset.sum_congr rfl fun i _ => sum_inner _ _ _
@@ -60,7 +60,7 @@ theorem Ph_sum [FiniteDimensional ℂ Wp] (D : B.RealPlaceData k r Wp Wq) {m : �
     unfold B.rho
     rw [hF _ (Formalism.FourierDecayAlt.P.B6.conj_product_mem_unitary_group D hp hg)]
     ext v
-    simp [ContinuousLinearMap.sum_apply]
+    simp
   simp only
   rw [h1, hF _ hg, hsInner_sum_sum]
 

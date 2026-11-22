@@ -22,7 +22,7 @@ theorem exists_finite_ext_compat_of_finite :
     (Ideal.Quotient.mk m).comp (Algebra.TensorProduct.includeRight : k₁ →ₐ[k] K ⊗[k] k₁).toRingHom, ?_⟩
   ext a
   simp only [RingHom.coe_comp, Function.comp_apply, AlgHom.toRingHom_eq_coe, AlgHom.coe_toRingHom,
-    Algebra.TensorProduct.includeRight_apply, Ideal.Quotient.algebraMap_eq]
+    Algebra.TensorProduct.includeRight_apply]
   rw [IsScalarTower.algebraMap_apply K (K ⊗[k] k₁) ((K ⊗[k] k₁) ⧸ m),
     Algebra.TensorProduct.algebraMap_apply]
   congr 1

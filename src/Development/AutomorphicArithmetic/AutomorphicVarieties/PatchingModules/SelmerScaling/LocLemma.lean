@@ -172,7 +172,7 @@ private theorem move_idem {A B ι : Type} [Ring A] [Ring B] [Fintype ι] (π : A
   rw [e4, ← h2 a, ← h2 b]
   calc _ = (1 + Y) * f' a * ((1 - Y) * (1 + Y)) * r₁ * ((1 - Y) * (1 + Y)) * f' b * (1 - Y) := by
         simp only [mul_assoc]
-    _ = _ := by rw [hr]; simp only [mul_assoc, one_mul, mul_one]
+    _ = _ := by rw [hr]; simp only [mul_assoc, mul_one]
 
 private theorem sep_good {F R H : Type} [Field F] [Infinite F] [CommRing R] [Algebra F R] [Monoid H]
     {n : ℕ} (e : R →ₐ[F] F) (ψ : Fin n → H →* R)

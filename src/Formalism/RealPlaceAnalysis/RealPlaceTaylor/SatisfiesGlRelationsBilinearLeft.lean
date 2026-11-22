@@ -49,20 +49,17 @@ lemma deriv_mulX_commutator (v w : σ) : (D v) * (Mx w) - (Mx w) * (D v) = if v 
   by_cases h : v = w
   · subst h
     refine LinearMap.ext fun f => ?_
-    simp [pderiv_mul, pderiv_X, Pi.single_apply]
-    all_goals abel
+    simp [pderiv_X]
   · refine LinearMap.ext fun f => ?_
-    simp [pderiv_mul, pderiv_X, Pi.single_apply, h, Ne.symm h]
+    simp [pderiv_X, h, Ne.symm h]
 
 lemma mulX_negDeriv_commutator (v w : σ) : (Mx v) * -(D w) - -(D w) * (Mx v) = if v = w then 1 else 0 := by
   by_cases h : v = w
   · subst h
     refine LinearMap.ext fun f => ?_
-    simp [pderiv_mul, pderiv_X, Pi.single_apply]
-    all_goals abel
+    simp [pderiv_X]
   · refine LinearMap.ext fun f => ?_
-    simp [pderiv_mul, pderiv_X, Pi.single_apply, h, Ne.symm h]
-    all_goals abel
+    simp [pderiv_X, h]
 
 lemma deriv_mul_deriv_comm (v w : σ) : (D v) * (D w) = (D w) * (D v) := by
   refine LinearMap.ext fun f => ?_

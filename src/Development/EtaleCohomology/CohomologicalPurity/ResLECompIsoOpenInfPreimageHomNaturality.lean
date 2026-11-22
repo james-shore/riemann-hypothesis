@@ -65,7 +65,7 @@ theorem sq_le {X' X : Scheme.{0}} (f : X' ⟶ X) (U V : X.Opens) (U' V' : X'.Ope
   rw [← Functor.map_comp, ← Functor.map_comp]
   congr 1
   rw [← cancel_mono (Scheme.Opens.ι _), ← cancel_mono (Scheme.Opens.ι _)]
-  simp only [Category.assoc, Scheme.Hom.resLE_comp_ι, Scheme.Hom.resLE_comp_ι_assoc, Scheme.Opens.isoOfLE_inv_ι,
+  simp only [Category.assoc, Scheme.Hom.resLE_comp_ι, Scheme.Opens.isoOfLE_inv_ι,
     Scheme.Opens.isoOfLE_inv_ι_assoc]
 
 theorem ocg_BL : OCG_BL := by
@@ -111,7 +111,7 @@ theorem resLE_comp_isoOpenInfPreimage_hom_naturality {X' X : Scheme.{0}} (f : X'
   rw [← Functor.map_comp, ← Functor.map_comp]
   congr 1
   rw [← cancel_mono (Scheme.Opens.ι _), ← cancel_mono (Scheme.Opens.ι _)]
-  simp only [Category.assoc, Scheme.Hom.resLE_comp_ι, Scheme.Hom.resLE_comp_ι_assoc, isoW_ι]
+  simp only [Category.assoc, Scheme.Hom.resLE_comp_ι, isoW_ι]
   rw [← Category.assoc (isoW U' V' W' e').hom, ← Category.assoc ((isoW U' V' W' e').hom ≫ _), Category.assoc (isoW U' V' W' e').hom, isoW_ι]
 
 theorem ocg_AL : OCG_AL := by

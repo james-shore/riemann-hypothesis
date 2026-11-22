@@ -182,7 +182,7 @@ theorem kernF_le (c : HeightOneSpectrum (𝓞 F) → ℕ) (A Z : Ad F) :
     ‖kernF c A Z‖ ≤ 2 ^ Fintype.card (InfinitePlace F) * ‖PhiH c ![A, Z]‖ := by
   classical
   unfold kernF PhiH arch
-  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+  simp only [Matrix.cons_val_zero, Matrix.cons_val_one]
   rw [norm_mul, norm_mul, ← mul_assoc]
   exact mul_le_mul (arch_le _ _) (fin_le c A Z _ _ Iff.rfl Iff.rfl) (norm_nonneg _) (by positivity)
 
@@ -259,7 +259,7 @@ theorem summable_kern {ω : HChar F} {c : HeightOneSpectrum (𝓞 F) → ℕ} (h
     intro p q h
     have h0 := congrFun (congrArg Subtype.val h) 0
     have h1 := congrFun (congrArg Subtype.val h) 1
-    simp only [ι, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons] at h0 h1
+    simp only [ι, Matrix.cons_val_zero, Matrix.cons_val_one] at h0 h1
     exact Prod.ext (Units.ext h0) h1
   have hS' := hS.comp_injective hι
   let e : Fˣ × F ≃ Fˣ × F :=
@@ -326,7 +326,7 @@ theorem main_of (hsl : ∀ (F : Type) [Field F] [NumberField F] [IsTotallyReal F
   rw [hth, ← rowEquiv.tsum_eq (fun ξ : {ξ : Fin 2 → F // ξ ≠ 0} => f ξ.1),
     Summable.tsum_sum (hfe.comp_injective Sum.inl_injective) (hfe.comp_injective Sum.inr_injective)]
   have h1 : ∑' b : Fˣ, f (rowEquiv (Sum.inl b)).1 = zeroRow c τ :=
-    tsum_congr fun b => by simp [f, rowEquiv, zeroRow]
+    tsum_congr fun b => by simp [f, rowEquiv]
   have hprod : Summable (fun p : Fˣ × F => f (rowEquiv (Sum.inr p)).1) := hfe.comp_injective Sum.inr_injective
   have h2 : ∀ a : Fˣ, ∑' b : F, f (rowEquiv (Sum.inr (a, b))).1 =
       ∑' ξ : F, (adelicChar F (-(algebraMap F (Ad F) ξ * xAd x)) : ℂ) * kern c (yAd y yf) (τ * diagonal F a) ξ :=

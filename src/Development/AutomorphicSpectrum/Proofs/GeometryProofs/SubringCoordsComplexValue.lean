@@ -32,7 +32,7 @@ theorem genMap_germ (ξ : Spec (CommRingCat.of Ω) ⟶ X) {U : X.Opens} {q : X} 
       (Scheme.stalkClosedPointTo ξ).hom (X.presheaf.germ U (genPt ξ) (h.mem_open U.isOpen hq) f) := by
   have e := congr($(X.presheaf.germ_stalkSpecializes hq h) f)
   simp only [CommRingCat.comp_apply] at e
-  simp only [genMap, CommRingCat.hom_comp, RingHom.comp_apply]
+  simp only [genMap]
   exact congrArg (Scheme.stalkClosedPointTo ξ).hom e
 
 theorem add_val {ξ : Spec (CommRingCat.of Ω) ⟶ X} {z : Spec (CommRingCat.of ℂ) ⟶ X} {a b : Ω} {r s : ℂ}

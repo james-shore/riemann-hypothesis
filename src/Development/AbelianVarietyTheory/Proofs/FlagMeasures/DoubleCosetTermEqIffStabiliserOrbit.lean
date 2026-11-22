@@ -68,7 +68,7 @@ theorem grp_inv (ρ a : (VS D).V ≃ₗ[D.host.E] (VS D).V) : c.grp ρ a⁻¹ = 
   rw [← grp_mul, inv_mul_cancel, grp_one]
 
 theorem grp_conj (ρ τ a : (VS D).V ≃ₗ[D.host.E] (VS D).V) : c.grp (ρ * τ) a = c.grp ρ (τ * a * τ⁻¹) := by
-  ext x; simp [GCoord.grp, LinearEquiv.mul_eq_trans, LinearEquiv.symm_trans_apply]
+  ext x; simp [GCoord.grp, LinearEquiv.mul_eq_trans]
 
 theorem grp_surj (ρ : (VS D).V ≃ₗ[D.host.E] (VS D).V) (s : G.GLV) :
     c.grp ρ (((ρ.trans c.e).trans s).trans (ρ.trans c.e).symm) = s := by

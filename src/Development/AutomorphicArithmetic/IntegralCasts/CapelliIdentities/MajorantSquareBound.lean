@@ -203,7 +203,7 @@ private theorem key {B S : Type} [CommRing B] [HenselianLocalRing B] [CommRing S
       rw [hFψ, Polynomial.eval_mul, Polynomial.eval_sub, Polynomial.eval_X, Polynomial.eval_C, sub_self, zero_mul]
     have hder : (Polynomial.derivative (F.map ψ)).eval c ≠ 0 := by
       rw [hFψ, Polynomial.derivative_mul]
-      simp only [Polynomial.derivative_sub, Polynomial.derivative_X, Polynomial.derivative_C, sub_zero, one_mul, Polynomial.eval_add, Polynomial.eval_mul, Polynomial.eval_sub, Polynomial.eval_X, Polynomial.eval_C, sub_self, zero_mul, add_zero]
+      simp only [Polynomial.derivative_sub, Polynomial.derivative_X, Polynomial.derivative_C, sub_zero, one_mul, Polynomial.eval_add, Polynomial.eval_mul, Polynomial.eval_sub, Polynomial.eval_X, Polynomial.eval_C]
       rw [show c - ∏ i ∈ I0, θb i = 0 from sub_self _, zero_mul, add_zero]
       exact hGc
     have h1 : F.eval A ∈ IsLocalRing.maximalIdeal B := by

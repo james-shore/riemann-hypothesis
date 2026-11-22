@@ -29,7 +29,7 @@ theorem thetaSum_schr_negY (ψ : AddChar (AdeleRing (𝓞 F) F) ℂ) (hu : ∀ a
   rw [Complex.star_def, Complex.conj_tsum]
   refine tsum_congr fun ξ => ?_
   generalize (fun i => algebraMap F (AdeleRing (𝓞 F) F) (ξ i)) = a
-  simp only [GlobalTheory.WeilM.schr, map_mul, Complex.star_def, Complex.conj_conj, hc, dotProduct_neg, neg_add, mul_neg]
+  simp only [GlobalTheory.WeilM.schr, map_mul, Complex.conj_conj, hc, dotProduct_neg, neg_add, mul_neg]
 
 end GlobalTheory.WeilSchrodinger.DblTarget.ThetaBox
 

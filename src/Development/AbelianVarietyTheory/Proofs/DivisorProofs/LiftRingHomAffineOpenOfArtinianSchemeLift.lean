@@ -40,8 +40,6 @@ theorem lift_ringHom_of_scheme_lift : ∀ (B : Type) [CommRing B] (X : Scheme.{0
     have := congrArg (fun f : Sp C₀ ⟶ X => f q) hx1
     first
       | exact this.symm
-      | (rw [Scheme.Hom.comp_apply, Scheme.Hom.comp_apply] at this; exact this.symm)
-      | (simp only [Scheme.Hom.comp_base, TopCat.comp_app] at this; exact this.symm)
   have hyx : IsOpenImmersion.lift hV.fromSpec x hrange ≫ hV.fromSpec = x :=
     IsOpenImmersion.lift_fac _ _ _
   obtain ⟨φ, hφ⟩ : ∃ φ, Spec.map φ = IsOpenImmersion.lift hV.fromSpec x hrange :=

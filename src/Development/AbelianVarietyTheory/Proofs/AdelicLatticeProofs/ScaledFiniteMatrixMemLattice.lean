@@ -15,8 +15,6 @@ theorem exists_nsmul_mem_lattice {E : Type} [Field E] [NumberField E] {n : ℕ}
   | exact @_root_.GlobalTheory.NatMulIntegralNsmul.exists_nsmul_mem
   | exact _root_.GlobalTheory.NatMulIntegralNsmul.exists_nsmul_mem
   | (apply _root_.GlobalTheory.NatMulIntegralNsmul.exists_nsmul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatMulIntegralNsmul.exists_nsmul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatMulIntegralNsmul.exists_nsmul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NatMulIntegralNsmul.exists_nsmul_mem ..)
 
 theorem AA_ne_zero (D : D7) : D.host.AA ≠ 0 := by

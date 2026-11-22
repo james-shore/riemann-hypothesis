@@ -33,7 +33,7 @@ theorem summable_height_rpow_reps : ∀ (F E : Type) [Field F] [NumberField F] [
       calc B * B' = adMat F (Formalism.UG.cT (σ : E →+* E) Y * J) * adMat F X * (B * B') := by rw [hXinv, Matrix.one_mul]
         _ = 1 := by rw [Matrix.mul_assoc, ← hX, hXinv]
     have h2 : B' * B = 1 := by
-      first | exact mul_eq_one_comm.mp h1 | exact Matrix.mul_eq_one_comm.mp h1 | exact (Matrix.mul_eq_one_comm).1 h1 | exact Matrix.nonsing_inv_mul_cancel_left _ _ h1
+      first | exact mul_eq_one_comm.mp h1
     exact ⟨⟨B, B', h1, h2⟩, hB⟩
   let φ : T → GlobalTheory.Eis.Cosets (GlobalTheory.UAut.parFlag σ J X (fun _ => 0)) (ratPts σ J) := fun t =>
     GlobalTheory.AutomorphicL2Unitary.mk _ t.1

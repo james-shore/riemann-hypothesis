@@ -37,9 +37,7 @@ theorem exists_pow_smul_mem (T : QLat LL) (v : T.V) : ∃ n : ℕ, (l : ↥LL.1)
   first
   | exact @_root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem
   | exact _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem
-  | (apply _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem)
   | (intros; exact _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem ..)
 
 theorem actB_tmul_one (T : QLat LL) (g : Gl l) (x : ↥T.L.T) :

@@ -89,7 +89,7 @@ theorem isPrimitive_extZero_of_sum_unipotent : ∀ (F : Type) [Field F] [Finite 
     simpa using hx)
   rw [← key]
   refine finsum_mem_eq_of_bijOn (fun h => e.conj h) ⟨fun h hh => ⟨fun y => ?_, fun y hy => ?_⟩,
-    e.conj.injective.injOn, fun h hh => ⟨e.symm.conj h, ⟨fun y => ?_, fun y hy => ?_⟩, by ext y; simp [LinearEquiv.conj_apply_apply]⟩⟩ fun h _ => ?_
+    e.conj.injective.injOn, fun h hh => ⟨e.symm.conj h, ⟨fun y => ?_, fun y hy => ?_⟩, by ext y; simp⟩⟩ fun h _ => ?_
   · rw [LinearEquiv.conj_apply_apply, he]
     exact hh.1 _
   · rw [LinearEquiv.conj_apply_apply, hh.2 _ (by rw [← he]; simpa using hy), map_zero]

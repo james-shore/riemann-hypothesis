@@ -46,7 +46,7 @@ private theorem conj_mul (n A B : M4 K) (hnl : n * adj n = 1) : adj n * (A * B) 
 
 private theorem low_inv (n : M4 K) (hn : IsLow n) : adj n * n = 1 ∧ n * adj n = 1 := by
   have h : adj n * n = 1 := by have := hn.1; unfold IsGSp at this; rwa [one_smul] at this
-  exact ⟨h, by first | exact mul_eq_one_comm.mp h | exact (Matrix.mul_eq_one_comm_of_card_eq rfl).mp h | exact (Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _)).mp h⟩
+  exact ⟨h, by first | exact mul_eq_one_comm.mp h | exact (Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _)).mp h⟩
 
 theorem psi_mul {ι Γ : Type} [Group Γ] (P : PD ι Γ K) (v : ι) (hn : IsLow (P.n v)) (s t : Γ)
     (hs : IsUp (adj (P.n v) * P.r s * P.n v)) (ht : IsUp (adj (P.n v) * P.r t * P.n v)) (i : Fin 4) :

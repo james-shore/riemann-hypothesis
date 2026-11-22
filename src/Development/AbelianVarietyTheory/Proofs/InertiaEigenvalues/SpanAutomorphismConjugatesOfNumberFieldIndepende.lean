@@ -56,12 +56,12 @@ theorem span_conj_eq_top : ∀ (K : Type) [Field K] [NumberField K] (σ : K →+
     { carrier := {z | ∀ φ : ℂ ≃+* ℂ, (∀ x, φ (σ x) = σ x) → ∑ i, z i * φ (e i) = 0}
       add_mem' := by
         intro a b ha hb φ hφ
-        simp only [Set.mem_setOf_eq, Pi.add_apply, add_mul, Finset.sum_add_distrib, ha φ hφ,
+        simp only [Pi.add_apply, add_mul, Finset.sum_add_distrib, ha φ hφ,
           hb φ hφ, add_zero]
       zero_mem' := by intro φ hφ; simp
       smul_mem' := by
         intro c a ha φ hφ
-        simp only [Set.mem_setOf_eq, Pi.smul_apply, smul_eq_mul, mul_assoc, ← Finset.mul_sum,
+        simp only [Pi.smul_apply, smul_eq_mul, mul_assoc, ← Finset.mul_sum,
           ha φ hφ, mul_zero] }
   have hRmem : ∀ z, z ∈ R ↔ ∀ φ : ℂ ≃+* ℂ, (∀ x, φ (σ x) = σ x) → ∑ i, z i * φ (e i) = 0 :=
     fun z => Iff.rfl

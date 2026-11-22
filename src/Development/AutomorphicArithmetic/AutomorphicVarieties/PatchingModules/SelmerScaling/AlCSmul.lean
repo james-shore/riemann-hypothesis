@@ -63,7 +63,7 @@ theorem UpperTheory.V.Pa.pres :
     by_cases hj : j' = j
     · subst hj
       simp
-    · simp [Pi.single_apply, hj, hz]
+    · simp [hj, hz]
   haveI := hfin
   obtain ⟨X, c, hXspan, hcind, hrel⟩ := linAlg S.F S.Tp S.k.g D0 U hA hB
   choose Xb hXm hXv using fun k => hlift (X k)

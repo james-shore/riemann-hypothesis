@@ -122,7 +122,7 @@ theorem main : ∀ (K V : Type) [Field K] [NumberField K] [StarRing K] [AddCommG
     rw [hform, Finset.sum_eq_single i]
     · simp
     · intro l _ hl
-      simp [Finsupp.single_apply, hl.symm]
+      simp [hl.symm]
     · intro hi
       exact absurd (Finset.mem_univ i) hi
   have hd0 : ∀ i, h (e i) (e i) ≠ 0 := fun i h0 =>

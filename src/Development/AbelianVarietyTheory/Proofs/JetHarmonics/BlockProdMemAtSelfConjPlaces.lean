@@ -247,7 +247,7 @@ theorem rkF_eq (hty : ∀ g c, (X.G g).ty (Sum.inl c) = c.1 + sh g) (g : Fin 2) 
   have : (Finset.univ.filter fun c : Σ s : ZMod 2, Fin (m s) => c.1 = s) =
       Finset.univ.map ⟨fun i : Fin (m s) => (⟨s, i⟩ : Σ s : ZMod 2, Fin (m s)), fun _ _ e => eq_of_heq (Sigma.mk.inj e).2⟩ := by
     ext ⟨s', i⟩
-    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_map, Function.Embedding.coeFn_mk]
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_map]
     constructor
     · rintro rfl
       exact ⟨i, rfl⟩

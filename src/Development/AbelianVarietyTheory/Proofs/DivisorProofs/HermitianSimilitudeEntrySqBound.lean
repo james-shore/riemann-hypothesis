@@ -53,7 +53,7 @@ theorem herm_scale_entry_bound : ∀ {n : ℕ} (P : Matrix (Fin n) (Fin n) ℂ),
   have hYe : Y *ᵥ e = fun i => Y i j := by
     rw [he, mulVec_single_one]; rfl
   have hqe : q e = (P j j).re := by
-    simp [hq, he, mulVec_single_one]
+    simp [hq, he]
   have hle : ‖Y i j‖ ≤ ‖Y *ᵥ e‖ := by
     rw [hYe]; exact norm_le_pi_norm (fun i => Y i j) i
   have hPjj : (P j j).re ≤ C :=

@@ -18,7 +18,7 @@ theorem repr_map {R R' : Type} [CommRing R] [CommRing R'] [Algebra F R] [Algebra
   induction y using TensorProduct.induction_on with
   | zero => simp
   | tmul r e =>
-    simp [Algebra.TensorProduct.basis_repr_tmul, Algebra.smul_def]
+    simp [Algebra.TensorProduct.basis_repr_tmul]
   | add x y hx hy => simp only [map_add, Finsupp.add_apply, hx, hy]
 
 variable (R : Type) [CommRing R] [Algebra F R] [TopologicalSpace R] [IsTopologicalRing R]

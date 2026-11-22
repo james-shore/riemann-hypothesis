@@ -60,7 +60,7 @@ theorem g1prod [IsTopologicalGroup G] [T2Space G] {G' : Type} [Group G'] [Topolo
     (CentOK θ K I δ → CentOK θ' K' I' δ' → CentOK (θ.prodMap θ') (K.prod K') (I.prod I') (δ, δ')) := by
   first
     | exact g1prod_pf
-    | (apply g1prod_pf <;> assumption)
+    | (apply g1prod_pf)
 
 theorem g2 (θ : G →* G) (K : Subgroup G) (S : Set G) (wt f : G → ℂ) (δ₀ : G) (c : ℂ) (hS : δ₀ ∈ S)
     (hinv : ∀ δ ∈ S, ∀ g : G, g⁻¹ * δ * θ g ∈ S)
@@ -125,7 +125,6 @@ theorem nrm_twconj (w : Pl E) (hw : ¬ IsSplitAt w) (a : ℕ) (g δ : GLw a w) :
     (nrmL a w (g⁻¹ * δ * thL a w g)).val.charpoly = (nrmL a w δ).val.charpoly := by
   first
     | exact nrm_twconj_pf w hw a g δ
-    | (apply nrm_twconj_pf w hw a g δ <;> assumption)
 
 namespace S1
 

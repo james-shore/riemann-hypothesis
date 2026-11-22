@@ -25,7 +25,7 @@ theorem UpperTheory.Gal.ClosedPhiFromClosedTrace.testTr_holds :
     simp only [Polynomial.smul_C]
   simp only [Algebra.smul_def] at h2
   have h3 := congrArg T.eB h2
-  simp only [map_sum, map_mul, map_one, mul_one, RingEquiv.apply_symm_apply] at h3
+  simp only [map_sum, map_mul, mul_one, RingEquiv.apply_symm_apply] at h3
   have h4 : ∑ i, uB T (lam (t i)) * v₀ i = uB T (lam p) := h3
   simp only [Pi.smul_apply, smul_eq_mul]
   rw [← h4, Finset.mul_sum]

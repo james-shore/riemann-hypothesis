@@ -20,12 +20,7 @@ theorem exists_jet_factor {I : Type} [Fintype I] {g : ℕ} {Λ : Type} [AddCommG
         χ.φ x = f₁.φ (x.fst : Hol (K.W k)) + ∑ a, f₁.φ (x.snd a : Hol (K.W k)) * n a := by
   first
   | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact @_root_.GlobalTheory.SquareLiftLemmas.exists_hom_jet
-  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact _root_.GlobalTheory.SquareLiftLemmas.exists_hom_jet
-  | exact @_root_.GlobalTheory.SquareLiftLemmas.exists_hom_jet
-  | exact _root_.GlobalTheory.SquareLiftLemmas.exists_hom_jet
-  | (apply _root_.GlobalTheory.SquareLiftLemmas.exists_hom_jet <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SquareLiftLemmas.exists_hom_jet <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SquareLiftLemmas.exists_hom_jet <;> first | assumption | infer_instance)
+  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll]))
   | (intros; exact _root_.GlobalTheory.SquareLiftLemmas.exists_hom_jet ..)
 
 end GlobalTheory.AnPer.Charts

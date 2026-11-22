@@ -34,7 +34,6 @@ private theorem valued_v_algebraMap_adicCompletion' (v : HeightOneSpectrum (𝓞
     Valued.v (algebraMap E (v.adicCompletion E) a) = v.valuation E a := by
   first
     | exact HeightOneSpectrum.valuedAdicCompletion_eq_valuation' v a
-    | (rw [HeightOneSpectrum.algebraMap_adicCompletion]; exact HeightOneSpectrum.valuedAdicCompletion_eq_valuation' v a)
 
 theorem locK_eq_of_level (χ : HChar E) {v : HeightOneSpectrum (𝓞 E)} {m : ℕ} (h : χ.LevelLe v m) (x y : Eˣ)
     (hxy : v.valuation E ((y : E) - x) ≤ WithZero.exp (-((m : ℤ) + 1)) * v.valuation E (x : E)) :
@@ -48,7 +47,7 @@ theorem locK_eq_of_level (χ : HChar E) {v : HeightOneSpectrum (𝓞 E)} {m : �
     rw [hd, map_mul, map_inv₀]
     calc v.valuation E ((y : E) - x) * (v.valuation E (x : E))⁻¹
         ≤ WithZero.exp (-((m : ℤ) + 1)) * v.valuation E (x : E) * (v.valuation E (x : E))⁻¹ := by
-          first | gcongr | exact mul_le_mul_right' hxy _
+          first | gcongr
       _ = WithZero.exp (-((m : ℤ) + 1)) := by rw [mul_assoc, mul_inv_cancel₀ hv0, mul_one]
   have hlt : v.valuation E (((y * x⁻¹ : Eˣ) : E) - 1) < v.valuation E 1 := by
     rw [map_one]
@@ -87,8 +86,6 @@ theorem exists_approx (S : Finset (HeightOneSpectrum (𝓞 E))) (t : HeightOneSp
     have h := v.valuation_of_algebraMap (K := E) (y - t v)
     first
       | (push_cast at h; exact h)
-      | exact h
-      | simpa using h
   have h3 : v.valuation E (t v : E) = v.intValuation (t v) := v.valuation_of_algebraMap (K := E) (t v)
   rw [h2, h3, ← hk v, ← WithZero.exp_add]
   refine le_trans h1 (WithZero.exp_le_exp.mpr ?_)

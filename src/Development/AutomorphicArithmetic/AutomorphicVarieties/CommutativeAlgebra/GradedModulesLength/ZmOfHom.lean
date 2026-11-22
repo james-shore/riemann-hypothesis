@@ -91,7 +91,7 @@ end Abs
 
 private theorem zm_lat {B A : Type} [CommRing B] [CommRing A] [Algebra B A] {k : ℕ} (N : Fin k → Submodule B A)
     (i : Fin k) (n : ℕ) : lat N (Finsupp.single i n) = N i ^ n := by
-  simp [lat, Finsupp.prod_single_index, Finsupp.single_apply]
+  simp [lat, Finsupp.single_apply]
 
 private theorem zm_iota {O A : Type} [CommRing O] [CommRing A] [Algebra O A] (𝒜 : ℤ → Submodule O A) [GradedAlgebra 𝒜]
     (F : A) (hpow : ∀ n : ℕ, oz 𝒜 (-(2 * n)) = oz 𝒜 (-2) ^ n) :
@@ -131,7 +131,7 @@ private theorem zm_f {B A : Type} [CommRing B] [CommRing A] [Algebra B A] {k : �
     funext j
     by_cases h : j = i
     · subst h; simp
-    · simp [Finsupp.single_apply, Pi.single_apply, h, Ne.symm h]
+    · simp [h]
   have hle : Irr (reesGr N) ≤ Ideal.span (reesGr N (e i) : Set (rees N)) := by
     unfold Irr
     exact Ideal.prod_le_inf.trans (Finset.inf_le (Finset.mem_univ i))

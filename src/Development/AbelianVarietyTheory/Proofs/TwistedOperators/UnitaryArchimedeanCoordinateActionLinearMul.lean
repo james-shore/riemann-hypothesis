@@ -31,7 +31,7 @@ theorem archAct_linear_mul : ∀ {F E : Type} [Field F] [NumberField F] [Field E
     rw [lift_coordI]
     simp only [actAB, Matrix.mul_smul, Matrix.smul_mul, coordI_one]
     congr 1
-    simp only [one_mul, Units.val_one, Subgroup.coe_one, Subgroup.coe_mul, Units.val_mul, Matrix.transpose_mul, Matrix.mul_assoc]
+    simp only [Units.val_one, Subgroup.coe_one, Subgroup.coe_mul, Units.val_mul, Matrix.transpose_mul, Matrix.mul_assoc]
     simp only [Matrix.one_mul]
 
 end GlobalTheory.ArchLine

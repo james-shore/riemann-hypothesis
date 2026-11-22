@@ -37,7 +37,7 @@ theorem hYY_putB (D : D7) {n n' : ℕ} (k k' : Fin n' × Fin n) (x y : Fin 4 →
     intro a _
     by_cases h1 : k'' = k
     · subst h1
-      simp [Ne.symm h, h]
+      simp [h]
     · simp [h1]
 
 end GlobalTheory.BaseVacuum

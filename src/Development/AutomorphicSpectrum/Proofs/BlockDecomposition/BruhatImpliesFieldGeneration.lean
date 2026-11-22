@@ -65,7 +65,7 @@ theorem wr_word {n : ℕ} (e : Matrix (Fin n) (Fin n) K) (he : e * e = e) :
     rw [submatrix_fromBlocks_mul]; simp
   have s4 : blk4 (1 - e) e (-e) 1 * blk4 1 e 0 1 = blk4 (1 - e) e (-e) (1 - e) := by
     have h0 : (-e + 1) * e = 0 := by simp [Matrix.add_mul, he]
-    rw [submatrix_fromBlocks_mul]; simp [Matrix.sub_mul, he, h0, sub_eq_add_neg, add_comm]
+    rw [submatrix_fromBlocks_mul]; simp [he, h0, sub_eq_add_neg, add_comm]
   rw [s1, s2, s3, s4]
 
 theorem Jm_mul_mA_neg (σ : K →+* K) (n : ℕ) :

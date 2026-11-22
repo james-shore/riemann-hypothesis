@@ -71,7 +71,7 @@ theorem curv_comp {H : V n → Matrix r r ℂ} {φ : V n → V n} {v : V n} (hφ
   have hc : ∀ (c : Fin n) (i j : r), DifferentiableAt ℝ (fun y => conn H y (coordVec c) i j) (φ v) :=
     fun c i j => (mContDiffAt_conn h2 hu (coordVec c)).diff i j
   ext i j
-  simp only [Matrix.neg_apply, mdbar_apply, Matrix.sum_apply, Matrix.smul_apply, smul_eq_mul, Finset.sum_neg_distrib]
+  simp only [Matrix.neg_apply, mdbar_apply, Matrix.sum_apply, Matrix.smul_apply, smul_eq_mul]
   rw [dbar_sum (A := fun c x => (fderiv ℂ φ x ξ) c * conn H (φ x) (coordVec c) i j) (fun c _ => ((hf c).restrictScalars ℝ).mul
     ((hc c i j).comp v (hd.restrictScalars ℝ)))]
   rw [ContinuousLinearMap.sum_apply, ← Finset.sum_neg_distrib]
@@ -115,7 +115,7 @@ theorem charpolyRev_map {A B : Type} [CommRing A] [CommRing B] (f : A →+* B) {
   rw [← Polynomial.coe_mapRingHom, RingHom.map_det]
   congr 1
   ext a b : 1
-  by_cases hab : a = b <;> simp [Matrix.one_apply, hab]
+  by_cases hab : a = b <;> simp [hab]
 
 theorem chernPoly_comp {H : V n → Matrix r r ℂ} {φ : V n → V n} {v : V n} (hφ : AnalyticAt ℂ φ v)
     (h2 : MContDiffAt 2 H (φ v)) (hu : IsUnit (H (φ v)).det) (k : ℕ) :

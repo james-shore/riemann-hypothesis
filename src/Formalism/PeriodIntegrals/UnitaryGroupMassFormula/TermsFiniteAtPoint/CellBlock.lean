@@ -229,7 +229,7 @@ theorem bd_step {s n : ℕ} (t : E) (ht : t ≠ 0) (W' : Matrix (Fin n) (Fin n) 
   have hU1 : IsUpUni U1 := by
     have : U1 = (revJ E s * liftZP_unit * revJ E s) * U11 := by
       rw [hU1def, hP, hW1i, hW1]
-      simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, inv_mul_cancel₀ ht, mul_inv_cancel₀ ht, one_smul,
+      simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, mul_inv_cancel₀ ht, one_smul,
         Matrix.mul_assoc]
     rw [this]
     exact up_mul (revJ_conj_up (lo_11 hL0)) (up_11 hU0)

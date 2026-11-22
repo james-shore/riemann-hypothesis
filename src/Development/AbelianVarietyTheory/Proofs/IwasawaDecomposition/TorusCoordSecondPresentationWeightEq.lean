@@ -118,7 +118,7 @@ lemma chg_weight (g : GtCoord I D e G) (g' : GtCoord I D' e G) (θ : WeightPf.Te
     intro x
     rw [← CommRingCat.comp_apply, ← CommRingCat.comp_apply, Scheme.Hom.map_appLE, Scheme.Hom.appTop,
       Scheme.Hom.app_eq_appLE]
-    first | erw [Scheme.Hom.appLE_map] | rfl
+    first | erw [Scheme.Hom.appLE_map]
   have hchi : (chg (G := G) θ).left.appTop.hom (TorusInj.chiP D'.X (thickObj R I e G) α') =
       TorusInj.chiP D.X (thickObj R I e G) (x₀ α') := by
     unfold TorusInj.chiP

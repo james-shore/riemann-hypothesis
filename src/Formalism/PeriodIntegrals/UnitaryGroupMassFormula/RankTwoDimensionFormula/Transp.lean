@@ -64,7 +64,6 @@ theorem tr_af_nontrivial (F : Type) [Field F] [NumberField F] : Nontrivial (IsDe
   first
     | infer_instance
     | exact (RestrictedProduct.evalRingHom _ v).domain_nontrivial
-    | exact ⟨⟨0, 1, fun h => zero_ne_one (congrArg (fun x => x.1 v) h)⟩⟩
 
 attribute [local instance] tr_af_nontrivial
 

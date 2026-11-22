@@ -17,9 +17,7 @@ theorem sum_re_eq_trace (X : Data E r) (x : E) :
   first
   | exact @_root_.GlobalTheory.TraceRealPartConjugateSum.sum_re_add_conj
   | exact _root_.GlobalTheory.TraceRealPartConjugateSum.sum_re_add_conj
-  | (apply _root_.GlobalTheory.TraceRealPartConjugateSum.sum_re_add_conj <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TraceRealPartConjugateSum.sum_re_add_conj <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TraceRealPartConjugateSum.sum_re_add_conj <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.TraceRealPartConjugateSum.sum_re_add_conj)
   | (intros; exact _root_.GlobalTheory.TraceRealPartConjugateSum.sum_re_add_conj ..)
 
 theorem kappa_ne (X : Data E r) : X.κ0 ≠ 0 := by

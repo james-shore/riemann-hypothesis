@@ -104,7 +104,7 @@ theorem hE_equivFun (V : HSp D) (x y : V.V) :
     hE D.sp.cm.sig V.gram (V.frame.equivFun x) (V.frame.equivFun y) = V.hT x y := by
   conv_rhs => rw [← V.frame.sum_equivFun x, ← V.frame.sum_equivFun y]
   simp only [hE, Formalism.UG.hform, HSpace.gram, map_sum, LinearMap.sum_apply, LinearMap.map_smulₛₗ₂, map_smul, smul_eq_mul,
-    LinearMap.smul_apply, Finset.mul_sum]
+    Finset.mul_sum]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => ?_
   change star _ * _ * _ = _ * (star _ * _)

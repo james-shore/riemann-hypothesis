@@ -81,9 +81,9 @@ def splitH (R K : Type) [TopologicalSpace R] [TopologicalSpace K] (n : ℕ) :
       | succ i =>
         exact (continuous_apply i).comp (continuous_fst.comp (continuous_snd.comp continuous_snd))
     · rcases hx : (pairEquiv n).symm p with j | q
-      · simp only [hx, Sum.elim_inl]
+      · simp only [Sum.elim_inl]
         exact (continuous_apply j).comp (continuous_fst.comp continuous_snd)
-      · simp only [hx, Sum.elim_inr]
+      · simp only [Sum.elim_inr]
         exact (continuous_apply q).comp (continuous_snd.comp (continuous_snd.comp continuous_snd))
 
 theorem shuffle_mp {A B C D : Type} [MeasurableSpace A] [MeasurableSpace B] [MeasurableSpace C]

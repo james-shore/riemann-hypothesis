@@ -68,7 +68,7 @@ theorem ld_left (hD : IsDom k r z z' (Fin.last r) D) (hπ : IsCRepOn (UWset k r 
       ((B.comp (dOp π X)).comp (J g)) 0 := by
     have h2 := L.hasFDerivAt.comp_hasDerivAt (0 : ℝ) hd
     convert h2 using 1
-    all_goals first | rfl | (ext; rfl)
+    all_goals first | rfl
   exact key.deriv
 
 theorem lz_left (hD : IsDom k r z z' (Fin.last r) D) (hπ : IsCRepOn (UWset k r z) π)

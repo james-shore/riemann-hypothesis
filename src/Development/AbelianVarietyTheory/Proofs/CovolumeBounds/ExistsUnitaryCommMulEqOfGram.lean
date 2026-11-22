@@ -39,19 +39,19 @@ theorem _root_.GlobalTheory.HCXi.exists_unitary_comm_mul_eq_of_gram {n m : ℕ} 
   have hPpH : Ppᴴ = Pp := by simp [hPp, hH, conjTranspose_smul]
   have hPmH : Pmᴴ = Pm := by simp [hPm, hH, conjTranspose_smul]
   have hPpPp : Pp * Pp = Pp := by
-    simp only [hPp, Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.add_mul, Matrix.mul_add,
+    simp only [hPp, Matrix.smul_mul, Matrix.mul_smul, Matrix.add_mul, Matrix.mul_add,
       Matrix.one_mul, Matrix.mul_one, hHH]
     module
   have hPmPm : Pm * Pm = Pm := by
-    simp only [hPm, Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.sub_mul, Matrix.mul_sub,
+    simp only [hPm, Matrix.smul_mul, Matrix.mul_smul, Matrix.sub_mul, Matrix.mul_sub,
       Matrix.one_mul, Matrix.mul_one, hHH]
     module
   have hPpPm : Pp * Pm = 0 := by
-    simp only [hPp, hPm, Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.add_mul,
+    simp only [hPp, hPm, Matrix.smul_mul, Matrix.mul_smul, Matrix.add_mul,
       Matrix.mul_sub, Matrix.one_mul, Matrix.mul_one, hHH]
     module
   have hPmPp : Pm * Pp = 0 := by
-    simp only [hPp, hPm, Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.sub_mul,
+    simp only [hPp, hPm, Matrix.smul_mul, Matrix.mul_smul, Matrix.sub_mul,
       Matrix.mul_add, Matrix.one_mul, Matrix.mul_one, hHH]
     module
   have hsum : Pp + Pm = 1 := by rw [hPp, hPm]; module

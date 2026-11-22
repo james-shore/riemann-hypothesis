@@ -50,7 +50,7 @@ theorem exists_upperHalfPlane_exp_eq {q : ℂ} (h0 : q ≠ 0) (h1 : ‖q‖ < 1)
     apply div_pos (by simpa using hl) this
   refine ⟨⟨_, him⟩, fun n => ?_⟩
   have : 2 * π * Complex.I * (n : ℂ) * ((⟨_, him⟩ : ℍ) : ℂ) = n * Complex.log q := by
-    simp only [UpperHalfPlane.coe_mk]
+    simp only
     field_simp
   rw [this, Complex.exp_nat_mul, Complex.exp_log h0]
 

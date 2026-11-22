@@ -24,7 +24,7 @@ theorem exists_two_pow_smul_of_covers2 {X : Type} [AddCommGroup X] {ι : Type} {
     obtain ⟨z, hz⟩ := ih x
     refine ⟨z, ?_⟩
     rw [map_add, map_add, hd, hz, zero_add, pow_succ, mul_smul, two_smul]
-    simp only [two_smul, smul_add]
+    simp only [smul_add]
 
 theorem addHom_eq_zero_of_covers2 {X : Type} [AddCommGroup X] [Module.Finite ℤ X] [Module.Free ℤ X]
     {ι : Type} {a : ι → X} (ha : Covers2 a) (d : X →+ X) (hd : ∀ i, d (a i) = 0) : d = 0 := by

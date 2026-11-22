@@ -137,7 +137,7 @@ theorem tsGen_of (hD : CayleyBlocksInvertible) (hK : KAK) (hM : Mult) (hS : SecZ
       have hsecΦ : ∀ y', sL Φ y' = sL Qr y' := by
         intro y'
         have h1 := hΦ ((LinearMap.proj y').comp sL)
-        simp only [LinearMap.comp_apply, LinearMap.proj_apply, map_smul, Pi.smul_apply, smul_eq_mul] at h1
+        simp only [LinearMap.comp_apply, LinearMap.proj_apply, map_smul, smul_eq_mul] at h1
         rw [h1, ← hQr y']
         refine integral_congr_ae (Filter.Eventually.of_forall fun k => ?_)
         simp only

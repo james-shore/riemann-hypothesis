@@ -64,8 +64,8 @@ theorem hO_extY_right (u : WO V W) (a' : Mx D W.rank ρ) : hO V W u (d.extY W a'
 theorem hO_extX_left (a : Mx D W.rank ρ) (u' : WO V W) : hO V W (d.extX W a) u' = hO V W (d.extX W a) (d.extY W (u' ⬝ d.jY)) := by
   rw [d.hO_coordS, d.hO_coordS]
   simp only [HypDec.extY_apply, HypDec.extX_apply, Matrix.mul_assoc, HypDec.pY_jX, HypDec.pY_j0, HypDec.pY_jY,
-    HypDec.pX_jX, HypDec.pX_j0, HypDec.pX_jY, Matrix.mul_zero, Matrix.mul_one, pairS, Matrix.zero_mul, Matrix.mul_zero,
-    Matrix.trace_zero, add_zero, zero_add, hO_zero_left, hO_zero_right]
+    HypDec.pX_jX, HypDec.pX_j0, HypDec.pX_jY, Matrix.mul_zero, Matrix.mul_one, pairS, Matrix.mul_zero,
+    Matrix.trace_zero, add_zero, hO_zero_left, hO_zero_right]
 
 end GlobalTheory.AscFin.AnnPieces
 

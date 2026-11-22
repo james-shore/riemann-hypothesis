@@ -70,12 +70,12 @@ attribute [local instance] Formalism.BasicNotions.Host.cmStar
 theorem zhat_cs (D : D7) {T T' : D.host.E} (F0 : FlagG (VS D) D.R.rS T) (F' : LFlag (VS D) D.R.rS T')
     (c : Fin D.R.rS) (b : Fin (D.R.rS + 1)) :
     ZhatL (lf D F0) F' (Fin.castSucc c) b = (VS D).hT (F0.e c) (frame F' b) := by
-  simp [ZhatL, Zhat, brS, frame, FlagG.fvec, lf]
+  simp [ZhatL, Zhat, brS, frame, FlagG.fvec]
 
 theorem zhat_last (D : D7) {T T' : D.host.E} (F0 : FlagG (VS D) D.R.rS T) (F' : LFlag (VS D) D.R.rS T')
     (b : Fin (D.R.rS + 1)) :
     ZhatL (lf D F0) F' (Fin.last D.R.rS) b = (VS D).hT F0.z (frame F' b) := by
-  simp [ZhatL, Zhat, brS, frame, FlagG.fvec, lf]
+  simp [ZhatL, Zhat, brS, frame, FlagG.fvec]
 
 theorem fixedZhat_of (hH : HeisOp) (hSk : SkewSolve) (hS : ShortFin) (hRD : RowsDep) (hRI : RightInv)
     (hFI : FInt) (hRF : ResFin) : FixedZhatFinite := by

@@ -42,7 +42,7 @@ theorem gBound : GBound := gBound_pf basic_pf
 theorem gFac : GFac := gFac_pf (finFac_pf basic_pf evalBasis_pf (finGen_pf basic_pf))
   (dropP_pf zero kInv_pf basic_pf weak_pf pointRep pComm_pf)
 theorem rep : Rep := rep_pf basic_pf (thetaInt_pf basic_pf) kInv_pf pDiag_pf ker
-theorem sizes : Sizes := by first | exact sizes_of_basic basic_pf | exact sizes_of_basic
+theorem sizes : Sizes := by first | exact sizes_of_basic basic_pf
 theorem domInt : DomInt := domInt_pf basic_pf sizes
 theorem halfTerm : HalfTerm := halfTerm_pf basic_pf gBound supp rep flip_pf domInt
 theorem uncutHalf : DiscreteGroups.T1.G.UncutHalf := uncutOf_pf basic_pf gFac halfTerm (rangeW_pf rep) trFin_pf

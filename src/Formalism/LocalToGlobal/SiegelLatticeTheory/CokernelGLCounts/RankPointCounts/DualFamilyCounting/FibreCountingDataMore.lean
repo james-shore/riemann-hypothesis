@@ -125,7 +125,7 @@ theorem crd_u (j l : Fin m) :
   rw [crd, h_phi J.orth J.diag J.ne]
   by_cases hl : l = j
   · subst hl; simp
-  · simp [Pi.single_apply, hl]
+  · simp [hl]
 
 theorem u_mem (j : Fin m) : phi (K := K) b a (Pi.single j 1) ∈ locF 𝔭 (dualIn h ⊤ L) := by
   have := J.max.isPrime

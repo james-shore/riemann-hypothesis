@@ -62,8 +62,7 @@ theorem variation : Variation := by
       (ν.restrict (stdDom ((ratPts σ J).subgroupOf (unipRad σ J C)))) :=
     aestronglyMeasurable_of_tendsto_ae atTop
       (fun s => by first
-        | exact Finset.aestronglyMeasurable_fun_sum s fun γ _ => hmeas γ
-        | exact Finset.aestronglyMeasurable_sum s fun γ _ => hmeas γ) hae
+        | exact Finset.aestronglyMeasurable_fun_sum s fun γ _ => hmeas γ) hae
   haveI : IsFiniteMeasure (ν.restrict (stdDom ((ratPts σ J).subgroupOf (unipRad σ J C)))) :=
     isFiniteMeasure_restrict.2 hfin
   have hΨi : IntegrableOn (fun x : unipRad σ J C => nsum (NF σ J C) f z ((x : GAd σ J) * g))

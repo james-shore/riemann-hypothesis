@@ -293,8 +293,8 @@ theorem diag_twist {W : R2 Ω l} (φ : G ℚ Ω →* (Qbar l)ˣ) {H : Subgroup (
   rw [conj_tw, hg s hs]
   ext i j
   by_cases hij : i = j
-  · subst hij; simp [Matrix.diagonal_apply]; ring
-  · simp [Matrix.diagonal_apply, hij]
+  · subst hij; simp; ring
+  · simp [hij]
 
 theorem charpoly_flag {W : R2 Ω l} {H : Subgroup (G ℚ Ω)} {κ : Fin 2 → ↥H →* (Qbar l)ˣ} (h : IsFlagOn W H κ) (s : ↥H) :
     (mat W s).charpoly = (X - C (κ 0 s : Qbar l)) * (X - C (κ 1 s : Qbar l)) := by

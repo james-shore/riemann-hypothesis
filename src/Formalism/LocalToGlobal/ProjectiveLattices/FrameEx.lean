@@ -101,7 +101,6 @@ def gamL (X : Data E r) {γ : GL (Fin r) E} (hγ : IsUStab X.Gm X.Λ γ) : X.Λ 
     simp only [SetLike.val_smul, RingHom.id_apply]
     first
       | exact Matrix.mulVec_smul _ _ _
-      | simp [Matrix.mulVec_smul]
   left_inv v := by
     ext1
     simp only

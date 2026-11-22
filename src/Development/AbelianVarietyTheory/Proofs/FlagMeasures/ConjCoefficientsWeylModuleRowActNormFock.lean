@@ -37,7 +37,7 @@ theorem conj_rowAct {n : ℕ} (g : Matrix (Fin n) (Fin n) ℂ) (p : MvPolynomial
   | mul_X p v hp =>
     simp only [map_mul, hp, MvPolynomial.map_X]
     congr 1
-    simp [Formalism.GradedWeylDivisibility.rowAct, MvPolynomial.aeval_X]
+    simp [Formalism.GradedWeylDivisibility.rowAct]
 
 theorem fockF_conj {σ : Type} (p q : MvPolynomial σ ℂ) :
     Formalism.REAL.fockF (MvPolynomial.map (starRingEnd ℂ) p) (MvPolynomial.map (starRingEnd ℂ) q) =

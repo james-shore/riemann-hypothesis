@@ -53,7 +53,7 @@ theorem exists_hecke_of_heckeU : ∀ {D : D7} {N : ℕ} (c : HeckeU D N) (e : �
         have hne : θ τ (infPart D (x : AE D)) ≠ 0 := by
           intro h0
           have := congrArg (fun z => θ τ (infPart D z)) (Units.mul_inv x)
-          simp only [RingHom.map_mul, map_mul, h0, zero_mul, RingHom.map_one, map_one] at this
+          simp only [map_mul, h0, zero_mul, map_one] at this
           exact zero_ne_one this
         have hp : 0 < Complex.normSq (θ τ (infPart D (x : AE D))) := Complex.normSq_pos.2 hne
         rw [e1, Complex.norm_real, Real.norm_of_nonneg hp.le]

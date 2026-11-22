@@ -7,7 +7,7 @@ namespace GlobalTheory
 theorem X_sub_X_dvd_sub_aeval_update_variable {σ : Type} [DecidableEq σ] (a b : σ) (P : MvPolynomial σ ℝ) :
     (X b - X a : MvPolynomial σ ℝ) ∣ P - aeval (Function.update (X : σ → MvPolynomial σ ℝ) b (X a)) P := by
   induction P using MvPolynomial.induction_on with
-  | C r => simp [aeval_C]
+  | C r => simp
   | add p q hp hq =>
     have h := dvd_add hp hq
     rw [map_add]

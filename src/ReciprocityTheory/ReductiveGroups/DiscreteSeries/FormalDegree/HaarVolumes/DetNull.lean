@@ -40,11 +40,6 @@ theorem volume_span_range_eq_zero (n : ℕ) (W : Fin n → Fin (n + 1) → ℂ) 
     | (have h2 := finrank_range_le_card (R := ℂ) W
        unfold Set.finrank at h2
        simpa using h2)
-    | (have h2 := finrank_range_le_card (K := ℂ) W
-       unfold Set.finrank at h2
-       simpa using h2)
-    | (have h2 := rank_span_le_of_finite (R := ℂ) (Set.finite_range W)
-       exact absurd h2 (by simp))
   have hne : (Submodule.span ℂ (Set.range W)) ≠ ⊤ := by
     intro htop
     rw [htop, finrank_top, Module.finrank_fin_fun] at h1
@@ -54,7 +49,6 @@ theorem volume_span_range_eq_zero (n : ℕ) (W : Fin n → Fin (n + 1) → ℂ) 
     apply hne
     first
     | exact (Submodule.restrictScalars_eq_top_iff ℝ ℂ _).mp h
-    | exact Submodule.restrictScalars_injective ℝ ℂ (Fin (n + 1) → ℂ) (by rw [h]; rfl)
   exact MeasureTheory.Measure.addHaar_submodule volume _ hne'
 
 theorem exists_row_mem_span_of_det_eq_zero {n : ℕ} (Z : Fin (n + 1) → Fin (n + 1) → ℂ)

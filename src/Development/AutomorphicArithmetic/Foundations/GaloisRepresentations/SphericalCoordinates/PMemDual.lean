@@ -21,8 +21,8 @@ theorem UpperTheory.Gal.W2.memDual_of :
           by_cases hj : j = i
           · subst hj
             simpa using hz0
-          · simp [Pi.single_apply, hj]
-        · simp [Pi.single_apply, hw]
+          · simp [hj]
+        · simp [hw]
       have hp := ha _ hz
       have he : pairL a (Pi.single w (Pi.single i z0) : Loc G) =
           Algebra.trace ℚ_[p] (G.Fw w) (a w i * z0) := by
@@ -30,7 +30,7 @@ theorem UpperTheory.Gal.W2.memDual_of :
         rw [Finset.sum_eq_single w]
         · simp
         · intro w' _ hw'
-          simp [Pi.single_apply, hw']
+          simp [hw']
         · simp
       rwa [he] at hp)
     simpa [mul_comm] using key

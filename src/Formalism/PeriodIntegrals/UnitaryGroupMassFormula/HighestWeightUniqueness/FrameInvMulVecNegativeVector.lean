@@ -21,12 +21,12 @@ private lemma Hpk_mul_self_eq_one : Hpk k r * Hpk k r = 1 := by
   rw [Finset.sum_eq_single p]
   · unfold Hpk
     simp only [Fin.ext_iff]
-    split_ifs at hp ⊢ <;> first | omega | (norm_num; done) | (simp; done)
+    split_ifs at hp ⊢ <;> first | omega | (norm_num)
   · intro l _ hl
     rw [Ne, Fin.ext_iff] at hl
     unfold Hpk
     simp only [Fin.ext_iff]
-    split_ifs at hp ⊢ <;> first | omega | (simp; done) | (norm_num; done)
+    split_ifs at hp ⊢ <;> first | omega | (simp)
   · intro h
     exact absurd (Finset.mem_univ p) h
 

@@ -96,7 +96,7 @@ theorem exists_vec_of_hermRep (hH : HermRepUnram) (hK : Formalism.HermitianLatti
   obtain ⟨s, t, hst⟩ := hH K hK (h x x) (h y'.1 y'.1) n (star_sesq_eq_swap_of_isSymm hs x x) (star_sesq_eq_swap_of_isSymm hs _ _) hn
     (fun φ => hd x hx φ) (fun φ => hd _ hy0 φ) hpos
   refine ⟨star s • x + star t • y'.1, ?_⟩
-  simp only [map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, map_smul, smul_eq_mul,
+  simp only [map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, smul_eq_mul,
     hxy, hyx, starRingEnd_apply, star_star]
   linear_combination hst
 

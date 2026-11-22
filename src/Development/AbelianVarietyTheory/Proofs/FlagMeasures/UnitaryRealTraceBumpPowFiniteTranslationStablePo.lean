@@ -37,7 +37,7 @@ theorem coord_translate (n : ℕ) (a : Matrix (Fin n) (Fin n) ℂ) (d : Option (
       exact Submodule.sum_mem _ fun l _ => Submodule.smul_mem _ _ (Submodule.subset_span ⟨_, rfl⟩)
     · have : (fun g : Matrix (Fin n) (Fin n) ℂ => coord n (some ((i, j), true)) (a * g)) =
           ∑ l, star (a i l) • coord n (some ((l, j), true)) := by
-        funext g; simp [coord, Matrix.mul_apply, Finset.sum_apply, star_sum, mul_comm]
+        funext g; simp [coord, Matrix.mul_apply, Finset.sum_apply, star_sum]
       rw [this]
       exact Submodule.sum_mem _ fun l _ => Submodule.smul_mem _ _ (Submodule.subset_span ⟨_, rfl⟩)
   obtain ⟨T, hT⟩ := (Submodule.mem_span_range_iff_exists_fun ℂ).1 hmem

@@ -7,4 +7,4 @@ open ReciprocityTheory.ChartRestriction.G ReciprocityTheory.ChartRestriction.G.S
 
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.exists_pow_eq_point_of_isAbelianScheme : ∀ (S : Scheme.{0}) (A : Over S) [GrpObj A], IsAbelianScheme A → ∀ (k : Type) [Field k] [IsAlgClosed k] (x : Sp k ⟶ S) (n : ℕ), 0 < n → ∀ g : Over.mk x ⟶ A, ∃ g' : Over.mk x ⟶ A, g' ^ n = g := by
-  first | (exact @GlobalTheory.AbDivPt.exists_pow_eq_of_isAlgClosed) | (exact GlobalTheory.AbDivPt.exists_pow_eq_of_isAlgClosed) | (intros; apply GlobalTheory.AbDivPt.exists_pow_eq_of_isAlgClosed  <;> assumption)
+  first | (exact @GlobalTheory.AbDivPt.exists_pow_eq_of_isAlgClosed)

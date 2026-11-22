@@ -119,7 +119,6 @@ theorem derivative_kills_degree_zero (a : Fin (s + 1)) : ∀ x ∈ XSp p (setLas
     exact (Finsupp.mem_support_iff.1 hda) (Finset.sum_eq_zero_iff.1 h2 a (Finset.mem_univ _))
   first
   | exact MvPolynomial.pderiv_eq_zero_of_notMem_vars hnv
-  | exact MvPolynomial.pderiv_eq_zero_of_not_mem_vars hnv
 
 theorem euler_last_letter_eigen (o : ℕ) : ∀ x ∈ XSp p (setLast LL o) J M (Fin.last s), eulW p K (s + 1) x = ((o : ℕ) : ℚ_[p]) • x := by
   intro x hx

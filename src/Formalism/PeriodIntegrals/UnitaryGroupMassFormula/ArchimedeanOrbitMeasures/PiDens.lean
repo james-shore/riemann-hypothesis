@@ -13,7 +13,7 @@ theorem lintegral_fin_prod {n : ℕ} {E : Fin n → Type} {mE : ∀ i, Measurabl
     (hf : ∀ i, Measurable (f i)) :
     ∫⁻ x : (i : Fin n) → E i, ∏ i, f i (x i) ∂(Measure.pi μ) = ∏ i, ∫⁻ x, f i x ∂(μ i) := by
   induction n with
-  | zero => simp [Measure.pi_of_empty]
+  | zero => simp
   | succ n ih =>
     have hmp := measurePreserving_piFinSuccAbove μ 0
     have hg : Measurable fun y : (j : Fin n) → E (Fin.succAbove 0 j) =>
@@ -39,7 +39,7 @@ theorem lintegral_fin_prod {n : ℕ} {E : Fin n → Type} {mE : ∀ i, Measurabl
           lintegral_prod_mul (hf 0).aemeasurable hg.aemeasurable
       _ = ∏ i, ∫⁻ x, f i x ∂(μ i) := by
           rw [ih (fun j => f (Fin.succAbove 0 j)) (fun j => hf _), Fin.prod_univ_succ]
-          simp [Fin.succAbove_zero]
+          simp
 
 theorem lintegral_fintype_prod {ι : Type} [Fintype ι] {E : ι → Type} {mE : ∀ i, MeasurableSpace (E i)}
     {μ : (i : ι) → Measure (E i)} [∀ i, SigmaFinite (μ i)] (f : (i : ι) → E i → ℝ≥0∞)

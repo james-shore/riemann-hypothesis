@@ -26,7 +26,7 @@ theorem absPow_det_invTranspose (n : ℕ) (s : ℂ) (g : GL (Fin n) k) :
   ext
   have hp := GlobalTheory.SplitWeil.nabs_pos k (Matrix.GeneralLinearGroup.det g)
   simp only [detChar, absPow, MonoidHom.comp_apply, det_invTranspose]
-  simp [nabs_inv, Complex.cpow_neg]
+  simp [Complex.cpow_neg]
 
 theorem twist_comp_invTranspose (n : ℕ) {V : Type} [AddCommGroup V] [Module ℂ V]
     (π : Representation ℂ (GL (Fin n) k) V) (s : ℂ) :

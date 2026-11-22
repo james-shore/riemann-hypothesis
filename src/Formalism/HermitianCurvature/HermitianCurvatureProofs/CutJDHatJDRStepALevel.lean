@@ -202,7 +202,7 @@ theorem capelli_key_second_term (s t : Fin (mdim k r l.succ)) (w x : Fin (mdim k
   have c2 : mulB E l.succ (ho1 l hD) (aY z l.succ t) * mulB E l.succ (ho1 l hD) (aYb z l.succ (skip1 s w)) =
       mulB E l.succ (ho1 l hD) (aYb z l.succ (skip1 s w)) * mulB E l.succ (ho1 l hD) (aY z l.succ t) :=
     (mulB_comm (E := E) (ho1 l hD) (sf_aY z t) (sf_aYb z (skip1 s w))).eq
-  simp only [mul_smul_comm, smul_mul_assoc, smul_smul, mul_one, mul_assoc]
+  simp only [mul_smul_comm, smul_smul, mul_one, mul_assoc]
   rw [← mul_assoc (mulB E l.succ (ho1 l hD) (aY z l.succ t)) (mulB E l.succ (ho1 l hD) (aCi k l)), c1, mul_assoc,
     ← mul_assoc (mulB E l.succ (ho1 l hD) (aY z l.succ t)) (mulB E l.succ (ho1 l hD) (aYb z l.succ (skip1 s w))), c2, mul_assoc]
   congr 1

@@ -103,7 +103,7 @@ private theorem actOn_inC (L : Link D G) (c : G.C) (u : VQ D) :
   have h : inC G (AfP p) c = (1 : AfP p) ⊗ₜ[ℚ] c := rfl
   have h2 : ∀ a : AfP p, actOn L.rep (AfP p) (a ⊗ₜ[ℚ] c) = a • (L.rep c).baseChange (AfP p) := by
     intro a
-    simp [actOn, Algebra.TensorProduct.lift_tmul, Algebra.smul_def]
+    simp [actOn, Algebra.smul_def]
     rfl
   rw [h, h2]
   simp

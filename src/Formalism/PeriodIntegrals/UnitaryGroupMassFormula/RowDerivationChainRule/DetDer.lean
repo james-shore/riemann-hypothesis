@@ -71,6 +71,6 @@ theorem REder_X (K : Type) [CommRing K] (k : ℕ) (a b : Fin k) (i j : Fin k) :
   by_cases h : i = b
   · subst h
     simp [Pi.single_apply, mul_ite]
-  · simp [Pi.single_apply, h]
+  · simp [h]
 
 end PI.RL.W

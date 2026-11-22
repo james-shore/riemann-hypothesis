@@ -17,9 +17,7 @@ private theorem mem_sup_pow_iff (n : ℕ) (f : MvPowerSeries κ R) :
   first
   | exact @_root_.GlobalTheory.IdealPowerCoefficients.mem_pow_iff_coeff_mem
   | exact _root_.GlobalTheory.IdealPowerCoefficients.mem_pow_iff_coeff_mem
-  | (apply _root_.GlobalTheory.IdealPowerCoefficients.mem_pow_iff_coeff_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IdealPowerCoefficients.mem_pow_iff_coeff_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IdealPowerCoefficients.mem_pow_iff_coeff_mem <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.IdealPowerCoefficients.mem_pow_iff_coeff_mem)
   | (intros; exact _root_.GlobalTheory.IdealPowerCoefficients.mem_pow_iff_coeff_mem ..)
 
 private theorem smodEq_pow_iff {S : Type*} [CommRing S] (J : Ideal S) (n : ℕ) (x y : S) :

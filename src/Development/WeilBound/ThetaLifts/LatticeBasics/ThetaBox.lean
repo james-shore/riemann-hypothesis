@@ -129,7 +129,7 @@ theorem lD_sq {φ : (κ → AF F) → ℂ} (h : φ ∈ schA F κ) :
   simp only [this]
   rw [integral_complex_ofReal, integral_eq_lintegral_of_nonneg_ae (.of_forall fun _ => sq_nonneg _)
     ((continuous_of_mem_schwartzBruhatPi h).norm.pow 2).aestronglyMeasurable]
-  simp [ENNReal.ofReal_pow, ofReal_norm_eq_enorm]
+  simp [ENNReal.ofReal_pow]
 
 theorem lD_unit {G : Type} [Group G] {om : G →* Module.End ℂ ((κ → AF F) → ℂ)} (hu : IsUnitaryOn (adeleClass F) om)
     (hp : ∀ g, ∀ φ ∈ schA F κ, om g φ ∈ schA F κ) (g : G) {φ φ' : (κ → AF F) → ℂ} (h : φ ∈ schA F κ) (h' : φ' ∈ schA F κ) :

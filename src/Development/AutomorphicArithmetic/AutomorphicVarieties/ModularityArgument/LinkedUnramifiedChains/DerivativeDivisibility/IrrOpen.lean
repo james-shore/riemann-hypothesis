@@ -22,7 +22,7 @@ private theorem tr_comap' {n : ℕ} {A G H : Type} [CommRing A] [Group G] [Group
         (MonoidAlgebra.single 1 Polynomial.X - MonoidAlgebra.mapRingHom H Polynomial.C (MonoidAlgebra.single g 1))) = _
     congr 1
     rw [map_sub]
-    simp [MonoidAlgebra.mapDomainRingHom_apply, MonoidAlgebra.mapRingHom_apply, MonoidAlgebra.mapDomain_single]
+    simp [MonoidAlgebra.mapDomainRingHom_apply, MonoidAlgebra.mapDomain_single]
   simp only [GDet.tr, GDet.lam, hc]
 
 private theorem tr_at {n : ℕ} {A G H K : Type} [CommRing A] [Group G] [Group H] [CommRing K] (hn : 1 ≤ n)

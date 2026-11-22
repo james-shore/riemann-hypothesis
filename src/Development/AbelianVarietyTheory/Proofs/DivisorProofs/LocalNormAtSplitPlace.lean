@@ -83,8 +83,8 @@ theorem exists_sq_of_split (E : Type) [Field E] [NumberField E] [IsCMField E]
     rw [show ψ v u u₀ = e₀ u from congrFun hu₀ u, show ψ v u u₁ = e₁ u from congrFun hu₁ u]
     by_cases h : u = w₀
     · subst h
-      simp [e₁, Pi.single_apply, h01]
-    · simp [e₀, Pi.single_apply, h]
+      simp [e₁, h01]
+    · simp [e₀, h]
   have hn₀ : u₀ ≠ 0 := by
     rintro rfl
     have := congrFun hu₀ w₀

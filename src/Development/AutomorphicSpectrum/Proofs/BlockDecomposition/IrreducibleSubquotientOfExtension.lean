@@ -47,9 +47,6 @@ theorem isSubquotient_sub_or_quot :
       intro g b
       first
       | rfl
-      | (unfold GlobalTheory.SmGL.subQuot
-         rw [Representation.quotient_apply]
-         rfl)
     have hSinv : ∀ (g : G) ⦃x : B.toSubmodule ⧸ A'⦄, x ∈ S.toSubmodule.map A'.mkQ →
         GlobalTheory.SmGL.subQuot B A g x ∈ S.toSubmodule.map A'.mkQ := by
       intro g x hx
@@ -123,7 +120,6 @@ theorem isSubquotient_sub_or_quot :
     have ha : (⟨((s : B.toSubmodule) : V), hs'⟩ : A.toSubmodule) ∈ S.toSubmodule.comap (Submodule.inclusion hAB') := by
       first
       | exact s.2
-      | simpa using s.2
     exact ⟨⟨⟨((s : B.toSubmodule) : V), hs'⟩, ha⟩, rfl⟩
 
 end GlobalTheory.CompanionTheory.SubquotExt

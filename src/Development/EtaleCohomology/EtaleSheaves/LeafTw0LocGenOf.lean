@@ -69,7 +69,6 @@ theorem LeafTw0LocGen_of : LateralTheory.E.LeafTw0LocSplitPf.LeafTw0LocGen := by
     have h0 := map_zero (((toSheafify Scheme.etaleTopology (Scheme.Γ ⋙ twF q 0)).app (op V)).hom)
     first
       | exact (congrArg (Sec.res h) h0).trans (map_zero _)
-      | (erw [h0]; exact map_zero _)
   · obtain ⟨S, hS, hP⟩ := loc_finset (U := V) (Finset.univ.biUnion fun k => (r k).support) (fun ξ _ => geo V ζ0 ξ)
     refine ⟨S, hS, fun W h hh => ?_⟩
     have hrel := hP W h hh

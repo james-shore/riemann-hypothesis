@@ -39,7 +39,7 @@ theorem blk_pos {w : (Σ k, J k) → ℂ} (hw : ∀ k, ∃ i, w ⟨k, i⟩ ≠ 0
 
 theorem blk_smul (c : K → ℂ) (w : (Σ k, J k) → ℂ) (k : K) :
     blk k (fun p => c p.1 * w p) = ‖c k‖ ^ 2 * blk k w := by
-  simp [blk, norm_mul, mul_pow, Finset.mul_sum]
+  simp [blk, mul_pow, Finset.mul_sum]
 
 theorem blk_conj (w : (Σ k, J k) → ℂ) (k : K) : blk k (fun p => (starRingEnd ℂ) (w p)) = blk k w := by
   simp [blk]

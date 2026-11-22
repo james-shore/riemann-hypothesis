@@ -489,7 +489,7 @@ theorem w''_eq : L.sc.w'' D.R.n = L.sc.b / (L.sc.X' * D.R.n) := by
   show L.sc.b' / (L.sc.x * D.R.n) = _
   rw [b'_eq]
   field_simp
-  <;> ring
+
 
 theorem Lg_le_w'' : large₂ L ≤ L.sc.w'' D.R.n / L.sc.x := by
   have hx := L.sc.one_lt_alt

@@ -27,7 +27,7 @@ theorem cj_cj {X : Type} (f : X → ℂ) : cj id (cj id f) = f := by
   funext x; simp [GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.cj]
 
 theorem cj_eq_star {X : Type} (f : X → ℂ) : cj id f = star f := by
-  funext x; simp [GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.cj, Complex.star_def]
+  funext x; simp [GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.cj]
 
 theorem cj_add {X : Type} (f g : X → ℂ) : cj id (f + g) = cj id f + cj id g := by
   funext x; simp [GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.cj]

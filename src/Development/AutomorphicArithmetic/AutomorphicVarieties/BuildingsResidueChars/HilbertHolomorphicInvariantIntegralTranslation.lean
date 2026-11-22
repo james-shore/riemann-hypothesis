@@ -15,7 +15,7 @@ private theorem aff_zero' {R : Type} [CommRing R] : aff (1 : Rˣ) (0 : R) = 1 :=
 
 private theorem aff_mirab' {R : Type} [CommRing R] (x : R) : aff (1 : Rˣ) x ∈ mirab R := by
   change _ = _
-  simp [funext_iff, Fin.forall_fin_two, Matrix.vecMul, dotProduct, aff]
+  simp [aff]
 
 open UpperTheory.V.Af.GlobalFixedVectors in
 theorem UpperTheory.hilbertHolomorphic_invariant_integralTranslation :

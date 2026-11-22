@@ -554,7 +554,7 @@ theorem zzplus_locF' (u u' : D.what₂.Word) (p : PlF D) (Λ : Submodule (𝓞 D
     · ext a b
       simp only [Matrix.map_apply, Loc.HermSp.ZZplus, Loc.HermSp.ZZplusOf, hM, CntLocal.ZZP, CntLocal.ZhatLoc,
         LsDatumB.sgnP, Matrix.mul_diagonal, Matrix.of_apply, hge, hgq, map_mul, map_sub, snd_proj_symm, apply_ite (p2 sg.e),
-        map_zero, zhat_locF', Prod.fst_mul, Prod.snd_mul, ← adeleInfiniteComponent_apply, ← adele_ext_components, hs', hs1, hcj1, hcj2, hs2, hm2, hf1, hf2, Tu, map_neg, Zd.hcj p]
+        map_zero, zhat_locF', Prod.fst_mul, Prod.snd_mul, ← adeleInfiniteComponent_apply, ← adele_ext_components, hs', hs1, hcj1, hcj2, hs2, hm2, hf1, hf2, Tu, Zd.hcj p]
       split_ifs with h
       · obtain ⟨rfl, rfl⟩ := h
         simp only [Fin.val_last, Nat.sub_self, pow_zero]

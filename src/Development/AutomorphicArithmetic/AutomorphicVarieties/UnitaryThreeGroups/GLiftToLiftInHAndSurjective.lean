@@ -78,12 +78,10 @@ theorem UpperTheory.gLift_toLift_inH_and_surjective :
     let hom : Γ →* GG 3 R :=
       { toFun := fun s => x s * GG.map (algebraMap O R) (r0 η Ψ s)
         map_one' := by
-          beta_reduce
           refine eq_of_emb ?_ ?_
           · rw [hR, map_one, SemidirectProduct.one_right]
           · rw [hF, map_one, map_one]
         map_mul' := fun s t => by
-          beta_reduce
           refine eq_of_emb ?_ ?_
           · rw [hR, SemidirectProduct.mul_right, hR, hR, map_mul]
           · rw [hF, map_mul emb, hF, hF, map_mul] }

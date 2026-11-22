@@ -234,7 +234,7 @@ theorem genVal_double (hL : L.IsLB) {mu : LB.Gen (LB.LinComb L (K := Fin 2) ![((
       ∀ i, ⊤ ≤ (u.ex (z + z)).left ⁻¹ᵁ L.U i → u.fr i (z + z) = e ^ 4 * u.fr i (z + l + (z + l))) (z : Fin g → ℂ) :
     genVal u hL mu (u.ex z).left ![z + z, z] = genVal u hL mu (u.ex 0).left ![0 + 0, 0] := by
   have hd := differentiable_genVal (u := u) hL hmu (𝟙 A.left) (q := fun z : Fin g → ℂ => z) differentiable_id
-    (z := fun z => ![z + z, z]) (fun k => by fin_cases k <;> simp <;> fun_prop)
+    (z := fun z => ![z + z, z]) (fun k => by fin_cases k <;> simp)
     (fun w => by rw [Category.comp_id]; exact isLift_double u w)
   simp only [Category.comp_id] at hd
   refine entire_apply_eq_of_periodic_of_span_real hd u.full (fun z l hl => ?_) z 0

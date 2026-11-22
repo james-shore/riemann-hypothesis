@@ -46,7 +46,7 @@ theorem gauss_inv_single {n : ℕ} (g : Formalism.REAL.UJ (allPos (n + 1))) :
   congr 2
   rw [← row_norm g 0]
   refine Finset.sum_congr rfl fun k _ => ?_
-  simp [Matrix.mulVec_single_one, Matrix.conjTranspose_apply]
+  simp [Matrix.conjTranspose_apply]
 
 theorem volU_succ (n : ℕ) :
     volU (n + 1) = volU n * (2 ^ (n + 1) * Real.pi ^ (n + 1) / (n.factorial : ℝ)) := by
@@ -70,7 +70,7 @@ theorem volume_zero (c : ℝ) (hc : IsGauge (allPos 0) c) :
     have e : Metric.ball (0 : EuclideanSpace ℝ (Fin 0)) 1 = Set.univ :=
       Set.eq_univ_of_forall fun x => by rw [Subsingleton.elim x 0]; simp
     rw [e, ← (PiLp.volume_preserving_toLp (Fin 0)).measure_preimage MeasurableSet.univ.nullMeasurableSet]
-    simp [volume_pi, Measure.pi_univ]
+    simp [volume_pi]
   unfold IsGauge at hc
   rw [h1] at hc
   have h2 : Filter.Tendsto (fun _ : ℝ => c * (Formalism.REAL.muG (allPos 0) Set.univ).toReal)
@@ -103,7 +103,7 @@ theorem volume_unitary : ∀ (N : ℕ) (c : ℝ), IsGauge (allPos N) c →
     have hx : star x₀ ᵥ* (Formalism.REAL.Jm (allPos (n + 1)) * B) = 0 := by
       rw [Jm_allPos, Matrix.one_mul]
       funext k
-      simp [Matrix.vecMul, dotProduct, x₀, B, Fin.sum_univ_succ, Matrix.one_apply, (Fin.succ_ne_zero k).symm]
+      simp [Matrix.vecMul, dotProduct, x₀, B, Matrix.one_apply]
     have hB : Bᴴ * Formalism.REAL.Jm (allPos (n + 1)) * B = Formalism.REAL.Jm (allPos n) := by
       rw [Jm_allPos, Jm_allPos, Matrix.mul_one]
       ext a b

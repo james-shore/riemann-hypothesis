@@ -83,9 +83,6 @@ theorem lintegral_prod_le : ∀ (W : Type) [Fintype W] (n M : ℕ), ∃ C : ℝ,
     haveI : MeasurableAdd (EuclideanSpace ℂ (Fin n)) := inferInstance
     first
       | exact Measure.pi.isAddHaarMeasure _
-      | exact Measure.pi.isAddHaarMeasure
-      | exact @Measure.pi.isAddHaarMeasure (W × Fin M) _ (fun _ => EuclideanSpace ℂ (Fin n)) _
-          (fun _ => volume) _ _ _ _ _
   have hνπ := Measure.isAddLeftInvariant_eq_smul (Measure.map L (volume : Measure (TupV W n M)))
     (Measure.pi fun _ : W × Fin M => (volume : Measure (EuclideanSpace ℂ (Fin n))))
   refine ⟨(Measure.addHaarScalarFactor (Measure.map L (volume : Measure (TupV W n M)))
@@ -171,10 +168,10 @@ theorem inner_polarOp {W : Type} [Fintype W] {n M : ℕ} (J : W → Matrix (Fin 
     first
       | rfl
       | (simp only [PiLp.inner_apply, map_sum]
-         exact Finset.sum_congr rfl fun a _ => by first | rfl | exact Complex.real_inner_eq_re_inner _ _)
+         exact Finset.sum_congr rfl fun a _ => by first | rfl)
   have key : ∑ p, inner ℂ (x (w, p)) (mixOp J (diagOp b y) (w, p)) =
       2 * sesq (J w) (b w) (tupCoord x w) (tupCoord y w) := by
-    simp only [PiLp.inner_apply, mixOp_apply, diagOp_apply, tupCoord_apply]
+    simp only [PiLp.inner_apply, mixOp_apply, diagOp_apply]
     simp [sesq, Matrix.toEuclideanLin_apply, Matrix.mulVec, dotProduct, Finset.mul_sum, Finset.sum_mul]
     refine Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ =>
       Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring

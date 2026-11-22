@@ -48,7 +48,6 @@ theorem qr_lintegral (μ : Measure (UNgrp N)) [μ.IsHaarMeasure] [IsProbabilityM
     unfold triDens
     first
     | fun_prop
-    | measurability
   have key : ∀ f : (Fin N → Fin N → ℂ) → ENNReal, Measurable f →
       ∫⁻ Z, f Z = c * ∫⁻ k, (∫⁻ t in triPos N, f (qrMap (k, t)) * ENNReal.ofReal (qrWt t)) ∂μ := by
     intro f hf
@@ -78,8 +77,7 @@ theorem qr_lintegral (μ : Measure (UNgrp N)) [μ.IsHaarMeasure] [IsProbabilityM
     unfold triMeas
     rw [lintegral_withDensity_eq_lintegral_mul _ htd (by
       first
-      | exact hgq.comp measurable_prodMk_left
-      | exact hgq.comp measurable_prod_mk_left)]
+      | exact hgq.comp measurable_prodMk_left)]
     apply setLIntegral_congr_fun measurableSet_triPos
     intro t ht
     simp only [Pi.mul_apply]

@@ -78,7 +78,7 @@ theorem coneObj_of (h : InjSlice) : ConeObj := by
     have key : (K.X j).obj.map ((tot p).op.map g.op) ≫ (K.X j).obj.map (pullbackSymmetry p V.hom).op.hom =
         (K.X j).obj.map ((pullbackSymmetry p U.hom).op.hom ≫ (rst p g).op) := by
       refine ((K.X j).obj.map_comp _ _).symm.trans ?_; congr 1; apply Quiver.Hom.unop_inj
-      simp only [unop_comp, Iso.op_hom, Quiver.Hom.unop_op, Functor.op_map]
+      simp only [Iso.op_hom, Quiver.Hom.unop_op, Functor.op_map]
       exact (sym_tot p g).symm
     change ((K.X j).obj.map ((tot p).op.map g.op) ≫ (K.X j).obj.map (pullbackSymmetry p V.hom).op.hom).hom
       (((Pi.π G ⟨none⟩).hom.app (op U)).hom x) = _

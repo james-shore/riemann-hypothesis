@@ -32,7 +32,7 @@ theorem slv_pure (Λ : (∀ i, M i) →ₗ[R] R) (f : ∀ i, M i) (v : V) :
   rw [← Finset.sum_smul, ← map_sum]
   congr 2
   ext j
-  simp [Finset.sum_apply, Pi.single_apply]
+  simp [Finset.sum_apply]
 
 theorem slv_ext {W : Type} [AddCommGroup W] [Module R W] (A B : (∀ i, M i ⊗[R] V) →ₗ[R] W)
     (h : ∀ (f : ∀ i, M i) (v : V), A (fun i ↦ f i ⊗ₜ[R] v) = B (fun i ↦ f i ⊗ₜ[R] v)) : A = B := by
@@ -44,7 +44,7 @@ theorem slv_ext {W : Type} [AddCommGroup W] [Module R W] (A B : (∀ i, M i ⊗[
     by_cases hj : j = i
     · subst hj
       simp
-    · simp [Pi.single_apply, hj]
+    · simp [hj]
   simp only [LinearMap.comp_apply, e, h]
 
 theorem slv_add (Λ Λ' : (∀ i, M i) →ₗ[R] R) (t : ∀ i, M i ⊗[R] V) :
@@ -200,7 +200,7 @@ theorem th_frontS (q : ℕ) (i : Fin (q + 1)) :
 theorem sg_frontS (q : ℕ) (i : Fin (q + 1)) : (sg (q + 1) i.succ).comp (front (q + 1)) = front q := by
   ext j
   fin_cases j
-  · simp [sg_apply, front_zero, Fin.predAbove, Fin.lt_def]
+  · simp [sg_apply, front_zero, Fin.predAbove]
   · simp [sg_apply, front_one, Fin.predAbove, Fin.lt_def]
 
 theorem th_backS (q : ℕ) (i : Fin (q + 1)) : (th (q + 1) i.succ).comp (back (q + 1)) = th q i := by
@@ -251,7 +251,7 @@ theorem S_cup_R (q : ℕ) (x : Cn F 1) (hx : dn F 1 x = 0) (w : Cn (box F) (q + 
   rw [h0, zero_mul, smul_zero, zero_add, hS, Finset.sum_apply, Finset.sum_apply, Finset.sum_apply,
     Finset.sum_apply, Finset.mul_sum]
   refine Finset.sum_congr rfl fun i _ ↦ ?_
-  simp only [Pi.smul_apply, Pi.mul_apply, bi_boxR, sg_frontS, th_backS, sg_backS, Fin.val_succ, pow_succ, mul_neg,
+  simp only [Pi.smul_apply, Pi.mul_apply, bi_boxR, th_backS, sg_backS, Fin.val_succ, pow_succ, mul_neg,
     mul_one, neg_smul, TensorProduct.tmul_neg, neg_mul, mul_smul_comm]
   have e : act F ((sg (q + 1) i.succ).comp (front (q + 1))) x = act F (front q) x :=
     congrArg (fun θ ↦ act F θ x) (sg_frontS q i)
@@ -268,7 +268,7 @@ theorem S_cup_L (q : ℕ) (x : Cn F 1) (hx : dn F 1 x = 0) (w : Cn (box F) (q + 
     rw [bi_boxL, act_const F x hx _ (th_frontS q i)]
     simp
   have e : (cst 0 (1 : Fin 2)).comp (cst (q + 1) (0 : Fin 1)) = cst (q + 1) (1 : Fin 2) := rfl
-  simp only [h0, zero_mul, smul_zero, Finset.sum_const_zero, add_zero, th_front0, th_back0, sg_back0, Fin.val_zero,
+  simp only [h0, zero_mul, smul_zero, Finset.sum_const_zero, add_zero, th_back0, sg_back0, Fin.val_zero,
     pow_zero, one_smul, S0, bisimplicial_action_first_factor, e]
   have e2 : act F ((th (q + 1) 0).comp (front (q + 1))) x = x :=
     (congrArg (fun θ ↦ act F θ x) (th_front0 q)).trans (act_id F x)

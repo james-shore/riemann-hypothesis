@@ -20,13 +20,13 @@ theorem hpk_sq (k r : ℕ) : Hpk k r * Hpk k r = 1 := by
   rw [Matrix.mul_apply, Finset.sum_eq_single
     (⟨if (i : ℕ) < r ∨ r + k < i then 2 * r + k - i else i, by split_ifs <;> omega⟩ :
       Fin (2 * r + k + 1))]
-  · simp only [Hpk, Matrix.one_apply, Fin.ext_iff, Fin.val_mk]
+  · simp only [Hpk, Matrix.one_apply, Fin.ext_iff]
     split_ifs <;> first | (exfalso; omega) | norm_num
   · intro l _ hl
     have hl' : (l : ℕ) ≠ if (i : ℕ) < r ∨ r + k < i then 2 * r + k - i else i :=
       fun h => hl (Fin.ext h)
     have hl2 := l.isLt
-    simp only [Hpk, Fin.ext_iff, Fin.val_mk]
+    simp only [Hpk, Fin.ext_iff]
     split_ifs at hl' ⊢ <;> first | (exfalso; omega) | norm_num
   · intro h
     exact absurd (Finset.mem_univ _) h

@@ -31,7 +31,7 @@ theorem glue_cT (σ : R →+* R) (hσ : ∀ z, σ (σ z) = z) (ε : R) (P Q : Ma
     map_add, map_mul, map_sub, map_one, hσ]
   by_cases h : i = j
   · subst h; simp <;> ring
-  · simp [Matrix.one_apply_ne h, Matrix.one_apply_ne (Ne.symm h)] <;> ring
+  · simp [Matrix.one_apply_ne h, Matrix.one_apply_ne (Ne.symm h)]
 
 theorem scal_facts (σ : R →+* R) (ε : R) (hε : ε * ε = ε) (hεσ : ε * σ ε = 0) :
     σ ε * σ ε = σ ε ∧ σ ε * ε = 0 ∧ ε * (1 - ε - σ ε) = 0 ∧ σ ε * (1 - ε - σ ε) = 0 ∧
@@ -83,7 +83,7 @@ theorem glue_unitary (σ : R →+* R) (hσ : ∀ z, σ (σ z) = z) (ε : R) (hε
   · simp only [glue, add_mul, mul_add, smul_mul_smul_comm, hε, hεσ, hσε, hσσ, h1, h2, h3, h4, h5, zero_smul,
       add_zero, zero_add, Matrix.one_mul, Matrix.mul_one]
     rw [hQP, key Q P hQP]
-    first | exact hsum | exact hsum'
+    first | exact hsum
 
 end Alg
 

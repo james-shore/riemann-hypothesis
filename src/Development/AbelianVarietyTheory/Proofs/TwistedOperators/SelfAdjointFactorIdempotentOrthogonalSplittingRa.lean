@@ -34,7 +34,7 @@ theorem factorIdem_mul (e : plusAlg σ J γ ≃ₐ[F] ∀ i, K i) (i : Fin k) (p
     funext j
     by_cases hj : j = i
     · subst hj; simp
-    · simp [Pi.single_apply, hj]
+    · simp [hj]
   rw [← h]; rfl
 
 theorem factorIdem_mul_self (e : plusAlg σ J γ ≃ₐ[F] ∀ i, K i) (i : Fin k) :
@@ -193,7 +193,7 @@ theorem two_le_of_decomp {P : Type} [CommRing P] [Algebra F P] {k' : ℕ} {K' : 
   · have : e q = 1 := funext fun j => by rw [hne j]; exact h
     have h1 : q = 1 := by rw [← map_one e] at this; exact e.injective this
     have h2 := congrFun (e'.symm_apply_eq.1 h1) b
-    simp [Pi.single_apply, hab.symm] at h2
+    simp [hab.symm] at h2
 
 theorem factorIdem_ne_one (e : plusAlg σ J γ ≃ₐ[F] ∀ i, K i) (i : Fin k) (hj : ∃ j, j ≠ i) :
     factorIdem e i ≠ 1 := by
@@ -201,7 +201,7 @@ theorem factorIdem_ne_one (e : plusAlg σ J γ ≃ₐ[F] ∀ i, K i) (i : Fin k)
   obtain ⟨j, hj⟩ := hj
   have h1 : e.symm (Pi.single i 1) = 1 := Subtype.ext (Subtype.ext h)
   have h2 := congrFun (e.symm_apply_eq.1 h1) j
-  simp [Pi.single_apply, hj] at h2
+  simp [hj] at h2
 
 end GlobalTheory.FactorSplit
 

@@ -76,7 +76,6 @@ theorem scal {m : ℕ} (P Q : Matrix (Fin (m + 1)) (Fin (m + 1)) ℂ) (hPQ : P *
     rw [h2, Matrix.vecMul_vecMul, Matrix.mul_adjugate]
     first
     | (rw [Matrix.vecMul_smul, Matrix.vecMul_one]; rfl)
-    | simp [Matrix.vecMul, dotProduct, Matrix.one_apply, mul_comm]
   have hY : ∑ j : Fin (m + 1), ((-1 : ℂ) ^ ((j : ℕ) + (j' : ℕ)) *
       (Q.submatrix j.succAbove j'.succAbove).det) * (Q *ᵥ a) j = Q.det * a j' := by
     have h1 : ∀ j : Fin (m + 1), (-1 : ℂ) ^ ((j : ℕ) + (j' : ℕ)) *
@@ -86,7 +85,7 @@ theorem scal {m : ℕ} (P Q : Matrix (Fin (m + 1)) (Fin (m + 1)) ℂ) (hPQ : P *
     have h2 : ∑ j, Q.adjugate j' j * (Q *ᵥ a) j = (Q.adjugate *ᵥ (Q *ᵥ a)) j' := rfl
     rw [h2, Matrix.mulVec_mulVec, Matrix.adjugate_mul]
     first
-    | (rw [Matrix.smul_mulVec_assoc, Matrix.one_mulVec]; rfl)
+    | (rw [Matrix.smul_mulVec_assoc, Matrix.one_mulVec])
     | simp [Matrix.mulVec, dotProduct, Matrix.one_apply]
   have hdet : P.det * Q.det = 1 := by
     rw [← Matrix.det_mul, hPQ, Matrix.det_one]

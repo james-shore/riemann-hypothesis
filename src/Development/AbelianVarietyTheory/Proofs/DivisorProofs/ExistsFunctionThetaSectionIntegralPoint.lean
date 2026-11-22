@@ -53,7 +53,7 @@ theorem fn_of_theta : ∀ (V : Type) [CommRing V] [IsDomain V] (D : DegPre V) (�
       Matrix.cons_val_one, Matrix.cons_val_two, Matrix.cons_val_three, Matrix.head_cons, Matrix.tail_cons, Category.comp_id, Nat.cast_one, sub_self,
       comp_padd_c_zero, comp_toUnit_c_zero, comp_toUnit_eta, eSec]
     apply Additive.ofMul.injective
-    simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_one]
+    simp only [ofMul_mul, ofMul_zpow, ofMul_one]
     abel
   obtain ⟨s', hs'⟩ := exists_sec hL hF (pullMulSec (θ : LB.Sec (LB.LinComb D.P.L (D.famφB 0) (DegPre.famε 1))) b.left
     (LB.mulGen D.P.L _ _ _ _ t (LB.invGen D.P.L _ _ ρ₀)) hu)

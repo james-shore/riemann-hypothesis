@@ -128,7 +128,7 @@ theorem sj_holds (hLin : SphereLinLogStatement) : SJStatement := by
     have hI : ∫ θ in Set.Ioc 0 (2 * π), (M - L (rotS hu θ z)) =
         2 * π * M - ∫ θ in Set.Ioc 0 (2 * π), L (rotS hu θ z) := by
       rw [integral_sub (integrable_const M) hint, integral_const]
-      simp [Measure.real, Real.volume_Ioc, ENNReal.toReal_ofReal hT.le, smul_eq_mul, Real.pi_pos.le]
+      simp [Measure.real, Real.volume_Ioc, smul_eq_mul, Real.pi_pos.le]
     have hnn : 0 ≤ ∫ θ in Set.Ioc 0 (2 * π), (M - L (rotS hu θ z)) :=
       setIntegral_nonneg measurableSet_Ioc (fun θ _ => sub_nonneg.2 (hLM _))
     have hhz : 2 * π * h z = 2 * π * M - 2 * π * (Real.log ‖MvPolynomial.eval (WithLp.ofLp u) f‖ +
@@ -169,9 +169,6 @@ theorem sj_holds (hLin : SphereLinLogStatement) : SJStatement := by
       have h1 : ENNReal.ofReal (2 * π) ≠ ⊤ := ENNReal.ofReal_ne_top
       first
         | exact (ENNReal.mul_le_mul_iff_right h0 h1).1 hmain
-        | exact (ENNReal.mul_le_mul_iff_left h0 h1).1 hmain
-        | exact (ENNReal.mul_le_mul_left h0 h1).1 hmain
-        | exact ENNReal.le_of_mul_le_mul_left hmain h0 h1
   have hhint : Integrable h (sphereProb n) := by
     rw [hh]; exact ((integrable_const _).sub (integrable_const _)).sub (hGint'.const_mul _)
   have hfin : ∫⁻ z, g z ∂(sphereProb n) ≠ ⊤ := (hglint.trans_lt hhint.lintegral_lt_top).ne

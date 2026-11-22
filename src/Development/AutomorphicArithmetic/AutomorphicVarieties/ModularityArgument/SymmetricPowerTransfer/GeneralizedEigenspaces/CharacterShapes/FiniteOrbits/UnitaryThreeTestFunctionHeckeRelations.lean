@@ -86,7 +86,7 @@ private theorem sgm_key (h : TwOk s w) (y : G) : sgm s w (s.θ y * w⁻¹) = w *
   simp only [sgm_apply, map_mul, map_inv, h.inv, h.ww]; group
 
 private theorem twisted_sigma_identity (h : TwOk s w) (y : G) : sgm s w (w * s.θ y) = y * w⁻¹ := by
-  simp only [sgm_apply, map_mul, map_inv, h.inv, h.ww]; group
+  simp only [sgm_apply, map_mul, h.inv, h.ww]; group
 
 private theorem sgm_mem (h : TwOk s w) {u : G} (hu : u ∈ B.U) : sgm s w u ∈ B.U := h.pres u hu
 

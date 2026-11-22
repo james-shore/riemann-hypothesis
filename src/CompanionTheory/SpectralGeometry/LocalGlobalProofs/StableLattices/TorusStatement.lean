@@ -102,7 +102,7 @@ theorem tor_inv (hH : IsHerm s h) (hF : IsFrame h δ e f W) (hδ : δ ≠ 0) (u 
   rintro x ((⟨i, rfl⟩ | ⟨i, rfl⟩) | hx)
   · simp [tor_e hH hF hδ, hu i]
   · have : s (u i) ≠ 0 := (map_ne_zero s).2 (hu i)
-    simp [tor_e hH hF hδ, tor_f hH hF hδ, this]
+    simp [tor_f hH hF hδ, this]
   · simp [tor_w hH hF _ hx]
 
 theorem tor_iso_gens (hs : ∀ x, s (s x) = x) (hH : IsHerm s h) (hF : IsFrame h δ e f W) (hδ : δ ≠ 0)

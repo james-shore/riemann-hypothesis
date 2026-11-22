@@ -66,7 +66,7 @@ def tEquiv : (k ⊗[F] Fld P) ≃ₗ[k ⊗[F] E] (ι → k ⊗[F] E) where
       simp [← Algebra.TensorProduct.one_def]
     · intro i _ hij
       rw [crd_smul, crd_tmul]
-      simp [Finsupp.single_apply, hij]
+      simp [hij]
     · simp
 
 def bb : Module.Basis ι (k ⊗[F] E) (k ⊗[F] Fld P) := Module.Basis.ofEquivFun (tEquiv P k b)
@@ -74,7 +74,7 @@ def bb : Module.Basis ι (k ⊗[F] E) (k ⊗[F] Fld P) := Module.Basis.ofEquivFu
 theorem bb_apply (i : ι) : bb P k b i = (1 : k) ⊗ₜ[F] b i := by
   rw [bb, Module.Basis.coe_ofEquivFun]
   change ∑ j, (Pi.single i (1 : k ⊗[F] E) : ι → k ⊗[F] E) j • ((1 : k) ⊗ₜ[F] b j) = _
-  rw [Finset.sum_eq_single i (fun j _ h => by simp [Pi.single_apply, h]) (by simp)]
+  rw [Finset.sum_eq_single i (fun j _ h => by simp [h]) (by simp)]
   simp
 
 theorem bb_repr (z : k ⊗[F] Fld P) (i : ι) : (bb P k b).repr z i = crd P k b i z := by
@@ -154,7 +154,7 @@ theorem eq_zero_of_trBase [NumberField E] (z : k ⊗[F] Fld P) (hz : ∀ y, trBa
     split_ifs <;> simp [Algebra.TensorProduct.one_def]
   have h := hz ((1 : k) ⊗ₜ[F] d i)
   rw [← (bb P k b).sum_repr z, Finset.sum_mul, map_sum] at h
-  simp only [smul_mul_assoc, trBase_smul, bb_apply, Algebra.TensorProduct.tmul_mul_tmul, one_mul, key, mul_ite,
+  simp only [smul_mul_assoc, trBase_smul, bb_apply, Algebra.TensorProduct.tmul_mul_tmul, key, mul_ite,
     mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true] at h
   exact h
 
@@ -167,9 +167,8 @@ theorem gam_mat {x : k ⊗[F] Fld P} {φ : (k ⊗[F] Fld P) ≃ₗ[k ⊗[F] E] (
   change ((diagH (star' P) (one₁ P) k (alphaRat P)).1.1).det = _
   rw [Matrix.det_fin_one]
   first
-    | (simp only [diagH, GlobalTheory.IndefiniteRowSideFullHecke.AdelicUnitaryGroups.mapU, MonoidHom.codRestrict_apply, MonoidHom.comp_apply, Subgroup.coe_subtype, Formalism.UG.bc, Units.coe_map, alphaRat, Matrix.GeneralLinearGroup.scalar]; simp; done)
+    | (simp only [diagH, GlobalTheory.IndefiniteRowSideFullHecke.AdelicUnitaryGroups.mapU, Formalism.UG.bc, alphaRat, Matrix.GeneralLinearGroup.scalar]; simp; done)
     | rfl
-    | (simp [diagH, GlobalTheory.IndefiniteRowSideFullHecke.AdelicUnitaryGroups.mapU, Formalism.UG.bc, alphaRat, Matrix.GeneralLinearGroup.scalar, Matrix.scalar_apply]; done)
 
 end Mat
 
@@ -255,7 +254,6 @@ theorem cent_gam [NumberField E] (x : plusUnits P k) {φ : (k ⊗[F] Fld P) ≃�
       rw [← hA]
       first
         | exact (congrArg (fun u : HA k σ J => u.1.1) hg)
-        | exact (congrArg (fun u : HA k σ J => u.1.1) hg).symm
     set c := φ.symm (g.1.1 *ᵥ φ 1) with hcdef
     have hG : g.1.1 = mulMat φ c := eq_mulMat hc
     have hu : Formalism.UG.cT (sigR k σ) g.1.1 * JR k J * g.1.1 = JR k J := g.2

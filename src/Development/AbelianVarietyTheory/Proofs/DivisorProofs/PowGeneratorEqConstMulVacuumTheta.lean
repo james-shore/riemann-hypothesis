@@ -109,7 +109,7 @@ theorem exists_anFib_trans (π : Fin g ≃ Fin g) (A : AnFib X bas idx e x L y) 
     rw [map_zero, ContinuousLinearMap.comp_apply]
     congr 1
     funext j
-    simp [hT, Pi.single_apply, Equiv.symm_apply_eq]
+    simp [hT, Pi.single_apply]
   · exact (hmk a ha).trans (congrArg A.ex (hp _).symm)
 
 end Renumber

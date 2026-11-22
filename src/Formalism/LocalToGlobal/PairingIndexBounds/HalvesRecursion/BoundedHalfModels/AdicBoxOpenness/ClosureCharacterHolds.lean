@@ -139,12 +139,11 @@ theorem closure_character_holds : ClosChar := by
         rintro _ ⟨r, rfl⟩
         refine ⟨r • s • y, M.smul_mem r hsy, ?_⟩
         refine Matrix.ext fun i j => ?_
-        simp only [matI, Matrix.map_apply, Matrix.smul_apply, smul_eq_mul, Algebra.smul_def, map_mul,
-          Algebra.algebraMap_self, RingHom.id_apply])
+        simp only [matI, Matrix.map_apply, Matrix.smul_apply, smul_eq_mul, Algebra.smul_def, map_mul])
     convert key using 1
     refine Matrix.ext fun i j => ?_
     simp only [matI, Matrix.map_apply, Matrix.smul_apply, smul_eq_mul, Algebra.smul_def, map_mul,
-      Algebra.algebraMap_self, RingHom.id_apply, ← hes]
+      ← hes]
     rw [inv_mul_cancel_left₀ hne]
 
 end Formalism.L2.PairingIndexBounds.Rec

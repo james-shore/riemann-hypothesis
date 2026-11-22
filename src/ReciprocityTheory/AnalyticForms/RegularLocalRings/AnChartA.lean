@@ -35,8 +35,7 @@ theorem dualEv_fst_snd (p v : Fin n → ℂ) (h : MvPolynomial (Fin n) ℂ) :
     · rw [map_mul, TrivSqZeroExt.fst_mul, h1, hX]
       simp
     · rw [map_mul, TrivSqZeroExt.snd_mul, h1, h2, hX]
-      simp [Derivation.leibniz, pderiv_X, Pi.single_apply, Finset.sum_add_distrib, add_mul, Finset.mul_sum,
-        DualNumber.snd_eps, DualNumber.fst_eps]
+      simp [Derivation.leibniz, pderiv_X, Pi.single_apply, Finset.sum_add_distrib, add_mul, DualNumber.snd_eps, DualNumber.fst_eps]
       have e1 : (∑ x, (eval p) (if i = x then q else 0) * v x) = eval p q * v i := by
         rw [Finset.sum_eq_single i]
         · simp

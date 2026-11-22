@@ -93,7 +93,7 @@ theorem exists_quot_sec (P Q : LB X) (hP : P.IsLB) (hQ : Q.IsLB) (a : ∀ p₁ q
         (le_inf inf_le_left (inf_le_right.trans inf_le_right)) :
           P.U p₁ ⊓ (Q.U q ⊓ Q.U q') ≤ (P.U p₁ ⊓ Q.U q) ⊓ (P.U p₁ ⊓ Q.U q')) (u⁻¹ : Γ(X, _)ˣ)) (ha p₁ q p₁ q')
     rw [res_g_self P hP p₁, _root_.one_mul, mul_inv_rev, inv_inv] at e
-    simp only [map_mul, rs_rs, rs_coe_inv, Units.val_mul, ← coe_res] at e ⊢
+    simp only [map_mul, rs_rs, Units.val_mul, ← coe_res] at e ⊢
     simp only [map_inv, ReciprocityTheory.ChartRestriction.G.DVR.res_res'] at e ⊢
     rw [e]
     ring

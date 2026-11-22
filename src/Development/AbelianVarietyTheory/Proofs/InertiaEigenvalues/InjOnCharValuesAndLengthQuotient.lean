@@ -52,7 +52,7 @@ variable {l : ℕ} [Fact l.Prime] in
 private theorem toZMod_principalUnit_eq_one {u w : ℤ_[l]} {r : ℕ} (hr : 1 ≤ r)
     (hu : u = 1 + (l : ℤ_[l]) ^ r * w) : PadicInt.toZMod u = 1 := by
   rw [hu]
-  simp [ZMod.natCast_self, zero_pow (Nat.one_le_iff_ne_zero.1 hr)]
+  simp [zero_pow (Nat.one_le_iff_ne_zero.1 hr)]
 
 variable {l : ℕ} [Fact l.Prime] in
 private theorem principalUnit_pow_of_not_dvd {u w : ℤ_[l]} {r m : ℕ} (hr : 1 ≤ r)

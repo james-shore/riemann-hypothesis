@@ -33,7 +33,7 @@ theorem realAct_inv_continuous : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : C
       simp only [A, map_inv]
       show ((((realIn θ fr X (k : GA D (G.V X)) τ)⁻¹)⁻¹ : GL (Fin (G.V X).rank) ℂ) : Matrix (Fin (G.V X).rank) (Fin (G.V X).rank) ℂ).transpose = _
       rw [inv_inv]
-      simp [realIn, MulAut.conj_apply, GlobalTheory.CoefModel.realGL_coe]
+      simp [realIn, GlobalTheory.CoefModel.realGL_coe]
     refine Continuous.congr ?_ fun k => (e k).symm
     exact ((continuous_const.mul ((hc τ).comp continuous_subtype_val)).mul continuous_const).matrix_transpose
   have key := GlobalTheory.CoefModel.continuous_rhoH (wt G X) hG A hA (GlobalTheory.CoefModel.toHilb (wt G X) hG w)

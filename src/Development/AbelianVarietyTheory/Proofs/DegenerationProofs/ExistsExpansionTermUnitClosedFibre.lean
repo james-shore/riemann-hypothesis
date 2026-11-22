@@ -41,7 +41,7 @@ theorem exists_unit_term :
   have hf : (lift (toUnit T) y).left ≫ (fst _ D.P.A).left = (lift (toUnit T) x).left ≫ (fst _ G).left := by
     rw [← Over.comp_left, ← Over.comp_left, lift_fst, lift_fst]
   have hr : (lift (toUnit T) x).left z = z₀ := by
-    have hi : lift (toUnit T) x = x ≫ (λ_ G).inv := by ext1 <;> simp [toUnit_unique]
+    have hi : lift (toUnit T) x = x ≫ (λ_ G).inv := by ext1 <;> simp
     have hj : (snd (𝟙_ _) G).left ≫ (λ_ G).inv.left = 𝟙 _ := by
       rw [← Over.comp_left, ← leftUnitor_hom, Iso.hom_inv_id, Over.id_left]
     have hx : x.left z = (snd (𝟙_ _) G).left z₀ := hz

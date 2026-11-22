@@ -121,8 +121,6 @@ theorem antisym_gap {m : ℕ} {s : Fin m → ℕ} (hs : StrictAnti s) :
   | exact @_root_.GlobalTheory.StrictAntiAddLe.add_le_of_strictAnti
   | exact _root_.GlobalTheory.StrictAntiAddLe.add_le_of_strictAnti
   | (apply _root_.GlobalTheory.StrictAntiAddLe.add_le_of_strictAnti <;> assumption)
-  | (intros; apply _root_.GlobalTheory.StrictAntiAddLe.add_le_of_strictAnti <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.StrictAntiAddLe.add_le_of_strictAnti <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.StrictAntiAddLe.add_le_of_strictAnti ..)
 
 open Classical in

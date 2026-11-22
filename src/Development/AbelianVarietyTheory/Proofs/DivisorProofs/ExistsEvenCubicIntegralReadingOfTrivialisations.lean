@@ -60,7 +60,7 @@ theorem gen_isGen (χ : D.X) : (gen D χ).IsGen :=
   (DVR.exists_gen_of_local D.P.L D.P.isLB (fun _ : PUnit => GlobalTheory.ThFam.ptR D χ) (fun _ => (-1 : ℤ))).choose_spec
 
 theorem xK_eq (χ : D.X) : D.xK χ = jK R ≫ GlobalTheory.ThFam.ptR D χ := by
-  simp [ptK, GlobalTheory.ThFam.ptR]
+  simp [GlobalTheory.ThFam.ptR]
 
 theorem chK_top (χ : D.X) : LB.wchart D.P.L (K := PUnit) (fun _ => ptK (D.c χ)) (ch D χ) = ⊤ := by
   refine eq_top_iff.2 fun y _ => Set.mem_iInter.2 fun k => ?_
@@ -120,8 +120,7 @@ theorem toGen_unit (z : (TK R).left) (u : Rˣ) :
       (Units.map (DegPre.toOpen (R := R) ⊤).toMonoidHom u) = u := by
     apply Units.ext
     have e : (homOfLE (le_top : (⊤ : (Spec (CommRingCat.of R)).Opens) ≤ ⊤)).op = 𝟙 _ := Subsingleton.elim _ _
-    simp only [Units.coe_map, RingHom.toMonoidHom_eq_coe, MonoidHom.coe_coe, DVR.GC.evalTop, GlobalTheory.BetaAdd.toOpen_top,
-      RingHom.comp_apply, e, CategoryTheory.Functor.map_id, CommRingCat.hom_id, RingHom.id_apply, Iso.inv_hom_id_apply]
+    simp only [Units.coe_map, RingHom.toMonoidHom_eq_coe, MonoidHom.coe_coe, DVR.GC.evalTop, RingHom.comp_apply, e, CategoryTheory.Functor.map_id, CommRingCat.hom_id, RingHom.id_apply, Iso.inv_hom_id_apply]
   rw [e1, Category.id_comp] at h
   rw [← h]
   apply Units.ext
@@ -243,12 +242,12 @@ theorem psiIn_mem (I : Ideal R) (χ : D.X) (h : D.PsiIn χ I) :
           DVR.GC.evalTop_specMap (algebraMap R (FractionRing R)) ⊤ rfl rfl _
       _ = algebraMap R (FractionRing R) s := by
           congr 1
-          simp only [DVR.GC.evalTop, GlobalTheory.BetaAdd.toOpen_top, RingHom.comp_apply, e0, CategoryTheory.Functor.map_id,
+          simp only [DVR.GC.evalTop, RingHom.comp_apply, e0, CategoryTheory.Functor.map_id,
             CommRingCat.hom_id, RingHom.id_apply, Iso.inv_hom_id_apply]
   refine ⟨s * ((Units.map (DVR.GC.evalTop _ (ch_top D χ)).toMonoidHom ((gen D χ).s (ch D χ)))⁻¹ : Rˣ),
     I.mul_mem_right _ hs, ?_⟩
   simp only [kap, Units.val_mul, Units.coe_map, RingHom.toMonoidHom_eq_coe, MonoidHom.coe_coe, map_mul, map_units_inv,
-    Units.val_inv_eq_inv_val, key]
+    Units.val_inv_eq_inv_val]
   exact congrArg (· * _) key
 
 end

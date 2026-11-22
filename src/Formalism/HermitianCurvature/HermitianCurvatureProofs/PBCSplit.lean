@@ -30,8 +30,7 @@ private lemma norm_apply_sq_le_mul_of_psdOn {α : Type} {T : Finset α} {k : α 
 
   have hs := (hk.submatrix ![(⟨a, ha⟩ : T), ⟨b, hb⟩]).det_nonneg
   rw [Matrix.det_fin_two] at hs
-  simp only [Matrix.submatrix_apply, Matrix.of_apply, Matrix.cons_val_zero, Matrix.cons_val_one,
-    Matrix.head_cons] at hs
+  simp only [Matrix.submatrix_apply, Matrix.of_apply, Matrix.cons_val_zero, Matrix.cons_val_one] at hs
   have hba : k b a = conj (k a b) := by
     have := congrFun (congrFun hk.isHermitian ⟨b, hb⟩) ⟨a, ha⟩
     simpa [Matrix.conjTranspose_apply] using this.symm
@@ -177,7 +176,7 @@ theorem limit_average_translate_eq (hG : GermData Y U P Q hat) (κ : H → H →
   rw [← ht]
   congr 1
   funext x
-  simp only [AddSubgroup.coe_add, AddSubgroup.coe_mk]
+  simp only [AddSubgroup.coe_add]
   rw [show (x : crystallineComparison.V f) + σ' + (σ - σ') = (x : crystallineComparison.V f) + σ by abel]
 
 private lemma bdd_finset_sum {β ι : Type} (s : Finset ι) (g : ι → β → ℂ) (hg : ∀ i ∈ s, crystallineComparison.Bdd (g i)) :

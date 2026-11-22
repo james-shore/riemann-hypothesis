@@ -59,10 +59,6 @@ theorem glueInt_mem (r : ∀ v : HeightOneSpectrum (𝓞 F), v.adicCompletion F)
     (hr : ∀ v, r v ∈ v.adicCompletionIntegers F) : glueInt r hr ∈ intAd F := by
   first
   | exact fun v => hr v
-  | (intro v; simpa [glueInt_apply] using hr v)
-  | (simp only [intAd]; intro v; exact hr v)
-  | simp [intAd, glueInt_apply, hr]
-  | (unfold intAd; guard_target =ₛ True)
 
 end Glue
 

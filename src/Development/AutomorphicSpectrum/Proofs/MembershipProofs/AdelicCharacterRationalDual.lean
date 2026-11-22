@@ -24,7 +24,7 @@ theorem comb_of_basis : ∀ (V : Type) [NormedAddCommGroup V] [NormedSpace ℝ V
   let P := SchwartzMap.compCLMOfContinuousLinearEquiv (F := ℂ) ℂ Cc
   have hP : ∀ (f : SchwartzMap (Fin (Fintype.card ι) → ℝ) ℂ) x, P f x = f (Cc x) := fun _ _ => rfl
   have hCc : ∀ x i, Cc x i = B.repr x (e.symm i) := fun x i => by
-    simp [Cc, C, Module.Basis.equivFun_apply, Module.Basis.repr_reindex_apply]
+    simp [Cc, C, Module.Basis.equivFun_apply]
   have hsum : ∀ m : ι → ℤ, Cc (∑ i, (m i : ℝ) • B i) = fun j => (m (e.symm j) : ℝ) := fun m => by
     funext j
     rw [hCc, B.repr_sum_self]
@@ -493,7 +493,7 @@ theorem theta_unique : ∀ (F : Type) [Field F] [NumberField F] [LocallyCompactS
       · subst h; simp
       · simp [h]
     have e0 : (fun j => algebraMap F (AdeleRing (𝓞 F) F) ((0 : κ → F) j)) = 0 := by funext j; simp
-    simp only [schr, e, e0, dotProduct_single, zero_dotProduct, mul_zero, add_zero]
+    simp only [schr, e, e0, dotProduct_single, add_zero]
     simp only [Pi.zero_apply, zero_mul, mul_zero, add_zero]
   choose! c hc using fun (N : ℕ) (hN : 0 < N) => level_zero hψ h1 hn hF hl htr hmod hN
   have key : ∀ Φ ∈ schA F κ, ∃ N₀ : ℕ, 0 < N₀ ∧ ∀ N : ℕ, 0 < N → N₀ ∣ N → l Φ = c N * thetaSum F Φ := by

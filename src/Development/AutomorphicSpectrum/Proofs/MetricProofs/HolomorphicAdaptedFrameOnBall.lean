@@ -81,7 +81,7 @@ theorem chart_exists : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (�
       intro b; simp
     simp only [hWv, Pi.single_apply, ite_smul, one_smul, zero_smul, Finset.sum_ite_eq', Finset.mem_univ,
       if_true] at h
-    exact (eq_neg_of_add_eq_zero_right h).symm ▸ by simp [aV, dV]
+    exact (eq_neg_of_add_eq_zero_right h).symm ▸ by simp [aV]
 
   have huniq : ∀ t ∈ ballDom F.q, ∀ τ (W W' : Matrix (Fin j') (Fin j) ℂ),
       (∀ v : Fin j → ℂ, C.pPart (F.R t) τ (A₀ τ *ᵥ Sum.elim v (W *ᵥ v)) = 0) →

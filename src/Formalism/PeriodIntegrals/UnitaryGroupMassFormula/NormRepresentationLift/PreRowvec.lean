@@ -80,13 +80,13 @@ theorem trace_fix (Λ : Submodule (𝓞 E) S.V) (hint : IntLat Λ) {n : ℕ} (f 
     have hmg : (M : E) = (g : E) + 1 := by rw [hmE, hk]; ring
     refine ⟨cj (M : 𝓞 E) • v, Λ.smul_mem _ hv, -((N : 𝓞 E) * o), ?_, fun c hcZ => ?_, fun c hcZ => ?_⟩
     · rw [hT_cj_left, hT_osmul_right, coe_cj, ho]
-      simp only [coe_nat, map_neg, map_mul, map_natCast, star_neg, star_mul', hself, star_natCast]
+      simp only [map_neg, map_mul, map_natCast, star_neg, star_mul', hself, star_natCast]
       rw [hNE, hmE]; ring
     · rw [hT_cj_left, hZ c hcZ, mul_zero]
     · obtain ⟨q, hq⟩ := hc c hcZ
       refine ⟨t c + (M : 𝓞 E) * q, ?_⟩
       rw [hT_cj_left, hq]
-      simp only [coe_nat, map_add, map_mul, map_natCast]
+      simp only [map_add, map_mul, map_natCast]
       linear_combination ((t c : E) + (g : E) * (q : E) - (g : E) * (q : E)) * hmg
   · refine ⟨v, hv, -(ω * o), ?_, hZ, hc⟩
     rw [ho]

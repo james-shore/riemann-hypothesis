@@ -30,7 +30,6 @@ theorem jι_ne_zero {a : 𝓞 F} (ha : a ≠ 0) : jK (ι a) ≠ 0 := by
   rw [map_eq_zero] at h1
   first
   | exact_mod_cast h1
-  | exact RingOfIntegers.ext h1
 
 theorem IsUnif0.ne_zero {𝔭 : Ideal (𝓞 F)} {π₀ s₀ : 𝓞 F} (hu : IsUnif0 𝔭 π₀ s₀) : π₀ ≠ 0 := by
   rintro rfl

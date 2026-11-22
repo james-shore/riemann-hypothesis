@@ -48,7 +48,7 @@ theorem ePow_neg_equiv (F : Fin n → Fin n → Module.End ℂ M) (σ : Fin n �
     simp_rw [ih]
     conv_rhs => rw [Finset.smul_sum, ← Equiv.sum_comp σ]
     refine Finset.sum_congr rfl fun r _ => ?_
-    simp only [smul_mul_assoc, mul_neg, smul_neg, pow_succ, mul_neg_one, neg_smul, mul_one]
+    simp only [smul_mul_assoc, mul_neg, pow_succ, neg_smul, mul_one]
 
 theorem ptr_eq_gelfand (A : Module.End ℂ (Fin n → M)) (T : Fin n → Fin n → Module.End ℂ M)
     (hA : ∀ f s, A f s = ∑ r, T s r (f r)) (k : ℕ) : ptr (A ^ k) = gelfand T k := by

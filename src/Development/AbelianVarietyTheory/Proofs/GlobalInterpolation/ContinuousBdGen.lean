@@ -23,7 +23,7 @@ theorem re_mul [IsTotallyReal F] (x y : Ainf F) (w : InfinitePlace F) :
   have hw : w.IsReal := IsTotallyReal.isReal w
   have : (x * y) w = x w * y w := rfl
   simp only [re, this, ← InfinitePlace.Completion.extensionEmbeddingOfIsReal_apply hw, map_mul,
-    Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, mul_zero, sub_zero]
+    Complex.ofReal_re]
 
 theorem re_sum [IsTotallyReal F] {ι : Type} (s : Finset ι) (f : ι → Ainf F) (w : InfinitePlace F) :
     re (∑ i ∈ s, f i) w = ∑ i ∈ s, re (f i) w := by

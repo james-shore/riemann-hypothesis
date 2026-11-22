@@ -38,7 +38,7 @@ theorem exists_ideal_coprime : ∀ (D : D7) (V : HSp D), HSpace.gram V = 1 → B
         intro j _
         by_cases hj : j = i
         · subst hj; simpa using (Submodule.one_le.1 le_rfl : (1 : D.host.E) ∈ (1 : Submodule (𝓞 D.host.E) D.host.E))
-        · simp [Pi.single_apply, hj]
+        · simp [hj]
       have h1 := hk2 (Submodule.smul_mem_smul (Ideal.mem_span_singleton_self (k : 𝓞 D.host.E)) hstd)
       have h2 : ((k : 𝓞 D.host.E) • (Pi.single i (1 : D.host.E) : Fin V.rank → D.host.E)) =
           (k : D.host.E) • (Pi.single i 1 : Fin V.rank → D.host.E) := by
@@ -49,11 +49,11 @@ theorem exists_ideal_coprime : ∀ (D : D7) (V : HSp D), HSpace.gram V = 1 → B
       funext j
       by_cases hj : j = i
       · subst hj; simp
-      · simp [Pi.single_apply, hj]
+      · simp [hj]
     · have : (Matrix.of fun i j => ((k : D.host.E) • (Pi.single j 1 : Fin V.rank → D.host.E)) i) =
           (k : D.host.E) • (1 : Matrix (Fin V.rank) (Fin V.rank) D.host.E) := by
         ext i j
-        simp [Matrix.one_apply, Pi.single_apply, eq_comm]
+        simp [Matrix.one_apply, Pi.single_apply]
       rw [this, Matrix.det_smul, Matrix.det_one, mul_one, Fintype.card_fin]
   by_contra hne
   obtain ⟨M, hM, hle⟩ := Ideal.exists_le_maximal _ hne

@@ -36,7 +36,7 @@ variable [Module (NumberField.RingOfIntegers K) V]
 
 lemma traceReal_mult (M : Submodule (NumberField.RingOfIntegers K) V) (hM : Submodule.IsLattice K M)
     (x : V) : ∃ n : ℤ, n ≠ 0 ∧ n • x ∈ M := by
-  first | exact Bl.general_b_fact_second'''''.goal1 .. | (apply Bl.general_b_fact_second'''''.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second'''''.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_second'''''.goal1 .. | (apply Bl.general_b_fact_second'''''.goal1 <;> assumption)
 
 lemma traceReal_lower (h : V →ₗ⋆[K] V →ₗ[K] K)
     (hpos : ∀ x : V, x ≠ 0 → 0 < Algebra.trace ℚ K (h x x))

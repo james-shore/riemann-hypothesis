@@ -196,7 +196,7 @@ theorem qm_one {α : Type} [DecidableEq α] : qm (1 : Matrix α α ℚ) = 1 := b
   by_cases h : i = j <;> simp [qm, Matrix.one_apply, h]
 
 theorem qm_J {α : Type} [DecidableEq α] : qm (Matrix.J α ℚ) = Matrix.J α ℂ := by
-  ext (i | i) (j | j) <;> by_cases h : i = j <;> simp [qm, Matrix.J, Matrix.one_apply, h]
+  ext (i | i) (j | j) <;> by_cases h : i = j <;> simp [qm, Matrix.J, h]
 
 theorem exists_reg (X : Matrix (Fin N) (Fin N) E) : ∃ R : Matrix (QI E N) (QI E N) ℚ,
     qm R * Sm Ψ N = Sm Ψ N * blockDiagonal fun τ : Ψ => dl (X.map τ.1) := by
@@ -235,7 +235,7 @@ theorem exists_gram [IsCMField E] (hΨ : IsType Ψ) : ∃ G : Matrix (QI E N) (Q
     refine Finset.sum_congr rfl fun τ _ => ?_
     simp [Sm, sw, vecMul, dotProduct, Fintype.sum_sum_type, Matrix.one_apply, h, HAct.emb_cc]
     ring
-  · simp [qm, Sm, sw, vecMul, dotProduct, Fintype.sum_sum_type, Matrix.one_apply, h, Ne.symm h]
+  · simp [qm, Sm, sw, vecMul, dotProduct, Fintype.sum_sum_type, Matrix.one_apply, h]
 
 theorem exists_blocks [IsCMField E] (hΨ : IsType Ψ)
     {S' : Matrix ((Fin N ⊕ Fin N) × Ψ) (QI E N) ℂ} (h1 : Sm Ψ N * S' = 1) (h2 : S' * Sm Ψ N = 1)

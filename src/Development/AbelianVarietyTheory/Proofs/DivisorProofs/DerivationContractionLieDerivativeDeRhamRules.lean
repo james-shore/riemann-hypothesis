@@ -70,7 +70,7 @@ theorem ctr_mem {j : ℕ} {x : DR R B} (hx : x ∈ ⋀[B]^(j + 1) Ω[B⁄R]) : c
 theorem lie_apply (x : DR R B) : lie v x = dDR R B (ctr v x) + ctr v (dDR R B x) := rfl
 
 theorem lie_mul (x y : DR R B) : lie v (x * y) = lie v x * y + x * lie v y := by
-  simp only [lie_apply, ctr_mul, dDR_mul, map_add, ctr_sgn, dDR_sgn, sgn_sgn, map_neg, neg_mul, add_mul, mul_add]
+  simp only [lie_apply, ctr_mul, dDR_mul, map_add, ctr_sgn, dDR_sgn, sgn_sgn, neg_mul, add_mul, mul_add]
   abel
 
 theorem lie_algebraMap (b : B) : lie v (algebraMap B (DR R B) b) = algebraMap B (DR R B) (v b) := by

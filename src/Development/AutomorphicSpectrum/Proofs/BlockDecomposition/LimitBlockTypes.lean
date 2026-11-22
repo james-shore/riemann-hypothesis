@@ -251,13 +251,13 @@ theorem blocks {K : Subgroup (GL (Fin (r + s)) (Af E))} {W : Submodule ℂ (Kinf
     convert slice_first hGf k t m.2 using 1
     funext y
     rw [hsum' (y, m.2)]
-    simp [Submodule.coe_sum, Finset.sum_apply, mul_comm]
+    simp [Finset.sum_apply, mul_comm]
   · refine hasType_of_tw (F := ∑ i, (ψ₁ i).1 m.1 • ψ₂ i)
       (Submodule.sum_mem _ fun i _ => Submodule.smul_mem _ _ (h₂ i)) (ParabolicProjection.sum_right_ne hne') ?_
     convert slice_second hGf k t m.1 using 1
     funext y
     rw [hsum' (m.1, y)]
-    simp [Submodule.coe_sum, Finset.sum_apply]
+    simp [Finset.sum_apply]
 
 end Lin
 

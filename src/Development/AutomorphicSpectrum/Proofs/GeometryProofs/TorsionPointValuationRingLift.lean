@@ -167,7 +167,7 @@ theorem exists_factor_of_finite {R k K : Type} [CommRing R] [Field k] [Finite k]
   let φ : k →ₐ[R ⧸ RingHom.ker a] K := IsAlgClosed.lift
   refine ⟨φ.toRingHom, RingHom.ext fun x => ?_⟩
   have h1 : φ (a' (Ideal.Quotient.mk _ x)) = b' (Ideal.Quotient.mk _ x) := φ.commutes _
-  simp only [a', b', Ideal.Quotient.lift_mk] at h1
+  simp only [a', b'] at h1
   exact h1
 
 theorem exists_geometric_closedPoint {R O : Type} [CommRing R] [CommRing O] [IsLocalRing O] (ρ : R →+* O) :

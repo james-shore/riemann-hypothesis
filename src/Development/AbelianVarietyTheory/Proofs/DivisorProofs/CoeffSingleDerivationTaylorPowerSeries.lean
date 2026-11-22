@@ -18,7 +18,7 @@ theorem list_foldr_iterate_single_of_nodup {A : Type} {n : ℕ} (d : Fin n → A
     · subst hij
       simp [hl.1]
     · have hji : j ≠ i := fun h => hij h.symm
-      simp [Finsupp.single_apply, hij, hji]
+      simp [hij, hji]
 
 theorem taylor_coeff_single (A B : Type) [CommRing A] [CommRing B] [Algebra ℚ B] (n : ℕ) (ev : A →+* B)
     (ds : Fin n → Derivation ℤ A A) (j : Fin n) (f : A) :
@@ -31,7 +31,7 @@ theorem taylor_coeff_single (A B : Type) [CommRing A] [CommRing B] [Algebra ℚ 
     refine Finset.prod_eq_one fun i _ => ?_
     by_cases h : j = i
     · subst h; simp
-    · simp [Finsupp.single_apply, h]
+    · simp [h]
   show (∏ i, (((Finsupp.single j 1 : Fin n →₀ ℕ) i).factorial : ℚ))⁻¹ • ev (iterOp (fun i => ⇑(ds i)) (Finsupp.single j 1) f) = _
   rw [hit, hprod, inv_one, one_smul]
 

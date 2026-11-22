@@ -65,7 +65,7 @@ theorem sum_sym (f : Fin n → Fin n → ℤ) (hf : ∀ a b, f a b = f b a) :
       + (if a = b then f a a else 0) := by
     intro a b
     rcases lt_trichotomy a b with h | h | h
-    · simp [h, h.ne, h.le, not_lt.2 h.le]
+    · simp [h, h.ne, not_lt.2 h.le]
     · subst h; simp
     · simp [h, h.ne', not_lt.2 h.le, hf a b]
   have hA : ∑ a, ∑ b, (if a < b then f a b else 0) = ∑ p ∈ prs n, f p.1 p.2 := by
@@ -101,7 +101,7 @@ theorem lev_symm_le {lev : Fin n → ℕ} (hlev : Monotone lev) {L : Fin n → �
   have hw1 : ∀ a b, lev a < lev b → w b ≤ w a := by
     intro a b h
     simp only [hw]
-    split_ifs <;> first | omega | simp
+    split_ifs <;> first | omega
   have hw2 : ∀ a b, a < b → lev a = lev b → w a ≤ w b := by
     intro a b _ h
     simp only [hw, h]; exact le_refl _

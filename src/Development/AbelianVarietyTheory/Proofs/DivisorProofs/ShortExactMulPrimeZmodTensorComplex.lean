@@ -11,7 +11,7 @@ abbrev pMultiples (p : ℕ) (M : Type) [AddCommGroup M] [Module ℤ M] : Submodu
 lemma zmultiples_mkQ_p (p : ℕ) (M : Type) [AddCommGroup M] [Module ℤ M] :
     zmultiplesHom (M →+ M ⧸ pMultiples p M) (pMultiples p M).mkQ.toAddMonoidHom (p : ℤ) = 0 := by
   ext m
-  simp only [zmultiplesHom_apply, AddMonoidHom.coe_smul, Pi.smul_apply, AddMonoidHom.zero_apply]
+  simp only [zmultiplesHom_apply, AddMonoidHom.zero_apply]
   show (p : ℤ) • Submodule.Quotient.mk m = (0 : M ⧸ pMultiples p M)
   rw [← Submodule.Quotient.mk_smul, Submodule.Quotient.mk_eq_zero]
   exact ⟨m, by simp⟩
@@ -143,8 +143,7 @@ theorem shortExact_mul_p_modP :
   · rw [ShortComplex.moduleCat_exact_iff]
     intro y hy
     simp only [ShortComplex.map_f, ShortComplex.map_g, HomologicalComplex.eval_map,
-      HomologicalComplex.zsmul_f_apply, HomologicalComplex.id_f, ModuleCat.hom_zsmul,
-      ModuleCat.hom_id] at hy ⊢
+      HomologicalComplex.zsmul_f_apply, HomologicalComplex.id_f] at hy ⊢
     exact unit_kernel_zmod p (C.X n) y hy
   · rw [ModuleCat.mono_iff_injective]
     exact pmul_injective p (C.X n) (hinj n)

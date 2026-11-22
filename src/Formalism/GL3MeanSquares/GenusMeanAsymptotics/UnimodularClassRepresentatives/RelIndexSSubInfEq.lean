@@ -93,7 +93,7 @@ theorem mul_inv_mem_iff {h : V →ₗ⋆[K] V →ₗ[K] K} (hs : h.IsSymm) {A B 
   · intro hX
     have hX' := (Subgroup.mem_inf.mp hX).1.2
     refine ⟨fun x y => ?_, fun x hx y hy => ?_⟩
-    · simp only [AddSubgroupClass.coe_sub, LinearMap.sub_apply, star_sub, IA.star_phi hs]
+    · simp only [LinearMap.sub_apply, star_sub, IA.star_phi hs]
     · have := hX' (W x) (apply_mem hWB hx) (W y) (apply_mem hWB hy)
       simp only [LinearEquiv.mul_apply, eW'] at this
       simpa only [LinearMap.sub_apply, IA.phi_apply, sub_sub_sub_cancel_right] using this

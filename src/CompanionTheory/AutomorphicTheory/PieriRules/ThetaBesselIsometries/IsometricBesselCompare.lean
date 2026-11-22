@@ -128,7 +128,6 @@ theorem bessel_orth_of_param_ne : HypsG → ∀ (k r : ℕ) (ε : Fin (2 * r + k
           (LinearMap.norm_map_iff_inner_map_map ((π h : Wp →L[ℂ] Wp) : Wp →ₗ[ℂ] Wp)).1
             (MatrixMultiplicationContinuity.piW_unitary hT hπ h hh)
         have hψ := MatrixMultiplicationContinuity.psi_norm z Formalism.QuantumDeterminants.cStd m
-        beta_reduce
         rw [hm _ hsG _ hx, hm' _ hsG _ hx, he h hh m hmN _ (ht w hw _ hx), he' h hh m hmN _ (ht' y hy _ hx),
           inner_smul_left, inner_smul_right, hiso, ← mul_assoc, Complex.conj_mul', hψ]
         simp

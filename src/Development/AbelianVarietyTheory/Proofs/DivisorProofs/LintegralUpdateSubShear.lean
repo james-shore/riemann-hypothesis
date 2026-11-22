@@ -29,7 +29,7 @@ theorem lintegral_update_sub_shear {ι : Type} [Fintype ι] [DecidableEq ι] (i 
     have hgw : g w = c (e w).1 := by
       apply hgi
       intro j hj
-      simp [hc, he, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd, hj]
+      simp [he, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd, hj]
     ext k
     by_cases hk : k = i
     · subst hk

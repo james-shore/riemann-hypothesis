@@ -106,7 +106,7 @@ theorem exists_unit_eq_matLat : ∀ {O K : Type} [CommRing O] [IsDomain O] [IsDi
     intro M hM
     refine ⟨hM.1.map _, ?_⟩
     have hcoe : ((J M : Submodule O A) : Set A) = (e.symm : (Fin n → K) →ₗ[K] A) '' (M : Set _) := by
-      ext y; simp [J, Submodule.mem_map]; rfl
+      ext y; simp [J]; rfl
     rw [hcoe, Submodule.span_image, hM.2, Submodule.map_top, LinearEquiv.range]
   have stJ : ∀ M, (∀ v ∈ M, γ *ᵥ v ∈ M) →
       ∀ a ∈ integralClosure O A, ∀ y ∈ J M, a * y ∈ J M := by

@@ -75,7 +75,7 @@ theorem re_trace_loc_k (R : _root_.PositivityTheory.SiegelWeilFormula.RD_k d) (w
 theorem inner_arc_k (R : _root_.PositivityTheory.SiegelWeilFormula.RD_k d) (W X : Mx F E d.m d.n) :
     ⟪_root_.PositivityTheory.SiegelWeilFormula.KFP.arc_k R W, _root_.PositivityTheory.SiegelWeilFormula.KFP.arc_k R X⟫_ℝ =
       ∑ w, ∑ i, ∑ j, ((R.loc w W i j).re * (R.loc w X i j).re + (R.loc w W i j).im * (R.loc w X i j).im) := by
-  simp only [_root_.PositivityTheory.SiegelWeilFormula.KFP.arc_k, PiLp.inner_apply, EuclideanSpace.equiv, real_inner_eq_re_inner, RCLike.inner_apply, conj_trivial]
+  simp only [_root_.PositivityTheory.SiegelWeilFormula.KFP.arc_k, PiLp.inner_apply, EuclideanSpace.equiv, RCLike.inner_apply, conj_trivial]
   rw [Fintype.sum_prod_type]
   refine Finset.sum_congr rfl fun w _ => ?_
   rw [Fintype.sum_prod_type]
@@ -184,7 +184,7 @@ theorem psi_tw'_k (R : _root_.PositivityTheory.SiegelWeilFormula.RD_k d) {W : Mx
   simp only [e]
   push_cast
   rw [Finset.mul_sum, Finset.mul_sum]
-  simp only [← Finset.sum_neg_distrib, ← Finset.mul_sum]
+  simp only [← Finset.mul_sum]
   ring_nf
 theorem psi_sp'_k (R : _root_.PositivityTheory.SiegelWeilFormula.RD_k d) {W : Mx F E d.m d.n} (hW : finOne F • W = 0) (s t : ℝ) :
     d.B.ψ (-(⅟(2 : AF F) * _root_.PositivityTheory.SiegelWeilFormula.KFP.spf_k d ((realAd F s • W) * (incM F d.b.1.toCols₂)ᵀ)

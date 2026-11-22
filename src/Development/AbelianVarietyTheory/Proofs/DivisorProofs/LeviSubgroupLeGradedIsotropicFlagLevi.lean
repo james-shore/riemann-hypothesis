@@ -41,7 +41,7 @@ theorem flag_mat {R : Type} [CommRing R] {n r : ℕ} (A : Matrix (Fin n) (Fin r)
       refine Finset.sum_eq_zero fun l' _ => ?_
       have hne : l ≠ Fin.castLE k.2 l' := by
         intro h; have := congrArg Fin.val h; simp at this; have := l'.2; have := Fin.lt_def.1 hl; omega
-      simp [Matrix.one_apply, hne]
+      simp [hne]
     · have e1 : M * A.submatrix id (Fin.castLE k.2) = (A * (A' * M * A)).submatrix id (Fin.castLE k.2) := by
         rw [hB, submatrix_mul_right', hTk, ← Matrix.mul_assoc, ← submatrix_eq_mul_one]
       have := congrFun (congrFun e1 a) ⟨j.val, hjk⟩

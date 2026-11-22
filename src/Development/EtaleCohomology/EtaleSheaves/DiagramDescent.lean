@@ -69,12 +69,10 @@ theorem LeafDescendPreMap_of (hA : LateralTheory.E.LeafObjFPPf.LeafObjAff) (hG :
   · rw [E2]; exact sq h p2
   · apply pullback.hom_ext
     · simp only [e1, pullback.map, Category.assoc, pullback.lift_fst, pullback.lift_fst_assoc]; exact m1
-    · simp only [e1, pullback.map, Category.assoc, pullback.lift_snd, pullback.lift_snd_assoc,
-        Category.comp_id]
+    · simp only [e1, pullback.map, Category.assoc, pullback.lift_snd, Category.comp_id]
   · apply pullback.hom_ext
     · simp only [e2, pullback.map, Category.assoc, pullback.lift_fst, pullback.lift_fst_assoc]; exact m2
-    · simp only [e2, pullback.map, Category.assoc, pullback.lift_snd, pullback.lift_snd_assoc,
-        Category.comp_id]
+    · simp only [e2, pullback.map, Category.assoc, pullback.lift_snd, Category.comp_id]
   · rw [← Category.assoc, hg2, pullback.lift_fst]
 
 end LateralTheory.E.DiagramDescent

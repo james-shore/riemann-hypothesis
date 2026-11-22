@@ -26,7 +26,7 @@ theorem mulVec_single_int {n : ℕ} (V : Matrix (Fin n) (Fin n) L) (hV : ∀ i j
 theorem single_eq_smul {n : ℕ} (i : Fin n) (c : L) : (Pi.single i c : Fin n → L) = c • Pi.single i (1 : L) := by
   ext r; by_cases h : r = i
   · subst h; simp
-  · simp [Pi.single_apply, h]
+  · simp [h]
 
 theorem gram_class_columns : ∀ (L : Type) [Field L] [Valued L (WithZero (Multiplicative ℤ))] (ϖ : L) (σ : L →+* L) (q : ℕ),
     Formalism.UG.IsUnramInv ϖ σ q → ∀ (n n' : ℕ) (JT : GL (Fin n') L) (x y : Matrix (Fin n') (Fin n) L)
@@ -50,7 +50,7 @@ theorem gram_class_columns : ∀ (L : Type) [Field L] [Valued L (WithZero (Multi
     have hI : ∀ t, (Pi.single l c : Fin n → L) t ∈ Formalism.UG.intL L := by
       intro t; by_cases h : t = l
       · subst h; simpa using hcI
-      · simp [Pi.single_apply, h, (Formalism.UG.intL L).zero_mem]
+      · simp [h, (Formalism.UG.intL L).zero_mem]
     have := (hiff (Pi.single l c) hI).mpr (by
       intro t; by_cases h : t = l
       · subst h

@@ -150,12 +150,12 @@ private theorem submatrix_inl_gram_eq_one_and_inr_eq_neg_one {n : Type} [Fintype
     have h := congrFun (congrFun hQ (Sum.inl a)) (Sum.inl b)
     simp only [Matrix.mul_apply, Matrix.submatrix_apply, Matrix.conjTranspose_apply, id] at h ⊢
     rw [h]
-    by_cases hab : a = b <;> simp [hab, Matrix.diagonal_apply, Matrix.one_apply]
+    by_cases hab : a = b <;> simp [hab, Matrix.one_apply]
   · ext a b
     have h := congrFun (congrFun hQ (Sum.inr a)) (Sum.inr b)
     simp only [Matrix.mul_apply, Matrix.submatrix_apply, Matrix.conjTranspose_apply, id] at h ⊢
     rw [h]
-    by_cases hab : a = b <;> simp [hab, Matrix.diagonal_apply, Matrix.one_apply]
+    by_cases hab : a = b <;> simp [hab]
 
 theorem hasSignature_of_isWittLower {D : D7} {T T' : HSp D} {i : ℕ} (h : IsWittLower T T' i) (τ : D.what₂.Tau)
     {p q : ℕ} (hs : Formalism.UG.HasSignature (gramAt D T' τ) p q) :

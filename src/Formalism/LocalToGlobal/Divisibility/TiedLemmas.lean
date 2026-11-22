@@ -45,7 +45,6 @@ theorem plConjEq (D : D7) : PlConjEq D := by
   show x ∈ (D.plEq (D.what₂.places.conj w)).asIdeal ↔ x ∈ (D.plEq w).asIdeal.map (cO D.what₂.LL)
   first
     | rw [Ideal.mem_map_of_equiv]
-    | rw [Ideal.mem_map_iff_of_surjective _ (cO D.what₂.LL).surjective]
   have hiff : (∃ y ∈ (D.plEq w).asIdeal, cO D.what₂.LL y = x) ↔ cO D.what₂.LL x ∈ (D.plEq w).asIdeal := by
     constructor
     · rintro ⟨y, hy, rfl⟩

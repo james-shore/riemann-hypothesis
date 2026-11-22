@@ -80,7 +80,6 @@ theorem ptSelf_of (hEx : PTExSelfSt) (hAvg : PTAvgSelfSt) (hStab : HStabSelfSt) 
     intro j
     first
     | simp [Finsupp.degree_single]
-    | (unfold Finsupp.degree; simp)
   have hγ1 : ∀ i, PowerSeries.coeff 1 (γ i) = ∑ c, (Y.rawSelf p).u g c i * w c := by
     intro i
     have h1 := congrArg (PowerSeries.coeff 1) (hlg i)

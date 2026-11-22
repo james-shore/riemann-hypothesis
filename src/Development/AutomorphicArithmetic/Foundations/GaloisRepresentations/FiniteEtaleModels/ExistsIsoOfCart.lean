@@ -26,7 +26,7 @@ private theorem exists_iso_of_cart {A B : Over X} [GrpObj A] [GrpObj B] {φ : A.
     intro T x y
     let i : Over.mk (T.hom ≫ 𝟙 X) ⟶ T := Over.homMk (𝟙 T.left) (by simp)
     have key := h.2 T x y (i ≫ x ≫ (Over.isoMk (asIso φ) hw).hom)
-      (i ≫ y ≫ (Over.isoMk (asIso φ) hw).hom) (by simp [i, hel]) (by simp [i, hel])
+      (i ≫ y ≫ (Over.isoMk (asIso φ) hw).hom) (by simp [i]) (by simp [i])
     rw [← MonObj.comp_mul] at key
     apply Over.OverMorphism.ext
     have hi : i.left = 𝟙 T.left := rfl

@@ -43,7 +43,7 @@ theorem exists_right_of_minor {O K : Type} [CommRing O] [NormedField K] [IsUltra
     simp only [Matrix.map_mul]
   rw [h1, ← Matrix.mul_assoc, mul_selCols, Matrix.mul_adjugate]
   ext i j
-  by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+  by_cases hij : i = j <;> simp [hij]
 
 theorem exists_right {l : ℕ} [Fact l.Prime] {a : ℕ} [NeZero a] {e : ℕ} {O K : Type} [CommRing O]
     [Algebra ℤ_[l] O] [Module.Free ℤ_[l] O] [Module.Finite ℤ_[l] O] [NormedField K] [IsUltrametricDist K]

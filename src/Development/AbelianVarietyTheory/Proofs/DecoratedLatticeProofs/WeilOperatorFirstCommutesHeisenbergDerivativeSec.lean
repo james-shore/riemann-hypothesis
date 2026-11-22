@@ -114,7 +114,7 @@ theorem om_dLine_right : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (A S A' :
     have e3 : φ 0 = H u v := by
       rw [hφdef]; simp only [map_zero, add_zero, GlobalTheory.WeilVacMove.symplOH_zero_right, hcdef, AddChar.map_zero_eq_one, one_mul]
     rw [e3, ← hcomm]
-    simp only [hφdef, hHdef, LinearMap.sub_apply, Pi.sub_apply, LinearMap.smul_apply, Pi.smul_apply, smul_eq_mul]
+    simp only [hφdef, hHdef, Pi.sub_apply, Pi.smul_apply, smul_eq_mul]
     ring
 
   have h1 : HasDerivAt φ (GlobalTheory.WeilVacMove.dLine ψ S A' M' (H u) v) 0 :=

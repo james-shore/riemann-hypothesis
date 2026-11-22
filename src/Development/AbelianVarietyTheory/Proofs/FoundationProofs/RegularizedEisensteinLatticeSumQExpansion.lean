@@ -231,7 +231,6 @@ theorem lat_qexp : ∀ (j L : ℕ) (b : ℤ → ℂ) (φ : ZMod L → ℂ), 1 �
     (fun n => by rw [← hκdef]; exact row_pos j L b φ hj hL h0 τ n) hq
   have e : (2 * (-2 * π * Complex.I / L) ^ j / (j - 1).factorial : ℂ) = 2 * κ := by rw [← hκdef]; ring
   rw [e, lat, hs.tsum_prod, hrows]
-  beta_reduce
   rw [hK τ]
   field_simp
   ring

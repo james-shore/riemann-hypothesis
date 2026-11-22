@@ -38,7 +38,7 @@ theorem mulVec_sum_eq {F : Type} [Field F] [NumberField F] {κ : Type} [Fintype 
   simp only [Matrix.mulVec_smul, Pi.smul_apply, smul_eq_mul, h1]
   rw [Finset.sum_eq_single i]
   · simp
-  · intro j _ hj; simp [Pi.single_apply, Ne.symm hj]
+  · intro j _ hj; simp [Ne.symm hj]
   · simp
 
 end GlobalTheory.LagrFormNZ
@@ -98,8 +98,8 @@ theorem lagrForm_ne_zero : ∀ (F : Type) [Field F] [NumberField F] (ψ : AddCha
     intro y
     rw [hφe, hf]
     by_cases hq : (e y).2 ∈ S
-    · left; simp [g, Set.indicator_of_mem hq, hq]
-    · right; simp [g, Set.indicator_of_notMem hq, hq]
+    · left; simp [g, hq]
+    · right; simp [g, hq]
   have hφim : ∀ y, (φ y).im = 0 := fun y => by
     rcases hφcases y with ⟨h, _⟩ | ⟨h, _⟩ <;> simp [h]
   have hφre : ∀ y, 0 ≤ (φ y).re := fun y => by

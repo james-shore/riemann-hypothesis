@@ -322,7 +322,7 @@ theorem character_argument_constant_shift : ChArgP := by
       rw [xxw_entry, dif_pos]
       · rfl
       · refine ⟨by omega, Or.inr ⟨by omega, Or.inr ?_⟩⟩
-        simp only [Fin.val_mk]
+        simp only
         omega
     simp only [atN, dif_pos hn]
     rw [map_sub, Pi.sub_apply, Pi.sub_apply, Pi.sub_apply, h0] at h2

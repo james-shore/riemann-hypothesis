@@ -147,7 +147,7 @@ theorem linked (a b : ℂˣ) (hL : unrChar k a = unrChar k b * absPow k 1) :
       (detChar (Fin 2) χ (p : GL (Fin 2) k) : ℂ) • (1 : ℂ) := by
     intro p
     rw [sB_two, detChar_two, smul_eq_mul, mul_one, mul_one]
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, hχdef, MonoidHom.mul_apply,
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, hχdef, MonoidHom.mul_apply,
       Units.val_mul]
     have := key_law a b hL (dg p 1)
     linear_combination -((absPow k (1 / 2) (dg p 0) : ℂ) * (unrChar k b (dg p 0) : ℂ)) * this
@@ -188,12 +188,11 @@ theorem linked (a b : ℂˣ) (hL : unrChar k a = unrChar k b * absPow k 1) :
       (detChar (Fin 2) χ⁻¹ (p : GL (Fin 2) k) : ℂ) * z
     rw [contra_apply, hρ1]
     simp only [ℓ0, LinearMap.id_apply, smul_eq_mul, deltaHalf_two, detChar_two, map_inv, torusChar_apply,
-      Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, MonoidHom.inv_apply, hχdef,
+      Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, MonoidHom.inv_apply, hχdef,
       MonoidHom.mul_apply, Units.val_mul, Units.val_inv_eq_inv_val]
     have key := key_law a b hL (dg p 0)
     have e2 : (absPow k (-1 / 2) (dg p 1) : ℂ) * (absPow k (1 / 2) (dg p 1) : ℂ) = 1 := by
       rw [← Units.val_mul, ← MonoidHom.mul_apply, ← absPow_add]; norm_num
-    push_cast
     have e0 : (absPow k (-1 / 2) (dg p 0) : ℂ) * (absPow k (1 / 2) (dg p 0) : ℂ) = 1 := by
       rw [← Units.val_mul, ← MonoidHom.mul_apply, ← absPow_add]; norm_num
     have hneg : (-(1 / 2) : ℂ) = -1 / 2 := by ring
@@ -218,7 +217,7 @@ theorem linked (a b : ℂˣ) (hL : unrChar k a = unrChar k b * absPow k 1) :
     rw [e4, hg', LinearEquiv.map_smul]
     show (detChar (Fin 2) χ⁻¹ h⁻¹ : ℂ) * l f = _
     rw [detChar_apply, detChar_apply, MonoidHom.inv_apply]
-    simp only [map_inv, Units.val_inv_eq_inv_val, inv_inv]
+    simp only [map_inv, inv_inv]
   have hl0 : l ≠ 0 := by
     intro h0
     have : Ψ g' = 0 := Subtype.ext h0

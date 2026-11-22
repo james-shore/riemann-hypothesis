@@ -19,7 +19,7 @@ theorem twistDet_rows {E K : Type} [Field E] [Field K] (τE : E →+* K) {p : �
 theorem pow_eq_span_prod_set {K : Type} [Field K] [NumberField K] (p : ℕ) (𝔟 : Submodule (𝓞 K) K) :
     𝔟 ^ p = Submodule.span (𝓞 K) (∏ _i ∈ (Finset.univ : Finset (Fin p)), (𝔟 : Set K)) := by
   rw [← Submodule.prod_span]
-  simp [Finset.prod_const, Finset.card_fin]
+  simp [Finset.prod_const]
 
 theorem span_twistDets_eq {E K : Type} [Field E] [NumberField E] [Field K] [NumberField K]
     (τ : 𝓞 E →+* 𝓞 K) (τE : E →+* K) (hτ : ∀ x : 𝓞 E, τE x = ((τ x : 𝓞 K) : K)) (p : ℕ)

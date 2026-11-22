@@ -29,7 +29,6 @@ theorem ainf_idem_mul (e : Ainf F) (h1 : e w = 1) (h0 : ∀ u, u ≠ w → e u =
 theorem ainf_single_one (e : Ainf F) (h1 : e w = 1) (h0 : ∀ u, u ≠ w → e u = 0) :
     (show Ainf F from Pi.single w 1) = e := by
   funext u
-  change (Pi.single w 1 : ∀ v : InfinitePlace F, v.Completion) u = e u
   by_cases h : u = w
   · subst h; rw [h1, Pi.single_eq_same]
   · rw [Pi.single_eq_of_ne h, h0 u h]

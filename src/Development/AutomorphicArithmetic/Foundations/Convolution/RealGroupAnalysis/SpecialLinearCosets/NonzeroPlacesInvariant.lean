@@ -13,7 +13,7 @@ private theorem diagonal_mul_gl_conj {F : Type} [Field F] [NumberField F] (t : (
   ext i j
   have h1 : (t : A F) * ((t⁻¹ : (A F)ˣ) : A F) = 1 := Units.mul_inv t
   fin_cases i <;> fin_cases j <;>
-    simp [dM, cD, gl, Matrix.mul_apply, Fin.sum_univ_two, Matrix.SpecialLinearGroup.toGL, mul_assoc, h1, mul_comm]
+    simp [dM, cD, gl, Matrix.mul_apply, Fin.sum_univ_two, Matrix.SpecialLinearGroup.toGL, mul_comm]
 
 private theorem Wf_tr {F : Type} [Field F] [NumberField F] (f : GL (Fin 2) (A F) → ℂ) (x g₀ : G1 F) (t : (A F)ˣ) :
     Wf (fun g => f (g * gl g₀)) (gl x * dM t) = Wf f (gl (x * cD t g₀) * dM t) := by

@@ -107,7 +107,7 @@ theorem gdet_bump (k : ℕ) (hk : 1 ≤ k) (U : ℝ) (hU : 0 < U) (v : Fin N →
       rw [Matrix.updateRow_apply]
       by_cases hi : i = c
       · subst hi
-        simp only [if_pos rfl, if_true, Matrix.of_apply, Finset.sum_apply, Pi.smul_apply, smul_eq_mul, hA]
+        simp only [if_true, Matrix.of_apply, Finset.sum_apply, Pi.smul_apply, smul_eq_mul, hA]
         rw [← hwv b, pow_eq_sum_rr w _ b b.isLt, Finset.mul_sum]
         refine Finset.sum_congr rfl (fun c' _ => ?_)
         have hP : C ((((N - 1 - (c' : ℕ)).factorial : ℕ) : ℝ)) * C ((((N - 1 - (c' : ℕ)).factorial : ℕ) : ℝ))⁻¹

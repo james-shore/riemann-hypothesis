@@ -23,4 +23,4 @@ theorem _root_.GlobalTheory.T.adelicMatrix_trivial_off_inertPlace_unitary_at_pla
     ⅟(2 : AF F) • ((GlobalTheory.InertBigCell.glueW hw P).toBlocks₁₁ + (GlobalTheory.InertBigCell.glueW hw P).toBlocks₁₂ +
       (GlobalTheory.InertBigCell.glueW hw P).toBlocks₂₁ + (GlobalTheory.InertBigCell.glueW hw P).toBlocks₂₂) =
     GlobalTheory.InertBigCell.glueW hw ((2 : w.adicCompletion E)⁻¹ • (P.toBlocks₁₁ + P.toBlocks₁₂ + P.toBlocks₂₁ + P.toBlocks₂₂))) := by
-  first | exact @GlobalTheory.InertBigCell.glueW_read_at_place | exact GlobalTheory.InertBigCell.glueW_read_at_place | (intros; apply GlobalTheory.InertBigCell.glueW_read_at_place <;> assumption)
+  first | exact @GlobalTheory.InertBigCell.glueW_read_at_place | exact GlobalTheory.InertBigCell.glueW_read_at_place | (intros; apply GlobalTheory.InertBigCell.glueW_read_at_place)

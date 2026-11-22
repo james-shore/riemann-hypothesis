@@ -14,8 +14,6 @@ theorem aeval_mem {k U : Type} [Field k] [AddCommGroup U] [Module k U] (T : Modu
   | exact @_root_.GlobalTheory.PowerMembershipInertiaEigenvalues.main
   | exact _root_.GlobalTheory.PowerMembershipInertiaEigenvalues.main
   | (apply _root_.GlobalTheory.PowerMembershipInertiaEigenvalues.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PowerMembershipInertiaEigenvalues.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PowerMembershipInertiaEigenvalues.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PowerMembershipInertiaEigenvalues.main ..)
 
 theorem apply_mem {k U : Type} [Field k] [AddCommGroup U] [Module k U] (T : Module.End k U) (Q : Submodule k U)

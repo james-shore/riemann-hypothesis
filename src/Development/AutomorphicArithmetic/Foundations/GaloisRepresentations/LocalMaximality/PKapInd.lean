@@ -72,7 +72,7 @@ private theorem ind_of {d : ℕ} {K S E : Type} [Field K] [Algebra ℂ K] [CommR
         · exact absurd hb ha
       · rintro rfl; exact ⟨h0, Or.inl rfl⟩
     have s0 : GlobalTheory.cubeSign ({0, i} : Finset (Fin (d + 1))) 0 = 1 := by
-      simp [GlobalTheory.cubeSign, Finset.filter_eq_empty_iff]
+      simp [GlobalTheory.cubeSign]
     have si : GlobalTheory.cubeSign ({0, i} : Finset (Fin (d + 1))) i = -1 := by
       have hp : (0 : Fin (d + 1)) < i := Fin.pos_iff_ne_zero.2 h
       have : ({0, i} : Finset (Fin (d + 1))).filter (· < i) = {0} := by
@@ -84,7 +84,7 @@ private theorem ind_of {d : ℕ} {K S E : Type} [Field K] [Algebra ℂ K] [CommR
         · rintro rfl; exact ⟨Or.inl rfl, hp⟩
       simp [GlobalTheory.cubeSign, this]
     rw [wd_apply', Finset.sum_pair h0, e0, ei, s0, si]
-    simp [app, inlE, sub_eq_add_neg, add_comm]
+    simp [app, inlE, sub_eq_add_neg]
   have hr : π (wd (fun l : Mi d => (Algebra.lmul ℂ S) (app (fun _ => 1) T.mu (inrE l : Fin (d + 1) ⊕ₗ Mi d)))
       (fun L' => detC T.rowMu (uni {0, i} L')) L) = 0 := by
     rw [wd_apply', map_sum]

@@ -93,7 +93,6 @@ theorem unitOn_map : ∀ (ι M : Type) [Fintype ι] [DecidableEq ι] [AddCommGro
     intro h0
     apply hne
     rw [← hfg x hx]
-    change f (g x) = 0
     rw [h0, map_zero]
   · intro a b hab x hx y hy
     have hu0 := hgU1 x hx

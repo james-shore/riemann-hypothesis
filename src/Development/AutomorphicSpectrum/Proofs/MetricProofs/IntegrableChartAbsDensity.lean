@@ -89,7 +89,7 @@ theorem linForm_last : linForm (Pi.single (Fin.last n) (1 : ℂ)) =
   unfold linForm
   rw [Finset.sum_eq_single (Fin.last n)]
   · simp
-  · intro b _ hb; simp [Pi.single_apply, hb]
+  · intro b _ hb; simp [hb]
   · simp
 
 theorem linForm_last_not_mem {J : Ideal (MvPolynomial (Fin n) ℂ)} {f : MvPolynomial (Fin n) ℂ}
@@ -157,7 +157,7 @@ theorem slab_bound (d : ℕ) {J : Ideal (MvPolynomial (Fin n) ℂ)} (f : MvPolyn
     · show ‖∑ j, (Pi.single (Fin.last n) (1 : ℂ) : Fin (n + 1) → ℂ) j * _‖ ≤ ε
       rw [Finset.sum_eq_single (Fin.last n)]
       · simpa [addLast] using hzf'
-      · intro b _ hb; simp [Pi.single_apply, hb]
+      · intro b _ hb; simp [hb]
       · simp
   refine (measure_mono hsub).trans ?_
   have := lipschitz_dropLast.hausdorffMeasure_image_le (d := ((2 * d : ℕ) : ℝ)) (by positivity)

@@ -17,4 +17,4 @@ theorem _root_.PositivityTheory.Mix.T.hermitian_adapted_pair_of_pair : ∀ (F E 
       (∀ z, ∀ Φ ∈ schA F (Fin n × Fin d), e (om (g, 1) (M.co.rho B.ψ (incM F H.ι * z * (incM F (1 : Matrix (Fin d) (Fin d) E))ᵀ) Φ)) =
         M₁.co.rho B.ψ z (e (om (g, 1) Φ))) ∧
       ∀ u ∈ {u | ∃ z, u = Matrix.vecMulVec (incV F H.x) z}, ∀ Φ ∈ schA F (Fin n × Fin d), e (om (g, 1) (M.co.rho B.ψ u Φ)) = e (om (g, 1) Φ) := by
-  first | exact @GlobalTheory.MixXUnip.twist_heis_inv | exact fun _ => @GlobalTheory.MixXUnip.twist_heis_inv | exact GlobalTheory.MixXUnip.twist_heis_inv | exact @GlobalTheory.MixXUnip.twist_heis_inv trivial
+  first | exact @GlobalTheory.MixXUnip.twist_heis_inv

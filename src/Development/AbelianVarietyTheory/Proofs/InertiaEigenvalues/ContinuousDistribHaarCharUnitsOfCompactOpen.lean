@@ -89,7 +89,7 @@ theorem exists_isHaarMeasure_units_div_module : ∀ (R : Type) [CommRing R] [Top
       simp only
       rw [← map_mul]
       congr 2
-      simp [mul_comm a x, mul_left_comm]
+      simp [mul_comm a x]
     have h2 : (f a⁻¹ : ENNReal) * (f a : ENNReal) = 1 := by
       rw [← ENNReal.coe_mul, hf]
       simp only

@@ -59,9 +59,9 @@ theorem kop_apply (w : GlobalTheory.ExportSeries.Weight D n) (τ : D.what₂.Tau
       congr 1
       ring
     · simp
-  · intro k _ hk; simp [Matrix.single_apply, Ne.symm hk]
+  · intro k _ hk; simp [Ne.symm hk]
   · simp
-  · intro k _ hk; simp [Matrix.single_apply, Ne.symm hk]
+  · intro k _ hk; simp [Ne.symm hk]
   · simp
 
 theorem sop_apply (w : GlobalTheory.ExportSeries.Weight D n) (τ : D.what₂.Tau) (a b : Fin n) (P : PolF D m n) :
@@ -80,9 +80,9 @@ theorem sop_apply (w : GlobalTheory.ExportSeries.Weight D n) (τ : D.what₂.Tau
       congr 1
       ring
     · simp
-  · intro k _ hk; simp [Matrix.single_apply, Ne.symm hk]
+  · intro k _ hk; simp [Ne.symm hk]
   · simp
-  · intro k _ hk; simp [Matrix.single_apply, Ne.symm hk]
+  · intro k _ hk; simp [Ne.symm hk]
   · simp
 
 end GlobalTheory.JointDict
@@ -153,7 +153,7 @@ theorem sop_eq (w : GlobalTheory.ExportSeries.Weight D n) (τ : D.what₂.Tau) (
   split_ifs with h
   · simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, ← Nat.cast_smul_eq_nsmul ℂ, sub_smul]
     abel
-  · simp only [h, false_and, if_false, Finset.sum_const_zero, sub_zero, add_zero]
+  · simp only [Finset.sum_const_zero, sub_zero, add_zero]
     abel
 end GlobalTheory.JointDict
 

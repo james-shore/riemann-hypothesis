@@ -15,7 +15,7 @@ theorem zzPlus_firstProj_corner (hs : M.split = some g) (Zh : Matrix (Fin (r + 1
       (g.q : F)⁻¹ * ph1 g (Zh a b) + (if a = Fin.last r ∧ b = Fin.last r then T / (g.q : F) else 0) := by
   have h1 : ∀ x : E, ph1 g x = (g.e x).1 := fun x => rfl
   simp only [HermSp.ZZplusOf, hs, Matrix.of_apply]
-  split_ifs with hab <;> simp only [h1, map_sub, AlgEquiv.apply_symm_apply, map_zero, Prod.fst_zero, Prod.fst_sub,
+  split_ifs with hab <;> simp only [h1, map_sub, AlgEquiv.apply_symm_apply, Prod.fst_sub,
     sub_zero, add_zero] <;> ring
 
 theorem zzPlus_secondProj_corner (hs : M.split = some g) (Zh : Matrix (Fin (r + 1)) (Fin (r + 1)) E) (T T' : F) (a b : Fin (r + 1)) :
@@ -23,7 +23,7 @@ theorem zzPlus_secondProj_corner (hs : M.split = some g) (Zh : Matrix (Fin (r + 
       -((g.q : F)⁻¹ * ph2 g (Zh b a)) + (if a = Fin.last r ∧ b = Fin.last r then -(T' / (g.q : F)) else 0) := by
   have h2 : ∀ x : E, ph2 g x = (g.e x).2 := fun x => rfl
   simp only [HermSp.ZZplusOf, hs, Matrix.of_apply]
-  split_ifs with hab <;> simp only [h2, map_sub, AlgEquiv.apply_symm_apply, map_zero, Prod.snd_zero, Prod.snd_sub,
+  split_ifs with hab <;> simp only [h2, map_sub, AlgEquiv.apply_symm_apply, Prod.snd_sub,
     sub_zero, add_zero] <;> ring
 
 def lamV (g : SplitG M.L) (m : Fin (r + 1) → M.R) : Ix r → F :=
@@ -72,41 +72,34 @@ theorem uV_llMap (hs : M.split = some g) (Zh : Matrix (Fin (r + 1)) (Fin (r + 1)
       Matrix.map_apply, eV]
     by_cases hi : i = Fin.last r
     · subst hi
-      simp [Pi.single_apply, firstProj_apply, secondProj_apply, Finset.sum_add_distrib, add_mul, Finset.mul_sum, ite_and]
+      simp [firstProj_apply, secondProj_apply, Finset.sum_add_distrib, add_mul]
       field_simp
       first
         | done
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; done)
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; ring)
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; ring_nf)
-    · simp [Pi.single_apply, hi, firstProj_apply, secondProj_apply, Finset.sum_add_distrib, add_mul, Finset.mul_sum, ite_and]
+        | (simp only [div_eq_mul_inv, Finset.mul_sum, mul_comm]; done)
+        | (simp only [div_eq_mul_inv, Finset.mul_sum, mul_comm]; ring)
+    · simp [hi, firstProj_apply, secondProj_apply]
       field_simp
       first
         | done
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; done)
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; ring)
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; ring_nf)
+        | (simp only [div_eq_mul_inv, mul_comm])
   · simp only [uV, Sum.elim_inr, llMap, AddMonoidHom.coe_mk, ZeroHom.coe_mk, Pi.sub_apply, Pi.smul_apply,
       smul_eq_mul, Matrix.mulVec, dotProduct, AddSubgroupClass.coe_sub, MulMemClass.coe_mul, map_sub, map_mul, secondProj_ring_sum,
       hZe, zzPlus_secondProj_corner hs, hT2, secondProj_diagonalEmbed, trO_coe, Matrix.vecMul, Fintype.sum_sum_type, lamV, Sum.elim_inl,
-      gHat, Matrix.fromBlocks_apply₁₂, Matrix.fromBlocks_apply₂₂, Matrix.of_apply, Matrix.transpose_apply,
-      Matrix.map_apply, eV]
+      gHat, Matrix.fromBlocks_apply₁₂, Matrix.fromBlocks_apply₂₂, Matrix.of_apply, Matrix.map_apply, eV]
     by_cases hi : i = Fin.last r
     · subst hi
-      simp [Pi.single_apply, firstProj_apply, secondProj_apply, Finset.sum_add_distrib, add_mul, Finset.mul_sum, ite_and]
+      simp [firstProj_apply, secondProj_apply, Finset.sum_add_distrib, add_mul]
       field_simp
       first
         | done
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; done)
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; ring)
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; ring_nf)
-    · simp [Pi.single_apply, hi, firstProj_apply, secondProj_apply, Finset.sum_add_distrib, add_mul, Finset.mul_sum, ite_and]
+        | (simp only [div_eq_mul_inv, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm]; done)
+        | (simp only [div_eq_mul_inv, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm]; ring)
+    · simp [hi, firstProj_apply, secondProj_apply]
       field_simp
       first
         | done
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; done)
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; ring)
-        | (simp only [div_eq_mul_inv, neg_mul, mul_neg, Finset.sum_neg_distrib, Finset.mul_sum, mul_comm, mul_assoc, mul_left_comm]; ring_nf)
+        | (simp only [div_eq_mul_inv, Finset.sum_neg_distrib, mul_comm])
 
 theorem lamV_dot_mem (hs : M.split = some g) (m w : Fin (r + 1) → M.R) :
     dotProduct (lamV g m) (uV g w) ∈ 𝒪[F] := by

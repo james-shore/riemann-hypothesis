@@ -32,8 +32,7 @@ theorem derivExists_allPos : DerivExistsAllPosStatement := by
       refine Finset.sum_congr rfl fun j _ => ?_
       rw [map_smul, inner_smul_right, hL i j X hX, mul_comm]
     rw [hv]
-    simp [LinearMap.smulRight_apply, ContinuousLinearMap.smulRight_apply, smul_smul,
-      ContinuousLinearMap.sum_apply]
+    simp [ContinuousLinearMap.smulRight_apply, smul_smul]
   rw [key]
   exact derOp_hasDeriv _ τ hτ X hX γ hγ
 
@@ -70,7 +69,6 @@ theorem kType_of_hcTypeU {k : ℕ} {u : Fin k → ℝ} {H : Type} [NormedAddComm
     rw [← hσ] at this
     first
     | (rwa [toMK_torepK (fun _ : Fin k => true) hg] at this)
-    | (convert this using 2; exact (toMK_torepK (fun _ : Fin k => true) hg).symm)
   case nrm =>
     rw [norm_smul, Complex.norm_real, Real.norm_eq_abs, abs_inv, abs_norm]
     exact inv_mul_cancel₀ (norm_ne_zero_iff.mpr hv0)

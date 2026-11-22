@@ -44,7 +44,7 @@ theorem weight_coordDeg_apply (d : Coord n →₀ ℕ) (k : ι) :
   · simp [coordDeg]
   · intro j _ hj
     refine Finset.sum_eq_zero fun i _ ↦ ?_
-    simp [coordDeg, Pi.single_apply, Ne.symm hj]
+    simp [coordDeg, Ne.symm hj]
   · simp
 
 theorem geoMultiHomog_iff (f : MvPolynomial (Coord n) ℤ) (a : ι → ℕ) :

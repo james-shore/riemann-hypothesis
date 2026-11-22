@@ -99,9 +99,9 @@ private theorem es_of (h1 : SEsLev) (h2 : SEsFrob) (h3 : SEsT)
       ext z; exact σ.apply_symm_apply z
     rw [this, map_one, Units.val_one]
   have D0 := near ((q : ℤ_[l]) • (mZl l (γ : Matrix (Fin 2) (Fin 2) ℤ) *ᵥ ![u 0, χ' * u 1]))
-    (dvd2 (x := u 0) (y := q * χ' * u 1) d00 d01 (by simp [mZl, en, Matrix.mulVec, dotProduct, Fin.sum_univ_two]; ring))
+    (dvd2 (x := u 0) (y := q * χ' * u 1) d00 d01 (by simp [mZl, en]; ring))
     (dvd2 (x := q * u 0) (y := u 1) d10 d11 (by
-      simp [mZl, en, Matrix.mulVec, dotProduct, Fin.sum_univ_two]
+      simp [mZl, en]
       linear_combination (((γ : Matrix (Fin 2) (Fin 2) ℤ) 1 1 : ℤ) : ℤ_[l]) * u 1 * hχq))
   rw [c2] at D0
   have D := r3 _ _ q (r5 (X.gal σ⁻¹) _ _ (r5 (X.sl (toGQ (γ : Matrix (Fin 2) (Fin 2) ℤ))).toRingEquiv _ _ D0))
@@ -117,7 +117,7 @@ private theorem es_of (h1 : SEsLev) (h2 : SEsFrob) (h3 : SEsT)
     simpa using this
   rw [← h4.smul_eq_zero, ← map_smul, ← fin, t1, t2]
   congr 1
-  simp only [Pi.sub_apply, Pi.add_apply, Pi.smul_apply, Finset.sum_apply, smul_sub, smul_add, Finset.smul_sum, map_smul]
+  simp only [Pi.add_apply, Pi.smul_apply, Finset.sum_apply, smul_sub, smul_add, Finset.smul_sum, map_smul]
   congr 1
   change _ + (4 : ℤ_[l]) • (q : ℤ_[l]) ^ (w + 1) • X.kmap l (X.gal σ⁻¹) (X.kmap l _ (b _)) = _
   rw [smul_smul, smul_smul, smul_smul]

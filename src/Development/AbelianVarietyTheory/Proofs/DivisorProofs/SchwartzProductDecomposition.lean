@@ -92,7 +92,7 @@ theorem exists_sum_box (X : Type) [TopologicalSpace X] [LocallyCompactSpace X] [
         have hmem := Finset.mem_inter.1 hst.choose_spec
         simp only [σ, τ, Finset.mem_filter, Finset.mem_univ, true_and] at hmem
         have hc : c (σ a) (τ b) = h (hst.choose : (κ → X) × (κ' → X)) := dif_pos hst
-        simp only [true_and, hs, ht, and_self, if_true, hc, mul_one]
+        simp only [hs, ht, and_self, if_true, hc, mul_one]
         exact hconst _ a hmem.1 b hmem.2
       · have hc : c (σ a) (τ b) = 0 := dif_neg hst
         simp only [hc, ite_self, zero_mul]

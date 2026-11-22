@@ -113,7 +113,7 @@ theorem baseChange_equiv :
     rw [hr, ← TensorProduct.smul_tmul, Algebra.smul_def]
     congr 1
     change _ = f (r ⊗ₜ 1) * _
-    simp only [hf, Algebra.TensorProduct.tmul_mul_tmul, _root_.mul_one, Algebra.smul_def])
+    simp only [hf, Algebra.TensorProduct.tmul_mul_tmul, _root_.mul_one])
   have h1 : ∀ y, Φ (ψ y) = e y := by
     intro y
     induction y using TensorProduct.induction_on with

@@ -106,7 +106,7 @@ theorem lev_iff_frames : ∀ {X : Fields} {n : ℕ} {ST SG Q : Finset (HeightOne
       rfl
     have hs_at : q.at P s = bc (q.phi P) (qGL n ((θ.1 P)⁻¹).1) := by
       rw [eq_inv_mul_of_mul_eq (hat P), hfr]
-      simp only [qGL, map_mul, map_inv, inv_mul_cancel_left]
+      simp only [qGL, map_mul, inv_mul_cancel_left]
     rw [hs_at]
     refine (q.U_rat P ((θ.1 P)⁻¹)).2 ?_
     exact inv_mem (Subgroup.mem_inf.2 ⟨θ.2 P trivial, (hcq (1, h, θ)).2 h4 P⟩)

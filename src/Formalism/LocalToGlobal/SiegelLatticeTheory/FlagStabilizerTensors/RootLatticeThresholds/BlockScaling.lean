@@ -365,7 +365,7 @@ theorem measPinAt_of (sc : ℝ) (hsc : 0 < sc) (i0 i0' : ∀ _ : InfinitePlace X
       simp only [Formalism.BasicNotions.Host.ka, Formalism.BasicNotions.Host.v]
       have hπ := Real.pi_ne_zero
       have := hpos_rd.ne'
-      first | (field_simp; done) | (field_simp; ring)
+      first | (field_simp)
     have hgX : (X.B.g : ℝ) = ((PP).S.g : ℝ) := by
       show (X.B.g : ℝ) = ((D.host.g 0 * D.host.g 1 : ℕ) : ℝ)
       rw [X.g_eq]
@@ -379,7 +379,7 @@ theorem measPinAt_of (sc : ℝ) (hsc : 0 < sc) (i0 i0' : ∀ _ : InfinitePlace X
       rw [← Formalism.L2.SG.BlockScaling.rdE_eq_rd', hy]
       unfold Formalism.FourierDecayAlt.D.kapG
       have := Real.pi_pos
-      first | (field_simp; done) | (field_simp; ring)
+      first | (field_simp)
     set F : ℕ → ℝ := fun m => Formalism.FourierDecayAlt.D.kapG ((PP).S.g : ℝ) (Formalism.FourierDecayAlt.S6.rd D.host.E) ^ (1 - 2 * (m : ℤ)) / Real.pi
       with hF
     have hF0 : ∀ m, 0 ≤ F m := fun m => div_nonneg (zpow_nonneg (by rw [hkap]; positivity) _) Real.pi_pos.le
@@ -396,7 +396,7 @@ theorem measPinAt_of (sc : ℝ) (hsc : 0 < sc) (i0 i0' : ∀ _ : InfinitePlace X
       rw [e, pow_add, _root_.inv_zpow', neg_sub, zpow_sub₀ hy0.ne', zpow_one, show (2 * ((q.2.val - q.1.val : ℕ) : ℤ)) =
         ((2 * (q.2.val - q.1.val) : ℕ) : ℤ) by push_cast; ring, zpow_natCast, pow_mul, hy]
       have h1 : (D.host.rdE * ((PP).S.g : ℝ) / (2 * Real.pi)) ≠ 0 := hy0.ne'
-      first | (field_simp; done) | (field_simp; ring)
+      first | (field_simp)
     rw [Finset.prod_coe_sort (Formalism.MainNotions.S.rootPat pN) (fun q => ENNReal.ofReal (D.host.ka / X.B.g / Real.pi) *
       ENNReal.ofReal (Complex.normSq (sP q))⁻¹), Finset.prod_congr rfl hterm,
       ← ENNReal.ofReal_prod_of_nonneg (fun q _ => hF0 _), Formalism.L2.SG.TriangularProducts.prod_rootPat pN F]

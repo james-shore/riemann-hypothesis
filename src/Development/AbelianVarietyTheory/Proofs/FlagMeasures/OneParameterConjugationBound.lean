@@ -28,7 +28,7 @@ lemma sq_integral_le {r : ℝ → ℝ} (hr : Continuous r) :
   rw [intervalIntegral.integral_sub h2 ((h1.const_mul (2 * a)).sub intervalIntegrable_const),
     intervalIntegral.integral_sub (h1.const_mul (2 * a)) intervalIntegrable_const,
     intervalIntegral.integral_const_mul, intervalIntegral.integral_const] at hnn
-  simp only [sub_zero, one_smul, smul_eq_mul, one_mul] at hnn
+  simp only [sub_zero, smul_eq_mul, one_mul] at hnn
   nlinarith
 
 lemma torus_lipschitz_l2_bound {G ι : Type} [Fintype ι] [TopologicalSpace G] [SecondCountableTopology G] [MeasurableSpace G]

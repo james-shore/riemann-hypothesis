@@ -336,7 +336,6 @@ theorem inertAsm : InertAsm := by
     have hsm : ((t : E) • (G' * e₁ * G'ᴴ)) *ᵥ z = (t : E) • ((G' * e₁ * G'ᴴ) *ᵥ z) := by
       first
         | exact Matrix.smul_mulVec (t : E) (G' * e₁ * G'ᴴ) z
-        | (ext k; simp [Matrix.mulVec, Finset.mul_sum, mul_assoc])
     rw [hsm,
       show (t : E) • ((G' * e₁ * G'ᴴ) *ᵥ z) = t • ((G' * e₁ * G'ᴴ) *ᵥ z) from algebraMap_smul E t _,
       ht, show s' * s'' * (y * ∑ k ∈ Finset.range K, i ^ k) =
@@ -347,7 +346,6 @@ theorem inertAsm : InertAsm := by
     have hsm : ((t : E) • (G' * e₁ * G'ᴴ)) *ᵥ z = (t : E) • ((G' * e₁ * G'ᴴ) *ᵥ z) := by
       first
         | exact Matrix.smul_mulVec (t : E) (G' * e₁ * G'ᴴ) z
-        | (ext k; simp [Matrix.mulVec, Finset.mul_sum, mul_assoc])
     rw [hsm,
       show (t : E) • ((G' * e₁ * G'ᴴ) *ᵥ z) = t • ((G' * e₁ * G'ᴴ) *ᵥ z) from algebraMap_smul E t _,
       ht, show s' * s'' * (y * ∑ k ∈ Finset.range K, i ^ k) =

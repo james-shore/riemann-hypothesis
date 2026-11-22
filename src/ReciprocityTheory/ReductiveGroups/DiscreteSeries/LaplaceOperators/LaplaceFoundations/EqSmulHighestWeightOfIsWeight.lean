@@ -38,7 +38,7 @@ theorem eq_smul_highestWeight_of_isWeight {ε : Fin n → Bool} {Λ : Fin n → 
         simp only [LinearMap.zero_apply, sub_zero, ContinuousLinearMap.coe_coe] at h1
         rw [sub_eq_iff_eq_add] at h1
         rw [h1]
-        simp only [Pi.add_apply, Pi.sub_apply, Pi.single_apply, if_pos rfl, if_neg (Ne.symm hcb)]
+        simp only [Pi.add_apply, Pi.sub_apply, Pi.single_apply, if_neg (Ne.symm hcb)]
         push_cast
         module
       · by_cases hcb : b = c
@@ -47,7 +47,7 @@ theorem eq_smul_highestWeight_of_isWeight {ε : Fin n → Bool} {Λ : Fin n → 
           simp only [LinearMap.zero_apply, zero_sub, ContinuousLinearMap.coe_coe] at h1
           rw [sub_eq_iff_eq_add] at h1
           rw [h1]
-          simp only [Pi.add_apply, Pi.sub_apply, Pi.single_apply, if_pos rfl, if_neg hca]
+          simp only [Pi.add_apply, Pi.sub_apply, Pi.single_apply, if_neg hca]
           push_cast
           module
         · rw [if_neg hca, if_neg hcb] at h1
@@ -154,16 +154,16 @@ theorem dg_split (θ : Fin (2 * r + k + 1) → ℝ) : dg θ = kE k r (dgk (th1 �
   rw [Matrix.mul_diagonal]
   by_cases hi : i.val < k
   · by_cases hj : j.val < k
-    · simp only [dg, dgk, kE, th1, th2, dif_pos hi, dif_pos hj, if_pos hj, Matrix.diagonal_apply, fI]
+    · simp only [dgk, kE, th1, th2, dif_pos hi, dif_pos hj, if_pos hj, Matrix.diagonal_apply, fI]
       by_cases hij : i = j
       · subst hij; simp
       · rw [if_neg hij, if_neg (by intro e; apply hij; exact Fin.ext (by simpa using e))]; simp
-    · simp only [dg, th2, if_neg hj, Matrix.diagonal_apply]
+    · simp only [th2, if_neg hj, Matrix.diagonal_apply]
       rw [kE_col _ _ hj]
       by_cases hij : i = j
       · subst hij; exact absurd hi hj
       · simp [hij]
-  · simp only [dg, th2, Matrix.diagonal_apply]
+  · simp only [th2, Matrix.diagonal_apply]
     rw [kE_row _ _ hi]
     by_cases hij : i = j
     · subst hij; simp [hi]

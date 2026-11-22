@@ -67,8 +67,6 @@ theorem dmin_ne_of_dom (X : Data E r) {x : Frame X.Ψ r} (hx : x ∈ X.dom) (τ 
   have h1 : 0 < psgn X.p0 i * (dmin X.Gm x τ i).re := by
     first
       | exact (hx τ).2 i
-      | (simp only [Data.dom, GG, Set.mem_setOf_eq] at hx
-         exact (hx τ).2 i)
   rw [h0] at h1
   simp at h1
 
@@ -78,7 +76,7 @@ theorem continuousOn_pnorm (X : Data E r) (la : Wt X.Ψ r) {P : Frame X.Ψ r →
     intro τ i
     simp only [dmin, lminor, gram, hermC, col, mat, Matrix.det_apply, Matrix.submatrix_apply,
       Matrix.of_apply, starRingEnd_apply, Units.smul_def, zsmul_eq_mul]
-    first | fun_prop | continuity
+    first | fun_prop
   have hterm : ∀ (τ : X.Ψ) (i : Fin r), ContinuousOn
       (fun x => ‖dmin X.Gm x τ i.succ / dmin X.Gm x τ i.castSucc‖ ^ (-(la τ i : ℝ) / 2)) X.dom := by
     intro τ i
@@ -91,7 +89,6 @@ theorem continuousOn_pnorm (X : Data E r) (la : Wt X.Ψ r) {P : Frame X.Ψ r →
   refine ContinuousOn.mul hP.norm ?_
   first
     | exact continuousOn_finset_prod _ fun τ _ => continuousOn_finset_prod _ fun i _ => hterm τ i
-    | fun_prop
 
 end FD
 

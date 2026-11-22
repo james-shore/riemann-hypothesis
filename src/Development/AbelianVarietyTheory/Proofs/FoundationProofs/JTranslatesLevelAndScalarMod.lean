@@ -232,7 +232,7 @@ private lemma exists_smul_ofSL_mul_of_sl_jK_eq {Ω : Type} [Field Ω] [Algebra �
     rw [hU]
     ext i j
     fin_cases i <;> fin_cases j <;>
-      simp [Matrix.mul_apply, Fin.sum_univ_two, Matrix.vecMul, dotProduct, h₁, h₂] <;>
+      simp [Fin.sum_univ_two, Matrix.vecMul, dotProduct, h₁, h₂] <;>
       field_simp
     · linear_combination hρ'
     · linear_combination hk'

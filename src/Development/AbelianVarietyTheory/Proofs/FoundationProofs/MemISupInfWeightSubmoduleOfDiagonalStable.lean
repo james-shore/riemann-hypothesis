@@ -19,8 +19,6 @@ lemma comp_mem {p q : ℕ} {V : Type} [AddCommGroup V] [Module ℂ V]
   | exact @_root_.GlobalTheory.WeightSubspaceComponent.weight_component_mem
   | exact _root_.GlobalTheory.WeightSubspaceComponent.weight_component_mem
   | (apply _root_.GlobalTheory.WeightSubspaceComponent.weight_component_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.WeightSubspaceComponent.weight_component_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.WeightSubspaceComponent.weight_component_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.WeightSubspaceComponent.weight_component_mem ..)
 
 theorem mem_iSup_inf_wtSub : ∀ (p q : ℕ) (V : Type) [AddCommGroup V] [Module ℂ V]

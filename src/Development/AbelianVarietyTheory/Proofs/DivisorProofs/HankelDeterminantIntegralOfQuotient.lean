@@ -70,7 +70,7 @@ theorem hankel_integral : ∀ (O F : Type) [CommRing O] [Field F] (ι : O →+* 
       have hij' : i < j := hij
       have h1 : ¬ j ≤ i := not_le.mpr hij'
       have h2 : ¬ ((j : ℕ) ≤ i) := h1
-      simp [T, h1, h2]
+      simp [T, h1]
   refine ⟨N.det, ?_⟩
   rw [RingHom.map_det, RingHom.mapMatrix_apply, hent, Matrix.det_mul, Matrix.det_mul, Matrix.det_transpose, hT]
   show _ = _ * H.det

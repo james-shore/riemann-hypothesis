@@ -44,7 +44,7 @@ def trivUnif {L : LB A.left} {g : ℕ} (u : HolUnif A L g) : HolUnif A (LB.triv 
   fr_hol := fun _ => differentiableOn_const 1
   fr_ne := fun _ _ _ => one_ne_zero
   fr_compat := fun i j z h => by
-    simp [valAt', valAt, h]
+    simp [valAt', valAt]
 
 theorem trivUnif_factor {L : LB A.left} {g : ℕ} (u : HolUnif A L g) :
     IsFactorAH (trivUnif u) 0 (fun _ => 1) :=

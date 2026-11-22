@@ -201,7 +201,7 @@ theorem coefS_pure (σ : E →ₐ[F] E) (hCM : IsCMExt F E σ) {M : ℕ} (J : Ma
     rw [e1, hf, integral_congr_ae (Filter.Eventually.of_forall hpt), he, hprod, hc k]
     push_cast
     rw [Finset.prod_div_distrib]
-    simp only [NNReal.coe_one, Complex.ofReal_one, one_mul, mul_one]
+    simp only [one_mul, mul_one]
     rw [div_mul_div_comm]
   have lim1 : Filter.Tendsto (fun k => ∫ bb, (fouH σ ψ db (testH σ b (ρ k) S (U k)) bb /
         ∫ y, testH σ b (ρ k) S (U k) y ∂db) *

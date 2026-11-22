@@ -32,7 +32,7 @@ end Lin
 theorem gmap_one {E V : Type} [Field E] [NumberField E] [AddCommGroup V] [Module E V] [Module (𝓞 E) V]
     [IsScalarTower (𝓞 E) E V] (X : Submodule (𝓞 E) V) : gmap (1 : V ≃ₗ[E] V) X = X := by
   ext v
-  simp [gmap, Submodule.mem_map]
+  simp [gmap]
 
 theorem lattices_close_locally : LatClose := by
   intro F E _ _ _ _ _ σ V _ _ _ _ _ M J b L0 hσσ hH hdet hL0 g hg

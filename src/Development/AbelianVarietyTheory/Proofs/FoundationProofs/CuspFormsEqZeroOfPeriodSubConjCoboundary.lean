@@ -48,7 +48,7 @@ private lemma eval_eq_denom_pow_mul_eval_of_slP_invariant (w : ℕ) (V : ℍ →
   rw [← hrel, _root_.GlobalTheory.HeckeFamilyMatrices.eval_polySlash w _ _ _ hmem (sl_denom_ne_zero γ τ)]
   congr 2
   rw [UpperHalfPlane.coe_specialLinearGroup_apply]
-  simp [_root_.GlobalTheory.HeckeFamilyMatrices.mat]
+  simp
 
 open Polynomial UpperHalfPlane in
 open scoped MatrixGroups ModularForm in

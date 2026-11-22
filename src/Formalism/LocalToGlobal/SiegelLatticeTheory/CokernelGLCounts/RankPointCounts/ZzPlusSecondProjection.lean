@@ -204,7 +204,7 @@ theorem zzPlus_first_projection {g : Loc.SplitG M.L} (hM : M.split = some g) (Zh
   ext a b
   simp only [Loc.HermSp.ZZplusOf, hM, Matrix.map_apply, Matrix.of_apply, Matrix.add_apply, Matrix.smul_apply,
     smul_eq_mul, Ecorner, map_sub, fst_proj_symm, apply_ite (p1 g.e)]
-  split_ifs <;> simp only [fst_proj_symm, map_zero, adeleInfiniteComponent_apply] <;> ring
+  split_ifs <;> simp only [map_zero, adeleInfiniteComponent_apply] <;> ring
 
 theorem zzPlus_second_projection {g : Loc.SplitG M.L} (hM : M.split = some g) (Zh : Matrix (Fin (r + 1)) (Fin (r + 1)) E) (T T' : F) :
     (Loc.HermSp.ZZplusOf M Zh T T').map (p2 g.e) =
@@ -213,7 +213,7 @@ theorem zzPlus_second_projection {g : Loc.SplitG M.L} (hM : M.split = some g) (Z
   ext a b
   simp only [Loc.HermSp.ZZplusOf, hM, Matrix.map_apply, Matrix.of_apply, Matrix.sub_apply, Matrix.neg_apply,
     Matrix.smul_apply, Matrix.transpose_apply, smul_eq_mul, Ecorner, map_sub, snd_proj_symm, apply_ite (p2 g.e)]
-  split_ifs <;> simp only [snd_proj_symm, map_zero, adele_ext_components] <;> ring
+  split_ifs <;> simp only [map_zero, adele_ext_components] <;> ring
 
 theorem zzplusOf_mul_up {g : Loc.SplitG M.L} (hM : M.split = some g) (Zh V : Matrix (Fin (r + 1)) (Fin (r + 1)) E)
     (T T' : F) (hV : IsUp V) :

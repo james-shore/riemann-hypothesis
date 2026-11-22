@@ -269,9 +269,9 @@ noncomputable def equivSymmetricPower : SymSq Y ≃+ Sym[ℤ]^2 Y :=
   let m : MultilinearMap ℤ (fun _ : Fin 2 => Y) (SymSq Y) :=
     { toFun := fun f => mk (f 0) (f 1)
       map_update_add' := fun f i a b => by
-        fin_cases i <;> simp [Function.update_apply]
+        fin_cases i <;> simp
       map_update_smul' := fun f i a b => by
-        fin_cases i <;> simp [Function.update_apply] }
+        fin_cases i <;> simp }
   let G : Sym[ℤ]^2 Y →+ SymSq Y :=
     AddCon.lift _ (PiTensorProduct.lift m).toAddMonoidHom <| AddCon.addConGen_le.2 <| by
       rintro _ _ ⟨σ, f⟩

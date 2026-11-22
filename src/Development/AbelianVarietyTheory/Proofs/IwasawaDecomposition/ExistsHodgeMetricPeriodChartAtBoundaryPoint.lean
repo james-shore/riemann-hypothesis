@@ -72,8 +72,8 @@ theorem periodChart_rescale : ∀ (n a : ℕ) (ha : a ≤ n) (g rk : ℕ) (τ₀
     simp only [hodgeGram, imPeriod, Matrix.map_apply, Matrix.add_apply, Matrix.sum_apply, Matrix.smul_apply,
       hu', Complex.add_im, Complex.im_sum, smul_eq_mul]
     push_cast
-    simp only [Complex.smul_im, Complex.intCast_im, Complex.intCast_re, smul_eq_mul, him, add_mul, Finset.sum_add_distrib]
-    simp only [Complex.mul_im, Complex.intCast_re, Complex.intCast_im, mul_zero, add_zero, him]
+    simp only [add_mul, Finset.sum_add_distrib]
+    simp only [Complex.mul_im, Complex.intCast_re, Complex.intCast_im, mul_zero, him]
     push_cast
     simp only [zero_add]
     ring
@@ -137,7 +137,7 @@ theorem exists_hodge_period_chart : ∀ (E : Type) [Field E] [NumberField E] [Is
     rw [hgram τ, hY _ (hnz z hz hI), ← (hrel' z hz).2]
     ext b b'
     rw [gram_entry]
-    simp only [Matrix.transpose_apply, Matrix.smul_apply, Matrix.of_apply, smul_eq_mul, Q]
+    simp only [Matrix.transpose_apply, Matrix.smul_apply, Matrix.of_apply, smul_eq_mul]
     rw [← (hrel' z hz).2]
     simp only [Complex.star_def, Complex.conj_ofReal]
     rw [← Complex.ofReal_mul, Real.mul_self_sqrt (hκ τ).le]

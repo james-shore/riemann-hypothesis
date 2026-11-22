@@ -259,7 +259,7 @@ theorem der_zero [Fintype ι] (P : Algebra.SubmersivePresentation R A ι σ) (χ
   have hv := hinj (fun i => D (P.val i)) (funext fun j => by
     rw [hF, ← der_eq_dirDeriv P χ D h0 hL]
     rcases j with j | c
-    · simp [algebraMap_relation]
+    · simp
     · simp [hT, ht])
   refine AddMonoidHom.ext fun a => ?_
   obtain ⟨p, rfl⟩ := P.algebraMap_surjective a
@@ -328,7 +328,7 @@ theorem exists_sections : ∀ (R A : Type) [CommRing R] [CommRing A] [Algebra R 
     show MvPolynomial.eval₂ (ψ b) _ (Q j) = _
     rw [← hχ, ← algebraMap_ring_eq, hQ]
     rcases j with j | c
-    · simp [algebraMap_relation]
+    · simp
     · simp [hT]
   have Φ₀ : Φ (b₀, x₀) = 0 := by
     rw [← hx₀, eQ b₀ χ₀ h₀]

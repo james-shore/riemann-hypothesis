@@ -107,7 +107,7 @@ theorem iota_exists : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsAlgCl
     intro i; funext j
     by_cases hij : j = i
     · subst hij; simp [toO]
-    · simp [toO, Pi.single_apply, hij]
+    · simp [toO, hij]
   have hext : ∀ f₁ f₂ : G.dual.omega →ₗ[O] O,
       (∀ t, f₁ (hodgeTate G t) = f₂ (hodgeTate G t)) → f₁ = f₂ := by
     intro f₁ f₂ hf

@@ -26,8 +26,6 @@ private theorem isClosed_setOf_valuation_le_one {K : Type} [Field K] [ValuativeR
   have h := IsValuativeTopology.isClosed_closedBall (R := K) (v := valuation K) 1
   first
   | (convert h using 3 with x; simp)
-  | simpa [Valuation.restrict_le_one_iff] using h
-  | simpa using h
 
 lemma LocFam.valuation_algebraMap_le_one (D : LocFam F ℓ ι) (i : ι) (c : ℚ_[ℓ]) (hc : ‖c‖ ≤ 1) :
     valuation (D.K i) (algebraMap ℚ_[ℓ] (D.K i) c) ≤ 1 := by
@@ -92,7 +90,6 @@ theorem LocFam.linearIndependent [Fintype ι] (D : LocFam F ℓ ι) (hD : D.Over
   have hXF : ((X : 𝓞 F) : F) = ∑ k, (m k : F) * b k := by
     first
     | (rw [hX_def]; simp [hbb, zsmul_eq_mul])
-    | (push_cast [hX_def, hbb, zsmul_eq_mul]; rfl)
   have hval : ∀ v : HeightOneSpectrum (𝓞 F), (ℓ : 𝓞 F) ∈ v.asIdeal →
       v.valuation F (X : F) ≤ v.valuation F (ℓ : F) := by
     intro v hv
@@ -120,9 +117,6 @@ theorem LocFam.linearIndependent [Fintype ι] (D : LocFam F ℓ ι) (hD : D.Over
     rw [hιX, Valuation.map_neg, map_mul, map_natCast (D.ιF i) ℓ]
     first
     | exact mul_le_of_le_one_right' hsum
-    | exact mul_le_of_le_one_right₀ hsum
-    | (calc _ ≤ valuation (D.K i) (ℓ : D.K i) * 1 := by gcongr
-        _ = _ := mul_one _)
   obtain ⟨Z, hZ⟩ := hA X hval
   have hrepr : ∀ k, bZ.repr X k = m k := fun k => by
     rw [hX_def, bZ.repr_sum_self]

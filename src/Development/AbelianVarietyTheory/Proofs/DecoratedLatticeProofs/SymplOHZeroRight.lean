@@ -71,13 +71,11 @@ theorem continuous_extR {V₀ A L S : HSp D} (o : OrthDec V₀ A L) : Continuous
 theorem extL_inf {V₀ A L S : HSp D} (o : OrthDec V₀ A L) (u : WO A S) (h : u.map (infPart D) = 0) :
     (extL (S := S) o u).map (infPart D) = 0 := by
   rw [extL_apply, OrthDec.resS_symm_apply, Matrix.zero_mul, add_zero]
-  change (u * o.pA).map (infPart D) = 0
   rw [Matrix.map_mul, h, Matrix.zero_mul]
 
 theorem extR_inf {V₀ A L S : HSp D} (o : OrthDec V₀ A L) (u : WO S A) (h : u.map (infPart D) = 0) :
     (extR (S := S) o u).map (infPart D) = 0 := by
   rw [extR_apply, OrthDec.resT_symm_apply, Matrix.mul_zero, add_zero]
-  change (o.jA * u).map (infPart D) = 0
   rw [Matrix.map_mul, h, Matrix.mul_zero]
 
 theorem extL_half {V₀ A L S : HSp D} (o : OrthDec V₀ A L) (e : AE D) (u : WO A S) (h : IsHalf e u) :

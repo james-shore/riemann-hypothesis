@@ -224,9 +224,8 @@ lemma ggHerm_Wb (k r : ℕ) (z w : Fin (2 * r + k + 1) → ℂ) (hw : inWb k r w
 lemma ggRe_star_mul (x : ℂ) : (star x * x).re = ‖x‖ ^ 2 := by
   rw [Complex.sq_norm, Complex.normSq_apply]
   first
-  | (simp [Complex.mul_re]; ring)
+  | (simp [Complex.mul_re])
   | simp [Complex.mul_re]
-  | (simp only [Complex.star_def, Complex.mul_re, Complex.conj_re, Complex.conj_im]; ring)
 
 theorem reverse_cauchy_schwarz_holds : RevCS := by
   intro k r z z' hz hz' h1 h2

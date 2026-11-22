@@ -83,7 +83,7 @@ theorem prod_j_fst (M : Model R A) (N : Model R A') :
   have h : (M.prod N).e.inv ≫ (Over.pullback (spMap (algebraMap R K))).map (fst M.Y N.Y) = fst A A' ≫ M.e.inv := by
     simp [Model.prod]
   have h2 := congrArg (fun x => x.left ≫ pullback.fst M.Y.hom (spMap (algebraMap R K))) h
-  simp only [Over.comp_left, Category.assoc, Over.pullback_map_left] at h2
+  simp only [Over.comp_left, Category.assoc] at h2
   erw [pullback.lift_fst] at h2
   exact (Category.assoc _ _ _).trans h2
 
@@ -92,7 +92,7 @@ theorem prod_j_snd (M : Model R A) (N : Model R A') :
   have h : (M.prod N).e.inv ≫ (Over.pullback (spMap (algebraMap R K))).map (snd M.Y N.Y) = snd A A' ≫ N.e.inv := by
     simp [Model.prod]
   have h2 := congrArg (fun x => x.left ≫ pullback.fst N.Y.hom (spMap (algebraMap R K))) h
-  simp only [Over.comp_left, Category.assoc, Over.pullback_map_left] at h2
+  simp only [Over.comp_left, Category.assoc] at h2
   erw [pullback.lift_fst] at h2
   exact (Category.assoc _ _ _).trans h2
 

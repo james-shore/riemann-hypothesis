@@ -32,8 +32,6 @@ theorem finite_appTop_restrict {Y Z : Scheme.{0}} (π : Y ⟶ Z) [IsProper π] [
   haveI : IsIso hV.isoSpec.hom.appTop := by
     first
     | exact (inferInstance : IsIso (Scheme.Γ.map hV.isoSpec.hom.op))
-    | exact Scheme.Hom.isIso_app _ ⊤ (by simp)
-    | exact Scheme.Hom.isIso_app _ ⊤ (fun x _ => (ConcreteCategory.bijective_of_isIso hV.isoSpec.hom.base).2 x)
   haveI he' : IsIso e := by dsimp only [e]; infer_instance
   have h3 : (e ≫ (π ∣_ V).appTop).hom.Finite := by
     have he : e ≫ (π ∣_ V).appTop = (Scheme.ΓSpecIso (.of Γ(Z, V))).inv ≫ f.appTop := by

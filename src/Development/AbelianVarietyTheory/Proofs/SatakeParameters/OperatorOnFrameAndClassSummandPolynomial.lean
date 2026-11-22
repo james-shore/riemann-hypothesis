@@ -24,7 +24,7 @@ theorem polD_eq_map_polDY (D : D7) {N N' : ℕ} (s : D.what₂.Tau → ℂ) (Q :
   refine Finset.sum_congr rfl fun b _ => ?_
   rw [MvPolynomial.mapAlgHom_apply]
   split_ifs with h
-  · simp only [map_mul, MvPolynomial.map_C, MvPolynomial.map_X, MvPolynomial.C_mul]
+  · simp only [map_mul, MvPolynomial.map_C, MvPolynomial.map_X]
     simp [v]
   · simp
 

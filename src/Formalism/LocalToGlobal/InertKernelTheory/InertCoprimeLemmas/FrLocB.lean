@@ -244,7 +244,7 @@ theorem norm_le_one_of_int {k : Type*} [NormedField k] [IsUltrametricDist k] {y 
     have h := hP
     rw [hPm.as_sum] at h
     simp only [Polynomial.eval₂_add, Polynomial.eval₂_X_pow, Polynomial.eval₂_finset_sum,
-      Polynomial.eval₂_mul, Polynomial.eval₂_C, Polynomial.eval₂_X_pow, algebraMap_int_eq, eq_intCast] at h
+      Polynomial.eval₂_mul, Polynomial.eval₂_X_pow, algebraMap_int_eq, eq_intCast] at h
     refine eq_neg_of_add_eq_zero_left ?_
     rw [← h]
     congr 1
@@ -274,7 +274,6 @@ theorem norm_nat_coprime [Fact p.Prime] {s : ℕ} (h : Nat.Coprime s p) : ‖(s 
   rw [← h1, PadicComplex.norm_extends, PadicAlgCl.norm_extends, Padic.norm_natCast_eq_one_iff]
   first
   | exact h.symm
-  | exact (Nat.Prime.coprime_iff_not_dvd Fact.out).mp h.symm
 
 theorem norm_le_of_intAt [Fact p.Prime] (ψ : K →+* ℂ_[p]) {x : K} (h : IntAt p x) : ‖ψ x‖ ≤ 1 := by
   obtain ⟨s, hs, hx⟩ := h

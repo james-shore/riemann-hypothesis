@@ -25,6 +25,6 @@ theorem residueField_isAlgebraic_of_etale :
   induction y using Localization.induction_on with
   | H y =>
     obtain ⟨a, s⟩ := y
-    simp [Ideal.ResidueField.map, RingHom.algebraMap_toAlgebra, Localization.AtPrime.algebraOfLiesOver, Localization.mk_eq_mk']
+    simp [Ideal.ResidueField.map, RingHom.algebraMap_toAlgebra, Localization.mk_eq_mk']
 
 end GlobalTheory

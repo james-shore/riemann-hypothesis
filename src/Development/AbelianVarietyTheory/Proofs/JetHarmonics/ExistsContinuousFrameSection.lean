@@ -157,7 +157,7 @@ theorem sec_spec {Wp Wq : Type} [NormedAddCommGroup Wp] [InnerProductSpace ℂ W
           (κ : ℂ) * conj Dp * (Dp / (s : ℂ) ^ 2) = 0 := by field_simp; ring
       have h1 : -(-(conj Dp / (s : ℂ) ^ 2) * (Dp / (s : ℂ) ^ 2)) - (κ : ℂ) * conj Dp * (Dp / (s : ℂ) ^ 2) * (κ : ℂ) = 1 := by
         field_simp
-        first | linear_combination -hκ | linear_combination hκ | linear_combination (-1 : ℂ) * hκ
+        first | linear_combination -hκ
       rw [h0, h1, zero_smul, zero_add, one_smul]
     set w := (μ : ℂ)⁻¹ • ((-(conj Dp / (s : ℂ) ^ 2)) • S.z' + ((κ : ℂ) * conj Dp) • ν') with hwdef
     have hw : (m₀ * σ) *ᵥ w = S.z := by

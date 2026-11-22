@@ -83,7 +83,7 @@ theorem sqBasis (O K : Type) [CommRing O] [IsDomain O] [Field K] [Algebra O K] (
     rw [hbc, hbI, ldlat_map_bidet]
   let J : Fin n × Fin n → K := fun v => if v.1 = Fin.rev v.2 then 1 else 0
   let ℓ : nablaSq K n lam →ₗ[K] K := (aeval J).toLinearMap ∘ₗ (nablaSq K n lam).subtype
-  have hℓ : ∀ f, ℓ f = eval J f := fun f => by simp [ℓ, coe_aeval_eq_eval]
+  have hℓ : ∀ f, ℓ f = eval J f := fun f => by simp [ℓ]
   have hne : Nonempty (ssIdx n n lam.natW) := by
     by_contra h
     rw [not_nonempty_iff] at h

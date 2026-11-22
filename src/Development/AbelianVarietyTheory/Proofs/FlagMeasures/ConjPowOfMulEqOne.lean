@@ -26,7 +26,7 @@ theorem conj_pow_of_mul_eq_one {A n : Type} [CommRing A] [Fintype n] [DecidableE
   | succ m ih =>
     rw [pow_succ, ih, pow_succ]
     calc Y * G ^ m * X * (Y * G * X) = Y * G ^ m * (X * Y) * G * X := by simp only [mul_assoc]
-      _ = _ := by rw [h]; simp only [mul_assoc, mul_one, one_mul]
+      _ = _ := by rw [h]; simp only [mul_assoc, mul_one]
 
 theorem trace_conj_pow {A n : Type} [CommRing A] [Fintype n] [DecidableEq n]
     (X Y G : Matrix n n A) (h : X * Y = 1) (m : ℕ) : ((Y * G * X) ^ m).trace = (G ^ m).trace := by

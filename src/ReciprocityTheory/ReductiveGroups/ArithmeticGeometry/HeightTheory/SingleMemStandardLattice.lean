@@ -23,7 +23,7 @@ theorem pi_single_one_mem_hStd (i : Fin r) : (Pi.single i (1 : K) : Fin r → K)
   intro j
   by_cases h : j = i
   · subst h; exact ⟨1, by simp⟩
-  · exact ⟨0, by simp [Pi.single_apply, h]⟩
+  · exact ⟨0, by simp [h]⟩
 
 theorem hStd_eq_span_pi_single : hStd K r =
     Submodule.span (𝓞 K) (Set.range fun i : Fin r => (Pi.single i (1 : K) : Fin r → K)) := by
@@ -36,7 +36,7 @@ theorem hStd_eq_span_pi_single : hStd K r =
       rw [Finset.sum_apply, Finset.sum_eq_single j]
       · simp [← hy j, Algebra.smul_def]
       · intro i _ hij
-        simp [Pi.single_apply, Ne.symm hij]
+        simp [Ne.symm hij]
       · simp
     rw [e]
     exact Submodule.sum_mem _ fun i _ => Submodule.smul_mem _ _ (Submodule.subset_span ⟨i, rfl⟩)
@@ -165,7 +165,7 @@ theorem latDeg_standard_basis {n : ℕ} (h : n = r) (v : Fin n → Fin r → K)
       · simp
       · intro l _ hl
         have hl' : ¬ l = Fin.cast h i := hl
-        simp [Pi.single_apply, hl']
+        simp [hl']
       · simp
     · rw [if_neg hij]
       refine Finset.sum_eq_zero fun l _ => ?_

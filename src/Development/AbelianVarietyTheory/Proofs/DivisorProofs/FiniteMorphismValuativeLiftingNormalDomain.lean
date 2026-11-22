@@ -19,8 +19,6 @@ theorem finite_lift_fractionField (R : Type) [CommRing R] [IsDomain R] [IsIntegr
   | exact @_root_.GlobalTheory.RetractionLiftSection.lift_finite
   | exact _root_.GlobalTheory.RetractionLiftSection.lift_finite
   | (apply _root_.GlobalTheory.RetractionLiftSection.lift_finite <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RetractionLiftSection.lift_finite <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RetractionLiftSection.lift_finite <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RetractionLiftSection.lift_finite ..)
 
 end GlobalTheory

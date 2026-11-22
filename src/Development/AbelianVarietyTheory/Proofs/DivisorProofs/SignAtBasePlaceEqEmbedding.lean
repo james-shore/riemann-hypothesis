@@ -136,11 +136,6 @@ theorem isOpen_stab (hs : L.s = 0) (hQ : L.Q = ∅) {x : X} (hx : x ∈ killed �
     IsOpen {g : GfC V | ρ g x = x} := by
   first
   | (rename_i h_5 h_6 h_16 h_17; revert D V β L G h_5 h_6 eG c P Pl0 ok pl q Sg X h_16 h_17 ρ hs hQ x hx; exact @_root_.GlobalTheory.FiniteRingMultiplication.isOpen_stabiliser)
-  | exact @_root_.GlobalTheory.FiniteRingMultiplication.isOpen_stabiliser
-  | exact _root_.GlobalTheory.FiniteRingMultiplication.isOpen_stabiliser
-  | (apply _root_.GlobalTheory.FiniteRingMultiplication.isOpen_stabiliser <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiniteRingMultiplication.isOpen_stabiliser <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiniteRingMultiplication.isOpen_stabiliser <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiniteRingMultiplication.isOpen_stabiliser ..)
 
 theorem isGoodRep_of_killed (hs : L.s = 0) (hQ : L.Q = ∅) (hl : LiftsExist V β L)

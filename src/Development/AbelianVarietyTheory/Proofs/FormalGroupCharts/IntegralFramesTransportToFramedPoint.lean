@@ -80,12 +80,12 @@ theorem isFrame_pull_iff {E : Type} [Field E] [NumberField E] [IsCMField E] {H :
     refine ⟨he', ?_, ?_, p3.1 h.sy, fun a =>
       GlobalTheory.T.adjointSeries_frames_pullback E H X0 t S x0 t' mp w hw d x x' hx e e' he he' tie act ad a hact ha (h.ad a)⟩
     · first | exact (p1 hF hl).1 h.ph1 | exact p1.1 fun _ _ => h.ph1
-    · first | exact (p2 hF hl).1 h.ph2 | exact p2.1 fun _ _ => h.ph2
+    · first | exact (p2 hF hl).1 h.ph2
   · intro h
     refine ⟨he, ?_, ?_, p3.2 h.sy, fun a =>
       GlobalTheory.T.frame_adjointness_series_of_pullback laws E H X0 t S x0 t' mp w hw d x x' hx hab h0 e e' he he' tie act ad a ha hact (had a) (h.ad a)⟩
     · first | exact (p1 hF hl).2 h.ph1 | exact p1.2 h.ph1 hF hl
-    · first | exact (p2 hF hl).2 h.ph2 | exact p2.2 h.ph2 hF hl
+    · first | exact (p2 hF hl).2 h.ph2
 
 end GlobalTheory.FrameMove
 

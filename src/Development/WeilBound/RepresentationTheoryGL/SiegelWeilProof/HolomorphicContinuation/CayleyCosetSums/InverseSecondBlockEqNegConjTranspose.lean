@@ -87,7 +87,7 @@ private theorem inK_toBlocks₁_unitary_relations {k : M2 n} (hk : InK k) :
 theorem first_cayley_block_mul_compact (g : M2 n) {k : M2 n} (hk : InK k) : u1 (g * k) = u1 g * u1 k := by
   obtain ⟨hc, hd⟩ := inK_toBlocks₂_eq hk
   simp only [u1, mul_toBlocks₂₁_eq, mul_toBlocks₂₂_eq, hc, hd, Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul,
-    Matrix.mul_smul, Matrix.mul_neg, Matrix.neg_mul, smul_add, smul_neg, smul_smul, Complex.I_mul_I]
+    Matrix.mul_smul, Matrix.mul_neg, smul_add, smul_neg, smul_smul, Complex.I_mul_I]
   module
 
 theorem second_cayley_block_mul_compact (g : M2 n) {k : M2 n} (hk : InK k) : u2 (g * k) = u2 g * u2 k := by
@@ -103,7 +103,7 @@ theorem first_cayley_block_compact_unitary {k : M2 n} (hk : InK k) : (u1 k)ᴴ *
       Complex.I • ((k.toBlocks₁₂)ᴴ * k.toBlocks₁₁ - (k.toBlocks₁₁)ᴴ * k.toBlocks₁₂) := by
     simp only [u1, hc, hd, Matrix.conjTranspose_add, Matrix.conjTranspose_smul, Matrix.conjTranspose_neg,
       Complex.star_def, Complex.conj_I, Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, Matrix.mul_smul,
-      Matrix.mul_neg, Matrix.neg_mul, smul_add, smul_neg, smul_smul, neg_smul, Complex.I_mul_I, neg_mul]
+      Matrix.mul_neg, smul_add, smul_neg, smul_smul, neg_smul, Complex.I_mul_I, neg_mul]
     module
   rw [e, h1, h2, sub_self, smul_zero, add_zero]
 

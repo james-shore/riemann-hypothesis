@@ -70,7 +70,7 @@ theorem ngFac_pos (D : D7) : 0 < ngFac D := by
   apply Real.sqrt_pos.mpr
   apply abs_pos.mpr
   have hn : (Formalism.MainNotions.S.Lat.gS D : ℕ) ≠ 0 := by
-    first | exact (Formalism.MainNotions.LocalModelPeriodLattices.gS_pos D).ne' | exact_mod_cast (Formalism.MainNotions.LocalModelPeriodLattices.gS_pos D).ne'
+    first | exact (Formalism.MainNotions.LocalModelPeriodLattices.gS_pos D).ne'
   have h0 : ((Formalism.MainNotions.S.Lat.gS D : ℕ) : D.host.E) ≠ 0 := by exact_mod_cast hn
   exact_mod_cast (Algebra.norm_ne_zero_iff.mpr (pow_ne_zero _ h0))
 
@@ -102,8 +102,6 @@ theorem unram_of_splitsCompl (E : Type) [Field E] [NumberField E] (p : ℕ) (hp 
     simpa using hle hm
   all_goals first
     | exact (Ideal.span_singleton_eq_bot.not.mpr (by exact_mod_cast hp.ne_zero))
-    | exact (Ideal.span_singleton_prime (by exact_mod_cast hp.ne_zero)).mpr (Nat.prime_iff_prime_int.mp hp)
-    | exact (0 : ℕ)
 
 theorem rowFormC_of_leaves3 {D : D7} (X : HidaSetting D) (hb : AdBridgeIso X.B.I) (Y : Formalism.L2.SG.Full.Full X)
     (u u' : D.what₂.Word) (X0 : Fin (2 * D.R.rS + 2) → Fin X.B.I.n → X.B.I.E)

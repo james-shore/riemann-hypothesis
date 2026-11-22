@@ -106,7 +106,7 @@ theorem unrTriv : ∀ (l : ℕ) [Fact l.Prime] (P : LocPrime l) (AI : LocAinf l 
   obtain ⟨hfin, hdim⟩ := GlobalTheory.T.finrank_H1f_de_rham l P AI T K ↥LL.1 ↥(OL LL) hgood A hDR
   have hH0 : H0V A.ρ = ⊤ := by
     refine eq_top_iff.2 fun x _ => (Submodule.mem_iInf _).2 fun g => ?_
-    simp [A, H0V]
+    simp [A]
   have hFil : DdR (P.PD K) A.ρ ⊓ FilV (P.PD K) (LL := ↥LL.1) (V := A.V) 0 = DdR (P.PD K) A.ρ := by
     refine inf_eq_left.2 fun x hx => ?_
     change x ∈ DdR (P.PD K) (Representation.trivial ↥LL.1 ↥(GK K) ↥LL.1) at hx

@@ -28,8 +28,6 @@ theorem exists_core_parameters_agree : ∀ (hL : _root_.UpperTheory.Zero.LLC.Rec
     first
     | exact { twI_conj := c.twI_conj, sd_place := c.sd_place, emb_side := c.emb_side, sd_conj := c.sd_conj, one := c.one,
               good := fun w hw h => hC w hw h, conj := c.conj }
-    | exact { twI_conj := c.twI_conj, sd_place := c.sd_place, emb_side := c.emb_side, sd_conj := c.sd_conj, one := c.one,
-              conj := c.conj }
   refine ⟨I, { q.core_data_of_point.a.all with choice := hc }, hE, hG, hch, rfl, rfl, rfl, rfl, rfl, HEq.rfl, HEq.rfl, rfl⟩
 end GlobalTheory.Mem.Top.Bl
 end

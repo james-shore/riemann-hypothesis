@@ -88,7 +88,6 @@ private theorem ofCols_transpose_mulVec_apply {r k : ℕ} {K : Type} [Field K] (
     (w : Idx r k → K) (t : Idx r k) : ((ofCols v)ᵀ *ᵥ w) t = v t ⬝ᵥ w := by
   first
   | rfl
-  | simp [mulVec_apply_eq_sum_lattice_columns, dotProduct_eq_sum_mul, ofCols, Matrix.transpose_apply]
 
 private theorem ofCols_mulVec_eq_sum_smul {r k : ℕ} {K : Type} [Field K] (v : Idx r k → Idx r k → K)
     (w : Idx r k → K) : ofCols v *ᵥ w = ∑ j, w j • v j := by
@@ -206,11 +205,9 @@ theorem hAdaptQ_of_in (X : HidaSetting D) (hb : AdBridgeIso X.B.I) (u : D.what�
   have hE1 : (1 + Nn) * (1 - Nn) = 1 := by
     first
     | simp [add_mul, mul_sub, hsq]
-    | rw [add_mul, one_mul, mul_sub, mul_one, hsq, sub_zero, sub_add_cancel]
   have hE2 : (1 - Nn) * (1 + Nn) = 1 := by
     first
     | simp [sub_mul, mul_add, hsq]
-    | rw [sub_mul, one_mul, mul_add, mul_one, hsq, add_zero, sub_sub_cancel_left, add_neg_cancel]
   have hAdet : IsUnit A.det := by
     rw [isUnit_iff_ne_zero]
     intro h0
@@ -326,7 +323,7 @@ theorem hAdaptQ_of_in (X : HidaSetting D) (hb : AdBridgeIso X.B.I) (u : D.what�
       by_cases hts : t = dlH s
       · subst hts
         simp
-      · simp [Pi.single_apply, hts]
+      · simp [hts]
   · have hQP : Q = P * (P⁻¹ * Q) := (mul_inv_cancel_left P Q).symm
     rw [hQP]
     have hmap : reindex₂ X p (P * (P⁻¹ * Q)) = reindex₂ X p P * reindex₂ X p (P⁻¹ * Q) := by
@@ -337,13 +334,11 @@ theorem hAdaptQ_of_in (X : HidaSetting D) (hb : AdBridgeIso X.B.I) (u : D.what�
     · intro i j
       first
       | exact hR0 _ _
-      | (unfold reindex₂; simp only [Units.coe_map]; exact hR0 _ _)
     · intro i j
       unfold reindex₂
       rw [← map_inv]
       first
       | exact hR0' _ _
-      | (simp only [Units.coe_map]; exact hR0' _ _)
   · intro i
     refine ⟨fun t => ⟨cc i t, hcc i t⟩, ?_⟩
     change (Q : Matrix (Idx D.R.rS D.R.k) (Idx D.R.rS D.R.k) (FpX X p)) *ᵥ Pi.single (wI i) 1 -

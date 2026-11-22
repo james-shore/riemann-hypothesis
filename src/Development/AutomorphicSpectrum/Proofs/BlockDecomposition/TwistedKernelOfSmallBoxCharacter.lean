@@ -103,7 +103,7 @@ def ev {n : ℕ} (x : Multiplicative (Fin n → k)) (a : Multiplicative (Fin n �
 
 theorem ev_mul {n : ℕ} (x a b : Multiplicative (Fin n → k)) :
     ev ψ x (a * b) = ev ψ x a * ev ψ x b := by
-  simp [ev, chi, add_dotProduct, AddChar.map_add_eq_mul, mul_inv]
+  simp [ev, chi, add_dotProduct, AddChar.map_add_eq_mul]
   exact mul_comm _ _
 
 theorem ev_eq_one {n : ℕ} {x a : Multiplicative (Fin n → k)} (h : chi k ψ a.toAdd x = 1) :

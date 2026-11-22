@@ -13,20 +13,13 @@ lemma dualLattice_innerₗ_nondegenerate : (innerₗ V).Nondegenerate := by
     | exact (LinearMap.BilinForm.nondegenerate_iff (innerₗ V)
         (fun x => by rw [innerₗ_apply_apply]; exact real_inner_self_nonneg) isSymm_inner).2
         (fun x => by rw [innerₗ_apply_apply]; exact inner_self_eq_zero)
-    | (unfold LinearMap.BilinForm.Nondegenerate
-       intro m hm
-       have h := hm m
-       rw [innerₗ_apply_apply] at h
-       exact inner_self_eq_zero.mp h)
 
 lemma innerₗ_isSymm : LinearMap.BilinForm.IsSymm (innerₗ V) := by
   first
     | exact fun x y => by
-        simp only [innerₗ_apply_apply, RingHom.id_apply]; exact real_inner_comm _ _
+        simp only [innerₗ_apply_apply, RingHom.id_apply]
     | exact ⟨fun x y => by
-        simp only [innerₗ_apply_apply, RingHom.id_apply]; exact real_inner_comm _ _⟩
-    | (intro x y; simp only [innerₗ_apply_apply, RingHom.id_apply]; exact real_inner_comm _ _)
-    | (constructor; intro x y; simp only [innerₗ_apply_apply, RingHom.id_apply]; exact real_inner_comm _ _)
+        simp only [innerₗ_apply_apply]; exact real_inner_comm _ _⟩
 
 variable [FiniteDimensional ℝ V]
 

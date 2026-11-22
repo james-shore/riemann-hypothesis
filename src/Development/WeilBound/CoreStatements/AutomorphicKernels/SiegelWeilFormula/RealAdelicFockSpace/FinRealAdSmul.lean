@@ -43,14 +43,14 @@ theorem arcA_eq (R : RD d) (X : Mx F E d.m d.n) : arc R X = (EuclideanSpace.equi
 theorem arc_add' (R : RD d) (X Y : Mx F E d.m d.n) : arc R (X + Y) = arc R X + arc R Y := by
   have : arcAF R (X + Y) = arcAF R X + arcAF R Y := by
     funext i
-    simp only [arcAF, locA_add, Matrix.add_apply, Pi.add_apply]
+    simp only [arcAF, locA_add, Pi.add_apply]
     split_ifs <;> simp
   rw [arcA_eq, arcA_eq, arcA_eq, this, map_add]
 
 theorem arc_realAd' (R : RD d) (t : ℝ) (X : Mx F E d.m d.n) : arc R (realAd F t • X) = t • arc R X := by
   have : arcAF R (realAd F t • X) = t • arcAF R X := by
     funext i
-    simp only [arcAF, locA_realAd, Matrix.smul_apply, Pi.smul_apply, smul_eq_mul]
+    simp only [arcAF, locA_realAd, Pi.smul_apply, smul_eq_mul]
     split_ifs <;> simp
   rw [arcA_eq, arcA_eq, this, map_smul]
 
@@ -86,7 +86,7 @@ theorem gau_eq' (R : RD d) (X : Mx F E d.m d.n) : gau R X = (Real.exp (-(2 * Rea
     rw [EuclideanSpace.norm_eq, Real.sq_sqrt (Finset.sum_nonneg fun _ _ => sq_nonneg _)]
     simp only [Fintype.sum_prod_type, Fintype.sum_bool, arc, Real.norm_eq_abs, sq_abs]
     refine Finset.sum_congr rfl fun w _ => Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun i _ => ?_
-    simp only [EuclideanSpace.equiv, if_true, if_false]
+    simp only [EuclideanSpace.equiv]
     rw [Complex.sq_norm, Complex.normSq_apply]
     simp [sq]
   simp only [gau, fP, evX, map_one, one_mul, gs]

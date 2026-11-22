@@ -260,7 +260,7 @@ theorem lb_D_sq {K : Type} [Field K] (k r : ℕ) (c : K) : lb_D k r c * lb_D k r
   rw [Matrix.diagonal_mul_diagonal]
   congr 1
   funext a
-  split_ifs <;> simp [sq, mul_inv]
+  split_ifs <;> simp [sq]
 
 theorem elementary_divisor_basis (h : HidaSetting p n' W Qq O Kf ι σ j w) (m r : ℕ) (lam0 : Fin n' → Fin (m + 1) → ℤ)
     (hd : IsDominant lam0) (e : Edge W Qq (m + 1)) (he : IsEdge p n' r e) :

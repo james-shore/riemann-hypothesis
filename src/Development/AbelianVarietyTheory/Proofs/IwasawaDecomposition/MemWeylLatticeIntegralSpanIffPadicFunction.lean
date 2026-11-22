@@ -109,7 +109,7 @@ theorem mem_delW_iff {p : ℕ} [Fact p.Prime] (lam : ι → DomWeight n) (Z : ZB
         exact mul_le_one₀ hr (norm_nonneg _) (IsUltrametricDist.norm_intCast_le_one _ _)
       · funext y
         rw [prod_eval_eq_evM, ← hz]
-        simp only [evM, map_sum, map_zsmul, zsmul_eq_mul, map_mul, map_intCast, Finset.mul_sum]
+        simp only [evM, map_sum, zsmul_eq_mul, map_mul, map_intCast, Finset.mul_sum]
         refine Finset.sum_congr rfl fun i _ => ?_
         ring
     | zero => exact ⟨0, fun _ => by simp, by funext y; simp⟩
@@ -157,7 +157,7 @@ theorem mem_delW_iff {p : ℕ} [Fact p.Prime] (lam : ι → DomWeight n) (Z : ZB
             a * evM (MvPolynomial.map (Int.castRingHom ℂ_[p]) (z • x)) v) =
             z • (fun v => a * evM (MvPolynomial.map (Int.castRingHom ℂ_[p]) x) v) := by
           funext v
-          simp only [evM, map_zsmul, zsmul_eq_mul, map_mul, map_intCast, Pi.smul_apply, smul_eq_mul]
+          simp only [evM, zsmul_eq_mul, map_mul, map_intCast, Pi.smul_apply]
           ring
         rw [e]
         exact zsmul_mem hx z

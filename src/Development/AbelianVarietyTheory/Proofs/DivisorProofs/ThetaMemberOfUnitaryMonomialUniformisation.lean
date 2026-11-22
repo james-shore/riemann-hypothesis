@@ -54,7 +54,7 @@ theorem member_of_monomial_unif : ∀ (E : Type) [Field E] [NumberField E] [IsCM
     refine ⟨w * Units.map ρ.toMonoidHom u₀, ?_⟩
     have hmo : mono !![(1 : ℤ)] r β mu = ρ (∏ i, s i ^ n i) := by
       simp only [mono, qW, Finset.univ_unique, Fin.default_eq_zero, Finset.sum_singleton, Matrix.of_apply,
-        Matrix.cons_val', Matrix.cons_val_fin_one, Matrix.empty_val', one_mul, map_prod, map_pow]
+        Matrix.cons_val', Matrix.cons_val_fin_one, Matrix.empty_val', map_prod, map_pow]
       refine Finset.prod_congr rfl fun i _ => ?_
       rw [hn i, ← hr i, ← pow_mul]
       congr 1

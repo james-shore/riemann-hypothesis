@@ -58,11 +58,6 @@ theorem IsCM.localization_atPrime (h : IsCM R) (P : Ideal R) [P.IsPrime] :
   have hfin : P.height ≠ ⊤ := by
     first
     | exact Ideal.height_ne_top (Ideal.IsPrime.ne_top ‹_›)
-    | exact (Ideal.height_lt_top (Ideal.IsPrime.ne_top ‹_›)).ne
-    | exact Ideal.height_ne_top ‹_›
-    | (rw [Ideal.IsPrime.height_eq_primeHeight]; exact (Ideal.primeHeight_lt_top P).ne)
-    | (rw [Ideal.height_eq_primeHeight P]; exact (Ideal.primeHeight_lt_top P).ne)
-    | exact (Ideal.primeHeight_lt_top P).ne
   refine ⟨inferInstance, P.height.toNat, ?_,
     h.depthGE_localization_of_le_height P (by rw [ENat.coe_toNat hfin])⟩
   rw [IsLocalization.AtPrime.ringKrullDim_eq_height P (Localization.AtPrime P)]

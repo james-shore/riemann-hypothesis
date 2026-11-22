@@ -53,9 +53,7 @@ theorem leg (hP : ∀ β ∈ Λ2, ∀ x ∈ Λ1, pr P β x ∈ O) {up φp uq φq
   have hdot : ∀ (V W : Fin n → K) (t : K), (V + t • W) ⬝ᵥ up = V ⬝ᵥ up + t * (W ⬝ᵥ up) := by
     intro V W t
     first
-    | (simp only [add_dotProduct, smul_dotProduct, smul_eq_mul]; done)
-    | (simp; done)
-    | (simp [dotProduct, add_mul, Finset.sum_add_distrib, Finset.mul_sum, mul_assoc]; done)
+    | (simp only [add_dotProduct, smul_dotProduct, smul_eq_mul])
   obtain ⟨γ2, hγ2⟩ : ∃ γ2 : Fin n → K, γ2 = φq - (pr P φq up * (pr P φp up)⁻¹) • φp := ⟨_, rfl⟩
   have hγ2u : (γ2 ᵥ* P) ⬝ᵥ up = 0 := by
     rw [← pr_eq_vecMul, hγ2, pr_sub_left, pr_smul_left]
@@ -63,13 +61,11 @@ theorem leg (hP : ∀ β ∈ Λ2, ∀ x ∈ Λ1, pr P β x ∈ O) {up φp uq φq
   have hγ2P : γ2 ᵥ* P = φq ᵥ* P - (pr P φq up * (pr P φp up)⁻¹) • (φp ᵥ* P) := by
     subst hγ2
     first
-    | (simp only [sub_vecMul, vecMul_smul]; done)
-    | (simp only [sub_vecMul, smul_vecMul]; done)
-    | (simp [sub_vecMul]; done)
-    | (ext j; simp [vecMul, dotProduct, sub_mul, Finset.sum_sub_distrib, Finset.mul_sum, mul_assoc]; done)
+    | (simp only [sub_vecMul]; done)
+    | (simp only [sub_vecMul, smul_vecMul])
   have hγ2mem : γ2 ∈ Λ2 := by
     have hs : pr P φq up * (pr P φp up)⁻¹ ∈ O := by
-      first | exact mul_mem hb hcpi | exact O.mul_mem _ _ hb hcpi
+      first | exact mul_mem hb hcpi
     rw [hγ2]
     exact Λ2.sub_mem hφq (smem O hs hφp)
   have hγ2a : ∀ i, pr P γ2 (a i) = 0 ∧ pr P γ2 (a' i) = 0 := fun i => by
@@ -87,9 +83,9 @@ theorem leg (hP : ∀ β ∈ Λ2, ∀ x ∈ Λ1, pr P β x ∈ O) {up φp uq φq
     rw [hγ2u]
     ring
   have hn1 : -(pr P φp uq)⁻¹ ∈ O := by
-    first | exact neg_mem hdi | exact O.neg_mem _ hdi
+    first | exact neg_mem hdi
   have hn2 : -(pr P φq uq)⁻¹ ∈ O := by
-    first | exact neg_mem hcqi | exact O.neg_mem _ hcqi
+    first | exact neg_mem hcqi
   have hT1 := isAdmissible_rankOneGL hP (uq - up) φp _ _ h1 hcpi hn1 (Λ1.sub_mem huq hup) hφp hwα1 hφpa
   have hT2 := isAdmissible_rankOneGL hP up γ2 _ _ h2 hn2 hcqi hup hγ2mem hupα hγ2a
   refine ⟨rankOneUnitGL (uq - up) (φp ᵥ* P) _ _ h1 * rankOneUnitGL up (γ2 ᵥ* P) _ _ h2,

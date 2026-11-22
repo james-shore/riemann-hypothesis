@@ -68,9 +68,7 @@ theorem exists_fg_subst {D : D7} {a b : ℕ} (τ : D.what₂.Tau) (ε : Fin a �
   first
   | exact @_root_.GlobalTheory.SubstitutionFinitelyGenerated.subst_mem_fg
   | exact _root_.GlobalTheory.SubstitutionFinitelyGenerated.subst_mem_fg
-  | (apply _root_.GlobalTheory.SubstitutionFinitelyGenerated.subst_mem_fg <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SubstitutionFinitelyGenerated.subst_mem_fg <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SubstitutionFinitelyGenerated.subst_mem_fg <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.SubstitutionFinitelyGenerated.subst_mem_fg)
   | (intros; exact _root_.GlobalTheory.SubstitutionFinitelyGenerated.subst_mem_fg ..)
 
 section Oriented

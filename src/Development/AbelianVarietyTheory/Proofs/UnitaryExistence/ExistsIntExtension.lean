@@ -56,8 +56,6 @@ theorem exists_int_smul_mem {V : Type} [AddCommGroup V] [Module E V] [Module (ù
   | exact @_root_.GlobalTheory.IntMulMem.exists_int_mul_mem
   | exact _root_.GlobalTheory.IntMulMem.exists_int_mul_mem
   | (apply _root_.GlobalTheory.IntMulMem.exists_int_mul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntMulMem.exists_int_mul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntMulMem.exists_int_mul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntMulMem.exists_int_mul_mem ..)
 
 variable [IsCMField E]

@@ -95,7 +95,7 @@ theorem incl_osmul (c : 𝓞 I.E) (x : Fin I.n → I.E) :
     incl I (c • x) = (⟨Formalism.UG.inclE (F := I.F) (Af I.F) (c : I.E), inclE_mem' I c⟩ : IntAf I.F I.E) •
       incl I x := by
   funext i
-  simp only [incl, Pi.smul_apply, Subring.smul_def, smul_eq_mul, Algebra.smul_def, map_mul]
+  simp only [incl, Pi.smul_apply, Algebra.smul_def, map_mul]
   rfl
 
 theorem mem_L_of (h3 : LocGlob) {x : Fin I.n → I.E} (hx : incl I x ∈ I.Lf) : x ∈ I.L := by

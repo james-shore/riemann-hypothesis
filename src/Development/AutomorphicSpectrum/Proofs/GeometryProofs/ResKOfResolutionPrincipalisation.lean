@@ -91,11 +91,9 @@ theorem resK_of_resolution_principalisation (H₁ : ResolutionCharZero) (H₂ : 
   have : CompactSpace X₁ := by
     first
     | exact QuasiCompact.compactSpace_of_compactSpace (s ≫ i ≫ PSpace.str K M)
-    | exact (quasiCompact_over_affine_iff (s ≫ i ≫ PSpace.str K M)).mp inferInstance
   have : IsLocallyNoetherian X₁ := by
     first
     | exact LocallyOfFiniteType.isLocallyNoetherian (s ≫ i ≫ PSpace.str K M)
-    | infer_instance
   have : IsNoetherian X₁ := by first | infer_instance | exact ⟨⟩
   have : NoetherianSpace X₁ := inferInstance
   have hI : ∀ C ∈ irreducibleComponents X₁, ¬ C ⊆ (I.support : Set X₁) := by
@@ -124,7 +122,6 @@ theorem resK_of_resolution_principalisation (H₁ : ResolutionCharZero) (H₂ : 
   have : CompactSpace X₂ := by
     first
     | exact QuasiCompact.compactSpace_of_compactSpace (t ≫ s ≫ i ≫ PSpace.str K M)
-    | exact (quasiCompact_over_affine_iff (t ≫ s ≫ i ≫ PSpace.str K M)).mp inferInstance
   have hsm : Smooth ((t ≫ s) ≫ i ≫ PSpace.str K M) := by simpa using hsm₂
   obtain ⟨hDim, hC⟩ := GlobalTheory.T.coords_statement K D X₂ ((t ≫ s) ≫ i ≫ PSpace.str K M) ((t ≫ s) ⁻¹ᵁ U) _ hT inferInstance hsm hd₂
     (relDim_preimage (t ≫ s) _ U hU) hsncT

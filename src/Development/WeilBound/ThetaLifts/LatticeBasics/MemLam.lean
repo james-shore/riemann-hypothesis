@@ -158,12 +158,12 @@ theorem dich [IsLocalRing O] (ψ : AddChar K ℂ) (hψ : ∀ x, (∀ y : O, ψ (
         a • (h.1 * (A2.map (algebraMap O K) * r.map (algebraMap O K))) = h.1 - 1 := by
       have h2 := congrArg (fun M => M * r.map (algebraMap O K)) hsum
       simp only [Matrix.add_mul, Matrix.sub_mul, Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_assoc, hyr,
-        Matrix.mul_one, Matrix.one_mul] at h2
+        Matrix.mul_one] at h2
       exact h2
     let P : Matrix (Fin n) (Fin n) O := 1 + a • (-(A2 * r))
     let Q : Matrix (Fin n) (Fin n) O := 1 + a • (A1 * r)
     have hPm : P.map (algebraMap O K) = 1 - a • (A2.map (algebraMap O K) * r.map (algebraMap O K)) := by
-      simp only [P, Q]
+      simp only [P]
       rw [Matrix.map_add _ (map_add _), hm1, Matrix.map_smul _ a hf, Matrix.map_neg _ (map_neg _),
         Matrix.map_mul, smul_neg, sub_eq_add_neg]
     have hQm : Q.map (algebraMap O K) = 1 + a • (A1.map (algebraMap O K) * r.map (algebraMap O K)) := by

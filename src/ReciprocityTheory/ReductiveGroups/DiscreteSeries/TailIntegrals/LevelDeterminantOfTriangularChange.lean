@@ -11,7 +11,7 @@ namespace BL
 
 theorem Iic_zero (n : ℕ) : Finset.Iic (0 : Fin (n + 1)) = {0} := by
   ext a
-  simp [Fin.le_zero_iff]
+  simp
 
 section Lv
 variable {k r' : ℕ}
@@ -100,7 +100,7 @@ variable (τ : Matrix (Fin (r' + 1)) (Fin (r' + 1)) ℂ)
 theorem tt_su (a b : Fin (r' + 1)) : tt τ (su b) (su a) = τ b a := by
   unfold tt
   rw [if_neg (by simp [su]), dif_neg (by simp [su])]
-  congr 1 <;> ext <;> simp [su]
+  congr 1 <;> ext
 
 theorem tt_00 : tt τ 0 0 = 1 := by
   simp [tt]

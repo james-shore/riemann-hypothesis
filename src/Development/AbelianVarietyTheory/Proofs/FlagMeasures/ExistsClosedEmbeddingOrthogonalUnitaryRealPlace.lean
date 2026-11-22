@@ -25,7 +25,7 @@ theorem realUJ_eq {n : ℕ} (ε : Fin n → Bool) :
   have hc : ∀ M : Matrix (Fin n) (Fin n) ℂ, Formalism.UG.cT (starRingEnd ℂ) M = Mᴴ := by
     intro M
     ext i j
-    simp [Formalism.UG.cT, Matrix.conjTranspose_apply, Complex.star_def]
+    simp [Formalism.UG.cT, Matrix.conjTranspose_apply]
   ext g
   change Formalism.UG.cT (starRingEnd ℂ) (g : Matrix (Fin n) (Fin n) ℂ) * Formalism.REAL.Jm ε * g = Formalism.REAL.Jm ε ↔
     (g : Matrix (Fin n) (Fin n) ℂ)ᴴ * Formalism.REAL.Jm ε * g = Formalism.REAL.Jm ε
@@ -55,7 +55,7 @@ theorem exists_closedEmbedding_unitary_orthogonal (n m : ℕ) (ε : Fin n → Bo
   have hcT : ∀ {p q : ℕ} (M : Matrix (Fin p) (Fin q) ℂ), Formalism.UG.cT (starRingEnd ℂ) M = Mᴴ := by
     intro p q M
     ext i k
-    simp [Formalism.UG.cT, Matrix.conjTranspose_apply, Complex.star_def]
+    simp [Formalism.UG.cT, Matrix.conjTranspose_apply]
   have hstar : (fun i => starRingEnd ℂ (x₀ i)) = star x₀ := by
     funext i
     simp [Complex.star_def]

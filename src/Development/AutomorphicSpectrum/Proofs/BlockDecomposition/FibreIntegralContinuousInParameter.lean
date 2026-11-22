@@ -41,7 +41,7 @@ theorem continuousOn_fibre_integral_of_subset : ∀ (V X Y : Type) [TopologicalS
       _ ≤ ENNReal.ofReal M := ENNReal.ofReal_le_ofReal ((le_abs_self _).trans (hM b hb))
       _ = (M.toNNReal : ℝ≥0∞) := rfl
   rintro ⟨p₀, b₀⟩ ⟨hp₀, hb₀⟩
-  simp only [Set.mem_prod] at hp₀ hb₀ ⊢
+  simp only at hp₀ hb₀ ⊢
   refine ContinuousAt.continuousWithinAt ?_
   obtain ⟨D, hDn, hDB, hDc⟩ := local_compact_nhds (hB.mem_nhds hb₀)
   obtain ⟨c, hc⟩ := hbd D hDc hDB

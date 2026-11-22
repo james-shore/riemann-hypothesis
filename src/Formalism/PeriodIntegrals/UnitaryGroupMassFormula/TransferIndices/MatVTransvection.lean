@@ -74,7 +74,7 @@ theorem matV_transvection {n : Type} [Fintype n] [DecidableEq n] (i j : n) (c : 
     Finset.sum_add_distrib, ite_smul, one_smul, zero_smul, Pi.add_apply]
   by_cases hk : i = k
   · subst hk; simp
-  · simp [hk, Pi.single_apply, Ne.symm hk]
+  · simp [hk, Ne.symm hk]
 
 theorem idx_matV (hI : IdxCalc) (w : HeightOneSpectrum (𝓞 K)) {n : Type} [Fintype n] [DecidableEq n]
     (M : Submodule (𝓞 K) V) (hM : M.FG) (A : Matrix n n K) (hA : A.det ≠ 0) :
@@ -118,7 +118,7 @@ theorem idx_matV (hI : IdxCalc) (w : HeightOneSpectrum (𝓞 K)) {n : Type} [Fin
       funext k
       by_cases hk : k = t.i
       · subst hk; simp
-      · simp [Pi.single_apply, hk]
+      · simp [hk]
     have hker0 : ∀ z : n → V, φ z = 0 ↔ ∀ k, k ≠ t.i → z k = 0 := by
       intro z
       rw [hφapp]
@@ -130,7 +130,7 @@ theorem idx_matV (hI : IdxCalc) (w : HeightOneSpectrum (𝓞 K)) {n : Type} [Fin
         funext k
         by_cases hk : k = t.i
         · subst hk; simp
-        · simp [Pi.single_apply, hk, h k hk]
+        · simp [hk, h k hk]
     have hfix : ∀ z : n → V, φ z = 0 → matV (Matrix.transvection t.i t.j t.c) z = z := by
       intro z hz
       rw [matV_transvection, (hker0 z).mp hz t.j (Ne.symm t.hij), smul_zero, Pi.single_zero, add_zero]

@@ -101,7 +101,7 @@ theorem assoc_eval (p : ℕ) (O A : Type) [CommRing O] [CommRing A] [Bialgebra O
           intro c
           induction c using TensorProduct.induction_on with
           | zero => simp
-          | tmul a b => simp [Φ₁, Algebra.TensorProduct.one_def]
+          | tmul a b => simp [Φ₁]
           | add a b ha hb => rw [map_add, ha, hb, TensorProduct.add_tmul, map_add]
         rw [key]
         simp [Φ₂]

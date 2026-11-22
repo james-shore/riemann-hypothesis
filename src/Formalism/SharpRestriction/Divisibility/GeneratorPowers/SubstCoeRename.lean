@@ -20,13 +20,9 @@ theorem subst_coe_rename {σ τ υ : Type} {R : Type} [CommRing R] [Finite σ] [
   have h1 : MvPowerSeries.HasSubst a := by
     first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero ha
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun s => by rw [ha s]; exact IsNilpotent.zero)
-    | exact MvPowerSeries.hasSubst_of_constantCoeff_nilpotent (fun s => by rw [ha s]; exact IsNilpotent.zero)
   have h2 : MvPowerSeries.HasSubst (fun t => a (ρ t)) := by
     first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero (fun t => ha (ρ t))
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun s => by rw [(fun t => ha (ρ t)) s]; exact IsNilpotent.zero)
-    | exact MvPowerSeries.hasSubst_of_constantCoeff_nilpotent (fun s => by rw [(fun t => ha (ρ t)) s]; exact IsNilpotent.zero)
   rw [← MvPowerSeries.coe_substAlgHom h1, ← MvPowerSeries.coe_substAlgHom h2]
   erw [MvPowerSeries.substAlgHom_coe, MvPowerSeries.substAlgHom_coe, MvPolynomial.aeval_rename]
   rfl
@@ -104,7 +100,6 @@ theorem phOneVal_holds : ExpGJ.PhOneValSt := by
       intro j
       unfold psIn
       rw [subst_coe_rename (fun p : Fin 3 × Fin C.d => P3 p.1 p.2) (fun p => hP3c p.1 p.2)]
-      beta_reduce
       rw [psJet_subst_trunc m (fun t : Fin 2 × Fin C.d => P3 ((![0, 1] : Fin 2 → Fin 3) t.1) t.2)
         (fun t => hP3c _ t.2), ← law_φa c hφ u0 u1 j]
       congr 2

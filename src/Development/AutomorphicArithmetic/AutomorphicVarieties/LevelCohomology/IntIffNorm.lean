@@ -176,7 +176,7 @@ theorem UpperTheory.V.X.soVec :
   have hθO : ∀ g, ι (θO g : O) = θ g := by
     intro g
     have a1 : θO g * ψO g * chiO k Ω l O g ^ e = 1 := by
-      simp only [θO, MonoidHom.mul_apply, MonoidHom.inv_apply, MonoidHom.zpow_apply, zpow_neg, zpow_natCast,
+      simp only [θO, MonoidHom.mul_apply, MonoidHom.inv_apply, zpow_neg, zpow_natCast,
         MonoidHom.pow_apply]
       rw [mul_comm (ψO g)⁻¹, inv_mul_cancel_right, inv_mul_cancel]
     have a2 := congrArg (fun u : Oˣ => ι u) a1

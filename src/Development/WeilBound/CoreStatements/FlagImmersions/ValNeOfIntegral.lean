@@ -142,7 +142,6 @@ theorem exists_flat (y : (Σ k, ι k) → Ω) (hP : IsMultiHomogIdeal (mCoordIde
       obtain ⟨d, h1, h2⟩ := hcov z hz
       obtain ⟨n1, n2⟩ := NZ_smul h1 h2 hc
       have hz' := mcPts_smul hP c hc hz
-      beta_reduce
       rw [hψ _ hz' d h1 n1, hψ _ hz d h1 h2, n2, Chg.log_h_smul F hc hz.1, hFa]
       ring) (by
       intro z hz

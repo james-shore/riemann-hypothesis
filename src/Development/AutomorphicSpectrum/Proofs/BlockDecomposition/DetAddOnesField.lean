@@ -23,8 +23,7 @@ theorem det_add_ones_field {K : Type*} [Field K] {n : ℕ} (B : Matrix (Fin n) (
   have h1 : ∀ C : Matrix Unit Unit K, C.det = C () () := fun C => det_unique C
   rw [h1, hinv]
   simp only [Matrix.add_apply, Matrix.one_apply_eq, Matrix.mul_apply, Matrix.smul_apply,
-    replicateRow_apply, replicateCol_apply, one_mul, mul_one, smul_eq_mul, Finset.univ_unique,
-    Finset.sum_singleton]
+    replicateRow_apply, replicateCol_apply, one_mul, mul_one, smul_eq_mul]
   rw [mul_add, mul_one]
   congr 1
   simp only [← Finset.mul_sum]

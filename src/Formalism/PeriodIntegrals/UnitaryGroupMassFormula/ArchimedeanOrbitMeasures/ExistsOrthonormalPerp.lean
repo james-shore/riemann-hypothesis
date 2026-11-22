@@ -102,7 +102,7 @@ theorem exists_orthonormal_perp {m k : ℕ} (hn : n = m + k) (w : Fin m → Fin 
     rw [map_smul, hker, smul_zero]
   · intro i j
     dsimp only
-    simp only [LinearMap.map_smulₛₗ, LinearMap.smul_apply, map_smul, smul_eq_mul, RingHom.id_apply]
+    simp only [LinearMap.map_smulₛₗ, LinearMap.smul_apply, map_smul, smul_eq_mul]
     split_ifs with hij
     · subst hij
       set z := ((v (Fin.castLE hW i) : LinearMap.ker L) : Fin n → ℂ) with hzdef
@@ -191,7 +191,7 @@ private theorem wittLin_holds_lemma_2 (c : Matrix (Fin n) (Fin n) ℂ) (i j : Fi
   unfold Formalism.REAL.Jm
   rw [Matrix.mul_apply]
   simp only [Matrix.mul_diagonal]
-  simp [mulVec_diagonal, mulVec_single_one, dotProduct, conjTranspose_apply, mul_assoc]
+  simp [mulVec_diagonal, dotProduct, conjTranspose_apply]
 
 theorem wittLin_holds : WittLin := by
   intro n m k hn ε w hli hpos

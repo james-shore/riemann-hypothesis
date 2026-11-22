@@ -19,8 +19,6 @@ theorem norm_index_range (l : ℕ) [Fact l.Prime] {κ : Type} [Fintype κ] [Deci
   | exact @_root_.GlobalTheory.NormDetIndex.norm_det_eq_norm_index
   | exact _root_.GlobalTheory.NormDetIndex.norm_det_eq_norm_index
   | (apply _root_.GlobalTheory.NormDetIndex.norm_det_eq_norm_index <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NormDetIndex.norm_det_eq_norm_index <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NormDetIndex.norm_det_eq_norm_index <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NormDetIndex.norm_det_eq_norm_index ..)
 
 theorem norm_card_eq_torsion (l : ℕ) [hl : Fact l.Prime] (K : Type) [AddCommGroup K] [Finite K]

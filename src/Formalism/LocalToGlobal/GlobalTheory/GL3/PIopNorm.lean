@@ -258,7 +258,7 @@ theorem ep_mul_conj (T : Tor D) (x x' y : VC D N N') :
 
 theorem ep_eq_one_iff (t : ℝ) :
     Complex.exp (2 * (Real.pi : ℂ) * Complex.I * (t : ℂ)) = 1 ↔ ∃ n : ℤ, t = n := by
-  first | exact UpperTheory.Reformulated.B.Qj15.ep_eq_one_iff .. | (apply UpperTheory.Reformulated.B.Qj15.ep_eq_one_iff <;> assumption) | (intros; apply UpperTheory.Reformulated.B.Qj15.ep_eq_one_iff <;> assumption) | (apply @UpperTheory.Reformulated.B.Qj15.ep_eq_one_iff <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.Qj15.ep_eq_one_iff <;> assumption) | (apply @UpperTheory.Reformulated.B.Qj15.ep_eq_one_iff <;> first | assumption | infer_instance) | exact @UpperTheory.Reformulated.B.Qj15.ep_eq_one_iff t
+  first | exact UpperTheory.Reformulated.B.Qj15.ep_eq_one_iff .. | exact @UpperTheory.Reformulated.B.Qj15.ep_eq_one_iff t
 
 theorem int_shift {M : AddSubgroup (VC D N N')} [Countable M] {t : Set (VC D N N')}
     (ht : IsAddFundamentalDomain M t volume) (f : VC D N N' → ℂ)

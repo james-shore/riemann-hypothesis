@@ -52,7 +52,7 @@ theorem discriminant_bound_sqrt_neg_prime (b : Module.Basis J ℤ O) (d : ℕ) (
   let C : Matrix J J ℤ := fun i j => (Algebra.traceMatrix ℤ b * Algebra.leftMulMatrix b r) i j / d
   have hTL : Algebra.traceMatrix ℤ b * Algebra.leftMulMatrix b r = (d : ℤ) • C := by
     ext i j
-    simp only [C, Matrix.smul_apply, smul_eq_mul]
+    simp only [C]
     exact (Int.mul_ediv_cancel' (hent i j)).symm
   have hL2 : (Algebra.leftMulMatrix b r).det ^ 2 = (-(d : ℤ)) ^ Fintype.card J := by
     rw [sq, ← Matrix.det_mul, ← map_mul, ← sq, hr]

@@ -24,11 +24,6 @@ theorem psd_smul {α : Type} {Y : Finset α} {k : α → α → ℂ} (c : ℝ) (
          simp [Complex.real_smul]
        rw [e]
        exact h.smul hc)
-    | (have e : (Matrix.of fun x y : Y => (c : ℂ) * k x y) = (c : ℂ) • Matrix.of fun x y : Y => k x y := by
-         ext x y
-         simp
-       rw [e]
-       exact h.smul (Complex.zero_le_real.mpr hc))
 
 theorem domScaleTop : DomScaleTop := by
   intro E W _ D T Th lam hlam he hD
@@ -150,7 +145,6 @@ theorem sq_sum (M : ℕ) : ∑ m ∈ Icc 2 (M + 2), (((m : ℕ) : ℝ) ^ 2)⁻¹
       rw [show M + 1 + 2 = (M + 2) + 1 by omega, Finset.sum_Icc_succ_top (by omega)]
       first
         | (push_cast; ring)
-        | (congr 1; push_cast; ring)
     have hc2 : ((M + 1 : ℕ) : ℝ) + 2 = (M : ℝ) + 3 := by push_cast; ring
     rw [hs, hc2]
     have h2 : (0 : ℝ) < (M : ℝ) + 2 := by positivity
@@ -175,7 +169,6 @@ theorem pow_bd (m n : ℕ) (hm : 2 ≤ m) (hn : 2 ≤ n) :
     rw [pow_add, mul_inv]
     first
       | ring
-      | (norm_num; ring)
   rw [hL, hR]
   exact mul_le_mul_of_nonneg_left (inv_anti₀ (by positivity) hpk) (by positivity)
 
@@ -195,8 +188,6 @@ theorem densSum : DensSum := by
     have h := hf m
     first
       | exact_mod_cast h
-      | (norm_cast; convert h)
-      | norm_cast
   have hC : ∑ m ∈ S.image l, (((m : ℕ) : ℝ) ^ n)⁻¹ ≤
       ∑ m ∈ Icc 2 (S.sup l + 2), (((m : ℕ) : ℝ) ^ n)⁻¹ := by
     apply Finset.sum_le_sum_of_subset_of_nonneg

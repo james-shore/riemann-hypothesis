@@ -94,7 +94,7 @@ theorem smul_mat_emb_sub_one (σ : E →ₐ[F] E) {n : ℕ} (J : Matrix (Fin n) 
     · subst h
       rw [Matrix.one_apply_eq, Matrix.one_apply_eq, Matrix.one_apply_eq, mul_one, mul_one, map_add, map_sub, map_sub, map_sub]
       abel
-    · simp only [Matrix.one_apply_ne h, mul_zero, zero_add, sub_zero, map_zero]
+    · simp only [Matrix.one_apply_ne h, mul_zero, zero_add, sub_zero]
   rw [this]
   exact key _
 

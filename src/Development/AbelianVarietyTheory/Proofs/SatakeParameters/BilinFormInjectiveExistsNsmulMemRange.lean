@@ -15,7 +15,7 @@ theorem bilinForm_injective_exists_mul_mem_range (La : Type) [AddCommGroup La]
 
   have key : ∀ (c : ι → ℤ) (j : ι), EF (∑ i, c i • b i) (b j) = (c ᵥ* A) j := by
     intro c j
-    simp [map_sum, map_smul, LinearMap.sum_apply, vecMul, dotProduct, A, smul_eq_mul]
+    simp [map_sum, map_smul, LinearMap.sum_apply, vecMul, dotProduct, A]
   have hdet : A.det ≠ 0 := by
     intro h0
     obtain ⟨v, hv, hvA⟩ := (Matrix.exists_vecMul_eq_zero_iff (M := A)).2 h0

@@ -78,7 +78,7 @@ theorem UpperTheory.Kd.L.thcocd :
     unfold sgD
     congr 1
     funext γ
-    simp only [IsDiam, hδu, ZMod.coe_unitOfCoprime, ZMod.natCast_zmod_val, ZMod.natCast_val, ZMod.cast_id', id]
+    simp only [IsDiam, hδu, ZMod.coe_unitOfCoprime, ZMod.natCast_val, ZMod.cast_id', id]
   have hφ' : GlobalTheory.Glue.IsThB X A N l n (X.diam N l (δu : ZMod N).val
       (GlobalTheory.KA.push (redM l n m (N * N)) (UpperTheory.Kd.L.bTop X l n m N bB) s y)) φ := by
     rw [show X.diam N l ((δu : ZMod N).val) = X.diam N l δ by unfold Tower.diam; rw [hsg]]

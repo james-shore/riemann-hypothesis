@@ -143,7 +143,7 @@ theorem isDerivAt0_all (e : Flat.FamExp G M B ψ) {b : Fin n → ℂ} (hb : b �
       funext c
       by_cases h : c = a
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     have := hpt (Pi.single a 1)
     rwa [h3] at this
   have hsm : ∀ (c : ℂ) (w : Fin g → ℂ), IsDerivAt0 (fun z => (e.ex b z).left) w (N.pt w).left →

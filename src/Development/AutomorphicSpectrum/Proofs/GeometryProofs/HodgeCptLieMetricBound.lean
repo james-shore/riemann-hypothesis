@@ -36,7 +36,7 @@ theorem isGrpPullback_iso {S : Scheme.{0}} {A B : Over S} [GrpObj A] [GrpObj B] 
   · haveI : IsIso e.hom.left := ((Over.forget S).mapIso e).isIso_hom
     exact IsPullback.of_horiz_isIso ⟨by simp⟩
   · have e₁ : (x * y) ≫ e.hom = (x ≫ e.hom) * (y ≫ e.hom) := by
-      first | exact Hom.mul_comp _ _ _ | exact MonObj.mul_comp _ _ _ | exact CategoryTheory.Hom.mul_comp _ _ _
+      first | exact Hom.mul_comp _ _ _ | exact MonObj.mul_comp _ _ _
     have : (x * y).left ≫ e.hom.left = ((x ≫ e.hom) * (y ≫ e.hom)).left := by
       rw [← e₁]; rfl
     rw [this]

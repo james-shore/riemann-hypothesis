@@ -47,7 +47,7 @@ theorem val_gPt_of_stalk : ∀ (o Ω : Type) [CommRing o] [Field Ω] [Algebra o 
       rw [e, CategoryTheory.Functor.map_id, Category.comp_id]
     unfold valR
     erw [dif_pos hU0, eA]
-    simp only [CommRingCat.comp_apply]
+    simp only
     erw [Iso.inv_hom_id_apply]
     rfl
   rw [e1]

@@ -63,7 +63,7 @@ private theorem star_part (Φ : R →+* R') (σ : R →+* R) (σ' : R' →+* R')
       map_sub, map_one, hσe]
     rcases eq_or_ne i k with rfl | h
     · simp
-    · simp [Matrix.one_apply, h, h.symm]
+    · simp [h, h.symm]
   rw [hGs, mulG he]
   have hab : (a'.map σ)ᵀ * (a.map σ)ᵀ = 1 := by
     rw [← Matrix.transpose_mul, ← Matrix.map_mul, haa, Matrix.map_one _ (map_zero σ) (map_one σ), Matrix.transpose_one]
@@ -85,7 +85,7 @@ private theorem star_part (Φ : R →+* R') (σ : R →+* R) (σ' : R' →+* R')
       ext i k
       rcases eq_or_ne i k with rfl | h
       · simp
-      · simp [Matrix.one_apply, h]
+      · simp [h]
     rw [e1, Matrix.map_mul, Matrix.map_mul, Matrix.map_mul, Matrix.map_mul, hS Y, hX, h3, Matrix.mul_smul, Matrix.smul_mul, h2]
   rw [smul_eq_of_map Φ hker h1, smul_smul, ← add_smul]
 
@@ -192,7 +192,7 @@ theorem UpperTheory.Gal.W2.Seed.pJSurj :
     rw [hμ]
     rcases eq_or_ne i k with rfl | hik
     · simp
-    · simp [Matrix.one_apply, hik]
+    · simp [hik]
   have hXsX : Xs * X = ((c : AfP p) ⊗ₜ[ℚ] (1 : E)) • (1 : Matrix (Fin n) (Fin n) (AfP p ⊗[ℚ] E)) := by
     have h1 : Xs = ((c : AfP p) ⊗ₜ[ℚ] (1 : E)) • X' := by
       calc Xs = (X' * X) * Xs := by rw [hXX', one_mul]
@@ -238,4 +238,4 @@ theorem UpperTheory.Gal.W2.Seed.pJSurj :
       zero_add, one_mul]
     rcases eq_or_ne i k with rfl | hik
     · simp
-    · simp [Matrix.one_apply, hik]
+    · simp [hik]

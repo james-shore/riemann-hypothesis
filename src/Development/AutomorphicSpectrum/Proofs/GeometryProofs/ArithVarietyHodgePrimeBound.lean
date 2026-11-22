@@ -72,7 +72,7 @@ theorem sub_one_pow_eq {O : Type} [CommRing O] [IsDomain O] {p : ℕ} (hp : p.Pr
   have e1 : (((p - 1 : ℕ) : O) + 1) = (p : O) := by
     rw [← Nat.cast_succ, Nat.succ_eq_add_one, Nat.sub_add_cancel hp.one_le]
   have hu' : (ζ - 1) ^ (p - 1) * (u : O) = (p : O) := by
-    rw [hu]; first | exact e1 | (push_cast; exact e1)
+    rw [hu]; first | exact e1
   rw [← hu', mul_comm]
   exact (Units.mul_inv_cancel_right _ _).symm
 

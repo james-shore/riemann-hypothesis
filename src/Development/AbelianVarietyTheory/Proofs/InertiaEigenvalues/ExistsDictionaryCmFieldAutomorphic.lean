@@ -175,7 +175,6 @@ theorem isAutFormU_phi (hfin : ∀ k ∈ finU L n, R k = 1)
         inv_mem' := fun {a} ha => by
           change RU L n ((a : UA L n)⁻¹) _ = _
           conv_lhs => rw [← ha]
-          change RU L n ((a : UA L n)⁻¹) (RU L n (a : UA L n) _) = _
           rw [GlobalTheory.DefU.RU_RU, inv_mul_cancel, map_one]; rfl }
     refine H.isOpen_of_mem_nhds (g := 1) (Filter.mem_of_superset (hO.mem_nhds h1O) fun k hk => ?_)
     change RU L n (k : UA L n) _ = _

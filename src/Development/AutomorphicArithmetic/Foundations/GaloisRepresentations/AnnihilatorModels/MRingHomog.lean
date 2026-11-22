@@ -17,7 +17,6 @@ private theorem exists_algHom_ker (κ B : Type) [Field κ] [IsAlgClosed κ] [Com
   let e := AlgEquiv.ofBijective (Algebra.ofId κ (B ⧸ p.asIdeal)) hb
   refine ⟨(e.symm : (B ⧸ p.asIdeal) →ₐ[κ] κ).comp (Ideal.Quotient.mkₐ κ p.asIdeal), ?_⟩
   ext x
-  change x ∈ RingHom.ker _ ↔ x ∈ p.asIdeal
   simp [RingHom.mem_ker, Ideal.Quotient.eq_zero_iff_mem]
 
 theorem ringHomog_of : RingHomog := by

@@ -36,7 +36,6 @@ theorem exists_lat (m : ℕ) : ∃ A₀ : AddSubgroup (Fin (m + 1) → k), IsLat
         | exact IsValuativeTopology.isOpen_integer
         | exact Valuation.isOpen_integer _
         | exact (valuation k).isOpen_integer
-        | exact isOpen_integer
     have e : ((AddSubgroup.pi Set.univ fun _ : Fin (m + 1) => (𝒪[k]).toAddSubgroup :
         AddSubgroup (Fin (m + 1) → k)) : Set (Fin (m + 1) → k)) = Set.univ.pi fun _ => (𝒪[k] : Set k) := by
       ext x

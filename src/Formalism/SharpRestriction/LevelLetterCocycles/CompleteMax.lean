@@ -68,7 +68,6 @@ theorem complete_max {l : ℕ} [Fact l.Prime] (LL : FinExt l) :
     by
     first
       | (rw [PadicInt.maximalIdeal_eq_span_p]; exact Ideal.mem_span_singleton_self _)
-      | exact (IsLocalRing.mem_maximalIdeal _).2 (PadicInt.mem_nonunits.2 PadicInt.norm_p_lt_one)
   have hl0 : algebraMap ℤ_[l] ↥(OL LL) (l : ℤ_[l]) ≠ 0 := by
     rw [map_natCast]
     intro h
@@ -80,7 +79,6 @@ theorem complete_max {l : ℕ} [Fact l.Prime] (LL : FinExt l) :
   have hm : IsLocalRing.maximalIdeal ↥(OL LL) = Ideal.span {ϖ} := by
     first
       | exact hϖ.maximalIdeal_eq
-      | exact (IsDiscreteValuationRing.irreducible_iff_uniformizer ϖ).1 hϖ
   have key1 : ∀ (k : ℕ) (x : ↥(OL LL)), x ∈ (IsLocalRing.maximalIdeal ↥(OL LL)) ^ ((e + 1) * k) →
       x ∈ ((IsLocalRing.maximalIdeal ℤ_[l]) ^ k • ⊤ : Submodule ℤ_[l] ↥(OL LL)) := by
     intro k x hx

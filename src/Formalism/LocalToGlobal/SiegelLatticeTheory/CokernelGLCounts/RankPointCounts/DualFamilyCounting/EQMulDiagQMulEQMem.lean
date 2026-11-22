@@ -81,7 +81,7 @@ theorem solveOnto_of_norm (hN : NormOnto) : SolveOnto := by
       (eQ K 𝔭 k a * Z' * eQ K 𝔭 k a)ᴴ * diagQ K 𝔭 k a * (eQ K 𝔭 k a * Z' * eQ K 𝔭 k a) =
       eQ K 𝔭 k a * (W + Pᴴ * Z' + Z'ᴴ * P + Z'ᴴ * (eQ K 𝔭 k a * diagQ K 𝔭 k a * eQ K 𝔭 k a) * Z') * eQ K 𝔭 k a := by
     simp only [conjTranspose_mul, hEh, Matrix.mul_add, Matrix.add_mul, ← Matrix.mul_assoc, h2',
-      ← h1, hEW] <;> abel
+      ← h1, hEW]
   rw [key, hZ', Matrix.mul_zero, Matrix.zero_mul]
 
 theorem discOnto_of_norm (hU : UDModel) (hN : NormOnto) : DiscOnto :=

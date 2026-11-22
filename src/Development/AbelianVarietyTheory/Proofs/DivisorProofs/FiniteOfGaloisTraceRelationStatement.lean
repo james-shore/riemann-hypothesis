@@ -11,4 +11,4 @@ theorem _root_.GlobalTheory.T.finite_of_galois_trace_relation : ∀ (A R C : Typ
     ∀ (a : A), a ≠ 0 → ∀ (n : ℕ) (x y : Fin n → C),
       (∀ g, ∑ i, x i * act g (y i) = if g = 1 then algebraMap R C (algebraMap A R a) else 0) →
     GlobalTheory.GoodEtale.TorsionFreeOver A R C → Module.Finite R C := by
-  first | (exact @GlobalTheory.GoodEtaleFinite.finite_of_trace_relation) | (exact GlobalTheory.GoodEtaleFinite.finite_of_trace_relation) | (intros; apply GlobalTheory.GoodEtaleFinite.finite_of_trace_relation  <;> assumption)
+  first | (exact @GlobalTheory.GoodEtaleFinite.finite_of_trace_relation)

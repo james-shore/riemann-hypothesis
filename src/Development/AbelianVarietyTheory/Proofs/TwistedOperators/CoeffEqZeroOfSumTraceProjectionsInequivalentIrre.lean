@@ -20,8 +20,6 @@ theorem exists_smul_eq_ite {R : Type*} [Ring R] {ι : Type*} [Fintype ι] [Decid
   | exact @_root_.GlobalTheory.OrthogonalProjectionOnto.main
   | exact _root_.GlobalTheory.OrthogonalProjectionOnto.main
   | (apply _root_.GlobalTheory.OrthogonalProjectionOnto.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.OrthogonalProjectionOnto.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.OrthogonalProjectionOnto.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.OrthogonalProjectionOnto.main ..)
 
 end GlobalTheory.TraceSep

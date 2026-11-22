@@ -22,7 +22,7 @@ theorem spinM_vacuum_lowest : ∀ {n : ℕ} {ι : Type} [Fintype ι] [DecidableE
       (if a = e ∧ b = d then (2 : ℂ) • q else 0) - c d e *ᵥ (c a b *ᵥ q) := by
     intro a b d e
     have h := congrArg (fun M => M *ᵥ q) (h1 a b d e)
-    simp only [Matrix.add_mulVec, Matrix.mulVec_mulVec] at h
+    simp only [Matrix.add_mulVec] at h
     simp only [Matrix.mulVec_mulVec]
     rw [eq_sub_iff_add_eq, h]
     split_ifs

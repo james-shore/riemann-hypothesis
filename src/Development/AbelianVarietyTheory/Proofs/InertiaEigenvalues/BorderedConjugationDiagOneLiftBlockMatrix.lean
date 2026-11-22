@@ -14,7 +14,7 @@ theorem embHom_mul_full_mul (k : Type) [CommRing k] (r : ℕ) (g h : Matrix (Fin
   · simp
   · ext i j; simp [Matrix.mul_apply, Matrix.mulVec, dotProduct]
   · ext i j; simp [Matrix.mul_apply, Matrix.vecMul, dotProduct]
-  · ext i j; simp [Matrix.mul_apply]
+  · ext i j; simp
 
 theorem embHom_mulVec_eL (k : Type) [CommRing k] (r : ℕ) (g : Matrix (Fin r) (Fin r) k) :
     embHom r k g *ᵥ eL r k = eL r k := by
@@ -22,8 +22,8 @@ theorem embHom_mulVec_eL (k : Type) [CommRing k] (r : ℕ) (g : Matrix (Fin r) (
   simp only [embHom, MonoidHom.coe_mk, OneHom.coe_mk, eL, Matrix.reindex_apply]
   rw [Matrix.mulVec_single_one]
   refine Fin.lastCases ?_ (fun j => ?_) i
-  · simp [Matrix.transpose_apply, Matrix.submatrix_apply, finSumFinEquiv_symm_last]
-  · simp [Matrix.transpose_apply, Matrix.submatrix_apply, finSumFinEquiv_symm_last, finSumFinEquiv_symm_apply_castSucc]
+  · simp [Matrix.submatrix_apply, finSumFinEquiv_symm_last]
+  · simp [Matrix.submatrix_apply, finSumFinEquiv_symm_last, finSumFinEquiv_symm_apply_castSucc]
 
 theorem eL_vecMul_embHom (k : Type) [CommRing k] (r : ℕ) (g : Matrix (Fin r) (Fin r) k) :
     eL r k ᵥ* embHom r k g = eL r k := by
@@ -37,7 +37,7 @@ theorem eL_vecMul_embHom (k : Type) [CommRing k] (r : ℕ) (g : Matrix (Fin r) (
 theorem act_emb_lift (k : Type) [CommRing k] (r : ℕ) (g : GL (Fin r) k) (Z : Gl r k) (μ l : k) :
     act (GlobalTheory.JR.Step.emb r k g) (GlobalTheory.JR.Step.lift Z μ l) = GlobalTheory.JR.Step.lift (act g Z) μ l := by
   have hinv : ((emb r k g)⁻¹ : GL (Fin (r + 1)) k) = emb r k g⁻¹ := (map_inv _ _).symm
-  simp only [act, lift, hinv, emb, Units.coe_map, MonoidHom.coe_coe]
+  simp only [act, lift, emb, Units.coe_map]
   refine Prod.ext ?_ (Prod.ext ?_ (Prod.ext ?_ rfl))
   · exact embHom_mul_full_mul k r _ _ Z
   · simp only [Matrix.mulVec_smul, embHom_mulVec_eL]

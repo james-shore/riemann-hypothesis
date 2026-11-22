@@ -155,7 +155,6 @@ lemma cont_flowL (ξ : Fin r → E) : Continuous fun s => flowL X ξ s := by
   simp only [Matrix.mul_apply, Data.flowMat, Matrix.of_apply]
   first
   | fun_prop
-  | continuity
 
 lemma cont_dmin (τ : X.Ψ) (i : Fin (r + 1)) :
     Continuous fun x : Frame X.Ψ r => dmin X.Gm x τ i := by
@@ -166,7 +165,6 @@ lemma cont_dmin (τ : X.Ψ) (i : Fin (r + 1)) :
   simp only [gram, Matrix.of_apply, hermC, col, mat]
   first
   | fun_prop
-  | continuity
 
 lemma continuousAt_nfac (la : Wt X.Ψ r) {x0 : Frame X.Ψ r} (hx0 : x0 ∈ X.dom) :
     ContinuousAt (X.nfac la) x0 := by
@@ -239,7 +237,6 @@ theorem fj_diffOn (la : Wt X.Ψ r) (P : Frame X.Ψ r → ℂ) (hP : X.IsBddSec l
     have hec : Continuous fun s : X.Ψ → ℝ => cexp (-(4 * (Real.pi : ℂ) * I) * ∑ τ, (ν τ : ℂ) * (s τ : ℂ)) := by
       first
       | fun_prop
-      | continuity
     exact diffOn_param_bdd h2.choose_spec.2.2.2 (flowL X ξ) (cont_flowL X ξ) (isOpen_dom_upper_bounds X)
       (fun t x hx => (FlowCoefficientBounds.flow_real X hξ hx t la).1) P hP.1.1 _ hec he1 (fj_hbd X la P hP hξ)
   · exact differentiableOn_const 0

@@ -81,7 +81,7 @@ theorem UpperTheory.V.FW.reflOdd :
       intro τ hτ c
       have h1 : τ = cE K := reflOdd_uniq hτ hσl
       subst h1
-      simp only [LinearMap.smul_apply, LinearMap.id_apply, one_smul]
+      simp only [LinearMap.id_apply, one_smul]
       rw [hmk c]
   let Φ : (Cl K ⧸ H →* Multiplicative (ZMod l)) →
       ClEig K 1 (scalRep (ZMod l) (1 : G K (AlgebraicClosure K) →* (ZMod l)ˣ)) σ (1 : ZMod l) :=

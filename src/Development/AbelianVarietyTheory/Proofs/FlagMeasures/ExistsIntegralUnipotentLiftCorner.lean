@@ -95,7 +95,6 @@ theorem lift_corner : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Numb
     have h1 : eI k r a ≠ esI k r b := by simp [Fin.ext_iff, eI, esI]; omega
     have h2 : eI k r a ≠ eI k r b := by simp [Fin.ext_iff, eI]; omega
     simp [h1, h2]
-    first | done | (push_cast; ring)
   · rcases β with p' | a' | p' | a'
     · obtain ⟨⟨a', b'⟩, h'⟩ := p'
       have h'' : a'.val < b'.val := h'

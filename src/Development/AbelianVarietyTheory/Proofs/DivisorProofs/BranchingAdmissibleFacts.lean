@@ -51,7 +51,7 @@ theorem branchingAdmissible_facts {lam : Fin n → ℕ} {d : ℕ} {β : Fin n �
   have hb : ∀ s, b s ≤ lam s := fun s => by
     have h3 := (h2 s).2
     rw [bmH_lamZ_succ] at h3
-    simp only [Function.comp] at h3
+    simp only at h3
     omega
   refine ⟨b, rfl, hb, bmK_antitone lam (fun s => lam s - b s) (bm_IL_of lam _ ?_)⟩
   simpa only [Nat.cast_sub (hb _)] using h2

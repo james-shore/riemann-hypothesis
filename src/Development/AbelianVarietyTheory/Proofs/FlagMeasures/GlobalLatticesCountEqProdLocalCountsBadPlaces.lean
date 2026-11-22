@@ -63,9 +63,6 @@ theorem fibre : ∀ (D : D7) (Z : LocDat D) (FP : ∀ p : PlF D, LocNG.FPair (lo
           refine Submodule.mem_span_singleton.2 ⟨⟨A a b - A' a b, (Z.M p).L.O.sub_mem (hint a b).1 (hint a b).2⟩, ?_⟩
           first
             | (rw [Algebra.smul_def, mul_one]; rfl)
-            | (rw [Submodule.smul_def]; simp)
-            | (simp [Algebra.smul_def])
-            | (erw [smul_eq_mul, mul_one])
             | (change (A a b - A' a b) * 1 = _; rw [mul_one])⟩) hc hc'
     exact ⟨hT, noDefect D Z FP p (hRelG p) (hPrime p hp) (d0 p) _ hT⟩
 

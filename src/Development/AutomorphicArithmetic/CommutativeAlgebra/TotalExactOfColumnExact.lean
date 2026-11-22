@@ -149,7 +149,6 @@ theorem UpperTheory.totalExact_of_columnExact :
       have h1 := (S (p + 1)).sv.du (t - 1) t (by ring)
       change C.d (p + 1) (t - 1) t ((S (p + 1)).u (t - 1)) =
         a (p + 1) t - (n + 1).negOnePow • C.δ p t ((S p).u t) at h1
-      beta_reduce
       rw [h1, sub_add_cancel]
   · funext p t
     rcases p with _ | p
@@ -164,6 +163,5 @@ theorem UpperTheory.totalExact_of_columnExact :
         Φ (p + 1) t ((S (p + 1)).u t) + C'.d (p + 1) (t - 1) t ((S (p + 1)).v (t - 1)) at h1
       have e : (n - 1 + 1).negOnePow = -(n + 1).negOnePow := by
         rw [sub_add_cancel, Int.negOnePow_succ, neg_neg]
-      beta_reduce
       rw [e, Units.neg_smul, eq_sub_of_add_eq h1]
       abel

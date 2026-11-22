@@ -70,10 +70,10 @@ theorem toBlocks₁₂_mul' (A B : M2 n) :
   simp
 
 theorem mul_cm₁₁ (x : M2 n) : (x * Cm n).toBlocks₁₁ = Nm x := by
-  simp [toBlocks₁₁_mul', Cm, Nm, Matrix.mul_smul]
+  simp [toBlocks₁₁_mul', Cm, Nm]
 
 theorem mul_cm₁₂ (x : M2 n) : (x * Cm n).toBlocks₁₂ = Nm' x := by
-  simp [toBlocks₁₂_mul', Cm, Nm', Matrix.mul_smul, Matrix.mul_neg]
+  simp [toBlocks₁₂_mul', Cm, Nm']
 
 theorem det_ne_of_inG {x : M2 n} (hx : InG x) : x.det ≠ 0 := by
   intro h0

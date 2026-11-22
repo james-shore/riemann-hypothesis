@@ -11,7 +11,7 @@ private theorem UpperTheory.HF.log_prime_indep_fact (S : Finset ℕ) (u : ℕ �
     Finset.sum_eq_single p]
   · rw [(hS p hp).factorization_pow]; simp
   · intro l hl hne
-    rw [(hS l hl).factorization_pow]; simp [Finsupp.single_apply, hne]
+    rw [(hS l hl).factorization_pow]; simp [hne]
   · intro h; exact absurd hp h
 
 private theorem UpperTheory.HF.log_prime_indep_nat (S : Finset ℕ) (u v : ℕ → ℕ) (hS : ∀ l ∈ S, l.Prime)

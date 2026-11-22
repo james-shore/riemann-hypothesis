@@ -26,7 +26,7 @@ theorem c3b : HighestWeightIntegral := by
     funext j
     by_cases h : j = a
     · subst h
-      simp only [if_true, Pi.star_apply, Pi.add_apply, Pi.zero_apply]
+      simp only [if_true, Pi.star_apply]
       split_ifs <;> simp
     · simp [h]
   have hact : ReciprocityTheory.ChartRestriction.DS.actM E Y = Complex.I • E a a := by

@@ -43,7 +43,7 @@ theorem isLocPt_bigPt {n : ℕ} (d : Fin n → ℂ) (hd : ∀ i, d i ≠ 0) : D.
     rw [bigPt, List.mem_ofFn] at hb
     obtain ⟨i, rfl⟩ := hb
     exact ⟨le_rfl, hd i⟩
-  · simp [D.ptSize, bigPt, List.map_ofFn, Function.comp_def, List.sum_ofFn]
+  · simp [D.ptSize, bigPt, List.map_ofFn, Function.comp_def]
 
 end Dens
 

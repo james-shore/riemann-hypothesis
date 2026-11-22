@@ -134,10 +134,10 @@ theorem cay_two {P Q : Mx k r} (hP : IsCayleyU k r ε P) (hQ : IsCayleyU k r ε 
 
 theorem act_coe (U : URep k r) {g : Mx k r} (hg : g ∈ GG k r) (x : M (vr k r true, U)) (c : Fin (2 * r + k + 1)) :
     (CompanionTheory.Zuck.act (vr k r true, U) g x c : U.R.H) = ∑ d, g⁻¹ d c • U.R.σ g (x d) := by
-  simp only [CompanionTheory.Zuck.act, CompanionTheory.Zuck.mAct, CompanionTheory.Zuck.dOp, vr, if_true, ite_true, BranchingSupport.dualM, CompanionTheory.Zuck.URep.sig, dif_pos hg,
+  simp only [CompanionTheory.Zuck.act, CompanionTheory.Zuck.mAct, CompanionTheory.Zuck.dOp, vr, if_true, BranchingSupport.dualM, CompanionTheory.Zuck.URep.sig, dif_pos hg,
     LinearMap.comp_apply, LinearMap.pi_apply, LinearMap.compLeft_apply, LinearMap.sum_apply,
     LinearMap.smul_apply, LinearMap.proj_apply, Function.comp_apply, transpose_apply, Submodule.coe_sum,
-    Submodule.coe_smul, LinearMap.restrict_coe_apply, ContinuousLinearMap.coe_coe]
+    Submodule.coe_smul]
   rfl
 
 theorem act_one_coe (U : URep k r) {g : Mx k r} (hg : g ∈ GG k r) (x : M (one U)) :
@@ -145,7 +145,7 @@ theorem act_one_coe (U : URep k r) {g : Mx k r} (hg : g ∈ GG k r) (x : M (one 
   simp only [CompanionTheory.Zuck.act, CompanionTheory.Zuck.mAct, CompanionTheory.Zuck.dOp, CompanionTheory.Zuck.one, CompanionTheory.Zuck.triv, CompanionTheory.Zuck.URep.sig, dif_pos hg,
     LinearMap.comp_apply, LinearMap.pi_apply, LinearMap.compLeft_apply, LinearMap.sum_apply,
     LinearMap.smul_apply, LinearMap.proj_apply, Function.comp_apply, Submodule.coe_sum,
-    Submodule.coe_smul, LinearMap.restrict_coe_apply, ContinuousLinearMap.coe_coe]
+    Submodule.coe_smul]
   simp only [Fintype.univ_unit, Finset.sum_singleton, Matrix.one_apply_eq, one_smul]
   rfl
 

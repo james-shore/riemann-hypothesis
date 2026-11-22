@@ -37,7 +37,7 @@ theorem actExtL_ker (lam : O) (a : ℕ) (hX : ∀ x : X, lam ^ a • x = 0) (g :
     | tmul t x => rw [TensorProduct.smul_tmul', TensorProduct.smul_tmul, hX, TensorProduct.tmul_zero]
     | add u v hu hv => rw [smul_add, hu, hv, add_zero]
   rintro ⟨m, y⟩ ⟨hm, hy⟩
-  simp only [Submodule.mem_bot] at hm
+  simp only at hm
   subst hm
   obtain ⟨c, rfl⟩ := Ideal.mem_span_singleton'.1 hy
   rw [Submodule.mem_comap, actExtL_apply]

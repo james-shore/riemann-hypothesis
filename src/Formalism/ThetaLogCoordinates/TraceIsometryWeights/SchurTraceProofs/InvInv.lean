@@ -268,8 +268,8 @@ theorem Om_vanish (h : GlRel E) {NN : Submodule K W} (hN : ∀ a b, ∀ x ∈ NN
     have hiz : i ≠ z := fun e => hz (e ▸ hi)
     have hw : E z z (E i z x) = -((k + 1 : ℕ) : K) • E i z x := by
       have e1 := DFunLike.congr_fun (h.sw z z i z) x
-      simp only [Module.End.mul_apply, LinearMap.add_apply, LinearMap.sub_apply, if_neg (Ne.symm hiz),
-        if_pos (rfl : z = z), LinearMap.zero_apply, zero_sub, LinearMap.neg_apply] at e1
+      simp only [Module.End.mul_apply, LinearMap.add_apply, if_neg (Ne.symm hiz),
+        zero_sub, LinearMap.neg_apply] at e1
       rw [e1, hk, map_smul]
       push_cast
       module
@@ -423,9 +423,7 @@ theorem Pstep_inv [CharZero K] (h : GlRel E) {NN : Submodule K W} (hN : ∀ a b,
     have hjz : j ≠ z := fun e => hz (e ▸ hj)
     have hw : E z z (E j z u) = -((1 : ℕ) : K) • E j z u := by
       have e1 := DFunLike.congr_fun (h.sw z z j z) u
-      simp only [Module.End.mul_apply, LinearMap.add_apply, LinearMap.sub_apply,
-        if_neg (show ¬ z = j from fun e => hjz e.symm), if_pos (rfl : z = z), ↓reduceIte, LinearMap.zero_apply,
-        zero_sub, LinearMap.neg_apply, hzz, map_zero, zero_add] at e1
+      simp only [Module.End.mul_apply, LinearMap.add_apply, if_neg (show ¬ z = j from fun e => hjz e.symm), ↓reduceIte, zero_sub, LinearMap.neg_apply, hzz, map_zero, zero_add] at e1
       rw [e1, Nat.cast_one, neg_one_smul]
     rw [E_Pstep_apply h hz hj hS hzz l,
       Om_vanish h hN hev hz l 1 (E j z u) (hN _ _ _ hu) hw (by omega), smul_zero]

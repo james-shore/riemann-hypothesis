@@ -235,7 +235,7 @@ theorem coord_count (hM : LemmaM) (hM' : LemmaM') (O : Type) [CommRing O] [IsDom
     · refine ⟨1, 0, Or.inl one_ne_zero, lin_zero W _ fun j g hg => ?_⟩
       simp [hDc j g hg, hc]
     · refine ⟨c2, -c1, Or.inr (neg_ne_zero.2 hc), lin_zero W _ fun j g hg => ?_⟩
-      simp only [LinearMap.add_apply, LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, hDc j g hg, hD'c j g hg]
+      simp only [LinearMap.add_apply, LinearMap.smul_apply, smul_eq_mul, hDc j g hg, hD'c j g hg]
       ring
   have hM5 : M5 (Fgr O W.wt) K (x0 O W.wt) Q.ideal aF := by
     refine ⟨haF0, ?_, fun ξ hon htw => ?_⟩

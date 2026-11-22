@@ -39,7 +39,7 @@ theorem UpperTheory.Gal.Gen.ratFin_pf :
           algebraMap E (w.adicCompletion E) ((1 : GL (Fin a) E).1 i j) := by
         rw [← h3]
         refine h2.trans ?_
-        by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+        by_cases hij : i = j <;> simp [hij]
       exact (algebraMap E (w.adicCompletion E)).injective h4
     apply Subtype.ext
     rw [← hδ, hδ1, map_one]; rfl

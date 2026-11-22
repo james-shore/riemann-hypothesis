@@ -178,7 +178,7 @@ theorem pb_inv (a : ℂ) (ha : a = Complex.I ∨ a = -Complex.I) (lam : Fin n �
     rw [hx]
     by_cases hk : k = j
     · subst hk; simp [inv_mul_cancel₀ hwj.ne']
-    · simp [Pi.single_apply, hk]; exact mul_nonneg (by positivity) (pbwt_pos lam k).le) i
+    · simp [hk]; exact mul_nonneg (by positivity) (pbwt_pos lam k).le) i
   have e : (Y⁻¹ *ᵥ Pi.single j 1) i = Y⁻¹ i j := by
     simp [Matrix.mulVec, dotProduct, Pi.single_apply]
   rw [e] at key

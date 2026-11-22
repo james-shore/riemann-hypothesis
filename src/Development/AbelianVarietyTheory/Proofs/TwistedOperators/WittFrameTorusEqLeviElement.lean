@@ -79,7 +79,7 @@ theorem exists_hypDec (S : HSp D) {r : ℕ} (e e' : Matrix (Fin S.rank) (Fin r) 
     rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, hee, Matrix.zero_mul]
   refine ⟨V', GlobalTheory.MixModel.HypDec.mk e e' (B - e * K) hee he'e' he'e ?_ ?_ ?_ hrk, rfl, rfl⟩
   · rw [conjTranspose_sub, conjTranspose_mul, hKh]
-    simp only [Matrix.sub_mul, Matrix.mul_sub, Matrix.mul_assoc, f1, f2, f3, g1, g3, Matrix.mul_zero, sub_zero]
+    simp only [Matrix.sub_mul, Matrix.mul_sub, Matrix.mul_assoc, f2, g1, g3, Matrix.mul_zero, sub_zero]
     rw [← Matrix.mul_assoc, hBB]
   · rw [conjTranspose_sub, conjTranspose_mul, hKh]
     simp only [Matrix.sub_mul, Matrix.mul_assoc, f1, f3, Matrix.mul_zero, sub_zero]
@@ -223,7 +223,7 @@ theorem witt_levi : ∀ {D : D7} (θ : InfFam D), IsInfFam θ → ∀ (ε : Bool
       Matrix.smul_mul, hyy, smul_zero, smul_zero, smul_zero])
     (by
       have hss' : s * star s = 1 := by rw [mul_comm]; exact hss
-      simp only [hgram, conjTranspose_smul, Matrix.smul_mul, Matrix.mul_smul, smul_smul, hyx, hss, hss', one_smul])
+      simp only [hgram, conjTranspose_smul, Matrix.smul_mul, Matrix.mul_smul, smul_smul, hyx, hss', one_smul])
   refine ⟨S₀, d, fun t ht a ha => ?_⟩
   have ht0 : ∀ i, t i ≠ 0 := fun i => (ht i).ne'
 

@@ -20,7 +20,7 @@ theorem polySlash_mul (m m' : Matrix (Fin 2) (Fin 2) ℤ) (p : MvPolynomial (Fin
     intro i
     simp only [AlgHom.comp_apply, slP_X, map_add, map_smul, Matrix.mul_apply, Fin.sum_univ_two]
     push_cast
-    simp only [smul_add, add_smul, smul_smul, mul_comm]
+    simp only [smul_add, add_smul, smul_smul]
     abel
   rw [h]; rfl
 
@@ -75,7 +75,7 @@ theorem polySlash_neg_one (w : ℕ) (p : MvPolynomial (Fin 2) R) (hp : p.IsHomog
   refine Finset.sum_congr rfl fun v hv => ?_
   have hw := hp (mem_support_iff.mp hv)
   rw [aeval_monomial]
-  simp only [smul_pow, Finsupp.prod_pow]
+  simp only [smul_pow]
   have hw' : v 0 + v 1 = w := by
     rw [← hw, Finsupp.weight_apply, Finsupp.sum_fintype _ _ (by simp), Fin.sum_univ_two]; simp
   rw [Finsupp.prod_fintype _ _ (by simp), Fin.prod_univ_two, monomial_eq,

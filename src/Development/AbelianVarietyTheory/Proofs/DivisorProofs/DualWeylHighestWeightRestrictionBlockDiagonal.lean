@@ -131,7 +131,7 @@ theorem hw_first (p q : ℕ) (ν : Fin (p + q) → ℕ) (hν : Antitone ν) :
       · rw [sum_sub_nuNext q (fun j => ν (Fin.natAdd (p + 1) j))
           (fun a b hab => hν (by rw [Fin.le_def] at hab ⊢; simp only [Fin.val_natAdd]; omega))]
         have h0 : nuNext ν (Fin.castAdd (q + 1) (Fin.last p)) = ν (Fin.natAdd (p + 1) 0) := by
-          unfold nuNext; rw [dif_pos (by simp <;> omega)]; congr 1
+          unfold nuNext; rw [dif_pos (by simp)]; congr 1
         have := hν (show Fin.castAdd (q + 1) (Fin.last p) ≤ Fin.natAdd (p + 1) 0 by
           simp [Fin.le_def])
         rw [h0]
@@ -145,7 +145,7 @@ theorem resHw_holds : ResHw := by
       (lpMinor ℚ ((i : ℕ) + 1) (by omega) (by omega) ^ (ν (Fin.castAdd q i) - nuNext ν (Fin.castAdd q i))) ⊗ₜ[ℚ]
         (1 : MvPolynomial (Fin q × Fin q) ℚ) := by
     intro i
-    rw [map_pow, resT_lpMinor_le p q _ _ _ (by simp <;> omega), Algebra.TensorProduct.tmul_pow, one_pow]
+    rw [map_pow, resT_lpMinor_le p q _ _ _ (by simp), Algebra.TensorProduct.tmul_pow, one_pow]
     rfl
   have e2 : ∀ j : Fin q, resT ℚ p q (lpMinor ℚ ((Fin.natAdd p j : ℕ) + 1) (by omega) (by omega) ^
       (ν (Fin.natAdd p j) - nuNext ν (Fin.natAdd p j))) =

@@ -159,7 +159,7 @@ theorem brOne_xi [CharZero K] (hN : N = n + 1) {lam : DomWeight N} {sg : DomWeig
   have h := projVV_coe (fun _ : Unit => sg) ⟨_, extVV_mem K fun _ : Unit => sg⟩
   simp only [extVV, ten_unit] at h
   simp only [brOne, brStdP, LinearMap.comp_apply, AlgHom.toLinearMap_apply, Submodule.subtype_apply, LinearMap.smul_apply,
-    GlobalTheory.XiTopCoef.coefLast_xi K N n hN lam sg hI hS, h, Submodule.coe_smul, map_smul, rename_snd_unit, brConst, Finset.univ_unique,
+    GlobalTheory.XiTopCoef.coefLast_xi K N n hN lam sg hI hS, h, map_smul, rename_snd_unit, brConst, Finset.univ_unique,
     Finset.prod_singleton]
 
 end One

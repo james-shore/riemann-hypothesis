@@ -44,7 +44,7 @@ private theorem nl_dec {S : Type} [CommRing S] [Nontrivial S] (n : ℕ) (hn : 0 
     rw [Finset.sum_eq_single ⟨j, hj⟩]
     · simp
     · intro b _ hb
-      simp [Pi.single_apply, hb]
+      simp [hb]
     · simp
   have hXr : ∀ r, r < n → P (Polynomial.X ^ r) := by
     intro r hr

@@ -80,7 +80,6 @@ theorem rich : (Kmax u).Rich := by
       (F.shift_analytic l k₁.2.1).continuousOn.isOpen_inter_preimage k₁.1.isOpen k₂.1.isOpen⟩
     have hW : W ≤ k₁.1 := fun q hq ↦ hq.1
     refine ⟨⟨W, fun q hq ↦ k₁.2.1 q hq.1, k₁.2.2.mono hW⟩, ⟨h₁, h₂⟩, fun q hq ↦ ?_, fun q hq ↦ hq.2⟩
-    change F.shift 0 q ∈ k₁.1
     rw [F.shift_zero]
     exact hq.1
 

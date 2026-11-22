@@ -39,8 +39,7 @@ theorem eq_zero_of_bounded_of_creation_eq {R : Type} [NormedAddCommGroup R] [Nor
     have e1 : L 1 = u := by simp [hL]
     have eI : L Complex.I = -u' := by simp [hL]
     simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply,
-      ContinuousLinearMap.sub_apply, e1, eI, hre, him, smul_eq_mul, map_neg, Function.comp_apply,
-      Complex.I_re, Complex.I_im, Complex.one_re, Complex.one_im, Complex.ofReal_zero, Complex.ofReal_one]
+      ContinuousLinearMap.sub_apply, e1, eI, hre, him, smul_eq_mul, map_neg, Complex.I_re, Complex.I_im, Complex.one_re, Complex.one_im, Complex.ofReal_zero, Complex.ofReal_one]
     generalize Complex.exp _ = E
     rw [sub_eq_iff_eq_add] at e
     rw [e]

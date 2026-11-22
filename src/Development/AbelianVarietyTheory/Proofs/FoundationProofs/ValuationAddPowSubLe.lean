@@ -38,6 +38,6 @@ theorem valuation_add_pow_sub_le (L : Type) [Field L] (v : Valuation L ℝ≥0) 
     rw [← pow_add]; congr 1; omega
   rw [pow_succ (v β)]
   calc _ ≤ M ^ (i + 1) * (M ^ (q - (i + 1)) * v β) * (v ((q : L) + 1) * 1) := by gcongr
-    _ = _ := by simp only [Nat.add_sub_cancel, ← hM]; ring
+    _ = _ := by simp only [← hM]; ring
 
 end GlobalTheory.AlmostEt

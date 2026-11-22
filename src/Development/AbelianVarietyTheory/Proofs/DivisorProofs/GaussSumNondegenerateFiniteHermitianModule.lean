@@ -447,7 +447,6 @@ theorem gauss_fin {w : R} (hσ : ∀ r, σ (σ r) = r) (hw : w + σ w = 1) {lam 
     rw [hsum, hs, hG, hnqm, ← hlqv]
     refine ⟨?_, ?_⟩
     · rw [map_mul]
-      push_cast
       ring
     · rw [map_mul, mul_pow, hl, hlq]
       push_cast

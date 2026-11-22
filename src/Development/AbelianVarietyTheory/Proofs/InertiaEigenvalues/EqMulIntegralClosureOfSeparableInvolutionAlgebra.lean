@@ -17,8 +17,6 @@ theorem isIntegral_pi' {O : Type} [CommRing O] {ι : Type} [Finite ι] {R : ι �
   | exact @_root_.GlobalTheory.IntegralPi.main
   | exact _root_.GlobalTheory.IntegralPi.main
   | (apply _root_.GlobalTheory.IntegralPi.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralPi.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralPi.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegralPi.main ..)
 
 section General

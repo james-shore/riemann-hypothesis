@@ -125,17 +125,16 @@ private theorem exists_orthonormal_mem_span_of_diagonal_square_prod {K V : Type}
       linear_combination hqK - ((a 0 : K) * (q₁ : K) ^ 2 + (a 1 : K) * (q₂ : K) ^ 2) * hθ2
     have hww' : h w w' = 0 := by
       simp only [hw, hw', map_add, map_sub, map_smul, map_smulₛₗ, LinearMap.add_apply,
-        LinearMap.sub_apply, LinearMap.smul_apply, smul_eq_mul, hv00, hv11, hv01, hv10, map_mul,
+        LinearMap.smul_apply, smul_eq_mul, hv00, hv11, hv01, hv10, map_mul,
         map_ratCast, hθ]
       ring
     have hw'w : h w' w = 0 := by
-      simp only [hw, hw', map_add, map_sub, map_smul, map_smulₛₗ, LinearMap.add_apply,
-        LinearMap.sub_apply, LinearMap.smul_apply, smul_eq_mul, hv00, hv11, hv01, hv10, map_mul,
+      simp only [hw, hw', map_add, map_sub, map_smul, map_smulₛₗ, LinearMap.sub_apply, LinearMap.smul_apply, smul_eq_mul, hv00, hv11, hv01, hv10, map_mul,
         map_ratCast, hθ]
       ring
     have hw'w' : h w' w' = ((a 0 * a 1 : ℚ) : K) := by
       simp only [hw', map_sub, map_smul, map_smulₛₗ, LinearMap.sub_apply, LinearMap.smul_apply,
-        smul_eq_mul, hv00, hv11, hv01, hv10, map_mul, map_ratCast, hθ, map_neg]
+        smul_eq_mul, hv00, hv11, hv01, hv10, map_mul, map_ratCast, hθ]
       push_cast
       linear_combination (a 0 : K) * (a 1 : K) * hqK -
         (a 0 : K) * (a 1 : K) * ((a 0 : K) * (q₁ : K) ^ 2 + (a 1 : K) * (q₂ : K) ^ 2) * hθ2

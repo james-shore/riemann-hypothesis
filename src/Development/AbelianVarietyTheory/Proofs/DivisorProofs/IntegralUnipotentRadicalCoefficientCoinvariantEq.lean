@@ -16,7 +16,7 @@ def box (a b : ℕ) (s : kˣ) : Set (Fin a → Fin b → k) :=
 
 theorem mem_box {a b : ℕ} {s : kˣ} {X : Fin a → Fin b → k} :
     X ∈ box a b s ↔ ∀ p q, X p q ∈ cball s := by
-  simp [box, Set.mem_univ_pi]
+  simp [box]
 
 theorem isOpen_box (a b : ℕ) (s : kˣ) : IsOpen (box a b s) :=
   isOpen_set_pi Set.finite_univ fun _ _ => isOpen_set_pi Set.finite_univ fun _ _ => isOpen_cball s

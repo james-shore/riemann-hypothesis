@@ -168,7 +168,6 @@ theorem char_exists {Ω : Type} [Field Ω] [Algebra ℚ Ω] {ε : Ω →+* ℂ} 
   have hpow : ∀ z ∈ Hs, (fun z => (a (mob (ofSL γ) z) * b z) ^ m) z = (fun z => (a z * b (mob (ofSL γ) z)) ^ m) z :=
     eqOn_of_eventually (hu.pow m) (hv.pow m) (by
       filter_upwards [E1, E2, E3] with z e1 e2 e3
-      beta_reduce at e3 ⊢
       linear_combination (-(b z) ^ m) * e3 + (b (mob (ofSL γ) z)) ^ m * e1 -
         ((b (mob (ofSL γ) z)) ^ m * (b z) ^ m) * e2)
   obtain ⟨w₂, hw₂, e₂⟩ := comp_ne_zero hz₂ h₂ γ
@@ -251,7 +250,6 @@ theorem quot_pow {Ω : Type} [Field Ω] [Algebra ℚ Ω] {ε : Ω →+* ℂ} (X 
     obtain ⟨w, hw, hw0⟩ := comp_ne_zero hz₀ hB0 γ
     filter_upwards [comp_eventually γ G1, G1, hBev, eventually_ne_zero (diff_comp hBd γ) hw hw0, hs]
       with z g1 g2 m1 m2 hz
-    beta_reduce at g1 m2 ⊢
     have e := hinv γ hγ z hz
     apply mul_right_cancel₀ (mul_ne_zero m1 m2)
     linear_combination ((b * a') z) * g1 - ((b * a') (mob (ofSL γ) z)) * g2 + e

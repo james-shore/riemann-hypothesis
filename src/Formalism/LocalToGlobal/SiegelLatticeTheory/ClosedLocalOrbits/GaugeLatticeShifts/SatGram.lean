@@ -88,10 +88,6 @@ theorem prV_algebraMap (v : HeightOneSpectrum (𝓞 X.B.I.F)) (c : X.B.I.F) :
   first
   | (rw [← Algebra.TensorProduct.algebraMap_apply']
      exact (Algebra.TensorProduct.map (AlgHom.id X.B.I.F X.B.I.E) (evalV X.B.I.F v)).commutes c)
-  | (simp only [Formalism.UG.prV, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, AlgHom.commutes,
-      Algebra.TensorProduct.algebraMap_apply, Algebra.algebraMap_self, RingHom.id_apply]
-     rw [← mul_one (algebraMap X.B.I.F X.B.I.E c), ← Algebra.smul_def, TensorProduct.smul_tmul,
-       Algebra.smul_def, mul_one])
 
 theorem le_exp_neg_one {x : WithZero (Multiplicative ℤ)} (h : x < 1) : x ≤ WithZero.exp (-1 : ℤ) := by
   rcases eq_or_ne x 0 with rfl | hx
@@ -638,7 +634,6 @@ theorem card_gPl_sub (hN : GCount X) (i : Fin 2) :
   first
   | rw [← Set.Nat.card_coe_set_eq]
   | rw [← Nat.card_coe_set_eq]
-  | rw [Set.ncard_def]
   exact Nat.card_congr
     { toFun := fun v => ⟨v.1.1, v.2⟩
       invFun := fun v => ⟨⟨v.1, hmem v.1 v.2⟩, v.2⟩
@@ -867,7 +862,6 @@ theorem card_typ (hN : GCount X) (i : Fin 2) :
   first
   | rw [← Set.Nat.card_coe_set_eq]
   | rw [← Nat.card_coe_set_eq]
-  | rw [Set.ncard_def]
   exact Nat.card_congr
     { toFun := fun p => ⟨p.1.1, (hq p.1).1 p.2⟩
       invFun := fun v => ⟨⟨v.1, (hmem v.1).2 (hT v.1 v.2)⟩, (hq _).2 v.2⟩

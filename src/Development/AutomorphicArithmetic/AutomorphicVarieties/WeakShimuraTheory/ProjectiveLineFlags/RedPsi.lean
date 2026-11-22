@@ -32,7 +32,6 @@ theorem UpperTheory.V.Ws.P1.redPsi :
     intro a
     first
       | rfl
-      | simp
   constructor
   · intro v i
     ext g

@@ -302,15 +302,12 @@ theorem fx_differentiableOn_jac_chart {M : Type*} [TopologicalSpace M] (n : ℕ)
           simp only [Finset.prod_insert ha]
           first
             | exact (hwd (σ a) a).mul ih
-            | exact (hwd (σ a) a).fun_mul ih
       exact hs Finset.univ
     have hq : ∀ σ : Equiv.Perm (Fin n), DifferentiableOn ℂ
         (fun y => ((Equiv.Perm.sign σ : ℤ) : ℂ) * ∏ i, wd n i (g (σ i) ∘ e.symm) y) e.target := by
       intro σ
       first
         | exact (hp σ).const_mul _
-        | exact (differentiableOn_const _).fun_mul (hp σ)
-        | exact (differentiableOn_const _).mul (hp σ)
     first
       | exact DifferentiableOn.sum fun σ _ => hq σ
       | exact DifferentiableOn.fun_sum fun σ _ => hq σ
@@ -469,7 +466,6 @@ theorem fx_lintegral_lt_top_of_le_indicator {M : Type*} [TopologicalSpace M] [Me
     _ < ⊤ := by
         first
           | exact hint.lintegral_lt_top
-          | exact Integrable.lintegral_lt_top hint
 
 theorem fx_wint_eq_withDensity {M : Type*} [MeasurableSpace M] (n : ℕ) (z : M → V n)
     (ps : M → ℝ) (hps : Measurable ps) (F : M → ℂ) :
@@ -481,7 +477,7 @@ theorem fx_wint_eq_withDensity {M : Type*} [MeasurableSpace M] (n : ℕ) (z : M 
   rw [lintegral_withDensity_eq_lintegral_mul_non_measurable _ hmeas
     (Filter.Eventually.of_forall fun x => ENNReal.ofReal_lt_top)]
   refine lintegral_congr fun x => ?_
-  simp only [Pi.mul_apply, Function.comp]
+  simp only [Pi.mul_apply]
   rw [← ofReal_norm_eq_enorm, ← ENNReal.ofReal_pow (norm_nonneg _),
     ← ENNReal.ofReal_mul (Real.exp_pos _).le, mul_comm]
 

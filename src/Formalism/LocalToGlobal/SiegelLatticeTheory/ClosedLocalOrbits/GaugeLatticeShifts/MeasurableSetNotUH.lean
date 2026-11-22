@@ -41,7 +41,7 @@ private theorem torS_mul_torS_inv_eq_one {μ : ℂ} (hμ : μ ≠ 0) (k r : ℕ)
   rw [Matrix.diagonal_mul_diagonal, ← Matrix.diagonal_one]
   congr 1
   funext i
-  split_ifs <;> first | (simp [hμ]; done) | (field_simp; done) | (simp [hμ, inv_pow, star_inv']; done)
+  split_ifs <;> first | (simp [hμ])
 
 private theorem torS_conjTranspose_mul_Hpk_mul_torS_eq_Hpk {μ : ℂ} (hμ : μ ≠ 0) (k r : ℕ) :
     (Formalism.L2.SG.LocWSOf.torS μ k r)ᴴ * Formalism.QuantumDeterminants.Hpk k r * Formalism.L2.SG.LocWSOf.torS μ k r =
@@ -54,9 +54,8 @@ private theorem torS_conjTranspose_mul_Hpk_mul_torS_eq_Hpk {μ : ℂ} (hμ : μ 
   split_ifs <;> first
     | omega
     | (simp; done)
-    | (rw [show 2 * r + k - (j : ℕ) = (i : ℕ) by omega]; simp [hμ]; done)
-    | (rw [show 2 * r + k - (i : ℕ) = (j : ℕ) by omega]; simp [hμ]; done)
-    | (simp [hμ]; done)
+    | (rw [show 2 * r + k - (j : ℕ) = (i : ℕ) by omega]; simp [hμ])
+    | (rw [show 2 * r + k - (i : ℕ) = (j : ℕ) by omega]; simp [hμ])
 
 private theorem Qics_mul_Qcs_eq_one (C : Choice X θ) (τ : D.what₂.Tau) : Qics C τ * Qcs C τ = 1 := by
   have hT := C.isT τ
@@ -148,7 +147,7 @@ private theorem mem_range_Tm_of_of_mem_UH (C : Choice X θ) (τ : D.what₂.Tau)
     rw [show ∀ A B : Matrix (Fin X.B.I.n) (Fin X.B.I.n) ℂ, A * Bᴴ * A * B = A * (Bᴴ * A * B) from fun A B => by
       simp only [Matrix.mul_assoc], hU, Jm_mul_self_eq_one]
   refine ⟨⟨⟨Qcs C τ * Matrix.of m * Qics C τ, Formalism.REAL.Jm (X.B.I.ε (vOf X τ)) * (Qcs C τ * Matrix.of m * Qics C τ)ᴴ * Formalism.REAL.Jm (X.B.I.ε (vOf X τ)),
-    (by first | exact Matrix.mul_eq_one_comm.mp (hl) | exact mul_eq_one_comm.mp (hl) | exact Matrix.mul_eq_one_symm (hl) | exact (Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _)).mp (hl)), hl⟩, hU⟩, ?_⟩
+    (by first | exact Matrix.mul_eq_one_comm.mp (hl) | exact mul_eq_one_comm.mp (hl)), hl⟩, hU⟩, ?_⟩
   apply Matrix.of.injective
   rw [of_Tm_eq_Qics_mul_mul_Qcs]
   exact Qics_mul_Qcs_conj_mul_Qcs_eq_self C τ (Matrix.of m)
@@ -188,7 +187,7 @@ theorem Tm_emb (C : Choice X θ) (τ : D.what₂.Tau) : MeasurableEmbedding (Tm 
       simp only [Matrix.mul_assoc], hUJ m, Jm_mul_self_eq_one]
   let g : Set.range (Tm C τ) → Formalism.REAL.UJ (X.B.I.ε (vOf X τ)) := fun m =>
     ⟨⟨Qcs C τ * Matrix.of m.1 * Qics C τ, Formalism.REAL.Jm (X.B.I.ε (vOf X τ)) * (Qcs C τ * Matrix.of m.1 * Qics C τ)ᴴ * Formalism.REAL.Jm (X.B.I.ε (vOf X τ)),
-      (by first | exact Matrix.mul_eq_one_comm.mp (hl m) | exact mul_eq_one_comm.mp (hl m) | exact Matrix.mul_eq_one_symm (hl m) | exact (Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _)).mp (hl m)), hl m⟩, hUJ m⟩
+      (by first | exact Matrix.mul_eq_one_comm.mp (hl m) | exact mul_eq_one_comm.mp (hl m)), hl m⟩, hUJ m⟩
   have hv : Continuous fun m : Set.range (Tm C τ) => Qcs C τ * Matrix.of m.1 * Qics C τ := by
     have h0 : Continuous fun m : Set.range (Tm C τ) => (Matrix.of m.1 : Matrix (Fin (2 * D.R.rS + D.R.k + 1))
         (Fin (2 * D.R.rS + D.R.k + 1)) ℂ) := continuous_subtype_val
@@ -214,7 +213,7 @@ theorem Tm_mul (C : Choice X θ) (τ : D.what₂.Tau) (a b : Formalism.REAL.UJ (
   apply Matrix.of.injective
   show Matrix.of (Tm C τ (a * b)) = Matrix.of (Tm C τ a) * Matrix.of (Tm C τ b)
   rw [of_Tm_eq_Qics_mul_mul_Qcs, of_Tm_eq_Qics_mul_mul_Qcs, of_Tm_eq_Qics_mul_mul_Qcs, Qics_mul_Qcs_conj_mul_conj_eq_conj_mul]
-  all_goals first | rfl | simp [Subgroup.coe_mul, Units.val_mul]
+  all_goals first | rfl
 
 theorem Tm_inv (C : Choice X θ) (τ : D.what₂.Tau) (a : Formalism.REAL.UJ (X.B.I.ε (vOf X τ))) :
     Tm C τ a⁻¹ = Formalism.FourierDecayAlt.B2.invM (Tm C τ a) := by
@@ -250,7 +249,6 @@ theorem sigmaFinite_comap (C : Choice X θ) (τ : D.what₂.Tau) {μ : Measure (
   have hE := Tm_emb C τ
   first
     | exact SigmaFinite.of_map _ hE.measurable.aemeasurable (by rw [hE.map_comap]; infer_instance)
-    | infer_instance
 
 theorem sFinite_comap (C : Choice X θ) (τ : D.what₂.Tau) {μ : Measure (Formalism.QuantumDeterminants.Mt D.R.k D.R.rS)}
     [SFinite μ] : SFinite (μ.comap (Tm C τ)) := by
@@ -305,11 +303,11 @@ theorem quot_conc {μG μS ν : Measure (Formalism.QuantumDeterminants.Mt D.R.k 
       by_cases hs : s ∈ S
       · have hs2 : s ∉ Sᶜ := fun h2 => h2 hs
         first | rw [Set.indicator_of_not_mem hs2] | rw [Set.indicator_of_notMem hs2]
-        first | exact zero_le | exact zero_le _ | positivity
+        first | exact zero_le
       · rw [Set.indicator_of_mem (Set.mem_compl hs), Set.indicator_of_mem (key s x hs hx)]
         all_goals exact le_rfl
     · first | rw [Set.indicator_of_not_mem hx] | rw [Set.indicator_of_notMem hx]
-      first | exact zero_le | exact zero_le _ | positivity
+      first | exact zero_le
   rw [← h, lintegral_indicator_const hSm] at hle
   exact (mul_eq_zero.mp (le_zero_iff.mp hle)).resolve_left hne
 
@@ -352,7 +350,7 @@ private theorem measurable_invM' (k r : ℕ) : Measurable (Formalism.FourierDeca
     funext x i j
     show ((Matrix.of x)⁻¹ : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ) i j = _
     rw [Matrix.inv_def, Matrix.smul_apply, smul_eq_mul]
-    first | rw [Ring.inverse_eq_inv'] | rw [Ring.inverse_eq_inv] | simp
+    first | rw [Ring.inverse_eq_inv']
   rw [e]
   refine measurable_pi_lambda _ fun i => measurable_pi_lambda _ fun j => ?_
   exact hinv.mul ((continuous_apply j).comp ((continuous_apply i).comp hadj)).measurable

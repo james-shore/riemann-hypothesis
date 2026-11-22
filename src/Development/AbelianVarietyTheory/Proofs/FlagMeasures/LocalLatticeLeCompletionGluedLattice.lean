@@ -29,13 +29,13 @@ theorem local_le_lat_of_approx {F E : Type} [Field F] [NumberField F] [Field E] 
       simp only [Places.bc, Pi.smul_apply, smul_eq_mul, map_mul, map_natCast]
       by_cases h : j = i
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     rw [h1]
     apply hN
     intro j
     by_cases h : j = i
-    · subst h; simp [Subring.one_mem]
-    · simp [Pi.single_apply, h, Subring.zero_mem]
+    · subst h; simp
+    · simp [h]
   have hint : ∀ w : Fin n → (A.loc p).Ep, (∀ i, w i ∈ (A.L p).O) →
       (N : (A.loc p).Ep) • w ∈ A.lat p Γ := by
     intro w hw
@@ -43,7 +43,7 @@ theorem local_le_lat_of_approx {F E : Type} [Field F] [NumberField F] [Field E] 
         ∑ i, (⟨w i, hw i⟩ : (A.L p).O) • A.bc p ((N : E) • (Pi.single i 1 : Fin n → E)) := by
       funext j
       simp [Places.bc, Subring.smul_def, Pi.single_apply, Finset.sum_apply, mul_comm]
-      simp [apply_ite (A.loc p).ιE, mul_ite, Finset.sum_ite_eq, mul_comm]
+      simp [apply_ite (A.loc p).ιE, mul_ite, Finset.sum_ite_eq]
     rw [hw']
     exact Submodule.sum_mem _ fun i _ => Submodule.smul_mem _ _ (Submodule.subset_span ⟨_, hsingle i, rfl⟩)
   have hfin : ∀ i, {q | (Pi.single p (v i) : ∀ q, (A.loc q).Ep) q ∉ (A.L q).O}.Finite := by

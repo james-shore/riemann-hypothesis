@@ -98,7 +98,7 @@ theorem exists_abelian_of_isPeriod : ∀ (O : Type) [Ring O] (bar : O → O) (g 
       add := fun a b => hext _ _ fun z => by
         rw [← hlift, comp_mul, ← hlift, ← hlift, ← u.ex_add]
         congr 1
-        simp [Matrix.add_mulVec] }
+        simp }
   refine ⟨A, inferInstance, inferInstance, act, abelian₂ A M, u.ex, hA, hdim, hPLB, ?_, ?_, GlobalTheory.FullSiegel.lam_symm hM,
     GlobalTheory.LefschetzAmple.relAmple_of_isAH g A hA _ u' Hm χ' hΔLB hAH', hexp, hker, fun a z => ?_, ?_⟩
   · exact (GlobalTheory.CechPic.cls_eq_zero_iff (pull_isLB hPLB _)).1

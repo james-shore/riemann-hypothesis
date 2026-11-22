@@ -54,9 +54,9 @@ theorem orbClosed_gen (N r : ℕ) (A : Type) [CommRing A] [Algebra k A] [FiniteD
   have Φsmul : ∀ w (t : k) c, Φ w (t • c) = t • Φ w c := fun w t c => by
     simp only [Φ, Pi.smul_apply, smul_eq_mul, mul_smul, Finset.smul_sum]
   have Lsingle : ∀ i, L (Pi.single i 1) = b i := fun i => by
-    simp [L, Pi.single_apply]
+    simp [L]
   have Φsingle : ∀ w i, Φ w (Pi.single i 1) = w i := fun w i => by
-    simp [Φ, Pi.single_apply]
+    simp [Φ]
   have hΦc : ∀ c : Fin r → k, Continuous fun w : Fin r → Matrix (Fin N) (Fin N) k => Φ w c := fun c =>
     continuous_finset_sum _ fun i _ => (continuous_apply i).const_smul (c i)
   let S : Set (Fin r → Matrix (Fin N) (Fin N) k) :=

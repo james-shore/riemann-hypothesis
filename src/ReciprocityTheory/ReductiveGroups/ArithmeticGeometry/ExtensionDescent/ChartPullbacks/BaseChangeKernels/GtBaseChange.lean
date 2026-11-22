@@ -33,7 +33,6 @@ lemma res_val_res {X : Scheme.{0}} {U V₁ V₂ : X.Opens} (h₁ : V₁ ≤ U) (
   have e : (homOfLE h₁).op = (homOfLE h₂).op ≫ (homOfLE h).op := by
     first
     | rfl
-    | exact Quiver.Hom.unop_inj (Subsingleton.elim _ _)
   rw [e, Functor.map_comp]
   rfl
 
@@ -48,18 +47,15 @@ lemma hleG (j : (pullExt f E).ChartIdx) {V : E.B.left.Opens} {V₁ : ((Over.pull
       = (pullback.fst G.hom f ≫ d.q.left) ⁻¹ᵁ V := by
     first
     | rw [qB_h]
-    | exact congrArg (fun g => g ⁻¹ᵁ V) (qB_h f d.q)
   calc (qB f d.q).left ⁻¹ᵁ V₁ ≤ (qB f d.q).left ⁻¹ᵁ (pullback.fst E.B.hom f ⁻¹ᵁ V) :=
         (qB f d.q).left.preimage_mono h₁
     _ = ((qB f d.q).left ≫ pullback.fst E.B.hom f) ⁻¹ᵁ V := by
         first
         | rfl
-        | exact (Scheme.preimage_comp _ _ _).symm
     _ = (pullback.fst G.hom f ≫ d.q.left) ⁻¹ᵁ V := key
     _ = pullback.fst G.hom f ⁻¹ᵁ (d.q.left ⁻¹ᵁ V) := by
         first
         | rfl
-        | exact Scheme.preimage_comp _ _ _
 
 set_option maxHeartbeats 800000 in
 
@@ -130,8 +126,6 @@ theorem gtBaseChange : GtBaseChangeSt := by
   refine ⟨pullExt f E, AddEquiv.refl _, Iso.refl _, ?_, fun χ => ?_, Nonempty.intro (datum f E d)⟩
   · first
     | exact (inferInstance : IsMonHom (𝟙 ((Over.pullback f).obj E.B)))
-    | (rw [Iso.refl_hom]; infer_instance)
-    | (constructor <;> simp <;> rfl)
   · show ∃ w : LB.Iso ((E.O χ).L.pull (𝟙 (pullback E.B.hom f) ≫ pullback.fst E.B.hom f))
         ((E.O χ).L.pull (mB f E).F), w.IsGen
     rw [mB_F, Category.id_comp]

@@ -83,9 +83,9 @@ private lemma det_gram_castLE_ne_zero_of_det_ne_zero (Z : Fin n → Fin n → �
 
 theorem cd_Wm (i j : Fin n) :
     ContDiffOn ℝ ∞ (fun Z : Fin n → Fin n → ℂ => Wm (Matrix.of Z) i j) {Z | (Matrix.of Z).det ≠ 0} := by
-  simp only [Wm, blkJ, colJ, Matrix.of_apply]
+  simp only [Wm, blkJ, Matrix.of_apply]
   by_cases hij : (i : ℕ) < j
-  · simp only [dif_pos hij, Matrix.mulVec, dotProduct, Pi.neg_apply]
+  · simp only [dif_pos hij, Matrix.mulVec, dotProduct]
     have hg : ContDiff ℝ ∞ (fun Z : Fin n → Fin n → ℂ => fun a b : Fin j =>
         gram (Matrix.of Z) (Fin.castLE j.isLt.le a) (Fin.castLE j.isLt.le b)) :=
       contDiff_pi.2 fun a => contDiff_pi.2 fun b => cd_gram _ _

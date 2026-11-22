@@ -186,9 +186,7 @@ theorem conjEmb_rt (τ : E →+* ℂ) : Tor.conjEmb τ (H.rt : E) = -τ (H.rt : 
   first
   | exact @_root_.GlobalTheory.ConjugateEmbeddingSquareRoot.conjEmb_rt
   | exact _root_.GlobalTheory.ConjugateEmbeddingSquareRoot.conjEmb_rt
-  | (apply _root_.GlobalTheory.ConjugateEmbeddingSquareRoot.conjEmb_rt <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ConjugateEmbeddingSquareRoot.conjEmb_rt <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ConjugateEmbeddingSquareRoot.conjEmb_rt <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.ConjugateEmbeddingSquareRoot.conjEmb_rt)
   | (intros; exact _root_.GlobalTheory.ConjugateEmbeddingSquareRoot.conjEmb_rt ..)
 
 theorem not_mem_hostType_iff (τ : E →+* ℂ) :

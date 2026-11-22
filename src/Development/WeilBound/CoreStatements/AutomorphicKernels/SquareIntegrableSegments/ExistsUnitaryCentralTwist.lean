@@ -63,7 +63,7 @@ private theorem exists_smooth_central_character_of_admissible {k : Type} [Field 
       Matrix.GeneralLinearGroup.scalar (Fin n) t * g = g * Matrix.GeneralLinearGroup.scalar (Fin n) t := by
     intro t g
     ext : 1
-    simp only [Matrix.GeneralLinearGroup.scalar, Units.val_mul, Units.coe_map, MonoidHom.coe_coe]
+    simp only [Matrix.GeneralLinearGroup.scalar, Units.val_mul, Units.coe_map]
     exact Matrix.scalar_commute _ (fun _ => Commute.all _ _) _
   have key : ∀ t : kˣ, ∃ c : ℂ, ∀ v, σ.ρ (Matrix.GeneralLinearGroup.scalar (Fin n) t) v = c • v := by
     intro t
@@ -125,9 +125,9 @@ private theorem exists_smooth_central_character_of_admissible {k : Type} [Field 
   have hcont : Continuous (Matrix.GeneralLinearGroup.scalar (Fin n) : kˣ → GL (Fin n) k) := by
     apply Units.continuous_iff.mpr
     constructor
-    · simp only [Matrix.GeneralLinearGroup.scalar, Units.coe_map, MonoidHom.coe_coe]
+    · simp only [Matrix.GeneralLinearGroup.scalar]
       exact Continuous.matrix_diagonal (continuous_pi fun _ => Units.continuous_val)
-    · simp only [Matrix.GeneralLinearGroup.scalar, Units.coe_map_inv, MonoidHom.coe_coe, map_inv]
+    · simp only [Matrix.GeneralLinearGroup.scalar, Units.coe_map_inv]
       exact Continuous.matrix_diagonal (continuous_pi fun _ => Units.continuous_coe_inv)
   refine ⟨ω, ?_, fun z v => hc z v⟩
   show IsOpen (ω.ker : Set kˣ)

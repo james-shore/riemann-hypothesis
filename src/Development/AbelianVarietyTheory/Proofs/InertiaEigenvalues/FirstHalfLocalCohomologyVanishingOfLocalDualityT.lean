@@ -176,7 +176,7 @@ theorem eq_zero_of_scalar {Γ O Λ B : Type} [Group Γ] [CommRing O] [IsLocalRin
       ext a b
       have e1 := congrArg ι (congrFun (congrFun hρ a) b)
       rw [Matrix.map_apply, ResidueField.map_residue] at e1
-      by_cases hab : a = b <;> simp [W, hk, hq', e1, Matrix.one_apply, hab] <;> simpa [hab] using e1
+      by_cases hab : a = b <;> simp [W, hk, hq', e1, hab] <;> simpa [hab] using e1
     rw [e, Matrix.det_smul, Matrix.det_one, mul_one]
     refine pow_ne_zero _ (sub_ne_zero.2 fun h => hc (ι.injective ?_))
     rw [h, map_one]
@@ -268,7 +268,7 @@ theorem frob_scalar (bkP : BKPh X) (h : GalHyp bkP i s) {M R : ℕ} {P : Fin R �
     have e1 : resT i s (g * τ * g⁻¹ * z⁻¹ * z) = residue (X.O0 i) e • 1 := by
       rw [map_mul, resT_apply, (hL.2.2.2.2 _ hg).1, one_mul, resT_apply, he]
       ext a b
-      by_cases hab : a = b <;> simp [Matrix.one_apply, hab]
+      by_cases hab : a = b <;> simp [hab]
     have e2 := conj_scalar _ e1 g⁻¹
     rwa [show g⁻¹ * (g * τ * g⁻¹ * z⁻¹ * z) * g⁻¹⁻¹ = τ by group] at e2
   have hp := hA.1 _ v hv

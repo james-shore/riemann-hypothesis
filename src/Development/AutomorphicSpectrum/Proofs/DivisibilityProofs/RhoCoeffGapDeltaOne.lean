@@ -14,7 +14,7 @@ theorem degree_prod_monic {σ ι : Type*} (m : MonomialOrder σ) (s : Finset ι)
     m.degree (∏ i ∈ s, P i) = ∑ i ∈ s, d i ∧ m.leadingCoeff (∏ i ∈ s, P i) = 1 := by
   classical
   induction s using Finset.induction_on with
-  | empty => simp [m.degree_one, m.leadingCoeff_one]
+  | empty => simp [m.degree_one]
   | insert a s has ih =>
     obtain ⟨ih1, ih2⟩ := ih fun i hi => h i (Finset.mem_insert_of_mem hi)
     obtain ⟨ha1, ha2⟩ := h a (Finset.mem_insert_self a s)

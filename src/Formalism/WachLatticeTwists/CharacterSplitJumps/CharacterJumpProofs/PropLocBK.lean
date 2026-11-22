@@ -70,7 +70,6 @@ theorem bkbConv : StatBKbConv := by
         (fun i => ((b i : LinearMap.range ψ) : HV' ⧸ HfV')) := by
       first
       | exact (LinearIndependent.iff_fractionRing O (FractionRing O)).1 hli0
-      | exact (LinearIndependent.iff_fractionRing (R := O) (K := FractionRing O)).1 hli0
     obtain ⟨G, hG⟩ : ∃ G : (HV' ⧸ HfV') →ₗ[FractionRing O] FractionRing O,
         ∀ i, G ((b i : LinearMap.range ψ) : HV' ⧸ HfV') = c i := by
       obtain ⟨G, hG⟩ :=

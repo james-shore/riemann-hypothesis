@@ -74,8 +74,6 @@ theorem log_pnorm_sq (X : Data E r) {la : Wt X.Ψ r} {P : Frame X.Ψ r → ℂ} 
   have hn2 : Complex.normSq (P x) = ‖P x‖ ^ 2 := by
     first
       | exact Complex.normSq_eq_norm_sq _
-      | exact (Complex.sq_norm _).symm
-      | simp [Complex.normSq_eq_abs]
   rw [hp, mul_pow, Real.log_mul (pow_ne_zero _ (norm_ne_zero_iff.mpr hP)) (pow_ne_zero _ hN.ne'), hn2,
     Real.log_pow, Real.log_pow, phla]
   ring

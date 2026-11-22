@@ -93,7 +93,7 @@ theorem mom2 {b : ℂ} (hb : b.re < 0) (R : MvPolynomial (Fin 2) ℂ) :
     have h1 := J_eq hb (v 1) μ
     simp only [J] at h0 h1 ⊢
     rw [h0, h1]
-    simp only [eval_mul, eval_C, eval_toMv, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+    simp only [eval_mul, eval_C, eval_toMv, Matrix.cons_val_zero, Matrix.cons_val_one]
     ring
 
 end PositivityTheory.SiegelWeilFormula.KLI

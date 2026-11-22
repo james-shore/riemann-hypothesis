@@ -225,12 +225,12 @@ theorem torusChar : DegAdelic → TorusChar := by
         by_cases hij : i = j
         · subst hij
           by_cases hx : x = 0
-          · simp [sMeet, Pi.single_apply, hjk, hx]
-          · simp [sMeet, Pi.single_apply, hjk, hx]
+          · simp [sMeet, hjk, hx]
+          · simp [sMeet, hjk, hx]
         · by_cases hik : i = k
           · subst hik
-            simp [sMeet, Pi.single_apply, hij]
-          · simp [sMeet, Pi.single_apply, hij, hik]
+            simp [sMeet, hij]
+          · simp [sMeet, hij, hik]
       rw [h1, hπ0]
     rw [hsum' e, lam_sum Finset.univ _ (fun j _ => hπi _) (fun j _ k _ hjk => horth j k _ _ hjk) t
       (fun j _ => hcm t ht _), sdot]

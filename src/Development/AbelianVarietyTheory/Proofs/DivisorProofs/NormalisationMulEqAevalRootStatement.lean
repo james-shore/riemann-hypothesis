@@ -15,4 +15,4 @@ theorem _root_.GlobalTheory.T.exists_mul_eq_aeval_root_normalisation : ∀ (S K 
       algebraMap S (integralClosure D (TensorProduct S D L)) s * b =
         Polynomial.aeval (algebraMap D (integralClosure D (TensorProduct S D L))
           (φ.symm (AdjoinRoot.root (Polynomial.X ^ e - Polynomial.C π)))) f := by
-  first | (exact @GlobalTheory.normalisation_mul_eq_aeval_root) | (exact GlobalTheory.normalisation_mul_eq_aeval_root) | (intros; apply GlobalTheory.normalisation_mul_eq_aeval_root  <;> assumption)
+  first | (exact @GlobalTheory.normalisation_mul_eq_aeval_root)

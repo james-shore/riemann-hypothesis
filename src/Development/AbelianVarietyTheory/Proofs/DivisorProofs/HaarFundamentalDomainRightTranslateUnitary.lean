@@ -34,4 +34,4 @@ theorem GlobalTheory.RightTranslateFundDomain.haar_and_fundDomain : ∀ {D : D7}
       rw [this, Measure.map_id]
     · intro h x
       show (h • x) * g = h • (x * g)
-      simp [Submonoid.smul_def, Subgroup.smul_def, mul_assoc]
+      simp [Subgroup.smul_def, mul_assoc]

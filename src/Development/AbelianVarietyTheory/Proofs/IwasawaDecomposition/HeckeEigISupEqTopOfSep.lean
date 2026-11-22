@@ -25,7 +25,7 @@ theorem _root_.GlobalTheory.heckeEig_iSup_eq_top_of_sep {O X M : Type} [CommRing
   let E : X → T := fun x => ∏ y ∈ Finset.univ.erase x, (s x y - algebraMap O T ((s x y : X → O) y))
   have hE : ∀ x z, ((E x : T) : X → O) z = ∏ y ∈ Finset.univ.erase x, ((s x y : X → O) z - (s x y : X → O) y) := by
     intro x z
-    simp [E, Subalgebra.coe_prod, Finset.prod_apply]
+    simp [E, Finset.prod_apply]
   let d : X → O := fun x => ((E x : T) : X → O) x
   have hd : ∀ x, d x ≠ 0 := by
     intro x

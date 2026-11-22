@@ -195,7 +195,7 @@ private theorem gam_letE_lemma_2 (g : W.Gam) (c : ZMod n) (x : W.DD T) :
     unfold letE
     by_cases hi : i = c
     · subst hi; simp
-    · simp [Pi.single_apply, hi]
+    · simp [hi]
   rw [← algebraMap_smul W.EE (letE c : LetA O n) x, W.γD_smul, W.γE_ext, e, algebraMap_smul]
 
 theorem invLiftPf_lift (π' Eπ : LetA O n) (h' M σ : ℕ) (c : ZMod n)

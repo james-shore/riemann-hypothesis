@@ -56,7 +56,7 @@ theorem mlat_perp (hW : WittX X u wt) (j : Fin (D.R.N 0)) :
   · rw [← hW.1, hW.2.1, mlat_symm]; simp [qFr, xFr, (D.sp.hyp_orthX a _).1]
   · rw [← hW.1, hW.2.2.1, mlat_symm]; simp [qFr, xFr, (D.sp.hyp_orthX a _).2]
   · rw [← hW.1, hW.2.2.2, mlat_symm]
-    simp only [qFr, LinearEquiv.apply_symm_apply, xFr, D7.zmOf, map_smul, map_smulₛₗ]
+    simp only [qFr, LinearEquiv.apply_symm_apply, xFr, D7.zmOf, map_smul]
     simp [D.sp.zm_orth]
 
 end GlobalTheory.St.G
@@ -188,7 +188,7 @@ theorem mlat_main (D : D7) (X : HidaSetting D) (u : D.what₂.Word) (wt : (VS D)
       have hx' : x = m + c • x₀ := by simp [m]
       rw [hx']
       have e : h (m + c • x₀) Y' = h m Y := by
-        simp only [Y', map_add, map_smulₛₗ, map_sub, map_smul, LinearMap.add_apply, LinearMap.smul_apply,
+        simp only [Y', map_add, map_smulₛₗ, map_sub, LinearMap.add_apply, LinearMap.smul_apply,
           hmz', hx₀z', smul_eq_mul, RingHom.id_apply]
         ring
       rw [e]; exact h1
@@ -217,7 +217,7 @@ theorem mlat_main (D : D7) (X : HidaSetting D) (u : D.what₂.Word) (wt : (VS D)
     refine (VS D).L0.add_mem ?_ hzL0
     rw [Nat.cast_smul_eq_nsmul]; exact nsmul_mem hx0L0 T
   have hw0w0 : h w₀ w₀ = h x₀ x₀ + (T : D.host.E)⁻¹ := by
-    simp only [w₀, map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, map_smul, hx₀z, hx₀z', hzz,
+    simp only [w₀, map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, hx₀z, hx₀z', hzz,
       hTstar, smul_eq_mul]
     field_simp; ring
 

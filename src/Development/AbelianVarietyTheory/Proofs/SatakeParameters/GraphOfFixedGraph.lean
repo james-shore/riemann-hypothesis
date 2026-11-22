@@ -205,7 +205,7 @@ theorem graph_of_spherical {A B K : Subgroup G} (hc : ∀ x ∈ A, ∀ y ∈ B, 
     have : X ≤ X.comap ((ρ x).prodMap (ρ x)) := by
       refine Submodule.span_le.2 ?_
       rintro _ ⟨y, hy, rfl⟩
-      exact Submodule.subset_span ⟨x * y, A.mul_mem hx hy, by simp [rho_mul]⟩
+      exact Submodule.subset_span ⟨x * y, A.mul_mem hx hy, by simp⟩
     exact this hz
   have hmem : ∀ z ∈ X, z.1 ∈ S₁ ∧ z.2 ∈ S₂ := by
     have : X ≤ S₁.prod S₂ := by

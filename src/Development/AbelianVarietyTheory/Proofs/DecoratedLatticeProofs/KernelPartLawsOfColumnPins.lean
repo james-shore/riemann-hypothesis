@@ -31,7 +31,7 @@ theorem clsKL_is : ∀ {B : GlobalTheory.Mem.Base} {X : PreX B.toPre} (I : TC B 
     have h1 := GlobalTheory.T.thetaKernelIdentity_at_every_tuple I hOk hPins l Z u a Ch₀ k.Ch A ι _ _ _ _ _ _ _ _ _ _ _ hX hP j hj (s j) hs.2 α γ a₁ a₂ P'
     have hx1 := hX.xs j (Nat.le_of_succ_le hj)
     have hx2 := hX.xs (j + 1) hj
-    simp only [Tup.ker, KerDat.pt, realOf, clsKL, tupOf, commOf, hx1.1, hx1.2.1, hx2.1, hx2.2.1, if_neg hs.1]
+    simp only [Tup.ker, KerDat.pt, realOf, commOf, hx1.1, hx1.2.1, hx2.1, hx2.2.1, if_neg hs.1]
     exact h1
   case forms =>
     refine ⟨fun j hj β => ?_, fun j hj β => ?_, fun j hj φ hφ β c => ?_, fun j hj φ hφ β y γ hγ c k₁ hk κ y' htr => ?_⟩

@@ -357,12 +357,12 @@ theorem blk_HV (B : BlockDat K G Pl0) (X : Finset (G → K)) (P : Subgroup G) (�
 theorem blk_HV_bot (B : BlockDat K G Pl0) (X : Finset (G → K)) :
     B.HV ⟨X, ⊥, 1⟩ = (B.vE ⟨X, ⊥, 1⟩)ᴴ * B.S.H * B.vE ⟨X, ⊥, 1⟩ := by
   rw [blk_HV]
-  simp [Subgroup.card_bot]
+  simp
 
 theorem blk_goodBot (X : Finset (G → K)) : goodAt X (⊥ : Subgroup G) 1 = idemOf X := by
   unfold goodAt
   have hb : lvlIdem (⊥ : Subgroup G) (1 : (⊥ : Subgroup G) →* Kˣ) = 1 := by
-    (simp [lvlIdem, MonoidAlgebra.one_def, Finset.univ_unique, Subgroup.card_bot]) <;> rfl
+    (simp [lvlIdem, MonoidAlgebra.one_def, Finset.univ_unique]) <;> rfl
   rw [hb, mul_one]
 
 theorem blk_gg (B : BlockDat K G Pl0) (X : Finset (G → K)) (hX : ∀ χ ∈ X, IsAbsIrrChar χ) (P : Subgroup G)

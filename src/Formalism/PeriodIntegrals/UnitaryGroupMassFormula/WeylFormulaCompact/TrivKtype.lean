@@ -16,11 +16,6 @@ theorem diag_mem {N : ℕ} (ε : Fin N → Bool) (θ : Fin N → ℝ) :
     funext a
     first
       | simp [← Complex.exp_conj, ← Complex.exp_add]
-      | (rw [Pi.star_apply, ← Complex.exp_conj, ← Complex.exp_add]
-         simp [Complex.conj_ofReal])
-      | (rw [Pi.star_apply, RCLike.star_def, Complex.mul_conj, Complex.normSq_eq_norm_sq,
-          Complex.norm_exp_ofReal_mul_I]
-         simp)
   · simp only [Jm, Matrix.diagonal_mul_diagonal]
     congr 1
     funext a

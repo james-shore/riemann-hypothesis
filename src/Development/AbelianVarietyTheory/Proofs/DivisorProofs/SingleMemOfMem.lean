@@ -84,7 +84,7 @@ def clearDen {S : Type} [DecidableEq S] {r : ℕ}
           (⟨c, hc⟩ : w.valuationSubring) • (Pi.single τ (b • v) : S → Fin r → C) := by
         funext s i
         by_cases e : s = τ
-        · subst e; simp only [Pi.single_eq_same, smul_pi_apply, smul_vec_apply, Pi.smul_apply,
+        · subst e; simp only [Pi.single_eq_same, smul_pi_apply, Pi.smul_apply,
             smul_eq_mul, smul_C]
           ring
         · simp [e]
@@ -96,7 +96,7 @@ def clearDen {S : Type} [DecidableEq S] {r : ℕ}
       refine ⟨b * ⟨c⁻¹, hc⟩, mul_ne_zero hb hne, ?_⟩
       have : (b * ⟨c⁻¹, hc⟩ : w.valuationSubring) • c • v = b • v := by
         funext i
-        simp only [smul_vec_apply, Pi.smul_apply, smul_eq_mul, smul_C]
+        simp only [Pi.smul_apply, smul_eq_mul, smul_C]
         push_cast
         field_simp
       rw [this]

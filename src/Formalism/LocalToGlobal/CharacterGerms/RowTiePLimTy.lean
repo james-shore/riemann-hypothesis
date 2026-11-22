@@ -26,7 +26,6 @@ theorem tendsS_smul {σ : Type} (c : C) {f : ℕ → MvPowerSeries σ C} {F : Mv
   intro μ
   first
     | simp only [map_smul, smul_eq_mul]
-    | simp only [MvPowerSeries.coeff_smul]
   exact (tends_const c).mul (h μ)
 
 theorem tendsS_ite {σ : Type} (P : Prop) [Decidable P] {f : ℕ → MvPowerSeries σ C} {F : MvPowerSeries σ C}
@@ -93,15 +92,12 @@ theorem constantCoeff_lin {d : ℕ} {I : Fin 2 → Type} [∀ g, Fintype (I g)] 
   rw [← MvPowerSeries.coeff_zero_eq_constantCoeff_apply]
   first
     | rw [map_smul, coeff_tyS_mv]
-    | rw [MvPowerSeries.coeff_smul, coeff_tyS_mv]
   simp
 
 private theorem hasSubst_of_constantCoeff_eq_zero' {σ τ : Type} [Finite σ] {a : σ → MvPowerSeries τ C}
     (ha : ∀ s, MvPowerSeries.constantCoeff (a s) = 0) : MvPowerSeries.HasSubst a := by
   first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero ha
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_nilpotent (fun s => by rw [ha s]; exact IsNilpotent.zero)
-    | exact MvPowerSeries.hasSubst_of_constantCoeff_nilpotent (fun s => by rw [ha s]; exact IsNilpotent.zero)
 
 theorem lim_mem {d : ℕ} {I : Fin 2 → Type} [∀ g, Fintype (I g)] {κ : Type} [Fintype κ] (X : RawChart C d I κ)
     (hl : 2 ≤ V.l)

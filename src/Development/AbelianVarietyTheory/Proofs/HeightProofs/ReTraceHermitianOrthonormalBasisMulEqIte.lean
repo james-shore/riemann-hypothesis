@@ -46,10 +46,10 @@ theorem norm_one {a b : Fin n} (hab : a < b) : ∀ X ∈ f (a, b), B X X = 1 := 
   simp only [f, List.mem_cons, List.not_mem_nil, or_false] at hX
   rcases hX with rfl | rfl
   · simp only [B, smul_mul_smul_comm, Matrix.trace_smul, mul_add, add_mul, Matrix.trace_add, tr_unit,
-      h1, h2, and_self, and_false, false_and, if_true, if_false, sq_inv, smul_eq_mul]
+      h1, h2, and_self, if_true, if_false, sq_inv, smul_eq_mul]
     norm_num
   · simp only [B, smul_mul_smul_comm, Matrix.trace_smul, mul_sub, sub_mul, Matrix.trace_sub, tr_unit,
-      h1, h2, and_self, and_false, false_and, if_true, if_false, smul_eq_mul]
+      h1, h2, and_self, if_true, if_false, smul_eq_mul]
     have : invSqrtTwo * Complex.I * (invSqrtTwo * Complex.I) = -(1 / 2 : ℂ) := by
       rw [show invSqrtTwo * Complex.I * (invSqrtTwo * Complex.I) = invSqrtTwo * invSqrtTwo * (Complex.I * Complex.I) by ring,
         sq_inv, Complex.I_mul_I]; ring
@@ -61,7 +61,7 @@ theorem within {a b : Fin n} (hab : a < b) : (f (a, b)).Pairwise fun X Y => B X 
   simp only [f, List.pairwise_cons, List.mem_cons, List.not_mem_nil, or_false, forall_eq,
     List.Pairwise.nil, and_true, IsEmpty.forall_iff, implies_true]
   simp only [B, smul_mul_smul_comm, Matrix.trace_smul, mul_sub, add_mul, Matrix.trace_sub, Matrix.trace_add, tr_unit,
-    h1, h2, and_self, and_false, false_and, if_true, if_false, smul_eq_mul]
+    h1, h2, and_self, if_true, if_false, smul_eq_mul]
   simp
 
 theorem across {a b c d : Fin n} (hab : a < b) (hcd : c < d) (hne : (a, b) ≠ (c, d)) :

@@ -189,7 +189,7 @@ theorem _root_.GlobalTheory.DiscrJacobian.isUnit_det_of_productMap_ne_zero [IsLo
         (IsScalarTower.toAlgHom R (ResidueField R) C) (ev (b j))) =
         ρ (b i) * (IsScalarTower.toAlgHom R (ResidueField R) C) (ev (∑ j, M i j • b j)) := by
       intro i
-      simp [map_sum, Finset.mul_sum, mul_smul_comm]
+      simp [map_sum, Finset.mul_sum]
     simp only [map_sum, map_smul, Algebra.TensorProduct.productMap_apply_tmul, AlgHom.comp_apply,
       hrow, hcon, map_zero, mul_zero, Finset.sum_const_zero]
   set w := ∑ j, M i0 j • b j with hw
@@ -226,7 +226,7 @@ theorem _root_.GlobalTheory.DiscrJacobian.isUnit_det_of_productMap_ne_zero [IsLo
     have hr : ∑ i, ∑ j, (M i j * b.coord i0 (b i)) • (b j * u) = ∑ j, t j • b j := by
       have : w * u = ∑ j, t j • b j := by rw [hu, ← mul_assoc, hw', one_mul]
       rw [← this, hw, Finset.sum_mul]
-      simp [Module.Basis.coord_apply, Finsupp.single_apply, smul_mul_assoc]
+      simp [Module.Basis.coord_apply, Finsupp.single_apply]
     apply b.equivFun.symm.injective
     simp only [Module.Basis.equivFun_symm_apply]
     rw [← hr, ← hs]
@@ -360,8 +360,7 @@ private theorem norm_sum_mul_eq_discr_mul_det {R B : Type} [CommRing R] [CommRin
       M.transpose * Algebra.traceMatrix R b := by
     ext j l
     rw [Algebra.leftMulMatrix_eq_repr_mul, hmul]
-    simp [Matrix.mul_apply, Algebra.traceMatrix_apply, Module.Basis.repr_sum_self,
-      Finsupp.single_apply]
+    simp [Matrix.mul_apply, Algebra.traceMatrix_apply, Finsupp.single_apply]
   rw [Algebra.norm_eq_matrix_det b, hmat, Matrix.det_mul, Matrix.det_transpose,
     Algebra.discr_def, mul_comm]
 
@@ -401,7 +400,7 @@ theorem _root_.GlobalTheory.DiscrJacobian.associated_discr_norm_jacobian (R : Ty
     intro i
     have := _root_.GlobalTheory.DiscrJacobian.mem_span_of_mu_eq_zero X hx hgen
       (f i ⊗ₜ[R] (1 : MvPowerSeries (Fin g) R ⧸ Ideal.span (Set.range f)))
-      (by simp [hf0])
+      (by simp)
     rw [Ideal.mem_span_range_iff_exists_fun] at this
     obtain ⟨c, hc⟩ := this
     exact ⟨c, hc.symm⟩

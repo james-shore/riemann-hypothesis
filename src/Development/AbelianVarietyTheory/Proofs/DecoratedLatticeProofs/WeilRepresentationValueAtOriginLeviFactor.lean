@@ -73,7 +73,7 @@ theorem dgU_sub_one {R : Type*} [CommRing R] (ρ : ℕ) (i : Fin ρ) (x : Rˣ) (
   · subst h
     by_cases h' : k = i
     · subst h'; simp
-    · simp [Function.update_of_ne h', h']
+    · simp [h']
   · simp [h]
     intro hk hl; exact absurd (hk.trans hl.symm) h
 

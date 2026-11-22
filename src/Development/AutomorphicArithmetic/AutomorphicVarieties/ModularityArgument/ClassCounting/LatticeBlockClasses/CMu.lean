@@ -77,13 +77,13 @@ theorem UpperTheory.V.ZK.Cl.cMu :
         by_cases hij : i = j
         · subst hij
           simpa using hc P hP
-        · simp [Pi.single_apply, hij]
+        · simp [hij]
       have e : (Pi.single j (c * algebraMap L F (m : L)) : J → F) = (m : L) • (Pi.single j c : J → F) := by
         ext i
         by_cases hij : i = j
         · subst hij
           simp [Algebra.smul_def, mul_comm]
-        · simp [Pi.single_apply, hij]
+        · simp [hij]
       intro σ j'
       show ResF r (σ (((g : GG L F J) (Pi.single j (c * algebraMap L F (m : L)))) j')) 0
       rw [e, map_smul, Pi.smul_apply, Algebra.smul_def, map_mul, AlgEquiv.commutes]

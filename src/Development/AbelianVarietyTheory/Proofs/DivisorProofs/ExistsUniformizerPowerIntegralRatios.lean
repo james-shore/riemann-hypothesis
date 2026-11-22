@@ -40,7 +40,7 @@ theorem adicCompletion_tensor_matrixUnit_identity : ∀ (L : Type) [Field L] [Nu
         funext j'
         by_cases hj : j' = j
         · subst hj; simp
-        · simp [Pi.single_apply, hj]
+        · simp [hj]
       rw [this]; exact hpure a _
     | add x y hx hy =>
       rw [Pi.single_add]; exact hadd _ _ hx hy

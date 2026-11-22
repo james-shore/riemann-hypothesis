@@ -202,8 +202,8 @@ theorem exists_dualBasis (S : HSp D) {Λ : Submodule (𝓞 D.host.E) (Fin S.rank
     rw [hc', h3, ← key, star_star]
   · have := congrFun (hid (Pi.single b 1)) a
     rw [Finset.sum_apply] at this
-    simp only [Pi.smul_apply, smul_eq_mul, hw, Pi.single_apply, ite_mul, one_mul, zero_mul,
-      Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true] at this
+    simp only [hw, Pi.single_apply, ite_mul, one_mul, zero_mul,
+      Finset.sum_ite_eq', Finset.mem_univ, if_true] at this
     simp only [hs'row]
     rw [this]
     exact Finset.sum_congr rfl fun i _ => mul_comm _ _

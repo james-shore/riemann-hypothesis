@@ -8,8 +8,8 @@ theorem psd_real_quad_single (g : ℕ) (Y : Matrix (Fin g) (Fin g) ℝ) (hY : Y.
     (hij : i ≠ j) (c : ℝ) : 0 ≤ Y i i + c * Y i j + c * Y j i + c * c * Y j j := by
   have h := hY.dotProduct_mulVec_nonneg (Pi.single i 1 + Pi.single j c)
   simp only [star_trivial, mulVec_add, add_dotProduct, dotProduct_add, mulVec_single,
-    single_dotProduct, dotProduct_single] at h
-  simp [Pi.single_apply, hij, hij.symm] at h
+    single_dotProduct] at h
+  simp at h
   linarith
 
 theorem abs_entry_le_of_psd_le (g : ℕ) (Y : Matrix (Fin g) (Fin g) ℝ) (M : ℝ)

@@ -131,7 +131,7 @@ private theorem cc_d_ev_lemma_2 {m n : ℕ} {a : Fin m → Pt R n d} (ha : ZZ a)
   next p k hp =>
     simp only [MvPolynomial.coe_mul, MvPolynomial.coe_X, map_mul, substAlgHom_X, Derivation.leibniz,
       smul_eq_mul, hp, map_add, pderiv_X, Pi.single_apply, add_mul, Finset.sum_add_distrib]
-    simp [apply_ite, Finset.mul_sum, mul_assoc, mul_comm, mul_left_comm, -coe_substAlgHom,
+    simp [apply_ite, Finset.mul_sum, mul_assoc, mul_comm, -coe_substAlgHom,
       -substAlgHom_apply]
 
 private theorem cc_d_ev_lemma_3 {m n : ℕ} {a : Fin m → Pt R n d} (ha : ZZ a) {K : ℕ} {g : PS R m d}
@@ -210,7 +210,7 @@ theorem cc_d_comp1_pt {n : ℕ} (φ : Pt R 1 d) (j k : Fin n) (i l : Fin d) :
   by_cases h : j = k
   · subst h
     simp [pt, pderiv_X, Pi.single_apply]
-  · simp [pt, pderiv_X, Pi.single_apply, h, Ne.symm h]
+  · simp [pt, h]
 
 theorem lin_comp1 (φ : Pt R 1 d) {ψ : Pt R 1 d} (hψ : Z ψ) : lin (comp1 φ ψ) 1 = lin φ 1 * lin ψ 1 := by
   ext i j

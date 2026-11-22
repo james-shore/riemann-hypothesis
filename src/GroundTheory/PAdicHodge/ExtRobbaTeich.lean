@@ -545,7 +545,7 @@ theorem exists_one_add_teich_pow {b : L} (hb : ‖b‖ ≤ 1) (k : ℕ) :
       rw [hc, hpw, one_pow, mul_one, pow_succ]; ring
     rw [add_comm (1 : Γ), add_pow, T.teich_pow, hN, Finset.sum_range_succ, Finset.sum_range_succ',
       hsum]
-    simp only [pow_zero, one_pow, mul_one, one_mul, Nat.choose_zero_right, Nat.choose_self,
+    simp only [pow_zero, one_pow, mul_one, Nat.choose_zero_right, Nat.choose_self,
       Nat.cast_one, Nat.sub_self, Nat.sub_zero]
     ring
 

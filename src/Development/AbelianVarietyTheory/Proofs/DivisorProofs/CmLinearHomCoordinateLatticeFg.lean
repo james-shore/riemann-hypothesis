@@ -47,7 +47,7 @@ theorem lat_fg : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (H : Rec
     intro v w h
     funext i
     have := congrFun h i
-    simp only [scal, LinearMap.smul_apply, LinearMap.id_apply, Pi.smul_apply, Algebra.smul_def] at this
+    simp only [scal, Algebra.smul_def] at this
     exact mul_left_cancel₀ hN this
   apply Submodule.fg_of_fg_map_injective scal hscal
   refine Submodule.FG.of_le (T := LinearMap.range incl) ?_ ?_

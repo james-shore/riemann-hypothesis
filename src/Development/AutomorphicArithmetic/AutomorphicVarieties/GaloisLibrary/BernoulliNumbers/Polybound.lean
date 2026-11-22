@@ -53,8 +53,7 @@ theorem UpperTheory.V.Bern.b_polybound :
   · interval_cases k
     · simp [Polynomial.bernoulli_zero]
     · simp only [Polynomial.bernoulli_one, Polynomial.eval_sub, Polynomial.eval_X,
-        Polynomial.eval_C, Rat.cast_sub, Rat.cast_div, Rat.cast_one, Rat.cast_ofNat,
-        Nat.factorial_one, Nat.cast_one, pow_one]
+        Polynomial.eval_C, Rat.cast_sub, Nat.factorial_one, Nat.cast_one, pow_one]
       have key : |(x : ℝ) - 1 / 2| ≤ 1 / 2 := abs_le.mpr ⟨by linarith, by linarith⟩
       have : (1 : ℝ) / 2 ≤ 4 * 1 / (2 * Real.pi) := by
         rw [le_div_iff₀ hpi]

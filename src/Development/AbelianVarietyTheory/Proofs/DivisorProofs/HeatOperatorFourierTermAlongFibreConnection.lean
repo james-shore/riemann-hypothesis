@@ -40,7 +40,7 @@ theorem trF_term (e : ℕ) (α : Q.X) (t : Fin 4 → Q.P.L.ι) (J : (Y.H.left �
   have f0 : Q.famφB α 0 = 𝟙 _ := rfl
   rw [e1, e2, e3]
   simp only [Fin.prod_univ_four, DegPre.famε, DegPre.gtε, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two,
-    Matrix.cons_val_three, Matrix.head_cons, Matrix.vecHead, Matrix.vecTail, Function.comp_apply, Fin.succ_zero_eq_one,
+    Matrix.cons_val_three, Matrix.vecHead, Matrix.vecTail, Function.comp_apply, Fin.succ_zero_eq_one,
     Fin.succ_one_eq_two, f0, Category.comp_id]
   rw [zpow_sub_one]
   apply Additive.ofMul.injective
@@ -62,7 +62,7 @@ theorem term_germ {e : ℕ} {α : Q.X} {σ : Q.SecB e α} {τ : SecM Y.q.left Q.
   rw [sval_of τ _ y J (fun _ => J Y.q.left) (fun _ => by simp),
     sval_of σ _ y J (fun j => J (Y.q.left ≫ Q.famφB α j)) (fun _ => by simp),
     val_of _ _ y J (fun k => J (Y.q.left ≫ Q.famφB α (![1, 2, 0, 3] k))) (fun k => by rw [Category.id_comp, gtφT_eq])] at e₀
-  simp only [Over.id_left, Over.comp_left, Category.id_comp] at e₀
+  simp only [Over.id_left, Category.id_comp] at e₀
   have m₁ : (𝟙 Y.H.left : Y.H.left ⟶ Y.H.left) y ∈ LB.wchart Q.P.L (fun _ : Fin 1 => Y.q.left) fun _ => J Y.q.left :=
     Set.mem_iInter.2 fun _ => hJ _
   have m₂ : Y.q.left y ∈ LB.wchart Q.P.L (Q.famφB α) fun j => J (Y.q.left ≫ Q.famφB α j) :=

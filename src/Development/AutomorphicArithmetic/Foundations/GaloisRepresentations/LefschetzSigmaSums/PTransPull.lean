@@ -35,12 +35,12 @@ theorem UpperTheory.Gal.LocalSmoothExtension.transPull_of :
   · intro e
     apply huniq
     simp only [Over.comp_left, Category.assoc, reassoc_of% hcomm, hcomm, reassoc_of% (m'.act e),
-      m'.act e, m''.act e]
+      m''.act e]
     rw [← Over.comp_left, ← Over.comp_left, hact e]
   · intro e
     apply huniq'
     simp only [Over.comp_left, Category.assoc, reassoc_of% hcomm', hcomm', reassoc_of% (m''.act e),
-      m''.act e, m'.act e]
+      m'.act e]
     rw [← Over.comp_left, ← Over.comp_left, hact' e]
   · apply hu₁
     simp only [Over.comp_left, Category.assoc, hcomm', reassoc_of% hcomm, hpow d, ← hc1]

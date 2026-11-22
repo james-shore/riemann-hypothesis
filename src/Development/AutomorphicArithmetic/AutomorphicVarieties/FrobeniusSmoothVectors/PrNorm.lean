@@ -13,7 +13,7 @@ variable {l : ℕ} [Fact l.Prime] {k : Type} [Field k] {F : Frame l k} {n : ℕ}
 
 private theorem conj_left {G : Type} [Group G] (h : GL (Fin n) C) (r : G →* GG n C) (s : G) :
     (conjBy h r s).left = h * (r s).left * sgnAct n C (r s).right h⁻¹ := by
-  simp [conjBy, GG.ofGL, MulAut.conj_apply, SemidirectProduct.mul_left, SemidirectProduct.mul_right, mul_assoc]
+  simp [conjBy, GG.ofGL, MulAut.conj_apply, SemidirectProduct.mul_left, mul_assoc]
 
 private theorem conj_right {G : Type} [Group G] (h : GL (Fin n) C) (r : G →* GG n C) (s : G) :
     (conjBy h r s).right = (r s).right := by
@@ -29,7 +29,7 @@ private theorem conj_mul {G : Type} [Group G] (h h' : GL (Fin n) C) (r : G →* 
     conjBy (h * h') r = conjBy h (conjBy h' r) := by
   apply MonoidHom.ext
   intro s
-  simp [conjBy, MulAut.conj_apply, _root_.mul_inv_rev, mul_assoc]
+  simp [conjBy, MulAut.conj_apply, mul_assoc]
 
 private theorem frame_right_eq_one_of_G0 (B : Box F n C) (s : F.G0) : (B.r s).right = 1 := by
   exact (B.nu s).trans (MonoidHom.mem_ker.mp s.2)
@@ -103,7 +103,7 @@ private theorem star_mat (hc : F.del F.c = -1) (B : Box F n C) (h1 : (B.r F.c).m
   have hX : B.r F.c = ⟨1, -1⟩ := SemidirectProduct.ext (Units.ext (by simpa [GG.mat] using h1)) ((B.nu _).trans hc)
   have hY : B.r (g : F.Γ) = ⟨(B.r g).left, 1⟩ := SemidirectProduct.ext rfl (frame_right_eq_one_of_G0 B g)
   rw [show ((F.star g : F.G0) : F.Γ) = F.c * (g : F.Γ)⁻¹ * F.c⁻¹ from rfl, map_mul, map_mul, map_inv, map_inv, hX, hY]
-  simp [GG.mat, SemidirectProduct.mul_left, SemidirectProduct.inv_left, map_inv, sgnAct_neg_one, sgnAct_one, theta_inv_val]
+  simp [GG.mat, SemidirectProduct.mul_left, SemidirectProduct.inv_left, map_inv, sgnAct_neg_one]
   rw [t1, t1, Units.val_one, mul_one, ← Matrix.coe_units_inv, theta_inv_val]
 
 end SlopeTestRemainingChoices

@@ -32,7 +32,7 @@ theorem mul_colMat_of_mem {n : ℕ} (h : GL (Fin (n + 1)) k) (hh : h ∈ Mir k n
       have e : ∀ l : Fin n, (h : Matrix (Fin (n + 1)) (Fin (n + 1)) k) (Fin.last n) (Fin.castSucc l) = 0 := by
         intro l
         rw [hl]
-        simp [eLast, Pi.single_apply, Fin.castSucc_ne_last]
+        simp [eLast, Fin.castSucc_ne_last]
       simp [colMat, mul_apply, Fin.sum_univ_castSucc, e]
     | cast i =>
       simp [colMat, mul_apply, Fin.sum_univ_castSucc, mulVec, dotProduct, blockMat]

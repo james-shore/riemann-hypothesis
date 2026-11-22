@@ -42,7 +42,7 @@ variable {V : Type} [AddCommGroup V] [Module K V] [Module (𝓞 K) V] [IsScalarT
 omit hK hF in
 theorem h_smul_smul (h : V →ₗ⋆[K] V →ₗ[K] K) (μ ν : K) (x y : V) :
     h (μ • x) (ν • y) = star μ * ν * h x y := by
-  simp only [LinearMap.map_smulₛₗ, LinearMap.smul_apply, LinearMap.map_smul, smul_eq_mul,
+  simp only [LinearMap.map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul,
     starRingEnd_apply, RingHom.id_apply]
   ring
 

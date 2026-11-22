@@ -26,6 +26,6 @@ theorem continuous_levi (n : ℕ) : Continuous (levi k n) := by
   exact h.subtype_mk _
 
 theorem smPsiMinus : SmPsiMinus k :=
-  by apply _root_.UpperTheory.Reformulated.B.DYhc8.main <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.DYhc8.main
 
 end GlobalTheory.CompanionTheory.BZMirFun

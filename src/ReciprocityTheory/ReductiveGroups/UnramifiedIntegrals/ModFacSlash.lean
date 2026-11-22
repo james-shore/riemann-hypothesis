@@ -12,16 +12,13 @@ theorem denom_SL_coe (γ : SL(2, ℤ)) (z : ℍ) :
     denom γ z = ((γ 1 0 : ℤ) : ℂ) * z + ((γ 1 1 : ℤ) : ℂ) := by
   first
   | rfl
-  | simp [UpperHalfPlane.denom]
-  | (simp [UpperHalfPlane.denom]; norm_cast)
 
 theorem smul_SL_coe (γ : SL(2, ℤ)) (z : ℍ) :
     ((γ • z : ℍ) : ℂ) = (((γ 0 0 : ℤ) : ℂ) * z + ((γ 0 1 : ℤ) : ℂ)) /
       (((γ 1 0 : ℤ) : ℂ) * z + ((γ 1 1 : ℤ) : ℂ)) := by
   first
-  | (rw [UpperHalfPlane.coe_smul, UpperHalfPlane.num, denom_SL_coe]; simp)
+  | (rw [UpperHalfPlane.coe_smul, UpperHalfPlane.num, denom_SL_coe])
   | (rw [UpperHalfPlane.specialLinearGroup_apply]; simp)
-  | simp [UpperHalfPlane.coe_smul, UpperHalfPlane.num, UpperHalfPlane.denom]
 
 theorem pt_smul {t t' : ℕ × ℕ × ℕ} (ht : 0 < t.1 ∧ 0 < t.2.2) (ht' : 0 < t'.1 ∧ 0 < t'.2.2)
     (γ γ' : SL(2, ℤ))

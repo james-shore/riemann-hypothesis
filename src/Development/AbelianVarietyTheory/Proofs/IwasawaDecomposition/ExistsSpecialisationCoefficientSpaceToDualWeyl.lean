@@ -99,7 +99,7 @@ theorem specAt_blockAct (τ₀ : ι) (y : ι × Fin n × Fin n → K) (M : Matri
     · simp only [AlgHom.comp_apply, Formalism.GradedWeylDivisibility.blockAct, specAt, MvPolynomial.aeval_X, hτ, if_false, map_sum, map_mul,
         MvPolynomial.aeval_C, Matrix.one_apply]
       rw [Finset.sum_eq_single a]
-      · simp [hτ]
+      · simp
       · intro c _ hc; simp [Ne.symm hc]
       · simp
   exact congrArg (fun f : Formalism.L2.DIV.Pol K ι n →ₐ[K] MvPolynomial (Fin n × Fin n) K => f P) h

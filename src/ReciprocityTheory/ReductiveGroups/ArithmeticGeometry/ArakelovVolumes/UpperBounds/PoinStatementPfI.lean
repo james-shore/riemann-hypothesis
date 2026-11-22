@@ -28,7 +28,6 @@ theorem psiF_rmul (X : Data E r) {x0 : Frame X.Ψ r} (hx0 : IsOrth X x0) (bb : �
   have hm : rmul y b ∈ X.dom := by
     first
       | exact OrthogonalFrameDomain.rmul_mem_dom X hy hb
-      | exact ReciprocityTheory.ChartRestriction.G.FD.OrthogonalFrameDomain.rmul_mem_dom X hy hb
   unfold psiF
   rw [Set.indicator_of_mem hm, Set.indicator_of_mem hy, hP.2 y hy b hb, hW.2.1 y hy b hb,
     kaY_rmul X hx0 hy hb bb]

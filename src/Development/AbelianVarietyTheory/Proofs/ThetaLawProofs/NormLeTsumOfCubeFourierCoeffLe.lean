@@ -485,7 +485,7 @@ theorem phKoecher : PhKoecherStatement := by
           U.map (Int.cast : ℤ → ℚ)).trace : ℚ) : ℝ) := by
       rw [Matrix.trace_mul_cycle]
       simp only [Matrix.trace, Matrix.diag, Matrix.mul_apply (M := _ * _), Matrix.map_apply, hT,
-        Matrix.of_apply, Matrix.smul_apply, smul_eq_mul, Fintype.sum_prod_type, Finset.mul_sum]
+        Matrix.of_apply, Matrix.smul_apply, smul_eq_mul, Fintype.sum_prod_type]
       push_cast
       rw [Finset.sum_comm]
       simp only [Finset.mul_sum]

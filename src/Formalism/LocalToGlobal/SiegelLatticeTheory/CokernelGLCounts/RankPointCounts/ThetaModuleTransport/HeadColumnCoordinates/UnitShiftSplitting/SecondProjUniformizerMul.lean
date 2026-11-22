@@ -19,7 +19,7 @@ theorem firstProj_secondComponent (Y : Ix r → M.L.O) (b : Fin (r + 1)) : p1 g 
   simp [p1, p2, cmp2, e_rOf, c2]
 theorem secondProj_secondComponent (Y : Ix r → M.L.O) (b : Fin (r + 1)) :
     p2 g (cmp2 hs Y b : E) = p2 g (Y (Sum.inl b)) + (g.q : F) * p2 g (Y (Sum.inr b)) := by
-  simp [p1, p2, cmp2, e_rOf, c2]
+  simp [p2, cmp2, e_rOf, c2]
 theorem firstProj_uniformizer_mul (x : M.R) : p1 g ((q2 hs * x : M.R) : E) = 0 := by
   simp [p1, q2]
 theorem secondProj_uniformizer_mul (x : M.R) : p2 g ((q2 hs * x : M.R) : E) = (g.q : F) * p2 g (x : E) := by

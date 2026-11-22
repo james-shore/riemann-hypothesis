@@ -62,7 +62,7 @@ theorem Q_natCast (m : ℕ) : (m : ZMod a → K⟦X⟧⟦X⟧) ∈ QSet t K e :=
   refine ⟨Pi.single (0, 0) (m : Wq l a), funext fun τ => ?_⟩
   ext i n
   rw [coeff_ofW, Pi.natCast_apply, ← mul_one ((m : K⟦X⟧⟦X⟧)), coeff_natCast_mul_double]
-  rcases i with _ | i <;> rcases n with _ | n <;> simp [dpDen, Pi.single_apply, coeff_one]
+  rcases i with _ | i <;> rcases n with _ | n <;> simp [dpDen, coeff_one]
 
 theorem Q_mul {x y : ZMod a → K⟦X⟧⟦X⟧} (hx : x ∈ QSet t K e) (hy : y ∈ QSet t K e) : x * y ∈ QSet t K e :=
   GlobalTheory.T.mul_mem_crystallinePrismDividedPowerFamilies l a e O K t x hx y hy
@@ -115,7 +115,7 @@ theorem good_fin (hφC : ∀ f : K⟦X⟧, φ₂ (C f) = C (frob K l f)) (hφX :
     (w : ℕ × ℕ → Wq l a) (s : Finset (ℕ × ℕ)) :
     ofW t K e (fun p => if p ∈ s then w p else 0) ∈ GoodSet t e φ₂ := by
   have h : (fun p => if p ∈ s then w p else 0) = ∑ p ∈ s, Pi.single p (w p) := by
-    funext q; rw [Finset.sum_apply]; simp [Pi.single_apply, Finset.sum_ite_eq']
+    funext q; rw [Finset.sum_apply]; simp [Pi.single_apply]
   have h2 : ofW t K e (fun p => if p ∈ s then w p else 0) = ∑ p ∈ s, ofW t K e (Pi.single p (w p)) := by
     rw [h]; exact map_sum (ofWHom (K := K) (e := e) t) _ s
   rw [h2]

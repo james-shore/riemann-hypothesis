@@ -146,7 +146,7 @@ theorem fieldA {K : Type} [Field K] (s : K →+* K) (hs : ∀ x, s (s x) = x) (c
   have hse : ∀ i, s (e i) = e i := by
     intro i; by_cases h0 : D i = 0
     · simp [he, h0]
-    · simp [he, h0, mul_inv_cancel₀]
+    · simp [he, h0]
   set E : Matrix n n K := diagonal e with hE
   set Dp : Matrix n n K := diagonal fun i => (D i)⁻¹ with hDp
   obtain ⟨b', hb'⟩ : ∃ b', b' = Dp * (E - E * H * E) * cj s Dp := ⟨_, rfl⟩

@@ -195,6 +195,6 @@ theorem offPrime_conj {D : D7} {e : Formalism.L2.Theta.AE D} {q : ℕ} (h : Glob
   h v ε hv (by rw [← hε, GlobalTheory.MovedIdem.cA_cA, add_comm])
 
 theorem defPair_inRange {T : Type} {m : ℕ} {p : Pair T} (h : DefPair m p) : p.InRange m := by
-  cases p <;> simp only [DefPair, Pair.InRange, Pair.big, Node.InRange] at h ⊢ <;> omega
+  cases p <;> simp only [DefPair, Pair.InRange, Node.InRange] at h ⊢ <;> omega
 
 end GlobalTheory.SplitCharValue

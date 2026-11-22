@@ -165,7 +165,7 @@ theorem contDiff_of_heisV_closed (ψ : AddChar (AF F) ℂ) (hψ : Continuous ψ)
         rfl
       rw [e]
       convert hasDerivAt_lineV hψ hM (hD (u + L t)) using 1
-      simp only [Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, one_mul]
+      simp only [Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, one_mul]
 
 end Crit
 

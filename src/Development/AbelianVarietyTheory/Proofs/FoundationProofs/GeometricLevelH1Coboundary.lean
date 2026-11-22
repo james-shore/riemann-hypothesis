@@ -109,11 +109,11 @@ theorem zp_eq (hψ : IsReb T L ψ) (z : ℤ_[p]) :
   have hp0 : (p : ℤ) ^ L ≠ 0 := pow_ne_zero _ (by exact_mod_cast (Fact.out : p.Prime).ne_zero)
   refine hψ.sub _ _ (fun i => ?_) (fun r hr => ?_)
   · by_cases hi : i = 0
-    · subst hi; simp [HahnSeries.C_apply, HahnSeries.coeff_single]
+    · subst hi; simp [HahnSeries.C_apply]
     · have : (p : ℤ) ^ L * i ≠ 0 := mul_ne_zero hp0 hi
-      simp [HahnSeries.C_apply, HahnSeries.coeff_single, hi, this]
+      simp [HahnSeries.C_apply, hi, this]
   · have : r ≠ 0 := by rintro rfl; exact hr (dvd_zero _)
-    simp [HahnSeries.C_apply, HahnSeries.coeff_single, this]
+    simp [HahnSeries.C_apply, this]
 
 theorem isAlgZp_iff (hψ : IsReb T L ψ) (x : Ω) : @IsAlgZp p _ (RebT Ω ψ) _ _ x ↔ IsAlgZp p x := by
   have hc : ψ.comp (algebraMap ℤ_[p] (O0 p)) = (algebraMap (O0 p) Ω).comp (algebraMap ℤ_[p] (O0 p)) :=

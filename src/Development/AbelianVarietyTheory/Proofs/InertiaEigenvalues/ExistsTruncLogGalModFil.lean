@@ -69,7 +69,7 @@ theorem exists_truncLog_gal_mod_fil : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l
     have h0 : Per.θ l (bk.ev bk.E) = 0 := by
       have : bk.ev bk.E ∈ RingHom.ker (Per.θ l) := bk.span_ev ▸ Ideal.mem_span_singleton_self _
       exact this
-    first | exact GlobalTheory.RingIface.alg_mem_kerP _ h0 | exact GlobalTheory.RingIface.alg_mem_kerP h0
+    first | exact GlobalTheory.RingIface.alg_mem_kerP _ h0
   have hfE : f bk.E ∈ I := Ideal.mem_map_of_mem _ hEm
   have hfσE : fσ bk.E ∈ I := by
     refine Ideal.mem_map_of_mem _ ?_

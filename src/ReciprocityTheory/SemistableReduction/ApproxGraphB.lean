@@ -8,7 +8,7 @@ open ComplexConjugate
 
 lemma posPart_posPart (p : ℕ) {r : ℕ} (u : Fin r → ℂ) : posPart p (posPart p u) = posPart p u := by
   ext k
-  simp only [posPart, negPart, Pi.zero_apply]
+  simp only [posPart]
   split_ifs <;> rfl
 
 lemma posPart_negPart (p : ℕ) {r : ℕ} (u : Fin r → ℂ) : posPart p (negPart p u) = 0 := by
@@ -23,7 +23,7 @@ lemma negPart_posPart (p : ℕ) {r : ℕ} (u : Fin r → ℂ) : negPart p (posPa
 
 lemma negPart_negPart (p : ℕ) {r : ℕ} (u : Fin r → ℂ) : negPart p (negPart p u) = negPart p u := by
   ext k
-  simp only [posPart, negPart, Pi.zero_apply]
+  simp only [negPart]
   split_ifs <;> rfl
 
 lemma posPart_zero (p : ℕ) {r : ℕ} : posPart p (0 : Fin r → ℂ) = 0 := by

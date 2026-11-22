@@ -35,10 +35,10 @@ theorem lieD_single_blkGL (hr : r ≤ a) (f : Sm E a)
   set m : GA E a := blkGL hr p with hm
   set S : Matrix (Fin a) (Fin a) (Cinf E) := Matrix.single i j x with hS
   have hij : j ≠ i := fun h => by rw [h] at hj; omega
-  have hSS : S * S = 0 := by rw [hS]; simp [hij, hij.symm]
+  have hSS : S * S = 0 := by rw [hS]; simp [hij]
   let c : ℝ → GL (Fin a) (Cinf E) := fun t =>
-    ⟨1 + t • S, 1 - t • S, by simp [mul_sub, add_mul, smul_mul_smul_comm, hSS],
-      by simp [sub_mul, mul_add, smul_mul_smul_comm, hSS]⟩
+    ⟨1 + t • S, 1 - t • S, by simp [mul_sub, add_mul, hSS],
+      by simp [sub_mul, mul_add, hSS]⟩
   have h0 : c 0 = 1 := Units.ext (by simp [c])
   have hc : HasDerivAt (fun t => toL (c t).val) (toL S) 0 := by
     have := ((hasDerivAt_id (0 : ℝ)).smul_const (toL S)).const_add (toL (1 : Matrix (Fin a) (Fin a) (Cinf E)))

@@ -27,7 +27,6 @@ theorem onto_of (hPoin : PoinStatement (E := E)) (hExtF : ExtFStatement (E := E)
     have h1 : ∀ᵐ z ∂((muF X x0).restrict FF), z ∈ FF := ae_restrict_mem hFF.1
     first
       | exact (withDensity_absolutelyContinuous _ _).ae_le h1
-      | (unfold OntoI.nuF; exact (withDensity_absolutelyContinuous _ _).ae_le h1)
   have hmemP : ∀ (F : V (nd X) → ℂ) (P : Frame X.Ψ r → ℂ), OntoJ.Dt X x0 W bb la F P →
       MemLp (fun z => poin X la P (cpt X x0 z)) 2 (OntoI.nuF X x0 W FF) := fun F P hD =>
     OntoI.memLp_of (r := r) (X := X) (x0 := x0) (W := W) (FF := FF) hWm
@@ -85,7 +84,6 @@ theorem onto_of (hPoin : PoinStatement (E := E)) (hExtF : ExtFStatement (E := E)
        map_add' := fun a b => by
          first
            | exact OntoJ.TL_add (hD2m a) (hD2m b)
-           | (rw [← OntoJ.TL_add (hD2m a) (hD2m b)]; rfl)
        map_smul' := fun c a => by
          first
            | exact OntoJ.TL_smul c (hD2m a)
@@ -111,30 +109,21 @@ theorem onto_of (hPoin : PoinStatement (E := E)) (hExtF : ExtFStatement (E := E)
   haveI hfS : FiniteDimensional ℂ (Submodule.span ℂ (Set.range g)) := by
     first
       | exact FiniteDimensional.span_of_finite ℂ (Set.finite_range g)
-      | exact FiniteDimensional.span_of_finite (Set.finite_range g)
-      | exact Module.Finite.iff_fg.mpr (Submodule.fg_span (Set.finite_range g))
-      | exact inferInstance
   have hD2le : D2 ≤ Submodule.span ℂ (Set.range g) := by
     intro h hh
     exact ((hD2i h).1 hh).1
   haveI hfD2 : FiniteDimensional ℂ D2 := by
     first
       | exact Submodule.finiteDimensional_of_le hD2le
-      | exact Module.Finite.of_injective (Submodule.inclusion hD2le)
-          (Submodule.inclusion_injective hD2le)
   haveI hfR : FiniteDimensional ℂ (LinearMap.range Φ) := by
     first
       | exact LinearMap.finiteDimensional_range Φ
-      | exact inferInstance
   haveI hfM : FiniteDimensional ℂ M := by
     first
       | exact Submodule.finiteDimensional_of_le hMle
-      | exact Module.Finite.of_injective (Submodule.inclusion hMle)
-          (Submodule.inclusion_injective hMle)
   haveI : CompleteSpace M := by
     first
       | exact FiniteDimensional.complete ℂ M
-      | exact inferInstance
 
   obtain ⟨y, hyM, w, hw, hvyw⟩ : ∃ y ∈ M, ∃ w ∈ M.orthogonal,
       OntoJ.TL (OntoI.nuF X x0 W FF) (fun z => f (cpt X x0 z)) = y + w := by
@@ -164,11 +153,9 @@ theorem onto_of (hPoin : PoinStatement (E := E)) (hExtF : ExtFStatement (E := E)
     have h0 : ⟪OntoJ.TL (OntoI.nuF X x0 W FF) (fun z => poin X la P' (cpt X x0 z)), w⟫_ℂ = 0 := by
       first
         | exact Submodule.inner_right_of_mem_orthogonal hmem' hw
-        | exact (Submodule.mem_orthogonal M w).1 hw _ hmem'
     have h0' : ⟪w, OntoJ.TL (OntoI.nuF X x0 W FF) (fun z => poin X la P' (cpt X x0 z))⟫_ℂ = 0 := by
       first
         | exact inner_eq_zero_symm.1 h0
-        | exact Submodule.inner_left_of_mem_orthogonal hmem' hw
     rw [hwTL, OntoJ.TL_eq hmemf0, OntoJ.TL_eq (hmemP F' P' hD'),
       OntoI.inner_toLp (r := r) (X := X) (x0 := x0) (W := W) (FF := FF) hWm hmemf0
         (hmemP F' P' hD')] at h0'
@@ -199,10 +186,8 @@ theorem onto_of (hPoin : PoinStatement (E := E)) (hExtF : ExtFStatement (E := E)
     refine lt_of_le_of_lt key (ENNReal.add_lt_top.2 ⟨?_, ?_⟩)
     · first
         | exact ENNReal.mul_lt_top (by simp) hfF
-        | exact ENNReal.mul_lt_top (by simp) hfF.ne
     · first
         | exact ENNReal.mul_lt_top (by simp) hPF
-        | exact ENNReal.mul_lt_top (by simp) hPF.ne
   have hvan := OntoH.vanish (r := r) (X := X) (x0 := x0) hExG hGrad hKa hPair hBig hConn hExtF
     hx0 hPD hW hWL hbb4 hm hg1 hg1ne hPs hWPs hLev hFF hf0SS hff0 horth
   obtain ⟨hD1, hD2, hD3, hD4⟩ := hD

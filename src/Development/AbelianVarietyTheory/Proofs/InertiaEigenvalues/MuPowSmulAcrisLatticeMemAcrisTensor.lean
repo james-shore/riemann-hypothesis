@@ -56,7 +56,7 @@ theorem mu_pow_smul_mem : ∀ (l : ℕ) [Fact l.Prime] (a e : ℕ) [NeZero a] [N
     funext k
     by_cases h : k = i
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   have hz : (fun i => toOB l O (z i)) = ∑ i, toOB l O (z i) • (Pi.single i (1 : OB l O)) := by
     funext k; simp [Finset.sum_apply, Pi.single_apply]
   rw [hz, map_sum, map_sum, Finset.smul_sum]

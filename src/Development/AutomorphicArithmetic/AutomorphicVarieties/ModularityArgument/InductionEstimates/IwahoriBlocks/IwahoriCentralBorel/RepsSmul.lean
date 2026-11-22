@@ -95,7 +95,6 @@ private theorem sec_tr {μ₂ : Measure (G1 K 2)} [μ₂.IsHaarMeasure] {τ₁ �
   · rw [mul_assoc, hh_nn, hh_nn, hf.unip]
   · have e : x = lv 1 1 (Real.log r.1) * g := Subtype.ext (by rw [hx, Subgroup.coe_mul, lv_ray'])
     have e2 : f (x * y) = f (g * y) := hf.ray r _ _ (by rw [Subgroup.coe_mul, Subgroup.coe_mul, hx, mul_assoc])
-    beta_reduce
     rw [e2, e, mul_assoc, hh_lv, hh_lv, add_sub_add_left_eq_sub]
   · obtain ⟨d, φ, ψ, hφ, hψ, hx⟩ := hf.levi (g * y)
     refine ⟨d, fun i m => Complex.exp (2 * ((HH (g * y) - HH g : ℝ) : ℂ)) * φ i m, ψ,

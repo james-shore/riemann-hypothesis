@@ -64,7 +64,7 @@ private lemma mem_xsp_of_apply_eq_zero_of_le {w : Fin (2 * r + k + 1) → ℂ} (
             ext
             have := congrArg Fin.val h'
             simp only [eI] at this
-            simp only [Fin.val_mk]
+            simp only
             omega
           rw [if_neg hne, if_neg ha, mul_zero]
       rw [Finset.sum_congr rfl (fun a _ => hsum a), Finset.sum_ite_eq']
@@ -127,7 +127,7 @@ lemma N_Fsp {z : Fin (2 * r + k + 1) → ℂ} (hz : C2.StdZ k r z) {n : B.Mat k 
   refine Submodule.span_induction (p := fun x _ => n *ᵥ x ∈ Fsp k r z) ?_ ?_ ?_ ?_ hx
   · rintro _ ⟨b, rfl⟩
     exact hcol b
-  · simp [Submodule.zero_mem]
+  · simp
   · intro x y _ _ hx hy
     rw [Matrix.mulVec_add]
     exact Submodule.add_mem _ hx hy
@@ -144,7 +144,6 @@ lemma UW_Fsp {z : Fin (2 * r + k + 1) → ℂ} {h : B.Mat k r} (hh : h ∈ UWset
     · exact (hh.2.1 ⟨b, hb⟩).1
     · first
       | exact hh.2.2
-      | exact hh.2.2.1
   refine Submodule.span_induction (p := fun x _ => h *ᵥ x = x) ?_ ?_ ?_ ?_ hx
   · rintro _ ⟨b, rfl⟩
     exact hfv b

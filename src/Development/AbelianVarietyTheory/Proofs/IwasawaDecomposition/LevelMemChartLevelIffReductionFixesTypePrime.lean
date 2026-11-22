@@ -43,7 +43,7 @@ theorem GlobalTheory.Mem.Col2.TC.typeRead_core : ∀ {B : Base} {X : PreX B.toPr
     ext y
     rw [← F.levJ_Lb h1 (chOf0 _ c)]
     refine (H.lb _ y).trans (Iff.trans ?_ (rll_mem_baseLb _ _ y).symm)
-    simp only [baseL, Set.mem_setOf_eq]
+    simp only [baseL]
     have hl : (lastIdx (B.R.N (B.R.m - 1))).1 + 1 = B.R.N (B.R.m - 1) := by
       have := NeZero.pos (B.R.N (B.R.m - 1)); simp only [lastIdx]; omega
     constructor

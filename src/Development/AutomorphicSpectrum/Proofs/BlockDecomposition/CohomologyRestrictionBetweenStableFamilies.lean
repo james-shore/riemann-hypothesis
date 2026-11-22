@@ -194,7 +194,7 @@ def mkLoc (F : Q'.FullSubcategory ⥤ ModuleCat.{0} R)
 def mulQ (a b : IdF (sP Q').A) (T : Q'.FullSubcategory) : T.obj.B →+* Module.End R (sqM a b T) where
   toFun c := (LinearMap.mulLeft R (Ideal.Quotient.mk (b.S T) c)).restrict fun x hx => Ideal.mul_mem_left _ _ hx
   map_one' := LinearMap.ext fun x => Subtype.ext (by simp)
-  map_mul' c c' := LinearMap.ext fun x => Subtype.ext (by simp [mul_assoc])
+  map_mul' c c' := LinearMap.ext fun x => Subtype.ext (by simp)
   map_zero' := LinearMap.ext fun x => Subtype.ext (by simp)
   map_add' c c' := LinearMap.ext fun x => Subtype.ext (by simp [add_mul])
 

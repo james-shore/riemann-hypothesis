@@ -71,7 +71,7 @@ theorem simultaneous_normal_form : ∀ {n : ℕ} {J P : Matrix (Fin n) (Fin n) �
     have : (s i : ℂ) * d i * s i = ((d i * (s i * s i) : ℝ) : ℂ) := by push_cast; ring
     rw [this, hsi]
     rcases lt_or_gt_of_ne (hdne i) with h | h
-    · simp [h, not_lt.2 h.le, abs_of_neg h, (hdne i)]
+    · simp [not_lt.2 h.le, abs_of_neg h, (hdne i)]
     · simp [h, abs_of_pos h, (hdne i)]
   · have hi : (Q₀⁻¹).1ᴴ * Q₀.1ᴴ = 1 := by
       rw [← Matrix.conjTranspose_mul, Units.mul_inv, Matrix.conjTranspose_one]

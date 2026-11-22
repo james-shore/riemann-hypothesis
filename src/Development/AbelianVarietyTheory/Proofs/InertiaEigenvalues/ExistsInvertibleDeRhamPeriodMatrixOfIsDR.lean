@@ -62,7 +62,7 @@ theorem exists_period_matrix_of_isDR : ∀ (l : ℕ) [Fact l.Prime] (P : LocPrim
         rw [this, Matrix.mulVec_add, hx g, hy g]
       zero_mem' := by
         intro g
-        simp only [Set.mem_setOf_eq, Pi.zero_apply, map_zero]
+        simp only [Pi.zero_apply, map_zero]
         exact Matrix.mulVec_zero _
       smul_mem' := by
         intro k x hx g
@@ -152,8 +152,7 @@ theorem exists_period_matrix_of_isDR : ∀ (l : ℕ) [Fact l.Prime] (P : LocPrim
       funext i
       have := congrFun hQw i
       simp only [Matrix.mulVec, dotProduct, Q0, Matrix.of_apply, Pi.zero_apply] at this
-      simp only [Submodule.coe_sum, Submodule.coe_smul, Finset.sum_apply, Pi.smul_apply,
-        Algebra.smul_def, Submodule.coe_zero, Pi.zero_apply]
+      simp only [Submodule.coe_sum, Submodule.coe_smul, Finset.sum_apply, Algebra.smul_def, Submodule.coe_zero, Pi.zero_apply]
       rw [← this]
       refine Finset.sum_congr rfl fun j _ => by rw [← hc j]; exact mul_comm _ _
     have hc0 := Fintype.linearIndependent_iff.mp bK.linearIndependent c hsum

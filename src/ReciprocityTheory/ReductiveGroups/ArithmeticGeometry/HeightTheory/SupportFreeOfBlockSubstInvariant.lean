@@ -72,7 +72,6 @@ theorem sigF_alg (b : Fin (D + 1)) (u : Kˣ) (g : KTp K D N) :
       algebraMap (KTp K D N) (KTf K D N) (sigP b u g) := by
   first
   | exact IsFractionRing.ringEquivOfRingEquiv_algebraMap _ _
-  | simp [sigF, IsFractionRing.ringEquivOfRingEquiv_algebraMap]
 
 theorem one_block (b : Fin (D + 1)) (z : KTf K D N)
     (hz : ∀ u : Kˣ, sigF (K := K) (D := D) (N := N) b u z = z)
@@ -116,7 +115,6 @@ theorem one_block (b : Fin (D + 1)) (z : KTf K D N)
     simp only [Polynomial.finset_sum_coeff, Polynomial.coeff_monomial, Polynomial.coeff_zero] at h4
     first
     | rwa [Finset.sum_ite_eq', if_pos (Finset.mem_range.mpr hk)] at h4
-    | rwa [Finset.sum_ite_eq, if_pos (Finset.mem_range.mpr hk)] at h4
   have hqs : q = ∑ k ∈ Finset.range M, compB b k q := by
     ext t
     rw [MvPolynomial.coeff_sum]

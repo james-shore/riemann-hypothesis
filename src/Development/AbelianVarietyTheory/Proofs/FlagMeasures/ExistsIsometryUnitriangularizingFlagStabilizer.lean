@@ -33,7 +33,7 @@ theorem witt_partners {E V : Type} [Field E] [CharZero E] [StarRing E] [AddCommG
       refine Finset.sum_congr rfl fun x _ => ?_
       congr 2; ext j; simp [Pi.single_apply, eq_comm]
     have hz : ∑ a, star (φ (Pi.single a 1)) • e a = 0 := hnd _ (fun y => by
-      simp only [map_sum, map_smulₛₗ, LinearMap.sum_apply, RingHom.id_apply, Finset.sum_apply, LinearMap.smul_apply,
+      simp only [map_sum, map_smulₛₗ, LinearMap.sum_apply, LinearMap.smul_apply,
         smul_eq_mul, starRingEnd_apply, star_star]
       exact hvan y)
     have hc := Fintype.linearIndependent_iff.1 he _ hz
@@ -50,9 +50,8 @@ theorem witt_partners {E V : Type} [Field E] [CharZero E] [StarRing E] [AddCommG
   · intro a b
     simp only [map_sub, map_sum, map_smul, smul_eq_mul, hee, mul_zero, Finset.sum_const_zero, sub_zero, hge]
   · intro a b
-    simp only [map_sub, map_sum, map_smulₛₗ, LinearMap.sub_apply, LinearMap.sum_apply, RingHom.id_apply, Finset.sum_apply,
-      LinearMap.smul_apply, smul_eq_mul, hee, hge, hg'e, mul_zero, Finset.sum_const_zero, sub_zero,
-      mul_ite, mul_one, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply]
+    simp only [map_sub, map_sum, map_smulₛₗ, LinearMap.sub_apply, LinearMap.sum_apply, RingHom.id_apply, LinearMap.smul_apply, smul_eq_mul, hee, hge, hg'e, mul_zero, Finset.sum_const_zero, sub_zero,
+      mul_ite, mul_one, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply]
     have hM : star (h (g b) (g a)) = h (g a) (g b) := hsymm _ _
     have h2 : star (2 : E) = 2 := by simp
     rw [star_div₀, hM, h2]
@@ -102,8 +101,8 @@ theorem diag_isometry {E V : Type} [Field E] [StarRing E] [AddCommGroup V] [Modu
   have hiso : ∀ x y, h (L x) (L y) = h x y := by
     intro x y
     rw [hL x]
-    simp only [map_add, LinearMap.add_apply, map_sum, Finset.sum_apply, LinearMap.sum_apply, map_smulₛₗ,
-      LinearMap.smul_apply, smul_eq_mul, key_e, key_f, key_x, RingHom.id_apply, starRingEnd_apply]
+    simp only [map_add, LinearMap.add_apply, map_sum, LinearMap.sum_apply, map_smulₛₗ,
+      LinearMap.smul_apply, smul_eq_mul, key_e, key_f, key_x, starRingEnd_apply]
     have : ∀ a, ((α a - 1) * h (f a) y) * star (h (e a) x) + ((β a - 1) * h (e a) y) * star (h (f a) x) +
         star ((α a - 1) * h (f a) x) * (β a * h (e a) y) + star ((β a - 1) * h (e a) x) * (α a * h (f a) y) = 0 := by
       intro a
@@ -150,7 +149,7 @@ theorem flag_torus (D : D7) (T : D.host.E) (F0 : FlagG (VS D) D.R.rS T) (γ : GV
       · rintro (h | rfl) <;> omega
     simp only [FlagG.Xa, this, Set.image_union, Set.image_singleton, Submodule.span_union]
   have hXa_top : F0.Xa D.R.rS = F0.X := by
-    have : {j : Fin D.R.rS | (j : ℕ) < D.R.rS} = Set.univ := by ext j; simp [j.2]
+    have : {j : Fin D.R.rS | (j : ℕ) < D.R.rS} = Set.univ := by ext j; simp
     simp only [FlagG.Xa, FlagG.X, this, Set.image_univ]
   have he_mem : ∀ i : Fin D.R.rS, F0.e i ∈ F0.Xa ((i : ℕ) + 1) := fun i =>
     Submodule.subset_span ⟨i, by simp, rfl⟩
@@ -191,14 +190,14 @@ theorem flag_torus (D : D7) (T : D.host.E) (F0 : FlagG (VS D) D.R.rS T) (γ : GV
   intro a
   induction a using Fin.lastCases with
   | last =>
-    simp only [frame, lf, FlagG.fvec, Fin.snoc_last, Fin.val_last, LinearEquiv.mul_apply, hγz, Xflag]
+    simp only [frame, FlagG.fvec, Fin.snoc_last, Fin.val_last, LinearEquiv.mul_apply, hγz, Xflag]
     rw [hXa_top]
     exact hperp _ (fun x hx => by
       have := Submodule.span_le (p := LinearMap.ker ((VS D).hT.flip F0.z)) |>.2 (by
         rintro _ ⟨a, rfl⟩; simpa using F0.z_orth a) hx
       simpa using this)
   | cast i =>
-    simp only [frame, lf, FlagG.fvec, Fin.snoc_castSucc, Fin.coe_castSucc, LinearEquiv.mul_apply, Xflag]
+    simp only [frame, FlagG.fvec, Fin.snoc_castSucc, Fin.coe_castSucc, LinearEquiv.mul_apply, Xflag]
     have : γ (F0.e i) = (γ (F0.e i) - u i • F0.e i) + u i • F0.e i := by abel
     rw [this, map_add, map_smul, ht_e, smul_smul, mul_inv_cancel₀ (hu0 i), one_smul, add_sub_cancel_right]
     exact ht_Xa _ _ (hu i)

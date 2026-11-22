@@ -80,7 +80,7 @@ private theorem spl_adj_mul (X Y : M4 R) : adj (X * Y) = adj Y * adj X := by
 
 private theorem spl_adj_one : adj (1 : M4 R) = 1 := by
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev, Matrix.one_apply]
+  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev]
 
 private theorem spl_conj {ν : R} {X : M4 R} (h : IsGSp ν X) (u v : M4 R) (hv : v * u = 1) :
     adj (u * X * v) * (adj v * v) * (u * X * v) = ν • (adj v * v) := by

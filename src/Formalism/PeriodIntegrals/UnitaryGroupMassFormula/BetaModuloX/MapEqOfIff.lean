@@ -92,8 +92,6 @@ theorem mem_Lb {T' : E} (F' : LFlag S r T') (Λ : Submodule (𝓞 E) S.V) {q : Q
     q ∈ Lb F' Λ ↔ ∃ a : Uo F', (a : S.V) ∈ Λ ∧ Submodule.Quotient.mk a = q := by
   first
     | exact Iff.rfl
-    | (simp [Lb, ΛU]; done)
-    | (constructor <;> rintro ⟨a, ha, rfl⟩ <;> exact ⟨a, ha, rfl⟩)
 
 theorem Lb_lattice {T' : E} (F' : LFlag S r T') (Λ : Submodule (𝓞 E) S.V) (hΛ : Submodule.IsLattice E Λ) :
     Submodule.IsLattice E (Lb F' Λ) := by
@@ -157,7 +155,6 @@ theorem gmap_mul' {T' : E} (F' : LFlag S r T') (a b : Qt F' ≃ₗ[E] Qt F') (L 
   rw [← Submodule.map_comp]
   first
     | rfl
-    | (congr 1)
 
 theorem γQ_finOrd {T' : ℕ} (F' : LFlag S r ((T' : ℕ) : E)) (hT : 0 < T')
     (hτ : ∀ (τ : E →+* ℂ) (a : E), τ (star a) = starRingEnd ℂ (τ a))

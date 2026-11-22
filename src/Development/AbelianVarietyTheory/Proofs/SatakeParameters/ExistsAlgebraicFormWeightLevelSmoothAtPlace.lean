@@ -68,7 +68,6 @@ theorem exists_algForm_ofType : ∀ (E : Type) [Field E] [NumberField E] [IsCMFi
         simp only [Set.mem_setOf_eq] at h ⊢
         rw [map_smul, h k hk] }
   have hFx : ∀ x : infU E n, ∀ u ∈ Fx, RU E n x.1 u ∈ Fx := fun x u hu k hk => by
-    change RU E n k (RU E n x.1 u) = RU E n x.1 u
     rw [RU_RU, fin_mul_inf (hK hk) x.2, ← RU_RU, hu k hk]
   have hcF : ∀ a v, Pairs.jOf W M (c a) v ∈ Fx := Pairs.coeff_mem (Pairs.span_rep W) (R := fun x => RU E n x.1)
     (Pairs.jOf_rep W M) hFx b (by rw [hc]; exact hφK)

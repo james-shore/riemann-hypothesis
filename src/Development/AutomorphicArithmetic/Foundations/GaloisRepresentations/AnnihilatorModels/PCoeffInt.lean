@@ -12,7 +12,7 @@ theorem UpperTheory.Gal.crystallineComparison.coeffInt_of :
     MvPolynomial.map (algebraMap (integralClosure R T) T)
   have hform : ∀ i, form (c i) = (form (c' i)).map f := by
     intro i
-    simp [form, f, Polynomial.map_sub, MvPolynomial.map_C, c']
+    simp [form, f, Polynomial.map_sub, c']
     rw [Polynomial.map_sum]
     simp [Polynomial.map_mul, Polynomial.map_C, MvPolynomial.map_C, MvPolynomial.map_X]
   have hP : (∏ i, form (c i)) = (∏ i, form (c' i)).map f := by

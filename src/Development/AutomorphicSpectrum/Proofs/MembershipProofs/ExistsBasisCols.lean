@@ -66,7 +66,7 @@ theorem exists_basis_cols {O : Type} [CommRing O] [IsDomain O] [IsPrincipalIdeal
     simp only [Submodule.coe_sum, Submodule.coe_smul, Finset.sum_apply, Pi.smul_apply,
       smul_eq_mul, S.snf] at hw'
     have hcol : (A.mulVecLin (Pi.single b 1)) i = A i b := by
-      simp [Matrix.mulVecLin_apply, Matrix.mulVec, dotProduct, Pi.single_apply]
+      simp [Matrix.mulVec, dotProduct, Pi.single_apply]
     rw [Matrix.mul_apply]
     refine hcol.symm.trans (hw'.symm.trans ?_)
     simp only [hP1, hu, hf']
@@ -106,7 +106,6 @@ theorem exists_saturation {O K : Type} [CommRing O] [IsDomain O] [IsDiscreteValu
       rw [Function.comp_apply, RingHom.map_mulVec, hC₁]
       first
       | rw [Matrix.smul_mulVec]
-      | simp [Matrix.mulVec, dotProduct, Finset.mul_sum, mul_assoc]
     have e1 := h2 v
     have e2 := h2 w
     rw [h1] at e1
@@ -130,7 +129,6 @@ theorem exists_saturation {O K : Type} [CommRing O] [IsDomain O] [IsDiscreteValu
       (L * P.toCols₁.map (algebraMap O K)) = 1 := by
     first
     | exact mul_eq_one_comm.1 hLw
-    | exact Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _) |>.1 hLw
   refine ⟨⟨L * P.toCols₁.map (algebraMap O K),
     (algebraMap O K (b : O))⁻¹ • u.map (algebraMap O K), hLw, hwL⟩, P.toCols₁, P.toCols₂, ?_, ?_⟩
   · show C * (L * P.toCols₁.map (algebraMap O K)) = P.toCols₁.map (algebraMap O K)

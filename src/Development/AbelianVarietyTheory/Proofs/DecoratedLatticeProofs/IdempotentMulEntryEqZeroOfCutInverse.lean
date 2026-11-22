@@ -164,7 +164,7 @@ theorem mt_list_prod (V : HSp D) {W : Type} (h : W → GA D V) (E : W → AE D)
     (hh : ∀ w, mt V (h w) = E w • M + (1 - E w) • (1 : Matrix (Fin V.rank) (Fin V.rank) (AE D)))
     (horth : ∀ w w', w ≠ w' → E w * E w' = 0) :
     ∀ l : List W, l.Nodup → mt V ((l.map h).prod) = (l.map E).sum • M + (1 - (l.map E).sum) • 1
-  | [], _ => by simp [mt_one]
+  | [], _ => by simp
   | w :: l, hl => by
     rw [List.nodup_cons] at hl
     rw [List.map_cons, List.prod_cons, mt_mul, mt_list_prod V h E M hh horth l hl.2, hh, List.map_cons,

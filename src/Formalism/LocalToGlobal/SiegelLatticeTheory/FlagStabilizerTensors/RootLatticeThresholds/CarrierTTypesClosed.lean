@@ -60,8 +60,7 @@ theorem capacity_from_hermitian_char : CapFromHC := by
       omega
   rw [hI, Finset.prod_map, Finset.prod_range]
   refine Finset.prod_congr rfl (fun j _ => ?_)
-  simp [Nat.succ_sub_one, j.isLt]
-  push_cast
+  simp [j.isLt]
   ring
 
 variable {D : D7} (X : Formalism.L2.SG.HidaSetting.HidaSetting D) {θ : ℝ} (C : Formalism.L2.SG.LocWSOf.Choice X θ)

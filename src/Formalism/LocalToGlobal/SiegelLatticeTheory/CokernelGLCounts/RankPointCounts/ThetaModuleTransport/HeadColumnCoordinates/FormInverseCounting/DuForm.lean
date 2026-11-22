@@ -39,7 +39,7 @@ theorem map_gramG (Zh : Matrix (Fin (r + 1)) (Fin (r + 1)) E) (T T' : F) :
   simp only [gramG, gHat, pM, Matrix.fromBlocks_map, Matrix.fromBlocks_transpose,
     Matrix.fromBlocks_multiply, Matrix.transpose_one, Matrix.transpose_zero, Matrix.transpose_smul,
     Matrix.one_mul, Matrix.mul_one, Matrix.zero_mul, Matrix.mul_zero, Matrix.smul_mul, Matrix.mul_smul,
-    add_zero, zero_add]
+    add_zero]
   congr 1 <;> ext a b <;>
     by_cases h : a = Fin.last r ∧ b = Fin.last r <;>
     simp [cor, h, splitFirstProj_conj, splitFirstProj_algebraMap, map_mul, map_add, map_neg, map_sub, Matrix.add_apply, Matrix.smul_apply, Matrix.neg_apply] <;>

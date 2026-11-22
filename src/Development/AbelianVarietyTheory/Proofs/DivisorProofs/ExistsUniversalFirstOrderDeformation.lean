@@ -82,7 +82,7 @@ theorem GlobalTheory.FlagTan.KSIso.tanFrame_of_universal_injective : ∀ {E : Ty
   refine ⟨W, v, hfst, hv, ⟨fun k => ?_, fun w => ?_⟩, fun m u P₀ hu hP₀ hpt => ?_⟩
   · obtain ⟨z₀, hz₀, hs⟩ := shift _ _ (hv (.inl k))
     have e0 : (fun k' => ∑ b, n k' b * (Pi.single (Sum.inl k) (1 : K) : TIx Dw (psiSet H) → K) b) = 0 := by
-      funext k'; simp [n, vertDirs, Fintype.sum_sum_type, Pi.single_apply]
+      funext k'; simp [n, vertDirs, Pi.single_apply]
     rw [e0] at hs
     have ev : v (.inl k) = z₀ := (existsUnique_isShift 0 z₀).unique hs (isShift_zero z₀)
     have e1 : (Pi.single (Sum.inl k) (1 : K) : TIx Dw (psiSet H) → K) ∘ Sum.inl = Pi.single k 1 := by
@@ -95,12 +95,12 @@ theorem GlobalTheory.FlagTan.KSIso.tanFrame_of_universal_injective : ∀ {E : Ty
   · obtain ⟨z₀, hz₀, hs⟩ := shift _ _ (hv (.inr w))
     have e0 : (fun k' => ∑ b, n k' b * (Pi.single (Sum.inr w) (1 : K) : TIx Dw (psiSet H) → K) b) =
         Pi.single w.toF 1 := by
-      funext k'; simp [n, vertDirs, Fintype.sum_sum_type, Pi.single_apply]
+      funext k'; simp [n, vertDirs, Pi.single_apply]
     rw [e0] at hs
     have hc : FrMap (GlobalTheory.FlagTan.cst c K) P z₀ := by
       have hb := hbase _ _ hz₀
       refine frMap_of_comp (ψ := GlobalTheory.FlagTan.cst c K) hWH hb fun a => ?_
-      ext <;> simp [snd_dir, Pi.single_apply]
+      ext <;> simp [snd_dir]
     exact ⟨z₀, hc, hs⟩
   · obtain ⟨z₀, hz₀, hs⟩ := shift m u hu
     have hH := hbase m z₀ hz₀

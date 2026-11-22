@@ -43,7 +43,7 @@ theorem mem_stdL {m : ℕ} (x : Fin m → E) : x ∈ stdL E m ↔ ∀ a, IsInteg
         simp
       · intro a _ h
         change x a * (Pi.single a (1 : E) : Fin m → E) b = 0
-        simp [Pi.single_apply, Ne.symm h]
+        simp [Ne.symm h]
       · simp
     rw [this]
     exact Submodule.sum_mem _ fun a _ => Submodule.smul_mem _ _ (Submodule.subset_span ⟨a, rfl⟩)
@@ -51,7 +51,7 @@ theorem mem_stdL {m : ℕ} (x : Fin m → E) : x ∈ stdL E m ↔ ∀ a, IsInteg
 theorem herm_one {m : ℕ} (x y : Fin m → E) : herm 1 x y = ∑ a, x a * cc (y a) := by
   unfold herm
   refine Finset.sum_congr rfl fun a _ => ?_
-  rw [Finset.sum_eq_single a] <;> simp +contextual [Matrix.one_apply, eq_comm]
+  rw [Finset.sum_eq_single a] <;> simp +contextual [eq_comm]
 
 omit [IsCMField E] in
 theorem nat_smul_mem {m : ℕ} (Λ : Lt E m) (s : ℕ) {v : Fin m → E} (hv : v ∈ Λ) :

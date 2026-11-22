@@ -46,7 +46,7 @@ theorem UpperTheory.Gal.crystallineComparison.matRep_of :
     rw [map_sum]
     simp only [map_smul, AlgEquiv.apply_symm_apply]
     funext i'
-    simp [φ, splitMap_tmul, Finset.sum_apply, Pi.single_apply]
+    simp [φ, Finset.sum_apply, Pi.single_apply]
     show (z i') t = splitMap z (1 ⊗ₜ t) i'
     rw [splitMap_tmul, one_mul]
   refine ⟨Matrix.of fun i k => z i (e k), Matrix.of fun j i => G j (φ.symm (Pi.single i 1)), ?_, ?_⟩

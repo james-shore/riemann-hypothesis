@@ -45,7 +45,7 @@ theorem mem_maxGen_add {A B : End K V} (h : Commute A B) {a b : K} {x : V}
 theorem mem_maxGen_mul {A B : End K V} (h : Commute A B) {a b : K} {x : V}
     (hA : x ∈ A.maxGenEigenspace a) (hB : x ∈ B.maxGenEigenspace b) :
     x ∈ (A * B).maxGenEigenspace (a * b) := by
-  first | exact Bl.general_b_fact_left_last.goal1 .. | (apply Bl.general_b_fact_left_last.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_left_last.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_last.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_left_last.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_last.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_left_last.goal1 .. | (apply Bl.general_b_fact_left_last.goal1 <;> assumption)
 
 theorem maxGen_smul_one (c : K) : (c • (1 : End K V)).maxGenEigenspace c = ⊤ := by
   rw [eq_top_iff]

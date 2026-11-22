@@ -180,9 +180,9 @@ theorem covolume_trace_lattice (hK : IsCMUnram K) (h : V →ₗ⋆[K] V →ₗ[K
     simp only [v, A, hι, LinearMap.map_smulₛₗ, LinearMap.smul_apply, map_smul, smul_eq_mul, starRingEnd_apply,
       he, Matrix.of_apply]
     split_ifs with hii
-    · simp [hii]
+    · simp
       exact congrArg _ (mul_comm _ _)
-    · simp [hii]
+    · simp
   have hdetG : (Matrix.gram ℝ v).det = A.det * A.det := by
     rw [hG, Matrix.det_blockDiagonal, Fin.prod_univ_two]
   have hA0 : A.det ≠ 0 := by

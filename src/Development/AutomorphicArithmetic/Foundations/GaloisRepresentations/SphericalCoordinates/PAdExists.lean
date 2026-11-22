@@ -91,7 +91,7 @@ theorem UpperTheory.Gal.W2.adExists_of :
       _ = (m : ℂ) • (M₀ * N⁻¹) := by rw [hform, Matrix.smul_mul]
   have hkey : (H * C * N⁻¹)ᵀ * M₀ = (m : ℂ) • (N⁻¹ᵀ * (Cᵀ * M₀) * N⁻¹) := by
     rw [Matrix.transpose_mul, Matrix.transpose_mul, Matrix.mul_assoc, Matrix.mul_assoc, hHM]
-    simp only [Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_assoc]
+    simp only [Matrix.mul_smul, Matrix.mul_assoc]
   show ((H * C * N⁻¹)ᵀ * M₀)ᵀ = (H * C * N⁻¹)ᵀ * M₀ ∧
     ∀ a, (H * C * N⁻¹)ᵀ * M₀ * (ρ (bar a)).map star = (ρ a)ᴴ * ((H * C * N⁻¹)ᵀ * M₀)
   rw [hkey]

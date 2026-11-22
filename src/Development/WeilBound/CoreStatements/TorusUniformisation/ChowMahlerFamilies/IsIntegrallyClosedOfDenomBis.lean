@@ -193,7 +193,7 @@ noncomputable def scalePt (P : HTPoint C O c κ N V Ω) (a : Oˣ) : HTPoint C O 
     adj := fun b x y => by simp [P.adj]
     lagr := fun x => by
       rw [P.lagr]
-      simp [ha] }
+      simp }
 
 end Scale
 

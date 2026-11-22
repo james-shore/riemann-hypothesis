@@ -198,7 +198,6 @@ theorem skodaOps (n : ℕ) (M : Type*) [TopologicalSpace M] [T2Space M]
     (fun a f₁ f₂ => by funext q; beta_reduce; ring)
     (fun f₁ f₂ h => by
       filter_upwards [hlift f₁ f₂ h] with q hq
-      beta_reduce
       rw [hq])
     (fun w => by
       obtain ⟨wm, hwm, hwae⟩ := exists_pow_mul_eq_eval₂_theta n X.z _ hψm w
@@ -211,7 +210,6 @@ theorem skodaOps (n : ℕ) (M : Type*) [TopologicalSpace M] [T2Space M]
         exact (A2 w).1)
       refine ⟨H, ?_⟩
       filter_upwards [hH, hlift _ _ hwae] with q h1 h2
-      beta_reduce
       rw [h1, h2])
     (fun w H hH => le_of_eq (hGsn w H hH))
   obtain ⟨G, hG⟩ := exists_clm_weightedL2_of_bounded n (fun q : M × Fin p => X.z q.1) X.z (fun x : M × Fin p => φ x.1)
@@ -224,7 +222,6 @@ theorem skodaOps (n : ℕ) (M : Type*) [TopologicalSpace M] [T2Space M]
       exact Finset.sum_congr rfl fun i _ => by ring)
     (fun h₁ h₂ hh => by
       filter_upwards [hslice h₁ h₂ hh] with x hx
-      beta_reduce
       exact Finset.sum_congr rfl fun i _ => by rw [hx i])
     (fun h => by
       obtain ⟨hm, hhm, hhae⟩ := exists_pow_mul_eq_eval₂_theta n (fun q : M × Fin p => X.z q.1) _ hψpm h
@@ -236,7 +233,6 @@ theorem skodaOps (n : ℕ) (M : Type*) [TopologicalSpace M] [T2Space M]
           exact (B2 h).1))
       refine ⟨H, ?_⟩
       filter_upwards [hH, hslice _ _ hhae] with x h1 h2
-      beta_reduce
       rw [h1]
       exact Finset.sum_congr rfl fun i _ => by rw [h2 i])
     (fun h H hH => hGb h H hH)

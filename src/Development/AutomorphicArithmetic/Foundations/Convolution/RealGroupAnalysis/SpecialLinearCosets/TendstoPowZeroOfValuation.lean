@@ -11,7 +11,7 @@ private theorem tendsto_pow_zero_of_valuation {K : Type} [Field K] [NumberField 
   intro γ _
   obtain ⟨n, hn⟩ := exists_pow_lt₀ hy (Units.map (MonoidWithZeroHom.ValueGroup₀.embedding (f := .ofClass (Valued.v : Valuation (Kv v) _))) γ)
   filter_upwards [eventually_ge_atTop n] with m hm
-  simp only [Set.mem_setOf_eq, Valuation.restrict_lt_iff_lt_embedding]
+  simp only [Valuation.restrict_lt_iff_lt_embedding]
   rw [map_pow]
   exact lt_of_le_of_lt (pow_le_pow_right_of_le_one' hy.le hm) hn
 
@@ -20,7 +20,7 @@ private theorem valuation_lt_one_of_tendsto {K : Type} [Field K] [NumberField K]
   have h1 := (Valued.hasBasis_nhds_zero (Kv v) _).mem_of_mem (i := 1) trivial
   obtain ⟨n, hn⟩ := (hy.eventually h1 |>.and (eventually_gt_atTop 0)).exists
   obtain ⟨hn1, hn0⟩ := hn
-  simp only [Set.mem_setOf_eq, Units.val_one, Valuation.restrict_lt_one_iff] at hn1
+  simp only [Units.val_one, Valuation.restrict_lt_one_iff] at hn1
   rw [map_pow] at hn1
   by_contra hc
   exact absurd hn1 (not_lt.mpr (one_le_pow₀ (not_lt.mp hc)))

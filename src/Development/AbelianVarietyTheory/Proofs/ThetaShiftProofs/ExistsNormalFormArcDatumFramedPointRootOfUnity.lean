@@ -50,7 +50,7 @@ theorem tan_iff (w : epsR S ⟶ t'.G) : IsTanAt x (w.left ≫ m.φ) ↔ IsTangen
     · have a : η[t'.G].left ≫ t'.G.hom = 𝟙 _ := Over.w η[t'.G]
       rw [Category.assoc, hw, a, ← spMap_comp]
       have : (TrivSqZeroExt.fstHom S S S).toRingHom.comp (algebraMap S (DualNumber S)) = RingHom.id S := by
-        ext r; simp [TrivSqZeroExt.algebraMap_eq_inl]
+        ext r; simp
       rw [this]
       exact Spec.map_id _
   · intro h
@@ -167,7 +167,7 @@ theorem sc_mul (s t : S) : sc s ≫ sc t = sc (s * t) := by
   show spMap (epsScaleR s) ≫ spMap (epsScaleR t) = spMap (epsScaleR (s * t))
   rw [← spMap_comp]
   congr 1
-  ext r <;> simp [epsScaleR, _root_.mul_assoc]
+  ext r <;> simp [epsScaleR]
 
 theorem isLieComb_iff {n : ℕ} (cf : Fin n → S) (v : Fin n → (epsR S ⟶ G)) (w : epsR S ⟶ G) :
     IsLieComb cf v w ↔ w = (List.ofFn fun i => sc (cf i) ≫ v i).prod := by

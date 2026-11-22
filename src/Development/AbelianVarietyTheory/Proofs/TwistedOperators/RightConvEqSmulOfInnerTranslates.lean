@@ -47,7 +47,7 @@ theorem rightConv_eq_smul_of_inner_translates : ∀ {G : Type} [Group G] [Topolo
     have : (fun x => star (φ (x * (h' : G))) * (c * φ x)) = fun x => c * (star (φ (x * (h' : G))) * φ x) := by
       funext x; ring
     rw [this, integral_const_mul]
-    simp [Φ]
+    simp
 
   have hsα : Integrable (fun h => star (α h)) m := by
     simpa using Complex.conjCLE.toContinuousLinearMap.integrable_comp hα

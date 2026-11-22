@@ -33,7 +33,7 @@ private theorem hpk_apply_lemma (k r : ℕ) (i l : Fin (2 * r + k + 1)) :
   have hi := i.2
   have hl := l.2
   simp only [Formalism.QuantumDeterminants.Hpk]
-  split_ifs <;> (try simp only [Fin.ext_iff] at *) <;> first | rfl | omega | norm_num
+  split_ifs <;> (try simp only [Fin.ext_iff] at *) <;> first | rfl | omega
 
 private theorem hpk_mul_self_lemma_2 (k r : ℕ) : Formalism.QuantumDeterminants.Hpk k r * Formalism.QuantumDeterminants.Hpk k r = 1 := by
   ext i j
@@ -74,12 +74,12 @@ def uR (ι : Type) [DecidableEq ι] : Matrix (ι × Unit) ι ℂ := fun p d => i
 theorem uR_int (F : FRep k r) (g : Mx k r) : uR F.ι * F.ρ g = (F.tens (triv k r)).ρ g * uR F.ι := by
   ext ⟨i, u⟩ d
   cases u
-  simp [Matrix.mul_apply, uR, FRep.tens, triv, Matrix.kroneckerMap_apply, Fintype.sum_prod_type, Matrix.one_apply]
+  simp [Matrix.mul_apply, uR, FRep.tens, triv, Matrix.kroneckerMap_apply, Fintype.sum_prod_type]
 
 theorem uMT_int (F : FRep k r) (g : Mx k r) : (uM F.ι)ᵀ * ((triv k r).tens F).ρ g = F.ρ g * (uM F.ι)ᵀ := by
   ext d ⟨u, e⟩
   cases u
-  simp [Matrix.mul_apply, uM, FRep.tens, triv, Matrix.kroneckerMap_apply, Fintype.sum_prod_type, Matrix.one_apply]
+  simp [Matrix.mul_apply, uM, FRep.tens, triv, Matrix.kroneckerMap_apply, Fintype.sum_prod_type]
 
 section
 
@@ -93,7 +93,7 @@ def adjFrom (i : (Unit → V) →ₗ[ℂ] (Fin n → V')) : (Fin n → V) →ₗ
 
 theorem adjTo_apply (p : (Fin n → V) →ₗ[ℂ] (Unit → V')) (x : Unit → V) (d : Fin n) :
     adjTo p x d = p (Pi.single d (x ())) () := by
-  simp [adjTo, mAct_apply, uM, cM, on1, Fintype.sum_prod_type]
+  simp [adjTo, mAct_apply, uM, on1, Fintype.sum_prod_type]
   have e : (LinearMap.funLeft ℂ V fun c => (c, d)) ((mAct (cM n)ᵀ) x) = Pi.single d (x ()) := by
     funext c
     simp [LinearMap.funLeft_apply, mAct_apply, cM, Matrix.transpose_apply, Pi.single_apply]
@@ -101,7 +101,7 @@ theorem adjTo_apply (p : (Fin n → V) →ₗ[ℂ] (Unit → V')) (x : Unit → 
 
 theorem adjFrom_apply (i : (Unit → V) →ₗ[ℂ] (Fin n → V')) (y : Fin n → V) (u : Unit) :
     adjFrom i y u = ∑ c, i (fun _ => y c) c := by
-  simp [adjFrom, mAct_apply, uR, cM, on2, Fintype.sum_prod_type]
+  simp [adjFrom, mAct_apply, cM, on2, Fintype.sum_prod_type]
   apply Finset.sum_congr rfl
   intro c _
   have e : (LinearMap.funLeft ℂ V fun d => (c, d)) ((mAct (uR (Fin n))) y) = fun _ => y c := by

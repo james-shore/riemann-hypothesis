@@ -51,7 +51,7 @@ private theorem sum_X_mul_pderiv_mem_QA_of_generators (ε : Fin m → Bool) (g h
     simp only [Derivation.leibniz, smul_eq_mul, mul_add, Finset.sum_add_distrib, Finset.mul_sum]
     congr 1 <;> refine Finset.sum_congr rfl (fun a _ => by ring)
   · intro r
-    simp [Derivation.map_algebraMap]
+    simp
   · exact hgen
 
 theorem fE_mem (ε : Fin m → Bool) (i j : Fin n) : ∀ R ∈ QA ε, fE i j R ∈ QA ε := by
@@ -108,7 +108,7 @@ theorem sumT (ε : Fin m → Bool) (p q : Prop) [Decidable p] [Decidable q] (k l
     (∑ a, C (sgn ε a) * ((if p then C (sgn ε a) * X (a, l, false) else 0) *
       (if q then C (sgn ε a) * X (a, k, true) else 0)) : PX m n) = if p ∧ q then Qp ε k l else 0 := by
   by_cases hp : p <;> by_cases hq : q <;> simp only [hp, hq, if_true, if_false, and_self, and_true, and_false,
-    true_and, false_and, mul_zero, zero_mul, Finset.sum_const_zero]
+    mul_zero, zero_mul, Finset.sum_const_zero]
   rw [Qp_eq]
   refine Finset.sum_congr rfl fun a _ => ?_
   linear_combination (X (a, k, true) * X (a, l, false) : PX m n) * sgn3 ε a
@@ -117,7 +117,7 @@ theorem sumT' (ε : Fin m → Bool) (p q : Prop) [Decidable p] [Decidable q] (k 
     (∑ a, C (sgn ε a) * ((if p then C (sgn ε a) * X (a, k, true) else 0) *
       (if q then C (sgn ε a) * X (a, l, false) else 0)) : PX m n) = if p ∧ q then Qp ε k l else 0 := by
   by_cases hp : p <;> by_cases hq : q <;> simp only [hp, hq, if_true, if_false, and_self, and_true, and_false,
-    true_and, false_and, mul_zero, zero_mul, Finset.sum_const_zero]
+    mul_zero, zero_mul, Finset.sum_const_zero]
   rw [Qp_eq]
   refine Finset.sum_congr rfl fun a _ => ?_
   linear_combination (X (a, k, true) * X (a, l, false) : PX m n) * sgn3 ε a

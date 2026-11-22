@@ -46,7 +46,7 @@ lemma lemS_pack (hP : Ext.PackingCount) (S : Finset (EuclideanSpace ℂ ι)) (δ
       obtain ⟨a, ha, rfl⟩ := Finset.mem_map.1 hx
       obtain ⟨b, hb, rfl⟩ := Finset.mem_map.1 hy
       have hab : a ≠ b := fun h => hxy (by rw [h])
-      simp only [Function.Embedding.coeFn_mk, LinearIsometryEquiv.dist_map, dist_eq_norm]
+      simp only [Function.Embedding.coeFn_mk, dist_eq_norm]
       first
         | exact hsep a ha b hb hab
         | (rw [← map_sub, LinearIsometryEquiv.norm_map]; exact hsep a ha b hb hab)
@@ -62,7 +62,6 @@ lemma lemS_pack (hP : Ext.PackingCount) (S : Finset (EuclideanSpace ℂ ι)) (δ
     refine hPc.trans ?_
     first
       | exact pow_le_pow_left₀ (by positivity) hle _
-      | exact pow_le_pow_left (by positivity) hle _
 
 lemma firstMinimum_le_norm (Y : GT ι) {x : EuclideanSpace ℂ ι} (hx : x ∈ lat Y.b) (hne : x ≠ 0) :
     Y.la1 ≤ ‖x‖ := by
@@ -89,7 +88,6 @@ lemma firstMinimum_pos (Y : GT ι) (hN : 0 < Fintype.card ι) : 0 < Y.la1 := by
 
 lemma lemS_Hf_eq_inner (w v : EuclideanSpace ℂ ι) : Hf w v = inner ℂ v w := by
   simp only [Hf, PiLp.inner_apply, RCLike.inner_apply]
-  all_goals (refine Finset.sum_congr rfl fun i _ => ?_; ring)
 
 lemma lemS_periodic (Y : GT ι) (q : ℕ) {F : EuclideanSpace ℂ ι → ℂ} (hF : F ∈ Y.Sec q)
     {γ : EuclideanSpace ℂ ι} (hγ : γ ∈ lat Y.b) (v : EuclideanSpace ℂ ι) :
@@ -103,15 +101,12 @@ lemma lemS_periodic (Y : GT ι) (q : ℕ) {F : EuclideanSpace ℂ ι → ℂ} (h
     rw [lemS_Hf_eq_inner]
     first
       | exact_mod_cast inner_self_eq_norm_sq_to_K (𝕜 := ℂ) γ
-      | (rw [inner_self_eq_norm_sq_to_K]; simp)
-      | (rw [inner_self_eq_norm_sq_to_K]; norm_cast)
   have hA : ∀ z : ℂ, ((q : ℂ) * (Real.pi : ℂ) * z + (q : ℂ) * (Real.pi : ℂ) * ((‖γ‖ ^ 2 : ℝ) : ℂ) / 2).re =
       q * Real.pi * z.re + q * Real.pi * ‖γ‖ ^ 2 / 2 := by
     intro z
     simp
     first
       | (left; rw [← Complex.ofReal_pow, Complex.ofReal_re])
-      | ring
   have key : Real.exp (q * Real.pi * (Hf v γ).re + q * Real.pi * ‖γ‖ ^ 2 / 2) ^ 2 *
       Real.exp (-(q * Real.pi) * (‖v‖ ^ 2 + 2 * (Hf v γ).re + ‖γ‖ ^ 2)) =
         Real.exp (-(q * Real.pi) * ‖v‖ ^ 2) := by

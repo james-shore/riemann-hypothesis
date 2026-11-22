@@ -952,7 +952,6 @@ theorem Zsym0 {u v : VA I} (h : ZMod' I g (hA I u v)) : ZMod' I g (hA I v u - 0)
   have := Zsym (I := I) (g := g) (c := 0) (by rwa [sub_zero])
   first
     | rwa [map_zero] at this
-    | simpa using this
 
 theorem sig_ite {p : Prop} [Decidable p] : sigA I (if p then (1 : I.E ⊗[I.F] Af I.F) else 0) = if p then 1 else 0 := by
   split_ifs <;> simp

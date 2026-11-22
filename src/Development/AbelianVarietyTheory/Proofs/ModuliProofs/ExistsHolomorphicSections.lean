@@ -39,8 +39,6 @@ theorem exists_local_inverse {E S J σ : Type*} [NormedAddCommGroup E] [NormedSp
   | exact @_root_.GlobalTheory.AnalyticLineDerivative.main
   | exact _root_.GlobalTheory.AnalyticLineDerivative.main
   | (apply _root_.GlobalTheory.AnalyticLineDerivative.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AnalyticLineDerivative.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AnalyticLineDerivative.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AnalyticLineDerivative.main ..)
 
 theorem exists_holomorphic_sections :

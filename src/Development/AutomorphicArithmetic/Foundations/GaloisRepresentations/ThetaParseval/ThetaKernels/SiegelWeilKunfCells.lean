@@ -40,9 +40,9 @@ theorem cells'_k (B : Base F E) (hB : _root_.UpperTheory.TP.W.GoodK σ B) (hb : 
       have h1 := congrArg Matrix.toBlocks₂₁ hMM'
       conv_lhs at h1 => rw [← Matrix.fromBlocks_toBlocks M]
       rw [Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₂₁] at h1
-      simp only [Matrix.toBlocks_fromBlocks₁₁, Matrix.toBlocks_fromBlocks₁₂, Matrix.toBlocks_fromBlocks₂₁,
+      simp only [Matrix.toBlocks_fromBlocks₂₁,
         Matrix.toBlocks_fromBlocks₂₂] at h1
-      rw [h1]; ext i j; simp [Matrix.toBlocks₂₁, Matrix.one_apply]
+      rw [h1]; ext i j; simp [Matrix.toBlocks₂₁]
     have hν := herm_quot σ.toRingHom he _ _ hc hblk
     set νE := M.toBlocks₂₁⁻¹ * M.toBlocks₂₂ with hνE
     have hνA : (incM F νE)ᵀ = -((((ε₀ : ℤ) : AE F E)) • (incM F νE).map (cA σ)) := by
@@ -58,7 +58,7 @@ theorem cells'_k (B : Base F E) (hB : _root_.UpperTheory.TP.W.GoodK σ B) (hb : 
     have hcd : incM F M.toBlocks₂₁ * incM F νE = incM F M.toBlocks₂₂ := by
       rw [← incM_mul', hνE, ← Matrix.mul_assoc, Matrix.mul_nonsing_inv _ (isUnit_iff_ne_zero.2 hc), Matrix.one_mul]
     show _ = 0
-    simp only [Matrix.mul_one, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.one_mul]
+    simp only [Matrix.mul_one, Matrix.mul_zero, zero_add]
     change incM F M.toBlocks₂₁ * -(incM F νE) + incM F M.toBlocks₂₂ = 0
     rw [Matrix.mul_neg, hcd, neg_add_cancel]
   · right
@@ -77,7 +77,7 @@ theorem cells'_k (B : Base F E) (hB : _root_.UpperTheory.TP.W.GoodK σ B) (hb : 
     have hda : e • (M.toBlocks₂₁.map σ.toRingHom)ᵀ * M.toBlocks₁₁ + (M.toBlocks₁₁.map σ.toRingHom)ᵀ * M.toBlocks₂₁ = 0 := by
       have h1 := congrArg Matrix.toBlocks₂₁ hM'M
       rw [toBlocks₂₁_mul', Matrix.toBlocks_fromBlocks₂₁, Matrix.toBlocks_fromBlocks₂₂] at h1
-      rw [h1]; ext i j; simp [Matrix.toBlocks₂₁, Matrix.one_apply]
+      rw [h1]; ext i j; simp [Matrix.toBlocks₂₁]
     obtain ⟨β₁, hβh, hcβ, ⟨v, w', hvw, hvw0⟩, htr⟩ :=
       exists_beta σ.toRingHom hs e he hse M.toBlocks₁₁ M.toBlocks₂₁ _ hc hda T' hTh hTd
     have hx0 : Algebra.trace F E (2 : E) ≠ 0 := by
@@ -120,7 +120,7 @@ theorem cells'_k (B : Base F E) (hB : _root_.UpperTheory.TP.W.GoodK σ B) (hb : 
           Matrix.mul_one, Matrix.add_mul, h1, Matrix.mul_smul, Matrix.smul_mul, incM_mul', incM_mul']
       have h21 : (inFrame b (γ * nb β₀ * γ⁻¹)).toBlocks₂₁ = 0 := by
         rw [hP, hX, hcβ]
-        ext i j; simp [Matrix.toBlocks₂₁, Matrix.one_apply, incM]
+        ext i j; simp [Matrix.toBlocks₂₁, incM]
       have h11 : (inFrame b (γ * nb β₀ * γ⁻¹)).toBlocks₁₁ = 1 + Λ • incM F (Matrix.vecMulVec v w') := by
         rw [hP, hX, hvw]
         ext i j; simp [Matrix.toBlocks₁₁, Matrix.one_apply, incM]

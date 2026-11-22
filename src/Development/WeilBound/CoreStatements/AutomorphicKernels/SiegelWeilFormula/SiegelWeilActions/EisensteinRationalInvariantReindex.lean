@@ -201,14 +201,14 @@ theorem hz_uA_i0i0 (u : Fin L.n → AE F E) : uA L u L.i₀ L.i₀ = 1 := by
   simp [uA, Matrix.sum_apply, Matrix.single, ComplexParameterFamilyContinuity.em_ne L]
 
 theorem hz_uA_i0em (u : Fin L.n → AE F E) (l : Fin L.n) : uA L u L.i₀ (L.em l) = u l := by
-  simp [uA, Matrix.sum_apply, Matrix.single, Matrix.one_apply, em_ne' L, L.inj.eq_iff]
+  simp [uA, Matrix.sum_apply, Matrix.single, em_ne' L, L.inj.eq_iff]
 
 theorem unipotent_block_embedded_zero (u : Fin L.n → AE F E) (k : Fin L.n) : uA L u (L.em k) L.i₀ = 0 := by
-  simp [uA, Matrix.sum_apply, Matrix.single, Matrix.one_apply, ComplexParameterFamilyContinuity.em_ne L, em_ne' L]
+  simp [uA, Matrix.sum_apply, Matrix.single, ComplexParameterFamilyContinuity.em_ne L, em_ne' L]
 
 theorem hz_uA_emem (u : Fin L.n → AE F E) (k l : Fin L.n) :
     uA L u (L.em k) (L.em l) = if k = l then 1 else 0 := by
-  simp [uA, Matrix.sum_apply, Matrix.single, Matrix.one_apply, ComplexParameterFamilyContinuity.em_ne L, em_ne' L, L.inj.eq_iff]
+  simp [uA, Matrix.sum_apply, Matrix.single, Matrix.one_apply, em_ne' L, L.inj.eq_iff]
 
 def Dm (L : LD d) (u : Fin L.n → AE F E) : Matrix (Fin d.n) (Fin d.n) (AE F E) := (uA L (-u))ᵀ.map (cA σ)
 
@@ -279,12 +279,10 @@ theorem heis' (h : Hyp L nb uM nb' w₁ cM δ) :
     · rw [GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, hC, hM]
       simp [bMat, Matrix.fromBlocks_multiply]
     · rw [GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, hC, hC, hC, hM]
-      simp only [bMat, Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₁₁, Matrix.one_mul, Matrix.mul_one,
-        Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
+      simp only [bMat, Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₁₁, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
       exact hz_uA_add u₀ u
     · rw [GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, hC, hC, hC, hM]
-      simp only [bMat, Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₁₂, Matrix.one_mul, Matrix.mul_one,
-        Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
+      simp only [bMat, Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₁₂, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
       have hZ : ellA δ (y u₀ b) • inclR (F := F) (AF F) δ = y u₀ b := by
         refine eig (R := R) h _ ?_
         have he := eps_mul R

@@ -74,7 +74,7 @@ private theorem exists_card_ker_red_eq_prime_pow (p b : ℕ) [Fact p.Prime] :
         A ^ 2 * ∑ m ∈ Finset.range (r + 1), A ^ m * ((r + 2).choose (m + 2) : Matrix _ _ _) := by
     intro A r
     rw [(Commute.one_right A).add_pow, Finset.sum_range_succ', Finset.sum_range_succ']
-    simp only [one_pow, mul_one, pow_zero, one_mul, Nat.choose_zero_right, Nat.cast_one, Finset.mul_sum]
+    simp only [one_pow, mul_one, pow_zero, Nat.choose_zero_right, Nat.cast_one, Finset.mul_sum]
     have : ∀ m, A ^ (m + 1 + 1) * ((r + 2).choose (m + 1 + 1) : Matrix _ _ _) =
         A ^ 2 * (A ^ m * ((r + 2).choose (m + 2) : Matrix _ _ _)) := by
       intro m; rw [← mul_assoc, ← pow_add]; ring_nf

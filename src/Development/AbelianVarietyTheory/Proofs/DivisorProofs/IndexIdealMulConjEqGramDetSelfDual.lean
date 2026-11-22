@@ -198,7 +198,7 @@ theorem idx_mul_map_bar_eq : ∀ (E : Type) [Field E] [NumberField E] (bar : �
     refine ⟨c, RingOfIntegers.ext ?_⟩
     change (b : E) * (c : E) = 1
     rw [hc]
-    simp only [Pi.smul_apply, smul_eq_mul, Algebra.smul_def]
+    simp only [Pi.smul_apply, Algebra.smul_def]
     change (b : E) * ((k : E) * ((b : E)⁻¹ / ((k : E) * d i) * d i)) = 1
     field_simp
   have hsm : ∀ (c : 𝓞 E) (x : E), barE (c • x) = (bar c : E) * barE x := by

@@ -105,18 +105,6 @@ private lemma le_iSup_eigPart_inf_of_invariant {I A : Type} [NormedAddCommGroup 
     intro x hx
     first
     | (rw [Submodule.sup_orthogonal_inf_of_hasOrthogonalProjection hW1W]; exact hx)
-    | (obtain ⟨y, hy, z, hz, rfl⟩ := W1.exists_add_mem_mem_orthogonal x
-       exact Submodule.add_mem_sup hy
-        (Submodule.mem_inf.mpr ⟨hz, (W.add_mem_iff_right (hW1W hy)).mp hx⟩))
-    | (exact Submodule.mem_sup.mpr ⟨(orthogonalProjection W1 x : A), (orthogonalProjection W1 x).2,
-        x - orthogonalProjection W1 x, Submodule.mem_inf.mpr
-          ⟨sub_orthogonalProjection_mem_orthogonal x, W.sub_mem hx (hW1W (orthogonalProjection W1 x).2)⟩,
-        by abel⟩)
-    | (exact Submodule.mem_sup.mpr ⟨(W1.orthogonalProjection x : A), (W1.orthogonalProjection x).2,
-        x - W1.orthogonalProjection x, Submodule.mem_inf.mpr
-          ⟨W1.sub_orthogonalProjection_mem_orthogonal x,
-            W.sub_mem hx (hW1W (W1.orthogonalProjection x).2)⟩,
-        by abel⟩)
   have hlt1 : W1 < W := by
     refine lt_of_le_of_ne hW1W fun h => hx0 ?_
     have hx0' : x0 ∈ W1 := by

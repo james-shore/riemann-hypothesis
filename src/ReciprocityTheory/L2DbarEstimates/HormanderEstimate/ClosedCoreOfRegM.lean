@@ -47,7 +47,6 @@ theorem enorm_integral_sub_mul_le (n : ℕ) {M : Type*} [MeasurableSpace M] (z :
       ≤ ∫⁻ x, ‖(f x - F x) * g x‖ₑ ∂vol n z := by
         first
           | exact enorm_integral_le_lintegral_enorm _
-          | exact ennnorm_integral_le_lintegral_ennnorm _
     _ = ∫⁻ x, ((fun x => ENNReal.ofReal (‖F x - f x‖ * Real.exp (-ψ x / 2))) *
           (fun x => ENNReal.ofReal (‖g x‖ * Real.exp (ψ x / 2)))) x ∂vol n z :=
         lintegral_congr (fun x => hpt x)
@@ -55,9 +54,7 @@ theorem enorm_integral_sub_mul_le (n : ℕ) {M : Type*} [MeasurableSpace M] (z :
           (∫⁻ x, ENNReal.ofReal (‖g x‖ * Real.exp (ψ x / 2)) ^ (2:ℝ) ∂vol n z) ^ (1 / (2:ℝ)) :=
         ENNReal.lintegral_mul_le_Lp_mul_Lq _
           (by first
-            | exact Real.HolderConjugate.two_two
-            | exact Real.IsConjExponent.two
-            | (constructor <;> norm_num)) hw hv
+            | exact Real.HolderConjugate.two_two) hw hv
     _ = _ := by simp only [hw2, hv2, wint]
 
 theorem closedCore_of_regM (n : ℕ) (M : Type*) [TopologicalSpace M] [T2Space M]

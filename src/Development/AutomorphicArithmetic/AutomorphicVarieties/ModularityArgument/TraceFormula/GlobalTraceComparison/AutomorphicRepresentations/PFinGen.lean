@@ -49,7 +49,7 @@ theorem UpperTheory.V.Z.Tf.GlobalTraceComparison.Pi.finGen_pf :
     (le_iSup (fun p : ι × ι => W p.1 p.2) (i, j)) (hψ' j), fun x hx => ?_⟩
   rw [s.vecs.rep₁]
   have hsum : (∑ j, ψ' j).1 x.1 = ∑ j, (ψ' j).1 x.1 := by
-    simp [Submodule.coe_sum]
+    simp
   rw [hsum]
   refine Finset.sum_congr rfl fun j _ => ?_
   have hae : ∫ y, kerH (s.Φ₁ i j) x y * (v j : H E n 0 → ℂ) y ∂s.D.ν =

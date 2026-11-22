@@ -74,7 +74,7 @@ theorem mem_aux (σ : R →+* R) (e : ℤˣ) (i : ι) (hi : ∀ x : ι, x = i) (
   rw [GlobalTheory.CompanionTheory.RgEis.Cover.J_apply e i hi]
   rcases x with x | x <;> rcases y with y | y <;> rw [hi x, hi y] <;>
     simp only [Matrix.smul_apply, Matrix.mul_diagonal, Matrix.diagonal_mul, Matrix.map_apply,
-      Sum.elim_inl, Sum.elim_inr, smul_eq_mul, map_mul, map_one, hN, hσ, hσd', one_mul, mul_one,
+      Sum.elim_inl, Sum.elim_inr, smul_eq_mul, map_mul, hN, hσ, hσd', one_mul, mul_one,
       PositivityTheory.RgEis.Ad.J, Matrix.fromBlocks_apply₁₁, Matrix.fromBlocks_apply₁₂,
       Matrix.fromBlocks_apply₂₁, Matrix.fromBlocks_apply₂₂, Matrix.zero_apply, Matrix.one_apply_eq]
   · ring

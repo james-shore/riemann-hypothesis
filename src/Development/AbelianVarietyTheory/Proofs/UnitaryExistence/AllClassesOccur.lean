@@ -51,7 +51,7 @@ theorem GlobalTheory.all_classes_occur :
   have hξ0 : (H.rt : E) ≠ 0 := by
     intro h
     have := congrArg (fun a : 𝓞 E => (a : E)) H.rt_sq
-    simp only [h, RingOfIntegers.coe_eq_algebraMap, map_pow, map_neg, map_natCast] at this
+    simp only [h, map_pow, map_neg, map_natCast] at this
     have h2 : (H.d : E) = 0 := by
       simpa using this
     exact H.d_prime.ne_zero (by exact_mod_cast h2)

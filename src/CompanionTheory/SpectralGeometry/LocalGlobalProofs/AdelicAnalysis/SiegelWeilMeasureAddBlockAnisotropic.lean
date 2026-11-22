@@ -58,7 +58,7 @@ theorem fibre_zero_of_one (σ : E →ₐ[F] E) (hCM : IsCMExt F E σ) {M : ℕ}
     have hu : IsUnit (gramR R σ J x).det := by
       rw [hx]
       subst hT1e
-      simp only [hermOf, Matrix.det_fin_one, Matrix.map_apply]
+      simp only [hermOf, Matrix.det_fin_one]
       exact (IsUnit.mk0 _ ((map_ne_zero _).2 ht)).map (inclR R)
     have := (GlobalTheory.T.gram_fiber_measure_locallyFinite_and_ne_zero_of_isOpen F E σ hCM M J hJ R hLoc 1 _ _ m1 (hH.2.1 1 M) (hH.2.2 1) hm1
       (hermOf R σ T1 hT1)).2 Set.univ isOpen_univ ⟨x, trivial, hx, hu⟩

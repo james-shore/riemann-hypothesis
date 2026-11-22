@@ -21,7 +21,7 @@ theorem nc_geom (p : ℕ) (hp : 2 ≤ p) :
   have e2 : Formalism.MainNotions.FormalGroupSystem.gam p = (p : ℝ)⁻¹ * (1 - ((p : ℝ) ^ 2)⁻¹)⁻¹ := by
     rw [Formalism.MainNotions.FormalGroupSystem.gam]
     first
-      | (field_simp; ring)
+      | (field_simp)
       | field_simp
   rw [e1, e2]
   exact this
@@ -50,7 +50,6 @@ theorem nc_summable_min (p : ℕ) (hp : 2 ≤ p) (y : ℝ) (z : ℕ → ℝ) (hz
       _ = |y| / ((p : ℝ)) ^ (2 * e + 1) := by rw [abs_div, abs_of_pos hq]
   first
     | exact Summable.of_norm_bounded hg hb
-    | exact Summable.of_norm_bounded _ hg hb
 
 theorem nc_min (p : ℕ) (hp : 2 ≤ p) (y yu : ℝ) (z zu : ℕ → ℝ) (hy : y ≤ yu) (hz : ∀ e, zu e ≤ z e)
     (hz0 : ∀ e, 0 ≤ zu e) :
@@ -68,7 +67,7 @@ theorem nc_min (p : ℕ) (hp : 2 ≤ p) (y yu : ℝ) (z zu : ℕ → ℝ) (hy : 
     positivity
   have ha : y / ((p : ℝ)) ^ (2 * e + 1) ≤ yu / ((p : ℝ)) ^ (2 * e + 1) := div_le_div_of_nonneg_right hy hq.le
   have hze := hz e
-  simp only [Pi.sub_apply, min_def]
+  simp only [min_def]
   split_ifs <;> linarith
 
 theorem nc_pos (p : ℕ) (hp : 2 ≤ p) (y yu : ℝ) (z zu : ℕ → ℝ) (ex exu : ℕ → Prop) [DecidablePred ex]

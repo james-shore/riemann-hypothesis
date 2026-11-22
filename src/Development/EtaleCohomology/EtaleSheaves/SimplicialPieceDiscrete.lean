@@ -21,11 +21,11 @@ def augMap {X Y : PSh} (f : X ⟶ Y) : aug R X ⟶ aug R Y where
 def ed (X : PSh) : ExtraDegeneracy (aug R X) where
   s' := 𝟙 _
   s := fun _ => 𝟙 _
-  s'_comp_ε := by simp [aug] <;> first | rfl | exact Category.id_comp _ | exact Category.comp_id _
-  s₀_comp_δ₁ := by simp [aug, SimplicialObject.δ] <;> first | rfl | exact Category.id_comp _ | exact Category.comp_id _
-  s_comp_δ₀ := by intro n; simp [aug, SimplicialObject.δ] <;> first | rfl | exact Category.id_comp _ | exact Category.comp_id _
-  s_comp_δ := by intro n i; simp [aug, SimplicialObject.δ] <;> first | rfl | exact Category.id_comp _ | exact Category.comp_id _
-  s_comp_σ := by intro n i; simp [aug, SimplicialObject.σ] <;> first | rfl | exact Category.id_comp _ | exact Category.comp_id _
+  s'_comp_ε := by simp [aug] <;> first | rfl
+  s₀_comp_δ₁ := by simp [aug, SimplicialObject.δ] <;> first | rfl
+  s_comp_δ₀ := by intro n; simp [aug, SimplicialObject.δ] <;> first | rfl
+  s_comp_δ := by intro n i; simp [aug, SimplicialObject.δ] <;> first | rfl
+  s_comp_σ := by intro n i; simp [aug, SimplicialObject.σ] <;> first | rfl
 
 variable {R}
 

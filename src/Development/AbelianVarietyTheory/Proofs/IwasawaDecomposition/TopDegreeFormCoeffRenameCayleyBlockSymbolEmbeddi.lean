@@ -57,7 +57,7 @@ theorem permOf_injective : Function.Injective (permOf hc) := by
 
 theorem graph_apply' {n : ℕ} (g : Fin n → Fin n) (x y : Fin n) :
     (∑ a, Finsupp.single (a, g a) 1 : Fin n × Fin n →₀ ℕ) (x, y) = if g x = y then 1 else 0 := by
-  rw [Finsupp.finset_sum_apply, Finset.sum_eq_single x (fun c _ hc => by simp [Finsupp.single_apply, hc]) (by simp)]
+  rw [Finsupp.finset_sum_apply, Finset.sum_eq_single x (fun c _ hc => by simp [hc]) (by simp)]
   simp [Finsupp.single_apply]
 
 theorem graph_permOf (τ : Fin q → Equiv.Perm (Fin p)) :

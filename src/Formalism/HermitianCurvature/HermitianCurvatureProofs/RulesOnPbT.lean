@@ -86,7 +86,7 @@ theorem hpk_last {ρ : ℕ} (hρ : 1 ≤ ρ) (v : Fin (2 * ρ + k + 1)) :
     Hpk k ρ ⟨2 * ρ + k, by omega⟩ v = if v.val = 0 then 1 else 0 := by
   unfold Hpk
   have hv := v.isLt
-  simp only [Fin.ext_iff, Fin.val_mk]
+  simp only [Fin.ext_iff]
   split_ifs <;> first | rfl | (exfalso; omega)
 
 theorem cL_last {j ρ : ℕ} (a : Fin j → ℂ) (v : Fin (2 * ρ + k + 1)) (α : Fin j) :

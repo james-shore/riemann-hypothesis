@@ -100,7 +100,7 @@ theorem vhol_adj (lam : ι → DomWeight n) (a : ι → Matrix (Fin n) (Fin n) �
     fockL (vact lam a x) y = fockL x (vact lam (fun τ => (a τ)ᴴ) y) := by
   simp only [vact, LinearMap.smul_apply, AlgHom.toLinearMap_apply, LinearMap.map_smulₛₗ, map_smul,
     fockL_blockAct_adj, Matrix.conjTranspose_nonsing_inv, Matrix.det_conjTranspose, starRingEnd_apply, star_prod,
-    star_zpow₀, RingHom.id_apply]
+    star_zpow₀]
 
 theorem vhol_units (lam : ι → DomWeight n) (G : ι → GL (Fin n) ℂ) :
     vact lam (fun τ => (G τ : Matrix (Fin n) (Fin n) ℂ)) = actP lam (invTrK G) := by

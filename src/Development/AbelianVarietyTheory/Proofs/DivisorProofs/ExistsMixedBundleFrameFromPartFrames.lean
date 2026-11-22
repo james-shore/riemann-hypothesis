@@ -70,7 +70,6 @@ theorem exists_frame_hom : ∀ (R : Type) [CommRing R] [IsDomain R] (D₁ D₂ :
         (Eq.trans ?_ (DVR.prod_sum₂ (U := U) _ q₇a (q₇b.trans q₇c)).symm)
       apply Additive.ofMul.injective
       simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow]
-      push_cast
       module) t ht
   refine ⟨τ, hτ, fun z J hJ => (hv _ _ z J hJ).trans ?_⟩
   have g₁ := p₁.good hJ

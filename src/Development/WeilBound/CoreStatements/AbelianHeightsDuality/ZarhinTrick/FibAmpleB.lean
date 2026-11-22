@@ -77,7 +77,7 @@ theorem relAmple_lPart (hA : IsAbelianScheme A) (hB : IsAbelianScheme B) (mu : B
   rw [one_smul, cls_pull hboxLB, GlobalTheory.PosDefAmple.pull_cls_boxLB p.pr hL']
   simp only [lPart]
   simp only [cls_linComb hL, Fintype.sum_prod_type, Fin.sum_univ_four, Fin.sum_univ_eight, Fin.sum_univ_two,
-    Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, one_smul, map_add, Over.id_left, pull_id]
+    Matrix.cons_val_zero, Matrix.cons_val_one, one_smul, map_add, pull_id]
   simp only [p, ← Functor.map_comp, XB.pr8]
   simp only [← Category.assoc, hq]
   simp only [Category.assoc, tensorHom_fst, tensorHom_snd, Category.comp_id, phiL]

@@ -105,7 +105,7 @@ private theorem prj_self' {V : Submodule ℂ H} {v : H} (hv : v ∈ V) : prj V v
 
 private theorem mem_eigIn' {W : Submodule ℂ H} {A : H →L[ℂ] H} {x : ℝ} {v : H} :
     v ∈ eigIn W A x ↔ v ∈ W ∧ A v = (x : ℂ) • v := by
-  simp [eigIn, Module.End.mem_eigenspace_iff]
+  simp [eigIn]
 
 private theorem trOn_congr {Y : Submodule ℂ H} (hY : IsClosed (Y : Set H)) {A B : H →L[ℂ] H} (h : ∀ v ∈ Y, A v = B v) :
     trOn Y A = trOn Y B := by

@@ -18,8 +18,6 @@ lemma exists_three_roots {K : Type} [Field K] [IsAlgClosed K] (g₂ g₃ : K) (h
   | exact @_root_.GlobalTheory.ThreeDistinctRoots.three_distinct_roots
   | exact _root_.GlobalTheory.ThreeDistinctRoots.three_distinct_roots
   | (apply _root_.GlobalTheory.ThreeDistinctRoots.three_distinct_roots <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ThreeDistinctRoots.three_distinct_roots <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ThreeDistinctRoots.three_distinct_roots <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ThreeDistinctRoots.three_distinct_roots ..)
 
 lemma coeff_of_dvd {k : Type} [Field k] (p : ℕ) [Fact p.Prime] [CharP k p] (g₂ g₃ a b : k)

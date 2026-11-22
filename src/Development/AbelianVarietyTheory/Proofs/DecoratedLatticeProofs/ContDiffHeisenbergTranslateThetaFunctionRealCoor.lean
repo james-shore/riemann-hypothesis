@@ -80,7 +80,6 @@ theorem contDiff_heisO_iota_fderiv : ∀ (D : D7) (θ : InfFam D) (σ : (D.what�
     rw [eF]
     exact hasDerivAt_expLine hH _ _
   rw [hf.unique hline, heisO_iota h hψ z F v, heisO_iota h hψ z _ v]
-  beta_reduce
   rw [hF'.deriv]
   simp only [zero_smul, map_zero, add_zero, Complex.ofReal_zero, mul_zero, Complex.exp_zero, one_mul,
     Complex.ofReal_add]

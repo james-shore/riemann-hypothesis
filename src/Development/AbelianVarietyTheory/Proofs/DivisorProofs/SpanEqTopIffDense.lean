@@ -58,7 +58,7 @@ theorem toPi_E (a i j : ι) (x : N) : U.toPi a (U.E i j x) = Pi.single i (U.toPi
   rw [toPi_apply, U.apply_apply]
   by_cases h : k = i
   · subst h; simp [toPi_apply]
-  · simp [h, Pi.single_apply]
+  · simp [h]
 
 end MatrixUnits
 
@@ -91,7 +91,7 @@ theorem toPi_corner (a : ι) (y : U.corner a) : U.toPi a y = Pi.single a y := by
   rw [toPi_apply, ← (U.mem_corner_iff a _).1 y.2, U.apply_apply]
   by_cases h : i = a
   · subst h; simp [(U.mem_corner_iff i _).1 y.2]
-  · simp [h, Pi.single_apply, Ne.symm h]
+  · simp [h]
 
 def IsStable (L : Submodule R N) : Prop := ∀ i j, ∀ x ∈ L, U.E i j x ∈ L
 
@@ -124,7 +124,7 @@ theorem spread_isStable (a : ι) (L₀ : Submodule R (U.corner a)) : U.IsStable 
   rw [toPi_E]
   by_cases h : k = i
   · subst h; simpa using hx j
-  · simp [Pi.single_apply, h, L₀.zero_mem]
+  · simp [h, L₀.zero_mem]
 
 theorem cornerPart_spread (a : ι) (L₀ : Submodule R (U.corner a)) : U.cornerPart a (U.spread a L₀) = L₀ := by
   ext y
@@ -134,7 +134,7 @@ theorem cornerPart_spread (a : ι) (L₀ : Submodule R (U.corner a)) : U.cornerP
   · intro h i
     by_cases hi : i = a
     · subst hi; simpa using h
-    · simp [Pi.single_apply, hi, L₀.zero_mem]
+    · simp [hi, L₀.zero_mem]
 
 theorem spread_cornerPart {L : Submodule R N} (hL : U.IsStable L) (a : ι) : U.spread a (U.cornerPart a L) = L := by
   ext x

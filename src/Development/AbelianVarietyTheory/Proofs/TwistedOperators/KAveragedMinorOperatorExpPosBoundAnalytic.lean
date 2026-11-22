@@ -68,7 +68,6 @@ theorem ps_exp_pos_bound_analytic : ∀ (n : ℕ) (ε : Fin n → Bool) (lam : F
       rw [integral_congr_ae (Eventually.of_forall hre)]
       first
         | exact integral_complex_ofReal
-        | exact integral_ofReal
     rw [hI]
     refine mul_nonneg (Nat.cast_nonneg _) (Complex.zero_le_real.2 (integral_nonneg fun k => ?_))
     exact (Complex.le_def.1 (hF k)).1
@@ -80,7 +79,7 @@ theorem ps_exp_pos_bound_analytic : ∀ (n : ℕ) (ε : Fin n → Bool) (lam : F
     · rw [h0, norm_zero]; positivity
     have hb := norm_inner_ps_exp_le_decHS_mul hlam hτ hgap hX u (T u)
     rw [inner_self_eq_norm_sq_to_K] at hb
-    simp only [norm_pow, RCLike.norm_ofReal, Complex.norm_real, Real.norm_eq_abs, abs_norm] at hb
+    simp only [norm_pow, RCLike.norm_ofReal, abs_norm] at hb
     have hpos : 0 < ‖T u‖ := norm_pos_iff.2 h0
     nlinarith
   ·

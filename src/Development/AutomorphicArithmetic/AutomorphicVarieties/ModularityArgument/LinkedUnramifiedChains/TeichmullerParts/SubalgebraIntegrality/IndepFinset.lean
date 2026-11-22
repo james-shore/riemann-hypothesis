@@ -81,8 +81,7 @@ private lemma indep_fin {τ : Representation ℂ G W'} {ρ : Representation ℂ 
       have hrel : ∑ i, (Fin.cons (1 : ℂ) (fun j => -c j) : Fin (n + 1) → ℂ) i • b i = 0 := by
         rw [Fin.sum_univ_succ]
         ext v
-        simp only [Fin.cons_zero, Fin.cons_succ, one_smul, LinearMap.add_apply, LinearMap.sum_apply,
-          LinearMap.smul_apply, LinearMap.zero_apply, neg_smul, Finset.sum_neg_distrib]
+        simp only [Fin.cons_zero, Fin.cons_succ, one_smul, LinearMap.add_apply, LinearMap.zero_apply, neg_smul, Finset.sum_neg_distrib]
         rw [← hT v, hA]
         simp only [hc, map_smul]
         simp

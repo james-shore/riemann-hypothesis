@@ -145,7 +145,7 @@ theorem exists_sums {O O₁ K F : Type} [CommRing O] [CommRing O₁] [Field K] [
   have e1 : t' ^ j = rm := Units.ext (by rw [hrm, ← map_pow]; rfl)
   have key := fun x => GlobalTheory.T.twist_tx_ev_eq_map_arc_root_alt O₁ C (gam.comp Φ) n1 n2 t' u rm rj m j hm hj (congrArg gam h2.symm) e1
     (Units.ext (by rw [hrj, ← map_pow]; rfl))
-    (Units.ext (by rw [hu, ← e1, ← pow_mul, mul_comm j, ← ht, ← map_pow, map_pow gam]; simp [t']))
+    (Units.ext (by rw [hu, ← e1, ← pow_mul, mul_comm j, ← ht, ← map_pow, map_pow gam]; simp))
     N₀ N' J k be₀ β (fun y z => hβ _ _) (p₀ x) (q' x) (p x) ((hq' x).1.trans (congrArg I.e (hp x)))
     (homComp_rel _ _ _ _ (hp' x) (hq' x).2) (hp'' x)
   refine ⟨fun x => ?_, fun qz' pz a b c => ⟨(J.lam * J.h q₀.1.2.b ^ (m ^ 2))⁻¹ * t' ^ s, fun x => ?_⟩⟩

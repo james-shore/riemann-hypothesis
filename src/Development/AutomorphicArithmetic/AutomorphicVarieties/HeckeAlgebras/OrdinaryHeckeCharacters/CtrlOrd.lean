@@ -181,7 +181,7 @@ private theorem ctrlOrd_approx (hinj : Function.Injective (algebraMap O Ω)) (τ
       have h2 : X.rp O m y f - f ∈ X.valIn O m 1 := by
         rw [ctrlOrd_val]
         intro a i
-        simp only [LinearMap.sub_apply, Pi.sub_apply, hrp]
+        simp only [Pi.sub_apply, hrp]
         exact hc2 y (X.I.Nm_anti hc2' hy) a i
       have h3 := Submodule.sub_mem _ h1 h2
       rw [map_sub]

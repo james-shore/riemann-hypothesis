@@ -41,7 +41,7 @@ theorem abs_im_eq (φ : K →+* ℂ) (b : Module.Basis (Fin 2) ℤ (𝓞 K)) (J 
       (b.repr (e j : 𝓞 K) 1 : ℂ) * ψ (b 1) := by
     intro j
     conv_lhs => rw [← b.sum_repr (e j : 𝓞 K)]
-    simp [map_sum, Fin.sum_univ_two, zsmul_eq_mul]
+    simp [Fin.sum_univ_two, zsmul_eq_mul]
   have hdet := Ideal.natAbs_det_basis_change b J e
   rw [Module.Basis.det_apply, Matrix.det_fin_two] at hdet
   simp only [Module.Basis.toMatrix_apply, Function.comp_apply] at hdet

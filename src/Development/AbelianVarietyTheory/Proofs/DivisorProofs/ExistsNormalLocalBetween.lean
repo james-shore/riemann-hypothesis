@@ -52,8 +52,6 @@ theorem isAlgClosed_fractionRing (T : Type) [CommRing T] [IsDomain T]
   | exact @_root_.GlobalTheory.MonicRootRange.isAlgClosed_fractionRing
   | exact _root_.GlobalTheory.MonicRootRange.isAlgClosed_fractionRing
   | (apply _root_.GlobalTheory.MonicRootRange.isAlgClosed_fractionRing <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MonicRootRange.isAlgClosed_fractionRing <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MonicRootRange.isAlgClosed_fractionRing <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MonicRootRange.isAlgClosed_fractionRing ..)
 
 end GlobalTheory.LocAcycEmbed

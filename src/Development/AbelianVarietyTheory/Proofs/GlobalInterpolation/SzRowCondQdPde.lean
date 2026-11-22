@@ -37,7 +37,7 @@ theorem szRow_cond_qd_pde : SzRow (fun _ _ L => SizeCond L ∧ SizeQD L ∧ Size
   have hlog2 : 1 ≤ Real.log L.sc.x ^ 2 := one_le_pow₀ hlog
   have hmul : L.sc.x ^ (L.sc.eps / 5) ≤ L.sc.x ^ (L.sc.eps / 5) * Real.log L.sc.x ^ 2 :=
     le_mul_of_one_le_right (Real.rpow_nonneg hxpos.le _) hlog2
-  simp only [pow_zero, mul_one, one_mul] at k6
+  simp only [one_mul] at k6
   have hx1' : 1 ≤ L.sc.x := L.sc.one_lt_alt.le
   have hez : L.sc.eps / C.P.Cpde ≤ L.sc.ez := hostBounds_ez hV.host
   have hez0 : 0 ≤ L.sc.ez := le_trans (by positivity) hez

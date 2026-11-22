@@ -38,7 +38,6 @@ theorem span_range_eId_mul {n r : ℕ} (hr : r ≤ n) {c : Matrix (Fin r) (Fin n
   refine le_antisymm ?_ ?_
   · rw [Submodule.span_le]
     rintro _ ⟨i, rfl⟩
-    change (eId K n r * a) i ∈ _
     rw [row i]
     by_cases hi : (i : ℕ) < r
     · rw [if_pos hi, h.2 i hi]
@@ -48,7 +47,6 @@ theorem span_range_eId_mul {n r : ℕ} (hr : r ≤ n) {c : Matrix (Fin r) (Fin n
   · rw [Submodule.span_le]
     rintro _ ⟨j, rfl⟩
     refine Submodule.subset_span ⟨⟨j, j.2.trans_le hr⟩, ?_⟩
-    change (eId K n r * a) ⟨j, j.2.trans_le hr⟩ = c j
     rw [row, if_pos j.2, h.2 ⟨j, j.2.trans_le hr⟩ j.2]
 
 theorem span_range_lowerLeft : ∀ {K : Type} [Field K] {n r : ℕ}, r ≤ n →

@@ -20,7 +20,7 @@ theorem exists_coords {K : Type} [Field K] {n : ℕ} (S : Submodule K (Fin n →
   have hZ : ∀ w, Z *ᵥ w = ((∑ k, w k • b k : S) : Fin n → K) := by
     intro w
     ext i
-    simp [Z, Matrix.mulVec, dotProduct, mul_comm, Submodule.coe_sum, Finset.sum_apply]
+    simp [Z, Matrix.mulVec, dotProduct, mul_comm, Finset.sum_apply]
   let L : (Fin n → K) →ₗ[K] S := P.mulVecLin.codRestrict S hP
   let c : (Fin n → K) →ₗ[K] (Fin (Module.finrank K S) → K) := b.equivFun.toLinearMap ∘ₗ L
   refine ⟨_, Z, LinearMap.toMatrix' c, fun w => by rw [hZ]; exact Subtype.property _, ?_, ?_⟩

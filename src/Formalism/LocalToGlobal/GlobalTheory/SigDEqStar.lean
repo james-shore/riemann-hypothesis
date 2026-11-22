@@ -29,12 +29,6 @@ theorem rhoC_conj (s : D.what₂.LL →+* ℂ) (τ : D.what₂.Tau) (a : D.host.
   first
     | exact NumberField.IsCMField.complexEmbedding_complexConj (s.comp D.embE) _
     | exact NumberField.IsCMField.complexEmbedding_complexConj _ (s.comp D.embE) _
-    | (erw [NumberField.IsCMField.complexEmbedding_complexConj]; rfl)
-    | exact (NumberField.IsCMField.complexEmbedding_complexConj (K := D.host.E) (φ := s.comp D.embE) _)
-    | (simp only [NumberField.IsCMField.complexEmbedding_star]; rfl)
-    | exact NumberField.IsCMField.complexEmbedding_star _ (s.comp D.embE) _
-    | exact NumberField.IsCMField.complexConj_apply_apply (s.comp D.embE) _
-    | exact (NumberField.IsCMField.complexEmbedding_complexConj (s.comp D.embE) _ : _)
 
 theorem exists_im_ne (φ : D.host.E →+* ℂ) : ∃ t : D.host.E, (φ t).im ≠ 0 := by
   by_contra h
@@ -42,13 +36,9 @@ theorem exists_im_ne (φ : D.host.E →+* ℂ) : ∃ t : D.host.E, (φ t).im ≠
   have hr : NumberField.ComplexEmbedding.IsReal φ := by
     first
       | (rw [NumberField.ComplexEmbedding.isReal_iff]; ext t; simp [Complex.conj_eq_iff_im, h t])
-      | (intro t; simp [Complex.conj_eq_iff_im, h t])
-      | (ext t; simp [Complex.conj_eq_iff_im, h t])
   have hc : (NumberField.InfinitePlace.mk φ).IsComplex := by
     first
       | exact NumberField.IsTotallyComplex.isComplex _
-      | exact IsTotallyComplex.isComplex _
-      | exact NumberField.InfinitePlace.IsTotallyComplex.isComplex _
   exact (NumberField.InfinitePlace.isComplex_mk_iff.mp hc) hr
 
 def crd (y : (D.sp.X 0).V) : Fin (D.R.N 0) → D.host.E :=
@@ -86,7 +76,6 @@ theorem hT_crd (y : (D.sp.X 0).V) :
   intro l _
   first
     | ring1
-    | (clear hy; generalize ((D.sp.X 0).frame.repr y) k = a; generalize ((D.sp.X 0).frame.repr y) l = b; generalize (D.sp.X 0).hT ((D.sp.X 0).frame k) ((D.sp.X 0).frame l) = h1; generalize (D.sp.X 0).hT ((D.sp.X 0).frame l) ((D.sp.X 0).frame k) = h2; done)
 
 variable {u : D.what₂.Word} (B : ColBase D u)
 
@@ -98,16 +87,13 @@ theorem repr_bc (c : (D.mem u).C.cls 0) (τ : D.what₂.Tau) (y : (D.sp.X 0).V) 
     (B.Q c τ).b.repr (B.bc c τ y) ((B.eQ c τ).symm j) = (Mb B c τ *ᵥ fun i => B.rho τ (crd y i)) j := by
   unfold Mb crd
   conv_lhs => rw [← (D.sp.X 0).frame.sum_repr y]
-  simp only [map_sum, B.bc_smul, LinearMap.map_smulₛₗ, map_smulₛₗ, map_smul, Finsupp.coe_finset_sum, Finset.sum_apply, Finsupp.smul_apply, smul_eq_mul, Matrix.mulVec, dotProduct, RingHom.id_apply]
+  simp only [map_sum, B.bc_smul, map_smulₛₗ, Finsupp.coe_finset_sum, Finset.sum_apply, Finsupp.smul_apply, smul_eq_mul, Matrix.mulVec, dotProduct, RingHom.id_apply]
   rw [← (finCongr (rankN D 0 (Nat.zero_le _))).sum_comp]
   simp only [Equiv.symm_apply_apply]
   apply Finset.sum_congr rfl
   intro k _
   first
     | ring1
-    | (simp only [RingHom.id_apply]; ring1)
-    | (rw [mul_comm]; rfl)
-    | done
 
 def Ymat (v : InfinitePlace D.what₂.LL) (c : (D.mem u).C.cls 0) (τ : D.what₂.Tau) :
     Matrix (Fin (D.R.N 0)) (Fin (D.R.N 0)) ℂ :=
@@ -134,8 +120,6 @@ theorem maj_bc (v : InfinitePlace D.what₂.LL) (c : (D.mem u).C.cls 0) (τ : D.
   simp only [fcoord_bc]
   first
     | rfl
-    | simp [dotProduct]
-    | simp [Matrix.dotProduct]
 
 theorem gram_Y (v : InfinitePlace D.what₂.LL) (c : (D.mem u).C.cls 0) (τ : D.what₂.Tau) :
     (Ymat B v c τ)ᴴ * Ymat B v c τ = (gramN D 0 (Nat.zero_le _)).map (v.embedding.comp (B.rho τ)) := by

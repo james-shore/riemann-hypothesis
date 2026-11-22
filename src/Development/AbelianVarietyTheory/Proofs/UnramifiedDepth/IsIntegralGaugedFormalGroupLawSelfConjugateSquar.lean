@@ -201,7 +201,7 @@ theorem subst_hCol {a : Fin 2 × (Fin 2 × Fin dd) → MvPowerSeries τ C} (ha :
 
 theorem map_self (f : MvPowerSeries σ C) : MvPowerSeries.map (algebraMap C C) f = f := by
   ext n
-  simp [coeff_map]
+  simp
 
 end Series
 

@@ -741,7 +741,7 @@ theorem C_line_hasDerivAt {f : E → F} {y v : E} {ζ : ℂ} (h : Differentiable
 theorem C_norm_fderiv_le {f : E → F} {y : E} {δ M : ℝ} (hδ : 0 < δ)
     (hf : DifferentiableOn ℂ f (ball y δ)) (hM : ∀ z ∈ ball y δ, ‖f z‖ ≤ M) :
     ‖fderiv ℂ f y‖ ≤ M / δ := by
-  first | exact Bl.general_b_fact_second_bis_form.goal1 .. | (apply Bl.general_b_fact_second_bis_form.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second_bis_form.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_second_bis_form.goal1 .. | (apply Bl.general_b_fact_second_bis_form.goal1 <;> assumption)
 
 theorem C_continuousOn_fderiv [FiniteDimensional ℂ E] {U : Set E} (hU : IsOpen U) {f : E → F}
     (hf : DifferentiableOn ℂ f U) : ContinuousOn (fderiv ℂ f) U := by

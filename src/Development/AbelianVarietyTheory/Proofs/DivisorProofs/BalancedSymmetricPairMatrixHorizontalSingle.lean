@@ -56,7 +56,7 @@ theorem symPair_entry {R : Type} [CommRing R] {n : ℕ} (e : (Σ τ : E →+* �
         rfl
       · intro h4
         have h5 := (Sigma.mk.inj_iff.1 h4).2
-        simp only [heq_iff_eq, Prod.mk.injEq] at h5
+        simp only [heq_iff_eq] at h5
         obtain ⟨rfl, rfl⟩ := h5
         exact ⟨rfl, rfl⟩
     exact if_congr key rfl rfl

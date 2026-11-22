@@ -130,10 +130,6 @@ theorem exists_teich [IsAlgClosed C] (hv : v.Integers R) (hpv : v (p : C) < 1) (
           (Polynomial.splits_iff_card_roots.mp (IsAlgClosed.splits (Polynomial.X ^ p - Polynomial.X : Polynomial C)))
        rw [hmon.leadingCoeff, map_one, one_mul] at hc
        exact hc.symm)
-    | (have hc := Polynomial.C_leadingCoeff_mul_prod_multiset_X_sub_C
-          (IsAlgClosed.card_roots_eq_natDegree (k := C) (p := Polynomial.X ^ p - Polynomial.X))
-       rw [hmon.leadingCoeff, map_one, one_mul] at hc
-       exact hc.symm)
   have heval : (n : C) ^ p - n =
       ((Polynomial.X ^ p - Polynomial.X : Polynomial C).roots.map (fun a => (n : C) - a)).prod := by
     have := congrArg (Polynomial.eval (n : C)) heq
@@ -172,7 +168,7 @@ theorem exists_teichChar [IsAlgClosed C] (hv : v.Integers R) (hpv : v (p : C) < 
       have hd : (p : ℤ) ∣ (((a * b).val : ℤ) - (a.val : ℤ) * (b.val : ℤ)) := by
         rw [← ZMod.intCast_zmod_eq_zero_iff_dvd]
         push_cast
-        simp [ZMod.natCast_zmod_val]
+        simp
       have := v_intCast_lt_one_of_dvd hv hpv hd
       push_cast at this
       exact this

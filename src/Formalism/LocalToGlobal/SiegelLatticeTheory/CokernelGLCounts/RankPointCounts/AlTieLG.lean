@@ -211,7 +211,6 @@ theorem mem_OOv (x : K) :
       x = algebraMap R K a * (algebraMap R K s)⁻¹ := by
   first
   | exact Iff.rfl
-  | exact Localization.subalgebra.mem_range_mapToFractionRing_iff_ofField K _ _ (Localization v.asIdeal.primeCompl) x
 
 theorem alg_ne_zero {s : R} (hs : s ∉ v.asIdeal) : algebraMap R K s ≠ 0 := by
   intro h0

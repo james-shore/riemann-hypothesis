@@ -93,7 +93,7 @@ theorem hasSum_heckeOne (k : ℕ) {p : ℕ} (hp : 0 < p) {f : ℍ → ℂ} {a : 
         simp only [Function.comp_apply]
         rw [if_pos (dvd_mul_right p m), Nat.mul_div_cancel_left m hp, pow_mul]
         congr 2
-        simp only [UpperHalfPlane.coe_mk, Function.Periodic.qParam, ← Complex.exp_nat_mul]
+        simp only [Function.Periodic.qParam, ← Complex.exp_nat_mul]
         congr 1
         push_cast
         ring

@@ -110,7 +110,7 @@ def quotPowSCMap (n : ℕ) : quotPowSC I F (n + 1) ⟶ quotPowSC I F n where
 lemma formalδ_naturality (n : ℕ) (x : Sheaf.H.{u} (modulesAb (quotPow I F (n + 1))) q) :
     formalδ I F q n (formalτE I F q n x) =
       H.linearMap A (idealPowSucc I F (n + 1)) (q + 1) (formalδ I F q (n + 1) x) := by
-  simp only [formalδ, formalτE, H.δLinear_apply, H.linearMap_apply]
+  simp only [formalδ, formalτE, H.linearMap_apply]
   exact H.δ_naturality (shortExact_abSC_quotPow I F (n + 1)) (shortExact_abSC_quotPow I F n)
     (abSCHom (quotPowSCMap I F n)) q (q + 1) rfl x
 

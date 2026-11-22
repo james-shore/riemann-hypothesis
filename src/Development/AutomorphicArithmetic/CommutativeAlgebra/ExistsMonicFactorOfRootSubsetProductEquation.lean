@@ -158,8 +158,7 @@ private lemma Ph_map {A S : Type} [CommRing A] [CommRing S] [Algebra A S] (N m :
         C (algebraMap A S c' * ∏ J' ∈ (Finset.powersetCard m (Finset.univ : Finset (Fin N))).erase J,
             (algebraMap A S α - ∏ i ∈ J', x i)) * ∏ i ∈ f J, (X - C (x i)) := by
   unfold Ph Wt
-  simp [Polynomial.map_sum, Polynomial.map_prod, map_prod, map_sub, MvPolynomial.aeval_X,
-    MvPolynomial.aeval_C]
+  simp [Polynomial.map_sum, Polynomial.map_prod, map_prod, map_sub, MvPolynomial.aeval_X]
 
 private lemma coeff_sum {S ι : Type} [CommRing S] [Nontrivial S] {N : ℕ} (Λ : Finset ι)
     (ε : ι → S) (s : ι → Finset (Fin N)) (x : Fin N → S) (d : ℕ)

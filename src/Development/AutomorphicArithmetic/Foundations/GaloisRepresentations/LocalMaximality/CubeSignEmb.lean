@@ -41,8 +41,8 @@ private theorem ring_core {S κ : Type} [CommRing S] [LinearOrder κ] {p : ℕ} 
     have h2 : (A.updateCol 0 fun k => ∑ i, (Fin.cons 0 f : Fin (p + 1) → S) i • A k i) = A := by
       ext a b
       refine Fin.cases ?_ (fun b => ?_) b
-      · simp [A, Matrix.updateCol_apply, Fin.sum_univ_succ, mul_comm]
-      · simp [A, Matrix.updateCol_apply, Fin.succ_ne_zero]
+      · simp [A, Fin.sum_univ_succ, mul_comm]
+      · simp [A, Fin.succ_ne_zero]
     rw [h2] at h1
     simpa using h1
   have ht : t = Finset.univ.map e.toEmbedding := by

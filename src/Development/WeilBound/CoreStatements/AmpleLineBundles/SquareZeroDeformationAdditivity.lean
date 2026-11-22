@@ -30,7 +30,7 @@ private theorem spec_map_val_comp_fromSpec_eq {X : Scheme} {B : Type} [CommRing 
   simp only [val, CommRingCat.ofHom_hom, Spec.map_comp, Category.assoc,
     IsAffineOpen.SpecMap_appLE_fromSpec z hW (isAffineOpen_top _) h, IsAffineOpen.fromSpec_top,
     Scheme.isoSpec_Spec]
-  simp [← Spec.map_comp]
+  simp
 
 private theorem cover_of_spMap_comp_cover_of_square_zero_kernel {X : Scheme} {R R' : Type} [CommRing R] [CommRing R'] (g : R →+* R')
     (hg : Function.Surjective g) (hk : ∀ r, g r = 0 → r * r = 0) (z : Sp R ⟶ X) (V : X.Opens)

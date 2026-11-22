@@ -141,7 +141,7 @@ theorem leviForm_log_herm : ∀ (n : ℕ) (B : Type) [Fintype B] [DecidableEq B]
   let M : (B → ℂ) →L[ℂ] V n :=
     ∑ a, (ContinuousLinearMap.proj a : (B → ℂ) →L[ℂ] ℂ).smulRight (coordVec (e a))
   have hM : ∀ t, M t = ∑ a, t a • coordVec (e a) := fun t => by
-    simp [M, ContinuousLinearMap.sum_apply]
+    simp [M]
   have hM1 : ∀ a, M (Pi.single a 1) = coordVec (e a) := fun a => by
     rw [hM]; simp [Pi.single_apply, ite_smul]
   have hφ : HasFDerivAt (fun t => z + M t) M 0 := M.hasFDerivAt.const_add z

@@ -15,8 +15,6 @@ private lemma mm_zero_lemma : V.MM (0 : C) := by
   simp only [VF.MM, AddValuation.map_zero]
   first
     | exact WithTop.coe_lt_top 0
-    | exact WithTop.zero_lt_top
-    | simp
 
 private lemma ge0_zero_lemma_2 : V.Ge 0 (0 : C) := by
   simp only [VF.Ge, AddValuation.map_zero]
@@ -101,7 +99,6 @@ theorem root_one {ζ : C} (hζ : ζ ^ V.l = 1) : V.MM (ζ - 1) := by
     rw [AddValuation.map_pow, ← hr]
     first
       | rw [← WithTop.coe_nsmul, nsmul_eq_mul]
-      | (norm_cast; simp [nsmul_eq_mul])
   have hbin : ∑ m ∈ Finset.range (l' + 1 + 1), (ζ - 1) ^ m * 1 ^ (l' + 1 - m) * ((l' + 1).choose m : C) = 1 := by
     rw [← add_pow, sub_add_cancel, hζ]
   rw [Finset.sum_range_succ, Finset.sum_range_succ'] at hbin
@@ -163,8 +160,6 @@ theorem rootsProd : ∀ (C : Type) [Field C] (V : VF C) (ζ : C), ζ ^ V.l = 1 �
     intro k μ
     first
       | exact MvPowerSeries.coeff_rescale _ _ _
-      | rw [MvPowerSeries.coeff_rescale]
-      | simp [MvPowerSeries.coeff_rescale]
   have hE : ∀ (k : ℕ) (μ : Fin 2 →₀ ℕ), V.MM (MvPowerSeries.coeff μ
       (MvPowerSeries.rescale (fun i => if i = j then ζ ^ k else 1) f - f)) := by
     intro k μ

@@ -102,7 +102,7 @@ theorem brp_lcvInf_std (n : ℕ) :
     rw [Finset.sum_eq_single a]
     · by_cases h : a = c
       · subst h; simp
-      · simp [Pi.single_apply, Matrix.one_apply, h, Ne.symm h]
+      · simp [h]
     · intro b _ hb
       simp [Pi.single_apply, hb]
     · intro h; exact absurd (Finset.mem_univ _) h

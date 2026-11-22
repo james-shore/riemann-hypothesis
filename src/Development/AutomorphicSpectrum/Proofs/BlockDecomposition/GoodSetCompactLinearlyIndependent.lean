@@ -63,7 +63,7 @@ lemma linIndep_iff (κ : K ≃+* (W → ℂ)) {n M : ℕ} (X : Fin n → Fin M �
         RingEquiv.apply_symm_apply, Pi.zero_apply, map_zero, Finset.sum_apply, Pi.mul_apply]
       by_cases h : w' = w
       · subst h; simpa using this
-      · simp [Pi.single_apply, h])
+      · simp [h])
     have := congrFun (congrArg κ (key b)) w
     simpa using this
   · intro h

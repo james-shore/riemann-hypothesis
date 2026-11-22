@@ -65,7 +65,7 @@ theorem ipT_herm (w w' : ⨂[ℂ] i, E i) : ipT w w' = conj (ipT w' w) := by
     induction w' using PiTensorProduct.induction_on with
     | smul_tprod s b =>
       simp only [map_smul, map_smulₛₗ, LinearMap.smul_apply, ipT_tprod, smul_eq_mul, map_mul, map_prod, inner_conj_symm,
-        RingHomCompTriple.comp_apply, RingHom.id_apply, Complex.conj_conj]
+        RingHomCompTriple.comp_apply, RingHom.id_apply]
       ring
     | add x y hx hy => rw [map_add, hx, hy, map_add, LinearMap.add_apply, map_add]
   | add x y hx hy => simp [map_add, LinearMap.add_apply, hx, hy]
@@ -97,14 +97,14 @@ theorem ipT_pos_fd [∀ i, FiniteDimensional ℂ (E i)] (x : ⨂[ℂ] i, E i) (h
     intro p q
     simp only [B, Basis.piTensorProduct_apply, OrthonormalBasis.coe_toBasis, ipT_tprod]
     split_ifs with h
-    · subst h; simp [OrthonormalBasis.inner_eq_ite]
+    · subst h; simp
     · obtain ⟨i, hi⟩ := Function.ne_iff.mp h
-      exact Finset.prod_eq_zero (Finset.mem_univ i) (by simp [OrthonormalBasis.inner_eq_ite, Ne.symm hi])
+      exact Finset.prod_eq_zero (Finset.mem_univ i) (by simp [Ne.symm hi])
   set c := B.repr x
   have hsum : ipT x x = ∑ p, c p * conj (c p) := by
     conv_lhs => rw [← B.sum_repr x]
     simp only [map_sum, map_smul, map_smulₛₗ, LinearMap.sum_apply, LinearMap.smul_apply, hB, smul_eq_mul]
-    simp [Finset.mul_sum, c]
+    simp [c]
     exact Finset.sum_congr rfl (fun _ _ => mul_comm _ _)
   have hc : c ≠ 0 := by
     intro h; apply hx

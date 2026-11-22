@@ -33,7 +33,7 @@ theorem exists_linear_mod_sq {A : Type} [CommRing A] [Algebra ℂ A] {ι : Type}
         rw [Finset.sum_eq_single l]
         · simp
         · intro b _ hb
-          simp [Pi.single_apply, hb]
+          simp [hb]
         · simp
       rw [hs, sub_self]
       exact zero_mem _

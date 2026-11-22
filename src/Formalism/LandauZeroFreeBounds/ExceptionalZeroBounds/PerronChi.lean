@@ -24,7 +24,6 @@ lemma vonMangoldtCharRe_bound (n : ℕ) : |vonMangoldtCharRe χ n| ≤ 1 * Λ n 
   refine le_trans ?_ (DirichletCharacter.norm_le_one χ (n : ZMod q))
   first
   | exact Complex.abs_re_le_norm _
-  | exact Complex.abs_re_le_abs _
 
 lemma vonMangoldtCharIm_bound (n : ℕ) : |vonMangoldtCharIm χ n| ≤ 1 * Λ n := by
   unfold vonMangoldtCharIm
@@ -34,7 +33,6 @@ lemma vonMangoldtCharIm_bound (n : ℕ) : |vonMangoldtCharIm χ n| ≤ 1 * Λ n 
   refine le_trans ?_ (DirichletCharacter.norm_le_one χ (n : ZMod q))
   first
   | exact Complex.abs_im_le_norm _
-  | exact Complex.abs_im_le_abs _
 
 lemma vonMangoldtCharRe_zero : vonMangoldtCharRe χ 0 = 0 := by simp [vonMangoldtCharRe]
 
@@ -78,7 +76,6 @@ lemma lseries_summable_of_vonMangoldt_bound {a : ℕ → ℝ} (ha : ∀ n, |a n|
       simpa [Complex.norm_real, abs_of_nonneg h3] using h2
   first
   | exact Summable.of_norm_bounded hΛ.norm hb
-  | exact Summable.of_norm_bounded _ hΛ.norm hb
 
 lemma neg_log_deriv_eq_lseries_mul_vonMangoldt {w : ℂ} (hw : 1 < w.re) : negLD χ w = LSeries (↗χ * ↗Λ) w := by
   unfold negLD

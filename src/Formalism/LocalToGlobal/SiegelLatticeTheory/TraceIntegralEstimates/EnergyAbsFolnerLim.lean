@@ -99,18 +99,16 @@ theorem integral_inner_mul_inner_eq_norm_sq_div {μ : Measure G} [μ.IsMulLeftIn
       conj (((1 / d : ℝ) : ℂ) * ⟪W z, ((d : ℂ) * conj ⟪w, σ y w⟫_ℂ) • W (z * y)⟫_ℂ) := by
     intro y
     rw [hσ.2.1 z y, ContinuousLinearMap.mul_apply, hσ.2.2.1, inner_smul_right]
-    simp only [map_mul, Complex.conj_conj, Complex.conj_ofReal, inner_conj_symm]
+    simp only [map_mul, Complex.conj_ofReal, inner_conj_symm]
     push_cast
-    first | (field_simp; ring) | field_simp | ring
+    first | (field_simp) | field_simp
   simp_rw [hpt]
   have hself : ⟪W z, W z⟫_ℂ = ((‖W z‖ ^ 2 : ℝ) : ℂ) := by
     refine Complex.ext ?_ ?_
     · first
-        | simp [inner_self_eq_norm_sq]
-        | (rw [Complex.ofReal_re]; exact inner_self_eq_norm_sq (𝕜 := ℂ) (W z))
+        | simp
     · first
         | simp
-        | (rw [Complex.ofReal_im]; exact inner_self_im (𝕜 := ℂ) (W z))
   rw [integral_conj, integral_const_mul, integral_inner hint, heq, hself, ← Complex.ofReal_mul,
     Complex.conj_ofReal]
   congr 1
@@ -131,7 +129,6 @@ theorem Fk_value {μ : Measure G} [μ.IsMulLeftInvariant] {σ : G → (HH →L[�
       lintegral_prod _ ((measurable_one.indicator (hm hs)).aemeasurable)]
     first
       | rfl
-      | (simp only [Set.indicator_apply, Set.mem_preimage]; rfl)
   have hinner : ∀ z, ∫ y, Fk σ w W z y.1 y.2 ∂(ν.prod μS) = ((‖W z‖ ^ 2 / d : ℝ) : ℂ) := by
     intro z
     have hg := integral_inner_mul_inner_eq_norm_sq_div hσ hd hW z
@@ -143,6 +140,5 @@ theorem Fk_value {μ : Measure G} [μ.IsMulLeftInvariant] {σ : G → (HH →L[�
   refine (integral_congr_ae (ae_of_all _ fun z => hinner z)).trans ?_
   first
     | rw [integral_complex_ofReal, integral_div, integral_norm_sq_eq_one hWc hL2]
-    | rw [integral_ofReal, integral_div, integral_norm_sq_eq_one hWc hL2]
 
 end Formalism.L2.S.Pv.EnergyAbs

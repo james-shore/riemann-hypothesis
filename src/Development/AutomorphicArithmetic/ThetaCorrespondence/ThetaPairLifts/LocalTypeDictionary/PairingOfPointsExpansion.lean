@@ -94,13 +94,11 @@ theorem _root_.GlobalTheory.T.twisted_pairing_identity : _root_.GlobalTheory.Fun
     (fun X Y j hj k hk => by
       rcases j with _ | j
       · have := i2 (GlobalTheory.JetsOne.psiC_right ch a) X Y k hk
-        beta_reduce
         rw [Function.update_self, this]
       · exact congrArg _ (i1 X Y _ j.succ_pos hj k hk))
     (fun X Y j hj k hk => by
       rcases j with _ | j
       · have := h0 t a β hβ τ hτ y (psiC (ch.Psi a) (X 0)) X Y k hk
-        beta_reduce
         rw [Function.update_self, this]
       · exact congrArg _ (i3 X Y _ j.succ_pos hj k hk))
     (fun X Y k h1 hk => congrArg _ (i4 X Y k h1 hk))

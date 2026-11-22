@@ -14,7 +14,7 @@ variable {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E] [Algeb
 
 theorem dZ_conj_diag {n : ℕ} {ζ : ℂ} (h : ζ ≠ 0) (A D : Matrix (Fin n) (Fin n) ℂ) :
     dZ n ζ⁻¹ * Matrix.fromBlocks A 0 0 D * dZ n ζ = Matrix.fromBlocks A 0 0 D := by
-  simp [dZ, Matrix.fromBlocks_multiply, smul_smul, inv_mul_cancel₀ h, mul_inv_cancel₀ h]
+  simp [dZ, Matrix.fromBlocks_multiply, smul_smul, mul_inv_cancel₀ h]
 
 theorem mapStar_mulR {p q r : Type} [Fintype q] (A : Matrix p q ℂ) (B : Matrix q r ℂ) :
     (A * B).map star = A.map star * B.map star := by

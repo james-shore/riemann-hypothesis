@@ -34,7 +34,7 @@ theorem isFundamentalDomain_inf {G : Type} [Group G] [MeasurableSpace G] {μ : M
     refine ⟨⟨((h : Γ) : G)⁻¹, inv_mem hQ⟩, Set.mem_iUnion.2 ⟨(γ : Γ ⧸ Q'), ?_⟩⟩
     rw [himg, Set.mem_preimage]
     have e1 : ((rep (γ : Γ ⧸ Q') : Γ) : G)⁻¹ = (γ : G) * ((h : Γ) : G) := by
-      simp only [rep, inv_inv]
+      simp only [rep]
       have := congrArg (fun y : Γ => (y : G)) hh
       simpa using this
     rw [e1]
@@ -110,9 +110,9 @@ theorem measurable_mul_left (σ : E →ₐ[F] E) {n : ℕ} (J : Matrix (Fin n) (
   apply Continuous.subtype_mk
   rw [Units.continuous_iff]
   constructor
-  · simp only [Function.comp_def, Subgroup.coe_mul, Units.val_mul]
+  · simp only [Function.comp_def, Units.val_mul]
     exact continuous_const.matrix_mul (Units.continuous_val.comp continuous_subtype_val)
-  · simp only [Subgroup.coe_mul, mul_inv_rev, Units.val_mul]
+  · simp only [mul_inv_rev, Units.val_mul]
     exact (Units.continuous_coe_inv.comp continuous_subtype_val).matrix_mul continuous_const
 
 end GlobalTheory.QDom

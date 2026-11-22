@@ -63,7 +63,6 @@ theorem latD_smul {J : Matrix (Fin n) (Fin n) E} {Λ : Set (Fin n → E)} (hSD :
 theorem sigR_inclR (a : E) : sigR (Fv F v) σ (inclR (F := F) (Fv F v) a) = inclR (F := F) (Fv F v) (σ a) := by
   first
     | rfl
-    | simp [sigR, inclR]
 
 theorem hermitian_snd_projection (J : Matrix (Fin n) (Fin n) E) (x y : Fin n → Fv F v ⊗[F] E) :
     D.π₂ (hR (Fv F v) σ J x y) = c1 D x ⬝ᵥ (Mj D J *ᵥ c2 D y) := by

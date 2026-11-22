@@ -22,7 +22,7 @@ theorem gp_comp {X : Scheme.{0}} [IsIntegral X] {R : Type} [CommRing R] (p : X �
   rw [Scheme.Hom.comp_appTop, gp, Scheme.fromSpecStalk_appTop]
   rw [← cancel_epi (Scheme.ΓSpecIso (CommRingCat.of R)).inv]
   rw [← cancel_mono (Scheme.ΓSpecIso (CommRingCat.of X.functionField)).hom]
-  simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  simp only [Category.assoc]
   rw [Scheme.ΓSpecIso_naturality]
   ext r
   simp [Desc.cst, Cartier.fnOf]

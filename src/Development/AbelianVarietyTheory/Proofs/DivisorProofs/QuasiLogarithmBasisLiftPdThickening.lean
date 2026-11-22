@@ -176,7 +176,7 @@ theorem GlobalTheory.basis_lift : ∀ (p : ℕ) [Fact p.Prime] (B O Q : Type) [C
       · intro α
         obtain ⟨a, -, ha⟩ := hS α
         obtain ⟨c, -, hc⟩ := hsF (Fs K) α
-        exact ⟨a + p ^ K * c, trivial, by simp [coeff_smul, ha, hc, map_add, map_mul, map_pow, map_natCast]⟩
+        exact ⟨a + p ^ K * c, trivial, by simp [ha, hc, map_add, map_mul, map_pow, map_natCast]⟩
       · have h1 : x (K + 1) = x K + fun i => (p : B) ^ K * bF (Fs K) i := by
           funext i; simp [hx, Finset.sum_range_succ]
         have h2 : (Fs (K + 1)).1 = gF (Fs K) := by rw [hFs]

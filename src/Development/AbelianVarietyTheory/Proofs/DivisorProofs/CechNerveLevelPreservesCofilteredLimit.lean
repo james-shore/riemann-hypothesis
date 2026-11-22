@@ -32,7 +32,7 @@ theorem cech_level_limit (I : Type) [SmallCategory I] [IsCofiltered I] (A : I �
               intro i i' f
               have h := s.w f
               simp only [Functor.const_obj_obj, Functor.const_obj_map, Category.id_comp,
-                Functor.comp_obj, Arrow.leftFunc_obj, Functor.comp_map, Arrow.leftFunc_map] at h ⊢
+                Functor.comp_obj, Functor.comp_map] at h ⊢
               rw [← h]
               exact (Category.assoc _ _ _).trans
                 ((congrArg (s.π.app i ≫ ·) (cechLev_π (A.map f) k j)).trans (Category.assoc _ _ _).symm) } }

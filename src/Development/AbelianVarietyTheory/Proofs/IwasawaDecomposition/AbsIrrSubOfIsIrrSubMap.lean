@@ -85,7 +85,7 @@ theorem span_restrict_eq_top_of_isIrrSub_map {k Γ L : Type} [Field k] [Group Γ
       apply Submodule.subset_span
       refine ⟨Li (Pi.single j 1), (e.symm (Pi.single j 1)).2, ?_⟩
       funext i
-      simp [← hBv, Matrix.mulVec_single_one]
+      simp [← hBv]
   rw [hspan] at habs
   have hirr : IsIrrSub (mapRep f σ) ⊤ := by
     refine GlobalTheory.BurnsideSub.isIrrSub_top_of_intertwine (mapRep f ρ) (mapRep f σ) (B.map f)

@@ -127,7 +127,7 @@ theorem core_expand {K B : Type} [Field K] [CommRing B] [Algebra K B] {I : Ideal
   have h1 : (fun i => ∑ t, n i t ⊗ₜ[K] e i (b t)) =
       ∑ t, ∑ i, (Pi.single i (n i t ⊗ₜ[K] e i (b t)) : ∀ i, S.N i ⊗[K] M i) := by
     funext i
-    simp only [Finset.sum_apply, Pi.single_apply]
+    simp only [Finset.sum_apply]
     simp
   rw [h1, map_sum]
   simp only [map_sum, hG, hf, Finset.sum_smul]

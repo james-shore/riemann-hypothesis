@@ -130,8 +130,6 @@ theorem adjCo_actO (φ : SplitProj D v) (S T : HSp D) (BS : GL (Fin S.rank) (Fv 
       Formalism.L2.Theta.mt T h⁻¹ * t * Formalism.L2.Theta.mt S g := by
     first
     | rfl
-    | (simp only [actO, _root_.inv_inv]; done)
-    | simp [actO]
   unfold adjCo
   rw [hact, key, map_mul_conj (rdA φ) BS BT (Formalism.L2.Theta.mt S g⁻¹) (Formalism.L2.Theta.mt T h) _ _ rfl, grpCo_inv,
     grpCo_val, grpCo_val]

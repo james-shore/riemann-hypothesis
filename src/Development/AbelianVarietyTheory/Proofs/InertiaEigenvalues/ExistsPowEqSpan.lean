@@ -244,10 +244,6 @@ theorem unitOff_val : ∀ (L : Type) [Field L] [NumberField L] (χ : Formalism.L
       (∏ᶠ (w : HeightOneSpectrum (𝓞 L)) (_ : w ∉ S), χ.val w ^ ordF w k) = 1 := by
     first
       | exact GlobalTheory.HeckeProduct.productRule χ S hS k
-      | exact hecke_product_rule L χ S hS k
-      | exact PI.HeckeProdW.productRule χ S hS k
-      | exact GlobalTheory.TypeValues.productRule χ S hS k
-      | exact GlobalTheory.HeckeProduct.hchar_productRule L χ S hS k
   rw [hfp, hloc, mul_one] at hPR
   obtain ⟨N, hN⟩ : ∃ N : ℕ, ordF v k = N := ⟨(ordF v k).toNat, (Int.toNat_of_nonneg hordv.le).symm⟩
   have hNpos : 0 < N := by omega

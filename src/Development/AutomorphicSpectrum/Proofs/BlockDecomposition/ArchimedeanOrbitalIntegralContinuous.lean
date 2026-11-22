@@ -17,7 +17,6 @@ theorem continuous_phaseM_X {W : Type} [Fintype W] {n M : ℕ}
   have h2 : Continuous fun X : W → Fin n → Fin M → ℂ => X w a j := by fun_prop
   first
     | exact ((Complex.continuous_conj.comp h1).mul continuous_const).mul (by fun_prop)
-    | exact ((Complex.continuous_conj.comp h2).mul continuous_const).mul (by fun_prop)
 
 theorem continuous_phaseM_b {W : Type} [Fintype W] {n M : ℕ}
     (J : W → Matrix (Fin M) (Fin M) ℂ) (X : W → Fin n → Fin M → ℂ) :

@@ -320,7 +320,7 @@ theorem UpperTheory.V.Pa.B2.dualBound :
         Nat.card_le_card_of_injective Φ hinj
     _ = (Nat.card {y : ZMod l // Nat.card x.K • y = 0} ^ Nat.card x.K) ^ (n * n * s) := by
         rw [Nat.card_fun, Nat.card_fun]
-        simp [Nat.card_prod, mul_assoc]
+        simp [mul_assoc]
     _ ≤ (Nat.card x.K ^ Nat.card x.K) ^ (n * n * s) :=
         Nat.pow_le_pow_left (Nat.pow_le_pow_left (card_zmod_nsmul_eq_zero_le l _ hK) _) _
     _ = Nat.card x.K ^ (Nat.card x.K * (n * n * s)) := by rw [← pow_mul]

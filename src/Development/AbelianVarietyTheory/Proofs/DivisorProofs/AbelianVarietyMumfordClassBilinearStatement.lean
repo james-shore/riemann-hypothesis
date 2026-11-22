@@ -8,4 +8,4 @@ open GlobalTheory GlobalTheory.HTLat GlobalTheory.Published.AbVarRed GlobalTheor
 attribute [local instance] Over.cartesianMonoidalCategory
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.abelianVarietyMumfordClass_bilinear : ∀ (K : Type) [Field K] (A : AbVar K) (c : Pic A.X.left) (Y : Over (Sp K)) (x y y' : Y ⟶ A.X) (n : ℤ), AbVar.lam c x (y * y') = AbVar.lam c x y + AbVar.lam c x y' ∧ AbVar.lam c 1 y = 0 ∧ AbVar.lam c x 1 = 0 ∧ AbVar.lam c (x ^ n) y = n • AbVar.lam c x y ∧ AbVar.lam c x (y ^ n) = n • AbVar.lam c x y := by
-  first | (exact @GlobalTheory.AV.AbVar.lam_bilinear) | (exact GlobalTheory.AV.AbVar.lam_bilinear) | (intros; apply GlobalTheory.AV.AbVar.lam_bilinear  <;> assumption)
+  first | (exact @GlobalTheory.AV.AbVar.lam_bilinear)

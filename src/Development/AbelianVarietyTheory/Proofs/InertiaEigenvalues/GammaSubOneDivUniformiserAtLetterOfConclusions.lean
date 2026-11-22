@@ -36,7 +36,7 @@ theorem letE_mul_self (i : ZMod n) : (letE i : LetA O n) * letE i = letE i := by
   funext j
   by_cases hj : j = i
   · subst hj; simp [letE]
-  · simp [letE, Pi.single_apply, hj]
+  · simp [letE, hj]
 
 theorem letter_of_qp_pow_mem (W : LocWach PD LL O v n)
     (hqu : IsUnit (algebraMap (LetA O n) W.EE (qp W))) (T : LocLat G Qp LL O) (i : ZMod n) (Y : ℕ)

@@ -80,7 +80,7 @@ theorem UpperTheory.V.Z.Sym.Sig.fixG : UpperTheory.V.Z.Sym.Sig.FixG := by
       simp only [dg, ← map_mul]
       congr 1
       funext i
-      fin_cases i <;> simp [div_eq_mul_inv, mul_comm]
+      fin_cases i <;> simp [div_eq_mul_inv]
     have A : g * th' k g = y⁻¹ * dg ![x₁ / z₁, 1, (x₁ / z₁)⁻¹] * y := by
       have : g * th' k g = y⁻¹ * (dg ![x₁, y₁, z₁] * th' k (dg ![x₁, y₁, z₁])) * y := by
         rw [hg_def, map_mul, map_mul, map_inv, Pres.invol hF.1]
@@ -97,7 +97,7 @@ theorem UpperTheory.V.Z.Sym.Sig.fixG : UpperTheory.V.Z.Sym.Sig.FixG := by
       simp only [dg, ← map_mul]
       congr 1
       funext i
-      fin_cases i <;> simp [hp, div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc]
+      fin_cases i <;> simp [hp, div_eq_mul_inv, mul_comm, mul_assoc]
     have B : (j⁻¹ * g * th' k j) * th' k (j⁻¹ * g * th' k j) = j⁻¹ * (g * th' k g) * j := by
       simp only [map_mul, map_inv, Pres.invol hF.1]
       group

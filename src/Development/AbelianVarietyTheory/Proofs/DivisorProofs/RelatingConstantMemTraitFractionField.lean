@@ -18,7 +18,7 @@ theorem mem_range_of_tmul_eq {K F O : Type} [Field K] [Field F] [Algebra K F] [A
     {t u : O} {c : F} (ht : t ≠ 0) (h : (1 : F) ⊗ₜ[K] t = c ⊗ₜ[K] u) : ∃ x : K, algebraMap K F x = c := by
   obtain ⟨l, hl⟩ := Module.Projective.exists_dual_eq_one K ht
   have e := congrArg (fun v => TensorProduct.rid K F (LinearMap.lTensor F l v)) h
-  simp only [LinearMap.lTensor_tmul, TensorProduct.rid_tmul, hl, one_smul, Algebra.smul_def] at e
+  simp only [LinearMap.lTensor_tmul, TensorProduct.rid_tmul, hl, Algebra.smul_def] at e
   refine ⟨(l u)⁻¹, ?_⟩
   rw [map_inv₀]
   exact inv_eq_of_mul_eq_one_right (by simpa using e.symm)
@@ -102,7 +102,7 @@ theorem main : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing R], Base R 
     simp only [g, Category.assoc] at this a₁ a₂
     refine a₁.symm.trans (this.trans (Eq.trans (congrArg₂ (· * ·) a₃ a₂) ?_))
     refine (gs_mul _ y ⊤ trivial _ _).symm.trans (congrArg _ ?_)
-    simp only [u, sval, Category.assoc]
+    simp only [u, sval]
     exact (map_mul _ _ _).symm
   refine mem_range_of_tmul_eq (O := O) (t := t) (u := u) hne (key.trans ?_)
   exact (Algebra.TensorProduct.tmul_mul_tmul c 1 1 u).trans (by rw [_root_.mul_one, _root_.one_mul])

@@ -103,7 +103,7 @@ theorem exists_idealSheaf_comap_uValThru : ∀ (E : Type) [Field E] [NumberField
     have e : Y.pt ≫ πY ≫ X₁.π = spMap (AlgHom.id X₁.o₁ X₁.Ω₁).toRingHom ≫ spMap (ratHull X₁.S.R).val.toRingHom ≫ X₁.u ≫ C.i := by
       rw [← Category.assoc, hHom, Category.assoc, X₁.comp]
     have e' := congrArg (fun h : Sp X₁.Ω₁ ⟶ C.Z => h (closedPoint X₁.Ω₁)) e
-    simp only [Scheme.Hom.comp_apply] at e'
+    simp only at e'
     have hr : X₁.π (πY (Y.pt (closedPoint X₁.Ω₁))) ∈ Set.range C.i := ⟨_, e'.symm⟩
     refine ⟨Y.pt (closedPoint X₁.Ω₁), ?_, ?_⟩
     · show (πY ≫ X₁.π) _ ∈ (W : Set C.Z)

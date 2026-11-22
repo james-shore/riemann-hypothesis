@@ -187,14 +187,14 @@ theorem UpperTheory.V.Pa.Det.w1sAct :
       ((1 : Matrix (Fin n) (Fin n) (DD X k.g)) + DD.epM K).map DD.eta = 0 := by
     refine ⟨?_, fun c => ?_, fun c => ?_, ?_⟩ <;> funext i j <;> by_cases h : i = j <;>
       simp [Matrix.one_apply, h, DD.epM, DD.add_a, DD.add_ep, DD.add_ep', DD.add_eta, DD.one_a, DD.one_ep,
-        DD.one_ep', DD.one_eta, DD.zero_a, DD.zero_ep, DD.zero_ep', DD.zero_eta]
+        DD.one_ep', DD.one_eta]
   have hM : ((1 : Matrix (Fin n) (Fin n) (DD X k.g)) - DD.epM K).map DD.a = 1 ∧
       (∀ c, ((1 : Matrix (Fin n) (Fin n) (DD X k.g)) - DD.epM K).map (fun d => d.ep c) = -K c) ∧
       (∀ c, ((1 : Matrix (Fin n) (Fin n) (DD X k.g)) - DD.epM K).map (fun d => d.ep' c) = 0) ∧
       ((1 : Matrix (Fin n) (Fin n) (DD X k.g)) - DD.epM K).map DD.eta = 0 := by
     refine ⟨?_, fun c => ?_, fun c => ?_, ?_⟩ <;> funext i j <;> by_cases h : i = j <;>
       simp [sub_eq_add_neg, Matrix.one_apply, h, DD.epM, DD.add_a, DD.add_ep, DD.add_ep', DD.add_eta, DD.one_a,
-        DD.one_ep, DD.one_ep', DD.one_eta, DD.zero_a, DD.zero_ep, DD.zero_ep', DD.zero_eta, DD.neg_a, DD.neg_ep,
+        DD.one_ep, DD.one_ep', DD.one_eta, DD.neg_a, DD.neg_ep,
         DD.neg_ep', DD.neg_eta]
   have htr : ∀ M : Matrix (Fin n) (Fin n) (DD X k.g), M.trace.eta = (M.map DD.eta).trace := by
     intro M
@@ -212,13 +212,13 @@ theorem UpperTheory.V.Pa.Det.w1sAct :
     have hY : ∀ c, Z.map (fun d => d.ep' c) ∈ Od x.A X n x.a := hW.2
     have hK : ∀ c, K c ∈ Od x.A X n x.a := fun c => (map_algebraMap_mem_ev_of_mem_and_mem_od_of_mem _).2 ((k.mem c).1 g)
     apply mem_pairedDualFirstOrderDualMatrixSpace_of_mem_od_of_mem_ev
-    · simp only [matrix_map_dd_a_mul, matrix_map_dd_ep_mul, matrix_map_dd_ep'_mul, matrix_map_dd_eta_mul, hCa, hCe, hCe', hCt, hCa2, hCe2, hCe'2, hCt2, hPa, hPe, hPe', hPt, hMa, hMe, hMe', hMt, hZa, hZe]
+    · simp only [matrix_map_dd_a_mul, hCa, hCa2, hPa, hMa, hZa]
       simp
     · intro c
-      simp only [matrix_map_dd_a_mul, matrix_map_dd_ep_mul, matrix_map_dd_ep'_mul, matrix_map_dd_eta_mul, hCa, hCe, hCe', hCt, hCa2, hCe2, hCe'2, hCt2, hPa, hPe, hPe', hPt, hMa, hMe, hMe', hMt, hZa, hZe]
+      simp only [matrix_map_dd_a_mul, matrix_map_dd_ep_mul, hCa, hCe, hCa2, hCe2, hPa, hPe, hMa, hMe, hZa, hZe]
       simp
     · intro c
-      simp only [matrix_map_dd_a_mul, matrix_map_dd_ep_mul, matrix_map_dd_ep'_mul, matrix_map_dd_eta_mul, hCa, hCe, hCe', hCt, hCa2, hCe2, hCe'2, hCt2, hPa, hPe, hPe', hPt, hMa, hMe, hMe', hMt, hZa, hZe]
+      simp only [matrix_map_dd_a_mul, matrix_map_dd_ep'_mul, hCa, hCe', hCa2, hCe'2, hPa, hPe', hMa, hMe', hZa]
       simp
       exact (ev_od_graded_mul_mem _ _).2.2.1 ((ev_od_graded_mul_mem _ _).2.1 hρ (hY c)) hρ'
     · simp only [matrix_map_dd_a_mul, matrix_map_dd_ep_mul, matrix_map_dd_ep'_mul, matrix_map_dd_eta_mul, hCa, hCe, hCe', hCt, hCa2, hCe2, hCe'2, hCt2, hPa, hPe, hPe', hPt, hMa, hMe, hMe', hMt, hZa, hZe]
@@ -227,15 +227,14 @@ theorem UpperTheory.V.Pa.Det.w1sAct :
         ((ev_od_graded_mul_mem _ _).1 (add_mem ((ev_od_graded_mul_mem _ _).1 hρ hY0)
           (sum_mem fun c _ => (ev_od_graded_mul_mem _ _).2.2.2 ((ev_od_graded_mul_mem _ _).2.2.1 (hK c) hρ) (hY c))) hρ')
         (neg_mem (sum_mem fun c _ => (ev_od_graded_mul_mem _ _).2.2.2 ((ev_od_graded_mul_mem _ _).2.1 hρ (hY c)) ((ev_od_graded_mul_mem _ _).2.1 hρ' (hK c))))
-  · simp only [ep'M, matrix_map_dd_a_mul, matrix_map_dd_ep_mul, matrix_map_dd_ep'_mul, matrix_map_dd_eta_mul, hCa, hCe, hCe', hCt, hCa2, hCe2, hCe'2, hCt2, hPa, hPe,
-      hPe', hPt, hMa, hMe, hMe', hMt, hZa, hZe]
+  · simp only [ep'M, matrix_map_dd_a_mul, matrix_map_dd_ep'_mul, hCa, hCe', hCa2, hCe'2, hPa, hPe', hMa, hMe', hZa]
     simp
   · simp only [etaM, ep'M, matrix_map_dd_a_mul, matrix_map_dd_ep_mul, matrix_map_dd_ep'_mul, matrix_map_dd_eta_mul, hCa, hCe, hCe', hCt, hCa2, hCe2, hCe'2, hCt2, hPa, hPe,
       hPe', hPt, hMa, hMe, hMe', hMt, hZa, hZe]
     simp
-    simp only [hKdef, Matrix.add_mul, Finset.sum_mul, Matrix.mul_assoc, Finset.sum_sub_distrib]
+    simp only [hKdef, Matrix.add_mul, Finset.sum_mul, Matrix.mul_assoc]
     abel
-  · simp only [etaM, ep'M, matrix_map_dd_a_mul, matrix_map_dd_ep_mul, matrix_map_dd_ep'_mul, matrix_map_dd_eta_mul, hCa, hCe, hCe', hCt, hCa2, hCe2, hCe'2, hCt2, hPa, hPe,
-      hPe', hPt, hMa, hMe, hMe', hMt, hZa, hZe]
+  · simp only [etaM, ep'M, matrix_map_dd_a_mul, matrix_map_dd_ep_mul, matrix_map_dd_ep'_mul, matrix_map_dd_eta_mul, hCa, hCe, hCe', hCt, hPa, hPe,
+      hPe', hPt, hZa, hZe]
     simp
     simp only [hKdef, Matrix.mul_assoc]

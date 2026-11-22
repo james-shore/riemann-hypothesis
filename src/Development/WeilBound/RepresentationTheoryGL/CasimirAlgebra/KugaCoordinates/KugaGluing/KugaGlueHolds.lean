@@ -40,7 +40,7 @@ theorem kugaGlue_holds : KugaGlue := by
     have hs := hreal (toL X.1)
     rw [LinearMap.comp_apply, show kgH X = toL X.1 from rfl, kgR_apply]
     simp only [LinearMap.add_apply, LinearMap.smul_apply, Module.End.one_apply, map_add, map_smul,
-      LinearMap.map_smulₛₗ, smul_eq_mul, map_mul, map_neg, Complex.conj_ofReal, map_div₀, map_ofNat, hs]
+      LinearMap.map_smulₛₗ, smul_eq_mul, map_mul, Complex.conj_ofReal, map_div₀, map_ofNat, hs]
     linear_combination h2
 
   have hbrA : ∀ i j, (kgA π Ξ σ).comp kgH (fr i) * (kgA π Ξ σ).comp kgH (fr j) -

@@ -27,7 +27,7 @@ private theorem common_eigenvector_commuting_family {T D : Type}
       let E : Submodule ℂ D := W ⊓ _root_.Module.End.eigenspace (φ t) c
       have hE : ∀ y, y ∈ E ↔ y ∈ W ∧ φ t y = c • y := by
         intro y
-        simp [E, Submodule.mem_inf, _root_.Module.End.mem_eigenspace_iff]
+        simp [E, Submodule.mem_inf]
       have hEbot : E ≠ ⊥ := by
         intro h
         have : (v : D) ∈ E := (hE _).2 ⟨v.2, hv1⟩

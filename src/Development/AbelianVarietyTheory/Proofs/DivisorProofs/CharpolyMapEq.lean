@@ -106,7 +106,7 @@ theorem charpoly_map_eq : ∀ (p : ℕ) [Fact p.Prime] (T : Theory p) (k : Type)
       rw [GlobalTheory.T.prod_aeval_padicRoots_charpoly_eq_det p (WittVector p k) (T.M G) ψ _ P R d hψ hP hd']
       have hQ : (charpoly f).map (Int.castRingHom ℚ_[p]) =
           ((charpoly f).map (Int.castRingHom ℚ)).map (algebraMap ℚ ℚ_[p]) := by
-        rw [Polynomial.map_map]; congr 1 <;> exact RingHom.ext_int _ _
+        rw [Polynomial.map_map]; congr 1
       have h2 := GlobalTheory.T.deg_aeval_end_eq_prod_aroots k A f (PadicAlgCl p) R
       rw [hQ, Polynomial.aroots_map]
       erw [← h2]
@@ -115,7 +115,7 @@ theorem charpoly_map_eq : ∀ (p : ℕ) [Fact p.Prime] (T : Theory p) (k : Type)
       rw [← PadicInt.padic_norm_e_of_padicInt]; push_cast; rfl
   have hP' : P = (charpoly f).map (Int.castRingHom ℤ_[p]) := by
     apply Polynomial.map_injective (algebraMap ℤ_[p] ℚ_[p]) (IsFractionRing.injective ℤ_[p] ℚ_[p])
-    rw [key, Polynomial.map_map]; congr 1 <;> exact RingHom.ext_int _ _
+    rw [key, Polynomial.map_map]; congr 1
   rw [← hP, hP', Polynomial.map_map]; congr 1 <;> exact RingHom.ext_int _ _
 
 end GlobalTheory.Dieu.CharpolyAV

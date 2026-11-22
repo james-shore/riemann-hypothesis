@@ -78,7 +78,7 @@ private theorem act_scalar (D : Dat F E) (w : (A E)ˣ) (a : A F) (ha : am E a = 
     intro i j
     rw [ha]
     fin_cases i <;> fin_cases j <;>
-      simp [Matrix.mul_apply, Fin.sum_univ_two, Matrix.GeneralLinearGroup.scalar, Matrix.scalar_apply,
+      simp [Matrix.mul_apply, Matrix.GeneralLinearGroup.scalar, Matrix.scalar_apply,
         Matrix.diagonal_apply] <;> ring
   funext i
   unfold Dat.act Dat.unherm

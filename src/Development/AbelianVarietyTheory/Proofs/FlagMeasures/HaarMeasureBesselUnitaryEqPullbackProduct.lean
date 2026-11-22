@@ -128,7 +128,7 @@ theorem trI_eq (C : Choice X 1) : trI C = Pi.map (fun τ (γ : Formalism.REAL.UJ
     (Matrix.of.symm (trG (C.Q τ) (C.Qi τ) γ) : Formalism.QuantumDeterminants.Mt D.R.k D.R.rS)) ∘
     (Homeomorph.piCongrLeft (Y := fun v => Formalism.REAL.UJ (X.B.I.ε v)) X.pl.symm).symm := by
   funext x τ
-  simp [trI, Pi.map]
+  simp [trI]
   rfl
 
 theorem trI_closedEmb (C : Choice X 1) : Topology.IsClosedEmbedding (trI C) := by

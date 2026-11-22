@@ -256,7 +256,7 @@ theorem univLinkPf_local [StrongRankCondition O] {T₁ T₂ : LocLat G Qp LL O} 
           (Finset.sum_congr rfl fun i _ => congrArg (o i • ·) (hκbcl i).symm))
       have hB := Submodule.mem_comap.1 hZ
       simp only [Submodule.subtype_apply, Submodule.coe_sub, Submodule.coe_smul,
-        Submodule.coe_sum, Submodule.coe_mk] at hB
+        Submodule.coe_sum] at hB
       have hImF : F.post κ₁ ∈ F.ImF PD := by
         unfold LatHom.ImF; exact Submodule.mem_sup_left (Submodule.mem_map_of_mem hκ₁f)
       have hBI : ((PD.p : ℕ) : O) ^ (σ + (2 * σ + κ + y₁)) • y - F.post κ₁ -

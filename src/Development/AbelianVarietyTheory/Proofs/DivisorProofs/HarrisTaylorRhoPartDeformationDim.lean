@@ -39,7 +39,7 @@ theorem finrank_homO_trAct {k O X Y X' Y' : Type*} [Field k] [Ring O] [AddCommGr
   have h : (homO σX σY).map (LinearEquiv.arrowCongr eX eY).toLinearMap = homO (trAct eX σX) (trAct eY σY) := by
     ext T'
     rw [Submodule.map_equiv_eq_comap_symm, Submodule.mem_comap, mem_homO, mem_homO]
-    simp only [LinearEquiv.coe_coe, LinearEquiv.arrowCongr_symm_apply, LinearMap.comp_apply, trAct_apply]
+    simp only [LinearEquiv.coe_coe, LinearEquiv.arrowCongr_symm_apply, trAct_apply]
     constructor
     · intro hT a x
       have := congrArg eY (hT a (eX.symm x))

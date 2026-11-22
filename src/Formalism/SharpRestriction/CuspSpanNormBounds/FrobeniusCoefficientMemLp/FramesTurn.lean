@@ -27,7 +27,7 @@ theorem frame_conj_fix {z : Fin (2 * r + k + 1) → ℂ} {g : Mx k r} (hg : IsFr
   have hU' : gᴴ * Hpk k r * g = Hpk k r := hU
   have hb1 : ∀ e : Fin (2 * r + k + 1), bvec e e = 1 := fun e => by simp [bvec]
   have hb0 : ∀ e p : Fin (2 * r + k + 1), p ≠ e → bvec e p = 0 := fun e p hp => by
-    simp [bvec, Pi.single_apply, hp]
+    simp [bvec, hp]
   have hfixv : ∀ e : Fin (2 * r + k + 1), (e.val < r ∨ r + k < e.val) → g *ᵥ bvec e = bvec e := by
     intro e he
     have heL := e.isLt
@@ -289,7 +289,7 @@ theorem isRelStab_turn (L : LocBessel k r) (ka : ℝ) (hc : L.c = ((2 * ka : ℝ
   have e2 : (tTi k r * g * tT k r)⁻¹ * a' * (tTi k r * g * tT k r) =
       tTi k r * (g⁻¹ * (tT k r * a' * tTi k r) * g) * tT k r := by
     rw [← conjI_inv]
-    simp only [Matrix.mul_assoc, tTi_mul_tT_assoc, tT_mul_tTi_assoc, tT_mul_tTi, tTi_mul_tT, Matrix.mul_one]
+    simp only [Matrix.mul_assoc]
   show psi k r L.z (cOfDpsi (ka : ℂ)) a' = psi k r L.z' (cOfDpsi (ka : ℂ)) ((tTi k r * g * tT k r)⁻¹ * a' * (tTi k r * g * tT k r))
   rw [e2]
   conv_lhs => rw [e1]
@@ -325,11 +325,11 @@ theorem flagMat_conjI {z : Fin (2 * r + k + 1) → ℂ} (hz : inWb k r z) (x : M
         simp only [tT, Matrix.mulVec_diagonal, Pi.smul_apply, smul_eq_mul]
         by_cases hp : p = eI k r ⟨j.val, hj⟩
         · rw [hp, dT_eI]
-        · have hb : bvec (eI k r ⟨j.val, hj⟩) p = 0 := by simp [bvec, Pi.single_apply, hp]
+        · have hb : bvec (eI k r ⟨j.val, hj⟩) p = 0 := by simp [bvec, hp]
           rw [hb, mul_zero, mul_zero]
       · rw [dif_neg hj, tT_mulVec_Wb hz, show j.val = r by have := j.isLt; omega]
     rw [← Matrix.mulVec_mulVec, ← Matrix.mulVec_mulVec, hv, Matrix.mulVec_smul]
-    simp only [tTi, Matrix.mulVec_diagonal, dT_eI, Fin.val_mk, Pi.smul_apply, smul_eq_mul]
+    simp only [tTi, Matrix.mulVec_diagonal, dT_eI, Pi.smul_apply, smul_eq_mul]
     ring
   · rw [dif_neg hi, dif_neg hi, if_neg hi, one_mul]
 

@@ -95,7 +95,7 @@ theorem GlobalTheory.BK.frob_recursion_decay : ∀ (O K : Type) [CommRing O] [No
     simp only [D, Matrix.sub_apply]
     rw [hrec (n + 1) τ, hrec n τ]
     simp only [Matrix.mul_apply, Matrix.map_apply, ← Finset.sum_sub_distrib, ← sub_mul, ← mul_sub,
-      map_sub, Matrix.sub_apply]
+      map_sub]
   obtain ⟨β, hβ0, hBbd⟩ : ∃ β : ℝ, 0 ≤ β ∧ ∀ τ i j, CoeffBd (rad l k) β (B τ i j) :=
     ⟨∑ x : ZMod a × ι × ι, normR l k (B x.1 x.2.1 x.2.2),
       Finset.sum_nonneg fun x _ => hnn _ (hB _ _ _), fun τ i j m =>

@@ -86,7 +86,7 @@ theorem exists_lowInv_mul_upperUni_of_leadingMinors :
       | cast i' =>
         induction j using Fin.lastCases with
         | last =>
-          simp only [L, U, Matrix.of_apply, Fin.lastCases_last, Fin.lastCases_castSucc, mul_one, zero_mul, add_zero]
+          simp only [L, U, Matrix.of_apply, Fin.lastCases_last, Fin.lastCases_castSucc, mul_one, add_zero]
           have := congrFun hq i'
           simpa [mulVec, dotProduct, q] using this.symm
         | cast j' =>

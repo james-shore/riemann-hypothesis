@@ -43,9 +43,8 @@ theorem sum_pullMat_subBG_reframe : ∀ (D : D7) (p : ℕ) [Fact p.Prime] (X : S
           Matrix.star_apply, hs, map_sum, hcc, Finset.mul_sum, Finset.sum_mul]
         first
           | exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring
-          | (rw [Finset.sum_comm]; exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring)
       · simp only [hodd, ↓reduceIte, map_mul, ← hconj, hιe, Matrix.map_apply, Matrix.mul_apply,
-          Matrix.star_apply, hs, map_sum, hcc, Finset.mul_sum, Finset.sum_mul]
+          Matrix.star_apply, hs, map_sum, Finset.mul_sum, Finset.sum_mul]
         first
           | exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring
           | (rw [Finset.sum_comm]; exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring)

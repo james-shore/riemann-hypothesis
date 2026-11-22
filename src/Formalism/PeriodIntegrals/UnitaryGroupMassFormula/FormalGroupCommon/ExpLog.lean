@@ -135,7 +135,7 @@ theorem int_of_mul_eq_one {σ : Type} [DecidableEq σ] {u n : MvPowerSeries σ �
   have key : coeff α u + ∑ x ∈ (Finset.HasAntidiagonal.antidiagonal α).erase (α, 0), coeff x.1 u * coeff x.2 n =
       coeff α (1 : MvPowerSeries σ ℂ_[p]) := by
     rw [← h, coeff_mul, ← Finset.add_sum_erase _ _ hmem]
-    simp [hn0', hn0]
+    simp [hn0']
   have hrest : ‖∑ x ∈ (Finset.HasAntidiagonal.antidiagonal α).erase (α, 0), coeff x.1 u * coeff x.2 n‖ ≤ 1 := by
     apply IsUltrametricDist.norm_sum_le_of_forall_le_of_nonneg zero_le_one
     intro x hx

@@ -48,7 +48,7 @@ theorem restrict_boxFun_k : ∀ (F E : Type) [Field F] [NumberField F] [Field E]
   have h1 : Formalism.IndefR.DatumF.mtF σ JS 1 = ((1 : UG (cA σ) (incM F JB))⁻¹).1.1ᵀ := by
     show (Formalism.IndefR.DatumF.matHomF σ JS 1).1 = _
     rw [map_one, inv_one]
-    first | rfl | simp | exact Matrix.transpose_one.symm
+    first | rfl | simp
   have hdm : Formalism.IndefR.DatumF.mtF σ (GlobalTheory.WeilSchrodinger.DblTargetF.dblG JT) hd =
       Matrix.reindex finSumFinEquiv finSumFinEquiv (Matrix.fromBlocks (Formalism.IndefR.DatumF.mtF σ JT h) 0 0 1) := by
     rw [hhd, hgd, hh]

@@ -131,7 +131,6 @@ theorem cspB_evR {S : Type} [CommRing S] [Algebra c.F S] (y : FrPt Xo c S)
   rw [dif_pos hy]
   first
   | exact cspB_idem_map C hC _ _ _ hy.choose_spec.choose_spec.choose_spec.1
-  | exact cspB_idem_map C hC _ _ _ hy.choose_spec.choose_spec.choose_spec.1.1
 
 theorem cspB_evR_zero {S : Type} [CommRing S] [Algebra c.F S] (y : FrPt Xo c S)
     (hy : ¬ FromTest (K := c.F) (fun S _ _ => FrPt Xo c S) (fun φ y z => FrMap φ y z) y) (f : Rul Xo c) :
@@ -150,7 +149,6 @@ theorem cspB_genPt_mem (Z : Comp Xo c) : genPt Z ∈ (Z : Set (Xo.XF c)) := by
   have hg : IsGenericPoint hS.genericPoint (closure (Z : Set (Xo.XF c))) := by
     first
     | exact hS.isGenericPoint_genericPoint_closure
-    | exact hS.genericPoint_spec
   rw [hcl.closure_eq] at hg
   exact hg.mem
 

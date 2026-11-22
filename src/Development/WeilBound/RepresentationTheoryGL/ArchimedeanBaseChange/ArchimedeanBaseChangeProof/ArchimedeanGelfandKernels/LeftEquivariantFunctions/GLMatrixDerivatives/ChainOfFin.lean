@@ -41,7 +41,7 @@ theorem act_sum (hL : LgFacts) [MeasurableSpace (G n)] [BorelSpace (G n)] (μ : 
   have hfun : (fun y : G n => (k ↑y) (F (x * ↑y))) = fun (y : G n) => ∑ i, c i • (ks i ↑y) (F (x * ↑y)) := by
     funext y
     rw [hsum _ (mem_GLs_of y)]
-    simp [ContinuousLinearMap.sum_apply]
+    simp
   rw [hfun, integral_finset_sum _ hint']
   refine Finset.sum_congr rfl (fun i _ => ?_)
   rw [integral_smul]
@@ -54,7 +54,7 @@ theorem dc_sum {V : Type} [NormedAddCommGroup V] [NormedSpace ℂ V] (ε : Mat n
     HasFDerivAt.fun_sum fun i _ => (hd i).hasFDerivAt.const_smul (c i)
   simp only [DC, Rd, hsd.fderiv]
   simp only [ContinuousLinearMap.coe_sum', Finset.sum_apply, ContinuousLinearMap.coe_smul', Pi.smul_apply, map_sum,
-    map_smul, Finset.smul_sum, smul_add]
+    map_smul, Finset.smul_sum]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun p _ => ?_
   rw [← Finset.sum_add_distrib, map_sum]

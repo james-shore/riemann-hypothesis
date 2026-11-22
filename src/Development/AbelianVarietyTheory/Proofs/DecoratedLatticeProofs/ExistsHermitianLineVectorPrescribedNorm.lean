@@ -37,7 +37,7 @@ theorem exists_line_vec (D : D7) (c : D.host.E) (ε : ℤˣ) (hc : c ≠ 0) :
   have hcc : c * star c ≠ 0 := mul_ne_zero hc (star_ne_zero.2 hc)
   rcases Int.units_eq_one_or ε with rfl | rfl
   · have hn := signLine_norm D c 1 0 rfl
-    simp only [Examples₂.sgn, zero_add, nonpos_iff_eq_zero, one_ne_zero, decide_false, Bool.false_eq_true,
+    simp only [Examples₂.sgn, nonpos_iff_eq_zero, one_ne_zero, decide_false, Bool.false_eq_true,
       if_false, one_mul] at hn
     refine ⟨signLine D 1 0, fun _ => c, ⟨rfl, ?_⟩, GlobalTheory.Ker.Inhab.sigOK_std D 1 0, ?_, fun τ => ?_⟩
     · rw [hn]; exact hcc

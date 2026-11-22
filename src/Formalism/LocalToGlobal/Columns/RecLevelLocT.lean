@@ -193,7 +193,6 @@ theorem rll_mem_loc_dLat (v : HeightOneSpectrum (𝓞 F)) (c : E) (hc0 : c ≠ 0
     have hz : z = ∑ i, Pi.single i (z i) := by
       first
         | exact (Finset.univ_sum_single z).symm
-        | (funext j; simp [Finset.sum_apply, Pi.single_apply])
     rw [hz]
     refine Submodule.sum_mem _ fun i _ => ?_
     have hgen : ∀ e : E, (Pi.single i e : Fin n → E) ∈ rll_dLat n c →
@@ -259,7 +258,6 @@ theorem BasePi.coe_ne_zero (h : BasePi ST π) : algebraMap (𝓞 E) E π ≠ 0 :
   apply h.ne_zero
   first
     | exact (injective_iff_map_eq_zero _).mp (FaithfulSMul.algebraMap_injective (𝓞 E) E) _ h0
-    | exact RingOfIntegers.coe_eq_zero_iff.mp h0
 
 theorem BasePi.star_ne_zero (h : BasePi ST π) : star (algebraMap (𝓞 E) E π) ≠ 0 := _root_.star_ne_zero.mpr h.coe_ne_zero
 
@@ -396,7 +394,6 @@ theorem rll_baseKer_eq (h : BasePi ST π) :
   have hinj : Function.Injective (algebraMap (𝓞 E) E) := by
     first
       | exact FaithfulSMul.algebraMap_injective (𝓞 E) E
-      | exact RingOfIntegers.coe_injective
   have ha := h.coe_ne_zero
   have hb : star (algebraMap (𝓞 E) E π) = algebraMap (𝓞 E) E (cO E π) := rfl
   have hloc : ∀ (y : Fin n → E) (P : Pl E), y ∈ Formalism.HermitianLatticesTheory.localization₂ P.asIdeal (baseLb E n ST) ↔

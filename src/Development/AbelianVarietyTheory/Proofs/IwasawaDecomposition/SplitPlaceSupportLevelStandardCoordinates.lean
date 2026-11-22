@@ -68,7 +68,7 @@ theorem bc_prV_swap_eq_one_iff {D : D7} {m : ℕ} (w : HeightOneSpectrum (𝓞 D
       ((M : Matrix (Fin m) (Fin m) _).map
         (Algebra.TensorProduct.map (Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.evalV D.host.F w) (AlgHom.id D.host.F D.host.E))).map τ := by
     ext i j
-    simp only [Formalism.UG.bc, Units.coe_map, MonoidHom.coe_coe, RingHom.mapMatrix_apply, Matrix.map_apply]
+    simp only [Formalism.UG.bc, Units.coe_map, Matrix.map_apply]
     exact prV_swap w _
   rw [e]
   constructor

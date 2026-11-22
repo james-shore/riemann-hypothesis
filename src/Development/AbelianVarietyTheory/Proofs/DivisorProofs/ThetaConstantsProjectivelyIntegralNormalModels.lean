@@ -171,7 +171,7 @@ theorem thetaInt_hasDiv : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E]
   obtain ⟨ρG, hρG, -⟩ := exists_rigidificationPullbackCompatibleIso hα hw ρ.P.isLB hLG ρ.rig_gen
   let xV : Sp K ⟶ Sp (ratHull S.R) := spMap io ≫ spMap emb ≫ spMap vH
   have hxV : spMap i ≫ x₀ = xV ≫ spMap (toRat S.R) := by
-    simp only [xV, x₀, i, Category.comp_id, Category.assoc, spMap_comp_ring', ← hv, RingHom.comp_assoc]
+    simp only [xV, x₀, i, Category.comp_id, spMap_comp_ring', ← hv, RingHom.comp_assoc]
   rw [hxV] at h₁
   have h₂ := (GlobalTheory.T.hasThetaConstantsTwoLevels_move_cartesian (Sp S.R) ρ.P.A ρ.P.L ρ.rig ρ.P.isLB ρ.rig_gen (Sp (ratHull S.R)) G (ρ.P.L.pull α) ρG
     (spMap (toRat S.R)) α hLG hρG hα (PolBaseChange.lbIso_refl hLG) m (S.r * S.N) (n + 1) _ K xV d d').2 h₁

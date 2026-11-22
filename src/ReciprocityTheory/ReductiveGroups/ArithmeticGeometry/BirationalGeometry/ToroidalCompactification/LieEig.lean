@@ -17,7 +17,6 @@ theorem isTan_comp {w : sp (R₀ := R) (DualNumber R) ⟶ G} (hw : IsTan w) (f :
   rw [← Category.assoc, hw]
   first
   | simp only [Hom.one_def, Category.assoc, IsMonHom.one_hom]
-  | simp [Hom.one_def]
 
 variable {n : ℕ} {x : ∀ m : ℕ, sp (R₀ := R) (JetR R (Fin n) m) ⟶ G} (hx : IsUnivChart G n x)
 

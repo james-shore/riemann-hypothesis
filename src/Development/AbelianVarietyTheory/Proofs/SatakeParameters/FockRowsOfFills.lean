@@ -26,12 +26,12 @@ theorem fock_rows_of_fills : ∀ (D : D7) (u : D.what₂.Word) (w : D.what₂.pl
     have hl : (((D.gat u w hg).P.lam0 v s ⟨r + 1 - 1, by omega⟩ : ℤ) : ℚ) =
         (D.hcW u (hT.gat_pos u w hg ⟨v, s⟩)).u ⟨r, h1⟩ - ((D.R.k : ℚ) - 1) / 2 + r := by
       rw [hT.gat_lam, (D.fm u).lam_eq 0 (Nat.zero_le _)]
-      simp [hcToWeightQ, rhoVec, Ranks.N, h1]
+      simp [hcToWeightQ, rhoVec, h1]
       ring
     have hlR := congrArg (Rat.cast : ℚ → ℝ) hl
     push_cast at hlR ⊢
     rw [hlR, hw i hi]
-    simp only [kaJ, Ranks.N, Nat.add_sub_cancel]
+    simp only [kaJ, Ranks.N]
     push_cast
     ring
   · rw [if_neg (by omega)]

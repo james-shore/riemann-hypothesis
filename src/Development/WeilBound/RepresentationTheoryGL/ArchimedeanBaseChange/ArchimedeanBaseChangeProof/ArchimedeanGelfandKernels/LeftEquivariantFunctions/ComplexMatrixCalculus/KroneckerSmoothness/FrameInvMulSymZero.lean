@@ -44,7 +44,7 @@ theorem clm_apply' (M : Matrix (Ix n lam) (Ix n lam) ℂ) (u : EV n lam) :
   rw [Fintype.sum_prod_type (f := fun i : Ix n lam × Ix n lam => (M i.1 i.2 * u i.2) • EuclideanSpace.single i.1 (1 : ℂ))]
   ext r
   rw [clm_entry]
-  simp [Finset.sum_apply, EuclideanSpace.single_apply, Pi.single_apply]
+  simp [Finset.sum_apply, Pi.single_apply]
 
 theorem mem_GLs_inv' {x : Mat n} (hx : x ∈ GLs n) : x⁻¹ ∈ GLs n := by
   simp only [GLs, Set.mem_setOf_eq] at hx ⊢

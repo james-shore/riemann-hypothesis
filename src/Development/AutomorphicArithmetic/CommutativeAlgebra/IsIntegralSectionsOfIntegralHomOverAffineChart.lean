@@ -57,8 +57,6 @@ theorem UpperTheory.isIntegral_sections_of_integralHom_over_affine_chart :
     rw [Scheme.Hom.appTop, Scheme.Hom.app_eq_appLE]
     first
       | rfl
-      | (congr 1; simp)
-      | simp [Scheme.Hom.appLE]
   have c2 : ∀ y, φ.hom ((l.appLE ⊤ (f ⁻¹ᵁ O) (by simp)).hom y) ∈ S := by
     intro y
     have hy : φ.hom ((l.appLE ⊤ (f ⁻¹ᵁ O) (by simp)).hom y) =

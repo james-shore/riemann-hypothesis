@@ -210,10 +210,10 @@ theorem Den_le_U : Den L ≤ 10 * Ub L C ^ 7 := by
   have hB0 : 0 ≤ L.Sc + D.R.t + large₂ L := by linarith
   have hA : (D.R.n : ℝ) * (D.R.t : ℝ) ^ 2 * ((D.R.N D.R.m : ℝ) + D.R.t) * large₂ L ^ 2 ≤
       Ub L C * Ub L C ^ 2 * (4 * Ub L C ^ 2) * Ub L C ^ 2 := by
-    gcongr <;> first | assumption | positivity | linarith
+    gcongr
   have hB : (D.R.k : ℝ) * (D.R.n : ℝ) ^ 2 * (L.Sc + D.R.t + large₂ L) ≤
       Ub L C * Ub L C ^ 2 * (4 * Ub L C + Ub L C + Ub L C) := by
-    gcongr <;> first | assumption | positivity | linarith
+    gcongr
   have h47 : Ub L C ^ 4 ≤ Ub L C ^ 7 := pow_le_pow_right₀ hU1 (by norm_num)
   unfold Den
   nlinarith
@@ -309,7 +309,7 @@ theorem lA_lt_lStar : lA L < lStar L := by
     rw [div_le_iff₀ (by positivity)]
     have h1 : (D.R.k : ℝ) * L.sc.x ^ L.sc.eps * L.sc.x ^ L.sc.eps ≤ Ub L C ^ 3 := by
       calc (D.R.k : ℝ) * L.sc.x ^ L.sc.eps * L.sc.x ^ L.sc.eps ≤ Ub L C * Ub L C * Ub L C := by
-            gcongr <;> first | assumption | positivity | linarith
+            gcongr
         _ = Ub L C ^ 3 := by ring
     nlinarith [mul_le_mul_of_nonneg_right h1 hde0.le,
       mul_le_mul_of_nonneg_left hde1 (mul_nonneg hk0 hxe0.le),

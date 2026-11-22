@@ -83,7 +83,6 @@ theorem line_atG_alt : ∀ {D : D7} {L : SizeData₂ D} {hT : GatTies D} {Gi : F
     rw [← hc]
     refine (mem_latLoc_line_iff (D.sp.Y 0) ((_root_.GlobalTheory.Fam.pk_z W).ΛY 0) hfg v _ (fun i => W.S.X.ιE (W.S.X.eR ⟨0, hr⟩ (Fin.cast (GlobalTheory.Core.Mi.rank_eq W.S.X W.Q.instEq) i))) (y 0) (hy 0)).trans
       (Iff.trans ?_ (mem_latLoc_line_iff (D.sp.Y 0) ((_root_.GlobalTheory.Fam.pk_z W).ΛY 0) hfg v _ (fun i => W.S.X.ιE (W.S.X.eR ⟨0, hr⟩ (Fin.cast (GlobalTheory.Core.Mi.rank_eq W.S.X W.Q.instEq) i))) (y 0) (hy 0)).symm)
-    beta_reduce
     rw [_root_.GlobalTheory.LineAtG.tOf_fix_first_alt W hW hr, _root_.GlobalTheory.LineAtG.tOf_fix_first_alt W hW hr]
     exact _root_.GlobalTheory.T.placed_bessel_pair_central_alt W hW hr u u₀ f f₀ B B₀ hP hP₀ a₀ a b₀₀ b₀₁ hA hA₀ v hv (y 0) (hy 0)
   · exact ⟨1, fun u f B hP a₀ a hA c => absurd ⟨u, f, B, hP, a₀, a, hA⟩ hex⟩

@@ -66,10 +66,10 @@ theorem besPhInt_rank {Wp Wq : Type} [NormedAddCommGroup Wp] [InnerProductSpace 
         ⟪stdOrthonormalBasis ℂ Wq i, (ContinuousLinearMap.adjoint X') a'⟫_ℂ) := by
     intro i
     simp only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.smulRight_apply, innerSL_apply_apply,
-      map_smul, inner_smul_right, ContinuousLinearMap.adjoint_inner_right, smul_eq_mul]
+      map_smul, inner_smul_right, ContinuousLinearMap.adjoint_inner_right]
     ring
   unfold Formalism.FourierDecayAlt.B.hsInner Formalism.FourierDecayAlt.B.hsVec
-  simp only [PiLp.inner_apply, PiLp.toLp_apply, key]
+  simp only [PiLp.inner_apply, key]
   rw [← Finset.mul_sum, OrthonormalBasis.sum_inner_mul_inner, ContinuousLinearMap.adjoint_inner_right]
   congr 1
   exact (inner_conj_symm (X' b') a').symm

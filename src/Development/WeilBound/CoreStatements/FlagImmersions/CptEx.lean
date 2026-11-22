@@ -55,7 +55,7 @@ theorem cptEx : CptEx := by
     have h3 : spMap (𝔐.cst.comp (algebraMap (𝓞 ↥c.F) ↥c.F)) = spMap 𝔐.cst ≫ spMap (algebraMap (𝓞 ↥c.F) ↥c.F) := by
       simp [spMap, CommRingCat.ofHom_comp, Spec.map_comp]
     rw [h3] at h2
-    simp only [Scheme.Hom.comp_apply] at h2
+    simp only at h2
     rw [← hfx]
     exact h2.symm
   have hsx2 : genPt 𝔐.ξ₀ ∈ Set.range (pullback.fst Y.s (spMap (algebraMap (𝓞 ↥c.F) ↥c.F))) := by

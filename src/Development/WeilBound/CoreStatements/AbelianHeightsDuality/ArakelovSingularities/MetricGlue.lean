@@ -60,8 +60,8 @@ private theorem phi_sub_logSq_eq_of_mem_overlap (A : LB X) (hA : A.IsLB) (L : He
   rw [logSq_mul hV, logSq_inv hV, logSq_res _ hV, logSq_res _ hV] at hg
   have hbb : y.logSq (A.U b ⊓ A.U b) (A.g b b) = 0 := by
     have h0 := congrArg (y.logSq _) (hA.g_self b)
-    rw [logSq_res _ (by simp only [mem_ptsIn, TopologicalSpace.Opens.mem_inf] at hb ⊢; tauto),
-      logSq_one (by simp only [mem_ptsIn, TopologicalSpace.Opens.mem_inf] at hb ⊢; tauto)] at h0
+    rw [logSq_res _ (by simp only [mem_ptsIn] at hb ⊢; tauto),
+      logSq_one (by simp only [mem_ptsIn] at hb ⊢; tauto)] at h0
     exact h0
   have ht := (L.φ σ).trans a a' y ha ha'
   have hl : Real.log (‖gv p σ L.B a a' y‖ ^ 2) = y.logSq (L.B.U a ⊓ L.B.U a') (L.B.g a a') := rfl
@@ -83,8 +83,8 @@ private theorem logSq_inf_eq_add_logSq_transition (A : LB X) (L : HermLB p) (w :
   rw [logSq_mul hV, logSq_inv hV, logSq_res _ hV, logSq_res _ hV] at hg
   have haa : y.logSq (L.B.U a ⊓ L.B.U a) (L.B.g a a) = 0 := by
     have h0 := congrArg (y.logSq _) (L.isLB.g_self a)
-    rw [logSq_res _ (by simp only [mem_ptsIn, TopologicalSpace.Opens.mem_inf] at ha ⊢; tauto),
-      logSq_one (by simp only [mem_ptsIn, TopologicalSpace.Opens.mem_inf] at ha ⊢; tauto)] at h0
+    rw [logSq_res _ (by simp only [mem_ptsIn] at ha ⊢; tauto),
+      logSq_one (by simp only [mem_ptsIn] at ha ⊢; tauto)] at h0
     exact h0
   rw [haa] at hg
   linarith

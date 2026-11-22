@@ -72,7 +72,6 @@ theorem UpperTheory.V.Th.Sp.msp :
       linear_combination hp + hq
     · intro p v hp
       rw [map_mul, MvPolynomial.eval₂_mul, MvPolynomial.eval₂_X, map_mul]
-      beta_reduce
       linear_combination (ψ (MvPolynomial.X v)) * hp +
         h (MvPolynomial.eval₂ (x : B →+* O) (fun p => α p.1 p.2) p) * hδX v
   have hk := key a

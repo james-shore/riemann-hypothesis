@@ -46,7 +46,7 @@ lemma exists_rid_ne_zero {x : V ⊗[ℂ] W} (hx : x ≠ 0) :
     intro w
     induction w using TensorProduct.induction_on with
     | zero => simp
-    | tmul v y => simp [e, TensorProduct.equivFinsuppOfBasisRight_apply_tmul_apply]
+    | tmul v y => simp [e]
     | add y z hy hz => simp only [map_add, hy, hz, Finsupp.add_apply]
   rw [key]; simpa using hi
 

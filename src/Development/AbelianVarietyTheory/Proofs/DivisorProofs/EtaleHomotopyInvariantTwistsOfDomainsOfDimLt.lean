@@ -100,10 +100,10 @@ theorem hInv_of_domains_of_dim_lt : ∀ (q : ℕ) [NeZero q] (d : ℕ),
       · rw [inf_eq_right.mpr hJ]; exact ihs
       · haveI : @Algebra.FiniteType ℤ (R ⧸ p) _ _ (Ring.toIntAlgebra _) := by
           convert (inferInstance : Algebra.FiniteType ℤ (R ⧸ p))
-          all_goals first | rfl | exact Subsingleton.elim _ _
+          all_goals first | rfl
         haveI : @Algebra.FiniteType ℤ (R ⧸ (p ⊔ s.inf id)) _ _ (Ring.toIntAlgebra _) := by
           convert (inferInstance : Algebra.FiniteType ℤ (R ⧸ (p ⊔ s.inf id)))
-          all_goals first | rfl | exact Subsingleton.elim _ _
+          all_goals first | rfl
         refine hInv_quot_inf q R p (s.inf id) hq ?_ ihs ?_
         · exact hdom (R ⧸ p) (by simpa using hq.map (Ideal.Quotient.mk p))
             ((ringKrullDim_le_of_surjective (Ideal.Quotient.mk p) Ideal.Quotient.mk_surjective).trans hd)

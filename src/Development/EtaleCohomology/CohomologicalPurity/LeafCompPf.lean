@@ -29,7 +29,7 @@ theorem good_comp (A S T : Type) [CommRing A] [CommRing S] [CommRing T] (φ : A 
     ⟨(Ideal.Quotient.lift (I.map φ) r1 (fun a ha => hk ha)).comp r2, ?_⟩, fun t => ?_, ?_⟩
   · ext a
     have e2 : r2 (ψ (φ a)) = Ideal.Quotient.mk (I.map φ) (φ a) := congrArg (fun f : S →+* S ⧸ I.map φ => f (φ a)) hr2
-    simp only [RingHom.comp_apply, e2, Ideal.Quotient.lift_mk]
+    simp only [RingHom.comp_apply, e2]
     exact congrArg (fun f : A →+* A ⧸ I => f a) hr1
   · obtain ⟨s, hs⟩ := h2.surj t
     obtain ⟨a, ha⟩ := h1.surj s

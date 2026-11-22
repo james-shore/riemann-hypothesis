@@ -150,5 +150,4 @@ theorem UpperTheory.V.ZK.sPhi :
       simp [φ, piRep, red_apply, psi, h1]
       rw [← finProdFinEquiv.sum_comp]
       simp [h1, Fintype.sum_prod_type, Matrix.one_apply]
-      done
     exact (val_iso hθ _ _ φ hφ hz).symm

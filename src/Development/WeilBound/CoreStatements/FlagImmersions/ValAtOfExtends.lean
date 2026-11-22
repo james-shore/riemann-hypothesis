@@ -91,9 +91,9 @@ theorem exists_coords {X : Scheme.{0}} (t : SAB H X) {Ω : Type} [Field Ω] {ξ 
       (congrArg (· ≫ X.fromSpecStalk (centre z)) (spec_comp fV (algebraMap V L)))))
   obtain ⟨j, hj, hjs⟩ := exists_bc (algebraMap V L) rfl MV MC
   have sV : ∀ i : Fin g, (fV ∘ (Pi.single i 1 : Fin g → R)) = Pi.single i 1 := fun i => by
-    ext k; by_cases h : k = i <;> simp [Pi.single_apply, h]
+    ext k; by_cases h : k = i <;> simp [h]
   have sC : ∀ i : Fin g, (((algebraMap V L).comp fV) ∘ (Pi.single i 1 : Fin g → R)) = Pi.single i 1 := fun i => by
-    ext k; by_cases h : k = i <;> simp [Pi.single_apply, h]
+    ext k; by_cases h : k = i <;> simp [h]
   have hj1 : ∀ i : Fin g, j (Pi.single i 1) = Pi.single i 1 := fun i => MC.inj (Over.OverMorphism.ext (by
     rw [hj, ← sC, hC, ← sV]
     refine (congrArg (Spec.map (CommRingCat.ofHom (dualMap (algebraMap V L))) ≫ ·) (hV (Pi.single i 1))).trans ?_

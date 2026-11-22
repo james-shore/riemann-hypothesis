@@ -35,7 +35,7 @@ theorem exists_emb_of_last {F : Type} [Field F] (r : ℕ) (m : GL (Fin (r + 1)) 
       | cast j => simp [GlobalTheory.JR.Step.embHom, ht]
   have hdet : (m : Matrix (Fin (r + 1)) (Fin (r + 1)) F).det = t.det := by
     rw [hm]
-    simp [GlobalTheory.JR.Step.embHom, Matrix.det_fromBlocks_zero₂₁]
+    simp [GlobalTheory.JR.Step.embHom]
   have hu : IsUnit t.det := by
     rw [← hdet]
     exact (Matrix.isUnit_iff_isUnit_det (m : Matrix (Fin (r + 1)) (Fin (r + 1)) F)).mp (Units.isUnit m)

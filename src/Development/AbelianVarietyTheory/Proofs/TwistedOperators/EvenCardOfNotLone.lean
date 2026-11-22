@@ -1090,8 +1090,6 @@ private lemma ringEquivRealOfIsReal_algebraMap {K : Type} [Field K] [NumberField
     InfinitePlace.Completion.extensionEmbeddingOfIsReal_coe]
   first
   | rfl
-  | simp
-  | rw [← WithAbs.equiv_symm_apply, RingEquiv.apply_symm_apply]
 
 end GlobalTheory.HilbertRecip
 

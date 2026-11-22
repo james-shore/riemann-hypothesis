@@ -74,7 +74,6 @@ theorem superpos_isTheta : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ), IsStdC
     (hF.cont.comp ((o.continuous_resS_symm T).comp (continuous_const.prodMk continuous_id))).measurable.comp hk
   refine ⟨fun γ u => ?_, ?_, ?_, ?_⟩
   ·
-    beta_reduce
     have e : ∀ w, a w * F ((o.resS T).symm (ratW T A γ + u, k w)) =
         ψ (-symplOH A T (ratW T A γ) u) * (a w * F ((o.resS T).symm (u, k w))) := by
       intro w

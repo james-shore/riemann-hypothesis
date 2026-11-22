@@ -63,7 +63,7 @@ private theorem nilpotent_modulo_kernel {O K A : Type} [CommRing O] [IsDomain O]
     have h1 : ψ (Polynomial.aeval p q) = 0 := by
       rw [← Polynomial.aeval_algHom_apply]; exact hq0
     rw [hr] at h1
-    simp only [map_mul, map_pow, map_sub, Polynomial.aeval_X, Polynomial.aeval_C, map_zero, sub_zero] at h1
+    simp only [map_mul, map_pow, Polynomial.aeval_X, map_zero, sub_zero] at h1
     rw [map_mul, map_pow, mul_comm]
     exact h1
 

@@ -111,7 +111,7 @@ theorem small_ad (U : Set (FiniteAdeleRing (𝓞 K) K)) (hU : U ∈ 𝓝 0) : �
 
 theorem norm_half {u : (AdeleRing (𝓞 K) K)ˣ} (hu : 2 * pI K (u⁻¹).1 = 1) (w : InfinitePlace K) : ‖pI K (u⁻¹).1 w‖ = 1 / 2 := by
   have := congrArg (fun z => ‖InfinitePlace.Completion.extensionEmbedding w (z w)‖) hu
-  simp only [Pi.mul_apply, Pi.ofNat_apply, map_mul, map_ofNat, norm_mul, norm_emb, Pi.one_apply, norm_one, Complex.norm_ofNat] at this
+  simp only [Pi.mul_apply, Pi.ofNat_apply, map_mul, map_ofNat, norm_mul, norm_emb, norm_one, Complex.norm_ofNat] at this
   linarith
 
 theorem siegel_ad {u : (AdeleRing (𝓞 K) K)ˣ} (hu : 2 * pI K (u⁻¹).1 = 1) (hu' : pF K (u⁻¹).1 = 1) :

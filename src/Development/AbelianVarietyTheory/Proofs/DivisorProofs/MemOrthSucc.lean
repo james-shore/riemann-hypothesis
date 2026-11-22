@@ -616,8 +616,7 @@ theorem Ph_inv (h : Rep E) (hU : KSt E U) (hπ : IsPr π U) {a b : Ix p q} (hab 
       ((if a = c then Nc E b d y else 0) - (if d = b then Nc E c a y else 0)) := fun c d => by
         rw [h.EN (sb_symm hab)]; abel
     simp only [e1, e2, map_sub, inner_sub_left, inner_sub_right, Ph_inv h hU hπ hab k,
-      Finset.sum_sub_distrib, apply_ite (Ph E π k), map_zero,
-      apply_ite (fun z => ⟪z, _⟫_ℂ), apply_ite (fun z => ⟪_, z⟫_ℂ)]
+      Finset.sum_sub_distrib, apply_ite (Ph E π k), map_zero]
     have i1 : ∀ (P : Prop) [Decidable P] (u v : PiLp 2 (fun _ : Fin k → Ix p q × Ix p q => V)),
       ⟪(if P then u else 0), v⟫_ℂ = if P then ⟪u, v⟫_ℂ else 0 := by
         intro P _ u v; split_ifs <;> simp
@@ -1162,7 +1161,7 @@ theorem adj_Eab (a b : Ix p q) : adjZ (Eab a b) = if sameBlock a b then Eab b a 
   · obtain ⟨rfl, rfl⟩ := h
     cases a <;> cases b <;> simp [Eab, sameBlock]
   · have h' : ¬ (b = i ∧ a = j) := fun k => h k.symm
-    split_ifs <;> simp [Eab, Matrix.single_apply, h, h']
+    split_ifs <;> simp [Eab, h, h']
 
 theorem Eab_mul (a b c d : Ix p q) : Eab a b * Eab c d = if b = c then Eab a d else 0 := by
   split_ifs with h

@@ -269,7 +269,7 @@ theorem core (hD : Dic) {a a' a₁ a₁' : ℕ} {G : Geo σ a a'} {G₁ : Geo σ
         (by
           simp only [upq, Set.mem_setOf_eq, Matrix.conjTranspose_smul, Matrix.conjTranspose_add,
             Matrix.conjTranspose_single, star_one, Complex.star_def, Complex.conj_I, Matrix.add_mul, Matrix.smul_mul,
-            Matrix.mul_add, Matrix.mul_smul, J_single, single_J, sg_l, sg_r, map_one]
+            Matrix.mul_add, Matrix.mul_smul, J_single, single_J, sg_l, sg_r]
           module)
         (by simp only [Matrix.add_mulVec, Matrix.smul_mulVec, single_mulVec', xi]; simp [Emb.x])
         (by simp only [Matrix.add_mulVec, Matrix.smul_mulVec, single_mulVec', xi]; simp [Emb.y, sub_eq_add_neg])
@@ -291,7 +291,7 @@ theorem core (hD : Dic) {a a' a₁ a₁' : ℕ} {G : Geo σ a a'} {G₁ : Geo σ
         (by
           simp only [upq, Set.mem_setOf_eq, Matrix.conjTranspose_smul, Matrix.conjTranspose_add, Matrix.conjTranspose_sub,
             Matrix.conjTranspose_single, star_one, Complex.star_def, Complex.conj_I, Matrix.add_mul, Matrix.smul_mul,
-            Matrix.mul_add, Matrix.mul_smul, Matrix.sub_mul, Matrix.mul_sub, J_single, single_J, sg_l, sg_r, map_one]
+            Matrix.mul_add, Matrix.mul_smul, Matrix.sub_mul, Matrix.mul_sub, J_single, single_J, sg_l, sg_r]
           module)
         (by simp only [Matrix.add_mulVec, Matrix.sub_mulVec, Matrix.smul_mulVec, single_mulVec', xi]; simp)
         (fun u => ⟨0, by simp only [Matrix.add_mulVec, Matrix.sub_mulVec, Matrix.smul_mulVec, single_mulVec', m.embeddingMatrix_mulVec]; simp⟩) v

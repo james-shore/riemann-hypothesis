@@ -28,8 +28,6 @@ def eD (σ : E →ₐ[F] E) (J : Matrix (Fin m) (Fin m) E) (bs : Module.Basis (F
   (eQ b).trans ((LinearEquiv.prodComm (AF F) _ _).trans (by
     first
     | exact (bM bs).equivFun.prodCongr ((bM bs).equivFun.trans
-        (@Matrix.toLinearEquiv' _ _ _ _ _ (Pm σ J bs) (Matrix.invertibleOfIsUnitDet _ hP)))
-    | exact (bM bs).equivFun.prod ((bM bs).equivFun.trans
         (@Matrix.toLinearEquiv' _ _ _ _ _ (Pm σ J bs) (Matrix.invertibleOfIsUnitDet _ hP)))))
 
 theorem eD_apply (σ : E →ₐ[F] E) (J : Matrix (Fin m) (Fin m) E) (bs : Module.Basis (Fin 2) F E) (b : GL (Fin n ⊕ Fin n) E)

@@ -215,7 +215,7 @@ theorem rep_cubN (j : ℕ) : Rep D (fun _ x z J => cubN (th D z J) j 1 x x) (fun
   refine ⟨_, inferInstance, _, _, t, ht, fun U _ h => ?_, fun T x z J hJ => ?_⟩
   · rw [_root_.one_mul, _root_.one_mul, ← pow_succ, ← sq]
     apply Additive.ofMul.injective
-    simp [wN, Fin.prod_univ_succ, ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow]
+    simp [wN, Fin.prod_univ_succ, ofMul_mul, ofMul_inv, ofMul_pow]
     module
   · rw [hv T x z J hJ, MonObj.comp_one, Category.comp_id]
 

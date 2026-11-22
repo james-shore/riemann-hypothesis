@@ -78,7 +78,7 @@ theorem dot_smul {F R : Type} [Field F] [CommRing R] [Algebra F R] {ι : Type} [
       algebraMap F R a * (x ⬝ᵥ (B.map (algebraMap F R) *ᵥ y)) := by
   have e : (a • B).map (algebraMap F R) = algebraMap F R a • B.map (algebraMap F R) := by
     ext i j
-    simp [Algebra.smul_def]
+    simp
   rw [e, Matrix.smul_mulVec, dotProduct_smul, smul_eq_mul]
 
 theorem isUnit_det_map {F R : Type} [Field F] [CommRing R] [Algebra F R] {ι : Type} [Fintype ι]

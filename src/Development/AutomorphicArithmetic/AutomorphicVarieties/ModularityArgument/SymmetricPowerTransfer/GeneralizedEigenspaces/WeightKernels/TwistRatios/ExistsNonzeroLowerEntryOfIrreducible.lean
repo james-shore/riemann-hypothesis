@@ -282,10 +282,10 @@ private theorem core [CharZero k] {Γ : Type} [Group Γ] (r : Γ →* GL (Fin 2)
   have g11 := hg 1 1
   have hrow : ∀ j, symmetricFourthPowerMatrix k (r g : Matrix (Fin 2) (Fin 2) k) 0 j ≠ 0 := by
     intro j
-    fin_cases j <;> simp [symmetricFourthPowerMatrix, g00, g01, g10, g11]
+    fin_cases j <;> simp [symmetricFourthPowerMatrix, g00, g01]
   have hcol : ∀ j, symmetricFourthPowerMatrix k (r g : Matrix (Fin 2) (Fin 2) k) j 0 ≠ 0 := by
     intro j
-    fin_cases j <;> simp [symmetricFourthPowerMatrix, g00, g01, g10, g11]
+    fin_cases j <;> simp [symmetricFourthPowerMatrix, g00, g10]
   have hi1 : (Pi.single i 1 : Fin 5 → k) ∈ W := hsingle v hv i hi
   have h0 : (Pi.single 0 1 : Fin 5 → k) ∈ W :=
     hsingle _ (hM _ hi1) 0 (by simpa [Matrix.mulVec_single_one] using hrow i)
@@ -332,7 +332,7 @@ theorem UpperTheory.V.Z.Sym.Ga.sym4Irr :
   have hne : (a : Qbar l) ≠ b := by simpa using hm 1 one_pos
   obtain ⟨Q, hQ⟩ := S4.eig_basis _ _ _ hne hch
   let c : GL (Fin 2) (Qbar l) →* GL (Fin 2) (Qbar l) := (MulAut.conj Q⁻¹).toMonoidHom
-  have hcx : ∀ x, c x = Q⁻¹ * x * Q := fun x => by simp [c, MulAut.conj_apply]
+  have hcx : ∀ x, c x = Q⁻¹ * x * Q := fun x => by simp [c]
   let r : H →* GL (Fin 2) (Qbar l) := c.comp (ρ.comp H.subtype)
   have hrx : ∀ x : H, r x = Q⁻¹ * ρ x * Q := fun x => hcx _
   have hrs : (r ⟨s, hsH⟩ : Matrix (Fin 2) (Fin 2) (Qbar l)) = !![(a : Qbar l), 0; 0, (b : Qbar l)] := by

@@ -26,9 +26,6 @@ theorem phi_mem (φ : F →+* PadicAlgCl l) (x : F) : φ x ∈ Kphi φ := by
   refine mul_mem ?_ (IntermediateField.subset_adjoin _ _ ⟨i, rfl⟩)
   first
   | exact SubfieldClass.ratCast_mem _ _
-  | exact ratCast_mem _ _
-  | exact (Kphi φ).toSubfield.ratCast_mem _
-  | simp
 
 variable (F l) in
 

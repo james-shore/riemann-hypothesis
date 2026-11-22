@@ -30,13 +30,9 @@ theorem bd_local (v : HeightOneSpectrum (𝓞 F)) (a : v.adicCompletion F) :
   · have hab' : a * algebraMap F (v.adicCompletion F) (b : F) ∈ v.adicCompletionIntegers F := by
       first
       | exact hab
-      | (convert hab using 2)
-      | simpa using hab
     have hc' : algebraMap F (v.adicCompletion F) (c : F) ∈ v.adicCompletionIntegers F := by
       first
       | exact IsDedekindDomain.HeightOneSpectrum.coe_mem_adicCompletionIntegers v c
-      | (convert IsDedekindDomain.HeightOneSpectrum.coe_mem_adicCompletionIntegers (K := F) v c using 1)
-      | simpa using IsDedekindDomain.HeightOneSpectrum.coe_mem_adicCompletionIntegers (K := F) v c
     have hcast : algebraMap F (v.adicCompletion F) (c : F) * algebraMap F (v.adicCompletion F) (b : F) =
         ((Ideal.absNorm (Ideal.span {b}) : ℤ) : v.adicCompletion F) := by
       rw [← map_mul, show (c : F) * (b : F) = ((c * b : 𝓞 F) : F) from rfl, hc]

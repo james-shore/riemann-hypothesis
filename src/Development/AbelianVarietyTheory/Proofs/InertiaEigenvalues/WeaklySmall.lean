@@ -32,7 +32,6 @@ theorem lt_of_mem_span_pow {l : ℕ} [Fact l.Prime] (ϖ : OCb l) (hϖ : ¬ IsUni
   obtain ⟨m₀, b, hb⟩ := hdiv a ha
   refine ⟨m₀ + 1, fun x hx => ?_⟩
   obtain ⟨t, rfl⟩ := Ideal.mem_span_singleton'.1 hx
-  change Valued.v _ < Valued.v _
   rw [← not_le, hle]
   rintro ⟨e, he⟩
   rw [eq_div_iff hd0] at he

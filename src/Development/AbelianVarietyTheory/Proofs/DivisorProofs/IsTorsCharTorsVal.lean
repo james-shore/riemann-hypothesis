@@ -45,7 +45,7 @@ theorem isTorsChar_torsVal (b : G.A N) (hb : cobOne R (G.A N) b = 0) :
       ⟨(toConv (t.lift N w hw) * toConv (t.lift N w' hw')).ofConv, by
         rw [t.mul, ofConv_toConv, ofConv_toConv, t.lift_y, t.lift_y]⟩
     simp only [torsVal, dif_pos hw, dif_pos hw', dif_pos h, lift_mul t N w w' hw hw' h,
-      AlgHom.convMul_apply, hc, map_add, Algebra.TensorProduct.lift_tmul, ofConv_toConv, map_one,
+      AlgHom.convMul_apply, hc, map_add, Algebra.TensorProduct.lift_tmul, map_one,
       _root_.mul_one, _root_.one_mul]
 
 theorem exists_isTorsChar : ∀ (p : ℕ)  (R : Type) [CommRing R] (A : Over (Sp R)) [GrpObj A] (G : PDivGroup p R) (t : G.TorsionTower A) (N : ℕ) (b : G.A N), cobOne R (G.A N) b = 0 → ∃ β : Fn0 A, IsTorsChar (p ^ N) β ∧ ∀ (D : Type) [CommRing D] [Algebra R D] (φ : G.A N →ₐ[R] D), β D (spOver φ ≫ t.y N) = φ b := by

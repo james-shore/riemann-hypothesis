@@ -307,7 +307,7 @@ theorem prod_eq {u : ℕ → ℝ} {u₀ : Fin k → ℝ} (hπ : Q.IsType k r z �
       simp [Matrix.single, ite_and, ite_smul]
     · rw [Matrix.conjTranspose_smul, Matrix.conjTranspose_add, Matrix.conjTranspose_conjTranspose, ← neg_smul, add_comm]
       congr 1
-      simp [Complex.conj_ofNat]
+      simp
     · rw [Matrix.conjTranspose_smul, Matrix.conjTranspose_sub, Matrix.conjTranspose_conjTranspose, ← smul_neg, neg_sub]
       congr 1
       simp

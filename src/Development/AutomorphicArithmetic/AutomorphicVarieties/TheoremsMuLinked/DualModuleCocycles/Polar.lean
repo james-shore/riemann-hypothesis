@@ -81,5 +81,5 @@ theorem UpperTheory.V.Th.Coc.polar :
   · intro a
     simp only [AddMonoidHom.add_apply, heD, hss, Matrix.transpose_add, Matrix.transpose_mul,
       Matrix.transpose_transpose, hPbt, hQt, Matrix.mul_add, Matrix.add_mul, Matrix.smul_mul,
-      Matrix.mul_smul, smul_smul, hee, one_smul, Matrix.mul_assoc, hPQ', hPQ, hQP, hQP', Matrix.mul_one]
+      Matrix.mul_smul, smul_smul, hee, one_smul, Matrix.mul_assoc, hPQ', hQP, Matrix.mul_one]
     abel

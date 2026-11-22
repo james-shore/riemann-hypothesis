@@ -48,10 +48,6 @@ theorem word_expansion : WdExpand := by
             (fderiv ℝ (iteratedFDeriv ℝ bs.length f) t))) t := by
         first
           | exact HasFDerivAt.fun_sum fun i _ => (wdx_hasFDerivAt_iter hd (v i)).const_mul (a i)
-          | (convert HasFDerivAt.sum (u := Finset.univ)
-              (fun i _ => (wdx_hasFDerivAt_iter hd (v i)).const_mul (a i)) using 1
-             ext s
-             simp)
       rw [heq.fderiv_eq, hH.fderiv]
       simp [wdx_step_eval]
     refine ⟨K + K, Fin.append (fun i => (1 / 2 : ℂ) * a i)

@@ -29,9 +29,7 @@ theorem evK_eq_sum (t : NX.KB S i b ⊗[S.Ks] NX.FmK S ((j : ℕ) + 1)) :
   first
   | exact @_root_.GlobalTheory.EvaluationSum.evK_eq_sum
   | exact _root_.GlobalTheory.EvaluationSum.evK_eq_sum
-  | (apply _root_.GlobalTheory.EvaluationSum.evK_eq_sum <;> assumption)
-  | (intros; apply _root_.GlobalTheory.EvaluationSum.evK_eq_sum <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.EvaluationSum.evK_eq_sum <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.EvaluationSum.evK_eq_sum)
   | (intros; exact _root_.GlobalTheory.EvaluationSum.evK_eq_sum ..)
 
 theorem mem_range_realRd_iff {ν : ℂ} (hν : ν ≠ 0) (g : GA D (Wc D j) → ℂ) :

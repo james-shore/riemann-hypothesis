@@ -16,7 +16,7 @@ theorem finiteAdeleIdempotentOfF_mul_self : (e0 : Matrix (Fin 2) (Fin 2) R) * e0
 
 theorem elementary_hyperbolic : (e0 : Matrix (Fin 2) (Fin 2) R)ᴴ * hyp = hyp - hyp * e0 := by
   ext i j; fin_cases i <;> fin_cases j <;>
-    simp [e0, hyp, Matrix.mul_apply, Fin.sum_univ_two, vecMul, dotProduct, diagonal_apply]
+    simp [e0, hyp, Matrix.mul_apply, vecMul, dotProduct, diagonal_apply]
 
 theorem elementary_commutes_diagonal (d : Fin 2 → R) :
     (e0 : Matrix (Fin 2) (Fin 2) R) * diagonal d = diagonal d * e0 := by

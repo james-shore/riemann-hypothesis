@@ -31,13 +31,13 @@ theorem hkpull_comp {R : Type} [CommRing R] {K L M : Cx R} (f : K ⟶ L) (g : L 
     (x : HK R M F n) : HK.pull R (f ≫ g) F n x = HK.pull R f F n (HK.pull R g F n x) := by
   obtain ⟨x, rfl⟩ := x.mk_surjective
   refine congrArg CohomologyClass.mk (Cocycle.ext ?_)
-  simp [HK.pull, HK.pre, cpre_mk, zcomp, Cochain.ofHom_comp]
+  simp [zcomp, Cochain.ofHom_comp]
 
 theorem hkpull_id {R : Type} [CommRing R] {K : Cx R} (F : Shv R) (n : ℤ)
     (x : HK R K F n) : HK.pull R (𝟙 K) F n x = x := by
   obtain ⟨x, rfl⟩ := x.mk_surjective
   refine congrArg CohomologyClass.mk (Cocycle.ext ?_)
-  simp [HK.pull, HK.pre, cpre_mk, zcomp]
+  simp [zcomp]
 
 def ChainsCoprod : Prop := ∀ (R : Type) [CommRing R] (U V : Spc),
   IsIso (biprod.desc ((chains R).map (coprod.inl : U ⟶ U ⨿ V)) ((chains R).map (coprod.inr : V ⟶ U ⨿ V)))

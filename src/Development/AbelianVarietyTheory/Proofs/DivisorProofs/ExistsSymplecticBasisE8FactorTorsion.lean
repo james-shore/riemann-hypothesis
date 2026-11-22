@@ -25,10 +25,10 @@ theorem omegaStd_eq_sum (g : ℕ) (a b : Fin g ⊕ Fin g → ℤ) :
   have r : ∀ a, (σ.symm (.inr a) : ℕ) = g + a := fun _ => rfl
   have ll : ∀ i j, Out.stdSymp g (σ.symm (.inl i)) (σ.symm (.inl j)) = 0 := fun i j => by
     have := i.2; have := j.2
-    simp only [Out.stdSymp, l, r]; split_ifs <;> omega
+    simp only [Out.stdSymp, l]; split_ifs <;> omega
   have rr : ∀ i j, Out.stdSymp g (σ.symm (.inr i)) (σ.symm (.inr j)) = 0 := fun i j => by
     have := i.2; have := j.2
-    simp only [Out.stdSymp, l, r]; split_ifs <;> omega
+    simp only [Out.stdSymp, r]; split_ifs <;> omega
   have lr : ∀ i j, Out.stdSymp g (σ.symm (.inl i)) (σ.symm (.inr j)) = if i = j then 1 else 0 := fun i j => by
     have := i.2; have := j.2
     simp only [Out.stdSymp, l, r, Fin.ext_iff]; split_ifs <;> omega
@@ -81,7 +81,7 @@ theorem exists_family {N g : ℕ} (hN : Odd N) {T R : Type} [CommGroup T] [CommR
     have := hnd (fun u => p ^ s₀ u) fun y => by
       have hy : y = ∏ v, fun u => y v ^ (Pi.single v 1 : Fin 8 → ℤ) u := by
         funext u
-        rw [Finset.prod_apply, Finset.prod_eq_single u (fun v _ hv => by simp [Pi.single_apply, hv.symm]) (by simp)]
+        rw [Finset.prod_apply, Finset.prod_eq_single u (fun v _ hv => by simp [hv.symm]) (by simp)]
         simp
       rw [hy, map_prod]
       exact Finset.prod_eq_one fun v _ => by rw [key, hp, one_zpow]

@@ -68,7 +68,7 @@ theorem exists_decomp {E : Type} [Field E] {ι : Type} [Fintype ι] [DecidableEq
     rw [e]
     split_ifs with h
     · subst h; simp
-    · simp [Finsupp.single_apply, Ne.symm h]
+    · simp [Ne.symm h]
   · ext u
     simp only [LinearMap.sum_apply, LinearMap.comp_apply, hs, hπ, LinearMap.id_apply]
     rw [Finset.sum_comm]
@@ -115,7 +115,7 @@ theorem isotypic_of_quadratic_relation : ∀ {E : Type} [Field E] [IsAlgClosed E
     have e2 : (R (g*h)).det • σ (g*h)⁻¹ = ((R h).det • σ h⁻¹) * ((R g).det • σ g⁻¹) := by
       rw [_root_.mul_inv_rev, map_mul σ, map_mul R, det_mul, smul_mul_smul_comm, mul_comm (R g).det]
     rw [e2, hinv g, hinv h, map_mul σ, map_mul R] at e1
-    simp only [mul_sub, sub_mul, smul_mul_smul_comm, one_mul, mul_one, smul_mul_assoc,
+    simp only [mul_sub, sub_mul, one_mul, mul_one, smul_mul_assoc,
       mul_smul_comm] at e1
     linear_combination (norm := module) e1
   have hB : ∀ x y, Φ x * Φ y + Φ y * Φ x - (Ψ y).trace • Φ x - (Ψ x).trace • Φ y
@@ -139,7 +139,7 @@ theorem isotypic_of_quadratic_relation : ∀ {E : Type} [Field E] [IsAlgClosed E
   have hanti : ∀ x y, Ψ x = 0 → Φ x * Φ y + Φ y * Φ x = (Ψ y).trace • Φ x := by
     intro x y hx
     have := hB x y
-    simp only [hx, trace_zero, zero_mul, mul_zero, sub_self, zero_smul, add_zero, sub_zero] at this
+    simp only [hx, trace_zero, zero_mul, sub_self, zero_smul, add_zero, sub_zero] at this
     linear_combination (norm := module) this
   have h2c : ∀ X : Module.End E U, X + X = 0 → X = 0 := by
     intro X hX
@@ -149,12 +149,12 @@ theorem isotypic_of_quadratic_relation : ∀ {E : Type} [Field E] [IsAlgClosed E
   obtain ⟨y₂, hy₂⟩ := hsurj (Matrix.single 1 0 1)
   have hc : Ψ (y₁ * y₂ - y₂ * y₁) = !![1, 0; 0, -1] := by
     rw [map_sub, map_mul, map_mul, hy₁, hy₂]
-    ext i j; fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two, Matrix.single_apply]
+    ext i j; fin_cases i <;> fin_cases j <;> simp
   have hc2 : Ψ ((y₁ * y₂ - y₂ * y₁) * (y₁ * y₂ - y₂ * y₁) - 1) = 0 := by
     rw [map_sub, map_mul, hc, map_one]
-    ext i j; fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
-  have ht1 : (Ψ y₁).trace = 0 := by rw [hy₁]; simp [Matrix.trace, Fin.sum_univ_two, Matrix.single_apply]
-  have ht2 : (Ψ y₂).trace = 0 := by rw [hy₂]; simp [Matrix.trace, Fin.sum_univ_two, Matrix.single_apply]
+    ext i j; fin_cases i <;> fin_cases j <;> simp
+  have ht1 : (Ψ y₁).trace = 0 := by rw [hy₁]; simp [Matrix.trace]
+  have ht2 : (Ψ y₂).trace = 0 := by rw [hy₂]; simp [Matrix.trace]
   have htc : (Ψ (y₁ * y₂ - y₂ * y₁)).trace = 0 := by rw [hc]; simp [Matrix.trace, Fin.sum_univ_two]
   have hJ : ∀ x, Ψ x = 0 → Φ x = 0 := by
     intro x hx
@@ -209,7 +209,7 @@ theorem isotypic_of_quadratic_relation : ∀ {E : Type} [Field E] [IsAlgClosed E
     apply hΦeq
     rw [map_sum, map_one]
     simp only [hyP]
-    ext i j; fin_cases i <;> fin_cases j <;> simp [Fin.sum_univ_two, Matrix.single_apply, Matrix.one_apply]
+    ext i j; fin_cases i <;> fin_cases j <;> simp [Fin.sum_univ_two]
   have hσ : ∀ g, σ g = ∑ a, ∑ b, (R g) a b • P a b := by
     intro g
     have e : σ g = Φ (MonoidAlgebra.single g 1) := by rw [hΦ, one_smul]

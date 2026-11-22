@@ -16,8 +16,6 @@ theorem exists_mul_eq_pow_pred {l : ℕ} [Fact l.Prime] {j m : ℕ} (hj : j ≠ 
   | exact @_root_.GlobalTheory.PolynomialNormBound.main
   | exact _root_.GlobalTheory.PolynomialNormBound.main
   | (apply _root_.GlobalTheory.PolynomialNormBound.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PolynomialNormBound.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PolynomialNormBound.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PolynomialNormBound.main ..)
 
 theorem not_pow_dvd {l m j : ℕ} (h1 : j ≠ 0) (h2 : j < 2 * l ^ m) (h3 : j ≠ l ^ m) : ¬ l ^ m ∣ j := by
@@ -61,7 +59,6 @@ theorem log_trunc_pow : ∀ (l : ℕ) [Fact l.Prime] (ϖ : Per.Fl l), Per.kerP l
     · exact Subalgebra.neg_mem _ (Subalgebra.one_mem _)
     · first
       | exact Subalgebra.algebraMap_mem _ _
-      | (rw [GlobalTheory.RingIface.padicIntMap_eq_algebraMap_comp]; exact Subalgebra.algebraMap_mem _ _)
     · exact Algebra.subset_adjoin (Set.mem_singleton _)
 
   have hterm : ∀ k ∈ Finset.range n, ((l : ℕ) : Per.AinfP l) ^ (m + 1) *

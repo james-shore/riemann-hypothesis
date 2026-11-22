@@ -141,7 +141,7 @@ theorem sumFormConcrete_of (S : C.HidaSetting E Wp Wq) (hg1 : 0 < S.G.g1) (hg2 :
     intro b n
     show 0 ≤ (∏ w, J.thrS S.G S.CA S.de S.de' S.T S.T' S.l b n w) ^ 2 /
       (FractionalIdeal.absNorm (S6.dualIdl E S.g (S6.nuBlock S.G.r b n)) : ℝ)
-    exact div_nonneg (sq_nonneg _) (by first | exact_mod_cast FractionalIdeal.absNorm_nonneg _ | exact Rat.cast_nonneg.2 (FractionalIdeal.absNorm_nonneg _) | positivity)
+    exact div_nonneg (sq_nonneg _) (by first | exact_mod_cast FractionalIdeal.absNorm_nonneg _)
   intro ε hε i s hs hsi hir w hw hbud hvolS
   have hir' : i ≤ S.G.r + 1 := hir
   set b := i - s + 1 with hbdef

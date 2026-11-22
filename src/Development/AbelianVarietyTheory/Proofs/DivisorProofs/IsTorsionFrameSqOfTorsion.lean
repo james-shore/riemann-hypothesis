@@ -30,7 +30,7 @@ theorem isTorsFrame_sq : ∀ (S : Scheme.{0}) (P : PolAV S) (rig : LB.Gen (P.L.p
     (ε' := ![((n ^ 2 : ℕ) : ℤ) ^ 2, -1])
     (fun U _ h => by
       simp only [Fintype.prod_sum_type, Fin.prod_univ_two, Sum.elim_inl, Sum.elim_inr,
-        Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, Category.comp_id, eN]
+        Matrix.cons_val_zero, Matrix.cons_val_one, Category.comp_id, eN]
       apply Additive.ofMul.injective
       simp only [ofMul_mul, ofMul_zpow]
       push_cast

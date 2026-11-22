@@ -97,7 +97,7 @@ theorem exists_dual_nbhd : ∀ {F : Type} [Field F] [NumberField F] (v : GlobalT
         convert hinv using 1
         simp only [Pi.single_eq_same, hb]
         field_simp
-      · simp [Pi.single_apply, hj]
+      · simp [hj]
     apply ht₀
     convert hw' _ hw using 2
     simp [dotProduct_single]
@@ -115,7 +115,7 @@ theorem exists_dual_nbhd : ∀ {F : Type} [Field F] [NumberField F] (v : GlobalT
         convert this using 1
         simp only [Pi.single_eq_same, hb]
         field_simp
-      · simp [Pi.single_apply, hj]
+      · simp [hj]
     apply ht₀
     convert hw' _ hw using 2
     simp [single_dotProduct]

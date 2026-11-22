@@ -24,7 +24,7 @@ theorem qZ_sub (Z : Subalgebra k (Matrix (Fin n) (Fin n) k)) (x y : Matrix (Fin 
 theorem qZ_smul (Z : Subalgebra k (Matrix (Fin n) (Fin n) k)) (a : k) (x : Matrix (Fin n) (Fin n) k) :
     qZ Z (a • x) = a • qZ Z x := by
   funext i
-  simp [qZ, mul_smul_comm, trace_smul]
+  simp [qZ, trace_smul]
 
 theorem trace_eq_zero_of_qZ (Z : Subalgebra k (Matrix (Fin n) (Fin n) k)) {d : Matrix (Fin n) (Fin n) k}
     (h : qZ Z d = 0) {b : Matrix (Fin n) (Fin n) k} (hb : b ∈ Z) : trace (b * d) = 0 := by
@@ -98,7 +98,7 @@ theorem piZ_eq_sum {Z : Subalgebra k (Matrix (Fin n) (Fin n) k)} (hZ : CR Z) :
   funext j
   have : qZ Z (∑ i, qZ Z x i • cb i) = ∑ i, qZ Z x i • qZ Z (cb i) := by
     funext l
-    simp [qZ, Finset.mul_sum, trace_sum, mul_smul_comm, trace_smul, Finset.sum_apply]
+    simp [qZ, Finset.mul_sum, trace_sum, trace_smul, Finset.sum_apply]
   rw [this]
   simp [hq, Finset.sum_apply, Pi.single_apply]
 

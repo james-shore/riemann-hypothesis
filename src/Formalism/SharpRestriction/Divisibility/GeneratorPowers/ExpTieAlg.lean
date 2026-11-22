@@ -48,16 +48,15 @@ theorem pderiv_subst {σ τ : Type} [Fintype σ] [DecidableEq σ] {a : σ → Mv
       simp only [MvPolynomial.coe_add, map_add, hsa, add_mul, Finset.sum_add_distrib, hp, hq]
     next p n hp =>
       simp only [MvPolynomial.coe_mul, MvPolynomial.coe_X, hm, subst_X ha, Derivation.leibniz, smul_eq_mul,
-        map_add, hsa, pderiv_X, add_mul, Finset.sum_add_distrib, hp, Pi.single_apply, apply_ite (subst a), h1, hz,
-        mul_one, mul_zero, ite_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true,
-        Finset.mul_sum, mul_assoc, mul_ite, one_mul]
+        hsa, pderiv_X, add_mul, Finset.sum_add_distrib, hp, Pi.single_apply, apply_ite (subst a), hz,
+        mul_one, mul_zero, ite_mul, zero_mul, Finset.sum_ite_eq, Finset.mem_univ, if_true,
+        Finset.mul_sum, mul_assoc, mul_ite]
   letI : UniformSpace S := ⊥
-  haveI : DiscreteUniformity S := by first | exact ⟨rfl⟩ | exact inferInstance
-  haveI : DiscreteTopology S := by first | exact inferInstance | exact ⟨rfl⟩
+  haveI : DiscreteUniformity S := by first | exact ⟨rfl⟩
+  haveI : DiscreteTopology S := by first | exact inferInstance
   haveI : IsTopologicalRing S := by
     first
     | exact inferInstance
-    | exact { continuous_add := continuous_of_discreteTopology, continuous_mul := continuous_of_discreteTopology, continuous_neg := continuous_of_discreteTopology }
   have hc1 : Continuous fun f : MvPowerSeries σ S => pderiv S t (subst a f) :=
     (continuous_pderiv_disc t).comp (MvPowerSeries.continuous_subst ha)
   have hc2 : Continuous fun f : MvPowerSeries σ S => ∑ s, subst a (pderiv S s f) * pderiv S t (a s) :=
@@ -69,7 +68,7 @@ theorem pderiv_subst {σ τ : Type} [Fintype σ] [DecidableEq σ] {a : σ → Mv
 theorem hasSubst0 {σ τ : Type} [Finite σ] {a : σ → MvPowerSeries τ S} (ha : ∀ s, constantCoeff (a s) = 0) :
     HasSubst a := by
   first
-  | exact HasSubst.of_constantCoeff_nilpotent (fun s => by rw [ha s]; exact IsNilpotent.zero)
+  | exact HasSubst.of_constantCoeff_nilpotent (fun s => by rw [ha s])
   | exact ⟨fun s => by rw [ha s]; exact IsNilpotent.zero, fun _ => Set.toFinite _⟩
 
 theorem const_subst0 {σ τ : Type} [Finite σ] {a : σ → MvPowerSeries τ S} (ha : ∀ s, constantCoeff (a s) = 0)
@@ -91,9 +90,6 @@ theorem subst_sum' {σ τ : Type} {a : σ → MvPowerSeries τ S} (ha : HasSubst
     (g : ι → MvPowerSeries σ S) : subst a (∑ i ∈ s, g i) = ∑ i ∈ s, subst a (g i) := by
   first
   | (rw [← coe_substAlgHom ha, map_sum])
-  | (induction s using Finset.cons_induction with
-      | empty => simp [← coe_substAlgHom ha]
-      | cons i s hi ih => rw [Finset.sum_cons, Finset.sum_cons, ← ih, ← coe_substAlgHom ha, map_add])
 
 variable {N d : ℕ}
 
@@ -107,7 +103,6 @@ private theorem subst_X_lemma_2 {σ : Type} (g : MvPowerSeries σ S) :
     subst (X : σ → MvPowerSeries σ S) g = g := by
   first
   | (rw [subst_self]; rfl)
-  | (rw [← map_algebraMap_eq_subst_X]; simp)
 
 private theorem subst_zero_lemma_3 {σ τ : Type} [Finite σ] (g : MvPowerSeries σ S) :
     subst (fun _ : σ => (0 : MvPowerSeries τ S)) g = C (constantCoeff g) := by
@@ -138,15 +133,15 @@ theorem dof_addF (u : Fin N → S) (g : PS S 1 N) :
         if j = i then (1 : PS S 2 N) else 0 := by
       by_cases h : j = i
       · subst h
-        simp [ReciprocityTheory.ChartRestriction.G.TB.MV.addF, pderiv_X, Pi.single_apply]
-      · simp [ReciprocityTheory.ChartRestriction.G.TB.MV.addF, pderiv_X, Pi.single_apply, h]
+        simp [ReciprocityTheory.ChartRestriction.G.TB.MV.addF]
+      · simp [ReciprocityTheory.ChartRestriction.G.TB.MV.addF, h]
     rw [hp, ev, ← coe_substAlgHom hs]
     split_ifs
     · exact map_one _
     · exact map_zero _
   simp only [Dof, h1]
   refine Finset.sum_congr rfl fun j _ => ?_
-  simp [mul_ite, Finset.sum_ite_eq, Finset.sum_ite_eq']
+  simp [mul_ite, Finset.sum_ite_eq]
 
 section Exp
 
@@ -174,7 +169,7 @@ theorem subst_sz_cpy (b : Fin 2) (g : MvPowerSeries (Fin 1 × Fin N) S) :
     obtain rfl : a = 0 := Subsingleton.elim _ _
     show subst (sz (S := S) (N := N)) (X (b, i)) = _
     first
-    | (rw [subst_X hasSubst_sz]; by_cases hb : b = 0 <;> simp [sz, hb])
+    | (rw [subst_X hasSubst_sz])
     | rw [subst_X hasSubst_sz]
   rw [hf]
   by_cases hb : b = 0
@@ -196,7 +191,7 @@ theorem pderiv_cpy (b : Fin 2) (q : Fin N) (g : MvPowerSeries (Fin 1 × Fin N) S
   simp only [cpy, pderiv_X, Pi.single_apply, Prod.mk.injEq, mul_ite, mul_one, mul_zero]
   by_cases hb : b = 1
   · subst hb
-    simp [Finset.sum_ite_eq, Finset.sum_ite_eq']
+    simp [Finset.sum_ite_eq']
   · simp [hb]
 
 theorem key (h0 : ∀ j, constantCoeff (φ j) = 0) (w : Fin N → Fin d → S)
@@ -280,7 +275,7 @@ theorem dof_comp (q : Fin N) (g : PS S 1 d) :
   have hk : ∀ k : Fin d, pderiv S ((0 : Fin 1), q) (famL φ ((0 : Fin 1), k)) =
       ∑ i, subst (famL φ) (ev (n := 1) ![pt S d 0, 0] (pderiv S ((1 : Fin 2), i) (F k))) * C (w q i) :=
     fun k => key F φ h0 w hlin hhom q k
-  rw [dof_addF, Finset.sum_eq_single q (fun j _ hj => by simp [Pi.single_apply, hj]) (by simp)]
+  rw [dof_addF, Finset.sum_eq_single q (fun j _ hj => by simp [hj]) (by simp)]
   simp only [Pi.single_eq_same, map_one, one_mul]
   rw [pderiv_subst hL, Fintype.sum_prod_type, Fin.sum_univ_one]
   simp only [hk]
@@ -366,7 +361,7 @@ private theorem foldr_coeff_lemma_2 {S : Type} [CommRing S] {σ κ : Type} [Deci
       ring
     · intro l' hl'
       have hne : v l ≠ v l' := fun e => hnd.1 (by rw [hv e]; exact hl')
-      simp [hn l' (by simp [hl']), Finsupp.single_apply, hne]
+      simp [hn l' (by simp [hl']), hne]
 
 private theorem const_dpoly_lemma_3 {E : Type} [Field E] [NumberField E] [IsCMField E] {H : Host E} {Dw : Datum H}
     {S : Type} [CommRing S] (α : Lt1 Dw →₀ ℕ) (G : MvPowerSeries (Fin 1 × Fin (dL Dw)) S) :
@@ -377,7 +372,7 @@ private theorem const_dpoly_lemma_3 {E : Type} [Field E] [NumberField E] [IsCMFi
       PS S 1 (dL Dw) → PS S 1 (dL Dw)) = pderiv S ((0 : Fin 1), q) := by
     intro q
     funext f
-    rw [dof_addF, Finset.sum_eq_single q (fun j _ hj => by simp [Pi.single_apply, hj]) (by simp)]
+    rw [dof_addF, Finset.sum_eq_single q (fun j _ hj => by simp [hj]) (by simp)]
     simp
   by_cases h1 : (1 : S) = 0
   · haveI : Subsingleton S := subsingleton_of_zero_eq_one h1.symm
@@ -388,7 +383,7 @@ private theorem const_dpoly_lemma_3 {E : Type} [Field E] [NumberField E] [IsCMFi
   simp only [hD]
   rw [← coeff_zero_eq_constantCoeff_apply, foldr_coeff_lemma_2 (fun l => ((0 : Fin 1), ltIdx Dw l)) ?_ α G _
     (Finset.nodup_toList _) 0 (fun _ _ => by simp)]
-  · simp only [Finset.prod_toList, Finset.sum_toList, zero_add]
+  · simp only [zero_add]
     rw [expVal, Finsupp.mapDomain, Finsupp.prod_fintype, Finsupp.sum_fintype]
     all_goals simp
   · intro a b hab
@@ -416,6 +411,5 @@ theorem nabVal_eq_const {S : Type} [CommRing S] [Algebra ℚ S] {d : ℕ} {O : T
     B.nabVal S h w0 k f u P = constantCoeff (DpolyOf B.G.F u P (f * FB.expS S ((k : S) • B.hL S h w0))) := by
   first
   | rfl
-  | (simp only [FB.nabVal, FB.FK]; rfl)
 
 end Formalism.MainNotions.ModuliIntegralCharts.H1

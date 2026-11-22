@@ -700,7 +700,6 @@ theorem keyTwo_of_locTwo_vacBar (hB : ThetaBasic) (hK : KDecay) (hA : IAut) (hL 
       (fun i => Units.val_pow_eq_pow_val ϖ i ▸ bT i) hg.1 hg.2
     refine ⟨x - x' * r ^ c₀, fun i => ?_⟩
     rw [← a3, ← b3, wh_sub hΛ (a2.aut _ a1) (b2.aut _ b1), hx, hx', r1, r2, yy_inv _ r0]
-    push_cast
     ring
 
 end PartC

@@ -83,7 +83,7 @@ theorem cube (k : Type) [Field k] (X : Type) [AddCommGroup X] [Module.Free ℤ X
     rw [← hw Z a b d q I hI (fun a => val τ a.left q I) (fun _ => rfl), gs_eq _ q ⊤ trivial, map_one, map_one,
       Units.val_eq_one, mul_inv_eq_one]
     rcases h with rfl | rfl | rfl
-    · rw [MonObj.one_comp, C.face]; simp only [_root_.one_mul, _root_.mul_one]; try ac_rfl
+    · rw [MonObj.one_comp, C.face]; simp only [_root_.one_mul]; try ac_rfl
     · rw [MonObj.one_comp, C.face₂]; simp only [_root_.one_mul, _root_.mul_one]; try ac_rfl
     · rw [MonObj.one_comp, C.face₃]; simp only [_root_.one_mul, _root_.mul_one]; try ac_rfl
   have key := unit_eq_one k X w.val w.isUnit (face _ _ _ _ (Or.inr (Or.inl rfl))) (face _ _ _ _ (Or.inl rfl))

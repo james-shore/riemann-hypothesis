@@ -132,7 +132,7 @@ theorem UMem.exists_baseChange : ∀ {g n : ℕ} {F : SFam g n (zetaAway n)} {W 
     · simp only [aA', Over.comp_left, Category.assoc]
       rw [hgc, hbc0, ← Category.assoc ((Over.pullback (jK V')).map aG').left, hfa', Category.assoc, hfa, actA]
       simpa only [Category.assoc] using congrArg (· ≫ E.aG.left) hgc'
-    · simp only [aA', Over.comp_left, Category.assoc, Over.w, Over.w_assoc, pA.w, pA.w_assoc]
+    · simp only [aA', Over.comp_left, Category.assoc, Over.w, Over.w_assoc, pA.w]
   · obtain ⟨u, hu⟩ := 𝔪.psi mu
     have hx : hD.xe ((𝔪.e₈.trans hD.xe.symm) mu) = 𝔪.e₈ mu := hD.xe.apply_symm_apply _
     obtain ⟨u', hu'⟩ := GlobalTheory.PelCoordPull.psiCoord_pull hD _ _ (hx.symm ▸ hu)

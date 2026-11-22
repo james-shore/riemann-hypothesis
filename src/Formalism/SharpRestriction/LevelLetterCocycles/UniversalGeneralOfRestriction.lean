@@ -1372,7 +1372,7 @@ theorem frame_inv_poly2 {O LL : Type} [CommRing O] [Field LL] [Algebra O LL] (p 
     have h1 : (PowerSeries.constantCoeff : PowerSeries LL →+* LL).mapMatrix Hps = 1 := by
       ext i j
       simp only [RingHom.mapMatrix_apply, Matrix.map_apply, hHps, Matrix.of_apply,
-        PowerSeries.coeff_zero_eq_constantCoeff_apply, PowerSeries.constantCoeff_mk, hsol0,
+        PowerSeries.constantCoeff_mk, hsol0,
         Matrix.one_apply, Pi.single_apply]
     rw [h1, Matrix.det_one]
     exact isUnit_one
@@ -1427,8 +1427,7 @@ theorem frame_inv_poly2 {O LL : Type} [CommRing O] [Field LL] [Algebra O LL] (p 
   obtain ⟨ρ, hρ⟩ := (Polynomial.X_pow_dvd_iff).2 hQ
   refine ⟨ρ, ?_⟩
   have h := congrArg (Polynomial.aeval Y) hρ
-  simp only [hQdef, map_sub, map_sum, map_mul, Polynomial.aeval_C, Polynomial.aeval_X_pow, GP, HP,
-    Polynomial.aeval_X] at h
+  simp only [hQdef, map_sub, map_sum, map_mul, Polynomial.aeval_C, Polynomial.aeval_X_pow, GP, HP] at h
   rw [← h]
   ring
 
@@ -1663,7 +1662,7 @@ theorem sec_zero [IsDomain O] (hinj : Function.Injective (algebraMap O LL))
       simp only [hρ', mul_add, Finset.sum_add_distrib]
       congr 1
       · rw [Finset.sum_eq_single k0 (fun k _ hk => by simp [Ne.symm hk]) (by simp)]
-        simp only [map_mul, map_pow, map_natCast, ite_true, map_one, mul_one]
+        simp only [map_pow, map_natCast, ite_true, mul_one]
         ring
       · rw [Finset.mul_sum]
         exact Finset.sum_congr rfl fun k _ => by ring
@@ -1784,7 +1783,7 @@ theorem inNL_lam (A : ArcP n) (hA : A.OK) (c : ZMod n) (hc : c ∈ A.cuts) (T : 
       exact Formalism.MainNotions.UnusedSlot80.UnivC.dvO_mem_FilS W hCA T c (A.len c) s hs b hb _ _
         (jump_ge W A hA c hc T hT s hs)
     · simp only [lE, pow_zero, one_mul]
-      rw [Finset.sum_eq_single k (fun i _ hi => by simp [Pi.single_apply, Ne.symm hi]) (by simp)]
+      rw [Finset.sum_eq_single k (fun i _ hi => by simp [Ne.symm hi]) (by simp)]
       simp
 
 end SecM

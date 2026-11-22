@@ -98,7 +98,7 @@ theorem halfTrace_holds : HalfTraceStatement := by
     intro v
     have h := hH.eigenvectorBasis.sum_inner_mul_inner (WithLp.toLp 2 v) (WithLp.toLp 2 (C *ᵥ v))
     rw [EuclideanSpace.inner_eq_star_dotProduct] at h
-    simp only [hinner, hinner', star_trivial, WithLp.ofLp_toLp] at h
+    simp only [hinner, hinner', star_trivial] at h
     rw [dotProduct_comm, ← h]
     refine Finset.sum_congr rfl fun j _ => ?_
     rw [dotProduct_comm (ev j), ← hsym, hCev, smul_dotProduct, smul_eq_mul, dotProduct_comm v]
@@ -107,7 +107,7 @@ theorem halfTrace_holds : HalfTraceStatement := by
     intro v
     have h := hH.eigenvectorBasis.sum_inner_mul_inner (WithLp.toLp 2 v) (WithLp.toLp 2 v)
     rw [EuclideanSpace.inner_eq_star_dotProduct] at h
-    simp only [hinner, hinner', star_trivial, WithLp.ofLp_toLp] at h
+    simp only [hinner, hinner', star_trivial] at h
     rw [← h]
     exact Finset.sum_congr rfl fun j _ => by ring
   have hlam0 : ∀ j, 0 ≤ lam j := fun j => hCpsd.eigenvalues_nonneg j
@@ -139,7 +139,7 @@ theorem halfTrace_holds : HalfTraceStatement := by
     have hq2 := hquad u
     have hsum1 : ∑ j, lam j * ((ev j ⬝ᵥ ev i) ^ 2 * (u ⬝ᵥ u)) = lam i * (u ⬝ᵥ u) := by
       simp only [hort]
-      simp [Finset.sum_ite_eq', Finset.mem_univ]
+      simp [Finset.mem_univ]
     have hbes : ∑ j, lam j * ((ev j ⬝ᵥ ev i) ^ 2 * (u ⬝ᵥ u) + (ev j ⬝ᵥ u) ^ 2) ≤
         ∑ j, lam j * (u ⬝ᵥ u) := by
       refine Finset.sum_le_sum fun j _ => mul_le_mul_of_nonneg_left ?_ (hlam0 j)

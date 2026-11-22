@@ -30,10 +30,6 @@ theorem whitCharFrom_zero {k : Type} [Field k] [ValuativeRel k] [TopologicalSpac
   first
   | rfl
   | simp [GlobalTheory.BZMir.whitCharFrom, GlobalTheory.LocGL.whitChar]
-  | (simp only [GlobalTheory.BZMir.whitCharFrom, GlobalTheory.LocGL.whitChar, MonoidHom.coe_mk,
-        OneHom.coe_mk]
-     congr 2
-     exact Finset.sum_congr (by ext p; simp) fun _ _ => rfl)
 
 theorem twKer_derUnip_zero (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k]
     [IsNonarchimedeanLocalField k] (ψ : AddChar k Circle) (N : ℕ) (V : Type) [AddCommGroup V]

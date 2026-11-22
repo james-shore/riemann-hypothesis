@@ -27,7 +27,7 @@ theorem splitTorus_hom_eq_of_nilpotent : ∀ (A κ : Type) [CommRing A] [IsLocal
     congr 2
     ext a
     simp only [RingHom.coe_comp, Function.comp_apply, RingEquiv.toRingHom_eq_coe,
-      RingEquiv.coe_toRingHom, Ideal.Quotient.mk_eq_mk]
+      RingEquiv.coe_toRingHom]
     rw [RingEquiv.eq_symm_apply]
     rfl
 

@@ -14,35 +14,35 @@ theorem diagonal_decomposition_transvections {ι F : Type*} [Fintype ι] [Decida
   simp only [map_mul, SpecialLinearGroup.coeMonoidHom_apply, SpecialLinearGroup.diag2n_coe, SpecialLinearGroup.transvection_coe, mul_add, add_mul,
     one_mul, mul_one, single_mul_single_same]
   simp only [single_mul_single_of_ne _ _ _ _ hij.symm, single_mul_single_of_ne _ _ _ _ hij,
-    zero_add, add_zero, single_mul_single_same, zero_mul, mul_zero]
+    add_zero, zero_mul]
   ext x y
   by_cases hxi : i = x
   · subst x
     by_cases hyi : i = y
-    · subst y; (simp [Matrix.add_apply, Matrix.one_apply, Matrix.single_apply, diagonal_apply, hij, hij.symm, ha, *]
-        <;> (try field_simp) <;> (try ring) <;> (try (split_ifs <;> simp_all)))
+    · subst y; (simp [Matrix.add_apply, hij.symm, *]
+        <;> (try field_simp) <;> (try ring))
     by_cases hyj : j = y
-    · subst y; (simp [Matrix.add_apply, Matrix.one_apply, Matrix.single_apply, diagonal_apply, hij, hij.symm, ha, *]
-        <;> (try field_simp) <;> (try ring) <;> (try (split_ifs <;> simp_all)))
-    (simp [Matrix.add_apply, Matrix.one_apply, Matrix.single_apply, diagonal_apply, hij, hij.symm, ha, *]
-        <;> (try field_simp) <;> (try ring) <;> (try (split_ifs <;> simp_all)))
+    · subst y; (simp [Matrix.add_apply, hij.symm, *]
+        <;> (try field_simp) <;> (try ring))
+    (simp [Matrix.add_apply, hij.symm, *]
+        <;> (try field_simp) <;> (try ring))
   by_cases hxj : j = x
   · subst x
     by_cases hyi : i = y
-    · subst y; (simp [Matrix.add_apply, Matrix.one_apply, Matrix.single_apply, diagonal_apply, hij, hij.symm, ha, *]
-        <;> (try field_simp) <;> (try ring) <;> (try (split_ifs <;> simp_all)))
+    · subst y; (simp [Matrix.add_apply, hij.symm, *]
+        <;> (try field_simp) <;> (try ring))
     by_cases hyj : j = y
-    · subst y; (simp [Matrix.add_apply, Matrix.one_apply, Matrix.single_apply, diagonal_apply, hij, hij.symm, ha, *]
-        <;> (try field_simp) <;> (try ring) <;> (try (split_ifs <;> simp_all)))
-    (simp [Matrix.add_apply, Matrix.one_apply, Matrix.single_apply, diagonal_apply, hij, hij.symm, ha, *]
-        <;> (try field_simp) <;> (try ring) <;> (try (split_ifs <;> simp_all)))
+    · subst y; (simp [Matrix.add_apply, hij.symm, *]
+        <;> (try field_simp) <;> (try ring))
+    (simp [Matrix.add_apply, *]
+        <;> (try field_simp) <;> (try ring))
   by_cases hyi : i = y
-  · subst y; (simp [Matrix.add_apply, Matrix.one_apply, Matrix.single_apply, diagonal_apply, hij, hij.symm, ha, *]
+  · subst y; (simp [Matrix.add_apply, Matrix.one_apply, diagonal_apply, hij.symm, *]
         <;> (try field_simp) <;> (try ring) <;> (try (split_ifs <;> simp_all)))
   by_cases hyj : j = y
-  · subst y; (simp [Matrix.add_apply, Matrix.one_apply, Matrix.single_apply, diagonal_apply, hij, hij.symm, ha, *]
+  · subst y; (simp [Matrix.add_apply, Matrix.one_apply, diagonal_apply, *]
         <;> (try field_simp) <;> (try ring) <;> (try (split_ifs <;> simp_all)))
-  (simp [Matrix.add_apply, Matrix.one_apply, Matrix.single_apply, diagonal_apply, hij, hij.symm, ha, *]
+  (simp [Matrix.add_apply, Matrix.one_apply, diagonal_apply, *]
         <;> (try field_simp) <;> (try ring) <;> (try (split_ifs <;> simp_all)))
 
 theorem sl_top {ι F : Type*} [Fintype ι] [DecidableEq ι] [Nontrivial ι] [Field F]

@@ -14,8 +14,6 @@ theorem hasSubst_of_cc {f : MvPowerSeries σ K} (hf : MvPowerSeries.constantCoef
 private theorem finsupp_degree_add (a b : σ →₀ ℕ) : (a + b).degree = a.degree + b.degree := by
   first
   | exact map_add Finsupp.degree a b
-  | exact Finsupp.degree_add a b
-  | simp [Finsupp.degree_add]
 
 private theorem coeff_mul_eq_zero_of_degree_lt_add' {A B : MvPowerSeries σ K} {a b : ℕ}
     (hA : ∀ m : σ →₀ ℕ, m.degree < a → MvPowerSeries.coeff m A = 0)
@@ -26,8 +24,6 @@ private theorem coeff_mul_eq_zero_of_degree_lt_add' {A B : MvPowerSeries σ K} {
   refine Finset.sum_eq_zero fun p hp => ?_
   first
   | rw [Finset.HasAntidiagonal.mem_antidiagonal] at hp
-  | simp only [Finset.mem_antidiagonal] at hp
-  | simp at hp
   have hd : p.1.degree + p.2.degree = n.degree := by rw [← finsupp_degree_add, hp]
   by_cases h1 : p.1.degree < a
   · rw [hA _ h1, zero_mul]
@@ -98,8 +94,6 @@ private theorem coeff_mul_congr_of_degree_lt {A A' B B' : MvPowerSeries σ K} {N
   refine Finset.sum_congr rfl fun p hp => ?_
   first
   | rw [Finset.HasAntidiagonal.mem_antidiagonal] at hp
-  | simp only [Finset.mem_antidiagonal] at hp
-  | simp at hp
   have hd : p.1.degree + p.2.degree = n.degree := by rw [← finsupp_degree_add, hp]
   rw [hA _ (by omega), hB _ (by omega)]
 
@@ -139,8 +133,7 @@ private theorem inv_factorial_mul_choose_eq {k m : ℕ} (h : m ≤ k) :
   rw [← e]
   push_cast
   first
-  | (field_simp; done)
-  | (field_simp; ring)
+  | (field_simp)
 
 private theorem mvExp_add_binomial_series_coefficients {f g : MvPowerSeries σ K} (hf : MvPowerSeries.constantCoeff f = 0)
     (hg : MvPowerSeries.constantCoeff g = 0) : mvExp (f + g) = mvExp f * mvExp g := by
@@ -285,10 +278,8 @@ theorem mvSubst_mvExp {τ : Type} {f : MvPowerSeries σ K} {a : σ → MvPowerSe
     first
     | exact hasSubst_of_cc hf
     | exact (hasSubst_of_cc hf).const
-    | exact PowerSeries.HasSubst.const (hasSubst_of_cc hf)
   first
   | exact MvPowerSeries.subst_comp_subst_apply hs ha _
-  | (rw [PowerSeries.subst, PowerSeries.subst, MvPowerSeries.subst_comp_subst_apply hs ha])
 
 theorem rescale_mvExp {f : PowerSeries K} (hf : PowerSeries.constantCoeff f = 0) (c : K) :
     PowerSeries.rescale c (mvExp f : PowerSeries K) = mvExp (PowerSeries.rescale c f) := by
@@ -297,8 +288,8 @@ theorem rescale_mvExp {f : PowerSeries K} (hf : PowerSeries.constantCoeff f = 0)
     hasSubst_of_cc (by
       first
       | (simp; done)
-      | (simp only [map_smul, smul_eq_zero]; right; exact PowerSeries.constantCoeff_X)
-      | (simp [PowerSeries.X]; done))
+      | (simp only [map_smul, smul_eq_zero]; right)
+      | (simp [PowerSeries.X]))
   rw [PowerSeries.rescale_eq_subst, PowerSeries.rescale_eq_subst,
     PowerSeries.subst_comp_subst_apply (hasSubst_of_cc hf) hX]
 

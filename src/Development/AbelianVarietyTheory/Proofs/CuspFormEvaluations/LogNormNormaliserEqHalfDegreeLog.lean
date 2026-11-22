@@ -32,7 +32,7 @@ theorem log_norm_normaliser : ∀ (D : D7) (B : WeightFamilies.Prov D) (hinj : F
     exact_mod_cast (D.host.g_prime i).pos
   have hval : σ ((nnW B hinj EX w : 𝓞 B.KO) : B.KO) =
       ∏ i : Fin 2, ρ (EX.piG i ^ Dplus w * piBarO EX i ^ Dminus w) := by
-    simp [nnW, hρdef, map_prod, map_mul, map_pow]
+    simp [nnW, hρdef, map_mul, map_pow]
   have hnorm : ‖σ ((nnW B hinj EX w : 𝓞 B.KO) : B.KO)‖ =
       ∏ i : Fin 2, (D.host.g i : ℝ) ^ (((Dplus w : ℝ) + Dminus w) / 2) := by
     rw [hval, norm_prod]

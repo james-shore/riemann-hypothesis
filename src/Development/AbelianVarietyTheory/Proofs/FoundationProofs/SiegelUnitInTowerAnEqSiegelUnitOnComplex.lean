@@ -144,9 +144,9 @@ theorem an_siegel_eq : ∀ (Ω : Type) [Field Ω] [Algebra ℚ Ω] [IsAlgClosure
   set Px : Fin 2 → ℤ := ![(x 0).num * (x 1).den, (x 1).num * (x 0).den] with hPx
   have hMx : ∀ i, (M : ℚ) * x i = Px i := fun i => by
     fin_cases i
-    · simp only [hMdef, hPx, Matrix.cons_val_zero]; push_cast
+    · simp only [hMdef, hPx]; push_cast
       rw [← Rat.mul_den_eq_num (x 0)]; ring
-    · simp only [hMdef, hPx, Matrix.cons_val_one, Matrix.cons_val_zero]; push_cast
+    · simp only [hMdef, hPx]; push_cast
       rw [← Rat.mul_den_eq_num (x 1)]; ring
   have hd : DifferentiableOn ℂ (sgC c x) Hs :=
     UpperHalfPlane.mdifferentiable_iff.1 (GlobalTheory.Sieg.mdifferentiable_sg c x hx)

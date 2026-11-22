@@ -31,7 +31,7 @@ theorem fst_comp_eq_unit (ht : Γ.IsTorsionAlong G x N i) {y : Spec (CommRingCat
       change (a ≫ y) ≫ Γ.G.hom = 𝟙 _
       rw [Category.assoc, y1, ha])) 1 (by
     rw [one_left_eq]
-    simp only [Over.homMk_left, Over.mk_hom, Category.id_comp, Category.assoc]
+    simp only [Over.homMk_left, Over.mk_hom, Category.assoc]
     rw [unit_i' Γ ht, y3]
     have := congrArg Over.Hom.left h1
     rw [one_left_eq, Over.comp_left] at this
@@ -188,7 +188,7 @@ theorem omega_open {R : Type} [CommRing R] [IsDomain R] {T : Type} [CommGroup T]
       let W : Submodule R (Module.Dual R L) := LinearMap.range ((N : R) • (LinearMap.id : Module.Dual R L →ₗ[R] Module.Dual R L))
       have h0 : N • W.mkQ = 0 := by
         ext w'
-        simp only [LinearMap.smul_apply, LinearMap.zero_apply, LinearMap.comp_apply]
+        simp only [LinearMap.smul_apply, LinearMap.zero_apply]
         exact (map_nsmul W.mkQ N w').symm.trans ((Submodule.Quotient.mk_eq_zero W).2 ⟨w', by simp [Nat.cast_smul_eq_nsmul]⟩)
       obtain ⟨ψ, hψ, -⟩ := hlift _ W.mkQ h0
       have h1 : W.mkQ w = 0 := by

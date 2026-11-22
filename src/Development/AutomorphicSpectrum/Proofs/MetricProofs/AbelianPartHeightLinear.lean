@@ -126,7 +126,7 @@ theorem iSup_eigSp_eq_top {E L V ι : Type} [Field E] [NumberField E] [Field L] 
     induction P using Polynomial.induction_on' with
     | add p q hp hq => simp only [map_add, LinearMap.add_apply, hp, hq, add_smul]
     | monomial k a =>
-      simp only [aeval_monomial, Module.End.mul_apply, hpow, eq_intCast, map_intCast]
+      simp only [aeval_monomial, Module.End.mul_apply, hpow, eq_intCast]
       rw [Module.End.intCast_apply, mul_smul, Int.cast_smul_eq_zsmul]
   simp only [eigSp, Submodule.mem_iInf, LinearMap.mem_ker, LinearMap.sub_apply, LinearMap.smul_apply, LinearMap.id_apply,
     sub_eq_zero]

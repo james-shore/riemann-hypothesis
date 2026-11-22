@@ -25,7 +25,7 @@ theorem GlobalTheory.LocLanglands.artin_transport_m_alt : ∀ (hL : _root_.Upper
       have hd : Matrix.GeneralLinearGroup.det (Matrix.GeneralLinearGroup.map i.toRingHom g) =
           iU (Matrix.GeneralLinearGroup.det g) := by
         ext
-        simp [hiU, RingHom.map_det]
+        simp [hiU]
       show (LinearEquiv.refl ℂ ℂ) ((ξ.comp iU (Matrix.GeneralLinearGroup.det g) : ℂ) • v) = _
       show _ = ((ξ (Matrix.GeneralLinearGroup.det (Matrix.GeneralLinearGroup.map i.toRingHom g)) : ℂ) • v)
       rw [hd]

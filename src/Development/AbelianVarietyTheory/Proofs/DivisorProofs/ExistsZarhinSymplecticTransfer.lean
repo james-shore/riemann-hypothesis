@@ -41,7 +41,7 @@ def vMat (d : ℕ) : Matrix (Fin 4 ⊕ Fin 4) (Fin 4 ⊕ Fin 4) ℤ := fromBlock
 theorem vMat_transpose_mul_form_mul {d : ℕ} (hd : 0 < d) : (vMat d)ᵀ * form d * vMat d = 1 := by
   have h1 : ((d - 1 : ℕ) : ℤ) = (d : ℤ) - 1 := by omega
   rw [vMat, form, fromBlocks_transpose, fromBlocks_multiply, fromBlocks_multiply, ← fromBlocks_one]
-  congr 1 <;> simp [Matrix.mul_neg, Matrix.neg_mul, quat_mul_transpose, h1, sub_smul]
+  congr 1 <;> simp [quat_mul_transpose, h1, sub_smul]
 
 theorem sum_sig {β : Type} [AddCommMonoid β] (g : Fin 4 ⊕ Fin 4 → β) : ∑ k, g (sig k) = ∑ s, g s := by
   simp [Fin.sum_univ_succ, Fintype.sum_sum_type, sig, add_assoc]

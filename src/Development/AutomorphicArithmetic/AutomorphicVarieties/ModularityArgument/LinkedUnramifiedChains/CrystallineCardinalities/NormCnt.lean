@@ -8,7 +8,7 @@ namespace UpperTheory.V.Z.J
 private theorem jtj {R : Type} [CommRing R] (X : Matrix (Fin 3) (Fin 3) R) (i j : Fin 3) :
     (Jmat R 3 * Xᵀ * Jmat R 3) i j = X j.rev i.rev := by
   fin_cases i <;> fin_cases j <;>
-    simp [Matrix.mul_apply, Fin.sum_univ_three, Jmat, Matrix.transpose_apply] <;> decide
+    simp [Matrix.mul_apply, Fin.sum_univ_three, Jmat, Matrix.transpose_apply]
 
 private theorem count {A Q : Type} [AddCommGroup A] [AddCommGroup Q] [Finite Q] (S T : Set A) (H : AddSubgroup A)
     (hH : (H : Set A) = S) (hS : S.Finite) (hT : T ⊆ S) (f : A →+ Q) (hf : ∀ x ∈ S, f x = 0 → x ∈ T) :

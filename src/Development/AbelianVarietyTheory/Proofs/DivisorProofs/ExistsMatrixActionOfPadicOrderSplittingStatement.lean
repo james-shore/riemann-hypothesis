@@ -20,4 +20,4 @@ theorem _root_.GlobalTheory.T.exists_matrixAction_of_padicOrderSplitting : ∀ (
     (∀ T : Module.End C H, (∀ c, ρ c * T = T * ρ c) → ∀ M, Ψ M * T = T * Ψ M) ∧
     (∀ N : Submodule C H, (∀ c, ∀ x ∈ N, ρ c x ∈ N) → ∀ M, ∀ x ∈ N, Ψ M x ∈ N) ∧
     ∀ y (N : Submodule C H), (∀ a, ∀ x ∈ N, ρ (algebraMap (𝓞 D.F) D.O a) x ∈ N) → ∀ x ∈ N, Ψ (Matrix.scalar _ y) x ∈ N := by
-  first | (exact @GlobalTheory.exists_matrix_action_of_splitting) | (exact GlobalTheory.exists_matrix_action_of_splitting) | (intros; apply GlobalTheory.exists_matrix_action_of_splitting  <;> assumption)
+  first | (exact @GlobalTheory.exists_matrix_action_of_splitting)

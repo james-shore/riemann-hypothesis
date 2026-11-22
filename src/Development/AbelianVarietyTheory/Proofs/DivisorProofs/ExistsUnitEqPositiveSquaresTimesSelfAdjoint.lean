@@ -15,7 +15,7 @@ theorem exists_casimir (τ : A →ₗ[ℚ] ℚ) (y : A) (hy : ∀ a, a ≠ 0 →
   classical
   let β : LinearMap.BilinForm ℚ A := ((LinearMap.mul ℚ A).compr₂ (τ ∘ₗ LinearMap.mulLeft ℚ y))
   have hβ : ∀ a b, β a b = τ (y * (a * b)) := fun a b => rfl
-  have hs : β.IsSymm := ⟨fun a b => by simp only [hβ, mul_comm a b, RingHom.id_apply]⟩
+  have hs : β.IsSymm := ⟨fun a b => by simp only [hβ, mul_comm a b]⟩
   obtain ⟨v, hv⟩ := LinearMap.BilinForm.exists_orthogonal_basis (K := ℚ) (V := A) (B := β) ⟨hs.eq⟩
   have hpos : ∀ i, 0 < β (v i) (v i) := fun i => by
     rw [hβ, ← sq]; exact hy _ (v.ne_zero i)

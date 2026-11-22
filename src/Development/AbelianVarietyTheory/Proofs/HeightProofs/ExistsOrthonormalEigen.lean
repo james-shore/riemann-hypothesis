@@ -99,7 +99,7 @@ theorem exists_orthonormal_eigen : ∀ (n : ℕ) (ε : Fin n → Bool) (H : Type
     have hn : ‖(E i : H)‖ = 1 := E.orthonormal.1 i
     rw [hE i, inner_smul_right, inner_self_eq_norm_sq_to_K, hn] at h1
     have h2 : hTs.eigenvalues rfl i = 1 + ∑ k, ‖dRep σ (X k) (E i : H)‖ ^ 2 := by
-      simp only [RCLike.ofReal_one, Complex.ofReal_one, one_pow, mul_one] at h1
+      simp only [RCLike.ofReal_one, one_pow, mul_one] at h1
       exact_mod_cast h1
     rw [h2]
     have : 0 ≤ ∑ k, ‖dRep σ (X k) (E i : H)‖ ^ 2 := Finset.sum_nonneg fun _ _ => by positivity

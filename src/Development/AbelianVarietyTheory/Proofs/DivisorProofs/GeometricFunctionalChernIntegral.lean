@@ -67,7 +67,7 @@ theorem evalF_add (G₁ G₂ : MvPolynomial ι ℝ) : evalF A w (G₁ + G₂) = 
 
 theorem evalF_smul (t : ℝ) (G : MvPolynomial ι ℝ) : evalF A w (t • G) = (t : ℂ) • evalF A w G := by
   funext x
-  simp [evalF, fld, MvPolynomial.smul_eq_C_mul, Algebra.smul_def]
+  simp [evalF, fld, Algebra.smul_def]
 
 end Linear
 

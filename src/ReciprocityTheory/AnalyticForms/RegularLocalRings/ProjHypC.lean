@@ -106,9 +106,6 @@ theorem val_polyToAway_C (c : ℂ) :
   rw [← Localization.mk_one_eq_algebraMap]
   first
   | rfl
-  | (rw [← HomogeneousLocalization.algebraMap_apply]; rfl)
-  | simp [HomogeneousLocalization.val_fromZeroRingHom, Localization.mk_one_eq_algebraMap,
-      SetLike.GradeZero.coe_algebraMap, Ideal.Quotient.algebraMap_eq, MvPolynomial.algebraMap_eq]
 
 theorem val_polyToAway_mul_pow {f : MvPolynomial (Σ k, ι k) ℂ} {a : K → ℕ}
     (hf : IsMultiHomog f a) :

@@ -100,7 +100,7 @@ theorem jst_mul (D : D7) (n : ℕ) : Jst D n * Jst D n = -1 := by
   refine jst_cases D n _ fun a b => ?_
   simp only [Matrix.submatrix_apply, Matrix.neg_apply, Equiv.symm_apply_apply]
   rw [← Matrix.submatrix_one_equiv (finSumFinEquiv.symm : Fin (n + n) ≃ Fin n ⊕ Fin n)]
-  simp only [Matrix.submatrix_apply, Equiv.symm_apply_apply]
+  simp only [Matrix.submatrix_apply]
   rcases a with a | a <;> rcases b with b | b <;>
     simp [Matrix.one_apply, Equiv.eq_symm_apply, Equiv.symm_apply_eq, Fin.ext_iff] <;> omega
 

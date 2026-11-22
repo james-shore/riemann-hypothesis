@@ -127,7 +127,7 @@ theorem hasSum_ideal (hd : 4 < d) (𝔞 : (FractionalIdeal (𝓞 K)⁰ K)ˣ) {s 
   have hmem : ∀ x I, x ∈ Φ ⁻¹' {I} ↔
       (I * 𝔞 : FractionalIdeal (𝓞 K)⁰ K) = spanSingleton _ (x : K) := fun x I => by
     rw [← hΦ, Units.mul_left_inj, coeIdeal_inj, Set.mem_preimage, Set.mem_singleton_iff, eq_comm]
-  have hN : (absNorm 𝔞.1 : ℝ) ≠ 0 := by simp [absNorm_eq_zero_iff]
+  have hN : (absNorm 𝔞.1 : ℝ) ≠ 0 := by simp
   refine (h.tsum_fiberwise Φ).congr_fun fun I => ?_
   have hval : ∀ x : Φ ⁻¹' {I}, (‖σ x.1‖ ^ 2 / absNorm 𝔞.1) ^ (-s)
       = (Ideal.absNorm I : ℝ) ^ (-s) := fun x => by
@@ -252,7 +252,7 @@ theorem exists_periodPair (𝔞 : (FractionalIdeal (𝓞 K)⁰ K)ˣ) :
   have hd0 := discr_pos h2 hD
   have h0 : (σ (b 1) * conj (σ (b 0))).im ≠ 0 := by
     rw [← abs_ne_zero, ← absNorm_mul_sqrt h2 hD σ]
-    have : (absNorm 𝔞.1 : ℝ) ≠ 0 := by simp [absNorm_eq_zero_iff]
+    have : (absNorm 𝔞.1 : ℝ) ≠ 0 := by simp
     positivity
   refine ⟨⟨σ (b 0), σ (b 1), ?_⟩, ?_⟩
   · rw [LinearIndependent.pair_iff]

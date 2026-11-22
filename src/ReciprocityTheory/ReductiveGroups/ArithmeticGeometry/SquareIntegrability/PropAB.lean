@@ -20,7 +20,6 @@ theorem paT_apply (z : EuclideanSpace ℂ (Fin (Fintype.card ι))) (i : ι) :
     paT z i = z (Fintype.equivFin ι i) := by
   first
   | rfl
-  | simp [paT, LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft'_apply]
 
 theorem Hf_eq_inner (v w : EuclideanSpace ℂ ι) : Hf v w = inner ℂ w v := by
   exact FPw.Hf_eq_inner v w
@@ -137,7 +136,6 @@ theorem polynomial_translate_innerProduct_bound {q c : ℕ} (hq : 1 ≤ q) (a : 
       field_simp
       first
       | rfl
-      | ring
     · congr 1
       rw [map_sub, hT, smul_sub, smul_smul, inv_mul_cancel₀ hs0.ne', one_smul]
   have hF' := paIsPoly s⁻¹ hF

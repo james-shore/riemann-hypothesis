@@ -54,7 +54,7 @@ theorem comb_bound {g : ℕ} (L : List (Pc g)) (hg : 1 ≤ g) (hpos : ∀ p ∈ 
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun I _ => ?_
     rw [Finset.sum_ite_eq]
-    simp [Finset.mem_range, Nat.lt_succ_iff]
+    simp [Finset.mem_range]
 
   have h3 : ∀ I : Finset (Fin L.length), (if w I ≤ k then (g : ℝ) ^ (k - w I) else 0) ≤ (g : ℝ) ^ k * x ^ w I := by
     intro I

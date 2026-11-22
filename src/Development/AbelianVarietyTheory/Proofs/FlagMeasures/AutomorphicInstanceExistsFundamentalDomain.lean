@@ -20,8 +20,6 @@ theorem exists_strict_domain {G : Type} [Group G] [TopologicalSpace G] [IsTopolo
   | exact @_root_.GlobalTheory.MeasurableFundamentalDomain.exists_measurable_fundamental_domain
   | exact _root_.GlobalTheory.MeasurableFundamentalDomain.exists_measurable_fundamental_domain
   | (apply _root_.GlobalTheory.MeasurableFundamentalDomain.exists_measurable_fundamental_domain <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MeasurableFundamentalDomain.exists_measurable_fundamental_domain <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MeasurableFundamentalDomain.exists_measurable_fundamental_domain <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MeasurableFundamentalDomain.exists_measurable_fundamental_domain ..)
 
 theorem exists_isFundDom : ∀ (I : AutInst) (μf : Measure I.Gf) [μf.IsHaarMeasure] [SigmaFinite μf],

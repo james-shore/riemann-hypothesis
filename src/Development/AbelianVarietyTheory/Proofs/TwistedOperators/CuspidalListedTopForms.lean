@@ -72,7 +72,7 @@ def conjFun {H H' : Type} [NormedAddCommGroup H] [InnerProductSpace ℂ H] [Norm
     { toFun := fun w => star (ℓ (c w))
       map_add' := fun a b => by simp
       map_smul' := fun a w => by
-        simp only [LinearIsometryEquiv.map_smulₛₗ, map_smul, smul_eq_mul, map_mul, Complex.conj_conj, RingHom.id_apply]
+        simp only [LinearIsometryEquiv.map_smulₛₗ, map_smul, smul_eq_mul, RingHom.id_apply]
         rw [star_mul', Complex.star_def, Complex.conj_conj] }
     ‖ℓ‖ (fun w => by simpa using ℓ.le_opNorm (c w))
 

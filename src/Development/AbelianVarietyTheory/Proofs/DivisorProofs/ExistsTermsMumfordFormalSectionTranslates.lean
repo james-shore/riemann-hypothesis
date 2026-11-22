@@ -34,20 +34,18 @@ theorem exists_secT_weight_zero : ∀ (R : Type) [CommRing R] [IsDomain R] (D : 
     (fun U _ f => by
       simp only [tφ, tε, h1, h2, Fin.prod_univ_five, Fin.prod_univ_two, Fintype.prod_sum_type,
         Sum.elim_inl, Sum.elim_inr, Category.id_comp, Matrix.cons_val_zero, Matrix.cons_val_one,
-        Matrix.cons_val_two, Matrix.cons_val_three, Matrix.cons_val_four, Matrix.head_cons]
+        Matrix.cons_val_two, Matrix.cons_val_three, Matrix.cons_val_four]
       simp
       group)
   refine ⟨d, fun Z x z J hJ => ?_⟩
   have k0 : gs x z ⊤ (0 : Γ(D.P.A.left, ⊤)) = 0 := by
     rw [gs_eq x z ⊤ (by simp)]
     first
-      | (rw [map_zero, map_zero]; done)
-      | simp [map_zero]
+      | (rw [map_zero, map_zero])
   have k1 : gs x z ⊤ (-1 : Γ(D.P.A.left, ⊤)) = -1 := by
     rw [gs_eq x z ⊤ (by simp)]
     first
-      | (rw [map_neg, map_one, map_neg, map_one]; done)
-      | simp [map_neg, map_one]
+      | (rw [map_neg, map_one, map_neg, map_one])
   rw [hd Z x z J hJ, val_one, k0, k1, Category.comp_id]
   simp
 

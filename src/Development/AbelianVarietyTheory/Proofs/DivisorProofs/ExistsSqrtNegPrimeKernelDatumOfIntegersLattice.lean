@@ -27,7 +27,6 @@ theorem exists_ker_point_sqrtNegNat {p : ℕ} (hp : 1 < p) (L : PeriodPair)
   have hpos : S.Nonempty := by
     rw [← Finset.card_pos]
     have : (0 : ℝ) < S.card := by
-      push_cast at hc
       linarith
     exact_mod_cast this
   obtain ⟨t, ht⟩ := hpos

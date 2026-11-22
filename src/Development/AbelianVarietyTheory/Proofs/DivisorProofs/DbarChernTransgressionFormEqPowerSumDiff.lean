@@ -93,7 +93,7 @@ theorem dbarAt_transAt (n : ℕ) (r : Type) [Fintype r] [DecidableEq r] (G G' : 
     refine Finset.sum_congr rfl fun p _ => ?_
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun q _ => Finset.sum_congr rfl fun a _ => ?_
-    simp only [Algebra.smul_def, mul_assoc, mul_sub, sub_mul]
+    simp only [Algebra.smul_def, mul_assoc]
 
   have alg : ∑ i ∈ Finset.range k, ∑ p, ∑ q, W i v q p * (curvEv G v p q - curvEv G' v p q) =
       powAt G v k - powAt G' v k := by

@@ -34,7 +34,7 @@ theorem closedTr_of (h1 : CoverJ) (h2 : FrEx) (h3 : OpEx2) (h4 : FixOf) (h5 : Ti
       simpa [jl, mapRep] using this
     · refine MonoidHom.ext fun g => LinearMap.ext fun v => ?_
       rw [hR]
-      simp [LocBridge.repE, Matrix.toLin'_apply]
+      simp [LocBridge.repE]
   obtain ⟨bk⟩ := GlobalTheory.BSP.nonempty_bk_of_finExt l Bw.Kw
   obtain ⟨τp, hτp⟩ := GlobalTheory.BSP.exists_isPer l Bw.Kw bk
   obtain ⟨N, F, F₀, rr, hF, hF₀, hlink⟩ := h2 l Bw.Kw Bw.LL bk τp hτp P AI T a Bw.LL_split (r.comp jl) _ (Cv.pull jl hjl) J'

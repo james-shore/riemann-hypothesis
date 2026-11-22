@@ -92,7 +92,7 @@ lemma Hpk_eq (k r : ℕ) (i j : Fin (2 * r + k + 1)) :
   have hi := i.isLt
   have hj := j.isLt
   simp only [Hpk, sgn, Fin.ext_iff, sig_val]
-  split_ifs <;> first | rfl | (exfalso; omega) | norm_num
+  split_ifs <;> first | rfl | (exfalso; omega)
 
 lemma herm_bvec (k r : ℕ) (x y : Fin (2 * r + k + 1)) :
     herm (Hpk k r) (bvec x) (bvec y) = Hpk k r y x := by
@@ -158,15 +158,15 @@ lemma PJP_apply (k r : ℕ) (i j : Fin (2 * r + k + 1)) :
       have f3 : ¬ (i.val = r + k) := by omega
       have f4 : i.val < r + k := by omega
       have f5 : ¬ (2 * r + k - i.val < r + k) := by omega
-      simp [c1, c2, epsK, sgn, sig_sig, hsv, hne, hne', h, f1, f2, f3, f4, f5]
+      simp [c1, c2, epsK, sgn, sig_sig, hsv, hne', h, f1, f2, f3, f4, f5]
       all_goals norm_num
     rcases le_or_gt i.val (r + k) with h' | h'
     · have hm := sig_mid k r i h h'
-      simp only [sig_sig, hm]
+      simp only [hm]
       have f1 : ¬ (i.val < r) := by omega
       have f2 : ¬ (r + k < i.val) := by omega
       by_cases h3 : i.val = r + k
-      · simp [c1, c2, epsK, sgn, f1, f2, h3]
+      · simp [c1, c2, epsK, sgn, h3]
       · have f4 : i.val < r + k := by omega
         simp [c1, c2, epsK, sgn, f1, f2, h3, f4]
     · have hsv := sig_hi k r i h'
@@ -177,7 +177,7 @@ lemma PJP_apply (k r : ℕ) (i j : Fin (2 * r + k + 1)) :
       have f3 : ¬ (i.val = r + k) := by omega
       have f4 : ¬ (i.val < r + k) := by omega
       have f5 : 2 * r + k - i.val < r + k := by omega
-      simp [c1, c2, epsK, sgn, sig_sig, hsv, hne, hne', h', f1, f2, f3, f4, f5]
+      simp [c1, c2, epsK, sgn, sig_sig, hsv, hne', h', f1, f2, f3, f4, f5]
       all_goals norm_num
   · have hs' : ¬ i = sig k r j := fun e => hs ((eq_sig_iff k r i j).1 e)
     by_cases hij : j = i
@@ -189,8 +189,7 @@ lemma PJP_apply (k r : ℕ) (i j : Fin (2 * r + k + 1)) :
         have f4 : j.val < r + k := by omega
         have f5 : ¬ (2 * r + k - j.val < r + k) := by omega
         have hne : ¬ sig k r j = j := fun e => hs e.symm
-        simp [c1, c2, epsK, sgn, hs, hne, hsv, h, f1, f2, f4, f5]
-        all_goals norm_num
+        simp [c1, c2, epsK, hs, hsv, h, f1, f2, f4, f5]
       rcases le_or_gt j.val (r + k) with h' | h'
       · exact absurd (sig_mid k r j h h').symm hs
       · have hsv := sig_hi k r j h'
@@ -199,14 +198,14 @@ lemma PJP_apply (k r : ℕ) (i j : Fin (2 * r + k + 1)) :
         have f4 : ¬ (j.val < r + k) := by omega
         have f5 : 2 * r + k - j.val < r + k := by omega
         have hne : ¬ sig k r j = j := fun e => hs e.symm
-        simp [c1, c2, epsK, sgn, hs, hne, hsv, h', f1, f2, f4, f5]
+        simp [c1, c2, epsK, hs, hsv, h', f1, f2, f4, f5]
         all_goals norm_num
     · have hij' : ¬ i = j := fun e => hij e.symm
       have hss : ¬ sig k r i = sig k r j := fun e => hij' ((sig_inj k r i j).1 e)
       have hs'' : ¬ sig k r j = i := fun e => hs' e.symm
       have hs3 : ¬ sig k r i = j := fun e => hs e.symm
       have hss' : ¬ sig k r j = sig k r i := fun e => hss e.symm
-      simp [hs, hs', hs'', hs3, hij, hij', hss, hss']
+      simp [hs, hs', hij', hss']
 
 lemma PJP (k r : ℕ) : (Pk k r)ᴴ * Formalism.REAL.Jm (epsK k r) * Pk k r = Hpk k r := by
   ext i j

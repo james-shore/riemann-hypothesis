@@ -80,8 +80,6 @@ theorem exists_denom (Λ : Submodule S (n → A)) (hfg : Λ.FG)
   | exact @_root_.GlobalTheory.SublatticeFacts.main
   | exact _root_.GlobalTheory.SublatticeFacts.main
   | (apply _root_.GlobalTheory.SublatticeFacts.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SublatticeFacts.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SublatticeFacts.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SublatticeFacts.main ..)
 
 @[reducible] def congBasis (Λ : Submodule S (n → A)) (hfg : Λ.FG)
@@ -127,8 +125,6 @@ theorem lamAf_fg (L : Submodule (𝓞 E) (Fin n → E)) (hL : L.FG) : (lamAf (F 
   | exact @_root_.GlobalTheory.VectorInclusion.main
   | exact _root_.GlobalTheory.VectorInclusion.main
   | (apply _root_.GlobalTheory.VectorInclusion.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.VectorInclusion.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.VectorInclusion.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.VectorInclusion.main ..)
 
 theorem exists_nat_multiple (d : 𝓞 F) (hd : d ≠ 0) : ∃ N : ℕ, 1 ≤ N ∧ ∃ d' : 𝓞 F, d' * d = N := by

@@ -17,7 +17,7 @@ def dotL (E : Type) [Field E] [NumberField E] (k : ℕ) :
 
 theorem dotL_apply {E : Type} [Field E] [NumberField E] {k : ℕ} (x z : Fin k → Cinf E) :
     dotL E k x z = ∑ i, x i * z i := by
-  simp [dotL, ContinuousLinearMap.sum_apply]
+  simp [dotL]
 
 theorem exists_pairing : ∀ {E : Type} [Field E] [NumberField E] [IsTotallyComplex E] {k : ℕ} {ψ : AddChar (Ad E) ℂ}, S8 → StdPsi ψ → ∃ β : (Fin k → Cinf E) →L[ℝ] (Fin k → Cinf E) →L[ℝ] ℝ, (∀ y, (∀ x, β x y = 0) → y = 0) ∧ ∀ x z : Fin k → Cinf E, ψ (sInf E (∑ i, x i * z i)) = Complex.exp (-((β x z : ℝ) : ℂ) * Complex.I) := by
   intro E _ _ _ k ψ h8 hψ

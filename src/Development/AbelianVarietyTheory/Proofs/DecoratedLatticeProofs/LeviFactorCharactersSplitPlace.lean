@@ -29,7 +29,7 @@ variable {D : D7}
 
 theorem suppAt_one (e : AE D) (V : HSp D) : SuppAt e V 1 := by
   intro i j
-  simp [Formalism.L2.Theta.SuppAt, Formalism.L2.Theta.mt]
+  simp [Formalism.L2.Theta.mt]
 
 theorem isDetAt_one (e : AE D) (V : HSp D) : IsDetAt e V 1 1 := by
   simp [Formalism.L2.Theta.IsDetAt, Formalism.L2.Theta.mt]
@@ -106,7 +106,7 @@ theorem levi_chars_split : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (S S₀
     have h2 := hsp ℓ hinv f hf
     rw [map_one, mul_one] at h1
     rw [h1] at h2
-    simp only [splitFacO, map_one, inv_one, mul_one, Circle.coe_one, hχ, Circle.coe_mul, Circle.coe_inv] at h2
+    simp only [splitFacO, map_one, inv_one, mul_one, Circle.coe_one, hχ, Circle.coe_inv] at h2
     have hd : ((χT (Matrix.GeneralLinearGroup.det a) : Circle) : ℂ) ≠ 0 := Circle.coe_ne_zero _
     have h3 : (R : ℂ) * ((α a : ℂ) * (χT (Matrix.GeneralLinearGroup.det a) : ℂ)) = r' := by
       have := mul_right_cancel₀ hℓf h2

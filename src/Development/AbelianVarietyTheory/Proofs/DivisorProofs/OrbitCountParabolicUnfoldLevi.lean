@@ -57,7 +57,6 @@ theorem orbit_count_parabolic_unfold : ∀ (P M N : Type) [Group P] [Group M] [G
       have hrK : (r : M) ∈ KM := ((memS r).1 hr).2
       have hyo : (QuotientGroup.mk (u (Quotient.out (QuotientGroup.mk Z : N ⧸ L))) : P ⧸ KP) = r • x0 := by
         obtain ⟨l, hl⟩ := QuotientGroup.mk_out_eq_mul L Z
-        change _ = r • x0
         rw [hx0, hsmul, hl, QuotientGroup.eq, map_mul, hZ]
         have h1 : s (r : M) ∈ KP := hsK _ hrK
         have h2 : u (l : N) ∈ KP := (huK _).2 l.2

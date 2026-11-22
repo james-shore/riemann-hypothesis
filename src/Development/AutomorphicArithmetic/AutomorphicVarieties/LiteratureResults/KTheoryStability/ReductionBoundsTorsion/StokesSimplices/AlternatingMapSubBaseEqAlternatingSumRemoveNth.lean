@@ -22,7 +22,7 @@ lemma alternatingMap_sub_on_finset_eq_sub_sum_update {q : ℕ} (f : V [⋀^Fin q
       by_cases hj : j = a
       · subst hj
         simp [ha]
-      · simp [hj, Function.update_of_ne hj]
+      · simp [hj]
     rw [hfun, ih]
     have h1 : f (update u a (u a - x)) = f u - f (update u a x) := by
       rw [f.map_update_sub, update_eq_self]
@@ -35,7 +35,7 @@ lemma alternatingMap_sub_on_finset_eq_sub_sum_update {q : ℕ} (f : V [⋀^Fin q
         exact update_eq_self _ _
       have e2 : f (update (update u j x) a x) = 0 := by
         apply f.map_eq_zero_of_eq _ (i := a) (j := j) _ haj
-        simp [Function.update_of_ne haj.symm, haj]
+        simp [Function.update_of_ne haj.symm]
       rw [e1, e2, sub_zero]
     rw [h1, Finset.sum_congr rfl h2, Finset.sum_insert ha]
     abel
@@ -61,7 +61,7 @@ lemma alternatingMap_sub_base_eq_alternating_sum_removeNth (q : ℕ) (f : V [⋀
       have hc := cons_removeNth_tail v j
       rw [← Fin.insertNth_removeNth, f.map_insertNth]
       erw [hc]
-      simp [Units.smul_def, zsmul_eq_mul]
+      simp [zsmul_eq_mul]
   have e0 : Fin.removeNth 0 v = fun j => v j.succ := by
     funext j
     simp [Fin.removeNth]

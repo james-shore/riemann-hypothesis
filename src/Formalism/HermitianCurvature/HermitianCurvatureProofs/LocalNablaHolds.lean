@@ -135,11 +135,9 @@ theorem fst_zero' : (0 : Q.Pr V).1 = 0 := rfl
 theorem fst_smul' (c : ℂ) (a : Q.Pr V) : (c • a).1 = c • a.1 := by
   first
   | rfl
-  | exact Prod.smul_fst _ _
 theorem fst_sum' {ι : Type*} (s : Finset ι) (f : ι → Q.Pr V) : (∑ i ∈ s, f i).1 = ∑ i ∈ s, (f i).1 := by
   first
   | exact Prod.fst_sum
-  | exact map_sum (AddMonoidHom.fst (Module.End ℂ V) (Module.End ℂ V)ᵐᵒᵖ) f s
 
 end fst
 

@@ -69,7 +69,7 @@ theorem uniqueDiffWithinAt_compl {V : Type} [NormedAddCommGroup V] [NormedSpace 
     refine mem_closure_of_tendsto ht ?_
     filter_upwards [self_mem_nhdsWithin] with t ht
     have ht' : (0 : ℝ) < t := ht
-    simp only [Set.mem_setOf_eq, map_add, map_smul, smul_eq_mul]
+    simp only [map_add, map_smul, smul_eq_mul]
     nlinarith [mul_pos ht' hv]
   have hU := uniqueDiffWithinAt_convex hH (by
     rw [hO.interior_eq]
@@ -134,8 +134,6 @@ theorem exists_perm_of_ofFn_perm {α : Type} {n : ℕ} (v w : Fin n → α)
   | exact @_root_.GlobalTheory.FiberCardPermutation.exists_perm_of_ofFn_perm
   | exact _root_.GlobalTheory.FiberCardPermutation.exists_perm_of_ofFn_perm
   | (apply _root_.GlobalTheory.FiberCardPermutation.exists_perm_of_ofFn_perm <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiberCardPermutation.exists_perm_of_ofFn_perm <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiberCardPermutation.exists_perm_of_ofFn_perm <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiberCardPermutation.exists_perm_of_ofFn_perm ..)
 
 theorem term_eq {V : Type} [NormedAddCommGroup V] [NormedSpace ℂ V] {F : V → ℂ} {x : V}

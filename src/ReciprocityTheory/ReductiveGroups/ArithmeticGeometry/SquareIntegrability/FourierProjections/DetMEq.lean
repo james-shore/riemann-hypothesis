@@ -37,7 +37,6 @@ theorem vol_eq (Y : GT ι) : volume (ZSpan.fundamentalDomain Y.b) = 1 := by
     first
       | (rw [← Module.finrank_mul_finrank ℝ ℂ (EuclideanSpace ℂ ι), Complex.finrank_real_complex,
           finrank_euclideanSpace])
-      | simp [← Module.finrank_mul_finrank ℝ ℂ (EuclideanSpace ℂ ι)]
   let b₀ : OrthonormalBasis (Fin (2 * Fintype.card ι)) ℝ (EuclideanSpace ℂ ι) :=
     (stdOrthonormalBasis ℝ (EuclideanSpace ℂ ι)).reindex (finCongr hfr)
   rw [ZSpan.measure_fundamentalDomain Y.b volume b₀.toBasis, detM_eq Y b₀,

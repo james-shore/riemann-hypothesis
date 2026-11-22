@@ -35,7 +35,6 @@ theorem iterated_derivative_column_case_int (t : ℤ) (M : ℕ) (e : Equiv.Perm 
   have h0 : (1 + piF (0 : Matrix (Fin (M + 1)) (Fin (M + 1 + 1)) ℂ)).det ≠ 0 := by
     simp [piF_zero]
   rw [ipeel (fsum t c) 0 (analyticAt_fsum t c 0 h0) M _ (e.symm c)]
-  beta_reduce
   have hu0 : Equiv.swap 0 c.succ (e (e.symm c)).succ = 0 := by simp
   rw [hu0]
   have hev2 : (fun y => fderiv ℂ (fsum t c) y (Matrix.single (e.symm c) 0 1)) =ᶠ[𝓝 0]

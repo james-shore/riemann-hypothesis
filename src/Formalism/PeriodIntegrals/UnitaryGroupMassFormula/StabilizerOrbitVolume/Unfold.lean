@@ -21,11 +21,9 @@ instance nontrivAF : Nontrivial (AF F) := by
   haveI : Nontrivial (Ainf F) := by
     first
     | exact inferInstance
-    | (haveI : Nonempty (NumberField.InfinitePlace F) := inferInstance; exact Pi.nontrivial)
   first
   | exact inferInstance
   | exact inferInstanceAs (Nontrivial (Ainf F × Af F))
-  | exact (Prod.nontrivial_left : Nontrivial (Ainf F × Af F))
 
 end Inst
 

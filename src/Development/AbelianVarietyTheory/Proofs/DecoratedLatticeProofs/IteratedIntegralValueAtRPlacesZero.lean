@@ -41,7 +41,7 @@ theorem aconv_nil' {G : Type} [AddMonoid G] : aconv ([] : List (G →₀ ℂ)) =
 
 theorem comb_single_zero' (S' T : HSp D) (u : WO S' T → ℂ) :
     comb ψ S' T (Finsupp.single 0 1) u = u := by
-  simp [comb, Finsupp.support_single_ne_zero _ one_ne_zero, heisO_zero_eq]
+  simp [comb, heisO_zero_eq]
 
 theorem trc_single_one' {V : HSp D} (u : GA D V → ℂ) : trc (Finsupp.single 1 1) u = u := by
   simp only [trc, Finsupp.support_single_ne_zero (1 : GA D V) (one_ne_zero (α := ℂ)), Finset.sum_singleton, Finsupp.single_eq_same, one_smul]

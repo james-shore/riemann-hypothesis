@@ -39,7 +39,7 @@ variable {V V₀ W W₀ : HSp D} {ρ σ : ℕ} {dV : HypDec V V₀ ρ} {dW : Hyp
 theorem _root_.GlobalTheory.AscFin.cond_one (hp : p.Is dV dW x ψ) (y : Mx D V₀.rank σ) : Cond dW p x y ψ (fun _ => True) 1 := by
   refine ⟨⟨1, 0, zero_mem _, ?_⟩, ?_, ?_⟩
   · intro i j
-    simp [mt_one_]
+    simp
   · intro N h1 h2 h3
     rw [inv_one, mt_one_, Matrix.one_mul] at h3
     have hdet : (1 + N).det = 1 := by

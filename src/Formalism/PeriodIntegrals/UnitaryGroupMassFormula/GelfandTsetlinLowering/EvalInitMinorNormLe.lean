@@ -93,7 +93,7 @@ theorem diag_scalar {n N : ℕ} (h : n + 1 = N) (lam : DomWeight N) (sg : DomWei
       refine Finset.prod_congr rfl (fun j _ => ?_)
       have hj := j.2
       rw [hPs, mul_div_cancel_left]
-      simp [hv, hσ, hj, show j.1 < n + 1 by omega]
+      simp [hv, hσ, hj]
     · congr 1
       unfold degZ wsum
       rw [← Fin.sum_univ_eq_sum_range ℓ (n + 1), ← Fin.sum_univ_eq_sum_range σ n]

@@ -18,16 +18,11 @@ theorem entry (wf : Fin k → Fin n → ℂ) (M : Matrix (Fin n) (Fin n) ℂ) (a
     ((Wm wf)ᴴ * M * Wm wf) a b = star (wf a) ⬝ᵥ (M *ᵥ wf b) := by
   first
   | (rw [Matrix.mul_assoc]; rfl)
-  | (simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Wm, Matrix.of_apply, dotProduct,
-        Matrix.mulVec, Pi.star_apply, Finset.sum_mul, Finset.mul_sum]
-     rw [Finset.sum_comm]
-     exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring)
 
 private theorem conjTranspose_Wm_mulVec_apply (wf : Fin k → Fin n → ℂ) (y : Fin n → ℂ) (a : Fin k) :
     ((Wm wf)ᴴ *ᵥ y) a = star (wf a) ⬝ᵥ y := by
   first
   | rfl
-  | simp [Matrix.mulVec, dotProduct, Matrix.conjTranspose_apply, Wm]
 
 private theorem conjTranspose_mul_J_one_add_mul_eq_one_add (J : Matrix (Fin n) (Fin n) ℂ) (F : Matrix (Fin n) (Fin k) ℂ)
     (D : Matrix (Fin k) (Fin k) ℂ) (hF : Fᴴ * J * F = 1) :
@@ -36,7 +31,7 @@ private theorem conjTranspose_mul_J_one_add_mul_eq_one_add (J : Matrix (Fin n) (
     intro m _ X
     rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, hF, Matrix.one_mul]
   have key2 : Fᴴ * (J * F) = 1 := by rw [← Matrix.mul_assoc, hF]
-  simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_assoc, key, key2]
+  simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_one, Matrix.mul_assoc, key, key2]
 
 private theorem conjTranspose_one_add_mul_J_mul_eq_J (J : Matrix (Fin n) (Fin n) ℂ) (F : Matrix (Fin n) (Fin k) ℂ)
     (D : Matrix (Fin k) (Fin k) ℂ) (hJh : Jᴴ = J) (hF : Fᴴ * J * F = 1) (hD : D + Dᴴ + Dᴴ * D = 0) :
@@ -59,7 +54,6 @@ private theorem sub_one_add_conjTranspose_defect_eq_zero_of_unitary (G : Matrix 
   have e : (Gᴴ - 1) * (G - 1) = Gᴴ * G - Gᴴ - G + 1 := by
     first
     | noncomm_ring
-    | (simp only [sub_mul, mul_sub, Matrix.one_mul, Matrix.mul_one]; abel)
   rw [e, hG]
   abel
 

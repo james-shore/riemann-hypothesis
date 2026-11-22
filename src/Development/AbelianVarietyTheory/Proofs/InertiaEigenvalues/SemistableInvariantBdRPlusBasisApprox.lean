@@ -122,7 +122,7 @@ theorem approx {l : ℕ} [Fact l.Prime] {S R : Type} [CommRing S] [IsDomain S] [
       Matrix.smul_mul, Matrix.mul_smul, texp_add _ _ hN', map_neg, mul_neg, neg_add_cancel, texp_zero, smul_smul,
       ← pow_add, two_mul]
     ext i j
-    by_cases hij : i = j <;> simp [hij, Matrix.one_apply]
+    by_cases hij : i = j <;> simp [hij]
   · rw [cleared_map q f N hl _ _ _ ha', ← smul_sub, Matrix.smul_apply, smul_eq_mul]
     refine I.mul_mem_left _ (texp_sub_mem q _ I ?_ i j)
     have h2 : q ((l : ℚ) ^ k)⁻¹ = q ((l : ℚ) ^ (k + k'))⁻¹ * (l : R) ^ k' := by

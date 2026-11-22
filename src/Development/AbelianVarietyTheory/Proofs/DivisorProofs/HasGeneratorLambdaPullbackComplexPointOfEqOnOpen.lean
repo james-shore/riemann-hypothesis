@@ -61,7 +61,7 @@ theorem hasGen_lam_pull_of_eq_on_open : ∀ (A : Over (Sp ℂ)) [GrpObj A], IsAb
   have sq : (A ◁ pk) ≫ lift (fst A T) (snd A T ≫ x) = fst A Tk ≫ e ≫ g := by
     apply CartesianMonoidalCategory.hom_ext
     · simp [e, g]
-    · simp only [Category.assoc, lift_snd, e, g, lift_fst_assoc, lift_snd_assoc]
+    · simp only [Category.assoc, lift_snd, e, g, lift_snd_assoc]
       rw [whiskerLeft_snd_assoc, hxy, ← Category.assoc, ← Category.assoc]
       congr 1
       exact toUnit_unique _ _

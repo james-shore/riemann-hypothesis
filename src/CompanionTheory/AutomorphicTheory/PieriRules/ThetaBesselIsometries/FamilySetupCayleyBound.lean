@@ -204,7 +204,6 @@ theorem ratio_moment : HypsG → ∀ (k r : ℕ) (Wp : Type) [NormedAddCommGroup
       hBeL.1 hQ hE1 (Matrix.of x) hx a v
     have h2 := mul_le_mul_of_nonneg_left h1 hdg.le
     simp only [Finset.mul_sum] at h2
-    beta_reduce
     calc _ = dg ν * ((lenA k r z (Matrix.of x) a.succ / lenA k r z (Matrix.of x) a.castSucc) ^ 2 *
           ‖l ν ((R ν).σ (Matrix.of x) v)‖ ^ 2) := by ring
       _ ≤ _ := h2

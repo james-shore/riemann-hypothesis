@@ -16,7 +16,7 @@ private theorem gDet_chi_map_mapRingHom {n : ℕ} {R R' G : Type} [CommRing R] [
   let g : Polynomial R →ₐ[R] Polynomial R' :=
     { Polynomial.mapRingHom f with
       commutes' := fun c => by
-        simp [RingHom.algebraMap_toAlgebra, Polynomial.algebraMap_apply] }
+        simp [RingHom.algebraMap_toAlgebra] }
   have h := D.nat (Polynomial R) (Polynomial R') g
     (MonoidAlgebra.single 1 Polynomial.X - MonoidAlgebra.mapRingHom G Polynomial.C x)
   refine Eq.trans ?_ h
@@ -24,7 +24,7 @@ private theorem gDet_chi_map_mapRingHom {n : ℕ} {R R' G : Type} [CommRing R] [
   rw [map_sub]
   congr 1
   · ext a
-    simp [g, MonoidAlgebra.mapRingHom, Finsupp.single_apply]
+    simp [g, MonoidAlgebra.mapRingHom]
   · ext a
     simp [g, MonoidAlgebra.mapRingHom]
 
@@ -69,7 +69,7 @@ theorem UpperTheory.V.Pa.Core.patched_trace_local_charPoly_approx_annihilated :
   refine ⟨W.t.D.tr (MonoidAlgebra.single h 1 * (List.ofFn fun i =>
     MonoidAlgebra.single (gb i) (1 : W.R) - MonoidAlgebra.single 1 ((W.t.ψ v i (g i) : W.Rˣ) : W.R)).prod), ?_, Or.inl ?_⟩
   · refine hsees 1 _ _ ?_
-    simp only [map_mul, map_list_prod, List.map_ofFn, map_sub, MonoidAlgebra.mapDomainRingHom_apply,
+    simp only [map_mul, map_list_prod, List.map_ofFn, MonoidAlgebra.mapDomainRingHom_apply,
       MonoidAlgebra.mapDomain_single]
     congr 2
     congr 1
@@ -83,7 +83,7 @@ theorem UpperTheory.V.Pa.Core.patched_trace_local_charPoly_approx_annihilated :
     refine Eq.trans ?_ ((A.A N).p.Ord v g (πN0 Λ N h))
     congr 1
     unfold GFrame.oEl
-    simp only [map_mul, map_list_prod, List.map_ofFn, map_sub, MonoidAlgebra.mapDomainRingHom_apply,
+    simp only [map_mul, map_list_prod, List.map_ofFn, MonoidAlgebra.mapDomainRingHom_apply,
       MonoidAlgebra.mapDomain_single, MonoidAlgebra.mapRingHom_single]
     rw [map_one]
     congr 2

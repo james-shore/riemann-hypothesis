@@ -154,7 +154,7 @@ theorem _root_.GlobalTheory.EtC.pull_id (E : _root_.GlobalTheory.EtC.Spc)
   obtain ⟨x, rfl⟩ := x.mk_surjective
   simp only [_root_.GlobalTheory.EtC.pull, _root_.GlobalTheory.EtC.HK.pull,
     _root_.GlobalTheory.EtC.HK.pre,
-    _root_.GlobalTheory.EtC.cpre_mk, Functor.map_id]
+    _root_.GlobalTheory.EtC.cpre_mk]
   congr 1
   ext : 1
   simp [_root_.GlobalTheory.EtC.zcomp]

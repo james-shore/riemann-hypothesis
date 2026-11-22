@@ -163,9 +163,6 @@ private theorem inner_orthogonalProjection_of_mem {E : Type*} [NormedAddCommGrou
   rw [Submodule.coe_inner]
   first
   | exact Submodule.inner_orthogonalProjectionOnto_eq_of_mem_left ⟨a, ha⟩ y
-  | exact Submodule.inner_orthogonalProjection_eq_of_mem_left ⟨a, ha⟩ y
-  | exact inner_orthogonalProjection_eq_of_mem_left ⟨a, ha⟩ y
-  | simp
 
 theorem formulaF_sigLam (hgap : StdGap ε lam) (hP : IsPsiFor ε lam T Ψ) (hv₀ : v₀ ≠ 0) {g : Matrix (Fin n) (Fin n) ℂ} (hg : g ∈ UJset ε) (v v' : T.V) :
     inner ℂ (⟨uniformisationL2 ε Ψ v₀ v', datumEmbedding_mem_Hlam hP v'⟩ : Hlam ε Ψ v₀)

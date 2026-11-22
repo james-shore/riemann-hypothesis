@@ -106,7 +106,7 @@ theorem adjoint_comp_isometry : ∀ (E : Type) [Field E] [NumberField E] [IsCMFi
 theorem topL_mul {κ : Type} [CommRing κ] {n r : ℕ} (hrn : r ≤ n) (A : Matrix (Fin n) (Fin r) κ) (B : Matrix (Fin r) (Fin r) κ) :
     topL r (A * B) = topL r A * B := by
   ext i j
-  simp only [topL, Matrix.mul_apply, dif_pos (And.intro (lt_of_lt_of_le i.2 hrn) j.2), i.2, j.2, true_and,
+  simp only [topL, Matrix.mul_apply, dif_pos (And.intro (lt_of_lt_of_le i.2 hrn) j.2), j.2, true_and,
     lt_of_lt_of_le i.2 hrn, Fin.is_lt, dite_true]
 
 theorem topL_of {κ : Type} [Zero κ] {n r : ℕ} (hrn : r ≤ n) (A : Matrix (Fin n) (Fin r) κ) :

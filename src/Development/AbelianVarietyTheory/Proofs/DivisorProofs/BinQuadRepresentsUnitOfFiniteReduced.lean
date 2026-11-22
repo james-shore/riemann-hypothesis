@@ -12,8 +12,6 @@ theorem binQuad_represents_unit_of_finite_reduced (S : Type) [CommRing S] [Finit
   | exact @_root_.GlobalTheory.FieldCaseReduction.main
   | exact _root_.GlobalTheory.FieldCaseReduction.main
   | (apply _root_.GlobalTheory.FieldCaseReduction.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FieldCaseReduction.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FieldCaseReduction.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FieldCaseReduction.main ..)
 
 theorem norm_surj_of_finite_reduced_involution : ∀ (R : Type) [CommRing R] [Finite R]

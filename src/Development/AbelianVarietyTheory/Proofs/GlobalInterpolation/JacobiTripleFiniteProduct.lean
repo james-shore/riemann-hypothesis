@@ -80,12 +80,12 @@ theorem finTriple (s x : ℂ) (hs : s ≠ 0) (hs1 : ‖s‖ < 1) (hx : x ≠ 0) 
     _ = _ := by
         refine Finset.sum_nbij' (fun k : ℕ => (k : ℤ) - n) (fun j : ℤ => (j + n).toNat)
           ?_ ?_ ?_ ?_ ?_
-        · intro a ha; simp only [Finset.mem_coe, Finset.mem_range] at ha
-          simp only [Finset.mem_coe, Finset.mem_Icc]; omega
-        · intro a ha; simp only [Finset.mem_coe, Finset.mem_Icc] at ha
-          simp only [Finset.mem_coe, Finset.mem_range]; omega
+        · intro a ha; simp only [Finset.mem_range] at ha
+          simp only [Finset.mem_Icc]; omega
+        · intro a ha; simp only [Finset.mem_Icc] at ha
+          simp only [Finset.mem_range]; omega
         · intro a _; omega
-        · intro a ha; simp only [Finset.mem_coe, Finset.mem_Icc] at ha
+        · intro a ha; simp only [Finset.mem_Icc] at ha
           omega
         · intro a _; rfl
 

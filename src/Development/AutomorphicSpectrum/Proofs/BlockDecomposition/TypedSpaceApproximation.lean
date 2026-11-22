@@ -178,7 +178,7 @@ theorem iterU {ι : Type} {f : ι → AdelicGLn.AdelicGL K n → ℂ} {M : ℝ} 
       · subst hr
         simp only [Function.update_self, Finset.mem_insert, true_or, if_true, hna, if_false]
         exact max_le (by linarith) le_rfl
-      · simp [Function.update_of_ne hr, Finset.mem_insert, hr]
+      · simp [Finset.mem_insert, hr]
   obtain ⟨k, hk⟩ := key (Finset.Ioo 0 n) (fun r hr => Finset.mem_Ioo.1 hr)
   refine ⟨k, fun β hβ => ubnd_mono (fun r h0 h1 => ?_) (hk β hβ)⟩
   simp [h0, h1]

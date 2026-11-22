@@ -55,7 +55,7 @@ theorem lieEig : LieEig e F := by
         rw [Equiv.apply_symm_apply] at this
         exact hτ this
       rw [h0]
-      simp [Finset.sum_apply, eb_apply, Sigma.mk.inj_iff, hτ]
+      simp [Finset.sum_apply, eb_apply, hτ]
   rw [hsum]
   exact hw
 

@@ -23,9 +23,6 @@ theorem val_genPow' {Y Z : Scheme.{0}} {K : Type} [Fintype K] (φ : K → (Y ⟶
     (J : (Z ⟶ Xo.univ.t.G.left) → Xo.univ.t.PP.L.ι) : val (genPow φ ε g k) r z J = val g r z J ^ k := by
   first
   | exact GermD.val_genPowG Xo.univ.t φ ε g k r z J
-  | exact GermD.val_genPowG (t := Xo.univ.t) φ ε g k r z J
-  | (simp only [genPow]; exact GermD.val_genPowG _ φ ε g k r z J)
-  | (unfold genPow; exact GermD.val_genPowG _ φ ε g k r z J)
 
 theorem gmU_mul {A : Type} [CommRing A] [Algebra S A] (z : (overAt y.x A).left) (w w' : Aˣ) :
     gm (𝟙 _) z ⊤ (unitΓ (w * w')) = gm (𝟙 _) z ⊤ (unitΓ w) * gm (𝟙 _) z ⊤ (unitΓ w') := by
@@ -147,7 +144,7 @@ theorem coc_chart (hP1 : ExpGJ.PhOneValSt) (hP2 : ExpGJ.PhTwoValSt) (hAd : ExpGJ
   rw [hU']
   ring_nf
   apply Additive.ofMul.injective
-  simp only [ofMul_mul, ofMul_inv, ofMul_pow, ofMul_zpow]
+  simp only [ofMul_mul, ofMul_inv, ofMul_pow]
   abel
 
 end Formalism.MainNotions.ModuliIntegralCharts.H1.ExpGL

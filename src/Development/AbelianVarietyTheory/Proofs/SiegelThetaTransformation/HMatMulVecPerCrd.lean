@@ -140,7 +140,7 @@ theorem heisG_laws : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (r :
     (Matrix.of fun k i => crd X bas (y k) (Sum.inl i))
     (Matrix.of fun k i => crd X bas (y k) (Sum.inr i)) φ hφ
   refine ⟨h1, ?_, fun y' => ?_, h5, fun x hx z => ?_⟩
-  · simp only [heisG, Matrix.zero_apply, crd_zero hs, show ∀ k, (0 : Matrix (Fin n) (Fin r) E) k = 0
+  · simp only [heisG, crd_zero hs, show ∀ k, (0 : Matrix (Fin n) (Fin r) E) k = 0
       from fun _ => rfl]
     exact h4
   · rw [heisG, heisG, h3, heisG]

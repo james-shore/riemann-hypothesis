@@ -199,7 +199,7 @@ variable {n : ℕ}
 theorem mem_pairs {ε : Fin n → Bool} {s : Bool} {p : Fin n × Fin n} :
     p ∈ pairs ε s ↔ p.1 < p.2 ∧ (ε p.1 == ε p.2) = s := by
   obtain ⟨a, b⟩ := p
-  simp [pairs, List.mem_product]
+  simp [pairs]
 
 theorem mem_lie_iff {ε : Fin n → Bool} {X : Mx n} : X ∈ lieSet ε ↔
     ∀ a b, star (X b a) * (if ε b then 1 else -1) + (if ε a then 1 else -1) * X a b = 0 := by
@@ -218,19 +218,19 @@ theorem basis_mem (ε : Fin n → Bool) : ∀ Z ∈ kList ε ++ pList ε, Z ∈ 
     · obtain ⟨rfl, rfl⟩ := h
       cases hc : ε c <;> simp
     · have h' : ¬ (c = b ∧ c = a) := fun k => h k.symm
-      simp [Matrix.single_apply, h, h']
+      simp [h, h']
   all_goals
     have h3 : c ≠ d := h1.ne
     simp only [beq_iff_eq, beq_eq_false_iff_ne] at h2
     by_cases e1 : c = a ∧ d = b
     · obtain ⟨rfl, rfl⟩ := e1
-      cases hc : ε c <;> cases hd : ε d <;> simp_all [Matrix.single_apply, h3, h3.symm]
+      cases hc : ε c <;> cases hd : ε d <;> simp_all [h3.symm]
     · by_cases e2 : d = a ∧ c = b
       · obtain ⟨rfl, rfl⟩ := e2
-        cases hc : ε c <;> cases hd : ε d <;> simp_all [Matrix.single_apply, h3, h3.symm]
+        cases hc : ε c <;> cases hd : ε d <;> simp_all [h3.symm]
       · have e3 : ¬ (d = b ∧ c = a) := fun h => e1 h.symm
         have e4 : ¬ (c = b ∧ d = a) := fun h => e2 h.symm
-        simp [Matrix.single_apply, e1, e2, e3, e4]
+        simp [e1, e2, e3, e4]
 
 theorem mem_span_basis (ε : Fin n → Bool) {X : Mx n} (hX : X ∈ lieSet ε) :
     X ∈ Submodule.span ℝ {Z | Z ∈ kList ε ++ pList ε} := by

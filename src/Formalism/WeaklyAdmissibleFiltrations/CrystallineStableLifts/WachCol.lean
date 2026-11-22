@@ -66,9 +66,7 @@ theorem wachModule_coboundaries_le_cocycles (W : WachMod Bw M D) : W.B1 ≤ W.Z1
   have key : W.γ (W.φ d) = W.φ (W.γ d) := by
     first
     | (cases W; simp_all)
-    | (cases W; simp_all [LinearMap.ext_iff])
-    | (cases W; simp_all [LinearMap.ext_iff, eq_comm])
-  simp [key, Function.prod, map_add, map_sub, map_neg, neg_smul, LinearMap.add_apply] <;> abel
+  simp [key, Function.prod, map_sub] <;> abel
 
 theorem wachModule_finiteCocycles_le_cocycles (W : WachMod Bw M D) : W.Zf ≤ W.Z1 := by
   unfold WachMod.Zf

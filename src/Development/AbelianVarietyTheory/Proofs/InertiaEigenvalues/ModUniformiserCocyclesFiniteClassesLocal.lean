@@ -79,7 +79,7 @@ theorem modpi_cocycles_finite_classes : Formalism.GaloisCohomology.LocalTateDual
   refine ⟨x, fun g => ?_⟩
   have := hq (e g)
   simp only [Submodule.coe_subtype, Submodule.coe_sub, Pi.sub_apply, cb, hρ'mk,
-    MulEquiv.symm_apply_apply, ContinuousMulEquiv.symm_apply_apply] at this
+    ContinuousMulEquiv.symm_apply_apply] at this
   rw [← Submodule.Quotient.mk_eq_zero]
   simp only [Submodule.Quotient.mk_sub]
   rw [this]; abel

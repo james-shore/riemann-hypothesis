@@ -18,4 +18,4 @@ theorem _root_.GlobalTheory.T.kummerConnecting_unitClass_eq_kummerClass : ∀ (q
   ∀ (X : Scheme.{0}) (u : (Γ(X, ⊤))ˣ) (c : Sec (cokernel κ) X), IsUnit (q : Γ(X, ⊤)) →
     Sec.map (cokernel.desc κ ((q : ℤ) • 𝟙 Gm) h0) c = unitSec u →
     HK.ext ℤ _ z 0 (0 + 1) rfl (secClass (cokernel κ) c) = s • restrH (Int.castRingHom (ZMod q)) (sch.obj X) (tw q 1) (0 + 1) (kum q u) := by
-  first | (exact @GlobalTheory.EtC.KumUnit.kum_connect) | (exact GlobalTheory.EtC.KumUnit.kum_connect) | (intros; apply GlobalTheory.EtC.KumUnit.kum_connect <;> assumption)
+  first | (exact @GlobalTheory.EtC.KumUnit.kum_connect)

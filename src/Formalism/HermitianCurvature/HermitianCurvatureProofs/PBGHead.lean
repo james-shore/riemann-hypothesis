@@ -126,7 +126,7 @@ theorem _root_.Formalism.FourierDecayAlt.P.head_algebra_relations : Formalism.Fo
       congr 2
       ext a l
       simp only [Matrix.of_apply, Matrix.submatrix_apply]
-      rw [hxi' _ _ (by simp <;> omega), dif_pos (by simp [xR, eI] <;> omega)]
+      rw [hxi' _ _ (by simp), dif_pos (by simp [xR, eI] <;> omega)]
       congr 1
     · intro a p ha hp
       rw [hxi' a p (by omega), dif_neg (by omega)]

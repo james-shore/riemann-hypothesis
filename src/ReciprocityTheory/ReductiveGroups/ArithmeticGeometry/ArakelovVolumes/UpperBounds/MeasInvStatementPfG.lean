@@ -38,7 +38,7 @@ theorem det_LA (A : ι → Matrix (Fin r) (Fin r) ℂ) :
       rw [if_pos rfl, Finset.sum_eq_single c]
       · simp
       · intro k _ hk
-        simp [Pi.single_apply, hk]
+        simp [hk]
       · simp
     · rw [if_neg h]
       refine Finset.sum_eq_zero fun k _ => ?_
@@ -47,7 +47,7 @@ theorem det_LA (A : ι → Matrix (Fin r) (Fin r) ℂ) :
         apply h
         simp only [Prod.mk.injEq] at he ⊢
         exact ⟨he.1, he.2.2⟩
-      simp [Pi.single_apply, this]
+      simp [this]
   rw [hM, Matrix.det_blockDiagonal, Fintype.prod_prod_type]
   simp [Finset.prod_const]
 

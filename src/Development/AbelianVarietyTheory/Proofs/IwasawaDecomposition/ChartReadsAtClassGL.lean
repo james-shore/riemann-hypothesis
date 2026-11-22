@@ -44,7 +44,7 @@ theorem val_sub_lt_of_liftFr [StarRing E] {hc : CMData F E} {n : ℕ} {ST SG Q :
   convert h3 using 3
   by_cases e : r = s
   · subst e; simp
-  · simp [e, Matrix.one_apply]
+  · simp [e]
 
 theorem val_mul_sub_one_le {P : HeightOneSpectrum (𝓞 E)} {n N : ℕ} {A B : Matrix (Fin n) (Fin n) (P.adicCompletion E)}
     (hA : ∀ r s, Valued.v (A r s - (1 : Matrix (Fin n) (Fin n) (P.adicCompletion E)) r s) ≤ WithZero.exp (-(N : ℤ)))
@@ -55,8 +55,6 @@ theorem val_mul_sub_one_le {P : HeightOneSpectrum (𝓞 E)} {n N : ℕ} {A B : M
   | exact @_root_.GlobalTheory.MulSubOneValuation.mul_sub_one_le
   | exact _root_.GlobalTheory.MulSubOneValuation.mul_sub_one_le
   | (apply _root_.GlobalTheory.MulSubOneValuation.mul_sub_one_le <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MulSubOneValuation.mul_sub_one_le <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MulSubOneValuation.mul_sub_one_le <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MulSubOneValuation.mul_sub_one_le ..)
 
 theorem le_exp_neg_one_of_lt_one' {γ : WithZero (Multiplicative ℤ)} (h : γ < 1) : γ ≤ WithZero.exp (-((1 : ℕ) : ℤ)) := by

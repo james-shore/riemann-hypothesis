@@ -47,7 +47,7 @@ theorem mem_range_of_step (σ : k⟦X⟧ →ₐ[k] k⟦X⟧) (h : X ∣ σ X) (S
     ext n
     cases n with
     | zero => simp [A]
-    | succ n => simp [A, coeff_succ_X_mul, coeff_C]
+    | succ n => simp [A, coeff_succ_X_mul]
   have key : ∀ (N : ℕ) (b : {b // S b}), X ^ N ∣ σ (A b) - b.1 := by
     intro N
     induction N with

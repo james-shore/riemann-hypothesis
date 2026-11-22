@@ -250,7 +250,7 @@ theorem beJ_eq (z : Fin (2 * r + k + 1) → ℂ) (g : Q.Mx k r) (J : Fin (r + k)
     simp [Mr, C0, colR, h1, h]
   · by_cases h2 : q.val = r
     · have h : q.val ≤ r := by omega
-      simp [Mr, C0, colR, h1, h2, h]
+      simp [Mr, C0, colR, h2]
     · have h : ¬ q.val ≤ r := by omega
       simp [Mr, C0, colR, h1, h2, h]
 
@@ -269,9 +269,9 @@ theorem alJ_eq (z : Fin (2 * r + k + 1) → ℂ) (g : Q.Mx k r) (J : Fin (r + k)
     simp [Mr, A0, rowV, h1, h]
   · by_cases h2 : p.val = r
     · have h : p.val ≤ r := by omega
-      simp [Mr, A0, rowV, h1, h2, h]
+      simp [Mr, A0, rowV, h2]
     · have h : ¬ p.val ≤ r := by omega
-      simp [Mr, A0, rowV, h1, h2, h, bvec, Pi.single_apply]
+      simp [Mr, rowV, h1, h2, h, bvec, Pi.single_apply]
 
 theorem herm_mul_bvec' (H g s : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ) (c : Fin (2 * r + k + 1))
     (w : Fin (2 * r + k + 1) → ℂ) :

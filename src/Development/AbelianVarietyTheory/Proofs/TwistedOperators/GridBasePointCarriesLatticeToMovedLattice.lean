@@ -59,7 +59,7 @@ theorem lat_moves_at_place : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : Const
     rfl
   obtain ⟨e, -, -, hloc⟩ := hb.1
   have hl := hloc ⟨w, hw⟩
-  simp only [GlobalTheory.FunObj.inBasis, MonoidHom.comp_apply, MulEquiv.coe_toMonoidHom, MulAut.conj_apply, MulAut.conj_inv_apply] at hl
+  simp only [GlobalTheory.FunObj.inBasis, MonoidHom.comp_apply, MulEquiv.coe_toMonoidHom, MulAut.conj_apply] at hl
   have hY := val_of_reGL_eq_inv_diagGL _ _ _ hl
   simp only [Fin.coe_cast, topRank_eq G t w (Nat.zero_le _), map_mul, map_inv] at hY
   have hrow := S.row t ht w hw 0 h0
@@ -115,7 +115,7 @@ theorem lat_moves_at_place : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : Const
     · simp
     · by_cases h : i = j
       · subst h; exact mul_comm _ _
-      · simp [diagonal_apply, h]
+      · simp [h]
   obtain ⟨z, hx, hNx⟩ : ∃ z, M' *ᵥ z = x ∧
       ((GlobalTheory.StdFrames.loc w (Lev.finE (G.V (.grid D.R.m 0)) (b 0)) : GL _ (Kw w)) : Matrix _ _ (Kw w)) *ᵥ x =
         M' *ᵥ (diagonal (fun s => δ (GlobalTheory.FunObj.frame (G.rowDec 0 h0).rank s)) *ᵥ z) := by

@@ -12,16 +12,16 @@ theorem dM_X_inl_entry {n : ℕ} (ε : Fin n → Bool) (x : Mode ε) (a b : Fin 
   rw [Finset.sum_sub_distrib]
   congr 1
   · rw [Finset.sum_eq_single x.1.2]
-    · by_cases h : x.1.1 = b <;> simp [Matrix.single_apply, h]
+    · by_cases h : x.1.1 = b <;> simp [h]
     · intro c _ hc
-      simp [Matrix.single_apply, Ne.symm hc]
+      simp [Ne.symm hc]
     · simp
   · rw [Finset.sum_eq_single x.1.1]
     · by_cases h : a = x.1.2
-      · simp [Matrix.single_apply, h]
-      · simp [Matrix.single_apply, h, Ne.symm h]
+      · simp [h]
+      · simp [h, Ne.symm h]
     · intro c _ hc
-      simp [Matrix.single_apply, Ne.symm hc]
+      simp [Ne.symm hc]
     · simp
 
 theorem dM_block_entries : BlockDeterminantCondition := by

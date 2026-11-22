@@ -125,8 +125,6 @@ theorem minpoly_eq (hF : ∀ a : K, star a = a ↔ a ∈ Set.range (algebraMap F
   have hint : IsIntegral (𝓞 F) θ := by
     first
       | exact Algebra.IsIntegral.isIntegral θ
-      | exact IsIntegral.tower_top (A := 𝓞 F) (RingOfIntegers.isIntegral θ)
-      | exact (Algebra.IsIntegral.isIntegral (R := ℤ) θ).tower_top
   have hdvd : minpoly (𝓞 F) θ ∣ q := minpoly.isIntegrallyClosed_dvd hint hroot
   have hdeg2 : 2 ≤ (minpoly (𝓞 F) θ).natDegree := by
     by_contra hlt
@@ -140,8 +138,6 @@ theorem minpoly_eq (hF : ∀ a : K, star a = a ↔ a ∈ Set.range (algebraMap F
     have hr : θ ∈ (algebraMap (𝓞 F) (𝓞 K)).range := by
       first
         | exact minpoly.mem_range_of_degree_eq_one (𝓞 F) θ hd1
-        | exact minpoly.mem_range_of_degree_eq_one hd1
-        | exact minpoly.mem_range_of_degree_eq_one (𝓞 F) hd1
     obtain ⟨z, hz⟩ := hr
     apply hne
     apply RingOfIntegers.ext
@@ -152,14 +148,11 @@ theorem minpoly_eq (hF : ∀ a : K, star a = a ↔ a ∈ Set.range (algebraMap F
   have heq : q = minpoly (𝓞 F) θ :=
     Polynomial.eq_of_monic_of_dvd_of_natDegree_le (minpoly.monic hint) hqm hdvd (by rw [hqdeg]; exact hdeg2)
   rw [← heq, hq]
-  simp only [derivative_add, derivative_sub, derivative_mul, derivative_X_pow, derivative_C,
+  simp only [derivative_mul, derivative_X_pow, derivative_C,
     derivative_X, zero_mul, mul_one, zero_add, add_zero, map_add, map_sub, map_mul, map_pow,
     aeval_X, aeval_C, map_natCast, hs]
   first
     | ring
-    | (norm_num; ring)
-    | norm_num
-    | (push_cast; ring)
 
 theorem differentIdeal_eq_top (hK : Formalism.HermitianLatticesTheory.IsCMUnram K)
     (hF : ∀ a : K, star a = a ↔ a ∈ Set.range (algebraMap F K)) :
@@ -216,12 +209,6 @@ theorem discrTower : DiscrTower := by
         | exact IsTotallyComplex.nrRealPlaces_eq_zero
         | exact NumberField.InfinitePlace.nrRealPlaces_eq_zero_iff.mpr hTC
         | exact NumberField.nrRealPlaces_eq_zero_iff.mpr hTC
-        | (haveI : IsEmpty {w : NumberField.InfinitePlace K // w.IsReal} :=
-             ⟨fun w => (NumberField.InfinitePlace.not_isReal_iff_isComplex.mpr (hTC.isComplex w.1)) w.2⟩
-           simp [NumberField.InfinitePlace.nrRealPlaces])
-        | (unfold NumberField.InfinitePlace.nrRealPlaces
-           rw [Fintype.card_eq_zero_iff]
-           exact ⟨fun w => (NumberField.InfinitePlace.not_isReal_iff_isComplex.mpr (hTC.isComplex w.1)) w.2⟩)
     rw [QuadraticExtensionConjugation.finrank_eq_two hK hF] at e2
     unfold Formalism.HermitianLatticesTheory.fDeg
     omega
@@ -238,8 +225,5 @@ theorem discrTower : DiscrTower := by
   congr 1
   first
     | (push_cast; field_simp)
-    | (push_cast; field_simp; ring)
-    | field_simp
-    | (field_simp; ring)
 
 end Formalism.HermitianLattices.Ext.L3

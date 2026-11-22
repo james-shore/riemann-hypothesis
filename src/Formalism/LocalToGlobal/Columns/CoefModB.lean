@@ -141,7 +141,7 @@ theorem pairP_trivial (lam : ι → DomWeight n) (F F' : Pol K ι n) :
     @pairP K _ ι _ n starRingOfComm lam (fun _ => 1) F F' = pairB lam F F' := by
   rw [pairB_apply]
   simp only [pairP, LinearMap.smul_apply, LinearMap.compl₂_apply, AlgHom.toLinearMap_apply, fockL,
-    LinearMap.mk₂'ₛₗ_apply, pb_gramTw_one, pb_blockAct_one_tr, pb_fockS_triv, pb_extNorm_triv, smul_eq_mul,
+    pb_gramTw_one, pb_blockAct_one_tr, pb_extNorm_triv, smul_eq_mul,
     one_div]
   rfl
 

@@ -63,7 +63,7 @@ theorem trace_hR [FiniteDimensional F E] (R : Type) [CommRing R] [Algebra F R] (
       coordL R M b x ⬝ᵥ (traceGram σ J b).map (algebraMap F R) *ᵥ coordL R M b y := by
   simp only [hR, hform, map_sum, JR, Matrix.map_apply, trace_expand R σ b]
   simp only [dotProduct, Matrix.mulVec, Fintype.sum_prod_type, coordL_apply, traceGram, Matrix.map_apply,
-    Finset.mul_sum, Finset.sum_mul]
+    Finset.mul_sum]
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [Finset.sum_comm]
 

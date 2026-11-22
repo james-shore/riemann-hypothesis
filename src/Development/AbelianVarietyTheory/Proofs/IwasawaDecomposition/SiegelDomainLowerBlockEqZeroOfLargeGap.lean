@@ -11,8 +11,6 @@ theorem chain {n : ℕ} {d : Fin n → ℝ} {u : Matrix (Fin n) (Fin n) ℝ} (hS
   | exact @_root_.GlobalTheory.SiegelChain.siegel_chain
   | exact _root_.GlobalTheory.SiegelChain.siegel_chain
   | (apply _root_.GlobalTheory.SiegelChain.siegel_chain <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SiegelChain.siegel_chain <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SiegelChain.siegel_chain <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SiegelChain.siegel_chain ..)
 
 theorem chain_le {n : ℕ} {d : Fin n → ℝ} {u : Matrix (Fin n) (Fin n) ℝ} (hS : GlobalTheory.RedTh.IsSiegel d u)

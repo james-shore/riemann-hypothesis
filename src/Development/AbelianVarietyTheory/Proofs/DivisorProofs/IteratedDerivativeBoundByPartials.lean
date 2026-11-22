@@ -22,7 +22,7 @@ theorem GlobalTheory.norm_iteratedFDeriv_succ_le_sum_partial :
     apply ContinuousLinearMap.ext
     intro v
     have hv := b.sum_repr v
-    simp [L, ContinuousLinearMap.sum_apply]
+    simp [L]
     conv_lhs => rw [← hv, map_sum]
     refine Finset.sum_congr rfl (fun i _ => ?_)
     rw [map_smul, Complex.real_smul]

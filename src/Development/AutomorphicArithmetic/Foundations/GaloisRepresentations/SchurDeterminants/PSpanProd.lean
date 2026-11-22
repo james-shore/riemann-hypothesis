@@ -28,6 +28,5 @@ theorem UpperTheory.Gal.Schur.spanProd_of :
   rw [Fintype.prod_sum]
   refine Fintype.sum_equiv (Equiv.curry ι (Fin k) (Fin (n + 1))).symm _ _ fun M => ?_
   rw [Fintype.prod_prod_type]
-  simp only [Equiv.curry_symm_apply, Function.uncurry_apply_pair, Algebra.smul_def, map_prod,
-    prod_mul_distrib]
+  simp only [Equiv.curry_symm_apply, Function.uncurry_apply_pair, Algebra.smul_def, prod_mul_distrib]
   rw [← map_prod, prod_mul_distrib]

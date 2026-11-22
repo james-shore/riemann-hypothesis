@@ -61,7 +61,7 @@ theorem nlow_mul_eq {x : Matrix (A ⊕ D') (A ⊕ D) k} (hx : InSupp x) :
   set e := x.toBlocks₂₂
   rw [schur, ← hxe, toBlocks_fromBlocks₁₁, toBlocks_fromBlocks₁₂, toBlocks_fromBlocks₂₁, toBlocks_fromBlocks₂₂]
   rw [val_nlow, fromBlocks_multiply]
-  simp only [Matrix.one_mul, Matrix.zero_mul, add_zero, zero_add]
+  simp only [Matrix.one_mul, Matrix.zero_mul, add_zero]
   congr 1
   · rw [Matrix.neg_mul, Matrix.mul_assoc, nonsing_inv_mul _ hu, Matrix.mul_one, neg_add_cancel]
   · rw [Matrix.neg_mul]; abel
@@ -179,7 +179,7 @@ theorem card_filter_eq : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalS
     fun j hj g hg h => (hRK.2 _ (inv_mem (lowerDiagonalBlockAsGL_mem_integralGeneralLinear (inv_mem (mul_mem hc hj))))).unique (spec j hj) ⟨hg, h⟩
   apply Finset.card_nbij pick
   · intro j hj
-    simp only [Finset.coe_filter, Set.mem_setOf_eq, Finset.mem_coe, Finset.mem_filter] at hj ⊢
+    simp only [Finset.coe_filter, Set.mem_setOf_eq] at hj ⊢
     obtain ⟨hjR, hin⟩ := hj
     have hJ := hJR j hjR
     have hY : (c * j)⁻¹ ∈ parahoric k A D' := inv_mem (mul_mem hc hJ)
@@ -210,7 +210,7 @@ theorem card_filter_eq : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalS
       simp only [map_mul, map_inv]; group
     exact (hR.2 j₂ hJ2).unique ⟨h1R, hm⟩ ⟨h2R, by simp⟩
   · intro g hg
-    simp only [Finset.coe_filter, Set.mem_setOf_eq, Finset.mem_coe, Finset.mem_filter] at hg
+    simp only [Finset.coe_filter, Set.mem_setOf_eq] at hg
     obtain ⟨hgR, hSg⟩ := hg
     obtain ⟨κ, hκ, κ', hκ', hgdef⟩ := hRK.1 g hgR
     have hj₀ : c⁻¹ * dg A κ ∈ parahoric k A D' := mul_mem (inv_mem hc) (dg_mem hκ)
@@ -238,7 +238,7 @@ theorem card_filter_eq : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalS
       rw [hE, hgdef, show (κ * T * κ')⁻¹ * ((T * lowerDiagonalBlockAsGL n * (κ * T)⁻¹)⁻¹ * T) = κ'⁻¹ * (lowerDiagonalBlockAsGL n)⁻¹ by group]
       exact mul_mem (inv_mem hκ') (inv_mem (lowerDiagonalBlockAsGL_mem_integralGeneralLinear hm))
     refine ⟨j, ?_, hpick⟩
-    simp only [Finset.coe_filter, Set.mem_setOf_eq, Finset.mem_coe, Finset.mem_filter]
+    simp only [Finset.coe_filter, Set.mem_setOf_eq]
     refine ⟨hjR, (hcond j hJ).2 ⟨fun i l => ?_, ?_⟩⟩
     · rw [← h21]; exact (mem_parahoric.1 hm).2 i l
     · rw [← h22, show (κ * T)⁻¹ = κ' * g⁻¹ by rw [hgdef]; group, Units.val_mul κ' g⁻¹, ← Matrix.mul_assoc,

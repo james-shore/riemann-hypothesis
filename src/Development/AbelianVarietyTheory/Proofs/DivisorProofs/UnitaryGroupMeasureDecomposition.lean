@@ -58,8 +58,7 @@ theorem preimage_frBall : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E]
     obtain ⟨h1, -, -, -⟩ := inv_facts hI ρ
     have hinv : (mat x (σ ρ))⁻¹ = (permM (e ρ))ᵀ * A ρ := Matrix.inv_eq_left_inv h1
     rw [hinv, Matrix.mul_assoc (permM (e ρ))ᵀ (A ρ), hP b ρ]
-    simp only [Matrix.mul_assoc, (hI ρ).2, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul,
-      transpose_mul_permM]
+    simp only [Matrix.mul_assoc, (hI ρ).2, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, transpose_mul_permM]
   constructor
   · intro h ρ i j
     have := h (σ ρ) (e ρ i) (e ρ j)

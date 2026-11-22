@@ -83,8 +83,6 @@ private lemma dw_const_smul {F : Type*} [NormedAddCommGroup F] [NormedSpace ℂ 
     rw [ih, Dx_eq, Dx_eq]
     first
     | exact deriv_const_smul' c (f := fun t => Dw w f (crv x g t))
-    | exact deriv_const_smul' (f := fun t => Dw w f (crv x g t)) c
-    | simp [deriv_const_smul']
 
 lemma ubl_fib (D : RealPlaceData k r Wp Wq) (E : Mat k r → C6.EndH Wp Wq) (hE : C6.FibBound D E) {ε : ℝ} (hε : 0 < ε)
     {S : Set (Mat k r)} (hS : ∀ g ∈ S, g ∈ GV k r ∧ ε ≤ Gf k r D.z D.z' g) (v : List (Mat k r))
@@ -102,7 +100,6 @@ lemma ubl_fib (D : RealPlaceData k r Wp Wq) (E : Mat k r → C6.EndH Wp Wq) (hE 
       first
       | positivity
       | (unfold gN; positivity)
-      | (simp only [gN]; positivity)
     rw [Rw_scale v E, dw_const_smul, norm_smul]
     have hsplit : Dw (wL u ++ wR v') (Rw (v.map nrm) E) g = dLR u (v' ++ v.map nrm) E g := by
       rw [dLR_eq, Dw_append, Dw_append, Dw_wR, Dw_wR]
@@ -131,7 +128,6 @@ lemma ubl_fib (D : RealPlaceData k r Wp Wq) (E : Mat k r → C6.EndH Wp Wq) (hE 
     have hnorm : ‖(((v.map nz).prod : ℝ) : ℂ)‖ = |(v.map nz).prod| := by
       first
       | simp
-      | rw [Complex.norm_real, Real.norm_eq_abs]
     rw [hnorm]
     calc |(v.map nz).prod| * ‖dLR u (v' ++ v.map nrm) E g‖
         ≤ |(v.map nz).prod| * (Cf (u.length + (v' ++ v.map nrm).length) *

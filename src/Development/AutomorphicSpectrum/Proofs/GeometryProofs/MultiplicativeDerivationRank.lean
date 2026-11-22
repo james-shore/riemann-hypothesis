@@ -100,7 +100,7 @@ theorem mem_eigenspace_of_mem_ker (D : Derivation k R R) {z : R} (hz : D z = z)
   rw [Module.End.mem_eigenspace_iff]
   change D ((a : R) * z ^ n) = _
   rw [D.leibniz, derivation_pow_of_eq D hz, ha, Nat.cast_smul_eq_nsmul, nsmul_eq_mul]
-  simp only [smul_eq_mul, smul_zero, add_zero]
+  simp only [smul_eq_mul]
   ring
 
 theorem powerSum_injective (p : ℕ) [CharP k p] (D : Derivation k R R) {z w : R}

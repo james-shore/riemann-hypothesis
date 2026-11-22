@@ -66,7 +66,7 @@ theorem isUn_of_form (g : Matrix (Fin n) (Fin n) E)
   simp only [form, dotProduct, mulVec, Pi.single_apply, mul_ite, mul_one, mul_zero,
     Finset.sum_ite_eq', Finset.mem_univ, if_true, apply_ite σ, map_one, map_zero, ite_mul, one_mul, zero_mul] at this
   rw [← this]
-  simp only [IsUn, cT, Matrix.mul_apply, Matrix.transpose_apply, Matrix.map_apply, Finset.sum_mul, Finset.mul_sum]
+  simp only [cT, Matrix.mul_apply, Matrix.transpose_apply, Matrix.map_apply, Finset.sum_mul, Finset.mul_sum]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
   ring
@@ -88,7 +88,7 @@ theorem form_rowE (x x' : Fin n → E) :
   have h1 : form σ J y x' = σ (form σ J x' y) := form_herm σ J hσ hJ _ _
   have h2 : form σ J e x' = σ (form σ J x' e) := form_herm σ J hσ hJ _ _
   simp only [rowE_mulVec, form_add_left, form_sub_left, form_smul_left, form_add_right, form_sub_right,
-    form_smul_right, map_add, map_sub, map_mul, hσ, he, hye, hey, h1, h2]
+    form_smul_right, he, hye, hey, h1, h2]
   linear_combination (form σ J x e * σ (form σ J x' e)) * ht
 
 theorem rowE_inv (x : Fin n → E) :
@@ -212,8 +212,8 @@ theorem rowE_mem_GN : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Numb
       change (rowE σ' J e y t *ᵥ fun m => P m j.castSucc) l = ∑ i : Fin r, P l i.castSucc *
         ((if i = j then 1 else 0) - (if i = a then form σ' J (fun l => P l j.castSucc) y else 0))
       rw [rowE_mulVec, heb j a]
-      simp only [Matrix.of_apply, eOf, Matrix.submatrix_apply, id, mul_sub, Finset.sum_sub_distrib, mul_ite, mul_one, mul_zero,
-        Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true, Pi.add_apply, Pi.sub_apply,
+      simp only [mul_sub, Finset.sum_sub_distrib, mul_ite, mul_one, mul_zero,
+        Finset.sum_ite_eq', Finset.mem_univ, if_true, Pi.add_apply, Pi.sub_apply,
         Pi.smul_apply, smul_eq_mul, zero_mul, add_zero, he_def]
       ring
   · intro v hv

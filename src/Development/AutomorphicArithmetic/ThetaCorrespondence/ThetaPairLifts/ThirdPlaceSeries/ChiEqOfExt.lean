@@ -65,7 +65,7 @@ theorem GlobalTheory.ChiExtend.chi_eq_of_ext_alt : HeckeStdPlain → ∀ (D : D7
   have key : L₁.lay.fixZ.nd.chi i₁ c σ = Units.map (φ : L₀.lay.fixZ.nd.O i₀ →* L₁.lay.fixZ.nd.O i₁)
       (L₀.lay.fixZ.nd.chi i₀ c σ) := by
     rw [L₁.lay.fixZ.nd.chi_def i₁ c hc1 hct, L₀.lay.fixZ.nd.chi_def i₀ c hc1 hct]
-    simp only [MonoidHom.mul_apply, MonoidHom.zpow_apply, MonoidHom.comp_apply, map_mul, map_zpow]
+    simp only [MonoidHom.mul_apply, MonoidHom.zpow_apply, MonoidHom.comp_apply]
     erw [MonoidHom.mul_apply, MonoidHom.zpow_apply, MonoidHom.comp_apply, map_mul, map_zpow]
     rw [hu1]
     refine congrArg _ (congrArg (· ^ _) ?_)

@@ -51,7 +51,7 @@ def epsZero : 𝟙_ (Over (Sp R)) ⟶ SpEps R :=
     change spMap (epsRed R) ≫ spMap (algebraMap R (DualNumber R)) = 𝟙 _
     rw [← Spec.map_comp, ← CommRingCat.ofHom_comp]
     have : (epsRed R).comp (algebraMap R (DualNumber R)) = RingHom.id R := by
-      ext a; simp [epsRed, TrivSqZeroExt.algebraMap_eq_inl]
+      ext a; simp [epsRed]
     rw [this, CommRingCat.ofHom_id, Spec.map_id])
 
 def epsScale (c : R) : SpEps R ⟶ SpEps R :=

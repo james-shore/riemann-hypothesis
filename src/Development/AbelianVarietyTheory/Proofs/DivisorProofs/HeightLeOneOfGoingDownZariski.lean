@@ -39,7 +39,7 @@ theorem mem_of_nonunits_of_localization {L : Type} [Field L] (V : ValuationSubri
   obtain ⟨b, d, hd0, hdinv, hwbd⟩ := hloc (w : L) w.2
   have hL : ι x ^ n = ι y * (ι b / ι d) := by
     have := congrArg Subtype.val hw
-    simp only [SubmonoidClass.coe_pow, Subring.coe_mul] at this
+    simp only [SubmonoidClass.coe_pow] at this
     rw [this, ← hwbd]
     rfl
   have hA : x ^ n * d = y * b := by

@@ -27,7 +27,7 @@ theorem row_action_diagonal_weight : RowActDiagWeight := by
     rw [Finset.sum_eq_single a]
     · simp
     · intro b _ hb
-      simp [hb, Ne.symm hb]
+      simp [Ne.symm hb]
     · simp
   conv_lhs => rw [f.as_sum]
   conv_rhs => rw [f.as_sum]

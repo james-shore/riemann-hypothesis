@@ -60,7 +60,7 @@ theorem stdJ_single {L : Type} [Field L] (σ : L →+* ℂ) (n : ℕ) (i : Fin n
   ext k
   by_cases h : k = i
   · subst h; simp [stdJ]
-  · simp [stdJ, h, Pi.single_eq_of_ne h]
+  · simp [stdJ, h]
 
 theorem stdJ_basis {L : Type} [Field L] (σ : L →+* ℂ) (n : ℕ) {κ : Type} (b : Module.Basis κ L (Fin n → L)) :
     LinearIndependent ℂ (fun i => stdJ σ n (b i)) ∧

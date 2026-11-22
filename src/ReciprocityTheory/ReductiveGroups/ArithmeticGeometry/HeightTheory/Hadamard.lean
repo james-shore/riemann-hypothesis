@@ -19,7 +19,6 @@ theorem psd_det_re_le_one_of_diag (N : ℕ) (H : Matrix (Fin N) (Fin N) ℂ) (hH
     rw [hHerm.det_eq_prod_eigenvalues]
     first
       | (norm_cast)
-      | simp [← Complex.ofReal_prod]
   rw [hre]
   calc ∏ i, hHerm.eigenvalues i ≤ ∏ i, Real.exp (hHerm.eigenvalues i - 1) :=
         Finset.prod_le_prod (fun i _ => hH.eigenvalues_nonneg i)

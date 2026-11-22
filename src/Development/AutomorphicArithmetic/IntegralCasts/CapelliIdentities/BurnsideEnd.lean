@@ -21,7 +21,7 @@ theorem UpperTheory.Reformulated.B.Qj3.burnside_end.{u_3, u_4} :
       map_add' := f.map_add
       map_smul' := fun φ v => by
         obtain ⟨c, rfl⟩ := hs φ
-        simp [Module.End.smul_def, Module.algebraMap_end_apply] }
+        simp }
   classical
   let b := Module.finBasis K V
   obtain ⟨r, hr⟩ := jacobson_density (R := S) F (Finset.univ.image b)

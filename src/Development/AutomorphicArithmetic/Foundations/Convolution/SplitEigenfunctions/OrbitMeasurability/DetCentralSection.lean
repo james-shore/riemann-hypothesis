@@ -181,7 +181,7 @@ private theorem det_centralSection (s : {r : ℝ // 0 < r}) : Dt (centralSection
     norm_num
   rw [hc, ← hts, map_mul]
   refine (det_diagUnits (K := ℚ) (n := 2) (fun _ => posIdeleHom ℚ t)).trans ?_
-  simp [Fin.prod_univ_two, pow_two]
+  simp [pow_two]
 
 private def toS (y : GL (Fin 2) (A ℚ)) (h : Dt y = 1) : G1 ℚ := ⟨y.val, congrArg Units.val h⟩
 
@@ -260,7 +260,7 @@ theorem ext : Ext := by
       simp only [mul_assoc])
     obtain ⟨g, hg⟩ := rat_sl ((dq (Dt γ * a))⁻¹ * γ * dq a) (by
       simp only [map_mul, map_inv, det_dq]
-      simp [mul_comm, mul_assoc, mul_left_comm])
+      simp [mul_comm, mul_left_comm])
     have h : sl (ratGL ℚ 2 γ * x) = ratS ℚ g * sl x := toS_eq _ (by
       rw [e1, e2, ← hg]
       simp only [map_mul, map_inv, mul_assoc, mul_inv_cancel_left]

@@ -346,7 +346,7 @@ theorem mem_det_iff (hden : ∀ {κ : Type} [Fintype κ] (y : κ → A), ∃ m :
       refine Submodule.subset_span ⟨(n : E) • 1, (maps_iff hden happ m₁ m₂ _).2 ?_, by simp⟩
       have : ((n : E) • (1 : Matrix (Fin N) (Fin N) E)).map ι = (n : A) • 1 := by
         ext i j
-        by_cases h : i = j <;> simp [Matrix.one_apply, h]
+        by_cases h : i = j <;> simp [h]
       rw [this]
       refine hsand 1 fun i j => ?_
       rw [Matrix.one_apply]

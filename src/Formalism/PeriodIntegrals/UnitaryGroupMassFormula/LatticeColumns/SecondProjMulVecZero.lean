@@ -19,15 +19,12 @@ theorem secondProj_mulVec_zero (X : HidaSetting D) (p : TypX X) (θ : TpX X p �
   first
     | simp only [Matrix.mulVec, dotProduct, map_sum, map_mul, Prod.snd_sum, Prod.snd_mul, hv', mul_zero,
         Finset.sum_const_zero]
-    | simp only [Matrix.mulVec, Matrix.dotProduct, map_sum, map_mul, Prod.snd_sum, Prod.snd_mul, hv', mul_zero,
-        Finset.sum_const_zero]
 
 private theorem hEmb_mulVec_wI_apply {A : Type} [CommRing A] {r k : ℕ} (M : Matrix (Fin k) (Fin k) A)
     (w : Idx r k → A) (j : Fin k) :
     (hEmb r M *ᵥ w) (wI j) = ∑ j' : Fin k, M j j' * w (wI j') := by
   first
-    | simp [Formalism.FourierDecayAlt.S3.hEmb, Formalism.FourierDecayAlt.S3.midEmb, Matrix.fromBlocks_mulVec, Matrix.mulVec, dotProduct]
-    | simp [Formalism.FourierDecayAlt.S3.hEmb, Formalism.FourierDecayAlt.S3.midEmb, Matrix.fromBlocks_mulVec, Matrix.mulVec, Matrix.dotProduct]
+    | simp [Formalism.FourierDecayAlt.S3.hEmb, Formalism.FourierDecayAlt.S3.midEmb, Matrix.mulVec, dotProduct]
 
 theorem key_coord (X : HidaSetting D) (p : TypX X) (θ : TpX X p ≃ₐ[FpX X p] FpX X p × FpX X p)
     (Q : GL (Idx D.R.rS D.R.k) (FpX X p)) (Bk : Matrix (Fin D.R.k) (Fin D.R.k) (FpX X p))
@@ -39,7 +36,7 @@ theorem key_coord (X : HidaSetting D) (p : TypX X) (θ : TpX X p ≃ₐ[FpX X p]
         ((gOf p : ℕ) : FpX X p) * (∑ j' : Fin D.R.k, Bk j j' * (c (wI j') : FpX X p) - (c (wI j) : FpX X p)) := by
   rw [Pi.sub_apply, hEmb_mulVec_wI_apply]
   simp only [Pi.sub_apply, Pi.smul_apply, smul_eq_mul, Pi.single_apply, Sum.inr.injEq, Sum.inl.injEq,
-    mul_sub, mul_ite, mul_one, mul_zero, Finset.sum_sub_distrib, Finset.sum_ite_eq, Finset.sum_ite_eq',
+    mul_sub, mul_ite, mul_one, mul_zero, Finset.sum_sub_distrib, Finset.sum_ite_eq',
     Finset.mem_univ, if_true]
   simp only [mul_left_comm _ ((gOf p : ℕ) : FpX X p) _, ← Finset.mul_sum]
   ring

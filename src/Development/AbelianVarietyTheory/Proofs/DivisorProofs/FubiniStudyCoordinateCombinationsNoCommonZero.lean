@@ -50,7 +50,7 @@ theorem exists_ne_zero_of_rel {K V : Type} [Field K] [AddCommGroup V] [Module K 
       congr 1
       · rw [Finset.sum_eq_single l]
         · simp
-        · intro k _ hk; simp [Pi.single_apply, hk]
+        · intro k _ hk; simp [hk]
         · simp
       · rw [Finset.sum_comm]
         exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring

@@ -142,7 +142,7 @@ theorem hOf_single (i : Fin n × Fin n) : hOf (Pi.single i (1 : ℝ)) = (hb i : 
   rw [Finset.sum_eq_single i]
   · simp
   · intro p _ hp
-    simp [Pi.single_apply, hp]
+    simp [hp]
   · simp
 
 theorem unit_of {y : Mat n} (hy : y ∈ GLs n) : IsUnit y.det := isUnit_iff_ne_zero.mpr hy
@@ -240,7 +240,7 @@ def psiL {V : Type} [NormedAddCommGroup V] [InnerProductSpace ℂ V] (K0 : V →
     (w0 : Mat n) (Γ T : V →L[ℂ] V) : Mat n →ₗ[ℝ] (V →L[ℂ] V) where
   toFun X := ((-(2 * n : ℂ)) * X.trace) • K0 * Γ * T - Dk (w0 * X) * Γ * T - K0 * Γ * T * DF X
   map_add' X Y := by
-    simp only [Matrix.trace_add, mul_add, add_smul, add_mul, Matrix.mul_add, map_add]
+    simp only [Matrix.trace_add, mul_add, add_smul, add_mul, map_add]
     abel
   map_smul' r X := by
     simp only [Matrix.trace_smul, Matrix.mul_smul, map_smul, RingHom.id_apply]

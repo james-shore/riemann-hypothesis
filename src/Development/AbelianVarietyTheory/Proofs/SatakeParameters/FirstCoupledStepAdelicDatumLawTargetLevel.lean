@@ -63,7 +63,7 @@ theorem levAt_target : UnderTie (fun {D L hT Gi Gl Kc Y cX ex t u μ St} A dtU a
   have hcos : cosetOf A (t.m2 + 1) hi β' q' = cosetOf A (t.m2 + 1) hi β' p' := by
     ext y
     unfold cosetOf y0At
-    simp only [Set.mem_setOf_eq, dif_pos rfl]
+    simp only [Set.mem_setOf_eq]
     refine forall_congr' fun P => ?_
     rw [hfr P]
     exact hst P _

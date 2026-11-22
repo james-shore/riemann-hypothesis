@@ -18,7 +18,7 @@ theorem exists_shear (G : Matrix ι ι R) (p : ι) (τ : ι → R) (hτ : τ p =
     rw [mul_sub, mul_one, add_mul, one_mul, vecMulVec_mul_vecMulVec]
     simp [hτ]
   · simp only [Matrix.mul_apply, transpose_apply, map_apply, Matrix.add_apply, vecMulVec_apply,
-      Matrix.one_apply, Pi.single_apply, map_add, map_mul, apply_ite c, map_one, map_zero,
+      Matrix.one_apply, Pi.single_apply, map_add, apply_ite c, map_one, map_zero,
       add_mul, mul_add, ite_mul, mul_ite, one_mul, zero_mul, mul_one, mul_zero,
       Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.mem_univ, if_true]
     ring
@@ -238,8 +238,6 @@ theorem exists_binary_eq_of_finite {k : Type*} [Field k] [Finite k] {a n : k}
   | exact @_root_.GlobalTheory.BinaryFormUniversal.binary_form_universal
   | exact _root_.GlobalTheory.BinaryFormUniversal.binary_form_universal
   | (apply _root_.GlobalTheory.BinaryFormUniversal.binary_form_universal <;> assumption)
-  | (intros; apply _root_.GlobalTheory.BinaryFormUniversal.binary_form_universal <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.BinaryFormUniversal.binary_form_universal <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.BinaryFormUniversal.binary_form_universal ..)
 
 theorem exists_add_mul_sq_eq {R₀ : Type*} [CommRing R₀] (I : Ideal R₀) [HenselianRing R₀ I]

@@ -65,7 +65,6 @@ theorem integralOp_eq_sum {G W : Type} [Group G] [MeasurableSpace G] [AddCommGro
   have hpt : ∀ h, b h * l (σ h w) = ∑ r ∈ s, (F ⁻¹' {r}).indicator (fun _ => l r) h := by
     intro h
     rw [← smul_eq_mul, ← map_smul]
-    change l (b h • σ h w) = _
     rw [hsum h, map_sum]
     refine Finset.sum_congr rfl fun r _ => ?_
     rw [map_smul, smul_eq_mul]

@@ -112,5 +112,5 @@ theorem GlobalTheory.CompanionTheory.AlgStab.algStab : IdemEx → AlgStab := by
     · rw [if_neg (fun c => hX (hI.1 c))] at this
       rw [if_neg hX]
       exact this
-  · haveI : IsTopologicalRing (AE D) := by first | infer_instance | exact GlobalTheory.AdelicU.isTopologicalRing_tens | exact isTopologicalRing_tens
+  · haveI : IsTopologicalRing (AE D) := by first | infer_instance
     exact hC.comp_homeomorph (twoSide h.1 h.2 g.1 g.2 h.3 h.4 g.3 g.4)

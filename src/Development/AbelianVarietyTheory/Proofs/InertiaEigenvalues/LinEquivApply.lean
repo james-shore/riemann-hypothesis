@@ -51,9 +51,7 @@ theorem exists_pow_smul_mem (T : QLat LL) (v : T.V) :
   first
   | exact @_root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem
   | exact _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem
-  | (apply _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem)
   | (intros; exact _root_.GlobalTheory.IntegralPowerScalar.exists_pow_smul_mem ..)
 
 theorem zl_smul_V (T : QLat LL) (z : ℤ_[l]) (v : T.V) : z • v = algebraMap ℚ_[l] ↥LL.1 (z : ℚ_[l]) • v := by

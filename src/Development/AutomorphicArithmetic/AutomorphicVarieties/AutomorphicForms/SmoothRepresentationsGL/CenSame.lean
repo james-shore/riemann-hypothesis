@@ -21,10 +21,10 @@ private theorem infGL_scalar {E : Type} [Field E] [NumberField E] [IsTotallyReal
   refine TR.ga_ext ?_ ?_
   · rw [TR.pInf_infGL]
     ext i j
-    by_cases e : i = j <;> simp [Matrix.diagonal_apply, e, h1]
+    by_cases e : i = j <;> simp [e, h1]
   · rw [TR.pFin_infGL]
     ext i j
-    by_cases e : i = j <;> simp [Matrix.diagonal_apply, e, h2]
+    by_cases e : i = j <;> simp [e, h2]
 
 private theorem deriv_centre {E : Type} [Field E] [NumberField E] [IsTotallyReal E] {n : ℕ} (φ : TR.Sm E n)
     (g : GA E n) :

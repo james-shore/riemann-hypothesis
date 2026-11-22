@@ -41,7 +41,7 @@ theorem exists_sub_mem_of_under_eq_bot [IsIntegrallyClosed R] [CharZero R]
   have hπ : ∀ r : R, π (algebraMap R R₁ r) = algebraMap F K₀ (algebraMap R F r) := by
     intro r
     have hq : (Ideal.Quotient.mk Q) ((algebraMap R R₁) r) = algebraMap R A r := by
-      first | rfl | exact Ideal.Quotient.mk_algebraMap _ _ | simp [A]
+      first | rfl
     simp only [π, RingHom.comp_apply]
     rw [hq, ← IsScalarTower.algebraMap_apply R A K₀, ← IsScalarTower.algebraMap_apply R F K₀]
   obtain ⟨e', he'⟩ := GlobalTheory.mem_range_of_forall_algHom_eq F K₀ inferInstance (π s) (by

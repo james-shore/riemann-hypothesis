@@ -264,7 +264,7 @@ theorem odd_theta_norm_canonical : nrm1Sq Λ (canTheta a τ) = (Real.sqrt (2 * �
     ext i; fin_cases i; simp
   have e3 : ((fun i => (p (.inl i) : ℂ)) + (!![(τ : ℂ)]).mulVec fun i => (p (.inr i) : ℂ)) =
       ![(p (.inl 0) : ℂ) + p (.inr 0) * τ] := by
-    ext i; fin_cases i; simp [Matrix.mulVec, dotProduct, mul_comm]
+    ext i; fin_cases i; simp [dotProduct, mul_comm]
   simp only [e, e2, e3, canTheta, mul_div_cancel_left₀ _ ha, oddTheta,
     LatticeAreaBound.area_eq ha h]
   rw [norm_mul, Complex.norm_exp, mul_pow, ← Real.exp_nat_mul, mul_right_comm, ← Real.exp_add,

@@ -208,16 +208,16 @@ variable {p : PlF D} (hA : Agree δ M p)
 def lU (β : Formalism.L2.SG.PairVal.GLR D) : GLp p :=
   ⟨lOf δ M p β (VolPinAsm.bOf w β), lOf δ M p (β⁻¹ : Formalism.L2.SG.PairVal.GLR D) (VolPinAsm.bOf w β⁻¹),
     by rw [← lOf_mul δ M hA, ← Units.val_mul, ← bOf_mul]
-       simp only [mul_inv_cancel, inv_mul_cancel, Units.val_one, bOf_one]; exact lOf_one δ M hA,
+       simp only [mul_inv_cancel, Units.val_one, bOf_one]; exact lOf_one δ M hA,
     by rw [← lOf_mul δ M hA, ← Units.val_mul, ← bOf_mul]
-       simp only [mul_inv_cancel, inv_mul_cancel, Units.val_one, bOf_one]; exact lOf_one δ M hA⟩
+       simp only [inv_mul_cancel, Units.val_one, bOf_one]; exact lOf_one δ M hA⟩
 
 def ρU (β : Formalism.L2.SG.PairVal.GLR D) : GLp p :=
   ⟨ρOf δ M p β (VolPinAsm.bOf w β), ρOf δ M p (β⁻¹ : Formalism.L2.SG.PairVal.GLR D) (VolPinAsm.bOf w β⁻¹),
     by rw [← ρOf_mul δ M hA, ← Units.val_mul, ← bOf_mul]
-       simp only [mul_inv_cancel, inv_mul_cancel, Units.val_one, bOf_one]; exact ρOf_one δ M hA,
+       simp only [inv_mul_cancel, Units.val_one, bOf_one]; exact ρOf_one δ M hA,
     by rw [← ρOf_mul δ M hA, ← Units.val_mul, ← bOf_mul]
-       simp only [mul_inv_cancel, inv_mul_cancel, Units.val_one, bOf_one]; exact ρOf_one δ M hA⟩
+       simp only [mul_inv_cancel, Units.val_one, bOf_one]; exact ρOf_one δ M hA⟩
 
 def πP : VolPinAsm.StG w →* StP M δ u u' w p where
   toFun β := ⟨(lU M δ w hA β, MulOpposite.op (ρU M δ w hA β)), by

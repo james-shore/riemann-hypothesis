@@ -32,11 +32,11 @@ theorem expo_iff (α : Fin d ⊕ Fin d →₀ ℕ) (a b e : Fin d →₀ ℕ) (p
         Sum.elim p (Sum.elim (fun i => α (Sum.inl i) - p i) (fun i => α (Sum.inr i))) s := by
     intro s
     rcases s with i | i | i
-    · simp [Finsupp.finsetSum_apply, Finsupp.single_apply]
+    · simp [Finsupp.single_apply]
     · simp only [Finsupp.coe_add, Pi.add_apply, Finsupp.finsetSum_apply, Finsupp.single_apply]
-      rw [Finset.sum_eq_single i (fun j _ hj => by simp [hj, Ne.symm hj]) (by simp)]
+      rw [Finset.sum_eq_single i (fun j _ hj => by simp [hj]) (by simp)]
       simp
-    · simp [Finsupp.finsetSum_apply, Finsupp.single_apply]
+    · simp [Finsupp.single_apply]
   constructor
   · intro h
     have h1 : ∀ i, a i = p i := fun i => by

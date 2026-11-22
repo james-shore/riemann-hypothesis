@@ -89,10 +89,7 @@ theorem forget_map_finite_etale_surjective : ∀ (p : ℕ) [Fact p.Prime] (D : D
       exact (GlobalTheory.T.tateSimilitude_iff_of_specializes_geometric_points p D R b N N' hc M.X M.s M.univ T lv hadd hker hlin (𝟙 T.left) x'
         (x'.base (⊥ : PrimeSpectrum k')) (⊥ : PrimeSpectrum k') (by
           first
-          | exact specializes_rfl
-          | (rw [Scheme.id.base_apply])
-          | (simp only [Scheme.Hom.id_apply]; exact specializes_rfl)
-          | exact (Subsingleton.elim (α := PrimeSpectrum k) _ _) ▸ specializes_rfl)).1 h1
+          | exact specializes_rfl)).1 h1
   obtain ⟨f, -, -⟩ := (HY T lv).1 hlv
   obtain ⟨u, hu⟩ : z ∈ Set.range g := by rw [hg]; rfl
   refine ⟨(f.left ≫ h).base u, ?_⟩

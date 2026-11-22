@@ -92,7 +92,7 @@ theorem finite_excluded (𝔣 : Ideal (𝓞 F)) (hf : 𝔣 ≠ ⊥) (W : Finset 
     have h : {I : Ideal (𝓞 F) | Ideal.absNorm I ≤ B}.Finite := by
       have : {I : Ideal (𝓞 F) | Ideal.absNorm I ≤ B} =
           ⋃ n ∈ Finset.range (B + 1), {I : Ideal (𝓞 F) | Ideal.absNorm I = n} := by
-        ext I; simp [Nat.lt_succ_iff]
+        ext I; simp
       rw [this]
       exact Set.Finite.biUnion (Finset.finite_toSet _) fun n _ => Ideal.finite_setOfPred_absNorm_eq n
     exact (h.preimage (f := fun v : HeightOneSpectrum (𝓞 F) => v.asIdeal)

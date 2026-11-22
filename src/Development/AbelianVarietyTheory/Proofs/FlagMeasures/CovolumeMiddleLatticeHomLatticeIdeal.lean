@@ -265,7 +265,7 @@ theorem Hpk_col_wI (k r : ℕ) (l : Fin (k + 1)) (j : Fin (2 * r + k + 1)) :
 
 theorem herm_bvec_wI (k r : ℕ) (l : Fin (k + 1)) (v : Fin (2 * r + k + 1) → ℂ) :
     herm (Hpk k r) (bvec (wI k r l)) v = star (v (wI k r l)) * eps k l := by
-  simp [herm, bvec, dotProduct, Matrix.mulVec_single_one, Hpk_col_wI]
+  simp [herm, bvec, dotProduct, Hpk_col_wI]
 
 theorem idx_cases' (k r : ℕ) (i : Fin (2 * r + k + 1)) :
     (∃ a, i = eI k r a) ∨ (∃ l, i = wI k r l) ∨ ∃ a, i = esI k r a := by
@@ -466,7 +466,7 @@ theorem inv_gS {c : ℝ} (hc : 0 < c) (w : InfinitePlace E) :
 
 theorem detNorm_gS {c : ℝ} (hc : 0 < c) :
     detNorm E 1 (gS E c) = (c ^ (2 * Fintype.card (InfinitePlace E)))⁻¹ := by
-  simp [detNorm, gS, Matrix.det_fin_one, Finset.prod_const, Finset.card_univ, ← pow_mul, abs_of_pos hc, mul_comm]
+  simp [detNorm, gS, Finset.prod_const, Finset.card_univ, ← pow_mul, abs_of_pos hc, mul_comm]
 
 theorem detNorm_gC {m : ℕ} {C : InfinitePlace E → Matrix (Fin m) (Fin m) ℂ} (hC : ∀ w, IsUnit (C w).det) :
     0 < detNorm E m (gC E C) := by
@@ -512,7 +512,7 @@ theorem exists_core (hE : IsTotallyComplex E) {m : ℕ} (Λ' : Submodule (𝓞 E
             ext i j; simp
           rw [e, Matrix.mul_add, Matrix.add_mul, ← h, ← h']
           rfl
-      zero_mem' := ⟨0, fun y _ => by simp [Submodule.zero_mem], fun w => by
+      zero_mem' := ⟨0, fun y _ => by simp, fun w => by
         have e : (0 : Matrix (Fin 1) (Fin m) E).map w.embedding = 0 := by
           ext i j; simp
         rw [e, Matrix.mul_zero, Matrix.zero_mul]
@@ -643,7 +643,7 @@ theorem hasDom_homLat (hE : IsTotallyComplex E) (σ : E →+* E) (hσ : ∀ x, �
       ext i; simp [sideM, hg]⟩)
   obtain ⟨Y, Ly, hY, hW⟩ := exists_basis (n := 2 * r + k + 1) (m := k + 1) σ J (by ring) e g hge heg hee hgg
   have hcol : ∀ j b, form σ J (fun i => Y i j) (e b) = 0 ∧ form σ J (fun i => Y i j) (g b) = 0 := fun j =>
-    (hW _).2 ⟨Pi.single j 1, by ext i; simp [Matrix.mulVec_single_one]⟩
+    (hW _).2 ⟨Pi.single j 1, by ext i; simp⟩
   have hBu : ∀ w, IsUnit (A w).det := fun w => by
     refine Ne.isUnit fun h0 => hdetJ ?_
     have h1 := congrArg Matrix.det (hMod w)

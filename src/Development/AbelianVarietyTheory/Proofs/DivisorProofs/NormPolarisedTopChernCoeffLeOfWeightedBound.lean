@@ -27,7 +27,7 @@ theorem norm_mixTop_le_of_weighted : ∀ {n : ℕ} {r : Type} [Fintype r] [Decid
     refine (Finset.sum_le_sum fun p _ => (norm_sum_le _ _).trans
       (Finset.sum_le_sum fun π _ => (norm_sum_le _ _).trans
         (Finset.sum_le_sum fun u _ => hterm p π u))).trans ?_
-    simp [Finset.sum_const, Fintype.card_perm, Fintype.card_fun]
+    simp [Finset.sum_const, Fintype.card_perm]
   have hf : (0 : ℝ) < n.factorial := by exact_mod_cast Nat.factorial_pos n
   unfold mixTop
   rw [norm_mul, norm_inv, Complex.norm_natCast]

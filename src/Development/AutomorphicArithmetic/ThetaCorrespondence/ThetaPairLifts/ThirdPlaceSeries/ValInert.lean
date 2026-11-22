@@ -64,7 +64,6 @@ theorem val_inert_alt : GlobalTheory.Published.AutomorphicFormsFiniteGL → ∀ 
     first
       | rfl
       | (simp only [GlobalTheory.DownLift.valV, GlobalTheory.DownLift.chiV, Formalism.IndefR.Lift.chrTh, Formalism.IndefR.Links.LevCh.mu, Formalism.IndefR.Lift.tup, GlobalTheory.LFun.val, GlobalTheory.LFun.locChar]; ext; simp)
-      | (unfold GlobalTheory.DownLift.valV GlobalTheory.DownLift.chiV Formalism.IndefR.Lift.chrTh Formalism.IndefR.Links.LevCh.mu Formalism.IndefR.Lift.tup GlobalTheory.LFun.val GlobalTheory.LFun.locChar; simp)
   rw [hv, hcc, hc3, inv_inv]
 end GlobalTheory.ValInert
 end

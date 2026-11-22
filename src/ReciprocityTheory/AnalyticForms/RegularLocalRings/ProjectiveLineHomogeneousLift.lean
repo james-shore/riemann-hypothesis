@@ -65,7 +65,7 @@ theorem projection_surjective (z : (Σ _ : Unit, Fin 2) → ℂ)
   obtain ⟨⟨⟩, k⟩ := q
   obtain rfl | rfl := finset_fin_two_eq_cases k
   · simp [homogeneousLift, h0]
-  · simp [homogeneousLift, projLineAffineCoordinate, onePoint_elim_coe] <;> (try field_simp) <;> (try ring)
+  · simp [homogeneousLift, projLineAffineCoordinate] <;> (try field_simp)
 
 end
 

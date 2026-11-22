@@ -116,7 +116,7 @@ theorem evT_dh {X : SimplicialObject Spc} {K : Cx R} {k : ℤ} (γ : Cochain (to
     simp only [zero_comp, smul_zero, comp_zero]
     exact map_zero (mapHom _ _ (freeGen R _ U y))
   | succ a =>
-    rw [HomologicalComplex₂.d₁_eq _ _ (show (ComplexShape.up ℤ).Rel (-((a + 1 : ℕ) : ℤ)) (-(a : ℤ)) from by simp <;> omega)
+    rw [HomologicalComplex₂.d₁_eq _ _ (show (ComplexShape.up ℤ).Rel (-((a + 1 : ℕ) : ℤ)) (-(a : ℤ)) from by simp)
       (-(b : ℤ)) p (by simp only [ComplexShape.π_def]; omega)]
     show _ = ∑ i : Fin (a + 2), (-1 : ℤ) ^ (i : ℕ) • evD γ t a b U (y.hface i)
     rw [show (ComplexShape.up ℤ).ε₁ (ComplexShape.up ℤ) (ComplexShape.up ℤ) (-((a + 1 : ℕ) : ℤ), -(b : ℤ)) = 1 from rfl,
@@ -144,7 +144,7 @@ theorem evT_dv {X : SimplicialObject Spc} {K : Cx R} {k : ℤ} (γ : Cochain (to
     exact (map_zero (mapHom _ _ (freeGen R _ U y))).trans (smul_zero _).symm
   | succ b =>
     show _ = (a : ℤ).negOnePow • ∑ j : Fin (b + 2), (-1 : ℤ) ^ (j : ℕ) • evD γ t a b U (y.vface j)
-    rw [HomologicalComplex₂.d₂_eq _ _ _ (show (ComplexShape.up ℤ).Rel (-((b + 1 : ℕ) : ℤ)) (-(b : ℤ)) from by simp <;> omega)
+    rw [HomologicalComplex₂.d₂_eq _ _ _ (show (ComplexShape.up ℤ).Rel (-((b + 1 : ℕ) : ℤ)) (-(b : ℤ)) from by simp)
       p (by simp only [ComplexShape.π_def]; omega),
       show (ComplexShape.up ℤ).ε₂ (ComplexShape.up ℤ) (ComplexShape.up ℤ) (-(a : ℤ), -((b + 1 : ℕ) : ℤ)) = (a : ℤ).negOnePow
         by simp,
@@ -325,7 +325,7 @@ theorem crossT_leibniz {E : Spc} {N : ℕ} (V : E ⟶ ofCat (glCat N)) {B : Spc}
   generalize sg n = σn at *
   generalize sg (a : ℤ) = σa at *
   generalize sg (m * (a : ℤ)) = σ at *
-  match_scalars <;> first | ring1 | linear_combination (-(σ * σn)) * q1 | linear_combination (σ * σn) * q1
+  match_scalars <;> first | ring1 | linear_combination (-(σ * σn)) * q1
 
 end GlobalTheory.PBFc
 

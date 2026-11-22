@@ -21,7 +21,6 @@ theorem isUnit_algebraMap_of_ne_zero {l : ℕ} [Fact l.Prime] {O : Type} [CommRi
   have hq : algebraMap ℤ_[l] ℚ_[l] n ≠ 0 := by
     first
       | exact (map_ne_zero_iff _ (IsFractionRing.injective ℤ_[l] ℚ_[l])).mpr hn0
-      | exact (map_ne_zero_iff _ (FaithfulSMul.algebraMap_injective ℤ_[l] ℚ_[l])).mpr hn0
   have hu : IsUnit (algebraMap ℤ_[l] C n) := by
     rw [IsScalarTower.algebraMap_apply ℤ_[l] ℚ_[l] C]
     exact (isUnit_iff_ne_zero.mpr hq).map (algebraMap ℚ_[l] C)
@@ -31,13 +30,11 @@ theorem isUnit_algebraMap_of_ne_zero {l : ℕ} [Fact l.Prime] {O : Type} [CommRi
 theorem isUnit_add_nil {C : Type} [CommRing C] {a n : C} (ha : IsUnit a) (hn : IsNilpotent n) : IsUnit (a + n) := by
   first
     | exact hn.isUnit_add_left_of_commute ha (Commute.all _ _)
-    | exact IsNilpotent.isUnit_add_left_of_commute hn ha (Commute.all _ _)
 
 theorem nil_mul {C : Type} [CommRing C] {t : C} (ht : IsNilpotent t) (z : C) : IsNilpotent (t * z) := by
   first
     | exact (Commute.all _ _).isNilpotent_mul_left ht
     | exact (Commute.all _ _).isNilpotent_mul_right ht
-    | exact ht.mul_right (Commute.all _ _)
 
 theorem prod_eq {C : Type} [CommRing C] (L K0 K1 ε t w a : C) (y : Cˣ) (hy : (y : C) = a * (1 + t * w)) :
     L * (K0 * ((y : C) - ε)) * (K1 * (1 - ε * ((y⁻¹ : Cˣ) : C))) =

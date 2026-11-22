@@ -131,10 +131,10 @@ theorem galB_act_upper : ∀ {Ω : Type} [Field Ω] [Algebra ℚ Ω] [IsAlgClosu
   fin_cases i
   · have h := Ideal.mul_mem_left _ (-((j : ℤ_[l]) * u 1)) hdχ
     convert h using 1
-    simp [hv, hv', mZl, Matrix.mulVec, dotProduct, Fin.sum_univ_two]
+    simp [hv, hv', mZl]
     ring
   · convert Ideal.zero_mem _
-    simp [hv, hv', mZl, Matrix.mulVec, dotProduct, Fin.sum_univ_two]
+    simp [hv, hv', mZl]
     ring
 
 end GlobalTheory.KZ.GalUpper

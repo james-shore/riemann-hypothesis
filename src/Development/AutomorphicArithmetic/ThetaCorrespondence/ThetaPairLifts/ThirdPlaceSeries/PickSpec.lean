@@ -37,7 +37,7 @@ theorem core_data_of_point (hA : GlobalTheory.Published.GlobalArtinReciprocity) 
   obtain ⟨ρG, hρG⟩ := _root_.GlobalTheory.HeightCounting.RowRhoInt.twistEx_alt hA D cf jE A hG l ι₀ π₀ hc₀ hr₀
   obtain ⟨L, P, hP⟩ := conjIntegral l (Formalism.ConjugateSelfDual.G D.host.E D.nd.Om) D.R.r ρG hρG.1
   let ρ : Formalism.ConjugateSelfDual.G D.host.E D.nd.Om →* GL (Fin D.R.r) (PadicAlgCl l) := (MulAut.conj P⁻¹).toMonoidHom.comp ρG
-  have hρ : ∀ g, ρ g = P⁻¹ * ρG g * P := fun g => by simp [ρ, MulAut.conj_apply]
+  have hρ : ∀ g, ρ g = P⁻¹ * ρG g * P := fun g => by simp [ρ]
   have hρ0 : IsRepOf D l ι₀ (D.naut.tw π₀ D.naut.etaTinv) ((1 - (D.R.nV : ℝ)) / 2) ρ :=
     isRepOf_conj D l ι₀ _ _ ρG ρ P hρ hρG
   refine ⟨L, ρ, hρ0.1, fun g i k => by rw [hρ]; exact hP g i k, fun π hc hr hl ι hι => ?_⟩

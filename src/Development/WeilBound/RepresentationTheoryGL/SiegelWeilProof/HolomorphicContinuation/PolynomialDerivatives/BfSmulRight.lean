@@ -185,7 +185,7 @@ omit [Fintype τ] in
 theorem pderiv_X' (v u : τ) : pderiv v (X u : MvPolynomial τ ℂ) = if v = u then 1 else 0 := by
   rw [pderiv_X]; by_cases h : v = u
   · subst h; simp
-  · simp [Pi.single_apply, Ne.symm h, h]
+  · simp [Ne.symm h, h]
 
 theorem der_expand (D : Derivation ℂ (MvPolynomial τ ℂ) (MvPolynomial τ ℂ)) (p : MvPolynomial τ ℂ) :
     D p = ∑ v, D (X v) * pderiv v p := by

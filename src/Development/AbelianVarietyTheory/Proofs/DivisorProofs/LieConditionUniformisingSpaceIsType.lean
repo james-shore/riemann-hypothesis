@@ -25,7 +25,7 @@ theorem exists_ext (F : Type) [Field F] [NumberField F] (τ : 𝓞 F →+* ℂ) 
     apply hI
     rw [eq_bot_iff]
     intro n hn
-    simp only [Ideal.mem_comap, RingHom.mem_ker, map_intCast] at hn
+    simp only [Ideal.mem_comap, RingHom.mem_ker] at hn
     simpa using hn
   refine ⟨IsFractionRing.lift hinj, fun c => ?_⟩
   exact IsFractionRing.lift_algebraMap hinj c

@@ -19,7 +19,7 @@ private theorem emb_c {Γ : Type} [Group Γ] (η : Γ →* ℤˣ) (Ψ : Γ →* 
 
 private theorem J3 : Jmat k 3 = !![0, 0, 1; 0, 1, 0; 1, 0, 0] := by
   ext a b
-  fin_cases a <;> fin_cases b <;> simp [Jmat] <;> decide
+  fin_cases a <;> fin_cases b <;> simp [Jmat]
 
 private theorem sw_bm (x y z : k) : sw k * bm x y z * sw k = bm x y z := by
   simp [sw, bm, Matrix.fromBlocks_multiply]

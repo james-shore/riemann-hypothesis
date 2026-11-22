@@ -55,14 +55,7 @@ theorem isLieComb_of_two_pullbacks {R S : Type} [CommRing R] [CommRing S] (f : R
     | exact RingHom.ext fun r => rfl
     | (ext r <;> simp [Chart.dualMapR] <;> rfl)
     | (ext r <;> simp [Chart.dualMapR] <;> erw [TrivSqZeroExt.algebraMap_eq_inl] <;> simp <;> done)
-    | (ext r <;> simp [Chart.dualMapR] <;> simp [Algebra.algebraMap_eq_smul_one] <;> done)
-    | (ext r
-       · simp [Chart.dualMapR]
-         show f r = f r
-         rfl
-       · simp [Chart.dualMapR]
-         show (0 : S) = f 0
-         simp)
+    | (ext r <;> simp [Chart.dualMapR] <;> simp [Algebra.algebraMap_eq_smul_one])
   refine ReciprocityTheory.ChartRestriction.G.Chart.comb_baseChange f hG hc (fun i => ?_) ?_
   · apply h.1.hom_ext
     · rw [Category.assoc, hψ1, hv i, Category.assoc]
@@ -71,11 +64,6 @@ theorem isLieComb_of_two_pullbacks {R S : Type} [CommRing R] [CommRing S] (f : R
       first
       | (show spMap _ ≫ spMap f = spMap _ ≫ spMap _
          rw [← spMap_comp, ← spMap_comp, he])
-      | (show spMap _ ≫ spMap f = spMap _ ≫ spMap _
-         rw [← Geo.Tor.spMap_comp, ← Geo.Tor.spMap_comp, he])
-      | (unfold epsR; simp only [Over.mk_hom, ← spMap_comp, he])
-      | (show Spec.map _ ≫ Spec.map _ = Spec.map _ ≫ Spec.map _
-         rw [← Spec.map_comp, ← Spec.map_comp, ← CommRingCat.ofHom_comp, ← CommRingCat.ofHom_comp, he])
   · apply h.1.hom_ext
     · rw [Category.assoc, hψ1, hw, Category.assoc]
       rfl
@@ -83,11 +71,6 @@ theorem isLieComb_of_two_pullbacks {R S : Type} [CommRing R] [CommRing S] (f : R
       first
       | (show spMap _ ≫ spMap f = spMap _ ≫ spMap _
          rw [← spMap_comp, ← spMap_comp, he])
-      | (show spMap _ ≫ spMap f = spMap _ ≫ spMap _
-         rw [← Geo.Tor.spMap_comp, ← Geo.Tor.spMap_comp, he])
-      | (unfold epsR; simp only [Over.mk_hom, ← spMap_comp, he])
-      | (show Spec.map _ ≫ Spec.map _ = Spec.map _ ≫ Spec.map _
-         rw [← Spec.map_comp, ← Spec.map_comp, ← CommRingCat.ofHom_comp, ← CommRingCat.ofHom_comp, he])
 
 theorem hermForm_map_conj {g : ℕ} (Hm : Matrix (Fin g) (Fin g) ℂ) (z w : Fin g → ℂ) :
     hermForm (Hm.map (starRingEnd ℂ)) (fun i => starRingEnd ℂ (z i)) (fun i => starRingEnd ℂ (w i)) =
@@ -170,9 +153,6 @@ theorem isMetric_conj : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (
   have h4 := h3 i h
   first
   | exact (congrArg _ (scal_one_mul_sec (S := ℂ) y.x y.s i)).trans h4
-  | exact (congrArg _ (scal_one_mul_sec y.x y.s i)).trans h4
-  | (convert h4 using 2; exact scal_one_mul_sec (S := ℂ) y.x y.s i)
-  | (convert h4 using 2; simp only [scal]; first | rw [map_one, one_mul] | simp [Out.liftFun])
   | (erw [scal_one_mul_sec]; exact h4)
 
 end GlobalTheory.LamT

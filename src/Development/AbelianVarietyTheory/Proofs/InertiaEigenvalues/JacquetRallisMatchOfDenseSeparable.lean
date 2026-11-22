@@ -16,7 +16,7 @@ theorem charpoly_companion {k : Type} [CommRing k] :
     cases s with
     | zero =>
       intro p
-      simp [Matrix.charpoly, Matrix.det_unique, charmatrix_apply, companion]
+      simp [Matrix.charpoly, Matrix.det_unique, companion]
     | succ n =>
       intro p
       have h00 : (charmatrix (companion p)).submatrix Fin.succ Fin.succ
@@ -24,7 +24,7 @@ theorem charpoly_companion {k : Type} [CommRing k] :
         ext i j
         simp only [submatrix_apply, charmatrix_apply, companion, of_apply, diagonal_apply, Fin.succ_inj,
           Fin.val_succ]
-        split_ifs <;> first | rfl | simp_all | omega
+        split_ifs <;> first | rfl | simp_all
       have hlast : ((charmatrix (companion p)).submatrix Fin.succ (Fin.last (n + 1)).succAbove).det
           = (-1) ^ (n + 1) := by
         rw [Fin.succAbove_last, Matrix.det_of_upperTriangular]
@@ -42,9 +42,9 @@ theorem charpoly_companion {k : Type} [CommRing k] :
         Finset.sum_eq_single (Fin.last n)]
       · rw [Fin.succAbove_zero, h00, ← Matrix.charpoly, ih, Fin.succ_last, hlast]
         have e1 : charmatrix (companion p) 0 0 = X := by
-          simp [charmatrix_apply, companion]
+          simp [companion]
         have e2 : charmatrix (companion p) 0 (Fin.last (n + 1)) = C (p 0) := by
-          simp [charmatrix_apply, companion, Fin.ext_iff]
+          simp [companion, Fin.ext_iff]
         rw [e1, e2, Fin.sum_univ_succ (n := n + 1)]
         simp only [Fin.val_last, Fin.val_zero, Fin.val_succ, pow_zero, mul_one]
         have : ((-1 : k[X]) ^ (n + 1)) * (-1) ^ (n + 1) = 1 := by rw [← mul_pow]; simp
@@ -127,7 +127,7 @@ theorem frequently_separable {F : Type} [NontriviallyNormedField F] [CharZero F]
     have key : ∀ t : F, (companion (a₀.1 + Pi.single 0 t)).charpoly = (companion a₀.1).charpoly + C t := by
       intro t
       rw [charpoly_companion, charpoly_companion, Fin.sum_univ_succ, Fin.sum_univ_succ]
-      simp [Pi.single_apply, Fin.succ_ne_zero]
+      simp [Fin.succ_ne_zero]
       ring
     have hs : Continuous (fun t : F => (Pi.single 0 t : Fin (s + 1) → F)) :=
       continuous_pi fun i => by simp only [Pi.single_apply]; split_ifs <;> fun_prop
@@ -139,7 +139,7 @@ theorem frequently_separable {F : Type} [NontriviallyNormedField F] [CharZero F]
 theorem frequently_mom_ne_zero {F : Type} [NontriviallyNormedField F] (s : ℕ) (a₀ : Inv (s + 1) F) :
     ∃ᶠ a in 𝓝 a₀, mom (sec a) 0 ≠ 0 := by
   have key : ∀ a : Inv (s + 1) F, mom (sec a) 0 = a.2.1 0 := by
-    intro a; simp [mom, sec, dotProduct, Fin.sum_univ_succ, Fin.succ_ne_zero]
+    intro a; simp [mom, sec, dotProduct]
   have hs : Continuous (fun t : F => (Pi.single 0 t : Fin (s + 1) → F)) :=
     continuous_pi fun i => by simp only [Pi.single_apply]; split_ifs <;> fun_prop
   refine frequently_of_curve (fun t : F => ((a₀.1, a₀.2.1 + Pi.single 0 t, a₀.2.2) : Inv (s + 1) F))

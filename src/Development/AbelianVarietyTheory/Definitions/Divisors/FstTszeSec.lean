@@ -45,7 +45,7 @@ def tszeSec {O : Type} [CommRing O] [Algebra ℂ O] (D : Fin g → Derivation �
   map_one' := TrivSqZeroExt.ext (by simp) (funext fun a ↦ by simp)
   map_zero' := TrivSqZeroExt.ext (by simp) (funext fun a ↦ by simp)
   map_add' x y := TrivSqZeroExt.ext (by simp) (funext fun a ↦ by simp)
-  map_mul' x y := TrivSqZeroExt.ext (by simp) (funext fun a ↦ by simp [mul_comm])
+  map_mul' x y := TrivSqZeroExt.ext (by simp) (funext fun a ↦ by simp)
 
 set_option autoImplicit false in
 open TopologicalSpace Filter Topology in

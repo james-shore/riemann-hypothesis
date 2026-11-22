@@ -37,7 +37,7 @@ def truncMat {n : ℕ} (e : AF F) (A : Matrix (Fin n) (Fin n) (AE F E)) : Matrix
 theorem truncMat_mul {n : ℕ} {e : AF F} (he : e * e = e) {A B : Matrix (Fin n) (Fin n) (AE F E)} (h : A * B = 1) :
     truncMat e A * truncMat e B = 1 := by
   simp only [truncMat, Matrix.add_mul, Matrix.mul_add, Matrix.one_mul, Matrix.mul_one, Matrix.smul_mul, Matrix.mul_smul,
-    smul_smul, he, Matrix.sub_mul, Matrix.mul_sub, h]
+    Matrix.sub_mul, Matrix.mul_sub, h]
   have he2 : e ^ 2 = e := by rw [sq, he]
   match_scalars <;> ring_nf <;> simp only [he2] <;> ring
 
@@ -48,14 +48,14 @@ theorem truncMat_transpose {n : ℕ} (e : AF F) (A : Matrix (Fin n) (Fin n) (AE 
 theorem truncMat_map (σ : E →ₐ[F] E) {n : ℕ} (e : AF F) (A : Matrix (Fin n) (Fin n) (AE F E)) :
     (truncMat e A).map (cA σ) = truncMat e (A.map (cA σ)) := by
   ext i j
-  by_cases h : i = j <;> simp [truncMat, Matrix.one_apply, h]
+  by_cases h : i = j <;> simp [truncMat, h]
 
 theorem truncMat_unitary {n : ℕ} {e : AF F} (he : e * e = e) {A Ab J : Matrix (Fin n) (Fin n) (AE F E)}
     (h : Aᵀ * J * Ab = J) : (truncMat e A)ᵀ * J * truncMat e Ab = J := by
   have h' : Aᵀ * (J * Ab) = J := by rw [← Matrix.mul_assoc, h]
   rw [truncMat_transpose]
   simp only [truncMat, Matrix.add_mul, Matrix.mul_add, Matrix.one_mul, Matrix.mul_one, Matrix.smul_mul, Matrix.mul_smul,
-    smul_smul, Matrix.sub_mul, Matrix.mul_sub, Matrix.mul_assoc, h']
+    Matrix.sub_mul, Matrix.mul_sub, Matrix.mul_assoc, h']
   have he2 : e ^ 2 = e := by rw [sq, he]
   match_scalars <;> ring_nf <;> simp only [he2] <;> ring
 

@@ -59,7 +59,7 @@ theorem evalW_pderiv_prod_rowW : ∀ (d k : ℕ), 1 ≤ k → 2 * k ≤ d + 2 �
   rw [hprod, hm2, hj, Derivation.leibniz, Derivation.leibniz_pow, Derivation.leibniz_pow]
   have hne : (none : Option (Fin 2)) ≠ some 0 := by simp
   simp only [pderiv_X_self, pderiv_X_of_ne hne, smul_eq_mul, smul_zero, zero_add, mul_zero,
-    add_zero, mul_one, Nat.add_sub_cancel, nsmul_eq_mul]
+    mul_one, Nat.add_sub_cancel, nsmul_eq_mul]
   simp only [map_mul, map_pow, map_natCast, evalW_X_some_zero, evalW_X_none]
   have hc : (C (2 * ((t + 1 : ℕ) : ℝ) - 1) : MvPolynomial (Option (Fin 3)) ℝ) =
       ((2 * t + 1 : ℕ) : MvPolynomial (Option (Fin 3)) ℝ) := by

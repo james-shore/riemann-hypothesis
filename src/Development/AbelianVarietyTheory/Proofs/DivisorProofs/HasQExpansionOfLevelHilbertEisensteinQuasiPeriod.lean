@@ -45,7 +45,7 @@ private lemma summable_norm_qExpansion_of_hasSum_everywhere (N : ℕ) (hN : 0 < 
   have hq : Complex.exp (2 * ↑Real.pi * Complex.I * ↑τ / ↑N) = w ^ 2 := by
     rw [hw, ← Complex.exp_nat_mul]
     congr 1
-    simp only [σ, UpperHalfPlane.coe_mk]
+    simp only [σ]
     push_cast
     ring
   have hw1 := norm_exp_two_pi_I_div_lt_one N hN σ
@@ -126,7 +126,6 @@ private lemma hasSum_hilbertDiagonalTraceCoefficient_lemma_3 (F : Type) [Field F
       rw [hq, ← Complex.exp_nat_mul, ← h', hP]
       congr 2
       field_simp
-      done
   replace hg := (hg.congr_fun fun ξ => (hgA ξ).symm).tsum_fiberwise ν
   refine hg.congr_fun fun m => ?_
   have hfib : ∑' ξ : ↑(ν ⁻¹' {m}), A ξ * q ^ ν ξ = (∑' ξ : ↑(ν ⁻¹' {m}), A ξ) * q ^ m := by
@@ -149,7 +148,7 @@ private lemma hasSum_hilbertDiagonalTraceCoefficient_lemma_3 (F : Type) [Field F
   rw [Function.mem_support] at hξ
   by_cases hm : (N : ℚ) * Algebra.trace ℚ F ξ = m
   · refine ⟨fun h0 => hξ ?_, hm⟩
-    simp [Set.indicator, A, h0]
+    simp [Set.indicator, h0]
   · exact absurd (by simp [Set.indicator, hm]) hξ
 
 open NumberField UpperHalfPlane in

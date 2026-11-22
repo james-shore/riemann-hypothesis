@@ -33,7 +33,6 @@ private theorem spMap_comp_moduli_spaces {A B C : Type} [CommRing A] [CommRing B
   first
   | rfl
   | simp [spMap, ← Spec.map_comp]
-  | (simp only [spMap]; rw [← Spec.map_comp]; rfl)
 
 private theorem pow_injective_of_transcendental {Ω : Type} [Field Ω] (K0 : Subfield Ω) (z : Ω) (hz : Transcendental K0 z) :
     Function.Injective (fun m : ℕ => z ^ m) := by

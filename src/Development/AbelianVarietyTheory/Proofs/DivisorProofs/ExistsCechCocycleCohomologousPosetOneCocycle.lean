@@ -137,7 +137,7 @@ theorem sum3 {M : Type} [AddCommGroup M] (W : κ → M) {a b c : κ} (hab : a < 
   rw [Finset.sum_insert (by simp [hab.ne, hac.ne]), Finset.sum_insert (by simp [hbc.ne]),
     Finset.sum_singleton]
   obtain ⟨s1, s2, s3⟩ := sign3 hab hbc
-  simp only [term3, if_pos rfl, if_neg hab.ne', if_neg hac.ne', if_neg hbc.ne', s1, s2, s3, one_smul, neg_smul]
+  simp only [term3, if_neg hab.ne', if_neg hac.ne', if_neg hbc.ne', s1, s2, s3, one_smul, neg_smul]
   norm_num
 
 theorem part1 (f : Z1 F) : δ F 1 (zc f) = 0 := by

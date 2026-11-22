@@ -16,7 +16,7 @@ theorem fderiv_isBigO_of_isBigO_pow {n : ℕ} {F : Type*} [NormedAddCommGroup F]
     (hf : DifferentiableOn ℂ f U) {m : ℕ}
     (hO : f =O[𝓝 x] fun v => ‖v - x‖ ^ (m + 1 + 1)) :
     fderiv ℂ f =O[𝓝 x] fun v => ‖v - x‖ ^ (m + 1) := by
-  first | exact Bl.CoprimeDirections.goal1 .. | (apply Bl.CoprimeDirections.goal1 <;> assumption) | (intros; apply Bl.CoprimeDirections.goal1 <;> assumption)
+  first | exact Bl.CoprimeDirections.goal1 .. | (apply Bl.CoprimeDirections.goal1 <;> assumption)
 
 theorem isBigO_succ_of_fderiv_isBigO {n : ℕ} {F : Type*} [NormedAddCommGroup F] [NormedSpace ℂ F]
     {f : V n → F} {U : Set (V n)} {x : V n} (hU : IsOpen U) (hx : x ∈ U)

@@ -67,7 +67,7 @@ theorem UpperTheory.V.B1.cycCompat :
     have hcz : c ζ = ζ⁻¹ := by
       apply j.injective
       have := hj ζ
-      simp only [AlgEquiv.toRingEquiv_eq_coe, AlgEquiv.coe_ringEquiv] at this
+      simp only [AlgEquiv.coe_ringEquiv] at this
       rw [this, map_inv₀]
       have hn : ‖j ζ‖ = 1 :=
         Complex.norm_eq_one_of_pow_eq_one (by rw [← map_pow, hN, map_one]) (NeZero.ne N)

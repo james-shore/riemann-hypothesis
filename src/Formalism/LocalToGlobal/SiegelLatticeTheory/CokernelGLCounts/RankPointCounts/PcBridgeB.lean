@@ -273,7 +273,7 @@ theorem Theta_ker : LinearMap.ker (Theta M Y Z be al hY hbe hal u hsch) = Linear
       have h4 : toE M (fun a => v a.castSucc) = Y.Z.map M.R.subtype *ᵥ toE M (-y) + (t : E) • toE M be := by
         rw [hvh, ← toE_mulVec]
         funext a
-        simp [toE, Subring.smul_def]
+        simp [toE]
       have h5 : Y.Z.map M.R.subtype *ᵥ ((fun b => W b.castSucc) - toE M (-y)) = 0 := by
         rw [mulVec_sub]
         have h6 : (fun a => toE M v a.castSucc) = toE M (fun a => v a.castSucc) := rfl
@@ -311,7 +311,7 @@ theorem Theta_ker : LinearMap.ker (Theta M Y Z be al hY hbe hal u hsch) = Linear
       have e1 : toE M (x (Fin.last m) • be - fun a => (Z.Z *ᵥ x) a.castSucc) =
           (x (Fin.last m) : E) • toE M be - toE M (fun a => (Z.Z *ᵥ x) a.castSucc) := by
         funext a
-        simp [toE, Subring.smul_def]
+        simp [toE]
       have e2 : toE M (-(fun a => x a.castSucc)) = -toE M (fun a => x a.castSucc) := by
         funext a
         simp [toE]

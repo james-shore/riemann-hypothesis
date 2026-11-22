@@ -29,7 +29,7 @@ theorem ptSecT_translT_mulT {A : Over S} [GrpObj A] (T : Over S) (y : T ⟶ A) (
   have e : ptSecT A (1 : T ⟶ A) ≫ translT A y = ptSecT A y := by
     apply CartesianMonoidalCategory.hom_ext
     · simp [ptSecT, translT]
-    · simp only [ptSecT, translT, translPt, Category.assoc, lift_snd, Hom.mul_def, comp_lift_assoc, lift_fst_assoc,
+    · simp only [ptSecT, translT, translPt, Category.assoc, lift_snd, comp_lift_assoc, lift_fst_assoc,
         Category.id_comp]
       rw [← Hom.mul_def, _root_.mul_one]
   rw [← Category.assoc, e]

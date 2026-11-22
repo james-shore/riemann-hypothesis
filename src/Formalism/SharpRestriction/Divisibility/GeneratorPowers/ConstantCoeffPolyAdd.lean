@@ -75,7 +75,7 @@ theorem dAdd_single {S : Type} [CommRing S] {d n : ℕ} (j : Fin d) (b : Fin n) 
   rw [Finset.sum_eq_single j]
   · simp
   · intro j' _ hj'
-    simp [Pi.single_apply, hj']
+    simp [hj']
   · intro h
     exact absurd (Finset.mem_univ j) h
 
@@ -160,7 +160,7 @@ theorem pderiv_comm {σ R : Type} [CommRing R] (i j : σ) (P : MvPolynomial σ R
       rfl
     · rw [tsub_right_comm]
       congr 1
-      simp [Finsupp.single_apply, hij, Ne.symm hij]
+      simp [hij, Ne.symm hij]
       ring
   | add p q hp hq => simp only [map_add, hp, hq]
 
@@ -268,7 +268,7 @@ private theorem coeff_rename_mapDomain_lemma {σ τ R : Type} (f : σ → τ) [F
   rw [Finset.sum_eq_single x]
   · intro y hy hne
     exfalso
-    simp only [Set.Finite.mem_toFinset, Set.mem_setOf_eq] at hy
+    simp only [Set.Finite.mem_toFinset] at hy
     exact hne (Finsupp.mapDomain_injective hf hy)
   · intro h
     exfalso
@@ -290,7 +290,7 @@ theorem coeff_prod_cols {S : Type} [CommRing S] {n d : ℕ} (g : Fin n → MvPow
       rw [if_pos rfl]
       show Finsupp.mapDomain (ι b') (colPart b' M) (ι b' (0, j)) = M (b', j)
       rw [Finsupp.mapDomain_apply (colEmb_inj b')]
-      simp [colPart, Finsupp.comapDomain_apply, ι]
+      simp [colPart, Finsupp.comapDomain_apply]
     · rw [if_neg h]
       apply Finsupp.mapDomain_notin_range
       rintro ⟨p, hp⟩

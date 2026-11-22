@@ -56,8 +56,6 @@ theorem stalk_derivation_span : ∀ (R : Type) [CommRing R] [IsDomain R] [IsNoet
         unfold constFn
         first
           | rfl
-          | (rw [Scheme.Hom.appLE_eq_app_comp_map] ; rfl)
-          | (simp only [Scheme.Hom.appLE, Scheme.Hom.appTop]; rfl)
       rw [e1]
       exact germ_res ⊤ V le_top trivial hpV _
     have := GlobalTheory.VertCoeffRing.existsUnique_coeff_alg hv hdd y hV h

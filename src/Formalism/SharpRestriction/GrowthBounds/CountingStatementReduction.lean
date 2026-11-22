@@ -3508,7 +3508,7 @@ variable {O : Type} [CommRing O] [IsDomain O] {V : Type} [AddCommGroup V] [Modul
 
 theorem span_denominator (M : Submodule O V) (y : V) (hy : y ∈ Submodule.span (KK O) (M : Set V)) :
     ∃ s : O, s ≠ 0 ∧ s • y ∈ M := by
-  first | exact Bl.general_b_fact_left_bis_form.goal1 .. | (apply Bl.general_b_fact_left_bis_form.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_left_bis_form.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_bis_form.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_left_bis_form.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_bis_form.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_left_bis_form.goal1 .. | (apply Bl.general_b_fact_left_bis_form.goal1 <;> assumption)
 
 def toSpan (M : Submodule O V) : M →ₗ[O] (Submodule.span (KK O) (M : Set V)) where
   toFun x := ⟨x.1, Submodule.subset_span x.2⟩

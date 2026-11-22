@@ -79,7 +79,7 @@ theorem linear_expand {K : Type} [Fintype K] [DecidableEq K] (l : (K → ℂ) �
     ext k'
     by_cases h : k' = k
     · subst h
-      simp [Complex.ext_iff]
+      simp
     · simp [h]
   rw [e, map_add, map_smul, map_smul, smul_eq_mul, smul_eq_mul]
 

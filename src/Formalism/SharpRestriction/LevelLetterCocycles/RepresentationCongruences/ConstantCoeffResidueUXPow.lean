@@ -177,7 +177,6 @@ theorem ContD.enat_le_of_forall {a b : ℕ∞} (h : ∀ k : ℕ, (k : ℕ∞) �
   have h1 : ((m + 1 : ℕ) : ℕ∞) ≤ a := by
     first
     | exact_mod_cast Order.add_one_le_of_lt hab
-    | exact_mod_cast (ENat.add_one_le_iff (ENat.coe_ne_top m)).2 hab
   have h2 := h (m + 1) h1
   norm_cast at h2
   omega
@@ -185,7 +184,6 @@ theorem ContD.enat_le_of_forall {a b : ℕ∞} (h : ∀ k : ℕ, (k : ℕ∞) �
 theorem ContD.alg_C (ψ : O⟦X⟧ →ₐ[O] O⟦X⟧) (c : O) : ψ (C c) = C c := by
   first
   | exact ψ.commutes c
-  | simpa using ψ.commutes c
 
 end ContDHelpers
 

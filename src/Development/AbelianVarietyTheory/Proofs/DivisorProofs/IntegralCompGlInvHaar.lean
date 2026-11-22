@@ -155,7 +155,7 @@ theorem GlobalTheory.SiegelCov.integral_mulVec_inv : ∀ (F E : Type) [Field F] 
   have hu : hΛ.unit = (Units.map (Algebra.norm (AF F) : AE F E →* AF F) (Matrix.GeneralLinearGroup.det t))⁻¹ := by
     ext
     rw [IsUnit.unit_spec, hdet, hTdef]
-    simp [Matrix.GeneralLinearGroup.val_det_apply]
+    simp
   have key := addEquivAddHaarChar_smul_map μ L
   set c := addEquivAddHaarChar L with hcdef
   have hc0 : c ≠ 0 := (addEquivAddHaarChar_pos L).ne'

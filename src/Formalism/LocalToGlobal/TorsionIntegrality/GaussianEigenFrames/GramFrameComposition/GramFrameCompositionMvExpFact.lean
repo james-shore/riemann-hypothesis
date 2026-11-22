@@ -41,10 +41,10 @@ theorem linSub_linSub {n m p : Type} [Finite n] [Fintype m] [Fintype p] (A : n �
   simp only [map_mul, linSubHom_apply, linSub_X]
   have hc : ∀ w, linSubHom B (MvPowerSeries.C (A i w)) = MvPowerSeries.C (A i w) := fun w => by
     rw [linSubHom_apply, linSub_C]
-  simp only [hc, Finset.mul_sum, map_sum, map_mul]
+  simp only [Finset.mul_sum, map_sum, map_mul]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun x _ => ?_
-  simp only [Finset.sum_mul, map_sum, map_mul]
+  simp only [Finset.sum_mul]
   refine Finset.sum_congr rfl fun w _ => ?_
   simp only [linSub_C]
   ring
@@ -64,7 +64,6 @@ theorem hasSubst_block {ι B : Type} [Finite ι] (k : B) :
     rw [MvPowerSeries.coeff_X, if_neg]
     intro h
     exact hne (Prod.ext_iff.mp (Finsupp.single_left_injective one_ne_zero h)).2
-    all_goals simp_all
   exact hs
 
 theorem inBlock_C {ι B : Type} (k : B) (r : K) :
@@ -86,8 +85,6 @@ theorem inBlock_C {ι B : Type} (k : B) (r : K) :
   rw [← MvPowerSeries.coe_substAlgHom hs]
   first
     | exact (MvPowerSeries.substAlgHom hs).commutes r
-    | simpa using (MvPowerSeries.substAlgHom hs).commutes r
-    | simp [← MvPowerSeries.algebraMap_apply']
 
 theorem inBlock_X {ι B : Type} [Finite ι] (k : B) (i : ι) :
     inBlock k (MvPowerSeries.X i : MvPowerSeries ι K) = MvPowerSeries.X (k, i) := by
@@ -104,7 +101,6 @@ theorem inBlock_X {ι B : Type} [Finite ι] (k : B) (i : ι) :
     rw [MvPowerSeries.coeff_X, if_neg]
     intro h
     exact hne (Prod.ext_iff.mp (Finsupp.single_left_injective one_ne_zero h)).2
-    all_goals simp_all
   unfold inBlock
   exact MvPowerSeries.subst_X hs i
 
@@ -142,7 +138,6 @@ theorem inBlock_smul {ι B : Type} (k : B) (r : K) (f : MvPowerSeries ι K) :
     rw [MvPowerSeries.coeff_X, if_neg]
     intro h
     exact hne (Prod.ext_iff.mp (Finsupp.single_left_injective one_ne_zero h)).2
-    all_goals simp_all
   unfold inBlock
   exact MvPowerSeries.subst_smul hs r f
 

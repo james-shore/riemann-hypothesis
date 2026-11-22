@@ -102,8 +102,7 @@ theorem mx_apply_tensF {M : Type*} [AddCommGroup M] [Module ℂ M] (dual : Bool)
     (E : Fin n → Fin n → Module.End ℂ M) (X : Matrix (Fin n) (Fin n) ℂ) (f : Fin n → M) (c : Fin n) :
     mx (tensF dual E) X f c = actM E X (f c) + cond dual (-∑ a, X a c • f a) (∑ b, X c b • f b) := by
   cases dual
-  · simp [mx, tensF, tensV, actM, coordV, Finset.smul_sum, smul_add, Finset.sum_add_distrib, smul_ite,
-      Finset.sum_apply, LinearMap.sum_apply]
+  · simp [mx, tensF, tensV, actM, coordV, smul_add, Finset.sum_add_distrib, Finset.sum_apply, LinearMap.sum_apply]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun b _ => ?_
     rw [Finset.sum_eq_single c]
@@ -113,10 +112,8 @@ theorem mx_apply_tensF {M : Type*} [AddCommGroup M] [Module ℂ M] (dual : Bool)
       simp
     · intro h
       exact absurd (Finset.mem_univ c) h
-  · simp [mx, tensF, tensVd, actM, coordV, Finset.smul_sum, smul_sub, Finset.sum_sub_distrib, smul_ite,
-      Finset.sum_apply, LinearMap.sum_apply, sub_eq_add_neg]
-    simp only [Finset.sum_add_distrib, Finset.sum_neg_distrib, ite_apply, LinearMap.proj_apply,
-      LinearMap.zero_apply, smul_ite, smul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  · simp [mx, tensF, tensVd, actM, coordV, Finset.sum_apply, LinearMap.sum_apply, sub_eq_add_neg]
+    simp only [Finset.sum_add_distrib, Finset.sum_neg_distrib]
     congr 2
     refine Finset.sum_congr rfl fun a _ => ?_
     rw [Finset.sum_eq_single c]
@@ -224,8 +221,8 @@ theorem hasDerivAt_matrixCoeff_flow (hσ : IsURepOn (UJset ε) σ) (hD : IsDeriv
     refine Finset.sum_congr rfl fun c _ => ?_
     congr 1
     cases dual
-    · simp [Submodule.coe_sum, Submodule.coe_smul, map_sum, map_smul, inner_sum, inner_smul_right]
-    · simp [Submodule.coe_sum, Submodule.coe_smul, Submodule.coe_neg, map_sum, map_smul, map_neg, inner_sum,
+    · simp [map_sum, map_smul, inner_sum, inner_smul_right]
+    · simp [map_sum, map_smul, map_neg, inner_sum,
         inner_smul_right, inner_neg_right]
   rw [hv]
   exact hs

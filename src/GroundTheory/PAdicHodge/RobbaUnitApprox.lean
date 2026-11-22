@@ -114,10 +114,10 @@ theorem tNeg_add_tSmall_add_tBig (t : ℤ → K) : tNeg t + tSmall t + tBig t = 
     · simp [h0, h0', h1, not_le.1 h1]
 
 theorem tNeg_eq_zero (t : ℤ → K) {n : ℤ} (hn : -1 < n) : tNeg t n = 0 := by
-  simp [tNeg, trunc, Set.indicator_apply, show ¬ n < 0 by omega]
+  simp [tNeg, trunc, show ¬ n < 0 by omega]
 
 theorem tSmall_eq_zero (t : ℤ → K) {n : ℤ} (hn : n < 0) : tSmall t n = 0 := by
-  simp [tSmall, trunc, Set.indicator_apply, show ¬ 0 ≤ n by omega]
+  simp [tSmall, trunc, show ¬ 0 ≤ n by omega]
 
 theorem norm_tSmall_le (t : ℤ → K) (n : ℤ) : ‖tSmall t n‖ ≤ 1 := by
   simp only [tSmall, trunc, Set.indicator_apply, Set.mem_setOf_eq]
@@ -427,7 +427,7 @@ theorem exists_unit_approx (hr : 0 < r) (hrs' : r ≤ s') (hs's : s' ≤ s) (hs1
     simp only [Pi.single_apply, sub_eq_iff_eq_add]
     by_cases hm : m = 0
     · subst hm; simp [hyN]
-    · simp [hm, show m ≠ -N + N by omega]
+    · simp [hm]
   refine ⟨cmul (Pi.single N (y N)) W, cmul (Pi.single (-N) (y N)⁻¹) V, fun ρ h h1 =>
     ⟨(hsN ρ).cmul (hr.trans_le h) (hWV ρ h h1).1, (hsN' ρ).cmul (hr.trans_le h) (hWV ρ h h1).2⟩,
     ?_, fun ρ hρ => ?_⟩

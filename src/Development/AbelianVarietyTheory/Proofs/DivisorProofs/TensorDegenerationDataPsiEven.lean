@@ -211,7 +211,7 @@ theorem formEq_tens (pr : Fin r → (D'.P.A ⟶ Q.B)) (hpr : ∀ i, IsMonHom (pr
   refine Finset.prod_congr rfl fun ij _ => ?_
   simp only [Fin.prod_univ_two]
   rw [cub_pow, cub_pow]
-  simp only [rhoC, nuC, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+  simp only [rhoC, nuC, Matrix.cons_val_zero, Matrix.cons_val_one]
   rw [prod_cub, prod_cub]
   simp only [Fin.prod_univ_four, tensφ, tensε, lamPts, Oε, Matrix.cons_val_zero, Matrix.cons_val_one,
     Matrix.cons_val_two, Matrix.cons_val_three, Matrix.head_cons, Matrix.tail_cons, Category.id_comp]
@@ -220,7 +220,7 @@ theorem formEq_tens (pr : Fin r → (D'.P.A ⟶ Q.B)) (hpr : ∀ i, IsMonHom (pr
     mul_comm (pr ij.1)⁻¹ (pr ij.2), mul_comm (pr ij.2)⁻¹ (pr ij.1)⁻¹]
   apply Additive.ofMul.injective
   simp only [ofMul_mul, ofMul_inv, ofMul_zpow, _root_.one_mul, _root_.mul_one, neg_mul, mul_neg, neg_neg, neg_smul,
-    smul_add, smul_sub, smul_neg, one_smul]
+    smul_add, smul_neg]
   abel
 
 end Spec2
@@ -341,7 +341,7 @@ theorem main : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing R], IsCN R 
       show (toUnit (TK R) ≫ D'.c x).left ≫ (lift (pr j) (lift (pr j)⁻¹ (pr i)⁻¹)).left = _
       rw [← Over.comp_left, comp_lift, comp_lift, hu, hu', hu']
     rw [e₀, e₁]
-    simp only [nuC, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+    simp only [nuC, Matrix.cons_val_zero, Matrix.cons_val_one]
     rw [mul_zpow, inv_zpow, zpow_neg]
     rfl
   have Qe : ∏ p, val (L := Q.M.L) (φ := thφ Q.B (x3 Q.B)) (ε := thε) Q.cub.t (D'.xK x ≫ rhoC pr p) y J ^ nuC W p =

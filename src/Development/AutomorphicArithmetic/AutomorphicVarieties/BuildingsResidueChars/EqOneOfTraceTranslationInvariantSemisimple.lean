@@ -105,7 +105,6 @@ theorem UpperTheory.eq_one_of_trace_translation_invariant_semisimple :
   have he0 : (e : Module.End k (Fin n → k)) = 0 := by
     first
     | exact (LinearMap.IsIdempotentElem.trace_eq_zero_iff hI).mp htr_e
-    | exact (IsIdempotentElem.trace_eq_zero_iff hI).mp htr_e
   have he0' : e = 0 := Subtype.ext he0
   have hx0 : x' = 0 := by
     rw [← key x' (Submodule.mem_span_singleton_self x'), he0', mul_zero]

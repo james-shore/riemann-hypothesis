@@ -145,7 +145,7 @@ theorem continuousOn_thetaCFun_ltr (w : InfinitePlace k) {Ψ : (ι → 𝔸[k]) 
     (Continuous.subtype_mk (continuous_snd.comp continuous_subtype_val) _).prodMk
       (continuous_fst.comp continuous_subtype_val)
   refine (h.comp hc).congr fun q ↦ ?_
-  simp only [restrict, Function.comp]
+  simp only [Function.comp]
   exact (thetaCFun_of_pos w _ ω q.2.2).symm
 
 theorem continuousOn_thetaCFun (w : InfinitePlace k) {F : (ι → 𝔸[k]) → ℂ}

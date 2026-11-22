@@ -52,10 +52,10 @@ private theorem isLocallyConstant_indicator_one_of_isClopen {X : Type} [Topologi
     IsLocallyConstant (s.indicator (1 : X → ℂ)) := by
   refine (IsLocallyConstant.iff_exists_open _).2 fun x => ?_
   by_cases hx : x ∈ s
-  · exact ⟨s, hs.isOpen, hx, fun y hy => by simp [Set.indicator_apply, hx, hy]⟩
+  · exact ⟨s, hs.isOpen, hx, fun y hy => by simp [hx, hy]⟩
   · refine ⟨sᶜ, hs.isClosed.isOpen_compl, hx, fun y hy => ?_⟩
     have hy' : y ∉ s := hy
-    simp [Set.indicator_apply, hx, hy']
+    simp [hx, hy']
 
 private theorem mul_indicator_mem_supportedIn_of_isClopen {X : Type} [TopologicalSpace X] {U s : Set X} (hs : IsClopen s)
     {F : X → ℂ} (hF : F ∈ supportedIn U) : F * s.indicator 1 ∈ supportedIn U := by
@@ -150,7 +150,7 @@ theorem local_descent_holds : LocStep (k := k) := by
                 by_contra hne
                 exact hWO hpW ⟨p, ⟨hne, hp⟩, rfl⟩
               simp [h0]
-            · simp [Set.indicator_apply, hpW]
+            · simp [hpW]
       | zero => exact ⟨univ, isOpen_univ, mem_univ _, fun W _ _ => by simp⟩
       | add F F' _ _ hF hF' =>
         obtain ⟨O, hO, hyO, hOW⟩ := hF
@@ -176,7 +176,7 @@ theorem local_descent_holds : LocStep (k := k) := by
     have hsplit : f * (q ⁻¹' W).indicator 1 =
         f * (q ⁻¹' (W ∩ B1)).indicator 1 + f * (q ⁻¹' (W \ B1)).indicator 1 := by
       funext p
-      by_cases h1 : q p ∈ W <;> by_cases h2 : q p ∈ B1 <;> simp [Set.indicator_apply, h1, h2]
+      by_cases h1 : q p ∈ W <;> by_cases h2 : q p ∈ B1 <;> simp [h1, h2]
     rw [hsplit, map_add, hQ1 _ (hW.inter hB1) inter_subset_right,
       hQ2 _ (hW.diff hB1) (fun z hz => (hWB hz.1).resolve_left hz.2), add_zero]
   have hfin : ∀ t : Finset (Fin (2 * m + 1) × Fin (Module.finrank k Z) → k),

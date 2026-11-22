@@ -36,7 +36,7 @@ private lemma charpoly_separable_of_isGen {F E : Type} [NontriviallyNormedField 
     intro w
     induction w using TensorProduct.induction_on with
     | zero => simp
-    | tmul c k => simp [e, f, IsBaseChange.equiv_tmul, mul_smul_comm]
+    | tmul c k => simp [e, f, IsBaseChange.equiv_tmul]
     | add w₁ w₂ h₁ h₂ => simp only [map_add, h₁, h₂]
   have h3 : e.conj ((LinearMap.mul F A.K τ).baseChange E) = f := by
     apply LinearMap.ext

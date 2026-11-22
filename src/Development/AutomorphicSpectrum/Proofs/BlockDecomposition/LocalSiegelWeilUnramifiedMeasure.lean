@@ -119,7 +119,7 @@ theorem GlobalTheory.CompanionTheory.AvgFree.scale_density : ∀ (F E : Type) [F
     rintro X ⟨hXD, y, hy, hXy⟩
     have h1 := rmul_mul (Fv F v) X (eMat (Fv F v) l a)
       (dMat (Fv F v) l ((s⁻¹ : (Fv F v ⊗[F] E)ˣ) : Fv F v ⊗[F] E))
-    refine ⟨by simp only [Set.mem_preimage]; rw [h1]; exact hXD, ?_⟩
+    refine ⟨by simp only; rw [h1]; exact hXD, ?_⟩
     let z : HermR (Fv F v) σ n := ⟨cjM (Fv F v) σ (eMat (Fv F v) l a) y, cjM_mem _ σ hinv _ _ y.2⟩
     let w : HermR (Fv F v) σ n := ⟨cjM (Fv F v) σ (dMat (Fv F v) l ((s⁻¹ : (Fv F v ⊗[F] E)ˣ) : Fv F v ⊗[F] E)) z,
       cjM_mem _ σ hinv _ _ z.2⟩

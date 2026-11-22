@@ -153,13 +153,13 @@ theorem oneFlip_sandwich : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : Consts}
     obtain ⟨h6, -⟩ := Node.grid.inj h1
     intro b hb
     have := (h5 b hb).2.1
-    constructor <;> rintro rfl <;> simp only [GlobalTheory.SplitFlip.Edge.tgt] at this <;> omega
+    constructor <;> rintro rfl <;> simp only at this <;> omega
   have hedB : ∀ b ∈ edges Bp, b ≠ .ex i (j + 1) ∧ b ≠ .theta (i + 1) j := by
     obtain ⟨i', j', -, -, -, -, h5⟩ := edges_bound Bp hBp
     intro b hb
     have h1 := (h5 b hb).1
     have h2 := (h5 b hb).2.2.2
-    constructor <;> rintro rfl <;> simp only [GlobalTheory.SplitFlip.Edge.src] at h1 h2 <;> omega
+    constructor <;> rintro rfl <;> simp only at h1 h2 <;> omega
   have hF' : ∀ P : PolE G, IsCuspListed W.θ _ (liftP W M A (Path.Fam.zip (fun a (f : Sch G a) Q => W.fock a.pair f Q) α (restrictPol P A)) F) := fun P =>
     (pathConv_zip_fock M ρ t he hC A hA φA α hα (restrictPol P A) F hF).2
   have hcS : ∀ (P : PolE G) (P' : PolT G (routeSmall t i j)), ∀ d ∈ σs.support,
@@ -248,7 +248,6 @@ theorem oneFlip_sandwich : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : Consts}
         | (intro b hb; rw [Function.update_of_ne (hedA b hb).2, Function.update_of_ne (hedA b hb).1])
         | (intro b hb; rw [Function.update_of_ne (hedB b hb).2, Function.update_of_ne (hedB b hb).1])
         | exact Function.update_self _ _ _
-        | (rw [Function.update_of_ne (show GlobalTheory.SplitFlip.Edge.ex i (j + 1) ≠ .theta (i + 1) j by simp)]; exact Function.update_self _ _ _)
   rw [sand_liftT_tensE, sand_liftT_tensE, flipPolE,
     Finsupp.sum_sum_index (fun _ => by simp [Finsupp.sum]) (fun _ _ _ => by simp only [add_mul, add_smul, Finsupp.sum_add]),
     Finsupp.smul_sum]

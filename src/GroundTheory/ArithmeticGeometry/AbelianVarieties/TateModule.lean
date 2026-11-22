@@ -13,7 +13,7 @@ variable (ℓ : ℕ) (A : Type*) [AddCommGroup A]
 def TateModule : AddSubgroup (ℕ → A) where
   carrier := {t | (∀ k, ℓ ^ k • t k = 0) ∧ ∀ k, ℓ • t (k + 1) = t k}
   add_mem' {s t} hs ht :=
-    ⟨fun k => by simp [nsmul_add, hs.1 k, ht.1 k], fun k => by simp [nsmul_add, hs.2 k, ht.2 k]⟩
+    ⟨fun k => by simp [hs.1 k, ht.1 k], fun k => by simp [hs.2 k, ht.2 k]⟩
   zero_mem' := ⟨fun k => by simp, fun k => by simp⟩
   neg_mem' {t} ht := ⟨fun k => by simp [ht.1 k], fun k => by simp [ht.2 k]⟩
 
@@ -75,7 +75,7 @@ noncomputable instance TateModule.instModule : Module ℤ_[ℓ] (TateModule ℓ 
     simp
   smul_add a s t := Subtype.ext <| funext fun k => by
     rw [TateModule.smul_apply]
-    simp [nsmul_add, TateModule.smul_apply]
+    simp [TateModule.smul_apply]
   add_smul a b t := Subtype.ext <| funext fun k => by
     rw [TateModule.smul_apply]
     simp only [AddSubgroup.coe_add, Pi.add_apply, TateModule.smul_apply]

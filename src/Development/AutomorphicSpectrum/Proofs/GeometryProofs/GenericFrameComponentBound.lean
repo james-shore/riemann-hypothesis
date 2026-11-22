@@ -172,7 +172,7 @@ theorem exists_form_basis {L : Type} [Field L] (y : (Σ k, ι k) → Ω) (φ : L
       rw [aeval_X, Finset.prod_eq_single p.1]
       · simp [hr, hc]
       · intro b _ hbp
-        simp [Pi.single_apply, hbp]
+        simp [hbp]
       · simp
     | one =>
       exact ⟨0, 1, ReciprocityTheory.ChartRestriction.G.Geo.isMultiHomog_one, by simp⟩

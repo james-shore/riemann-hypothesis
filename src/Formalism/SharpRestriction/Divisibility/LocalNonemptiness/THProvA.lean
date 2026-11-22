@@ -25,7 +25,7 @@ theorem hasDerivAt_exp_entry (X : Matrix n n ℂ) (i j : n) :
 theorem hasDerivAt_det_of_one (A : ℝ → Matrix n n ℂ) (A' : Matrix n n ℂ) (h0 : A 0 = 1)
     (h : ∀ i j, HasDerivAt (fun t => A t i j) (A' i j) 0) :
     HasDerivAt (fun t => (A t).det) A'.trace 0 := by
-  first | exact Bl.ProductIdentities.goal1 .. | (apply Bl.ProductIdentities.goal1 <;> assumption) | (intros; apply Bl.ProductIdentities.goal1 <;> assumption)
+  first | exact Bl.ProductIdentities.goal1 .. | (apply Bl.ProductIdentities.goal1 <;> assumption)
 
 theorem det_exp (X : Matrix n n ℂ) : (exp X).det = Complex.exp X.trace := by
   set φ : ℝ → ℂ := fun t => (exp (t • X)).det with hφ

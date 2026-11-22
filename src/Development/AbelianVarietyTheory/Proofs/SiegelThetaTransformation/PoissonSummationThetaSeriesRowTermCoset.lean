@@ -79,7 +79,7 @@ theorem _root_.GlobalTheory.SW.FourierJ.Row.poisson_class : ∀ (ι : Type) [Fin
     congr 1
     simp only [hΩinv, Matrix.neg_mulVec, Matrix.smul_mulVec, Matrix.mulVec_smul, dotProduct_smul,
       smul_dotProduct, dotProduct_neg, dotProduct_add, smul_eq_mul]
-    first | (field_simp; ring) | field_simp | ring
+    first | (field_simp; ring)
   refine ⟨_root_.GlobalTheory.siegelGaussIntegral Ω, ?_, fun a ζ => ?_⟩
   · have h := hΩ.siegelGaussIntegral_sq_mul_det
     rw [hΩdef, smul_smul, Matrix.det_smul] at h
@@ -105,7 +105,7 @@ theorem _root_.GlobalTheory.SW.FourierJ.Row.poisson_class : ∀ (ι : Type) [Fin
       rw [hΩinv]
       simp only [Matrix.smul_mulVec, Matrix.mulVec_smul, dotProduct_smul, smul_dotProduct,
         smul_eq_mul]
-      first | (field_simp; ring) | field_simp
+      first | (field_simp) | field_simp
     rw [e1, e2, hΩ.riemannTheta_eq_neg_inv, hw]
     have hexp : cexp (π * I * (ζ ⬝ᵥ τ⁻¹ *ᵥ ζ)) * cexp (-(π * I) * (ζ ⬝ᵥ τ⁻¹ *ᵥ ζ)) = 1 := by
       rw [← Complex.exp_add, ← Complex.exp_zero]

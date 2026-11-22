@@ -147,7 +147,6 @@ theorem UpperTheory.V.Z.Sym.Sig.thFacts : UpperTheory.V.Z.Sym.Sig.ThFacts := by
     fin_cases i <;> simp <;>
       first
         | exact ht _ (Set.mem_univ _)
-        | exact inv_mem (ht _ (Set.mem_univ _))
   have hP : Pres V (th' k) :=
     ⟨continuous_th'', th'_th', th'_mem_n, hT, th'_mem_nm, exists_rt_ne_cycF_of_good_of_ok⟩
   refine ⟨hP, ?_, ?_, ?_, ?_, ?_, ?_⟩

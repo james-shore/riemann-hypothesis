@@ -75,8 +75,7 @@ theorem siegel_relations (σ : K →+* K) (hσ : ∀ x, σ (σ x) = x) {p : ℕ}
   unfold PositivityTheory.GramSchwartzFunctions.EC.IsUnitary at hU
   rw [cTBlk, blkMul, blkMul] at hU
   obtain ⟨-, h12, h21, h22⟩ := blkInj hU
-  simp only [cTZero, neg_zero, mul_zero, zero_mul, add_zero, zero_add, mul_one, one_mul, Matrix.mul_neg,
-    Matrix.neg_mul, mul_neg, neg_mul] at h12 h21 h22
+  simp only [cTZero, neg_zero, mul_zero, zero_mul, add_zero, zero_add, mul_one, mul_neg, neg_mul] at h12 h21 h22
   have e2 : PositivityTheory.GramSchwartzFunctions.EC.cT σ Dd * A = 1 := neg_injective h21
   have e3 : PositivityTheory.GramSchwartzFunctions.EC.cT σ B * Dd = PositivityTheory.GramSchwartzFunctions.EC.cT σ Dd * B := by
     exact (neg_add_eq_zero.mp h22).symm

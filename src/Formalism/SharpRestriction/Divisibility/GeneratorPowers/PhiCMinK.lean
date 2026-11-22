@@ -76,7 +76,6 @@ theorem Kmat_det (b : Basis (Fin d) ℤ Y) (θ : 𝓞 E) (hθ : θ ≠ 0) : IsUn
   have hint : IsIntegral ℤ θ := by
     first
     | exact NumberField.RingOfIntegers.isIntegral θ
-    | exact Algebra.IsIntegral.isIntegral θ
   have hc0 : (minpoly ℤ θ).coeff 0 ≠ 0 := by
     intro h0c
     obtain ⟨r, hr⟩ := Polynomial.X_dvd_iff.mpr h0c
@@ -89,7 +88,7 @@ theorem Kmat_det (b : Basis (Fin d) ℤ Y) (θ : 𝓞 E) (hθ : θ ≠ 0) : IsUn
   have h0 : Polynomial.aeval θ (minpoly ℤ θ) = 0 := minpoly.aeval ℤ θ
   have h1 : θ * Polynomial.aeval θ q = -(((minpoly ℤ θ).coeff 0 : ℤ) : 𝓞 E) := by
     have h := congrArg (Polynomial.aeval θ) hq
-    simp only [map_sub, Polynomial.aeval_C, map_mul, Polynomial.aeval_X, h0, zero_sub,
+    simp only [map_sub, map_mul, Polynomial.aeval_X, h0, zero_sub,
       eq_intCast, map_intCast] at h
     linear_combination -h
   have h2 : θ * (-(Polynomial.aeval θ q) * (((minpoly ℤ θ).coeff 0 : ℤ) : 𝓞 E)) =
@@ -100,7 +99,6 @@ theorem Kmat_det (b : Basis (Fin d) ℤ Y) (θ : 𝓞 E) (hθ : θ ≠ 0) : IsUn
         push_cast
         first
         | exact sq_abs _
-        | exact Int.natAbs_sq _
       rw [← Int.cast_natCast, h', Int.cast_pow]
     rw [hc]
     linear_combination (-(((minpoly ℤ θ).coeff 0 : ℤ) : 𝓞 E)) * h1

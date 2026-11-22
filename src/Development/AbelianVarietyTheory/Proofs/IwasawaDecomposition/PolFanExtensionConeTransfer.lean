@@ -358,7 +358,7 @@ theorem finrank_le_of_isDomT {X : Type} [AddCommGroup X] [Module (𝓞 E) X] {be
     · intro h0
       by_contra hne
       have e := he' a a
-      simp only [h0, map_zero, LinearMap.zero_apply] at e
+      simp only [h0, map_zero] at e
       exact (hpos _ hne).ne' (by exact_mod_cast e)
     · intro h0
       refine eq_zero_of_posDef hd ?_

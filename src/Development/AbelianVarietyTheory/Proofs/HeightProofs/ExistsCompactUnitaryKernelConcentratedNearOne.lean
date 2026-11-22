@@ -99,7 +99,7 @@ theorem kernel_near_one : ∀ {n : ℕ} (ε : Fin n → Bool), ∃ C : ℝ, 0 �
     have := integral_mono (μ := muK ε) (integrable_const ((1 / ((n : ℝ) + 1)) ^ m)) (hint _ (φcont.pow m))
       (fun k => pow_le_pow_left₀ (by positivity) (φpos k) m)
     rw [integral_const] at this
-    simp only [probReal_univ, measure_univ, ENNReal.toReal_one, one_smul, Measure.real] at this
+    simp only [measure_univ, ENNReal.toReal_one, one_smul, Measure.real] at this
     exact lt_of_lt_of_le (by positivity) this
   refine ⟨fun k => φ k ^ m / Z, (φcont.pow m).div_const Z,
     fun k => div_nonneg (pow_nonneg (le_trans (by positivity) (φpos k)) m) Zpos.le, ?_, ?_, ?_⟩

@@ -58,7 +58,7 @@ theorem mulVec_inr (σ : E →ₐ[F] E) (R : Type) [CommRing R] [Algebra F R] {d
   rw [Finset.sum_eq_single q]
   · simp
   · intro x _ hx
-    simp [hx, Ne.symm hx]
+    simp [Ne.symm hx]
   · simp
 
 theorem pairHerm_eq_coordForm : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E]

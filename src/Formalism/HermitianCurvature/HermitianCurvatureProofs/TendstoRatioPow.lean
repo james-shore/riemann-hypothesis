@@ -57,7 +57,6 @@ theorem tendsto_ratio_pow (s : ℕ) (a b : ℂ) :
   congr 1
   first
   | (field_simp; ring)
-  | field_simp
 
 variable {ι : Type} {s : ℕ} {β ε : ℂ} {Y : Finset ι} {ut : ι → ℂ → ℂ → H} {bt : ι → ℂ → H} {SS : ℝ}
 
@@ -107,11 +106,9 @@ theorem GermD.tendsto_cross (hG : GermD s β ε Y ut bt SS) {h h' : ι} (hh : h 
     refine ⟨hu.sub hm, ?_⟩
     have h1 := integral_sq_sub_le hu hm hab (ae_of_all _ fun D => norm_mainD_le s β ε (bt h) (x + a) D)
     have hb := hG.sup h hh _ hx.1
-    beta_reduce
     linarith
   · filter_upwards with x
     refine ae_of_all _ fun D => ?_
-    beta_reduce
     rw [norm_smul, Complex.norm_real, Real.norm_of_nonneg (norm_nonneg _)]
     exact (mul_le_mul_of_nonneg_left (norm_mainD_le _ _ _ _ _ _) (norm_nonneg _)).trans (hdom1 x D)
   · intro K hK hK0 δ hδ

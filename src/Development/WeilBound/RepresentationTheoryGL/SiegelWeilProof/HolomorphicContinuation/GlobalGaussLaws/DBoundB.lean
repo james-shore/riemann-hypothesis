@@ -35,7 +35,7 @@ private theorem entC_mR_mul_aC_univ_prod_stripS (X : Fin n → ℝ) :
   · intro i j
     apply Continuous.continuousOn
     rcases i with i | i <;> rcases j with j | j <;>
-      by_cases h : i = j <;> simp [aC, Matrix.diagonal_apply, h] <;> fun_prop
+      by_cases h : i = j <;> simp [aC, h] <;> fun_prop
 
 theorem ptZ_entC (X : Fin n → ℝ) (s : ℂ) (hs : s = Complex.I ∨ s = -Complex.I) :
     EntC (Set.univ ×ˢ stripS X) (fun p : GR n × ℂ => ptZ p.1 X p.2 s) := by
@@ -86,7 +86,7 @@ private theorem re_I_mul_ofReal_mul_eq_neg_mul_im (c : ℝ) (w : ℂ) : (Complex
 
 private theorem sum_norm_sq_rowC_eq_sum_norm_sq {m : ℕ} (u : Fin m → Fin n → ℂ) (a : Fin m) :
     ∑ j, ‖rowC u a j‖ ^ 2 = ∑ j, ‖u a j‖ ^ 2 := by
-  simp [rowC, norm_star]
+  simp [rowC]
 
 theorem re_bound {m : ℕ} (ε : Fin m → Bool) (t c : ℝ) (hc : 0 < c) (Z Z' : Matrix (Fin n) (Fin n) ℂ)
     (δ₁ δ₂ : ℝ) (hδ₁ : 0 < δ₁) (hδ₂ : 0 < δ₂)

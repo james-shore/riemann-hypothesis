@@ -65,13 +65,13 @@ theorem key {O : Type} [CommRing O] [IsLocalRing O] {α β : O} (hab : ¬ IsUnit
       · simp
       · simp [Fin.castSucc_lt_last, (Fin.castSucc_lt_last j).ne', not_lt_of_gt (Fin.castSucc_lt_last j)]
       · simp [Fin.castSucc_lt_last, (Fin.castSucc_lt_last i).ne, not_lt_of_gt (Fin.castSucc_lt_last i)]
-        first | exact hr i | exact (hr i).mul_right _
+        first | exact hr i
       · simpa using hU i j
     · intro i j
       refine Fin.lastCases ?_ (fun i => ?_) i <;> refine Fin.lastCases ?_ (fun j => ?_) j
       · simp
       · simp [Fin.castSucc_lt_last, (Fin.castSucc_lt_last j).ne', not_lt_of_gt (Fin.castSucc_lt_last j)]
-        first | exact hc j | exact (hc j).mul_left _
+        first | exact hc j
       · simp [Fin.castSucc_lt_last, (Fin.castSucc_lt_last i).ne, not_lt_of_gt (Fin.castSucc_lt_last i)]
       · simpa using hL i j
     · ext i j
@@ -84,7 +84,7 @@ theorem key {O : Type} [CommRing O] [IsLocalRing O] {α β : O} (hab : ¬ IsUnit
         done
       · have e := congrFun (congrFun hUDL i) j
         rw [udl_apply] at e
-        simp only [Matrix.of_apply, Fin.lastCases_castSucc, Fin.lastCases_last, mul_zero, add_zero, mul_one]
+        simp only [Matrix.of_apply, Fin.lastCases_castSucc, Fin.lastCases_last]
         rw [← e]
         simp only [G]
         linear_combination (-(r i * ↑a⁻¹ * c j)) * hinv

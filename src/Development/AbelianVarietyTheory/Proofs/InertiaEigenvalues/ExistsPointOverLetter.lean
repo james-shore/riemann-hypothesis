@@ -121,8 +121,7 @@ theorem torsion_transitive (D : D7) (HW : HWOf D.loc) (F : FonOf D.loc D.locA HW
     have hz : ‖t / (l : ℚ_[l])‖ ≤ 1 := by
       rw [norm_div, Padic.norm_p, div_le_one (by
         first
-          | positivity
-          | exact inv_pos.mpr (by exact_mod_cast (Fact.out : l.Prime).pos))]
+          | positivity)]
       have := ha
       simpa [zpow_neg, zpow_one] using this
     have hint : algebraMap ℚ_[l] ↥LL.1 (t / (l : ℚ_[l])) ∈ OL LL := by

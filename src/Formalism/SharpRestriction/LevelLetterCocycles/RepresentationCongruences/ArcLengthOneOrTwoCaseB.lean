@@ -267,14 +267,14 @@ theorem arc_length_one_or_two_case_b [NeZero n] [Fintype (K →ₐ[Qp] LL)] [IsD
         apply W.EE_inj
         have h1 := huuE m
         have h2 := hY m
-        simp only [map_mul, map_pow, lA, lE, map_natCast, map_one, mul_one] at h1 h2 ⊢
+        simp only [map_mul, map_pow, lA, lE, map_natCast, mul_one] at h1 h2 ⊢
         linear_combination (-(((PD.p : ℕ) : W.EE) ^ κ * algebraMap (LetA O n) W.EE Φ)) * h1 -
           algebraMap (LetA O n) W.EE Λ * h2⟩
     have h1 : algebraMap (LetA O n) W.EE Φ * f₁ m = algebraMap (LetA O n) W.EE yy := by
       apply hΛu.mul_left_cancel
       have e := congrArg (algebraMap (LetA O n) W.EE) hyyE
       have h1 := huuE m
-      simp only [map_mul, map_one, mul_one] at e h1 ⊢
+      simp only [map_mul, mul_one] at e h1 ⊢
       linear_combination (algebraMap (LetA O n) W.EE Φ) * h1 + e
     refine ⟨yy, hyy, h1, W.EE_inj ?_⟩
     have h2 := hY m
@@ -417,17 +417,14 @@ theorem arc_length_one_or_two_case_b [NeZero n] [Fintype (K →ₐ[Qp] LL)] [IsD
     rw [hΛ_eq, hZ, hΦ, hQc] at e3
     have e4 := congrFun e3 c
     simp only [Pi.mul_apply, Pi.add_apply, Pi.neg_apply, Pi.pow_apply, Finset.sum_apply, Pi.natCast_apply,
-      Pi.algebraMap_apply, hletcc, one_mul, hFq, hUk, hpsc, hπc, hP0, lA, hCa, map_sub, map_mul, map_pow, hιC,
-      map_natCast, Nat.cast_pow] at e4
+      Pi.algebraMap_apply, hletcc, one_mul, hFq, hUk, hpsc, hπc, hP0, lA, hCa, map_sub, map_natCast, Nat.cast_pow] at e4
     apply Br.inj
-    simp only [map_mul, map_sub, map_sum, map_pow, hιC, map_natCast, Nat.cast_pow]
+    simp only [map_mul, map_sub, map_sum, map_pow, hιC, map_natCast]
     by_cases hjk : j = k₀
     · subst hjk
-      simp only [if_pos rfl, if_true, ite_true, Pi.single_eq_same, map_one, mul_one, map_mul, map_pow, hιC,
-        map_natCast, Nat.cast_pow] at e4 ⊢
+      simp only [if_true, Pi.single_eq_same, map_one, mul_one, map_mul, map_pow, map_natCast] at e4 ⊢
       linear_combination e4
-    · simp only [if_neg hjk, Pi.single_eq_of_ne hjk, map_zero, mul_zero, neg_zero, add_zero, sub_zero, if_false,
-        ite_false] at e4 ⊢
+    · simp only [if_neg hjk, Pi.single_eq_of_ne hjk, map_zero, mul_zero, neg_zero, add_zero, sub_zero] at e4 ⊢
       linear_combination e4
   have hcr := ArcLengthTwo.coeff_relation ((PD.p : ℕ) : O) hp0 Fq μ k₀ K (A.σ PD.p + rr + A.σ PD.p) S A.h k₀'
     (Br.P.p 1 ^ y) hk₀h (by omega) hrel

@@ -36,11 +36,6 @@ theorem apply_eq_of_dominant {W X Y Z : Scheme.{0}} {a b : X ⟶ Y} (s : Y ⟶ Z
     (hs : a ≫ s = b ≫ s) (i : W ⟶ X) [IsDominant i] (hi : i ≫ a = i ≫ b) (x : X) : a x = b x := by
   first
   | (rename_i h_7 h_10; revert W X Y Z a b s h_7 hs i h_10 hi x; exact @_root_.GlobalTheory.EqualityOnPoints.eq_on_points)
-  | exact @_root_.GlobalTheory.EqualityOnPoints.eq_on_points
-  | exact _root_.GlobalTheory.EqualityOnPoints.eq_on_points
-  | (apply _root_.GlobalTheory.EqualityOnPoints.eq_on_points <;> assumption)
-  | (intros; apply _root_.GlobalTheory.EqualityOnPoints.eq_on_points <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.EqualityOnPoints.eq_on_points <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.EqualityOnPoints.eq_on_points ..)
 
 variable {R : Type} [CommRing R] {K : Type} [Field K] [Algebra R K] {A A' : Over (Sp K)}

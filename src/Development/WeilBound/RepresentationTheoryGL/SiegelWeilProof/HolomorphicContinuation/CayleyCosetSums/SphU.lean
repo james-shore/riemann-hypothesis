@@ -135,7 +135,7 @@ private theorem iteratedFDeriv_comp_clm_mul_const {E : Type} [NormedAddCommGroup
       (by exact_mod_cast (WithTop.coe_lt_top _).le),
     iteratedFDerivWithin_of_isOpen N hU hy]
   ext v
-  simp [mul_comm]
+  simp
 
 private theorem exists_ne_zero_smul_mem_of_mem_span' {E : Type} [NormedAddCommGroup E] [NormedSpace ℂ E] [FiniteDimensional ℂ E]
     {Kg : Type} [TopologicalSpace Kg] [CompactSpace Kg] [MeasurableSpace Kg] [BorelSpace Kg]

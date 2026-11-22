@@ -198,7 +198,7 @@ private lemma mkX_lemma_10 {ι : Type} [Fintype ι] [DecidableEq ι] (m : ℕ) (
         by_cases h : i = s
         · subst h
           simp
-        · simp [h, Ne.symm h, Finsupp.single_apply]
+        · simp [h]
       · rw [Finsupp.sum_single_index rfl]
         exact hm
     have htr : Formalism.L2.Pj.psTrunc m (MvPowerSeries.X s : MvPowerSeries ι S) = MvPolynomial.X s := by

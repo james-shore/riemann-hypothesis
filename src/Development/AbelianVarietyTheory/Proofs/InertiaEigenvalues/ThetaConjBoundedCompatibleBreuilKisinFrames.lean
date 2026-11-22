@@ -142,7 +142,7 @@ theorem bounded_compat : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K)
     refine ⟨Z₁, ?_⟩
     rw [← Matrix.map_mul, h1]
     refine Matrix.ext fun i j => ?_
-    by_cases hij : i = j <;> simp [Matrix.smul_apply, Matrix.one_apply, hij, s]
+    by_cases hij : i = j <;> simp [Matrix.smul_apply, hij, s]
   obtain ⟨Y₁, hY₁⟩ := inv F Y hY
   obtain ⟨Y₁', hY₁'⟩ := inv F' Y' hY'
 

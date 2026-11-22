@@ -80,8 +80,7 @@ theorem GlobalTheory.KerDia.sharp_mem_range : ∀ {B : Base} {X : PreX B.toPre} 
   refine ⟨P * ∏ τ, GlobalTheory.KerDia.SharpPoly.detP (B.R.N i) τ ^ (n τ).toNat, ?_⟩
   funext y
   have hd : ∀ τ, (y.1 τ).det ≠ 0 := fun τ => (y.2 τ).ne_zero
-  simp only [fnOf, LinearMap.coe_mk, AddHom.coe_mk, ColumnChain.sharp, mulFun, Pi.one_apply, Matrix.one_mul,
-    zpow_zero, Finset.prod_const_one, one_mul, map_mul, map_prod, map_pow, GlobalTheory.KerDia.SharpPoly.eval_detP]
+  simp only [fnOf, LinearMap.coe_mk, AddHom.coe_mk, ColumnChain.sharp, mulFun, Pi.one_apply, one_mul, map_mul, map_prod, map_pow, GlobalTheory.KerDia.SharpPoly.eval_detP]
   have key : ∀ τ, deFr y τ ^ (I.chain l u a).sSharp i τ * (y.1 τ).det ^ shiftOf (lamT (B.hcW u) i) τ =
       (y.1 τ).det ^ (n τ).toNat := by
     intro τ

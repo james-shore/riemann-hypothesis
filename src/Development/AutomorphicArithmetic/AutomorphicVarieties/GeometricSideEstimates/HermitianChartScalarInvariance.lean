@@ -57,8 +57,7 @@ theorem UpperTheory.hermitian_chart_scalar_invariance :
     have hc := HasFDerivAt.comp (f := fun y : Lie E a => sc (Matrix.of y) • y) (oneL E a) hF1 hSd
     change fderiv ℝ (chart (gsum L (pg P)) g) (oneL E a) X = _
     rw [e.fderiv_eq, hc.fderiv]
-    simp only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
-      ContinuousLinearMap.id_apply, ContinuousLinearMap.smulRight_apply, h1', one_smul, hd, id]
+    simp only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.add_apply, ContinuousLinearMap.id_apply, ContinuousLinearMap.smulRight_apply, h1', one_smul, hd, id]
     rw [hF']
     refine tsum_congr fun v => ?_
     rw [← hT]

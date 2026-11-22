@@ -94,8 +94,8 @@ private theorem diam_cg {Ω : Type} [Field Ω] [Algebra ℚ Ω] [IsAlgClosure �
   have hu := GlobalTheory.T.cuspFunctionalValueModPrimePow_unique_oddWeight Ω ε X A N l X.j_hol hl2 hlN hN5 hl n w hw _ hmem _ _ hθ hlin r
   have h1 := cg_j hj hu
   rw [appr_zero'] at h1
-  simp only [HahnSeries.coeff_add, HahnSeries.coeff_smul, Nat.cast_zero, zero_smul, add_zero,
-    smul_eq_mul, nsmul_eq_mul, map_mul, map_natCast] at h1
+  simp only [HahnSeries.coeff_smul, Nat.cast_zero, zero_smul, add_zero,
+    smul_eq_mul, map_mul, map_natCast] at h1
   exact cg_trans h1 (cg_appr n (χ a) _ (hj _ (hD r)))
 
 end UpperTheory.V.Z.Kato.Joint.ThetaOperator
@@ -137,7 +137,7 @@ theorem UpperTheory.V.Z.Kato.Joint.thOp :
     have h1' := cg_j hj h1
     simp only [HahnSeries.coeff_add, HahnSeries.coeff_smul, GlobalTheory.CyclotomicQExpansion.Api.coeff_uq hqp.pos,
       GlobalTheory.CyclotomicQExpansion.Api.coeff_vq hqp.pos, map_add, Nat.cast_one, div_one, Rat.den_natCast, if_true,
-      one_mul, smul_eq_mul, nsmul_eq_mul, map_mul, map_pow, map_natCast] at h1'
+      one_mul, smul_eq_mul, map_mul, map_pow, map_natCast] at h1'
     have hx : Cg n (j ((thN X A N l n q b).coeff ((i : ℚ) / q)))
         (((χ q : ℤ_[l]) : Qbar l) *
           (if q ∣ i then j ((thN X A N l n 1 b).coeff (((i / q : ℕ) : ℚ) / ((1 : ℕ) : ℚ))) else 0)) := by

@@ -270,10 +270,10 @@ theorem invDom_spec (hρ : 0 < ρ) (h : ConvergesAt a ρ) (ha : a ≠ 0) {N : �
   rw [cmul_rearrange hρ hs1 ((convergesAt_single 0 1 ρ).add hρ hu) hs2 hw,
     cmul_one_add_geomInv hρ hu hq, cmul_single_zero_one, cmul_single_left]
   funext n
-  simp only [Pi.single_apply, sub_neg_eq_add]
+  simp only [Pi.single_apply]
   by_cases hn : n = 0
   · subst hn; simp [haN]
-  · simp [hn, show n + N ≠ N by omega]
+  · simp [hn]
 
 theorem weight_lt_of_lowIndex_eq_highIndex (hρ : 0 < ρ) (h : ConvergesAt a ρ) (ha : a ≠ 0)
     (he : lowIndex a ρ = highIndex a ρ) (m : ℤ) (hm : m ≠ lowIndex a ρ) :

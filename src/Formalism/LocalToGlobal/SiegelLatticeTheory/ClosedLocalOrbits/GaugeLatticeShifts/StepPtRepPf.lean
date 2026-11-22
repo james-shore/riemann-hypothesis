@@ -27,8 +27,6 @@ theorem hJ_crd (v : InfinitePlace X.B.I.F) (x y : (VS D).V) :
   rw [← Formalism.L2.SG.PoincareInHH.Cut.hform_crd (X := X) x y]
   first
   | rw [RingEquiv.symm_apply_apply]
-  | simp only [RingEquiv.symm_apply_apply]
-  | simp
   exact PI.ScPiFrameW.hJ_rv X.B.I v (X.crd x) (X.crd y)
 
 def frU (u : D.what₂.Word) (v : InfinitePlace X.B.I.F) : Fr (X.B.I.ε v) D.R.rS D.R.k where
@@ -119,7 +117,7 @@ theorem real_point_representative_diagonal : StepPtRepDiag := by
         · simp [ha, Ne.symm ha]
       · by_cases hb : b = i0 v
         · subst hb; simp [hab]
-        · simp [hab, hb, Ne.symm hb]
+        · simp [hab, Ne.symm hb]
     rw [hm1, hm2]
     exact hD v
 

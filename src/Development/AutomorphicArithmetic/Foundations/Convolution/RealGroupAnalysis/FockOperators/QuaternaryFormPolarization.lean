@@ -32,7 +32,6 @@ private theorem fin_level {F : Type} [Field F] [NumberField F] (δ : F)
         g q.2 = g p.2 :=
       (continuous_snd.tendsto p).eventually (hev _)
     filter_upwards [h1, h2] with q e1 e2
-    change g (q.2 + q.1) = g q.2
     rw [e1, e2]
     exact hp
   have hχ : IsLocallyConstant fun x : FiniteAdeleRing (𝓞 F) F => (finiteAdelicChar F x : ℂ) := by

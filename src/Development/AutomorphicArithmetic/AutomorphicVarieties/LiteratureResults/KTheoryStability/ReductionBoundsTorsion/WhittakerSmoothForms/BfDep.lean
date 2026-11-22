@@ -167,7 +167,7 @@ private theorem eta_succ_congr_of_coc_of_mem (H : Hyp U A φ) (hD : PDep A φ) (
       rfl)
   rw [Nat.sub_self] at e
   simp only [delG, Finset.sum_range_succ, Finset.sum_range_zero, zero_add, Finset.sum_apply,
-    Pi.add_apply, Pi.smul_apply, pow_zero, pow_one, one_smul, neg_smul, h1, h2] at e
+    Pi.smul_apply, pow_zero, pow_one, one_smul, neg_smul, h1, h2] at e
   rw [add_neg_eq_zero] at e
   exact e.symm
 
@@ -205,7 +205,7 @@ theorem pComp (hH : PHom U A φ) (hSm : PSmooth U A φ) (hD : PDep A φ) (hC : P
       apply hbd
       intro n hn
       have := apply_add_succAbove_eq_skip (ext' g) 0 i (⟨n, by omega⟩ : Fin (k + 1))
-      simp only [zero_add, Fin.val_mk] at this
+      simp only [zero_add] at this
       rw [← this]
       simp [ext', show n < k + 1 by omega]
     rw [hWk, hsum] at h0

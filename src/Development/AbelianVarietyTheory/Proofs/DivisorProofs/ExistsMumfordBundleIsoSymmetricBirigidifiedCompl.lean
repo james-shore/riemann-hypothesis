@@ -227,7 +227,7 @@ theorem factor_eq_lamExp : ∀ (g : ℕ) (Hm : Matrix (Fin (g + g)) (Fin (g + g)
   have hB0 : ∀ x : Fin g → ℂ, LamAdd.B (Hm.submatrix (Fin.castAdd g) (Fin.natAdd g)) x 0 = 0 := fun x => by simp [LamAdd.B]
   have hd : ∀ x y : Fin (g + g) → ℂ, x ⬝ᵥ Hm.mulVec (star y) = LamAdd.B Hm x y := fun _ _ => rfl
   rw [hB, hB, halfL_append, halfR_append, halfL_append, halfR_append] at hc
-  simp only [hB0, LamAdd.B_zero_left, add_zero, zero_add] at hc
+  simp only [hB0, add_zero, zero_add] at hc
   rw [hd, hd, hB, hB]
   unfold LamAdd.Q
   rw [sum_finset_fin_two_four_terms]
@@ -240,7 +240,7 @@ theorem factor_eq_lamExp : ∀ (g : ℕ) (Hm : Matrix (Fin (g + g)) (Fin (g + g)
   have e2 : LamAdd.ε ⟨{1}⟩ = -1 := by decide
   have e3 : LamAdd.ε ⟨{0, 1}⟩ = 1 := by decide
   rw [c0, c0, c1, c1, c2, c2, c3, c3, e0, e1, e2, e3]
-  simp only [LamAdd.B_add_left, LamAdd.B_add_right, LamAdd.B_zero_left, hB0]
+  simp only [LamAdd.B_add_left, LamAdd.B_add_right, hB0]
   have key : (Real.pi : ℂ) * (LamAdd.B (Hm.submatrix (Fin.castAdd g) (Fin.natAdd g)) (halfL g z) (halfR g l) + LamAdd.B (Hm.submatrix (Fin.castAdd g) (Fin.natAdd g)) (halfR g z) (halfL g l)) +
       Real.pi / 2 * (LamAdd.B (Hm.submatrix (Fin.castAdd g) (Fin.natAdd g)) (halfL g l) (halfR g l) + LamAdd.B (Hm.submatrix (Fin.castAdd g) (Fin.natAdd g)) (halfR g l) (halfL g l)) =
       Real.pi / 2 * (LamAdd.B (Hm.submatrix (Fin.castAdd g) (Fin.natAdd g)) (halfL g l) (halfR g l) + LamAdd.B (Hm.submatrix (Fin.castAdd g) (Fin.natAdd g)) (halfR g l) (halfL g l)) +
@@ -276,12 +276,11 @@ def inl (g : ℕ) : (Fin g → ℂ) →ₗ[ℂ] (Fin (g + g) → ℂ) where
   map_add' x y := by
     funext q
     refine Fin.addCases (fun k => ?_) (fun k => ?_) q <;>
-      simp only [Fin.append_left, Fin.append_right, Pi.add_apply, Pi.zero_apply, add_zero, Pi.smul_apply,
-        smul_eq_mul, mul_zero, RingHom.id_apply]
+      simp only [Fin.append_left, Fin.append_right, Pi.add_apply, Pi.zero_apply, add_zero]
   map_smul' c x := by
     funext q
     refine Fin.addCases (fun k => ?_) (fun k => ?_) q <;>
-      simp only [Fin.append_left, Fin.append_right, Pi.add_apply, Pi.zero_apply, add_zero, Pi.smul_apply,
+      simp only [Fin.append_left, Fin.append_right, Pi.zero_apply, Pi.smul_apply,
         smul_eq_mul, mul_zero, RingHom.id_apply]
 
 def inr (g : ℕ) : (Fin g → ℂ) →ₗ[ℂ] (Fin (g + g) → ℂ) where
@@ -289,12 +288,11 @@ def inr (g : ℕ) : (Fin g → ℂ) →ₗ[ℂ] (Fin (g + g) → ℂ) where
   map_add' x y := by
     funext q
     refine Fin.addCases (fun k => ?_) (fun k => ?_) q <;>
-      simp only [Fin.append_left, Fin.append_right, Pi.add_apply, Pi.zero_apply, add_zero, Pi.smul_apply,
-        smul_eq_mul, mul_zero, RingHom.id_apply]
+      simp only [Fin.append_left, Fin.append_right, Pi.add_apply, Pi.zero_apply, add_zero]
   map_smul' c x := by
     funext q
     refine Fin.addCases (fun k => ?_) (fun k => ?_) q <;>
-      simp only [Fin.append_left, Fin.append_right, Pi.add_apply, Pi.zero_apply, add_zero, Pi.smul_apply,
+      simp only [Fin.append_left, Fin.append_right, Pi.zero_apply, Pi.smul_apply,
         smul_eq_mul, mul_zero, RingHom.id_apply]
 
 def swapE (g : ℕ) : Fin (g + g) ≃ Fin (g + g) :=

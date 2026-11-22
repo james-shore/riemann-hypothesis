@@ -134,8 +134,7 @@ lemma Sform_h (c c' : Fin n → E) :
   simp only [Sform, Matrix.of_apply]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun k _ => Finset.sum_congr rfl fun l _ => ?_
-  try simp only [cc, RingEquiv.toRingHom_eq_coe, RingEquiv.coe_toRingHom, AlgEquiv.toRingEquiv_eq_coe,
-    AlgEquiv.coe_ringEquiv]
+  try simp only [cc, RingEquiv.toRingHom_eq_coe, RingEquiv.coe_toRingHom, AlgEquiv.coe_ringEquiv]
   ring
 
 lemma herm_perp (hβξ : ∀ k, herm X.Gm (β k) ξ = 0) (c : Fin n → E) :

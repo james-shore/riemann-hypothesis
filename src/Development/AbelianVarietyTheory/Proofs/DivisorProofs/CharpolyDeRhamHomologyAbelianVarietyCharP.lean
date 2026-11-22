@@ -42,7 +42,7 @@ theorem charpoly_of_red {R K M V : Type} [CommRing R] [Field K] [AddCommGroup M]
       have := congrArg (fun m => b.repr m i) hn
       simp only [map_sum, map_smul, Finsupp.coe_finset_sum, Finset.sum_apply, Finsupp.smul_apply,
         Module.Basis.repr_self, smul_eq_mul, map_nsmul, Finsupp.coe_smul, Pi.smul_apply] at this
-      rw [Finset.sum_eq_single i (fun j _ hj => by simp [Finsupp.single_apply, hj])
+      rw [Finset.sum_eq_single i (fun j _ hj => by simp [hj])
         (fun hi => absurd (Finset.mem_univ i) hi)] at this
       simpa [nsmul_eq_mul] using this
     rw [← ha i, hai, map_mul, map_natCast, hc, zero_mul]
@@ -60,7 +60,7 @@ theorem charpoly_of_red {R K M V : Type} [CommRing R] [Field K] [AddCommGroup M]
     rw [Matrix.map_apply, LinearMap.toMatrix_apply, LinearMap.toMatrix_apply, hbV j, ← h, hred]
     have hv : ∀ i', v i' = bV i' := fun i' => (hbV i').symm
     simp only [hv, map_sum, map_smul, Module.Basis.repr_self, Finsupp.coe_finset_sum, Finset.sum_apply,
-      Finsupp.smul_apply, smul_eq_mul, Finsupp.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq',
+      Finsupp.smul_apply, smul_eq_mul, Finsupp.single_apply, mul_ite, mul_zero, Finset.sum_ite_eq',
       Finset.mem_univ, if_true]
     exact mul_one _
   rw [← LinearMap.charpoly_toMatrix ψ bV, hmat, Matrix.charpoly_map, LinearMap.charpoly_toMatrix]

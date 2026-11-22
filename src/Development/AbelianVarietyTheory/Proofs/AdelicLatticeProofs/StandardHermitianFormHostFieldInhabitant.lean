@@ -147,7 +147,7 @@ theorem isUnE_one_iff {F : Type} [Field F] [Algebra F E] (c : E ≃ₐ[F] E) {n 
     rw [this]
     by_cases e : i = j
     · subst e; simp [Pi.single_apply]
-    · simp [Pi.single_apply, e, Ne.symm e]
+    · simp [Pi.single_apply, e]
   · intro h x y
     rw [hermE_one, hermE_one]
     simp only [Matrix.mulVec, dotProduct, map_sum, map_mul, Finset.sum_mul, Finset.mul_sum]
@@ -168,7 +168,7 @@ theorem main : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (H : Recip
     fun P _ => moved_iff H P, isUnE_one_iff _⟩
   · by_cases e : a = b
     · subst e; simp
-    · simp [Matrix.one_apply, e, Ne.symm e]
+    · simp [e, Ne.symm e]
   · rw [stdLat_eq_span]
     exact Submodule.fg_span (Set.finite_range _)
   · rw [eq_top_iff, ← (Pi.basisFun E (Fin n)).span_eq]

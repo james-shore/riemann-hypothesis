@@ -15,7 +15,7 @@ theorem lowU_conj_blocks {k : Type} [Field k] {A D : Type} [Fintype A] [Decidabl
     fromBlocks 1 0 0 M * fromBlocks 1 0 (-ν) 1 * fromBlocks a b c e * fromBlocks 1 0 0 W =
       fromBlocks a (b * W) (M * (c - ν * a)) (M * (e - ν * b) * W) := by
   simp only [fromBlocks_multiply]
-  congr 1 <;> simp [Matrix.mul_sub, sub_eq_add_neg, Matrix.mul_add, Matrix.add_mul, Matrix.mul_assoc, Matrix.mul_neg, Matrix.neg_mul] <;> abel
+  congr 1 <;> simp [sub_eq_add_neg, Matrix.mul_add, Matrix.add_mul, Matrix.mul_assoc, Matrix.mul_neg, Matrix.neg_mul] <;> abel
 
 end GlobalTheory.LowerHecke
 

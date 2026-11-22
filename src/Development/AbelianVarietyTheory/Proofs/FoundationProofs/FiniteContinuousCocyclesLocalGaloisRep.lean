@@ -154,7 +154,7 @@ theorem _root_.GlobalTheory.LocalH1Finiteness.finite_cocycles_of_compact_cover {
       Finite.of_injective (fun x : N.toAddSubgroup =>
         (⟨x.1.1, x.2⟩ : LinearMap.range (_root_.ReciprocityTheory.Gal.d0 rho)))
         (fun a b hab => by
-          simp only [Subtype.mk.injEq] at hab
+          simp only at hab
           exact Subtype.ext (Subtype.ext (Subtype.mk.inj hab)))
     apply Nat.finite_of_card_ne_zero
     rw [AddSubgroup.card_eq_card_quotient_mul_card_addSubgroup N.toAddSubgroup]

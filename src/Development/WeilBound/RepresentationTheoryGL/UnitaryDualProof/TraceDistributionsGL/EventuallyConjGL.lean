@@ -18,7 +18,7 @@ theorem inv_cj (g : GL (Fin (n + 1)) k) (x : Mx k n) :
     ((g⁻¹ : GL (Fin (n + 1)) k) : Mx k n) * cj g x * (g : Mx k n) = x := by
   simp only [cj, ← Matrix.mul_assoc]
   rw [Matrix.mul_assoc _ _ (g : Mx k n)]
-  simp [← Units.val_mul, Matrix.mul_assoc]
+  simp
 
 theorem eventually_conj {f : Mx k n → ℂ} (hf : f ∈ SB (Mx k n)) :
     ∀ᶠ AB : Mx k n × Mx k n in 𝓝 (1, 1), ∀ y ∈ tsupport f, f (AB.1 * y * AB.2) = f y := by
@@ -68,7 +68,7 @@ theorem sw_last (w : Vc k n) (hw : w (Fin.last n) ≠ 0) (j : Fin (n + 1)) :
   · subst h
     simp [rE, eN, vecMulVec]
   · have h' : Fin.last n ≠ j := fun e => h e.symm
-    simp [rE, eN, vecMulVec, Matrix.one_apply, h, h']
+    simp [rE, eN, vecMulVec, h, h']
 
 end Near
 

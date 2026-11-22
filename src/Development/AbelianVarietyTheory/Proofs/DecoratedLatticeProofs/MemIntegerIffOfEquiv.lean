@@ -92,10 +92,8 @@ def toFv : k ≃+* Fv D.host.F v where
     change comp he (p.ι (p.π (sec D v p.e b))) = b
     rw [p.ι_π, map_mul, comp_self, one_mul, GlobalTheory.LocMod.SplitCompl.comp_sec]
   map_mul' x y := by
-    change comp he (p.ι (x * y)) = comp he (p.ι x) * comp he (p.ι y)
     rw [ι_mul, map_mul]
   map_add' x y := by
-    change comp he (p.ι (x + y)) = comp he (p.ι x) + comp he (p.ι y)
     rw [map_add, map_add]
 
 theorem continuous_toFv : Continuous (toFv p he) := (continuous_comp he).comp p.cont_ι

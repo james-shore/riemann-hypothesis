@@ -34,7 +34,7 @@ theorem snd_val_affine {R' : Type} [CommRing R'] [Algebra R R'] (U : X.affineOpe
         simp [Algebra.smul_def, TrivSqZeroExt.algebraMap_eq_inl']
       map_one_eq_zero' := by simp
       leibniz' := fun a b ↦ by
-        simp only [map_mul, TrivSqZeroExt.snd_mul, smul_eq_mul, Algebra.smul_def,
+        simp only [Algebra.smul_def,
           RingHom.algebraMap_toAlgebra]
         simp [MulOpposite.smul_eq_mul_unop]
         ring }
@@ -45,7 +45,7 @@ theorem snd_val_affine {R' : Type} [CommRing R'] [Algebra R R'] (U : X.affineOpe
         TrivSqZeroExt.inr (δ' c.snd)
       map_one' := by ext <;> simp
       map_zero' := by ext <;> simp
-      map_add' := fun a b ↦ by ext <;> simp <;> ring
+      map_add' := fun a b ↦ by ext <;> simp
       map_mul' := fun a b ↦ by
         ext
         · simp

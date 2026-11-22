@@ -15,7 +15,7 @@ namespace GlobalTheory.RoadU.UnrTwist
 theorem tw_tw_inv {Γ k : Type} [Group Γ] [Field k] {n : ℕ} (r : Γ →* GL (Fin n) k) (μ : Γ →* kˣ) :
     UpperTheory.V.Af.tw (UpperTheory.V.Af.tw r μ) μ⁻¹ = r := by
   ext s i j
-  simp [UpperTheory.V.Af.tw_val, smul_smul]
+  simp [UpperTheory.V.Af.tw_val]
 
 theorem algSat_eq' (n q : ℕ) (B : Multiset ℂˣ) :
     UpperTheory.V.Af.algSat n q B = B.map fun α : ℂˣ => (((q : ℝ) ^ (((n : ℝ) - 1) / 2) : ℝ) : ℂ) * (α : ℂ) := by

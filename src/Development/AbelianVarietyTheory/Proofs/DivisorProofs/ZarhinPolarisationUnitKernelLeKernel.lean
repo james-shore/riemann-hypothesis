@@ -61,14 +61,14 @@ theorem polUnit_ker_le : ∀ (h M d : ℕ), 0 < d → ∀ (S : Scheme.{0}) (t : 
     ext1
     · simp only [Category.assoc, lift_fst, lift_fst_assoc, comp_one]
       rw [← hv]; simp only [Category.assoc]
-    · simp only [Category.assoc, lift_snd, lift_snd_assoc, Category.comp_id]
+    · simp only [Category.assoc, lift_snd, Category.comp_id]
   have e2 : (lift (snd c.A T ≫ x ≫ inc) (fst c.A T ≫ inc)).left =
       (lift (snd c.A T ≫ x ≫ inc) (fst c.A T ≫ inc ≫ act (kerM d))).left ≫
         (lift (fst z.A z.A) (snd z.A z.A ≫ act (bar d (kerN d)))).left := by
     rw [← Over.comp_left]
     congr 1
     ext1
-    · simp only [Category.assoc, lift_fst, lift_fst_assoc]
+    · simp only [Category.assoc, lift_fst]
     · simp only [Category.assoc, lift_snd, lift_snd_assoc, hM]
   have e3 : (lift (snd c.A T ≫ x ≫ inc) (fst c.A T ≫ inc)).left =
       (lift (snd c.A T ≫ x) (fst c.A T)).left ≫ (inc ⊗ₘ inc).left := by

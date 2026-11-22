@@ -79,11 +79,11 @@ theorem span_eq_top {E : Type} [Field E] {Ψ : Type} [Fintype Ψ] (N : ℕ) (s :
             (LinearMap.single ℝ (fun _ : Fin N => ℂ) i (s τ x)) := by
         funext τ' j
         rw [Finset.sum_apply, Finset.sum_apply, Finset.sum_eq_single τ'
-          (fun b _ hb => by simp [Pi.single_apply, hb.symm]) (by simp)]
+          (fun b _ hb => by simp [hb.symm]) (by simp)]
         by_cases hj : j = i
         · subst hj
           simp
-        · simp [Pi.single_apply, hj]
+        · simp [hj]
       rw [LinearMap.mem_ker, hsum, map_sum] at hmem
       exact hmem) τ
     have h1 : l i τ 1 = 0 := by

@@ -137,7 +137,6 @@ theorem const_of_euclidean : (∀ (n : ℕ) (B : GlobalTheory.RealWeil.Sch (Fin 
       rw [e0]
       first
         | exact integral_complex_ofReal
-        | exact integral_ofReal
     rw [e, Complex.ofReal_re]
     exact integral_nonneg fun x => Complex.normSq_nonneg _
   have hinv : ∀ (w : Fin n ⊕ Fin n → ℝ) (h h' g g' : Sch (Fin n)), ⇑g = rhoFun w ⇑h →

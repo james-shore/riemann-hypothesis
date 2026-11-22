@@ -74,7 +74,7 @@ theorem exists_ringHom_of_fractions {B C D : Type} [CommRing B] [CommRing C] [Co
   refine ⟨{ toFun := f, map_one' := hhom1, map_mul' := hhommul, map_zero' := hhom0,
             map_add' := hhomadd }, ?_, ?_⟩
   · intro b
-    have := key (algebraMap B C b) b 1 1 hone' hone (by simp [mul_comm])
+    have := key (algebraMap B C b) b 1 1 hone' hone (by simp)
     simpa using this
   · intro v hvq
     have hb : algebraMap B C (bb v) ∉ q := by

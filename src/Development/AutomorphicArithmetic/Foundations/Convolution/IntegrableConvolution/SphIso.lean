@@ -59,7 +59,7 @@ theorem mapIso_torusPow (c : F ≃+* F') (hv : ∀ x, c x ∈ 𝒪[F'] ↔ x ∈
   rw [Units.val_mul, coe_torusPow, coe_torusPow, coe_diagGL, Matrix.diagonal_mul_diagonal]
   by_cases hij : i = j
   · subst hij
-    simp only [Matrix.diagonal_apply_eq, map_zpow₀, RingEquiv.coe_toRingHom]
+    simp only [Matrix.diagonal_apply_eq, map_zpow₀]
     rw [hu, mul_zpow]
     simp [Units.val_zpow_eq_zpow_val]
   · simp [Matrix.diagonal_apply_ne _ hij]

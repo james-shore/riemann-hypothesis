@@ -65,7 +65,7 @@ theorem _root_.GlobalTheory.GLm.tr_ePat_renumber : ∀ (g : ℕ) [Fact g.Prime]
   let e : GL (Fin N) (ZMod g) ≃ GL (Fin N) (ZMod g) := (MulAut.conj Q⁻¹).toEquiv
   have he : ∀ u, e u = Q⁻¹ * u * Q := by
     intro u
-    simp [e, MulAut.conj_apply]
+    simp [e]
   have hmem : ∀ u : GL (Fin N) (ZMod g),
       _root_.GlobalTheory.GLm.InPat (fun a b => Φ (σ a) (σ b)) (u : Matrix (Fin N) (Fin N) (ZMod g)) ↔
         _root_.GlobalTheory.GLm.InPat Φ (e u : Matrix (Fin N) (Fin N) (ZMod g)) := by

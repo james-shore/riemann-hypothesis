@@ -21,28 +21,28 @@ private theorem vn (q : A E) : (nU q).val = !![1, q; 0, 1] := rfl
 private theorem n_add (x y : A E) : gl (nU (x + y)) = gl (nU x) * gl (nU y) := by
   refine Units.ext ?_
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [vn, Matrix.mul_apply, Fin.sum_univ_two, add_comm]
+  fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two, add_comm]
 
 private theorem n_zero : gl (nU (0 : A E)) = 1 := by
   refine Units.ext ?_
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [vn]
+  fin_cases i <;> fin_cases j <;> simp
 
 private theorem cont_n : Continuous fun q : A E => gl (nU q) := by
   refine Units.continuous_iff.2 ⟨?_, ?_⟩
   · refine continuous_matrix fun i j => ?_
-    fin_cases i <;> fin_cases j <;> simp [vn] <;> fun_prop
+    fin_cases i <;> fin_cases j <;> simp <;> fun_prop
   · have e : ∀ q : A E, (gl (nU q))⁻¹ = gl (nU (-q)) := fun q =>
       inv_eq_of_mul_eq_one_right (by rw [← n_add, add_neg_cancel, n_zero])
     simp only [e]
     refine continuous_matrix fun i j => ?_
-    fin_cases i <;> fin_cases j <;> simp [vn] <;> fun_prop
+    fin_cases i <;> fin_cases j <;> simp <;> fun_prop
 
 private theorem rat_n (k : E) : ∃ γ : GL (Fin 2) E, ratGL E 2 γ = gl (nU (rt k)) := by
   refine ⟨Matrix.SpecialLinearGroup.toGL ⟨!![1, k; 0, 1], by simp [Matrix.det_fin_two]⟩, Units.ext ?_⟩
   ext i j
   change algebraMap E (A E) (!![1, k; 0, 1] i j) = _
-  fin_cases i <;> fin_cases j <;> simp [vn]
+  fin_cases i <;> fin_cases j <;> simp
 
 private theorem rat_w : ∃ γ : GL (Fin 2) E, ratGL E 2 γ = gl (wW E) := by
   refine ⟨Matrix.SpecialLinearGroup.toGL ⟨!![0, 1; -1, 0], by simp [Matrix.det_fin_two]⟩, Units.ext ?_⟩
@@ -57,7 +57,7 @@ private theorem ψ_rt (k : ℚ) : ψ (rt k) = 1 := by simp [ψ, adelicChar_algeb
 private theorem n_aE (t : (A E)ˣ) (y : A E) : gl (nU ((t : A E) * y)) * aE t = aE t * gl (nU y) := by
   refine Units.ext ?_
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [vn, aE, Matrix.mul_apply, Fin.sum_univ_two]
+  fin_cases i <;> fin_cases j <;> simp [aE, Matrix.mul_apply, Fin.sum_univ_two]
 
 private def Fh (D : Dat ℚ E) (Φ : GL (Fin 2) (A E) → ℂ) (h : GL (Fin 2) (A E)) (x : Fin 2 → A ℚ) : ℂ :=
   Φ (gl (nU (D.mkE (x 0) (x 1))) * h)

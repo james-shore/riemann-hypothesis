@@ -25,7 +25,7 @@ private theorem base_comp {k : Type} [Field k] {C : Scheme.{0}} [IsIntegral C] (
       c.appLE ⊤ W le_top ≫ C.germToFunctionField W := by
   rw [← Scheme.ΓSpecIso_naturality, hgen]
   simp only [Scheme.Hom.comp_appTop, Scheme.fromSpecStalk_appTop, Scheme.germToFunctionField]
-  simp only [Category.assoc, Scheme.ΓSpecIso_naturality, Iso.inv_hom_id_assoc]
+  simp only [Category.assoc]
   simp only [Scheme.Hom.appLE, Category.assoc, TopCat.Presheaf.germ_res]
   simp only [homOfLE_refl, op_id, CategoryTheory.Functor.map_id, Category.id_comp]
   erw [Iso.inv_hom_id, Category.comp_id]

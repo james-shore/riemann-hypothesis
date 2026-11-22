@@ -185,7 +185,6 @@ theorem mqKummer_of (hG : MQGalois) : MQKummer := by
       rw [← hfr]
       first
       | (rw [← Nat.card_eq_fintype_card]; exact IsGalois.card_aut_eq_finrank (F := ℚ) (E := E))
-      | (convert IsGalois.card_aut_eq_finrank (F := ℚ) (E := E) using 1)
     rw [h1]
     simp [Fintype.card_units_int]
   · intro d

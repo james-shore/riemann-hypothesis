@@ -44,7 +44,7 @@ theorem levOp_secM_apply_self : ∀ (G H V : Type) [Group G] [Group H] [AddCommG
       rw [hcond] at hc
       rw [← hout, hc]; exact hq
   rw [Finset.sum_congr rfl fun q hq => by rw [hin q hq]]
-  simp only [LinearMap.sum_apply, Finset.sum_apply, ite_apply, LinearMap.zero_apply, Finset.smul_sum]
+  simp only [LinearMap.sum_apply, Finset.smul_sum]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun h hh => ?_
   simp only [Set.Finite.mem_toFinset, Set.mem_setOf_eq] at hh

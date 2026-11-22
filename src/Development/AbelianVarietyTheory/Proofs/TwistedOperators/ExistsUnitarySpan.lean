@@ -29,8 +29,6 @@ theorem exists_unitary_span (r s : ℕ) (W U I : Type) [AddCommGroup W] [Module 
   | exact @_root_.GlobalTheory.RealPartAdjointAction.main
   | exact _root_.GlobalTheory.RealPartAdjointAction.main
   | (apply _root_.GlobalTheory.RealPartAdjointAction.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RealPartAdjointAction.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RealPartAdjointAction.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RealPartAdjointAction.main ..)
 
 end GlobalTheory.ArchRec.SpanMod

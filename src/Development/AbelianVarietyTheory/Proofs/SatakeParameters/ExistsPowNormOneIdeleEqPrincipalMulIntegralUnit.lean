@@ -123,7 +123,7 @@ theorem normOne_idele_pow_eq_normOne_principal_mul_unit (σ : E →ₐ[F] E) (h�
       apply ha
       rw [← hσ (a : E), h0, map_zero]
     simp only [sa, Units.val_mul, Units.val_inv_eq_inv_val, Units.coe_map, MonoidHom.coe_coe, RingHom.toMonoidHom_eq_coe,
-      AlgHom.coe_toRingHom, RingHom.coe_coe, map_mul, map_inv₀, hσ]
+      RingHom.coe_coe, map_mul, map_inv₀, hσ]
     field_simp
   · rw [U1, MonoidHom.mem_ker, MonoidHom.mul_apply, MonoidHom.id_apply, map_mul, map_inv, conjId_conjId σ hσ]
     rw [mul_assoc, inv_mul_cancel_left, mul_inv_cancel]

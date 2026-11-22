@@ -21,7 +21,7 @@ theorem lam_mul_left_of_cube : ∀ (K : Type) [Field K] (A : AbVar K) (c : Pic A
   rw [GlobalTheory.CechPic.cls_linComb hL _ _ hl, Fin.sum_univ_eight] at e
   simp only [Matrix.cons_val, Matrix.cons_val_zero, Matrix.cons_val_one, one_smul, neg_smul] at e
   rw [AbVar.lam_eq, AbVar.lam_eq, AbVar.lam_eq]
-  simp only [GlobalTheory.CechPic.lam, _root_.mul_one]
+  simp only [GlobalTheory.CechPic.lam]
   rw [← sub_eq_zero, ← e]
   abel
 

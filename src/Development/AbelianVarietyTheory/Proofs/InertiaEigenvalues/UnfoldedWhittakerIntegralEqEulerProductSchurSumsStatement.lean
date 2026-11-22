@@ -25,5 +25,3 @@ theorem _root_.GlobalTheory.T.unfoldedWhittakerIntegral_eq_eulerProduct_schurSum
               (fun w i => ((α w i : ℂˣ) : ℂ)) x := by
   first
   | exact @GlobalTheory.RSCell.lintegral_unfolded_eq
-  | exact GlobalTheory.RSCell.lintegral_unfolded_eq
-  | (intros; apply GlobalTheory.RSCell.lintegral_unfolded_eq <;> assumption)

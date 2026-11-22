@@ -181,7 +181,7 @@ theorem fib_gen (I : Ideal (𝓞 E)) (g : ℕ) (hNP : NeatPrime I g (Dw.p + Dw.q
     refine descend G'.hom x K (m g0) (fun T w v hw => ?_) T w v hw
     have e := congrArg (fun f => pullback.lift w v hw ≫ f.left ≫ pullback.fst G'.hom t) hα
     have e' : pullback.lift w v hw ≫ pullback.fst G'.hom t = w := pullback.lift_fst _ _ _
-    simp only [α, fibEnd_fst, Over.id_left, Category.id_comp] at e
+    simp only [α, fibEnd_fst, Over.id_left] at e
     rw [← Category.assoc, e'] at e
     exact e.trans e'
   let actT := OAct.pullback t G' act'

@@ -91,7 +91,7 @@ theorem exists_form_of_discrete_norms : ∀ (C : Type) [NormedField C] [IsAlgClo
         simp only [LinearMap.smul_apply, hBm, hdiag, smul_eq_mul]
         have := hQpos y hy
         positivity
-      dvd := fun y z => ⟨Bf y z, by simp [LinearMap.smul_apply, hBm, smul_eq_mul]⟩ }
+      dvd := fun y z => ⟨Bf y z, by simp [LinearMap.smul_apply, hBm]⟩ }
   have hβ : ∀ α, β.be α α / (2 * m ^ 2) = 2 * Q α := by
     intro α
     show ((2 * (m : ℤ) ^ 2) • Bm) α α / (2 * m ^ 2) = 2 * Q α

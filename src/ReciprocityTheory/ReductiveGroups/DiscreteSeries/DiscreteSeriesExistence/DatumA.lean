@@ -92,8 +92,8 @@ private theorem inG_cpart1_and_inG_cpart2 (ε : Fin n → Bool) (Z : Matrix (Fin
     rw [← Matrix.mul_assoc, hJJ, Matrix.one_mul]
   have hJH := Jm_conjTranspose_eq_self' ε
   have hJr : Formalism.REAL.Jm ε = Jm ε := rfl
-  have hs1 : star (1 / 2 : ℂ) = 1 / 2 := by simp [Complex.star_def]
-  have hs2 : star (1 / (2 * Complex.I)) = -(1 / (2 * Complex.I)) := by simp [Complex.star_def]
+  have hs1 : star (1 / 2 : ℂ) = 1 / 2 := by simp
+  have hs2 : star (1 / (2 * Complex.I)) = -(1 / (2 * Complex.I)) := by simp
   unfold inG Formalism.REAL.cpart1 Formalism.REAL.cpart2
   simp only [hJr, Matrix.conjTranspose_smul, Matrix.conjTranspose_sub, Matrix.conjTranspose_add,
     Matrix.conjTranspose_mul, Matrix.conjTranspose_conjTranspose, hJH, Matrix.smul_mul, Matrix.mul_smul,
@@ -188,9 +188,9 @@ theorem pdA_inK_cpart {ε : Fin n → Bool} {Z : Matrix (Fin n) (Fin n) ℂ} (hZ
   have hJr : Formalism.REAL.Jm ε = Jm ε := rfl
   refine ⟨⟨(inG_cpart1_and_inG_cpart2 ε Z).1, ?_⟩, ⟨(inG_cpart1_and_inG_cpart2 ε Z).2, ?_⟩⟩
   · simp only [Formalism.REAL.cpart1, hJr, Matrix.smul_mul, Matrix.mul_smul, sub_mul, mul_sub, Matrix.mul_assoc,
-      hJJ, hJJ', mul_one, hZ, hZH]
+      hJJ', hZ, hZH]
   · simp only [Formalism.REAL.cpart2, hJr, Matrix.smul_mul, Matrix.mul_smul, add_mul, mul_add, Matrix.mul_assoc,
-      hJJ, hJJ', mul_one, hZ, hZH]
+      hJJ', hZ, hZH]
 
 theorem pdA_inK_smul {ε : Fin n → Bool} {X : Matrix (Fin n) (Fin n) ℂ} (hX : inK ε X) (t : ℝ) :
     inK ε ((t : ℂ) • X) := by

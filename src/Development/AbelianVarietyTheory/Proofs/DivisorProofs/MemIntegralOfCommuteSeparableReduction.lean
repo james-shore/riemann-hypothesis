@@ -122,8 +122,6 @@ theorem integral_of_commute_sep : ∀ (E : Type) [Field E] [NumberField E] (w : 
           (((y⁻¹ : (w.adicCompletionIntegers E)ˣ) : w.adicCompletionIntegers E) : w.adicCompletion E) = 1 := by
         first
           | exact congrArg Subtype.val y.mul_inv
-          | exact_mod_cast congrArg Subtype.val y.mul_inv
-          | simp
       rw [← map_mul, hy1, map_one]
     have h3 := (memO _).1 (((y⁻¹ : (w.adicCompletionIntegers E)ˣ) : w.adicCompletionIntegers E)).2
     have h4 : Valued.v (((y : w.adicCompletionIntegers E) : w.adicCompletion E)) *

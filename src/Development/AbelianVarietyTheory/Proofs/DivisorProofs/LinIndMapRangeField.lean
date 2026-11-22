@@ -256,7 +256,6 @@ theorem rowAct_map {R S : Type} [CommRing R] [CommRing S] (φ : R →+* S) {r n 
   | add p q hp hq => simp only [map_add, hp, hq]
   | mul_X p v hp =>
     rw [map_mul, map_mul, map_mul, hp, map_X]
-    congr 1
     simp [rowAct, map_sum, Matrix.map_apply]
 
 theorem dwAct_map {R S : Type} [CommRing R] [CommRing S] (φ : R →+* S) (r n : ℕ) (g : GL (Fin r) R)

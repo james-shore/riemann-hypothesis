@@ -390,7 +390,7 @@ lemma phiMat_block (R' : Subalgebra O (X' → Matrix d d (FractionRing O))) {g :
   simp only [coefMat, phiMat, Matrix.of_apply, Matrix.sub_apply, Matrix.smul_apply, smul_eq_mul, map_sub, hX,
     Matrix.one_apply, Prod.mk.injEq]
   by_cases hn0 : n = 0 <;> by_cases hn1 : n = 1 <;> by_cases hpq : p = q <;> by_cases hij : i = j <;>
-    simp [hn0, hn1, hpq, hij, PowerSeries.coeff_one, Matrix.one_apply] <;> omega
+    simp [hn0, hn1, hpq, hij, PowerSeries.coeff_one]
 
 lemma phiMat_good (R' : Subalgebra O (X' → Matrix d d (FractionRing O))) {g : Type} [Fintype g]
     [DecidableEq g] (Θ : Matrix g g R') (p q : g) :
@@ -429,7 +429,7 @@ lemma phiMat_eval [IsDomain O] (R' : Subalgebra O (X' → Matrix d d (FractionRi
           (bigMat (fun r : R' => (r : X' → Matrix d d (FractionRing O)) x') Θ).map Polynomial.C) := by
     ext P Q
     by_cases hPQ : P = Q <;>
-      simp [phiMat, bigMat, Matrix.one_apply, hPQ, Polynomial.coe_X, Polynomial.coe_C] <;> ring
+      simp [phiMat, bigMat, hPQ, Polynomial.coe_X, Polynomial.coe_C] <;> ring
   rw [hL, hM, ← RingHom.map_det]
   rw [show (Polynomial.coeToPowerSeries.ringHom : Polynomial (FractionRing O) →+* PowerSeries (FractionRing O))
       (Matrix.det (1 - (Polynomial.X : Polynomial (FractionRing O)) •

@@ -63,15 +63,12 @@ theorem triMeas_map_mul_right (t0 : TriCo N) (h0 : t0 ∈ triPos N) :
   haveI hC : (volume : Measure ({ab : Fin N × Fin N // ab.1 < ab.2} → ℂ)).IsAddHaarMeasure := by
     first
       | infer_instance
-      | exact Measure.pi.isAddHaarMeasure _
   haveI hR : (volume : Measure (Fin N → ℝ)).IsAddHaarMeasure := by
     first
       | infer_instance
-      | exact Measure.pi.isAddHaarMeasure _
   haveI hT : (volume : Measure (TriCo N)).IsAddHaarMeasure := by
     first
       | exact Measure.prod.instIsAddHaarMeasure volume volume
-      | infer_instance
   have hvol : Measure.map L (volume : Measure (TriCo N)) = ENNReal.ofReal |D⁻¹| • volume := by
     rw [← hdet]
     exact Measure.map_linearMap_addHaar_eq_smul_addHaar _ (by rw [hdet]; exact hDpos.ne')

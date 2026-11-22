@@ -18,8 +18,6 @@ theorem frobeniusBlock : FrobeniusBlockStatement := by
     have h0 := residue_p hv hp1
     first
       | exact (CharP.charP_iff_prime_eq_zero Fact.out).mpr h0
-      | exact CharP.of_prime_eq_zero Fact.out h0
-      | exact (charP_iff_prime_eq_zero Fact.out).mpr h0
   refine ⟨fun j l hl => ?_, fun i e => ?_⟩
   · rw [linX_xp hv hp1 D j l, bR_off hv hp1 D j l hl, map_zero, zero_mul]
   ·
@@ -42,7 +40,6 @@ theorem frobeniusBlock : FrobeniusBlockStatement := by
       rw [RingHom.map_det]
       first
         | rfl
-        | (congr 1; ext j l; simp [RingHom.mapMatrix_apply])
     have hres : IsLocalRing.residue R
         (Matrix.of fun j l : {j // D.κ j = i} => bR hv D j.1 (e1 (e l).1)).det =
         (Matrix.of fun j l : {j // D.κ j = i} => Mk D j.1 (e l).1).det := by

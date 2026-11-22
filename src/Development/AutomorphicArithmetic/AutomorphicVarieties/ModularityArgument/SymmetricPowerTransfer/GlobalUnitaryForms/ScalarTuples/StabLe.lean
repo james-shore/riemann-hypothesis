@@ -165,7 +165,7 @@ private theorem conj_sq {L : Type} [CommRing L] (Y Y' G T S S' : Matrix (Fin 2) 
     linear_combination this - n0 * hdY
   have hdS : S.det * S'.det = 1 := by rw [← Matrix.det_mul, hS, Matrix.det_one]
   have e : n0 • (Y' * T * Y) = (a ^ 2) • (S * S) := by
-    calc n0 • (Y' * T * Y) = Y' * (n0 • T) * Y := by simp [Matrix.mul_smul, Matrix.smul_mul]
+    calc n0 • (Y' * T * Y) = Y' * (n0 • T) * Y := by simp
       _ = Y' * (G * G) * Y := by rw [hT]
       _ = (Y' * G * Y) * (Y' * G * Y) := by
         have : (Y' * G * Y) * (Y' * G * Y) = Y' * G * (Y * Y') * G * Y := by simp only [Matrix.mul_assoc]
@@ -173,7 +173,7 @@ private theorem conj_sq {L : Type} [CommRing L] (Y Y' G T S S' : Matrix (Fin 2) 
         simp [Matrix.mul_assoc]
       _ = (a ^ 2) • (S * S) := by
         rw [hG]
-        simp [Matrix.mul_smul, Matrix.smul_mul, smul_smul, pow_two]
+        simp [smul_smul, pow_two]
   calc Y' * T * Y = (b ^ 2 * S'.det) • (n0 • (Y' * T * Y)) := by
         rw [smul_smul]
         have : b ^ 2 * S'.det * n0 = 1 := by

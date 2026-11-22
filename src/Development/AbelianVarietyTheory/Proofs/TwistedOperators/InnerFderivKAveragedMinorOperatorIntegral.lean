@@ -185,7 +185,7 @@ theorem inner_fderiv_ps : ∀ (n : ℕ) (ε : Fin n → Bool) (lam : Fin n → �
     have hl : HasDerivAt (fun s : ℂ => (toMK k)⁻¹ * (z + s • A) * toMK k) ((toMK k)⁻¹ * A * toMK k) t := by
       have e : (fun s : ℂ => (toMK k)⁻¹ * (z + s • A) * toMK k) =
           fun s => (toMK k)⁻¹ * z * toMK k + s • ((toMK k)⁻¹ * A * toMK k) := by
-        funext s; simp [mul_add, add_mul, Matrix.mul_smul, Matrix.smul_mul]
+        funext s; simp [mul_add, add_mul]
       rw [e]
       have h := ((hasDerivAt_id' t).smul_const ((toMK k)⁻¹ * A * toMK k)).const_add ((toMK k)⁻¹ * z * toMK k)
       rw [one_smul] at h

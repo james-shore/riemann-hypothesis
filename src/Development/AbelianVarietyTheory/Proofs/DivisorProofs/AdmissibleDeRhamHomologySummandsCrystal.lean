@@ -126,7 +126,7 @@ theorem admissible_classification : CrystallineSmoothLift → AbelianHodgeDeRham
           (crysToDR (divided₂ hI) h') := by
     intro K
     ext d
-    simp only [Submodule.mem_comap, Submodule.mem_dualAnnihilator, crysToDR_apply]
+    simp only [Submodule.mem_comap, Submodule.mem_dualAnnihilator]
     constructor
     · intro H c hc
       exact H _ hc

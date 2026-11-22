@@ -55,7 +55,7 @@ variable {ι : Type} [Fintype ι] [DecidableEq ι]
 theorem change_basis (g b : ι → V) (hg : LinearIndependent O g)
     (hs : Submodule.span O (Set.range g) = Submodule.span O (Set.range b)) :
     ∃ Q P : Matrix ι ι O, (∀ j, g j = ∑ i, Q i j • b i) ∧ P * Q = 1 := by
-  first | exact Bl.general_b_fact_third_alt_form.goal1 .. | (apply Bl.general_b_fact_third_alt_form.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_third_alt_form.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_third_alt_form.goal1 .. | (apply Bl.general_b_fact_third_alt_form.goal1 <;> assumption)
 
 end Basis
 

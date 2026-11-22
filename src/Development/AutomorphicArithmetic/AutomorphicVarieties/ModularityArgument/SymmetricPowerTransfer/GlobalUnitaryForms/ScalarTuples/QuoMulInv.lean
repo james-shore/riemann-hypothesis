@@ -161,7 +161,7 @@ private theorem lat_fix (hl : IsLoc O Δ) (hτ : τ ∈ (algebraMap O K).range) 
       exact k d hd x hx
     · intro hx
       refine ⟨_, k _ (hd'.sig hl) x hx, Prod.ext (star_star _) ?_⟩
-      have e2 : sigL (sigL d' * sigL x.2) = d' * x.2 := by ext <;> simp [sigL] <;> ring
+      have e2 : sigL (sigL d' * sigL x.2) = d' * x.2 := by ext <;> simp [sigL]
       change d * sigL (sigL d' * sigL x.2) = x.2
       rw [e2]
       linear_combination x.2 * hdd
@@ -249,7 +249,7 @@ private theorem lmap_alg (f : K →+* K') (Δ x : K) :
 
 private theorem elmap_mul (f : K →+* K') {Δ τ : K} (x y : EL Δ τ) : elmap f (x * y) = elmap f x * elmap f y := by
   ext1
-  · simp only [elmap, re_mul, map_add, map_mul, map_neg, map_one, lmap_alg]
+  · simp only [elmap, re_mul, map_add, map_mul, map_neg, map_one]
   · simp only [elmap, im_mul, map_add, map_mul, lmap_alg]
 
 private theorem elmap_one (f : K →+* K') {Δ τ : K} : elmap f (1 : EL Δ τ) = 1 := by

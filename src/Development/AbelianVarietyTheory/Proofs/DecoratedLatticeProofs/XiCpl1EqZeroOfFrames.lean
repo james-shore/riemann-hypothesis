@@ -40,8 +40,6 @@ theorem full_of_span {n : ℕ} (N : Submodule (𝓞 E) (Sp E n)) (hN : Submodule
   | exact @_root_.GlobalTheory.FullLatticeOfSpan.full_of_span_eq_top
   | exact _root_.GlobalTheory.FullLatticeOfSpan.full_of_span_eq_top
   | (apply _root_.GlobalTheory.FullLatticeOfSpan.full_of_span_eq_top <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FullLatticeOfSpan.full_of_span_eq_top <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FullLatticeOfSpan.full_of_span_eq_top <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FullLatticeOfSpan.full_of_span_eq_top ..)
 
 theorem full_stdLat (n : ℕ) : Full (stdLat E n) := by

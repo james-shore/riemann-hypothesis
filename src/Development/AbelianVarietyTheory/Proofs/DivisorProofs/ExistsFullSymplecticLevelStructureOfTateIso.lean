@@ -106,7 +106,7 @@ theorem exists_sympLevel_of_tate : ∀ {E : Type} [Field E] [NumberField E] [IsC
   have hEF : ∀ a b : D.La, D.EF (u • a) (u • b) = L * D.EF a b + l.M' * D.EF a (w • b) := by
     intro a b
     rw [D.adj, ← mul_smul, hw, add_smul, mul_smul, Nat.cast_smul_eq_nsmul]
-    simp only [Int.cast_natCast, Nat.cast_smul_eq_nsmul, map_add, map_zsmul, map_nsmul, smul_eq_mul, nsmul_eq_mul]
+    simp only [Int.cast_natCast, Nat.cast_smul_eq_nsmul, map_add, map_nsmul, nsmul_eq_mul]
   refine ⟨fun a => I.ev l.M' (u • a), ⟨?_, ?_, ?_, ?_, ?_⟩, ?_, ?_⟩
   · intro a b; simp only [smul_add, I.add]
   · intro c a; try simp only

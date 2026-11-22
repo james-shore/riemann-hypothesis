@@ -143,7 +143,7 @@ theorem blkU_col_mul_blkU {r m : ℕ} (hr : r ≤ m + 1) (n : UnipotentBlockColu
     have := s.1.2; have := t.1.2; omega) _ _
   have hNPP : N * P * P = 0 := by
     rw [mul_assoc, posM_mul_eq_zero (fun s t => by have := s.1.2; have := t.1.2; omega) z z, mul_zero]
-  simp only [mul_add, add_mul, mul_one, one_mul, mul_sub, sub_mul, hPN, hQN, hQP, hNPP]
+  simp only [mul_add, add_mul, mul_one, one_mul, sub_mul, hPN, hQN, hQP, hNPP]
   abel
 
 end Id

@@ -63,7 +63,6 @@ theorem card_le_cntCl {α ι : Type} (X : Set α) (R : α → α → Prop) (hR :
   unfold cntCl
   first
     | exact ENat.card_le_card_of_injective hg
-    | (rw [← ENat.card_coe_set_eq]; exact ENat.card_le_card_of_injective hg)
 
 theorem one_mem_NLam (D : D7) (Λ : LatV D) {T : D.host.E} (F : LFlag (hS D) D.R.rS T) :
     (LinearEquiv.refl D.host.E (hS D).V) ∈ NLam Λ F := by
@@ -71,7 +70,6 @@ theorem one_mem_NLam (D : D7) (Λ : LatV D) {T : D.host.E} (F : LFlag (hS D) D.R
   refine ⟨⟨?_, ?_⟩, fun j x _ => by simp, fun x _ => by simp⟩
   · first
       | exact (Formalism.HermitianLatticesTheory.isom _).one_mem
-      | exact fun _ _ => rfl
   · ext x
     simp [Formalism.HermitianLatticesTheory.gmap]
 

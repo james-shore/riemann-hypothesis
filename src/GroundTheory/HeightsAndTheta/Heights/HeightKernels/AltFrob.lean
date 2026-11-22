@@ -55,7 +55,6 @@ theorem prod_sub_eq_prod_factorial : ∀ r : ℕ,
          congr 2
          simp only [Fin.val_succ]
          omega)
-      | simp
 
 theorem frobDelta_const {r : ℕ} (s : ℕ) :
     frobDelta (fun _ : Fin r => s) = ∏ a : Fin r, (((r - 1 - (a : ℕ)).factorial : ℕ) : ℚ) := by

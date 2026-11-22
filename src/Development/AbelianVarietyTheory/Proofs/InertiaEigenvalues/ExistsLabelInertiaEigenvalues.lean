@@ -128,8 +128,7 @@ theorem charpoly_eq_of_gen {n : ℕ} (ρ : Ine (F := E) A →* GL (Fin n) ℂ)
   have hχm : ∀ x ∈ s, χ x γ ^ m = χ x σ := by
     intro x hx
     have := congrArg (fun p : GL (Fin n) ℂ × (T → ℂˣ) => ((p.2 ⟨x, Multiset.mem_toFinset.2 hx⟩ : ℂˣ) : ℂ)) hm
-    simp only [Φ, MonoidHom.prod_apply, Prod.pow_snd, Pi.pow_apply, Units.val_pow_eq_pow_val,
-      Pi.monoidHom_apply] at this
+    simp only [Φ, MonoidHom.prod_apply, Prod.pow_snd, Pi.pow_apply, Units.val_pow_eq_pow_val] at this
     exact this
   rw [hρm, Units.val_pow_eq_pow_val, charpoly_pow_of_prod _ s (fun x => χ x γ) hργ m]
   exact congrArg Multiset.prod (Multiset.map_congr rfl fun x hx => by rw [hχm x hx])

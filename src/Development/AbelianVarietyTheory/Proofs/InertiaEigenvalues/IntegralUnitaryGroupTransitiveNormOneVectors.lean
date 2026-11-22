@@ -60,7 +60,7 @@ theorem uO_transitive_of_last_unit (F E : Type) [NontriviallyNormedField F] [Non
     apply Matrix.IsHermitian.ext; intro i j; rw [hGe, hGe]
     by_cases h : i = j
     · subst h; simp [mul_comm]
-    · simp [Matrix.one_apply, h, Ne.symm h, mul_comm]
+    · simp [h, Ne.symm h, mul_comm]
   have hGi : ∀ i j, ‖G i j‖ ≤ 1 := by
     intro i j; rw [hGe]; refine (nsub _ _).trans (max_le ?_ ?_)
     · by_cases h : i = j <;> simp [Matrix.one_apply, h]
@@ -108,7 +108,7 @@ theorem uO_transitive_of_last_unit (F E : Type) [NontriviallyNormedField F] [Non
       induction b using Fin.lastCases with
       | last =>
         rw [cl, cs, star_sub, star_smul, sub_dotProduct, smul_dotProduct, d3, h1]
-        simp [Matrix.one_apply, (Fin.castSucc_ne_last m)]
+        simp [(Fin.castSucc_ne_last m)]
       | cast m' =>
         rw [cs, cs, star_sub, star_smul, sub_dotProduct, smul_dotProduct, dotProduct_sub, dotProduct_sub,
           dotProduct_smul, dotProduct_smul, d2, d3, d4, h1]

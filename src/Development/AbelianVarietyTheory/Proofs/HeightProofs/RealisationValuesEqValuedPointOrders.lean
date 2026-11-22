@@ -35,7 +35,6 @@ def pullVal {L : Type} [Field L] (U : CDVR) (ι : L →+* U.Fr) : AddValuation L
   AddValuation.of (fun x => if x = 0 then ⊤ else ((vV U.V (ι x) : ℤ) : WithTop ℤ)) (by simp)
     (by simp [vV_one'])
     (fun x y => by
-      beta_reduce
       by_cases hxy : x + y = 0
       · simp [hxy]
       by_cases hx : x = 0

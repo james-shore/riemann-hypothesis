@@ -66,9 +66,9 @@ theorem edgeOf_ne {m : ℕ} {t : T} {b : Arrow T} (hb : IsGridArrow m t b) {i j 
     edgeOf b ≠ .theta i j ∧ edgeOf b ≠ .ex i j := by
   refine ⟨fun he => ?_, fun he => ?_⟩
   · obtain rfl := eq_down hb he
-    (simp [height] at h) <;> omega
+    (simp [height] at h)
   · obtain rfl := eq_right hb he
-    (simp [height] at h) <;> omega
+    (simp [height] at h)
 
 theorem infix_concat' {α : Type*} {x y z : α} {l : List α} (h : [x, y] <:+: l ++ [z]) :
     [x, y] <:+: l ∨ ∃ l', l = l' ++ [x] ∧ z = y := by

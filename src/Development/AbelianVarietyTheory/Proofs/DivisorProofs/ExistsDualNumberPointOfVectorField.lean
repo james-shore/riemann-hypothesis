@@ -74,7 +74,7 @@ theorem psi_res (he : IsField W e) {U U' : Z.Opens} (h : U' ≤ U) (f : Γ(Z, U)
     psi g₀ hg he U' (resG Z h f) =
       ((Sp (DualNumber S)).presheaf.map (homOfLE (fun _ hx => h hx : (proj S ≫ g₀) ⁻¹ᵁ U' ≤ (proj S ≫ g₀) ⁻¹ᵁ U)).op).hom
         (psi g₀ hg he U f) := by
-  simp only [psi, RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk, map_add, map_mul, epsOn_res]
+  simp only [psi, RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk, map_add, map_mul]
   congr 1
   · rw [resG, ← CommRingCat.comp_apply, ← CommRingCat.comp_apply, Scheme.Hom.naturality]
     rfl
@@ -138,7 +138,7 @@ theorem fst_comp_proj : spMap (TrivSqZeroExt.fstHom S S S).toRingHom ≫ proj S 
   rw [← Spec.map_comp, ← CommRingCat.ofHom_comp]
   have : (TrivSqZeroExt.fstHom S S S).toRingHom.comp (algebraMap S (DualNumber S)) = RingHom.id S := by
     ext a
-    simp [TrivSqZeroExt.algebraMap_eq_inl]
+    simp
   rw [this, CommRingCat.ofHom_id, Spec.map_id]
 
 theorem fst_app_epsOn (V : (Sp (DualNumber S)).Opens) :

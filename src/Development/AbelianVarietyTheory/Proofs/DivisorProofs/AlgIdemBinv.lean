@@ -205,15 +205,15 @@ theorem pr_inc (i₀ : Fin r) : pr i₀ ≫ inc pr hl i₀ = act pr hl (Matrix.s
   by_cases h : i = i₀
   · subst h
     rw [if_pos rfl, Category.comp_id, Finset.prod_eq_single i]
-    · simp [Matrix.single_apply]
+    · simp
     · intro j _ hj
-      simp [Matrix.single_apply, Ne.symm hj]
+      simp [Ne.symm hj]
     · simp
   · rw [if_neg h, comp_one]
     symm
     apply Finset.prod_eq_one
     intro j _
-    simp [Matrix.single_apply, Ne.symm h]
+    simp [Ne.symm h]
 
 end Ring
 
@@ -271,7 +271,7 @@ theorem c_xi (hc : ∀ z i, D'.c z ≫ pr i = Q.c (xe z i)) (i₀ : Fin r) (y : 
   · subst h
     simp [xe_xi]
   · rw [if_neg h, comp_one]
-    simp [xe_xi, Pi.single_apply, h, c_zero]
+    simp [xe_xi, h, c_zero]
 
 end Points
 

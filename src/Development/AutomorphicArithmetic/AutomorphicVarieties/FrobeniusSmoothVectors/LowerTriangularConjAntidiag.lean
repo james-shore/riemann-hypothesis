@@ -6,7 +6,7 @@ open IsLocalRing Matrix UpperTheory.V.Alg UpperTheory.V.U3 UpperTheory.V.Fr
 private theorem jconj {K : Type} [CommRing K] {n : ℕ} (M : Matrix (Fin n) (Fin n) K) (i j : Fin n) :
     (Jmat K n * Mᵀ * Jmat K n) i j = M j.rev i.rev := by
   simp only [Matrix.mul_apply, Jmat]
-  simp [Fin.rev_eq_iff]
+  simp
   simp [eq_comm (a := j), Fin.rev_eq_iff]
 
 private theorem ord3 {K : Type} [CommRing K] (α β γ p₀ q₀ p₁ q₁ p₂ q₂ : K) :

@@ -124,7 +124,7 @@ theorem kappa_add (hG : GlobalFnsSt) (a : D.P.A ⟶ D.P.A) [IsMonHom a] {ν : �
     rw [MonObj.mul_comp, Category.id_comp, cPoint_nsmul, hc', mul_comm (𝟙 D.P.A) (cP D D.P.A y),
       mul_comm (𝟙 D.P.A) (cP D D.P.A y ^ ν)]
     apply Additive.ofMul.injective
-    simp [Fin.prod_univ_succ, ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow]
+    simp [Fin.prod_univ_succ, ofMul_mul, ofMul_inv, ofMul_pow]
     module
   · have C : IsCub (th D (T := 𝟙_ (Over (Spec (CommRingCat.of R)))) w I) := isCub_cubV D.cub hI
     obtain ⟨k₁, k₂⟩ := key (1 : 𝟙_ (Over (Spec (CommRingCat.of R))) ⟶ D.P.A) w I hI
@@ -198,7 +198,7 @@ theorem exists_comp_eq (hL : Laws) (a : D.P.A ⟶ D.P.A) [IsMonHom a] {ν : ℕ}
           (prod_neg _ _ (prod_kap (translPt D.P.A x) a ν h))).trans ?_
         rw [e]
         apply Additive.ofMul.injective
-        simp [Fin.prod_univ_succ, ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow]
+        simp [Fin.prod_univ_succ, ofMul_mul, ofMul_inv, ofMul_pow]
         abel)
       (LB.mulGen D.P.L _ _ _ _ (LB.pullGen D.P.L _ _ κ (snd (TF (R := R) F) D.P.A).left)
         (LB.invGen D.P.L _ _ (LB.pullGen D.P.L _ _ κ (translPt D.P.A x).left)))

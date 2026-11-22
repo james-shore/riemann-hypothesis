@@ -49,7 +49,7 @@ theorem kF_gl {V : Type} [NormedAddCommGroup V] [InnerProductSpace ℂ V] {F1 F2
     noncomm_ring
   rw [e, g1 a b c d, g2 a b c d, cm a b c d, cm c d a b]
   simp only [kF, sub_self, add_zero, sub_zero]
-  split_ifs <;> first | abel | (simp; done) | (simp; abel)
+  split_ifs <;> first | abel
 
 theorem barF_gl {V : Type} [NormedAddCommGroup V] [InnerProductSpace ℂ V] {F2 : Fin n → Fin n → Module.End ℂ V}
     (g2 : Formalism.REAL.GlRel F2) : Formalism.REAL.GlRel (barF F2) := by
@@ -58,7 +58,7 @@ theorem barF_gl {V : Type} [NormedAddCommGroup V] [InnerProductSpace ℂ V] {F2 
   simp only [barF, neg_mul_neg]
   rw [h]
   simp only [eq_comm (a := b) (b := c), eq_comm (a := d) (b := a)]
-  split_ifs <;> first | abel | (simp; done) | (simp; abel)
+  split_ifs <;> first | abel
 
 theorem muZ_cast (lam : Fin n → ℤ) (lev : Fin n → ℕ) (a : Fin n) : ((muZ lam lev a : ℤ) : ℝ) = muQ lam lev a := by
   simp only [muZ, muQ, rhoU]

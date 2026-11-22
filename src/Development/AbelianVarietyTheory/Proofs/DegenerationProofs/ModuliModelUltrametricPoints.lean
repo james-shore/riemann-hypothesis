@@ -133,11 +133,6 @@ theorem exists_finset_point {Ω : Type} [Field Ω] {X : Scheme.{0}} (p : X ⟶ S
       ∃ b : Sp k ⟶ X, spMap β ≫ b = a := by
   first
   | (rename_i h_1 h_4; revert Ω h_1 X p h_4 a; exact @_root_.GlobalTheory.PointDescentFactorization.point_descends)
-  | exact @_root_.GlobalTheory.PointDescentFactorization.point_descends
-  | exact _root_.GlobalTheory.PointDescentFactorization.point_descends
-  | (apply _root_.GlobalTheory.PointDescentFactorization.point_descends <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PointDescentFactorization.point_descends <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PointDescentFactorization.point_descends <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PointDescentFactorization.point_descends ..)
 
 theorem isLocalHom_of_integral {V W Ω : Type} [CommRing V] [IsLocalRing V] [CommRing W] [IsLocalRing W] [Algebra V W]

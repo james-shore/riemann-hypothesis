@@ -14,9 +14,7 @@ theorem latBack_seam_lat {D : D7} {X : Fields} (s : Seam D X) {n : ℕ} (N : Sub
   first
   | exact @_root_.GlobalTheory.LatticeBackSeam.latBack_seam_lat
   | exact _root_.GlobalTheory.LatticeBackSeam.latBack_seam_lat
-  | (apply _root_.GlobalTheory.LatticeBackSeam.latBack_seam_lat <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LatticeBackSeam.latBack_seam_lat <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LatticeBackSeam.latBack_seam_lat <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.LatticeBackSeam.latBack_seam_lat)
   | (intros; exact _root_.GlobalTheory.LatticeBackSeam.latBack_seam_lat ..)
 
 end GlobalTheory.TwU

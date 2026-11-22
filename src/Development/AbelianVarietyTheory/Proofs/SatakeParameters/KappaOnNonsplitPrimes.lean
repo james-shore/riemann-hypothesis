@@ -150,8 +150,6 @@ theorem norm_of_normOne {a : ℕ} {b c : ℤ} {d : ℕ} (hok : PI.UnitDetRootDef
   | exact @_root_.GlobalTheory.TraceNormCoordinates.norm_eq_one
   | exact _root_.GlobalTheory.TraceNormCoordinates.norm_eq_one
   | (apply _root_.GlobalTheory.TraceNormCoordinates.norm_eq_one <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TraceNormCoordinates.norm_eq_one <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TraceNormCoordinates.norm_eq_one <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TraceNormCoordinates.norm_eq_one ..)
 
 theorem le_one (l : ℕ) [Fact l.Prime] (ι : ℂ ≃+* ℂ_[l]) (z : ℂ) (hz : IsIntegral ℤ z) : ‖ι z‖ ≤ 1 := by

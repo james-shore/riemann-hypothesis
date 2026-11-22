@@ -270,7 +270,7 @@ private theorem fixed_of (D : TypeDat K n) {κ : Measure (archCompact K n)} {e :
     have e2 : ∫ k, e k • rightRegularRep (Gam K n) μ (arc1 k) v ∂κ = v := hp
     rw [e2] at e1
     refine Eq.trans (integral_congr_ae (Eventually.of_forall fun k => ?_)) e1
-    simp [UnitaryRep.map_mul_apply, inner_smul_right]
+    simp
   have hFx : FixF U₀ fun g => ⟪u, rightRegularRep (Gam K n) μ g v⟫_ℂ := by
     intro y hy g
     have h1 : rightRegularRep (Gam K n) μ (fin1 y) v = v := by

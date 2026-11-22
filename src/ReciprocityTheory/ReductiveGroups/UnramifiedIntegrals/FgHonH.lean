@@ -79,7 +79,6 @@ theorem hon_lt_sq_pow (hl : 2 ≤ l) (n : ℕ) : n < (l ^ 2) ^ n := by
   have h4 : 1 < l ^ 2 := by nlinarith
   first
   | exact Nat.lt_pow_self h4
-  | exact Nat.lt_pow_self h4 n
 
 private theorem coeff_subst_X_pow_eq_ite_dvd' (f : PowerSeries K) {k : ℕ} (hk : k ≠ 0) (m : ℕ) :
     coeff m (f.subst ((X : PowerSeries K) ^ k)) = if k ∣ m then coeff (m / k) f else 0 := by

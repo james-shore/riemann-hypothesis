@@ -34,7 +34,6 @@ private lemma integral_matrixCoeff_mul_star_self
     inner_self_eq_norm_sq_to_K]
   first
     | (push_cast; rfl)
-    | simp
 
 open scoped ComplexConjugate in
 private lemma mul_conj_eq_polarization (a b : ℂ) :
@@ -43,7 +42,7 @@ private lemma mul_conj_eq_polarization (a b : ℂ) :
       - Complex.I * ((a - Complex.I * b) * conj (a - Complex.I * b))) := by
   simp only [map_add, map_sub, map_mul, Complex.conj_I]
   ring_nf
-  simp only [Complex.I_sq, Complex.I_pow_three]
+  simp only [Complex.I_sq]
   ring
 
 open MeasureTheory in
@@ -56,7 +55,7 @@ private lemma inner_swap_eq_polarization (x x' : H) :
   simp only [inner_add_left, inner_sub_left, inner_smul_left, inner_add_right,
     inner_sub_right, inner_smul_right, Complex.conj_I]
   ring_nf
-  simp only [Complex.I_sq, Complex.I_pow_three]
+  simp only [Complex.I_sq]
   ring
 
 open MeasureTheory in
@@ -77,8 +76,7 @@ private lemma integral_matrixCoeff_mul_star_same_left
         - Complex.I * (⟪y, σ g (x - Complex.I • x')⟫_ℂ * star ⟪y, σ g (x - Complex.I • x')⟫_ℂ)) := by
     intro g
     rw [Complex.star_def, mul_conj_eq_polarization ⟪y, σ g x⟫_ℂ ⟪y, σ g x'⟫_ℂ]
-    simp only [map_add, map_sub, map_smul, inner_add_right, inner_sub_right, inner_smul_right,
-      Complex.star_def]
+    simp only [map_add, map_sub, map_smul, inner_add_right, inner_sub_right, inner_smul_right]
   rw [integral_congr_ae (Filter.Eventually.of_forall hpt), integral_const_mul,
     integral_sub, integral_add, integral_sub, integral_const_mul, integral_const_mul,
     hdiag, hdiag, hdiag, hdiag, inner_swap_eq_polarization x x']
@@ -96,7 +94,7 @@ private lemma mul_conj_eq_polarization_four (a a' b b' : ℂ) :
       + Complex.I * ((a + Complex.I * a') * conj (b + Complex.I * b'))) := by
   simp only [map_add, map_sub, map_mul, Complex.conj_I]
   ring_nf
-  simp only [Complex.I_sq, Complex.I_pow_three]
+  simp only [Complex.I_sq]
   ring
 
 open MeasureTheory in
@@ -109,7 +107,7 @@ private lemma inner_eq_polarization (w w' : H) :
   simp only [inner_add_left, inner_sub_left, inner_smul_left, inner_add_right,
     inner_sub_right, inner_smul_right, Complex.conj_I]
   ring_nf
-  simp only [Complex.I_sq, Complex.I_pow_three]
+  simp only [Complex.I_sq]
   ring
 
 open MeasureTheory in
@@ -129,8 +127,7 @@ theorem _root_.GlobalTheory.polarised_schur_relations :
     intro g
     rw [Complex.star_def, mul_conj_eq_polarization_four ⟪w, σ g v⟫_ℂ ⟪w', σ g v⟫_ℂ
       ⟪w, σ g v'⟫_ℂ ⟪w', σ g v'⟫_ℂ]
-    simp only [inner_add_left, inner_sub_left, inner_smul_left, Complex.conj_I, Complex.star_def,
-      neg_mul, ← sub_eq_add_neg, sub_neg_eq_add]
+    simp only [inner_add_left, inner_sub_left, inner_smul_left, Complex.conj_I, neg_mul, ← sub_eq_add_neg, sub_neg_eq_add]
   rw [integral_congr_ae (Filter.Eventually.of_forall hpt), integral_const_mul,
     integral_add, integral_sub, integral_sub, integral_const_mul, integral_const_mul,
     hone, hone, hone, hone, inner_eq_polarization w w']

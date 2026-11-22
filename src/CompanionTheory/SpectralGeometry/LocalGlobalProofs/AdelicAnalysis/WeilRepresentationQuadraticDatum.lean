@@ -53,7 +53,7 @@ lemma Bf_smul_one (c : F) : Bf (c • (1 : Matrix ι ι F)) = algebraMap F (A F)
   ext i j
   by_cases h : i = j
   · subst h; simp [Bf]
-  · simp [Bf, Matrix.one_apply, h]
+  · simp [Bf, h]
 
 def Gs (g : Matrix ι ι F) (S : Set (A F)) : Set (ι → A F) :=
   (fun x => Bf g *ᵥ x) '' Set.univ.pi fun _ => S

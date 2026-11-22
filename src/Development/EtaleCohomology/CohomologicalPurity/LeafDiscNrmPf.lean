@@ -21,7 +21,6 @@ theorem normal (R : Type) [CommRing R] (I : Cx R) (P : PSh) (n : ℤ) (α : Cocy
     (fun p s h U x => if Odd p then n.negOnePow • ev α.1 (p + 1) s (by push_cast; omega) U (up x) else 0)
     (by
       intro p s h V U g x
-      beta_reduce
       split_ifs
       · rw [Units.smul_def, Units.smul_def]
         refine (map_zsmul ((I.X s).obj.map g.op).hom _ _).trans ?_

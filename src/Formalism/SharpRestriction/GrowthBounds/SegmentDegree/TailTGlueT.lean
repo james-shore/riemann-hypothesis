@@ -34,7 +34,7 @@ theorem finite_SAll [NeZero r] [NeZero K] (H : HypT N n0 r K LL B od bb a La p) 
     refine (Set.Finite.pi (t := fun _ : Fin (N + 1) => Set.pi Set.univ fun _ : Fin (r + K) => Set.Icc (-(beA n0 B : ℤ)) (beA n0 B)) fun _ => Set.Finite.pi fun _ => Set.finite_Icc _ _).subset ?_
     rintro μ ⟨dd, hpa⟩
     obtain ⟨P, rfl⟩ := hpa.path
-    simp only [Set.mem_pi, Set.mem_univ, Set.mem_Icc, forall_const, true_implies]
+    simp only [Set.mem_pi, Set.mem_univ, Set.mem_Icc, forall_const]
     intro s m
     exact ⟨le_trans (neg_le_neg (by exact_mod_cast dminus_le_beA H hpa.degs s.val)) (neg_dminus_le_mu P s.val s.2 m), path_le_beA H P hpa s.val s.2 m⟩
   refine (hS.biUnion fun μ _ => (Set.finite_singleton μ).prod (finite_St (tanPart μ))).subset ?_

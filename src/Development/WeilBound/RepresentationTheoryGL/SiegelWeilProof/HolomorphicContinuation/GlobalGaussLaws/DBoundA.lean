@@ -17,8 +17,8 @@ theorem trace_gramB {m : ℕ} (Z : Matrix (Fin n) (Fin n) ℂ) (ε : Fin m → B
     (Z * gramB ε b u).trace = ∑ a ∈ Finset.univ.filter (fun a => ε a = b),
       star (rowC u a) ⬝ᵥ (Z *ᵥ rowC u a) := by
   simp only [Matrix.trace, Matrix.diag, Matrix.mul_apply, gramB, evX, Qb, map_sum, map_mul, MvPolynomial.eval_X,
-    dotProduct, Matrix.mulVec, rowC, Pi.star_apply, star_star, Finset.mul_sum, Finset.sum_mul]
-  simp only [Bool.true_eq_false, if_true, if_false]
+    dotProduct, Matrix.mulVec, rowC, Pi.star_apply, star_star, Finset.mul_sum]
+  simp only [if_true]
   conv_rhs => rw [Finset.sum_comm]
   refine Finset.sum_congr rfl (fun i _ => ?_)
   rw [Finset.sum_comm]

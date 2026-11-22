@@ -292,8 +292,8 @@ theorem exists_kIrreducible_highestWeight {N : Type*} [NormedAddCommGroup N] [In
     by_cases h1 : c = a <;> by_cases h2 : c = b
     · subst h1; subst h2; simp
     · subst h1; simp [h2, Ne.symm h2]
-    · subst h2; simp [h1, Ne.symm h1]
-    · simp [h1, h2, Ne.symm h1, Ne.symm h2]
+    · subst h2; simp [h1]
+    · simp [h1, h2, Ne.symm h2]
   have hHr : ∀ a b x, H (A a b x) = A a b (H x) + (((b : ℕ) : ℂ) - ((a : ℕ) : ℂ)) • A a b x := by
     intro a b x
     rw [← sub_eq_iff_eq_add', hH, hH, map_sum, ← Finset.sum_sub_distrib]

@@ -127,7 +127,7 @@ theorem keyOn_pullback : ∀ (A B K : Type) [CommRing A] [CommRing B] [CommRing 
     · have e1 := hF1 a
       simp only [TrivSqZeroExt.algebraMap_eq_inl] at e1
       rw [e1]
-      simp [Chart.dualMapR, TrivSqZeroExt.algebraMap_eq_inl]
+      simp [Chart.dualMapR]
     · rw [hF2]
       ext <;> simp [Chart.dualMapR]
   have hv' : ∀ i, (x.v i).left ≫ φ' = spMap (Chart.dualMapR h) ≫ (y' i).left := fun i => by

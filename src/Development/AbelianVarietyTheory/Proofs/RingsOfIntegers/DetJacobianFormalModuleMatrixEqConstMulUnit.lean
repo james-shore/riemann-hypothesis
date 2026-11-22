@@ -156,7 +156,7 @@ theorem inv_add {z w : Pt R n d} (hz : Inv G z) (hw : Inv G w) : Inv G (G.add z 
   have hW : ∀ m, ∑ l, ev ![z, w] (pderiv R ((1 : Fin 2), l) (G.F a)) * invJ G w l m =
       invJ G (G.add z w) a m := fun m => right_invJ G hz0 hw0 a m
   rw [formalGroup_add_apply_eq_ev, invD_ev G (GlobalTheory.DerivEndo.noConst_two hz0 hw0), Fin.sum_univ_two]
-  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, hu, hv]
+  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, hu, hv]
   simp only [Pi.add_apply, map_add, mul_add, Finset.sum_add_distrib]
   congr 1
   · simp_rw [← hZ, Finset.sum_mul, Finset.mul_sum, mul_assoc]

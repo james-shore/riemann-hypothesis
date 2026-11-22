@@ -17,7 +17,7 @@ theorem bddSec_tendsto_constTerm : ∀ (E : Type) [Field E] [NumberField E] [IsC
     GlobalTheory.FjCauchy.flow_mem_dom X hξ hx _ fun τ => by
       have := GlobalTheory.FjCauchy.tt_pos X hξ hx τ
       simp only [Complex.mul_im, Complex.I_re, Complex.I_im, Complex.ofReal_re, Complex.ofReal_im,
-        zero_mul, one_mul, zero_add]
+        zero_mul, zero_add]
       linarith
   refine ⟨hdom, ?_⟩
   have hexp := m3bExp_holds (E := E) r X la P hP.1 ξ hξ x hx

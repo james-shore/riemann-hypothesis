@@ -112,7 +112,7 @@ theorem lowestKTypeModel : Seed := by
   have h7 : ∀ a, ⟪ξ0, a⟫_ℂ = ∫ h, φ h * ⟪η, ρ h a⟫_ℂ ∂ν := fun a => by
     rw [← inner_conj_symm, hj'2 a, ← integral_conj, ← integral_inv_eq_self (fun h => φ h * ⟪η, ρ h a⟫_ℂ) ν]
     refine integral_congr_ae (.of_forall fun h => ?_)
-    simp only [map_mul, hsym, inner_conj_symm, hρ.adj, hφd]
+    simp only [map_mul, inner_conj_symm, hρ.adj, hφd]
     rw [u_adj hσ.2.2.1, inv_inv]
   have hbξ : b' = ξ0 := ext_inner_right ℂ fun a => by rw [hb1, h7]
   rw [hbξ] at hb2

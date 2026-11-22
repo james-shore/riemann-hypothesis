@@ -63,7 +63,7 @@ theorem galB_mul (X : Tower Ω ε) (l : ℕ) [Fact l.Prime] (s s' : Ω ≃ₐ[�
   simp only [Tower.galB, LinearMap.coe_mk, AddHom.coe_mk, LinearMap.comp_apply]
   rw [← LinearMap.comp_apply (X.kmap l (X.gal s)), kmap_comp, ← hg, hr, map_mul, Units.val_mul]
   congr 2
-  ext i; fin_cases i <;> simp [mul_comm, mul_left_comm, mul_assoc]
+  ext i; fin_cases i <;> simp [mul_comm, mul_left_comm]
 
 theorem galB_one (X : Tower Ω ε) (l : ℕ) [Fact l.Prime] : X.galB l 1 = LinearMap.id := by
   have hg : X.gal 1 = RingEquiv.refl X.K := RingEquiv.ext (gal_one_apply X)
@@ -120,8 +120,6 @@ theorem adj_stab (A : Set Letter) (f : Letter → Module.End E V) (W : Submodule
   | exact @_root_.GlobalTheory.AdjoinStableCommutes.adjoin_stable_and_commutes
   | exact _root_.GlobalTheory.AdjoinStableCommutes.adjoin_stable_and_commutes
   | (apply _root_.GlobalTheory.AdjoinStableCommutes.adjoin_stable_and_commutes <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AdjoinStableCommutes.adjoin_stable_and_commutes <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AdjoinStableCommutes.adjoin_stable_and_commutes <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AdjoinStableCommutes.adjoin_stable_and_commutes ..)
 
 end Gen

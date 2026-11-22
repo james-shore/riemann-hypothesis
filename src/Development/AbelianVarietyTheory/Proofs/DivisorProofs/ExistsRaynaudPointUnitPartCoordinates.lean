@@ -180,7 +180,7 @@ theorem exists_unitPartPt : ∀ (R : Type) [CommRing R] [IsDomain R] (Q : DegPre
 
   have n0 : ∀ i, n 0 i = 0 := fun i => by
     have := hn 0 i
-    simp only [map_zero, LinearMap.zero_apply] at this
+    simp only [map_zero] at this
     omega
   have h₀ : ∀ y J, Good Q.P.L y J → val (vgen Q ψ₀ mu 0) (𝟙 _) y J = 1 := by
     refine val_eq_one_of_generic hM (fun U _ f => ?_) (vgen_isGen ψ₀ hψ₀ mu 0) (fun z J hJ => ?_) _ _

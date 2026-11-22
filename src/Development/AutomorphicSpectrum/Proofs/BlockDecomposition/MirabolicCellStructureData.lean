@@ -107,7 +107,7 @@ theorem Cl_left {i t : ℕ} (h : Mir k ((i + 1) + t + 1)) (hh : h ∈ HPG k (i +
         have := congrArg Fin.val e'
         simp at this
         omega
-      simp [eLast, Pi.single_apply, this]
+      simp [eLast, this]
     · rw [hpg_entry _ ((HPG k (i + 1) (t + 1)).inv_mem hh) l (by omega) h2 c, mul_zero]
 
 theorem Cl_right {i t : ℕ} (x : Mir k ((i + 1) + t + 1)) (hx : x ∈ Cl k i t) (u : Mir k ((i + 1) + t + 1))
@@ -131,7 +131,7 @@ theorem Cl_right {i t : ℕ} (x : Mir k ((i + 1) + t + 1)) (hx : x ∈ Cl k i t)
       have := congrArg Fin.val e'
       simp at this
       omega
-    simp [eLast, Pi.single_apply, this]
+    simp [eLast, this]
   · simp [colMat, hl]
 
 end Alg

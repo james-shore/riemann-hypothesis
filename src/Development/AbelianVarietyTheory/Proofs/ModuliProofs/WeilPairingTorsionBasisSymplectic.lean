@@ -23,8 +23,6 @@ theorem rel_prod {G U : Type} [Monoid G] [CommMonoid U] (R : G → U → Prop) (
   | exact @_root_.GlobalTheory.RelationPowers.rel_prod_pow
   | exact _root_.GlobalTheory.RelationPowers.rel_prod_pow
   | (apply _root_.GlobalTheory.RelationPowers.rel_prod_pow <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RelationPowers.rel_prod_pow <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RelationPowers.rel_prod_pow <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RelationPowers.rel_prod_pow ..)
 
 theorem unitOn_inj {R : Type} [CommRing R] : Function.Injective (unitOn (R := R)) := fun _ _ h =>

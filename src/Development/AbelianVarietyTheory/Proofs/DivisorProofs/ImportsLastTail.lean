@@ -93,17 +93,12 @@ theorem main : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing R], GlobalT
     have c3 : Geo.Tor.val (g₀.s (hD.xe y)) ξ z J = gm (spMap ev₀) z ⊤ (Additive.toMul (u (hD.xe y))) := by
       first
       | exact ((val_pull hJ _ _ _).symm.trans (c.symm.trans c2))
-      | exact ((val_pull hJ _ _ _).symm.trans (c.trans c2))
-      | exact (c.symm.trans c2)
-      | exact (c.trans c2)
     rw [c3]
     refine Units.ext ?_
     rw [gm_val _ z ⊤ trivial, gm_val _ z ⊤ trivial]
     have e := GlobalTheory.ToricTorsionSec.appTop_unitOn ev₀ (τ (Multiplicative.ofAdd (hD.xe y)))
     first
     | (simp only [uV]; rw [← e]; rfl)
-    | (rw [show (uV y).val = _ from e.symm]; rfl)
-    | (erw [← e]; rfl)
   let fK : V →+* K := (algebraMap (FractionRing V) K).comp (algebraMap V (FractionRing V))
   let uK : D'.toPre.X →+ Additive Γ((Over.mk (spMap fK)).left, ⊤)ˣ :=
     AddMonoidHom.mk' (fun χ => Additive.ofMul (unitOn (τ' (Multiplicative.ofAdd χ)))) (fun χ χ' => by

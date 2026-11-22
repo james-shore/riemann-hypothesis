@@ -303,7 +303,7 @@ theorem antiRow_apply {g : ℕ} (M : Matrix (Fin g) (Fin g) ℂ) (m : Fin g) (z 
 theorem antiRow_I {g : ℕ} (M : Matrix (Fin g) (Fin g) ℂ) (m : Fin g) (z : Fin g → ℂ) :
     antiRow M m (I • z) = -I * antiRow M m z := by
   rw [antiRow_apply, antiRow_apply, star_smul, Matrix.mulVec_smul, Pi.smul_apply, smul_eq_mul]
-  simp [Complex.star_def]
+  simp
 
 theorem clm_eq_sum {g : ℕ} (L : (Fin g → ℂ) →L[ℂ] ℂ) (v : Fin g → ℂ) :
     L v = ∑ m, v m * L (Pi.single m 1) := by

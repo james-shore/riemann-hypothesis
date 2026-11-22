@@ -72,7 +72,7 @@ private theorem aeval_mul_eigenvector {n : ℕ} (D W : Matrix (Fin n) (Fin n) �
   · intro p r hp hr
     simp [add_mul, hp, hr, add_smul]
   · intro k a _
-    simp [Algebra.algebraMap_eq_smul_one, smul_mul_assoc, mul_assoc, hk, smul_smul]
+    simp [Algebra.algebraMap_eq_smul_one, hk, smul_smul]
 
 private theorem nilpotent_index_drop_of_relations {n : ℕ} (D L S H : Matrix (Fin n) (Fin n) ℂ) (q : ℂ) (lam : List ℂ)
     (hD : (lam.map fun a => D - a • (1 : Matrix (Fin n) (Fin n) ℂ)).prod = 0)
@@ -279,7 +279,7 @@ private theorem prod_sub_lam_mul_sub_mu_eq_zero {n : ℕ} (D N : Matrix (Fin n) 
     · intro r1 r2 h1 h2
       simp [add_mul, Matrix.trace_add, h1, h2, Finset.sum_add_distrib]
     · intro k c _
-      simp [Algebra.algebraMap_eq_smul_one, smul_mul_assoc, Matrix.trace_smul, htr, Finset.mul_sum,
+      simp [Algebra.algebraMap_eq_smul_one, Matrix.trace_smul, htr, Finset.mul_sum,
         mul_assoc]
   have hPN : ∀ s : ℕ, (P * N ^ s).trace = p.eval (lam i) * mu i ^ s := by
     intro s

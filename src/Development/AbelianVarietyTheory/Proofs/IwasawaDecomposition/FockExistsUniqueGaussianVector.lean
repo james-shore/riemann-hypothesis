@@ -217,8 +217,7 @@ theorem inner_quadMul_self (f : MvPolynomial (Ix P Q) ℂ) :
       ∑ l, ∑ j, (Aᴴ * A)ᵀ l j * inner ℂ (F.ι (pderiv (Sum.inr l) f)) (F.ι (pderiv (Sum.inr j) f)) +
       ((∑ i, ∑ j, Complex.normSq (A i j) : ℝ) : ℂ) * inner ℂ (F.ι f) (F.ι f) := by
   simp only [quadMul, quadDer, map_sum, map_smul, sum_inner, inner_sum, inner_smul_left, inner_smul_right,
-    inner_XX_XX, mul_add, Finset.sum_add_distrib, Finset.mul_sum, mul_ite, mul_zero, Finset.sum_ite_eq,
-    Finset.sum_ite_eq', Finset.mem_univ, if_true, Finset.sum_ite_irrel, Finset.sum_const_zero, Matrix.mul_apply,
+    inner_XX_XX, mul_add, Finset.sum_add_distrib, Finset.mul_sum, mul_ite, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true, Finset.sum_ite_irrel, Finset.sum_const_zero, Matrix.mul_apply,
     Matrix.transpose_apply, Matrix.conjTranspose_apply, Finset.sum_mul, Complex.ofReal_sum, Complex.conj_conj,
     RCLike.star_def]
   refine congrArg₂ (· + ·) (congrArg₂ (· + ·) (congrArg₂ (· + ·) ?_ ?_) ?_) ?_

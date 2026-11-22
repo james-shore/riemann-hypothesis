@@ -86,7 +86,6 @@ private theorem rho_smooth (B : Subgroup G) (χ : B →* ℂˣ) : IsSmooth (rho 
   have h2 : (φ : G → ℂ) (x * y) = (φ : G → ℂ) (x * g) := by
     have := hf _ hy' (x * g)
     rw [← this]
-    congr 1
     group
   rw [h2, ← rho_apply, hg]
 

@@ -82,7 +82,7 @@ theorem trace_mul_isotypic : ∀ (G : Type) [Group G] (N X : Type) [AddCommGroup
       obtain ⟨c, hc'⟩ := hcoef ψ
       refine ⟨fun j => c j • ⟨A n, LinearMap.mem_range_self A n⟩, ?_⟩
       rw [hΦ']
-      simp only [LinearMap.comp_apply, Pi.smul_apply, SetLike.val_smul, map_smul]
+      simp only [LinearMap.comp_apply, SetLike.val_smul, map_smul]
       rw [show ψ.toLinearMap n = ψ n from rfl, hBφ, hc']
     · simp
     · intro x y hx hy

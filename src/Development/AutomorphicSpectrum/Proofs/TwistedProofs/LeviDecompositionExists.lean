@@ -57,7 +57,7 @@ theorem blkMat_gram {x y : L} (hxy : σ x * y = 1) (hyx : σ y * x = 1) {A : Mat
   · simp [blkMat, antiJ, val_mid, r.isLt.ne]
   · have h := congrFun (congrFun hA r) s
     rw [gram_apply] at h
-    simp only [blkMat, edge_zero, edge_mid, edge_last, map_zero, zero_mul, mul_zero, zero_add, add_zero]
+    simp only [blkMat, edge_zero, edge_mid, edge_last, map_zero, mul_zero, zero_add, add_zero]
     rw [h]
     simp only [antiJ]
     have e1 := val_mid r

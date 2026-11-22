@@ -173,7 +173,7 @@ theorem att_inv_eq (e : ℕ) (W : R2 Ω l) (χ : G ℚ Ω →* (Qbar l)ˣ) (s : 
       (unTw W e χ s : Matrix (Fin 2) (Fin 2) (Qbar l)).adjugate := by
   have hu : (cycBar ℚ Ω l ^ (-(e : ℤ)) * (dt W)⁻¹ * χ) s⁻¹ = (cycBar ℚ Ω l ^ (e : ℤ) * χ⁻¹) s * dt W s := by
     simp only [map_inv, MonoidHom.mul_apply, MonoidHom.inv_apply, zpow_neg, MonoidHom.zpow_apply]
-    simp [mul_comm, mul_left_comm, mul_assoc]
+    simp [mul_comm, mul_assoc]
   have hdet : ((dt W s : (Qbar l)ˣ) : Qbar l) = (mat W s).det := by
     simp [dt, mat, Matrix.GeneralLinearGroup.val_det_apply]
   have hne : (mat W s).det ≠ 0 := hdet ▸ Units.ne_zero _
@@ -221,7 +221,7 @@ theorem frob_trace_det (ι : Qbar l ≃+* ℂ) (e : ℕ) (W : R2 Ω l) (g : Newf
   · rw [← hdt, ed]
     apply ι.injective
     simp only [RingEquiv.toRingHom_eq_coe, RingHom.coe_coe] at h0
-    simp only [map_mul, map_pow, map_neg, map_one, RingEquiv.apply_symm_apply, map_natCast, h0, neg_one_sq, one_mul]
+    simp only [map_mul, map_pow, RingEquiv.apply_symm_apply, map_natCast, h0, neg_one_sq, one_mul]
     rw [show 2 * e + 1 - 1 = 2 * e by omega, mul_comm]
 
 theorem untw_cont [IsAlgClosure ℚ Ω] (e : ℕ) (W : R2 Ω l) (χ : G ℚ Ω →* (Qbar l)ˣ) (hW : Continuous W)

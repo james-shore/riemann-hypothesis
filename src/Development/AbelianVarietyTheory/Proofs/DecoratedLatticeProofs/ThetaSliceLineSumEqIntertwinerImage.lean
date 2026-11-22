@@ -122,7 +122,6 @@ theorem exists_colFun (p : SplitPt D k) {n : Type} [Fintype n] [DecidableEq n] {
       funext i
       have j : Fin L.rank := ⟨0, by have := hζ.1; omega⟩
       rw [Matrix.mulVec, dotProduct, line_sum hζ _ j, Matrix.of_apply, mul_assoc, inv_mul_cancel₀ (hz0 j), mul_one]
-    beta_reduce
     rw [this, Matrix.mulVec_mulVec, β.b'b, Matrix.one_mulVec]
 
 theorem isSBHalf_halfInd {m n : ℕ} (e : AE D) (Λ : AddSubgroup (Mx D m n)) : IsSBHalf e Λ (halfInd e Λ) := by

@@ -30,9 +30,6 @@ theorem unramified_input_of_admitted (h : EmbeddingTypes.UnramifiedTrivialH1f i 
   unfold UnrTriv at h2
   first
   | exact h2.ge
-  | exact h2.symm.le
-  | exact le_of_eq h2.symm
-  | (rw [h2])
 
 theorem unrFinIn_of (hA : UnrIn i dc) (l : K.Col i dc) : KFin.UnrFinIn i dc δO l := by
   intro f hf
@@ -100,7 +97,7 @@ theorem unrFin_of (hA : UnrIn i dc) : KHf.UnrFin i dc δO (KFin.uz i dc δO) := 
     rw [h0]; unfold KFin.UnrAdm
     refine ⟨fun g h => by simp, fun g _ => rfl, fun hn => ?_⟩
     first
-    | (simp only [Pi.zero_apply, map_zero]; exact continuous_const)
+    | (simp only [Pi.zero_apply, map_zero])
     | exact Continuous.congr (f := fun _ => KHf.eK (D.nbr i (plOf i dc (colIdx i dc l)) hn)
         ((algebraMap (D.nd.O i) (FractionRing (D.nd.O i))) 0)) continuous_const (fun _ => rfl)
 

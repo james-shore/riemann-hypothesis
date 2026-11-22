@@ -153,7 +153,7 @@ theorem mem_HH_iff_yy_zero : ∀ (g n : ℕ) (F : SFam g n (zetaAway n)) (W : Ma
       funext v
       by_cases hv : v = 0
       · subst hv; simp [hx]
-      · simp [Pi.single_apply, hv]
+      · simp [hv]
     have he : ((X₁.ρ.n ^ (j + X₁.ρ.k * 2 - 1) : ℕ) : ℤ) • 𝔪.e₈ (Pi.single 0 x) = 0 := by
       rw [natCast_zsmul, ← map_nsmul, hs, map_zero]
     have h0 : 𝔪.e₈ (Pi.single 0 x) = 0 := (smul_eq_zero.1 he).resolve_left (by exact_mod_cast hq)

@@ -26,7 +26,7 @@ private theorem UpperTheory.V.Ws.X1.exists_symplectic_diagonalizing_lift {A R : 
     rw [← hmap, Ef]; ext i j; simp [adj_apply]
   have aD : adj D = Matrix.diagonal fun i => X i.rev i.rev := by
     ext i j
-    fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev, hD, Matrix.diagonal_apply]
+    fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev, hD]
   have key : adj D * D + (adj D * E + adj E * D) = ν • (1 : M4 A) := by
     have h : adj (D + E) * (D + E) = ν • (1 : M4 A) := by rw [← hXE]; exact hX
     rw [hadd, add_mul, mul_add, mul_add, mz _ _ aEf Ef] at h

@@ -93,11 +93,11 @@ theorem eq_const {z : AddMonoidAlgebra R ℤ} {p q : PowerSeries R}
   ext n
   rcases lt_trichotomy n 0 with h | rfl | h
   · rw [← coeff_atZero, hp, PowerSeries.coeff_coe, if_pos h]
-    simp [Finsupp.single_apply, h.ne]
+    simp [h.ne]
   · rw [← coeff_atZero, hp, PowerSeries.coeff_coe]
     simp
   · rw [← coeff_atInf, hq, PowerSeries.coeff_coe, if_pos (by omega)]
-    simp [Finsupp.single_apply, h.ne']
+    simp [h.ne']
 
 variable (r : L →+* R) (t : Rˣ)
 

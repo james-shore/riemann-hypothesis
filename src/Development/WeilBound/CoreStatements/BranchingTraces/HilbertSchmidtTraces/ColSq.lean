@@ -43,7 +43,7 @@ theorem _root_.PositivityTheory.UnitaryDecomposition.X4.emb : (∀ {n : ℕ} (ε
       obtain ⟨b, rfl⟩ := e.surjective b
       rw [key]
       rcases a with a | a <;> rcases b with b | b <;>
-        simp [GlobalTheory.CompanionTheory.PairingAnalysis.emb, incl, mul_apply, vecMulVec_apply, zi, Pi.single_apply]
+        simp [GlobalTheory.CompanionTheory.PairingAnalysis.emb, incl, mul_apply, vecMulVec_apply, zi]
   · simp [GlobalTheory.CompanionTheory.UnitaryFramesMetricPeriods.nsq, colSq]
   · exact ⟨hU.1.1, fun a b => hU.1.2 _ a.2 _ b.2, fun g => hU.2.1 _ g.2, (PositivityTheory.UnitaryDecomposition.uRep_self hU).cont⟩
   · have := hπ.1

@@ -40,7 +40,7 @@ theorem eventually_mem_intLoc_iff_coordEquiv_mem :
       conv_lhs => rw [← b.sum_repr x]
       simp only [map_sum, map_zsmul, Finsupp.coe_finset_sum, Finset.sum_apply]
       refine Finset.sum_congr rfl fun j _ => ?_
-      simp [← zsmul_eq_mul, map_zsmul]
+      simp
     rw [e, TensorProduct.tmul_sum]
     refine sum_mem fun j _ => ?_
     rw [TensorProduct.tmul_smul]

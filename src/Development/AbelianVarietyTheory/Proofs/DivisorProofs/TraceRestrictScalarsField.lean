@@ -71,7 +71,7 @@ private lemma embedding_trace_mulLeft_eq_mul_trace {F A : Type} [Field F] [Ring 
     | zero => simp
     | tmul z a =>
       rw [TensorProduct.comm_tmul]
-      simp only [G, H, Algebra.TensorProduct.lift_tmul, AlgHom.restrictScalars_apply, ι, Algebra.ofId_apply]
+      simp only [G, H, ι]
       exact Algebra.commutes z _
     | add x y hx hy => simp [map_add, hx, hy]
   have hG : Function.Injective G := by
@@ -96,7 +96,7 @@ private lemma embedding_trace_mulLeft_eq_mul_trace {F A : Type} [Field F] [Ring 
     | zero => simp
     | tmul z a =>
       rw [LinearMap.baseChange_tmul]
-      simp only [G, Algebra.TensorProduct.lift_tmul, ι, Algebra.ofId_apply, LinearMap.mulLeft_apply]
+      simp only [G, ι, LinearMap.mulLeft_apply]
       show algebraMap ℂ _ z * φ (c * a) = φ c * (algebraMap ℂ _ z * φ a)
       rw [map_mul, ← mul_assoc, ← mul_assoc, Algebra.commutes z (φ c)]
     | add x y hx hy => simp [map_add, hx, hy, mul_add]

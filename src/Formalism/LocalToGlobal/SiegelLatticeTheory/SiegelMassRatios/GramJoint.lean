@@ -89,7 +89,7 @@ theorem hT_fvec (F : FlagG S r T) (i j : Fin (r + 1)) : S.hT (F.fvec i) (F.fvec 
       simp [FlagG.fvec, TF, h1, Matrix.diagonal_apply_ne _ (hne j).symm]
   | cast i =>
     induction j using Fin.lastCases with
-    | last => simp [FlagG.fvec, TF, F.z_orth i, Matrix.diagonal_apply_ne _ (hne i)]
+    | last => simp [FlagG.fvec, TF, F.z_orth i]
     | cast j =>
       simp only [FlagG.fvec, Fin.snoc_castSucc, F.e_iso i j, TF, Matrix.diagonal_apply]
       split_ifs <;> simp_all

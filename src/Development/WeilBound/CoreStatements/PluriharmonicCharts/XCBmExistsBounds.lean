@@ -97,7 +97,7 @@ theorem norm_entry_le {b : ℝ} {X : Matrix m m ℂ} (hX : X.PosSemidef)
   have dN : ∀ k, (X k k).re ≤ b := by
     intro k
     have := h.diag_nonneg (i := k)
-    simp [Matrix.sub_apply, Matrix.smul_apply, Matrix.one_apply] at this
+    simp [Matrix.sub_apply, Matrix.smul_apply] at this
     simpa using (Complex.le_def.mp this).1
   by_cases hij : i = j
   · subst hij
@@ -124,25 +124,25 @@ theorem norm_entry_le {b : ℝ} {X : Matrix m m ℂ} (hX : X.PosSemidef)
     have hws : star w = s / (‖s‖ : ℂ) := by
       rw [hw, star_div₀, star_star]
       congr 1
-      simp [Complex.star_def]
+      simp
     have hww : star w * w = 1 := by
       rw [hws, hw, div_mul_div_comm, hss]
       field_simp
     have e2 : star w * star s = (‖s‖ : ℂ) := by
       rw [← star_mul, hsw]
-      simp [Complex.star_def]
+      simp
     have key : ∀ (N : Matrix m m ℂ), star (Pi.single i 1 + Pi.single j w : m → ℂ) ⬝ᵥ (N *ᵥ (Pi.single i 1 + Pi.single j w)) =
         N i i + N i j * w + star w * N j i + star w * N j j * w := by
       intro N
-      simp [Matrix.mulVec_add, dotProduct_add, add_dotProduct, Matrix.mulVec_single, Pi.star_single, single_dotProduct, hij, Ne.symm hij, Pi.single_apply]
+      simp [Matrix.mulVec_add, dotProduct_add, add_dotProduct, Matrix.mulVec_single, Pi.star_single, single_dotProduct]
       ring
     have Q := h.dotProduct_mulVec_nonneg (Pi.single i 1 + Pi.single j w)
     rw [key] at Q
     have n1 : ((b : ℂ) • (1 : Matrix m m ℂ) - X) i i = b - X i i := by simp [Matrix.sub_apply]
     have n2 : ((b : ℂ) • (1 : Matrix m m ℂ) - X) j j = b - X j j := by simp [Matrix.sub_apply]
-    have n3 : ((b : ℂ) • (1 : Matrix m m ℂ) - X) i j = - s := by simp [Matrix.sub_apply, Matrix.one_apply, hij, hs]
+    have n3 : ((b : ℂ) • (1 : Matrix m m ℂ) - X) i j = - s := by simp [Matrix.sub_apply, hij, hs]
     have n4 : ((b : ℂ) • (1 : Matrix m m ℂ) - X) j i = - star s := by
-      simp [Matrix.sub_apply, Matrix.one_apply, Ne.symm hij, hji]
+      simp [Matrix.sub_apply, Ne.symm hij, hji]
     rw [n1, n2, n3, n4] at Q
     have eQ : (b : ℂ) - X i i + -s * w + star w * -star s + star w * ((b : ℂ) - X j j) * w =
         2 * (b : ℂ) - X i i - X j j - 2 * (‖s‖ : ℂ) := by

@@ -59,7 +59,7 @@ theorem val_e (C : ChartAt Xo c y) (φ : Fin C.d → MvPowerSeries (Fin 1 × Fin
     apply Ideal.Quotient.algHom_ext
     apply MvPolynomial.algHom_ext
     intro i
-    simp [jetSubstP, jetMap, liftJet, Ideal.Quotient.lift_mk] <;> rfl
+    simp [jetSubstP, jetMap, liftJet] <;> rfl
   have hP : actPS (Dw := Dw) (S := S) c 1 = MvPowerSeries.X := by
     funext q
     simp [actPS]

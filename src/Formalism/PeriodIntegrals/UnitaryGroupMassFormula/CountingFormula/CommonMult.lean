@@ -41,7 +41,7 @@ theorem int_mult (D : Formalism.BasicNotions.D7) (s : Finset D.host.E) :
 
 theorem lat_mult (D : Formalism.BasicNotions.D7) {Λ : Submodule (𝓞 D.host.E) (VS D).V} (hΛ : Submodule.IsLattice D.host.E Λ)
     (v : (VS D).V) : ∃ n : ℤ, n ≠ 0 ∧ (n : D.host.E) • v ∈ Λ := by
-  first | exact UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult .. | (apply UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult <;> assumption) | (intros; apply UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult <;> assumption) | (apply @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult <;> assumption) | (apply @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult <;> first | assumption | infer_instance) | exact @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult D Λ hΛ v | exact @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult D Λ hΛ | exact @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult D Λ | exact @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult D
+  first | exact UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult .. | (apply UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult <;> assumption) | exact @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult D Λ hΛ v | exact @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult D Λ hΛ | exact @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult D Λ | exact @UpperTheory.Reformulated.B.LocalTheoryWindows.lat_mult D
 
 theorem common_mult (D : Formalism.BasicNotions.D7) {Λ : Submodule (𝓞 D.host.E) (VS D).V} (hΛ : Submodule.IsLattice D.host.E Λ)
     (vs : Finset (VS D).V) (ks : Finset D.host.E) :

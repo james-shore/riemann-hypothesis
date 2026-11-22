@@ -73,7 +73,7 @@ theorem zcomp_rightShift_homOf_leftShift {K L M : CochainComplex C â„¤} (d n : â
     Cochain.units_smul_v, Cocycle.rightShift_coe, Cocycle.leftShift_coe,
     Cochain.rightShift_v _ (-d) n (show n + -d = n - d by omega) p q hpq (p + (n - d)) rfl,
     Cochain.leftShift_v _ (-d) 0 (show d + -d = 0 by omega) q q (add_zero q) (p + (n - d)) (by omega)]
-  simp only [Linear.comp_units_smul, Linear.units_smul_comp, smul_smul, Category.assoc, Iso.inv_hom_id_assoc]
+  simp only [Linear.comp_units_smul, smul_smul, Category.assoc, Iso.inv_hom_id_assoc]
   have hs : sgn d * (-d * 0 + -d * (-d - 1) / 2).negOnePow = 1 := Int.units_mul_self _
   rw [hs, one_smul]
 

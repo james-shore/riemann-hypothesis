@@ -25,8 +25,6 @@ theorem aeval_map_of_comm {K M N : Type} [Field K] [AddCommGroup M] [Module K M]
   | exact @_root_.GlobalTheory.AevalIntertwine.aeval_intertwine
   | exact _root_.GlobalTheory.AevalIntertwine.aeval_intertwine
   | (apply _root_.GlobalTheory.AevalIntertwine.aeval_intertwine <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AevalIntertwine.aeval_intertwine <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AevalIntertwine.aeval_intertwine <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AevalIntertwine.aeval_intertwine ..)
 
 theorem exists_lift_end {H X : Type} [AddCommGroup H] [Module ℂ H] [AddCommGroup X] [Module ℂ X]

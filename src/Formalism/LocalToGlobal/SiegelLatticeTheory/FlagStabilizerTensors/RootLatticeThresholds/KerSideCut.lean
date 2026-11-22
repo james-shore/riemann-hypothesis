@@ -19,7 +19,7 @@ theorem chainOpM_add' {Rg : Type} [CommSemiring Rg] {ι : ℕ → Type} [∀ j, 
     (w : ∀ j, ι j → Rg) (Km : ∀ j, ι j → ι (j + 1) → (M j →ₗ[Rg] M (j + 1))) (m : ℕ) (f g : ι 0 → M 0) :
     Formalism.ThetaLiftIndependence.chainOpM w Km m (f + g) = Formalism.ThetaLiftIndependence.chainOpM w Km m f + Formalism.ThetaLiftIndependence.chainOpM w Km m g := by
   induction m with
-  | zero => first | rfl | simp [Formalism.ThetaLiftIndependence.chainOpM]
+  | zero => first | rfl
   | succ m ih =>
     simp only [Formalism.ThetaLiftIndependence.chainOpM, ih]
     funext t
@@ -30,7 +30,7 @@ theorem chainOpM_smul' {Rg : Type} [CommSemiring Rg] {ι : ℕ → Type} [∀ j,
     (w : ∀ j, ι j → Rg) (Km : ∀ j, ι j → ι (j + 1) → (M j →ₗ[Rg] M (j + 1))) (m : ℕ) (c : Rg) (f : ι 0 → M 0) :
     Formalism.ThetaLiftIndependence.chainOpM w Km m (c • f) = c • Formalism.ThetaLiftIndependence.chainOpM w Km m f := by
   induction m with
-  | zero => first | rfl | simp [Formalism.ThetaLiftIndependence.chainOpM]
+  | zero => first | rfl
   | succ m ih =>
     simp only [Formalism.ThetaLiftIndependence.chainOpM, ih]
     funext t

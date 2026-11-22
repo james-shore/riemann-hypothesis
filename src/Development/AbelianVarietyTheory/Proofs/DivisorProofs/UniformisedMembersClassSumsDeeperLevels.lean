@@ -59,7 +59,7 @@ theorem yy_sub_zero (𝔪 : UMem X₁ z₁ act V ev X t δ) {a a' : X₁.S.Gam} 
   obtain ⟨w1, hw1⟩ := hc2 v
   obtain ⟨w2, hw2⟩ := hc v
   refine ⟨-(w1 + w2), ?_⟩
-  simp only [Pi.add_apply, Pi.zero_apply] at hw1
+  simp only [Pi.add_apply] at hw1
   show (0 : X) = _
   rw [hw2] at hw1
   have e : mu v = (X₁.S.r * X₁.S.N) • w1 + (X₁.S.r * X₁.S.N) • w2 := by

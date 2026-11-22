@@ -78,7 +78,7 @@ theorem lam_m_eq_lam_zero (D : D7) (u : D.what₂.Word) (τ : D.what₂.Tau) (i 
       ((D.fm u).lam 0 τ).w ⟨i, by simp only [Ranks.N]; omega⟩ := by
   have h1 := (D.fm u).lam_eq D.R.m le_rfl τ ⟨i, by simp only [Ranks.N]; omega⟩
   have h2 := (D.fm u).lam_eq 0 (Nat.zero_le _) τ ⟨i, by simp only [Ranks.N]; omega⟩
-  simp only [Fin.val_mk] at h1 h2
+  simp only at h1 h2
   rw [dif_pos hi] at h1 h2
   exact_mod_cast h1.trans h2.symm
 

@@ -102,11 +102,11 @@ theorem entry_of_mirProj_eq_one (n : ℕ) (u : Mir k n) (hu : mirabolicProjectio
   induction i using Fin.lastCases with
   | last =>
     rw [(mem_Mir_iff k _).1 u.2]
-    simp [eLast, Pi.single_apply, Fin.castSucc_ne_last]
+    simp [eLast, Fin.castSucc_ne_last]
   | cast i =>
     rw [← mirProj_val, hu]
     have : i ≠ l' := fun e => hil (by rw [e])
-    simp [Matrix.one_apply, this]
+    simp [this]
 
 theorem row_levi (n : ℕ) (y : Mir k n) (t : Fin (n + 2)) :
     (((levi k (n + 1) (y : GL (Fin (n + 1)) k) : Mir k (n + 1)) : GL (Fin (n + 2)) k) :
@@ -115,14 +115,14 @@ theorem row_levi (n : ℕ) (y : Mir k n) (t : Fin (n + 2)) :
   rw [levi_val]
   have hy := (mem_Mir_iff k _).1 y.2
   induction t using Fin.lastCases with
-  | last => simp [glEmbMat, Matrix.one_apply, Fin.castSucc_ne_last]
+  | last => simp [glEmbMat, Fin.castSucc_ne_last]
   | cast t =>
     simp only [glEmbMat, Fin.lastCases_castSucc]
     rw [hy]
     by_cases h : t = Fin.last n
     · subst h; simp [eLast]
     · have : (Fin.last n) ≠ t := fun e => h e.symm
-      simp [eLast, Pi.single_apply, h, Matrix.one_apply, this]
+      simp [eLast, h, this]
 
 end LinAlg
 

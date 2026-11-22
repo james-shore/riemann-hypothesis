@@ -172,7 +172,7 @@ theorem ratio_local_norm_dpair : ∀ (p : ℕ) [Fact p.Prime] (G : HTGroup p) (�
     hS5 v hv5 X₁ _ (by rw [hwv']; exact hmul _ _ (hstar _ hm1) hm1)
   have hca : c a = a := hinj (by
     rw [hc, ha, Units.val_mul, sh_mul', hβ₁inv, P.sym]
-    simp only [mul_assoc, Units.mul_inv_cancel_left])
+    simp only [Units.mul_inv_cancel_left])
   have hcalg : ∀ r : K, cv (algebraMap K (K ⊗[ℚ] L) r) = algebraMap K (K ⊗[ℚ] L) r := by
     intro r; simp [cv, Algebra.TensorProduct.algebraMap_apply, Algebra.TensorProduct.map_tmul]
   have hcinv : cv (cv ↑m⁻¹) = ↑m⁻¹ := map_invol c hcc _

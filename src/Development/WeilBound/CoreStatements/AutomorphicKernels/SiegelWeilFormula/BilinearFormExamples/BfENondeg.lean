@@ -80,7 +80,7 @@ theorem BfE_nondeg [FiniteDimensional F E] (σ : E →ₐ[F] E) (hσ : ∀ a, σ
     have h1 := hz (Matrix.single a0 b0 ((J * z.map σ) a0 b0)⁻¹)
     have hv : ((Matrix.single a0 b0 ((J * z.map σ) a0 b0)⁻¹)ᵀ * J * z.map σ).trace = 1 := by
       rw [Matrix.mul_assoc, Matrix.transpose_single, Matrix.trace_single_mul]
-      simp [inv_mul_cancel₀ hb, mul_inv_cancel₀ hb]
+      simp [inv_mul_cancel₀ hb]
     rw [BfE_apply, hv] at h1
     exact htr1 h1
 

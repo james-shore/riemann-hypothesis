@@ -67,11 +67,11 @@ theorem UpperTheory.Gal.W2.markDiag_of :
       by_cases hj : j = i₀
       · subst hj
         simp [(hmemS _).2 rfl]
-      · simp [Pi.single_apply, hj]
+      · simp [hj]
     · rw [hcol _ _ hH, ← Matrix.mulVec_smul]
       congr 1
       funext j
       by_cases hj : j = i₀
       · subst hj
         simp [h]
-      · simp [Pi.single_apply, hj]
+      · simp [hj]

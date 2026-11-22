@@ -48,7 +48,7 @@ private theorem appr_unit_lemma (m c : 𝓞 F) (hc : c ∉ v.asIdeal) :
       algebraMap (𝓞 F) F m * algebraMap (𝓞 F) F (1 - c * c') / algebraMap (𝓞 F) F c := by
     rw [map_mul, map_sub, map_one, map_mul]
     first
-      | (field_simp; ring)
+      | (field_simp)
       | field_simp
   have h1 : v.valuation F (algebraMap (𝓞 F) F (1 - c * c')) < 1 := by
     rw [v.valuation_lt_one_iff_mem]
@@ -71,8 +71,6 @@ private theorem appr_den_lemma_2 (k : F) (hk : v.valuation F k ≤ 1) :
     intro r
     first
       | exact HeightOneSpectrum.valuation_of_algebraMap v r
-      | exact v.valuation_of_algebraMap r
-      | simp
   have hιd0 : v.intValuation d ≠ 0 := by
     rw [← hB]
     exact (Valuation.ne_zero_iff _).mpr hdF

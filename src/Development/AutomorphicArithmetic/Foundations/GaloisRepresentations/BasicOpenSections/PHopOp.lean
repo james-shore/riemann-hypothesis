@@ -83,8 +83,7 @@ theorem UpperTheory.Gal.Mod.hopOp :
     refine DirectSum.linearMap_ext _ fun n => LinearMap.ext fun y => ?_
     have h1 := LinearMap.congr_fun (hsplit n) (pullHQ l (sch.map (H.tΩ Ω g)) n 0 y)
     simp only [LinearMap.comp_apply, LinearMap.sum_apply] at h1 ⊢
-    simp only [T, pullTot, DirectSum.lmap_lof, LinearMap.comp_apply, h1, map_sum, Functor.map_comp, pullQ_comp,
-      LinearMap.sum_apply]
+    simp only [T, pullTot, DirectSum.lmap_lof, LinearMap.comp_apply, h1, map_sum, Functor.map_comp, pullQ_comp]
   have hT : IsCorrOp l (H.sΩ Ω g) (H.tΩ Ω g) T :=
     ⟨W, c, G, iG, fG, a, Fin d, inferInstance, σ, hG, hs, fun x => by
       rw [← LinearMap.sum_apply, ← hcomp]; rfl⟩

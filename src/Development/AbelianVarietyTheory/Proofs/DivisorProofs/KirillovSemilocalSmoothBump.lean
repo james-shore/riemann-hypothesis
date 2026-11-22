@@ -47,7 +47,7 @@ theorem ratGL_scalar_val (α : Eˣ) :
     ((ratGL E a (Units.map (Matrix.scalar (Fin a) : E →+* Matrix (Fin a) (Fin a) E).toMonoidHom α) : GA E a) :
       Matrix (Fin a) (Fin a) (Ad E)) = Matrix.scalar (Fin a) (algebraMap E (Ad E) (α : E)) := by
   ext i j
-  by_cases h : i = j <;> simp [ratGL, Matrix.scalar_apply, Matrix.diagonal_apply, h]
+  by_cases h : i = j <;> simp [ratGL, Matrix.scalar_apply, h]
 
 theorem aut_central {φ : Sm E a} (hφ : IsAutForm φ) (α : Eˣ) (g : GA E a) :
     φ.1 (g * ratGL E a (Units.map (Matrix.scalar (Fin a) : E →+* Matrix (Fin a) (Fin a) E).toMonoidHom α)) = φ.1 g := by
@@ -135,7 +135,7 @@ theorem exists_mirabolic_nonzero : ∀ (E : Type) [Field E] [NumberField E] [IsT
     rw [hp0 j] at h1
     apply ad_ext
     · rw [h1]; split_ifs <;> simp
-    · rw [h2]; split_ifs with h <;> simp [Matrix.one_apply, h, eq_comm]
+    · rw [h2]; split_ifs with h <;> simp [h, eq_comm]
   · rw [hψf, whit_rt]
     have : infGL E (m + 1) p0 * s = infGL E (m + 1) p0 * infGL E (m + 1) (sc c * Unitary.toUnits k) * finGL E (m + 1) xf := by
       rw [hs, mul_assoc]

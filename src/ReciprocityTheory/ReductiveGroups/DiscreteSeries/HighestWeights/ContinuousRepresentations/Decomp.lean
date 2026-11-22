@@ -19,11 +19,9 @@ theorem finrank_eq_sum_of_orth {V : Type} [NormedAddCommGroup V] [InnerProductSp
   have hind : iSupIndep A := by
     first
       | exact hOF.independent
-      | exact hOF.iSupIndep
   have hint : DirectSum.IsInternal A := by
     first
       | exact (DirectSum.isInternal_submodule_iff_iSupIndep_and_iSup_eq_top A).mpr ⟨hind, htop⟩
-      | exact (DirectSum.isInternal_submodule_iff_independent_and_iSup_eq_top A).mpr ⟨hind, htop⟩
   rw [Module.finrank_eq_card_basis (hint.collectedBasis fun i => Module.finBasis ℂ (A i)),
     Fintype.card_sigma]
   simp

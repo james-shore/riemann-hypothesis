@@ -24,7 +24,7 @@ theorem algSat_mul (n q : ℕ) (B : Multiset ℂˣ) (e : ℂˣ) :
     (UpperTheory.V.Af.algSat n q (B.map (· * e))).sum = (e : ℂ) * (UpperTheory.V.Af.algSat n q B).sum := by
   simp only [UpperTheory.V.Af.algSat]
   simp
-  simp only [mul_assoc, Multiset.sum_map_mul_left, Multiset.sum_map_mul_right]
+  simp only [Multiset.sum_map_mul_left, Multiset.sum_map_mul_right]
   ring
 
 theorem selfTw_mul_trace_inv (Ω : Type) [Field Ω] (K : Type) [Field K] [NumberField K] [IsCMField K] [Algebra K Ω]

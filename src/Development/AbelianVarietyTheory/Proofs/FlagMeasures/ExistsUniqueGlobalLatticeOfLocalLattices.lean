@@ -43,7 +43,7 @@ theorem glue : ∀ {F E : Type} [Field F] [NumberField F] [Field E] [NumberField
           intro a x hx p
           have ha : (A.loc p).ιE (a : E) ∈ (A.L p).O := ιE_mem A p _ a.isIntegral_coe
           have : A.bc p (a • x) = (⟨_, ha⟩ : (A.L p).O) • A.bc p x := by
-            funext i; simp [Places.bc, Subring.smul_def, Algebra.smul_def]; rfl
+            funext i; simp [Places.bc, Algebra.smul_def]; rfl
           rw [this]; exact (Λ p).smul_mem _ (hx p) }
     have hΓ : ∀ x, x ∈ Γ ↔ ∀ p, A.bc p x ∈ Λ p := fun x => Iff.rfl
     have hL : Submodule.IsLattice E Γ := by

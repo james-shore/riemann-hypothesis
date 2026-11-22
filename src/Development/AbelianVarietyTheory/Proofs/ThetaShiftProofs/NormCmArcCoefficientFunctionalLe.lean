@@ -54,7 +54,7 @@ theorem herm_smul {g : ℕ} (Hm : Matrix (Fin g) (Fin g) ℂ) (a : ℂ) (z : Fin
 
 theorem herm_single {g : ℕ} (Hm : Matrix (Fin g) (Fin g) ℂ) (j : Fin g) :
     hermForm Hm (Pi.single j 1) (Pi.single j 1) = Hm j j := by
-  simp [hermForm, ← Pi.single_star]
+  simp [hermForm]
 
 variable {E : Type} [Field E] [NumberField E] [IsCMField E] {H : ReciprocityTheory.ChartRestriction.G.Geo.Tor.Host E} {Dw : Datum H}
 
@@ -75,7 +75,7 @@ theorem le_of_invBl {f : (ArcLt Dw → ℂ) → ℝ} (hf : Continuous f) (ρ : �
     rw [← Polynomial.coe_evalRingHom, RingHom.map_det]
     congr 1
     ext i k
-    simp [mul_comm]
+    simp
   have hQ0 : ∀ τ, Q τ ≠ 0 := fun τ h0 => by
     have := hQ τ 1
     rw [h0, Polynomial.eval_zero] at this
@@ -342,9 +342,8 @@ theorem norm_cfOf_le : Known → ∀ (E : Type) [Field E] [NumberField E] [IsCMF
         Real.exp (4 * Real.pi * ((max 1 c₁)⁻¹ * ∑ τ : (U.X k).Ψ, (τ.1 s.ν₀).re)) * ‖eTwoPi w ^ d.jj‖ := by
       rw [norm_zpow, eTwoPi, Complex.norm_exp, ← Real.rpow_intCast, ← Real.exp_mul, ← Real.exp_add, ← hjj]
       congr 1
-      simp only [htt, mul_sub, Finset.sum_sub_distrib, Finset.mul_sum, Complex.mul_re, Complex.mul_im, Complex.I_re,
-        Complex.I_im, Complex.ofReal_re, Complex.ofReal_im, Complex.re_ofNat, Complex.im_ofNat, ← Finset.sum_add_distrib,
-        ← Finset.sum_sub_distrib]
+      simp only [htt, mul_sub, Finset.mul_sum, Complex.mul_re, Complex.mul_im, Complex.I_re,
+        Complex.I_im, Complex.ofReal_re, Complex.ofReal_im, Complex.re_ofNat, Complex.im_ofNat, ← Finset.sum_add_distrib]
       exact Finset.sum_congr rfl fun τ _ => by ring
     have hne : ‖eTwoPi w ^ d.jj‖ ≠ 0 := norm_ne_zero_iff.2 (zpow_ne_zero _ (Complex.exp_ne_zero _))
     have hE : Real.exp (4 * Real.pi * ((max 1 c₁)⁻¹ * ∑ τ : (U.X k).Ψ, (τ.1 s.ν₀).re)) ≤ Real.exp (4 * Real.pi) :=

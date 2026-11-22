@@ -17,7 +17,7 @@ private theorem rigDiag_snd_mul {K : Type} [Field K] (M N : Matrix (Fin 3) (Fin 
 private theorem rigDiag_conj_mat {R D : Type} [CommRing R] [Group D] (h : GL (Fin 3) R) (r : D →* GG 3 R) (s : D)
     (hs : (r s).right = 1) :
     (h : Matrix (Fin 3) (Fin 3) R) * (conjBy h⁻¹ r s).mat = (r s).mat * h := by
-  simp [conjBy, GG.mat, GG.ofGL, MulAut.conj_apply, SemidirectProduct.mul_left, SemidirectProduct.inv_left, hs]
+  simp [conjBy, GG.mat, GG.ofGL, SemidirectProduct.mul_left, SemidirectProduct.inv_left, hs]
   rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, Matrix.mul_nonsing_inv _ (Matrix.isUnits_det_units h), Matrix.one_mul]
 
 theorem UpperTheory.V.UnitaryThreeInertia.rig_diag :
@@ -64,7 +64,7 @@ theorem UpperTheory.V.UnitaryThreeInertia.rig_diag :
   have hM1 : (r' s).mat.map TrivSqZeroExt.snd = y s * R := by
     rw [hmat, rigDiag_snd_mul]
     ext a b
-    simp [Matrix.one_apply, Matrix.mul_apply, TrivSqZeroExt.algebraMap_eq_inl, apply_ite TrivSqZeroExt.fst, apply_ite TrivSqZeroExt.snd, ite_mul]
+    simp [Matrix.one_apply, Matrix.mul_apply, TrivSqZeroExt.algebraMap_eq_inl, apply_ite TrivSqZeroExt.fst, apply_ite TrivSqZeroExt.snd]
   have e0 : h0 * C0 = R * h0 := by
     have := congrArg (fun M => M.map TrivSqZeroExt.fst) hc
     simpa only [rigDiag_fst_mul, hM0] using this

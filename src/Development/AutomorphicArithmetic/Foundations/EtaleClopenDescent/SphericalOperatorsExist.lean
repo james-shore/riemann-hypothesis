@@ -115,7 +115,7 @@ section Sym
 
 private theorem esymm_cons (x : ℂ) (s : Multiset ℂ) (j : ℕ) :
     (x ::ₘ s).esymm (j + 1) = s.esymm (j + 1) + x * s.esymm j := by
-  simp [Multiset.esymm, Multiset.powersetCard_cons, Multiset.map_map, Function.comp_def, Multiset.sum_map_mul_left]
+  simp [Multiset.esymm, Multiset.powersetCard_cons, Multiset.map_map, Multiset.sum_map_mul_left]
 
 private theorem esymm_zero (s : Multiset ℂ) : s.esymm 0 = 1 := by
   simp [Multiset.esymm]
@@ -192,7 +192,7 @@ private theorem heckeVec_Ta {ϖ : w.adicCompletion E} {c : GL (Fin a) (w.adicCom
     by_cases h : i = j
     · subst h
       simp [Formalism.UG.diagJ]
-    · simp [Formalism.UG.diagJ, Matrix.diagonal_apply, Matrix.one_apply, h]
+    · simp [Formalism.UG.diagJ, h]
   have hiff : ∀ g : GL (Fin a) (w.adicCompletion E),
       (∃ x ∈ Formalism.UG.GLint (Fin a) (Formalism.UG.Ov E w), ∃ y ∈ Formalism.UG.GLint (Fin a) (Formalism.UG.Ov E w),
         (g : Matrix (Fin a) (Fin a) (w.adicCompletion E)) =
@@ -203,7 +203,7 @@ private theorem heckeVec_Ta {ϖ : w.adicCompletion E} {c : GL (Fin a) (w.adicCom
     · rintro ⟨x, hx', y, hy, e⟩
       have hg : g = c * (x * y) := Units.ext (by
         rw [Units.val_mul, Units.val_mul, e, hD, hc]
-        simp [Matrix.smul_mul, Matrix.mul_smul])
+        simp)
       rw [hg, inv_mul_cancel_left]
       exact (GlobalTheory.LFun.KGL w a).mul_mem hx' hy
     · intro hk
@@ -211,7 +211,7 @@ private theorem heckeVec_Ta {ϖ : w.adicCompletion E} {c : GL (Fin a) (w.adicCom
       rw [inv_mul_cancel_left] at hk
       refine ⟨k, hk, 1, one_mem _, ?_⟩
       rw [Units.val_mul, hD, hc]
-      simp [Matrix.smul_mul, Matrix.mul_smul]
+      simp
   have key : ∀ g, Formalism.UG.Tj ℂ a (Formalism.UG.Ov E w) ϖ a g = if c⁻¹ * g ∈ GlobalTheory.LFun.KGL w a then 1 else 0 := by
     intro g
     simp only [Formalism.UG.Tj, Set.indicator_apply, Set.mem_setOf_eq, hiff g]
@@ -234,7 +234,7 @@ private theorem heckeVec_Ta {ϖ : w.adicCompletion E} {c : GL (Fin a) (w.adicCom
 
 private theorem algSat_eq (q : ℕ) (B : Multiset ℂˣ) :
     UpperTheory.V.Af.algSat a q B = (B.map fun b : ℂˣ => (b : ℂ)).map ((((q : ℝ) ^ (((a : ℝ) - 1) / 2) : ℝ) : ℂ) * ·) := by
-  simp [UpperTheory.V.Af.algSat, Multiset.map_map, Function.comp_def]
+  simp [UpperTheory.V.Af.algSat, Multiset.map_map]
 
 private theorem cR_pow {q a j : ℕ} (hq : q ≠ 0) :
     ((((q : ℝ) ^ (((a : ℝ) - 1) / 2) : ℝ) : ℂ)) ^ j =
@@ -274,7 +274,7 @@ private theorem sat_ops (R : Subring ℂ) :
     by_cases h : i = j
     · subst h
       simp [c]
-    · simp [c, Matrix.one_apply, h]
+    · simp [c, h]
   refine ⟨fun j => (((normV w : ℕ) : ℂ) ^ ((j : ℕ).choose 2)) • f j, c, fun j g => ?_, fun σ B hB v hv => ?_⟩
   · rw [Finsupp.smul_apply, smul_eq_mul]
     exact R.mul_mem (R.pow_mem (natCast_mem R _) _) (hfR j g)

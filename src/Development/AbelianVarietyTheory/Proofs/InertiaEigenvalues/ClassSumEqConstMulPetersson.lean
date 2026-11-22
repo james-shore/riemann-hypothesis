@@ -272,7 +272,7 @@ theorem mem_conj_iff (K : Subgroup (GAf L n)) (h x : GAf L n) :
   · rintro ⟨y, hy, rfl⟩
     simpa [MulAut.conj_apply, mul_assoc] using hy
   · intro hx
-    exact ⟨h * x * h⁻¹, hx, by simp [MulAut.conj_apply, mul_assoc]⟩
+    exact ⟨h * x * h⁻¹, hx, by simp [mul_assoc]⟩
 
 open Classical in
 theorem isClassReps_conj {K : Subgroup (GAf L n)} {T : Finset (GAf L n)} (hT : IsClassReps K T) (h : GAf L n) :

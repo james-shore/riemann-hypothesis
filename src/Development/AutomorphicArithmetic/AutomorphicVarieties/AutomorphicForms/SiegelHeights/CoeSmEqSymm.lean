@@ -106,7 +106,7 @@ theorem adjoin_genU : Algebra.adjoin ℝ {x : UEnv E a | ∃ v i j, x = genU v i
     obtain ⟨X, rfl⟩ := (lieEq E a).surjective Y
     have e : X = ∑ i, ∑ j, ∑ v, X i j v • TR.toL (Matrix.single i j (Pi.single v 1)) := by
       funext k l w
-      simp [Finset.sum_apply, Matrix.single_apply, Pi.single_apply, ite_and, ite_apply]
+      simp [Finset.sum_apply, Pi.single_apply, ite_apply]
     rw [e]
     simp only [map_sum, map_smul]
     exact sum_mem fun i _ => sum_mem fun j _ => sum_mem fun v _ =>

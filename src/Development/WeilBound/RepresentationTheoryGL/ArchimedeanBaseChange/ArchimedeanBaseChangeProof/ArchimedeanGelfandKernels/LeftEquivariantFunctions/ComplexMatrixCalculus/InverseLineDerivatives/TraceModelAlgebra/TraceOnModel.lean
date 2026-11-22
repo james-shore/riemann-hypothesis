@@ -110,12 +110,10 @@ theorem Et_hw (lam : Fin n → ℤ) (hlam : Antitone lam) :
     ∀ a b, a < b → Et lam a b (Formalism.GradedWeylDivisibility.hw ℂ le_rfl (dw lam).natW) = 0 := by
   refine ⟨fun a => ?_, fun a b hab => ?_⟩
   · rw [Et_eq]
-    simp only [Matrix.add_apply, Matrix.of_apply, LinearMap.add_apply, if_true, eq_self_iff_true,
-      LinearMap.smul_apply, Module.End.one_apply]
+    simp only [Matrix.add_apply, Matrix.of_apply, LinearMap.add_apply, if_true, LinearMap.smul_apply, Module.End.one_apply]
     rw [GlobalTheory.BrCompare.hw_weight (natW_anti lam) a, ← add_smul, natW_add lam hlam a]
   · rw [Et_eq]
-    simp only [Matrix.add_apply, Matrix.of_apply, if_neg hab.ne, LinearMap.add_apply, LinearMap.zero_apply,
-      add_zero]
+    simp only [Matrix.add_apply, Matrix.of_apply, if_neg hab.ne, add_zero]
     exact GlobalTheory.BrCompare.hw_raise _ a b hab
 
 theorem trace_on_model (lam : Fin n → ℤ) (hlam : Antitone lam) (k : ℕ) {f : MvPolynomial (Fin n × Fin n) ℂ}
@@ -132,7 +130,7 @@ theorem trace_on_model (lam : Fin n → ℤ) (hlam : Antitone lam) (k : ℕ) {f 
       simp
     have hcomm : (Et lam ^ k).trace * GlobalTheory.Mem.Gelf.rowE ℂ n n a b = GlobalTheory.Mem.Gelf.rowE ℂ n n a b * (Et lam ^ k).trace := by
       rw [hr, mul_sub, sub_mul, ← trace_comm lam k a b]
-      split_ifs <;> simp [smul_mul_assoc, mul_smul_comm]
+      split_ifs <;> simp
     have hg2 := congrArg (fun L : Module.End ℂ (MvPolynomial (Fin n × Fin n) ℂ) => L g) hcomm
     simp only [Module.End.mul_apply] at hg2
     rw [LinearMap.mem_ker, LinearMap.sub_apply, sub_eq_zero, hg2, hg]

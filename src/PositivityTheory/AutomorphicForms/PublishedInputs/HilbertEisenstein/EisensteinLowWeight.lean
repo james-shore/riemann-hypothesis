@@ -224,7 +224,6 @@ def DZ (x y : ℝ) : ℂ := (x : ℂ) * facX x (-y) + (-(y : ℂ)) * facY x (-y)
 theorem low_identity' (x y : ℝ) : DA x y - Complex.I * DB x y = DZ x y + fac x (-y) := by
   have h := low_identity x y
   unfold DA DB DZ
-  push_cast
   linear_combination h
 
 theorem hyA (v : InfinitePlace F) (s : ℝ) : ∀ w, w ≠ v → ∀ i j,
@@ -295,7 +294,6 @@ theorem term_B (c : HeightOneSpectrum (𝓞 F) → ℕ) (v : InfinitePlace F) (�
   have h := (hasDerivAt_fac hX hY).mul_const (Rt c v η)
   refine h.congr_deriv ?_
   simp only [Real.cosh_zero, Real.sinh_zero, mul_one, mul_zero, add_zero, zero_add, DB]
-  all_goals (push_cast; ring)
 
 theorem term_Z (c : HeightOneSpectrum (𝓞 F) → ℕ) (v : InfinitePlace F) (η : Fin 2 → Ad F) :
     HasDerivAt (fun s => Phi c (η ᵥ* ((UpperTheory.V.TR.infGL F 2 (eps v * kZ v s) : GA F 2) :

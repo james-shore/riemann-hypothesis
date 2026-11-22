@@ -93,7 +93,7 @@ theorem datumEmbedding_add (hP : IsPsiFor ε lam T Ψ) (v₀ v v' : T.V) :
   have h3 := dt_memLp hP v₀ (v + v')
   simp only [uniformisationL2, toL2, dif_pos h1, dif_pos h2, dif_pos h3]
   rw [← MemLp.toLp_add]
-  exact MemLp.toLp_congr _ _ (Filter.Eventually.of_forall fun g => by simp [jfun, inner_add_right])
+  exact MemLp.toLp_congr _ _ (Filter.Eventually.of_forall fun g => by simp [jfun])
 
 theorem datumEmbedding_smul (hP : IsPsiFor ε lam T Ψ) (v₀ : T.V) (c : ℂ) (v : T.V) :
     uniformisationL2 ε Ψ v₀ (c • v) = c • uniformisationL2 ε Ψ v₀ v := by
@@ -101,7 +101,7 @@ theorem datumEmbedding_smul (hP : IsPsiFor ε lam T Ψ) (v₀ : T.V) (c : ℂ) (
   have h3 := dt_memLp hP v₀ (c • v)
   simp only [uniformisationL2, toL2, dif_pos h1, dif_pos h3]
   rw [← MemLp.toLp_const_smul]
-  exact MemLp.toLp_congr _ _ (Filter.Eventually.of_forall fun g => by simp [jfun, inner_smul_right])
+  exact MemLp.toLp_congr _ _ (Filter.Eventually.of_forall fun g => by simp [jfun])
 
 def datumEmbeddingToL2 (hP : IsPsiFor ε lam T Ψ) (v₀ : T.V) : T.V →ₗ[ℂ] L2 ε where
   toFun := uniformisationL2 ε Ψ v₀
@@ -133,9 +133,9 @@ theorem rightRegular_datumEmbedding (hP : IsPsiFor ε lam T Ψ) (v₀ v : T.V) (
   rw [h1]
   clear h1 hk hP
   first
-  | rw [T.op_one]; simp
-  | rw [T.map_one]; simp
-  | rw [map_one]; simp
+  | rw [T.op_one]
+  | rw [T.map_one]
+  | rw [map_one]
   | simp [S7.KType.op]
 
 theorem rightDerivative_datum_embedding (hP : IsPsiFor ε lam T Ψ) (v₀ v : T.V) {a b : Fin n} (hab : ε a = ε b) :
@@ -201,10 +201,6 @@ theorem datumV_kStable (hP : IsPsiFor ε lam T Ψ) (v₀ : T.V) :
         Matrix.mem_unitaryGroup_iff'.1 hk.1, Matrix.one_mul]
     · first
       | exact hk
-      | exact ⟨hk.1, hk.2⟩
-      | exact hk.2
-      | exact hk.2.symm
-      | (simp only [S7.KG, Kset] at hk ⊢; done)
   obtain ⟨k', rfl⟩ := hK
   refine ⟨⟨uniformisationL2 ε Ψ v₀ (T.op k' u), datumEmbedding_mem_smooth hP v₀ _⟩, (mem_datumV_iff hP v₀ _).2 ⟨_, rfl⟩, ?_⟩
   rw [hu, rightRegular_datumEmbedding hP v₀ u k']
@@ -226,9 +222,6 @@ theorem datumEmbedding_self_ne_zero (hP : IsPsiFor ε lam T Ψ) {v₀ : T.V} (hv
       | (letI : NormedAddCommGroup (Matrix (Fin n) (Fin n) ℂ) := Matrix.normedAddCommGroup
          letI : NormedSpace ℝ (Matrix (Fin n) (Fin n) ℂ) := Matrix.normedSpace
          exact hF.continuousOn.continuousAt (hU.mem_nhds hgU))
-      | (letI : NormedAddCommGroup (Matrix (Fin n) (Fin n) ℂ) := Matrix.frobeniusNormedAddCommGroup
-         letI : NormedSpace ℝ (Matrix (Fin n) (Fin n) ℂ) := Matrix.frobeniusNormedSpace
-         exact hF.continuousOn.continuousAt (hU.mem_nhds hgU))
     have hev : (fun y : Formalism.REAL.UJ ε => jfun Ψ v₀ v₀ (Formalism.MainNotions.S.umat y)) =ᶠ[nhds g]
         fun y => inner ℂ v₀ (F (Formalism.MainNotions.S.umat y) v₀) := by
       filter_upwards [hc.continuousAt.preimage_mem_nhds (hU.mem_nhds hgU)] with y hy
@@ -247,7 +240,7 @@ theorem datumEmbedding_self_ne_zero (hP : IsPsiFor ε lam T Ψ) {v₀ : T.V} (hv
     infer_instance
   have hall := (Continuous.ae_eq_iff_eq (Formalism.REAL.muG ε) hcont continuous_zero).1 hae
   have h1 := congrFun hall 1
-  simp [jfun, hP.2.1] at h1
+  simp [jfun] at h1
   have hu1 : Formalism.MainNotions.S.umat (1 : Formalism.REAL.UJ ε) = 1 := rfl
   rw [hu1, hP.2.1] at h1
   simp at h1

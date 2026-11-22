@@ -41,10 +41,10 @@ theorem kpow {a : Ix m n} (ha : inF1 ε a) (b : ℕ) : ∀ (d : ℕ) (u : Sym m 
       · subst h; exact ha
       · exact absurd rfl hk
     have g1 : Good ε d (r₁ * X (Sum.inl a)) := by
-      have := good_mul_monomial (e := 0) hr₁ _ hX (by simp [Finsupp.single_apply])
+      have := good_mul_monomial (e := 0) hr₁ _ hX (by simp)
       simpa [X] using this
     have g2 : Good ε d (pderiv (Sum.inr a) u * X (Sum.inl a) ^ b) := by
-      have := good_mul_monomial (e := 0) hdu _ hXb (by simp [Finsupp.single_apply])
+      have := good_mul_monomial (e := 0) hdu _ hXb (by simp)
       simpa [X_pow_eq_monomial] using this
     refine ⟨r₁ * X (Sum.inl a) + pderiv (Sum.inr a) u * X (Sum.inl a) ^ b + r₂, good_add (good_add g1 g2) hr₂, fun g => ?_⟩
     rw [pow_succ', mul_assoc, op_X_mul, e₁, e₂, op_add, op_add, op_mul_inl, pow_succ, ← mul_assoc, op_mul_inl]

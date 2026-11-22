@@ -60,7 +60,6 @@ theorem lift_forms_of_card_isUnit : ∀ (O : Type) [CommRing O] (G : Type) [Grou
       congr 2
       apply Subtype.ext
       simp only [kk, e, Equiv.coe_fn_mk, Subgroup.coe_mul]
-      push_cast
       group
   choose y hy hinv using hlift
 

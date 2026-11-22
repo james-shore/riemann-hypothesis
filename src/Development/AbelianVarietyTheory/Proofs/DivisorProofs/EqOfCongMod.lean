@@ -22,7 +22,7 @@ theorem eq_of_congMod (x y : M) (h : ∀ m : ℕ, 1 ≤ m → CongMod m x y) : x
   obtain ⟨w, hw⟩ := h N (by omega)
   have hxy : x - y = N • w := by rw [hw]; abel
   have h2 : b.repr (x - y) k = (N : ℤ) * b.repr w k := by
-    rw [hxy, map_nsmul]; simp [nsmul_eq_mul]
+    rw [hxy, map_nsmul]; simp
   refine Int.eq_zero_of_abs_lt_dvd ⟨_, h2⟩ ?_
   rw [Int.abs_eq_natAbs]; omega
 
@@ -57,7 +57,7 @@ theorem qW_single {Y : Type} [AddCommGroup Y] (W : Matrix (Fin 8) (Fin 8) ℤ) (
   unfold qW
   rw [Finset.sum_eq_single 0, Finset.sum_eq_single 0]
   · simp
-  · intro b _ hb; simp [Pi.single_apply, hb]
+  · intro b _ hb; simp [hb]
   · simp
   · intro b _ hb; simp [Pi.single_apply, hb]
   · simp
@@ -75,7 +75,7 @@ theorem main : ∀ (g n : ℕ) (F : SFam g n (zetaAway n)) (W : Matrix (Fin 8) (
     intro y; funext a; rw [hθ]
     by_cases ha : a = 0
     · subst ha; simp
-    · simp [Pi.single_apply, ha]
+    · simp [ha]
   have inj : Function.Injective κ0 := by
     intro y y' hy
     have : θ (Pi.single 0 y) = θ (Pi.single 0 y') := by rw [hsingle, hsingle, hy]
@@ -95,7 +95,7 @@ theorem main : ∀ (g n : ℕ) (F : SFam g n (zetaAway n)) (W : Matrix (Fin 8) (
   · intro a b
     rw [hκ, hκ]
     have hab := hd (a + b)
-    simp only [map_add, LinearMap.map_add₂, LinearMap.add_apply] at hab
+    simp only [map_add, LinearMap.add_apply] at hab
     have s1 := c.T.symm (κ0 a) (κ0 b)
     have s2 := c.T.symm a b
     have ha := hd a

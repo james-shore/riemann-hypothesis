@@ -43,7 +43,6 @@ theorem Loc_locM_sub_one (e : A) (M : Matrix n n A) (v : n → A) :
   rw [locM, add_sub_cancel_left]
   first
     | exact Matrix.smul_mulVec _ _ _
-    | (ext i; simp [Matrix.mulVec, dotProduct, Finset.mul_sum, mul_assoc])
 
 theorem Loc_locM_map {B : Type} [CommRing B] (f : A →+* B) (e : A) (M : Matrix n n A) :
     (locM e M).map f = locM (f e) (M.map f) := by

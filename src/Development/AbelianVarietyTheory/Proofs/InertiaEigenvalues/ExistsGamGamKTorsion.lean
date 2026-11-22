@@ -95,7 +95,7 @@ theorem exists_teich (g : ℤ_[l]ˣ) :
   have hval : ‖F.aeval (g : ℤ_[l])‖ < 1 := by
     have hg0 : PadicInt.toZMod (g : ℤ_[l]) ≠ 0 := (g.isUnit.map PadicInt.toZMod).ne_zero
     rw [norm_lt_one_iff_toZMod]
-    simp only [hF, Polynomial.aeval_sub, Polynomial.aeval_X_pow, Polynomial.aeval_X, Polynomial.aeval_one, map_sub, map_pow,
+    simp only [hF, Polynomial.aeval_X, map_sub, map_pow,
       map_one]
     rw [ZMod.pow_card_sub_one_eq_one hg0, sub_self]
   obtain ⟨z, hz, hzg, -, -⟩ := hensels_lemma (F := F) (a := (g : ℤ_[l]))
@@ -171,7 +171,7 @@ theorem exists_gam_gamK_torsion :
           ?_ ?_
         · intro g _
           simp only [Finset.coe_erase, Finset.coe_univ, Set.mem_diff, Set.mem_univ,
-            Set.mem_singleton_iff, true_and, Finset.mem_erase, Finset.mem_univ, and_true]
+            Set.mem_singleton_iff, true_and]
           exact ((g : ℤ_[l]ˣ).isUnit.map PadicInt.toZMod).ne_zero
         · intro g hg h hh hgh
           have hgD := (hD g).1 hg

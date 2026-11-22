@@ -344,7 +344,7 @@ theorem ts_rel (h : PairRel E1 E2) (s t : Bool) (p q r v : Fin n) :
   have c2 : E1 r v * E2 p q = E2 p q * E1 r v := h3 r v p q
   have e : br (E1 p q + eps s • E2 p q) (E1 r v + eps t • E2 r v) =
       (E1 p q * E1 r v - E1 r v * E1 p q) + (eps s * eps t) • (E2 p q * E2 r v - E2 r v * E2 p q) := by
-    simp only [br, add_mul, mul_add, smul_mul_assoc, mul_smul_comm, smul_sub, smul_smul, c1, c2]
+    simp only [br, add_mul, mul_add, smul_mul_assoc, mul_smul_comm, smul_sub, c1, c2]
     module
   rw [Ts_eq, Ts_eq, e, g1, g2, eps_mul]
   simp only [Ts_eq]
@@ -565,8 +565,7 @@ theorem leviRel : LeviRel := by
     have tf := R true false
     have ft := R false true
     have ff := R false false
-    simp only [beq_self_eq_true, Bool.true_beq, Bool.false_beq, Bool.not_true, Bool.not_false,
-      beq_iff_eq] at tt tf ft ff
+    simp only [beq_self_eq_true, Bool.true_beq, Bool.false_beq, Bool.not_true] at tt tf ft ff
     simp only [c1, c2, LinearMap.smul_apply, LinearMap.add_apply, LinearMap.sub_apply, map_smul, map_add, map_sub]
     refine ⟨?_, ?_, ?_⟩
     · split_ifs at tt tf ft ff ⊢ <;>

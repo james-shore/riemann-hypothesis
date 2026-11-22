@@ -16,10 +16,6 @@ theorem pullHO2_surjective_of_wedge : ∀ (R R' : Type) [CommRing R] [CommRing R
     Function.Surjective (pullHO1 h) → WedgeO (OAff s') → Function.Surjective (pullHO2 h) := by
   first
   | exact @_root_.GlobalTheory.PullbackCupProduct.main
-  | exact _root_.GlobalTheory.PullbackCupProduct.main
-  | (apply _root_.GlobalTheory.PullbackCupProduct.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PullbackCupProduct.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PullbackCupProduct.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PullbackCupProduct.main ..)
 
 end GlobalTheory.AbCoh

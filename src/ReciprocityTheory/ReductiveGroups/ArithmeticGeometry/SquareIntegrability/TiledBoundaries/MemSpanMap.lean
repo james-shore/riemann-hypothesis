@@ -39,7 +39,7 @@ theorem fdP (X : PT E) {q : ℕ} {π : Vsp X.dim →ₗ[ℂ] Vsp X.dim} (hq : 1 
 
 theorem norm_pi (X : PT E) {q : ℕ} {π : Vsp X.dim →ₗ[ℂ] Vsp X.dim} (hπ : IsPi X q π) (x : Vsp X.dim) : ‖π x‖ = Real.sqrt q * ‖x‖ := by
   have hn : ∀ v : Vsp X.dim, Hf v v = @inner ℂ _ _ v v := fun v => by
-    simp only [Hf, PiLp.inner_apply, RCLike.inner_apply, mul_comm]
+    simp only [Hf, PiLp.inner_apply, RCLike.inner_apply]
   have h := hπ.2.2.1 x x
   rw [hn, hn, inner_self_eq_norm_sq_to_K, inner_self_eq_norm_sq_to_K] at h
   have h2 : ‖π x‖ ^ 2 = (q : ℝ) * ‖x‖ ^ 2 := by
@@ -145,7 +145,7 @@ theorem P_le_Q (X : PT E) {q : ℕ} {π : Vsp X.dim →ₗ[ℂ] Vsp X.dim} (hq :
   rw [mem_P] at hx
   rw [mem_Q]
   have hH : ∀ a c : Vsp X.dim, Hf a c = @inner ℂ _ _ c a := fun a c => by
-    simp only [Hf, PiLp.inner_apply, RCLike.inner_apply, mul_comm]
+    simp only [Hf, PiLp.inner_apply, RCLike.inner_apply]
   have hround : ∀ y : Vsp X.dim, y ∈ X.L →
       ((round (Hf (π x) (π y)).im : ℤ) : ℝ) = (Hf (π x) (π y)).im := by
     intro y hy
@@ -229,11 +229,11 @@ theorem stepK : StepK := by
   have hcard : T.card ≤ K.card := by
     apply Finset.card_le_card_of_injOn f
     · intro c hc
-      have hc' : c ∈ T := by first | exact hc | exact Finset.mem_coe.mp hc
+      have hc' : c ∈ T := by first | exact hc
       exact (hf c hc').1
     · intro c1 hc1 c2 hc2 heq
-      have hc1' : c1 ∈ T := by first | exact hc1 | exact Finset.mem_coe.mp hc1
-      have hc2' : c2 ∈ T := by first | exact hc2 | exact Finset.mem_coe.mp hc2
+      have hc1' : c1 ∈ T := by first | exact hc1
+      have hc2' : c2 ∈ T := by first | exact hc2
       funext k
       have e1 := (hf c1 hc1').2 k
       have e2 := (hf c2 hc2').2 k

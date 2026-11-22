@@ -84,7 +84,7 @@ def cocone (u : A) : Cocone (diag u) where
   pt := CommRingCat.of (LaurentPolynomial A)
   ι := { app := fun s => CommRingCat.ofHom (lmap (sub u s).val.toRingHom)
          naturality := fun s t h => by
-           simp only [Functor.const_obj_map, Category.comp_id]
+           simp only [Functor.const_obj_map]
            exact CommRingCat.hom_ext (lmap_val_comp u (leOfHom h)) }
 
 theorem exists_preimage (u : A) (x : LaurentPolynomial A) : ∃ s y, lmap (sub u s).val.toRingHom y = x := by

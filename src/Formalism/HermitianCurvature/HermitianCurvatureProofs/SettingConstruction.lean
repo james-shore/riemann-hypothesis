@@ -114,10 +114,10 @@ lemma transitive (hH : Hᴴ = H) (u v : ι → ℂ) (t : ℝ) (ht : 0 < t) (hu :
   · apply unitary_of_form
     intro x y
     rw [rk_mulVec, rk_mulVec]
-    simp only [herm_add_left, herm_add_right, herm_smul_left, herm_smul_right, hdy x, hdy y, hdd]
+    simp only [herm_add_left, herm_add_right, herm_smul_left, herm_smul_right, hdy y, hdd]
     have hsσ : star σ⁻¹ = σ⁻¹ := by rw [star_inv₀, hσ_def, Complex.star_def, Complex.conj_ofReal]
     have hβ : σ⁻¹ * σ = 1 := inv_mul_cancel₀ hσ0
-    simp only [star_mul', star_star, hsσ, hdy d]
+    simp only [star_mul', star_star, hsσ]
     linear_combination (herm H x y) * hcc - 2 * herm H x d * star (herm H y d) * c * star c * σ⁻¹ * hβ
   · rw [rk_mulVec, hud]
     have hβ : σ⁻¹ * σ = 1 := inv_mul_cancel₀ hσ0
@@ -138,13 +138,13 @@ lemma Hb_herm : (Hb k)ᴴ = Hb k := by
 lemma herm_Hb_right (x : Fin (k + 1) → ℂ) (i : Fin (k + 1)) :
     herm (Hb k) x (Pi.single i 1) = (if i = Fin.last k then -1 else 1) * x i := by
   simp only [herm, dotProduct, Hb, Matrix.mulVec_diagonal]
-  rw [Finset.sum_eq_single i (fun j _ hj => by simp [Pi.single_apply, hj]) (by simp)]
+  rw [Finset.sum_eq_single i (fun j _ hj => by simp [hj]) (by simp)]
   simp
 
 lemma herm_Hb_left (y : Fin (k + 1) → ℂ) (i : Fin (k + 1)) :
     herm (Hb k) (Pi.single i 1) y = (if i = Fin.last k then -1 else 1) * star (y i) := by
   simp only [herm, dotProduct, Hb, Matrix.mulVec_diagonal]
-  rw [Finset.sum_eq_single i (fun j _ hj => by simp [Pi.single_apply, hj]) (by simp)]
+  rw [Finset.sum_eq_single i (fun j _ hj => by simp [hj]) (by simp)]
   simp [mul_comm]
 
 def nu (w s : ℂ) : Matrix (Fin (k + 1)) (Fin (k + 1)) ℂ :=
@@ -168,14 +168,14 @@ lemma nu_unitary (hk : 1 ≤ k) (w s : ℂ) (hs : star s = s) (hw : s * s = w * 
   intro x y
   rw [nu_mulVec, nu_mulVec]
   simp only [herm_add_left, herm_add_right, herm_smul_left, herm_smul_right, herm_Hb_right, herm_Hb_left, herm_single]
-  simp only [Hb, Matrix.diagonal_apply, h0L, hL0, if_true, if_false, star_add, star_sub, star_mul', star_one, star_star, hs]
+  simp only [Hb, Matrix.diagonal_apply, h0L, hL0, if_true, if_false, star_sub, star_one, star_star, hs]
   linear_combination (star (y (Fin.last k)) * x (Fin.last k) - star (y 0) * x 0) * hw
 
 lemma nu_last (hk : 1 ≤ k) (w s : ℂ) : herm (Hb k) (nu k w s *ᵥ Pi.single (Fin.last k) 1) (Pi.single (Fin.last k) 1) = -w := by
   have h0L : (0 : Fin (k + 1)) ≠ Fin.last k := by
     intro h; have := congrArg Fin.val h; simp at this; omega
   rw [herm_Hb_right, nu_mulVec]
-  simp [Pi.single_apply, h0L, h0L.symm]
+  simp [h0L, h0L.symm]
 
 lemma nu_apply (w s : ℂ) (i j : Fin (k + 1)) :
     nu k w s i j = (1 : Matrix (Fin (k + 1)) (Fin (k + 1)) ℂ) i j +
@@ -287,7 +287,7 @@ lemma sum_mid (f : Fin (2 * r + k + 1) → ℂ) (hf : ∀ i : Fin (2 * r + k + 1
 
 lemma Hpk_mid (a b : Fin (k + 1)) : Hpk k r (wI k r a) (wI k r b) = Hb k a b := by
   simp only [Hpk, Hb, wI, Matrix.diagonal_apply, Fin.ext_iff, Fin.val_last]
-  split_ifs <;> first | rfl | (exfalso; omega) | (norm_num; done) | (norm_num; intro h; exfalso; omega) | (intro h; exfalso; omega)
+  split_ifs <;> first | rfl | (exfalso; omega) | (norm_num; done) | (norm_num; intro h; exfalso; omega)
 
 lemma herm_mid (z z' : Fin (2 * r + k + 1) → ℂ) (hz : inWb k r z) (hz' : inWb k r z') :
     herm (Hpk k r) z z' = herm (Hb k) (wbPart k r z) (wbPart k r z') := by

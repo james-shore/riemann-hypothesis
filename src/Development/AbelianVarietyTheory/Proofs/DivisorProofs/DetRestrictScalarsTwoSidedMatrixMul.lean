@@ -26,7 +26,7 @@ theorem det_twoSidedMulLin {E : Type} [Field E] {α ν : Type} [Fintype α] [Dec
     funext i j
     change (u * z * a) i j = (Matrix.kroneckerMap (· * ·) u a.transpose).mulVec (Function.uncurry z) (i, j)
     simp only [Matrix.mul_apply, Matrix.mulVec, dotProduct, Fintype.sum_prod_type, Matrix.kroneckerMap_apply,
-      Matrix.transpose_apply, Function.uncurry_apply_pair, Finset.sum_mul]
+      Matrix.transpose_apply, Finset.sum_mul]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun b _ => Finset.sum_congr rfl fun c _ => ?_
     rw [show Function.uncurry z (b, c) = z b c from rfl]

@@ -66,7 +66,6 @@ lemma one_le_abs_norm_mul_abs_discr {E : Type} [Field E] [NumberField E] (z : E)
     obtain ⟨b, hb⟩ : ∃ b : 𝓞 E, algebraMap (𝓞 E) E b = a := by
       first
       | exact (FractionalIdeal.mem_one_iff _).mp ha
-      | exact FractionalIdeal.mem_one_iff.mp ha
     subst hb
     obtain ⟨m, hm⟩ := hH b
     refine ⟨m, ?_⟩
@@ -76,40 +75,26 @@ lemma one_le_abs_norm_mul_abs_discr {E : Type} [Field E] [NumberField E] (z : E)
     rw [ht, hm]
     first
     | simp
-    | exact eq_intCast _ _
   have hDne : FractionalIdeal.dual ℤ ℚ (1 : FractionalIdeal (nonZeroDivisors (𝓞 E)) E) ≠ 0 := by
     intro h
     rw [h] at hzD
     first
     | exact hz ((FractionalIdeal.mem_zero_iff _).mp hzD)
-    | exact hz (FractionalIdeal.mem_zero_iff.mp hzD)
-    | simp_all
   have hdiff : ((differentIdeal ℤ (𝓞 E) : Ideal (𝓞 E)) : FractionalIdeal (nonZeroDivisors (𝓞 E)) E) =
       (FractionalIdeal.dual ℤ ℚ (1 : FractionalIdeal (nonZeroDivisors (𝓞 E)) E))⁻¹ := by
     have hcd := coeIdeal_differentIdeal ℤ ℚ E (𝓞 E)
     first
     | exact hcd
-    | exact hcd.symm
-    | simpa using hcd
-    | (rw [hcd]; simp)
   have hc0 : ∀ I0 : Ideal (𝓞 E),
       FractionalIdeal.absNorm (I0 : FractionalIdeal (nonZeroDivisors (𝓞 E)) E) = (Ideal.absNorm I0 : ℚ) := by
     intro I0
     first
     | exact FractionalIdeal.coeIdeal_absNorm I0
-    | exact FractionalIdeal.absNorm_coeIdeal I0
-    | simp
   have hdn : (Ideal.absNorm (differentIdeal ℤ (𝓞 E)) : ℚ) = |(NumberField.discr E : ℚ)| := by
     first
     | rw [NumberField.absNorm_differentIdeal (K := E)]
-    | rw [NumberField.absNorm_differentIdeal E]
-    | rw [NumberField.absNorm_differentIdeal (K := E) (𝒪 := 𝓞 E)]
-    | rw [NumberField.absNorm_differentIdeal (𝒪 := 𝓞 E)]
-    | rw [NumberField.absNorm_differentIdeal E (𝓞 E)]
     first
     | simp
-    | (push_cast; rfl)
-    | simp [Nat.cast_natAbs, Int.cast_abs]
   obtain ⟨J, hJ⟩ : ∃ J : FractionalIdeal (nonZeroDivisors (𝓞 E)) E, J = FractionalIdeal.spanSingleton (nonZeroDivisors (𝓞 E)) z *
       ((differentIdeal ℤ (𝓞 E) : Ideal (𝓞 E)) : FractionalIdeal (nonZeroDivisors (𝓞 E)) E) := ⟨_, rfl⟩
   have hle : FractionalIdeal.spanSingleton (nonZeroDivisors (𝓞 E)) z ≤
@@ -122,8 +107,6 @@ lemma one_le_abs_norm_mul_abs_discr {E : Type} [Field E] [NumberField E] (z : E)
           first
           | exact mul_le_mul_right' hle _
           | exact mul_le_mul' hle le_rfl
-          | exact FractionalIdeal.mul_le_mul_right hle _
-          | gcongr
       _ = 1 := mul_inv_cancel₀ hDne
   have hJne : J ≠ 0 := by
     rw [hJ]
@@ -139,7 +122,6 @@ lemma one_le_abs_norm_mul_abs_discr {E : Type} [Field E] [NumberField E] (z : E)
     rw [← hI0]
     first
     | exact FractionalIdeal.coeIdeal_bot
-    | simp
   have hN1 : (1 : ℚ) ≤ FractionalIdeal.absNorm J := by
     rw [← hI0, hc0]
     have h0 : Ideal.absNorm I0 ≠ 0 := fun h => hI0ne (Ideal.absNorm_eq_zero_iff.mp h)
@@ -249,9 +231,8 @@ lemma four_mul_card_le_norm_sq_mul_discr (hc : ∀ w : InfinitePlace E, w.IsComp
     intro i
     have hi : integralBasis E i = ((RingOfIntegers.basis E i : 𝓞 E) : E) := by
       first
-      | (rw [NumberField.integralBasis_apply]; rfl)
+      | (rw [NumberField.integralBasis_apply])
       | exact NumberField.integralBasis_apply E i
-      | simp [NumberField.integralBasis_apply]
     rw [hi]
     exact hL _ (hmem _)
   choose n hn using hn0
@@ -259,8 +240,6 @@ lemma four_mul_card_le_norm_sq_mul_discr (hc : ∀ w : InfinitePlace E, w.IsComp
     have hnd : (Algebra.traceForm ℚ E).Nondegenerate := by
       first
       | exact traceForm_nondegenerate ℚ E
-      | exact Algebra.traceForm_nondegenerate ℚ E
-      | exact traceForm_nondegenerate _ _
     refine ⟨∑ i, (n i : ℚ) • LinearMap.BilinForm.dualBasis (Algebra.traceForm ℚ E) hnd
       (integralBasis E) i, fun j => ?_⟩
     have h : ∀ i, Algebra.trace ℚ E (LinearMap.BilinForm.dualBasis (Algebra.traceForm ℚ E) hnd
@@ -269,7 +248,6 @@ lemma four_mul_card_le_norm_sq_mul_discr (hc : ∀ w : InfinitePlace E, w.IsComp
       rw [← Algebra.traceForm_apply]
       first
       | rw [LinearMap.BilinForm.apply_dualBasis_left]
-      | exact LinearMap.BilinForm.apply_dualBasis_left _ _ _ _ _
     rw [Finset.sum_mul, map_sum]
     have h' : ∀ i, Algebra.trace ℚ E ((n i : ℚ) • LinearMap.BilinForm.dualBasis (Algebra.traceForm ℚ E) hnd
         (integralBasis E) i * integralBasis E j) = if j = i then (n i : ℚ) else 0 := by
@@ -299,9 +277,6 @@ lemma four_mul_card_le_norm_sq_mul_discr (hc : ∀ w : InfinitePlace E, w.IsComp
     rw [hψ0, LinearMap.zero_apply, LinearEquiv.symm_apply_apply] at h0
     first
     | exact sub_eq_zero.mp (inner_self_eq_zero.mp h0.symm)
-    | exact sub_eq_zero.mp ((inner_self_eq_zero (𝕜 := ℝ)).mp h0.symm)
-    | (have h1 : ‖y - yz‖ ^ 2 = 0 := by rw [← real_inner_self_eq_norm_sq]; exact h0.symm
-       exact sub_eq_zero.mp (norm_eq_zero.mp (pow_eq_zero_iff two_ne_zero |>.mp h1)))
   have hcod : ∀ a : 𝓞 E, ∃ m : ℤ, Algebra.trace ℚ E (z * (a : E)) = m := by
     intro a
     obtain ⟨m, hm⟩ := hL _ (hmem a)
@@ -323,7 +298,6 @@ lemma four_mul_card_le_norm_sq_mul_discr (hc : ∀ w : InfinitePlace E, w.IsComp
     intro w
     first
     | exact NumberField.InfinitePlace.mult_isComplex ⟨w, hc w⟩
-    | simp [NumberField.InfinitePlace.mult, NumberField.InfinitePlace.not_isReal_iff_isComplex.mpr (hc w)]
   have hprod : |((Algebra.norm ℚ z : ℚ) : ℝ)| = ∏ w : InfinitePlace E, ‖w.embedding z‖ ^ 2 := by
     have h := NumberField.InfinitePlace.prod_eq_abs_norm z
     have h2 : ∏ w : InfinitePlace E, w z ^ w.mult = ∏ w : InfinitePlace E, ‖w.embedding z‖ ^ 2 :=
@@ -331,13 +305,11 @@ lemma four_mul_card_le_norm_sq_mul_discr (hc : ∀ w : InfinitePlace E, w.IsComp
     rw [h2] at h
     first
     | (push_cast at h ⊢; linarith)
-    | exact_mod_cast h.symm
-    | simp [h]
   have hnorm : ‖y‖ ^ 2 = 4 * ∑ w : InfinitePlace E, ‖w.embedding z‖ ^ 2 := by
     rw [hyz, hyzdef, EuclideanSpace.norm_eq, Real.sq_sqrt (Finset.sum_nonneg fun _ _ => sq_nonneg _),
       Finset.mul_sum]
     refine Finset.sum_congr rfl fun w _ => ?_
-    simp [norm_mul, mul_pow] <;> norm_num
+    simp [mul_pow] <;> norm_num
   have hamgm : (∏ w : InfinitePlace E, ‖w.embedding z‖ ^ 2) ^ (1 / (Fintype.card (InfinitePlace E) : ℝ)) ≤
       (∑ w : InfinitePlace E, ‖w.embedding z‖ ^ 2) / (Fintype.card (InfinitePlace E) : ℝ) := by
     have h := Real.geom_mean_le_arith_mean Finset.univ (fun _ : InfinitePlace E => (1 : ℝ))
@@ -366,9 +338,8 @@ lemma four_mul_card_le_norm_sq_mul_discr (hc : ∀ w : InfinitePlace E, w.IsComp
     _ = ‖y‖ ^ 2 * |(discr E : ℝ)| ^ (1 / r) := by
         rw [hnorm]
         first
-        | (field_simp; ring)
+        | (field_simp)
         | field_simp
-        | (rw [← mul_assoc r, mul_div_cancel₀ _ hr']; ring)
 
 end Cov2
 

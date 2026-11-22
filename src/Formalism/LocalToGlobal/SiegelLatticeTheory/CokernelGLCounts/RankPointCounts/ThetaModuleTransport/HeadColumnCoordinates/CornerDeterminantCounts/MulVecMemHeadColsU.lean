@@ -158,7 +158,7 @@ theorem headCols_le_ker_pi (hY : ∀ a b : Fin r, Y.Z a b = Z.Z a.castSucc b.cas
   rw [piRawU_apply, Submodule.Quotient.mk_eq_zero]
   refine ⟨Pi.single a 1, ?_⟩
   funext i
-  simp [Matrix.mulVecLin_apply, Matrix.mulVec, dotProduct, Pi.single_apply, hY]
+  simp [Matrix.mulVec, dotProduct, Pi.single_apply, hY]
 
 end Maps
 
@@ -194,7 +194,7 @@ theorem ellU_e : ellU hY hal (eCl Z.Z) = 1 := by
   rw [ellU_mk]
   have h0 : (fun i : Fin r => (Pi.single (Fin.last r) (1 : M.R) : Fin (r + 1) → M.R) i.castSucc) = 0 := by
     funext i
-    simp [Pi.single_apply, (Fin.castSucc_lt_last i).ne]
+    simp [(Fin.castSucc_lt_last i).ne]
   rw [h0, map_zero, sub_zero]
   simp
 
@@ -202,7 +202,7 @@ theorem piU_e : piU hY (eCl Z.Z) = 0 := by
   unfold eCl
   have h0 : (fun i : Fin r => (Pi.single (Fin.last r) (1 : M.R) : Fin (r + 1) → M.R) i.castSucc) = 0 := by
     funext i
-    simp [Pi.single_apply, (Fin.castSucc_lt_last i).ne]
+    simp [(Fin.castSucc_lt_last i).ne]
   rw [piU_mk, h0, Submodule.Quotient.mk_zero]
 
 theorem piU_surj : Function.Surjective (piU hY) := by

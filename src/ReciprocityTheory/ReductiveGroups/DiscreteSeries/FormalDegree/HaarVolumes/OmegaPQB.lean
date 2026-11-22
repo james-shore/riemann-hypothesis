@@ -15,10 +15,10 @@ def sg (ε : Fin n → Bool) (a : Fin n) : ℂ := if ε a then 1 else -1
 
 theorem Jpq_eq : Formalism.UG.Jpq P Q = Matrix.diagonal (Sum.elim (fun _ => (1 : ℂ)) (fun _ => -1)) := by
   ext (i | i) (j | j)
-  · by_cases h : i = j <;> simp [Formalism.UG.Jpq, Matrix.one_apply, Matrix.diagonal_apply, h]
-  · simp [Formalism.UG.Jpq, Matrix.diagonal_apply]
-  · simp [Formalism.UG.Jpq, Matrix.diagonal_apply]
-  · by_cases h : i = j <;> simp [Formalism.UG.Jpq, Matrix.one_apply, Matrix.diagonal_apply, h]
+  · by_cases h : i = j <;> simp [Formalism.UG.Jpq, h]
+  · simp [Formalism.UG.Jpq]
+  · simp [Formalism.UG.Jpq]
+  · by_cases h : i = j <;> simp [Formalism.UG.Jpq, h]
 
 theorem mem_lieU_iff (X : Matrix (Fin P ⊕ Fin Q) (Fin P ⊕ Fin Q) ℂ) :
     X ∈ Formalism.BasicNotions.lieU P Q ↔ ∀ i j, star (X j i) * Sum.elim (fun _ => (1 : ℂ)) (fun _ => -1) j +
@@ -71,7 +71,7 @@ theorem gMat_smul {ε : Fin n → Bool} (c : ℝ) (s : GCo ε) : gMat (c • s) 
   simp only [gMat, kMat, pmat, Matrix.add_apply, Matrix.smul_apply, Prod.smul_fst, Prod.smul_snd,
     Pi.smul_apply]
   split_ifs <;> (try simp only [smul_eq_mul, Complex.real_smul, Complex.ofReal_mul, star_mul',
-    Complex.star_def, map_mul, Complex.conj_ofReal]) <;> ring
+    Complex.star_def, Complex.conj_ofReal]) <;> ring
 
 def coordOf {ε : Fin n → Bool} (Y : Matrix (Fin n) (Fin n) ℂ) : GCo ε :=
   ((fun a => (Y a a).im, fun k => Y k.1.1 k.1.2), fun p => Y p.1.1 p.1.2)

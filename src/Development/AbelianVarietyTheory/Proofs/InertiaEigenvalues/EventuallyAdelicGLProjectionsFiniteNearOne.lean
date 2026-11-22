@@ -22,7 +22,7 @@ theorem prS_finGL (S : Finset (HeightOneSpectrum (𝓞 E))) (a : ℕ) (k : GL (F
   generalize idemSf S = J at hI ⊢
   simp only [Matrix.one_apply]
   split_ifs <;> simp only [mul_one, mul_zero, map_zero, map_sub, map_add, mul_add, mul_sub, hI, sub_zero,
-    zero_sub, zero_add] <;> ring
+    zero_add] <;> ring
 
 theorem prO_finGL (S : Finset (HeightOneSpectrum (𝓞 E))) (a : ℕ) (k : GL (Fin a) (Af E)) :
     prO S a (finGL E a k) = finGL E a (prOf S a k) := by
@@ -38,7 +38,7 @@ theorem prO_finGL (S : Finset (HeightOneSpectrum (𝓞 E))) (a : ℕ) (k : GL (F
   generalize (1 - idemSf S) = J at hI ⊢
   simp only [Matrix.one_apply]
   split_ifs <;> simp only [mul_one, mul_zero, map_zero, map_sub, map_add, mul_add, mul_sub, hI, sub_zero,
-    zero_sub, zero_add] <;> ring
+    zero_add] <;> ring
 
 theorem continuous_cornerGL_idemHom (a : ℕ) (e : Af E) (he : IsIdempotentElem e) :
     Continuous (cornerGL a (idemHom e he)) := by

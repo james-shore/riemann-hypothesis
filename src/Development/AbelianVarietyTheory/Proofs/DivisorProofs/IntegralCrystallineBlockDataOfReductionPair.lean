@@ -33,7 +33,7 @@ theorem integralBlock_of_blockPair : ∀ (E Ω : Type) [Field E] [NumberField E]
       (((MulAut.conj C⁻¹).toMonoidHom x : GL (Fin m) (PadicAlgCl l)) : Matrix (Fin m) (Fin m) (PadicAlgCl l)) =
         ((C⁻¹ * x * C : GL (Fin m) (PadicAlgCl l)) : Matrix (Fin m) (Fin m) (PadicAlgCl l)) := by
     intro m C x
-    simp [MulAut.conj_apply]
+    simp
   obtain ⟨r', hr'⟩ := (GlobalTheory.IntDescend.descend l LL (G E Ω)).1 n ((MulAut.conj A⁻¹).toMonoidHom.comp r) (fun g i j => by
     rw [MonoidHom.comp_apply, cj]
     refine ⟨?_, hAr g i j⟩

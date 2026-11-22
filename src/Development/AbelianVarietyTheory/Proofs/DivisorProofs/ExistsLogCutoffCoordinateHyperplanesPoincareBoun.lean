@@ -74,8 +74,7 @@ private lemma exists_bound_fderiv_logCutoff_mul_norm_mul_log :
   have hlog : Real.log ‖z‖ = (x - 2) * ((k : ℝ) + 1) := by
     simp only [x]; field_simp; ring
   have hNc : ‖N c‖ ≤ ‖c‖ := (N.le_opNorm c).trans (by simpa using mul_le_mul_of_nonneg_right hN (norm_nonneg c))
-  simp only [ContinuousLinearMap.smul_apply, ContinuousLinearMap.coe_smul', Pi.smul_apply,
-    smul_eq_mul, Real.norm_eq_abs]
+  simp only [ContinuousLinearMap.smul_apply, smul_eq_mul, Real.norm_eq_abs]
   rw [hlog]
   have e : |deriv Real.smoothTransition x * (‖z‖⁻¹ / ((k : ℝ) + 1)) * N c| *
       (‖z‖ * |(x - 2) * ((k : ℝ) + 1)|) = |deriv Real.smoothTransition x| * |x - 2| * |N c| := by

@@ -24,7 +24,7 @@ private theorem UpperTheory.V.FW.descZ_mul {k F G : Type} [CommRing k] [CommRing
   | single g n =>
     ext h
     simp only [toK, MonoidAlgebra.mapRingHom_single, eq_intCast, MonoidAlgebra.coeff_map,
-      Finsupp.mapRange_apply, MonoidAlgebra.mul_single_apply, AddMonoidHom.coe_coe]
+      Finsupp.mapRange_apply, MonoidAlgebra.mul_single_apply]
     rw [← zsmul_eq_mul', map_zsmul, zsmul_eq_mul']
 
 private theorem UpperTheory.V.FW.descZ_ker (l : ℕ) {G : Type} [CommGroup G] (y : MonoidAlgebra ℤ G)

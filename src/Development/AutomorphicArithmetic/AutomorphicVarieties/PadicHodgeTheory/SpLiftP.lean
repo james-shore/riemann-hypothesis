@@ -103,7 +103,7 @@ private theorem adj_adj (X : M4 R) : adj (adj X) = X := by
 
 private theorem adj_add (X Y : M4 R) : adj (X + Y) = adj X + adj Y := by
   ext i j
-  simp [adj_apply, mul_add]
+  simp [adj_apply]
 
 private theorem adj_sub (X Y : M4 R) : adj (X - Y) = adj X - adj Y := by
   ext i j
@@ -116,7 +116,7 @@ private theorem adj_smul (a : R) (X : M4 R) : adj (a • X) = a • adj X := by
 
 private theorem adj_diag (d : Fin 4 → R) : adj (Matrix.diagonal d) = Matrix.diagonal fun i => d i.rev := by
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev, Matrix.diagonal_apply]
+  fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev]
 
 private theorem adj_one : adj (1 : M4 R) = 1 := adj_diag _
 
@@ -220,7 +220,7 @@ private theorem diagAll [Infinite E] {H : Type} [Group H] (χ : Fin 4 → H →*
         simp only [Matrix.map_apply, RingHom.coe_coe, Finsupp.linearCombination_single, Matrix.smul_apply,
           map_smul] at this ⊢
         rw [this]
-        by_cases h : i = j <;> simp [Matrix.diagonal_apply, h])
+        by_cases h : i = j <;> simp [h])
   have hXc : ∀ (y : H →₀ E) g, r g * Finsupp.linearCombination E (fun g => r g) y =
       Finsupp.linearCombination E (fun g => r g) y * r g := fun y g => by
     induction y using Finsupp.induction_linear with

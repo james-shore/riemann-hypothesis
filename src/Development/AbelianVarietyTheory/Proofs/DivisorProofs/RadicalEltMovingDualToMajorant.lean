@@ -73,7 +73,7 @@ theorem radical_elt_moving_dual_to_majorant (n p : ℕ) (J θ : Matrix (Fin n) (
       simp only [conjTranspose_add, conjTranspose_sub, conjTranspose_mul, conjTranspose_one,
         conjTranspose_conjTranspose, hJ, Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub,
         Matrix.sub_mul, Matrix.mul_assoc, Matrix.one_mul, Matrix.mul_one, tXX, tXD, tDX,
-        hXX', hXD', hDX', Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]
+        Matrix.mul_zero, add_zero, sub_zero]
       abel
     rw [hexp, hkey]; simp
   have huX : u * X₂ = X₂ := by

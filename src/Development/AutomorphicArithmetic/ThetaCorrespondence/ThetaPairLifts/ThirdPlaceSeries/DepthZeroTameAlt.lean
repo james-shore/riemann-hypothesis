@@ -45,7 +45,7 @@ theorem conjDualParamF_alt : ∀ (hL : _root_.UpperTheory.Zero.LLC.RecTExists) (
   obtain ⟨b, b', h1, h2, h3, h4⟩ := _root_.UpperTheory.One.M.New.field hL hr
     (_root_.GlobalTheory.CuspRep.ParLawsT.isRecT_locRecT hL (D.nd.plOm.2 w')) c (D.host.conj : D.host.E →+* D.host.E) κ
     (fun z => (hA z).symm) hc hκ hκE n π₁ σ' e he (good_contra σ π₁ hE hg)
-  first | (have hOpn := UpperTheory.One.M.opn _ (hr); obtain ⟨_, _, _, H⟩ := hOpn) | obtain ⟨_, _, _, -, H⟩ := hr
+  first | (have hOpn := UpperTheory.One.M.opn _ (hr); obtain ⟨_, _, _, H⟩ := hOpn)
   exact ⟨b, b', h1.trans (_root_.UpperTheory.One.M.LawsM.dual H n σ π₁ hg hE), h2, h3, h4⟩
 end UpperTheory.One.M
 end

@@ -168,7 +168,7 @@ theorem card_le_rank (G : Top.Given) {r : ℕ} {U : ∀ σ : c.F →+* ℂ, Unf 
     intro t i j hij
     have h1 := hu t hij
     have h2 : (0 : ℤ) < ((τ + k₀ : ℕ) : ℤ) := by exact_mod_cast hτ
-    simp only [hv, Pi.smul_apply, nsmul_eq_mul]
+    simp only [hv, nsmul_eq_mul]
     exact mul_lt_mul_of_pos_left h1 h2
   have key : ∀ j i, ∃ g ∈ GlobalTheory.AllWt.cuspOn U Z (GlobalTheory.AllWt.wtOf Dw v 0), evC h Z g = trOf Rd v (f' j * f i) := by
     intro j i

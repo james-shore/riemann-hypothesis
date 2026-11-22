@@ -42,7 +42,7 @@ lemma e_gen (a : Fin r) : Fr.e a ∈ Gen Fr L := by
     · exact M.L.O.zero_mem
   · rw [h2]; exact M.L.O.zero_mem
   · simp only [FrameD.prF, h1, h2, ite_smul, one_smul, zero_smul, Finset.sum_ite_eq, Finset.mem_univ,
-      if_true, Finset.sum_const_zero, sub_self, sub_zero, ZeroMemClass.coe_zero]
+      if_true, Finset.sum_const_zero, sub_self, ZeroMemClass.coe_zero]
   · rw [map_zero]; exact L.zero_mem
 
 lemma es_gen (k : Fin r) : Fr.es k ∈ Gen Fr L := by

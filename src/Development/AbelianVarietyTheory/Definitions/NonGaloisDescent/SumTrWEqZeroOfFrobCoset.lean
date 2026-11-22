@@ -53,7 +53,7 @@ theorem isSemisimple_apply (ρ : Representation ℂ (Weil h) V) (hρ : IsSmooth 
   refine End.isSemisimple_of_squarefree_aeval_eq_zero (p := p)
     (Separable.squarefree (separable_prod_X_sub_C_iff'.2 fun _ _ _ _ e => e)) ?_
   have hcp : ∀ g, Commute (ρ g) (aeval T p) := fun g => by
-    simp only [p, map_prod]
+    simp only [p]
     rw [aeval_eq_sum_range]
     exact Commute.sum_right _ _ _ fun i _ => ((hc g).pow_right i).smul_right _
   let K : Subrepresentation ρ := ⟨LinearMap.ker (aeval T p), fun g v hv => by

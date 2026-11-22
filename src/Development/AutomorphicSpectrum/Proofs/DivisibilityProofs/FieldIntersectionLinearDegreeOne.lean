@@ -29,7 +29,7 @@ variable [DecidableEq σ]
 theorem linForm_single (p : σ) : linForm (Pi.single p (1 : F)) = (X p : MvPolynomial σ F) := by
   rw [linForm_apply, Finset.sum_eq_single p]
   · simp
-  · intro b _ hb; simp [Pi.single_apply, hb]
+  · intro b _ hb; simp [hb]
   · simp
 
 theorem eq_sum_single (c : σ → F) : c = ∑ p, c p • (Pi.single p (1 : F) : σ → F) := by
@@ -141,7 +141,7 @@ def quotEquiv :
       change toY U (linForm (sec U t)) = X t
       have h : (qb U).equivFun (qb U t) = Pi.single t 1 := by
         ext j
-        simp [Module.Basis.equivFun_apply, Finsupp.single_apply, Pi.single_apply, eq_comm]
+        simp [Pi.single_apply, eq_comm]
       rw [toY_linForm, mkQ_sec, h, linForm_single])
     (by
       apply Ideal.Quotient.algHom_ext

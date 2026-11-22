@@ -53,10 +53,10 @@ private theorem map_reducible_three_dim {G R S : Type} [Group G] [CommRing R] [C
   · apply Units.ext
     ext i j
     simp only [MonoidHom.comp_apply, GG.map, r0, MonoidHom.coe_mk, OneHom.coe_mk,
-      SemidirectProduct.map_left, GeneralLinearGroup.map_apply, tor_val, RingHom.mapMatrix_apply]
+      SemidirectProduct.map_left, GeneralLinearGroup.map_apply, tor_val]
     by_cases hij : i = j
     · subst hij
-      simp only [Matrix.map_apply, Matrix.diagonal_apply_eq]
+      simp only [Matrix.diagonal_apply_eq]
       exact congrArg Units.val (map_zpow (Units.map (f : R →* S)) (Ψ g) (wt1 i))
     · simp [Matrix.diagonal_apply_ne _ hij]
   · simp [GG.map, r0]

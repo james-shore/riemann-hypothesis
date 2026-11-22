@@ -25,7 +25,7 @@ private theorem lt_of_classC0' {R : Ranks} (H : Host R) {p : ℕ} {y : ℝ} (hp 
       Nat.factorization_eq_zero_of_not_dvd
         (fun h => h2 ((Nat.prime_dvd_prime_iff_eq Nat.prime_two hp).1 h).symm)
     simp only [GlobalTheoryTheory.kronSym, hodd, pow_zero, Nat.div_one, mul_one] at hk
-    split_ifs at hc' <;> simp_all
+    split_ifs at hc'
 
 theorem UpperTheory.BernoulliSumsFrobeniusOrbits.topsChoiceH :
     ∀ eps C8 : ℝ, 0 < eps → eps < 1 / 52 → ∃ Cb x0 : ℝ, 0 < Cb ∧ ∀ (s : Scale) (R : Ranks) (H : Host R), s.eps = eps → x0 ≤ s.x →

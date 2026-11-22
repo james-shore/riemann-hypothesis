@@ -35,7 +35,7 @@ theorem psiIn_iff_val : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing R]
     rw [Category.id_comp]
     show (toUnit (TK R) ≫ D.c χ).left = _
     rw [Over.comp_left]
-    congr 1 <;> simp
+    congr 1
   have hj : (⊤ : (Spec (CommRingCat.of R)).Opens) ≤ (D.c χ).left ⁻¹ᵁ D.P.L.U (j PUnit.unit) := by
     have := hJ.2 (D.c χ).left (Over.w (D.c χ))
     show ⊤ ≤ (D.c χ).left ⁻¹ᵁ D.P.L.U (J (𝟙 _ ≫ D.xK χ))

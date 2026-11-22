@@ -87,7 +87,7 @@ theorem card_lker (M : Matrix (Fin n) (Fin n) k) :
   have h4 := Module.natCard_eq_pow_finrank (K := k) (V := LinearMap.ker Mᵀ.mulVecLin)
   rw [h3, ← Nat.card_eq_fintype_card, ← h4]
   refine Nat.card_congr (Equiv.subtypeEquivRight fun x => ?_)
-  simp [LinearMap.mem_ker, Matrix.mulVec_transpose]
+  simp [LinearMap.mem_ker]
 
 theorem count_sV (C D : Matrix (Fin n) (Fin n) k)
     (h : ∀ x : Fin n → k, x ᵥ* C = 0 → x ᵥ* D = 0 → x = 0)

@@ -103,8 +103,8 @@ theorem exists_transport {E : Type} [Field E] [NumberField E] {Ω W J C X : Type
     · subst hij
       rw [hco _ i 1 (by simp), F.repr_self]
       simp
-    · rw [hco _ i 0 (by simp [Finsupp.single_apply, Ne.symm hij]), F.repr_self]
-      simp [Finsupp.single_apply, Ne.symm hij]
+    · rw [hco _ i 0 (by simp [Ne.symm hij]), F.repr_self]
+      simp [Ne.symm hij]
   · intro a h h'
     have key : ∀ i, cd ⟨_, h'⟩ i = ∑ j, m a i j * cd h j := by
       intro i

@@ -42,7 +42,7 @@ theorem pderiv_prim (ω : τ → MvPowerSeries τ k)
       rw [if_neg (by omega), h2, h1]
       push_cast
       ring
-    · have h1 : n w = m w := by simp [hn, Finsupp.single_apply, hw, Ne.symm hw]
+    · have h1 : n w = m w := by simp [hn, hw]
       by_cases hm : m w = 0
       · rw [if_pos (by rw [h1, hm]), h1, hm]
         simp
@@ -54,7 +54,7 @@ theorem pderiv_prim (ω : τ → MvPowerSeries τ k)
           rw [hn]; exact tsub_add_eq_add_tsub hle
         have e2 : m - Finsupp.single w 1 + Finsupp.single w 1 = m := tsub_add_cancel_of_le hle
         have e3 : (m - Finsupp.single w 1 : τ →₀ ℕ) v = m v := by
-          simp [Finsupp.single_apply, hw, Ne.symm hw]
+          simp [Ne.symm hw]
         have e4' : (m - Finsupp.single w 1 : τ →₀ ℕ) w + 1 = m w := by
           rw [Finsupp.tsub_apply, Finsupp.single_eq_same]; omega
         have e4 : ((m - Finsupp.single w 1 : τ →₀ ℕ) w : k) + 1 = (m w : k) := by

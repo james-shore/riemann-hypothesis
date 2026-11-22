@@ -56,7 +56,7 @@ theorem CapelliMinorMembership.key_term {X : Fields} (A : Amb X) {a b : ℕ} {p 
 theorem CapelliMinorMembership.collapse {K κ B C : Type} [AddCommMonoid K] [Fintype κ] [Fintype B] [DecidableEq B]
     [Fintype C] [DecidableEq C] (g : κ → K) (β₁ : B) (α₁ : C) :
     ∑ i, ∑ β : B, ∑ α : C, (if α = α₁ then (if β = β₁ then g i else 0) else 0) = ∑ i, g i := by
-  simp [Finset.sum_ite_eq', Finset.sum_ite_eq]
+  simp [Finset.sum_ite_eq']
 
 theorem kerFrame_of (h : EigenFrameDual) : KerFrame := by
   intro X A a b N N' L p _ ι hd hinj hcD hn
@@ -77,7 +77,6 @@ theorem kerFrame_of (h : EigenFrameDual) : KerFrame := by
     · rw [norm_mul, norm_mul, norm_inv, CapelliMinorMembership.norm_natCast p hn₀, inv_one, mul_one]
       first
       | exact mul_le_one₀ (hcD _) (norm_nonneg _) (hr1 _ _)
-      | nlinarith [norm_nonneg (ι (A.cD k.1)), norm_nonneg (r k.1 j.1), hcD k.1, hr1 k.1 j.1]
     · simp
   · intro i k
     obtain ⟨τ₁, β₁, α₁⟩ := i

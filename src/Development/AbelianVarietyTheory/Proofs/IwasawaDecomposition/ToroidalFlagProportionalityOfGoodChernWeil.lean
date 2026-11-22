@@ -23,6 +23,6 @@ theorem mumfordProportionality_of_goodChernWeil (h : GlobalTheory.Published.Good
     ((∑ x : Root Dw.mult, MvPolynomial.C (-(GlobalTheory.AllWt.exOf Dw la 0 (some x) : ℝ)) * MvPolynomial.X x) ^ (Φ.C k).Y.dim)
   rw [GlobalTheory.Member.selfInter_Lw_interPoly (Φ.C k) la]
   have key := hasChernIntegral_unique (h.flag hf hg hH hG hR) (hint la R hR)
-  convert key using 3 <;> exact Subsingleton.elim _ _
+  convert key using 3
 
 end GlobalTheory.Proportionality

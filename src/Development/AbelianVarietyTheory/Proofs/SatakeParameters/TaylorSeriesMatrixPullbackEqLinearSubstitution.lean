@@ -15,7 +15,7 @@ theorem pull_eq_linear (D : D7) (T : TaylorLogMetric.Tor D) (hT : ∀ τ, T.emb 
   funext τ i j
   simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Matrix.map_apply, Matrix.of_apply, hT,
     Fintype.sum_prod_type, pullMat]
-  simp only [ite_mul, zero_mul, Finset.sum_ite_eq, Finset.mem_univ, if_true, Finset.sum_mul]
+  simp only [ite_mul, zero_mul, Finset.sum_mul]
   rw [Finset.sum_comm]
   rw [Fintype.sum_eq_single τ (fun x hx => by simp [Ne.symm hx])]
   simp only [if_true]

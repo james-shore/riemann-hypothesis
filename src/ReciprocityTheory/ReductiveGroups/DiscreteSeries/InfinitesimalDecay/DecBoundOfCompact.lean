@@ -32,7 +32,7 @@ theorem hs_eq_of_compact {n : ℕ} {ε : Fin n → Bool} (hpq : pOf ε = 0 ∨ q
         simpa using h0
       have hd : (Matrix.diagonal fun a => if ε a = true then (1 : ℂ) else -1) = -1 := by
         ext i j
-        by_cases h : i = j <;> simp [Matrix.diagonal_apply, Matrix.one_apply, hall, h]
+        by_cases h : i = j <;> simp [hall, h]
       rw [hd] at h2
       simpa using h2
     · have hall : ∀ a, ε a = true := by
@@ -41,7 +41,7 @@ theorem hs_eq_of_compact {n : ℕ} {ε : Fin n → Bool} (hpq : pOf ε = 0 ∨ q
         simpa using h0
       have hd : (Matrix.diagonal fun a => if ε a = true then (1 : ℂ) else -1) = 1 := by
         ext i j
-        by_cases h : i = j <;> simp [Matrix.diagonal_apply, Matrix.one_apply, hall, h]
+        by_cases h : i = j <;> simp [Matrix.one_apply, hall, h]
       rw [hd] at h2
       simpa using h2
   delta S7.hs

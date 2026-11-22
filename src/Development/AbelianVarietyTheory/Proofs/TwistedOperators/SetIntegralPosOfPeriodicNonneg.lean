@@ -252,7 +252,7 @@ theorem _root_.GlobalTheory.exists_summation_kernel_periodic : ∀ (G : Type) [A
     rw [← integral_finset_sum]
     · congr 1
       funext y
-      simp only [hkdef, map_sum, map_mul, Complex.conj_conj, Finset.mul_sum]
+      simp only [hkdef, map_sum, map_mul, Finset.mul_sum]
       exact Finset.sum_congr rfl fun a _ => by ring
     · intro a _
       exact Integrable.of_bound (by fun_prop) (‖starRingEnd ℂ (d a)‖ * M)

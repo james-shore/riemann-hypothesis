@@ -8,7 +8,7 @@ open Matrix NumberField Module
 theorem sc_scale {K : Type} [Field K] [NumberField K] {r : ℕ} (L : Submodule (𝓞 K) (Fin r → K))
     (hL : Submodule.span K (L : Set (Fin r → K)) = ⊤) (x : Fin r → K) :
     ∃ d : 𝓞 K, d ≠ 0 ∧ d • x ∈ L := by
-  first | exact Bl.general_b_fact_second.goal1 .. | (apply Bl.general_b_fact_second.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_second.goal1 .. | (apply Bl.general_b_fact_second.goal1 <;> assumption)
 
 theorem sc_li_scale {K V ι : Type*} [Field K] [AddCommGroup V] [Module K V] {v : ι → V}
     (hv : LinearIndependent K v) (a : ι → K) (ha : ∀ i, a i ≠ 0) :

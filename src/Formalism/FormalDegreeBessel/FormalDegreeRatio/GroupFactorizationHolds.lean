@@ -95,7 +95,7 @@ theorem fvec_apply_lt {k r : ℕ} (z : Fin (2 * r + k + 1) → ℂ) (hz : inWb k
     fvec k r z c i = if c.val = i.val then 1 else 0 := by
   unfold fvec
   split_ifs with hc h1 h1
-  · simp [bvec, eI, Pi.single_apply, Fin.ext_iff, h1]
+  · simp [bvec, eI, Pi.single_apply, h1]
   · simp [bvec, eI, Pi.single_apply, Fin.ext_iff] <;> omega
   · omega
   · exact hz i (Or.inl hi)
@@ -123,14 +123,14 @@ theorem N_F {k r : ℕ} {z : Fin (2 * r + k + 1) → ℂ} (hz : inWb k r z)
       change fvec k r z c i = _
       rw [fvec_apply_lt z hz c i hi]
       simp [Fin.ext_iff]
-    simp only [hF, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq',
+    simp only [hF, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq',
       Finset.mem_univ, if_true]
     simp [Uof, hi, eI]
   · have hF : ∀ c, Fm k r z i c = if c = Fin.last r then z i else 0 := fun c => by
       change fvec k r z c i = _
       rw [fvec_apply_ge z c i (by omega)]
       simp [Fin.ext_iff]
-    simp only [hF, ite_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq',
+    simp only [hF, ite_mul, zero_mul, Finset.sum_ite_eq',
       Finset.mem_univ, if_true]
     have hU : Uof k r z m (Fin.last r) a = if Fin.last r = a then 1 else 0 := by simp [Uof]
     rw [hU]

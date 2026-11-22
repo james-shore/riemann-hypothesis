@@ -32,7 +32,7 @@ def nbdMap (l : Ω[A⁄R] →ₗ[A] R') : TrivSqZeroExt A Ω[A⁄R] →ₐ[R] Tr
   { toFun := fun c ↦ TrivSqZeroExt.inl (algebraMap A R' c.fst) + TrivSqZeroExt.inr (l c.snd)
     map_one' := by ext <;> simp
     map_zero' := by ext <;> simp
-    map_add' := fun a b ↦ by ext <;> simp <;> ring
+    map_add' := fun a b ↦ by ext <;> simp
     map_mul' := fun a b ↦ by
       have hop : ∀ (b : A) (ω : Ω[A⁄R]), MulOpposite.op b • ω = b • ω := fun _ _ ↦ rfl
       ext

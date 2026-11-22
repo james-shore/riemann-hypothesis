@@ -21,7 +21,7 @@ theorem vecMulVec_sum_zsmul {E : Type} [Field E] {n d kx ky : ℕ} (ex : Fin kx 
     Matrix.vecMulVec (∑ i, c i • ex i) (∑ j, c' j • fy j) =
       ∑ m : Fin kx × Fin ky, (c m.1 * c' m.2) • Matrix.vecMulVec (ex m.1) (fy m.2) := by
   ext a b
-  simp only [Matrix.vecMulVec_apply, Finset.sum_apply, Pi.smul_apply, Matrix.sum_apply, Matrix.smul_apply,
+  simp only [Matrix.vecMulVec_apply, Finset.sum_apply, Matrix.sum_apply, Matrix.smul_apply,
     zsmul_eq_mul]
   rw [Finset.sum_mul_sum, Fintype.sum_prod_type]
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_

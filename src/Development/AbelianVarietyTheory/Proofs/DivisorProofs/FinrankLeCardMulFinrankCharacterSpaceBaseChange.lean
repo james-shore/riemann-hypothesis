@@ -53,7 +53,7 @@ theorem finrank_le_card_mul_finrank_eig_baseChange : ∀ (K L Γ R W : Type) [Fi
   let A : H → (Vm →ₗ[K] V) := fun h =>
     { toFun := fun x => ⟨(x : R) * act h u, hVm h x x.2⟩
       map_add' := by intro x y; ext; simp [add_mul]
-      map_smul' := by intro c x; ext; simp [smul_mul_assoc] }
+      map_smul' := by intro c x; ext; simp }
   have hA : ∀ h y, ιV ((A h).baseChange L y) = ιm y * ((1 : L) ⊗ₜ act h u) := by
     intro h y
     induction y using TensorProduct.induction_on with

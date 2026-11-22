@@ -139,7 +139,7 @@ theorem not_kltAt_of_local : ∀ (X : Scheme.{0}) [IsIntegral X] [IsLocallyNoeth
     have e1 : (⟨a₁, ha₁⟩ : locRing x) ≠ 0 := fun e => ha0 (congrArg Subtype.val e)
     have e2 : (⟨b₁, hb₁⟩ : locRing x) ≠ 0 := fun e => hb0 (congrArg Subtype.val e)
     have e3 : (⟨(fD : X.functionField), hfD⟩ : locRing x) ≠ 0 := fun e => fD.ne_zero (congrArg Subtype.val e)
-    simp [φ, Finsupp.single_apply, e1, e2, e3]
+    simp [φ, e1, e2, e3]
   have hord (E : Place (Cartier.constFn p)) : (E.ord a₁ : ℚ) - E.ord b₁ = E.ord gG - m * E.ord F0 := by
     have h1 : E.ord a₁ = E.ord q + E.ord b₁ := by rw [← hab, E.ord_mul hq0 hb0]
     have h2 : E.ord q = E.ord gG - m * E.ord F0 := by
@@ -160,13 +160,13 @@ theorem not_kltAt_of_local : ∀ (X : Scheme.{0}) [IsIntegral X] [IsLocallyNoeth
   have hs0 : (g : X.functionField) * (aX : X.functionField) ^ l ≠ 0 :=
     mul_ne_zero g.ne_zero (pow_ne_zero _ aX.ne_zero)
   have hψ0 : Finsupp.mapDomain (fun g : locRing x => (g : X.functionField)) φ 0 = 0 := by
-    rw [hmap]; simp [Finsupp.single_apply, ha0, hb0, fD.ne_zero]
+    rw [hmap]; simp [ha0, hb0, fD.ne_zero]
 
   have hK2 : Klt (Cartier.constFn p) n (locRing x) ω
       (Finsupp.mapDomain (fun g : locRing x => (g : X.functionField)) φ +
         Finsupp.single ((g : X.functionField) * (aX : X.functionField) ^ l) (h / l)) := by
     refine ⟨hω0, ?_, fun E hE => ?_⟩
-    · rw [Finsupp.add_apply, hψ0]; simp [Finsupp.single_apply, hs0]
+    · rw [Finsupp.add_apply, hψ0]; simp
     · obtain ⟨E', rfl⟩ := (placeEquiv p).surjective E
       have h1 := hKlt.lt_disc hE
       rw [disc_placeEquiv, hdisc₂ E'] at h1

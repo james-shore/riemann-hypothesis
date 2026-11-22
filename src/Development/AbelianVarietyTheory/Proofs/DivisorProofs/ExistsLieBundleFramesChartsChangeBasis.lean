@@ -126,9 +126,8 @@ theorem isFrame_of_rep (M : MChart Y) (f : Fin M.n → Γ(GlobalTheory.LieVB.Lie
     intro a
     funext i
     simp only [R, T, Function.comp_apply, Module.Basis.equivFun_apply, VB.IsFrame.dual_basis_repr,
-      Fintype.linearCombination_apply, VB.dualApp_sum, LinearMap.sum_apply, VB.dualApp_smul, LinearMap.smul_apply,
-      VB.dualApp_res, Module.Basis.equivFun_symm_apply, map_sum, map_smul, Finset.sum_apply, Pi.smul_apply,
-      smul_eq_mul, GlobalTheory.LB.resG_self]
+      Fintype.linearCombination_apply, VB.dualApp_res, Module.Basis.equivFun_symm_apply, map_sum, map_smul, Finset.sum_apply, Pi.smul_apply,
+      smul_eq_mul]
     refine Finset.sum_congr rfl fun k _ => ?_
     rw [hf k W hW _ _, GlobalTheory.Twist.resM_self]
     rfl

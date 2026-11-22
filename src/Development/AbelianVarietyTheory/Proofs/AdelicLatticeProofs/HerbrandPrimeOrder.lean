@@ -74,7 +74,7 @@ theorem herbPhi_stable (p : ℕ) (A : Type) [CommGroup A] (σ : A →* A) (hp : 
     rw [Subgroup.relIndex]
     congr 1
     ext x
-    simp only [Subgroup.mem_subgroupOf, Subgroup.mem_map, MonoidHom.mem_range]
+    simp only [Subgroup.mem_subgroupOf, Subgroup.mem_map]
     constructor
     · rintro ⟨y, hy, e⟩
       exact ⟨⟨y, hy⟩, Subtype.ext e⟩

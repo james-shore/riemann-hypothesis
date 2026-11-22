@@ -20,8 +20,6 @@ theorem exists_retraction (M0 L : Submodule (𝓞 E) V) (hL : L.FG) (h : IsPrimi
   | exact @_root_.GlobalTheory.ProjectiveRetraction.exists_retraction
   | exact _root_.GlobalTheory.ProjectiveRetraction.exists_retraction
   | (apply _root_.GlobalTheory.ProjectiveRetraction.exists_retraction <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ProjectiveRetraction.exists_retraction <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ProjectiveRetraction.exists_retraction <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ProjectiveRetraction.exists_retraction ..)
 
 theorem exists_extend_fun (L : Submodule (𝓞 E) V) (hL : Submodule.span E (L : Set V) = ⊤)

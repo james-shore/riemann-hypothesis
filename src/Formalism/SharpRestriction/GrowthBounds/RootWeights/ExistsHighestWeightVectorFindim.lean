@@ -181,7 +181,7 @@ private theorem iSup_weightSp_restrictStableOperators_eq_univ {n : ℕ} {K V : T
     weight_components_mem_of_sum_mem E W (fun a => h a a) _ f le_rfl hf (by rw [hfx]; exact x.2)
   have hx' : x = ∑ mu ∈ f.support, (⟨f mu, hmem mu⟩ : W) := by
     apply Subtype.ext
-    simp only [Submodule.coe_sum, Submodule.coe_mk]
+    simp only [Submodule.coe_sum]
     rw [← hfx, Finsupp.sum]
   rw [hx']
   exact Submodule.sum_mem _ fun mu _ => Submodule.mem_iSup_of_mem mu ((mem_weightSp_restrict_iff E W h mu _).2 (hf mu))
@@ -271,7 +271,7 @@ private theorem restrictStableOperators_list_prod_sub_apply_coe {n : ℕ} {K V :
         (((l.map fun j : ℕ => restrictStableOperators E W h a a - (j : K) • (1 : Module.End K W)).prod) x)) : W) : V) =
       (E a a - (j : K) • (1 : Module.End K V)) (((l.map fun j : ℕ => E a a - (j : K) • (1 : Module.End K V)).prod) x)
     rw [← ih]
-    simp [restrictStableOperators_apply_coe]
+    simp
 
 theorem complete_reducibility_of_semisimple (D : Formalism.BasicNotions.D7) (h2 : adm2 D) : CompleteReducibilityIsotypic := by
   intro K V _ _ _ _ n E hE

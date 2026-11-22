@@ -205,7 +205,6 @@ theorem exists_unitary_of_mod (H : Host E) {M bad : ℕ} (hM : 0 < M) (hbad : 0 
     first
       | exact Matrix.mul_eq_one_comm.1 h1
       | exact mul_eq_one_comm.1 h1
-      | exact Matrix.mul_eq_one_comm.mp h1
   let e := LinearEquiv.ofBijective (GlobalTheory.RepTrivial.inc E n)
     ⟨GlobalTheory.RepTrivial.inc_injective, GlobalTheory.RepTrivial.inc_surjective⟩
   let ι : (stdLat E n) →ₗ[𝓞 E] StdMod E n M := GlobalTheory.RepTrivial.red E n M ∘ₗ B.mulVecLin ∘ₗ e.symm.toLinearMap
@@ -272,12 +271,9 @@ theorem exists_unitary_of_mod (H : Host E) {M bad : ℕ} (hM : 0 < M) (hbad : 0 
           have h1' := h1
           push_cast at hbk h1' ⊢
           rw [h1', Pi.smul_apply, ← hbk, smul_eq_mul]
-          all_goals first | rfl | simp
         have h2 : a k = (M : 𝓞 E) * b k := by
           first
             | exact NumberField.RingOfIntegers.coe_injective h3
-            | exact NumberField.RingOfIntegers.ext h3
-            | exact_mod_cast h3
         rw [h2]
         exact Ideal.mul_mem_right _ _ (Ideal.mem_span_singleton_self _)
     · intro v w x y hx hy
@@ -395,8 +391,6 @@ theorem exists_levOK {γ : Matrix (Fin n) (Fin n) E} {Λ : GenLat E n} {N M : �
   have hko : Odd k := by
     first
       | exact Nat.Coprime.odd_of_right hk
-      | exact Nat.coprime_two_right_iff_odd.1 hk
-      | exact (Nat.coprime_two_right_iff_odd k).1 hk
   refine ⟨N * k, hN.mul hko, Dvd.dvd.mul_right hMN k, (span_singleton_smul_le_iff _ _ _).2 fun y hy => ?_⟩
   refine Submodule.mem_inf.2 ⟨?_, (stdLat E n).smul_mem _ hy⟩
   obtain ⟨x, hx, hxy⟩ := Submodule.mem_map.1 (h1' y hy)
@@ -442,8 +436,7 @@ theorem exists_unitary_mod (g g' : Matrix (Fin n) (Fin n) (𝓞 E)) (h : ∀ i j
       have key := Ideal.Quotient.eq_zero_iff_mem.2 (bar_mem_Mb (h i j))
       simp only [Matrix.sub_apply, Matrix.mul_apply, Matrix.of_apply, Matrix.transpose_apply, Matrix.map_apply, Matrix.one_apply,
         map_sub, map_sum, map_mul, map_add, map_one, bar_bar, apply_ite (H.bar), map_zero,
-        apply_ite (Ideal.Quotient.mk l.Mb), e1, e2, sub_self, zero_mul, one_mul, add_zero, zero_add, mul_zero,
-        mul_one, sub_zero] at key ⊢
+        apply_ite (Ideal.Quotient.mk l.Mb), e1, e2, sub_self, zero_mul, one_mul, add_zero, zero_add, sub_zero] at key ⊢
       exact key
     · rw [← Ideal.Quotient.eq_zero_iff_mem]
       have e1 : Ideal.Quotient.mk (Mfr l) (cSep l) = 0 := Ideal.Quotient.eq_zero_iff_mem.2 hc0
@@ -458,9 +451,8 @@ theorem exists_unitary_mod (g g' : Matrix (Fin n) (Fin n) (𝓞 E)) (h : ∀ i j
       rw [Matrix.sub_apply, hsym] at key0
       have key := Ideal.Quotient.eq_zero_iff_mem.2 key0
       simp only [Matrix.sub_apply, Matrix.mul_apply, Matrix.of_apply, Matrix.transpose_apply, Matrix.map_apply, Matrix.one_apply,
-        map_sub, map_sum, map_mul, map_add, map_one, bar_bar, apply_ite (H.bar), map_zero,
-        apply_ite (Ideal.Quotient.mk (Mfr l)), e1, e2, sub_self, zero_mul, one_mul, add_zero, zero_add, mul_zero,
-        mul_one, sub_zero] at key ⊢
+        map_sub, map_sum, map_mul, map_add, map_one, bar_bar, map_zero,
+        apply_ite (Ideal.Quotient.mk (Mfr l)), e1, e2, sub_self, zero_mul, one_mul, add_zero, zero_add, sub_zero] at key ⊢
       simpa [mul_comm] using key
   · show cSep l * H.bar (g i j) + (1 - cSep l) * g' j i - H.bar (g i j) ∈ l.Mb
     have : cSep l * H.bar (g i j) + (1 - cSep l) * g' j i - H.bar (g i j) =
@@ -501,9 +493,6 @@ theorem levMoves_eq {γ : Matrix (Fin n) (Fin n) E} {B : Matrix (Fin n) (Fin n) 
     have e : (k' : 𝓞 E) * (g i j - (k : 𝓞 E) * B i j) = ((l.M : ℕ) : 𝓞 E) * ((k : 𝓞 E) * b) := by
       first
         | exact NumberField.RingOfIntegers.coe_injective e0
-        | exact NumberField.RingOfIntegers.ext e0
-        | exact Subtype.ext e0
-        | exact_mod_cast e0
     apply hcan k' hk'
     rw [smul_smul, e, mul_smul, hM]
   rw [← sub_eq_zero]
@@ -536,7 +525,6 @@ theorem exists_unitary_moving (c : Coeff l) {bad : ℕ} (hbad : 0 < bad) (x0 x1 
     haveI : Finite (𝓞 E ⧸ Mfr l) := by
       first
         | exact Ideal.finiteQuotientOfFreeOfNeBot _ hne
-        | infer_instance
     haveI : Finite (Ideal (𝓞 E ⧸ Mfr l)) := Finite.of_injective _ SetLike.coe_injective
     refine Set.Finite.of_finite_image (f := fun P => P.map (Ideal.Quotient.mk (Mfr l))) (Set.toFinite _) ?_
     intro P hP Q hQ hPQ
@@ -561,9 +549,6 @@ theorem exists_unitary_moving (c : Coeff l) {bad : ℕ} (hbad : 0 < bad) (x0 x1 
     unfold qRep
     first
       | exact Classical.choose_spec (Submodule.Quotient.mk_surjective _ z)
-      | exact Classical.choose_spec (Submodule.mkQ_surjective _ z)
-      | (generalize_proofs _ hp; simpa using Classical.choose_spec hp)
-      | (generalize_proofs _ _ hp; simpa using Classical.choose_spec hp)
   set X1 : Fin n → Dw.La := fun b => qRep (x1 b) with hX1
   set X0 : Fin n → Dw.La := fun b => qRep (x0 b) with hX0
   set Y : Fin n → Dw.La := fun b => levRep (q b) with hY

@@ -36,7 +36,7 @@ theorem continuous_Ac (X : Fin n → ℝ) : Continuous (Ac X) := by
 
 theorem differentiable_Ac_entry (X : Fin n → ℝ) (a b : Fin n ⊕ Fin n) : Differentiable ℂ fun z => Ac X z a b := by
   rcases a with a | a <;> rcases b with b | b <;> by_cases hab : a = b <;>
-    simp [Ac, diagonal_apply, hab] <;> fun_prop
+    simp [Ac, hab]
 
 theorem differentiable_det_entries {m : Type} [Fintype m] [DecidableEq m] (A : ℂ → Matrix m m ℂ)
     (hA : ∀ i j, Differentiable ℂ fun z => A z i j) : Differentiable ℂ fun z => (A z).det := by

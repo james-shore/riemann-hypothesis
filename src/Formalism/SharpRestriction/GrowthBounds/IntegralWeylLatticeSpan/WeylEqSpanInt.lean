@@ -12,7 +12,7 @@ theorem prodSpan {O A I : Type} [CommRing O] [CommRing A] [Algebra O A] [Fintype
     {B : I → Type} [∀ i, AddCommGroup (B i)] [∀ i, Module O (B i)] (ε : ∀ i, B i →ₗ[O] A) (T : ∀ i, Set (B i)) :
     Submodule.span O {X | ∃ F : ∀ i, B i, (∀ i, F i ∈ Submodule.span O (T i)) ∧ X = ∏ i, ε i (F i)} =
       Submodule.span O {X | ∃ F : ∀ i, B i, (∀ i, F i ∈ T i) ∧ X = ∏ i, ε i (F i)} := by
-  first | exact Bl.general_b_fact_left'''''.goal1 .. | (apply Bl.general_b_fact_left'''''.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_left'''''.goal1 <;> assumption) | (apply @Bl.general_b_fact_left'''''.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_left'''''.goal1 <;> assumption) | (apply @Bl.general_b_fact_left'''''.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_left'''''.goal1 ..
 
 theorem map_rowAct {R S : Type} [CommRing R] [CommRing S] (φ : R →+* S) {r n : ℕ} (g : Matrix (Fin r) (Fin r) R)
     (F : MvPolynomial (Fin r × Fin n) R) :

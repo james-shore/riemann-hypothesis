@@ -68,7 +68,7 @@ theorem posAt_mk {σ : K →+* ℂ} (hσ : ∀ a, σ (star a) = starRingEnd ℂ 
     intro x
     rcases hAt_mk hσ j H hT.inner with h | h
     · rw [h, inner_self_eq_norm_sq_to_K]; push_cast; rfl
-    · rw [h, inner_self_eq_norm_sq_to_K]; push_cast; simp [Complex.star_def]
+    · rw [h, inner_self_eq_norm_sq_to_K]; push_cast; simp
   refine ⟨⟨fun x y => ?_, fun x hx => ?_⟩, hd⟩
   · rcases hAt_mk hσ j H hT.inner with h | h
     · rw [h, h]; exact (inner_conj_symm (j y) (j x)).symm

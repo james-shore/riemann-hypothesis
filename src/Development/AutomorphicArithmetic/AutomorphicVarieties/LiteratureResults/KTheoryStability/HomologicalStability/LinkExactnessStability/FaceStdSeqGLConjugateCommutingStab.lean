@@ -23,7 +23,7 @@ theorem pm_id : pm R (id : Fin n → Fin n) = 1 := by
   by_cases h : a = b
   · subst h
     simp [pm]
-  · simp [pm, Matrix.one_apply, h, Ne.symm h]
+  · simp [pm, h, Ne.symm h]
 
 def pmU (f g : Fin n → Fin n) (h1 : ∀ k, f (g k) = k) (h2 : ∀ k, g (f k) = k) : GL (Fin n) R :=
   ⟨pm R f, pm R g, by rw [pm_mul, show f ∘ g = id from funext h1, pm_id],
@@ -119,10 +119,10 @@ theorem GlobalTheory.HomStab.exists_perm_face_stdSeq : ∀ (R : Type) [CommRing 
       split_ifs <;> omega
     · intro j h1 h2
       have hjp : j < p := by simpa [stdList] using h2
-      simp only [List.getElem_map, List.getElem_eraseIdx, stdList, List.getElem_ofFn, Fin.val_mk]
+      simp only [List.getElem_map, List.getElem_eraseIdx, stdList, List.getElem_ofFn]
       split_ifs with hj
-      · exact pairAct_pmU R _ _ _ _ _ (by omega) _ (by simp only [cyc_val, Fin.val_mk]; split_ifs <;> omega)
-      · exact pairAct_pmU R _ _ _ _ _ (by omega) _ (by simp only [cyc_val, Fin.val_mk]; split_ifs <;> omega)
+      · exact pairAct_pmU R _ _ _ _ _ (by omega) _ (by simp only [cyc_val]; split_ifs <;> omega)
+      · exact pairAct_pmU R _ _ _ _ _ (by omega) _ (by simp only [cyc_val]; split_ifs <;> omega)
   · intro x
     have lo1 : ∀ k : Fin n, ((cyc (n - (p + 1)) i hmi k : ℕ) < n - (p + 1) ↔ (k : ℕ) < n - (p + 1)) := by
       intro k
@@ -176,15 +176,4 @@ open CategoryTheory CategoryTheory.Limits GlobalTheory.HomStab GlobalTheory.SeqC
 theorem _root_.GlobalTheory.T.face_stdSeq_GL_conjugate_commuting_stab : ∀ (R : Type) [CommRing R] (n p : ℕ) (h : p + 1 ≤ n) (i : Fin (p + 1)), ∃ g : GL (Fin n) R, g • face R n p i (stdSeq R n (p + 1) h) = stdSeq R n p (by omega) ∧ ∀ x : GL (Fin (n - (p + 1))) R, g * stab R (n - (p + 1)) n (Nat.sub_le _ _) x = stab R (n - (p + 1)) n (Nat.sub_le _ _) x * g := by
   first
   | exact @GlobalTheory.HomStab.exists_perm_face_stdSeq
-  | exact @GlobalTheory.HomStab.FacePerm.pairAct_pmU
-  | exact @GlobalTheory.HomStab.FacePerm.cycInv_cyc
-  | exact @GlobalTheory.HomStab.FacePerm.cyc_cycInv
-  | exact @GlobalTheory.HomStab.FacePerm.cycInv_val
-  | exact @GlobalTheory.HomStab.FacePerm.cyc_val
-  | exact @GlobalTheory.HomStab.FacePerm.mul_pm_apply
-  | exact @GlobalTheory.HomStab.FacePerm.pm_mul_apply
-  | exact @GlobalTheory.HomStab.FacePerm.vecMul_pm
-  | exact @GlobalTheory.HomStab.FacePerm.pm_mulVec
-  | exact @GlobalTheory.HomStab.FacePerm.pm_id
-  | exact @GlobalTheory.HomStab.FacePerm.pm_mul
 end

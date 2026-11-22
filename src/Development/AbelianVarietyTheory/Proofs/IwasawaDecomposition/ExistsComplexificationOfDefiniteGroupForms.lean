@@ -17,7 +17,7 @@ theorem eq_sum_single {R : Type} [Semiring R] (a : MonoidAlgebra R G) : a = ∑ 
   classical
   apply MonoidAlgebra.ext
   ext g
-  simp [MonoidAlgebra.coeff_sum, Finsupp.single_apply]
+  simp [MonoidAlgebra.coeff_sum]
 
 noncomputable def conjSum (R : Type) [Semiring R] (g : G) : MonoidAlgebra R G := ∑ h, single (h * g * h⁻¹) 1
 
@@ -26,7 +26,7 @@ theorem conjSum_mem_center (R : Type) [CommSemiring R] (g : G) : conjSum R g ∈
   intro b
   induction b using MonoidAlgebra.induction_on with
   | of k =>
-    simp only [conjSum, MonoidAlgebra.of_apply, Finset.mul_sum, Finset.sum_mul, single_mul_single, one_mul, mul_one]
+    simp only [conjSum, MonoidAlgebra.of_apply, Finset.mul_sum, Finset.sum_mul, single_mul_single, mul_one]
     refine Fintype.sum_equiv (Equiv.mulLeft k) _ _ fun h => ?_
     simp only [Equiv.coe_mulLeft]
     congr 1
@@ -36,7 +36,7 @@ theorem conjSum_mem_center (R : Type) [CommSemiring R] (g : G) : conjSum R g ∈
 
 theorem mapRange_conjSum {R S : Type} [Semiring R] [Semiring S] (f : R →+* S) (g : G) :
     mapRingHom G f (conjSum R g) = conjSum S g := by
-  simp [conjSum, map_sum, MonoidAlgebra.mapRangeRingHom_single]
+  simp [conjSum, map_sum]
 
 theorem card_smul_eq {R : Type} [CommSemiring R] (z : MonoidAlgebra R G) (hz : z ∈ Subalgebra.center R (MonoidAlgebra R G)) :
     (Fintype.card G : R) • z = ∑ g, z.coeff g • conjSum R g := by
@@ -65,7 +65,7 @@ theorem coeff_mapRingHom {R S : Type} [Semiring R] [Semiring S] (f : R →+* S) 
     (mapRingHom G f a).coeff g = f (a.coeff g) := by
   classical
   conv_lhs => rw [eq_sum_single a]
-  simp [map_sum, MonoidAlgebra.mapRangeRingHom_single, MonoidAlgebra.coeff_sum, Finsupp.single_apply, apply_ite f]
+  simp [map_sum, MonoidAlgebra.coeff_sum, Finsupp.single_apply]
 
 section Act
 

@@ -15,7 +15,7 @@ theorem sum_addChar_trace_mul_eq {k : Type} [Field k] [Fintype k] [DecidableEq k
     simp only [Matrix.mul_zero, trace_zero, AddChar.map_zero_eq_one, sum_const, card_univ,
       nsmul_eq_mul, mul_one]
     rw [show Fintype.card (Matrix (Fin r) (Fin r) k) = Fintype.card (Fin r → Fin r → k) from rfl]
-    simp [Fintype.card_fun, ← pow_mul, sq]
+    simp [← pow_mul, sq]
   · obtain ⟨i, j, hij⟩ : ∃ i j, m i j ≠ 0 := by
       by_contra h; push_neg at h; exact hm (Matrix.ext h)
     have h1 := hψ hij

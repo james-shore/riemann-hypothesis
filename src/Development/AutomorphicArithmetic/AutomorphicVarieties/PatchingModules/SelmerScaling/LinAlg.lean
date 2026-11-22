@@ -123,4 +123,4 @@ theorem UpperTheory.V.Pa.linAlg :
     rw [← hrow a ha i]
     refine Finset.sum_congr rfl fun j _ => ?_
     simp only [Pi.basisFun_apply, Pi.single_apply, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq',
-      Finset.sum_ite_eq, Finset.mem_univ, if_true, hXκ]
+      Finset.mem_univ, if_true, hXκ]

@@ -140,7 +140,7 @@ theorem fAdd_nsmulF_eq_eval_poly_frob :
     rw [hGe W y hy]
     change nEval _ _ = _
     rw [(H1 (ch.F k) W _).1 (max M₁ M₂), ← e1]
-    · simp [MvPolynomial.coe_aeval_eq_eval]
+    · simp
     · rintro (i | i)
       · exact hM₂ _ (le_max_right _ _) i
       · have := hM₁ _ (le_max_left M₁ M₂) i

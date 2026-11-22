@@ -11,7 +11,7 @@ theorem single_mem_stdLat {O K : Type} [CommRing O] [Field K] [Algebra O K] (n :
   intro j
   by_cases h : j = i
   · subst h; exact ⟨1, by simp⟩
-  · exact ⟨0, by simp [Pi.single_apply, h]⟩
+  · exact ⟨0, by simp [h]⟩
 
 theorem stdLat_eq_span {O K : Type} [CommRing O] [Field K] [Algebra O K] (n : ℕ) :
     stdLat O n = Submodule.span O (Set.range fun i : Fin n => (Pi.single i (1 : K) : Fin n → K)) := by

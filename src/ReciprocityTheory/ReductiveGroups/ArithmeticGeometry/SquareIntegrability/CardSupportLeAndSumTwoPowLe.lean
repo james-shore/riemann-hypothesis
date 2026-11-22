@@ -110,7 +110,7 @@ theorem fockU_coeff_le {g c : ℕ} (a : EuclideanSpace ℂ (Fin g)) (F G : Eucli
       (‖z‖ ^ 2 + ‖a‖ ^ 2 - ‖z - a‖ ^ 2) / 2 := by
     intro z
     have h1 : (∑ i, z i * (starRingEnd ℂ) (a i)) = inner ℂ a z := by
-      simp [PiLp.inner_apply, RCLike.inner_apply, mul_comm]
+      simp [PiLp.inner_apply, RCLike.inner_apply]
     have h2 := norm_sub_sq (𝕜 := ℂ) z a
     have h3 := inner_re_symm (𝕜 := ℂ) z a
     simp only [RCLike.re_to_complex] at h2 h3

@@ -92,7 +92,6 @@ theorem geo_setup {K : Type} [Field K] [CharZero K] {X : Scheme.{0}} (q : X ⟶ 
     first
       | infer_instance
       | (haveI : Smooth q := SmoothOfRelativeDimension.smooth (n + 1) q; infer_instance)
-      | (haveI : Smooth q := inferInstance; haveI : LocallyOfFinitePresentation q := inferInstance; infer_instance)
   haveI : Algebra.FiniteType K Γ(X, W) := finiteType_affine q hWaff
   obtain ⟨g, hg0, het⟩ := exists_etale_away (tV i y hy W hWV) hindW halgW
   obtain ⟨c, hc⟩ := exists_coord_basicOpen q hWaff g (tV i y hy W hWV) het

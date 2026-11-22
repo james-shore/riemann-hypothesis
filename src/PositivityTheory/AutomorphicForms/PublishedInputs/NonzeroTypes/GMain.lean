@@ -65,7 +65,7 @@ theorem gMain (h1 : DeterminantVectorProp) (h2 : UnramifiedTwistProp) (h3 : SumO
     rw [← hx] at hP
     rw [hP]
     refine ⟨hl.1.2 fun y hy => ?_, fun t => ?_⟩
-    · simp only [List.mem_ofFn, Set.mem_range] at hy
+    · simp only [List.mem_ofFn] at hy
       obtain ⟨b, rfl⟩ := hy
       rw [hur b]
       exact (h2 E Ω A w h (u b) _ (hψ b) (hu b)).1

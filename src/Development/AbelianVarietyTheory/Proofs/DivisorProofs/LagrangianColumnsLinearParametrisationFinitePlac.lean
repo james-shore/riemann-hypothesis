@@ -152,7 +152,6 @@ theorem param : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberFiel
   have hζsmul : ∀ (a : Fv F v) y, ζ (a • y) = liftV v a • ζ y := fun a y => by
     have hat : At (evFin F v) (liftV v a • ζ y) := fun u hu => by rw [smul_comm, hζat y u hu, smul_zero]
     rw [eq_map_lift v _ hat]
-    congr 1
     ext i k
     simp [ζ, compFin_smul, evFin_liftV, compFin_lift] <;> rfl
   let j : (Fin N → Fv F v) →ₗ[Fv F v] (Fin n × Fin d → Fv F v) × (Fin n × Fin d → Fv F v) :=

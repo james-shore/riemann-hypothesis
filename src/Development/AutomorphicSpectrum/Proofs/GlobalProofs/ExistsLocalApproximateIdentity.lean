@@ -165,7 +165,7 @@ theorem isFD_fundamentalSetInfinite (ν : Measure (InfiniteAdeleRing F)) :
     have hpre : fundamentalSetInfinite F =
         (fun x : InfiniteAdeleRing F => ((x, 0) : InfiniteAdeleRing F × FiniteAdeleRing (𝓞 F) F)) ⁻¹' fundamentalSet F := by
       ext x
-      simp [fundamentalSet, Set.mem_prod, Subring.zero_mem]
+      simp [fundamentalSet]
     rw [hpre]
     exact (measurable_prodMk_right hmeas).nullMeasurableSet
   · obtain ⟨z, hz, hu⟩ := existsUnique_sub_mem_fundamentalSetInfinite F x

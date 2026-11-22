@@ -27,7 +27,7 @@ theorem card_lifts_const : ∀ (D : D7) (j : ℕ) (H : ReciprocityTheory.ChartRe
     obtain ⟨h1, h2⟩ := hL.inR
     have hk := D.R.m_add_three_le_k
     rw [hp, hq]
-    simp only [Ranks.sigW, Ranks.r]
+    simp only [Ranks.sigW]
     omega
   have hk : ∀ a : c.F, algebraMap d.c₂.F (CAt σ₂) (d.eF a) = algebraMap c.F (CAt σ₂) a := fun _ => rfl
   obtain ⟨lift, hlift⟩ := GlobalTheory.LevPullModel.exists_isLift (Dw := Dw) (l := d.l₂)

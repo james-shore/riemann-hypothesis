@@ -26,8 +26,6 @@ theorem weil_schwartz_schur_lemma : _root_.GlobalTheory.FunPr.ThetaLocalInputs �
     have hnb : ‖U g y0‖ = ‖g y0‖ := by
       first
         | exact (sq_eq_sq₀ (norm_nonneg _) (norm_nonneg _)).1 h2
-        | exact pow_left_injective₀ (norm_nonneg _) (norm_nonneg _) two_ne_zero h2
-        | nlinarith [norm_nonneg (U g y0), norm_nonneg (g y0)]
     have hb0 : U g y0 ≠ 0 := by
       intro h
       apply hg
@@ -58,5 +56,5 @@ theorem _root_.GlobalTheory.T.real_weil_representation_schur_scalar : _root_.Glo
       ⇑(U h₁) = GlobalTheory.RealWeil.rhoFun w ⇑(U h)) →
     (∀ h : GlobalTheory.RealWeil.Sch l, ∫⁻ x, ‖U h x‖ₑ ^ 2 = ∫⁻ x, ‖h x‖ₑ ^ 2) →
     ∃ a : ℂ, ‖a‖ = 1 ∧ ∀ h, U h = a • h := by
-  first | exact @_root_.GlobalTheory.RealWeil.SchurSchwartz.weil_schwartz_schur_lemma | exact _root_.GlobalTheory.RealWeil.SchurSchwartz.weil_schwartz_schur_lemma | (intros; apply _root_.GlobalTheory.RealWeil.SchurSchwartz.weil_schwartz_schur_lemma <;> assumption)
+  first | exact @_root_.GlobalTheory.RealWeil.SchurSchwartz.weil_schwartz_schur_lemma
 end

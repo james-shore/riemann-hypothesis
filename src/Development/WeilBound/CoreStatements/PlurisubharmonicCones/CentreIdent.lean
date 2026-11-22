@@ -73,7 +73,7 @@ theorem centre_ident (e : FamExp t.G M B ψ) {b : Fin n → ℂ} (hb : b ∈ B) 
           (t3 A φ g' u ℓ hφ hℓ _).2 ⟨_, rfl⟩⟩)
         by_cases hc : c = a
         · subst hc; simp
-        · simp [hc, Finsupp.single_apply]
+        · simp [hc]
       rw [e1, map_sum, star_sum, Matrix.mulVec_sum]
       refine Finset.sum_eq_zero fun a _ => ?_
       rw [map_smul, star_smul, Matrix.mulVec_smul, e2, smul_zero]

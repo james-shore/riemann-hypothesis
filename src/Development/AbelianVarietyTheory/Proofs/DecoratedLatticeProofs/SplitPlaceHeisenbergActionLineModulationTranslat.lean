@@ -91,7 +91,7 @@ theorem tensCol_sub_mem {Ψ : Matrix n n' k → ℂ} {a : (n → k) → ℂ} (t 
     funext x
     simp only [tensCol, Function.comp_apply, Homeomorph.subRight_apply]
     congr 2
-    all_goals first | (ext i j; simp [M]) | (funext i; simp [M])
+    all_goals first | (ext i j; simp [M])
   rw [e]
   exact ⟨h.1.comp_continuous (Homeomorph.subRight M).continuous, h.2.comp_homeomorph _⟩
 
@@ -103,7 +103,7 @@ theorem tensRow_sub_mem {Ψ : Matrix n' n k → ℂ} {b : (n → k) → ℂ} (t 
     funext x
     simp only [tensRow, Function.comp_apply, Homeomorph.subRight_apply]
     congr 2
-    all_goals first | (ext i j; simp [M]) | (funext i; simp [M])
+    all_goals first | (ext i j; simp [M])
   rw [e]
   exact ⟨h.1.comp_continuous (Homeomorph.subRight M).continuous, h.2.comp_homeomorph _⟩
 

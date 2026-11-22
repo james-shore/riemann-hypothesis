@@ -31,7 +31,7 @@ private theorem rbar_ord {H K : Type} [CommRing K] {n : ℕ} (ψ : Fin n → H �
     congr 1
     funext i
     ext a b
-    by_cases h : a = b <;> simp [h, Matrix.one_apply]
+    by_cases h : a = b <;> simp [h]
   rw [e, rbar_prod, List.prod_ofFn, ← Matrix.diagonal_zero]
   congr 1
   funext j

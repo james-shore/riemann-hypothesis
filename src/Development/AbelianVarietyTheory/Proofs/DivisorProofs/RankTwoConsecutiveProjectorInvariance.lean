@@ -198,7 +198,6 @@ theorem rankTwo : RankTwo := by
       sl2_Xpow_Y _ _ _ sXYp hHpXp U 1 hHpU l]
     simp only [map_add, map_smul]
     rw [← pow_succ_apply2 (D p o) (l + 1)]
-    push_cast
     module
   have hT5 : ∀ n : ℕ, D p q (∑ l ∈ Finset.range (n + 1), coef j l • (D p o ^ l) ((D o p ^ l) T')) =
       coef j n • (D p o ^ (n + 1)) ((D o p ^ n) U) := by

@@ -19,7 +19,7 @@ private theorem re_chi {n : ℕ} {k H : Type} [CommRing k] [Group H] (χ : Fin n
   rw [← Matrix.det_diagonal]
   congr 1
   ext i j : 2
-  by_cases h : i = j <;> simp [W.GDet.repAlg, W.diagRep, Matrix.one_apply, Matrix.diagonal_apply, h]
+  by_cases h : i = j <;> simp [W.GDet.repAlg, W.diagRep, h]
 private theorem re_hecke {k : Type} [Field k] {n q : ℕ} (hq : (q : k) ≠ 0) (P : k[X]) (hm : P.Monic)
     (hn : P.natDegree = n) : ∃ b : Fin n → k,
       P = heckePol n q fun j => if h : 0 < j ∧ j - 1 < n then b ⟨j - 1, h.2⟩ else 1 := by

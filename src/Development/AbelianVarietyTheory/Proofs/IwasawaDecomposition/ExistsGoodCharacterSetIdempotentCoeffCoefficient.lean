@@ -49,7 +49,7 @@ theorem exists_goodSet_Ks (eR : Gc X.B px ≃* G0g X.toD7.nd) :
   let f := MonoidAlgebra.domCongr ℂ ℂ eR.symm
   let e : MonoidAlgebra ℂ (Gc X.B px) := f X.toD7.ntypes.e0
   have hcoeff : ∀ g, e.coeff g = X.toD7.ntypes.e0.coeff (eR g) := fun g => by
-    simp [e, f, MonoidAlgebra.domCongr_apply]
+    simp [e, f]
   obtain ⟨hcen0, hid0⟩ := GlobalTheory.GoodLatCompare.goodSeriesIdempotent_central_idempotent X.toD7
   have hid : e * e = e := by simp only [e, ← map_mul, hid0]
   have hcen : e ∈ Subalgebra.center ℂ (MonoidAlgebra ℂ (Gc X.B px)) := by

@@ -48,7 +48,7 @@ theorem diag_rdx {m n : ℕ} (h : m = n) (d : Fin m → ℂ) :
 theorem rdi_mulVec {K : Type} [CommRing K] {m n : ℕ} (h : m = n) (v : Fin m → K) (i : Fin n) :
     (rdi (K := K) h *ᵥ v) i = v ((finCongr h).symm i) := by
   subst h
-  simp [rdi, Matrix.one_apply]
+  simp [rdi]
 
 theorem cT_sig_eq (M : Matrix (Fin S'.rank) (Fin S.rank) D.host.E) :
     Formalism.UG.cT (D.sp.cm.sig : D.host.E →+* D.host.E) M = Mᴴ := by

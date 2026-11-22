@@ -80,7 +80,7 @@ theorem GlobalTheory.AdForm.realOf_is : ∀ {B : GlobalTheory.Mem.Base} {X : Pre
   refine ⟨huni, ?_, hrk, ?_, ?_, ?_, ?_⟩
   · exact huniT
   · intro i τ
-    simp only [realOf]
+    simp only
     split_ifs with h
     · exact one_ne_zero
     · exact div_ne_zero h (hstd.2.2.2.1 τ)

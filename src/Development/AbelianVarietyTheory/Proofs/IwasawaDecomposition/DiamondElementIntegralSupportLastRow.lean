@@ -124,9 +124,9 @@ theorem hform_single_left (c : E) (y : Fin n → E) (j : Fin n) :
   unfold hform
   rw [Finset.sum_eq_single j, Finset.sum_eq_single j]
   · rw [Pi.single_eq_same, Matrix.one_apply_eq, mul_one]; rfl
-  · intro b _ hb; simp [Matrix.one_apply, hb.symm]
+  · intro b _ hb; simp [hb.symm]
   · simp
-  · intro b _ hb; simp [Pi.single_apply, hb]
+  · intro b _ hb; simp [hb]
   · simp
 
 theorem hform_single_right (c : E) (x : Fin n → E) (j : Fin n) :
@@ -135,13 +135,13 @@ theorem hform_single_right (c : E) (x : Fin n → E) (j : Fin n) :
   unfold hform
   rw [Finset.sum_eq_single j, Finset.sum_eq_single j]
   · rw [Pi.single_eq_same, Matrix.one_apply_eq, mul_one]; rfl
-  · intro b _ hb; simp [Pi.single_apply, hb]
+  · intro b _ hb; simp [hb]
   · simp
   · intro b _ hb
     refine Finset.sum_eq_zero fun k _ => ?_
     by_cases hk : k = j
-    · subst hk; simp [Matrix.one_apply, hb]
-    · simp [Pi.single_apply, hk]
+    · subst hk; simp [hb]
+    · simp [hk]
   · simp
 
 def IsBase (S : Formalism.L2.Forms.StepLevel F E hc.sig (1 : Matrix (Fin n) (Fin n) E) T f bad) (π : 𝓞 E) : Prop :=
@@ -154,7 +154,7 @@ theorem single_mem_Lb (hLb : IsBase S π) (j : Fin n) (t : 𝓞 E) (ht : j.1 + 1
   by_cases hk : k = j
   · subst hk
     exact ⟨t, by simp, ht⟩
-  · exact ⟨0, by simp [Pi.single_apply, hk], fun _ => dvd_zero _⟩
+  · exact ⟨0, by simp [hk], fun _ => dvd_zero _⟩
 
 theorem coord_of_mem_span (hLb : IsBase S π) {x : Fin n → E}
     (hx : x ∈ Submodule.span (𝓞 E) (dualSet (hc.sig : E →+* E) 1 S.Lb)) (j : Fin n) :
@@ -235,7 +235,7 @@ theorem mulVec_ee (G : Matrix (Fin n) (Fin n) (E ⊗[F] v.adicCompletion F)) (j 
     funext k
     by_cases hk : k = j
     · subst hk; simp [ee]
-    · simp [ee, Pi.single_apply, hk]
+    · simp [ee, hk]
   rw [e, Matrix.mulVec_single_one]
   rfl
 
@@ -358,7 +358,7 @@ theorem ee_self (r : Fin n) : ee n F E v r r = 1 := by
   simp [ee]
 
 theorem ee_ne {j r : Fin n} (h : j ≠ r) : ee n F E v j r = 0 := by
-  simp [ee, Pi.single_apply, h.symm]
+  simp [ee, h.symm]
 
 theorem conjP_conjP' (P : HeightOneSpectrum (𝓞 E)) : conjPrime₂ (conjPrime₂ P) = P :=
   HeightOneSpectrum.ext (Ideal.ext fun x => by rw [mem_conjP, mem_conjP, cO_cO])

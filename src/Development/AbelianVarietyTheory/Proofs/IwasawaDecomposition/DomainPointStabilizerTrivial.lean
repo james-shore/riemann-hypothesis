@@ -14,7 +14,7 @@ theorem exists_conj_first_col {n : ℕ} (A : Matrix (Fin (n + 1)) (Fin (n + 1)) 
   first
   | exact @_root_.GlobalTheory.FirstColumnConjugation.exists_conj_first_col_zero
   | exact _root_.GlobalTheory.FirstColumnConjugation.exists_conj_first_col_zero
-  | (apply _root_.GlobalTheory.FirstColumnConjugation.exists_conj_first_col_zero <;> assumption)
+  | (apply _root_.GlobalTheory.FirstColumnConjugation.exists_conj_first_col_zero)
   | (intros; apply _root_.GlobalTheory.FirstColumnConjugation.exists_conj_first_col_zero <;> assumption)
   | (intros; apply @_root_.GlobalTheory.FirstColumnConjugation.exists_conj_first_col_zero <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FirstColumnConjugation.exists_conj_first_col_zero ..)

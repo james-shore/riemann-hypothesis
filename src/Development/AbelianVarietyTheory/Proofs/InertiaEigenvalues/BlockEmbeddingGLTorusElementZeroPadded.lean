@@ -26,10 +26,10 @@ theorem blockGL_cornerGL (hj : j ≤ n) (s : R →ₙ+* S) (g : GL (Fin j) R) :
     · simp only [dif_pos ha, dif_pos hb, Matrix.add_apply, Matrix.sub_apply, Matrix.map_apply, Matrix.one_apply,
         Fin.ext_iff]
     · have hab : a ≠ b := fun h => hb (h ▸ ha)
-      simp [ha, hb, hab, Matrix.one_apply]
+      simp [ha, hb, hab]
   · by_cases hab : a = b
-    · subst hab; simp [ha, Matrix.one_apply]
-    · simp [ha, hab, Matrix.one_apply]
+    · subst hab; simp [ha]
+    · simp [ha, hab]
 
 theorem blockGL_diagPow (hj : j ≤ n) (ϖ : Rˣ) (v : Fin j → ℕ) :
     GroundTheory.Automorphic.FourierWhittaker.blockGL hj (diagPow ϖ v) = diagPow ϖ (GlobalTheory.RSnmUnf.padNat (n := n) v) := by
@@ -40,10 +40,10 @@ theorem blockGL_diagPow (hj : j ≤ n) (ϖ : Rˣ) (v : Fin j → ℕ) :
   · by_cases hb : b.val < j
     · simp [ha, hb, Matrix.diagonal_apply, GlobalTheory.RSnmUnf.padNat, Fin.ext_iff, MulEquiv.piUnits]
     · have hab : a ≠ b := fun h => hb (h ▸ ha)
-      simp [ha, hb, hab, Matrix.diagonal_apply]
+      simp [ha, hb, hab]
   · by_cases hab : a = b
-    · subst hab; simp [ha, Matrix.diagonal_apply, GlobalTheory.RSnmUnf.padNat, MulEquiv.piUnits]
-    · simp [ha, hab, Matrix.diagonal_apply]
+    · subst hab; simp [ha, GlobalTheory.RSnmUnf.padNat, MulEquiv.piUnits]
+    · simp [ha, hab]
 
 theorem padNat_eq_zero_iff {m n : ℕ} (hmn : m ≤ n) (v : Fin m → ℕ) :
     GlobalTheory.RSnmUnf.padNat (n := n) v = 0 ↔ v = 0 := by

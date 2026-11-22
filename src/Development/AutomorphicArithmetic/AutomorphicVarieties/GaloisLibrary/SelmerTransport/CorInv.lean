@@ -72,7 +72,7 @@ theorem UpperTheory.V.Base.corInv :
   rw [hx0 ⟨u, h u.2⟩ (Subgroup.mem_subgroupOf.mpr u.2), finsum_eq_sum_of_fintype,
     Finset.sum_congr rfl (fun q _ => hterm q), Finset.sum_add_distrib, Finset.sum_sub_distrib,
     Finset.sum_const, Finset.card_univ, hcard]
-  simp only [Submodule.coe_smul, Pi.smul_apply, MonoidHom.comp_apply, Subgroup.coe_subtype,
+  simp only [MonoidHom.comp_apply, Subgroup.coe_subtype,
     map_add, map_sum]
   rw [show ((U'.relIndex U • z : Z1U ρ U') : U' → M) u = U'.relIndex U • z.1 u from rfl]
   abel

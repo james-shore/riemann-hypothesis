@@ -451,7 +451,7 @@ theorem fuMul : FUMul := by
   have hv1 : Valued.v (ϖ : w.adicCompletion E) < 1 :=
     GlobalTheory.CompanionTheory.IwahoriContraction.v_lt_one_of_ordL_eq_one w ϖ.ne_zero hϖ.1
   let φ : UL n w →* GLw n w := (MulAut.conj b⁻¹).toMonoidHom.comp (UL n w).subtype
-  have hφ : ∀ x, φ x = b⁻¹ * x.1 * b := fun x => by simp [φ, MulAut.conj_apply]
+  have hφ : ∀ x, φ x = b⁻¹ * x.1 * b := fun x => by simp [φ]
   let B : Subgroup (UL n w) := (upS (w.adicCompletion E) n).comap φ
   let M : Subgroup (UL n w) := ((iwGL n w) ⊓ (loS (w.adicCompletion E) n)).comap φ
   have hF : Fac (iwU n w b) B M := by

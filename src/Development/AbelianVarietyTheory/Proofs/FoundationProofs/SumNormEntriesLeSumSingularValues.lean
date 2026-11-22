@@ -53,7 +53,7 @@ theorem sum_norm_le_sum_singVal : ∀ (p q : ℕ) (B : Matrix (Fin p) (Fin q) �
   calc ∑ i, ∑ j, ‖B i j‖ ≤ ∑ i, ∑ j, ∑ b, ∑ a, ‖U i a‖ * d a b * ‖V j b‖ :=
         Finset.sum_le_sum fun i _ => Finset.sum_le_sum fun j _ => h1 i j
     _ = ∑ b, ∑ a, ((∑ i, ‖U i a‖) * ∑ j, ‖V j b‖) * d a b := by
-        simp only [Finset.sum_mul_sum, Finset.sum_mul]
+        simp only [Finset.sum_mul]
         simp_rw [Finset.sum_comm (s := (Finset.univ : Finset (Fin q))) (t := (Finset.univ : Finset (Fin q))) (f := fun j b => ∑ a, ‖U _ a‖ * d a b * ‖V j b‖)]
         rw [Finset.sum_comm]
         refine Finset.sum_congr rfl fun b _ => ?_

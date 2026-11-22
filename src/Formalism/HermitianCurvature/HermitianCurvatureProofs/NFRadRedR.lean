@@ -116,11 +116,6 @@ private lemma contDiff_exp_hermitian_curvature {A : Type} [NormedRing A] [Normed
     exact EMetric.mem_ball.mpr (edist_lt_top _ _)
   first
   | exact (NormedSpace.analyticAt_exp_of_mem_ball x hx).contDiffAt
-  | exact (analyticAt_exp_of_mem_ball (𝕂 := ℝ) x hx).contDiffAt
-  | (have hps := (NormedSpace.expSeries ℝ A).hasFPowerSeriesOnBall
-        (by rw [NormedSpace.expSeries_radius_eq_top]; exact ENNReal.zero_lt_top)
-     rw [NormedSpace.expSeries_sum_eq] at hps
-     exact (hps.analyticAt_of_mem hx).contDiffAt)
 
 theorem repSmooth_of (hLL : LocLog) : NFRadRedS.RepSmooth := by
   unfold NFRadRedS.RepSmooth
@@ -144,7 +139,7 @@ theorem repSmooth_of (hLL : LocLog) : NFRadRedS.RepSmooth := by
   let Lm : Q.Mx k r →ₗ[ℝ] Q.Mx k r :=
     { toFun := fun h => h₀⁻¹ * h
       map_add' := fun a b => Matrix.mul_add _ _ _
-      map_smul' := fun c a => by simp [Matrix.mul_smul] }
+      map_smul' := fun c a => by simp }
   let Lc := LinearMap.toContinuousLinearMap Lm
   have hV : IsOpen {h : Q.Mx k r | h₀⁻¹ * h ∈ O} := hO.preimage Lc.continuous
   refine ⟨{h : Q.Mx k r | h₀⁻¹ * h ∈ O}, hV, ?_, fun h => π h₀ * NormedSpace.exp (Tc (Λ (h₀⁻¹ * h))), ?_, ?_⟩

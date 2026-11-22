@@ -57,7 +57,7 @@ theorem Fdig_mul_inl (j0 : ZMod J) (l : Fin (Dt.nL j0)) (a0 : Fin r) (rho : (ZMo
         (Finsupp.single ((⟨j0, Sum.inl l⟩, a0) : TL J Dt.nL r × Fin r) 1 + mo : TL J Dt.nL r × Fin r →₀ ℕ) w
           = mo w := by
       intro w hw
-      simp [Finsupp.single_apply, Ne.symm hw]
+      simp [Ne.symm hw]
     rw [X_mul_monomialPlaneCoefficients, Fdig_mono, Fdig_mono]
     by_cases hd : Dt.digOK rho mo
     · rw [if_pos ((digOK_iff_of_eq_off_inl Dt j0 l a0 rho mo _ e1).2 hd), if_pos hd, X_mul_monomialPlaneCoefficients,
@@ -134,7 +134,7 @@ theorem Fdig_der_inl (j0 : ZMod J) (l : Fin (Dt.nL j0)) (a0 : Fin r) (rho : (ZMo
         (mo - Finsupp.single ((⟨j0, Sum.inl l⟩, a0) : TL J Dt.nL r × Fin r) 1 : TL J Dt.nL r × Fin r →₀ ℕ) w
           = mo w := by
       intro w hw
-      simp [Finsupp.single_apply, Ne.symm hw]
+      simp [Ne.symm hw]
     rw [pderiv_monomial, Fdig_mono, Fdig_mono]
     by_cases hd : Dt.digOK rho mo
     · rw [if_pos ((digOK_iff_of_eq_off_inl Dt j0 l a0 rho mo _ e1).2 hd), if_pos hd, pderiv_monomial,
@@ -171,7 +171,7 @@ theorem Fdig_mul_zero (h : rho ((j0, m0), a0) = 0) (H : MvPolynomial (TL J Dt.nL
   · have e1 : ∀ w : TL J Dt.nL r × Fin r, w ≠ ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) →
         (Finsupp.single ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) 1 + mo : TL J Dt.nL r × Fin r →₀ ℕ) w = mo w := by
       intro w hw
-      simp [Finsupp.single_apply, Ne.symm hw]
+      simp [Ne.symm hw]
     have hv1 : (Finsupp.single ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) 1 + mo : TL J Dt.nL r × Fin r →₀ ℕ) ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) = 1 + mo ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) := by simp
     rw [X_mul_monomialPlaneCoefficients, Fdig_mono, Fdig_mono]
     rcases one_add_mod_div_cases (mo ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r)) (Dt.P j0 m0) hP with ⟨h1, h2, h3⟩ | ⟨h1, h2, h3⟩
@@ -201,7 +201,7 @@ theorem Fdig_mul_pos (h1 : 0 < rho ((j0, m0), a0)) (h2 : rho ((j0, m0), a0) < Dt
   · have e1 : ∀ w : TL J Dt.nL r × Fin r, w ≠ ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) →
         (Finsupp.single ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) 1 + mo : TL J Dt.nL r × Fin r →₀ ℕ) w = mo w := by
       intro w hw
-      simp [Finsupp.single_apply, Ne.symm hw]
+      simp [Ne.symm hw]
     have hv1 : (Finsupp.single ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) 1 + mo : TL J Dt.nL r × Fin r →₀ ℕ) ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) = 1 + mo ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) := by simp
     rw [X_mul_monomialPlaneCoefficients, Fdig_mono, Fdig_mono]
     rcases one_add_mod_div_cases (mo ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r)) (Dt.P j0 m0) hP with ⟨k1, k2, k3⟩ | ⟨k1, k2, k3⟩
@@ -232,7 +232,7 @@ theorem Fdig_der_lt (h : rho ((j0, m0), a0) + 1 < Dt.P j0 m0) (H : MvPolynomial 
   · have e1 : ∀ w : TL J Dt.nL r × Fin r, w ≠ ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) →
         (mo - Finsupp.single ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) 1 : TL J Dt.nL r × Fin r →₀ ℕ) w = mo w := by
       intro w hw
-      simp [Finsupp.single_apply, Ne.symm hw]
+      simp [Ne.symm hw]
     have hv1 : (mo - Finsupp.single ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) 1 : TL J Dt.nL r × Fin r →₀ ℕ) ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) = mo ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) - 1 := by simp
     rw [pderiv_monomial, Fdig_mono, Fdig_mono]
     rcases Nat.eq_zero_or_pos (mo ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r)) with ha | ha
@@ -298,7 +298,7 @@ theorem Fdig_der_eq (h : rho ((j0, m0), a0) + 1 = Dt.P j0 m0) (H : MvPolynomial 
   · have e1 : ∀ w : TL J Dt.nL r × Fin r, w ≠ ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) →
         (mo - Finsupp.single ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) 1 : TL J Dt.nL r × Fin r →₀ ℕ) w = mo w := by
       intro w hw
-      simp [Finsupp.single_apply, Ne.symm hw]
+      simp [Ne.symm hw]
     have hv1 : (mo - Finsupp.single ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) 1 : TL J Dt.nL r × Fin r →₀ ℕ) ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) = mo ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r) - 1 := by simp
     rw [pderiv_monomial, Fdig_mono, Fdig_mono]
     rcases Nat.eq_zero_or_pos (mo ((⟨j0, Sum.inr m0⟩, a0) : TL J Dt.nL r × Fin r)) with ha | ha

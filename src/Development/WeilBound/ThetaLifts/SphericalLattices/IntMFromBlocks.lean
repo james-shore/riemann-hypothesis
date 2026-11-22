@@ -132,7 +132,7 @@ theorem conj_val (x : Lˣ) (g : GL (Fin m ⊕ Fin m) L) :
       fromBlocks ((x : L) • (1 : Matrix (Fin m) (Fin m) L)) 0 0 (((x⁻¹ : Lˣ) : L) • 1) = _
   conv_lhs => rw [hg]
   rw [Matrix.fromBlocks_multiply, Matrix.fromBlocks_multiply]
-  simp [Units.val_inv_eq_inv_val, Matrix.smul_mul, Matrix.mul_smul, smul_smul, hx0]
+  simp [Units.val_inv_eq_inv_val, smul_smul, hx0]
 
 theorem mem_conj (h : IsUnramInv ϖ c q) {x : Lˣ} (hx : (x : L) = ϖ) {g : GL (Fin m ⊕ Fin m) L} :
     g ∈ (KPW L c m).map (MulAut.conj (zW L m x)).toMonoidHom ↔ g ∈ GW L c m ∧ g.val.toBlocks₂₁ = 0 ∧
@@ -220,7 +220,7 @@ theorem skew_of_iso (h : IsUnramInv ϖ c q) {a b d : Matrix (Fin m) (Fin m) L}
   rw [Matrix.fromBlocks_transpose, Matrix.fromBlocks_map, Matrix.fromBlocks_multiply,
     Matrix.fromBlocks_multiply] at hg'
   simp only [Matrix.transpose_zero, Matrix.map_zero, map_zero, Matrix.mul_zero, Matrix.zero_mul,
-    Matrix.mul_one, Matrix.one_mul, add_zero, zero_add] at hg'
+    Matrix.mul_one, add_zero, zero_add] at hg'
   obtain ⟨-, h12, h21, h22⟩ := Matrix.fromBlocks_inj.mp hg'
   have e1 : (a.map c)ᵀ * d = 1 := by
     have e := congrArg (fun M => M.map c) h12

@@ -243,8 +243,6 @@ theorem unfold_abs {Γ H : Subgroup G} [Countable Γ]
           gcongr
           first
           | exact Measure.restrict_le_self
-          | exact setLIntegral_le_lintegral _ _
-          | exact le_rfl
 
 end Abs3
 

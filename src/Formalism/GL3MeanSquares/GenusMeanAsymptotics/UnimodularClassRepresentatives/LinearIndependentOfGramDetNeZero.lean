@@ -194,7 +194,6 @@ theorem star_gram_det (hs : h.IsSymm) (x : Fin n → V) :
   simp only [Matrix.conjTranspose_apply, Matrix.of_apply]
   first
   | exact hs.eq (x j) (x i)
-  | exact hs (x j) (x i)
 
 end Gram
 
@@ -224,7 +223,6 @@ theorem det_smul_mem {L : Submodule (𝓞 K) V} (x : Fin n → V) (hx : ∀ i, x
       rw [Matrix.mulVec_mulVec, Matrix.adjugate_mul]
       first
       | rw [Matrix.smul_mulVec, Matrix.one_mulVec]
-      | simp
     rw [h1, hGc, RingHom.map_mulVec, ← hGg, ← RingHom.map_adjugate]
     rfl
   have hdet : algebraMap (𝓞 K) K g.det = G.det := by rw [RingHom.map_det, hGg]

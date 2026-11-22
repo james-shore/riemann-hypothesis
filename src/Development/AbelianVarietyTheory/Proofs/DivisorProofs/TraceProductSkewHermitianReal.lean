@@ -15,7 +15,7 @@ theorem skew_transpose_mul_add_mul_conj {E : Type} [Field E] [NumberField E] [Is
   have c1 : cc (1 : E) = 1 := map_one _
   have hc : ∀ b : Fin r, cc (if b = j then (1 : E) else 0) = if b = j then 1 else 0 := by
     intro b; split_ifs <;> simp [c0, c1]
-  simp [herm, Matrix.mulVec_single, Pi.single_apply, c0, c1, hc, Matrix.mul_apply] at h ⊢
+  simp [herm, Matrix.mulVec_single, Pi.single_apply, hc, Matrix.mul_apply] at h ⊢
   exact h
 
 theorem conj_eq_of_skew {E : Type} [Field E] [NumberField E] [IsCMField E] {r : ℕ}

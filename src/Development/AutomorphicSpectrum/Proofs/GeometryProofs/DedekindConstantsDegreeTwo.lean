@@ -330,7 +330,7 @@ theorem cone_eq {h : MvPolynomial (Σ k, J k) O} {b : K → ℕ}
   refine Finset.sum_congr rfl fun d hd => ?_
   have hw : Finsupp.weight (blockWeight J) d = b := hh (mem_support_iff.1 hd)
   rw [GroundTheory.Heights₂.Heights.NumbersDVR.pointConeMap, aeval_monomial, aeval_monomial, cone_prod, hw, map_mul]
-  simp only [MvPolynomial.algebraMap_apply, Algebra.algebraMap_self, RingHom.id_apply, _root_.mul_assoc]
+  simp only [MvPolynomial.algebraMap_apply, _root_.mul_assoc]
 
 theorem sub_mem_pointIdeal {h h' : MvPolynomial (Σ k, J k) O} {b : K → ℕ}
     (hh : GroundTheory.Heights₂.Heights.NumbersDVR.IsMultiHomog h b) (hh' : GroundTheory.Heights₂.Heights.NumbersDVR.IsMultiHomog h' b)

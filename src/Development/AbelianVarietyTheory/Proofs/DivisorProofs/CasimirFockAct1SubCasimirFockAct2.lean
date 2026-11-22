@@ -63,7 +63,7 @@ theorem lowB_comm (l m : Ln p q r s) : lowB l * lowB m = lowB m * lowB l := by
   · rw [hlm]
   refine LinearMap.ext fun P => ?_
   cases hl : linePos l <;> cases hm : linePos m <;>
-    simp [lowB, hl, hm, pderiv_X, Pi.single_apply, hlm, Ne.symm hlm, pderiv_pderiv_comm l m,
+    simp [lowB, hl, hm, pderiv_X, hlm, Ne.symm hlm, pderiv_pderiv_comm l m,
       mul_left_comm]
 
 theorem lowB_mul_raiB (l m : Ln p q r s) :
@@ -73,7 +73,7 @@ theorem lowB_mul_raiB (l m : Ln p q r s) :
   · subst hlm
     cases hl : linePos l <;> simp [lowB, raiB, hl, add_comm]
   · cases hl : linePos l <;> cases hm : linePos m <;>
-      simp [lowB, raiB, hl, hm, pderiv_X, Pi.single_apply, hlm, Ne.symm hlm, pderiv_pderiv_comm l m,
+      simp [lowB, raiB, hl, hm, pderiv_X, hlm, Ne.symm hlm, pderiv_pderiv_comm l m,
         mul_left_comm]
 
 theorem casimir_fockAct1_sub_casimir_fockAct2 : ∀ (p q r s : ℕ),

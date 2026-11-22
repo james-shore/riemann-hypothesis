@@ -191,8 +191,6 @@ theorem prod_sub_le {ι : Type} (s : Finset ι) {c : Γ} {a b : ι → K} (ha : 
   | exact @_root_.GlobalTheory.ProdSubProdBound.main
   | exact _root_.GlobalTheory.ProdSubProdBound.main
   | (apply _root_.GlobalTheory.ProdSubProdBound.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ProdSubProdBound.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ProdSubProdBound.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ProdSubProdBound.main ..)
 
 theorem Sm.det {n : Type} [Fintype n] [DecidableEq n] {c : Γ} (hc : c ≤ 1) {M : Matrix n n R} (h : Sm v φ c (M - 1)) :

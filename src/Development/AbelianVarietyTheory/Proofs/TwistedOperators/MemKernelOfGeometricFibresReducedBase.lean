@@ -64,7 +64,7 @@ theorem mem_transKer_of_geometric
   have key : translT Xo.univ.t.G b ≫ pmO = pmO ≫ translT Xo.univ.t.G a := by
     apply CartesianMonoidalCategory.hom_ext
     · simp only [Category.assoc, translT, lift_fst, lift_fst_assoc, hpf]
-    · simp only [Category.assoc, translT, lift_snd, lift_snd_assoc, hps, tp, MonObj.comp_mul, reassoc_of% hpf, hb']
+    · simp only [Category.assoc, translT, lift_snd, hps, tp, MonObj.comp_mul, reassoc_of% hpf, hb']
   have keyL : (translT Xo.univ.t.G b).left ≫ pm = pm ≫ (translT Xo.univ.t.G a).left :=
     congrArg (fun f => f.left) key
   rw [← hq₁, Category.assoc, Category.assoc, ← reassoc_of% keyL, ← hc, reassoc_of% (mem_transKer.1 hb)]

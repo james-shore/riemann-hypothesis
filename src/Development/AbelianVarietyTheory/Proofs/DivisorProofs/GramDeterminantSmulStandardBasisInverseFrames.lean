@@ -26,8 +26,7 @@ theorem GlobalTheory.DefPt.det_gramPl_smul_single : ∀ (K : Type) [Field K] [Nu
       ((‖v.embedding t‖ ^ 2 : ℝ) : ℂ) • Matrix.reindex eqv eqv ((Y v.embedding)ᴴ * Y v.embedding) := by
     ext a b
     simp only [Formalism.HN.gramPl, Formalism.HermitianLatticesTheory.majAt, hf, Matrix.of_apply, Matrix.smul_apply, Matrix.reindex_apply,
-      Matrix.submatrix_apply, Matrix.mul_apply, Matrix.conjTranspose_apply, dotProduct, Pi.star_apply,
-      smul_eq_mul, Finset.mul_sum, star_mul']
+      Matrix.submatrix_apply, Matrix.mul_apply, Matrix.conjTranspose_apply, smul_eq_mul, Finset.mul_sum, star_mul']
     refine Finset.sum_congr rfl fun i _ => ?_
     have := Complex.conj_mul' (v.embedding t)
     push_cast

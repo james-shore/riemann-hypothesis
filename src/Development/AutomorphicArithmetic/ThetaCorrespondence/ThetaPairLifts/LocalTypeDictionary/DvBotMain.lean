@@ -112,7 +112,6 @@ theorem bottom_matching_of_triangle (hH : GlobalTheory.Published.HoweDualityReal
     (fun i z => by
       obtain ⟨u, hu⟩ := exists_map_piW (Bs.τ i) ((Γ.V.bas i).1 * z * (Γ.W.bas i).1ᵀ)
       refine ⟨u, ?_⟩
-      beta_reduce
       rw [hu, ← Matrix.mul_assoc, ← Matrix.mul_assoc, Units.inv_mul, Matrix.one_mul, Matrix.mul_assoc, ← transpose_mul,
         Units.inv_mul, transpose_one, Matrix.mul_one])
     I (fun i => GlobalTheory.BigNZ.isLagrModel_of_isLin (hI i)) (hX.fst t)
@@ -155,7 +154,6 @@ theorem bottom_matching_of_triangle (hH : GlobalTheory.Published.HoweDualityReal
       obtain ⟨g₂, h₂⟩ := dW i
       obtain ⟨u, hu⟩ := exists_map_piW ((Bs.τ i).comp D.sp.cm.sig) ((g₁⁻¹).1 * (-z) * (g₂⁻¹).1)
       refine ⟨u, ?_⟩
-      beta_reduce
       rw [hu, Matrix.mul_assoc _ _ (Γ.W.bas i).1, ← h₁, ← h₂, ← Matrix.mul_assoc, ← Matrix.mul_assoc, Units.mul_inv,
         Matrix.one_mul, Matrix.mul_assoc, Units.inv_mul, Matrix.mul_one, neg_neg])
     I' (fun i => GlobalTheory.BigNZ.isLagrModel_of_isLin (hI' i)) (hX.snd t)
@@ -167,7 +165,6 @@ theorem bottom_matching_of_triangle (hH : GlobalTheory.Published.HoweDualityReal
     (fun x hx => by
       refine Eq.trans ?_ (congrArg (_ * ·) (UpperTheory.stdSectionSecond_eq_prod_local D _ _ (hX.idem t) Bs.P Subtype.val Bs.τ hPw hinj (X.c t) (α t / β t)
         A.rank A' WW X.rA'.β X.rW.β hT.rank.symm x hx).symm)
-      beta_reduce
       rw [← Finset.prod_mul_distrib]
       exact Finset.prod_congr rfl fun i _ => by rw [e1' i]; exact eφ' i x)
   obtain ⟨L, rL, eL⟩ := UpperTheory.theta_transform_fock_model_eq_of_standard_char D Bs.ψ θ hψ hθ true A WW _ hT.rank.symm Γ.V Γ.W Γ.M h.JW h.JX hg.hM FA FW Bs.emb

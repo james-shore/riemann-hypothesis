@@ -155,7 +155,6 @@ theorem nd_bT_le (hS : Formalism.MainNotions.SizesAt L) (t : D.host.TT) : (L.bT 
     have h1' : (1 : ℝ) ≤ L.sc.x ^ (L.sc.eps / 3) := Real.one_le_rpow hx (by linarith)
     first
     | nlinarith [Real.quadratic_le_exp_of_nonneg (show (0 : ℝ) ≤ L.sc.x ^ (L.sc.eps / 3) by linarith)]
-    | (have h2' := Real.exp_le_exp.mpr h1'; have h3' := Real.exp_one_gt_d9; linarith)
   have hb'a : 3 * L.sc.b' ≤ 5 / 4 * L.sc.a := by
     unfold Scale.b'
     rw [mul_div_assoc', div_le_iff₀ (by linarith)]

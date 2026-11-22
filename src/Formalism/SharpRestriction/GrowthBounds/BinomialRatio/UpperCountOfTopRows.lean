@@ -36,7 +36,7 @@ theorem sum_lt_succ (f : Fin s → ℤ) (i : Fin s) :
           omega
         simp [h1, h3, h4]
   rw [Finset.sum_congr rfl (fun x _ => hpt x), Finset.sum_add_distrib]
-  simp only [Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+  simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true]
 
 private theorem eventually_abs_le_half_add_of_doubling_bounds [NeZero r] {LLv : ChainLetters (2 * s + 1)} {ka : Fin (2 * s + 1 + 1) → Fin r → ℤ}
     (hv : ∀ a, LLv.vec a = decide (a.val % 2 = 0)) (hch : IsChain LLv ka) (m : ℕ) (hm : m < 2 * s + 1) :

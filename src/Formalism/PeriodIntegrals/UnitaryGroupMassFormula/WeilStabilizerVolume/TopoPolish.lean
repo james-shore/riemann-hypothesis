@@ -43,7 +43,6 @@ theorem polish_of_lcsc (Y : Type) [TopologicalSpace Y] [LocallyCompactSpace Y] [
   haveI hM : MetrizableSpace (OnePoint Y) := by
     first
     | infer_instance
-    | exact TopologicalSpace.metrizableSpace_of_t3_secondCountable _
   haveI hP : PolishSpace (OnePoint Y) := by
     first
     | infer_instance
@@ -54,7 +53,5 @@ theorem polish_of_lcsc (Y : Type) [TopologicalSpace Y] [LocallyCompactSpace Y] [
   haveI := hO.polishSpace
   first
   | exact (OnePoint.isOpenEmbedding_coe.toIsEmbedding.toHomeomorph).isClosedEmbedding.polishSpace
-  | exact (OnePoint.isOpenEmbedding_coe.isEmbedding.toHomeomorph).isClosedEmbedding.polishSpace
-  | exact (OnePoint.isOpenEmbedding_coe.toHomeomorph).isClosedEmbedding.polishSpace
 
 end PI.VolStabW.TopoPolish

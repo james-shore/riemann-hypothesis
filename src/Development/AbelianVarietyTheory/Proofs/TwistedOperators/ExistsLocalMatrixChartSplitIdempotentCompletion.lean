@@ -29,7 +29,7 @@ theorem smul_mem_hat (D : D7) {n : ℕ} (L : Submodule (𝓞 D.host.E) (Fin n �
       apply AddSubgroup.subset_closure
       refine ⟨b * c, fun v => ?_, x • w, L.smul_mem x hw, ?_⟩
       · have hbv := hb v
-        simp only [Formalism.MainNotions.StandardLattice.intAf, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.evalV, Set.mem_setOf_eq] at hbv
+        simp only [Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.evalV] at hbv
         exact mul_mem hbv (hc v)
       · funext i
         simp only [Pi.smul_apply, smul_eq_mul, Algebra.TensorProduct.tmul_mul_tmul]

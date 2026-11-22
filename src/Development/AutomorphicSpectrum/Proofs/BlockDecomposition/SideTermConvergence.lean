@@ -17,7 +17,6 @@ private theorem one_toIdele_lemma (y : IdeleGroup k) :
     (((1 : HeckeCharacter k).toIdele y : Circle) : ℂ) = 1 := by
   first
   | rfl
-  | simp [HeckeCharacter.toIdele]
 
 theorem side_one {π : G →* GL ι 𝔸[k]} {Γ K P : Subgroup G} {i : ι} {ω : HeckeCharacter k}
     {d : ι → IdeleGroup k} {c : G → ℂ} {η : G → ℝ} (hs : Side π Γ K P i ω d c η) :

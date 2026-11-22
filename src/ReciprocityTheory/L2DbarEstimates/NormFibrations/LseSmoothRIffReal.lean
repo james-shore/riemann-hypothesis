@@ -17,9 +17,6 @@ open scoped ContDiff
 theorem lse_two_le_infty : (2 : WithTop ℕ∞) ≤ ∞ := by
   first
   | exact WithTop.coe_le_coe.mpr le_top
-  | exact_mod_cast (le_top : (2 : ℕ∞) ≤ ⊤)
-  | simp
-  | decide
 
 theorem lse_smoothR_iff_real {M : Type*} [TopologicalSpace M] (n : ℕ) (z : M → V n) (f : M → ℝ) :
     SmoothR n z f ↔ ∀ e : OpenPartialHomeomorph M (V n), IsChart n z e →
@@ -154,9 +151,7 @@ theorem lse (n : ℕ) (M : Type*) [TopologicalSpace M] : LSEStatement n M := by
       have hgc : ContDiffOn ℂ 2 (fun v => g j (e.symm v)) e.target :=
         (C.holo_contDiffOn_complex e.open_target hgd).of_le (by
           first
-          | exact WithTop.coe_le_coe.mpr le_top
-          | exact_mod_cast (le_top : (2 : ℕ∞) ≤ ⊤)
-          | simp)
+          | exact WithTop.coe_le_coe.mpr le_top)
       refine ⟨fun y => g j (e.symm y), hgc, fun y _ => ?_⟩
       simp [hu, Complex.normSq_eq_norm_sq]
   have hB : ∀ y ∈ e.target, 0 < ∑ i, u i y := by

@@ -30,7 +30,6 @@ theorem comp_symm_mem_hecke (e : G ≃* H) {K : Subgroup G} {K' : Subgroup H} (h
     refine ⟨e s, ?_, ⟨e a, (hK _).1 a.2⟩, ⟨e b, (hK _).1 b.2⟩, ?_⟩
     · first
         | exact Finset.mem_image_of_mem _ hs
-        | exact Set.mem_image_of_mem _ hs
     · have := congrArg e hab
       simpa only [MulEquiv.apply_symm_apply, map_mul] using this
 

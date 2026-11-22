@@ -336,7 +336,7 @@ theorem _root_.GlobalTheory.HilbFam.sz_hfun_coef : _root_.GlobalTheory.LatJet.Ei
 
   unfold _root_.GlobalTheory.HilbFam.hser
   rw [PowerSeries.coeff_smul, map_sum]
-  simp only [PowerSeries.coeff_smul, smul_eq_mul, zsmul_eq_mul]
+  simp only [PowerSeries.coeff_smul, smul_eq_mul]
   have hsum : _root_.GlobalTheory.LatVal.Sz l lam (e + (∑ i, κ i : ℕ) * ρ)
       (∑ μ ∈ Finset.Iic κ, ((∏ i, _root_.GlobalTheory.HilbFam.rco (2 * s) (κ i) (μ i) *
         (-1) ^ μ i : ℤ) : ℂ) * PowerSeries.coeff n ((PowerSeries.mk c ^ ∑ i, (κ i - μ i)) *

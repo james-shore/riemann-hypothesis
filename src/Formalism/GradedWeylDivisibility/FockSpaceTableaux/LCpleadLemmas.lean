@@ -13,7 +13,7 @@ private lemma pairW_apply {r n : ℕ} (l j : Fin n) (v : Fin r × Fin n) (b : Fi
       else (if v = (b, t) then 1 else 0) := by
   classical
   unfold pairW
-  split_ifs <;> simp_all [Finsupp.single_apply]
+  split_ifs <;> simp_all
 
 theorem lcplead_weight_apply {r n : ℕ} (l j : Fin n) (hlj : l ≠ j) (d : Fin r × Fin n →₀ ℕ)
     (b : Fin r) (t : Fin n) :

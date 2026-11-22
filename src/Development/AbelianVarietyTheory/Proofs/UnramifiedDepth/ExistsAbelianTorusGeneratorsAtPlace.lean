@@ -45,7 +45,7 @@ private theorem range_map_le {R O κ J : Type} [CommRing R] [CommRing O] [Algebr
       rw [this]; exact Submodule.smul_mem _ _ ha
   have : M.map (algebraMap R O) *ᵥ x = ∑ i, x i • ((algebraMap R O) ∘ (M *ᵥ Pi.single i 1)) := by
     ext j
-    simp [Matrix.mulVec, dotProduct, Finset.sum_apply, mul_comm, Pi.single_apply]
+    simp [Matrix.mulVec, dotProduct, Finset.sum_apply, mul_comm]
   rw [this]
   refine Submodule.sum_mem _ fun i _ => Submodule.smul_mem _ _ (key _ ?_)
   rw [h]; exact ⟨_, rfl⟩

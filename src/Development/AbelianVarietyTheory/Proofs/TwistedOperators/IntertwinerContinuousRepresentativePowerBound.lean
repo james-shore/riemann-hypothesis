@@ -89,7 +89,6 @@ theorem contRep_bound : GlobalTheory.Published.DiscreteSeriesClassification → 
       funext s
       erw [GlobalTheory.ConjRowMult.conjMap_apply X (MP R) c Φ h t]
       rw [star_star, ← hone s, hfdef]
-      congr 1
       erw [map_mul, map_inv, hsymm]
       rw [mul_assoc y, hcomm _ (h2s s), ← mul_assoc, mul_inv_cancel_right]
     have hval : f (Function.update u τ (GlobalTheory.RepSmooth.der u τ hY)) y =

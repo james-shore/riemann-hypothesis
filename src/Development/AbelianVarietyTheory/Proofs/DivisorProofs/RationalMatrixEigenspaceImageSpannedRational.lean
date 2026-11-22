@@ -71,7 +71,7 @@ theorem GlobalTheory.rational_eigen_image_span : ∀ (K L : Type) [Field K] [Fie
       rintro _ ⟨x, hx, rfl⟩ p
       rw [GlobalTheory.RationalSpan.map_mulVec_comp, hx p]
       funext i
-      simp [f, Algebra.smul_def]
+      simp [f]
     exact hle h
   · obtain ⟨z, rfl⟩ := h
     rw [GlobalTheory.RationalSpan.expand b z, map_sum]

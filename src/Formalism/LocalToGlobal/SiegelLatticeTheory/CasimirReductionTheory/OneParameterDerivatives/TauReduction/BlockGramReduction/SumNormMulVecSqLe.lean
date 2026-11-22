@@ -27,7 +27,7 @@ theorem norm_add_sq_le_young (p q : ℂ) {t : ℝ} (ht : 0 < t) :
 theorem norm_sum_mul_sq_le {m : ℕ} (d w : Fin m → ℂ) :
     ‖∑ l, d l * w l‖ ^ 2 ≤ (∑ l, ‖d l‖ ^ 2) * ∑ l, ‖w l‖ ^ 2 := by
   have h1 : ‖∑ l, d l * w l‖ ≤ ∑ l, ‖d l‖ * ‖w l‖ :=
-    (norm_sum_le _ _).trans (le_of_eq (by simp [norm_mul]))
+    (norm_sum_le _ _).trans (le_of_eq (by simp))
   have h2 := Finset.sum_mul_sq_le_sq_mul_sq Finset.univ (fun l => ‖d l‖) (fun l => ‖w l‖)
   calc ‖∑ l, d l * w l‖ ^ 2 ≤ (∑ l, ‖d l‖ * ‖w l‖) ^ 2 := pow_le_pow_left₀ (norm_nonneg _) h1 2
     _ ≤ _ := h2

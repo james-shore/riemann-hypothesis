@@ -119,8 +119,8 @@ theorem prod_jY :
     Matrix.mul_sub, d.levi_jY, cancel₂ (d.wittDecomp_levi_inclAnisotropic _), cancel₂ (d.levi_jX _)]
   rw [hm, hm']
   simp only [skewPart, adj_sub, adj_mul, adj_adj, adj_one, Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub,
-    Matrix.mul_smul, smul_add, smul_zero, Matrix.mul_assoc, cancel₂ h,
-    Matrix.zero_mul, Matrix.mul_zero, Matrix.one_mul, Matrix.mul_one, add_zero, sub_zero, zero_add]
+    Matrix.mul_smul, smul_add, Matrix.mul_assoc, cancel₂ h,
+    Matrix.zero_mul, Matrix.mul_zero, Matrix.one_mul, Matrix.mul_one, add_zero]
   generalize half D • (d.jX ⬝ (A ⬝ (adj γ ⬝ (α ⬝ adj A)))) = t at hh ⊢
   rw [← hh]
   abel

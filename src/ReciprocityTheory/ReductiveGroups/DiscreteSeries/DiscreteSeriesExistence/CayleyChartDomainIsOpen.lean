@@ -12,7 +12,7 @@ theorem slm_sq_lintegral_le {f : ℝ → ENNReal} (hf : AEMeasurable f (volume.r
   have hH := ENNReal.lintegral_mul_le_Lp_mul_Lq (volume.restrict (Ioc (0:ℝ) 1))
     Real.HolderConjugate.two_two hf (aemeasurable_const (b := (1 : ENNReal)))
   simp only [Pi.mul_apply, mul_one, ENNReal.one_rpow, lintegral_const, Measure.restrict_apply_univ,
-    Real.volume_Ioc, sub_zero, ENNReal.ofReal_one, one_mul] at hH
+    Real.volume_Ioc, sub_zero, ENNReal.ofReal_one] at hH
   calc (∫⁻ s in Ioc (0:ℝ) 1, f s) ^ (2:ℝ)
       ≤ ((∫⁻ s in Ioc (0:ℝ) 1, f s ^ (2:ℝ)) ^ (1 / (2:ℝ))) ^ (2:ℝ) :=
         ENNReal.rpow_le_rpow hH (by norm_num)

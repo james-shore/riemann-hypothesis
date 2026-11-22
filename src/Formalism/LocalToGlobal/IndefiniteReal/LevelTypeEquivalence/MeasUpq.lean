@@ -103,7 +103,7 @@ instance instCompactUpq0 (q : ℕ) : CompactSpace (UpqT 0 q) := by
       have := congrArg Neg.neg h
       simpa [Matrix.mul_neg] using this
     · intro h
-      simp [Matrix.mul_neg, h]
+      simp [h]
   rw [← e] at hc
   exact isCompact_iff_compactSpace.mp hc
 

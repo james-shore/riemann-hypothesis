@@ -120,7 +120,6 @@ theorem exists_indep [FiniteDimensional K V] (A : Submodule O V) (hA : A.FG) (U 
   have hli : LinearIndependent K e := by
     first
     | exact (LinearIndependent.iff_fractionRing O K).1 hliO
-    | exact LinearIndependent.iff_fractionRing.1 hliO
   have hAe : A = Submodule.span O (Set.range e) := by
     conv_lhs => rw [← Submodule.map_subtype_top A]
     rw [← bA.span_eq, Submodule.map_span, ← Set.range_comp] <;> rfl
@@ -137,8 +136,6 @@ theorem exists_indep [FiniteDimensional K V] (A : Submodule O V) (hA : A.FG) (U 
   have hr : Set.range (e ∘ σ.symm) = Set.range e := by
     first
     | exact EquivLike.range_comp e σ.symm
-    | exact Equiv.range_comp e σ.symm
-    | rw [Set.range_comp, σ.symm.range_eq_univ, Set.image_univ]
   refine ⟨e ∘ σ.symm, hli.comp _ σ.symm.injective, ?_, ?_⟩
   · rw [hr]
     exact hAe
@@ -164,8 +161,6 @@ theorem indep_baseChange {K K' V V₁ ι : Type} [Field K] [Field K'] [Algebra K
   have hs : LinearIndepOn K id (Set.range a) := by
     first
     | exact (linearIndepOn_id_range_iff ha.injective).2 ha
-    | exact ha.to_subtype_range
-    | exact (linearIndependent_subtype_range ha.injective).2 ha
   let B := Module.Basis.extend hs
   let B' := hj.basis B
   have hB' : LinearIndependent K' (fun i : hs.extend (Set.subset_univ _) => j (i : V)) := by
@@ -196,7 +191,6 @@ theorem index_baseChange_lattice : RelIndexSpanImage := by
     intro i
     first
     | exact (Submodule.mem_span_range_iff_exists_fun K).1 (hmem i)
-    | exact Submodule.mem_span_range_iff_exists_fun.1 (hmem i)
   choose c hc using hc0
   let P : Matrix (Fin (Module.finrank K (Submodule.span K (A : Set V))))
       (Fin (Module.finrank K (Submodule.span K (A : Set V)))) K := fun k i => c i k
@@ -243,7 +237,6 @@ theorem index_baseChange_lattice : RelIndexSpanImage := by
     rw [← hc i, map_sum]
     refine Finset.sum_congr rfl fun k _ => ?_
     rw [map_smul, Matrix.map_apply, algebraMap_smul]
-    all_goals rfl
   have hdetmap : (P.map (algebraMap K K')).det = algebraMap K K' P.det := by
     rw [RingHom.map_det]
     rfl

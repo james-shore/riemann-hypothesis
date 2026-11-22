@@ -51,7 +51,7 @@ theorem hfree_one {F : Type} [Field F] [Finite F] (θ : AlgebraicClosure F →* 
   have hf : ∀ x, f x = cusp θ 1 k x := by
     intro x
     rw [cusp_one]
-    simp [f, Matrix.GeneralLinearGroup.val_det_apply, Matrix.det_fin_one]
+    simp [f, Matrix.GeneralLinearGroup.val_det_apply]
   rw [← Finset.sum_congr rfl fun x _ => hf x]
   refine sum_hom_units_eq_zero f ?_
   intro h1
@@ -60,7 +60,7 @@ theorem hfree_one {F : Type} [Field F] [Finite F] (θ : AlgebraicClosure F →* 
     (by rw [Matrix.det_fin_one]; exact u.isUnit)
   have hx : f x = 1 := by rw [h1]; rfl
   have hx' : f x = θ (algebraMap F (AlgebraicClosure F) ((u : F) ^ k)) := by
-    simp [f, x, Matrix.GeneralLinearGroup.val_det_apply, Matrix.det_fin_one, map_pow]
+    simp [f, x, Matrix.GeneralLinearGroup.val_det_apply, map_pow]
   rw [hx', ← map_one θ] at hx
   have hne : algebraMap F (AlgebraicClosure F) ((u : F) ^ k) ≠ 0 := by
     rw [_root_.map_ne_zero]; exact pow_ne_zero _ u.ne_zero
@@ -89,7 +89,7 @@ theorem dg_off {m : ℕ} (l : Fin m) (d : F) (i j : Fin m) (hj : j ≠ l) :
     dg l d i j = (1 : Matrix (Fin m) (Fin m) F) i j := by
   by_cases h : i = j
   · subst h; simp [dg, hj]
-  · simp [dg, Matrix.one_apply, h]
+  · simp [dg, h]
 
 theorem mem_nilRad_of {m : ℕ} (l : Fin m) (M : Matrix (Fin m) (Fin m) F)
     (h1 : ∀ i j, j ≠ l → M i j = 0) (h2 : M l l = 0) : Matrix.toLin' M ∈ nilRad (hyp l) := by

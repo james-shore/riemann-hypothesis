@@ -65,6 +65,6 @@ theorem exists_evalAt_span (ι : Type) [Fintype ι] (a : ℕ) (lam : ι → DomW
     _ = T ((L (Φ ⟨F, hF⟩) : V) : PY ι a) := by rw [← key]
     _ = ∑ j, evalAt (y j) F • T (L (Pi.single j 1) : PY ι a) := by
       rw [hΦ, map_sum]
-      simp [map_smul, Submodule.coe_sum, Submodule.coe_smul]
+      simp [map_smul]
 
 end GlobalTheory.KJInf

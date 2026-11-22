@@ -121,8 +121,8 @@ lemma pivot_neg {x : Frame X.Ψ r} (hx : x ∈ X.dom) (ho : X.IsOrtho x) {Z : X.
   have hre := Bf_self_re X Z τ (v - t)
   have hP0 : Pv X (v - t) = 0 := by
     funext a
-    have ha : ((Fin.castLE X.p0_le a : Fin r) : ℕ) < X.p0 := by simp [Fin.coe_castLE]
-    simp [Pv, ht, ha]
+    have ha : ((Fin.castLE X.p0_le a : Fin r) : ℕ) < X.p0 := by simp
+    simp [Pv, ht]
   have hNm : Nv X Z τ (v - t) m0 = 1 := by
     have h1 : ∀ c : Fin X.p0, (v - t) (Fin.castLE X.p0_le c) = 0 := fun c => congrFun hP0 c
     simp only [Nv, h1, mul_zero, Finset.sum_const_zero, add_zero]

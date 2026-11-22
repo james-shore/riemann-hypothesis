@@ -16,9 +16,7 @@ theorem coeFn_sum_smul {α : Type} [MeasurableSpace α] {μ : Measure α} {ι : 
   first
   | exact @_root_.GlobalTheory.FinsetSumSmulCoe.main
   | exact _root_.GlobalTheory.FinsetSumSmulCoe.main
-  | (apply _root_.GlobalTheory.FinsetSumSmulCoe.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FinsetSumSmulCoe.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FinsetSumSmulCoe.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.FinsetSumSmulCoe.main)
   | (intros; exact _root_.GlobalTheory.FinsetSumSmulCoe.main ..)
 
 theorem sum_smul_apply {ι α : Type} [Fintype ι] (L : ι → (α → ℂ) →ₗ[ℂ] (α → ℂ)) (c : ι → ℂ) (φ : α → ℂ) (y : α) :

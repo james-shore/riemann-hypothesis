@@ -15,7 +15,6 @@ theorem local_switching_lattice : LocSw := by
     intro c
     first
     | rfl
-    | rw [← IsScalarTower.algebraMap_apply, ← IsScalarTower.algebraMap_apply]
   have hSw : Sw F E t ≤ hcompl (K := E) p := by
     intro s hs
     obtain ⟨c, hc, rfl⟩ := Submonoid.mem_map.1 hs

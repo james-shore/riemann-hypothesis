@@ -38,7 +38,7 @@ private lemma toGQ_mul_ofSL_eq_ofSL_mul_toGQ (γ γ' : SL(2, ℤ)) (l : ℕ) (hl
   have h10 := congrFun (congrFun hγ' 1) 0
   have h11 := congrFun (congrFun hγ' 1) 1
   simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-    Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_cons] at h00 h01 h10 h11
+    Matrix.empty_val', Matrix.cons_val_fin_one] at h00 h01 h10 h11
   have hBq : ((l : ℚ) * B = γ 0 1 + j * γ 1 1 - k * (γ 0 0 + j * γ 1 0)) := by exact_mod_cast hB
   fin_cases i <;> fin_cases i' <;>
     simp [Matrix.mul_apply, Fin.sum_univ_two, Matrix.SpecialLinearGroup.toGLPos,
@@ -99,7 +99,7 @@ theorem _root_.GlobalTheory.NormDelta.norm_delta (Ω : Type) [Field Ω] [Algebra
       Matrix.SpecialLinearGroup.coe_inv, Matrix.adjugate_fin_two]
     simp only [_root_.GlobalTheory.NormDelta.conjM, Matrix.mul_apply, Fin.sum_univ_two, Matrix.of_apply,
       Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.empty_val',
-      Matrix.cons_val_fin_one, Matrix.head_cons]
+      Matrix.cons_val_fin_one]
     push_cast
     rw [hcM]
     refine ⟨?_, ?_, ?_⟩ <;> first | ring1 | linear_combination hdetM

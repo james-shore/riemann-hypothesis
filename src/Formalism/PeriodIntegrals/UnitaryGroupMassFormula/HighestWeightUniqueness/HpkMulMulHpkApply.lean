@@ -48,7 +48,7 @@ lemma Hpk_apply (i j : Fin (2 * r + k + 1)) :
   have := j.isLt
   unfold Hpk epsI
   simp only [hj, Fin.ext_iff]
-  split_ifs <;> first | rfl | omega | norm_num
+  split_ifs <;> first | rfl | omega
 
 lemma Hpk_mul_apply (X : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ) (i j) :
     (Hpk k r * X) i j = epsI k r i * X (piI k r i) j := by

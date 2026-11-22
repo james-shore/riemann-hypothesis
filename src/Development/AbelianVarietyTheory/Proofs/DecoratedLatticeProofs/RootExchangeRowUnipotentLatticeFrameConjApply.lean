@@ -21,7 +21,7 @@ theorem typeFrame_conj_symm_rowE_apply : ∀ (k : Type) [Field k] (κ t : Type) 
     rw [Units.val_mul, Units.val_mul, hinv, hbas]
     change fromBlocks _ _ _ _ * fromBlocks 1 0 _ 1 * _ = _
     simp only [fromBlocks_multiply]
-    congr 1 <;> ext i y <;> simp [diagonal_apply]
+    congr 1 <;> ext i y <;> simp
     by_cases hi : (i : ℕ) = p <;> simp [hi]
   have e : ((typeFrame ϖ ord).conj.symm (rowE c (p + 1) u)).val =
       ((typeFrame ϖ ord).bas⁻¹ * rowE c (p + 1) u * (typeFrame ϖ ord).bas).val.submatrix ord ord := rfl

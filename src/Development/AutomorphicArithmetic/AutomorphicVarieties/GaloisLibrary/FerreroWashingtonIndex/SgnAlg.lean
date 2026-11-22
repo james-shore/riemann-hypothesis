@@ -56,7 +56,7 @@ private theorem kap_range {G : Type} [CommGroup G] [Finite G] {J : G} (hJ : J * 
     have hne : e g ≠ e (J * g) := fun h => hJ1 (by simpa using e.injective h)
     have hfg : f (J * g) = f g := hf g
     rw [kap_apply hJ]
-    simp only [MonoidAlgebra.coeff_ofCoeff, Finsupp.coe_equivFunOnFinite_symm, ← mul_assoc, hJ, one_mul]
+    simp only [Finsupp.coe_equivFunOnFinite_symm, ← mul_assoc, hJ, one_mul]
     rcases lt_or_gt_of_ne hne with h | h
     · simp [h, h.le]
     · simp [h, h.le, hfg]

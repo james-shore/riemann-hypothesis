@@ -89,7 +89,7 @@ def conePair (τ : Pair I J T) (τ' : Pair I' J T') (f : I ⟶ I') (u : T ⟶ T'
       rw [Int.negOnePow_succ, Units.neg_smul, neg_add, neg_neg]
     · rw [← sm_comp, mappingCone.d_snd_v u w (w + 1) rfl, sm_add, sm_comp, sm_comp]
       simp only [coneMul_apply, sm_madd, sm_munits, snd_inl, snd_inr, fst_inl, fst_inr, zero_add, add_zero, snd_d,
-        LinearMap.map_add₂, τ'.leibniz, hc, HomologicalComplex.id_f, sm_id]
+        LinearMap.map_add₂, τ'.leibniz]
       rw [hc U (s + 1) t (w + 1) (by omega), HomologicalComplex.id_f, sm_id]
       abel
 
@@ -145,8 +145,7 @@ theorem lift_tInl (τ : Pair I J T) (τ' : Pair I' J T') (f : I ⟶ I') (u : T �
       (((mappingCone.inl u).v (w + 1) w (by omega)).hom.app (op U)).hom ∘ₗ τ.lift U (w + 1) := by
     refine DirectSum.linearMap_ext _ fun p => TensorProduct.ext' fun a b => ?_
     obtain ⟨⟨s, t⟩, hp⟩ := p
-    simp only [LinearMap.comp_apply, tInl, Pair.lift, DirectSum.toModule_lof, TensorProduct.map_tmul, LinearMap.id_apply,
-      TensorProduct.lift.tmul]
+    simp only [LinearMap.comp_apply, tInl, Pair.lift, DirectSum.toModule_lof, TensorProduct.lift.tmul]
     change coneMul τ τ' f u U (s - 1) t w (by omega) (Sec.map ((mappingCone.inl f).v s (s - 1) (by omega)) a) b =
       Sec.map ((mappingCone.inl u).v (w + 1) w (by omega)) (τ.mul U s t (w + 1) hp a b)
     rw [coneMul_apply, ← sm_comp _ ((mappingCone.snd f).v _ _ _), mappingCone.inl_v_snd_v, sm_zero, map_zero,
@@ -201,8 +200,7 @@ theorem res_tInl (f : I ⟶ I') {V U : Scheme.{0}} (g : V ⟶ U) (w : ℤ) (x : 
       tInl f V w ∘ₗ Tens.res g (w + 1) := by
     refine DirectSum.linearMap_ext _ fun p => TensorProduct.ext' fun a b => ?_
     obtain ⟨⟨s, t⟩, hp⟩ := p
-    simp only [LinearMap.comp_apply, tInl, Tens.res, DirectSum.toModule_lof, DirectSum.lmap_lof, TensorProduct.map_tmul,
-      LinearMap.id_apply]
+    simp only [LinearMap.comp_apply, tInl, Tens.res, DirectSum.toModule_lof, DirectSum.lmap_lof, TensorProduct.map_tmul]
     congr 1
     change Sec.res g (Sec.map ((mappingCone.inl f).v s (s - 1) (by omega)) a) ⊗ₜ[ULift.{1} R] Sec.res g b =
       Sec.map ((mappingCone.inl f).v s (s - 1) (by omega)) (Sec.res g a) ⊗ₜ[ULift.{1} R] Sec.res g b

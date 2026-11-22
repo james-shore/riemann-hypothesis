@@ -59,7 +59,6 @@ theorem isCuspForm_cpt (c : Kinf E a) {φ : Sm E a} (h : IsCuspForm φ) : IsCusp
   · change φ.1 (ratGL E a γ * g * infGL E a (Unitary.toUnits c)) = φ.1 (g * infGL E a (Unitary.toUnits c))
     rw [mul_assoc, hA.left]
   · exact level_of_le hA.level fun k hk => by
-      change finRep E a k (cptRep E a c φ) = cptRep E a c φ
       rw [← Module.End.mul_apply, fin_cpt_comm, Module.End.mul_apply, hk]
   · have := hA.kfin
     refine Submodule.finiteDimensional_of_le (S₂ := Submodule.span ℂ (Set.range fun c => cptRep E a c φ))

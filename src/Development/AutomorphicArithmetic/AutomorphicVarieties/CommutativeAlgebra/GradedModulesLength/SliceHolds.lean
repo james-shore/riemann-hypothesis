@@ -29,10 +29,10 @@ private theorem exists_ptDer_eq_degree_smul_of_graded {O A K : Type} [CommRing O
       push_cast
       ring
     | add b₁ b₂ h₁ h₂ =>
-      simp only [mul_add, map_add, smul_add, h₁, h₂, smul_eq_mul]
+      simp only [mul_add, map_add, h₁, h₂, smul_eq_mul]
       ring
   | add a₁ a₂ h₁ h₂ =>
-    simp only [add_mul, map_add, smul_add, add_smul, h₁, h₂, smul_eq_mul]
+    simp only [add_mul, map_add, h₁, h₂, smul_eq_mul]
     ring
 
 private theorem degree_derivation_vanishes_on_homogeneous_ideal {O A K : Type} [CommRing O] [CommRing A] [Algebra O A] [Field K] [Algebra O K]

@@ -183,7 +183,6 @@ private lemma bracket_product_le_of_neg_between_lemma (k r l : ℕ) (b c Y : ℝ
     apply prod_le_cube_mul_prod_of_bracket_chain b c (l - 1 - 1) hn hc hcb _
       (fun j => Y + lam (1 + (l - 1 - 1 - 1 - j)))
     intro j hj
-    beta_reduce
     set s := 1 + (l - 1 - 1 - 1 - j) with hs
     have hs1 : 1 ≤ s := by omega
     have hsj : s + j = l - 2 := by omega
@@ -209,7 +208,6 @@ private lemma bracket_product_le_of_neg_between_lemma (k r l : ℕ) (b c Y : ℝ
     apply prod_le_cube_mul_prod_of_bracket_chain b c (k - (l + 1)) hn hc hcb _
       (fun j => -Y - lam (l + 1 + j) - 1)
     intro j hj
-    beta_reduce
     have e0 := hspread j (l + 1) (by omega) (by omega)
     have e1 := (hint (l + 1) (by omega) (by omega)).1 (by omega)
     have e2 := (hdec l h1l (by omega)).1

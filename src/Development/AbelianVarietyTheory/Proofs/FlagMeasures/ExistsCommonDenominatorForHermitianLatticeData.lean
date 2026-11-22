@@ -50,8 +50,6 @@ theorem exists_int_smul_mem {E : Type} [Field E] [NumberField E] {n : ℕ}
   | exact @_root_.GlobalTheory.IntMulIntegerSmulMemLattice.exists_int_smul_mem_lattice
   | exact _root_.GlobalTheory.IntMulIntegerSmulMemLattice.exists_int_smul_mem_lattice
   | (apply _root_.GlobalTheory.IntMulIntegerSmulMemLattice.exists_int_smul_mem_lattice <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntMulIntegerSmulMemLattice.exists_int_smul_mem_lattice <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntMulIntegerSmulMemLattice.exists_int_smul_mem_lattice <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntMulIntegerSmulMemLattice.exists_int_smul_mem_lattice ..)
 
 theorem den_clear : ∀ {E : Type} [Field E] [NumberField E] {n : ℕ} {ι κ : Type} [Fintype ι] [Fintype κ] (v : ι → E) (g : κ → Fin n → E) (Hm : Matrix (Fin n) (Fin n) E) (sg : E →+* E) (Λ : Submodule (𝓞 E) (Fin n → E)), Submodule.IsLattice E Λ → ∃ D : ℤ, D ≠ 0 ∧ (∀ i, ∃ o : 𝓞 E, (D : E) * v i = o) ∧ (∀ x ∈ Λ, ∀ l, ∃ o : 𝓞 E, (D : E) * ∑ a, ∑ b, x a * Hm a b * sg (g l b) = o) ∧ ∀ l, (D : 𝓞 E) • g l ∈ Λ := by

@@ -73,14 +73,12 @@ theorem UpperTheory.V.Fr.exists_frobenius_corner :
       show ((ρ.r (F.loc0 v x)).submatrix cor cor - (ρ.ψ v 0 x : K) • 1) * ((ρ.r (F.loc0 v g₁)).submatrix cor cor - (ρ.ψ v 1 g₁ : K) • 1) * ((ρ.r (F.loc0 v y)).submatrix cor cor - (ρ.ψ v 2 y : K) • 1) = 0
       have h3 := ρ.ord v ![x, g₁, y]
       rw [ordProd_three] at h3
-      beta_reduce at h3
       rw [← cor_sub, ← cor_sub, ← cor_sub, mul_assoc, ← cor_mul _ _ (hcs _ _ 0 (by decide)) (hcs _ _ 2 (by decide)), ← cor_mul _ _ (hcs _ _ 0 (by decide)) (hcs _ _ 2 (by decide)), ← mul_assoc, h3, Matrix.submatrix_zero]
       rfl
   · refine ⟨hodd, fun g i j => rfl, fun v i g => rfl, fun v g => ?_⟩
     obtain ⟨g₁, u0, u2, -⟩ := hU v
     have h3 := ρ.ord v ![g₁, g, g₁]
     rw [ordProd_three] at h3
-    beta_reduce at h3
     have h11 := congrFun (congrFun h3 1) 1
     rw [mid_mul' _ _ (hcs _ _ 0 (by decide)) (hcs _ _ 2 (by decide)), mid_mul' _ _ (hcs _ _ 0 (by decide)) (hcs _ _ 2 (by decide))] at h11
     simp only [Matrix.sub_apply, Matrix.smul_apply, Matrix.one_apply_eq, smul_eq_mul, mul_one, Matrix.zero_apply] at h11

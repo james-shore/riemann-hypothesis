@@ -2228,7 +2228,7 @@ theorem sum_piFinset_cons {M : Type*} [AddCommMonoid M] (r : ℕ) (S : Fin (r + 
     (F : (Fin (r + 1) → ℕ) → M) :
     ∑ μ ∈ Fintype.piFinset S, F μ =
       ∑ a ∈ S 0, ∑ μ' ∈ Fintype.piFinset (fun t : Fin r => S t.succ), F (Fin.cons a μ') := by
-  first | exact Bl.SecondBlockLemmaF.goal1 .. | (apply Bl.SecondBlockLemmaF.goal1 <;> assumption) | (intros; apply Bl.SecondBlockLemmaF.goal1 <;> assumption) | (apply @Bl.SecondBlockLemmaF.goal1 <;> assumption) | (intros; apply @Bl.SecondBlockLemmaF.goal1 <;> assumption) | (apply @Bl.SecondBlockLemmaF.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.SecondBlockLemmaF.goal1 ..
 
 theorem diff_of (h : BR) : Diff := by
   intro r c κ hκ

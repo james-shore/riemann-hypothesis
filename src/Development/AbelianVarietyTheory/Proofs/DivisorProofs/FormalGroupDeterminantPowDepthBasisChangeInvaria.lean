@@ -56,7 +56,7 @@ theorem coeff_prod_linP {i : ℕ} (g : Matrix (Fin i) (Fin i) C) (d e : (Σ _ : 
     rw [Finsupp.prod]
     convert this using 1
     · simp only [one_mul]
-      first | rfl | simp [Finsupp.degree_apply]
+      first | rfl
   exact hh.coeff_eq_zero h
 
 end

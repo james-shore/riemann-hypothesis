@@ -14,7 +14,7 @@ def dcos (N P : Subgroup G) (x : G) : Set G := {g | ∃ u ∈ N, ∃ p ∈ P, g 
 def cj (x : G) (P : Subgroup G) : Subgroup G := P.comap (MulAut.conj x⁻¹).toMonoidHom
 
 theorem mem_cj {x y : G} {P : Subgroup G} : y ∈ cj x P ↔ x⁻¹ * y * x ∈ P := by
-  simp [cj, MulAut.conj_apply]
+  simp [cj]
 
 theorem indicator_isLocallyConstant {W : Set G} (hW : IsClopen W) (c : ℂ) :
     IsLocallyConstant (W.indicator fun _ => c) := fun s => by
@@ -210,7 +210,7 @@ theorem indicator_dcos_mem {N B : Subgroup G} {T : Set (G → ℂ)}
   convert this using 1
   funext g
   rw [dcos_eq]
-  first | rfl | simp only [Set.indicator_apply, Set.mem_preimage]
+  first | rfl
 
 theorem I_dcos {N B : Subgroup G} {T : Set (G → ℂ)}
     (hT : ∀ F, F ∈ T ↔ (∀ u ∈ N, ∀ g, F (u * g) = F g) ∧ IsLocallyConstant F ∧
@@ -225,7 +225,7 @@ theorem I_dcos {N B : Subgroup G} {T : Set (G → ℂ)}
   congr 1
   funext g
   rw [dcos_eq]
-  first | rfl | simp only [Set.indicator_apply, Set.mem_preimage]
+  first | rfl
 
 theorem I_sum {N B : Subgroup G} {T : Set (G → ℂ)}
     (hT : ∀ F, F ∈ T ↔ (∀ u ∈ N, ∀ g, F (u * g) = F g) ∧ IsLocallyConstant F ∧

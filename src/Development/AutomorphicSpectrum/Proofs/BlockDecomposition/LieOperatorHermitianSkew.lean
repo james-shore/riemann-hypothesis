@@ -41,8 +41,8 @@ theorem EopV_adjoint : ∀ (E : Type) [Field E] [NumberField E] [IsTotallyComple
     exact Complex.conj_ofReal _
   have s1 := hB.1 (toL (Matrix.single i j (atEmb τ 1))) φ ψ
   have s2 := hB.1 (toL (Matrix.single i j (atEmb τ Complex.I))) φ ψ
-  simp only [EopV, e1, e2, op_lie_single_neg, LinearMap.smul_apply, LinearMap.sub_apply, LinearMap.neg_apply, LinearMap.add_apply,
-    map_smul, map_sub, map_neg, map_smulₛₗ, c2, Complex.conj_I, smul_eq_mul, s1, s2, RingHom.id_apply, smul_neg,
+  simp only [EopV, e1, e2, op_lie_single_neg, LinearMap.smul_apply, LinearMap.sub_apply, LinearMap.add_apply,
+    map_smul, map_sub, map_smulₛₗ, c2, Complex.conj_I, smul_eq_mul, s1, s2, smul_neg,
     sub_neg_eq_add, map_add]
   ring
 

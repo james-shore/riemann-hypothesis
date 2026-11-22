@@ -152,8 +152,6 @@ theorem exists_coc {ι : Type} [Fintype ι]
   | exact @_root_.GlobalTheory.UpperHalfImaginaryForm.exists_coc
   | exact _root_.GlobalTheory.UpperHalfImaginaryForm.exists_coc
   | (apply _root_.GlobalTheory.UpperHalfImaginaryForm.exists_coc <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UpperHalfImaginaryForm.exists_coc <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UpperHalfImaginaryForm.exists_coc <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UpperHalfImaginaryForm.exists_coc ..)
 
 variable {g : ℕ} {Hm : Matrix (Fin g) (Fin g) ℂ}

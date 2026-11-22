@@ -23,4 +23,4 @@ theorem _root_.GlobalTheory.T.localization_at_prime_etale_compat : ∀ (T O : Ty
     GlobalTheory.KeyOriginEnlarge.PointAtZero A (Localization.AtPrime QA) DA ρ →
     GlobalTheory.KeyOriginEnlarge.PointAtZero A₁ (GlobalTheory.KeyOriginBC.Loc₁ f i i₁ EA QA jA hcomp hj) (GlobalTheory.KeyOriginBC.BC (GlobalTheory.KeyOriginBC.fibBC f i i₁ EA QA jA hcomp hj hf) DA)
       (GlobalTheory.KeyOriginBC.reduceLoc f i i₁ EA QA jA hcomp hj ρ hρA hρX hunit) := by
-  first | (exact @GlobalTheory.KeyOriginBC.pointAtZero_bc) | (exact GlobalTheory.KeyOriginBC.pointAtZero_bc) | (intros; apply GlobalTheory.KeyOriginBC.pointAtZero_bc  <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginBC.pointAtZero_bc)

@@ -25,7 +25,6 @@ private theorem aeval_end_monomial_apply {M : Type*} [AddCommGroup M] [Module O 
   rw [aeval_monomial, linearMap_mul_apply]
   first
     | rw [Module.algebraMap_end_apply]
-    | simp
 
 theorem linearMap_aeval_apply_comm_of_intertwine (f : M₁ →ₗ[O] M₂) (d₁ : M₁ →ₗ[O] M₁) (d₂ : M₂ →ₗ[O] M₂)
     (hf : ∀ y, f (d₁ y) = d₂ (f y)) (P : O[X]) (y : M₁) :
@@ -55,7 +54,6 @@ private theorem aeval_end_C_apply {M : Type*} [AddCommGroup M] [Module O M]
   rw [aeval_C]
   first
     | rw [Module.algebraMap_end_apply]
-    | simp
 
 theorem exists_mem_map_eq_smul (f : M₁ →ₗ[O] M₂) (d₁ : M₁ →ₗ[O] M₁) (d₂ : M₂ →ₗ[O] M₂)
     (hf : ∀ y, f (d₁ y) = d₂ (f y)) (N₁ : Submodule O M₁) (hN : ∀ y ∈ N₁, d₁ y ∈ N₁)
@@ -65,7 +63,6 @@ theorem exists_mem_map_eq_smul (f : M₁ →ₗ[O] M₂) (d₁ : M₁ →ₗ[O] 
   obtain ⟨A, B, hAB⟩ : ∃ A B : O[X], A * P₁ + B * P₂ = C e := by
     first
       | exact Ideal.mem_span_pair.1 he
-      | simpa [smul_eq_mul] using Submodule.mem_span_pair.1 he
   obtain ⟨y₁, hy₁, hfy₁⟩ := h₁
   obtain ⟨y₂, hy₂, hfy₂⟩ := h₂
   refine ⟨aeval d₁ A y₁ + aeval d₁ B y₂,

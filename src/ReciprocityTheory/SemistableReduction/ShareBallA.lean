@@ -41,7 +41,7 @@ theorem sb_normSq_mulVec_le {r : ℕ} (A : Matrix (Fin r) (Fin r) ℂ) (v : Fin 
   refine Finset.sum_le_sum fun a _ => ?_
   calc ‖(A *ᵥ v) a‖ ^ 2 = ‖∑ b, A a b * v b‖ ^ 2 := rfl
     _ ≤ (∑ b, ‖A a b‖ * ‖v b‖) ^ 2 :=
-        pow_le_pow_left₀ (norm_nonneg _) ((norm_sum_le _ _).trans (le_of_eq (by simp [norm_mul]))) 2
+        pow_le_pow_left₀ (norm_nonneg _) ((norm_sum_le _ _).trans (le_of_eq (by simp))) 2
     _ ≤ (∑ b, ‖A a b‖ ^ 2) * (∑ b, ‖v b‖ ^ 2) := Finset.sum_mul_sq_le_sq_mul_sq _ _ _
 
 theorem sb_ballRatio_nonneg {r : ℕ} (hr : 0 < r) : 0 ≤ ballRatio r := by

@@ -78,7 +78,7 @@ theorem link_frames (p : Place D k) {ρ σ : ℕ} (B : BesLev D ρ) (B' : BesLev
     rw [← Matrix.mulVec_mulVec, l.map, Matrix.mulVec_neg, vecB]
   ext r c
   rcases c with a | ⟨⟨⟩⟩
-  · simp [Matrix.mul_apply, Matrix.single_apply]
+  · simp [Matrix.mul_apply]
   · have h2 : ∑ j, p.pr ((B.o.iB * l.τ) r j) * p.pr (B'.ζ j) = -p.pr (vecB B.o B.ζ r) := by
       have := congrArg (fun v => BoxModel.prH p (v r)) h1
       simp only [Matrix.mulVec, dotProduct, map_sum, map_mul, Pi.neg_apply, map_neg] at this

@@ -152,7 +152,7 @@ theorem exists_adj {L L' E F : Type} [AddCommGroup L] [Module ℂ L] [AddCommGro
     simp only [inner_add_left, ← hf, map_add, LinearMap.add_apply, inner_add_right]
   · intro c Q w
     refine ext_inner_right ℂ fun y => ?_
-    simp only [inner_smul_left, ← hf, hjs, map_smul, LinearMap.smul_apply, inner_smul_right, Complex.conj_conj]
+    simp only [inner_smul_left, ← hf, hjs, map_smul, LinearMap.smul_apply, inner_smul_right]
   · intro Q w₁ w₂
     refine ext_inner_right ℂ fun y => ?_
     simp only [inner_add_left, ← hf]
@@ -241,7 +241,7 @@ theorem adj_locIt : ∀ (D : D7) (V W : HSp D) (S S' : D.what₂.Tau → SPar) (
         have em : (M.fr τ * -X * (M.fr τ)⁻¹).map (starRingEnd ℂ) = -(M.fr τ * X * (M.fr τ)⁻¹).map (starRingEnd ℂ) := by
           rw [Matrix.mul_neg, Matrix.neg_mul, Matrix.map_neg _ (map_neg _)]
         rw [em, locS_neg, Matrix.trace_neg, mul_neg, neg_smul, LinearMap.neg_apply, hP₁]
-        simp only [map_sub, map_add, map_neg, LinearMap.sub_apply, LinearMap.add_apply, LinearMap.neg_apply]
+        simp only [map_sub, map_neg, LinearMap.sub_apply, LinearMap.neg_apply]
         abel
       rw [hv] at h1
       have h2 : HasDerivAt (fun s : ℝ => M.rep τ (NormedSpace.exp ((-s) • X)) (A (j.symm Q) y))

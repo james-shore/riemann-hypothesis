@@ -33,10 +33,10 @@ theorem hpk_col (m q : Fin (2 * r + k + 1)) :
   by_cases hq : q.val < r ∨ r + k < q.val
   · rw [if_pos hq] at ht
     simp only [Fin.ext_iff, ht]
-    split_ifs <;> first | rfl | (exfalso; omega) | norm_num
+    split_ifs <;> first | rfl | (exfalso; omega)
   · rw [if_neg hq] at ht
     simp only [Fin.ext_iff, ht]
-    split_ifs <;> first | rfl | (exfalso; omega) | norm_num
+    split_ifs <;> first | rfl | (exfalso; omega)
 
 private theorem tau_tau_lemma (i : Fin (2 * r + k + 1)) : tau k r (tau k r i) = i := by
   have h1 := tau_val (k := k) (r := r) i

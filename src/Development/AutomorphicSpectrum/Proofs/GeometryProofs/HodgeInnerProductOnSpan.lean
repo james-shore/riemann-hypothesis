@@ -338,12 +338,10 @@ theorem hodgeInnerProduct_of_span : ∀ (E : Type) [Field E] [NumberField E] [Is
   have h2 : ∀ a b, T a b = core.inner a b := fun a b =>
     forall_of_span hspan (p := fun a => T a b = core.inner a b) (h1 0 h0 b) (fun a ha => h1 a ha b)
       (fun a a' e e' => by
-        change _ = core.inner (a + a') b
         rw [core.add_left]
         rw [← e, ← e']
         simp only [T, map_add, star_add, mulVec_add, dotProduct_add, mul_add])
       (fun c a e => by
-        change _ = core.inner (c • a) b
         rw [core.smul_left]
         rw [← e]
         simp only [T, map_smul, star_smul, mulVec_smul, dotProduct_smul, smul_eq_mul]

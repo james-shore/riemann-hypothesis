@@ -125,7 +125,7 @@ theorem exists_isotropic_of_negIdx : ∀ (D : D7) (S : HSp D) (k : ℕ), NegIdx 
     refine Finset.sum_eq_zero fun j _ => ?_
     by_cases hj : j = i
     · subst hj; simp [hi]
-    · simp [Pi.single_apply, hj]
+    · simp [hj]
   push_neg at hz
 
   have hs : ∀ φ : D.host.E →+* ℂ, (∃ i, 0 < (φ (d i)).re) ∧ ∃ j, (φ (d j)).re < 0 := by

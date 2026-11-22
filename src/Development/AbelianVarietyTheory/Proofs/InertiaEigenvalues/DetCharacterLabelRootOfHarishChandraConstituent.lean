@@ -90,7 +90,7 @@ theorem eq_of_isCuspOf_det (L : LabelDatum g) (θ : (ZMod g)ˣ →* ℂˣ) (c : 
   let y : Gn g 1 := Units.map (Matrix.scalar (Fin 1) : ZMod g →+* Mt g 1).toMonoidHom u
   have hy00 : (y : Mt g 1) 0 0 = u := by simp [y]
   have hcp : (y : Mt g 1).charpoly = X - C ((y : Mt g 1) 0 0) := by
-    simp [Matrix.charpoly, Matrix.det_fin_one]
+    simp [Matrix.charpoly]
   have hx : algebraMap (ZMod g) (Formalism.CyclotomicNorms.Fbar g) (-P.coeff 0) ∈ Formalism.CyclotomicNorms.rootsBar P := by
     rw [hPe]; simp [Formalism.CyclotomicNorms.rootsBar]
   have hz : L.gen 1 ∈ Formalism.CyclotomicNorms.rootsBar (y : Mt g 1).charpoly := by
@@ -101,7 +101,7 @@ theorem eq_of_isCuspOf_det (L : LabelDatum g) (θ : (ZMod g)ˣ →* ℂˣ) (c : 
     rw [← map_pow, pow_one, ZMod.pow_card_sub_one_eq_one hc'0, map_one]
   have hth := GlobalTheory.GLq.LabelDet.theta_gen_pow L hxp 1
   rw [pow_one, pow_one] at hth
-  have hdet : Matrix.GeneralLinearGroup.det y = u := by ext; simp [y, Matrix.det_fin_one]
+  have hdet : Matrix.GeneralLinearGroup.det y = u := by ext; simp [y]
   simp only [hdet, Nat.sub_self, pow_zero, one_mul, Finset.sum_range_one, pow_one, hth] at key
   rw [h.2 u hu] at key
   have := L.teich_inj _ _ ((_root_.map_ne_zero _).2 h.1) ((_root_.map_ne_zero _).2 hc'0) key

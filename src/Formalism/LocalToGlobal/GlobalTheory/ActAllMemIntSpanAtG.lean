@@ -227,7 +227,6 @@ theorem actAll_mem_intSpanAtG (k : Tau → Matrix (Fin n) (Fin n) (intW Pl w))
       rw [hd, ← hu]
       first
         | exact zpow_mem_intW Pl w u _
-        | exact pow_mem (u : intW Pl w).2 _
     have e : Formalism.MainNotions.flipTwoThree.actAll lam (fun τ => (k τ).map (intW Pl w).subtype)
         (r • Formalism.MainNotions.flipTwoThree.ten (fun τ => MvPolynomial.map (Int.castRingHom LL) (f τ))) =
         (∏ τ, ((k τ).map (intW Pl w).subtype).det ^ (lam τ).detShift) • r •

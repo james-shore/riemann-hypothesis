@@ -180,7 +180,7 @@ theorem unip_eq_nmat : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Num
     have h3 := inv (incV F H'.y) (incV F H'.y)
     rw [hgY] at h3
     simp only [hA_add_l, hA_add_r, hA_smul_l, hA_smul_r, hXX, hXY, hYX, hYY, hιX, hιY, hXι, hYι, mul_zero, mul_one,
-      zero_add, add_zero, one_smul, one_mul] at h3
+      zero_add, add_zero, one_smul] at h3
     linear_combination h3
   refine ⟨β, α, hα, ?_⟩
   have key : ∀ v, mat g *ᵥ v = nmat σ W.J (incV F H'.x) (incM F H'.ι *ᵥ β) α *ᵥ v := by

@@ -274,7 +274,7 @@ theorem _root_.GlobalTheory.ZH.FieldOfTest.exists_finiteDimensional_of_isComplet
     let g : Polynomial ℚ_[p] :=
       ∑ j : Fin (n + 1), Polynomial.C (c j : ℚ_[p]) * Polynomial.X ^ (j : ℕ)
     have hgi : g.coeff i = c i := by
-      simp [g, Polynomial.finset_sum_coeff, Polynomial.coeff_C_mul_X_pow, Fin.val_inj]
+      simp [g, Fin.val_inj]
     have hg0 : g ≠ 0 := by
       intro h0
       rw [h0, Polynomial.coeff_zero] at hgi

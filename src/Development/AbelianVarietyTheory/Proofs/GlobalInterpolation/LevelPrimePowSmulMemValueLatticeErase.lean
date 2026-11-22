@@ -131,7 +131,7 @@ theorem weight_rowW {r n : ℕ} (d : Fin r × Fin n →₀ ℕ) (a : Fin r) :
     by_cases h : a = b
     · subst h
       simp [Finsupp.weight_apply, rowDeg, rowW, Finsupp.sum_single_index, Finsupp.single_apply]
-    · simp [Finsupp.weight_apply, rowDeg, rowW, Finsupp.sum_single_index, Finsupp.single_apply, h, Ne.symm h]
+    · simp [Finsupp.weight_apply, rowDeg, rowW, Finsupp.sum_single_index, h]
 
 theorem word_homog (R : Type) [CommRing R] {n : ℕ} (ν : Fin n → ℕ) (hν : Antitone ν)
     (w : List (Fin n × Fin n × ℕ)) :
@@ -309,7 +309,7 @@ theorem f_expand (p : LocF.PP Lc n) {h : GL (Fin n) Lc.K} (hh : Lc.IsFrame n h p
   have e : (h : Matrix (Fin n) (Fin n) Lc.K).mulVec (fun a => (x a : Lc.K)) =
       ∑ a, x a • (h : Matrix (Fin n) (Fin n) Lc.K).mulVec (Pi.single a 1) := by
     funext b
-    simp [Matrix.mulVec, dotProduct, Finset.sum_apply, Pi.single_apply, Subring.smul_def, mul_comm]
+    simp [Matrix.mulVec, dotProduct, Finset.sum_apply, Subring.smul_def, mul_comm]
   rw [e]
   have hm : ∀ a, (h : Matrix (Fin n) (Fin n) Lc.K).mulVec (Pi.single a 1) ∈ p.1.L :=
     fun a => (hh _).2 (single_std a)

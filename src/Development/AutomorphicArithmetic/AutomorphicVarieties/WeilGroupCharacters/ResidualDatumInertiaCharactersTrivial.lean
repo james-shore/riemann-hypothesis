@@ -16,7 +16,6 @@ private theorem mu_pow {l : ℕ} [Fact l.Prime] (F : GFrame l) (v : F.Vl) (g : F
   obtain ⟨m, hm⟩ : ∃ m : ℕ, (QuotientGroup.mk' (commutator (F.Gv v)).topologicalClosure (g : F.Gv v)) ^ l ^ m = 1 := by
     first
       | exact hg
-      | (obtain ⟨m, hm⟩ := hg; exact ⟨m, by rw [← hm]; exact pow_orderOf_eq_one _⟩)
   refine ⟨m, ?_⟩
   rw [← map_pow, QuotientGroup.mk'_apply, QuotientGroup.eq_one_iff] at hm
   exact hm

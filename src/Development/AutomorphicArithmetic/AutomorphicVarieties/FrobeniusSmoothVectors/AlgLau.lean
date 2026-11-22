@@ -21,7 +21,7 @@ theorem UpperTheory.V.Fr.alg_lau :
   have hr' : ∀ g i j, ρ'.r g i j = AddMonoidAlgebra.single (w n i - w n j) (ρ.r g i j) := by
     intro g i j
     rw [hr, lauT_zpow, NRep.map_r]
-    simp [AddMonoidAlgebra.single_mul_single]
+    simp
   have hψ' : ∀ v i g, ((ρ'.ψ v i g : (AddMonoidAlgebra K ℤ)ˣ) : AddMonoidAlgebra K ℤ) =
       AddMonoidAlgebra.single 0 (ρ.ψ v i g : K) := by
     intro v i g

@@ -21,7 +21,6 @@ lemma zero_free_region_mono {c c' : ℝ} (h : c ≤ c') {q : ℕ} [NeZero q] {s 
   have h2 : c / Real.log (↑q * (|s.im| + 2)) ≤ c' / Real.log (↑q * (|s.im| + 2)) := by
     first
       | exact div_le_div_of_nonneg_right h hL.le
-      | exact (div_le_div_iff_of_pos_right hL).mpr h
   linarith
 
 lemma half_le_of_real_in_region {c₁ : ℝ} (h : c₁ ≤ 1 / 20) {q : ℕ} [NeZero q] {β : ℝ} (hs : InRegion c₁ q (β : ℂ)) :

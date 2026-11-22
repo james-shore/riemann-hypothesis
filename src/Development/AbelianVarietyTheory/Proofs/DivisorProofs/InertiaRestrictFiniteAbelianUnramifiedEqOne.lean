@@ -35,8 +35,6 @@ theorem restrict_eq_one : ∀ {K : Type} [Field K] [NumberField K] {Ω : Type} [
     have : ((algebraMap (𝓞 K) (𝓞 L) x : L) : AlgebraicClosure K) = algebraMap K (AlgebraicClosure K) (x : K) := by
       first
         | rfl
-        | (rw [RingOfIntegers.algebraMap_coe]; rfl)
-        | simp [IsScalarTower.algebraMap_apply K L (AlgebraicClosure K)]
     rw [this, AlgEquiv.commutes]
   have hram : Q.ramificationIdx (𝓞 K) = 1 := hv Q hQp hQo
   have hcard : Nat.card (Q.inertia (L ≃ₐ[K] L)) = 1 := by
@@ -53,7 +51,7 @@ theorem restrict_eq_one : ∀ {K : Type} [Field K] [NumberField K] {Ω : Type} [
         = e (σ (e.symm ((y : L) : AlgebraicClosure K))) - ((y : L) : AlgebraicClosure K) := by
       have h3 : ((AlgEquiv.restrictNormalHom L ((e.symm.trans σ).trans e) • y : 𝓞 L) : L) =
           AlgEquiv.restrictNormalHom L ((e.symm.trans σ).trans e) (y : L) := rfl
-      simp only [map_sub, h3, AlgEquiv.restrictNormalHom_apply]
+      simp only [map_sub, h3]
       have h4 := AlgEquiv.restrictNormalHom_apply L ((e.symm.trans σ).trans e) (y : L)
       rw [AddSubgroupClass.coe_sub, h4]
       rfl

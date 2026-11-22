@@ -67,7 +67,7 @@ theorem UpperTheory.V.Ws.exists_iwasawaRank_bound_of_ferreroWashington :
     unfold ReciprocityTheory.Gal.cycMod ReciprocityTheory.Gal.cycZ at h
     unfold UpperTheory.V.Two.galChar
     rw [Units.ext_iff] at h ⊢
-    simp only [MonoidHom.comp_apply, Units.coe_map, MonoidHom.coe_coe] at h
+    simp only [MonoidHom.comp_apply, Units.coe_map] at h
     erw [cyclotomicCharacter.toZModPow] at h
     exact h
   have hμ : ∃ ζ : K, IsPrimitiveRoot ζ (if l = 2 then 4 else l) := by

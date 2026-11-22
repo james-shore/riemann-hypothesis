@@ -433,7 +433,7 @@ def T : Thick nodeL where
   x := ![DualNumber.eps, DualNumber.eps]
   v _ := 1
   s := 1
-  hx j := by fin_cases j <;> simp [nodeL, node, nodePt]
+  hx j := by fin_cases j <;> simp
   hs := by simp [Fin.prod_univ_two, DualNumber.eps_mul_eps, base]
   hv := by simp
 

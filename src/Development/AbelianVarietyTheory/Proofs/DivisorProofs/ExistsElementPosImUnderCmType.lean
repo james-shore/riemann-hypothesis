@@ -14,9 +14,6 @@ theorem denseRange_embeddings : DenseRange fun (x : E) (w : InfinitePlace E) => 
   first
   | exact @_root_.GlobalTheory.DenseEmbeddingProduct.denseRange_embedding_pi
   | exact _root_.GlobalTheory.DenseEmbeddingProduct.denseRange_embedding_pi
-  | (apply _root_.GlobalTheory.DenseEmbeddingProduct.denseRange_embedding_pi <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DenseEmbeddingProduct.denseRange_embedding_pi <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DenseEmbeddingProduct.denseRange_embedding_pi <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DenseEmbeddingProduct.denseRange_embedding_pi ..)
 
 theorem exists_im_pos (E : Type) [Field E] [NumberField E] [IsCMField E] (I : Type) [Fintype I]
@@ -46,7 +43,7 @@ theorem exists_im_pos (E : Type) [Field E] [NumberField E] [IsCMField E] (I : Ty
       InfinitePlace.isComplex_mk_iff.1 (IsTotallyComplex.isComplex _)
     rcases InfinitePlace.embedding_mk_eq (φ i) with h | h
     · have hex : ∃ j, (InfinitePlace.mk (φ i)).embedding = φ j := ⟨i, h⟩
-      simp [f, y, h, hex]
+      simp [f, y, h]
     · have hne : (InfinitePlace.mk (φ i)).embedding ≠ φ i := by
         rw [h]; exact fun h' => hnr (ComplexEmbedding.isReal_iff.2 h')
       have hex : ¬ ∃ j, (InfinitePlace.mk (φ i)).embedding = φ j := by

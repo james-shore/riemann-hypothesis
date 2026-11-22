@@ -192,12 +192,12 @@ theorem ratV_incl_k {v : Fin L.n → AE F E} (hv : v ∈ L.ratV) :
 theorem hz_uA_i0i0_k (u : Fin L.n → AE F E) : _root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k L u L.i₀ L.i₀ = 1 := by
   simp [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k, Matrix.sum_apply, Matrix.single, _root_.PositivityTheory.SiegelWeilFormula.Act.ComplexParameterFamilyContinuity.em_ne_k L]
 theorem hz_uA_i0em_k (u : Fin L.n → AE F E) (l : Fin L.n) : _root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k L u L.i₀ (L.em l) = u l := by
-  simp [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k, Matrix.sum_apply, Matrix.single, Matrix.one_apply, _root_.PositivityTheory.SiegelWeilFormula.Act.C5.em_ne'_k L, L.inj.eq_iff]
+  simp [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k, Matrix.sum_apply, Matrix.single, _root_.PositivityTheory.SiegelWeilFormula.Act.C5.em_ne'_k L, L.inj.eq_iff]
 theorem unipotent_block_entry_zero (u : Fin L.n → AE F E) (k : Fin L.n) : _root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k L u (L.em k) L.i₀ = 0 := by
-  simp [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k, Matrix.sum_apply, Matrix.single, Matrix.one_apply, _root_.PositivityTheory.SiegelWeilFormula.Act.ComplexParameterFamilyContinuity.em_ne_k L, _root_.PositivityTheory.SiegelWeilFormula.Act.C5.em_ne'_k L]
+  simp [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k, Matrix.sum_apply, Matrix.single, _root_.PositivityTheory.SiegelWeilFormula.Act.ComplexParameterFamilyContinuity.em_ne_k L, _root_.PositivityTheory.SiegelWeilFormula.Act.C5.em_ne'_k L]
 theorem hz_uA_emem_k (u : Fin L.n → AE F E) (k l : Fin L.n) :
     _root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k L u (L.em k) (L.em l) = if k = l then 1 else 0 := by
-  simp [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k, Matrix.sum_apply, Matrix.single, Matrix.one_apply, _root_.PositivityTheory.SiegelWeilFormula.Act.ComplexParameterFamilyContinuity.em_ne_k L, _root_.PositivityTheory.SiegelWeilFormula.Act.C5.em_ne'_k L, L.inj.eq_iff]
+  simp [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k, Matrix.sum_apply, Matrix.single, Matrix.one_apply, _root_.PositivityTheory.SiegelWeilFormula.Act.C5.em_ne'_k L, L.inj.eq_iff]
 def Dm_k (L : _root_.PositivityTheory.SiegelWeilFormula.LD_k d) (u : Fin L.n → AE F E) : Matrix (Fin d.n) (Fin d.n) (AE F E) := (_root_.PositivityTheory.SiegelWeilFormula.Act.C5.uA_k L (-u))ᵀ.map (cA σ)
 theorem hz_D_i0i0_k (u : Fin L.n → AE F E) : _root_.PositivityTheory.SiegelWeilFormula.Act.C5.Dm_k L u L.i₀ L.i₀ = 1 := by
   simp [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.Dm_k, _root_.PositivityTheory.SiegelWeilFormula.Act.C5.hz_uA_i0i0_k]
@@ -257,12 +257,10 @@ theorem heis'_k (h : _root_.PositivityTheory.SiegelWeilFormula.Act.C5.Hyp_k L nb
     · rw [GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, hC, hM]
       simp [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.bMat_k, Matrix.fromBlocks_multiply]
     · rw [GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, hC, hC, hC, hM]
-      simp only [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.bMat_k, Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₁₁, Matrix.one_mul, Matrix.mul_one,
-        Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
+      simp only [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.bMat_k, Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₁₁, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
       exact _root_.PositivityTheory.SiegelWeilFormula.Act.C5.hz_uA_add_k u₀ u
     · rw [GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, GlobalTheory.EisBL.DoubledParabolic.inFrame_mul, hC, hC, hC, hM]
-      simp only [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.bMat_k, Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₁₂, Matrix.one_mul, Matrix.mul_one,
-        Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
+      simp only [_root_.PositivityTheory.SiegelWeilFormula.Act.C5.bMat_k, Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₁₂, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
       have hZ : ellA δ (y u₀ b) • inclR (F := F) (AF F) δ = y u₀ b := by
         refine _root_.PositivityTheory.SiegelWeilFormula.Act.C5.eig_k (R := R) h _ ?_
         have he := _root_.PositivityTheory.SiegelWeilFormula.Act.C5.eps_mul_k R

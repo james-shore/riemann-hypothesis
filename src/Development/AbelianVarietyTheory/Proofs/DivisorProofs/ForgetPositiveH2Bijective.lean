@@ -72,7 +72,7 @@ theorem fnMap_h2_bijective (C : Type 1) [Category.{0} C] (K : Cx C) (h11 : K.M1.
       rw [e2, map_add, K.diffTwo_comp_diffOne, add_zero, K.diffTwo_natural]
     let a : K.Z2 := ⟨(b.1.1, fun T T' φ => -f T T' φ, g), by
       refine ⟨hb1, fun T T' T'' φ ψ => ?_, fun T T' φ => ?_, fun T => ?_⟩
-      · rw [hf T T' T'' φ ψ]; simp only [map_neg, map_sub, map_add]; abel
+      · rw [hf T T' T'' φ ψ]; simp only [map_neg]; abel
       · have e := hg T T' φ
         change g T' = K.M2.map φ (g T) + K.d1 T' (-f T T' φ)
         rw [e]; abel

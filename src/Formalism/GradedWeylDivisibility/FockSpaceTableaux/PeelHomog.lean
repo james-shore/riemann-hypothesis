@@ -24,7 +24,6 @@ private theorem weight_single_eq_nsmul {σ M : Type*} [AddCommMonoid M] (w : σ 
     Finsupp.weight w (Finsupp.single s c) = c • w s := by
   first
     | (rw [Finsupp.weight_apply, Finsupp.sum_single_index]; exact zero_smul ℕ (w s))
-    | simp [Finsupp.weight_apply]
 
 private theorem eq_erase_erase_add_single_add_single {r n : ℕ} (l j : Fin n) (hlj : l ≠ j) (a0 : Fin r)
     (m : Fin r × Fin n →₀ ℕ) :
@@ -39,7 +38,7 @@ private theorem eq_erase_erase_add_single_add_single {r n : ℕ} (l j : Fin n) (
       simp [hlj, Ne.symm hlj]
     · by_cases hj : t = j
       · subst hj
-        simp [hl, Ne.symm hl]
+        simp [Ne.symm hl]
       · simp [hl, hj, Ne.symm hl, Ne.symm hj]
   · simp [hb, Ne.symm hb]
 
@@ -84,9 +83,6 @@ private theorem weight_pairW_eq_erase_of_split {r n : ℕ} (l j : Fin n) (hlj : 
     rw [map_add, map_add, weight_single_eq_nsmul, weight_single_eq_nsmul, hpl, hpj]
     first
       | (rw [add_assoc, ← add_smul, Finsupp.smul_single, smul_eq_mul, mul_one])
-      | (ext y
-         simp only [Finsupp.add_apply, Finsupp.smul_apply, Finsupp.single_apply, smul_eq_mul]
-         split_ifs <;> ring)
   ext x
   by_cases hx : x = (a0, l)
   · rw [hx, Finsupp.erase_same]
@@ -100,11 +96,11 @@ theorem sliceHomogeneous : PeelHomog := by
   · intro d hd
     obtain ⟨m, hm, -, rfl⟩ := lcpeel_support l j a0 k g d hd
     exact weight_pairW_eq_erase_of_split l j hlj a0 m _ ω
-      (by simp [Finsupp.erase_apply, hlj]) (by simp [Finsupp.erase_apply])
+      (by simp [hlj]) (by simp)
       (eq_erase_erase_add_single_add_single l j hlj a0 m) (hg (mem_support_iff.mp hm))
   · intro d hd
     obtain ⟨m, -, -, rfl⟩ :=
       lcpeel_support l j a0 k g d (mem_support_iff.mp hd)
-    exact ⟨by simp [Finsupp.erase_apply, hlj], by simp [Finsupp.erase_apply]⟩
+    exact ⟨by simp [hlj], by simp⟩
 
 end Formalism.GradedWeylDivisibility

@@ -75,8 +75,8 @@ theorem _root_.GlobalTheory.conjTranspose_mul_mul_self_of_unitary_conj :
     simp only [← Matrix.mul_assoc, hBm]
   simp only [conjTranspose_add, conjTranspose_mul, conjTranspose_sub, conjTranspose_one,
     conjTranspose_conjTranspose, hJ, Matrix.add_mul, Matrix.mul_add, Matrix.sub_mul, Matrix.mul_sub,
-    Matrix.one_mul, Matrix.mul_one, Matrix.mul_assoc, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, hXP, hYP,
-    Matrix.mul_zero, Matrix.zero_mul, sub_zero, add_zero, zero_add]
+    Matrix.one_mul, Matrix.mul_one, Matrix.mul_assoc, r1, r2, r3, r4, r5, r6, r9, r10, hXP, hYP,
+    Matrix.mul_zero, sub_zero, add_zero]
   abel
 
 end GlobalTheory

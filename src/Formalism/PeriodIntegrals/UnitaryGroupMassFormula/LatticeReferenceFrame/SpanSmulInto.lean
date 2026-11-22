@@ -17,12 +17,10 @@ theorem GE_star (g : ℕ) {x : I.E} (h : GE I g x) : GE I g (star x) := by
   have hint : IsIntegral ℤ (starRingEnd I.E (t : I.E)) := by
     first
     | exact (RingOfIntegers.isIntegral_coe t).map (starRingEnd I.E).toIntAlgHom
-    | exact (t.2).map (starRingEnd I.E).toIntAlgHom
   refine ⟨⟨starRingEnd I.E (t : I.E), hint⟩, ?_⟩
   rw [ht]
   first
   | (rw [star_mul', star_natCast]; rfl)
-  | simp [star_mul']
 
 theorem span_part (p m r k : ℕ) (θ : 𝓞 I.E) (e f : Fin r → Fin I.n → I.E) (M T : ℕ)
     (w wd : Fin (k + 1) → Fin I.n → I.E)
@@ -171,7 +169,6 @@ theorem span_part (p m r k : ℕ) (θ : 𝓞 I.E) (e f : Fin r → Fin I.n → I
     have hint : IsIntegral ℤ (starRingEnd I.E (θ : I.E)) := by
       first
       | exact (RingOfIntegers.isIntegral_coe θ).map (starRingEnd I.E).toIntAlgHom
-      | exact (θ.2).map (starRingEnd I.E).toIntAlgHom
     exact ⟨⟨starRingEnd I.E (θ : I.E), hint⟩, rfl⟩
   intro y hy
   have hyN1 : (θ : I.E) • y ∈ N :=

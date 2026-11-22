@@ -50,12 +50,12 @@ theorem morse_A_sq : ∀ (k : Type) [Field k] [Infinite k] (X : Scheme.{0}) [Alg
   have eL := DiffVanish.interNum_of_cls_eq_sum hD hLv hQL nL (by
     intro i; refine Fin.cases ?_ (fun i => ?_) i
     · simp [nL, Lv, Fin.sum_univ_two]
-    · simp only [nL, Lv, Fin.sum_univ_two, Fin.cons_succ, Fin.cons_zero]
+    · simp only [nL, Lv, Fin.sum_univ_two, Fin.cons_succ]
       simp [hLcls, natCast_zsmul, add_comm])
   have eM := DiffVanish.interNum_of_cls_eq_sum hD hLv hQM nM (by
     intro i; refine Fin.cases ?_ (fun i => ?_) i
     · simp [nM, Lv, Fin.sum_univ_two]
-    · simp only [nM, Lv, Fin.sum_univ_two, Fin.cons_succ, Fin.cons_zero]
+    · simp only [nM, Lv, Fin.sum_univ_two, Fin.cons_succ]
       simp [hMcls, natCast_zsmul, add_comm])
   have hbq : (b : ℤ) ≤ (q : ℤ) * c := by
     have : b ≤ q * c := by rw [mul_comm]; exact hbc

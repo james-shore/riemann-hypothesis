@@ -20,7 +20,6 @@ theorem mainTie (L : SizeData₂ D) (Del h0 : ℕ) (u : D.what₂.Word) :
   rw [ofRecord_aT, ofRecord_logOm]
   first
   | rfl
-  | (unfold Formalism.LatticeIndexTer.ph phF; ring)
 
 theorem numRecTie_record (L : SizeData₂ D) (Del h0 : ℕ) (u : D.what₂.Word) :
     NumRecTie (ofRecord D L Del h0) L u ((D.mem u).A.T) L.Nc :=

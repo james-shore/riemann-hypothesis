@@ -119,15 +119,15 @@ private theorem last {m : ℕ} (hn : 2 ≤ n) (w : Plc L) (hw : IsSplitAt w)
   obtain ⟨a, ha, e⟩ := ((isCong hm _).1 (hle ⟨hx, hK⟩)).2 w ⟨0, by omega⟩ ⟨1, by omega⟩
   have e1 : (mL w (secW n w g) - 1) ⟨0, by omega⟩ ⟨1, by omega⟩ = 1 := by
     rw [mL, hc]
-    simp [g, el, Matrix.transvection, Matrix.single_apply]
+    simp [g, el, Matrix.transvection]
   rw [e1] at e
   have hv : Valued.v ((m : Kw w)) < 1 := by
     have h0 := (HeightOneSpectrum.valuation_lt_one_iff_mem (K := L) w (m : 𝓞 L)).2 hmw
     have e2 : (m : Kw w) = algebraMap L (Kw w) (algebraMap (𝓞 L) L (m : 𝓞 L)) := by simp
     rw [e2]
     first
-      | (rw [HeightOneSpectrum.algebraMap_adicCompletion, HeightOneSpectrum.valuedAdicCompletion_eq_valuation']; exact h0)
-      | (rw [HeightOneSpectrum.algebraMap_adicCompletion, HeightOneSpectrum.valuedAdicCompletion_eq_valuation]; exact h0)
+      | (rw [HeightOneSpectrum.algebraMap_adicCompletion, HeightOneSpectrum.valuedAdicCompletion_eq_valuation'])
+      | (rw [HeightOneSpectrum.algebraMap_adicCompletion, HeightOneSpectrum.valuedAdicCompletion_eq_valuation])
       | (erw [HeightOneSpectrum.valuedAdicCompletion_eq_valuation']; exact h0)
   have ha' : Valued.v a ≤ 1 := (HeightOneSpectrum.mem_adicCompletionIntegers _ _ _).1 ha
   have := congrArg Valued.v e

@@ -31,7 +31,7 @@ theorem UpperTheory.V.AlgebraTools.powerSeries_equiv_of_complete_dvr :
     intro n a hn
     rw [Polynomial.derivative_sub, Polynomial.derivative_X_pow, Polynomial.derivative_X]
     simp only [Polynomial.eval_sub, Polynomial.eval_mul, Polynomial.eval_C,
-      Polynomial.eval_natCast, Polynomial.eval_pow, Polynomial.eval_X, Polynomial.eval_one, hn,
+      Polynomial.eval_pow, Polynomial.eval_X, Polynomial.eval_one, hn,
       zero_mul, zero_sub]
   obtain ⟨nf, -, hq⟩ := FiniteField.card (ResidueField A) p
   set q := Fintype.card (ResidueField A) with hqdef
@@ -114,8 +114,8 @@ theorem UpperTheory.V.AlgebraTools.powerSeries_equiv_of_complete_dvr :
         intro i hi
         rw [← PowerSeries.trunc_trunc_mul_trunc, PowerSeries.coeff_trunc, if_pos hi,
           ← Polynomial.coe_mul, Polynomial.coeff_coe]
-      map_zero' := by simp [hev]
-      map_add' := fun f g' => by simp [hev, add_mul, Finset.sum_add_distrib] }
+      map_zero' := by simp
+      map_add' := fun f g' => by simp [hev] }
   have hg : ∀ {m n : ℕ} (hle : m ≤ n),
       (Ideal.Quotient.factorPow (maximalIdeal A) hle).comp (g n) = g m := by
     intro m n hle
@@ -172,7 +172,7 @@ theorem UpperTheory.V.AlgebraTools.powerSeries_equiv_of_complete_dvr :
     have hc : ∀ n, x = (PowerSeries.trunc n F).eval₂ s t + t ^ n * δ^[n] x := by
       intro n
       induction n with
-      | zero => simp [hev]
+      | zero => simp
       | succ n ih =>
         rw [hev, Finset.sum_range_succ, ← hev, Function.iterate_succ_apply']
         have hcn : PowerSeries.coeff n F = residue A (δ^[n] x) := PowerSeries.coeff_mk _ _

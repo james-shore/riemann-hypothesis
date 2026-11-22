@@ -55,7 +55,7 @@ theorem matL_tmul (b : Module.Basis κ ℤ D.La) (L : Link D G) (a : AfP p) (c :
     matL b L (a ⊗ₜ c) = a • (LinearMap.toMatrix (Algebra.TensorProduct.basis ℚ b)
       (Algebra.TensorProduct.basis ℚ b) (L.rep c)).map (algebraMap ℚ (AfP p)) := by
   have h : actOn L.rep (AfP p) (a ⊗ₜ c) = a • (L.rep c).baseChange (AfP p) := by
-    simp [actOn, Algebra.TensorProduct.lift_tmul, Algebra.smul_def]
+    simp [actOn, Algebra.smul_def]
     rfl
   simp only [matL, LinearMap.coe_comp, LinearEquiv.coe_coe, AlgHom.toLinearMap_apply, Function.comp_apply, h,
     map_smul, LinearMap.toMatrix_baseChange]

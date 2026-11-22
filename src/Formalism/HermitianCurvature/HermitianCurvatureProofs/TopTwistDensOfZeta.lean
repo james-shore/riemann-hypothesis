@@ -37,7 +37,7 @@ theorem zeta_entries (hZ : NF.ActualZetaSmooth) {P : M.Par} {z z' : Fin (2 * P.r
     · rw [Set.indicator_of_mem hx]
       rfl
     · have hz : (Φ : Q.Fn P.k P.r (Wq →L[ℂ] Wp)) c g = 0 := h0 (c, g) hx
-      simp [Set.indicator_apply, hx, hz]
+      simp [hx, hz]
 
   have hfun : (fun ζ : ℂ => fsv s ζ) =
       (fun y : ℂ => Complex.exp (s * id y - conj s * Complex.conjCLE y)) := funext fun y => rfl
@@ -52,16 +52,14 @@ theorem zeta_entries (hZ : NF.ActualZetaSmooth) {P : M.Par} {z z' : Fin (2 * P.r
     intro ζ
     rw [hfun2, (hder ζ).fderiv]
     simp only [ContinuousLinearMap.smul_apply, ContinuousLinearMap.sub_apply, ContinuousLinearMap.coe_id',
-        id_eq, Complex.conjCLE_apply, map_one, Complex.conj_I, smul_eq_mul, ContinuousLinearMap.coe_coe,
-        ContinuousLinearEquiv.coe_coe, Complex.conjCLE_apply, map_one, Complex.conj_I]
+        id_eq, Complex.conjCLE_apply, map_one, smul_eq_mul, ContinuousLinearEquiv.coe_coe, Complex.conjCLE_apply, map_one]
     ring
   have hvI : ∀ ζ : ℂ, fderiv ℝ (fun y : ℂ => Complex.exp (s * y - conj s * conj y)) ζ Complex.I =
       Complex.exp (s * ζ - conj s * conj ζ) * ((s + conj s) * Complex.I) := by
     intro ζ
     rw [hfun2, (hder ζ).fderiv]
     simp only [ContinuousLinearMap.smul_apply, ContinuousLinearMap.sub_apply, ContinuousLinearMap.coe_id',
-        id_eq, Complex.conjCLE_apply, map_one, Complex.conj_I, smul_eq_mul, ContinuousLinearMap.coe_coe,
-        ContinuousLinearEquiv.coe_coe, Complex.conjCLE_apply, map_one, Complex.conj_I]
+        id_eq, Complex.conjCLE_apply, Complex.conj_I, smul_eq_mul, ContinuousLinearEquiv.coe_coe, Complex.conjCLE_apply, Complex.conj_I]
     ring
   have hdZ : ∀ ζ, NF.dZ (fun ζ : ℂ => fsv s ζ) ζ = s * fsv s ζ := by
     intro ζ

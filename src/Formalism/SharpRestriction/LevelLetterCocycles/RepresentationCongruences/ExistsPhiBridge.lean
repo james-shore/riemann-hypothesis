@@ -60,7 +60,6 @@ theorem qA_eq : qA W = Br.cst X := by
   rw [Br.ι_X]
   show W.π₀ i + lA W i = W.π₀₁ + C ((PD.p : ℕ) : O)
   congr 1
-  all_goals first | rfl | simp [lA]
 theorem π₀_eq : W.π₀ = Br.cst (X - C ((PD.p : ℕ) : O)) := by
   funext i
   show W.π₀ i = Br.ι (X - C ((PD.p : ℕ) : O))

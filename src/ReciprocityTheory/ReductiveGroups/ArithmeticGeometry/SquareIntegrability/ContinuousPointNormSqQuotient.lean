@@ -56,7 +56,6 @@ theorem term_shift (γ : X.L) (c : Qc X I) (v : Vsp X.dim) :
     have hcl : (Quotient.out c' : X.L) - ((Quotient.out c : X.L) - γ) ∈ NIp X I := by
       rw [← Submodule.Quotient.eq]
       rw [Submodule.Quotient.mk_sub]
-      change Submodule.Quotient.mk (Quotient.out c') = Submodule.Quotient.mk (Quotient.out c) - _
       rw [show (Submodule.Quotient.mk (Quotient.out c') : Qc X I) = c' from Quotient.out_eq' c',
         show (Submodule.Quotient.mk (Quotient.out c) : Qc X I) = c from Quotient.out_eq' c]
     set d : Vsp X.dim := (((Quotient.out c' : X.L) - ((Quotient.out c : X.L) - γ) : X.L) : Vsp X.dim)

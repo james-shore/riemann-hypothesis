@@ -146,7 +146,7 @@ lemma reflection_mem_unitary (l : Fin r) (c : ℂ) (hc : c ≠ 0) : w1 k r l c �
   rcases trich l p with hp | hp | ⟨hp1, hp2⟩ <;> rcases trich l q with hq | hq | ⟨hq1, hq2⟩ <;>
     (try subst hp) <;> (try subst hq) <;>
     simp [sw_e, swap_dual_isotropic, al_e, reflection_scalar_dual_isotropic, sw_o, al_o, hpk_e_row, hpk_s_row, hpk_e_col, hpk_s_col, eI_ne_esI,
-      (eI_ne_esI l).symm, hc, *]
+      (eI_ne_esI l).symm, *]
 
 lemma reflection_fixes_basis_vector (l : Fin r) (c : ℂ) (j : Fin (2 * r + k + 1)) (h1 : j ≠ eI k r l) (h2 : j ≠ esI k r l) :
     w1 k r l c *ᵥ bvec j = bvec j := by

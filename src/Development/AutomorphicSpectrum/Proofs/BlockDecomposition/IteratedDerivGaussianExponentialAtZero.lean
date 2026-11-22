@@ -43,7 +43,7 @@ theorem hasDerivAt_eval {σ : Type*} [Fintype σ] (x : ℂ → σ → ℂ) (x' :
       intro k
       by_cases h : k = i
       · subst h
-        simp [MvPolynomial.pderiv_X_self]
+        simp
       · rw [MvPolynomial.pderiv_X_of_ne (Ne.symm h), map_zero, if_neg h]
     have hf : (fun w => MvPolynomial.eval (x w) (p * MvPolynomial.X i)) =
         fun w => MvPolynomial.eval (x w) p * x w i := by
@@ -59,7 +59,7 @@ theorem hasDerivAt_eval {σ : Type*} [Fintype σ] (x : ℂ → σ → ℂ) (x' :
       rw [MvPolynomial.pderiv_mul, map_add, map_mul, map_mul, MvPolynomial.eval_X, hX k]
       split_ifs <;> ring
     rw [Finset.sum_congr rfl (fun k _ => hs k), Finset.sum_add_distrib, ← Finset.sum_mul, ← Finset.sum_mul]
-    simp only [Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+    simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true]
     ring
 
 theorem pt_mul (X : Fin n → ℝ) (v : Fin m → Fin n → ℂ) (z : ℂ) (a : Fin m) (j : Fin n) :
@@ -96,7 +96,7 @@ theorem eval_dil (X : Fin n → ℝ) (v : Fin m → Fin n → ℂ) (z : ℂ) (P 
             MvPolynomial.eval (GlobalTheory.CompanionTheory.DilFam.pt X v z) (MvPolynomial.pderiv (a, j, true) P) -
           2 * ((2 * Real.pi : ℝ) : ℂ) * (GlobalTheory.CompanionTheory.DilFam.pt X v z (a, j, false) *
             GlobalTheory.CompanionTheory.DilFam.pt X v z (a, j, true) * MvPolynomial.eval (GlobalTheory.CompanionTheory.DilFam.pt X v z) P))) := by
-    simp only [PositivityTheory.Rg.Sw.dil, Finset.sum_apply, LinearMap.sum_apply,
+    simp only [PositivityTheory.Rg.Sw.dil, LinearMap.sum_apply,
       LinearMap.smul_apply, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.comp_apply,
       LinearMap.mulLeft_apply, LinearMap.id_apply, Derivation.coeFn_coe, map_sum, map_add, map_sub,
       MvPolynomial.smul_eval, map_mul, MvPolynomial.eval_X]

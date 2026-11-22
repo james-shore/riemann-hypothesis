@@ -51,7 +51,7 @@ open CategoryTheory Limits AlgebraicGeometry Opposite CochainComplex CochainComp
 open scoped TensorProduct in
 private lemma disc_face_eq_id (P : _root_.GlobalTheory.EtC.PSh) (n : ℕ) (i : Fin (n + 2)) :
     SimplicialObject.δ (_root_.GlobalTheory.EtC.disc.obj P) i = 𝟙 _ := by
-  first | rfl | simp [SimplicialObject.δ, _root_.GlobalTheory.EtC.disc]
+  first | rfl
 
 open CategoryTheory Limits AlgebraicGeometry Opposite CochainComplex CochainComplex.HomComplex Simplicial in
 open scoped TensorProduct in

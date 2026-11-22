@@ -48,7 +48,7 @@ theorem tvN_sq {ρ : ℕ} {A B : Fin ρ → AE D} (h : (fun k => cA D (B k)) ⬝
 
 theorem tvN_mulVec {ρ : ℕ} (A B z : Fin ρ → AE D) : tvN A B *ᵥ z = ((fun k => cA D (B k)) ⬝ᵥ z) • A := by
   ext i
-  simp only [Matrix.mulVec, vecMulVec_apply, dotProduct, Pi.smul_apply, smul_eq_mul, Finset.sum_mul, Finset.mul_sum]
+  simp only [Matrix.mulVec, vecMulVec_apply, dotProduct, Pi.smul_apply, smul_eq_mul, Finset.sum_mul]
   exact Finset.sum_congr rfl fun _ _ => by ring
 
 theorem adj_tvN {ρ : ℕ} (A B : Fin ρ → AE D) : adj (tvN A B) = tvN B A := by

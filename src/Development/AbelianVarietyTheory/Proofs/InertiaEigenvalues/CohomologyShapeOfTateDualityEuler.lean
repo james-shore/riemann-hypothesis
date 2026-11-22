@@ -58,7 +58,6 @@ theorem shapeG_of_localDuality (hT : Formalism.GaloisCohomology.LocalTateDuality
     first
       | rfl
       | (congr 3; exact (i.symm_apply_apply g).symm)
-      | simp
   have hMt : ∀ m : M, ∃ n : ℕ, ϖ ^ n • m = 0 := fun m => by
     obtain ⟨n, hn⟩ := GlobalTheory.T.fractionRingQuot_killed_by_pow_uniformizer hϖ (u m)
     exact ⟨n, u.injective (by rw [map_smul, hn, map_zero])⟩

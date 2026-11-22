@@ -17,7 +17,7 @@ theorem trace_hOf_mul (hH : HbFacts) (u u' : Fin n × Fin n → ℝ) :
     (hOf u * hOf u').trace = ∑ p, ((u p * u' p : ℝ) : ℂ) := by
   obtain ⟨-, horth, -⟩ := hH n
   simp only [hOf, Finset.sum_mul, Finset.mul_sum, Matrix.smul_mul, Matrix.mul_smul, Matrix.trace_sum,
-    Matrix.trace_smul, horth, smul_eq_mul, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.mem_univ, if_true]
+    Matrix.trace_smul, horth, smul_eq_mul, mul_ite, mul_one, mul_zero]
   refine Finset.sum_congr rfl fun p _ => ?_
   rw [Finset.sum_ite_eq']
   simp only [Finset.mem_univ, if_true]

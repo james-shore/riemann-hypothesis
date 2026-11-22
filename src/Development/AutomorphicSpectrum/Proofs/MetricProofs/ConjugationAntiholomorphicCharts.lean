@@ -109,7 +109,7 @@ theorem conj_analytic : ∀ {K : Type} [Fintype K] {ι : K → Type} [∀ k, Fin
       sameOrbit_trans ho1 (sameOrbit_trans (hc y') (sameOrbit_cj ho2))
     have hst : (star : ((Σ k, ι k) → ℂ) → _) (cj (affCoord p (lift x₀ y'))) = affCoord p (lift x₀ y') := by
       funext q; simp [cj]
-    simp only [Function.comp, star_star, hy', (A.chart k).left_inv h2s]
+    simp only [Function.comp, star_star, (A.chart k).left_inv h2s]
     rw [affCoord_eq_of_orbit p ho, affCoord_cj, hst]
 
 end GlobalTheory.CompanionTheory.Ar.PB.Cj

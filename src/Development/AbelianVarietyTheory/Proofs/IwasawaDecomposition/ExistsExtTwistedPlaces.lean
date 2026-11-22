@@ -58,12 +58,7 @@ theorem exists_below_of_range (D D' : D7) (h : Set.range D.what₂.embLL ⊆ Set
     ∃ v : D.what₂.places.Pl, Below D D' v v' := by
   first
   | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact @_root_.GlobalTheory.PrimeBelow.exists_below
-  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact _root_.GlobalTheory.PrimeBelow.exists_below
-  | exact @_root_.GlobalTheory.PrimeBelow.exists_below
-  | exact _root_.GlobalTheory.PrimeBelow.exists_below
-  | (apply _root_.GlobalTheory.PrimeBelow.exists_below <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PrimeBelow.exists_below <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PrimeBelow.exists_below <;> first | assumption | infer_instance)
+  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll]))
   | (intros; exact _root_.GlobalTheory.PrimeBelow.exists_below ..)
 
 theorem resChar_of_below {D D' : D7} {v : D.what₂.places.Pl} {v' : D'.what₂.places.Pl} (hB : Below D D' v v') :

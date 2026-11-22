@@ -16,7 +16,7 @@ theorem UpperTheory.Cb.augmentation_map_bijective :
     HasRingHomProperty.Spec_iff.mpr (RingHom.etale_algebraMap.mpr (cyc_etale q hq))
   have hs : Surjective (Spec.map φ) :=
     ⟨adjoinRoot_surj _ (cyclotomic.monic q _)
-      (by simp [natDegree_cyclotomic, Nat.totient_pos, Nat.pos_of_ne_zero hq0.out, hq0.out])⟩
+      (by simp [natDegree_cyclotomic, hq0.out])⟩
   refine ⟨pullback U.toSpecΓ (Spec.map φ), pullback.fst _ _, inferInstance, ?_, ?_⟩
   · intro u
     exact (Surjective.surj (f := pullback.fst U.toSpecΓ (Spec.map φ))) u

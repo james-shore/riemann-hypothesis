@@ -13,4 +13,4 @@ theorem _root_.GlobalTheory.T.kummer_residue_mem_adjoin_unit : ∀ (T V : Type) 
     (∀ v : V, ∃ f g : Polynomial T, Polynomial.aeval α g ≠ 0 ∧ Polynomial.aeval α g * v = Polynomial.aeval α f) →
     ∀ v : V, IsLocalRing.residue V v ∈
       IntermediateField.adjoin (IsLocalRing.ResidueField T) {IsLocalRing.residue V γ} := by
-  first | (exact @GlobalTheory.kummer_residue_mem_adjoin) | (exact GlobalTheory.kummer_residue_mem_adjoin) | (intros; apply GlobalTheory.kummer_residue_mem_adjoin  <;> assumption)
+  first | (exact @GlobalTheory.kummer_residue_mem_adjoin)

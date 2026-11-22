@@ -108,7 +108,7 @@ theorem rayField_splitsIn_of_isRayPrime (D : D7) (jE : D.host.E →+* Qb) (M : F
     exact ha.mul (hunit b hy0 (h2 ▸ h1)))
   have hu' : ¬ IsUnit b := fun hb => hpu (by
     haveI : Algebra.IsAlgebraic ℚ Qb := by
-      unfold Qb; convert AlgebraicClosure.isAlgebraic ℚ <;> first | rfl | exact Subsingleton.elim _ _
+      unfold Qb; convert AlgebraicClosure.isAlgebraic ℚ <;> first | rfl
     let τ : Qb ≃ₐ[ℚ] Qb := AlgEquiv.ofBijective σ (Algebra.IsAlgebraic.algHom_bijective σ)
     let τZ : Qb →ₐ[ℤ] Qb := τ.symm.toRingEquiv.toRingHom.toIntAlgHom
     have h1 := (hinv b hb).map τZ

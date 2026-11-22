@@ -53,8 +53,6 @@ theorem isReps_image {Λ₁ Λ₂ : AddSubgroup V} {M₁ M₂ : AddSubgroup W} {
   | exact @_root_.GlobalTheory.RepresentativesImage.isReps_image
   | exact _root_.GlobalTheory.RepresentativesImage.isReps_image
   | (apply _root_.GlobalTheory.RepresentativesImage.isReps_image <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RepresentativesImage.isReps_image <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RepresentativesImage.isReps_image <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RepresentativesImage.isReps_image ..)
 
 omit [Module ℂ V] [Module ℂ W] in

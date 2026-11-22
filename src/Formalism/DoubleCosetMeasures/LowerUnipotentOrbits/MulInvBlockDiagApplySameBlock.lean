@@ -172,13 +172,11 @@ theorem low_zero {n : ℕ} {x : Matrix (Fin n) (Fin n) K} (hx : IsLowUni x) {i j
     (h : i < j) : x i j = 0 := by
   first
   | exact hx.1 h
-  | exact hx.1 (show OrderDual.toDual j < OrderDual.toDual i from h)
 
 theorem up_zero {n : ℕ} {y : Matrix (Fin n) (Fin n) K} (hy : IsUpUni y) {i j : Fin n}
     (h : j < i) : y i j = 0 := by
   first
   | exact hy.1 h
-  | (unfold IsUpUni at hy; done)
 
 theorem mul_inv_one_low {n : ℕ} {x : Matrix (Fin n) (Fin n) K} (hx : IsLowUni x) :
     x * x⁻¹ = 1 := by

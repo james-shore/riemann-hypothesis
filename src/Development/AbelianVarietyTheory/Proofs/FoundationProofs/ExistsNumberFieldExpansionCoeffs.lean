@@ -14,7 +14,7 @@ theorem gal_alg (X : Tower Ω ε) (s : Ω ≃ₐ[ℚ] Ω) (c : Ω) :
   apply exp_inj X
   ext r
   rw [X.gal_exp, AlgHom.commutes, AlgHom.commutes, HahnSeries.algebraMap_apply', HahnSeries.algebraMap_apply']
-  by_cases h : r = 0 <;> simp [h, HahnSeries.coeff_single]
+  by_cases h : r = 0 <;> simp [h]
 
 theorem gal_j (X : Tower Ω ε) (s : Ω ≃ₐ[ℚ] Ω) : X.gal s X.jK = X.jK := by
   apply exp_inj X

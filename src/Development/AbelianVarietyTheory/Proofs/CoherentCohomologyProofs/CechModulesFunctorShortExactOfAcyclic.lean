@@ -20,8 +20,6 @@ theorem exists_addEquiv_of_surjective_of_ker {A B C : Type*} [AddCommGroup A] [A
   | exact @_root_.GlobalTheory.AddEquivOfSurjectiveKernel.exists_addEquiv_of_surjective_of_ker_iff
   | exact _root_.GlobalTheory.AddEquivOfSurjectiveKernel.exists_addEquiv_of_surjective_of_ker_iff
   | (apply _root_.GlobalTheory.AddEquivOfSurjectiveKernel.exists_addEquiv_of_surjective_of_ker_iff <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AddEquivOfSurjectiveKernel.exists_addEquiv_of_surjective_of_ker_iff <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AddEquivOfSurjectiveKernel.exists_addEquiv_of_surjective_of_ker_iff <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AddEquivOfSurjectiveKernel.exists_addEquiv_of_surjective_of_ker_iff ..)
 
 section Cube

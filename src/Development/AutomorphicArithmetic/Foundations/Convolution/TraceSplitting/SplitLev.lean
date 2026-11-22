@@ -61,7 +61,7 @@ theorem splitLev : SplitLev := by
     have h3 : (U : Set (Gw n v)) = (GLnLocal.integralGL (v.adicCompletion F) n : Set (Gw n v)) ∩
         ⋂ u : PlacesOver E v, (mapGL n (completionMap v u.1)) ⁻¹' (S u : Set (Gw n u.1)) := by
       ext g
-      simp [U, Subgroup.mem_inf, Subgroup.mem_iInf]
+      simp [U]
     rw [h3]
     exact (GLnLocal.isOpen_integralGL _ n).inter h2
   have hUle : U ≤ GLnLocal.integralGL (v.adicCompletion F) n := inf_le_left

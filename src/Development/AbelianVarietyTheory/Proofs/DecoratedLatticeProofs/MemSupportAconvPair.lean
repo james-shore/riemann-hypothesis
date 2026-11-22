@@ -19,7 +19,7 @@ theorem aconv_cons {G : Type} [AddMonoid G] (e : G →₀ ℂ) (l : List (G →�
     (ofCoeff (aconv (e :: l)) : AddMonoidAlgebra ℂ G) = ofCoeff e * ofCoeff (aconv l) := by
   apply AddMonoidAlgebra.coeff_injective
   rw [AddMonoidAlgebra.mul_def, AddMonoidAlgebra.coeff_finsuppSum]
-  simp only [AddMonoidAlgebra.coeff_finsuppSum, AddMonoidAlgebra.coeff_single, AddMonoidAlgebra.coeff_ofCoeff]
+  simp only [AddMonoidAlgebra.coeff_finsuppSum, AddMonoidAlgebra.coeff_single]
   rfl
 
 theorem aconv_nil {G : Type} [AddMonoid G] :
@@ -41,7 +41,7 @@ theorem mem_support_aconv_pair {G : Type} [AddMonoid G] (c d : G →₀ ℂ) {u 
   have h : (AddMonoidAlgebra.ofCoeff c * AddMonoidAlgebra.ofCoeff d : AddMonoidAlgebra ℂ G).coeff u ≠ 0 := by
     rw [← aconv_pair]; exact Finsupp.mem_support_iff.1 hu
   rw [AddMonoidAlgebra.coeff_mul] at h
-  simp only [AddMonoidAlgebra.coeff_ofCoeff] at h
+  simp only at h
   obtain ⟨a, ha, h1⟩ := Finset.exists_ne_zero_of_sum_ne_zero h
   obtain ⟨b, hb, h2⟩ := Finset.exists_ne_zero_of_sum_ne_zero h1
   by_cases hab : a + b = u
@@ -53,7 +53,7 @@ theorem conv_cons {G : Type} [Monoid G] (e : G →₀ ℂ) (l : List (G →₀ �
     (ofCoeff (conv (e :: l)) : MonoidAlgebra ℂ G) = ofCoeff e * ofCoeff (conv l) := by
   apply MonoidAlgebra.coeff_injective
   rw [MonoidAlgebra.mul_def, MonoidAlgebra.coeff_finsuppSum]
-  simp only [MonoidAlgebra.coeff_finsuppSum, MonoidAlgebra.coeff_single, MonoidAlgebra.coeff_ofCoeff]
+  simp only [MonoidAlgebra.coeff_finsuppSum, MonoidAlgebra.coeff_single]
   rfl
 
 theorem conv_nil {G : Type} [Monoid G] :

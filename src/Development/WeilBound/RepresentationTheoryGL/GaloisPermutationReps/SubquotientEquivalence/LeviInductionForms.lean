@@ -66,7 +66,7 @@ theorem exists_eq_pow_of_aeval {K F : Type*} [Field K] [Fintype K] [Field F] [Al
     exact h2 (i + (n - j)) (by omega) (by omega) H2
   have hinj : Set.InjOn (fun i : ℕ => w ^ (Nat.card K) ^ i) (Finset.range n : Set ℕ) := by
     intro i hi j hj H
-    simp only [Finset.mem_coe, Finset.mem_range, Finset.coe_range, Set.mem_Iio] at hi hj
+    simp only [Finset.coe_range, Set.mem_Iio] at hi hj
     rcases lt_trichotomy i j with h | h | h
     · exact absurd H (hlt i j h hj)
     · exact h

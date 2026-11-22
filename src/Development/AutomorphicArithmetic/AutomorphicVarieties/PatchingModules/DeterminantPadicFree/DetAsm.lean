@@ -59,7 +59,7 @@ private theorem eta_C : etaM ((DD.C c : DD A g) • P) = c • etaM P := by
   have hp : (DD.C c : DD A g).ep = 0 := rfl
   have hq : (DD.C c : DD A g).ep' = 0 := rfl
   ext i j
-  simp [etaM, ha, he, hp, hq]
+  simp [etaM, ha, he]
 private theorem eta_smul : etaM (c • P) = c • etaM P := eta_C P c
 private theorem ep_add (j) : ep'M j (P + Q) = ep'M j P + ep'M j Q := rfl
 private theorem ep_neg (j) : ep'M j (-P) = -ep'M j P := rfl
@@ -69,7 +69,7 @@ private theorem ep_C (j) : ep'M j ((DD.C c : DD A g) • P) = c • ep'M j P := 
   have ha : (DD.C c : DD A g).a = c := rfl
   have hq : (DD.C c : DD A g).ep' = 0 := rfl
   ext i k
-  simp [ep'M, ha, hq]
+  simp [ep'M, ha]
 private theorem ep_smul (j) : ep'M j (c • P) = c • ep'M j P := ep_C P c j
 
 private theorem constant_smul_mem_symmetric_deformation (h : P ∈ pairedDualFirstOrderDualMatrixSpace n A A g a) : (DD.C c : DD A g) • P ∈ pairedDualFirstOrderDualMatrixSpace n A A g a := by
@@ -84,16 +84,16 @@ private theorem constant_smul_mem_symmetric_deformation (h : P ∈ pairedDualFir
     refine ⟨by simp [h1], ?_, ?_⟩
     · funext k
       have e : (P i j).ep k = 0 := congrFun h2 k
-      simp [ha, hp, h1, e]
+      simp [ha, h1, e]
     · funext k
       have e : (P i j).ep' k = 0 := congrFun h3 k
-      simp [ha, hq, h1, e]
+      simp [ha, h1, e]
   · intro hij
     obtain ⟨h1, h2, h3⟩ := (h i j).2 hij
     refine ⟨by simp [h1], ?_, by simp [h3]⟩
     funext k
     have e : (P i j).ep k = 0 := congrFun h2 k
-    simp [ha, hp, h1, e]
+    simp [ha, h1, e]
 
 private theorem transpose_mem_symmetric_deformation (h : P ∈ pairedDualFirstOrderDualMatrixSpace n A A g a) : Pᵀ ∈ pairedDualFirstOrderDualMatrixSpace n A A g a := by
   simp [pairedDualFirstOrderDualMatrixSpace, blkMat, ddPart] at h ⊢
@@ -149,7 +149,7 @@ private theorem isKap {l : ℕ} [Fact l.Prime] {F : GFrame l} {n : ℕ} {x : NP 
       simp only [Pi.smul_apply, map_sum, mp_smul, hc', mul_smul]
       rw [← Finset.smul_sum, hc g]
       simp only [dTw, dY, one_smul, map_sub, map_mul, hY', hr]
-      simp [smul_sub, Matrix.mul_smul, Matrix.smul_mul]
+      simp [smul_sub]
     have hzero := k.indep c' ⟨Y', hY'od, hY't, hfun⟩
     funext j
     have e := hc' j
@@ -239,12 +239,12 @@ theorem UpperTheory.V.Pa.Det.detAsm :
     · apply mp_inj hinj
       rw [heps, eta_neg, eta_C, eta_tr, hZeta, map_neg, mp_smul, mp_tr, hY₀']
       conv_rhs => rw [← hY₀s]
-      simp only [s, Matrix.transpose_smul, smul_smul, neg_smul, smul_neg, mul_neg, mul_comm]
+      simp only [s, Matrix.transpose_smul, smul_smul, neg_smul, smul_neg, mul_comm]
     · intro j
       apply mp_inj hinj
       rw [heps, ep_neg, ep_C, ep_tr, hZep, map_neg, mp_smul, mp_tr, hY']
       conv_rhs => rw [← (hY j).2.1]
-      simp only [s, Matrix.transpose_smul, smul_smul, neg_smul, smul_neg, mul_neg, mul_comm]
+      simp only [s, Matrix.transpose_smul, smul_smul, neg_smul, smul_neg, mul_comm]
   · funext g
     apply hW.2.1
     · exact Submodule.smul_mem _ _ (hzW g)

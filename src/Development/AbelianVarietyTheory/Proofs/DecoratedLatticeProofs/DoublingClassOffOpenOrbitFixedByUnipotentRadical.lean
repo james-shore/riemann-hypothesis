@@ -49,7 +49,7 @@ theorem offOpen : ∀ (D : D7) (V : HSp D), ∀ γ ∈ GQ (dblSp V), ¬ (∃ δ 
     Matrix.of fun i j => (b j : Fin V.rank → D.host.E) i
   have hKv : ∀ y, K *ᵥ y = ((∑ j, y j • b j : W) : Fin V.rank → D.host.E) := by
     intro y; funext i
-    simp [K, Matrix.mulVec, dotProduct, Submodule.coe_sum, Finset.sum_apply, mul_comm]
+    simp [K, Matrix.mulVec, dotProduct, Finset.sum_apply, mul_comm]
   have hbQ : ∀ j, Qd *ᵥ (b j : Fin V.rank → D.host.E) = 0 := fun j => (b j).2
   have hQK : Qd * K = 0 := by
     refine Matrix.ext fun i j => ?_

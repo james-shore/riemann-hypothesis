@@ -9,14 +9,6 @@ theorem finsum_finset_sum_comm' {α β : Type*} (s : Finset β) (f : β → α �
     ∑ᶠ a, ∑ b ∈ s, f b a = ∑ b ∈ s, ∑ᶠ a, f b a := by
   first
     | exact finsum_sum_comm s (fun a b => f b a) hf
-    | (classical
-       induction s using Finset.induction_on with
-       | empty => simp
-       | insert b s hb ih =>
-         simp only [Finset.sum_insert hb]
-         rw [finsum_add_distrib (hf b (Finset.mem_insert_self b s))
-           ((s.finite_toSet.biUnion fun b' hb' => hf b' (Finset.mem_insert_of_mem hb')).subset
-             (Function.support_finset_sum)), ih fun b' hb' => hf b' (Finset.mem_insert_of_mem hb')])
 
 variable {K : Type} [Field K] [NumberField K] {ι : Type} [Fintype ι]
   {Ω : ι → Type} [∀ c, Field (Ω c)] [∀ c, Algebra K (Ω c)]

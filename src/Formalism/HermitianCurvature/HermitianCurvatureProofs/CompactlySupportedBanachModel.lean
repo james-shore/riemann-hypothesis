@@ -189,7 +189,7 @@ def kap (Y : Mat k r) : Mat k r := (1 + Y) * (1 - Y)⁻¹
 def iot (Z : Mat k r) : Mat k r := (Z - 1) * (Z + 1)⁻¹
 
 lemma kap_mem {Y : Mat k r} (hY : inLie k r Y) (hu : IsUnit (1 - Y).det) : kap Y ∈ GV k r := by
-  first | exact UpperTheory.Reformulated.B.Qj14.kap_mem .. | (apply UpperTheory.Reformulated.B.Qj14.kap_mem <;> assumption) | (intros; apply UpperTheory.Reformulated.B.Qj14.kap_mem <;> assumption) | (apply @UpperTheory.Reformulated.B.Qj14.kap_mem <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.Qj14.kap_mem <;> assumption) | (apply @UpperTheory.Reformulated.B.Qj14.kap_mem <;> first | assumption | infer_instance) | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k r Y hY hu | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k r Y hY | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k r Y | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k r | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k
+  first | exact UpperTheory.Reformulated.B.Qj14.kap_mem .. | (apply UpperTheory.Reformulated.B.Qj14.kap_mem <;> assumption) | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k r Y hY hu | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k r Y hY | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k r Y | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k r | exact @UpperTheory.Reformulated.B.Qj14.kap_mem k
 
 lemma iot_facts {h : Mat k r} (hh : h ∈ GV k r) (hu : IsUnit (h + 1).det) :
     inLie k r (iot h) ∧ IsUnit (1 - iot h).det ∧ kap (iot h) = h := by

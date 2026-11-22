@@ -26,7 +26,7 @@ private theorem loc_of_pair {R X Y Z : Type} [CommRing R] [AddCommGroup X] [Modu
     refine ⟨c * ⟨f, hf⟩, ?_⟩
     have hc' := congrArg Φ hc
     simp only [Submonoid.smul_def, LinearMap.map_smul, h1] at hc'
-    simp only [Submonoid.smul_def, Submonoid.coe_mul, mul_smul]
+    simp only [Submonoid.smul_def, mul_smul]
     exact hc'
 
 theorem UpperTheory.V.Pa.Core.pmodEx :

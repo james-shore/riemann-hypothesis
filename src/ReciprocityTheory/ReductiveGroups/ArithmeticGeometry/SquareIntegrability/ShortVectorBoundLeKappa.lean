@@ -63,8 +63,6 @@ theorem tof_inv_sqrt_le [IsCMField E] {X : PT E} {DF : ℕ} (P : Par X DF) (hph 
     unfold omStar
     first
       | nlinarith [Real.one_le_rpow hF (by norm_num : (0 : ℝ) ≤ 3 / 2)]
-      | nlinarith [one_le_pow₀ (n := 3 / 2) hF]
-      | (norm_num; nlinarith)
   have hZ : (1 : ℝ) ≤ ((dstar (E := E) P.m : ℕ) : ℝ) ^ 2 * omStar (E := E) :=
     one_le_mul_of_one_le_of_one_le (one_le_pow₀ hd1) hom
   have h2 := mul_self_lt_mul_self hL0 hlt
@@ -90,11 +88,9 @@ theorem tof_inv_sqrt_le [IsCMField E] {X : PT E} {DF : ℕ} (P : Par X DF) (hph 
   have e1 := by
     first
       | exact pow_le_pow_left₀ (Real.sqrt_nonneg _) (Real.sqrt_le_sqrt hU) n
-      | exact pow_le_pow_left (Real.sqrt_nonneg _) (Real.sqrt_le_sqrt hU) n
   have e2 : √K ^ n ≤ √K ^ (dstar (E := E) P.m) := by
     first
       | exact pow_le_pow_right₀ hsK hn
-      | exact pow_le_pow_right hsK hn
   have hcK : 1 ≤ c * √K ^ (dstar (E := E) P.m) :=
     h1.trans (mul_le_mul_of_nonneg_left (e1.trans e2) hc.le)
   have hpow : (K ^ (((dstar (E := E) P.m : ℕ) : ℝ) / 4)) ^ 2 = √K ^ (dstar (E := E) P.m) := by

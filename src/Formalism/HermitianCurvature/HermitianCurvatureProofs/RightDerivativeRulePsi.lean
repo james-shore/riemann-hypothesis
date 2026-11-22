@@ -11,7 +11,7 @@ theorem herm_bvec_bvec {n : ℕ} (H : Matrix (Fin n) (Fin n) ℂ) (p q : Fin n) 
     herm H (bvec p) (bvec q) = H q p := by
   have hs : star (bvec q) = bvec q := by
     ext i
-    by_cases h : i = q <;> simp [bvec, Pi.single_apply, h]
+    by_cases h : i = q <;> simp [bvec, h]
   unfold herm
   rw [hs]
   simp [bvec, Matrix.mulVec, dotProduct, Pi.single_apply]
@@ -56,7 +56,7 @@ theorem herm_bvec_eI {k r : ℕ} (v : Fin (2 * r + k + 1) → ℂ) (b : Fin r) :
   have h1 : herm (Hpk k r) v (bvec (eI k r b)) = ∑ p, Hpk k r (eI k r b) p * v p := by
     have hs : star (bvec (eI k r b)) = bvec (eI k r b) := by
       ext i
-      by_cases h : i = eI k r b <;> simp [bvec, Pi.single_apply, h]
+      by_cases h : i = eI k r b <;> simp [bvec, h]
     unfold herm
     rw [hs]
     simp [bvec, Matrix.mulVec, dotProduct, Pi.single_apply]
@@ -96,14 +96,7 @@ theorem xi_Y_zhat_identity : XiYZhat := by
     intro v w
     unfold herm
     first
-    | (rw [Matrix.star_dotProduct, star_star, Matrix.star_mulVec, hH, Matrix.dotProduct_mulVec]; done)
-    | (rw [Matrix.star_dotProduct, star_star, Matrix.star_mulVec, hH, Matrix.dotProduct_mulVec];
-        exact Matrix.dotProduct_comm _ _)
-    | (rw [Matrix.star_dotProduct, star_star, Matrix.star_mulVec, hH, Matrix.dotProduct_mulVec];
-        exact (Matrix.dotProduct_comm _ _).symm)
-    | (rw [Matrix.star_dotProduct, star_star, Matrix.star_mulVec, hH, Matrix.dotProduct_comm,
-        Matrix.dotProduct_mulVec]; done)
-    | (simp [Matrix.star_dotProduct, Matrix.star_mulVec, hH, Matrix.dotProduct_mulVec]; done)
+    | (rw [Matrix.star_dotProduct, star_star, Matrix.star_mulVec, hH, Matrix.dotProduct_mulVec])
   calc (g⁻¹ *ᵥ bvec (eI k r a)) (esI k r b)
       = herm (Hpk k r) (g⁻¹ *ᵥ bvec (eI k r a)) (bvec (eI k r b)) := (herm_bvec_eI _ b).symm
     _ = herm (Hpk k r) (g *ᵥ (g⁻¹ *ᵥ bvec (eI k r a))) (g *ᵥ bvec (eI k r b)) :=

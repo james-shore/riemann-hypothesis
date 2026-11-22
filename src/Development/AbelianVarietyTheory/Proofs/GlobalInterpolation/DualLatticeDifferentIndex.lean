@@ -18,9 +18,7 @@ theorem traceInf_algebraMap (x : F) :
   first
   | exact @_root_.GlobalTheory.TraceSumRealEmbeddings.traceInf_algebraMap
   | exact _root_.GlobalTheory.TraceSumRealEmbeddings.traceInf_algebraMap
-  | (apply _root_.GlobalTheory.TraceSumRealEmbeddings.traceInf_algebraMap <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TraceSumRealEmbeddings.traceInf_algebraMap <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TraceSumRealEmbeddings.traceInf_algebraMap <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.TraceSumRealEmbeddings.traceInf_algebraMap)
   | (intros; exact _root_.GlobalTheory.TraceSumRealEmbeddings.traceInf_algebraMap ..)
 
 variable {F}

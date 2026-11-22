@@ -46,7 +46,7 @@ theorem UpperTheory.nu_det_mul_sliceB_block_action :
     have e1 : g (i, j + 1) = 1 := hg1 _ (by simp)
     have e2 : g (i + 1, j) = 1 := hg1 _ (by simp)
     simp only [Grid.edgeFactor, Edge.src, Edge.tgt, hg0, e1, e2, ha, map_one, apow_one, mul_one]
-    simp only [Grid.kappa, Grid.blockChar, Grid.nu, gdet, map_one, map_inv, MonoidHom.div_apply,
+    simp only [Grid.kappa, Grid.blockChar, Grid.nu, gdet, map_inv, MonoidHom.div_apply,
       Units.val_div_eq_div_val, Units.val_inv_eq_inv_val, Units.val_one, inv_one, mul_one, one_mul]
     field_simp
   have hprod : (γ.map (G.edgeFactor .one g)).prod = (G.nu i j (gdet u⁻¹) : ℂ) := by

@@ -38,7 +38,6 @@ theorem relab_rt_iff (hσ : GoodEmb c σ) (τ' : E →+* ℂ) :
   have hcoe : ∀ x : E, ((embF c τ' x : c.F) : ℂ) = τ' x := fun x => by
     first
       | rfl
-      | simp [embF]
   have hsq : (τ' (H.rt : E)) ^ 2 = H.rt0 ^ 2 := by
     rw [H.sqrt_neg_disc_sq, ← map_pow]
     have h1 : ((H.rt : E)) ^ 2 = -((H.d : ℕ) : E) := by

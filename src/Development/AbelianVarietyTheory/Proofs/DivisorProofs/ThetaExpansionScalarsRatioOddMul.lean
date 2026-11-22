@@ -45,7 +45,7 @@ theorem ratio_odd_mul : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing R]
   have he := GlobalTheory.T.expansion_secondScalar_determined_of_nonzero R hR D C W T (m ^ 2) hk S G hGz (T.φ t * a) _ _ (mul_ne_zero htW ha) h1 h2
   refine ⟨a, b, u * v⁻¹, ha, hb, h, ?_⟩
   have : b * T.φ t * v = a * T.φ r * u := by linear_combination he
-  calc b * T.φ t = b * T.φ t * v * ↑v⁻¹ := by simp [mul_assoc]
+  calc b * T.φ t = b * T.φ t * v * ↑v⁻¹ := by simp
     _ = _ := by rw [this]; push_cast; ring
 
 end GlobalTheory.Mum

@@ -108,7 +108,7 @@ theorem tau_one (σ : L →+* L) : tau σ (1 : Matrix (Fin n) (Fin n) L) = 1 := 
   by_cases h : i = j
   · subst h; simp [tau]
   · have : ¬ Fin.rev j = Fin.rev i := fun e => h (Fin.rev_injective e).symm
-    simp [tau, Matrix.one_apply, this, h]
+    simp [tau, this, h]
 
 def theta (σ : L →+* L) : GL (Fin n) L →* GL (Fin n) L where
   toFun g := ⟨tau σ ((g⁻¹ : GL (Fin n) L) : Matrix (Fin n) (Fin n) L),

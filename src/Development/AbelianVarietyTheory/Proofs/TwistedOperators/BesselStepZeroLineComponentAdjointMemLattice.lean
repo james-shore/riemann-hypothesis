@@ -31,7 +31,7 @@ theorem rat_mul_mem_latO {S B T : HSp D} (M : Matrix (Fin T.rank) (Fin B.rank) D
   ext i j
   simp only [mulL, AddMonoidHom.coe_mk, ZeroHom.coe_mk, Matrix.mul_apply, Matrix.of_apply, rat, Matrix.map_apply, incA, inclR,
     AlgHom.toRingHom_eq_coe, RingHom.coe_coe, Algebra.TensorProduct.includeRight_apply, Algebra.TensorProduct.tmul_mul_tmul,
-    one_mul, Matrix.mulVec, dotProduct, Finset.sum_mul]
+    one_mul, Matrix.mulVec, dotProduct]
   rw [← TensorProduct.tmul_sum]
   congr 1
   simp only [Finset.mul_sum, Finset.sum_mul]

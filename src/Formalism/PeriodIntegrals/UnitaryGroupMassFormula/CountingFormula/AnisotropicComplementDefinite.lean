@@ -19,7 +19,6 @@ theorem tau_negT (D : D7) (u : D.what₂.Word) (φ : D.host.E →+* ℂ) : (φ (
   have hT := (D.mem u).A.T_prime.pos
   first
     | simp [Tn, hT]
-    | (unfold Tn; simp; exact hT)
 
 theorem rank_VS (D : D7) : (VS D).rank = D.R.k + D.R.rS + (D.R.rS + 1) := by
   unfold VS

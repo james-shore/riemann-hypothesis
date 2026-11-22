@@ -101,7 +101,7 @@ private lemma UpperTheory.Reformulated.B.Yzb9.integrable_iff (T : E ≃L[ℝ] E)
     have := h.smul ((c : ℝ)⁻¹)
     have h2 : ((c : ℝ)⁻¹ • fun y => (c : ℝ) • 𝓕⁻ Φ (T y)) = fun y => 𝓕⁻ Φ (T y) := by
       funext y
-      simp [smul_smul, hc']
+      simp [hc']
     rwa [h2] at this
   · intro h
     exact h.smul (c : ℝ)

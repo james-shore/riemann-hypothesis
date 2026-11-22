@@ -23,7 +23,7 @@ theorem scale_int {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [Finite
     rw [norm_smul, Real.norm_of_nonneg (inv_nonneg.2 ht.le),
       ← Real.mul_rpow ha.le (by positivity : (0 : ℝ) ≤ 1 + (a / b)⁻¹ * ‖x‖)]
     congr 1
-    first | (field_simp; done) | (field_simp; ring)
+    first | (field_simp)
   have hF : Integrable (fun x => a ^ (-r) * (1 + ‖(a / b)⁻¹ • x‖) ^ (-r)) μ :=
     (hg.comp_smul (inv_ne_zero ht.ne')).const_mul (a ^ (-r))
   simp_rw [hpt]

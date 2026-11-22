@@ -64,27 +64,27 @@ theorem elem_conj_mem {n : ℕ} (t : Fin n → kˣ) {i j : Fin n} (hij : i < j) 
     have hab : a ≠ b := (ne_of_lt hba).symm
     have : ¬ (i = a ∧ j = b) := by
       rintro ⟨rfl, rfl⟩; exact absurd hij (not_lt.2 hba.le)
-    simp [Matrix.one_apply, Matrix.single_apply, hab, this]
+    simp [hab, this]
   · rw [val_conj_elem]
     have : ¬ (i = a ∧ j = a) := fun h' => hij.ne (h'.1.trans h'.2.symm)
-    simp [Matrix.single_apply, this]
+    simp [this]
 
 theorem superDiag_conj_elem {n : ℕ} (t : Fin n → kˣ) {i j : Fin n} (hij : j.val = i.val + 1) (hne : i ≠ j) (y : k) :
     superDiag (diagT k (Fin n) t * elem hne y * (diagT k (Fin n) t)⁻¹) = (t i : k) / t j * y := by
   rw [superDiag, val_conj_elem]
   rw [Finset.sum_eq_single i]
   · rw [Finset.sum_eq_single j]
-    · simp [Matrix.one_apply, hne]
+    · simp [hne]
     · intro b hb hbj
       have hib : i ≠ b := by
         rintro rfl; simp at hb
-      simp [Matrix.one_apply, Matrix.single_apply, hib, Ne.symm hbj]
+      simp [hib, Ne.symm hbj]
     · intro hj; simp [hij] at hj
   · intro a _ hai
     refine Finset.sum_eq_zero fun b hb => ?_
     have hab : a ≠ b := by
       rintro rfl; simp at hb
-    simp [Matrix.one_apply, Matrix.single_apply, hab, Ne.symm hai]
+    simp [hab, Ne.symm hai]
   · simp
 
 theorem whittaker_torus_root_bound : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k] (ψ : AddChar k Circle), Continuous ψ → ψ ≠ 1 → ∀ (n : ℕ) (V : Type) [AddCommGroup V] [Module ℂ V] (ρ : Representation ℂ (GL (Fin n) k) V), IsSmooth ρ → ∀ l : Module.Dual ℂ V, IsFunctional ψ ρ l → ∀ x : V, ∃ r : kˣ, ∀ (t : Fin n → kˣ) (i j : Fin n), j.val = i.val + 1 → l (ρ (diagT k (Fin n) t) x) ≠ 0 → valuation k ((t i : k) / t j) ≤ valuation k (r : k) := by

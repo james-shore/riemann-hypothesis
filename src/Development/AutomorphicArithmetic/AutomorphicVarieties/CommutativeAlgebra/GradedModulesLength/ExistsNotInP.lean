@@ -15,7 +15,7 @@ private def InP (p : Ideal (rees N)) (i : Fin k) (n : ℕ) (t : A) : Prop :=
   ∃ q ∈ p, q.1 = MvPolynomial.monomial (Finsupp.single i n) t
 
 private theorem lat_single_pow (i : Fin k) (n : ℕ) : lat N (Finsupp.single i n) = N i ^ n := by
-  rw [lat, Finset.prod_eq_single i] <;> simp +contextual [Finsupp.single_apply, eq_comm]
+  rw [lat, Finset.prod_eq_single i] <;> simp +contextual [eq_comm]
 
 variable {p : Ideal (rees N)} {i : Fin k}
 

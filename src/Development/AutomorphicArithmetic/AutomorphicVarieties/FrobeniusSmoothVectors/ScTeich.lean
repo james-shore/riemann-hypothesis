@@ -41,7 +41,7 @@ theorem UpperTheory.V.Fr.sc_teich :
       change residue c.O _ = 0
       rw [map_sub, map_mul, map_pow, hτ, ← hω]
       simp only [w, Units.val_mul, Units.val_inv_eq_inv_val, Units.val_pow_eq_pow_val,
-        Units.coe_map, MonoidHom.coe_coe]
+        Units.coe_map]
       have hne : ((omO Ω l c.O s).val : ResidueField c.O) ^ j ≠ 0 := pow_ne_zero _ (Units.ne_zero _)
       rw [mul_left_comm, mul_inv_cancel₀ hne, mul_one]
       exact sub_self _

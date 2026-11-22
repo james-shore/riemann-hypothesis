@@ -22,8 +22,6 @@ private lemma re_herglotzRieszKernel_eq_poissonKernel (w z : ℂ) :
   first
   | (simp only [sub_zero, Complex.div_re, ← Complex.normSq_eq_norm_sq, Complex.normSq_apply,
       Complex.add_re, Complex.add_im, Complex.sub_re, Complex.sub_im]; ring)
-  | (simp only [sub_zero, Complex.div_re, Complex.sq_norm, Complex.normSq_apply,
-      Complex.add_re, Complex.add_im, Complex.sub_re, Complex.sub_im]; ring)
 
 lemma poissonKernel_zero_continuousOn {r : ℝ} (hr : 0 < r) {w : ℂ} (hw : w ∈ ball (0 : ℂ) r) :
     ContinuousOn (poissonKernel 0 w) (sphere 0 r) := by
@@ -59,8 +57,6 @@ lemma poissonKernel_zero_le {r δ : ℝ} {w z : ℂ} (hw : w ∈ ball (0 : ℂ) 
   have hden : δ ^ 2 ≤ ‖z - w‖ ^ 2 := by nlinarith [hzw, hδ]
   first
   | exact div_le_div_of_nonneg_left hnum (pow_pos hδ 2) hden
-  | exact div_le_div_of_le_left hnum (pow_pos hδ 2) hden
-  | (gcongr; all_goals first | exact hnum | exact hδ.le | exact hzw | exact pow_pos hδ 2)
 
 lemma circleAverage_poissonKernel_zero {r : ℝ} {w : ℂ} (hw : w ∈ ball (0 : ℂ) r) :
     Real.circleAverage (poissonKernel 0 w) 0 r = 1 := by
@@ -120,7 +116,6 @@ lemma circleAverage_poissonKernel_zero {r : ℝ} {w : ℂ} (hw : w ∈ ball (0 :
       (circleMap 0 r θ - w)⁻¹) - deriv (circleMap 0 r) θ • (circleMap 0 r θ - 0)⁻¹)).re := by
     first
     | exact Complex.reCLM.intervalIntegral_comp_comm hGint
-    | exact intervalIntegral.integral_re hGint
   unfold Real.circleAverage
   rw [intervalIntegral.integral_congr (fun θ _ ↦ hpt θ), hre, hGi, Complex.ofReal_re, smul_eq_mul]
   exact inv_mul_cancel₀ (by positivity)
@@ -146,13 +141,12 @@ lemma poissonInt_eq_re {g : ℂ → ℝ} {r : ℝ} (hr : 0 < r) (hg : Continuous
         herglotzRieszKernel 0 w (circleMap 0 r θ) • (g (circleMap 0 r θ) : ℂ)).re := by
     first
     | exact Complex.reCLM.intervalIntegral_comp_comm hi
-    | exact intervalIntegral.integral_re hi
   unfold poissonInt Real.circleAverage
   rw [Complex.smul_re, ← hre]
   congr 1
   apply intervalIntegral.integral_congr
   intro θ _
-  simp only [Pi.smul_apply, Pi.mul_apply, smul_eq_mul, Complex.mul_re, Complex.ofReal_re,
+  simp only [Pi.mul_apply, smul_eq_mul, Complex.mul_re, Complex.ofReal_re,
     Complex.ofReal_im, mul_zero, sub_zero, re_herglotzRieszKernel_eq_poissonKernel]
 
 private lemma poissonInt_eq_re_cauchy_integral {g : ℂ → ℝ} {r : ℝ} (hr : 0 < r)
@@ -211,14 +205,11 @@ lemma poissonInt_harmonicAt {g : ℂ → ℝ} {r : ℝ} (hr : 0 < r) (hg : Conti
       (fun w' ↦ (2 * π * I : ℂ)⁻¹ • ∮ z in C(0, r), (z - w')⁻¹ • ((g z : ℝ) : ℂ)) w := by
     refine hps.analyticAt_of_mem ?_
     first
-    | (rw [Metric.emetric_ball_nnreal]; exact hw)
+    | (rw [Metric.emetric_ball_nnreal])
     | simpa [Metric.emetric_ball_nnreal] using hw
     | (refine EMetric.mem_ball.mpr (edist_lt_coe.mpr (NNReal.coe_lt_coe.mp ?_))
        rw [coe_nndist, dist_zero_right]
        exact mem_ball_zero_iff.mp hw)
-    | (have hw' : ‖w‖ < r := mem_ball_zero_iff.mp hw
-       simp only [EMetric.mem_ball, edist_zero_right, enorm_eq_nnnorm, ENNReal.coe_lt_coe]
-       exact NNReal.coe_lt_coe.mp hw')
   have hFa : AnalyticAt ℂ (fun w' ↦ 2 * ((2 * π * I : ℂ)⁻¹ • ∮ z in C(0, r),
       (z - w')⁻¹ • ((g z : ℝ) : ℂ)) - ((Real.circleAverage g 0 r : ℝ) : ℂ)) w :=
     (analyticAt_const.mul hCa).sub analyticAt_const
@@ -235,7 +226,7 @@ lemma poissonInt_zero {g : ℂ → ℝ} {r : ℝ} (hr : 0 < r) :
   intro z hz
   rw [mem_sphere_zero_iff_norm, abs_of_pos hr] at hz
   have hz0 : ‖z‖ ≠ 0 := by rw [hz]; exact hr.ne'
-  simp only [Pi.smul_apply, Pi.mul_apply, smul_eq_mul, poissonKernel_def, sub_zero, norm_zero]
+  simp only [Pi.mul_apply, smul_eq_mul, poissonKernel_def, sub_zero, norm_zero]
   rw [div_mul_eq_mul_div, div_eq_iff (pow_ne_zero 2 hz0)]
   ring
 
@@ -261,7 +252,7 @@ lemma poissonInt_sub {g : ℂ → ℝ} {r : ℝ} (hr : 0 < r) (hg : ContinuousOn
     congr 1
     funext θ
     ring
-  simp only [Pi.smul_apply, smul_eq_mul] at h1 ⊢
+  simp only [smul_eq_mul] at h1 ⊢
   rw [hI]
   linear_combination c * h1
 
@@ -301,7 +292,6 @@ lemma poissonInt_tendsto {g : ℂ → ℝ} {r : ℝ} (hr : 0 < r) (hg : Continuo
   have hd2 : dist w ζ₀ * (8 * r * (M' + 1)) < ε * (η / 2) ^ 2 := by
     first
     | exact (lt_div_iff₀ hden).mp hδ2
-    | exact (lt_div_iff hden).mp hδ2
   have hKq : K * (η / 2) ^ 2 = M' * (r ^ 2 - ‖w‖ ^ 2) := by
     rw [hK, mul_assoc, div_mul_cancel₀ _ hq.ne']
   have hKlt : K < ε / 2 := by
@@ -356,7 +346,6 @@ lemma poissonInt_tendsto {g : ℂ → ℝ} {r : ℝ} (hr : 0 < r) (hg : Continuo
     refine intervalIntegral.norm_integral_le_of_norm_le (by positivity) ?_ ?_
     · first
       | exact Filter.Eventually.of_forall (fun θ _ ↦ hpt _ (circleMap_mem_sphere 0 hr.le θ))
-      | exact Filter.eventually_of_forall (fun θ _ ↦ hpt _ (circleMap_mem_sphere 0 hr.le θ))
     · exact (IntervalIntegrable.const_mul hPi (ε / 2)).add intervalIntegrable_const
   have hint : ∫ θ in (0 : ℝ)..2 * π, (ε / 2 * poissonKernel 0 w (circleMap 0 r θ) + K) =
       ε / 2 * (2 * π) + K * (2 * π) := by
@@ -365,7 +354,7 @@ lemma poissonInt_tendsto {g : ℂ → ℝ} {r : ℝ} (hr : 0 < r) (hg : Continuo
       intervalIntegral.integral_const, hPint, sub_zero, smul_eq_mul]
     ring
   have hfin : (2 * π)⁻¹ * (ε / 2 * (2 * π) + K * (2 * π)) = ε / 2 + K := by
-    field_simp <;> ring
+    field_simp
   rw [Real.dist_eq, poissonInt_sub hr hg hw (g ζ₀)]
   unfold Real.circleAverage
   simp only [smul_eq_mul]
@@ -386,13 +375,11 @@ theorem poisson_ext {g : ℂ → ℝ} {r : ℝ} (hr : 0 < r) (hg : ContinuousOn 
       have hca : ContinuousAt (poissonInt g r) z := by
         first
         | exact (poissonInt_harmonicAt hr hg hzb).1.continuousAt
-        | exact (poissonInt_harmonicAt hr hg hzb).contDiffAt.continuousAt
       have hev : poissonInt g r =ᶠ[𝓝 z] fun z ↦ if ‖z‖ < r then poissonInt g r z else g z := by
         filter_upwards [isOpen_ball.mem_nhds hzb] with y hy
         rw [if_pos (mem_ball_zero_iff.mp hy)]
       first
       | exact (hca.congr hev).continuousWithinAt
-      | exact (hca.congr_of_eventuallyEq hev.symm).continuousWithinAt
     · have hzs : z ∈ sphere (0 : ℂ) r := mem_sphere_zero_iff_norm.mpr heq
       have hval : (if ‖z‖ < r then poissonInt g r z else g z) = g z :=
         if_neg (by rw [heq]; exact lt_irrefl r)

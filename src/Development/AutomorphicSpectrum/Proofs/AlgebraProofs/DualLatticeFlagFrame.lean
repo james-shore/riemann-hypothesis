@@ -100,7 +100,7 @@ theorem coord_w (w e' : Module.Basis (Fin N) Ω V) (m : Fin N → Ω) (hm : ∀ 
       intro l hln hlr
       have h1 := hexp l (fun j hj => ih j.val (by rw [← hln]; exact hj) j rfl (hj.trans hlr))
       have h2 : e'.repr (e' l) r = 0 := by
-        simp [Module.Basis.repr_self, Finsupp.single_apply, hlr.ne]
+        simp [Module.Basis.repr_self, hlr.ne]
       rw [h2] at h1
       exact (mul_eq_zero.1 h1.symm).resolve_left (hm l)
   have hlow' : ∀ l, l < r → e'.repr (w l) r = 0 := fun l hl => hlow _ l rfl hl

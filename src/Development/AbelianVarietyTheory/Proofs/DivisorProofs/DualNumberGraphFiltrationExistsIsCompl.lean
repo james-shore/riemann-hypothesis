@@ -19,7 +19,7 @@ def coordSub (A₀ : Over (Sp k)) [GrpObj A₀] (S : Submodule k (HdR A₀)) :
     rintro d d' ⟨x, hx, y, hy, e⟩ ⟨x', hx', y', hy', e'⟩
     refine ⟨x + x', add_mem hx hx', y + y', add_mem hy hy', fun c => ?_⟩
     rw [LinearMap.add_apply, e, e']
-    ext <;> simp <;> ring
+    ext <;> simp
   zero_mem' := ⟨0, zero_mem _, 0, zero_mem _, fun c => by
     rw [LinearMap.zero_apply]
     ext <;> simp⟩
@@ -28,7 +28,7 @@ def coordSub (A₀ : Over (Sp k)) [GrpObj A₀] (S : Submodule k (HdR A₀)) :
     refine ⟨r.fst • x, Submodule.smul_mem _ _ hx, r.fst • y + r.snd • x,
       add_mem (Submodule.smul_mem _ _ hy) (Submodule.smul_mem _ _ hx), fun c => ?_⟩
     rw [LinearMap.smul_apply, e, smul_eq_mul]
-    ext <;> simp <;> ring
+    ext <;> simp
 
 theorem coords_unique {A₀ : Over (Sp k)} [GrpObj A₀] {u v u' v' : HdR A₀}
     (h : ∀ c : primDR A₀, TrivSqZeroExt.inl (u c) + TrivSqZeroExt.inr (v c)

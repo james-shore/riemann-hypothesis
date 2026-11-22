@@ -78,7 +78,7 @@ theorem UpperTheory.integral_mem_addSubgroup_of_ramified_twisted_invariant :
         obtain ⟨x, hx, y, hy, rfl⟩ := mem_shellSet.1 hg
         exact mem_shellSet.2 ⟨j * x, mul_mem (hJK hj) hx, y, hy, by simp only [mul_assoc]⟩
       · intro j hj g
-        simp only [gdet_mul, apow_mul, map_mul, Units.val_mul,
+        simp only [apow_mul, map_mul, Units.val_mul,
           apow_of_valuation_eq_one (valuation_gdet_of_mem_KO (hJK hj)), one_mul]
         rw [← hinv j hj g]
         ring

@@ -14,7 +14,7 @@ theorem leftMulMatrix_pi_basisFun [DecidableEq ι] (x : ι → E) :
     leftMulMatrix (Pi.basisFun E ι) x = Matrix.diagonal x := by
   ext i j
   rw [leftMulMatrix_eq_repr_mul]
-  by_cases h : i = j <;> simp [h, Matrix.diagonal_apply]
+  by_cases h : i = j <;> simp [h]
 
 theorem algebraTrace_pi_apply (x : ι → E) : Algebra.trace E (ι → E) x = ∑ i, x i := by
   classical

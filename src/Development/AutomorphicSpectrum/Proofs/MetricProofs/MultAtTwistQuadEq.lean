@@ -134,7 +134,7 @@ theorem toPoly_quad (p : ℕ) : ∃ s : Polynomial (MRing ι),
   have h : toPoly (C (p : ℤ) : MRing (Tb ι)) =
       Polynomial.C (Polynomial.C (C (p : ℤ) : MRing ι)) := by
     simpa [inc] using toPoly_inc (ι := ι) (C (p : ℤ) : MRing ι)
-  simp [quad, toPoly_xN, toPoly_yN, h]
+  simp [quad, toPoly_xN, toPoly_yN]
 
 theorem flat_quad (p : ℕ) :
     ((Ideal.Quotient.mk (Ideal.span {quad p})).comp inc :

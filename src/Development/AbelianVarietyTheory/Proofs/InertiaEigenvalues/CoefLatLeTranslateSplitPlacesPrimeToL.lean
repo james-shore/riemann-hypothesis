@@ -15,7 +15,7 @@ namespace GlobalTheory.LatTranslate
 theorem coefFn_natCast_smul {D : D7} {n : ℕ} {K : Type} [Field K] (σ : K →+* ℂ) (lam : D.what₂.Tau → Formalism.BasicNotions.DomWeight n)
     (N : ℕ) (F : Formalism.L2.DIV.Pol K D.what₂.Tau n) (x : GLR D n) :
     coefFn σ lam ((N : K) • F) x = (N : ℂ) * coefFn σ lam F x := by
-  simp only [coefFn, MvPolynomial.smul_eq_C_mul, map_mul, MvPolynomial.eval₂Hom_C, map_natCast]
+  simp only [coefFn, MvPolynomial.smul_eq_C_mul, map_mul, map_natCast]
   ring
 
 theorem coefLatFn_transfer {D : D7} {n : ℕ} {K : Type} [Field K] [NumberField K] (σ : K →+* ℂ)

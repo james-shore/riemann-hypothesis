@@ -143,5 +143,5 @@ theorem UpperTheory.Zero.LLC.abConv :
     rw [← WD.charPol_mk, hb, e]
     refine (hd _).trans ?_
     rw [hξ]
-    simp [h1]⟩
+    simp⟩
   exact hdim.symm.trans hn

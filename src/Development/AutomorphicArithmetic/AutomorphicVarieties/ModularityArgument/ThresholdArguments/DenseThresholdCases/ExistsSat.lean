@@ -128,7 +128,7 @@ theorem _root_.UpperTheory.Esk.pf_HRep_alt : _root_.UpperTheory.V.Af.HypothesesH
           rw [Nat.cast_sub (by omega)]; push_cast; ring, Real.rpow_natCast]
       simp
     have h9 : algSat 2 (normV w) {α, β} = {r * α, r * β} := by
-      simp only [algSat, hr, Multiset.insert_eq_cons, Multiset.map_cons, Multiset.map_singleton]
+      simp only [algSat, hr, Multiset.insert_eq_cons]
       norm_num
     rw [h9, h6, ← h8, show (ω.val w : ℂˣ) * (r * r * (((ν.val w : ℂˣ) : ℂ) * (ν.val w : ℂˣ))) = r * α * (r * β) by
       linear_combination (-(r * r)) * h7]

@@ -110,7 +110,7 @@ theorem hasTypeAll_single [CompleteSpace H] {ε : Fin n → Bool} {σ : Mx n →
         _ ≤ |C₀| * sobNorm (fun g => σ (P * g * P⁻¹)) S₀ w := h4
         _ ≤ |C₀| * (A * sobNorm (fun g => σ (P * g * P⁻¹)) S w) := mul_le_mul_of_nonneg_left h2 (abs_nonneg _)
         _ = |C₀| * A * sobNorm (fun g => σ (P * g * P⁻¹)) S w := by ring
-    · simp [hi, Pi.single_eq_of_ne hi]
+    · simp [hi]
   · refine (hasSum_single 0 fun i hi => ?_).summable
     simp [Pi.single_eq_of_ne hi]
   · rw [← hf g hg]

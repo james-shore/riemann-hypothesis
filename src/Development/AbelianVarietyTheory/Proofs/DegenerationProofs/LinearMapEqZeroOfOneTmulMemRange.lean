@@ -81,7 +81,7 @@ theorem _root_.GlobalTheory.exists_smul_mem_of_dense_fibres :
       simp only [LinearMap.coe_comp, Function.comp_apply, LinearMap.coe_restrictScalars, hb, Module.Basis.coord_apply, Module.Basis.repr_self]
       by_cases hmj : m = j
       · subst hmj; simp
-      · simp [Finsupp.single_apply, hmj, Ne.symm hmj]
+      · simp [hmj, Ne.symm hmj]
   have hfibre : ∀ P' ∈ Sg, a ∉ P'.asIdeal → ∀ j ∈ s, c j ∈ P'.asIdeal := by
     intro P' hP' haP j hj
     obtain ⟨K, hK, hKa, hker, hmem⟩ := hfib P' hP'

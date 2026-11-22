@@ -30,7 +30,7 @@ private theorem int_psi (γ : ℚ) :
     ∫ v in fundamentalSet ℚ, ψ (rt γ * v) ∂(adeleMeasure ℚ) = if γ = 0 then 1 else 0 := by
   split_ifs with h
   · subst h
-    simp [Pp.ψ_rt, ψ, Measure.real, vol_FS]
+    simp [ψ, Measure.real, vol_FS]
   · have hne : adelicChar ℚ ≠ 1 := adelicChar_ne_one
     obtain ⟨a, ha⟩ : ∃ a, ψ a ≠ 1 := by
       by_contra hc
@@ -251,9 +251,9 @@ private theorem aE_rat (α : ℚˣ) : ∃ γ : GL (Fin 2) E, ratGL E 2 γ = Uppe
     rw [mul_comm, h1]
   refine ⟨⟨!![algebraMap ℚ E α, 0; 0, 1], !![algebraMap ℚ E ((α⁻¹ : ℚˣ) : ℚ), 0; 0, 1], ?_, ?_⟩, ?_⟩
   · ext i j
-    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two, h1]
+    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
   · ext i j
-    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two, h2]
+    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
   · apply Units.ext
     ext i j
     rw [ratGL_apply, em_val]
@@ -289,7 +289,7 @@ private theorem coeff_ne {φ : GL (Fin 2) (A E) → ℂ} (hL : Pp.Lf φ) (x : GL
     rw [matVec_apply, Finset.sum_eq_single i]
     · simp [M, Matrix.GeneralLinearGroup.scalar]
     · intro j _ hj
-      simp [M, Matrix.GeneralLinearGroup.scalar, Matrix.diagonal_apply, Ne.symm hj]
+      simp [M, Matrix.GeneralLinearGroup.scalar, Ne.symm hj]
     · simp
   obtain ⟨γ, hγ⟩ := aE_rat (E := E) α
   have hrα : rt (α : ℚ) * rt ((α⁻¹ : ℚˣ) : ℚ) = (1 : A ℚ) := by

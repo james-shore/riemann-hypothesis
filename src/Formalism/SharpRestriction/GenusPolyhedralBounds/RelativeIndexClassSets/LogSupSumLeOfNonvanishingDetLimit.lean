@@ -983,7 +983,7 @@ theorem tr_traceDual : TrTraceDual := by
   exact ⟨cf, fun f => by simpa using h 1 f⟩
 
 theorem tr_scale : TrScale := by
-  first | exact UpperTheory.Reformulated.B.PairedCharacterCondition.tr_scale .. | (apply UpperTheory.Reformulated.B.PairedCharacterCondition.tr_scale <;> assumption) | (intros; apply UpperTheory.Reformulated.B.PairedCharacterCondition.tr_scale <;> assumption) | (apply @UpperTheory.Reformulated.B.PairedCharacterCondition.tr_scale <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.PairedCharacterCondition.tr_scale <;> assumption) | (apply @UpperTheory.Reformulated.B.PairedCharacterCondition.tr_scale <;> first | assumption | infer_instance)
+  first | exact UpperTheory.Reformulated.B.PairedCharacterCondition.tr_scale .. | (apply UpperTheory.Reformulated.B.PairedCharacterCondition.tr_scale)
 
 section TrA
 

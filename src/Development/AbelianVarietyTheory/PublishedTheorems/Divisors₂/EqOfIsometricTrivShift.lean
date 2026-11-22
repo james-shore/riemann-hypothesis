@@ -149,7 +149,6 @@ theorem ArMix.fnB (H : ArMix) (HE : ArExists) (hX : IsArithVar p D) {L : ι → 
     rw [(hE z).mult_eq]
     first
       | exact UnitAt.ord_eq_zero (unitAt_one z)
-      | simpa using UnitAt.ord_eq_zero (unitAt_one z)
   have hoff : ∀ σ, offSupp p σ ((ArInt.fnB u hu hc).div hr1) = Set.univ := fun σ =>
     Set.eq_univ_of_forall fun y => mem_offSupp.2 fun hy => hy (hE _)
   have hlog : ∀ σ, logNorm ((ArInt.fnB u hu hc).φ σ) (fun _ : (LB.triv X).ι => 1) =

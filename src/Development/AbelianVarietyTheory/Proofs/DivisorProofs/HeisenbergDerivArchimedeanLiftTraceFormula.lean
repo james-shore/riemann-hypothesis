@@ -111,7 +111,7 @@ theorem heisD_liftI : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Numb
     have hAt : At (evI F) P := by
       apply at_of_snd
       rw [← sndr_apply, hP, map_add, map_mul, RingHom.map_dotProduct, RingHom.map_dotProduct]
-      simp [dotProduct, Function.comp_def, sndr_infAd]
+      simp [dotProduct, sndr_infAd]
     rw [hψ.2.2 P hAt, ← evIr_apply]
     congr 3
     rw [hP, map_add, map_mul, RingHom.map_dotProduct, RingHom.map_dotProduct]

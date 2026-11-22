@@ -38,8 +38,6 @@ theorem appTop_spMap (v : V) :
   have h2 := congrArg (fun g => g.hom v) h
   first
   | exact h2.symm
-  | simp
-  | simpa using h2.symm
 
 theorem bij_of_generic (A : Over (Sp V)) [GrpObj A] [Flat A.hom] [QuasiCompact A.hom] [QuasiSeparated A.hom]
     (hK : Function.Bijective ((Over.pullback (spMap (algebraMap V (FractionRing V)))).obj A).hom.appTop.hom) :

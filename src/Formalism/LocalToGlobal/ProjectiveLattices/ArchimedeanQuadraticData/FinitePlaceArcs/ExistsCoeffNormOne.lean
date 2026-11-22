@@ -54,7 +54,6 @@ theorem exists_coeff_norm_one {K : Type} [NormedField K] [IsUltrametricDist K] (
     (map (Int.castRingHom K) (detZ Dw)).support
     (fun d => coeff d (map (Int.castRingHom K) (detZ Dw)) *
       ∏ i ∈ d.support, (if i.2.1 = i.2.2 then (1 : K) else 0) ^ d i)
-  beta_reduce at hν
   rw [hev, norm_one, norm_mul] at hν
   have hpow : ∀ (y : K), ‖y‖ ≤ 1 → ∀ k : ℕ, ‖y ^ k‖ ≤ 1 := by
     intro y hy k
@@ -74,7 +73,7 @@ private theorem coeff_lcoeffPoly_lemma_2 {σ K₁ : Type} [Field K₁] (P : MvPo
     (k : ℤ) (ν : σ →₀ ℕ) : coeff ν (lcoeffPoly P k) = (P.coeff ν).coeff k := by
   classical
   rw [lcoeffPoly, MvPolynomial.coeff_sum]
-  simp only [MvPolynomial.coeff_monomial, Finset.sum_ite_eq', Finset.sum_ite_eq]
+  simp only [MvPolynomial.coeff_monomial, Finset.sum_ite_eq']
   split_ifs with h
   · rfl
   · rw [MvPolynomial.mem_support_iff, not_not] at h

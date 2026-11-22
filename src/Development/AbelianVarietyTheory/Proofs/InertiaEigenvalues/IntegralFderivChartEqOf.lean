@@ -40,7 +40,7 @@ theorem smul_fderiv_chart_comp (φ : Sm E a) (g : GA E a) (y : GL (Fin a) (Cinf 
       smul_eq_mul, mul_one]
     ring
   · intro j _ hj
-    simp [lieCoord, Module.Basis.repr_self, Finsupp.single_apply, hj]
+    simp [lieCoord, Module.Basis.repr_self, hj]
   · simp
 
 theorem integral_fderiv_chart_eq_of {X : Type} [MeasurableSpace X] (ν : Measure X) (k : X → ℂ)

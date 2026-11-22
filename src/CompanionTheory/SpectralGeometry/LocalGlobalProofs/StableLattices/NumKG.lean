@@ -88,7 +88,7 @@ theorem numKG : NumKG := by
     have e1 : ∑ a, κ a * κ a = ∑ a, κ (w a) * μ (w a) + ∑ a, κ a * (wt C a - rhoC ε a) := by
       rw [Equiv.sum_comp w fun a => κ a * μ a, ← Finset.sum_add_distrib]
       refine Finset.sum_congr rfl fun a _ => ?_
-      simp only [hκ, hμ, Pi.add_apply, Pi.sub_apply, Pi.smul_apply, smul_eq_mul]
+      simp only [hκ, hμ, Pi.sub_apply]
       ring
     have e2 : ∑ a, κ (w a) * κ (w a) = ∑ a, κ a * κ a := Equiv.sum_comp w fun a => κ a * κ a
     have e3 : ∑ a, (κ (w a) - (ν a + rhoC ε a)) ^ 2 = ∑ a, κ (w a) * κ (w a) - 2 * ∑ a, κ (w a) * ν a -

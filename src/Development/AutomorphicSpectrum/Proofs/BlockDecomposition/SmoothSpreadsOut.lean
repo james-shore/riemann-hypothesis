@@ -147,7 +147,7 @@ theorem exists_finite_smooth [Algebra.FinitePresentation R₀ B] [Algebra.Smooth
       refine ⟨d' j, hM ?_⟩
       have hMa (q : MvPolynomial _ A) : M (aeval h' q) = aeval h (M q) := by
         induction q using MvPolynomial.induction_on with
-        | C a => simp [M, MvPolynomial.algebraMap_apply]
+        | C a => simp [M]
         | add p q hp hq => simp only [map_add, hp, hq]
         | mul_X p i hp =>
           simp only [map_mul, aeval_X, hp, hh', hMX]
@@ -176,7 +176,6 @@ theorem smooth_iff_of_isPullback {R₀ T B : Type} [CommRing R₀] [CommRing T] 
       | exact inferInstance
       | exact HasRingHomProperty.respectsIso
       | exact MorphismProperty.IsStableUnderBaseChange.respectsIso
-      | exact (HasRingHomProperty.isLocal_ringHomProperty (P := @Smooth.{0})).respectsIso.arrow
   rw [← hq, MorphismProperty.cancel_left_of_respectsIso (P := @Smooth.{0}), HasRingHomProperty.Spec_iff (P := @Smooth.{0})]
   exact RingHom.smooth_algebraMap (R := T) (S := T ⊗[R₀] B)
 

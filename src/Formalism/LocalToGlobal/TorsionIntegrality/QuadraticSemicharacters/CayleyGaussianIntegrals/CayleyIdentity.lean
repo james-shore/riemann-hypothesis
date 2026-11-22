@@ -60,7 +60,7 @@ theorem cayley_diag [FiniteDimensional ℂ V] (H : Sesq V) (hH : IsHerm H) (hP :
     intro x y
     rw [hTx, hTx]
     simp only [map_smul, map_sub, map_smulₛₗ, LinearMap.smul_apply, LinearMap.sub_apply, smul_eq_mul,
-      Complex.conj_I, RingHom.id_apply, map_ofNat]
+      Complex.conj_I, map_ofNat]
     linear_combination (2 * Complex.I) * key x y
   obtain ⟨b, t, hb, hbt⟩ := symm_diag H hH hP T hT
   have hne : ∀ i, (1 - Complex.I * (t i : ℂ)) ≠ 0 := by
@@ -112,7 +112,7 @@ theorem det_of_diag {n : Type*} [Fintype n] [DecidableEq n] (b : Module.Basis n 
     rw [LinearMap.toMatrix_apply, hL, map_smul, b.repr_self, Finsupp.smul_apply]
     rcases eq_or_ne i j with rfl | h
     · simp
-    · simp [Matrix.diagonal_apply, Finsupp.single_apply, h, h.symm]
+    · simp [h]
   rw [hM, Matrix.det_diagonal]
 
 theorem form_of_diag {n : Type*} [Fintype n] [DecidableEq n] (H : Sesq V) (b : Module.Basis n ℂ V) (l : n → ℂ)
@@ -120,9 +120,8 @@ theorem form_of_diag {n : Type*} [Fintype n] [DecidableEq n] (H : Sesq V) (b : M
     (w : n → ℂ) :
     H (L (b.equivFun.symm w)) (b.equivFun.symm w) = ∑ i, l i * ((‖w i‖ : ℝ) : ℂ) ^ 2 := by
   rw [Module.Basis.equivFun_symm_apply]
-  simp only [map_sum, map_smul, hL, smul_smul, LinearMap.sum_apply, Finset.sum_apply,
-    LinearMap.smul_apply, map_smulₛₗ, hb, smul_eq_mul, mul_ite, mul_one, mul_zero,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only [map_sum, map_smul, hL, smul_smul, LinearMap.sum_apply, LinearMap.smul_apply, map_smulₛₗ, hb, smul_eq_mul, mul_ite, mul_one, mul_zero,
+    Finset.sum_ite_eq', Finset.mem_univ, if_true]
   refine Finset.sum_congr rfl fun i _ => ?_
   have h := Complex.mul_conj (w i)
   rw [Complex.normSq_eq_norm_sq] at h

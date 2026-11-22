@@ -57,7 +57,6 @@ private lemma intMv_of_mul_eq_one_lemma {a b : MvPowerSeries σ K} (hb : IntMv R
       show MvPowerSeries.coeff 0 b = 1
       first
         | exact hb0
-        | exact (MvPowerSeries.coeff_zero_eq_constantCoeff_apply b).trans hb0
     rw [h1]
     exact isUnit_one
   obtain ⟨u, hu⟩ := hu
@@ -208,7 +207,6 @@ theorem smul_ser (σ : Type) (α : O) (g : Ser τ σ) :
   show τ α • ofS g = MvPowerSeries.C (τ α) * ofS g
   first
     | exact MvPowerSeries.smul_eq_C_mul _ _
-    | (ext n; simp [MvPowerSeries.coeff_C_mul])
 
 theorem linv_add (h : IsLogPair l linv) {σ : Type} {g g' : MvPowerSeries σ K}
     (hg : MvPowerSeries.constantCoeff g = 0) (hg' : MvPowerSeries.constantCoeff g' = 0) :
@@ -412,8 +410,6 @@ theorem nm_two : nm (2 : O) = 4 := by
   have h4 : ((4 : saRing O) : O) = 4 := by
     first
       | rfl
-      | norm_cast
-      | simp
   rw [h4, star_ofNat]
   norm_num
 

@@ -67,7 +67,7 @@ theorem exists_depth (E : Type) [Field E] [NumberField E] (K : ℕ) (hK : 0 < K)
   have hval : ∀ P : HeightOneSpectrum (𝓞 E), algebraMap E (FiniteAdeleRing (𝓞 E) E) (K : E) P = (K : P.adicCompletion E) := by
     intro P
     rw [FiniteAdeleRing.algebraMap_apply]
-    first | exact map_natCast (algebraMap E (P.adicCompletion E)) K | norm_cast | simp | rfl
+    first | exact map_natCast (algebraMap E (P.adicCompletion E)) K
   have hfin := Filter.eventually_cofinite.1 hev
   have hpos : ∀ P : HeightOneSpectrum (𝓞 E), ∃ m : ℕ, WithZero.exp (-(m : ℤ)) < Valued.v ((K : P.adicCompletion E)) := by
     intro P

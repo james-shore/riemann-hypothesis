@@ -38,7 +38,6 @@ theorem wtId_holds : WtId := by
       simp only [Fin.coe_natAdd, Fin.val_rev] at h1 h2 ⊢
       rw [dif_neg (by omega)] at h1
       have hi := i.2
-      push_cast at h1
       omega
   · unfold wtJumps
     rw [multiset_map_fin_rev_eq, multiset_map_fin_rev_eq (fun k : Fin n => ((k : ℕ) : ℤ) - lam.dual.w k)]
@@ -64,7 +63,6 @@ theorem wtId_holds : WtId := by
         rw [Nat.cast_sub (by omega)]
         push_cast
         ring
-      push_cast at h1
       rw [hc]
       omega
 

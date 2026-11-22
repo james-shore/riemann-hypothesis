@@ -37,7 +37,7 @@ theorem gauss_pair {n : ℕ} (hn : 0 < n) (c : EuclideanSpace ℂ (Fin n)) (hc :
     have hij : i = j :=
       Subtype.ext (by rw [Set.mem_singleton_iff.mp i.2, Set.mem_singleton_iff.mp j.2])
     subst hij
-    simp only [Set.restrict_apply, if_true]
+    simp only [if_true]
     rw [inner_self_eq_norm_sq_to_K]
     show ((‖u0‖ : ℝ) : ℂ) ^ 2 = 1
     rw [hu0n]; simp

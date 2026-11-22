@@ -143,7 +143,6 @@ lemma xZ_diff (x : Frame X.Ψ r) : Differentiable ℂ fun Z : X.Coord => X.xZ x 
   show Differentiable ℂ fun Z : X.Coord => ∑ j, mat x τ a j * X.lowBlock Z τ j b
   first
     | exact Differentiable.fun_sum (fun j _ => (hL j).const_mul _)
-    | exact Differentiable.sum (fun j _ => (hL j).const_mul _)
 
 lemma xZ_zero (x : Frame X.Ψ r) : X.xZ x 0 = x := by
   funext τ

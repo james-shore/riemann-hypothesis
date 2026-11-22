@@ -131,8 +131,7 @@ theorem lt2 : MultiplicityOneTestOperators := by
       rw [← Matrix.trace_conjTranspose, conjTranspose_mul, conjTranspose_mul, conjTranspose_conjTranspose,
         ← Matrix.mul_assoc, Matrix.trace_mul_cycle]
     rw [htr]
-    simp only [Matrix.neg_mul, Matrix.mul_smul, Matrix.trace_neg, Matrix.trace_smul, smul_eq_mul,
-      ← Matrix.mul_assoc]
+    simp only [Matrix.neg_mul, Matrix.mul_smul, Matrix.trace_neg, Matrix.trace_smul, smul_eq_mul]
     ring
 
 end PositivityTheory.Rg.Sw.HSt.CompactCayleyBlocks

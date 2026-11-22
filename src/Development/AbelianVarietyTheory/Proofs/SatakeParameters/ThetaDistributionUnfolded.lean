@@ -27,8 +27,6 @@ theorem prod_castLE {M : Type} [CommMonoid M] (h : a ≤ b) (f : Fin b → M) (h
   | exact @_root_.GlobalTheory.ProdFinCastLE.prod_fin_eq_prod_castLE
   | exact _root_.GlobalTheory.ProdFinCastLE.prod_fin_eq_prod_castLE
   | (apply _root_.GlobalTheory.ProdFinCastLE.prod_fin_eq_prod_castLE <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ProdFinCastLE.prod_fin_eq_prod_castLE <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ProdFinCastLE.prod_fin_eq_prod_castLE <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ProdFinCastLE.prod_fin_eq_prod_castLE ..)
 
 theorem sum_castLE {M : Type} [AddCommMonoid M] (h : a ≤ b) (f : Fin b → M) (h0 : ∀ r : Fin b, a ≤ r.1 → f r = 0) :
@@ -559,7 +557,7 @@ theorem colSub1_trans (l j : Fin n) (hlj : l ≠ j) (c : K) :
       · have h2' : s ≠ l := fun h => h2 (h1.trans h)
         simp [h1, h2']
     · by_cases h2 : w = l
-      · by_cases h3 : s = j <;> simp [h1, h2, h3, hlj]
+      · by_cases h3 : s = j <;> simp [h2, h3, hlj]
       · simp [h1, h2]
   simp only [e, Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   split_ifs <;> simp

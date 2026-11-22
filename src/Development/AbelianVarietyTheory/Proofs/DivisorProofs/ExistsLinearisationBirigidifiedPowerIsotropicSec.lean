@@ -18,7 +18,7 @@ variable {S : Scheme.{0}}
 
 theorem transl_mul' {G : Over S} [GrpObj G] (x y : 𝟙_ (Over S) ⟶ G) :
     Hecke.transl (x * y) = Hecke.transl x ≫ Hecke.transl y := by
-  simp only [Hecke.transl, comp_mul, Category.comp_id, Category.id_comp]
+  simp only [Hecke.transl, comp_mul, Category.comp_id]
   rw [← Category.assoc _ (toUnit G) y, toUnit_unique (_ ≫ toUnit G) (toUnit G), _root_.mul_assoc]
 
 theorem transl_comm {G : Over S} [GrpObj G] [IsCommMonObj G] (x y : 𝟙_ (Over S) ⟶ G) :

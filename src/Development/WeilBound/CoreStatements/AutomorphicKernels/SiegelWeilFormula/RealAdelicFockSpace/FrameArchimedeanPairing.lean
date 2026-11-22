@@ -79,7 +79,7 @@ theorem re_trace_loc (R : RD d) (w : InfinitePlace F) (W X : Mx F E d.m d.n) :
 theorem inner_arc (R : RD d) (W X : Mx F E d.m d.n) :
     ⟪arc R W, arc R X⟫_ℝ =
       ∑ w, ∑ i, ∑ j, ((R.loc w W i j).re * (R.loc w X i j).re + (R.loc w W i j).im * (R.loc w X i j).im) := by
-  simp only [arc, PiLp.inner_apply, EuclideanSpace.equiv, real_inner_eq_re_inner, RCLike.inner_apply, conj_trivial]
+  simp only [arc, PiLp.inner_apply, EuclideanSpace.equiv, RCLike.inner_apply, conj_trivial]
   rw [Fintype.sum_prod_type]
   refine Finset.sum_congr rfl fun w _ => ?_
   rw [Fintype.sum_prod_type]
@@ -247,7 +247,7 @@ theorem psi_tw' (R : RD d) {W : Mx F E d.m d.n} (hW : finOne F • W = 0) (t : �
   simp only [e]
   push_cast
   rw [Finset.mul_sum, Finset.mul_sum]
-  simp only [← Finset.sum_neg_distrib, ← Finset.mul_sum]
+  simp only [← Finset.mul_sum]
   ring_nf
 
 theorem psi_sp' (R : RD d) {W : Mx F E d.m d.n} (hW : finOne F • W = 0) (s t : ℝ) :

@@ -24,4 +24,4 @@ theorem UpperTheory.V.AlgebraTools.Det.genSpan :
     obtain ⟨m, g, b, rfl⟩ := hx
     refine ⟨m, g, fun j => r * b j, ?_⟩
     rw [Finset.smul_sum]
-    simp [smul_smul]
+    simp

@@ -96,7 +96,7 @@ theorem comp_last {n : ℕ} (c : Composition (n + 1)) (h : 0 < c.length) :
     c.sizeUpTo (c.length - 1) + c.blocksFun ⟨c.length - 1, by omega⟩ = n + 1 := by
   have h1 : c.length - 1 + 1 = c.length := by omega
   have h2 := c.sizeUpTo_succ' ⟨c.length - 1, by omega⟩
-  simp only [Fin.val_mk, h1, Composition.sizeUpTo_length] at h2
+  simp only [h1, Composition.sizeUpTo_length] at h2
   exact h2.symm
 
 theorem comp_not_end {n : ℕ} (c : Composition (n + 1)) (h : 0 < c.length)
@@ -113,7 +113,6 @@ theorem comp_not_end {n : ℕ} (c : Composition (n + 1)) (h : 0 < c.length)
 theorem comp_len_pos {n : ℕ} (c : Composition (n + 1)) : 0 < c.length := by
   first
     | exact c.length_pos_of_pos (Nat.succ_pos n)
-    | exact Composition.length_pos_of_pos c (Nat.succ_pos n)
 
 theorem blocksFun_toComp {K : Type} [Field K] {d : ℕ} (p : Point K d) (a : Fin (toComp p).length) :
     (toComp p).blocksFun a = (p.1[(a : ℕ)]'(lt_of_lt_of_eq a.2 (toComp_length p))).2 := by
@@ -121,10 +120,6 @@ theorem blocksFun_toComp {K : Type} [Field K] {d : ℕ} (p : Point K d) (a : Fin
   simp only [Composition.blocksFun]
   first
     | exact List.getElem_map Prod.snd
-    | exact List.getElem_map ..
-    | exact List.get_map Prod.snd
-    | exact List.get_map ..
-    | (rw [List.get_eq_getElem]; simp)
 
 theorem pW_append (L0 : List (ℂ × ℕ)) (t : ℂ) (s : ℕ) : pW (L0 ++ [(t, s)]) = pW L0 * ‖t‖ ^ (2 * s) := by
   simp [pW, List.map_append, List.prod_append]
@@ -136,7 +131,6 @@ theorem gW_cons (T T' : ℝ) (b : ℂ × ℕ) (L : List (ℂ × ℕ)) (hL : L �
   | cons c L =>
     first
     | rfl
-    | simp [gW]
 
 theorem gW_append (T T' : ℝ) (t : ℂ) (s : ℕ) : ∀ L0 : List (ℂ × ℕ),
     gW T T' (L0 ++ [(t, s)]) = pW L0 * (if s = 1 then Complex.normSq t - T * T' else ‖t‖ ^ (2 * s))

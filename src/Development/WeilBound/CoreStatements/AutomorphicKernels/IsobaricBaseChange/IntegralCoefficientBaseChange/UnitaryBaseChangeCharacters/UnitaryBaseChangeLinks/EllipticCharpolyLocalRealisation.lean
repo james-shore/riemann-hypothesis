@@ -76,8 +76,6 @@ theorem lemOdd : ∀ (L : Type) [Field L] [Valued L (WithZero (Multiplicative �
       apply Subtype.ext
       first
         | exact mul_inv_cancel₀ h20
-        | (show (2 : L) * (2 : L)⁻¹ = 1; exact mul_inv_cancel₀ h20)
-        | (push_cast; exact mul_inv_cancel₀ h20)
     exact ⟨⟨2, _, hmul, by rw [mul_comm]; exact hmul⟩, rfl⟩
   have h2V : (2 : IsLocalRing.ResidueField V) ≠ 0 := by
     intro h

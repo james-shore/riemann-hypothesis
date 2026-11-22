@@ -93,9 +93,7 @@ theorem exists_nat_smul_mem_L0 {D : D7} (V : HSp D) (v : V.V) : ∃ d : ℕ, 0 <
   first
   | exact @_root_.GlobalTheory.NatSmulMemLattice.exists_nat_smul_mem_lattice
   | exact _root_.GlobalTheory.NatSmulMemLattice.exists_nat_smul_mem_lattice
-  | (apply _root_.GlobalTheory.NatSmulMemLattice.exists_nat_smul_mem_lattice <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatSmulMemLattice.exists_nat_smul_mem_lattice <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatSmulMemLattice.exists_nat_smul_mem_lattice <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.NatSmulMemLattice.exists_nat_smul_mem_lattice)
   | (intros; exact _root_.GlobalTheory.NatSmulMemLattice.exists_nat_smul_mem_lattice ..)
 
 theorem exists_nat_smul_frame {D : D7} (V : HSp D) :

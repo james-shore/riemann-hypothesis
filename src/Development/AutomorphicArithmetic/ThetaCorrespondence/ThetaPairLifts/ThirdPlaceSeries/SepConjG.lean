@@ -69,7 +69,7 @@ theorem sep_conj_g_alt (sw : _root_.UpperTheory.One.M.TrivialCondition) (hL : _r
         fun x y u => by rw [map_mul]; rfl
       refine (e _ _ v).trans (Eq.trans ?_ (e _ _ v).symm)
       rw [ParLaws.invRevT_eq, inv_mul_cancel_right]) (good _ _ (ParLaws.isLocComp_flip hc₀ hσ))
-  first | (have hOpn := UpperTheory.One.M.opn _ (hr); obtain ⟨_, _, _, H⟩ := hOpn) | obtain ⟨_, _, _, -, H⟩ := hr
+  first | (have hOpn := UpperTheory.One.M.opn _ (hr); obtain ⟨_, _, _, H⟩ := hOpn)
   have kd := k.dual
   rw [← _root_.UpperTheory.One.M.LawsM.dual H a (ParLaws.toRep σ) π₁ (good _ _ hσ) hE, ← h2] at kd
   exact h1 ▸ kd.transport c (D.host.conj : D.host.E ≃+* D.host.E) hcE hcA h4

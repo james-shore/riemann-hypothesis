@@ -479,11 +479,9 @@ def toBesDat (hζ : IsLineVec L ζ) {θ : D.host.E} (hθ : θ ≠ 0) (ι : A.V �
     rw [cT_sig, hι, conjTranspose_mul, Matrix.mul_assoc o.iAᴴ, Matrix.mul_assoc o.iAᴴ, d.i₀e, Matrix.mul_zero]
   z := d.i₀ *ᵥ vecB o ζ
   z_perpA := by
-    change (_ : Matrix _ _ D.host.E) *ᵥ _ = 0
     rw [cT_sig, hι, conjTranspose_mul, vecB, Matrix.mulVec_mulVec, Matrix.mulVec_mulVec, Matrix.mul_assoc o.iAᴴ,
       Matrix.mul_assoc o.iAᴴ, d.iso, o.orth', Matrix.zero_mulVec]
   z_perpE := by
-    change (_ : Matrix _ _ D.host.E) *ᵥ _ = 0
     have h := congrArg conjTranspose d.i₀e
     rw [conjTranspose_mul, conjTranspose_mul, conjTranspose_conjTranspose, gram_conjTranspose, conjTranspose_zero,
       ← Matrix.mul_assoc] at h

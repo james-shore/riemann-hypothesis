@@ -57,7 +57,7 @@ theorem formalFibre_isReduced_of_field :
   have hinj : Function.Injective (IsScalarTower.toAlgHom T T L) := Subtype.val_injective
   let ι : K →ₐ[A] L := (IsFractionRing.liftAlgHom (K := K) hinj).restrictScalars A
   have hι : ∀ t : T, ι (algebraMap T K t) = t := fun t => by
-    simp [ι, IsFractionRing.liftAlgHom_apply]
+    simp [ι]
   have hmem : ∀ i ∈ S, i.2 ∈ T := fun i hi =>
     Algebra.subset_adjoin (by simpa using ⟨i.1, hi⟩)
   let y : AdicCompletion (maximalIdeal A) A ⊗[A] K :=

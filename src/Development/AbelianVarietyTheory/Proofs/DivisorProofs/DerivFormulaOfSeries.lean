@@ -17,8 +17,8 @@ theorem count_cons_eq {I : Type} [DecidableEq I] (i : I) (l : List I) :
     (fun j => (i :: l).count j) = (fun j => l.count j) + Pi.single i 1 := by
   funext j
   by_cases h : j = i
-  · subst h; simp [List.count_cons]
-  · simp [List.count_cons, Pi.single_apply, h, Ne.symm h]
+  · subst h; simp
+  · simp [h, Ne.symm h]
 
 theorem risingFactor_ne_zero {I : Type} [Fintype I] (k : ℕ) (hk : 1 ≤ k) (κ : I → ℕ) :
     risingFactor k κ ≠ 0 := by

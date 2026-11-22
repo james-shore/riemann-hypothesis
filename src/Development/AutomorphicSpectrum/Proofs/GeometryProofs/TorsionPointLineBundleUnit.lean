@@ -21,7 +21,7 @@ theorem valF_comp_valR {O C : Type} [CommRing O] [Field C] [Algebra O C] {X : Sc
     (h : ⊤ ≤ a ⁻¹ᵁ U) (f : Γ(X, U)) :
     valF (spMap (algebraMap O C) ≫ a) U f = algebraMap O C (valR a U h f) := by
   have h' : ⊤ ≤ (spMap (algebraMap O C) ≫ a) ⁻¹ᵁ U := fun x _ => h (x := spMap (algebraMap O C) x) trivial
-  have e₀ : (spMap (algebraMap O C)).appLE ⊤ ⊤ (by first | exact le_rfl | simp) = (spMap (algebraMap O C)).appTop := by
+  have e₀ : (spMap (algebraMap O C)).appLE ⊤ ⊤ (by first | exact le_rfl) = (spMap (algebraMap O C)).appTop := by
     rw [Scheme.Hom.appTop, Scheme.Hom.app_eq_appLE]
     rfl
   have e : (spMap (algebraMap O C) ≫ a).appLE U ⊤ h' = a.appLE U ⊤ h ≫ (spMap (algebraMap O C)).appTop := by

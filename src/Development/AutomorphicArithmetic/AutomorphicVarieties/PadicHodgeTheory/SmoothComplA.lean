@@ -87,7 +87,7 @@ theorem sc_first {O E R : Type} [CommRing O] [Field E] [Algebra O E] [CommRing R
       map_smul' := fun c a => by
         simp only [map_smul, RingHom.id_apply]
         simp only [smul_eq_mul, map_mul, Algebra.smul_def, mul_add, Finset.mul_sum, mul_assoc,
-          MvPowerSeries.algebraMap_apply, Algebra.algebraMap_self, RingHom.id_apply] }
+          MvPowerSeries.algebraMap_apply] }
   have hm : ∀ a, ∑ i, MvPowerSeries.C (D i a) * MvPowerSeries.X i ∈ maximalIdeal (MvPowerSeries (Fin n) E) :=
     fun a => (sc_max E n _).2 (by simp)
   refine ⟨AlgHom.ofLinearMap ((Ideal.Quotient.mkₐ O _).toLinearMap ∘ₗ L) ?_ fun a b => ?_, fun a => rfl⟩

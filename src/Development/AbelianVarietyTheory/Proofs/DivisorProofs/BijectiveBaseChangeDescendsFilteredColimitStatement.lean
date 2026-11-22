@@ -13,4 +13,4 @@ theorem _root_.GlobalTheory.T.bijective_baseChange_descends_filteredColimit : �
     ∃ (k₀ : J) (f₀ : j ⟶ k₀), ∀ (k : J) (f : k₀ ⟶ k),
       letI : Algebra (F.obj j) (F.obj k) := (F.map (f₀ ≫ f)).hom.toAlgebra;
       Function.Bijective (Algebra.TensorProduct.map (AlgHom.id (F.obj k) (F.obj k)) φ) := by
-  first | (exact @GlobalTheory.BijDescent.bijective_of_isColimit) | (exact GlobalTheory.BijDescent.bijective_of_isColimit) | (intros; apply GlobalTheory.BijDescent.bijective_of_isColimit  <;> assumption)
+  first | (exact @GlobalTheory.BijDescent.bijective_of_isColimit)

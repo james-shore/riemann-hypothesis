@@ -142,11 +142,9 @@ lemma Tm_rep (hC : CapCongr) (hP : EabPres) (hD : IsOpen D) {F : Mx k r → E} {
   · subst hab
     first
       | simp [Formalism.QuantumDeterminants.Top, Formalism.REAL.Tm, Module.algebraMap_end_apply, h g hg, h1 g hg]
-      | simp [Formalism.QuantumDeterminants.Top, Tm, Module.algebraMap_end_apply, h g hg, h1 g hg]
   · have hne : posL k r i a ≠ posL k r i b := fun e => hab (posL_inj e)
     first
       | simp [Formalism.QuantumDeterminants.Top, Formalism.REAL.Tm, hab, hne, h1 g hg]
-      | simp [Formalism.QuantumDeterminants.Top, Tm, hab, hne, h1 g hg]
 
 lemma foldr_rep (hC : CapCongr) (hP : EabPres) (hD : IsOpen D) (l : List (ℂ × Fin (mdim k r i) × Fin (mdim k r i)))
     {F : Mx k r → E} {x : SS k r i D E} (h : Rep F x.1) :
@@ -158,7 +156,6 @@ lemma foldr_rep (hC : CapCongr) (hP : EabPres) (hD : IsOpen D) (l : List (ℂ ×
     simp only [List.map_cons, List.foldr_cons, List.prod_cons]
     first
       | rw [Module.End.mul_apply]
-      | rw [LinearMap.mul_apply]
     exact Tm_rep hC hP hD ih q.1 q.2.1 q.2.2
 
 lemma qminor_apply (hP : EabPres) (hD : IsOpen D) {t : ℕ} (a b : Fin t → Fin (mdim k r i)) (u : ℂ)

@@ -32,7 +32,7 @@ theorem frame_eps (d : SD σ) : ∃ ε : ℤˣ, (incM F d.b.1)ᵀ * dbl (incM F 
       (incM F d.b.1)ᵀ * incM F (dbl d.Y.J) * incM F (d.b.1.map σ) := by
     simp only [incM, Matrix.map_mul, Matrix.transpose_map]
   rw [e1, e2, ← key, hε]
-  ext (i|i) (j|j) <;> simp [incM, Matrix.fromBlocks_map, Matrix.one_apply] <;> split_ifs <;> simp
+  ext (i|i) (j|j) <;> simp [incM, Matrix.one_apply] <;> split_ifs <;> simp
 
 variable {n : ℕ}
 

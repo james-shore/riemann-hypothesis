@@ -245,7 +245,7 @@ theorem UpperTheory.V.Z.Sym.Al.infVec :
     rw [Submodule.coe_smul, MvPolynomial.smul_eval, Wt.eval_mRep]
     congr 2
     refine Finset.prod_congr rfl fun v _ => ?_
-    simp [infC, map_inv, zpow_neg, inv_zpow]
+    simp [infC, map_inv]
     rfl
   · rw [Subgroup.mem_bot.1 hu, mul_one]
 

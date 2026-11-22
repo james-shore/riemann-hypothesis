@@ -24,7 +24,7 @@ lemma fderiv_apply_lin {f' : B.Mat k r → E} {U : Set (B.Mat k r)} (hU : IsOpen
     ∀ V, fderiv ℝ (fun y => fderiv ℝ f' y (A y)) g V =
       fderiv ℝ f' g (A V) + fderiv ℝ (fderiv ℝ f') g V (A g) := by
   have h1 : ContDiffOn ℝ 1 (fun y => fderiv ℝ f' y) U :=
-    hc.fderiv_of_isOpen hU (by first | norm_num | rfl | simp)
+    hc.fderiv_of_isOpen hU (by first | norm_num)
   have hd : DifferentiableAt ℝ (fderiv ℝ f') g :=
     (h1.differentiableOn one_ne_zero).differentiableAt (hU.mem_nhds hg)
   have hA : DifferentiableAt ℝ (fun y => A y) g := A.differentiableAt

@@ -130,7 +130,7 @@ theorem iterSymm : IterSymm := by
           by_cases hj1 : j = 1
           · subst hj1
             exact symm_swap hΩ hF hc u
-          · have h01 : (0 : Fin (m + 2)) ≠ 1 := by simp [Fin.ext_iff]
+          · have h01 : (0 : Fin (m + 2)) ≠ 1 := by simp
             have hs : Equiv.swap (0 : Fin (m + 2)) j =
                 Equiv.swap 1 j * Equiv.swap 0 1 * Equiv.swap 1 j := by
               rw [Equiv.swap_mul_swap_mul_swap h01 (Ne.symm hj0), Equiv.swap_comm]
@@ -142,13 +142,13 @@ theorem iterSymm : IterSymm := by
                 Equiv.Perm (Fin (m + 2)))) =
                 ((u ∘ Equiv.swap 1 j) ∘ Equiv.swap 0 1) ∘ Equiv.swap 1 j := by
               funext i
-              simp [Equiv.Perm.mul_apply]
+              simp
             rw [hs, hcomp, hfix, symm_swap hΩ hF hc, hfix]
     have h0 : (Equiv.swap 0 (σ 0) * σ) 0 = 0 := by
       simp [Equiv.Perm.mul_apply]
     have hv : v ∘ σ = (v ∘ Equiv.swap 0 (σ 0)) ∘ ⇑(Equiv.swap 0 (σ 0) * σ) := by
       funext i
-      simp [Equiv.Perm.mul_apply]
+      simp
     rw [hv, symm_fix hΩ hF ih hc _ h0, key]
 
 section

@@ -50,7 +50,7 @@ theorem exists_dual_integral_of_saturated_free_part :
   have hφt : ∀ i, φ (t i) = 0 := fun i => by
     have h := hgs (Sum.inr i)
     simp only [Sum.elim_inr] at h
-    simp [φ, h, Finsupp.single_apply]
+    simp [φ, h]
   let R : Submodule V C := LinearMap.range (Algebra.linearMap V C)
   have hone : (1 : C) ∈ R := ⟨1, by simp⟩
   have hzero : (0 : C) ∈ R := R.zero_mem

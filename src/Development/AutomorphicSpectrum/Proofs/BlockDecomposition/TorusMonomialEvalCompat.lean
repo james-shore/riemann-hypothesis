@@ -61,12 +61,12 @@ theorem mk_prod_pow {m e : ℕ} {g : MvPolynomial (Fin (N + 1)) K} (hg : g ∈ g
       ∏ k ∈ s, Localization.mk (y k) (⟨g ^ 1, ⟨_, rfl⟩⟩ : Submonoid.powers g) ^ β k := by
     intro s
     induction s using Finset.induction_on with
-    | empty => simp [Localization.mk_one]
+    | empty => simp
     | insert a s ha ih =>
       rw [Finset.prod_insert ha, Finset.prod_insert ha, ← ih, Localization.mk_pow, Localization.mk_mul]
       congr 1
       apply Subtype.ext
-      simp [Finset.sum_insert ha, pow_add, ← pow_mul]
+      simp [Finset.sum_insert ha, pow_add]
   exact key Finset.univ
 
 theorem mk_add' {f u v : MvPolynomial (Fin (N + 1)) K} {a n : ℕ} (hf : f ∈ grK K N a) (hu : u ∈ grK K N (n • a))
@@ -160,7 +160,7 @@ theorem evV_monomial {d e : ℕ} (i : X ⟶ PSpace K N) (y : Fin (d + 1) → MvP
     simpa using (MvPolynomial.mem_homogeneousSubmodule e (y k)).2 (hy k)
   have one : HomogeneousLocalization.Away.mk (grK K N) h0 1 (y 0) (hy1 0) = 1 := by
     apply HomogeneousLocalization.val_injective
-    simp [Localization.mk_self]
+    simp
   have A2 : ∀ (γ : Fin (d + 1) → ℕ) (hγ : ∑ k, γ k = j * S.card)
       (h' : ∏ k, y k ^ γ k ∈ grK K N ((j * S.card) • e)),
       evV i (y 0) V hV0 (HomogeneousLocalization.Away.mk (grK K N) h0 (j * S.card) (∏ k, y k ^ γ k) h') =

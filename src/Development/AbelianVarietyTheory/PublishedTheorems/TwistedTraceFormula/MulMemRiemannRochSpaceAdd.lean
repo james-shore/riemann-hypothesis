@@ -25,7 +25,7 @@ theorem exists_majorant {A : Type} [CommRing A] (σ : A →+* A) {n k m : ℕ} (
   let Δ : Matrix _ _ A := diagonal fun i => if s i then 1 else -1
   have hc : cT σ a0 = fromRows (fromRows (r • (cT σ C + cT σ D)) (r • (cT σ C - cT σ D))) (cT σ M) := by
     ext (i | i) j
-    · rcases i with i | i <;> simp [cT, a0, hr, mul_add, mul_sub]
+    · rcases i with i | i <;> simp [cT, a0, hr, mul_sub]
     · simp [cT, a0]
   have hrr : r * r + r * r = 1 := by rw [← h2]; ring
   have h0 : cT σ a0 * J * a0 = Δ := by
@@ -34,7 +34,7 @@ theorem exists_majorant {A : Type} [CommRing A] (σ : A →+* A) {n k m : ℕ} (
       Matrix.mul_add, Matrix.mul_sub, hCC, hDD, hCD, hDC, hMC, hMD, hCM, hDM, hMM]
     ext (i | i) (j | j)
     · rcases i with i | i <;> rcases j with j | j <;> by_cases h : i = j <;>
-        simp [Δ, s, h, diagonal, mul_add, mul_sub, hrr]
+        simp [Δ, s, h, diagonal, mul_sub, hrr]
       linear_combination (-1 : A) * hrr
     · rcases i with i | i <;> simp [Δ]
     · rcases j with j | j <;> simp [Δ]
@@ -188,8 +188,7 @@ theorem unitary_extension {A n m : Type} [CommRing A] [Fintype n] [DecidableEq n
   have h4 : ∀ X : Matrix m n A, Q * (B * X) = X := fun X => by rw [← Matrix.mul_assoc, hQB, Matrix.one_mul]
   have h5 := congrArg (fun X => cT σ Q * (X * Q)) hP
   rw [hc1, Matrix.add_mul, Matrix.one_mul, Matrix.mul_assoc _ (cT σ B), h1]
-  simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul,
-    Matrix.mul_assoc, h3, h4] at h5 ⊢
+  simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.mul_assoc, h3, h4] at h5 ⊢
   rw [h5]; abel
 
 end Arch

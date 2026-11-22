@@ -80,7 +80,7 @@ theorem exists_theta (hne : ∃ z : E, cj z ≠ z) :
   obtain ⟨c', hc'⟩ := cj_integral hcj c
   have hθ : ((c - c' : 𝓞 E) : E) = (c : E) - cj (c : E) := by
     rw [← hc']
-    first | rfl | (push_cast; rfl) | norm_cast
+    first | rfl
   refine ⟨c - c', ?_, ?_⟩
   · rw [hθ]
     exact sub_ne_zero.mpr (Ne.symm hc)

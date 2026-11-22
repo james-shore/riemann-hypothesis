@@ -49,7 +49,7 @@ theorem pid_dichotomy {O : Type*} [CommRing O] [IsDomain O] [IsPrincipalIdealRin
     by_cases hj : j ∈ Set.range snf.f
     · obtain ⟨i, rfl⟩ := hj
       have h2 := congrFun (snf.repr_comp_embedding_eq_smul ⟨_, hmem k⟩) i
-      simp only [Function.comp_apply, Pi.smul_apply, smul_eq_mul] at h2
+      simp only [Function.comp_apply, smul_eq_mul] at h2
       have h3 : snf.bM.repr (fun i => P i k) (snf.f i) = snf.a i * snf.bN.repr ⟨_, hmem k⟩ i := h2
       rw [h3]
       intro hu

@@ -210,7 +210,7 @@ theorem typeU_of_emb (i : D.nd.Loc) {w : HeightOneSpectrum (𝓞 D.host.E)}
     have hd : (0 : ℝ) < Real.sqrt (D.host.d : ℝ) := by
       have := D.host.qd_big.2
       exact Real.sqrt_pos.2 (by exact_mod_cast (by omega : 0 < D.host.d))
-    simp only [Formalism.HC.HostRaw.cmType, Set.mem_ofPred_eq, Set.mem_setOf_eq] at hm hφ
+    simp only [Formalism.HC.HostRaw.cmType, Set.mem_ofPred_eq] at hm hφ
     rw [hm, hφ] at hv
     have him := congrArg Complex.im hv
     simp at him

@@ -54,7 +54,6 @@ lemma hh_bound {ε : ℝ} (hε : 0 < ε) (j : ℕ) {x : ℝ} (hx : ε ≤ x) :
   have heq : iteratedFDeriv ℝ j (hh ε) x = iteratedFDeriv ℝ j (fun y : ℝ => y ^ (-(1 / 2 : ℝ))) x := by
     first
     | exact ((hh_ev hε h2).iteratedFDeriv ℝ j).eq_of_nhds
-    | exact (hh_ev hε h2).iteratedFDeriv_eq j
   rw [heq, norm_iteratedFDeriv_eq_norm_iteratedDeriv, iteratedDeriv_eq_iterate]
   simp only [Real.iter_deriv_rpow_const]
   rw [norm_mul, Real.norm_eq_abs, Real.norm_eq_abs, abs_of_pos (Real.rpow_pos_of_pos hx0 _)]
@@ -83,8 +82,6 @@ lemma Phh_bound {ε : ℝ} (hε : 0 < ε) (j : ℕ) :
         by
           first
           | exact Complex.ofRealCLM.norm_iteratedFDeriv_comp_left hh'.contDiffAt (by exact_mod_cast le_top)
-          | exact Complex.ofRealCLM.norm_iteratedFDeriv_comp_left hh' z (by exact_mod_cast le_top)
-          | exact Complex.ofRealCLM.norm_iteratedFDeriv_comp_left hh'.contDiffAt z (by exact_mod_cast le_top)
     _ ≤ _ := by
         gcongr
         calc ‖iteratedFDeriv ℝ j (hh ε ∘ Complex.reCLM) z‖
@@ -92,8 +89,6 @@ lemma Phh_bound {ε : ℝ} (hε : 0 < ε) (j : ℕ) :
                 fun _ => Complex.reCLM‖ := by
               first
               | rw [Complex.reCLM.iteratedFDeriv_comp_right (hh_cd hε) z (by exact_mod_cast le_top)]
-              | rw [Complex.reCLM.iteratedFDeriv_comp_right (hh_cd hε).contDiffAt (by exact_mod_cast le_top)]
-              | rw [Complex.reCLM.iteratedFDeriv_comp_right (hh_cd hε) (by exact_mod_cast le_top)]
           _ ≤ ‖iteratedFDeriv ℝ j (hh ε) (Complex.reCLM z)‖ * ∏ _i : Fin j, ‖Complex.reCLM‖ :=
               ContinuousMultilinearMap.norm_compContinuousLinearMap_le _ _
           _ = ‖iteratedFDeriv ℝ j (hh ε) (Complex.reCLM z)‖ * ‖Complex.reCLM‖ ^ j := by

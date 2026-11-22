@@ -149,7 +149,7 @@ theorem rds_vabm_ind (hL : IsActualLevel X L) (Y : ℂ) : ∀ i : ℕ, i ≤ r �
           Y • ((rdsVvp L Y i 0 0).1 Φ) - X.op ⟨i, h⟩ 3 ((rdsVvp L Y i 0 0).1 Φ) -
             X.op ⟨i, h⟩ 4 ((rdsVvp L Y i 1 0).1 Φ) := by
         rw [rds_fst_add, rds_fst_mul, rds_fst_mul, rdsR_fst_sub, rds_fst_alg, rdsR_fst_neg, hp, hc]
-        simp only [LinearMap.add_apply, LinearMap.sub_apply, Module.End.mul_apply, LinearMap.neg_apply,
+        simp only [LinearMap.add_apply, Module.End.mul_apply, LinearMap.neg_apply,
           Module.algebraMap_end_apply, sub_eq_add_neg]
       rw [e, Submodule.coe_sub, Submodule.coe_sub, Submodule.coe_smul, rds_op_coe, rds_op_coe, hA, hB]
       funext c g
@@ -197,7 +197,7 @@ theorem spectral_radial_action : RDSARad := by
     intro Ψ
     rw [R.LevelData.Dr, List.ofFn_eq_map, (rds_cprod X L hL _ Ψ).1]
     funext c g
-    simp only [CutMP.dMul, CutMP.drF, List.map_map, Function.comp_def]
+    simp only [CutMP.dMul, CutMP.drF]
     rw [← List.ofFn_eq_map, List.prod_ofFn]
   have hDrb : ∀ Ψ : RadSp P.k P.r z z' π π',
       (((L.Drb).1 Ψ : RadSp P.k P.r z z' π π') : Fn P.k P.r (Wq →L[ℂ] Wp)) =
@@ -205,7 +205,7 @@ theorem spectral_radial_action : RDSARad := by
     intro Ψ
     rw [R.LevelData.Drb, List.ofFn_eq_map, (rds_cprod X L hL _ Ψ).2]
     funext c g
-    simp only [CutMP.dMul, CutMP.drbF, List.map_map, Function.comp_def]
+    simp only [CutMP.dMul, CutMP.drbF]
     rw [← List.ofFn_eq_map, List.prod_ofFn, map_prod]
     rfl
   refine ⟨?_, ?_⟩

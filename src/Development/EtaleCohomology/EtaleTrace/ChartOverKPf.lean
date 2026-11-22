@@ -52,8 +52,7 @@ theorem chart_key {k : Type} [Field k] {X : Scheme.{0}} [IsIntegral X] (p : X �
     simp [kHom]
   simp only [CommRingCat.hom_comp, RingHom.comp_apply, CommRingCat.hom_ofHom]
   rw [fromZero_eq_mk i hx c hg, hsec]
-  simp only [Scheme.Hom.comp_appTop, Scheme.Opens.ι_appTop, Scheme.Opens.topIso_inv, CommRingCat.hom_comp,
-    RingHom.comp_apply]
+  simp only [Scheme.Hom.comp_appTop, Scheme.Opens.ι_appTop, Scheme.Opens.topIso_inv]
   erw [← CommRingCat.comp_apply, ← Functor.map_comp]
   rfl
 

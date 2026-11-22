@@ -36,8 +36,7 @@ theorem exists_int_smul_mem_lattice {E : Type} [Field E] [NumberField E] {n : �
     refine ⟨d * a, mul_ne_zero hd ha, ?_⟩
     have h : ((d * a : ℤ) : 𝓞 E) • (c • x) = r • ((a : 𝓞 E) • x) := by
       funext i
-      simp only [Pi.smul_apply, Algebra.smul_def, map_intCast, Algebra.algebraMap_self,
-        RingHom.id_apply, Int.cast_mul, map_mul]
+      simp only [Pi.smul_apply, Algebra.smul_def, map_intCast, Int.cast_mul, map_mul]
       have hr' : algebraMap (𝓞 E) E r = (d : E) * c := hr
       rw [hr', Pi.mul_apply, Pi.algebraMap_apply, Algebra.algebraMap_self, RingHom.id_apply]
       ring

@@ -17,7 +17,7 @@ theorem finite_full_submodule_isLattice {O : Type} [CommRing O] [IsDomain O]
 theorem exists_nonzero_multiple_mem_lattice {O : Type} [CommRing O] [IsDomain O]
     {V : Type} [AddCommGroup V] [Module (KK O) V] [Module O V] [IsScalarTower O (KK O) V]
     (M : Submodule O V) (hM : MQ (K := KK O) M = ⊤) (x : V) : ∃ a : O, a ≠ 0 ∧ a • x ∈ M := by
-  first | exact Bl.general_b_fact_left_version.goal1 .. | (apply Bl.general_b_fact_left_version.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_left_version.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_version.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_left_version.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_version.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_left_version.goal1 .. | (apply Bl.general_b_fact_left_version.goal1 <;> assumption)
 
 theorem dual_lattice_values_mem_scaled : DualLatticeDivisibility := by
   intro O _ _ _ V _ _ _ _ _ M hfg hM t z hz

@@ -151,7 +151,7 @@ theorem deg_inj (e : DCx.AugRow A K) (a : ℕ) (hb : Function.Injective (e.edge.
         intro q
         rw [hxdef, K.D_sgl, hw']
         change K.sgl 0 (m + 1) (e.ε (m + 1) c) 0 q - _ = 0
-        simp only [pow_zero, one_smul, Pi.add_apply, Pi.sub_apply]
+        simp only [pow_zero, one_smul, Pi.add_apply]
         rw [K.sgl_ne (K.dh 0 m w) (Or.inl (by omega) : 0 ≠ 0 + 1 ∨ q ≠ m)]
         simp
       obtain ⟨y, hy, -, hDy⟩ := tail K (m + 1) (m + 1) h le_rfl x hxT hDx h0

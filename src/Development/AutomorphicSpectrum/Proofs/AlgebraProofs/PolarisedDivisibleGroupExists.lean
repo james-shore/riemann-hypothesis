@@ -69,7 +69,7 @@ def omAct (C : Type) [Field C] [Algebra O C] (c : E ≃+* E) {L : Type} [AddComm
     exact (congrArg _ (by ext x; simp [LinearMap.dualMap_apply])).trans (TensorProduct.tmul_zero _ _)
   map_add' a b := by
     ext w
-    simp [LinearMap.baseChange_tmul, TensorProduct.tmul_add]
+    simp [LinearMap.baseChange_tmul]
     exact (congrArg _ (by ext x; simp [LinearMap.dualMap_apply])).trans (TensorProduct.tmul_add _ _ _)
 
 theorem omAct_tmul (c : E ≃+* E) {L : Type} [AddCommGroup L] [Module O L]

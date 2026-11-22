@@ -66,7 +66,7 @@ theorem hform_eq_herm (σ : E →+* E) (hst : ∀ a : E, star a = σ a)
 theorem hform_isSymm (J : Matrix (Fin n) (Fin n) E) (hJ : ∀ i j, star (J i j) = J j i) :
     (hform J).IsSymm := by
   refine LinearMap.IsSymm.mk fun x y => ?_
-  simp only [hform_apply, starRingEnd_apply, star_sum, star_mul', star_star, hJ, RingHom.id_apply]
+  simp only [hform_apply, starRingEnd_apply, star_sum, star_mul', star_star, hJ]
   rw [Finset.sum_comm]
   exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring
 
@@ -119,7 +119,7 @@ theorem isUJ_of_isom (σ : E →+* E) (hst : ∀ a : E, star a = σ a)
     simp [Pi.single_apply, apply_ite σ]
   rw [hr] at h
   rw [← h]
-  simp only [IsUJ, Matrix.mul_apply, Matrix.transpose_apply, Matrix.map_apply, Finset.sum_mul]
+  simp only [Matrix.mul_apply, Matrix.transpose_apply, Matrix.map_apply, Finset.sum_mul]
   rw [Finset.sum_comm]
 
 end Pos

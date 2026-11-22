@@ -52,8 +52,8 @@ theorem deepBound (hV : GlobalTheory.FlagMeas.AbsoluteVolume) (hK : GlobalTheory
     have : 2 * (B.I.f : ℝ) ≤ B.I.n * B.I.f * B.g * b := by nlinarith
     rw [hXe]; nlinarith
   have hXsq : 2 * B.I.f * B.I.rd ≤ X ^ 2 := by nlinarith
-  have hVol := hV B.I p q (by first | exact hSig | exact fun v => hSig v) hqn hn8 X (by linarith) hXrd hXsq
-    c B.μf (by first | exact hc | exact fun v => ⟨hc0 v, hc v⟩ | exact fun v => ⟨hc v, hc0 v⟩)
+  have hVol := hV B.I p q (by first | exact hSig) hqn hn8 X (by linarith) hXrd hXsq
+    c B.μf (by first | exact hc)
   obtain ⟨hKs, hKg0, hKsT⟩ := GlobalTheory.CongIndex.measure_Kset_le B.I B.μf B.g hg1
   obtain ⟨hcov, -⟩ := GlobalTheory.T.leftQuotientCovolume_eq_fundamentalDomain_inter B.I B.μf B.fund Set.univ B.fund_spec MeasurableSet.univ
     (fun _ _ _ _ => trivial)
@@ -132,9 +132,6 @@ theorem deepBound (hV : GlobalTheory.FlagMeas.AbsoluteVolume) (hK : GlobalTheory
       ≤ ∫⁻ _ in GlobalTheory.IndefiniteRowSideFullHecke.DeepSet.deepSet B q b, ENNReal.ofReal Kc ∂(B.I.muA B.μf) := by
         first
           | exact setLIntegral_mono measurable_const hpt
-          | exact lintegral_mono_ae ((ae_restrict_iff' (by
-              simp only [GlobalTheory.IndefiniteRowSideFullHecke.DeepSet.deepSet]; exact (measurableSet_eq_fun_of_countable
-                measurable_const measurable_const))).2 (Filter.Eventually.of_forall hpt))
     _ = ENNReal.ofReal Kc * B.I.muA B.μf (GlobalTheory.IndefiniteRowSideFullHecke.DeepSet.deepSet B q b) := setLIntegral_const _ _
     _ ≤ ENNReal.ofReal Kc * B.I.muA B.μf B.fund := by
         gcongr

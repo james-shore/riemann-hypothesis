@@ -50,7 +50,7 @@ private theorem Gs_mul (τ : ℝ) : Gs τ * (1 - X ^ 2) = Qs τ := by
   rw [e]
   ext n
   rcases n with _ | _ | n
-  · simp [Gs, Qs, coeff_mul_X_pow', gg, hh]
+  · simp [Gs, Qs, gg, hh]
   · simp [Gs, Qs, coeff_mul_X_pow', gg, hh]
   · have : gg τ (n + 2) = gg τ n + hh τ (n + 2) ^ 2 := rfl
     simp [Gs, Qs, coeff_mul_X_pow', this]
@@ -62,7 +62,7 @@ private theorem Qs_mul (τ : ℝ) (a : ℂ) (ha : a = (τ : ℂ) ^ 2 - 1) :
   rw [e]
   ext n
   rcases n with _ | _ | _ | n
-  · simp [Qs, coeff_mul_X_pow', hh, coeff_X, coeff_one]
+  · simp [Qs, hh]
   · simp [Qs, coeff_mul_X_pow', hh, coeff_X, coeff_one]
     subst ha
     ring

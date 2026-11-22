@@ -90,7 +90,7 @@ theorem PositivityTheory.Rg.BcB.G3.baseFrame_pf : BaseFrame := by
   have hD : ρ' ((1 : F') ⊗ₜ algebraMap F B d) = (p s) ^ 2 • (1 : Matrix (Fin n) (Fin n) E') := by
     rw [hρ1, hsq]
     ext i k
-    by_cases h : i = k <;> simp [h, Matrix.one_apply]
+    by_cases h : i = k <;> simp [h]
   have hN' : (GeneralLinearGroup.map p δ * thetaGL n c' (GeneralLinearGroup.map p δ)).val =
       (δ * thetaGL n c δ).val.map p := by
     rw [← GlobalTheory.ThetaPull.map_thetaGL p c c' (fun x => (hc x).symm) δ, ← map_mul]

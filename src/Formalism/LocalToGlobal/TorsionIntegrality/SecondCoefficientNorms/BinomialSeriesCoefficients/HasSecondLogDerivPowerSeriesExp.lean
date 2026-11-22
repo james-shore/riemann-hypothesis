@@ -166,7 +166,7 @@ theorem derivative2_dblInt (e : PowerSeries K) :
   rw [show (n : K) + 1 + 1 - 1 = n + 1 by ring]
   have h1 : (n : K) + 1 ≠ 0 := by exact_mod_cast n.succ_ne_zero
   have h2 : (n : K) + 1 + 1 ≠ 0 := by exact_mod_cast (n + 1).succ_ne_zero
-  field_simp <;> ring
+  field_simp
 
 theorem derivative2_lam (e : PowerSeries K) (s2 : K) :
     derivative K (derivative K (lam e s2)) = e + C s2 := by
@@ -181,7 +181,7 @@ theorem derivative2_lam (e : PowerSeries K) (s2 : K) :
 
 theorem constantCoeff_lam (e : PowerSeries K) (s2 : K) : constantCoeff (lam e s2) = 0 := by
   rw [← PowerSeries.coeff_zero_eq_constantCoeff_apply]
-  simp [lam, dblInt, PowerSeries.coeff_C_mul, PowerSeries.coeff_X_pow]
+  simp [lam, dblInt]
 
 theorem constantCoeff_derivative_lam (e : PowerSeries K) (s2 : K) :
     constantCoeff (derivative K (lam e s2)) = 0 := by
@@ -258,7 +258,7 @@ theorem isogenyIff_of (hE : MvExpLaws) : IsogenyIff := by
     simp [PowerSeries.smul_eq_C_mul, constantCoeff_rescale_eq, hL]
   have hΦ1 : constantCoeff (derivative K Φ) = 0 := by
     rw [hΦdef]
-    simp [PowerSeries.smul_eq_C_mul, derivative_rescale, Derivation.map_smul, constantCoeff_rescale_eq,
+    simp [PowerSeries.smul_eq_C_mul, derivative_rescale, constantCoeff_rescale_eq,
       constantCoeff_derivative_lam]
   set W := ∏ P, wpShift e (c P) with hWdef
   set g := ∑ P, (2 * e - w P - w (neg P)) with hgdef

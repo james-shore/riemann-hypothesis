@@ -52,11 +52,11 @@ theorem exists_translates_surjective : ∀ (S : Scheme.{0}) (A : Over S) [GrpObj
       rw [e]; exact hjV _
   refine GlobalTheory.T.surjective_inf_comp_of_geometricallyIntegral _ _ _ _ _ (GlobalTheory.T.surjective_inf_comp_of_geometricallyIntegral _ _ _ _ _ (GlobalTheory.T.surjective_inf_comp_of_geometricallyIntegral _ _ _ _ _ ?_ ?_) ?_) ?_
   · refine key ((fst A B)⁻¹ * (snd A B ≫ j)) _ ?_
-    simp [MonObj.comp_mul, GrpObj.comp_inv]
+    simp [MonObj.comp_mul]
   · refine key ((snd A B ≫ j)⁻¹ * fst A B) _ ?_
     simp [MonObj.comp_mul, GrpObj.comp_inv]
   · refine key 1 _ ?_
-    simp [MonObj.comp_mul, GrpObj.comp_inv]
+    simp [MonObj.comp_mul]
   · refine key 1 _ ?_
     simp [MonObj.comp_mul, GrpObj.comp_inv]
 

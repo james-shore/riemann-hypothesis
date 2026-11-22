@@ -144,7 +144,7 @@ theorem lie_model_with_cm_action : ∀ (E : Type) [Field E] [NumberField E] [IsC
       funext k
       by_cases hk : k = j
       · subst hk; simp [rhoTy]
-      · simp [rhoTy, Pi.single_apply, hk]
+      · simp [rhoTy, hk]
     have hproj : ∀ j, HT.eigProj (rhoTy ty) τ (Pi.single j 1) = if ty j = τ then Pi.single j 1 else 0 := by
       intro j
       split_ifs with hj
@@ -159,7 +159,7 @@ theorem lie_model_with_cm_action : ∀ (E : Type) [Field E] [NumberField E] [IsC
     · simp only [tyPart, Pi.smul_apply, smul_eq_mul]
       split_ifs <;> simp
     · intro b _ hb
-      split_ifs <;> simp [Pi.single_apply, Ne.symm hb]
+      split_ifs <;> simp [Ne.symm hb]
     · simp
 
 end PositivityTheory.Xgf

@@ -45,7 +45,7 @@ theorem yon_ext {G : Shv R} {X : Scheme.{0}} (φ ψ : (free R).obj (yoneda.obj X
     apply ModuleCat.free_hom_ext (R := ULift.{1} R)
     rintro ⟨g⟩
     exact key U.unop g
-  first | exact Sheaf.hom_ext hv | (cases φ; cases ψ; cases hv; rfl)
+  first | exact Sheaf.hom_ext hv
 
 theorem yon_res {G : Shv R} {X : Scheme.{0}} (z : Sec G X) (U : Scheme.{0}) (g : U ⟶ X) :
     Sec.map (yon R G X z) (freeGen R _ U g) = Sec.res g z := by

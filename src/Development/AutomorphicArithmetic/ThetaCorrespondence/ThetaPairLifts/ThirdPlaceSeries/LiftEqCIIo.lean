@@ -116,7 +116,7 @@ theorem liftS_pt_eq_cI_smul_io : ∀ {D : D7} {L : SizeData₂ D} {hT : GatTies 
   erw [hk2]
   show _ = (cIOf (_root_.GlobalTheory.Fam.pk_z W) (_root_.GlobalTheory.Fam.complexLevelStructure W) f.g t j • ((f.row t).io j G).1 ((_root_.GlobalTheory.Fam.pk_z W).ItY j P v)) g
   rw [hio]
-  simp only [Pi.smul_apply, cIOf, Complex.real_smul, smul_eq_mul, nsmul_eq_mul]
+  simp only [Pi.smul_apply, cIOf, Complex.real_smul, smul_eq_mul]
   push_cast
   ring
 end GlobalTheory.Fam.LiftVol

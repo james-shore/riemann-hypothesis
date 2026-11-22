@@ -28,7 +28,7 @@ theorem perm_range (M : ℕ) (f : ℕ → ℕ) (hf : ∀ i < M, f i < M)
 
 theorem sum_range_mul (M m : ℕ) (g : ℕ → K) (hg : ∀ i, g (i + M) = g i) :
     ∑ i ∈ Finset.range (M * m), g i = (m : K) * ∑ i ∈ Finset.range M, g i := by
-  first | exact Bl.PeriodicFunctions.goal1 .. | (apply Bl.PeriodicFunctions.goal1 <;> assumption) | (intros; apply Bl.PeriodicFunctions.goal1 <;> assumption)
+  first | exact Bl.PeriodicFunctions.goal1 .. | (apply Bl.PeriodicFunctions.goal1 <;> assumption)
 
 end Perm
 
@@ -248,7 +248,6 @@ theorem sg_qpow {a b : ℕ} {φ : E → K} (h : Good1 P a b φ) (f : ℕ) :
       unfold Sg
       rw [show a + f + b = a + (b + f) by ring]
       refine Finset.sum_congr rfl fun i _ => ?_
-      congr 1
       rw [pow_add]
       field_simp
     rw [e, sg_stab hN hp hq le_rfl (Nat.le_add_right b f) h, Nat.add_sub_cancel_left]
@@ -275,7 +274,6 @@ theorem sg_qinv {a b : ℕ} {φ : E → K} (h : Good1 P a b φ) (f : ℕ) :
       unfold Sg
       rw [show a + (b + f) = a + f + b by ring]
       refine Finset.sum_congr rfl fun i _ => ?_
-      congr 1
       rw [pow_add]
       field_simp
     rw [e, sg_stab hN hp hq (Nat.le_add_right a f) le_rfl h, Nat.sub_self, pow_zero, Nat.cast_one, one_mul]

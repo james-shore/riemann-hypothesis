@@ -30,7 +30,7 @@ theorem intAt_eval {n : ℕ} (η : Sp E n →ₗ[E] E) (c a : E) (y : Sp E n)
     rw [map_sum]
     refine Finset.sum_congr rfl fun i _ => ?_
     rw [show (Pi.single i (y i) : Sp E n) = y i • Pi.single i (1 : E) by
-      ext j; by_cases h : j = i <;> simp [h, Pi.single_apply], map_smul, smul_eq_mul]
+      ext j; by_cases h : j = i <;> simp [h], map_smul, smul_eq_mul]
   rw [e, Finset.mul_sum]
   refine Finset.sum_induction _ (IntAt P) (fun _ _ ha hb => ha.add hb) intAt_zero' fun i _ => ?_
   have := (hy' i).mul (hη i)

@@ -168,7 +168,6 @@ theorem isIso_finite_piece : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRi
   obtain ⟨w, hw, hwu⟩ := huniq Ω (s ≫ s₂) (hrange _ _ fun o' => by rw [Scheme.Hom.comp_apply, hs, hz])
   have hwp : ∀ o', W.ι (w o') = p := fun o' => by
     refine hone _ (w o').2 ?_
-    change pullback.snd τ h (W.ι (w o')) = _
     rw [← Scheme.Hom.comp_apply, ← Scheme.Hom.comp_apply, hw, Scheme.Hom.comp_apply, hs, hz]
   have hξ : Set.range (w ≫ W.ι ≫ pullback.fst τ h) = {x} := hrange _ _ fun o' => by
     rw [Scheme.Hom.comp_apply, Scheme.Hom.comp_apply, hwp, hpx]

@@ -132,7 +132,7 @@ theorem leray_inj : ∀ (R : Type) [CommRing R] (F : Shv R) (E : Spc) (n : ℕ),
     refine ⟨(((n + 1 : ℕ) : ℤ).negOnePow : ℤ) • ((chainsXIso R E n).inv ≫ t'), ?_⟩
     rw [hs]
     simp only [D, cobd, Preadditive.sum_comp, Preadditive.comp_zsmul, Preadditive.zsmul_comp, Finset.smul_sum,
-      smul_smul, Category.assoc]
+      smul_smul]
     refine Finset.sum_congr rfl fun i _ => ?_
     rw [mul_comm]
 

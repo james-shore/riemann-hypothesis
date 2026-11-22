@@ -64,7 +64,6 @@ theorem det_bound_common_denominator (w : HeightOneSpectrum (𝓞 K)) {M : Submo
   have h4 := key _ (fun a b => hE2 a b)
   first
     | rwa [Matrix.coe_units_inv, Matrix.det_nonsing_inv, Ring.inverse_eq_inv'] at h4
-    | simpa [Matrix.coe_units_inv, Matrix.det_nonsing_inv] using h4
 
 variable {ι : Type} [Fintype ι]
 

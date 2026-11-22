@@ -17,7 +17,6 @@ variable {n : ℕ}
 
 theorem weight_factor_eq_automorphy (p q : ℕ) (e : ℤ) (y : GR n) : F0 p q e y = jF e p q y (Complex.I • 1) := by
   simp only [F0, f0, jF, u1, u2, conj_I_smul_one, Matrix.mul_neg, mul_I_smul_one]
-  push_cast
   ring
 
 end PositivityTheory.Rg.Sw.Glob.GaussH

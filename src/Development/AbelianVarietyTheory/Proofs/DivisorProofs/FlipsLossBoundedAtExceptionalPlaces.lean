@@ -76,7 +76,7 @@ private theorem nu_int {D : D7} {T : Type} {L : LevCh D T} {sc : Consts} (G : Gr
   have h12 := (GlobalTheory.SizesOfRows.sizes_of_sizeRows large₂ hS).2.2.2.2.2.2.2
   have e1 : (((locGrid G t w).nu i j (unifAt w) : ℂˣ) : ℂ) =
       ((L.C.mu0 ⟨j, hj⟩).val w : ℂ) * ((L.xiH t).val w : ℂ) * (((G.ch.chiH (D.R.m - i)).val w : ℂ))⁻¹ := by
-    simp only [Grid.nu, locGrid, muBase, dif_pos hj, MonoidHom.div_apply, Units.val_div_eq_div_val, div_eq_mul_inv]
+    simp only [Grid.nu, locGrid, muBase, dif_pos hj, div_eq_mul_inv]
     rw [MonoidHom.mul_apply, MonoidHom.inv_apply, Units.val_mul, Units.val_inv_eq_inv_val]
     rfl
   have hμ := L.C.isMu0 ⟨j, hj⟩

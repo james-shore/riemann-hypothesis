@@ -39,8 +39,6 @@ theorem family_orthogonal_sum_injective (D : Datum H) {p : ℕ} (x' : Fin p → 
     simp only [Pi.zero_apply, map_eq_zero] at ha
     first
       | simpa using ha
-      | exact RingOfIntegers.coe_eq_zero_iff.mp ha
-      | exact_mod_cast ha
   refine ⟨hc, ?_⟩
   subst hc
   have h1 : familyCombination D x' 0 = 0 := map_zero _

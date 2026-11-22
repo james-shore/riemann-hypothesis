@@ -144,8 +144,6 @@ theorem UpperTheory.finrank_gradedPiece_and_complexConjugation_invariants :
         | exact (hZ _ _ (by decide)).symm
         | exact (half h2 (hXa 1 1)).symm
         | exact (hXa 2 1).symm
-        | exact (hXa 2 2).symm
-        | exact (hXa 1 2).symm
   · rw [if_pos (by norm_num)]
     refine ker_one _ _ hK (!![1, 0, 0; 0, 0, 0; 0, 0, -1]) ?_ ?_ 0 0 (by simp) ?_
     · show ∀ a b, wt a b ≠ 0 → _ = 0
@@ -162,7 +160,6 @@ theorem UpperTheory.finrank_gradedPiece_and_complexConjugation_invariants :
         | exact (half h2 (hXa 1 1)).symm
         | exact (hXa 2 1).symm
         | exact (hXa 2 2).symm
-        | exact (hXa 1 2).symm
   · rw [if_pos (by norm_num)]
     refine ker_one _ _ hK (!![0, 1, 0; 0, 0, -1; 0, 0, 0]) ?_ ?_ 0 1 (by simp) ?_
     · show ∀ a b, wt a b ≠ 1 → _ = 0

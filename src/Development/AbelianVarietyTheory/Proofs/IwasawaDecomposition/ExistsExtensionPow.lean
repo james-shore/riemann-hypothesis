@@ -21,8 +21,6 @@ theorem exists_extension_pow (K L : Type) [Field K] [NumberField K] [Field L] [N
   | exact @_root_.GlobalTheory.CompletionHomContinuous.exists_completion_hom
   | exact _root_.GlobalTheory.CompletionHomContinuous.exists_completion_hom
   | (apply _root_.GlobalTheory.CompletionHomContinuous.exists_completion_hom <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CompletionHomContinuous.exists_completion_hom <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CompletionHomContinuous.exists_completion_hom <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CompletionHomContinuous.exists_completion_hom ..)
 
 end GlobalTheory.DenseCompl

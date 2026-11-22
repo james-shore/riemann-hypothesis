@@ -169,8 +169,6 @@ theorem lim_of_complete {W : Type} [CommRing W] (x : W) [h : IsPrecomplete (Idea
   | exact @_root_.GlobalTheory.ModularLimit.exists_limit
   | exact _root_.GlobalTheory.ModularLimit.exists_limit
   | (apply _root_.GlobalTheory.ModularLimit.exists_limit <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ModularLimit.exists_limit <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ModularLimit.exists_limit <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ModularLimit.exists_limit ..)
 
 variable {l : ℕ} [hl : Fact l.Prime] {K : FinExt l} (bk : BK K)

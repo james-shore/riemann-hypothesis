@@ -137,7 +137,7 @@ theorem group_sections_curve_descend : ∀ (k : Type) [Field k] (G : Over (Sp k)
     intro r
     rw [IsScalarTower.algebraMap_apply R' (Polynomial R') (Localization.Away P₁), hLm,
       IsLocalization.Away.lift_eq]
-    simp [Polynomial.algebraMap_apply, IsScalarTower.algebraMap_apply k (Polynomial k) L]
+    simp [IsScalarTower.algebraMap_apply k (Polynomial k) L]
 
   have hcl : Subring.closure (Set.range (algebraMap R₀ L) ∪ (T : Set L)) ≤ Lm.range := by
     rw [Subring.closure_le]

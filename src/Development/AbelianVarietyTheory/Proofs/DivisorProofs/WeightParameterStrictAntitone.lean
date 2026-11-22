@@ -95,7 +95,7 @@ theorem atPoint (PP A M : ℝ) (hi : (i : ℕ) + 1 < D.R.m) (hw : WtNum p i PP) 
     convert a2 using 1
     funext j
     simp only [CompHt.uPrime, hodgeWt, CompHt.barWt, GlobalTheory.MeanTop.Wts.u', wtsAt, Pi.sub_apply, Pi.smul_apply, smul_eq_mul]
-    by_cases h : (j : ℕ) < (dat p i).p <;> simp [h] <;> ring
+    by_cases h : (j : ℕ) < (dat p i).p <;> simp [h]
   · refine ⟨fun τ => -(FlagTan.kap (dat p i) τ ⟨D.R.k - 2, ha⟩), fun τ => ?_, ?_⟩
     · simp only [FlagTan.kap]
       rw [if_pos (by show D.R.k - 2 < (dat p i).p; omega), ep, eq, hr, abs_le]

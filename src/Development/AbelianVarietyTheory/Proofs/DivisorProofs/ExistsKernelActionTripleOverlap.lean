@@ -58,7 +58,7 @@ theorem tri_isPullback_over : IsPullback (triM₁₂ A N T) (triM₂₃ A N T i)
     have e₂ := congrArg (· ≫ snd A _ ≫ fst N T) h₁
     have e₃ := congrArg (· ≫ snd A _ ≫ snd N T) h₁
     have e₄ := congrArg (· ≫ snd A _ ≫ fst N T) h₂
-    simp only [triM₁₂, triM₂₃, Category.assoc, lift_fst, lift_snd, lift_fst_assoc, lift_snd_assoc] at e₁ e₂ e₃ e₄
+    simp only [triM₁₂, triM₂₃, Category.assoc, lift_fst, lift_snd, lift_snd_assoc] at e₁ e₂ e₃ e₄
     apply hom_ext
     · simpa using e₁
     · apply hom_ext

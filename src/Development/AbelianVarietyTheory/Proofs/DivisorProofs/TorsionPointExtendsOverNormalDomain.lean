@@ -43,7 +43,7 @@ theorem torsion_extend : Laws → ∀ (R : Type) [CommRing R] [IsDomain R], IsNo
     have w := Over.w (toUnit (TF (R := R) (FractionRing R)))
     have w' : (toUnit (TF (R := R) (FractionRing R))).left = jK R := by
       rw [← hTF, ← w]
-      first | rfl | simp | (erw [Category.comp_id])
+      first | rfl
     rw [w', hl2]
 
 end GlobalTheory.Poinc.Tors

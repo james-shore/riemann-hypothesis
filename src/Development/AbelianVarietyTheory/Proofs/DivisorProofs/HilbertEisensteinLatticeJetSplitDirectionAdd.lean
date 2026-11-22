@@ -16,7 +16,7 @@ open scoped Classical MatrixGroups nonZeroDivisors in
 private lemma piFinset_range_succ_eq_Iic {ι : Type} [Fintype ι] [DecidableEq ι] (κ : ι → ℕ) :
     Fintype.piFinset (fun i => Finset.range (κ i + 1)) = Finset.Iic κ := by
   ext μ
-  simp [Fintype.mem_piFinset, Finset.mem_range, Finset.mem_Iic, Pi.le_def, Nat.lt_succ_iff]
+  simp [Fintype.mem_piFinset, Finset.mem_range, Finset.mem_Iic, Pi.le_def]
 
 open NumberField UpperHalfPlane in
 open scoped Classical MatrixGroups nonZeroDivisors in

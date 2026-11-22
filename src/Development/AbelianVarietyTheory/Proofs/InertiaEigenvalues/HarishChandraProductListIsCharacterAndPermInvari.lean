@@ -11,7 +11,7 @@ namespace GlobalTheory.GLqPerm
 theorem isChar_one {G : Type} [Group G] : IsChar (fun _ : G => (1 : ℂ)) := by
   refine ⟨FDRep.of (Representation.trivial ℂ G ℂ), fun x => ?_⟩
   change LinearMap.trace ℂ ℂ ((Representation.trivial ℂ G ℂ) x) = 1
-  simp [Representation.trivial, LinearMap.trace_id]
+  simp [Representation.trivial]
 
 theorem isClass_of_isChar {G : Type} [Group G] {χ : G → ℂ} (h : IsChar χ) : IsClass χ := by
   obtain ⟨V, hV⟩ := h

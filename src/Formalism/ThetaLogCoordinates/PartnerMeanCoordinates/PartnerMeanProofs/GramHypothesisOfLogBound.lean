@@ -18,20 +18,20 @@ namespace Formalism.InvariantFactorPaths.MC
 open Formalism.GM Formalism.GM.M Formalism.GM.TM Formalism.CountingSumsFrames Formalism.InvariantFactorPaths.PW Formalism.InvariantFactorPaths.L4 MvPolynomial Finset
 
 theorem meanGamX : MeanGamX :=
-  meanGamX_of (by first | exact Formalism.GM.gamma_degree_bound | exact Formalism.GM.Top.gamDeg)
-    (by first | exact Formalism.GM.gamma_leading_term | exact Formalism.GM.Top.gamLead)
-    (by first | exact Formalism.InvariantFactorPaths.MC.gamma_integral_holds | exact Formalism.InvariantFactorPaths.MC.Top.gamIntC)
-    (by first | exact Formalism.GM.Top.windowFullAP | exact Top.windowFullAP)
+  meanGamX_of (by first | exact Formalism.GM.gamma_degree_bound)
+    (by first | exact Formalism.GM.gamma_leading_term)
+    (by first | exact Formalism.InvariantFactorPaths.MC.gamma_integral_holds)
+    (by first | exact Formalism.GM.Top.windowFullAP)
 
 theorem theoremMXB : TheoremMXB :=
   theoremMXB_of_point meanGamX
-    (by first | exact DimensionMonotonicity.highest_weight_dim_monotone | exact Formalism.GM.DimensionMonotonicity.highest_weight_dim_monotone | exact Formalism.GM.M.DimensionMonotonicity.highest_weight_dim_monotone | exact Formalism.GM.TM.DimensionMonotonicity.highest_weight_dim_monotone)
-    (by first | exact monomial_count | exact Formalism.GM.monomial_count | exact Formalism.GM.M.monomial_count | exact Formalism.GM.TM.monomial_count)
-    (by first | exact Formalism.GM.Top.smithZp | exact Formalism.GM.smith_form_p_adic_integers | exact Formalism.GM.TM.smith_form_p_adic_integers | exact Formalism.GM.M.smith_form_p_adic_integers)
-    (by first | exact Formalism.GM.TM.existsAdaptedBasis | exact Formalism.GM.existsAdaptedBasis | exact Formalism.GM.Top.adaptedBasis)
+    (by first | exact DimensionMonotonicity.highest_weight_dim_monotone)
+    (by first | exact monomial_count)
+    (by first | exact Formalism.GM.Top.smithZp)
+    (by first | exact Formalism.GM.TM.existsAdaptedBasis)
     (pointMX_of_partner
-      (by first | exact bad_criterion_holds | exact Formalism.InvariantFactorPaths.MC.bad_criterion_holds | exact Formalism.GM.bad_criterion_holds | exact Formalism.InvariantFactorPaths.MC.Top.badCrit | exact Formalism.GM.Top.badCrit)
-      (partnerMX_of_parts tieOpsX_main (by first | exact partner_condition_holds | exact Formalism.InvariantFactorPaths.MC.Top.yPartnerC | exact Formalism.InvariantFactorPaths.MC.Top.yPartner)))
+      (by first | exact bad_criterion_holds)
+      (partnerMX_of_parts tieOpsX_main (by first | exact partner_condition_holds)))
 
 theorem natLog_le_lgSeg (p : ℕ) [Fact p.Prime] (a : ℝ) (r x : ℕ) (ha : 0 ≤ a) (hr : 1 ≤ r)
     (hx : (x : ℝ) ≤ p * (8 * a + r)) : (Nat.log p x : ℝ) ≤ lgSeg p a r := by

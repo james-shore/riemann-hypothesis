@@ -32,7 +32,7 @@ theorem Bf_Ek_Ek [FiniteDimensional F E] (σ : E →ₐ[F] E) (J : Matrix (Fin m
   have hE : ∀ (a : Fin m) (b : Fin n) (c : Fin 2), Ek bs (a, b, c) = incM F (Matrix.single a b (bs c)) := by
     intro a b c
     ext x y
-    by_cases hx : a = x <;> by_cases hy : b = y <;> simp [Ek, incM, Matrix.single_apply, inclR, hx, hy]
+    by_cases hx : a = x <;> by_cases hy : b = y <;> simp [Ek, incM, inclR, hx, hy]
   have hc : ∀ M : Matrix (Fin m) (Fin n) E, (incM F M).map (cA σ) = incM F (M.map σ) := by
     intro M
     ext x y
@@ -57,7 +57,7 @@ theorem bM_repr (bs : Module.Basis (Fin 2) F E) (X : Mx F E m n) (k : Fin m × F
   have hinj : Function.Injective (Prod.map id ⇑(Equiv.sigmaEquivProd (Fin n) (Fin 2)) ∘
       ⇑(Equiv.sigmaEquivProd (Fin m) (Σ _ : Fin n, Fin 2))) :=
     (Function.injective_id.prodMap (Equiv.injective _)).comp (Equiv.injective _)
-  simp [bM, Module.Basis.matrix, crdB, Pi.basis_repr]
+  simp [bM, Module.Basis.matrix, crdB]
   rw [show ((i, j, l) : Fin m × Fin n × Fin 2) = (Prod.map id ⇑(Equiv.sigmaEquivProd (Fin n) (Fin 2)) ∘
       ⇑(Equiv.sigmaEquivProd (Fin m) (Σ _ : Fin n, Fin 2))) ⟨i, ⟨j, l⟩⟩ from rfl,
     Finsupp.mapDomain_apply hinj, Pi.basis_repr, Pi.basis_repr]

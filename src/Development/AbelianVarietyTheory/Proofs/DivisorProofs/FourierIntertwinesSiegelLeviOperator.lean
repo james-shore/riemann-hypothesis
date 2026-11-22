@@ -75,7 +75,7 @@ theorem fou_parFun_levi : ∀ (F : Type) [Field F] [CharZero F] [ValuativeRel F]
   have hpr : ∀ y : Matrix α ν E, pr c Q (x * d) (y * a) = pr c Q x y := fun y => by
     rw [← hβ, hadj, Matrix.mul_assoc, had, Matrix.mul_one, hβ]
   simp only [hpr] at hint
-  simp only [fou, four, parFun, hb, hb', ha', ← ha, ← hd, Matrix.mul_zero, h0, mul_zero, AddChar.map_zero_eq_one, one_mul]
+  simp only [fou, four, parFun, hb, hb', ha', ← ha, Matrix.mul_zero, h0, mul_zero, AddChar.map_zero_eq_one, one_mul]
   simp only [mul_left_comm _ (sc F χ (Fintype.card α) a.det)]
   rw [integral_const_mul, hint, ← hsc', ← mul_assoc, mul_assoc (sc F χ _ d.det), mul_inv_cancel₀, mul_one]
   exact_mod_cast pow_ne_zero _ hN

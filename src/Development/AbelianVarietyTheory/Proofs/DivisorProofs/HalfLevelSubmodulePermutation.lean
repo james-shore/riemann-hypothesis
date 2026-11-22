@@ -82,7 +82,7 @@ theorem iSup_part [IsSepClosed L] [Algebra.Etale K B] (m : B →ₐ[K] Module.En
     funext j
     by_cases hj : j = i
     · subst hj; simp
-    · simp [Pi.single_apply, hj]
+    · simp [hj]
   rw [← hM, ← Module.End.mul_apply, ← map_mul, h2, map_smul, LinearMap.smul_apply]
 
 theorem split_of_free [IsSepClosed L] [Algebra.Etale K B] (m : B →ₐ[K] Module.End K W) {G : Type} [Group G]

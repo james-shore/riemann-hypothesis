@@ -52,7 +52,7 @@ theorem mapV_star (v : AwayP p) (z : AfP p ⊗[ℚ] G.C) :
   induction z using TensorProduct.induction_on with
   | zero => simp
   | tmul r y =>
-    simp only [AlgHom.toRingHom_eq_coe, RingHom.coe_coe, Algebra.TensorProduct.map_tmul, AlgHom.id_apply,
+    simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply,
       starT_tmul]
   | add x y hx hy => simp only [map_add, MulOpposite.unop_add, hx, hy]
 

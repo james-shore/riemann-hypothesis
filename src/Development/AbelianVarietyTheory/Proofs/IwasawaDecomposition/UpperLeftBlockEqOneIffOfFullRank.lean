@@ -46,7 +46,7 @@ theorem core_unif (I : Formalism.MainNotions.S.AutInst) (w : HeightOneSpectrum (
   have hβsum : ∀ v, β.1 *ᵥ v = ∑ j, v j • col j := by
     intro v
     funext k
-    simp [col, Matrix.mulVec, dotProduct, Finset.sum_apply, Pi.single_apply, mul_comm]
+    simp [col, Matrix.mulVec, dotProduct, Finset.sum_apply, mul_comm]
   have hcol : ∀ j, col j ∈ I.Lf := by
     intro j
     refine (hL _).1 ((hβ _).2 fun k => ?_)

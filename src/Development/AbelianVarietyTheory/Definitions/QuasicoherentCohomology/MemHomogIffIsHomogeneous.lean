@@ -106,7 +106,7 @@ noncomputable def baseChangeEquiv {j : M →ₗ[R] W} (h : IsBaseChange S j) :
       simp [h.lift_eq])
     (by
       ext m
-      simp [h.lift_eq, Algebra.TensorProduct.one_def])
+      simp [h.lift_eq])
 
 @[simp] theorem baseChangeEquiv_tmul {j : M →ₗ[R] W} (h : IsBaseChange S j) (s : S)
     (x : SymmetricAlgebra R M) : baseChangeEquiv h (s ⊗ₜ x) = s • mapOver S j x :=

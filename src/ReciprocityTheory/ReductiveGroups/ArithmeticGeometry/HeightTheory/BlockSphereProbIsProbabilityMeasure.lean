@@ -77,18 +77,10 @@ theorem not_injective_of_trdeg_lt {K Ω : Type} [Field K] [Field Ω] [Algebra K 
   have h1 : Algebra.trdeg Ω (MvPolynomial τ Ω) = Cardinal.mk τ := by
     first
     | simpa using (MvPolynomial.trdeg_of_isDomain (R := Ω) (σ := τ))
-    | simpa using (MvPolynomial.trdeg_of_isDomain Ω τ)
-    | simpa using (MvPolynomial.trdeg (R := Ω) (σ := τ))
-    | simpa using (Algebra.trdeg_mvPolynomial (R := Ω) (σ := τ))
-    | simpa using ((MvPolynomial.isTranscendenceBasis_X τ Ω).lift_cardinalMk_eq_trdeg).symm
-    | simpa using ((MvPolynomial.isTranscendenceBasis_X τ Ω).cardinalMk_eq_trdeg).symm
-    | simpa using ((MvPolynomial.algebraicIndependent_X τ Ω).isTranscendenceBasis_iff_isAlgebraic.mpr
-        inferInstance).lift_cardinalMk_eq_trdeg.symm
   have h2 : Algebra.trdeg K Ω + Algebra.trdeg Ω (MvPolynomial τ Ω) =
       Algebra.trdeg K (MvPolynomial τ Ω) := by
     first
     | exact trdeg_add_eq K Ω
-    | exact Algebra.trdeg_add_eq K Ω
   rw [← h2, hn, h1, Cardinal.mk_fintype, Cardinal.mk_fintype] at hle
   have hc : Fintype.card σ ≤ n + Fintype.card τ := by exact_mod_cast hle
   omega
@@ -168,7 +160,6 @@ theorem fZ_factor_positive_places (hd : d.AxH 𝒜) (h : d.S1) (c : ι) (F : KTp
       (Set.disjoint_sdiff_right : Disjoint (d.GoodP c p) (d.OverP c p \ d.GoodP c p)) hGfin
       ((hOfin p hp).subset Set.diff_subset)
     rw [Set.union_diff_cancel hGsub] at hO
-    beta_reduce at hO
     rw [hE, hNn, hgood, hO]
     linarith
 

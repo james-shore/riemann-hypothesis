@@ -66,7 +66,6 @@ theorem charOf_psiAt_chrEq : ∀ (D : D7) (a : Recip D D.nd.Om) (i : D.ntw.Tw) (
   refine ⟨⟨?_, fun k => ?_⟩, fun P e he k x hx => ?_⟩
   · refine continuous_of_continuousAt_one (charOf a f ψ) ?_
     refine ContinuousAt.congr (continuousAt_const (y := (1 : Circle))) (Filter.eventuallyEq_of_mem (hpullo.mem_nhds (map_one _)) fun x hx => ?_)
-    change (1 : Circle) = charOf a f ψ x
     rw [charOf, MonoidHom.comp_apply, MonoidHom.comp_apply, (a.pull ψ).mem_ker.1 hx, map_one, map_one]
   · have hs : a.sym (Units.map (incA D).toMonoidHom k) = 1 := by
       change a.art (Units.map a.κ.toMonoidHom (Units.map (incA D).toMonoidHom k)) = 1

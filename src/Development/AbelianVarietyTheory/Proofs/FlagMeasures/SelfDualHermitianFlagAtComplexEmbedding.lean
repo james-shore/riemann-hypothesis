@@ -16,8 +16,6 @@ theorem exists_smul_mem (G : Submodule (𝓞 E) (Fin n → E))
   | exact @_root_.GlobalTheory.DenominatorTheorem.main_theorem
   | exact _root_.GlobalTheory.DenominatorTheorem.main_theorem
   | (apply _root_.GlobalTheory.DenominatorTheorem.main_theorem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DenominatorTheorem.main_theorem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DenominatorTheorem.main_theorem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DenominatorTheorem.main_theorem ..)
 
 theorem mem_locFlag_of_smul (φ : E →+* ℂ) (P : Matrix (Fin n) (Fin n) ℂ)

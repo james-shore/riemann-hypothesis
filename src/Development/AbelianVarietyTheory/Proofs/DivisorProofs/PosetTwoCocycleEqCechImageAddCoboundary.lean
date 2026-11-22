@@ -23,7 +23,7 @@ def wv (w : C2 F) (a b d : (NE κ)ᵒᵖ) : F.obj d :=
 
 theorem wv_eq (w : C2 F) {a b d : (NE κ)ᵒᵖ} (f : a ⟶ b) (g : b ⟶ d) : wv w a b d = w a b d f g := by
   rw [wv, dif_pos ⟨sub_subset f, sub_subset g⟩]
-  congr 1 <;> exact Subsingleton.elim _ _
+  congr 1
 
 theorem wv_cocycle (w : Z2 F) {a b d e : (NE κ)ᵒᵖ} (f : a ⟶ b) (g : b ⟶ d) (h : d ⟶ e) :
     mp F h (wv w.1 a b d) + wv w.1 a d e = wv w.1 a b e + wv w.1 b d e := by
@@ -176,7 +176,7 @@ theorem sign4 {i0 i1 i2 i3 : κ} (h01 : i0 < i1) (h12 : i1 < i2) (h23 : i2 < i3)
   have h02 := h01.trans h12; have h13 := h12.trans h23; have h03 := h01.trans h13
   simp [GlobalTheory.cubeSign, Finset.filter_insert, h01, h12, h23, h02, h13, h03, not_lt.2 h01.le,
     not_lt.2 h12.le, not_lt.2 h23.le, not_lt.2 h02.le, not_lt.2 h13.le, not_lt.2 h03.le,
-    Finset.filter_singleton, h01.ne, h12.ne, h23.ne, h02.ne, h13.ne, h03.ne, lt_irrefl]
+    Finset.filter_singleton, h01.ne, h12.ne, h02.ne]
 
 theorem δ_yc (w : Z2 F) : δ F 2 (yc w.1) = 0 := by
   funext t

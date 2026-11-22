@@ -133,13 +133,13 @@ theorem exists_frame (L : IsLoc O Δ) (h3 : Module.finrank K V = 3) (hB : ∀ x 
   have g2 : B f f = 0 := by
     simp [f, q₁, q₂, q₃, b12, b21, b13, b31, b23, b32, ht]
     field_simp
-    first | linear_combination hab' | (right; right; linear_combination hab') | (simp [h2, n₃]; linear_combination hab')
+    first | linear_combination hab' | (right; right) | (simp [h2]; linear_combination hab')
   have g3 : B e f = 1 := by simp [e, f, q₁, q₂, q₃, b12, b21, b13, b31, b23, b32, ht]; field_simp; linear_combination -hab'
-  have g4 : B e h = 0 := by simp [e, h, q₁, q₂, q₃, b12, b21, b13, b31, b23, b32]; ring
+  have g4 : B e h = 0 := by simp [e, h, q₁, q₂, b12, b21, b31, b32]; ring
   have g5 : B f h = 0 := by
     simp only [f, h, map_sub, map_smul, LinearMap.sub_apply, LinearMap.smul_apply, smul_eq_mul, q₁, q₂, b12, b21, b31, b32]; ring
   have g6 : B h h = algebraMap O K (-(u₁ * u₂ * u₃) : Oˣ) := by
-    simp [h, q₁, q₂, q₃, b12, b21]; linear_combination (algebraMap O K u₁ * algebraMap O K u₂) * hab'
+    simp [h, q₁, q₂, b12, b21]; linear_combination (algebraMap O K u₁ * algebraMap O K u₂) * hab'
   refine ⟨e, me, f, mf, h, mh, _, g1, g2, g3, g4, g5, g6, fun v hv => ?_⟩
   set η : Oˣ := -(u₁ * u₂ * u₃)
   have g3' : B f e = 1 := hB _ _ ▸ g3

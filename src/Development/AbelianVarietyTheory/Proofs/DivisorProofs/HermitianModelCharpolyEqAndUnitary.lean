@@ -31,7 +31,7 @@ theorem unitary (K : GlobalTheory.UnitLemma.UQ) (B : GlobalTheory.UnitLemma.InvA
       _ = _ := by rw [hg, mul_one]
   ext i j
   have := key (Pi.single j 1) (Pi.single i 1)
-  simp [stdH, Matrix.mulVec_single, Pi.single_apply, Matrix.mul_apply, Matrix.one_apply, mul_comm] at this
+  simp [stdH, Matrix.mulVec_single, Pi.single_apply, mul_comm] at this
   simp [Matrix.mul_apply, Matrix.one_apply]
   simpa [mul_comm, eq_comm] using this
 

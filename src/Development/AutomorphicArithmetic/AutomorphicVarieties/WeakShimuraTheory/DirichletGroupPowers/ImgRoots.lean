@@ -29,7 +29,7 @@ theorem UpperTheory.V.Ws.large₂.imgRoots :
     rw [MulChar.pow_apply' χ hpos.ne', MulChar.one_apply_coe]
     have h1 := pow_card_eq_one' (G := χ.toUnitHom.range) (x := ⟨χ.toUnitHom a, a, rfl⟩)
     have h2 := congrArg (fun u : χ.toUnitHom.range => ((u : Oˣ) : O)) h1
-    simp only [SubmonoidClass.coe_pow, Subgroup.coe_pow, Units.val_pow_eq_pow_val, OneMemClass.coe_one,
+    simp only [SubmonoidClass.coe_pow, Units.val_pow_eq_pow_val, OneMemClass.coe_one,
       Units.val_one] at h2
     rw [← MulChar.coe_toUnitHom]
     exact h2

@@ -141,7 +141,6 @@ theorem relation_homogenises (K : Type) [Fintype K] (ι : K → Type) [∀ k, Fi
   obtain ⟨e, s₀, hs₀⟩ := IsLocalization.Away.surj x (ψ s')
   have h4 : i (s₀ * f) ∈ (Q ^ n ⊔ P).map i := by
     rw [map_mul]
-    change i s₀ * i f ∈ _
     rw [show i s₀ = ψ s' * i x ^ e from hs₀.symm]
     have := Ideal.mul_mem_left _ (i x ^ e) h3
     convert this using 1

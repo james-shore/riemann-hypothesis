@@ -95,7 +95,7 @@ def mom (L : AddSubgroup (Fin a → Af E)) (g : GA E a) : Herm E a :=
     change star _ = _
     ext i j w
     simp only [Matrix.star_apply, Matrix.of_apply, Pi.star_apply, mean, gsum, pg, star_div₀, tsum_star, star_mul',
-      star_star, Complex.star_def, Complex.conj_ofReal, Complex.conj_tsum, map_mul, Complex.conj_conj, mul_comm]⟩
+      Complex.star_def, Complex.conj_ofReal, Complex.conj_conj, mul_comm]⟩
 
 def dev (L : AddSubgroup (Fin a → Af E)) (g : GA E a) : Herm E a :=
   mom L g - ell E a (toL (mom L g).1) • (⟨1, IsSelfAdjoint.one _⟩ : Herm E a)

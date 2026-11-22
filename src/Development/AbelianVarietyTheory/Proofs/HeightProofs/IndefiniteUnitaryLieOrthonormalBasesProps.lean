@@ -22,35 +22,35 @@ lemma inG_iff_entry (ε : Fin n → Bool) (X : Matrix (Fin n) (Fin n) ℂ) :
 lemma i_smul_diag_casimir_unit_mem_indefinite_lie (ε : Fin n → Bool) (a : Fin n) : inG ε (Complex.I • unitE a a) := by
   rw [inG_iff_entry]
   intro i j
-  simp only [unitE, invSqrtTwo, Matrix.single_apply, Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, smul_eq_mul]
+  simp only [unitE, Matrix.single_apply, Matrix.smul_apply, smul_eq_mul]
   split_ifs <;> simp_all <;> grind
 
 lemma same_sign_casimir_skew_sum_mem_indefinite_lie (ε : Fin n → Bool) (a b : Fin n) (hab : a ≠ b) (he : ε a = ε b) :
     inG ε (invSqrtTwo • (unitE a b - unitE b a)) := by
   rw [inG_iff_entry]
   intro i j
-  simp only [unitE, invSqrtTwo, Matrix.single_apply, Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, smul_eq_mul]
+  simp only [unitE, invSqrtTwo, Matrix.single_apply, Matrix.smul_apply, Matrix.sub_apply, smul_eq_mul]
   split_ifs <;> simp_all
 
 lemma same_sign_casimir_i_sym_sum_mem_indefinite_lie (ε : Fin n → Bool) (a b : Fin n) (hab : a ≠ b) (he : ε a = ε b) :
     inG ε ((invSqrtTwo * Complex.I) • (unitE a b + unitE b a)) := by
   rw [inG_iff_entry]
   intro i j
-  simp only [unitE, invSqrtTwo, Matrix.single_apply, Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, smul_eq_mul]
+  simp only [unitE, invSqrtTwo, Matrix.single_apply, Matrix.smul_apply, Matrix.add_apply, smul_eq_mul]
   split_ifs <;> simp_all
 
 lemma opp_sign_casimir_sym_sum_mem_indefinite_lie (ε : Fin n → Bool) (a b : Fin n) (hab : a ≠ b) (he : ε a ≠ ε b) :
     inG ε (invSqrtTwo • (unitE a b + unitE b a)) := by
   rw [inG_iff_entry]
   intro i j
-  simp only [unitE, invSqrtTwo, Matrix.single_apply, Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, smul_eq_mul]
+  simp only [unitE, invSqrtTwo, Matrix.single_apply, Matrix.smul_apply, Matrix.add_apply, smul_eq_mul]
   split_ifs <;> simp_all
 
 lemma opp_sign_casimir_i_skew_sum_mem_indefinite_lie (ε : Fin n → Bool) (a b : Fin n) (hab : a ≠ b) (he : ε a ≠ ε b) :
     inG ε ((invSqrtTwo * Complex.I) • (unitE a b - unitE b a)) := by
   rw [inG_iff_entry]
   intro i j
-  simp only [unitE, invSqrtTwo, Matrix.single_apply, Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, smul_eq_mul]
+  simp only [unitE, invSqrtTwo, Matrix.single_apply, Matrix.smul_apply, Matrix.sub_apply, smul_eq_mul]
   split_ifs <;> simp_all
 
 lemma i_smul_diag_casimir_unit_skewHermitian (a : Fin n) : (Complex.I • unitE a a)ᴴ = -(Complex.I • unitE a a) := by
@@ -99,7 +99,7 @@ lemma pair_hs (a b : Fin n) (hab : a ≠ b) (c : ℂ) (hc : ‖c‖ ^ 2 = 1 / 2)
         (if b = i then (if a = j then 1 / 2 else 0) else 0) := by
     intro i j
     simp only [unitE, Matrix.smul_apply, Matrix.add_apply, Matrix.single_apply, smul_eq_mul]
-    split_ifs <;> simp_all [norm_mul, mul_pow]
+    split_ifs <;> simp_all
   simp only [this]
   simp [Finset.sum_add_distrib]
   norm_num

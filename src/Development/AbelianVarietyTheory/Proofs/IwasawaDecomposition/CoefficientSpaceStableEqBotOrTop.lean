@@ -137,8 +137,8 @@ theorem eq_bot_or_eq_top : ∀ (K : Type) [Field K] (ι : Type) [Fintype ι] (n 
       refine Finset.sum_congr rfl fun k _ => ?_
       by_cases hk : k a = i a
       · have hu : Function.update k a (i a) = k := by rw [← hk, Function.update_eq_self]
-        simp [hk, hu, Finset.forall_mem_insert]
-      · simp [hk, Finset.forall_mem_insert]
+        simp [hk, hu]
+      · simp [hk]
   have hi' : bVV K lam i ∈ W := by
     have h := hproj Finset.univ
     have hf : Finset.univ.filter (fun k : VVIdx lam => ∀ τ ∈ (Finset.univ : Finset ι), k τ = i τ) = {i} := by
@@ -160,7 +160,7 @@ theorem eq_bot_or_eq_top : ∀ (K : Type) [Field K] (ι : Type) [Fintype ι] (n 
         funext τ
         by_cases h : τ = a
         · subst h; simp
-        · simp [h, Function.update_of_ne h]
+        · simp [h]
     simpa using key Finset.univ
   rw [eq_top_iff]
   intro x _

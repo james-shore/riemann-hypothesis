@@ -18,8 +18,6 @@ theorem cauchy {V : Type} [AddCommGroup V] [Module ℂ V] (I : V →ₗ⋆[ℂ] 
   | exact @_root_.GlobalTheory.HermitianCauchySchwarz.main
   | exact _root_.GlobalTheory.HermitianCauchySchwarz.main
   | (apply _root_.GlobalTheory.HermitianCauchySchwarz.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.HermitianCauchySchwarz.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.HermitianCauchySchwarz.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.HermitianCauchySchwarz.main ..)
 
 theorem integrable_exp_abs {e : ℝ} (he : 0 < e) :

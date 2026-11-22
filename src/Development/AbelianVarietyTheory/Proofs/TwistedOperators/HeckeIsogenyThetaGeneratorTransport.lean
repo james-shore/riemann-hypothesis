@@ -78,7 +78,7 @@ theorem exists_sec_of_invariant (hM : M.IsLB) (φ : K → (Y ⟶ X)) (ε : K →
       ((sec_trans s (𝟙 Y') y (le i hy.1) (le j hy.2)).trans (Eq.symm ?_))
     refine (gs_mul _ y _ hy _ _).trans (congrArg₂ (· * ·) ((gs_unit _ y _ hy _).trans (congrArg Units.val
       ((gm_linComb M φ ε _ y i j hy.1 hy.2).trans ?_))) ((gs_res _ y _ hy _).trans (v _ (𝟙 Y') y j hy.2)))
-    simp only [trF, Category.assoc, Category.id_comp]
+    simp only [trF, Category.id_comp]
   · rw [sval_of _ (r ≫ m) z J (fun k => J (r ≫ m ≫ φ k)) (fun k => by rw [Category.assoc])]
     exact v Z r z _ (Set.mem_iInter.2 fun k => hJ (r ≫ m ≫ φ k))
 
@@ -308,8 +308,7 @@ theorem prod_prim {S : Scheme.{0}} (t : SAB H S) {T : Over S} (y : T ⟶ t.G) {U
       (1 : t.G ⟶ t.G).left] : Fin 4 → _) i) ^ (![1, -2, -1, 1] : Fin 4 → ℤ) i =
       h (y * y ≫ t.act.act H.w0).left * (h y.left ^ 2)⁻¹ * (h (y ≫ t.act.act H.w0).left)⁻¹ * h (1 : T ⟶ t.G).left := by
   rw [Fin.prod_univ_four]
-  simp only [Matrix.cons_val, ← Over.comp_left, MonObj.comp_mul, Category.comp_id, MonObj.comp_one, zpow_one,
-    zpow_neg, zpow_ofNat, pow_one]
+  simp only [Matrix.cons_val, ← Over.comp_left, MonObj.comp_mul, Category.comp_id, MonObj.comp_one, zpow_neg, zpow_ofNat, pow_one]
 
 variable {x₁ x₂ : Sp Ω ⟶ Xo.X} {Ψ₁ : Gx x ⟶ Gx x₁} {Ψ₂ : Gx x ⟶ Gx x₂} {k : ℤ}
   {β₁ : LB.Gen (isoLB Xo.univ.t.G Xo.univ.t.PP Ψ₁ k)} {β₂ : LB.Gen (isoLB Xo.univ.t.G Xo.univ.t.PP Ψ₂ k)}

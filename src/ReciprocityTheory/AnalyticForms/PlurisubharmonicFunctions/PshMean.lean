@@ -196,7 +196,7 @@ lemma radialBump_support (D : ℕ) : Function.support (g0 D) ⊆ ball 0 1 := by
   nlinarith [norm_nonneg (w i)]
 
 lemma radialBump_smul (D : ℕ) (c : ℂ) (w : Fin D → ℂ) (hc : ‖c‖ = 1) : g0 D (c • w) = g0 D w := by
-  simp [g0, norm_mul, hc]
+  simp [g0, hc]
 
 lemma radialBump_hasCompactSupport (D : ℕ) : HasCompactSupport (g0 D) :=
   HasCompactSupport.intro (isCompact_closedBall (0 : Fin D → ℂ) 1) fun w hw => by

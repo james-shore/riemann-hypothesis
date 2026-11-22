@@ -62,6 +62,5 @@ theorem thetaKO_transSum_eq_short_series : ∀ (D : D7) (H : Geo.Tor.Host D.host
     _ hsd v hv Λ huni hfg _ w Y P d hd _ hx'.mem_dom
   unfold gphi at hpar ⊢
   rw [hpar]
-  push_cast
   ring
 end GlobalTheory.SingleDatum.ShortSum

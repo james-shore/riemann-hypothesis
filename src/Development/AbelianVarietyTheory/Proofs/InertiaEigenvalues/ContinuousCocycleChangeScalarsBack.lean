@@ -373,7 +373,7 @@ theorem resLam_toLam (F : MvPolynomial ι (X.O0 i)) :
       rw [← MvPolynomial.rename_X e q, MvPolynomial.killCompl_rename_app, toLam, MvPolynomial.aeval_X]
       congr 3
       funext t
-      by_cases ht : t = q <;> simp [Pi.single_apply, he.eq_iff, ht]
+      by_cases ht : t = q <;> simp [he.eq_iff, ht]
     · rw [MvPolynomial.killCompl, MvPolynomial.aeval_X, dif_neg hq, map_zero, sub_eq_zero, ← map_one (MonoidAlgebra.of _ _)]
       congr 1
       apply Multiplicative.toAdd.injective

@@ -21,7 +21,7 @@ theorem pull_const_apply : ∀ {T Ω : Type} [CommRing T] [CommRing Ω] (χ : T 
   rw [hwq]
   have h3 := Scheme.ΓSpecIso_inv_naturality (CommRingCat.ofHom χ)
   have h4 := congrArg (fun g => g.hom a) h3
-  simp only [CommRingCat.comp_apply] at h4
+  simp only at h4
   exact h4.symm
 
 end GlobalTheory.PullConst

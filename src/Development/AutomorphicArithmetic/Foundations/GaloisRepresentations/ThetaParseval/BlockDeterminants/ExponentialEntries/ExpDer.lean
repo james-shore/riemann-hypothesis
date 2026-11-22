@@ -163,7 +163,7 @@ theorem isExp_shift {V : Type} [AddCommGroup V] [Module ℂ V] {L U : Module.End
   obtain rfl : p.1 + p.2 = k := Finset.HasAntidiagonal.mem_antidiagonal.1 hp
   have : (s • (1 : Module.End ℂ V)) ^ p.2 = s ^ p.2 • 1 := by rw [smul_pow, one_pow]
   rw [this, LinearMap.smul_apply, Module.End.mul_apply]
-  simp only [mul_smul_comm, mul_one, LinearMap.smul_apply, Module.End.one_apply, map_nsmul, map_smul, smul_eq_mul, nsmul_eq_mul]
+  simp only [LinearMap.smul_apply, Module.End.one_apply, map_nsmul, map_smul, smul_eq_mul, nsmul_eq_mul]
   rw [← mul_assoc, fact_choose]
   ring
 

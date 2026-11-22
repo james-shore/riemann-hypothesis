@@ -105,11 +105,11 @@ theorem compl_equiv (R S : Type) [CommRing R] [CommRing S] (e : R ≃+* S) (I : 
     ?_ ?_, complMap_algebraMap _ I J h1⟩
   · refine RingHom.ext fun x => ?_
     rw [RingHom.comp_apply, complMap_comp]
-    simp only [RingEquiv.toRingHom_eq_coe, RingEquiv.comp_symm, RingHom.id_apply]
+    simp only [RingEquiv.comp_symm, RingHom.id_apply]
     exact complMap_id J _ x
   · refine RingHom.ext fun x => ?_
     rw [RingHom.comp_apply, complMap_comp]
-    simp only [RingEquiv.toRingHom_eq_coe, RingEquiv.symm_comp, RingHom.id_apply]
+    simp only [RingEquiv.symm_comp, RingHom.id_apply]
     exact complMap_id I _ x
 
 theorem fg_top_transfer {F F' K : Type} [Field F] [Field F'] [Field K] [Algebra F K] [Algebra F' K]

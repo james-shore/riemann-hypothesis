@@ -109,7 +109,7 @@ theorem exists_smallAt_subset (Q : Finset (HeightOneSpectrum (𝓞 E))) {V : Set
   refine ⟨e * ι b⁻¹ ^ m * a, (mem_rInt_iff F E _).2 fun w => ?_, ?_⟩
   · show Valued.v (adAt F w _) ≤ 1
     by_cases hw : w ∈ Q
-    · simp only [map_mul, map_pow, he, hinv, if_pos hw, one_mul, map_inv₀, inv_pow, map_one]
+    · simp only [map_mul, map_pow, he, hinv, if_pos hw, one_mul, map_inv₀, inv_pow]
       have hv : 0 < Valued.v (adAt F w (ι b)) ^ m :=
         pow_pos (zero_lt_iff.2 ((Valuation.ne_zero_iff _).2 (hbne w))) m
       rw [inv_mul_le_one₀ hv]

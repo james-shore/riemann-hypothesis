@@ -137,7 +137,7 @@ theorem wdetDegree_of_smith_restrict (hS : EigenQuotientSmithStatement) (hR : Re
   have hN : ∀ y : Fin r → ZMod p, p • y = 0 := by
     intro y
     funext i
-    simp [nsmul_eq_mul, ZMod.natCast_self]
+    simp [nsmul_eq_mul]
   have h4 := u4 p C v R hv hpC (Fin r → ZMod p) hN AW (v B.det) _ hColen hOm
   have hcard : Fintype.card (Fin r → ZMod p) = p ^ r := by simp
   rw [hcard] at h4

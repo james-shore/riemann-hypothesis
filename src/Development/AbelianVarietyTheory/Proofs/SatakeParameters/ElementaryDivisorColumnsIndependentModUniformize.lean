@@ -32,16 +32,16 @@ theorem columns_indepMod :
     by_cases hk : 0 < a k
     · rw [Finset.sum_eq_single ⟨k, hk⟩]
       · obtain ⟨m, hm⟩ : ∃ m, a k = m + 1 := Nat.exists_eq_succ_of_ne_zero hk.ne'
-        simp [hc, hk, hm]; ring
+        simp [hc, hm]; ring
       · intro b _ hb
         have : k ≠ (b : Fin n) := fun h => hb (Subtype.ext h.symm)
-        simp [Pi.single_apply, this]
+        simp [this]
       · simp
     · rw [Finset.sum_eq_zero]
       · simp [hc, hk]
       · intro i _
         have : k ≠ (i : Fin n) := fun h => hk (h ▸ i.2)
-        simp [Pi.single_apply, this]
+        simp [this]
   have hlin : ϖ • (x *ᵥ (V *ᵥ c)) = ∑ i : {j : Fin n // 0 < a j}, d i • (x *ᵥ (V *ᵥ Pi.single (i : Fin n) (ϖ ^ a (i : Fin n)))) := by
     rw [← Matrix.mulVec_smul, ← Matrix.mulVec_smul, hsum, Matrix.mulVec_sum, Matrix.mulVec_sum]
     simp [Matrix.mulVec_smul]

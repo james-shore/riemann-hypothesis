@@ -85,7 +85,7 @@ lemma colW_expand (h1 : X.Ψ → Matrix (Fin r) (Fin r) ℂ) (z0 : Frame X.Ψ r)
   have hh : ∀ d, hermC τ.1 X.Gm y (col (mat x0 τ) d) = α d * ((sgn X.p0 (d : ℕ) : ℝ) : ℂ) := by
     intro d
     rw [hyα, hermC_sum_smul_left']
-    simp only [hcd, mul_ite, mul_zero, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ,
+    simp only [hcd, mul_ite, mul_zero, Finset.sum_ite_eq', Finset.mem_univ,
       if_true]
   rw [hyα, sum_split X.p0_le]
   congr 1
@@ -123,7 +123,7 @@ lemma colZ (x0 : Frame X.Ψ r) (Z : X.Coord) (τ : X.Ψ) (b : Fin X.p0) :
   have hc : ∀ c k, col (X.lowBlock Z τ) c k = X.lowBlock Z τ k c := fun _ _ ↦ rfl
   rw [hm, col_mul', mulVec_eq_sum_col, sum_split X.p0_le]
   simp only [hc, lowBlock_castLE, lowBlock_kap, ite_smul, one_smul, zero_smul,
-    Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+    Finset.sum_ite_eq', Finset.mem_univ, if_true]
 
 end
 

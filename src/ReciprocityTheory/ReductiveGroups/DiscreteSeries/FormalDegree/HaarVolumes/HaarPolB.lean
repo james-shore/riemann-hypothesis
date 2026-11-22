@@ -92,8 +92,7 @@ theorem Lm_strict (ε : Fin n → Bool) :
   have h := (LinearMap.toContinuousLinearMap (cLin ε)).hasStrictFDerivAt.comp (0 : GCo ε)
     (hl.comp (0 : GCo ε) (prod_strict ε))
   refine h.congr_fderiv (ContinuousLinearMap.ext fun s => ?_)
-  simp only [ContinuousLinearMap.coe_comp', Function.comp_apply, ContinuousLinearMap.id_apply,
-    LinearMap.coe_toContinuousLinearMap']
+  simp only [ContinuousLinearMap.id_apply]
   exact cLin_gMat s
 
 end An
@@ -191,7 +190,7 @@ theorem image_est (ε : Fin n → Bool) {η : ℝ} (hη : 0 < η) : ∃ δ > 0, 
   have hinj : Set.InjOn Lm S := by
     intro x hx y hy hxy
     have h := hAS x hx y hy
-    simp only [A, ContinuousLinearMap.id_apply, hxy, sub_self, zero_sub, norm_neg] at h
+    simp only [ContinuousLinearMap.id_apply, hxy, sub_self, zero_sub, norm_neg] at h
     have h0 : ‖x - y‖ = 0 := by
       have := norm_nonneg (x - y)
       nlinarith
@@ -203,7 +202,7 @@ theorem image_est (ε : Fin n → Bool) {η : ℝ} (hη : 0 < η) : ∃ δ > 0, 
   refine ⟨hS.image_of_continuousOn_injOn hAS.continuousOn hinj, fun s hs => ?_, hc1 S Lm hAS,
     hc2 S Lm hAS⟩
   have h := hB s (hSb hs) 0 (mem_ball_self hδ)
-  simp only [A, ContinuousLinearMap.id_apply, Lm_zero, sub_zero] at h
+  simp only [ContinuousLinearMap.id_apply, Lm_zero, sub_zero] at h
   have := norm_sub_norm_le (Lm s) s
   have := norm_nonneg s
   nlinarith

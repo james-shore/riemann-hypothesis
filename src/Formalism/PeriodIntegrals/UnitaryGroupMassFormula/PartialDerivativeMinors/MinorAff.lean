@@ -71,11 +71,11 @@ theorem pMinorAff : PMinorAff := by
     by_cases hc : c = bb
     · subst hc
       simp [y, map_sum, Derivation.leibniz, MvPolynomial.pderiv_X, Pi.single_apply]
-    · simp [map_sum, Derivation.leibniz, MvPolynomial.pderiv_X, Pi.single_apply, hc]
+    · simp [map_sum, Derivation.leibniz, MvPolynomial.pderiv_X, hc]
   have hy : ∀ (bb : Fin N1) (i : Fin k), dRow (N0 := N0) t 0 bb (y i) = 0 := by
     intro bb i
     rw [hD]
-    simp [y, map_sum, Derivation.leibniz, MvPolynomial.pderiv_X, Pi.single_apply]
+    simp [y, map_sum, Derivation.leibniz, MvPolynomial.pderiv_X]
   simp only [minorXZ]
   rw [minorAff_derDet, map_sum]
   refine Finset.sum_eq_zero fun c _ => ?_

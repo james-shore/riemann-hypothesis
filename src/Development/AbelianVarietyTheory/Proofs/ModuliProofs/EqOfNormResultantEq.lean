@@ -154,7 +154,7 @@ theorem card_eq (l : ℕ) [Fact l.Prime] [NormedAlgebra ℚ_[l] Ω] (a b : Multi
   have h1 := h (C (l : ℤ))
   have hl : ‖(l : Ω)‖ = ‖(l : ℚ_[l])‖ := by
     rw [← norm_algebraMap' Ω (l : ℚ_[l]), map_natCast]
-  simp only [aeval_C, map_natCast, Multiset.map_const', Multiset.prod_replicate, norm_pow,
+  simp only [map_natCast, Multiset.map_const', Multiset.prod_replicate, norm_pow,
     hl] at h1
   refine pow_right_injective₀ ?_ ?_ h1
   · exact norm_pos_iff.2 (Nat.cast_ne_zero.2 (Fact.out : l.Prime).ne_zero)

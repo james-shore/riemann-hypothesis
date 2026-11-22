@@ -53,7 +53,7 @@ theorem unit_mem {D : D7} {e a : Formalism.L2.Theta.AE D} (hee : e * e = e) (ha 
 theorem det_castGL {R : Type} [CommRing R] {m n : ℕ} (h : m = n) (g : GL (Fin m) R) :
     Matrix.GeneralLinearGroup.det (castGL h g) = Matrix.GeneralLinearGroup.det g := by
   ext
-  simp [Matrix.GeneralLinearGroup.val_det_apply, castGL, Matrix.det_reindex_self]
+  simp [Matrix.GeneralLinearGroup.val_det_apply, castGL]
 
 theorem det_fin {D : D7} (V : HSp D) (α : GA D V) : finPart D (Formalism.L2.Theta.mt V α).det = (finHom V α).val.det := by
   rw [RingHom.map_det]; rfl

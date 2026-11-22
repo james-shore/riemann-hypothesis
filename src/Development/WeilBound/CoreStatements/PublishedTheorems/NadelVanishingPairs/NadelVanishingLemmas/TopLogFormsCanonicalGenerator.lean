@@ -423,7 +423,7 @@ private theorem logAt_top_lemma_6 {X : Scheme.{0}} [IsIntegral X] (Z : Set X) (G
       intro i
       by_cases hi : i ∈ J
       · refine ⟨x i, (hlog _).2 ⟨1, Pi.single i 1, unitAt_one y, ?_⟩, rfl, by simp [s, hi], ?_⟩
-        · rw [one_mul, Finset.prod_eq_single i (fun j _ hji => by simp [Pi.single_apply, hji])
+        · rw [one_mul, Finset.prod_eq_single i (fun j _ hji => by simp [hji])
             (fun h => absurd hi h)]
           simp
         · simpa [hi] using (unitAt_one y).regAt

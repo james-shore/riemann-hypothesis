@@ -34,8 +34,6 @@ theorem stdL_c (L : LocBessel k r) (ka : ℝ) (hka : 0 < ka) : (stdL L ka hka).c
   simp only [cOfDpsi, cStd, Complex.ofReal_inv]
   first
   | (rw [mul_comm, mul_assoc, mul_inv_cancel₀ hk0, mul_one])
-  | field_simp
-  | (field_simp; ring)
 
 theorem jNorm2_std (L : LocBessel k r) (ka : ℝ) (hka : 0 < ka) (hc : L.c = ((2 * ka : ℝ) : ℂ)) (hk2 : 2 ≤ k)
     (f : Mx k r → (L.Wq →L[ℂ] L.Wp)) (μsec : ℂ → Matrix (Fin (k + 1)) (Fin (k + 1)) ℂ)
@@ -375,8 +373,6 @@ theorem normSq_ne_of_beta {Wp Wq : Type} [NormedAddCommGroup Wp] [InnerProductSp
     intro f hf0 hl
     first
     | rw [integral_complex_ofReal]
-    | rw [← integral_complex_ofReal]
-    | rw [integral_ofReal (𝕜 := ℂ)]
     by_cases hm : AEStronglyMeasurable f (volume : Measure ((Fin r → ℂ) × ℂ))
     · rw [integral_eq_lintegral_of_nonneg_ae (Filter.Eventually.of_forall hf0) hm, hl, ENNReal.toReal_zero,
         Complex.ofReal_zero]
@@ -467,7 +463,6 @@ theorem smooth_turn (L : LocBessel k r) (ka : ℝ) {v : L.Hs} (hv : v ∈ PI.Upq
     rw [Matrix.diagonal_mul_diagonal] at h1 ⊢
     first
     | (simpa only [mul_comm] using h1)
-    | (convert h1 using 3 <;> ring)
   have hTH : (tT k r)ᴴ = tTi k r := by
     unfold tT tTi
     rw [Matrix.diagonal_conjTranspose]
@@ -486,7 +481,7 @@ theorem smooth_turn (L : LocBessel k r) (ka : ℝ) {v : L.Hs} (hv : v ∈ PI.Upq
   let Φ : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ →ₗ[ℝ] Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ :=
     { toFun := fun g => tT k r * g * tTi k r
       map_add' := by intro a b; simp [Matrix.mul_add, Matrix.add_mul]
-      map_smul' := by intro c a; simp [Matrix.mul_smul, Matrix.smul_mul] }
+      map_smul' := by intro c a; simp }
   have hcont : Continuous fun g : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ => tT k r * g * tTi k r :=
     (LinearMap.toContinuousLinearMap Φ).continuous
   simp only [PI.UpqRep.smoothVecs, Set.mem_setOf_eq, PI.UpqRep.IsSmoothVec] at hv ⊢

@@ -217,7 +217,7 @@ theorem exists_chart {X : Scheme.{0}} {Ω : Type} [Field Ω] {ξ : Sp Ω ⟶ X} 
     rw [← Spec.map_comp, ← CommRingCat.ofHom_comp]
     congr 2
     ext o
-    simp only [i, CommRingCat.hom_ofHom, RingHom.comp_apply]
+    simp only [i, RingHom.comp_apply]
     exact eU.symm_apply_apply _
   simp only [Iso.trans_hom, asIso_hom, Category.assoc]
   rw [e, hρ, ← hU.isoSpec_inv_ι]

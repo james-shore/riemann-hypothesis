@@ -29,7 +29,7 @@ theorem mem_span_basis {ι : Type} [Fintype ι] (b : Basis ι LL W) (y : W) :
       intro i
       by_cases h : j = i
       · subst h; exact ⟨1, by simp⟩
-      · exact ⟨0, by simp [Finsupp.single_apply, h]⟩
+      · exact ⟨0, by simp [h]⟩
     | zero => intro i; exact ⟨0, by simp⟩
     | add x z _ _ hx hz =>
       intro i

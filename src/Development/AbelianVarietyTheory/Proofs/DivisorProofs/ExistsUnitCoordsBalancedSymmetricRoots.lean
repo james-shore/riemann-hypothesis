@@ -75,7 +75,7 @@ theorem mem_of_diag {O : Type} [CommRing O] (bar : O → O) {w : O} (hw : w + ba
     rw [hs b, hb, ← hr, ← add_smul, hw, one_smul]
   have h2 : q a b = q (a + b) (w • (a + b)) / (q a (w • a) * q b (w • b)) := by
     rw [smul_add, ha, hr, hr, ← h1, eq_div_iff_mul_eq']
-    simp only [mul_comm, mul_left_comm, mul_assoc]
+    simp only [mul_comm, mul_left_comm]
   rw [h2]
   exact U.div_mem (hd _) (U.mul_mem (hd _) (hd _))
 

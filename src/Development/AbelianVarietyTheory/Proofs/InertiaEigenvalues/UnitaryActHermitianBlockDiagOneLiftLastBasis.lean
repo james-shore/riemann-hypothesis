@@ -18,7 +18,7 @@ theorem actU_uEmb_liftH {F E : Type} [NontriviallyNormedField F] [NontriviallyNo
     simp only [embHom, full, Hn.toGl, actU, MonoidHom.coe_mk, OneHom.coe_mk, Matrix.reindex_apply,
       Matrix.submatrix_mul_equiv, Matrix.fromBlocks_multiply]
     congr 2
-    all_goals (ext i j; simp [Matrix.mul_apply, Matrix.mulVec, dotProduct, Matrix.vecMul, Finset.sum_apply, star_sum, mul_comm, Matrix.star_apply])
+    all_goals (ext i j; simp [Matrix.mul_apply, Matrix.mulVec, dotProduct, star_sum, mul_comm, Matrix.star_apply])
   · show embHom r E s.1 *ᵥ (ν • eL r E) = ν • eL r E
     ext i
     refine Fin.lastCases ?_ (fun i => ?_) i

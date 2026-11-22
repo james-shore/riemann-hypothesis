@@ -132,7 +132,7 @@ theorem real_shift {D : D7} (X : HidaSetting D) (h : X.B.I = Formalism.L2.SG.Ins
         funext σ
         by_cases hσ : σ = τ
         · subst hσ; simp [ws]
-        · simp [ws, hσ, Function.update_of_ne hσ]
+        · simp [ws, hσ]
       have hE := Formalism.IndefR.Eqv.KerDiag.mult_equiv θ M J χ hU τ (ha τ) (ws s) ⟨_, hsm τ⟩
         (by simp only [hws])
       have hmul : iotaX X h (atTau θ (D.sp.Y 0) τ (a τ)) * gs s = gs (insert τ s) := by

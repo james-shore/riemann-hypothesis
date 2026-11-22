@@ -31,8 +31,6 @@ theorem exists_basis {A R : Type} [CommRing A] [CommRing R] [Algebra A R] {r : �
   | exact @_root_.GlobalTheory.SmoothEvaluation.main
   | exact _root_.GlobalTheory.SmoothEvaluation.main
   | (apply _root_.GlobalTheory.SmoothEvaluation.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SmoothEvaluation.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SmoothEvaluation.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SmoothEvaluation.main ..)
 
 theorem sum_tower {A₀ A₁ R : Type} [CommRing A₀] [IsDomain A₀] [CommRing A₁] [IsDomain A₁] [CommRing R] [IsDomain R]

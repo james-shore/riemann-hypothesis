@@ -82,7 +82,7 @@ theorem finite_torsion_centralizer : ∀ (E : Type) [Field E] [NumberField E] (n
   have hFpow : ∀ (g : GL (Fin n) E) (k : ℕ), F g ^ k = F (g ^ k) := by
     intro g k
     induction k with
-    | zero => simp [F, hBB, Matrix.map_one, Matrix.mul_one]
+    | zero => simp [F, hBB, Matrix.map_one]
     | succ k ih =>
       rw [pow_succ, ih, pow_succ]
       simp only [F, Units.val_mul]

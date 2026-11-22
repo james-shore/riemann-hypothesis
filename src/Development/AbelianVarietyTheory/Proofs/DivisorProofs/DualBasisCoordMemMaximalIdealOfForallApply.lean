@@ -10,7 +10,7 @@ theorem dualBasis_coord_mem_maximalIdeal : ∀ (O : Type) [CommRing O] [IsLocalR
   let ε := Module.Free.chooseBasis O M
   have hsum : l = ∑ i, l (ε i) • ε.dualBasis i := by
     refine ε.ext fun a => ?_
-    simp [Module.Basis.dualBasis_apply_self, Finset.sum_apply, LinearMap.sum_apply]
+    simp
   rw [hsum, map_sum]
   simp only [Finsupp.coe_finset_sum, Finset.sum_apply, map_smul, Finsupp.coe_smul, Pi.smul_apply, smul_eq_mul]
   exact Ideal.sum_mem _ fun i _ => Ideal.mul_mem_right _ _ (hl _)

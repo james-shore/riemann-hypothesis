@@ -186,7 +186,7 @@ def htpyD (G : ∀ a b n : ℕ, bo a b ⟶ bo n n)
     rw [HomologicalComplex.comp_f, HomologicalComplex.id_f, Homotopy.prevD_chainComplex]
     change awF Y n ≫ shufF Y G n = _
     rw [awF_shufF, hH n]
-    simp only [Functor.map_add, Functor.map_id, Functor.map_comp]
+    simp only [Functor.map_add, Functor.map_comp]
     rw [evd', homD, if_pos rfl, show (ev Y).map (𝟙 (bo n n)) = 𝟙 ((diagCx Y).X n) from (ev Y).map_id _]
     cases n with
     | zero =>
@@ -223,7 +223,7 @@ def htpyT (G : ∀ a b n : ℕ, bo a b ⟶ bo n n)
     simp_rw [Functor.map_add, Preadditive.add_comp, Finset.sum_add_distrib, sum_idO Y a b _ rfl,
       Functor.map_sum, Preadditive.sum_comp]
 
-    simp only [Preadditive.comp_add, Category.comp_id]
+    simp only [Preadditive.comp_add]
     rw [← Category.assoc, ιz_homT Y K a b _ rfl, Preadditive.sum_comp]
     simp_rw [Category.assoc, ιz_d, Preadditive.comp_sum, ← Category.assoc, ← Functor.map_comp]
     rw [Finset.sum_comm (s := antidiagonal (a + b + 1))]

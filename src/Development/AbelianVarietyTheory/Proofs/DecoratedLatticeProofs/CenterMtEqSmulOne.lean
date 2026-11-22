@@ -66,10 +66,10 @@ theorem cayley_unitary (σ : E →+* E) (J X : Matrix n n E) (t : E) (ht : σ t 
     have e1 : Formalism.UG.cT σ A * (Formalism.UG.cT σ g * J * g) * A = Formalism.UG.cT σ (g * A) * J * (g * A) := by
       rw [Formalism.UG.cT_mul]; simp only [Matrix.mul_assoc]
     rw [e1, hgA, hcA, cT_add, cT_smul, Formalism.UG.cT_one, ht]
-    simp only [Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, Matrix.one_mul, Matrix.mul_one,
+    simp only [Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.one_mul, Matrix.mul_one,
       Matrix.smul_mul, Matrix.mul_smul, hY]
     rw [hAdef]
-    simp only [Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_smul, Matrix.smul_mul, Matrix.neg_mul]
+    simp only [Matrix.mul_sub, Matrix.mul_one, Matrix.mul_smul, Matrix.neg_mul]
     module
   calc Formalism.UG.cT σ g * J * g
       = (Formalism.UG.cT σ P * Formalism.UG.cT σ A) * (Formalism.UG.cT σ g * J * g) * (A * P) := by

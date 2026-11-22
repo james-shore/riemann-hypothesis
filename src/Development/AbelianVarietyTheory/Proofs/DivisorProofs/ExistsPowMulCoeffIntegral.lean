@@ -98,8 +98,8 @@ theorem coeff_aeval_scale {σ K : Type} [Field K] (t : K) (P : MvPolynomial σ K
   | monomial d a =>
     have e : aeval (fun i => C t * X i) (monomial d a) = monomial d (t ^ (d.sum fun _ e => e) * a) := by
       rw [aeval_monomial, monomial_eq]
-      simp only [Algebra.algebraMap_self, RingHom.id_apply, mul_pow, Finsupp.prod_mul, Finsupp.prod, Finsupp.sum,
-        Finset.prod_pow_eq_pow_sum, C_mul, C_pow, algebraMap_eq]
+      simp only [mul_pow, Finsupp.prod, Finsupp.sum,
+        C_mul, C_pow, algebraMap_eq]
       rw [Finset.prod_mul_distrib, Finset.prod_pow_eq_pow_sum]
       ring
     rw [e, coeff_monomial, coeff_monomial]

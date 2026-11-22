@@ -16,7 +16,7 @@ theorem mul_flagGram_apply {K : Type} [CommRing K] {ρ k : ℕ}
     (A * flagGram K (2 * ρ + k + 1) ρ k) i j =
       A i ⟨dualIdx ρ k j.val, dualIdx_lt' j.2⟩ * (if dualIdx ρ k j.val = ρ + k then -1 else 1) := by
   rw [mul_apply, Finset.sum_eq_single ⟨dualIdx ρ k j.val, dualIdx_lt' j.2⟩]
-  · simp only [flagGram, Fin.val_mk]
+  · simp only [flagGram]
     rw [if_pos ((dualIdx_iff' j.2 (dualIdx_lt' j.2)).mpr rfl)]
   · intro l _ hl
     simp only [flagGram]
@@ -30,7 +30,7 @@ theorem flagGram_mul_apply {K : Type} [CommRing K] {ρ k : ℕ}
     (flagGram K (2 * ρ + k + 1) ρ k * A) i j =
       (if i.val = ρ + k then -1 else 1) * A ⟨dualIdx ρ k i.val, dualIdx_lt' i.2⟩ j := by
   rw [mul_apply, Finset.sum_eq_single ⟨dualIdx ρ k i.val, dualIdx_lt' i.2⟩]
-  · simp only [flagGram, Fin.val_mk, if_true]
+  · simp only [flagGram, if_true]
   · intro l _ hl
     simp only [flagGram]
     rw [if_neg, zero_mul]
@@ -62,11 +62,11 @@ theorem flagCond_dual_unipSym : ∀ (K : Type) [CommRing K] (n ρ k : ℕ), n = 
       Fin.ext ((dualIdx_iff' p.2 (dualIdx_lt' p.2)).mpr rfl).symm
     have hs : (if dualIdx ρ k p.val = ρ + k then (-1 : K) else 1) = 1 :=
       if_neg (by unfold dualIdx; split_ifs <;> omega)
-    simp only [Fin.val_mk] at h1
+    simp only at h1
     rw [e1, hs, one_mul] at h1
     have hc := hM'.1 ⟨dualIdx ρ k q.val, dualIdx_lt' q.2⟩ ⟨dualIdx ρ k p.val, dualIdx_lt' p.2⟩
-      (by simp only [Fin.val_mk]; unfold dualIdx; split_ifs <;> omega)
-      (by simp only [Fin.val_mk]; unfold dualIdx; split_ifs <;> omega)
+      (by simp only; unfold dualIdx; split_ifs <;> omega)
+      (by simp only; unfold dualIdx; split_ifs <;> omega)
     simp only [Matrix.sub_apply, sub_eq_zero] at hc
     rw [← h1, hc]
     by_cases hpq : p = q
@@ -76,7 +76,7 @@ theorem flagCond_dual_unipSym : ∀ (K : Type) [CommRing K] (n ρ k : ℕ), n = 
         intro h
         apply hpq
         have h' := congrArg Fin.val h
-        simp only [Fin.val_mk] at h'
+        simp only at h'
         apply Fin.ext
         unfold dualIdx at h'
         split_ifs at h' <;> omega

@@ -39,6 +39,5 @@ theorem logKS_inj_mod_maximal : ∀ (E : Type) [Field E] [NumberField E] [IsCMFi
     have key := GlobalTheory.T.logKodairaSpencer_injective_mod_maximal_boundary E H Dw l Xo c Y hpq hsm hsnc hrig U n v A hv hbasis hact D Θ m hm
     first
       | exact key hb hKS hΘ
-      | exact key hKS hΘ
 
 end GlobalTheory

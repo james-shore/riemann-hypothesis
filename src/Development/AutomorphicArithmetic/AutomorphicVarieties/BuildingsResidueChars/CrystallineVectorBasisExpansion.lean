@@ -18,7 +18,7 @@ private theorem coord_sum (c : Fin d → B) (i : Fin d) :
   rw [Finset.sum_eq_single i]
   · simp
   · intro j _ hj
-    simp [Finsupp.single_apply, hj]
+    simp [hj]
   · simp
 
 private theorem exists_coord (x : V ⊗[Qp] B) : ∃ c : Fin d → B, x = ∑ j, e j ⊗ₜ[Qp] c j := by

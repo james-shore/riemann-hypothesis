@@ -97,7 +97,7 @@ theorem GlobalTheory.exists_ample_add_eff_of_isNef_isBig : GlobalTheory.Publishe
       have hnn : ∀ a : Fin (d + 1) → Fin 2,
           0 ≤ (∏ i, (![(q : ℤ), 1] : Fin 2 → ℤ) (a i)) * interNum ℂ (GlobalTheory.structureModule X) (P ∘ a) :=
         fun a => mul_nonneg (Finset.prod_nonneg fun i _ => by
-          rcases Fin.exists_fin_two.1 ⟨a i, rfl⟩ with h | h <;> rw [h] <;> simp <;> omega) (hI a)
+          rcases Fin.exists_fin_two.1 ⟨a i, rfl⟩ with h | h <;> rw [h] <;> simp) (hI a)
       refine le_trans (le_of_eq ?_) (Finset.single_le_sum (fun a _ => hnn a)
         (Finset.mem_univ (fun _ => (0 : Fin 2))))
       simp only [Matrix.cons_val_zero, Finset.prod_const, Finset.card_univ, Fintype.card_fin]
@@ -145,4 +145,3 @@ theorem GlobalTheory.exists_ample_add_eff_of_isNef_isBig : GlobalTheory.Publishe
       cls_lbPow hA.isLB, cls_lbPow hM, hclsM]
     first
       | module
-      | (simp only [← natCast_zsmul, smul_sub, smul_smul, Nat.cast_mul]; rw [mul_comm (r : ℤ)]; abel)

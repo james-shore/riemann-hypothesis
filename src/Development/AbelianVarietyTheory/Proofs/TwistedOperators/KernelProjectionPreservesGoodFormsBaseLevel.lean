@@ -70,7 +70,7 @@ theorem GlobalTheory.kerProj_goodL : ∀ {D : D7} {G : Type} [Group G] [Fintype 
   rw [hrange] at hy ⊢
   obtain ⟨z, rfl⟩ := hy
   refine ⟨(LinearMap.ker (X.θ' j t)).starProjection z, ?_⟩
-  simp only [opV, LinearMap.sum_apply, LinearMap.smul_apply, map_sum, map_smul, hcomm]
+  simp only [opV, LinearMap.sum_apply, LinearMap.smul_apply, map_sum, map_smul]
   exact Finset.sum_congr rfl fun g _ => congrArg _ (hcomm g z).symm
 
 end

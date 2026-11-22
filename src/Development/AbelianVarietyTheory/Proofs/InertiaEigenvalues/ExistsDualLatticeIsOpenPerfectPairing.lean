@@ -92,7 +92,7 @@ theorem exists_dualLat_isOpen : ∀ {G : Type} [Group G] [TopologicalSpace G] {Q
     refine ⟨(Pi.single i (1 : O) : Module.Free.ChooseBasisIndex O LT.T → O) j, ?_⟩
     rcases eq_or_ne j i with rfl | h
     · simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   have hT'eq : T' = Submodule.span O (Set.range bf) := by
     apply le_antisymm
     · intro y hy

@@ -17,8 +17,7 @@ theorem card_blk_fiber {α : Type} {N : ℕ} {m : α → Type} [DecidableEq α] 
       (Finset.univ : Finset (m i)).map
         ⟨fun y => e ⟨i, y⟩, fun a b hab => by simpa using e.injective hab⟩ := by
     ext x
-    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_map,
-      Function.Embedding.coeFn_mk]
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_map]
     constructor
     · rintro rfl
       exact ⟨(e.symm x).2, e.apply_symm_apply x⟩

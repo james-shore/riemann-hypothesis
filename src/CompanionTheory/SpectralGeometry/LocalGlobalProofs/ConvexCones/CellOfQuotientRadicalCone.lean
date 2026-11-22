@@ -155,7 +155,7 @@ theorem exists_cell_quot_orad_of_inRCone : ∀ (O : Type) [CommRing O] [IsDedeki
         refine ⟨k, c', hk, ?_⟩
         have hkc' : k • GlobalTheory.PolFan.pull K.mkQ β' = ∑ i, c' i • γ (s i) := hkc
         apply GlobalTheory.PolFan.CarDim.pullLin_injective hr
-        simp only [map_nsmul, map_zsmul, LinearMap.map_smul_of_tower, map_sum,
+        simp only [map_nsmul, map_sum,
           GlobalTheory.PolFan.CarDim.pullLin_apply]
         rw [hkc']
         refine Finset.sum_congr rfl fun i _ => ?_

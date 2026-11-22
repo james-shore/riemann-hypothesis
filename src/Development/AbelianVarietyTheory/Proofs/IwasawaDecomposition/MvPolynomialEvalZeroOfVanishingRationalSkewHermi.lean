@@ -94,7 +94,7 @@ theorem eval_upt_eq_zero_of_skew (L : Type) [Field L] [NumberField L] [IsCMField
       simp only [apply_ite σ, map_zero, hσc]
     simp only [e1, mul_sub, Finset.sum_sub_distrib, mul_ite, mul_zero]
     rw [Fintype.sum_prod_type, Fintype.sum_prod_type]
-    simp only [Fintype.sum_prod_type, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+    simp only [Fintype.sum_prod_type, ite_and]
     have e2 : ∀ (f : Fin n → Fin n → Module.Free.ChooseBasisIndex ℤ (𝓞 L) → ℂ) (p q : Fin n),
         (∑ x, ∑ x_1, ∑ x_2, if p = x then if q = x_1 then f x x_1 x_2 else 0 else 0) = ∑ k, f p q k := by
       intro f p q

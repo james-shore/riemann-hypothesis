@@ -12,11 +12,6 @@ theorem eq_bot_or_top_of_span_eq_top {Γ k K : Type} [Field k] [Field K] [Algebr
     (hW : ∀ g, ∀ x ∈ W, ((M g).map (algebraMap k K)).mulVec x ∈ W) : W = ⊥ ∨ W = ⊤ := by
   first
   | (rename_i h_3 h_4 h_5; revert Γ k K h_3 h_4 h_5 r M h W hW; exact @_root_.GlobalTheory.InvariantBotOrTop.main)
-  | exact @_root_.GlobalTheory.InvariantBotOrTop.main
-  | exact _root_.GlobalTheory.InvariantBotOrTop.main
-  | (apply _root_.GlobalTheory.InvariantBotOrTop.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.InvariantBotOrTop.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.InvariantBotOrTop.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.InvariantBotOrTop.main ..)
 
 end GlobalTheory.BurnsideIff

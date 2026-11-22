@@ -34,7 +34,7 @@ theorem mem_glue {c : ∀ i : ι, P {i}} : c ∈ glue res ↔
     simpa [glueD, sub_eq_zero] using hk
   · intro h
     funext k
-    simp [glueD, sub_eq_zero, h k.1 k.2]
+    simp [glueD, h k.1 k.2]
 
 def evAt (i : ι) (I : Finset ι) (hi : i ∈ I) : glue res →ₗ[MvPolynomial ι A] P I :=
   res {i} I (Finset.singleton_subset_iff.2 hi) ∘ₗ LinearMap.proj i ∘ₗ (glue res).subtype
@@ -87,7 +87,6 @@ theorem isGradedMap_glueD (hgr : ∀ S S' (h : S ⊆ S'), IsGradedMap (𝒢 S) (
     IsGradedMap (grPi fun i : ι => 𝒢 {i}) (grPi fun k : ι × ι => 𝒢 {k.1, k.2}) (glueD res) := by
   unfold glueD
   refine IsGradedMap.pi fun k => ?_
-  beta_reduce
   rw [sub_eq_add_neg]
   exact ((hgr _ _ _).comp (isGradedMap_piProj _ _ k.1)).add
     ((hgr _ _ _).comp (isGradedMap_piProj _ _ k.2)).neg

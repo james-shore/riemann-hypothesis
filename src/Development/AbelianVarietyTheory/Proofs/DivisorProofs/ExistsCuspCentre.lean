@@ -426,7 +426,7 @@ theorem norm_lminor_le {r : ℕ} (g : Matrix (Fin r) (Fin r) ℂ)
     have h := hg (Pi.single b 1)
     have h1 : ReciprocityTheory.MultiplicativeHeights.normSq (Pi.single b 1 : Fin r → ℂ) = 1 := by
       unfold ReciprocityTheory.MultiplicativeHeights.normSq
-      rw [Finset.sum_eq_single b] <;> simp +contextual [Pi.single_apply]
+      rw [Finset.sum_eq_single b] <;> simp +contextual
     have h2 : ‖g a b‖ ^ 2 ≤ ReciprocityTheory.MultiplicativeHeights.normSq (g *ᵥ Pi.single b 1) := by
       unfold ReciprocityTheory.MultiplicativeHeights.normSq
       have := Finset.single_le_sum (f := fun k => ‖(g *ᵥ Pi.single b 1) k‖ ^ 2) (fun _ _ => sq_nonneg _)
@@ -553,7 +553,7 @@ theorem eq_one_of_cong {K : Type} [Field K] [NumberField K] {r M : ℕ} (hM : 5 
         simpa [Matrix.mulVec_mulVec, Matrix.nonsing_inv_mul _ hQu] using this
       have hmap : ((M : K)⁻¹ • (γ - 1)).map σ = (M : ℂ)⁻¹ • (γ.map σ - 1) := by
         ext a b
-        by_cases hab : a = b <;> simp [Matrix.one_apply, hab]
+        by_cases hab : a = b <;> simp [hab]
       have h1 := hb σ u
       rw [hQ, hQ] at h1
       rw [hQ, hQ, hmap, Matrix.smul_mulVec, Matrix.mulVec_smul, Matrix.sub_mulVec, Matrix.one_mulVec,

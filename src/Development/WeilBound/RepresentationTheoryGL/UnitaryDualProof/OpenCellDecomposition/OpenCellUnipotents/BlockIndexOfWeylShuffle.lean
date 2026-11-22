@@ -27,7 +27,7 @@ theorem weyl_shuffle_val (j : Fin (r + m)) : (w2 r m j : ℕ) = if (j : ℕ) < m
   obtain ⟨j, hj⟩ := j
   unfold w2
   rw [Equiv.trans_apply]
-  simp only [Fin.val_mk]
+  simp only
   split_ifs with h
   · rw [show (finCongr (add_comm r m) ⟨j, hj⟩ : Fin (m + r)) = ⟨j, by omega⟩ from rfl,
       finAddFlip_apply_mk_left h]
@@ -96,7 +96,7 @@ theorem levZ_apply (z : kˣ) (a : Fin 2) (i j : Fin (dd r m a)) :
     ((levZ k r m z a : GL (Fin (dd r m a)) k) : Matrix (Fin (dd r m a)) (Fin (dd r m a)) k) i j =
       if i = j then (if a = 0 then 1 else (z : k)) else 0 := by
   unfold levZ
-  split_ifs <;> simp_all [Matrix.one_apply, Matrix.scalar_apply, Matrix.diagonal_apply]
+  split_ifs <;> simp_all [Matrix.scalar_apply]
 
 omit [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k] in
 
@@ -195,6 +195,5 @@ theorem aDiag_conj_mem_congr (N n : ℕ) (z : kˣ) (hz : valuation k (z : k) ≤
     rw [e, map_mul]
     first
       | exact (mul_le_of_le_one_left' (hc i j)).trans (hcong i j)
-      | exact (mul_le_of_le_one_left₀ (zero_le _) (hc i j)).trans (hcong i j)
 
 end PositivityTheory.RgUd.CellA

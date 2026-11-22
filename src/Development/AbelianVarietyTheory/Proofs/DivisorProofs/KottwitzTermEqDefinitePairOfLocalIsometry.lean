@@ -51,7 +51,7 @@ theorem quot_commute (P : Pair G) (Q : DPair G) (hγ : P.γ = Q.γ) (hc : P.c = 
   set b₂ := Q.β
   set C := algebraMap ℚ G.C (c : ℚ)
   have hs : sh G (γ : G.C) = ((b₂⁻¹ : G.Cˣ) : G.C) * ((γ⁻¹ : G.Cˣ) : G.C) * (C * b₂) := by
-    rw [← hQ]; simp only [← mul_assoc, Units.inv_mul_cancel_left]
+    rw [← hQ]; simp only [← mul_assoc]
     rw [mul_assoc ((b₂⁻¹ : G.Cˣ) : G.C), Units.inv_mul, mul_one, Units.inv_mul, one_mul]
   have hCu : IsUnit C := c.isUnit.map (algebraMap ℚ G.C)
   have h := congrArg (· * ((b₂⁻¹ : G.Cˣ) : G.C)) hP

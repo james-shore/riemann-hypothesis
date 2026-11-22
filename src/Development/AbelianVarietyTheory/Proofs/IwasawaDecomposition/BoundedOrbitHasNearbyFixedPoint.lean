@@ -36,8 +36,6 @@ theorem exists_root_near [IsAlgClosed K] (p : K[X]) (hp : 0 < p.natDegree) (x : 
   | exact @_root_.GlobalTheory.RootNormPowerBound.exists_root_norm_sub_pow_le
   | exact _root_.GlobalTheory.RootNormPowerBound.exists_root_norm_sub_pow_le
   | (apply _root_.GlobalTheory.RootNormPowerBound.exists_root_norm_sub_pow_le <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RootNormPowerBound.exists_root_norm_sub_pow_le <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RootNormPowerBound.exists_root_norm_sub_pow_le <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RootNormPowerBound.exists_root_norm_sub_pow_le ..)
 
 end General

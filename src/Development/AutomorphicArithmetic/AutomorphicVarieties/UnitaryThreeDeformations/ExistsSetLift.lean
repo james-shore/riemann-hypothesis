@@ -82,7 +82,7 @@ theorem Sm.ex_add (h : Sm ε) (X Y : Matrix (Fin 3) (Fin 3) N) : h.ex (X + Y) = 
   have hadd : (X + Y).map ε = X.map ε + Y.map ε := Matrix.map_add _ (map_add ε) X Y
   apply SemidirectProduct.ext
   · apply Units.ext
-    simp [Sm.ex, Sm.exGL, hadd, Matrix.add_mul, Matrix.mul_add, h.sq, sgnAct_one, add_assoc]
+    simp [Sm.ex, Sm.exGL, hadd, Matrix.add_mul, Matrix.mul_add, h.sq, add_assoc]
   · simp [Sm.ex]
 
 theorem Sm.ex_inj (h : Sm ε) (hε : Function.Injective ε) {X Y : Matrix (Fin 3) (Fin 3) N}
@@ -397,7 +397,7 @@ theorem exists_ex (𝒜 : ℤ → Submodule O R) [GradedAlgebra 𝒜] (p : R →
     by_cases hab' : a = b
     · subst hab'
       simp
-    · simp [Matrix.one_apply, hab']
+    · simp [hab']
   let Y : Matrix (Fin 3) (Fin 3) (RingHom.ker p) := fun a b => ⟨(z.mat - 1) a b, hker a b⟩
   have hY : z.mat = 1 + Y.map (incl O (RingHom.ker p)) := by
     ext a b

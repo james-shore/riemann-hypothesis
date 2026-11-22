@@ -26,8 +26,6 @@ theorem natCard_MA : Nat.card φ.MA = φ.ord := by
 private theorem natCard_int_units_eq_two : Nat.card ℤˣ = 2 := by
   first
   | (rw [Nat.card_eq_fintype_card]; rfl)
-  | (rw [Nat.card_eq_fintype_card]; decide)
-  | simp
 
 private theorem natCard_GG_eq_four_mul_ord : Nat.card φ.GG = 4 * φ.ord := by
   have h3 : Nat.card φ.GG = Nat.card ℤˣ * Nat.card ℤˣ * Nat.card φ.MA := by
@@ -349,7 +347,7 @@ theorem hostOrders_of_le (a : φ.MA) (j : ℕ) (l : ℤ) (u : (ZMod (2 ^ (φ.e +
 private theorem cc_mul_mem_Psi_iff_not_mem (g : φ.GG) : φ.cc * g ∈ φ.Psi ↔ g ∉ φ.Psi := by
   rw [mem_Psi_iff, mem_Psi_iff]
   show (-1 : ℤˣ) * g.1.2 = 1 ↔ ¬ g.1.2 = 1
-  rcases Int.units_eq_one_or g.1.2 with h | h <;> rw [h] <;> simp [int_units_neg_one_ne_one]
+  rcases Int.units_eq_one_or g.1.2 with h | h <;> rw [h] <;> simp
 
 theorem hostPartner (τ : φ.GG) (hτ : τ ∈ φ.Psi) :
     Set.BijOn (fun g : φ.GG => φ.cc * g * τ) {g | g ∉ φ.Psi} (φ.Psi : Set φ.GG) := by
@@ -390,7 +388,6 @@ theorem twHom_eq_one_iff (χ : φ.GG →* ℂˣ) : φ.twHom χ = 1 ↔ χ = φ.c
     rw [Complex.conj_conj, hr] at h3
     first
     | exact h3
-    | exact Units.ext h3
   · rintro rfl
     ext g
     show ((φ.chC g : ℂˣ) : ℂ) * starRingEnd ℂ ((φ.chC g : ℂˣ) : ℂ) = 1
@@ -444,7 +441,6 @@ theorem hostCharSum :
         rw [Complex.conj_conj, map_one] at h2
         first
         | exact h2
-        | exact Units.ext h2
       · intro h
         ext g
         rw [hfg, h]

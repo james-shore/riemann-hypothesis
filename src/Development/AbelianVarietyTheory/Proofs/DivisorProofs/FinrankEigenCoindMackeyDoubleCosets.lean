@@ -27,7 +27,6 @@ theorem eval_mem (φ : eig (Representation.coind P.subtype σ) (U : Set G) χ) (
   rw [mem_eig']
   intro p hp
   rw [← left_eq, ← right_eq σ χ φ _ hp]
-  congr 1
   group
 
 theorem eval_dc (φ : eig (Representation.coind P.subtype σ) (U : Set G) χ) (y p u : G) (hp : p ∈ P) (hu : u ∈ U) :

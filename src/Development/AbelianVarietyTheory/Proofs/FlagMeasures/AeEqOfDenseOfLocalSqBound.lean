@@ -68,7 +68,7 @@ theorem ae_eq_of_dense_of_local_sq_bound : ∀ {X : Type} [MeasurableSpace X] (�
             · exact (hCP (u - u')).2
             · exact (hCQ (u - u')).2
         _ ≤ 2 * ENNReal.ofReal (|CP| * δ ^ 2) + 2 * ENNReal.ofReal (|CQ| * δ ^ 2) := by
-            gcongr <;> first | exact le_abs_self _ | exact hwδ
+            gcongr <;> first | exact le_abs_self _
         _ = ENNReal.ofReal (M * δ ^ 2) := by
             have : M * δ ^ 2 = 2 * (|CP| * δ ^ 2) + 2 * (|CQ| * δ ^ 2) := by rw [hM]; ring
             rw [this, ENNReal.ofReal_add (by positivity) (by positivity),

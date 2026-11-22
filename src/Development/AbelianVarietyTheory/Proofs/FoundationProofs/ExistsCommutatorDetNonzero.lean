@@ -11,10 +11,6 @@ theorem commutator_H0_has_no_eigenvalue_one : ∀ (l : ℕ) [Fact l.Prime] (Ω :
     ∃ φ ∈ ⁅H0g W, H0g W⁆, (mat W φ - 1).det ≠ 0 := by
   first
   | exact @_root_.GlobalTheory.CommutingExistence.main
-  | exact _root_.GlobalTheory.CommutingExistence.main
-  | (apply _root_.GlobalTheory.CommutingExistence.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CommutingExistence.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CommutingExistence.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CommutingExistence.main ..)
 
 end GlobalTheory.Ord2

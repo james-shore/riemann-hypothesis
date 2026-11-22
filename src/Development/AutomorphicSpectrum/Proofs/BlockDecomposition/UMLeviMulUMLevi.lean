@@ -36,7 +36,7 @@ theorem uM_injective (n : ℕ) : Function.Injective (uM k n) := by
       Matrix (Fin (n + 1)) (Fin (n + 1)) k) (Fin.castSucc a) (Fin.last n) = z a := by
     intro z
     change (1 + GlobalTheory.BZMir.colMat k n z) (Fin.castSucc a) (Fin.last n) = z a
-    simp [GlobalTheory.BZMir.colMat, Matrix.one_apply, Fin.castSucc_ne_last]
+    simp [GlobalTheory.BZMir.colMat, Fin.castSucc_ne_last]
   rw [← entry y, ← entry y', h]
 
 theorem uM_levi_inj (n : ℕ) {y y' : Fin n → k} {g g' : GL (Fin n) k}

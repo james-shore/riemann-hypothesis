@@ -75,11 +75,11 @@ theorem mem_patSet_succ_iff {d j : ℕ} (hj : j < d) (u : GL (Fin d) K) :
     have hi : (⟨i, i.2.trans hj⟩ : Fin d) ≠ ⟨j, hj⟩ := by
       intro h'
       have h3 := congrArg Fin.val h'
-      simp only [Fin.val_mk] at h3
+      simp only at h3
       omega
     exact (h _ _).2 hi (fun hc => by
       have h2 := hc.2
-      simp only [Fin.val_mk] at h2
+      simp only at h2
       omega)
   · rintro ⟨h, hc⟩ i l
     refine ⟨(h i l).1, fun hne hn => ?_⟩

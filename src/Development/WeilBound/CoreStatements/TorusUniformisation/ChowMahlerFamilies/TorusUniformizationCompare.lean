@@ -58,7 +58,7 @@ theorem half [Module.Free ℤ X] [Module.Finite ℤ X]
     rw [ofAdd_add, map_mul, hφ, hφ, AddMonoidAlgebra.single_mul_single, _root_.mul_one] at h5
     by_contra hne
     have := congrArg (fun f => AddMonoidAlgebra.coeff f (φ (a + b))) h5
-    simp [AddMonoidAlgebra.coeff_single, Finsupp.single_apply, Ne.symm hne] at this
+    simp [AddMonoidAlgebra.coeff_single, Ne.symm hne] at this
   refine ⟨AddMonoidHom.mk' φ hadd, fun A _ g θ => ?_⟩
   letI : Algebra k A := g.toAlgebra
   have h := key A θ
@@ -77,7 +77,7 @@ theorem of_inj {a b : X} (h : AddMonoidAlgebra.of k X (Multiplicative.ofAdd a) =
   classical
   by_contra hne
   have := congrArg (fun f => AddMonoidAlgebra.coeff f a) h
-  simp [AddMonoidAlgebra.coeff_single, Finsupp.single_apply, Ne.symm hne] at this
+  simp [AddMonoidAlgebra.coeff_single, Ne.symm hne] at this
 
 theorem full [Module.Free ℤ X] [Module.Finite ℤ X] [Module.Free ℤ Y] [Module.Finite ℤ Y]
     (P : ∀ (A : Type) [CommRing A], (k →+* A) → (Multiplicative X →* A) → (Multiplicative Y →* A) → Prop)

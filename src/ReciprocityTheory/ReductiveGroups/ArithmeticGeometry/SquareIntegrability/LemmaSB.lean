@@ -12,12 +12,6 @@ lemma lemS_finrank : Module.finrank ℝ (EuclideanSpace ℂ ι) = 2 * Fintype.ca
   first
   | rw [← Module.finrank_mul_finrank ℝ ℂ (EuclideanSpace ℂ ι), Complex.finrank_real_complex,
       finrank_euclideanSpace]
-  | rw [← FiniteDimensional.finrank_mul_finrank ℝ ℂ (EuclideanSpace ℂ ι),
-      Complex.finrank_real_complex, finrank_euclideanSpace]
-  | (rw [(WithLp.linearEquiv 2 ℝ (ι → ℂ)).finrank_eq, Module.finrank_pi_fintype]
-     simp [Complex.finrank_real_complex, mul_comm])
-  | simp [← Module.finrank_mul_finrank ℝ ℂ (EuclideanSpace ℂ ι), Complex.finrank_real_complex,
-      finrank_euclideanSpace]
 
 theorem lemS_local (q : ℕ) (hq : 1 ≤ q) (F : EuclideanSpace ℂ ι → ℂ) (hF : Differentiable ℂ F)
     (v0 : EuclideanSpace ℂ ι) :
@@ -66,7 +60,7 @@ theorem lemS_local (q : ℕ) (hq : 1 ≤ q) (F : EuclideanSpace ℂ ι → ℂ) 
       field_simp
     have hadd : ‖v0 + w z‖ ^ 2 = ‖v0‖ ^ 2 + 2 * (inner ℂ v0 (w z)).re + ‖w z‖ ^ 2 := by
       rw [norm_add_sq (𝕜 := ℂ)]
-      first | rfl | simp
+      first | rfl
     have hre : (-((q * Real.pi : ℝ) : ℂ) * inner ℂ v0 (w z)).re =
         -(q * Real.pi) * (inner ℂ v0 (w z)).re := by
       simp only [Complex.mul_re, Complex.neg_re, Complex.neg_im, Complex.ofReal_re, Complex.ofReal_im]
@@ -100,7 +94,7 @@ theorem lemS_local (q : ℕ) (hq : 1 ≤ q) (F : EuclideanSpace ℂ ι → ℂ) 
     by_cases hzb : z ∈ Metric.closedBall (0 : EuclideanSpace ℂ (Fin (Fintype.card ι))) ρ
     · rw [Set.indicator_of_mem hzb, Set.indicator_of_mem ((hmem z).2 hzb), key z]
     · have h2 : v0 + w z ∉ Metric.closedBall v0 (ρ / s) := fun h => hzb ((hmem z).1 h)
-      simp [Set.indicator_apply, hzb, h2]
+      simp [hzb, h2]
   have hC : ∫ z, (Metric.closedBall v0 (ρ / s)).indicator Hf (v0 + w z) =
       s ^ (2 * Fintype.card ι) * ∫ u, (Metric.closedBall v0 (ρ / s)).indicator Hf u := by
     set h := (Metric.closedBall v0 (ρ / s)).indicator Hf

@@ -68,7 +68,7 @@ theorem exists_smul_ker_le (π : MvPolynomial (Fin g) O →ₐ[O] B) (hπ : π.t
     intro b hb
     have := AlgHom.congr_fun h1 b
     have hb' : e b = 0 := hb
-    simp only [AlgHom.comp_apply, Ideal.Quotient.mkₐ_eq_mk, Algebra.ofId_apply, hb', map_zero] at this
+    simp only [AlgHom.comp_apply, Ideal.Quotient.mkₐ_eq_mk, hb', map_zero] at this
     exact Ideal.Quotient.eq_zero_iff_mem.mp this
   have hfp : Algebra.FinitePresentation O B := by
     letI : Algebra (MvPolynomial (Fin g) O) B := π.toRingHom.toAlgebra

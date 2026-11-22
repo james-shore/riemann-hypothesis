@@ -1004,7 +1004,7 @@ def tangentEquiv :
       (fun φ ψ => by
         have h := (mem_primitiveTensors_iff _).1 x.2 φ ψ
         ext
-        · simp [algebraMap_eq_inl', Algebra.TensorProduct.one_def]
+        · simp [algebraMap_eq_inl']
         · simp [algebraMap_eq_inl', h]),
     fun φ => by simp [algebraMap_eq_inl']⟩
   left_inv f := Subtype.ext (AlgHom.ext fun φ => by

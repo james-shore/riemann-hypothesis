@@ -35,7 +35,7 @@ theorem eq_zero_of_pow {σ : Type} [Fintype σ] (f : MvPolynomial σ ℂ) :
       rw [Polynomial.eval_zero, ← this, Polynomial.eval_finsetSum]
       refine Finset.sum_congr rfl fun m _ => ?_
       rw [Polynomial.eval_monomial, smul_pow, smul_mul_assoc, smul_mul_assoc, map_smul, ← nsmul_eq_mul' (X i ^ m * lin u ^ (n + 1 - m)), map_nsmul]
-      simp [mul_comm, mul_left_comm]
+      simp [mul_comm]
     have h1 := congrArg (Polynomial.coeff · 1) hc
     simp only [c, Polynomial.finsetSum_coeff, Polynomial.coeff_monomial, Finset.sum_ite_eq', Finset.mem_range] at h1
     have h2 : ((n : ℂ) + 1) ≠ 0 := Nat.cast_add_one_ne_zero n
@@ -112,7 +112,7 @@ theorem core_pos (p : C → Bool) (S : I → Prop) (k : ℝ) (hk : 0 < k) (hc : 
       rw [Derivation.leibniz, Derivation.leibniz_pow, Derivation.leibniz_pow, d3, d2]
       rcases j with _ | j
       · simp
-      · simp only [smul_zero, add_zero, smul_eq_mul, Nat.add_sub_cancel, nsmul_eq_mul, smul_eq_C_mul, map_neg, map_natCast]
+      · simp only [smul_eq_mul, Nat.add_sub_cancel, nsmul_eq_mul, smul_eq_C_mul, map_neg, map_natCast]
         ring
     have := hl ((lin u - lin u') ^ i * lin u' ^ j)
     rw [e, map_smul, smul_eq_mul] at this

@@ -23,7 +23,7 @@ def intFAlgMap (G : HTGroup p) (v : AwayP p) (h1 : IsIntV G v 1)
   ((algebraMap (Qv v) (Qv v ⊗[ℚ] G.F)).comp (v.1.adicCompletionIntegers ℚ).subtype).codRestrict _ fun c => by
     rw [mem_intF]
     intro i
-    simp only [RingHom.coe_comp, Function.comp_apply, AlgHom.commutes, Algebra.algebraMap_eq_smul_one,
+    simp only [RingHom.coe_comp, Function.comp_apply, Algebra.algebraMap_eq_smul_one,
       map_smul, Finsupp.smul_apply, smul_eq_mul, map_one]
     exact mul_mem c.2 (h1 i)
 

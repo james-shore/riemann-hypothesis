@@ -24,8 +24,6 @@ theorem exists_eigen_family {G V W ι : Type} [Group G] [TopologicalSpace G] [Is
   | exact @_root_.GlobalTheory.EigenFamilyStabilizer.exists_eigen_family
   | exact _root_.GlobalTheory.EigenFamilyStabilizer.exists_eigen_family
   | (apply _root_.GlobalTheory.EigenFamilyStabilizer.exists_eigen_family <;> assumption)
-  | (intros; apply _root_.GlobalTheory.EigenFamilyStabilizer.exists_eigen_family <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.EigenFamilyStabilizer.exists_eigen_family <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.EigenFamilyStabilizer.exists_eigen_family ..)
 
 set_option maxHeartbeats 1000000 in

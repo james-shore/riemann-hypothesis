@@ -42,7 +42,7 @@ theorem im_embedding_ne_zero_of_not_mem_range_of_totallyReal_quadratic
     have hz : z ∈ Submodule.span F (Set.range ![(1 : E), θ]) := hspan ▸ Submodule.mem_top
     obtain ⟨c, hc⟩ := (Submodule.mem_span_range_iff_exists_fun F).1 hz
     rw [← hc, Fin.sum_univ_two]
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, Algebra.smul_def,
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Algebra.smul_def,
       mul_one, map_add, map_mul, Complex.add_im, Complex.mul_im, hF, h, zero_mul, mul_zero,
       add_zero]
   have hreal : ComplexEmbedding.IsReal φ := by

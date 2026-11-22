@@ -92,8 +92,6 @@ theorem hat_mul {I J : Ideal (𝓞 D.host.E)} {x y : Formalism.MainNotions.Stand
   | exact @_root_.GlobalTheory.HatProductMembership.mul_mem_hat_mul
   | exact _root_.GlobalTheory.HatProductMembership.mul_mem_hat_mul
   | (apply _root_.GlobalTheory.HatProductMembership.mul_mem_hat_mul <;> assumption)
-  | (intros; apply _root_.GlobalTheory.HatProductMembership.mul_mem_hat_mul <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.HatProductMembership.mul_mem_hat_mul <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.HatProductMembership.mul_mem_hat_mul ..)
 
 theorem idem_hat_pow {I : Ideal (𝓞 D.host.E)} {x : Formalism.MainNotions.StandardLatticesGL3.AE D} (hO : x ∈ OhE D) (hxx : x * x = x)

@@ -30,8 +30,8 @@ theorem diam_exists : ∀ (N l d : ℕ), 0 < N → Nat.Coprime N l → Nat.Copri
   · rw [hγ]; simp [M]
   · rw [hγ]; simp [M]
   · simp only [en, hγ, M]
-    simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_one, Matrix.head_cons, Matrix.empty_val',
-      Matrix.cons_val_fin_one, Matrix.cons_val_zero]
+    simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_one, Matrix.empty_val',
+      Matrix.cons_val_fin_one]
     push_cast
     exact (ZMod.natCast_eq_natCast_iff _ _ _).2 hd'N
 

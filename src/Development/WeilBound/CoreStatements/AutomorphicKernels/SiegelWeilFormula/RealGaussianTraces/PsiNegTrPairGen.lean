@@ -64,7 +64,7 @@ theorem gramX_eq {m n : ℕ} (ε : Fin m → Bool) (x : Matrix (Fin m) (Fin n) �
   simp only [gramX, Qp, Qb, evX, map_sub, map_sum, map_mul, MvPolynomial.eval_X, Matrix.mul_apply,
     Matrix.conjTranspose_apply, Matrix.diagonal_apply, mul_ite, mul_zero, Finset.sum_ite_eq', Finset.mem_univ,
     if_true, sgn]
-  simp only [Finset.sum_filter, if_true, Bool.false_eq_true, if_false]
+  simp only [Finset.sum_filter, Bool.false_eq_true, if_false]
   rw [← Finset.sum_sub_distrib]
   refine Finset.sum_congr rfl fun a _ => ?_
   cases ε a <;> simp

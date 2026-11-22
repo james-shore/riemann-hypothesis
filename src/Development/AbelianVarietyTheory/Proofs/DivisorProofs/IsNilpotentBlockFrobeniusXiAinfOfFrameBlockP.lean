@@ -24,6 +24,6 @@ theorem isNil_V_blk_frob_xi :
   simp only [blk, Matrix.mul_diagonal, Matrix.map_apply]
   rcases j with j | j
   · simp only [Sum.elim_inl, map_mul, map_natCast, hU, F.θ_a, theta_frob_xi hv hε]
-  · simp only [Sum.elim_inr, map_mul, map_one, mul_one, hU]
+  · simp only [Sum.elim_inr, mul_one, hU]
 
 end GlobalTheory.WinLift

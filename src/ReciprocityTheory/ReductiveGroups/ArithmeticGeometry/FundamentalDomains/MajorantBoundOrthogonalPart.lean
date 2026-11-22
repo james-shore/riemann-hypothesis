@@ -18,7 +18,7 @@ lemma Hf_unitary (x : Frame X.Ψ r) (τ : X.Ψ) (g : Matrix (Fin r) (Fin r) ℂ)
   have hcol : ∀ a, col (mat (X.lmulC (fun _ => g) x) τ) a = g.mulVec (col (mat x τ) a) := by
     intro a
     funext k
-    simp [col, mat, Data.lmulC, Matrix.of_apply, Matrix.mul_apply, Matrix.mulVec, dotProduct]
+    simp [col, mat, Data.lmulC, Matrix.of_apply, Matrix.mulVec, dotProduct]
     rfl
   have hgram : X.gramPos (X.lmulC (fun _ => g) x) τ = X.gramPos x τ := by
     ext a b
@@ -228,7 +228,7 @@ theorem unipotent_majorant_bound_data : ReducedFrameDomainCovering (E := E) := b
     have hcol : ∀ c, col (mat (X.lmulC N x) τ) c = (N τ).mulVec (col (mat x τ) c) := by
       intro c
       funext k
-      simp [col, mat, Data.lmulC, Matrix.of_apply, Matrix.mul_apply, Matrix.mulVec, dotProduct]
+      simp [col, mat, Data.lmulC, Matrix.of_apply, Matrix.mulVec, dotProduct]
       rfl
     have hgramP : X.gramPos (X.lmulC N x) τ = X.gramPos x τ := by
       ext a b

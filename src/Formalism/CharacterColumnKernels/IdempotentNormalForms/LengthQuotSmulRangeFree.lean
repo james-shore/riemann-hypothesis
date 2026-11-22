@@ -18,7 +18,6 @@ lemma mem_smulRange {M : Type*} [AddCommGroup M] [Module O M] (l : O) (x : M) :
     x ∈ smulRange M l ↔ ∃ y, l • y = x := by
   first
     | exact Iff.rfl
-    | simp [smulRange, LinearMap.mem_range]
 
 lemma quot_mono {M : Type*} [AddCommGroup M] [Module O M] {A B : Submodule O M} (h : A ≤ B) :
     Module.length O (M ⧸ B) ≤ Module.length O (M ⧸ A) := by
@@ -77,11 +76,9 @@ private theorem length_quot_span_pow_irreducible {ϖ : O} (hϖ : Irreducible ϖ)
       rw [Module.length_eq_one_iff, isSimpleModule_iff_isCoatom]
       first
         | exact (PrincipalIdealRing.isMaximal_of_irreducible hϖ).out
-        | exact Ideal.isMaximal_def.mp (PrincipalIdealRing.isMaximal_of_irreducible hϖ)
     rw [hlen, h1, ih]
     first
       | (push_cast; ring)
-      | simp [add_comm]
 
 private theorem length_quot_smulRange_eq_addVal (l : O) :
     Module.length O (O ⧸ smulRange O l) = addVal O l := by
@@ -97,7 +94,6 @@ private theorem length_quot_smulRange_eq_addVal (l : O) :
   have hirr : ∃ ϖ : O, Irreducible ϖ := by
     first
       | exact IsDiscreteValuationRing.exists_irreducible O
-      | exact IsDiscreteValuationRing.exists_irreducible
   obtain ⟨ϖ, hϖ⟩ := hirr
   by_cases hl : l = 0
   · subst hl
@@ -136,12 +132,9 @@ lemma length_quot_smulRange_pi (n : ℕ) (l : O) :
       Module.length O (Fin n → (O ⧸ smulRange O l)) := by
     first
       | exact e.length_eq
-      | exact le_antisymm (Module.length_le_of_injective e.toLinearMap e.injective)
-          (Module.length_le_of_injective e.symm.toLinearMap e.symm.injective)
   rw [hlen, Module.length_pi_of_fintype, length_quot_smulRange_eq_addVal l]
   first
     | simp
-    | simp [Finset.sum_const, nsmul_eq_mul]
 
 lemma length_quot_smulRange_free (Q : Type*) [AddCommGroup Q] [Module O Q] [Module.Finite O Q]
     [IsTorsionFree O Q] (l : O) :
@@ -158,7 +151,6 @@ lemma length_quot_smulRange_free (Q : Type*) [AddCommGroup Q] [Module O Q] [Modu
   haveI : Module.Free O Q := by
     first
       | exact Module.free_of_finite_type_torsion_free'
-      | infer_instance
   let e : Q ≃ₗ[O] (Fin (finrank O Q) → O) := (Module.finBasis O Q).equivFun
   have hmap : (smulRange Q l).map (e : Q →ₗ[O] (Fin (finrank O Q) → O)) =
       smulRange (Fin (finrank O Q) → O) l := by
@@ -174,8 +166,6 @@ lemma length_quot_smulRange_free (Q : Type*) [AddCommGroup Q] [Module O Q] [Modu
   rw [← length_quot_smulRange_pi (finrank O Q) l]
   first
     | exact e'.length_eq
-    | exact le_antisymm (Module.length_le_of_injective e'.toLinearMap e'.injective)
-        (Module.length_le_of_injective e'.symm.toLinearMap e'.symm.injective)
 
 variable {V : Type*} [AddCommGroup V] [Module (FractionRing O) V] [Module O V]
   [IsScalarTower O (FractionRing O) V] [FiniteDimensional (FractionRing O) V]
@@ -199,7 +189,6 @@ lemma step1 (N : Submodule O V) (hN : N.FG) (W U : Submodule (FractionRing O) V)
   haveI : Module.Finite O (LinearMap.range g) := by
     first
       | exact Module.Finite.range g
-      | infer_instance
   haveI hQtf : IsTorsionFree O (LinearMap.range g) :=
     ⟨fun r hr x y hxy => Subtype.ext ((isTorsionFree_quot U).1 hr (congrArg Subtype.val hxy))⟩
   have hlenQ := length_quot_smulRange_free (LinearMap.range g) l
@@ -251,7 +240,6 @@ lemma step1 (N : Submodule O V) (hN : N.FG) (W U : Submodule (FractionRing O) V)
     haveI : Module.Free O (LinearMap.range g) := by
       first
         | exact Module.free_of_finite_type_torsion_free'
-        | infer_instance
     let b := Module.Free.chooseBasis O (LinearMap.range g)
     have hmem : ∀ i, ((b i : LinearMap.range g) : V ⧸ U) ∈ W.map U.mkQ := by
       intro i
@@ -274,8 +262,6 @@ lemma step1 (N : Submodule O V) (hN : N.FG) (W U : Submodule (FractionRing O) V)
         = Fintype.card (Module.Free.ChooseBasisIndex O (LinearMap.range g)) := by
           first
             | exact Module.finrank_eq_card_chooseBasisIndex O _
-            | exact Module.finrank_eq_card_chooseBasisIndex
-            | simp [Module.finrank_eq_card_chooseBasisIndex]
       _ ≤ finrank (FractionRing O) (W.map U.mkQ) := hliW.fintype_card_le_finrank
       _ ≤ finrank (FractionRing O) W := Submodule.finrank_map_le _ _
   calc Module.length O (N ⧸ (smulRange N l ⊔ LinearMap.ker g))
@@ -284,7 +270,6 @@ lemma step1 (N : Submodule O V) (hN : N.FG) (W U : Submodule (FractionRing O) V)
     _ ≤ (finrank (FractionRing O) W : ℕ∞) * addVal O l := by
         first
           | gcongr
-          | exact mul_le_mul_of_nonneg_right (Nat.cast_le.mpr he) (zero_le _)
 
 lemma split {M P : Type*} [AddCommGroup M] [Module O M] [AddCommGroup P] [Module O P]
     (A B : Submodule O M) (hAB : A ≤ B) (i : P →ₗ[O] M) (C : Submodule O P)
@@ -317,7 +302,6 @@ lemma split {M P : Type*} [AddCommGroup M] [Module O M] [AddCommGroup P] [Module
   have hex : Function.Exact (LinearMap.ker q).subtype q := by
     first
       | exact LinearMap.exact_subtype_ker_map q
-      | exact fun y => ⟨fun hy => ⟨⟨y, hy⟩, rfl⟩, by rintro ⟨⟨z, hz⟩, rfl⟩; exact hz⟩
   have hlen := Module.length_eq_add_of_exact (LinearMap.ker q).subtype q
     (LinearMap.ker q).injective_subtype hqs hex
   have h1 : Module.length O (LinearMap.ker q) ≤ Module.length O (LinearMap.range φ) :=
@@ -371,8 +355,6 @@ theorem core {X : Type*} (E : Set (Module.End (FractionRing O) V))
     rw [htop, Finset.sum_empty]
     first
       | simp
-      | exact (Module.length_eq_zero_iff.mpr inferInstance).le
-      | exact le_of_eq (Module.length_eq_zero_iff.mpr ((Submodule.Quotient.subsingleton_iff _).mpr rfl))
   | @insert x S hxS ih =>
     intro h1 h2 U hU N hN hNE hNS
     obtain ⟨f, hfE, l, hfl, hlw⟩ := h2 x (Finset.mem_insert_self x S)
@@ -477,9 +459,8 @@ theorem core {X : Type*} (E : Set (Module.End (FractionRing O) V))
           add_le_add (hq.trans hstep) hih
       _ ≤ _ := by
           first
-            | (gcongr; exact hlw)
+            | (gcongr)
             | gcongr
-            | exact add_le_add_right (mul_le_mul_of_nonneg_left hlw (zero_le _)) _
 
 section Eig
 

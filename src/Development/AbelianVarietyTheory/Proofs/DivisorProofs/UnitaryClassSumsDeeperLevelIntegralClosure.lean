@@ -209,7 +209,7 @@ theorem main_of_core (hcore : ∀ (E : Type) [Field E] [NumberField E] [IsCMFiel
         · rw [norm_zero]; exact (Real.exp_pos _).le
     · by_cases hns : NS y μ
       · refine ⟨Sum.inr ⟨y, μ⟩, ?_⟩
-        simp only [t, Sum.elim_inr, dif_pos rfl, g, if_pos hns, if_pos rfl]
+        simp only [t, Sum.elim_inr, g, if_pos hns]
         exact hel y μ
       · have hstrict : ∀ μ' : Fin 1 → Φ.X y, (∀ u, CongMod N (μ' u) (μ u)) → μ' ≠ μ →
             qW !![(1 : ℤ)] (Φ.β y) μ < qW !![(1 : ℤ)] (Φ.β y) μ' := by
@@ -226,7 +226,7 @@ theorem main_of_core (hcore : ∀ (E : Type) [Field E] [NumberField E] [IsCMFiel
           have := cm_map (k y).symm.toLinearMap.toAddMonoidHom (hcc u)
           simpa using this
         refine ⟨Sum.inl κ, ?_⟩
-        simp only [t, Sum.elim_inl, hsel', if_pos rfl]
+        simp only [t, Sum.elim_inl, hsel']
         rw [if_pos trivial, hF, norm_pow, hnorm, ← Real.exp_nat_mul]; congr 1; push_cast; ring
   · rintro cc cc' (κ | s) h
     · simp only [f, Sum.elim_inl, hcls cc cc' κ h]
@@ -257,7 +257,7 @@ theorem main_of_core (hcore : ∀ (E : Type) [Field E] [NumberField E] [IsCMFiel
         refine ⟨{μ, wit y μ}, fun S hS hS₀ => ?_⟩
         have hS' : ∀ ν ∈ S, Cg y ν (fun u => k y (cc u)) := fun ν hν u => by simpa using hS ν hν u
         have hsum : ∑ ν ∈ S, t y ν (Sum.inr ⟨y, μ⟩) = 0 := by
-          simp only [t, Sum.elim_inr, dif_pos rfl, dite_true]
+          simp only [t, Sum.elim_inr, dite_true]
           by_cases hns : NS y μ
           · obtain ⟨hw1, hw2, -⟩ := hwit y μ hns
             simp only [g, if_pos hns]

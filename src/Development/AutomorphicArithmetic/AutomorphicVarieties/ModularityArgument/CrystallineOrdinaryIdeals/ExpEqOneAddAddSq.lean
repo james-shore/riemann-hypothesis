@@ -69,7 +69,6 @@ theorem GlobalTheory.unr_unip_char_frob :
     rw [hs, show 1 + c g • x + (c g • x) ^ 2 * s - 1 = (c g • x) * (1 + (c g • x) * s) by ring]
     first
       | exact (Commute.all _ _).isNilpotent_mul_right (hx.smul (c g))
-      | exact (Commute.all _ _).isNilpotent_mul_left (hx.smul (c g))
   · change ∃ b, IsNilpotent.exp (c (σ ^ m) • x) - 1 = x * ((m : B) * ((1 : Bˣ) : B) + x * b)
     rw [hcpow m]
     obtain ⟨s, hs⟩ := exp_eq_one_add_add_sq (hx.smul ((m : ℚ_[l])))

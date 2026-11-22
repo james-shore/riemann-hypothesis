@@ -3489,12 +3489,12 @@ theorem UpperTheory.Reformulated.B.SelectionLemmas.main :
   have hA : IsUnit (P * H⁻¹ * Pᴴ).det := by
     by_contra h
     rw [Matrix.nonsing_inv_apply_not_isUnit _ h, Matrix.det_zero] at hG'
-    all_goals first | exact hG' (by simp) | infer_instance
+    all_goals first | exact hG' (by simp)
   have hH : IsUnit H.det := by
     by_contra h
     rw [Matrix.nonsing_inv_apply_not_isUnit _ h, Matrix.mul_zero, Matrix.zero_mul,
       Matrix.det_zero] at hA
-    all_goals first | exact not_isUnit_zero hA | infer_instance
+    all_goals first | exact not_isUnit_zero hA
   have hle : matLat P M ≤ locS (hcompl (K := K) w.asIdeal) (Submodule.span (𝓞 K) (Set.range e)) := by
     intro x hx
     have h1 : x ∈ loc (K := K) w.asIdeal (matLat P M) :=

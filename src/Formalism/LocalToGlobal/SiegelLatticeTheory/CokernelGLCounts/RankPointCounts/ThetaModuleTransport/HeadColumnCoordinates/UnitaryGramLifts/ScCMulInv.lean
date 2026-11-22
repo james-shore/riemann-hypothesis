@@ -31,10 +31,10 @@ theorem scC_mul_inv (α β α' β' : E) (h1 : α * α' = 1) (h2 : β' = -(β * �
     funext i
     split_ifs <;> simp [h1]
   simp only [Matrix.smul_mul, hL, hD, h2, smul_smul, Matrix.mul_zero, Matrix.zero_mul, Matrix.one_mul,
-    Matrix.mul_one, add_zero, zero_add, smul_zero]
+    Matrix.mul_one, add_zero, zero_add]
   rw [← Matrix.fromBlocks_one, ← add_smul]
   congr 1
-  simp [mul_comm]
+  simp
 
 theorem scC_det (α β : E) : (scC r α β).det = α := by
   rw [scC, Matrix.det_fromBlocks_zero₂₁, Matrix.det_one, one_mul, dlast, Matrix.det_diagonal]

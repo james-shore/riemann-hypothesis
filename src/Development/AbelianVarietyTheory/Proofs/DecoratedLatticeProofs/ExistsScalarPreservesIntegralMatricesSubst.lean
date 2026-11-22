@@ -10,7 +10,7 @@ theorem exists_integral_multiplier {k : Type} [Field k] [ValuativeRel k] (a : k)
   by_cases ha : a ∈ 𝒪[k]
   · exact ⟨1, one_ne_zero, Subring.one_mem _, by simpa using ha⟩
   · have ha0 : a ≠ 0 := by rintro rfl; exact ha (Subring.zero_mem _)
-    refine ⟨a⁻¹, inv_ne_zero ha0, ?_, by simp [ha0, Subring.one_mem]⟩
+    refine ⟨a⁻¹, inv_ne_zero ha0, ?_, by simp [ha0]⟩
     rw [Valuation.mem_integer_iff] at ha ⊢
     rw [map_inv₀]
     push_neg at ha

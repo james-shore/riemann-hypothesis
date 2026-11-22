@@ -56,7 +56,7 @@ theorem coeff_lapT (t : H) (Q : PolyXZ H N0 N1) (ν : XZ (Bool × H) N0 N1 →�
   refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
   have hne : (ν + Finsupp.single (Sum.inr (zF t a b)) 1 : XZ (Bool × H) N0 N1 →₀ ℕ) (Sum.inr (zT t a b)) =
       ν (Sum.inr (zT t a b)) := by
-    simp [Finsupp.single_apply, zF, zT]
+    simp [zF, zT]
   rw [hne]
   ring
 
@@ -66,8 +66,7 @@ theorem symm_add_single (m : XV H N0 →₀ ℕ) (κ : ZV H N0 N1 →₀ ℕ) (v
       Finsupp.sumFinsuppEquivProdFinsupp.symm (m, κ + Finsupp.single v 1) := by
   ext x
   rcases x with x | x <;>
-    simp [Finsupp.single_apply, Finsupp.sumFinsuppEquivProdFinsupp_symm_inl,
-      Finsupp.sumFinsuppEquivProdFinsupp_symm_inr]
+    simp [Finsupp.single_apply]
 
 theorem symm_inr (m : XV H N0 →₀ ℕ) (κ : ZV H N0 N1 →₀ ℕ) (v : ZV H N0 N1) :
     (Finsupp.sumFinsuppEquivProdFinsupp.symm (m, κ) : XZ (Bool × H) N0 N1 →₀ ℕ) (Sum.inr v) = κ v := rfl
@@ -108,9 +107,7 @@ theorem sum_ind (t t' : H) (a : Fin N0) (b : Fin N1) :
   · subst ht
     rw [if_pos rfl, Finset.sum_eq_single a, Finset.sum_eq_single b]
     all_goals first
-      | (simp; done)
-      | (intro x _ hx; simp [hx]; done)
-      | (intro x _ hx; exact Finset.sum_eq_zero fun y _ => by simp [hx])
+      | (simp)
   · rw [if_neg ht]
     exact Finset.sum_eq_zero fun a' _ => Finset.sum_eq_zero fun b' _ => by simp [ht]
 
@@ -127,7 +124,6 @@ theorem bal_up (n n' : H → ℕ) (t : H) (hn : ∀ s, n s = n' s + if s = t the
 private theorem finsupp_le_apply_of_le {c d : ZV H N0 N1 →₀ ℕ} (h : c ≤ d) (x : ZV H N0 N1) : c x ≤ d x := by
   first
     | exact h x
-    | exact Finsupp.le_def.1 h x
 
 theorem tsub_up {c κ : ZV H N0 N1 →₀ ℕ} {t : H} {a : Fin N0} {b : Fin N1} (hle : up κ t a b ≤ c) :
     c - κ = up (c - up κ t a b) t a b := by
@@ -376,8 +372,8 @@ theorem bridge_list (L : List H) (P : PolyXZ H N0 N1) (m : XV H N0 →₀ ℕ) (
       intro u
       by_cases h : u = s
       · subst h
-        simp [List.count_cons]
-      · simp [List.count_cons, h, Ne.symm h]
+        simp
+      · simp [h, Ne.symm h]
     rw [prod_factorial_eq_succ_mul_of_update (fun u => (s :: L).count u) (fun u => L.count u) s hn]
     rw [List.map_cons, List.prod_cons, (show ∀ (f g : Module.End ℤ (PolyXZ H N0 N1)) (x : PolyXZ H N0 N1), (f * g) x = f (g x) from fun _ _ _ => rfl), coeff_lapT]
     simp only [symm_add_single, symm_inr, ← ih]
@@ -410,16 +406,13 @@ private theorem count_flatMap_replicate (n : H → ℕ) (s : H) (l : List H) :
     by_cases h : x = s
     · subst h
       simp [ih]
-    · simp [ih, h, Ne.symm h, List.count_replicate, List.count_append]
+    · simp [ih, h, List.count_replicate, List.count_append]
 
 theorem count_list (n : H → ℕ) (s : H) :
     ((Finset.univ : Finset H).toList.flatMap fun t => List.replicate (n t) t).count s = n s := by
   rw [count_flatMap_replicate]
   first
-    | (rw [Finset.sum_map_toList]; simp; done)
-    | (simp [Finset.sum_map_toList]; done)
-    | (simp [Finset.sum_toList]; done)
-    | (rw [← Finset.sum_toList]; simp; done)
+    | (rw [Finset.sum_map_toList]; simp)
 
 end Br
 

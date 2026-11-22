@@ -29,7 +29,7 @@ theorem polyOf_coeff {R : Type} [CommRing R] (n : ℕ) (c : ℕ → R) {j : ℕ}
   classical
   simp only [polyOf, finset_sum_coeff, coeff_C_mul_X_pow]
   rw [Finset.sum_ite_eq]
-  simp [Nat.lt_succ_iff, hj]
+  simp [hj]
 
 theorem polyOf_natDegree_le {R : Type} [CommRing R] (n : ℕ) (c : ℕ → R) : (polyOf n c).natDegree ≤ n := by
   refine natDegree_sum_le_of_forall_le _ _ fun k hk => ?_

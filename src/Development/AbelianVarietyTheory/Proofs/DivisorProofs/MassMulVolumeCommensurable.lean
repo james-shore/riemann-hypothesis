@@ -189,8 +189,6 @@ theorem coset_fibre (D C : Subgroup H) (h : D ≤ C) (hDC : D.relIndex C ≠ 0)
   | exact @_root_.GlobalTheory.FibreEquivalence.fibre_finite_card
   | exact _root_.GlobalTheory.FibreEquivalence.fibre_finite_card
   | (apply _root_.GlobalTheory.FibreEquivalence.fibre_finite_card <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FibreEquivalence.fibre_finite_card <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FibreEquivalence.fibre_finite_card <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FibreEquivalence.fibre_finite_card ..)
 
 theorem dmass_of_le (A C D : Subgroup H) (hDC : D ≤ C) (hi : D.relIndex C ≠ 0)

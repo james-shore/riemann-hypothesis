@@ -14,10 +14,10 @@ theorem isIso_shear {C : Type*} [Category C] [CartesianMonoidalCategory C] (A T 
     (b : T ⟶ A) : IsIso (lift (fst A T * (snd A T ≫ b)) (snd A T)) := by
   refine ⟨lift (fst A T * (snd A T ≫ b⁻¹)) (snd A T), ?_, ?_⟩
   · ext
-    · simp [MonObj.comp_mul, GrpObj.comp_inv, mul_assoc]
+    · simp [MonObj.comp_mul, GrpObj.comp_inv]
     · simp
   · ext
-    · simp [MonObj.comp_mul, GrpObj.comp_inv, mul_assoc]
+    · simp [MonObj.comp_mul, GrpObj.comp_inv]
     · simp
 
 theorem isAffineOpen_preimage_translate (R : Type) [CommRing R] (A : Over (Sp R)) [GrpObj A]

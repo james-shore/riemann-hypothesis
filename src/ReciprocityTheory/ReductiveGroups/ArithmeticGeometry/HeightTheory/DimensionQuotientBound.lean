@@ -14,8 +14,8 @@ lemma le_dim_quot {R : Type*} [CommRing R] (p P m : Ideal R) [hp : p.IsPrime] [h
   have hbc : b < c := h2
   have hs : ((2 : ℕ) : WithBot ℕ∞) ≤ Order.krullDim (PrimeSpectrum.zeroLocus (p : Set R)) :=
     Order.LTSeries.length_le_krullDim (((RelSeries.singleton _ a).snoc b
-      (by first | exact hab | exact ⟨_, _, rfl, hab⟩ | simpa using hab)).snoc c
-      (by first | exact hbc | exact ⟨_, _, rfl, hbc⟩ | (simp only [RelSeries.last_snoc]; exact hbc) | simpa using hbc))
+      (by first | exact hab)).snoc c
+      (by first | exact hbc))
   exact_mod_cast hs
 
 lemma one_le_dim {R : Type*} [CommRing R] (p m : Ideal R) [p.IsPrime] [m.IsPrime] (h : p < m) :

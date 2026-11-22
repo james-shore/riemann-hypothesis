@@ -19,7 +19,6 @@ variable {F E : Type} [Field F] [NumberField F] [Field E] [Algebra F E]
 theorem sigR_incl (e : E) : sigR (Fv F v) σ (inclR (Fv F v) e) = inclR (Fv F v) (σ e) := by
   first
     | rfl
-    | simp [sigR, inclR]
 
 theorem two_ne_zero_k (h2 : Valued.v (algebraMap F (Fv F v) 2) = 1) :
     (2 : 𝓞 F ⧸ v.asIdeal) ≠ 0 := by
@@ -28,8 +27,6 @@ theorem two_ne_zero_k (h2 : Valued.v (algebraMap F (Fv F v) 2) = 1) :
     rw [← Ideal.Quotient.eq_zero_iff_mem]
     first
       | (rw [map_ofNat]; exact h0)
-      | exact h0
-      | exact_mod_cast h0
   have hv : v.intValuation (2 : 𝓞 F) = 1 := by
     have e : algebraMap F (Fv F v) 2 = ((2 : F) : v.adicCompletion F) := rfl
     have e2 : (2 : F) = algebraMap (𝓞 F) F 2 := (map_ofNat _ 2).symm
@@ -39,7 +36,6 @@ theorem two_ne_zero_k (h2 : Valued.v (algebraMap F (Fv F v) 2) = 1) :
   have hlt : v.intValuation (2 : 𝓞 F) < 1 := by
     first
       | exact (v.intValuation_lt_one_iff_mem _).2 hmem
-      | exact (v.intValuation_lt_one_iff_dvd _).2 ((Ideal.dvd_span_singleton).2 hmem)
   exact absurd hv (ne_of_lt hlt)
 
 end Place

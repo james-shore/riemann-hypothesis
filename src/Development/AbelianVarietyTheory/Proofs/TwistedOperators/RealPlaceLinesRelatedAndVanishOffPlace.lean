@@ -177,7 +177,7 @@ theorem at_place (θ : InfFam D) (hθ : IsInfFam θ) (ε : Bool) (S X : HSp D) (
       ext i j; simp
     cases ε
     · simp only [Bool.false_eq_true, if_false, one_smul, neg_smul, Matrix.transpose_neg, Matrix.neg_mul, hh]
-    · simp only [if_true, one_smul, hn, neg_smul, Matrix.neg_mul, Matrix.mul_neg, neg_neg, hh]
+    · simp only [if_true, one_smul, neg_smul, Matrix.neg_mul, Matrix.mul_neg, neg_neg, hh]
       have hn2 : (-A.cart τ).map (starRingEnd ℂ) = -(A.cart τ).map (starRingEnd ℂ) := by ext i j; simp
       rw [hn2, Matrix.mul_neg]
   have hm : ∀ M : Matrix (Fin X.rank) (Fin S.rank) ℂ,

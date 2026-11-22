@@ -98,7 +98,7 @@ theorem lift_eq_zero_of_lift_eq_zero (t t' : Formalism.CyclotomicNorms.Fbar g �
       MonoidAlgebra.lift ℤ ℂ (Formalism.CyclotomicNorms.Fbar g) τ f = aeval (τ u) P := by
     intro τ hτ
     rw [lift_apply_eq_sum, ← Finset.sum_filter_of_ne (p := (· ≠ 0)) (fun x _ hx h0 => hx (by rw [h0, hτ, mul_zero]))]
-    simp only [P, map_sum, map_mul, aeval_C, map_pow, aeval_X, algebraMap_int_eq, eq_intCast, map_intCast]
+    simp only [P, map_sum, map_mul, map_pow, aeval_X, eq_intCast, map_intCast]
     refine Finset.sum_congr rfl fun x hx => ?_
     rw [← map_pow, hk x hx]
   have hζ := isPrimitiveRoot_map t ht hm hu

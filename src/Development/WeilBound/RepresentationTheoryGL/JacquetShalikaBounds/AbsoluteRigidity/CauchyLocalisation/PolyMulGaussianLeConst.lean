@@ -33,15 +33,15 @@ def splitE (a : ι) (T : Finset ι) (ha : a ∉ T) :
   left_inv l := Subtype.ext (by
     ext w
     by_cases h : w = a
-    · subst h; simp [Finsupp.update_apply]
-    · simp [Finsupp.update_apply, Finsupp.erase_apply, h])
+    · subst h; simp
+    · simp)
   right_inv p := by
     have hpa : p.1.1 a = 0 := Finsupp.notMem_support_iff.1 fun h => ha (p.1.2 h)
     refine Prod.ext (Subtype.ext ?_) ?_
     · ext w
       by_cases h : w = a
-      · subst h; simp [Finsupp.erase_apply, hpa]
-      · simp [Finsupp.update_apply, Finsupp.erase_apply, h]
+      · subst h; simp [hpa]
+      · simp [h]
     · simp [Finsupp.update_apply]
 
 theorem Φ_split (F : ι → L → ℂ) (h0 : ∀ w, F w 0 = 1) (a : ι) (T : Finset ι) (ha : a ∉ T)
@@ -51,7 +51,7 @@ theorem Φ_split (F : ι → L → ℂ) (h0 : ∀ w, F w 0 = 1) (a : ι) (T : Fi
   congr 1
   refine Finset.prod_congr rfl fun w hw => ?_
   have hwa : w ≠ a := fun e => ha (e ▸ hw)
-  simp [splitE, Finsupp.erase_apply, hwa]
+  simp [splitE, hwa]
 
 variable (F : ι → L → ℂ) (h0 : ∀ w, F w 0 = 1) (hs : ∀ w, Summable fun l => ‖F w l‖)
 include h0 hs

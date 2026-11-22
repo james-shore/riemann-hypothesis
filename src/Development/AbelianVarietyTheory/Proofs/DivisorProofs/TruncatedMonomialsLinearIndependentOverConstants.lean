@@ -21,7 +21,7 @@ theorem truncMono_deriv_aeval {k A : Type} [Field k] [CommRing A] [Algebra k A] 
     rw [map_mul, aeval_X, h1, hp, pderiv_mul, pderiv_X, map_add, map_mul, map_mul, aeval_X, hE]
     by_cases h : i = j
     · subst h; simp; ring
-    · simp [h, Pi.single_apply, Ne.symm h]; ring
+    · simp [h, Ne.symm h]; ring
 
 theorem truncMono_eq_zero {p : ℕ} [Fact p.Prime] {k A : Type} [Field k] [CommRing A]
     [Algebra k A] [CharP k p] {d : ℕ}

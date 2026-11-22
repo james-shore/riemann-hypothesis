@@ -129,7 +129,7 @@ theorem cellVan_holds : CellVan := by
         refine ⟨r.1, Subgroup.mem_subgroupOf.1 hr, 1, (A i).one_mem, k.1, Subgroup.mem_subgroupOf.1 hk, ?_⟩
         have e' := congrArg Subtype.val e
         dsimp only at e'
-        simp only [Subgroup.coe_mul, OneMemClass.coe_one, mul_one] at e'
+        simp only [Subgroup.coe_mul, mul_one] at e'
         rw [hv β' hβ', hv β hβ] at e'
         rw [mul_one]
         exact e'

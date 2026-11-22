@@ -105,7 +105,7 @@ theorem real_acts : ∀ (D : D7) (θ : InfFam D) (V : HSp D) (S : D.what₂.Tau 
         by_cases h : τ = x
         · subst h
           simp [hx]
-        · simp [h, Pi.mulSingle_apply]
+        · simp [h]
       rw [hsplit, hLmul _ hsing _ hs, ← hLat x (a x) (haU x)]
       exact actsLin_mul (actsLin_atTau hM x (haU x)) ih
   have hall : (fun τ => if τ ∈ (Finset.univ : Finset D.what₂.Tau) then a τ else 1) = a := by

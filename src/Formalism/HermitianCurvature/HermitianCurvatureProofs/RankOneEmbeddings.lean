@@ -95,7 +95,6 @@ lemma emb_cont : Continuous (fun μ : Matrix (Fin (k + 1)) (Fin (k + 1)) ℂ => 
   all_goals first
     | exact continuous_const
     | exact (continuous_apply _).comp (continuous_apply _)
-    | fun_prop
 
 end Formalism.FourierDecayAlt.P.RankOneEmbeddings.Wb
 
@@ -142,7 +141,6 @@ theorem mvM_cont : Continuous (mvM (k := k) (r := r)) := by
   first
     | fun_prop
     | (simp only [mvM, Matrix.mulVec, dotProduct, Matrix.of_apply]; fun_prop)
-    | (simp only [mvM, Matrix.mulVec, Matrix.dotProduct, Matrix.of_apply]; fun_prop)
 
 theorem mulM_cont : Continuous (mulM (k := k) (r := r)) := by
   refine continuous_pi fun i => continuous_pi fun j => ?_
@@ -155,11 +153,9 @@ def detF (x : Mt k r) : ℂ := (Matrix.of x : Mat k r).det
 theorem detF_cont : Continuous (detF (k := k) (r := r)) := by
   first
     | exact continuous_id.matrix_det
-    | (unfold detF; fun_prop)
 theorem adjF_cont : Continuous (adjF (k := k) (r := r)) := by
   first
     | exact continuous_id.matrix_adjugate
-    | (unfold adjF; fun_prop)
 
 theorem invM_smul : (invM : Mt k r → Mt k r) = fun x => (detF x)⁻¹ • adjF x := by
   funext x
@@ -437,7 +433,7 @@ theorem nu_hyp (CWb : ClosedWb) (CW : ClosedW) (UF : UWbFacts) (z z' : Vc k r)
   simp only [e1]
   rw [hFG _ hbm]
   congr 1
-  simp only [Matrix.mulVec_mulVec, Matrix.mul_assoc]
+  simp only [Matrix.mulVec_mulVec]
 
 theorem nu_left (CWb : ClosedWb) (CW : ClosedW) (UF : UWbFacts) (HI : HypInv) (z z' : Vc k r)
     {s : ℂ → Matrix (Fin (k + 1)) (Fin (k + 1)) ℂ} (hs : MeasSec s) (hsu : ∀ ζ, (s ζ)ᴴ * Hb k * s ζ = Hb k)
@@ -667,8 +663,6 @@ theorem rank_one_formula_of_parts : Formalism.FourierDecayAlt.B2.AssembleRankOne
     rw [hc, lintegral_smul_measure]
     first
       | rfl
-      | simp [ENNReal.smul_def]
-      | simp
   have e2 : ∫⁻ ζ, ENNReal.ofReal (zWeight k (Tz k r z) (Tz k r z') ζ) *
         ∫⁻ p, f (Phi (secF k r z z' μsec) (ζ, p)) ∂(μW.prod μW') =
       ∫⁻ ζ, ENNReal.ofReal (zWeight k (Tz k r z) (Tz k r z') ζ) *
@@ -712,16 +706,14 @@ private lemma hpk_sq_lemma : Hpk k r * Hpk k r = 1 := by
   · rw [Finset.sum_eq_single i]
     · simp only [Hpk]
       split_ifs <;> (first
-          | (exfalso; (try simp only [Fin.ext_iff, Fin.val_mk, ne_eq, and_true, true_and] at *); omega)
-          | (norm_num; done)
-          | rfl)
+          | (exfalso; (try simp only [Fin.ext_iff, and_true] at *); omega)
+          | (norm_num))
     · intro l _ hl
       have : Hpk k r i l = 0 := by
         simp only [Hpk]
         split_ifs <;> (first
-          | (exfalso; (try simp only [Fin.ext_iff, Fin.val_mk, ne_eq, and_true, true_and] at *); omega)
-          | (norm_num; done)
-          | rfl)
+          | (exfalso; (try simp only [Fin.ext_iff, ne_eq] at *); omega)
+          | (norm_num))
       rw [this, zero_mul]
     · intro h
       exact absurd (Finset.mem_univ i) h
@@ -729,16 +721,14 @@ private lemma hpk_sq_lemma : Hpk k r * Hpk k r = 1 := by
     rw [Finset.sum_eq_single ⟨2 * r + k - i.val, hp⟩]
     · simp only [Hpk]
       split_ifs <;> (first
-          | (exfalso; (try simp only [Fin.ext_iff, Fin.val_mk, ne_eq, and_true, true_and] at *); omega)
-          | (norm_num; done)
-          | rfl)
+          | (exfalso; (try simp only [Fin.ext_iff] at *); omega)
+          | (norm_num))
     · intro l _ hl
       have : Hpk k r i l = 0 := by
         simp only [Hpk]
         split_ifs <;> (first
-          | (exfalso; (try simp only [Fin.ext_iff, Fin.val_mk, ne_eq, and_true, true_and] at *); omega)
-          | (norm_num; done)
-          | rfl)
+          | (exfalso; (try simp only [Fin.ext_iff, ne_eq] at *); omega)
+          | (norm_num))
       rw [this, zero_mul]
     · intro h
       exact absurd (Finset.mem_univ _) h

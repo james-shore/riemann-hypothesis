@@ -9,7 +9,7 @@ theorem UpperTheory.Reformulated.B.LocallyConstantOfKernelCapelliIdentities.locC
   intro x
   refine ⟨(fun y => x⁻¹ * y) ⁻¹' (↑χ.ker : Set G),
     h.preimage (continuous_const.mul continuous_id), ?_, ?_⟩
-  · simp [MonoidHom.mem_ker]
+  · simp
   · intro y hy
     have hy' : χ (x⁻¹ * y) = 1 := MonoidHom.mem_ker.mp hy
     rw [map_mul, map_inv] at hy'

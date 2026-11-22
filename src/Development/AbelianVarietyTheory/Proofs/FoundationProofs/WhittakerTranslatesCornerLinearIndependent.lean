@@ -28,7 +28,7 @@ def Corner (k : ℕ) (h : GG g N) : Prop :=
 lemma rowUp_one (k : ℕ) : RowUp k (1 : GG g N) := by
   intro a _
   refine ⟨by simp, fun b hb => ?_⟩
-  simp [Matrix.one_apply, hb.ne']
+  simp [hb.ne']
 
 lemma rowUp_mul (k : ℕ) (h h' : GG g N) (H : RowUp k h) (H' : RowUp k h') : RowUp k (h * h') := by
   have key : ∀ a b : Fin N, k ≤ (a : ℕ) → b ≤ a → (h * h').val a b = h'.val a b := by

@@ -35,7 +35,7 @@ theorem jumpSum_le_add : ∀ (G : Type) [Group G] (R : ℕ → Subgroup G) (A B 
     · have heq : B ⊓ R t = A ⊓ R t :=
         le_antisymm (inf_le_inf_right _ hBA) (le_inf hB inf_le_right)
       have hC' : ¬ B ⊓ R t ≤ C := by rw [heq]; exact hC
-      simp [hC, hC', heq]
+      simp [hC, heq]
     · simp [hC, hB]
 
 end GlobalTheory.PMon.Ram

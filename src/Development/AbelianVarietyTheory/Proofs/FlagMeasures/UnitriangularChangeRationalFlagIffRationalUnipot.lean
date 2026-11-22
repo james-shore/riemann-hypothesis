@@ -48,7 +48,7 @@ theorem X_orth_fvec (F : FlagG S r T) {x : S.V} (hx : x ∈ F.X) (b : Fin (r + 1
     simp [Fin.castSucc_ne_last]
   | zero => simp
   | add x y _ _ hx hy => simp [map_add, hx, hy]
-  | smul c x _ hx => simp [LinearMap.map_smulₛₗ₂, hx]
+  | smul c x _ hx => simp [hx]
 
 theorem X_iso (F : FlagG S r T) {x y : S.V} (hx : x ∈ F.X) (hy : y ∈ F.X) : S.hT x y = 0 := by
   induction hy using Submodule.span_induction with

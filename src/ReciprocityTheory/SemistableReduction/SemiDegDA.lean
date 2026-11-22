@@ -30,7 +30,7 @@ theorem sdd_star_self_eig {n : ℕ} {D : Matrix (Fin n) (Fin n) ℂ} (hD : D.IsH
   rw [← h]
   simp only [dotProduct, Pi.star_apply, RCLike.inner_apply]
   refine Finset.sum_congr rfl fun x _ => ?_
-  simp [Complex.star_def, mul_comm]
+  simp [mul_comm]
 
 theorem sdd_quad_eig {n : ℕ} {D : Matrix (Fin n) (Fin n) ℂ} (hD : D.IsHermitian) (i : Fin n) :
     star (⇑(hD.eigenvectorBasis i)) ⬝ᵥ (D *ᵥ ⇑(hD.eigenvectorBasis i)) = (hD.eigenvalues i : ℂ) := by

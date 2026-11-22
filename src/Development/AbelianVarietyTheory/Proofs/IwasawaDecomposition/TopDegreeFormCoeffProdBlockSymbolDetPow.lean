@@ -32,7 +32,7 @@ theorem tc_monomial (u : α × α →₀ ℕ) (c : ℂ) : tc (monomial u c) = c 
   split_ifs <;> ring
 
 theorem graph_apply (w : Equiv.Perm α) (a b : α) : graph w (a, b) = if w a = b then 1 else 0 := by
-  rw [graph, Finsupp.finset_sum_apply, Finset.sum_eq_single a (fun c _ hc => by simp [Finsupp.single_apply, hc]) (by simp)]
+  rw [graph, Finsupp.finset_sum_apply, Finset.sum_eq_single a (fun c _ hc => by simp [hc]) (by simp)]
   simp [Finsupp.single_apply]
 
 theorem tc_rename_equiv {β : Type} [Fintype β] [DecidableEq β] (e : α ≃ β) (P : MvPolynomial (α × α) ℂ) :

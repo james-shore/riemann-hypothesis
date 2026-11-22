@@ -35,7 +35,7 @@ theorem lintegral_fintype_prod {ι : Type*} [Fintype ι] {E : ι → Type*}
           congr 1
           · simp [ha]
           · refine Finset.prod_congr rfl fun i hi => ?_
-            simp [Function.update_apply, Finset.ne_of_mem_erase hi]
+            simp [Finset.ne_of_mem_erase hi]
         simp_rw [hC]
         rw [lintegral_mul_const _ (hf a), ← Finset.mul_prod_erase _ _ (Finset.mem_univ a)]
         congr 1

@@ -18,7 +18,7 @@ theorem prod_fin_getD_list (f : ℂˣ → ℂ) : ∀ l : List ℂˣ, ∏ a : Fin
   | [] => by simp
   | b :: l => by
     rw [List.length_cons, Fin.prod_univ_succ]
-    simp [prod_fin_getD_list f l]
+    simp
 
 theorem prod_fin_getD (m : Multiset ℂˣ) {n : ℕ} (hn : m.card = n) (f : ℂˣ → ℂ) :
     ∏ a : Fin n, f (m.toList.getD a 1) = (m.map f).prod := by

@@ -31,7 +31,7 @@ private theorem existsUnique_sec {U P : Scheme.{0}} (p' : P ⟶ U) {m : ℕ} (s'
     intro j₁ j₂ h
     rw [← hι j₁, ← hι j₂, ← Category.assoc, ← Category.assoc, cancel_mono] at h
     have h2 := congrArg (fun f : gp Ω ⟶ ∐ (fun _ : Fin m => U) => f (IsLocalRing.closedPoint Ω)) h
-    simp only [Scheme.Hom.comp_apply] at h2
+    simp only at h2
     have h3 := (sigmaι_eq_iff (fun _ : Fin m => U) j₁ j₂ _ _).mp h2
     exact (Sigma.mk.inj_iff.mp h3).1
   obtain ⟨⟨j, u⟩, hju⟩ :=

@@ -75,9 +75,6 @@ private theorem exists_UJ_toM_eq_of_inUJ {ε : Fin n → Bool} {g : Matrix (Fin 
   have hr : g * (Jm ε * gᴴ * Jm ε) = 1 := by
     first
     | exact mul_eq_one_comm.mp hl
-    | exact Matrix.mul_eq_one_comm.mp hl
-    | (letI := Matrix.invertibleOfLeftInverse g _ hl
-       exact mul_invOf_self g)
   exact ⟨⟨⟨g, Jm ε * gᴴ * Jm ε, hr, hl⟩, hg⟩, rfl⟩
 
 private theorem isClosedEmbedding_intMuCD_eM (ε : Fin n → Bool) :
@@ -90,7 +87,6 @@ private theorem isClosedEmbedding_intMuCD_eM (ε : Fin n → Bool) :
   have hG : Continuous (fun x : Matrix (Fin n) (Fin n) ℂ => (x, MulOpposite.op (Jm ε * xᴴ * Jm ε))) := by
     first
     | exact continuous_id.prodMk (MulOpposite.continuous_op.comp hJt)
-    | exact continuous_id.prod_mk (MulOpposite.continuous_op.comp hJt)
   have hcomp : (fun x : Matrix (Fin n) (Fin n) ℂ => (x, MulOpposite.op (Jm ε * xᴴ * Jm ε))) ∘
         (fun g : UJ ε => ((g : (Matrix (Fin n) (Fin n) ℂ)ˣ) : Matrix (Fin n) (Fin n) ℂ)) =
       Units.embedProduct (Matrix (Fin n) (Fin n) ℂ) ∘ (fun g : UJ ε => (g : (Matrix (Fin n) (Fin n) ℂ)ˣ)) := by
@@ -136,7 +132,6 @@ theorem lintegral_muCD (ε : Fin n → Bool) (F : (Fin n → Fin n → ℂ) → 
   have hemb : MeasurableEmbedding (intMuCD_eU ε) := by
     first
     | exact (isClosedEmbedding_intMuCD_eM ε).measurableEmbedding
-    | exact (isClosedEmbedding_intMuCD_eM ε).measurableEmbedding (α := Formalism.REAL.UJ ε)
   have hae : ∀ᵐ x ∂(muPolarMat ε), x ∈ Set.range (intMuCD_eU ε) :=
     intMuCD_ae_range ε _ hemb.measurableSet_range fun kz => exists_UJ_toM_eq_of_inUJ (polarM_inUJ kz)
   calc ∫⁻ g, F (Formalism.MainNotions.S.umat g) ∂(muCD ε)

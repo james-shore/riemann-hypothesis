@@ -47,7 +47,7 @@ theorem tensR_apply (N : ℕ) (f : ℕ → Module.End ℂ (Sm E s)) (u : ℂ) {k
   rw [LinearMap.sum_apply, Finset.sum_apply]
   simp only [LinearMap.sum_apply, LinearMap.smul_apply, tensOp_sum, Pi.smul_apply, smul_eq_mul,
     Submodule.coe_sum, Submodule.coe_smul, Finset.sum_apply, LinearMap.id_apply]
-  simp only [Finset.mul_sum, Finset.sum_mul]
+  simp only [Finset.mul_sum]
   rw [Finset.sum_comm]
   exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring
 

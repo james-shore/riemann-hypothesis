@@ -100,7 +100,6 @@ private theorem perm_of_aut {B : Type} [CommRing B] {d : ℕ} (a b : (Fin d → 
       by_contra h
       push_neg at h
       exact hστ (Equiv.ext h)
-    change (∏ i, E i (σ i)) * (∏ i, E i (τ i)) = 0
     rw [← Finset.prod_mul_distrib]
     exact Finset.prod_eq_zero (Finset.mem_univ i) (Erow i _ _ hi)
   · have h1 : ∏ i : Fin d, ∑ k, E i k = 1 := by simp [Esum]

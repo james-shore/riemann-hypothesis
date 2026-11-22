@@ -34,7 +34,7 @@ theorem bk_unr_gr : Loc.LocalPublishedTheorems → ∀ (l : ℕ) [Fact l.Prime] 
   have hf : ∀ σ x, f (((Loc.colRep W).comp ι) σ x) = Loc.chRep κ σ (f x) := fun σ x => by
     have h := hup σ
     simp only [mat] at h
-    simp [f, Loc.chRep, hcol, Matrix.mulVec, dotProduct, Fin.sum_univ_two, hκ, mat, h]
+    simp [f, Loc.chRep, hcol, hκ, mat, h]
   have hc := Loc.z1fCoef (MonoidHom.id (GQ l)) _ _ f (continuous_apply 1) hf _ hιZ
   obtain ⟨c, hcO⟩ := hN.int
   obtain ⟨m, hm1, hm⟩ := hN.wt
@@ -54,7 +54,7 @@ theorem bk_unr_gr : Loc.LocalPublishedTheorems → ∀ (l : ℕ) [Fact l.Prime] 
       rw [IsScalarTower.algebraMap_apply ℤ_[l] ℚ_[l] (Qbar l)]
       rfl
     apply Units.ext
-    simp only [Units.val_pow_eq_pow_val, Units.val_mul, Units.val_zpow_eq_zpow_val, zpow_natCast, Units.val_one, hκ, hcy]
+    simp only [Units.val_pow_eq_pow_val, Units.val_mul, zpow_natCast, Units.val_one, hκ, hcy]
     rw [hdet] at hd
     calc (mat W (ι σ) 1 1 * eps l (ι σ) ^ e) ^ (2 * m) = (mat W (ι σ) 1 1) ^ (2 * m) * (eps l (ι σ) ^ (e * m)) ^ 2 := by ring
       _ = ((mat W (ι σ) 0 0 * mat W (ι σ) 1 1) ^ 2) ^ m := by rw [← h0]; ring

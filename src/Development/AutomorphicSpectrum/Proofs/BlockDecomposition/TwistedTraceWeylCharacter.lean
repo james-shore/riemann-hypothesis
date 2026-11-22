@@ -57,7 +57,6 @@ theorem trace_dualT_inv (lam : Fin n → ℤ) (E : KMod n) (T : E.V →L[ℂ] E.
     simpa [inv_pow] using h
   obtain ⟨-, -, h3⟩ := hT
   obtain ⟨-, h2⟩ := h3 k⁻¹ (fun a => (z a)⁻¹) hk' hinj'
-  beta_reduce at h2
   rw [trace_dualT, h2]
   have hw : (fun a => (z a)⁻¹ ^ 2) = fun a => conj (z a ^ 2) := by
     funext a

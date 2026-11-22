@@ -13,7 +13,7 @@ noncomputable def tGL {n : ℕ} {i j : Fin n} (h : i ≠ j) (c : ℂ) : GL (Fin 
 theorem diag_mul_transvection {n : ℕ} {i j : Fin n} (h : i ≠ j) (d : Fin n → ℂ) (hd : ∀ l, d l ≠ 0) (s : ℂ) :
     diagonal d * transvection i j s = transvection i j (s * d i / d j) * diagonal d := by
   ext a b
-  simp only [transvection, Matrix.mul_add, Matrix.add_mul, Matrix.mul_one, Matrix.one_mul, Matrix.add_apply,
+  simp only [transvection, Matrix.add_apply,
     diagonal_mul, mul_diagonal, single_apply, one_apply]
   by_cases ha : i = a <;> by_cases hb : j = b
   · subst ha hb; simp [h]; field_simp [hd j]
@@ -50,7 +50,7 @@ theorem prod_single_zpow {n : ℕ} (d : Fin n → ℂ) (i : Fin n) :
     ∏ l, d l ^ ((Pi.single i (1 : ℤ) : Fin n → ℤ) l) = d i := by
   rw [Finset.prod_eq_single i]
   · simp
-  · intro b _ hb; simp [Pi.single_apply, hb]
+  · intro b _ hb; simp [hb]
   · intro h; exact absurd (Finset.mem_univ i) h
 
 theorem prod_wt_shift {n : ℕ} (d : Fin n → ℂ) (hd : ∀ l, d l ≠ 0) (i j : Fin n) (μ : Fin n → ℤ) (k : ℕ) :

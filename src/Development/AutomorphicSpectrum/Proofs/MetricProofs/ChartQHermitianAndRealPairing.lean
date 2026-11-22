@@ -352,7 +352,7 @@ theorem limit_form : ∀ (n a g : ℕ) (Λ : Type) [AddCommGroup Λ] (L : Flat.L
       simpa [vCo_mk, uCo_mk, hv0] using h1
     have h2 : star ((A 0)ᵀ *ᵥ cst (uCo bas (x : Λ))) = (A 0)ᴴ *ᵥ cst (uCo bas (x : Λ)) := by
       funext i
-      simp [cst, mulVec, dotProduct, Matrix.conjTranspose_apply, map_sum]
+      simp [cst, mulVec, dotProduct, Matrix.conjTranspose_apply]
     rw [hper, hv0, cst_zero, mulVec_zero, add_zero, h2]
     simp only [chartQ]
     rw [← Matrix.mulVec_mulVec, ← Matrix.mulVec_mulVec, Matrix.mulVec_mulVec _ ((A 0)ᴴ)⁻¹,

@@ -277,12 +277,10 @@ theorem val_eigen_columns {R : Type} [CommRing R] {d : ℕ} {O : Type} [CommRing
             by_contra hx
             exact hl (minorMonomial_support col m Z hm hmo l b hx).1
           rw [this, pow_zero]
-      beta_reduce
       rw [nabVal_map B h φ hφ, e1, nabVal_smul_dir, e2, one_mul, mul_comm p k, FB.toK, FB.toK, FB.toK, map_mul, map_pow,
         ← FB.toK, ← FB.toK, ← FB.toK, ← FB.toK, toK_map φ hφ]
       simp only [f₁, if_pos hb])
     (fun b hb => by
-      beta_reduce
       rw [nabVal_zero _ h hB']
       simp [f₁, hb, hω1])]
   rw [← map_minorsP (algebraMap (TWO.Ov v) F), MvPolynomial.support_map_of_injective _ hinj]
@@ -401,7 +399,6 @@ theorem val_unit_columns {R : Type} [CommRing R] {d : ℕ} {O : Type} [CommRing 
       (MvPolynomial.monomial mo 1))
     (fun b mo => B.nabVal F h w0 k (f₂ b) u' (MvPolynomial.monomial mo 1))
     (fun mo hmo b hb => by
-      beta_reduce
       rw [mul_comm k p, nabVal_pullback_monomial R d O F B h hh w0 a p k ω hω _ _ (fun l => (τ l.1 a : F)) he,
         nabVal_smul_dir]
       simp only [f₂, if_pos hb]
@@ -414,7 +411,6 @@ theorem val_unit_columns {R : Type} [CommRing R] {d : ℕ} {O : Type} [CommRing 
           exact hl (minorMonomial_support col m Z hm hmo l b hx).1
         rw [this, pow_zero, pow_zero])
     (fun b hb => by
-      beta_reduce
       have h0 : ∀ l, al (l, b) = 0 := fun l => by
         by_contra hx
         exact hb (hcols al hsup l b hx)

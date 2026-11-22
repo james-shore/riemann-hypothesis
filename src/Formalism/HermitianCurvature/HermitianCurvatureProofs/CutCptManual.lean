@@ -57,14 +57,14 @@ theorem form_csCpt (p : KB.Pl P Wp Wq) (hpos : FormNonnegCpt p) (j : ℕ) (hj : 
 
   have h1 := (key 1).2
   have h2 := (key Complex.I).2
-  simp [Complex.conj_re, Complex.conj_im, hAim, hBim] at h1 h2
+  simp [hAim, hBim] at h1 h2
   have hbim : b.im = -a.im := by linarith
   have hbre : b.re = a.re := by linarith
 
   have hs : ∀ s : ℝ, 0 ≤ (‖a‖ ^ 2 * B.re) * (s * s) + (-2 * ‖a‖ ^ 2) * s + A.re := by
     intro s
     have h := (key (-(s : ℂ) * a)).1
-    simp [Complex.conj_re, Complex.conj_im, hAim, hBim] at h
+    simp [Complex.conj_re, Complex.conj_im, hBim] at h
     rw [hbre, hbim] at h
     rw [Complex.sq_norm, Complex.normSq_apply]
     nlinarith [h]
@@ -423,8 +423,6 @@ theorem Formalism.FourierDecayAlt.P.standard_pairing_of_headsCpt : Formalism.Fou
   intro hRH hHT
   first
     | exact fun hP => Formalism.FourierDecayAlt.P.PBO.pStdCpt_of_heads hP hRH hHT
-    | (intro hP; exact Formalism.FourierDecayAlt.P.PBO.pStdCpt_of_heads hP hRH hHT)
-    | (unfold Formalism.FourierDecayAlt.KB.PStdCpt; exact fun hP => Formalism.FourierDecayAlt.P.PBO.pStdCpt_of_heads hP hRH hHT)
 
 namespace Formalism.FourierDecayAlt.P.CutBP
 

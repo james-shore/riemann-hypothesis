@@ -122,7 +122,7 @@ private lemma lbk_ndvd (Q q l f m k : ℕ) (hq : 2 ≤ q) (hl : l.Prime) (hQ : Q
       rw [pow_add, hu, ← hCu]; ring
     simp only [hGdef, this]
     push_cast [ZMod.natCast_self]
-    simp [ZMod.natCast_self]
+    simp
   have hL : lbk Q (q ^ l) (m, k * T) = (Multiset.range m).map fun j => G (l * j) := by
     unfold lbk
     refine Multiset.map_congr rfl fun j _ => ?_

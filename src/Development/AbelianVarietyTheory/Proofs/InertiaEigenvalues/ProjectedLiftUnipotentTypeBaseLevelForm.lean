@@ -139,7 +139,7 @@ theorem key_step (D : D7) (X : RealSide D) (E : IntegralHeckeForms.XD D) (Y : Se
   have hbq : Formalism.UG.bc (swapAE D) ((finHom (Vc D j)).range.subtype (((finHom (Vc D j)).rangeRestrict (κ (gk * g)))⁻¹ *
       (k : Bridge.Gf (Vc D j)) * (finHom (Vc D j)).rangeRestrict (κ g))) =
       (finE (Vc D j) (κ (gk * g)))⁻¹ * Formalism.UG.bc (swapAE D) ((k : Bridge.Gf (Vc D j)) : GL _ _) * finE (Vc D j) (κ g) := by
-    simp only [Subgroup.coe_subtype, Subgroup.coe_mul, Subgroup.coe_inv, map_mul, map_inv]
+    simp only [Subgroup.coe_subtype, map_mul, map_inv]
     rfl
   have hqP := mul_mem (mul_mem (inv_mem haP) hxkP) hcP
   have hqr : rTup (X.R.βV j) (X.R.datVt j t) ((finE (Vc D j) (κ (gk * g)))⁻¹ *

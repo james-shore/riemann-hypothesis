@@ -31,7 +31,7 @@ theorem GlobalTheory.StrSplitDict.dict_alt : GlobalTheory.Published.AutomorphicF
     have h1 : X.R.extV j (X.tupT (D.nd.mu i)) y = 0 := by
       rw [hy]
       show (X.IL.jMt (D.nd.mu i) hμ j 0).1 = 0
-      simp only [map_zero, ZeroMemClass.coe_zero, Submodule.coe_zero]
+      simp only [map_zero, ZeroMemClass.coe_zero]
     exact X.hinj j (X.tupT (D.nd.mu i)) (h1.trans (LinearMap.map_zero _).symm)
   have hf'0 := GlobalTheory.StrSplitDict.cast_ne_zero D _ _ _ hj f hf0
   subst hspw
@@ -43,5 +43,5 @@ theorem GlobalTheory.StrSplitDict.dict_alt : GlobalTheory.Published.AutomorphicF
   obtain ⟨hu, hfr⟩ := _root_.GlobalTheory.T.unr_and_frobEig_eq_inv_satake hL D P i Q sp σ α hloc hsat
   refine ⟨Q, hQx, hu, ?_⟩
   rw [hfr, ← hα]
-  simp [Multiset.map_map, Function.comp_def]
+  simp [Function.comp_def]
 end

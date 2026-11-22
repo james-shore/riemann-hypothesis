@@ -120,7 +120,7 @@ theorem frame_form_k (R : _root_.PositivityTheory.SiegelWeilFormula.RD_k d) (w :
   have := congrArg (fun x => x.map (d.B.emb w).1) R.hε
   simp only [Matrix.map_mul, Matrix.transpose_map, cst, hd] at this
   rw [this]
-  ext (i | i) (j | j) <;> by_cases hij : i = j <;> simp [jE, Matrix.fromBlocks, Matrix.smul_apply, Matrix.one_apply, hij]
+  ext (i | i) (j | j) <;> by_cases hij : i = j <;> simp [jE, Matrix.fromBlocks, Matrix.smul_apply, hij]
 theorem map_mul_incM_T_k {p q r : Type} [Fintype q] (w : InfinitePlace F) (x : Matrix p q (AE F E)) (y : Matrix r q E) :
     (x * (incM F y)ᵀ).map (piInf (d.B.emb w)) = x.map (piInf (d.B.emb w)) * (y.map (d.B.emb w).1)ᵀ := by
   rw [Matrix.map_mul, Matrix.transpose_map, map_incM']

@@ -180,7 +180,6 @@ theorem heis_ops : ∀ {F E : Type} [Field F] [NumberField F] [Field E] [NumberF
     rw [h4 g _ (hUat 0 (Pm C)) φ hφ, hK']
     have hat := hKat g _ (hUat 0 (Pm C))
     rw [htr _ hat (by rw [hKmap, hU0, Matrix.mul_zero]) _ (hSB g φ hφ) _ (hsb _ _ (hSB g φ hφ)) (hbr _ hat _) Y]
-    congr 2
     rw [hKmap, (hK g).2.2, hU1]
     simp only [Pm, Matrix.mul_neg, Matrix.neg_mul, neg_neg, Matrix.mul_assoc]
     rw [Matrix.nonsing_inv_mul _ hB, Matrix.mul_one, Matrix.mul_nonsing_inv_cancel_left _ _ hA,

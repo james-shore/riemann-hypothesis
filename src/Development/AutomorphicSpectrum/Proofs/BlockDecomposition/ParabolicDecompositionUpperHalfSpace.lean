@@ -14,8 +14,7 @@ theorem block_relations (A B D : Matrix (Fin n) (Fin n) ℂ)
   unfold InG JJ at h
   rw [fromBlocks_conjTranspose, fromBlocks_multiply, fromBlocks_multiply] at h
   obtain ⟨-, h12, -, h22⟩ := fromBlocks_inj.mp h
-  simp only [conjTranspose_zero, Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, Matrix.one_mul,
-    Matrix.mul_neg, Matrix.neg_mul, add_zero, zero_add, neg_zero] at h12 h22
+  simp only [conjTranspose_zero, Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, Matrix.mul_neg, Matrix.neg_mul, add_zero, zero_add, neg_zero] at h12 h22
   exact ⟨h12, (neg_add_eq_zero.mp h22).symm⟩
 
 theorem levi_inG (a D : Matrix (Fin n) (Fin n) ℂ) (h : aᴴ * D = 1) :
@@ -25,8 +24,7 @@ theorem levi_inG (a D : Matrix (Fin n) (Fin n) ℂ) (h : aᴴ * D = 1) :
     rwa [conjTranspose_mul, conjTranspose_conjTranspose, conjTranspose_one] at h2
   unfold InG JJ
   rw [fromBlocks_conjTranspose, fromBlocks_multiply, fromBlocks_multiply]
-  simp only [conjTranspose_zero, Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, Matrix.one_mul,
-    Matrix.mul_neg, Matrix.neg_mul, add_zero, zero_add, h, h', neg_zero]
+  simp only [conjTranspose_zero, Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, Matrix.mul_neg, Matrix.neg_mul, add_zero, zero_add, h, h', neg_zero]
 
 theorem siegel_point :
     ∀ (n : ℕ) (p : PositivityTheory.Rg.Sw.GR n), (PositivityTheory.Rg.Sw.mR p).toBlocks₂₁ = 0 →

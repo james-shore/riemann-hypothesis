@@ -44,13 +44,13 @@ theorem latLast_isLattice : ∀ {E : Type} [Field E] [NumberField E] {n N : ℕ}
   have gm : ∀ m ∈ M, g m ∈ L := fun m hm => (hL _).2 ⟨by simpa [gC] using hm, 0, by simp [gL]⟩
   have he : e ∈ L := (hL _).2 ⟨by
       have : (fun k : Fin n => e (Fin.castSucc k)) = 0 := by
-        funext k; simp [e, Pi.single_apply, Fin.castSucc_ne_last]
+        funext k; simp [e, Fin.castSucc_ne_last]
       rw [this]; exact M.zero_mem, 1, by simp [e]⟩
   have dec : ∀ x : Fin (n + 1) → E, x = g (fun k => x (Fin.castSucc k)) + x (Fin.last n) • e := by
     intro x; ext j
     refine Fin.lastCases ?_ (fun i => ?_) j
     · simp [gL, e]
-    · simp [gC, e, Pi.single_apply, Fin.castSucc_ne_last]
+    · simp [gC, e, Fin.castSucc_ne_last]
   have hLeq : L = M.map (g.restrictScalars (𝓞 E)) ⊔ Submodule.span (𝓞 E) {e} := by
     apply le_antisymm
     · intro v hv

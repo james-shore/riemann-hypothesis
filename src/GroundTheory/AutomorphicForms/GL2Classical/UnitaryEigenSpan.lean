@@ -41,10 +41,8 @@ theorem orbitSum_fixed {K : Subgroup G} {v : E} (hv : (Set.range fun k : K => ρ
     obtain ⟨k', rfl⟩ := hw
     exact ⟨k⁻¹ * k', by show ρ ((k⁻¹ * k' : K) : G) v = _; rw [Subgroup.coe_mul, map_mul, Module.End.mul_apply]⟩
   · intro w _
-    change ρ ((k⁻¹ : K) : G) (ρ k w) = w
     rw [← Module.End.mul_apply, ← map_mul, Subgroup.coe_inv, inv_mul_cancel, map_one, Module.End.one_apply]
   · intro w _
-    change ρ (k : G) (ρ ((k⁻¹ : K) : G) w) = w
     rw [← Module.End.mul_apply, ← map_mul, Subgroup.coe_inv, mul_inv_cancel, map_one, Module.End.one_apply]
 
 theorem card_orbit_pos {K : Subgroup G} {v : E} (hv : (Set.range fun k : K => ρ k v).Finite) :

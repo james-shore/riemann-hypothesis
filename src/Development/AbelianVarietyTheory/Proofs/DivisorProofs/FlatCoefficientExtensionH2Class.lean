@@ -117,7 +117,7 @@ theorem primI_of_ext : ∀ (R : Type) [CommRing R] (I : Ideal R), ∃ (R₁ : Ty
     have key : (mp F χ).toLinearMap.lTensor I (y _ _ _ φ ψ) + y _ _ _ (φ ≫ ψ) χ =
         y _ _ _ φ (ψ ≫ χ) + y _ _ _ ψ χ := by
       apply tau_injective I (F.obj t''') (hF t''')
-      simp only [map_add, AlgHom.toLinearMap_apply, tau_nat, hy]
+      simp only [map_add, tau_nat, hy]
       exact z.2 φ ψ χ
     have := congrArg (iota I _) key
     simp only [map_add, ← iota_nat] at this
@@ -128,7 +128,7 @@ theorem primI_of_ext : ∀ (R : Type) [CommRing R] (I : Ideal R), ∃ (R₁ : Ty
     rw [← LinearMap.map_add (H2.mk _), H2.mk_eq_mk]
     refine ⟨fun t t' a ↦ iota I (F'.obj t') (y' t t' a), ?_⟩
     funext t t' t'' a b
-    simp only [d1_apply, Submodule.coe_sub, Submodule.coe_add, Pi.sub_apply, Pi.add_apply, CoefMap.pullCocycleTwo_apply]
+    simp only [d1_apply, Submodule.coe_add, Pi.sub_apply, Pi.add_apply, CoefMap.pullCocycleTwo_apply]
     have e := congrFun (congrFun (congrFun (congrFun (congrFun hrel t) t') t'') a) b
     simp only [d1_apply, Pi.sub_apply, CoefMap.pullCocycleTwo_apply] at e
     have key : (mp F' b).toLinearMap.lTensor I (y' _ _ a) - y' _ _ (a ≫ b) + y' _ _ b =
@@ -136,7 +136,7 @@ theorem primI_of_ext : ∀ (R : Type) [CommRing R] (I : Ideal R), ∃ (R₁ : Ty
           ((coefHom n₁ t'').toLinearMap.lTensor I (y _ _ _ (n₁.G.map a) (n₁.G.map b)) +
             (coefHom n₂ t'').toLinearMap.lTensor I (y _ _ _ (n₂.G.map a) (n₂.G.map b))) := by
       apply tau_injective I (F'.obj t'') (hF' t'')
-      simp only [map_add, map_sub, AlgHom.toLinearMap_apply, tau_nat, hy, hy']
+      simp only [map_add, map_sub, tau_nat, hy, hy']
       rw [e]
       rw [sub_sub]; rfl
     have := congrArg (iota I _) key

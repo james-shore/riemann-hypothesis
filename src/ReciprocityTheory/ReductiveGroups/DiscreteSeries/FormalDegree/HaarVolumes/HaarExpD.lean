@@ -22,8 +22,8 @@ theorem gMat_smul {ε : Fin n → Bool} (c : ℝ) (s : GCo ε) : gMat (c • s) 
   ext a b
   simp only [gMat, RingHom.id_apply, Matrix.add_apply, Matrix.smul_apply]
   simp only [kMat, pmat, Prod.smul_fst, Prod.smul_snd, Pi.smul_apply]
-  split_ifs <;> (try simp only [Complex.real_smul, Complex.ofReal_mul, star_mul', Complex.star_def,
-    Complex.conj_ofReal, smul_add, smul_zero, smul_neg, add_zero, mul_neg]) <;>
+  split_ifs <;> (try simp only [Complex.real_smul, star_mul', Complex.star_def,
+    Complex.conj_ofReal, smul_add, smul_zero, smul_neg, add_zero]) <;>
     (try simp only [smul_eq_mul, Complex.ofReal_mul]) <;> (try ring_nf)
 
 def gL (ε : Fin n → Bool) : GCo ε →ₗ[ℝ] Matrix (Fin n) (Fin n) ℂ where

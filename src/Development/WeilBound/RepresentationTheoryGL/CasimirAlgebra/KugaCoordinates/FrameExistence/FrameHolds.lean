@@ -36,7 +36,7 @@ theorem fr_apply (x : InfinitePlace E × Fin a × Fin a) (p q : Fin a) (w : Infi
     by_cases h1 : i = p <;> by_cases h2 : j = q <;> by_cases h3 : j = p <;> by_cases h4 : i = q <;>
       simp [h1, h2, h3, h4]
     all_goals by_cases hc : p = q
-    all_goals first | simp [hc] | simp [hc, Ne.symm hc]
+    all_goals first | simp [hc]
   · have hv' : ¬ w = v := fun h => hv h.symm
     simp [hv, hv']
 

@@ -64,10 +64,10 @@ theorem wittFrame_le_signature : ∀ (F E : Type) [Field F] [NumberField F] [Fie
     simp only [Matrix.map_mul] at h
     have hD : (fromBlocks 1 0 0 (-1) : Matrix (Fin r ⊕ Fin s) (Fin r ⊕ Fin s) ℂ).map (starRingEnd ℂ) = fromBlocks 1 0 0 (-1) := by
       ext i j
-      rcases i with i | i <;> rcases j with j | j <;> simp [Matrix.one_apply] <;> split_ifs <;> simp
+      rcases i with i | i <;> rcases j with j | j <;> simp [Matrix.one_apply] <;> split_ifs
     rw [hD] at h
     rw [Formalism.UG.Jpq, ← h]
-    congr 2 <;> ext i j <;> simp [conjTranspose_apply]
+    congr 2 <;> ext i j <;> simp
   refine le_of_isotropic_diag hrs _ A hA' (Xf.map τ) (Yf.map τ) ?_ ?_
   · rw [← hmap, hW.xx, Matrix.map_zero _ (map_zero _)]
   · rw [← hmap, hW.xy, Matrix.map_one _ (map_zero _) (map_one _)]

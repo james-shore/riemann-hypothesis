@@ -84,8 +84,7 @@ private theorem psi_pow (S : Space O F n) (v : F.V) (i : Fin n) (g : F.Gv v) (q 
     (h : F.Ψ (F.loc v g) ^ q = 1) : S.ψB v i g ^ q - 1 ∈ S.mB := by
   obtain ⟨-, hbar, -⟩ := S.lift
   have h2 := hbar.2 v i g
-  simp only [NRep.map, MonoidHom.coe_comp, Function.comp_apply, Units.coe_map, MonoidHom.coe_coe,
-    RingHom.id_apply] at h2
+  simp only [NRep.map, MonoidHom.coe_comp, Function.comp_apply, Units.coe_map, RingHom.id_apply] at h2
   show ((S.ψB v i g ^ q - 1 : S.B) : S.R) ∈ maximalIdeal S.R
   rw [← res_eq_zero_iff O S.R]
   simp only [Subalgebra.coe_sub, Subalgebra.coe_pow, Subalgebra.coe_one, map_sub, map_pow, map_one]
@@ -236,7 +235,7 @@ private theorem dim_B (hF : F.Ok C₀) (hn : n = 2 ∨ n = 3) (S : Space O F n) 
     | Sum.inl (Sum.inr (Sum.inr x)) => Sum.inr (Sum.inr x.1)
     | Sum.inr a => Sum.inr (Sum.inr ⟨v, j, a⟩)
   have he : Function.Injective e := by
-    rintro ((_ | _ | x) | a) ((_ | _ | y) | b) h <;> simp only [e, Sum.inl.injEq, Sum.inr.injEq, reduceCtorEq] at h
+    rintro ((_ | _ | x) | a) ((_ | _ | y) | b) h <;> simp only [e, Sum.inr.injEq, reduceCtorEq] at h
     · rfl
     · rfl
     · rw [Subtype.ext h]

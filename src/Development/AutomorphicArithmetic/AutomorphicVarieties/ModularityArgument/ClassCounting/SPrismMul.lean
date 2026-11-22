@@ -140,8 +140,8 @@ private theorem hbd_hd (k k' : G) (m : ℕ) (y : Ch A G (m + 1)) :
       ((hd A k k' 0).comp (hbd A G 0) - (hp A (k * k') (0 + 1) - hp A k (0 + 1) - (hp A k' (0 + 1)).comp (rmul A k (0 + 1))))
       fun a w => ?_) y
     simp only [LinearMap.comp_apply, LinearMap.sub_apply]
-    simp only [hd_cone, hbd_cone, map_add, map_sub, hbd_hp, rmul_rmul, hbd_rmul, hbd_cone_zero, hd.eq_1, hp.eq_1,
-      LinearMap.zero_apply, hp_cone, sub_zero, map_zero, add_zero]
+    simp only [hd_cone, hbd_cone, map_sub, hbd_hp, rmul_rmul, hbd_rmul, hbd_cone_zero, hd.eq_1, hp.eq_1,
+      LinearMap.zero_apply, hp_cone, sub_zero, add_zero]
     abel
   | succ m ih =>
     refine LinearMap.congr_fun (ext_cone A ((hbd A G (m + 1 + 2)).comp (hd A k k' (m + 1 + 1)))
@@ -160,7 +160,7 @@ private theorem pr_rmul (k : G) (m : ℕ) (y : Ch A G (m + 1)) :
     simp only [pr, rmul, cm, Finsupp.lmapDomain_apply, Finsupp.mapDomain_single]
     congr 1
     funext i
-    simp [MulAut.conj_apply, mul_assoc]
+    simp [mul_assoc]
 
 private noncomputable def sec (G : Type) [Group G] (m : ℕ) : Ch A G m →ₗ[A] Ch A G (m + 1) :=
   Finsupp.lmapDomain A A fun g => Fin.partialProd g

@@ -93,7 +93,6 @@ theorem cW_le (l : ℕ) (hl : 11 ≤ l) (h η H : ℕ) (hη : η + 1 ≤ h) (hH 
   have hmono : Real.logb l ((H:ℝ) + 1) ≤ Real.logb l (2 * (h:ℝ)) := by
     first
       | exact Real.logb_le_logb_of_le hL hpos hH1
-      | exact (Real.logb_le_logb hL hpos (by linarith)).mpr hH1
   have hc := Nat.ceil_lt_add_one (show (0:ℝ) ≤ 1 + Real.logb l ((H:ℝ) + 1) by linarith)
   unfold cW
   linarith

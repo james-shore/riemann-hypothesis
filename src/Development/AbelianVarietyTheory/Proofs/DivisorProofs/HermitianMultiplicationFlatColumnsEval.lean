@@ -39,7 +39,7 @@ theorem mul_single_ι (Φ : S.Flat E A' s δ) (k : Fin S.N) (y : A) :
   ext j
   by_cases h : j = k
   · subst h; simp
-  · simp [Pi.single_apply, h]
+  · simp [h]
 
 theorem word_ι_expand (Φ : S.Flat E A' s δ) : ∀ (t : ℕ) (U : Fin t → Fin S.N → E) (z : A),
     word Φ.mul U (Φ.ι z) =
@@ -108,7 +108,7 @@ theorem columns_eval : ∀ (F A : Type) [Field F] [NumberField F] [AddCommGroup 
   rw [word_ι_expand Φ κ.t]
   refine ⟨Submodule.sum_mem _ fun e _ => Submodule.smul_mem _ _ (Submodule.subset_span ⟨_, hmem e, rfl⟩), fun i => ?_⟩
   simp only [coordP, map_sum, map_mul, aeval_C, map_prod, aeval_X, LinearMap.coe_comp, Function.comp_apply,
-    LinearMap.map_smul, LinearMap.coe_proj, Function.eval, Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
+    LinearMap.map_smul, LinearMap.coe_proj, Function.eval, smul_eq_mul]
   refine Finset.sum_congr rfl fun e _ => ?_
   rw [h3 _ (hmem e) i, mul_comm]
 

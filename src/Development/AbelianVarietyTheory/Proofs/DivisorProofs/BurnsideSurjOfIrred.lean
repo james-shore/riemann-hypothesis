@@ -11,8 +11,6 @@ theorem mem_of_irred {K V : Type*} [Field K] [IsAlgClosed K] [AddCommGroup V] [M
   | exact @_root_.GlobalTheory.IrreducibleMembership.mem_of_irreducible
   | exact _root_.GlobalTheory.IrreducibleMembership.mem_of_irreducible
   | (apply _root_.GlobalTheory.IrreducibleMembership.mem_of_irreducible <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IrreducibleMembership.mem_of_irreducible <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IrreducibleMembership.mem_of_irreducible <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IrreducibleMembership.mem_of_irreducible ..)
 
 theorem burnside_surj_of_irred {A V : Type} [Ring A] [Algebra ℂ A] [AddCommGroup V] [Module ℂ V] [FiniteDimensional ℂ V]

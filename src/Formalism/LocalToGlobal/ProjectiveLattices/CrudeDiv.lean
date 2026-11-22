@@ -30,10 +30,8 @@ theorem Lin_linForm (b b' : Fin n) (v w : Fin d → k) :
   unfold Lin
   by_cases h : b = b'
   · subst h
-    simp [MvPowerSeries.pderiv_X, MvPowerSeries.pderiv_C, Derivation.leibniz, Finset.mul_sum,
-      map_sum, Pi.single_apply, Prod.ext_iff]
-  · simp [MvPowerSeries.pderiv_X, MvPowerSeries.pderiv_C, Derivation.leibniz, Pi.single_apply,
-      Prod.ext_iff, h]
+    simp [MvPowerSeries.pderiv_X, MvPowerSeries.pderiv_C, Derivation.leibniz, map_sum, Pi.single_apply, Prod.ext_iff]
+  · simp [MvPowerSeries.pderiv_X, MvPowerSeries.pderiv_C, Derivation.leibniz, Prod.ext_iff, h]
 
 theorem div_Lin_aeval {ι : Type} [DecidableEq ι] (cp : ι → Fin n) (u : ι → Fin d → k) (φ : ι → PS k n d)
     (l : ι) (hl : ∀ l', Lin (cp l) (u l) (φ l') = C (if l = l' then 1 else 0)) (Q : MvPolynomial ι k) :
@@ -49,7 +47,7 @@ theorem div_Lin_aeval {ι : Type} [DecidableEq ι] (cp : ι → Fin n) (u : ι �
     · subst h
       simp
       ring
-    · simp [h, Pi.single_apply]
+    · simp [h]
       ring
 
 theorem div_Lin_iter_aeval {ι : Type} [DecidableEq ι] (cp : ι → Fin n) (u : ι → Fin d → k) (φ : ι → PS k n d)
@@ -95,12 +93,9 @@ theorem div_iter_pderiv_monomial {ι : Type} [DecidableEq ι] (i : ι) (t : ℕ)
       ext j
       first
         | (simp only [Finsupp.coe_tsub, Pi.sub_apply, Finsupp.single_apply]; split_ifs <;> omega)
-        | (simp only [Finsupp.tsub_apply, Finsupp.single_apply]; split_ifs <;> omega)
-        | (simp [Finsupp.single_apply]; split_ifs <;> omega)
     have h2 : (s - Finsupp.single i t) i = s i - t := by
       first
         | simp only [Finsupp.coe_tsub, Pi.sub_apply, Finsupp.single_eq_same]
-        | simp
     rw [Function.iterate_succ_apply', ih, MvPolynomial.pderiv_monomial, h1, h2,
       Nat.descFactorial_succ]
     congr 1
@@ -113,7 +108,7 @@ theorem div_listSum_apply_of_notMem {ι : Type} (a : ι →₀ ℕ) (L : List ι
   | nil => simp
   | cons x L ih =>
     simp only [List.mem_cons, not_or] at hl
-    simp [Finsupp.single_apply, Ne.symm hl.1, ih hl.2]
+    simp [Ne.symm hl.1, ih hl.2]
 
 theorem div_fold_monomial {ι : Type} [DecidableEq ι] (a : ι →₀ ℕ) (L : List ι) (hL : L.Nodup) (s : ι →₀ ℕ)
     (c : k) :
@@ -152,7 +147,7 @@ theorem linMon_aeval_monomial {ι : Type} [Fintype ι] [DecidableEq ι] (cp : ι
   have hS : ((Finset.univ : Finset ι).toList.map fun l => Finsupp.single l (a l)).sum = a := by
     rw [hLs]
     ext j
-    simp [Finsupp.finset_sum_apply, Finsupp.single_apply]
+    simp
   have hP : ((Finset.univ : Finset ι).toList.map fun l => ((α l).descFactorial (a l) : k)).prod =
       ∏ l, ((α l).descFactorial (a l) : k) := hLp k _
   rw [hS, hP, one_mul]

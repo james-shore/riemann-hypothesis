@@ -60,7 +60,7 @@ theorem det_rel_split {g : SplitG M.L} (hs : M.split = some g) {r : ℕ}
     simp only [Matrix.map_apply, Matrix.of_apply, Matrix.add_apply, Matrix.smul_apply, cornerM, smul_eq_mul,
       hφ₁, map_sub, AlgEquiv.apply_symm_apply, Prod.fst_sub]
     split_ifs with h
-    · simp only [map_sub, AlgEquiv.apply_symm_apply, Prod.fst_sub]; ring
+    · simp only [AlgEquiv.apply_symm_apply]; ring
     · simp only [map_zero, Prod.fst_zero]; ring
   have m2 : ∀ Zh : Matrix (Fin (r + 1)) (Fin (r + 1)) E,
       (HermSp.ZZplusOf M Zh T T').map φ₂ = (-(g.q : F)⁻¹) • (Zh.map φ₂).transpose +
@@ -72,7 +72,7 @@ theorem det_rel_split {g : SplitG M.L} (hs : M.split = some g) {r : ℕ}
     simp only [Matrix.map_apply, Matrix.of_apply, Matrix.add_apply, Matrix.smul_apply, cornerM, smul_eq_mul,
       hφ₂, Matrix.transpose_apply, map_sub, AlgEquiv.apply_symm_apply, Prod.snd_sub]
     split_ifs with h
-    · simp only [map_sub, AlgEquiv.apply_symm_apply, Prod.snd_sub]; ring
+    · simp only [AlgEquiv.apply_symm_apply]; ring
     · simp only [map_zero, Prod.snd_zero]; ring
   apply g.e.injective
   refine Prod.ext ?_ ?_

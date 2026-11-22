@@ -30,8 +30,6 @@ theorem exists_zsmul_mem {E : Type} [Field E] [NumberField E] {n : ℕ} (L : Sub
   | exact @_root_.GlobalTheory.IntegerMultipleMembership.exists_int_smul_mem
   | exact _root_.GlobalTheory.IntegerMultipleMembership.exists_int_smul_mem
   | (apply _root_.GlobalTheory.IntegerMultipleMembership.exists_int_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegerMultipleMembership.exists_int_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegerMultipleMembership.exists_int_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegerMultipleMembership.exists_int_smul_mem ..)
 
 theorem vecMulVec_mem {E : Type} [Field E] [NumberField E] {n d : ℕ} {LX : Submodule (𝓞 E) (Fin n → E)}
@@ -96,7 +94,7 @@ theorem span_top {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E
     (Z : Matrix (Fin n) (Fin d) (AE F E)) : Z ∈ Submodule.span (AF F) (Set.range fun i => incM F (t i)) := by
   set S := Submodule.span (AF F) (Set.range fun i => incM F (t i))
   have hzs : ∀ (k : ℤ) (P : Matrix (Fin n) (Fin d) E), incM F (k • P) = k • incM F P := fun k P => by
-    ext a b; simp [incM, map_zsmul]
+    ext a b; simp [incM]
   have hall : ∀ (x : Fin n → E) (y : Fin d → E), incM F (vecMulVec x y) ∈ S := by
     intro x y
     obtain ⟨m, hm, hmx⟩ := exists_zsmul_mem LX hX x
@@ -169,9 +167,9 @@ theorem main : ∀ {F E : Type} [Field F] [NumberField F] [Field E] [NumberField
     refine ⟨Pi.single (⟨x, hx⟩, ⟨y, hy⟩) 1, (hO _).2 fun i => ?_, ?_⟩
     · by_cases h : i = (⟨x, hx⟩, ⟨y, hy⟩)
       · rw [h]; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     · show ∑ i, (Pi.single ((⟨x, hx⟩, ⟨y, hy⟩) : ι) (1 : Fv F v) : ι → Fv F v) i • ρ i = _
-      rw [Finset.sum_eq_single ((⟨x, hx⟩, ⟨y, hy⟩) : ι) (fun b _ hb => by simp [Pi.single_apply, hb]) (by simp)]
+      rw [Finset.sum_eq_single ((⟨x, hx⟩, ⟨y, hy⟩) : ι) (fun b _ hb => by simp [hb]) (by simp)]
       simp only [Pi.single_eq_same, one_smul]
       rfl
   have hle2 : Λ ≤ Opi.map φ.toAddMonoidHom := by

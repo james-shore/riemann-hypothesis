@@ -27,7 +27,7 @@ theorem baseFn_value {O R : Type} [CommRing O] [CommRing R] [IsLocalRing R] (s :
   have e : X.presheaf.germ ⊤ (f (IsLocalRing.closedPoint R)) trivial ≫ Scheme.stalkClosedPointTo f =
       f.appTop ≫ (Scheme.ΓSpecIso (CommRingCat.of R)).hom := by
     rw [Scheme.germ_stalkClosedPointTo]
-    simp [Iso.trans_hom, Scheme.Hom.appTop]
+    simp [Scheme.Hom.appTop]
   have e2 : (Scheme.ΓSpecIso (CommRingCat.of O)).inv ≫ s.appTop ≫ f.appTop ≫
       (Scheme.ΓSpecIso (CommRingCat.of R)).hom = CommRingCat.ofHom φ := by
     rw [← Category.assoc s.appTop, ← Scheme.Hom.comp_appTop, hf, Scheme.ΓSpecIso_naturality,

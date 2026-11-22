@@ -164,7 +164,7 @@ theorem nml_eq (t₀ t : TauC Y u u') {n m : (VS D).V ≃ₗ[D.host.E] (VS D).V}
   · rintro ⟨a, ha, b, hb, rfl⟩
     refine ⟨a * n⁻¹, Formalism.L2.SG.NGCut.NormalVectorPairings.NRat_mul _ ha hni, m * b,
       Formalism.L2.SG.NGCut.NormalVectorPairings.NRat_mul _ hm hb, ?_⟩
-    rw [h]; simp only [mul_assoc, inv_mul_cancel_left]
+    rw [h]; simp only [mul_assoc]
   · rintro ⟨a, ha, b, hb, rfl⟩
     refine ⟨a * n, Formalism.L2.SG.NGCut.NormalVectorPairings.NRat_mul _ ha hn, m⁻¹ * b,
       Formalism.L2.SG.NGCut.NormalVectorPairings.NRat_mul _ hmi hb, ?_⟩

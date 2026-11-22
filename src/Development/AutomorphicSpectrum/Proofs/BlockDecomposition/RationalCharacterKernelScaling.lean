@@ -44,7 +44,7 @@ theorem inNOh_tmul {F E : Type} [Field F] [NumberField F] [Field E] [Algebra F E
   · subst h
     exact ⟨α, hα, by simp [Algebra.TensorProduct.basis_repr_tmul]⟩
   · refine ⟨0, fun v => zero_mem _, ?_⟩
-    simp [Algebra.TensorProduct.basis_repr_tmul, Finsupp.single_apply, Ne.symm h]
+    simp [Algebra.TensorProduct.basis_repr_tmul, Ne.symm h]
 
 theorem exists_common_denom {E : Type} [Field E] [NumberField E] {d : ℕ} (ε : Fin d → E) :
     ∃ y : ℤ, y ≠ 0 ∧ ∀ k, IsIntegral ℤ ((y : E) * ε k) := by

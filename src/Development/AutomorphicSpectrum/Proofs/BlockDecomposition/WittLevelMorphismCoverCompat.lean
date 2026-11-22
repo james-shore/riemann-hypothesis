@@ -62,7 +62,6 @@ theorem glue {l : ℕ} [Fact l.Prime] {k : Type} [Field k] [CharP k l] [PerfectR
     refine CrystallineSemistableComparison.P.prism (σ := RingHom.id _) _ _ (𝟙 _) (fun T y => ?_) j x
     first
       | rfl
-      | (simp only [NatTrans.id_app, CategoryTheory.Functor.map_id]; rfl)
   have e2 := funext e
   refine (show Function.Bijective (fun x => rO.pull j ((morU ((subQ m (stF q ρ n (Set.range U.U)) (stF q ρ (n + 1) (Set.range U.U)) (fun _ h => h.1) (hG _)).o
         (IdF.span _ c) (fun _ => le_rfl))

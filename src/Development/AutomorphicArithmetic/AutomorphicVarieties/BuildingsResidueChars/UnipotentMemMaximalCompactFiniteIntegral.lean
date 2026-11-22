@@ -20,7 +20,7 @@ private theorem off_diag_zero {E : Type} [NormedField E] {n : ℕ} (k : Matrix (
     rw [Finset.sum_eq_single i]
     · simp
     · intro b _ hb
-      simp [Pi.single_apply, hb]
+      simp [hb]
     · simp
   have h2 : ∑ l, ‖k i l‖ ^ 2 = 1 := by
     have := congrArg (· ^ 2) h1

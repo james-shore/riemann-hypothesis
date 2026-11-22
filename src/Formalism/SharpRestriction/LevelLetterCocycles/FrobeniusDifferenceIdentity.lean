@@ -119,7 +119,7 @@ theorem frobenius_lift_identity (N s₁ σ : ℕ) (yv : W.DD T) (ms t μ : ZMod 
           W.φD T (μ c) - μ (c + 1)) - ((PD.p : ℕ) : O) ^ N • t c := by
   unfold liftCorrection
   simp only [map_sub, map_smul, smul_add, smul_sub, smul_smul, ← pow_add]
-  simp only [add_comm, add_left_comm, add_assoc]
+  simp only [add_comm]
   abel
 
 theorem gamma_difference_identity (N s₁ σ : ℕ) (yv zv : W.DD T) (ms t μ : ZMod n → W.DD T) (c : ZMod n) :
@@ -131,7 +131,7 @@ theorem gamma_difference_identity (N s₁ σ : ℕ) (yv zv : W.DD T) (ms t μ : 
           (W.γ T (μ (c + 1)) - μ (c + 1))) := by
   unfold gammaDefectOfLiftCorrection
   simp only [map_sub, map_smul, smul_add, smul_sub, smul_smul, ← pow_add]
-  simp only [add_comm, add_left_comm, add_assoc]
+  simp only [add_comm]
   abel
 
 theorem frobenius_difference_identity (N s₁ σ : ℕ) (yv : W.DD T) (ms t μ : ZMod n → W.DD T) (c : ZMod n) :
@@ -142,8 +142,8 @@ theorem frobenius_difference_identity (N s₁ σ : ℕ) (yv : W.DD T) (ms t μ :
         ((PD.p : ℕ) : O) ^ (s₁ + σ) • (((PD.p : ℕ) : O) ^ N • ((letE c : LetA O n) • yv) +
           W.φD T (μ (c - 1)) - μ c) := by
   unfold frobeniusShiftDefectOfLiftCorrection
-  simp only [map_sub, map_add, map_smul, smul_add, smul_sub, smul_smul, ← pow_add]
-  simp only [add_comm, add_left_comm, add_assoc]
+  simp only [map_sub, map_smul, smul_add, smul_sub, smul_smul, ← pow_add]
+  simp only [add_comm]
   abel
 
 end Fam

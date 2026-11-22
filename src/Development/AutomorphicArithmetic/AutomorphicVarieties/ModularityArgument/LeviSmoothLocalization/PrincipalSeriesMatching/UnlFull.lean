@@ -54,7 +54,7 @@ private theorem ne_mul_absPow {n : ℕ} (ω : Fin n → kˣ →* ℂˣ) (hω : �
   have h0 : absPow k (-1) * absPow k 1 = 1 := by
     rw [← absPow_add]
     ext x
-    simp [val_absPow]
+    simp
   have hq : ω i * (ω j)⁻¹ = absPow k (-1) := by
     rw [hj, mul_inv_rev, mul_left_comm, mul_inv_cancel, mul_one]
     exact (eq_inv_of_mul_eq_one_left h0).symm

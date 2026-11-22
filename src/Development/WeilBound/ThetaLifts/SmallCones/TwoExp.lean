@@ -86,7 +86,7 @@ def capAB : Submodule (AE F E) (Ten F E n d) where
 
 theorem cap_xx : incM F (vecMulVec H.x H'.x) ∈ capAB (F := F) H H' := by
   rw [incM_vv]
-  exact ⟨⟨incV F H.x, 0, by simp [vv0]⟩, ⟨incV F H'.x, 0, by simp [vv0]⟩⟩
+  exact ⟨⟨incV F H.x, 0, by simp [vv0]⟩, ⟨incV F H'.x, 0, by simp⟩⟩
 
 theorem cap_ix (u) : incM F (vecMulVec (H.ι *ᵥ u) H'.x) ∈ capAB (F := F) H H' := by
   rw [incM_vv, ← inc_mulVec]
@@ -94,7 +94,7 @@ theorem cap_ix (u) : incM F (vecMulVec (H.ι *ᵥ u) H'.x) ∈ capAB (F := F) H 
 
 theorem cap_xi (u) : incM F (vecMulVec H.x (H'.ι *ᵥ u)) ∈ capAB (F := F) H H' := by
   rw [incM_vv, ← inc_mulVec]
-  exact ⟨⟨0, incV F u, by simp [vv0]⟩, ⟨incM F H'.ι *ᵥ incV F u, 0, by simp [vv0]⟩⟩
+  exact ⟨⟨0, incV F u, by simp⟩, ⟨incM F H'.ι *ᵥ incV F u, 0, by simp⟩⟩
 
 theorem incM_smul (l : E) (v : Matrix (Fin n) (Fin d) E) : incM F (l • v) = inclR (F := F) (AF F) l • incM F v := by
   ext i j

@@ -14,14 +14,14 @@ theorem det_left {p : Matrix ι ι ℂ} (pp : p * p = p) (g : Matrix ι ι ℂ) 
   have e : p * g + (1 - p) = (1 + p * (g * (1 - p))) * (p * g * p + (1 - p)) := by
     simp only [mul_add, add_mul, mul_sub, sub_mul, mul_assoc, pp, pp', one_mul, mul_one]; abel
   have e2 : g * (1 - p) * p = 0 := by
-    simp only [mul_sub, sub_mul, mul_assoc, pp, one_mul, mul_one, sub_self]
+    simp only [mul_sub, sub_mul, mul_assoc, pp, mul_one, sub_self]
   rw [e, det_mul, det_one_add_mul_comm, e2, add_zero, det_one, one_mul]
 
 theorem det_right {p : Matrix ι ι ℂ} (pp : p * p = p) (g : Matrix ι ι ℂ) :
     (g * p + (1 - p)).det = (p * g * p + (1 - p)).det := by
   have pp' : ∀ x, p * (p * x) = p * x := fun x => by rw [← mul_assoc, pp]
   have e : g * p + (1 - p) = (p * g * p + (1 - p)) * (1 + ((1 - p) * g) * p) := by
-    simp only [mul_add, add_mul, mul_sub, sub_mul, mul_assoc, pp, pp', one_mul, mul_one]; abel
+    simp only [mul_add, add_mul, mul_sub, sub_mul, mul_assoc, pp', one_mul, mul_one]; abel
   have e2 : p * ((1 - p) * g) = 0 := by
     simp only [mul_sub, sub_mul, pp', one_mul, sub_self]
   rw [e, det_mul, det_one_add_mul_comm, e2, add_zero, det_one, mul_one]
@@ -124,7 +124,7 @@ theorem detPlus_identities : ∀ (ι : Type) [Fintype ι] [DecidableEq ι] (s : 
     · rw [← det_conjTranspose, conjTranspose_add, conjTranspose_mul, conjTranspose_sub, conjTranspose_one, hpH, h2]
       have : s * h * s * p + (1 - p) = s * (h * p + (1 - p)) * s := by
         rw [hsp]
-        simp only [mul_add, add_mul, mul_sub, sub_mul, mul_assoc, pp, pp', one_mul, mul_one]; abel
+        simp only [mul_add, add_mul, mul_sub, sub_mul, mul_assoc, pp, one_mul, mul_one]; abel
       rw [this, det_mul, det_mul, det_right pp, ← det_left pp, hsp, mul_right_comm, ds, one_mul]
     · rw [h2, hsp, half_eq pp h1, det_mul, det_mul, det_diag pp g h1]
       linear_combination ((p * g + (1 - p)).det * (p * h + (1 - p)).det) * (h.det * g.det) * ds +

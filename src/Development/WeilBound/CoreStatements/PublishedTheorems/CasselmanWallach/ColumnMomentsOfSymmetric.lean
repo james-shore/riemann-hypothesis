@@ -55,9 +55,9 @@ lemma adj' (ε : Fin n → Bool) (E : Fin n → Fin n → Module.End ℂ V) (hu 
 lemma act_single (A : Matrix (Fin n) (Fin n) (Module.End ℂ V)) (e a : Fin n) (v : V) :
     act A (PiLp.single 2 e v) a = A a e v := by
   rw [act_apply, Finset.sum_eq_single e]
-  · simp [PiLp.single_apply]
+  · simp
   · intro b _ hb
-    simp [PiLp.single_apply, hb]
+    simp [hb]
   · intro h
     exact absurd (Finset.mem_univ e) h
 

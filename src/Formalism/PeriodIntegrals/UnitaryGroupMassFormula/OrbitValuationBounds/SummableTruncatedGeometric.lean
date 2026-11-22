@@ -29,7 +29,6 @@ theorem posPl_false_eq_odd_add_nsmul {p : ℕ} (hsg : IsSg D p) (t0 : HH D) (n :
     posPl D p (false, t0) n = (decide (Odd n), t0 + n • hP D p) := by
   first
     | (simp [posPl, Formalism.MainNotions.G.partner]; try exact fun _ => hsg)
-    | (simp [posPl, Formalism.BasicNotions.partner]; try exact fun _ => hsg)
 
 theorem sum_tops_on_orbit (X : Inst D L) {p : ℕ} (hsg : IsSg D p) {t0 : HH D} (ht0 : t0 ∈ reps X p)
     (TT : Finset (ZMod (nP D p))) (hTT : ∀ s, s ∈ TT ↔ IsTopPl D (orbMap D p (false, t0) s))
@@ -84,7 +83,6 @@ theorem tsum_le_tsum_of_nonneg_le {f g : ℕ → ℝ} (hf0 : ∀ e, 0 ≤ f e) (
   have hfs : Summable f := Summable.of_nonneg_of_le hf0 hle hg
   first
     | exact Summable.tsum_le_tsum hle hfs hg
-    | exact tsum_le_tsum hle hfs hg
 
 theorem orbit_local_term_nonneg (Lc : Formalism.MainNotions.product_zeroth_first_parts.Loc) (s : ZMod Lc.d) : 0 ≤ Lc.baseTerm s := by
   apply tsum_nonneg
@@ -98,7 +96,6 @@ theorem mem_top_orbit_set_iff (E : Ent D) (p : ℕ) [Fact p.Prime] (h : OrbOK D 
     s ∈ (orbLoc E p h u i z Th).TT ↔ IsTopPl D (orbMap D p z s) := by
   first
     | exact Finset.mem_filter.trans (and_iff_right (Finset.mem_univ _))
-    | simp [orbLoc]
 
 theorem orbit_local_capacity_eq (E : Ent D) (p : ℕ) [Fact p.Prime] (h : OrbOK D p) (u : D.what₂.Word) (i : ℕ) (z : Pl D)
     (Th : MvPowerSeries (ZMod (nP D p) × Fin (D.R.N i) × Fin (D.R.N (i + 1))) ℂ_[p]) (s : ZMod (nP D p)) :
@@ -108,7 +105,6 @@ theorem orbit_local_capacity_eq (E : Ent D) (p : ℕ) [Fact p.Prime] (h : OrbOK 
   split_ifs <;> first
     | (simp [Ent.row, orbLoc]; done)
     | tauto
-    | simp_all
 
 theorem summable_truncated_geometric (x l : ℝ) (hl : 1 < l) (c : ℕ → ℝ) (hc : ∀ e, 0 ≤ c e) (P : ℕ → Prop) [DecidablePred P] :
     Summable fun e : ℕ => if P e then max (x / l ^ e - c e) 0 else 0 := by
@@ -127,8 +123,6 @@ theorem summable_truncated_geometric (x l : ℝ) (hl : 1 < l) (c : ℕ → ℝ) 
       rw [one_div_pow, ← div_eq_mul_one_div]
       first
         | exact div_le_div_of_nonneg_right (le_abs_self x) hpow.le
-        | exact (div_le_div_iff_of_pos_right hpow).2 (le_abs_self x)
-        | exact (div_le_div_right hpow).2 (le_abs_self x)
     split_ifs
     · exact max_le (by linarith [hc e]) h2
     · exact h2

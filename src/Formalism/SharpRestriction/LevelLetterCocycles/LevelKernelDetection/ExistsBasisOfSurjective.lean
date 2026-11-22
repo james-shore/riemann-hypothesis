@@ -28,14 +28,12 @@ theorem exists_basis_of_surjective {R : Type} [CommRing R] [IsLocalRing R] {m₁
   have hq : ∀ x, q x = x - s (f x) := fun x => by
     first
     | rfl
-    | simp [q]
   have hmem : ∀ x, q x ∈ LinearMap.ker f := fun x => by
     rw [hq, LinearMap.mem_ker, map_sub, hs, sub_self]
   let r : (Fin m₁ → R) →ₗ[R] LinearMap.ker f := LinearMap.codRestrict (LinearMap.ker f) q hmem
   have hr : ∀ x, (r x : Fin m₁ → R) = x - s (f x) := fun x => by
     first
     | exact hq x
-    | simp [r, hq]
   have hrk : ∀ k : LinearMap.ker f, r k = k := fun k => by
     apply Subtype.ext
     rw [hr, hfk k, map_zero, sub_zero]
@@ -47,11 +45,9 @@ theorem exists_basis_of_surjective {R : Type} [CommRing R] [IsLocalRing R] {m₁
   have hg : ∀ p, g p = s p.1 + (p.2 : Fin m₁ → R) := fun p => by
     first
     | rfl
-    | simp [g]
   have hh : ∀ x, h x = (f x, r x) := fun x => by
     first
     | rfl
-    | simp [h]
   have h₁ : g ∘ₗ h = LinearMap.id := LinearMap.ext fun x => by
     rw [LinearMap.comp_apply, hh, hg, LinearMap.id_apply]
     show s (f x) + (r x : Fin m₁ → R) = x
@@ -75,8 +71,6 @@ theorem exists_basis_of_surjective {R : Type} [CommRing R] [IsLocalRing R] {m₁
   have hfree : Module.Free R (LinearMap.ker f) := by
     first
     | exact Module.free_of_flat_of_isLocalRing
-    | exact Module.free_of_projective_of_isLocalRing
-    | infer_instance
   let bk := Module.Free.chooseBasis R (LinearMap.ker f)
   let bp := (Pi.basisFun R (Fin m₂)).prod bk
   let b := bp.map e
@@ -91,10 +85,8 @@ theorem exists_basis_of_surjective {R : Type} [CommRing R] [IsLocalRing R] {m₁
   · rw [Basis.reindex_apply, hb]
     first
     | simp [bp, Basis.prod_apply]
-    | simp [bp]
   · rw [Basis.reindex_apply, hb]
     first
     | simp [bp, Basis.prod_apply]
-    | simp [bp]
 
 end Formalism.MainNotions.N.Ln03.Pf

@@ -118,7 +118,7 @@ theorem vecMulVec_mem {p : Fin n → w.adicCompletion E} (hp : p ∈ latAt w X.L
       ring
   | zero =>
     convert zero_mem (latAtV X Y v) using 1
-    ext k l; simp [Matrix.vecMulVec_apply]
+    ext k l; simp
   | add p p' _ _ h1 h2 =>
     convert add_mem h1 h2 using 1
     ext k l; simp [Matrix.vecMulVec_apply, add_mul]

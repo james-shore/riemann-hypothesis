@@ -106,7 +106,7 @@ theorem UpperTheory.V.Z.Sym.Glob.sideGTerm :
     rfl
   have e2 : (⊥ : Subgroup C).comap φ = i.ker := by
     ext h
-    simp [φ, MonoidHom.mem_ker, Subtype.ext_iff]
+    simp [φ, MonoidHom.mem_ker]
   rw [e1, e2, hidx] at key
   have e3 : gqOn (B.ι.comp i) i.ker B.U (fun y => f (y.out⁻¹ * B.ι δ * s.θ y.out)) =
       gqOn (B.ι.comp i) i.ker B.U (s.ker f δ) := rfl

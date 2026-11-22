@@ -64,10 +64,6 @@ theorem stabClassFinite_of (hMono : ClassSetMono) (hIdx : ClassSetFinIdx) (hMap 
   have hStd : Formalism.UG.CS.StdLatFull := by
     first
       | exact Formalism.UG.P.standard_lattice_full_holds
-      | exact Formalism.UG.P.stdLatFull
-      | exact Formalism.UG.P.stdLatFull_holds
-      | exact Formalism.UG.P.CsEasy.stdLatFull
-      | exact Formalism.UG.Final.StdLatFull
   obtain ⟨hfin, hspan⟩ := hStd I.E (Fin k)
   have hL := Formalism.UG.Final.ClassSetFiniteL I.F I.E (Fin k) I.cm.sig J' (hSig I) hH hU hD _ hfin hspan
   have h2 := hIdx _ _ _ _ inf_le_left (hidx g' hg') hL

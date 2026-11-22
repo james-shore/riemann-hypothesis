@@ -125,7 +125,6 @@ theorem restSExpA_of (X : Sys p) (hB : RestBeta p) (hG : RestGcA X) : RestSExpA 
     · refine ⟨0, ?_, fun e => absurd (X.std e.1).five_le h5⟩
       first
         | exact Function.iterate_fixed (map_zero (sigW p)) 2
-        | simp
   obtain ⟨μ, hμ0, hμR, hμ1⟩ := exists_mu (p := p) K' vp hvp
   obtain ⟨u, hu, V, hV, hGeq⟩ := hG c hc j K' vp hvp μ hμ0 hμ1
   obtain ⟨V', hV', hred⟩ := th_reduce (p := p) be (th_be_const hbe) (wK p c) (wK p (sigW p c))

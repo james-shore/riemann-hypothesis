@@ -63,7 +63,7 @@ theorem bd_of_quad (μ : Measure (GA D V)) [μ.IsHaarMeasure] (hθ : IsInfFam θ
   have h2 := congrArg (fun w => ⟪io μ hθ φ, io μ hθ w⟫_ℂ) (quad_apply hθ hX hY φ)
   simp only [map_sub, map_sum, inner_sub_right, inner_sum, inner_der_der] at h2
   have h3 := congrArg Complex.re h2
-  simp only [Complex.sub_re, Complex.re_sum, Complex.neg_re, Complex.ofReal_re,
+  simp only [Complex.re_sum, Complex.neg_re, Complex.ofReal_re,
     Finset.sum_neg_distrib, sub_neg_eq_add, Complex.add_re] at h3
   have h4 : ‖io μ hθ (der hθ τ (hX a) φ)‖ ^ 2 ≤ ∑ x, ‖io μ hθ (der hθ τ (hX x) φ)‖ ^ 2 :=
     Finset.single_le_sum (f := fun x => ‖io μ hθ (der hθ τ (hX x) φ)‖ ^ 2) (fun _ _ => sq_nonneg _)
@@ -137,7 +137,7 @@ theorem exists_gelfOp (hθ : IsInfFam θ) {τ : D.what₂.Tau} {e : Fin V.rank �
   have hYl : ∀ b, P⁻¹ * y b * P ∈ lieAt V τ := fun b => lie_conj hP hg (hy b)
   refine ⟨quad hθ hX hYl, fun φ => ?_, fun μ _ φ ψ => quad_symm μ hθ hX hYl φ ψ⟩
   rw [hq φ.1 (smooth_of_mem φ), quad_apply]
-  simp [Submodule.coe_sum]
+  simp
 
 theorem bd_der (μ : Measure (GA D V)) [μ.IsHaarMeasure] (hθ : IsInfFam θ) {τ : D.what₂.Tau} {e : Fin V.rank → Bool}
     {P : Matrix (Fin V.rank) (Fin V.rank) ℂ} (hP : IsUnit P) (hg : Pᴴ * Formalism.REAL.Jm e * P = gramAt D V τ)
@@ -151,7 +151,7 @@ theorem bd_der (μ : Measure (GA D V)) [μ.IsHaarMeasure] (hθ : IsInfFam θ) {�
     (bd_ktype μ hθ hP ρ hρ (hy b) (hYl b)).mono fun φ hφ => hE φ hφ
   have hCq : C = quad hθ hX hYl := LinearMap.ext fun φ => Subtype.ext (by
     rw [← hC, hq φ.1 (smooth_of_mem φ), quad_apply]
-    simp [Submodule.coe_sum])
+    simp)
   have bX := bd_of_quad μ hθ E hX hYl (hCq ▸ hb) bK
   obtain ⟨_, b'⟩ := bd_span μ hθ E (Set.range X ∪ Set.range fun b => P⁻¹ * y b * P) (by
     rintro _ (⟨a, rfl⟩ | ⟨b, rfl⟩)

@@ -10,7 +10,7 @@ lemma integrable_gauss_complex :
   have hb : 0 < ((Real.pi : ℂ)).re := by simpa using Real.pi_pos
   have h := (GaussianFourier.integrable_cexp_neg_mul_sq_norm_add (V := ℂ) hb 0 0).norm
   refine h.congr (Filter.Eventually.of_forall fun w => ?_)
-  simp only [inner_zero_left, Complex.ofReal_zero, mul_zero, zero_mul, add_zero, Complex.norm_exp]
+  simp only [inner_zero_left, Complex.ofReal_zero, mul_zero, add_zero, Complex.norm_exp]
   rw [← Complex.ofReal_pow, ← Complex.ofReal_neg, ← Complex.ofReal_mul, Complex.ofReal_re]
 
 lemma integrable_gauss (m n : ℕ) :
@@ -39,9 +39,6 @@ lemma continuous_dilated (m n : ℕ) (X : Fin n → ℝ) (z : ℂ) :
   unfold dilated
   first
   | fun_prop
-  | exact continuous_const.mul (Continuous.cexp (continuous_const.mul
-      (continuous_finset_sum _ fun a _ => continuous_finset_sum _ fun j _ => continuous_const.mul
-        (Complex.continuous_ofReal.comp ((continuous_norm.comp ((continuous_apply j).comp (continuous_apply a))).pow 2)))))
 
 lemma eventually_small (m n : ℕ) (X : Fin n → ℝ) :
     ∀ᶠ z : ℂ in 𝓝 0, (∀ j, 1 / 2 ≤ (Complex.exp (2 * z * X j)).re) ∧

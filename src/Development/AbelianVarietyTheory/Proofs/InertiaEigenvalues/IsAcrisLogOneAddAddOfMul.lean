@@ -39,7 +39,7 @@ theorem defect_mem {R : Type} [CommRing R] (S : Subring R) (a b : R)
   refine Finset.sum_congr rfl fun d _ => ?_
   have hc := congrArg (Int.cast : ℤ → R) (hD d)
   push_cast at hc
-  simp only [Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, eq_intCast]
+  simp only [Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, eq_intCast]
   rw [← hA, ← hB]
   push_cast
   linear_combination (A (d 0) * B (d 1)) * hc

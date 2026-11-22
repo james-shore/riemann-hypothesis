@@ -140,8 +140,6 @@ theorem xplus_map {T₀ T₁ : E} {A : LFlag S r T₀} {B : LFlag S r T₁} (φ 
     unfold Xplus Xsp
     first
     | rfl
-    | exact le_antisymm (sInf_le ⟨le_sup_left, le_sup_right⟩)
-        (le_sInf fun x hx => sup_le hx.1 hx.2)
   rw [hXp] at hv ⊢
   obtain ⟨x, hx, w, hw, rfl⟩ := Submodule.mem_sup.mp hv
   obtain ⟨c, rfl⟩ := Submodule.mem_span_singleton.mp hw

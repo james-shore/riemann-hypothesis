@@ -15,8 +15,8 @@ omit [Fintype n] [DecidableEq n] [Fintype n'] [DecidableEq n'] in
 
 theorem basePt_eq_zero_of_stepVar (y : Matrix n n' k) {r : n ⊕ Fin c} {s : n' ⊕ Fin (c + 1)}
     (h : Free (c / 2 + 1) (r, s) ∨ Kept (r, s)) : basePt c y r s = 0 := by
-  rcases r with r | r <;> rcases s with s | s <;> simp only [Free, Kept, or_false, false_or] at h <;>
-    simp only [basePt, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
+  rcases r with r | r <;> rcases s with s | s <;> simp only [Free, Kept, or_false] at h <;>
+    simp only [basePt, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
       Matrix.zero_apply, of_apply]
   rw [if_neg (by omega)]
 
@@ -28,8 +28,8 @@ theorem stepVar_fixed_of_ordL_lt (y : Matrix n n' k) {r t : n ⊕ Fin c} {s : n'
   rcases r with r | r <;> rcases t with t | t <;> rcases s with s | s <;>
     simp only [Free, Kept, GlobalTheory.DiagVol.ordL, Sum.elim_inl, Sum.elim_inr, basePt, fromBlocks_apply₁₁,
       fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂, Matrix.zero_apply, of_apply, not_or,
-      Nat.even_iff, Nat.odd_iff, not_and, true_and, and_true, not_false_eq_true, not_true_eq_false] at hv hlt ⊢
-  all_goals first | omega | (refine ⟨⟨by omega, by omega⟩, ?_⟩; rw [if_neg (by omega)]) | (refine ⟨by omega, ?_⟩; rw [if_neg (by omega)]) | skip
+      Nat.even_iff, Nat.odd_iff, not_and, true_and, and_true, not_false_eq_true] at hv hlt ⊢
+  all_goals first | omega | (refine ⟨⟨by omega, by omega⟩, ?_⟩) | (refine ⟨by omega, ?_⟩; rw [if_neg (by omega)])
 
 end Shape
 

@@ -6,7 +6,7 @@ namespace GlobalTheory.SplitFlip
 def vertexDiff (X : ℕ × ℕ) : ℤ := (X.1 : ℤ) - X.2
 
 theorem vertexDiff_tgt (e : Edge) : vertexDiff e.tgt = vertexDiff e.src + 1 := by
-  cases e <;> simp [vertexDiff, Edge.src, Edge.tgt] <;> omega
+  cases e <;> simp [vertexDiff] <;> omega
 
 theorem IsPath.pairwise_vertexDiff : ∀ {γ : List Edge}, IsPath γ →
     γ.Pairwise fun a b => vertexDiff a.src < vertexDiff b.src
@@ -47,7 +47,7 @@ theorem pathAvoid : ∀ {γ : List Edge} {i j : ℕ}, IsPath γ → PassesThroug
   have hθ : Edge.theta i j ∈ γ := hp.subset (by simp)
   have hx : Edge.ex i j ∈ γ := hp.subset (by simp)
   refine ⟨fun hs => ?_, fun ht => ?_⟩
-  · have := hγ.eq_of_vertexDiff_eq hb hx (by rw [hs]; simp [vertexDiff, Edge.src])
+  · have := hγ.eq_of_vertexDiff_eq hb hx (by rw [hs]; simp [vertexDiff])
     subst this
     simp [Edge.src] at hs
   · have h1 := vertexDiff_tgt b

@@ -120,7 +120,7 @@ theorem exists_stdUnitaryPoint_det_eq_unitaryPoint_det {F E : Type} [Field F] [N
     fin_cases a; fin_cases b
     simp [cT, Matrix.mul_apply, hn]
   · ext
-    simp [Matrix.GeneralLinearGroup.det, Matrix.det_fin_one]
+    simp [Matrix.GeneralLinearGroup.det]
 
 theorem det_conj {R : Type} [CommRing R] {N : ℕ} (C y : GL (Fin N) R) :
     Matrix.GeneralLinearGroup.det (C * y * C⁻¹) = Matrix.GeneralLinearGroup.det y := by

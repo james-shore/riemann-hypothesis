@@ -496,7 +496,7 @@ theorem exists_hodgeLine : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E
       rw [metricF_eq hu hG, metricF_eq hu hG.conj]
     · rw [metricF_of_not hx, metricF_of_not (hneg w hx)]
       unfold refNorm
-      simp [Complex.norm_conj]
+      simp
 
 end Main
 

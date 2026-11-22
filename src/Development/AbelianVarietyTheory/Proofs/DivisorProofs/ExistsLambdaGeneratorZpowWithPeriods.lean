@@ -82,7 +82,7 @@ theorem exists_lamGen_zpow : ∀ {R : Type} [CommRing R] [IsDomain R] (D : DegPr
         mul_comm _ _
       rw [e1, e2, e3, e4, Fintype.prod_sum_type]
       apply Additive.ofMul.injective
-      simp [Fin.prod_univ_succ, GlobalTheory.PolDeg.lamPts, Oε, ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow]
+      simp [Fin.prod_univ_succ, GlobalTheory.PolDeg.lamPts, Oε, ofMul_mul, ofMul_inv, ofMul_pow]
       abel
     obtain ⟨g, hg, hgv⟩ := exists_gen hL hF t ht
     refine ⟨g, hg, fun a b z J hJ => ?_⟩
@@ -112,7 +112,7 @@ theorem exists_lamGen_zpow : ∀ {R : Type} [CommRing R] [IsDomain R] (D : DegPr
           fst D.P.A D.P.A * snd D.P.A D.P.A ^ (-(k : ℤ)) := mul_comm _ _
       rw [e0, _root_.one_mul, e4, e5, Fintype.prod_sum_type]
       apply Additive.ofMul.injective
-      simp [Fin.prod_univ_succ, GlobalTheory.PolDeg.lamPts, Oε, ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow]
+      simp [Fin.prod_univ_succ, GlobalTheory.PolDeg.lamPts, Oε, ofMul_mul, ofMul_inv, ofMul_pow]
       abel
     obtain ⟨g, hg, hgv⟩ := exists_gen hL hF (LB.invGen _ _ _ t) (DVR.invGen_isGen _ _ _ _ ht)
     refine ⟨g, hg, fun a b z J hJ => ?_⟩

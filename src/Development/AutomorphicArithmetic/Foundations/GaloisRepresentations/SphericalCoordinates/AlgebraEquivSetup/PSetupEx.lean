@@ -11,10 +11,10 @@ private noncomputable def repOf {E V : Type} [Field E] [Algebra ℚ E] [AddCommG
     { toFun := fun x => β.symm.toLinearMap ∘ₗ (x.mulVecLin.restrictScalars ℚ) ∘ₗ β.toLinearMap
       map_add' := fun x y => by
         ext v
-        simp [Matrix.add_mulVec]
+        simp
       map_smul' := fun c x => by
         ext v
-        simp [Matrix.smul_mulVec] }
+        simp }
     (by ext v; simp)
     (fun x y => by ext v; simp [Matrix.mulVec_mulVec])
 

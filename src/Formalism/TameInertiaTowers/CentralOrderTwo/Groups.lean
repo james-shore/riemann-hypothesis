@@ -84,7 +84,7 @@ theorem commGen : CommGen := by
       | (rw [commutatorElement_self]; exact C.one_mem)
       | (simp [h01', h10']; done)
       | (apply Subgroup.subset_closure; simp; done)
-      | (rw [← commutatorElement_inv]; apply C.inv_mem; apply Subgroup.subset_closure; simp; done)
+      | (rw [← commutatorElement_inv]; apply C.inv_mem; apply Subgroup.subset_closure; simp)
   have hall : ∀ x y : H, ⁅x, y⁆ ∈ C := by
     have h1 : ∀ (i : Fin 4) (y : H), ⁅y, g i⁆ ∈ C := by
       intro i y

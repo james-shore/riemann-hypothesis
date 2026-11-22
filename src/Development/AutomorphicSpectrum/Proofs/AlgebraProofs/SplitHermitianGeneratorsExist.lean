@@ -298,7 +298,7 @@ variable {K : Type} [Field K] (C : ACurve K) {V : Type} [AddCommGroup V] [Module
 theorem subDeg_bot (L : C.I → AddSubgroup V) : subDeg C L ⊥ = 0 := by
   haveI : IsEmpty (Fin (Module.finrank K (⊥ : Submodule K V))) := by
     rw [finrank_bot]; infer_instance
-  simp [subDeg, deg, Module.Basis.det_apply, Matrix.det_isEmpty]
+  simp [subDeg, deg]
 
 theorem idealV_bot {A : Type} [CommRing A] (τ : A →+* Module.End K V) : idealV τ ⊥ = ⊥ := by
   refine iSup_eq_bot.2 fun a => ?_

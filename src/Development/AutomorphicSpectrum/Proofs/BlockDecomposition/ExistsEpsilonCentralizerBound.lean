@@ -103,7 +103,7 @@ theorem vecMul_map_single (hs : ∀ j, (Pi.single j 1 : Fin n → K) = v ᵥ* ae
   rw [← this, ← hs j]
   by_cases hij : i = j
   · subst hij; simp
-  · simp [Pi.single_apply, hij]
+  · simp [hij]
 
 theorem vecMul_Ph (hs : ∀ j, (Pi.single j 1 : Fin n → K) = v ᵥ* aeval γ (h j)) (z : Fin n → R) :
     (algebraMap K R ∘ v) ᵥ* Ph h γ z = z := by

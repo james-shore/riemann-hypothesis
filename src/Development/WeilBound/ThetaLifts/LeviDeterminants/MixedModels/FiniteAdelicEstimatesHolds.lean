@@ -131,7 +131,7 @@ theorem eq_std {ψ : AddChar (AF F) ℂ} (hψ : PsiUnr ψ v) {Φ : (κ → Fv F 
       by_cases e : j = i
       · subst e; simpa using hy
       · simp [Pi.single_eq_of_ne e]⟩) x
-    simp only [schr, dotProduct_single, zero_dotProduct, mul_zero, add_zero, Pi.zero_apply, zero_mul] at this
+    simp only [schr, dotProduct_single, mul_zero, add_zero, Pi.zero_apply, zero_mul] at this
     exact (mul_left_eq_self₀.1 this).resolve_left hne
 
 theorem finite_adelic_estimates_holds : FinSt := by

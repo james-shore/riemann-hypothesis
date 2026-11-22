@@ -185,7 +185,7 @@ private theorem heckeC (N k : ℕ) [NeZero N] (hk : 1 ≤ k) (χ : DirichletChar
   by_cases hd : p ∣ n
   · have hq : 1 ≤ n / p := Nat.div_pos (Nat.le_of_dvd (by omega) hd) hp.pos
     simp only [hd, if_true, hf'n _ hq, hf'n _ hpn, hcj, map_add, map_mul, map_pow, map_natCast]
-  · simp only [hd, if_false, hf'n _ hpn, hcj, map_add, map_mul, mul_zero, map_zero]
+  · simp only [hd, if_false, hf'n _ hpn, hcj, map_add, mul_zero, map_zero]
 
 private theorem fT_Phi {l : ℕ} [Fact l.Prime] (ι : Qbar l ≃+* ℂ) (N : ℕ) (k : ℤ) (g : CuspForm (Gamma1 N) k)
     {p : ℕ} (hp : p.Prime) (e : ℂ) {n : ℕ} (hn : 1 ≤ n) :

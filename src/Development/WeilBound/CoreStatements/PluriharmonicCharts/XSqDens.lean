@@ -336,7 +336,7 @@ theorem K1 (n : ℕ) {z : Fin (d + 2) → ℂ} (hz : Fin.tail (Fin.tail z) ∈ Q
   · rw [Fintype.sum_option]
     simp only [AnSq.pull1, Option.elim]
     try congr 1
-    try (refine Finset.sum_congr rfl fun a _ => ?_; by_cases ha : a = a₀ <;> simp [ha])
+    try (refine Finset.sum_congr rfl fun a _ => ?_)
 
 theorem wcoef_eq (c : σ → ℝ) (k i : ℕ) (hk : 1 ≤ k) (r : Fin (d + 2)) :
     Q.wcoef c k i r = if (r : ℕ) = 0 then Q.pull0 (fun a => (ε a : ℝ)) - Q.pull1 (fun a => (ε a : ℝ))
@@ -366,7 +366,7 @@ theorem part2 (c : σ → ℝ) (hc : c a₀ = 0) (n k : ℕ) (hk : 1 ≤ k) (i :
     · simp only [h0, ↓reduceIte, Pi.sub_apply, sub_mul, Finset.sum_sub_distrib]
       exact (K0 Q n hz).sub (K1 Q n hz)
     · by_cases h1 : (r : ℕ) = 1
-      · simp only [h0, h1, ↓reduceIte]
+      · simp only [h1, ↓reduceIte]
         exact K1 Q n hz
       · by_cases h2 : (r : ℕ) < 2 + 2 * i
         · simp only [h0, h1, h2, ↓reduceIte]
@@ -387,7 +387,7 @@ theorem part2 (c : σ → ℝ) (hc : c a₀ = 0) (n k : ℕ) (hk : 1 ≤ k) (i :
     · simp only [h0, ↓reduceIte]
       exact hx0.sub hx1
     · by_cases h1 : (r : ℕ) = 1
-      · simp only [h0, h1, ↓reduceIte]
+      · simp only [h1, ↓reduceIte]
         exact hx1
       · by_cases h2 : (r : ℕ) < 2 + 2 * i
         · simp only [h0, h1, h2, ↓reduceIte]

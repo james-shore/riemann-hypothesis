@@ -49,14 +49,11 @@ theorem conjLinearFunctional_sphericalVector_indicator : _root_.GlobalTheory.Fun
   have e2 : ((-c₂)⁻¹).1 = -((z : Fv F v) • (c.1ᵀ * W.J.map t)) := by
     first
     | (rw [← hc2v]; simp)
-    | (rw [← hc2v, Units.neg_inv]; rfl)
-    | (rw [← hc2v]; exact congrArg Units.val (neg_inv c₂))
   ext Y i j
   rw [e1, e2]
   simp only [Units.val_mul, Units.coe_map, MonoidHom.coe_coe, RingHom.toMonoidHom_eq_coe, Matrix.transpose_mul, Matrix.scalar_apply,
-    Matrix.transpose_neg, Matrix.transpose_smul, Matrix.mul_neg, Matrix.neg_mul, Matrix.mul_smul, Matrix.smul_mul,
-    Matrix.diagonal_transpose, Matrix.mul_assoc, neg_neg]
-  simp [Matrix.mul_assoc, ← Matrix.smul_eq_diagonal_mul, Matrix.mul_smul, Matrix.smul_mul]
+    Matrix.transpose_neg, Matrix.transpose_smul, Matrix.mul_neg, Matrix.mul_smul, Matrix.diagonal_transpose, Matrix.mul_assoc]
+  simp [← Matrix.smul_eq_diagonal_mul, Matrix.mul_smul]
 end GlobalTheory.SplitBarVac
 end
 end
@@ -69,5 +66,5 @@ theorem _root_.GlobalTheory.T.splitPlace_sphericalVector_indicator_value : _root
     (X : Spc F E n) (W : Spc F E d) (M : Model σ X W) (χX χW : Chr F E) (om : Rep σ X W) (r s r' s' : ℕ), IsPair B M χX χW om r s r' s' →
     ∀ (v : Pl F) (t : E →ₐ[F] Fv F v) (b : GL (Fin n) (Fv F v)) (c : GL (Fin d) (Fv F v)), IsSplitBasis t X.L b → IsSplitBasis t W.L c →
     ∃ b₁ : GL (Fin n) (Fv F v), (PsiUnr B.ψ v → b₁ = b) ∧ ∃ ι, M.IsLinBar B.ψ t b₁ c ι ∧ ι (M.vac v) = Set.indicator {Y | ∀ i j, Y i j ∈ v.adicCompletionIntegers F} 1 := by
-  first | exact @_root_.GlobalTheory.SplitBarVac.conjLinearFunctional_sphericalVector_indicator | exact _root_.GlobalTheory.SplitBarVac.conjLinearFunctional_sphericalVector_indicator | (intros; apply _root_.GlobalTheory.SplitBarVac.conjLinearFunctional_sphericalVector_indicator <;> assumption)
+  first | exact @_root_.GlobalTheory.SplitBarVac.conjLinearFunctional_sphericalVector_indicator
 end

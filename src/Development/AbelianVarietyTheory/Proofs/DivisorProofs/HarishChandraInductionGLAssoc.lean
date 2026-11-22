@@ -134,7 +134,7 @@ theorem stage_right [Fintype F] {a m n : ℕ} (hn : n = a + m) (k : ℂ) (φ Fm 
       fun u v => ∑ h : GL (Fin m) F, k * (α ((1 : GL (Fin a) F)⁻¹ * u * 1) * φ (h⁻¹ * v * h)) := by
     funext u v
     rw [hF]
-    simp [Finset.mul_sum, Finset.sum_mul, mul_left_comm]
+    simp [Finset.mul_sum, mul_left_comm]
   rw [e, hcT_sum]
   rw [Finset.sum_congr rfl fun h _ =>
     (show hcT a m (fun u v => k * (α ((1 : GL (Fin a) F)⁻¹ * u * 1) * φ (h⁻¹ * v * h))) n x =

@@ -39,7 +39,6 @@ theorem unip_step {k : ℕ} {H W : Matrix (Fin k) (Fin k) ℂ} (hH : H.PosDef) (
     rw [Matrix.mulVec_sub]
     first
       | rw [dotProduct_sub, h1, sub_self]
-      | rw [Matrix.dotProduct_sub, h1, sub_self]
   by_contra hne
   have hpos : 0 < star u ⬝ᵥ (H *ᵥ u) := by
     first
@@ -73,8 +72,6 @@ theorem charpoly_dvd {k : ℕ} (G : Matrix (Fin k) (Fin k) ℂ) (n : ℕ)
     have h1 : Multiset.card G.charpoly.roots = G.charpoly.natDegree := by
       first
         | exact (IsAlgClosed.card_roots_eq_natDegree (k := ℂ))
-        | exact IsAlgClosed.card_roots_eq_natDegree
-        | exact (Polynomial.natDegree_eq_card_roots (IsAlgClosed.splits _)).symm
     rw [h1, Matrix.charpoly_natDegree_eq_dim, Fintype.card_fin]
   have hprod : (G.charpoly.roots.map fun a => X - C a).prod = G.charpoly :=
     Polynomial.prod_multiset_X_sub_C_of_monic_of_roots_card_eq hmon (by

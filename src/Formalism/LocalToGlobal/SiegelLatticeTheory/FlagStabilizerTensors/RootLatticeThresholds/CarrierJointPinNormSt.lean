@@ -199,7 +199,7 @@ theorem stOne_holds (X : Formalism.L2.SG.HidaSetting.HidaSetting D) (u u' : D.wh
       show InN _ _ _ (uMat (1 : Formalism.REAL.UJ (X.B.I.ε v)))
       have : uMat (1 : Formalism.REAL.UJ (X.B.I.ε v)) = 1 := rfl
       rw [this]
-      refine ⟨⟨fun a => ?_, ?_⟩, fun y _ => ?_⟩ <;> simp [Submodule.zero_mem]
+      refine ⟨⟨fun a => ?_, ?_⟩, fun y _ => ?_⟩ <;> simp
     refine ⟨h1 u, ?_⟩
     rw [mul_one, inv_mul_cancel]
     exact h1 u'

@@ -20,10 +20,10 @@ namespace GlobalTheory.Core.Mi.LatGlue
 variable {D : D7}
 
 theorem mt_mul (S : HSp D) (a b : GA D S) : Formalism.L2.Theta.mt S (a * b) = Formalism.L2.Theta.mt S a * Formalism.L2.Theta.mt S b := by
-  first | rfl | simp [Formalism.L2.Theta.mt, map_mul]
+  first | rfl
 
 theorem mt_one (S : HSp D) : Formalism.L2.Theta.mt S 1 = 1 := by
-  first | rfl | simp [Formalism.L2.Theta.mt]
+  first | rfl
 
 theorem mem_congGrp {V : HSp D} {I : Ideal (AE D)} {g : GA D V} :
     g ∈ GlobalTheory.FinPl.congGrp V I ↔ ∀ i j, Formalism.L2.Theta.mt V g i j - (1 : Matrix (Fin V.rank) (Fin V.rank) (AE D)) i j ∈ I := by
@@ -68,7 +68,7 @@ theorem mulVec_fix {S : HSp D} {v w : GlobalTheory.FinPl.Pl D} (hvw : v ≠ w) {
   exact key
 
 theorem scal_mulVec {n : ℕ} (c : AE D) (y : Fin n → AE D) : (c • (1 : Matrix (Fin n) (Fin n) (AE D))) *ᵥ y = c • y := by
-  first | rw [Matrix.smul_mulVec, Matrix.one_mulVec] | simp [Matrix.smul_mulVec] | (ext i; simp [Matrix.mulVec, dotProduct, Matrix.one_apply])
+  first | rw [Matrix.smul_mulVec, Matrix.one_mulVec]
 
 end GlobalTheory.Core.Mi.LatGlue
 

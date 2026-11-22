@@ -28,7 +28,7 @@ private theorem algSat_shift {E : Type} [Field E] [NumberField E] (a n : ℕ) (w
   simp only [Function.comp_apply, Units.val_mul]
   rw [h]
   have e : Ideal.absNorm w.asIdeal = Formalism.ConjugateSelfDual.normV w := by
-    first | rfl | exact Ideal.absNorm_apply _ | simp [Formalism.ConjugateSelfDual.normV, Ideal.absNorm_apply, Submodule.cardQuot_apply]
+    first | rfl
   have e2 : ((a : ℝ) - 1) / 2 = ((n : ℝ) - 1) / 2 + -(((n : ℝ) - a) / 2) := by ring
   rw [e, e2, Real.rpow_add hq, Complex.ofReal_mul, Complex.ofReal_cpow hq.le (-_), Complex.ofReal_neg,
     Complex.ofReal_natCast]

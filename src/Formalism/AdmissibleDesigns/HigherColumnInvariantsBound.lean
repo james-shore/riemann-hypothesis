@@ -30,7 +30,7 @@ theorem qU_eO_mul {e : ℕ} (he : e ≠ 0) (x : ℕ∞) : qU e ((e : ℕ∞) * x
     rw [← Nat.cast_mul]
     simp only [qU, ENat.toNat_natCast]
     push_cast
-    first | (field_simp; ring) | field_simp
+    first | (field_simp) | field_simp
 
 theorem inequality_of_finite_terms (e : ℕ) (he : e ≠ 0) (eO : ℕ∞) (heO : eO = e) (lhs : ℕ∞) (what₂ cols qs : Finset ℕ)
     (rowLen h0d z : ℕ → ℕ∞) (e' j deg : ℕ → ℕ) (vδ s H0 : ℕ∞) (Sha : ℕ → ℕ∞) (hE t cB Nn : ℕ)
@@ -366,7 +366,7 @@ theorem qU_vdel {vδ : ℕ∞}
   obtain ⟨e, he, hE⟩ := eON_eq i
   rw [hvδ, hE, ENat.toNat_natCast, qU_eO_mul he, ENat.toNat_natCast]
   push_cast
-  first | rfl | simp [Finset.sum_add_distrib] | ring
+  first | rfl
 
 theorem selmer_length_inequality (lenRow : HeightOneSpectrum (𝓞 D.host.E) → ℚ) (e' : HeightOneSpectrum (𝓞 D.host.E) → ℕ)
     (cB : ℕ) (rowLen h0d : ℕ → ℕ∞) (vδ : ℕ∞) (Nn : ℕ)

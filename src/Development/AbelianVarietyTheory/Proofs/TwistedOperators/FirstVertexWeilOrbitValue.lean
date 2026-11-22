@@ -107,7 +107,7 @@ theorem splitScal_eq (S : GridChoice W U) {μ₀ : T} (hL : L.Is μ₀) {t : T} 
     intro z
     have hx : Assignment.one.read (kapAt S t w.1 k) ∈ KO (Kw w.1) (Fin ((locGrid G t w.1).rank (0, D.R.m))) :=
       invT_mem_KO hKO
-    simp only [apow, gdet, GlobalTheory.LGrp.nabs_det_of_mem_KO hx, NNReal.coe_one, Complex.ofReal_one, Complex.one_cpow]
+    simp only [apow, gdet, GlobalTheory.LGrp.nabs_det_of_mem_KO hx, Complex.ofReal_one, Complex.one_cpow]
   have hd := detIdl_conj (GlobalTheory.RowVacScalar.isIdemAt_idemAt hL G t w.2) (G.V (.grid 0 D.R.m)) k
     (S.N.u (.grid 0 D.R.m)) (rank_vertex G t w.1 (X := (0, D.R.m)) ⟨Nat.zero_le _, le_rfl⟩) (S.B.β 0 D.R.m)
   simp only [GlobalTheory.RowVacScalar.splitScal, GlobalTheory.SplitFlip.Grid.edgeFactor, GlobalTheory.SplitFlip.Grid.kappa,
@@ -136,10 +136,8 @@ theorem splitScal_eq (S : GridChoice W U) {μ₀ : T} (hL : L.Is μ₀) {t : T} 
   · have ho : ¬ Odd (G.pS (.chi 0 D.R.m)).rank := fun h => by simp [hpar.mp h] at h0
     rw [if_neg ho, h0]
     simp [GlobalTheory.LFun.locChar]
-    done
   · rw [if_pos (hpar.mpr h0), h0]
     simp [GlobalTheory.LFun.locChar, div_eq_mul_inv]
-    done
 
 theorem one_lat (V : HSp D) (Λ : Submodule (𝓞 D.host.E) (Fin V.rank → D.host.E))
     (y : Fin V.rank → TensorProduct D.host.F (Af D.host.F) D.host.E) :
@@ -406,7 +404,7 @@ theorem endLamAt_eq {μ₀ : T} (hL : L.Is μ₀) (G : GridData L sc) (t : T) {j
     rw [show inBasis h β w (frGL β y) =
         (reGL (finCongr h.symm)) (GlobalTheory.StdFrames.loc w (MulAut.conj β⁻¹ (frGL β y))) from rfl, hc]
     ext i l
-    simp [GlobalTheory.TopLevelInv.val_loc, intGL, cptO_apply, ea, GlobalTheory.StepData.reGL, Formalism.UG.bc]
+    simp [intGL, cptO_apply, ea, GlobalTheory.StepData.reGL, Formalism.UG.bc]
   obtain ⟨hk', hlam⟩ := stepType_lam hL t hj w ha y.val (redFn β w (frGL β y)) hr _ hv hP hQ hk
   unfold endLamAt
   rw [dif_pos hk', hlam, Units.val_inv_eq_inv_val]

@@ -170,7 +170,7 @@ theorem jG_eq : jG n = nG 1 * nbH (-1) * nG 1 := by
 theorem alg1 (x : ℂ) (hx : x ≠ 0) (hx1 : x + 1 ≠ 0) : (-x)⁻¹ = -(-(-(-(x + 1)⁻¹ + 1)⁻¹)⁻¹)⁻¹ + 1 := by
   have hy : -(x + 1)⁻¹ + 1 = x / (x + 1) := by field_simp; ring
   rw [hy]
-  simp only [inv_neg, inv_inv, neg_neg, inv_div]
+  simp only [inv_neg, neg_neg, inv_div]
   field_simp
   ring
 
@@ -238,7 +238,7 @@ theorem jG_conj {U : Matrix (Fin n) (Fin n) ℂ} (hU : Uᴴ * U = 1) (hU' : U * 
   have e1 : (Uᴴ)⁻¹ = U := Matrix.inv_eq_left_inv hU'
   have e2 : (Uᴴᴴ)⁻¹ = Uᴴ := by rw [Matrix.conjTranspose_conjTranspose]; exact Matrix.inv_eq_left_inv hU
   simp only [mLc, JJ, e1, e2, Matrix.fromBlocks_multiply]
-  simp [hU', hU]
+  simp [hU']
 
 theorem mob_JJ_conj {Z U : Matrix (Fin n) (Fin n) ℂ} {z : Fin n → ℂ} (hU : Uᴴ * U = 1) (hU' : U * Uᴴ = 1)
     (hZ : Uᴴ * Z * U = Matrix.diagonal z) (hz0 : ∀ j, z j ≠ 0) :

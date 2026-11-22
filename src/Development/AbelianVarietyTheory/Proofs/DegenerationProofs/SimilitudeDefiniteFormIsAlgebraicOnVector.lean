@@ -56,7 +56,7 @@ theorem real_nonneg {d : ℕ} (G : Matrix (Fin d) (Fin d) ℤ)
     have ha' : ∀ i, (a i : ℝ) = ((m : ℤ) : ℝ) * (c i : ℝ) := by
       intro i
       have := ha i
-      simp only [eq_intCast, zsmul_eq_mul, Submonoid.smul_def] at this
+      simp only [eq_intCast, zsmul_eq_mul] at this
       exact_mod_cast this
     have h1 : (0 : ℝ) ≤ ∑ i, ∑ j, (a i : ℝ) * (a j : ℝ) * (G i j : ℝ) := by
       exact_mod_cast hZ a

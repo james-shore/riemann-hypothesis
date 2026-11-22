@@ -25,10 +25,6 @@ theorem leviWh_eq_one : ∀ (F : Type) [Field F] [Fintype F] (ψ : AddChar F ℂ
     (σ : Representation ℂ (blockTri (κ := F) b) V), IsCuspDatum b σ → leviWh ψ b σ = 1 := by
   first
   | exact @_root_.GlobalTheory.BlockDecompositionExistence.leviWh_eq_one
-  | exact _root_.GlobalTheory.BlockDecompositionExistence.leviWh_eq_one
-  | (apply _root_.GlobalTheory.BlockDecompositionExistence.leviWh_eq_one <;> assumption)
-  | (intros; apply _root_.GlobalTheory.BlockDecompositionExistence.leviWh_eq_one <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.BlockDecompositionExistence.leviWh_eq_one <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.BlockDecompositionExistence.leviWh_eq_one ..)
 
 end Main

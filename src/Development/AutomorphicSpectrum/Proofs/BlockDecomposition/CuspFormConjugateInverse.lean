@@ -85,7 +85,7 @@ theorem Eop_dual (τ : E →+* ℂ) (i j : Fin a) (φ : Sm E a) :
     rw [show (1 / 2 : ℂ) = ((1 / 2 : ℝ) : ℂ) by norm_num]
     exact Complex.conj_ofReal _
   simp only [Eop, e1, e2, map_neg, LinearMap.neg_apply, LinearMap.smul_apply, LinearMap.sub_apply, lieS_dual,
-    map_smulₛₗ, map_sub, c2, Complex.conj_I, neg_neg, smul_neg]
+    map_smulₛₗ, map_sub, c2, Complex.conj_I, smul_neg]
   module
 
 theorem cap_dual (τ : E →+* ℂ) (u : ℂ) (φ : Sm E a) :

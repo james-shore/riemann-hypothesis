@@ -80,7 +80,7 @@ theorem act_gen_apply (S T : HSp D) (g : Formalism.L2.Theta.GA D S) (h : Formali
         ∑ m, cA D ((Formalism.L2.Theta.mt S g *ᵥ fun k => incA D (s k)) m) * incA D (S.gram m j)) := by
   rw [← row_move]
   simp only [actO, Matrix.mul_apply, Matrix.of_apply, GlobalTheory.LatMoveStd.gen_eq]
-  simp only [ Matrix.mul_apply, Matrix.of_apply, GlobalTheory.LatMoveStd.gen_eq, Matrix.mulVec, dotProduct,
+  simp only [ Matrix.mulVec, dotProduct,
     Finset.sum_mul, Finset.mul_sum]
   refine Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => ?_
   ring

@@ -186,7 +186,7 @@ private theorem casimir' {V : Type} [AddCommGroup V] [Module â„‚ V] (E : Fin 2 â
   simp only [LinearMap.sub_apply, Module.End.mul_apply, LinearMap.add_apply, Module.algebraMap_end_apply, map_add,
     map_smul, hd, map_sub, r2, r3, r1]
   simp only [hc, ha, map_add, map_smul, map_sub]
-  match_scalars <;> ring_nf <;> simp [Complex.I_sq] <;> ring_nf
+  match_scalars <;> ring_nf <;> simp [Complex.I_sq]
 
 end Casimir
 

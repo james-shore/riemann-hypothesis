@@ -72,7 +72,7 @@ theorem prX_le_of_nf {N c : ℕ} (kj : ℕ) (h : Sp E (N + c) ≃ₗ[E] Sp E (N 
     intro v
     have := hJ (h⁻¹ v)
     rw [lamEq, lamEq, ← this]
-    simp [MulAut.conj_apply, LinearEquiv.mul_apply]
+    simp [LinearEquiv.mul_apply]
   have hX : ∀ x : Sp E N, h⁻¹ (Loc.inX E N c x) ∈ LocE.lamY P (Ideal.absNorm P.asIdeal) N c 0 ↔ x ∈ stdAt E N P := by
     intro x
     rw [hc, mem_stdAt]

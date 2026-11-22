@@ -19,7 +19,7 @@ theorem continuous_of_valuation_eq_pow {A B Γ : Type*} [Field A] [Field B]
   rw [WithZeroTopology.tendsto_zero] at h0
   have hγ : MonoidWithZeroHom.ValueGroup₀.embedding γ.1 ≠ 0 := by simp
   filter_upwards [h0 _ hγ] with x hx
-  simp only [Set.mem_ofPred_eq, Valuation.restrict_lt_iff_lt_embedding, hg]
+  simp only [Valuation.restrict_lt_iff_lt_embedding, hg]
   exact hx
 
 theorem exists_completion_hom (K L : Type) [Field K] [NumberField K] [Field L] [NumberField L]

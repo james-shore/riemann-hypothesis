@@ -206,7 +206,7 @@ private theorem mConeMap_eq_C_mul_prod_of_isMultiHomog {g : MRing J} {d : K → 
   simp only [mul_pow, Finset.prod_mul_distrib, ← map_pow, ← map_prod, map_mul]
   rw [Fintype.prod_sigma (fun p : (Σ k, J k) => MvPolynomial.X (R := Ω) p.1 ^ m p)]
   simp only [Finset.prod_pow_eq_pow_sum, hd]
-  simp [MvPolynomial.algebraMap_apply, mul_assoc]
+  simp [mul_assoc]
 
 private theorem isUnit_of_unitAt' {p : Cpt ξ} (z : regAt ξ p) (hu : unitAt ξ p (z : Ω)) : IsUnit z :=
   IsUnit.of_mul_eq_one (a := z) ⟨(z : Ω)⁻¹, hu.2.2⟩ (Subtype.ext (by simp [hu.1]))

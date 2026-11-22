@@ -22,7 +22,6 @@ lemma Nmat_low (x : LoI X.Ψ r → ℂ) (τ : X.Ψ) : (Nmat x τ).BlockTriangula
   have h2 : a ≠ b := hab'.ne
   first
   | simp [Nmat, h1, h2]
-  | (unfold Nmat; rw [Matrix.of_apply, dif_neg h1]; simp [h2, Ne.symm h2])
 
 lemma det_Nmat (x : LoI X.Ψ r → ℂ) (τ : X.Ψ) : (Nmat x τ).det = 1 := by
   rw [Matrix.det_of_lowerTriangular _ (Nmat_low X x τ)]
@@ -39,7 +38,6 @@ private theorem det_gram' (τ : X.Ψ) (M : Matrix (Fin r) (Fin r) ℂ) :
       Matrix.map_apply, Finset.sum_mul]
     first
     | exact Finset.sum_comm
-    | rw [Finset.sum_comm]
   have hc : (M.map (starRingEnd ℂ)).det = (starRingEnd ℂ) M.det := by
     rw [RingHom.map_det]
     rfl
@@ -63,8 +61,6 @@ lemma norm_dmin_last {x0 : Frame X.Ψ r} (hx0 : X.IsOrtho x0) (x : LoI X.Ψ r �
     unfold lminor
     first
     | rfl
-    | (congr 1)
-    | simp
   have hdm : (mat (rmul x0 (NF X x)) τ).det = (mat x0 τ).det := by
     show (mat x0 τ * Nmat x τ).det = _
     rw [Matrix.det_mul, det_Nmat, mul_one]
@@ -91,25 +87,17 @@ lemma uf_lu_eS (x : LoI X.Ψ r → ℂ) (y : UpI X.Ψ r → ℂ) :
     by_cases h : b < a
     · have hab : a ≠ b := ne_of_gt h
       first
-      | simp [sl, Nmat, Matrix.one_apply, eS, h, hab, MeasurableEquiv.piEquivPiSubtypeProd_symm_apply]
-      | simp [sl, Nmat, Matrix.one_apply, eS, h, hab, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd_symm_apply]
-      | simp [sl, Nmat, Matrix.one_apply, eS, h, hab, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd, MeasurableEquiv.symm]
+      | simp [sl, Nmat, eS, h, hab, MeasurableEquiv.piEquivPiSubtypeProd_symm_apply]
     · first
       | simp [sl, Nmat, Matrix.one_apply, eS, h, MeasurableEquiv.piEquivPiSubtypeProd_symm_apply]
-      | simp [sl, Nmat, Matrix.one_apply, eS, h, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd_symm_apply]
-      | simp [sl, Nmat, Matrix.one_apply, eS, h, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd, MeasurableEquiv.symm]
   have h2 : ∀ τ : X.Ψ, up ((eS X.Ψ r).symm (x, y)) τ = Umat y τ := by
     intro τ
     ext a b
     by_cases h : b < a
     · first
       | simp [up, Umat, eS, h, MeasurableEquiv.piEquivPiSubtypeProd_symm_apply]
-      | simp [up, Umat, eS, h, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd_symm_apply]
-      | simp [up, Umat, eS, h, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd, MeasurableEquiv.symm]
     · first
       | simp [up, Umat, eS, h, MeasurableEquiv.piEquivPiSubtypeProd_symm_apply]
-      | simp [up, Umat, eS, h, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd_symm_apply]
-      | simp [up, Umat, eS, h, MeasurableEquiv.piEquivPiSubtypeProd, Equiv.piEquivPiSubtypeProd, MeasurableEquiv.symm]
   funext τ a b
   show ((1 + sl ((eS X.Ψ r).symm (x, y)) τ) * up ((eS X.Ψ r).symm (x, y)) τ) a b =
     (Nmat x τ * Umat y τ) a b
@@ -123,7 +111,6 @@ lemma continuous_uf : Continuous (uf X) := by
   unfold uf
   first
   | fun_prop
-  | exact continuous_pi fun τ => continuous_pi fun a => continuous_pi fun b => continuous_apply _
 
 lemma densY_eq {y : Frame X.Ψ r} :
     densY X y = (∏ τ, ∏ i : Fin r, ‖dmin X.Gm y τ i.castSucc‖ ^ 2)⁻¹ := by
@@ -134,8 +121,6 @@ lemma densY_eq {y : Frame X.Ψ r} :
   refine Finset.prod_congr rfl fun i _ => ?_
   first
   | simp only [_root_.zpow_neg, zpow_ofNat]
-  | simp [_root_.zpow_neg]
-  | norm_num [_root_.zpow_neg]
 
 theorem inner_eq {x0 : Frame X.Ψ r} (hx0 : X.IsOrtho x0) {φ : Frame X.Ψ r → ENNReal}
     (hφ : ∀ x ∈ X.dom, ∀ b ∈ Bor X.Ψ r, φ (rmul x b) = φ x) (x : LoI X.Ψ r → ℂ) :

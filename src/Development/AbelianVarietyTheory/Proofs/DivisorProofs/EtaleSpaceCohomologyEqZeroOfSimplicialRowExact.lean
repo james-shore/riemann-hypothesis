@@ -275,7 +275,7 @@ theorem GlobalTheory.EtC.vanish_of_rowExact : ∀ (R : Type) [CommRing R] (F : S
             rw [Units.smul_def, Preadditive.zsmul_comp, Category.assoc, hs, comp_zero, smul_zero]
           · rw [δ_v ((n : ℤ) - 1) n (by omega) γ _ _ hpq (q - 1) (p' + 1) (by omega) rfl]
             simp (disch := omega) only [γ, Cochain.add_v, Cochain.units_smul_v, Cochain.single_v_eq_zero,
-              smul_zero, add_zero, zero_add, comp_zero, zero_comp]
+              smul_zero, add_zero, comp_zero, zero_comp]
         · have hq : S = q := by omega
           subst hq
           rw [δ_v ((n : ℤ) - 1) n (by omega) γ _ _ hpq (S - 1) (-((p : ℕ) : ℤ)) (by omega) (by omega), chains_d E p]

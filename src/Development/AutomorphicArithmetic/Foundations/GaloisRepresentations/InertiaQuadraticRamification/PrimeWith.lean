@@ -139,7 +139,7 @@ theorem UpperTheory.Gal.UnramifiedFromSplittingCriterion.primeWith :
     · intro w hw
       simp only [hSdef, Set.mem_setOf_eq, pw_normV] at hw
       simp only [Set.mem_preimage, Set.mem_iUnion, Set.mem_setOf_eq, Finset.mem_range,
-        Finset.mem_coe, exists_prop]
+        exists_prop]
       exact ⟨_, by omega, rfl⟩
   obtain ⟨v, hvS, -, B0, hB0, hIne, φ, hφ, hφg⟩ :=
     GlobalTheory.Published.chebotarevDegreeOne' ℚ Ω L (AlgEquiv.restrictNormalHom L gA) S hS

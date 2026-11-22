@@ -26,7 +26,7 @@ theorem colE_inv_val_eq_zero (ρ : ℕ) (β : n → k) (t s : n ⊕ Fin c) (h : 
     intro hs; apply h; simp [lev, hs]
   · simp [colE, upU]
   · have : t ≠ s := by rintro rfl; exact h rfl
-    simp [colE, upU, Matrix.one_apply, this]
+    simp [colE, upU, this]
 
 theorem colE_uni (ρ : ℕ) (β : n → k) :
     ∀ r s, (Sum.elim (fun _ => 0) (fun _ => 1) : n ⊕ Fin c → ℕ) s ≤ Sum.elim (fun _ => 0) (fun _ => 1) r →

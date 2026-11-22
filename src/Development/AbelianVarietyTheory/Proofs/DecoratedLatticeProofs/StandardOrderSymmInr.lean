@@ -28,7 +28,7 @@ theorem typeFrame_bas_inv_val (ϖ : kˣ) (ord : ι ≃ n ⊕ Fin c) :
   funext i
   rcases i with i | i
   · simp
-  · simp [mul_inv_cancel₀, pow_ne_zero]
+  · simp
 
 end Coords
 

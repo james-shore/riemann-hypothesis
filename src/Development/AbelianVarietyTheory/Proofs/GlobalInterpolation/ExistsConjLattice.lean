@@ -19,9 +19,7 @@ theorem exists_conj_lattice (σ : ℂ ≃+* ℂ) (L : PeriodPair) :
   first
   | exact @_root_.GlobalTheory.DiscUniformisation.main
   | exact _root_.GlobalTheory.DiscUniformisation.main
-  | (apply _root_.GlobalTheory.DiscUniformisation.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DiscUniformisation.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DiscUniformisation.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.DiscUniformisation.main)
   | (intros; exact _root_.GlobalTheory.DiscUniformisation.main ..)
 
 end GlobalTheory.CMRam

@@ -317,7 +317,7 @@ theorem icxGood_ePow (A : Fin n → Fin n → Module.End ℂ (smD ε (rreg ε)))
       by_cases h : a = b
       · subst h
         simpa [ePow, Bl.ThirdBlockLemmaA.goal1, Matrix.one_apply, S7.opPow] using hx
-      · exact icxGood_congr icxGood_zero (by simp [ePow, Bl.ThirdBlockLemmaA.goal1, Matrix.one_apply, h]) fun g _ => by simp [S7.opPow, h]
+      · exact icxGood_congr icxGood_zero (by simp [ePow, Bl.ThirdBlockLemmaA.goal1, h]) fun g _ => by simp [S7.opPow, h]
   | k + 1, a, b => by
       have := icxGood_sum Finset.univ fun c _ => hAB a c _ _ (icxGood_ePow A B hAB hx k c b)
       exact icxGood_congr this (by simp [ePow, Bl.ThirdBlockLemmaA.goal1, pow_succ', Matrix.mul_apply, LinearMap.sum_apply, Module.End.mul_apply]) fun g _ => by
@@ -361,7 +361,7 @@ theorem icxGood_tm {x : smD ε (rreg ε)} {Φ : Matrix (Fin n) (Fin n) ℂ → E
       (icxGood_eab hx a a) 1
     refine icxGood_congr h1 ?_ (fun g _ => ?_)
     · simp [Formalism.REAL.Tm]
-    · simp only [Formalism.QuantumDeterminants.Top, eq_self_iff_true, if_true, zero_add, one_smul, S7_EabV_eq_REAL_EabV]
+    · simp only [Formalism.QuantumDeterminants.Top, if_true, zero_add, one_smul, S7_EabV_eq_REAL_EabV]
   · refine icxGood_congr (icxGood_eab hx a b) ?_ (fun g _ => ?_)
     · simp [Formalism.REAL.Tm, hab]
     · simp only [Formalism.QuantumDeterminants.Top, if_neg hab, zero_add, S7_EabV_eq_REAL_EabV]

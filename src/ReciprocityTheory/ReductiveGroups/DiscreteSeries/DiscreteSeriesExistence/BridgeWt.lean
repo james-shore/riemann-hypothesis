@@ -17,7 +17,7 @@ theorem bwtDiag_inG (ε : Fin n → Bool) (θ : Fin n → ℝ) : inG ε (bwtDiag
     Matrix.diagonal_mul_diagonal, Matrix.diagonal_add, ← Matrix.diagonal_zero]
   congr 1
   funext a
-  simp only [Pi.add_apply, Pi.star_apply, Complex.star_def, map_mul, Complex.conj_ofReal,
+  simp only [Pi.star_apply, Complex.star_def, map_mul, Complex.conj_ofReal,
     Complex.conj_I]
   ring
 
@@ -27,7 +27,7 @@ theorem bwt_exp (θ : Fin n → ℝ) (t : ℝ) :
   have h : (t : ℂ) • bwtDiag θ = Matrix.diagonal (fun a => (t : ℂ) * ((θ a : ℂ) * Complex.I)) := by
     rw [bwtDiag]
     ext i j
-    by_cases h : i = j <;> simp [Matrix.diagonal_apply, h]
+    by_cases h : i = j <;> simp [h]
   rw [h, Matrix.exp_diagonal]
   congr 1
   funext a
@@ -91,8 +91,7 @@ private theorem apply_one_eq_exp_smul_of_hasDerivAt_smul {F : ℝ → H} {c : �
     simp
   have hconst := is_const_of_deriv_eq_zero (fun s => (hG s).differentiableAt)
     (fun s => (hG s).deriv) 1 0
-  simp only [Complex.ofReal_one, one_mul, Complex.ofReal_zero, zero_mul, neg_zero,
-    Complex.exp_zero, one_smul] at hconst
+  simp only [Complex.ofReal_one, one_mul, Complex.ofReal_zero, zero_mul, Complex.exp_zero, one_smul] at hconst
   rw [← hconst, smul_smul, ← Complex.exp_add]
   simp
 
@@ -126,7 +125,7 @@ theorem isWtOn_iff (hσ : IsURepOn (UJset ε) σ) (hD : IsDerivedOn ε σ D E) (
       convert this using 1
       simp
     have heq := hder.unique hexp
-    rw [Finset.sum_eq_single a (fun b _ hb => by simp [Pi.single_apply, hb]) (by simp)] at heq
+    rw [Finset.sum_eq_single a (fun b _ hb => by simp [hb]) (by simp)] at heq
     simp only [Pi.single_eq_same, Complex.ofReal_one, one_mul] at heq
     apply Subtype.ext
     have h2 : Complex.I • ((E a a v : D) : H) = Complex.I • (((μ a : ℝ) : ℂ) • (v : H)) := by

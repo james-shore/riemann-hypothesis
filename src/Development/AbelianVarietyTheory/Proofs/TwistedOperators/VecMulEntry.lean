@@ -69,7 +69,7 @@ theorem GlobalTheory.FrameScale.clauses : OnStd fun {D} _ _ {sc} {G} W F => ∀ 
         fun i => p.pr (incA D (star ((G.colDec (2 * σ + 2) (by omega) h').a i ⟨q.1, by omega⟩))) := by
       funext i
       rw [hcol]
-      simp only [map_mul, GlobalTheory.DualPairCheck.cA_incA, star_pow, map_pow, Pi.smul_apply, smul_eq_mul]
+      simp only [map_mul, GlobalTheory.DualPairCheck.cA_incA, map_pow, Pi.smul_apply, smul_eq_mul]
     have hsm : ∀ (x : k) (u : Fin (G.V (.grid (2 * σ + 2) 0)).rank → k)
         (M : Matrix (Fin (G.V (.grid (2 * σ + 2) 0)).rank) (Fin (G.V (.grid (2 * σ + 2) 0)).rank) k),
         (x • u) ᵥ* M = x • (u ᵥ* M) := by

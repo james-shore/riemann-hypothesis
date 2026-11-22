@@ -18,7 +18,7 @@ private theorem isRoot_charpoly_smul' {k : Type} [Field k] {n : ℕ} (c : k) (hc
     (c • M).charpoly.IsRoot (c * x) ↔ M.charpoly.IsRoot x := by
   have h : Matrix.scalar (Fin n) (c * x) - c • M = c • (Matrix.scalar (Fin n) x - M) := by
     ext i j
-    by_cases hij : i = j <;> simp [Matrix.scalar_apply, Matrix.diagonal_apply, hij, mul_sub]
+    by_cases hij : i = j <;> simp [Matrix.scalar_apply, hij, mul_sub]
   rw [Polynomial.IsRoot.def, Polynomial.IsRoot.def, Matrix.eval_charpoly, Matrix.eval_charpoly, h,
     Matrix.det_smul]
   simp [hc]

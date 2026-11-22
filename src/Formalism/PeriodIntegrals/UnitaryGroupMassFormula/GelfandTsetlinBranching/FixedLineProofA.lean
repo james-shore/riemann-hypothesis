@@ -48,8 +48,7 @@ theorem eps_A (kap : Fin n → ℕ) (ν : Fin (n + 1) → ℕ) (f : MvPolynomial
     | last =>
       induction s using Fin.lastCases with
       | last =>
-        simp [Y, lhwline_rowOp, lhwline_colOp, mkPtA, zz, (Fin.castSucc_lt_last i').ne',
-          (Fin.castSucc_lt_last i).ne']
+        simp [Y, lhwline_rowOp, lhwline_colOp, mkPtA, zz, (Fin.castSucc_lt_last i').ne']
       | cast k =>
         simp only [Y, lhwline_rowOp, lhwline_colOp, mkPtA, zz, Fin.lastCases_castSucc, Fin.lastCases_last,
           Fin.castSucc_inj, (Fin.castSucc_lt_last i').ne', if_false]
@@ -63,8 +62,7 @@ theorem eps_A (kap : Fin n → ℕ) (ν : Fin (n + 1) → ℕ) (f : MvPolynomial
       | last =>
         simp [Y, lhwline_rowOp, lhwline_colOp, mkPtA, (Fin.castSucc_lt_last i').ne']
       | cast k =>
-        simp only [Y, lhwline_rowOp, lhwline_colOp, mkPtA, dv, Fin.lastCases_castSucc, Fin.lastCases_last,
-          Fin.castSucc_inj]
+        simp only [Y, lhwline_rowOp, lhwline_colOp, mkPtA, dv, Fin.lastCases_castSucc, Fin.castSucc_inj]
         by_cases ha : a = i
         · subst ha
           have hai : a ≠ i' := hne
@@ -73,28 +71,28 @@ theorem eps_A (kap : Fin n → ℕ) (ν : Fin (n + 1) → ℕ) (f : MvPolynomial
             simp [hai]
           · by_cases hk' : k = i'
             · subst hk'
-              simp [hai, hk, Ne.symm hai, hne, Ne.symm hne]
+              simp [hai, hk]
               field_simp
             · simp [hai, hk, hk']
         · by_cases ha' : a = i'
           · subst ha'
             by_cases hk : k = i
             · subst hk
-              simp [ha, hne, Ne.symm hne]
+              simp [ha, hne]
               field_simp
             · by_cases hk' : k = a
               · subst hk'
-                simp [ha, hk, hne, Ne.symm hne]
+                simp [ha, hne]
                 field_simp
                 ring
-              · simp [ha, hk, hk', Ne.symm hk']
+              · simp [ha, hk, hk']
           · by_cases hk : k = i
             · subst hk
-              simp [ha, ha', Ne.symm ha, hne, Ne.symm hne]
+              simp [ha, ha', Ne.symm ha, hne]
             · by_cases hk' : k = i'
               · subst hk'
-                simp [ha, ha', hk, Ne.symm ha', Ne.symm ha]
-              · by_cases hka : k = a <;> simp [ha, ha', hk, hk', hka, Ne.symm ha, Ne.symm ha']
+                simp [ha, ha', Ne.symm ha', Ne.symm ha]
+              · by_cases hka : k = a <;> simp [ha, ha', hk', hka]
   have hval : ∀ e : ℂ, e ≠ 0 →
       (aeval Y f).eval e = coeff (mStarA kap ν) f * (e ^ kap i * (-1 / e) ^ νp) := by
     intro e he
@@ -143,8 +141,7 @@ theorem eps_A (kap : Fin n → ℕ) (ν : Fin (n + 1) → ℕ) (f : MvPolynomial
     field_simp
     ring
   have hco := congrArg (fun r : Polynomial ℂ => r.coeff (kap i)) hq0
-  simp only [hq, Polynomial.coeff_sub, Polynomial.coeff_mul_X_pow', Polynomial.coeff_C_mul_X_pow,
-    if_neg (not_le.mpr hlt), if_pos rfl, Polynomial.coeff_zero, zero_sub, neg_eq_zero] at hco
+  simp only [hq, Polynomial.coeff_sub, Polynomial.coeff_mul_X_pow', if_neg (not_le.mpr hlt), Polynomial.coeff_zero, zero_sub, neg_eq_zero] at hco
   simp at hco
   rcases hco with h | h
   · exact hc h
@@ -198,7 +195,7 @@ theorem fixedLine_proof_A : FixedLine := by
       have hcs2 : ∑ ρ, mStarA (kapA lam mu) lam.natW (ρ, Fin.castSucc a) =
           kapA lam mu a + (lam.natW (Fin.castSucc a) - kapA lam mu a) := by
         rw [Fin.sum_univ_castSucc]
-        simp [Finset.sum_ite_eq']
+        simp
       omega
     intro i
     have hcast : (⟨i.1, by omega⟩ : Fin (n + 1)) = Fin.castSucc i := Fin.ext rfl

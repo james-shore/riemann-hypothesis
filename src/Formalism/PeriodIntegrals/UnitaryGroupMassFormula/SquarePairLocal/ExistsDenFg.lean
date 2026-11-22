@@ -101,7 +101,7 @@ variable {E : Type} [Field E] [NumberField E] {N : ℕ}
 theorem exists_den (L'' : Submodule (𝓞 E) (Fin N → E))
     (hsp : Submodule.span E (L'' : Set (Fin N → E)) = ⊤) (v : Fin N → E) :
     ∃ d : 𝓞 E, d ≠ 0 ∧ d • v ∈ L'' := by
-  first | exact Bl.general_b_fact_left_bis.goal1 .. | (apply Bl.general_b_fact_left_bis.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_left_bis.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_bis.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_left_bis.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_bis.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_left_bis.goal1 .. | (apply Bl.general_b_fact_left_bis.goal1 <;> assumption)
 
 theorem exists_den_fg (L' L'' : Submodule (𝓞 E) (Fin N → E)) (hfg : L'.FG)
     (hsp : Submodule.span E (L'' : Set (Fin N → E)) = ⊤) :

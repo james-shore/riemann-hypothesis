@@ -123,7 +123,6 @@ private theorem sum_padicValInt_sub_le_of_lt_forall (ℓ : ℕ) [Fact ℓ.Prime]
     have h1 := Finset.mem_Icc.1 (hS hb)
     have h2 := abs_le.1 (hSD b hb)
     have h3 := hlt b hb
-    beta_reduce
     omega
   · intro b _ b' _ h
     have h' : a - b = a - b' := h
@@ -144,7 +143,6 @@ private theorem sum_padicValInt_sub_le_of_gt_forall (ℓ : ℕ) [Fact ℓ.Prime]
     have h1 := Finset.mem_Icc.1 (hS hb)
     have h2 := abs_le.1 (hSD b hb)
     have h3 := hgt b hb
-    beta_reduce
     omega
   · intro b _ b' _ h
     have h' : b - a = b' - a := h

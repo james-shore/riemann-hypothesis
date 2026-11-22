@@ -16,8 +16,6 @@ theorem summable_prod_tuples {u : ∀ i, J i → ℝ} (h0 : ∀ i j, 0 ≤ u i j
   | exact @_root_.GlobalTheory.SummablePiProd.summable_pi_prod
   | exact _root_.GlobalTheory.SummablePiProd.summable_pi_prod
   | (apply _root_.GlobalTheory.SummablePiProd.summable_pi_prod <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SummablePiProd.summable_pi_prod <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SummablePiProd.summable_pi_prod <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SummablePiProd.summable_pi_prod ..)
 
 variable {𝕜 : Type*} [NontriviallyNormedField 𝕜] {V : ι → Type*} [∀ i, NormedAddCommGroup (V i)]

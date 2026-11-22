@@ -111,7 +111,7 @@ theorem integral_of_alg (b : WW p) (hb : IsAlgebraic ℚ_[p] (algebraMap (WW p) 
 
 theorem norm_le_one_of_root {K : Type*} [NormedField K] [IsUltrametricDist K] (P : K[X]) (hm : P.Monic)
     (hc : ∀ i, ‖P.coeff i‖ ≤ 1) (x : K) (hx : P.eval x = 0) : ‖x‖ ≤ 1 := by
-  first | exact Bl.general_b_fact_third.goal1 .. | (apply Bl.general_b_fact_third.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_third.goal1 <;> assumption) | (apply @Bl.general_b_fact_third.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_third.goal1 <;> assumption) | (apply @Bl.general_b_fact_third.goal1 <;> first | assumption | infer_instance) | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P hm hc x hx | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P hm hc x | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P hm hc | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P hm | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› | exact @Bl.general_b_fact_third.goal1 K ‹_› | exact @Bl.general_b_fact_third.goal1 K
+  first | exact Bl.general_b_fact_third.goal1 .. | (apply Bl.general_b_fact_third.goal1 <;> assumption) | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P hm hc x hx | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P hm hc x | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P hm hc | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P hm | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› P | exact @Bl.general_b_fact_third.goal1 K ‹_› ‹_› | exact @Bl.general_b_fact_third.goal1 K ‹_› | exact @Bl.general_b_fact_third.goal1 K
 
 abbrev Kalg : IntermediateField ℚ_[p] (K0 p) := algebraicClosure ℚ_[p] (K0 p)
 
@@ -222,7 +222,7 @@ theorem nadd {a b : ℂ_[p]} {c : ℝ} (ha : ‖a‖ ≤ c) (hb : ‖b‖ ≤ c)
   (PadicComplex.isNonarchimedean p a b).trans (max_le ha hb)
 
 theorem nsub {a b : ℂ_[p]} {c : ℝ} (ha : ‖a‖ ≤ c) (hb : ‖b‖ ≤ c) : ‖a - b‖ ≤ c := by
-  first | exact Bl.FirstBlockLemmaF.goal1 .. | (apply Bl.FirstBlockLemmaF.goal1 <;> assumption) | (intros; apply Bl.FirstBlockLemmaF.goal1 <;> assumption) | (apply @Bl.FirstBlockLemmaF.goal1 <;> assumption) | (intros; apply @Bl.FirstBlockLemmaF.goal1 <;> assumption) | (apply @Bl.FirstBlockLemmaF.goal1 <;> first | assumption | infer_instance) | exact @Bl.FirstBlockLemmaF.goal1 p hp a b c ha hb | exact @Bl.FirstBlockLemmaF.goal1 p hp a b c ha | exact @Bl.FirstBlockLemmaF.goal1 p hp a b c | exact @Bl.FirstBlockLemmaF.goal1 p hp a b | exact @Bl.FirstBlockLemmaF.goal1 p hp a | exact @Bl.FirstBlockLemmaF.goal1 p hp | exact @Bl.FirstBlockLemmaF.goal1 p
+  first | exact Bl.FirstBlockLemmaF.goal1 .. | (apply Bl.FirstBlockLemmaF.goal1 <;> assumption) | exact @Bl.FirstBlockLemmaF.goal1 p hp a b c ha hb | exact @Bl.FirstBlockLemmaF.goal1 p hp a b c ha | exact @Bl.FirstBlockLemmaF.goal1 p hp a b c | exact @Bl.FirstBlockLemmaF.goal1 p hp a b | exact @Bl.FirstBlockLemmaF.goal1 p hp a | exact @Bl.FirstBlockLemmaF.goal1 p hp | exact @Bl.FirstBlockLemmaF.goal1 p
 
 theorem approx_close {N M : ℕ} (hNM : N ≤ M) {x : WW p} {z z' : Kalg p} (h : Approx p N x z)
     (h' : Approx p M x z') : ‖phi p z - phi p z'‖ ≤ ((p : ℝ)⁻¹) ^ N := by

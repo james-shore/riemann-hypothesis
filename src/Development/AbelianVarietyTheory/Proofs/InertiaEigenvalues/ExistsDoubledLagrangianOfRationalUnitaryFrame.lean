@@ -41,8 +41,7 @@ theorem blocks_rel (G : Matrix n n K) (hG : G.det ≠ 0) (B : Matrix (n ⊕ n) (
   have h := row_rel G hG B hB
   rw [← fromBlocks_toBlocks B, fromBlocks_conjTranspose, fromBlocks_multiply, fromBlocks_multiply,
     fromBlocks_inj] at h
-  simp only [toBlocks_fromBlocks₁₁, toBlocks_fromBlocks₁₂, toBlocks_fromBlocks₂₁, toBlocks_fromBlocks₂₂,
-    Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.mul_neg, Matrix.neg_mul, zero_sub, ← sub_eq_add_neg] at h
+  simp only [Matrix.mul_zero, add_zero, Matrix.mul_neg, Matrix.neg_mul, zero_sub, ← sub_eq_add_neg] at h
   exact h
 
 end Blocks
@@ -143,8 +142,7 @@ theorem blk_unitary (W : HSp D) (γ : GA D (GlobalTheory.Doubling.dblSp W))
   rw [show (GlobalTheory.Doubling.dblSp W).gram = GlobalTheory.Doubling.dblGram finSumFinEquiv W.gram from GlobalTheory.Doubling.gram_hdbl W]
     at hU
   have := congrArg (fun X => X.submatrix finSumFinEquiv finSumFinEquiv) hU
-  simp only [← Matrix.submatrix_mul_equiv _ _ _ finSumFinEquiv _, Matrix.conjTranspose_submatrix,
-    GlobalTheory.Doubling.dblGram, GlobalTheory.Doubling.submatrix_blkMat] at this
+  simp only [← Matrix.submatrix_mul_equiv _ _ _ finSumFinEquiv _, GlobalTheory.Doubling.dblGram, GlobalTheory.Doubling.submatrix_blkMat] at this
   exact this
 
 theorem exists_lag_isLagFrame_frameOf (D : D7) (W : HSp D) (γ : GA D (GlobalTheory.Doubling.dblSp W))
@@ -178,6 +176,6 @@ theorem exists_lag_isLagFrame_frameOf (D : D7) (W : HSp D) (γ : GA D (GlobalThe
   refine Eq.trans ?_ hs
   congr 2
   funext j
-  ext a <;> simp [φ, Matrix.mulVec, dotProduct, Pi.single_apply]
+  ext a <;> simp [φ]
 
 end GlobalTheory.SWLagTerms.LagrangianFrames

@@ -89,7 +89,7 @@ theorem smap_measEmb (τ : D.what₂.Tau) (γ : Formalism.REAL.UJ (X.B.I.ε (vOf
         have hx' : umat γ * (C.Q τ * Matrix.of x * C.y τ * C.Qi τ) ∈ UJset (X.B.I.ε (vOf X τ)) := hx
         refine ⟨ujOf' _ hx', ?_⟩
         unfold Smap umat ujOf'
-        simp only [Subgroup.coe_mul, Subgroup.coe_inv, Units.val_mul, Units.val_mk, Units.inv_mul_cancel_left]
+        simp only [Subgroup.coe_mul, Subgroup.coe_inv, Units.val_mul, Units.inv_mul_cancel_left]
         rw [Qi_mul_Q_conj_mul_y_inv_eq C τ]
         simp
     rw [hS]
@@ -104,7 +104,7 @@ theorem smap_measEmb (τ : D.what₂.Tau) (γ : Formalism.REAL.UJ (X.B.I.ε (vOf
     apply Subtype.ext
     apply Units.ext
     unfold smapInv ujOf' Set.rangeFactorization Smap
-    simp only [Equiv.apply_symm_apply, Units.val_mk]
+    simp only [Equiv.apply_symm_apply]
     rw [conj_lemma_2 C τ]
     unfold umat
     simp only [Subgroup.coe_mul, Subgroup.coe_inv, Units.val_mul, Units.mul_inv_cancel_left]
@@ -143,7 +143,6 @@ theorem integrand_aesm (u u' : D.what₂.Word) (τ : D.what₂.Tau) (γ : Formal
     first
       | exact X.W.Wloc_cont w _
       | exact X.Wloc_cont w _
-      | exact X.toWBlk.Wloc_cont w _
   rw [(smap_measEmb C τ γ).aestronglyMeasurable_map_iff]
   have he : (fun x : Formalism.QuantumDeterminants.Mt D.R.k D.R.rS =>
       (innerSL ℂ ((locS hB u u' τ).Φ' (Matrix.of x))).smulRight

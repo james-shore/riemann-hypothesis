@@ -30,15 +30,15 @@ theorem locallyIntegrable_comp_eval_fin {D : ℕ} (i : Fin D) {g : ℂ → ℝ}
   · rw [Set.indicator_apply, if_pos hz]
     rw [Set.mem_univ_pi] at hz
     rw [Finset.prod_eq_single i]
-    · simp [Set.indicator_apply, hz i]
+    · simp [hz i]
     · intro j _ hj
-      simp [hj, Set.indicator_apply, hz j]
+      simp [hj, hz j]
     · simp
   · rw [Set.indicator_apply, if_neg hz]
     rw [Set.mem_univ_pi] at hz
     push_neg at hz
     obtain ⟨j, hj⟩ := hz
-    exact Finset.prod_eq_zero (Finset.mem_univ j) (by split_ifs <;> simp [Set.indicator_apply, hj])
+    exact Finset.prod_eq_zero (Finset.mem_univ j) (by split_ifs <;> simp [hj])
 
 theorem locallyIntegrable_comp_fst_real {g : ℝ → ℝ} (hg : LocallyIntegrable g volume) :
     LocallyIntegrable (fun p : ℝ × ℝ => g p.1) volume := by
@@ -54,7 +54,7 @@ theorem locallyIntegrable_comp_fst_real {g : ℝ → ℝ} (hg : LocallyIntegrabl
       (isCompact_closedBall x.2 1))
   refine (h1.mul_prod h2).congr (Filter.Eventually.of_forall fun p => ?_)
   by_cases ha : p.1 ∈ Metric.closedBall x.1 1 <;> by_cases hb : p.2 ∈ Metric.closedBall x.2 1 <;>
-    simp [Set.indicator_apply, Set.mem_prod, ha, hb]
+    simp [Set.mem_prod, ha, hb]
 
 theorem locallyIntegrable_comp_snd_real {g : ℝ → ℝ} (hg : LocallyIntegrable g volume) :
     LocallyIntegrable (fun p : ℝ × ℝ => g p.2) volume := by
@@ -70,7 +70,7 @@ theorem locallyIntegrable_comp_snd_real {g : ℝ → ℝ} (hg : LocallyIntegrabl
     (hg.integrableOn_isCompact (isCompact_closedBall x.2 1))
   refine (h1.mul_prod h2).congr (Filter.Eventually.of_forall fun p => ?_)
   by_cases ha : p.1 ∈ Metric.closedBall x.1 1 <;> by_cases hb : p.2 ∈ Metric.closedBall x.2 1 <;>
-    simp [Set.indicator_apply, Set.mem_prod, ha, hb]
+    simp [Set.mem_prod, ha, hb]
 
 theorem locallyIntegrable_real_log : LocallyIntegrable Real.log volume := by
   intro x

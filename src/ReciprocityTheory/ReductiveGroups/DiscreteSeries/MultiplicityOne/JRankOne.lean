@@ -8,7 +8,7 @@ theorem rankOneMinors : RankOneMinors := by
   · obtain ⟨x0, hx0⟩ := h
     have him : (κ x0 x0).im = 0 := by
       have h1 := congrArg Complex.im (hherm x0 x0)
-      simp [Complex.star_def] at h1
+      simp at h1
       linarith
     have hk0 : κ x0 x0 = (((κ x0 x0).re : ℝ) : ℂ) := Complex.ext (by simp) (by simp [him])
     have hr : 0 < (κ x0 x0).re := by

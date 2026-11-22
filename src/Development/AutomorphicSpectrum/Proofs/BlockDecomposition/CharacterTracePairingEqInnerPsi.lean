@@ -24,7 +24,7 @@ theorem repr_tmap (f : R →ₐ[F] S) {ι : Type} (b : Module.Basis ι F E) (z :
   induction z using TensorProduct.induction_on with
   | zero => simp
   | tmul r e =>
-    simp [Algebra.TensorProduct.basis_repr_tmul, Finsupp.mapRange_apply, Algebra.smul_def]
+    simp [Algebra.TensorProduct.basis_repr_tmul, Finsupp.mapRange_apply]
   | add x y hx hy => simp [map_add, hx, hy]
 
 theorem trace_tmap [Module.Finite F E] (f : R →ₐ[F] S) (z : R ⊗[F] E) :

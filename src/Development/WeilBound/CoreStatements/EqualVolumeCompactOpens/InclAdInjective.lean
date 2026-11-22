@@ -98,7 +98,7 @@ theorem powerScalar : PowerScalar := by
       show (z : Matrix (Fin N) (Fin N) R)ᵀ * J * (z : Matrix (Fin N) (Fin N) R).map σ = J
       have : ((d : R) • (1 : Matrix (Fin N) (Fin N) R)).map σ = σ d • (1 : Matrix (Fin N) (Fin N) R) := by
         ext i j
-        by_cases h : i = j <;> simp [h, Matrix.one_apply]
+        by_cases h : i = j <;> simp [h]
       rw [hz, this]
       simp only [transpose_smul, transpose_one, Matrix.smul_mul, Matrix.mul_smul, Matrix.one_mul, Matrix.mul_one,
         smul_smul]

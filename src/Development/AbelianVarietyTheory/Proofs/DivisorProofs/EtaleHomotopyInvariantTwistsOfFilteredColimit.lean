@@ -18,7 +18,7 @@ def polyDiag : J ⥤ CommRingCat.{0} where
     simp
   map_comp f g := by
     refine CommRingCat.hom_ext (RingHom.ext fun p => ?_)
-    simp [Polynomial.map_map]
+    simp
 
 def polyCocone (c : Cocone D) : Cocone (polyDiag D) where
   pt := CommRingCat.of (Polynomial c.pt)

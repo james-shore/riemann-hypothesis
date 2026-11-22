@@ -107,7 +107,7 @@ theorem span_mod_equations_lift (O : Type) [CommRing O] [IsDomain O] [IsDiscrete
     ⟨fun i => (show MvPowerSeries (Fin g) O from fun d => x (.inr (y, i, d))), ?_⟩⟩
   ext d
   have h1 : _ = MvPowerSeries.coeff d (G y) := congrFun hx (y, d)
-  simp only [map_sub, map_sum, MvPowerSeries.coeff_mul, MvPowerSeries.coeff_smul, ← h1, Φ,
+  simp only [map_sub, map_sum, MvPowerSeries.coeff_smul, ← h1, Φ,
     LinearMap.coe_mk, AddHom.coe_mk, add_sub_cancel_left]
   exact Finset.sum_congr rfl fun i _ => MvPowerSeries.coeff_mul d _ _
 

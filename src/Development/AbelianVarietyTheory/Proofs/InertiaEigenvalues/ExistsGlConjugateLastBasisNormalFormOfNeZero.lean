@@ -58,7 +58,7 @@ theorem shiftCompanionLastRowMatrix_mulVec_firstBasis {r : ℕ} {k : Type} [Comm
   | last => simp [nfMat, Matrix.mulVec, dotProduct, eL]
   | cast i =>
     rw [nfMat_mulVec_castSucc]
-    simp [eL, Pi.single_apply, Fin.castSucc_ne_last]
+    simp [eL, Fin.castSucc_ne_last]
 
 theorem glNormal_of_ne_zero : ∀ (k : Type) [Field k] (r : ℕ) (a : Inv (r + 1) k), a.2.1 0 ≠ 0 →
     ∃ (g : GL (Fin (r + 1)) k) (Z : Gl r k), act g (sec a) = GlobalTheory.JR.Step.lift Z (a.2.1 0) a.2.2 := by

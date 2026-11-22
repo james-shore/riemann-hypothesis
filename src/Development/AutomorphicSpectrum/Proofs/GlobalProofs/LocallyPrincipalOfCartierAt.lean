@@ -65,8 +65,6 @@ theorem locPrincipal_of_cartAt : ∀ {X : Scheme.{0}} [IsIntegral X] (Z : X.Idea
     rw [hZV, Ideal.map_span, Set.image_singleton] at hmap
     first
       | exact hmap.symm
-      | (rw [← hmap]; rfl)
-      | (convert hmap.symm using 3)
   letI : Algebra Γ(X, U.1) Γ(X, X.basicOpen f) := (X.presheaf.map (homOfLE hWU).op).hom.toAlgebra
   haveI : IsLocalization.Away f Γ(X, X.basicOpen f) := U.2.isLocalization_basicOpen f
   have hb : (X.presheaf.map (homOfLE hWV).op).hom h ≠ 0 := by
@@ -80,7 +78,6 @@ theorem locPrincipal_of_cartAt : ∀ {X : Scheme.{0}} [IsIntegral X] (Z : X.Idea
     rw [← hZW]
     first
       | exact Z.map_ideal (U := X.affineBasicOpen f) (V := U) hWU
-      | exact Z.map_ideal_basicOpen U f
   obtain ⟨f0, hf0, hf0ne, hgen⟩ :=
     GlobalTheory.CompanionTheory.Hypotheses₂.CentreOver.exists_gen_of_map_eq_span f (Z.ideal U) _ hb hI
   refine ⟨f, f0, ?_, hf0, hf0ne, hgen⟩

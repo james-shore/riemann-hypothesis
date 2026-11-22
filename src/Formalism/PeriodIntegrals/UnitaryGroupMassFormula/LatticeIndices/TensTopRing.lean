@@ -15,7 +15,6 @@ theorem tens_topRing {F E : Type} [Field F] [NumberField F] [Field E] [Algebra F
   first
     | exact IsModuleTopology.topologicalRing (Fv F v) _
     | exact IsModuleTopology.isTopologicalRing (Fv F v) _
-    | exact IsModuleTopology.Module.topologicalRing (Fv F v) _
 
 theorem ha_contMul {F E : Type} [Field F] [NumberField F] [Field E] [Algebra F E] [FiniteDimensional F E]
     (σ : E →ₐ[F] E) {n : ℕ} (J : Matrix (Fin n) (Fin n) E) (v : HeightOneSpectrum (𝓞 F)) :
@@ -30,7 +29,5 @@ theorem stTop {D : D7} (X : HidaSetting D) (p : TypX X) : StTop X p := by
   refine ⟨ha_contMul _ _ _, ?_⟩
   first
     | exact ⟨rfl⟩
-    | (unfold HAp HA; infer_instance)
-    | (haveI := tens_topRing (F := X.B.I.F) (E := X.B.I.E) p.1; unfold HAp HA; infer_instance)
 
 end MassDataIdxSteps

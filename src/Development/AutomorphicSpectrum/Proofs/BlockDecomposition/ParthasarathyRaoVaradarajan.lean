@@ -173,7 +173,7 @@ theorem assemble {n : ℕ} {ι : Type} [Fintype ι] [DecidableEq ι] (c : Fin n 
     rw [← hφq, hφsum]
     refine Finset.sum_eq_zero (fun j _ => ?_)
     have : t j = 0 := by rw [h]; simp
-    simp only [t, PiLp.toLp_apply] at this
+    simp only [t] at this
     simp [this]
   have hDstar : ∀ a b i j, star (ReciprocityTheory.ChartRestriction.DS.HW.matrixFamilyDual (spinM c) a b i j) =
       ReciprocityTheory.ChartRestriction.DS.HW.matrixFamilyDual (spinM c) b a j i := by

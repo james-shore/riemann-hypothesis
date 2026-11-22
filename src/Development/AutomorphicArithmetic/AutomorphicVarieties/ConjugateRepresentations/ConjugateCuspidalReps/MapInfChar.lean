@@ -68,15 +68,15 @@ private theorem eF_det (t τ : E →+* ℂ) (i j : Fin a) :
     eF (fun y : GL (Fin a) (Cinf E) => (coord t y.val.det)⁻¹) τ i j = if t = τ ∧ i = j then -1 else 0 := by
   have h0 := (coordL t).hasFDerivAt.comp (oneL E a) (contDiff_det.differentiable (by simp) (oneL E a)).hasFDerivAt
   have hd : (Matrix.of (oneL E a)).det = 1 := Matrix.det_one
-  have h1 := (hasDerivAt_inv (x := coordL t (Matrix.of (oneL E a)).det) (by simp [hd])).hasFDerivAt.restrictScalars ℝ
+  have h1 := (hasDerivAt_inv (x := coordL t (Matrix.of (oneL E a)).det) (by simp)).hasFDerivAt.restrictScalars ℝ
   have h := dF_eq (f := fun y : GL (Fin a) (Cinf E) => (coord t y.val.det)⁻¹) (fun _ => rfl) (h1.comp (oneL E a) h0)
   have h2 : ∀ x : Cinf E, dF (fun y : GL (Fin a) (Cinf E) => (coord t y.val.det)⁻¹) (toL (Matrix.single i j x)) =
       if i = j then -coord t x else 0 := fun x => by
     have e0 : Matrix.of (toL (Matrix.single i j x)) = Matrix.single i j x := rfl
     rw [h, ContinuousLinearMap.comp_apply, ContinuousLinearMap.comp_apply, fderiv_det_one, e0]
     split_ifs with h3
-    · subst h3; simp [hd]
-    · simp [hd, h3]
+    · subst h3; simp
+    · simp [h3]
   rw [eF, h2, h2]
   by_cases h3 : i = j
   · have h4 := coord_hol τ t
@@ -104,7 +104,7 @@ private theorem conj_fun (σ : ℂ ≃+* ℂ) {f : GL (Fin a) (Cinf E) → ℂ} 
       ∀ τ i j, eF (fun y : GL (Fin a) (Cinf E) => σ (Φ fun i j => tE σ (y.val i j))) (σ.toRingHom.comp τ) i j = σ (eF f τ i j) := by
   classical
   have one : ∀ i j, tE σ ((1 : GL (Fin a) (Cinf E)).val i j) = emb E ((1 : GL (Fin a) (Cinf E)).val i j) := fun i j => by
-    by_cases h : i = j <;> simp [Matrix.one_apply, h]
+    by_cases h : i = j <;> simp [h]
   induction hf using Algebra.adjoin_induction with
   | mem f hf =>
     rcases hf with ⟨t, k, l, rfl⟩ | ⟨t, rfl⟩

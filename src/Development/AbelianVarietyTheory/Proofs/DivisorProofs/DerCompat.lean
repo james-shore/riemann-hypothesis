@@ -100,7 +100,7 @@ namespace GlobalTheory.KSAgree
 
 theorem dual_alg {S S' : Type} [CommRing S] [CommRing S'] (r : S →+* S') :
     (dualMap r).comp (algebraMap S (DualNumber S)) = (algebraMap S' (DualNumber S')).comp r := by
-  ext a <;> simp [dualMap, TrivSqZeroExt.algebraMap_eq_inl] <;> rfl
+  ext a <;> simp [dualMap, TrivSqZeroExt.algebraMap_eq_inl]
 
 theorem fst_dual {S S' : Type} [CommRing S] [CommRing S'] (r : S →+* S') :
     (TrivSqZeroExt.fstHom S' S' S').toRingHom.comp (dualMap r) = r.comp (TrivSqZeroExt.fstHom S S S).toRingHom := by

@@ -176,7 +176,7 @@ theorem SU_eq_closure (hdet : IsUnit J.det) [Nontrivial K]
   · intro hg
     have hdetg : g.det = 1 := hg.1
     have hpresg : ∀ x y, hf σ J (g *ᵥ x) (g *ᵥ y) = hf σ J x y := by
-      intro x y; apply SU_preserves (hg := hg) <;> first | exact hδ | exact hσδ | assumption
+      intro x y; apply SU_preserves (hg := hg)
     obtain ⟨r, F, hF⟩ : ∃ r, ∃ F : OFam σ J e f r, F.Spans := by
       apply exists_spans hσ hJ he hff hef hdet hfix
       all_goals first
@@ -257,8 +257,8 @@ theorem SU_eq_closure (hdet : IsUnit J.det) [Nontrivial K]
       rcases hx with hx | hx
       · exact (by apply eichAlong_sub (he := he) <;> first | exact hδ | exact hσδ | assumption : eichAlong σ J e f ⊆ SU σ J) hx
       · exact (by apply eichAlong_sub (he := hff) <;> first | exact hδ | exact hσδ | assumption : eichAlong σ J f e ⊆ SU σ J) hx
-    | one => apply one_mem_SU <;> first | exact hδ | exact hσδ | assumption
-    | mul x y _ _ hx hy => apply mul_mem_SU (hg := hx) (hh := hy) <;> first | exact hδ | exact hσδ | assumption
+    | one => apply one_mem_SU
+    | mul x y _ _ hx hy => apply mul_mem_SU (hg := hx) (hh := hy)
 
 end
 

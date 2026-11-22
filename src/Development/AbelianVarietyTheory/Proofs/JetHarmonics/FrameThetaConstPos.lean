@@ -159,7 +159,7 @@ private lemma cpt_zero_jet_harmonics (X : _root_.ReciprocityTheory.ChartRestrict
   · simp
   · intro j _ hj
     simp only [Matrix.of_apply]
-    split_ifs <;> first | exact mul_zero _ | simp_all
+    split_ifs <;> first | exact mul_zero _
   · simp
 
 open NumberField Topology in
@@ -196,7 +196,7 @@ private lemma single_ne_zero_jet_harmonics (τ : X.Ψ) (i j : Fin r) (h : i < j)
       if (k : ℕ) = (Fintype.equivFin (_root_.ReciprocityTheory.ChartRestriction.G.AR.Inst.Ent X) (τ, ⟨(j, i), h⟩) : ℕ) then (1 : ℂ) else 0 :
       Fin (_root_.ReciprocityTheory.ChartRestriction.G.AR.Inst.nd X) → ℂ) ≠ 0 := fun hz => by
   have := congrFun hz (Fintype.equivFin (_root_.ReciprocityTheory.ChartRestriction.G.AR.Inst.Ent X) (τ, ⟨(j, i), h⟩))
-  simp only [if_pos rfl] at this
+  simp only at this
   exact one_ne_zero this
 
 open NumberField Topology in
@@ -282,7 +282,7 @@ theorem _root_.GlobalTheory.ThetaRecordCompare.arch_gaps (A : _root_.Reciprocity
       · rw [if_neg hj, if_neg (by omega)]; norm_num
     have h1 := diagForm_Fp_sub_pos A (single_ne_zero_jet_harmonics τ i j hlt)
     rw [diagForm_single' _ τ i j hlt, hs, one_mul] at h1
-    simp only [Pi.sub_apply, Pi.smul_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply,
+    simp only [Pi.sub_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply,
       _root_.ReciprocityTheory.ChartRestriction.G.AR.Inst.kapW] at h1
     push_cast at h1
     have hR : (0 : ℝ) < ((A.Fp τ i - A.Fp τ j + 2 * ((j : ℤ) - i) -
@@ -302,7 +302,7 @@ theorem _root_.GlobalTheory.ThetaRecordCompare.arch_gaps (A : _root_.Reciprocity
       rw [if_neg (by omega), if_pos (by omega)]; norm_num
     have h1 := diagForm_Fp_sub_pos A (single_ne_zero_jet_harmonics τ i0 i1 hlt)
     rw [diagForm_single' _ τ i0 i1 hlt, hs] at h1
-    simp only [Pi.sub_apply, Pi.smul_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply,
+    simp only [Pi.sub_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply,
       _root_.ReciprocityTheory.ChartRestriction.G.AR.Inst.kapW] at h1
     push_cast at h1
     have hR : (0 : ℝ) < ((A.Fp τ i1 - A.Fp τ i0 - 2 * ((i1 : ℤ) - i0) -
@@ -361,7 +361,7 @@ theorem _root_.GlobalTheory.ThetaRecordCompare.gaps_add {la la' : _root_.Recipro
   have a2 : (0 : ℤ) ≤ la' τ i - la' τ j := by exact_mod_cast h' τ i j hij hne
   have hk : (0 : ℤ) ≤ (k : ℤ) := Int.natCast_nonneg k
   have : (0 : ℤ) ≤ (la + k • la') τ i - (la + k • la') τ j := by
-    simp only [Pi.add_apply, Pi.smul_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply]
+    simp only [Pi.add_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply]
     nlinarith
   exact_mod_cast this
 
@@ -377,7 +377,7 @@ theorem _root_.GlobalTheory.ThetaRecordCompare.pair_add {la la' : _root_.Recipro
   have a2 : (1 : ℤ) ≤ la' τ i1 - la' τ i0 := by exact_mod_cast h' τ i0 i1 hi0 hi1
   have hk : (0 : ℤ) ≤ (k : ℤ) := Int.natCast_nonneg k
   have : (1 : ℤ) ≤ (la + k • la') τ i1 - (la + k • la') τ i0 := by
-    simp only [Pi.add_apply, Pi.smul_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply]
+    simp only [Pi.add_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply]
     nlinarith
   exact_mod_cast this
 

@@ -125,7 +125,6 @@ theorem _root_.GlobalTheory.SmGL.Placing.exists_moves {ι : Type} (e e' : ι ≃
 theorem Moves.symm {ι : Type} {e e' : ι ≃ n} {w : GL n R} (h : Moves e e' w) : Moves e' e w⁻¹ := by
   intro g x y
   rw [← h]
-  congr 2
   group
 
 variable {e e' : (Σ a, m a) ≃ n} {w : GL n R}
@@ -140,7 +139,6 @@ private theorem moves_inv_of_moves {ι : Type} {e e' : ι ≃ n} {w : GL n R}
   intro g x y
   have := hw (w⁻¹ * g * w⁻¹⁻¹) x y
   rw [← this]
-  congr 2
   group
 
 open ValuativeRel MeasureTheory in

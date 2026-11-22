@@ -129,11 +129,11 @@ theorem isType_isReal_const (t : ℝ) : IsType 0 0 (algebraMap ℂ (Alt n) t) �
     simp
   · rw [AlgHom.commutes]
     by_cases h : ∅ = S <;>
-      simp [Algebra.algebraMap_eq_smul_one, ← bas_empty, Finsupp.single_apply, h, -Complex.coe_smul]
+      simp [Algebra.algebraMap_eq_smul_one, ← bas_empty, h, -Complex.coe_smul]
 
 theorem coefwise_smul {T : (V n → ℂ) → ℂ} (hT : T (fun _ => 0) = 0) (u : V n → ℂ) (S : Finset (Fin (n + n))) :
     coefwise T (fun x => u x • bas n S) = T u • bas n S := by
-  rw [coefwise, Finset.sum_eq_single S (fun S' _ h => by simp [Finsupp.single_apply, h.symm, hT]) (by simp)]
+  rw [coefwise, Finset.sum_eq_single S (fun S' _ h => by simp [h.symm, hT]) (by simp)]
   simp
 
 end Point

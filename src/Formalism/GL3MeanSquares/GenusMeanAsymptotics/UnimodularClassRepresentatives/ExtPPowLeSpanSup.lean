@@ -129,13 +129,10 @@ theorem mem_pow_iff (𝔭 : Ideal (𝓞 F)) (k : ℕ) (a : 𝓞 F) : ι a ∈ ex
 private theorem coe_iota_eq_algebraMap_coe (a : 𝓞 F) : ((ι a : 𝓞 K) : K) = algebraMap F K (a : F) := by
   first
   | rfl
-  | exact (IsScalarTower.algebraMap_apply (𝓞 F) (𝓞 K) K a).symm.trans
-      (IsScalarTower.algebraMap_apply (𝓞 F) F K a)
 
 private theorem coe_conjO_eq_star_coe (z : 𝓞 K) : ((conjO K z : 𝓞 K) : K) = star (z : K) := by
   first
   | rfl
-  | (unfold conjO; rfl)
 
 theorem conjO_map (hF : IsFixF K F) (a : 𝓞 F) : conjO K (ι a) = ι a := by
   apply RingOfIntegers.ext
@@ -191,7 +188,7 @@ theorem mem_of_mul_mem {𝔭 : Ideal (𝓞 F)} (h𝔭 : 𝔭.IsMaximal) {d : �
     exact h1
   have hle : extP K 𝔭 ^ m * Ideal.span {z} ≤ extP K 𝔭 ^ (v + j) := by
     rw [← hS, Ideal.sup_mul]
-    refine sup_le ?_ (by first | exact Ideal.mul_le_left | exact Ideal.mul_le_right)
+    refine sup_le ?_ (by first | exact Ideal.mul_le_left)
     rw [Ideal.span_singleton_mul_span_singleton, Ideal.span_singleton_le_iff_mem]
     exact hz
   have hdiv : extP K 𝔭 ^ m * extP K 𝔭 ^ (v + j - m) ∣ extP K 𝔭 ^ m * Ideal.span {z} := by
@@ -213,8 +210,6 @@ private theorem exists_iota_eq_of_star_coe_eq (hF : IsFixF K F) (w : 𝓞 K) (hw
   refine ⟨⟨f, by
     first
     | exact hfi
-    | exact (mem_integralClosure_iff ℤ F).mpr hfi
-    | exact (NumberField.mem_ringOfIntegers F f).mpr hfi
     | simpa [integralClosure] using hfi⟩, ?_⟩
   apply RingOfIntegers.ext
   exact (coe_iota_eq_algebraMap_coe _).trans hf
@@ -309,7 +304,6 @@ theorem exists_inv_theta {𝔭 : Ideal (𝓞 F)} {δ : 𝓞 K} (hδ : Ideal.span
   have h : Ideal.span {δ} ⊔ extP K 𝔭 ^ N = ⊤ := by
     first
     | exact Ideal.sup_pow_eq_top hδ
-    | exact Ideal.isCoprime_iff_sup_eq.mp ((Ideal.isCoprime_iff_sup_eq.mpr hδ).pow_right)
   have h1 : (1 : 𝓞 K) ∈ Ideal.span {δ} ⊔ extP K 𝔭 ^ N := by
     rw [h]
     exact Submodule.mem_top

@@ -22,7 +22,7 @@ lemma eq_zero_of_trace_adjoint_comp_self (B : H →ₗ[ℂ] H)
       = ((‖B (b i)‖ ^ 2 : ℝ) : ℂ) := by
     intro i
     rw [LinearMap.comp_apply, LinearMap.adjoint_inner_right, inner_self_eq_norm_sq_to_K]
-    push_cast; first | rfl | simp | norm_cast
+    push_cast; first | rfl
   simp_rw [h'] at h
   have h2 : (∑ i, ‖B (b i)‖ ^ 2 : ℝ) = 0 := by exact_mod_cast h
   have h3 := (Finset.sum_eq_zero_iff_of_nonneg (fun i _ => by positivity)).1 h2

@@ -116,7 +116,7 @@ theorem h_omP (f f' : Fin (r + 1) → V) (u : V) :
   have hD : H.Dl f f' (r + 1) = (H.Zhat f f').det := by
     unfold HermSp.Dl
     rw [dif_pos le_rfl]
-    simp [Fin.castLE_refl]
+    simp
   unfold omP HermSp.om'
   rw [h_smul_right, h_sum_right, Finset.mul_sum]
   apply Finset.sum_congr rfl

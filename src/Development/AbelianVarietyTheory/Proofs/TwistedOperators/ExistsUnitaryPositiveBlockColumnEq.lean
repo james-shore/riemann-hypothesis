@@ -54,7 +54,7 @@ theorem exists_unitary_col (m : ℕ) (ε : Fin m → Bool) (z : Fin m) (u : Fin 
     simp only [dotProduct, Pi.star_apply, this]
     rw [← Complex.ofReal_sum, hn]; simp
   have hev : star e ⬝ᵥ v = (t : ℂ) := by
-    simp [he, dotProduct, Pi.single_apply, hv, hφt, hφt']
+    simp [he, dotProduct, Pi.single_apply, hv, hφt']
   have hve : star v ⬝ᵥ e = (t : ℂ) := by
     simp only [he, dotProduct, Pi.star_apply, Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
     simp only [hv]
@@ -73,7 +73,7 @@ theorem exists_unitary_col (m : ℕ) (ε : Fin m → Bool) (z : Fin m) (u : Fin 
     rw [diagonal_conjTranspose, diagonal_mul_diagonal, ← diagonal_one]
     congr 1; funext i
     by_cases h : i = z
-    · simp [hd, h, hφ, hφ']
+    · simp [hd, h, hφ']
     · simp [hd, h]
   have hku : kᴴ * k = 1 := by
     rw [hk, conjTranspose_mul, Matrix.mul_assoc, ← Matrix.mul_assoc Tᴴ, hTu, Matrix.one_mul, hdd]
@@ -82,7 +82,7 @@ theorem exists_unitary_col (m : ℕ) (ε : Fin m → Bool) (z : Fin m) (u : Fin 
   have hvneg : ∀ i, ε i = false → v i = 0 := fun i hi => by simp [hv, hneg i hi]
   have heneg : ∀ i, ε i = false → e i = 0 := fun i hi => by
     have : i ≠ z := by rintro rfl; simp [hz] at hi
-    simp [he, Pi.single_apply, this]
+    simp [he, this]
   have hT0 : ∀ i j, ε i ≠ ε j → T i j = 0 := by
     intro i j hij
     have hne : i ≠ j := by rintro rfl; exact hij rfl
@@ -104,7 +104,7 @@ theorem exists_unitary_col (m : ℕ) (ε : Fin m → Bool) (z : Fin m) (u : Fin 
     rw [Matrix.mul_assoc, hcomm, ← Matrix.mul_assoc, hku, Matrix.one_mul]
   · intro i
     have hez : e z = 1 := by simp [he]
-    have hvz : v z = (t : ℂ) := by simp [hv, hφt, hφt']
+    have hvz : v z = (t : ℂ) := by simp [hv, hφt']
     have hTz : T i z = v i := by
       rw [hTe, hez, hvz]
       rw [show star ((1 : ℂ) + (t : ℂ)) = 1 + (t : ℂ) by simp, star_one, mul_one]
@@ -112,7 +112,7 @@ theorem exists_unitary_col (m : ℕ) (ε : Fin m → Bool) (z : Fin m) (u : Fin 
       rw [this]
       by_cases h : i = z
       · subst h; simp [he]; ring
-      · simp [he, Pi.single_apply, h, one_apply_ne h]; ring
+      · simp [he, h, one_apply_ne h]; ring
     simp only [hk, mul_diagonal, hTz, hd, if_true, hv]
     calc star φ * u i * φ = (star φ * φ) * u i := by ring
       _ = u i := by rw [hφ, one_mul]

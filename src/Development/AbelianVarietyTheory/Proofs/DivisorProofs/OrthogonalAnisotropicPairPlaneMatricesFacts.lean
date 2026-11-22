@@ -54,7 +54,7 @@ theorem planeB_facts : ∀ (F E : Type) [Field F] [Field E] [Algebra F E] (σ : 
   have gram : Formalism.UG.cT (σ : E →+* E) A * J * A = planeH σ J e₁ e₂ := by
     ext k l
     rw [planeFacts_gram_apply]
-    fin_cases k <;> fin_cases l <;> simp [planeH, h12, h21, ha₁, ha₂]
+    fin_cases k <;> fin_cases l <;> simp [planeH, h12, h21]
   have dd : Matrix.diagonal ![a₁⁻¹, a₂⁻¹] * Matrix.diagonal ![a₁, a₂] = 1 := by
     rw [Matrix.diagonal_mul_diagonal, ← Matrix.diagonal_one]
     congr 1; ext k; fin_cases k <;> simp [h1, h2]
@@ -89,7 +89,7 @@ theorem planeB_facts : ∀ (F E : Type) [Field F] [Field E] [Algebra F E] (σ : 
       have k0 := hv 0
       have k1 := hv 1
       rw [h] at k0 k1
-      simp only [Pi.zero_apply, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons] at k0 k1
+      simp only [Pi.zero_apply, Matrix.cons_val_zero, Matrix.cons_val_one] at k0 k1
       exact ⟨(mul_eq_zero.mp k0.symm).resolve_left (inv_ne_zero h1),
         (mul_eq_zero.mp k1.symm).resolve_left (inv_ne_zero h2)⟩
     · rintro ⟨z1, z2⟩

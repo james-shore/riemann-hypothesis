@@ -53,7 +53,7 @@ theorem main : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberField
   intro F E _ _ _ _ _ n A Λ w
   have hmem : ∀ x : Fin n → E, x ∈ ((Λ.comap ((Matrix.mulVecLin A.1).restrictScalars (𝓞 E)) :
       Submodule (𝓞 E) (Fin n → E)) : Set (Fin n → E)) ↔ A.1 *ᵥ x ∈ Λ := fun x => by
-    simp [Matrix.mulVecLin_apply]
+    simp
   constructor
   · intro hw
     have h2 := fm_mulVec_mem_hat (F := F) (A⁻¹).1

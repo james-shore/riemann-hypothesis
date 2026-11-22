@@ -121,7 +121,7 @@ private theorem xb_dec (D : Dat ℚ E) (t : ℝ) :
   rw [UpperTheory.conj_lie_element_embed_rotation_eq_trig_matrix E D t, UpperTheory.conj_lie_element_embed_rotation_eq_trig_matrix E D 0, UpperTheory.conj_lie_element_embed_rotation_eq_trig_matrix E D (Real.pi / 2), UpperTheory.conj_lie_element_embed_rotation_eq_trig_matrix E D (Real.pi / 4), c4, s4, m4]
   simp only [Real.cos_zero, Real.sin_zero, Real.cos_pi_div_two, Real.sin_pi_div_two]
   funext i j w
-  fin_cases i <;> fin_cases j <;> simp <;> ring
+  fin_cases i <;> fin_cases j <;> simp
 
 end UpperTheory.ConvolutionTheory.RankTwoDescent.SH
 

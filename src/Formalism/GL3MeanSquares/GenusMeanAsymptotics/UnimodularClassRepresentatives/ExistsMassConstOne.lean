@@ -64,7 +64,7 @@ theorem exists_massConst_one (hK : Formalism.HermitianLatticesTheory.IsCMUnram K
       fun _ _ => rfl⟩
   have hs₀ : h₀.IsSymm := by
     first
-      | (intro x y; simp [hh, starRingEnd_apply, mul_comm])
+      | (intro x y)
       | (constructor; intro x y; simp [hh, starRingEnd_apply, mul_comm])
   have hd₀ : IsTotPosDef h₀ := by
     intro x hx φ

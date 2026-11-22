@@ -208,8 +208,8 @@ theorem mat_block {n : ℕ} (a : Fin 1 → Fin n → ℂ) (b : Fin n → Fin 1 �
   · rw [G4.blk_mul, G4.blk_mul]
     unfold G.ptLong
     congr 1
-    all_goals first | rfl | (funext i; simp [Matrix.vecMulVec, Matrix.mulVec_mulVec]; done) |
-      (simp [Matrix.vecMulVec, Matrix.mulVec_mulVec]; done)
+    all_goals first | rfl | (funext i; simp [Matrix.vecMulVec, Matrix.mulVec_mulVec]) |
+      (simp)
 
 def shearU (n : ℕ) : (G.UT n → ℂ) × (Fin n → ℂ) ≃ᵐ (G.UT n → ℂ) × (Fin n → ℂ) where
   toFun q := (q.1, G.upper q.1 *ᵥ q.2)

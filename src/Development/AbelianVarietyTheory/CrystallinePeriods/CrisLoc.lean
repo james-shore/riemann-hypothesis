@@ -17,7 +17,7 @@ namespace GlobalTheory.CrisLoc
 variable (l : ℕ) [Fact l.Prime]
 
 theorem exists_root_ne_one : ∃ e : Per.Fl l, e.untilt = 1 ∧ e ≠ 1 := by
-  first | exact @CrisRootNeOne.Bridge.CrisLoc.exists_root_ne_one | exact CrisRootNeOne.Bridge.CrisLoc.exists_root_ne_one .. | (intros; apply CrisRootNeOne.Bridge.CrisLoc.exists_root_ne_one <;> assumption)
+  first | exact @CrisRootNeOne.Bridge.CrisLoc.exists_root_ne_one | exact CrisRootNeOne.Bridge.CrisLoc.exists_root_ne_one ..
 
 theorem bcris_away (e : Per.Fl l) (he : e.untilt = 1) (hne : e ≠ 1) :
     IsLocalization.Away (algebraMap (Per.Ainf l) (Per.Acris l) (Per.tm e - 1)) (Per.Bcris l) := by

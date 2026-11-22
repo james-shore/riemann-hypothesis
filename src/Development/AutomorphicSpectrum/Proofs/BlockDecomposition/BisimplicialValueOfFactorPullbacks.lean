@@ -17,10 +17,10 @@ theorem bv_pulln_box {R : Type} [CommRing R] {C : Type} [Category.{0} C] (F : C 
   · show Algebra.TensorProduct.map _ _ (_ ⊗ₜ[R] 1) = _
     refine (Algebra.TensorProduct.map_tmul _ _ _ _).trans ?_
     congr 1
-    all_goals first | exact map_one _ | rfl
+    all_goals first | exact map_one _
   · show Algebra.TensorProduct.map _ _ (1 ⊗ₜ[R] _) = _
     refine (Algebra.TensorProduct.map_tmul _ _ _ _).trans ?_
     congr 1
-    all_goals first | exact map_one _ | rfl
+    all_goals first | exact map_one _
 
 end GlobalTheory.CompanionTheory.HopfC

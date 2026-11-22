@@ -55,7 +55,7 @@ theorem exists_u1Af_det (k : ℕ) (hk : k ≤ D.R.m) {g : GL (Fin (D.R.N k)) (D.
     rw [← Matrix.diagonal_one]
     congr 1; funext _; rw [mul_comm]; exact h2
   · apply Units.ext
-    simp [Matrix.GeneralLinearGroup.val_det_apply, Matrix.det_fin_one]
+    simp [Matrix.GeneralLinearGroup.val_det_apply]
 
 end Pt
 

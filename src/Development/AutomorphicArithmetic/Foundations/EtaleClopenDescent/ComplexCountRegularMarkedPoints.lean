@@ -189,7 +189,6 @@ theorem cxSumAtM_orbit :
   rw [finsum_eq_finsum_comp_of_injective_support _ _ (OrbitSumGen.ptsToOrbit_injective G v β x t hx Kf K') hsub]
   apply finsum_congr
   intro q
-  beta_reduce
   rw [OrbitSumGen.ptsToOrbit_eq, horb, ← OrbitSumGen.card_stab_eq]
   congr 1
   apply finsum_congr

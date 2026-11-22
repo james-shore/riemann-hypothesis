@@ -82,7 +82,7 @@ theorem exists_lattice_data : ∀ (E : Type) [Field E] [NumberField E] [IsCMFiel
     refine (injective_iff_map_eq_zero ρ₀).2 fun y h0 => by_contra fun hy => ?_
     obtain ⟨r, hr, hrm⟩ := hco y
     obtain ⟨-, has⟩ := hco₀ y r hr
-    simp only [h0, map_zero, LinearMap.zero_apply, Int.toNat_zero, pow_zero] at has
+    simp only [h0, map_zero, Int.toNat_zero, pow_zero] at has
     have hu : IsUnit (g₀ r) := (isUnit_pow_iff two_ne_zero).1 (has.isUnit_iff.2 isUnit_one)
     exact (mem_maximalIdeal r |>.1 (hrm hy)) ((isUnit_map_iff g₀ r).1 hu)
   let e₀ : D.toPre.X ≃+ T₀.P.D.toPre.X := AddEquiv.ofBijective ρ₀ ⟨hinj, hsurj₀⟩

@@ -45,7 +45,7 @@ theorem logDet_eq_hor : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (
     rw [hev j] at h1
     simp only [TrivSqZeroExt.snd_add, TrivSqZeroExt.snd_inl, TrivSqZeroExt.snd_inr, zero_add] at h1
     rw [h1]
-    simp [Pi.single_apply, mul_comm, mul_left_comm]
+    simp [Pi.single_apply, mul_comm]
   have hx : P.x = P₀.x := hP.1
   have hR : ∀ i j, (ev (frX (w (o j)) ≫ TF.Y.j) U.1 (hw _) (x i)).snd =
       ∑ k, FlagTan.ksChg (psiSet H) g (Pi.single (o j) 1 : HIx Dw (psiSet H) → K) k * δ k (x i) := by

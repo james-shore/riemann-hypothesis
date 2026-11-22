@@ -8,4 +8,4 @@ open scoped TensorProduct Classical
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.exists_basis_over_subfield_embedding : ∀ (L : Type) [Field L] [NumberField L] (C : Type) [Ring C] [Algebra ℚ C] [FiniteDimensional ℚ C]
     (ι : L →ₐ[ℚ] C), ∃ (r : ℕ) (e : Fin r → C), ∀ x : C, ∃! c : Fin r → L, x = ∑ i, ι (c i) * e i := by
-  first | (exact @GlobalTheory.exists_left_basis_through_algHom) | (exact GlobalTheory.exists_left_basis_through_algHom) | (intros; apply GlobalTheory.exists_left_basis_through_algHom  <;> assumption)
+  first | (exact @GlobalTheory.exists_left_basis_through_algHom)

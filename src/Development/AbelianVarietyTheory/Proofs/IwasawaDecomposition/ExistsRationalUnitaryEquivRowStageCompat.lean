@@ -86,7 +86,7 @@ theorem matEq_castGL {A : Type} [CommRing A] {m n : ℕ} (h : m = n) (x : GL (Fi
   have hi' : i = i' := Fin.ext hi
   have hj' : j = j' := Fin.ext hj
   subst hi' hj'
-  simp [LiftBrg.castGL, Matrix.reindexAlgEquiv_apply]
+  simp [LiftBrg.castGL]
 
 theorem stdRat_equiv : ∀ (X : Stages) (px : PreX X.B.toPre) (I : Col2.ColIn X.B px), I.Ok →
     ∀ (e : Formalism.L2.Col.UAd X.toD7.sp.cm (X.B.R.N X.B.R.m - 1) ≃* Bridge.Gf X.toD7.sp.X'),

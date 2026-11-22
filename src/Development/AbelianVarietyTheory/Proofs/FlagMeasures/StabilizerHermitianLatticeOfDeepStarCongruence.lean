@@ -45,8 +45,6 @@ theorem exists_mul {M : Submodule (𝓞 K) V} {v : V} (hv : v ∈ Submodule.span
   | exact @_root_.GlobalTheory.ExistsSmulMemLattice.exists_smul_mem
   | exact _root_.GlobalTheory.ExistsSmulMemLattice.exists_smul_mem
   | (apply _root_.GlobalTheory.ExistsSmulMemLattice.exists_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ExistsSmulMemLattice.exists_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ExistsSmulMemLattice.exists_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ExistsSmulMemLattice.exists_smul_mem ..)
 
 variable [StarRing K]

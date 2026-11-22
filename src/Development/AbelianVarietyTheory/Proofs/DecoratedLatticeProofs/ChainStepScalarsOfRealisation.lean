@@ -277,7 +277,7 @@ theorem mid_scalar (R : RealDat D A Ks) (hN : GlobalTheory.IndefiniteRowSideFull
       have hA₂ := (isUp_iff R hIP hk1 hm hm' _ _).1 hup₂'
       refine ⟨ip ⟨_, hu₂'⟩ ⟨_, hu₁'⟩, ?_, ?_⟩
       · have := (hIP t k hk ipD ip hm ⟨_, hu₁'⟩ ⟨_, hu₂'⟩ _).2 rfl
-        simp only [Subtype.coe_mk, LinearEquiv.symm_apply_apply] at this
+        simp only [LinearEquiv.symm_apply_apply] at this
         exact this
       · have hmain : ip' ⟨_, hx₂'⟩ ⟨_, hx₁'⟩ = ((z * l : ℝ) : ℂ) * ip ⟨_, hu₂'⟩ ⟨_, hu₁'⟩ := by
           rcases hg₁ with h0 | ⟨hpar, hq⟩
@@ -299,7 +299,7 @@ theorem mid_scalar (R : RealDat D A Ks) (hN : GlobalTheory.IndefiniteRowSideFull
             push_cast
             rw [hz']
         have := (hIP t (k + 1) hk1 ipD' ip' hm' ⟨_, hx₁'⟩ ⟨_, hx₂'⟩ _).2 hmain.symm
-        simp only [Subtype.coe_mk, LinearEquiv.symm_apply_apply] at this
+        simp only [LinearEquiv.symm_apply_apply] at this
         exact this
   by_cases hex : ∃ (t : T) (c : EigSys D), rowPart R (badPl R t) c ≠ ⊥ ∧ ∃ B, GlobalTheory.LFun.IsSysParamD D (badPl R t) D.R.r c B
   · obtain ⟨t₀, c₀, hc₀, B₀, hB₀⟩ := hex
@@ -402,19 +402,19 @@ theorem top_key (R : RealDat D A Ks) (hN : GlobalTheory.IndefiniteRowSideFullHec
     have := (isUpTop_iff R hIP h hm2 hm ⟨_, hu'⟩ x).2 fun y => by
       rw [hnorm', hx, LinearMap.map_smulₛₗ, hXa, map_inv₀, Complex.conj_ofReal, smul_eq_mul, ← mul_assoc,
         mul_inv_cancel₀ hδc, one_mul]
-    simp only [Subtype.coe_mk, LinearEquiv.symm_apply_apply] at this
+    simp only [LinearEquiv.symm_apply_apply] at this
     exact this
   · obtain ⟨hu₁', hg₁⟩ := (hgood _ hk).1 u₁ hu₁
     obtain ⟨hu₂', -⟩ := (hgood _ hk).1 u₂ hu₂
     have hup₁' : IsUpTop R t (PiTensorProduct.lift.symm (⟨_, hu₁'⟩ : (stY R t (D.R.m - 1)).CC (comR R t)).1) x₁ := by
-      simp only [Subtype.coe_mk, LinearEquiv.symm_apply_apply]; exact hup₁
+      simp only [LinearEquiv.symm_apply_apply]; exact hup₁
     have hup₂' : IsUpTop R t (PiTensorProduct.lift.symm (⟨_, hu₂'⟩ : (stY R t (D.R.m - 1)).CC (comR R t)).1) x₂ := by
-      simp only [Subtype.coe_mk, LinearEquiv.symm_apply_apply]; exact hup₂
+      simp only [LinearEquiv.symm_apply_apply]; exact hup₂
     have hA₁ := (isUpTop_iff R hIP h hm2 hm _ _).1 hup₁'
     have hA₂ := (isUpTop_iff R hIP h hm2 hm _ _).1 hup₂'
     refine ⟨ip ⟨_, hu₂'⟩ ⟨_, hu₁'⟩, ?_, ?_⟩
     · have := (hIP t (D.R.m - 1) hk ipD ip hm ⟨_, hu₁'⟩ ⟨_, hu₂'⟩ _).2 rfl
-      simp only [Subtype.coe_mk, LinearEquiv.symm_apply_apply] at this
+      simp only [LinearEquiv.symm_apply_apply] at this
       exact this
     · rcases hg₁ with h0 | ⟨hpar, hq⟩
       · have hU0 : (⟨_, hu₁'⟩ : (stY R t (D.R.m - 1)).CC (comR R t)) = 0 := by
@@ -481,7 +481,7 @@ theorem scalars_of_realisation : ∀ {D : D7} {G : Type} [Group G] [Fintype G] {
       exact hS
     · obtain ⟨l, hl, hS⟩ := hT t c hc B hB
       refine ⟨l, hl, ?_⟩
-      simp only [if_pos rfl]
+      simp only
       exact hS
 
 end GlobalTheory.ChainTw

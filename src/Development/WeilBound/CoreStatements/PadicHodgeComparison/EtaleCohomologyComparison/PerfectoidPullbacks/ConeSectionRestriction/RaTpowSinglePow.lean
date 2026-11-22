@@ -22,7 +22,7 @@ theorem ra_tpow_zero {d : ℕ} (t : Fin d → Rˣ) : tpow t 0 = 1 := by
 
 theorem ra_tpow_single {d : ℕ} (t : Fin d → Rˣ) (k : Fin d) (z : ℤ) : tpow t (Pi.single k z) = ((t k ^ z : Rˣ) : R) := by
   unfold tpow
-  rw [Finset.prod_eq_single k (fun j _ hj => by simp [Pi.single_apply, hj]) (by simp)]
+  rw [Finset.prod_eq_single k (fun j _ hj => by simp [hj]) (by simp)]
   simp
 
 theorem ra_expS_add {d : ℕ} (S : Finset (Fin (d + 1))) (m m' : Fin d → ℤ) (hm : m ∈ expS S) (hm' : m' ∈ expS S) :

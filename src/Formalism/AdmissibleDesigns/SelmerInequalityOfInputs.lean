@@ -70,8 +70,6 @@ theorem FS_pos (c : Fin (D.R.t + 1)) (hc0 : c ≠ 0) (w : ℕ) : FS i r π dc g0
   unfold FS QS.Fall
   first
     | rfl
-    | simp only [Fin.cases_succ]
-    | exact Fin.cases_succ _
 
 variable (hT : Dd.Top (D.nd.T i) (RepresentationBoundsCohomology.one_le_letterBlockLength D.R))
   (hrk : ((Dd.ρk 0 Dd.e₁).map (algebraMap (D.nd.O i) (FractionRing (D.nd.O i)))).rank = 1)
@@ -226,7 +224,7 @@ theorem selmer_inequality_of_inputs [IsNoetherian Dd.R' Dd.R']
         rw [FS_pos i r π dc g0 eB e₁ s Dd hD hc _ (by intro h; have := congrArg Fin.val h; simp at this) _]
         unfold QS.Fpos
         by_cases hq : colIdx i dc l ∈ qsN i dc
-        · rw [if_pos hq] <;> exact le_rfl
+        · rw [if_pos hq]
         · rw [if_neg hq, if_neg (hCR l), if_pos rfl] <;> exact le_rfl,
       fun w hw => ⟨by
         rw [FS_pos i r π dc g0 eB e₁ s Dd hD hc _ (by intro h; have := congrArg Fin.val h; simp at this) _]

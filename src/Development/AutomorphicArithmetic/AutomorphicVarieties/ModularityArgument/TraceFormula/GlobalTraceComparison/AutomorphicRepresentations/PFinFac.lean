@@ -57,7 +57,7 @@ theorem UpperTheory.V.Z.Tf.GlobalTraceComparison.Pi.finFac_pf :
   have hL : ∀ f, L f = inner ℂ (s.k₁ x i) f -
       ∑ b, (ws b).1.1 x.1 * inner ℂ (s.k₁ (ac E n (ldet x) * (xs b).1) i) f := by
     intro f
-    simp [L, ContinuousLinearMap.sum_apply]
+    simp [L]
   have hle : Submodule.span ℂ {f | IsPiVec s.D s.π f} ≤ LinearMap.ker (L : Hs (ι := ι) s.D →ₗ[ℂ] ℂ) :=
     Submodule.span_le.2 fun f hf => by
       have := key f hf x i

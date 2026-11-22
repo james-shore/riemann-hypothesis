@@ -91,7 +91,7 @@ theorem posDef_eventually {X : Type*} [TopologicalSpace X] {m : ℕ}
     (A : X → Matrix (Fin m) (Fin m) ℂ) (hc : ∀ i j, Continuous fun x => A x i j)
     (hH : ∀ x, (A x).IsHermitian) (x0 : X) (h0 : (A x0).PosDef) :
     ∀ᶠ x in 𝓝 x0, (A x).PosDef := by
-  first | exact Bl.PosDefOfRealQuadratic.goal1 .. | (apply Bl.PosDefOfRealQuadratic.goal1 <;> assumption) | (intros; apply Bl.PosDefOfRealQuadratic.goal1 <;> assumption)
+  first | exact Bl.PosDefOfRealQuadratic.goal1 .. | (apply Bl.PosDefOfRealQuadratic.goal1 <;> assumption)
 
 theorem cont_coord {n : ℕ} (i : Fin n) : Continuous fun v : V n => v i := by
   have h : (fun v : V n => v i) = ⇑(EuclideanSpace.proj i : V n →L[ℂ] ℂ) := by

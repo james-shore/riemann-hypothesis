@@ -16,7 +16,7 @@ def blkLat {n s : ℕ} (Ls : Fin n → Lat v (Fin s)) : Lat v (Fin n × Fin s) w
     have h : (Matrix.of fun x y : Fin n × Fin s => if x.1 = y.1 then (Ls x.1).B x.2 y.2 else 0) =
         (Matrix.blockDiagonal fun τ => (Ls τ).B).submatrix (Equiv.prodComm _ _) (Equiv.prodComm _ _) := by
       ext x y
-      simp [Matrix.blockDiagonal_apply, eq_comm]
+      simp [Matrix.blockDiagonal_apply]
     rw [h, Matrix.det_submatrix_equiv_self, Matrix.det_blockDiagonal]
     exact Finset.prod_ne_zero_iff.2 fun τ _ => (Ls τ).det_ne
 
@@ -25,7 +25,7 @@ lemma blkLat_det {n s : ℕ} (Ls : Fin n → Lat v (Fin s)) :
   have h : (blkLat Ls).B =
       (Matrix.blockDiagonal fun τ => (Ls τ).B).submatrix (Equiv.prodComm _ _) (Equiv.prodComm _ _) := by
     ext x y
-    simp [blkLat, Matrix.blockDiagonal_apply, eq_comm]
+    simp [blkLat, Matrix.blockDiagonal_apply]
   rw [h, Matrix.det_submatrix_equiv_self, Matrix.det_blockDiagonal]
 
 lemma blkLat_pts {n s : ℕ} (Ls : Fin n → Lat v (Fin s)) : (blkLat Ls).pts = sumPts Ls := by

@@ -220,7 +220,7 @@ theorem galois_gen (H : Desc f q ev k₀ u) {P v} (G : SymFrame.GRep D.P.L (Over
   obtain ⟨t, ht, vt⟩ := G.out D.P.isLB φ ε hP
   obtain ⟨κ, hκ, hval⟩ := galois_sec H.hk₀ H.hP H.hk D.P.isLB H.hL₂ u H.hu H.hπ φ ε hφ (genSec t ht) (fun s => by
     obtain ⟨w, hw⟩ := exists_sec D.P.isLB (K' := PEmpty) (φ' := PEmpty.elim) (ε' := PEmpty.elim)
-      (fun U _ hh => by simp [Fintype.prod_sum_type, ← Finset.prod_mul_distrib])
+      (fun U _ hh => by simp [Fintype.prod_sum_type])
       (pullMulSec s (𝟙 _) (LB.invGen D.P.L _ _ t) (DVR.invGen_isGen _ _ _ _ ht))
     have le : (⊤ : (Over.mk (spMap ev) ⊗ D.P.A).left.Opens) ≤
         LB.wchart D.P.L (K := PEmpty) (Y := (Over.mk (spMap ev) ⊗ D.P.A).left) PEmpty.elim PEmpty.elim :=
@@ -269,7 +269,7 @@ theorem cub_mem (H : Desc f q ev k₀ u) (x x' y : Over.mk (spMap ev) ⟶ D.P.A)
     (fun U _ h => by simp [Fin.prod_univ_eight])
     (fun U _ h => by
       simp only [← Over.comp_left, MonObj.comp_mul, MonObj.comp_one, lift_fst_assoc, lift_snd, Category.id_comp,
-        _root_.mul_one, _root_.one_mul]
+        _root_.mul_one]
       simp)
     (fun z J hJ => by
       simp only [lift_snd]

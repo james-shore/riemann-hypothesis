@@ -85,8 +85,8 @@ theorem UpperTheory.formally_smooth_surjective_derivation :
     · intro x y
       ext
       · simp
-      · simp [hmul, -Derivation.leibniz, add_mul, Finset.sum_add_distrib, Finset.mul_sum,
-          Finset.sum_mul, mul_assoc, mul_comm, mul_left_comm, mul_add, add_comm]
+      · simp [hmul, -Derivation.leibniz, Finset.sum_add_distrib, Finset.mul_sum,
+          mul_comm, mul_left_comm, mul_add, add_comm]
     · ext <;> simp
     · intro x y
       ext <;> simp [add_mul, Finset.sum_add_distrib]

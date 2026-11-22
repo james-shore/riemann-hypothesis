@@ -9,7 +9,7 @@ variable {V : Type*} [NormedAddCommGroup V] [NormedSpace ℂ V]
 
 theorem eq_zero_on_ball {g : V → ℂ} {x : V} {ε : ℝ} (hg : DifferentiableOn ℂ g (ball x ε)) {z : V}
     (hz : z ∈ ball x ε) (hgz : g =ᶠ[𝓝 z] 0) : ∀ y ∈ ball x ε, g y = 0 := by
-  first | exact Bl.FirstBlockLemmaJ.goal1 .. | (apply Bl.FirstBlockLemmaJ.goal1 <;> assumption) | (intros; apply Bl.FirstBlockLemmaJ.goal1 <;> assumption)
+  first | exact Bl.FirstBlockLemmaJ.goal1 .. | (apply Bl.FirstBlockLemmaJ.goal1 <;> assumption)
 
 theorem eq_zero_of_eventually {U : Set V} (hU : IsOpen U) (hc : IsPreconnected U) {g : V → ℂ}
     (hg : DifferentiableOn ℂ g U) {x0 : V} (hx0 : x0 ∈ U) (h0 : g =ᶠ[𝓝 x0] 0) : ∀ y ∈ U, g y = 0 := by

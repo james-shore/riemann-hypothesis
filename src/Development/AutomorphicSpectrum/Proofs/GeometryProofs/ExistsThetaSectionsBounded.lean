@@ -175,7 +175,7 @@ def ptAt (D : PPData H L) (x : Over.mk (baseF L (RingHom.id L')) ⟶ D.t.G) {F :
     Over.mk (baseF L f) ⟶ D.t.G :=
   (Over.homMk (spMap f) (by
     show spMap f ≫ baseF L (RingHom.id L') = baseF L f
-    simp only [baseF, ← Category.assoc, ← spMap_comp]
+    simp only [baseF, ← spMap_comp]
     ) : Over.mk (baseF L f) ⟶ Over.mk (baseF L (RingHom.id L'))) ≫ x
 
 theorem ptAt_left (D : PPData H L) (x : Over.mk (baseF L (RingHom.id L')) ⟶ D.t.G) {F : Type} [Field F] (f : L' →+* F) :

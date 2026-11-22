@@ -40,7 +40,7 @@ theorem finite_of_isIntegral_of_birational_of_finite_over_normal
         exact mul_ne_zero ((map_ne_zero_iff _ hAB).mpr hc₂) hy h₂
       refine ⟨⟨a₁ * c₂, ⟨c₁ * a₂, mem_nonZeroDivisors_of_ne_zero (mul_ne_zero hc₁ ha₂)⟩⟩, ?_⟩
       simp only [IsScalarTower.algebraMap_apply A B L, map_mul, ← h₁, ← h₂]
-      simp only [map_mul] at hz ⊢
+      simp only at hz ⊢
       rw [← hz]; ring
     · intro x y hxy
       exact ⟨1, by rw [hAL hxy]⟩

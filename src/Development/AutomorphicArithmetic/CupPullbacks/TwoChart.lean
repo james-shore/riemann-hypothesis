@@ -24,7 +24,7 @@ theorem span_unit_mul {A B : Type} [CommRing A] [CommRing B] {M : ℕ} (f : A �
   rw [eq_top_iff, ← h1, Ideal.span_le]
   rintro _ ⟨i, rfl⟩
   have : (f ∘ ℓ) i = ((↑u⁻¹ : B)) * (f (ℓ i) * u) := by
-    simp [mul_comm, mul_assoc]
+    simp [mul_comm]
   rw [this]
   exact Ideal.mul_mem_left _ _ (Ideal.subset_span ⟨i, rfl⟩)
 

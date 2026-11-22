@@ -70,8 +70,7 @@ theorem dualForm_values (E : Type) [Field E] [NumberField E] [IsCMField E] (ξ :
       refine Finset.sum_congr rfl fun σ _ => ?_
       simp [IsCMField.complexEmbedding_complexConj, ComplexEmbedding.conjugate_coe_eq]
     rw [h2] at h1
-    simp only [c, sub_mul, Finset.sum_sub_distrib, ite_mul, zero_mul, Finset.sum_ite_eq', Finset.sum_ite_eq,
-      Finset.mem_univ, if_true]
+    simp only [c, sub_mul, Finset.sum_sub_distrib, ite_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
     rw [sub_eq_zero]
     have h3 : ∑ τ₁, ∑ τ₂, τ₁ ξ * τ₂ ξ * b (ComplexEmbedding.conjugate τ₁) (ComplexEmbedding.conjugate τ₂) *
         (τ₁ x * τ₂ y) = ∑ σ : E →+* ℂ, σ ξ * σ x * ComplexEmbedding.conjugate σ y := by
@@ -87,7 +86,7 @@ theorem dualForm_values (E : Type) [Field E] [NumberField E] [IsCMField E] (ξ :
   have hcc : ∀ τ : E →+* ℂ, ComplexEmbedding.conjugate (ComplexEmbedding.conjugate τ) = τ := by
     intro τ
     ext x
-    simp [ComplexEmbedding.conjugate_coe_eq]
+    simp
   have hc := coeff_eq_zero c hsum (ComplexEmbedding.conjugate ρ) (ComplexEmbedding.conjugate ρ')
   simp only [c, b, hcc] at hc
   constructor

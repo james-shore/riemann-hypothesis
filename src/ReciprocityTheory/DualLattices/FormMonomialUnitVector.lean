@@ -52,7 +52,7 @@ theorem formMonomial_unitVector (D : Lifts H U X) (l : Ix g) (y : Nb p g) :
   rw [Finset.prod_eq_single l]
   · simp [ZMod.val_one]
   · intro b _ hb
-    simp [Pi.single_apply, hb]
+    simp [hb]
   · intro h
     exact absurd (Finset.mem_univ l) h
 
@@ -98,7 +98,7 @@ theorem res_bR (hv : v.Integers R) (hp1 : v (algebraMap R C (p : R)) < 1) (D : L
     rw [if_neg]
     intro h
     have h2 := congrFun h l
-    simp [e1, Pi.single_apply, Ne.symm hb] at h2
+    simp [e1, Ne.symm hb] at h2
   · simp
 
 theorem Mk_det (D : Lifts H U X) : (Mk D).det ≠ 0 := by

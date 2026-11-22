@@ -55,7 +55,7 @@ private theorem mem_of_translates (π : UnitaryRep G H) {τ Q : Submodule ℂ H}
     induction hv using Submodule.span_induction with
     | mem x hx =>
       obtain ⟨γ, rfl⟩ := hx
-      exact Submodule.subset_span ⟨g * γ, by simp [UnitaryRep.map_mul_apply]⟩
+      exact Submodule.subset_span ⟨g * γ, by simp⟩
     | zero => simp
     | add x y _ _ hx hy =>
       rw [map_add]

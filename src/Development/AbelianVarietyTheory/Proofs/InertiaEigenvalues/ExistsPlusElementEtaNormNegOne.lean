@@ -17,10 +17,6 @@ theorem exists_plus_eta_norm_neg_one : ∀ (K : UQ) (B : InvAlg K) (f : B.A), Is
     ∃ y : B.A, B.Plus y ∧ y * (1 - f) = 1 - f ∧ K.eta (Algebra.norm K.E y) = -1 := by
   first
   | exact @_root_.GlobalTheory.LocalFiniteOddFixed.exists_plus_eta_norm
-  | exact _root_.GlobalTheory.LocalFiniteOddFixed.exists_plus_eta_norm
-  | (apply _root_.GlobalTheory.LocalFiniteOddFixed.exists_plus_eta_norm <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LocalFiniteOddFixed.exists_plus_eta_norm <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LocalFiniteOddFixed.exists_plus_eta_norm <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LocalFiniteOddFixed.exists_plus_eta_norm ..)
 
 end GlobalTheory.UnitLemma.Desc

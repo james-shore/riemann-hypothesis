@@ -81,7 +81,7 @@ theorem rankin_tendsto : ∀ (k j L L' N : ℕ) (ε : DirichletCharacter ℂ N) 
         |C * (τ.im ^ A + (τ.im ^ A)⁻¹)| * (τ.im + τ.im⁻¹) :=
       mul_le_mul (hl.trans (le_abs_self _)) hys hys0 (abs_nonneg _)
     simp only [hG, norm_mul, Complex.norm_real, Complex.norm_conj, norm_pow, Real.norm_eq_abs,
-      norm_norm, abs_norm, Complex.ofReal_mul]
+      abs_norm]
     rw [abs_of_nonneg hy.le, abs_of_nonneg (Real.rpow_nonneg hy.le s),
       abs_of_nonneg (by positivity : (0:ℝ) ≤ τ.im + τ.im⁻¹)]
     have hcomb : |C| * |τ.im ^ A + (τ.im ^ A)⁻¹| = |C * (τ.im ^ A + (τ.im ^ A)⁻¹)| := (abs_mul _ _).symm

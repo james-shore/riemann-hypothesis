@@ -71,6 +71,6 @@ theorem UpperTheory.Gal.crystallineComparison.normPt_of :
     rw [(hPtC Y V hV (IsLocalRing.ResidueField W)).1 (Classical.choose_spec hP)]
   have alt2 := congrArg (Multiset.map G) alt
   rw [pts_map, pts_map] at alt2
-  simp only [hG, RingHom.comp_apply, hφm, AlgHom.coe_toRingHom] at alt2
+  simp only [hG, RingHom.comp_apply, hφm] at alt2
   simp only [s, map_pow]
   exact alt2

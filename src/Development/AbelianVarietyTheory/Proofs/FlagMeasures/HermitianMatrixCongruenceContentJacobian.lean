@@ -180,8 +180,7 @@ theorem cont_congr : ∀ {F : Type} [Field F] [ValuativeRel F] [TopologicalSpace
     { toFun := fun X => cT L A * X * A
       invFun := fun X => (cT L A)⁻¹ * X * A⁻¹
       left_inv := fun X => by
-        simp only [Matrix.mul_assoc, Matrix.mul_nonsing_inv_cancel_left _ _ hA',
-          Matrix.nonsing_inv_mul_cancel_left _ _ hA', Matrix.mul_nonsing_inv _ hA, Matrix.mul_one]
+        simp only [Matrix.mul_assoc, Matrix.nonsing_inv_mul_cancel_left _ _ hA', Matrix.mul_nonsing_inv _ hA, Matrix.mul_one]
       right_inv := fun X => by
         simp only [Matrix.mul_assoc, Matrix.mul_nonsing_inv_cancel_left _ _ hA',
           Matrix.nonsing_inv_mul _ hA, Matrix.mul_one]

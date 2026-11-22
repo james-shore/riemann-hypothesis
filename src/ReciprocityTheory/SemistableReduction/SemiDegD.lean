@@ -12,7 +12,6 @@ private theorem posDef_diagonal_ofReal_of_pos {r : ℕ} (d : Fin r → ℝ) (hd 
     (diagonal fun l => (d l : ℂ)).PosDef := by
   first
   | exact Matrix.posDef_diagonal_iff.mpr fun l => Complex.zero_lt_real.mpr (hd l)
-  | exact Matrix.posDef_diagonal_iff.mpr fun l => by exact_mod_cast hd l
 
 theorem sdd_gram_step {K : Type} [Field K] [NumberField K] {r e k₀ k₁ : ℕ} (σ : K →+* ℂ)
     (d : Fin r → ℝ) (hd : ∀ l, 0 < d l) (b₀ : Fin k₀ → Fin r → K) (c b₁ : Fin k₁ → Fin r → K)
@@ -35,7 +34,6 @@ theorem sdd_gram_step {K : Type} [Field K] [NumberField K] {r e k₀ k₁ : ℕ}
   have hu : IsUnit ((embM σ b₀)ᴴ * D * embM σ b₀).det := by
     first
     | exact (Matrix.isUnit_iff_isUnit_det _).mp hG0.isUnit
-    | exact hG0.det_pos.ne'.isUnit
   set E : Matrix (Fin r) (Fin k₁) ℂ := embM σ c - embM σ b₀ *
     (((embM σ b₀)ᴴ * D * embM σ b₀)⁻¹ * ((embM σ b₀)ᴴ * D * embM σ c)) with hE
 

@@ -353,13 +353,13 @@ private theorem pb_J {C : Type} [Group C] (s : ∀ q, G q →* C) (h : ∀ q q',
   let J : (∀ q, G q) →* C := MonoidHom.noncommPiCoprod s fun q q' hq => h q q' hq
   have hJ : ∀ q g, J (Pi.mulSingle q g) = s q g := fun q g => MonoidHom.noncommPiCoprod_mulSingle _ q g
   refine ⟨J, hJ, fun u hu g => ?_, fun K => ?_⟩
-  · simp only [J, MonoidHom.noncommPiCoprod_apply]
+  · simp only [J]
     exact Finset.noncommProd_commute _ _ (fun q _ q' _ hq => h q q' hq _ _) _ fun q _ => hu q _
   refine le_antisymm (iSup_le fun q => ?_) ?_
   · rintro _ ⟨g, hg, rfl⟩
     exact ⟨Pi.mulSingle q g, (Subgroup.mulSingle_mem_pi _ _).2 fun _ => hg, hJ q g⟩
   · rintro _ ⟨g, hg, rfl⟩
-    simp only [J, MonoidHom.noncommPiCoprod_apply]
+    simp only [J]
     exact Subgroup.noncommProd_mem _ (fun q _ q' _ hq => h q q' hq _ _) fun q _ => Subgroup.mem_iSup_of_mem q ⟨g q, hg q trivial, rfl⟩
 
 end Top

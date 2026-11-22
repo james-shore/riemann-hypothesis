@@ -67,8 +67,8 @@ theorem split {n : Type} [Fintype n] [DecidableEq n] {G : Matrix n n E} (hG : �
   have hwz : hf G w z = 1 := by rw [hf_symm hG, hzw, cc_one]
   let L : (n → E) →ₗ[E] (Fin 2 → E) :=
     { toFun := fun x => ![hf G x z, hf G x w]
-      map_add' := fun x y => by ext i; fin_cases i <;> simp [hf_add_left]
-      map_smul' := fun t x => by ext i; fin_cases i <;> simp [hf_smul_left] }
+      map_add' := fun x y => by ext i; fin_cases i <;> simp
+      map_smul' := fun t x => by ext i; fin_cases i <;> simp }
   have hLz : L z = ![0, 1] := by ext i; fin_cases i <;> simp [L, hz, hzw]
   have hLw : L w = ![1, 0] := by ext i; fin_cases i <;> simp [L, hwz, hww]
   have hLs : Function.Surjective L := by

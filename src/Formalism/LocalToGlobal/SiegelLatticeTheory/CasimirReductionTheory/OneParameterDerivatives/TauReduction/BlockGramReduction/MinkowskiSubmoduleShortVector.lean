@@ -32,7 +32,6 @@ theorem gramV_eq_conjTranspose_t8C_mul_t8C (I : AutInst) (x : I.GA) (v : Infinit
     intro a i
     first
       | rfl
-      | (unfold coordV t8C; simp [Matrix.mulVec, dotProduct, Matrix.mul_apply])
   unfold gramV
   ext a c
   simp only [hc, Matrix.mul_apply, Matrix.conjTranspose_apply]

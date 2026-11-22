@@ -29,8 +29,6 @@ theorem exists_int_smul_mem (L : Submodule (𝓞 E) (Fin n → E)) (hL : Submodu
   | exact @_root_.GlobalTheory.IntSmulIntegerEq.exists_int_smul_mem
   | exact _root_.GlobalTheory.IntSmulIntegerEq.exists_int_smul_mem
   | (apply _root_.GlobalTheory.IntSmulIntegerEq.exists_int_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntSmulIntegerEq.exists_int_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntSmulIntegerEq.exists_int_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntSmulIntegerEq.exists_int_smul_mem ..)
 
 theorem latLoc_compact_open (L : Submodule (𝓞 E) (Fin n → E)) (hL : Submodule.IsLattice E L)

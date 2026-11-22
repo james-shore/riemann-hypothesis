@@ -111,7 +111,6 @@ theorem UpperTheory.liftOne_rconv_tensor_moderateGrowth_uniform :
     calc _ ≤ |C| * PositivityTheory.Rg.Tf.Core.qht x ^ N * ‖φ‖ := by
           first
             | exact mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_right (le_abs_self C) (pow_nonneg hq0 N)) (norm_nonneg _)
-            | (have := mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_right (le_abs_self C) (pow_nonneg hq0 N)) (norm_nonneg φ); linarith)
       _ ≤ |C| * ((heightConst K n * D * Y) ^ N * AutomorphicForm.height g ^ (c * N)) * ‖φ‖ := by gcongr
       _ = _ := by ring
   · rintro γ γ' hγ hγ' ⟨N, hN⟩ ⟨N', hN'⟩

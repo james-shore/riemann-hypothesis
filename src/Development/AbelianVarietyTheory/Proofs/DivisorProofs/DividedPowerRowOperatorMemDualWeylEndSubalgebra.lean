@@ -63,9 +63,9 @@ theorem PSh_rowGen_X (a b : Fin N) (hab : a ≠ b) (v : Fin N × Fin N) :
       simp [wZ, δ, hv]
     · simp [hv]; exact isWeightedHomogeneous_zero _ _ _
   · by_cases hv : v.1 = b
-    · simp [hv, Polynomial.coeff_X, Polynomial.coeff_C]
+    · simp [hv]
       exact isWeightedHomogeneous_zero _ _ _
-    · simp [hv, Polynomial.coeff_C]; exact isWeightedHomogeneous_zero _ _ _
+    · simp [hv]; exact isWeightedHomogeneous_zero _ _ _
 
 theorem PSh.add {a b : Fin N} {u : Fin N → ℤ} {P Q : Polynomial (MvPolynomial (Fin N × Fin N) O)}
     (hP : PSh a b u P) (hQ : PSh a b u Q) : PSh a b u (P + Q) := fun j => by
@@ -131,7 +131,7 @@ theorem proj_rowDiv (a b : Fin N) (hab : a ≠ b) (j k : ℕ) (w : Fin N → ℕ
   · by_contra hne
     have := congrFun (hg hne) a
     rw [weight_wZ, h1] at this
-    simp [shiftW, δ, hab, Pi.single_apply] at this
+    simp [shiftW, δ, hab] at this
     omega
   · subst h2
     by_contra hne

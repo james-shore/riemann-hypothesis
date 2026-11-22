@@ -82,7 +82,7 @@ theorem card_completions : ∀ (k : Type) [Field k] [Fintype k] (n ρ : ℕ) (D 
     have h1 : (E C).1 = fun i => (Cᵀ.mulVecLin ∘ₗ (LinearMap.ker Dᵀ.mulVecLin).subtype) (bZ i) := by
       funext i
       rw [hE]
-      simp [Matrix.mulVec_transpose]
+      simp
     rw [h1, li_iff, rank_fromCols_eq_iff]
     constructor
     · intro h y hy
@@ -101,6 +101,6 @@ theorem card_completions : ∀ (k : Type) [Field k] [Fintype k] (n ρ : ℕ) (D 
     card_linearIndependent (K := k) (V := Fin n → k) (by rw [Module.finrank_fin_fun]; omega), Module.finrank_fin_fun,
     Finset.prod_range (fun j => Fintype.card k ^ n - Fintype.card k ^ j), mul_comm]
   congr 1
-  simp [Nat.card_fun, pow_mul]
+  simp [pow_mul]
 
 end GlobalTheory.CompanionTheory.Jp.CntCols

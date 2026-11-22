@@ -39,7 +39,7 @@ theorem coord_span_zero (Q : Matrix (Fin n) (Fin (2 * r + k + 1)) ℂ) (Qi : Mat
       Function.eval, h3, Pi.smul_apply, smul_eq_mul]
     have : i ≠ eI k r b := by
       intro h; rw [h] at hi; simp [eI] at hi; omega
-    simp [Pi.single_apply, this]
+    simp [this]
   exact hle hy
 
 theorem mem_nset (J : Matrix (Fin n) (Fin n) ℂ) (Q : Matrix (Fin n) (Fin (2 * r + k + 1)) ℂ)

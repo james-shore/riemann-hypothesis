@@ -42,7 +42,7 @@ private theorem permDet_twist {X : Type} [Fintype X] [DecidableEq X] (π : Equiv
   have key : Matrix.diagonal c * (a • (1 : Matrix X X ℂ) - ζ • π.permMatrix ℂ) =
       (a • (1 : Matrix X X ℂ) - π.permMatrix ℂ) * Matrix.diagonal c := by
     ext i j
-    simp [Matrix.mul_sub, Matrix.sub_mul, Matrix.diagonal_mul, Matrix.mul_diagonal, Equiv.Perm.permMatrix,
+    simp [Matrix.diagonal_mul, Matrix.mul_diagonal, Equiv.Perm.permMatrix,
       PEquiv.toMatrix_apply, Matrix.one_apply]
     by_cases h2 : π i = j
     · subst h2

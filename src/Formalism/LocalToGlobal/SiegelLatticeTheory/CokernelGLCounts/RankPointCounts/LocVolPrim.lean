@@ -119,7 +119,7 @@ theorem mem_diff_iff (x : 𝓞 K) : x ∈ differentIdeal ℤ (𝓞 K) ↔
     · intro hx
       exact ⟨x, hx, rfl⟩
   rw [← h1, coeIdeal_differentIdeal ℤ ℚ K (𝓞 K),
-    FractionalIdeal.mem_inv_iff (by first | exact FractionalIdeal.dual_ne_zero ℤ ℚ one_ne_zero | exact FractionalIdeal.dual_ne_zero one_ne_zero)]
+    FractionalIdeal.mem_inv_iff (by first | exact FractionalIdeal.dual_ne_zero ℤ ℚ one_ne_zero)]
   constructor
   · intro H b hb
     have := H b ((mem_dual_one_iff b).2 hb)
@@ -268,7 +268,7 @@ theorem crd_cinv (x : Fin X.B.I.n → X.B.I.E) : crd X (cinv X x) = x := by
   funext i
   simp only [crd, crdOf, cinv, map_sum, map_smul, Module.Basis.repr_self, Finsupp.coe_finset_sum,
     Finset.sum_apply, Finsupp.smul_apply, Finsupp.single_apply, smul_eq_mul, mul_ite, mul_one, mul_zero,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, RingEquiv.symm_apply_apply]
+    Finset.sum_ite_eq', Finset.mem_univ, if_true, RingEquiv.symm_apply_apply]
 
 theorem cinv_add (x y : Fin X.B.I.n → X.B.I.E) : cinv X (x + y) = cinv X x + cinv X y := by
   simp only [cinv, Pi.add_apply, map_add, add_smul, Finset.sum_add_distrib]
@@ -408,7 +408,6 @@ theorem fe (a b : Fin D.R.rS) : (VS D).hT (X.fY b) (X.eX a) = if a = b then 1 el
     first
       | exact (VS D).herm (X.eX a) (X.fY b)
       | exact (VS D).herm.eq (X.eX a) (X.fY b)
-      | exact LinearMap.IsSymm.eq (VS D).herm (X.eX a) (X.fY b)
   rw [← h, X.ef]
   split_ifs <;> simp
 

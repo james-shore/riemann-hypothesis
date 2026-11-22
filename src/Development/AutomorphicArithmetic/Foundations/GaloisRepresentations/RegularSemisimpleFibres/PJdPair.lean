@@ -89,7 +89,7 @@ theorem UpperTheory.Gal.InertialTypesAlt.jdPair :
       GlobalTheory.BI.IsChar ℂ ℂ (J θ M n) := by
     intro M hM n hn
     have hc := (hC F θ hθ).2 ⟨q, [], M⟩ ⟨hq2, by simp, hM⟩ hq
-    simp only [Lbl.D, Lbl.L, Lbl.rk] at hc
+    simp only [Lbl.rk] at hc
     rw [JD_nil] at hc
     exact char_cast θ M (by simp [GlobalTheory.Shin.deg] at hn ⊢; omega) hc
   have key : ∀ E : List (ℕ × ℕ), (∀ x ∈ E, 0 < x.1) →

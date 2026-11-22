@@ -107,7 +107,7 @@ theorem idx_transpose [IsDomain O] [IsDiscreteValuationRing O] [IsFractionRing O
   let N : Matrix (Fin r) (Fin r) O := Matrix.of fun i j => N0 (i, j)
   have hNmap : N.map (algebraMap O K) = a • g := by
     ext i j
-    simp only [N, Matrix.map_apply, Matrix.of_apply, Matrix.smul_apply, hN0 (i, j), ha_def, smul_eq_mul, Algebra.smul_def, Algebra.algebraMap_self, RingHom.id_apply]
+    simp only [N, Matrix.map_apply, Matrix.of_apply, Matrix.smul_apply, hN0 (i, j), ha_def, smul_eq_mul, Algebra.smul_def]
   have hNdet : N.det ≠ 0 := by
     intro h0
     have e := RingHom.map_det (algebraMap O K) N

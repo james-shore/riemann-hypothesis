@@ -13,7 +13,7 @@ namespace GlobalTheory.ChernCalc
 
 theorem eq_sum_ofLp_smul_complexCoordinateVector {n : ℕ} (w : V n) : w = ∑ a, w a • coordVec a := by
   ext i
-  simp [coordVec, EuclideanSpace.single_apply, Pi.single_apply]
+  simp [coordVec, Pi.single_apply]
 
 theorem trace_mul_constMatrix_mul_evenForms_sum {n : ℕ} {r : Type} [Fintype r] [DecidableEq r] (P Q : Matrix r r (Ev n)) (C : Matrix r r ℂ) :
     (((P * C.map (algebraMap ℂ (Ev n)) * Q).trace : Ev n) : Alt n) = ∑ p, ∑ q, C p q • (((Q * P) q p : Ev n) : Alt n) := by

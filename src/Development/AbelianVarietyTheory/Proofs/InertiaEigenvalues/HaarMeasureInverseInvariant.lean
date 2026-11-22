@@ -55,7 +55,7 @@ def wt (c : Rˣ) (i : Fin n) : Rˣ := c⁻¹ ^ (i : ℕ)
 
 theorem wt_mul_inv (c : Rˣ) {i j : Fin n} {k : ℕ} (h : (j : ℕ) = i + k) :
     (wt c i * (wt c j)⁻¹ : Rˣ) = c ^ k := by
-  simp only [wt, h, pow_add, mul_inv, ← mul_assoc, mul_inv_cancel, inv_mul_cancel, one_mul, inv_pow, inv_inv]
+  simp only [wt, h, pow_add, mul_inv, ← mul_assoc, inv_mul_cancel, one_mul, inv_pow, inv_inv]
 
 theorem fil_conj (c : Rˣ) {k : ℕ} {X : Matrix (Fin n) (Fin n) R} (hX : Fil k X) :
     Fil (k + 1) (diagonal (fun i => (wt c i : R)) * X * diagonal (fun i => (((wt c i)⁻¹ : Rˣ) : R))

@@ -23,7 +23,7 @@ lemma le_ph_sub {a b : ℝ} (ha : 0 < a) (hab : a ≤ b) :
   have h1 := Real.log_le_sub_one_of_pos (div_pos ha hb)
   rw [Real.log_div ha.ne' hb.ne'] at h1
   have h2 := mul_le_mul_of_nonneg_left h1 hb.le
-  have h3 : b * (a / b - 1) = a - b := by field_simp <;> ring
+  have h3 : b * (a / b - 1) = a - b := by field_simp
   rw [h3] at h2
   unfold ph
   linarith

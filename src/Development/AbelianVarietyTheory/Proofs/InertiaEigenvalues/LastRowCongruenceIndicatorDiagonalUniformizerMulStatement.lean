@@ -31,5 +31,3 @@ theorem _root_.GlobalTheory.T.lastRowCongruenceIndicator_diagonalUniformizer_mul
       GlobalTheory.RSJ.indN N (fun i => GlobalTheory.RSJ.pFin E (GlobalTheory.ZEul.lastRow (GlobalTheory.CellDec.tl (m + 1) ϖ l.1 * g) i)) = 0) := by
   first
   | exact @GlobalTheory.CellLastRow.indN_lastRow_tl
-  | exact GlobalTheory.CellLastRow.indN_lastRow_tl
-  | (intros; apply GlobalTheory.CellLastRow.indN_lastRow_tl <;> assumption)

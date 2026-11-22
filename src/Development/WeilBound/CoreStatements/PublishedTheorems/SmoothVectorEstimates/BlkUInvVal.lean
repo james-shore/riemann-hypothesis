@@ -39,7 +39,7 @@ theorem bet_nondeg (hm : m + 1 < a) {χ : AddChar (ι → ℂ) ℂ} (hχ : ∀ z
     rw [Finset.sum_eq_single t]
     · simp [mul_comm]
     · intro s _ hs
-      simp [Pi.single_apply, hs]
+      simp [hs]
     · simp
   rw [hs] at h1
   rw [hl, h1]

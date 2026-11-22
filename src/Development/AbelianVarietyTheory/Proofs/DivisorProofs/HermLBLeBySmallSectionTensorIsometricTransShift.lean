@@ -170,7 +170,6 @@ theorem le_of_isometric {A B : HermLB p} (hi : B.Isometric A) : Le B A := by
     rw [key a b (gen_mem (memInf ha hb))]
     exact regAt_fnOf (memInf ha hb) _ _
   · have hab := mem_ptsIn_inf.2 ⟨ha, hb⟩
-    beta_reduce
     rw [key a b (gen_mem (mem_ptsIn.1 hab)), ratVal_fnOf hab, h σ a b y ha hb, add_sub_cancel_left, logSq,
       norm_mul_exp_neg_log_normSq (ev_ne_zero hab (Units.isUnit _))]
 

@@ -29,7 +29,7 @@ theorem continuous_coeff_rowAct {r m : ℕ} (f : MvPolynomial (Fin r × Fin m) �
       intro M
       have hX : Formalism.GradedWeylDivisibility.rowAct ℂ (n := m) M (MvPolynomial.X v) =
           ∑ b : Fin r, MvPolynomial.C (M v.1 b) * MvPolynomial.X (b, v.2) := by
-        simp [Formalism.GradedWeylDivisibility.rowAct, MvPolynomial.aeval_X]
+        simp [Formalism.GradedWeylDivisibility.rowAct]
       rw [map_mul, hX, Finset.mul_sum, MvPolynomial.coeff_sum]
       refine Finset.sum_congr rfl fun b _ => ?_
       rw [mul_left_comm, MvPolynomial.coeff_C_mul, MvPolynomial.coeff_mul_X']

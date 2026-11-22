@@ -41,7 +41,7 @@ theorem map_evAt_eq_one (D : D7) (hF : D.host.F = maximalRealSubfield D.host.E) 
   rw [Matrix.map_apply, Matrix.map_apply, evAt_swapCast_symm, h2]
   by_cases h : i = j
   · subst h; simp
-  · simp [Matrix.one_apply, h]
+  · simp [h]
 
 theorem stdFrame_stab_red : ∀ (D : D7) (V : HSp D) (n : ℕ) (hF : D.host.F = maximalRealSubfield D.host.E) (P : principalLevelFrame.RowPsi V n) (β : GL (Fin V.rank) (EAf D)) (Λ : Submodule (𝓞 D.host.E) (Fin V.rank → D.host.E)), R3.StdFrame hF P → IsBaseFrame V β Λ 1 → ∀ κ ∈ ReciprocityTheory.Aut.Umax D.host.E n, finE V (P.ψ κ) ∈ Formalism.L2.DIV.St β ∧ ∀ (A : Set (HeightOneSpectrum (𝓞 (maximalRealSubfield D.host.E)))) (v : HeightOneSpectrum (𝓞 (maximalRealSubfield D.host.E))) (PP : Formalism.L2.DIV.Pl D.host.E), ReciprocityTheory.Aut.TrivOutside A κ → NG.OverPl PP v → v ∉ A → redFn β PP (finE V (P.ψ κ)) = 1 := by
   intro D V n hF P β Λ hP hB κ hκ
@@ -64,6 +64,6 @@ theorem stdFrame_stab_red : ∀ (D : D7) (V : HSp D) (n : ℕ) (hF : D.host.F = 
   rw [h3, sub_eq_zero]
   by_cases h : i = j
   · subst h; simp
-  · simp [Matrix.one_apply, h]
+  · simp [h]
 
 end GlobalTheory.FrameOff

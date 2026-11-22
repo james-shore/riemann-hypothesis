@@ -57,7 +57,6 @@ lemma pb_dirL_le {x : Bool × B.Mat k r} (hx : B.unitLie k r x.2) (g : B.Mat k r
     | show ‖g * x.2‖ ≤ _
       calc ‖g * x.2‖ ≤ ((2 * r + k + 1 : ℕ) : ℝ) * (‖g‖ * ‖x.2‖) := pb_mul_norm_le _ _
         _ ≤ _ := mul_le_mul_of_nonneg_left (mul_le_of_le_one_right (norm_nonneg _) hX) (by positivity)
-    | (unfold mulRightRealCLM; done)
 
 lemma pb_Dw_clm {K : ℝ} (hK : 0 ≤ K) (w : List (Bool × B.Mat k r))
     (hw : ∀ x ∈ w, ∀ g, ‖dirL x g‖ ≤ K * ‖g‖) :
@@ -127,10 +126,10 @@ lemma pb_var (i : (Fin (2 * r + k + 1) × Fin (2 * r + k + 1)) ⊕ (Fin (2 * r +
     exact Matrix.norm_entry_le_entrywise_sup_norm g
   · have e : (fun g : B.Mat k r => pbVar g (Sum.inr (a, b))) = fun g => pbCc a b g := by
       funext g
-      simp [pbVar, pbCc] <;> rfl
+      simp [pbVar, pbCc]
     rw [e]
     refine pb_clm (pbCc a b) (fun g => ?_)
-    have e2 : pbCc a b g = star (g a b) := by simp [pbCc] <;> rfl
+    have e2 : pbCc a b g = star (g a b) := by simp [pbCc]
     rw [e2, one_mul, norm_star]
     exact Matrix.norm_entry_le_entrywise_sup_norm g
 

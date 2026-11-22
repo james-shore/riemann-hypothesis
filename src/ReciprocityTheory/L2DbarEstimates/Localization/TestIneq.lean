@@ -80,8 +80,7 @@ private theorem ck_one_db_of_smooth {M : Type*} [TopologicalSpace M] {n : ℕ} {
   intro e he
   have hG : ContDiffOn ℝ 2 (F ∘ e.symm) e.target := (hF e he).of_le (by first
       | exact_mod_cast (le_top : ((2 : ℕ) : ℕ∞) ≤ ⊤)
-      | exact WithTop.coe_le_coe.mpr le_top
-      | simp)
+      | exact WithTop.coe_le_coe.mpr le_top)
   have hD : ContDiffOn ℝ 1 (fun y => fderiv ℝ (F ∘ e.symm) y) e.target :=
     hG.fderiv_of_isOpen e.open_target (by norm_num)
   have hW : ContDiffOn ℝ 1 (fun y => wdb n j (F ∘ e.symm) y) e.target := by
@@ -110,8 +109,7 @@ theorem testIneq (n : ℕ) (M : Type*) [TopologicalSpace M] [T2Space M]
   intro ε hε
   have hck2 : Ck n X.z 2 F0 := fun e he => (hF0 e he).of_le (by first
       | exact_mod_cast (le_top : ((2 : ℕ) : ℕ∞) ≤ ⊤)
-      | exact WithTop.coe_le_coe.mpr le_top
-      | simp)
+      | exact WithTop.coe_le_coe.mpr le_top)
   have hcj : ∀ j, Continuous fun x => db n X.z j F0 x := by
     intro j
     rw [continuous_iff_continuousAt]
@@ -128,8 +126,6 @@ theorem testIneq (n : ℕ) (M : Type*) [TopologicalSpace M] [T2Space M]
     show Continuous fun x => WithLp.toLp 2 (fun j => db n X.z j F0 x)
     first
       | exact (PiLp.continuous_toLp 2 (fun _ : Fin n => ℂ)).comp (continuous_pi hcj)
-      | exact (PiLp.continuous_toLp (p := 2) (β := fun _ : Fin n => ℂ)).comp (continuous_pi hcj)
-      | fun_prop
   obtain ⟨ph', ψ, e', U, hph', hψ, he', hcut, hU, hCU, hUeq, hle, hlevi, hL2⟩ :=
     hCh X ph (dbarF n X.z F0) (tsupport f) ε hph hcont (ti_hasCompactSupport n X.z f hf) hε
   have hprim := hP X.z hz ph ph' ψ F0 h ε hph hlev hph' hψ hF0 hh hdom hε hle hlevi hI

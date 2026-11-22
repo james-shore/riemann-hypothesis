@@ -26,7 +26,7 @@ private theorem rec_algNorm_diag {rc : IrrGL (w.adicCompletion E) → WD h} (H :
     ParLaws.rec_eq_diag H hα
   rw [rec_algNorm H, e, WD.lpTw_mk]
   refine WD.sound ⟨.refl _ _, fun g v => funext fun i => ?_, fun v => rfl⟩
-  simp [mul_zpow, mul_comm, mul_left_comm, mul_assoc]
+  simp [mul_zpow, mul_comm, mul_left_comm]
 
 private theorem val_inv_eq (n : ℕ) (a : ℂˣ) :
     (((a⁻¹ * qPow w ((1 - (n : ℝ)) / 2) : ℂˣ) : ℂ)) ^ (-1 : ℤ) =

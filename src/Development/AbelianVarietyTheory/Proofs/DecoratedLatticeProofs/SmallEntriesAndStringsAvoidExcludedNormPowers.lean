@@ -37,7 +37,7 @@ theorem small_entries_and_strings_avoid_excluded : ∀ (K : Type) [Field K] [Num
         linarith
       linarith
   · intro x hx1 hxne β hβ heq
-    simp only [GlobalTheory.LFun.seg, Multiset.mem_map, Finset.mem_range] at hβ
+    simp only [GlobalTheory.LFun.seg, Multiset.mem_map] at hβ
     obtain ⟨i, -, rfl⟩ := hβ
     set c : ℂ := (k : ℂ) / 2 - (((t : ℂ) - 1) / 2 - (i : ℂ)) with hc
     have hsplit : GlobalTheory.LFun.npow w ((k : ℂ) / 2) =

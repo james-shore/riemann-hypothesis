@@ -55,7 +55,7 @@ theorem UpperTheory.Reformulated.B.MorphismExtOfSpecQuotients.main :
       have h2 := Scheme.ΓSpecIso_inv_naturality (CommRingCat.ofHom (Ideal.Quotient.mk (I n)))
       have h3 : (Scheme.ΓSpecIso (CommRingCat.of (A ⧸ I n))).inv (Ideal.Quotient.mk (I n) a) = 0 := by
         have h4 := congr($h2 a)
-        simp only [CommRingCat.comp_apply, CommRingCat.hom_ofHom] at h4
+        simp only at h4
         exact h4.trans h1
       have h5 := congr((Scheme.ΓSpecIso (CommRingCat.of (A ⧸ I n))).hom $h3)
       simp only [map_zero] at h5

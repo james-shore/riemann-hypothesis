@@ -64,7 +64,6 @@ private theorem pullU_pullU_eq_pullU_comp {X Y Z : Scheme.{0}} (b : Z ⟶ Y) (a 
   first
     | (simp [pullU]; done)
     | (simp [pullU]; rfl)
-    | rfl
 
 private theorem res_pullU_eq_of_eq {P Z : Scheme.{0}} (C C' : P ⟶ Z) (h : C = C') (W : Z.Opens) (u : Γ(Z, W)ˣ)
     {V : P.Opens} (k : V ≤ C ⁻¹ᵁ W) (k' : V ≤ C' ⁻¹ᵁ W) :
@@ -103,8 +102,6 @@ theorem rigPullOf_isGen (F : G'.left ⟶ G.left) (e : (𝟙_ (Over S')).left ⟶
           (inf_le_right : ((L.pull F).pull (eSec G')).U i ⊓ ((L.pull F).pull (eSec G')).U j ≤
             ((L.pull F).pull (eSec G')).U j)] at hr'
        exact hr')
-    | (refine (res_res_eq_res_trans' _ _ _).trans (hr'.trans ?_)
-       exact congrArg (fun x => _ * x) (res_res_eq_res_trans' _ _ _).symm)
 
 end RigPull
 

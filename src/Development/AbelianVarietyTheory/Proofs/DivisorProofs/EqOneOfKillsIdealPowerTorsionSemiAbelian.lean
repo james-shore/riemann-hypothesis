@@ -108,7 +108,6 @@ theorem eq_one_of_idealTorsion_comp_eq_one : ∀ (E : Type) [Field E] [NumberFie
       rw [MonoidHom.mem_ker] at hx ⊢
       change x ≫ act.act π ≫ u = 1
       rw [hcomm, ← Category.assoc]
-      change (x ≫ u) ≫ act.act π = 1
       rw [show x ≫ u = 1 from hx, MonObj.one_comp])
   obtain ⟨Z', hZ', h'⟩ := exists_isClosed_image_of_isClosed_subgroup k G G u hu inferInstance
     inferInstance inferInstance inferInstance ⊤ Set.univ isClosed_univ (by simp)

@@ -8,4 +8,4 @@ open GlobalTheory GlobalTheory.HTLat GlobalTheory.Published.AbVarRed GlobalTheor
 attribute [local instance] Over.cartesianMonoidalCategory
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.intersection_pullback_isogeny_eq_degree_mul : ∀ (K : Type) [Field K] (A B : AbVar K) (f : A ⟶ B), IsIsogeny f → ∀ (J : Type) [Fintype J], Fintype.card J = A.dim → ∀ c : J → Pic B.X.left, inter A (fun j => CechPic.pull f.hom.left (c j)) = deg f * inter B c := by
-  first | (exact @GlobalTheory.AV.AbVar.inter_pull_isogeny_eq_deg_mul) | (exact GlobalTheory.AV.AbVar.inter_pull_isogeny_eq_deg_mul) | (intros; apply GlobalTheory.AV.AbVar.inter_pull_isogeny_eq_deg_mul  <;> assumption)
+  first | (exact @GlobalTheory.AV.AbVar.inter_pull_isogeny_eq_deg_mul)

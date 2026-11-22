@@ -36,8 +36,7 @@ theorem isHaarOn_smul' {k r : ℕ} {S : Set (Matrix (Fin (2 * r + k + 1)) (Fin (
          have hu := congrArg (fun ν : Measure (Mt k r) => ν Set.univ) hz
          simp [h0] at hu
          first
-           | exact hu
-           | exact Measure.measure_univ_eq_zero.mp hu)
+           | exact hu)
   · rw [Measure.smul_apply, hnull, smul_zero]
   · intro s hs'
     rw [Measure.map_smul, hinv s hs']

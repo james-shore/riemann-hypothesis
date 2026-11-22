@@ -128,7 +128,7 @@ theorem letE_idem (a : ZMod n) : (letE a : LetA O n) * letE a = letE a := by
   funext i
   by_cases h : i = a
   · subst h; simp [letE]
-  · simp [letE, Pi.single_apply, h]
+  · simp [letE, h]
 
 end Core
 
@@ -165,7 +165,7 @@ theorem cop_π₀_ps (hT : Formalism.MainNotions.WachCoordinates.ToolsAlg W)
     have h2 : W.π₀ * (W.γA δ c - c) = 0 := by rw [mul_sub, mul_comm _ (W.γA δ c), h1, mul_comm]; ring
     exact sub_eq_zero.1 (π₀_nzd W hw h2)
   refine ⟨1, ⟨-c, W.AΔ.neg_mem hcΔ⟩, 1, Subtype.ext ?_⟩
-  simp only [pow_one, Subalgebra.coe_add, Subalgebra.coe_mul, Subalgebra.coe_neg, Subalgebra.coe_one, one_mul]
+  simp only [pow_one, Subalgebra.coe_add, Subalgebra.coe_mul, one_mul]
   push_cast
   rw [neg_mul, hc']
   ring

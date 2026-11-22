@@ -32,7 +32,7 @@ def phi (d : ℕ) {k : ℕ} (b : Fin k → A) :
     Matrix ((Fin d → Fin n) × Fin k) ((Fin d → Fin n) × Fin k) ℂ →ₗ[ℂ] A where
   toFun N := ∑ i, wordMap X d (blockOf N i) * b i
   map_add' N N' := by simp [blockOf_add, add_mul, Finset.sum_add_distrib]
-  map_smul' c N := by simp [blockOf_smul, Finset.smul_sum, smul_mul_assoc]
+  map_smul' c N := by simp [blockOf_smul, Finset.smul_sum]
 
 theorem phi_apply (d : ℕ) {k : ℕ} (b : Fin k → A) (N) : phi X d b N = ∑ i, wordMap X d (blockOf N i) * b i := rfl
 

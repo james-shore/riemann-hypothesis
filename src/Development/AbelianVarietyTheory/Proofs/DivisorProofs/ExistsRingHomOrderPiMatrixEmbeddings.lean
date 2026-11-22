@@ -61,7 +61,7 @@ theorem bigPhi_algebraMap (D : Datum p) (κ : ℤ_[p] →+* ℂ)
   show (evalTensor D.F κ τ).mapMatrix (e (algebraMap (𝓞 D.F) (D.O ⊗[ℤ] ℤ_[p]) c)) = _
   rw [e.commutes c, Matrix.algebraMap_eq_diagonal]
   ext i j
-  simp [Matrix.diagonal_apply, Matrix.scalar_apply, Algebra.TensorProduct.algebraMap_apply, evalTensor_tmul]
+  simp [Matrix.diagonal_apply, Matrix.scalar_apply, Algebra.TensorProduct.algebraMap_apply]
   split_ifs <;> simp [evalTensor_tmul]
 
 theorem tmul_one_comm {A : Type} [Ring A] (z : ℤ_[p]) (a : A ⊗[ℤ] ℤ_[p]) :

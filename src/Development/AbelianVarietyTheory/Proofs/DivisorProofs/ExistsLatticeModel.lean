@@ -162,7 +162,7 @@ def latModel : LatModel M (toMod hM) where
   inj U _ s t e := sv_ext M fun _ => e
   range U h := by
     ext v
-    simp only [AddMonoidHom.mem_range, AddMonoidHom.coe_mk, ZeroHom.coe_mk, latSec,
+    simp only [AddMonoidHom.mem_range, latSec,
       AddSubgroup.mem_iInf]
     constructor
     · rintro ⟨s, rfl⟩ y hy

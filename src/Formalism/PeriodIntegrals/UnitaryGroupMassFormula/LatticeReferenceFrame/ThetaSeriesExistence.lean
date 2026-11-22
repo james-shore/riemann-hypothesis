@@ -50,7 +50,6 @@ private lemma sk_GE_of_mem_span_natCast (g : ℕ) (z : 𝓞 I.E) (hz : z ∈ Ide
   rw [← ht]
   first
     | (push_cast; ring)
-    | simp [mul_comm]
 
 theorem theta_series_existence : PI.ScRefExists.Sk.ThetaEx := by
   intro I g hg hS
@@ -58,11 +57,9 @@ theorem theta_series_existence : PI.ScRefExists.Sk.ThetaEx := by
   letI : LinearOrder (HeightOneSpectrum (𝓞 I.E)) := by
     first
       | exact linearOrderOfSTO WellOrderingRel
-      | exact IsWellOrder.linearOrder WellOrderingRel
   obtain ⟨N, hN⟩ : ∃ N : ℕ, (∏ P ∈ primesG I g hg, P.asIdeal) ^ N ≤ Ideal.span {(g : 𝓞 I.E)} := by
     first
       | exact Ideal.exists_pow_le_of_le_radical_of_fg (prod_le_radical I g hg) (IsNoetherian.noetherian _)
-      | exact Ideal.exists_pow_le_of_le_radical_of_fg (IsNoetherian.noetherian _) (prod_le_radical I g hg)
   obtain ⟨θ, hθ⟩ := IsDedekindDomain.exists_forall_sub_mem_ideal (s := primesG I g hg)
     (fun P : HeightOneSpectrum (𝓞 I.E) => P.asIdeal) (fun _ => N) (fun P _ => P.prime)
     (fun P _ Q _ h e => h (HeightOneSpectrum.ext e))

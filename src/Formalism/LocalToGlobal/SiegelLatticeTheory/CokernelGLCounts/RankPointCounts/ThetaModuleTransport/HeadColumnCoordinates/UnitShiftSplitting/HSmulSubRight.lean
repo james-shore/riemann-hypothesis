@@ -53,19 +53,19 @@ theorem zz_mem_R {g : SplitG M.L} (hs : M.split = some g) (H : HermSp M V) {r : 
     rw [if_pos ⟨rfl, rfl⟩]
     rw [hF.2] at i1
     rw [hF.2, hF'.2] at i3
-    simp only [map_mul, map_sub, map_add, map_neg, e_alg, e_cj, cj_alg, eqi, cqi, Prod.fst_mul, Prod.snd_mul,
-      Prod.fst_sub, Prod.snd_sub, Prod.fst_add, Prod.snd_add, Prod.fst_neg, Prod.snd_neg] at i1 i3
+    simp only [map_mul, map_sub, map_neg, e_alg, e_cj, eqi, cqi, Prod.fst_mul, Prod.snd_mul,
+      Prod.fst_sub, Prod.snd_sub, Prod.fst_neg, Prod.snd_neg] at i1 i3
     rw [← hz] at i1 i3
     apply mem_R_of hs
-    · simp only [map_sub, AlgEquiv.apply_symm_apply, Prod.fst_sub, ← hz, ← hqdef]
+    · simp only [map_sub, AlgEquiv.apply_symm_apply, Prod.fst_sub, ← hqdef]
       convert i1.1 using 1; field_simp; try ring
-    · simp only [map_sub, AlgEquiv.apply_symm_apply, Prod.snd_sub, ← hz, ← hqdef]
+    · simp only [map_sub, AlgEquiv.apply_symm_apply, Prod.snd_sub, ← hqdef]
       have : -(z.2 / q) - t.T' / q = -(q⁻¹ * (z.2 - -t.T)) + q * c := by
         field_simp; linear_combination hc
       rw [this]
       exact (𝒪[F]).add_mem ((𝒪[F]).neg_mem i1.2) ((𝒪[F]).mul_mem g.q.2 c.2)
     · refine ⟨-_, (𝒪[F]).neg_mem i3.1, ?_⟩
-      simp only [map_sub, AlgEquiv.apply_symm_apply, Prod.fst_sub, Prod.snd_sub, ← hz, ← hqdef]
+      simp only [map_sub, AlgEquiv.apply_symm_apply, Prod.fst_sub, Prod.snd_sub, ← hqdef]
       field_simp
       try ring
   · rw [if_neg hab, sub_zero]
@@ -74,8 +74,8 @@ theorem zz_mem_R {g : SplitG M.L} (hs : M.split = some g) (H : HermSp M V) {r : 
     rw [hF.1 b a hba'] at i1
     rw [hF.1 a b hab'] at i2
     rw [hF.1 b a hba', hF'.1 b a hba'] at i3
-    simp only [map_mul, map_sub, map_add, map_neg, map_zero, e_alg, e_cj, cj_alg, eqi, cqi, Prod.fst_mul, Prod.snd_mul,
-      Prod.fst_sub, Prod.snd_sub, Prod.fst_add, Prod.snd_add, Prod.fst_neg, Prod.snd_neg, Prod.fst_zero,
+    simp only [map_mul, map_sub, map_zero, e_cj, eqi, cqi, Prod.fst_mul, Prod.snd_mul,
+      Prod.fst_sub, Prod.snd_sub, Prod.fst_zero,
       Prod.snd_zero] at i1 i2 i3
     rw [← hz] at i1 i3
     rw [← hw] at i2 i3

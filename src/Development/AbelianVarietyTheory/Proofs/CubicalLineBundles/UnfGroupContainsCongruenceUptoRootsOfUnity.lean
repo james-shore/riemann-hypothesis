@@ -52,7 +52,7 @@ theorem _root_.GlobalTheory.unf_group_contains_congruence_upto_rootsOfUnity : �
   have hcu : (cu : Matrix (Fin r) (Fin r) E) = u • 1 := by
     simp [cu, Algebra.algebraMap_eq_smul_one]
   have hcomm : ∀ g : GL (Fin r) E, cu * g = g * cu := fun g =>
-    Units.ext (by simp [hcu, Matrix.smul_mul, Matrix.mul_smul])
+    Units.ext (by simp [hcu])
   have hγ' : γ' = cu * γ := Units.ext (by rw [hu, Units.val_mul, hcu, Matrix.smul_mul, one_mul])
   obtain ⟨S, hS⟩ := (U.X k).Γ_index
   have hpow : ∀ j : ℕ, ∃ s ∈ S, s⁻¹ * γ ^ j ∈ (U.X k).Γ := fun j => hS _ (isUStab_pow' hγ j)
@@ -85,7 +85,7 @@ theorem _root_.GlobalTheory.unf_group_contains_congruence_upto_rootsOfUnity : �
         refine ⟨?_, fun p q hpq => ?_⟩
         · rw [hβ, Matrix.det_smul, Matrix.det_one, mul_one]
           exact pow_ne_zero _ ((map_ne_zero _).2 (pow_ne_zero _ hu0))
-        · simp [β, Matrix.one_apply, (ne_of_gt hpq)]
+        · simp [β, (ne_of_gt hpq)]
       · unfold _root_.ReciprocityTheory.ChartRestriction.G.FD.lact _root_.ReciprocityTheory.ChartRestriction.G.FD.rmul
         funext τ
         rw [hβ, hcm]

@@ -140,7 +140,7 @@ theorem exists_coeff (X : Mat n) : ∃ c : Bool × Fin n × Fin n → ℝ, X = �
   refine ⟨fun p => if p.1 then (X p.2.1 p.2.2).re else (X p.2.1 p.2.2).im, ?_⟩
   ext i j
   simp only [Matrix.sum_apply, Matrix.smul_apply, Fintype.sum_prod_type, Fintype.sum_bool, bs, Matrix.single_apply]
-  simp [Finset.sum_add_distrib, Finset.sum_ite_eq, ite_and]
+  simp [ite_and]
 
 theorem Rd_expand (f : Mat n → V) {X : Mat n} {c : Bool × Fin n × Fin n → ℝ} (h : X = ∑ p, c p • bs p) (g : Mat n) :
     Rd X f g = ∑ p, c p • Rd (bs p) f g := by

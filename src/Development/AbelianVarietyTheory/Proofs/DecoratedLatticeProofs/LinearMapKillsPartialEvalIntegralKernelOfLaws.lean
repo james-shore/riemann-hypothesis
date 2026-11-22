@@ -96,7 +96,7 @@ theorem toTrip_add (ev it : Finset (m × m')) (hd : Disjoint ev it) (β t : Matr
     simp [toTrip, sum_single_apply, h.1]
   · have h : i.1 ∉ it := Finset.disjoint_left.mp hd i.2
     simp [toTrip, sum_single_apply, h]
-  · simp [toTrip, sum_single_apply, i.2]
+  · simp [toTrip, sum_single_apply]
 
 theorem ofTrip_zero (ev it : Finset (m × m')) (β : Matrix m m' k) (x₀ : Rest ev it → k) (a : {e // e ∈ it} → k) :
     ofTrip ev it β (x₀, 0, a) = fill ev it β (ofTrip ev it β (x₀, 0, 0)) a := by

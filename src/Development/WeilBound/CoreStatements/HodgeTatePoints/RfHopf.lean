@@ -102,7 +102,7 @@ theorem evGen_bij {C R A : Type} [Field C] [IsAlgClosed C] [CharZero C] [CommRin
       ext j
       by_cases h : j = x
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     have hc := Fintype.linearIndependent_iff.1 hli (fun x => f (Pi.single x 1)) (by
       funext b
       simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Pi.zero_apply, Function.comp_apply, hM]

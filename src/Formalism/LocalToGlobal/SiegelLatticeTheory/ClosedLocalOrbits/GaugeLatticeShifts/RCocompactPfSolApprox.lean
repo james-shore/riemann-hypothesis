@@ -19,7 +19,6 @@ theorem condMat_inl (lv : ι → ℕ) (k : ℕ) (G G' : Matrix ι ι K) (f : K �
     ((condMat lv k G G').map f *ᵥ z) (Sum.inl (i, j)) = if lv j < lv i + k then z (i, j) else 0 := by
   first
     | simp only [Matrix.mulVec, dotProduct, Matrix.map_apply, condMat, Matrix.of_apply, Sum.elim_inl]
-    | simp only [Matrix.mulVec, Matrix.dotProduct, Matrix.map_apply, condMat, Matrix.of_apply, Sum.elim_inl]
   by_cases h : lv j < lv i + k
   · rw [if_pos h, Finset.sum_eq_single (i, j)]
     · simp [h]
@@ -35,7 +34,6 @@ theorem condMat_inr (lv : ι → ℕ) (k : ℕ) (G G' : Matrix ι ι K) (f : K �
       if lv j < lv i + 1 then (G'.map f * matOf z * G.map f) i j else 0 := by
   first
     | simp only [Matrix.mulVec, dotProduct, Matrix.map_apply, condMat, Matrix.of_apply, Sum.elim_inr]
-    | simp only [Matrix.mulVec, Matrix.dotProduct, Matrix.map_apply, condMat, Matrix.of_apply, Sum.elim_inr]
   by_cases h : lv j < lv i + 1
   · simp only [h, ↓reduceIte, map_mul]
     rw [Fintype.sum_prod_type]

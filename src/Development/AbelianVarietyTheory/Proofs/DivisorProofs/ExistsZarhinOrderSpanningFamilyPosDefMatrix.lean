@@ -17,11 +17,11 @@ theorem colL_mul_transpose {d : ℕ} (hd : 0 < d) : colL d * (colL d)ᵀ = (d : 
   have h1 : ((d - 1 : ℕ) : ℤ) = (d : ℤ) - 1 := by omega
   rw [colL, form, fromBlocks_transpose, fromBlocks_multiply, fromBlocks_smul]
   congr 1
-  · rw [transpose_transpose, quat_transpose_mul, h1]; simp [sub_smul, smul_smul]
-  · simp only [Matrix.one_mul, Matrix.zero_mul, Matrix.mul_zero, zero_add, add_zero, Matrix.mul_smul,
-      Matrix.mul_one, Matrix.smul_mul, transpose_zero, transpose_smul, transpose_one]
+  · rw [transpose_transpose, quat_transpose_mul, h1]; simp [sub_smul]
+  · simp only [Matrix.mul_zero, zero_add, Matrix.mul_smul,
+      Matrix.mul_one, transpose_zero, transpose_smul, transpose_one]
   · simp
-  · simp [smul_smul]
+  · simp
 
 theorem colR_mul_transpose {d : ℕ} (hd : 0 < d) : colR d * (colR d)ᵀ = form d := by
   have h1 : ((d - 1 : ℕ) : ℤ) = (d : ℤ) - 1 := by omega
@@ -71,7 +71,7 @@ theorem sum_single_diag' (c : ℤ) : ∑ k : Fin 4 ⊕ Fin 4, single k k c = c �
   by_cases h : a = b
   · subst h; simp [single_apply]
   · rw [Finset.sum_eq_zero (fun k _ => by rw [single_apply]; exact if_neg (fun hk => h (hk.1.symm.trans hk.2)))]
-    simp [Matrix.one_apply, h]
+    simp [h]
 
 theorem sum_famM {d : ℕ} (hd : 0 < d) :
     ∑ t, famM d t * form d * (famM d t)ᵀ = ((8 * d : ℕ) : ℤ) • form d := by
@@ -88,7 +88,7 @@ theorem sum_famM {d : ℕ} (hd : 0 < d) :
   have e1 : ∀ j : Fin 4, form d (Sum.inl j) (Sum.inl j) = 1 := fun j => by simp [form]
   have e2 : ∀ j : Fin 4, form d (Sum.inr j) (Sum.inr j) = d := fun j => by
     simp only [form, fromBlocks_apply₂₂, Matrix.smul_apply, Matrix.one_apply_eq, smul_eq_mul, _root_.mul_one]
-  simp only [e1, e2, Finset.sum_const, Finset.card_univ, Fintype.card_fin, ← add_smul, smul_smul]
+  simp only [e1, e2, Finset.sum_const, Finset.card_univ, Fintype.card_fin]
   rw [_root_.one_mul, ← add_nsmul, ← Nat.cast_smul_eq_nsmul ℤ, smul_smul]
   congr 1
 
@@ -104,7 +104,7 @@ theorem sum_coef_famM {d : ℕ} {N : Matrix (Fin 4 ⊕ Fin 4) (Fin 4 ⊕ Fin 4) 
     ∑ t : (Fin 4 ⊕ Fin 4) × (Fin 4 ⊕ Fin 4), coef d N t.1 t.2 * famM d t p q = N p q := by
   simp only [famM_apply, mul_ite, mul_zero]
   rw [Fintype.sum_prod_type]
-  simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only
   have hdiv : ∀ m j, (d : ℤ) * (N (Sum.inr m) (Sum.inl j) / d) = N (Sum.inr m) (Sum.inl j) :=
     fun m j => Int.mul_ediv_cancel' (hN m j)
   rcases q with j | j <;> rcases p with m | m <;>
@@ -134,7 +134,7 @@ theorem sum_fam_mul_bar {d : ℕ} (hd : 0 < d) :
   apply Subtype.ext
   have h : ∑ t, famM d t * form d * (famM d t)ᵀ * formInv d = ((8 * d : ℕ) : ℤ) • (1 : Matrix _ _ ℤ) := by
     rw [← Finset.sum_mul, sum_famM hd, Matrix.smul_mul, form_mul_formInv hd]
-  simp only [fam, bar_coe, Subring.coe_mul, Matrix.mul_assoc] at h ⊢
+  simp only [fam, Matrix.mul_assoc] at h ⊢
   simp only [AddSubmonoidClass.coe_finset_sum, Subring.coe_mul, bar_coe, Matrix.mul_assoc]
   rw [h]
   simp only [Subring.coe_natCast]

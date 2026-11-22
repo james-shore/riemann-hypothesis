@@ -17,9 +17,6 @@ theorem trace_re_sum (E : Type) [Field E] [NumberField E] [IsTotallyComplex E] (
     have h : algebraMap ℚ ℂ (Algebra.trace ℚ E z) = ∑ σ : E →ₐ[ℚ] ℂ, σ z := by
       first
       | exact trace_eq_sum_embeddings ℂ (x := z)
-      | exact trace_eq_sum_embeddings (E := ℂ) (x := z)
-      | exact trace_eq_sum_embeddings (F := ℂ) (x := z)
-      | exact (trace_eq_sum_embeddings ℂ : _)
     rw [show ((Algebra.trace ℚ E z : ℚ) : ℂ) = algebraMap ℚ ℂ (Algebra.trace ℚ E z) from
       (eq_ratCast _ _).symm, h]
     exact (Fintype.sum_equiv (RingHom.equivRatAlgHom E ℂ) (fun φ : E →+* ℂ => φ z)
@@ -93,7 +90,6 @@ theorem shortAt_mean_log (D : D7) (u : D.what₂.Word) (c : (D.mem u).C.cls 0) [
     first
     | exact Formalism.BasicNotions.Ranks.f_eq_ord
     | exact Formalism.BasicNotions.Ranks.f_eq_ord D.R
-    | exact Formalism.BasicNotions.Ranks.f_eq_ord (R := D.R)
   have hf : 0 < D.R.f := by
     have := D.R.m_le_f
     have := D.R.two_le_m

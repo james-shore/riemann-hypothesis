@@ -34,7 +34,7 @@ theorem dehH_expand (w : ℕ) (p : MvPolynomial (Fin 2) ℂ) (hp : p.IsHomogeneo
 
 theorem dehH_coeff (w : ℕ) (c : ℕ → ℂ) (j : ℕ) (hj : j < w + 1) :
     (∑ i ∈ Finset.range (w + 1), Polynomial.C (c i) * Polynomial.X ^ i).coeff j = c j := by
-  simp [Polynomial.finset_sum_coeff, Polynomial.coeff_C_mul_X_pow, hj]
+  simp [hj]
 
 end GlobalTheory.KZ.H3
 

@@ -267,14 +267,14 @@ theorem prod_gt {Z : Scheme.{0}} {U : Type} [CommGroup U] (c b : 𝟙_ (Over (Sp
     ∏ k : Fin 4, h (𝟙 _ ≫ ![(c * b).left, c.left, b.left, (η[D.P.A]).left] k) ^ DegPre.gtε k =
       (h (c * b).left)⁻¹ * h c.left * h b.left * (h (1 : 𝟙_ (Over (Sp V₁)) ⟶ D.P.A).left)⁻¹ := by
   rw [Fin.prod_univ_four, ← SymFrame.eta_eq]
-  simp [DegPre.gtε, zpow_neg, zpow_one]
+  simp [DegPre.gtε, zpow_neg]
 
 theorem prod_ln {U : Type} [CommGroup U] (b : 𝟙_ (Over (Sp V₁)) ⟶ D.P.A)
     (h : ((𝟙_ (Over (Sp V₁))).left ⟶ D.P.A.left) → U) :
     ∏ k : Fin 2, h (𝟙 _ ≫ ![(η[D.P.A]).left, b.left] k) ^ DegPre.lineε 1 k =
       h (1 : 𝟙_ (Over (Sp V₁)) ⟶ D.P.A).left * (h b.left)⁻¹ := by
   rw [Fin.prod_univ_two, ← SymFrame.eta_eq]
-  simp [DegPre.lineε, zpow_neg, zpow_one]
+  simp [DegPre.lineε, zpow_neg]
 
 theorem char_mem [IsIntegrallyClosed V₁] (H : Desc f q ev k₀ u) {N : ℕ} (hN : 1 ≤ N)
     (htor : ∀ x : Over.mk (spMap ev) ⟶ D.P.A, x ^ N = 1 → RatP q k₀ x.left)

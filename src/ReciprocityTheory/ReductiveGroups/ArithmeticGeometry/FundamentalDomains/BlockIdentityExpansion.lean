@@ -41,8 +41,7 @@ lemma f_gram_re (X : Data E r) (ξ : Fin r → E) (z0 : Frame X.Ψ r) (f : X.Ψ 
       ∑ k : Fin (r - 2), if (k : ℕ) < X.p0 - 1 then ‖a k‖ ^ 2 else -‖a k‖ ^ 2 := by
   obtain ⟨-, -, hgr, -, -⟩ := hf τ
   rw [hermC_sum_left_lemma]
-  simp only [hermC_sum_right_lemma_2, hgr, mul_ite, mul_zero, mul_one, Finset.sum_ite_eq, Finset.sum_ite_eq',
-    Finset.mem_univ, if_true, Complex.re_sum]
+  simp only [hermC_sum_right_lemma_2, hgr, mul_ite, mul_zero, mul_one, Finset.sum_ite_eq, Finset.mem_univ, if_true, Complex.re_sum]
   refine Finset.sum_congr rfl fun k _ => ?_
   split_ifs <;> simp [Complex.mul_conj, Complex.normSq_eq_norm_sq] <;>
     rw [← Complex.ofReal_pow, Complex.ofReal_re]
@@ -188,7 +187,6 @@ theorem key (X : DataX E r) (ξ : Fin r → E) (z0 x0 : Frame X.Ψ r)
       hermC_smul_left_fundamental_domains, hermC_smul_right_fundamental_domains, Data.ppos_selfadj (X := X.toData) hz τ u q, Complex.conj_I]
     first
       | (simp only [map_ofNat]; ring)
-      | (simp; ring)
 
   let Lq : (Fin r → ℂ) → (Fin r → ℂ) →ₗ[ℂ] ℂ := fun q =>
     { toFun := fun u => hermC τ.1 X.Gm u q
@@ -211,7 +209,7 @@ theorem key (X : DataX E r) (ξ : Fin r → E) (z0 x0 : Frame X.Ψ r)
     intro u
     have h := LinearMap.congr_fun hc u
     simp only [Fin.sum_univ_two, LinearMap.add_apply, LinearMap.smul_apply, Matrix.cons_val_zero,
-      Matrix.cons_val_one, Matrix.head_cons, smul_eq_mul] at h
+      Matrix.cons_val_one, smul_eq_mul] at h
     rw [hermC_add_right_fundamental_domains, hermC_smul_right_fundamental_domains, hermC_smul_right_fundamental_domains, Complex.conj_conj,
       Complex.conj_conj]
     exact h.symm
@@ -232,11 +230,9 @@ theorem key (X : DataX E r) (ξ : Fin r → E) (z0 x0 : Frame X.Ψ r)
       rw [hJt, ppos_smul_fundamental_domains]
       first
         | module
-        | (simp only [smul_sub, smul_smul]; ring_nf)
     rw [hpq, he]
     first
       | exact h
-      | simpa using h
 
   have hwe : hermC τ.1 X.Gm w (Data.emb τ.1 ξ) = 0 := by
     rw [hw, hermC_sum_left_lemma]

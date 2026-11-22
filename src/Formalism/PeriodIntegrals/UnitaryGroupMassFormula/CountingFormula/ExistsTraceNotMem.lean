@@ -129,8 +129,8 @@ theorem pair_unit_local : PairUnitLoc := by
   have hv : h ((1 : K) • w + algebraMap (𝓞 K) K l • y) ((1 : K) • w + algebraMap (𝓞 K) K l • y) =
       h w w + algebraMap (𝓞 K) K (l + conjO K l) + algebraMap (𝓞 K) K (conjO K l * l) * h y y := by
     simp only [one_smul, map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply,
-      smul_eq_mul, starRingEnd_apply, RingHom.id_apply, map_smul, hyw, hwy, map_mul,
-      algebraMap_conjO, star_one]
+      smul_eq_mul, starRingEnd_apply, RingHom.id_apply, hyw, hwy, map_mul,
+      algebraMap_conjO]
     ring
   rw [hv]
   by_contra hnu

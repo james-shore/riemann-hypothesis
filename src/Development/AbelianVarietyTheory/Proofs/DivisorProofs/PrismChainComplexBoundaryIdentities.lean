@@ -100,7 +100,7 @@ theorem D₁_D₁ (c : Pr N →₀ ℤ) : D₁ N (D₁ N c) = 0 := by
     rcases p with _ | p
     · simp [d₁_zero]
     rcases p with _ | p
-    · simp [d₁_succ, map_sum, D₁_single, d₁_zero]
+    · simp [d₁_succ, D₁_single, d₁_zero]
     have h := alt_sum_zero (n := p) (fun θ => single (⟨p, r, θ ≫ a, b⟩ : Pr N) (1 : ℤ))
     rw [d₁_succ, map_sum]
     simp only [D₁_single, d₁_succ, Finset.smul_sum]
@@ -119,7 +119,7 @@ theorem D₂_D₂ (c : Pr N →₀ ℤ) : D₂ N (D₂ N c) = 0 := by
     rcases r with _ | r
     · simp [d₂_zero]
     rcases r with _ | r
-    · simp [d₂_succ, map_sum, D₂_single, d₂_zero]
+    · simp [d₂_succ, D₂_single, d₂_zero]
     have h := alt_sum_zero (n := r) (fun θ => single (⟨p, r, a, θ ≫ b⟩ : Pr N) (1 : ℤ))
     rw [d₂_succ, map_sum]
     simp only [D₂_single, d₂_succ, Finset.smul_sum]
@@ -146,7 +146,7 @@ theorem D₁_D₂ (c : Pr N →₀ ℤ) : D₁ N (D₂ N c) = D₂ N (D₁ N c) 
 
 theorem d_d (c : Pr N →₀ ℤ) : Pr.d N (Pr.d N c) = 0 := by
   rw [d_eq (Pr.d N c), d_eq c]
-  simp only [map_add, D₁_E, D₂_E, D₁_D₁, D₂_D₂, D₁_D₂, E_E, map_zero, map_neg]
+  simp only [map_add, D₁_E, D₂_E, D₁_D₁, D₂_D₂, D₁_D₂, map_zero]
   abel
 
 end GlobalTheory.EtC.PrCx

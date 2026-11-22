@@ -83,7 +83,7 @@ theorem GlobalTheory.AscFin.primAt_std_bessel : OnStd fun {D} _ _ {sc} {G} W F =
       exact (key i (s * a) (Ideal.mul_mem_left _ _ haA)).2 (h1 a ((key j a haA).1 hc))
   rw [key2, f2 _ _ (hb0 j) (hb0 i) s hs]
   have hsucc := stairId_succ (𝔞 := G.pl.stA sc) hAb (Fin.castLE (by omega) i : Fin (2 * ρ + 2 - 1)) (Fin.castLE (by omega) j)
-    (by simp [Fin.coe_castLE, hij])
+    (by simp [hij])
   have hrat : 𝔟 i * (𝔟 j)⁻¹ = FractionalIdeal.spanSingleton _ (-D.host.xi0) * (G.pl.stA sc * G.pl.stAbar sc) := by
     rw [mul_inv_eq_iff_eq_mul₀ (hb0 j)]
     have e2 : ((-D.host.xi0) ^ (i.1 + 1))⁻¹ = -D.host.xi0 * ((-D.host.xi0) ^ (j.1 + 1))⁻¹ := by

@@ -95,10 +95,10 @@ theorem pad_matrix_lower_block_zero (M : Matrix (Fin L.n ⊕ Fin L.n) (Fin L.n �
   simp only [Matrix.toBlocks₂₁, Matrix.of_apply, Matrix.zero_apply]
   by_cases hi : i = L.i₀
   · rw [_root_.PositivityTheory.SiegelWeilFormula.Act.C4.padM_out_row_k L M (_root_.PositivityTheory.SiegelWeilFormula.Act.C4.not_inr_k L i hi)]
-    simp [Matrix.one_apply]
+    simp
   · by_cases hk : k = L.i₀
     · rw [_root_.PositivityTheory.SiegelWeilFormula.Act.C4.padM_out_col_k L M _ (_root_.PositivityTheory.SiegelWeilFormula.Act.C4.not_inl_k L k hk)]
-      simp [Matrix.one_apply]
+      simp
     · obtain ⟨a, rfl⟩ := (L.rng i).1 hi
       obtain ⟨a', rfl⟩ := (L.rng k).1 hk
       have h1 := _root_.PositivityTheory.SiegelWeilFormula.Act.C4.padM_emS_k L M (Sum.inr a) (Sum.inl a')

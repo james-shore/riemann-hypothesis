@@ -54,7 +54,7 @@ theorem etale_coords_basis : ∀ (p : ℕ) [Fact p.Prime] (A : Type) [CommRing A
   have hbA : ∀ j, bA j = D (ZMod p) A (t j) := by
     intro j
     simp only [bA, Module.Basis.map_apply, Module.Basis.baseChange_apply,
-      tensorKaehlerEquivOfFormallyEtale_apply, mapBaseChange_tmul, one_smul, mvPolynomialBasis_apply, map_D]
+      tensorKaehlerEquivOfFormallyEtale_apply, mvPolynomialBasis_apply]
     have h : algebraMap P A (MvPolynomial.X j) = t j := by
       change MvPolynomial.aeval t (MvPolynomial.X j) = t j
       exact MvPolynomial.aeval_X t j

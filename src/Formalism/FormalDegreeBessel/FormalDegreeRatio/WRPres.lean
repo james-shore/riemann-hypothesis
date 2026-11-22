@@ -36,7 +36,6 @@ theorem wirtBar_contDiffOn {f : (Fin m → ℂ) → E} (hf : ContDiffOn ℝ ∞ 
   unfold wirtBar
   first
   | exact ((fderiv_apply_contDiffOn hf _).add ((fderiv_apply_contDiffOn hf _).const_smul _)).const_smul _
-  | exact ((fderiv_apply_contDiffOn hf _).sub ((fderiv_apply_contDiffOn hf _).const_smul _)).const_smul _
 
 theorem differentiableAt_of_mem {f : (Fin m → ℂ) → E} (hf : f ∈ WSm m E) {x : Fin m → ℂ}
     (hx : x ∈ OmX m) : DifferentiableAt ℝ f x := by
@@ -78,8 +77,7 @@ theorem linear_operators_holds : LinOps := by
   have hd : ∀ x ∈ OmX m, DifferentiableAt ℝ f x ∧ DifferentiableAt ℝ g x :=
     fun x hx => ⟨differentiableAt_of_mem hf hx, differentiableAt_of_mem hg hx⟩
   fin_cases i <;> refine ⟨funext fun x => ?_, funext fun x => ?_⟩ <;>
-    simp only [opL, pOp, cOp, ciOp, pbOp, cbOp, cbiOp, wirt, wirtBar, Pi.add_apply, Pi.smul_apply,
-      Fin.isValue] <;>
+    simp only [opL, pOp, cOp, ciOp, pbOp, cbOp, cbiOp, wirt, wirtBar, Pi.add_apply, Pi.smul_apply] <;>
     (try split_ifs with hx) <;>
     (try (have e1 : fderiv ℝ (f + g) x = fderiv ℝ f x + fderiv ℝ g x :=
             fderiv_add (hd x hx).1 (hd x hx).2

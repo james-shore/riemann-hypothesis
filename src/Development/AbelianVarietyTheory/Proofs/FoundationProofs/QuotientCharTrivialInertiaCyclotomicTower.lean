@@ -50,7 +50,7 @@ theorem fix_sqrt_unit (hl : l ≠ 2) {A : ValuationSubring Ω} (hA : OverL l A) 
   have h4 : ((4 * N : ℤ) : 𝓞 ℚ) ∈ v.asIdeal := by
     rw [← hv]
     convert h3 using 2
-    simp only [map_intCast, Int.cast_mul, Int.cast_ofNat, map_mul, map_ofNat, algebraMap.coe_mul, map_ratCast]
+    simp only [map_intCast, Int.cast_mul, Int.cast_ofNat, map_mul, map_ofNat]
   have hp : Prime (l : ℤ) := Nat.prime_iff_prime_int.mp Fact.out
   have hcop : IsCoprime (l : ℤ) (4 * N) := by
     rw [hp.irreducible.coprime_iff_not_dvd]

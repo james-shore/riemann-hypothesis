@@ -29,7 +29,7 @@ theorem sh_emb_unip : ∀ (D : D7) (n ρ p : ℕ) (hn : ρ + p = n) (M : Maps D 
     rw [mat_mul' (M.sh y), mat_mul' _ (M.sh y), mat_mul' (M.nzx _ _), M.sh_mat, M.nzx_mat, hE, blockMatrix_zero, blockRowSubstitution_one,
       submatrix_fromBlocks_mul, submatrix_fromBlocks_mul, submatrix_fromBlocks_mul]
     simp only [Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.one_mul, Matrix.mul_one, block_mul₂, bl_add,
-      adj_mul, hb, Matrix.mul_neg, Matrix.neg_mul, sub_eq_add_neg, add_neg_cancel, neg_add_cancel]
+      adj_mul, hb, Matrix.mul_neg, add_neg_cancel]
 
 end GlobalTheory.CompanionTheory.ShEmbUnip
 

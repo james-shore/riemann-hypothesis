@@ -60,9 +60,6 @@ theorem twS_ramL : ∀ {B : GlobalTheory.Mem.Base} {X : PreX B.toPre} (I : TC B 
     rw [infM_one_eq]
     first
     | exact (Matrix.one_mul _).symm
-    | exact (one_mul _).symm
-    | exact (one_smul _ _).symm
-    | (show _ = _; simp [Matrix.one_mul])
   have key := (GlobalTheory.T.scalarForms_on_charts_of_trueColumnTuple I hOk hPins l Z u a Ch₀ A hA θ hθ j hj (S j η φ) (h2 η).1.1).2 (A.chOf j c) y' 1 (one_mem _)
     ⟨c, rfl⟩ 1 (one_mem _) 1 y' hTr
   rw [hrdS] at key

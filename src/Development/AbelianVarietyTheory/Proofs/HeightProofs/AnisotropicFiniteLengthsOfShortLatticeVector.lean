@@ -68,7 +68,7 @@ theorem exists_near_integer : ∃ C : ℝ, ∀ c : E, ∃ t : E, IsIntegral ℤ 
     rw [integralBasis_apply]; exact (RingOfIntegers.basis E i).isIntegral_coe
   · have h1 : c - ∑ i, (⌊b.repr c i⌋ : E) * b i = ∑ i, (Int.fract (b.repr c i) : ℚ) • b i := by
       conv_lhs => rw [← b.sum_repr c]
-      simp only [b.repr_sum_self, Int.fract, sub_smul, Finset.sum_sub_distrib, Int.cast_smul_eq_zsmul,
+      simp only [Int.fract, sub_smul, Finset.sum_sub_distrib, Int.cast_smul_eq_zsmul,
         zsmul_eq_mul, b.sum_repr]
     rw [h1]
     refine (house_sum_le_sum_house _ _).trans (Finset.sum_le_sum fun i _ => ?_)
@@ -354,7 +354,7 @@ theorem anisoSmall_of_shortSmall (E : Type) [Field E] [NumberField E] [IsCMField
   have h4 : ∀ s : E, star s = s → h (w - s • v') (w - s • v') = h w w - 2 * (N * M) * s := by
     intro s hs'
     simp only [map_sub, map_smul, LinearMap.sub_apply, LinearMap.smul_apply, map_smulₛₗ,
-      starRingEnd_apply, hs', smul_eq_mul, h1, h2, h3, RingHom.id_apply]
+      starRingEnd_apply, hs', smul_eq_mul, h1, h2, h3]
     ring
   obtain ⟨ρ, hρ, y, hy, hwρ⟩ := hRL (h w w) ((hL _).2 ⟨hint w hw w hw, (hs w w).symm⟩)
   obtain ⟨hyi, hys⟩ := (hL y).1 hy

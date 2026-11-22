@@ -40,8 +40,6 @@ theorem alg_C (f : PowerSeries O →ₐ[O] PowerSeries O) (m : O) : f (C m) = C 
   first
     | rw [show (C m : PowerSeries O) = m • (1 : PowerSeries O) from
         (by rw [PowerSeries.smul_eq_C_mul, mul_one]), map_smul, map_one]
-    | exact f.commutes m
-    | simpa using f.commutes m
 
 theorem it_C (f : PowerSeries O →ₐ[O] PowerSeries O) (k : ℕ) (m : O) : (⇑f)^[k] (C m) = C m :=
   Function.iterate_fixed (alg_C f m) k
@@ -50,10 +48,6 @@ theorem it_pow (f : PowerSeries O →ₐ[O] PowerSeries O) (k : ℕ) (a : PowerS
     (⇑f)^[k] (a ^ M) = ((⇑f)^[k] a) ^ M := by
   first
     | exact iterate_map_pow f k a M
-    | (induction k generalizing a with
-        | zero => rfl
-        | succ k ih =>
-          rw [Function.iterate_succ_apply, Function.iterate_succ_apply, map_pow, ih])
 
 theorem lc_pow (B : Base O) (K : ℕ) : B.lc ^ K = C ((B.ℓ : O) ^ K) := by
   simp only [Base.lc, map_pow]

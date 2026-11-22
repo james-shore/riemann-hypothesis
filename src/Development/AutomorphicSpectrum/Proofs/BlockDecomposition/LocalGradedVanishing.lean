@@ -82,7 +82,7 @@ theorem pull_form (Q : Poly Φ) {Fil : ℤ → IdF Φ.A} (hF : IsFil Φ Fil) (E 
 
 theorem coef {M : Type} [AddCommMonoid M] (u v : M) (n : ℕ) :
     (Finsupp.single 0 v : ℕ →₀ M) n = (Finsupp.single 0 u + Finsupp.single 1 v : ℕ →₀ M) (n + 1) := by
-  cases n <;> simp [Finsupp.single_apply]
+  cases n <;> simp
 
 theorem val_ev (Q : Poly Φ) (T : C) (u f : Φ.A.obj T) :
     (Q.X T + (Φ.A.map (Q.j T)).hom u) * (Φ.A.map (Q.j T)).hom f =

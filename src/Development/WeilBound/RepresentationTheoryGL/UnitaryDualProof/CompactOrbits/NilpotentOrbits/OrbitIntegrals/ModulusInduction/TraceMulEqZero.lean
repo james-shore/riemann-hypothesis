@@ -77,7 +77,7 @@ theorem reg_in (Z : Subalgebra k (Matrix (Fin n) (Fin n) k)) (hZ : CR Z) {c : Ma
       + c ^ Polynomial.rootMultiplicity 0 (minpoly k c) * c * Polynomial.aeval c q.divX = 0 := by
     have h1 := minpoly.aeval k c
     rw [hpq, ← Polynomial.X_mul_divX_add q] at h1
-    simp only [map_mul, map_pow, map_sub, map_add, Polynomial.aeval_X, Polynomial.aeval_C, map_zero,
+    simp only [map_mul, map_pow, map_add, Polynomial.aeval_X, Polynomial.aeval_C, map_zero,
       sub_zero] at h1
     rw [mul_add, Algebra.algebraMap_eq_smul_one, mul_smul_comm, mul_one, ← mul_assoc] at h1
     rw [add_comm]

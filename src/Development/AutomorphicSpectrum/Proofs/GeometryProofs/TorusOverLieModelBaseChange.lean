@@ -28,7 +28,7 @@ theorem dualMap_cast {L L' : Type} [Field L] [Field L'] (e : L →+* L') (n : �
 theorem base_comm {L L' : Type} [Field L] [Field L'] (e : L →+* L') :
     spMap (dualMap e) ≫ Spec.map (CommRingCat.ofHom (algebraMap L (DualNumber L))) ≫ 𝟙 (Sp L) =
       (Spec.map (CommRingCat.ofHom (algebraMap L' (DualNumber L'))) ≫ 𝟙 (Sp L')) ≫ spMap e := by
-  simp only [Category.comp_id, Category.id_comp]
+  simp only [Category.comp_id]
   rw [← Spec.map_comp, ← Spec.map_comp, ← CommRingCat.ofHom_comp, ← CommRingCat.ofHom_comp]
   congr 2
   ext r <;> simp [dualMap, TrivSqZeroExt.algebraMap_eq_inl]

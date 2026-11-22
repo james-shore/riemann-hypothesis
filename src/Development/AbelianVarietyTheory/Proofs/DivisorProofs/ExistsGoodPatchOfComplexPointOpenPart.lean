@@ -25,8 +25,6 @@ theorem exists_goodPatch_of_mem : ∀ {F : Type} [Field F] {σ : F →+* ℂ} {X
     first
     | exact (WithTop.coe_le_coe (a := (2 : ℕ∞)) (b := ⊤)).2 le_top
     | exact ENat.LEInfty.out
-    | simp
-    | decide
   have hconn : ∀ (a : Fin X.dim) (i j : Fin m),
       ContinuousAt (fun z => conn G (ch.e z) (coordVec a) i j) y := fun a i j =>
     ((hsm.conn hu h1 (coordVec a)) i j).continuousAt.comp (ch.e.continuousAt hc)

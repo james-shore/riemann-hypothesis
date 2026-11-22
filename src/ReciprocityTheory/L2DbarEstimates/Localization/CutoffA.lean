@@ -21,7 +21,6 @@ theorem cut_sq_add_le {E : Type*} [SeminormedAddCommGroup E] (a b : E) :
   have h1 : ‖a + b‖ ^ 2 ≤ (‖a‖ + ‖b‖) ^ 2 := by
     first
     | exact pow_le_pow_left₀ (norm_nonneg _) (norm_add_le a b) 2
-    | (gcongr; exact norm_add_le a b)
   nlinarith [sq_nonneg (‖a‖ - ‖b‖)]
 
 theorem cut_sq_sub_le {E : Type*} [SeminormedAddCommGroup E] (a b : E) :
@@ -29,14 +28,12 @@ theorem cut_sq_sub_le {E : Type*} [SeminormedAddCommGroup E] (a b : E) :
   have h1 : ‖a - b‖ ^ 2 ≤ (‖a‖ + ‖b‖) ^ 2 := by
     first
     | exact pow_le_pow_left₀ (norm_nonneg _) (norm_sub_le a b) 2
-    | (gcongr; exact norm_sub_le a b)
   nlinarith [sq_nonneg (‖a‖ - ‖b‖)]
 
 theorem two_form_sq_nonneg (n : ℕ) (σ : Fin n → Fin n → ℂ) : 0 ≤ sq2 n σ := by
   simp only [sq2]
   first
   | positivity
-  | exact div_nonneg (Finset.sum_nonneg fun j _ => Finset.sum_nonneg fun k _ => sq_nonneg _) (by norm_num)
 
 theorem two_form_sq_add_le (n : ℕ) (a b : Fin n → Fin n → ℂ) :
     sq2 n (fun j k => a j k + b j k) ≤ 2 * sq2 n a + 2 * sq2 n b := by
@@ -84,7 +81,6 @@ theorem cut_cs (n : ℕ) (a b : Fin n → ℂ) :
   calc ‖∑ j, a j * b j‖ ^ 2 ≤ (∑ j, ‖a j‖ * ‖b j‖) ^ 2 := by
         first
         | exact pow_le_pow_left₀ (norm_nonneg _) h1 2
-        | gcongr
     _ ≤ (∑ j, ‖a j‖ ^ 2) * (∑ j, ‖b j‖ ^ 2) := h2
 
 theorem cut_d_congr {M : Type*} [TopologicalSpace M] (n : ℕ) (z : M → V n)
@@ -99,9 +95,6 @@ theorem cut_d_congr {M : Type*} [TopologicalSpace M] (n : ℕ) (z : M → V n)
     have ht : Tendsto e.symm (𝓝 (e x)) (𝓝 x) := by
       first
       | exact e.tendsto_symm hxs
-      | (have h0 := e.continuousAt_symm (e.map_source hxs)
-         unfold ContinuousAt at h0
-         rwa [e.left_inv hxs] at h0)
     have hev : f ∘ e.symm =ᶠ[𝓝 (z x)] g ∘ e.symm := by
       rw [hzx]
       exact h.comp_tendsto ht
@@ -121,9 +114,6 @@ theorem cut_db_congr {M : Type*} [TopologicalSpace M] (n : ℕ) (z : M → V n)
     have ht : Tendsto e.symm (𝓝 (e x)) (𝓝 x) := by
       first
       | exact e.tendsto_symm hxs
-      | (have h0 := e.continuousAt_symm (e.map_source hxs)
-         unfold ContinuousAt at h0
-         rwa [e.left_inv hxs] at h0)
     have hev : f ∘ e.symm =ᶠ[𝓝 (z x)] g ∘ e.symm := by
       rw [hzx]
       exact h.comp_tendsto ht
@@ -163,7 +153,7 @@ private lemma norm_wd_ofReal_eq_norm_wdb_ofReal (n : ℕ) (j : Fin n) (h : V n �
   unfold wd wdb
   rw [← Complex.norm_conj]
   congr 1
-  simp only [map_div₀, map_sub, map_add, map_mul, key, Complex.conj_I, map_ofNat]
+  simp only [map_div₀, map_sub, map_mul, key, Complex.conj_I, map_ofNat]
   ring
 
 theorem cut_norm_d_eq {M : Type*} [TopologicalSpace M] (n : ℕ) (z : M → V n) (j : Fin n)
@@ -195,7 +185,6 @@ theorem SmoothR.cut_continuous {M : Type*} [TopologicalSpace M] (n : ℕ) (z : M
   have h3 : ContinuousAt (fun x => (f x : ℂ)) x := by
     first
     | exact h2.congr hev
-    | exact h2.congr_of_eventuallyEq hev.symm
   have h4 : ContinuousAt (fun y => ((f y : ℂ)).re) x := Complex.continuous_re.continuousAt.comp h3
   simpa using h4
 
@@ -231,15 +220,12 @@ theorem locL2_of_weighted_bound {M E : Type*} [TopologicalSpace M] [T2Space M] [
       ≤ ∫⁻ x in C, ENNReal.ofReal (c * Real.exp K) * ENNReal.ofReal (q x * Real.exp (-ph x)) ∂μ := by
         first
         | exact setLIntegral_mono' hCm hpt
-        | exact lintegral_mono_ae ((ae_restrict_iff' hCm).2 (ae_of_all _ hpt))
     _ = ENNReal.ofReal (c * Real.exp K) * ∫⁻ x in C, ENNReal.ofReal (q x * Real.exp (-ph x)) ∂μ :=
         lintegral_const_mul' _ _ ENNReal.ofReal_ne_top
     _ ≤ ENNReal.ofReal (c * Real.exp K) * ∫⁻ x, ENNReal.ofReal (q x * Real.exp (-ph x)) ∂μ := by
         gcongr
         first
         | exact Measure.restrict_le_self
-        | exact setLIntegral_le_lintegral _ _
-        | exact lintegral_mono' Measure.restrict_le_self le_rfl
     _ < ⊤ := ENNReal.mul_lt_top ENNReal.ofReal_lt_top h
 
 theorem cut_lint_tri {M : Type*} [MeasurableSpace M] (μ : Measure M) (F G H : M → ℝ≥0∞)
@@ -349,8 +335,6 @@ theorem continuous_two_form_sq (n : ℕ) : Continuous (sq2 n) := by
   simp only [sq2]
   first
   | fun_prop
-  | exact (continuous_finset_sum _ fun j _ => continuous_finset_sum _ fun k _ =>
-      ((continuous_apply k).comp (continuous_apply j)).norm.pow 2).div_const _
 
 theorem cut_aem {M E : Type*} [TopologicalSpace M] [MeasurableSpace M] [BorelSpace M]
     [NormedAddCommGroup E] (μ : Measure M) (u : M → E)
@@ -372,9 +356,6 @@ theorem aemeasurable_weighted_two_form {M : Type*} [TopologicalSpace M] [Measura
 private lemma continuous_coord_apply {n : ℕ} (j : Fin n) : Continuous (fun v : V n => v j) := by
   first
   | fun_prop
-  | continuity
-  | exact (EuclideanSpace.proj j).continuous
-  | exact continuous_apply j
 
 theorem cut_aesmW {M : Type*} [TopologicalSpace M] [MeasurableSpace M] [BorelSpace M]
     (n : ℕ) (z : M → V n) (μ : Measure M) (ph ψ η c : M → ℝ) (f : M → V n) (w : M → ℂ)
@@ -394,7 +375,6 @@ theorem cut_aesmW {M : Type*} [TopologicalSpace M] [MeasurableSpace M] [BorelSpa
     first
     | exact Finset.aestronglyMeasurable_sum' _ hj
     | exact Finset.aestronglyMeasurable_fun_sum _ hj
-    | exact (Finset.aestronglyMeasurable_sum _ hj).congr (ae_of_all _ fun x => by simp)
   exact h1.sub (h2.mul h3)
 
 theorem cut_aesmS {M : Type*} [TopologicalSpace M] [MeasurableSpace M] [BorelSpace M]
@@ -412,14 +392,10 @@ theorem cut_aesmS {M : Type*} [TopologicalSpace M] [MeasurableSpace M] [BorelSpa
     show Continuous fun p : (Fin n → ℂ) × (Fin n → ℂ) => fun j k => p.1 j * p.2 k - p.1 k * p.2 j
     first
     | fun_prop
-    | exact continuous_pi fun j => continuous_pi fun k =>
-        (((continuous_apply j).comp continuous_fst).mul ((continuous_apply k).comp continuous_snd)).sub
-          (((continuous_apply k).comp continuous_fst).mul ((continuous_apply j).comp continuous_snd))
   have hpair : AEStronglyMeasurable
       (fun x => ((fun i => db n z i (fun y => (η y : ℂ)) x), (fun i => f x i))) μ := by
     first
     | exact ha.aestronglyMeasurable.prodMk hb
-    | exact ha.aestronglyMeasurable.prod_mk hb
   have h2 : AEStronglyMeasurable
       (fun x => wedge (fun i => db n z i (fun y => (η y : ℂ)) x) (fun i => f x i)) μ :=
     hW.comp_aestronglyMeasurable hpair
@@ -427,7 +403,6 @@ theorem cut_aesmS {M : Type*} [TopologicalSpace M] [MeasurableSpace M] [BorelSpa
     (Complex.continuous_ofReal.comp hc).aestronglyMeasurable.smul hσ
   first
   | exact h1.add h2
-  | exact (h1.add h2).congr (ae_of_all _ fun x => by funext j k; simp)
 
 end
 

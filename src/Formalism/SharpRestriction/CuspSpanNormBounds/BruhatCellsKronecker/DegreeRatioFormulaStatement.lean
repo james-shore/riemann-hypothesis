@@ -160,7 +160,7 @@ def SzaSpl (D : D7) : Prop :=
 
 theorem sza_prod_Icc (g : ℕ → ℝ) (k : ℕ) : ∏ i ∈ Icc 1 k, g i = ∏ j ∈ range k, g (j + 1) := by
   induction k with
-  | zero => simp [Finset.Icc_eq_empty]
+  | zero => simp
   | succ n ih => rw [Finset.prod_Icc_succ_top (Nat.le_add_left 1 n), ih, Finset.prod_range_succ]
 
 theorem sza_glCard (k : ℕ) (q : ℝ) :
@@ -267,10 +267,6 @@ theorem sza_tcritPow (D : D7) (u : D.what₂.Word) (τ : D.what₂.Tau) :
   have hds : 0 ≤ D.dsig τ := by
     first
     | exact (D.dsig_pos τ).le
-    | exact D.dsig_nonneg τ
-    | exact (D.dsig_pos' τ).le
-    | exact (D.hdsig τ).le
-    | exact (D.dsig_spec τ).le
   have hVV : 0 ≤ VV D τ := by
     unfold Formalism.MainNotions.S.VV
     exact mul_nonneg hds (Finset.prod_nonneg fun i _ => by positivity)
@@ -379,9 +375,6 @@ theorem sza_tcrit_pos (D : D7) (u : D.what₂.Word) (τ : D.what₂.Tau) : 0 < T
   have hds : 0 < D.dsig τ := by
     first
     | exact D.dsig_pos τ
-    | exact D.hdsig τ
-    | exact D.dsig_pos' τ
-    | exact D.dsig_spec τ
   have hVV : 0 < VV D τ := by
     unfold Formalism.MainNotions.S.VV
     exact mul_pos hds (Finset.prod_pos fun i _ => by positivity)

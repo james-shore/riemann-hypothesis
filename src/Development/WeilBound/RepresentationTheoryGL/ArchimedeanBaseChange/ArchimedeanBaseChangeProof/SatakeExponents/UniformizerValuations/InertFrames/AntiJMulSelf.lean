@@ -59,13 +59,13 @@ theorem gram_bM {n : ℕ} (σ : R →+* R) (d₁ d₂ : Fin n → R)
     · obtain ⟨h0, h1⟩ := P3 j hs
       rw [← hs]
       simp [h0, h1]
-    · simp only [if_neg hs, if_neg (Ne.symm hs), eq_self_iff_true, if_true, add_zero, zero_add]
+    · simp only [if_neg hs, if_neg (Ne.symm hs), if_true, add_zero, zero_add]
       exact P1 j hs
   · by_cases hr : j = Fin.rev k
     · have hk : k = Fin.rev j := by rw [hr, Fin.rev_rev]
       subst hk
       have hs : j ≠ Fin.rev j := hjk
-      simp only [Fin.rev_rev, if_neg (Ne.symm hs), if_neg hs, eq_self_iff_true, if_true, zero_add,
+      simp only [Fin.rev_rev, if_neg (Ne.symm hs), if_neg hs, if_true, zero_add,
         add_zero]
       rw [add_comm]
       exact P2 j hs

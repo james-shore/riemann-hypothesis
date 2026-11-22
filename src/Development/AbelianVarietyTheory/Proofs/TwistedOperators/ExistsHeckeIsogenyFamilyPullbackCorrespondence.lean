@@ -55,10 +55,10 @@ theorem isHkIsog_hkMap (Z : Corr Xo P p i) (hA : admitted l P p) {k : Type} [Fie
     (by rw [Category.assoc, α₂, fibPt, pullback.lift_snd_assoc, Over.w x]; exact Category.id_comp _)
   have q₁ : (conj _ _).symm (hkMap Z (h := z) rfl rfl) ≫ pullback.fst _ _ = α ≫ Z.ψ.left ≫ Z.m₂.cm.F := by
     show ((swap _).inv ≫ hkMap Z (h := z) rfl rfl ≫ (swap _).hom) ≫ pullback.fst _ _ = _
-    simp only [α, Category.assoc, swap_hom_fst, hkMap_snd, hkMap_snd_assoc]
+    simp only [α, Category.assoc, swap_hom_fst, hkMap_snd]
   have q₂ : (conj _ _).symm (hkMap Z (h := z) rfl rfl) ≫ pullback.snd _ _ = pullback.snd _ _ := by
     show ((swap _).inv ≫ hkMap Z (h := z) rfl rfl ≫ (swap _).hom) ≫ pullback.snd _ _ = _
-    simp only [Category.assoc, swap_hom_snd, hkMap_fst, hkMap_fst_assoc, swap_inv_fst]
+    simp only [Category.assoc, swap_hom_snd, hkMap_fst, swap_inv_fst]
   refine ⟨ψp, by rw [Category.assoc, Category.assoc, Z.base₂], q₂,
     fun x => ?_, fun a x => ?_, fun v => ?_, Subgroup.ext fun x => ?_, fun n x x' c hn h => ?_, fun p' hp' a => ?_⟩
   · obtain ⟨x, rfl⟩ := ρ.surjective x

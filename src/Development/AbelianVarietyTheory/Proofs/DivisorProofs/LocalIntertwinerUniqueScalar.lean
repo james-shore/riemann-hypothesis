@@ -140,7 +140,7 @@ theorem decomp (U : AddSubgroup V) {f : V → ℂ} (hinv : ∀ Y, ∀ u ∈ U, f
   classical
   funext Y
   simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, cosetInd_apply, mul_ite, mul_one, mul_zero,
-    Finset.sum_ite_eq', Finset.sum_ite_eq]
+    Finset.sum_ite_eq]
   split_ifs with h
   · have h1 : (QuotientAddGroup.mk (Quotient.out (QuotientAddGroup.mk Y : V ⧸ U)) : V ⧸ U)
         = QuotientAddGroup.mk Y := Quotient.out_eq' _

@@ -21,4 +21,4 @@ theorem _root_.GlobalTheory.T.integralClosureEtaleAt_of_height_le_one_purity : �
     ∀ (P : Ideal (Localization.AtPrime QA)) [P.IsPrime],
       (P.comap (algebraMap A (Localization.AtPrime QA))).height ≤ 1 →
       GlobalTheory.KeyOriginEnlarge.ClosureEtaleAt A (Localization.AtPrime QA) DA P := by
-  first | (exact @GlobalTheory.KeyOriginEnlarge.closureEtaleAt_of_comap_height_le_one) | (exact GlobalTheory.KeyOriginEnlarge.closureEtaleAt_of_comap_height_le_one) | (intros; apply GlobalTheory.KeyOriginEnlarge.closureEtaleAt_of_comap_height_le_one  <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginEnlarge.closureEtaleAt_of_comap_height_le_one)

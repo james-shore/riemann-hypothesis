@@ -92,7 +92,7 @@ private theorem gradP_eq_eval_pderiv (t : Fin m → ℂ) (a : MvPolynomial (Fin 
     by_cases hij : i = j
     · subst hij
       simp
-    · simp [Pi.single_apply, hij, Ne.symm hij]
+    · simp [hij, Ne.symm hij]
 
 theorem span_algebraMap_eq_map_ptIdeal (e : ℕ) (I : Ideal (MvPolynomial (Fin m) ℂ)) (t : Fin m → ℂ)
     (r : Fin e → MvPolynomial (Fin m) ℂ) (hI : ∀ h ∈ I, eval t h = 0) (hr : ∀ l, eval t (r l) = 0)

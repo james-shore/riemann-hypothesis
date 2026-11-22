@@ -39,7 +39,7 @@ theorem formEq_prod {V : Type} [CommRing V] [IsDomain V] (D : DegPre V) (g : GtP
     have e5 : DegPre.zeroT D (𝟙_ (Over (Sp V))) = η[D.P.A] := by rw [DegPre.zeroT, hu, Category.id_comp]
     intro U _ h
     simp [Fintype.prod_sum_type, Fin.prod_univ_four, Fin.prod_univ_two, DegPre.famφB, DegPre.gtφT, DegPre.famε, DegPre.gtε,
-      DegPre.lineε, e1, e2, e3, e4, e5]
+      DegPre.lineε, e1, e2, e4, e5]
     have e6 : padd D.P.A (D.c mu) g.b = D.c mu * g.b := by rw [padd, ← Hom.mul_def]
     rw [e6]
     apply Additive.ofMul.injective

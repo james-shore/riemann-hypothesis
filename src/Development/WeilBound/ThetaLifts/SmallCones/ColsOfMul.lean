@@ -185,7 +185,7 @@ theorem IsFr.stab (h : IsFr c ε J J₁ ι x y A') {t t' : R} (ht : t * t' = 1) 
   rw [Matrix.fromBlocks_transpose, Matrix.fromBlocks_multiply, Matrix.fromBlocks_map,
     Matrix.fromBlocks_multiply, Matrix.fromBlocks_inj] at hQ'
   obtain ⟨e11, e12, -, -⟩ := hQ'
-  simp only [Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add] at e11 e12
+  simp only [Matrix.mul_zero, add_zero, zero_add] at e11 e12
   have ha1 : ∀ i, a0 1 i = 0 := by
     intro i
     have h12 := congrFun (congrFun e12 i) 0
@@ -257,7 +257,7 @@ theorem IsFr.fix_y (h : IsFr c ε J J₁ ι x y A') (hcc : ∀ a, c (c a) = a) {
   rw [Matrix.fromBlocks_transpose, Matrix.fromBlocks_multiply, Matrix.fromBlocks_map,
     Matrix.fromBlocks_multiply, Matrix.fromBlocks_inj] at hQ'
   obtain ⟨-, -, -, e22⟩ := hQ'
-  simp only [Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add] at e22
+  simp only [Matrix.mul_zero, add_zero, zero_add] at e22
   have h22 := congrFun (congrFun e22 0) 1
   simp [Matrix.mul_apply, Fin.sum_univ_two, hb0', ← hs00, ← hs10] at h22
   have hs11 : s0 1 1 = 1 := by rw [← hcc (s0 1 1), h22, map_one]

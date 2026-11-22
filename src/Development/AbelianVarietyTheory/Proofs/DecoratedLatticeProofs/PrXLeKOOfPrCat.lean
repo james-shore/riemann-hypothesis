@@ -43,7 +43,7 @@ theorem prX_le_KO_of_prCat (X : Fields) (Pr : Primes X) (R : Ranks) (Ch : Chars 
   have hC : ∀ x : AutY X R j, x ∈ Loc.Cbe (Jat (Pr := Pr) cst.sharp j P.1) γ ↔ φ x ∈ Cgrp J g := by
     intro x
     rw [mem_Cgrp, ← GlobalTheory.RankOneMatrix.mem_rationalFirstParabolic_iff_localGL_mem_rootExchange ι e hcc heR x, (hLev j (c + 1) h _ _ (hIsGL x)).1]
-    simp [Loc.Cbe, Subgroup.mem_comap, MulAut.conj_apply]
+    simp [Loc.Cbe, Subgroup.mem_comap]
   have hN1 := GlobalTheory.UnipRead.mem_N1_iff_local_hom ι e hcc heR
   have hdN := GlobalTheory.VolBridge.exists_N1_local_hom_mem_open ι hcompl.dense e hcc heR
   set e' := GlobalTheory.VolBridge.eX e hcc heR with he'
@@ -64,7 +64,7 @@ theorem prX_le_KO_of_prCat (X : Fields) (Pr : Primes X) (R : Ranks) (Ch : Chars 
   have hV : IsOpen {v : GL (XIx (Fin R.k) (Fin R.t) j) k |
       v⁻¹ * z ∈ ((prX (Cgrp J g) ⊓ KO k _ : Subgroup _) : Set _)} :=
     (hpo.inter GlobalTheory.SplitFlip.isOpen_KO).preimage (by fun_prop)
-  obtain ⟨y, hy⟩ := GlobalTheory.denseGL_completion ι hcompl.dense e' z _ hV (by simp [one_mem, hz])
+  obtain ⟨y, hy⟩ := GlobalTheory.denseGL_completion ι hcompl.dense e' z _ hV (by simp [one_mem])
   have hy1 : (φ' y)⁻¹ * z ∈ prX (Cgrp J g) := hy.1
   have hy2 : (φ' y)⁻¹ * z ∈ KO k _ := hy.2
   have hyC : φ' y ∈ prX (Cgrp J g) := by

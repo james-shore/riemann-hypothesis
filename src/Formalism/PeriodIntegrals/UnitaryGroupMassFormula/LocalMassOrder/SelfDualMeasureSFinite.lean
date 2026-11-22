@@ -274,7 +274,6 @@ variable {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E] [Algeb
 theorem finDim_FE : FiniteDimensional F E := by
   first
   | infer_instance
-  | exact Module.Finite.of_restrictScalars_finite ℚ F E
 
 theorem isOpen_indep (v : HeightOneSpectrum (𝓞 F)) (n a : ℕ) :
     IsOpen (IndepV (E := E) (n := n) v a) := by

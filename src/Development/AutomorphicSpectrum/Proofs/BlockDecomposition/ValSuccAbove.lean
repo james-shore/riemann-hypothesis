@@ -85,7 +85,7 @@ theorem stepMap_zero (q : ℕ) : stepMap q 0 = cst (q + 1) 1 := by
 theorem stepMap_top (q : ℕ) : stepMap q (q + 2) = cst (q + 1) 0 := by
   ext x
   have := x.2
-  simp [stepMap, cst, this]
+  simp [stepMap, cst]
   rfl
 
 theorem th_off (q : ℕ) (i : Fin (q + 2)) (k : Fin (q + 1)) :
@@ -161,7 +161,7 @@ theorem prism_faces {A : Type} [AddCommGroup A] (q : ℕ)
     rw [Fin.sum_univ_succAbove _ i.castSucc, Fin.sum_univ_succAbove _ i,
       Fin.succAbove_castSucc_self, th_diag, sg_diag, th_next, sg_next]
     have e1 : ((-1 : ℤ) ^ ((i : ℕ) + ((i.castSucc : Fin (q + 3)) : ℕ))) = 1 := by
-      simp [Even.neg_one_pow, ← two_mul]
+      simp [← two_mul]
     have e2 : ((-1 : ℤ) ^ ((i : ℕ) + ((i.succ : Fin (q + 3)) : ℕ))) = -1 := by
       simp [← add_assoc, ← two_mul, pow_succ]
     rw [e1, e2, one_smul, neg_smul, one_smul]

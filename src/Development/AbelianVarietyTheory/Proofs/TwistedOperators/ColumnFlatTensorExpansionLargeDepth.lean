@@ -61,7 +61,7 @@ theorem flatTensor_exOne_eq_exInd {G : GlobalTheory.SplitFlip.Grid k} (hs : 1 â‰
           split_ifs <;> ext <;> simp
         simp [GlobalTheory.SplitFlip.Grid.moveArgs, this]
       rw [h0]
-      simp [exOne, exInd, Set.indicator_of_mem (Submodule.zero_mem _)]
+      simp [exOne, exInd]
   rw [key]
 
 end Local

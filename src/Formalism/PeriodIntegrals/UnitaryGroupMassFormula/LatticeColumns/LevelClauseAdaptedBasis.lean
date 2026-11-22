@@ -87,6 +87,5 @@ theorem level_clause_adapted_basis : DClauseAll := by
   refine forall_congr' fun i => ?_
   first
   | exact Iff.rfl
-  | simp only [Amat, Ymat, map_mul, map_inv]
 
 end PIW.MassDataColumns

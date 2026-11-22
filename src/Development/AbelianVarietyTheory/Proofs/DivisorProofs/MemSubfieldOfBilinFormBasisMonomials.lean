@@ -91,7 +91,7 @@ theorem mem_subfield_of_bilinForm_monomials :
   convert key using 2
   rw [Finset.prod_eq_single k]
   · simp
-  · intro j _ hj; simp [Pi.single_apply, hj]
+  · intro j _ hj; simp [hj]
   · simp
 
 end GlobalTheory

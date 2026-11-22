@@ -48,7 +48,7 @@ theorem coordForm_posDef (m : ℕ) : IsPosDef (coordForm (E := E) m) := by
     rw [Fintype.sum_sigma, Finset.sum_eq_single k]
     · exact Finset.sum_congr rfl fun j _ => by simp [Pi.basis_apply]
     · intro k' _ hk'
-      exact Finset.sum_eq_zero fun j _ => by simp [Pi.basis_apply, Pi.single_apply, Ne.symm hk']
+      exact Finset.sum_eq_zero fun j _ => by simp [Pi.basis_apply, Ne.symm hk']
     · simp
   have hsum : ∑ a, ∑ a', c a * c a' * coordForm m ((Pi.basis fun _ : Fin m => RingOfIntegers.basis E) a)
       ((Pi.basis fun _ : Fin m => RingOfIntegers.basis E) a') =

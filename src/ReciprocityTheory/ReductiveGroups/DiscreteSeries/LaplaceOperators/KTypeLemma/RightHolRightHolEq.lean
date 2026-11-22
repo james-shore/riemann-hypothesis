@@ -125,7 +125,7 @@ theorem rightHol_commutator {F : Matrix (Fin n) (Fin n) ℂ → ℂ} {z : Matrix
     (hF : ContDiffAt ℂ 2 F z) (X Y : Matrix (Fin n) (Fin n) ℂ) :
     Rhol X (Rhol Y F) z - Rhol Y (Rhol X F) z = Rhol (X * Y - Y * X) F z := by
   have hs : IsSymmSndFDerivAt ℂ F z := hF.isSymmSndFDerivAt
-    (by first | simp [minSmoothness_of_isRCLikeNormedField] | simp | exact le_rfl)
+    (by first | simp [minSmoothness_of_isRCLikeNormedField])
   have h2 : fderiv ℂ (fderiv ℂ F) z (z * X) (z * Y) = fderiv ℂ (fderiv ℂ F) z (z * Y) (z * X) :=
     hs _ _
   rw [rightHol_rightHol_eq hF, rightHol_rightHol_eq hF, h2]

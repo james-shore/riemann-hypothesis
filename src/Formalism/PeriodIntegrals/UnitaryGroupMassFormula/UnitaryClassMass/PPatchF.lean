@@ -67,7 +67,7 @@ theorem local_patching : PatchF := by
   let e : Bool → AF F ⊗[F] E := fun i => if i then ε else 1 - ε
   have he : ∀ i j, e i * e j = if i = j then e i else 0 := by
     intro i j
-    cases i <;> cases j <;> simp only [e, if_true, if_false, Bool.false_eq_true, ↓reduceIte]
+    cases i <;> cases j <;> simp only [e, Bool.false_eq_true, ↓reduceIte]
     · calc (1 - ε) * (1 - ε) = 1 - ε - (ε - ε * ε) := by ring
         _ = 1 - ε := by rw [hε, sub_self, sub_zero]
     · calc (1 - ε) * ε = ε - ε * ε := by ring
@@ -77,11 +77,11 @@ theorem local_patching : PatchF := by
     · exact hε
   have hs : ∑ i, e i = 1 := by
     rw [Fintype.sum_bool]
-    simp only [e, if_true, Bool.false_eq_true, ↓reduceIte]
+    simp only [e, Bool.false_eq_true, ↓reduceIte]
     abel
   have hσe : ∀ i, PI.UJClassFin.sigR (AF F) σ (e i) = e i := by
     intro i
-    cases i <;> simp only [e, if_true, Bool.false_eq_true, ↓reduceIte]
+    cases i <;> simp only [e, Bool.false_eq_true, ↓reduceIte]
     · rw [map_sub, map_one, sigR_epsT]
     · exact sigR_epsT σ _
   let γB : Bool → GL (Fin M) E := fun i => if i then (γ : GL (Fin M) E) else 1
@@ -116,7 +116,7 @@ theorem local_patching : PatchF := by
   rw [e0, flocHat b L0 hL hsat, flocHat b L0 hL hsat]
   have e1 : γB true = (γ : GL (Fin M) E) := rfl
   rw [e1]
-  simp only [if_true, Bool.false_eq_true, ↓reduceIte, Set.mem_compl_iff, Finset.mem_coe]
+  simp only [Bool.false_eq_true, ↓reduceIte, Set.mem_compl_iff, Finset.mem_coe]
   constructor
   · rintro ⟨h0, h1⟩
     exact ⟨fun v hv => (floc_gmap v _ L0 x).2 (h1 v hv), h0⟩

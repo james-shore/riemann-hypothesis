@@ -21,7 +21,7 @@ variable {r k : ℕ}
 
 theorem reim_cont (b : Bool) : Continuous fun c : ℂ => LsNc5.reim c b := by
   cases b <;> simp only [LsNc5.reim, Bool.false_eq_true, if_false, if_true] <;>
-    first | exact Complex.continuous_re | exact Complex.continuous_im | fun_prop
+    first | exact Complex.continuous_re | exact Complex.continuous_im
 
 def idxC : WlocSk.NB.CI k r × Bool ⊕ Fin r → LsNc5.CIdx r k
   | Sum.inl (Sum.inl p, b) => Sum.inl (Sum.inl (p, b))
@@ -294,14 +294,13 @@ theorem kapL_eq {z : Fin (2 * r + k + 1) → ℂ} {T : ℝ} (hF : IsFrameJ ε e 
   · rw [hX] <;> rfl
   · congr 1
     rw [← hcol, cZ]
-    simp only [z0v, Matrix.mulVec_smul, hJ, dotProduct_smul, smul_eq_mul, Complex.real_smul,
-      Complex.ofReal_inv]
+    simp only [z0v, Matrix.mulVec_smul, hJ, dotProduct_smul, smul_eq_mul, Complex.ofReal_inv]
     rw [← mul_assoc, mul_inv_cancel₀ hs, one_mul]
   · congr 1
     rw [← cW j]
     exact hcol b _
   · rw [hMm] <;> rfl
-  · rw [hMm] <;> rfl
+  · rw [hMm]
 
 end LocFrame
 
@@ -450,7 +449,7 @@ theorem map_uncurry_volume {ι κ : Type*} [Fintype ι] [Fintype κ] :
   have hpre : (fun F : ι → κ → ℝ => fun p : ι × κ => F p.1 p.2) ⁻¹' Set.univ.pi s =
       Set.univ.pi fun i => Set.univ.pi fun j => s (i, j) := by
     ext F
-    simp [Set.mem_univ_pi, Prod.forall]
+    simp [Prod.forall]
   rw [Measure.map_apply hm (MeasurableSet.univ_pi hs), hpre, Measure.pi_pi, Fintype.prod_prod_type]
   simp only [volume_pi_pi]
 

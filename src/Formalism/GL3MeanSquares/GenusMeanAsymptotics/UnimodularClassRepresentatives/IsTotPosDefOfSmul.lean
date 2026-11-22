@@ -75,7 +75,7 @@ theorem alphaL_smul (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF : I
     rw [show (m + vF 𝔭 c) * finrank K V ^ 2 = m * finrank K V ^ 2 + vF 𝔭 c * finrank K V ^ 2 by ring,
       show 2 * vF 𝔭 c * finrank K V ^ 2 = vF 𝔭 c * finrank K V ^ 2 + vF 𝔭 c * finrank K V ^ 2 by ring,
       pow_add, pow_add]
-    field_simp <;> ring
+    field_simp
   exact (tendsto_const_nhds.congr'
     (Filter.eventually_atTop.2 ⟨_, fun k hk => (key k hk).symm⟩)).limUnder_eq
 
@@ -105,7 +105,7 @@ theorem alphaN_smul (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF : I
         _ = _ := by ring
     rw [h2, show (m + vF 𝔭 c) * (2 * finrank K V - 1) =
         m * (2 * finrank K V - 1) + vF 𝔭 c * (2 * finrank K V - 1) by ring, pow_add, pow_add]
-    field_simp <;> ring
+    field_simp
   exact (tendsto_const_nhds.congr'
     (Filter.eventually_atTop.2 ⟨_, fun k hk => (key k hk).symm⟩)).limUnder_eq
 
@@ -203,7 +203,7 @@ theorem alphaL_split (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF : 
       have : 2 * (finrank K V' + 1) - 1 = 2 * finrank K V' + 1 := by omega
       rw [this]; ring
     rw [e1, pow_add]
-    field_simp <;> ring
+    field_simp
   obtain ⟨hB, -⟩ := key _ le_rfl
   have hl : alphaL h' (S.cut L) 𝔭 = alphaL h L 𝔭 / alphaN h L 𝔭 1 :=
     (tendsto_const_nhds.congr'

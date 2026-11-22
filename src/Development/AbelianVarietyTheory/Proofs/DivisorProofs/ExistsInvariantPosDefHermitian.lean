@@ -71,7 +71,7 @@ theorem exists_invariant_posDef_hermitian {n : ℕ} (H : Subgroup (GL (Fin n) �
       simp only [dotProduct, Pi.star_apply, Complex.re_sum]
       refine Finset.sum_congr rfl fun i _ => ?_
       rw [Complex.sq_norm, Complex.normSq_apply]
-      simp [Complex.star_def, Complex.mul_re]
+      simp [Complex.mul_re]
     have hnz : ∀ g : H, m g *ᵥ x ≠ 0 := by
       intro g h0
       have : (((g : GL (Fin n) ℂ) : Matrix (Fin n) (Fin n) ℂ) * m g) *ᵥ x = x := by

@@ -27,7 +27,7 @@ theorem prodR_props (hC : 0 ≤ C) : ∀ ys : List ℝ, RHyp l0 a e ρ Pv C ys �
   | y :: ys, ⟨⟨h1, h2, h3⟩, hr⟩ => by
     obtain ⟨i1, i2, i3⟩ := prodR_props hC ys hr
     simp only [topRprod, Complex.mul_im, Complex.mul_re, List.map_cons, List.prod_cons, List.length_cons]
-    refine ⟨by rw [i1, h2]; ring, by rw [i1, h2]; simp only [mul_zero, zero_mul, sub_zero]; positivity, ?_⟩
+    refine ⟨by rw [i1, h2]; ring, by rw [i1, h2]; simp only [mul_zero, sub_zero]; positivity, ?_⟩
     rw [i1, h2]
     simp only [mul_zero, sub_zero]
     have hp : 0 ≤ (ys.map fun y => |Pv y|).prod := List.prod_nonneg fun x hx => by

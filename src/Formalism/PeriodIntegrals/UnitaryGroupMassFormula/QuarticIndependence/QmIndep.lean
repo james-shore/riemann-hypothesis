@@ -36,8 +36,7 @@ theorem scalar (z : Fin 2 × Fin 2 → Fin 2 × Fin 2 → ℂ) (Y Y' : ℂ) (hY 
       refine (mul_eq_zero.mp ?_).resolve_left hne
       rw [← h]
       simp only [nine, Fintype.sum_prod_type, Fin.sum_univ_two, Prod.mk.injEq, Fin.isValue,
-        Fin.val_zero, Fin.val_one, zero_ne_one, one_ne_zero, and_true, and_false, true_and, false_and,
-        if_true, if_false, add_zero, zero_add]
+        Fin.val_zero, Fin.val_one, zero_ne_one, one_ne_zero, and_true, and_false, if_true, if_false, add_zero, zero_add]
       ring)
   obtain ⟨h1, h2, h3, h4, h5, h6, h7, h8, h9⟩ := h9
   exact ⟨h1, h2, h3, h4, h5, h6, h7, h8, h9⟩

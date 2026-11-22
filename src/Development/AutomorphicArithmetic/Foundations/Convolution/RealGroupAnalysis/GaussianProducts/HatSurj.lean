@@ -48,7 +48,6 @@ private theorem finPart_rf (v : V4 F) : finPartPi (rf v) = rf (finPartPi v) := b
   by_cases h : i = 1
   · subst h
     rw [rf_one]
-    change (finPartPi (rf v)) 1 = -(finPartPi v 1)
     simp only [GroundTheory.Heights₂.Theta.finPartPi_eq_adeleFinHom, rf_one, map_neg]
   · rw [rf_ne _ h]
     change (rf v i).2 = (v i).2

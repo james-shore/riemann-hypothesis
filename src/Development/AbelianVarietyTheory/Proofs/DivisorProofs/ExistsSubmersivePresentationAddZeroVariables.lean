@@ -25,7 +25,6 @@ theorem ker_aeval_zero_eq_span (D κ : Type) [CommRing D] :
       first
         | (show MvPolynomial.eval (0 : κ → D) p = _
            exact congrFun (congrArg DFunLike.coe (MvPolynomial.eval_zero (R := D) (σ := κ))) p)
-        | (rw [MvPolynomial.aeval_def]; simp [MvPolynomial.eval₂_eq, MvPolynomial.coeff_zero_eq_constantCoeff])
     exact (mem_support_iff.mp hm) (this ▸ hp)
   · rw [Ideal.span_le]
     rintro _ ⟨k, rfl⟩

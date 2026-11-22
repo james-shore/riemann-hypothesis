@@ -39,7 +39,7 @@ theorem growth_bound_of_spanning_combinations : ∀ (n g r : ℕ) (J : Type) [Fi
       rw [Finset.sum_congr rfl (fun m' _ => hc m')]
       rw [Finset.sum_eq_single m]
       · simp
-      · intro b _ hb; simp [Pi.single_apply, hb]
+      · intro b _ hb; simp [hb]
       · intro h; exact absurd (Finset.mem_univ m) h
     rw [hid]
     calc ‖∑ i, (a m i : ℂ) • ∑ m', (u i m' : ℂ) • x s m'‖

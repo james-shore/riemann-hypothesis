@@ -56,7 +56,7 @@ private def blkE {κ : Type} [Field κ] (M : Matrix (Fin 2) (Fin 2) κ) (w : κ)
 private lemma charpoly_blkE {κ : Type} [Field κ] (M : Matrix (Fin 2) (Fin 2) κ) (w : κ) :
     (blkE M w).charpoly = M.charpoly * (X - C w) := by
   simp only [Matrix.charpoly, det_fin_three, det_fin_two]
-  simp [blkE, charmatrix_apply]
+  simp [blkE]
   ring
 
 private lemma blkE_mul {κ : Type} [Field κ] (M : Matrix (Fin 2) (Fin 2) κ) (w : κ) (a : Fin 2 → κ) (c : κ) (m : ℕ)

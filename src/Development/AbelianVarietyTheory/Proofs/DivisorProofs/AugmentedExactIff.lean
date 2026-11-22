@@ -27,7 +27,7 @@ theorem augmented_exact_iff (C : Type 2) [Category.{1} C] [Abelian C] (K : Simpl
     rw [AlgebraicTopology.AlternatingFaceMapComplex.obj_d_eq, Fin.sum_univ_two]
     simp [sub_eq_add_neg]
   have w : (K.δ (n := 0) 0 - K.δ (n := 0) 1) ≫ f.app (op (SimplexCategory.mk (0))) = 0 := by
-    simp [Preadditive.sub_comp, SimplicialObject.δ_naturality, SimplicialObject.δ]
+    simp [Preadditive.sub_comp, SimplicialObject.δ]
   have he : Epi (φ.f 0) ↔ Epi (f.app (op (SimplexCategory.mk (0)))) := h0 ▸ Iff.rfl
   have hz : QuasiIsoAt φ 0 ↔ (Epi (f.app (op (SimplexCategory.mk (0)))) ∧
       (∃ w : (K.δ (n := 0) 0 - K.δ (n := 0) 1) ≫ f.app (op (SimplexCategory.mk (0))) = 0,

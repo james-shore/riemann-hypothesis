@@ -29,7 +29,7 @@ theorem lam_unip (hI : PosInt I) (hB : IsInvForm (rhoW ψ) B) (y : WT (m := m) �
   have hc' : cK ψ I (K.map (MulAut.conj u).toMonoidHom) = cK ψ I K := by
     rw [cK, cK, ← (isInvForm_formI hI).2.2 u⁻¹ (delta ψ (K.map (MulAut.conj u).toMonoidHom)),
       rhoW_inv_delta_conj hK hu]
-    simp only [map_smulₛₗ, map_smul, LinearMap.smul_apply, smul_eq_mul, RingHom.id_apply]
+    simp only [map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, RingHom.id_apply]
     linear_combination (formI ψ I (delta ψ K) (delta ψ K)) * circle_conj_mul (ψ⁻¹ (superDiag u))
   rw [lamK, lamK, hB', hc', mul_div_assoc]
 

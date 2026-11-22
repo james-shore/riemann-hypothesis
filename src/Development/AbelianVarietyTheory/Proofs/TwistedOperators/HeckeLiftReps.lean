@@ -304,7 +304,7 @@ theorem hecke_lift_reps : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E]
         intro a
         ext <;> simp [epsMul]
       rw [e0]
-      first | rfl | exact Spec.map_id _ | simp [spMap] | (rw [CommRingCat.ofHom_id]; exact Spec.map_id _)
+      first | rfl | exact Spec.map_id _
     have e3 : spMap (epsMul (p : ℂ)) ≫ z.u τ m = wv ≫ ψ ≫ pullback.fst _ _ := by
       rw [hw3]
       refine (spMap_epsMul_comp (p : ℂ) ((p : ℂ)⁻¹) _).trans ?_

@@ -26,8 +26,6 @@ theorem hty_c (C : Choice X θ) (u : D.what₂.Word) (τ : D.what₂.Tau) :
   have hp : X.pl (vOf X τ) = τ := by
     first
     | simp [vOf]
-    | (unfold vOf; simp)
-    | rfl
   rw [hp] at h
   exact h
 

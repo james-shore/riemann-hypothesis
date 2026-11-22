@@ -15,7 +15,6 @@ theorem siegel_set_completeness : Complete := by
   let F : C(AddCircle (1 : ℝ), ℂ) := ⟨hpr.lift, by
     first
       | exact continuous_coinduced_dom.mpr hcont
-      | exact hcont.quotient_liftOn' _
       | exact (QuotientAddGroup.isQuotientMap_mk _).continuous_iff.mpr hcont⟩
   have hF : ∀ x : ℝ, F x = f x := fun x => rfl
   have hcF : ∀ n : ℤ, fourierCoeff F n = 0 := by
@@ -35,8 +34,6 @@ theorem siegel_set_completeness : Complete := by
   have hF0 : F = 0 := by
     first
       | exact ContinuousMap.toLp_injective AddCircle.haarAddCircle (hL.trans (map_zero _).symm)
-      | exact ContinuousMap.toLp_injective (p := 2) (μ := AddCircle.haarAddCircle) (𝕜 := ℂ)
-          (hL.trans (map_zero _).symm)
   have hreal : ∀ x : ℝ, f x = 0 := fun x => by
     have := DFunLike.congr_fun hF0 (x : AddCircle (1 : ℝ))
     rwa [hF, ContinuousMap.zero_apply] at this

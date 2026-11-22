@@ -28,7 +28,7 @@ theorem sameCoset_local {E : Type} [Field E] [NumberField E] [StarRing E] (P : H
     intro m v hv
     have : q ^ m • v = ((qOf P : 𝓞 E) ^ m) • v := by
       rw [← algebraMap_smul E ((qOf P : 𝓞 E) ^ m) v]
-      congr 1 <;> simp [hqdef]
+      congr 1
     rw [this]
     exact Submodule.smul_mem _ _ hv
   have hw : q ^ e • y₀ ∈ stdAt E n P := (hsm _ _).1 hy₀

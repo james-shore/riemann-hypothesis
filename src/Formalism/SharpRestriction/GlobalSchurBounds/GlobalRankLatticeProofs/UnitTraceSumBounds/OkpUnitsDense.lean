@@ -32,8 +32,6 @@ theorem phNorm_of (H1 : PhNormOfUnits) (H2 : PhNormClosed) (D : D7) (hOK : PhNor
     have hu : ∀ u : ℤˣ, (u : ℤ) * u = 1 := fun u => by
       first
       | exact Int.units_coe_mul_self u
-      | (rw [← Units.val_mul, Int.units_mul_self, Units.val_one])
-      | (rcases Int.units_eq_one_or u with h | h <;> simp [h])
     rw [D.host.gal_sqd, map_mul, map_intCast, D.host.gal_sqd, ← mul_assoc, ← Int.cast_mul, hu,
       Int.cast_one, one_mul]
   have hmemK : ∀ y : D.host.E, y ∈ D.host.K →
@@ -42,16 +40,13 @@ theorem phNorm_of (H1 : PhNormOfUnits) (H2 : PhNormClosed) (D : D7) (hOK : PhNor
     unfold Formalism.HC.HostRaw.K at hsqK ⊢
     intro y hy
     induction hy using IntermediateField.adjoin_induction
-    all_goals simp_all [Set.mem_singleton_iff, map_add, map_mul, map_inv₀, map_neg, AlgEquiv.commutes,
-      add_mem, mul_mem, inv_mem, neg_mem, IntermediateField.algebraMap_mem]
+    all_goals simp_all [Set.mem_singleton_iff, map_add, map_mul, map_inv₀, add_mem, mul_mem]
   have hQ : ∀ x : D.host.E, D.host.φ₀ x ∈ Qbar := by
     intro x
     have hx : IsIntegral ℚ (D.host.φ₀ x) :=
       (Algebra.IsIntegral.isIntegral (R := ℚ) x).map D.host.φ₀.toRatAlgHom
     first
     | exact hx
-    | exact (mem_algebraicClosure_iff' (F := ℚ)).2 hx
-    | exact mem_algebraicClosure_iff.2 hx.isAlgebraic
   have hL : ∀ {p : ℕ} [Fact p.Prime] (lam : Qbar →+* ℂ_[p]) (x : D.host.E),
       lamC lam (D.host.φ₀ x) = lam ⟨D.host.φ₀ x, hQ x⟩ := by
     intro p _ lam x
@@ -83,8 +78,6 @@ theorem phNorm_of (H1 : PhNormOfUnits) (H2 : PhNormClosed) (D : D7) (hOK : PhNor
       rw [hR]
       first
       | rfl
-      | exact (Subring.coe_topologicalClosure _).symm
-      | exact (Subring.topologicalClosure_coe _).symm
     refine ⟨?_, ?_, ?_, ?_⟩
     · intro α hα β hβ
       rw [hcl] at hα hβ ⊢
@@ -107,7 +100,6 @@ theorem phNorm_of (H1 : PhNormOfUnits) (H2 : PhNormClosed) (D : D7) (hOK : PhNor
       have h1 : IsIntegral ℤ (a : D.host.K) := by
         first
         | exact a.2
-        | exact NumberField.RingOfIntegers.isIntegral_coe a
       have h2 := h1.map (((D.host.conj : D.host.E →+* D.host.E).comp
         (algebraMap D.host.K D.host.E)).toIntAlgHom)
       have hz : IsIntegral ℤ z :=

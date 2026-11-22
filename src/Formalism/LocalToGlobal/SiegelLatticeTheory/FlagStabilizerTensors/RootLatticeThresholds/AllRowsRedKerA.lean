@@ -281,7 +281,6 @@ theorem hhat_Lq {w : HeightOneSpectrum (𝓞 I.E)} {t β : 𝓞 I.E}
     intro e
     first
       | rfl
-      | simp [Formalism.UG.sigR, Formalism.UG.inclE, Formalism.BasicNotions.CMData.sig]
   have hInt : ∀ s ∈ IntAf I.F I.E, Formalism.UG.sigR I.cm.sig (Af I.F) s ∈ IntAf I.F I.E := by
     have hle : IntAf I.F I.E ≤ (IntAf I.F I.E).comap (Formalism.UG.sigR I.cm.sig (Af I.F)) := by
       show Subring.closure _ ≤ _
@@ -291,7 +290,6 @@ theorem hhat_Lq {w : HeightOneSpectrum (𝓞 I.E)} {t β : 𝓞 I.E}
         refine Subring.subset_closure (Or.inl ⟨⟨_, sigO I a, rfl⟩, ?_⟩)
         first
           | rfl
-          | simp [Formalism.UG.sigR, Formalism.BasicNotions.CMData.sig, sigO_coe]
       · rw [SetLike.mem_coe, Subring.mem_comap]
         refine Subring.subset_closure (Or.inr ⟨⟨y, hy⟩, ?_⟩)
         simp [Formalism.UG.sigR]

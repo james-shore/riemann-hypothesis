@@ -29,8 +29,6 @@ theorem tof_uMap_sq_smul {dim : (E →+* ℂ) → ℕ} (I : Submodule ℤ (Vsp d
   have h : ((r1 : ℂ) ^ 2) • a - ((r1 : ℂ) ^ 2) • y = ((r1 : ℝ) ^ 2) • (a - y) := by
     first
     | (rw [← smul_sub, ← Complex.coe_smul, Complex.ofReal_pow, Complex.ofReal_natCast])
-    | (rw [← smul_sub]; norm_cast)
-    | (rw [← smul_sub, ← Complex.coe_smul]; push_cast; rfl)
   rw [h, map_smul, map_sub, norm_smul, mul_pow, Real.norm_eq_abs,
     abs_of_nonneg (by positivity)]
   ring

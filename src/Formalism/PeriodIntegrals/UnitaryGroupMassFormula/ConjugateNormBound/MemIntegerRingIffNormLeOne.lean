@@ -14,8 +14,6 @@ variable {p : ℕ} [Fact p.Prime]
 theorem mem_integerRing_iff_norm_le_one (x : ℂ_[p]) : x ∈ PI.PhNormUnits.UnitaryGroupMassFormula.PAdicPowerSeriesCoefficients.intRing p ↔ ‖x‖ ≤ 1 := by
   first
   | exact Iff.rfl
-  | (simp only [PI.PhNormUnits.UnitaryGroupMassFormula.PAdicPowerSeriesCoefficients.intRing]; rfl)
-  | simp [PI.PhNormUnits.UnitaryGroupMassFormula.PAdicPowerSeriesCoefficients.intRing]
 
 theorem coeff_pow_int {f : PowerSeries ℂ_[p]} (hf : ∀ n, ‖coeff n f‖ ≤ 1) (k n : ℕ) :
     ‖coeff n (f ^ k)‖ ≤ 1 := by
@@ -48,11 +46,9 @@ theorem coeff_subst_fin {f g : PowerSeries ℂ_[p]} (hf0 : constantCoeff f = 0) 
   have hs : HasSubst f := by
     first
     | exact HasSubst.of_constantCoeff_zero' hf0
-    | exact HasSubst.of_constantCoeff_zero hf0
   have h1 : coeff n (subst f g) = ∑ᶠ k : ℕ, coeff k g * coeff n (f ^ k) := by
     first
     | exact (coeff_subst hs g (Finsupp.single () n)).trans (finsum_congr fun k => smul_eq_mul _ _)
-    | (rw [coeff_subst' hs]; simp only [smul_eq_mul])
   rw [h1, finsum_eq_sum_of_support_subset _ (s := Finset.range (n + 1))]
   intro k hk
   rw [Function.mem_support] at hk

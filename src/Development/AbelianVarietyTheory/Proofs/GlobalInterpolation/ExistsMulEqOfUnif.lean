@@ -263,7 +263,7 @@ theorem exists_basis_ker {d : Deco E n ST SG} (hd : d.Ok) (P : ST) (hs : d.at P.
     intro j
     funext a
     by_cases ha : a = i <;> by_cases hj : j = i <;>
-      simp [B₀, t, ha, hj, Matrix.updateRow_apply, Matrix.one_apply, Pi.single_apply, Function.update_apply, eq_comm]
+      simp [B₀, t, ha, hj, Matrix.updateRow_apply, Matrix.one_apply, Pi.single_apply, eq_comm]
   refine ⟨Matrix.GeneralLinearGroup.mkOfDetNeZero _ (hdet' ▸ hT0), hdet', le_antisymm ?_ ?_⟩
   · intro x hx
     obtain ⟨hx1, hx2⟩ := (hd.mem_locP_L P x).1 hx

@@ -46,7 +46,7 @@ theorem charpolyRev_map {A B : Type} [CommRing A] [CommRing B] (f : A →+* B) {
   rw [← Polynomial.coe_mapRingHom, RingHom.map_det]
   congr 1
   ext i j : 2
-  by_cases h : i = j <;> simp [Matrix.one_apply, h]
+  by_cases h : i = j <;> simp [h]
 
 theorem measurable_curv {n : ℕ} {r : Type} [Fintype r] [DecidableEq r] (G : V n → Matrix r r ℂ) (ξ η : V n) (i j : r) :
     Measurable fun v => curv G v ξ η i j := by

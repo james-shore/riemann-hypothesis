@@ -162,7 +162,7 @@ theorem infIdele_neg_one_not_mem :
   have hcomp : ∀ w' : InfinitePlace E, algebraMap E w'.Completion (k : E) =
       (x : AdeleRing (𝓞 E) E).1 w' * ((z⁻¹ : Ideles E) : AdeleRing (𝓞 E) E).1 w' := fun w' => by
     have := congrArg (fun t : Ideles E => (t : AdeleRing (𝓞 E) E).1 w') hku
-    simp only [Units.val_mul, Prod.fst_mul, Pi.mul_apply] at this
+    simp only [Units.val_mul] at this
     exact this
   have hemb : ∀ (w' : InfinitePlace E) (hw' : w'.IsReal), InfinitePlace.embedding_of_isReal hw' (k : E) =
       InfinitePlace.Completion.ringEquivRealOfIsReal hw' (algebraMap E w'.Completion (k : E)) := fun w' hw' =>

@@ -126,10 +126,10 @@ theorem dLvl_eq (hB : G.BlockOK) (j : Fin G.T.t → ℕ) (jp : ℕ) (hl : G.Leve
       have e2 := finPos_eq_cast (G.T.pos i + 1) (hposN i) a0
       by_cases h1 : (a0 : ℕ) = G.T.pos i
       · have h2 : ¬ (a0 : ℕ) = G.T.pos i + 1 := by omega
-        simp only [e1, e2, h1, h2, if_true, if_false, or_false]
+        simp only [e1, e2, h1, if_true]
         simp
       · by_cases h2 : (a0 : ℕ) = G.T.pos i + 1
-        · simp only [e1, e2, h1, h2, if_true, if_false, or_true]
+        · simp only [e1, e2, h2, if_true, or_true]
           simp
         · simp only [e1, e2, h1, h2, if_false, or_false]
           simp

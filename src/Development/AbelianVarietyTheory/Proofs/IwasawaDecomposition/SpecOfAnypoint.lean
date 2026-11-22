@@ -19,8 +19,6 @@ theorem upper_mul {n : ℕ} {R : Type} [CommRing R] {M N : Matrix (Fin n) (Fin n
   | exact @_root_.GlobalTheory.UpperTriangularMul.upperTriangular_mul
   | exact _root_.GlobalTheory.UpperTriangularMul.upperTriangular_mul
   | (apply _root_.GlobalTheory.UpperTriangularMul.upperTriangular_mul <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UpperTriangularMul.upperTriangular_mul <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UpperTriangularMul.upperTriangular_mul <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UpperTriangularMul.upperTriangular_mul ..)
 
 theorem spMap_comp {R R' R'' : Type} [CommRing R] [CommRing R'] [CommRing R''] (ρ : R →+* R') (ψ : R' →+* R'') :

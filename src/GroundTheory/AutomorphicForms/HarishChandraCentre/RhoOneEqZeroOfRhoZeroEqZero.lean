@@ -36,7 +36,7 @@ theorem rhoDeriv_rhoDeriv_X (c : Matrix (Fin n) (Fin n) ℂ) (P Q : gl n) (a : F
     rhoDeriv c P (rhoDeriv c Q (X a)) =
       ∑ k, C ((P * Q) k a.1) * (X (k, a.2) + C (c k a.2)) := by
   rw [rhoDeriv_X, map_sum]
-  simp only [Derivation.leibniz, Derivation.map_add, derivation_C, smul_zero, add_zero,
+  simp only [Derivation.leibniz, Derivation.map_add, derivation_C, add_zero,
     smul_eq_mul, mul_zero, rhoDeriv_X, Matrix.mul_apply, map_sum, Finset.sum_mul, Finset.mul_sum]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun k _ => Finset.sum_congr rfl fun i _ => ?_
@@ -74,9 +74,9 @@ theorem rhoDeriv_E_X (c : Matrix (Fin n) (Fin n) ℂ) (i j a b : Fin n) :
   rw [rhoDeriv_X, Finset.sum_eq_single i]
   · by_cases h : a = j
     · subst h; simp [E]
-    · simp [E, Matrix.single_apply, Ne.symm h, h]
+    · simp [E, Ne.symm h, h]
   · intro k _ hk
-    simp [E, Matrix.single_apply, Ne.symm hk]
+    simp [E, Ne.symm hk]
   · simp
 
 noncomputable def rowDeriv (i j : Fin n) : Derivation ℂ (Poly n) (Poly n) :=

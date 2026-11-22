@@ -113,8 +113,7 @@ theorem linearIndependent_mapVec (σ : K →+* K) {d n : ℕ} (v : Fin n → Fin
   have h2 : Matrix.of v * B = 1 := by
     ext a b
     have := congrFun (LinearMap.congr_fun hg (Pi.single a 1)) b
-    simp only [LinearMap.comp_apply, hgB, Matrix.vecMulLinear_apply, Matrix.vecMul_vecMul,
-      LinearMap.id_apply, Matrix.single_one_vecMul] at this
+    simp only [LinearMap.comp_apply, hgB, Matrix.vecMulLinear_apply, LinearMap.id_apply, Matrix.single_one_vecMul] at this
     rw [Matrix.one_apply]
     change Matrix.vecMul (v a) B b = _
     simpa [Pi.single_apply, eq_comm] using this

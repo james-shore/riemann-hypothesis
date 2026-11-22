@@ -235,7 +235,6 @@ private theorem eq_addv_lemma_2 {Φ : Type*} [Field Φ] (u1 u2 : AddValuation Φ
     rw [AddValuation.map_mul, AddValuation.map_mul, hinv u1 x m hx hm, hinv u2 x a hx ha,
       hpow u1 π1 hπ1 n, hpow u2 π1 hπ1u2 n] at e2
     norm_cast at e1 e2
-    all_goals exact ⟨e1, e2⟩
   have k1 := key (-m).toNat
   have k2 := key ((-m).toNat - 1)
   have k3 := key m.toNat

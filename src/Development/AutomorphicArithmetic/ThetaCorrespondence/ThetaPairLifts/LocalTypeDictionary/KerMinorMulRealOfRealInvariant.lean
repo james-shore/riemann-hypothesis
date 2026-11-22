@@ -83,7 +83,7 @@ theorem ker_minor_mul_real_of_real_invariant : _root_.GlobalTheory.FunPr.ThetaLo
     rw [GlobalTheory.RealColAct.gramAt_of_gram_one hVW]; simp
   have key := GlobalTheory.RealFockPos.om_pureTensorO_pos D W.ψ W.θ A' WW _ _ (X.ω' t) hW hθ (fun _ => 1) (fun _ => 1) hBS hBT
     a _ ha hb e₁ (fun τ => (P'.n τ : ℤ)) he₁ he₂ (X.f' t) hf hv g hg 1 (one_mem _) (GlobalTheory.BotFormula.minorF ea ed T')
-  simp only [inv_one, Matrix.one_mul, Matrix.mul_one, GlobalTheory.StdUnn.CartanMove.compAt_mt_one, Matrix.det_one, one_zpow, mul_one]
+  simp only [inv_one, Matrix.one_mul, GlobalTheory.StdUnn.CartanMove.compAt_mt_one, Matrix.det_one, one_zpow, mul_one]
     at key
   have hc : (∏ τ, (compAt W.θ τ (Formalism.L2.Theta.mt A' g)).det ^ (P'.n τ : ℤ)) *
       ∏ τ, ((compAt W.θ τ (Formalism.L2.Theta.mt A' g))⁻¹).det ^ P'.n τ = 1 := by
@@ -117,5 +117,5 @@ theorem _root_.GlobalTheory.T.minor_kernel_real_invariant : _root_.GlobalTheory.
         IsBottom G s i j (GlobalTheory.SqTop.modT G s) P P' → ∀ (ea : P'.a = A'.rank) (ed : P'.d = WW.rank) (T' : Tup D P'.a P'.d P'.n)
           (h : GA D WW), ∀ k ∈ GinfC A', ∀ g : GA D A',
             X.ker' W.ψ W.θ s (GlobalTheory.BotFormula.minorF ea ed T') h (g * k) = X.ker' W.ψ W.θ s (GlobalTheory.BotFormula.minorF ea ed T') h g := by
-  first | exact @_root_.GlobalTheory.BotRealInv.ker_minor_mul_real_of_real_invariant | exact _root_.GlobalTheory.BotRealInv.ker_minor_mul_real_of_real_invariant | (intros; apply _root_.GlobalTheory.BotRealInv.ker_minor_mul_real_of_real_invariant <;> assumption)
+  first | exact @_root_.GlobalTheory.BotRealInv.ker_minor_mul_real_of_real_invariant
 end

@@ -94,10 +94,8 @@ theorem covol_basic_properties : CovolBasic := by
         rw [linearIndependent_unique_iff]
         first
           | exact hv
-          | (intro r hr; exact (smul_eq_zero.1 hr).resolve_right hv)
       first
         | exact hR.restrict_scalars' ℤ
-        | exact hR.restrict_scalars (by intro a c h; simpa using h)
     have hr : span ℤ (Set.range fun _ : Unit => v) = span ℤ ({v} : Set E) := by
       rw [Set.range_const]
     let b : Basis Unit ℤ (span ℤ ({v} : Set E)) := (Basis.span hli).map (LinearEquiv.ofEq _ _ hr)

@@ -111,7 +111,6 @@ theorem low_degree_long_exact_sequence : LowLESStatement.{u} := by
       rw [hadm.i_id]
       show dn B.rho 0 (fun _ => b) v = i.u (a.1 (v 0))
       rw [ha (v 0), dn_zero_apply]
-      all_goals rfl
     have hcd : C.coch.d 0 (p.hom.f 0 b₀) = 0 := by
       rw [← p.hom.comm, key]
       exact (hses.exact 1).apply_apply_eq_zero _

@@ -122,7 +122,7 @@ theorem exists_U (e : ℕ) (mu α : Q.X) {Kv : Type} [Fintype Kv]
       rw [c₂]
       apply Additive.ofMul.injective
       simp only [Sum.elim_inl, Sum.elim_inr, Fin.prod_univ_succ, Fin.prod_univ_zero, ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow, Matrix.cons_val_zero,
-        Matrix.cons_val_succ, Fin.succ_zero_eq_one, Fin.succ_one_eq_two, Matrix.cons_val_one, Matrix.head_cons, _root_.mul_one, ofMul_one]
+        Matrix.cons_val_succ, _root_.mul_one]
       module)
     (pullMulSec σ (x * mm).left U hU)
   refine ⟨σ₁u, fun T ρ z J hJ => ?_⟩
@@ -193,12 +193,11 @@ theorem exists_shift_div_monomial : ∀ (E : Type) [Field E] [NumberField E] [Is
     rw [← k1, hc0]; rfl
   obtain ⟨σ₁u, hσu⟩ := exists_U P.D.toPre e mu α v₀ hv₀ (fun U _ h => by
       simp only [Fintype.prod_sum_type, Fintype.prod_unique, Fin.prod_univ_four, Sum.elim_inl, Sum.elim_inr,
-        Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.cons_val_three, Matrix.head_cons]
+        Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.cons_val_three]
       rw [k1, k0, kc, kc, kc]
       apply Additive.ofMul.injective
       simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow, Matrix.vecHead, Matrix.vecTail, Function.comp_apply,
-        Fin.succ_zero_eq_one, Fin.succ_one_eq_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two,
-        Matrix.cons_val_succ, Matrix.head_cons, Matrix.tail_cons]
+        Fin.succ_zero_eq_one, Fin.succ_one_eq_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two]
       module) σ
   have hne : ∀ i, algebraMap (ChartRing k m d) (FractionRing (ChartRing k m d)) (bdParam k m d i) ≠ 0 := fun i =>
     (map_ne_zero_iff _ (IsFractionRing.injective _ _)).2 (by

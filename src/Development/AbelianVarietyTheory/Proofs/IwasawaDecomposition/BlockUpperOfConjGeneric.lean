@@ -144,7 +144,7 @@ theorem block_upper_of_conj_generic {A : Type} [CommGroup A] (r t : ℕ) (hr : 2
       rw [diagUnit_val, Matrix.smul_apply, diagonal_mul, mul_diagonal, hP2e, smul_eq_mul]
       by_cases he : e = k
       · subst he
-        try simp only [if_pos rfl, ite_true]
+        try simp only [ite_true]
         rw [hfhigh e hk]
         by_cases ha : a.val < r
         · rw [hflow a ha]; field_simp

@@ -61,8 +61,6 @@ theorem dvd_of_not_dvd (hx : Prime x) (h : StableDvd (A ⧸ Ideal.span {x})) {a 
   | exact @_root_.GlobalTheory.SaturatedNotDvd.main
   | exact _root_.GlobalTheory.SaturatedNotDvd.main
   | (apply _root_.GlobalTheory.SaturatedNotDvd.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SaturatedNotDvd.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SaturatedNotDvd.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SaturatedNotDvd.main ..)
 
 omit [IsLocalRing A] in

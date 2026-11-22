@@ -74,7 +74,7 @@ theorem zetaSeries_ordGe_pure {C : Type} [Field C] (v : AddValuation C (WithTop 
       rw [Finset.sum_eq_single j]
       · simp
       · intro m _ hm
-        simp [Finsupp.single_apply, Ne.symm hm]
+        simp [Ne.symm hm]
       · simp
     rw [this, mul_one]
     exact ha j

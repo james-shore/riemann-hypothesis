@@ -53,7 +53,7 @@ private theorem exists_unit_orth_in_Wb {n r : ℕ} {z : Fin (2 * r + (n + 1) + 1
     intro i hi
     have hip : i ≠ p := fun h => by rw [h] at hi; simp [hp] at hi
     have hiq : i ≠ q := fun h => by rw [h] at hi; simp [hq] at hi
-    simp [hvdef, Pi.single_apply, hip, hiq]
+    simp [hvdef, hip, hiq]
   have hpval : (p : ℕ) ≠ r + (n + 1) := by simp [hp]
   have hqval : (q : ℕ) = r + (n + 1) := by simp [hq]
   have hHv : _root_.Formalism.QuantumDeterminants.Hpk (n + 1) r *ᵥ v = Pi.single p (star (z q)) - Pi.single q (star (z p)) := by
@@ -61,10 +61,10 @@ private theorem exists_unit_orth_in_Wb {n r : ℕ} {z : Fin (2 * r + (n + 1) + 1
     funext i
     by_cases hip : i = p
     · rw [hip, if_neg hpval, hvdef]
-      simp [hpq, hpq.symm]
+      simp [hpq]
     · by_cases hiq : i = q
       · rw [hiq, if_pos hqval, hvdef]
-        simp [hpq, hpq.symm]
+        simp [hpq.symm]
       · have : (i : ℕ) ≠ r + (n + 1) := fun h => hiq (Fin.ext (h.trans hqval.symm))
         rw [if_neg this, hvdef]
         simp [hip, hiq]
@@ -83,7 +83,7 @@ private theorem exists_unit_orth_in_Wb {n r : ℕ} {z : Fin (2 * r + (n + 1) + 1
         (star (z i) * (if (i : ℕ) = r + (n + 1) then -z i else z i)).re =
           if (i : ℕ) = r + (n + 1) then -Complex.normSq (z i) else Complex.normSq (z i) := by
       intro i
-      split_ifs <;> simp [Complex.normSq_apply, Complex.mul_re] <;> ring
+      split_ifs <;> simp [Complex.normSq_apply, Complex.mul_re]
     simp only [Pi.star_apply, hf]
     rw [← Finset.add_sum_erase _ _ (Finset.mem_univ q), if_pos hqval]
     have hpe : p ∈ Finset.univ.erase q := Finset.mem_erase.2 ⟨hpq, Finset.mem_univ _⟩

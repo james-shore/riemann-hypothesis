@@ -36,9 +36,9 @@ theorem qs_Vo_slz (k l : ℕ) (hl : 0 < l) (a : ℕ → ℂ) (ha : PolyB a) (τ 
   rw [hV]
   unfold slz
   simp only [Matrix.det_fin_two_of, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero,
-    Matrix.cons_val_one, Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_cons, Matrix.head_fin_const]
+    Matrix.cons_val_one, Matrix.empty_val', Matrix.cons_val_fin_one]
   push_cast
-  simp only [zero_mul, zero_add, mul_one, mul_zero, sub_zero, add_zero, div_one, one_pow, inv_one]
+  simp only [zero_mul, zero_add, mul_one, sub_zero, add_zero, div_one, one_pow, inv_one]
   rw [ofComplex_apply_of_im_pos him]
   field_simp
 

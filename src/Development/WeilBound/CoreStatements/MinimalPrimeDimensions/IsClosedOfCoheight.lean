@@ -67,7 +67,7 @@ theorem isComb_single (k : Fin m) : IsComb p s (Pi.single k 1) (s k) := by
   rw [Finset.sum_eq_single k]
   · simp
   · intro j _ hj
-    simp [Pi.single_apply, hj]
+    simp [hj]
   · simp
 
 theorem secVal_comb (hB : B.IsLB) {u : Fin m → R} {su : B.Sec} (hu : IsComb p s u su) (y : CxPts p σ) :

@@ -140,10 +140,10 @@ theorem mat_mul_apply_row (x y : Pos n → R) (a b : Fin n) (hab : a < b) :
     rcases lt_trichotomy k a with h1 | rfl | h1
     · have : ¬ (a < k ∧ k < b) := fun h => (lt_asymm h1 h.1)
       simp [mat_gt x h1, h1.ne, (h1.trans hab).ne, this]
-    · simp [mat_self, mat_lt y hab, hab.ne, lt_irrefl]
+    · simp [mat_self, mat_lt y hab, hab.ne]
     · rcases lt_trichotomy k b with h2 | rfl | h2
       · simp [mat_lt x h1, mat_lt y h2, h1.ne', h2.ne, h1, h2]
-      · simp [mat_lt x h1, mat_self, h1.ne', lt_irrefl]
+      · simp [mat_lt x h1, mat_self, h1.ne']
       · have : ¬ (a < k ∧ k < b) := fun h => (lt_asymm h2 h.2)
         simp [mat_gt y h2, h1.ne', h2.ne', this]
   rw [Matrix.mul_apply, Finset.sum_congr rfl fun k _ => key k, Finset.sum_add_distrib,

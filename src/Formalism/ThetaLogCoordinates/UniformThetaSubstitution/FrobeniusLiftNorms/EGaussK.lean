@@ -124,7 +124,6 @@ theorem norm_unif_pow {K : Type} [NormedField K] {p : ℕ} [hp : Fact p.Prime]
     have hx : (0 : ℝ) ≤ (p : ℝ) ^ (-(rhoP p)) := Real.rpow_nonneg hp0.le _
     first
       | exact (pow_left_inj₀ (norm_nonneg _) hx hNne).1 h3
-      | exact (pow_left_inj (norm_nonneg _) hx hNne).1 h3
   rw [norm_pow, key, ← Real.rpow_natCast, ← Real.rpow_mul hp0.le]
   congr 1
   ring
@@ -178,7 +177,6 @@ theorem GaussBK_of (hE : EntryB) : GaussBK := by
   have hinv : (p : ℝ)⁻¹ ≤ 1 := by
     first
       | exact inv_le_one_of_one_le₀ hp1
-      | exact inv_le_one hp1
   have hinv0 : (0 : ℝ) ≤ (p : ℝ)⁻¹ := by positivity
   refine le_trans ?_ h1
   exact mul_le_mul (pow_le_pow_of_le_one hinv0 hinv h2) (hb n) (norm_nonneg _) (by positivity)

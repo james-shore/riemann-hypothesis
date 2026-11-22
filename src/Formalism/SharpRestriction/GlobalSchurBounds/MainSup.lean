@@ -22,7 +22,6 @@ theorem logNE_le_of_rows (D : D7) {Y x eps : ℝ} (he : 0 < eps) (h1 : 1 < Y) (h
   have hNE : Real.log (GlobalTheoryTheory.NE D) ≤ 2 * Y ^ (eps / 5) * Real.log Y ^ 2 := by
     first
       | (unfold GlobalTheoryTheory.NE; push_cast; exact hlog)
-      | simpa [GlobalTheoryTheory.NE] using hlog
   have ha : Y ^ (eps / 5) ≤ x ^ (eps / 5) := Real.rpow_le_rpow hY0.le hY (by linarith)
   have hl0 : 0 ≤ Real.log Y := Real.log_nonneg h1.le
   have hl : Real.log Y ≤ Real.log x := Real.log_le_log hY0 hY

@@ -26,7 +26,7 @@ theorem sum_inner_change {E F ι κ : Type*} [NormedAddCommGroup E] [InnerProduc
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [Finset.sum_comm]
   simp only [← Finset.sum_mul, he, orthonormal_iff_ite.mp b.orthonormal, ite_mul, one_mul, zero_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+    Finset.sum_ite_eq, Finset.mem_univ, if_true]
 
 theorem parseval_single {C' V' : Type*} [Fintype C'] [NormedAddCommGroup V']
     [InnerProductSpace ℂ V'] [FiniteDimensional ℂ V']
@@ -41,7 +41,7 @@ theorem parseval_single {C' V' : Type*} [Fintype C'] [NormedAddCommGroup V']
     rw [PiLp.inner_apply, Finset.sum_eq_single c]
     · simp
     · intro d _ hd
-      simp [Pi.single_apply, hd]
+      simp [hd]
     · simp
   have h2 : ∀ (c : C') (v : V'),
       inner ℂ (WithLp.toLp 2 (Pi.single c v : C' → V')) y = inner ℂ v (y c) := by
@@ -49,7 +49,7 @@ theorem parseval_single {C' V' : Type*} [Fintype C'] [NormedAddCommGroup V']
     rw [PiLp.inner_apply, Finset.sum_eq_single c]
     · simp
     · intro d _ hd
-      simp [Pi.single_apply, hd]
+      simp [hd]
     · simp
   rw [Fintype.sum_sigma]
   simp only [h1, h2, OrthonormalBasis.sum_inner_mul_inner]

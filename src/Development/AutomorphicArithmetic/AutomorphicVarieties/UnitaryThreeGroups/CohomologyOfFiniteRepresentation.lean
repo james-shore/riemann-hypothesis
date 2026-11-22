@@ -54,7 +54,7 @@ private theorem unipotent_cochain_add {k Γ M : Type} [Field k] [Group Γ] [AddC
   | zero => simp [powerCocycleSum]
   | succ i ih =>
     rw [show i + 1 + j = (i + j) + 1 by ring]
-    simp only [powerCocycleSum, ih, map_add, pow_succ', map_mul, Module.End.mul_apply, pow_add]
+    simp only [powerCocycleSum, ih, map_add, pow_succ', map_mul, Module.End.mul_apply]
     abel
 
 private theorem unipotent_cochain_periodic {l : ℕ} {k Γ M : Type} [Field k] [CharP k l] [Group Γ] [AddCommGroup M] [Module k M]

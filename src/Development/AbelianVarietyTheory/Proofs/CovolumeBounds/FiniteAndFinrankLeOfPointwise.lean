@@ -139,10 +139,10 @@ theorem integral_inner_self (l : ∀ x, V →ₗ[ℂ] E x) (f : V) :
     simpa using integral_nonneg fun x => by positivity
   add_left f g h := by
     rw [← integral_add (integrable_inner l hint _ _) (integrable_inner l hint _ _)]
-    simp [inner_add_left]
+    simp
   smul_left f g c := by
     rw [← integral_const_mul]
-    simp [inner_smul_left, mul_comm]
+    simp [mul_comm]
   definite f hf := by
     rw [integral_inner_self] at hf
     exact hpos f (by exact_mod_cast hf)

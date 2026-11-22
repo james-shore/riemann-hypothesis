@@ -42,7 +42,7 @@ theorem intM_embX {n : Type} [Fintype n] [DecidableEq n] {c : ℕ} {g : GL n k} 
   · simp [embX]
   · by_cases e : a = b
     · subst e; simp [embX]
-    · simp [embX, Matrix.one_apply, e]
+    · simp [embX, e]
 
 theorem prX_Cgrp_KO_one (n : Type) [Fintype n] [DecidableEq n] (c : ℕ) :
     prX (Cgrp (KO k (n ⊕ Fin c)) 1) = KO k n := by

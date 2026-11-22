@@ -38,7 +38,7 @@ theorem aeval_eps {K : Type} [Field K] (p : Polynomial K) :
   | add p q hp hq => simp [hp.1, hp.2, hq.1, hq.2]
   | monomial n a =>
     rcases n with _ | _ | n
-    · simp [Polynomial.coeff_monomial, TrivSqZeroExt.algebraMap_eq_inl]
+    · simp [TrivSqZeroExt.algebraMap_eq_inl]
     · simp [Polynomial.coeff_monomial, TrivSqZeroExt.algebraMap_eq_inl]
     · have : (DualNumber.eps : DualNumber K) ^ (n + 1 + 1) = 0 := by
         rw [pow_succ, pow_succ, mul_assoc, DualNumber.eps_mul_eps, mul_zero]
@@ -287,11 +287,9 @@ theorem core (hT : TameQuotient) (hG : GalHyp bkP i s) (hF : FirstHalf i s) (hR 
       (fun g c => (w (ψ g) c).snd) (hlamc.comp_continuous hψ) ((hwc.comp_continuous hψ).comp fun v c => (v c).snd)
       (fun g _ h _ => by simp only [map_mul, hlamm]) fun g hg h _ => ?_
     · funext c
-      beta_reduce
       rw [hw' g hg]
       simp
     · funext c
-      beta_reduce
       rw [hw' g hg]
       simp [add_assoc]
   have hf : ∀ π : K →ₗ[k] k, ∃ (x' : LinearMap.ker ((Φ.map (toLam X i M (Fin R ⊕ Fin R))).map aug).mulVecLin)

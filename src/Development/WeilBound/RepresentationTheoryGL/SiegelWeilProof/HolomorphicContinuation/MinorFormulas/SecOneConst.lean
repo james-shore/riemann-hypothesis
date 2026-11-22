@@ -75,7 +75,7 @@ theorem wrOrd_of (hS : SPrime) : PositivityTheory.SiegelWeilFormula.Gen.WROrd :=
   have hc0 : c ≠ 0 := hc.ne'
   have hs1 : (if b then ((t / c : ℝ) : ℂ) else -((t / c : ℝ) : ℂ)) = 1 ∨
       (if b then ((t / c : ℝ) : ℂ) else -((t / c : ℝ) : ℂ)) = -1 := by
-    rcases ht with rfl | rfl <;> cases b <;> simp [hc0, neg_div]
+    rcases ht with rfl | rfl <;> cases b <;> simp [hc0]
   have ht0 : t ≠ 0 := by
     rcases ht with rfl | rfl
     · exact hc0

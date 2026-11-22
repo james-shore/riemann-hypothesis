@@ -99,7 +99,6 @@ theorem horTr_letter {T : LocLat G Qp LL O} {c' : ZMod n} {d : ℕ} {b : Fin d �
   refine Finset.sum_congr rfl (fun m _ => ?_)
   first
   | rw [smul_comm, hbm m]
-  | rw [← algebraMap_smul (LetA O n) (y r m) (b m), ← mul_smul, mul_comm, mul_smul, hbm m]
 
 end TypesD
 

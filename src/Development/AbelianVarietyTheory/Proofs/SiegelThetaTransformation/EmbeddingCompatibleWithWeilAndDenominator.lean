@@ -297,7 +297,7 @@ theorem botSpan_eq (h : M2 E (N + 1)) (h0 : h (Sum.inr 0) = Pi.single (Sum.inr 0
   have key : ∀ b : Fin N, extV E N ((h.submatrix (up N) (up N)) (Sum.inr b)) =
       h (Sum.inr b.succ) - h (Sum.inr b.succ) (Sum.inr 0) • Pi.single (Sum.inr 0) 1 := by
     intro b
-    ext (i | i) <;> refine Fin.cases ?_ (fun i => ?_) i <;> simp [extV, h1, Pi.single_apply]
+    ext (i | i) <;> refine Fin.cases ?_ (fun i => ?_) i <;> simp [extV, h1]
   apply le_antisymm
   · refine Submodule.span_le.mpr ?_
     rintro _ ⟨a, rfl⟩
@@ -327,7 +327,7 @@ omit [IsCMField E] in
 theorem botSpan_emb (γ : M2 E N) :
     botSpan (emb γ) = (E ∙ Pi.single (Sum.inr 0) 1) ⊔ (botSpan γ).map (extV E N) := by
   have h0 : emb γ (Sum.inr 0) = Pi.single (Sum.inr 0) 1 := by
-    ext (j | j) <;> refine Fin.cases ?_ (fun j => ?_) j <;> simp [emb, Pi.single_apply]
+    ext (j | j) <;> refine Fin.cases ?_ (fun j => ?_) j <;> simp [emb]
   have h1 : ∀ a, emb γ (Sum.inr a) (Sum.inl 0) = 0 := by
     intro a; refine Fin.cases ?_ (fun a => ?_) a <;> simp [emb]
   have hs : (emb γ).submatrix (up N) (up N) = γ := by
@@ -341,7 +341,7 @@ theorem map_botSpan_emb (γ : M2 E N) :
   rw [botSpan_emb, Submodule.map_sup, Submodule.map_span, Set.image_singleton, ← Submodule.map_comp]
   have e1 : LinearMap.funLeft E E (up N) (Pi.single (Sum.inr 0) 1) = 0 := by
     funext j
-    rcases j with j | j <;> simp [LinearMap.funLeft_apply, Pi.single_apply, Fin.succ_ne_zero]
+    rcases j with j | j <;> simp [LinearMap.funLeft_apply, Fin.succ_ne_zero]
   have e2 : (LinearMap.funLeft E E (up N)).comp (extV E N) = LinearMap.id := by
     refine LinearMap.ext fun v => ?_
     funext j
@@ -409,7 +409,7 @@ theorem sub_mem {h : M2 E (N + 1)} (hh : h ∈ UU E (N + 1))
   have hl : ∀ i, h (Sum.inl i) (Sum.inl 0) = if i = 0 then 1 else 0 := fun i => by
     rw [hc]; simp [Pi.single_apply]
   have hr : ∀ i, h (Sum.inr i) (Sum.inl 0) = 0 := fun i => by
-    rw [hc]; simp [Pi.single_apply]
+    rw [hc]; simp
   have hrow : h (Sum.inr 0) = Pi.single (Sum.inr 0) 1 := by
     funext p
     have e := hU p (Sum.inl 0)
@@ -417,7 +417,7 @@ theorem sub_mem {h : M2 E (N + 1)} (hh : h ∈ UU E (N + 1))
     simp only [hl, hr, mul_zero, Finset.sum_const_zero, sub_zero, mul_ite, mul_one, Finset.sum_ite_eq',
       Finset.mem_univ, if_true] at e
     have e2 : Matrix.J (Fin (N + 1)) E p (Sum.inl 0) = (Pi.single (Sum.inr 0) 1 : _ → E) p := by
-      rcases p with p | p <;> simp [Matrix.J, Matrix.one_apply, Pi.single_apply, eq_comm]
+      rcases p with p | p <;> simp [Matrix.J, Matrix.one_apply, Pi.single_apply]
     rw [e2] at e
     have e3 := congrArg cc e
     rw [cc_cc_siegel_theta_transformation] at e3
@@ -427,7 +427,7 @@ theorem sub_mem {h : M2 E (N + 1)} (hh : h ∈ UU E (N + 1))
   have hJ : ∀ p q, Matrix.J (Fin (N + 1)) E (up N p) (up N q) = Matrix.J (Fin N) E p q := by
     rintro (p | p) (q | q) <;> simp [Matrix.J, Matrix.one_apply]
   have z1 : ∀ x : Fin N ⊕ Fin N, (Pi.single (Sum.inr 0) 1 : Fin (N + 1) ⊕ Fin (N + 1) → E) (up N x) = 0 := by
-    rintro (x | x) <;> simp [Pi.single_apply, Fin.succ_ne_zero]
+    rintro (x | x) <;> simp [Fin.succ_ne_zero]
   show ccT (h.submatrix (up N) (up N)) * Matrix.J (Fin N) E * h.submatrix (up N) (up N) = Matrix.J (Fin N) E
   ext p q
   have e := hU (up N p) (up N q)

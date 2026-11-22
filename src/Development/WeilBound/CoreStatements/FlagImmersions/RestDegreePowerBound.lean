@@ -25,7 +25,7 @@ theorem maj_lin (r e c A : ℝ) (hA : 0 ≤ A) (hr : |r| ≤ c) (he : |e| ≤ c 
   · simpa using hr
   · simpa using he
   · have : (Polynomial.C r + Polynomial.C e * Polynomial.X).coeff (s + 1 + 1) = 0 := by
-      simp [Polynomial.coeff_X, Polynomial.coeff_C]
+      simp
     rw [this, abs_zero]
     positivity
 

@@ -46,7 +46,7 @@ theorem mellinSplit_neg (I : Type) [Fintype I] [Nonempty I] (p : (I → ℝ) →
     rw [e2]
     linear_combination ((p y : ℂ) * κ * θ' (-y)) * e
   have hpre : (Neg.neg : (I → ℝ) → (I → ℝ)) ⁻¹' P = Sᶜ := by
-    ext y; simp [hP, hS, hsumneg]
+    ext y; simp [hP, hS]
   have hmp : MeasurePreserving (Neg.neg : (I → ℝ) → (I → ℝ)) volume volume :=
     Measure.measurePreserving_neg _
   have hemb : MeasurableEmbedding (Neg.neg : (I → ℝ) → (I → ℝ)) :=

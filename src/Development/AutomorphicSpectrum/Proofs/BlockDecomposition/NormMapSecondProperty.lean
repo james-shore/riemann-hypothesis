@@ -97,8 +97,7 @@ theorem trace_tensor_mem (ℓ : ℕ) (τ : O' ≃ₐ[O] O') (hτ : τ ^ ℓ = 1)
   | tmul x r =>
     obtain ⟨c, hc⟩ := hfix _ (GlobalTheory.CompanionTheory.NormLoc.trace_fixed ℓ τ hτ x)
     refine ⟨c • r, ?_⟩
-    simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, AlgEquiv.toAlgHom_eq_coe,
-      AlgEquiv.coe_algHom]
+    simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, AlgEquiv.coe_algHom]
     rw [← TensorProduct.sum_tmul, ← hc, Algebra.TensorProduct.includeRight_apply,
       Algebra.algebraMap_eq_smul_one, TensorProduct.smul_tmul]
   | add x y hx hy =>
@@ -114,8 +113,7 @@ theorem fixed_mem_range (ℓ : ℕ) (τ : O' ≃ₐ[O] O') (hτ : τ ^ ℓ = 1)
   have key : ∑ j ∈ Finset.range ℓ, Algebra.TensorProduct.map ((τ ^ j : O' ≃ₐ[O] O').toAlgHom)
       (AlgHom.id O R) ((a ⊗ₜ[O] (1 : R)) * s) = s := by
     simp only [map_mul, GlobalTheory.CompanionTheory.NormLoc.map_pow_fixed τ s hs]
-    simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, AlgEquiv.toAlgHom_eq_coe,
-      AlgEquiv.coe_algHom, map_one]
+    simp only [Algebra.TensorProduct.map_tmul, AlgEquiv.coe_algHom, map_one]
     rw [← Finset.sum_mul, ← TensorProduct.sum_tmul, ha, ← Algebra.TensorProduct.one_def, one_mul]
   rw [← key]
   exact GlobalTheory.CompanionTheory.NormLoc.trace_tensor_mem ℓ τ hτ hfix _

@@ -181,9 +181,9 @@ theorem exists_herm_transverse : ∀ (F : Type) [Field F] [CharZero F] (E : Type
   set S : Matrix ν ν E := δ • (1 : Matrix ν ν E)
   have hcδ : c δ = -δ := hE.anti
   have hSu : IsUnit S.det := by
-    rw [isUnit_iff_ne_zero]; simp [S, Matrix.det_smul, hδ]
+    rw [isUnit_iff_ne_zero]; simp [S, hδ]
   have hS : Sᵀ = -S.map (c : E →+* E) := by
-    ext i j; by_cases h : i = j <;> simp [S, Matrix.one_apply, h, hcδ, eq_comm]
+    ext i j; by_cases h : i = j <;> simp [S, h, hcδ, eq_comm]
   have hmapC : (δ • ddᵀ).map (c : E →+* E) = (-δ) • (dd.map c)ᵀ := by
     ext i j; simp [hcδ]
   have hiso : (ccᵀ)ᵀ * S * (δ • ddᵀ).map (c : E →+* E) + (δ • ddᵀ)ᵀ * S * (ccᵀ).map (c : E →+* E) = 0 := by
@@ -222,7 +222,7 @@ theorem exists_herm_transverse : ∀ (F : Type) [Field F] [CharZero F] (E : Type
     rw [e, hX'']
     simp
   · have e : (ccᵀ + X * (δ • ddᵀ))ᵀ = cc + dd * (δ • Xᵀ) := by
-      simp [transpose_add, transpose_mul, Matrix.mul_smul, Matrix.smul_mul]
+      simp [transpose_add, transpose_mul]
     rw [← e, det_transpose]
     exact (isUnit_iff_ne_zero).mp hdet
 

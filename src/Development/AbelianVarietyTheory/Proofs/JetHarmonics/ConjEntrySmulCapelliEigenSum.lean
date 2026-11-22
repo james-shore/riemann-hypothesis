@@ -49,7 +49,6 @@ theorem conj_entry_smul_eigenSum : ∀ (k r : ℕ) (Wp Wq : Type) [NormedAddComm
       push_cast
       split_ifs <;> ring
   · intro g hg
-    beta_reduce
     rw [hco g hg, hsum g hg, Fintype.sum_prod_type, Finset.smul_sum]
     refine Finset.sum_congr rfl fun x _ => ?_
     rw [Fintype.sum_prod_type, Finset.sum_smul]

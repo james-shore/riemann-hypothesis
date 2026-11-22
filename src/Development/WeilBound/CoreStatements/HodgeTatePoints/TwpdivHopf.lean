@@ -148,10 +148,10 @@ instance : HopfAlgebra R (Ord h) :=
   HopfAlgebra.ofAlgHom (anti h)
     (AlgHom.ext fun f => sep h _ _ fun t => by
       refine (comp_lift (ev h t) (anti h) (AlgHom.id R _) (fun _ _ => Commute.all _ _) (delta h f)).trans ?_
-      simp [ev_anti, comul_eq, counit_eq, pair_delta, Algebra.ofId_apply])
+      simp [ev_anti, counit_eq, pair_delta, Algebra.ofId_apply])
     (AlgHom.ext fun f => sep h _ _ fun t => by
       refine (comp_lift (ev h t) (AlgHom.id R _) (anti h) (fun _ _ => Commute.all _ _) (delta h f)).trans ?_
-      simp [ev_anti, comul_eq, counit_eq, pair_delta, Algebra.ofId_apply])
+      simp [ev_anti, counit_eq, pair_delta, Algebra.ofId_apply])
 
 instance : IsCocomm R (Ord h) :=
   ⟨LinearMap.ext fun f => sep₂ h _ _ fun z => by

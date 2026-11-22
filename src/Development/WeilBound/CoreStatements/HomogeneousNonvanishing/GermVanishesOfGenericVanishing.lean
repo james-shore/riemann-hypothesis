@@ -15,7 +15,6 @@ theorem germ_vanishes_of_generic_vanishing : ∀ (X : Scheme.{0}) [IsReduced X] 
     rw [ht]
     first
     | exact h1.symm
-    | exact h1
   have hξt' : (ConcreteCategory.hom ξ.appTop) t = 0 := hξt
   have hpre := Scheme.preimage_basicOpen_top ξ t
   rw [hξt', Scheme.basicOpen_zero] at hpre

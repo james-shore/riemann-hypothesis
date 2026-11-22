@@ -45,7 +45,6 @@ theorem map_mem_HR (φ : R →ₐ[F] S) {g : GL (Fin M) (R ⊗[F] E)} (hg : g �
         (Algebra.TensorProduct.map φ (AlgHom.id F E)).toRingHom := by
     first
     | rfl
-    | (ext i j; simp [Formalism.UG.bc])
   have hc : Formalism.UG.cT (sigR S σ) ((g : Matrix (Fin M) (Fin M) (R ⊗[F] E)).map
       (Algebra.TensorProduct.map φ (AlgHom.id F E)).toRingHom) =
       (Formalism.UG.cT (sigR R σ) (g : Matrix (Fin M) (Fin M) (R ⊗[F] E))).map

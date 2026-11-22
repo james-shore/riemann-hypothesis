@@ -89,7 +89,6 @@ theorem coeff_X_eq_sum [Finite τ] {l : ℕ} (hl : 2 ≤ l) (p : τ → τ) {g :
   have hs : HasSubst g := by
     first
       | exact hasSubst_of_constantCoeff_zero hg0
-      | exact HasSubst.of_constantCoeff_nilpotent (fun s => by rw [hg0 s]; exact IsNilpotent.zero)
   have hcoef := congrArg (coeff n) hx
   rw [coeff_subst hs] at hcoef
   rw [← hcoef]
@@ -213,13 +212,9 @@ theorem generalized_log_inverse : GenLogInverse.{u, v} := by
   have hsg : HasSubst g := by
     first
       | exact hasSubst_of_constantCoeff_zero hg0
-      | exact HasSubst.of_constantCoeff_zero' hg0
-      | exact HasSubst.of_constantCoeff_nilpotent (fun s => by rw [hg0 s]; exact IsNilpotent.zero)
   have hsf : HasSubst (genLog (K := K) l p) := by
     first
       | exact hasSubst_of_constantCoeff_zero hf.1
-      | exact HasSubst.of_constantCoeff_zero' hf.1
-      | exact HasSubst.of_constantCoeff_nilpotent (fun s => by rw [hf.1 s]; exact IsNilpotent.zero)
 
   have key := Formalism.FG.subst_injective_vector K τ τ (genLog (K := K) l p)
     (fun x => subst (genLog (K := K) l p) (g x)) X hf

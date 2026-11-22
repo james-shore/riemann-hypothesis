@@ -86,7 +86,7 @@ theorem omegaQ_eq_unit_mul_flat_transform : ∀ (D : D7) [∀ PP : Pl D.host.E, 
         convert dite_prod' Q (fun PP => IsUnit (topL r (Y PP)).det) (fun PP h => ((ξ PP h.unit : ℂˣ) : ℂ))
       rw [e0, Finset.attach_eq_univ]
       refine Finset.prod_congr rfl fun PP _ => ?_
-      simp only [dif_pos PP.2, Subtype.coe_eta]
+      simp only [dif_pos PP.2]
     simp only [hf, ← Finset.prod_mul_distrib]
     have hs := Finset.prod_univ_sum (t := fun (PP : ↥Q) => (Finset.univ : Finset (Matrix (Fin r) (Fin n) (kP PP.1))))
       (f := fun (PP : ↥Q) (y : Matrix (Fin r) (Fin n) (kP PP.1)) => fl PP.1 (-y) * ψP PP.1 (Matrix.trace (y * ub PP.1)))

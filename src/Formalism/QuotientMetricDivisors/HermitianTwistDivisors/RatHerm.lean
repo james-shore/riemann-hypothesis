@@ -81,13 +81,9 @@ theorem hform_isSymm {n : ℕ} (H : Matrix (Fin n) (Fin n) K) (hherm : ∀ i j, 
     refine Finset.sum_congr rfl (fun a _ => Finset.sum_congr rfl (fun b _ => ?_))
     first
       | (rw [← hherm b a]; ring)
-      | (rw [← hherm a b]; ring)
-      | (rw [hherm b a]; ring)
-      | (rw [hherm a b]; ring)
   first
     | exact key
     | exact ⟨key⟩
-    | (constructor; exact key)
 
 theorem hform_sepRight {n : ℕ} (H : Matrix (Fin n) (Fin n) K) (hdet : H.det ≠ 0) :
     (hform H).SeparatingRight := by

@@ -52,8 +52,6 @@ lemma appLE_pullGen {T X : Scheme.{0}} (f : T ⟶ Z) (φ : K → (Y ⟶ X)) (ε 
   · exact fun _ hz => Semi.LBVal.wchart_pull_le L φ hh j (h hz)
   · first
       | rfl
-      | (rw [Scheme.Hom.appLE, Scheme.Hom.appLE, Scheme.comp_app]; rfl)
-      | simp [pullU, Scheme.Hom.appLE, Scheme.comp_app]
 
 end SlopeTestRemainingChoices
 
@@ -79,7 +77,6 @@ private lemma pG_act_lemma :
   first
     | (simp only [GtCoord.pG]
        rw [← Category.assoc, ← Functor.map_comp, WeightPf.act_q, Functor.map_comp, Category.assoc])
-    | simp [GtCoord.pG, ← Functor.map_comp_assoc, WeightPf.act_q]
 
 private lemma unit_act_lemma :
     (Over.map (thick R I e)).map (WeightPf.act (U.gt e)) ≫
@@ -104,7 +101,6 @@ lemma act_lift_xc :
   first
     | (rw [comp_lift, comp_lift, pG_act_lemma]
        simp only [xc, ← Category.assoc, unit_act_lemma])
-    | simp [xc, pG_act_lemma, unit_act_lemma]
 
 theorem hA_act (k : Fin 4 ⊕ Fin 6) :
     (WeightPf.act (U.gt e)).left ≫ φA U ιD e a χ k =
@@ -114,7 +110,7 @@ theorem hA_act (k : Fin 4 ⊕ Fin 6) :
     fin_cases k
     · exact left_act_lemma (U := U) (e := e)
         (padd D.toPre.P.A (U.gt e).pG (toUnit _ ≫ D.toPre.c (star a • χ)))
-        (by simp only [padd, ← Category.assoc, comp_lift, pG_act_lemma, q_act_lemma, unit_act_lemma])
+        (by simp only [padd, ← Category.assoc, comp_lift, q_act_lemma, unit_act_lemma])
     · exact left_act_lemma (U := U) (e := e) (toUnit _ ≫ D.toPre.c (star a • χ))
         (by simp only [← Category.assoc, unit_act_lemma])
     · exact left_act_lemma (U := U) (e := e) (U.gt e).pG (pG_act_lemma U e)

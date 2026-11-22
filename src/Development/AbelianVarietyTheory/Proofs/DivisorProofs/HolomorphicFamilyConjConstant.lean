@@ -17,8 +17,8 @@ lemma pi_single_mul_ne {R : J → Type} [∀ i, MulZeroClass (R i)] {i j : J} (h
     (x : R i) (y : R j) : (Pi.single i x : Π k, R k) * Pi.single j y = 0 := by
   funext k
   by_cases hk : k = i
-  · subst hk; simp [Pi.single_apply, Ne.symm h]
-  · simp [Pi.single_apply, hk]
+  · subst hk; simp [Ne.symm h]
+  · simp [hk]
 
 lemma unit_mul_ne_factor {j j' : J} (h : j ≠ j') (p q : Fin (d j)) (p' q' : Fin (d j')) :
     unit (d := d) j p q * unit j' p' q' = 0 :=

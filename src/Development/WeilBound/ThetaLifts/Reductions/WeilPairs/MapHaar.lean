@@ -50,7 +50,6 @@ theorem map_haar {nS nT N : ℕ} (α : WOF F E nS nT ≃ₗ[AF F] (Fin N → AF 
     first
     | exact Measure.isAddHaarMeasure_eq_smul _ _
     | exact Measure.isAddLeftInvariant_eq_smul _ _
-    | exact Measure.isAddLeftInvariant_eq_smul_of_regular _ _
   have heq' : Measure.map α ν = (c : ENNReal) • μN := by
     rw [heq]
     rfl

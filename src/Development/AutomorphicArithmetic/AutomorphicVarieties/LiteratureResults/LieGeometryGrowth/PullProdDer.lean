@@ -35,7 +35,7 @@ private theorem removeNth_succ_vecCons' {α : Type*} {n : ℕ} (a : α) (w : Fin
     Fin.removeNth i.succ (Matrix.vecCons a w) = Matrix.vecCons a (Fin.removeNth i w) := by
   funext j
   refine Fin.cases ?_ (fun k => ?_) j
-  · simp [Fin.removeNth, Fin.succ_succAbove_zero]
+  · simp [Fin.removeNth]
   · simp [Fin.removeNth, Fin.succ_succAbove_succ]
 
 theorem prodDer : ProdDer := by
@@ -59,7 +59,7 @@ theorem prodDer : ProdDer := by
     simp only [compContinuousLinearMap_apply, curryLeft_apply_apply, fderiv_slice_apply_eq_fderiv_prod_inl p t Ω h,
       fderiv_continuousAlternatingMap_apply_const h, removeNth_succ_vecCons', hc,
       ContinuousLinearMap.flipAlternating_apply_apply, Matrix.cons_val_succ, Matrix.cons_val_zero,
-      Fin.removeNth_zero, Matrix.tail_cons, Fin.tail_cons, Fin.val_succ, Fin.val_zero, pow_zero, one_smul,
+      Fin.removeNth_zero, Fin.val_succ, Fin.val_zero, pow_zero, one_smul,
       pow_succ, mul_neg, mul_one, neg_smul, Finset.sum_neg_distrib, Function.comp_apply,
       ContinuousLinearMap.inl_apply]
     abel

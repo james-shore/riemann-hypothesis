@@ -42,7 +42,7 @@ theorem encard_le_pow_of_rel {α β : Type*} {A : Set α} {B : Set β} {d : ℕ}
         rw [this]; exact hP a'.1 a'.2 i⟩)
     have h1 : ENat.card A ≤ ENat.card (Fin d → B) := ENat.card_le_card_of_injective hG
     have h2 : ENat.card (Fin d → B) = ENat.card B ^ d := by
-      simp [ENat.card_eq_coe_fintype_card, Fintype.card_fun]
+      simp [ENat.card_eq_coe_fintype_card]
     rw [h2] at h1
     exact h1
   · rw [hB.encard_eq, ENat.top_pow hd.ne']

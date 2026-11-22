@@ -25,7 +25,7 @@ theorem smul_eq_sum {O : Type} [CommRing O] {n : ℕ} [NeZero n] {M : Type} [Add
     funext j
     ext k
     simp only [Pi.add_apply, Finset.sum_apply, Pi.smul_apply, Pi.mul_apply, Pi.pow_apply, letπ, letE]
-    rw [Finset.sum_eq_single j (fun b _ hb => by simp [Pi.single_apply, Ne.symm hb]) (by simp)]
+    rw [Finset.sum_eq_single j (fun b _ hb => by simp [Ne.symm hb]) (by simp)]
     simp only [Pi.single_eq_same, one_mul, map_add, map_sum, PowerSeries.coeff_smul,
       PowerSeries.coeff_X_pow, PowerSeries.coeff_X_pow_mul', PowerSeries.coeff_mk, smul_eq_mul,
       mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.mem_range]

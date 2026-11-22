@@ -34,8 +34,7 @@ private theorem toBlocks₂_relations_of_inG {x : M2 n} (hx : InG x) :
     toBlocks₂₁ x * (toBlocks₁₂ x)ᴴ - toBlocks₂₂ x * (toBlocks₁₁ x)ᴴ = -1 := by
   have e := inG_mul_JJ_mul_conjTranspose_eq_JJ hx
   rw [← fromBlocks_toBlocks x] at e
-  simp only [JJ, fromBlocks_conjTranspose, fromBlocks_multiply, fromBlocks_inj,
-    toBlocks_fromBlocks₁₁, toBlocks_fromBlocks₁₂, toBlocks_fromBlocks₂₁, toBlocks_fromBlocks₂₂] at e
+  simp only [JJ, fromBlocks_conjTranspose, fromBlocks_multiply, fromBlocks_inj] at e
   simp at e
   refine ⟨?_, ?_⟩
   · have h := e.2.2.2
@@ -135,7 +134,7 @@ theorem continuous_rhoP {Kg : Type} [TopologicalSpace Kg] (ι : Kg → M2 n) (h�
   · exact (hu1.matrix_det).zpow₀ _ (fun k => Or.inl (hd1 k))
 
 theorem one_upper_left_block : (1 : M2 n).toBlocks₁₁ = 1 := by ext i j; simp [toBlocks₁₁, Matrix.one_apply]
-theorem one_lower_left_block : (1 : M2 n).toBlocks₂₁ = 0 := by ext i j; simp [toBlocks₂₁, Matrix.one_apply]
+theorem one_lower_left_block : (1 : M2 n).toBlocks₂₁ = 0 := by ext i j; simp [toBlocks₂₁]
 theorem one_lower_right_block : (1 : M2 n).toBlocks₂₂ = 1 := by ext i j; simp [toBlocks₂₂, Matrix.one_apply]
 
 theorem fz_one (m : ℕ) (e : ℤ) (z : ℂ) : fz m e z (1 : M2 n) = 1 := by
@@ -190,7 +189,7 @@ theorem asmLT : AsmLT := by
     · have hg : HasDerivAt (fun z : ℂ => K0 * β ^ (-z)) (K0 * (β ^ (-(0 : ℂ)) * Complex.log β * (-1))) 0 :=
         (((hasDerivAt_id' (0 : ℂ)).neg).const_cpow (Or.inl hβ)).const_mul K0
       have h := ((hc 0).hasDerivAt.mul hg).deriv
-      simp only [hd0, hc0, zero_mul, mul_zero, add_zero] at h
+      simp only [hd0, hc0, zero_mul, add_zero] at h
       exact h
   refine ⟨1, fun _ => rhoP ι m e Qᴴ, fun _ => ψ, fun _ => a, fun _ => b, dslope c 0, fun _ _ => 1,
     fun _ => continuous_rhoP ι hι hK m e _, fun _ => hψ, fun _ => ⟨ha, hb⟩, ?_, ?_,

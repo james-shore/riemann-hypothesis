@@ -164,7 +164,7 @@ section
 
 theorem Bridge.tower : ∀ (l : ℕ) [Fact l.Prime] (x : (Reformulated.AutPerF.Ainf l ↥(PadicComplexInt l))), algebraMap ((Reformulated.AutPerF.Ainf l ↥(PadicComplexInt l))) ((Reformulated.AutPerF.Acris l ↥(PadicComplexInt l))) x = algebraMap ((Reformulated.AutPerF.acrisZero l ↥(PadicComplexInt l))) ((Reformulated.AutPerF.Acris l ↥(PadicComplexInt l))) (algebraMap ((Reformulated.AutPerF.Ainf l ↥(PadicComplexInt l))) ((Reformulated.AutPerF.acrisZero l ↥(PadicComplexInt l))) x) := by
   intro l _ x
-  first | rfl | exact IsScalarTower.algebraMap_apply _ _ _ x
+  first | rfl
 
 end
 end ScalarTowerAlt
@@ -179,7 +179,7 @@ section
 
 theorem Bridge.sigA_coeff : ∀ (l : ℕ) [Fact l.Prime] (g : (PadicAlgCl l ≃ₐ[ℚ_[l]] PadicAlgCl l)) (w : (Reformulated.AutPerF.Ainf l ↥(PadicComplexInt l))) (n : ℕ), ((Reformulated.AutPerF.Ainf.map l (MulSemiringAction.toRingHom (PadicAlgCl l ≃ₐ[ℚ_[l]] PadicAlgCl l) ↥(PadicComplexInt l) g)) w).coeff n = (Reformulated.AutPerF.Tilt.map l (MulSemiringAction.toRingHom (PadicAlgCl l ≃ₐ[ℚ_[l]] PadicAlgCl l) ↥(PadicComplexInt l) g)) (w.coeff n) := by
   intro l _ g w n
-  first | exact WittVector.map_coeff _ _ _ | rfl
+  first | exact WittVector.map_coeff _ _ _
 
 end
 end SigmaCoeffA

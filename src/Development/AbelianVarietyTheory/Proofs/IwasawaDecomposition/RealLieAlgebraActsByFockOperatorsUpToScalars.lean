@@ -94,7 +94,7 @@ theorem exists_raise_lower_at (h : GlobalTheory.FockCompare.Chart θ σ) (hψ : 
       have e : star (u l) ⬝ᵥ HM V W *ᵥ u k = ((uM A B)ᴴ * HM V W * uM A B) (l.2, l.1) (k.2, k.1) := by
         simp only [u]
         rw [star_mulVec, ← dotProduct_mulVec, mulVec_mulVec, mulVec_mulVec]
-        simp [← Pi.single_star]
+        simp
       rw [e, uM_gram, diagonal_apply]
       by_cases hkl : k = l
       · subst hkl

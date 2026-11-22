@@ -69,7 +69,7 @@ theorem hpk_eI (k r : ℕ) (a : Fin r) (v : Fin (2 * r + k + 1) → ℂ) :
     have ha := a.isLt
     have hj := j.isLt
     simp only [Formalism.QuantumDeterminants.Hpk, Formalism.QuantumDeterminants.esI, Formalism.QuantumDeterminants.eI, Fin.ext_iff, Fin.val_mk]
-    split_ifs <;> first | rfl | omega | (exfalso; omega)
+    split_ifs <;> first | rfl | omega
   simp only [Matrix.mulVec, dotProduct, hrow, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ,
     if_true]
 

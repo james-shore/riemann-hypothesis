@@ -13,10 +13,6 @@ theorem exists_dvr_localization_of_minimal_prime : ∀ {κ : Type} [Field κ] (R
       (∀ w ∈ W, ∃ b s : R, s ∉ Q ∧ w = b / s) := by
   first
   | exact @_root_.GlobalTheory.AuxiliaryLemmaSecond.main
-  | exact _root_.GlobalTheory.AuxiliaryLemmaSecond.main
-  | (apply _root_.GlobalTheory.AuxiliaryLemmaSecond.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AuxiliaryLemmaSecond.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AuxiliaryLemmaSecond.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AuxiliaryLemmaSecond.main ..)
 
 end GlobalTheory

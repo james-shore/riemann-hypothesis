@@ -16,7 +16,7 @@ theorem toMatrix_mulVec_apply {K ι : Type} [CommRing K] [Fintype ι] [Decidable
     simp [Matrix.mulVec, dotProduct, Matrix.single_apply]
   · have : ∀ l, (Matrix.single t.i t.j t.c) k l = 0 := by
       intro l
-      simp [Matrix.single_apply, Ne.symm hk]
+      simp [Ne.symm hk]
     simp [Matrix.mulVec, dotProduct, this, hk]
 
 theorem measurePreserving_pi {K : Type} [CommRing K] [TopologicalSpace K] [IsTopologicalRing K]

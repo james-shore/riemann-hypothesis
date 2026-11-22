@@ -172,7 +172,7 @@ theorem mem_MtSub (hss : SemisimpleTw B) (hI : HeckeIntTw B) (hC : PartCompl B) 
     have e : (⟨(t : Module.End (FractionRing (OOf B i)) (B.V (jOf B i) (wOf B i))) ((o • a : partOf B i) : B.V (jOf B i) (wOf B i)),
         mem_part hss i t (o • a).2⟩ : partOf B i) =
         o • (⟨(t : Module.End (FractionRing (OOf B i)) (B.V (jOf B i) (wOf B i))) a, mem_part hss i t a.2⟩ : partOf B i) :=
-      Subtype.ext (by simp [Submodule.coe_smul_of_tower, LinearMap.map_smul_of_tower])
+      Subtype.ext (by simp [LinearMap.map_smul_of_tower])
     rw [e]; exact Submodule.smul_mem _ _ ha
 
 def resL (hss : SemisimpleTw B) (hI : HeckeIntTw B) (hC : PartCompl B) (i : LocT B) (t : hAlg B i) :
@@ -184,7 +184,7 @@ def resL (hss : SemisimpleTw B) (hI : HeckeIntTw B) (hC : PartCompl B) (i : LocT
     simp
   map_smul' o a := by
     apply Subtype.ext; apply Subtype.ext
-    simp [Submodule.coe_smul_of_tower, LinearMap.map_smul_of_tower]
+    simp [LinearMap.map_smul_of_tower]
 
 theorem resL_apply (hss : SemisimpleTw B) (hI : HeckeIntTw B) (hC : PartCompl B) (i : LocT B) (t : hAlg B i)
     (m : MtSub B hC i) : (((resL hss hI hC i t m : MtSub B hC i) : partOf B i) : B.V (jOf B i) (wOf B i)) =
@@ -202,7 +202,7 @@ def resA (hss : SemisimpleTw B) (hI : HeckeIntTw B) (hC : PartCompl B) (i : LocT
     show (algebraMap (OOf B i) (Module.End (FractionRing (OOf B i)) (B.V (jOf B i) (wOf B i))) r)
       ((m : partOf B i) : B.V (jOf B i) (wOf B i)) = _
     rw [Module.algebraMap_end_apply, Module.algebraMap_end_apply]
-    simp [Submodule.coe_smul_of_tower]
+    simp
 
 def evA (i : LocT B) : hAlg B i →ₐ[OOf B i] (XOf B i → OOf B i) where
   toFun t x := x.1 t

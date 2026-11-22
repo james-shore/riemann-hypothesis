@@ -29,7 +29,7 @@ lemma exp_mulVec_sq {n : ℕ} (X : Matrix (Fin n) (Fin n) ℂ) (y : Fin n → �
   show (∑' m : ℕ, ((m.factorial : ℂ))⁻¹ • X ^ m) *ᵥ y = y + X *ᵥ y
   rw [← mvL_apply y, ContinuousLinearMap.map_tsum (mvL y) hs]
   rw [tsum_eq_sum (s := Finset.range 2) ?_]
-  · simp [Finset.sum_range_succ, mvL_apply, Matrix.smul_mulVec]
+  · simp [Finset.sum_range_succ, mvL_apply]
   · intro m hm
     simp only [Finset.mem_range, not_lt] at hm
     rw [mvL_apply, Matrix.smul_mulVec]
@@ -72,8 +72,7 @@ lemma herm_conj (y w : Fin (2 * r + k + 1) → ℂ) : herm (Hpk k r) y w = star 
 
 lemma vmv_mulVec {n : ℕ} (u w y : Fin n → ℂ) : vecMulVec u w *ᵥ y = (w ⬝ᵥ y) • u := by
   ext i
-  simp only [vecMulVec, mulVec, dotProduct, Matrix.of_apply, Pi.smul_apply, smul_eq_mul, Finset.sum_mul,
-    Finset.mul_sum]
+  simp only [vecMulVec, mulVec, dotProduct, Matrix.of_apply, Pi.smul_apply, smul_eq_mul, Finset.sum_mul]
   refine Finset.sum_congr rfl fun j _ => ?_
   ring
 
@@ -184,7 +183,7 @@ theorem xuv_lieN (z : Fin (2 * r + k + 1) → ℂ) (a : Fin r) (v : Fin (2 * r +
       · rw [hv c hca]; simp
       · have : i ≠ eI k r a := by
           intro h; rw [h] at hci; simp only [eI] at hci; omega
-        simp [bvec, Pi.single_apply, this]
+        simp [bvec, this]
     simp only [Pi.add_apply, Pi.smul_apply, smul_eq_mul, hz, mul_zero, add_zero]
     simp [bvec, Pi.single_apply]
   · intro i j hj hj' hi

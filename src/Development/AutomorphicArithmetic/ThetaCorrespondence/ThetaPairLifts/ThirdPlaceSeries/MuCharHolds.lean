@@ -26,7 +26,7 @@ theorem muChar_holds_alt : _root_.GlobalTheory.MuCharProof.muChar_holds_tyz := b
     have h1 : z + (((D.R.t : ℂ) - 1) / 2 - ((0 : ℕ) : ℂ)) ∈ isoInf D.nd D.naut Pa τ := by
       refine mem_list_sum Pa _ hmem ?_
       refine mem_list_sum _ _ (a := ((0 : ℕ) : ℂ)) ?_ ?_
-      · simp only [List.mem_range]
+      · simp only
         simp
         exact ⟨0, D.R.t_odd.pos, by simp⟩
       · exact Multiset.mem_map_of_mem _ hz

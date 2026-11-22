@@ -49,7 +49,7 @@ theorem UpperTheory.Gal.TP.Sub.eigSum_holds :
         by_cases hy : y = i
         · subst hy
           rw [hi]
-        · simp [e, Pi.single_apply, hy]
+        · simp [e, hy]
   · intro hne hex
     obtain ⟨w, hw0, hw⟩ := hex
     rcases GlobalTheory.EigTwist.eigen_pair c r (dg a) w hw0 hw with h | ⟨v, hv0, hv⟩

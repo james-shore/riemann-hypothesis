@@ -19,7 +19,7 @@ private theorem diagRep_single {G κ : Type} [Group G] [Field κ] {n : ℕ} (χ 
   by_cases h : j = i
   · subst h
     simp
-  · simp [Pi.single_apply, h]
+  · simp [h]
 
 private theorem diagRep_span {G κ ι : Type} [Group G] [Field κ] {n : ℕ} (χ : Fin n → G →* κˣ) (a : ι → Fin n) :
     IsInv (diagRep χ) (Submodule.span κ (Set.range fun i => (Pi.single (a i) 1 : Fin n → κ))) := by

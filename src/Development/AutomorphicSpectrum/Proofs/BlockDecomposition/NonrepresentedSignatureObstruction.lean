@@ -185,7 +185,7 @@ theorem frame_of_congr {E : Type} [Field E] [StarRing E] {m t k n : ℕ} (G P : 
       have hc : Function.Injective c := e.symm.injective.comp hg
       by_cases hij : i = j
       · subst hij; simp
-      · simp [Matrix.one_apply, hij, hc.ne hij]
+      · simp [hij, hc.ne hij]
     have h2 := Matrix.rank_mul_le_right ((P⁻¹).submatrix c id) (P.submatrix id c)
     rw [h1, Matrix.rank_one] at h2
     simpa using h2

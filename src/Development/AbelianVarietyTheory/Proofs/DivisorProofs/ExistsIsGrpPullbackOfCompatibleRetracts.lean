@@ -48,7 +48,7 @@ theorem exists_isGrpPullback_of_retracts : ∀ {S S' B : Scheme.{0}} (j : S' ⟶
         · simp only [Category.assoc, mψ, h₂, pullback.lift_fst_assoc, pk]
         · simp only [Category.assoc, mh, we', pullback.lift_snd, hφ.1.lift_snd]
       rw [reassoc_of% hm, reassoc_of% h₁, hφ.1.lift_fst_assoc, ← ri]
-      simp only [Category.assoc, reassoc_of% ir, ir, Category.comp_id]
+      simp only [Category.assoc, ir, Category.comp_id]
     · intro s
       exact pullback.lift_snd _ _ _
     · intro s n hn1 hn2

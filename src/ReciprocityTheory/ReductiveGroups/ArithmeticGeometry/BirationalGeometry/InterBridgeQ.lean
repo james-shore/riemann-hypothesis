@@ -71,8 +71,6 @@ theorem exists_homog_of_cone {n : ℕ} {c : MvPolynomial (Fin n) ℂ} (hc : c �
     have hdeg : ∑ i ∈ d.support, d i = m := by
       first
       | exact hd.2
-      | (rw [← hd.2]; rfl)
-      | simpa [Finsupp.degree] using hd.2
     simp only [eval_monomial, Finsupp.prod, mul_pow, Finset.prod_mul_distrib,
       Finset.prod_pow_eq_pow_sum, hdeg]
     ring
@@ -135,7 +133,7 @@ theorem normPoly_of (hM : PCMinContractStatement) : NormPolyStatement := by
       have hle : a k' ≤ d := Finset.single_le_sum (fun k _ => Nat.zero_le (a k))
         (Finset.mem_univ k')
       simp only [Pi.add_apply, Finset.sum_apply, Pi.smul_apply, blkW, Pi.single_apply,
-        smul_eq_mul, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+        smul_eq_mul, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.mem_univ, if_true]
       omega
     rw [hf'def, map_mul, ← hw]
     exact h1.mul h2

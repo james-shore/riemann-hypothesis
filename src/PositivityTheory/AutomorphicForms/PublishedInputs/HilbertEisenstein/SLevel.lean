@@ -111,7 +111,7 @@ theorem pInf_vecMul (w : HeightOneSpectrum (𝓞 F)) (k : GL (Fin 2) (w.adicComp
       (1 : Matrix (Fin 2) (Fin 2) (UpperTheory.V.TR.Rinf F)) a b := fun a b =>
     congrArg (fun M : GL (Fin 2) (UpperTheory.V.TR.Rinf F) => (M : Matrix (Fin 2) (Fin 2) (UpperTheory.V.TR.Rinf F)) a b) hK
   simp only [Matrix.vecMul, dotProduct, map_sum, map_mul, hKij]
-  fin_cases i <;> simp [Fin.sum_univ_two, Matrix.one_apply]
+  fin_cases i <;> simp [Matrix.one_apply]
 
 theorem pLoc_vecMul (w v : HeightOneSpectrum (𝓞 F)) (k : GL (Fin 2) (w.adicCompletion F)) (x : Fin 2 → Ad F)
     (i : Fin 2) :

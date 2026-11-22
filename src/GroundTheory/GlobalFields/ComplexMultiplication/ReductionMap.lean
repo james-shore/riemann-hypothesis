@@ -110,7 +110,7 @@ theorem gaussCurve_map_residue :
   simp only [gaussCurve, WeierstrassCurve.baseChange, WeierstrassCurve.map_map]
   congr 1
   ext c
-  simp [gaussResidue_residue_algebraMap, ← IsScalarTower.algebraMap_apply]
+  simp [gaussResidue_residue_algebraMap]
 
 variable [W'.IsElliptic]
 

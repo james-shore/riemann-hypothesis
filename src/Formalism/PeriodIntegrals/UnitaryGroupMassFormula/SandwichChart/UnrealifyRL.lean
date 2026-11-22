@@ -37,7 +37,7 @@ theorem Log_Hpk_eq (i j : Fin (2 * r + k + 1)) :
   rcases i with ⟨i, hi⟩
   rcases j with ⟨j, hj⟩
   unfold Hpk sgI
-  split_ifs <;> (try simp only [Fin.ext_iff, Fin.val_mk] at *) <;> first | rfl | (exfalso; omega)
+  split_ifs <;> (try simp only [Fin.ext_iff] at *) <;> first | rfl | (exfalso; omega)
 
 theorem Log_sgI_sgI (i : Fin (2 * r + k + 1)) : sgI k r (sgI k r i) = i := by
   unfold sgI

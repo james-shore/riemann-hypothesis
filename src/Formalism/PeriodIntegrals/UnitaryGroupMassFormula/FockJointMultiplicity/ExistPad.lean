@@ -57,7 +57,7 @@ theorem pad_getD (a b : List ℤ) (n : ℕ) (hn : a.length + b.length ≤ n) (ha
         dif_neg h1, dif_neg (by omega)]
       simp
     · rw [List.getElem_append_right (by simp; omega), dif_neg h1, dif_pos (by omega)]
-      simp only [neg_neg, sub_neg_eq_add, zero_add]
+      simp only [sub_neg_eq_add, zero_add]
       congr 2
       simp
       omega

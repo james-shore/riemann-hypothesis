@@ -11,10 +11,6 @@ theorem Dec_valuation_apply_eq :
     ∀ (E Ω : Type) [Field E] [NumberField E] [Field Ω] [Algebra E Ω] [IsAlgClosure E Ω] (A : ValuationSubring Ω) (σ : G E Ω), σ ∈ Dec (F := E) A → ∀ t : Ω, A.valuation (σ t) = A.valuation t := by
   first
   | exact @_root_.GlobalTheory.ValuationOfMemIff.valuation_apply_eq
-  | exact _root_.GlobalTheory.ValuationOfMemIff.valuation_apply_eq
-  | (apply _root_.GlobalTheory.ValuationOfMemIff.valuation_apply_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ValuationOfMemIff.valuation_apply_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ValuationOfMemIff.valuation_apply_eq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ValuationOfMemIff.valuation_apply_eq ..)
 
 end GlobalTheory

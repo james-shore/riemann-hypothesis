@@ -46,8 +46,6 @@ theorem flat_of_finite_rep : ∀ (R : Type) [CommRing R] [IsNoetherianRing R] (B
         pullback.map H.hom f B.hom f j.left (𝟙 _) (𝟙 _) (by simp [Over.w j]) (by simp) := by
       first
       | rfl
-      | (apply pullback.hom_ext <;> simp [Over.pullback_map_left])
-      | (simp only [Over.pullback_map_left]; apply pullback.hom_ext <;> simp)
     rw [e]
     haveI : MorphismProperty.IsStableUnderComposition @IsClosedImmersion :=
       ⟨fun _ _ hf hg => by haveI := hf; haveI := hg; infer_instance⟩

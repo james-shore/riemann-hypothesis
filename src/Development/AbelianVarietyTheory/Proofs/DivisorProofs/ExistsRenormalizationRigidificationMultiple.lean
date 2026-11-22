@@ -82,7 +82,7 @@ theorem alg_frame {M : Type} [CommGroup M] {g t α r : M} {k : ℤ} (h : t ^ k =
     (g * t) ^ k = g ^ (k - 1) * α * (g * r) ^ (1 : ℤ) := by
   apply Additive.ofMul.injective
   replace h := congrArg Additive.ofMul h
-  simp only [ofMul_mul, ofMul_inv, ofMul_zpow] at h ⊢
+  simp only [ofMul_mul, ofMul_zpow] at h ⊢
   linear_combination (norm := module) h
 
 section Tors

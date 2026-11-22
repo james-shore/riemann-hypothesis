@@ -63,8 +63,8 @@ theorem oEp_int (hL : LatBasis X p θ (reindex₂ X p Q)) (t : TpX X p) (ht : t 
   obtain ⟨x2, hx2a, hx2b⟩ := crd_surj X p θ Q 0 (Pi.single j 1)
   have hint : IntVec (OvA X p) (Pi.single j (1 : FpX X p)) := fun i => by
     by_cases h : i = j
-    · subst h; simp [ValuationSubring.one_mem]
-    · simp [h, ValuationSubring.zero_mem]
+    · subst h; simp
+    · simp [h]
   have hz : IntVec (OvA X p) (0 : IdxD D → FpX X p) := fun _ => ValuationSubring.zero_mem _
   have l1 := imA_lat_OEp X p ht ((latCrd_of X p θ Q hL x1).2 ⟨hx1a ▸ hint, hx1b ▸ hz⟩)
   have l2 := imA_lat_OEp X p ht ((latCrd_of X p θ Q hL x2).2 ⟨hx2a ▸ hz, hx2b ▸ hint⟩)

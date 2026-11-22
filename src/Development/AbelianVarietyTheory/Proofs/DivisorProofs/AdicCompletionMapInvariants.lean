@@ -12,10 +12,6 @@ theorem adicCompletion_map_invariants : ∀ (A : Type) [CommRing A] [IsNoetheria
       ∀ y, y ∈ LinearMap.range (AdicCompletion.map J f) ↔ ∀ σ, AdicCompletion.map J (g σ) y = y := by
   first
   | exact @_root_.GlobalTheory.LinearMapDifferenceFormula.main
-  | exact _root_.GlobalTheory.LinearMapDifferenceFormula.main
-  | (apply _root_.GlobalTheory.LinearMapDifferenceFormula.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LinearMapDifferenceFormula.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LinearMapDifferenceFormula.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LinearMapDifferenceFormula.main ..)
 
 end GlobalTheory

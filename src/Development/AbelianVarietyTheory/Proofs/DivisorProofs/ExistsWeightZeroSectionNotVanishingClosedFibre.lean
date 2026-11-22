@@ -127,7 +127,7 @@ theorem _root_.GlobalTheory.Mum.exists_secB_zero_mem_basicOpen : ∀ (R : Type) 
   have hy : (snd T P.A).left y = x := by
     have e4 : ptSecT P.A xb ≫ snd T P.A = xb := lift_snd _ _
     have e5 := congrArg (fun q => q.left (closedPoint K)) e4
-    simp only [Over.comp_left, Scheme.Hom.comp_apply] at e5
+    simp only [Over.comp_left] at e5
     exact e5.trans (hu _)
   have c0 := c_zero D.toPre
   have a0 : (snd T P.A).left ≫ D.toPre.famφB 0 0 = (snd T P.A).left := Category.comp_id _

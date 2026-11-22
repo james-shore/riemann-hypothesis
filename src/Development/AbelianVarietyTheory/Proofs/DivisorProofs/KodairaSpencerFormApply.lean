@@ -34,7 +34,7 @@ theorem finrank_homO_eq_quot_mSub : ∀ {k O C W V : Type*} [Field k] [Ring O] [
         | H x =>
           have h := (mem_homO _ _ _).mp T.2 a x
           change (mSub σW χ ⊤).liftQ T.1 _ (qa a ((mSub σW χ ⊤).mkQ x)) = τ a ((mSub σW χ ⊤).liftQ T.1 _ ((mSub σW χ ⊤).mkQ x))
-          simp only [qa, qAct_mk, Submodule.liftQ_mkQ, Submodule.mkQ_apply, Submodule.liftQ_apply]
+          simp only [qa, Submodule.mkQ_apply, Submodule.liftQ_apply]
           exact h⟩
       map_add' := fun f g => by ext; rfl
       map_smul' := fun c f => by ext; rfl

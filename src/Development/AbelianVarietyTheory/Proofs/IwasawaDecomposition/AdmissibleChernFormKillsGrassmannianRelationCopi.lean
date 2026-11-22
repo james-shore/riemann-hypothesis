@@ -27,11 +27,11 @@ theorem admissibleChernForm_kills_grassmannianRelationCopies : ∀ (E : Type) [F
     · rw [mul_comm]
       simp only [ren, rename_X]
       have hm : Dw.mult τ.1 = Dw.p := GlobalTheory.PointChern.mult_of_mem Dw τ.2
-      exact h3 _ _ (by simp only [renVar, if_true]; omega) r
+      exact h3 _ _ (by simp only [if_true]; omega) r
     · rw [mul_comm]
       simp only [ren, rename_X]
       have hm : Dw.mult (conjEmb τ.1) = Dw.q := GlobalTheory.PointChern.mult_of_not_mem Dw (GlobalTheory.AllWt.conj_not_mem τ)
-      exact h3 _ _ (by simp only [renVar]; simp only [Bool.false_eq_true, if_false]; omega) r
+      exact h3 _ _ (by simp only; simp only [Bool.false_eq_true, if_false]; omega) r
   | zero => intro r; simp
   | add x y _ _ hx hy => intro r; rw [map_add, mul_add, map_add, hx, hy, add_zero]
   | smul a x _ hx => intro r; rw [smul_eq_mul, map_mul (ren τ) a x, ← mul_assoc]; exact hx _

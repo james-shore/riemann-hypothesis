@@ -226,11 +226,9 @@ theorem exists_ptAt_bar_cq_eq : ∀ {X : Fields} {Pr : Primes X} {R : Ranks} {se
         abel
       constructor
       · intro hz
-        change cM • (z - (frsF sel mu r.1.1 P').symm y) ∈ stdAt X.E (R.N j) P'.1
         rw [e]
         exact add_mem hz key
       · intro hz
-        change cM • (z - (frsF sel mu p P').symm y') ∈ stdAt X.E (R.N j) P'.1
         have e2 : cM • (z - (frsF sel mu p P').symm y') = cM • (z - (frsF sel mu r.1.1 P').symm y) -
             cM • ((frsF sel mu p P').symm y' - (frsF sel mu r.1.1 P').symm y) := by
           rw [e, add_sub_cancel_right]

@@ -63,8 +63,6 @@ theorem ιLev_inv_mul (hCL : HeisConjLev) (k r' : ℕ) (g : Mat k r') (hg : g �
   simp only [heisenberg_at_zero, mul_one, Matrix.mulVec_zero] at h
   first
   | exact Matrix.nonsing_inv_mul _ (Matrix.isUnit_det_of_right_inverse h)
-  | exact mul_eq_one_comm.mp h
-  | exact (Matrix.mul_eq_one_comm).1 h
 
 theorem gN_cont (k n : ℕ) : Continuous fun M : Mat k n => gN M := by
   simp only [gN]

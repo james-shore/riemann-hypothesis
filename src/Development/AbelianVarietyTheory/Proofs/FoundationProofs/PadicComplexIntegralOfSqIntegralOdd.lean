@@ -39,7 +39,7 @@ theorem intSer_of_sq (p : ℕ) [Fact p.Prime] (hp : p ≠ 2) (H : PowerSeries �
       simp only [Finset.mem_erase, Finset.HasAntidiagonal.mem_antidiagonal, ne_eq] at hq
       obtain ⟨hq1, hq2, hq3⟩ := hq
       obtain ⟨a, b⟩ := q
-      simp only [Prod.mk.injEq, Finset.HasAntidiagonal.mem_antidiagonal] at hq1 hq2 hq3
+      simp only [Prod.mk.injEq] at hq1 hq2 hq3
       have ha : a < n := by omega
       have hb : b < n := by omega
       simp only [hf, norm_mul]

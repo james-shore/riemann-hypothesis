@@ -101,7 +101,7 @@ theorem locOp_eq {κ : Type} [Fintype κ] (v : GlobalTheory.IndefiniteRowSideFul
     (h : Acts (evFin F v) T φ φ₁) : locOp v R T φ = φ₁ := by
   funext t
   have := h R hR
-  simp only [locOp, LinearMap.smul_apply, LinearMap.comp_apply, LinearMap.funLeft_apply]
+  simp only [locOp, LinearMap.smul_apply, LinearMap.comp_apply]
   change (R 0)⁻¹ • T (tens (evFin F v) φ R) (fun i => GlobalTheory.LatVac.liftV v (t i)) = φ₁ t
   rw [this, tens_liftV v φ₁ hR₁ t, smul_eq_mul]
   field_simp

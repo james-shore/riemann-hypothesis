@@ -424,10 +424,10 @@ theorem simple_eq (p : Point K N) {n m : Matrix (Fin N) (Fin N) K} (hn : IsLoUni
       Fin.ext (by show pσ p.1 a = pσ p.1 (a + 1) + 1; omega)
     have orbitMap_conj_smul_one : fσ p ⟨a + 1, ha1⟩ = ⟨pσ p.1 (a + 1), by omega⟩ := Fin.ext rfl
     rw [eA, orbitMap_conj_smul_one] at k
-    simp only [Fin.val_mk] at k
+    simp only at k
     rw [hb3] at k
     have hv := pv_ne' p ⟨pσ p.1 (a + 1), by omega⟩
-    simp only [Fin.val_mk] at hv
+    simp only at hv
     simp only [F, G]; rw [dif_pos ha1, dif_pos hb1]
     exact mul_left_cancel₀ hv (k.symm.trans (mul_comm _ _))
   rw [eLo, eUp, ← Finset.sum_filter_of_ne hF, ← Finset.sum_filter_of_ne hG]
@@ -508,8 +508,7 @@ theorem nlam_frame (Λ : Submodule (𝓞 E) S.V) {T : E} (F : LFlag S r T) {s : 
   · intro b
     induction b using Fin.lastCases with
     | last =>
-      simp only [frame, FlagG.fvec, Fin.snoc_last, Fin.sum_univ_castSucc, Fin.snoc_castSucc, if_pos rfl,
-        one_smul, col, Fin.lastCases_last, Fin.lastCases_castSucc, if_neg (Fin.castSucc_lt_last _).ne]
+      simp only [frame, FlagG.fvec, Fin.snoc_last, Fin.sum_univ_castSucc, Fin.snoc_castSucc, col, Fin.lastCases_last, Fin.lastCases_castSucc, if_neg (Fin.castSucc_lt_last _).ne]
       rw [hcz, add_comm]; simp
     | cast i =>
       simp only [frame, FlagG.fvec, Fin.snoc_last, Fin.sum_univ_castSucc, Fin.snoc_castSucc,

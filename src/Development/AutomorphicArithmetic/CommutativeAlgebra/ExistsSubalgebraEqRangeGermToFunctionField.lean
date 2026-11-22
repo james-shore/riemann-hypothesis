@@ -24,7 +24,7 @@ theorem UpperTheory.exists_subalgebra_eq_range_germToFunctionField :
   · intro r
     refine ⟨C.presheaf.map (homOfLE le_top).op (c.appTop ((Scheme.ΓSpecIso (CommRingCat.of k)).inv r)), ?_⟩
     have hr := congrArg (fun f => f.hom r) key
-    simp only [CommRingCat.hom_ofHom, CommRingCat.comp_apply] at hr
+    simp only [CommRingCat.hom_ofHom] at hr
     rw [hr]
     exact C.presheaf.germ_res_apply (homOfLE le_top) _ _ _
   · rfl

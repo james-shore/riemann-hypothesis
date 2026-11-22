@@ -110,7 +110,7 @@ theorem gram_col {κ' : Type*} (A : Matrix (Fin n) κ ℂ) (B : Matrix (Fin n) �
 theorem toEuclideanLin_col (M : Matrix (Fin n) (Fin n) ℂ) (A : Matrix (Fin n) κ ℂ) (a : κ) :
     Matrix.toEuclideanLin M (col A a) = col (M * A) a := by
   ext i
-  simp [col, Matrix.toEuclideanLin_apply, Matrix.mul_apply, Matrix.mulVec, dotProduct]
+  simp [col, Matrix.mul_apply, Matrix.mulVec, dotProduct]
 
 theorem col_injective {A B : Matrix (Fin n) κ ℂ} (h : ∀ a, col A a = col B a) : A = B := by
   ext i a
@@ -181,7 +181,7 @@ theorem exists_mem_K {n r : ℕ} (J P : Matrix (Fin n) (Fin n) ℂ) (X X' : Matr
   have hUT : Uᴴ * T * U = T := by rw [Matrix.mul_assoc, ← hU2, ← Matrix.mul_assoc, hU1, Matrix.one_mul]
   have hconj : ∀ M : Matrix (Fin n) (Fin n) ℂ,
       (R⁻¹ * U * R)ᴴ * (Rᴴ * M * R) * (R⁻¹ * U * R) = Rᴴ * (Uᴴ * M * U) * R := fun M => by
-    simp only [conjTranspose_mul, conjTranspose_conjTranspose]
+    simp only [conjTranspose_mul]
     calc Rᴴ * (Uᴴ * (R⁻¹)ᴴ) * (Rᴴ * M * R) * (R⁻¹ * U * R)
         = Rᴴ * Uᴴ * ((R⁻¹)ᴴ * Rᴴ) * M * (R * R⁻¹) * U * R := by simp only [Matrix.mul_assoc]
       _ = Rᴴ * (Uᴴ * M * U) * R := by rw [hRiH, hRi']; simp only [Matrix.mul_one, Matrix.mul_assoc]

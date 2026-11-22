@@ -125,7 +125,7 @@ theorem exists_completion [IsLocalRing O] {s : O →+* O} (hs : ∀ x, s (s x) =
   have hπC : π * C = 0 := by
     rw [hπ]
     simp only [Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc, assoc3 h2, assoc3 hC, Matrix.mul_one,
-      Matrix.mul_zero, sub_zero, sub_self]
+      Matrix.mul_zero, sub_self]
   have hπZ : π * Z = 0 := by
     rw [hπ]
     simp only [Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc, assoc3 h3, assoc3 h1, Matrix.mul_one,
@@ -137,7 +137,7 @@ theorem exists_completion [IsLocalRing O] {s : O →+* O} (hs : ∀ x, s (s x) =
   have hZπ : Formalism.UG.cT s Z * Q * π = 0 := by
     rw [hπ]
     simp only [Matrix.mul_sub, Matrix.mul_one, Matrix.mul_assoc, tail3 h2, tail3 h3, Matrix.zero_mul,
-      Matrix.one_mul, sub_zero, sub_self]
+      Matrix.one_mul, sub_self]
   have hππ : π * π = π := by
     nth_rewrite 2 [hπ]
     simp only [Matrix.mul_sub, Matrix.mul_one, tail2 hπC, tail2 hπZ, Matrix.zero_mul, sub_zero]
@@ -177,7 +177,7 @@ theorem exists_completion [IsLocalRing O] {s : O →+* O} (hs : ∀ x, s (s x) =
   have hBZ : Formalism.UG.cT s B * Q * Z = 0 := by rw [← key, hZB, cT_zero_r]
   refine ⟨m, fromCols (fromCols C Z) B, fromRows (fromRows (Formalism.UG.cT s Z * Q) (Formalism.UG.cT s C * Q)) B',
     ?_, ?_, ?_, ?_⟩
-  · simp only [fromRows_mul_fromCols, fromRows_mul, mul_fromCols, h1, h2, h3, hC, hCB, hZB, hB'C, hB'Z, hB]
+  · simp only [fromRows_mul, mul_fromCols, h1, h2, h3, hC, hCB, hZB, hB'C, hB'Z, hB]
     ext (((i|i)|i)) (((j|j)|j)) <;> simp [Matrix.one_apply]
   · rw [fromCols_mul_fromRows, fromCols_mul_fromRows, hBB, hπ]
     abel

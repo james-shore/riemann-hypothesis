@@ -82,7 +82,7 @@ theorem UpperTheory.V.Th.Coc.flagC :
       bar X (d • (1 : Matrix (Fin n) (Fin n) O)) = algebraMap O X d • (1 : Matrix (Fin n) (Fin n) X) := by
     intro X _ _
     ext i j
-    by_cases h : i = j <;> simp [Matrix.one_apply, h]
+    by_cases h : i = j <;> simp [h]
   have hbar : ∀ (X : Type) [CommRing X] [Algebra O X] (P : Matrix (Fin n) (Fin n) O), (∀ i j, j < i → P i j = 0) →
       ∀ i j, j < i → bar X P i j = 0 := fun X _ _ P hP i j h => by simp [hP i j h]
   refine ⟨d * d, mul_ne_zero hd hd, fun X _ _ S₁ T₁ hL =>

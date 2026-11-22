@@ -168,7 +168,7 @@ theorem twist_integral (hI : PtsIntegrableStatement) (hD : PtsIndepStatement)
       rw [Set.disjoint_left]
       rintro _ ⟨w, hw, rfl⟩ ⟨w', hw', he⟩
       have hc : cRoot p ≠ 0 := by
-        simp [cRoot, Real.sqrt_eq_zero', hp, Nat.pos_of_ne_zero hp]
+        simp [cRoot, hp]
       have hww : w' = w := by
         funext j
         have := congrFun he (fun o => match o with | none => (1 : Fin 2) | some k => j k)

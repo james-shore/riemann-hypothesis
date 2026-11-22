@@ -50,7 +50,7 @@ theorem triv_step (hA : IsAbelianScheme G) (hL : L.IsLB) {T : Over S} (a c : T �
       (fun U _ h => by
         rw [Fintype.prod_sum_type]
         simp only [Fin.prod_univ_succ, Fin.prod_univ_zero, Matrix.cons_val_zero, Matrix.cons_val_succ,
-          Sum.elim_inl, Sum.elim_inr, Matrix.cons_val]
+          Sum.elim_inl, Sum.elim_inr]
         apply Additive.ofMul.injective
         simp only [ofMul_mul, ofMul_zpow, ofMul_one]
         push_cast
@@ -82,7 +82,7 @@ theorem exists_theta_local (hA : IsAbelianScheme G) (hL : L.IsLB) {k : ℕ} {T :
     (fun U _ h => by
       rw [Fintype.prod_sum_type]
       simp only [Fin.prod_univ_succ, Fin.prod_univ_zero, Matrix.cons_val_zero, Matrix.cons_val_succ,
-        Sum.elim_inl, Sum.elim_inr, Matrix.cons_val, e₁, e₂]
+        Sum.elim_inl, Sum.elim_inr, e₁, e₂]
       rw [translPt_eq]
       apply Additive.ofMul.injective
       simp only [ofMul_mul, ofMul_zpow, ofMul_one]

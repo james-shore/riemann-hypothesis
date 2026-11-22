@@ -105,7 +105,7 @@ theorem phiRG_psd (Y : Finset H) (κ : H → H → ℂ) (hκ : TB.PSDOn Y κ) (U
     rw [Fintype.sum_prod_type, Fintype.sum_prod_type]
     rw [Fintype.sum_eq_single (⟨x.1, Finset.mem_filter.mpr ⟨x.2, hx⟩⟩ : T')]
     · refine Finset.sum_congr rfl fun h _ => ?_
-      simp [R, sg, Fintype.sum_bool]
+      simp [R, sg]
       ring
     · intro a ha
       have : a.1 ≠ x.1 := fun he => ha (Subtype.ext he)

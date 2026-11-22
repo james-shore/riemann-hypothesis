@@ -26,7 +26,7 @@ theorem isMonomialTau_inl_of_tauIn : ∀ (V : Type) [CommRing V] [IsDomain V] (Q
     exact Fintype.prod_equiv finSumFinEquiv.symm _ _ (fun _ => rfl)
   have hw : ((Units.map alg w : (FractionRing V)ˣ) : FractionRing V) =
       ∏ j : Fin N, algebraMap V (FractionRing V) (s (.inr j)) ^ ε (.inr j) a b := by
-    simp [w, alg, Units.coe_prod, map_zpow₀]
+    simp [w, alg, Units.coe_prod]
   rw [Units.val_mul, map_inv, Units.val_inv_eq_inv_val, hw, hprod, mul_inv_cancel_right₀]
   exact Finset.prod_ne_zero_iff.2 fun j _ => zpow_ne_zero _
     ((IsFractionRing.injective V (FractionRing V)).ne_iff' (map_zero _) |>.2 (hs j).ne_zero)

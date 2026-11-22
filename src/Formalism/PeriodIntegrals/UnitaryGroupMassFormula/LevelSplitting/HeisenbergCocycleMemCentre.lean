@@ -19,11 +19,6 @@ theorem fix_span {Φ : (n → A) →ₗ[A] (n → A)} (he : ∀ a, Φ (D.e a) = 
     (hx : x ∈ Submodule.span A (Set.range D.e)) : Φ x = x := by
   first
   | exact LinearMap.eqOn_span' (f := Φ) (g := LinearMap.id) (by rintro _ ⟨a, rfl⟩; exact he a) hx
-  | (induction hx using Submodule.span_induction with
-      | mem y hy => obtain ⟨a, rfl⟩ := hy; exact he a
-      | zero => exact map_zero Φ
-      | add y z _ _ hy hz => rw [map_add, hy, hz]
-      | smul c y _ hy => rw [map_smul, hy])
 
 def sMat (D : Dat A n r) (half : A) (y : Fin r → n → A) : Matrix n n A :=
   LinearMap.toMatrix' (sL D half y)
@@ -94,7 +89,7 @@ theorem nd_datR (hJ : IsHermND σ J) : ND (datR R σ J P T) := by
       · rw [Pi.single_eq_of_ne hk, map_zero]
     change ∑ k, ∑ j, sigR R σ ((Pi.single i (1 : R ⊗[F] E) : Fin M → R ⊗[F] E) k) * JR R J k j *
       x j = 0 at h1
-    simp only [Pi.single_apply, zero_mul] at h1
+    simp only [Pi.single_apply] at h1
     simpa [Matrix.mulVec, dotProduct] using h1
   rw [← Matrix.one_mulVec x, ← hJi (R := R) hJ, ← Matrix.mulVec_mulVec, hJx, Matrix.mulVec_zero]
 
@@ -133,8 +128,6 @@ theorem sU_mem {y : Fin r → Fin M → R ⊗[F] E} (hy : ∀ a, IsWp (datR R σ
     sU hJ H hh hy ∈ HR R σ J := by
   first
   | exact sMat_uj hJ H hh hy
-  | (simp only [HR]; exact sMat_uj hJ H hh hy)
-  | (simp [HR, sU]; exact sMat_uj hJ H hh hy)
 
 def sHG {y : Fin r → Fin M → R ⊗[F] E} (hy : ∀ a, IsWp (datR R σ J P T) (y a)) : HA R σ J :=
   ⟨sU hJ H hh hy, sU_mem hJ H hh hy⟩
@@ -145,7 +138,6 @@ theorem lin_sHG {y : Fin r → Fin M → R ⊗[F] E} (hy : ∀ a, IsWp (datR R �
   simp [sHG, sU, HA.mat, sMat]
   first
   | exact Matrix.toLin'_toMatrix' _
-  | exact LinearMap.ext fun x => LinearMap.toMatrix'_mulVec _ x
 
 theorem sHG_mem {y : Fin r → Fin M → R ⊗[F] E} (hy : ∀ a, IsWp (datR R σ J P T) (y a)) :
     sHG hJ H hh hy ∈ PI.LevelKSplit.W.NC.LevelUnipotentSubgroup R σ J P := by

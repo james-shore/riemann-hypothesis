@@ -292,7 +292,7 @@ theorem dbl_eigen (σ : E →ₐ[F] E) {n d : ℕ} (X : Spc F E n) (Y : Spc F E 
     rw [Matrix.fromCols_toCols] at h3
     rw [← hS, Darboux.rho, h3, schr_box_star ψ hstar, h1, h2]
     funext x
-    simp only [hch, boxFun, Pi.smul_apply, smul_eq_mul, star_mul', hstar, symp_dbl, mul_sub, sub_eq_add_neg, mul_add,
+    simp only [hch, boxFun, Pi.smul_apply, smul_eq_mul, star_mul', hstar, symp_dbl, sub_eq_add_neg, mul_add,
       mul_neg, AddChar.map_add_eq_mul]
     ring
   have hE1 : ∀ γ ∈ Λ, dd.rho ψ γ (tens (evFin F v) φ₁ RD) = ch γ • tens (evFin F v) φ₁ RD := by

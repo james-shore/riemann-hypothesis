@@ -11,14 +11,14 @@ theorem UpperTheory.V.Af.Rn.lowTwo :
     ext v
     simp only [LinearMap.sub_apply, LinearMap.add_apply, LinearMap.smul_apply, LinearMap.neg_apply,
       Module.End.mul_apply, map_add, map_sub, map_smul, map_neg, hAB, hAC, hBC]
-    match_scalars <;> ring_nf <;> simp [Complex.I_sq] <;> ring_nf
+    match_scalars <;> ring_nf <;> simp [Complex.I_sq]
   have h2 : (-(Complex.I • (B - C))) * (A - (Complex.I / 2) • (B + C))
       - (A - (Complex.I / 2) • (B + C)) * (-(Complex.I • (B - C)))
       = (-2 : ℂ) • (A - (Complex.I / 2) • (B + C)) := by
     ext v
     simp only [LinearMap.sub_apply, LinearMap.add_apply, LinearMap.smul_apply, LinearMap.neg_apply,
       Module.End.mul_apply, map_add, map_sub, map_smul, map_neg, hAB, hAC, hBC]
-    match_scalars <;> ring_nf <;> simp [Complex.I_sq] <;> ring_nf
+    match_scalars <;> ring_nf <;> simp [Complex.I_sq]
   have h3 : (4 : ℂ) • ((A + (Complex.I / 2) • (B + C)) * (A - (Complex.I / 2) • (B + C)))
       = -((-(Complex.I • (B - C))) * (-(Complex.I • (B - C))) - (2 : ℂ) • (-(Complex.I • (B - C)))) := by
     ext v

@@ -14,7 +14,6 @@ theorem Charts.tower_preimage_germ : ∀ (R : Type) [CommRing R] (I : Ideal R) (
   induction e with
   | zero =>
     intro i
-    subst_vars
     refine ⟨?_, fun j z _ => ?_⟩
     · rw [h0]; rfl
     · rw [h0]

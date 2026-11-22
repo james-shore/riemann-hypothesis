@@ -98,7 +98,7 @@ theorem det_swap {K : Type*} [Field K] (n : ℕ) :
     (fromBlocks (0 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K)
       (0 : Matrix (Fin n) (Fin n) K)).det = (-1) ^ n := by
   have hN : (fromBlocks (1 : Matrix (Fin n) (Fin n) K) (0 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K)).det = 1 := by
-    simp [Matrix.det_fromBlocks_zero₁₂]
+    simp
   have hMN : fromBlocks (0 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K) (0 : Matrix (Fin n) (Fin n) K) * fromBlocks (1 : Matrix (Fin n) (Fin n) K) (0 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K) =
       fromBlocks (1 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K) (1 : Matrix (Fin n) (Fin n) K) (0 : Matrix (Fin n) (Fin n) K) := by
     simp [Matrix.fromBlocks_multiply]
@@ -131,7 +131,7 @@ theorem gram_determinant_formula_alt : DetGa := by
     intro c
     ext a b
     by_cases ha : a = Fin.last D.R.rS <;> by_cases hb : b = Fin.last D.R.rS <;>
-      simp_all [Matrix.single_apply, eq_comm]
+      simp_all [eq_comm]
   have hprod : Ga T T' Z * fromBlocks (0 : Matrix (Fin (D.R.rS + 1)) (Fin (D.R.rS + 1)) D.host.E) 1 1 0 =
       fromBlocks Z (single (Fin.last D.R.rS) (Fin.last D.R.rS) (-T))
         (single (Fin.last D.R.rS) (Fin.last D.R.rS) (-T')) Zᴴ := by

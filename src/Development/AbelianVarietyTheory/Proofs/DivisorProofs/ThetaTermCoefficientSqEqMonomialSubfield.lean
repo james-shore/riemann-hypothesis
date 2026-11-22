@@ -30,13 +30,13 @@ theorem coef_sq_mem_monomial : ∀ (N₁ : ℕ), 2 ≤ N₁ → ∀ (V₁ : Type
   have hc₀' : u 0 c₀ * mo 0 = 1 := hc₀
   have hm0 : mo 0 ^ 2 = 1 := by
     have h := hmo2 0
-    simp only [map_zero, LinearMap.map_zero₂, zpow_zero, Finset.prod_const_one] at h
+    simp only [map_zero, zpow_zero, Finset.prod_const_one] at h
     exact IsFractionRing.injective V₁ (FractionRing V₁) (by simpa using h)
   have hu0 : u 0 c₀ ^ 2 = 1 := by
     have h := congrArg (· ^ 2) hc₀'
     simpa only [mul_pow, hm0, _root_.mul_one, one_pow] using h
   have hP0 : ((∏ k, (hs k).unit ^ ε (.inr k) (e 0) (e 0) : V₁ˣ) : V₁) = 1 := by
-    simp only [map_zero, LinearMap.map_zero₂, zpow_zero, Finset.prod_const_one, Units.val_one]
+    simp only [map_zero, zpow_zero, Finset.prod_const_one, Units.val_one]
   have h0 : s₀ = G 0 c₀ := by
     have h := hG 0 c₀
     rw [hu0, _root_.one_mul, hP0, _root_.one_mul] at h

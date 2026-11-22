@@ -13,8 +13,6 @@ variable {E : Type} [Field E] [NumberField E] [IsCMField E] {r : ℕ} (X : Data 
 theorem cd_coord (j : Fin (nd X)) : ContDiff ℝ 2 fun w : V (nd X) => w j := by
   first
   | fun_prop
-  | exact ((EuclideanSpace.proj j).restrictScalars ℝ).contDiff
-  | exact (ContinuousLinearMap.proj (R := ℝ) (φ := fun _ : Fin (nd X) => ℂ) j).contDiff
 
 theorem cd_nmat (τ : X.Ψ) (a c : Fin r) : ContDiff ℝ 2 fun w : V (nd X) => mat (nmat X w) τ a c := by
   simp only [mat, nmat, Matrix.of_apply]

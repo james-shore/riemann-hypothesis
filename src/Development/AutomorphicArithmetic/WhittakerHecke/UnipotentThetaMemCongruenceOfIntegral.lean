@@ -53,7 +53,7 @@ theorem UpperTheory.unipotentTheta_mem_congruence_of_integral :
     intro q
     refine inv_eq_of_mul_eq_one_right (Units.ext ?_)
     change (!![1, q; 0, 1] : Matrix (Fin 2) (Fin 2) (A E)) * !![1, -q; 0, 1] = 1
-    simp [Matrix.mul_fin_two, Matrix.one_fin_two]
+    simp [Matrix.one_fin_two]
   have hn : nu D ((M : A ℚ) * (d : A ℚ) * c) = gl (nU ((M : A E) * (AdeleBaseChange.adeleMap ℚ E c * rt ((d : E) * D.θ)))) := by
     change gl (nU (D.mkE 0 ((M : A ℚ) * (d : A ℚ) * c))) = _
     rw [hx]

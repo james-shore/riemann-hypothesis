@@ -78,7 +78,7 @@ theorem smul_mem_La {D : D7} (cc : Ideal (𝓞 D.host.K)) (δ : ℂ) {N N' : ℕ
     obtain ⟨w, hw, A, hA, rfl⟩ := hx
     refine AddSubgroup.subset_closure ⟨w, hw, s • A, h A hA, ?_⟩
     funext τ i j
-    simp only [embV, tor0, Pi.smul_apply, Matrix.smul_apply, map_nsmul, smul_eq_mul, nsmul_eq_mul,
+    simp only [embV, tor0, Pi.smul_apply, Matrix.smul_apply, smul_eq_mul, nsmul_eq_mul,
       map_mul, map_natCast]
     ring
   | zero => simp

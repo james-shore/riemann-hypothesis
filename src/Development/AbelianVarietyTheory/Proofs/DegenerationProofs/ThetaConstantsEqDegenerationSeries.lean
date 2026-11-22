@@ -133,7 +133,6 @@ theorem val_nu (hG : GlobalFnsSt) {n : ℕ} {ν : LB.Gen (nuLB D n)} (hν : Norm
       simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow, ofMul_one]
       module)
     (fun y J hJ => by
-      beta_reduce
       rw [Category.comp_id, normd_one hν hJ, step_one n hJ, inv_one, _root_.mul_one]) T b z J hJ
   beta_reduce at key
   rw [Category.comp_id] at key
@@ -147,7 +146,6 @@ theorem val_kap (hG : GlobalFnsSt) {n : ℕ} {κ : LB.Gen (kapLB D (𝟙 D.P.A ^
       simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow, ofMul_one]
       module)
     (fun y J hJ => by
-      beta_reduce
       rw [Category.comp_id, normd_one hκ hJ, _root_.one_mul]
       exact Finset.prod_eq_one fun i _ => step_one i hJ) T b z J hJ
   beta_reduce at key
@@ -273,7 +271,6 @@ theorem exists_frame {m : ℕ} (p : QkPt D F (m ^ 2)) {w : Frm D F (m ^ 2) p.g.b
       simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow]
       module)
   refine ⟨w', hw', fun z J hJ => Eq.trans ?_ (v _ (𝟙 _) z J hJ).symm⟩
-  beta_reduce
   rw [Category.id_comp]
   rfl
 

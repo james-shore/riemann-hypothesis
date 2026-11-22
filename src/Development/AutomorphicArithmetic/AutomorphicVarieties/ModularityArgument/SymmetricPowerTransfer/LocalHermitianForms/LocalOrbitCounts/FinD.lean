@@ -19,12 +19,12 @@ theorem UpperTheory.V.Z.Sym.Loc.finD : UpperTheory.V.Z.Sym.Loc.FinD := by
       refine ⟨z, ?_⟩
       show ((g : GL (Fin 2) (Lsq K Δ)) : Matrix (Fin 2) (Fin 2) (Lsq K Δ)) = _
       rw [← hz]
-      first | rfl | simp [Matrix.GeneralLinearGroup.scalar]
+      first | rfl
     · rintro ⟨z, hz⟩
       refine ⟨z, ?_⟩
       apply Units.ext
       rw [show ((g : GL (Fin 2) (Lsq K Δ)) : Matrix (Fin 2) (Fin 2) (Lsq K Δ)) = Glob.mt g from rfl, hz]
-      first | rfl | simp [Matrix.GeneralLinearGroup.scalar]
+      first | rfl
   have hmap : (ZD Δ ⊔ KD Δ O).map φ.toMonoidHom = ZK O K := by
     rw [Subgroup.map_sup]
     unfold ZK

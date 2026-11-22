@@ -30,7 +30,6 @@ theorem height_one_eq_zero {K : Type} [Field K] [NumberField K] {B n : ℕ} (hn 
   classical
   first
     | simp [h0, gaussAbs, blockSphereMean]
-    | simp [h0, gaussAbs, blockSphereMean, MvPolynomial.support_one]
 
 theorem height_pow_multiHomogeneous {K : Type} [Field K] [NumberField K] {B n : ℕ} (hn : 0 < n)
     {g : MvPolynomial (Fin B × Fin n) K} {a : Fin B → ℕ} (hg0 : g ≠ 0)
@@ -144,7 +143,6 @@ theorem multiplicity_nonneg (hd : d.AxH 𝒜) (h : d.S1) (x : Fin (d.N + 1) → 
   refine mul_nonneg ?_ (d.ordMinMax_nonneg hd h x c hx hp hw)
   first
     | positivity
-    | exact Nat.cast_nonneg _
 
 theorem height_substituted_eq_finsum (hd : d.AxH 𝒜) (h : d.S1) (x : Fin (d.N + 1) → K)
     (hx : ∀ c, d.wx x c ≠ 0) (c : ι) (F : KTp K d.D d.N)
@@ -213,7 +211,6 @@ theorem fZ_and_substituted_ne_zero (hd : d.AxH 𝒜) (h : d.S1) (x : Fin (d.N + 
   rw [h0]
   first
     | simp [Data.translatedForm]
-    | exact map_zero _
 
 end Data
 

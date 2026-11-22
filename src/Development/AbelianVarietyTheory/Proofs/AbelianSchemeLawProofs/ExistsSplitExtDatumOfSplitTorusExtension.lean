@@ -233,7 +233,7 @@ theorem monoidHom_ext_basis {X K A : Type} [AddCommGroup X] [CommGroup A] (b : M
   exact congrArg Additive.toMul (LinearMap.congr_fun this x.toAdd)
 
 theorem inv_eq_div_mul_inv {A : Type} [CommGroup A] (a b : A) : a⁻¹ = b / a * b⁻¹ := by
-  simp [div_eq_mul_inv, mul_comm]
+  simp [div_eq_mul_inv]
 
 end Sums
 

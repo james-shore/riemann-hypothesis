@@ -30,17 +30,10 @@ theorem kone_factor : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpac
   have hcP : c ∈ GlobalTheory.SplitWeil.KOne k (Fin n) := by
     first
     | exact hc.2
-    | exact hc.1
-    | exact (Subgroup.mem_inf.1 hc).2
-    | exact (Subgroup.mem_inf.1 hc).1
   have hcl : c⁻¹ ∈ GlobalTheory.SmGL.unipRadLower k e := by
     have hci := inv_mem hc
     first
     | exact hci.1
-    | exact hci.2
-    | exact (Subgroup.mem_inf.1 hci).1
-    | exact (Subgroup.mem_inf.1 hci).2
-    | exact hci
   obtain ⟨p, hp, u, hu, hpu⟩ :=
     GlobalTheory.LocGL.IwahoriFactor.exists_jLevi_mul_jPlus e hgc (mul_mem hg hcP)
   have hpP : p ∈ GlobalTheory.SplitWeil.KOne k (Fin n) :=
@@ -51,8 +44,6 @@ theorem kone_factor : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpac
     | exact hp.2
     | exact hp
     | (obtain ⟨m, -, hm⟩ := hp; exact ⟨m, hm⟩)
-    | (obtain ⟨⟨m, hm⟩, -⟩ := hp; exact ⟨m, hm⟩)
-    | (obtain ⟨-, ⟨m, hm⟩⟩ := hp; exact ⟨m, hm⟩)
   refine ⟨m, hpP, u, ?_, c⁻¹, ?_, eq_mul_inv_of_mul_eq hpu⟩
   · have hug : (GlobalTheory.SmGL.leviEmb k e m)⁻¹ * (g * c) = u := inv_mul_eq_iff_eq_mul.2 hpu
     have huP : u ∈ GlobalTheory.SplitWeil.KOne k (Fin n) := by
@@ -62,9 +53,6 @@ theorem kone_factor : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpac
       first
       | exact hu
       | exact hu.1
-      | exact hu.2
-      | exact (Subgroup.mem_inf.1 hu).1
-      | exact (Subgroup.mem_inf.1 hu).2
     exact Subgroup.mem_inf.2 ⟨hur, huP⟩
   · show _ ∧ _
     exact ⟨inv_mem hcP, fun i j hij => GlobalTheory.CompanionTheory.KOneFactor.sub_one_apply_eq_zero e hcl i j hij⟩

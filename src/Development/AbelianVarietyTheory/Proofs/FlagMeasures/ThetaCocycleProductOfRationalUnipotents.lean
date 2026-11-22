@@ -26,8 +26,6 @@ theorem le_spanE_inf (Λ : Submodule (𝓞 E) S.V) (hΛ : Submodule.IsLattice E 
   | exact @_root_.GlobalTheory.SpanInfDenominators.le_spanE_inf_toO
   | exact _root_.GlobalTheory.SpanInfDenominators.le_spanE_inf_toO
   | (apply _root_.GlobalTheory.SpanInfDenominators.le_spanE_inf_toO <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SpanInfDenominators.le_spanE_inf_toO <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SpanInfDenominators.le_spanE_inf_toO <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SpanInfDenominators.le_spanE_inf_toO ..)
 
 end Gen

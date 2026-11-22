@@ -58,7 +58,7 @@ theorem genSub_map_constantCoeff (n s : ℕ) (j : Fin n) :
 
 theorem coeff_genSub_map_eval (n s : ℕ) (c : Fin n × Fin (s + 1) → k) (j : Fin n) (t : Fin (s + 1)) :
     ((genSub (k := k) n s j).map (MvPolynomial.eval c)).coeff t = c (j, t) := by
-  simp [genSub, Polynomial.map_sum, Polynomial.finset_sum_coeff, Polynomial.coeff_monomial, Fin.val_inj]
+  simp [genSub, Polynomial.map_sum, Polynomial.coeff_monomial, Fin.val_inj]
 
 theorem constantCoeff_coeff_genEval (n s d : ℕ) (hd : 0 < d) (g : MvPolynomial (Fin n) k[X])
     (hg : ∀ μ, g.coeff μ ≠ 0 → μ.degree = d) (e : ℕ) :
@@ -183,8 +183,6 @@ theorem tsenLang_ratFunc :
       rw [MvPolynomial.eval_map]
       first
         | (simp only [MvPolynomial.eval, MvPolynomial.coe_eval₂Hom, MvPolynomial.hom_eval₂]; rfl)
-        | exact MvPolynomial.eval₂_comp_left _ _ _ _
-        | simp [MvPolynomial.eval₂_comp_left]
     rw [hy i, map_zero, hgmap, map_mul, MvPolynomial.eval_C] at h1
     exact (mul_eq_zero.mp h1.symm).resolve_left hb0
 

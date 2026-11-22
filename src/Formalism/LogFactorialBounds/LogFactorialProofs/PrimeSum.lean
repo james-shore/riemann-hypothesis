@@ -78,7 +78,7 @@ lemma sum_primesLE_log_div_le (n : ℕ) (hn : 1 ≤ n) :
       rw [Nat.cast_prod, Real.log_prod]
       · apply Finset.sum_congr _ (fun _ _ => rfl)
         ext p
-        simp [Nat.mem_primesLE, Nat.lt_succ_iff, and_comm]
+        simp [Nat.mem_primesLE]
       · intro p hp
         have := (Finset.mem_filter.1 hp).2.pos
         exact_mod_cast this.ne'

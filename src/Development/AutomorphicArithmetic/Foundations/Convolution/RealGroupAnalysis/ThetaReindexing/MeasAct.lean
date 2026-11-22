@@ -20,19 +20,19 @@ private theorem aE_mul_nU {K : Type} [Field K] [NumberField K] (a : (A K)ˣ) (b 
     aE a * gl (nU b) = gl (nU ((a : A K) * b)) * aE a := by
   apply Units.ext
   change !![(a : A K), 0; 0, 1] * !![1, b; 0, 1] = !![1, (a : A K) * b; 0, 1] * !![(a : A K), 0; 0, 1]
-  simp [Matrix.mul_fin_two]
+  simp
 
 private theorem nU_add {K : Type} [Field K] [NumberField K] (b c : A K) :
     nU (b + c) = nU b * nU c := by
   apply Subtype.ext
   change !![1, b + c; 0, 1] = !![1, b; 0, 1] * !![1, c; 0, 1]
-  simp [Matrix.mul_fin_two, add_comm]
+  simp [add_comm]
 
 private theorem w_rel (K : Type) [Field K] [NumberField K] :
     nU 1 * wW K * nU 1 = wW K * nU (-1) * wW K := by
   apply Subtype.ext
   change !![1, 1; 0, 1] * !![0, 1; -1, 0] * !![1, 1; 0, 1] = !![0, 1; -1, 0] * !![1, -1; 0, 1] * !![0, 1; -1, 0]
-  simp [Matrix.mul_fin_two]
+  simp
 
 private def twoU (K : Type) [Field K] [NumberField K] : (A K)ˣ :=
   Units.map (algebraMap K (A K) : K →* A K) (Units.mk0 2 two_ne_zero)
@@ -53,7 +53,7 @@ private theorem hom_nU {K G : Type} [Field K] [NumberField K] [CommGroup G] (f :
 private theorem hom_w {K G : Type} [Field K] [NumberField K] [CommGroup G] (f : GL (Fin 2) (A K) →* G) :
     f (gl (wW K)) = 1 := by
   have h1 := congrArg (fun g => f (gl g)) (w_rel K)
-  simp only [gl_mul, map_mul, hom_nU, mul_one, one_mul] at h1
+  simp only [map_mul, hom_nU, mul_one, one_mul] at h1
   exact (mul_eq_left.mp h1.symm)
 
 variable (D : Dat F E)
@@ -141,7 +141,7 @@ private theorem det_aE (ρ : GL (Fin 2) (A E) →* GL (Fin 4) (A F)) (hρ : ∀ 
   apply Units.ext
   have h1 : ((Matrix.GeneralLinearGroup.det (ρ (aE α)) : (A F)ˣ) : A F) = (ρ (aE α)).val.det := rfl
   rw [h1, rho_aE D ρ hρ, c_eq D ρ hq, Units.val_pow_eq_pow_val, coe_ideleNorm, norm_eq D]
-  simp [Matrix.det_succ_row_zero, Fin.sum_univ_succ, Matrix.det_fin_three]
+  simp [Matrix.det_succ_row_zero, Fin.sum_univ_succ]
   ring
 
 private theorem key (ρ : GL (Fin 2) (A E) →* GL (Fin 4) (A F)) (hρ : ∀ h v, D.act h v = (ρ h).val *ᵥ v)

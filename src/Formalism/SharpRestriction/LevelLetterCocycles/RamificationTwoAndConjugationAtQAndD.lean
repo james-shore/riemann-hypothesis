@@ -324,8 +324,7 @@ theorem shear_lattice (Y : Submodule O V) (hY : Y.FG) (hYs : Submodule.span LL (
       · rintro ⟨hv, hw⟩
         exact ⟨(v, w - ψ v), ⟨hv, hw⟩, by simp⟩
       · rintro ⟨⟨y, t⟩, ⟨hy, ht⟩, he⟩
-        simp only [LinearMap.prod_apply, LinearMap.fst_apply, LinearMap.add_apply, LinearMap.snd_apply,
-          LinearMap.coe_comp, Function.comp_apply, LinearMap.coe_restrictScalars, Prod.mk.injEq] at he
+        simp only [LinearMap.prod_apply] at he
         obtain ⟨rfl, rfl⟩ := he
         refine ⟨hy, ?_⟩
         show t + ψ y - ψ y ∈ T

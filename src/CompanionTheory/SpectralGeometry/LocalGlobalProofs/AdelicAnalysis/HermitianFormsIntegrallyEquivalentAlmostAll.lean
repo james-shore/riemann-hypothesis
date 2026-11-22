@@ -32,7 +32,7 @@ theorem exists_gl_to_one (A : Type) [CommRing A] [Finite (MaximalSpectrum A)] (�
     ext i j
     by_cases hij : i = j
     · subst hij; simp [cT]
-    · simp [cT, Matrix.diagonal_apply, hij, Ne.symm hij]
+    · simp [cT, hij, Ne.symm hij]
   calc cT σ (Matrix.diagonal c) * cT σ g * J * (g * Matrix.diagonal c)
       = cT σ (Matrix.diagonal c) * (cT σ g * J * g) * Matrix.diagonal c := by
         simp only [Matrix.mul_assoc]

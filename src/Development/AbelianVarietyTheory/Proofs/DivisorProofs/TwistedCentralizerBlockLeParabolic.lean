@@ -18,8 +18,6 @@ theorem intertwiner_eq_zero_of_isCoprime {K : Type} [Field K] {a b : ℕ}
   | exact @_root_.GlobalTheory.IntertwiningOperators.main
   | exact _root_.GlobalTheory.IntertwiningOperators.main
   | (apply _root_.GlobalTheory.IntertwiningOperators.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntertwiningOperators.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntertwiningOperators.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntertwiningOperators.main ..)
 
 theorem twCent_blk_le_parP : ∀ (E : Type) [Field E] [NumberField E] (n a b : ℕ) (h : a + b = n) (w : Pl E)

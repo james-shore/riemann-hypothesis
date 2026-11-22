@@ -9,7 +9,7 @@ namespace GlobalTheory.ZarhinFam
 theorem omegaStd_nsmul_left' {h : ℕ} (M : ℕ) (a b : Fin h ⊕ Fin h → ℤ) :
     omegaStd (M • a) b = (M : ℤ) * omegaStd a b := by
   unfold omegaStd
-  simp only [Pi.smul_apply, nsmul_eq_mul, Finset.mul_sum, ← Finset.sum_sub_distrib]
+  simp only [Pi.smul_apply, nsmul_eq_mul, Finset.mul_sum]
   exact Finset.sum_congr rfl fun i _ => by ring
 
 theorem omegaStd_single_inr {h : ℕ} (a : Fin h ⊕ Fin h → ℤ) (i : Fin h) :

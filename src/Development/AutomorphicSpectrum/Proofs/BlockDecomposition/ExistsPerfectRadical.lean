@@ -21,7 +21,6 @@ theorem exists_perfect_radical (p : ℕ) [Fact p.Prime] (S : Type) [CommRing S] 
     haveI : CharP (S ⧸ I.radical) p := by
       first
         | exact (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr hpQ
-        | exact ringChar.of_eq (CharP.ringChar_of_prime_eq_zero (Fact.out : p.Prime) hpQ)
     haveI : ExpChar (S ⧸ I.radical) p := ExpChar.prime (Fact.out : p.Prime)
     haveI : IsReduced (S ⧸ I.radical) :=
       (Ideal.isRadical_iff_quotient_reduced _).mp (Ideal.radical_isRadical I)
@@ -30,9 +29,6 @@ theorem exists_perfect_radical (p : ℕ) [Fact p.Prime] (S : Type) [CommRing S] 
     · exact CharP.cast_eq_zero _ p
     · first
         | exact PerfectRing.bijective_frobenius (R := PerfectClosure (S ⧸ I.radical) p) (p := p)
-        | (convert PerfectRing.bijective_frobenius (R := PerfectClosure (S ⧸ I.radical) p) (p := p) using 1
-           funext t
-           exact (frobenius_def _ _ t).symm)
     · intro t
       obtain ⟨n, y, hy⟩ := IsPRadical.pow_mem (i := PerfectClosure.of (S ⧸ I.radical) p) (p := p) t
       obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective y

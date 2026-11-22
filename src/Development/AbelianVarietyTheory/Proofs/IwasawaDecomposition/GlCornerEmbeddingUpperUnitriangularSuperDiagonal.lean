@@ -59,4 +59,4 @@ theorem GlobalTheory.CornerUnip.corner_unipB_superDiag : ∀ (R : Type) [CommRin
       | cast i => rw [corner_cc]; exact hd i
   · unfold superDiag
     simp only [Finset.sum_filter]
-    simp [Fin.sum_univ_castSucc, corner_cc, corner_cl, corner_lc, corner_ll]
+    simp [Fin.sum_univ_castSucc, corner_cc, corner_cl, corner_lc]

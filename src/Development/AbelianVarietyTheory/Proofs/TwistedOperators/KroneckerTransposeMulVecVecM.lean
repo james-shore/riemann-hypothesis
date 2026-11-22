@@ -67,7 +67,7 @@ theorem exp_adMat_mulVec (p q : ℕ) (Y V : Mat p q) :
     rw [adMat, sub_eq_add_neg]
     congr 1
     ext i j
-    simp [Matrix.kronecker_apply, Matrix.kroneckerMap_apply]
+    simp [Matrix.kroneckerMap_apply]
   have hcomm : Commute (Y ⊗ₖ (1 : Mat p q)) ((1 : Mat p q) ⊗ₖ (-Yᵀ)) := by
     show _ * _ = _ * _
     simp only [← Matrix.mul_kronecker_mul, one_mul, mul_one]

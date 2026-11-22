@@ -121,7 +121,7 @@ theorem herm_one {F E : Type} [Field F] [Field E] [Algebra F E] (σ : E →ₐ[F
   refine ⟨fun i j => ?_, by simp⟩
   by_cases h : i = j
   · subst h; simp
-  · simp [Matrix.one_apply, h, Ne.symm h]
+  · simp [h, Ne.symm h]
 
 theorem tup_haar {S : Type} [CommRing S] [TopologicalSpace S] [IsTopologicalRing S] [T2Space S]
     [LocallyCompactSpace S] [SecondCountableTopology S] [MeasurableSpace S] [BorelSpace S]

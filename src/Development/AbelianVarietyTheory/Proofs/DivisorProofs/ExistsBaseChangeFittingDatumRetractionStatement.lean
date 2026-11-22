@@ -48,4 +48,4 @@ theorem _root_.GlobalTheory.T.exists_baseChange_fittingDatum_retraction : ∀ (T
             (σ₁.comp (algebraMap (GlobalTheory.LocAcyc.GenFib A₁ (Localization.AtPrime QA₁)) DA₁)).comp
                 (algebraMap (Localization.AtPrime QA₁) (GlobalTheory.LocAcyc.GenFib A₁ (Localization.AtPrime QA₁))) =
               (algebraMap A₁ (FractionRing A₁)).comp ρ₁ := by
-  first | (exact @GlobalTheory.KeyOriginEnlarge.exists_baseChange_fits) | (exact GlobalTheory.KeyOriginEnlarge.exists_baseChange_fits) | (intros; apply GlobalTheory.KeyOriginEnlarge.exists_baseChange_fits <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginEnlarge.exists_baseChange_fits)

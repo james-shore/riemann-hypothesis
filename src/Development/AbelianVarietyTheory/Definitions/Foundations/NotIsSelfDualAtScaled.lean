@@ -45,8 +45,7 @@ def tor {v : HeightOneSpectrum (𝓞 F)} (a : (Fv F v)ˣ) : GLoc σ (hyp E) v :=
     have h2 := inv_mul_tmul (E := E) a
     ext i j
     fin_cases i <;> fin_cases j <;>
-      simp [-Units.val_inv_eq_inv_val, torMat, cT, JR, hyp, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.sigR, Matrix.mul_apply, Fin.sum_univ_two, h1, h2,
-        Algebra.TensorProduct.one_def]⟩
+      simp [-Units.val_inv_eq_inv_val, torMat, cT, JR, hyp, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.sigR, Matrix.mul_apply, Fin.sum_univ_two, h1, Algebra.TensorProduct.one_def]⟩
 
 section Supp
 

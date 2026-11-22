@@ -13,7 +13,7 @@ theorem sFam_charZero_affineOpen : ∀ (g n : ℕ) (F : SFam g n (zetaAway n)) (
   intro g n F U hU
   have hW : IsAffineOpen (U : F.X.Opens) := U.2
   have : SmoothOfRelativeDimension (g * (g + 1) / 2) F.s := F.smooth
-  have : Smooth F.s := by first | exact SmoothOfRelativeDimension.smooth (g * (g + 1) / 2) F.s | exact F.smooth.smooth | infer_instance
+  have : Smooth F.s := by first | exact SmoothOfRelativeDimension.smooth (g * (g + 1) / 2) F.s
   obtain ⟨φ, hφ⟩ := Spec.map_surjective (hW.fromSpec ≫ F.s)
   have h₁ : φ.hom.Flat := by rw [← Flat.SpecMap_iff, hφ]; infer_instance
   letI : Algebra (cycAway n) Γ(F.X, U) := φ.hom.toAlgebra

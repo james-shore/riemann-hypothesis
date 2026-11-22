@@ -73,7 +73,7 @@ theorem integral_inv_mul {A : FractionalIdeal (𝓞 F)⁰ F} (hA : A ≠ 0) {r g
   rw [hinv]
   fin_cases i <;> fin_cases j
   · refine ⟨z1 - z5, ?_⟩
-    simp only [map_sub, RingOfIntegers.map_mk, Matrix.mul_apply, Fin.sum_univ_two]
+    simp only [map_sub, Matrix.mul_apply, Fin.sum_univ_two]
     push_cast [e1, e5]
     simp
     ring

@@ -17,7 +17,6 @@ theorem exists_numberField_of_finiteType_rat (R : Type) [CommRing R] [Nontrivial
     convert hfin
     first
       | exact (congrArg (@Algebra.toModule ℚ (R ⧸ m) _ _) e).symm
-      | (rw [← e]; rfl)
   haveI : NumberField (R ⧸ m) := ⟨⟩
   exact ⟨R ⧸ m, inferInstance, inferInstance, Ideal.Quotient.mk m, trivial⟩
 

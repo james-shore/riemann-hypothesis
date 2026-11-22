@@ -390,13 +390,13 @@ theorem locSplit_of_mats (B : FB K d O) (p : ℕ) (i : C.I) (r₁ r₂ s₁ s₂
         rw [← Matrix.sub_mulVec, e₆, Matrix.one_mulVec]
       rw [alpha_apply, hs, hr, beta_apply]
       refine Prod.ext ?_ ?_
-      · simp only [Prod.fst_add, Matrix.mulVec_add, Matrix.mulVec_neg, Matrix.mulVec_sub,
+      · simp only [Prod.fst_add, Matrix.mulVec_add, Matrix.mulVec_sub,
           Matrix.mulVec_mulVec]
         calc _ = ((hw B p * r₁).mulVec y.1 +
               (s₁ * (am B p - (hw B p).transpose * bil B.sy 1 1)).mulVec y.1) +
             ((hw B p * r₂).mulVec y.2 - (s₁ * (hw B p).transpose).mulVec y.2) := by abel
           _ = y.1 := by rw [E₃, E₄, add_zero]
-      · simp only [Prod.snd_add, Matrix.mulVec_add, Matrix.mulVec_neg, Matrix.mulVec_sub,
+      · simp only [Prod.snd_add, Matrix.mulVec_add, Matrix.mulVec_sub,
           Matrix.mulVec_mulVec]
         calc _ = (((am B p).transpose * r₁).mulVec y.1 +
               (s₂ * (am B p - (hw B p).transpose * bil B.sy 1 1)).mulVec y.1) +

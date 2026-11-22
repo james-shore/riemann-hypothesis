@@ -32,7 +32,7 @@ variable {K : Type} [Field K] {W Y : Scheme.{0}} {q : Y ⟶ Spec (CommRingCat.of
 theorem rs_topIso {V V' : Y.Opens} (h : V' ≤ V) (x : Γ(V, ⊤)) :
     rs h (V.topIso.hom.hom x) = V'.topIso.hom.hom ((Y.homOfLE h).appTop.hom x) := by
   rw [Scheme.homOfLE_appTop]
-  simp only [rs, Scheme.Opens.topIso_hom, CommRingCat.comp_apply]
+  simp only [rs, Scheme.Opens.topIso_hom]
   rw [← CommRingCat.comp_apply, ← CommRingCat.comp_apply, ← Functor.map_comp, ← Functor.map_comp]
   rfl
 

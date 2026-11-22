@@ -99,11 +99,11 @@ theorem algebraicIndependent_scaledForms {K Ω : Type} [Field K] [CharZero K] [F
       cases o with
       | none => simp [M, hpt0, hy]
       | some b =>
-        simp [M, hpt1, add_mul, Finset.sum_add_distrib, hy, Matrix.one_apply]
+        simp [M, hpt1, add_mul, Finset.sum_add_distrib, hy]
     | some a =>
       cases o with
       | none =>
-        simp [M, hpt0, hy, hptn, Matrix.one_apply]
+        simp [M, hpt0, hy, hptn]
       | some b =>
         simp [M, hpt1, add_mul, Finset.sum_add_distrib, hy, hδ, Matrix.one_apply, hptn]
   have hdet : M.det ≠ 0 := by

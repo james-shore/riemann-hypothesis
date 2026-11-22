@@ -29,11 +29,6 @@ theorem exists_pow_smul_le {V : Type} [AddCommGroup V] [Module LL V] [Module O V
     ∃ m : ℕ, ∀ x ∈ S, c ^ m • x ∈ L := by
   first
   | (rename_i h_2 h_3 h_4 h_5 h_7 h_8 h_9 h_10; revert LL O h_2 h_3 h_4 h_5 V h_7 h_8 h_9 h_10 c hc L S hL hS; exact @_root_.GlobalTheory.PowerScalarMembership.main)
-  | exact @_root_.GlobalTheory.PowerScalarMembership.main
-  | exact _root_.GlobalTheory.PowerScalarMembership.main
-  | (apply _root_.GlobalTheory.PowerScalarMembership.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PowerScalarMembership.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PowerScalarMembership.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PowerScalarMembership.main ..)
 
 variable (W : LocWach PD LL O v n)

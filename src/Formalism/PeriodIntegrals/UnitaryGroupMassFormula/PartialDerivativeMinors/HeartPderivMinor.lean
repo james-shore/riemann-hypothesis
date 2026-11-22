@@ -38,7 +38,7 @@ theorem heart_pderiv_minor {Lt : Type} [Fintype Lt] [DecidableEq Lt] (N0 N1 : �
   rw [Matrix.of_apply, map_sum]
   refine Finset.sum_eq_zero fun a0 _ => ?_
   rw [Derivation.leibniz, MvPolynomial.pderiv_X, MvPolynomial.pderiv_X]
-  simp [Pi.single_apply, hs, Ne.symm hs]
+  simp [hs]
 
 private theorem derivation_finset_sum_apply' {R A ι : Type} [CommRing R] [CommRing A] [Algebra R A]
     (s : Finset ι) (D : ι → Derivation R A A) (x : A) : (∑ i ∈ s, D i) x = ∑ i ∈ s, D i x := by

@@ -138,8 +138,8 @@ theorem swap_swap (lam : Fin n → ℤ) : swapJ lam * swapJ lam = 1 := by
   ext ⟨i, j⟩ ⟨k, l⟩
   simp only [Matrix.mul_apply, swapJ, Fintype.sum_prod_type, ite_mul, one_mul, zero_mul, ite_and, Matrix.one_apply,
     Prod.mk.injEq]
-  simp [Finset.sum_ite_eq, Finset.sum_ite_eq']
-  by_cases h1 : i = k <;> by_cases h2 : j = l <;> simp [h1, h2, eq_comm]
+  simp [Finset.sum_ite_eq]
+  by_cases h1 : i = k <;> by_cases h2 : j = l <;> simp [h1, h2]
 
 theorem swap_cT (lam : Fin n → ℤ) : (swapJ lam)ᴴ = swapJ lam := by
   ext ⟨i, j⟩ ⟨k, l⟩
@@ -152,7 +152,7 @@ theorem trace_kron_swap (lam : Fin n → ℤ) (A B : Matrix (Jd n lam) (Jd n lam
     ((A ⊗ₖ B) * swapJ lam).trace = (A * B).trace := by
   simp only [Matrix.trace, Matrix.diag, Matrix.mul_apply, swapJ, Matrix.kroneckerMap_apply, Fintype.sum_prod_type,
     mul_ite, mul_one, mul_zero, ite_and]
-  simp [Finset.sum_ite_eq, Finset.sum_ite_eq']
+  simp [Finset.sum_ite_eq']
 
 theorem swap_rhoW (hR : RmLaws) (lam : Fin n → ℤ) {x : Mat n} (hx : IsUnit x.det) :
     swapJ lam * rhoW lam (xᴴ)⁻¹ = rhoW lam x * swapJ lam := by

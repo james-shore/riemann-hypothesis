@@ -53,10 +53,10 @@ def avgMapL {T : Mat n → (W →L[ℂ] W)} {S : Mat n → (Z →L[ℂ] Z)}
   toFun w := ∫ k, avgF T S e f w k ∂(muK ε)
   map_add' x y := by
     rw [← integral_add (avgF_integrable hT hS e f x) (avgF_integrable hT hS e f y)]
-    congr 1; funext k; simp [avgF, inner_add_right, add_smul]
+    congr 1; funext k; simp [avgF, add_smul]
   map_smul' c x := by
     rw [RingHom.id_apply, ← integral_smul]
-    congr 1; funext k; simp [avgF, inner_smul_right, smul_smul]
+    congr 1; funext k; simp [avgF, smul_smul]
 
 theorem avgMapL_apply {T : Mat n → (W →L[ℂ] W)} {S : Mat n → (Z →L[ℂ] Z)}
     (hT : Formalism.MainNotions.S.IsURepOn (Formalism.REAL.Kset ε) T) (hS : Formalism.MainNotions.S.IsURepOn (Formalism.REAL.Kset ε) S) (e : W) (f : Z)

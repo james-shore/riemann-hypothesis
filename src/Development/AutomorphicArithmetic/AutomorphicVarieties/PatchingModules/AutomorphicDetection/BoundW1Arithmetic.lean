@@ -13,6 +13,5 @@ theorem b1Ar : FirstOrderDualArithmeticBound := by
   rw [← hsum]
   first
     | exact (finsum_eq_sum_of_fintype _).symm
-    | (convert (finsum_eq_sum_of_fintype d').symm)
 
 end UpperTheory.V.Pa

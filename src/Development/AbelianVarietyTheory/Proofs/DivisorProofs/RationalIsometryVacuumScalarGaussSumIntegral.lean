@@ -445,7 +445,6 @@ theorem gauss_mul_integral : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (hψ 
     simp only [coe_opF, right_side hψ hσ halt, left_side hg hh hψ hσ halt sS sT _ _ hw hb] at e
     rw [e, ← Summable.tsum_finsetSum, ← tsum_mul_left]
     · refine tsum_congr fun y => ?_
-      beta_reduce
       rw [← Finset.sum_mul, mul_assoc κ]
     · intro i _
       refine Summable.of_norm ((summable_coefQ hψ hθ hpos dS dT w (u i)).congr fun y => ?_)

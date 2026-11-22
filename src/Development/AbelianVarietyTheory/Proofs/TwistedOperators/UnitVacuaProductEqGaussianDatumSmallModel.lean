@@ -86,8 +86,6 @@ theorem exists_vacS (hL : L.Is μ₀) (h : IsTripleOf W M t i j e Bs Γ X) (hT :
           IsDedekindDomain.HeightOneSpectrum.valuedAdicCompletion_eq_valuation', map_inv₀, hπ]
         first
         | decide
-        | simp
-        | (intro hle; have := (inv_le_one₀ (by simp)).1 hle; simp at this)
       have hall := (hsdl ((fun _ => c⁻¹ * ((π⁻¹ : D.host.F) : v.adicCompletion D.host.F)), 0)).2
         (fun l _ => by rw [h1, AddChar.one_apply])
       obtain ⟨γ, hγ, hγe⟩ := AddSubgroup.mem_map.1 hall

@@ -19,9 +19,7 @@ theorem denom_norm_natCast_le_one {F : Type} [Field F] [NumberField F] (v : Heig
   first
   | exact @_root_.GlobalTheory.AdicNatCastNorm.norm_natCast_adicCompletion_le_one
   | exact _root_.GlobalTheory.AdicNatCastNorm.norm_natCast_adicCompletion_le_one
-  | (apply _root_.GlobalTheory.AdicNatCastNorm.norm_natCast_adicCompletion_le_one <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AdicNatCastNorm.norm_natCast_adicCompletion_le_one <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AdicNatCastNorm.norm_natCast_adicCompletion_le_one <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.AdicNatCastNorm.norm_natCast_adicCompletion_le_one)
   | (intros; exact _root_.GlobalTheory.AdicNatCastNorm.norm_natCast_adicCompletion_le_one ..)
 
 theorem denom_global {F : Type} [Field F] [NumberField F] (H : HeightOneSpectrum (𝓞 F) → NNReal)
@@ -32,8 +30,6 @@ theorem denom_global {F : Type} [Field F] [NumberField F] (H : HeightOneSpectrum
   | exact @_root_.GlobalTheory.AdicNormZpowEstimates.exists_denominator
   | exact _root_.GlobalTheory.AdicNormZpowEstimates.exists_denominator
   | (apply _root_.GlobalTheory.AdicNormZpowEstimates.exists_denominator <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AdicNormZpowEstimates.exists_denominator <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AdicNormZpowEstimates.exists_denominator <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AdicNormZpowEstimates.exists_denominator ..)
 
 theorem denom_exists_int {E : Type} [Field E] [NumberField E] (e : E) :
@@ -41,9 +37,7 @@ theorem denom_exists_int {E : Type} [Field E] [NumberField E] (e : E) :
   first
   | exact @_root_.GlobalTheory.NatMulMemRingOfIntegers.exists_nat_mul_mem_ringOfIntegers
   | exact _root_.GlobalTheory.NatMulMemRingOfIntegers.exists_nat_mul_mem_ringOfIntegers
-  | (apply _root_.GlobalTheory.NatMulMemRingOfIntegers.exists_nat_mul_mem_ringOfIntegers <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatMulMemRingOfIntegers.exists_nat_mul_mem_ringOfIntegers <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatMulMemRingOfIntegers.exists_nat_mul_mem_ringOfIntegers <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.NatMulMemRingOfIntegers.exists_nat_mul_mem_ringOfIntegers)
   | (intros; exact _root_.GlobalTheory.NatMulMemRingOfIntegers.exists_nat_mul_mem_ringOfIntegers ..)
 
 open GlobalTheory.IndefiniteRowSideFullHecke.LieAlgebraExponentialFamilies Formalism.L2.Pj in
@@ -52,10 +46,6 @@ theorem denomBound : ∀ (D : D7) (θ : D.what₂.Tau → (Ainf D.host.F ⊗[D.h
     DenomBound θ V := by
   first
   | exact @_root_.GlobalTheory.AdeleDenominators.denomBound
-  | exact _root_.GlobalTheory.AdeleDenominators.denomBound
-  | (apply _root_.GlobalTheory.AdeleDenominators.denomBound <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AdeleDenominators.denomBound <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AdeleDenominators.denomBound <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AdeleDenominators.denomBound ..)
 
 end GlobalTheory.SmoothForms

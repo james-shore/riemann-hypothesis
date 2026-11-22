@@ -117,12 +117,12 @@ lemma weighted_bound {α : Type*} [MeasurableSpace α] (μ : Measure α) (d : �
   have ma : AEStronglyMeasurable (fun x => ‖a x‖) μ := by
     refine (Real.continuous_sqrt.comp_aestronglyMeasurable i1.aestronglyMeasurable).congr
       (Filter.Eventually.of_forall fun x => ?_)
-    simp only [Function.comp_apply]
+    simp only
     exact Real.sqrt_sq (norm_nonneg _)
   have mb : AEStronglyMeasurable (fun x => ‖b x‖) μ := by
     refine (Real.continuous_sqrt.comp_aestronglyMeasurable i2.aestronglyMeasurable).congr
       (Filter.Eventually.of_forall fun x => ?_)
-    simp only [Function.comp_apply]
+    simp only
     exact Real.sqrt_sq (norm_nonneg _)
   have La : MemLp (fun x => ‖a x‖) (ENNReal.ofReal 2) μ := by
     rw [ENNReal.ofReal_ofNat]

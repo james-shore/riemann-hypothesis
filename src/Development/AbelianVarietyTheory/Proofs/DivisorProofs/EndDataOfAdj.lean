@@ -43,7 +43,7 @@ theorem isoGen_isGen {w : LB.Iso (LB.LinComb L φ ε) (LB.LinComb L φ' ε')} (h
     ((gm_res (𝟙 Y) y _ hy _).trans (gm_res (𝟙 Y) y (le q) hy.2 _)))
   refine (Fintype.prod_sum_type _).trans (congrArg₂ (· * ·) (gm_linComb L φ' ε' (𝟙 Y) y _ _ hm.1.1 hm.2.1).symm ?_)
   refine Eq.trans ?_ (congrArg (·⁻¹) (gm_linComb L φ ε (𝟙 Y) y _ _ hm.1.2 hm.2.2).symm)
-  simp only [Sum.elim_inr, zpow_neg, Finset.prod_inv_distrib, Function.comp_apply]
+  simp only [Sum.elim_inr, zpow_neg, Finset.prod_inv_distrib]
   rfl
 
 theorem val_isoGen (w : LB.Iso (LB.LinComb L φ ε) (LB.LinComb L φ' ε')) {Z : Scheme.{0}} (r : Z ⟶ Y) (z : Z)

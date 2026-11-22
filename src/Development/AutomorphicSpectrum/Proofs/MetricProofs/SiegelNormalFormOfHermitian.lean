@@ -19,11 +19,11 @@ theorem im_terms_separate (P Q R S : Matrix I I ℂ)
   have hs : ∀ (c : I) (γ : ℂ), star (Pi.single c γ : I → ℂ) = Pi.single c (star γ) := by
     intro c γ; ext i; by_cases hi : i = c
     · subst hi; simp
-    · simp [Pi.single_apply, hi]
+    · simp [hi]
   have he : ∀ (T : Matrix I I ℂ) (a b : I) (α β : ℂ),
       (Pi.single a α : I → ℂ) ⬝ᵥ T *ᵥ (Pi.single b β : I → ℂ) = α * β * T a b := by
     intro T a b α β
-    simp [single_dotProduct, mulVec, dotProduct_single]
+    simp [single_dotProduct]
     ring
   have key : ∀ (a b : I) (α β : ℂ), (α * star β * P a b + α * β * Q a b
       + star α * star β * R a b + star α * β * S a b).im = 0 := by

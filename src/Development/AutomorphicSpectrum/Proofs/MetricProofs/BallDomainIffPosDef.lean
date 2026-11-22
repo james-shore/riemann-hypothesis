@@ -159,7 +159,7 @@ theorem mem_ballDom_iff_posDef_bigZe {Ψ : Type} [Fintype Ψ] [DecidableEq Ψ] {
     funext τ
     simp only [Pi.sub_apply, Pi.one_apply]
     rw [fromBlocks_conjTranspose, fromBlocks_multiply]
-    simp only [conjTranspose_zero, mul_zero, zero_mul, add_zero, zero_add, ← fromBlocks_one]
+    simp only [conjTranspose_zero, mul_zero, add_zero, zero_add, ← fromBlocks_one]
     ext (a | a) (c | c) <;> simp [Matrix.one_apply]
   have hsub : (1 : Matrix (Fin g) (Fin g) ℂ) - (bigZe e q t)ᴴ * bigZe e q t =
       ((1 : Matrix (Ix Ψ j j') (Ix Ψ j j') ℂ) - (bigZ q t)ᴴ * bigZ q t).submatrix e.symm e.symm := by

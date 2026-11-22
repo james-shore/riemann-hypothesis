@@ -86,7 +86,7 @@ theorem chi_monomial {Lt : Type} (l : ℕ) [Fact l.Prime] (N0 N1 : ℕ) (z : Lt 
   set p := Finsupp.sumFinsuppEquivProdFinsupp μ with hp
   have hμ : μ = Finsupp.sumElim p.1 p.2 := sumElim_split μ
   rw [hμ, MvPolynomial.eval₂Hom_monomial, Finsupp.prod_sumElim]
-  simp only [Function.comp_def, Sum.elim_inl, Sum.elim_inr, RingHom.coe_comp, Function.comp_apply,
+  simp only [Sum.elim_inl, Sum.elim_inr, Function.comp_apply,
     MvPolynomial.monomial_eq, map_one, one_mul, map_mul, Finsupp.prod, map_prod, map_pow, eq_intCast]
   simp only [map_intCast]
   ring

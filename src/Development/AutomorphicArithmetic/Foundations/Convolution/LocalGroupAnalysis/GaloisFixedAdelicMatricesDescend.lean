@@ -19,7 +19,7 @@ private theorem sum_map_tensor [FiniteDimensional F E] [IsGalois F E] {A : Type}
   | zero => simp
   | tmul l a =>
     simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, LinearMap.rTensor_tmul,
-      TensorProduct.lid_tmul, AlgHom.coe_coe]
+      TensorProduct.lid_tmul]
     have h : ∑ τ : E ≃ₐ[F] E, ((τ : E →ₐ[F] E) : E → E) l = algebraMap F E (Algebra.trace F E l) :=
       (trace_eq_sum_automorphisms l).symm
     rw [← TensorProduct.sum_tmul, h, Algebra.algebraMap_eq_smul_one, TensorProduct.smul_tmul]

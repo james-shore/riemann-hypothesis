@@ -109,7 +109,7 @@ theorem mean_eq_zero_of_strips : ∀ (D : D7) (W : HSp D) (vW : GlobalTheory.Unf
           funext fun r => Set.indicator_of_mem ((hSinv _ r.2 h).2 hh) _
         rw [this]; exact hfiR h
       · have : (fun r : R => S.indicator f ((r : GA D W) * h)) = fun _ => 0 :=
-          funext fun r => by simp [Set.indicator_apply, hSinv _ r.2 h, hh]
+          funext fun r => by simp [hSinv _ r.2 h, hh]
         rw [this]; exact integrableOn_zero
   have hQS := GlobalTheory.quot_fubini_mean (GA D W) vW.μ R (GQ W ⊓ R) inf_le_right hRc hΓc hΓd μR hμR 𝓡 𝓑 h𝓡 h𝓑
     (S.indicator f) (hfm.indicator hSm) hfSl (hfi.indicator hSm) hfSi
@@ -121,7 +121,7 @@ theorem mean_eq_zero_of_strips : ∀ (D : D7) (W : HSp D) (vW : GlobalTheory.Unf
         simp only [hTdef]
         congr 1; funext r
         exact Set.indicator_of_mem ((hSinv _ r.2 h).2 hh) _
-      · simp [Set.indicator_apply, hSinv _ (Subtype.property _) h, hh]
+      · simp [hSinv _ (Subtype.property _) h, hh]
     have e2 : ∫ g in 𝓑, S.indicator f g ∂vW.μ = 0 := by rw [setIntegral_indicator hSm, hS0]
     rw [e1, e2] at hQS
     exact hQS
@@ -137,7 +137,7 @@ theorem mean_eq_zero_of_strips : ∀ (D : D7) (W : HSp D) (vW : GlobalTheory.Unf
       · obtain ⟨c, hc, hTc'⟩ := hP C hCinf x hxS hx
         have h2 : (1 : ℝ) / 2 < (T x / T 1).re := by rw [hTc']; exact hCU hc
         exact ⟨by linarith, fun _ _ => h2⟩
-    · simp [Set.indicator_of_notMem hxS, hxS]
+    · simp [hxS]
   set φ : GA D W → ℝ := fun x => ((β x : ℝ) • S.indicator T x / T 1).re with hφdef
   have hφ : ∀ x, φ x = (β x : ℝ) * (S.indicator T x / T 1).re := by
     intro x
@@ -167,7 +167,7 @@ theorem mean_eq_zero_of_strips : ∀ (D : D7) (W : HSp D) (vW : GlobalTheory.Unf
         rcases mul_eq_zero.1 hx with h | h
         · exact h
         · linarith
-      simp [hgdef, Set.indicator_of_mem hxA, Pi.zero_apply, NNReal.coe_eq_zero.1 this]
+      simp [hgdef, Set.indicator_of_mem hxA, NNReal.coe_eq_zero.1 this]
     · simp [hgdef, Set.indicator_of_notMem hxA]
 
   have hA0 : vW.μ A = 0 := by

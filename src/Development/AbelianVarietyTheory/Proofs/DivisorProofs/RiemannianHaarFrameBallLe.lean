@@ -132,7 +132,7 @@ theorem riemHaar_frBall_le : ∀ (E : Type) [Field E] [NumberField E] [IsCMField
   set s : Set (realLie Ψ G) := {X : realLie Ψ G | ‖X‖ < δ ∧ ∀ τ a b,
     ‖((mat x τ)⁻¹ * Matrix.of (X.1 τ) * mat x τ) a b‖ < 2 * ε} with hs
   have hs' : s = Metric.ball 0 δ ∩ Subtype.val ⁻¹' S := by
-    ext X; simp [hs, hS, mem_ball_zero_iff]
+    ext X; simp [hs, hS]
   have hsm : MeasurableSet s := by
     rw [hs']; exact measurableSet_ball.inter (measurable_subtype_coe hSm)
   have hsb : s ⊆ Metric.ball 0 δ := by rw [hs']; exact Set.inter_subset_left

@@ -20,7 +20,7 @@ def derOf (h : B →+* DualNumber K) (hfst : ∀ b, (h b).fst = algebraMap B K b
           ← IsScalarTower.algebraMap_apply, ← Algebra.smul_def] }
     (fun a b => by
       simp only [LinearMap.coe_mk, AddHom.coe_mk, map_mul, snd_mul, hfst, Algebra.smul_def,
-        MulOpposite.smul_eq_mul_unop, MulOpposite.unop_op, smul_eq_mul, Algebra.algebraMap_self,
+        MulOpposite.smul_eq_mul_unop, MulOpposite.unop_op, Algebra.algebraMap_self,
         RingHom.id_apply]
       ring)
 
@@ -50,7 +50,7 @@ lemma liftKaehler_eq_sum {ι : Type} [Fintype ι] (D : Derivation R₀ B K) (Ds 
     { toFun := fun ω => ∑ i, c i * (Ds i).liftKaehlerDifferential ω
       map_add' := fun x y => by simp [mul_add, Finset.sum_add_distrib]
       map_smul' := fun b x => by
-        simp only [map_smul, RingHom.id_apply, smul_eq_mul, Algebra.smul_def, Finset.mul_sum]
+        simp only [map_smul, RingHom.id_apply, Algebra.smul_def, Finset.mul_sum]
         refine Finset.sum_congr rfl fun i _ => by ring }
   have : D.liftKaehlerDifferential = φ := by
     apply Derivation.liftKaehlerDifferential_unique

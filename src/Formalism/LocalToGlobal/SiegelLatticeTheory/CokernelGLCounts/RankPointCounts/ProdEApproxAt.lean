@@ -83,7 +83,7 @@ theorem exists_unit_monomial_stable_of_Y0 {p : PlF D} (hA : Agree δ M p) :
     · simp
   · ext i j
     rw [mul_mono hσ]
-    simp only [mono, Matrix.of_apply, hσ, Matrix.one_apply]
+    simp only [mono, Matrix.of_apply, Matrix.one_apply]
     by_cases h : σ j = σ i
     · have hij : i = j := by rw [← hσ i, ← h, hσ]
       subst hij

@@ -13,8 +13,6 @@ theorem exists_compl_of_saturated {R V : Type*} [CommRing R] [IsDedekindDomain R
   | exact @_root_.GlobalTheory.SaturatedSublatticeComplement.main
   | exact _root_.GlobalTheory.SaturatedSublatticeComplement.main
   | (apply _root_.GlobalTheory.SaturatedSublatticeComplement.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SaturatedSublatticeComplement.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SaturatedSublatticeComplement.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SaturatedSublatticeComplement.main ..)
 
 theorem saturatedFlag_splits : ∀ (E : Type) [Field E] [NumberField E] (n a : ℕ) (S : Fin (a + 1) → Submodule (𝓞 E) (Fin n → E)), S 0 = ⊥ → Monotone S → (S (Fin.last a)).FG → (∀ i, ∀ y ∈ S (Fin.last a), y ∈ Submodule.span E (S i : Set (Fin n → E)) → y ∈ S i) → ∃ A : Fin a → Submodule (𝓞 E) (Fin n → E), ∀ i, A i ⊓ S i.castSucc = ⊥ ∧ A i ⊔ S i.castSucc = S i.succ := by

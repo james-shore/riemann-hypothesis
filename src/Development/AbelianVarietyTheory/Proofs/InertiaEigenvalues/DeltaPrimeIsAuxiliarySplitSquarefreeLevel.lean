@@ -173,7 +173,7 @@ theorem deltaPrime_isAuxiliarySplitSquarefreeLevel (hsp : D.host.cls D.host.pde 
     intro p hp _ hc hl hg
     have s : p ∉ D.host.small ∧ p ≠ D.host.q ∧ jacobiSym (-(D.host.d : ℤ)) p = 1 := by
       unfold Formalism.BasicNotions.Host.cls primeClass at hc
-      split_ifs at hc with h1 h2 h3 h4 <;> first | exact ⟨h1, h2, h4⟩ | cases hc
+      split_ifs at hc with h1 h2 h3 h4 <;> first | exact ⟨h1, h2, h4⟩
     refine ⟨hp.odd_of_ne_two (UpperTheory.Small.ne_two D.host s.1), hp.prime.squarefree, fun p' hp' hd => ?_,
       Nat.Coprime.mul_right ((Nat.coprime_primes hp (D.host.g_prime 0)).2 (hg 0))
         ((Nat.coprime_primes hp (D.host.g_prime 1)).2 (hg 1)),

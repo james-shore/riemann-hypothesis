@@ -78,7 +78,7 @@ private theorem exists_gl_vecMul_single_eq_and_fixes_single_of_le {R : Type} [Co
       rw [h] at hk
       simp [L] at hk
       omega
-    simp [Pi.single_apply, hne]
+    simp [hne]
   have hr : Unimodular R (fun i : Fin (m - 1 + 1) => v ⟨i, by have := i.isLt; omega⟩) := by
     show Ideal.span _ = ⊤
     rw [Ideal.eq_top_iff_one, ← hwv]
@@ -132,7 +132,7 @@ private theorem exists_gl_vecMul_single_eq_and_fixes_single_of_le {R : Type} [Co
         ring
       · simp
     rw [e1, Fin.sum_univ_eq_sum_range F n, ← Finset.sum_subset (s₁ := Finset.range (m - 1)) (s₂ := Finset.range n)
-      (by intro k hk; rw [Finset.mem_range] at hk ⊢; exact lt_of_lt_of_le hk (by first | omega | exact L.isLt.le))
+      (by intro k hk; rw [Finset.mem_range] at hk ⊢; exact lt_of_lt_of_le hk (by first | omega))
       (fun k _ hk => dif_neg (by simp only [Finset.mem_range] at hk; omega)),
       ← Fin.sum_univ_eq_sum_range F (m - 1)]
     apply Finset.sum_congr rfl
@@ -161,7 +161,7 @@ private theorem exists_gl_vecMul_single_eq_and_fixes_single_of_le {R : Type} [Co
         intro h
         rw [h] at hk
         simp [L] at hk
-      simp [Pi.single_apply, hne]
+      simp [hne]
     · rw [if_neg hk, add_zero]
       by_cases hk2 : k = L
       · rw [hk2, v2L]
@@ -170,7 +170,7 @@ private theorem exists_gl_vecMul_single_eq_and_fixes_single_of_le {R : Type} [Co
           have : (k : ℕ) ≠ m - 1 := fun h => hk2 (Fin.ext (by simpa [L] using h))
           omega
         simp only [v2, v1, z2, Pi.add_apply, Pi.smul_apply, smul_eq_mul, hv k hkm, z1m k hkm, hsL k hkm]
-        simp [Pi.single_apply, hk2]
+        simp
   have hg0v : Matrix.mulVec ((T3 * T2 * T1 : GL (Fin n) R) : Matrix (Fin n) (Fin n) R) v = Pi.single L 1 := by
     rw [Units.val_mul, Units.val_mul, ← Matrix.mulVec_mulVec, ← Matrix.mulVec_mulVec, s1, s2, s3]
   have gg0 := splitSet_transitive_lemma_3 (T3 * T2) T1 (splitSet_transitive_lemma_3 T3 T2 gT3 gT2) gT1
@@ -273,8 +273,6 @@ theorem splitSet_transitive : ∀ (R : Type) [CommRing R] (s : ℕ), StableRange
         split_ifs with hc
         · first
             | exact absurd (congrArg Fin.val hc) (by simp)
-            | exact absurd hc (by simp [Fin.ext_iff])
-            | simp [Fin.ext_iff] at hc
         · rfl
       have hw : ∀ k : Fin n, n - p ≤ (k : ℕ) → (pairAct R n g0⁻¹ a).2 k = 0 := by
         intro k hk
@@ -287,8 +285,6 @@ theorem splitSet_transitive : ∀ (R : Type) [CommRing R] (s : ℕ), StableRange
         split_ifs with hc
         · first
             | exact absurd (congrArg Fin.val hc) (by simp)
-            | exact absurd hc (by simp [Fin.ext_iff])
-            | simp [Fin.ext_iff] at hc
         · rfl
       obtain ⟨g1, hg1v, hg1w, hg1good⟩ := exists_gl_vecMul_single_eq_and_fixes_single_of_le s hs (m := n - p) (by omega) (by omega)
         _ _ hv hw hwv

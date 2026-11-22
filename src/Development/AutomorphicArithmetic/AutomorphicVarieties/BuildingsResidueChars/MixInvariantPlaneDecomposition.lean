@@ -42,14 +42,14 @@ private theorem mix_pX (h2 : (2 : k) ≠ 0) (α β : kˣ) (A B : Matrix (Fin 2) 
   have hβ := β.ne_zero
   ext i
   fin_cases i <;>
-    simp [mix, pX_apply, Matrix.mulVec, dotProduct, Fin.sum_univ_four, Fin.sum_univ_two] <;> field_simp <;> ring
+    simp [mix, pX_apply, Matrix.mulVec, dotProduct, Fin.sum_univ_four] <;> field_simp <;> ring
 
 private theorem mix_pY (h2 : (2 : k) ≠ 0) (γ : kˣ) (A B : Matrix (Fin 2) (Fin 2) k) (a : Fin 2 → k) :
     mix γ A B *ᵥ pY a = pY (B *ᵥ a) := by
   have hγ := γ.ne_zero
   ext i
   fin_cases i <;>
-    simp [mix, pY_apply, Matrix.mulVec, dotProduct, Fin.sum_univ_four, Fin.sum_univ_two] <;> field_simp <;> ring
+    simp [mix, pY_apply, Matrix.mulVec, dotProduct, Fin.sum_univ_four] <;> field_simp <;> ring
 
 private theorem diag_pX (α β : kˣ) (a : Fin 2 → k) :
     Matrix.diagonal ![(β : k), -(α : k), -(β : k), (α : k)] *ᵥ pX α β a = pY a := by

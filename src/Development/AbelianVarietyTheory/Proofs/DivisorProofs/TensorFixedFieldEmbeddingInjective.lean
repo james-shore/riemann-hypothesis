@@ -36,7 +36,7 @@ theorem lTensor_phi (G : HTGroup p) (K : Type) [Field K] [Algebra ℚ K] (β Y �
   | zero => simp <;> rfl
   | tmul k c =>
     simp only [LinearMap.lTensor_tmul, phi_apply, TensorProduct.prodRight_tmul, inC, starT_tmul,
-      AlgHom.coe_toRingHom, RingHom.coe_coe, Algebra.TensorProduct.includeRight_apply,
+      RingHom.coe_coe, Algebra.TensorProduct.includeRight_apply,
       Algebra.TensorProduct.tmul_mul_tmul, one_mul, mul_one, TensorProduct.tmul_sub, sh]
   | add x y hx hy =>
     rw [map_add, map_add, hx, hy]

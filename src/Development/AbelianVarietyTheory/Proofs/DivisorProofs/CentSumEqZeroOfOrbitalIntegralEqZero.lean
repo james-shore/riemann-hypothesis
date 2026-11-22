@@ -119,17 +119,17 @@ theorem toAfF_injective (G : HTGroup p) (β : G.Cˣ) (x : (AfP p ⊗[ℚ] G.C)ˣ
   have h1 := congrArg Prod.fst h0
   have h2 := congrArg Prod.snd h0
   simp only [GlobalTheory.LKCx.toAfF, MonoidHom.codRestrict_apply, MonoidHom.comp_apply, MonoidHom.prodMap, MonoidHom.prod_apply,
-    Prod.map_fst, Prod.map_snd, Subgroup.coe_subtype, MulEquiv.coe_toMonoidHom, MulAut.conj_apply, mul_left_inj,
+    Subgroup.coe_subtype, MulEquiv.coe_toMonoidHom, MulAut.conj_apply, mul_left_inj,
     mul_right_inj] at h1 h2
   have e1 : (a : G.Cˣ × ℚˣ).1 = (b : G.Cˣ × ℚˣ).1 := by
     apply Units.ext
     have := congrArg Units.val h1
-    simp only [Units.coe_map, MonoidHom.coe_coe] at this
+    simp only [Units.coe_map] at this
     exact Algebra.TensorProduct.includeRight_injective (algebraMap ℚ (AfP p)).injective this
   have e2 : (a : G.Cˣ × ℚˣ).2 = (b : G.Cˣ × ℚˣ).2 := by
     apply Units.ext
     have := congrArg Units.val h2
-    simp only [Units.coe_map, MonoidHom.coe_coe] at this
+    simp only [Units.coe_map] at this
     exact (algebraMap ℚ (AfP p)).injective this
   exact Subtype.ext (Prod.ext e1 e2)
 
@@ -226,5 +226,5 @@ theorem GlobalTheory.LKDef.DForm.centSum_eq_zero_of_orbK : ∀ (p : ℕ) [Fact p
   refine finsum_congr fun q => ?_
   rw [hcard]
   congr 1
-  · simp only [term, hF₀, hemb, Prod.fst_mul, Prod.snd_mul, Prod.fst_inv, Prod.snd_inv, mul_one, MonoidHom.id_apply]
+  · simp only [term, hF₀, Prod.fst_mul, Prod.snd_mul, Prod.fst_inv, Prod.snd_inv, mul_one, MonoidHom.id_apply]
     rfl

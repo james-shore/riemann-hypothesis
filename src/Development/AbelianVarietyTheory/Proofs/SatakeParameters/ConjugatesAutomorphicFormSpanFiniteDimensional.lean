@@ -175,7 +175,7 @@ theorem conj_span_finite : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E
     refine congrFun (Continuous.ext_on hdense (hφ'.cont.comp (continuous_mul_const _)) hφ'.cont ?_)
     rintro _ ⟨γ, hγ, x, hx, rfl⟩
     have hxk : x * (k : UA E n) ∈ finU E n := mul_mem hx k.2
-    simp only [Function.comp_apply]
+    simp only
     rw [mul_assoc, hφ'.left γ hγ, hφ'.left γ hγ, hagree _ hxk, hagree _ hx, hkφ]
   · obtain ⟨s₀, hs₀, rfl⟩ := Finset.mem_image.1 hs
     have hsf : ((a s₀ : finU E n) : UA E n) ∈ finU E n := (a s₀).2

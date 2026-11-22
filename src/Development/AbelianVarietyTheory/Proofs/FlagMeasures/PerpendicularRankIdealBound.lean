@@ -148,8 +148,6 @@ theorem span_inf (L : Submodule (𝓞 K) V) (hL : Submodule.IsLattice K L) (T : 
   | exact @_root_.GlobalTheory.SpanInfEq.main
   | exact _root_.GlobalTheory.SpanInfEq.main
   | (apply _root_.GlobalTheory.SpanInfEq.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SpanInfEq.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SpanInfEq.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SpanInfEq.main ..)
 
 theorem key (h : V →ₗ⋆[K] V →ₗ[K] K) (hs : h.IsSymm) (hn : h.Nondegenerate) (ha : ∀ x, h x x = 0 → x = 0)

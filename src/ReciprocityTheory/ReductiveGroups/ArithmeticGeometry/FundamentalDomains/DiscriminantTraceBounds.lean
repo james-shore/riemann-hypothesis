@@ -36,8 +36,6 @@ theorem norm_mul_discr_ge {x : E} (hx : x ≠ 0)
           (FractionalIdeal.dual ℤ ℚ (1 : FractionalIdeal (𝓞 E)⁰ E))⁻¹ := by
             first
             | exact mul_le_mul' hsp le_rfl
-            | exact mul_right_mono hsp
-            | exact FractionalIdeal.mul_right_mono _ hsp
       _ = 1 := mul_inv_cancel₀ hD0
   obtain ⟨I, hI⟩ := FractionalIdeal.le_one_iff_exists_coeIdeal.mp hJ
   have hJ0 : FractionalIdeal.spanSingleton (𝓞 E)⁰ x *

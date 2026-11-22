@@ -21,7 +21,7 @@ theorem isTA_det_of_isUA {F E : Type} [Field F] [NumberField F] [Field E] [Algeb
     rw [Finset.sum_comm]
     convert h using 1
     · rfl
-    · simp [G', Pi.single_apply, apply_ite σ]
+    · simp [G', Pi.single_apply]
   have hdet := congrArg Matrix.det hM
   have hs : (g.map σ).det = σ g.det := by
     rw [show g.map σ = (σ : RA F E →+* RA F E).mapMatrix g from rfl, ← RingHom.map_det]; rfl

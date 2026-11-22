@@ -15,9 +15,7 @@ theorem mult_conj_add_mult {E : Type} [Field E] [NumberField E] [IsCMField E] {H
   first
   | exact @_root_.GlobalTheory.ConjugateMultiplicity.target
   | exact _root_.GlobalTheory.ConjugateMultiplicity.target
-  | (apply _root_.GlobalTheory.ConjugateMultiplicity.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ConjugateMultiplicity.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ConjugateMultiplicity.target <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.ConjugateMultiplicity.target)
   | (intros; exact _root_.GlobalTheory.ConjugateMultiplicity.target ..)
 
 theorem exists_indep {E : Type} [Field E] [NumberField E] (M : Type) [AddCommGroup M] [Module (𝓞 E) M]

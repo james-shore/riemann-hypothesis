@@ -28,11 +28,11 @@ theorem map_add_gen {R S Fh : Type*} [CommRing R] [CommRing S] [FunLike Fh R S]
 
 theorem map_one_eq {R S : Type*} [CommRing R] [CommRing S] (ι : R →ₙ+* S) {n : Type*} [DecidableEq n] :
     (1 : Matrix n n R).map ι = ι 1 • (1 : Matrix n n S) := by
-  ext i j; by_cases h : i = j <;> simp [Matrix.one_apply, h]
+  ext i j; by_cases h : i = j <;> simp [h]
 
 theorem map_neg_one_eq {R S : Type*} [CommRing R] [CommRing S] (ι : R →ₙ+* S) {n : Type*} [DecidableEq n] :
     (-1 : Matrix n n R).map ι = -(ι 1 • (1 : Matrix n n S)) := by
-  ext i j; by_cases h : i = j <;> simp [Matrix.one_apply, h]
+  ext i j; by_cases h : i = j <;> simp [h]
 
 theorem assoc_a {R : Type*} [CommRing R] {a b c d e : Type*} [Fintype b] [Fintype c] [Fintype d]
     (A : Matrix a b R) (B : Matrix b c R) (C : Matrix c d R) (D : Matrix d e R) :
@@ -107,7 +107,7 @@ theorem transport_back : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [N
     rw [Matrix.mulVec_mulVec, hZP, ← Matrix.mulVec_mulVec, map_mulVec_gen]
 
   have hPcQc : P.map (cA σ) * Q.map (cA σ) = ι 1 • (1 : Matrix (Fin n) (Fin n) (AE F E)) := by
-    rw [← map_mul_gen, hPQ]; ext i j; by_cases h : i = j <;> simp [Matrix.one_apply, h, hce]
+    rw [← map_mul_gen, hPQ]; ext i j; by_cases h : i = j <;> simp [h, hce]
   have h1 : Pᵀ * incM F X.J = JL.map ι * Q.map (cA σ) := by
     calc Pᵀ * incM F X.J = ι 1 • (Pᵀ * incM F X.J) := by
             rw [← Matrix.smul_mul, ← Matrix.transpose_smul, heP]
@@ -147,16 +147,16 @@ theorem transport_back : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [N
     rw [Matrix.fromRows_map, map_one_eq]
   have hanti : GlobalTheory.DblVac.antiCols (F := F) (E := E) n * P = Matrix.fromBlocks P 0 0 P * (Matrix.fromRows (1 : Matrix (Fin n) (Fin n) O) (-1 : Matrix (Fin n) (Fin n) O)).map ι := by
     rw [hNab, GlobalTheory.DblVac.antiCols, Matrix.fromRows_mul, Matrix.fromBlocks_mul_fromRows]
-    simp [Matrix.mul_smul, heP]
+    simp [heP]
   have hdiag : ∀ Y : Matrix (Fin n) (Fin n) (AE F E), (diagCols (Fin n) : Matrix (Fin n ⊕ Fin n) (Fin n) (AE F E)) * (P * Y) = Matrix.fromBlocks P 0 0 P * ((Matrix.fromRows (1 : Matrix (Fin n) (Fin n) O) (1 : Matrix (Fin n) (Fin n) O)).map ι * Y) := by
     intro Y
     rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, hDel, diagCols, Matrix.fromRows_mul, Matrix.fromBlocks_mul_fromRows]
-    simp [Matrix.mul_smul, heP]
+    simp [heP]
   have hantiT : ∀ {k : Type} [Fintype k] (Y : Matrix (Fin n ⊕ Fin n) k (AE F E)), (GlobalTheory.DblVac.antiCols (F := F) (E := E) n)ᵀ * (Matrix.fromBlocks P 0 0 P * Y) = P * (((Matrix.fromRows (1 : Matrix (Fin n) (Fin n) O) (-1 : Matrix (Fin n) (Fin n) O)).map ι)ᵀ * Y) := by
     intro k _ Y
     rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, hNab, GlobalTheory.DblVac.antiCols, Matrix.transpose_fromRows, Matrix.transpose_fromRows,
       Matrix.fromCols_mul_fromBlocks, Matrix.mul_fromCols]
-    simp [Matrix.mul_smul, heP]
+    simp [heP]
   have hMG' : ∀ {k : Type} [Fintype k] (Y : Matrix (Fin n ⊕ Fin n) k (AE F E)), M * (Matrix.fromBlocks P 0 0 P * Y) = Matrix.fromBlocks P 0 0 P * (G.map ι * Y) := by
     intro k _ Y; rw [← Matrix.mul_assoc, hMG, Matrix.mul_assoc]
   have hQPι : ZL.map ι * (Q * P) = ZL.map ι := by rw [hQP, Matrix.mul_smul, Matrix.mul_one, hmapE]

@@ -35,7 +35,7 @@ theorem hd_hcup (β : V →ₗ[R] W →ₗ[R] Z) (p q : ℕ) (F : (Fin (p + 1) �
   rw [Fin.sum_univ_castSucc] at hF'
   have e0 : F (fun j => x ⟨((Fin.last (p + 1)).succAbove j : ℕ), by omega⟩) =
       F (fun i => x ⟨i, by omega⟩) := by
-    congr 1; funext k; congr 1; ext; simp [val_succAbove]
+    congr 1; funext k; congr 1; ext; simp
   rw [e0] at hF'
   have hsum : ∑ a : Fin (p + 1), (-1 : ℤ) ^ (a : ℕ) •
       F (fun j => x ⟨((Fin.castSucc a).succAbove j : ℕ), by omega⟩) =
@@ -58,7 +58,7 @@ theorem hd_hcup (β : V →ₗ[R] W →ₗ[R] Z) (p q : ℕ) (F : (Fin (p + 1) �
       simp [map_sum, LinearMap.sum_apply]
     have e1 : (F' fun j => x ⟨p + ((0 : Fin (q + 2)).succAbove j : ℕ), by omega⟩) =
         F' fun j => x ⟨p + 1 + j, by omega⟩ := by
-      congr 1; funext k; congr 1; ext; simp [val_succAbove]; omega
+      congr 1; funext k; congr 1; ext; simp; omega
     rw [s1, hsum, e1]
     simp only [Fin.val_zero, pow_zero, one_smul, map_add, map_sum, map_zsmul, smul_add, Finset.smul_sum,
       smul_smul, Fin.val_succ, LinearMap.smul_apply]
@@ -76,8 +76,7 @@ theorem hd_hcup (β : V →ₗ[R] W →ₗ[R] Z) (p q : ℕ) (F : (Fin (p + 1) �
     | (congr 2 <;> (try funext k) <;> (try congr 1) <;> (try funext k) <;> (first | apply x_congr | apply Fin.ext) <;>
         simp only [val_succAbove, finCongr_apply, Fin.val_cast, Fin.val_castAdd, Fin.val_natAdd,
           Fin.val_castSucc, Fin.val_succ] <;> (try split_ifs) <;>
-        (try simp only [finCongr_apply, Fin.val_cast, Fin.val_castAdd, Fin.val_natAdd,
-          Fin.val_castSucc, Fin.val_succ] at *) <;> omega)
+        (try simp only [Fin.val_castSucc, Fin.val_succ] at *) <;> omega)
 
 end Leibniz
 

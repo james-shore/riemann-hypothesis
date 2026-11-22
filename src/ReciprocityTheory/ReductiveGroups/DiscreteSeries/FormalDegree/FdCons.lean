@@ -69,17 +69,15 @@ theorem fdCons_cd {ε : Fin n → Bool} (hp : 1 ≤ pOf ε) (hq : 1 ≤ qOf ε) 
     funext g
     first
       | (rw [RCLike.star_def, RCLike.mul_conj]; push_cast; ring_nf; done)
-      | (rw [Complex.star_def, Complex.mul_conj, Complex.normSq_eq_norm_sq]; push_cast; ring_nf; done)
-      | (simp [Complex.mul_conj, Complex.normSq_eq_norm_sq]; done)
-      | (simp [Complex.mul_conj, Complex.normSq_eq_norm_sq, Complex.sq_norm]; done)
-      | (simp [RCLike.mul_conj]; done)
+      | (rw [Complex.star_def, Complex.mul_conj, Complex.normSq_eq_norm_sq]; push_cast; ring_nf)
+      | (simp [Complex.mul_conj, Complex.normSq_eq_norm_sq])
   rw [h3] at hI
-  first | rw [integral_complex_ofReal] at hI | rw [integral_ofReal] at hI
+  first | rw [integral_complex_ofReal] at hI
   rw [inner_self_eq_norm_sq_to_K] at hI
   have hJ : ∫ g, ‖Formalism.MainNotions.S.coefOn σ v v g‖ ^ 2 ∂(muCD ε) = ‖v‖ ^ 4 / d := by
     have h4 : ((∫ g, ‖Formalism.MainNotions.S.coefOn σ v v g‖ ^ 2 ∂(muCD ε) : ℝ) : ℂ) = ((‖v‖ ^ 4 / d : ℝ) : ℂ) := by
       rw [hI]
-      first | (push_cast; ring_nf; done) | (simp; done) | (norm_cast; ring_nf; done) | (simp; ring_nf; done)
+      first | (push_cast; ring_nf; done) | (simp; done) | (norm_cast; ring_nf; done) | (simp; ring_nf)
     exact_mod_cast h4
   have hv4 : ‖v‖ ^ 4 ≠ 0 := pow_ne_zero _ (norm_ne_zero_iff.2 hv)
   unfold Formalism.MainNotions.S.fdegOf

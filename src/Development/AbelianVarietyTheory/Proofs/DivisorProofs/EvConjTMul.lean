@@ -21,9 +21,7 @@ theorem TT_deg {n : ℕ} (P : Poly n) : (TT n P).totalDegree ≤ P.totalDegree :
   first
   | exact @_root_.GlobalTheory.TotalDegreeBounds.main
   | exact _root_.GlobalTheory.TotalDegreeBounds.main
-  | (apply _root_.GlobalTheory.TotalDegreeBounds.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TotalDegreeBounds.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TotalDegreeBounds.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.TotalDegreeBounds.main)
   | (intros; exact _root_.GlobalTheory.TotalDegreeBounds.main ..)
 
 theorem ev_conjT_mul {n : ℕ} (A M : Mat n) (P : Poly n) :

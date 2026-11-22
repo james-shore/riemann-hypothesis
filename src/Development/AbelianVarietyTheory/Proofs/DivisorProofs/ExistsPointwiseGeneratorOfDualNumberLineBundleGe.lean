@@ -32,7 +32,7 @@ theorem epsGen_spMap_eq {E : Type} [CommRing E] [Algebra R E] (e : Pt (epsR R) E
   ext u
   change u ∈ (PrimeSpectrum.comap (epsEv e : DualNumber E →+* E) p).asIdeal ↔
     u ∈ (PrimeSpectrum.comap (TrivSqZeroExt.fstHom R E E : DualNumber E →+* E) p).asIdeal
-  simp only [PrimeSpectrum.comap_asIdeal, Ideal.mem_comap]
+  simp only
   have hc : ptAlg (D := DualNumber R) e DualNumber.eps ∈ p.asIdeal :=
     p.isPrime.mem_of_pow_mem 2 (by rw [pow_two, ← map_mul, DualNumber.eps_mul_eps, map_zero]; exact p.asIdeal.zero_mem)
   change epsEv e u ∈ p.asIdeal ↔ u.fst ∈ p.asIdeal
@@ -85,7 +85,7 @@ theorem epsGen_key (v : epsR R ⟶ B) {E : Type} [CommRing E] [Algebra R E] (z :
   · simp only [ptV, Category.assoc, lift_fst]
     rw [← Category.assoc (spOver _), spOver_comp]
     have : (epsEv (z ≫ snd _ _)).comp (TrivSqZeroExt.inlAlgHom R E E) = AlgHom.id R E := by
-      ext a; simp [epsEv, DualNumber.lift_apply_inl]
+      ext a; simp [epsEv]
     rw [this, spOver_id, Category.id_comp]
   · simp only [ptV, Category.assoc, lift_snd]
     rw [← Category.assoc (spOver _), spOver_comp]

@@ -16,7 +16,7 @@ theorem pairing_eq {K : Type} [Field K] (c n : ℕ) (g : (Fin c → K) →ₗ[K]
   rw [show (Pi.basisFun K (Fin c)).repr y = y from rfl] at h
   rw [h]
   conv_lhs => rw [← (Pi.basisFun K (Fin n)).sum_repr F]
-  simp [dotProduct, map_sum, Basis.dualBasis_repr, mul_comm]
+  simp [dotProduct, map_sum, Basis.dualBasis_repr]
 
 theorem continuous_cnorm {ι : Type} [Fintype ι] : Continuous (Formalism.HermitianLatticesTheory.cnorm : (ι → ℂ) → ℝ) := by
   unfold Formalism.HermitianLatticesTheory.cnorm

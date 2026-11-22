@@ -51,7 +51,7 @@ theorem emb_form {R : Type} [CommRing R] {m : ℕ} (f : (ℕ →₀ R) →ₗ[R]
     by_cases hj : j = k
     · subst hj
       simp
-    · simp [Pi.single_apply, hj]
+    · simp [hj]
   conv_rhs => rw [← Finset.univ_sum_single v]
   simp only [map_sum, hs, map_smul, smul_eq_mul, dotProduct]
   refine Finset.sum_congr rfl ?_
@@ -98,7 +98,7 @@ private theorem exactAt_of_exactAt_image_injective {V U : Type} (e : V → U) (h
       apply Finsupp.lhom_ext'
       intro l
       apply LinearMap.ext_ring
-      simp [bd, Finsupp.mapDomain_finset_sum, Finsupp.mapDomain_smul, Finsupp.mapDomain_single, List.eraseIdx_map]
+      simp [bd, Finsupp.mapDomain_single, List.eraseIdx_map]
     exact LinearMap.congr_fun E c
   intro c hc hbc
   have hc' : Finsupp.mapDomain (List.map e) c ∈ chains (List.map e '' F) q := by

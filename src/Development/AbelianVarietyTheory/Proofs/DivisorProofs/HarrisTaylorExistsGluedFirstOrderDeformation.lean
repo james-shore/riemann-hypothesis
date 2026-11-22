@@ -107,7 +107,7 @@ theorem GlobalTheory.HTGlue.exists_glue : ∀ (p : ℕ) [Fact p.Prime] (D : Glob
   set tR : R →+* TrivSqZeroExt k (Fin d → k) := (algebraMap k (TrivSqZeroExt k (Fin d → k))).comp tk with htR
   have hs : t = spMap (TrivSqZeroExt.fstHom k k (Fin d → k)).toRingHom ≫ spMap tR := by
     rw [ht, ← GlobalTheory.Cris.spMap_comp]
-    all_goals (congr 1 <;> ext x <;> simp [tR])
+    all_goals (congr 1 <;> ext x)
   subst hs
   choose o' m' hm' using hdef
   have hsε : spMap (algebraMap k (DualNumber k)) ≫
@@ -117,7 +117,7 @@ theorem GlobalTheory.HTGlue.exists_glue : ∀ (p : ℕ) [Fact p.Prime] (D : Glob
   have hs₀ : spMap (TrivSqZeroExt.fstHom k k (Fin d → k)).toRingHom ≫ spMap tR =
       spMap (TrivSqZeroExt.fstHom k k k).toRingHom ≫ spMap ((algebraMap k (TrivSqZeroExt k k)).comp tk) := by
     rw [ht, ← GlobalTheory.Cris.spMap_comp]
-    all_goals (congr 1 <;> ext x <;> simp)
+    all_goals (congr 1 <;> ext x)
   have hsurε : Function.Surjective (TrivSqZeroExt.fstHom k k k).toRingHom :=
     fun a => ⟨TrivSqZeroExt.inl a, by simp⟩
   have n1 := fun j => GlobalTheory.T.harrisTaylor_lift_hodge_summand_admissible_stable p D R b N (DualNumber k) k (TrivSqZeroExt.fstHom k k k).toRingHom hsurε (GlobalTheory.FODef.sqZero k k) ((algebraMap k (TrivSqZeroExt k k)).comp tk) (spMap (algebraMap k (DualNumber k)) ≫ (spMap (TrivSqZeroExt.fstHom k k (Fin d → k)).toRingHom ≫ spMap tR)) (spMap (TrivSqZeroExt.fstHom k k (Fin d → k)).toRingHom ≫ spMap tR) o₀ (o' j) (m' j) hsε hs₀

@@ -21,14 +21,12 @@ theorem val_g (v : HeightOneSpectrum (𝓞 X.B.I.F)) :
       ((algebraMap (𝓞 X.B.I.F) X.B.I.F ((X.B.g : ℕ) : 𝓞 X.B.I.F) : X.B.I.F) : v.adicCompletion X.B.I.F) := by
     rw [map_natCast]
     first
-    | (simp only [map_natCast, UniformSpace.Completion.coe_natCast]; rfl)
+    | (simp only [map_natCast, UniformSpace.Completion.coe_natCast])
     | (induction X.B.g with
         | zero =>
           simp only [Nat.cast_zero]
           first
           | rfl
-          | (rw [WithVal.equiv_symm_zero]; rfl)
-          | (simp only [map_zero, UniformSpace.Completion.coe_zero]; rfl)
         | succ n ih =>
           push_cast
           rw [ih, map_add, map_one, UniformSpace.Completion.coe_add, UniformSpace.Completion.coe_one]

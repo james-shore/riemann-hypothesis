@@ -17,10 +17,6 @@ variable {p : ℕ} [Fact p.Prime]
 theorem exists_limit : ∀ (p : ℕ) [Fact p.Prime] (D : Datum p) (g : ℕ → D.La →+ D.La), (∀ n m : ℕ, 0 < n → 0 < m → (n * m).Coprime p → ∀ x, ∃ z, g (n * m) x = g n x + n • z) → ∃ h₀ : Module.End (AfP p) (AfP p ⊗[ℚ] VQ D), (∀ v ∈ LaHat D, h₀ v ∈ LaHat D) ∧ ∀ n : ℕ, 0 < n → n.Coprime p → ∀ x, ∃ w ∈ LaHat D, h₀ (inAf D x) = inAf D (g n x) + n • w := by
   first
   | exact @_root_.GlobalTheory.AdelicLimitCompactness.main
-  | exact _root_.GlobalTheory.AdelicLimitCompactness.main
-  | (apply _root_.GlobalTheory.AdelicLimitCompactness.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AdelicLimitCompactness.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AdelicLimitCompactness.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AdelicLimitCompactness.main ..)
 
 end GlobalTheory.LKGeo.ModLim

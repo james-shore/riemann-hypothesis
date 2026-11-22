@@ -16,15 +16,15 @@ private theorem indicator_mem_SB {X : Type} [TopologicalSpace X] {f : X → ℂ}
       · exact absurd (h1.trans h0.symm) one_ne_zero
       · have : (U.indicator fun _ : X => (1 : ℂ)) ⁻¹' {c} = U := by
           ext x
-          by_cases hx : x ∈ U <;> simp [hx, h1, Ne.symm h0, h0]
+          by_cases hx : x ∈ U <;> simp [hx, h1, h0]
         rw [this]; exact hU.isOpen
       · have : (U.indicator fun _ : X => (1 : ℂ)) ⁻¹' {c} = Uᶜ := by
           ext x
-          by_cases hx : x ∈ U <;> simp [hx, Ne.symm h1, h1, h0]
+          by_cases hx : x ∈ U <;> simp [hx, h1, h0]
         rw [this]; exact hU.compl.isOpen
       · have : (U.indicator fun _ : X => (1 : ℂ)) ⁻¹' {c} = ∅ := by
           ext x
-          by_cases hx : x ∈ U <;> simp [hx, Ne.symm h1, Ne.symm h0, h1, h0]
+          by_cases hx : x ∈ U <;> simp [hx, h1, h0]
         rw [this]; exact isOpen_empty
     have h2 : U.indicator f = (U.indicator fun _ : X => (1 : ℂ)) * f := by
       ext x
@@ -93,7 +93,7 @@ theorem UpperTheory.ConvolutionTheory.R2.I.loc :
       have e : b = ⟨C.indicator b.1, indicator_mem_SB b.2 hC⟩ + ⟨Cᶜ.indicator b.1, indicator_mem_SB b.2 hC.compl⟩ := by
         apply Subtype.ext
         funext x
-        by_cases hx : x ∈ C <;> simp [hx]
+        by_cases hx : x ∈ C <;> simp
       rw [e, map_add, hb _ (fun x hx => by by_contra hc; exact hx (by simp [hc])), hb', add_zero]
       intro x hx
       have hxC : x ∉ C := by

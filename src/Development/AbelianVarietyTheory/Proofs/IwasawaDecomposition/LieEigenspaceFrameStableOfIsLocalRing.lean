@@ -35,7 +35,7 @@ theorem basis_fixed_bc {L k : Type} [CommRing L] [CommRing k] (ψ : L →+* k) {
     · simp [Pi.single_apply]
   have h1 : ∀ j, P' (Pi.single j 1) = ∑ i, ψ (M j i) • (ψ ∘ e i) := fun j => by
     rw [show (Pi.single j 1 : Fin n → k) = ψ ∘ Pi.single j 1 from funext fun j' => by
-      by_cases hj : j' = j <;> simp [hj, Pi.single_apply], h, hM]
+      by_cases hj : j' = j <;> simp [hj], h, hM]
     funext r
     simp [Finset.sum_apply]
   refine ⟨fun i => ∑ j, c' j * ψ (M j i), ?_, fun a ha => ?_⟩

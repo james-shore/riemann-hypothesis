@@ -61,7 +61,7 @@ theorem uni_dual (U V : Matrix ι ι ℤ) (hUV : U * V = 1) (hVU : V * U = 1) (G
   rw [hinv, ← mulVec_mulVec, ← mulVec_mulVec, dotProduct_mulVec (cz c) (mz V), ← mulVec_transpose]
   have e : (mz V)ᵀ *ᵥ cz c = cz (Vᵀ *ᵥ c) := by
     funext i
-    simp [cz, mz_apply, mulVec, dotProduct, transpose_apply]
+    simp [cz, mulVec, dotProduct, transpose_apply]
   rw [e]
   apply hD
   intro h0

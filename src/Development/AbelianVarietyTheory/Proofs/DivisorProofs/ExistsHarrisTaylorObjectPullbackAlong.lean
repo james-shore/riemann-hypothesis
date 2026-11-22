@@ -26,7 +26,7 @@ theorem tanScal_iff {S S' : Scheme.{0}} (f : S' ⟶ S) {O : Type} [Ring O] (A : 
   have fs : spMap (TrivSqZeroExt.fstHom R' R' R').toRingHom ≫ spMap (algebraMap R' (DualNumber R')) = 𝟙 _ := by
     refine (Spec.map_comp _ _).symm.trans ((congrArg Spec.map ?_).trans (Spec.map_id _))
     ext a
-    simp [TrivSqZeroExt.algebraMap_eq_inl]
+    simp
   have E : (v₀ ≫ act.act b).left = (v ≫ act'.act b).left ≫ φ := by
     rw [Over.comp_left, Over.comp_left, hv, Category.assoc, Category.assoc, hact]
   refine and_congr ?_ ?_

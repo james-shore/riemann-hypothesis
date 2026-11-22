@@ -47,9 +47,8 @@ theorem gram (e f : Fin r → V) (z : V)
     intro a b; rw [← H.herm, hef]; split_ifs with h1 h2 h2 <;> simp_all
   have hze : ∀ a, H.B z (e a) = 0 := fun a => herm0 H (hez a)
   have hzf : ∀ a, H.B z (f a) = 0 := fun a => herm0 H (hfz a)
-  simp only [map_add, map_sub, map_neg, map_sum, map_smul, map_smulₛₗ, map_zero, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
-    LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, sub_zero, mul_ite, ite_mul, mul_one, one_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, star_zero, star_one, hee, hff, hef, hfe, hez, hfz, hze, hzf]
+  simp only [map_add, map_sum, map_smul, map_smulₛₗ, LinearMap.add_apply, LinearMap.sum_apply,
+    LinearMap.smul_apply, smul_eq_mul, mul_zero, Finset.sum_const_zero, add_zero, zero_add, mul_ite, mul_one, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, hee, hff, hef, hfe, hez, hfz, hze, hzf]
   simp only [mul_comm (star _)]; ring
 
 theorem rem_perp (e f : Fin r → V) (z : V)
@@ -63,9 +62,8 @@ theorem rem_perp (e f : Fin r → V) (z : V)
   have hze : ∀ a, H.B z (e a) = 0 := fun a => herm0 H (hez a)
   have hzf : ∀ a, H.B z (f a) = 0 := fun a => herm0 H (hfz a)
   refine ⟨fun a => ?_, fun a => ?_, ?_⟩ <;>
-    simp only [crd_apply, map_add, map_sub, map_neg, map_sum, map_smul, map_smulₛₗ, map_zero, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
-    LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, sub_zero, mul_ite, ite_mul, mul_one, one_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, star_zero, star_one, hee, hff, hef, hfe, hez, hfz, hze, hzf, sub_self]
+    simp only [crd_apply, map_add, map_sub, map_sum, map_smul, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
+    LinearMap.smul_apply, smul_eq_mul, mul_zero, Finset.sum_const_zero, add_zero, zero_add, mul_ite, mul_one, Finset.sum_ite_eq', Finset.mem_univ, if_true, hee, hff, hef, hfe, hez, hfz, hze, hzf, sub_self]
   field_simp
   simp
 
@@ -98,17 +96,15 @@ theorem nil_perp (e f : Fin r → V) (z : V) (hee : ∀ a b, H.B (e a) (e b) = 0
     (∀ a, H.B (nil H e f w) (e a) = 0) ∧ (∀ a, H.B (nil H e f w) (f a) = 0) ∧
       H.B (nil H e f w) z = H.B w z := by
   refine ⟨fun a => ?_, fun a => ?_, ?_⟩ <;>
-    simp only [nil_apply, map_add, map_sub, map_neg, map_sum, map_smul, map_smulₛₗ, map_zero, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
-    LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, sub_zero, mul_ite, ite_mul, mul_one, one_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, star_zero, star_one, hee, hef, hez, hw, sub_self]
+    simp only [nil_apply, map_sub, map_sum, map_smul, LinearMap.sub_apply, LinearMap.sum_apply,
+    LinearMap.smul_apply, smul_eq_mul, mul_zero, Finset.sum_const_zero, sub_zero, mul_ite, mul_one, Finset.sum_ite_eq', Finset.mem_univ, if_true, hee, hef, hez, hw, sub_self]
 
 theorem nil_isom (e f : Fin r → V) (hee : ∀ a b, H.B (e a) (e b) = 0) (w w' : V)
     (hw : ∀ a, H.B w (e a) = 0) (hw' : ∀ a, H.B w' (e a) = 0) :
     H.B (nil H e f w) (nil H e f w') = H.B w w' := by
   have hw'' : ∀ a, H.B (e a) w' = 0 := fun a => herm0 H (hw' a)
-  simp only [nil_apply, map_add, map_sub, map_neg, map_sum, map_smul, map_smulₛₗ, map_zero, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
-    LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, sub_zero, mul_ite, ite_mul, mul_one, one_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, star_zero, star_one, hee, hw, hw'', sub_self]
+  simp only [nil_apply, map_sub, map_sum, map_smul, map_smulₛₗ, LinearMap.sub_apply, LinearMap.sum_apply,
+    LinearMap.smul_apply, smul_eq_mul, mul_zero, Finset.sum_const_zero, sub_zero, starRingEnd_apply, hee, hw, hw'', sub_self]
 
 theorem rem_all (e f e' f' : Fin r → V) (z z' : V) (he'e : ∀ a b, H.B (e' a) (e' b) = 0) (hf'f : ∀ a b, H.B (f' a) (f' b) = 0)
     (he'f : ∀ a b, H.B (e' a) (f' b) = if a = b then 1 else 0)
@@ -159,21 +155,15 @@ theorem rmap_isom (e f e' f' : Fin r → V) (z z' : V) (hee : ∀ a b, H.B (e a)
     rw [crd_apply, crd_apply, crd_apply, crd_apply, gram H e f z hee hff hef hez hfz,
       gram H e' f' z' he'e hf'f he'f he'z hf'z, hzz']
   have c1 : H.B (crd H e' f' z' e f z v) (nil H e f w') = 0 := by
-    rw [crd_apply]; simp only [map_add, map_sub, map_neg, map_sum, map_smul, map_smulₛₗ, map_zero, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
-    LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, sub_zero, mul_ite, ite_mul, mul_one, one_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, star_zero, star_one, m1', m2', m3']
+    rw [crd_apply]; simp only [map_add, map_sum, map_smul, LinearMap.add_apply, LinearMap.sum_apply,
+    LinearMap.smul_apply, smul_eq_mul, mul_zero, Finset.sum_const_zero, add_zero, m1', m2', m3']
   have c2 : H.B (nil H e f w) (crd H e' f' z' e f z v') = 0 := by
-    rw [crd_apply]; simp only [map_add, map_sub, map_neg, map_sum, map_smul, map_smulₛₗ, map_zero, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
-    LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, sub_zero, mul_ite, ite_mul, mul_one, one_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, star_zero, star_one, n1, n2, n3, a5]
+    rw [crd_apply]; simp only [map_add, map_sum, map_smulₛₗ, smul_eq_mul, mul_zero, Finset.sum_const_zero, add_zero, starRingEnd_apply, n1, n2, n3, a5]
   have c3 : H.B (crd H e' f' z' e' f' z' v) w' = 0 := by
-    rw [crd_apply]; simp only [map_add, map_sub, map_neg, map_sum, map_smul, map_smulₛₗ, map_zero, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
-    LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, sub_zero, mul_ite, ite_mul, mul_one, one_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, star_zero, star_one, b1', b2', b3']
+    rw [crd_apply]; simp only [map_add, map_sum, map_smul, LinearMap.add_apply, LinearMap.sum_apply,
+    LinearMap.smul_apply, smul_eq_mul, mul_zero, Finset.sum_const_zero, add_zero, b1', b2', b3']
   have c4 : H.B w (crd H e' f' z' e' f' z' v') = 0 := by
-    rw [crd_apply]; simp only [map_add, map_sub, map_neg, map_sum, map_smul, map_smulₛₗ, map_zero, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
-    LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, sub_zero, mul_ite, ite_mul, mul_one, one_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, star_zero, star_one, a1, a2, a3]
+    rw [crd_apply]; simp only [map_add, map_sum, map_smulₛₗ, smul_eq_mul, mul_zero, Finset.sum_const_zero, add_zero, starRingEnd_apply, a1, a2, a3]
   simp only [map_add, LinearMap.add_apply]
   rw [hA, c1, c2, c3, c4, nil_isom H e f hee _ _ a4 b4]
 
@@ -187,10 +177,8 @@ theorem rmap_vals (e f e' f' : Fin r → V) (z z' : V) (he'e : ∀ a b, H.B (e' 
   have hz'e : ∀ a, H.B z' (e' a) = 0 := fun a => herm0 H (he'z a)
   have hz'f : ∀ a, H.B z' (f' a) = 0 := fun a => herm0 H (hf'z a)
   refine ⟨fun a => ?_, fun a => ?_, ?_⟩ <;>
-    simp only [rmap_apply, crd_apply, map_add, map_sub, map_neg, map_sum, map_smul, map_smulₛₗ, map_zero, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.sum_apply,
-    LinearMap.smul_apply, LinearMap.zero_apply, smul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add, sub_zero, mul_ite, ite_mul, mul_one, one_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true, starRingEnd_apply, star_zero, star_one, ite_smul, one_smul, zero_smul, Finset.sum_const_zero, he'e, hf'f, he'f, hf'e, he'z, hf'z, hz'e, hz'f,
-      inv_mul_cancel₀ hzz'0, sub_self, nil_apply]
+    simp only [rmap_apply, crd_apply, map_zero, mul_zero, Finset.sum_const_zero, add_zero, zero_add, Finset.sum_ite_eq, Finset.mem_univ, if_true, ite_smul, one_smul, zero_smul, Finset.sum_const_zero, he'e, hf'f, he'f, hf'e, he'z, hf'z, hz'e, hz'f,
+      inv_mul_cancel₀ hzz'0, sub_self]
 
 theorem rmap_perp (e f e' f' : Fin r → V) (z z' : V)
     (hsp' : ∀ a, e' a - e a ∈ Submodule.span K (Set.range e)) (hzd : z' - z ∈ Submodule.span K (Set.range e))

@@ -18,7 +18,7 @@ theorem map_lev {R S : Type} [CommRing R] [CommRing S] (p : R →+* S) (g : GL (
   simp only [Matrix.reindex_apply, Matrix.submatrix_apply]
   generalize (GlobalTheory.SmGL.stdSum (rfl : r + s = r + s)).symm i = i'
   generalize (GlobalTheory.SmGL.stdSum (rfl : r + s = r + s)).symm j = j'
-  rcases i' with i' | i' <;> rcases j' with j' | j' <;> simp [Matrix.fromBlocks] <;> rfl
+  rcases i' with i' | i' <;> rcases j' with j' | j' <;> simp [Matrix.fromBlocks]
 
 theorem lev_infGL (y₁ : GL (Fin r) (Cinf E)) (y₂ : GL (Fin s) (Cinf E)) :
     lev (Ad E) r s (infGL E r y₁, infGL E s y₂) = infGL E (r + s) (lev (Cinf E) r s (y₁, y₂)) := by
@@ -86,7 +86,7 @@ def levelOne (L : Subgroup (GL (Fin (r + s)) (Af E))) (t : GL (Fin (r + s)) (Af 
 
 theorem mem_levelOne {L : Subgroup (GL (Fin (r + s)) (Af E))} {t : GL (Fin (r + s)) (Af E)} {k : GL (Fin r) (Af E)} :
     k ∈ levelOne s L t ↔ t⁻¹ * lev (Af E) r s (k, 1) * t ∈ L := by
-  simp [levelOne, MulAut.conj_apply]
+  simp [levelOne]
 
 theorem continuous_lev (R : Type) [CommRing R] [TopologicalSpace R] [IsTopologicalRing R] : Continuous (lev R r s) :=
   (GlobalTheory.SmGL.continuous_leviEmb R _).comp (GlobalTheory.SmGL.continuous_leviTwo R)

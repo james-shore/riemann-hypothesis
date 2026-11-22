@@ -49,7 +49,7 @@ theorem lift_of_field
   have h11 : Aᵀ * S * C.map c + Cᵀ * S * A.map c = 0 := by
     rw [fromBlocks_transpose, fromBlocks_map, fromBlocks_multiply, fromBlocks_multiply] at hU
     have := (Matrix.fromBlocks_inj.1 hU).1
-    simp only [Matrix.mul_zero, Matrix.zero_mul, zero_add, add_zero] at this
+    simp only [Matrix.mul_zero, zero_add, add_zero] at this
     rw [add_comm]; simpa [Matrix.mul_assoc] using this
   have hinj : ∀ u, (A.map π) *ᵥ u = 0 → (C.map π) *ᵥ u = 0 → u = 0 := by
     intro u hA hC

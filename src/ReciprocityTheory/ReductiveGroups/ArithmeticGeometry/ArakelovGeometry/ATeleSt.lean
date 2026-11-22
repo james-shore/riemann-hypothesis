@@ -150,7 +150,7 @@ theorem tele_fam_succAbove (m₀ m₁ : ConeMetric ℂ (Ix κ)) (D i : ℕ) (hi 
   simp only [Function.comp, tele_fam]
   have hv : (Fin.succAbove (⟨i, hi⟩ : Fin (D + 1)) j).val = if j.val < i then j.val else j.val + 1 := by
     unfold Fin.succAbove
-    split_ifs with h1 h2 h2 <;> simp_all [Fin.lt_def] <;> omega
+    split_ifs with h1 h2 h2 <;> simp_all [Fin.lt_def]
   rw [hv]
   split_ifs <;> first | rfl | (exfalso; omega)
 

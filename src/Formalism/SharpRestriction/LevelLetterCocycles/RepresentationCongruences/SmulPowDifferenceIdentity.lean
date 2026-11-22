@@ -93,7 +93,7 @@ theorem frameVector_single (T : LocLat G Qp LL O) (hinj : Function.Injective (al
     rw [hy j]
     by_cases h : j = m
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   rw [Formalism.MainNotions.LiftingTheory.vecB, hy', Finset.sum_eq_single m]
   · simp
   · intro j _ hj; simp [hj]
@@ -178,7 +178,7 @@ theorem arc_section_map (hinj : Function.Injective (algebraMap O LL))
       unfold dv
       rw [Finset.sum_eq_single m]
       · simp
-      · intro j _ hj; simp [Pi.single_apply, hj]
+      · intro j _ hj; simp [hj]
       · simp
     rw [e1, ArcC.crisMap_φVB_pow, ArcF.cmpD_of_mem W T₁ hb1N]
     have h1 : Formalism.MainNotions.TruncatedSeriesCountingBounds.crisMap B F.f (W.cmp T₁ ⟨b₁ m, hb1N⟩) = W.cmp T₂ ⟨W.map F (b₁ m), hx⟩ :=

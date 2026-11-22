@@ -44,9 +44,6 @@ theorem hint_mpTail (D n : ℕ) (hn : 0 < n) :
     funext z i
     first
       | rfl
-      | (simp [MeasurableEquiv.piFinSuccAbove_apply, Fin.removeNth]; done)
-      | (simp [MeasurableEquiv.piFinSuccAbove_apply, Fin.removeNth]; rfl)
-      | exact congrArg z (by simp)
   rw [e]
   exact h
 

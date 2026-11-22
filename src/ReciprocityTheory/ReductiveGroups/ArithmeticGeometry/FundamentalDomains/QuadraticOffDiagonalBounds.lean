@@ -56,13 +56,12 @@ theorem offdiag_le {M : Fin 2 → Fin 2 → ℂ} (hM : (Matrix.of M).PosSemidef)
     have e : (∑ i, ∑ k, M i k * ![conj (M 0 1), -((‖M 0 1‖ : ℝ) : ℂ)] i *
         conj (![conj (M 0 1), -((‖M 0 1‖ : ℝ) : ℂ)] k)) =
         ((‖M 0 1‖ ^ 2 : ℝ) : ℂ) * (M 0 0 + M 1 1) - ((2 * ‖M 0 1‖ ^ 3 : ℝ) : ℂ) := by
-      simp only [Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
-        map_neg, Complex.conj_conj, Complex.conj_ofReal, h10]
+      simp only [Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, map_neg, Complex.conj_conj, Complex.conj_ofReal, h10]
       push_cast
       linear_combination (M 0 0 - 2 * ((‖M 0 1‖ : ℝ) : ℂ)) * hs
     rw [e] at h
     have h' := h
-    simp only [Complex.zero_re, Complex.sub_re, Complex.re_ofReal_mul, Complex.add_re,
+    simp only [Complex.sub_re, Complex.re_ofReal_mul, Complex.add_re,
       Complex.ofReal_re] at h'
     by_contra hlt
     push_neg at hlt

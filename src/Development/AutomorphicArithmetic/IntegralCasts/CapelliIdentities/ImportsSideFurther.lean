@@ -11,7 +11,7 @@ theorem UpperTheory.Reformulated.B.Yla6.main :
   have h1 : ‖(A * M * B) i j‖ ≤ ∑ l : c, ∑ k : b, ‖A i k‖ * ‖M k l‖ * ‖B l j‖ := by
     simp_rw [Matrix.mul_apply, Finset.sum_mul]
     refine (norm_sum_le _ _).trans (Finset.sum_le_sum fun l _ => (norm_sum_le _ _).trans ?_)
-    simp [norm_mul]
+    simp
   have h2 : ∀ l : c, ∀ k : b, ‖A i k‖ * ‖M k l‖ * ‖B l j‖ ≤ α * μ * β := by
     intro l k
     have ha : 0 ≤ α := (norm_nonneg _).trans (hA i k)

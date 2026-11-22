@@ -147,7 +147,7 @@ theorem arc_length_four_denominator [NeZero n] [Fintype (K →ₐ[Qp] LL)] [IsDo
   refine den_of_rel Br.P hϖ (D := Br.P.p 2 ^ size (c - 2) * PowerSeries.X ^ size c)
     (U₁ := U₁) (U₂ := U₂) (B := size (c - 1) + S) (s₁ := s₁) ?_ ?_
   · apply Br.inj
-    simp only [map_mul, map_sub, map_pow, map_one, mul_one, hCι, map_natCast]
+    simp only [map_mul, map_sub, map_pow, mul_one, hCι, map_natCast]
     rw [hX, hpsc 2, hpsc 1, ← hU₁, ← hU₂]
     linear_combination -key3
   · intro hmem

@@ -21,7 +21,7 @@ theorem frame_of_cartan : ∀ (n : ℕ) (M θ : Matrix (Fin n) (Fin n) ℂ), (�
   set G : Matrix (Fin n) (Fin n) ℂ := M.map star with hGdef
   have hJ : ∀ p q : ℕ, (fromBlocks 1 0 0 (-1) : Matrix (Fin p ⊕ Fin q) (Fin p ⊕ Fin q) ℂ).map star =
       fromBlocks 1 0 0 (-1) := by
-    intro p q; ext (i | i) (j | j) <;> simp [one_apply] <;> split_ifs <;> simp
+    intro p q; ext (i | i) (j | j) <;> simp [one_apply] <;> split_ifs
   have Gherm : Gᴴ = G := by
     ext i j
     simp only [hGdef, conjTranspose_apply, map_apply, star_star]

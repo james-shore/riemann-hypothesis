@@ -38,7 +38,7 @@ private theorem integral_mul_star_eq_of_lintegral_norm_sq_eq {α : Type*} [Measu
     refine integral_congr_ae ?_
     filter_upwards [ha.coeFn_toLp, hb.coeFn_toLp] with x hxa hxb
     rw [hxa, hxb]
-    simp [mul_comm]
+    simp
   rw [hi hu hv, hi hu' hv', inner_eq_sum_norm_sq_div_four, inner_eq_sum_norm_sq_div_four]
   have e1 := hn 1
   have e2 := hn (-1)

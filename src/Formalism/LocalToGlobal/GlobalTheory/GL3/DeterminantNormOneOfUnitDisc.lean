@@ -19,7 +19,6 @@ theorem mulVec_col {N : ℕ} (A U : Matrix (Fin N) (Fin N) D.host.E) (j : Fin N)
   funext i
   first
   | rfl
-  | simp [Matrix.mulVec, Matrix.mul_apply, dotProduct]
 
 theorem detId_mul_vol_le {N : ℕ} (L L' : Submodule (𝓞 D.host.E) (Fin N → D.host.E)) :
     detId D L L' * vol D L ≤ vol D L' := by
@@ -250,7 +249,6 @@ theorem spanPow {R K : Type*} [CommRing R] [IsDedekindDomain R] [Field K] [Algeb
       have haP : a ≤ P := by
         first
         | exact Ideal.IsPrime.le_of_pow_le hak
-        | exact hPmax.isPrime.le_of_pow_le hak
       calc FractionalIdeal.spanSingleton R⁰ s
             = FractionalIdeal.spanSingleton R⁰ s * I⁻¹ * I := by
               rw [mul_assoc, inv_mul_cancel₀ hI, mul_one]

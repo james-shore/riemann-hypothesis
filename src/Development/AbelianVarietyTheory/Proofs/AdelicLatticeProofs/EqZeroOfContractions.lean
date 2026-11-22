@@ -9,7 +9,7 @@ theorem coeff_eq_contraction {V W : Type} [AddCommGroup V] [Module ℚ V] [AddCo
       = TensorProduct.rid ℚ V (LinearMap.lTensor V (b.coord i) t) := by
   induction t using TensorProduct.induction_on with
   | zero => simp
-  | tmul v w => simp [TensorProduct.equivFinsuppOfBasisRight_apply_tmul_apply]
+  | tmul v w => simp
   | add x y hx hy => simp only [map_add, Finsupp.add_apply, hx, hy]
 
 theorem eq_zero_of_contractions {V W : Type} [AddCommGroup V] [Module ℚ V] [AddCommGroup W]

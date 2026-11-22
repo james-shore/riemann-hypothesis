@@ -45,13 +45,13 @@ theorem key {q : ℕ} [NeZero q] {A : Type} [CommRing A] [Nontrivial A] (i : ℤ
     apply uniq
     rw [← he ξ, hb, map_pow, he ζ', ← pow_mul, pow_val_eq hμ]
     push_cast
-    simp [ZMod.natCast_zmod_val]
+    simp
   have h1 : e ζ = 1 := by
     apply uniq
     rw [← he ζ]
     conv_lhs => rw [← pow_one (π ζ.1)]
     rw [pow_val_eq hμ]
-    simp [ZMod.natCast_zmod_val]
+    simp
   let f := Finsupp.linearCombination (ULift.{1} (ZMod q))
     (fun ξ : Prim q A => (ULift.up (((e ξ) ^ i : (ZMod q)ˣ) : ZMod q) : ULift.{1} (ZMod q)))
   have hker : twRel q i A ≤ LinearMap.ker f := by
@@ -90,7 +90,5 @@ theorem LeafTwInj_of : LeafTwInj := by
     refine GrothendieckTopology.superset_covering _ bot_le ?_
     first
       | exact Scheme.bot_mem_grothendieckTopology _
-      | exact bot_mem_grothendieckTopology _
-      | exact AlgebraicGeometry.Scheme.bot_mem_grothendieckTopology (P := @Etale) _
 
 end LateralTheory.E.LeafTwInjPf

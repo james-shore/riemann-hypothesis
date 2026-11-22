@@ -238,7 +238,7 @@ theorem Ts_comm {E1 E2 : Fin n → Fin n → Module.End ℂ V} (h : PairRel E1 E
   have b3 : (false == false) = true := rfl
   have b4 : (true == true) = true := rfl
   cases s <;> cases t <;> simp only [Ts, Bool.false_eq_true, if_false, if_true, e1, e2, e3, e4, h1, h2, b1, b2, b3, b4] <;>
-    split_ifs <;> first | abel | (simp; done) | (simp; abel)
+    split_ifs <;> first | abel
 
 theorem Tl_comm {E1 E2 : Fin n → Fin n → Module.End ℂ V} (h : PairRel E1 E2) (i j : Lt n) :
     Tl E1 E2 i * Tl E1 E2 j - Tl E1 E2 j * Tl E1 E2 i = ∑ k, cq i j k • Tl E1 E2 k := by

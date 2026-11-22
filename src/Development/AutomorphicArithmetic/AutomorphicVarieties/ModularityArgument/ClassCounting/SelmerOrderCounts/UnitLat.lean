@@ -33,7 +33,7 @@ private theorem extS_log {F : Type} [Field F] [NumberField F] [IsTotallyComplex 
   classical
   by_cases h : w = w₀
   · subst h
-    simp only [extS, LinearMap.coe_mk, AddHom.coe_mk, dif_pos rfl, logEmbedding_component, mult_two, dite_true]
+    simp only [extS, LinearMap.coe_mk, AddHom.coe_mk, logEmbedding_component, mult_two, dite_true]
     have hs := NumberField.Units.sum_mult_mul_log u
     have e : (algebraMap (𝓞 F) F) (u : 𝓞 F) = ((u : 𝓞 F) : F) := rfl
     simp only [mult_two, e] at hs

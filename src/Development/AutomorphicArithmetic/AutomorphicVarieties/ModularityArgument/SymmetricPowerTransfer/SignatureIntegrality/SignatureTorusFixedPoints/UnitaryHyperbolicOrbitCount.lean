@@ -165,10 +165,10 @@ theorem orbital_integral_over_base_group : UnitaryHyperbolicOrbitCount := by
         rcases (by decide : ∀ j : Fin 3, j = 0 ∨ j = 1 ∨ j = 2) i with rfl | rfl | rfl
         · convert one_mem V.H using 1
           ext
-          simp [U] <;> field_simp
+          simp [U]
         · convert hab' using 1
           ext
-          simp [U] <;> field_simp
+          simp [U]
         · convert one_mem V.H using 1
           ext
           simp [U])
@@ -188,7 +188,7 @@ theorem orbital_integral_over_base_group : UnitaryHyperbolicOrbitCount := by
       have h1 := inv_mem (hs 1)
       convert h1 using 1
       ext
-      simp [U, Pi.mul_apply] <;> field_simp
+      simp [U, Pi.mul_apply]
     have hrng : ∀ o : orbitRel.Quotient T (GL (Fin 3) k ⧸ V.J 3),
         V.unitaryDoubleCosetIndicator d (o.out.out⁻¹ * δ * th k 3 o.out.out) ≠ 0 ↔ o ∈ Set.range Ψ := by
       intro o
@@ -218,7 +218,7 @@ theorem orbital_integral_over_base_group : UnitaryHyperbolicOrbitCount := by
           simp [U, Pi.mul_apply] <;> field_simp
         · convert one_mem V.H using 1
           ext
-          simp [U, Pi.mul_apply] <;> field_simp
+          simp [U, Pi.mul_apply]
         · convert one_mem V.H using 1
           ext
           simp [U, Pi.mul_apply]
@@ -233,7 +233,7 @@ theorem orbital_integral_over_base_group : UnitaryHyperbolicOrbitCount := by
         refine ⟨?_, ?_, ?_⟩
         · convert one_mem V.H using 1
           ext
-          simp [U] <;> field_simp
+          simp [U]
         · convert mul_mem hs0 (inv_mem hv2) using 1
           ext
           simp [U] <;> field_simp

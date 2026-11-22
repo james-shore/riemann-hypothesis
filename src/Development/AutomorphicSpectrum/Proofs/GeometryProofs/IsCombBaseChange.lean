@@ -78,8 +78,7 @@ theorem isCombAt_spMap : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] 
     rw [← Category.assoc, ← Category.assoc, ← ReciprocityTheory.ChartRestriction.G.Geo.Tor.spMap_comp,
       ← ReciprocityTheory.ChartRestriction.G.Geo.Tor.spMap_comp]
     congr 2
-    ext y <;> simp [Formalism.L2.Pj.dualMap, ReciprocityTheory.ChartRestriction.G.Geo.Tor.epsMul, smul_eq_mul, map_mul,
-      TrivSqZeroExt.algebraMap_eq_inl]
+    ext y <;> simp [Formalism.L2.Pj.dualMap, ReciprocityTheory.ChartRestriction.G.Geo.Tor.epsMul, smul_eq_mul, TrivSqZeroExt.algebraMap_eq_inl]
   · have h1 : (List.ofFn fun i => f ≫ u i) = (List.ofFn u).map P := by
       rw [List.map_ofFn]
       rfl

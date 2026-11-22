@@ -30,7 +30,7 @@ theorem exists_point_mem_translates :
   have e₁ : h₁ ≫ g₁ = 𝟙 E := by
     ext1
     · simp [g₁, h₁]
-    · simp [g₁, h₁, MonObj.comp_mul, GrpObj.comp_inv, _root_.mul_assoc]
+    · simp [g₁, h₁, MonObj.comp_mul, _root_.mul_assoc]
       exact (Category.id_comp _).symm
   have e₂ : h₂ ≫ g₂ = 𝟙 E := by
     ext1

@@ -71,7 +71,7 @@ theorem exists_basis_D (k F K : Type) [Field k] [Field F] [Field K] [Algebra k F
   have h₂ : ∀ j, b₂ j = D k F (v j) := by
     intro j
     simp only [b₂, b₁, Module.Basis.map_apply, Module.Basis.baseChange_apply, tensorKaehlerEquivOfFormallyEtale_apply,
-      mapBaseChange_tmul, one_smul, mvPolynomialBasis_apply, map_D]
+      mapBaseChange_tmul, one_smul, mvPolynomialBasis_apply]
     have e : algebraMap A F (algebraMap P A (MvPolynomial.X j)) = v j := by
       change algebraMap A F (hv.aevalEquiv (MvPolynomial.X j)) = v j
       rw [hv.algebraMap_aevalEquiv, MvPolynomial.aeval_X]

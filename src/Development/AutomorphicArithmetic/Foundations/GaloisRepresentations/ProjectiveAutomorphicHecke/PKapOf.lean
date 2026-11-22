@@ -64,7 +64,7 @@ theorem UpperTheory.Gal.CertificateRingHomMap.pKapOf_of :
     have e : ((χ.ker.map (Kw w₀).subtype : Subgroup (GLw n w₀)) : Set (GLw n w₀)) =
         Subtype.val '' {k : Kw w₀ | χ k = 1} := by
       ext a
-      simp [Subgroup.mem_map, MonoidHom.mem_ker]
+      simp [MonoidHom.mem_ker]
     rw [e]
     exact (hS.opn w₀ hS.mem).isOpenMap_subtype_val _ hχ
   have hK' := hLO E n S (Function.update Kw w₀ (χ.ker.map (Kw w₀).subtype)) (by

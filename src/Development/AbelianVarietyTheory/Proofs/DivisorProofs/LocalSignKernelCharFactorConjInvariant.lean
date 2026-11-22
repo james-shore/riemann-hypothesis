@@ -97,7 +97,7 @@ theorem aeval_conj {K : Type} [Field K] {n : ℕ} (γ g : GL (Fin n) K) (Q : K[X
         congr 2
         rw [← Matrix.mul_assoc g.val, ← Units.val_mul, mul_inv_cancel, Units.val_one, Matrix.one_mul]
     rw [this]
-    simp [Algebra.algebraMap_eq_smul_one, Matrix.mul_smul, Matrix.smul_mul]
+    simp [Algebra.algebraMap_eq_smul_one]
 
 end GlobalTheory.BCT.ConjugationGramUnitary
 

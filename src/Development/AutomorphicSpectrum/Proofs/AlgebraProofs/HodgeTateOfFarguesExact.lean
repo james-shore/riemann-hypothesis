@@ -71,4 +71,4 @@ attribute [local instance] Formalism.BasicNotions.Host.cmStar
 attribute [-instance] GlobalTheory.CompHt.fintypePsi
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.CompanionTheory.Relay.hodge_tate_of_fargues_exact : HT.FarguesExact → HT.FarguesHodgeTate := by
-  first | exact @PositivityTheory.Xgn.farguesHodgeTate_of_farguesExact | exact PositivityTheory.Xgn.farguesHodgeTate_of_farguesExact
+  first | exact @PositivityTheory.Xgn.farguesHodgeTate_of_farguesExact

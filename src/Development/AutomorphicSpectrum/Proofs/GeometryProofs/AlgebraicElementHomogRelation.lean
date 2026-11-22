@@ -76,7 +76,7 @@ theorem cone_form (y : (Σ k, ι k) → Ω) {h : MRing ι} {d : K → ℕ} (hh :
     show (aeval fun p => MvPolynomial.C (y p) * (X p.1 : MvPolynomial K Ω)) (monomial v (coeff v h)) = _
     simp only [MvPolynomial.aeval_monomial]
     rw [h1, hX, map_mul]
-    simp only [algebraMap_int_eq, eq_intCast, Int.coe_castRingHom, map_intCast]
+    simp only [algebraMap_int_eq, eq_intCast, map_intCast]
     ring
   rw [h.as_sum]
   simp only [map_sum, Finset.sum_mul]

@@ -15,7 +15,7 @@ variable {R : Type} [CommRing R] [StarRing R]
 private theorem map_star_mulVec (M : Matrix (Fin 3) (Fin 3) R) (v : Fin 3 → R) :
     M.map star *ᵥ star v = star (M *ᵥ v) := by
   ext i
-  simp [Matrix.mulVec, dotProduct, star_sum, mul_comm]
+  simp [Matrix.mulVec, dotProduct, star_sum]
 
 private theorem dot_unitary {X : Matrix (Fin 3) (Fin 3) R} (hX : star X * X = 1) (p q : Fin 3 → R) :
     ∑ i, (X *ᵥ p) i * star ((X *ᵥ q) i) = ∑ i, p i * star (q i) := by
@@ -158,7 +158,7 @@ private theorem shape [CharZero K] {c₁ c₂ t₁ t₂ : K} {d m n : EL Δ τ} 
     have q1 : Q (0, n) = (0, e * n) := Prod.ext (h2 n) (h3 n)
     have q2 : Q (0, 1) = (0, e) := Prod.ext (h2 1) (by rw [h3, mul_one])
     rw [q1, q2] at h
-    simp only [herm, mul_zero, zero_mul, star_zero, zero_add, sigL_one, star_one, mul_one] at h
+    simp only [herm, mul_zero, star_zero, zero_add, sigL_one, star_one, mul_one] at h
     have l1 : t₂ • m * (e * n) * star (sigL e) = (t₂ * QuadraticAlgebra.norm z) • (1 : EL Δ τ) := by
       rw [mul_smul, ← hee]
       simp only [smul_mul_assoc]
@@ -250,7 +250,7 @@ theorem conjG : ConjG := by
       field_simp
     · rw [map_inv]
       apply Units.ext
-      simp only [Units.val_inv_eq_inv_val, Units.coe_map, IsUnit.unit_spec, Units.val_div_eq_div_val, MonoidHom.coe_coe]
+      simp only [Units.val_inv_eq_inv_val, Units.coe_map, IsUnit.unit_spec, Units.val_div_eq_div_val]
       rw [e2]
       have := t'.ne_zero
       field_simp
@@ -263,7 +263,7 @@ theorem conjG : ConjG := by
       field_simp
     have T : (t' : K) = t * QuadraticAlgebra.norm (z : Etau K τ) := by
       have := congrArg Units.val hz
-      simp only [Units.val_div_eq_div_val, Units.coe_map, MonoidHom.coe_coe] at this
+      simp only [Units.val_div_eq_div_val, Units.coe_map] at this
       rw [this]
       have := t.ne_zero
       field_simp

@@ -15,7 +15,7 @@ theorem polyScale_polyScale (c d : F) (p : F[X]) :
   have : (polyScale d).comp (polyScale c) = polyScale (c * d) := by
     apply Polynomial.algHom_ext
     simp only [polyScale, AlgHom.comp_apply, Polynomial.aeval_X, map_mul, Polynomial.aeval_C,
-      Polynomial.algebraMap_eq, Polynomial.C_mul]
+      Polynomial.algebraMap_eq]
     ring
   exact congrArg (fun φ : F[X] →ₐ[F] F[X] => φ p) this
 
@@ -124,8 +124,7 @@ theorem lsScale_rat (c : F) (hc : c ≠ 0) :
   apply ext_rat
   · intro a
     simp only [RingHom.comp_apply, ratScale_C, alg_C, hl, rescale_C']
-  · simp only [RingHom.comp_apply, ratScale_X, map_mul, alg_C, alg_X, hl, PowerSeries.rescale_X,
-      rescale_C']
+  · simp only [RingHom.comp_apply, ratScale_X, map_mul, alg_C, alg_X, hl, PowerSeries.rescale_X]
 
 theorem ratInv_ratScale (c : F) (hc : c ≠ 0) :
     ratInv.comp (ratScale c hc) = (ratScale c⁻¹ (inv_ne_zero hc)).comp ratInv := by

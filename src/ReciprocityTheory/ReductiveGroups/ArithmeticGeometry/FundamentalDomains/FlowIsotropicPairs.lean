@@ -18,10 +18,6 @@ private lemma herm_swap_eq_zero_of_eq_zero (X : Data E r) (x y : Fin r → E) (h
          simp only [cc] at hg
          rw [hg]
          ring)
-      | (have hg := X.Gm_herm a b
-         simp only [cc] at hg
-         rw [hg]
-         ring)
   rw [← e, h]
   simp [cc]
 

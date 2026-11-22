@@ -78,8 +78,6 @@ theorem derivation_mem_pow (n : ℕ) {x : A'} (hx : x ∈ I ^ (n + 1)) : D x ∈
   | exact @_root_.GlobalTheory.DerivationPowerIdeal.derivation_mem_pow
   | exact _root_.GlobalTheory.DerivationPowerIdeal.derivation_mem_pow
   | (apply _root_.GlobalTheory.DerivationPowerIdeal.derivation_mem_pow <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DerivationPowerIdeal.derivation_mem_pow <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DerivationPowerIdeal.derivation_mem_pow <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DerivationPowerIdeal.derivation_mem_pow ..)
 
 theorem evalₐ_of_succ {x : AdicCompletion I A'} {n : ℕ} {r : A'}

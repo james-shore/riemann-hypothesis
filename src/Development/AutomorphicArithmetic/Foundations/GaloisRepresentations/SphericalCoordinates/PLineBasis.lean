@@ -51,14 +51,14 @@ theorem UpperTheory.Gal.W2.lineBasis_of :
     have h2 : c ⬝ᵥ e = 0 := by simp [he, hc]
     have h3 : e ⬝ᵥ e = 1 := by simp [he]
     rw [h2]
-    simp [h3, he]
+    simp [he]
   · intro i hi
     rw [← Matrix.mulVec_mulVec, one_add_col_mul_rank_one_mulVec, one_add_col_mul_rank_one_mulVec]
     have h2 : c ⬝ᵥ (Pi.single i 1 : Fin n → ℂ) = hv M (Pi.single i 1) z / hv M z z := by
       simp [hc, hi]
     have h3 : e ⬝ᵥ ((Pi.single i 1 : Fin n → ℂ) + (hv M (Pi.single i 1) z / hv M z z) • (-e)) =
         - (hv M (Pi.single i 1) z / hv M z z) := by
-      simp [he, dotProduct_add, Pi.single_apply, hi]
+      simp [he, dotProduct_add, hi]
     rw [h2, h3]
     have h4 : (Pi.single i 1 : Fin n → ℂ) + (hv M (Pi.single i 1) z / hv M z z) • (-e) +
         (-(hv M (Pi.single i 1) z / hv M z z)) • (z - e) =

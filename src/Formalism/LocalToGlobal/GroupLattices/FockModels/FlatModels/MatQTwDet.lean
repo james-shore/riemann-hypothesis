@@ -178,11 +178,11 @@ theorem lift_eq {S : Type} [Fintype S] [DecidableEq S] (h : HidaSetting p n' W Q
       · simp only [hv, if_true, Bm, map_sum, map_mul]
         refine Finset.sum_congr rfl fun b _ => ?_
         rw [map_C, hinv]
-        split_ifs <;> simp [map_C, map_X, kapR_alg, C_mul] <;> ring
+        split_ifs <;> simp [map_C, map_X, kapR_alg] <;> ring
       · simp only [hv, Bool.false_eq_true, if_false, Bm, map_sum, map_mul]
         refine Finset.sum_congr rfl fun b _ => ?_
         rw [map_C, hmat]
-        split_ifs <;> simp [map_C, map_X, kapR_alg, C_mul] <;> ring
+        split_ifs <;> simp [map_C, map_X, kapR_alg] <;> ring
   exact RingHom.congr_fun e F
 
 end Lift

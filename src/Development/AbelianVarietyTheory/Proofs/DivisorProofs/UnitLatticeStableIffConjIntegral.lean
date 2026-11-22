@@ -24,7 +24,7 @@ theorem mulVec_int_iff {E : Type} [Field E] [NumberField E] {n : ℕ} (w : Pl E)
     have := h (Pi.single j 1) (fun k => by
       by_cases hk : k = j
       · subst hk; simp
-      · simp [Pi.single_apply, hk]) i
+      · simp [hk]) i
     simpa [Matrix.mulVec_single] using this
   · intro h v hv i
     rw [hmem]
@@ -51,7 +51,7 @@ theorem mem_KGL_of_int {E : Type} [Field E] [NumberField E] {n : ℕ} (w : Pl E)
   · rw [map_mul, hN, hN', map_one]; exact M.mul_inv
   · rw [map_mul, hN, hN', map_one]; exact M.inv_mul
   · apply Units.ext
-    simp only [Formalism.UG.bc, Units.coe_map, MonoidHom.coe_coe]
+    simp only [Formalism.UG.bc, Units.coe_map]
     exact hN
 
 end GlobalTheory.InertUnitOrb.LatStable

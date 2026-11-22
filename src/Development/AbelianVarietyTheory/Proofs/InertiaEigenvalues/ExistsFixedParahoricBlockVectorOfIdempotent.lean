@@ -174,7 +174,7 @@ theorem exists_of_isLiftN {p : ℕ} {g : GL (Fin r) (ZMod p)} {h : GL (Fin (r + 
         have := congrArg Fin.val e; simp at this; omega
       simp [bl_apply, ee_inl, ee_inr, this, hne]
     · have := H (Fin.natAdd r a) (Fin.natAdd r b)
-      rw [dif_neg (by simp only [Fin.coe_castAdd, Fin.coe_natAdd]; omega)] at this
+      rw [dif_neg (by simp only [Fin.coe_natAdd]; omega)] at this
       simp [bl_apply, ee_inr, this, Matrix.one_apply]
   have hdet : IsUnit M.det := by
     have h1 : IsUnit (bl F r t h).val.det := (Matrix.isUnit_iff_isUnit_det _).1 (bl F r t h).isUnit

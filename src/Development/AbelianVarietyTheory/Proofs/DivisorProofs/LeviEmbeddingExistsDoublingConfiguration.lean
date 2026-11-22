@@ -69,8 +69,8 @@ theorem levi_mat {b : ℕ} (s : R →+* R) (hs : ∀ z, s (s z) = z) (ι : Matri
       diagonal_transpose, hG]
     congr 1
     ext i j
-    fin_cases i <;> fin_cases j <;> simp [swap2, diagonal, Matrix.mul_apply, Fin.sum_univ_two, hs, ← map_mul]
-  all_goals simp only [Units.val_mk]
+    fin_cases i <;> fin_cases j <;> simp [swap2, diagonal, Matrix.mul_apply, hs, ← map_mul]
+  all_goals simp only
   · have hx : P *ᵥ Pi.single (Sum.inr 0) 1 = x := by
       rw [mulVec_single_one]; ext i; simp [P, cols2, Matrix.col]
     have hDx : D *ᵥ Pi.single (Sum.inr 0) 1 = l.1 • Pi.single (Sum.inr 0) 1 := by

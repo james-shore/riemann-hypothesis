@@ -164,7 +164,7 @@ theorem aconv_single_cons {G : Type} [AddMonoid G] (l : List (G →₀ ℂ)) : a
   simp
 
 theorem comb_single_zero (S T : HSp D) (f : WO S T → ℂ) : comb ψ S T (Finsupp.single 0 1) f = f := by
-  simp [comb, Finsupp.support_single_ne_zero, GlobalTheory.BoxSlice.heisO_zero']
+  simp [comb, GlobalTheory.BoxSlice.heisO_zero']
 
 theorem biComb_single_zero (A S A' : HSp D) (C : WO A S → WO S A' → ℂ) :
     biComb ψ A S A' (Finsupp.single 0 1) (Finsupp.single 0 1) C = C := by

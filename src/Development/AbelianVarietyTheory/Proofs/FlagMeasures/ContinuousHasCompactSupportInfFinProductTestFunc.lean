@@ -43,7 +43,7 @@ theorem glueTup_proj (X : Fin n → Fin M → AF F ⊗[F] E) :
   refine GlobalTheory.GaugeGlue.tens_ext b fun k => ?_
   simp only [glueTup]
   rw [← Module.Basis.equivFun_apply, LinearEquiv.apply_symm_apply]
-  simp only [projInf, projFin, Module.Basis.equivFun_apply, GlobalTheory.GaugeGlue.repr_map]
+  simp only [projInf, projFin, GlobalTheory.GaugeGlue.repr_map]
   rfl
 
 end GlobalTheory.ProdCont

@@ -177,8 +177,7 @@ theorem _root_.GlobalTheory.EnlargeBaseChange.fits_baseChange : ∀ (T O : Type)
     rw [IsScalarTower.algebraMap_apply A A[X] EA, Polynomial.algebraMap_eq,
       IsScalarTower.algebraMap_apply A₁ A₁[X] (A₁[X] ⊗[A[X]] EA), Polynomial.algebraMap_eq]
     have := RingHom.congr_fun hγ1 (Polynomial.C a)
-    simp only [RingHom.comp_apply, Polynomial.coe_mapRingHom, Polynomial.map_C,
-      AlgHom.coe_toRingHom] at this
+    simp only [RingHom.comp_apply, Polynomial.coe_mapRingHom, Polynomial.map_C] at this
     exact this
   let β : _root_.GlobalTheory.LocAcyc.GenFib A (Localization.AtPrime QA) →+*
       _root_.GlobalTheory.LocAcyc.GenFib A₁ (Localization.AtPrime QA') :=

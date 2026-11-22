@@ -38,7 +38,7 @@ private lemma encard_mul_encard_le_isBallFam {G : Type} [AddCommGroup G] {Λ : A
     obtain ⟨p₀, hp₀, rfl⟩ := Finset.mem_image.1 hw
     refine Finset.card_le_card_of_injOn (fun p ↦ p₀.1 - p.1) ?_ ?_
     · intro p hp
-      simp only [Finset.coe_filter, Set.mem_setOf_eq, Finset.mem_filter] at hp
+      simp only [Finset.coe_filter, Set.mem_setOf_eq] at hp
       obtain ⟨hpS, hfp⟩ := hp
       have hp₀' := hp₀
       rw [hS, Finset.mem_product, Set.Finite.mem_toFinset, Set.Finite.mem_toFinset] at hpS hp₀'

@@ -136,7 +136,7 @@ theorem exists_finiteIndex_prod_normalDomains :
       have h : Algebra.EssFiniteType ℤ (R ⧸ p k) := Algebra.instEssFiniteTypeQuotientIdeal ℤ R (p k)
       refine @GlobalTheory.finite_integralClosure_of_essFiniteType_int (R ⧸ p k) _ _ ?_
       convert h
-      first | exact Subsingleton.elim _ _ | exact Algebra.algebra_ext _ _ fun r => (eq_intCast _ r).trans (eq_intCast _ r).symm
+      first | exact Subsingleton.elim _ _
   obtain ⟨a, ha, hr⟩ := exists_conductor p hmin
   have hzero : ∀ {x : R} (k), algebraMap R (integralClosure (R ⧸ p k) (FractionRing (R ⧸ p k))) x = 0 →
       x ∈ p k := by

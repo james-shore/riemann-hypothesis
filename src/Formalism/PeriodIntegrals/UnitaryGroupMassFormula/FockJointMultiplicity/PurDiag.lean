@@ -100,15 +100,11 @@ theorem elim_step {m n : ℕ} (ι : Fin (m + 1) × Fin (n + 1) → σ) (hι : Fu
         all_goals first
           | (field_simp; done)
           | (field_simp; ring)
-          | (rw [div_mul_cancel₀ _ hc, sub_self])
-          | simp [hc]
       · rw [fill_ι hι]
         simp [M2, M1, M]
         all_goals first
           | (field_simp; done)
           | (field_simp; ring)
-          | (rw [div_mul_cancel₀ _ hc, sub_self])
-          | simp [hc]
     have h3 := aeval_killS_of_zero (edge ι) (fill ι M2 y) hvan f
     rw [hg, map_zero] at h3
     calc aeval y f = aeval (fill ι M y) f := by rw [hy]
@@ -124,7 +120,6 @@ theorem elim_step {m n : ℕ} (ι : Fin (m + 1) × Fin (n + 1) → σ) (hι : Fu
     · have e : MvPolynomial.eval y f = aeval y f := by
         first
           | rfl
-          | simp [MvPolynomial.coe_aeval_eq_eval]
       rw [e, key y hy0, zero_mul]
   exact (mul_eq_zero.mp hmul).resolve_right (MvPolynomial.X_ne_zero _)
 

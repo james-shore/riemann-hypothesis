@@ -55,7 +55,7 @@ theorem UpperTheory.V.Z.Sym.Loc.dOrb : UpperTheory.V.Z.Sym.Loc.DOrb := by
       rw [← e2, e1, RingHom.map_det]
       congr 1
       change (Matrix.scalar (Fin 2) (z : K)).det = _
-      simp [Matrix.det_fin_two, sq]
+      simp [sq]
     have hu : IsUnit (k : Matrix (Fin 2) (Fin 2) O).det := (Matrix.GeneralLinearGroup.det k).isUnit
     obtain ⟨i, hi⟩ := hu.exists_right_inv
     have hi' := congrArg (algebraMap O K) hi

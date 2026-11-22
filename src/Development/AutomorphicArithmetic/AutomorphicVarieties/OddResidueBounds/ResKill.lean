@@ -24,7 +24,7 @@ theorem UpperTheory.V.Odd.resKill :
   refine ⟨max n r + 2, fun m hm M _ h hM u hu => ?_⟩
   have key : ∀ b : (ZMod M)ˣ, (actRep D (↑e) ρ).asAlgebraHom (((MonoidAlgebra.lift ℤ (MonoidAlgebra ℤ_[l] (Gq ρ)) (Gq ρ)) (MonoidAlgebra.of ℤ_[l] (Gq ρ))).toRingHom (MonoidAlgebra.single (((piQ ρ)⁻¹.comp (ZMod.unitsMap h)) b)⁻¹ (↑(↑b : ZMod M).val ^ e * Eone M a ↑b))) = (((↑(↑b : ZMod M).val ^ e * Eone M a ↑b : ℤ) : ℤ_[l])) • galoisActionOnCohomology D (↑e) (ρ (ZMod.unitsMap h b)).toRingEquiv := by
     intro b
-    simp only [AlgHom.toRingHom_eq_coe, RingHom.coe_coe, MonoidAlgebra.lift_single, MonoidHom.comp_apply, MonoidHom.inv_apply, inv_inv, MonoidAlgebra.of_apply, MonoidAlgebra.smul_single, map_zsmul]
+    simp only [AlgHom.toRingHom_eq_coe, RingHom.coe_coe, MonoidAlgebra.lift_single, MonoidHom.comp_apply, MonoidHom.inv_apply, inv_inv, MonoidAlgebra.of_apply, MonoidAlgebra.smul_single]
     rw [Representation.asAlgebraHom_single, zsmul_eq_mul, mul_one]
     rfl
   simp only [ytEl, sumEl, map_neg, map_sum, coefMap, key]
@@ -43,7 +43,7 @@ theorem UpperTheory.V.Odd.resKill :
     AlgEquiv.ofRingEquiv (f := ((σ b).trans (u.1 : Ω ≃ₐ[E] Ω).toRingEquiv).trans (σ b).symm) (by
       intro y
       have h1 := hlift b y
-      simp only [RingEquiv.trans_apply, AlgEquiv.toRingEquiv_eq_coe, AlgEquiv.coe_ringEquiv]
+      simp only [RingEquiv.trans_apply, AlgEquiv.coe_ringEquiv]
       rw [h1, AlgEquiv.commutes, ← h1, RingEquiv.symm_apply_apply])
   have hw : ∀ b y, w b y = (σ b).symm (u.1 (σ b y)) := fun _ _ => rfl
   have wInf : ∀ b, w b ∈ Uinf E Ω l := by

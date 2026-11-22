@@ -56,7 +56,7 @@ theorem UpperTheory.V.Ws.phiPsiEx :
     have hr := X.ψ_red w i s hs
     have hu := ((((T.fr ∅).χ i s).isUnit.map (inc h)).map (IsLocalRing.residue c'.O))
     rw [← hr] at hu
-    simp only [res, h0] at hu
+    simp only [res] at hu
     simp at hu
     exact hne hu
   have hsc : ∀ g g' : G T.L Ω, K.sc n (g * g') = K.sc n g * K.sc n g' := by

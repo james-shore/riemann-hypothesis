@@ -78,13 +78,13 @@ theorem reducedLattice_short_bound (hD5 : CoveringRadiusStatement) (r : ℕ) (X 
   classical
   obtain ⟨hξΛ, hξξ, hξ0⟩ := hξ
   have hcardpos : 0 < Fintype.card X.Ψ := by
-    apply QuadraticCoefficientForms.card_Psi_pos <;> assumption
+    apply QuadraticCoefficientForms.card_Psi_pos
   have hcard : Fintype.card X.Ψ = fdeg E := by
-    apply QuadraticCoefficientForms.card_Psi <;> assumption
+    apply QuadraticCoefficientForms.card_Psi
   haveI : Nonempty X.Ψ := Fintype.card_pos_iff.mp hcardpos
   obtain ⟨τ0⟩ := (inferInstance : Nonempty X.Ψ)
   have hpb : 1 ≤ X.p0 ∧ X.p0 < r := by
-    apply IsotropicIndexSums.isotropicIndex_bounds (hξ := hξξ) (hne := hξ0) (τ := τ0) <;> assumption
+    apply IsotropicIndexSums.isotropicIndex_bounds (hξ := hξξ) (hne := hξ0) (τ := τ0)
   obtain ⟨hp1, hpr0⟩ := hpb
   have hON : ∀ τ : X.Ψ, ∀ k l, hermC τ.1 X.Gm (f τ k) (f τ l) =
       if k = l then (if (k : ℕ) < X.p0 - 1 then 1 else -1) else 0 := fun τ => (hf τ).2.2.1
@@ -100,7 +100,7 @@ theorem reducedLattice_short_bound (hD5 : CoveringRadiusStatement) (r : ℕ) (X 
       fun j => isEmptyElim j, fun _ => linearIndependent_empty_type, fun _ j => isEmptyElim j,
       fun _ j => isEmptyElim j, fun _ w _ hw => absurd (Subsingleton.elim w 0) hw,
       fun _ w _ hw => absurd (Subsingleton.elim w 0) hw, fun _ c _ => by simp⟩
-    apply IsotropicCombinations.cons_li (hli := hβind) (hla := linearIndependent_empty_type) <;> assumption
+    apply IsotropicCombinations.cons_li (hli := hβind) (hla := linearIndependent_empty_type)
   have hlamξ : ∀ (c : Fin (r - 2) → E) (e : E), herm X.Gm (∑ k, c k • β k + e • ξ) ξ = 0 := by
     intro c e
     apply IsotropicCombinations.herm_lam_ξ <;> assumption
@@ -123,7 +123,7 @@ theorem reducedLattice_short_bound (hD5 : CoveringRadiusStatement) (r : ℕ) (X 
     obtain ⟨e, he⟩ := (hLB v).mp hv
     have hne : ∀ e' : E, ∑ k, v k • β k + e • ξ ≠ e' • ξ := by
       intro e'
-      apply IsotropicCombinations.ne_smul_ξ (hli := hβind) (hc := hv0) <;> assumption
+      apply IsotropicCombinations.ne_smul_ξ (hli := hβind) (hc := hv0)
     obtain ⟨τ, hτ⟩ := hD4 _ he (hlamξ v e) hne
     refine ⟨τ, ?_⟩
     rw [IsotropicIndexSums.ucomp_drop (hx := hz) (hne := hξ0), hQf, (hf τ).2.2.2.1] at hτ
@@ -202,7 +202,7 @@ theorem reducedLattice_short_bound (hD5 : CoveringRadiusStatement) (r : ℕ) (X 
   have hM : ∀ τ : X.Ψ, LinearIndependent ℂ (fun j => Q τ *ᵥ ReciprocityTheory.MultiplicativeHeights.embVec τ.1 (la j)) :=
     fun τ => linearIndependent_mulVec_embVec τ.1 la (Q τ) hlali (hQ τ)
   have F2 : LinearIndependent E (Fin.cons ξ (fun j => (∑ i, la j i • β i + ec j • ξ)) : Fin (r - 2 + 1) → Fin r → E) := by
-    apply IsotropicCombinations.cons_li (hli := hβind) (hla := hlali) <;> assumption
+    apply IsotropicCombinations.cons_li (hli := hβind) (hla := hlali)
   have F3 : ∀ j k : Fin (r - 2), (j : ℕ) < X.p0 - 1 → X.p0 - 1 ≤ (k : ℕ) →
       herm X.Gm (∑ i, la j i • β i + ec j • ξ) (∑ i, la k i • β i + ec k • ξ) = 0 := by
     intro j k hj hk

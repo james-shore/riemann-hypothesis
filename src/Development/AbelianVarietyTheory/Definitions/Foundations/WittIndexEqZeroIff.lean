@@ -89,7 +89,7 @@ theorem exists_cut (W : Submodule E V.V) : ∃ T : Matrix (Fin V.rank) (Fin V.ra
   Submodule.span_eq_bot.2 (by rintro _ ⟨x, hx, rfl⟩; funext i; simp [coordR, (Submodule.mem_bot E).1 hx])
 
 @[simp] theorem extSub_top : extSub (F := F) V R ⊤ = ⊤ :=
-  eq_top_iff.2 fun y _ => (mem_extSub_iff_of_ker V R (r := 0) 0 0 (by simp) (fun _ => by simp [eq_iff_true_of_subsingleton]) y).2
+  eq_top_iff.2 fun y _ => (mem_extSub_iff_of_ker V R (r := 0) 0 0 (by simp) (fun _ => by simp) y).2
     (Subsingleton.elim _ _)
 
 theorem coordR_mem_iff [Nontrivial R] {W : Submodule E V.V} {x : V.V} :

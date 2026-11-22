@@ -59,10 +59,10 @@ theorem _root_.GlobalTheory.CompanionTheory.Relay.cm_pack_product_frame : ∀ (E
       rw [Over.w (X.ψ (b k) (a k)), Over.w ((X.C (b k)).v)]
       simp only [Over.mk_hom, spectrumMap_comp]
       congr 1
-      ext x <;> simp only [RingHom.comp_apply, dualMap, RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk, TrivSqZeroExt.algebraMap_eq_inl, TrivSqZeroExt.fst_add, TrivSqZeroExt.snd_add, TrivSqZeroExt.fst_inl, TrivSqZeroExt.snd_inl, TrivSqZeroExt.fst_inr, TrivSqZeroExt.snd_inr, map_zero, add_zero, zero_add]
+      ext x <;> simp only [RingHom.comp_apply, dualMap, RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk, TrivSqZeroExt.algebraMap_eq_inl, TrivSqZeroExt.fst_add, TrivSqZeroExt.snd_add, TrivSqZeroExt.fst_inl, TrivSqZeroExt.snd_inl, TrivSqZeroExt.fst_inr, TrivSqZeroExt.snd_inr, map_zero, add_zero]
     rw [Category.assoc, w1, ← Category.assoc, hbase, Category.assoc, Over.w (uV k)]
     simp only [Over.mk_hom, Category.comp_id]
     show spMap _ ≫ spMap _ = spMap _ ≫ spMap _
     rw [spectrumMap_comp, spectrumMap_comp]
     congr 1
-    ext x <;> simp only [RingHom.comp_apply, dualMap, RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk, TrivSqZeroExt.algebraMap_eq_inl, TrivSqZeroExt.fst_add, TrivSqZeroExt.snd_add, TrivSqZeroExt.fst_inl, TrivSqZeroExt.snd_inl, TrivSqZeroExt.fst_inr, TrivSqZeroExt.snd_inr, map_zero, add_zero, zero_add]
+    ext x <;> simp only [RingHom.comp_apply, dualMap, RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk, TrivSqZeroExt.algebraMap_eq_inl, TrivSqZeroExt.fst_add, TrivSqZeroExt.snd_add, TrivSqZeroExt.fst_inl, TrivSqZeroExt.snd_inl, TrivSqZeroExt.fst_inr, TrivSqZeroExt.snd_inr, map_zero, add_zero]

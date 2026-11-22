@@ -237,7 +237,7 @@ theorem lambdaMap_one_eq_zero (S : C.HidaSetting E Wp Wq) (v : Fin S.f) (a : Lis
   rw [weight_product_germ_indep S.G.k S.G.r _ 0 S.fr 1 _ (by omega), weight_product_append, hh]
   simp only [C.nAux, mul_one]
   rw [bSt_append, bSt_cons, bSt_nil, mul_one]
-  split_ifs with H1 <;> first | (exfalso; omega) | (exfalso; simp only [and_true] at *; omega) | skip
+  split_ifs with H1 <;> first | (exfalso; omega) | (exfalso; simp only [and_true] at *) | skip
   rw [Real.sqrt_mul (weight_product_nonneg _ _ _ hfr _ _), sqrt_zpow_two_mul _ (mul_nonneg (hfr _ _) (norm_nonneg z))]
   simp only [div_eq_mul_inv, mul_inv]
   ring
@@ -269,7 +269,7 @@ theorem germConst : GermConst := by
   have hrd : 0 < S6.rd E := rd_pos' (E := E)
   have hκ0 : D.kapG (S.g : ℝ) (S6.rd E) ≠ 0 := by rw [hκ]; positivity
   rw [show ((m + 2 : ℕ) : ℤ) = ((m + 1 : ℕ) : ℤ) + 1 by push_cast; ring, betaZ_succ' _ hκ0 (m + 1)]
-  simp only [n1, n2, n3, n4, n5, Nat.cast_one, betaZ_one, mul_one, C.HidaSetting.fr]
+  simp only [n3, n4, n5, Nat.cast_one, betaZ_one, mul_one, C.HidaSetting.fr]
   set Hf := √(C.nAux S.G.k S.G.r 0 S.fr 1 h) /
       (D.bSt (D.kapG (S.g : ℝ) (S6.rd E)) h *
         √(D.GamLev S.G.k S.G.r (D.kapG (S.g : ℝ) (S6.rd E)) (D.deG (S.g : ℝ) (S6.rd E)) (b0 + m + 2) * S.sizeAt v a))
@@ -322,13 +322,13 @@ theorem germConst : GermConst := by
     fun hA hB hAB => Real.log_injOn_pos (Set.mem_Ioi.2 hA) (Set.mem_Ioi.2 hB) hAB
   refine ⟨lg (by positivity) (by positivity) ?_, lg (by positivity) (by positivity) ?_⟩
   · simp (disch := positivity) only [Real.log_mul, Real.log_div, Real.log_inv, Real.log_pow, Real.log_zpow,
-      Real.log_rpow, Real.log_sqrt, c1, c2]
+      Real.log_rpow, Real.log_sqrt, c1]
     simp only [hν1, hν2, he1, he2, S6.nuBlock, C.Mlev, U.Mlev]
     push_cast
     ring
   · simp (disch := positivity) only [Real.log_mul, Real.log_div, Real.log_inv, Real.log_pow, Real.log_zpow,
       Real.log_rpow, Real.log_sqrt, c1, c2]
-    simp only [hν1, hν2, he1, he2, S6.nuBlock, C.Mlev, U.Mlev]
+    simp only [hν1, hν2, he1, he2, S6.nuBlock, C.Mlev]
     push_cast
     linear_combination ((S.G.k : ℝ) + 2 * ρ + 1) * hZl
 

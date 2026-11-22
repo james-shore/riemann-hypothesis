@@ -35,7 +35,7 @@ noncomputable def toQuot (n : ℕ) : AdicCompletion I N →ₗ[B] N ⧸ T n :=
   Submodule.factor (hT n) ∘ₗ eval I N (n + 1)
 
 theorem toQuot_of (n : ℕ) (e : N) : toQuot T hT n (of I N e) = (T n).mkQ e := by
-  simp [toQuot, eval_of, Submodule.factor_mk]
+  simp [toQuot]
 
 theorem toQuot_mk (n : ℕ) (f : AdicCauchySequence I N) :
     toQuot T hT n (AdicCompletion.mk I N f) = (T n).mkQ (f (n + 1)) := by

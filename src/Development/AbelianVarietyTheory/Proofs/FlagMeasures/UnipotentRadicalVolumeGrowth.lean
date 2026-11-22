@@ -123,7 +123,6 @@ theorem radical_volume_growth : ∀ (n : ℕ) (ε : Fin n → Bool) (W : Submodu
   haveI : (muG ε).IsHaarMeasure := by
     first
     | infer_instance
-    | (unfold muG; infer_instance)
   have hgrowth : ∃ C : ℝ, ∀ r : ℝ, 0 ≤ r →
       ν {m | dOp (umat m) ≤ r} ≤ ENNReal.ofReal (C * Real.exp (4 * n * rkR ε * r)) := by
     obtain ⟨C, -, hball⟩ := GlobalTheory.BallVol.ballVol n ε
@@ -132,11 +131,9 @@ theorem radical_volume_growth : ∀ (n : ℕ) (ε : Fin n → Bool) (W : Submodu
       first
       | exact measure_pos_of_mem_nhds (μ := muG ε) hK1
       | exact (muG ε).measure_pos_of_mem_nhds hK1
-      | exact Measure.measure_pos_of_mem_nhds (muG ε) hK1
     have hμKt : muG ε K < ⊤ := by
       first
       | exact hKc.measure_lt_top (μ := muG ε)
-      | exact IsCompact.measure_lt_top hKc
     have hνKK : ν (K * K⁻¹) < ⊤ := by
       haveI : IsFiniteMeasureOnCompacts ν := hν.2.1
       exact (hKc.mul hKc.inv).measure_lt_top

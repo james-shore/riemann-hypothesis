@@ -146,7 +146,7 @@ theorem _root_.GlobalTheory.CNorm.pows_eq_range_dif_pow : ∀ (p : ℕ) (M : Typ
   refine ⟨?_, fun a => ⟨fun ha => ?_, fun ha => ?_⟩⟩
   · ext x
     simp only [_root_.GlobalTheory.CNorm.pows, Subgroup.mem_map, Subgroup.mem_top, true_and,
-      powMonoidHom_apply, MonoidHom.mem_range]
+      powMonoidHom_apply]
     constructor
     · rintro ⟨y, rfl⟩
       exact ⟨_, (K3 y).symm⟩

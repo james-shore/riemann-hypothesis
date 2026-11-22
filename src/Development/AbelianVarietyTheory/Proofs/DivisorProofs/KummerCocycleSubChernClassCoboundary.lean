@@ -168,7 +168,7 @@ theorem cobd : ∀ (q : ℕ) [NeZero q] (E : Spc) (L : E ⟶ ofCat (glCat 1)), I
       rw [PicSpec.lineUnit_face, face_two, face_zero, mul_pow, hv, hu, mul_comm])
     rw [e0, e1, e2]
     have hn2 : (2 : ℤ).negOnePow = 1 := by decide
-    simp only [dv, PicSpec.unitSec_mul, PicSpec.sec_map_add, smap_sub, map_add, map_sub, hn2, one_smul, Fin.val_zero,
+    simp only [dv, PicSpec.unitSec_mul, map_add, map_sub, hn2, one_smul, Fin.val_zero,
       Fin.val_one, Fin.val_two, pow_zero, pow_one, neg_one_sq, neg_smul]
     abel
   refine (mkiff _ _).2 ⟨θ, sub_eq_zero.mp (CupSpec.ev_ext _ _ fun p s h U x => ?_)⟩

@@ -29,7 +29,7 @@ theorem herm_eI (v : Fin (2 * r + k + 1) → ℂ) (a : Fin r) :
       rw [Formalism.FourierDecayAlt.P.Qx3.hpk_row_e, if_neg hb, zero_mul]
     · intro h; exact absurd (Finset.mem_univ _) h
   · intro b _ hb
-    simp [bvec, Pi.single_apply, hb]
+    simp [bvec, hb]
   · intro h; exact absurd (Finset.mem_univ _) h
 
 theorem glev_row {g : B.Mat k r} (hg : g ∈ Q.Glev k r (Fin.last r)) (a : Fin r) (p : Fin (2 * r + k + 1)) :
@@ -171,7 +171,7 @@ theorem radSide_chain (X : Q.ActualOps k r z z' π π') (L : R.LevelData (Q.Pr (
       change Formalism.FourierDecayAlt.P.JCx2.rma_fst _ ((Wd.Ts (P5.site L ⟨n, hnr⟩) Y * Formalism.FourierDecayAlt.P.JCx2.rma_pref L Y n) 0 0) Ψ = _
       rw [Matrix.mul_apply, Fin.sum_univ_two]
       simp only [Wd.Ts, YangianSpanCharacter.T.Tm, P5.site, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero,
-        Matrix.cons_val_one, Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_cons]
+        Matrix.cons_val_one, Matrix.empty_val', Matrix.cons_val_fin_one]
       rw [hp, hc]
       simp only [map_add, map_mul, map_neg, AlgHom.commutes, LinearMap.add_apply, LinearMap.neg_apply,
         Module.End.mul_apply, Module.algebraMap_end_apply]
@@ -182,9 +182,9 @@ theorem radSide_chain (X : Q.ActualOps k r z z' π π') (L : R.LevelData (Q.Pr (
       change Formalism.FourierDecayAlt.P.JCx2.rma_fst _ ((Wd.Ts (P5.site L ⟨n, hnr⟩) Y * Formalism.FourierDecayAlt.P.JCx2.rma_pref L Y n) 1 0) Ψ = _
       rw [Matrix.mul_apply, Fin.sum_univ_two]
       simp only [Wd.Ts, YangianSpanCharacter.T.Tm, P5.site, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero,
-        Matrix.cons_val_one, Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_cons]
+        Matrix.cons_val_one, Matrix.empty_val', Matrix.cons_val_fin_one]
       rw [hci]
-      simp only [map_add, map_mul, map_zero, zero_mul, add_zero, Module.End.mul_apply]
+      simp only [map_mul, zero_mul, add_zero, Module.End.mul_apply]
       rfl
     rw [e0, e1]
     simp only [Q.vAB, dif_pos hnr, Q.crd]

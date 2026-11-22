@@ -185,7 +185,7 @@ theorem ratFromAd (A : X.B.I.Gf) {u : D.what₂.Word} {Λ : Submodule (𝓞 D.ho
       rw [hr]
       refine sum_mem fun a _ => ?_
       have hmem : X.eX a ∈ Submodule.span (𝓞 D.host.E) (Set.range fun b => cc b • (lf D (X.Fu u)).fl.e b) :=
-        Submodule.subset_span ⟨a, by simp [hc1' a, hTF a, lf]⟩
+        Submodule.subset_span ⟨a, by simp [hc1' a, hTF a]⟩
       have hint : X.ιE ((t a : 𝓞 X.B.I.E) : X.B.I.E) ∈ (algebraMap (𝓞 D.host.E) D.host.E).range := by
         have := ((t a).2 : IsIntegral ℤ ((t a : 𝓞 X.B.I.E) : X.B.I.E)).map X.ιE.toRingHom.toIntAlgHom
         exact ⟨⟨_, this⟩, rfl⟩

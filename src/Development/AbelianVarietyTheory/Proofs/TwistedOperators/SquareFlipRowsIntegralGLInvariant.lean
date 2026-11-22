@@ -64,7 +64,7 @@ theorem squareFlip_one_rows : ∀ {k : Type} [Field k] [ValuativeRel k] [Topolog
     rcases j with c | c
     · simp [setCols, Assignment.block, hX', Matrix.mul_apply, Matrix.toCols₁]
     · simp [setCols, Assignment.block, Matrix.mul_apply]
-      first | rfl | exact Matrix.mul_apply | (erw [Matrix.mul_apply]; simp)
+      first | rfl
   have hsub : X'.submatrix id (Subtype.val : Assignment.two.block D₁ D₂ → D₁ ⊕ D₂) =
       (u⁻¹).val * X.submatrix id (Subtype.val : Assignment.two.block D₁ D₂ → D₁ ⊕ D₂) := by
     ext i ⟨j, hj⟩

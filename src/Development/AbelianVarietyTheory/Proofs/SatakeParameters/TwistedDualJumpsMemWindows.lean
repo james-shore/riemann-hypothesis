@@ -44,8 +44,7 @@ theorem jT1_mem_window_of_bounded_v : ∀ {R : Ranks} (P : HCParam R) (j : Fin R
     have h3 := Nat.le_floor h2
     have h4 : |B - E| ≤ ((⌊η⌋₊ : ℕ) : ℤ) := by rw [Int.abs_eq_natAbs]; exact_mod_cast h3
     exact abs_le.mp h4
-  simp only [jT1, jR, jW, cloud, lows, block, Multiset.mem_map, Multiset.mem_add, Finset.mem_val,
-    Finset.mem_univ, true_and, Multiset.mem_range] at hu
+  simp only [jT1, jR, jW, cloud, lows, block, Multiset.mem_map, Multiset.mem_add, Multiset.mem_range] at hu
   cases s with
   | true =>
     simp only [szT, if_true, Bool.not_true, Bool.false_eq_true, if_false, ht2, hEf]

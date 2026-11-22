@@ -10,7 +10,7 @@ private theorem star_mapRingHom_algHom_eq {l : ℕ} [Fact l.Prime] (F : GFrame l
     simp [GFrame.eps, pushCh, IsScalarTower.algebraMap_apply O R B, IsScalarTower.algebraMap_apply O R B']
   have hs : ∀ (C : Type) [CommRing C] [Algebra O C] (g : F.G₀) (b : C), F.star O C n (MonoidAlgebra.single g b) = MonoidAlgebra.single (F.conj g)⁻¹ (b * ↑(F.eps O C g ^ (1 - (n:ℤ)))) := by
     intro C _ _ g b
-    simp [GFrame.star, GFrame.starOp, MonoidAlgebra.lift_single, MonoidAlgebra.smul_single']
+    simp [GFrame.star, GFrame.starOp, MonoidAlgebra.lift_single]
   induction x using MonoidAlgebra.induction_linear with
   | zero => simp [GFrame.star]
   | add x y hx hy => simp only [map_add] at hx hy ⊢; simp [GFrame.star, map_add] at hx hy ⊢; rw [hx, hy]

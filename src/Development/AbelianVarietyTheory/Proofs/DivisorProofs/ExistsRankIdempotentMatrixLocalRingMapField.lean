@@ -76,8 +76,8 @@ theorem exists_conj_diag (W : Type) [CommRing W] [IsLocalRing W] (n : ℕ)
     rw [LinearMap.toMatrix_apply, hb j, map_smul, b.repr_self]
     by_cases hij : i = j
     · subst hij; simp; split_ifs <;> simp
-    · simp [Matrix.diagonal_apply_ne _ hij, Finsupp.single_apply, Ne.symm hij]
-      split_ifs <;> simp [Finsupp.single_apply, Ne.symm hij]
+    · simp [Matrix.diagonal_apply_ne _ hij]
+      split_ifs <;> simp [Ne.symm hij]
   let e := Pi.basisFun W (Fin n)
   refine ⟨r, e.toMatrix b, b.toMatrix e, ?_, ?_⟩
   · exact Module.Basis.toMatrix_mul_toMatrix_flip e b

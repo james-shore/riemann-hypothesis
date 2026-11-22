@@ -72,7 +72,7 @@ theorem UpperTheory.V.Ws.Pu.frobAbs_w :
   have h3 := hI _ (inv_mul_mem_Ine_of_isFrob h1 h2)
   have h4 : ρ σ ^ e = ρ φ ^ f := by
     rw [map_mul, map_inv, inv_mul_eq_one, map_pow, map_pow] at h3
-    first | exact h3 | exact h3.symm
+    first | exact h3
   have key : ∀ x ∈ (W.mat ρ σ).charpoly.roots, ∃ c ∈ b, ‖ι x‖ ^ e = ‖c‖⁻¹ ^ f := by
     intro x hx
     obtain ⟨z, hz, hzx⟩ := frobAbs_eig (ρ σ) (ρ φ) hf h4 (isRoot_of_mem_roots hx)

@@ -20,7 +20,7 @@ private theorem corr_map {A B : Type} [CommRing A] [CommRing B] (f : A →+* B) 
   generalize adj y * y = w
   congr 1
   ext i j
-  by_cases e : i = j <;> simp [Matrix.one_apply, e]
+  by_cases e : i = j <;> simp [e]
 
 private theorem corr_gsp {A : Type} [CommRing A] (c n : A) (y : M4 A) (hc : 2 * c * n = 1)
     (hE : (adj y * y - n • 1) * (adj y * y - n • 1) = 0) : IsGSp n (corr c n y) := by
@@ -35,7 +35,7 @@ private theorem corr_gsp {A : Type} [CommRing A] (c n : A) (y : M4 A) (hc : 2 * 
     rw [sub_eq_add_neg, ← neg_smul, hadd, hsm, h1, a1]
   rw [hmul, a3, mul_assoc, ← mul_assoc (adj y), a2]
   simp only [mul_sub, sub_mul, add_mul, mul_add, mul_smul_comm, smul_mul_assoc, hE, one_mul, mul_one, smul_zero,
-    smul_add, smul_sub, smul_smul, zero_add, sub_zero]
+    smul_sub, smul_smul, zero_add, sub_zero]
   have : E = (2 * c * n) • E := by rw [hc, one_smul]
   linear_combination (norm := module) this
 
@@ -88,7 +88,7 @@ theorem UpperTheory.V.Ws.X1.gspLift :
     have e2 := congrFun (congrFun e1 i) j
     rw [Matrix.map_apply] at e2
     rw [Matrix.sub_apply, map_sub, e2]
-    by_cases e : i = j <;> simp [Matrix.one_apply, e]
+    by_cases e : i = j <;> simp [e]
   refine ⟨fun s => corr (algebraMap Λ A (u * ((ν s)⁻¹ : Λˣ))) (algebraMap Λ A (ν s)) (y0 s), fun i j N => ?_,
     fun s => corr_gsp _ _ _ ?_ ?_, fun s => ?_, fun h s => corr_up _ _ fun i j e => ?_⟩
   · let q := Ideal.Quotient.mk (maximalIdeal A ^ N)

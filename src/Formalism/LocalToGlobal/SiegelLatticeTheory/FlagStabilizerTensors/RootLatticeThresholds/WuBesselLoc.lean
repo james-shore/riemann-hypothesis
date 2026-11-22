@@ -86,7 +86,7 @@ theorem theta_pos (C : Choice X θ) (u : D.what₂.Word) (τ : D.what₂.Tau) : 
     unfold Formalism.REAL.muG
     exact (isOpen_univ.measure_pos _ Set.univ_nonempty).ne'
   have h1 := hq (fun _ => 1) measurable_const
-  simp only [lintegral_const, Measure.coe_zero, Pi.zero_apply, zero_mul, lintegral_zero, mul_one] at h1
+  simp only [lintegral_const, Measure.coe_zero, Pi.zero_apply] at h1
   unfold muGB at h1
   rw [Measure.map_apply hmeas MeasurableSet.univ, Set.preimage_univ] at h1
   simp only [one_mul, mul_zero, zero_mul] at h1
@@ -300,8 +300,6 @@ theorem wuBesselOfLoc {D : D7} {X : HidaSetting D} {θ : ℝ} (hRT : ReproTr) (h
   have hyi2 : C.y τ * yi = 1 := by
     first
       | exact mul_eq_one_comm.mp hyi1
-      | exact (Matrix.mul_eq_one_comm (M := yi)).mp hyi1
-      | (letI := Matrix.invertibleOfLeftInverse (C.y τ) yi hyi1; exact Matrix.mul_invOf_self (C.y τ))
   have hyiU : yiᴴ * Formalism.QuantumDeterminants.Hpk D.R.k D.R.rS * yi = Formalism.QuantumDeterminants.Hpk D.R.k D.R.rS := by
     calc yiᴴ * Formalism.QuantumDeterminants.Hpk D.R.k D.R.rS * yi
         = yiᴴ * ((C.y τ)ᴴ * Formalism.QuantumDeterminants.Hpk D.R.k D.R.rS * C.y τ) * yi := by rw [hy]

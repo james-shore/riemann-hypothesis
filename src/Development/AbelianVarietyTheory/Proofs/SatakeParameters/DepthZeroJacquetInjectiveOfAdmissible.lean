@@ -16,8 +16,6 @@ theorem depthZeroJacquetInjective_of_admissible :
   have h00 : (0 : π.V) ∈ fixed π.π (KOne k (Fin n) ⊔ (unipRad k e ⊓ KO k (Fin n))) := by
     first
       | exact Submodule.zero_mem _
-      | exact fun _ => map_zero _
-      | simp [fixed]
   exact hb.injOn hv h00 (by simpa using h0)
 
 end GlobalTheory

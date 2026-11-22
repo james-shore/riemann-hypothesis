@@ -52,5 +52,5 @@ theorem GlobalTheory.SeeConjChar.conjCharacter_eq_prod_symmetricEdge_characters 
     split_ifs with hE
     · unfold GlobalTheory.SeeConjChar.wA GlobalTheory.SeeConjChar.wB
       simp only [apply_ite (fun u : (kP PP)ˣ => (u : kP PP)), Units.val_one, Units.val_neg]
-      split_ifs <;> first | (exfalso; tauto) | (push_cast; ring1) | omega | (simp_all <;> omega)
+      split_ifs <;> first | (exfalso; tauto) | (push_cast; ring1) | omega
     · simp

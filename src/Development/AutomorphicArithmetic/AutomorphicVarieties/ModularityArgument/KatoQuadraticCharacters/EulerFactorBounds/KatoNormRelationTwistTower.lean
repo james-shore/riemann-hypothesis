@@ -146,7 +146,7 @@ private theorem rows_succ {l L N p k : ℕ} [Fact l.Prime] [NeZero N] (x : ZMod 
         push_cast
         linear_combination ((bar l (L + 1) N p : ZMod p) * (N + x.val * topT l (L + 1) N * l ^ (L + 1))
           - k * bar l L N p * (N + x.val * topT l L N * l ^ L)) * f0 - ((N : ZMod p) * l ^ L) * k2
-    · simp only [rw0, Pi.smul_apply, smul_eq_mul, rU, Matrix.cons_val_one, Matrix.head_cons, Fin.mk_one]
+    · simp only [rw0, Pi.smul_apply, smul_eq_mul, rU, Matrix.cons_val_one, Fin.mk_one]
       simp
   · funext i
     fin_cases i
@@ -162,11 +162,11 @@ private theorem rows_succ {l L N p k : ℕ} [Fact l.Prime] [NeZero N] (x : ZMod 
           - k * bar l L N p * topT l L N * l ^ L) * f0
     · simp only [rw0, Pi.smul_apply, smul_eq_mul]
       apply lift
-      · simp only [rV, Matrix.cons_val_one, Matrix.head_cons, Fin.mk_one]
+      · simp only [rV, Matrix.cons_val_one, Fin.mk_one]
         push_cast
         linear_combination (N : ZMod (N * l ^ L)) * e1 - ((k : ZMod (N * l ^ L)) * N) * e2
           + ((l : ZMod (N * l ^ L)) - k) * e4 - (N : ZMod (N * l ^ L)) * k1
-      · simp only [rV, Matrix.cons_val_one, Matrix.head_cons, Fin.mk_one]
+      · simp only [rV, Matrix.cons_val_one, Fin.mk_one]
         push_cast
         linear_combination ((bar l (L + 1) N p : ZMod p) * N - k * bar l L N p * N) * f0 - ((N : ZMod p) * l ^ L) * k2
 

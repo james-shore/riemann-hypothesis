@@ -72,7 +72,7 @@ theorem quad_main (h : ∀ b c e, l b c * u b e = u b e * l b c + if c = e then 
         (if a = b then (Fintype.card κ : ℂ) / 2 - x else 0) • (l a i * u b j) := by
     intro a b
     rw [hE]
-    split_ifs <;> simp [add_mul, sub_mul, sub_smul, smul_mul_assoc, add_sub_assoc]
+    split_ifs <;> simp [add_mul, sub_mul, sub_smul, add_sub_assoc]
   simp only [hR, Finset.sum_add_distrib]
   have hD : ∑ a, ∑ b, (if a = b then (Fintype.card κ : ℂ) / 2 - x else 0) • (l a i * u b j) =
       ((Fintype.card κ : ℂ) / 2 - x) • ∑ a, l a i * u a j := by
@@ -82,7 +82,7 @@ theorem quad_main (h : ∀ b c e, l b c * u b e = u b e * l b c + if c = e then 
   rw [hD, core2 u l h, ← h1]
   simp only [qop, hG]
   simp only [neg_mul_neg, add_mul, mul_add, smul_mul_assoc, mul_smul_comm, one_mul, mul_one,
-    smul_smul, Finset.sum_add_distrib, ite_smul, zero_smul, ite_mul, zero_mul, mul_ite, mul_zero, Finset.sum_ite_eq,
+    Finset.sum_add_distrib, ite_smul, zero_smul, ite_mul, zero_mul, mul_ite, mul_zero, Finset.sum_ite_eq,
     Finset.sum_ite_eq', Finset.mem_univ, if_true]
   by_cases hij : i = j
   · subst hij

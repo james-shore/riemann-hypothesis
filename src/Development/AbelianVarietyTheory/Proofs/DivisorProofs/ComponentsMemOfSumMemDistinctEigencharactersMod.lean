@@ -21,8 +21,6 @@ theorem eigen_components_mod_stable {k : Type} [Field k] {H : Type 1} [AddCommGr
   | exact @_root_.GlobalTheory.MembershipOfSum.mem_of_sum_mem
   | exact _root_.GlobalTheory.MembershipOfSum.mem_of_sum_mem
   | (apply _root_.GlobalTheory.MembershipOfSum.mem_of_sum_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MembershipOfSum.mem_of_sum_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MembershipOfSum.mem_of_sum_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MembershipOfSum.mem_of_sum_mem ..)
 
 theorem eigen_mod_stable : ∀ (k : Type) [Field k] (H : Type 1) [AddCommGroup H] [Module k H] (O : Type) [CommRing O] (ρ : O →+* Module.End k H) (F : Submodule k H), (∀ c, ∀ x ∈ F, ρ c x ∈ F) → ∀ (a : ℕ) (χ : Fin a → O → k), (∀ i j, i ≠ j → ∃ c, χ i c ≠ χ j c) → ∀ u : Fin a → H, (∀ i c, ρ c (u i) - χ i c • u i ∈ F) → ∑ i, u i ∈ F → ∀ i, u i ∈ F := by

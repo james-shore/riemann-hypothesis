@@ -17,7 +17,7 @@ theorem hEmb_col_frame (B : Matrix (Fin k) (Fin k) A) (s : Idx r k) (hs : ¬ IsW
   rcases s with s | ((s | s) | s)
   · rcases t with t | ((t | t) | t) <;> simp [hEmb, midEmb, Matrix.one_apply]
   · exact absurd ⟨s, rfl⟩ hs
-  · rcases t with t | ((t | t) | t) <;> simp [hEmb, midEmb, Matrix.one_apply]
+  · rcases t with t | ((t | t) | t) <;> simp [hEmb, midEmb]
   · rcases t with t | ((t | t) | t) <;> simp [hEmb, midEmb, Matrix.one_apply]
 
 theorem hEmb_row_frame (B : Matrix (Fin k) (Fin k) A) (s : Idx r k) (hs : ¬ IsW s) (t : Idx r k) :
@@ -25,7 +25,7 @@ theorem hEmb_row_frame (B : Matrix (Fin k) (Fin k) A) (s : Idx r k) (hs : ¬ IsW
   rcases s with s | ((s | s) | s)
   · rcases t with t | ((t | t) | t) <;> simp [hEmb, midEmb, Matrix.one_apply]
   · exact absurd ⟨s, rfl⟩ hs
-  · rcases t with t | ((t | t) | t) <;> simp [hEmb, midEmb, Matrix.one_apply]
+  · rcases t with t | ((t | t) | t) <;> simp [hEmb, midEmb]
   · rcases t with t | ((t | t) | t) <;> simp [hEmb, midEmb, Matrix.one_apply]
 
 theorem hEmb_ww (B : Matrix (Fin k) (Fin k) A) (i j : Fin k) : hEmb r B (wI i) (wI j) = B i j := by
@@ -114,7 +114,7 @@ theorem col_unit_iff (M : Matrix (Idx r k) (Idx r k) K) (s : Idx r k) :
   by_cases h : t = s
   · subst h
     simp [mulVec, dotProduct, Pi.single_apply]
-  · simp [mulVec, dotProduct, Pi.single_apply, Matrix.one_apply, h]
+  · simp [mulVec, dotProduct, Pi.single_apply, h]
 
 theorem row_unit_iff (M : Matrix (Idx r k) (Idx r k) K) (s : Idx r k) :
     Mᵀ *ᵥ Pi.single s 1 = Pi.single s 1 ↔ ∀ t, M s t = (1 : Matrix (Idx r k) (Idx r k) K) s t := by
@@ -123,7 +123,7 @@ theorem row_unit_iff (M : Matrix (Idx r k) (Idx r k) K) (s : Idx r k) :
   by_cases h : t = s
   · subst h
     simp [mulVec, dotProduct, Pi.single_apply]
-  · simp [mulVec, dotProduct, Pi.single_apply, Matrix.one_apply, h, Ne.symm h]
+  · simp [mulVec, dotProduct, Pi.single_apply, h, Ne.symm h]
 
 theorem frame_fix_iff (g1 Q : GL (Idx r k) K) (g2 J1 : Matrix (Idx r k) (Idx r k) K) (hJ : IsUnit J1.det)
     (hU : g2ᵀ * J1 * (g1 : Matrix (Idx r k) (Idx r k) K) = J1)

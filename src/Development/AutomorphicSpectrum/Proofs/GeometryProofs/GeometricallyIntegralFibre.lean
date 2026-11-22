@@ -163,7 +163,7 @@ theorem ker_appTop_le {A : Type} [CommRing A] (I : Ideal A) :
     (ConcreteCategory.bijective_of_isIso (Scheme.ΓSpecIso (.of A)).inv).2 r
   refine Ideal.mem_map_of_mem _ ?_
   have h1 := congr($(Scheme.ΓSpecIso_inv_naturality (CommRingCat.ofHom (Ideal.Quotient.mk I))) a)
-  simp only [CommRingCat.comp_apply] at h1
+  simp only at h1
   have h2 : (Scheme.ΓSpecIso (.of (A ⧸ I))).inv (Ideal.Quotient.mk I a) = 0 :=
     h1.trans hr
   have h3 : Ideal.Quotient.mk I a = 0 :=

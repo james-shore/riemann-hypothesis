@@ -67,7 +67,7 @@ theorem minorIJ_shear {C : Finset (Fin N)} {ca cb : Fin N} (t : ℂ) (h : cb ∉
       (1 : Matrix (Fin N) (Fin N) ℂ).submatrix (C.orderEmbOfFin rfl) (C.orderEmbOfFin rfl) := by
     ext x y
     have hx : cb ≠ C.orderEmbOfFin rfl x := fun e => h (e ▸ Finset.orderEmbOfFin_mem _ _ _)
-    simp [Matrix.add_apply, Matrix.single_apply, hx]
+    simp [Matrix.add_apply, hx]
   have h1 := CPts.minorIJ_one (R := ℂ) C
   unfold minorIJ at h1 ⊢
   rw [dif_pos rfl] at h1 ⊢

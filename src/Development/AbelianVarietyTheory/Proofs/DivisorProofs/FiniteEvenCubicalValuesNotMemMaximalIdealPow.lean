@@ -51,9 +51,9 @@ theorem defect_add_left (hc : ∀ a a' b, κ (a + a' + b) * κ a * κ a' * κ b 
   rw [div_mul_div_comm, div_eq_div_iff_mul_eq_mul]
   have h := hc a a' b
   calc κ (a + a' + b) * (κ a * κ b * (κ a' * κ b)) = (κ (a + a' + b) * κ a * κ a' * κ b) * κ b := by
-        simp only [mul_comm, _root_.mul_assoc, _root_.mul_left_comm]
+        simp only [mul_comm, _root_.mul_left_comm]
     _ = (κ (a + a') * κ (a + b) * κ (a' + b)) * κ b := by rw [h]
-    _ = κ (a + b) * κ (a' + b) * (κ (a + a') * κ b) := by simp only [mul_comm, _root_.mul_assoc, _root_.mul_left_comm]
+    _ = κ (a + b) * κ (a' + b) * (κ (a + a') * κ b) := by simp only [mul_comm, _root_.mul_left_comm]
 
 theorem defect_comm (a b : X) : defect κ a b = defect κ b a := by
   unfold defect; rw [add_comm, _root_.mul_comm]

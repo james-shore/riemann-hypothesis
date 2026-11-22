@@ -50,7 +50,7 @@ lemma eval_pow_map (p : (ZMod g)[X]) (x : Fbar g) :
 
 lemma mem_range_of_pow_eq (c : Fbar g) (hc : c ^ g = c) :
     c ∈ Set.range (algebraMap (ZMod g) (Fbar g)) := by
-  first | exact Bl.general_b_fact_second_bis.goal1 .. | (apply Bl.general_b_fact_second_bis.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second_bis.goal1 <;> assumption) | (apply @Bl.general_b_fact_second_bis.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_second_bis.goal1 <;> assumption) | (apply @Bl.general_b_fact_second_bis.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_second_bis.goal1 .. | (apply Bl.general_b_fact_second_bis.goal1 <;> assumption)
 
 end Frob
 

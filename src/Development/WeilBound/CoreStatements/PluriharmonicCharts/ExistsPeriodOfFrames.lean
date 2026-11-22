@@ -93,8 +93,8 @@ theorem herm_dg {ty : Fin g → (E →+* ℂ)} {G : Matrix (Fin g) (Fin g) ℂ} 
     (a : 𝓞 E) (z w : Fin g → ℂ) :
     hermForm G (dg ty a *ᵥ z) w = ∑ σ : E →+* ℂ, σ (a : E) * hermForm G (Pr ty σ *ᵥ z) (Pr ty σ *ᵥ w) := by
   classical
-  simp only [hermForm, dg, Pr, dotProduct, Matrix.mulVec_diagonal, Pi.star_apply, Finset.mul_sum]
-  simp only [Matrix.mulVec, dotProduct, Finset.mul_sum, Pi.star_apply, Matrix.mulVec_diagonal]
+  simp only [hermForm, dg, Pr, dotProduct, Matrix.mulVec_diagonal, Finset.mul_sum]
+  simp only [Matrix.mulVec, dotProduct, Finset.mul_sum, Pi.star_apply]
   rw [Finset.sum_comm (s := (Finset.univ : Finset (E →+* ℂ)))]
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [Finset.sum_comm (s := (Finset.univ : Finset (E →+* ℂ)))]

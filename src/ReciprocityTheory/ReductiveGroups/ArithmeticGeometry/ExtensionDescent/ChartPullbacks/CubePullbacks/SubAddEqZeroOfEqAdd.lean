@@ -27,7 +27,6 @@ lemma eSec_inv {S₀ : Scheme.{0}} (H : Over S₀) [GrpObj H] :
   have h : η[H] ≫ GrpObj.inv (X := H) = η[H] := by
     first
     | simp
-    | exact GrpObj.one_inv
   rw [Category.id_comp]
   show (η[H] ≫ GrpObj.inv (X := H)).left = η[H].left
   rw [h]
@@ -73,7 +72,6 @@ private theorem pullU_comp_lemma {X Y Z : Scheme.{0}} (f : Z ⟶ Y) (g : Y ⟶ X
     (x : Γ(X, U)ˣ) : pullU (f ≫ g) U x = pullU f (g ⁻¹ᵁ U) (pullU g U x) := by
   first
   | rfl
-  | (ext; simp [pullU])
 
 lemma symIso_isGen (L : LB G.left) (w₀ : LB.Iso L (L.pull (GrpObj.inv (X := G)).left))
     (hw₀ : w₀.IsGen) : (symIso m L w₀).IsGen := by
@@ -91,11 +89,9 @@ lemma symIso_isGen (L : LB G.left) (w₀ : LB.Iso L (L.pull (GrpObj.inv (X := G)
   rw [map_mul, gU_res, gU_res] at h0
   first
   | rw [germ_div _ _ _ _ (m.F.base y) hz] at h0
-  | simp only [germ_div] at h0
   rw [map_mul, gU_res, gU_res]
   first
   | rw [germ_div _ _ p p' y hy]
-  | simp only [germ_div]
   apply mul_inv_mul_cancel_comm (Units.map (m.F.stalkMap y).hom) _ _ _ _ _ _ _ _ h0
   · dsimp only [symIso]
     rw [gU_res, gU_pullU]
@@ -132,7 +128,6 @@ lemma gU_pullU_id {X : Scheme.{0}} (U : X.Opens) (y : X) (hy : y ∈ (𝟙 X) �
     gU y hy (pullU (𝟙 X) U u) = gU y hy u := by
   first
   | rfl
-  | (rw [gU_pullU]; simp)
 
 lemma sub_add_eq_zero_of_eq_add {M N : Type} [CommGroup M] [CommGroup N] (φ : M →* N) (x0 y0 z0 : M) (X Y Z : N)
     (h0 : x0 = y0 * z0) (hX : X = φ x0) (hY : Y = φ y0) (hZ : Z = φ z0) : X = Y * Z := by
@@ -150,7 +145,6 @@ lemma gU_linCombIso_unit {X Y : Scheme.{0}} {L M : LB X} (w : LB.Iso L M) (φ₀
   dsimp only [LB.linCombIso]
   first
   | erw [Fintype.prod_unique, zpow_one, gU_res]
-  | simp only [Fintype.prod_unique, zpow_one, gU_res]
   all_goals rfl
 
 private theorem gU_pullU_id_lemma_3 {X : Scheme.{0}} (U : X.Opens) (y : X) (hy : y ∈ U)
@@ -164,7 +158,6 @@ lemma pt1 (y : (𝟙_ (Over S')).left) :
   rw [base_eq (eSec_inv G') y, base_eq (eSec_inv G) (m.e.base y)]
   first
   | exact base_eq m.e_comm y
-  | simpa using base_eq m.e_comm y
 
 lemma pt2 (y : (𝟙_ (Over S')).left) :
     m.F.base ((eSec G').base y) = (eSec G).base (m.e.base y) := base_eq m.e_comm y
@@ -225,13 +218,7 @@ lemma sym_maps (L : RigLB G) (he : eSec G ≫ (GrpObj.inv (X := G)).left = 𝟙 
       memW_lemma_2 L.L (fun _ : PUnit => eSec G) (fun _ => p.2 PUnit.unit PUnit.unit) (m.e.base y) c3⟩
   have h0 := congrArg (gU (m.e.base y) hz)
     (hm ((fun _ _ => p.1 PUnit.unit PUnit.unit PUnit.unit), (fun _ => p.2 PUnit.unit PUnit.unit)))
-  first
-  | rw [id_eq] at h0
-  | skip
   rw [map_mul, gU_res, gU_res] at h0
-  first
-  | rw [id_eq]
-  | skip
   rw [map_mul, gU_res, gU_res]
   apply sub_add_eq_zero_of_eq_add (Units.map (m.e.stalkMap y).hom) _ _ _ _ _ _ h0
   · dsimp only [rigPullOf, CubeMap.rigPull]

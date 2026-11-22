@@ -63,7 +63,7 @@ theorem IsOpp.exists_sub_mem_perp (h : IsOpp D Z Z') (a : D.La) : ∃ b ∈ Z', 
   obtain ⟨b, hb, -⟩ := h.2.2.1 ((D.EF.flip a).toAddMonoidHom.comp Z.subtype.toAddMonoidHom)
   refine ⟨b, b.2, fun z hz => ?_⟩
   have := hb ⟨z, hz⟩
-  simp only [AddMonoidHom.comp_apply, LinearMap.toAddMonoidHom_coe, Submodule.subtype_apply, LinearMap.flip_apply] at this
+  simp only [AddMonoidHom.comp_apply, LinearMap.toAddMonoidHom_coe, Submodule.subtype_apply] at this
   rw [ef_swap, map_sub, this]
   exact neg_eq_zero.2 (sub_self _)
 

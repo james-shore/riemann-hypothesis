@@ -305,7 +305,7 @@ theorem mem_refl {N : ℕ} (hN : 0 < N) (hroot : ∀ g ∈ GfC V, ∀ m : ℕ, 0
   obtain ⟨x, y, hy, hxy⟩ := IsFractionRing.div_surjective (A := 𝓞 D.host.E) u
   obtain ⟨e, he1, he2, he3, a, ha, b, hab⟩ := exists_cut (cF D) c2 1 one_pos (x - 1) (y - 1)
     (by rw [Nat.cast_one, one_mul, add_sub_cancel]; exact nonZeroDivisors.ne_zero hy) u
-    (by rw [← hxy]; simp only [Nat.cast_one, one_mul, RingOfIntegers.coe_eq_algebraMap, map_sub, map_one,
+    (by rw [← hxy]; simp only [Nat.cast_one, one_mul, map_sub, map_one,
       add_sub_cancel]) hu
   rw [one_smul] at hab
   have hε : fj D e * fj D e = fj D e := by rw [← map_mul, he1]

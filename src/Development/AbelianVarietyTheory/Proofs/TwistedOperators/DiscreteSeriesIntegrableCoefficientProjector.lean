@@ -112,8 +112,8 @@ theorem ofType_of_isHW (D : DSRep T) {μ : Ix p q → ℚ} {v : D.HK.V} (hv : Is
           cases a <;> cases b <;> simp_all [posC, sameBlock]), hw_kill hν _ _ r.2]
         simp
     | zero => simp
-    | add x y _ _ hx hy => simp [inner_add_left, hx, hy]
-    | smul c x _ hx => simp [inner_smul_left, hx]
+    | add x y _ _ hx hy => simp [hx, hy]
+    | smul c x _ hx => simp [hx]
   have := inner_self_eq_zero.1 (hall w hw)
   exact hν.1 (D.ι_inj (by rw [this, map_zero]))
 

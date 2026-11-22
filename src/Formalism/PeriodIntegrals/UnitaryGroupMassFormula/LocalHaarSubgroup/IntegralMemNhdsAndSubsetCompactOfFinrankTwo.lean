@@ -159,7 +159,7 @@ theorem integral_mem_nhds_and_subset_compact_of_finrank_two [Module.Free K V] (h
         exact (hO x).mp hx
       obtain ⟨h1, h2⟩ := key_bound hθr hθ hdO hint
       refine ⟨h.symm x, ⟨(2 * (h.symm x).1, 2 * (h.symm x).2 * d), ⟨h1, h2⟩, ?_⟩, hpx⟩
-      refine Prod.ext ?_ ?_ <;> dsimp only <;> first | (field_simp; done) | (field_simp; ring)
+      refine Prod.ext ?_ ?_ <;> dsimp only <;> first | (field_simp)
 
 end None
 

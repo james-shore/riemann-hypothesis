@@ -14,4 +14,4 @@ theorem _root_.GlobalTheory.T.localOrderTensorPadic_free_almost_all : ∀ (F B :
       letI := GlobalTheory.LocMatrix.cenAlgebra ℓ F B Λ hΛ
       Module.Free (cenOrder ℓ F) (locOrder ℓ Λ) ∧
         Module.finrank (cenOrder ℓ F) (locOrder ℓ Λ) = Module.finrank F B := by
-  first | (exact @GlobalTheory.LocMatrix.locOrder_free) | (exact GlobalTheory.LocMatrix.locOrder_free) | (intros; apply GlobalTheory.LocMatrix.locOrder_free  <;> assumption)
+  first | (exact @GlobalTheory.LocMatrix.locOrder_free)

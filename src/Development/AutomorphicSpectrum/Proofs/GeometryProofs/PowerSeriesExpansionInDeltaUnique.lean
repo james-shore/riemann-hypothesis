@@ -160,7 +160,7 @@ theorem spec_case {Y : Scheme.{0}} (p : Y ⟶ Sp A) (q : Y ⟶ Sp J)
     rw [map_sum]
     refine Finset.sum_congr rfl fun i _ => ?_
     rw [hl, hr, ← map_mul, Algebra.TensorProduct.basis_apply]
-    simp [B, Algebra.TensorProduct.basis_apply, TensorProduct.smul_tmul']
+    simp [TensorProduct.smul_tmul']
   obtain ⟨w, rfl⟩ := hΦ.2 f
   refine ⟨fun i => B.repr w i, ?_, fun c hc => ?_⟩
   · show Φ w = ∑ i, p.appTop.hom (toΓ A (B.repr w i)) * q.appTop.hom (toΓ J (b i))

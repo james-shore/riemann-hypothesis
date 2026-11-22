@@ -62,7 +62,7 @@ def toJac {V : Type} [AddCommGroup V] [Module ℂ V] (N : ℕ) (π : Representat
       simp only [LinearMap.comp_apply, map_smul, piTensor_tprod, LinearEquiv.coe_coe,
         PiTensorProduct.subsingletonEquiv_apply_tprod, Submodule.mkQ_apply]
       rw [jac_mk, deltaHalf_one, leviEmb_oneBlock]
-      simp [Subsingleton.elim (0 : Fin 1) 0]
+      simp
     | add x y hx hy =>
       simp only [map_add] at hx hy ⊢
       rw [hx, hy]

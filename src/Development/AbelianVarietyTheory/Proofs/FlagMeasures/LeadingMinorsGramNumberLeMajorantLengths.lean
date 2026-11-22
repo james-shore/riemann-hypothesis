@@ -19,7 +19,7 @@ theorem norm_det_inner_le_pow {E : Type} [NormedAddCommGroup E] [InnerProductSpa
   rw [det_inner_sum_smul, ht, mul_one] at h
   have e : (Matrix.of fun a a' => ⟪∑ i, s i a • u i, v a'⟫_ℂ) = sᴴ * Matrix.of fun a a' => ⟪u a, v a'⟫_ℂ := by
     ext a a'
-    simp [Matrix.mul_apply, sum_inner, inner_smul_left, mul_comm]
+    simp [Matrix.mul_apply, mul_comm]
   rw [e, Matrix.det_mul, Matrix.det_conjTranspose, hs, star_one, one_mul] at h
   have h1 : ∀ {f : Fin l → E} {S : ℝ}, (∀ a, ‖f a‖ ≤ S) → ∏ a, ‖f a‖ ≤ S ^ l := fun {f S} hf => by
     have := Finset.prod_le_prod (s := Finset.univ) (fun a _ => norm_nonneg (f a)) (fun a _ => hf a)

@@ -17,12 +17,12 @@ theorem hups_choose_ratio (n p : ℕ) (hp : p ≤ n) : ∀ a : ℕ,
     have hA' : (((n + a + 1).choose (a + 1) : ℕ) : ℝ) * ((a : ℝ) + 1) =
         ((n : ℝ) + a + 1) * (((n + a).choose a : ℕ) : ℝ) := by
       have := congrArg (fun t : ℕ => (t : ℝ)) hA
-      simp only [Nat.cast_mul, Nat.succ_eq_add_one, Nat.cast_add, Nat.cast_one] at this
+      simp only [Nat.cast_mul, Nat.cast_add, Nat.cast_one] at this
       linarith
     have hB' : (((p + a + 1).choose (a + 1) : ℕ) : ℝ) * ((a : ℝ) + 1) =
         ((p : ℝ) + a + 1) * (((p + a).choose a : ℕ) : ℝ) := by
       have := congrArg (fun t : ℕ => (t : ℝ)) hB
-      simp only [Nat.cast_mul, Nat.succ_eq_add_one, Nat.cast_add, Nat.cast_one] at this
+      simp only [Nat.cast_mul, Nat.cast_add, Nat.cast_one] at this
       linarith
     have ha1 : (0 : ℝ) < (a : ℝ) + 1 := by positivity
     have hpn : (p : ℝ) ≤ n := by exact_mod_cast hp

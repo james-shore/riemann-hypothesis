@@ -242,7 +242,6 @@ private theorem cut_lim {d : ℕ} (T : ℝ) (u c : L (Eu d)) (w : ℕ → L (Eu 
     refine tendsto_const_nhds.congr' ?_
     by_cases h : T < x
     · filter_upwards [chi_one T h] with n hn
-      beta_reduce
       rw [h1 n, Pi.sub_apply, h2, h3 n, hn, indicator_of_mem (show x ∈ Ioi T from h)]
       simp
     · refine Eventually.of_forall fun n => ?_

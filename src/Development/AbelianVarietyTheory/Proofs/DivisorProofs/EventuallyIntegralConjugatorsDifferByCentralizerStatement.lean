@@ -15,4 +15,4 @@ theorem _root_.GlobalTheory.T.eventually_integral_conjugators_differ_by_centrali
       ∃ m : (v.adicCompletion ℚ ⊗[ℚ] L)ˣ,
         IsIntB v b (↑X * Algebra.TensorProduct.map (AlgHom.id ℚ (v.adicCompletion ℚ)) ι ↑m * ↑X'⁻¹) ∧
         IsIntB v b (↑X' * Algebra.TensorProduct.map (AlgHom.id ℚ (v.adicCompletion ℚ)) ι ↑m⁻¹ * ↑X⁻¹) := by
-  first | (exact @GlobalTheory.LatStep.lattice_step) | (exact GlobalTheory.LatStep.lattice_step) | (intros; apply GlobalTheory.LatStep.lattice_step  <;> assumption)
+  first | (exact @GlobalTheory.LatStep.lattice_step)

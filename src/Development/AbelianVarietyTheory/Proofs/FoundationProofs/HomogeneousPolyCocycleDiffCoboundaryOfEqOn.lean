@@ -54,7 +54,7 @@ theorem adj_of_near : ∀ (N l w n : ℕ), 0 < N → l.Prime → l ≠ 2 → ¬ 
   let Δ : Subgroup G := (CongruenceSubgroup.Gamma K).subgroupOf (Gam N l)
   have hρmul : ∀ g h v, ρ (g * h) v = ρ h (ρ g v) := by
     intro g h v
-    simp only [ρ, AlgHom.toLinearMap_apply, Subgroup.coe_mul, Matrix.SpecialLinearGroup.coe_mul]
+    simp only [ρ, AlgHom.toLinearMap_apply]
     exact L1 _ _ v
   have hρone : ∀ v, ρ 1 v = v := by
     intro v
@@ -91,7 +91,7 @@ theorem adj_of_near : ∀ (N l w n : ℕ), 0 < N → l.Prime → l ≠ 2 → ¬ 
       rw [h1]
       by_cases hij : i = j
       · subst hij; rw [if_pos rfl, map_neg, map_one]; simp [Matrix.neg_apply]
-      · simp [hij, Matrix.neg_apply, Matrix.one_apply]
+      · simp [hij, Matrix.neg_apply]
     rw [L6 _ _ v hent, L7 w v hv, hw.neg_one_pow, neg_one_smul]
   have hc2 : ∀ g, c' * g * c'⁻¹ * g⁻¹ ∈ Δ := by
     intro g

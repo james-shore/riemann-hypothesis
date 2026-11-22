@@ -113,7 +113,6 @@ private theorem glue (hM : Master) (hTr : TrKer) (hPair : Pair)
     apply finsum_congr
     intro γ
     rw [htr i γ]
-    beta_reduce
     congr 2
     simp only [Subgroup.coe_mul, Subgroup.coe_inv, h1]
     group

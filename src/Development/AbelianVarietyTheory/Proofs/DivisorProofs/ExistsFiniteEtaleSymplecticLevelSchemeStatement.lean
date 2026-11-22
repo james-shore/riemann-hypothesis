@@ -12,4 +12,4 @@ theorem _root_.GlobalTheory.T.exists_finiteEtale_symplecticLevel_scheme : ∀ (p
       ∀ (T : Over S) (t₁' : T.left ⟶ Sp (cycAway M)) (lv : (Fin h ⊕ Fin h → ℤ) → (T ⟶ o.A)),
         (SympCond o h M T t₁' lv → ∃! f : T ⟶ Y, f.left ≫ t₁ = t₁' ∧ ∀ a, f ≫ lu a = lv a) ∧
         ((∃ f : T ⟶ Y, f.left ≫ t₁ = t₁' ∧ ∀ a, f ≫ lu a = lv a) → SympCond o h M T t₁' lv) := by
-  first | (exact @GlobalTheory.HTSympRep.exists_sympLevScheme) | (exact GlobalTheory.HTSympRep.exists_sympLevScheme) | (intros; apply GlobalTheory.HTSympRep.exists_sympLevScheme <;> assumption)
+  first | (exact @GlobalTheory.HTSympRep.exists_sympLevScheme)

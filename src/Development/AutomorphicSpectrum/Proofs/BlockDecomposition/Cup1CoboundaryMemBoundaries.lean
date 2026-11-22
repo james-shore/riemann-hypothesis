@@ -129,14 +129,14 @@ theorem coboundary_cup1 (n : ℕ) {x : Cn F 1} (hx : dn F 1 x = 0) (z : Cn F n) 
     rw [e2, e3]
     simp [pow_succ]
   rw [Fin.sum_univ_succ, Fin.sum_univ_succ, hs, Fin.sum_univ_succ (n := n + 1)]
-  simp only [e1, Fin.val_zero, pow_zero, one_smul, Fin.val_succ, zero_add, pow_one, neg_smul, Fin.succ_zero_eq_one, Fin.val_one]
+  simp only [e1, Fin.val_zero, pow_zero, one_smul, Fin.val_succ, pow_one, neg_smul, Fin.succ_zero_eq_one, Fin.val_one]
   linear_combination (pr F ((dl (0 : Fin (n + 3))).comp (dl 0)) z) * hx'
 
 theorem coboundary_cup0 (n : ℕ) (β : Cn F 0) (z : Cn F n) :
     dn F n (cup0 F n β z) = cup1 F n (dn F 0 β) z + cup0 F (n + 1) β (dn F n z) := by
   have e1 : pr F (fr n) (dn F 0 β) = pr F ((dl (0 : Fin (n + 2))).comp (cst 0 0)) β - pr F (cst 0 0) β := by
     rw [dn_eq, Fin.sum_univ_two]
-    simp only [map_add, map_smul, pr_pr, Fin.val_zero, pow_zero, one_smul, Fin.val_one, pow_one, neg_smul, map_neg]
+    simp only [map_add, pr_pr, Fin.val_zero, pow_zero, one_smul, Fin.val_one, pow_one, neg_smul, map_neg]
     rw [sub_eq_add_neg]
     congr 1
     · exact pr_congr (fun i ↦ by fin_order) β
@@ -145,7 +145,7 @@ theorem coboundary_cup0 (n : ℕ) (β : Cn F 0) (z : Cn F n) :
   have e2 : ∀ j : Fin (n + 1), pr F ((dl j.succ).comp (cst 0 0)) β = pr F (cst 0 0) β := fun j ↦
     pr_congr (fun i ↦ by fin_order) β
   rw [cup1_apply, e1, dn_eq n (cup0 F n β z), dn_eq n z, cup0_apply, cup0_apply]
-  simp only [map_mul, pr_pr, map_smul, Finset.mul_sum, mul_smul_comm]
+  simp only [map_mul, pr_pr, Finset.mul_sum, mul_smul_comm]
   rw [Fin.sum_univ_succ]
   conv_rhs => rw [Fin.sum_univ_succ]
   simp only [e2, Fin.val_zero, pow_zero, one_smul]

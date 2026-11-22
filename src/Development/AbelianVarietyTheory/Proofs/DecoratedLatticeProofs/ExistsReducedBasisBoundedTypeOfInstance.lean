@@ -28,7 +28,7 @@ theorem gm_mulVec {N : ℕ} (ρ : (InfinitePlace I.F → Fin I.n → ℂ) ≃ₗ
   rw [vec_sum_zsmul, map_sum]
   funext i
   simp only [map_zsmul]
-  simp only [gm, mulVec, dotProduct, of_apply, Finset.sum_apply, Pi.smul_apply, zsmul_eq_mul]
+  simp only [gm, mulVec, dotProduct, of_apply, Finset.sum_apply, zsmul_eq_mul]
   exact Finset.sum_congr rfl fun j _ => mul_comm _ _
 
 theorem gm_change {N : ℕ} (ρ : (InfinitePlace I.F → Fin I.n → ℂ) ≃ₗ[ℝ] (Fin N → ℝ)) (y : I.Ginf)
@@ -38,7 +38,7 @@ theorem gm_change {N : ℕ} (ρ : (InfinitePlace I.F → Fin I.n → ℂ) ≃ₗ
   simp only [gm, Matrix.of_apply, Matrix.mul_apply, Matrix.map_apply]
   rw [vec_sum_zsmul I y (fun k => M k j) e, map_sum]
   simp only [map_zsmul]
-  simp only [Finset.sum_apply, Pi.smul_apply, zsmul_eq_mul]
+  simp only [Finset.sum_apply, zsmul_eq_mul]
   exact Finset.sum_congr rfl fun k _ => mul_comm _ _
 
 theorem sum_change {N : ℕ} (M : Matrix (Fin N) (Fin N) ℤ) (e : Fin N → Fin I.n → I.E) (w : Fin N → ℤ) :

@@ -125,7 +125,7 @@ lemma herm_bvec_left (k r : ℕ) (H M : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r
   rw [Matrix.mulVec_mulVec, mulVec_bvec, dotProduct, Finset.sum_eq_single x]
   · simp [bvec]
   · intro l _ hl
-    simp [bvec, Pi.single_apply, hl]
+    simp [bvec, hl]
   · intro h
     exact absurd (Finset.mem_univ _) h
 

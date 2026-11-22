@@ -31,7 +31,7 @@ lemma dw_add {f g : E d → ℂ} (hf : ContDiff ℝ ∞ f) (hg : ContDiff ℝ �
     rw [ih]
     first
       | rw [show (fun y => dw w f y + dw w g y) = dw w f + dw w g from rfl, fderiv_add h1 h2]; rfl
-      | rw [fderiv_fun_add h1 h2]; rfl
+      | rw [fderiv_fun_add h1 h2]
 
 lemma dw_zero (w : List (Fin d)) : dw w (fun _ : E d => (0 : ℂ)) = fun _ => 0 := by
   induction w with
@@ -53,8 +53,8 @@ lemma dw_const_mul {f : E d → ℂ} (hf : ContDiff ℝ ∞ f) (c : ℂ) (w : Li
     rw [ih]
     first
       | rw [fderiv_const_mul h1]; simp
-      | rw [fderiv_fun_const_mul h1]; simp
-      | rw [show (fun y => c * dw w f y) = c • dw w f from rfl, fderiv_const_smul h1]; simp
+      | rw [fderiv_fun_const_mul h1]
+      | rw [show (fun y => c * dw w f y) = c • dw w f from rfl, fderiv_const_smul h1]
 
 lemma trOp_add (m : ℕ) (b1 b2 : (n : ℕ) → (Fin n → Fin d) → E d → ℂ) (φ : E d → ℂ)
     (h1 : ∀ n w, ContDiff ℝ ∞ (b1 n w)) (h2 : ∀ n w, ContDiff ℝ ∞ (b2 n w)) (hφ : ContDiff ℝ ∞ φ) (x : E d) :
@@ -91,7 +91,6 @@ lemma contDiff_mul_of_tsupport {U : Set (E d)} (hU : IsOpen U) {g f : E d → �
     have hev : g =ᶠ[𝓝 x] 0 := by
       first
         | exact notMem_tsupport_iff_eventuallyEq.mp hx'
-        | exact not_mem_tsupport_iff_eventuallyEq.mp hx'
     refine (contDiffAt_const (c := (0 : ℂ))).congr_of_eventuallyEq ?_
     filter_upwards [hev] with y hy
     simp [hy]
@@ -105,7 +104,6 @@ lemma cut_cont {U : Set (E d)} (hU : IsOpen U) {u : E d → ℂ} (hu : Continuou
     have hev : χ =ᶠ[𝓝 x] 0 := by
       first
         | exact notMem_tsupport_iff_eventuallyEq.mp hx'
-        | exact not_mem_tsupport_iff_eventuallyEq.mp hx'
     filter_upwards [hev] with y hy
     simp [cut, hy]
   refine ⟨continuous_iff_continuousAt.mpr fun x => ?_, ?_⟩
@@ -223,7 +221,7 @@ theorem frozenDecompositionOfParts : DecomposeOf := by
     simp only [trOp]
     rw [Finset.sum_range_succ, Finset.sum_eq_zero, zero_add, Finset.sum_mul]
     · refine Finset.sum_congr rfl fun w _ => ?_
-      simp only [b2, eq_self_iff_true, if_true]
+      simp only [b2, if_true]
       rw [Dec.dw_const_mul hφ, hDw d ξ (List.ofFn w), Dec.prod_neg_eq]
       beta_reduce
       have hsq : ((-1 : ℂ) ^ m) * (-1) ^ m = 1 := by
@@ -266,7 +264,7 @@ theorem frozenDecompositionOfParts : DecomposeOf := by
       lo m w = fun x => ((ψ0 (r⁻¹ • (x - x0)) : ℝ) : ℂ) * (P.a i m w x - P.a i m w x0) := by
     intro w
     funext x
-    simp only [lo, eq_self_iff_true, if_true]
+    simp only [lo, if_true]
   rw [← hR, key, Finset.sum_range_succ]
   simp only [hlom]
   ring

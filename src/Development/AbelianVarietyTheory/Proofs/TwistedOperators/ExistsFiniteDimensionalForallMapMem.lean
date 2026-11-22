@@ -21,7 +21,7 @@ theorem sameBlock_self {p q : ℕ} (a : Ix p q) : sameBlock a a := by
   cases a <;> trivial
 
 theorem sameBlock_of_posC {p q : ℕ} {a b : Ix p q} (h : posC a b) : sameBlock a b := by
-  cases a <;> cases b <;> first | trivial | exact h.elim
+  cases a <;> cases b <;> first | trivial
 
 theorem map_mem_hwSub {p q : ℕ} {V V' : Type} [AddCommGroup V] [Module ℂ V] [AddCommGroup V']
     [Module ℂ V'] (act : Mat p q →ₗ[ℂ] Module.End ℂ V) (act' : Mat p q →ₗ[ℂ] Module.End ℂ V')

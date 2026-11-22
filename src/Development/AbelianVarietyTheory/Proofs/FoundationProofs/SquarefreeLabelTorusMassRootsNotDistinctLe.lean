@@ -306,7 +306,7 @@ private theorem sum_icc_prod_add_mul_pow_le (N : ℕ) {r : ℝ} (hr0 : 0 ≤ r) 
   calc 2 * ((∑ d ∈ Finset.Icc 1 N, (d : ℝ) * r ^ d) * ∑ e ∈ Finset.Icc 1 N, r ^ e)
       ≤ 2 * (r / (1 - r) ^ 2 * (r / (1 - r))) := by
         gcongr
-    _ = 2 * r ^ 2 / (1 - r) ^ 3 := by field_simp <;> ring
+    _ = 2 * r ^ 2 / (1 - r) ^ 3 := by field_simp
 
 open Polynomial Classical in
 

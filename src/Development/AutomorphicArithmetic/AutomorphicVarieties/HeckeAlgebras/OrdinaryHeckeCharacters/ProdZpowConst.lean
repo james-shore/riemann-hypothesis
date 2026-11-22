@@ -31,7 +31,6 @@ private theorem ofBasis {G : Type} [Group G] (I : Iwa G) (O Ω : Type) [CommRing
   have hξ' : ∀ g, (ξ g).val = LinearMap.toMatrix b' b' (ρ g) := fun g => rfl
   have hξ : ∀ g i j, ξ g i j = A g (σ i) (σ j) := fun g i j => by
     rw [← hA]
-    change (ξ g).val i j = _
     rw [hξ', LinearMap.toMatrix_apply]
     simp [b']
   let χ₀ : I.Tf →* Ω :=
@@ -42,7 +41,6 @@ private theorem ofBasis {G : Type} [Group G] (I : Iwa G) (O Ω : Type) [CommRing
         rw [map_mul, Units.val_mul, Matrix.mul_apply, Finset.sum_eq_single 0]
         · intro j _ hj
           have : (ξ s).val 0 j = 0 := by
-            change ξ s 0 j = 0
             rw [hξ, h0]
             exact hT _ s.2 _ fun h => hj ((h0' j).1 h)
           rw [this, zero_mul]

@@ -113,7 +113,7 @@ theorem pb_mul_aff {Y : Over (Spec ZU.{0})} (g h : Y ⟶ splitTorusAff ZU X) (x 
       (congrArg (·.left) (lift_snd g h)))
   rw [e0, ← e1, ← e2, pb_spec, pb_spec, pb_spec, ← map_mul]
   congr 1
-  simp [A, AddMonoidAlgebra.comul_single]
+  simp [A]
 
 theorem chi_mul {Y : Over S} (g h : Y ⟶ splitTorus S X) (x : Multiplicative X) :
     chi (g * h).left x = chi g.left x * chi h.left x := by

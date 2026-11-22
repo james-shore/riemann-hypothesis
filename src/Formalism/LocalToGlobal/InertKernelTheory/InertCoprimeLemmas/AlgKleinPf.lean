@@ -156,7 +156,7 @@ theorem coeff_const_add_low_degrees (c : ℂ) (f : PowerSeries ℂ) :
     PowerSeries.coeff 0 (PowerSeries.C c + f) = c + PowerSeries.coeff 0 f ∧
     PowerSeries.coeff 1 (PowerSeries.C c + f) = PowerSeries.coeff 1 f ∧
     PowerSeries.coeff 2 (PowerSeries.C c + f) = PowerSeries.coeff 2 f := by
-  refine ⟨?_, ?_, ?_⟩ <;> simp [PowerSeries.coeff_C]
+  refine ⟨?_, ?_, ?_⟩ <;> simp
 
 theorem wp_coeffs (L : PeriodPair) {P : ℂ} (hP : P ∉ L.lattice) :
     PowerSeries.coeff 0 (taylor0 (fun z => L.weierstrassP (z + P))) = L.weierstrassP P ∧
@@ -241,7 +241,7 @@ theorem tp_rel (L : PeriodPair) (P Q : ℂ) (hQ : Q ∉ L.lattice) (hP : P ∉ L
   obtain ⟨e0, e1, -⟩ := series_rel _ _ _ _ _ _ (tp_series L P Q hQ hP)
   obtain ⟨w0, w1, -⟩ := wp_coeffs L hP
   have hwd := wp_deriv0 L hP
-  simp only [w0, w1, coeff0_taylor0, coeff1_taylor0, hwd, zero_add] at e0 e1
+  simp only [w0, w1, coeff0_taylor0, coeff1_taylor0] at e0 e1
   refine ⟨?_, ?_⟩
   · linear_combination e0
   · linear_combination e1
@@ -257,7 +257,7 @@ theorem dbl_rel (L : PeriodPair) (Q : ℂ) (hQ : Q ∉ L.lattice) :
   obtain ⟨w0, w1, w2⟩ := wp_coeffs L hQ
   obtain ⟨s0, s1, s2⟩ := sg_coeffs L
   have hwd := wp_deriv0 L hQ
-  simp only [w0, w1, w2, s0, s1, s2, coeff0_taylor0, coeff1_taylor0, hwd, zero_add] at e1 e2
+  simp only [w0, w1, w2, s0, s1, s2, coeff0_taylor0, coeff1_taylor0] at e1 e2
   refine ⟨?_, ?_⟩
   · linear_combination e1
   · linear_combination e2

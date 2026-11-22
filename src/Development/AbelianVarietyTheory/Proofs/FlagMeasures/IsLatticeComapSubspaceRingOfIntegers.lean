@@ -21,8 +21,6 @@ theorem isLattice_comap_subtype_ringOfIntegers {K V : Type} [Field K] [NumberFie
   | exact @_root_.GlobalTheory.SmulMemComapLattice.isLattice_comap_subtype
   | exact _root_.GlobalTheory.SmulMemComapLattice.isLattice_comap_subtype
   | (apply _root_.GlobalTheory.SmulMemComapLattice.isLattice_comap_subtype <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SmulMemComapLattice.isLattice_comap_subtype <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SmulMemComapLattice.isLattice_comap_subtype <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SmulMemComapLattice.isLattice_comap_subtype ..)
 
 end GlobalTheory

@@ -36,4 +36,4 @@ theorem _root_.GlobalTheory.T.enlarge_strictHenselisation_retract_mod : ∀ (T O
       ∃ (β : GlobalTheory.LocAcyc.GenFib A (Localization.AtPrime QA) →+* GlobalTheory.LocAcyc.GenFib A' (Localization.AtPrime QA')) (h : DA →+* DA'),
         ψA'.comp β = ψA ∧
         h.comp (algebraMap (GlobalTheory.LocAcyc.GenFib A (Localization.AtPrime QA)) DA) = (algebraMap (GlobalTheory.LocAcyc.GenFib A' (Localization.AtPrime QA')) DA').comp β := by
-  first | (exact @GlobalTheory.KeyOriginEnlarge.enlarge_retract) | (exact GlobalTheory.KeyOriginEnlarge.enlarge_retract) | (intros; apply GlobalTheory.KeyOriginEnlarge.enlarge_retract  <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginEnlarge.enlarge_retract)

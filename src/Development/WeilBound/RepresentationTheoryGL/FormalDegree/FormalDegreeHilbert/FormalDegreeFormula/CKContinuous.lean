@@ -83,7 +83,7 @@ theorem kNull_of (hW : MomW) (hP : CoefPow) : KNull := by
     rw [hI, h7, prod_cpair ε (fun a b => lamT lam t a - lamT lam t b + (nab ε a b : ℝ))]
     have e2 : ∀ p : CPair ε, lamT lam t p.1.1 - lamT lam t p.1.2 + (nab ε p.1.1 p.1.2 : ℝ) = α p + t * β p := by
       intro p
-      simp only [lamT_apply, Dvec, α, β]
+      simp only [lamT_apply, α, β]
       ring
     simp_rw [e2]
     rw [inv_div]

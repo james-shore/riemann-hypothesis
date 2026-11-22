@@ -51,8 +51,8 @@ private theorem exists_idele (F E : Type) [Field F] [NumberField F] [Field E] [N
   have key : (PositivityTheory.ThKW.LatB.liftF F E a + (1 - finIdem F E)) * (PositivityTheory.ThKW.LatB.liftF F E b + (1 - finIdem F E)) = 1 := by
     rw [← sub_eq_zero]
     refine GlobalTheory.SplitDetCharF.adele_tensor_ext _ ?_ ?_
-    · simp only [map_sub, map_mul, map_add, map_one, inf_lift, infPartF_finIdem, zero_add, sub_zero, mul_one, sub_self, map_zero]
-    · simp only [map_sub, map_mul, map_add, map_one, fin_lift, PositivityTheory.ThKW.TauSpanIdentities.finPartF_finIdem, sub_self, add_zero, hab, map_zero]
+    · simp only [map_sub, map_mul, map_add, map_one, inf_lift, infPartF_finIdem, zero_add, sub_zero, mul_one, sub_self]
+    · simp only [map_sub, map_mul, map_add, map_one, fin_lift, PositivityTheory.ThKW.TauSpanIdentities.finPartF_finIdem, sub_self, add_zero, hab]
   let z : (AEF F E)ˣ := ⟨_, _, key, by rw [mul_comm]; exact key⟩
   have hev : ∀ Q, ev F E Q (z : AEF F E) = (u : FiniteAdeleRing (𝓞 E) E) Q := by
     intro Q

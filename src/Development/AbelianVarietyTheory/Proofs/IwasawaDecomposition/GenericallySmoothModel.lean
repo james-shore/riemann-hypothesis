@@ -24,8 +24,6 @@ theorem exists_etale_coords_of_opens {k : Type} [CommRing k] {X : Scheme.{0}} (p
     first
     | rw [Scheme.Hom.appIso_hom', Scheme.Hom.appLE_comp_appLE]
     | (rw [Scheme.Hom.appIso_hom']; exact (Scheme.Hom.appLE_comp_appLE _ _ _ _ _ _ _).symm)
-    | simp [Scheme.Hom.appIso_hom, Scheme.Hom.appLE, Scheme.Hom.comp_app]
-    | (simp only [Scheme.Hom.appIso_hom']; rw [Scheme.Hom.appLE_comp_appLE])
   have halg : ReciprocityTheory.ChartRestriction.G.DVR.FlatBC.algX (W.ι ≫ p) U' = (e : Γ(X, W.ι ''ᵁ U') →+* Γ(W, U')).comp (ReciprocityTheory.ChartRestriction.G.DVR.FlatBC.algX p (W.ι ''ᵁ U')) := by
     unfold ReciprocityTheory.ChartRestriction.G.DVR.FlatBC.algX
     rw [h2]
@@ -78,7 +76,7 @@ private theorem exists_algChart_mem_source {R K : Type} [CommRing R] [IsDomain R
   haveI := hsm
   have hz : a (IsLocalRing.closedPoint ℂ) ∈ W := by
     rw [← hb]
-    first | exact hW | simpa using hW
+    first | exact hW
   obtain ⟨U, x, hU, hzU, hx⟩ := exists_etale_coords_of_opens p D W hz
   obtain ⟨c, hc, -⟩ := GlobalTheory.AlgChart.exists_of_etale (σ := τ) hU x hx (y := ⟨a, ha⟩)
     (GlobalTheory.CxPts.mem_ptsIn.2 hzU)
@@ -100,7 +98,6 @@ theorem genSmooth_model : ∀ (F : Type) [Field F] [NumberField F] (Y : Var F) (
     haveI := ReciprocityTheory.ChartRestriction.G.Geo.Tor.isProper_str (𝓞 F) N
     first
     | infer_instance
-    | exact (locallyOfFinitePresentation_iff_locallyOfFiniteType (f := i ≫ PSpace.str (𝓞 F) N)).2 inferInstance
   exact ⟨{ ι := CxPts M.p σ
            chart := fun y => (exists_chart M.pb (injective_emb σ) y).choose
            cover := fun y => ⟨y, (exists_chart M.pb (injective_emb σ) y).choose_spec⟩ }⟩

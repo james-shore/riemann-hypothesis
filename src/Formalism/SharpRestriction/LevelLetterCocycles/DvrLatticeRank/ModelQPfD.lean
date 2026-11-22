@@ -128,7 +128,7 @@ theorem basis_L [IsDomain O] (π' : LetA O n) (s' : ℕ) (hs : 1 ≤ s') (w₁ :
         rw [PowerSeries.algebraMap_apply]
         simp only [Algebra.algebraMap_self, RingHom.id_apply, t, κ]
         ring
-      · simp [letE, Pi.single_apply, hi]
+      · simp [letE, hi]
     set y : W.DD T := ∑ j, ((letE d : LetA O n) * t j) • b j with hydef
     have hyN : y ∈ W.N T := Submodule.sum_mem _ fun j _ => (W.N T).smul_mem _ (hbΔ j).1
     have hxe : x = ∑ j, κ j • ((letE d : LetA O n) • b j) + π' • y := by

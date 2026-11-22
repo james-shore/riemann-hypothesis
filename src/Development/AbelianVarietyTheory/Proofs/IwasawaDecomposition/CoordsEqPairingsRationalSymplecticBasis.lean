@@ -44,7 +44,7 @@ theorem coords_in_rational_symplectic_basis :
   haveI : Nonempty (Fin g ⊕ Fin g) := ⟨Sum.inl ⟨0, hg⟩⟩
   have hspan : Submodule.span ℚ (Set.range v) = ⊤ := by
     apply hli.span_eq_top_of_card_eq_finrank
-    simp [Module.finrank_fin_fun]
+    simp
     omega
 
   set z := x - (∑ i, (-(x ⬝ᵥ Mq *ᵥ φ i)) • ε i + ∑ j, (x ⬝ᵥ Mq *ᵥ ε j) • φ j) with hz

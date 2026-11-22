@@ -28,8 +28,6 @@ theorem tensor_prod_eq_zero {F A B E : Type} [Field F] [CommRing A] [CommRing B]
   | exact @_root_.GlobalTheory.ProductLeftMaps.main
   | exact _root_.GlobalTheory.ProductLeftMaps.main
   | (apply _root_.GlobalTheory.ProductLeftMaps.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ProductLeftMaps.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ProductLeftMaps.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ProductLeftMaps.main ..)
 
 theorem approx_tmul {F A E : Type} [Field F] [CommRing A] [CommRing E] [Algebra F A] [Algebra F E]

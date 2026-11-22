@@ -128,8 +128,6 @@ theorem lamS_pos (S : C.HidaSetting E Wp Wq) (hg : (0 : ℝ) < S.g) (j : ℕ) : 
   unfold lamS
   first
     | exact zpow_pos (div_pos hg (by positivity)) _
-    | exact pow_pos (div_pos hg (by positivity)) _
-    | exact zpow_pos_of_pos (div_pos hg (by positivity)) _
 
 theorem psiL_eq_fsv (S : C.HidaSetting E Wp Wq) (hg : (0 : ℝ) < S.g) (j : ℕ) (l c : ℂ) :
     KB.psiL S l c = P5.fsv (sW S j l) ((lamS S j : ℂ) * c) := by
@@ -183,7 +181,7 @@ theorem stdS_app (S : C.HidaSetting E Wp Wq) (j : ℕ) (H : C.LPt) (c : ℂ) (hH
     stdS S (H ++ [(1, c)]) = stdS S H ++ [(1, (lamS S j : ℂ) * c)] := by
   unfold stdS
   rw [tapp_lemma, hH]
-  simp only [D.toStd, Nat.sub_self, pow_zero, mul_one, List.append_nil]
+  simp only [D.toStd, Nat.sub_self, pow_zero, mul_one]
   unfold lamS
   rw [Nat.add_comm 1 j]
 

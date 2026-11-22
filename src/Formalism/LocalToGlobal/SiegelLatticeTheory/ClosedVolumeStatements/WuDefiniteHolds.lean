@@ -17,7 +17,6 @@ variable {D : D7} (X : Formalism.L2.SG.HidaSetting.HidaSetting D) (u : D.what₂
 theorem WuDefinite_holds : Formalism.L2.SG.PoincareInHH.Cut.WuDefinite X u := by
   first
   | exact Formalism.L2.SG.PoincareInHH.Cut.wuDefinite_holds X u
-  | exact Formalism.L2.SG.PoincareInHH.Cut.wuDefinite_holds (X := X) (u := u)
 
 theorem ClassFin_holds (hK : X.LevelSubgroupCharacter) : Formalism.L2.SG.PoincareInHH.Cut.ClassFin X u hK := by
   have hg : 1 ≤ X.B.g := by
@@ -29,12 +28,10 @@ theorem ClassFin_holds (hK : X.LevelSubgroupCharacter) : Formalism.L2.SG.Poincar
 theorem ColBound_holds (hK : X.LevelSubgroupCharacter) : Formalism.L2.SG.Pf.ColBound X u hK := by
   first
   | exact Formalism.L2.SG.Pf.colBound_of X u hK (ClassFin_holds X u hK)
-  | exact Formalism.L2.SG.Pf.colBound_of (X := X) (u := u) hK (ClassFin_holds X u hK)
 
 theorem OmCover_holds (I : AutInst) : Formalism.L2.SG.Pf.OmCover I := by
   first
   | exact Formalism.L2.SG.Pf.omCover_holds I
-  | exact Formalism.L2.SG.Pf.omCover_holds (I := I)
 
 theorem MultPoly_holds : Formalism.L2.SG.PoincareInHH.Cut.MultPoly X :=
   Formalism.L2.SG.Pf.multPoly_holds_of'' X (OmCover_holds _)

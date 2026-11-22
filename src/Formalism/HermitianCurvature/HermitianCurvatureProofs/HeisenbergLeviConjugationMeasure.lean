@@ -139,12 +139,12 @@ lemma H_iL (k r' : ℕ) (q : Fin (2 * (1 + r') + k + 1)) :
 lemma hermitian_levi_entry_zero (k r' : ℕ) (i : Fin (2 * r' + k + 1)) : Hpk k (1 + r') (levPos k 1 r' i) (i0 k r') = 0 := by
   have hi := i.isLt
   simp only [Hpk, first_index_val, lev_val, Fin.ext_iff]
-  split_ifs <;> first | rfl | omega | (simp_all [Fin.ext_iff] <;> omega)
+  split_ifs <;> first | rfl | omega | (simp_all)
 
 lemma H_lev_iL (k r' : ℕ) (i : Fin (2 * r' + k + 1)) : Hpk k (1 + r') (levPos k 1 r' i) (iL k r') = 0 := by
   have hi := i.isLt
   simp only [Hpk, iL_val, lev_val, Fin.ext_iff]
-  split_ifs <;> first | rfl | omega | (simp_all [Fin.ext_iff] <;> omega)
+  split_ifs <;> first | rfl | omega
 
 lemma H_lev_lev (k r' : ℕ) (i j : Fin (2 * r' + k + 1)) :
     Hpk k (1 + r') (levPos k 1 r' i) (levPos k 1 r' j) = Hpk k r' i j := by
@@ -298,7 +298,7 @@ lemma herm_lift_right (k r' : ℕ) (u : Fin (2 * (1 + r') + k + 1) → ℂ) (y :
 lemma herm_sum {m : ℕ} (H : Matrix (Fin m) (Fin m) ℂ) (u v : Fin m → ℂ) :
     ∑ j, herm H (bvec j) v * u j = herm H u v := by
   simp only [herm, bvec, dotProduct, mulVec, Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq',
-    Finset.sum_ite_eq, Finset.mem_univ, if_true, Pi.star_apply, Finset.sum_mul, Finset.mul_sum]
+    Finset.mem_univ, if_true, Pi.star_apply, Finset.sum_mul, Finset.mul_sum]
   rw [Finset.sum_comm]
   exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring
 
@@ -307,8 +307,7 @@ lemma heis_act (k r' : ℕ) (v u : Fin (2 * (1 + r') + k + 1) → ℂ) (b : ℂ)
   have key : ∀ (w c : Fin (2 * (1 + r') + k + 1) → ℂ), vecMulVec w c *ᵥ u = (∑ j, c j * u j) • w := by
     intro w c
     funext i
-    simp only [mulVec, dotProduct, vecMulVec, of_apply, Pi.smul_apply, smul_eq_mul, Finset.sum_mul,
-      Finset.mul_sum]
+    simp only [mulVec, dotProduct, vecMulVec, of_apply, Pi.smul_apply, smul_eq_mul, Finset.sum_mul]
     exact Finset.sum_congr rfl fun j _ => by ring
   simp only [heisG, sub_mulVec, add_mulVec, one_mulVec, key, herm_sum]
 
@@ -416,8 +415,6 @@ lemma continuous_coord (k r' : ℕ) : Continuous (coord k r') := by
   unfold coord
   first
   | fun_prop
-  | exact Continuous.prodMk (continuous_pi fun j => (continuous_apply _).comp (continuous_apply _))
-      (Complex.continuous_im.comp ((continuous_apply _).comp (continuous_apply _)))
 
 lemma continuous_herm {ι : Type*} [Fintype ι] (H : Matrix ι ι ℂ) :
     Continuous fun p : (ι → ℂ) × (ι → ℂ) => herm H p.1 p.2 := by
@@ -439,8 +436,6 @@ lemma continuous_hb (k r' : ℕ) : Continuous fun x : HPar k r' => hb k r' x.1 x
   simp only [hb]
   first
   | fun_prop
-  | exact (Complex.continuous_ofReal.comp ((Complex.continuous_re.comp hc).neg.div_const 2)).add
-      ((Complex.continuous_ofReal.comp continuous_snd).mul continuous_const)
 
 lemma continuous_heis0 (k r' : ℕ) : Continuous (heis0 k r') := by
   have hl : Continuous fun x : HPar k r' => liftVec k 1 r' x.1 := (continuous_lift k r').comp continuous_fst
@@ -492,27 +487,27 @@ lemma levi_first_row (k r' : ℕ) (g : Mat k r') (q : Fin (2 * (1 + r') + k + 1)
     ιLev k 1 r' g (i0 k r') q = if i0 k r' = q then 1 else 0 := by
   simp only [ιLev]
   rw [dif_neg]
-  all_goals first | rfl | omega | (simp only [first_index_val, iL_val, lev_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
+  all_goals first | rfl | omega | (simp only [first_index_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
 
 lemma lev_row_iL (k r' : ℕ) (g : Mat k r') (q : Fin (2 * (1 + r') + k + 1)) :
     ιLev k 1 r' g (iL k r') q = if iL k r' = q then 1 else 0 := by
   simp only [ιLev]
   rw [dif_neg]
-  all_goals first | rfl | omega | (simp only [first_index_val, iL_val, lev_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
+  all_goals first | rfl | omega | (simp only [iL_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
 
 lemma levi_entry_first_zero (k r' : ℕ) (g : Mat k r') (i : Fin (2 * r' + k + 1)) :
     ιLev k 1 r' g (levPos k 1 r' i) (i0 k r') = 0 := by
   have hi := i.isLt
   simp only [ιLev]
   rw [dif_pos, dif_neg]
-  all_goals first | rfl | omega | (simp only [first_index_val, iL_val, lev_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
+  all_goals first | rfl | omega | (simp only [first_index_val, lev_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
 
 lemma lev_lev_iL (k r' : ℕ) (g : Mat k r') (i : Fin (2 * r' + k + 1)) :
     ιLev k 1 r' g (levPos k 1 r' i) (iL k r') = 0 := by
   have hi := i.isLt
   simp only [ιLev]
   rw [dif_pos, dif_neg]
-  all_goals first | rfl | omega | (simp only [first_index_val, iL_val, lev_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
+  all_goals first | rfl | omega | (simp only [iL_val, lev_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
 
 lemma lev_lev_lev (k r' : ℕ) (g : Mat k r') (i j : Fin (2 * r' + k + 1)) :
     ιLev k 1 r' g (levPos k 1 r' i) (levPos k 1 r' j) = g i j := by
@@ -520,7 +515,7 @@ lemma lev_lev_lev (k r' : ℕ) (g : Mat k r') (i j : Fin (2 * r' + k + 1)) :
   have hj := j.isLt
   simp only [ιLev]
   rw [dif_pos, dif_pos]
-  all_goals first | rfl | omega | (simp only [first_index_val, iL_val, lev_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
+  all_goals first | rfl | omega | (simp only [lev_val]; omega) | (rw [lev_val]; constructor <;> omega) | (simp_all [Fin.ext_iff] <;> omega)
 
 lemma levi_action_first_coordinate (k r' : ℕ) (g : Mat k r') (u : Fin (2 * (1 + r') + k + 1) → ℂ) :
     (ιLev k 1 r' g *ᵥ u) (i0 k r') = u (i0 k r') := by
@@ -671,7 +666,7 @@ theorem heisHaar : HeisHaar := by
     intro y
     show heis0 k r' y * heis0 k r' x = heis0 k r' (x.1 + y.1, y.2 + (x.2 - (herm (Hpk k r') x.1 y.1).im))
     rw [heisMul]
-    congr 2 <;> first | ring | abel
+    congr 2 <;> first | ring
   · intro K hK
     have hK' : IsCompact (coord k r' '' (K : Set (Mat k (1 + r')))) := hK.image (continuous_coord k r')
     rw [μHeis_eq, Measure.map_apply (measurable_heisT k r') hK.measurableSet]
@@ -683,8 +678,6 @@ theorem heisHaar : HeisHaar := by
     rw [Measure.map_eq_zero_iff (measurable_heisT k r').aemeasurable] at h
     first
     | exact NeZero.ne _ h
-    | exact (IsOpenPosMeasure.open_pos (μ := (volume : Measure (HPar k r'))) Set.univ isOpen_univ
-        Set.univ_nonempty) (by rw [h]; rfl)
 
 lemma normSq_det_GV {k r : ℕ} {g : Mat k r} (hg : g ∈ GV k r) : Complex.normSq g.det = 1 := by
   have hH := isUnit_det_Hpk k r

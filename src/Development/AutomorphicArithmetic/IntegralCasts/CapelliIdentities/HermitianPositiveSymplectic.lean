@@ -98,7 +98,7 @@ theorem UpperTheory.hermitian_positive_symplectic :
       ext i
       have h1 := hz (Pi.single i 1)
       have h2 := hz (Pi.single i Complex.I)
-      simp [← Pi.single_star] at h1 h2
+      simp at h1 h2
       apply Complex.ext <;> simp [h1, h2]
     exact Matrix.eq_zero_of_mulVec_eq_zero hS.ne_zero hSy
   refine ⟨K, K', by omega, by omega, fun y hy => (hK y).mp hy, fun y hy => (hK' y).mp hy,

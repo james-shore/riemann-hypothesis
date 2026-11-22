@@ -14,7 +14,7 @@ theorem form_Jpq (p q : ℕ) (y : Fin p ⊕ Fin q → ℂ) :
       (∑ i, star (y (Sum.inl i)) * y (Sum.inl i)) - ∑ j, star (y (Sum.inr j)) * y (Sum.inr j) := by
   unfold Formalism.UG.Jpq
   simp [dotProduct, Fintype.sum_sum_type, Matrix.fromBlocks_mulVec, Matrix.neg_mulVec,
-    Function.comp_def, sub_eq_add_neg] <;> ring
+    Function.comp_def, sub_eq_add_neg]
 
 theorem sylvester_le {n k : Type} [Fintype n] [DecidableEq n] [Fintype k] [DecidableEq k]
     (J : Matrix n n ℂ) {p q : ℕ} (hJ : Formalism.UG.HasSignature J p q) (B : Matrix n k ℂ)

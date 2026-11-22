@@ -22,7 +22,7 @@ private theorem card_small (S : Finset Nat.Primes) (n : ℕ) (h : ∀ l ∈ S, (
     · intro l hl
       have h1 := h l hl
       have h2 := l.2.one_lt
-      simp only [Finset.coe_Icc, Set.mem_Icc, Finset.mem_Icc, Finset.mem_coe]
+      simp only [Finset.coe_Icc, Set.mem_Icc]
       omega
     · intro x _ y _ hxy
       exact Subtype.ext hxy

@@ -51,8 +51,6 @@ theorem exists_pow_smul_mem (L : LocE F E) {ϖ : 𝒪[F]} (hϖ : Irreducible ϖ)
   | exact @_root_.GlobalTheory.PowMulMem.exists_pow_smul_mem
   | exact _root_.GlobalTheory.PowMulMem.exists_pow_smul_mem
   | (apply _root_.GlobalTheory.PowMulMem.exists_pow_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PowMulMem.exists_pow_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PowMulMem.exists_pow_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PowMulMem.exists_pow_smul_mem ..)
 
 theorem exists_pow_le (L : LocE F E) {ϖ : 𝒪[F]} (hϖ : Irreducible ϖ) {n : ℕ}

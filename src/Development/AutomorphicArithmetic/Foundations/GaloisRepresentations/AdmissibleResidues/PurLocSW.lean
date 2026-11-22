@@ -98,7 +98,7 @@ private theorem mono0_of_charPol_eq_prod_of_ne_normV_pow_mul {n : ℕ} (x : WD h
     by_cases hij : i = j
     · subst hij
       simp
-    · simp [Pi.single_apply, hij]
+    · simp [hij]
   have hM : ∀ i j, N' (Pi.single j 1) i = 0 := by
     intro i j
     obtain ⟨σ, hσ⟩ := hne i j

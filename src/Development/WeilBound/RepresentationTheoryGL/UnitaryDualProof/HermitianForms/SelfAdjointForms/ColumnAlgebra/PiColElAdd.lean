@@ -165,7 +165,6 @@ theorem B_colEl (hB : Lv ψ h π s B) (x : Fin (m + 1) → k) (v w : V) :
   have hmem : unip k (m + 1) (Multiplicative.ofAdd x) ∈ Mir k (m + 1) := by
     first
     | exact MirU_le_Mir k (m + 1) ⟨Multiplicative.ofAdd x, rfl⟩
-    | exact MirU_le_Mir (m + 1) ⟨Multiplicative.ofAdd x, rfl⟩
   have e := hB.mir _ hmem v w
   have hd : nabs k (Matrix.GeneralLinearGroup.det (unip k (m + 1) (Multiplicative.ofAdd x))) = 1 := by
     rw [det_unip]; simp [nabs]

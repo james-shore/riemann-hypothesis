@@ -78,7 +78,7 @@ theorem exists_log (hm : ∀ x y, st (x * y) = st y * st x) (hi : ∀ x, st (st 
     rw [map_add, s1] at this
     rw [← add_right_inj 1, this]; abel
   have sx : st (m - h • (m * m)) = -(m - h • (m * m)) := by
-    simp only [map_sub, st_smul hh, hm, sm, mul_sub, sub_mul, m3, m3', m4, sub_zero, zero_sub, neg_neg, sub_self]
+    simp only [map_sub, st_smul hh, hm, sm, mul_sub, sub_mul, m3, m3', m4, zero_sub, neg_neg, sub_self]
     have := half_add hh (m * m)
     generalize h • (m * m) = y at this ⊢
     rw [← this]; abel
@@ -95,8 +95,7 @@ theorem exists_log (hm : ∀ x y, st (x * y) = st y * st x) (hi : ∀ x, st (st 
     rw [skw, hm, hm, map_sub, map_sub, s1, st_smul hh, hi, sx]
     have x1' : e * x * e = 0 := by rw [mul_assoc, x1, mul_zero]
     have x3' : st e * (x * st e) = 0 := by rw [← mul_assoc, x3, zero_mul]
-    simp only [mul_sub, sub_mul, one_mul, mul_one, mul_smul_comm, smul_mul_assoc, mul_neg, neg_mul, x1', x3', smul_neg,
-      ← mul_assoc e] at x2 ⊢
+    simp only [mul_sub, sub_mul, one_mul, mul_one, mul_smul_comm, smul_mul_assoc, mul_neg, neg_mul, x1', x3', ← mul_assoc e] at x2 ⊢
     have := half_add hh (e * x * st e)
     generalize h • (e * x * st e) = y at this ⊢
     rw [← this] at x2

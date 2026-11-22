@@ -38,7 +38,7 @@ theorem UpperTheory.V.Z.Kato.Sym.PE.lcFin :
       haveI := hLfd g
       exact (IntermediateField.fixingSubgroup_isOpen (L g)).preimage
         (continuous_const.mul continuous_id))
-    (fun x hx => Set.mem_iUnion.2 ⟨⟨x, hx⟩, by simp [one_mem]⟩)
+    (fun x hx => Set.mem_iUnion.2 ⟨⟨x, hx⟩, by simp⟩)
   refine ⟨t.biUnion s, ?_⟩
   intro h hh h' hh' hag
   obtain ⟨g, hgt, hg⟩ := Set.mem_iUnion₂.1 (ht hh)

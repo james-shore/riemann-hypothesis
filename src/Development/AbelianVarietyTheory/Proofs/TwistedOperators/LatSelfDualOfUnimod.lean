@@ -99,7 +99,7 @@ theorem unimod_mix (S : Subring A) (σ : A →+* A) (hσ : ∀ x, σ (σ x) = x)
       f • (cT σ β.val * J * β.val) + (1 - f) • (1 : Matrix (Fin n) (Fin n) A) := by
     rw [v1, v2]
     simp only [add_mul, mul_add, Matrix.smul_mul, Matrix.mul_smul, smul_smul, he, he', h0, a1, a2, a3, a4, a5, a6,
-      zero_smul, add_zero, zero_add, h1, h2, smul_add]
+      zero_smul, add_zero, zero_add, h1, h2]
     rw [show 1 - f = e + σ e by rw [hf]; ring, add_smul]
     abel
   rw [v3]

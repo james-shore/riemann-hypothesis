@@ -65,7 +65,7 @@ theorem exists_factor {g : GL (n ⊕ Fin c) k} (hg : g ∈ KO k _) (p : ℕ) (T 
     · rcases a with y | l
       · simp at hab
       · have hl' : p ≤ l.val + 1 := by simpa [lev] using hl
-        simp only [Matrix.mul_zero, Matrix.mul_one, add_zero, fromBlocks_apply₂₁, Matrix.add_apply]
+        simp only [Matrix.mul_zero, Matrix.mul_one, fromBlocks_apply₂₁, Matrix.add_apply]
         by_cases hT : T x
         · have : (M.toBlocks₂₂ * D) l x = 0 := by
             rw [Matrix.mul_apply]
@@ -78,9 +78,9 @@ theorem exists_factor {g : GL (n ⊕ Fin c) k} (hg : g ∈ KO k _) (p : ℕ) (T 
           rw [this, Matrix.mul_neg, ← Matrix.mul_assoc, hUV, Matrix.one_mul]
           simp
     · rcases a with y | l
-      · simp only [Matrix.mul_zero, Matrix.mul_one, add_zero, fromBlocks_apply₁₂]
+      · simp only [Matrix.mul_zero, Matrix.mul_one, fromBlocks_apply₁₂]
         simpa [toBlocks₁₂] using m2 (.inl y) i hl
-      · simp only [Matrix.mul_zero, Matrix.mul_one, add_zero, fromBlocks_apply₂₂]
+      · simp only [Matrix.mul_zero, Matrix.mul_one, fromBlocks_apply₂₂]
         simpa [toBlocks₂₂] using m2 (.inr l) i hl
 
 end Local

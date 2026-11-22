@@ -39,8 +39,6 @@ private theorem maximalIdeal_pow_smul_whole_ring_eq_self (n : ℕ) :
     ((IsLocalRing.maximalIdeal O) ^ n • ⊤ : Submodule O O) = (IsLocalRing.maximalIdeal O) ^ n := by
   first
     | rw [Ideal.smul_eq_mul, Ideal.mul_top]
-    | simp [Ideal.smul_eq_mul]
-    | simp
 
 theorem eq_zero_of_forall_mem_coeffFiltration {x : O⟦X⟧} (hx : ∀ N, x ∈ T O N) : x = 0 := by
   have H : IsHausdorff (IsLocalRing.maximalIdeal O) O := inferInstance
@@ -153,7 +151,6 @@ private theorem truncEval_smul (N : ℕ) (r : O) (f : O⟦X⟧) :
   have h : trunc N (r • f) = r • trunc N f := by
     first
       | exact map_smul (trunc N) r f
-      | (ext d; simp only [coeff_trunc, Polynomial.coeff_smul, coeff_smul]; split_ifs <;> simp)
   simp only [S, h, map_smul]
 
 theorem subst_smul (hg : constantCoeff g ∈ IsLocalRing.maximalIdeal O) (r : O) (f : O⟦X⟧) :

@@ -21,7 +21,7 @@ theorem UpperTheory.exists_specialization_of_eval_ne_zero :
   refine ⟨g, fun h0 => ha (Ideal.Quotient.eq_zero_iff_mem.2 h0), fun c hc hg => ?_⟩
   let e : MvPolynomial (Fin n) k →ₐ[k] k := MvPolynomial.aeval c
   have he : ∀ p, e p = MvPolynomial.eval c p := fun p => by
-    simp [e, MvPolynomial.coe_aeval_eq_eval]
+    simp [e]
   let φ : (MvPolynomial (Fin n) k ⧸ J) →ₐ[k] k :=
     Ideal.Quotient.liftₐ J e (fun p hp => by
       rw [he]

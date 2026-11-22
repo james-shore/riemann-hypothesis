@@ -30,7 +30,7 @@ theorem repr_map {R R' : Type} [CommRing R] [Algebra F R] [CommRing R'] [Algebra
   induction z using TensorProduct.induction_on with
   | zero => simp
   | tmul r e =>
-    simp [Algebra.TensorProduct.basis_repr_tmul, Algebra.smul_def]
+    simp [Algebra.TensorProduct.basis_repr_tmul]
   | add x y hx hy => simp [map_add, hx, hy]
 
 end Coord

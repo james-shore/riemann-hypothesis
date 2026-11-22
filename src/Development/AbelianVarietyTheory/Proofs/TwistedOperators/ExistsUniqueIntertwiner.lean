@@ -195,18 +195,18 @@ theorem exists_of_mem (hP : GlobalTheory.Published.CuspRapidDecay) {θ : D.what�
   | mem T hT => exact exists_of_isMultMap hP hθ μ hT
   | zero =>
     refine ⟨0, zero_mem _, fun v => ?_⟩
-    simp only [ContinuousMultilinearMap.zero_apply, MultilinearMap.zero_apply]
+    simp only [ContinuousMultilinearMap.zero_apply]
     exact ae_quotMeasure_iff.1 (Lp.coeFn_zero ℂ 2 _)
   | add T T' _ _ ih ih' =>
     obtain ⟨Φ, h1, h2⟩ := ih
     obtain ⟨Φ', h1', h2'⟩ := ih'
     refine ⟨Φ + Φ', add_mem h1 h1', fun v => ?_⟩
-    simp only [ContinuousMultilinearMap.add_apply, MultilinearMap.add_apply]
+    simp only [ContinuousMultilinearMap.add_apply]
     exact Filter.EventuallyEq.trans (ae_quotMeasure_iff.1 (Lp.coeFn_add _ _)) ((h2 v).add (h2' v))
   | smul a T _ ih =>
     obtain ⟨Φ, h1, h2⟩ := ih
     refine ⟨a • Φ, Submodule.smul_mem _ a h1, fun v => ?_⟩
-    simp only [ContinuousMultilinearMap.smul_apply, MultilinearMap.smul_apply]
+    simp only [ContinuousMultilinearMap.smul_apply]
     exact Filter.EventuallyEq.trans (ae_quotMeasure_iff.1 (Lp.coeFn_smul a _)) ((h2 v).const_smul a)
 
 theorem existsUnique_intertwiner : GlobalTheory.Published.CuspRapidDecay → ∀ (D : D7) (θ : D.what₂.Tau → (TensorProduct D.host.F (Ainf D.host.F) D.host.E →+* ℂ)), IsInfFam θ → ∀ (V : HSp D) (S : D.what₂.Tau → SPar) (M : DSModel V S) (μ : Measure (GA D V)) [μ.IsHaarMeasure] [μ.IsMulRightInvariant], ∀ T ∈ GlobalTheory.CuspMult.allMaps θ M, ∃! Φ : ContinuousMultilinearMap ℂ M.H (DividedPowerChartLift V μ), Φ ∈ homDS M (RG V μ) (GlobalTheory.Cusp.L2cusp V μ) ∧ ∀ v : M.Vec, lift (GQ V) (Φ fun τ => (v τ : M.H τ)) =ᵐ[μ] T v := by

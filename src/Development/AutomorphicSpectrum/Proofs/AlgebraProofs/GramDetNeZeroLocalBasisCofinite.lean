@@ -18,7 +18,7 @@ theorem _root_.GlobalTheory.CompanionTheory.Relay.gram_det_ne_zero_local_basis_c
       have hterm : ∀ k, Algebra.trace ℚ E (algebraMap (𝓞 E) E (RingOfIntegers.basis E j) * (((D.EF (RingOfIntegers.basis E k • x) y : ℤ) : E) * HT.dualInt E k)) = ((D.EF (RingOfIntegers.basis E k • x) y : ℤ) : ℚ) * (if j = k then 1 else 0) := by
         intro k
         rw [← HT.LatBasic.trace_dualInt k j, ← map_intCast (algebraMap ℚ E), mul_left_comm, ← Algebra.smul_def, map_smul, smul_eq_mul, mul_comm (algebraMap (𝓞 E) E _), ← NumberField.integralBasis_apply]
-      simp only [sesq, Finset.mul_sum, map_sum, hterm, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.mem_univ, if_true]
+      simp only [sesq, Finset.mul_sum, map_sum, hterm, mul_ite, mul_zero, Finset.sum_ite_eq, Finset.mem_univ, if_true]
       exact mul_one _
     conv_lhs => rw [← (RingOfIntegers.basis E).sum_repr c]
     conv_rhs => rw [← (RingOfIntegers.basis E).sum_repr c]

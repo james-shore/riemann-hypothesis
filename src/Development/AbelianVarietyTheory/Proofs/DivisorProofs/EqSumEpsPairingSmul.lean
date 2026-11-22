@@ -47,8 +47,7 @@ def datumOf (ε : PreTilt O p) {d k h : ℕ} (hdk : d + k = h)
   F_act := by
     intro a
     refine Matrix.ext fun i j => ?_
-    simp [Algebra.ofId_apply, Matrix.algebraMap_matrix_apply, Matrix.mul_apply, Matrix.one_apply,
-      apply_ite (ofPadic p O), mul_ite, ite_mul, mul_comm]
+    simp [Algebra.ofId_apply, Matrix.algebraMap_matrix_apply, Matrix.mul_apply, apply_ite (ofPadic p O), mul_ite, mul_comm]
 
 end GlobalTheory.DatumOfMatrices
 

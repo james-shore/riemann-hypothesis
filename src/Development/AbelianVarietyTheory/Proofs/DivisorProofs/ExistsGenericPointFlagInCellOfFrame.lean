@@ -22,7 +22,7 @@ theorem exists_inCell_genericPoint : ∀ (F : Type) [Field F] (X Y : Var F) (ι 
   obtain ⟨p, ⟨hpf, hpb⟩, -⟩ := hR.lifts X.Fn (ratOf X).pt A (hcp ▸ hgX) (upM 0) (by rw [upM_zero_eq]; exact Par.one)
   have hfp : f (p (IsLocalRing.closedPoint X.Fn)) = genericPoint X.X := by
     have h1 := congrArg (fun g : Sp X.Fn ⟶ X.X => g (IsLocalRing.closedPoint X.Fn)) hpf
-    simp only [Scheme.Hom.comp_apply] at h1
+    simp only at h1
     exact h1.trans hcp
   obtain ⟨u, hu, -⟩ := (GlobalTheory.T.bearsFlag_unitriangular_iff_mem_cell F X Y ι m E E' φ f hR A X.Fn p (hfp ▸ hgX) 0).1 hpb
   refine ⟨u, Fr.mem_of_specializes (hfp ▸ hgX) ((genericPoint_specializes _).map f.continuous), Fr.mem_genericPoint hu⟩

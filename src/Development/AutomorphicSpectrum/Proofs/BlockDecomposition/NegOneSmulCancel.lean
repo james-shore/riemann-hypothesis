@@ -179,7 +179,7 @@ theorem BB_dh (p q : ℕ) (x : (KK A W).X p q) :
       have := j.2
       have := t.2
       apply Fin.ext
-      simp only [Function.comp, CrystallineSemistableComparison.Auxff.sa_val, Fin.val_castSucc, Fin.val_last]
+      simp only [CrystallineSemistableComparison.Auxff.sa_val, Fin.val_castSucc, Fin.val_last]
       split_ifs <;> omega
     have ha : (fc j.castSucc.castSucc i).1 (Fin.last p).castSucc = i.1 (Fin.last (p + 1)).castSucc := by
       refine congrArg i.1 ?_
@@ -202,7 +202,7 @@ theorem BB_dh (p q : ℕ) (x : (KK A W).X p q) :
       refine Subtype.ext (funext fun t => congrArg i.1 ?_)
       have := t.2
       apply Fin.ext
-      simp only [Function.comp, CrystallineSemistableComparison.Auxff.sa_val, Fin.val_castSucc, Fin.val_last]
+      simp only [CrystallineSemistableComparison.Auxff.sa_val, Fin.val_castSucc, Fin.val_last]
       split_ifs <;> omega
     have ha : (fc (Fin.last (p + 1)).castSucc i).1 (Fin.last p).castSucc = i.1 (Fin.last p).castSucc.castSucc := by
       refine congrArg i.1 ?_

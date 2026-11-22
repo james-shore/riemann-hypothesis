@@ -19,7 +19,7 @@ theorem exists_not_commute_of_two_le_finrank {K E : Type} [Field K] [AddCommGrou
   simp only [map_mul, AlgEquiv.apply_symm_apply] at h2
   have h3 := congrFun (congrFun h2 i0) i0
   rw [Matrix.single_mul_single_same, Matrix.single_mul_single_same] at h3
-  simp [Matrix.single_apply, hne.symm] at h3
+  simp [hne.symm] at h3
 
 theorem finrank_le_natDegree_minpoly (K V : Type) [Field K] [IsAlgClosed K] [AddCommGroup V]
     [Module K V] [FiniteDimensional K V] (T : Module.End K V) (hs : (minpoly K T).Separable)

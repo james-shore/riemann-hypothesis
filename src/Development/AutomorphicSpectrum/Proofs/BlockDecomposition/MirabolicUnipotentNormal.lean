@@ -46,11 +46,11 @@ theorem mem_of_mirProj_eq_one {k : Type} [Field k] {n : ℕ} (u : Mir k n) (hu :
     induction j using Fin.lastCases with
     | last => simp [GlobalTheory.BZMir.colMat, hrow']
     | cast j =>
-      simp [GlobalTheory.BZMir.colMat, hrow', Matrix.one_apply, Pi.single_apply, Fin.castSucc_ne_last,
+      simp [GlobalTheory.BZMir.colMat, hrow', Fin.castSucc_ne_last,
         (Fin.castSucc_ne_last j).symm]
   | cast i =>
     induction j using Fin.lastCases with
-    | last => simp [GlobalTheory.BZMir.colMat, Matrix.one_apply, Fin.castSucc_ne_last]
+    | last => simp [GlobalTheory.BZMir.colMat, Fin.castSucc_ne_last]
     | cast j => simp [GlobalTheory.BZMir.colMat, Matrix.one_apply, Fin.castSucc_ne_last, hblk]
 
 theorem mirUin_normal : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k]

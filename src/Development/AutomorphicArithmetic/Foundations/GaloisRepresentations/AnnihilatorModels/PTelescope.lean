@@ -33,13 +33,13 @@ private theorem telescope_core {P : Type} (q n : ℕ) (F : P → P) (T A : ℕ �
     simp only [Finset.sum_range_succ _ (m + 1), key, hc, pow_add, smul_add, mul_smul]
     rcases Nat.even_or_odd m with he | ho
     · have hne : ¬ Even (m + 1) := Nat.not_even_iff_odd.mpr he.add_one
-      simp only [hne, if_false, zero_smul, add_zero, if_true]
+      simp only [hne, if_false, zero_smul, add_zero]
       refine ⟨fun h => h.elim, fun _ => ?_⟩
       rw [ihE he]
       abel
     · have hne : ¬ Even m := Nat.not_even_iff_odd.mpr ho
       have hev : Even (m + 1) := ho.add_one
-      simp only [hev, if_false, zero_smul, add_zero, if_true]
+      simp only [hev, zero_smul, add_zero, if_true]
       refine ⟨fun _ => ?_, fun h => absurd trivial h⟩
       rw [ihO hne]
       abel

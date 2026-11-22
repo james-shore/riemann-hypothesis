@@ -58,7 +58,7 @@ private theorem sum_pow_mul_inv_prod_sub_eq_ite {m : ℕ} (x : Fin m → ℝ) (h
       Polynomial.monic_prod_of_monic _ _ fun j _ => Polynomial.monic_X_sub_C _
     have hnd : (∏ j ∈ univ.erase s, (Polynomial.X - Polynomial.C (x j))).natDegree = m - 1 := by
       rw [Polynomial.natDegree_prod_of_monic _ _ fun j _ => Polynomial.monic_X_sub_C _]
-      simp [Polynomial.natDegree_X_sub_C, card_erase_of_mem]
+      simp [card_erase_of_mem]
     rw [← hnd, hmon.coeff_natDegree, mul_one, prod_inv_distrib]
   simp only [Polynomial.coeff_C_mul, hb, Polynomial.eval_pow, Polynomial.eval_X,
     Polynomial.coeff_X_pow] at hc
@@ -80,8 +80,7 @@ theorem exists_cyclic (r : ℕ) (x : Fin (2 * r + 1) → ℝ) (hx : StrictAnti x
         ((-1) ^ s.val * ∏ j ∈ univ.erase s, (x s - x j)) / (∏ j ∈ univ.erase s, (x s - x j)) ^ 2 := by
       have := hPne s
       first
-      | (field_simp; done)
-      | (field_simp; ring)
+      | (field_simp)
     rw [h1]
     exact div_pos (hP s) (lt_of_le_of_ne (sq_nonneg _) (Ne.symm (pow_ne_zero 2 (hPne s))))
   refine ⟨fun s => Real.sqrt ((-1) ^ s.val / ∏ j ∈ univ.erase s, (x s - x j)),
@@ -122,8 +121,7 @@ theorem exists_dual {m : ℕ} (x c : Fin m → ℝ) (hx : Function.Injective x) 
   have h1 : ((-1 : ℝ) ^ (s.val + 1) * c s) ≠ 0 := mul_ne_zero (pow_ne_zero _ (by norm_num)) (hc s)
   have h2 := hc s
   first
-  | (field_simp; done)
-  | (field_simp; ring)
+  | (field_simp)
 
 theorem formV_sub_sum {m r : ℕ} (u w : Fin m → ℝ) (k : Fin r → ℝ) (g : Fin r → Fin m → ℝ) :
     formV (fun s => u s - ∑ b, k b * g b s) w = formV u w - ∑ b, k b * formV (g b) w := by

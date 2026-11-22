@@ -154,8 +154,7 @@ theorem gm_thetaIso {V₁ : Type} [CommRing V₁] [IsDomain V₁] (D : DegPre V�
   have h0 : D.famφB 0 0 = 𝟙 _ := rfl
   rw [Fin.prod_univ_four, h0, famφB_one D, famφB_two D]
   simp only [DegPre.famε, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.cons_val_three,
-    Matrix.head_cons, Matrix.tail_cons, Nat.cast_one, sub_self, zpow_zero, zpow_one, zpow_neg, one_mul,
-    Category.comp_id, Category.id_comp, mul_inv_cancel_right]
+    Matrix.head_cons, Matrix.tail_cons, Nat.cast_one, sub_self, zpow_zero, zpow_one, zpow_neg, Category.comp_id, Category.id_comp]
   rw [_root_.one_mul, inv_mul_cancel_right]
 
 theorem theta_values : ∀ (V₁ : Type) [CommRing V₁] [IsDomain V₁] [IsLocalRing V₁], IsCN V₁ → (∀ m : ℕ, m ≠ 0 → IsUnit (m : V₁)) →

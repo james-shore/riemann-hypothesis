@@ -15,7 +15,7 @@ theorem evA_weight_rowW {N : ℕ} (d : Fin N × Fin N →₀ ℕ) (a : Fin N) :
     Fintype.sum_prod_type, Finset.sum_eq_single a]
   · simp [Formalism.GradedWeylDivisibility.rowW, Formalism.GradedWeylDivisibility.rowDeg]
   · intro b _ hb
-    simp [Formalism.GradedWeylDivisibility.rowW, Pi.single_apply, Ne.symm hb]
+    simp [Formalism.GradedWeylDivisibility.rowW, Ne.symm hb]
   · simp
 
 theorem evA_dom {N : ℕ} (ν : Fin N → ℕ) (f : MvPolynomial (Fin N × Fin N) ℂ)

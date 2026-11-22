@@ -93,13 +93,13 @@ theorem adelic_schur_lemma : _root_.GlobalTheory.FunPr.ThetaLocalInputs → ∀ 
       · rw [Complex.zero_re, ← RCLike.re_to_complex, ← integral_re hI]
         have e : (fun x => RCLike.re (ψ (x ⬝ᵥ y) * (D x : ℂ))) = fun x => ((1 : ℂ) * ψ (x ⬝ᵥ y)).re * D x := by
           funext x
-          simp [Complex.mul_re]
+          simp
         rw [e]
         exact hre y 1
       · rw [Complex.zero_im, ← RCLike.im_to_complex, ← integral_im hI]
         have e : (fun x => RCLike.im (ψ (x ⬝ᵥ y) * (D x : ℂ))) = fun x => ((-Complex.I) * ψ (x ⬝ᵥ y)).re * D x := by
           funext x
-          simp [Complex.mul_re, Complex.mul_im]
+          simp [Complex.mul_re]
         rw [e]
         exact hre y (-Complex.I)
     have hD0 := GlobalTheory.CharFourierInj.real_eq_zero (G := κ → AF F) (A := κ → AF F) (fun y x => ψ (x ⬝ᵥ y)) hcy
@@ -150,5 +150,5 @@ theorem _root_.GlobalTheory.T.adelic_intertwiner_eq_scalar : _root_.GlobalTheory
     (∀ μ : @Measure (κ → AF F) (borel _), @Measure.IsAddHaarMeasure _ _ _ (borel _) μ →
       ∀ φ ∈ schA F κ, ∫⁻ x, ‖M φ x‖ₑ ^ 2 ∂μ = ∫⁻ x, ‖φ x‖ₑ ^ 2 ∂μ) →
     ∃ z : ℂ, ∀ φ ∈ schA F κ, M φ = z • φ := by
-  first | exact @_root_.GlobalTheory.AdelicSchur.adelic_schur_lemma | exact _root_.GlobalTheory.AdelicSchur.adelic_schur_lemma | (intros; apply _root_.GlobalTheory.AdelicSchur.adelic_schur_lemma <;> assumption)
+  first | exact @_root_.GlobalTheory.AdelicSchur.adelic_schur_lemma
 end

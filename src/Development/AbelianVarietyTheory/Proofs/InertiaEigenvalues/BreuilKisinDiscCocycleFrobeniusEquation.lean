@@ -123,16 +123,16 @@ theorem frob_eq : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (τ : 
           simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.mul_assoc]; congr 1; ring
       _ = (u ^ N * (E' * u * t') ^ M) • ((E' ^ N • ΦY) * Φe) := by rw [hφ1]
       _ = (E' * u) ^ N • ((E' * u * t') ^ M • (ΦY * Φe)) := by
-          simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.mul_assoc]; congr 1; ring
+          simp only [Matrix.smul_mul, smul_smul]; congr 1; ring
       _ = (E' * u) ^ N • ((E' * t) ^ M • (PP * ΦGY)) := by rw [he1]
       _ = (E' * t) ^ M • (PP * ((E' * u) ^ N • ΦGY)) := by
-          simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.mul_assoc]; congr 1; ring
+          simp only [Matrix.mul_smul, smul_smul]; congr 1; ring
       _ = (E' * t) ^ M • (PP * ((E' * u) ^ M • (GY * GA))) := by rw [hφ2]
       _ = (E' ^ M * (E' * u) ^ M) • ((t ^ M • (PP * GY)) * GA) := by
           simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.mul_assoc]; congr 1; ring
       _ = (E' ^ M * (E' * u) ^ M) • ((t' ^ M • (YY * e)) * GA) := by rw [he]
       _ = (E' ^ (2 * M) * u ^ M * t' ^ M) • (YY * (e * GA)) := by
-          simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.mul_assoc]; congr 1; ring
+          simp only [Matrix.smul_mul, smul_smul, Matrix.mul_assoc]; congr 1; ring
   have hu' : u ≠ 0 := fun h => by rw [h, mul_zero] at hv; exact zero_ne_one hv
   have hc : E' ^ (2 * M) * u ^ M * t' ^ M ≠ 0 :=
     mul_ne_zero (mul_ne_zero (pow_ne_zero _ hE) (pow_ne_zero _ hu')) (pow_ne_zero _ ht')
@@ -145,7 +145,7 @@ theorem frob_eq : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (τ : 
     _ = v ^ (2 * N) • ((e * GA) * GA') := by rw [← hA2, Matrix.mul_assoc]
     _ = v ^ (2 * N) • ((u ^ N • (AA * Φe)) * GA') := by rw [hX]
     _ = (v ^ N • AA) * Φe * GA' := by
-        simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, Matrix.mul_assoc]
+        simp only [Matrix.smul_mul, smul_smul, Matrix.mul_assoc]
         congr 1
         rw [show v ^ (2 * N) * u ^ N = v ^ N * (v * u) ^ N by ring, hv, one_pow, mul_one]
 

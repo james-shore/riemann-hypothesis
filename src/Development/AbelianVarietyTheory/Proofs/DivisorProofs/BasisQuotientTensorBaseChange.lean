@@ -32,7 +32,7 @@ theorem quotient_basis_baseChange (A B C R : Type) [CommRing A] [CommRing B] [Al
     simp only [Φ, ← bas_apply, Module.Basis.repr_self]
     by_cases h : j = k
     · subst h; simp
-    · simp [Finsupp.single_apply, Pi.single_apply, Ne.symm h, h]
+    · simp [h]
   let g : B →ₗ[A] (Fin r → R) :=
     { toFun := fun b => Φ ((1 : C) ⊗ₜ[A] b)
       map_add' := fun x y => by simp only [TensorProduct.tmul_add]; exact Φ_add _ _

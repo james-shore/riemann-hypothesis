@@ -59,7 +59,7 @@ def realSubst (W : G.Weil) (B : VertexFrames G) (p : Pair T) (k : GA D (G.V p.sm
 theorem ker_mul (W : G.Weil) (p : Pair T) (F : WO (G.pS p) (G.pT p) → ℂ) (g k : GA D (G.V p.small))
     (h k' : GA D (G.V p.big)) : W.ker p F (g * k) (h * k') = W.ker p (W.om p (G.toPair p k k') F) g h := by
   have e : G.toPair p (g * k) (h * k') = G.toPair p g h * G.toPair p k k' := by
-    cases p <;> simp [GridData.toPair, map_mul, Prod.ext_iff]
+    cases p <;> simp [GridData.toPair, map_mul]
   unfold GridData.Weil.ker
   rw [e]
   simp only [thetaKO, Prod.mk.eta, map_mul, Module.End.mul_apply]
@@ -145,7 +145,7 @@ theorem ker_fockIn_real {μ₀ : T} (hL : L.Is μ₀) (W : G.Weil) (B : VertexFr
     W.ker p (fockIn W B p f Q) (g * k) (h * k') =
       realChar W p e₁ e₂ k k' * W.ker p (fockIn W B p f (realSubst W B p k k' Q)) g h := by
   rw [ker_mul, om_fockIn hL W B hp hB a b ha hb e₁ e₂ he₁ he₂ f hf hv k hk k' hk' Q]
-  simp only [GridData.Weil.ker, thetaKO, map_smul, LinearMap.smul_apply, Pi.smul_apply, smul_eq_mul]
+  simp only [GridData.Weil.ker, thetaKO, map_smul, Pi.smul_apply, smul_eq_mul]
 
 theorem ker_fock_moved_real {μ₀ : T} (hL : L.Is μ₀) (W : G.Weil) {U : Set T} (S : GridChoice W U) (t : T) {p : Pair T}
     (hp : DefPair D.R.m p) (d : FinDatum G t p) (hd : S.Z.HasVec d)

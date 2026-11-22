@@ -67,7 +67,7 @@ theorem exists_flag_dual (y : (Σ k, ι k) → Ω) (B : ChartBundle F (segreVec 
     apply hm
     rcases hjm.lt_or_eq with h | h
     · have hne : j ≠ m := fun h' => (ne_of_lt h) (congrArg Fin.val h')
-      simp [heT j m h, Finsupp.single_apply, hne]
+      simp [heT j m h, hne]
     · have : m = j := Fin.ext h.symm
       subst this
       simp [heD]
@@ -164,7 +164,7 @@ theorem chartMono_homog (M : ℕ) (c : ∀ k, ι k) (α : K → ℕ) :
   have hw : liftNat α = ∑ k, α k • blockWeight (bundleIdx ι M) ⟨some k, c k⟩ := by
     funext o
     cases o with
-    | none => simp [liftNat, blockWeight, Finset.sum_apply, Pi.single_apply]
+    | none => simp [liftNat, blockWeight, Finset.sum_apply]
     | some k => simp [liftNat, blockWeight, Finset.sum_apply, Pi.single_apply]
   rw [IsMultiHomog, chartMono, hw]
   exact h

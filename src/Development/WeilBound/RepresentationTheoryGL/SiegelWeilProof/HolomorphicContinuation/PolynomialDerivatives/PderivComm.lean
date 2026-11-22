@@ -24,7 +24,7 @@ theorem pderiv_comm (i j : Fin m × Fin n × Bool) (P : PX m n) :
     apply MvPolynomial.derivation_ext
     intro k
     rw [Derivation.commutator_apply, pderiv_X, pderiv_X]
-    by_cases hi : i = k <;> by_cases hj : j = k <;> simp [Pi.single_apply, hi, hj]
+    by_cases hi : i = k <;> by_cases hj : j = k <;> simp [hi, hj]
   have := congrArg (fun D : Derivation ℂ (PX m n) (PX m n) => D P) h
   simpa [Derivation.commutator_apply, sub_eq_zero] using this
 
@@ -92,22 +92,22 @@ theorem op_id (c : ℝ) (ε : Fin m → Bool) (i j : Fin n) (P : PX m n) :
     ← Finset.sum_sub_distrib, ← Finset.sum_add_distrib, ← Finset.sum_sub_distrib]
   refine Finset.sum_congr rfl fun a _ => ?_
   cases hε : ε a
-  · simp only [hε, Bool.false_eq_true, if_false, if_true, zero_sub, cr_apply, sw, Bool.not_true]
+  · simp only [Bool.false_eq_true, if_false, if_true, zero_sub, cr_apply, sw, Bool.not_true]
     rw [pderiv_comm (a, j, true) (a, i, false)]
     by_cases hij : i = j
     · subst hij
-      simp [sgn, hε, pderiv_mul, pderiv_X, Pi.single_apply, smul_eq_C_mul, pderiv_C_mul, map_ofNat]
+      simp [sgn, hε, pderiv_X, smul_eq_C_mul, map_ofNat]
       ring
     · have hne : (a, j, false) ≠ (a, i, false) := by simp [Ne.symm hij]
-      simp [sgn, hε, pderiv_mul, pderiv_X, Pi.single_apply, smul_eq_C_mul, pderiv_C_mul, hij, hne, map_ofNat]
+      simp [sgn, hε, pderiv_X, smul_eq_C_mul, hij, hne, map_ofNat]
       ring
-  · simp only [hε, if_true, Bool.true_eq_false, if_false, sub_zero, cr_apply, sw, Bool.not_false]
+  · simp only [if_true, Bool.true_eq_false, if_false, sub_zero, cr_apply, sw, Bool.not_false]
     by_cases hij : i = j
     · subst hij
-      simp [sgn, hε, pderiv_mul, pderiv_X, Pi.single_apply, smul_eq_C_mul, pderiv_C_mul, map_ofNat]
+      simp [sgn, hε, pderiv_X, smul_eq_C_mul, map_ofNat]
       ring
     · have hne : (a, j, false) ≠ (a, i, false) := by simp [Ne.symm hij]
-      simp [sgn, hε, pderiv_mul, pderiv_X, Pi.single_apply, smul_eq_C_mul, pderiv_C_mul, hij, hne, map_ofNat]
+      simp [sgn, hε, pderiv_X, smul_eq_C_mul, hij, hne, map_ofNat]
       ring
 
 theorem kopL_apply (ε : Fin m → Bool) (i j : Fin n) (p : PX m n) :

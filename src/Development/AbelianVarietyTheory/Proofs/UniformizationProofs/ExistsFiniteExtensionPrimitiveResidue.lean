@@ -25,7 +25,7 @@ theorem isPrimitiveRoot_residue_of_isUnit {W : Type*} [CommRing W] [IsDomain W] 
     exact (mul_eq_zero.1 this).resolve_right (sub_ne_zero.2 hne)
   have h3 := congrArg (IsLocalRing.residue W) h2
   simp only [map_sum, map_pow, hl, one_pow, map_zero, Finset.sum_const, Finset.card_range,
-    nsmul_eq_mul, mul_one] at h3
+    nsmul_eq_mul] at h3
   have h4 := hN.map (IsLocalRing.residue W)
   rw [map_natCast] at h4
   exact h4.ne_zero (by simpa using h3)

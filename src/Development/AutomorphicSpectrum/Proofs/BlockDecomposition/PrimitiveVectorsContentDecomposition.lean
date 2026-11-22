@@ -16,7 +16,7 @@ namespace GlobalTheory.CompanionTheory.WeilSiegel.HypMass.PrimDec
 
 theorem hform_single {A : Type} [CommRing A] (τ : A →+* A) {N : ℕ} (H : Matrix (Fin N) (Fin N) A) (a b : Fin N) :
     hform τ H (Pi.single a 1) (Pi.single b 1) = H a b := by
-  simp [hform, Pi.single_apply, Finset.sum_ite_eq]
+  simp [hform, Pi.single_apply]
 
 theorem exists_content {T : Type} [CommRing T] [IsArtinianRing T] (O : Subring T) [IsPrincipalIdealRing O] {N : ℕ}
     (y : Fin N → T) (hy : ∀ k, y k ∈ O) (hfree : ∀ c : T, (∀ k, c * y k = 0) → c = 0) :
@@ -185,7 +185,7 @@ theorem mem_primV_of (O : Subring (Fv F v ⊗[F] E))
       funext j
       induction j using Fin.cases with
       | zero => simp [e0]
-      | succ j => simp [e0, Pi.single_apply, Fin.succ_ne_zero]
+      | succ j => simp [e0, Fin.succ_ne_zero]
     rw [he]
     simpa [Matrix.mulVec, dotProduct, y0] using h1
 

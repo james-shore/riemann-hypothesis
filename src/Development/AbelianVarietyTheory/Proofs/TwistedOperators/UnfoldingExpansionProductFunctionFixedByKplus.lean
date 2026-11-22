@@ -480,7 +480,7 @@ theorem product_invariant : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : Consts
     refine Eq.trans (Finset.sum_congr rfl fun d _ => ?_) (h1.trans (Finset.sum_congr rfl fun d _ => ?_))
     · have e1 : ∀ j, F' d (.inl j) (x (.inl j)) = (d.1 j).fn (firstPt t g (fun j => x (.inl j)) j) := fun j => by
         rcases eq_or_ne j ⟨0, zero_lt_m D⟩ with rfl | hj
-        · simp only [firstPt, Function.update_self]
+        · simp only [firstPt]
           exact congrFun (Function.update_self first _ (datFn d)) _
         · have a1 : firstPt t g (fun j => x (.inl j)) j = x (.inl j) := Function.update_of_ne hj _ _
           rw [a1]

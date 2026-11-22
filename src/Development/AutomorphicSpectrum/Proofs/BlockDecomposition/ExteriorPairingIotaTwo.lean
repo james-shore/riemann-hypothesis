@@ -157,10 +157,10 @@ theorem eq_zero_of_prim [Module.Finite R V] [Module.Projective R V] (P Q : V →
     simp [a1, a2, b1, b2']
   have e2 : pair2 (l ∘ₗ r) (u ∘ₗ s) ∘ₗ exteriorPower.map 2 P = 0 := ext2 fun a b ↦ by
     rw [LinearMap.comp_apply, exterior_map_iota_two, exterior_pairing_iota_two]
-    simp [a1, a2, b1, b2']
+    simp [a1, b1]
   have e3 : pair2 (l ∘ₗ r) (u ∘ₗ s) ∘ₗ exteriorPower.map 2 Q = 0 := ext2 fun a b ↦ by
     rw [LinearMap.comp_apply, exterior_map_iota_two, exterior_pairing_iota_two]
-    simp [a1, a2, b1, b2']
+    simp [a2, b2']
   have := congrArg (pair2 (l ∘ₗ r) (u ∘ₗ s)) h
   rw [map_add, ← LinearMap.comp_apply, ← LinearMap.comp_apply, ← LinearMap.comp_apply, e1, e2, e3] at this
   simpa using this

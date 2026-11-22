@@ -130,7 +130,7 @@ theorem tl_single (ϖ : ∀ v : HeightOneSpectrum (𝓞 E), (v.adicCompletion E)
     · subst hij
       simp only [Matrix.diagonal_apply_eq]
       change ((ϖ w ^ (Finsupp.mapRange (fun x : Fin n → ℤ => x i) rfl (Finsupp.single v a)) w : (w.adicCompletion E)ˣ) : w.adicCompletion E) = _
-      simp [Finsupp.single_apply, Ne.symm hw]
+      simp [Ne.symm hw]
     · simp [Matrix.diagonal_apply_ne _ hij, Matrix.one_apply_ne hij]
 
 section

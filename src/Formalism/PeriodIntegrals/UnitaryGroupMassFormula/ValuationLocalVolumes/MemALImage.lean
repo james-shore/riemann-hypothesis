@@ -122,7 +122,7 @@ theorem mem_aL_image (σ : E →ₐ[F] E)
     rw [← htr, hsc, map_mul]
   have hone : (1 : Fv F v ⊗[F] E) ∈ OEv (E := E) v := by
     have := PI.UnitaryGroupMassFormula.LocJacTyp.Sd.inclR_mem (E := E) v 1
-    simp only [OneMemClass.coe_one, map_one] at this
+    simp only [map_one] at this
     exact this
   have hsmul : ∀ c ∈ v.adicCompletionIntegers F, ∀ x ∈ OEv (E := E) v, c • x ∈ OEv (E := E) v :=
     fun c hc x hx => by

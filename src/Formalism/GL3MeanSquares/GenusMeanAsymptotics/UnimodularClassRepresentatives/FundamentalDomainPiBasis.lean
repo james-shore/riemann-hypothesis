@@ -70,7 +70,7 @@ def piBasis : Basis (Σ _ : ι, Free.ChooseBasisIndex ℤ (𝓞 K)) ℝ (ι → 
 theorem fundamentalDomain_piBasis : ZSpan.fundamentalDomain (piBasis K ι) =
     Set.pi Set.univ fun _ => ZSpan.fundamentalDomain (latticeBasis K) := by
   ext y
-  simp only [ZSpan.mem_fundamentalDomain, Set.mem_pi, Set.mem_univ, true_implies, forall_const, piBasis,
+  simp only [ZSpan.mem_fundamentalDomain, Set.mem_pi, Set.mem_univ, forall_const, piBasis,
     Pi.basis_repr, Sigma.forall]
 
 theorem mem_span_piBasis (y : ι → mixedSpace K) :

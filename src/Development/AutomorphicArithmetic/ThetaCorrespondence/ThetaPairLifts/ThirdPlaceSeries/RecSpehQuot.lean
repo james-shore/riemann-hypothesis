@@ -30,7 +30,7 @@ theorem rec_spehQuot_alt : ∀ (E Ω : Type) [Field E] [NumberField E] [Field Ω
   have hA := GlobalTheory.T.isLanglandsQuotient_of_irreducible_unitary_segment_product _ (GlobalTheory.T.unitarisable_segment_twist_precedes_add_one_le _) a _ σ.ρ σ.irred m δ Δ s hΔ hδu hs hd0 hφ
   have hB := GlobalTheory.T.langlandsQuotient_of_speh_type_product_isL _ hLM (GlobalTheory.T.unitarisable_segment_twist_precedes_add_one_le _) (GlobalTheory.T.parabolicInduction_in_stages_product_of_products _) a _ σ.ρ m δ Δ s hΔ hδu hs hd0 hφ d n hd _ σ'.ρ σ'.irred hq
   have h4 := _root_.GlobalTheory.T.sum_segments_langlands_at_place E Ω A w h rc hrc
-  first | (have hOpn := UpperTheory.One.M.opn _ (hrc); obtain ⟨a', ha', ε, L⟩ := hOpn) | obtain ⟨a', ha', ε, -, L⟩ := hrc
+  first | (have hOpn := UpperTheory.One.M.opn _ (hrc); obtain ⟨a', ha', ε, L⟩ := hOpn)
   rw [L.langlands _ _ (isL_of_equiv hB (equivRep (ParLaws.toRep σ'))),
     L.langlands _ _ (isL_of_equiv hA (equivRep (ParLaws.toRep σ))), List.map_flatMap, sumList_flatMap]
   congr 1

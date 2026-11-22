@@ -32,7 +32,7 @@ theorem schr_boxFun {R : Type} [CommRing R] [Invertible (2 : R)] (ψ : AddChar R
     schr ψ w (boxFun φ₁ φ₂) = boxFun (schr ψ (w.1 ∘ Sum.inl, w.2 ∘ Sum.inl) φ₁)
       (schr ψ (w.1 ∘ Sum.inr, w.2 ∘ Sum.inr) φ₂) := by
   funext x
-  simp only [schr, boxFun, dotProduct, Fintype.sum_sum_type, Function.comp_apply, Pi.add_apply]
+  simp only [schr, boxFun, dotProduct, Fintype.sum_sum_type, Function.comp_apply]
   rw [show (∑ i, x (Sum.inl i) * w.2 (Sum.inl i)) + (∑ i, x (Sum.inr i) * w.2 (Sum.inr i)) +
       ⅟(2 : R) * ((∑ i, w.1 (Sum.inl i) * w.2 (Sum.inl i)) + (∑ i, w.1 (Sum.inr i) * w.2 (Sum.inr i))) =
       ((∑ i, x (Sum.inl i) * w.2 (Sum.inl i)) + ⅟(2 : R) * (∑ i, w.1 (Sum.inl i) * w.2 (Sum.inl i))) +
@@ -78,7 +78,7 @@ theorem GlobalTheory.BoxSpan.boxSpan_ker : ∀ (F : Type) [Field F] [NumberField
   have hne : boxFun i₁ i₂ ≠ 0 := by
     intro h
     have := congrFun h 0
-    simp [boxFun, i₁, i₂, Set.indicator, zero_mem] at this
+    simp [boxFun, i₁, i₂, zero_mem] at this
   have hall := GlobalTheory.SchrIrred.schr_irreducible v ψ hψ h1 N hN hS _ h0 hne
   have hk : N ≤ LinearMap.ker Λ := by
     refine Submodule.span_le.2 ?_

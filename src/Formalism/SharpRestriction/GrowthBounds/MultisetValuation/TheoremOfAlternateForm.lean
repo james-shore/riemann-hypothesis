@@ -182,8 +182,7 @@ theorem exists_rep (hfr : IsFractionRing X.G.O X.G.Kf) {x : X.G.Kf} (hx : x ≠ 
   rw [zpow_sub₀ hp, zpow_natCast, zpow_natCast, Units.val_mul]
   simp only [map_mul, map_pow, map_units_inv]
   first
-    | (field_simp; done)
-    | (field_simp; ring)
+    | (field_simp)
 
 theorem vGeK_iff_of_rep (hfr : IsFractionRing X.G.O X.G.Kf) {x : X.G.Kf} {N : ℤ} (hx : Rep X x N) (g : ℝ) :
     X.vGeK x g ↔ g * (X.eO : ℝ) ≤ N := by

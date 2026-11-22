@@ -39,8 +39,7 @@ theorem UpperTheory.V.Af.Tw.descend :
   refine ⟨κ₀.comp (GlobalTheory.HeckeGal.toAb F Ω), ?_, ?_⟩
   · exact κC.continuous.comp (by
       first
-        | exact QuotientGroup.continuous_mk
-        | exact continuous_quot_mk)
+        | exact QuotientGroup.continuous_mk)
   · intro x σ h
     show κC (GlobalTheory.HeckeGal.toAb F Ω σ) = ψ x
     rw [← h, hκ]

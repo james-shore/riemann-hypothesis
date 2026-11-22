@@ -19,7 +19,6 @@ theorem colAt_smul_of_mul_idem : Big fun {D} _ _ _ _ {T} _ _ _ _ _ _ ch => ∀ (
   unfold Big
   refine ⟨0, fun _ _ _ => ⟨0, ?_⟩⟩
   intros
-  beta_reduce
   intro t w eL e' hL he u
   have hw := (GlobalTheory.FunObj.Comparison₂.cpt_idemSum hL).2.1 w.1 (Finset.mem_singleton_self _)
 

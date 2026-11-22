@@ -29,7 +29,7 @@ theorem _root_.GlobalTheory.AnPer.perClD_relation_unique : ∀ {g : ℕ} {Λ : T
   let q'' : Λ →+ R := q' - ∑ i ∈ S, d i • q i
   have hq'' : ∀ m, q'' m = q' m - ∑ i ∈ S, d i * q i m := by
     intro m
-    simp [q'', AddMonoidHom.finset_sum_apply, smul_eq_mul]
+    simp [q'', smul_eq_mul]
   have hcl : K₀.perClD et M q'' = 0 := by
     have hc : ∀ p : Λ →+ R, K₀.perClD et M p =
         _root_.GlobalTheory.CatCoh.H1.mk _

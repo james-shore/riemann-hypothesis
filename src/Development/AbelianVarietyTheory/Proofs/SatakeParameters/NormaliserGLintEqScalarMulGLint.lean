@@ -180,6 +180,6 @@ theorem conj_eq_glint_mul_mul :
           rw [h2, Matrix.mul_one]
       _ = _ := by rw [← Matrix.mul_assoc, h1, Matrix.one_mul]
   rw [hNi, hNc]
-  simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, inv_mul_cancel₀ hc, mul_inv_cancel₀ hc, one_smul]
+  simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, mul_inv_cancel₀ hc, one_smul]
 
 end GlobalTheory.NormaliserGLint

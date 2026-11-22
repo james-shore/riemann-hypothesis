@@ -134,7 +134,7 @@ theorem mem_balForms_of_symm {X : Type} [AddCommGroup X] (i : Module ℤ X)
     β ∈ @balForms ℤ _ id X _ i := by
   obtain rfl : i = AddCommGroup.toIntModule X := Subsingleton.elim _ _
   refine ⟨hs, fun a y z => ?_⟩
-  simp [map_zsmul]
+  simp
 
 end GlobalTheory.Poinc.Sep.Assembly
 

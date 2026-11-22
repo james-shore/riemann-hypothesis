@@ -127,7 +127,7 @@ theorem continuous_sigR (σ : E →ₐ[F] E) : Continuous (sigR R σ) := by
 theorem lcsc_HA [LocallyCompactSpace R] [SecondCountableTopology R] [T2Space R]
     (σ : E →ₐ[F] E) (M : ℕ) (J : Matrix (Fin M) (Fin M) E) :
     LocallyCompactSpace (HA R σ J) ∧ SecondCountableTopology (HA R σ J) ∧ T2Space (HA R σ J) :=
-  by apply _root_.UpperTheory.Reformulated.B.Yzd4.lcsc_HA <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.Yzd4.lcsc_HA
 
 end Tensor
 

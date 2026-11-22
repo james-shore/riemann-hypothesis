@@ -45,7 +45,6 @@ theorem measurable_Phi [SFinite μR] (hK : ∀ m, IsClosed (K m)) (m : ℕ) : Me
     measurable_nInv g (hK m).measurableSet
   first
     | exact measurable_measure_prodMk_right hs
-    | exact measurable_measure_prod_mk_right hs
 
 theorem measurable_Eset [SFinite μR] (hK : ∀ m, IsClosed (K m)) (m : ℕ) : MeasurableSet (Eset g μR K m) := by
   have h1 : MeasurableSet {y | Phi g μR K m y ≠ 0} :=
@@ -60,7 +59,7 @@ theorem measurable_Eset [SFinite μR] (hK : ∀ m, IsClosed (K m)) (m : ℕ) : M
 theorem measurable_theta [SFinite μR] (hK : ∀ m, IsClosed (K m)) : Measurable (theta g μR K) := by
   refine Measurable.ennreal_tsum (fun m => ?_)
   refine Measurable.indicator ?_ (measurable_Eset g μR K hK m)
-  refine Measurable.mul ?_ (by first | exact (measurable_Phi g μR K hK m).inv | exact measurable_inv.comp (measurable_Phi g μR K hK m))
+  refine Measurable.mul ?_ (by first | exact (measurable_Phi g μR K hK m).inv)
   exact (measurable_one.indicator (hK m).measurableSet).comp measurable_fst.snd
 
 variable {g μR K}
@@ -74,16 +73,16 @@ private theorem hpk_sq_lemma (k r : ℕ) : Hpk k r * Hpk k r = 1 := by
   · by_cases hij : i = j
     · subst hij
       rw [if_pos rfl]
-      simp only [Hpk, Fin.ext_iff, Fin.val_mk, eq_self_iff_true, and_true]
-      split_ifs <;> first | (exfalso; (try simp only [Fin.val_mk] at *); omega) | (simp_all; done) | norm_num
+      simp only [Hpk, Fin.ext_iff]
+      split_ifs <;> first | (exfalso; (try simp only at *); omega) | (simp_all)
     · rw [if_neg hij]
       rw [Fin.ext_iff] at hij
-      simp only [Hpk, Fin.ext_iff, Fin.val_mk]
-      split_ifs <;> first | (exfalso; (try simp only [Fin.val_mk] at *); omega) | (simp_all; done) | norm_num
+      simp only [Hpk, Fin.ext_iff]
+      split_ifs <;> first | (exfalso; (try simp only at *); omega) | (simp_all)
   · intro l _ hl
     rw [Ne, Fin.ext_iff, Fin.val_mk] at hl
     simp only [Hpk, Fin.ext_iff]
-    split_ifs at * <;> first | (exfalso; (try simp only [Fin.val_mk] at *); omega) | (simp_all; done) | norm_num
+    split_ifs at * <;> first | (exfalso; (try simp only at *); omega) | (simp_all)
   · intro h
     exact absurd (Finset.mem_univ _) h
 
@@ -114,13 +113,10 @@ theorem Phi_inv (hg : g ∈ UH (Hpk k r)) (hμ : IsHaarOn (RStab k r g) μR) (hK
       unfold lmulM
       first
         | fun_prop
-        | continuity
     exact hc.measurable
   have hmk : Measurable (fun a : Mt k r => (a, y)) := by
     first
       | exact measurable_prodMk_right
-      | exact measurable_prod_mk_right
-      | fun_prop
   have hS : MeasurableSet {a : Mt k r | nInv g a y ∈ K m} :=
     ((measurable_nInv g).comp hmk) (hK m).measurableSet
   have hT : MeasurableSet ((lmulM b⁻¹) ⁻¹' {a : Mt k r | nInv g a y ∈ K m}) := hl b⁻¹ hS
@@ -229,8 +225,6 @@ theorem measurable_nInv_left (y : PairSp k r) : Measurable (fun a : Mt k r => nI
   have hm : Measurable (fun a : Mt k r => (a, y)) := by
     first
       | exact measurable_prodMk_right
-      | exact measurable_prod_mk_right
-      | fun_prop
   have e : (fun a : Mt k r => nInv g a y) = (fun p : Mt k r × PairSp k r => nInv g p.1 p.2) ∘ (fun a => (a, y)) := rfl
   rw [e]
   exact (measurable_nInv g).comp hm

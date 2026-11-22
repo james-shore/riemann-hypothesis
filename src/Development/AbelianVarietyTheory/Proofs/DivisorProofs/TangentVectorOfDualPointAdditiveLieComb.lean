@@ -303,7 +303,7 @@ theorem dm_scale (c : R) {v u : epsR R ⟶ G} (hu : u.left = spMap (epsScaleR c)
   rw [← Category.assoc, ← Category.assoc, spMap_comp', spMap_comp']
   congr 2
   refine RingHom.ext fun a => ?_
-  ext <;> simp [epsScaleR, dualMap, Chart.scaleD, smul_smul, _root_.mul_comm]
+  ext <;> simp [epsScaleR, dualMap, Chart.scaleD, smul_smul]
 
 end GlobalTheory.TanLinComb
 

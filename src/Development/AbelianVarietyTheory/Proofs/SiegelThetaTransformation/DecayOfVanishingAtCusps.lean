@@ -174,7 +174,7 @@ theorem coef_sing (hXc : Continuous X) (hX : ∀ x τ, (X x τ).IsHermitian) (hT
   have hpush : ∀ x t, (fun τ => X x τ + I • Y t τ) = pushZ Ψ (fun τ => X x τ + I • Y 0 τ) v t := by
     intro x t
     funext τ
-    simp only [hYdef, pushZ, hP, smul_add, smul_smul, ofReal_zero, mul_zero, zero_smul, add_zero,
+    simp only [hYdef, pushZ, hP, smul_add, smul_smul, ofReal_zero, zero_smul, add_zero,
       add_assoc]
     rfl
   have hpr : ∀ x t, pr T (fun τ => X x τ + I • Y t τ) = pr T (fun τ => X x τ + I • Y 0 τ) := by

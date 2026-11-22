@@ -43,9 +43,7 @@ theorem exists_prod_X_sub_C_eq {δ : ℕ} (c : Fin δ → ℂ) :
   first
   | exact @_root_.GlobalTheory.MonicRootsProduct.exists_roots
   | exact _root_.GlobalTheory.MonicRootsProduct.exists_roots
-  | (apply _root_.GlobalTheory.MonicRootsProduct.exists_roots <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MonicRootsProduct.exists_roots <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MonicRootsProduct.exists_roots <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.MonicRootsProduct.exists_roots)
   | (intros; exact _root_.GlobalTheory.MonicRootsProduct.exists_roots ..)
 
 theorem exists_measurable_roots_enumeration :

@@ -203,7 +203,6 @@ theorem IsLevel.neg {g : ℕ} {τ : Matrix (Fin g) (Fin g) ℂ} {N : ℕ} {f : (
   have := h.2 (-n) (-n') (-z)
   simp only [ofIntVec_neg, mulVec_neg, neg_dotProduct, dotProduct_neg, neg_neg] at this
   rw [← this]
-  congr 1
   abel
 
 theorem IsLevel.sq {g : ℕ} {τ : Matrix (Fin g) (Fin g) ℂ} {N : ℕ} {f : (Fin g → ℂ) → ℂ} (h : IsLevel τ N f) :

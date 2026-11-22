@@ -25,7 +25,7 @@ theorem iteratedFDeriv_apply_eq_foldr_fderiv :
       exact (ih (Fin.tail m) z).symm
     simp only [hfun]
     have hd : DifferentiableAt ℝ (iteratedFDeriv ℝ n g) x :=
-      (hg.differentiable_iteratedFDeriv (by first | exact_mod_cast ENat.coe_lt_top n | simp | exact WithTop.coe_lt_coe.2 (ENat.coe_lt_top n))) x
+      (hg.differentiable_iteratedFDeriv (by first | exact_mod_cast ENat.coe_lt_top n)) x
     rw [fderiv_continuousMultilinear_apply_const_apply hd]
 
 end GlobalTheory

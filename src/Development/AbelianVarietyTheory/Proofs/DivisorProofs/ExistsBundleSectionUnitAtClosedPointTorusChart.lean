@@ -39,7 +39,7 @@ theorem exists_secB_isUnit_const : ∀ (E : Type) [Field E] [NumberField E] [IsC
     rw [key, IsLocalRing.mem_maximalIdeal, mem_nonunits_iff, MvPowerSeries.isUnit_iff_constantCoeff,
       isUnit_iff_ne_zero, not_not]
     by_cases h0 : MvPowerSeries.constantCoeff r = 0
-    · simp [h0, Ideal.zero_mem]
+    · simp [h0]
     · refine iff_of_false (fun hm => ?_) h0
       have hu : IsUnit (algebraMap k (DualNumber k) (MvPowerSeries.constantCoeff r)) :=
         (isUnit_iff_ne_zero.2 h0).map _

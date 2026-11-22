@@ -168,8 +168,6 @@ theorem withTop_add_neg_nonneg (a : WithTop ℤ) (e : ℤ) (h : (e : WithTop ℤ
     have key : ((b : WithTop ℤ) + -(e : WithTop ℤ)) = ((b - e : ℤ) : WithTop ℤ) := by
       first
         | rw [sub_eq_add_neg, WithTop.coe_add, WithTop.LinearOrderedAddCommGroup.coe_neg]
-        | norm_cast
-        | simp [sub_eq_add_neg]
     rw [key]
     exact_mod_cast (show (0 : ℤ) ≤ b - e by omega)
 

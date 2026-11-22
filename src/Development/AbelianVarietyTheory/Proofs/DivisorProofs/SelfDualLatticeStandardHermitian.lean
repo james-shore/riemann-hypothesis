@@ -25,9 +25,7 @@ theorem exists_orthonormal_mem {K : UQ} (n : ℕ) : ∀ (V : Type) [AddCommGroup
   first
   | exact @_root_.GlobalTheory.InvolutionTraceUnit.exists_orthonormal
   | exact _root_.GlobalTheory.InvolutionTraceUnit.exists_orthonormal
-  | (apply _root_.GlobalTheory.InvolutionTraceUnit.exists_orthonormal <;> assumption)
-  | (intros; apply _root_.GlobalTheory.InvolutionTraceUnit.exists_orthonormal <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.InvolutionTraceUnit.exists_orthonormal <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.InvolutionTraceUnit.exists_orthonormal)
   | (intros; exact _root_.GlobalTheory.InvolutionTraceUnit.exists_orthonormal ..)
 
 end GlobalTheory.InertUnitOrb.LatOnto

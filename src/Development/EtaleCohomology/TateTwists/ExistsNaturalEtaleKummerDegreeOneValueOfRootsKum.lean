@@ -46,7 +46,7 @@ theorem sx_res_id {E : Spc} {p : ℕ} {U : Scheme.{0}} (x : Sx E p U) : x.res (�
 theorem units_map_comp {W V U : Scheme.{0}} (k : W ⟶ V) (g : V ⟶ U) (u : (Γ(U, ⊤))ˣ) :
     Units.map k.appTop.hom.toMonoidHom (Units.map g.appTop.hom.toMonoidHom u) =
       Units.map (k ≫ g).appTop.hom.toMonoidHom u := by
-  ext; simp [Scheme.Hom.comp_appTop]; rfl
+  ext; simp; rfl
 
 theorem sec_map_comp {R : Type} [CommRing R] {F G H : Shv R} (φ : F ⟶ G) (ψ : G ⟶ H) {U : Scheme.{0}}
     (s : Sec F U) : Sec.map ψ (Sec.map φ s) = Sec.map (φ ≫ ψ) s := rfl
@@ -66,7 +66,7 @@ theorem lineUnit_res {E : Spc} (L : E ⟶ ofCat (glCat 1)) {V U : Scheme.{0}} (g
   rw [NatTrans.naturality_apply]
   change Matrix.GeneralLinearGroup.det (Matrix.GeneralLinearGroup.map g.appTop.hom (glMat ((L.app _).app (op U) x))) = _
   ext
-  simp [Matrix.GeneralLinearGroup.map, RingHom.map_det]
+  simp [Matrix.GeneralLinearGroup.map]
 
 noncomputable abbrev dkT (q : ℕ) (V : Scheme.{0}) (v : (Γ(V, ⊤))ˣ) : Sec ((res _ (tw q 1)).X 1) V :=
   Sec.map ((res _ (tw q 1)).d 0 1) (kumT q V v)

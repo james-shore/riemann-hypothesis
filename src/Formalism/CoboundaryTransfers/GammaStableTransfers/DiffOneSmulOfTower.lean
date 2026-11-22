@@ -59,16 +59,16 @@ lemma map_diffOne {W : WachMod B M D} {W' : WachMod B M D'} (f : Hom W W') (y z 
     f.f (W.d1 y z) = W'.d1 (f.f y) (f.f z) := by
   have hφ : ∀ x, f.f (W.φ x) = W'.φ (f.f x) := by
     cases f
-    first | assumption | done
+    first | assumption
   have hγ : ∀ x, f.f (W.γ x) = W'.γ (f.f x) := by
     cases f
-    first | assumption | done
+    first | assumption
   simp only [WachMod.d1, map_sub, hφ, hγ]
 lemma chase_hom_Q {W : WachMod B M D} {W' : WachMod B M D'} (f : Hom W W') {y : D}
     (hy : W.QInv y) : W'.QInv (f.f y) := by
   have hN : ∀ x ∈ W.N, f.f x ∈ W'.N := by
     cases f
-    first | assumption | done
+    first | assumption
   show B.Q ^ M • f.f y ∈ W'.N
   rw [← map_smul f.f]
   exact hN _ hy
@@ -104,12 +104,10 @@ theorem cocycleLiftOfExact_holds : DiagramChase₂ := by
     intro r t
     first
     | exact LinearMap.map_smul_of_tower _ r t
-    | rw [algebra_compatible_smul A r t, map_smul, ← algebra_compatible_smul A r]
   have hiO : ∀ (r : O) (t : D₀), S.ι.f (r • t) = r • S.ι.f t := by
     intro r t
     first
     | exact LinearMap.map_smul_of_tower _ r t
-    | rw [algebra_compatible_smul A r t, map_smul, ← algebra_compatible_smul A r]
 
   have key : ∀ (w : D₀) (t : D₁), S.ι.f w = B.X • t → ∃ t₀, S.ι.f t₀ = t ∧ w = B.X • t₀ := by
     intro w t h

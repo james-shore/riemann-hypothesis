@@ -67,7 +67,7 @@ theorem res_twist_spec : ∀ {D : D7} {N : NData D.R D.host D.what₂} {X : NTw 
     intro z
     rw [← ofAdd_toAdd z, ← ofAdd_nsmul]
     refine congrArg Multiplicative.ofAdd (funext fun v => ?_)
-    simp [nsmul_eq_mul, ZMod.natCast_self]
+    simp [nsmul_eq_mul]
   change (((ρ.tw i b k Q (χ.comp (Y.delU i Q M))).res PP.1 x : Circle) : ℂ) = _
   rw [htres, hs]
   simp only [χc, MonoidHom.comp_apply]

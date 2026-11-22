@@ -28,7 +28,7 @@ theorem exists_basis {A B M N : Type} [CommRing A] [CommRing B] [AddCommGroup M]
     change f (e.repr (e i) j) = _
     by_cases hij : j = i
     · subst hij; simp
-    · simp [hij, Ne.symm hij]
+    · simp [hij]
   have hQ1 : ∀ i, Q (Pi.single i 1) = u (e i) := fun i => by
     simp [Q, Fintype.linearCombination_apply_single]
   have hS' : S.comp Q = LinearMap.id := by

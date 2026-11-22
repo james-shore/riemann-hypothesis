@@ -14,7 +14,7 @@ theorem dop_smul_comb (c : ℂ) (z : List (ℝ → GAd σ J) →₀ ℂ) (f : GA
   funext g
   simp only [dop, Pi.smul_apply, smul_eq_mul]
   rw [Finsupp.sum_smul_index (fun _ => zero_mul _), Finsupp.mul_sum]
-  simp only [smul_eq_mul, mul_assoc]
+  simp only [mul_assoc]
 
 theorem IsCentral.smul {z : List (ℝ → GAd σ J) →₀ ℂ} (h : IsCentral σ J z) (c : ℂ) : IsCentral σ J (c • z) :=
   ⟨fun l hl γ hγ => h.1 l (Finsupp.support_smul hl) γ hγ, fun f hf a ha g => by

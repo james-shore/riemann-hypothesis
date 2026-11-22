@@ -16,8 +16,6 @@ theorem exists_residue_basis_of_isMaximal {R A : Type} [CommRing R] [CommRing A]
   | exact @_root_.GlobalTheory.ClosedStatement.main
   | exact _root_.GlobalTheory.ClosedStatement.main
   | (apply _root_.GlobalTheory.ClosedStatement.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ClosedStatement.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ClosedStatement.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ClosedStatement.main ..)
 
 theorem isMaximal_span_l_sup_span_X (l a : ℕ) [Fact l.Prime] [NeZero a] :

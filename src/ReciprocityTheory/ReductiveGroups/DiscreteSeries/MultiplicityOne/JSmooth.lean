@@ -35,8 +35,6 @@ private theorem TG_DX_lemma {Φ : Mat k r → ℂ} (h : TG Φ) (Y : Mat k r) : T
   have hmn : ninf + 1 ≤ ninf := by
     first
       | simp [ninf]
-      | (unfold ninf; exact_mod_cast (le_top : (⊤ : ℕ∞) + 1 ≤ ⊤))
-      | exact le_rfl
   refine ⟨ContDiff.fderiv_apply (f := fun _ y => Φ y) (h1.comp contDiff_snd) contDiff_id hL hmn, ?_⟩
   refine (h2.fderiv ℝ).mono ?_
   intro x hx

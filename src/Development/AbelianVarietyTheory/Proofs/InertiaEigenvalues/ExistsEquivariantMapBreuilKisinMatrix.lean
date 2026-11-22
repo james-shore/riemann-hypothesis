@@ -68,7 +68,7 @@ theorem main : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (τ : Ain
         bk.evW bk.E ^ (2 * N) • (1 : Matrix (Fin d) (Fin d) (WCb l)) := by
       rw [← Matrix.map_mul, F.A_mul]
       ext i j
-      by_cases h : i = j <;> simp [h, Matrix.one_apply]
+      by_cases h : i = j <;> simp [h]
     have h1 : Xm = (w ^ (N' + 2 * N) * bk.evW bk.E ^ N) •
         (F'.A.map bk.evW * Xm.map (frobW l) * F.A'.map bk.evW) := by
       rw [mul_smul, ← Matrix.smul_mul, hφ, Matrix.smul_mul, Matrix.mul_assoc, hA, Matrix.mul_smul, Matrix.mul_one,
@@ -95,7 +95,7 @@ theorem main : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (τ : Ain
     have e2 : (τ ^ (2 * N') • (1 : Matrix (Fin d') (Fin d') (Ainf l))).map (inclW l) =
         (t ^ N' * t ^ N') • (1 : Matrix (Fin d') (Fin d') (WCb l)) := by
       ext i j
-      by_cases h : i = j <;> simp [h, Matrix.one_apply, ht, ← pow_add, two_mul]
+      by_cases h : i = j <;> simp [h, ht, ← pow_add, two_mul]
     rw [e2, Matrix.smul_mul, ← hu] at e1
     have e3 := congrArg (fun Z => (↑u⁻¹ : Matrix (Fin d') (Fin d') (WCb l)) * Z) e1
     simp only [Matrix.mul_smul, ← Matrix.mul_assoc, Units.inv_mul, Matrix.one_mul, Matrix.mul_one] at e3

@@ -17,9 +17,6 @@ local notation "C" => integralClosure 𝒪[K] L
 theorem tf : Module.IsTorsionFree 𝒪[K] L := by
   first
     | exact Module.IsTorsionFree.trans_faithfulSMul 𝒪[K] K L
-    | (rw [Module.isTorsionFree_iff_faithfulSMul, faithfulSMul_iff_algebraMap_injective,
-        IsScalarTower.algebraMap_eq 𝒪[K] K L]
-       exact (algebraMap K L).injective.comp Subtype.val_injective)
 
 theorem dd : IsDedekindDomain C := integralClosure.isDedekindDomain 𝒪[K] K L
 theorem fr : IsFractionRing C L := integralClosure.isFractionRing_of_finite_extension K L
@@ -37,7 +34,6 @@ attribute [local instance] dd fr mf tfC
 theorem sepFR : Algebra.IsSeparable (FractionRing 𝒪[K]) (FractionRing C) := by
   first
     | infer_instance
-    | exact Algebra.IsAlgebraic.isSeparable_of_perfectField
 
 attribute [local instance] sepFR
 

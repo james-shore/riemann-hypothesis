@@ -122,7 +122,6 @@ theorem hsn_pos {m : ℕ} (hm : 1 ≤ m) (g : Mat m) (hg : IsUnit g) : 0 < hsn g
     have hs : ∑ a, ∑ b, ‖g a b‖ ^ 2 = 0 := by
       have h0 : 0 ≤ ∑ a, ∑ b, ‖g a b‖ ^ 2 := by positivity
       have := h.symm
-      unfold hsn at this
       rwa [Real.sqrt_eq_zero h0] at this
     have hz : g = 0 := by
       ext a b

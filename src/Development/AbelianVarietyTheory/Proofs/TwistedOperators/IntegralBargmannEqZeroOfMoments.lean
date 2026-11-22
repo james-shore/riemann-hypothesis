@@ -63,9 +63,9 @@ theorem bk_pow_mem_monoSpan (c : ι → ℝ) (z₀ : VCx ι a b) (n : ℕ) :
 
 theorem exp_norm_le_four (w : ℂ) : Real.exp ‖w‖ ≤ Real.exp ((1 - Complex.I) * w).re +
     Real.exp ((1 + Complex.I) * w).re + Real.exp ((-1 - Complex.I) * w).re + Real.exp ((-1 + Complex.I) * w).re := by
-  have h1 : ((1 - Complex.I) * w).re = w.re + w.im := by simp [Complex.mul_re] <;> ring
+  have h1 : ((1 - Complex.I) * w).re = w.re + w.im := by simp [Complex.mul_re]
   have h2 : ((1 + Complex.I) * w).re = w.re + -w.im := by simp [Complex.mul_re] <;> ring
-  have h3 : ((-1 - Complex.I) * w).re = -w.re + w.im := by simp [Complex.mul_re] <;> ring
+  have h3 : ((-1 - Complex.I) * w).re = -w.re + w.im := by simp [Complex.mul_re]
   have h4 : ((-1 + Complex.I) * w).re = -w.re + -w.im := by simp [Complex.mul_re] <;> ring
   rw [h1, h2, h3, h4]
   have key : Real.exp ‖w‖ ≤ Real.exp |w.re| * Real.exp |w.im| := by

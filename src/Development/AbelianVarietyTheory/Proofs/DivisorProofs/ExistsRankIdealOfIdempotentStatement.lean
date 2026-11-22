@@ -8,4 +8,4 @@ theorem _root_.GlobalTheory.T.exists_rank_ideal_of_idempotent' : ∀ (A : Type) 
       ((∀ (k : Type) [Field k] [IsAlgClosed k] (h : T →+* k) (i : I),
           Module.rankAtStalk (LinearMap.range (P i).mulVecLin)
             (⟨RingHom.ker (h.comp f), RingHom.ker_isPrime _⟩ : PrimeSpectrum A) = m) ↔ f x = 0) := by
-  first | (exact @GlobalTheory.exists_rank_ideal_of_idempotent) | (exact GlobalTheory.exists_rank_ideal_of_idempotent) | (intros; apply GlobalTheory.exists_rank_ideal_of_idempotent  <;> assumption)
+  first | (exact @GlobalTheory.exists_rank_ideal_of_idempotent)

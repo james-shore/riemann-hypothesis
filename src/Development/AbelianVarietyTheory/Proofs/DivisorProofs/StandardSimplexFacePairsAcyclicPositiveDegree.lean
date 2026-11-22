@@ -15,7 +15,7 @@ def cone {p N : ℕ} (a : SimplexCategory.mk p ⟶ SimplexCategory.mk N) :
       | zero => exact Fin.zero_le _
       | succ x =>
         induction y using Fin.cases with
-        | zero => exact absurd hxy (by simp [Fin.le_def])
+        | zero => exact absurd hxy (by simp)
         | succ y =>
           simp only [Fin.cons_succ]
           exact a.toOrderHom.monotone (Fin.succ_le_succ_iff.1 hxy)⟩
@@ -117,12 +117,12 @@ theorem key {N : ℕ} (z : Pr N) (hpos : 0 < z.1 + z.2.1) :
     cases r with
     | zero => simp at hpos
     | succ s =>
-      simp only [hz, if_pos rfl, if_true, map_add, d_single]
+      simp only [hz, if_true, map_add, d_single]
       rw [d₁_cone_zero, d₂_succ, d₁_zero, d₂_cone_succ, d₁_zero, d₂_succ, map_zero, map_smul, H_sum]
-      simp only [hz, if_true, ↓reduceIte, Finset.sum_add_distrib, smul_add]
+      simp only [hz, ↓reduceIte, Finset.sum_add_distrib, smul_add]
       module
   | succ q =>
-    simp only [hz, Nat.succ_ne_zero, if_false, ↓reduceIte, add_zero, map_add, d_single, map_smul]
+    simp only [hz, Nat.succ_ne_zero, ↓reduceIte, add_zero, map_add, d_single, map_smul]
     rw [d₁_cone_succ, d₁_succ, H_sum]
     have hX : ∑ i : Fin (q + 2), ((-1 : ℤ) ^ (i : ℕ)) • hz (⟨q, r, SimplexCategory.δ i ≫ a, b⟩ : Pr N) =
         ∑ i : Fin (q + 2), ((-1 : ℤ) ^ (i : ℕ)) • Finsupp.single (⟨q + 1, r, cone (SimplexCategory.δ i ≫ a), b⟩ : Pr N) 1 := by
@@ -135,7 +135,7 @@ theorem key {N : ℕ} (z : Pr N) (hpos : 0 < z.1 + z.2.1) :
     | zero => rw [d₂_zero, d₂_zero, map_zero]; module
     | succ s =>
       rw [d₂_succ, d₂_succ, H_sum]
-      simp only [hz, Nat.succ_ne_zero, if_false, ↓reduceIte, add_zero]
+      simp only [hz, Nat.succ_ne_zero, ↓reduceIte, add_zero]
       rw [pow_succ]
       module
 

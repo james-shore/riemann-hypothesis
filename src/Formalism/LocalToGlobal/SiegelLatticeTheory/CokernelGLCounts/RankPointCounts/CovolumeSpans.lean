@@ -23,7 +23,6 @@ theorem vector_eq_zero_of_orbital_zero {D : D7} {X : HidaSetting D} (Y : Full X)
   simp only [map_zero, smul_zero, ite_self]
   first
     | rfl
-    | simp
 
 theorem irrVec_nohyp {D : D7} {X : HidaSetting D} (Y : Full X) (u : D.what₂.Word) (t : GTu Y u) (ht : ¬ t.relevant) :
     (Y.tO u u).vec t = 0 :=

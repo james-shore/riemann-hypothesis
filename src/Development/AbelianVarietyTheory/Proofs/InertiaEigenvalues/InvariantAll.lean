@@ -29,7 +29,6 @@ theorem invariant_all {Γ k K : Type} [Field k] [Field K] [Algebra k K] {r : ℕ
     rw [Matrix.map_smul _ c (fun a => by rw [smul_eq_mul, map_mul, Algebra.smul_def])]
     first
       | rw [Matrix.smul_mulVec]
-      | rw [Matrix.smul_mulVec_assoc]
     exact W.smul_of_tower_mem c (hA x hx)
 
 theorem bot_or_top {Γ k K : Type} [Field k] [Field K] [Algebra k K] {r : ℕ}
@@ -54,10 +53,10 @@ theorem bot_or_top {Γ k K : Type} [Field k] [Field K] [Algebra k K] {r : ℕ}
       rw [Matrix.mulVec, dotProduct, Pi.smul_apply, smul_eq_mul]
       by_cases hai : a = i
       · subst hai
-        rw [Finset.sum_eq_single j (fun b _ hb => by simp [Matrix.single_apply, hb, Ne.symm hb]) (by simp)]
-        simp [Matrix.single_apply]
-      · rw [Finset.sum_eq_zero (fun b _ => by simp [Matrix.single_apply, hai, Ne.symm hai])]
-        simp [Pi.single_apply, hai]
+        rw [Finset.sum_eq_single j (fun b _ hb => by simp [Ne.symm hb]) (by simp)]
+        simp
+      · rw [Finset.sum_eq_zero (fun b _ => by simp [Ne.symm hai])]
+        simp [hai]
     rw [h2] at h1
     have h3 := W.smul_mem (x j)⁻¹ h1
     rwa [smul_smul, inv_mul_cancel₀ hj, one_smul] at h3

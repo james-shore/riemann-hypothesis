@@ -35,9 +35,7 @@ theorem exists_prime_under {K : Type} [Field K] [NumberField K] (w : Formalism.P
   first
   | exact @_root_.GlobalTheory.PrimeMembershipExistence.exists_prime_mem
   | exact _root_.GlobalTheory.PrimeMembershipExistence.exists_prime_mem
-  | (apply _root_.GlobalTheory.PrimeMembershipExistence.exists_prime_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PrimeMembershipExistence.exists_prime_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PrimeMembershipExistence.exists_prime_mem <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.PrimeMembershipExistence.exists_prime_mem)
   | (intros; exact _root_.GlobalTheory.PrimeMembershipExistence.exists_prime_mem ..)
 
 theorem lamC_div_norm {p : ℕ} [Fact p.Prime] {u₁ u₂ : ℂ} (h₁ : u₁ ∈ Qbar) (h₂ : u₂ ∈ Qbar)

@@ -123,7 +123,7 @@ theorem e2_mem_Z2_of_delta_eq_zero (F : (NE κ)ᵒᵖ ⥤ CommAlgCat.{0} R) (c :
   generalize mn g = xg at *
   rcases hdg.lt_or_eq with h1 | rfl <;> rcases hbd.lt_or_eq with h2 | rfl <;>
     rcases hab.lt_or_eq with h3 | rfl <;>
-    simp_all [lt_irrefl, not_lt_of_ge, le_of_lt]
+    simp_all [le_of_lt]
   rw [if_pos (h2.trans h3), if_pos (h1.trans h2)]
   linear_combination -hrel
 end GlobalTheory.CechPoset

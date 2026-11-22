@@ -184,7 +184,6 @@ theorem pos_of_inner {n : ℕ} (Y : InfinitePlace K → Matrix (Fin n) (Fin n) �
     refine Finset.sum_congr rfl fun i _ => ?_
     first
     | rw [Complex.star_def, Complex.conj_mul']
-    | simp [Complex.star_def, Complex.conj_mul']
   have hw2 : ⟪w, w⟫_ℂ = ((‖w‖ ^ 2 : ℝ) : ℂ) := by
     rw [inner_self_eq_norm_sq_to_K]; norm_cast
   rw [hw2, hm, ← Complex.ofReal_mul, Complex.ofReal_inj] at h

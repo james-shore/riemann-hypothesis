@@ -100,7 +100,7 @@ theorem lpRingIndep_of (h1 : RestRSIso) (h2 : RestHLTransport) : LPRingIndep := 
           show I.φK ((u fun j => I.φO.symm ((c • x) j) : Module.Dual R₁.Kf (Vsp R₁.Kf lam0)) (Ψ.symm v)) =
             (c • (dT I.φK Ψ hΨ (u fun j => I.φO.symm (x j)) : Module.Dual R₂.Kf (Vsp R₂.Kf lam0))) v
           rw [hx, map_smul, LinearMap.smul_apply, hdTv]
-          simp only [SetLike.val_smul, Submodule.coe_smul_of_tower, LinearMap.smul_apply]
+          simp only [SetLike.val_smul, LinearMap.smul_apply]
           rw [Algebra.smul_def, Algebra.smul_def, map_mul, I.hOK, RingEquiv.apply_symm_apply] }
     refine ⟨u₂, Mt.map I.φO, ?_⟩
     intro x j

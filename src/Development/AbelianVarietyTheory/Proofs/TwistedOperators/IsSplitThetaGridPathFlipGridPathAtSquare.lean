@@ -8,7 +8,7 @@ def srcDiff (e : Edge) : ℤ := (e.src.1 : ℤ) - e.src.2
 
 theorem srcDiff_of_join {e e' : Edge} (h : e.tgt = e'.src) : srcDiff e' = srcDiff e + 1 := by
   cases e <;> cases e' <;> simp only [Edge.src, Edge.tgt, Prod.mk.injEq] at h <;>
-    simp only [srcDiff, Edge.src] <;> omega
+    simp only [srcDiff] <;> omega
 
 theorem pairwise_of_isPath {γ : List Edge} (h : IsPath γ) :
     γ.Pairwise fun a b => srcDiff a < srcDiff b := by

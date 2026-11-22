@@ -24,4 +24,4 @@ theorem _root_.GlobalTheory.T.partial_coeff_good_of_cuspidal : ∀ (E : Type) [F
     Continuous φ → (∀ γ g, φ (ratGL E (k + 1) γ * g) = φ g) →
     (∀ r, 0 < r → r ≤ k → ∀ g, avg (ratV E (UnipotentBlockColumnIndex (k + 1) r k)) (fun x => φ (blkU x * g)) = 0) →
     Good (GlobalTheory.StdCharConductor.psi E) m (fun h => partialCoeff φ (m + 1) (blockGL (by omega : m + 1 ≤ k + 1) h)) := by
-  first | (exact @GlobalTheory.PartialBlock.good_partialCoeff_blockGL) | (exact GlobalTheory.PartialBlock.good_partialCoeff_blockGL) | (intros; apply GlobalTheory.PartialBlock.good_partialCoeff_blockGL  <;> assumption)
+  first | (exact @GlobalTheory.PartialBlock.good_partialCoeff_blockGL)

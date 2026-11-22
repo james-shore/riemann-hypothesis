@@ -107,7 +107,7 @@ theorem isGLSubmodule_of_stable (k : Type) [Field k] [Infinite k] (N : ℕ) (lam
       ext a; simp [ψ, S]
     have h4 : (Y.transpose).map ψ = (g : Matrix (Fin N) (Fin N) A).transpose := by
       ext i j
-      simp only [Y, ψ, Matrix.mvPolynomialX, Matrix.map_apply, Matrix.transpose_apply, Matrix.of_apply, MvPolynomial.coe_eval₂Hom]
+      simp only [Y, ψ, Matrix.mvPolynomialX, Matrix.map_apply, Matrix.transpose_apply, Matrix.of_apply]
       exact MvPolynomial.eval₂_X _ _ _
     rw [h3, h4]
   have h5 := map_mem_span_map ψ _ P hP

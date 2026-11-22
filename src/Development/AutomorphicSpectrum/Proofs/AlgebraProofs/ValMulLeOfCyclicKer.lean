@@ -593,7 +593,6 @@ theorem kernel_stepGraph : ∀ {o C : Type} [CommRing o] [Field C] [Algebra o C]
         ring
       rw [proj_sub, e1, hg3x x.1 x.2, hχ']
       show _ = ((r₁ : C) * ((c' : C) * ((σ' ((x : Fin n → F) i) : RC) : C))) + _
-      push_cast
       ring
     have hS₁ : proj σ' g ∈ sqIdeal (augIdeal AA.carrier) := hprojS g hgTh
     have hres : k • a₁ = LinearMap.funLeft RC C (Subtype.val :

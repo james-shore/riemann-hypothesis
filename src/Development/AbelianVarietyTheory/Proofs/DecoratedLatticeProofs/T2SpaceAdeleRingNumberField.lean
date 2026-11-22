@@ -178,7 +178,7 @@ def cut (e : S) (M : Matrix n n S) : Matrix n n S := 1 + e • (M - 1)
 
 theorem cut_mul_cut (e f : S) (M N : Matrix n n S) :
     cut e M * cut f N = 1 + e • (M - 1) + f • (N - 1) + (e * f) • ((M - 1) * (N - 1)) := by
-  simp only [cut, add_mul, mul_add, one_mul, mul_one, Matrix.smul_mul, Matrix.mul_smul, smul_smul, smul_add, mul_comm f e]
+  simp only [cut, add_mul, mul_add, one_mul, mul_one, Matrix.smul_mul, Matrix.mul_smul, smul_smul, mul_comm f e]
   abel
 
 theorem cut_mul {e : S} (he : e * e = e) (M N : Matrix n n S) : cut e (M * N) = cut e M * cut e N := by

@@ -120,7 +120,6 @@ theorem wdb_ofReal {j : Fin n} {v : V n → ℝ} {x : V n} (hv : DifferentiableA
     wdb n j (fun y => (v y : ℂ)) x = conj (wd n j (fun y => (v y : ℂ)) x) := by
   simp only [wdb, wd, fderiv_ofReal_apply hv]
   simp [map_div₀, Complex.conj_ofReal, map_ofNat]
-  all_goals ring
 
 theorem fderiv_conj_apply {f : V n → ℂ} {x : V n} (hf : DifferentiableAt ℝ f x) (w : V n) :
     fderiv ℝ (fun y => conj (f y)) x w = conj (fderiv ℝ f x w) := by
@@ -142,7 +141,6 @@ theorem wdb_conj {j : Fin n} {f : V n → ℂ} {x : V n} (hf : DifferentiableAt 
     wdb n j (fun y => conj (f y)) x = conj (wd n j f x) := by
   simp only [wd, wdb, fderiv_conj_apply hf]
   simp [map_div₀, map_ofNat]
-  all_goals ring
 
 theorem fderiv_real_of_complex {f : V n → ℂ} {x : V n} (hf : DifferentiableAt ℂ f x) (w : V n) :
     fderiv ℝ f x w = fderiv ℂ f x w := by

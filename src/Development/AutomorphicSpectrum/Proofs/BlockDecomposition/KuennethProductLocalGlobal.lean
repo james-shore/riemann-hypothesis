@@ -116,7 +116,7 @@ theorem kun_right : SiteLaws → MVBij → CovDesc → ZarAbs → AffOm → KunA
     rw [← inf_iSup_eq, ← U.cover]
     congr 1
     ext x
-    simp [TopologicalSpace.Opens.mem_iSup]
+    simp
   refine (GlobalTheory.T.kuenneth_of_restrict_bijective E h₁ h₂ (g₁ ∅) (g₂ ∅) (le_refl _) k₂ k₃ ?_ ?_ ?_).2 hglue
   · exact fun a n => res_self_bij _ _ _ n
   · intro a n

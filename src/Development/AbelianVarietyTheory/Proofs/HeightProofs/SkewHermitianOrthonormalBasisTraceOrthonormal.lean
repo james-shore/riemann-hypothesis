@@ -38,21 +38,21 @@ theorem trace_casimirAntisymPair_mul_self {a b : Fin n} (h : a < b) :
     trace ((invSqrtTwo • (unitE a b - unitE b a)) * (invSqrtTwo • (unitE a b - unitE b a))) = -1 := by
   simp only [Matrix.smul_mul, Matrix.mul_smul, Matrix.trace_smul, Matrix.mul_sub, Matrix.sub_mul,
     Matrix.trace_sub, trE]
-  simp only [h.ne, h.ne', and_self, and_false, false_and, if_true, if_false, smul_eq_mul]
+  simp only [h.ne, h.ne', and_self, if_true, if_false, smul_eq_mul]
   linear_combination (-2 : ℂ) * s2
 
 theorem trace_casimirSymPairI_mul_self {a b : Fin n} (h : a < b) :
     trace (((invSqrtTwo * Complex.I) • (unitE a b + unitE b a)) * ((invSqrtTwo * Complex.I) • (unitE a b + unitE b a))) = -1 := by
   simp only [Matrix.smul_mul, Matrix.mul_smul, Matrix.trace_smul, Matrix.mul_add, Matrix.add_mul,
     Matrix.trace_add, trE]
-  simp only [h.ne, h.ne', and_self, and_false, false_and, if_true, if_false, smul_eq_mul]
+  simp only [h.ne, h.ne', and_self, if_true, if_false, smul_eq_mul]
   linear_combination (2 * invSqrtTwo * invSqrtTwo) * Complex.I_mul_I - (2 : ℂ) * s2
 
 theorem p12 {a b : Fin n} (h : a < b) :
     trace ((invSqrtTwo • (unitE a b - unitE b a)) * ((invSqrtTwo * Complex.I) • (unitE a b + unitE b a))) = 0 := by
   simp only [Matrix.smul_mul, Matrix.mul_smul, Matrix.trace_smul, Matrix.mul_add, Matrix.sub_mul,
     Matrix.trace_add, Matrix.trace_sub, trE]
-  simp only [h.ne, h.ne', and_self, and_false, false_and, if_true, if_false, smul_eq_mul]
+  simp only [h.ne, h.ne', and_self, if_true, if_false, smul_eq_mul]
   ring
 
 theorem dp1 (a : Fin n) {b c : Fin n} (h : b < c) :
@@ -111,7 +111,7 @@ theorem kList_pairwise (ε : Fin n → Bool) : (kList ε).Pairwise (fun X Y => t
   rw [kList, List.pairwise_append, List.pairwise_map, List.pairwise_flatMap]
   refine ⟨(List.nodup_finRange n).imp fun h => d_ne h, ⟨fun p hp => ?_, ?_⟩, ?_⟩
   · simp only [List.pairwise_cons, List.mem_cons, List.not_mem_nil, or_false, forall_eq,
-      List.Pairwise.nil, and_true, List.forall_mem_nil]
+      List.Pairwise.nil, and_true]
     exact ⟨p12 (mem_pairs_lt hp), fun _ h => h.elim⟩
   · exact (nodup_pairs ε true).imp_of_mem fun hp hq hpq => pq_zero (mem_pairs_lt hp) (mem_pairs_lt hq) hpq
   · intro X hX Y hY

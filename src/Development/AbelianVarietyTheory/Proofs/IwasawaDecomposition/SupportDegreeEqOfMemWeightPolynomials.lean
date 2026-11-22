@@ -49,7 +49,7 @@ theorem deg_eq_of_mem_wtPol : ∀ {K : Type} [Field K] [CharZero K] {ι : Type} 
   have hbor : IsBor β := by
     intro σ
     refine ⟨fun r s hsr => ?_, fun r => ?_⟩
-    · simp [hβ, Matrix.one_apply, (ne_of_lt hsr).symm]
+    · simp [hβ, (ne_of_lt hsr).symm]
     · simpa [hβ] using hc0 σ
   have hsub : colSub β = aeval (fun v : ι × Fin n × Fin n => C (c v.1) * X v) := by
     unfold colSub

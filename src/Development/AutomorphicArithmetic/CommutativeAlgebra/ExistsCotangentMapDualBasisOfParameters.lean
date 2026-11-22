@@ -60,7 +60,7 @@ theorem UpperTheory.exists_cotangent_map_dual_basis_of_parameters :
     by_cases hlj : l = j
     · subst hlj
       simp
-    · simp [hlj, Pi.single_apply, Ne.symm hlj]
+    · simp [hlj, Ne.symm hlj]
   refine ⟨bs.equivFun.toLinearMap ∘ₗ ψ, ?_, h2, ?_, ?_⟩
   · intro b ω
     simp [hψ]

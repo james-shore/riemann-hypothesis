@@ -31,7 +31,7 @@ private lemma exists_factor {X : Type} [Fintype X] (B B' : Matrix X X C)
   refine ⟨Matrix.of fun j α => c α j, ?_⟩
   ext x α
   have h1 := congrFun (hc α) x
-  simp only [Finset.sum_apply, Pi.smul_apply, Algebra.smul_def] at h1
+  simp only [Finset.sum_apply, Algebra.smul_def] at h1
   rw [Matrix.mul_apply, ← h1]
   refine Finset.sum_congr rfl fun j _ => ?_
   simp [mul_comm]

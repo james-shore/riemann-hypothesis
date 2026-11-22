@@ -20,8 +20,6 @@ theorem eq_cexp_fderiv_of_map_add {f : E → ℂ} (hf : DifferentiableAt ℂ f 0
   | exact @_root_.GlobalTheory.ExpOfFrechetDerivative.eq_exp_fderiv
   | exact _root_.GlobalTheory.ExpOfFrechetDerivative.eq_exp_fderiv
   | (apply _root_.GlobalTheory.ExpOfFrechetDerivative.eq_exp_fderiv <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ExpOfFrechetDerivative.eq_exp_fderiv <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ExpOfFrechetDerivative.eq_exp_fderiv <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ExpOfFrechetDerivative.eq_exp_fderiv ..)
 
 end Character

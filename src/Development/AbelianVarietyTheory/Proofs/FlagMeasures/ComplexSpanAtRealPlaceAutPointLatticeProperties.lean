@@ -122,8 +122,6 @@ theorem exists_smul_mem (Λ : Submodule (𝓞 E) (Fin n → E)) (y : Fin n → E
   | exact @_root_.GlobalTheory.IntegralBoundFlagMeasures.main
   | exact _root_.GlobalTheory.IntegralBoundFlagMeasures.main
   | (apply _root_.GlobalTheory.IntegralBoundFlagMeasures.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralBoundFlagMeasures.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralBoundFlagMeasures.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegralBoundFlagMeasures.main ..)
 
 omit [NumberField E] in

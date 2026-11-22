@@ -15,6 +15,4 @@ theorem exists_square_matrix_of_submodule_between
   | exact @_root_.GlobalTheory.MatrixRangeExistence.exists_matrix_range_eq
   | exact _root_.GlobalTheory.MatrixRangeExistence.exists_matrix_range_eq
   | (apply _root_.GlobalTheory.MatrixRangeExistence.exists_matrix_range_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MatrixRangeExistence.exists_matrix_range_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MatrixRangeExistence.exists_matrix_range_eq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MatrixRangeExistence.exists_matrix_range_eq ..)

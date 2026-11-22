@@ -37,7 +37,7 @@ def derivHom {k A : Type} [CommRing k] [CommRing A] [Algebra k A] (δ : Derivati
     · simp
     · simp [Derivation.leibniz, smul_eq_mul, mul_comm]
   map_zero' := by ext <;> simp
-  map_add' a b := by ext <;> simp [add_comm, add_left_comm, add_assoc]
+  map_add' a b := by ext <;> simp [add_left_comm, add_assoc]
 
 theorem snd_eq_sum_of_basis {k A : Type} [CommRing k] [CommRing A] [Algebra k A] {D : ℕ}
     (f : Fin D → A) (B : Module.Basis (Fin D) A Ω[A⁄k]) (hB : ∀ i, B i = KaehlerDifferential.D k A (f i))
@@ -48,8 +48,6 @@ theorem snd_eq_sum_of_basis {k A : Type} [CommRing k] [CommRing A] [Algebra k A]
   | exact @_root_.GlobalTheory.SecondComponentSum.snd_eq_sum
   | exact _root_.GlobalTheory.SecondComponentSum.snd_eq_sum
   | (apply _root_.GlobalTheory.SecondComponentSum.snd_eq_sum <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SecondComponentSum.snd_eq_sum <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SecondComponentSum.snd_eq_sum <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SecondComponentSum.snd_eq_sum ..)
 
 theorem snd_eq_zero_of_isAlgebraic {F K : Type} [Field F] [CharZero F] [Algebra.IsAlgebraic ℚ F] [Field K]

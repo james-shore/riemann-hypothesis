@@ -102,8 +102,7 @@ theorem exists_lattice_norm_one_of_norm_one_mod (K V : Type) [Field K] [CharZero
       L.sub_mem (L.add_mem hyL (hL _ (O.mul_mem htO hpO) y hyL)) (hL _ htO _ hm),
       W.sub_mem (W.add_mem hyW (W.smul_mem _ hyW)) (W.smul_mem _ (W.smul_mem _ heW)), ?_⟩
     simp only [map_smul, map_smulₛₗ, map_add, map_sub, LinearMap.smul_apply, LinearMap.add_apply,
-      LinearMap.sub_apply, smul_eq_mul, hu, hee, map_mul, map_pow, map_ratCast, map_natCast,
-      RingHom.id_apply]
+      LinearMap.sub_apply, smul_eq_mul, hu, hee, map_mul, map_pow, map_ratCast, map_natCast]
     linear_combination (1 + (t : K) * (p : K) ^ m) * hs' -
       ((t : K) * (p : K) ^ m) * (1 + (t : K) * (p : K) ^ m) * hT
   obtain ⟨T, hT⟩ : ∃ T : ℚ, h e y + h y e = (T : K) := by

@@ -112,7 +112,7 @@ theorem swap_es (x : V) (b : Fin r) : H.h (swapMap A B x) (B.es b) = H.h x (A.es
   unfold swapFun
   rw [hL_sub, H.h_add_left, H.h_add_left, hL_sum, hL_sum, hL_sum]
   simp only [h_e_esB A B hf, B.h_ss, mul_zero, Finset.sum_const_zero, add_zero, mul_ite, mul_one,
-    Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+    Finset.sum_ite_eq', Finset.mem_univ, if_true]
   ring
 
 theorem swap_e (x : V) (b : Fin r) : H.h (swapMap A B x) (A.e b) = H.h x (A.e b) := by
@@ -121,7 +121,7 @@ theorem swap_e (x : V) (b : Fin r) : H.h (swapMap A B x) (A.e b) = H.h x (A.e b)
   rw [hL_sub, H.h_add_left, H.h_add_left, hL_sum, hL_sum, hL_sum]
   have hee : ∀ a, H.h (A.e a) (A.e b) = 0 := fun a => A.h_iso _ _ (Or.inl (Fin.castSucc_lt_last a).ne)
   simp only [hee, ng_prF_e, h_esB_e A B hf, mul_zero, Finset.sum_const_zero, add_zero, zero_add, mul_ite, mul_one,
-    Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true, sub_zero]
+    Finset.sum_ite_eq, Finset.mem_univ, if_true, sub_zero]
 
 theorem swap_prF (x : V) : B.prF (swapMap A B x) - A.prF x = - ∑ a, H.h (A.prF x) (B.es a) • A.e a := by
   have e1 : B.prF (swapMap A B x) = swapMap A B x - ∑ a, H.h x (A.es a) • A.e a -

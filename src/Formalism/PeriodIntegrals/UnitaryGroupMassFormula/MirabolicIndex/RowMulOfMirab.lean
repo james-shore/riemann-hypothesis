@@ -40,7 +40,7 @@ theorem one_last (n : ℕ) : (1 : Matrix (Fin (n + 1)) (Fin (n + 1)) k) (Fin.las
   by_cases h : j = Fin.last n
   · subst h
     simp [eLast]
-  · simp [eLast, h, Matrix.one_apply, Ne.symm h]
+  · simp [eLast, h, Ne.symm h]
 
 theorem row_mul_eq (n : ℕ) {a b : Matrix (Fin (n + 1)) (Fin (n + 1)) k}
     (c : Matrix (Fin (n + 1)) (Fin (n + 1)) k) (h : a (Fin.last n) = b (Fin.last n)) :

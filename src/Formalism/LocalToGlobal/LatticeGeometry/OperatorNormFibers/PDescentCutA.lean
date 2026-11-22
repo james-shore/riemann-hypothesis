@@ -21,9 +21,7 @@ theorem dense_emb {K : Type} [Field K] [NumberField K] (v : InfinitePlace K) (hv
   first
     | (refine ⟨WithAbs.equiv _ x, ?_⟩
        first
-        | exact (NumberField.InfinitePlace.Completion.extensionEmbedding_coe v x).symm
-        | simp [NumberField.InfinitePlace.Completion.extensionEmbedding_coe]
-        | rfl)
+        | exact (NumberField.InfinitePlace.Completion.extensionEmbedding_coe v x).symm)
     | (refine ⟨WithAbs.ofAbs x, ?_⟩
        first
         | exact (NumberField.InfinitePlace.Completion.extensionEmbedding_coe v x).symm

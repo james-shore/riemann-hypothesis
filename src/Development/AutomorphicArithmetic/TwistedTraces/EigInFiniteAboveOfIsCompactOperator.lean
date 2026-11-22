@@ -24,7 +24,7 @@ theorem UpperTheory.eigIn_finite_above_of_isCompactOperator :
     simp
   have hmem : ∀ x : ℝ, ∀ w, w ∈ eigIn W A x ↔ w ∈ W ∧ A w = (x : ℂ) • w := by
     intro x w
-    simp [eigIn, Module.End.mem_eigenspace_iff]
+    simp [eigIn]
   have hB : IsSelfAdjoint (A ∘L prj W) := by
     rw [ContinuousLinearMap.isSelfAdjoint_iff_isSymmetric]
     intro u v

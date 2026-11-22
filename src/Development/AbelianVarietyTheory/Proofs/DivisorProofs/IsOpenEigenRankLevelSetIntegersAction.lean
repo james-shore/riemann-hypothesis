@@ -34,7 +34,7 @@ theorem finrank_range_eq_trace {k : Type} [Field k] {n : ℕ} (P : Matrix (Fin n
     (Module.finrank k (LinearMap.range (Matrix.vecMulLinear P)) : k) = P.trace := by
   have h1 : Matrix.vecMulLinear P = Matrix.toLin' Pᵀ := by
     ext c i
-    simp [Matrix.mulVec_transpose]
+    simp
   have hi : IsIdempotentElem (Matrix.toLin' Pᵀ) := by
     show Matrix.toLin' Pᵀ * Matrix.toLin' Pᵀ = Matrix.toLin' Pᵀ
     rw [Module.End.mul_eq_comp, ← Matrix.toLin'_mul, ← Matrix.transpose_mul, hP]

@@ -134,7 +134,7 @@ theorem packages_conj : (∀ (p : ℕ) [Fact p.Prime], ReciprocityTheory.ChartRe
     have hgs := fun τ => gap_sums (Dw.mult τ) (fun i => a (τ, i))
       (fun i i' hi hi' => hdom τ ⟨i, lt_of_le_of_lt hi hi'⟩ ⟨i', hi'⟩ hi)
     have hcard : Fintype.card (RPl N.R) = N.R.f := by
-      simp [RPl, Ranks.f, Ranks.n, ZMod.card, N.R.card_A]
+      simp [RPl, Ranks.f, Ranks.n, N.R.card_A]
     refine ⟨{ R := R, gaC := gaC N Dw pl a, K := N.R.r, s := s, nW := nW, T := 1, ν := ν, T_one := le_rfl,
               w_nonneg := hw, supp := ?_, first := ?_, what₂ := ?_, val := hval }, rfl⟩
     · intro z σ k hk

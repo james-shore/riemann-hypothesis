@@ -286,13 +286,13 @@ theorem lev_mn (k r' : ℕ) (g : Mat k r') (p q : Fin (2 * (1 + r') + k + 1)) (h
   have hp' : 1 ≤ p.val ∧ p.val < 2 * r' + k + 1 + 1 := hp
   have hq' : ¬ (1 ≤ q.val ∧ q.val < 2 * r' + k + 1 + 1) := hq
   simp only [ιLev]
-  split_ifs <;> first | rfl | omega
+  split_ifs <;> first | rfl
 
 theorem lev_n (k r' : ℕ) (g : Mat k r') (p q : Fin (2 * (1 + r') + k + 1)) (hp : ¬ mid k r' p) :
     ιLev k 1 r' g p q = if p = q then 1 else 0 := by
   have hp' : ¬ (1 ≤ p.val ∧ p.val < 2 * r' + k + 1 + 1) := hp
   simp only [ιLev]
-  split_ifs <;> first | rfl | omega
+  split_ifs <;> first | rfl
 
 theorem lev_one (k r' : ℕ) : ιLev k 1 r' 1 = 1 := by
   ext p q

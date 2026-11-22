@@ -80,7 +80,7 @@ theorem coord_int_last : ∀ (D : D7) (k : Type) [Field k] [ValuativeRel k] [Top
       · change π (Formalism.UG.inclE (F := D.host.F) (p.v.adicCompletion D.host.F) (x r)) ∈ 𝒪[k]
         have hq : toEAf D (incA D (ρ : D.host.E)) =
             (ρ : D.host.E) ⊗ₜ[D.host.F] (1 : FiniteAdeleRing (𝓞 D.host.F) D.host.F) := by
-          first | rfl | simp [toEAf, finPart, incA]
+          first | rfl
         have hm : toEAf D (incA D (ρ : D.host.E)) ∈ Formalism.L2.Herm.intAf D.host.F D.host.E := by
           rw [hq]; exact Subring.subset_closure (Or.inl ⟨⟨(ρ : D.host.E), ρ, rfl⟩, rfl⟩)
         rw [h0, ← hπ₀]

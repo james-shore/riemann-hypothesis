@@ -55,7 +55,7 @@ theorem dir_comp_reparam {K : Type} [Field K] {E : Type} [Field E] [NumberField 
   ext z
   · simp [reparam]
   · simp only [RingHom.comp_apply, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, GlobalTheory.FlagTan.snd_dir, reparam,
-      AlgHom.restrictScalars_apply, GlobalTheory.FlagTan.fst_dir, TrivSqZeroExt.snd_map, Matrix.mulVecLin_apply]
+      AlgHom.restrictScalars_apply, TrivSqZeroExt.snd_map, Matrix.mulVecLin_apply]
     have e := Matrix.dotProduct_mulVec z.snd P M
     rw [← Matrix.mulVec_transpose] at e
     simpa [dotProduct, mul_comm] using e.symm

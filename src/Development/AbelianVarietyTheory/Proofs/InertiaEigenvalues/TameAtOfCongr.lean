@@ -41,8 +41,6 @@ theorem tameAt_of_congr (H : Formalism.L2.Host.HChar E) (PP : HeightOneSpectrum 
       first
         | rw [Valuation.map_add_eq_of_lt_right _ h1, map_one]
         | rw [Valuation.map_add_eq_of_lt_left _ h1, map_one]
-        | rw [add_comm, Valuation.map_add_eq_of_lt_right _ h1, map_one]
-        | rw [add_comm, Valuation.map_add_eq_of_lt_left _ h1, map_one]
     obtain ⟨a, s, h⟩ := PP.exists_primeCompl_mul_eq_of_integer (k : E) hv1.le
     have hs : (s : 𝓞 E) ∉ PP.asIdeal := s.2
     have hsv := GlobalTheory.ChainOnto.TameRes.valuation_eq_one_of_not_mem PP _ hs

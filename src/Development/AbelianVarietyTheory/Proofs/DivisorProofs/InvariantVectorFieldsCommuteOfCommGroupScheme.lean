@@ -28,7 +28,7 @@ def swap (S : Type) [CommRing S] : DualNumber (DualNumber S) →+* DualNumber (D
     TrivSqZeroExt.inr (TrivSqZeroExt.inl x.fst.snd + TrivSqZeroExt.inr x.snd.snd)
   map_one' := by ext <;> simp
   map_zero' := by ext <;> simp
-  map_add' a b := by ext <;> simp <;> ring
+  map_add' a b := by ext <;> simp
   map_mul' a b := by ext <;> simp <;> ring
 
 theorem swap_snd_snd (x : DualNumber (DualNumber S)) : (swap S x).snd.snd = x.snd.snd := by

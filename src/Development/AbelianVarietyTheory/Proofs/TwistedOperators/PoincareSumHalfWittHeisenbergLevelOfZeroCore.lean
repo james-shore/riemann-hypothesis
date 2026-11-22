@@ -46,7 +46,7 @@ theorem exists_level_pair (ψ : AddChar (AF D.host.F) ℂ) (hψ : IsStdChar D ψ
     rintro ⟨k, a⟩ ⟨-, ha⟩
     rw [Set.mem_singleton_iff] at ha
     subst ha
-    simp only [Set.mem_preimage, map_zero, GlobalTheory.FinTranslate.symplOH_zero_right, Prod.snd_zero]
+    simp only [Set.mem_preimage, map_zero, GlobalTheory.FinTranslate.symplOH_zero_right]
     exact mem_interior_iff_mem_nhds.2 hZ
   obtain ⟨u, v, -, hv, hKu, h0v, huv⟩ := generalized_tube_lemma hK isCompact_singleton hO hsub
   obtain ⟨U, hUo, hU⟩ := GlobalTheory.MixSumBound.finite_points_in_nhds D T.rank ρ v (hv.mem_nhds (h0v rfl))

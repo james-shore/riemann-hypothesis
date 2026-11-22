@@ -92,8 +92,8 @@ lemma isPullback_graph [IsSeparated hZ] {Se' Y' : Scheme.{0}} (t' : Se' ⟶ S) {
   refine isPullback_of_sections h0 (graph_retr hX hZ t h f hf) (graph_retr hX hZ t' h' f' hf') ?_
   apply pullback.hom_ext
   · apply pullback.hom_ext
-    · simp only [Category.assoc, m_fst, graph_fst_fst, graph_fst_fst_assoc, hβ]
-    · simp only [Category.assoc, m_fst, graph_fst_snd, graph_fst_snd_assoc, hff]
+    · simp only [Category.assoc, m_fst, graph_fst_fst, hβ]
+    · simp only [Category.assoc, m_fst, graph_fst_snd, hff]
   · simp only [Category.assoc, m_snd, graph_snd, graph_snd_assoc, hy]
 
 end Graph

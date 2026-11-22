@@ -24,7 +24,7 @@ theorem genLam_pull_of_unif : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalR
     simp only [jK, spMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp]
     congr 2
     ext x
-    simp [ga, IsFractionRing.map, IsLocalization.map_eq]
+    simp [ga, IsFractionRing.map]
   let κW : pullback GW.hom (jK W) ⟶ pullback G.hom (jK R) :=
     pullback.lift (pullback.fst _ _ ≫ βW) (pullback.snd _ _ ≫ spMap ga) (by
       rw [Category.assoc, hβ.1.w, ← Category.assoc, pullback.condition, Category.assoc, hsq, Category.assoc])

@@ -231,7 +231,7 @@ theorem tw_of_dec {V : Unf Xo c σ r} (hσ : GoodEmb c σ) (hU : IsUnf V) (κ : 
     exact zero_ne_one e₂
   refine ⟨a, fun _ => M + 1, _, _, g, hDa, hNV _ _ hDa, ⟨fun _ => antitone_const, even_two_mul _⟩, hg, ?_, ?_, ?_⟩
   · rw [← GlobalTheory.AllWt.exZ_wtZ, ← GlobalTheory.AllWt.exZ_wtZ, hEx]
-    exact funext fun i => by first | exact Formalism.L2.Pj.exZ_add _ _ i | exact GlobalTheory.AllWt.exZ_add _ _ i | (cases i <;> rfl)
+    exact funext fun i => by first | exact Formalism.L2.Pj.exZ_add _ _ i
   · rw [← modelWt_wtZ, modelWt_congr V hσ hU hEx, modelWt_add V (hG ▸ Even.zero)
       ⟨(((M + 1) * m : ℕ) : ℤ), by simp [wtZ]; ring⟩, modelWt_wtZ]
   · rw [hgdef, evR_mul']

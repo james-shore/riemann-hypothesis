@@ -25,7 +25,7 @@ theorem charpolyFactorAnnihilator : CharpolyFactorAnnihilator := by
         Matrix.diagonal (fun _ => c) := by
       simp only [gB, map_smul, LinearMap.toMatrix_id]
       ext i j
-      by_cases h : i = j <;> simp [h, Matrix.one_apply]
+      by_cases h : i = j <;> simp [h]
     rw [hm, Matrix.charpoly_diagonal, Finset.prod_const, Finset.card_univ, Fintype.card_fin, ht]
   have hPA : P = gA.charpoly := by
     have h1 : γ₀.charpoly = gA.charpoly * gB.charpoly := by

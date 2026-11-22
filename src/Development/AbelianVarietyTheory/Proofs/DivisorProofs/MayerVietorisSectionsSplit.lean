@@ -92,7 +92,7 @@ theorem sections_inter_eq_sub_of_subsingleton_cohOn : ∀ (Y : Scheme.{0}) (F : 
   refine ⟨(sectionsOn.toΓ F W₁).symm aa, (sectionsOn.toΓ F W₂).symm bb, ?_⟩
   apply (sectionsOn.toΓ F _).injective
   rw [map_sub, sectionsOn.toΓ_res, sectionsOn.toΓ_res]
-  simp only [AddEquiv.apply_symm_apply]
+  simp only
   apply hinj
   change _ = S.f.hom.app _ (S.X₁.obj.map _ bb - S.X₁.obj.map _ aa)
   erw [map_sub]

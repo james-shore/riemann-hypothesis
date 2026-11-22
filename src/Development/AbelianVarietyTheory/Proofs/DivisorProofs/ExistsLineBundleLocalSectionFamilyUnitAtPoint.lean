@@ -21,7 +21,7 @@ theorem exists_pow_mul_eq_zero_of_germ {V : X.Opens} (hV : IsAffineOpen V) (h s 
   apply exists_pow_mul_eq_zero_of_res_basicOpen_eq_zero_of_isAffineOpen X hV
   apply TopCat.Presheaf.section_ext X.sheaf
   intro z hz
-  simp only [TopCat.Presheaf.restrictOpen, map_zero]
+  simp only [TopCat.Presheaf.restrictOpen]
   erw [TopCat.Presheaf.germ_res_apply]
   exact (H z (X.basicOpen_le h hz) hz).trans (map_zero _).symm
 

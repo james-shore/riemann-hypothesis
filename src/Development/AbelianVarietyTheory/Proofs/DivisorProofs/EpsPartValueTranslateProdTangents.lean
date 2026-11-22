@@ -34,9 +34,9 @@ def dmap {A B : Type} [CommRing A] [CommRing B] (φ : A →+* B) : DualNumber A 
   map_one' := by ext <;> simp
   map_mul' := by
     intro x y
-    ext <;> simp [TrivSqZeroExt.fst_mul, TrivSqZeroExt.snd_mul, smul_eq_mul] <;> ring
+    ext <;> simp [TrivSqZeroExt.fst_mul, TrivSqZeroExt.snd_mul, smul_eq_mul]
   map_zero' := by ext <;> simp
-  map_add' := by intro x y; ext <;> simp <;> ring
+  map_add' := by intro x y; ext <;> simp
 
 @[simp] theorem dmap_fst {A B : Type} [CommRing A] [CommRing B] (φ : A →+* B) (z : DualNumber A) :
     (dmap φ z).fst = φ z.fst := by simp [dmap]

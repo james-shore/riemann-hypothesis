@@ -40,7 +40,7 @@ theorem det_one_add {N : ℕ} (S : Matrix (Fin N) (Fin N) ℂ) (a b : Fin N) (s 
     ext i j
     by_cases hj : j = b
     · subst hj; simp [Matrix.mul_apply, Matrix.single_apply]
-    · simp [Matrix.mul_apply, Matrix.single_apply, hj, Ne.symm hj]
+    · simp [Matrix.mul_apply, hj, Ne.symm hj]
   rw [this, Matrix.det_one_add_replicateCol_mul_replicateRow]
   simp [mul_comm]
 
@@ -105,7 +105,7 @@ theorem loc_Z {n N : ℕ} (C D Z : Matrix (Fin N) (Fin N) ℂ) (z z' : Matrix (F
   refine HasDerivAt.congr_deriv h3 ?_
   have he := Complex.exp_ne_zero (2 * Real.pi * I * q)
   rw [loc, ← hM, ← hS, ← hq]
-  simp only [id, zero_mul, add_zero, mul_one, zero_div, sub_zero, one_mul, one_pow, div_one]
+  simp only [id, zero_mul, add_zero, mul_one, sub_zero, one_mul, one_pow, div_one]
   rcases n with _ | n
   · simp
     field_simp
@@ -123,7 +123,7 @@ theorem quad_add {n N : ℕ} (S : Matrix (Fin N) (Fin N) ℂ) (z z' : Matrix (Fi
     ext i
     by_cases hj : j = k
     · subst hj; simp [Matrix.single_apply, Pi.single_apply, eq_comm]
-    · simp [Matrix.single_apply, hj, Ne.symm hj]
+    · simp [hj, Ne.symm hj]
   have h2 : ∀ j, (z' + Matrix.single k b t) j ⬝ᵥ S *ᵥ (z + Matrix.single k a s) j =
       z' j ⬝ᵥ S *ᵥ z j +
         if j = k then s * (z' k ᵥ* S) a + t * ((S *ᵥ z k) b + s * S b a) else 0 := by

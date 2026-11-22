@@ -42,7 +42,7 @@ theorem substF_one {ι : Type} {N n : ℕ} (P : MvPolynomial (ι × Fin N × Fin
     rw [GlobalTheory.CompactHowe.substF_X]
     obtain ⟨τ, a, b⟩ := p
     rw [Finset.sum_eq_single a (fun x _ hx => Finset.sum_eq_zero fun y _ => by simp [Matrix.one_apply, hx]) (by simp),
-      Finset.sum_eq_single b (fun y _ hy => by simp [Matrix.one_apply, hy]) (by simp)]
+      Finset.sum_eq_single b (fun y _ hy => by simp [hy]) (by simp)]
     simp
   exact congrArg (fun f => f P) key
 
@@ -143,14 +143,10 @@ theorem isAlgebraic_compAt_of_mem_GQ {D : D7} {θ : InfFam D} (hθ : IsInfFam θ
   have h0 : IsAlgebraic ℚ (γ₀.1 a b) := Algebra.IsAlgebraic.isAlgebraic (R := ℚ) (γ₀.1 a b)
   first
     | exact h0.algHom (tauE D τ).toRatAlgHom
-    | exact IsAlgebraic.map (tauE D τ).toRatAlgHom h0
-    | exact (isAlgebraic_algHom_iff (tauE D τ).toRatAlgHom (tauE D τ).injective).2 h0
 
 theorem isAlgebraic_conj {z : ℂ} (h : IsAlgebraic ℚ z) : IsAlgebraic ℚ (starRingEnd ℂ z) := by
   first
     | exact h.algHom (starRingEnd ℂ).toRatAlgHom
-    | exact IsAlgebraic.map (starRingEnd ℂ).toRatAlgHom h
-    | exact (isAlgebraic_algHom_iff (starRingEnd ℂ).toRatAlgHom (starRingEnd ℂ).injective).2 h
 
 end GlobalTheory.MovedJet
 

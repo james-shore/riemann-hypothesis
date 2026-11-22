@@ -23,7 +23,7 @@ private theorem uu_sum : ∑ a : Fin d, uu a a = 1 := by
   ext i j
   by_cases h : i = j
   · subst h; simp [uu, Matrix.single_apply, Matrix.sum_apply]
-  · simp [uu, Matrix.single_apply, Matrix.sum_apply, h, Matrix.one_apply]
+  · simp [uu, Matrix.single_apply, Matrix.sum_apply, h]
 
 private theorem uu_sandwich (a : Fin d) (b : Mt d) : uu a a * b * uu a a = b a a • uu a a := by
   ext i j
@@ -119,7 +119,7 @@ private theorem FF_idem (p : Fin (m + 1) → Fin d) : FF r hc p * FF r hc p = FF
   rw [← map_mul]
   congr 1
   funext i
-  simp [uu_same]
+  simp
 
 private theorem FF_right (p : Fin (m + 1) → Fin d) (j : Fin (m + 1)) :
     FF r hc p * r j (uu (p j) (p j)) = FF r hc p := by
@@ -128,7 +128,7 @@ private theorem FF_right (p : Fin (m + 1) → Fin d) (j : Fin (m + 1)) :
   congr 1
   funext i
   by_cases h : i = j
-  · subst h; simp [uu_same]
+  · subst h; simp
   · simp [h]
 
 private theorem FF_left (p : Fin (m + 1) → Fin d) (j : Fin (m + 1)) :
@@ -138,7 +138,7 @@ private theorem FF_left (p : Fin (m + 1) → Fin d) (j : Fin (m + 1)) :
   congr 1
   funext i
   by_cases h : i = j
-  · subst h; simp [uu_same]
+  · subst h; simp
   · simp [h]
 
 open Fin.NatCast Fin.CommRing in
@@ -219,7 +219,7 @@ private theorem tr_fib [FiniteDimensional ℂ W] (i₀ : Fin (m + 1)) (S : Modul
     funext j
     by_cases h : j = i₀
     · subst h; simp
-    · simp [h, uu_same]
+    · simp [h]
   have h2 : FF r hc p * (Y * X) = FF r hc p := by
     unfold FF
     rw [hX, hY, ← map_mul, ← map_mul]
@@ -259,7 +259,7 @@ private theorem FF_conj (p : Fin (m + 1) → Fin d) (o : Fin d) :
   rw [← map_mul, ← map_mul]
   congr 1
   funext i
-  simp [uu_same]
+  simp
 
 private theorem exists_scalar [FiniteDimensional ℂ W] [Nontrivial W] (o : Fin d)
     (hirr : ∀ P : Submodule ℂ W, (∀ i a, ∀ w ∈ P, r i a w ∈ P) → P = ⊥ ∨ P = ⊤)

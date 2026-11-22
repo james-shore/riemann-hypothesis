@@ -107,7 +107,7 @@ theorem UpperTheory.Gal.InertialTypesAlt.L.sumCoset :
   by_cases hg : F g = 0
   · simp [Set.indicator_apply, hg]
   · rw [Finset.sum_eq_single (DoubleCoset.mk T K g)]
-    · simp [Set.indicator_apply]
+    · simp
     · intro b _ hb
       simp only [Set.indicator_apply, Set.mem_setOf_eq]
       rw [if_neg (fun h => hb h.symm)]

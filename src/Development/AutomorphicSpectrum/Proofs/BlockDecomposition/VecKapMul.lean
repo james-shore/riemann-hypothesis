@@ -126,7 +126,7 @@ theorem vec_mul (π : G →* GL ι 𝔸[k]) (d : ι → IdeleGroup k) (i : ι) {
     MG.vec (π (p * κ) * dgl d) i =
       (((bdet ({i} : Set ι) (π p) * d i)⁻¹ : IdeleGroup k) : 𝔸[k]) • MG.vec (kap π d κ) i := by
   have hinv : (π (p * κ) * dgl d)⁻¹ = (kap π d κ)⁻¹ * ((dgl d)⁻¹ * (π p)⁻¹) := by
-    simp only [kap, map_mul, _root_.mul_inv_rev, inv_inv, mul_assoc, inv_mul_cancel_left, mul_inv_cancel_left]
+    simp only [kap, map_mul, _root_.mul_inv_rev, inv_inv, mul_assoc, mul_inv_cancel_left]
   have hs : (((bdet ({i} : Set ι) (π p) * d i)⁻¹ : IdeleGroup k) : 𝔸[k]) =
       (((d i)⁻¹ : IdeleGroup k) : 𝔸[k]) * (((bdet ({i} : Set ι) (π p))⁻¹ : IdeleGroup k) : 𝔸[k]) := by
     rw [← Units.val_mul, _root_.mul_inv_rev]
@@ -138,7 +138,7 @@ theorem vec_mul (π : G →* GL ι 𝔸[k]) (d : ι → IdeleGroup k) (i : ι) {
 theorem vec_kap (π : G →* GL ι 𝔸[k]) (d : ι → IdeleGroup k) (i : ι) (g : G) :
     MG.vec (kap π d g) i = (d i : 𝔸[k]) • MG.vec (π g * dgl d) i := by
   have hinv : (kap π d g)⁻¹ = (π g * dgl d)⁻¹ * dgl d := by
-    simp only [kap, _root_.mul_inv_rev, inv_inv, mul_assoc, inv_mul_cancel_left, inv_mul_cancel, mul_one]
+    simp only [kap, _root_.mul_inv_rev, inv_inv, mul_assoc]
   unfold MG.vec
   rw [hinv, Units.val_mul, ← Matrix.mulVec_mulVec, dgl_mulVec_single, Matrix.mulVec_smul]
 

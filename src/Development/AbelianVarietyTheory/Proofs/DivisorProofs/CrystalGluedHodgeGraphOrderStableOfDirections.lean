@@ -118,7 +118,7 @@ theorem glueFil_stable : ∀ (p : ℕ) [Fact p.Prime] (D : GlobalTheory.UPel.HT.
   rw [push_coord, hze]
   ext
   · simp [push_apply]
-  · simp only [TrivSqZeroExt.snd_add, TrivSqZeroExt.snd_inl, TrivSqZeroExt.snd_inr, zero_add, Pi.add_apply,
+  · simp only [TrivSqZeroExt.snd_add, TrivSqZeroExt.snd_inl, TrivSqZeroExt.snd_inr, Pi.add_apply,
       LinearMap.add_apply, LinearMap.sub_apply, push_apply]
     ring
 

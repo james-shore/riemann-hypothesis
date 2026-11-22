@@ -26,7 +26,7 @@ theorem smallFam_pull : ∀ (k : Type) [CommRing k] (X Y : Scheme.{0}) [IsIntegr
     have eg : ((B.B.pull π).g i j).val = resG Y (fun _ hy => ⟨LB.wchart_le B.B (fun _ : PUnit => π) i PUnit.unit hy.1, LB.wchart_le B.B (fun _ : PUnit => π) j PUnit.unit hy.2⟩ : (B.B.pull π).U i ⊓ (B.B.pull π).U j ≤ π ⁻¹ᵁ (B.B.U (i PUnit.unit) ⊓ B.B.U (j PUnit.unit)))
         (π.app _ (B.B.g (i PUnit.unit) (j PUnit.unit)).val) := by
       dsimp only [LB.pull, LB.LinComb]
-      simp only [Fintype.prod_unique, zpow_one, LB.val_res, pullU, Units.coe_map]
+      simp only [Fintype.prod_unique, zpow_one, pullU]
       rfl
     show φ (β (i PUnit.unit)) = fnOf _ h ((B.B.pull π).g i j).val * φ (β (j PUnit.unit))
     rw [hβ (i PUnit.unit) (j PUnit.unit) hX, map_mul, hF _ hX ⟨hi, hj⟩, eg]

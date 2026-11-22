@@ -39,7 +39,7 @@ private theorem hasSignature_of_smul {n r s : ℕ} {M : Matrix (Fin n) (Fin n) �
   simp only [Matrix.map_mul] at h2
   have e2 : (Matrix.fromBlocks 1 0 0 (-1) : Matrix (Fin r ⊕ Fin s) (Fin r ⊕ Fin s) ℂ).map (starRingEnd ℂ) =
       Matrix.fromBlocks 1 0 0 (-1) := by
-    ext (i | i) (j | j) <;> simp [Matrix.fromBlocks, Matrix.one_apply] <;> split_ifs <;> simp
+    ext (i | i) (j | j) <;> simp [Matrix.fromBlocks, Matrix.one_apply] <;> split_ifs
   have hs : ((Real.sqrt κ : ℝ) : ℂ) * ((Real.sqrt κ : ℝ) : ℂ) = (κ : ℂ) := by
     exact_mod_cast Real.mul_self_sqrt hκ.le
   have t1 : (((Real.sqrt κ : ℝ) : ℂ) • A.map star)ᵀ = ((Real.sqrt κ : ℝ) : ℂ) • (Aᵀ).map (starRingEnd ℂ) := by

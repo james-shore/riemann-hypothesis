@@ -30,7 +30,7 @@ theorem exp_mul_re' (t : ℝ) (z : ℂ) :
     (Complex.exp (-(t * Complex.I)) * z).re = z.re * Real.cos t + z.im * Real.sin t := by
   simp only [Complex.mul_re, Complex.exp_re, Complex.exp_im, Complex.neg_re, Complex.neg_im,
     Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, Complex.I_re, Complex.I_im]
-  simp only [mul_zero, zero_mul, sub_zero, add_zero, mul_one, neg_zero, Real.exp_zero, one_mul,
+  simp only [mul_zero, sub_zero, add_zero, mul_one, neg_zero, Real.exp_zero, one_mul,
     Real.cos_neg, Real.sin_neg]
   ring
 
@@ -38,7 +38,7 @@ theorem exp_mul_im' (t : ℝ) (z : ℂ) :
     (Complex.exp (-(t * Complex.I)) * z).im = z.im * Real.cos t - z.re * Real.sin t := by
   simp only [Complex.mul_im, Complex.exp_re, Complex.exp_im, Complex.neg_re, Complex.neg_im,
     Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, Complex.I_re, Complex.I_im]
-  simp only [mul_zero, zero_mul, sub_zero, add_zero, mul_one, neg_zero, Real.exp_zero, one_mul,
+  simp only [mul_zero, sub_zero, add_zero, mul_one, neg_zero, Real.exp_zero, one_mul,
     Real.cos_neg, Real.sin_neg]
   ring
 

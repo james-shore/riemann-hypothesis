@@ -31,10 +31,10 @@ theorem prime_X {σ k : Type} [CommRing k] [IsDomain k] (s : σ) : Prime (MvPowe
         refine Finset.prod_eq_one fun i hi => ?_
         have : i ≠ s := fun h => (Finsupp.mem_support_iff.1 hi) (h ▸ hn)
         simp [this]
-      simp [hn, this]
+      simp [hn]
     · have : (n.prod fun i m => (if i = s then (0 : k) else 1) ^ m) = 0 :=
         Finset.prod_eq_zero (Finsupp.mem_support_iff.2 hn) (by simp [hn])
-      simp [hn, this]
+      simp [hn]
   refine ⟨?_, ?_, fun a b h => ?_⟩
   · intro h
     have := congrArg (MvPowerSeries.coeff (Finsupp.single s 1)) h

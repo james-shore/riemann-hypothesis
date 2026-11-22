@@ -117,7 +117,7 @@ theorem gramSchmidt_eigenframe (r : ℕ) (X : DataX E r) (ξ : Fin r → E) (z0 
       (fun k => ?_)
     simp only [Pi.add_apply, Data.lineV, Data.Jz]
     simp only [hermC_add_left, hermC_smul_left, hermC_sub_left_eq_sub, ppos_self_adjoint_hermC, e0, eP,
-      mul_zero, sub_zero, add_zero, zero_add]
+      mul_zero, sub_zero, add_zero]
   · intro u hu
     obtain ⟨hu1, hu2⟩ := hu
     have hmem : ∀ τ : X.Ψ, EigenframeMatrices.Mmat (τ := τ.1) (G := X.Gm) (p := X.p0 - 1) (f := f τ)

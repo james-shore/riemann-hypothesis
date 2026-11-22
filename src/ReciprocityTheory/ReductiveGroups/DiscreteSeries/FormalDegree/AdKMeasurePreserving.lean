@@ -22,7 +22,6 @@ theorem adKAux_K_facts {ε : Fin n → Bool} (k : KG ε) :
   have hc' : toMK k * Jm ε = Jm ε * toMK k := by
     first
       | exact hc
-      | exact hc.symm
   refine ⟨h1, hc', ?_⟩
   calc (toMK k)ᴴ * Jm ε = (toMK k)ᴴ * Jm ε * (toMK k * (toMK k)ᴴ) := by rw [h2, Matrix.mul_one]
     _ = (toMK k)ᴴ * (Jm ε * toMK k) * (toMK k)ᴴ := by simp only [Matrix.mul_assoc]

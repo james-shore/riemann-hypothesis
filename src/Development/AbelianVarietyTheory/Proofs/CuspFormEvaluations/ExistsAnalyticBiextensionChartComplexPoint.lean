@@ -78,12 +78,9 @@ theorem exists_analytic_chart : ∀ (E : Type) [Field E] [NumberField E] [IsCMFi
   · intro i
     first
       | rfl
-      | simp [AnPt.chartOf, anFB, Germ.FB.triv, addFGLaw]
   · intro ℓ i'
     first
       | rfl
-      | simp [AnPt.chartOf, anUvec, Pi.single_apply, eq_comm]
-      | (simp only [AnPt.chartOf, anUvec]; done)
   · intro k F θ hF
     show IsGerm y g Φ.jx (anFB ty).A.act e wP k F
       (MvPowerSeries.rename (fun p : Fin 1 × Fin g => (p.1, Fin.cast (rfl : g = g).symm p.2)) (tay θ 0))

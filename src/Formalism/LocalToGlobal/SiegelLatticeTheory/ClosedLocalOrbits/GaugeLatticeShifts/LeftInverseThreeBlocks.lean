@@ -132,7 +132,7 @@ theorem EmT_mul_Em : (Em r)ᵀ * Em r = 1 := by
   by_cases h : a = b
   · subst h
     simp [Em, Matrix.mul_apply]
-  · simp [Em, Matrix.mul_apply, Matrix.one_apply, Fin.castSucc_inj, h, Ne.symm h]
+  · simp [Em, Matrix.mul_apply, Fin.castSucc_inj, h, Ne.symm h]
 
 theorem Em_mul_EmT : Em r * (Em r)ᵀ = 1 - Pl r := by
   ext i j
@@ -294,7 +294,7 @@ theorem Mm_gram (hP : Formalism.MainNotions.S.IsLoUni P) {t : ℂ} (ht : t ≠ 0
   rw [hM]
   unfold Gm Mm
   rw [Matrix.fromBlocks_multiply, Matrix.fromBlocks_multiply]
-  simp only [Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add]
+  simp only [Matrix.zero_mul, Matrix.mul_zero, add_zero]
   congr 1
   · rw [Matrix.mul_smul, Matrix.smul_mul, Pbar_mul_Pl hP, Pl_mul_PT hP]
   · have h21 := congrArg Matrix.conjTranspose h12

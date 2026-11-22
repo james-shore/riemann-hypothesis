@@ -48,7 +48,7 @@ theorem actG_actAf {D : Datum p} {G : HTGroup p} (L : Link D G) (g : G.GAf) (c :
     | zero => rw [map_zero]; exact Commute.zero_left _
     | tmul r x =>
       have h1 : Commute (L.rep x) (actQ D c) := (L.rep_range (L.rep x)).1 ⟨x, rfl⟩ c
-      simp only [actOn, Algebra.TensorProduct.lift_tmul]
+      simp only [actOn]
       refine Commute.mul_left ?_ ?_
       · exact Algebra.commute_algebraMap_left r _
       · exact h1.map (Module.End.baseChangeHom ℚ (AfP p) (VQ D))

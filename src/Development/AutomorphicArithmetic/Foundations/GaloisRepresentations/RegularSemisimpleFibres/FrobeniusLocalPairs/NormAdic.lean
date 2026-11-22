@@ -73,7 +73,6 @@ private theorem step {A : Type} [CommRing A] (I : Ideal A) (τ : A ≃+* A) (d :
     rw [← neg_sub]
     exact neg_mem h
   obtain ⟨c, hc⟩ := prod_one_add (fun i => (⇑τ)^[i] a) ((x - N) * v) d
-  beta_reduce at hc
   refine ⟨y * (1 + a * ((x - N) * v)), ?_, ?_⟩
   · have e : y * (1 + a * ((x - N) * v)) - y = (y * a) * ((x - N) * v) := by ring
     rw [e]

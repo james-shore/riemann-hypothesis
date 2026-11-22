@@ -87,7 +87,6 @@ private theorem perm_inversion_sign_eq_prod {n : ℕ} (g : Perm (Fin n)) :
     Perm.signAux g = ∏ x : Fin n, ∏ y : Fin n,
       if y < x then (if g x ≤ g y then (-1 : ℤˣ) else 1) else 1 := by
   rw [Perm.signAux.eq_1, prod_finPairsLT]
-  all_goals rfl
 
 private lemma prod_fin_add_lt_split (F : Fin (a + b) → Fin (a + b) → ℤˣ) :
     ∏ x : Fin (a + b), ∏ y : Fin (a + b), (if y < x then F x y else 1) =
@@ -101,7 +100,7 @@ private lemma prod_fin_add_lt_split (F : Fin (a + b) → Fin (a + b) → ℤˣ) 
     have := i.isLt
     omega
   simp only [Fin.prod_univ_add, Finset.prod_mul_distrib, Fin.lt_iff_val_lt_val, Fin.coe_castAdd,
-    Fin.coe_natAdd, add_lt_add_iff_left, hlt, hnlt, ↓reduceIte, Finset.prod_const_one, mul_one, one_mul,
+    Fin.coe_natAdd, add_lt_add_iff_left, hlt, hnlt, ↓reduceIte, Finset.prod_const_one, one_mul,
     mul_assoc]
 
 private lemma card_filter_compl_orderEmbOfFin_le (J : Finset (Fin (a + b))) (hc : Jᶜ.card = b) (t : Fin (a + b)) :

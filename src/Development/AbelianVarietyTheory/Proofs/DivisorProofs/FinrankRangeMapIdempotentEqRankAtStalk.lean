@@ -71,7 +71,7 @@ theorem finrank_range_map_eq_rankAtStalk (A : Type) [CommRing A] (n : ℕ)
     | tmul c v =>
       ext j
       simp [Φ, e, TensorProduct.piScalarRight_apply, Matrix.mulVec, dotProduct,
-        Finset.mul_sum, Algebra.smul_def, RingHom.algebraMap_toAlgebra]
+        Algebra.smul_def, RingHom.algebraMap_toAlgebra]
       rw [Finset.sum_mul]
       exact Finset.sum_congr rfl fun _ _ => mul_assoc _ _ _
     | add x y hx hy => simp only [map_add, hx, hy]

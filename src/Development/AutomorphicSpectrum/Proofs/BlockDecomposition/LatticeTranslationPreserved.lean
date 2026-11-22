@@ -42,7 +42,7 @@ theorem rel_left {k : ℕ} (g : G D k) {a b c d : Mx D k k} (h : mat g = blk4 a 
   have h2 : adj (mat g) * JR (AF D.host.F) (Jst D k) * mat g = JR (AF D.host.F) (Jst D k) := g.2
   rw [jr_eq, h, adelicConjTranspose_blockMatrixTwoByTwoFin, submatrix_fromBlocks_mul, submatrix_fromBlocks_mul] at h2
   obtain ⟨e1, e2, e3, e4⟩ := block_matrix_injective h2
-  simp only [Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, Matrix.mul_neg, add_zero, zero_add, Matrix.neg_mul] at e1 e2 e3 e4
+  simp only [Matrix.mul_zero, Matrix.mul_one, Matrix.mul_neg, add_zero, zero_add, Matrix.neg_mul] at e1 e2 e3 e4
   refine ⟨?_, (neg_add_eq_zero.1 e1).symm, (neg_add_eq_zero.1 e4).symm, ?_⟩
   · have : adj d ⬝ a - adj b ⬝ c = -(-(adj d ⬝ a) + adj b ⬝ c) := by abel
     rw [this, e3, neg_neg]
@@ -150,7 +150,7 @@ theorem emb_conj (M : Maps D hn) (g : G D p) {a b c d : Mx D p p} (hg : mat g = 
   apply mat_injective
   rw [mat_mul' (M.emb g), mat_mul' _ (M.emb g), mat_nzx_sh, mat_nzx_sh, hE, submatrix_fromBlocks_mul, submatrix_fromBlocks_mul]
   simp only [Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, block_mul₂, bl_add, Matrix.one_mul, Matrix.mul_one,
-    Matrix.mul_neg, Matrix.neg_mul, neg_zero, h1, h2, h3, h4, h5, neg_sub, AddSubgroup.coe_zero, zero_sub,
+    Matrix.mul_neg, neg_zero, h1, h2, h3, h4, h5, neg_sub, AddSubgroup.coe_zero, zero_sub,
     sub_eq_add_neg (a ⬝ adj x), sub_eq_add_neg (c ⬝ adj x)]
 
 def zTv (a b c d : Mx D p p) (x y : Mx D ρ p) : Mx D ρ ρ :=

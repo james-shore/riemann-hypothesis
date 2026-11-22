@@ -31,7 +31,7 @@ theorem B_eq_zero (B : V →ₗ⋆[ℂ] V →ₗ[ℂ] ℂ) (hB : ∀ v y, B (cas
     (hv : casimirK ε E v = (μ : ℂ) • v) (hy : casimirK ε E y = (μ' : ℂ) • y) : B v y = 0 := by
   have h := hB v y
   rw [hv, hy] at h
-  simp only [map_smulₛₗ, LinearMap.smul_apply, map_smul, smul_eq_mul, Complex.conj_ofReal,
+  simp only [map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, Complex.conj_ofReal,
     RingHom.id_apply] at h
   have h2 : ((μ : ℂ) - μ') * B v y = 0 := by rw [sub_mul, h, sub_self]
   rcases mul_eq_zero.1 h2 with h3 | h3

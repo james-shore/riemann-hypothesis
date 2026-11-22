@@ -194,17 +194,17 @@ theorem BesP₂ (ch : Choice R) : BesP ch := by
       show (((ch.G.rowDec j hjm).iso σ (by omega) * diagonal (GlobalTheory.RowChain.lam σ) :
         Matrix (Fin (ch.G.V (Node.grid D.R.m j)).rank) (Fin σ) D.host.E)) r i = _
       erw [mul_diagonal]
-      simp only [HermitianOrthogonalExtensionData.iso, submatrix_apply, id, GlobalTheory.RowChain.lam]
+      simp only [HermitianOrthogonalExtensionData.iso, GlobalTheory.RowChain.lam]
       congr 2
       show (ch.G.rowDec j hjm).a r (Fin.castLE (by omega) i) = _
       exact congrArg _ (Fin.ext (by simp [hiq]))
-    rw [hd, hpr, hxi, map_mul, map_pow, frameSign, if_neg (by first | omega | (simp only [Fin.val_mk]; omega) | (simp; omega))]
+    rw [hd, hpr, hxi, map_mul, map_pow, frameSign, if_neg (by first | omega | (simp only; omega))]
     exact alg_e _ _ hx0 σ i.val (by omega)
   · refine ((E r).2 q ⟨σ, by omega⟩ hq.symm).trans ?_
     have hv : (besAt ch.G hM j σ hj vN).d.i₀ *ᵥ vecB (besAt ch.G hM j σ hj vN).o (besAt ch.G hM j σ hj vN).ζ =
         fun k => D.host.xi0 ^ σ * (ch.G.rowDec j hjm).a k ⟨σ, by omega⟩ :=
       coreMat_vecB_bes (ch.G.rowDec j hjm) hc2 (D.host.xi0 ^ σ)
-    rw [hv, hpr, hxi, map_mul, map_pow, frameSign, if_neg (by first | omega | (simp only [Fin.val_mk]; omega) | (simp; omega))]
+    rw [hv, hpr, hxi, map_mul, map_pow, frameSign, if_neg (by first | omega | (simp only; omega))]
     exact scalar_inv_pow_mul_cancel _ _ hx0 σ
   · refine ((E r).2 q ⟨q.val, by omega⟩ rfl).trans ?_
     have hd : (besAt ch.G hM j σ hj vN).d.e' r i =
@@ -213,7 +213,7 @@ theorem BesP₂ (ch : Choice R) : BesP ch := by
         diagonal (fun a => (star (GlobalTheory.RowChain.lam (D := D) σ a))⁻¹) :
         Matrix (Fin (ch.G.V (Node.grid D.R.m j)).rank) (Fin σ) D.host.E)) r i = _
       erw [mul_diagonal]
-      simp only [submatrix_apply, id, GlobalTheory.RowChain.lam]
+      simp only [GlobalTheory.RowChain.lam]
       congr 2
       show (ch.G.rowDec j hjm).a r (Fin.castLE (by omega) i).rev = _
       exact congrArg _ (Fin.ext (by simp only [Fin.val_rev, Fin.val_castLE]; omega))
@@ -222,7 +222,7 @@ theorem BesP₂ (ch : Choice R) : BesP ch := by
       exact congrArg _ (nLine_norm _)
     have hs : ∀ n : ℕ, star (D.host.xi0 ^ n) = (-D.host.xi0) ^ n := fun n => by
       rw [star_pow, GlobalTheory.DualPairCheck.star_purely_imaginary_eq_neg]
-    rw [hd, hz, hpr, hxi, hs, hs, frameSign, if_pos (by first | omega | (simp only [Fin.val_mk]; omega) | (simp; omega))]
+    rw [hd, hz, hpr, hxi, hs, hs, frameSign, if_pos (by first | omega | (simp only; omega))]
     simp only [map_mul, map_neg, map_pow, map_inv₀]
     exact alg_e' _ _ hx0 σ i.val i.2
 

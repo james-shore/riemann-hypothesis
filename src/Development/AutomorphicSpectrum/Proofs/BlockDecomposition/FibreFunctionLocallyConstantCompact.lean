@@ -50,7 +50,7 @@ theorem last_column_entry_product_formula (n : ℕ) (a : Fin n → k) (A : Matri
       a j + (A.mulVec (fun l => P (Fin.castSucc l) (Fin.last n))) j := by
   rw [add_mul, one_mul, GlobalTheory.BZMir.colMat_mul_glEmbMat, add_mul, Matrix.add_apply]
   simp [Matrix.mul_apply, Fin.sum_univ_castSucc, GlobalTheory.BZMir.glEmbMat, GlobalTheory.BZMir.colMat, Matrix.mulVec,
-    dotProduct, hP, Fin.castSucc_ne_last]
+    dotProduct, hP]
   all_goals ring
 
 theorem col_uM_levi_mul (n : ℕ) (a : Fin n → k) (g : GL (Fin n) k) (p : Mir k n) :
@@ -61,7 +61,7 @@ theorem col_uM_levi_mul (n : ℕ) (a : Fin n → k) (g : GL (Fin n) k) (p : Mir 
 
 theorem col_one (n : ℕ) : col k n 1 = 0 := by
   funext j
-  simp [GlobalTheory.CompanionTheory.BZPsiPG.FibCompact.col, Matrix.one_apply, Fin.castSucc_ne_last]
+  simp [GlobalTheory.CompanionTheory.BZPsiPG.FibCompact.col, Fin.castSucc_ne_last]
 
 theorem col_uM_levi (n : ℕ) (a : Fin n → k) (g : GL (Fin n) k) :
     col k n (uM k n a * levi k n g) = a := by

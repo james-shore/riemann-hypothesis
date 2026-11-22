@@ -72,7 +72,7 @@ theorem ltOp_mem {X : Matrix (Fin n) (Fin n) ℂ} {F : Matrix (Fin n) (Fin n) �
 theorem differentiableAt_of_mem {F : Matrix (Fin n) (Fin n) ℂ → ℂ}
     (hF : ContDiffOn ℂ ∞ F (OmegaSet n)) {z : Matrix (Fin n) (Fin n) ℂ} (hz : z ∈ OmegaSet n) :
     DifferentiableAt ℂ F z := by
-  exact ((hF.differentiableOn (by simp <;> exact_mod_cast (le_top : (1 : ℕ∞) ≤ ⊤))) z hz).differentiableAt (isOpen_OmegaSet'.mem_nhds hz)
+  exact ((hF.differentiableOn (by simp)) z hz).differentiableAt (isOpen_OmegaSet'.mem_nhds hz)
 
 def eOp (X : Matrix (Fin n) (Fin n) ℂ) : Module.End ℂ (smoothS n) where
   toFun F := ⟨ltOp X F, ltOp_mem F.2⟩
@@ -125,9 +125,9 @@ private theorem Lhol_commutator_on_OmegaSet {F : Matrix (Fin n) (Fin n) ℂ → 
     Lhol X (Lhol Y F) z - Lhol Y (Lhol X F) z = Lhol (Y * X - X * Y) F z := by
   have hc := hF.contDiffAt (isOpen_OmegaSet'.mem_nhds hz)
   have h1 := ((contDiffOn_infty_iff_fderiv_of_isOpen isOpen_OmegaSet').1 hF).2
-  have hd := ((h1.differentiableOn (by simp <;> exact_mod_cast (le_top : (1 : ℕ∞) ≤ ⊤))) z hz).differentiableAt
+  have hd := ((h1.differentiableOn (by simp)) z hz).differentiableAt
     (isOpen_OmegaSet'.mem_nhds hz) |>.hasFDerivAt
-  have hs := hc.isSymmSndFDerivAt (by first | exact le_top | (simp; done) | (simp <;> exact (WithTop.coe_le_coe.2 (le_top : (2 : ℕ∞) ≤ ⊤) : ((2 : ℕ∞) : ℕ∞ω) ≤ ((⊤ : ℕ∞) : ℕ∞ω))) | (simp <;> decide))
+  have hs := hc.isSymmSndFDerivAt (by first | exact le_top | (simp; done) | (simp <;> exact (WithTop.coe_le_coe.2 (le_top : (2 : ℕ∞) ≤ ⊤) : ((2 : ℕ∞) : ℕ∞ω) ≤ ((⊤ : ℕ∞) : ℕ∞ω))))
   let LX : Matrix (Fin n) (Fin n) ℂ →L[ℂ] Matrix (Fin n) (Fin n) ℂ := LinearMap.toContinuousLinearMap
     { toFun := fun w => X * w
       map_add' := fun a b => Matrix.mul_add X a b
@@ -178,9 +178,9 @@ theorem opPow_eqOn (X Y : Fin n → Fin n → Matrix (Fin n) (Fin n) ℂ) (σ : 
     intro z hz
     by_cases hab : a = b
     · subst hab
-      simp [opPow, Matrix.one_apply, hFG hz]
+      simp [opPow, hFG hz]
     · have hs : σ a ≠ σ b := fun h => hab (σ.injective h)
-      simp [opPow, Matrix.one_apply, hab, hs]
+      simp [opPow, hab, hs]
   | succ k ih =>
     intro z hz
     have hterm : ∀ d, Lhol (Y a d) (opPow (fun a b => Lhol (Y a b)) k d b F) z =

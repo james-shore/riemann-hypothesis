@@ -56,7 +56,7 @@ theorem herm_bvec_r {m : ℕ} (H : Matrix (Fin m) (Fin m) ℂ) (v : Fin m → �
   rw [Finset.sum_eq_single p]
   · simp
   · intro b _ hb
-    simp [Pi.single_apply, hb]
+    simp [hb]
   · simp
 
 theorem hpk_esI_row {r : ℕ} (b : Fin r) (x : Fin (2 * r + k + 1)) :
@@ -76,13 +76,13 @@ theorem hpk_eI_row {r : ℕ} (b : Fin r) (x : Fin (2 * r + k + 1)) :
 theorem herm_bvec_esI' {r : ℕ} (v : Fin (2 * r + k + 1) → ℂ) (b : Fin r) :
     herm (Hpk k r) v (bvec (esI k r b)) = v (eI k r b) := by
   rw [herm_bvec_r]
-  simp only [hpk_esI_row, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq',
+  simp only [hpk_esI_row, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq',
     Finset.mem_univ, if_true]
 
 theorem herm_bvec_eI' {r : ℕ} (v : Fin (2 * r + k + 1) → ℂ) (b : Fin r) :
     herm (Hpk k r) v (bvec (eI k r b)) = v (esI k r b) := by
   rw [herm_bvec_r]
-  simp only [hpk_eI_row, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq',
+  simp only [hpk_eI_row, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq',
     Finset.mem_univ, if_true]
 
 def midB (o ρ : ℕ) (G : B.Mat k (o + ρ)) : B.Mat k ρ := fun a b => G (levPos k o ρ a) (levPos k o ρ b)
@@ -289,7 +289,7 @@ theorem embG_conj_Rn (y : B.Mat k ρ) (hy : y ∈ B.GV k ρ) (x : U.RC k j ρ) :
       Equiv.apply_symm_apply]
     rw [hq]
   · simp
-  · simp only [Matrix.one_mul, Matrix.mul_one, Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add]
+  · simp only [Matrix.mul_one, Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add]
     exact Matrix.nonsing_inv_mul _ hu
   · simp [rnAct]
   · simp

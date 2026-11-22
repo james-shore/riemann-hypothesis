@@ -26,8 +26,7 @@ theorem loc_injective : ∀ (L : Type) [Field L] [NumberField L] [IsCMField L] (
   obtain rfl | hu := eq_or_ne u v
   · ext i j
     have h2 := congrArg (fun g : GL (Fin n) (w.adicCompletion L) => g.val i j) h1
-    simp only [Formalism.UG.bc, Units.coe_map, MonoidHom.coe_coe, RingHom.mapMatrix_apply,
-      Matrix.map_apply, Matrix.GeneralLinearGroup.map] at h2
+    simp only [Formalism.UG.bc, Units.coe_map, Matrix.GeneralLinearGroup.map] at h2
     simp only [Matrix.map_apply]
     exact Dv.e.injective h2
   · rw [hx u (by simpa using hu), hy u (by simpa using hu)]

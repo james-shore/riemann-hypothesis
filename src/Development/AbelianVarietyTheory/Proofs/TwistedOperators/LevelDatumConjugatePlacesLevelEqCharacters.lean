@@ -200,8 +200,7 @@ theorem dat_mkLevel_eq : ∀ (D : D7) (S T : HSp D) (C : Ctx S T) (hn : T.rank �
         (Matrix.GeneralLinearGroup.det (κ.1 : GL (Fin T.rank) (𝓞 D.host.E ⧸ liftI Pg Q))) =
         (hQc PP.1 PP.2).2.unit := by
       ext
-      simp only [Units.coe_map, RingHom.toMonoidHom_eq_coe, MonoidHom.coe_coe, IsUnit.unit_spec,
-        Matrix.GeneralLinearGroup.val_det_apply]
+      simp only [Units.coe_map, RingHom.toMonoidHom_eq_coe, MonoidHom.coe_coe, IsUnit.unit_spec]
       exact hdetQ _ _
     rw [e, _root_.zpow_neg_one]
   · rw [dif_neg h]

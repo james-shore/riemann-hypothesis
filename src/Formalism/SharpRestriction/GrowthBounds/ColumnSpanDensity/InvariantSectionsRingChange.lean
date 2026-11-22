@@ -151,7 +151,7 @@ private theorem phiF_inv_smul_twistVec_eq (s : ℕ) {k : ℕ} (v : Fin k → R�
       (algebraMap R₂.O R₂.Kf R₂.w)⁻¹ • twistVec R₂.ι R₂.σ s ((p : R₂.W) • fun i => I.φQ (v i)) := by
   have e1 : (p : R₂.W) • (fun i => I.φQ (v i)) = fun i => I.φQ (((p : R₁.W) • v) i) := by
     funext j
-    simp [Algebra.smul_def, I.hWQ]
+    simp [Algebra.smul_def]
   rw [e1, ← twist_tr]
   funext i
   show I.φK _ = _

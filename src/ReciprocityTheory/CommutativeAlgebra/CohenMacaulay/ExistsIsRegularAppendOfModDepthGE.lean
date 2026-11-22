@@ -93,7 +93,7 @@ theorem exists_reg_both {N₁ N₂ : Type*} [AddCommGroup N₁] [Module R N₁] 
     [AddCommGroup N₂] [Module R N₂] [Module.Finite R N₂]
     (h₁ : maximalIdeal R ∉ associatedPrimes R N₁) (h₂ : maximalIdeal R ∉ associatedPrimes R N₂) :
     ∃ z ∈ maximalIdeal R, IsSMulRegular N₁ z ∧ IsSMulRegular N₂ z := by
-  first | exact Bl.general_b_fact_side.goal1 .. | (apply Bl.general_b_fact_side.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_side.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_side.goal1 .. | (apply Bl.general_b_fact_side.goal1 <;> assumption)
 
 end Noeth
 

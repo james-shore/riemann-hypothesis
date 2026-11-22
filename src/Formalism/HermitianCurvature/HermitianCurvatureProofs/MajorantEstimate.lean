@@ -17,8 +17,8 @@ lemma herm_ff {z : Fin (2 * r + k + 1) → ℂ} (hz : inWb k r z) (a b : Fin (r 
   simp only [C2.Adiag, ggLastU, Matrix.smul_apply, Matrix.diagonal_apply, smul_eq_mul]
   by_cases ha : a = Fin.last r <;> by_cases hb : b = Fin.last r
   · subst ha hb; simp
-  · simp [ha, hb, Ne.symm hb, show a ≠ b from fun h => hb (h ▸ ha)]
-  · simp [ha, hb, show a ≠ b from fun h => ha (h ▸ hb)]
+  · simp [ha, hb, Ne.symm hb]
+  · simp [ha, hb]
   · by_cases hab : a = b
     · subst hab; simp [ha]
     · simp [ha, hab]

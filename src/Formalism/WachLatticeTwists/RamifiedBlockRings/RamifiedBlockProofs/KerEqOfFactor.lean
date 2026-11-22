@@ -33,7 +33,7 @@ private theorem sum_extend_embedding_zero_eq_sum {α β M : Type*} [Fintype α] 
     (f : α ↪ β) (φ : α → M) : ∑ l, Function.extend f φ 0 l = ∑ j, φ j := by
   classical
   rw [← Finset.sum_subset (Finset.subset_univ (Finset.univ.map f)), Finset.sum_map]
-  · simp only [Function.Embedding.coeFn_mk, f.injective.extend_apply]
+  · simp only [f.injective.extend_apply]
   · intro l _ hl
     rw [Function.extend_apply']
     · rfl

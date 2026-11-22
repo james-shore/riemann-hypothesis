@@ -38,9 +38,9 @@ theorem lmul'_eq_one {c : B ⊗[R] B} (hu : IsUnit c)
   let μ : B ⊗[R] B →ₐ[R] B := Algebra.TensorProduct.lmul' R
   let ν : B ⊗[R] (B ⊗[R] B) →ₐ[R] B :=
     μ.comp (Algebra.TensorProduct.map (AlgHom.id R B) μ)
-  have h12 : ν.comp (m₁₂ R B) = μ := by ext <;> simp [ν, μ, m₁₂, Algebra.TensorProduct.one_def]
-  have h13 : ν.comp (m₁₃ R B) = μ := by ext <;> simp [ν, μ, m₁₃, Algebra.TensorProduct.one_def]
-  have h23 : ν.comp (m₂₃ R B) = μ := by ext <;> simp [ν, μ, m₂₃, Algebra.TensorProduct.one_def]
+  have h12 : ν.comp (m₁₂ R B) = μ := by ext <;> simp [ν, μ, m₁₂]
+  have h13 : ν.comp (m₁₃ R B) = μ := by ext <;> simp [ν, μ, m₁₃]
+  have h23 : ν.comp (m₂₃ R B) = μ := by ext <;> simp [ν, μ, m₂₃]
   have h' := congrArg ν h
   rw [map_mul, ← AlgHom.comp_apply, ← AlgHom.comp_apply, ← AlgHom.comp_apply, h12, h13, h23] at h'
   exact (hu.map μ).mul_left_cancel (by rw [mul_one]; exact h'.symm)
@@ -139,7 +139,7 @@ theorem exists_local (R B C D : CommRingCat.{0}) (f : R ⟶ B) (j₁ j₂ : B �
       ext x
       change m₁₂ R B (e.hom.hom (j₁.hom x)) = m₁₃ R B (e.hom.hom (j₁.hom x))
       rw [e1']
-      simp [m₁₂, m₁₃, Algebra.TensorProduct.one_def]
+      simp [m₁₂, m₁₃]
     · rw [← Category.assoc, h₂, Category.assoc, p23]
       ext x
       change m₂₃ R B (e.hom.hom (j₂.hom x)) = m₁₃ R B (e.hom.hom (j₂.hom x))

@@ -60,7 +60,7 @@ theorem projX_embedding_lattice : ∀ {D : D7} {A B B₀ : HSp D} {c ρ : ℕ} (
     rw [mulVec_add, mulVec_mulVec, mulVec_mulVec, hqX, h1, h2, zero_mulVec, zero_add]
   have hu' : ∀ q : Fin c, (Q *ᵥ ((Pᴴ * N) *ᵥ u)) q = if q.1 < ρ then u q else 0 := by
     intro q
-    simp only [mulVec, dotProduct, hPN, ite_mul, zero_mul, Finset.sum_ite_eq, Finset.mem_univ, if_true, Q]
+    simp only [mulVec, dotProduct, hPN, ite_mul, zero_mul, Q]
     split_ifs with hq
     · rw [Finset.sum_eq_single ⟨q.1, hq⟩]
       · have e1 : q = Fin.castLE hρc ⟨q.1, hq⟩ := Fin.ext rfl
@@ -68,7 +68,7 @@ theorem projX_embedding_lattice : ∀ {D : D7} {A B B₀ : HSp D} {c ρ : ℕ} (
         rw [← mul_assoc, mul_comm ((-D.host.xi0) ^ _), hdiag, one_mul, if_pos e1, ← e1]
       · intro b _ hb
         rw [if_neg]
-        intro e; apply hb; ext; simp only [Fin.ext_iff, Fin.val_castLE, Fin.val_mk] at e ⊢; omega
+        intro e; apply hb; ext; simp only [Fin.ext_iff, Fin.val_castLE] at e ⊢; omega
       · simp
     · refine Finset.sum_eq_zero fun b _ => ?_
       rw [if_neg]

@@ -110,7 +110,7 @@ theorem schur_core {Wq Wp : Type*} [AddCommGroup Wq] [Module ℂ Wq] [FiniteDime
     (hp : ∀ B ∈ Gp, ∃ A ∈ Gq, E ∘ₗ A = B ∘ₗ E)
     (hne : ∃ v ∈ S', E v ≠ 0) :
     ∃ c : ℂ, ∀ v ∈ S', Z v = c • E v := by
-  first | exact Bl.general_b_fact_second_alt_form.goal1 .. | (apply Bl.general_b_fact_second_alt_form.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second_alt_form.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_second_alt_form.goal1 .. | (apply Bl.general_b_fact_second_alt_form.goal1 <;> assumption)
 
 end LinAlg
 

@@ -39,7 +39,7 @@ theorem main : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing R], Base R 
       rw [hS]
       dsimp only [zeroSec]
       erw [map_zero, map_zero]
-      simp only [map_zero, mul_zero]
+      simp only [mul_zero]
   · intro k hk
     obtain ⟨c, hc, y, ⟨i', hi'⟩, hy⟩ := (hP k hk).choose_spec
     obtain ⟨s₀, i, hs⟩ := GlobalTheory.T.exists_section_nonvanishing_closedFibre_of_three_le R hB D A G hG U k hk ((b 0).left.base y)

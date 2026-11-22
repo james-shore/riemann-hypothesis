@@ -58,8 +58,7 @@ theorem main : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsAlgClosed C]
   rw [hcomb] at hs
   have hc0 : constantCoeff (h - comb a e0) = 0 := by
     rw [map_sub, hh.1, comb, map_sum]
-    simp [← coeff_zero_eq_constantCoeff_apply, coeff_smul,
-      coeff_zero_eq_constantCoeff_apply, (hB.1 _).1]
+    simp [(hB.1 _).1]
   have hl0 := (GlobalTheory.LieZero.lie_eq_zero p O C hF G d c _ _ hs).1 ha hc0
   simp only [Fintype.sum_sum_type, b', Sum.elim_inl, Sum.elim_inr, smul_zero, Finset.sum_const_zero,
     zero_add, Pi.neg_apply, neg_smul, Finset.sum_neg_distrib, neg_eq_zero, L] at hl0
@@ -89,12 +88,12 @@ theorem main : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsAlgClosed C]
   rw [hs0, map_zero] at hs'
   have hEq : h = comb a e0 := sub_eq_zero.1 hs'.symm
   rw [hEq]
-  simp only [lin, comb, Fintype.sum_sum_type, map_add, map_sum, coeff_smul, smul_eq_mul]
+  simp only [lin, comb, Fintype.sum_sum_type, map_add, map_sum, coeff_smul]
   have h2 : ∀ j, algebraMap O C (a (Sum.inr j)) * coeff (Finsupp.single i 1) (e0 (Sum.inr j)) = 0 :=
     fun j => by rw [hinr j, map_zero, zero_mul]
   have h1 : ∀ i', coeff (Finsupp.single i 1) (e0 (Sum.inl i')) = (Pi.single i' (1 : C) : Fin d → C) i :=
     fun i' => congrFun (hA i').2 i
   simp only [h2, h1, Finset.sum_const_zero, add_zero, Pi.single_apply, mul_ite, mul_one, mul_zero,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+    Finset.sum_ite_eq, Finset.mem_univ, if_true]
 
 end GlobalTheory.QLog.RedO

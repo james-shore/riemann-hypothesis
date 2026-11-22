@@ -50,7 +50,7 @@ private theorem exists_weight {n : ℕ} (m : Multiset ℂ) (hc : Multiset.card m
     rw [← h2, ← h1, Multiset.map_map, infOfWeight]
     conv_lhs => rw [← Finset.map_univ_equiv Fin.revPerm, Finset.map_val, Multiset.map_map]
     refine Multiset.map_congr rfl fun k _ => ?_
-    simp only [Function.comp, Function.Embedding.coeFn_mk, Equiv.coe_toEmbedding, Fin.revPerm_apply]
+    simp only [Function.comp, Function.Embedding.coeFn_mk, Fin.revPerm_apply]
     push_cast
     ring
 

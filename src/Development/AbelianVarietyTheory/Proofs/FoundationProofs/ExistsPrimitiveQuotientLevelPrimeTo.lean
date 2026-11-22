@@ -310,7 +310,7 @@ private lemma exists_finset_lev_mem_closure_bddRing (X : _root_.GlobalTheory.KZ.
     have hg' : 0 < g.det ∧ g 1 0 = 0 ∧ g 0 0 ≠ 0 ∧ g 1 1 ≠ 0 := by
       simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hg
       have hm'' : (0 : ℤ) < m := by exact_mod_cast hm0
-      rcases hg with rfl | rfl | rfl <;> simp [Matrix.det_fin_two, hm', hm'', hm0, hm0.ne']
+      rcases hg with rfl | rfl | rfl <;> simp [Matrix.det_fin_two, hm0, hm0.ne']
     obtain ⟨hd, h10, h00, h11⟩ := hg'
     have hE : ∀ i j, _root_.GlobalTheory.KZ.ent (_root_.GlobalTheory.KZ.toGQ g) i j = g i j := fun i j => by
       unfold _root_.GlobalTheory.KZ.ent _root_.GlobalTheory.KZ.toGQ

@@ -79,7 +79,7 @@ theorem GlobalTheory.OnCmp.const_upTo_center : ∀ (D : D7) (G : Type) [Group G]
     have e := span q _ hF
     rw [geo_of_isBC (O i) hP.act.1 _ 1 (GlobalTheory.FieldBCModel.rulBC_mem_sec _ hfs) hs1 hBC q,
       geo_of_isBC (O i) hP.act.1 _ z (GlobalTheory.FieldBCModel.rulBC_mem_sec _ hfs) hs1 hBC q] at e
-    simp only [Fin.sum_univ_one, Matrix.cons_val_zero, map_one, OneMemClass.coe_one, one_mul] at e
+    simp only [Fin.sum_univ_one, Matrix.cons_val_zero, OneMemClass.coe_one, one_mul] at e
     have h1 : actLev T.J.toCore.Q.c (O i).lev2 1 f = f :=
       actL_one _ _ _ hP.act.1.total hP.act.1.func hP.act.1.one hfs.1
     rw [h1] at e

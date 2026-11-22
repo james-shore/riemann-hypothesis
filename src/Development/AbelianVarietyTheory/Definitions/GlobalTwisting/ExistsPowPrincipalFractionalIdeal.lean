@@ -156,8 +156,6 @@ theorem ellT_ne_bot (hM : ∀ τ x, embT D τ x ∈ M) (τ : D.what₂.Tau) : el
   | exact @_root_.GlobalTheory.InverseHalfDifferent.ellT_ne_bot
   | exact _root_.GlobalTheory.InverseHalfDifferent.ellT_ne_bot
   | (apply _root_.GlobalTheory.InverseHalfDifferent.ellT_ne_bot <;> assumption)
-  | (intros; apply _root_.GlobalTheory.InverseHalfDifferent.ellT_ne_bot <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.InverseHalfDifferent.ellT_ne_bot <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.InverseHalfDifferent.ellT_ne_bot ..)
 
 theorem ne_zero_of_span_eq (hM : ∀ τ x, embT D τ x ∈ M) {τ : D.what₂.Tau} {a : M}
@@ -192,8 +190,7 @@ theorem index_span_mul (c : 𝓞 M) {a : M} (ha : a ≠ 0) :
   have h2 : (Submodule.span (𝓞 M) {c • a}).toAddSubgroup =
       (Ideal.span {c} : Ideal (𝓞 M)).toAddSubgroup.map f.toAddMonoidHom := by
     ext x
-    simp only [Submodule.mem_toAddSubgroup, Submodule.mem_span_singleton, AddSubgroup.mem_map,
-      Ideal.mem_span_singleton']
+    simp only [Submodule.mem_toAddSubgroup, Submodule.mem_span_singleton, AddSubgroup.mem_map]
     constructor
     · rintro ⟨r, rfl⟩
       exact ⟨r * c, ⟨r, rfl⟩, by simp [f, mul_smul]⟩

@@ -17,8 +17,6 @@ theorem exists_int_sub_mem_pow {E : Type} [Field E] [NumberField E] {p : ℕ} (h
   | exact @_root_.GlobalTheory.IntSubMemPow.exists_int_sub_mem_pow
   | exact _root_.GlobalTheory.IntSubMemPow.exists_int_sub_mem_pow
   | (apply _root_.GlobalTheory.IntSubMemPow.exists_int_sub_mem_pow <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntSubMemPow.exists_int_sub_mem_pow <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntSubMemPow.exists_int_sub_mem_pow <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntSubMemPow.exists_int_sub_mem_pow ..)
 
 theorem not_isConj_self (I : AutInst) {p : ℕ} (hp : p.Prime) (v : HeightOneSpectrum (𝓞 I.E))

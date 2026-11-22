@@ -75,7 +75,7 @@ def blockExt {n : ℕ} (k : Matrix (Fin n) (Fin n) V) : Matrix (Fin (n+1)) (Fin 
   Matrix.reindex finSumFinEquiv finSumFinEquiv (Matrix.fromBlocks k 0 0 (1 : Matrix (Fin 1) (Fin 1) V))
 
 lemma blockExt_det {n : ℕ} (k : Matrix (Fin n) (Fin n) V) : (blockExt V k).det = k.det := by
-  simp [blockExt, Matrix.det_reindex_self, Matrix.det_fromBlocks_zero₂₁]
+  simp [blockExt]
 
 lemma blockExt_cc {n : ℕ} (k : Matrix (Fin n) (Fin n) V) (a b : Fin n) :
     blockExt V k a.castSucc b.castSucc = k a b := by

@@ -65,7 +65,7 @@ theorem sep_poly (E : Type) [Field E] [NumberField E] (P : Ideal (𝓞 E)) (hP :
         map_sub, map_pow, FiniteField.pow_card, sub_self]
     · rw [← Ideal.Quotient.eq_zero_iff_mem, Polynomial.derivative_sub,
         Polynomial.derivative_X_pow, Polynomial.derivative_X]
-      simp only [map_sub, map_mul, map_pow, Polynomial.aeval_C, Polynomial.aeval_X, map_one,
+      simp only [map_sub, map_mul, map_pow, Polynomial.aeval_X, map_one,
         map_natCast]
       rw [FiniteField.cast_card_eq_zero, zero_mul, zero_sub, neg_eq_zero]
       exact one_ne_zero

@@ -40,8 +40,8 @@ theorem integral_hasSum_eq_integral_indicator_hasSum :
       if i ∈ p then k i else fun _ => 0 := by
     intro i
     by_cases hp : i ∈ p
-    · funext x; simp [Set.indicator_of_mem hp, hp]
-    · funext x; simp [Set.indicator_of_notMem hp, hp]
+    · funext x; simp [hp]
+    · funext x; simp [hp]
   rw [integral_congr_ae hKae, integral_congr_ae hKpae,
     integral_finset_sum s (fun i _ => hk i),
     integral_finset_sum s (fun i _ => by

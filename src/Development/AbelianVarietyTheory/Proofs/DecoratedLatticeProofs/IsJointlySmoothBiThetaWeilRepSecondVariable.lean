@@ -25,8 +25,7 @@ theorem conjSource_conjAdjoint_apply {S A' : HSp D} (omb : Om S A') (g : GA D S)
     conjSource (conjAdjoint omb) (negGA A' h, g) (fun y' => f (dagger A' S y')) y = omb (g, h) f (dagger A' S y) := by
   have e1 : conjSource (conjAdjoint omb) (negGA A' h, g) =
       cjEnd (Equiv.refl (WO A' S)) (cjEnd (daggerEquiv S A') (omb (g, h))) := by
-    simp only [conjSource, conjAdjoint, MonoidHom.comp_apply, MonoidHom.prodMap, MonoidHom.coe_mk, OneHom.coe_mk,
-      MulEquiv.coe_toMonoidHom, MulEquiv.symm_apply_apply, MonoidHom.id_apply, Prod.map]
+    simp only [conjSource, conjAdjoint, MonoidHom.comp_apply, MonoidHom.prodMap, MulEquiv.coe_toMonoidHom]
     rfl
   have e2 : (fun y' => f (dagger A' S y')) =
       GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.cj (Equiv.refl (WO A' S)) (GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.cj (daggerEquiv S A') f) := by

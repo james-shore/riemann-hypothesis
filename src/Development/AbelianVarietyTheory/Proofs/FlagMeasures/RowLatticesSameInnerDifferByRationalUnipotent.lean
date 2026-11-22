@@ -125,8 +125,8 @@ theorem expand (h : DualFr e f) (c d c' d' : Fin r → E) (w w' : S.V)
       ∑ a, (star (c a) * d' a + star (d a) * c' a) + S.hT w w' := by
   have h1 := perp_e' hwe
   have h2 := perp_e' (e := f) hwf
-  simp [map_add, map_sum, LinearMap.add_apply, LinearMap.sum_apply, LinearMap.map_smulₛₗ₂, map_smul,
-    h.1, h.2.1, h.2.2, fe h, hwe, hwf, hwe', hwf', h1, h2, Finset.sum_add_distrib]
+  simp [map_add, map_sum, LinearMap.add_apply, LinearMap.sum_apply, map_smul,
+    h.1, h.2.1, h.2.2, fe h, hwe', hwf', h1, h2, Finset.sum_add_distrib]
   rw [add_comm]
   congr 1 <;> refine Finset.sum_congr rfl fun x _ => ?_ <;> simp [starRingEnd_apply, mul_comm]
 

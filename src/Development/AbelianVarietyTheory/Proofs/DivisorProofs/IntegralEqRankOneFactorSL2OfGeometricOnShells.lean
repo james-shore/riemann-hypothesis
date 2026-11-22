@@ -132,7 +132,7 @@ theorem integral_geom_on_shells {X : Type} [MeasurableSpace X] (μ : Measure X) 
       funext j
       cases j with
       | zero => simp [shellVal]
-      | succ j => simp [shellVal, norm_pow, norm_div]
+      | succ j => simp [shellVal, norm_pow]
     refine Complex.hasSum_ofReal.1 ?_
     show HasSum (fun j => ((‖shellVal q a j‖ * shellMass q j : ℝ) : ℂ)) ((s : ℝ) : ℂ)
     rw [e, hsC]

@@ -118,7 +118,7 @@ theorem heckeIs_of_levels (Z : GlobalTheory.SeriesTie.ExportTie YS v₀) (hev : 
     simp only [← GlobalTheory.HeckeSup.hkC_eq (T := T0)] at hread
     funext h
     rw [GlobalTheory.SeriesTie.Setup.hecke_apply, map_smulₛₗ]
-    simp only [GlobalTheory.SeriesTie.ExportTie.rd, Pi.smul_apply, smul_eq_mul]
+    simp only [Pi.smul_apply, smul_eq_mul]
     rw [realRd_eq_phiC YS fw Z.good i j b (Z.ν i j b) hV hev, realRd_eq_phiC YS fw Z.good i j b (Z.ν i j b) hV hev]
     simp only [Pi.smul_apply, smul_eq_mul]
     rw [hx', hread, GlobalTheory.ExportSeries.Base.mu, MonoidHom.mul_apply, Circle.coe_mul, hmu0 α R z d, hde α R z d,

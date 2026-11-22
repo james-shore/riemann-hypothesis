@@ -21,4 +21,4 @@ attribute [local instance] GlobalTheory.LocalData.complRel GlobalTheory.LocalDat
 
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.good_irrGL_transport_along_fieldIso : ∀ (k k' : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k] [CharZero k] [Field k'] [ValuativeRel k'] [TopologicalSpace k'] [IsNonarchimedeanLocalField k'] [CharZero k'] (i : k ≃+* k'), Continuous i → ∀ (x : IrrGL k) (x' : IrrGL k'), RepRel i x x' → UpperTheory.Zero.LLC.Good x → UpperTheory.Zero.LLC.Good x' := by
-  first | (exact @GlobalTheory.RecTTransport.good_of_repRel) | (exact GlobalTheory.RecTTransport.good_of_repRel) | (intros; apply GlobalTheory.RecTTransport.good_of_repRel  <;> assumption)
+  first | (exact @GlobalTheory.RecTTransport.good_of_repRel)

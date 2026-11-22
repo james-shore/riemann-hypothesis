@@ -47,7 +47,7 @@ theorem UpperTheory.exists_common_zero_of_jacobian_isUnit_henselian :
   let ψ : MvPolynomial (Fin n) A →ₐ[A] ResidueField A :=
     (Algebra.ofId A (ResidueField A)).comp (MvPolynomial.aeval (0 : Fin n → A))
   have hψ : ∀ p, ψ p = residue A (MvPolynomial.eval 0 p) := fun p => by
-    simp [ψ, MvPolynomial.coe_aeval_eq_eval, IsLocalRing.ResidueField.algebraMap_eq]
+    simp [ψ, IsLocalRing.ResidueField.algebraMap_eq]
   have hI : ∀ a ∈ I, ψ a = 0 := by
     intro a ha
     have hle : I ≤ RingHom.ker ψ := by

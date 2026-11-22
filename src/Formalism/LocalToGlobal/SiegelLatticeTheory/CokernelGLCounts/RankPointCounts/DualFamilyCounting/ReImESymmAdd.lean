@@ -25,8 +25,6 @@ local notation "FIF" => FractionalIdeal (nonZeroDivisors (𝓞 D.host.F)) D.host
 theorem conj_conj (x : D.host.E) : D.host.conj (D.host.conj x) = x := by
   first
     | exact Formalism.HC.HostRaw.conj_conj _ x
-    | exact Formalism.HC.HostRaw.conj_conj x
-    | exact D.host.conj_conj x
 
 theorem ddS_eq : ddS D = ((dI D : Ideal (𝓞 D.host.E)) : FIE) := rfl
 
@@ -53,8 +51,6 @@ theorem mem_inv_coeF {J : Ideal (𝓞 D.host.F)} (hJ : J ≠ ⊥) (x : D.host.F)
     forall_apply_eq_imp_iff₂]
   first
     | done
-    | exact Iff.rfl
-    | rfl
 
 theorem dF_ne (n : ℕ) : differentIdeal ℤ (𝓞 D.host.F) ^ n ≠ ⊥ := by
   first
@@ -88,7 +84,6 @@ theorem contr (n : ℕ) (y : D.host.F) :
     have hint' : IsIntegral ℤ (y * w : D.host.F) := by
       first
         | exact (isIntegral_algHom_iff (D.host.F.subtype.toIntAlgHom) Subtype.val_injective).mp hint
-        | exact (isIntegral_algHom_iff (D.host.F.subtype.toIntAlgHom) (RingHom.injective _)).mp hint
     exact ⟨⟨y * w, hint'⟩, rfl⟩
   · intro hy
     rw [mem_inv_coeF (dF_ne n) y] at hy
@@ -104,7 +99,6 @@ theorem contr (n : ℕ) (y : D.host.F) :
       rw [coe_algO, coe_algO, ho', Subfield.coe_mul]
     · first
         | exact ⟨0, by simp⟩
-        | exact ⟨0, (mul_zero _).symm⟩
     · rintro a b _ _ ⟨oa, ha⟩ ⟨ob, hb⟩
       refine ⟨oa + ob, ?_⟩
       show (oa : D.host.E) + ob = _ * ((a : D.host.E) + b)
@@ -121,15 +115,11 @@ def omg (D : D7) : D.host.E := (1 + D.host.sqrtMinusD) / 2
 private theorem conj_sqrtMinusD' : D.host.conj D.host.sqrtMinusD = -D.host.sqrtMinusD := by
   first
     | exact D.host.conj_sqd
-    | exact Formalism.HC.HostRaw.conj_sqd _
-    | exact Formalism.HC.HostRaw.conj_sqd
 
 theorem omg_int : IsIntegral ℤ (omg D) := by
   have hd : D.host.d % 8 = 7 := by
     first
       | exact D.host.d_mod_eight
-      | exact Formalism.HC.HostRaw.d_mod_eight _
-      | exact Formalism.HC.HostRaw.d_mod_eight
   have h2 : D.host.sqrtMinusD ^ 2 = -(D.host.d : D.host.E) := D.host.sqd_sq
   have hk : (D.host.d + 1) / 4 * 4 = D.host.d + 1 := Nat.div_mul_cancel (by omega)
   have hk' : ((((D.host.d + 1) / 4 : ℕ) : ℤ) : D.host.E) * 4 = (D.host.d : D.host.E) + 1 := by
@@ -137,7 +127,6 @@ theorem omg_int : IsIntegral ℤ (omg D) := by
   refine ⟨Polynomial.X ^ 2 - Polynomial.X + Polynomial.C (((D.host.d + 1) / 4 : ℕ) : ℤ), ?_, ?_⟩
   · first
       | monicity!
-      | monicity
   · rw [Polynomial.eval₂_add, Polynomial.eval₂_sub, Polynomial.eval₂_X_pow, Polynomial.eval₂_X,
       Polynomial.eval₂_C]
     show ((1 + D.host.sqrtMinusD) / 2) ^ 2 - (1 + D.host.sqrtMinusD) / 2 +
@@ -151,7 +140,6 @@ private theorem embS_conj' (τ : D.what₂.Tau) (x : D.host.E) :
   rw [← Formalism.MainNotions.S.Inh.tie_star]
   first
     | exact (NumberField.IsCMField.isConj_complexConj D.host.E (embS D τ)).eq x
-    | exact NumberField.ComplexEmbedding.IsConj.eq (NumberField.IsCMField.isConj_complexConj D.host.E (embS D τ)) x
 
 theorem embS_add_conj (τ : D.what₂.Tau) (x : D.host.E) :
     embS D τ (x + D.host.conj x) = ((2 * (embS D τ x).re : ℝ) : ℂ) := by
@@ -169,7 +157,6 @@ theorem sqrtMinusD_ne : D.host.sqrtMinusD ≠ 0 := by
   have h2 := D.host.qd_big.2
   first
     | (rw [h] at h2; exact Nat.not_lt_zero _ h2)
-    | omega
 
 variable (X : HidaSetting D)
 
@@ -185,7 +172,7 @@ theorem IIm_mul_int (a : Fin D.R.rS) {t : D.host.E} (ht : t ∈ IIm a) (o : 𝓞
 theorem int_mem_IIm (a : Fin D.R.rS) (o : 𝓞 D.host.E) : (o : D.host.E) ∈ IIm a := by
   refine (mem_inv_coe (dI_ne_bot (D := D) (nIm a)) _).2 ?_
   intro y _
-  exact ⟨o * y, by first | rfl | push_cast; rfl | simp⟩
+  exact ⟨o * y, by first | rfl | push_cast | simp⟩
 
 theorem conj_mem_IIm (a : Fin D.R.rS) {t : D.host.E} (ht : t ∈ IIm a) : D.host.conj t ∈ IIm a := by
   have h := star_mem_inv (D := D) (nIm a) ht
@@ -217,16 +204,12 @@ def ΓIm (a : Fin D.R.rS) : AddSubgroup ((InfinitePlace X.B.I.F → ℝ) × (Inf
 theorem mem_ΓIm (a : Fin D.R.rS) (g) : g ∈ ΓIm X a ↔ ∃ t ∈ IIm a, reImHom X (embVHom X t) = g := by
   first
     | exact AddSubgroup.mem_map
-    | exact Iff.rfl
-    | simp [ΓIm]
 
 def sF (t : D.host.E) : D.host.F := ⟨t + D.host.conj t, (mem_F_iff _).2 (by rw [map_add, conj_conj, add_comm])⟩
 
 theorem coeF_two : ((2 : D.host.F) : D.host.E) = 2 := by
   first
     | rfl
-    | norm_num
-    | simp
 
 private theorem embS_coe_F_im_eq_zero (τ : D.what₂.Tau) (w : D.host.F) : (embS D τ (w : D.host.E)).im = 0 := by
   have hw : D.host.conj (w : D.host.E) = w := (mem_F_iff (w : D.host.E)).1 w.2
@@ -248,7 +231,6 @@ theorem re_half (t : D.host.E) (v : InfinitePlace X.B.I.F) :
     push_cast
     first
       | ring
-      | field_simp
   rw [h2, Complex.ofReal_re]
 
 private theorem embS_sqrtMinusD_re_eq_zero (τ : D.what₂.Tau) : (embS D τ D.host.sqrtMinusD).re = 0 := by
@@ -262,7 +244,6 @@ theorem embS_omg_re (τ : D.what₂.Tau) : (embS D τ (omg D)).re = 2⁻¹ := by
   rw [map_div₀, map_add, map_one, map_ofNat]
   first
     | (rw [Complex.div_ofNat_re, Complex.add_re, Complex.one_re, h]; norm_num)
-    | (simp [Complex.div_re, h]; norm_num)
 
 theorem hA1 (a : Fin D.R.rS) (x : InfinitePlace X.B.I.F → ℝ) :
     x ∈ reLat X (Ahalf a) ↔ ∃ y, (x, y) ∈ ΓIm X a := by
@@ -284,7 +265,7 @@ theorem hA1 (a : Fin D.R.rS) (x : InfinitePlace X.B.I.F → ℝ) :
       rw [map_mul, embS_coe_F_eq_ofReal_re (X.pl v) ((2 : D.host.F) * z), Complex.re_ofReal_mul, embS_omg_re,
         Subfield.coe_mul, coeF_two, map_mul, map_ofNat]
       first
-        | (rw [Complex.re_ofNat_mul]; ring)
+        | (rw [Complex.re_ofNat_mul])
         | (simp; ring)
   · rintro ⟨y, hy⟩
     rw [mem_ΓIm] at hy
@@ -377,8 +358,6 @@ def bbSub (a : Fin D.R.rS) : Submodule (𝓞 D.host.F) D.host.F where
 theorem coeF_nat (n : ℕ) : ((n : D.host.F) : D.host.E) = (n : D.host.E) := by
   first
     | simp
-    | norm_cast
-    | exact map_natCast D.host.F.subtype n
 
 theorem bb_le (a : Fin D.R.rS) :
     bbSub a ≤ ((FractionalIdeal.spanSingleton _ ((D.host.d : D.host.F))⁻¹ * JF a : FIF) : Submodule (𝓞 D.host.F) D.host.F) := by
@@ -409,7 +388,6 @@ theorem bbF_ne (a : Fin D.R.rS) : bbF a ≠ 0 := by
     have := int_mem_IIm a ⟨D.host.sqrtMinusD, sqrtMinusD_int⟩
     first
       | (rw [OneMemClass.coe_one, mul_one]; exact this)
-      | simpa using this
   rw [h, FractionalIdeal.mem_zero_iff] at h1
   exact one_ne_zero h1
 
@@ -469,8 +447,6 @@ theorem fd_cLatIm (u : D.what₂.Word) (a : Fin D.R.rS) :
   · refine hF₀m.preimage ?_
     first
       | exact measurable_pi_lambda _ fun v => (measurable_pi_apply v).div_const _
-      | measurability
-      | fun_prop
   · intro z
     obtain ⟨⟨x, hx⟩, hxF, huniq⟩ := hF₀ (fun v => z v / cIm X v)
     have hmem : (fun v => x v * cIm X v : InfinitePlace X.B.I.F → ℝ) ∈ cLat X u (Sum.inr (Sum.inr a)) :=
@@ -505,11 +481,6 @@ theorem reImE_mp : MeasurePreserving (reImE X) volume volume := by
   first
     | exact (MeasureTheory.volume_measurePreserving_arrowProdEquivProdArrow ℝ ℝ (InfinitePlace X.B.I.F)).comp
         (MeasureTheory.volume_preserving_pi (fun _ => Complex.volume_preserving_equiv_real_prod))
-    | exact (MeasureTheory.measurePreserving_arrowProdEquivProdArrow ℝ ℝ (InfinitePlace X.B.I.F)
-        (fun _ => volume) (fun _ => volume)).comp
-        (MeasureTheory.volume_preserving_pi (fun _ => Complex.volume_preserving_equiv_real_prod))
-    | exact (MeasureTheory.volume_measurePreserving_arrowProdEquivProdArrow ℝ ℝ (InfinitePlace X.B.I.F)).comp
-        (MeasureTheory.measurePreserving_piCongrRight _ (fun _ => Complex.volume_preserving_equiv_real_prod))
 
 theorem reImE_symm_add (p q : (InfinitePlace X.B.I.F → ℝ) × (InfinitePlace X.B.I.F → ℝ)) :
     (reImE X).symm (p + q) = (reImE X).symm p + (reImE X).symm q := by
@@ -524,8 +495,6 @@ theorem card_ι : Fintype.card (InfinitePlace X.B.I.F) = Module.finrank ℚ D.ho
        rw [NumberField.IsTotallyReal.nrComplexPlaces_eq_zero, mul_zero, add_zero] at h
        rw [← h, NumberField.InfinitePlace.card_eq_nrRealPlaces_add_nrComplexPlaces,
          NumberField.IsTotallyReal.nrComplexPlaces_eq_zero, add_zero])
-    | simp [NumberField.InfinitePlace.card_eq_nrRealPlaces_add_nrComplexPlaces,
-        ← NumberField.InfinitePlace.card_add_two_mul_card_eq_rank]
 
 theorem absNorm_Ahalf (a : Fin D.R.rS) :
     ((FractionalIdeal.absNorm (Ahalf a) : ℚ) : ℝ) = (2 : ℝ)⁻¹ ^ Fintype.card (InfinitePlace X.B.I.F) *

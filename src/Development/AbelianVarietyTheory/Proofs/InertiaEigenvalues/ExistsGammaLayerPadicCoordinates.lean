@@ -77,8 +77,7 @@ theorem exists_teich (a : ℤ_[l]ˣ) :
     rw [PadicInt.norm_def, PadicInt.coe_natCast, Nat.cast_sub hl.out.one_le, Nat.cast_one, this]
   obtain ⟨z, hz, hza, -⟩ := hensels_lemma (p := l)
     (F := (Polynomial.X ^ (l - 1) - 1 : Polynomial ℤ_[l])) (a := (a : ℤ_[l])) (by
-      simp only [map_sub, map_pow, Polynomial.aeval_X, map_one, Polynomial.derivative_sub,
-        Polynomial.derivative_X_pow, Polynomial.derivative_one, sub_zero, map_mul, Polynomial.aeval_C,
+      simp only [map_sub, map_pow, Polynomial.aeval_X, map_one, Polynomial.derivative_X_pow, Polynomial.derivative_one, sub_zero, map_mul, Polynomial.aeval_C,
         Algebra.algebraMap_self, RingHom.id_apply, norm_mul, norm_pow, PadicInt.norm_units, hd]
       simpa using (PadicInt.norm_lt_one_iff_dvd _).2 hF)
   simp only [map_sub, map_pow, Polynomial.aeval_X, map_one, sub_eq_zero] at hz

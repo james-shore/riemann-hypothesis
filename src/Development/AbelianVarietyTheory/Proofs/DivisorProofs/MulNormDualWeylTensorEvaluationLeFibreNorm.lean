@@ -22,7 +22,7 @@ theorem evalAt_intVec {n : ℕ} (la : Fin n → ℕ) (y : Matrix (Fin n) (Fin n)
     simp only [map_smul, LinearEquiv.apply_symm_apply, onMat, Matrix.of_apply]
     exact ((onBasis la).sum_repr _).symm
   rw [h, Submodule.coe_sum, map_sum]
-  simp [Submodule.coe_smul, map_smul]
+  simp [map_smul]
 
 variable {T : Type} [Fintype T] [DecidableEq T] {N : T → ℕ}
 
@@ -41,7 +41,7 @@ theorem norm_sum_mul_le {ι : Type} [Fintype ι] (a b : ι → ℂ) :
     ‖∑ i, a i * b i‖ ≤ Real.sqrt (∑ i, ‖a i‖ ^ 2) * Real.sqrt (∑ i, ‖b i‖ ^ 2) := by
   calc ‖∑ i, a i * b i‖ ≤ ∑ i, ‖a i‖ * ‖b i‖ := by
         refine (norm_sum_le _ _).trans (le_of_eq ?_)
-        simp [norm_mul]
+        simp
     _ ≤ _ := Real.sum_mul_le_sqrt_mul_sqrt _ _ _
 
 theorem mul_norm_tval_le_fibNorm : ∀ (T : Type) [Fintype T] [DecidableEq T] (N : T → ℕ) (la : ∀ t, Fin (N t) → ℕ), (∀ t, Antitone (la t)) → ∀ (x : TIdx la → ℂ) (X : ∀ t, Matrix (Fin (N t)) (Fin (N t)) ℂ) (u : ∀ t, UN (N t)) (s : ℝ), 0 ≤ s → s * ‖tval la x (fun t => X t * (u t).1)‖ ≤ Real.sqrt (∑ I, ‖(fibY la s X *ᵥ x) I‖ ^ 2) := by

@@ -36,7 +36,7 @@ theorem single_mem_headSub {a n : ℕ} (j : Fin n) (hj : (j : ℕ) < a) :
   rw [mem_headSub]
   intro i hi
   have : i ≠ j := by intro h; subst h; omega
-  simp [Pi.single_apply, this]
+  simp [this]
 
 theorem toLin'_apply_single {n : ℕ} (H : Matrix (Fin n) (Fin n) F) (i j : Fin n) :
     Matrix.toLin' H (Pi.single j 1) i = H i j := by
@@ -255,7 +255,7 @@ theorem sum_hc_cusp {F : Type} [Field F] [Finite F] (θ : AlgebraicClosure F →
       (fun p => (if InPar a p then psiG S a (tlG a p) else 0) * star (cusp θ n k p)) (fun p => by
         have h2 : cusp θ n k (y⁻¹ * p * y) = cusp θ n k p := by
           unfold cusp; rw [hcl.1 p y]
-        simp [MulAut.conj_apply, ← h2])
+        simp [← h2])
     rw [e]
     have L := sum_inPar_psiG (rootSum θ k) hR a n ha0 (by omega) (psiG S a)
     rw [finsum_eq_sum_of_fintype] at L

@@ -114,7 +114,7 @@ theorem UpperTheory.Gal.KunnethLefschetz.G.PX.chartNzdAlg :
   have hΦJ : ∀ g ∈ J, Φ (MvPolynomial.map (algebraMap (MvPolynomial (Fin D) A) E) g) = 0 := by
     intro g hg
     rw [← key g]
-    simp only [Φ, AlgHom.comp_apply, AlgEquiv.toAlgHom_eq_coe, AlgEquiv.coe_algHom,
+    simp only [Φ, AlgHom.comp_apply, AlgEquiv.coe_algHom,
       AlgEquiv.symm_apply_apply, Ideal.Quotient.mkₐ_eq_mk]
     rw [Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_map_of_mem _ hg),
       map_zero]

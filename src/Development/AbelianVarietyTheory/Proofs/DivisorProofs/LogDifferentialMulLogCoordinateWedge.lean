@@ -41,7 +41,7 @@ theorem GlobalTheory.LogDR.dlog_mul_logWedge : ∀ (K : Type) [Field K] (n : ℕ
     obtain ⟨ε, -, e⟩ := prod_perm_sign f hf hp
     show f i * ((I.sort (· ≤ ·)).map f).prod = 0
     rw [e, mul_smul_comm, List.map_cons, List.prod_cons, ← mul_assoc]
-    simp [hfdef, ExteriorAlgebra.ι_sq_zero]
+    simp [hfdef]
   · intro hi
     have hp : ((insert i I).sort (· ≤ ·)).Perm (i :: I.sort (· ≤ ·)) := by
       refine (List.perm_ext_iff_of_nodup (Finset.sort_nodup _ _) ?_).2 fun a => ?_

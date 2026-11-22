@@ -21,7 +21,7 @@ theorem taylor_two {E : Type} [NormedAddCommGroup E] [NormedSpace ℝ E] (φ : E
   have hB : HasFDerivAt (fderiv ℝ φ) B p :=
     ((hφ.fderiv_right (m := 1) (by norm_num)).differentiableAt one_ne_zero).hasFDerivAt
   have hsymm : ∀ u w, B u w = B w u := fun u w =>
-    (hφ.isSymmSndFDerivAt (by simp [minSmoothness])) u w
+    (hφ.isSymmSndFDerivAt (by simp)) u w
   have hdiff := eventually_differentiableAt_of_contDiffAt hφ
   have hlo := hB.isLittleO
   set g : E → ℝ := fun w => φ w - D (w - p) - 1 / 2 * B (w - p) (w - p)
@@ -71,7 +71,7 @@ noncomputable section
 
 theorem rmVec_coord (h : V n) : rmVec (fun j => h j) = h := by
   ext i
-  simp [rmVec, bas, EuclideanSpace.single_apply, Pi.single_apply]
+  simp [rmVec, bas, Pi.single_apply]
 
 def linCoef (D : V n →L[ℝ] ℝ) (j : Fin n) : ℂ :=
   (D (bas n j) : ℂ) - Complex.I * (D (Complex.I • bas n j) : ℂ)

@@ -345,11 +345,11 @@ def cupTot : Tot1 F →ₗ[R] Tot1 F →ₗ[R] Tot2 F :=
     (fun a a' b ↦ Tot2.ext (by intros; simp [add_mul]) (by intros; simp [add_smul]; abel)
       (by intros; simp))
     (fun r a b ↦ Tot2.ext (by intros; simp) (by intros; simp [smul_sub, smul_comm r])
-      (by intros; simp [wedge_smul_left]))
+      (by intros; simp))
     (fun a b b' ↦ Tot2.ext (by intros; simp [mul_add]) (by intros; simp [add_smul]; abel)
       (by intros; simp))
     (fun r a b ↦ Tot2.ext (by intros; simp) (by intros; simp [smul_sub, smul_comm r])
-      (by intros; simp [wedge_smul_right]))
+      (by intros; simp))
 
 section
 variable {T T' T'' : C} (φ : T ⟶ T') (ψ : T' ⟶ T'') (a b : Tot1 F)

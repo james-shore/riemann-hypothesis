@@ -28,7 +28,6 @@ theorem mem_map_mul_ker_of_flat {R' A C' : Type} [CommRing R'] [CommRing A] [Com
   have hd : ∀ i, c i - ∑ l, a i l • z l ∈ RingHom.ker f := by
     intro i
     rw [RingHom.mem_ker]
-    change f (c i - ∑ l, a i l • z l) = 0
     rw [map_sub, map_sum]
     simp only [map_smul, hz]
     rw [← hy i, sub_self]

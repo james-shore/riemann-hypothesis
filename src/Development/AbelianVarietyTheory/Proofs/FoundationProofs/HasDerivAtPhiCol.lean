@@ -26,8 +26,6 @@ theorem hasDerivAt_det_of_one (A : ℝ → Matrix n n ℂ) (A' : Matrix n n ℂ)
   | exact @_root_.GlobalTheory.DetDerivativeAtOne.hasDerivAt_det_of_one
   | exact _root_.GlobalTheory.DetDerivativeAtOne.hasDerivAt_det_of_one
   | (apply _root_.GlobalTheory.DetDerivativeAtOne.hasDerivAt_det_of_one <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DetDerivativeAtOne.hasDerivAt_det_of_one <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DetDerivativeAtOne.hasDerivAt_det_of_one <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DetDerivativeAtOne.hasDerivAt_det_of_one ..)
 
 end Gen

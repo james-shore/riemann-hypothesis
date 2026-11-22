@@ -63,7 +63,7 @@ theorem pushSet_merge : ∀ (D : D7) (i : D.nd.Loc) (w : HeightOneSpectrum (𝓞
       · intro hy
         refine ⟨(L₁ y, L₂ y), ⟨hy.1, hy.2⟩, ?_⟩
         show Fin.append (L₁ y) (L₂ y) = y
-        simp only [hL₁, hL₂, LinearMap.funLeft_apply]
+        simp only [hL₁, hL₂]
         exact Fin.append_castAdd_natAdd
       · rintro ⟨p, ⟨hp1, hp2⟩, rfl⟩
         refine ⟨?_, ?_⟩

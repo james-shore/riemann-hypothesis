@@ -28,7 +28,7 @@ private theorem oneOdd_split : ∀ {O Γ : Type} [CommRing O] [Group Γ] [Topolo
     have e1 : (Φ.split a).n v = 1 := rfl
     have e2 : adj (1 : M4 k) = 1 := by
       ext i j
-      fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev, Matrix.one_apply]
+      fin_cases i <;> fin_cases j <;> simp [adj_apply, sgn, Fin.rev]
     rw [e1, e2, one_mul, mul_one, Matrix.sub_apply, Matrix.add_apply, hok.conj_split] at this
     linear_combination this
   obtain ⟨i₀, j₀, h1, h2⟩ := key
@@ -291,7 +291,7 @@ private theorem limPs {k : Type} [Field k] {n : M4 k} (h : IsLow n) (hq : SuppM 
   · fin_cases i <;> fin_cases j <;> first | exact h3 _ _ (by decide) | exact h21 | (simp at hij)
   · ext i j
     fin_cases i <;> fin_cases j <;>
-      simp [cmp_apply, Xm, Matrix.one_apply, Matrix.single_apply, h2, h31, h3 0 2 (by decide), h3 1 3 (by decide)]
+      simp [cmp_apply, Xm, h2, h31, h3 0 2 (by decide), h3 1 3 (by decide)]
 
 private theorem gsp_ps {k : Type} [Field k] (b : k) : IsGSp 1 (1 + b • Xm k) := by
   ext i j

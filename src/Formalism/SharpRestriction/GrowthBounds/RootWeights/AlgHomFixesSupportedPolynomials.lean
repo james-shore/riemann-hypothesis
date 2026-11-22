@@ -69,8 +69,8 @@ theorem cofactor_det_eq_cleared_det (R : Type) [CommRing R] {ι : Type} {r : ℕ
     simp [cofactorMatrix, cofactorMatrixColumnCleared, Matrix.updateRow_self, Pi.single_apply]
   · by_cases hj : j = a
     · subst hj
-      simp [cofactorMatrix, cofactorMatrixColumnCleared, hi, Matrix.updateRow_ne hi, Matrix.updateRow_self, matA]
-    · simp [cofactorMatrix, cofactorMatrixColumnCleared, hi, hj, Matrix.updateRow_ne hi, Matrix.updateRow_self, matA, Pi.single_apply]
+      simp [cofactorMatrix, cofactorMatrixColumnCleared, hi, Matrix.updateRow_self, matA]
+    · simp [cofactorMatrix, cofactorMatrixColumnCleared, hi, hj, Matrix.updateRow_self, matA]
 
 def cofactorVariables {ι : Type} {r : ℕ} [NeZero r] (A : Fin r → ι) (a : Fin r) : Set (ι × Fin r) :=
   {v | (∃ i, i ≠ lastIdx r ∧ v.1 = A i) ∧ v.2 ≠ a}
@@ -143,7 +143,7 @@ theorem substitution_det_eq_adjugate (R : Type) [CommRing R] {ι : Type} {r : �
   · subst hi
     simp [Matrix.updateRow_self, Pi.single_apply]
   · have : A i ≠ A (lastIdx r) := hA.ne hi
-    simp [this, Matrix.updateRow_ne hi, matA]
+    simp [this, Matrix.updateRow_ne hi]
 
 theorem hCop_proved : HCop := by
   intro R _ ι r _ A hA

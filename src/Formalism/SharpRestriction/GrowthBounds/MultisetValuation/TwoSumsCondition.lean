@@ -234,7 +234,7 @@ theorem gcCondition_of_twoSums (hT : TwoSumsCondition p) : RestGc p := by
       ← MvPowerSeries.coe_substAlgHom (hPs e)]
     simp only [map_add, map_sub, map_mul, map_pow]
     simp only [MvPowerSeries.coe_substAlgHom, MvPowerSeries.subst_C, MvPowerSeries.subst_X (hPs e)]
-    simp only [P, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, div_eq_mul_inv, map_mul, map_pow]
+    simp only [P, Matrix.cons_val_zero, Matrix.cons_val_one, div_eq_mul_inv, map_mul, map_pow]
     ring
   have hGt0 : MvPowerSeries.constantCoeff (-(MvPowerSeries.map (algebraMap (K0 p) K')
       (Gt p (Eidx n' r0 r1) (wK p c) (wK p (sigW p c))))) = 0 := by

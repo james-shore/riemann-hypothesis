@@ -40,7 +40,7 @@ theorem isPullback_pbMap {T T' : Scheme.{0}} (a : T' ⟶ T) (y : (functor A B r)
       (isPullback_bc A B y.1 a)
   refine IsPullback.of_iso H (y.2.1.comapIso (bc A B y.1 a)).symm (Iso.refl _) (Iso.refl _)
     (Iso.refl _) ?_ ?_ ?_ ?_
-  · simp only [pbMap, Iso.symm_hom, Iso.refl_hom, Category.comp_id, Category.id_comp]
+  · simp only [pbMap, Iso.symm_hom, Iso.refl_hom, Category.comp_id]
     exact (Iso.inv_hom_id_assoc _ _).symm
   · simp [proj, functor_map]
   · simp

@@ -19,7 +19,6 @@ theorem phibN_div (p : ℕ) (hp : p.Prime) [Nontrivial O] [IsAdicComplete (Ideal
   have hjac : I ≤ (⊥ : Ideal O).jacobson := by
     first
     | exact IsAdicComplete.le_jacobson_bot I
-    | exact IsAdicComplete.le_jacobson_bot (I := I)
   have hIne : I ≠ ⊤ := by
     intro h
     rw [h, top_le_iff, Ideal.jacobson_eq_top_iff] at hjac
@@ -30,15 +29,11 @@ theorem phibN_div (p : ℕ) (hp : p.Prime) [Nontrivial O] [IsAdicComplete (Ideal
   haveI : Nontrivial (O ⧸ I) := by
     first
     | exact Ideal.Quotient.nontrivial_iff.2 hIne
-    | exact Submodule.Quotient.nontrivial_of_lt_top _ hIne.lt_top
-    | exact Ideal.Quotient.nontrivial_of_lt_top hIne.lt_top
   have hinj : Function.Injective (algebraMap (O ⧸ I) (PowerSeries (O ⧸ I))) := by
     intro a b hab
     first
     | simpa using congrArg (PowerSeries.constantCoeff (O ⧸ I)) hab
     | simpa using congrArg PowerSeries.constantCoeff hab
-    | simpa using congrArg (PowerSeries.coeff 0) hab
-    | exact PowerSeries.C_injective hab
   haveI : CharP (PowerSeries (O ⧸ I)) p := charP_of_injective_algebraMap hinj p
   have hmap : PowerSeries.map (Ideal.Quotient.mk I) (((1 + PowerSeries.X) ^ p - 1) ^ N) =
       PowerSeries.X ^ (p * N) := by
@@ -187,7 +182,7 @@ theorem div_at (hp : PD.p.Prime) [Nontrivial O] [IsAdicComplete (Ideal.span {((P
       simp only [Pi.add_apply, Pi.mul_apply, letE, Pi.single_eq_same, one_mul, Pi.pow_apply, hs₀, hRt]
       rw [hf, hφb, hπc, hEc]
       linear_combination (-(PowerSeries.X ^ (s' + 2 * h') * W.q₀ ^ (s' + 2 * h') * Q)) * key
-    · simp [letE, Pi.single_apply, hi]
+    · simp [letE, hi]
   have hR' : Rt = ∑ i : Fin (PD.p * N), algebraMap O (LetA O n) (R.coeff i) * (letπ : LetA O n) ^ (i : ℕ) := by
     have hdeg : ∀ m, PD.p * N ≤ m → R.coeff m = 0 := fun m hm =>
       Polynomial.coeff_eq_zero_of_degree_lt (lt_of_lt_of_le hR (by exact_mod_cast hm))

@@ -106,7 +106,7 @@ theorem norm_x_sub_le_of_formalGroup (W : WeierstrassCurve C) (h1 : W.a₁ = 0) 
   have hq : (‖xd‖ / ‖yd‖) ^ 2 * ‖xd‖ = 1 := by
     rw [div_pow, hY]
     first
-      | (field_simp; ring)
+      | (field_simp)
       | field_simp
   have hs0 := norm_nonneg (px W A - px W B)
   have hq0 : 0 ≤ ‖xd‖ / ‖yd‖ := div_nonneg (norm_nonneg _) (norm_nonneg _)

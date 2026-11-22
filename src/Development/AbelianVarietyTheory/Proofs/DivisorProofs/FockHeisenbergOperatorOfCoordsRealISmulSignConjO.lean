@@ -30,7 +30,7 @@ theorem term_eq {P Q R S : ℕ} (c : Matrix (Ix P Q) (Ix R S) ℂ) (t : ℝ) (l 
   obtain ⟨a, b⟩ := l
   rw [Matrix.smul_apply, jm_conj_apply]
   rcases a with a | a <;> rcases b with b | b <;>
-    simp [raiB, lowB, linePos, lineSign, Complex.conj_ofReal, smul_smul] <;> ring_nf
+    simp [raiB, lowB, linePos, lineSign, Complex.conj_ofReal, smul_smul]
 
 theorem heisOp_rot_one (P Q R S : ℕ) (c : Matrix (Ix P Q) (Ix R S) ℂ) (t : ℝ) :
     heisOp (((t : ℂ) * Complex.I) • (Jm P Q * c * Jm R S)) 1 = ((t : ℂ) * Complex.I) • heisOp c 1 := by

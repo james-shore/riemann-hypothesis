@@ -142,7 +142,6 @@ theorem integral_coef_eq_mul_meanX : ∀ (D : D7) (V W : HSp D) (a b : ℕ) (P :
   obtain ⟨hTc, hTper, hTfub⟩ := GlobalTheory.T.thetaMatrixCoeff_smear_continuous_periodic_fubini D V W a b P Q ψ hψ μ 𝓨 hμ ν 𝓕 hν h𝓕 G G' hG hG'
   obtain ⟨hΦc, hΦper⟩ := GlobalTheory.T.iteratedIntegral_decomp_continuous_periodic D V W a b k (emb V W P' Q') (emb V W P Q) (cplx V W B) hcX'
     (continuous_cplx V W B) hcX (emb_add V W P' Q') (hratX P' Q') μ 𝓨 hμ η 𝓩 hη h𝓩 _ hTc hTper
-  beta_reduce at hΦc hΦper
 
   have : BorelSpace (Mx D a b) := ⟨rfl⟩
   have : MeasurableAdd (Mx D a b) :=

@@ -29,7 +29,7 @@ theorem unipFlag_castLE_le_unip : ∀ (F E : Type) [Field F] [NumberField F] [Fi
       funext l
       by_cases hl : l = j
       · subst hl; simp
-      · simp [Pi.single_apply, hl]
+      · simp [hl]
     rw [h0, hv, sub_mulVec, one_mulVec, sub_eq_zero, mulVec_single_one] at ha
     exact (congrFun ha i).trans (Pi.single_apply _ _ _)
   · obtain ⟨m, hmS, hmax⟩ : ∃ m ∈ S, ∀ k ∈ S, k ≤ m := ⟨S.max' hne, S.max'_mem hne, fun k hk => S.le_max' k hk⟩

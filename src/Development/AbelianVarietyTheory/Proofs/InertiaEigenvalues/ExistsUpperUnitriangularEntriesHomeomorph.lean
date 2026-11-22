@@ -20,7 +20,7 @@ theorem det_one_add_strictUpper (x : {p : Fin n × Fin n // p.1 < p.2} → R) :
   · intro i j hij
     have h1 : ¬ i < j := not_lt.2 (le_of_lt hij)
     have h2 : i ≠ j := ne_of_gt hij
-    simp [strictUpper, h1, h2, Matrix.one_apply_ne h2]
+    simp [strictUpper, h1, Matrix.one_apply_ne h2]
 
 def unitOf (x : {p : Fin n × Fin n // p.1 < p.2} → R) : GL (Fin n) R where
   val := 1 + strictUpper R n x

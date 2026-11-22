@@ -203,7 +203,6 @@ theorem GlobalTheory.EisM.twisted_lvalue_ne_zero_edge : ∀ (k N M : ℕ) (χ : 
       rw [GlobalTheory.EisM.ZEdge.lseries_shift e (fun n => φ n * g n)]
       apply hΛ
       simp
-      push_cast
       linarith
   refine ⟨Λ w, hne, ?_⟩
   have hc : Tendsto (fun s : ℝ => Λ ((w + s : ℝ) : ℂ)) (𝓝[>] 0) (𝓝 (Λ w)) := by
@@ -215,6 +214,5 @@ theorem GlobalTheory.EisM.twisted_lvalue_ne_zero_edge : ∀ (k N M : ℕ) (χ : 
   filter_upwards [self_mem_nhdsWithin] with s hs
   rw [hΛ]
   simp
-  push_cast
   have : (0 : ℝ) < s := hs
   linarith

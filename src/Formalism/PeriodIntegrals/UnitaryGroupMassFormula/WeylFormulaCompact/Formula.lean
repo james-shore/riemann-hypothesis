@@ -214,7 +214,7 @@ theorem dominant_restriction_holds : CDomRes := by
           rw [eps_ePl ε k] at he
           exact absurd he (by decide)
         have ha : ePl ε k ≠ eMi ε j := ePl_ne_eMi ε k j
-        simp [root, Pi.single_apply, ha, hb.symm]
+        simp [root, ha, hb.symm]
     have hT1 : ∀ i j, (c (ePl ε i) (eMi ε j) : ℝ) = 0 := by
       intro i j
       by_contra h0
@@ -245,7 +245,7 @@ theorem dominant_restriction_holds : CDomRes := by
           rw [eps_eMi ε k] at he
           exact absurd he (by decide)
         have ha : eMi ε k ≠ ePl ε j := eMi_ne_ePl ε k j
-        simp [root, Pi.single_apply, ha, hb.symm]
+        simp [root, ha, hb.symm]
     have hT1 : ∀ i j, (c (eMi ε i) (ePl ε j) : ℝ) = 0 := by
       intro i j
       by_contra h0

@@ -146,7 +146,6 @@ theorem sizes (c : ℝ) : GBig fun {D} _ _ {sc} G _ C x b => ∀ (i j : Fin D.R.
     have p2 := D.host.pde_prime.pos
     have p3 := D.host.pde'_prime.pos
     have p4 := (leastSplitAuxiliaryPrimeThetaChain_spec D).1.pos
-    push_cast at hl
     rw [Real.log_pow, Real.log_pow, Real.log_mul (by positivity) (by positivity),
       Real.log_mul (by positivity) (by positivity), Real.log_mul (by positivity) (by positivity),
       Real.log_mul (by positivity) (by positivity)] at hl

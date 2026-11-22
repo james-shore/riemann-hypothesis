@@ -74,8 +74,7 @@ theorem comm_a (p0 p1 pm : Fin n) (h01 : p0 ≠ p1) (h0m : p0 ≠ pm) (h1m : p1 
       tU (Pi.single pm (-1)) (Pi.single p1 1) (sdot _ _ _ h1m) := by
   apply Units.ext
   simp only [Units.val_mul, tU_val, tU_inv_val, add_mul, mul_add, sub_mul, mul_sub, one_mul, mul_one, vmv_mul_vmv,
-    Matrix.smul_mul, Matrix.mul_smul, smul_smul, single_dotProduct, Pi.single_apply, h01, h0m, h1m, h01.symm, h0m.symm, h1m.symm,
-    if_false, if_true, mul_zero, zero_smul, add_zero, sub_zero, zero_mul, mul_one]
+    Matrix.mul_smul, single_dotProduct, Pi.single_apply, h0m, h1m, h01.symm, if_false, if_true, mul_zero, zero_smul, add_zero, sub_zero, mul_one]
   ext p q
   simp only [Matrix.add_apply, Matrix.sub_apply, Matrix.smul_apply, vecMulVec_apply, Pi.single_apply, smul_eq_mul]
   split_ifs <;> simp_all
@@ -86,8 +85,7 @@ theorem comm_b (p0 p1 pm : Fin n) (h01 : p0 ≠ p1) (h0m : p0 ≠ pm) (h1m : p1 
       tU (Pi.single p0 (a * b)) (Pi.single p1 1) (sdot _ _ _ h01.symm) := by
   apply Units.ext
   simp only [Units.val_mul, tU_val, tU_inv_val, add_mul, mul_add, sub_mul, mul_sub, one_mul, mul_one, vmv_mul_vmv,
-    Matrix.smul_mul, Matrix.mul_smul, smul_smul, single_dotProduct, Pi.single_apply, h01, h0m, h1m, h01.symm, h0m.symm, h1m.symm,
-    if_false, if_true, mul_zero, zero_smul, add_zero, sub_zero, zero_mul, mul_one]
+    Matrix.smul_mul, single_dotProduct, Pi.single_apply, h1m, h01.symm, h0m.symm, if_false, if_true, mul_zero, zero_smul, add_zero, zero_mul, mul_one]
   ext p q
   simp only [Matrix.add_apply, Matrix.sub_apply, Matrix.smul_apply, vecMulVec_apply, Pi.single_apply, smul_eq_mul]
   split_ifs <;> simp_all [mul_comm]

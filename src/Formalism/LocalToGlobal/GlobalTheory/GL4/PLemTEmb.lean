@@ -33,7 +33,7 @@ def psi {S : HSpace E} (M : Model S) : S.V →+ EuclideanSpace ℝ (Idx S) where
   toFun x := WithLp.toLp 2 fun p ↦ if p.2.2 then (vec M p.1 x p.2.1).re else (vec M p.1 x p.2.1).im
   map_zero' := by
     ext p
-    simp only [vec, map_zero, LinearEquiv.map_zero, Finsupp.coe_zero, Pi.zero_apply]
+    simp only [vec, map_zero, Finsupp.coe_zero, Pi.zero_apply]
     have h0 : (fun _ : Fin S.rank ↦ (0 : ℂ)) = 0 := rfl
     rw [h0, Matrix.mulVec_zero]
     split_ifs <;> simp

@@ -26,7 +26,7 @@ theorem exists_congr_one {n : ℕ} {P : Matrix (Fin n) (Fin n) ℂ} (hP : P.IsHe
   have := hpos _ hx
   rw [Matrix.star_mulVec, ← Matrix.dotProduct_mulVec, Matrix.mulVec_mulVec, Matrix.mulVec_mulVec, hQ] at this
   cases h : ε i
-  · simp [h, Matrix.mulVec_single_one, dotProduct, Pi.single_apply, Matrix.diagonal_apply] at this
+  · simp [h, dotProduct, Pi.single_apply] at this
     linarith
   · simp
 

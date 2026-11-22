@@ -179,7 +179,7 @@ theorem laU_eq_wtCol : ∀ (D : D7) (T : CoreJ D) [Algebra T.Q.c.F D.what₂.LL]
   · have h1 : (c : ℕ) - (D.R.sigW ((i : ℕ) + 1)).2 < (D.R.sigW ((i : ℕ) + 1)).1 := by omega
     have h2 := aPl_cast D i s _ _ hp h1
     rw [if_neg h, if_pos (not_lt.1 h), ext0, dif_pos h1, hP]
-    simp only [Int.cast_sub, Int.cast_add, Int.cast_natCast, Int.cast_one]
+    simp only [Int.cast_sub, Int.cast_add, Int.cast_natCast]
     rw [h2, he']
     constructor <;> linarith
 

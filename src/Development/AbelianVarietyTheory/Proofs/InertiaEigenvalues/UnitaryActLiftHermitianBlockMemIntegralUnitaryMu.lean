@@ -69,7 +69,7 @@ theorem actU_liftH_support {r : ℕ} (X : Hn r F E) (ν : E) (l : F) (hν : ‖�
   have hv : ∀ i, ‖(g.1 *ᵥ (ν • eL r E)) i‖ ≤ 1 := hmem.2.1
   set v : Fin (r + 1) → E := fun i => g.1 i (Fin.last r) with hvdef
   have hgv : g.1 *ᵥ eL r E = v := by
-    funext i; simp [eL, Matrix.mulVec_single_one, v]
+    funext i; simp [eL, v]
   have hint : ∀ i, ‖v i‖ ≤ 1 := by
     intro i
     have := hv i

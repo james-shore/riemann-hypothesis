@@ -45,4 +45,4 @@ theorem _root_.GlobalTheory.T.fittingDatum_baseChange_localEnlargement : ∀ (T 
         (∀ (Z : Type) [CommRing Z] (w₁ w₂ : EA' →+* Z),
           w₁.comp (algebraMap (Polynomial A₁) EA') = w₂.comp (algebraMap (Polynomial A₁) EA') →
           w₁.comp γ = w₂.comp γ → w₁ = w₂) := by
-  first | (exact @GlobalTheory.EnlargeBaseChange.fits_baseChange) | (exact GlobalTheory.EnlargeBaseChange.fits_baseChange) | (intros; apply GlobalTheory.EnlargeBaseChange.fits_baseChange  <;> assumption)
+  first | (exact @GlobalTheory.EnlargeBaseChange.fits_baseChange)

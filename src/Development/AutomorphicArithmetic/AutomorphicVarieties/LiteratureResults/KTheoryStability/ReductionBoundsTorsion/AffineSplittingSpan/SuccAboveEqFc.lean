@@ -54,22 +54,22 @@ theorem dc_dc {m : ℕ} (F : (Fin (m + 1) → Y) → ℝ) : dc (dc F) = 0 := by
       (⟨p.1, by have := p.1.isLt; have := p.2.isLt; omega⟩ : Fin (m + 2)))) ?_ ?_ ?_ ?_
   · intro p _
     split_ifs with h
-    · simp only [Fin.val_mk, fc_fc_eq_fc_fc_pred_of_lt _ _ h]
+    · simp only [fc_fc_eq_fc_fc_pred_of_lt _ _ h]
       obtain ⟨t, ht⟩ : ∃ t, (p.1 : ℕ) = t + 1 := ⟨p.1 - 1, by omega⟩
       simp only [ht, Nat.add_sub_cancel, pow_succ]
       ring
-    · simp only [Fin.val_mk, fc_fc_eq_fc_fc_pred_of_lt ((p.2 : ℕ) + 1) p.1 (by omega), Nat.add_sub_cancel,
+    · simp only [fc_fc_eq_fc_fc_pred_of_lt ((p.2 : ℕ) + 1) p.1 (by omega), Nat.add_sub_cancel,
         pow_succ]
       ring
   · intro p _ _
     split_ifs with h
     · intro he
       rw [Prod.ext_iff, Fin.ext_iff, Fin.ext_iff] at he
-      simp only [Fin.val_mk] at he
+      simp only at he
       omega
     · intro he
       rw [Prod.ext_iff, Fin.ext_iff, Fin.ext_iff] at he
-      simp only [Fin.val_mk] at he
+      simp only at he
       omega
   · intro p _
     simp

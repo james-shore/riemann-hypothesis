@@ -355,8 +355,8 @@ theorem restriction_of_blocks_and_jordan (hB : BlocksCycle) (hJ : JordanTransiti
       intro c c' j j' hc' h
       by_contra hjj
       have h2 := congrArg (fun v => e.repr v j') h
-      simp [Finsupp.single_apply, hjj, Ne.symm hjj] at h2
-      exact hc' (by first | exact h2.symm | exact h2)
+      simp [Ne.symm hjj] at h2
+      exact hc' (by first | exact h2.symm)
     have hline : ∀ (g : G) (i : Fin N), ∃ j, ∃ c : k, c ≠ 0 ∧ ρ g (e i) = c • e j := by
       intro g i
       obtain ⟨g', hg'⟩ := hcov i
@@ -416,8 +416,7 @@ theorem restriction_of_blocks_and_jordan (hB : BlocksCycle) (hJ : JordanTransiti
     letI : MulAction (G ⧸ H) (Fin N) := MulAction.compHom (Fin N) (QuotientGroup.lift H σ (by
       intro x hx
       first
-      | exact hker1 x hx
-      | exact (MonoidHom.mem_ker).mpr (hker1 x hx)))
+      | exact hker1 x hx))
     have htrans : MulAction.IsPretransitive (G ⧸ H) (Fin N) := by
       refine ⟨fun x y => ?_⟩
       obtain ⟨gx, rfl⟩ := horb x

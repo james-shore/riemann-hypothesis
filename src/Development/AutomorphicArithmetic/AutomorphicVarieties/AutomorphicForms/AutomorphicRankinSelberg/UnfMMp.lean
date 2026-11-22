@@ -56,4 +56,3 @@ theorem UpperTheory.V.Af.Rs.unfM :
   first
     | rw [two_mul, two_nsmul]
     | rw [smul_eq_mul]
-    | simp [two_mul, two_smul]

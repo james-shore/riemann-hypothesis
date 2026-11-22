@@ -43,9 +43,9 @@ theorem goodPos : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberFi
     exact hnorm g⁻¹ x (hmc.1 hx)
   have hK2c : IsCompact (K2 : Set (GAd σ J)) := by
     have : (K2 : Set (GAd σ J)) = (fun x => g⁻¹ * x * g⁻¹⁻¹) '' (majCpt σ J c : Set (GAd σ J)) := by
-      ext x; simp [hK2, MulAut.conj_apply]
+      ext x; simp [hK2]
     rw [this]; exact hmc.2.image (hconj g⁻¹)
-  have hKK2 : K ≤ K2 := fun x hx => ⟨g * x * g⁻¹, hle ⟨x, hx, rfl⟩, by simp [MulAut.conj_apply, mul_assoc]⟩
+  have hKK2 : K ≤ K2 := fun x hx => ⟨g * x * g⁻¹, hle ⟨x, hx, rfl⟩, by simp [mul_assoc]⟩
   have hK2K : K2 ≤ K := hK.2 ⟨hK2le, hK2c⟩ hKK2
   obtain ⟨u, hu, hui, y, hy⟩ := exists_conj_mem_majCpt_frame F E σ hCM n J hJ r Xf Yf hW c hc S l d h ι hι hd h1 h2 h3
   refine ⟨u, hu, hui, y, (u * ι (GlobalTheory.CuspRep.infGL E d y))⁻¹ * g, by group, fun k => hK2K ?_⟩

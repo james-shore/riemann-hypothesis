@@ -25,11 +25,11 @@ private theorem hpk_sq_lemma : Hpk k r * Hpk k r = 1 := by
   let l : Fin (2 * r + k + 1) :=
     ⟨if r ≤ i.val ∧ i.val ≤ r + k then i.val else 2 * r + k - i.val, by split_ifs <;> omega⟩
   rw [Finset.sum_eq_single l]
-  · simp only [Hpk, l, Fin.ext_iff, Fin.val_mk]
+  · simp only [Hpk, l, Fin.ext_iff]
     split_ifs <;> first | (exfalso; omega) | norm_num
   · intro b _ hb
     have hb' : b.val ≠ l.val := fun h => hb (Fin.ext h)
-    simp only [l, Fin.val_mk] at hb'
+    simp only [l] at hb'
     have hbl := b.isLt
     apply mul_eq_zero_of_left
     simp only [Hpk, Fin.ext_iff]

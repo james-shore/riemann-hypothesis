@@ -87,7 +87,7 @@ theorem modPToResidue_residueSection (a : ResidueField A) :
   obtain ⟨b, rfl⟩ := modPToResidue_surjective p A a
   rw [residueSection, RingHom.comp_apply, RingEquiv.toRingHom_eq_coe, RingHom.coe_coe,
     RingEquiv.symm_apply_apply, RingHom.liftOfSurjective_comp_apply]
-  simp [iterateFrobenius_def, iterateFrobeniusEquiv_def]
+  simp [iterateFrobenius_def]
 
 variable [IsAdicComplete (span {(p : A)}) A]
 

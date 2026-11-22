@@ -48,16 +48,14 @@ theorem fix_incl (G : HTGroup p) (r : ℕ) (γ : Gp G) : sigG G r (inclG G r γ)
   · refine Units.ext (Matrix.ext fun a b => ?_)
     change frobQ p r (((inclG G r γ).1 : Matrix (Fin 1) (Fin 1) (Qr p r)) a b) = _
     simp only [inclG, MonoidHom.prodMap, MonoidHom.prod_apply, MonoidHom.coe_comp, Function.comp_apply,
-      MonoidHom.coe_fst, GeneralLinearGroup.coe_scalar, Matrix.scalar_apply, Units.coe_map,
-      MonoidHom.coe_coe]
+      MonoidHom.coe_fst, GeneralLinearGroup.coe_scalar, Matrix.scalar_apply, Units.coe_map]
     by_cases h : a = b
     · subst h; simp [Matrix.diagonal_apply_eq]
     · simp [Matrix.diagonal_apply_ne _ h]
   · refine Units.ext (Matrix.ext fun a b => ?_)
     change sigKQ p (G.Fw i) r (((inclG G r γ).2 i : Matrix (Fin G.n) (Fin G.n) (KQ p (G.Fw i) r)) a b) = _
     simp only [inclG, MonoidHom.prodMap, MonoidHom.prod_apply, MonoidHom.coe_comp, Function.comp_apply,
-      MonoidHom.coe_snd, Pi.monoidHom_apply, Pi.evalMonoidHom_apply, GeneralLinearGroup.map_apply,
-      AlgHom.toRingHom_eq_coe, RingHom.coe_coe]
+      MonoidHom.coe_snd, AlgHom.toRingHom_eq_coe]
     exact sigKQ_apply_inclK p (G.Fw i) r _
 
 end GlobalTheory.LKMid.SigIter
@@ -73,8 +71,7 @@ theorem incl_injective (G : HTGroup p) (r : ℕ) : Function.Injective (inclG G r
     congrArg (fun g : Gr G r => ((g.2 i : Matrix (Fin G.n) (Fin G.n) (KQ p (G.Fw i) r)) a b)) h
   simp only [inclG, MonoidHom.prodMap, MonoidHom.prod_apply, MonoidHom.coe_comp, Function.comp_apply,
     MonoidHom.coe_fst, MonoidHom.coe_snd, GeneralLinearGroup.coe_scalar, Matrix.scalar_apply, Units.coe_map,
-    MonoidHom.coe_coe, Pi.monoidHom_apply, Pi.evalMonoidHom_apply, GeneralLinearGroup.map_apply,
-    AlgHom.toRingHom_eq_coe, RingHom.coe_coe, Matrix.diagonal_apply_eq] at h1 h2
+    AlgHom.toRingHom_eq_coe, Matrix.diagonal_apply_eq] at h1 h2
   refine Prod.ext (Units.ext ((algebraMap ℚ_[p] (Qr p r)).injective h1)) (funext fun i => ?_)
   exact Units.ext (Matrix.ext fun a b => inclK_injective (G.Fw i) r (h2 i a b))
 
@@ -116,7 +113,7 @@ theorem fixed_mem_range (G : HTGroup p) (r : ℕ) (hr : 0 < r) (g : Gr G r) (hg 
     subst ha hb
     simp only [inclG, MonoidHom.prodMap, MonoidHom.prod_apply, MonoidHom.coe_comp, Function.comp_apply,
       MonoidHom.coe_fst, GeneralLinearGroup.coe_scalar, Matrix.scalar_apply, Units.coe_map,
-      MonoidHom.coe_coe, Matrix.diagonal_apply_eq, Units.val_mk0]
+      Matrix.diagonal_apply_eq, Units.val_mk0]
     exact hc
   · rw [← hmap i]
     rfl

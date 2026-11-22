@@ -151,7 +151,7 @@ theorem exists_field_pullback : ∀ (Z Z' X X' : Scheme.{0}) (p : Z ⟶ X) (p' :
         rw [← hn, map_pow]
         exact ((RingedSpace.isUnit_res_basicOpen Z.toRingedSpace s).pow n).map ψ
       have h1 := congrArg (fun y => Δ (ψ y)) hm
-      simp only [map_mul, Derivation.leibniz, hres, smul_zero, zero_add, smul_eq_mul, mul_zero] at h1
+      simp only [map_mul, Derivation.leibniz, hres, zero_add, smul_eq_mul, mul_zero] at h1
       exact (hunit.mul_right_eq_zero).1 h1
     · rw [hΔ, sub_eq_zero, hP O _ hle, hδ'1]
   have hcomp : ∀ (O₁ O₂ : A) (V : Z'.Opens), V ≤ O' O₁ → V ≤ O' O₂ → ∀ f, e O₁ V f = e O₂ V f := by

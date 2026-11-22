@@ -51,5 +51,4 @@ open GlobalTheory.SeqCx Matrix
 theorem _root_.GlobalTheory.T.linkExactLow_add_one_of_linkExactAff : ∀ (R : Type) [CommRing R] (s n : ℕ), LinkExactAff R s n → LinkExactLow R s (n + 1) := by
   first
   | exact @GlobalTheory.linkExactLow_succ_of_linkExactAff
-  | exact @GlobalTheory.low_union_aff_subset_low_succ
 end

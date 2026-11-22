@@ -38,14 +38,14 @@ theorem onGrid_comp {m : ℕ} {t : T} {X Y Z : Node} {p : Path T X Y} {q : Path 
 
 theorem onGrid_routeSmall {m : ℕ} (t : T) {i j : ℕ} (hi : i < m) (hj : j < m) : OnGrid m t (routeSmall t i j) := by
   intro a ha
-  simp only [routeSmall, Path.arrows, List.nil_append, List.cons_append, List.mem_cons, List.not_mem_nil, or_false] at ha
+  simp only [Path.arrows, List.nil_append, List.cons_append, List.mem_cons, List.not_mem_nil, or_false] at ha
   rcases ha with rfl | rfl
   · exact Or.inr ⟨i, j, hi.le, hj, rfl⟩
   · exact Or.inl ⟨i, j, hi, hj.le, rfl⟩
 
 theorem onGrid_routeBig {m : ℕ} (t : T) {i j : ℕ} (hi : i < m) (hj : j < m) : OnGrid m t (routeBig t i j) := by
   intro a ha
-  simp only [routeBig, Path.arrows, List.nil_append, List.cons_append, List.mem_cons, List.not_mem_nil, or_false] at ha
+  simp only [Path.arrows, List.nil_append, List.cons_append, List.mem_cons, List.not_mem_nil, or_false] at ha
   rcases ha with rfl | rfl
   · exact Or.inl ⟨i, j + 1, hi, hj, rfl⟩
   · exact Or.inr ⟨i + 1, j, hi, hj, rfl⟩

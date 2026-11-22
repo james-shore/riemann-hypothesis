@@ -99,7 +99,7 @@ theorem UpperTheory.V.Z.Sym.Sig.okK :
       obtain ⟨htr', hdet'⟩ := okK_conj g₀ a b
       rw [hdet, htr, hgeq, htr', hdet', ← map_pow, ← map_mul]
       congr 1
-      simp only [Units.val_div_eq_div_val, Units.val_inv_eq_inv_val, inv_div]
+      simp only [Units.val_div_eq_div_val, inv_div]
       field_simp
       ring
 

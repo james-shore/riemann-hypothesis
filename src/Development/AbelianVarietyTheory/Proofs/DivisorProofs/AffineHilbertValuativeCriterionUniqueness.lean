@@ -34,7 +34,7 @@ theorem ker_eq_bot_of_isPullback {Z ZK Y Y' : Scheme.{0}} [IsAffine Z] [IsAffine
   have hf : π.appTop.hom.Flat := (HasRingHomProperty.iff_of_isAffine (P := @Flat)).mp inferInstance
   have hinj := pushout_inl_injective hP hf hj
   rw [Scheme.ker_of_isAffine, (RingHom.injective_iff_ker_eq_bot _).mp hinj]
-  first | exact map_bot (Scheme.IdealSheafData.equivOfIsAffine (X := Z)).symm | simp
+  first | exact map_bot (Scheme.IdealSheafData.equivOfIsAffine (X := Z)).symm
 
 theorem appTop_spec_injective {R S : CommRingCat.{0}} (f : R ⟶ S) (hf : Function.Injective f.hom) :
     Function.Injective (Spec.map f).appTop.hom := by

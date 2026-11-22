@@ -22,7 +22,7 @@ theorem exists_extension (K : Type) [Field K] [NumberField K] (p : ℕ) [Fact p.
   have : IsScalarTower ℚ K TaylorLogMetric.Qbar := IsScalarTower.of_algebraMap_eq fun q => by
     rw [eq_ratCast, eq_ratCast, map_ratCast]
   have : Algebra.IsAlgebraic ℚ TaylorLogMetric.Qbar := by
-    convert algebraicClosure.isAlgebraic ℚ ℂ <;> first | rfl | exact Subsingleton.elim _ _
+    convert algebraicClosure.isAlgebraic ℚ ℂ <;> first | rfl
   have : Algebra.IsAlgebraic K TaylorLogMetric.Qbar := Algebra.IsAlgebraic.tower_top (K := ℚ) K
   let f : TaylorLogMetric.Qbar →ₐ[K] ℂ_[p] := IsAlgClosed.lift
   refine ⟨f.toRingHom, fun k => ⟨hmem k, ?_⟩⟩

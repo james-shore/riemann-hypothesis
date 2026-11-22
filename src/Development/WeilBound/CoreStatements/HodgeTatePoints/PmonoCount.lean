@@ -26,7 +26,7 @@ lemma prod_digits_sq (p f : ℕ) (P : NNReal) (y : Fin f → NNReal) (hy : ∀ n
     rw [Finset.prod_congr rfl (fun n _ => h n)]
     simp
   rw [Finset.prod_congr rfl (fun d _ => hterm d)]
-  simp [← pow_mul, mul_comm]
+  simp [← pow_mul]
 
 lemma eq_of_prod_eq {ι : Type} [Fintype ι] [DecidableEq ι] (a b : ι → NNReal) (ha : ∀ i, 0 < a i)
     (hab : ∀ i, a i ≤ b i) (h : ∏ i, b i = ∏ i, a i) (i : ι) : b i = a i := by

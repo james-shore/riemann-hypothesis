@@ -110,7 +110,7 @@ theorem exists_fam {E : Type} [Field E] [NumberField E] [IsCMField E] {r : ℕ} 
     refine Finset.sum_congr rfl fun a _ => ?_
     rw [Finset.sum_eq_single b]
     · simp
-    · intro b' _ hb'; simp [Pi.single_apply, hb']
+    · intro b' _ hb'; simp [hb']
     · simp
   obtain ⟨L, hL⟩ := LinearMap.exists_leftInverse_of_injective Φ hΦ
   exact ⟨L, fun u => LinearMap.congr_fun hL u⟩

@@ -85,36 +85,36 @@ private theorem P_a (Y : Fin e → Matrix (Fin n) (Fin n) X) : (1 + DD.epM Y).ma
   ext i j
   by_cases hij : i = j
   · subst hij
-    simp [Matrix.one_apply, DD.epM, dd_a_add, dd_a_one]
-  · simp [Matrix.one_apply, DD.epM, hij, dd_a_add, dd_a_zero]
+    simp [DD.epM]
+  · simp [DD.epM, hij]
 
 private theorem P_ep (Y : Fin e → Matrix (Fin n) (Fin n) X) (k : Fin e) :
     (1 + DD.epM Y).map (fun a => a.ep k) = Y k := by
   ext i j
   by_cases hij : i = j
   · subst hij
-    simp [Matrix.one_apply, DD.epM, ep_component_add, dd_ep_one]
-  · simp [Matrix.one_apply, DD.epM, hij, ep_component_add, dd_ep_zero]
+    simp [DD.epM]
+  · simp [DD.epM, hij]
 
 private theorem P_ep' (Y : Fin e → Matrix (Fin n) (Fin n) X) (k : Fin e) :
     (1 + DD.epM Y).map (fun a => a.ep' k) = 0 := by
   ext i j
   by_cases hij : i = j
   · subst hij
-    simp [Matrix.one_apply, DD.epM, dd_ep'_add, dd_ep'_one]
-  · simp [Matrix.one_apply, DD.epM, hij, dd_ep'_add, dd_ep'_zero]
+    simp [DD.epM]
+  · simp [DD.epM, hij]
 
 private theorem epM_mul (Y Z : Fin e → Matrix (Fin n) (Fin n) X) : DD.epM Y * DD.epM Z = 0 := by
   refine Matrix.ext fun i j => ?_
   simp only [Matrix.mul_apply, Matrix.zero_apply]
   refine Finset.sum_eq_zero fun k _ => ?_
   apply DD.ext
-  · simp [DD.mul_a, DD.epM, dd_a_zero]
+  · simp [DD.mul_a, DD.epM]
   · funext m
-    simp [DD.mul_ep, DD.epM, dd_ep_zero]
+    simp [DD.mul_ep, DD.epM]
   · funext m
-    simp [DD.mul_ep', DD.epM, dd_ep'_zero]
-  · simp [DD.mul_eta, DD.epM, dd_eta_zero]
+    simp [DD.mul_ep', DD.epM]
+  · simp [DD.mul_eta, DD.epM]
 
 private theorem epM_add (Y Z : Fin e → Matrix (Fin n) (Fin n) X) : DD.epM Y + DD.epM Z = DD.epM (Y + Z) := by
   ext i j <;> simp [DD.epM]
@@ -177,7 +177,7 @@ private theorem a_ep'_mul_eq_zero_of_ep_eta_zero_of_a_ep'_zero (x y : DD X e) (h
   constructor
   · simp [DD.mul_a, hy1]
   · funext j
-    simp [DD.mul_ep', hx1, hy1, hy2]
+    simp [DD.mul_ep', hy1, hy2]
 
 private theorem a_ep'_mul_eq_zero_of_a_ep'_zero_of_ep_eta_zero (x y : DD X e) (hx : x.a = 0 ∧ x.ep' = 0) (hy : y.ep = 0 ∧ y.eta = 0) :
     (x * y).a = 0 ∧ (x * y).ep' = 0 := by
@@ -243,19 +243,19 @@ private theorem even_P (a : ℕ) (Y : Fin e → Matrix (Fin n) (Fin n) X) (hY : 
     · funext k
       by_cases hij' : i = j
       · subst hij'
-        simp [Matrix.one_apply, DD.epM, h0, ep_component_add, dd_ep_one]
-      · simp [Matrix.one_apply, DD.epM, hij', h0, ep_component_add, dd_ep_zero]
+        simp [DD.epM, h0]
+      · simp [DD.epM, hij', h0]
     · by_cases hij' : i = j
       · subst hij'
-        simp [Matrix.one_apply, DD.epM, dd_eta_add, dd_eta_one]
-      · simp [Matrix.one_apply, DD.epM, hij', dd_eta_add, dd_eta_zero]
+        simp [DD.epM]
+      · simp [DD.epM, hij']
   · intro hij
     rw [mem_od]
     have hne : i ≠ j := fun h => hij (h ▸ Iff.rfl)
     constructor
-    · simp [Matrix.one_apply, DD.epM, hne, dd_a_add, dd_a_zero]
+    · simp [DD.epM, hne]
     · funext k
-      simp [Matrix.one_apply, DD.epM, hne, dd_ep'_add, dd_ep'_zero]
+      simp [DD.epM, hne]
 
 end Comp
 

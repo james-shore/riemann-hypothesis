@@ -44,8 +44,8 @@ private theorem nabs_norm [CharZero k] (x : k'ˣ) :
   have hT := GlobalTheory.T.map_linearEquiv_addHaar_localField k k' μ T
   have hdet : LinearEquiv.det T = (Units.map (Algebra.norm k : k' →* k) x)⁻¹ := by
     ext
-    simp only [LinearEquiv.coe_det, T, Units.coe_map, MonoidHom.coe_coe, Algebra.norm_apply,
-      Units.val_inv_eq_inv_val, map_inv₀]
+    simp only [LinearEquiv.coe_det, T, Units.coe_map, Algebra.norm_apply,
+      Units.val_inv_eq_inv_val]
     have hl : (↑(DistribMulAction.toLinearEquiv k k' x⁻¹) : k' →ₗ[k] k') =
         LinearMap.mul k k' ↑x⁻¹ := by
       ext y

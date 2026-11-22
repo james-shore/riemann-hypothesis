@@ -58,7 +58,7 @@ theorem main (D : D7) (A : HSp D) (t : ℕ) (B W : HSp D) (d : HypDec B W t) (ψ
   have hr1 : ResEta D 1 (dblSp A).rank := by
     have := GlobalTheory.Eis.SimplePoleModel.resEta_one_two_mul D A.rank
     convert this using 2
-    simp [GlobalTheory.Doubling.dblSp]
+    simp
     omega
   obtain ⟨omW, homW⟩ := GlobalTheory.weilRepresentationUnitaryPair D ψ₀ (dblSp A) W 1 χ⁻¹ h₀
     ⟨continuous_const, fun _ => rfl⟩ hχi hr1 hri

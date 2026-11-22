@@ -140,8 +140,6 @@ theorem endMin_sq {E : Type} [Field E] {r : ℕ} (rd : ℝ) (γ : PN.Pts E r) (a
         have h0 : 0 ≤ v (-1) := by
           first
             | exact v.1.nonneg (-1)
-            | exact apply_nonneg v (-1)
-            | positivity
         nlinarith
       rw [hm1, one_pow]
     rw [hsg, one_mul, ← pow_mul, mul_comm]
@@ -153,8 +151,6 @@ theorem gram_pow_le_haar : ∀ (E : Type) [Field E] [NumberField E] [StarRing E]
   have hw0 : ∀ (w : InfinitePlace E) (x : E), 0 ≤ w x := fun w x => by
     first
       | exact w.1.nonneg x
-      | exact apply_nonneg w x
-      | positivity
   let Tw : Fin γ.1.length → InfinitePlace E → ℝ := fun a w =>
     (rd ^ (2 * r + 1 + γ.1.blocksFun a - 2 * endIdx γ a))⁻¹ * w (γ.2 a)
   let U : Fin γ.1.length → ℝ := fun a => ∏ w : InfinitePlace E, Tw a w ^ (2 * γ.1.blocksFun a)

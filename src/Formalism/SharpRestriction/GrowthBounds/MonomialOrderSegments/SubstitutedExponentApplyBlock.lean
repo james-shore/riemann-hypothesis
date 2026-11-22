@@ -69,7 +69,7 @@ theorem mem_chainSet (j : Fin D.J) (i : Fin (D.nch j)) (z : D.ML) :
 theorem mem_Yset (j : Fin D.J) (m : Fin D.r) (z : D.ML) :
     z ∈ D.Yset j m ↔ (∃ m' : Fin D.r, D.mw (D.aux₃ j, m') = z) ∨ (∃ b ∈ D.LLj j, D.mb b = z) ∨
       ∃ m' : Fin D.r, m < m' ∧ D.mtp (j, m') = z := by
-  simp [Yset, wSet, or_assoc]
+  simp [Yset, wSet]
 
 theorem mlab_notMem_chainSet (j : Fin D.J) (i : Fin (D.nch j)) (t : D.Tau) :
     D.mlab t ∉ D.chainSet j i := by

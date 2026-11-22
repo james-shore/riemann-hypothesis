@@ -49,7 +49,7 @@ theorem exists_open_sympLev : ∀ (h M : ℕ) (S' : Scheme.{0}) [IsLocallyNoethe
         (Pdiv.PullbackComparison.gen_refl _ (pull_isLB hP _)) (fun a => secPull_left pb _)]
       obtain ⟨W, hW, hxW⟩ := hsup k (x ≫ V.ι) (by
         rintro _ ⟨p, rfl⟩
-        exact hV (by first | exact (x.base p).2 | simp | (rw [← Scheme.Opens.range_ι V]; exact ⟨_, rfl⟩)))
+        exact hV (by first | exact (x.base p).2))
       exact hW k (x ≫ V.ι) β z hxW (by rw [Category.assoc]; exact hx) hz
   · intro T g c' φ φ₂ pb sq iso hl
     rintro _ ⟨τ, rfl⟩
@@ -68,7 +68,7 @@ theorem exists_open_sympLev : ∀ (h M : ℕ) (S' : Scheme.{0}) [IsLocallyNoethe
       ⟨H₁ k x (hx.trans (le_trans inf_le_left inf_le_left)), H₂ k x (hx.trans (le_trans inf_le_left inf_le_right)),
         H₃ k x β' z' (hx.trans inf_le_right) hxt hz'⟩
     have hmem : g.base τ ∈ (W₁ ⊓ W₂ ⊓ W₃ : S'.Opens) := by
-      have e : (x₀ ≫ g).base q = g.base τ := by first | simp [← hq] | (rw [Scheme.Hom.comp_apply, hq]) | (rw [Scheme.comp_base_apply, hq])
+      have e : (x₀ ≫ g).base q = g.base τ := by first | simp [← hq]
       rw [← e]
       exact ⟨⟨hW₁ ⟨q, rfl⟩, hW₂ ⟨q, rfl⟩⟩, hW₃ ⟨q, rfl⟩⟩
     exact (le_sSup (show W₁ ⊓ W₂ ⊓ W₃ ∈ {W | Good W} from hgood)) hmem

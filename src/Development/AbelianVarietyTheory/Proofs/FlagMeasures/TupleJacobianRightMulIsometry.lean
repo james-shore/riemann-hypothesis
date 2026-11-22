@@ -139,7 +139,7 @@ theorem cont_linearEquiv [IsNonarchimedeanLocalField F] [CharZero F] (L : LocE F
 def rmulL {n m : ℕ} (A : Matrix (Fin m) (Fin m) E) :
     (Fin m → Fin n → E) →ₗ[E] (Fin m → Fin n → E) where
   toFun x := rmul x A
-  map_add' x y := by ext j k; simp [rmul, mul_add, Finset.sum_add_distrib]
+  map_add' x y := by ext j k; simp [rmul, Finset.sum_add_distrib]
   map_smul' c x := by ext j k; simp [rmul, Finset.mul_sum, mul_left_comm]
 
 def swapL (n m : ℕ) : (Fin n → Fin m → E) ≃ₗ[E] (Fin m → Fin n → E) where
@@ -180,8 +180,7 @@ theorem det_isom (L : LocE F E) {n : ℕ} (Hm : Matrix (Fin n) (Fin n) E) (hH : 
   refine hH.mul_left_cancel ?_
   rw [mul_one]
   conv_rhs => rw [← h3]
-  simp only [RingEquiv.toRingHom_eq_coe, RingHom.coe_coe, AlgEquiv.coe_ringEquiv,
-    AlgEquiv.toRingEquiv_eq_coe]
+  simp only [RingEquiv.toRingHom_eq_coe, RingHom.coe_coe, AlgEquiv.coe_ringEquiv]
   ring
 
 end GlobalTheory.HL.TupleJac

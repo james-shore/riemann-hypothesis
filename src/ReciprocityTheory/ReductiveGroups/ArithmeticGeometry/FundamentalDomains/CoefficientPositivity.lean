@@ -314,7 +314,7 @@ theorem nonvanishing_coefficient_positivity_of (h2 : UnipotentLatticeLift (E := 
   have hemb : ∀ σ : X.Ψ, Data.emb σ.1 ξ = X.uvec u (fun σ i => σ.1 (e i)) σ := by
     intro σ
     funext j
-    simp [Data.emb, Data.uvec, hξ_def, Finset.sum_apply, map_sum, map_mul]
+    simp [Data.emb, Data.uvec, hξ_def, Finset.sum_apply, map_mul]
 
   have hinv : ∀ s : X.Ψ → ℝ, X.fz u X.g (X.embH β) P (X.flow ξ (fun τ => (s τ : ℂ)) x1) =
       X.fz u X.g (X.embH β) P x1 := by

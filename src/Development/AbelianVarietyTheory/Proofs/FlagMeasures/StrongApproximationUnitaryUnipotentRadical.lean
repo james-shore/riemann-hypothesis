@@ -746,7 +746,7 @@ theorem strong_approximation : ∀ (I : AutInst) (W : Submodule I.E (Fin I.n →
     intro A _ ι x
     have : ι.mapMatrix ((2⁻¹ : I.E) • (1 : Matrix (Fin I.n) (Fin I.n) I.E)) = ι 2⁻¹ • 1 := by
       ext i j
-      by_cases h : i = j <;> simp [h, Matrix.one_apply]
+      by_cases h : i = j <;> simp [h]
     rw [this, smul_mul_assoc, mul_smul_comm, one_mul, mul_one]
   refine ⟨⟨⟨⟨⟨I.NA W, fun {a b} ha hb => ?_⟩, hone⟩, fun {a} ha => ?_⟩, rfl⟩, ?_,
     fun m hm => ⟨⟨hm.1, hone.2⟩, ⟨hone.1, hm.2⟩⟩, fun V hV m hm => ?_, ?_⟩

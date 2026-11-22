@@ -25,7 +25,7 @@ theorem blockMat_mul {n : ℕ} (g h : Mir k n) :
   have hh := (mem_Mir_iff k (h : GL (Fin (n + 1)) k)).1 h.2
   ext i j
   have e : ((h : GL (Fin (n + 1)) k) : Matrix (Fin (n + 1)) (Fin (n + 1)) k) (Fin.last n) (Fin.castSucc j) = 0 := by
-    rw [hh]; simp [eLast, Pi.single_apply, Fin.castSucc_ne_last]
+    rw [hh]; simp [eLast, Fin.castSucc_ne_last]
   simp [blockMat, Units.val_mul, mul_apply, Fin.sum_univ_castSucc, e]
 
 def mirabolicProjection (n : ℕ) : Mir k n →* GL (Fin n) k :=
@@ -60,7 +60,7 @@ theorem glEmbMat_mul_colMat (n : ℕ) (A : Matrix (Fin n) (Fin n) k) (v : Fin n 
 theorem colMat_mul_glEmbMat (n : ℕ) (A : Matrix (Fin n) (Fin n) k) (w : Fin n → k) :
     colMat k n w * glEmbMat k n A = colMat k n w := by
   ext i j
-  induction j using Fin.lastCases <;> simp [colMat, glEmbMat, mul_apply, Fin.sum_univ_castSucc, Fin.castSucc_ne_last]
+  induction j using Fin.lastCases <;> simp [colMat, glEmbMat, mul_apply, Fin.castSucc_ne_last]
 
 theorem glEmb_mul_unip' (n : ℕ) (g : GL (Fin n) k) (v : Multiplicative (Fin n → k)) :
     glEmb k n g * unip k n v =

@@ -32,7 +32,7 @@ theorem hform_eq (x y : Fin (VS D).rank → D.host.E) :
     Formalism.UG.hform (starRingEnd D.host.E) (Jv D) x y =
       (VS D).hT (∑ i, x i • (VS D).frame i) (∑ j, y j • (VS D).frame j) := by
   unfold Formalism.UG.hform Jv
-  simp only [map_sum, map_smulₛₗ, LinearMap.sum_apply, LinearMap.smul_apply, map_smul, smul_eq_mul,
+  simp only [map_sum, map_smulₛₗ, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul,
     Finset.mul_sum, RingHom.id_apply]
   conv_rhs => rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
@@ -182,10 +182,10 @@ theorem Jpq_sub (p q : ℕ) {n : Type} [DecidableEq n] (e : n ≃ Fin p ⊕ Fin 
   by_cases hab : a = b
   · subst hab
     have ha := he a
-    rcases hea : e a with x | x <;> simp_all [Matrix.one_apply]
+    rcases hea : e a with x | x <;> simp_all
   · rw [if_neg hab]
     have hne : e a ≠ e b := fun h => hab (e.injective h)
-    rcases hea : e a with x | x <;> rcases heb : e b with y | y <;> simp_all [Matrix.one_apply]
+    rcases hea : e a with x | x <;> rcases heb : e b with y | y <;> simp_all
 
 theorem exists_P (τ : D.what₂.Tau) : ∃ P : Matrix (Fin (VS D).rank) (Fin (VS D).rank) ℂ, IsUnit P ∧
     Pᴴ * (Jv D).map (embS D τ) * P = Formalism.REAL.Jm (epsV D) := by

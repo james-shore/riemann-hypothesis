@@ -18,7 +18,7 @@ omit [NumberField E] [IsCMField E] in
 theorem _root_.GlobalTheory.Ker.ConjDatum.conjugate_twice (τ : E →+* ℂ) :
     ComplexEmbedding.conjugate (ComplexEmbedding.conjugate τ) = τ := by
   ext x
-  simp [ComplexEmbedding.conjugate_coe_eq]
+  simp
 
 open Matrix Complex NumberField in
 open scoped ComplexConjugate Classical in
@@ -87,7 +87,7 @@ theorem _root_.GlobalTheory.Ker.ConjDatum.cfr_mem_GG (Ψ : Finset (E →+* ℂ))
   · have h := hpos i
     have hminor : _root_.ReciprocityTheory.ChartRestriction.G.FD.dmin G (_root_.GlobalTheory.Ker.ConjDatum.cfr Ψ x) τ i =
         starRingEnd ℂ (_root_.ReciprocityTheory.ChartRestriction.G.FD.dmin G x (_root_.GlobalTheory.Ker.ConjDatum.cpl Ψ τ) i) := by
-      simp only [_root_.ReciprocityTheory.ChartRestriction.G.FD.dmin, _root_.ReciprocityTheory.ChartRestriction.G.FD.lminor, hgram, ← Matrix.submatrix_map]
+      simp only [_root_.ReciprocityTheory.ChartRestriction.G.FD.dmin, _root_.ReciprocityTheory.ChartRestriction.G.FD.lminor, hgram]
       rw [RingHom.map_det]
       rfl
     rw [hminor, Complex.conj_re]

@@ -48,11 +48,8 @@ theorem rowTieIn_of
     | exact rowOrb_S i r π dc g0 eB e₁ s Dd hD hc
   · first
     | exact rowTop1_S i dc r π g0 eB e₁ s Dd hD
-    | exact rowTop1_S (dc := dc) (hD := hD)
-    | exact fun n hn hn' c hcont => rowTop1_S (hD := hD) .. n hn hn' c hcont
   · first
     | exact rowFin_S ..
-    | exact rowFin_S i r π dc g0 eB e₁ s Dd hD hc
 
 end Formalism.MainNotions.N.KRowA
 

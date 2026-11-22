@@ -69,7 +69,7 @@ private theorem posOf_sub_mul_eq_and_even_iff (n' : ℕ) [NeZero n'] (hn : Even 
   have hn' : Even (n' : ℤ) := by exact_mod_cast hn
   constructor
   · simp [posOf, Int.sub_emod]
-  · simp [Int.even_sub, Int.even_mul, hn']
+  · simp [Int.even_sub, hn']
 
 private theorem arow_lt_self_of_valid {n' r : ℕ} [NeZero n'] {F : Frames n' r} {L₁ N₁ : ℕ} (hV : F.Valid L₁ N₁)
     (hn : Even n') (hr : 1 ≤ r) (s : ℤ) (l : ℕ) (hl : l < r) : Arow F s l < s := by

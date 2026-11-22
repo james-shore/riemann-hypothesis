@@ -77,10 +77,10 @@ theorem goodModelTwo_scaleOne : GlobalTheory.ThLoc.Inputs → ∀ (D : D7) (cc :
   · rw [WeierstrassCurve.variableChange_a₃, hCu]
     simp only [C, zero_mul, mul_zero, add_zero, norm_mul, norm_pow, hun, one_pow, one_mul]; exact h3
   · rw [WeierstrassCurve.variableChange_a₄, hCu]
-    simp only [C, zero_mul, mul_zero, sub_zero, add_zero, zero_add, zero_pow two_ne_zero, norm_mul, norm_pow, hun,
+    simp only [C, zero_mul, mul_zero, sub_zero, add_zero, zero_pow two_ne_zero, norm_mul, norm_pow, hun,
       one_pow, one_mul]; exact h4
   · rw [WeierstrassCurve.variableChange_a₆, hCu]
-    simp only [C, zero_mul, mul_zero, sub_zero, add_zero, zero_add, zero_pow two_ne_zero, zero_pow three_ne_zero,
+    simp only [C, zero_mul, mul_zero, sub_zero, add_zero, zero_pow two_ne_zero, zero_pow three_ne_zero,
       norm_mul, norm_pow, hun, one_pow, one_mul]; exact h6
   · rw [WeierstrassCurve.variableChange_Δ, hCu, norm_mul, norm_pow, hun, one_pow, one_mul]; exact hΔ
   · rw [WeierstrassCurve.variableChange_a₁, hCu]

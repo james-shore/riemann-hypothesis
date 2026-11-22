@@ -34,7 +34,6 @@ private theorem spanO_gen {O K : Type} [CommRing O] [Field K] (f : O →+* K) {n
     simp only [w, Matrix.mulVec_mulVec, Matrix.mul_adjugate]
     first
       | simp [Matrix.smul_mulVec]
-      | (ext p; simp [Matrix.mulVec, dotProduct, Matrix.smul_apply, Matrix.one_apply])
   have hZ : M.det • Z = ∑ q, w q • r (g (e q)) := by
     ext i j
     have hij := congrFun hw (i, j)

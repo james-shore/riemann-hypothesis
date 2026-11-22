@@ -15,4 +15,4 @@ theorem _root_.GlobalTheory.T.adicIntegralTensorBasis_hensel_exists_unique_sqrt 
     ∃ f : (v.adicCompletion ℚ ⊗[ℚ] L)ˣ, IsIntB v bL ↑f ∧ IsIntB v bL ↑f⁻¹ ∧ (f : v.adicCompletion ℚ ⊗[ℚ] L) ^ 2 = u ∧
       IsSmallB v bL (↑f - 1) ∧
       ∀ g : v.adicCompletion ℚ ⊗[ℚ] L, IsIntB v bL g → g ^ 2 = u → IsSmallB v bL (g - 1) → g = ↑f := by
-  first | (exact @GlobalTheory.AdicSpan.HenselSqrt.exists_sqrt) | (exact GlobalTheory.AdicSpan.HenselSqrt.exists_sqrt) | (intros; apply GlobalTheory.AdicSpan.HenselSqrt.exists_sqrt  <;> assumption)
+  first | (exact @GlobalTheory.AdicSpan.HenselSqrt.exists_sqrt)

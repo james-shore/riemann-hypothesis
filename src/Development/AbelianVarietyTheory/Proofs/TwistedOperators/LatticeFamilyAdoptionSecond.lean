@@ -120,7 +120,7 @@ theorem ext_smul (c : K) (A : Module.End K Fm) :
     ext O K'' (c • A) = algebraMap K K'' c • ext O K'' A := by
   apply TensorProduct.AlgebraTensorModule.ext
   intro x m
-  simp [tmul_smul_frac, TensorProduct.smul_tmul', smul_eq_mul]
+  simp [tmul_smul_frac, TensorProduct.smul_tmul']
   rw [Algebra.smul_def]
 
 theorem ext_sum {ι : Type} (s : Finset ι) (A : ι → Module.End K Fm) :
@@ -261,11 +261,6 @@ theorem exists_smul_mem (M : Submodule Oe T) {x : T} (hx : x ∈ Submodule.span 
     ∃ c : Oe, c ≠ 0 ∧ c • x ∈ M := by
   first
   | (rename_i h_3 h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11; revert Oe K'' T h_3 h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11 M x hx; exact @_root_.GlobalTheory.SmulMemOfMemSpanExists.exists_smul_mem_of_mem_span)
-  | exact @_root_.GlobalTheory.SmulMemOfMemSpanExists.exists_smul_mem_of_mem_span
-  | exact _root_.GlobalTheory.SmulMemOfMemSpanExists.exists_smul_mem_of_mem_span
-  | (apply _root_.GlobalTheory.SmulMemOfMemSpanExists.exists_smul_mem_of_mem_span <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SmulMemOfMemSpanExists.exists_smul_mem_of_mem_span <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SmulMemOfMemSpanExists.exists_smul_mem_of_mem_span <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SmulMemOfMemSpanExists.exists_smul_mem_of_mem_span ..)
 
 theorem isLatIn_span (σ : LL →+* K'') (hint : ∀ a : 𝓞 LL, ∃ r : Oe, σ (a : LL) = algebraMap Oe K'' r)

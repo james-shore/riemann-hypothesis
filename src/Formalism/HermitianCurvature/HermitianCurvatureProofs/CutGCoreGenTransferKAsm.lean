@@ -19,7 +19,7 @@ variable {Wp Wq : Type} [NormedAddCommGroup Wp] [InnerProductSpace ℂ Wp] [Norm
 theorem hs_expand (A C : Wq →L[ℂ] Wp) :
     inner ℂ (B.hsVec A) (B.hsVec C) =
       ∑ i, inner ℂ (A (stdOrthonormalBasis ℂ Wq i)) (C (stdOrthonormalBasis ℂ Wq i)) := by
-  simp only [B.hsVec, PiLp.inner_apply, PiLp.toLp_apply]
+  simp only [B.hsVec, PiLp.inner_apply]
 
 theorem hs_comp_right (A C : Wq →L[ℂ] Wp) (Q : Wq →L[ℂ] Wq) (hQ : ∀ v w, inner ℂ (Q v) w = inner ℂ v (Q w)) :
     inner ℂ (B.hsVec A) (B.hsVec (C.comp Q)) = inner ℂ (B.hsVec (A.comp Q)) (B.hsVec C) := by
@@ -45,7 +45,7 @@ theorem hs_comp_sum {ι : Type} [Fintype ι] (A C : Wq →L[ℂ] Wp) (Q : ι →
 theorem comp_sum_eq {ι : Type} [Fintype ι] (C : Wq →L[ℂ] Wp) (Q : ι → (Wq →L[ℂ] Wq)) :
     C.comp (∑ σ, Q σ) = ∑ σ, C.comp (Q σ) := by
   ext v
-  simp [ContinuousLinearMap.sum_apply, map_sum]
+  simp [map_sum]
 
 end hs
 

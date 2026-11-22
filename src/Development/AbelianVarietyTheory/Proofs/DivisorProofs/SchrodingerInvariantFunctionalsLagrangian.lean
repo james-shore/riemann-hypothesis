@@ -132,7 +132,7 @@ theorem eval_mem_adm {F : Type} [Field F] [NumberField F] {κ : Type} [Fintype �
     (SchwartzMap.toBoundedContinuousFunctionCLM ℂ _ ℂ)), fun f => ?_⟩
   simp only [LinearMap.proj_apply, pureA, ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply,
     BoundedContinuousFunction.evalCLM_apply, SchwartzMap.toBoundedContinuousFunctionCLM_apply,
-    SchwartzMap.toBoundedContinuousFunction_apply, smul_eq_mul]
+    smul_eq_mul]
   ring
 
 end GlobalTheory.SvNLinear

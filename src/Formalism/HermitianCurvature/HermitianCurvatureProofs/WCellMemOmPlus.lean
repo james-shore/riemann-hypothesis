@@ -44,7 +44,7 @@ theorem wCell_last_eq (c : Fin r → ℂ) : wCell k r (Fin.last r) c = bigCell k
   simp only [μE_one, PI.QnWCellW.cf, Fin.ext_iff, PI.QnWCellW.swp_val]
   have hp := p.isLt
   have hq := q.isLt
-  split_ifs <;> first | rfl | (exfalso; omega) | (congr 1; omega) | (congr 3; omega) | (rw [show 2 * r + k - (q : ℕ) = (p : ℕ) by omega])
+  split_ifs <;> first | rfl | (exfalso; omega) | (congr 1; omega) | (congr 3) | (rw [show 2 * r + k - (q : ℕ) = (p : ℕ) by omega])
 
 lemma glev_last_uwb {g : Mx k r} (hg : g ∈ Glev k r (Fin.last r)) : g ∈ B2.UWb k r := by
   exact ⟨hg.1, fun a => hg.2 a (by simp)⟩

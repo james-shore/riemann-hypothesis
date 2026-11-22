@@ -47,7 +47,7 @@ theorem fp_bc1 (R : Type) [CommRing R] [IsNoetherianRing R] (A : Over (Sp R)) [G
       have he2 : e.hom ≫ s' = B.hom := IsPullback.isoIsPullback_hom_snd A.left (Sp R') hpb hφ
       have he : e.inv ≫ B.hom = s' ≫ spMap (RingHom.id R') := by
         rw [← he2, Iso.inv_hom_id_assoc]
-        first | (rw [spMap_id, Category.comp_id]) | (simp [spMap, CommRingCat.ofHom_id]) | (rw [spMap, CommRingCat.ofHom_id, Spec.map_id, Category.comp_id])
+        first | (rw [spMap_id, Category.comp_id])
       have w' : IsPullback (ψ ≫ e.inv) s₀ B.hom (spMap (α : R' →+* k)) := by
         refine IsPullback.of_iso w (Iso.refl _) e.symm (Iso.refl _) (Iso.refl _) ?_ ?_ ?_ ?_ <;> simp [← he2]
       obtain ⟨s1, s2⟩ := GlobalTheory.T.abelianSchemeSpecialFibre_cohomology_lift_artinian R' B g hB hBg k α hα X₀ s₀ (ψ ≫ e.inv) w'

@@ -44,8 +44,6 @@ theorem exists_orthonormal_family (K : UQ)
   | exact @_root_.GlobalTheory.UnitPairNorm.main
   | exact _root_.GlobalTheory.UnitPairNorm.main
   | (apply _root_.GlobalTheory.UnitPairNorm.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UnitPairNorm.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UnitPairNorm.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UnitPairNorm.main ..)
 
 end GlobalTheory.SelfDualLattice

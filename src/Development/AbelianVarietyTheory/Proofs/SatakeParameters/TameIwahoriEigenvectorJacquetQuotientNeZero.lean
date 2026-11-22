@@ -22,8 +22,6 @@ theorem jacquet_mk_ne_zero (hp : GlobalTheory.Published.DepthZeroJacquetInjectiv
   | exact @_root_.GlobalTheory.PointStabilizer.mk_ne_zero
   | exact _root_.GlobalTheory.PointStabilizer.mk_ne_zero
   | (apply _root_.GlobalTheory.PointStabilizer.mk_ne_zero <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PointStabilizer.mk_ne_zero <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PointStabilizer.mk_ne_zero <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PointStabilizer.mk_ne_zero ..)
 
 end GlobalTheory.TameIwahori.JacquetNonzero

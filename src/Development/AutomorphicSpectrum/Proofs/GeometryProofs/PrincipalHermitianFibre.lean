@@ -77,7 +77,7 @@ theorem exists_metric [Module.Finite (𝓞 L) V] [Module.Projective (𝓞 L) V]
     | add c d hc' hd => simp only [map_add, ← hc', ← hd]
     | tmul w b =>
       rw [tm σ z a, tm σ w b, conjMap_smul, conjMap_smul, cm, cm]
-      simp only [map_smul, map_smulₛₗ, LinearMap.smul_apply, hc, smul_eq_mul, map_mul, Complex.conj_conj, RingHom.id_apply]
+      simp only [map_smul, map_smulₛₗ, LinearMap.smul_apply, hc, smul_eq_mul, map_mul, Complex.conj_conj]
 
 end Linear
 

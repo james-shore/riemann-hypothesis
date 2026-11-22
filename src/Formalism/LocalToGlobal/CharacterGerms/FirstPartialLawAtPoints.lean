@@ -124,8 +124,6 @@ private theorem intS_subst_of_intS {σ : Type} [Finite σ] {a : σ → MvPowerSe
     (hf : IntS V f) : IntS V (MvPowerSeries.subst a f) := by
   first
     | exact IntS.subst ha0 ha hf
-    | exact PartialDerivEval.intS_subst ha0 ha hf
-    | exact AltInv.intS_subst ha0 ha hf
 
 theorem GoodPt.add {a b : Fin dd → MvPowerSeries τ C} (ha : GoodPt V a) (hb : GoodPt V b) : GoodPt V (addAt Y a b) := by
   have h0 : ∀ q, MvPowerSeries.constantCoeff (P2 a b q) = 0 := by
@@ -152,8 +150,6 @@ theorem GoodPt.zero : GoodPt V (fun _ : Fin dd => (0 : MvPowerSeries τ C)) := b
   unfold VF.Ge
   first
     | simp
-    | exact le_top
-    | (simp [VF.v]; done)
 
 theorem GoodPt.act (x : O) {a : Fin dd → MvPowerSeries τ C} (ha : GoodPt V a) : GoodPt V (actAt Y x a) := by
   refine ⟨fun i => cc_actAt Y x ha.1 i, fun i => ?_⟩
@@ -181,9 +177,6 @@ theorem isIU_of_exp {U f : MvPowerSeries τ C} (hi : IntS V U) (he : U = mvExp f
   rw [h1]
   first
     | simp
-    | exact map_one _
-    | rfl
-    | (simp [VF.v]; done)
 
 theorem biadd_left {c : Fin dd → MvPowerSeries τ C} (hc : GoodPt V c) :
     ∀ l : List (Fin dd → MvPowerSeries τ C), (∀ a ∈ l, GoodPt V a) →

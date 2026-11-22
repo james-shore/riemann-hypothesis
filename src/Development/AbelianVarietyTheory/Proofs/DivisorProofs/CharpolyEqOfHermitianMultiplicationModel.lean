@@ -88,7 +88,7 @@ theorem charpoly_of_semilinear {F L A : Type} [Field F] [Field L] [CommRing A] [
       refine Finset.sum_congr rfl fun k _ => ?_
       rw [hψ, hb']
     rw [h1, b'.repr_sum_self]
-    simp [M, LinearMap.toMatrix_apply, Algebra.leftMulMatrix_eq_repr_mul]
+    simp [M, Algebra.leftMulMatrix_eq_repr_mul]
   calc g.charpoly = (Matrix.toLin' g).charpoly := by
         rw [← LinearMap.charpoly_toMatrix (Matrix.toLin' g) (Pi.basisFun L (Fin n)),
           LinearMap.toMatrix_eq_toMatrix', LinearMap.toMatrix'_toLin']
@@ -105,6 +105,6 @@ theorem charpoly_of_model : ∀ (E : Type) [Field E] [NumberField E] [IsCMField 
     charpoly_mulLeft_eq_of_gen u (Q.map e.symm.toRingHom) (hQ.map _) hadj hr (by rw [hd, natDegree_map]),
     Polynomial.map_map]
   ext i
-  simp [Polynomial.coeff_map]
+  simp
 
 end GlobalTheory.KapLat

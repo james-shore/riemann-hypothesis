@@ -16,7 +16,7 @@ private theorem charpoly_dvd_expand {A : Type} [CommRing A] {m : ℕ} (M : Matri
     rw [show charmatrix M = scalar (Fin m) (X : A[X]) - (C : A →+* A[X]).mapMatrix M from rfl,
       hc.mul_geom_sum₂, ← map_pow, ← map_pow]
     ext i j
-    by_cases h : i = j <;> simp [charmatrix_apply, h]
+    by_cases h : i = j <;> simp [h]
   unfold Matrix.charpoly
   have := RingHom.map_det (expand A n : A[X] →+* A[X]) (charmatrix (M ^ n))
   rw [RingHom.coe_coe] at this
@@ -86,7 +86,7 @@ private theorem charpoly_block {κ : Type} [CommRing κ] (M : Matrix (Fin 3) (Fi
     (h2 : M 1 0 = 0) (h3 : M 1 2 = 0) (h4 : M 2 1 = 0) :
     M.charpoly = (corner M).charpoly * (X - C (M 1 1)) := by
   simp only [Matrix.charpoly, Matrix.det_fin_three, Matrix.det_fin_two]
-  simp [corner_eq, Matrix.charmatrix_apply, h1, h2, h3, h4]
+  simp [corner_eq, h1, h2, h3, h4]
   ring
 
 private theorem corner_mul {κ : Type} [CommRing κ] (M N : Matrix (Fin 3) (Fin 3) κ) (h1 : M 0 1 = 0)

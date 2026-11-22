@@ -87,7 +87,7 @@ private theorem du_snd (A B : Matrix (Fin n) (Fin n) O) (i j : Fin n) : (du A B 
 private theorem du_mul (A B C D : Matrix (Fin n) (Fin n) O) : du A B * du C D = du (A * C) (A * D + B * C) := by
   ext i j
   · simp [Matrix.mul_apply, TrivSqZeroExt.fst_sum, du_fst]
-  · simp [Matrix.mul_apply, TrivSqZeroExt.snd_sum, du_fst, du_snd, Finset.sum_add_distrib, mul_comm]
+  · simp [Matrix.mul_apply, TrivSqZeroExt.snd_sum, du_fst, du_snd, Finset.sum_add_distrib]
 
 private theorem du_one : du (1 : Matrix (Fin n) (Fin n) O) 0 = 1 := by
   ext i j

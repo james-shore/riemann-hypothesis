@@ -73,8 +73,6 @@ theorem average {G C : Type*} [Group G] [NormedField C] [IsUltrametricDist C]
   | exact @_root_.GlobalTheory.PermutationExistence.main
   | exact _root_.GlobalTheory.PermutationExistence.main
   | (apply _root_.GlobalTheory.PermutationExistence.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PermutationExistence.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PermutationExistence.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PermutationExistence.main ..)
 
 theorem step (act : GQ l →* (PadicComplex l ≃+* PadicComplex l)) (hact : IsActC act) (K : FinExt l)

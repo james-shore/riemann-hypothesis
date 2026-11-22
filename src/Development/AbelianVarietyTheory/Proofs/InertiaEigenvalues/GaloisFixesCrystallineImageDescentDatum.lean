@@ -105,11 +105,11 @@ theorem actB_jB {P : PhiMod O K l e a ι} {T : LocLat (Gl l) ℚ_[l] K O} (I : I
       funext i
       by_cases hij : i = j
       · subst hij; simp
-      · simp [Pi.single_apply, hij]
+      · simp [hij]
     have e2 : (Γ.map (toB l O) *ᵥ Pi.single j 1) = fun i => toB l O
         ((Γ *ᵥ fun k => galOA O (sQ l g) ((Pi.single j 1 : ι → OA l O) k)) i) := by
       funext i
-      simp [Matrix.mulVec, dotProduct, Pi.single_apply, apply_ite (galOA O (sQ l g)), apply_ite (toB l O)]
+      simp [Matrix.mulVec, dotProduct, Pi.single_apply]
     have h1 := hgal g hstab _ _ (hval (Pi.single j 1))
     rw [hΓ] at h1
     rw [e2, e1]

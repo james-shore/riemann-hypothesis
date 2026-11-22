@@ -31,7 +31,7 @@ theorem UpperTheory.Gal.Int.Div.phiSeed_of :
         Matrix.GeneralLinearGroup.det ((r.comp (Dec (F := E) A).subtype) x) := by
       intro x
       apply Units.ext
-      simp [rk1, Matrix.det_fin_one, hdet]
+      simp [rk1, hdet]
     obtain ⟨J, hCl⟩ := hψ.2 w hw B hB
     obtain ⟨hcC, -, -, hcP⟩ := hCl.2 P AI hT A h O Bw hj
     have hcPst := ((hConj l P AI hT E Ω A O Bw 1 ((rk1 ψ).comp (Dec (F := E) A).subtype)

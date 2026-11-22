@@ -45,7 +45,6 @@ theorem atSomeAll_holds : Formalism.L2.SG.TermTieOf.AtSomeAll := by
   funext a b
   first
   | rfl
-  | (simp [ZhatOM, ZhatL, Matrix.submatrix_apply]; rfl)
 
 end Formalism.L2.SG.LeadingMinorsNonvanishing
 

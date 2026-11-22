@@ -26,7 +26,7 @@ theorem inCell {n : ℕ} {γ' : Fin m' → LinearMap.BilinForm ℤ X} (hγ' : Is
         simp only [Sum.elim_inl, Sum.elim_inr, LinearMap.id_apply, Pi.neg_apply, neg_smul, Finset.sum_neg_distrib, hrel,
           add_neg_cancel])
     rw [Fintype.sum_sum_type] at this
-    simp only [Sum.elim_inl, Sum.elim_inr, LinearMap.id_apply, Pi.neg_apply, neg_mul, Finset.sum_neg_distrib] at this
+    simp only [Sum.elim_inl, Sum.elim_inr, Pi.neg_apply, neg_mul, Finset.sum_neg_distrib] at this
     linarith
   have hφ : ∑ i, a i * φ.evalZ (β i) = ∑ j, b j * φ.evalZ (γ' j) := by
     rw [← hlin, hrel]; exact (linearOn_iff φ γ').1 hγ'.linear b hb
@@ -71,8 +71,8 @@ theorem GlobalTheory.PolFan.cell_gen_on_ray : ∀ (O : Type) [CommRing O] (bar :
         refine LinearMap.ext₂ fun a b => ?_
         have := LinearMap.congr_fun₂ hkd a b
         simp only [LinearMap.smul_apply, LinearMap.sum_apply, toReal_apply, nsmul_eq_mul] at this ⊢
-        simp only [Pi.single_apply, ite_smul, zero_smul, LinearMap.smul_apply, toReal_apply, smul_eq_mul,
-          Finset.sum_ite_eq', Finset.mem_univ, if_true, Nat.cast_ite, Nat.cast_zero, ite_mul, zero_mul]
+        simp only [Pi.single_apply, smul_eq_mul,
+          Finset.sum_ite_eq', Finset.mem_univ, if_true, ite_mul, zero_mul]
         exact_mod_cast this.symm) j (by exact_mod_cast hd)
     exact ⟨kj, e, hkj, fun _ => he⟩
   choose kk e hkk he using hB

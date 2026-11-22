@@ -55,11 +55,11 @@ theorem stable_factor (H : (∀ (K : Type) [Field K] [NumberField K] (τ : K ≃
     · have := hx.map (Ideal.Quotient.mk I).toIntAlgHom
       simp only [map_mul, map_natCast, RingHom.toIntAlgHom_apply] at this
       convert this using 1
-      all_goals first | rfl | exact Subsingleton.elim _ _ | (congr; exact Subsingleton.elim _ _)
+      all_goals first | rfl
     · have := hy.map (Ideal.Quotient.mk I).toIntAlgHom
       simp only [map_mul, map_natCast, RingHom.toIntAlgHom_apply] at this
       convert this using 1
-      all_goals first | rfl | exact Subsingleton.elim _ _ | (congr; exact Subsingleton.elim _ _))
+      all_goals first | rfl)
   obtain ⟨e, rfl⟩ := Ideal.Quotient.mk_surjective e'
   refine ⟨lift m, Finset.mem_image_of_mem _ hm, e, ?_, ?_⟩
   · intro he; exact he' (Ideal.Quotient.eq_zero_iff_mem.2 he)

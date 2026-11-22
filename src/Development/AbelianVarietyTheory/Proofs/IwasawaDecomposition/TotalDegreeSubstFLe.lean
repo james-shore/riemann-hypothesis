@@ -29,8 +29,6 @@ theorem totalDegree_aeval_le {κ : Type} (f : κ → MvPolynomial κ ℂ) (hf : 
   | exact @_root_.GlobalTheory.AevalTotalDegreeLinear.main
   | exact _root_.GlobalTheory.AevalTotalDegreeLinear.main
   | (apply _root_.GlobalTheory.AevalTotalDegreeLinear.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AevalTotalDegreeLinear.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AevalTotalDegreeLinear.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AevalTotalDegreeLinear.main ..)
 
 theorem totalDegree_substF_le (h : ι → Matrix (Fin N) (Fin N) ℂ) (g : ι → Matrix (Fin n) (Fin n) ℂ)

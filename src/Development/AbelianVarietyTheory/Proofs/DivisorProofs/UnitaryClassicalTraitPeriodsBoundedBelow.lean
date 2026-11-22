@@ -32,7 +32,7 @@ theorem exists_not_dvd_le {X : Type} [AddCommGroup X] (β : LinearMap.BilinForm 
       have hv : v ≠ 0 := by rintro rfl; simp at hx
       have hvv := hβ v hv
       have e : β (m • v) (m • v) = (m : ℤ) * ((m : ℤ) * β v v) := by
-        simp [map_nsmul, LinearMap.smul_apply, nsmul_eq_mul]
+        simp [map_nsmul, LinearMap.smul_apply]
       have hm' : (2 : ℤ) ≤ m := by exact_mod_cast hm
       have h2 : 2 * β v v ≤ (m : ℤ) * β v v := mul_le_mul_of_nonneg_right hm' hvv.le
       have h3 : 2 * ((m : ℤ) * β v v) ≤ (m : ℤ) * ((m : ℤ) * β v v) :=

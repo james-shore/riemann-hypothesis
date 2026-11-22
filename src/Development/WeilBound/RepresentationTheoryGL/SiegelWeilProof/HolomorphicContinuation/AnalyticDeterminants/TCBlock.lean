@@ -201,7 +201,7 @@ theorem rhs_eq (hA : IterAffine) (hS : IterSymm) (hN : IterNested) (j : ℕ) (ψ
     have h1 : ContDiffAt ℂ (Fintype.card (blkA (n := n) j))
         (iteratedFDeriv ℂ (Fintype.card (blkB (n := n) j)) ψ) (embL (blkA (n := n) j) 0) := by
       rw [map_zero]
-      exact hψ0.iteratedFDeriv_right (by first | exact_mod_cast le_top | (norm_cast; exact le_top) | (exact WithTop.coe_le_coe.mpr le_top) | simp [← Nat.cast_add]; exact_mod_cast le_top)
+      exact hψ0.iteratedFDeriv_right (by first | exact_mod_cast le_top | simp [← Nat.cast_add])
     have h2 := h1.comp (0 : Matrix (blkA (n := n) j) (blkA (n := n) j) ℂ) (embL (blkA (n := n) j)).contDiff.contDiffAt
     exact (ContinuousMultilinearMap.apply ℂ _ ℂ (fun i => embL (blkB (n := n) j) (w i))).contDiff.contDiffAt.comp _ h2
   unfold detD

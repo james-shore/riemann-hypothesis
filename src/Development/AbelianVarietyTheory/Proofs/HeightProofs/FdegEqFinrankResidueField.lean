@@ -113,7 +113,7 @@ theorem exists_approx (h : IsUnif A ϖ) (ζ : Pts O A) [IsDVRAt ζ] (x : A) (hx 
   refine ⟨d * (t * b), ?_⟩
   have h5 : ((d * (t * b) : As O A) : A) - x = ((-i : As O A) : A) * x := by
     have := congrArg Subtype.val hdi
-    simp only [Submonoid.coe_mul, AddMemClass.coe_add, MulMemClass.coe_mul, OneMemClass.coe_one,
+    simp only [AddMemClass.coe_add, MulMemClass.coe_mul, OneMemClass.coe_one,
       NegMemClass.coe_neg] at this ⊢
     linear_combination x * this - (d : A) * h4
   rw [h5, ord_mul ζ h]

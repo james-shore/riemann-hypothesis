@@ -44,7 +44,6 @@ private theorem isFibreFamily_restrict_of_eqOn_open (μ : Measure V) (ν : Measu
     have hz : ∀ x, x ∉ Q → φ x = 0 := fun x hx => by
       first
         | exact image_eq_zero_of_notMem_tsupport (fun h => hx (hφt h).2)
-        | exact image_eq_zero_of_nmem_tsupport (fun h => hx (hφt h).2)
     refine ⟨fun b hb => (hi b hb).restrict, ?_⟩
     have heq : (fun b => ∫ v, φ v ∂(fib b).restrict Q) = fun b => ∫ v, φ v ∂(fib b) :=
       funext fun b => setIntegral_eq_integral_of_forall_compl_eq_zero hz

@@ -95,7 +95,7 @@ lemma qh_count_all [NeZero n] {mu : Fin n → ℤ} (hmu : Dominant mu) (k : ℕ)
         exact ⟨⟨κ, by omega⟩, by simpa using hκ, rfl⟩
     have h2 := hshape ⟨t, htn⟩
     unfold Formalism.GradedWeylDivisibility.shapeDeg at h2
-    simp only [Fin.val_mk] at h2
+    simp only at h2
     have hle : mu ⟨t, htn⟩ ≤ mu 0 := hmu (by rw [Fin.le_def]; simp)
     have hlast : mu (lastIdx n) ≤ mu ⟨t, htn⟩ := hmu (by rw [Fin.le_def]; simp [lastIdx]; omega)
     have key : (univ.filter fun c : ↥(TCols mu) => t < colH mu c.1).card =

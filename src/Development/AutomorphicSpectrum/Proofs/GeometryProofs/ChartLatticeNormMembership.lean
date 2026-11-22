@@ -73,7 +73,6 @@ theorem isIntegral_of_forall_valuationSubring {R Ω : Type} [CommRing R] [Field 
     intro z
     first
       | exact (show (z : Ω) ∈ Set.range f from ⟨_, hfl z⟩)
-      | (rw [LocalSubring.range_toSubring]; exact ⟨_, hfl z⟩)
   have haV : a ∈ V := H V fun r => hle (hmemL ⟨algebraMap R Ω r, Subalgebra.algebraMap_mem _ r⟩)
   let xL : (LocalSubring.range f).toSubring := ⟨a⁻¹, hmemL ⟨a⁻¹, hbA⟩⟩
   have hunitV : IsUnit (Subring.inclusion hle xL) :=
@@ -81,7 +80,6 @@ theorem isIntegral_of_forall_valuationSubring {R Ω : Type} [CommRing R] [Field 
   have hunitL : IsUnit xL := by
     first
       | exact isUnit_of_map_unit (Subring.inclusion hle) xL hunitV
-      | exact IsUnit.of_map (Subring.inclusion hle) xL hunitV
   obtain ⟨w, hw⟩ := hunitL.exists_right_inv
   have hw2 : (w : Ω) ∈ Set.range f := w.2
   obtain ⟨s, hs⟩ := hw2

@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.exists_smul_dvd_of_localization_atPrime_tensor' : 
     (∃ m' : Localization.AtPrime Q ⊗[R] C,
       (IsScalarTower.toAlgHom R O (Localization.AtPrime Q)).toLinearMap.rTensor C m = algebraMap R (Localization.AtPrime Q) b • m') →
     ∃ s ∉ Q, ∃ m' : O ⊗[R] C, s • m = algebraMap R O b • m' := by
-  first | (exact @GlobalTheory.exists_smul_dvd_of_localization_atPrime_tensor) | (exact GlobalTheory.exists_smul_dvd_of_localization_atPrime_tensor) | (intros; apply GlobalTheory.exists_smul_dvd_of_localization_atPrime_tensor  <;> assumption)
+  first | (exact @GlobalTheory.exists_smul_dvd_of_localization_atPrime_tensor)

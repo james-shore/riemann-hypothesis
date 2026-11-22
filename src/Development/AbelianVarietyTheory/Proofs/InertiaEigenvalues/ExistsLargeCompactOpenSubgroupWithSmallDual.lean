@@ -97,7 +97,7 @@ theorem main : ∀ (F E : Type) [NontriviallyNormedField F] [NontriviallyNormedF
     exact lt_of_le_of_lt h2 h3
   refine ⟨Λ, ?_, ?_, ?_, ?_, ?_⟩
   · have : (Λ : Set A.L) = ⋂ i, (fun y => Φ y i) ⁻¹' Metric.closedBall 0 R := by
-      ext y; simp [hmem, mem_closedBall_zero_iff]
+      ext y; simp [hmem]
     rw [this]
     exact isOpen_iInter_of_finite fun i =>
       (IsUltrametricDist.isOpen_closedBall 0 hR0.ne').preimage ((continuous_apply i).comp hΦc)

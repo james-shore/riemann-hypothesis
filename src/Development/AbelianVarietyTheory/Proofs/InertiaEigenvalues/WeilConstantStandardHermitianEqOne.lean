@@ -12,14 +12,14 @@ theorem wS_pow_four (k : Type) [CommRing k] : wS k ^ 4 = 1 := by
   have h : ((wS k : SpecialLinearGroup (Fin 2) k) : Matrix (Fin 2) (Fin 2) k) = !![0, 1; -1, 0] := rfl
   ext i j
   rw [Matrix.SpecialLinearGroup.coe_pow, h, Matrix.SpecialLinearGroup.coe_one]
-  fin_cases i <;> fin_cases j <;> simp [pow_succ, Matrix.mul_fin_two]
+  fin_cases i <;> fin_cases j <;> simp [pow_succ]
 
 theorem wn_pow_three (k : Type) [CommRing k] : (wS k * nS 1) ^ 3 = 1 := by
   have h : ((wS k * nS 1 : SpecialLinearGroup (Fin 2) k) : Matrix (Fin 2) (Fin 2) k) =
       !![0, 1; -1, 0] * !![1, 1; 0, 1] := rfl
   ext i j
   rw [Matrix.SpecialLinearGroup.coe_pow, h, Matrix.SpecialLinearGroup.coe_one]
-  fin_cases i <;> fin_cases j <;> simp [pow_succ, Matrix.mul_fin_two]
+  fin_cases i <;> fin_cases j <;> simp [pow_succ]
 
 theorem rep_smul {G X : Type} [Group G] [TopologicalSpace X] {W : G → (X → ℂ) → X → ℂ} (hW : IsTestRep W)
     (g : G) (c : ℂ) {f : X → ℂ} (hf : IsTest f) : W g (c • f) = c • W g f := by

@@ -75,7 +75,7 @@ theorem det_at (β : Frame p S n) (g : GL n k) :
   refine ⟨⟨p.e * a + (1 - p.e), p.e * c + (1 - p.e), ?_, ?_⟩, rfl, ?_⟩
   · linear_combination (2 - a - c) * hee + p.e * p.e * hac
   · linear_combination (2 - a - c) * hee + p.e * p.e * hac
-  · simp only [Units.val_mk, map_add, map_mul, map_sub, map_one, pr_e p, one_mul, sub_self, add_zero]
+  · simp only [map_add, map_mul, map_sub, map_one, pr_e p, one_mul, sub_self, add_zero]
     simp only [a]
     rw [RingHom.map_det, RingHom.mapMatrix_apply, gl_map, Matrix.mul_assoc, Matrix.det_comm' β.bb' β.b'b, Matrix.mul_assoc, β.b'b,
       Matrix.mul_one]
@@ -119,7 +119,6 @@ theorem mem_grpAt_iff (β : Frame p S n) (h : GA D S) : h ∈ grpAt S (· = p.v)
     simp only [Matrix.map_apply] at this
     rw [this]
     show M i j = (β.b * (β.b' * M * β.b) * β.b') i j
-    congr 1
     simp only [Matrix.mul_assoc]
     rw [← Matrix.mul_assoc β.b β.b', β.bb', Matrix.one_mul, Matrix.mul_one]
   · rintro ⟨g, rfl⟩ i j

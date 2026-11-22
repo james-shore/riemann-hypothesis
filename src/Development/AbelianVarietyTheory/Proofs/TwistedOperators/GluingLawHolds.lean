@@ -114,9 +114,6 @@ theorem glue_span :
   first
   | exact @_root_.GlobalTheory.MonomialRangeMembership.span_range_glue
   | exact _root_.GlobalTheory.MonomialRangeMembership.span_range_glue
-  | (apply _root_.GlobalTheory.MonomialRangeMembership.span_range_glue <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MonomialRangeMembership.span_range_glue <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MonomialRangeMembership.span_range_glue <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MonomialRangeMembership.span_range_glue ..)
 
 theorem glueLaw : ∀ (D : D7) (a b : ℕ), GlueLaw D a b := by

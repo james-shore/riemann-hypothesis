@@ -16,20 +16,17 @@ theorem spMap_id' (R : Type) [CommRing R] : spMap (RingHom.id R) = 𝟙 (Sp R) :
   | exact spMap_id R
   | exact spMap_id
   | simp [spMap]
-  | unfold spMap
 
 theorem spMap_alg_self (R : Type) [CommRing R] : spMap (algebraMap R R) = 𝟙 (Sp R) := by
   first
   | exact spMap_id' R
-  | (rw [Algebra.algebraMap_self]; exact spMap_id' R)
 
 theorem spMap_algHom_alg {R A B : Type} [CommRing R] [CommRing A] [CommRing B] [Algebra R A] [Algebra R B]
     (φ : A →ₐ[R] B) : spMap (φ : A →+* B) ≫ spMap (algebraMap R A) = spMap (algebraMap R B) := by
   first
-  | (rw [← spMap_comp]; congr 1; exact φ.comp_algebraMap)
-  | (rw [spMap_comp]; congr 1; exact φ.comp_algebraMap)
+  | (rw [← spMap_comp]; congr 1)
+  | (rw [spMap_comp]; congr 1)
   | (simp only [spMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp, AlgHom.comp_algebraMap])
-  | unfold spMap
 
 theorem jetCoef_substP {V K : Type} [CommRing V] [CommRing K] (f : V →+* K) {κ κ' : Type} (m : ℕ)
     (φ : κ → MvPolynomial κ' V) :
@@ -73,7 +70,6 @@ theorem unit_push {S S' : Scheme.{0}} {G : Over S} {G' : Over S'} [GrpObj G] [Gr
     show toUnit (𝟙_ (Over S')) ≫ η[G'] = η[G']
     first
     | rw [toUnit_unit, Category.id_comp]
-    | rw [Subsingleton.elim (toUnit (𝟙_ (Over S'))) (𝟙 _), Category.id_comp]
   have h2 := hmul (𝟙_ (Over S')) η[G'] η[G'] x₀ x₀ rfl rfl
   have hidem : x₀ * x₀ = x₀ := by
     apply Over.OverMorphism.ext
@@ -82,14 +78,12 @@ theorem unit_push {S S' : Scheme.{0}} {G : Over S} {G' : Over S'} [GrpObj G] [Gr
   have h1 : x₀ = 1 := by
     first
     | exact mul_eq_left.1 hidem
-    | exact mul_right_eq_self.1 hidem
   have h3 : x₀.left = (toUnit (Over.mk ((𝟙_ (Over S')).hom ≫ f)) ≫ η[G]).left :=
     congrArg (fun g => g.left) h1
   rw [Over.comp_left] at h3
   have h4 : (toUnit (Over.mk ((𝟙_ (Over S')).hom ≫ f))).left = f := by
     first
     | simp
-    | simpa using Over.w (toUnit (Over.mk ((𝟙_ (Over S')).hom ≫ f)))
   rw [h4] at h3
   exact h3
 

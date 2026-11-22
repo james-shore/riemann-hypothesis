@@ -37,7 +37,7 @@ theorem UpperTheory.Gal.G3.pPolUniq :
     refine pic_eq_zero_of_fpqc A A' A hA ψ hfl hsurj hqc _ ?_ ?_
     · rw [← pull_comp_left]
       have : lift (1 : A' ⟶ A) (𝟙 A') ≫ W ≫ E = lift (𝟙 A') (1 : A' ⟶ A') := by
-        apply CartesianMonoidalCategory.hom_ext <;> simp [E, W, one_comp_monHom]
+        apply CartesianMonoidalCategory.hom_ext <;> simp [E, W]
       rw [this, hs2]
     · rw [← pull_comp_left]
       have : lift (fst A A) (snd A A ≫ ψ) ≫ W ≫ E

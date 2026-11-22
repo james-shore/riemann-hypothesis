@@ -188,7 +188,7 @@ theorem pureMap_mem_stage [∀ i, Nontrivial (Hs i)] (v : K) : pureMap v ∈ sta
     ← Finset.mul_prod_erase _ _ (Finset.mem_univ j), Function.update_self, inner_self_eq_norm_sq_to_K,
     norm_unitVec]
   congr 2
-  simp only [RCLike.ofReal_one, Complex.ofReal_one, one_pow, one_mul]
+  simp only [RCLike.ofReal_one, one_pow, one_mul]
   exact Finset.prod_congr rfl fun i hi => by rw [Function.update_of_ne (Finset.ne_of_mem_erase hi)]
 
 theorem pureMap_unit [∀ i, Nontrivial (Hs i)] (v : K) : pureMap (Hs := Hs) v (fun i => unitVec (Hs i)) = v := by

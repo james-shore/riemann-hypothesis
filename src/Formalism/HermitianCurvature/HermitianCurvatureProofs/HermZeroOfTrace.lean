@@ -19,7 +19,7 @@ theorem herm_zero_of_trace {ζ : B.Mat k r} (hζ : B.inLie k r ζ) (u v : Fin (2
   rw [hs] at h1 h2
   rw [herm_smul_right] at h2
   set A := herm (Hpk k r) (ζ *ᵥ u) v
-  simp [Complex.ext_iff, Complex.mul_re, Complex.mul_im] at h1 h2 ⊢
+  simp [Complex.ext_iff, Complex.mul_re] at h1 h2 ⊢
   constructor <;> linarith
 
 theorem herm_bvec (x : Fin (2 * r + k + 1) → ℂ) (i : Fin (2 * r + k + 1)) :

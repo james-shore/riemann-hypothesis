@@ -117,7 +117,7 @@ theorem exists_theta_re_nonneg : ∀ (F : Type) [Field F] [NumberField F] (ψ : 
     have hP0 : P *ᵥ ξ₀ = 0 := by
       apply hDξ
       have h1 := (hVm _ hx).2.2.1
-      simp only [Set.mem_preimage, Matrix.mulVec_add, hP s hs, add_zero] at h1
+      simp only [Matrix.mulVec_add, hP s hs, add_zero] at h1
       convert h1 using 1
       funext i
       exact RingHom.map_mulVec _ _ _ _

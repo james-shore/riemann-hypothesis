@@ -91,7 +91,7 @@ theorem src_line (H : Hyp ε S m A ν τ r Z M c₁ R₀ C) (j : Fin m) (f₀ : 
     have hL : ‖f₀ (S7.toM (x : S7.UJ ε) * aT (A j) t)‖ₑ ^ 2 * ENNReal.ofReal (Real.exp (2 * R * t)) =
         ENNReal.ofReal (b ^ 2 * Real.exp (2 * R * t)) := by
       rw [ENNReal.ofReal_mul (by positivity), ENNReal.ofReal_pow (norm_nonneg _)]
-      simp only [hbdef, ofReal_norm_eq_enorm]
+      simp only [ofReal_norm_eq_enorm]
     have hR : (T.card : ℝ≥0∞) * ∑ h ∈ T, ‖h (S7.toM (x : S7.UJ ε) * aT (A j) t)‖ₑ ^ 2 * ENNReal.ofReal (Real.exp (2 * ρ * t)) =
         ENNReal.ofReal ((T.card : ℝ) * ∑ h ∈ T, a h ^ 2 * Real.exp (2 * ρ * t)) := by
       rw [ENNReal.ofReal_mul (by positivity), ENNReal.ofReal_natCast,
@@ -99,7 +99,7 @@ theorem src_line (H : Hyp ε S m A ν τ r Z M c₁ R₀ C) (j : Fin m) (f₀ : 
       congr 1
       refine Finset.sum_congr rfl fun h _ => ?_
       rw [ENNReal.ofReal_mul (by positivity), ENNReal.ofReal_pow (norm_nonneg _)]
-      simp only [ha, ofReal_norm_eq_enorm]
+      simp only [ofReal_norm_eq_enorm]
     rw [hL, hR]
     exact ENNReal.ofReal_le_ofReal hreal
   have hmeas : ∀ h ∈ T, Measurable fun t : ℝ =>

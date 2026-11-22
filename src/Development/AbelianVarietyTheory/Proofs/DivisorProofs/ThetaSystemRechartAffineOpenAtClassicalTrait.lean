@@ -15,8 +15,8 @@ theorem rechart_at_classical_trait : ∀ (g n : ℕ) (F : SFam g n (zetaAway n))
   intro g n F W Z i X₁ hg hn hodd himm he8 hth hproj ε₁ hdiag p _ z₁ c
   have h1 : X₁.π ((gPt p ≫ c.y) (closedPoint (PadicAlgCl p))) ∈ Set.range i := by
     have e1 := congrArg (fun f : Sp (PadicAlgCl p) ⟶ Z => f (closedPoint (PadicAlgCl p))) c.comm
-    simp only [Scheme.Hom.comp_apply] at e1
-    exact ⟨_, by simp only [Scheme.Hom.comp_apply]; exact e1.symm⟩
+    simp only at e1
+    exact ⟨_, by simp only; exact e1.symm⟩
   obtain ⟨U, c₀, hc, fg, frac, hth', hev, ρ', ε', u', hU, hwU, -, hSame, hi₀, hdiag', hpt⟩ :=
     GlobalTheory.T.exists_thetaSystem_moved_to_affineOpen g n F W Z i X₁ hg hn hodd himm he8 hth hproj ε₁ hdiag _ h1
   set w := (gPt p ≫ c.y) (closedPoint (PadicAlgCl p)) with hw

@@ -162,7 +162,7 @@ theorem fibre_volume : ∀ (k r : ℕ) (z z' : (Fin (2 * r + k + 1) → ℂ)) (�
             lintegral_const_mul' _ _ ENNReal.ofReal_ne_top
         _ = ENNReal.ofReal s * ∫⁻ ρ, φ (lmulM (Matrix.of (conjM n₂⁻¹ ρ)) (P x)) ∂lebR k r β := by
             congr 1; exact lintegral_congr fun ρ => by rw [hPl ρ]
-        _ ≤ 1 := by first | exact h1 | (rw [smul_eq_mul] at h1; exact h1)
+        _ ≤ 1 := by first | exact h1
     have hmain := hB.2 (fun ν => ENNReal.ofReal s * φ (P ν)) hsub R₀ y hR₀ hy
     have hmem : ∀ n : Mt k r, rmulM g₁ n ∈ Eset k r z z' (n₁ * g₀ * n₂) R₀ y ↔
         rmulM A (e n) ∈ Eset k r z z' g₀ R₀ y := by
@@ -192,8 +192,6 @@ theorem fibre_volume : ∀ (k r : ℕ) (z z' : (Fin (2 * r + k + 1) → ℂ)) (�
               · have h' : rmulM A (e n) ∉ Eset k r z z' g₀ R₀ y := fun h' => h ((hmem n).2 h')
                 first
                   | rw [Set.indicator_of_notMem h, Set.indicator_of_notMem h']
-                  | rw [Set.indicator_of_not_mem h, Set.indicator_of_not_mem h']
-                  | simp [Set.indicator, h, h']
             dsimp only
             rw [hind, hpt n]
         _ = ∫⁻ ν, φ (P ν) * (Eset k r z z' g₀ R₀ y).indicator 1 (rmulM A ν) ∂((lebN k r).map e) :=

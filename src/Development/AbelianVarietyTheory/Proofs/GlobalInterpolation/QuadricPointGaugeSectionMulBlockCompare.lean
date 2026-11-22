@@ -132,9 +132,9 @@ theorem _root_.GlobalTheory.SectionGaugeCompare.gauge_section_mul_block : ∀ (P
         (1 : Matrix (Fin P' ⊕ Fin Q') (Fin P' ⊕ Fin Q') ℂ) i b := by
       intro i b; simp [Matrix.one_apply]
     have h2 : ∀ b, (1 : Matrix (Fin P ⊕ Fin Q) (Fin P ⊕ Fin Q) ℂ) (e none) (e (some b)) = 0 := by
-      intro b; simp [Matrix.one_apply]
+      intro b; simp
     have h3 : ∀ b, (1 : Matrix (Fin P ⊕ Fin Q) (Fin P ⊕ Fin Q) ℂ) (e (some b)) (e none) = 0 := by
-      intro b; simp [Matrix.one_apply]
+      intro b; simp
     simp only [h1, h2, h3, Matrix.one_apply_eq, sub_zero, hN]
   have hL := sum_norm_sum_mul_matrix_le_mul_sum_norm_of_norm_le u D S fun c => (hrow c).le.trans (hyS c)
   have huS : ∑ b, ‖u b‖ = S := Finset.sum_congr rfl fun b _ => hrow b

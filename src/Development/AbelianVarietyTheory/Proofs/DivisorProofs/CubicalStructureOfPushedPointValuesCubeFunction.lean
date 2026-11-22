@@ -19,19 +19,19 @@ theorem push_one {T : Over S'} : pushHom h T 1 = toUnit _ ≫ η[G] := by
 
 theorem face0 : lift (pushPt h.1.w (fst G' G')) (pushPt h.1.w (snd G' G')) ≫ faceMap G 0 =
     lift (pushHom h (G2 G') 1) (lift (pushHom h (G2 G') (fst G' G')) (pushHom h (G2 G') (snd G' G'))) := by
-  simp only [faceMap, x2, pzero, comp_lift, push_one]
+  simp only [faceMap, x2, pzero, push_one]
   simp
   rfl
 
 theorem face1 : lift (pushPt h.1.w (fst G' G')) (pushPt h.1.w (snd G' G')) ≫ faceMap G 1 =
     lift (pushHom h (G2 G') (fst G' G')) (lift (pushHom h (G2 G') 1) (pushHom h (G2 G') (snd G' G'))) := by
-  simp only [faceMap, x2, pzero, comp_lift, push_one]
+  simp only [faceMap, x2, pzero, push_one]
   simp
   rfl
 
 theorem face2 : lift (pushPt h.1.w (fst G' G')) (pushPt h.1.w (snd G' G')) ≫ faceMap G 2 =
     lift (pushHom h (G2 G') (fst G' G')) (lift (pushHom h (G2 G') (snd G' G')) (pushHom h (G2 G') 1)) := by
-  simp only [faceMap, x2, pzero, comp_lift, push_one]
+  simp only [faceMap, x2, pzero, push_one]
   simp
   rfl
 

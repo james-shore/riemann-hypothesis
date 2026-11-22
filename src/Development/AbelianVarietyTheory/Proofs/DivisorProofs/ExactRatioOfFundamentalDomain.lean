@@ -37,7 +37,7 @@ theorem K2aux (D : D7) (T : CoreJ D) (h : LawsJ T) (i : Fin D.R.m) (s : T.Q.c.F 
   unfold petE
   rw [← Real.enorm_eq_ofReal hc0.le, ← eLpNorm_const_smul]
   refine eLpNorm_congr_norm_ae (Filter.Eventually.of_forall fun q => ?_)
-  simp only [Pi.smul_apply, smul_eq_mul, norm_norm, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+  simp only [Pi.smul_apply, smul_eq_mul, norm_mul, Complex.norm_real, Real.norm_eq_abs,
     abs_of_pos hc0, adel_muPin]
   rw [hcu, hmu.2.1]
   simp only [abs_one, one_mul, abs_norm, abs_of_nonneg (ptN_nonneg _ _ _)]

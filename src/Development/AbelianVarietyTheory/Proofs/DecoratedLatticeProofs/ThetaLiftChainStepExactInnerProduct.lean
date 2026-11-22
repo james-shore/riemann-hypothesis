@@ -84,7 +84,7 @@ theorem stepExactNS : ∀ D : D7, GlobalTheory.Core.Rk.SW.HeckeFormNS D → Soft
   · have hz : ∀ g, zReal p m X φ v g = 0 := by
       intro g
       have hp0 := hMet.pure v v
-      simp only [h0, map_zero, LinearMap.zero_apply] at hp0
+      simp only [h0, map_zero] at hp0
       obtain ⟨τ, -, hτ⟩ := Finset.prod_eq_zero_iff.1 hp0.symm
       have h0τ : ((v τ : s.M.sm τ) : s.M.H τ) = 0 := inner_self_eq_zero.1 hτ
       simp only [zReal]

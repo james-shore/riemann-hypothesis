@@ -52,7 +52,7 @@ theorem gens : ∀ {R : Type} [CommRing R] [IsDomain R] (Q : DegPre R), ∃ N : 
   have hfe : FormEq (K := Fin N) (fun _ => 𝟙 Q.P.A.left) (fun _ => (1 : ℤ)) (Q.famφB 0) (DegPre.famε N) := by
     intro U _ h
     refine Eq.trans ?_ (GlobalTheory.Mum.OriginSec.formEq_zero Q N U h)
-    simp [Finset.prod_const, Fin.prod_univ_one]
+    simp [Finset.prod_const]
   have hσ : ∀ a, ∃ σ : Q.SecB N 0, ∀ (z : Q.P.A.left) J, Good Q.P.L z J → sval σ (𝟙 _) z J = sval (s a) j z J := by
     intro a
     obtain ⟨s', hs'⟩ := GlobalTheory.UU.exists_pullSec_sval

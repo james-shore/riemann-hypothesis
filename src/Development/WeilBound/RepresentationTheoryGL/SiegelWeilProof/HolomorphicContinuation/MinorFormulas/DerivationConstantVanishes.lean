@@ -73,7 +73,7 @@ theorem sum_eq (s : ℂ) (b : Bool) (k l : Fin n) (p : Fm n) :
     · rw [if_neg hb]
       apply Finset.sum_eq_zero; intro a _; apply Finset.sum_eq_zero; intro d _
       have : ¬ ((b0, a0, d0) = (b, a, d)) := fun h => hb (congrArg Prod.fst h)
-      simp only [Pi.single_apply, this, if_false, mul_zero]
+      simp only [this, if_false, mul_zero]
   rw [← hD, hDl]
 
 theorem opH_apply (s : ℂ) (m : ℕ) (b : Bool) (k l : Fin n) (p : Fm n) :
@@ -99,7 +99,7 @@ theorem dl_yv (s : ℂ) (b : Bool) (k l a d : Fin n) : dl s b k l (yv b a d) = k
 
 theorem key1 (s : ℂ) (m : ℕ) (b b' : Bool) (k l k' l' : Fin n) :
     dl s b k l (mm s m b' k' l') = dl s b' k' l' (mm s m b k l) := by
-  simp only [mm, Derivation.leibniz, derivation_constant_vanishes, dl_C, smul_zero, add_zero, smul_eq_mul]
+  simp only [mm, Derivation.leibniz, derivation_constant_vanishes, dl_C, smul_eq_mul]
   by_cases h : b = b'
   · subst h
     rw [dl_yv, dl_yv]; ring
@@ -112,15 +112,15 @@ theorem key2 (s : ℂ) (b b' : Bool) (k l k' l' : Fin n) : ⁅dl s b k l, dl s b
   obtain ⟨b0, a0, d0⟩ := v
   by_cases h1 : b0 = b' <;> by_cases h2 : b0 = b
   · subst h1; subst h2
-    simp only [if_true, Derivation.leibniz, derivation_constant_vanishes, dl_yv, smul_zero, add_zero, smul_eq_mul]
+    simp only [if_true, Derivation.leibniz, derivation_constant_vanishes, dl_yv, smul_eq_mul]
     simp
     ring
   · subst h1
-    simp only [if_true, if_neg h2, Derivation.map_zero, Derivation.leibniz, derivation_constant_vanishes, smul_zero, add_zero, smul_eq_mul,
+    simp only [if_true, if_neg h2, Derivation.map_zero, Derivation.leibniz, derivation_constant_vanishes, smul_eq_mul,
       dl_other s b b0 (Ne.symm h2)]
     simp
   · subst h2
-    simp only [if_true, if_neg h1, Derivation.map_zero, Derivation.leibniz, derivation_constant_vanishes, smul_zero, add_zero, smul_eq_mul,
+    simp only [if_true, if_neg h1, Derivation.map_zero, Derivation.leibniz, derivation_constant_vanishes, smul_eq_mul,
       dl_other s b' b0 (Ne.symm h1)]
     simp
   · simp [if_neg h1, if_neg h2]

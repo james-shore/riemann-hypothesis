@@ -110,7 +110,7 @@ theorem _root_.GlobalTheory.coeff_mem_pow_of_flat_of_indep_mod_max : ∀ {A R : 
     intro l
     have h2 := DFunLike.congr_fun haf l
     rw [LinearMap.pi_apply_eq_sum_univ a f, Finsupp.finset_sum_apply, Fintype.sum_sum_type] at h2
-    simp only [f, e, C, Sum.elim_inl, Sum.elim_inr, Finsupp.smul_apply, smul_eq_mul, neg_mul,
+    simp only [f, Sum.elim_inl, Sum.elim_inr, Finsupp.smul_apply, smul_eq_mul, neg_mul,
       Finset.sum_neg_distrib, Finsupp.coe_zero, Pi.zero_apply] at h2
     linear_combination h2
   have hCm : ∀ c : Fin d → A, (∀ l, ∑ j, c j * C j l ∈ maximalIdeal A) → ∀ j, c j ∈ maximalIdeal A := by
@@ -121,7 +121,7 @@ theorem _root_.GlobalTheory.coeff_mem_pow_of_flat_of_indep_mod_max : ∀ {A R : 
       · rw [hQ, Polynomial.natDegree_zero]; exact lt_of_le_of_lt (Nat.zero_le _) j.2
       · exact (Polynomial.natDegree_lt_iff_degree_lt hQ).mpr (Polynomial.degree_sum_fin_lt c)
     have hQc : Q.coeff j = c j := by
-      simp [Q, Polynomial.finset_sum_coeff, Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, Fin.val_inj]
+      simp [Q, Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, Fin.val_inj]
     have hQe : (Q.map φ).eval θ = ∑ l, φ (∑ j', c j' * C j' l) * w l := by
       simp only [Q, Polynomial.map_sum, Polynomial.eval_finset_sum, Polynomial.map_mul, Polynomial.map_C,
         Polynomial.map_pow, Polynomial.map_X, Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_pow,

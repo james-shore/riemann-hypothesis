@@ -48,7 +48,7 @@ variable {F E : Type} [Field F] [Field E] [Algebra F E] {σ : E →ₐ[F] E} {n 
 theorem form_col (v : Fin n → E) (k : Fin n₁) :
     form σ J v (ι *ᵥ Pi.single k 1) = ((ι.map σ)ᵀ *ᵥ (Jᵀ *ᵥ v)) k := by
   simp only [form, dotProduct, mulVec, Matrix.map_apply, transpose_apply, Pi.single_apply, mul_ite, mul_one,
-    mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true, Finset.mul_sum, Finset.sum_mul]
+    mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true, Finset.mul_sum]
   rw [Finset.sum_comm]
   exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring
 
@@ -194,7 +194,7 @@ theorem rotC_mul_rotCinv [CharZero E] : rotC (E := E) n₁ * rotCinv n₁ = 1 :=
   all_goals (first | rw [← fromBlocks_one] | rw [← fromBlocks_zero] | skip)
   all_goals (congr 1)
   all_goals (try simp)
-  all_goals (ext i j; fin_cases i <;> fin_cases j <;> simp [mul_apply, Fin.sum_univ_two] <;> norm_num)
+  all_goals (ext i j; fin_cases i <;> fin_cases j <;> simp <;> norm_num)
 
 theorem rotC_map [CharZero E] : (rotC (E := E) n₁).map σ = rotC n₁ := by
   have h2 : σ 2⁻¹ = 2⁻¹ := by rw [map_inv₀, map_ofNat]
@@ -209,7 +209,7 @@ theorem rotC_unitary [CharZero E] (G₁ : Matrix (Fin n₁) (Fin n₁) E) :
       fromBlocks (fromBlocks G₁ 0 0 !![0, 1; 1, 0]) 0 0 (-fromBlocks G₁ 0 0 !![0, 1; 1, 0]) := by
   simp only [rotC, fromBlocks_transpose, fromBlocks_neg, transpose_zero, transpose_one, neg_zero]
   rw [fromBlocks_multiply, fromBlocks_multiply]
-  simp only [Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
+  simp only [Matrix.mul_zero, add_zero, zero_add]
   repeat rw [fromBlocks_multiply]
   repeat rw [fromBlocks_add]
   congr 1
@@ -243,7 +243,7 @@ theorem one_map_σ {a : Type} [DecidableEq a] : (1 : Matrix a a E).map σ = 1 :=
 theorem rotG_mul_diag : rotG σ J J₁ ι x y * (diagCols (Fin n) : Matrix (Fin n ⊕ Fin n) (Fin n) E) =
     fromRows (ι * coef σ J J₁ ι + vecMulVec x (pairVec σ J y)) (ι * coef σ J J₁ ι + vecMulVec x (pairVec σ J x)) := by
   rw [rotG, diagCols, Matrix.mul_assoc, Matrix.mul_assoc, fromBlocks_mul_fromRows', rotC]
-  simp only [Matrix.mul_one, Matrix.zero_mul, add_zero, zero_add]
+  simp only [Matrix.mul_one, add_zero, zero_add]
   rw [fromBlocks_mul_fromRows', fromBlocks_mul_fromRows']
   simp only [Matrix.zero_mul, add_zero, zero_add, ← Matrix.add_mul, fromBlocks_add]
   simp only [frameS, frameT, fromBlocks_mul_fromRows', Matrix.one_mul, Matrix.zero_mul, add_zero, zero_add,
@@ -269,7 +269,7 @@ theorem rotG_unitary (hσ : ∀ a, σ (σ a) = a) (hJ : ∀ i j, σ (J j i) = J 
   have hTd : (fromBlocks T 0 0 T)ᵀ * fromBlocks J 0 0 (-J) * (fromBlocks T 0 0 T).map σ =
       fromBlocks (fromBlocks J₁ 0 0 !![0, 1; 1, 0]) 0 0 (-fromBlocks J₁ 0 0 !![0, 1; 1, 0]) := by
     rw [fromBlocks_transpose, fromBlocks_map, fromBlocks_multiply, fromBlocks_multiply, ← hG]
-    simp [zero_map_σ, Matrix.mul_neg, Matrix.neg_mul]
+    simp [Matrix.mul_neg, Matrix.neg_mul]
   have e1 : (rotG σ J J₁ ι x y)ᵀ * fromBlocks J 0 0 (-J) * (rotG σ J J₁ ι x y).map σ =
       (fromBlocks S 0 0 S)ᵀ * ((rotC n₁)ᵀ * ((fromBlocks T 0 0 T)ᵀ * fromBlocks J 0 0 (-J) *
         (fromBlocks T 0 0 T).map σ) * rotC n₁) * (fromBlocks S 0 0 S).map σ := by
@@ -379,7 +379,7 @@ theorem vecMulVec_mul' {a b : Type} [Fintype b] (u : a → A) (v : b → A) (M :
 
 theorem det_extM (hQ : Q * ι = 1) (t : Matrix k k A) : (extM ι Q t).det = t.det := by
   have e : extM ι Q t = 1 + ι * ((t - 1) * Q) := by
-    simp only [extM, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_assoc]; abel
+    simp only [extM, Matrix.mul_sub, Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc]; abel
   rw [e, det_one_add_mul_comm, Matrix.mul_assoc, hQ, Matrix.mul_one, add_sub_cancel]
 
 theorem extM_dbl_fromRows (hQ : Q * ι = 1) {Ua Ub : Matrix m m A} (ha : Q * Ua = Q) (hb : Q * Ub = Q)
@@ -525,7 +525,7 @@ theorem z_part {d : Type} [Fintype d] (z : Matrix d m A) (x a b : m → A) :
     mul_fromCols, Matrix.mul_one, fromBlocks_transpose, transpose_zero, fromCols_mul_fromBlocks]
   simp only [Matrix.mul_zero, add_zero, zero_add, fromCols_add', transpose_add, transpose_mul, Matrix.mul_add,
     Matrix.mul_assoc]
-  congr 1 <;> congr 1 <;> ext i j <;> simp [vecMulVec, mul_apply, mulVec, dotProduct, Finset.sum_mul, mul_comm, mul_left_comm] <;>
+  congr 1 <;> congr 1 <;> ext i j <;> simp [vecMulVec, mul_apply, mulVec, dotProduct, mul_comm] <;>
     (rw [Finset.mul_sum]; exact Finset.sum_congr rfl fun _ _ => by ring)
 
 end ExtDiag
@@ -578,13 +578,13 @@ theorem exists_dbl_emb : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [N
     rw [hdblX, hdblX₁, hembA, hQdA, incM_map_cA, ← incM_transpose', ← incM_mul', ← incM_mul']
     congr 1
     rw [fromBlocks_transpose, fromBlocks_map, fromBlocks_multiply, fromBlocks_multiply, h2E]
-    simp [zero_map_σ, Matrix.mul_neg, Matrix.neg_mul, h2E]
+    simp [Matrix.mul_neg, Matrix.neg_mul, h2E]
   have h3d : (dblEmb (F := F) H.ι)ᵀ * dbl (incM F X.J) =
       dbl (incM F X₁.J) * (fromBlocks (incM F Q) 0 0 (incM F Q)).map (cA σ) := by
     rw [hdblX, hdblX₁, hembA, hQdA, incM_map_cA, ← incM_transpose', ← incM_mul', ← incM_mul']
     congr 1
     rw [fromBlocks_transpose, fromBlocks_map, fromBlocks_multiply, fromBlocks_multiply, h3E]
-    simp [zero_map_σ, Matrix.mul_neg, Matrix.neg_mul, h3E]
+    simp [Matrix.mul_neg, Matrix.neg_mul, h3E]
   set Qd : Matrix (Fin n₁ ⊕ Fin n₁) (Fin n ⊕ Fin n) (AE F E) := fromBlocks (incM F Q) 0 0 (incM F Q) with hQd_def
   let emb := extHom (cA σ) (dbl (incM F X.J)) (dbl (incM F X₁.J)) (dblEmb (F := F) H.ι) Qd hQd h2d h3d
   have hembv : ∀ g, (emb g).1.1 = extM (dblEmb (F := F) H.ι) Qd g.1.1 := fun g => rfl

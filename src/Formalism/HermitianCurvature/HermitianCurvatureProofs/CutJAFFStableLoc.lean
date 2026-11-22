@@ -151,7 +151,7 @@ theorem omP_eq (E : Type) [Field E] [NumberField E] [IsCMField E] (Wp Wq : Infin
       have e : (⟨(l.val - 1) + 1, by omega⟩ : Fin (S.G.r + 2)) = l := Fin.ext (by simp; omega)
       simpa [e] using this
   · rintro ⟨hD, hG⟩
-    exact ⟨hG, fun a => hD ⟨a.val + 1, by omega⟩ (by have := a.isLt; simp only [Fin.val_mk]; omega)⟩
+    exact ⟨hG, fun a => hD ⟨a.val + 1, by omega⟩ (by have := a.isLt; simp only; omega)⟩
 
 theorem positive_domain_condition_holds : OmPDom := by
   intro E _ _ _ Wp Wq _ _ _ _ _ _ S T v

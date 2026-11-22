@@ -31,7 +31,7 @@ theorem cartan_lowering_commute {E : GLOps n K V} (hE : IsGLRep E) {a b : Fin n}
     (E a a - E b b) * E b a = E b a * (E a a - E b b) - (2 : K) • E b a := by
   have h1 := hE.1 a a b a
   have h2 := hE.1 b b b a
-  simp only [if_true, if_neg hab, if_neg (Ne.symm hab), sub_zero, zero_sub] at h1 h2
+  simp only [if_true, if_neg hab, sub_zero, zero_sub] at h1 h2
   rw [sub_mul, mul_sub, two_smul, eq_add_of_sub_eq' h1, eq_add_of_sub_eq' h2]
   abel
 
@@ -79,7 +79,7 @@ theorem projector_factor_mem_weight_space {E : GLOps n K V} (hs : OperatorsShift
   have h1 := hpow b a k _ _ (hpow a b k ν x hx)
   have e : ν + k • rootW a b + k • rootW b a = ν := by
     ext i
-    simp only [Pi.add_apply, Pi.smul_apply, rootW, Pi.sub_apply, smul_eq_mul]
+    simp only [Pi.add_apply, Pi.smul_apply, rootW, Pi.sub_apply]
     ring
   rwa [e] at h1
 

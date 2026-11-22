@@ -134,7 +134,7 @@ theorem colDerM_single (t : T) (k l : κ) :
       · subst hj; rw [if_pos ht, if_pos ⟨ht, rfl⟩, ← xForm_single]
         congr 1; ext i; simp [single_apply, Pi.single_apply, eq_comm]
       · rw [if_pos ht, if_neg (fun h => hj h.2)]
-        have : (single l k (1 : R)) j = 0 := by ext i; simp [single_apply, Ne.symm hj, hj]
+        have : (single l k (1 : R)) j = 0 := by ext i; simp [Ne.symm hj]
         rw [this, map_zero]
     · rw [if_neg ht, if_neg (fun h => ht h.1)]
   · rw [colDerM_X_yVar, colDer_X_yVar]
@@ -143,7 +143,7 @@ theorem colDerM_single (t : T) (k l : κ) :
       · subst hj; rw [if_pos ht, if_pos ⟨ht, rfl⟩, ← yForm_single]
         congr 2; ext i; simp [single_apply, Pi.single_apply, eq_comm]
       · rw [if_pos ht, if_neg (fun h => hj h.2)]
-        have : (fun r => single l k (1 : R) r j) = 0 := by ext i; simp [single_apply, hj, Ne.symm hj]
+        have : (fun r => single l k (1 : R) r j) = 0 := by ext i; simp [Ne.symm hj]
         rw [this, map_zero, neg_zero]
     · rw [if_neg ht, if_neg (fun h => ht h.1)]
 
@@ -163,7 +163,7 @@ theorem blockMat_mul_star_eq {k l : κ} (hkl : k ≠ l) (c s s' : ℂ) :
   simp only [blockMat, star_eq_conjTranspose, conjTranspose_add, conjTranspose_one,
     conjTranspose_single, add_mul, mul_add, Matrix.one_mul, Matrix.mul_one,
     single_mul_single_same, single_mul_single_of_ne _ _ _ _ hkl, single_mul_single_of_ne _ _ _ _ hkl.symm,
-    Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add]
+    add_zero]
   ext i j
   simp only [Matrix.add_apply, single_apply, one_apply]
   by_cases hik : i = k <;> by_cases hil : i = l <;> by_cases hjk : j = k <;> by_cases hjl : j = l <;>
@@ -186,7 +186,7 @@ theorem blockMat_conj_single {k l : κ} (hkl : k ≠ l) (c s s' : ℂ) :
   simp only [blockMat, star_eq_conjTranspose, conjTranspose_add, conjTranspose_one,
     conjTranspose_single, add_mul, mul_add, Matrix.one_mul, Matrix.mul_one,
     single_mul_single_same, single_mul_single_of_ne _ _ _ _ hkl, single_mul_single_of_ne _ _ _ _ hkl.symm,
-    Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add]
+    add_zero]
   ext i j
   simp only [Matrix.add_apply, single_apply]
   by_cases hik : i = k <;> by_cases hil : i = l <;> by_cases hjk : j = k <;> by_cases hjl : j = l <;>
@@ -284,14 +284,14 @@ theorem colActHom_diagInvAt_monomial (t : T) (k : κ) (u : Rˣ) (m : Var T p q �
       · subst ht
         by_cases hj : j = k <;> by_cases hi : j = i <;>
           simp [diagInvAt, diagonal_apply, Pi.single_apply, hj, hi, eq_comm] <;> simp_all [eq_comm]
-      · simp [Pi.mulSingle_eq_of_ne ht, Matrix.one_apply, Pi.single_apply, eq_comm, Ne.symm ht]
+      · simp [Matrix.one_apply, Pi.single_apply, eq_comm, Ne.symm ht]
     · rw [colAct_apply, colSubst_X_yVar, ← yForm_single, ← map_smul, colWeight_single_yVar]
       congr 1; ext i
       by_cases ht : t' = t
       · subst ht
         by_cases hj : j = k <;> by_cases hi : j = i <;>
           simp [diagInvAt, diagonal_apply, Pi.single_apply, hj, hi, eq_comm] <;> simp_all [eq_comm]
-      · simp [Pi.mulSingle_eq_of_ne ht, Matrix.one_apply, Pi.single_apply, eq_comm, Ne.symm ht]
+      · simp [Matrix.one_apply, Pi.single_apply, eq_comm, Ne.symm ht]
   have hpow (v : Var T p q κ) (e : ℕ) :
       colAct R T p q κ (Pi.mulSingle t (diagInvAt k u)) (monomial (Finsupp.single v e) 1) =
         ((u ^ colWeight (Finsupp.single v e) t k : Rˣ) : R) • monomial (Finsupp.single v e) 1 := by
@@ -339,7 +339,7 @@ theorem diagInvAt_mem_unitaryGroup (k : κ) (u : ℂˣ) (hu : (u : ℂ) * star (
   congr 1; ext i
   by_cases h : i = k
   · subst h
-    simp only [Function.update_self, Pi.star_apply, Units.val_inv_eq_inv_val, star_inv₀, Pi.one_apply]
+    simp only [Function.update_self, Pi.star_apply, Units.val_inv_eq_inv_val, star_inv₀]
     rw [← mul_inv, hu, inv_one]
   · simp [h]
 

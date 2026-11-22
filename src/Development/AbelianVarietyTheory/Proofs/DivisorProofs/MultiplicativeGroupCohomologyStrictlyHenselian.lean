@@ -12,8 +12,4 @@ theorem GlobalTheory.gm_cohomology_strictlyHenselian : ∀ (q : ℕ) [NeZero q] 
       Nonempty (Ht q (sp (LaurentPolynomial A)) 1 i ≃+ ZMod q) := by
   first
   | exact @_root_.GlobalTheory.LaurentCohomologyVanishing.laurent_cohomology
-  | exact _root_.GlobalTheory.LaurentCohomologyVanishing.laurent_cohomology
-  | (apply _root_.GlobalTheory.LaurentCohomologyVanishing.laurent_cohomology <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LaurentCohomologyVanishing.laurent_cohomology <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LaurentCohomologyVanishing.laurent_cohomology <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LaurentCohomologyVanishing.laurent_cohomology ..)

@@ -41,7 +41,7 @@ theorem af_le_stdLat {o C : Type} [CommRing o] [Field C] [Algebra o C] (RC : Sub
   intro k _
   have h4 : (linMap n χ l) (Pi.single k 1) ∈ RC := h3 _ (Set.mem_univ _)
   have h5 : (linMap n χ l) (Pi.single k 1) = l k := by
-    simp only [linMap, Fintype.linearCombination_apply, LinearMap.coe_mk]
+    simp only [linMap, Fintype.linearCombination_apply]
     rw [Finset.sum_apply, Finset.sum_eq_single k]
     · simp [h1]
     · intro j _ hj
@@ -59,7 +59,7 @@ theorem testFacts (hF : GlobalTheory.CompanionTheory.Ar.HT.FarguesHodgeTate) (hQ
   haveI : CharZero Ω := (RingHom.charZero_iff 𝔐.cst.injective).1 inferInstance
   haveI : CharZero C := (RingHom.charZero_iff (algebraMap Ω C).injective).1 inferInstance
   haveI : Finite (𝓞 E ⧸ Ideal.span {(p : 𝓞 E)}) := Ideal.finiteQuotientOfFreeOfNeBot _ (by
-    simp [Ideal.span_singleton_eq_bot, (Fact.out : p.Prime).ne_zero])
+    simp [(Fact.out : p.Prime).ne_zero])
   letI : Fintype (TestPt.NAdd E (D.p + D.q) p) := Fintype.ofFinite _
   have hInt : v.Integers RC := ⟨Subtype.val_injective, fun x => (hv _).1 x.2, fun {x} h => ⟨⟨x, (hv _).2 h⟩, rfl⟩⟩
   have hw : algebraMap O C w = algebraMap Ω C (algebraMap O Ω w) := IsScalarTower.algebraMap_apply O Ω C w

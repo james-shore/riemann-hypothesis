@@ -43,8 +43,6 @@ theorem pos_iff_lt {N : ℕ} {e : Fin N → ℤ} (ha : Antitone e) (i : Fin N) :
   | exact @_root_.GlobalTheory.PositiveIffLtCard.pos_iff_lt_card
   | exact _root_.GlobalTheory.PositiveIffLtCard.pos_iff_lt_card
   | (apply _root_.GlobalTheory.PositiveIffLtCard.pos_iff_lt_card <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PositiveIffLtCard.pos_iff_lt_card <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PositiveIffLtCard.pos_iff_lt_card <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PositiveIffLtCard.pos_iff_lt_card ..)
 
 theorem nonneg_of_dom {N : ℕ} {ν e : Fin N → ℤ} (hν : Antitone ν) (he : ∀ i, 0 ≤ e i)

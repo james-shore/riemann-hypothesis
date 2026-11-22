@@ -60,7 +60,7 @@ theorem hasDerivAt_matmul {f g : ℝ → Mat n} {f' g' : Mat n} {t : ℝ} (hf : 
   rw [← Finset.sum_add_distrib]
   exact HasDerivAt.fun_sum fun k _ => by
     have := (hf i k).mul (hg k j)
-    convert this using 1 <;> first | rfl | ring
+    convert this using 1 <;> first | rfl
 
 theorem hasDerivAt_conjTranspose {f : ℝ → Mat n} {f' : Mat n} {t : ℝ} (hf : HasDerivAt f f' t) :
     HasDerivAt (fun s => (f s)ᴴ) f'ᴴ t := by
@@ -77,7 +77,7 @@ theorem hasDerivAt_trace {f : ℝ → Mat n} {f' : Mat n} {t : ℝ} (hf : HasDer
 theorem hasDerivAt_re_ofReal {z : ℝ → ℂ} {z' : ℂ} {t : ℝ} (hz : HasDerivAt z z' t) :
     HasDerivAt (fun s => (((z s).re : ℝ) : ℂ)) ((z'.re : ℝ) : ℂ) t := by
   have h := ((Complex.ofRealCLM.comp Complex.reCLM).hasFDerivAt (x := z t)).comp_hasDerivAt t hz
-  convert h using 1 <;> first | rfl | (funext s; rfl) | simp
+  convert h using 1 <;> first | rfl
 
 theorem isOpen_GLs : IsOpen (GLs n) :=
   isOpen_ne_fun (continuous_id.matrix_det) continuous_const

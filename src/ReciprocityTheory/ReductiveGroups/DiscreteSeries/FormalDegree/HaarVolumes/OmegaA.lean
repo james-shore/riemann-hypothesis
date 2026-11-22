@@ -55,7 +55,7 @@ theorem skMat_conjTranspose_om (x : UCo N) : (skMat x)ᴴ = -skMat x := by
 theorem skMat_add_om (x y : UCo N) : skMat (x + y) = skMat x + skMat y := by
   ext a b
   simp only [skMat, Matrix.add_apply]
-  split_ifs <;> simp [mul_add, star_add, neg_add] <;> ring
+  split_ifs <;> simp [mul_add, star_add] <;> ring
 
 theorem skMat_smul_om (c : ℝ) (x : UCo N) : skMat (c • x) = (c : ℂ) • skMat x := by
   ext a b

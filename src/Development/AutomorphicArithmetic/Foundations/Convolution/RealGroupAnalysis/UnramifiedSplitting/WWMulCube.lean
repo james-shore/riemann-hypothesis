@@ -11,12 +11,12 @@ open scoped Classical
 private theorem nU_mul_neg {F : Type} [Field F] [NumberField F] (b : A F) : nU b * nU (-b) = 1 := by
   apply Subtype.ext
   show (!![1, b; 0, 1] : Matrix (Fin 2) (Fin 2) (A F)) * !![1, -b; 0, 1] = 1
-  simp [Matrix.mul_fin_two, Matrix.one_fin_two]
+  simp [Matrix.one_fin_two]
 
 private theorem wW_mul_cube (F : Type) [Field F] [NumberField F] : wW F * (wW F * (wW F * wW F)) = 1 := by
   apply Subtype.ext
   show (!![0, 1; -1, 0] : Matrix (Fin 2) (Fin 2) (A F)) * (!![0, 1; -1, 0] * (!![0, 1; -1, 0] * !![0, 1; -1, 0])) = 1
-  simp [Matrix.mul_fin_two, Matrix.one_fin_two]
+  simp [Matrix.one_fin_two]
 
 theorem UpperTheory.ConvolutionTheory.R2.H.slKer :
     ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E] [IsTotallyReal F] [IsTotallyComplex E] (D : Dat F E) (W : Weil D) (φ : S4 F), Sl0 φ.1 → ∀ g, ThRow 0 0 (W.Om g φ).1 = 0 := by

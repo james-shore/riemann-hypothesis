@@ -86,7 +86,7 @@ noncomputable def lin (π : C) : bdd C :=
 theorem lin_ne_zero (π : C) : lin π ≠ 0 := by
   intro h
   have := congrArg (fun Φ : bdd C => coeff 1 (Φ : PowerSeries C)) h
-  simp [lin, coeff_C, coeff_X] at this
+  simp [lin, coeff_X] at this
 
 theorem ev_lin [CompleteSpace C] {π : C} (hπ : ‖π‖ < 1) : ev hπ (lin π) = 0 := by
   change ∑' n, coeff n (X - PowerSeries.C π : PowerSeries C) * π ^ n = 0

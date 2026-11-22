@@ -162,7 +162,6 @@ theorem fibre_le [ν.IsOpenPosMeasure] [IsFiniteMeasureOnCompacts ν]
   have : e' ≤ e := by
     first
       | exact (ENNReal.mul_le_mul_iff_left hpos hfin).1 hfinal
-      | exact (ENNReal.mul_le_mul_right hpos hfin).1 hfinal
   exact absurd he1 (not_lt.2 this)
 
 theorem fibre_tail [ν.IsOpenPosMeasure] [IsFiniteMeasureOnCompacts ν] (hU : IsOpen U)

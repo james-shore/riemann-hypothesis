@@ -94,7 +94,7 @@ theorem isAdmissible_reduce : AbelianDeRham → ∀ (R R₁ R₀ : Type) [CommRi
     refine LinearMap.ext fun c₁ ↦ ?_
     obtain ⟨c, rfl⟩ := hPs c₁
     rw [ef c, hfp, hsum]
-    simp [map_sum, Submodule.coe_sum, hj]
+    simp [map_sum, hj]
   · refine codisjoint_iff_le_sup.2 fun y _ ↦ ?_
     obtain ⟨x, ex⟩ := hlift y
     obtain ⟨f, hf, n, hn, rfl⟩ := Submodule.mem_sup.1 (hN.sup_eq_top ▸ Submodule.mem_top : x ∈ F ⊔ N)

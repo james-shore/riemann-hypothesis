@@ -20,8 +20,6 @@ theorem exists_smul_mem (L : Submodule (𝓞 K) V) (hL : Submodule.IsLattice K L
   | exact @_root_.GlobalTheory.SmulMemSpan.exists_smul_mem
   | exact _root_.GlobalTheory.SmulMemSpan.exists_smul_mem
   | (apply _root_.GlobalTheory.SmulMemSpan.exists_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SmulMemSpan.exists_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SmulMemSpan.exists_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SmulMemSpan.exists_smul_mem ..)
 
 theorem latIn_isLattice (L : Submodule (𝓞 K) V) (hL : Submodule.IsLattice K L) (U : Submodule K V) :

@@ -75,7 +75,7 @@ theorem GlobalTheory.InertLagLevi.levi_det : ∀ (F E : Type) [Field F] [NumberF
     have hDc : D.map (cA σ) = D := by
       simp only [D, diagCols, Matrix.fromRows_map, Matrix.map_one _ (map_zero (cA σ)) (map_one (cA σ))]
     have hK : dbl (incM F J) * D = K * incM F J := by
-      simp only [dbl, D, diagCols, Matrix.fromBlocks_mul_fromRows, Matrix.fromRows_mul]
+      simp only [dbl, D, diagCols, Matrix.fromBlocks_mul_fromRows]
       simp [K, Matrix.fromRows_mul]
     have h2 : Qᵀ * (K * incM F J) * Ti.map (cA σ) = K * incM F J := by
       rw [← hK]

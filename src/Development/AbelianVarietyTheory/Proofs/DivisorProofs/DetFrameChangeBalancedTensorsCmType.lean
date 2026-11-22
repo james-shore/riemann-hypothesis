@@ -21,7 +21,7 @@ open Classical
 theorem sandwich {ι κ K : Type} [Fintype ι] [DecidableEq ι] [CommRing K] (B : Matrix ι κ K) (a b : ι) (x y : κ) :
     (Matrix.transpose B * Matrix.of (fun u v => (if u = a ∧ v = b then (1 : K) else 0) + (if u = b ∧ v = a then 1 else 0)) * B) x y =
       B a x * B b y + B b x * B a y := by
-  simp [Matrix.mul_apply, add_mul, mul_add, Finset.sum_add_distrib, ite_and, Finset.sum_mul, Finset.mul_sum]
+  simp [Matrix.mul_apply, add_mul, mul_add, Finset.sum_add_distrib, ite_and]
 
 variable {E : Type} [Field E] [NumberField E] [IsCMField E]
 
@@ -109,10 +109,10 @@ theorem sym_entry {n' : ℕ} (e' : (Σ τ : E →+* ℂ, Fin (Dw.mult τ)) ≃ F
     rintro ⟨h, -⟩
     have h5 : σ = (starRingEnd ℂ).comp τ := congrArg Sigma.fst (e'.injective h)
     exact conj_off H τ hτ (h5 ▸ hσ)
-  simp only [symPair, Matrix.of_apply, if_neg h2, add_zero, e'.apply_eq_iff_eq]
+  simp only [symPair, Matrix.of_apply, e'.apply_eq_iff_eq]
   by_cases h : τ = σ
   · subst h
-    simp [Sigma.mk.inj_iff, eq_comm]
+    simp [eq_comm]
     intro h5
     exact (conj_off H τ hτ (by rw [← h5]; exact hτ)).elim
   · have h3 : ¬ (σ = τ) := Ne.symm h

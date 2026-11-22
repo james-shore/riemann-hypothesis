@@ -77,7 +77,7 @@ theorem tv_apply {n : ℕ} {R : Type} [CommRing R] (i j : Fin n) (c : R) (a b : 
   · have h' : ¬(i = a ∧ j = b) := by
       rintro ⟨rfl, rfl⟩
       exact h ⟨rfl, rfl⟩
-    simp [Matrix.transvection, Matrix.one_apply, Matrix.single_apply, h', h]
+    simp [Matrix.transvection, Matrix.one_apply, h', h]
 
 def tvGL {n : ℕ} {R : Type} [CommRing R] {i j : Fin n} (hij : i ≠ j) (c : R) : GL (Fin n) R :=
   ⟨Matrix.transvection i j c, Matrix.transvection i j (-c),

@@ -19,7 +19,7 @@ theorem aestronglyMeasurable_pi_of_forall {α : Type*} {m0 : MeasurableSpace α}
       funext i
       by_cases hi : i = a
       · subst hi; simp
-      · simp [Function.update_of_ne hi, hi]
+      · simp [hi]
   simpa using key Finset.univ
 
 variable {ι : Type} [Fintype ι] [DecidableEq ι] {X : ι → Type} [∀ i, MeasurableSpace (X i)]
@@ -123,7 +123,7 @@ theorem integral_vecOn (μ : ∀ i, Measure (X i)) [∀ i, SigmaFinite (μ i)]
     · subst hia; simp [hw]
     · by_cases his : i ∈ s
       · simp [hw, his, Function.update_of_ne hia]
-      · simp [hw, his, hia, Function.update_of_ne hia]
+      · simp [hw, his, hia]
 
 theorem integral_multilinear_pi : ∀ (ι : Type) [Fintype ι] [DecidableEq ι] (X : ι → Type) [∀ i, MeasurableSpace (X i)] (μ : ∀ i, Measure (X i)) [∀ i, SigmaFinite (μ i)] (E : ι → Type) [∀ i, NormedAddCommGroup (E i)] [∀ i, NormedSpace ℂ (E i)] [∀ i, CompleteSpace (E i)] (F : Type) [NormedAddCommGroup F] [NormedSpace ℂ F] [CompleteSpace F] (Φ : ContinuousMultilinearMap ℂ E F) (g : ∀ i, X i → E i), (∀ i, Integrable (g i) (μ i)) → Integrable (fun x : ∀ i, X i => Φ fun i => g i (x i)) (Measure.pi μ) ∧ ∫ x, Φ (fun i => g i (x i)) ∂Measure.pi μ = Φ fun i => ∫ y, g i y ∂μ i := by
   intro ι _ _ X _ μ _ E _ _ _ F _ _ _ Φ g hg

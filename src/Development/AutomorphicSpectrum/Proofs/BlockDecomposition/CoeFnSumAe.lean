@@ -31,7 +31,7 @@ theorem opExA : KerBasic → RowInt → SchurOp → OpExA := by
       ContinuousLinearMap.pi fun i => ∑ j, (S i j).comp (PiLp.proj 2 (fun _ : ι => Lp ℂ 2 X.ν) j)
   have hT : ∀ f i, T f i = ∑ j, S i j (f j) := by
     intro f i
-    simp [T, ContinuousLinearMap.sum_apply]
+    simp [T]
   have hIs : X.IsOp Φ T := by
     intro f i
     rw [hT]

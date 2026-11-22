@@ -27,7 +27,7 @@ theorem coset_inv (π : 𝓞 L) (hπ : π ≠ 0) (f : Gp L N → ℝ) (hf : ∀ 
   obtain ⟨k, ⟨γ', rfl⟩, hk⟩ := Subgroup.mem_map.mp (Subgroup.mem_comap.mp hh)
   have e : qel L N π hπ * toK L N h = toK L N γ' * qel L N π hπ := by
     rw [← hk]
-    simp [MulAut.conj_apply, mul_assoc]
+    simp [mul_assoc]
   rw [(toK L N).map_mul h γ, ← mul_assoc, e, mul_assoc, (toP L N).map_mul, ← emb_eq, mul_assoc, hf]
 
 end Glue
@@ -99,7 +99,6 @@ theorem _root_.PositivityTheory.KB.sGap_of_parts : GapAbs → Unfold → Arith �
         show w (jS L N ((h : _) * k) * x) = w (jS L N k * x)
         rw [map_mul, mul_assoc]
         exact hwinv _ (Subgroup.mem_subgroupOf.1 hh).2 _)
-    beta_reduce at e1 e2
     rw [hecke_eq]
     unfold avg
     rw [e1, e2, ← i1, ← i2]

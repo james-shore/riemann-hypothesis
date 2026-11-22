@@ -78,7 +78,7 @@ theorem scalar_avoid {J h : Matrix ι ι ℂ} (hh : hᴴ * J * h = J) {V : Set (
     rw [hqd, ← Polynomial.coe_evalRingHom, RingHom.map_det]
     congr 1
     ext i j
-    by_cases hij : i = j <;> simp [Matrix.one_apply, hij] <;> ring
+    by_cases hij : i = j <;> simp [hij] <;> ring
   have hq0 : q ≠ 0 := fun h0 => by
     have := hq 0
     rw [h0, Polynomial.eval_zero, zero_smul, add_zero, Matrix.det_one] at this

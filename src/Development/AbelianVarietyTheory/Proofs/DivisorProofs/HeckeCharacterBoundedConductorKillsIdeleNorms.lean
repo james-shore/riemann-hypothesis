@@ -146,7 +146,6 @@ theorem chi_norm_cong (χ : HChar D.host.E) (S : Finset ℕ) (k : ℕ) (ht : χ.
     have h4 := congrArg Units.val h3
     refine hL y hyu ?_
     rw [hy']
-    change Valued.v (((b⁻¹ * finIdl D (z * sgU D z) : Ideles D.host.E) : AdeleRing (𝓞 D.host.E) D.host.E).2 v - 1) ≤ _
     have h4' : ((b⁻¹ * finIdl D (z * sgU D z) : Ideles D.host.E) : AdeleRing (𝓞 D.host.E) D.host.E).2 v =
         (finIdl D (z * sgU D z) : AdeleRing (𝓞 D.host.E) D.host.E).2 v := h4
     rw [h4', vl_sub_one]

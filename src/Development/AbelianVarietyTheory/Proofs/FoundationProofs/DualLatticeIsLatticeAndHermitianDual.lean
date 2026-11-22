@@ -40,8 +40,6 @@ theorem exists_smul_mem {M : Submodule (𝓞 K) (Fin n → K)}
   | exact @_root_.GlobalTheory.DeterminantSimpLemma.main
   | exact _root_.GlobalTheory.DeterminantSimpLemma.main
   | (apply _root_.GlobalTheory.DeterminantSimpLemma.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DeterminantSimpLemma.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DeterminantSimpLemma.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DeterminantSimpLemma.main ..)
 
 theorem isLattice_dualFr (M : Submodule (𝓞 K) (Fin n → K)) (hM : Submodule.IsLattice K M) :

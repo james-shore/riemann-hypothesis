@@ -29,7 +29,7 @@ theorem exists_generic_fibre_pull : ∀ (R W : Type) [CommRing R] [IsDomain R] [
     simp only [hgφ, jK, spMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp]
     congr 2
     ext x
-    simp [IsFractionRing.map, IsLocalization.map_eq]
+    simp [IsFractionRing.map]
   have hmono : Mono (jK R) := by
     have : IsPreimmersion (jK R) := IsPreimmersion.of_isLocalization (nonZeroDivisors R)
     infer_instance
@@ -73,7 +73,7 @@ theorem extLam_pull_square : ∀ (R R' : Type) [CommRing R] [IsDomain R] [IsLoca
     simp only [jK, spMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp]
     congr 2
     ext x
-    simp [IsFractionRing.map, IsLocalization.map_eq]
+    simp [IsFractionRing.map]
   have hmono : Mono (jK R) := by
     have : IsPreimmersion (jK R) := IsPreimmersion.of_isLocalization (nonZeroDivisors R)
     infer_instance

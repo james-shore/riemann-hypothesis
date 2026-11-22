@@ -40,8 +40,7 @@ def rep (Λ : Submodule (𝓞 E) (Fin r → E)) (n : ℕ) (G : Subgroup (GL (Fin
   map_one' := by
     apply Submodule.linearMap_qext
     ext x
-    simp only [LinearMap.coe_comp, Function.comp_apply, Submodule.mkQ_apply, Submodule.mapQ_apply,
-      LinearMap.id_comp]
+    simp only [LinearMap.coe_comp, Function.comp_apply, Submodule.mkQ_apply, Submodule.mapQ_apply]
     congr 1
     ext
     simp

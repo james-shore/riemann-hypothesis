@@ -13,7 +13,7 @@ open PI.FJM PI.FJMP
 
 theorem pos_iff_lt_nP {n : ℕ} (f : Fin n → ℚ) (hseg : ∀ i i' : Fin n, i < i' → 0 < f i' → 0 < f i)
     (i : Fin n) : 0 < f i ↔ i.val < nP f := by
-  first | exact Bl.general_b_fact_upper_bis_form.goal1 .. | (apply Bl.general_b_fact_upper_bis_form.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_upper_bis_form.goal1 <;> assumption) | (apply @Bl.general_b_fact_upper_bis_form.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_upper_bis_form.goal1 <;> assumption) | (apply @Bl.general_b_fact_upper_bis_form.goal1 <;> first | assumption | infer_instance) | exact @Bl.general_b_fact_upper_bis_form.goal1 n f hseg i | exact @Bl.general_b_fact_upper_bis_form.goal1 n f hseg | exact @Bl.general_b_fact_upper_bis_form.goal1 n f | exact @Bl.general_b_fact_upper_bis_form.goal1 n
+  first | exact Bl.general_b_fact_upper_bis_form.goal1 .. | (apply Bl.general_b_fact_upper_bis_form.goal1 <;> assumption) | exact @Bl.general_b_fact_upper_bis_form.goal1 n f hseg i | exact @Bl.general_b_fact_upper_bis_form.goal1 n f hseg | exact @Bl.general_b_fact_upper_bis_form.goal1 n f | exact @Bl.general_b_fact_upper_bis_form.goal1 n
 
 theorem neg_iff_nN {n : ℕ} (f : Fin n → ℚ) (hseg : ∀ i i' : Fin n, i < i' → f i < 0 → f i' < 0)
     (i : Fin n) : f i < 0 ↔ n ≤ i.val + nN f := by

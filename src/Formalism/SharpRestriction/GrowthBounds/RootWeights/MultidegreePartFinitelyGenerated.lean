@@ -40,7 +40,7 @@ theorem multidegree_part_finitely_generated {p : ℕ} (hp0 : (p : KK O) ≠ 0) {
         simp [mul_add]
       map_smul' := fun o F => by
         funext s
-        simp [MvPolynomial.coeff_smul, mul_smul_comm] }
+        simp [MvPolynomial.coeff_smul] }
   let g : (S → O) →ₗ[O] (S → KK O) :=
     LinearMap.pi (fun s => (Algebra.linearMap O (KK O)).comp (LinearMap.proj s))
   have hinj : Function.Injective f := by

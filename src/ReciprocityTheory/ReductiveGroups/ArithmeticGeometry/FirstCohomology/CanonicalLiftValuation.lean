@@ -28,8 +28,6 @@ theorem ros_snd_one (hG : GlobalFnsSt) (f g : D.toPre.P.A ⟶ D.toPre.P.A) [IsMo
   have h1g : (1 : T ⟶ D.toPre.P.A) ≫ g = 1 := by
     first
     | exact MonObj.one_comp g
-    | simp [MonObj.Hom.one_def]
-    | simp [Hom.one_def]
   have c11 : ∀ a : T ⟶ D.toPre.P.A, cubV D.toPre.cub z J a 1 1 = 1 := fun a =>
     (hC.s01 a 1 1).trans (hC.face a 1)
   rw [h11, h1g, c11 y, c11 (y ≫ f), _root_.mul_one, _root_.one_mul] at h
@@ -78,8 +76,6 @@ private theorem formEq_sumElim_pullφ_rosatiφ (oa : D.toPre.OAct O) (a : O) (k 
     rw [mul_comm]
     first
     | rw [MonObj.comp_mul]
-    | rw [comp_mul]
-    | rw [Hom.comp_mul]
     simp [aF, cP]
   have E7 : (cP D.toPre (DegPre.BF D.toPre F) χ).left =
       (aF D F oa a).left ≫ (toUnit _ ≫ D.toPre.c χ).left := by

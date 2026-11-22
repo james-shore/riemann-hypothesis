@@ -419,7 +419,7 @@ theorem factor_omHT (m : Ideal A) [hm : m.IsPrime] (hp : (p : A) ∉ m) (σ : E 
       rw [← hyx, eigProj_idem]
     simp only [LinearMap.comp_apply, hfg', map_smul, LinearMap.codRestrict_apply, Submodule.coe_smul,
       LinearMap.smul_apply, Submodule.subtype_apply, LinearMap.restrictScalars_apply,
-      LinearMap.map_smul_of_tower, hx, mul_smul]
+      hx, mul_smul]
 
 end Chart
 

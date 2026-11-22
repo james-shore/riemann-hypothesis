@@ -96,8 +96,7 @@ theorem isIso_of_isIso_fibres : ∀ (T X Z : Scheme.{0}) (p : X ⟶ T) (q : Z �
     have haa : a ≫ m = a' ≫ m := by
       apply pullback.hom_ext
       · simp only [m, a, a', Category.assoc, pullback.lift_fst, pullback.lift_fst_assoc, hz]
-      · simp only [m, a, a', pullback.map, Category.assoc, pullback.lift_snd, pullback.lift_snd_assoc,
-          Category.comp_id]
+      · simp only [m, a, a', pullback.map, Category.assoc, pullback.lift_snd, Category.comp_id]
     have haa' : a = a' := (cancel_mono m).1 haa
     have := congrArg (· ≫ pullback.fst p x) haa'
     simp only [a, a', pullback.lift_fst] at this

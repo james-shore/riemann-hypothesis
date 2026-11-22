@@ -32,16 +32,16 @@ theorem leftRootDerivation_X (a b : Ix p q) (v : Ln p q r s) :
     · simp only [h, if_true, Derivation.smul_apply, pderiv_X, smul_eq_mul]
       by_cases hb : v1 = b
       · subst hb; simp
-      · simp [Pi.single_apply, hb]
-    · simp only [h, if_false, Derivation.neg_apply, Derivation.smul_apply, pderiv_X, smul_eq_mul]
+      · simp [hb]
+    · simp only [h]
       by_cases ha : v1 = a
       · subst ha; simp
-      · simp [Pi.single_apply, ha]
+      · simp [ha]
   · intro c _ hc
     obtain ⟨v1, v2⟩ := v
     have h1 : (v1, v2) ≠ (b, c) := fun e => hc (by simp at e; exact e.2.symm)
     have h2 : (v1, v2) ≠ (a, c) := fun e => hc (by simp at e; exact e.2.symm)
-    split_ifs <;> simp [pderiv_X, Pi.single_apply, h1.symm, h2.symm]
+    split_ifs <;> simp [pderiv_X, h1.symm, h2.symm]
   · simp
 
 theorem rightRootDerivation_X (c d : Ix r s) (v : Ln p q r s) :
@@ -54,16 +54,16 @@ theorem rightRootDerivation_X (c d : Ix r s) (v : Ln p q r s) :
     · simp only [h, if_true, Derivation.smul_apply, pderiv_X, smul_eq_mul]
       by_cases hb : v2 = d
       · subst hb; simp
-      · simp [Pi.single_apply, hb]
-    · simp only [h, if_false, Derivation.neg_apply, Derivation.smul_apply, pderiv_X, smul_eq_mul]
+      · simp [hb]
+    · simp only [h]
       by_cases ha : v2 = c
       · subst ha; simp
-      · simp [Pi.single_apply, ha]
+      · simp [ha]
   · intro a _ hc
     obtain ⟨v1, v2⟩ := v
     have h1 : (v1, v2) ≠ (a, d) := fun e => hc (by simp at e; exact e.1.symm)
     have h2 : (v1, v2) ≠ (a, c) := fun e => hc (by simp at e; exact e.1.symm)
-    split_ifs <;> simp [pderiv_X, Pi.single_apply, h1.symm, h2.symm]
+    split_ifs <;> simp [pderiv_X, h1.symm, h2.symm]
   · simp
 
 theorem leftRootOperator_eq_derivation (a b : Ix p q) (hab : a ≠ b) (hblk : ∀ c : Ix r s, linePos (a, c) = linePos (b, c))

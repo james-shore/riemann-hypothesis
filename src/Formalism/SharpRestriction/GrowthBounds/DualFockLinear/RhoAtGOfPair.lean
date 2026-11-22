@@ -53,7 +53,7 @@ theorem HL_refl {p n' : ℕ} {W Qq O Kf : Type} [CommRing W] [IsDomain W] [IsDis
       obtain ⟨k, rfl⟩ := hv
       by_cases hik : k = i
       · exact ⟨1, by simp [hik]⟩
-      · exact ⟨0, by simp [Finsupp.single_apply, hik]⟩
+      · exact ⟨0, by simp [hik]⟩
     | zero => exact ⟨0, by simp⟩
     | add a b _ _ ha hb =>
       obtain ⟨a', ha'⟩ := ha

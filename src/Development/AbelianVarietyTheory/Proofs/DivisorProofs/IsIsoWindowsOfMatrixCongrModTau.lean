@@ -184,7 +184,7 @@ theorem window_iso : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsAlgClo
   have hPP : Pd * P = (p : F.B) • 1 := by
     ext i j
     rcases i with i | i <;> rcases j with j | j <;>
-      simp [hP, hPd, blk, Matrix.diagonal_mul_diagonal, Matrix.diagonal_apply, Matrix.one_apply]
+      simp [hP, hPd, blk, Matrix.diagonal_apply, Matrix.one_apply]
   have hUi : U⁻¹ * U = 1 := Matrix.nonsing_inv_mul U ((Matrix.isUnit_iff_isUnit_det U).1 hU)
   choose E hE using hUU'
   set M := U * P with hM

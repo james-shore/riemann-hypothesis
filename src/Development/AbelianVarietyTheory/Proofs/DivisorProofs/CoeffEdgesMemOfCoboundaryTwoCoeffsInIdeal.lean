@@ -61,7 +61,7 @@ theorem powerSeriesEvalTwoGroups_zero_zero (c : MvPowerSeries (Fin d ⊕ Fin d) 
     funext s; cases s <;> rfl
   rw [this, subst_zero_eq_C_constantCoeff]
   ext n
-  simp [coeff_C]
+  simp
 
 theorem powerSeriesEvalTwoGroups_X_zero (c : MvPowerSeries (Fin d ⊕ Fin d) R) :
     at2 c (fun i => (X i : MvPowerSeries (Fin d) R)) (fun _ => 0) =

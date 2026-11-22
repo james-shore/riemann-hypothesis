@@ -189,8 +189,8 @@ theorem prod_filter {A : Type} [Monoid A] (g : ℕ → A) (p : ℕ → Prop) [De
   | nil => rfl
   | cons x l ih =>
     by_cases hx : p x
-    · simp [List.filter_cons, hx, ih]
-    · simp [List.filter_cons, hx, ih, hg x hx]
+    · simp [hx, ih]
+    · simp [hx, ih, hg x hx]
 
 theorem levs_eq (M : ℕ) (lev : Fin n → ℕ) (hM : ∀ a, lev a < M) :
     levs lev = (List.range M).filter fun j => decide (j ∈ univ.image lev) := by

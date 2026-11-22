@@ -260,7 +260,7 @@ theorem approx : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberFie
   have hsig : ∀ ε, sigR K σ (ι ε) = ι ε := sigR_algebraMap' K σ
   have hg1 : ∀ ε, gram2R K σ J xb (wε ε) = gram2R K σ J xb w := by
     intro ε
-    simp only [wε, gram2R, hR, hform_add_smul_right, hform_add_smul_left, GlobalTheory.HermLineZeros.hform_expand]
+    simp only [wε, gram2R, hR, hform_add_smul_right, hform_add_smul_left]
     rw [hsig]
     ring
   have hpoly : ∀ ε, lam (hR K σ J (wε ε) (wε ε)) =
@@ -279,7 +279,7 @@ theorem approx : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberFie
   have hP0 : P ≠ 0 := by
     intro h0
     have := congrArg (fun p => Polynomial.coeff p 2) h0
-    simp [hP, Polynomial.coeff_X, Polynomial.coeff_C] at this
+    simp [hP] at this
   have hZ : {ε : K | P.IsRoot ε}.Countable := (Polynomial.finite_setOf_isRoot hP0).countable
   have hD : Dense {ε : K | P.IsRoot ε}ᶜ := hZ.dense_compl K
   have hcι : Continuous ι :=

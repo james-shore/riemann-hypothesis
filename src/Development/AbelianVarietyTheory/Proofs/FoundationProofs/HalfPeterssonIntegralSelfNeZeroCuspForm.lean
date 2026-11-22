@@ -29,7 +29,7 @@ theorem volume_isOpenPosMeasure : (volume : Measure ℍ).IsOpenPosMeasure := by
   have hsupp : Function.support (fun z : ℍ =>
       (((1 / NNReal.mk z.im z.im_pos.le : NNReal) ^ 2 : NNReal) : ENNReal)) = Set.univ := by
     ext z
-    simp [z.im_ne_zero]
+    simp
     intro h
     have h' := congrArg Subtype.val h
     simp [z.im_ne_zero] at h'

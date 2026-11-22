@@ -41,7 +41,7 @@ theorem exists_isometry_of_intertwiner_of_irreducible
     rw [hv, inner_smul_left] at h
     have h' := congrArg norm h
     rw [norm_mul, inner_self_eq_norm_sq_to_K, inner_self_eq_norm_sq_to_K] at h'
-    simp only [RCLike.norm_conj, norm_pow, RCLike.norm_ofReal, abs_norm, norm_norm, Complex.coe_algebraMap, Complex.norm_real] at h'
+    simp only [RCLike.norm_conj, norm_pow, norm_norm, Complex.coe_algebraMap, Complex.norm_real] at h'
     have e : ‖T v‖ ^ 2 = (Real.sqrt ‖c‖ * ‖v‖) ^ 2 := by
       rw [mul_pow, Real.sq_sqrt (norm_nonneg c), h']
     exact (pow_left_inj₀ (norm_nonneg _) (by positivity) two_ne_zero).1 e

@@ -46,7 +46,7 @@ theorem fst_sqEv (z q : S) (μ ν : M) (f : Polynomial (Polynomial A)) :
 theorem pow_inl_add_inr (a : S) (m : M) (N : ℕ) :
     (inl a + inr m : TrivSqZeroExt S M) ^ N = inl (a ^ N) + inr (((N : S) * a ^ (N - 1)) • m) := by
   have := eval_add_of_sq_eq_zero (X ^ N : Polynomial (TrivSqZeroExt S M)) (inl a) (inr m) (sq_inr m)
-  simp only [eval_pow, eval_X, derivative_X_pow, eval_mul, eval_natCast] at this
+  simp only [eval_pow, eval_X, derivative_X_pow, eval_mul] at this
   rw [this, eval_C, inl_pow, inl_pow, ← inl_natCast, ← inl_mul, inl_mul_inr]
 
 end Gen
@@ -171,10 +171,10 @@ theorem kap_eq (T : Tower p Ω) (n : ℕ) (ι : On p n →ₐ[O0 p] Ω) (hι : I
         rw [← C_mul_X_pow_eq_monomial, C_mul, C_pow]
         simp only [RingHom.coe_comp, Function.comp_apply, map_mul, map_pow, AlgHom.toRingHom_eq_coe,
           RingHom.coe_coe, h1, h2]
-        simp only [ev, ev2, coe_eval₂RingHom, eval₂_C, eval₂_X, Subalgebra.coe_val, AlgHom.coe_toRingHom]
+        simp only [ev, ev2, coe_eval₂RingHom, eval₂_C, eval₂_X, Subalgebra.coe_val]
         rfl
     · simp only [RingHom.coe_comp, Function.comp_apply, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, h3]
-      simp only [ev, ev2, coe_eval₂RingHom, eval₂_X, Subalgebra.coe_val, AlgHom.coe_toRingHom]
+      simp only [ev, ev2, coe_eval₂RingHom, eval₂_X, Subalgebra.coe_val]
       rfl
   exact congrArg (fun φ => φ f) this
 

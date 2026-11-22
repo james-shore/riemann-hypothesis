@@ -32,7 +32,7 @@ private theorem linearEquiv_mk_eq_mk_of_eCl_eq_of_head_zero {E : Type} [CommRing
     funext j
     refine Fin.lastCases ?_ (fun a => ?_) j
     · simp
-    · simp [hy a, Pi.single_apply, Fin.castSucc_ne_last]
+    · simp [hy a, Fin.castSucc_ne_last]
   rw [hy', Submodule.Quotient.mk_smul, map_smul]
   unfold LocCntCommon.eCl at he
   rw [he, ← Submodule.Quotient.mk_smul]

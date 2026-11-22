@@ -15,7 +15,7 @@ attribute [local instance] Matrix.normedAddCommGroup Matrix.normedSpace
 variable {n : ℕ} {lam : Fin n → ℤ}
 
 theorem kron_conjTranspose' {ι₁ ι₂ : Type*} (A : Matrix ι₁ ι₁ ℂ) (B : Matrix ι₂ ι₂ ℂ) : (A ⊗ₖ B)ᴴ = Aᴴ ⊗ₖ Bᴴ := by
-  ext i j; simp [kroneckerMap_apply, conjTranspose_apply, mul_comm]
+  ext i j; simp [kroneckerMap_apply, conjTranspose_apply]
 
 theorem U_mem (hS : SwapLaws) :
     ((1 : Matrix (Finset (Md n)) (Finset (Md n)) ℂ) ⊗ₖ swapJ lam) ∈ Matrix.unitaryGroup (Ix n lam) ℂ := by

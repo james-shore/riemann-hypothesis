@@ -100,7 +100,7 @@ theorem heat_acts_on_values : ∀ (E : Type) [Field E] [NumberField E] [IsCMFiel
     rw [← hs', hdc] at hRO
     obtain ⟨σ₃, hv₃⟩ := GlobalTheory.T.sectionValueInFrame_linearCombination R t.G t.PP.L Ω φ x' hx' g k σ₂ σ ω₂ ω r₁ (-(2 * (k : R)) * D r₁ * r₂) hv₂ hv
     refine ⟨r₁ * r₁ * r₂, σ₃, _, mul_ne_zero (mul_ne_zero hr₁ hr₁) hr₂, hv₃, ?_⟩
-    simp only [RingHom.comp_apply, map_add, map_mul, map_neg, map_natCast, map_ofNat]
+    simp only [map_add, map_mul, map_neg, map_natCast, map_ofNat]
     rw [key, hRO, hs']
     ring
 

@@ -95,7 +95,7 @@ theorem star_mem_mcPts {P : Ideal (MRing ι)} {z : (Σ k, ι k) → ℂ} (hz : z
 
 theorem segre_star (z : (Σ k, ι k) → ℂ) : segre (star z) = star (segre z) := by
   funext i
-  simp [segre, map_prod]
+  simp [segre]
 
 theorem cons_star {e : ℕ} (y : Fin e → ℂ) :
     (Fin.cons 1 (star y) : Fin (e + 1) → ℂ) = star (Fin.cons 1 y) := by

@@ -10,8 +10,6 @@ theorem exists_fixed {B : Type} [CommRing B] (q : B) [h : IsAdicComplete (Ideal.
   | exact @_root_.GlobalTheory.FixedPointApproximation.exists_fixed
   | exact _root_.GlobalTheory.FixedPointApproximation.exists_fixed
   | (apply _root_.GlobalTheory.FixedPointApproximation.exists_fixed <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FixedPointApproximation.exists_fixed <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FixedPointApproximation.exists_fixed <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FixedPointApproximation.exists_fixed ..)
 
 theorem one_add_pow_of_sq {B : Type} [CommRing B] (x : B) (hx : x * x = 0) (n : ℕ) :

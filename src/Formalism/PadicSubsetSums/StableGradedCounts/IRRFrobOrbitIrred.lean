@@ -52,8 +52,6 @@ theorem frobenius_orbit_irreducible : FrobOrbitIrred := by
         intro w
         rw [pow_succ, AlgEquiv.mul_apply, ih, Function.iterate_succ_apply]
         congr 1
-        all_goals (try rw [FiniteField.coe_frobeniusAlgEquivOfAlgebraic])
-        all_goals (try simp)
     simp only at hσ
     have h2 : ((σ ⟨x, hxE⟩ : E) : L) = y := by
       rw [← AlgEquiv.smul_def, hσ]
@@ -63,8 +61,6 @@ theorem frobenius_orbit_irreducible : FrobOrbitIrred := by
   · have hsep : f.Separable := by
       first
       | exact PerfectField.separable_of_irreducible hirr
-      | (haveI : PerfectField K := PerfectField.ofFinite
-         exact PerfectField.separable_of_irreducible hirr)
     rw [Multiset.toFinset_card_of_nodup (nodup_roots (hsep.map (f := algebraMap K L)))]
     show Multiset.card (f.map (algebraMap K L)).roots = f.natDegree
     rw [IsAlgClosed.card_roots_eq_natDegree, natDegree_map]

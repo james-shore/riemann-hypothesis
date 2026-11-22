@@ -45,7 +45,7 @@ theorem _root_.GlobalTheory.CompanionTheory.Relay.tate_iso_base_change : ∀ (E 
     apply Subtype.ext
     rw [← h1, ← h2]
     have hsm : ((n : ℤ) • LinearMap.id : D.La →ₗ[ℤ] D.La) c = n • c := by
-      simp [natCast_zsmul]
+      simp
     have hdec : (hex y).choose = (hex y').choose + n • c := by
       rw [← hsm, hc]
       abel
@@ -72,7 +72,7 @@ theorem _root_.GlobalTheory.CompanionTheory.Relay.tate_iso_base_change : ∀ (E 
                 (unitOn ((Units.map (i : k →* k') (I.ζ n)) ^ D.EF a b))
               have hm : (Units.map (i : k →* k') (I.ζ n)) ^ D.EF a b
                   = Units.map (i : k →* k') (I.ζ n ^ D.EF a b) := by
-                simp [map_zpow, map_pow]
+                simp [map_zpow]
               rw [hm]
               convert h using 1
               exact (PositivityTheory.HtPt.Mg.unitOn_map i _).symm }, ?_⟩

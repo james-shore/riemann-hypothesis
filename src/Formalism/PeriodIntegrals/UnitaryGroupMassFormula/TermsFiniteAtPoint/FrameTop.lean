@@ -56,10 +56,10 @@ theorem frameOp_holds : FrameOp := by
     exact ⟨((N ^ D.R.rS : ℕ) : 𝓞 D.host.E) * o', by simp only [hlam, hm, ← ho']; push_cast; ring⟩
   have hslamO : ∀ c, ∃ o : 𝓞 D.host.E, (o : D.host.E) = star (lam c) := fun c =>
     ⟨((N ^ D.R.rS : ℕ) : 𝓞 D.host.E) * oz c, by
-      simp only [hlam, star_mul', star_star, hms, hm]; push_cast; simp only [star_pow, star_natCast]⟩
+      simp only [hlam, star_mul', star_star, hm]; push_cast; simp only [star_pow, star_natCast]⟩
   have hzz : (VS D).hT F0.z F0.z = -T := by rw [hT]; exact F0.z_norm
   have haa : ∀ c d, (VS D).hT (a c) (a d) = star (lam c) * lam d * -T := fun c d => by
-    simp only [ha, LinearMap.map_smulₛₗ₂, map_smul, LinearMap.smul_apply, smul_eq_mul, starRingEnd_apply, hzz]
+    simp only [ha, LinearMap.map_smulₛₗ₂, map_smul, smul_eq_mul, starRingEnd_apply, hzz]
     ring
   have hea : ∀ c d, (VS D).hT ((lf D F0).fl.e c) (a d) = 0 := fun c d => by
     simp only [ha, map_smul, smul_eq_mul]
@@ -88,7 +88,7 @@ theorem frameOp_holds : FrameOp := by
     rw [show F0.z = (lf D F0).fl.z from rfl, hnHapp]
     have h1 : ∀ c, (VS D).hT ((lf D F0).fl.e c) ((lf D F0).fl.z) = 0 := fun c => F0.z_orth c
     have h2 : ∀ c, (VS D).hT (a c) ((lf D F0).fl.z) = star (lam c) * -T := fun c => by
-      simp only [ha, LinearMap.map_smulₛₗ₂, LinearMap.smul_apply, smul_eq_mul, starRingEnd_apply]
+      simp only [ha, LinearMap.map_smulₛₗ₂, smul_eq_mul, starRingEnd_apply]
       rw [show (lf D F0).fl.z = F0.z from rfl, hzz]
     simp only [PI.TermsAtPtFiniteW.heisFun, h1, h2, zero_smul, Finset.sum_const_zero, add_zero, mul_zero]
     rw [sub_eq_add_neg, ← Finset.sum_neg_distrib]

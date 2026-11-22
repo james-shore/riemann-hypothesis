@@ -32,8 +32,6 @@ theorem coe_algebraMap_int (m : 𝓞 D.host.F) :
       algebraMap D.host.F D.host.E (m : D.host.F) := by
   first
   | rfl
-  | simp
-  | exact (IsScalarTower.algebraMap_apply (𝓞 D.host.F) D.host.F D.host.E m).symm
 
 theorem iota_mem_of_inv_pow (P : HeightOneSpectrum (𝓞 D.host.E))
     (hP : ((gS D : ℕ) : 𝓞 D.host.E) ∈ P.asIdeal) (k : ℕ) (y : D.host.E) (hy : y ∈ (ddS D)⁻¹ ^ k) :

@@ -216,7 +216,7 @@ theorem conj_unitary_preserves_stdLat_of_ptOf : ∀ {B : Base} {X : PreX B.toPre
     have hTc : ((B.T u : ℕ) : 𝓞 B.host.E) =
         X.piT u * ⟨B.host.conj (X.piT u : B.host.E), hcI⟩ := by
       apply RingOfIntegers.ext
-      simp only [RingOfIntegers.coe_eq_algebraMap, map_mul, map_natCast]
+      simp only [RingOfIntegers.coe_eq_algebraMap, map_natCast]
       exact (X.piT_norm u).symm
     have hbc : bc (prV (E := B.host.E) (P.1.under (𝓞 B.host.F))) t = 1 := by
       apply hT

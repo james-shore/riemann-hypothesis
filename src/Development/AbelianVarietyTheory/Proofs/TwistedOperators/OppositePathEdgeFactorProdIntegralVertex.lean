@@ -50,10 +50,10 @@ theorem oppositePath_prod_mulSingle {k : Type} [Field k] [ValuativeRel k] [Topol
     apow_of_valuation_eq_one (valuation_gdet_of_mem_KO (Assignment.one.read_mem_KO hκ)) z
   have hj1 : (j + 1 + 1, Γ.m) ≠ (j + 1, Γ.m) := by simp
   have hj0 : (j, Γ.m) ≠ (j + 1, Γ.m) := by simp
-  simp only [Grid.edgeFactor, Edge.src, Edge.tgt, ha, mul_one, hg, Pi.mulSingle_eq_of_ne hj1,
+  simp only [Grid.edgeFactor, Edge.src, Edge.tgt, mul_one, hg, Pi.mulSingle_eq_of_ne hj1,
     Pi.mulSingle_eq_of_ne hj0, Pi.mulSingle_eq_same, hκa, map_one, hap, Units.val_one, inv_one, one_mul]
   simp only [Grid.kappa, Grid.blockChar, MonoidHom.div_apply, Units.val_div_eq_div_val,
-    Units.val_inv_eq_inv_val, Nat.add_sub_cancel]
+    Units.val_inv_eq_inv_val]
   have h1 := Units.ne_zero (Γ.chi (Γ.m - (j + 1)) (gdet κ))
   have h2 := Units.ne_zero (Γ.chi (Γ.m - j) (gdet κ))
   have h3 := Units.ne_zero ((Γ.eta ^ ((Γ.rank (j + 1, Γ.m) + 1) % 2)) (gdet κ))

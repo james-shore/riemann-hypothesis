@@ -28,7 +28,7 @@ private theorem UpperTheory.WildA.prime_eq_of_mem_prime_ideal {R : Type} [CommRi
 private theorem UpperTheory.WildA.split_of_split_class {D : D7} {p : ℕ} (h : D.host.cls p = .splitK) : GlobalTheory.NormSum.SplitIn D p := by
   right
   unfold Formalism.BasicNotions.Host.cls primeClass at h
-  split_ifs at h with h1 h2 h3 h4 <;> first | exact h4 | cases h
+  split_ifs at h with h1 h2 h3 h4 <;> first | exact h4
 
 theorem UpperTheory.WildA.small_set_primes_split :
     ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : GlobalTheory.ChiGrid.Consts} {G : GlobalTheory.ChiGrid.GridData L sc} (large₂ : SizeData₂ D), GlobalTheory.IndefiniteRowSideFullHecke.LevelPlusSubgroup.SizeRows large₂ → ∀ v ∈ G.pl.S0, ∀ l : ℕ, l.Prime → ((l : ℕ) : 𝓞 D.host.F) ∈ v.asIdeal →

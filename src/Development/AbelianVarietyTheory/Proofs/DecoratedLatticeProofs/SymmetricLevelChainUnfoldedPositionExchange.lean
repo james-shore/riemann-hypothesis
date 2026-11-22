@@ -51,7 +51,7 @@ theorem opE_step (ν : Measure k) (hν : IsUnitVol ν) {s κ : ℕ} (S : SymData
   have mB : MeasurableSet sB := oB.measurableSet
   have fA : ν sA ≠ ⊤ := (isCompact_cball a).measure_lt_top.ne
   have fB : ν sB ≠ ⊤ := ((isCompact_cball b⁻¹).measure_lt_top.trans_le' (measure_mono sBc)).ne
-  have pA : 0 < ν sA := (isOpen_cball a).measure_pos ν ⟨0, by simp [sA, cball]⟩
+  have pA : 0 < ν sA := (isOpen_cball a).measure_pos ν ⟨0, by simp [cball]⟩
   have pB : 0 < ν sB := oB.measure_pos ν ⟨0, by simp [sB]⟩
   let G : Matrix (XIx (Fin κ) t (j + 1)) (XIx (Fin κ) t j) k → (I → k) → ℂ := fun x₀ m =>
     Φ (basePt c x₀ + Matrix.of fun r s' => m (r, s')) * (S.ψ (-ch (basePt c x₀ + Matrix.of fun r s' => m (r, s'))) : ℂ)

@@ -31,7 +31,7 @@ theorem exists_char_units {R Ω T : Type} [CommRing R] [IsDomain R] [IsIntegrall
     refine IsIntegrallyClosed.isIntegral_iff.1 ?_
     refine ⟨Polynomial.X ^ n - Polynomial.C 1, Polynomial.monic_X_pow_sub_C 1 (by omega), ?_⟩
     have h1 : ((c t : Ω)) ^ n = 1 := by rw [← Units.val_pow_eq_pow_val, hc, Units.val_one]
-    simp only [Polynomial.eval₂_sub, Polynomial.eval₂_pow, Polynomial.eval₂_X, Polynomial.eval₂_C, map_one]
+    simp only [Polynomial.eval₂_sub, Polynomial.eval₂_pow, Polynomial.eval₂_X, map_one]
     rw [← map_pow, h1]
     simp
   choose r hr using hex

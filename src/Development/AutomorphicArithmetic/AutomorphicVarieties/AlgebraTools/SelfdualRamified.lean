@@ -15,7 +15,7 @@ private theorem UpperTheory.V.AlgebraTools.selfdual_ramified_coord {A : Type} [C
   refine ⟨(Matrix.of a)ᵀ, ?_⟩
   ext i j
   have := congrFun (ha j) i
-  simp only [Finset.sum_apply, Pi.smul_apply, Algebra.smul_def, Matrix.mulVec, dotProduct] at this
+  simp only [Finset.sum_apply, Algebra.smul_def, Matrix.mulVec, dotProduct] at this
   simp only [Matrix.mul_apply, Matrix.transpose_apply, Matrix.of_apply, Matrix.map_apply]
   rw [← this]
   exact Finset.sum_congr rfl fun k _ => mul_comm _ _

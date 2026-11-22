@@ -52,8 +52,6 @@ theorem exists_smul_mem (L : Submodule K.O B.A) (hL : Submodule.span K.E (L : Se
   | exact @_root_.GlobalTheory.DenominatorOfSpan.exists_denominator
   | exact _root_.GlobalTheory.DenominatorOfSpan.exists_denominator
   | (apply _root_.GlobalTheory.DenominatorOfSpan.exists_denominator <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DenominatorOfSpan.exists_denominator <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DenominatorOfSpan.exists_denominator <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DenominatorOfSpan.exists_denominator ..)
 
 end GlobalTheory.UnitLemma.Sandwich

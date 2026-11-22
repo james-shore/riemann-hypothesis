@@ -76,16 +76,16 @@ private lemma isPullback_limMap {V U : (D.obj j₀).Opens} (h : V ≤ U) [HasLim
             (by rw [Category.assoc, hU j]; exact s.condition)
           naturality := fun j k f => by
             apply (isPullback_res D j₀ h k).hom_ext
-            · simp only [Functor.const_obj_map, Category.id_comp, Category.assoc,
+            · simp only [Functor.const_obj_map, Category.assoc,
                 IsPullback.lift_fst, (res D j₀ h).naturality f, IsPullback.lift_fst_assoc,
                 limit.w]
               simp
-            · simp only [Functor.const_obj_map, Category.id_comp, Category.assoc,
-                IsPullback.lift_snd, (q D j₀ V).naturality f, Category.comp_id]
+            · simp only [Functor.const_obj_map, Category.assoc,
+                IsPullback.lift_snd, (q D j₀ V).naturality f]
               simp } }) ?_ ?_ ?_⟩⟩
   · intro s
     refine limit.hom_ext fun j => ?_
-    simp [limMap_π]
+    simp
   · intro s
     simp
   · intro s m h1 h2
@@ -249,7 +249,7 @@ private def legCone (U : (D.obj j₀).Opens) : Cone (opensDiagram D j₀ U) wher
         rw [← cancel_mono ((opensDiagramι D j₀ U).app k)]
         have h1 := (opensDiagramι D j₀ U).naturality f
         have h2 := s.w f
-        simp only [Functor.const_obj_map, Category.id_comp, Category.assoc, h1, leg_ι]
+        simp only [Functor.const_obj_map, Category.assoc, h1, leg_ι]
         rw [reassoc_of% (leg_ι D j₀ s U j), h2]
         exact Category.id_comp _ }
 

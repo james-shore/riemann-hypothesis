@@ -70,7 +70,7 @@ theorem hsn_sq_definite {m : ℕ} {ε : Fin m → Bool} (hq : GlobalTheory.Count
         rw [Finset.card_eq_zero.1 h] at this
         simp at this
       ext a b
-      by_cases hab : a = b <;> simp [Jm, Matrix.diagonal_apply, hab, hf, Matrix.one_apply]
+      by_cases hab : a = b <;> simp [Jm, hab, hf]
     · left
       have hf : ∀ a, ε a = true := fun a => by
         by_contra ha
@@ -78,7 +78,7 @@ theorem hsn_sq_definite {m : ℕ} {ε : Fin m → Bool} (hq : GlobalTheory.Count
         rw [Finset.card_eq_zero.1 h] at this
         simp at this
       ext a b
-      by_cases hab : a = b <;> simp [Jm, Matrix.diagonal_apply, hab, hf, Matrix.one_apply]
+      by_cases hab : a = b <;> simp [Jm, hab, hf, Matrix.one_apply]
   have hu : gᴴ * g = 1 := by
     rcases hJc with h | h
     · rw [h, Matrix.mul_one] at hJ; exact hJ

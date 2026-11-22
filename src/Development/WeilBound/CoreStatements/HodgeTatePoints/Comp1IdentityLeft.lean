@@ -44,7 +44,7 @@ theorem bil_right (f : PS R 2 d) (m : ℕ) (i j : Fin d) :
   rw [coeff_ev_zero_right, Finsupp.embDomain_single]
   have h0 : (Finsupp.single (eXv d ((0 : Fin 1), i)) m) ((1 : Fin 2), j) = 0 := by
     show (Finsupp.single ((0 : Fin 2), i) m) ((1 : Fin 2), j) = 0
-    simp [Finsupp.single_apply]
+    simp
   rw [← coeff_add_single _ _ h0]
   rfl
 
@@ -98,7 +98,7 @@ theorem bil_dd (f : PS R 2 d) (i j : Fin d) :
     bil f 1 1 i j = constantCoeff (pderiv R ((0 : Fin 2), i) (pderiv R ((1 : Fin 2), j) f)) := by
   show coeff (Finsupp.single ((0 : Fin 2), i) 1 + Finsupp.single ((1 : Fin 2), j) 1) f = _
   rw [coeff_add_single (Finsupp.single ((0 : Fin 2), i) 1) ((1 : Fin 2), j)
-    (by simp [Finsupp.single_apply]), coeff_single_one]
+    (by simp), coeff_single_one]
 
 theorem cc_d_ax {f : PS R 2 d} (hf : AxOne f) (p : Fin 2 × Fin d) : constantCoeff (pderiv R p f) = 0 := by
   obtain ⟨k, l⟩ := p

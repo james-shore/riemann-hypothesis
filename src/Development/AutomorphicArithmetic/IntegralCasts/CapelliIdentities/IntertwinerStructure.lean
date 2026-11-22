@@ -44,7 +44,7 @@ theorem UpperTheory.Reformulated.B.IntertwinerStructure.intw_sum :
     simp only [Formalism.FourierDecayAlt.P.CutMP.Gauge.GC.trR, Formalism.FourierDecayAlt.MA.toSm, dif_pos (hs Φ ρ)]
   have hh : ∀ X Y : Wq →L[ℂ] Wp, Formalism.FourierDecayAlt.B.hsVec (X + Y) = Formalism.FourierDecayAlt.B.hsVec X + Formalism.FourierDecayAlt.B.hsVec Y := fun _ _ => rfl
   let T : _ →+ _ := AddMonoidHom.mk' (Formalism.FourierDecayAlt.P.CutMP.Gauge.GC.trR P Bs e) fun Φ Ψ => funext fun ρ => Subtype.ext <|
-    funext fun q => (hv _ ρ q).trans <| Eq.trans (by simp [Formalism.FourierDecayAlt.P.CutMP.Gauge.rawR, hh, inner_add_right, mul_add])
+    funext fun q => (hv _ ρ q).trans <| Eq.trans (by simp [Formalism.FourierDecayAlt.P.CutMP.Gauge.rawR, hh, mul_add])
       (congrArg₂ (· + ·) (hv Φ ρ q) (hv Ψ ρ q)).symm
   refine Finset.sum_induction (p := fun x : _ × _ => UpperTheory.Reformulated.B.IntertwinerStructure.Intw P Bs e x.1 x.2) (fun i => (A i, A' i))
     (fun a b ha hb Φ => (T.map_add _ _).trans ((congrArg₂ (· + ·) (ha Φ) (hb Φ)).trans

@@ -16,14 +16,10 @@ variable {σ : Type*}
 theorem rt_two_le_mul_left (f g : MvPowerSeries σ ℂ_[p]) (hg : 2 ≤ g.order) : 2 ≤ (f * g).order := by
   first
     | exact (hg.trans le_add_self).trans (MvPowerSeries.le_order_mul ..)
-    | exact (hg.trans le_add_self).trans (MvPowerSeries.order_mul_ge ..)
-    | exact (hg.trans le_add_self).trans (MvPowerSeries.add_order_le_order_mul ..)
 
 theorem rt_two_le_mul_right (f g : MvPowerSeries σ ℂ_[p]) (hf : 2 ≤ f.order) : 2 ≤ (f * g).order := by
   first
     | exact (hf.trans le_self_add).trans (MvPowerSeries.le_order_mul ..)
-    | exact (hf.trans le_self_add).trans (MvPowerSeries.order_mul_ge ..)
-    | exact (hf.trans le_self_add).trans (MvPowerSeries.add_order_le_order_mul ..)
 
 theorem rt_two_le_add {f g : MvPowerSeries σ ℂ_[p]} (hf : 2 ≤ f.order) (hg : 2 ≤ g.order) :
     2 ≤ (f + g).order := by
@@ -53,8 +49,6 @@ theorem rt_two_le_mul_X {f : MvPowerSeries σ ℂ_[p]} (hf : 1 ≤ f.order) (i :
       _ ≤ _ := add_le_add hf (rt_one_le_X i)
   first
     | exact h2.trans (MvPowerSeries.le_order_mul ..)
-    | exact h2.trans (MvPowerSeries.order_mul_ge ..)
-    | exact h2.trans (MvPowerSeries.add_order_le_order_mul ..)
 
 end order
 
@@ -238,7 +232,7 @@ theorem thirdRoot_sub_var_zero_ne_zero (W : WeierstrassCurve ℂ_[p]) (wq : Powe
     decide
   intro h0
   have h1 := congrArg (MvPowerSeries.coeff (Finsupp.single (1 : Fin 2) 1)) h0
-  simp [Z3, rt_coeff_BA, MvPowerSeries.coeff_X, hs, hs.symm] at h1
+  simp [Z3, rt_coeff_BA, MvPowerSeries.coeff_X, hs.symm] at h1
 
 theorem thirdRoot_sub_var_one_ne_zero (W : WeierstrassCurve ℂ_[p]) (wq : PowerSeries ℂ_[p]) : Z3 W wq - Xv 1 ≠ 0 := by
   have hs : Finsupp.single (0 : Fin 2) 1 ≠ Finsupp.single 1 1 := by
@@ -246,7 +240,7 @@ theorem thirdRoot_sub_var_one_ne_zero (W : WeierstrassCurve ℂ_[p]) (wq : Power
     decide
   intro h0
   have h1 := congrArg (MvPowerSeries.coeff (Finsupp.single (0 : Fin 2) 1)) h0
-  simp [Z3, rt_coeff_BA, MvPowerSeries.coeff_X, hs, hs.symm] at h1
+  simp [Z3, rt_coeff_BA, MvPowerSeries.coeff_X, hs] at h1
 
 theorem thirdRoot_mem_coeffSubring {S : Subring ℂ_[p]} {W : WeierstrassCurve ℂ_[p]} {wq : PowerSeries ℂ_[p]}
     (h1 : W.a₁ ∈ S) (h2 : W.a₂ ∈ S) (h3 : W.a₃ ∈ S) (h4 : W.a₄ ∈ S) (h6 : W.a₆ ∈ S) (h : IsWq W wq) :

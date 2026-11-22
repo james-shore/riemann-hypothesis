@@ -45,7 +45,7 @@ theorem fderiv_F0E_low (m : ℕ) (e : ℤ) (x : M2 n) (h0 : x.det ≠ 0) (h : (u
 theorem low_blocks (R : Matrix (Fin n) (Fin n) ℂ) :
     lowQ R = fromBlocks ((-1 / 2 : ℂ) • R) ((Complex.I / 2) • R) ((Complex.I / 2) • R) ((1 / 2 : ℂ) • R) := by
   rw [lowQ_eq, Cm, Cmi, fromBlocks_multiply, fromBlocks_multiply]
-  congr 1 <;> ext i j <;> simp [Matrix.smul_apply, Matrix.mul_apply, Matrix.one_apply] <;> ring_nf <;>
+  congr 1 <;> ext i j <;> simp [Matrix.smul_apply] <;> ring_nf <;>
     simp [Complex.I_sq] <;> ring
 
 def raiseR (S : Matrix (Fin n) (Fin n) ℂ) : M2 n := mX 1 0 S 1 - 1
@@ -53,7 +53,7 @@ def raiseR (S : Matrix (Fin n) (Fin n) ℂ) : M2 n := mX 1 0 S 1 - 1
 private theorem Cm_mul_Cmi : Cm n * Cmi n = 1 := by
   unfold Cm Cmi
   rw [Matrix.fromBlocks_multiply, ← Matrix.fromBlocks_one]
-  congr 1 <;> ext i j <;> simp [Matrix.one_apply] <;> split_ifs <;> ring_nf <;> simp [Complex.I_sq] <;> ring
+  congr 1 <;> ext i j <;> simp [Matrix.one_apply] <;> split_ifs <;> ring_nf <;> simp [Complex.I_sq]
 
 theorem raise_eq (S : Matrix (Fin n) (Fin n) ℂ) : raiseR S = Cm n * fromBlocks 0 0 S 0 * Cmi n := by
   have hinv : (Cm n)⁻¹ = Cmi n := Matrix.inv_eq_right_inv Cm_mul_Cmi
@@ -66,7 +66,7 @@ theorem raise_eq (S : Matrix (Fin n) (Fin n) ℂ) : raiseR S = Cm n * fromBlocks
 theorem raise_blocks (S : Matrix (Fin n) (Fin n) ℂ) :
     raiseR S = fromBlocks ((-1 / 2 : ℂ) • S) ((-Complex.I / 2) • S) ((-Complex.I / 2) • S) ((1 / 2 : ℂ) • S) := by
   rw [raise_eq, Cm, Cmi, fromBlocks_multiply, fromBlocks_multiply]
-  congr 1 <;> ext i j <;> simp [Matrix.smul_apply, Matrix.mul_apply, Matrix.one_apply] <;> ring_nf <;>
+  congr 1 <;> ext i j <;> simp [Matrix.smul_apply] <;> ring_nf <;>
     simp [Complex.I_sq] <;> ring
 
 theorem sig_fromBlocks (A B C D : Matrix (Fin n) (Fin n) ℂ) :
@@ -78,7 +78,7 @@ theorem sig_fromBlocks (A B C D : Matrix (Fin n) (Fin n) ℂ) :
 theorem sig_low (R : Matrix (Fin n) (Fin n) ℂ) : sig (lowQ R) = raiseR Rᴴ := by
   rw [low_blocks, raise_blocks, sig_fromBlocks]
   simp only [Matrix.conjTranspose_smul]
-  congr 1 <;> ext i j <;> simp [Matrix.smul_apply] <;> ring_nf <;> simp [Complex.conj_I] <;> ring_nf
+  congr 1 <;> ext i j <;> simp [Matrix.smul_apply] <;> ring_nf <;> simp [Complex.conj_I]
 
 theorem raiseR_smul (c : ℂ) (S : Matrix (Fin n) (Fin n) ℂ) : raiseR (c • S) = c • raiseR S := by
   rw [raise_blocks, raise_blocks, Matrix.fromBlocks_smul]

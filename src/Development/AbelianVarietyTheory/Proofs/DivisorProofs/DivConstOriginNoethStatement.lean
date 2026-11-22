@@ -22,4 +22,4 @@ theorem _root_.GlobalTheory.T.divConst_origin_noeth_alt : ∀ (T O : Type) [Comm
     ∀ (bA cA : Localization.AtPrime QA) (sA : A), sA ≠ 0 →
       bA * cA = algebraMap A (Localization.AtPrime QA) sA →
     ∃ (a : T) (w : Oˣ), jA bA = algebraMap T O a * (w : O) := by
-  first | (exact @GlobalTheory.VertUnitsNoeth.divConst_origin_noeth) | (exact GlobalTheory.VertUnitsNoeth.divConst_origin_noeth) | (intros; apply GlobalTheory.VertUnitsNoeth.divConst_origin_noeth <;> assumption)
+  first | (exact @GlobalTheory.VertUnitsNoeth.divConst_origin_noeth)

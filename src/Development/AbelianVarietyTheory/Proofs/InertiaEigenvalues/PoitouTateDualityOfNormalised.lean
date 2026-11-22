@@ -12,7 +12,7 @@ variable {F Ω : Type} [Field F] [NumberField F] [Field Ω] [Algebra F Ω]
 def conjBack (σ : Ω ≃+* Ω) (τ : F ≃+* F) (hστ : ∀ x, σ (algebraMap F Ω x) = algebraMap F Ω (τ x)) :
     G F Ω →* G F Ω where
   toFun g := AlgEquiv.ofRingEquiv (f := (σ.trans g.toRingEquiv).trans σ.symm) (fun x => by
-    simp only [RingEquiv.trans_apply, hστ, AlgEquiv.toRingEquiv_eq_coe, AlgEquiv.coe_ringEquiv, AlgEquiv.commutes]
+    simp only [RingEquiv.trans_apply, hστ, AlgEquiv.coe_ringEquiv, AlgEquiv.commutes]
     rw [← hστ, RingEquiv.symm_apply_apply])
   map_one' := by ext x; simp
   map_mul' g h := by ext x; simp
@@ -121,7 +121,6 @@ theorem exists_place_map {v : HeightOneSpectrum (𝓞 F)} (hAv : IsPlaceOver A v
     rw [Ideal.map_comap_of_equiv, Ideal.mem_comap]
   refine ⟨v', fun x => ?_, ?_, fun ϖ h1 h2 => ⟨e ϖ, ?_, ?_, ?_⟩⟩
   · rw [hmem, ← hAv, ← valuation_lt_one_iff_of_map σ hA, hστ]
-    congr 3
     rw [← he, RingEquiv.apply_symm_apply]
   · unfold normV
     exact Nat.card_congr (Ideal.quotientEquiv v.asIdeal v'.asIdeal e rfl).toEquiv.symm

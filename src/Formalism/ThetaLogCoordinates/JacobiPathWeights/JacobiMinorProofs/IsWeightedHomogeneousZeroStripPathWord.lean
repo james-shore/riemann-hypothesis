@@ -42,8 +42,6 @@ theorem LeadAt.mul {w : σ → M} {γ δ : M} {f g tf tg : MvPolynomial σ R}
     have hp' : p.1 + p.2 = e := by
       first
       | exact Finset.HasAntidiagonal.mem_antidiagonal.mp hp
-      | exact Finset.mem_antidiagonal.mp hp
-      | simpa using hp
     rw [← hp', map_add]
     exact add_le_add (hf1 _ (mem_support_iff.mpr (left_ne_zero_of_mul hne)))
       (hg1 _ (mem_support_iff.mpr (right_ne_zero_of_mul hne)))
@@ -60,8 +58,6 @@ theorem LeadAt.mul {w : σ → M} {γ δ : M} {f g tf tg : MvPolynomial σ R}
       have hp' : p.1 + p.2 = e := by
         first
         | exact Finset.HasAntidiagonal.mem_antidiagonal.mp hp
-        | exact Finset.mem_antidiagonal.mp hp
-        | simpa using hp
       rw [coeff_weightedHomogeneousComponent, coeff_weightedHomogeneousComponent]
       by_cases hab : coeff p.1 f ≠ 0 ∧ coeff p.2 g ≠ 0
       · obtain ⟨ha1, ha2⟩ := _root_.Formalism.InvariantFactorPaths.GelfandTsetlinBases.A1.weight_eq_of_le_of_add_eq_lemma (hf1 _ (mem_support_iff.mpr hab.1))

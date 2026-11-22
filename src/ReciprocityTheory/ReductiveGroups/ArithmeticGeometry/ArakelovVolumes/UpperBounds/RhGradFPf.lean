@@ -31,7 +31,6 @@ private theorem contDiff_nM_apply (τ : X.Ψ) (a b : Fin r) :
   split_ifs
   · first
     | exact ((contDiff_piLp _).mp contDiff_id) _
-    | fun_prop
   · exact contDiff_const
   · exact contDiff_const
 
@@ -60,7 +59,6 @@ private theorem contDiff_det_of_contDiff_entries {n : ℕ} (M : V (nd X) → Mat
   refine ContDiff.sum fun σ _ => contDiff_const.mul ?_
   first
   | exact contDiff_prod fun i _ => hM _ _
-  | fun_prop
 
 private theorem contDiff_adjugate_apply_of_contDiff_entries {n : ℕ} (M : V (nd X) → Matrix (Fin n) (Fin n) ℂ)
     (hM : ∀ i j, ContDiff ℂ ∞ fun z => M z i j) (a b : Fin n) :
@@ -107,7 +105,6 @@ theorem rh_contDiffAt {f p q : ℕ} {v : V (nD f p q)} (hv : v ∈ Dset f p q) :
     simp only [Zof, Matrix.of_apply]
     first
     | exact ((contDiff_piLp _).mp contDiff_id) _
-    | fun_prop
   have hM : ∀ k i j, ContDiff ℝ 2 fun w : V (nD f p q) => (1 - Zof w k * (Zof w k)ᴴ : Matrix (Fin p) (Fin p) ℂ) i j := by
     intro k i j
     simp only [Matrix.sub_apply, Matrix.mul_apply, Matrix.conjTranspose_apply]
@@ -116,20 +113,17 @@ theorem rh_contDiffAt {f p q : ℕ} {v : V (nD f p q)} (hv : v ∈ Dset f p q) :
     first
     | exact h.star
     | exact Complex.conjCLE.contDiff.comp h
-    | fun_prop
   have hdet : ∀ k, ContDiff ℝ 2 fun w : V (nD f p q) => (1 - Zof w k * (Zof w k)ᴴ).det := by
     intro k
     simp only [Matrix.det_apply']
     refine ContDiff.sum fun σ _ => contDiff_const.mul ?_
     first
     | exact contDiff_prod fun i _ => hM k _ _
-    | fun_prop
   have hpos : ∀ k, 0 < ((1 - Zof v k * (Zof v k)ᴴ).det).re := by
     intro k
     have h := (hv k).det_pos
     first
     | exact (Complex.pos_iff.mp h).1
-    | simpa using (Complex.lt_def.mp h).1
   have hlog : ∀ k, ContDiffAt ℝ 2
       (fun w : V (nD f p q) => Real.log ((1 - Zof w k * (Zof w k)ᴴ).det.re)) v := by
     intro k

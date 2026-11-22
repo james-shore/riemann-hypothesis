@@ -25,7 +25,7 @@ theorem intertwiner_mem_iSup_range_eq_sum_smul (G : Type) [Group G] (N X : Type)
     rw [hΦ]
     rw [Finset.sum_eq_single j]
     · simp
-    · intro b _ hb; simp [Pi.single_apply, hb]
+    · intro b _ hb; simp [hb]
     · simp
   have hmem : ∀ n, ψ.toLinearMap n ∈ LinearMap.range Φ := fun n =>
     hle (hψ ⟨n, rfl⟩)

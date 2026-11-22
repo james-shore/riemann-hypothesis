@@ -22,7 +22,7 @@ theorem ptOf_std_entries_intAtA : ∀ {B : Base} (n : ℕ) (g : GA B n) (p : Dec
     intro i
     by_cases h : i = j
     · subst h; simp [one_mem]
-    · simp [Pi.single_apply, h, zero_mem]
+    · simp [h, zero_mem]
   constructor
   · apply hone
     have hx : (g : Matrix (Fin n) (Fin n) (AfE B.host.F B.host.E)) *ᵥ Pi.single s 1 ∈ Formalism.L2.Herm.hatL (Formalism.L2.Col.stdLat B.host.E n) := by

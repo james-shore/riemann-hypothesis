@@ -119,8 +119,6 @@ def IntOK (G : WT) (ta : ∀ c, A c) : Prop :=
 theorem meanK_add (F G : (K →+* ℂ) → ℝ) : meanK (fun sg => F sg + G sg) = meanK F + meanK G := by
   first
     | (simp only [meanK, Finset.sum_add_distrib, add_div])
-    | (unfold meanK; rw [Finset.sum_add_distrib, add_div])
-    | (simp [meanK, Finset.sum_add_distrib, add_div])
 
 theorem aI_mul_ae (hd : d.AxH 𝒜) (h : d.S1) {G G' : WT} (c : ι) {f g : A c}
     (hf : f ∈ 𝒜 c G) (hg : g ∈ 𝒜 c G') (hf0 : f ≠ 0) (hg0 : g ≠ 0) (sg : K →+* ℂ) :

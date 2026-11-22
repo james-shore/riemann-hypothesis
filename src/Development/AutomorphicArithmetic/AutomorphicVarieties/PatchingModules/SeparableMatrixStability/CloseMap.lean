@@ -21,7 +21,7 @@ theorem UpperTheory.V.Pa.close_map :
     have hn : f g' * (f g)⁻¹ ∈ W := by
       have hc := W.isNormal'.conj_mem _ hV' (f g)
       have he : f g * f (g⁻¹ * g') * (f g)⁻¹ = f g' * (f g)⁻¹ := by
-        simp [map_mul, map_inv, mul_assoc]
+        simp [map_mul, map_inv]
       rw [he] at hc
       exact hc
     have hx : po b * z⁻¹ = (f g' * (f g)⁻¹) * (p N (a N) * (f g)⁻¹)⁻¹ * (p N (a N) * z⁻¹) := by

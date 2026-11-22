@@ -52,7 +52,6 @@ theorem colUz : ∀ l (g : decs D.host.E (Aw i dc) (colIdx i dc l)),
   first
   | (show Dd.δO * KFin.uCol i dc l g = Dd.δO * KFin.u i dc l g
      rw [KFin.u, dif_pos (show ((g : GE D.nd)) ∈ KFin.Γc i dc l from g.2)])
-  | (simp [KFin.uz, KFin.uzOf, KFin.u, g.2])
 
 theorem column_unramified_character : (∀ l, ∀ g ∈ QS.I i dc (colIdx i dc l), KFin.u i dc l (g : GE D.nd) = 0) ∧
     (∀ l, ∃ g ∈ (decs D.host.E (Aw i dc)) (colIdx i dc l), KFin.u i dc l g = 1) :=

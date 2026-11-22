@@ -21,7 +21,7 @@ private theorem gsp_of_map {A B : Type} [CommRing A] [CommRing B] (f : A →+* B
   have e := congrFun (congrFun h i) j
   rw [Matrix.map_apply] at e
   rw [e]
-  by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+  by_cases hij : i = j <;> simp [hij]
 
 private theorem gsp_ex {A B : Type} [CommRing A] [CommRing B] (f : A →+* B) (hf : Function.Injective f) (ν : B) (X : M4 A)
     (h : IsGSp ν (X.map f)) : ∃ ν', IsGSp ν' X := by

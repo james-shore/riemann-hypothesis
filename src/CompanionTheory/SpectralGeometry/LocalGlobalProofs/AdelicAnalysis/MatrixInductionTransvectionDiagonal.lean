@@ -94,7 +94,7 @@ lemma rowOp_mem (k : ι) (c : ι → R) (hc : c k = 0) : rowOp k c ∈ elem R ι
           rw [Matrix.mul_transvection_apply_same]
           by_cases ha : a = k
           · subst ha
-            simp [rowOp, Matrix.one_apply, hi, hki, hkt]
+            simp [rowOp, hi, hki, hkt]
           · simp [rowOp, Matrix.one_apply, ha]
         · rw [Matrix.mul_transvection_apply_of_ne _ _ _ _ hb]
           simp [rowOp, Finset.mem_insert, hb]
@@ -130,7 +130,7 @@ lemma colOp_mem (k : ι) (c : ι → R) (hc : c k = 0) : colOp k c ∈ elem R ι
           rw [Matrix.transvection_mul_apply_same]
           by_cases hb : b = k
           · subst hb
-            simp [colOp, Matrix.one_apply, hi, hki.symm, hkt]
+            simp [colOp, hi, hki.symm, hkt]
           · simp [colOp, Matrix.one_apply, hb, Ne.symm hb]
         · rw [Matrix.transvection_mul_apply_of_ne _ _ _ _ ha]
           simp [colOp, Finset.mem_insert, ha]
@@ -191,7 +191,7 @@ lemma mem_of_unit_pivot {s : Finset ι} {k : ι}
     · subst hi
       by_cases hj : j = i
       · subst hj
-        simp [hv, hx, hD, Matrix.one_apply]
+        simp [hv, hx, hD]
         rw [mul_comm]; exact hui
       · have : A i i * ui = 1 := hui
         simp only [hv, hx, if_true, hj, if_false, hD, Function.update_self,
@@ -199,7 +199,7 @@ lemma mem_of_unit_pivot {s : Finset ι} {k : ι}
         linear_combination (-(ui * A i j)) * this
     · by_cases hj : j = k
       · subst hj
-        simp [hv, hx, hi, hD, Function.update_of_ne hi, Matrix.one_apply]
+        simp [hv, hx, hi, hD]
         have : A j j * ui = 1 := hui
         linear_combination (-A i j) * this
       · have hDi : D i = 1 := by simp [hD, Function.update_of_ne hi]

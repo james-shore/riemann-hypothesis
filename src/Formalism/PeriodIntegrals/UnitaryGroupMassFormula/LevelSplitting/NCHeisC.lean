@@ -34,8 +34,8 @@ theorem continuous_sL_apply (half : R ⊗[F] E) {X : Type} [TopologicalSpace X]
       Continuous fun x => (PI.VolSemiDirect.W.datR R σ J P T).h (u x) (w x) :=
     fun hu hw => PI.VolSemiDirect.W.Md.continuous_hR _ σ J (hu := hu) (hv := hw)
   simp only [sL, uv, cf, LinearMap.add_apply, LinearMap.sub_apply, LinearMap.id_apply,
-    LinearMap.sum_apply, Finset.sum_apply, LinearMap.smulRight_apply, PI.VolSemiDirect.W.PG.Dat.hL,
-    LinearMap.coe_mk, AddHom.coe_mk]
+    LinearMap.sum_apply, LinearMap.smulRight_apply, PI.VolSemiDirect.W.PG.Dat.hL,
+    LinearMap.coe_mk]
   refine (continuous_const.add (continuous_finset_sum _ fun a _ => ?_)).sub
     (continuous_finset_sum _ fun b _ => ?_)
   · exact (hh continuous_const continuous_const).smul (((continuous_apply a).comp hy).add

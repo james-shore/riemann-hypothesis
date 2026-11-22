@@ -82,8 +82,6 @@ theorem sum_lw_vw_natCast_le (T : Finset (HeightOneSpectrum (𝓞 K))) (n : ℕ)
     have hc : (((n : ℕ) : 𝓞 K) : K) = (n : K) := by
       first
         | (push_cast; rfl)
-        | push_cast
-        | simp
     rw [hc] at h
     exact h
 
@@ -164,7 +162,7 @@ theorem ramified_basic_bound : RamBasic := by
   have h2 : (ramw w : ℝ) ≠ 0 := by linarith
   have h3 : (plc w : ℝ) ≠ 0 := hp.ne'
   first
-    | (field_simp; ring)
+    | (field_simp)
     | field_simp
 
 theorem place_sum : PlaceSum := by

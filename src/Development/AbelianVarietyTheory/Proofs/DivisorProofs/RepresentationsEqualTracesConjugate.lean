@@ -20,14 +20,14 @@ lemma piMatUnit_mul {I : Type} [DecidableEq I] (m : ℕ) (τ τ' : I) (i j k l :
     · subst h2
       by_cases h3 : ρ = τ
       · subst h3; simp [Matrix.single_mul_single_same]
-      · simp [Pi.single_apply, h3]
+      · simp [h3]
     · by_cases h3 : ρ = τ
       · subst h3; simp [Matrix.single_mul_single_of_ne, h2]
-      · simp [Pi.single_apply, h3, h2]
+      · simp [h3, h2]
   · by_cases h3 : ρ = τ
     · subst h3
       have : ρ ≠ τ' := h1
-      simp [Pi.single_apply, this, h1]
+      simp [this]
     · simp [Pi.single_apply, h3, h1]
 
 lemma piMatUnit_decomp {I : Type} [Fintype I] [DecidableEq I] (m : ℕ)
@@ -39,7 +39,7 @@ lemma piMatUnit_decomp {I : Type} [Fintype I] [DecidableEq I] (m : ℕ)
     Pi.single_apply]
   simp only [show ∀ (c : Prop) [Decidable c] (M : Matrix (Fin m) (Fin m) ℂ),
       (if c then M else 0) a b = if c then M a b else 0 from fun c _ M => by split_ifs <;> rfl]
-  simp [Matrix.zero_apply, Matrix.single_apply, mul_ite, ite_and, Finset.sum_ite_eq,
+  simp [Matrix.single_apply, mul_ite, ite_and, Finset.sum_ite_eq,
     Finset.sum_ite_eq']
 
 lemma sum_piMatUnit_diag {I : Type} [Fintype I] [DecidableEq I] (m : ℕ) (τ : I) :
@@ -53,7 +53,7 @@ lemma sum_piMatUnit_diag {I : Type} [Fintype I] [DecidableEq I] (m : ℕ) (τ : 
     rcases eq_or_ne a b with rfl | hab
     · simp
     · simp [hab]
-  · simp [piMatUnit, Finset.sum_apply, Matrix.sum_apply, Pi.single_apply, h]
+  · simp [piMatUnit, Finset.sum_apply, Matrix.sum_apply, h]
 
 lemma exists_mul_idem_mul_eq_of_trace_eq {g : ℕ} (P P' : Matrix (Fin g) (Fin g) ℂ)
     (hP : IsIdempotentElem P) (hP' : IsIdempotentElem P') (ht : P.trace = P'.trace) :
@@ -62,8 +62,6 @@ lemma exists_mul_idem_mul_eq_of_trace_eq {g : ℕ} (P P' : Matrix (Fin g) (Fin g
   | exact @_root_.GlobalTheory.TraceEqualFinrank.exists_mul_mul_eq_of_trace_eq
   | exact _root_.GlobalTheory.TraceEqualFinrank.exists_mul_mul_eq_of_trace_eq
   | (apply _root_.GlobalTheory.TraceEqualFinrank.exists_mul_mul_eq_of_trace_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TraceEqualFinrank.exists_mul_mul_eq_of_trace_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TraceEqualFinrank.exists_mul_mul_eq_of_trace_eq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TraceEqualFinrank.exists_mul_mul_eq_of_trace_eq ..)
 
 theorem conj_of_trace_central_idem_eq :
@@ -150,7 +148,7 @@ theorem conj_of_trace_central_idem_eq :
     intro τ i
     rw [hh]
     simp only [Finset.mul_sum, hprod]
-    simp [ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq']
+    simp [ite_and, Finset.sum_ite_eq]
   have hinv : h' * h = 1 := by
     rw [hh', Finset.sum_mul]
     simp only [Finset.sum_mul, hrow]

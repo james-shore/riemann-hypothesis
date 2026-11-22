@@ -59,7 +59,7 @@ theorem GlobalTheory.UPel.HT.TateIsoO.card_pow_eq_one : ∀ (p : ℕ) [Fact p.Pr
     intro c
     refine ⟨b.equivFun.symm (fun i => ((c i).val : ℤ)), ?_⟩
     funext i
-    simp only [f, LinearEquiv.apply_symm_apply, Int.cast_natCast, ZMod.natCast_val, ZMod.intCast_cast, ZMod.cast_id', id]
+    simp only [f, LinearEquiv.apply_symm_apply, ZMod.natCast_val, ZMod.intCast_cast, ZMod.cast_id', id]
   have hgf : ∀ x y, g x = g y ↔ f x = f y := by
     intro x y
     have e1 : g x = g y ↔ I.ev l (x - y) = 1 := by

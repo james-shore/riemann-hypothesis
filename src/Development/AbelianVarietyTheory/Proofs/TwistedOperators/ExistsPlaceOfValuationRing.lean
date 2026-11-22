@@ -38,9 +38,9 @@ private theorem exists_heightOneSpectrum_range_iff_finitePlace_le_one {O : Type}
       (RingOfIntegers.isIntegral_coe y)
   let ψ : 𝓞 K →+* O :=
     { toFun := fun y => IsIntegralClosure.mk' O (ι (algebraMap (𝓞 K) K y)) (hint y)
-      map_one' := hinj (by simp [IsIntegralClosure.algebraMap_mk'])
+      map_one' := hinj (by simp)
       map_mul' := fun a b => hinj (by simp [IsIntegralClosure.algebraMap_mk'])
-      map_zero' := hinj (by simp [IsIntegralClosure.algebraMap_mk'])
+      map_zero' := hinj (by simp)
       map_add' := fun a b => hinj (by simp [IsIntegralClosure.algebraMap_mk']) }
   have hψ : ∀ y : 𝓞 K, algebraMap O (FractionRing O) (ψ y) = ι (algebraMap (𝓞 K) K y) :=
     fun y => IsIntegralClosure.algebraMap_mk' O _ (hint y)

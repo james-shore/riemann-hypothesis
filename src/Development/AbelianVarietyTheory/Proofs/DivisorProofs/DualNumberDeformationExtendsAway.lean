@@ -7,9 +7,9 @@ def dualNumberRingHomMap {S S' : Type} [CommRing S] [CommRing S'] (f : S →+* S
   toFun x := TrivSqZeroExt.inl (f x.fst) + TrivSqZeroExt.inr (f x.snd)
   map_one' := by ext <;> simp
   map_mul' x y := by
-    ext <;> simp [TrivSqZeroExt.snd_mul, TrivSqZeroExt.fst_mul, mul_comm] <;> ring
+    ext <;> simp [TrivSqZeroExt.snd_mul, TrivSqZeroExt.fst_mul, mul_comm]
   map_zero' := by ext <;> simp
-  map_add' x y := by ext <;> simp <;> ring
+  map_add' x y := by ext <;> simp
 
 theorem dualNumber_deformation_extends_away :
     ∀ {S S' : Type} [CommRing S] [CommRing S'] [Algebra S S'] (g : S) [IsLocalization.Away g S']

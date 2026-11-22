@@ -82,7 +82,7 @@ theorem twist_factor : ∀ {D : D7} {T : Type} {Lc : LevCh D T} {sc : Consts} (G
     have hn : ∀ n : ℕ, GlobalTheory.Square.IsAwayUnit (Qn G t) ((q : D.what₂.LL) ^ n) := by
       intro n
       have h1 : (((q : 𝓞 D.what₂.LL) ^ n : 𝓞 D.what₂.LL) : D.what₂.LL) = (q : D.what₂.LL) ^ n := by
-        simp only [RingOfIntegers.coe_eq_algebraMap, map_pow, map_natCast]
+        simp only [map_pow, map_natCast]
       rw [← h1]
       apply GlobalTheory.Square.AwayClosure.of_dvd (k := n)
       exact pow_dvd_pow_of_dvd (Nat.cast_dvd_cast hqd) n

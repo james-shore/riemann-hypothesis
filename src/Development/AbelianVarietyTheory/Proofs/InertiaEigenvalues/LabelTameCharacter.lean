@@ -83,10 +83,10 @@ theorem inflates_det {E : Type} [Field E] [NumberField E] {g : ℕ} [Fact g.Prim
   set c := Matrix.GeneralLinearGroup.det k
   have e2 : Matrix.GeneralLinearGroup.det (Matrix.GeneralLinearGroup.map i.toRingHom (GlobalTheory.GLp.inc g 1 k)) =
       Units.map i.toRingHom.toMonoidHom (Units.map (algebraMap ℤ_[g] ℚ_[g]).toMonoidHom c) := by
-    ext; simp [c, GlobalTheory.GLp.inc, RingHom.map_det]
+    ext; simp [c, GlobalTheory.GLp.inc]
   have e3 : Matrix.GeneralLinearGroup.det (GlobalTheory.GLp.red g 1 k) =
       Units.map (PadicInt.toZMod (p := g)).toMonoidHom c := by
-    ext; simp [c, GlobalTheory.GLp.red, RingHom.map_det]
+    ext; simp [c, GlobalTheory.GLp.red]
   set r : ℕ := (PadicInt.toZMod (c : ℤ_[g])).val
   have hk : ‖(((c : ℤ_[g]) - r : ℤ_[g]) : ℚ_[g])‖ < 1 := by
     have : (c : ℤ_[g]) - r ∈ RingHom.ker (PadicInt.toZMod (p := g)) := by

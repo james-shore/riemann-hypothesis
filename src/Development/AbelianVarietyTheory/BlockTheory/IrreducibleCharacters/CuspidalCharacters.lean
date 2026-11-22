@@ -12,9 +12,7 @@ theorem isIrreducible_iff {G : Type*} [Group G] {V : Type*} [AddCommGroup V] [Mo
   first
   | exact @_root_.GlobalTheory.UnimodularLatticeExistence.main
   | exact _root_.GlobalTheory.UnimodularLatticeExistence.main
-  | (apply _root_.GlobalTheory.UnimodularLatticeExistence.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UnimodularLatticeExistence.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UnimodularLatticeExistence.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.UnimodularLatticeExistence.main)
   | (intros; exact _root_.GlobalTheory.UnimodularLatticeExistence.main ..)
 
 end GlobalTheory.IndefiniteRowSideFullHecke.CuspidalCharacters

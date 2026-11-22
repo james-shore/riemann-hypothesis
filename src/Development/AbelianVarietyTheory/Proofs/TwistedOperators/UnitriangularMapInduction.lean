@@ -74,7 +74,7 @@ private theorem measurePreserving_transvection_mulVec (t : TransvectionStruct κ
         Equiv.piEquivPiSubtypeProd, Matrix.single, ite_and, Matrix.one_apply, ite_mul]
       ring
     · simp [e, G, g, p, TransvectionStruct.toMatrix, transvection, mulVec, dotProduct,
-        add_mul, Finset.sum_add_distrib, MeasurableEquiv.piEquivPiSubtypeProd,
+        MeasurableEquiv.piEquivPiSubtypeProd,
         Equiv.piEquivPiSubtypeProd, h, Matrix.single, ite_and, Ne.symm h, Matrix.one_apply,
         ite_mul]
   rw [hmv]

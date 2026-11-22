@@ -124,7 +124,6 @@ theorem rn_of (T : ParamsT D L P) (S : SizesAt L) (hZ : 10 ^ 60 ≤ zBase L) :
   have hzz2 : zBase L ^ 2 ≤ zBase L ^ 12 := by
     first
     | exact pow_le_pow_right₀ hz1 (by norm_num)
-    | exact pow_le_pow_right hz1 (by norm_num)
   have hPPA : (10 : ℝ) ^ 60 * ((D.R.f : ℝ) * D.R.r) ≤ T.PP := by
     have h1 : (10 : ℝ) ^ 60 * ((D.R.f : ℝ) * D.R.r) ≤ zBase L * zBase L :=
       mul_le_mul hZ hAZ (by positivity) (by linarith)
@@ -147,7 +146,6 @@ theorem rn_of (T : ParamsT D L P) (S : SizesAt L) (hZ : 10 ^ 60 ≤ zBase L) :
     have h5 : D.R.f * D.R.r ≤ D.R.f * D.R.r * (D.R.r + 1) := by
       first
       | exact Nat.le_mul_of_pos_right _ (by omega)
-      | exact Nat.le_mul_of_pos_right (by omega)
     generalize D.R.f * D.R.r * (D.R.r + 1) = X at *
     generalize D.R.f * D.R.r = Y at *
     omega

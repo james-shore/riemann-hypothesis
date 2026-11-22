@@ -29,7 +29,7 @@ lemma KRep.actM_units {ε : Fin n → Bool} (R : KRep ε) (X : Matrix (Fin n) (F
   have h : ∀ a b, Matrix.single a b (X a b) = X a b • Matrix.single a b (1 : ℂ) := by
     intro a b; rw [Matrix.smul_single, smul_eq_mul, mul_one]
   simp only [h, map_sum, map_smul]
-  simp [LinearMap.sum_apply, ContinuousLinearMap.sum_apply]
+  simp [LinearMap.sum_apply]
 
 def compactRepOfUnitaryDifferential (ε : Fin n → Bool) (H : Type) [NormedAddCommGroup H] [InnerProductSpace ℂ H]
     [FiniteDimensional ℂ H] (τ : KG ε →* unitary (H →L[ℂ] H)) (hτ : Continuous τ)

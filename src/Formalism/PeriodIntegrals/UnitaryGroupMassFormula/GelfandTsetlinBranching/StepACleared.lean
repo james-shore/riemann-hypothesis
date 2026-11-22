@@ -82,7 +82,7 @@ theorem stepA_cleared (k : ℕ) (hk : k < n) (y : Fin (n + 1) × Fin (n + 1) →
     split_ifs <;> simp [h1, h2]
   · have hjq : j = ⟨k, by omega⟩ := Fin.ext hj
     rw [hjq]
-    simp only [Fin.val_mk, lt_irrefl, if_false, add_zero]
+    simp only [lt_irrefl, if_false, add_zero]
     split_ifs with ha'
     · rw [neg_mul, div_mul_cancel₀ _ hp, add_neg_cancel]
     · rw [← hjq]

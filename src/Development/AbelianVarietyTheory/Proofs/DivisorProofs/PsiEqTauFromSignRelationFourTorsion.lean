@@ -110,7 +110,6 @@ theorem core_id (hG : GlobalFnsSt) (o : D.OAct O) (w : O) (u : GlobalTheory.PsiR
           (lift (o.onB.act t ≫ o.onB.act t') (𝟙 D.P.A)).left =
           (lift (1 : 𝟙_ (Over (Spec (CommRingCat.of R))) ⟶ D.P.A) 1).left := fun t t' => by
         rw [← Over.comp_left, comp_lift, Category.comp_id, ← Category.assoc, MonObj.one_comp, MonObj.one_comp]
-      beta_reduce
       rw [o1, l1, l1, o1, o1, Over.id_left, Category.comp_id, normd_one hu hI, normd_one hgam hI]
       have r1 := hra.val_origin hI
       have r2 := hrw.val_origin hI

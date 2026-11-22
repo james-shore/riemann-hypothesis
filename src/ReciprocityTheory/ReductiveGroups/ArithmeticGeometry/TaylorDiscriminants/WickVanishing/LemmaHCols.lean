@@ -24,7 +24,6 @@ theorem Mf_subset (P : MvPolynomial (ι × Fin n) k) (S : Finset (ι × Fin n �
   refine Finset.sum_subset hS (fun mo _ h => ?_)
   first
     | rw [MvPolynomial.notMem_support_iff.mp h, zero_mul]
-    | rw [MvPolynomial.not_mem_support_iff.mp h, zero_mul]
 
 theorem Mf_add (P Q : MvPolynomial (ι × Fin n) k) : Mf mu (P + Q) = Mf mu P + Mf mu Q := by
   classical

@@ -47,7 +47,7 @@ theorem UpperTheory.abelianField_window_triple_snoc :
   have hrepr2 : ∀ x : W', b.repr (f x) (Fin.last n) = 0 := by
     intro x
     rw [hfx]
-    simp [map_sum, Finsupp.single_apply]
+    simp [map_sum]
   refine ⟨b, fun a => ⟨?_, ?_⟩⟩
   · intro i j hji
     rw [LinearMap.toMatrix_apply]

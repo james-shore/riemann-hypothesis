@@ -125,7 +125,7 @@ theorem sum_realBasis (a : F) (ha : a ≠ 0) (k : Fin (nn κ F) → ℤ) :
     ∑ l, (k l : ℝ) • realBasis κ a ha l =
       fun i => mixedEmbedding F (a * (((∑ l, k l • intBasis κ F l) i : 𝓞 F) : F)) := by
   funext i
-  simp [Finset.sum_apply, realBasis_apply, Finset.mul_sum, mul_smul_comm, Int.cast_smul_eq_zsmul]
+  simp [Finset.sum_apply, realBasis_apply, Finset.mul_sum, Int.cast_smul_eq_zsmul]
   refine Finset.sum_congr rfl fun l _ => ?_
   exact mul_left_comm _ _ _
 

@@ -56,7 +56,7 @@ theorem UpperTheory.Gal.TP.Loc.pairOfLift :
           = (g : Matrix (Fin n) (Fin n) k).transpose := by
         rw [GlobalTheory.SplitFlip.invT_val, inv_inv]
       have hY := hg Y.transpose
-      simp only [Set.mem_preimage, Set.mem_setOf_eq] at hY
+      simp only at hY
       simp only [tr, hval, Matrix.transpose_mul, Matrix.transpose_transpose] at hY
       exact hY
     have hK0 : (KO k (Fin n) : Set (GL (Fin n) k)) ∈ nhds 1 :=

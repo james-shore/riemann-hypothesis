@@ -31,8 +31,6 @@ theorem constantCoeff_eq_zero_of_eval_eq_comul : ∀ (p : ℕ) (O A : Type) [Com
       commutes' := fun r => by
         first
         | exact constantCoeff_C r
-        | (rw [MvPowerSeries.algebraMap_apply]; simp)
-        | (show constantCoeff (C r) = r; simp)
         | simp [MvPowerSeries.algebraMap_apply'] }
   have hc : ∀ f, c f = constantCoeff f := fun _ => rfl
   have hnil : ∀ j : Fin d ⊕ Fin d, ∃ N : ℕ, (p : O) ∣ (fun _ => (0 : O)) j ^ N :=

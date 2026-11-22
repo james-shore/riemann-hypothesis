@@ -13,8 +13,6 @@ theorem banach_oneParamGroup_eq_exp {𝔸 : Type*} [NormedRing 𝔸] [NormedAlge
   | exact @_root_.GlobalTheory.ExponentialIntegralUnits.exists_exp_eq
   | exact _root_.GlobalTheory.ExponentialIntegralUnits.exists_exp_eq
   | (apply _root_.GlobalTheory.ExponentialIntegralUnits.exists_exp_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ExponentialIntegralUnits.exists_exp_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ExponentialIntegralUnits.exists_exp_eq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ExponentialIntegralUnits.exists_exp_eq ..)
 
 theorem matrix_oneParamGroup_eq_exp : ∀ (ι : Type) [Fintype ι] [DecidableEq ι]

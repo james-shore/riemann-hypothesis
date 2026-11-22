@@ -34,8 +34,6 @@ theorem gauss_mul_diag_mem : ∀ (E : Type) [NormedAddCommGroup E] [InnerProduct
   have hin : ∀ x : E, innerSL ℝ x x = ‖x‖ ^ 2 := fun x => by
     first
     | rw [innerSL_apply_apply, real_inner_self_eq_norm_sq]
-    | simp [real_inner_self_eq_norm_sq]
-    | exact real_inner_self_eq_norm_sq x
   obtain ⟨G, hG⟩ := GlobalTheory.GaussSchwartz.exists_schwartz_exp_diag (-c • innerSL ℝ : E →L[ℝ] E →L[ℝ] ℝ)
     (fun x hx => by
       simp only [ContinuousLinearMap.smul_apply, smul_eq_mul]; rw [hin]

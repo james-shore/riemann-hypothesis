@@ -255,7 +255,7 @@ theorem gl_diag {F : Fin n → Fin n → Module.End ℂ V} (h : Formalism.REAL.G
   rw [sub_eq_iff_eq_add.1 this]
   by_cases h1 : c = a
   · subst h1
-    simp [hab.symm, hab]
+    simp [hab.symm]
     abel
   · by_cases h2 : b = c
     · subst h2

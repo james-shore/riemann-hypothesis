@@ -22,8 +22,6 @@ theorem deriv_mem_pow (D : Derivation k A A) (I : Ideal A) (n : ℕ) (x : A) (hx
   | exact @_root_.GlobalTheory.DerivationMemPow.derivation_mem_pow_of_mem_pow_succ
   | exact _root_.GlobalTheory.DerivationMemPow.derivation_mem_pow_of_mem_pow_succ
   | (apply _root_.GlobalTheory.DerivationMemPow.derivation_mem_pow_of_mem_pow_succ <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DerivationMemPow.derivation_mem_pow_of_mem_pow_succ <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DerivationMemPow.derivation_mem_pow_of_mem_pow_succ <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DerivationMemPow.derivation_mem_pow_of_mem_pow_succ ..)
 
 variable {ι : Type}

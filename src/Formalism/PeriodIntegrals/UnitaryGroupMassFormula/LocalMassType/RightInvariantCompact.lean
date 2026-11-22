@@ -16,7 +16,7 @@ theorem kv_mul_right_iff {F E : Type} [Field F] [NumberField F] [Field E] [Numbe
     c * κ ∈ Formalism.L2.SG.TypedSets.Kv σ J Λ v ↔ c ∈ Formalism.L2.SG.TypedSets.Kv σ J Λ v :=
   by
   unfold Formalism.L2.SG.TypedSets.Kv at hκ ⊢
-  simp only [Set.mem_setOf_eq, map_mul] at hκ ⊢
+  simp only [Set.mem_setOf_eq] at hκ ⊢
   exact Subgroup.mul_mem_cancel_right _ hκ
 
 theorem right_invariant_compact : RightK := by
@@ -61,8 +61,6 @@ theorem right_invariant_compact : RightK := by
         1 * μG (Formalism.L2.SG.TypedSets.Kv σ J Λ v) := by rw [one_mul]; exact h.symm
     first
       | exact (ENNReal.mul_left_inj hm0 hmt).mp h2
-      | exact ENNReal.mul_right_cancel hm0 hmt h2
-      | exact (ENNReal.mul_eq_mul_right hm0 hmt).mp h2
   rw [← hμ'app, hsmul, Measure.smul_apply, ENNReal.smul_def, smul_eq_mul, hc1, one_mul]
 
 end PI.LocMassTypR

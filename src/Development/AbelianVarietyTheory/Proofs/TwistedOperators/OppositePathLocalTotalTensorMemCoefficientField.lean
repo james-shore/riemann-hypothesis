@@ -45,7 +45,6 @@ theorem fourierSum_mem {A D : Type} [Fintype A] [DecidableEq A] [DecidableEq D] 
   split_ifs with h
   · refine F.mul_mem (F.inv_mem (F.pow_mem (natCast_mem F _) _)) (F.sum_mem fun T _ => F.mul_mem (hΦ _) (hψ _ ?_))
     rw [← Valuation.mem_integer_iff]
-    change _ ∈ 𝒪[k]
     rw [pairCols, Finset.mul_sum]
     refine Subring.sum_mem _ fun i _ => ?_
     rw [Finset.mul_sum]
@@ -64,7 +63,6 @@ theorem invFourierSum_inv_mem {A D : Type} [Fintype A] [DecidableEq A] [Decidabl
   split_ifs with h
   · refine F.sum_mem fun S _ => F.mul_mem (hΦ _) (hψ _ ?_)
     rw [← Valuation.mem_integer_iff]
-    change _ ∈ 𝒪[k]
     have e1 : ((ϖ ^ e : kˣ) : k) * pairCols P T ((ϖ ^ e)⁻¹ • liftRes S) = ∑ i, ∑ j : P, liftRes S i j * T i j := by
       rw [pairCols, Finset.mul_sum]
       refine Finset.sum_congr rfl fun i _ => ?_
@@ -158,7 +156,7 @@ theorem nu_mem (F : Subfield ℂ) (t : T) (w : Pl D.host.E) (hmu : ∀ j x, ((L.
     {i j : ℕ} (hi : i < D.R.m) (hj : j < D.R.m) (u : (Kw w)ˣ) : ((locGrid G t w).nu i j u : ℂ) ∈ F := by
   have e1 : (((locGrid G t w).nu i j u : ℂˣ) : ℂ) =
       ((L.C.mu0 ⟨j, hj⟩).loc w u : ℂ) * ((L.xiH t).loc w u : ℂ) * (((G.ch.chiH (D.R.m - i)).loc w u : ℂ))⁻¹ := by
-    simp only [Grid.nu, locGrid, muBase, dif_pos hj, MonoidHom.div_apply, Units.val_div_eq_div_val, div_eq_mul_inv]
+    simp only [Grid.nu, locGrid, muBase, dif_pos hj, div_eq_mul_inv]
     simp [HChar.loc]
   rw [e1]
   exact F.mul_mem (F.mul_mem (hmu _ _) (hxi _)) (F.inv_mem (hchi _ (by omega) (by omega) _))

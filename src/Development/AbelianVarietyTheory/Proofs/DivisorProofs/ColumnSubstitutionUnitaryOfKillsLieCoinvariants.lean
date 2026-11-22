@@ -85,7 +85,7 @@ theorem act_eq (D : D7) (ε : Bool) (M X : HSp D) (A : GlobalTheory.ChainFr.Fr M
       rw [← Matrix.conjTranspose_mul, hFFi, Matrix.conjTranspose_one]
     calc _ = F.conjTranspose * -Zf * ((F⁻¹).conjTranspose * F.conjTranspose) * F +
           F.conjTranspose * (F * F⁻¹) * Zf * F := by simp only [Matrix.mul_assoc]
-      _ = 0 := by rw [h1, hFFi]; simp [Matrix.mul_neg, Matrix.neg_mul]
+      _ = 0 := by rw [h1, hFFi]; simp
   · have hconj : F * (F⁻¹ * Zf * F) * F⁻¹ = Zf := by
       rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, hFFi, Matrix.one_mul, Matrix.mul_assoc, hFFi, Matrix.mul_one]
     have htr : (F⁻¹ * Zf * F).trace = Zf.trace := by
@@ -126,7 +126,6 @@ theorem act_eq (D : D7) (ε : Bool) (M X : HSp D) (A : GlobalTheory.ChainFr.Fr M
       have hZt : Zf.trace = S.trace := by simp [hZf]
       rw [hY, hYt, hZt, hn', colDer_neg]
       simp only [if_true]
-      push_cast
       module
 
 theorem colSub_unitary_of_coinv : ∀ (D : D7) (ε : Bool) (M X : HSp D) (A : GlobalTheory.ChainFr.Fr M) (B : GlobalTheory.ChainFr.Fr X) (eT : D.what₂.Tau → ℚ)
@@ -174,7 +173,7 @@ theorem colSub_unitary_of_coinv : ∀ (D : D7) (ε : Bool) (M X : HSp D) (A : Gl
         by_cases h : σ = τ
         · subst h
           simp [GlobalTheory.ColLie.atPl, hτ]
-        · simp [GlobalTheory.ColLie.atPl, h, Function.update_of_ne h]
+        · simp [GlobalTheory.ColLie.atPl, h]
       rw [hsplit, GlobalTheory.MinorFrame.colSub_mul, h1, ih, smul_smul, Finset.prod_insert hτ]
   have := key Finset.univ P
   simp only [Finset.mem_univ, if_true] at this

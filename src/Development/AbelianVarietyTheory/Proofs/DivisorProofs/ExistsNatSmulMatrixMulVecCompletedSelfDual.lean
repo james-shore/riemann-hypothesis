@@ -103,7 +103,7 @@ theorem exists_nat_smul_single {D : D7} (V : HSp D) :
     funext i
     rcases eq_or_ne i j with rfl | h
     · simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   rw [this]
   exact Submodule.smul_of_tower_mem _ _ (hmv j)
 

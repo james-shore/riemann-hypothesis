@@ -54,7 +54,7 @@ theorem smooth_of_etale {k : Type} [CommRing k] {X : Scheme.{0}} (p : X ⟶ Sp k
       (Scheme.ΓSpecIso (CommRingCat.of k)).inv ≫ p.appLE ⊤ U (by simp) ≫ U.topIso.inv := by
     rw [Iso.hom_inv_id_assoc]
     simp only [Scheme.Hom.appTop, Scheme.Hom.appLE, Scheme.Hom.comp_app, Scheme.Opens.topIso_inv,
-      Scheme.Opens.ι_app, Category.assoc]
+      Scheme.Opens.ι_app]
     exact (congrArg (p.app ⊤ ≫ ·) (Eq.trans (congrArg X.presheaf.map (Subsingleton.elim _ _))
       (X.presheaf.map_comp _ _))).trans (Category.assoc _ _ _).symm
   rw [e]

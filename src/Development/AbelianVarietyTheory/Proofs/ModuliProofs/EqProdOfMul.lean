@@ -176,7 +176,7 @@ theorem monic_ev {m : ℕ} {Φ : MvPolynomial (Fin 2) ℚ} (h : Φ.IsHomogeneous
     have := hd d hd'
     by_cases h0 : d 1 = 0
     · have : d 0 = m := by omega
-      simp [coeff_monomial, h0, this]
+      simp [h0, this]
     · have : d 0 ≠ m := by omega
       simp [coeff_monomial, h0, this, coeff_one]
   exact ⟨monic_of_natDegree_le_of_coeff_eq_one m hle hc,

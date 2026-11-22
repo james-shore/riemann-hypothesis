@@ -21,7 +21,7 @@ theorem exists_mul_pow_eq_aeval_of_mem_adjoin_inv :
     · exact ⟨1, 1, by simp [hf]⟩
     · exact ⟨0, X q, by simp⟩
   | algebraMap r =>
-    exact ⟨0, C r, by simp [MvPolynomial.algebraMap_eq]⟩
+    exact ⟨0, C r, by simp⟩
   | add a b _ _ iha ihb =>
     obtain ⟨N, G, h⟩ := iha
     obtain ⟨M, H, h'⟩ := ihb

@@ -581,7 +581,7 @@ theorem density_gram_matrix_sub_posSemidef {ι Θ : Type*} [Fintype ι] [Fintype
       · simp [hvy]
       have hxy := hsupp θ x y hvx hvy
       exact absurd (hxy ▸ hy) hx
-    · simp only [if_neg hx, if_neg hy, star_zero, mul_zero, zero_mul, zero_add]
+    · simp only [if_neg hx, if_neg hy, star_zero, mul_zero, zero_add]
       push_cast
       ring
 
@@ -673,8 +673,8 @@ theorem rows_pair {δ : ∀ p : PlF D, (D.s.atP p).Fp} {M : ∀ p : PlF D, Loc.M
   set Sy : ℕ → ℂ := fun ρ => ∑ t ∈ Γy.filter (fun t => κ t = ρ), f t wy
   have hcx : ∀ ρ, chat vR κ nc ρ wx = Sx ρ / ax := fun ρ => chat_eq_sum vR κ nc ρ wx Γx hΓx
   have hcy : ∀ ρ, chat vR κ nc ρ wy = Sy ρ / ay := fun ρ => chat_eq_sum vR κ nc ρ wy Γy hΓy
-  have hay : star ay = ay := by simp [ay, Complex.star_def]
-  have hax : star ax = ax := by simp [ax, Complex.star_def]
+  have hay : star ay = ay := by simp [ay]
+  have hax : star ax = ax := by simp [ax]
   have e1 : ∀ ρ, chat vR κ nc ρ wx * star (chat vR κ nc ρ wy) = Sx ρ * star (Sy ρ) / (ax * ay) := by
     intro ρ
     rw [hcx, hcy, star_div₀, hay]

@@ -8,4 +8,4 @@ theorem _root_.GlobalTheory.T.exists_finite_classes_modulo_involutionNorms : ∀
     (∀ ℓ : ℕ, ℓ.Prime → ℓ ∉ S → ∃ (b x y : K), b ≠ 0 ∧ a = x * (b * τ b) ∧ b * τ b = y * a ∧
       ∃ d : ℕ, ¬ ℓ ∣ d ∧ IsIntegral ℤ ((d : K) * x) ∧ IsIntegral ℤ ((d : K) * y)) →
     ∃ m ∈ M, ∃ e : K, e ≠ 0 ∧ a = e * m * τ e := by
-  first | (exact @GlobalTheory.FixNormField.fixed_classes_mod_norms) | (exact GlobalTheory.FixNormField.fixed_classes_mod_norms) | (intros; apply GlobalTheory.FixNormField.fixed_classes_mod_norms  <;> assumption)
+  first | (exact @GlobalTheory.FixNormField.fixed_classes_mod_norms)

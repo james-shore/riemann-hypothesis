@@ -25,4 +25,4 @@ theorem _root_.GlobalTheory.T.directedSystem_etale_baseChange_polynomial : ∀ (
           h k m hkm y = h l m hlm (h k l hkl y)) ∧
       (∀ k, Function.Injective (e k)) ∧
       (∀ x : E, ∃ k y, e k y = x) := by
-  first | (exact @GlobalTheory.directedSystem_etaleBaseChange) | (exact GlobalTheory.directedSystem_etaleBaseChange) | (intros; apply GlobalTheory.directedSystem_etaleBaseChange <;> assumption)
+  first | (exact @GlobalTheory.directedSystem_etaleBaseChange)

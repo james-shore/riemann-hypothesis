@@ -73,7 +73,7 @@ theorem SS_d (G : FGLaw C dd) (i j : Fin dd) : pderiv C ((0 : Fin 3), i) (SS G j
     rw [LiftedCoordinateEvaluation.pderiv_pt_ne _ _ _ (by decide : (2 : Fin 3) ≠ 0), mul_zero]
 
 theorem triple_point_pderiv_first_zero (k : Fin 3) (hk : k ≠ 0) (i j : Fin dd) : pderiv C ((0 : Fin 3), i) ((p3 k : Pt C 3 dd) j) = 0 := by
-  simp [p3, pt, MvPowerSeries.pderiv_X, Pi.single_apply, Prod.ext_iff, Ne.symm hk]
+  simp [p3, pt, MvPowerSeries.pderiv_X, Prod.ext_iff, Ne.symm hk]
 
 def m3 (G : FGLaw C dd) (n : ℕ) : Pt C 3 dd := fun k => ev ![(p3 0 : Pt C 3 dd)] (mulL G.F n k)
 

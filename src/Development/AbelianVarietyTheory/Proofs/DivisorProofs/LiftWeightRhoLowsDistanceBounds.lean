@@ -20,12 +20,12 @@ theorem low_dist : ∀ {D : Formalism.BasicNotions.D7} (L : Formalism.BasicNotio
       ((wts L j).U (parOf L j) τ a : ℝ) - (wts L j).c τ = -(((D.hc τ).b i : ℚ) : ℝ) := by
     rcases hcase with ⟨h1, h2⟩ | h1
     · refine ⟨⟨a - (D.R.k - 1), by omega⟩, ?_⟩
-      have h := hv.2.1 ⟨a - (D.R.k - 1), by omega⟩ (by simp only [Fin.le_def]; omega)
+      have h := hv.2.1 ⟨a - (D.R.k - 1), by omega⟩ (by simp only; omega)
       have ha' : D.R.k - 1 + (a - (D.R.k - 1)) = a := by omega
       simp only [ha'] at h
       exact h
     · refine ⟨⟨a - (D.R.k - 1) - D.R.t, by omega⟩, ?_⟩
-      have h := hv.2.2.2 ⟨a - (D.R.k - 1) - D.R.t, by omega⟩ (by simp only [Fin.lt_def]; omega)
+      have h := hv.2.2.2 ⟨a - (D.R.k - 1) - D.R.t, by omega⟩ (by simp only; omega)
       have ha' : D.R.k - 1 + (a - (D.R.k - 1) - D.R.t) + D.R.t = a := by omega
       simp only [ha'] at h
       exact h

@@ -57,7 +57,7 @@ theorem cotangent_relation_derivation {k A R : Type} [CommRing k] [CommRing A] [
   rw [Ideal.toCotangent_eq_zero] at hT
   have hcoe : ((∑ j ∈ J, algebraMap A R (a j) • (⟨_, hg j⟩ : maximalIdeal R) : maximalIdeal R) : R)
       = algebraMap A R y := by
-    simp [hy, Submodule.coe_sum, map_sum, map_mul, Algebra.smul_def]
+    simp [hy, map_sum, map_mul, Algebra.smul_def]
   rw [hcoe, ← IsLocalization.AtPrime.map_eq_maximalIdeal q R, ← Ideal.map_pow,
     IsLocalization.mem_map_algebraMap_iff q.primeCompl R] at hT
   obtain ⟨⟨x, s⟩, hxs⟩ := hT

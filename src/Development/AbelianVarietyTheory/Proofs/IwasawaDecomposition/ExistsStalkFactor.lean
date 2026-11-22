@@ -37,12 +37,12 @@ theorem finrank_range_idem' {V k : Type} [CommRing V] [IsLocalRing V] [CommRing 
     have : Module.Free R (LinearMap.ker e) := kr ▸ Formalism.L2.Pj.LocFrM.range_free _ k1
     have : Module.Finite R (LinearMap.ker e) := kr ▸ Module.Finite.range _
     rw [← (LinearMap.IsIdempotentElem.isProj_range e he).trace, LinearMap.trace_eq_matrix_trace R (Pi.basisFun R (Fin n))]
-    simp [Matrix.trace, LinearMap.toMatrix_apply]
+    simp [Matrix.trace]
   refine Nat.cast_injective (R := k) ?_
   rw [← tr e' he', ← map_natCast f, ← tr e he, map_sum]
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [show (Pi.single i 1 : Fin n → k) = f ∘ Pi.single i 1 from funext fun j => by
-    by_cases hj : j = i <;> simp [hj, Pi.single_apply], h]
+    by_cases hj : j = i <;> simp [hj], h]
   rfl
 
 theorem exists_generisation {X : Type} [TopologicalSpace X] [TopologicalSpace.NoetherianSpace X] [QuasiSober X]

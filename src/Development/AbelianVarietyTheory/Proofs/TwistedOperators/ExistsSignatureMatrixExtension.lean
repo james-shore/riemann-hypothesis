@@ -72,7 +72,7 @@ theorem eu_vecOpt (y : Fin m → ℂ) (a : ℂ) : eu (vecOpt e y a) ^ 2 = eu y ^
 theorem vecOpt_zero_one : vecOpt e 0 1 = Pi.single (e none) 1 := by
   funext b
   obtain ⟨b, rfl⟩ := e.surjective b
-  cases b <;> simp [vecOpt, Pi.single_apply]
+  cases b <;> simp [vecOpt]
 
 def colM (F : Matrix (Fin N) (Fin m) ℂ) (z : Matrix (Fin N) (Fin 1) ℂ) : Matrix (Fin N) (Fin N) ℂ :=
   fun i b => (e.symm b).elim (z i 0) (F i)

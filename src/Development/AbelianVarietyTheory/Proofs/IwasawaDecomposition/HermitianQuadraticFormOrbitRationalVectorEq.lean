@@ -25,7 +25,6 @@ private theorem hform_mulVec_mulVec_of_cT_mul_mul_eq {A : Type} [CommRing A] (s 
     unfold Formalism.UG.cT
     first
       | rfl
-      | (ext i j; simp)
   rw [hc] at hg
   have hs : (fun i => s ((g *ᵥ x) i)) = (g.map s) *ᵥ (fun i => s (x i)) := by
     funext i
@@ -53,7 +52,6 @@ theorem hR_rat (x z : Fin M → E) :
   all_goals funext i
   all_goals first
     | exact (RingHom.map_mulVec (inclR R) J z i).symm
-    | simp [sigR, inclR]
 
 end Form
 

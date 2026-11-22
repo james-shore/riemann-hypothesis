@@ -174,11 +174,11 @@ noncomputable def lubinTateFormalGroup (hf : IsLubinTateSeries π f) : FormalGro
   lin_coeff_X := by
     rw [coeff_eq_of_two_le_order_sub (two_le_order_lubinTateLift_sub hπ hf hf _) (by simp),
       linearForm_fin_two]
-    simp [coeff_X, single_zero_ne_single_one, single_zero_ne_single_one.symm]
+    simp [coeff_X, single_zero_ne_single_one]
   lin_coeff_Y := by
     rw [coeff_eq_of_two_le_order_sub (two_le_order_lubinTateLift_sub hπ hf hf _) (by simp),
       linearForm_fin_two]
-    simp [coeff_X, single_zero_ne_single_one, single_zero_ne_single_one.symm]
+    simp [coeff_X, single_zero_ne_single_one.symm]
   assoc := lubinTateLift_assoc hπ hf
 
 theorem lubinTateFormalGroup_toPowerSeries (hf : IsLubinTateSeries π f) :

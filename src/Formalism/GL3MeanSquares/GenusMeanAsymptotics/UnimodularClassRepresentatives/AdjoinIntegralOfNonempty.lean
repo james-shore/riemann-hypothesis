@@ -21,12 +21,6 @@ theorem locF_mem_fibSet (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF
   have hinj : Function.Injective (algebraMap (𝓞 F) (𝓞 K)) := by
     first
     | exact FaithfulSMul.algebraMap_injective (𝓞 F) (𝓞 K)
-    | exact NoZeroSMulDivisors.algebraMap_injective (𝓞 F) (𝓞 K)
-    | (intro a b hab
-       apply RingOfIntegers.ext
-       apply (algebraMap F K).injective
-       have := congrArg (fun z : 𝓞 K => (z : K)) hab
-       simpa using this)
   obtain ⟨P, hP, hPc⟩ := Ideal.exists_ideal_over_maximal_of_isIntegral 𝔭
     (by rw [(RingHom.injective_iff_ker_eq_bot _).1 hinj]; exact bot_le)
   refine ⟨locF_idem 𝔭 Λ, ?_, le_locF 𝔭 Λ hx, ?_⟩
@@ -53,7 +47,6 @@ private theorem star_algebraMap_of_fixed_field_eq (hF : IsFixF K F) (t : 𝓞 F)
   rw [← IsScalarTower.algebraMap_apply]
   first
   | rw [IsScalarTower.algebraMap_apply (𝓞 F) F K]; rfl
-  | simp
 
 theorem adjoin_integral_of_nonempty (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF : IsFixF K F)
     (S : VecSplit h h') {L : Submodule (𝓞 K) V} (hLi : Formalism.HermitianLatticesTheory.IsIntegralLat h L)
@@ -81,7 +74,7 @@ theorem adjoin_integral_of_nonempty (hK : Formalism.HermitianLatticesTheory.IsCM
   rw [e1]
   rw [← algebraMap_smul K (algebraMap (𝓞 F) (𝓞 K) t) x',
     ← algebraMap_smul K (algebraMap (𝓞 F) (𝓞 K) s) y'] at key
-  simp only [LinearMap.map_smulₛₗ, LinearMap.smul_apply, LinearMap.map_smul, starRingEnd_apply,
+  simp only [LinearMap.map_smulₛₗ, LinearMap.smul_apply, starRingEnd_apply,
     star_algebraMap_of_fixed_field_eq hF] at key
   convert key using 1
   rw [Algebra.smul_def, map_mul, map_mul, smul_eq_mul, smul_eq_mul]
@@ -101,8 +94,6 @@ private theorem comap_algebraMap_isMaximal_of_isMaximal (P : Ideal (𝓞 K)) (hP
   haveI := hP
   first
   | exact Ideal.isMaximal_comap_of_isIntegral_of_isMaximal P
-  | exact inferInstance
-  | exact Ideal.IsMaximal.under (𝓞 F) P
 
 theorem card_fibG_eq_card_pi (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF : IsFixF K F) (S : VecSplit h h')
     {L : Submodule (𝓞 K) V} (hL : Submodule.IsLattice K L) {Λ' : Submodule (𝓞 K) V'}

@@ -34,7 +34,7 @@ def permFreeIso (k G : Type) [CommRing k] [Group G] (X ι : Type) [MulAction G X
       simp only [LinearMap.coe_comp, Function.comp_apply, Finsupp.lsingle_apply, MonoidAlgebra.lsingle_apply]
       rw [permRep_single]
       erw [Representation.free_single_single]
-      simp [freeLEquiv_single, Representation.free_single_single, mul_smul] }
+      simp [freeLEquiv_single, mul_smul] }
 
 theorem main : ∀ (k G : Type) [CommRing k] [Group G] (X ι : Type) [MulAction G X],
     Projective (permT X (Rep.free k G ι)) := by
@@ -50,5 +50,4 @@ open CategoryTheory CategoryTheory.Limits GlobalTheory.HomStab
 theorem _root_.GlobalTheory.T.projective_perm_tensor_free : ∀ (k G : Type) [CommRing k] [Group G] (X ι : Type) [MulAction G X], Projective (permT X (Rep.free k G ι)) := by
   first
   | exact @GlobalTheory.HomStab.main
-  | exact @GlobalTheory.HomStab.freeLEquiv_single
 end

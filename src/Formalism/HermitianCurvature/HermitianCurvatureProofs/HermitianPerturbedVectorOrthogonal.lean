@@ -24,9 +24,9 @@ theorem VpF_star (hν : inWb k (m + 1) ν) (q : Fin (2 * (m + 1) + k + 1)) (hq :
   rw [hν q (Or.inr hq)]
   have hq2 : q ≠ eI k (m + 1) i := by intro h; rw [h] at hq; simp [eI] at hq; omega
   by_cases h : q = esI k (m + 1) i
-  · rw [if_pos (by rw [sg_val', h]; simp [esI]; omega)]; simp [bvec, h, Pi.single_apply, hq2, Ne.symm (eI_ne_esI m i i)]
+  · rw [if_pos (by rw [sg_val', h]; simp [esI]; omega)]; simp [bvec, h, Ne.symm (eI_ne_esI m i i)]
   · rw [if_neg]
-    · simp [bvec, Pi.single_apply, h, hq2]
+    · simp [bvec, h, hq2]
     · intro h'; apply h; ext; rw [sg_val'] at h'; simp [esI]; omega
 
 theorem VpF_iso (hν : inWb k (m + 1) ν) : herm (Hpk k (m + 1)) (VpF m i ν) (VpF m i ν) = 0 := by
@@ -42,20 +42,20 @@ theorem VpF_iso (hν : inWb k (m + 1) ν) : herm (Hpk k (m + 1)) (VpF m i ν) (V
     · subst h1
       rw [tau_eI, hν (eI k (m + 1) i) (Or.inl (by simp only [eI]; omega)), hν (esI k (m + 1) i) (Or.inr (by simp [esI]; omega)),
         sgn_one _ (by simp [eI]; omega)]
-      simp [bvec, Pi.single_apply, eI_ne_esI]
+      simp [bvec, eI_ne_esI]
     by_cases h2 : l = esI k (m + 1) i
     · subst h2
       rw [tau_esI, hν (eI k (m + 1) i) (Or.inl (by simp only [eI]; omega)), hν (esI k (m + 1) i) (Or.inr (by simp [esI]; omega)),
         sgn_one _ (by simp [esI]; omega)]
-      simp [bvec, Pi.single_apply, Ne.symm (eI_ne_esI m i i)]
+      simp [bvec, Ne.symm (eI_ne_esI m i i)]
     by_cases hW : m + 1 ≤ l.val ∧ l.val ≤ m + 1 + k
     · have ht : WeylGroupFacts.tau k (m + 1) l = l := by ext; rw [tau_val]; split_ifs <;> omega
       rw [ht]
-      simp [bvec, Pi.single_apply, h1, h2]
+      simp [bvec, h1, h2]
       try ring
     · rw [hν l (by omega)]
-      have ha : bvec (esI k (m + 1) i) l = 0 := by simp [bvec, Pi.single_apply, h2]
-      have hb : bvec (eI k (m + 1) i) l = 0 := by simp [bvec, Pi.single_apply, h1]
+      have ha : bvec (esI k (m + 1) i) l = 0 := by simp [bvec, h2]
+      have hb : bvec (eI k (m + 1) i) l = 0 := by simp [bvec, h1]
       rw [ha, hb]
       simp [h1, h2]
   rw [herm_expand, Finset.sum_congr rfl (fun l _ => hpt l), Finset.sum_add_distrib, Finset.sum_add_distrib,
@@ -72,7 +72,7 @@ theorem VpF_esI (hν : inWb k (m + 1) ν) (c : Fin (m + 1)) (hc : c ≠ i) :
   rw [hν _ (Or.inl (by simp only [eI]; omega))]
   have h1 : eI k (m + 1) c ≠ eI k (m + 1) i := by
     intro h; apply hc; ext; have := congrArg Fin.val h; simpa [eI] using this
-  simp [bvec, Pi.single_apply, h1, eI_ne_esI]
+  simp [bvec, h1, eI_ne_esI]
 
 theorem hermitian_perturbed_vector_orthogonal (z' : Fin (2 * (m + 1) + k + 1) → ℂ) (hz : inWb k (m + 1) z') (hν : inWb k (m + 1) ν)
     (hzν : herm (Hpk k (m + 1)) z' ν = 0) : herm (Hpk k (m + 1)) z' (VpF m i ν) = 0 := by
@@ -83,13 +83,13 @@ theorem hermitian_perturbed_vector_orthogonal (z' : Fin (2 * (m + 1) + k + 1) �
     · unfold VpF
       have h1 : l ≠ eI k (m + 1) i := by intro h; rw [h] at hW; simp [eI] at hW; omega
       have h2 : l ≠ esI k (m + 1) i := by intro h; rw [h] at hW; simp [esI] at hW; omega
-      simp [bvec, Pi.single_apply, h1, h2]
+      simp [bvec, h1, h2]
     · rw [hz (WeylGroupFacts.tau k (m + 1) l) (by rw [tau_val]; split_ifs <;> omega)]; simp
   rw [this, hzν, neg_zero]
 
 theorem bvec_esI_iso (b c : Fin (m + 1)) :
     herm (Hpk k (m + 1)) (bvec (esI k (m + 1) b)) (bvec (esI k (m + 1) c)) = 0 := by
-  rw [herm_bvec_esI]; simp [bvec, Pi.single_apply, Ne.symm (eI_ne_esI m c b)]
+  rw [herm_bvec_esI]; simp [bvec, Ne.symm (eI_ne_esI m c b)]
 
 theorem bvec_esI_star (c : Fin (m + 1)) (q : Fin (2 * (m + 1) + k + 1)) :
     bvec (esI k (m + 1) c) q = if (NFOne.sg k (m + 1) q).val = c.val then 1 else 0 := by

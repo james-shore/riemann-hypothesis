@@ -120,9 +120,9 @@ theorem main : ∀ (R : Type) [CommRing R] [IsDomain R] (I : Ideal R) (e : ℕ) 
     refine IsPullback.of_iso key (asIso (lift τ₁ τ₂)).symm
       (asIso (lift (F.map (fst G₁ G₂)) (F.map (snd G₁ G₂)))).symm (Iso.refl _)
       (asIso (lift (F.map p₁) (F.map p₂))).symm ?_ ?_ ?_ ?_
-    · simp only [i, Iso.symm_hom, asIso_inv, Category.assoc, IsIso.inv_hom_id_assoc]
+    · simp only [i, Iso.symm_hom, asIso_inv, IsIso.inv_hom_id_assoc]
     · exact toUnit_unique _ _
-    · simp only [q, Iso.symm_hom, asIso_inv, Category.assoc, IsIso.inv_hom_id_assoc]
+    · simp only [q, Iso.symm_hom, asIso_inv, IsIso.inv_hom_id_assoc]
     · simp only [Iso.refl_hom, Category.id_comp, Iso.symm_hom, asIso_inv]
       rw [IsIso.comp_inv_eq, IsMonHom.one_hom]
 

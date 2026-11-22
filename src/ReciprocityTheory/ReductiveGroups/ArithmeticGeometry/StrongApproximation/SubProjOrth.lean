@@ -35,9 +35,8 @@ theorem nondeg (hdet : IsUnit J.det) {x : ι → K} (h : ∀ z, hf σ J x z = 0)
       by_cases hj : j = k
       · subst hj
         simp
-      · simp [Pi.single_apply, hj]
-    simp only [hf, hs, Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq',
-      Finset.mem_univ, if_true] at h1
+      · simp [hj]
+    simp only [hf, Pi.single_apply] at h1
     simpa [Matrix.vecMul, dotProduct] using h1
   have h2 := congrArg (fun v => Matrix.vecMul v J⁻¹) hv
   simpa [Matrix.vecMul_vecMul, Matrix.mul_nonsing_inv J hdet] using h2

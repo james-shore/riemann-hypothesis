@@ -199,7 +199,7 @@ theorem main : ∀ (A : Type) [CommRing A] [IsLocalRing A] (k : Type) [Field k] 
     { toFun := fun a => TrivSqZeroExt.inl (ψ a) + TrivSqZeroExt.inr (ψ (δ a))
       map_one' := by ext <;> simp
       map_zero' := by ext <;> simp
-      map_add' := fun a b => by ext <;> simp <;> ring
+      map_add' := fun a b => by ext <;> simp
       map_mul' := fun a b => by
         ext
         · simp

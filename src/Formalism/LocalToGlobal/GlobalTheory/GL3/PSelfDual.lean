@@ -465,7 +465,7 @@ theorem d_pos : (0 : ℚ) < D.host.d := by exact_mod_cast D.host.hyp.2.1.pos
 
 theorem K_repr (x : D.host.E) (hx : x ∈ D.host.K) :
     ∃ p q : ℚ, x = (p : D.host.E) + (q : D.host.E) * D.host.sqd := by
-  first | exact UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr .. | (apply UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr <;> assumption) | (intros; apply UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr <;> assumption) | (apply @UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr <;> assumption) | (apply @UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr <;> first | assumption | infer_instance) | exact @UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr D x hx | exact @UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr D x | exact @UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr D
+  first | exact UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr .. | (apply UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr <;> assumption) | exact @UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr D x hx | exact @UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr D x | exact @UpperTheory.Reformulated.B.CanonicalTranslateJets.K_repr D
 
 theorem embedding_sqrt_neg_d : D.host.φ₀ (D.host.sqd) = Complex.I * (Real.sqrt D.host.d : ℂ) :=
   D.host.φ₀_mem

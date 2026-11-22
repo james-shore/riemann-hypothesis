@@ -36,7 +36,7 @@ private lemma idxOf_append_of_not_mem_beq {α : Type} [BEq α] [LawfulBEq α] (l
   | cons y t ih =>
     have hxy : y ≠ x := fun h => hx (h ▸ List.mem_cons_self)
     have hxt : x ∉ t := fun h => hx (List.mem_cons_of_mem _ h)
-    simp [List.idxOf_cons, ih hxt, hxy] <;> omega
+    simp [ih hxt, hxy] <;> omega
 
 theorem cn_NO_drop {j : ℕ} {lF lG : List (Fin n × Fin n)} (h : NO n j (lF ++ lG)) (hF : ∀ r ∈ lF, r.1.val = j)
     (hG : ∀ r ∈ lG, r.1.val ≠ j) : NO n (j + 1) lG := by

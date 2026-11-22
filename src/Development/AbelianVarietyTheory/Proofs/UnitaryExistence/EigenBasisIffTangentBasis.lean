@@ -50,7 +50,6 @@ theorem basis_iff_of_split {S N J : Type} [CommRing S] [AddCommGroup N] [Module 
         (fun j => (Pi.single τ a : ∀ σ, Fin (m σ) → S) (e j).1 (e j).2) = a' := by
       intro a ha
       apply hu'
-      change n = ∑ j, (Pi.single τ a : ∀ σ, Fin (m σ) → S) (e j).1 (e j).2 • b (e j).1 (e j).2
       rw [key, Finset.sum_eq_single τ]
       · simpa using ha
       · intro σ _ hσ

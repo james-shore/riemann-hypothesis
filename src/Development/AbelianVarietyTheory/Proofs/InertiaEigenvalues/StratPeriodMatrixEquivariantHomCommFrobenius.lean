@@ -13,7 +13,7 @@ theorem mreal_hom_frob : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K)
   set Φ : WCb l →+* WCb l := (frobW l).toRingHom with hΦ
   have hc : ∀ x, L (frobS l bk.a x) = Φ (L x) := by
     intro x
-    simp only [hL, hΦ, BK.evW, RingHom.comp_apply, bk.ev_frob, AlgHom.coe_toRingHom]
+    simp only [hL, hΦ, BK.evW, RingHom.comp_apply, bk.ev_frob]
     exact (frobW_inclW _).symm
   have hsm : ∀ {m n : Type} (c : bk.S) (M : Matrix m n bk.S), (c • M).map L = L c • M.map L := by
     intro m n c M; ext i j; simp [Matrix.map_apply, Matrix.smul_apply]

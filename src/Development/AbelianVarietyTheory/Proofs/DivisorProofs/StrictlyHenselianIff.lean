@@ -101,8 +101,7 @@ theorem sections_of_henselian_sepClosed {R : Type} [CommRing R] [IsLocalRing R]
   rw [Ideal.mem_comap, ← residue_eq_zero_iff, ← ResidueField.algebraMap_eq]
   change algebraMap R (ResidueField R) (s x) = 0 ↔ x ∈ q
   rw [hx]
-  simp only [φ, AlgHom.comp_apply, AlgEquiv.toAlgHom_eq_coe, AlgHom.coe_coe,
-    IsScalarTower.coe_toAlgHom', ResidueField.algebraMap_eq]
+  simp only [φ, AlgHom.comp_apply, IsScalarTower.coe_toAlgHom', ResidueField.algebraMap_eq]
   change e.symm (residue S (algebraMap A S x)) = 0 ↔ x ∈ q
   rw [map_eq_zero_iff _ e.symm.injective, residue_eq_zero_iff,
     IsLocalization.AtPrime.to_map_mem_maximal_iff S q]

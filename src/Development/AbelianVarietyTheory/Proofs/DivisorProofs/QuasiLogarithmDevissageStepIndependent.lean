@@ -93,7 +93,7 @@ theorem GlobalTheory.step_independent : ∀ (p : ℕ) [Fact p.Prime] (B O Q : Ty
     exact ⟨m, hm, t, rfl⟩
   choose n' hn' β hβ using fun i => hdec (b i) (hb i)
   have hcomb : ∀ (w : ι → B) α, coeff α (comb w e) = ∑ i, algebraMap B Q (w i) * coeff α (e i) := by
-    intro w α; simp only [comb, map_sum, coeff_smul, smul_eq_mul]
+    intro w α; simp only [comb, map_sum, coeff_smul]
   have he0 : ∀ i, coeff 0 (e i) = 0 := fun i => by
     rw [coeff_zero_eq_constantCoeff_apply]; exact (he i).1
   have hs0 : coeff 0 s = 0 := by
@@ -110,8 +110,8 @@ theorem GlobalTheory.step_independent : ∀ (p : ℕ) [Fact p.Prime] (B O Q : Ty
   choose m hm t hts ht0 using hsdec
   let S' : MvPowerSeries (Fin d) Q := map (algebraMap B Q) (fun α => m α)
   let S₁ : MvPowerSeries (Fin d) Q := map (algebraMap B Q) (fun α => t α)
-  have cS' : ∀ α, coeff α S' = algebraMap B Q (m α) := fun α => by simp only [S', coeff_map]; rfl
-  have cS₁ : ∀ α, coeff α S₁ = algebraMap B Q (t α) := fun α => by simp only [S₁, coeff_map]; rfl
+  have cS' : ∀ α, coeff α S' = algebraMap B Q (m α) := fun α => by simp only [S']; rfl
+  have cS₁ : ∀ α, coeff α S₁ = algebraMap B Q (t α) := fun α => by simp only [S₁]; rfl
   have hS' : In N' S' := fun α => ⟨m α, hm α, cS' α⟩
   have hS₁ : In (⊤ : Ideal B) S₁ := fun α => ⟨t α, trivial, cS₁ α⟩
   obtain ⟨E, hE⟩ : ∃ E, E = comb β e - S₁ := ⟨_, rfl⟩
@@ -219,7 +219,7 @@ theorem GlobalTheory.step_independent : ∀ (p : ℕ) [Fact p.Prime] (B O Q : Ty
   obtain ⟨γ, hγ, -⟩ := hB.2 F hQLF
   have hcΘ : ∀ (w : ι → O) α, coeff α (comb w (fun i => map Θ (e i))) =
       ∑ i, algebraMap O C (w i) * Θ (coeff α (e i)) := by
-    intro w α; simp only [comb, map_sum, coeff_smul, smul_eq_mul, coeff_map]
+    intro w α; simp only [comb, map_sum, coeff_smul, coeff_map]
   have hc1 : ∀ α, coeff α (map Θ E - comb (fun i => θ (β i)) (fun i => map Θ (e i))) =
       -algebraMap O C (θ (t α)) := by
     intro α

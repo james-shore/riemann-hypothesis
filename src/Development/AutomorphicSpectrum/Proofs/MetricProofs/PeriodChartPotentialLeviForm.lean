@@ -114,7 +114,7 @@ theorem inFlagDomain_base {j : ℕ} : InFlagDomain N j 1 := by
     · subst hab
       simp [gramHead, gramOf, sigForm, ha]
     · have : (⟨a, ha⟩ : {a : Fin N // (a : ℕ) < N - j}) ≠ ⟨b, hb⟩ := fun h => hab (congrArg Subtype.val h)
-      simp [gramHead, gramOf, Matrix.one_apply, hab, this]
+      simp [gramHead, gramOf, hab, this]
   rw [h]
   exact Matrix.PosDef.one
 

@@ -11,7 +11,7 @@ theorem UpperTheory.V.LDataCardLeFinrank.galTransport :
   have hc : ∀ g : G F' Ω', ∀ x : F,
       ((σ.trans g.toRingEquiv).trans σ.symm) (algebraMap F Ω x) = algebraMap F Ω x := by
     intro g x
-    simp only [RingEquiv.trans_apply, hσ, AlgEquiv.toRingEquiv_eq_coe, AlgEquiv.coe_ringEquiv,
+    simp only [RingEquiv.trans_apply, hσ, AlgEquiv.coe_ringEquiv,
       AlgEquiv.commutes]
     rw [← hσ, RingEquiv.symm_apply_apply]
   let φ : G F' Ω' →* G F Ω :=

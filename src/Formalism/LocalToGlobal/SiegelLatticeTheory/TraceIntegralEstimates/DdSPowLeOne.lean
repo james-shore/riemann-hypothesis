@@ -17,8 +17,7 @@ theorem psiF_f (e f : Fin r → S.V) (U U' : Matrix (Fin r) (Fin r) E) (hff : �
     (hef : ∀ a b, S.hT (e a) (f b) = if a = b then 1 else 0) (j : Fin r) :
     psiF e f U U' (f j) = ∑ c, U' c j • f c := by
   rw [psiF_apply]
-  simp only [hff, hef, zero_smul, Finset.sum_const_zero, add_zero, ite_smul, one_smul, Finset.sum_ite_eq,
-    Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only [hff, hef, zero_smul, Finset.sum_const_zero, add_zero, ite_smul, one_smul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   abel
 
 theorem levi_mem (Λ : Submodule (𝓞 E) S.V) (aa : Fin r → FractionalIdeal (nonZeroDivisors (𝓞 E)) E)

@@ -94,7 +94,7 @@ theorem sum_coefInv_coef (t : S → T) (ht : Function.Injective t) (P : T → Ma
       simp only at h1 ⊢
       subst h1
       rcases eq_or_ne b b' with rfl | hb <;> rcases eq_or_ne c c' with rfl | hc <;>
-        first | (simp; done) | (simp [hb, hb.symm]; done) | (simp [hc, hc.symm]; done) | simp [hb, hb.symm, hc, hc.symm]
+        first | (simp; done) | (simp [hb, hb.symm])
     · have hne : x ≠ x' := fun hx => hxx (by rw [hx])
       simp only [hxx, if_false, mul_zero, Finset.sum_const_zero, hne]
   · intro τ _ hτ

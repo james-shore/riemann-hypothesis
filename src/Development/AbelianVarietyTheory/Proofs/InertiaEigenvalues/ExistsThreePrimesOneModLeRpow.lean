@@ -65,7 +65,7 @@ def below (w : D.what₂.places.Pl) : HeightOneSpectrum (𝓞 ↥D.LL0) where
       rw [← h]
       show 0 < D.what₂.places.val w ((((D.what₂.places.resChar w : ℕ) : 𝓞 ↥D.LL0) : ↥D.LL0) : D.what₂.LL)
       have := D.what₂.places.val_resChar w
-      simp only [map_natCast, RingOfIntegers.coe_eq_algebraMap, SubringClass.coe_natCast]
+      simp only [map_natCast, SubringClass.coe_natCast]
       rw [this]
       exact_mod_cast D.what₂.places.ramIdx_pos w
     rw [Ideal.mem_bot] at h1

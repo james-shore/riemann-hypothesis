@@ -39,8 +39,7 @@ def rW (c : ι → ι → k) (n : ι →₀ ℕ) : k :=
 theorem secondOrder_add (c : ι → ι → k) (p q : MvPolynomial ι k) :
     secondOrder k c (p + q) = secondOrder k c p + secondOrder k c q := by
   unfold secondOrder
-  simp only [map_add, mul_add, add_mul, Finset.sum_add_distrib]
-  done
+  simp only [map_add, mul_add, Finset.sum_add_distrib]
 
 theorem lamW_secondOrder (c : ι → ι → k) (P : MvPolynomial ι k) :
     lamW ψ (secondOrder k c P) = (AddMonoidAlgebra.coeff P).sum (fun n a => a * rW ψ c n) := by
@@ -51,8 +50,6 @@ theorem lamW_secondOrder (c : ι → ι → k) (P : MvPolynomial ι k) :
       intro g
       first
         | exact Finset.sum_map_toList _ _
-        | exact Finset.sum_toList _ _
-        | rw [Finset.sum_eq_multiset_sum, ← Finset.coe_toList, Multiset.map_coe, Multiset.sum_coe]
     rw [Finsupp.sum_single_index (zero_mul _)]
     simp only [secondOrder, lamW_sum, MvPolynomial.pderiv_monomial, MvPolynomial.C_mul_monomial,
       lamW_monomial, rW, hL, Finset.mul_sum]

@@ -83,7 +83,7 @@ theorem partner_spec (s : K →+* K) (L Li : Matrix (Fin N) (Fin N) K) (half : K
 
 theorem hform_single (s : K →+* K) (L : Matrix (Fin N) (Fin N) K) (i j : Fin N) :
     hform s L (Pi.single i 1) (Pi.single j 1) = L i j := by
-  simp [hform_eq, Matrix.mulVec_single_one, dotProduct, Pi.single_apply, apply_ite s]
+  simp [hform_eq, dotProduct, Pi.single_apply, apply_ite s]
 
 variable [TopologicalSpace K] [IsTopologicalRing K]
 

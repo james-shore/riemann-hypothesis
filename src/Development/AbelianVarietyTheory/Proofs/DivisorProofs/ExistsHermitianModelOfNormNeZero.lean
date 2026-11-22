@@ -115,7 +115,7 @@ theorem exists_unit_vector [FiniteDimensional K.E V] (h : V → V → K.E)
     have e1 : a1 = θ * θ' * a2 + θ * a + θ' * UnramNorm.cO K a + a3 := hinj (by
       rw [← ha1]; simp only [map_add, map_mul]; rfl)
     have e4 : a4 = a2 + a + UnramNorm.cO K a + a3 := hinj (by
-      rw [← ha4]; simp only [map_add, map_mul]; ring)
+      rw [← ha4]; simp only [map_add]; ring)
     have hmem : (θ - θ') * a ∈ m := by
       have : (θ - θ') * a = (a1 - θ * θ' * a2 - a3) - θ' * (a4 - a2 - a3) := by
         rw [e1, e4]; ring

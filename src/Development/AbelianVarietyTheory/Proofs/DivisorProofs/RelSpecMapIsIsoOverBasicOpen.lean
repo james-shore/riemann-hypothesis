@@ -64,7 +64,7 @@ theorem relSpec_map_isIso_over_basicOpen : ∀ (X : Scheme.{0}) (F F' : X.Affine
   have hnat : (relativeGluingData hα).natTrans.app V =
       φ ≫ (relativeGluingData hα').natTrans.app V := by
     subst hαι
-    simp [relativeGluingData, hφ, Spec.map_comp]
+    simp [relativeGluingData, hφ]
   have H : IsPullback φ ((relativeGluingData hα).cover.f V) ((relativeGluingData hα').cover.f V) g := by
     refine IsPullback.of_right ?_ (hg' V).symm ((relativeGluingData hα').isPullback_natTrans_ι_toBase V)
     rw [← hnat, hg]

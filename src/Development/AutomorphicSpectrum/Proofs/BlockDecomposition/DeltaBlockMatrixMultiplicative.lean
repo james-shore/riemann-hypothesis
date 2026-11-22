@@ -104,7 +104,7 @@ theorem map_proj_lam {m : ℕ} (σ : E →ₐ[F] E) (c : Matrix (Fin m) (Fin m) 
         = (proj E m x + c.mulVec (proj E m y)) + o • u := by
       funext i
       have := blk_mulVec_castSucc σ c u d y i
-      simp only [proj_apply, Pi.add_apply, map_add, LinearMap.restrictScalars_apply,
+      simp only [proj_apply, Pi.add_apply, LinearMap.restrictScalars_apply,
         Matrix.mulVecLin_apply, Pi.smul_apply, Algebra.smul_def, ho]
       rw [this, add_assoc]
       rfl
@@ -170,7 +170,7 @@ theorem comap_lastInc_intVec (m : ℕ) :
     by_cases hi : i = Fin.last m
     · subst hi
       exact ⟨o, by simp⟩
-    · exact ⟨0, by simp [Pi.single_apply, hi]⟩
+    · exact ⟨0, by simp [hi]⟩
 
 theorem map_lastInc_lastFib {m : ℕ} (C : Matrix (Fin (m + 1)) (Fin (m + 1)) E) :
     (lastFib C).toAddSubgroup.map (lastInc E m)
@@ -181,7 +181,7 @@ theorem map_lastInc_lastFib {m : ℕ} (C : Matrix (Fin (m + 1)) (Fin (m + 1)) E)
     refine AddSubgroup.mem_inf.mpr ⟨hx, ?_⟩
     rw [AddMonoidHom.mem_ker]
     funext i
-    simp [lastInc, Pi.single_apply, Fin.castSucc_ne_last]
+    simp [lastInc, Fin.castSucc_ne_last]
   · intro hv
     obtain ⟨h1, h2⟩ := AddSubgroup.mem_inf.mp hv
     rw [AddMonoidHom.mem_ker] at h2
@@ -191,7 +191,7 @@ theorem map_lastInc_lastFib {m : ℕ} (C : Matrix (Fin (m + 1)) (Fin (m + 1)) E)
       · simp [lastInc]
       · have := congrFun h2 j
         simp only [LinearMap.toAddMonoidHom_coe, proj_apply, Pi.zero_apply] at this
-        simp [lastInc, Pi.single_apply, Fin.castSucc_ne_last, this]
+        simp [lastInc, Fin.castSucc_ne_last, this]
     refine ⟨v (Fin.last m), ?_, hv'⟩
     change lastInc E m (v (Fin.last m)) ∈ lam C
     rw [hv']

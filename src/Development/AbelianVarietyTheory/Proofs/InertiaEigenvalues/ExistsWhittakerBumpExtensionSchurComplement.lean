@@ -29,7 +29,7 @@ open scoped ContDiff Topology
 set_option maxHeartbeats 1000000 in
 
 theorem _root_.GlobalTheory.Tx.schur_function_whittaker_equivariant : ∀ (E : Type) [Field E] [NumberField E] [IsTotallyComplex E] (m r : ℕ) (β : GA E (m + 1) → ℂ) (b₁ : GA E (r + 1) → ℂ) (χ : (Fin (r + 1) → Fin (m + 1) → Cinf E) → ℝ), (∀ u ∈ GlobalTheory.JSW.NA E (m + 1), ∀ g, β (u * g) = GlobalTheory.JSW.psiN u * β g) → (∀ u ∈ GlobalTheory.JSW.NA E (r + 1), ∀ g, b₁ (u * g) = GlobalTheory.JSW.psiN u * b₁ g) → ∀ u ∈ GlobalTheory.JSW.NA E (m + r + 1 + 1), ∀ g, schurF β b₁ χ (u * g) = GlobalTheory.JSW.psiN u * schurF β b₁ χ g := by
-  first | (exact @GlobalTheory.SchurEquiv.schurF_equivariant) | (exact GlobalTheory.SchurEquiv.schurF_equivariant) | (intros; apply GlobalTheory.SchurEquiv.schurF_equivariant <;> assumption)
+  first | (exact @GlobalTheory.SchurEquiv.schurF_equivariant)
 end
 
 section
@@ -40,8 +40,6 @@ set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.Tx.schur_function_compact_support_modulo_unipotent : ∀ (E : Type) [Field E] [NumberField E] [IsTotallyComplex E] (m r : ℕ) (S : Finset (HeightOneSpectrum (𝓞 E))) (β : GA E (m + 1) → ℂ) (b₁ : GA E (r + 1) → ℂ) (χ : (Fin (r + 1) → Fin (m + 1) → Cinf E) → ℝ), (∃ C : Set (GA E (m + 1)), IsCompact C ∧ ∀ h ∈ GlobalTheory.JSW.supS E (m + 1) S, β h ≠ 0 → ∃ u ∈ GlobalTheory.JSW.NA E (m + 1), u⁻¹ * h ∈ C) → (∃ C : Set (GA E (r + 1)), IsCompact C ∧ ∀ p, b₁ p ≠ 0 → ∃ u ∈ GlobalTheory.JSW.NA E (r + 1), u⁻¹ * p ∈ C) → HasCompactSupport χ → ∃ C : Set (GA E (m + r + 1 + 1)), IsCompact C ∧ ∀ p ∈ GlobalTheory.JSW.mirS E S (m + r + 1), schurF β b₁ χ p ≠ 0 → ∃ u ∈ GlobalTheory.JSW.NA E (m + r + 1 + 1), u⁻¹ * p ∈ C := by
   first
   | exact @GlobalTheory.SchurExtCpt.exists_compact_support
-  | exact GlobalTheory.SchurExtCpt.exists_compact_support
-  | (intros; apply GlobalTheory.SchurExtCpt.exists_compact_support <;> assumption)
 end
 
 section
@@ -50,7 +48,7 @@ open scoped ContDiff Topology
 set_option maxHeartbeats 1000000 in
 
 theorem _root_.GlobalTheory.Tx.schur_function_smooth_right_invariant : ∀ (E : Type) [Field E] [NumberField E] [IsTotallyComplex E] (m r : ℕ) (S : Finset (HeightOneSpectrum (𝓞 E))) (β : GA E (m + 1) → ℂ) (b₁ : GA E (r + 1) → ℂ) (χ : (Fin (r + 1) → Fin (m + 1) → Cinf E) → ℝ), (∃ U : Subgroup (GL (Fin (m + 1)) (Af E)), IsOpen (U : Set (GL (Fin (m + 1)) (Af E))) ∧ ∀ u ∈ U, ∀ g, β (g * finGL E (m + 1) u) = β g) → (∃ C : Set (GA E (m + 1)), IsCompact C ∧ ∀ h ∈ GlobalTheory.JSW.supS E (m + 1) S, β h ≠ 0 → ∃ u ∈ GlobalTheory.JSW.NA E (m + 1), u⁻¹ * h ∈ C) → (∃ U : Subgroup (GL (Fin (r + 1)) (Af E)), IsOpen (U : Set (GL (Fin (r + 1)) (Af E))) ∧ ∀ u ∈ U, ∀ g, b₁ (g * finGL E (r + 1) u) = b₁ g) → (∃ C : Set (GA E (r + 1)), IsCompact C ∧ ∀ p, b₁ p ≠ 0 → ∃ u ∈ GlobalTheory.JSW.NA E (r + 1), u⁻¹ * p ∈ C) → ∃ W ∈ 𝓝 (1 : GL (Fin (m + r + 1 + 1)) (Af E)), ∀ k ∈ W, finGL E (m + r + 1 + 1) k ∈ GlobalTheory.JSW.supS E (m + r + 1 + 1) S → ∀ x ∈ GlobalTheory.JSW.supS E (m + r + 1 + 1) S, schurF β b₁ χ (x * finGL E (m + r + 1 + 1) k) = schurF β b₁ χ x := by
-  first | (exact @GlobalTheory.SchurExt.schurF_mul_finGL_eq) | (exact GlobalTheory.SchurExt.schurF_mul_finGL_eq) | (intros; apply GlobalTheory.SchurExt.schurF_mul_finGL_eq <;> assumption)
+  first | (exact @GlobalTheory.SchurExt.schurF_mul_finGL_eq)
 end
 
 open NumberField IsDedekindDomain MeasureTheory GlobalTheory.CuspRep GlobalTheory.JSW Formalism.UG GlobalTheory.LFun Formalism.L2.Host

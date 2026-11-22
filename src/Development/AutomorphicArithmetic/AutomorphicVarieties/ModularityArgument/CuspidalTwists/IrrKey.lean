@@ -52,7 +52,7 @@ theorem Qp_tn (X B : Matrix (Fin 2) (Fin 2) K) (h : B 1 1 = B 0 0 ∧ B 1 0 = B 
 theorem dec (h2 : (2 : K) ≠ 0) (v : Fin 4 → K) : Pm *ᵥ (Qp *ᵥ v) + Mm *ᵥ (Qm *ᵥ v) = v := by
   have h2' : (2 : K)⁻¹ + 2⁻¹ = 1 := by rw [← two_mul, mul_inv_cancel₀ h2]
   ext k
-  fin_cases k <;> simp [Pm, Qp, Mm, Qm, Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
+  fin_cases k <;> simp [Pm, Qp, Mm, Qm, dotProduct, Fin.sum_univ_succ]
   · linear_combination (v 0) * h2'
   · linear_combination (v 1) * h2'
   · linear_combination (v 2) * h2'

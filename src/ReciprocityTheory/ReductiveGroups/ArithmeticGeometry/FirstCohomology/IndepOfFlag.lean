@@ -17,7 +17,6 @@ lemma V_mono {d : ℕ} (u : Fin d → E) {m n : ℕ} (h : m ≤ n) : V u m ≤ V
 lemma V_eq {d : ℕ} (u : Fin d → E) (k : Fin d) : span ℝ (u '' Set.Iio k) = V u k.val := by
   first
   | rfl
-  | (simp only [V]; congr 1; congr 1; ext l; exact Iff.rfl)
 
 lemma mem_V_of_lt {d : ℕ} (u : Fin d → E) {l : Fin d} {n : ℕ} (h : l.val < n) : u l ∈ V u n := Submodule.subset_span ⟨l, h, rfl⟩
 
@@ -28,8 +27,6 @@ lemma finite_ball [FiniteDimensional ℝ E] (X : Submodule ℤ E) [DiscreteTopol
   have hdisc : IsDiscrete (X : Set E) := by
     first
     | exact ⟨‹DiscreteTopology X›⟩
-    | exact isDiscrete_iff_discreteTopology.2 ‹DiscreteTopology X›
-    | exact ‹DiscreteTopology X›
   exact Metric.finite_isBounded_inter_isClosed hdisc Metric.isBounded_closedBall hc
 
 lemma indep_of_flag [FiniteDimensional ℝ E] {d : ℕ} (hd : d = finrank ℝ E) (f : Fin d → E)
@@ -111,15 +108,12 @@ private lemma sub_gs_mem_V : u k - gs u k ∈ V u k.val := by
   apply hsub
   first
   | exact Submodule.starProjection_apply_mem _ _
-  | (rw [Submodule.starProjection_apply]; exact Submodule.coe_mem _)
-  | simp
 
 lemma phi_self (hu : LinearIndependent ℝ u) : phi u k (u k) = 1 := by
   have hne : gs u k ≠ 0 := by
     first
     | exact gramSchmidt_ne_zero ℝ k hu
     | exact gramSchmidt_ne_zero k hu
-    | exact gramSchmidt_ne_zero (𝕜 := ℝ) (n := k) hu
   have h1 : phi u k (u k) = phi u k (gs u k) + phi u k (u k - gs u k) := by
     rw [← phi_add]; congr 1; abel
   rw [h1, phi_V u k (sub_gs_mem_V u k), add_zero, phi, real_inner_self_eq_norm_sq,

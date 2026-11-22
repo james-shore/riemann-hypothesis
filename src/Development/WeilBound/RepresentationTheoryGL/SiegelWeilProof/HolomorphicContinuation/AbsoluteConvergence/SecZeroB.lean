@@ -96,7 +96,7 @@ lemma dense_cell (y : GR n) : y ∈ closure {z : GR n | ((mR z).toBlocks₂₁).
     exact (Matrix.isUnit_iff_isUnit_det _).mp hpd.isUnit |>.ne_zero
   have hprod : (C + Complex.I • D) * (C + Complex.I • D)ᴴ = C * Cᴴ + D * Dᴴ := by
     simp only [Matrix.conjTranspose_add, Matrix.conjTranspose_smul, Matrix.add_mul, Matrix.mul_add,
-      Matrix.smul_mul, Matrix.mul_smul, smul_smul, Complex.star_def, Complex.conj_I]
+      Matrix.smul_mul, Matrix.mul_smul, Complex.star_def, Complex.conj_I]
     rw [← hherm, smul_add, smul_smul, neg_mul, Complex.I_mul_I, neg_neg, one_smul, neg_smul]
     abel
   have hI : (C + Complex.I • D).det ≠ 0 := by

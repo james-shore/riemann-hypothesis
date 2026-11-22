@@ -10,4 +10,4 @@ open Formalism Formalism.BasicNotions Formalism.BasicNotions.Loc Formalism.Weakl
 open scoped Formalism.Per NNReal
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.hodgeAdaptedBasis_galois_action_bdRPlus : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (C : Core l) (d : ℕ) (ρ : ↥(GK K) → Matrix (Fin d) (Fin d) ℤ_[l]) (H : Hodge C (bk.ev bk.E) (fun g => (ρ g).map (zOm l)) K) (g : ↥(GK K)) (w : Ainf l), Per.σA (g : GQ l) (bk.ev bk.E) = bk.ev bk.E * w → (ρ g).map ((aDp l).comp (Per.zA l)) * H.V.map (Per.σDp (g : GQ l)) * Matrix.diagonal (fun j => aDp l w ^ H.p j) = aDp l w ^ H.q • H.V := by
-  first | (exact @GlobalTheory.BKLim.GalAdapted.gal_V) | (exact GlobalTheory.BKLim.GalAdapted.gal_V) | (intros; apply GlobalTheory.BKLim.GalAdapted.gal_V  <;> assumption)
+  first | (exact @GlobalTheory.BKLim.GalAdapted.gal_V)

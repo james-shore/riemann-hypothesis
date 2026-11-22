@@ -80,7 +80,7 @@ private theorem oo_kills {l : ℕ} [Fact l.Prime] {F : GFrame l} {O : Type} [Com
     induction x using MonoidAlgebra.induction_linear with
     | zero => simp
     | add a b ha hb =>
-      simp only [RingHom.toMonoidHom_eq_coe, MonoidHom.coe_coe, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, AlgHom.coe_toRingHom, map_add] at ha hb ⊢
+      simp only [RingHom.toMonoidHom_eq_coe, MonoidHom.coe_coe, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, map_add] at ha hb ⊢
       rw [ha, hb]
     | single g b =>
       simp [GDet.repAlg, MonoidAlgebra.lift_single, diagRep, GDet.diagRep, χ, pushCh,

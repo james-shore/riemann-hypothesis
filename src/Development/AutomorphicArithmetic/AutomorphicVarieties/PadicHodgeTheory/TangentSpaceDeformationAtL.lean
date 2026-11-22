@@ -75,7 +75,7 @@ private theorem ex_root [CharZero E] (a b : Fin 4) :
     ∃ X ∈ sp4 E, X a b ≠ 0 ∧ ∀ a' b', wt a' b' ≠ wt a b → X a' b' = 0 := by
   refine ⟨Matrix.single a b 1 - adj (Matrix.single a b 1), mem_sp4_iff.2 fun i j => ?_, ?_, fun i j h => ?_⟩
   · simp only [Matrix.sub_apply, adj_apply, Fin.rev_rev, sgn_rev, smul_sub, smul_smul, sgn_sq, one_smul, neg_sub]
-  · fin_cases a <;> fin_cases b <;> simp [adj_apply, sgn, Fin.rev, Matrix.single_apply] <;> norm_num
+  · fin_cases a <;> fin_cases b <;> simp [adj_apply, sgn, Fin.rev]
   · rw [Matrix.sub_apply, adj_apply, Matrix.single_apply_of_ne, Matrix.single_apply_of_ne, smul_zero, sub_zero]
     · rintro ⟨rfl, rfl⟩
       exact h (wt_rev _ _).symm
@@ -206,7 +206,7 @@ private theorem dim_zero (χ : Fin 4 → H →* Eˣ) (I : H → Prop) (σ : H)
         · subst hab
           fin_cases a <;> simp [γ, u2, w2, add_comm]
         · simp [γ, hab]
-      · fin_cases a <;> fin_cases b <;> simp [γ, sgn, Fin.rev, Matrix.diagonal_apply]
+      · fin_cases a <;> fin_cases b <;> simp [γ, sgn, Fin.rev]
       · fin_cases a <;> simp [γ, u3 s hs, w3 s hs]
       · by_cases hab : a = b
         · subst hab

@@ -65,7 +65,7 @@ theorem weilIs_decomp : ∀ (h M₁ : ℕ) {Bt : Type} [CommRing Bt] (ζ : Bt) (
   have r := GlobalTheory.DiagPairing.weilIs_mul_left hG hAA c.isLB (GlobalTheory.CommPairing.weilIs_symm c.isLB sA)
     (GlobalTheory.CommPairing.weilIs_symm c.isLB sB)
   rw [GlobalTheory.DiagSqAxes.lift_mul_lift₂, GlobalTheory.DiagSqAxes.lift_mul_lift₂] at r
-  simp only [_root_.mul_one, _root_.one_mul, inv_one, _root_.mul_inv, inv_inv] at r
+  simp only [_root_.mul_one, _root_.one_mul, inv_one, inv_inv] at r
   exact r
 
 theorem lift_pow_eq_one {S : Scheme.{0}} {A B : Over S} [GrpObj A] [GrpObj B] {T : Over S} (u : T ⟶ A) (v : T ⟶ B)
@@ -160,7 +160,7 @@ theorem cls_diag_zP : ∀ (h M d : ℕ) (S : Scheme.{0}) (t : S ⟶ Sp (cycAway 
   unfold GlobalTheory.ZarhinFam.zCls
   rw [hP]
   simp only [map_add, map_sum, map_zsmul, ← GlobalTheory.CechPic.pull_comp, ← Over.comp_left, comp_lift, lift_fst_assoc,
-    lift_snd_assoc, Category.id_comp, lift_fst, lift_snd, Category.assoc]
+    lift_snd_assoc, Category.id_comp, lift_fst, Category.assoc]
   simp only [mul_smul, two_smul, Finset.sum_add_distrib]
   abel
 
@@ -196,7 +196,7 @@ theorem two_formZ : ∀ (d h : ℕ) (a b : Fin 8 → (Fin h ⊕ Fin h → ℤ)),
     exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring
   rw [hc]
   have h2 : ∀ x y : ℤ, 2 * x * y = 2 * (x * y) := fun x y => by ring
-  simp only [h2, mul_add, Finset.sum_add_distrib, ← Finset.mul_sum]
+  simp only [h2, ← Finset.mul_sum]
   ring
 
 theorem lev_nsmul {h M₁ : ℕ} {Bt : Type} [CommRing Bt] {ζ : Bt} {S : Scheme.{0}} {s : S ⟶ Sp Bt}
@@ -262,15 +262,14 @@ theorem weilIs_formZ : ∀ (h M d : ℕ) (S : Scheme.{0}) (t : S ⟶ Sp (cycAway
         (fun j => toUnit (Over.mk x) ≫ c.lev (b (Fin.natAdd 4 j)) ≫ la) ≫ f i) (unitOn (z ^ g i)) := by
     have q := weilIs_poincare_lev h M d S t c B Q la mu hZ hMo k x β z hxt hz
     rintro (i | ⟨i, j⟩ | j)
-    · simp only [f, g, Sum.elim_inl, comp_lift, GlobalTheory.ZarhinFam.RelAlg.mkZ_pa, GlobalTheory.ZarhinFam.RelAlg.mkZ_pb,
-        ← Category.assoc]
+    · simp only [f, g, Sum.elim_inl, comp_lift, GlobalTheory.ZarhinFam.RelAlg.mkZ_pa, ← Category.assoc]
       simpa only [Category.assoc] using q (a (Fin.castAdd 4 i)) (a (Fin.castAdd 4 i)) (b (Fin.castAdd 4 i))
         (b (Fin.castAdd 4 i))
     · simp only [f, g, Sum.elim_inl, Sum.elim_inr, comp_lift, GlobalTheory.ZarhinFam.RelAlg.mkZ_pa,
         GlobalTheory.ZarhinFam.RelAlg.mkZ_pb]
       exact q (a (Fin.castAdd 4 i)) (a (Fin.natAdd 4 j)) (b (Fin.castAdd 4 i)) (b (Fin.natAdd 4 j))
     · simp only [f, g, Sum.elim_inr, comp_lift, ← Category.assoc (GlobalTheory.ZarhinFam.mkZ _ _ _ _),
-        GlobalTheory.ZarhinFam.RelAlg.mkZ_pa, GlobalTheory.ZarhinFam.RelAlg.mkZ_pb, Category.assoc, hmu]
+        GlobalTheory.ZarhinFam.RelAlg.mkZ_pb, Category.assoc, hmu]
       exact q (d • a (Fin.natAdd 4 j)) (a (Fin.natAdd 4 j)) (d • b (Fin.natAdd 4 j)) (b (Fin.natAdd 4 j))
   have hp := GlobalTheory.SiegelPower.pow_eq_prod hG hZab hL hQ f hf ε 1 e₁ he hd
   have key : ∑ i, g i * ε i = 2 * GlobalTheory.ZarhinFam.formZ d h a b := by

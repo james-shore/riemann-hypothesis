@@ -45,8 +45,8 @@ theorem cB_mul (hem : ∀ j, em j ≠ i₀) (u v : Fin k → R) (z : R) : cB i�
     Finset.sum_neg_distrib]
   rw [← Matrix.fromBlocks_one, Matrix.fromBlocks_inj]
   refine ⟨?_, ?_, ?_, ?_⟩ <;>
-    simp only [mul_add, add_mul, mul_sub, sub_mul, mul_neg, neg_mul, one_mul, mul_one, mul_zero, zero_mul,
-      hPP, hQQ, hPZ, hZQ, neg_zero, add_zero, zero_add, sub_zero, neg_neg] <;>
+    simp only [mul_add, add_mul, mul_sub, sub_mul, mul_neg, one_mul, mul_one, mul_zero, zero_mul,
+      hPP, hQQ, hPZ, hZQ, neg_zero, add_zero, zero_add, sub_zero] <;>
     abel
 
 theorem cB_unitary (hem : ∀ j, em j ≠ i₀) (f : R →+* R) (hf : ∀ a, f (f a) = a) (e : R) (he : e * e = 1)
@@ -86,13 +86,13 @@ theorem cB_unitary (hem : ∀ j, em j ≠ i₀) (f : R →+* R) (hf : ∀ a, f (
   rw [Matrix.fromBlocks_inj]
   refine ⟨?_, ?_, ?_, ?_⟩
   · simp only [mul_zero, zero_mul, add_zero]
-  · simp only [mul_zero, zero_mul, add_zero, zero_add, mul_one, mul_sub, add_mul, one_mul, hQQ, sub_zero]
+  · simp only [mul_zero, zero_mul, add_zero, zero_add, mul_one, mul_sub, add_mul, one_mul, hQQ]
     abel
-  · simp only [mul_zero, zero_mul, add_zero, zero_add, Matrix.mul_smul, Matrix.smul_mul, mul_one]
+  · simp only [mul_zero, add_zero, zero_add, Matrix.mul_smul, Matrix.smul_mul, mul_one]
     congr 1
-    simp only [mul_add, sub_mul, one_mul, mul_one, hPP, add_zero]
+    simp only [mul_add, sub_mul, one_mul, mul_one, hPP]
     abel
-  · simp only [mul_zero, zero_mul, add_zero, zero_add, Matrix.mul_smul, Matrix.smul_mul, mul_one,
+  · simp only [mul_zero, add_zero, zero_add, Matrix.mul_smul, Matrix.smul_mul, mul_one,
       mul_sub, sub_mul, one_mul, hPZ, hZQ, sub_zero, Matrix.smul_single, smul_eq_mul, smul_zero]
     rw [← Matrix.single_add, show e * -(e * z) + z = 0 by linear_combination (-z) * he, Matrix.single_zero]
 

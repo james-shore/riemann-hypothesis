@@ -43,7 +43,7 @@ theorem continuous_psi_symp_atPlace : ∀ {F E : Type} [Field F] [NumberField F]
   have hsm2 : ∀ (r : AF F) x y, B x (r • y) = r * B x y := by
     intro r x y
     simp only [hB, GlobalTheory.WeilM.symp, GlobalTheory.WeilM.hTens, Matrix.smul_apply, map_smul, mul_smul_comm, ← Finset.smul_sum,
-      LinearMap.map_smul, smul_eq_mul]
+      smul_eq_mul]
   let Bl : Matrix (Fin n) (Fin d) (GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.AE F E) →ₗ[AF F] Matrix (Fin n) (Fin d) (GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.AE F E) →ₗ[AF F] AF F :=
     LinearMap.mk₂ (AF F) B hadd1 (fun r x y => by rw [hsm1, smul_eq_mul]) hadd2 (fun r x y => by rw [hsm2, smul_eq_mul])
   have hexp : ∀ a : M → v.adicCompletionIntegers F,

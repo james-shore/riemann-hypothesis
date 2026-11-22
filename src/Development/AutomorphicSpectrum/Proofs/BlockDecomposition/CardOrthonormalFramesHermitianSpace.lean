@@ -55,7 +55,7 @@ theorem card_orthonormal_tuples : ∀ (E : Type) [CommRing E] (τ : E →+* E) (
       rw [Nat.card_eq_one_iff_unique]
       refine ⟨⟨fun a b => Subtype.ext (funext fun i => i.elim0)⟩,
         ⟨⟨fun i => i.elim0, fun i => i.elim0⟩⟩⟩
-    simp [h1]
+    simp
   | succ n ih =>
     intro m hnm V _ _ B hc
     obtain ⟨m', rfl⟩ : ∃ m', m = m' + 1 := ⟨m - 1, by omega⟩

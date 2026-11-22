@@ -56,6 +56,6 @@ theorem etale_excision_sheaf_level_of_excision : LateralTheory.CohomologicalPuri
 theorem etale_excision_isomorphism_of_excision : LateralTheory.CohomologicalPurity.LeafExc := by
   apply LateralTheory.CohomologicalPurity.LeafExc_of <;> first | exact etale_excision_formal_reduction_of_excision | exact etale_excision_sheaf_level_of_excision
 theorem etale_excision_inductive_of_reduction : LateralTheory.CohomologicalPurity.LeafIndExc := by
-  apply LateralTheory.Fix.LeafIndExc.intersectionNumber_baseChange <;> first | exact etale_boundary_map_of_thom_isomorphism | exact etale_excision_isomorphism_of_excision
+  apply LateralTheory.Fix.LeafIndExc.intersectionNumber_baseChange
 theorem intersectionNumber_baseChange : LateralTheory.CohomologicalPurity.LeafIndExc := etale_excision_inductive_of_reduction
 end LateralTheory.Fin.LeafIndExc

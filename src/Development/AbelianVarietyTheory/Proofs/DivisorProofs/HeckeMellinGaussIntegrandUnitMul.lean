@@ -46,7 +46,7 @@ theorem sum_ulog {K : Type} [Field K] [NumberField K] [IsTotallyComplex K] {I : 
       have hi := hk i (Or.inl rfl)
       rcases InfinitePlace.mk_eq_iff.1 hij with h | h
       · rw [hi, hk j (Or.inl h)]
-      · rw [hi, hk j (Or.inr (by rw [← h]; ext x; simp [ComplexEmbedding.conjugate_coe_eq]))]
+      · rw [hi, hk j (Or.inr (by rw [← h]; ext x; simp))]
     · intro w
       obtain ⟨k, hk, _⟩ := hφ w.embedding
       refine ⟨k, ?_⟩

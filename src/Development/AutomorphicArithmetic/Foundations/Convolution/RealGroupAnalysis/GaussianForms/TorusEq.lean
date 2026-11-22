@@ -21,7 +21,7 @@ private lemma nL_eq {F : Type} [Field F] [NumberField F] (c : A F) :
   rw [eq_mul_inv_iff_mul_eq]
   apply eqm
   show !![1, 0; c, 1] * !![0, 1; -1, 0] = !![0, 1; -1, 0] * !![1, -c; 0, 1]
-  simp [Matrix.mul_fin_two]
+  simp
 
 private lemma torus_eq {F : Type} [Field F] [NumberField F] (u : (A F)ˣ) (x y : A F)
     (h : ((u⁻¹ : (A F)ˣ) : A F) = 1 + x * y) :

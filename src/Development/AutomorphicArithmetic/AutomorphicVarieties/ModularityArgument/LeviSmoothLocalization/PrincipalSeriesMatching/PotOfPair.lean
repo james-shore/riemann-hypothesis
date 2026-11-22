@@ -75,7 +75,7 @@ private theorem flag_rev (r : Γ →* GL (Fin n) k) {H H' : Subgroup Γ} (f : �
   refine ⟨fun i j hij => ?_, fun i => ?_⟩
   · rw [e', (hh ((f u)⁻¹)).1 _ _ (Fin.rev_lt_rev.2 hij), mul_zero]
   · rw [e', (hh ((f u)⁻¹)).2]
-    simp [div_eq_mul_inv]
+    simp
 
 end Mat
 

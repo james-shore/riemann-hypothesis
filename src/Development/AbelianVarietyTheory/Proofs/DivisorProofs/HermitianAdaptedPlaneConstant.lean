@@ -130,7 +130,7 @@ theorem sb_decomp : ∀ (F : Type) [Field F] [NumberField F] (κ : Type) [Fintyp
   have key : ∀ y, g y = ∑ q ∈ Tq, g q.out *
       Set.indicator {y : κ → FiniteAdeleRing (𝓞 F) F | ∀ i v, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.evalV F v (y i - q.out i) ∈ N v} 1 y := by
     intro y
-    simp only [hind, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq']
+    simp only [hind, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq]
     split_ifs with h
     · have h2 : -y + (y : _ ⧸ U).out ∈ U := QuotientAddGroup.eq.mp (QuotientAddGroup.out_eq' _).symm
       have := hinv _ h2 y

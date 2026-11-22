@@ -13,7 +13,7 @@ private theorem unit_of_surj {A C : Type} [CommRing A] [CommRing C] [Algebra A C
       rw [LinearMap.liftBaseChange_tmul]
       have e : t a = a • t 1 := by rw [← map_smul, smul_eq_mul, mul_one]
       rw [e]
-      simp only [Algebra.algebraMap_self, RingHom.id_apply, Algebra.smul_def, smul_eq_mul]
+      simp only [Algebra.algebraMap_self, RingHom.id_apply, Algebra.smul_def]
       ring
     | add x y hx hy =>
       obtain ⟨c1, h1⟩ := hx

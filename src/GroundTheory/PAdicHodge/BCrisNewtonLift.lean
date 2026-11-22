@@ -124,7 +124,7 @@ theorem coeff_incl (x : AInf K p) (n : ℕ) :
   rw [map_pow, map_natCast, map_sub, map_sum] at h2
   rw [Ideal.mem_span_singleton, teichLift_π]
   convert h2 using 2
-  rw [TeichLift.finSum, show Finset.range (n + 1) = Finset.Iic n by ext; simp [Nat.lt_succ_iff]]
+  rw [TeichLift.finSum, show Finset.range (n + 1) = Finset.Iic n by ext; simp]
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [map_mul, map_pow, map_natCast, incl_teichmuller, teich_eq, teichLift_π, mul_comm]
 

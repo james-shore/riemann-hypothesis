@@ -49,8 +49,6 @@ theorem Q_iff {n' n c : ℕ} (xj : (Fin n' → k) →ₗ[k] (Fin n → k)) (x : 
       split_ifs with hl
       · first
           | rfl
-          | (rw [LinearMap.toMatrix'_apply])
-          | (rw [LinearMap.toMatrix'_apply]; congr 1; funext j'; simp [Pi.single_apply, Fin.ext_iff])
       · rfl
     · rw [dif_neg hs]
       obtain ⟨j, hj⟩ : ∃ j, s.1 = n' + j := ⟨s.1 - n', by omega⟩
@@ -90,8 +88,6 @@ theorem Q_iff {n' n c : ℕ} (xj : (Fin n' → k) →ₗ[k] (Fin n → k)) (x : 
         split_ifs with hl
         · first
             | rfl
-            | (rw [LinearMap.toMatrix'_apply])
-            | (rw [LinearMap.toMatrix'_apply]; congr 1; funext j'; simp [Pi.single_apply, Fin.ext_iff])
         · rfl
       exact LinearMap.congr_fun e v
     · intro hc

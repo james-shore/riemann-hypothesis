@@ -329,10 +329,6 @@ theorem exists_fin {ψ : AddChar (AF F) ℂ} (hψ : IsCharAF F ψ) (v : HeightOn
   have h1 : (1 : FractionalIdeal (𝓞 F)⁰ F) ≠ 0 := by
     first
       | exact one_ne_zero
-      | exact FractionalIdeal.one_ne_zero
-      | simp
-      | (rw [← FractionalIdeal.coeIdeal_top]; exact FractionalIdeal.coeIdeal_ne_zero.2 top_ne_bot)
-      | (rw [← Ideal.one_eq_top, FractionalIdeal.coeIdeal_one]; simp)
   have hD : ∀ k : ℕ, a * N / (t : F) ^ k ∈ D := fun k => by
     rw [FractionalIdeal.mem_dual h1]
     intro x hx

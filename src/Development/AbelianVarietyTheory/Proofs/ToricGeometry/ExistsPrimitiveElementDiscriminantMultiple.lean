@@ -37,8 +37,6 @@ theorem exists_common_denominator {R A : Type*} [CommRing R] [IsDomain R] [CommR
   | exact @_root_.GlobalTheory.CommonDenominatorForFinset.exists_common_denominator
   | exact _root_.GlobalTheory.CommonDenominatorForFinset.exists_common_denominator
   | (apply _root_.GlobalTheory.CommonDenominatorForFinset.exists_common_denominator <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CommonDenominatorForFinset.exists_common_denominator <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CommonDenominatorForFinset.exists_common_denominator <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CommonDenominatorForFinset.exists_common_denominator ..)
 
 theorem exists_primitive_element_discriminant_multiple (R A K L : Type*) [CommRing R] [IsDomain R] [IsIntegrallyClosed R]

@@ -61,7 +61,7 @@ theorem extY_jY_mem {S S₀ T : HSp D} {ρ : ℕ} (d : HypDec S S₀ ρ) {LS : L
       simp only [GlobalTheory.FinPl.colMul, Matrix.mulVec, dotProduct, Finset.sum_apply, Pi.smul_apply, smul_eq_mul,
         Finset.mul_sum]
       refine Finset.sum_congr rfl fun i _ => ?_
-      simp only [Finset.sum_mul, Finset.mul_sum]
+      simp only [Finset.sum_mul]
       exact Finset.sum_congr rfl fun x _ => by ring
     rw [e1]
     exact sum_mem fun i _ => hs.2.1 i

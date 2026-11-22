@@ -107,7 +107,7 @@ theorem not_X_dvd_X {σ k : Type} [Field k] {a b : σ} (hab : a ≠ b) :
     ¬ (MvPowerSeries.X a : MvPowerSeries σ k) ∣ MvPowerSeries.X b := by
   classical
   intro h
-  have := MvPowerSeries.X_dvd_iff.1 h (Finsupp.single b 1) (by simp [Finsupp.single_apply, hab])
+  have := MvPowerSeries.X_dvd_iff.1 h (Finsupp.single b 1) (by simp [hab])
   simp [MvPowerSeries.coeff_X] at this
 
 variable (k : Type) [Field k] (m e : ℕ)
@@ -125,10 +125,10 @@ theorem prime_mvX {σ k : Type} [CommRing k] [IsDomain k] (s : σ) : Prime (MvPo
         refine Finset.prod_eq_one fun i hi => ?_
         have : i ≠ s := fun h => (Finsupp.mem_support_iff.1 hi) (h ▸ hn)
         simp [this]
-      simp [hn, this]
+      simp [hn]
     · have : (n.prod fun i m => (if i = s then (0 : k) else 1) ^ m) = 0 :=
         Finset.prod_eq_zero (Finsupp.mem_support_iff.2 hn) (by simp [hn])
-      simp [hn, this]
+      simp [hn]
   refine ⟨?_, ?_, fun a b h => ?_⟩
   · intro h
     have := congrArg (MvPowerSeries.coeff (Finsupp.single s 1)) h

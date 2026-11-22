@@ -52,7 +52,7 @@ theorem mvPowerSeries_three_eq_zero_of_subst_lines :
   have hP : P = 0 := MvPolynomial.funext (fun t => by rw [← hcoef, h t, map_zero, map_zero])
   have hd := congrArg (MvPolynomial.coeff d) hP
   simp only [P, MvPolynomial.coeff_zero, MvPolynomial.coeff_sum, MvPolynomial.coeff_monomial,
-    Finset.sum_ite_eq', Finset.sum_ite_eq, if_pos ((hS d).2 rfl)] at hd
+    Finset.sum_ite_eq', if_pos ((hS d).2 rfl)] at hd
   simpa using hd
 
 end GlobalTheory

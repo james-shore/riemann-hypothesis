@@ -43,7 +43,7 @@ theorem exists_basis_lat (K : UQ) {V : Type} [AddCommGroup V] [Module K.E V] [Mo
   refine ⟨e'.reindex (Fintype.equivFinOfCardEq hc), ?_⟩
   rw [Module.Basis.range_reindex]
   have : Set.range e' = L.subtype '' Set.range b := by
-    ext x; simp [e', Set.range_comp]
+    ext x; simp [e']
   rw [this, Submodule.span_image, b.span_eq, Submodule.map_top, Submodule.range_subtype]
 
 theorem exists_smul_mem (K : UQ) {V : Type} [AddCommGroup V] [Module K.E V] [Module K.O V]

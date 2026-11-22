@@ -88,7 +88,6 @@ lemma e_notMem_Xa (F : FlagD H r) (a : Fin r) : F.e a.castSucc ∉ F.Xa a.val :=
   unfold Formalism.HermitianLatticeCounting.S6.FlagD.Xa
   first
   | exact F.indep.notMem_span_image (s := {b : Fin r | b.val < a.val}) (by simp)
-  | exact F.indep.not_mem_span_image (s := {b : Fin r | b.val < a.val}) (by simp)
 
 lemma level_mem (F : FlagD H r) {x : V} {a : Fin r} {al : K} (h : F.HasLevel x a al) :
     x ∈ F.Xa (a.val + 1) := by
@@ -346,7 +345,7 @@ lemma nFStep_of (hY1 : Formalism.HermitianLatticeCounting.S6.Y1) (hPP : Formalis
     obtain ⟨-, -, hL, hc⟩ := hY1 K V H r F x (star t • v) a al hxa hvt
     obtain ⟨-, -, hL', hc'⟩ := hY1 K V H r F' x (star t • v) a' al' hxa' hvt'
     have h1 := hrel _ hL hL' _ _ hc hc'
-    simp only [HermSpace_B_smul_right_eq_star_mul, star_star, star_mul', star_add] at h1
+    simp only [HermSpace_B_smul_right_eq_star_mul, star_star, star_mul'] at h1
     rw [hd_def]
     simp only [star_mul', star_sub]
     linear_combination h1
@@ -643,7 +642,6 @@ lemma B_sum_left (H : HermSpace K V) {n : ℕ} (c : Fin n → K) (u : Fin n → 
     H.B (∑ a, c a • u a) y = ∑ a, c a * H.B (u a) y := by
   first
   | (rw [map_sum, LinearMap.sum_apply]; simp only [HermSpace_B_smul_left])
-  | simp [map_sum, HermSpace_B_smul_left]
 
 lemma gram_solve (H : HermSpace K V) {n : ℕ} (u w : Fin n → V)
     (hM : (Matrix.of fun a b => H.B (u a) (w b)).det ≠ 0) (t : Fin n → K) :
@@ -843,7 +841,7 @@ theorem normalFormMinorNeZero : Formalism.HermitianLatticeCounting.S6.NFCaseB :=
   have hsub : (P.updateRow (Fin.last r) (fun b => H.B (F.z - x) (F'.e b))).submatrix Fin.castSucc Fin.castSucc =
       Matrix.of fun a b : Fin r => H.B (F.e (Fin.castLE (Nat.le_succ r) a)) (F'.e (Fin.castLE (Nat.le_succ r) b)) := by
     ext a b
-    simp [hPdef, Matrix.updateRow_ne (Fin.castSucc_ne_last a)] <;> rfl
+    simp [hPdef] <;> rfl
   have hP : Formalism.HermitianLatticeCounting.S6.Dl F F' (r + 1) le_rfl = P.det := by
     rw [hPdef]
     exact Dl_eq F F' (r + 1) le_rfl
@@ -1460,10 +1458,10 @@ theorem eichlerMapIsometry : Formalism.HermitianLatticeCounting.S6.EichlerIsom :
   · simp only [eich_apply_eq_add_wedge_add_smul, HermSpace_B_add_left, HermSpace_B_sub_left, HermSpace_B_smul_left, HermSpace_B_add_right, HermSpace_B_sub_right, HermSpace_B_smul_right_eq_star_mul,
       H.herm, hxx, hxv, hvx]
     linear_combination (H.B y x * H.B x y') * hc
-  · simp only [eich_apply_eq_add_wedge_add_smul, HermSpace_B_add_left, HermSpace_B_sub_left, HermSpace_B_smul_left, HermSpace_B_neg_left, map_neg, LinearMap.neg_apply, hxx, hxv, hvx]
+  · simp only [eich_apply_eq_add_wedge_add_smul, HermSpace_B_add_left, HermSpace_B_sub_left, HermSpace_B_smul_left, map_neg, hxx, hxv, hvx]
     rw [hcs]
     module
-  · simp only [eich_apply_eq_add_wedge_add_smul, HermSpace_B_add_left, HermSpace_B_sub_left, HermSpace_B_smul_left, HermSpace_B_neg_left, map_neg, LinearMap.neg_apply, hxx, hxv, hvx]
+  · simp only [eich_apply_eq_add_wedge_add_smul, HermSpace_B_add_left, HermSpace_B_sub_left, HermSpace_B_smul_left, map_neg, LinearMap.neg_apply, hxx, hxv, hvx]
     rw [hcs]
     module
 

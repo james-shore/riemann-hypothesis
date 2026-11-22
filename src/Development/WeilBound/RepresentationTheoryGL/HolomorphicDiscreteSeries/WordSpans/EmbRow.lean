@@ -191,7 +191,7 @@ theorem phiEq : PhiEq := by
     have hc := hS.conj _ hgiU (e (Sum.inl c0)) (zi e) ⟨π (emb e (um h)) η, hπη⟩ ⟨η, hη⟩ (hcomp1 η).symm
     rw [hinv] at hc
     simp only [emb_row, mul_ite, mul_one, mul_zero, ite_smul, zero_smul, Finset.sum_ite_eq',
-      Finset.mem_univ, if_true, ite_true] at hc
+      Finset.mem_univ, if_true] at hc
     have hc2 := congrArg (fun y => P (π (emb e (um h)) y)) hc
     simp only [hcomp2, map_sum, map_smul] at hc2
     rw [hc2, ← e.sum_comp, Fintype.sum_sum_type]

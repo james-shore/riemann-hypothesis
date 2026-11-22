@@ -124,9 +124,8 @@ theorem isPullSec_comp {T T' T'' : Over S0} {h : T' ⊗ A ⟶ T ⊗ A} {hh : h �
     IsPullSec A L a (h' ≫ h) (by rw [Category.assoc, hh, hh']) s s'' := by
   intro j
   rw [h2 j, h1 j]
-  simp only [Over.comp_left, Scheme.Hom.comp_app, Scheme.Hom.app_eq_appLE, ← CommRingCat.comp_apply,
-    Category.assoc, Scheme.Hom.appLE_map, Scheme.Hom.map_appLE, Scheme.Hom.appLE_comp_appLE,
-    Scheme.Hom.appLE_map_assoc, Scheme.Hom.appLE_comp_appLE_assoc]
+  simp only [Over.comp_left, Scheme.Hom.app_eq_appLE, ← CommRingCat.comp_apply,
+    Scheme.Hom.appLE_map, Scheme.Hom.appLE_comp_appLE]
 
 end SecComp
 

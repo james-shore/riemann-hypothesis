@@ -133,7 +133,6 @@ theorem arrow_model : Big fun ch => LatP ch → ChrP ch → ArrP ch := by
     · rw [hT' Φ₁ Φ' ?_, ← hω, ← hf, ← Module.End.mul_apply, ← map_mul, Prod.mk_mul_mk]
       intro x
       rw [hΦ']
-      congr 1
       rw [Matrix.reindex_apply, Matrix.submatrix_submatrix, Equiv.self_comp_symm, Equiv.self_comp_symm, Matrix.submatrix_id_id,
         ← Matrix.mul_assoc, ← Matrix.mul_assoc, Units.mul_inv, Matrix.one_mul, Matrix.mul_assoc, Units.mul_inv, Matrix.mul_one]
 

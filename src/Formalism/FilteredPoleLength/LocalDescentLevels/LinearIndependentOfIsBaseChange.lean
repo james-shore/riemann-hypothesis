@@ -23,7 +23,6 @@ theorem linearIndependent_of_isBaseChange_alt {K K' V V₁ ι : Type} [Field K] 
     funext i
     first
     | simp [B, g, IsBaseChange.basis_apply, Basis.coe_extend]
-    | simp [B, g, Basis.coe_extend]
   rw [hB']
   exact (hj.basis B).linearIndependent.comp g hg
 
@@ -40,7 +39,6 @@ theorem span_image_span_alt {K K' V V₁ : Type} [Field K] [Field K'] [Algebra K
     exact Submodule.span_le_restrictScalars K K' _ h1
   · first
     | exact Submodule.span_mono (Set.image_mono Submodule.subset_span)
-    | exact Submodule.span_mono (Set.image_subset _ Submodule.subset_span)
 
 theorem finrank_span_image_alt : FinrankSpanImage := by
   intro O O' K K' V V₁ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ j hj V'
@@ -102,6 +100,5 @@ theorem isLattice_span_image_alt : IsLatticeSpanImage := by
     refine ⟨Module.finBasis K V i, Submodule.mem_top, ?_⟩
     first
     | simp [IsBaseChange.basis_apply]
-    | simp
 
 end Formalism.LatticeBaseChangeAlt

@@ -69,7 +69,7 @@ theorem upVal_of_span_adj : ∀ D : D7, SoftQ D → UpSpanQ D → UpAdjQ D → U
           rw [h] at this
           simp at this
         subst hx0
-        first | rfl | simp [PiLocalization₂.val]
+        first | rfl
       · have hw0 : w₀ = 0 := by
           by_contra hne
           have := hM'.posD w₀ hne

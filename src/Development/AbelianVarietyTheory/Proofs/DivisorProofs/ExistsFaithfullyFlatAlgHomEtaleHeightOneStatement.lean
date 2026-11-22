@@ -12,4 +12,4 @@ theorem _root_.GlobalTheory.T.exists_faithfullyFlat_algHom_etale_height_one : �
     Algebra.IsIntegral R C → GlobalTheory.GoodEtale.EtaleLow A R C →
     (∃ s : C →+* FractionRing A, s.comp (algebraMap R C) = (algebraMap A (FractionRing A)).comp ρ) →
     ∃ (O : Type) (_ : CommRing O) (_ : Algebra R O), Module.FaithfullyFlat R O ∧ Nonempty (C →ₐ[R] O) := by
-  first | (exact @GlobalTheory.GoodEtaleSection.exists_faithfullyFlat_algHom) | (exact GlobalTheory.GoodEtaleSection.exists_faithfullyFlat_algHom) | (intros; apply GlobalTheory.GoodEtaleSection.exists_faithfullyFlat_algHom <;> assumption)
+  first | (exact @GlobalTheory.GoodEtaleSection.exists_faithfullyFlat_algHom)

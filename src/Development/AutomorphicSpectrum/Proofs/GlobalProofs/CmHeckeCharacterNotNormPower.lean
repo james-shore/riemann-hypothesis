@@ -162,7 +162,7 @@ theorem comp_eq {E : Type} [Field E] [NumberField E] {I : Type} [Fintype I] {φ 
   · simp [c]
   · intro j _ hj
     have hw : InfinitePlace.mk (φ j) ≠ InfinitePlace.mk (φ i) := fun h => hj (hb.1 h)
-    simp only [Units.coe_map, MonoidHom.coe_mulSingle, MonoidHom.mulSingle_apply]
+    simp only [Units.coe_map, MonoidHom.mulSingle_apply]
     rw [Pi.mulSingle_eq_of_ne hw]
     simp
   · intro h

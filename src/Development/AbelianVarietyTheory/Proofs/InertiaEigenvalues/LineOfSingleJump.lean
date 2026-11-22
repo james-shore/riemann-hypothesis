@@ -21,7 +21,7 @@ variable {Qp BdR LL A : Type} [Field Qp] [CommRing BdR] [Algebra Qp BdR] [Field 
 def mulR : BdR →ₐ[Qp] Module.End LL (V ⊗[Qp] BdR) where
   toFun b := AlgebraTensorModule.map LinearMap.id (LinearMap.mulLeft Qp b)
   map_one' := by ext; simp
-  map_mul' a b := by ext; simp [mul_assoc]
+  map_mul' a b := by ext; simp
   map_zero' := by ext; simp
   map_add' a b := by ext; simp [add_mul, tmul_add]
   commutes' c := by ext; simp [Algebra.smul_def, ← tmul_smul]

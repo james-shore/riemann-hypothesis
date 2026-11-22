@@ -38,7 +38,7 @@ theorem semiBC_piMap {A B : Type} [CommRing A] [CommRing B] (f : A →+* B) (J :
 def piFrob {A : Type} [CommRing A] (φ : A →+* A) (d : A) (J : Type) :
     (J → A) →ₛₗ[(algebraMap A (Localization.Away d)).comp φ] LocalizedModule (Submonoid.powers d) (J → A) where
   toFun x := LocalizedModule.mk (piMap φ J x) 1
-  map_add' x y := by simp [LocalizedModule.mk_add_mk]
+  map_add' x y := by simp
   map_smul' c x := by
     rw [RingHom.comp_apply, algebraMap_smul, LocalizedModule.smul'_mk, LinearMap.map_smulₛₗ]
 

@@ -251,8 +251,8 @@ theorem nondeg_BR [Algebra.IsSeparable F E] (σ : E →ₐ[F] E) (hσ : ∀ x, �
     intro w
     have := h (Pi.single p (Pi.single i (sigR (Fv F v) σ w)))
     simp only [BR, hR, Formalism.UG.hform] at this
-    rw [Finset.sum_eq_single p (fun p' _ hp' => by simp [Pi.single_apply, hp']) (by simp)] at this
-    rw [Finset.sum_eq_single i (fun i' _ hi' => by simp [Pi.single_apply, hi']) (by simp)] at this
+    rw [Finset.sum_eq_single p (fun p' _ hp' => by simp [hp']) (by simp)] at this
+    rw [Finset.sum_eq_single i (fun i' _ hi' => by simp [hi']) (by simp)] at this
     simp only [Pi.single_eq_same, sigR_invol (Fv F v) σ hσ] at this
     simpa [Matrix.mulVec, dotProduct, Finset.mul_sum, mul_assoc] using this
   have hdet : IsUnit ((1 : Matrix (Fin M) (Fin M) (Fv F v ⊗[F] E)) * JR (Fv F v) J).det := by
@@ -406,7 +406,7 @@ theorem pairHerm_iota (σ : E →ₐ[F] E) (hσ : ∀ x, σ (σ x) = x) {a : ℕ
   have hBR : BR (Fv F v) σ (1 : Matrix (Fin a) (Fin a) E) X (fun p i => Tm i p) =
       Algebra.trace (Fv F v) (Fv F v ⊗[F] E) (∑ p, ∑ q, sigR (Fv F v) σ (X p q) * Tm q p) := by
     simp only [BR, hR, Formalism.UG.hform, JR, Matrix.map_apply, Matrix.one_apply, apply_ite,
-      map_one, map_zero, mul_ite, mul_one, mul_zero, ite_mul, zero_mul, Finset.sum_ite_eq,
+      map_one, map_zero, mul_one, mul_zero, ite_mul, zero_mul, Finset.sum_ite_eq,
       Finset.mem_univ, if_true, map_sum]
   rw [hBR]
   simp only [pairHerm, iota, add_mul, Finset.sum_add_distrib, map_add]

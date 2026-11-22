@@ -164,7 +164,6 @@ theorem withFirst_vram {D : D7} (c : LatCmp D) (Tw : TwForms D) (Y : LatInst D)
   intro u w hg
   first
     | rfl
-    | simp [withFirst, vramC]
 
 def kerAll {D : D7} (hT : GatTies D) (c : LatCmp D) (Tw : TwForms D) (Y : LatInst D)
     (K : ∀ u w (h : GIdx D.host (D.mem u).A.T (D.what₂.places.resChar w)),

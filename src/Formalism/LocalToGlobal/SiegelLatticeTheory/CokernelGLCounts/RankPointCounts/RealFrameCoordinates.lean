@@ -28,7 +28,7 @@ private theorem frS_eq_inv_rdE (D : D7) : frS D = ((D.host.rdE : ℝ) : ℂ)⁻�
   have hpi := Real.pi_ne_zero
   have h : D.host.ka / (2 * Real.pi) = D.host.rdE⁻¹ := by
     simp only [Formalism.BasicNotions.Host.ka, Formalism.BasicNotions.Host.v]
-    field_simp <;> ring
+    field_simp
   simp only [frS, h, Complex.ofReal_inv]
 
 private theorem rhoF_eq_frS_pow (D : D7) (a : Fin (D.R.rS + 1)) :
@@ -48,7 +48,7 @@ private theorem Q_mulVec_fvec_eq_smul_frm (τ : D.what₂.Tau) (a : Fin (D.R.rS 
   | last =>
     simp only [Formalism.QuantumDeterminants.fvec, Fin.val_last, lt_self_iff_false, dite_false, zB, Matrix.mulVec_mulVec, h2,
       Matrix.one_mulVec, rhoF_eq_frS_pow, Nat.sub_self, pow_zero, one_smul, Formalism.L2.SG.RealObj.frm,
-      Formalism.L2.SG.RealObj.famSc, Formalism.L2.SG.RealObj.fam, Fin.snoc_last, Complex.ofReal_one, one_pow, inv_one]
+      Formalism.L2.SG.RealObj.famSc, Formalism.L2.SG.RealObj.fam, Fin.snoc_last, Complex.ofReal_one, inv_one]
   | cast i =>
     obtain ⟨hq, -⟩ := h4 i i rfl
     simp only [Formalism.QuantumDeterminants.fvec, Fin.coe_castSucc, i.isLt, dite_true, Fin.eta, Formalism.QuantumDeterminants.bvec, hq, rhoF_eq_frS_pow,
@@ -168,8 +168,8 @@ private theorem mulVec_apply_eq_herm_single {m : ℕ} (H : Matrix (Fin m) (Fin m
     (H *ᵥ x) i = Formalism.QuantumDeterminants.herm H x (Pi.single i 1) := by
   have hs : star (Pi.single i 1 : Fin m → ℂ) = Pi.single i 1 := by
     ext j
-    by_cases h : j = i <;> simp [Pi.single_apply, h]
-  simp [Formalism.QuantumDeterminants.herm, hs, dotProduct, Pi.single_apply]
+    by_cases h : j = i <;> simp [h]
+  simp [Formalism.QuantumDeterminants.herm, dotProduct, Pi.single_apply]
 
 private theorem Q_mulVec_cMg_mulVec_eq (γ : X.B.I.Ginf) (τ : D.what₂.Tau) (y : Formalism.REAL.UJ (X.B.I.ε (vOf X τ)))
     (f : Fin (2 * D.R.rS + D.R.k + 1) → ℂ) :

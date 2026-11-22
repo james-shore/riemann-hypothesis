@@ -36,7 +36,7 @@ private theorem phiA_letE_sub_one_eq_letE (W : LocWach PD LL O v n) (i : ZMod n)
   · subst h
     simp [letE]
   · have h' : j - 1 ≠ i - 1 := fun e => h (sub_left_inj.mp e)
-    simp [letE, Pi.single_apply, h, h']
+    simp [letE, h, h']
 
 theorem frobenius_idempotent_shift (W : LocWach PD LL O v n) (T : LocLat G Qp LL O) (i : ZMod n) (x : W.DD T) :
     W.φD T ((letE (i - 1) : LetA O n) • x) = (letE i : LetA O n) • W.φD T x := by
@@ -49,7 +49,7 @@ private theorem letGamma_letE_eq_letE (W : LocWach PD LL O v n) (g : W.Gam) (i :
   by_cases h : j = i
   · subst h
     simp [letE]
-  · simp [letE, Pi.single_apply, h]
+  · simp [letE, h]
 
 theorem gammaD_idempotent_smul (W : LocWach PD LL O v n) (T : LocLat G Qp LL O) (g : W.Gam) (i : ZMod n)
     (x : W.DD T) : W.γD T g ((letE i : LetA O n) • x) = (letE i : LetA O n) • W.γD T g x := by

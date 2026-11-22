@@ -50,11 +50,11 @@ theorem toA_smul {G : PDivGroup p O} {h : ℕ} (e : G.Tate ≃ₗ[ℤ_[p]] (Fin 
 
 theorem toA_single {G : PDivGroup p O} {h : ℕ} (e : G.Tate ≃ₗ[ℤ_[p]] (Fin h → ℤ_[p]))
     (i : Fin h) : toA e (e.symm (Pi.single i 1)) = Pi.single i 1 := by
-  ext j; by_cases hij : j = i <;> simp [toA, Pi.single_apply, hij]
+  ext j; by_cases hij : j = i <;> simp [toA, hij]
 
 theorem toO_single {G : PDivGroup p O} {h : ℕ} (e : G.Tate ≃ₗ[ℤ_[p]] (Fin h → ℤ_[p]))
     (i : Fin h) : toO e (e.symm (Pi.single i 1)) = Pi.single i 1 := by
-  ext j; by_cases hij : j = i <;> simp [toO, Pi.single_apply, hij]
+  ext j; by_cases hij : j = i <;> simp [toO, hij]
 
 def rowMap {G : PDivGroup p O} {h : ℕ} (F : Matrix (Fin h) (Fin h) (Ainf p O))
     (e : G.Tate ≃ₗ[ℤ_[p]] (Fin h → ℤ_[p])) : (Fin h → Ainf p O) →ₗ[Ainf p O] TDual G where

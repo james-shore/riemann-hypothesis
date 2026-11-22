@@ -79,8 +79,7 @@ theorem zComb_lattice {m g : ℕ} (lam : Fin m → Fin g → ℂ) (hli : LinearI
   · let bas := Module.Basis.mk hli hsp.ge
     have hr : (zComb lam).range = (Submodule.span ℤ (Set.range bas)).toAddSubgroup := by
       ext x
-      simp only [bas, AddMonoidHom.mem_range, Submodule.mem_toAddSubgroup, Module.Basis.coe_mk, Module.Basis.mk_apply,
-        Submodule.mem_span_range_iff_exists_fun, zComb_apply]
+      simp only [bas, AddMonoidHom.mem_range, Submodule.mem_toAddSubgroup, Module.Basis.coe_mk, Submodule.mem_span_range_iff_exists_fun, zComb_apply]
     rw [hr]
     exact (inferInstance : DiscreteTopology (Submodule.span ℤ (Set.range bas)))
   · refine eq_top_iff.2 (hsp.ge.trans (Submodule.span_mono ?_))

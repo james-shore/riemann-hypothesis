@@ -59,7 +59,7 @@ theorem piInf_liftC [IsTotallyReal F] (τ : ∀ w : InfinitePlace F, EmbOver E w
     (c : InfinitePlace F → ℂ) (w : InfinitePlace F) : piInf (τ w) (liftC τ ξ c) = c w := by
   rw [liftC, map_add, piInf_tmul, piInf_tmul, evInf_liftR, evInf_liftR, map_one, mul_one]
   have := hξ w
-  apply Complex.ext <;> simp <;> field_simp <;> ring
+  apply Complex.ext <;> simp <;> field_simp
 
 theorem continuous_liftC [IsTotallyReal F] (τ : ∀ w : InfinitePlace F, EmbOver E w) (ξ : E) :
     Continuous (liftC τ ξ) := by

@@ -35,7 +35,7 @@ theorem fval_off (l : Lv4 𝒮 K w Z) (L : SizeData₂ (w.D Z)) (hL : L.sc = K.s
     by_contra h
     exact hv' _ h
   unfold F0K at key
-  simp only [Equiv.symm_apply_apply] at key
+  simp only at key
   have e : j - 1 + 1 = j := by omega
   rw [e] at key
   exact key

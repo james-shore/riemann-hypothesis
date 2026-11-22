@@ -81,7 +81,7 @@ theorem lineRatio_ne_zero (hd : d.AxH 𝒜) (c : ι) : d.rationalBaseRow c ≠ 0
   have hinj := IsFractionRing.injective (MvPolynomial (SVar d.D d.N) (Ω c)) (OmS (Ω c) d.D d.N)
   rw [← map_zero (algebraMap (MvPolynomial (SVar d.D d.N) (Ω c)) (OmS (Ω c) d.D d.N))] at h0
   have h1 := congrArg (MvPolynomial.coeff (Finsupp.single (Sum.inl ()) 1)) (hinj h0)
-  simp [MvPolynomial.coeff_X', MvPolynomial.coeff_sum, MvPolynomial.coeff_X_mul', Finsupp.single_eq_single_iff] at h1
+  simp [MvPolynomial.coeff_X', MvPolynomial.coeff_sum, MvPolynomial.coeff_X_mul'] at h1
 
 end Data
 

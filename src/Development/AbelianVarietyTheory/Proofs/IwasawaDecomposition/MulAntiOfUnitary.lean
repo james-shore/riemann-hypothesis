@@ -152,8 +152,6 @@ theorem map_aeval {M N : Type} [AddCommGroup M] [Module ℂ M] [AddCommGroup N] 
   | exact @_root_.GlobalTheory.IntertwineAeval.intertwine_aeval
   | exact _root_.GlobalTheory.IntertwineAeval.intertwine_aeval
   | (apply _root_.GlobalTheory.IntertwineAeval.intertwine_aeval <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntertwineAeval.intertwine_aeval <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntertwineAeval.intertwine_aeval <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntertwineAeval.intertwine_aeval ..)
 
 theorem s_mul_exp (H : IsLieData σ j s) (k : uGrp H) (Y : L) :

@@ -21,18 +21,13 @@ theorem hermitian_algebra_generation : HermAlgFrom := by
     have hQP : star P * P = 1 := by
       first
         | exact Matrix.mem_unitaryGroup_iff'.mp hH.eigenvectorUnitary.2
-        | exact unitary.star_mul_self_of_mem hH.eigenvectorUnitary.2
-        | exact Unitary.star_mul_self_of_mem hH.eigenvectorUnitary.2
     have hPQ : P * star P = 1 := by
       first
         | exact Matrix.mem_unitaryGroup_iff.mp hH.eigenvectorUnitary.2
-        | exact unitary.mul_star_self_of_mem hH.eigenvectorUnitary.2
-        | exact Unitary.mul_star_self_of_mem hH.eigenvectorUnitary.2
     set d : Fin m → ℂ := fun b => ((hH.eigenvalues b : ℝ) : ℂ) with hd
     have hspec : Hm = P * Matrix.diagonal d * star P := by
       first
         | exact hH.spectral_theorem
-        | exact Matrix.IsHermitian.spectral_theorem hH
     have hHP : Hm * P = P * Matrix.diagonal d := by
       rw [hspec]
       simp only [Matrix.mul_assoc, hQP, Matrix.mul_one]

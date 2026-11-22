@@ -87,21 +87,21 @@ private theorem filt_std {n : ℕ} (ρ : Representation E Γ (Fin n → E)) (S :
       refine Submodule.add_mem_sup (fun j hj => ?_) (Submodule.smul_mem _ _ (Submodule.mem_span_singleton_self _))
       rcases hj.lt_or_eq with h | h
       · have hne : j ≠ ⟨i, hi⟩ := fun e => by rw [e] at h; exact lt_irrefl _ h
-        simp [hx j h, Pi.single_apply, hne]
+        simp [hx j h, hne]
       · have e2 : j = ⟨i, hi⟩ := Fin.ext h.symm
         subst e2
         simp
     · rw [Submodule.span_singleton_le_iff_mem]
       intro j hj
       have hne : j ≠ ⟨i, hi⟩ := fun e => by rw [e] at hj; exact absurd hj (by simp)
-      simp [Pi.single_apply, hne]
+      simp [hne]
   · have h0 : ∀ j : Fin n, (⟨i, hi⟩ : Fin n) < j → (Pi.single ⟨i, hi⟩ (1 : E) : Fin n → E) j = 0 := fun j hj =>
       Pi.single_eq_of_ne hj.ne' _
     obtain ⟨a, b⟩ := hρ g ⟨i, hi⟩ _ h0
     intro j hj
     rcases hj.lt_or_eq with h | h
     · have hij : (⟨i, hi⟩ : Fin n) < j := h
-      simp [a j hij, h0 j hij, Units.smul_def]
+      simp [a j hij, h0 j hij]
     · have e2 : j = ⟨i, hi⟩ := Fin.ext h.symm
       subst e2
       simp [b]

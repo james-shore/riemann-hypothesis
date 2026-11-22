@@ -55,7 +55,7 @@ theorem exists_coords (h : IsCMExt F E σ) (w : E) (t n : 𝓞 F) (ht : w + σ w
   refine ⟨a, b, ?_⟩
   have hd : algebraMap F E ((t ^ 2 - 4 * n : 𝓞 F) : F) = (algebraMap F E t) ^ 2 - 4 * algebraMap F E n := by
     push_cast
-    simp [map_sub, map_pow, map_mul, map_ofNat]
+    simp [map_ofNat]
   rw [hd, ha', hb', ← ht, ← hn]
   ring
 

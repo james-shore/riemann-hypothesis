@@ -56,7 +56,7 @@ theorem card_torsion (hn : 0 < n) (add : ∀ a b, ev (a + b) = ev a * ev b) (ker
         Subtype.ext ?_⟩
       have e : a = (fun i => (((a i % n).toNat : ℕ) : ℤ)) + n • fun i => a i / n := by
         funext i
-        simp only [Pi.add_apply, Pi.smul_apply, nsmul_eq_mul, Int.toNat_of_nonneg (h₀ i)]
+        simp only [Pi.add_apply, nsmul_eq_mul, Int.toNat_of_nonneg (h₀ i)]
         exact (Int.emod_add_mul_ediv _ _).symm
       rw [← ha]
       conv_rhs => rw [e, map_add, add, map_nsmul, (ker _).2 ⟨_, rfl⟩, _root_.mul_one]

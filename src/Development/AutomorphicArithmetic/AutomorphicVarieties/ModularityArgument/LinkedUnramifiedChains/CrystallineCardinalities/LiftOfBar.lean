@@ -143,7 +143,7 @@ private theorem box_def {l : ℕ} [Fact l.Prime] {κ : Type} [Field κ] {F : Fra
           simp only [mul_assoc]
       _ = _ := by
           rw [a3, a2]
-          simp only [mul_assoc, Matrix.mul_assoc, Units.mul_inv, Matrix.mul_one, Units.mul_inv_cancel_left]
+          simp only [mul_assoc, Units.mul_inv, Matrix.mul_one, Units.mul_inv_cancel_left]
   have key' : ∀ v s, ((B.g v * e (Y v) : GL (Fin n) C) : Matrix (Fin n) (Fin n) C) * (r (F.loc v s)).mat *
       (((B.g v * e (Y v))⁻¹ : GL (Fin n) C) : Matrix (Fin n) (Fin n) C) = (1 + (z' v s).map μ) *
       ((B.g v : Matrix (Fin n) (Fin n) C) * (B.r (F.loc v s)).mat *

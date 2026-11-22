@@ -32,8 +32,6 @@ private theorem frobW_surjective_lemma : Function.Surjective (frobW l) := by
   have hf : Function.Surjective (frobenius (Cb l) l) := by
     first
       | exact surjective_frobenius (Cb l) l
-      | exact (bijective_frobenius (Cb l) l).2
-      | exact fun y => ⟨(frobeniusEquiv (Cb l) l).symm y, by simp⟩
   intro y
   obtain ⟨x, hx⟩ := WittVector.map_surjective (p := l) _ hf y
   unfold frobW

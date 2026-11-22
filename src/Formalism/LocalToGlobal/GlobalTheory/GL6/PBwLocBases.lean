@@ -25,12 +25,6 @@ theorem bwB_clsCrd_lat (i : ℕ) (hi : i ≤ D.R.m) (c : (D.mem u).C.cls i) :
   have hL : Submodule.IsLattice D.host.E (D.clsLat u i c) := by
     first
       | exact D.clsLat_lat u i c
-      | exact D.clsLat_isLat u i c
-      | exact D.clsLat_isLattice u i c
-      | exact D.clsLat_lattice u i c
-      | exact (D.clsLat_spec u i c).1
-      | exact D.clsLat_spec u i c
-      | exact inferInstance
   unfold clsCrd
   exact isLattice_map_restrictScalars_linearEquiv _ _ hL
 

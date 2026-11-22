@@ -77,7 +77,7 @@ theorem gram_frm (v : InfinitePlace X.B.I.F) (w : D.what₂.Word) (sc : ℝ) (a 
       induction j using Fin.lastCases with
       | last =>
         simp only [fam, Fin.snoc_last, lastDiag, Matrix.of_apply]
-        try simp only [and_self, ite_true, if_true]
+        try simp only [and_self, ite_true]
         exact Formalism.L2.SG.RealObj.InfCut.UnitaryIsometries.hermitian_z_z_eq_neg (X := X) v w
       | cast j =>
         simp only [fam, Fin.snoc_last, Fin.snoc_castSucc, lastDiag, Matrix.of_apply]

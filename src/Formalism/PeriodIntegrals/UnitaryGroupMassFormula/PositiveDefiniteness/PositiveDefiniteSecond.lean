@@ -27,7 +27,7 @@ theorem re_nonneg_of_rat {k : ℕ} (M : Matrix (Fin k) (Fin k) ℂ) (z : ℂ) (h
   let p : (Fin k → ℝ) × (Fin k → ℝ) := (fun i => (v i).re - (v i).im / z.im * z.re, fun i => (v i).im / z.im)
   have hp : ψ p = v := by
     funext i
-    apply Complex.ext <;> simp [ψ, p] <;> (try field_simp) <;> (try ring)
+    apply Complex.ext <;> simp [ψ, p] <;> (try field_simp)
   have h1 := key p
   rwa [hp] at h1
 

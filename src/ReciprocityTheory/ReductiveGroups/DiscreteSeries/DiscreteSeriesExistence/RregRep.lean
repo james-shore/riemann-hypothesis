@@ -45,8 +45,6 @@ private theorem mul_Jm_conjTranspose_Jm_eq_one_of_mem_UJset (ε : Fin n → Bool
   have hl := Jm_conjTranspose_Jm_mul_eq_one_of_mem_UJset ε hg
   first
   | exact mul_eq_one_comm.mp hl
-  | (rw [← Matrix.inv_eq_left_inv hl]
-     exact Matrix.mul_nonsing_inv g (Matrix.isUnit_det_of_left_inverse hl))
 
 theorem rregRep_range (ε : Fin n → Bool) :
     Set.range (fun g : Formalism.REAL.UJ ε => Formalism.MainNotions.S.umat g) = UJset ε := by
@@ -97,7 +95,6 @@ theorem rregRep_cont (ε : Fin n → Bool) (v : L2 ε) :
     refine ⟨fun c s hs => ?_⟩
     first
     | exact (measurePreserving_mul_right ε c.unop).measure_preimage hs.nullMeasurableSet
-    | exact (measurePreserving_mul_right ε c.unop).measure_preimage hs
   haveI : Fact ((2 : ENNReal) ≠ ⊤) := ⟨by first | simp | exact ENNReal.ofNat_ne_top⟩
   have he : (fun y : Formalism.REAL.UJ ε => rregG ε y v) =
       fun y => (DomMulAct.mk (MulOpposite.op y)) • v := by
@@ -108,8 +105,6 @@ theorem rregRep_cont (ε : Fin n → Bool) (v : L2 ε) :
   have hm : Continuous (fun y : Formalism.REAL.UJ ε => DomMulAct.mk (MulOpposite.op y)) := by
     first
     | exact DomMulAct.continuous_mk.comp MulOpposite.continuous_op
-    | exact DomMulAct.mkHomeomorph.continuous.comp MulOpposite.continuous_op
-    | fun_prop
   haveI : OpensMeasurableSpace (Formalism.REAL.UJ ε)ᵐᵒᵖ :=
     ⟨MeasurableSpace.generateFrom_le fun s hs =>
       (IsOpen.preimage MulOpposite.continuous_op hs).measurableSet⟩

@@ -29,7 +29,7 @@ theorem coord_jX {S S₀ T : HSp D} {ρ : ℕ} (d : HypDec S S₀ ρ) (x a : Mx 
 theorem coord_jY {S S₀ T : HSp D} {ρ : ℕ} (d : HypDec S S₀ ρ) (x a : Mx D T.rank ρ) (w₀ : WO S₀ T) :
     (d.extY T a + d.extX T x + d.ext0 T w₀) ⬝ d.jY = a := by
   simp only [HypDec.extX_apply, HypDec.extY_apply, HypDec.matrixExtendByZero_apply, Matrix.add_mul, Matrix.mul_assoc, HypDec.pX_jY,
-    HypDec.pY_jY, HypDec.p0_jY, Matrix.mul_one, Matrix.mul_zero, zero_add, add_zero]
+    HypDec.pY_jY, HypDec.p0_jY, Matrix.mul_one, Matrix.mul_zero, add_zero]
 
 theorem eq_coords {S S₀ T : HSp D} {ρ : ℕ} (d : HypDec S S₀ ρ) (u : WO S T) :
     u = d.extX T (u ⬝ d.jX) + d.ext0 T (u ⬝ d.j0) + d.extY T (u ⬝ d.jY) :=

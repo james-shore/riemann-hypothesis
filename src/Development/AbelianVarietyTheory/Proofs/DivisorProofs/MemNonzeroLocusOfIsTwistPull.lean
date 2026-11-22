@@ -25,7 +25,7 @@ theorem translT_inv_comp {S : Scheme.{0}} (A : Over S) [GrpObj A] {T : Over S} (
     translT A z⁻¹ ≫ translT A z = 𝟙 _ := by
   apply CartesianMonoidalCategory.hom_ext
   · simp [translT]
-  · simp only [translT, translPt, Category.assoc, lift_snd, lift_fst, Category.id_comp, comp_lift_assoc, lift_fst_assoc]
+  · simp only [translT, translPt, Category.assoc, lift_snd, Category.id_comp, comp_lift_assoc, lift_fst_assoc]
     change (fst T A ≫ z) * ((fst T A ≫ z⁻¹) * snd T A) = snd T A
     have e : fst T A ≫ z⁻¹ = (fst T A ≫ z)⁻¹ :=
       eq_inv_of_mul_eq_one_left (by rw [← MonObj.comp_mul, inv_mul_cancel, MonObj.comp_one])

@@ -58,7 +58,7 @@ private theorem tb_psdOn_of_ta_psdOn {α : Type} (F : Finset α) (k : α → α 
       refine Finset.sum_congr rfl fun i _ => ?_
       rw [← Finset.sum_coe_sort F]
       refine Finset.sum_congr rfl fun j _ => ?_
-      simp [ha, Complex.star_def, mul_assoc]
+      simp [ha, mul_assoc]
     rw [hQ, Complex.le_def]
     simp only [Complex.zero_re, Complex.zero_im]
     exact ⟨h.2 a, (im_quadratic_form_eq_zero_of_hermitian F k h.1 a).symm⟩
@@ -159,15 +159,12 @@ theorem t_BoxSumLattice : BoxSumLattice := by
     intro w l
     first
     | positivity
-    | exact w.nonneg l
-    | exact apply_nonneg w l
   have hNq : (0 : ℝ) < (FractionalIdeal.absNorm aa : ℝ) := by
     first
     | (have h1 : FractionalIdeal.absNorm aa ≠ 0 := by
          simpa [FractionalIdeal.absNorm_eq_zero_iff] using haa
        have h2 : (0 : ℚ) ≤ FractionalIdeal.absNorm aa := FractionalIdeal.absNorm_nonneg aa
        exact_mod_cast lt_of_le_of_ne h2 (Ne.symm h1))
-    | exact_mod_cast FractionalIdeal.absNorm_pos_iff.mpr haa
   have hNpos : 0 < √(FractionalIdeal.absNorm aa : ℝ) := Real.sqrt_pos.mpr hNq
   set T : ℝ := (a / Θ) ^ Fintype.card (InfinitePlace E) * √(FractionalIdeal.absNorm aa : ℝ) with hT
   have hTpos : 0 < T := mul_pos (pow_pos (div_pos hapos hΘpos) _) hNpos
@@ -227,7 +224,6 @@ theorem t_BoxSumLattice : BoxSumLattice := by
             rw [hone, one_pow, one_mul]
     first
     | exact le_of_pow_le_pow_left₀ hd0.ne' hΘ'nn h1
-    | exact (pow_le_pow_iff_left₀ (div_pos hΘpos hapos).le hΘ'nn hd0.ne').mp h1
   have hΘ'2 : 2 < Θ' := lt_of_lt_of_le (by rw [lt_div_iff₀ hapos]; linarith) hΘ'ge
   have hK3 : (3 : ℝ) ≤ (K : ℝ) := by exact_mod_cast hK
   have hbox := hC₀ E aa haa y Θ' (K : ℝ) hy0 hΘ'2 hK3 hΘ'd

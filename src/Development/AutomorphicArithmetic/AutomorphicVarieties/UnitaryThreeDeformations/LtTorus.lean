@@ -219,7 +219,7 @@ theorem UpperTheory.V.UnitaryThreeInertia.lt_torus :
       show ((GeneralLinearGroup.map (p : R →+* R') (dg d) : GL (Fin 3) R') : Matrix (Fin 3) (Fin 3) R') a b
         = (u' φ * GG.ofGL (tor R' (χ' φ)⁻¹)).mat a b
       rw [mat_mul_tor]
-      simp only [GeneralLinearGroup.map_apply, dg_val, RingHom.mapMatrix_apply, Matrix.map_apply]
+      simp only [GeneralLinearGroup.map_apply, dg_val]
       by_cases hab : a = b
       · subst hab
         rw [diagonal_apply_eq]

@@ -52,7 +52,6 @@ theorem jetPt_const (u : Sp ℂ ⟶ Y) (m : ℕ) :
     first
     | rfl
     | (simp only [spMap]; rw [← Spec.map_comp]; rfl)
-    | (unfold spMap; rw [← Spec.map_comp]; rfl)
   rw [h2, h3, Category.assoc, jetPt_aug]
 
 theorem jetPt_over (e : (Fin g → ℂ) → (Sp ℂ ⟶ Y)) (hol : IsHolFam e) (p : Y ⟶ Y') (u : Sp ℂ ⟶ Y')

@@ -40,7 +40,7 @@ private lemma csr_of_cong {k R : Type} [CommRing k] [CommRing R] [Algebra k R] [
       u.val * ((g⁻¹ : GL (Fin n) R) : Matrix (Fin n) (Fin n) R) * (u⁻¹).val := by
     rw [cong] at h
     nth_rewrite 1 [← h]
-    simp only [mul_assoc, Units.mul_inv_cancel_left, Units.mul_inv, mul_one]
+    simp only [mul_assoc, Units.mul_inv, mul_one]
   have h2 : (cp g).map (c : R →+* R) = cp g⁻¹ := by
     have h3 := congrArg Matrix.charpoly h1
     rw [Matrix.coe_units_inv u, Matrix.charpoly_units_conj, ct, Matrix.charpoly_transpose] at h3

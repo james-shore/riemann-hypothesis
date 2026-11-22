@@ -37,9 +37,8 @@ lemma Lent_one_apply {χ : DirichletCharacter ℂ N} (h : χ = 1) {s : ℂ} (hs 
   unfold Lent
   rw [if_pos rfl]
   first
-    | (rw [LFunctionTrivChar₁, Function.update_of_ne hs]; rfl)
+    | (rw [LFunctionTrivChar₁, Function.update_of_ne hs])
     | (simp [LFunctionTrivChar₁, Function.update_of_ne hs])
-    | (simp [LFunctionTrivChar₁, hs])
 
 lemma Lent_two_ne_zero (χ : DirichletCharacter ℂ N) : Lent χ 2 ≠ 0 := by
   have h2 : (2 : ℂ) ≠ 1 := by norm_num

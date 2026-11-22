@@ -51,7 +51,7 @@ theorem UpperTheory.V.UnitaryThreeInertia.lt_grSub :
   have hJ : ∀ (M : Matrix (Fin 3) (Fin 3) R) (a b : Fin 3),
       (Jmat R 3 * M * Jmat R 3) a b = M a.rev b.rev := by
     intro M a b
-    fin_cases a <;> fin_cases b <;> simp [Matrix.mul_apply, Fin.sum_univ_three, Jmat] <;> rfl
+    fin_cases a <;> fin_cases b <;> simp [Matrix.mul_apply, Fin.sum_univ_three, Jmat]
   have htheta : ∀ g : GL (Fin 3) R, GrMat ℬ (g : Matrix (Fin 3) (Fin 3) R) →
       GrMat ℬ ((theta g : GL (Fin 3) R) : Matrix (Fin 3) (Fin 3) R) := by
     intro g hg a b

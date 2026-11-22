@@ -55,16 +55,16 @@ lemma nil_single {ε : Fin n → Bool} {a b : Fin n} (hab : b < a) (he : ε a = 
   · by_cases hi : i = a
     · subst hi
       have hj : j ≠ b := fun hj => absurd (hj ▸ hij) (not_le.mpr hab)
-      simp [Matrix.single_apply, hj, Ne.symm hj]
-    · simp [Matrix.single_apply, hi, Ne.symm hi]
+      simp [Ne.symm hj]
+    · simp [Ne.symm hi]
   · ext i j
     simp only [Jm, Matrix.mul_diagonal, Matrix.diagonal_mul]
     by_cases hi : i = a
     · by_cases hj : j = b
       · subst hi hj
-        simp [Matrix.single_apply, he]
-      · simp [Matrix.single_apply, hj, Ne.symm hj]
-    · simp [Matrix.single_apply, hi, Ne.symm hi]
+        simp [he]
+      · simp [Ne.symm hj]
+    · simp [Ne.symm hi]
 
 private lemma sum_mul_root_eq_sub_flag_measures (x y : Fin n) :
     ∑ i : Fin n, ((i : ℕ) : ℝ) * root x y i = ((x : ℕ) : ℝ) - ((y : ℕ) : ℝ) := by
@@ -117,13 +117,13 @@ lemma wt_single {ε : Fin n → Bool} {τ : Matrix (Fin n) (Fin n) ℂ → (W �
     rw [ht, Matrix.diagonal_mul]
     by_cases hi : i = a
     · rw [hi]
-    · simp [hE, Matrix.single_apply, hi, Ne.symm hi]
+    · simp [hE, Ne.symm hi]
   have hR : ∀ i j, (E * t) i j = E i j * Complex.exp ((θ b : ℂ) * Complex.I) := by
     intro i j
     rw [ht, Matrix.mul_diagonal]
     by_cases hj : j = b
     · rw [hj]
-    · simp [hE, Matrix.single_apply, hj, Ne.symm hj]
+    · simp [hE, Ne.symm hj]
   have hk : Complex.exp ((θ a : ℂ) * Complex.I) = κ * Complex.exp ((θ b : ℂ) * Complex.I) := by
     rw [hκ, ← Complex.exp_add]
     congr 1

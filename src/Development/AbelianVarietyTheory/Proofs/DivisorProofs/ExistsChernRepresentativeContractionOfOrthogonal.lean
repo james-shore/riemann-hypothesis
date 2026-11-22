@@ -71,7 +71,7 @@ theorem fv_sub_sum {X : Over (Sp R)} {n : ℕ} (f : Z1 (O (dp0 R) (X.hom ≫ �
     [CommRing D'] [Algebra R D'] (φ : D →ₐ[R] D') (x : Pt X D) :
     fv (f - ∑ k, t k • u k) D D' φ x = fv f D D' φ x - ∑ k, algebraMap R D' (t k) * fv (u k) D D' φ x := by
   simp only [fv, ev, Submodule.coe_sub, Submodule.coe_sum, Submodule.coe_smul, Pi.sub_apply,
-    Finset.sum_apply, Pi.smul_apply, Algebra.smul_def]
+    Finset.sum_apply, Algebra.smul_def]
   rfl
 
 theorem fv_smul {X : Over (Sp R)} (t : R) (u : Z1 (O (dp0 R) (X.hom ≫ 𝟙 _))) (D : Type) [CommRing D]

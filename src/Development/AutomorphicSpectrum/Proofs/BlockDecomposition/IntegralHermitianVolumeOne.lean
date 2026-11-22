@@ -243,8 +243,7 @@ theorem testMat_mem (hG : GoodLoc σ J T bs v ψv S σS ϖ ε) (a b : Fin n) {s 
 
 theorem sum_testMat (σ : E →ₐ[F] E) (a b : Fin n) (s : Fv F v ⊗[F] E) (Y : Matrix (Fin n) (Fin n) (Fv F v ⊗[F] E)) :
     ∑ i, ∑ j, testMat σ a b s i j * Y j i = s * Y b a + sigR (Fv F v) σ s * Y a b := by
-  simp only [testMat, add_mul, Finset.sum_add_distrib, ite_mul, zero_mul, ite_and, Finset.sum_ite_eq', Finset.sum_ite_eq,
-    Finset.mem_univ, if_true]
+  simp only [testMat, add_mul, Finset.sum_add_distrib, ite_mul, zero_mul, ite_and]
   have key : ∀ (p q : Fin n) (t : Fv F v ⊗[F] E),
       (∑ x, ∑ x_1, if x = p then if x_1 = q then t * Y x_1 x else 0 else 0) = t * Y q p := by
     intro p q t

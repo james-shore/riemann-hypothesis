@@ -93,7 +93,7 @@ theorem prod_factorial_add_single [Fintype σ] [DecidableEq σ] (α : σ →₀ 
     · subst hi
       simp [Nat.factorial_succ]
       ring
-    · simp [Finsupp.single_apply, Ne.symm hi, hi]
+    · simp [hi]
   simp_rw [h]
   rw [Finset.prod_mul_distrib, Finset.prod_ite_eq']
   simp

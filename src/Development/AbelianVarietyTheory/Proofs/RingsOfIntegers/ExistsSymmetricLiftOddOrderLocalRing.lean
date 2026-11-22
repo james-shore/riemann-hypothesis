@@ -85,7 +85,7 @@ theorem exists_symConst (hs : Function.Surjective (fst T A).left.appTop.hom) (hL
     rw [show ∀ f : T ⊗ A ⟶ A, f ≫ (GrpObj.inv : A ⟶ A) = f⁻¹ from fun _ => rfl]
     rw [mul_inv_rev, inv_inv, mul_comm]
   simp only [Fintype.prod_sum_type, Fin.prod_univ_two, Sum.elim_inl, Sum.elim_inr, Matrix.cons_val_zero,
-    Matrix.cons_val_one, Matrix.head_cons, neg_neg, hb, hc, hd]
+    Matrix.cons_val_one, neg_neg, hb, hc, hd]
   apply Additive.ofMul.injective
   simp only [ofMul_mul, ofMul_zpow, ofMul_one, neg_smul]
   abel
@@ -153,7 +153,7 @@ theorem exists_gen_neg (L : RigLB A) (h : L.IsSymmetric) (k : ℤ) (T : Over S) 
   refine (exists_gen (K' := Fin 2) L.isLB (φ' := ![(snd T A).left, (snd T A ≫ (GrpObj.inv : A ⟶ A)).left])
     (ε' := ![k, -k]) ?_ s2 hs2).elim fun nu hnu => ⟨nu, hnu.1⟩
   intro U _ hh
-  simp only [Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, Over.comp_left,
+  simp only [Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Over.comp_left,
     _root_.mul_one, mul_neg, neg_neg]
   simp only [Category.comp_id]
   exact _root_.mul_comm _ _

@@ -29,7 +29,7 @@ theorem exists_lift_isAdapted : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C
       rw [(hA j).2]
       by_cases hij : i = j
       · subst hij; simp
-      · simp [Pi.single_apply, hij]
+      · simp [hij]
     | inr j =>
       refine ⟨fun i => Classical.choose (hF.surj (Classical.choose ((hB.1 (Sum.inr j)).2.1 i))),
         fun i => ?_, fun j' h => by cases h⟩
@@ -64,6 +64,6 @@ theorem exists_lift_isAdapted : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C
       rw [he3, hw2 _ i rfl]
       by_cases hij : j = i
       · subst hij; simp
-      · simp [Pi.single_apply, hij]
+      · simp [hij]
 
 end GlobalTheory.QLog.LiftBasis

@@ -33,7 +33,7 @@ theorem evalDegree : EvalDeg := by
   · rw [← Nat.mul_add]
     exact Nat.mul_le_mul_left _ (hf v)
   · rw [Finset.sum_add_distrib]
-    simp only [mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.sum_ite_eq]
+    simp only [mul_ite, mul_one, mul_zero, Finset.sum_ite_eq']
     have hy := monomial_le_degreeOf y hm
     have hc := monomial_le_degreeOf c hm
     split_ifs <;> omega

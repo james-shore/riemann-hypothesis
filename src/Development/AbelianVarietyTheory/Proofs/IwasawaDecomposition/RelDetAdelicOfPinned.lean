@@ -95,8 +95,6 @@ theorem val_le_of_span {S : Set L} (w : HeightOneSpectrum (𝓞 L)) {γ : ℤᵐ
   | exact @_root_.GlobalTheory.SpanValuationBound.main
   | exact _root_.GlobalTheory.SpanValuationBound.main
   | (apply _root_.GlobalTheory.SpanValuationBound.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SpanValuationBound.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SpanValuationBound.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SpanValuationBound.main ..)
 
 variable {N : ℕ}

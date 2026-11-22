@@ -44,7 +44,7 @@ theorem degree_snd_le (μ : XZ Lt N0 N1 →₀ ℕ) :
   rw [Finsupp.degree_apply, Finsupp.degree_apply]
   calc ∑ j ∈ (Finsupp.sumFinsuppEquivProdFinsupp μ).2.support, (Finsupp.sumFinsuppEquivProdFinsupp μ).2 j
       = ∑ j ∈ (Finsupp.sumFinsuppEquivProdFinsupp μ).2.support, μ (Sum.inr j) := by
-        simp [Finsupp.snd_sumFinsuppEquivProdFinsupp]
+        simp
     _ = ∑ i ∈ (Finsupp.sumFinsuppEquivProdFinsupp μ).2.support.map Function.Embedding.inr, μ i := by
         rw [Finset.sum_map]; rfl
     _ ≤ ∑ i ∈ μ.support, μ i := by

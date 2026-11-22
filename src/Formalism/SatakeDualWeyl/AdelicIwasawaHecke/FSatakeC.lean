@@ -13,7 +13,6 @@ local notation "⟪" b "⟫" => (((b : GU σ n) : GL (Fin n) L) : Matrix (Fin n)
 theorem fSatake_borel_of_diag {d : GU σ n} {e : Fin n → L} (hd : ⟪d⟫ = Matrix.diagonal e) :
     IsBorelU d := by
   intro i j hij
-  change ⟪d⟫ i j = 0
   rw [hd, Matrix.diagonal_apply_ne _ (ne_of_lt hij).symm]
 
 theorem fSatake_borel_one : IsBorelU (1 : GU σ n) := by
@@ -153,7 +152,6 @@ private lemma isBorelU_inv {b : GU σ n} (hb : IsBorelU b) : IsBorelU b⁻¹ := 
   letI : Invertible ⟪b⟫ := Units.invertible _
   have hinv : ⟪b⁻¹⟫ = (⟪b⟫)⁻¹ := by simp [Matrix.coe_units_inv]
   intro i j hij
-  change ⟪b⁻¹⟫ i j = 0
   rw [hinv]
   exact Matrix.blockTriangular_inv_of_blockTriangular hB hij
 

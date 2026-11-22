@@ -17,7 +17,7 @@ private noncomputable def tw {S : Type} [CommRing S] [Algebra ℂ S] (ev : S →
     refine TrivSqZeroExt.ext ?_ ?_ <;> simp [h1]
   map_zero' := by simp
   map_add' a b := by
-    refine TrivSqZeroExt.ext ?_ ?_ <;> simp <;> ring
+    refine TrivSqZeroExt.ext ?_ ?_ <;> simp
   map_mul' a b := by
     refine TrivSqZeroExt.ext ?_ ?_
     · simp

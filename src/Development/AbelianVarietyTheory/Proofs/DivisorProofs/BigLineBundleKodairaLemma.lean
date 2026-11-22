@@ -104,7 +104,6 @@ theorem exists_nsmul_cls_eq_add_toPic_of_isBig : ∀ (k : Type) [Field k] [Infin
       have hmd : (0 : ℝ) < (m : ℝ) ^ d := pow_pos (by linarith) d
       have h₄ := mul_lt_mul_of_pos_right h₂ hmd
       have h₅ := mul_le_mul_of_nonneg_left hm2 (Nat.cast_nonneg C : (0 : ℝ) ≤ C)
-      push_cast at h₁
       rw [pow_succ] at h₁
       nlinarith
   have hB := isLB_lbPow hM.isLB m

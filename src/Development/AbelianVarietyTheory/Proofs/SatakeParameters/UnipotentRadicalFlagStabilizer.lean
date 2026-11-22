@@ -60,7 +60,7 @@ theorem exists_sub (k : Type) [Field k] (a s : ℕ) (d : Fin s → ℕ) (e : (Σ
       intro p q hpq
       have hcol : ((g : Matrix (Fin a) (Fin a) k) - 1) p q =
           (((g : Matrix (Fin a) (Fin a) k) - 1) *ᵥ Pi.single q 1) p := by
-        simp [Matrix.mulVec_single_one]
+        simp
       rw [hcol]
       by_cases hq : GlobalTheory.SmGL.blk e q ≤ GlobalTheory.SmGL.blk e i
       · rw [h2 _ (fun r hr => Pi.single_eq_of_ne (by rintro rfl; exact absurd hq (not_le.2 hr)) _)]

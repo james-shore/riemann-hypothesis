@@ -11,7 +11,7 @@ namespace PI.UnitaryApproxFinWork
 theorem exists_common {F : Type} [Field F] [NumberField F] {ι : Type} (s : Finset ι)
     (Q : ι → 𝓞 F → Prop) (hQ : ∀ i c r, Q i c → Q i (c * r)) (h : ∀ i ∈ s, ∃ c, c ≠ 0 ∧ Q i c) :
     ∃ c : 𝓞 F, c ≠ 0 ∧ ∀ i ∈ s, Q i c := by
-  first | exact Bl.general_b_fact_right_ter.goal1 .. | (apply Bl.general_b_fact_right_ter.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_right_ter.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_ter.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_right_ter.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_ter.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_right_ter.goal1 .. | (apply Bl.general_b_fact_right_ter.goal1 <;> assumption)
 
 theorem local_err {R : Type} [CommRing R] {n : Type} [Fintype n] [DecidableEq n]
     (h2 : IsUnit (2 : R)) (g X XR W N γR : Matrix n n R)

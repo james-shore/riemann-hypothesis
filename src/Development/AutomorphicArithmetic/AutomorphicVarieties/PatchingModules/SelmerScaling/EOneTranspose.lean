@@ -248,7 +248,7 @@ theorem UpperTheory.V.Pa.kapSel1 :
     · subst hmj
       simp only [Pi.single_eq_same, map_inv, Matrix.map_mul]
       rfl
-    · simp [Pi.single_apply, hmj]
+    · simp [hmj]
   · have hcj : h.p₀ (G.frame.conj g) = G0.frame.conj (h.p₀ g) := by
       apply Subtype.ext
       simp [Glob.Hom.p₀, Glob.frame, GFrame.conj, h.c]
@@ -260,7 +260,7 @@ theorem UpperTheory.V.Pa.kapSel1 :
     by_cases hmj : m = j
     · subst hmj
       rw [Pi.single_eq_same, Pi.single_eq_same, Matrix.map_neg _ (map_neg _), Matrix.transpose_map]
-    · simp [Pi.single_apply, hmj]
+    · simp [hmj]
   · have hg' : h.p₀ g ∈ Subgroup.map (G0.φu u) (L.Ju u) := by
       obtain ⟨a, ha, rfl⟩ := hg
       refine ⟨a, ha, ?_⟩

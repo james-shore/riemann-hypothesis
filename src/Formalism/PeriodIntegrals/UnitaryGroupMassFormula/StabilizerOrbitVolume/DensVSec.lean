@@ -26,11 +26,6 @@ theorem exists_leftInv_of_linIndep {K : Type} [CommRing K] [IsSemisimpleRing K] 
   obtain ⟨g, hg⟩ : ∃ g : (Fin M → K) →ₗ[K] (Fin a → K), g ∘ₗ f = LinearMap.id := by
     first
     | exact IsSemisimpleModule.extension_property f hf LinearMap.id
-    | (obtain ⟨C, hC⟩ := exists_isCompl (LinearMap.range f)
-       exact ⟨(LinearEquiv.ofInjective f hf).symm.toLinearMap ∘ₗ
-         Submodule.linearProjOfIsCompl _ _ hC, by
-           ext c : 1
-           simp [Submodule.linearProjOfIsCompl_apply_left]⟩)
   refine ⟨fun k i' => g (fun j => if k = j then 1 else 0) i', fun i i' => ?_⟩
   have hZi : Z i = ∑ k, Z i k • (fun j => if k = j then (1 : K) else 0) := pi_eq_sum_univ (Z i)
   have key : g (Z i) = fun j => if i = j then 1 else 0 := by

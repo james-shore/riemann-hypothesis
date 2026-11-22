@@ -16,4 +16,4 @@ theorem _root_.GlobalTheory.T.cechComparison_degreeZero_alternatingPullback : �
     y.1 = (cechAbPull f τ hτ φ).term (0 + 1) x.1 →
     cechAbHEquivH' hc' hG 0 (cechClass _ 0 y) =
       SheafPull.pull f φ 0 (homOfLE hV) (cechAbHEquivH' hc hF 0 (cechClass _ 0 x)) := by
-  first | (exact @GlobalTheory.cechAbPull_degZero) | (exact GlobalTheory.cechAbPull_degZero) | (intros; apply GlobalTheory.cechAbPull_degZero  <;> assumption)
+  first | (exact @GlobalTheory.cechAbPull_degZero)

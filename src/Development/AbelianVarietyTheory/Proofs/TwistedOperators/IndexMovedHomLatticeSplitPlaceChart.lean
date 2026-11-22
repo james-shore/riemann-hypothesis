@@ -61,7 +61,7 @@ theorem half_index : ∀ (D : D7) (S T : HSp D) (v : HeightOneSpectrum (𝓞 D.h
     by_cases hij : i = j
     · subst hij
       simp [ht, map_zpow₀]
-    · simp [ht, Matrix.diagonal_apply, hij]
+    · simp [ht, hij]
   have hsplit : ∀ a b c : GL (Fin T.rank) (w.adicCompletion D.host.E),
       κ⁻¹ * Matrix.GeneralLinearGroup.map (ψ.symm : w.adicCompletion D.host.E →+* Fv D.host.F v) (a * b * c) * κ =
         (κ⁻¹ * Matrix.GeneralLinearGroup.map (ψ.symm : w.adicCompletion D.host.E →+* Fv D.host.F v) a) *
@@ -103,7 +103,7 @@ theorem index_moved_split : ∀ (D : D7) (S T : HSp D) (v : HeightOneSpectrum (�
     by_cases hij : i = j
     · subst hij
       simp [map_zpow₀]
-    · simp [Matrix.diagonal_apply, hij, Ne.symm hij]
+    · simp [hij, Ne.symm hij]
   have hunif : IsUnifV D.host.E w' (c ϖ) := by
     show Valued.v (c ϖ) = _
     rw [hc]

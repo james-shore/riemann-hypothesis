@@ -190,7 +190,6 @@ theorem norm_iteratedFDeriv_fourierFactor_le :
     _ ≤ (k.choose i : ℝ) * (2 * Real.pi) ^ i * (|C j| * M ^ s j / μ ^ (N + k)) *
           (B ^ (k + ∑ j ∈ Finset.range (k + 1), s j) / A ^ N) := by
         gcongr
-        all_goals first | exact hB1 | omega
 
 end GlobalTheory.HeckeTwo.FactorBound
 

@@ -25,9 +25,7 @@ theorem exists_pow_eq (φ : Fq l a →+* Fq l a) : ∃ m : ℕ, ∀ x, φ x = x 
   first
   | exact @_root_.GlobalTheory.FrobeniusPower.main
   | exact _root_.GlobalTheory.FrobeniusPower.main
-  | (apply _root_.GlobalTheory.FrobeniusPower.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FrobeniusPower.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FrobeniusPower.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.FrobeniusPower.main)
   | (intros; exact _root_.GlobalTheory.FrobeniusPower.main ..)
   | (intro h; exact _root_.GlobalTheory.FrobeniusPower.main h _ (fun _ => Iff.rfl))
   | exact _root_.GlobalTheory.FrobeniusPower.main ‹_› _ (fun _ => Iff.rfl)

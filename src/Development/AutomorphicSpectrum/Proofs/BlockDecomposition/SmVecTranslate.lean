@@ -197,7 +197,7 @@ theorem smVec_translate [IsTopologicalGroup G] (ρ : Representation ℂ G V) {x 
     change Continuous fun a : G => g⁻¹ * a * g⁻¹⁻¹
     fun_prop), GlobalTheory.LGrp.mem_fixed.2 fun u hu => ?_⟩
   have e := GlobalTheory.LGrp.mem_fixed.1 h _ hu
-  have e' : u * g = g * ((MulAut.conj g⁻¹).toMonoidHom u) := by simp [MulAut.conj_apply, mul_assoc]
+  have e' : u * g = g * ((MulAut.conj g⁻¹).toMonoidHom u) := by simp [mul_assoc]
   rw [← Module.End.mul_apply, ← map_mul, e', map_mul, Module.End.mul_apply, e]
 
 theorem isOpen_fix [IsTopologicalGroup G] (ρ : Representation ℂ G V) {x : V} {U : Subgroup G} (hU : IsOpen (U : Set G))
@@ -342,7 +342,7 @@ theorem smooth_slice {w : Pl E} (h₁ : ∀ g, ∀ x ∈ t₁.space, ((finRep E 
     exact hu.2
   have e2 : (unip (0 : BlockIx (r + s) r → K) * lev K r s u * g : GLw (r + s) w) = g * C u := by
     rw [unip_zero, one_mul]
-    simp [C, MulAut.conj_apply, mul_assoc]
+    simp [C, mul_assoc]
   rw [e1, e2, slice_fixed hφ hfix k y g _ hu.1, Units.val_one, one_mul] at hl
   exact hl.symm
 

@@ -32,7 +32,7 @@ theorem pull_mul_left {N N' : ℕ} (γ₁ γ₂ : Matrix (Fin N) (Fin N) D.host.
     TaylorLogMetric.pull D (TaylorLogMetric.tor0 D cc δ) (γ₁ * γ₂) (1 : Matrix (Fin N') (Fin N') D.host.E) G =
       TaylorLogMetric.pull D (TaylorLogMetric.tor0 D cc δ) γ₁ 1 (TaylorLogMetric.pull D (TaylorLogMetric.tor0 D cc δ) γ₂ 1 G) := by
   funext z
-  simp only [TaylorLogMetric.pull, TaylorLogMetric.tor0, Matrix.map_one _ (map_zero _) (map_one _), Matrix.conjTranspose_one, Matrix.one_mul, Matrix.of_apply]
+  simp only [TaylorLogMetric.pull, TaylorLogMetric.tor0, Matrix.map_one _ (map_zero _) (map_one _), Matrix.conjTranspose_one, Matrix.one_mul]
   congr 1
   funext τ
   rw [Matrix.map_mul]
@@ -42,7 +42,7 @@ theorem pull_mul_right {N N' : ℕ} (γ₁ γ₂ : Matrix (Fin N') (Fin N') D.ho
     TaylorLogMetric.pull D (TaylorLogMetric.tor0 D cc δ) (1 : Matrix (Fin N) (Fin N) D.host.E) (γ₁ * γ₂) G =
       TaylorLogMetric.pull D (TaylorLogMetric.tor0 D cc δ) 1 γ₁ (TaylorLogMetric.pull D (TaylorLogMetric.tor0 D cc δ) 1 γ₂ G) := by
   funext z
-  simp only [TaylorLogMetric.pull, TaylorLogMetric.tor0, Matrix.map_one _ (map_zero _) (map_one _), Matrix.conjTranspose_one, Matrix.mul_one, Matrix.of_apply]
+  simp only [TaylorLogMetric.pull, TaylorLogMetric.tor0, Matrix.map_one _ (map_zero _) (map_one _), Matrix.mul_one]
   congr 1
   funext τ
   rw [Matrix.map_mul, Matrix.conjTranspose_mul, Matrix.mul_assoc]

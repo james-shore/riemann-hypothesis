@@ -111,7 +111,6 @@ theorem colL_block (hD : Disj bs) (T : Choice bs) (p : Σ j : Fin nb, Fin (bs j)
   convert h2 using 2
   all_goals first
     | rfl
-    | exact Multiset.filter_congr fun _ _ => Iff.rfl
 
 theorem colL_empty (hD : Disj bs) (T : Choice bs) {k : Fin n} (hk : owner bs k = none) :
     colL (lst X bs T) k = [] := by

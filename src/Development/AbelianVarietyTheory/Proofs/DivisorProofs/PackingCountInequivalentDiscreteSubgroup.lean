@@ -51,8 +51,6 @@ theorem packing_count : ∀ (G : Type) [Group G] [TopologicalSpace G] [IsTopolog
         = ∑' γ : Λ, ∑ t ∈ T, (γ • (t • U)).indicator (1 : G → ℝ≥0∞) x := by
       first
       | exact (Summable.tsum_finsetSum fun _ _ => ENNReal.summable).symm
-      | exact (tsum_sum fun _ _ => ENNReal.summable).symm
-      | exact (ENNReal.tsum_finsetSum _ _).symm
     rw [hswap, ENNReal.tsum_eq_iSup_sum]
     refine iSup_le fun s => ?_
     have hbool : ∑ γ ∈ s, ∑ t ∈ T, (γ • (t • U)).indicator (1 : G → ℝ≥0∞) x
@@ -75,7 +73,7 @@ theorem packing_count : ∀ (G : Type) [Group G] [TopologicalSpace G] [IsTopolog
       refine Finset.card_le_card_of_injOn
         (fun p : Λ × G => (p₀.2⁻¹ * (p₀.1 : G)⁻¹) * ((p.1 : G) * p.2)) ?_ ?_
       · intro p hp
-        have hp' : p ∈ P := by first | exact Finset.mem_coe.1 hp | exact hp
+        have hp' : p ∈ P := by first | exact Finset.mem_coe.1 hp
         obtain ⟨ht, hx⟩ := memP p hp'
         rw [mem_smul_smul_iff] at hx
         show _ ∈ (hfin.toFinset : Set G)
@@ -87,8 +85,8 @@ theorem packing_count : ∀ (G : Type) [Group G] [TopologicalSpace G] [IsTopolog
         · exact Γ.mul_mem (Γ.mul_mem (Γ.inv_mem (hTΓ _ ht₀)) (Γ.inv_mem (hΛΓ p₀.1.2)))
             (Γ.mul_mem (hΛΓ p.1.2) (hTΓ _ ht))
       · intro p hp q hq hpq
-        have hp' : p ∈ P := by first | exact Finset.mem_coe.1 hp | exact hp
-        have hq' : q ∈ P := by first | exact Finset.mem_coe.1 hq | exact hq
+        have hp' : p ∈ P := by first | exact Finset.mem_coe.1 hp
+        have hq' : q ∈ P := by first | exact Finset.mem_coe.1 hq
         have hpT := (memP p hp').1
         have hqT := (memP q hq').1
         have h1 : (p.1 : G) * p.2 = (q.1 : G) * q.2 := mul_left_cancel hpq

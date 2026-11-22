@@ -96,7 +96,7 @@ private def pre {K L : Cx R} (g : K ⟶ L) (I : Cx R) (n : ℤ) : Cochain L I n 
 
 private theorem pre_v {K L : Cx R} (g : K ⟶ L) (I : Cx R) (n : ℤ) (α : Cochain L I n) (t q : ℤ)
     (hq : t + n = q) : (pre g I n α).v t q hq = g.f t ≫ α.v t q hq := by
-  simp [pre, Cochain.comp_zero_cochain_v]
+  simp [pre]
 
 private theorem pre_δ {K L : Cx R} (g : K ⟶ L) (I : Cx R) (n m : ℤ) (h : n + 1 = m)
     (α : Cochain L I n) : pre g I m (δ n m α) = δ n m (pre g I n α) := by

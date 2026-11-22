@@ -21,7 +21,7 @@ variable {D : D7}
 theorem cmp_of_mem_GfC (θ : InfFam D) {V : HSp D} {b : GA D V} (hb : b ∈ GfC V) (τ : D.what₂.Tau) : cmp θ τ b = 1 := by
   have h1 : infHom V b = 1 := hb
   have h2 := congrArg Units.val h1
-  simp only [infHom, MonoidHom.comp_apply, Formalism.UG.bc, Units.coe_map, MonoidHom.coe_coe, RingHom.mapMatrix_apply, Units.val_one] at h2
+  simp only [infHom, MonoidHom.comp_apply, Formalism.UG.bc, Units.coe_map, Units.val_one] at h2
   have h4 : (matHom V b).1.map (Algebra.TensorProduct.map (fstA D.host.F) (AlgHom.id D.host.F D.host.E)) = 1 := h2
   have h3 : cmp θ τ b = ((matHom V b).1.map (Algebra.TensorProduct.map (fstA D.host.F) (AlgHom.id D.host.F D.host.E))).map (θ τ) := rfl
   rw [h3, h4]
@@ -297,7 +297,7 @@ theorem term_clause (θ : InfFam D) (hθ : IsInfFam θ) {Y V : HSp D} (d : Hermi
     have e : ((fun h => coef θ M K u u (g * stabilizerEmbedding d h)) ∘ fun q : GinfC Y × GfC Y => (q.1 : GA D Y) * q.2) =
         fun q => coefR θ M u u (g * stabilizerEmbedding d q.1) * Sg.indicator (fun _ => (1 : ℂ)) q.2 := funext pw
     rw [e]
-    first | exact hF.1.mul_prod hind | exact hF.1.prod_mul hind
+    first | exact hF.1.mul_prod hind
   · have hnorm : ∫ h, ‖coef θ M K u u (g * stabilizerEmbedding d h)‖ ∂ν =
         (∫ a, ‖coefR θ M u u (g * stabilizerEmbedding d a)‖ ∂m) * (μ Sg).toReal := by
       rw [hνe, hemb.integral_map]

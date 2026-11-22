@@ -143,7 +143,7 @@ theorem vac_box : DerEx → VacLine → ∀ (F E : Type) [Field F] [NumberField 
     rw [map_smul] at h1' h2'
     ext x
     rw [SchwartzMap.smul_apply, hbox u' hu' x, hbox u hu x, h1', h2', h1, h2]
-    simp only [SchwartzMap.smul_apply, smul_eq_mul, star_mul', Complex.star_def, map_mul, Complex.conj_ofReal,
+    simp only [SchwartzMap.smul_apply, smul_eq_mul, star_mul', Complex.star_def, Complex.conj_ofReal,
       Complex.conj_I]
     push_cast
     ring

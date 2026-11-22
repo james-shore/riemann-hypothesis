@@ -62,4 +62,4 @@ theorem _root_.GlobalTheory.T.unfolded_rankinSelberg_cellIntegral_matchedVectors
               ∑' l : {w : HeightOneSpectrum (𝓞 E) // w ∉ S} →₀ (Fin (m + 1) → ℤ),
                 l.prod fun w v => GlobalTheory.RSnmUnf.rsTermNM (Ideal.absNorm w.1.asIdeal) (fun i => (α w.1 i : ℂ))
                   (fun i => (β w.1 i : ℂ)) x v := by
-  first | (exact @GlobalTheory.RSnmCells.unfolded_cells_eq) | (exact GlobalTheory.RSnmCells.unfolded_cells_eq) | (intros; apply GlobalTheory.RSnmCells.unfolded_cells_eq  <;> assumption)
+  first | (exact @GlobalTheory.RSnmCells.unfolded_cells_eq)

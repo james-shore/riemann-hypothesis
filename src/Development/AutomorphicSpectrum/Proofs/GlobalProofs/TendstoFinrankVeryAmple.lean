@@ -335,9 +335,9 @@ theorem smul_pull_add (a : K → ℤ) (n p m : ℕ) :
       pullDeg ((((n * p : ℕ) : ℤ)) • a) + (((n * m : ℕ) : ℤ)) • baseDeg (Sum.inl () : Unit ⊕ K) := by
   funext k
   cases k with
-  | inl u => simp [pullDeg, baseDeg, Pi.single_apply]
+  | inl u => simp [pullDeg, baseDeg]
   | inr k =>
-    simp [pullDeg, baseDeg, Pi.single_apply]
+    simp [pullDeg, baseDeg]
     ring
 
 theorem secOver_segre (y : (Σ k, ι k) → Ω) (hnz : ∀ k, ∃ i, y ⟨k, i⟩ ≠ 0) (a : K → ℤ) (n p m : ℕ) :
@@ -451,15 +451,14 @@ theorem lower_of_veryAmple (hS : GroundTheory.Heights₂.Heights.IndefiniteRowSi
           pullDeg (((n * p : ℕ) : ℤ) • a) + (0 : ℤ) • baseDeg (Sum.inl () : Unit ⊕ K) := by
         funext k
         cases k with
-        | inl u => simp [pullDeg, baseDeg, Pi.single_apply]
+        | inl u => simp [pullDeg, baseDeg]
         | inr k =>
-          simp [pullDeg, baseDeg, Pi.single_apply]
+          simp [pullDeg, baseDeg]
           ring
       rw [e0, Kleiman.SectionsOverLocalization.SegreTwist.proof F K ι Ω y hnz]
       congr 1
       funext k
       simp
-    beta_reduce
     rw [hsec]
     refine le_trans (Nat.cast_le.2 (finrank_secOver_mono hnz (fun k => ?_) (hfd _))) hτ
     have hdiv := Nat.div_add_mod τ p

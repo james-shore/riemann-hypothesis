@@ -16,7 +16,7 @@ theorem Laurent.convergesAt_single {K : Type*} [NontriviallyNormedField K] (n₀
     (ρ : ℝ) : ConvergesAt (Pi.single n₀ k) ρ := by
   refine tendsto_const_nhds.congr' ?_
   filter_upwards [(Set.finite_singleton n₀).compl_mem_cofinite] with n hn
-  simp [Pi.single_apply, show n ≠ n₀ from hn]
+  simp [show n ≠ n₀ from hn]
 
 @[ext]
 structure AnnulusRing (I : Set ℝ) where
@@ -263,7 +263,7 @@ theorem gaussNorm_single_zero_one {ρ : ℝ} (hρ : 0 < ρ) :
   refine le_antisymm (gaussNorm_le fun n => ?_) ?_
   · by_cases hn : n = 0
     · subst hn; simp
-    · simp [Pi.single_apply, hn]
+    · simp [hn]
   · simpa using (convergesAt_single 0 (1 : K) ρ).le_gaussNorm 0
 
 theorem domSet_single_zero_one {ρ : ℝ} (hρ : 0 < ρ) :
@@ -272,7 +272,7 @@ theorem domSet_single_zero_one {ρ : ℝ} (hρ : 0 < ρ) :
   simp only [domSet, Set.mem_setOf_eq, gaussNorm_single_zero_one hρ, Set.mem_singleton_iff]
   by_cases hn : n = 0
   · subst hn; simp
-  · simp [Pi.single_apply, hn]
+  · simp [hn]
 
 theorem lowIndex_single_zero_one {ρ : ℝ} (hρ : 0 < ρ) :
     lowIndex (Pi.single 0 (1 : K)) ρ = 0 := by
@@ -300,7 +300,7 @@ def bounded (K : Type*) [NontriviallyNormedField K] [IsUltrametricDist K] [Compl
   one_mem' := ⟨1, Set.forall_mem_range.2 fun n => by
     by_cases hn : n = 0
     · subst hn; simp
-    · simp [Pi.single_apply, hn]⟩
+    · simp [hn]⟩
   add_mem' {f g} hf hg := by
     obtain ⟨A, hA⟩ := hf
     obtain ⟨B, hB⟩ := hg
@@ -379,7 +379,7 @@ theorem cmul_single_left (k : ℤ) (c : K) (x : ℤ → K) :
     cmul (Pi.single k c) x = fun n => c * x (n - k) := by
   funext n
   unfold cmul
-  rw [tsum_eq_single k fun i hi => by simp [Pi.single_apply, hi]]
+  rw [tsum_eq_single k fun i hi => by simp [hi]]
   simp
 
 end Laurent
@@ -412,7 +412,7 @@ theorem single_mem_bounded (k : ℤ) (c : K) : single k c ∈ bounded K :=
   ⟨‖c‖, Set.forall_mem_range.2 fun n => by
     by_cases hn : n = k
     · subst hn; simp
-    · simp [Pi.single_apply, hn]⟩
+    · simp [hn]⟩
 
 end Robba
 

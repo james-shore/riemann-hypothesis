@@ -34,7 +34,7 @@ theorem companion_mulVec_ev (p : Fin r → k) (i : ℕ) (hi : i + 1 < r) :
     companion p *ᵥ ev r k i = ev r k (i + 1) := by
   rw [ev_eq_single i (by omega)]
   funext j
-  simp only [mulVec_single, companion, of_apply, mul_one, ev]
+  simp only [mulVec_single, companion, ev]
   have : ¬ (i + 1 = r) := by omega
   simp [this]
 

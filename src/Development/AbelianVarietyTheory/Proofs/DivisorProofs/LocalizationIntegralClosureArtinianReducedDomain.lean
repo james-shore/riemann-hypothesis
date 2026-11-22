@@ -29,7 +29,7 @@ theorem idempotent_mul_aeval_mul {R A : Type} [CommRing R] [CommRing A] [Algebra
 theorem isIntegral_of_isIdempotentElem {R A : Type} [CommRing R] [CommRing A] [Algebra R A] {e : A}
     (he : IsIdempotentElem e) : IsIntegral R e :=
   ⟨X * (X - C 1), monic_X.mul (monic_X_sub_C 1), by
-    simp only [eval₂_mul, eval₂_X, eval₂_sub, eval₂_C, eval₂_one, map_one, mul_sub, mul_one,
+    simp only [eval₂_mul, eval₂_X, eval₂_sub, map_one, mul_sub, mul_one,
       he.eq, sub_self]⟩
 
 theorem localization_integralClosure_isDomain_isIntegrallyClosed

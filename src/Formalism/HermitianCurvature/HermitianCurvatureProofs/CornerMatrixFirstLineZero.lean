@@ -23,22 +23,22 @@ theorem zb_last_row (i0 s : ℕ) (hh : Matrix (Fin i0) (Fin i0) ℂ) (t : ℂ) (
     (ha' : a + 1 < i0 + s) (hb : b = i0) : C3.Zb i0 s hh t a b = 0 := by
   subst hb
   unfold C3.Zb
-  split_ifs <;> first | rfl | omega | (exfalso; omega)
+  split_ifs <;> first | rfl | omega
 
 theorem zb_col_last (i0 s : ℕ) (hh : Matrix (Fin i0) (Fin i0) ℂ) (t : ℂ) (hs : 2 ≤ s) (a : ℕ) (ha : a ≠ i0)
     (ha' : a + 1 < i0 + s) : C3.Zb i0 s hh t a (i0 + s - 1) = 0 := by
   unfold C3.Zb
-  split_ifs <;> first | rfl | omega | (exfalso; omega)
+  split_ifs <;> first | rfl | omega
 
 theorem corner_matrix_last_entry (i0 s : ℕ) (hh : Matrix (Fin i0) (Fin i0) ℂ) (t : ℂ) (hs : 2 ≤ s) :
     C3.Zb i0 s hh t i0 (i0 + s - 1) = t := by
   unfold C3.Zb
-  split_ifs <;> first | rfl | omega | (exfalso; omega)
+  split_ifs <;> first | rfl | omega
 
 theorem corner_matrix_first_line_zero (i0 s : ℕ) (hh : Matrix (Fin i0) (Fin i0) ℂ) (t : ℂ) (hs : 2 ≤ s) (b : ℕ) (hb : b + 1 < i0 + s) :
     C3.Zb i0 s hh t i0 b = 0 := by
   unfold C3.Zb
-  split_ifs <;> first | rfl | omega | (exfalso; omega)
+  split_ifs <;> first | rfl | omega
 
 theorem herm_bvec_right (v : Fin (2 * r + k + 1) → ℂ) (p : Fin (2 * r + k + 1)) :
     herm (Hpk k r) v (bvec p) = WeylGroupFacts.sgn k r p * v (WeylGroupFacts.tau k r p) := by
@@ -47,7 +47,7 @@ theorem herm_bvec_right (v : Fin (2 * r + k + 1) → ℂ) (p : Fin (2 * r + k + 
     by_cases h : q = p
     · subst h
       simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   unfold herm bvec
   rw [hs, single_dotProduct, one_mul, SignAntidiagonal.mulVec_hpk]
 

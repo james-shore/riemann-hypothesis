@@ -37,8 +37,7 @@ theorem root_rel {W : WeierstrassCurve ℂ_[p]} {wq : PowerSeries ℂ_[p]} (h : 
   have hD := congrArg D hG
   rw [map_zero] at hD
   simp only [G, map_add, map_sub, Derivation.leibniz, Derivation.leibniz_pow,
-    Derivation.map_algebraMap, smul_eq_mul, nsmul_eq_mul, smul_zero, zero_smul, mul_zero, zero_mul,
-    add_zero, zero_add, Nat.cast_ofNat] at hD
+    Derivation.map_algebraMap, smul_eq_mul, nsmul_eq_mul, mul_zero, add_zero, Nat.cast_ofNat] at hD
   simp only [Gv] at hω
   simp only [Acf, Bcf, Ccf, cc]
   linear_combination (PowerSeries.subst r (omegaW W wq)) * hD -
@@ -98,12 +97,12 @@ theorem abel {W : WeierstrassCurve ℂ_[p]} {wq : PowerSeries ℂ_[p]} (h : IsWq
     intro h0
     have h3 := congrArg (MvPowerSeries.coeff (Finsupp.single (0 : Fin 2) 1)) h0
     have hBA := rt_coeff_BA W wq 0
-    simp [Z3, Xv, MvPowerSeries.coeff_X, hne, hBA] at h3 <;> norm_num at h3
+    simp [Z3, Xv, MvPowerSeries.coeff_X, hne, hBA] at h3
   have h12 : (Xv 1 - Z3 W wq : MvPowerSeries (Fin 2) ℂ_[p]) ≠ 0 := by
     intro h0
     have h3 := congrArg (MvPowerSeries.coeff (Finsupp.single (1 : Fin 2) 1)) h0
     have hBA := rt_coeff_BA W wq 1
-    simp [Z3, Xv, MvPowerSeries.coeff_X, hne.symm, hBA] at h3 <;> norm_num at h3
+    simp [Z3, Xv, MvPowerSeries.coeff_X, hne.symm, hBA] at h3
   have key : ∀ j, PowerSeries.subst (Xv 0 : MvPowerSeries (Fin 2) ℂ_[p]) (omegaW W wq) *
         MvPowerSeries.pderiv ℂ_[p] j (Xv 0 : MvPowerSeries (Fin 2) ℂ_[p]) +
       PowerSeries.subst (Xv 1 : MvPowerSeries (Fin 2) ℂ_[p]) (omegaW W wq) *

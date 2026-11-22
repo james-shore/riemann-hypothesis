@@ -17,7 +17,7 @@ theorem pderiv_inr_rename_inl {α β : Type} (b : β) (a : MvPolynomial α ℂ) 
   induction a using MvPolynomial.induction_on with
   | C c => simp
   | add p p' hp hp' => simp [hp, hp']
-  | mul_X p i hp => simp [pderiv_mul, hp, pderiv_X, Pi.single_apply]
+  | mul_X p i hp => simp [hp, pderiv_X]
 
 theorem proof : ProjectionUnramifiedGeneric.Statement := by
   classical
@@ -60,14 +60,13 @@ theorem proof : ProjectionUnramifiedGeneric.Statement := by
     intro c b G
     induction G using Polynomial.induction_on with
     | C a => simp [hDι]
-    | add f g hf hg => simp only [Polynomial.eval₂_add, hDadd, hf, hg, Polynomial.derivative_add,
-        map_add, add_mul]
+    | add f g hf hg => simp only [Polynomial.eval₂_add, hDadd, hf, hg, map_add, add_mul]
     | monomial n a h =>
       have e : (Polynomial.C a * Polynomial.X ^ (n + 1) : Polynomial (MvPolynomial α ℂ)) =
           Polynomial.C a * Polynomial.X ^ n * Polynomial.X := by ring
       rw [e, Polynomial.eval₂_mul, hDmul, h, Polynomial.eval₂_X, hDX]
       simp only [Polynomial.derivative_mul, Polynomial.derivative_X, Polynomial.eval₂_add,
-        Polynomial.eval₂_mul, Polynomial.eval₂_one, Polynomial.eval₂_X, map_add, map_mul, mul_one]
+        Polynomial.eval₂_mul, Polynomial.eval₂_X, map_add, map_mul, mul_one]
       ring
 
   have hker : ∀ c : β → L, (∀ j, D c (q j) = 0) → c = 0 := by

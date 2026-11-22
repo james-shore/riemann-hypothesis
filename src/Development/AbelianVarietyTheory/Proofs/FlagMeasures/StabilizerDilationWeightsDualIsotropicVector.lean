@@ -18,13 +18,11 @@ theorem conj_cont (a : Mat k r) : Continuous (conjM a : Mt k r → Mt k r) := by
   show Continuous fun x : Mt k r => a * Matrix.of x * a⁻¹
   first
   | fun_prop
-  | exact (continuous_const.mul continuous_id).mul continuous_const
 
 theorem lmul_cont (a : Mat k r) : Continuous (lmulM a : Mt k r → Mt k r) := by
   show Continuous fun x : Mt k r => a * Matrix.of x
   first
   | fun_prop
-  | exact continuous_const.mul continuous_id
 
 theorem conj_conj (a b : Mat k r) : (conjM a : Mt k r → Mt k r) ∘ conjM b = conjM (a * b) := by
   funext x
@@ -141,7 +139,6 @@ theorem le_of_tendsto_conj (ν : Measure (Mt k r)) (U : Set (Mt k r)) (hU : IsOp
   have hU' : ν (⋃ m, V m) = ⨆ m, ν (V m) := by
     first
     | exact hVmono.measure_iUnion
-    | exact measure_iUnion_eq_iSup hVmono.directed_le
   calc ν U ≤ ν (⋃ m, V m) := measure_mono hsub
     _ = ⨆ m, ν (V m) := hU'
     _ ≤ C := iSup_le hVle
@@ -563,7 +560,7 @@ theorem rEl_ee (j : ℕ) (β : Fin r → ℕ) (q : (UTin β → ℂ) × PTop k r
     · intro a'
       simp only [pTop, pOf, Rad.pEl_se, Rad.esI_ne_eI, if_false]
   simp only [rEl, Matrix.mul_apply, hcol, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq',
-    Finset.sum_ite_eq, Finset.mem_univ, if_true, UEmb.u_ee]
+    Finset.mem_univ, if_true, UEmb.u_ee]
 
 theorem block_of_subset (j : ℕ) {β β' : Fin r → ℕ} (h : Set.range (rEl k r j β) ⊆ Set.range (rEl k r j β'))
     (p : UT r) (hp : β p.1.1 = β p.1.2) : β' p.1.1 = β' p.1.2 := by
@@ -702,7 +699,6 @@ theorem le_of_conj (j : ℕ) {β : Fin r → ℕ} {n : Mat k r} (hn : n ∈ Nset
   first
   | exact (ENNReal.mul_le_mul_right hUpos.ne' hUfin.ne).mp hle
   | exact (ENNReal.mul_le_mul_iff_left hUpos.ne' hUfin.ne).mp hle
-  | exact le_of_mul_le_mul_right hle hUpos
 
 private theorem conj_mem_Rset_of_two_Nset_decompositions {γ g₀ g₀' n₁ n₂ m₁ m₂ : Mat k r} (hn₁ : n₁ ∈ Nset k r)
     (hn₂ : n₂ ∈ Nset k r) (hm₁ : m₁ ∈ Nset k r) (hm₂ : m₂ ∈ Nset k r) (hγ : γ = n₁ * g₀ * n₂)

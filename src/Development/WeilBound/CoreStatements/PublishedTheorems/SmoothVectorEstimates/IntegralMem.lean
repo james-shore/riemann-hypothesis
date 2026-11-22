@@ -27,7 +27,6 @@ theorem cd_sM (hm : m + 1 < a) : ContDiff ℝ ∞ (sM hm : V ι a m → LieI ι 
   split_ifs <;> first
     | exact contDiff_const
     | exact (contDiff_apply ℝ ℂ k).comp (contDiff_apply ℝ (ι → ℂ) _)
-    | fun_prop
 
 theorem cd_sI (hm : m + 1 < a) : ContDiffOn ℝ ∞ (sI hm : V ι a m → LieI ι a) (O ι hm) := by
   have hc : ∀ q k, ContDiff ℝ ∞ (fun x : PositivityTheory.jumpWindows.CornerBlockIndex.V ι a m => x q k) := fun q k =>
@@ -41,10 +40,6 @@ theorem cd_sI (hm : m + 1 < a) : ContDiffOn ℝ ∞ (sI hm : V ι a m → LieI �
     | exact contDiffOn_const
     | exact (hc _ k).contDiffOn.inv fun x hx => hne x hx k
     | exact ((hc _ k).contDiffOn.mul ((hc _ k).contDiffOn.inv fun x hx => hne x hx k)).neg
-    | (apply ContDiffOn.neg
-       apply ContDiffOn.mul
-       · exact (hc _ k).contDiffOn
-       · exact (hc _ k).contDiffOn.inv fun x hx => hne x hx k)
 
 theorem contOn_uM (hm : m + 1 < a) : ContinuousOn (uM hm : V ι a m → GL (Fin a) (ι → ℂ)) (O ι hm) := by
   rw [Units.isEmbedding_embedProduct.isInducing.continuousOn_iff]
@@ -102,9 +97,9 @@ theorem integral_mem {α X : Type} [MeasurableSpace α] {μ : Measure α} [Norme
     hf.mono hgm (Filter.Eventually.of_forall fun x => le_rfl)
   have key : ∫ x, f x ∂μ = Y.subtypeL (∫ x, (⟨f x, hfY x⟩ : Y) ∂μ) := by
     rw [← Y.subtypeL.integral_comp_comm hgi]
-    first | rfl | simp
+    first | rfl
   rw [key]
-  first | exact (∫ x, (⟨f x, hfY x⟩ : Y) ∂μ).2 | simp
+  first | exact (∫ x, (⟨f x, hfY x⟩ : Y) ∂μ).2
 
 end PositivityTheory.jumpWindows.CornerBlockIndex
 

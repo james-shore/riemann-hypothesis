@@ -18,7 +18,7 @@ theorem colSub_comp {d a : ℕ} (u v : ι → Matrix (Fin a) (Fin a) ℂ) (P : P
     apply MvPolynomial.algHom_ext
     intro y
     simp only [AlgHom.comp_apply, colSub, aeval_X, map_sum, map_mul, algHom_C, algebraMap_eq, Matrix.mul_apply,
-      Finset.sum_mul, Finset.mul_sum, C_mul]
+      Finset.sum_mul, Finset.mul_sum]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => ?_
     ring

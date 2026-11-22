@@ -17,7 +17,7 @@ private theorem idxOf_append_eq_length_add_of_not_mem (l1 l : List α) (x : α) 
       rintro rfl
       exact hx (by simp)
     have ht : x ∉ t := fun h => hx (by simp [h])
-    simp [List.idxOf_cons, hax, ih ht] <;> omega
+    simp [hax, ih ht] <;> omega
 
 theorem idxOf_append_first (l1 l2 : List α) (x : α) (hx : x ∉ l1) : (l1 ++ x :: l2).idxOf x = l1.length := by
   rw [idxOf_append_eq_length_add_of_not_mem l1 _ x hx]
@@ -26,12 +26,12 @@ theorem idxOf_append_first (l1 l2 : List α) (x : α) (hx : x ∉ l1) : (l1 ++ x
 theorem idxOf_append_second (l1 l2 : List α) (x y : α) (hxy : x ≠ y) (hy : y ∉ l1) :
     (l1 ++ x :: y :: l2).idxOf y = l1.length + 1 := by
   rw [idxOf_append_eq_length_add_of_not_mem l1 _ y hy]
-  simp [List.idxOf_cons, hxy]
+  simp [hxy]
 
 theorem idxOf_append_third (l1 l2 : List α) (x y z : α) (hxz : x ≠ z) (hyz : y ≠ z) (hz : z ∉ l1) :
     (l1 ++ x :: y :: z :: l2).idxOf z = l1.length + 2 := by
   rw [idxOf_append_eq_length_add_of_not_mem l1 _ z hz]
-  simp [List.idxOf_cons, hxz, hyz]
+  simp [hxz, hyz]
 
 theorem cn_idx_lt (l1 l2 : List α) (u : α) (hu : u ∈ l1) : (l1 ++ l2).idxOf u < l1.length := by
   induction l1 with
@@ -45,7 +45,7 @@ theorem cn_idx_lt (l1 l2 : List α) (u : α) (hu : u ∈ l1) : (l1 ++ l2).idxOf 
         · exact absurd h'.symm h
         · exact h'
       have := ih hu'
-      simp [List.idxOf_cons, h]
+      simp [h]
       omega
 
 end Pos
@@ -61,11 +61,11 @@ private theorem eq_of_idxOf_eq_of_mem {β : Type*} [BEq β] [LawfulBEq β] (l : 
     · by_cases hav : a = v
       · exact hau.symm.trans hav
       · subst hau
-        simp [List.idxOf_cons, hav] at h
+        simp [hav] at h
     · by_cases hav : a = v
       · subst hav
-        simp [List.idxOf_cons, hau] at h
-      · simp [List.idxOf_cons, hau, hav] at h
+        simp [hau] at h
+      · simp [hau, hav] at h
         have hu' : u ∈ t := (List.mem_cons.mp hu).resolve_left (fun h' => hau h'.symm)
         have hv' : v ∈ t := (List.mem_cons.mp hv).resolve_left (fun h' => hav h'.symm)
         exact ih hu' hv' h

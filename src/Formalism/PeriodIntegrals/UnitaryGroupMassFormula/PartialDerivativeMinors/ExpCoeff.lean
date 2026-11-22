@@ -28,12 +28,11 @@ theorem eK_apply (k : JI H N0 N1 → ℕ) (s : Bool) (t : H) (a : Fin N0) (b : F
     eK k ((s, t), a, b) = k (t, a, b) := by
   first
   | rfl
-  | simp [eK]
 
 theorem sum_eJ (k : JI H N0 N1 → ℕ) : ∑ j, k j • eJ j = eK k := by
   ext ⟨⟨s, t⟩, a, b⟩
   rw [eK_apply, Finsupp.finset_sum_apply, Finset.sum_eq_single (t, a, b)]
-  · cases s <;> simp [eJ, vX, Finsupp.single_apply]
+  · cases s <;> simp [eJ, vX]
   · rintro ⟨t', a', b'⟩ _ hne
     simp only [eJ, vX, Finsupp.add_apply, Finsupp.smul_apply, Finsupp.single_apply, smul_eq_mul,
       Prod.mk.injEq]
@@ -91,7 +90,7 @@ theorem cc_zero (S : ℂ_[p]) (ut : H → ℂ_[p]) :
   rw [← MvPowerSeries.coeff_zero_eq_constantCoeff_apply, MvPowerSeries.coeff_monomial, if_neg]
   intro h
   have h2 := DFunLike.congr_fun h (vX false j)
-  simp [eJ, vX, Finsupp.single_apply] at h2
+  simp [eJ, vX] at h2
 
 private theorem monomial_pow_lemma {σ R : Type*} [CommSemiring R] (n : σ →₀ ℕ) (a : R) (k : ℕ) :
     MvPowerSeries.monomial n a ^ k = MvPowerSeries.monomial (k • n) (a ^ k) := by

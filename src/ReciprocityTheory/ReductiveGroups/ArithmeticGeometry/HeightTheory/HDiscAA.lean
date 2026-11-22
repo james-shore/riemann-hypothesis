@@ -29,11 +29,9 @@ theorem det_blockDiagonal' {ι R : Type*} [Fintype ι] [DecidableEq ι] [CommRin
     show Matrix.blockDiagonal' M ⟨c, k⟩ ⟨c, k'⟩ = M c k k'
     first
       | exact Matrix.blockDiagonal'_apply_eq M c k k'
-      | simp [Matrix.blockDiagonal'_apply]
   letI : LinearOrder ι := LinearOrder.lift' (Fintype.equivFin ι) (Fintype.equivFin ι).injective
   first
     | rw [(Matrix.blockTriangular_blockDiagonal' M).det]
-    | rw [Matrix.BlockTriangular.det (Matrix.blockTriangular_blockDiagonal' M)]
   rw [Finset.prod_congr rfl (fun c _ => hblk c)]
   refine Finset.prod_subset (Finset.subset_univ _) ?_
   intro c _ hc

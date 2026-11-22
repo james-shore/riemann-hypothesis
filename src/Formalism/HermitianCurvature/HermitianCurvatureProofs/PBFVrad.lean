@@ -259,8 +259,8 @@ theorem act_UUiw (s : ℂ) : ∀ (w : List C.Letter) (Φ : Ix (Fin w.length) →
     rw [uInv_cons, Fin.sum_univ_two]
     simp only [Fin.cons_zero, Fin.cons_succ]
     fin_cases i
-    · simp [Uinv, pr_one_fst_apply, pr_zero_fst_apply]
-    · simp [Uinv, pr_one_fst_apply, pr_alg_fst_apply]
+    · simp [Uinv, pr_zero_fst_apply]
+    · simp [Uinv]
       rw [add_comm]
 
 end ActU

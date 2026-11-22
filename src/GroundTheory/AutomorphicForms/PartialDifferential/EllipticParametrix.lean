@@ -325,7 +325,7 @@ theorem exists_parametrix {m : ℕ} (hn : 0 < n) (hm : 1 ≤ m) (hnm : n < 2 * m
           congr 1; ext x
           by_cases hx : x ∈ Metric.closedBall x₀ (ρ / 2)
           · rw [hDψ x (Metric.closedBall_subset_ball (by linarith) hx), smul_eq_mul, mul_comm]
-          · simp only [E, hθ0 x hx, zero_mul, mul_zero, smul_zero]
+          · simp only [E, hθ0 x hx, zero_mul, smul_zero]
       _ = _ := integral_congr_ae (hEe.mono fun x hx ↦ by show ψ' x • E x = _; rw [hx])
   have step2 : ∫ x, ψ' x • (θ x * e x) =
       smulLeftCLM ℂ (θ : EuclideanSpace ℝ (Fin n) → ℂ) E₀ ψ' := by

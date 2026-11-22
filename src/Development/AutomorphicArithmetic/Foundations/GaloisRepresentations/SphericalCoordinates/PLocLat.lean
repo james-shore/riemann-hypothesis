@@ -13,8 +13,8 @@ private theorem colM_update {K : Type*} [Field K] {n : ℕ} (b : Fin n → Fin n
     (y : Fin n → K) : (colM b).updateCol i y = colM (Function.update b i y) := by
   ext r c
   by_cases h : c = i
-  · subst h; simp [colM, Matrix.updateCol_apply]
-  · simp [colM, Matrix.updateCol_apply, h, Function.update_of_ne]
+  · subst h; simp [colM]
+  · simp [colM, h, Function.update_of_ne]
 
 private theorem colM_mulVec {K : Type*} [Field K] {n : ℕ} (b : Fin n → Fin n → K)
     (c : Fin n → K) : colM b *ᵥ c = ∑ i, c i • b i := by
@@ -70,7 +70,7 @@ private theorem exists_frame {K : Type*} [Field K] (f : K → ℝ) (h0 : f 0 = 0
       by_cases hj : j = i
       · subst hj
         simp [b]
-      · simp [b, Function.update_apply, hj]
+      · simp [b, hj]
     have hmax : f (colM (Function.update b i y)).det ≤ f d := by
       rw [hupd]
       exact hg0 _ (Finset.mem_univ _)

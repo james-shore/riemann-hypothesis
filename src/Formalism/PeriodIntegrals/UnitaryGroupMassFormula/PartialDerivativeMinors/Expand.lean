@@ -44,11 +44,11 @@ theorem fcoeff_mul {H : Type} [DecidableEq H] {N0 N1 p : ℕ} [Fact p.Prime] (E 
   refine Finset.sum_nbij' (fun x => x.2) (fun κ2 => (κ - κ2, κ2)) ?_ ?_ ?_ ?_ ?_
   · intro x hx
     simp at hx
-    simp only [Finset.mem_coe, Finset.mem_Iic]
+    simp only [Finset.mem_Iic]
     rw [← hx]
     exact le_add_self
   · intro κ2 hκ2
-    simp only [Finset.mem_coe, Finset.mem_Iic] at hκ2
+    simp only [Finset.mem_Iic] at hκ2
     simpa using tsub_add_cancel_of_le hκ2
   · intro x hx
     simp at hx
@@ -77,8 +77,7 @@ theorem prof_le_totalDegree {H : Type} {N0 N1 : ℕ} (P : PolyXZ H N0 N1) (μ : 
         rw [Finsupp.tsub_apply]
         exact tsub_le_self.trans (by
           first
-          | exact le_of_eq rfl
-          | exact (Finsupp.snd_sumFinsuppEquivProdFinsupp _ _).le)
+          | exact le_of_eq rfl)
     _ = ∑ x ∈ (Finset.univ : Finset (Fin N0 × Fin N1)).image
           (fun ab => (Sum.inr ((true, t), ab.1, ab.2) : XZ (Bool × H) N0 N1)), μ x := by
         rw [Finset.sum_image (by intro x _ y _ h; simpa [Prod.ext_iff] using h), Fintype.sum_prod_type]

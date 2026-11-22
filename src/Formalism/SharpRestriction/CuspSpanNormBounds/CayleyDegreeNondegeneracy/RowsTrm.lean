@@ -224,7 +224,6 @@ theorem rows_absDl_nonneg (hrd : 0 < D.host.rdE) (Z : GramM D) (l : ℕ) (τ : D
   unfold absDl absReal
   first
     | exact mul_nonneg (norm_nonneg _) (Real.rpow_nonneg hrd.le _)
-    | exact mul_nonneg (norm_nonneg _) (Real.rpow_nonneg_of_nonneg hrd.le _)
 
 theorem rows_max_cmp {b x c Ch M : ℝ} (hb : 1 ≤ b) (hx : 0 ≤ x) (hM : 0 ≤ M) :
     max 1 (x / b ^ (c * M)) ≤ b ^ (max (Ch - c) 0 * M) * max 1 (x / b ^ (Ch * M)) := by
@@ -721,7 +720,6 @@ theorem rowsT_Tr_pos (D : D7) (w : D.what₂.Word) : 0 < Tr D w := by
     | exact_mod_cast (D.mem w).A.prime.pos
     | exact_mod_cast (D.mem w).A.hprime.pos
     | exact_mod_cast (D.mem w).A.T_prime.pos
-    | exact_mod_cast (D.mem w).A.hT.pos
 
 theorem rowsT_gS_pos {D : D7} {u u' : D.what₂.Word} (h : Cnt.Stand D u u') : (0 : ℝ) < (gS D : ℝ) := by
   unfold Cnt.Stand at h
@@ -834,7 +832,7 @@ theorem rowsT_chSh_nonneg (T T' : ℕ) (F : LFlag (hS D) D.R.rS (T : D.host.E)) 
 theorem rowsT_invSh_nonneg (T T' : ℕ) (F : LFlag (hS D) D.R.rS (T : D.host.E)) (F' : LFlag (hS D) D.R.rS (T' : D.host.E))
     (φ : D.host.E →+* ℂ) : 0 ≤ invSh T T' F F' φ := by
   unfold invSh Lat.sh Lat.ch
-  split_ifs <;> first | positivity | exact le_rfl
+  split_ifs <;> first | positivity
 
 theorem rowsT_small_one {ι : Type*} [Fintype ι] (s : ι → ℝ) (T T' g : ℝ) (hT : 0 < T) (hT' : 0 < T') (hg : 0 < g)
     (hs : ∀ v, 0 < s v) (h : Real.sqrt (T * T' / g ^ 2) ^ Fintype.card ι ≤ ∏ v, 1 / s v) :
@@ -867,7 +865,7 @@ theorem rowsT_small_one {ι : Type*} [Fintype ι] (s : ι → ℝ) (T T' g : ℝ
   have hr0 : 0 ≤ Real.sqrt (T' / T) * g := mul_nonneg (Real.sqrt_nonneg _) hg.le
   have e1 : T' / T * (T * T' / g ^ 2) = (T' / g) ^ 2 := by
     first
-      | (field_simp; ring)
+      | (field_simp)
       | field_simp
   have h3 : Real.sqrt (T' / T) * q = T' / g := by
     rw [hq, ← Real.sqrt_mul (div_nonneg hT'.le hT.le), e1, Real.sqrt_sq (div_nonneg hT'.le hg.le)]

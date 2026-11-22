@@ -36,8 +36,7 @@ theorem Q_re_inl (σ : E →+* ℂ) (h : σ (H.rt : E) = H.rt0)
   have hQ : Q hty G σ z z =
       2 * (star x ⬝ᵥ (Matrix.of fun a b : Fin p => Complex.I * σ (G (.inl a) (.inl b))) *ᵥ x) := by
     rw [Q_inl hty G σ h]
-    simp only [hx, dotProduct, mulVec, Matrix.of_apply, Finset.mul_sum, Pi.star_apply, star_star,
-      Complex.star_def, Complex.conj_conj]
+    simp only [hx, dotProduct, mulVec, Matrix.of_apply, Finset.mul_sum, Pi.star_apply, Complex.star_def, Complex.conj_conj]
     refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
     ring
   obtain ⟨h0, h1⟩ := re_star_dotProduct_mulVec_pos_of_posDef _ hG1 x

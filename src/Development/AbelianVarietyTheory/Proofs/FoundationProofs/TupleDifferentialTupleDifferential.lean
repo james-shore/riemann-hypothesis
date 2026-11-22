@@ -16,7 +16,7 @@ def tupleCoface (a b : X) {n : ℕ} (i : Fin (n + 2)) (x : Fin n → X) : Fin (n
   simp only [tupleCoface, Fin.zero_le, if_true]
   induction j using Fin.cases with
   | zero => simp
-  | succ j => simp [← Fin.succ_castSucc]
+  | succ j => simp
 
 @[simp] theorem tupleCoface_last (a b : X) {n : ℕ} (x : Fin n → X) :
     tupleCoface a b (Fin.last (n + 1)) x = Fin.snoc x b := by

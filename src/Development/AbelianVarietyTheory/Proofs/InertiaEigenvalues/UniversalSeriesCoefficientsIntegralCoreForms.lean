@@ -268,7 +268,6 @@ theorem xi_int_of_ties (hRF : GlobalTheory.NT.RayField) (hSI : GlobalTheory.Inde
           ((ρ.B i j b).vecFam (half (ρ.ch i) (admissibleConjugatePairPlaces D.ntw i Q M))
           (Base.univFam (univOf D.nexp i (admissibleConjugatePairPlaces D.ntw i Q M) M ρ.rc) (ρ.β j)) a') w g))) hv')
     rw [Pi.smul_apply, Pi.smul_apply, e3, smul_eq_mul, smul_eq_mul]
-    beta_reduce
     rw [e2]
     ring
 

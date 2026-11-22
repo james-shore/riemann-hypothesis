@@ -152,7 +152,6 @@ theorem exists_blockNF {K : Type*} [Field K] (s : K →+* K) (hs : ∀ x, s (s x
     have h2 := congrFun hw i'
     first
     | exact h2
-    | (simp only [Matrix.mulVec, dotProduct, Matrix.submatrix_apply, Pi.zero_apply] at h2; exact h2)
   · rw [hc, Matrix.dotProduct_mulVec, hrow i', zero_dotProduct]
 
 end GlobalTheory.CompanionTheory.WeilSiegel.Deg.NF

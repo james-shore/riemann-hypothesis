@@ -19,7 +19,7 @@ variable {n d : ℕ} {J : Type}
 theorem pull_bsL_dz (ε : Fin n ≃ Fin d ⊕ J) (a : Fin d) :
     pull (bsL ε) (dz a) = dz (ε.symm (.inl a)) ∧ pull (bsL ε) (dzb a) = dzb (ε.symm (.inl a)) := by
   rw [(pull_dz _ a).1, (pull_dz _ a).2]
-  simp [bsL_apply, coordVec, EuclideanSpace.single_apply]
+  simp [bsL_apply, coordVec]
 
 theorem pull_bsL_prod (ε : Fin n ≃ Fin d ⊕ J) (s : Finset (Fin d)) :
     pull (bsL ε) ((∏ a ∈ s, (Complex.I / 2) • sym (a, a) : Ev d) : Alt d) =

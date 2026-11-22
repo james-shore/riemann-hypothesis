@@ -529,7 +529,6 @@ theorem biTriv_lift_of_isNilpotent : (∀ (A : Type) [CommRing A] (J : Ideal A),
   have : Mono (red J) := by
     first
     | infer_instance
-    | exact (inferInstance : IsImmersion (red J)).mono
   have : IsMonHom i := hi
   obtain ⟨s₀, g₀, l₀, m₀⟩ := BiTransport.biTriv_transport _ _ (red J) X G G₀ F hw hpb P P₀ w hP i i₀ hi hi₀ hc σ
   exact BiLift.nonempty_biTriv g₀ l₀ hJ m₀

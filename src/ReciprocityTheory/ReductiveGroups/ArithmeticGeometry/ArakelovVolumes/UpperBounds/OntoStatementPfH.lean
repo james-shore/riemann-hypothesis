@@ -49,7 +49,6 @@ private theorem cpt_continuous : Continuous fun z => cpt X x0 z := by
   split_ifs
   · first
       | fun_prop
-      | exact (EuclideanSpace.proj _).continuous
   · exact continuous_const
   · exact continuous_const
 

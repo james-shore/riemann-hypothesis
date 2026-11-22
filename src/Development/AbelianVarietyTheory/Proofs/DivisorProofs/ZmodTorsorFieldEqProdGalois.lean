@@ -18,11 +18,11 @@ theorem exists_point_pi {K G A Ω : Type} [CommRing K] [Fintype G] [DecidableEq 
     (f := fun g => z (Pi.single g 1)) (by rw [hsum]; exact one_ne_zero)
   have hidem : z (Pi.single g 1) = 1 := by
     have h2 : z (Pi.single g 1) * z (Pi.single g 1) = z (Pi.single g 1) * 1 := by
-      rw [← map_mul, mul_one]; congr 1; funext h; by_cases hh : h = g <;> simp [Pi.single_apply, hh]
+      rw [← map_mul, mul_one]; congr 1; funext h; by_cases hh : h = g <;> simp [hh]
     exact mul_left_cancel₀ hg h2
   refine ⟨g, fun f => ?_⟩
   have hf : f * Pi.single g 1 = (fun _ => f g) * Pi.single g 1 := by
-    funext h; by_cases hh : h = g <;> simp [Pi.single_apply, hh]
+    funext h; by_cases hh : h = g <;> simp [hh]
   calc z f = z f * z (Pi.single g 1) := by rw [hidem, mul_one]
     _ = z (fun _ => f g) * z (Pi.single g 1) := by rw [← map_mul, ← map_mul, hf]
     _ = z (fun _ => f g) := by rw [hidem, mul_one]

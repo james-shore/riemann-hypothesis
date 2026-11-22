@@ -64,7 +64,7 @@ theorem exists_unitaryOneFiniteAdelic_of_det_normOne (D : D7) (π : (AfE D.host.
   · show cT _ _ * _ * _ = _
     ext a b
     fin_cases a; fin_cases b
-    simp [cT, Matrix.mul_apply, sigD]
+    simp [cT, Matrix.mul_apply]
     rw [mul_comm]
     exact hd'
   · ext

@@ -49,7 +49,7 @@ theorem qLevel_of_torsion_labels : AllVC fun {V} _ _ _ {D} {A} {G} _ _ U {C} _ _
     intro a
     have : k • a = 0 := by
       funext i
-      simp [nsmul_eq_mul, ZMod.natCast_self]
+      simp [nsmul_eq_mul]
     rw [← hptn, this, hpt0]
   have hex : ∀ a, ∃ p, f p = pt a := fun a => hf2 (pt a) (hkt a)
   choose p hp using hex

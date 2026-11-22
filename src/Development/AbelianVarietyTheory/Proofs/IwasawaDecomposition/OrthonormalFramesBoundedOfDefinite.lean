@@ -241,7 +241,6 @@ theorem step_of_right_mul :
     funext τ
     have k1 := congrArg (fun u : X.Ψ → GL (Fin r) ℂ => (u τ : Matrix (Fin r) (Fin r) ℂ)) key
     refine k1.trans ?_
-    beta_reduce
     rw [Pi.mul_apply, Pi.mul_apply, Units.val_mul, Units.val_mul]
     by_cases h : τ = τ0
     · subst h
@@ -258,7 +257,7 @@ theorem isUnitaryC_of_isUStab {r : ℕ} (X : Data E r) {G : Matrix (Fin r) (Fin 
     simp only [herm, Matrix.mulVec, dotProduct, Pi.single_apply, mul_ite, mul_one, mul_zero,
       Finset.sum_ite_eq', Finset.mem_univ, if_true, ite_mul, zero_mul, one_mul] at h
     have h2 : G a b = ∑ x, ∑ x_1, if x = a then G x x_1 * cc (if x_1 = b then 1 else 0) else 0 := by
-      simp [apply_ite cc, cc_one, cc_zero]
+      simp [apply_ite cc]
     rw [h2, ← h]
     simp only [Matrix.mul_apply, Matrix.transpose_apply, Matrix.map_apply]
     simp_rw [Finset.sum_mul]
@@ -402,7 +401,7 @@ theorem gamDisc : (∀ (r : ℕ) (X : Data E r) {G : Matrix (Fin r) (Fin r) E} (
       ((Units.continuous_val.comp
         ((continuous_apply τ).comp continuous_subtype_val)).matrix_elem a b).norm
     refine hc.continuousAt.eventually_lt continuousAt_const ?_
-    by_cases h : a = b <;> simp [Matrix.one_apply, h]
+    by_cases h : a = b <;> simp [h]
   refine ⟨_, Filter.inter_mem hC hV, ?_⟩
   rintro g ⟨γ, hγ, hg⟩ ⟨h1, h2⟩
   by_contra hne

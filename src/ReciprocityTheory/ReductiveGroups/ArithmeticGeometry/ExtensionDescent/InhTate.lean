@@ -22,7 +22,6 @@ private theorem map_map_lemma {Y : Scheme.{0}} {U V W : Y.Opens} (h : W ≤ V) (
       (Y.presheaf.map (homOfLE (h.trans h')).op).hom y := by
   first
     | (show ((Y.presheaf.map (homOfLE h').op) ≫ (Y.presheaf.map (homOfLE h).op)).hom y = _; rw [← Functor.map_comp] <;> rfl)
-    | (rw [← CommRingCat.comp_apply, ← Functor.map_comp] <;> rfl)
 
 theorem res_res {Y : Scheme.{0}} {U V W : Y.Opens} (h : W ≤ V) (h' : V ≤ U) (x : Γ(Y, U)ˣ) :
     res h (res h' x) = res (h.trans h') x := by
@@ -33,7 +32,6 @@ theorem res_gv {Y : Scheme.{0}} (a : Γ(Y, ⊤)ˣ) {V W : Y.Opens} (h : W ≤ V)
     res h (gv a V) = gv a W := by
   first
     | exact res_res h le_top a
-    | (ext; exact map_map_lemma h le_top _)
 
 def pullTop {X Y : Scheme.{0}} (f : Y ⟶ X) : Γ(X, ⊤)ˣ →* Γ(Y, ⊤)ˣ := Units.map f.appTop.hom
 
@@ -42,8 +40,6 @@ private theorem app_res_lemma_2 {X Y : Scheme.{0}} (f : Y ⟶ X) (y : Γ(X, ⊤)
       (Y.presheaf.map (homOfLE le_top).op).hom (f.appTop.hom y) := by
   first
     | (show ((X.presheaf.map (homOfLE le_top).op) ≫ f.app V).hom y = (f.appTop ≫ Y.presheaf.map (homOfLE le_top).op).hom y; rw [Scheme.Hom.naturality] <;> rfl)
-    | (rw [← CommRingCat.comp_apply, Scheme.Hom.naturality, CommRingCat.comp_apply] <;> rfl)
-    | simp [← CommRingCat.comp_apply, Scheme.Hom.naturality]
 
 theorem pullU_gv {X Y : Scheme.{0}} (f : Y ⟶ X) (a : Γ(X, ⊤)ˣ) (V : X.Opens) :
     pullU f V (gv a V) = gv (pullTop f a) (f ⁻¹ᵁ V) := by
@@ -54,7 +50,7 @@ theorem app_res {X Y : Scheme.{0}} (f : Y ⟶ X) (y : Γ(X, ⊤)) (V : X.Opens) 
     (h : W ≤ f ⁻¹ᵁ V) :
     (Y.presheaf.map (homOfLE h).op).hom ((f.app V).hom ((X.presheaf.map (homOfLE le_top).op).hom y)) =
       (Y.presheaf.map (homOfLE le_top).op).hom (f.appTop.hom y) := by
-  rw [app_res_lemma_2 f y V, map_map_lemma] <;> rfl
+  rw [app_res_lemma_2 f y V, map_map_lemma]
 
 theorem app_res' {X Y : Scheme.{0}} (f : Y ⟶ X) (y : Γ(X, ⊤)) (V : X.Opens) :
     (f.app V).hom ((X.presheaf.map (homOfLE le_top).op).hom y) =
@@ -108,7 +104,6 @@ theorem isConst_invGen {φ : K → (Y ⟶ X)} {ε : K → ℤ} {t : LB.Gen (LB.L
   rw [e1]
   first
     | exact (map_inv (res le_top) a).symm
-    | simp [gv, map_inv]
 
 theorem isConst_powGen {φ : K → (Y ⟶ X)} {ε : K → ℤ} {t : LB.Gen (LB.LinComb L φ ε)}
     {a : Γ(Y, ⊤)ˣ} (ht : IsConst t a) (n : ℕ) : IsConst (GeneratorPullback.powGen L φ ε t n) (a ^ n) := by
@@ -118,13 +113,11 @@ theorem isConst_powGen {φ : K → (Y ⟶ X)} {ε : K → ℤ} {t : LB.Gen (LB.L
   rw [e1]
   first
     | exact (map_pow (res le_top) a n).symm
-    | simp [gv, map_pow]
 
 theorem isConst_oneGen (L : LB X) : IsConst (LB.oneGen L (Y := Y)) 1 := by
   intro j
   first
     | exact (map_one (res le_top)).symm
-    | (show (1 : Γ(Y, _)ˣ) = res le_top 1; simp)
 
 theorem corr_of_isConst {φ : K → (Y ⟶ X)} {ε : K → ℤ} {φ' : K' → (Y ⟶ X)} {ε' : K' → ℤ}
     {t : LB.Gen (LB.LinComb L φ ε)} {t' : LB.Gen (LB.LinComb L φ' ε')} {a : Γ(Y, ⊤)ˣ}
@@ -148,9 +141,8 @@ private theorem linComb_g_lemma_3 {X Y : Scheme.{0}} {L : LB X} {K : Type} [Fint
     (φ : K → (Y ⟶ X)) (ε : K → ℤ) (hL : ∀ i j, L.g i j = 1) (i j : (LB.LinComb L φ ε).ι) :
     (LB.LinComb L φ ε).g i j = 1 := by
   first
-    | (simp only [LB.LinComb, hL, map_one]; refine Finset.prod_eq_one fun k _ => ?_; erw [map_one]; exact one_zpow _)
+    | (simp only [LB.LinComb, hL, map_one]; refine Finset.prod_eq_one fun k _ => ?_; erw [map_one])
     | (refine Finset.prod_eq_one fun k _ => ?_; rw [hL]; erw [map_one, map_one]; exact one_zpow _)
-    | (simp only [LB.LinComb, hL, map_one]; refine Finset.prod_eq_one fun k _ => ?_; simp [res])
 
 theorem cg_isGen {X Y : Scheme.{0}} {K : Type} [Fintype K] (φ : K → (Y ⟶ X)) (ε : K → ℤ)
     (a : Γ(Y, ⊤)ˣ) : (cg φ ε a).IsGen := by
@@ -199,12 +191,10 @@ def tatePre : DegPre R where
 theorem psi_isConst (n : ℤ) : IsConst (tatePre.psi n) (pi0 ^ (n ^ 2)) := by
   first
     | exact fun _ => rfl
-    | exact cg_isConst _ _ _
 
 theorem rigK_isConst : IsConst tatePre.rigK 1 := by
   first
     | exact (isConst_pullGen (cg_isConst _ _ 1) _).of_eq (map_one _)
-    | (intro j; show res _ (pullU _ _ (gv 1 _)) = gv 1 _; rw [pullU_gv, res_gv, map_one] <;> rfl)
 
 theorem tau_isConst (a b : ℤ) : IsConst (tatePre.tau a b) (pi0 ^ (2 * a * b)) := by
   have h := isConst_mulGen (isConst_mulGen (isConst_mulGen (psi_isConst (a + b))
@@ -213,7 +203,6 @@ theorem tau_isConst (a b : ℤ) : IsConst (tatePre.tau a b) (pi0 ^ (2 * a * b)) 
   refine h.of_eq ?_
   first
     | (rw [inv_one, _root_.mul_one, ← zpow_neg, ← zpow_neg, ← zpow_add, ← zpow_add]; congr 1; ring)
-    | group
 
 theorem psiEven : tatePre.PsiEven := by
   intro χ

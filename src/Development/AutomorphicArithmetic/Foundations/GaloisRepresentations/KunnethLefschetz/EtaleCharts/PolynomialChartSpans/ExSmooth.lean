@@ -50,7 +50,7 @@ private theorem exists_apply_eq {X Y : Scheme.{0}} (f : X ⟶ Y) {U : Y.Opens} (
   obtain ⟨q, rfl⟩ := hs p
   refine ⟨hV.fromSpec q, ?_⟩
   have h := congr($(IsAffineOpen.SpecMap_appLE_fromSpec f hU hV e) q)
-  simp only [Scheme.Hom.comp_apply] at h
+  simp only at h
   exact h.symm
 
 private theorem isProper_snd {X Y S : Scheme.{0}} (f : X ⟶ S) (g : Y ⟶ S) (hf : IsProper f) :

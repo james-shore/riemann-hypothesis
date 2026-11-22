@@ -80,7 +80,7 @@ theorem cE_mem (S : Finset (Fin d)) (k : Fin d) : cE S k ∈ (cone {k} : AddSubm
 
 theorem neg_cE_mem {S : Finset (Fin d)} (k : Fin d) : -cE S k ∈ (cone S : AddSubmonoid (Gam n d)) := by
   have e : -cE S k = ∑ j ∈ S, (ratE j k : Gam n d) := by
-    simp [cE, ratE, ← Finset.sum_neg_distrib]
+    simp [cE, ratE]
   rw [e]
   exact sum_mem fun j hj => ratE_mem hj k
 

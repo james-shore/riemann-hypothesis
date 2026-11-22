@@ -97,7 +97,7 @@ theorem exists_mapMat {n n' : ℕ} {r : ↥(GK K) →* GL (Fin n) ↥(OL LL)} {r
   rw [stdMap_mulVec]
   funext j
   rw [stdMap_apply, Finset.sum_apply, Finset.sum_eq_single j
-    (fun m _ hm => by simp [stdMap_apply, Pi.single_apply, Ne.symm hm]) (by simp)]
+    (fun m _ hm => by simp [stdMap_apply, Ne.symm hm]) (by simp)]
   simp [stdMap_apply, Matrix.mulVec, dotProduct, Pi.single_apply]
 
 theorem mapMat_mul {n n' n'' : ℕ} {r : ↥(GK K) →* GL (Fin n) ↥(OL LL)} {r' : ↥(GK K) →* GL (Fin n') ↥(OL LL)}

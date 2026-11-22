@@ -73,6 +73,6 @@ theorem growthOn_le_compDeg : ∀ (E : Type) [Field E] [NumberField E] [IsCMFiel
   obtain ⟨δ, hδ⟩ := GlobalTheory.T.cone_degree_growth_chowForm_integrality.2.1 c.F _ _ ev (dimFlag Dw) a ha hne0 hneT
   rw [GlobalTheory.T.cone_degree_growth_chowForm_integrality.1 c.F _ _ ev (dimFlag Dw) a ha δ hδ] at hlow
   rw [compDeg, ← hev, hδ.imageDeg_eq]
-  first | exact (ENNReal.mul_le_mul_iff_right haD0 haDT).1 hlow | exact (ENNReal.mul_le_mul_iff_left haD0 haDT).1 hlow
+  first | exact (ENNReal.mul_le_mul_iff_right haD0 haDT).1 hlow
 
 end GlobalTheory.DegVal

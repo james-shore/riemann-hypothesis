@@ -11,8 +11,7 @@ private lemma stdJ_form' {D : Type} [CommRing D] {g : ℕ}
     (M : Matrix (Fin g ⊕ Fin g) (Fin g ⊕ Fin g) D) (i j : Fin g ⊕ Fin g) :
     (Mᵀ * stdJ D g * M) i j =
       ∑ a, (M (Sum.inr a) i * M (Sum.inl a) j - M (Sum.inl a) i * M (Sum.inr a) j) := by
-  simp [stdJ, Matrix.mul_apply, Fintype.sum_sum_type, Matrix.one_apply, Finset.sum_sub_distrib,
-    sub_eq_add_neg, add_comm]
+  simp [stdJ, Matrix.mul_apply, Fintype.sum_sum_type, Matrix.one_apply, sub_eq_add_neg, add_comm]
   rw [Finset.sum_add_distrib, Finset.sum_neg_distrib]
   ring
 
@@ -23,7 +22,7 @@ private lemma stdJ_eq (D : Type) [CommRing D] (g : ℕ) :
 
 private lemma det_stdJ (D : Type) [CommRing D] (g : ℕ) : (stdJ D g).det = 1 := by
   rw [stdJ_eq, Matrix.det_mul, Matrix.det_mul]
-  simp [Matrix.det_fromBlocks_zero₂₁, Matrix.det_fromBlocks_zero₁₂]
+  simp
 
 theorem u1 : IsotypicAveragingStatement := by
   intro S _ g m Ht Bt E cp εT εL π hπ hT hT1 hL hL1 hHt hE hBH

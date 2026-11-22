@@ -127,7 +127,7 @@ def ψ (M : Matrix (Fin (n * d)) (Fin (n * d)) k) : Matrix (Fin n) (Fin n) k :=
 
 theorem ψ_φ (x : Matrix (Fin n) (Fin n) k) : ψ B (φ B x) = x := by
   funext i i'
-  simp [ψ, φ_apply_mulVec, eI_eF, mulVec_single_one]
+  simp [ψ, φ_apply_mulVec, eI_eF]
 
 theorem continuous_ψ : Continuous (ψ B (n := n)) := by
   unfold ψ

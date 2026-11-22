@@ -139,7 +139,7 @@ theorem exists_tangent_point : ∀ {o : Type} [CommRing o] (X : Scheme.{0}) (s :
       by_cases hac : a = c
       · subst hac
         simp
-      · simp [hac, Pi.single_apply, Ne.symm hac]
+      · simp [hac, Ne.symm hac]
     rw [LinearMap.zero_apply, ← hv]
     rw [dirMap, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, TrivSqZeroExt.snd_map] at e
     exact e

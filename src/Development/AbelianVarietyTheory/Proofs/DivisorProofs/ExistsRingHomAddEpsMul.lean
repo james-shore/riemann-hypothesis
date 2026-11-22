@@ -89,7 +89,7 @@ theorem fst_comp_tangent_eq_one : ∀ {E : Type} [Field E] [NumberField E] [IsCM
     rw [Category.assoc, Over.w u]; show spMap _ ≫ spMap (algebraMap K (DualNumber K)) = 𝟙 _
     rw [← Spec.map_comp, ← CommRingCat.ofHom_comp]
     have e3 : (TrivSqZeroExt.fstHom K K K).toRingHom.comp (algebraMap K (DualNumber K)) = RingHom.id K := by
-      ext a; simp [TrivSqZeroExt.algebraMap_eq_inl]
+      ext a; simp
     rw [e3, CommRingCat.ofHom_id, Spec.map_id]
   refine hm.1.hom_ext (hG1.trans hA1.symm) (hA2.trans ?_)
   exact (Over.w (1 : Over.mk (𝟙 (Sp K)) ⟶ A)).symm
@@ -108,7 +108,7 @@ theorem fst_comp_transl_eq : ∀ {K : Type} [Field K] {A : Over (Sp K)} [GrpObj 
     rw [Category.assoc, Over.w v]; show spMap _ ≫ spMap (algebraMap K (DualNumber K)) = 𝟙 _
     rw [← Spec.map_comp, ← CommRingCat.ofHom_comp]
     have e3 : (TrivSqZeroExt.fstHom K K K).toRingHom.comp (algebraMap K (DualNumber K)) = RingHom.id K := by
-      ext a; simp [TrivSqZeroExt.algebraMap_eq_inl]
+      ext a; simp
     rw [e3, CommRingCat.ofHom_id, Spec.map_id]
   let ν : Over.mk (𝟙 (Sp K)) ⟶ A := Over.homMk (spMap (TrivSqZeroExt.fstHom K K K).toRingHom ≫ v.left) hνw
   have hν : ν = 1 := Over.OverMorphism.ext hv
@@ -128,7 +128,7 @@ theorem fst_comp_transl_eq : ∀ {K : Type} [Field K] {A : Over (Sp K)} [GrpObj 
     simp only [io, Over.comp_left, Over.homMk_left, hx']
     rw [← Category.assoc, ← Spec.map_comp, ← CommRingCat.ofHom_comp]
     have : (TrivSqZeroExt.fstHom B B B).toRingHom.comp (algebraMap B (DualNumber B)) = RingHom.id B := by
-      ext a; simp [TrivSqZeroExt.algebraMap_eq_inl]
+      ext a; simp
     rw [this, CommRingCat.ofHom_id, Spec.map_id]
     exact Category.id_comp x
   rw [← hw]

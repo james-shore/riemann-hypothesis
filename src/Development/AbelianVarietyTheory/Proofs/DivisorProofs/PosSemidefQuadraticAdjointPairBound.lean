@@ -40,7 +40,7 @@ theorem seq_bound (a c : ℕ → ℤ) (n : ℕ) (hpos : ∀ k, 0 ≤ a k)
   set S : ℤ := ∑ i ∈ Finset.range n, |c i| with hS
   have hcast : (((∑ i ∈ Finset.range n, (c i).natAbs : ℕ) + 1 : ℕ) : ℤ) = S + 1 := by
     push_cast
-    simp [hS, Int.natCast_natAbs]
+    simp [hS]
   rw [hcast]
   have hS0 : 0 ≤ S := Finset.sum_nonneg (fun i _ => abs_nonneg _)
   by_contra H

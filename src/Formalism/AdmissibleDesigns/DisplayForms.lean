@@ -47,8 +47,8 @@ theorem topoHyps
     rcases mul_eq_zero.mp h1 with h | h
     · exact ((PadicInt.unitCoeff h0).isUnit.map (algebraMap ℤ_[D.nd.l i] (D.nd.O i))).ne_zero h
     · exact (padicCoeff_O i).p_ne (pow_eq_zero_iff'.mp h).1
-  · apply isCyc_eps <;> assumption
-  · apply l_or_noReal <;> assumption
+  · apply isCyc_eps
+  · apply l_or_noReal
   · have h2 : ((epsU D.nd i g0 : (D.nd.O i)ˣ) : D.nd.O i) = algebraMap ℤ_[D.nd.l i] (D.nd.O i)
         ((cycZ (F := D.host.E) (Ω := D.nd.Om) (D.nd.l i) g0 : ℤ_[D.nd.l i]ˣ) : ℤ_[D.nd.l i]) := rfl
     rw [h2, hcyc]

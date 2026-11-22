@@ -91,7 +91,7 @@ theorem chi_injective {a b : Ch} (h : chi (S := Sp k) Ch a = chi (S := Sp k) Ch 
   rw [torusGamma_chi, torusGamma_chi] at this
   by_contra hab
   have h3 := congrArg (fun p => p.coeff a) this
-  simp [AddMonoidAlgebra.coeff_single, Finsupp.single_apply, Ne.symm hab] at h3
+  simp [AddMonoidAlgebra.coeff_single, Ne.symm hab] at h3
 
 open Rosenlicht GlobalTheory.Diag in
 

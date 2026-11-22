@@ -110,7 +110,7 @@ def lineLattice (hO : Function.Injective (algebraMap O LL)) (ρ : Representation
       refine ⟨b * a, ?_⟩
       rw [hρ, ← hb]
       funext i
-      simp [φ, Algebra.smul_def]
+      simp [φ]
     fg := by
       rw [LinearMap.range_eq_map]
       exact Submodule.FG.map _ Module.Finite.fg_top

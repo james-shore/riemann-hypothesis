@@ -27,7 +27,7 @@ theorem coeff_evalYZero (F : MvPowerSeries (Fin 2) R) (n : ℕ) :
     simp
   · intro d hd
     rw [hc, Finsupp.prod_fintype _ _ (fun i => by simp), Fin.prod_univ_two]
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one]
     by_cases h1 : d 1 = 0
     · rw [h1, pow_zero, mul_one, coeff_X_pow, if_neg, smul_zero]
       intro h0

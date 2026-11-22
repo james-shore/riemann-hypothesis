@@ -64,8 +64,7 @@ theorem mixT_bump_smul : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ), IsStdCha
   rw [h2, smul_smul, hc', one_smul] at h1
   funext z
   have h3 := congrFun h1 (GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.dagger S T₀ z)
-  simp only [GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.cj, Pi.smul_apply, smul_eq_mul, GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.dagger_dagger, map_mul,
-    Complex.conj_conj] at h3
+  simp only [GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.cj, Pi.smul_apply, smul_eq_mul, GlobalTheory.IndefiniteRowSideFullHecke.ConjugateAdjointDagger.dagger_dagger] at h3
   have h4 := congrArg (starRingEnd ℂ) h3
   simp only [map_mul, Complex.conj_conj] at h4
   rw [Pi.smul_apply, smul_eq_mul, ← h4]

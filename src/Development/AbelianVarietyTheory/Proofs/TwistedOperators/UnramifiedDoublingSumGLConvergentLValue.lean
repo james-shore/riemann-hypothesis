@@ -206,7 +206,6 @@ theorem unramified_doubling_sum : GlobalTheory.Published.UnramifiedDoublingGL �
     have h := cpow_split hq N s (sumAbs_nonneg e.1)
     rw [h]
     simp only [wR, Complex.ofReal_mul]
-    push_cast
     ring
   have hbc : ∀ e, ‖b e‖ ≤ c e := fun e => by
     simp only [b, c, norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (hw0 e)]

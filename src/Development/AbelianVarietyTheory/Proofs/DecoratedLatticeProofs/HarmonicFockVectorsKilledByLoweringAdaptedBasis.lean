@@ -59,7 +59,7 @@ theorem exists_coef {BS : D.what₂.Tau → Matrix (Fin S.rank) (Fin S.rank) ℂ
     rw [Matrix.mul_neg, Matrix.mul_smul, ← Matrix.mul_assoc, (hT τ).1, Matrix.one_mul, smul_neg, smul_smul,
       Complex.I_mul_I, neg_smul, neg_neg, one_smul]
   have oneg : ∀ W a b, o (-W) a b = -o W a b := fun W a b => by
-    simp only [o, Matrix.neg_mul, Matrix.mul_neg, Matrix.neg_apply, mul_neg, Complex.neg_re]
+    simp only [o, Matrix.neg_mul, Matrix.neg_apply, mul_neg, Complex.neg_re]
   clear_value o
   refine ⟨fun a b => if p ≤ (a : ℕ) ∧ (b : ℕ) < p then
     2 * (o X a b + Complex.I * o (Complex.I • (cart M τ * X)) a b) else 0, fun a b h => if_neg h, ?_⟩

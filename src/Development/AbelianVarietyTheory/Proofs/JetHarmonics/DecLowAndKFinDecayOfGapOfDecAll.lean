@@ -126,7 +126,6 @@ theorem decLow_of_decGap (hA : GlobalTheory.DSId.DecGap) : Formalism.FourierDeca
       LinearMap.toContinuousLinearMap (Matrix.toEuclideanLin (P * x * P⁻¹)) := by
     first
       | rfl
-      | (apply ContinuousLinearMap.coe_injective; simp [Matrix.coe_toEuclideanCLM_eq_toEuclideanLin])
   have hGN : gN x ≤ Real.sqrt ((2 * r + k + 1 : ℕ) : ℝ) *
       ‖LinearMap.toContinuousLinearMap (Matrix.toEuclideanLin (P * x * P⁻¹))‖ := by
     have h1 := hs_le_op x

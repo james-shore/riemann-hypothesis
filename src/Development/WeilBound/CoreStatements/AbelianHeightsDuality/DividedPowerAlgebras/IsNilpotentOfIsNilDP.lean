@@ -143,7 +143,7 @@ theorem res_etale {U V : X.affineOpens} (h : V.1 ≤ U.1) : (Sec.res s h : Sec s
   have e : V.1 ≤ (𝟙 X : X ⟶ X) ⁻¹ᵁ U.1 := h
   have H := (𝟙 X : X ⟶ X).etale_appLE U.2 V.2 e
   have key : ((𝟙 X : X ⟶ X).appLE U.1 V.1 e).hom = (Sec.res s h : Sec s U.1 →+* Sec s V.1) := by
-    simp only [Scheme.Hom.appLE, Scheme.Hom.id_app, Category.id_comp]
+    simp only [Scheme.Hom.appLE, Scheme.Hom.id_app]
     rfl
   rw [key] at H
   exact H
@@ -196,7 +196,7 @@ theorem chart_cover (hs : Smooth s) : ⨆ U : Chart s, U.1.1 = ⊤ := by
       rw [← CommRingCat.comp_apply]
       have key := Scheme.Hom.appLE_map s (U := ⊤) (V := V) (V' := X.basicOpen g) le_top
         (homOfLE (X.basicOpen_le g)).op
-      simp only [secMap, Category.assoc]
+      simp only [secMap]
       exact congrArg (fun φ => ConcreteCategory.hom ((Scheme.ΓSpecIso (CommRingCat.of R)).inv ≫ φ) r) key
     let tr : MvPolynomial (Fin d) R →+* Sec s W.1 := (e : Localization.Away g →+* Γ(X, X.basicOpen g)).comp g'
     refine ⟨d, { tr with commutes' := fun r => ?_ }, ?_⟩

@@ -63,9 +63,9 @@ theorem mat_ext2 {P Q : Matrix (Fin (M + 2)) (Fin (M + 2)) A}
 @[simp] theorem one_one_one : (1 : Matrix (Fin (M + 2)) (Fin (M + 2)) A) 1 1 = 1 :=
   Matrix.one_apply_eq _
 @[simp] theorem one_zero_one : (1 : Matrix (Fin (M + 2)) (Fin (M + 2)) A) 0 1 = 0 :=
-  Matrix.one_apply_ne (by simp [Fin.ext_iff])
+  Matrix.one_apply_ne (by simp)
 @[simp] theorem one_one_zero : (1 : Matrix (Fin (M + 2)) (Fin (M + 2)) A) 1 0 = 0 :=
-  Matrix.one_apply_ne (by simp [Fin.ext_iff])
+  Matrix.one_apply_ne (by simp)
 @[simp] theorem one_zero_rest (j : Fin M) :
     (1 : Matrix (Fin (M + 2)) (Fin (M + 2)) A) 0 j.succ.succ = 0 :=
   Matrix.one_apply_ne (by simp [Fin.ext_iff])
@@ -106,7 +106,7 @@ theorem gram_entry (s : A →+* A) (J : Matrix (Fin M) (Fin M) A)
   simp only [Matrix.mul_apply, cT, Matrix.transpose_apply, Matrix.map_apply, sum_two,
     hypOne_zero_zero, hypOne_zero_one, hypOne_one_zero, hypOne_one_one, hypOne_zero_rest,
     hypOne_one_rest, hypOne_rest_zero, hypOne_rest_one, hypOne_rest_rest, mul_zero, mul_one,
-    zero_mul, Finset.sum_const_zero, add_zero, zero_add, hv, rowv]
+    Finset.sum_const_zero, add_zero, zero_add, hv, rowv]
   ring
 
 def ColE (P : Matrix (Fin (M + 2)) (Fin (M + 2)) A) : Prop :=
@@ -162,7 +162,7 @@ theorem dg_unitary (s : A →+* A) (J u : Matrix (Fin M) (Fin M) A) (hu : cT s u
     rw [← this]
     simp [Matrix.mul_apply, cT, hv, rowv]
   refine mat_ext2 ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ ?_ <;> intros <;> rw [gram_entry] <;>
-    simp [key, hv, rowv, hypOne_zero_zero, hypOne_zero_one, hypOne_one_zero, hypOne_one_one,
+    simp [hv, rowv, hypOne_zero_zero, hypOne_zero_one, hypOne_one_zero, hypOne_one_one,
       hypOne_zero_rest, hypOne_one_rest, hypOne_rest_zero, hypOne_rest_one, hypOne_rest_rest]
   all_goals exact key _ _
 

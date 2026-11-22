@@ -14,7 +14,7 @@ theorem exists_local_section : ∀ (F E : Type) [Field F] [NumberField F] [Field
     ext i j
     by_cases h : i = j
     · subst h; simp [cT]
-    · simp [cT, Matrix.one_apply, h, Ne.symm h]
+    · simp [cT, h, Ne.symm h]
   have ho1 : o 1 = S := by
     apply Subtype.ext
     rw [hform]

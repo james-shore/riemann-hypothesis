@@ -65,7 +65,6 @@ private theorem sum_attach_ite_eq {α : Type} (X : Finset α) (a : α) (F : α �
   rw [Finset.sum_attach (s := X) (f := fun j => if j = a then F j else 0)]
   first
   | exact Finset.sum_ite_eq' X a F
-  | simp
 
 theorem psd_restrict {α : Type} {X : Finset α} (Y : Finset α) {k : α → α → ℂ} (hk : PSDOn X k) :
     PSDOn Y (fun x y => if x ∈ X ∧ y ∈ X then k x y else 0) := by
@@ -166,7 +165,6 @@ theorem join_mem (T : Tower E) {i s : ℕ} (hs : 1 ≤ s) (hsi : s ≤ i) {t : E
     intro k hk' hk2
     first
     | simp [join, List.getElem_append_left hk']
-    | simp [join, List.getElem_append, hk']
   have E2 : ∀ k, k ≤ h.length → blockStart (join h s t) k = blockStart h k := by
     intro k hk'
     simp [blockStart, join, List.take_append_of_le_length hk']

@@ -32,18 +32,18 @@ theorem det_blockOne {K : Type} [CommRing K] {M : ℕ} (t : K) (A : Matrix (Fin 
     (blockOne t A).det = t * A.det := by
   have hs : (blockOne t A).submatrix Fin.succ (Fin.succAbove 0) = A := by
     ext i j
-    simp [blockOne_succ_succ]
+    simp
   rw [Matrix.det_succ_row_zero, Fin.sum_univ_succ, hs]
-  simp [blockOne_zero_zero, blockOne_zero_succ]
+  simp
 
 theorem isHermND_blockOne {F E : Type} [Field F] [Field E] [Algebra F E] (σ : E →ₐ[F] E) {M : ℕ}
     (J : Matrix (Fin M) (Fin M) E) (hJ : IsHermND σ J) (t : F) (ht : t ≠ 0) :
     IsHermND σ (blockOne (algebraMap F E t) J) := by
   refine ⟨fun i j => ?_, ?_⟩
   · refine Fin.cases ?_ (fun i => ?_) i <;> refine Fin.cases ?_ (fun j => ?_) j
-    · simp [blockOne_zero_zero]
-    · simp [blockOne_zero_succ, blockOne_succ_zero]
-    · simp [blockOne_zero_succ, blockOne_succ_zero]
+    · simp
+    · simp
+    · simp
     · simpa [blockOne_succ_succ] using hJ.1 i j
   · rw [det_blockOne]
     exact mul_ne_zero (by simpa using ht) hJ.2

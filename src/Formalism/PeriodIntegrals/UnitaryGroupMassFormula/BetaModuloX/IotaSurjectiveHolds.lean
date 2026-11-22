@@ -19,7 +19,7 @@ variable {E : Type} [Field E] [NumberField E] {V : Type} [AddCommGroup V] [Modul
 
 theorem exists_smul_mem (Λ : Submodule (𝓞 E) V) (hsp : Submodule.span E (Λ : Set V) = ⊤) (x : V) :
     ∃ d : 𝓞 E, d ≠ 0 ∧ d • x ∈ Λ := by
-  first | exact Bl.general_b_fact_third'''''.goal1 .. | (apply Bl.general_b_fact_third'''''.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_third'''''.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_third'''''.goal1 .. | (apply Bl.general_b_fact_third'''''.goal1 <;> assumption)
 
 variable [StarRing E]
 

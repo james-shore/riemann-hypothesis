@@ -77,7 +77,7 @@ theorem exists_pow_eq_of_forall_derivation_eq_zero (K : Type) [Field K] (p : ℕ
     have h1 : aeval f (derivative (minpoly M f)) = 0 := by
       rw [minpoly_eq_X_pow_sub_C_of_pow_mem p M hMp f hMf]
       simp [derivative_X_pow]
-    simp [derivative'_apply, derivative_mul, h1]
+    simp [derivative'_apply, h1]
   have h2 := hf ((Derivation.liftOfSurjective hsurj hd).restrictScalars ℤ)
   have h3 := Derivation.liftOfSurjective_apply hsurj hd X
   rw [Derivation.restrictScalars_apply] at h2

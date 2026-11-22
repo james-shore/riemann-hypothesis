@@ -93,7 +93,7 @@ theorem fz_deriv {X x : M2 n} (hX : IsLie X) (hx : InG x) (m : ℕ) (e : ℤ) (w
     have h1 : |(rA X x).re| ≤ ‖rA X x‖ := Complex.abs_re_le_norm _
     have h2 : 0 ≤ ‖w‖ := norm_nonneg _
     simp only [norm_mul, norm_neg, Complex.norm_intCast, Complex.norm_natCast, Complex.norm_real,
-      Real.norm_eq_abs, abs_mul, abs_two]
+      Real.norm_eq_abs, abs_two]
     nlinarith [mul_le_mul_of_nonneg_right h1 h2]
   convert bound using 2
   rw [hd', ha']

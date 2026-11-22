@@ -306,7 +306,7 @@ private theorem ctrl_UF_eq_U_ctrl {O Ω : Type} [Field Ω] [CommRing O] [IsLocal
       MonoidHom.coe_mk, OneHom.coe_mk, Function.comp_apply, LinearMap.compLeft, LinearMap.funLeft,
       Pi.smul_apply, smul_eq_mul, MonoidHom.inr_apply] at this ⊢
     rw [Prod.snd_mul, map_mul, _root_.mul_inv_rev, Units.val_mul, ← Matrix.mulVec_mulVec, this]
-    simp [mul_inv_cancel_left₀]
+    simp
   simp only [Frame.UF, Frame.U, Iwa.uOp, finsum_eq_sum_of_fintype, LinearMap.smul_apply, map_smul,
     LinearMap.sum_apply, map_sum, Finset.smul_sum]
   refine Finset.sum_congr rfl fun q _ => ?_

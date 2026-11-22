@@ -341,13 +341,13 @@ theorem Om_symm (hL : LgFacts) (hR : RCalc) {f h : Mat n → V} (hf : ContDiffOn
       2 * (∫ y : G n, ⟪gel true 2 f y.val, h y.val⟫_ℂ ∂μ + ∫ y : G n, ⟪gel false 2 f y.val, h y.val⟫_ℂ ∂μ) := by
     rw [← integral_add (i1 true) (i1 false), ← integral_const_mul]
     refine integral_congr_ae (Filter.Eventually.of_forall fun y => ?_)
-    simp [Om, inner_add_left, inner_smul_left]
+    simp [Om]
     ring
   have e2 : ∫ y : G n, ⟪f y.val, Om h y.val⟫_ℂ ∂μ =
       2 * (∫ y : G n, ⟪f y.val, gel true 2 h y.val⟫_ℂ ∂μ + ∫ y : G n, ⟪f y.val, gel false 2 h y.val⟫_ℂ ∂μ) := by
     rw [← integral_add (i2 true) (i2 false), ← integral_const_mul]
     refine integral_congr_ae (Filter.Eventually.of_forall fun y => ?_)
-    simp [Om, inner_add_right, inner_smul_right]
+    simp [Om]
     ring
   rw [e1, e2, I true, I false]
   simp only [Bool.not_true, Bool.not_false]

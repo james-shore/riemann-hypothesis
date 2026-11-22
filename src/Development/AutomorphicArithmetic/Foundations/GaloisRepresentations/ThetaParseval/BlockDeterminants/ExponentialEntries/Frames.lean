@@ -76,7 +76,7 @@ private theorem cartan_pos {m : ℕ} (r : ℝ) (hr : 0 < r) (θ : Matrix (Fin m)
     have := hp v hv0
     rw [hθ] at this
     have e : ((-v) ⬝ᵥ ((r : ℂ) • (1 : Matrix (Fin m) (Fin m) ℂ)) *ᵥ star v).re = -(r * ∑ i, Complex.normSq (v i)) := by
-      simp [dotProduct, Matrix.smul_mulVec, Complex.mul_conj, Finset.mul_sum, Complex.normSq_apply]
+      simp [dotProduct, Matrix.smul_mulVec, Finset.mul_sum, Complex.normSq_apply]
       exact Finset.sum_congr rfl fun i _ => by ring
     rw [e] at this
     have : 0 ≤ r * ∑ i, Complex.normSq (v i) := mul_nonneg hr.le (Finset.sum_nonneg fun i _ => Complex.normSq_nonneg _)
@@ -94,7 +94,7 @@ private theorem sig_pos {m : ℕ} (hm : 0 < m) (z : ℂ) (h : HasSig (z • (1 :
   have hs0 : 0 ≤ s := Finset.sum_nonneg fun i _ => Complex.normSq_nonneg _
   have e2 : z * (s : ℂ) = 1 := by
     have : (Aᵀ * (z • (1 : Matrix (Fin m) (Fin m) ℂ)) * A.map star) (Sum.inl a) (Sum.inl a) = z * (s : ℂ) := by
-      simp [Matrix.mul_apply, hs, Finset.mul_sum, Complex.mul_conj, Matrix.smul_mul, mul_assoc]
+      simp [Matrix.mul_apply, hs, Finset.mul_sum, Complex.mul_conj, mul_assoc]
     rw [← this, e]
     simp
   have hsne : (s : ℂ) ≠ 0 := fun h0 => by rw [h0] at e2; simp at e2
@@ -140,7 +140,7 @@ theorem UpperTheory.TP.RP.frames :
       (Complex.I * (B.emb w).1 δ) • (1 : Matrix (Fin d) (Fin d) ℂ) := fun w => by
     rw [hWJ]
     ext i j
-    by_cases h : i = j <;> simp [Matrix.one_apply, h]
+    by_cases h : i = j <;> simp [h]
   have hθX : ∀ w, X.θ w = 1 := fun w => by
     have := hX.cartan w
     rw [hM w] at this

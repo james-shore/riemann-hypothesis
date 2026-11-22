@@ -63,7 +63,7 @@ theorem noether_trick : ∀ (k A : Type) [Field k] [CommRing A] [Algebra k A] (t
   have hqt : q.eval₂ φ t = 0 := by simpa [ψ] using hψq
   let L : AdjoinRoot q →+* A := AdjoinRoot.lift φ t hqt
   have hL : L.comp (AdjoinRoot.mk q) = ψ := by
-    ext g <;> simp [L, ψ, AdjoinRoot.lift_mk]
+    ext g <;> simp [L, ψ]
   have hψfin : ψ.Finite := by
     apply RingHom.Finite.of_comp_finite (f := mapRingHom (C : k →+* Polynomial k))
     rw [hcomp]; exact ht
@@ -74,7 +74,7 @@ theorem noether_trick : ∀ (k A : Type) [Field k] [CommRing A] [Algebra k A] (t
     haveI : Module.Finite (Polynomial k) (AdjoinRoot q) := (AdjoinRoot.powerBasis' hq).finite
     exact RingHom.finite_algebraMap.mpr this
   have hφeq : L.comp (AdjoinRoot.of q) = φ := by
-    ext c <;> simp [L, AdjoinRoot.lift_of]
+    ext c <;> simp [L]
   have : φ.Finite := by rw [← hφeq]; exact hLfin.comp hof
   exact this
 

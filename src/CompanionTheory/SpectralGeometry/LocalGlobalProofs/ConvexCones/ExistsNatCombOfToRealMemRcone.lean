@@ -66,7 +66,6 @@ theorem exists_nat_comb_of_toReal_mem_rcone (X : Type) [AddCommGroup X] (m : ℕ
   have h' : ∑ i, γ i y z * (v k i.castSucc : ℤ) + -(β y z) * (v k (Fin.last m) : ℤ) = 0 := by
     exact_mod_cast h
   simp only [LinearMap.smul_apply, LinearMap.sum_apply, nsmul_eq_mul]
-  push_cast
   have h2 : ∑ i, (v k i.castSucc : ℤ) * γ i y z = ∑ i, γ i y z * (v k i.castSucc : ℤ) :=
     Finset.sum_congr rfl fun i _ => mul_comm _ _
   rw [h2]

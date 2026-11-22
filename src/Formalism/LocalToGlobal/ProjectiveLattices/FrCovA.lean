@@ -44,15 +44,15 @@ theorem comb_bc (ψ : S →+* T) (h : IsCombAt x v cf w) :
     intro l
     induction l with
     | nil =>
-      first | simp [comp_one] | simp [MonObj.comp_one] | simp [Hom.comp_one] | simp
+      first | simp [comp_one]
     | cons a l ih =>
-      first | simp [ih, comp_mul] | simp [ih, MonObj.comp_mul] | simp [ih, Hom.comp_mul] | simp [ih]
+      first | simp [ih, comp_mul]
   refine ⟨fun i => ρD ψ x ≫ u i, fun i => ?_, ?_⟩
   · rw [Over.comp_left, hu i]
     show spMap (dualMap ψ) ≫ spMap (epsMul (cf i)) ≫ v i = _
     rw [← Category.assoc, eps_dual, Category.assoc]
   · have e2 : (List.ofFn fun i => ρD ψ x ≫ u i) = (List.ofFn u).map (fun g => ρD ψ x ≫ g) := by
-      first | (rw [List.map_ofFn]; rfl) | simp [List.map_ofFn, Function.comp_def]
+      first | (rw [List.map_ofFn]; rfl)
     rw [e2, key, Over.comp_left]
     rfl
 
@@ -92,8 +92,8 @@ theorem pm_ext {S : Type} [CommRing S] {x : Sp S ⟶ Xo.X} {Z : Scheme.{0}} {p q
     (h₁ : p ≫ (fst (Over.mk x) Xo.univ.t.G).left = q ≫ (fst (Over.mk x) Xo.univ.t.G).left)
     (h₂ : p ≫ (snd (Over.mk x) Xo.univ.t.G).left = q ≫ (snd (Over.mk x) Xo.univ.t.G).left) : p = q := by
   apply pullback.hom_ext
-  · first | exact h₁ | simpa using h₁
-  · first | exact h₂ | simpa using h₂
+  · first | exact h₁
+  · first | exact h₂
 
 theorem exists_pm {S S' : Type} [CommRing S] [CommRing S'] {x : Sp S ⟶ Xo.X} {x' : Sp S' ⟶ Xo.X} (g : Sp S' ⟶ Sp S)
     (h : x' = g ≫ x) : ∃ pm : Gx x' ⟶ Gx x, pm ≫ (snd (Over.mk x) Xo.univ.t.G).left = (snd (Over.mk x') Xo.univ.t.G).left ∧

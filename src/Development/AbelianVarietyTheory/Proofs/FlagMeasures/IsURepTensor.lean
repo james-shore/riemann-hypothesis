@@ -31,7 +31,7 @@ theorem isURep_tensor {ι : Type} [Fintype ι] {H : ι → Type} [∀ i, NormedA
     apply ext_op hd
     intro x
     rw [ContinuousLinearMap.comp_apply, hs, hs, hs]
-    simp [Pi.mul_apply, map_mul, ContinuousLinearMap.mul_apply]
+    simp [Pi.mul_apply, map_mul]
   have hnorm : ∀ g u, ‖σs g u‖ = ‖u‖ := by
     intro g u
     have key : ⟪σs g u, σs g u⟫_ℂ = ⟪u, u⟫_ℂ := by

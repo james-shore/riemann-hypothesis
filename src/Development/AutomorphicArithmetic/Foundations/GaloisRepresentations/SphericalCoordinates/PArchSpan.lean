@@ -83,7 +83,7 @@ theorem archSpan_of : ArchSpan := by
   refine ⟨span_top F n, ?_, trace_eq_sum_places F⟩
   rw [Module.finrank_pi_fintype]
   simp only [Module.finrank_pi_fintype, Complex.finrank_real_complex, Finset.sum_const,
-    Finset.card_univ, Fintype.card_fin, smul_eq_mul, mul_one]
+    Finset.card_univ, Fintype.card_fin, smul_eq_mul]
   rw [← two_mul_card_places F]
   ring
 

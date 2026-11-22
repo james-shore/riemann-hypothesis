@@ -264,7 +264,7 @@ theorem line_lat {n d : ℕ} {X : Spc F E n} {W : Spc F E d} {x : Fin n → E} {
     have key : ∀ (x' : Fin n → E) (y' : Fin d → E), incV F p ⬝ᵥ Matrix.vecMulVec (incV F x') (incV F y') *ᵥ incV F q =
         inclR (F := F) (AF F) (x' ⬝ᵥ p * y' ⬝ᵥ q) := fun x' y' => by
       rw [Matrix.vecMulVec_mulVec, dotProduct_smul, inc, inc, map_mul, dotProduct_comm p]
-      simp [mul_comm]
+      simp
     have : ∀ Z ∈ latAtV X W v, incV F p ⬝ᵥ Z *ᵥ incV F q ∈ Lat (𝔭 * 𝔮) v := fun Z hZ => by
       induction hZ using AddSubgroup.closure_induction with
       | mem z hz =>

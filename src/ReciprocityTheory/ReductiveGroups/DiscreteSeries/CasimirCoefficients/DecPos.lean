@@ -89,7 +89,6 @@ private lemma dp_isPositive (T : KType ε Λ) {c : ℝ} (hc : 0 ≤ c) {g : KG �
         ((∫ k, g k * ‖⟪T.op k T.w, v⟫_ℂ‖ ^ 2 ∂(muK ε) : ℝ) : ℂ) := by
       first
       | rw [← integral_complex_ofReal]
-      | rw [← integral_ofReal]
       refine integral_congr_ae (Filter.Eventually.of_forall fun k => ?_)
       simp only [dp_inner_P]
       push_cast
@@ -113,15 +112,12 @@ private lemma dp_cont_phi (μ : Fin n → ℤ) {x : Matrix (Fin n) (Fin n) ℂ} 
     unfold toMK toM
     first
     | fun_prop
-    | continuity
-    | exact continuous_subtype_val.comp (continuous_subtype_val.comp continuous_subtype_val)
   have hcont : Continuous fun k : KG ε => toMK k⁻¹ * x * toMK k :=
     ((htoMK.comp continuous_inv).mul continuous_const).mul htoMK
   have hmem : ∀ k : KG ε, toMK k⁻¹ * x * toMK k ∈ OmegaSet n := by
     intro k
     first
     | exact posSet_subset_omega (dp_posDef_conj k hx)
-    | exact posSet_subset_omega (by simpa [posSet] using dp_posDef_conj k hx)
   exact Complex.continuous_re.comp
     ((phiM_differentiableOn μ).continuousOn.comp_continuous hcont hmem)
 

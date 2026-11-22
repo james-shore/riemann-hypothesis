@@ -93,7 +93,7 @@ theorem exists_conj_cent_le_blockLevi : ∀ (K : Type) [Field K] (ι : Type) [Fi
   have hbb : ∀ i, bb i = b0 (e i) := fun i => by
     simp [bb, Module.Basis.reindex_apply]
   have hbbr : ∀ v i, bb.repr v i = b0.repr v (e i) := fun v i => by
-    simp [bb, Module.Basis.repr_reindex_apply]
+    simp [bb]
   have hmem1 : ∀ k, b0 (Sum.inl k) ∈ V₁ := fun k => by
     simp [b0, φ, Submodule.coe_prodEquivOfIsCompl']
   have hmem2 : ∀ k, b0 (Sum.inr k) ∈ V₂ := fun k => by

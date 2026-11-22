@@ -160,7 +160,7 @@ def Lmap : (Fin W.g → ℂ) →ₗ[ℂ] ReciprocityTheory.ChartRestriction.G.I2
     simp [mul_add]
   map_smul' a z := by
     ext i
-    simp only [Pi.smul_apply, smul_eq_mul, RingHom.id_apply, PiLp.toLp_apply, PiLp.smul_apply]
+    simp only [Pi.smul_apply, smul_eq_mul, RingHom.id_apply, PiLp.smul_apply]
     ring
 
 theorem Lmap_apply (z : Fin W.g → ℂ) (i : ReciprocityTheory.ChartRestriction.G.I2.Idx A.T.dim) :

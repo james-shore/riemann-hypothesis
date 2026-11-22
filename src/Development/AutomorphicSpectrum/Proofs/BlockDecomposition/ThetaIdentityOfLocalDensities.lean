@@ -206,7 +206,7 @@ theorem tprod_split {ι : Type} (S : Finset ι) (f : ι → ℝ) (hf : (Function
     ← finprod_mem_mul_diff' (Set.subset_univ (S : Set ι)) (by simpa using hf), finprod_mem_coe_finset]
   congr 1
   refine finprod_congr fun v => ?_
-  simp [Set.mem_diff]
+  simp
 
 theorem ne_zero_of_finprod {ι : Type} (f : ι → ℝ) (hf : (Function.mulSupport f).Finite) (h : ∏ᶠ v, f v ≠ 0) (i : ι) :
     f i ≠ 0 := by
@@ -457,7 +457,7 @@ theorem gramR_one (R : Type) [CommRing R] [Algebra F R] {j : F} (hj : J = fun _ 
     (X : Fin 1 → Fin 1 → R ⊗[F] E) :
     gramR R σ J X 0 0 = sigR R σ (X 0 0) * ((1 : R) ⊗ₜ[F] algebraMap F E j) * X 0 0 := by
   subst hj
-  simp [gramR, hR, hform, JR, inclR, Matrix.map_apply]
+  simp [gramR, hR, hform, JR, inclR]
   rfl
 
 theorem mem_H (hcm : IsCMExt F E σ) (hJ : IsHermND σ J)

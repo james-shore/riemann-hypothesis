@@ -36,7 +36,7 @@ theorem tMat_single (ϖ : L) (n : ℕ) (k : Fin (n / 2)) :
   simp only [dTor, Fin.ext_iff, lo, Fin.val_rev, Pi.single_apply]
   have hk := k.isLt
   have hi := i.isLt
-  split_ifs <;> first | rfl | (exfalso; omega) | simp_all | skip
+  split_ifs <;> first | rfl | (exfalso; omega) | simp_all
 
 theorem dTor_mul {σ : L →+* L} {ϖ : L} (hσϖ : σ ϖ = ϖ) (hϖ : ϖ ≠ 0) {n : ℕ} (k : Fin (n / 2)) (j : Fin n) :
     dTor ϖ n k j * σ (dTor ϖ n k j.rev) = 1 := by
@@ -45,7 +45,7 @@ theorem dTor_mul {σ : L →+* L} {ϖ : L} (hσϖ : σ ϖ = ϖ) (hϖ : ϖ ≠ 0)
   by_cases h1 : j = lo n k
   · subst h1; simp [hne.symm, hσϖ, hϖ]
   by_cases h2 : j = (lo n k).rev
-  · subst h2; simp [hne, hne.symm, hσϖ, hϖ]
+  · subst h2; simp [hne.symm, hσϖ, hϖ]
   have h3 : j.rev ≠ lo n k := fun h => h2 (by rw [← h, Fin.rev_rev])
   have h4 : j.rev ≠ (lo n k).rev := fun h => h1 (Fin.rev_injective h)
   simp [h1, h2, h3, h4]

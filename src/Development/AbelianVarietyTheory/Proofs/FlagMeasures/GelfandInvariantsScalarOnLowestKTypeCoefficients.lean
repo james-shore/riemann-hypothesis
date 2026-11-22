@@ -83,7 +83,7 @@ theorem centre_scalar_low : ∀ (n : ℕ) (ε : Fin n → Bool) (lam : Fin n →
     intro m c s t
     refine ext_inner_left ℂ fun u => ?_
     rw [inner_add_right, inner_smul_right, hC1, hC1, hC1, ← gelf_comb c (hsm s u) (hsm t u) m 1 h1]
-    simp [inner_add_right, inner_smul_right]
+    simp
   have h0 : ∀ m, C m 0 = 0 := fun m => by simpa using hlin m 1 0 0
   have key : ∀ m, ∃ c : ℂ, ∀ s : lowKSub ε lam σ, C m s = c • (s : H) := by
     intro m

@@ -18,7 +18,7 @@ theorem scC_apply_inl_inl (α β : E) (a b : Fin (r + 1)) : scC r α β (Sum.inl
   simp [scC, Matrix.one_apply]
 theorem scC_apply_inl_inr (α β : E) (a b : Fin (r + 1)) :
     scC r α β (Sum.inl a) (Sum.inr b) = if a = Fin.last r ∧ b = Fin.last r then β else 0 := by
-  simp [scC, liftE, smul_ite]
+  simp [scC, liftE]
 theorem scC_apply_inr_inl (α β : E) (a b : Fin (r + 1)) : scC r α β (Sum.inr a) (Sum.inl b) = 0 := by
   simp [scC]
 theorem scC_apply_inr_inr (α β : E) (a b : Fin (r + 1)) :
@@ -38,7 +38,7 @@ theorem scC_left_inr (α β : E) (G : Matrix (Ix r) (Ix r) E) (a : Fin (r + 1)) 
   by_cases ha : a = Fin.last r
   · subst ha
     simp [ite_mul, Finset.sum_ite_eq', add_comm]
-  · simp [ha, ite_mul, Finset.sum_ite_eq]
+  · simp [ha, ite_mul]
 
 theorem scC_right_inl (α β : E) (X : Matrix (Ix r) (Ix r) E) (i : Ix r) (b : Fin (r + 1)) :
     (X * (scC r α β).map cj) i (Sum.inl b) = X i (Sum.inl b) := by
@@ -66,14 +66,13 @@ theorem gramG_scale (hcj : ∀ x, cj (cj x) = x) (α T T' : E) (hα : α * cj α
     simp [gramG]
   · rw [scC_right_inr, scC_left_inl, scC_left_inl]
     by_cases ha : a = Fin.last r <;> by_cases hb : b = Fin.last r <;>
-      simp [gramG, cor, dlast, Matrix.mul_diagonal, ha, hb, map_mul, map_sub, map_add, hqi, hT] <;> ring
+      simp [gramG, cor, dlast, Matrix.mul_diagonal, ha, hb, map_mul, map_sub, hqi] <;> ring
   · rw [scC_right_inl, scC_left_inr]
     by_cases ha : a = Fin.last r <;> by_cases hb : b = Fin.last r <;>
       simp [gramG, cor, dlast, Matrix.mul_diagonal, ha, hb] <;> ring
   · rw [scC_right_inr, scC_left_inr, scC_left_inr]
     by_cases ha : a = Fin.last r <;> by_cases hb : b = Fin.last r <;>
-      simp [gramG, cor, dlast, Matrix.mul_diagonal, ha, hb, map_mul, map_sub, map_add, map_neg, hqi, hT, hT',
-        hcj] <;> first | ring1 | linear_combination (qi ^ 2 * T') * hα | linear_combination (qi * qi * T') * hα | linear_combination (-(qi ^ 2 * T')) * hα
+      simp [gramG, cor, dlast, Matrix.mul_diagonal, ha, hb, map_mul, map_sub, hqi] <;> first | ring1 | linear_combination (qi ^ 2 * T') * hα
 
 end ScaleA
 

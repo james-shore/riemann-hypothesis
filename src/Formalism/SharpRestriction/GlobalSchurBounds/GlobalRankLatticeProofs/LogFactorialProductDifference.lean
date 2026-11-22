@@ -10,7 +10,6 @@ theorem exp_neg_r_le_third (D : D7) : Real.exp (-(D.R.r : ℝ)) ≤ 1 / 3 := by
     have h2 := D.R.m_add_three_le_k
     first
       | (show 2 ≤ D.R.k + D.R.m - 1; omega)
-      | omega
   have hr' : (2 : ℝ) ≤ D.R.r := by exact_mod_cast hr
   have h3 : (3 : ℝ) ≤ Real.exp 2 := by
     have := Real.add_one_le_exp (2 : ℝ)

@@ -14,7 +14,7 @@ private theorem map_diag {E F : Type} [Field E] [Field F] {n : ℕ} (f : E →+*
   by_cases hij : i = j
   · subst hij
     simp [val_diagT]
-  · simp [val_diagT, Matrix.diagonal_apply, hij]
+  · simp [val_diagT, hij]
 
 private theorem diag_comm {E : Type} [Field E] {n : ℕ} (u v : Fin n → Eˣ) :
     diagT E (Fin n) u * diagT E (Fin n) v = diagT E (Fin n) v * diagT E (Fin n) u := by

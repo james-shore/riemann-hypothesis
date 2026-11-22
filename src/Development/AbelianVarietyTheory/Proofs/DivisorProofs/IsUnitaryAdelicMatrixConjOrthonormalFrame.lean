@@ -55,7 +55,7 @@ theorem sg_single (c : E ≃ₐ[F] E) (j : Fin n) :
   funext b
   by_cases h : b = j
   · subst h; simp
-  · simp [Pi.single_apply, h]
+  · simp [h]
 
 theorem mat_eq_of_dot (c : E ≃ₐ[F] E) {K K' : Matrix (Fin n) (Fin n) (RA F E)}
     (h : ∀ x y : Fin n → RA F E, x ⬝ᵥ (K *ᵥ fun b => sg (FiniteAdeleRing (𝓞 F) F) c (y b)) =

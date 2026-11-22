@@ -91,12 +91,12 @@ theorem s_gl : Formalism.REAL.GlRel (sF g) := by
     module
   · have h3 : ¬ e = a := fun h => h2 h.symm
     simp only [h1, h2, h3, if_true, if_false, hs]
-    simp [h2]
+    simp
     module
   · have h3 : ¬ d = b := fun h => h1 h.symm
     subst h2
     simp only [h1, h3, if_true, if_false, hs]
-    simp [h3]
+    simp
     module
   · have h3 : ¬ e = a := fun h => h2 h.symm
     simp [h1, h2, h3]
@@ -163,7 +163,7 @@ theorem u_four : (∑ a, ∑ b, uF g a b * uF g b a) + (∑ a, ∑ b, uF g a b *
     · subst h
       simp [mul_add, mul_sub, mul_assoc]
       abel
-    · simp [h, mul_add, mul_sub, mul_assoc]
+    · simp [h, mul_add, mul_assoc]
   have hC : ∀ e f, ∑ a, g a e * g f a = (n : ℂ) • (if e = f then (2 : ℂ) • (1 : A) else 0) - uF g f e := by
     intro e f
     have h1 : ∀ a, g a e * g f a = (if e = f then (2 : ℂ) • (1 : A) else 0) - g f a * g a e := by
@@ -598,10 +598,10 @@ end Gel
 theorem rhoC_true (n : ℕ) : Formalism.REAL.rhoC (fun _ : Fin n => true) = rhoV n := by
   funext a
   have h1 : (univ.filter fun b : Fin n => a < b ∧ (true = true)).card = n - 1 - (a : ℕ) := by
-    simp only [eq_self_iff_true, and_true]
+    simp only [and_true]
     rw [Finset.filter_lt_eq_Ioi, Fin.card_Ioi]
   have h2 : (univ.filter fun b : Fin n => b < a ∧ (true = true)).card = (a : ℕ) := by
-    simp only [eq_self_iff_true, and_true]
+    simp only [and_true]
     rw [Finset.filter_gt_eq_Iio, Fin.card_Iio]
   unfold Formalism.REAL.rhoC rhoV
   rw [h1, h2]
@@ -756,7 +756,6 @@ theorem dirac_ineq : ∀ {n : ℕ} (lam : Fin n → ℤ) (V : Type) [NormedAddCo
       rw [Finset.mul_sum]
       exact Finset.sum_congr rfl fun i _ => by
         rw [Pi.smul_apply, inner_smul_right, inner_self_eq_norm_sq_to_K]
-        push_cast
         rfl
     rw [← e1, hsk, e2]
   have hEq' : (∑ i, ‖D x i‖ ^ 2) = -((4 * (S - R) + 3 * R - T) * ∑ i, ‖x i‖ ^ 2) := by

@@ -42,7 +42,7 @@ theorem vcX'_vcX (x : R) : vcX' C (vcX C x) = x := by
 
 theorem vcY'_vcY (x y : R) : vcY' C (vcX C x) (vcY C x y) = y := by
   have h := inv_mul_u C
-  simp only [vcX, vcY, vcX', vcY']
+  simp only [vcX, vcY, vcY']
   linear_combination ((y - C.s * (x - C.r) - C.t) * ((((C.u⁻¹ : Rˣ) : R) * C.u) ^ 2 +
     ((C.u⁻¹ : Rˣ) : R) * C.u + 1) + C.s * (x - C.r) * (((C.u⁻¹ : Rˣ) : R) * C.u + 1)) * h
 
@@ -85,7 +85,7 @@ theorem polX_vc (x y : F) :
     (C • W).a₁ * vcY C x y - (3 * vcX C x ^ 2 + 2 * (C • W).a₂ * vcX C x + (C • W).a₄) =
     ((C.u⁻¹ : Fˣ) : F) ^ 4 * ((W.a₁ * y - (3 * x ^ 2 + 2 * W.a₂ * x + W.a₄)) +
       C.s * (2 * y + W.a₁ * x + W.a₃)) := by
-  simp only [vcX, vcY, variableChange_a₁, variableChange_a₂, variableChange_a₃, variableChange_a₄]
+  simp only [vcX, vcY, variableChange_a₁, variableChange_a₂, variableChange_a₄]
   ring
 
 theorem polY_vc (x y : F) :

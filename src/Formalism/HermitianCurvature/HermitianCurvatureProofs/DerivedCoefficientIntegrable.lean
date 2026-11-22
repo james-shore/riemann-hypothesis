@@ -460,7 +460,7 @@ theorem Formalism.FourierDecayAlt.P.ratio_middle_range : Formalism.FourierDecayA
           rw [Finset.prod_mul_distrib, Finset.prod_const, Finset.card_univ, Fintype.card_fin]
   have hx : 1 + L / D ≤ Real.exp (L / D) := by linarith [Real.add_one_le_exp (L / D)]
   have hexp : (1 + L / D) ^ n ≤ Real.exp 3 := by
-    calc (1 + L / D) ^ n ≤ (Real.exp (L / D)) ^ n := by gcongr <;> exact hx
+    calc (1 + L / D) ^ n ≤ (Real.exp (L / D)) ^ n := by gcongr
       _ = Real.exp (n * (L / D)) := (Real.exp_nat_mul _ _).symm
       _ ≤ Real.exp 3 := by
           apply Real.exp_le_exp.mpr

@@ -101,7 +101,7 @@ theorem filtered_coords : ∀ (l : ℕ) [Fact l.Prime] (P : LocPrime l) (AI : Lo
       rw [h1, hf, hf]
       funext i
       have hq : qRep ρ g v = ((ρ g).val.map (algebraMap ℤ_[l] ℚ_[l])) *ᵥ v := by
-        simp [qRep, Matrix.toLin'_apply]
+        simp [qRep]
       rw [hq]
       simp only [Matrix.mulVec, dotProduct, Matrix.map_apply, Finset.sum_smul]
       refine Finset.sum_congr rfl fun j _ => ?_

@@ -335,7 +335,7 @@ theorem Vm_mulVec (w : Fin k → Fin n → ℂ) (y : Fin n → ℂ) :
   have hv : ∀ a b : Fin n → ℂ, vecMulVec a b *ᵥ y = (b ⬝ᵥ y) • a := by
     intro a b
     ext i
-    simp [Matrix.mulVec, dotProduct, Matrix.vecMulVec_apply, Finset.sum_mul, mul_comm, mul_left_comm]
+    simp [Matrix.mulVec, dotProduct, Matrix.vecMulVec_apply, mul_comm]
     rw [Finset.mul_sum]
     exact Finset.sum_congr rfl fun _ _ => by ring
   unfold Vm
@@ -418,7 +418,6 @@ theorem levi_place (H : Frame ε e f z w) (U : (Matrix (Fin n) (Fin n) ℂ)ˣ)
   have hright : Vm (ε := ε) U w * (Formalism.REAL.Jm ε * (Vm (ε := ε) U w)ᴴ * Formalism.REAL.Jm ε) = 1 :=
     by first
       | exact mul_eq_one_comm.1 hleft
-      | exact (Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _)).1 hleft
   have hfe : ∀ a, Vm (ε := ε) U w *ᵥ e a = e a := fun a =>
     Vm_fix _ (fun b => by rw [← hJ_conj_lemma, H.ew, star_zero])
   refine ⟨⟨Vm (ε := ε) U w, Formalism.REAL.Jm ε * (Vm (ε := ε) U w)ᴴ * Formalism.REAL.Jm ε, hright, hleft⟩,

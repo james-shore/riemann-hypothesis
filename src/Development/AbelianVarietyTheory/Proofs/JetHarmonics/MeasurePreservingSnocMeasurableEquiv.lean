@@ -37,7 +37,7 @@ theorem iterated_integral_eq_integral_pi :
     refine ⟨Integrable.of_finite, ?_⟩
     rw [integral_unique]
     have : (volume : Measure (Fin 0 → ℂ)).real Set.univ = 1 := by
-      simp [Measure.real, volume_pi, Measure.pi_univ]
+      simp [Measure.real, volume_pi]
     rw [this]
     simp only [Finset.univ_eq_empty, Finset.prod_empty, one_mul, smul_eq_mul]
     exact congrArg _ (Subsingleton.elim _ _)

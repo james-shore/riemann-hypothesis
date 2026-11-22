@@ -19,7 +19,7 @@ private theorem ffH_single_right {M : ℕ} (J : Matrix (Fin M) (Fin M) K) (x : F
   rw [Fintype.sum_eq_single j]
   · simp
   · intro b hb
-    simp [Pi.single_apply, hb]
+    simp [hb]
 
 theorem ffH_isHS (hσ : ∀ x, σ (σ x) = x) {M : ℕ} (J : Matrix (Fin M) (Fin M) K)
     (hJ : ∀ i j, σ (J j i) = J i j) (hdet : IsUnit J.det) : IsHS σ (ffH σ J) where
@@ -49,7 +49,7 @@ theorem ffH_single {n : ℕ} (T : Matrix (Fin n) (Fin n) K) (i j : Fin n) :
   rw [ffH_single_right, Fintype.sum_eq_single i]
   · simp
   · intro b hb
-    simp [Pi.single_apply, hb]
+    simp [hb]
 
 end matrix
 

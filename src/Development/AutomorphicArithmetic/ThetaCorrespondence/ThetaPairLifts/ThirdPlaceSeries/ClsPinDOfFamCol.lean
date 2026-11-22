@@ -62,8 +62,6 @@ theorem clsPinD_of_famCol_of_trueW : ∀ {B : GlobalTheory.Mem.Base} {X : PreX B
           have e : ((I.rec7 l Z).eMt u).symm (h ▸ ((I.rec7 l Z).eMt u) G') = G' := ((I.rec7 l Z).eMt u).symm_apply_apply G'
           first
             | (rw [e]; exact hG')
-            | exact e ▸ hG'
-            | exact (congrArg (fun G => ReadsG (W.R.T.cols.forms u).clsP.toG (W.R.T.cols.forms u).valP.eW f.j f.g.bT G F.1) e).mpr hG'
         refine ⟨_, hex.choose_spec.1 rfl, ?_⟩
         unfold _root_.GlobalTheory.Fam.tailCoefficient
         rw [dif_pos hex]
@@ -87,8 +85,6 @@ theorem clsPinD_of_famCol_of_trueW : ∀ {B : GlobalTheory.Mem.Base} {X : PreX B
           have e := ((I.rec7 l Z).eMtTw u a).symm_apply_apply G'
           first
             | (rw [e]; exact hG')
-            | exact e ▸ hG'
-            | exact (congrArg (fun G => ReadsG (W.R.T.tw.pt.cls u a h0) (W.R.T.tw.pt.val u a h0).eW f.j f.g.bT G F.1) e).mpr hG'
         refine ⟨_, hex.choose_spec.2 h0, ?_⟩
         unfold _root_.GlobalTheory.Fam.tailCoefficient
         rw [dif_pos hex]

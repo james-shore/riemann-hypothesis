@@ -12,7 +12,7 @@ namespace GlobalTheory.CompanionTheory.Ar.Cusp.Univ
 
 theorem star_dotProduct_mulVec_eq {I : Type} [Fintype I] (M : Matrix I I ℂ) (a b : I → ℂ) :
     star (a ⬝ᵥ M *ᵥ b) = star a ⬝ᵥ (Mᴴ)ᵀ *ᵥ star b := by
-  simp only [dotProduct, mulVec, Finset.sum_apply, star_sum, star_mul', Pi.star_apply, transpose_apply,
+  simp only [dotProduct, mulVec, star_sum, star_mul', Pi.star_apply, transpose_apply,
     conjTranspose_apply, Finset.mul_sum, RCLike.star_def]
 
 theorem im_tz_form {I : Type} [Fintype I] [DecidableEq I] (Z : Matrix I I ℂ) (hZ : Zᵀ = Z)

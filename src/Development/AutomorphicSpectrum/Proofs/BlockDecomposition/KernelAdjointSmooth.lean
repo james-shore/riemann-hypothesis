@@ -12,7 +12,7 @@ def innerSmulRightR {V : Type} [NormedAddCommGroup V] [InnerProductSpace ℂ V] 
     { toFun := fun x => (innerSL ℂ x).smulRight e
       map_add' := fun x y => by
         ext w
-        simp [inner_add_left, add_smul]
+        simp [add_smul]
       map_smul' := fun r x => by
         ext w
         change ⟪r • x, w⟫_ℂ • e = r • (⟪x, w⟫_ℂ • e)

@@ -224,7 +224,7 @@ theorem diagonal_update_inv (j : Fin r) (p : ℂ) (hp0 : p ≠ 0) :
     Matrix.diagonal (Function.update (1 : Fin r → ℂ) j p⁻¹) * Matrix.diagonal (Function.update 1 j p) = 1 ∧
     Matrix.diagonal (Function.update (1 : Fin r → ℂ) j p) * Matrix.diagonal (Function.update 1 j p⁻¹) = 1 := by
   constructor <;> rw [Matrix.diagonal_mul_diagonal, ← Matrix.diagonal_one] <;> congr 1 <;> funext i <;>
-    by_cases hi : i = j <;> simp [hi, Function.update_apply, hp0]
+    by_cases hi : i = j <;> simp [hi, hp0]
 
 theorem length_factor_elementary_diag (hν : Antitone ν) [IsDiscreteValuationRing O] (hL : bwD_Loc O) (ϖ : O) (hϖ : Irreducible ϖ)
     (ε : Oˣ) (a : ℕ) (j : Fin r) (K₁ K₂ : Matrix (Fin r) (Fin r) ℂ) (h₁ : K₁ ∈ bwA_EO O r) (h₂ : K₂ ∈ bwA_EO O r)

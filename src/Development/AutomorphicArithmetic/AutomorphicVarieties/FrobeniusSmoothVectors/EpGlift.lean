@@ -24,7 +24,7 @@ end Av
 private theorem sg_sub_eq_mul {R : Type} [CommRing R] (j k : ZMod 2) : sg R (j - k) = sg R j * sg R k := by
   obtain rfl | rfl : j = 0 ∨ j = 1 := by revert j; decide
   all_goals obtain rfl | rfl : k = 0 ∨ k = 1 := by revert k; decide
-  all_goals simp [sg, show (0:ZMod 2) - 1 = 1 from rfl, show (1:ZMod 2) - 1 = 0 from rfl, ZMod.val_one]
+  all_goals simp [sg, show (0:ZMod 2) - 1 = 1 from rfl, ZMod.val_one]
 
 private theorem sg_mul_self_eq_one {R : Type} [CommRing R] (j : ZMod 2) : sg R j * sg R j = 1 := by
   unfold sg

@@ -30,7 +30,7 @@ theorem bwPoly_holds (hH : LemmaHStatement) (hE : ∀ n, ReciprocityTheory.L2Dba
     intro t ht
     have hb : bwpMat (t • z) = x * (t • (1 : Matrix (Fin p) (Fin p) ℂ)) := by
       ext i j
-      simp [bwpMat, hz, Matrix.mul_smul]
+      simp [bwpMat, hz]
     have hbdet : (t • (1 : Matrix (Fin p) (Fin p) ℂ)).det ≠ 0 := by
       rw [Matrix.det_smul, Matrix.det_one, mul_one]
       exact pow_ne_zero _ ht
@@ -61,7 +61,7 @@ theorem bwPoly_holds (hH : LemmaHStatement) (hE : ∀ n, ReciprocityTheory.L2Dba
     refine Finset.sum_congr rfl (fun j _ => ?_)
     rw [Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_pow, Polynomial.eval_X, mul_comm]
   have hc := congrArg (fun q => Polynomial.coeff q (∑ i, a i)) hΦ
-  simp only [Polynomial.finset_sum_coeff, Polynomial.coeff_C_mul_X_pow, if_pos rfl] at hc
+  simp only [Polynomial.finset_sum_coeff, Polynomial.coeff_C_mul_X_pow] at hc
   rw [Finset.sum_ite_eq] at hc
   split_ifs at hc with hk
   · exact hc.symm

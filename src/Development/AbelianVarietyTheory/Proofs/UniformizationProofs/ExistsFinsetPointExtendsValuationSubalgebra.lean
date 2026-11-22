@@ -27,8 +27,6 @@ theorem exists_finset_point_extends_valuationSubalgebra (V F : Type) [CommRing V
   | exact @_root_.GlobalTheory.AffineFactorExists.exists_finset_extends
   | exact _root_.GlobalTheory.AffineFactorExists.exists_finset_extends
   | (apply _root_.GlobalTheory.AffineFactorExists.exists_finset_extends <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AffineFactorExists.exists_finset_extends <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AffineFactorExists.exists_finset_extends <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AffineFactorExists.exists_finset_extends ..)
 
 theorem exists_finset_points_extend_valuationSubalgebra : ∀ (V F : Type) [CommRing V] [Field F] [Algebra V F] (B : Over (Spec (CommRingCat.of V))) [IsProper B.hom] (s : Set (Spec (CommRingCat.of F) ⟶ B.left)), s.Finite → (∀ x ∈ s, x ≫ B.hom = (Spec.map (CommRingCat.ofHom (algebraMap V F)))) → ∃ t : Finset F, ∀ W : Subalgebra V F, ValuationRing W → (∀ x ∈ t, ∃ a ∈ W, ∃ b ∈ W, b ≠ 0 ∧ x * b = a) → ∀ x ∈ s, ∃ y : Spec (CommRingCat.of W) ⟶ B.left, y ≫ B.hom = (Spec.map (CommRingCat.ofHom (algebraMap V W))) ∧ (Spec.map (CommRingCat.ofHom (algebraMap W F))) ≫ y = x := by

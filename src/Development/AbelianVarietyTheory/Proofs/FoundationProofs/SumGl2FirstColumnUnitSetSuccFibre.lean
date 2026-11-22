@@ -45,7 +45,7 @@ theorem sum_unitSet_succ_fibre : ∀ (p : ℕ) [Fact p.Prime] (n : ℕ) (K : Typ
       ((γ : Matrix (Fin 2) (Fin 2) (ZMod (p ^ (n + 1)))) 1 1))) ?_ ?_ ?_ ?_
   · intro γ hγ
     obtain ⟨_, hγg⟩ := mem_filter.mp hγ
-    simp only [mem_product, mem_filter, mem_univ, true_and, ← hγg, hent, and_self]
+    simp only [mem_product, mem_filter, mem_univ, ← hγg, hent, and_self]
   · intro γ _ δ _ h
     simp only [Prod.mk.injEq] at h
     obtain ⟨h1, h2, h3, h4⟩ := h

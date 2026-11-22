@@ -20,7 +20,7 @@ def linM (D : Matrix κ ι F) :
     (ι → mixedEmbedding.mixedSpace F) →ₗ[ℝ] (κ → mixedEmbedding.mixedSpace F) where
   toFun a := fun k => ∑ i, mixedEmbedding F (D k i) * a i
   map_add' a b := by funext k; simp [mul_add, Finset.sum_add_distrib]
-  map_smul' c a := by funext k; simp [Finset.smul_sum, mul_smul_comm]
+  map_smul' c a := by funext k; simp [Finset.smul_sum]
 
 theorem linM_apply (D : Matrix κ ι F) (a : ι → mixedEmbedding.mixedSpace F) (k : κ) :
     linM D a k = ∑ i, mixedEmbedding F (D k i) * a i := rfl

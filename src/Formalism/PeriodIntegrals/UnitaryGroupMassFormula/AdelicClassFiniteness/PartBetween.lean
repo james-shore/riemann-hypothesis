@@ -14,7 +14,6 @@ theorem partBetween : PartBetween := by
   haveI : Finite ((𝓞 E) ⧸ Ideal.span {δ}) := by
     first
       | exact (Ideal.absNorm_ne_zero_iff _).mp (by rw [Ne, Ideal.absNorm_eq_zero_iff]; exact hne)
-      | exact Ideal.finiteQuotientOfFreeOfNeBot _ hne
   have hδE : algebraMap (𝓞 E) E δ ≠ 0 := by
     intro h
     apply hδ

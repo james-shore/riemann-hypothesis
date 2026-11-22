@@ -38,7 +38,6 @@ theorem br_ddiv_monomial (M α : Fin r →₀ ℕ) :
   split_ifs with h
   · congr 1
     rw [Finsupp.prod]
-    push_cast
     apply Finset.prod_subset (Finset.subset_univ _)
     intro a _ ha
     have h0 : α a = 0 := by simpa using ha

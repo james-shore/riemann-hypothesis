@@ -45,11 +45,11 @@ theorem rowSubst_transvection (O : Type) [CommRing O] (N : ℕ) (R : Type) [Comm
       simp [rowSubst, rowGen, MvPolynomial.algebraMap_eq]
     · intro v
       simp [rowSubst, rowGen, Matrix.transvection, Matrix.add_apply, Matrix.one_apply, Matrix.single_apply,
-        Finset.sum_add_distrib, add_mul, ite_mul, Finset.sum_ite_eq, Finset.sum_ite_eq']
+        Finset.sum_add_distrib, add_mul, ite_mul, Finset.sum_ite_eq]
       by_cases h : v.1 = a
       · have h' : a = v.1 := h.symm
         simp only [h', true_and, if_true]
-        simp [apply_ite C, ite_mul, Finset.sum_ite_eq']
+        simp [apply_ite C, ite_mul]
         ring
       · have h' : ¬ a = v.1 := fun e => h e.symm
         simp [h, h']

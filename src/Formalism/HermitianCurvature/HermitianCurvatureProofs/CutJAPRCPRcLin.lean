@@ -19,7 +19,7 @@ theorem lie_rsmul {X : Q.Mx k r} (hX : Q.inLieLev k r i X) (x : ℝ) : Q.inLieLe
   obtain ⟨h1, h2⟩ := hX
   have hs : ∀ v : Fin (2 * r + k + 1) → ℂ, (x • X) *ᵥ v = x • (X *ᵥ v) := fun v => by
     ext j
-    simp [Matrix.mulVec, dotProduct, Finset.smul_sum, smul_mul_assoc, mul_assoc]
+    simp [Matrix.mulVec, dotProduct, Finset.smul_sum, mul_assoc]
   refine ⟨?_, fun a ha => ⟨?_, ?_⟩⟩
   · rw [Matrix.conjTranspose_smul, star_trivial, Matrix.smul_mul, Matrix.mul_smul, ← smul_add, h1, smul_zero]
   · rw [hs, (h2 a ha).1, smul_zero]
@@ -56,7 +56,7 @@ theorem glc_lin {Z Z' : Q.Mx k r} (hZ : GLc k r Z) (hZ' : GLc k r Z') (a : ℂ) 
     simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_smul, Matrix.smul_mul, Matrix.add_apply,
       Matrix.sub_apply, Matrix.smul_apply, smul_eq_mul, Complex.real_smul]
     push_cast
-    first | ring | (ring_nf; simp only [Complex.I_sq]; ring)
+    first | ring
   have e2 : hpart2 (Hpk k r) (a • Z + Z') =
       a.im • hpart1 (Hpk k r) Z + a.re • hpart2 (Hpk k r) Z + hpart2 (Hpk k r) Z' := by
     unfold Formalism.QuantumDeterminants.hpart1 Formalism.QuantumDeterminants.hpart2
@@ -65,7 +65,6 @@ theorem glc_lin {Z Z' : Q.Mx k r} (hZ : GLc k r Z) (hZ' : GLc k r Z') (a : ℂ) 
     ext i j
     simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_smul, Matrix.smul_mul, Matrix.add_apply,
       Matrix.sub_apply, Matrix.smul_apply, smul_eq_mul, Complex.real_smul]
-    push_cast
     linear_combination (-(a.im : ℂ) * Z i j / 2 + (a.im : ℂ) * ((Hpk k r)⁻¹ * Zᴴ * Hpk k r) i j / 2) * Complex.I_sq
   rw [e1, e2]
   exact ⟨inLieLev_add (inLieLev_add (lie_rsmul h1 _) (lie_rsmul h2 _)) h1',
@@ -99,7 +98,6 @@ private theorem hermitian_halves_smul_add (Z Z' : Q.Mx k r) (a : ℂ) :
     ext i j
     simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_smul, Matrix.smul_mul, Matrix.add_apply,
       Matrix.sub_apply, Matrix.smul_apply, smul_eq_mul, Complex.real_smul]
-    push_cast
     linear_combination (-(a.im : ℂ) * Z i j / 2 + (a.im : ℂ) * ((Hpk k r)⁻¹ * Zᴴ * Hpk k r) i j / 2) * Complex.I_sq
 
 private theorem rdV_real_smul {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E] (f : Q.Mx k r → E)

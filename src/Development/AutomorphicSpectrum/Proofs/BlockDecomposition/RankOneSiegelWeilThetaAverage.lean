@@ -12,7 +12,7 @@ theorem actW_rat_one {F E : Type} [Field F] [NumberField F] [Field E] [Algebra F
     (J : Matrix (Fin 1) (Fin 1) E) (g : HA (AF F) σ J) (X : Fin 1 → Fin 1 → E) (a i : Fin 1) :
     actW (AF F) σ J g (ratTup (AF F) X) a i = (ue (AF F) σ J g : AF F ⊗[F] E) * inclR (AF F) (X a i) := by
   have e : ((ue (AF F) σ J g : (AF F ⊗[F] E)ˣ) : AF F ⊗[F] E) = (HA.mat (AF F) σ J g).val 0 0 := by
-    simp [ue, Matrix.GeneralLinearGroup.val_det_apply, Matrix.det_fin_one]
+    simp [ue, Matrix.GeneralLinearGroup.val_det_apply]
   rw [e]
   simp only [actW, actTup, Matrix.mulVec, dotProduct, ratTup, Fin.sum_univ_one, Subsingleton.elim i 0,
     Subsingleton.elim a 0]

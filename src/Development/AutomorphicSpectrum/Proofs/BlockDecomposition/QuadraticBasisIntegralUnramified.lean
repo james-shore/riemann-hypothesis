@@ -136,7 +136,7 @@ theorem exists_factor (hϖ : w ϖ = WithZero.exp (-1 : ℤ)) (hB0 : B 0 = 1)
     have h : algebraMap K A a + algebraMap K A b * B 1 = a • B 0 + b • B 1 := by
       rw [hB0, Algebra.smul_def, Algebra.smul_def, mul_one]
     rw [h]
-    simp [Finsupp.single_apply]
+    simp
   obtain ⟨p, q, hxpq, hp, hq⟩ : ∃ p q : K, x = algebraMap K A p + algebraMap K A q * B 1 ∧
       w p ≤ 1 ∧ w q ≤ 1 := by
     refine ⟨B.repr x 0, B.repr x 1, ?_, hx 0, hx 1⟩

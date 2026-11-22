@@ -27,7 +27,7 @@ theorem bord_mul_sM {a : ℕ} (G : Matrix (Fin a) (Fin a) (Fv F v ⊗[F] E)) (π
   refine Fin.lastCases ?_ (fun i => ?_) i <;> refine Fin.lastCases ?_ (fun j => ?_) j <;>
     rw [Matrix.mul_apply, Fin.sum_univ_castSucc, Matrix.one_apply] <;>
     simp only [bordM, sM, Fin.snoc_castSucc, Fin.snoc_last, hG]
-  all_goals simp [hπz', hπ _, (Fin.castSucc_lt_last _).ne, (Fin.castSucc_lt_last _).ne', Fin.castSucc_inj]
+  all_goals simp [(Fin.castSucc_lt_last _).ne, (Fin.castSucc_lt_last _).ne', Fin.castSucc_inj]
   · refine Finset.sum_eq_zero (fun x _ => ?_)
     split_ifs <;> first | rfl | (exfalso; tauto)
   · rcases eq_or_ne i z with rfl | hi

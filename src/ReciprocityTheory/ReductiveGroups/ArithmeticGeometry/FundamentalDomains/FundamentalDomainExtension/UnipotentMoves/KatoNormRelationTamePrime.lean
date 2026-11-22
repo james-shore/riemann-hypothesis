@@ -31,7 +31,7 @@ theorem sFlagMap : SFlagMap E := by
       col (mat (X.lmulC n z) τ) a = (n τ).mulVec (col (mat z τ) a) := by
     intro z a
     funext k
-    simp [col, mat, Data.lmulC, Matrix.of_apply, Matrix.mul_apply, Matrix.mulVec, dotProduct]
+    simp [col, mat, Data.lmulC, Matrix.of_apply, Matrix.mulVec, dotProduct]
     rfl
   simp only [hcol]
   have hr : ∀ z : Frame X.Ψ r, (Set.range fun a : Fin X.p0 =>

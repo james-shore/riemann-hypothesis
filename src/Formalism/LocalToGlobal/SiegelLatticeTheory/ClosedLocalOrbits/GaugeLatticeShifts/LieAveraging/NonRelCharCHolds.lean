@@ -68,7 +68,6 @@ theorem hTfe (a b : Fin D.R.rS) : (VS D).hT (X.fY a) (X.eX b) = if b = a then 1 
   have h : starRingEnd D.host.E ((VS D).hT (X.eX b) (X.fY a)) = (VS D).hT (X.fY a) (X.eX b) := by
     first
       | exact (VS D).herm.eq _ _
-      | exact (VS D).herm _ _
   rw [← h, X.ef b a]
   split_ifs <;> simp
 

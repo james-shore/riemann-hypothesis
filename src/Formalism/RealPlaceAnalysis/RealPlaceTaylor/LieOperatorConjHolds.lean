@@ -24,7 +24,6 @@ lemma p0auxiliary_theta_single {n : ℕ} (ε : Fin n → Bool) (a b : Fin n) :
   ext i j
   simp only [Jm, Matrix.mul_diagonal, Matrix.diagonal_mul, Matrix.conjTranspose_apply,
     Matrix.smul_apply, Matrix.single_apply, sgn, smul_eq_mul]
-  push_cast
   split_ifs <;> simp_all
 
 private lemma Jm_mul_selfRealPlaceTaylor {n : ℕ} (ε : Fin n → Bool) : Jm ε * Jm ε = 1 := by

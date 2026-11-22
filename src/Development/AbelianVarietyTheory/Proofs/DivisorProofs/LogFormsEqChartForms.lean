@@ -96,8 +96,7 @@ theorem isComb_dlog {Z : Set X} {U : X.Opens} {n : ℕ} {x : Fin n → X.functio
     · split_ifs
       · exact intCast_mem _ _
       · exact zero_mem _
-  · simp only [add_smul, Finset.sum_add_distrib, mul_smul, ← dK_eq_frame, ← Finset.smul_sum, ← hdu,
-      ite_smul, zero_smul]
+  · simp only [add_smul, Finset.sum_add_distrib, mul_smul, ← Finset.smul_sum, ite_smul, zero_smul]
     rw [dlog_mul, dlog_prod, Finset.sum_ite_mem, Finset.univ_inter]
     congr 1
     · rw [dlog, Units.val_inv_eq_inv_val, hdu]
@@ -115,7 +114,7 @@ theorem isComb_frame {Z : Set X} {U : X.Opens} {n : ℕ} {x : Fin n → X.functi
   by_cases hi : i ∈ J
   · refine isComb_single (one_mem _) ⟨x i, (hc.logUnit y hy _).2 ⟨1, Pi.single i 1, ?_, ?_⟩, rfl⟩ ?_
     · rw [Units.val_one]; exact unitAt_one y
-    · rw [one_mul, Finset.prod_eq_single_of_mem i hi (fun j _ hj => by simp [Pi.single_apply, hj])]
+    · rw [one_mul, Finset.prod_eq_single_of_mem i hi (fun j _ hj => by simp [hj])]
       simp
     · rw [frame, if_pos hi, one_smul]
   · have hm : RegAt y (x i : X.functionField) := (hc.chart y hy).mem i

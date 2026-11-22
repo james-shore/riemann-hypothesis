@@ -51,7 +51,7 @@ theorem exists_unitary_at (p : ℕ) (hp : p.Prime) {N : ℕ} (L : Submodule (�
       rw [Finset.sum_eq_single b]
       · by_cases hab : a = b
         · subst hab; simp
-        · simp [Pi.single_apply, Ne.symm hab, hab]
+        · simp [Ne.symm hab, hab]
       · intro j _ hj
         simp [Pi.single_apply, hj]
       · simp

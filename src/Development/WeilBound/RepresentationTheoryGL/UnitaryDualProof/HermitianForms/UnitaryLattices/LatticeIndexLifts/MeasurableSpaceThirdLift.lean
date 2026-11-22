@@ -156,14 +156,14 @@ theorem bessel (v : V) : ∫⁻ ξ, ENNReal.ofReal (Df gl s C ξ v v).re ∂ν �
       have hf0 : f 0 = 0 := by simp [f, Df_zero]
       rw [hf0]
       symm
-      exact ENNReal.iSup_eq_zero.mpr fun n => by simp [g, Set.indicator_apply, h0K n]
+      exact ENNReal.iSup_eq_zero.mpr fun n => by simp [g, h0K n]
     · obtain ⟨n₁, hn₁⟩ := E.exists_mem ξ
       obtain ⟨i, -, hi⟩ := hW.toHasBasis.mem_iff.mp (isOpen_compl_singleton.mem_nhds (Ne.symm hξ))
       have hmem : ξ ∈ K (max n₁ i) := by
         refine ⟨E.subset (le_max_left _ _) hn₁, fun h => ?_⟩
         exact hi (hW.antitone (le_max_right _ _) h) rfl
       refine le_antisymm (le_iSup_of_le (max n₁ i) ?_) (iSup_le fun n => Set.indicator_le_self _ _ ξ)
-      simp [g, Set.indicator_apply, hmem]
+      simp [g, hmem]
   show ∫⁻ ξ, f ξ ∂ν ≤ _
   calc ∫⁻ ξ, f ξ ∂ν = ∫⁻ ξ, ⨆ n, g n ξ ∂ν := lintegral_congr hsup
     _ = ⨆ n, ∫⁻ ξ, g n ξ ∂ν := lintegral_iSup hgm hgmono

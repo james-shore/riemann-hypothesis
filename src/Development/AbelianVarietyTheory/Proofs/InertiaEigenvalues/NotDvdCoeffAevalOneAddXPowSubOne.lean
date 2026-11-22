@@ -29,7 +29,7 @@ private theorem C_dvd_one_add_X_pow_prime_pow_sub_one_sub_X_pow {O : Type} [Comm
     simp [hN.symm]
   by_cases hN' : i = l ^ e
   · subst hN'
-    simp [h0, hl.ne_zero]
+    simp [hl.ne_zero]
   · simp only [h0, hN', if_false, sub_zero]
     exact h.trans (Nat.cast_dvd_cast (hl.dvd_choose_pow h0 hN'))
 

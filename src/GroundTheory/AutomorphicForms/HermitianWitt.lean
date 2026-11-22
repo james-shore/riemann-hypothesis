@@ -19,7 +19,7 @@ theorem bijective_of_injective_sesq [FiniteDimensional E V]
   have key : ∀ c j, B (sx c) (b j) = Matrix.vecMul c G j := by
     intro c j
     simp only [sx, Basis.equivFun_symm_apply, map_sum, LinearMap.map_smulₛₗ₂, conjHom_apply,
-      conj_conj, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul, Matrix.vecMul,
+      conj_conj, LinearMap.sum_apply, smul_eq_mul, Matrix.vecMul,
       dotProduct, G, gram_apply]
   have hinj : Function.Injective (Matrix.vecMulLinear G) := by
     rw [← LinearMap.ker_eq_bot, LinearMap.ker_eq_bot']

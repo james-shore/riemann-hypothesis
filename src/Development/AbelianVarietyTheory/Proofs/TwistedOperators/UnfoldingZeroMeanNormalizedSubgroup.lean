@@ -89,7 +89,7 @@ theorem unfold_zero_mean : ∀ (H : Type) [Group H] [TopologicalSpace H] [IsTopo
     change ∫ q : N × H, f ((q.1 : H) * q.2) ∂((κ.restrict 𝓝).prod (ν.restrict 𝓕)) = 0
     rw [integral_prod_symm _ hint3]
     refine integral_eq_zero_of_ae (Filter.Eventually.of_forall fun y => ?_)
-    simp only [shear, hf, Pi.zero_apply]
+    simp only [hf, Pi.zero_apply]
     have : ∀ x : N, K ((x : H) * y) * F ((x : H) * y) = K y * F ((x : H) * y) := fun x => by rw [hKN _ x.2]
     simp_rw [this]
     rw [integral_const_mul, h0, mul_zero]

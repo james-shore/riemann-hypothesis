@@ -21,7 +21,7 @@ theorem thetaKernelShapeAtD_ofKer_of_hyp_adapted : GlobalTheory.ThLoc.Inputs →
   have hpd : D.what₂.places.resChar w = D.host.d := by
     have h := hcls
     simp only [Host.cls, primeClass] at h
-    split_ifs at h with h1 h2 h3 <;> first | exact h3 | cases h
+    split_ifs at h with h1 h2 h3 <;> first | exact h3
   have hAd : AdPl D w := Or.inr (Or.inr hcls)
   have hlev' : LevFree Y u μ w := hlev
   obtain ⟨Pm, hBas, -, hConj, hTh⟩ := hA w hAd u μ hlev'

@@ -25,7 +25,7 @@ theorem lpSum_segments_nu_alt : ∀ (E Ω : Type) [Field E] [NumberField E] [Fie
   letI := GlobalTheory.LocalData.complRel w
   haveI := GlobalTheory.LocalData.isLocalField w
   intro h rc hrc l c
-  first | (have hOpn := UpperTheory.One.M.opn _ (hrc); obtain ⟨a, ha, ε, L⟩ := hOpn) | obtain ⟨a, ha, ε, -, L⟩ := hrc
+  first | (have hOpn := UpperTheory.One.M.opn _ (hrc); obtain ⟨a, ha, ε, L⟩ := hOpn)
   rw [← sumList_lpTw, List.map_map, List.map_map]
   congr 1
   refine List.map_congr_left fun Γ _ => ?_

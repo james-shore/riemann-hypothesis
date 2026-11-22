@@ -35,7 +35,7 @@ theorem lattice_map_image : LatMap := by
   congr 1
   simp only [Formalism.MainNotions.S.AutInst.fmat, Prod.snd_mul, Prod.snd_inv]
   push_cast
-  simp only [Units.val_mul, Matrix.mul_assoc, Units.mul_inv, Matrix.mul_one]
+  simp only [Matrix.mul_assoc]
   rw [Matrix.mul_nonsing_inv _ ((Matrix.isUnit_iff_isUnit_det _).mp (Units.isUnit _)),
     Matrix.mul_one]
 

@@ -134,7 +134,6 @@ theorem field_mem_unitary : FieldMemU := by
     have := hcont.aestronglyMeasurable (μ := volume) (measurableSet_singleton (0 : ℂ)).compl
     first
       | rwa [restrict_compl_singleton] at this
-      | rwa [Measure.restrict_eq_self_of_ae_mem (compl_mem_ae_iff.mpr (measure_singleton 0))] at this
   refine (memLp_two_iff_integrable_sq_norm hmeas).2 ?_
   refine ((hV.int a hloc).re).congr (Filter.Eventually.of_forall fun cc => ?_)
   exact (norm_vecT_sq hV _).symm

@@ -617,7 +617,7 @@ theorem invNL_outside (hCA : Formalism.MainNotions.LiftingTheory.CaseA W) (h5 : 
       funext m
       by_cases h : m = k
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     rw [e]
     exact hup k hk s hs bs hbs
   let g : Fin d → W.EE := fun k => if k ∈ Rst then 0 else πi * (W.γE W.gam (F k) - F k)
@@ -630,7 +630,7 @@ theorem invNL_outside (hCA : Formalism.MainNotions.LiftingTheory.CaseA W) (h5 : 
       intro k
       by_cases h : m = k
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     simp only [this, Finset.sum_ite_eq, Finset.mem_filter, Finset.mem_univ, true_and, g]
     by_cases hm : m ∈ Rst <;> simp [hm]
   refine ⟨g, ?_, fun k => ?_⟩

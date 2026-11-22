@@ -97,7 +97,7 @@ private theorem cD_ratS {E : Type} [Field E] [NumberField E] (t : Eˣ)
   rw [M.val_ratS]
   ext i j
   fin_cases i <;> fin_cases j <;>
-    simp [cD, cR, M.val_ratS, diag_inv_val, diag_val, UpperTheory.ConvolutionTheory.R2.rt, map_mul]
+    simp [cD, cR, M.val_ratS, diag_inv_val, UpperTheory.ConvolutionTheory.R2.rt, map_mul]
 
 private theorem cD_mem {E : Type} [Field E] [NumberField E] (t : Eˣ) {x : G1 E} (hx : x ∈ Gam E) :
     cD (IdeleGroup.diagonal E t) x ∈ Gam E := by
@@ -160,7 +160,7 @@ private theorem ratGL_dR {E : Type} [Field E] [NumberField E] (r : Eˣ) :
   refine Units.ext ?_
   show (dR r).val.map (algebraMap E (A E)) = (dM (IdeleGroup.diagonal E r)).val
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [dR, dM, diag_val, UpperTheory.ConvolutionTheory.R2.rt]
+  fin_cases i <;> fin_cases j <;> simp [dR, dM]
 
 private theorem rat_decomp {E : Type} [Field E] [NumberField E] (γ : GL (Fin 2) E) :
     ∃ (r : Eˣ) (s : Matrix.SpecialLinearGroup (Fin 2) E),

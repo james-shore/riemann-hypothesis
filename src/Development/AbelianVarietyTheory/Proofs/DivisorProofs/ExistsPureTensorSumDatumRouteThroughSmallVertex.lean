@@ -99,7 +99,6 @@ theorem isPureSum_of_slices {F : Type} [Field F] [NumberField F] {κ : Type} [Fi
     · subst e; rwa [Function.update_self]
     · rw [Function.update_of_ne e]; exact h1 k v
   · filter_upwards [hstd k, hvac, Filter.eventually_cofinite_ne v₁] with v a b c
-    beta_reduce
     rw [Function.update_of_ne c, a, b]
 
 variable {D : D7} {T : Type} {L : LevCh D T} {sc : Consts} {G : GridData L sc} {μ₀ : T}

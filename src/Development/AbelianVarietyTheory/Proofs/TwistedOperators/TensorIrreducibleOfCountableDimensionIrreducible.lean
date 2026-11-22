@@ -100,7 +100,7 @@ theorem tensor_irreducible : ∀ (V U : Type) [AddCommGroup V] [Module ℂ V] [A
     intro a y j
     induction y using TensorProduct.induction_on with
     | zero => simp
-    | tmul m n => simp [e, TensorProduct.equivFinsuppOfBasisRight_apply_tmul_apply]
+    | tmul m n => simp [e]
     | add y z hy hz => simp only [map_add, Finsupp.add_apply, hy, hz]
   have hex : ∃ n, ∃ y ∈ N, y ≠ 0 ∧ (e y).support.card = n := ⟨_, x₁, hx₁N, hx₁, rfl⟩
   obtain ⟨x, hxN, hx0, hxc⟩ := Nat.find_spec hex

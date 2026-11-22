@@ -142,7 +142,7 @@ theorem Sw_rel {A fr fi : Matrix (Fin m) (Fin m) ℂ} {C bw biw : Matrix (Fin n 
   unfold PositivityTheory.SiegelWeilFormula.KK.Sw
   rw [hUb, hts1, hts2, hYS1, hYS2, smul_smul, hT, hT, hN, hN]
   rcases hζ with ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩ <;> rcases Int.units_eq_one_or sg with rfl | rfl <;>
-    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im] <;> ring
+    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im]
 
 end Place
 

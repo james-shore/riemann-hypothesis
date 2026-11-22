@@ -129,7 +129,7 @@ theorem herm_eI (v : Fin (2 * r + k + 1) → ℂ) (a : Fin r) :
 theorem eI_herm (v : Fin (2 * r + k + 1) → ℂ) (a : Fin r) :
     herm (Hpk k r) (bvec (eI k r a)) v = star (v (esI k r a)) := by
   rw [herm_split, herm_Hb]
-  simp [bvec_apply, eI_inj, wI_ne_eI, esI_ne_eI, apply_ite (starRingEnd ℂ)]
+  simp [bvec_apply, eI_inj, wI_ne_eI, esI_ne_eI]
 
 theorem herm_isom {g : Mat k r} (hg : g ∈ GG k r) (v w : Fin (2 * r + k + 1) → ℂ) :
     herm (Hpk k r) (g *ᵥ v) (g *ᵥ w) = herm (Hpk k r) v w := by

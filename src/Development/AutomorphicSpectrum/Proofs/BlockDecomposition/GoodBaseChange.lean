@@ -35,7 +35,7 @@ theorem good_baseChange : ∀ (p : ℕ) [Fact p.Prime] (A : Type) [CommRing A](B
     | zero => simp
     | tmul c x =>
       have hx : (1 : B) ⊗ₜ[A] (x : K₁) ∈ LinearMap.ker (d.baseChange B) := by
-        simp [LinearMap.baseChange_tmul, x.2]
+        simp [LinearMap.baseChange_tmul]
       refine ⟨c ⊗ₜ ⟨_, hx⟩, ?_⟩
       simp [e₁, AlgebraTensorModule.cancelBaseChange_symm_tmul]
     | add u u' h h' => rw [map_add, map_add]; exact Submodule.add_mem _ h h'

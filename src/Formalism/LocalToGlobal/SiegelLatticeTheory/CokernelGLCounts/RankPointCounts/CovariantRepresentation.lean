@@ -104,9 +104,6 @@ theorem fix_rv {q : GCar X u u' (X.Fu u) (X.Fu u') Λ Λ'} {h : X.B.I.Ginf} (hh 
   first
   | exact hh _ ⟨y, hy, rfl⟩ v
   | exact hh v _ ⟨y, hy, rfl⟩
-  | exact hh.2 _ ⟨y, hy, rfl⟩ v
-  | exact hh.2 v _ ⟨y, hy, rfl⟩
-  | (clear hy; done)
 
 theorem uMat_inv_mul {n : ℕ} {ε : Fin n → Bool} (a : Formalism.REAL.UJ ε) : uMat a⁻¹ * uMat a = 1 := by
   delta uMat

@@ -57,7 +57,7 @@ theorem isCopyFinDS_of_equiv {H : Type} [NormedAddCommGroup H] [InnerProductSpac
   · rw [← hspan]
     congr 2
     ext v
-    simp only [LinearMap.coe_comp, Function.comp_apply, LinearEquiv.coe_coe, Set.mem_setOf_eq]
+    simp only [LinearMap.coe_comp, Function.comp_apply, Set.mem_setOf_eq]
     exact ⟨fun ⟨w, y, hv⟩ => ⟨_, y, hv⟩, fun ⟨w, y, hv⟩ => ⟨f.toLinearEquiv w, y, by simpa using hv⟩⟩
 
 open Classical in

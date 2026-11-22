@@ -51,7 +51,6 @@ theorem norm_le_one_iff_isIntegral (z : Om l) : ‖z‖ ≤ 1 ↔ IsIntegral ℤ
   have hzQ : IsIntegral ℚ_[l] z := by
     first
       | exact Algebra.IsIntegral.isIntegral z
-      | exact (Algebra.IsAlgebraic.isAlgebraic z).isIntegral
   have hnorm : ‖z‖ = spectralValue (minpoly ℚ_[l] z) := rfl
   rw [hnorm, spectralValue_le_one_iff_norm_coeff_le_one _ (minpoly.monic hzQ)]
   constructor

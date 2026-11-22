@@ -111,7 +111,7 @@ theorem exists_coeff (E : Type) [Field E] [NumberField E] :
   · intro τ
     rw [hAB' τ τ]; simp
   · intro σ τ h
-    rw [hAB' σ τ]; simp [Matrix.one_apply, h]
+    rw [hAB' σ τ]; simp [h]
   · intro τ a
     have := congrFun (congrFun hB' a) (cj τ)
     simp only [B', Matrix.of_apply] at this

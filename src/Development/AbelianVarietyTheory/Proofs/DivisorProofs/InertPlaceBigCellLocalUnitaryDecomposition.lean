@@ -52,7 +52,7 @@ lemma gram_wM (c : K →+* K) (J : Matrix (Fin d) (Fin d) K) (b : GL (Fin d) K) 
         ((b : Matrix (Fin d) (Fin d) K)ᵀ * J * (b : Matrix (Fin d) (Fin d) K).map c +
           (b : Matrix (Fin d) (Fin d) K)ᵀ * J * (b : Matrix (Fin d) (Fin d) K).map c) 0 := by
   simp only [wM, dbl, fromBlocks_transpose, fromBlocks_map, fromBlocks_multiply, Matrix.transpose_neg,
-    Matrix.map_neg _ (map_neg c), Matrix.mul_neg, Matrix.neg_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add,
+    Matrix.map_neg _ (map_neg c), Matrix.mul_neg, Matrix.neg_mul, Matrix.mul_zero, add_zero, zero_add,
     neg_neg, Matrix.mul_assoc]
   rw [fromBlocks_inj]
   refine ⟨?_, ?_, ?_, ?_⟩ <;> abel
@@ -62,7 +62,7 @@ lemma wMi_diagCols (b : GL (Fin d) K) (h2 : (2 : K) ≠ 0) :
       fromRows ((b⁻¹ : GL (Fin d) K) : Matrix (Fin d) (Fin d) K) 0 := by
   rw [wMi, show (diagCols (Fin d) : Matrix (Fin d ⊕ Fin d) (Fin d) K) = fromRows 1 1 from rfl, Matrix.smul_mul,
     fromBlocks_mul_fromRows_eq]
-  simp only [Matrix.mul_one, Matrix.neg_mul, add_neg_cancel]
+  simp only [Matrix.mul_one, add_neg_cancel]
   ext (i | i) j
   · simp only [Matrix.smul_apply, fromRows_apply_inl, Matrix.add_apply, smul_eq_mul]
     rw [← two_mul, inv_mul_cancel_left₀ h2]
@@ -74,7 +74,7 @@ lemma toBlocks₁₁_conj (b : GL (Fin d) K) (Y : Matrix (Fin d ⊕ Fin d) (Fin 
   conv_lhs => rw [← fromBlocks_toBlocks Y]
   have hs : ∀ (r : K) (Z : Matrix (Fin d ⊕ Fin d) (Fin d ⊕ Fin d) K), (r • Z).toBlocks₁₁ = r • Z.toBlocks₁₁ := fun _ _ => rfl
   simp only [wM, wMi, hs, Matrix.smul_mul, fromBlocks_multiply, toBlocks_fromBlocks₁₁, Matrix.mul_smul,
-    Matrix.mul_add, Matrix.add_mul, Matrix.neg_mul, Matrix.mul_neg, Matrix.mul_assoc, Matrix.smul_apply]
+    Matrix.mul_add, Matrix.add_mul, Matrix.neg_mul, Matrix.mul_neg, Matrix.mul_assoc]
   congr 1
   abel
 
@@ -109,7 +109,7 @@ lemma int_conj_of_keeps (O : ValuationSubring K) (b : GL (Fin d) K) (h2i : (2 : 
     intro k
     by_cases hk : k = j
     · subst hk; simp
-    · simp [Pi.single_apply, hk]
+    · simp [hk]
   have := int_wMi O b h2i _ (hQ _ (inLat2_wM O b _ he)) i
   rw [Matrix.mulVec_mulVec, Matrix.mulVec_mulVec, Matrix.mulVec_single_one] at this
   exact this
@@ -284,7 +284,7 @@ theorem GlobalTheory.InertCellLocal.bigCell_local_step : (∀ {O : Type} [CommRi
           wM b * ((fromBlocks 1 X 0 1 : Matrix (Fin d ⊕ Fin d) (Fin d ⊕ Fin d) K) * (wMi b * @diagCols K _ (Fin d) _)) by
             simp only [Matrix.mul_assoc],
         wMi_diagCols b h2, fromBlocks_mul_fromRows_eq]
-      simp only [Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add]
+      simp only [Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero]
       rw [← wMi_diagCols b h2, ← Matrix.mul_assoc, hWW, Matrix.one_mul]
     exact key
   · have hc1 : ∀ Y : Matrix (Fin d ⊕ Fin d) (Fin d ⊕ Fin d) K, wMi b * (wM b * Y * wMi b) * wM b = Y := by

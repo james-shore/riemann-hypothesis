@@ -55,7 +55,7 @@ theorem evalAt_alternant_nat (z : Fin m → ℂˣ) (μ : Fin m → ℕ) :
   rw [evalAt_monomial_eq_prod_zpow, Fintype.prod_eq_single a]
   · simp
   · intro i hi
-    simp [Pi.single_apply, hi]
+    simp [hi]
 
 theorem staircase_eq : staircase m = fun i => ((stair m i : ℕ) : ℤ) := by
   funext i

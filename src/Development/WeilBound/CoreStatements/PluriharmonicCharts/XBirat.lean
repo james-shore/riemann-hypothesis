@@ -52,7 +52,7 @@ theorem hom_X (k : K) (i j : ι k) : ∃ a, ReciprocityTheory.ChartRestriction.G
     by_cases h : k = k'
     · subst h
       simp [Finsupp.single_apply]
-    · simp [Finsupp.single_apply, h]
+    · simp [h]
   exact ⟨_, key i, key j⟩
 
 theorem ratio {Ω : Type} [Field Ω] (r : (Σ k, ι k) → Ω) (c : ∀ k, ι k) (hc : ∀ k, r ⟨k, c k⟩ = 1) (s : Ω)

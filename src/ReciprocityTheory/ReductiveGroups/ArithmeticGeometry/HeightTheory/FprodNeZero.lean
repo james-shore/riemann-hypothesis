@@ -30,8 +30,7 @@ private theorem gen_ne_zero_of_mem_htOne_heightData {p : Ideal (KTp K d.D d.N)} 
   have hne : p ≠ ⊥ := by
     rintro rfl
     first
-      | (simp at hht; done)
-      | (rw [Ideal.height_bot] at hht; exact zero_ne_one hht)
+      | (simp at hht)
   obtain ⟨q, hqp, hq⟩ := hpr.exists_mem_prime_of_ne_bot hne
   have hqi : (Ideal.span {q}).IsPrime := (Ideal.span_singleton_prime hq.ne_zero).mpr hq
   have hle : Ideal.span {q} ≤ p := (Ideal.span_singleton_le_iff_mem p).mpr hqp
@@ -50,9 +49,7 @@ private theorem gen_ne_zero_of_mem_htOne_heightData {p : Ideal (KTp K d.D d.N)} 
       rw [h3]; rfl
     have h2 := (Ideal.height_le_iff.mp h0) ⊥ Ideal.bot_prime hbot
     first
-      | (simp at h2; done)
-      | exact absurd h2 (not_lt_of_ge bot_le)
-      | exact ENat.not_lt_zero _ h2
+      | (simp at h2)
   have hprin : p.IsPrincipal := ⟨⟨q, hspan.symm⟩⟩
   haveI := hprin
   simp only [Data.gen, dif_pos hprin]
@@ -68,9 +65,6 @@ theorem fprod_ne_zero (E : Ideal (KTp K d.D d.N) → ℤ) (hE : {q | q ∈ d.HtO
   have hg := gen_ne_zero_of_mem_htOne_heightData d hq
   first
     | exact (map_ne_zero_iff _ (IsFractionRing.injective _ _)).mpr hg
-    | exact (map_ne_zero_iff _ (FaithfulSMul.algebraMap_injective _ _)).mpr hg
-    | exact (map_ne_zero_iff _ (NoZeroSMulDivisors.algebraMap_injective _ _)).mpr hg
-    | (simpa using hg)
 
 theorem sig_fprod (E : Ideal (KTp K d.D d.N) → ℤ) (hE : {q | q ∈ d.HtOne ∧ E q ≠ 0}.Finite)
     (hg : ∀ q ∈ d.HtOne, E q ≠ 0 → ReciprocityTheory.MultiplicativeHeights.IsMultiHomogeneous

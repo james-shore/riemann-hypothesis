@@ -148,7 +148,7 @@ theorem GlobalTheory.HodgeSmooth.exists_diag_riem_orth : ∀ (E : Type) [Field E
     generalize ((riemConst U k τ : ℝ) : ℂ) = dd
     clear hsupp key hcol hAv hiso hh hex him hD hT hder hH hPu hT' hder'
     have hi : ∀ j j' : Fin (Dw.mult τ), W.e.symm ⟨τ, j⟩ = W.e.symm ⟨τ, j'⟩ ↔ j = j' := fun j j' => by simp
-    simp [hermForm, smul_mulVec, sum_dotProduct, dotProduct_sum, star_sum, Pi.single_apply, hi, mul_apply, mul_comm]
+    simp [hermForm, smul_mulVec, dotProduct_sum, star_sum, Pi.single_apply, hi, mul_apply, mul_comm]
   · rw [← key, ← UnitDet.hermForm_mulVec, hcol τ' zz' uu' T' hder' hT', hcol τ zz uu T hder hT]
     simp only [hermForm, dotProduct, mulVec_diagonal, Pi.star_apply]
     refine Finset.sum_eq_zero fun q _ => ?_

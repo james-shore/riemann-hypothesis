@@ -36,7 +36,7 @@ theorem UpperTheory.V.Pa.Det.relPair :
     rw [hχ g hg, one_smul] at e
     rw [e, map_mul]
     simp only [eK, eL g hg]
-    simp only [add_mul, mul_add, sub_mul, mul_sub, Finset.sum_add_distrib, Finset.sum_sub_distrib, Finset.sum_mul,
+    simp only [add_mul, mul_add, sub_mul, Finset.sum_add_distrib, Finset.sum_sub_distrib, Finset.sum_mul,
       Finset.mul_sum, mul_assoc, hP]
     abel
   let pr : (G →₀ F) → (G →₀ F) → (G →₀ F) := fun c d =>
@@ -153,7 +153,7 @@ theorem UpperTheory.V.Pa.Det.relPair :
       (A * Matrix.single j j 1 * (B * Matrix.single i i 1)).trace = A i j * B j i := by
     intro A B
     rw [← mul_assoc, Matrix.trace_mul_single]
-    simp [Matrix.mul_apply, Matrix.single_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', ite_mul]
+    simp [Matrix.mul_apply, Matrix.single_apply, ite_and, Finset.sum_ite_eq, ite_mul]
   have key := trQ _ (prS _ (prS c hS dj hdj) _ (prS c' hS' di hdi))
   rw [mQ _ (prS c hS dj hdj)] at key
   simp only [mR, mK, mL c hS, mL c' hS', hR0, hR0', hi, hj, zero_mul, mul_zero, add_zero, zero_add] at key

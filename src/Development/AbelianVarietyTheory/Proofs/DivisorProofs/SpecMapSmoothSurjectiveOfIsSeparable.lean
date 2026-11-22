@@ -11,7 +11,7 @@ theorem spec_map_smooth_surjective_of_isSeparable (K L : Type) [Field K] [Field 
   constructor
   · rw [HasRingHomProperty.Spec_iff (P := @Smooth)]
     rw [RingHom.Smooth]
-    simp only [CommRingCat.hom_ofHom]
+    simp only
     exact RingHom.smooth_algebraMap.mpr hs
   · constructor
     intro x

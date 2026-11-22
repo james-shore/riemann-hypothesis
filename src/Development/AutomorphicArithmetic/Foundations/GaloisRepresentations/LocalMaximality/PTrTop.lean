@@ -22,7 +22,7 @@ private theorem kahlerMap_volumeForm {F K K' : Type} [Field F] [Field K] [Field 
     simp [mapDR]
   have h2 : ∀ a : K, map1 ℂ K K' (D ℂ K a) = ExteriorAlgebra.ι K' (D ℂ K' (algebraMap K K' a)) := fun a => by
     simp [map1, ι1, KaehlerDifferential.map_D]
-  simp only [Function.comp, h1, map_smul, h2, map_inv₀]
+  simp only [Function.comp, h1, map_smul, h2]
   rw [← algebraMap_smul K' ((algebraMap F K (x j.succ / x 0))⁻¹), map_inv₀, ← IsScalarTower.algebraMap_apply]
 
 theorem UpperTheory.Gal.productCup_of_system.trTop_of :

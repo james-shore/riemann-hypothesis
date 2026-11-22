@@ -39,7 +39,7 @@ def lflagOf (h : IsFrame (starRingEnd E) S.gram T A) : LFlag S r T :=
           refine Matrix.mulVec_injective_iff.1 fun c d e => ?_
           simpa [Matrix.mulVec_mulVec, hL] using congrArg (L *ᵥ ·) e
         e_iso := fun a b => by rw [k]; simp [TF, Matrix.diagonal_apply, Fin.castSucc_ne_last]
-        z_orth := fun a => by rw [k]; simp [TF, Matrix.diagonal_apply, Fin.castSucc_ne_last]
+        z_orth := fun a => by rw [k]; simp [TF, Fin.castSucc_ne_last]
         z_norm := by rw [k]; simp [TF] }
     zt := colVec S A (Fin.last r) }
 

@@ -101,7 +101,7 @@ theorem isPlacesIdem_mul_self {S₁ : Finset (InfinitePlace F)} {S₂ : Finset (
   exact Prod.ext h1 h2
 
 theorem rat_mul {a b : F} (x y : ℍ[F, a, b]) : rat (x * y) = rat x * rat y := by
-  ext <;> simp [rat] <;> ring
+  ext <;> simp [rat]
 
 theorem rat_one {a b : F} : rat (1 : ℍ[F, a, b]) = 1 := by
   ext <;> simp [rat]
@@ -118,7 +118,7 @@ theorem nrm_smul {R : Type*} [CommRing R] {a b : R} (s : R) (x : ℍ[R, a, b]) :
   ring
 
 theorem star_smul' {R : Type*} [CommRing R] {a b : R} (s : R) (x : ℍ[R, a, b]) : star (s • x) = s • star x := by
-  ext <;> simp <;> ring
+  ext <;> simp
 
 end GlobalTheory.QSA.Unconj
 

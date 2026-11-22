@@ -31,7 +31,7 @@ private theorem tau_val (x : E) (y : (Af E)ˣ) :
 private theorem scalar_val {A : Type} [CommRing A] (n : ℕ) (t : Aˣ) :
     (GeneralLinearGroup.scalar (Fin n) t).val = (t : A) • (1 : Matrix (Fin n) (Fin n) A) := by
   ext i j
-  by_cases h : i = j <;> simp [GeneralLinearGroup.scalar, h, Matrix.one_apply]
+  by_cases h : i = j <;> simp [GeneralLinearGroup.scalar, h]
 
 private theorem sim_scalar {A B : Type} [CommRing A] [CommRing B] (σ : A →+* A) (i : B →+* A) (n : ℕ) (t : Aˣ) (s : Bˣ)
     (h : σ t * t = i s) : (GeneralLinearGroup.scalar (Fin n) t, s) ∈ Sim σ i n := by
@@ -51,7 +51,7 @@ private theorem comp_zeta (n : ℕ) {d : ℕ} {x : E} (hd : 0 < d) (hx : x ^ 2 =
   ext i j : 1
   change pLoc E u ((GeneralLinearGroup.scalar (Fin n) (tau x y)).val i j) = _
   rw [scalar_val]
-  by_cases h : i = j <;> simp [h, Matrix.one_apply]
+  by_cases h : i = j <;> simp [h]
 
 theorem zetaEx_holds : ZetaEx := by
   intro E _ _ _ n d x hd hx
@@ -80,7 +80,7 @@ theorem zetaEx_holds : ZetaEx := by
       by_cases h : i = j
       · simp only [h, Matrix.smul_apply, one_apply_eq, smul_eq_mul, mul_one, map_apply]
         rfl
-      · simp [h, Matrix.one_apply]
+      · simp [h]
   · rw [comp_zeta]
     have : Units.map (pLoc E u).toMonoidHom (tau x (sgl w y)) = 1 :=
       Units.ext ((conjLoc E _ u).1 ((normLoc (Kx x) E w y (cj u)).1 fun e => h ((k1 _ _).2 e)))
@@ -94,7 +94,7 @@ theorem zetaEx_holds : ZetaEx := by
     have key : ∀ (t : (u.adicCompletion E)ˣ), Valued.v (t : u.adicCompletion E) = 1 → ∀ i j,
         Valued.v ((GeneralLinearGroup.scalar (Fin n) t).val i j) ≤ 1 := fun t ht i j => by
       rw [scalar_val]
-      by_cases e : i = j <;> simp [e, Matrix.one_apply, ht]
+      by_cases e : i = j <;> simp [e, ht]
     exact GlobalTheory.EulerTwRestr.mem_KGL_iff.2 ⟨key t h1, by rw [← map_inv]; exact key _ h2⟩
   · refine ⟨_, by rw [comp_zeta, scalar_val], ?_⟩
     exact ((conjLoc E _ u).2.1.trans ((normLoc (Kx x) E w y (cj u)).2.2 h ((k1 _ _).1 hu) (k2 w hw))).trans

@@ -303,5 +303,5 @@ theorem UpperTheory.Reformulated.B.DualIntegralLattice.main :
   rw [h2]
   simp only [W, Matrix.of_apply, map_sum, map_mul, hw, Finset.mul_sum]
   refine Finset.sum_congr rfl fun k _ => ?_
-  simp only [map_natCast, map_mul, map_intCast]
+  simp only [map_natCast, map_intCast]
   ring

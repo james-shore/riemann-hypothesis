@@ -26,8 +26,6 @@ theorem linear_coeff_subst_chain_rule {σ : Type} [Fintype σ] {A : σ → MvPow
   have hs : MvPowerSeries.HasSubst A := by
     first
       | exact MvPowerSeries.hasSubst_of_constantCoeff_zero hA
-      | exact MvPowerSeries.HasSubst.of_constantCoeff_zero hA
-      | exact MvPowerSeries.hasSubst_of_constantCoeff_nilpotent (fun s => by rw [hA s]; exact IsNilpotent.zero)
 
   have hmul : ∀ P R : MvPowerSeries τ C, MvPowerSeries.constantCoeff P = 0 →
       MvPowerSeries.constantCoeff R = 0 → MvPowerSeries.coeff (Finsupp.single j 1) (P * R) = 0 := by
@@ -36,8 +34,6 @@ theorem linear_coeff_subst_chain_rule {σ : Type} [Fintype σ] {A : σ → MvPow
     refine Finset.sum_eq_zero fun ab hab => ?_
     first
       | rw [Finset.HasAntidiagonal.mem_antidiagonal] at hab
-      | rw [Finset.mem_antidiagonal] at hab
-      | simp only [Finset.mem_antidiagonal] at hab
     by_cases ha : ab.1 = 0
     · rw [ha, MvPowerSeries.coeff_zero_eq_constantCoeff_apply, hP, zero_mul]
     · have hb : ab.2 = 0 := by

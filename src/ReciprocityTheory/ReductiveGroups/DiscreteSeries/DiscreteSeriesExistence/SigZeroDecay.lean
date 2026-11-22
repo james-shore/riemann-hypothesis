@@ -42,8 +42,7 @@ theorem sigZeroDecay_real {h c s N G : ℝ} (hh : 0 < h) (hc : 1 ≤ c) (hN : 0 
     rwa [Real.log_mul hN.ne' (Real.exp_pos s).ne', Real.log_exp] at h1
   have hcs : c * (s / c) = s := by
     first
-      | (field_simp; done)
-      | (field_simp; ring)
+      | (field_simp)
   have hmin : s - 1 ≤ c * min (s ^ 2) (s / c) := by
     rcases min_cases (s ^ 2) (s / c) with ⟨h1, _⟩ | ⟨h1, _⟩
     · rw [h1]
@@ -52,8 +51,7 @@ theorem sigZeroDecay_real {h c s N G : ℝ} (hh : 0 < h) (hc : 1 ≤ c) (hN : 0 
       linarith
   have hh8 : h / 8 = c * (h / (8 * c)) := by
     first
-      | (field_simp; done)
-      | (field_simp; ring)
+      | (field_simp)
   rw [Real.rpow_def_of_pos hN, Real.rpow_def_of_pos hG, ← Real.exp_add, ← Real.exp_add,
     Real.exp_le_exp, hh8]
   nlinarith [mul_le_mul_of_nonneg_left hmin ha.le, mul_le_mul_of_nonneg_left hlog ha.le]

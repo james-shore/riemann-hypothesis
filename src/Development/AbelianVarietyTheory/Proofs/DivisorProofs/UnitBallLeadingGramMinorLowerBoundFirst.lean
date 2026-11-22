@@ -68,7 +68,7 @@ theorem schur_bound {m k : ℕ} (Z : Matrix (Fin m) (Fin 1) ℂ) (N : Matrix (Fi
   have hreal : d.det = (δ : ℂ) := by
     apply Complex.ext
     · simp [hδ]
-    · simp [hdet, him]
+    · simp [him]
   have hne : d.det ≠ 0 := by
     rw [hreal]; exact_mod_cast hd.ne'
   haveI : Invertible d := Matrix.invertibleOfIsUnitDet d (isUnit_iff_ne_zero.2 hne)
@@ -76,7 +76,7 @@ theorem schur_bound {m k : ℕ} (Z : Matrix (Fin m) (Fin 1) ℂ) (N : Matrix (Fi
     rw [Matrix.invOf_eq_nonsing_inv]
     ext i j
     fin_cases i; fin_cases j
-    simp [Matrix.inv_def, Matrix.adjugate_fin_one, hreal]
+    simp
     rw [← hdet, hreal]
   rw [hprod, det_fromBlocks₁₁]
   set v : Fin k → ℂ := fun j => (Nᴴ * Z) j 0 with hv
@@ -93,7 +93,7 @@ theorem schur_bound {m k : ℕ} (Z : Matrix (Fin m) (Fin 1) ℂ) (N : Matrix (Fi
   have hrk : -(Nᴴ * N) - -(Nᴴ * Z) * ⅟d * -(Zᴴ * N) =
       -((Nᴴ * N) + ((δ⁻¹ : ℝ) : ℂ) • (replicateCol (Fin 1) v * replicateRow (Fin 1) (star v))) := by
     rw [hinvd, ← hcr]
-    simp only [Matrix.neg_mul, Matrix.mul_neg, neg_neg, Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_one]
+    simp only [Matrix.neg_mul, Matrix.mul_neg, Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_one]
     push_cast
     module
   rw [hrk, Matrix.det_neg, norm_mul, norm_mul, norm_pow, norm_neg, norm_one, one_pow, one_mul, hreal,
@@ -144,14 +144,14 @@ theorem mat_nFrame (X : Data E r) (hp : X.p0 = 1) (z : V (nd X)) (τ : X.Ψ) :
     · simp
   · rw [Finset.sum_eq_single a]
     · have : ¬ (1 ≤ (a : ℕ) ∧ (a : ℕ) < 1) := by omega
-      simp [this, hb]
+      simp [hb]
       intro h1 h2; omega
     · intro c _ hca
       by_cases hc : (c : ℕ) < 1
       · have h1 : c < b := Fin.lt_def.2 (by omega)
         simp [hb, nup c b h1]
       · have : ¬ (1 ≤ (a : ℕ) ∧ (c : ℕ) < 1) := by omega
-        simp [this, Ne.symm hca]
+        simp [Ne.symm hca]
         intro _ _ h3; omega
     · simp
 
@@ -234,7 +234,7 @@ theorem zDet_mul_colGram_le_norm_dmin : ∀ (E : Type) [Field E] [NumberField E]
     · rfl
   have hDb : D' = Matrix.fromBlocks 1 0 0 (-1) := by
     ext (i | i) (j | j) <;>
-      simp [hD', hD, Matrix.diagonal_apply, sgn, hp, Matrix.one_apply, (eR r hr).injective.eq_iff] <;>
+      simp [hD', hD, Matrix.diagonal_apply, sgn, hp, Matrix.one_apply] <;>
       split_ifs <;> simp
   have hT : Aᵀ * D' * A.map (starRingEnd ℂ) = (Aᴴ * D' * A)ᵀ := by
     have h1 : D'ᵀ = D' := by rw [hDb, Matrix.fromBlocks_transpose]; simp

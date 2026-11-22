@@ -114,7 +114,7 @@ private theorem augIdeal_eq_span_pow_of_span_pow {p : ℕ} [Fact p.Prime] {C : T
       subst hj0
       have hz : cf ⟨0, hpos⟩ • x ^ ((⟨0, hpos⟩ : Fin p) : ℕ) = 0 := by
         funext a
-        simp only [Pi.smul_apply, Pi.pow_apply, Fin.val_mk, pow_zero, Pi.zero_apply,
+        simp only [Pi.smul_apply, pow_zero, Pi.zero_apply,
           Algebra.smul_def, hc0, zero_mul]
       rw [hz]
       exact Submodule.zero_mem _
@@ -321,7 +321,7 @@ theorem u3 : PrimeHopfOrderStatement := by
       simpa [ZMod.natCast_zmod_val] using h
     convert hmem using 1
     funext a
-    simp only [Finset.sum_apply, Pi.smul_apply, Pi.sub_apply, Pi.one_apply, Algebra.smul_def,
+    simp only [Finset.sum_apply, Pi.sub_apply, Algebra.smul_def,
       Pi.mul_apply, Pi.algebraMap_apply, hr, hs0, mul_one]
     by_cases ha : a = 0
     · subst ha
@@ -329,7 +329,7 @@ theorem u3 : PrimeHopfOrderStatement := by
       symm
       apply Finset.sum_eq_zero
       intro k _
-      simp [hr, hs0, Algebra.smul_def]
+      simp
     · have h1' : ∑ k, wt ω k * BA (k * a) j0 = ω a * ∑ b, wt ω b * BA b j0 :=
         sum_wt_mul_comp_mul_eq hωpow hω1 hωmul a ha (fun b => BA b j0)
       have h2' : ∑ k, wt ω k = ω a * ∑ b, wt ω b := by

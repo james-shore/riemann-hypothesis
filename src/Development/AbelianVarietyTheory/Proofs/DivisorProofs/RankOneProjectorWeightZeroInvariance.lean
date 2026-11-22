@@ -74,20 +74,20 @@ theorem rankOne : RankOne := by
     intro w
     have e1 := LinearMap.congr_fun (hG o o o q ho ho ho hq) w
     rw [if_pos (rfl : o = o), if_neg hqo] at e1
-    simp only [LinearMap.sub_apply, Module.End.mul_apply, LinearMap.zero_apply, sub_zero] at e1
+    simp only [LinearMap.sub_apply, Module.End.mul_apply, sub_zero] at e1
     have e2 := LinearMap.congr_fun (hG q q o q hq hq ho hq) w
     rw [if_neg hqo, if_pos (rfl : q = q)] at e2
-    simp only [LinearMap.sub_apply, Module.End.mul_apply, LinearMap.zero_apply, zero_sub, LinearMap.neg_apply] at e2
+    simp only [LinearMap.sub_apply, Module.End.mul_apply, zero_sub, LinearMap.neg_apply] at e2
     rw [hH, hH, map_sub, sub_eq_iff_eq_add'.mp e1, sub_eq_iff_eq_add'.mp e2]
     module
   have hHY : ∀ w, (D o o - D q q) (D q o w) = D q o ((D o o - D q q) w) - (2 : ℚ) • D q o w := by
     intro w
     have e1 := LinearMap.congr_fun (hG o o q o ho ho hq ho) w
     rw [if_neg hoq, if_pos (rfl : o = o)] at e1
-    simp only [LinearMap.sub_apply, Module.End.mul_apply, LinearMap.zero_apply, zero_sub, LinearMap.neg_apply] at e1
+    simp only [LinearMap.sub_apply, Module.End.mul_apply, zero_sub, LinearMap.neg_apply] at e1
     have e2 := LinearMap.congr_fun (hG q q q o hq hq hq ho) w
     rw [if_pos (rfl : q = q), if_neg hoq] at e2
-    simp only [LinearMap.sub_apply, Module.End.mul_apply, LinearMap.zero_apply, sub_zero] at e2
+    simp only [LinearMap.sub_apply, Module.End.mul_apply, sub_zero] at e2
     rw [hH, hH, map_sub, sub_eq_iff_eq_add'.mp e1, sub_eq_iff_eq_add'.mp e2]
     module
   constructor

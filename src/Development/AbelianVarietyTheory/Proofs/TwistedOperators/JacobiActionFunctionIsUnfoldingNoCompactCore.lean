@@ -106,7 +106,6 @@ theorem GlobalTheory.th_isTh_lev : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ)
       rwa [mul_one, jacS_one] at this
     have hpu : psiFlag ψ J.d (J.d.levi (tvGL A Bv hAB)) = psiE ψ t := by
       rw [psiFlag, blockX_levi, tvGL_val, upSum_add, upSum_one, zero_add, hup]
-    beta_reduce
     rw [GlobalTheory.JacHom.jacS_mul J.d hx ψ (mul_mem hn hu) hn', GlobalTheory.JacHom.jacS_mul J.d hx ψ hn hu, hJu,
       GlobalTheory.JacHom.jacS_mul J.d hx ψ hn hn', psiFlag_mul J.d ψ (mul_mem hn hu) hn', psiFlag_mul J.d ψ hn hu,
       psiFlag_mul J.d ψ hn hn', hpu]

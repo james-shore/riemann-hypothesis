@@ -93,7 +93,7 @@ theorem evalV_finOf_not (c : ∀ v : S, Fv F v.1) (u : HeightOneSpectrum (𝓞 F
   exact Finset.sum_eq_zero fun b _ => evalV_singleFin_ne (fun e => h (by rw [e]; exact b.2)) _
 
 theorem af_ext {x y : Af F} (h : ∀ u, evalV F u x = evalV F u y) : x = y :=
-  by first | exact RestrictedProduct.ext _ _ h | exact Subtype.ext (funext h)
+  by first | exact RestrictedProduct.ext _ _ h
 
 variable (S)
 

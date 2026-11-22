@@ -134,7 +134,7 @@ theorem gelfand_trick {V : Type} [AddCommGroup V] [Module ℂ V] [FiniteDimensio
         (twistedIdem J χ * MonoidAlgebra.of ℂ G g * twistedIdem J χ))
     (hirr : IsIrr ρ) :
     Module.finrank ℂ (eqvSpace ρ (fun u : J => (u : G)) (fun u => ((χ u : ℂˣ) : ℂ))) ≤ 1 := by
-  first | exact Bl.CyclicComponents.goal1 .. | (apply Bl.CyclicComponents.goal1 <;> assumption) | (intros; apply Bl.CyclicComponents.goal1 <;> assumption) | (apply @Bl.CyclicComponents.goal1 <;> assumption) | (intros; apply @Bl.CyclicComponents.goal1 <;> assumption) | (apply @Bl.CyclicComponents.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.CyclicComponents.goal1 .. | (apply Bl.CyclicComponents.goal1 <;> assumption)
 
 end GelfandTrick
 

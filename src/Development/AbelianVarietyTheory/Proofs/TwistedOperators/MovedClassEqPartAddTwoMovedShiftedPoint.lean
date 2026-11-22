@@ -65,7 +65,7 @@ theorem tens_two {E : Type} [Field E] [NumberField E] {n r : ℕ} (Λ : Lt E n) 
     obtain ⟨u', hu', rfl⟩ := (Submodule.mem_smul_pointwise_iff_exists _ _ _).1 hu
     refine ⟨vecMulVec v u', AddSubgroup.subset_closure ⟨v, hv, u', hu', rfl⟩, ?_⟩
     ext i j
-    simp [vecMulVec_apply, two_smul, two_nsmul, mul_add]
+    simp [vecMulVec_apply, two_smul, mul_add]
   obtain ⟨y', hy', e⟩ := key hy
   exact ⟨y', hy', e.symm⟩
 

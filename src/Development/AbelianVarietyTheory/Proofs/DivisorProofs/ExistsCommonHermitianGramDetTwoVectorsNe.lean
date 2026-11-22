@@ -70,7 +70,7 @@ theorem exists_gram2E_ne (h : IsCMExt F E σ) (hM : 2 ≤ M) (hJ : IsHermND σ J
     ext i j
     have e1 := hc (Pi.single i 1 + (1 : E) • Pi.single j 1)
     have e2 := hc (Pi.single i 1 + d • Pi.single j 1)
-    simp only [gram2E, hE_add_smul_self, hE_add_smul_right, hE_add_smul_left, hE_single,
+    simp only [gram2E, hE_add_smul_right, hE_add_smul_left, hE_single,
       map_one] at e1 e2
     have e0i := hdiag i
     have e0j := hdiag j

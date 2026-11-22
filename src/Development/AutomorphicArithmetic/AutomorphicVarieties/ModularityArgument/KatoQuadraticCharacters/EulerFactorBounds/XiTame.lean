@@ -82,7 +82,7 @@ private theorem gamma_zero_double_coset_reduce {N M₀ M M' p : ℕ} [NeZero N] 
   · simp only [cD, Matrix.map_apply]; simp only [Fin.zero_eta, Fin.mk_one, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_fin_one, map_natCast, Nat.cast_mul, map_mul, zmod_val_cast_compose h hd]
   · simp only [cD, Matrix.map_apply]; simp only [Fin.zero_eta, Fin.mk_one, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_fin_one, map_natCast, tm_val]
     rw [ZMod.natCast_eq_natCast_iff', hM, Nat.mod_mul_right_div_self, Nat.mod_mod]
-  · simp only [cD, Matrix.map_apply]; simp only [Fin.zero_eta, Fin.mk_one, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_fin_one, map_natCast, zmod_val_cast_compose h hd]
+  · simp only [cD, Matrix.map_apply]; simp only [Fin.mk_one, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_one, Matrix.cons_val_fin_one, map_natCast, zmod_val_cast_compose h hd]
 
 private theorem gamma_zero_double_coset_mod_prime {N M₀ M' p : ℕ} [Fact p.Prime] [NeZero M'] (hN : (N : ZMod p) ≠ 0) (h : p ∣ M') (h0 : p ∣ p * M₀)
     (m : Matrix (Fin 2) (Fin 2) (ZMod M')) (hm : ((m 1 0).val : ZMod N) = 0) :

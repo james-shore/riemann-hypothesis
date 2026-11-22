@@ -45,7 +45,7 @@ theorem UpperTheory.Lit.Cas.centred :
     rw [norm_mul, hc1, mul_one] at hz1
     have hdz : ((detChar (Fin δ.1) χ z : ℂˣ) : ℂ) = ((χ a : ℂˣ) : ℂ) ^ δ.1 := by
       have hdet : Matrix.GeneralLinearGroup.det z = a ^ δ.1 := Units.ext (by
-        simp [z, Matrix.GeneralLinearGroup.scalar, Matrix.algebraMap_eq_diagonal, Matrix.det_diagonal])
+        simp [z, Matrix.GeneralLinearGroup.scalar, Matrix.det_diagonal])
       rw [detChar_apply, hdet, map_pow, Units.val_pow_eq_pow_val]
     rw [hdz, norm_pow] at hz1
     exact (pow_eq_one_iff_of_nonneg (norm_nonneg _) hpos.ne').1 hz1

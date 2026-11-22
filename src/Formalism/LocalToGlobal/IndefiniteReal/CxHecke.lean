@@ -158,7 +158,6 @@ theorem HeckeWC.eigW (hk : X.KForm b) (he : X.EWnorm b) (hn : 0 < X.nP b) (H : X
   have hinj : Function.Injective (X.w0C b j) := by
     first
     | exact hinjE.comp hinjW
-    | (simp only [w0C, LinearMap.coe_comp]; exact hinjE.comp hinjW)
   exact eig_transport Bs.v0.embedding (X.w0C b j) hinj (H.hC j) (H.maps j) (H.rat j) (X.Wp j c) (cf.ev c)
     (H.eig j c)
 

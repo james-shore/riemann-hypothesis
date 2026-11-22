@@ -28,8 +28,6 @@ theorem exists_sep (vac : ∀ v : GlobalTheory.IndefiniteRowSideFullHecke.WeilTe
   | exact @_root_.GlobalTheory.FiniteAdelicPoints.exists_functional_pure
   | exact _root_.GlobalTheory.FiniteAdelicPoints.exists_functional_pure
   | (apply _root_.GlobalTheory.FiniteAdelicPoints.exists_functional_pure <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiniteAdelicPoints.exists_functional_pure <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiniteAdelicPoints.exists_functional_pure <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiniteAdelicPoints.exists_functional_pure ..)
 
 theorem exists_pureLift : ∀ {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E] (σ : E →ₐ[F] E) {n d : ℕ}

@@ -12,8 +12,6 @@ theorem exists_smul_eq_ite {R : Type*} [Ring R] {ι : Type*} [Fintype ι] [Decid
   | exact @_root_.GlobalTheory.OrthogonalProjectionOnto.main
   | exact _root_.GlobalTheory.OrthogonalProjectionOnto.main
   | (apply _root_.GlobalTheory.OrthogonalProjectionOnto.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.OrthogonalProjectionOnto.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.OrthogonalProjectionOnto.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.OrthogonalProjectionOnto.main ..)
 
 theorem linearIndependent_trace : ∀ (A : Type) [Ring A] [Algebra ℂ A] (ι : Type) [Fintype ι] (M : ι → Type) [∀ i, AddCommGroup (M i)] [∀ i, Module ℂ (M i)] [∀ i, Module A (M i)] [∀ i, IsScalarTower ℂ A (M i)] [∀ i, Module.Finite ℂ (M i)], (∀ i, IsSimpleModule A (M i)) → (∀ i j, Nonempty (M i ≃ₗ[A] M j) → i = j) → LinearIndependent ℂ fun (i : ι) (a : A) => LinearMap.trace ℂ (M i) (Algebra.lsmul ℂ ℂ (M i) a) := by

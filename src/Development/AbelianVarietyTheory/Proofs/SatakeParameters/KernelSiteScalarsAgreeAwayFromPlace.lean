@@ -18,7 +18,7 @@ namespace GlobalTheory.TwV.Xc.AwayId
 theorem key {K : Type} [Field K] {P M C : K} (hP : P ≠ 0) (hM : M ≠ 0) (hC : C ≠ 0) (V A A' n n' : ℤ) :
     P ^ (V * (n - n')) * (M ^ n' * (M ^ n)⁻¹ * (C ^ n) ^ (-A) * (C ^ n') ^ A') * (P ^ (-V) * (M * C ^ A)) ^ n *
       (P ^ V * (M⁻¹ * C ^ (-A'))) ^ n' = 1 := by
-  simp only [mul_zpow, ← zpow_mul, inv_zpow', mul_sub, zpow_sub₀ hP, neg_mul, zpow_neg]
+  simp only [mul_zpow, ← zpow_mul, inv_zpow', mul_sub, zpow_sub₀ hP, zpow_neg]
   rw [mul_comm A n, mul_comm A' n', mul_comm V n, mul_comm V n']
   field_simp
 

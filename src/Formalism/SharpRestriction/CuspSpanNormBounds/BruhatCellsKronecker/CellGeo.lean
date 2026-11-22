@@ -405,7 +405,7 @@ theorem geo_cross (F : FlagG S r T) (F' : FlagG S r T') (hj : j ≤ r + 1) (A A'
     S.hT (geoImg F hj A a) (F'.fvec (Fin.castLE hj c)) + S.hT (F.fvec (Fin.castLE hj a)) (geoImg F' hj A' c) =
       (Aᴴ * (Zhat F F').submatrix (Fin.castLE hj) (Fin.castLE hj) +
         (Zhat F F').submatrix (Fin.castLE hj) (Fin.castLE hj) * A') a c := by
-  simp only [geoImg, map_sum, map_smulₛₗ, map_smul, LinearMap.sum_apply,
+  simp only [geoImg, map_sum, map_smulₛₗ, LinearMap.sum_apply,
     LinearMap.smul_apply, smul_eq_mul, starRingEnd_apply, Matrix.add_apply, Matrix.mul_apply,
     Matrix.conjTranspose_apply, Matrix.submatrix_apply, Zhat, brS]
   congr 1

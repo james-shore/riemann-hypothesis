@@ -15,8 +15,6 @@ theorem memO {v : HeightOneSpectrum (𝓞 F)} {x : v.adicCompletion F} :
     x ∈ v.adicCompletionIntegers F ↔ Valued.v x ≤ 1 := by
   first
     | exact Iff.rfl
-    | exact HeightOneSpectrum.mem_adicCompletionIntegers F v
-    | simp [HeightOneSpectrum.mem_adicCompletionIntegers]
 
 def evA (v : HeightOneSpectrum (𝓞 F)) : Af F →+* v.adicCompletion F where
   toFun a := a v
@@ -101,18 +99,16 @@ theorem adOfLoc : AdOfLoc := by
   refine ⟨mkA c₁ h1, mkA c₂ h2, mkA_mem c₁ h1, mkA_mem c₂ h2, ?_, ?_, ?_⟩
   · apply eq_of_evA
     intro v
-    simp only [map_add, map_mul, map_sub, map_pow, map_one, map_natCast, map_neg, map_ofNat,
+    simp only [map_add, map_mul, map_sub, map_pow, map_one, map_natCast, map_ofNat,
       evA_apply, mkA_apply]
     exact e1 v
   · apply eq_of_evA
     intro v
-    simp only [map_add, map_mul, map_sub, map_pow, map_one, map_natCast, map_neg, map_ofNat,
-      evA_apply, mkA_apply]
+    simp only [map_add, map_mul, map_sub, map_pow, map_one, map_natCast, map_neg, evA_apply, mkA_apply]
     exact e2 v
   · apply eq_of_evA
     intro v
-    simp only [map_add, map_mul, map_sub, map_pow, map_one, map_natCast, map_neg, map_ofNat,
-      map_zero, evA_apply, mkA_apply]
+    simp only [map_add, map_mul, map_sub, map_pow, map_one, map_natCast, map_zero, evA_apply, mkA_apply]
     exact e3 v
 
 end PI.ScRefExists.Id

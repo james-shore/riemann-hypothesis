@@ -25,8 +25,6 @@ theorem HasDiv.exists_eq_mul_mul {O : Subring L} (hO : ∀ x : L, Valued.v x ≤
   | exact @_root_.GlobalTheory.DoubleCosetDivisors.main
   | exact _root_.GlobalTheory.DoubleCosetDivisors.main
   | (apply _root_.GlobalTheory.DoubleCosetDivisors.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DoubleCosetDivisors.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DoubleCosetDivisors.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DoubleCosetDivisors.main ..)
 
 end Local

@@ -52,6 +52,6 @@ theorem eq_zero_of_secTrace_mul_eq_zero (x : κ → Ω) (e : Fin (D + 1) → κ)
   unfold secTrace fnTrace at h1
   split_ifs at h1 with hm
   · exact (mul_eq_zero.1 h1).resolve_left (pow_ne_zero _ hx0)
-  · exact absurd (TraceNormBounds.sec_div_mem x (e 0) (by first | exact TraceNormBounds.mul_mem_sec x hs (hε l) | exact mul_mem_sec x hs (hε l) | exact ReciprocityTheory.ChartRestriction.G.Geo.mul_mem_sec x hs (hε l))) hm
+  · exact absurd (TraceNormBounds.sec_div_mem x (e 0) (by first | exact TraceNormBounds.mul_mem_sec x hs (hε l))) hm
 
 end ReciprocityTheory.ChartRestriction.G.ArakelovGeometry

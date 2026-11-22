@@ -206,7 +206,6 @@ theorem arc_length_three_case_c [NeZero n] [Fintype (K →ₐ[Qp] LL)] [IsDomain
     rw [ha2, hty2]
     intro x hx
     simp only [Formalism.MainNotions.LocalTheoryWindows.LT.win, Set.mem_union, Set.mem_Icc, arcOf] at hx
-    push_cast at hu
     rcases hx with ⟨-, h2⟩ | ⟨-, h2⟩ <;> omega
   have hGap : ∀ (c₀ : Fin d₁ → O) (u : ℤ), (η : ℤ) + 1 ≤ u → dvO W T₁ 2 b₁ c₀ ∈ FilS W T₁ a 0 u →
       dvO W T₁ 2 b₁ c₀ ∈ FilS W T₁ a 0 (size (c - 1)) := by
@@ -260,7 +259,6 @@ theorem arc_length_three_case_c [NeZero n] [Fintype (K →ₐ[Qp] LL)] [IsDomain
         Fser * PowerSeries.C ((Pi.single k₀ (1 : O) : Fin d → O) k))) := by
     have h := TypesA.RepVV_add W hRep₂ (TypesA.RepVV_neg W hRep₂')
     refine TypesA.RepVV_congr W h (by rw [hmap, add_neg_cancel]) (fun k => ?_)
-    beta_reduce
     rw [hcomp k, ArcLengthThreeFiltration.ea_sub, ArcLengthThreeFiltration.ea_sum, sub_eq_add_neg]
     congr 1
     exact Finset.sum_congr rfl fun m _ => by rw [ArcLengthThreeFiltration.ea_C_mul, mul_comm]

@@ -34,7 +34,7 @@ theorem exists_map_exp_all_traits : ∀ (R : Type) [CommRing R] [IsDomain R] [Is
   have hodd : Odd (C.n ^ j) := C.n_odd.pow
   have h1 : 1 ≤ C.n ^ j := Nat.one_le_pow _ _ C.n_prime.pos
   obtain ⟨wA, hwA⟩ := C.α_lb
-  have hL : C.P.L.L.IsLB := by first | exact C.P.L.isLB | exact C.P.L.hL | exact C.P.L.lb
+  have hL : C.P.L.L.IsLB := by first | exact C.P.L.isLB
   have hL' : C.A.L.IsLB := C.A.isLB
   by_cases hT : ∃ (W : Type) (_ : CommRing W) (_ : IsDomain W) (_ : IsLocalRing W), Nonempty (Trait C W)
   · obtain ⟨W₀, _, _, _, ⟨T₀⟩⟩ := hT

@@ -24,7 +24,7 @@ theorem null_of_lines {G : Type} [AddCommGroup G] [MeasurableSpace G] [Measurabl
   rw [Measure.prod_apply_symm hT] at h1
   have h2 : ∀ t : ℝ, μ ((fun x => (x, t)) ⁻¹' {p : G × ℝ | φ p.2 + p.1 ∈ S}) = μ S :=
     fun t => measure_preimage_add μ (φ t) S
-  simp only [h2, lintegral_const, measure_univ, Real.volume_univ] at h1
+  simp only [h2, lintegral_const, Real.volume_univ] at h1
   by_contra hne
   simp [hne] at h1
 
@@ -150,7 +150,7 @@ theorem null_sets : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Number
           + Polynomial.C Q : Polynomial ℝ) ≠ 0 := by
         intro h0
         have := congrArg (fun p => Polynomial.coeff p 2) h0
-        simp [Polynomial.coeff_X, Polynomial.coeff_C] at this
+        simp at this
         exact ha this
       refine (Polynomial.finite_setOf_isRoot hne).subset fun t ht => ?_
       simp only [Set.mem_setOf_eq] at ht

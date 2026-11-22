@@ -17,7 +17,7 @@ def push (hφ : IsGrpPullback G' G f φ) {T : Over S'} (x : T ⟶ G') : Over.mk 
   Over.homMk (x.left ≫ φ) (by
     have h1 := hφ.1.w
     have h2 := Over.w x
-    simp only [Over.mk_hom, Category.assoc, Functor.id_obj, Functor.const_obj_obj, Over.mk_left]
+    simp only [Over.mk_hom, Category.assoc, Over.mk_left]
     rw [h1, ← Category.assoc, h2])
 
 theorem push_mul (hφ : IsGrpPullback G' G f φ) {T : Over S'} (x y : T ⟶ G') :

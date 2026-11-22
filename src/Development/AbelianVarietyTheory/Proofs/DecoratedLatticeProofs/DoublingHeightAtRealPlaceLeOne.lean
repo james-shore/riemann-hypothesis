@@ -101,7 +101,6 @@ theorem det_one_add_ge (W : Matrix (Fin n) (Fin n) ℂ) (hW : ‖W.det‖ = 1) :
       first
         | exact_mod_cast hd.symm
         | (rw [Complex.ofReal_prod]; exact hd.symm)
-        | simpa using hd.symm
     exact_mod_cast h4
   refine ⟨∏ i, (1 + hh.eigenvalues i), ?_, ?_⟩
   · have hs : (∏ i, Real.sqrt (hh.eigenvalues i)) = 1 := by

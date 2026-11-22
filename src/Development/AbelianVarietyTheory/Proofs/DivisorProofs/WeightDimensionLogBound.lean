@@ -253,7 +253,7 @@ theorem sizes :
   have hdim : ∀ (n : ℕ) (la : Fin n → ℕ), Antitone la → ∀ w : ℤ,
       (GlobalTheory.DualWeyl.dim la : ℝ) ≤ ((∑ i, |((la i : ℤ) : ℝ) - w|) + 1) ^ n.choose 2 := fun n la h => (GlobalTheory.T.dualWeyl_dim_formula_duality_bound n la h).2.2
   have H := Closed.and WtShape.wtN (Sizes.hostN 1)
-  simp only [WtN, HostN, Lifts] at H
+  simp only at H
   unfold Lifts
   refine Closed.imp H ?_
   intro eps Fm CH _ h

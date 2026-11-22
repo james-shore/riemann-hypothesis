@@ -159,7 +159,7 @@ private theorem dividedPower_identities_D_and_e_eq_gb (Q : PDPoly B) : ∃ D : �
     | empty => simp
     | insert k S hk ih =>
       rw [Finset.prod_insert hk, PowerSeries.coeff_mul]
-      simp [ih, hF, gb_zero]
+      simp [hF, gb_zero]
   refine ⟨fun n x => PowerSeries.coeff n (E (Finset.range ((Q.e.repr x).support.sup id)) x),
     ?_, ?_, ?_, ?_, ?_⟩
   · intro x

@@ -56,10 +56,10 @@ theorem relation_map_comm_transvection (c : ι) (i k : Fin (d.D + 1)) (hik : i �
       · have e1 : ∀ r', φ r' = -∑ l ∈ Finset.univ.erase (d.jc c),
             X (r', l) * C (ratio (Ω := Ω c) (d.w l c) (d.w (d.jc c) c)) := by
           intro r'
-          simp only [hφ, Data.relationEliminateColumn, MvPolynomial.aeval_X, h2, eq_self_iff_true, if_true]
+          simp only [hφ, Data.relationEliminateColumn, MvPolynomial.aeval_X, h2, if_true]
         rw [e1 r, e1 k, map_neg, map_sum]
         by_cases h1 : r = i
-        · simp only [h1, eq_self_iff_true, if_true, map_mul, hX, hC, map_neg, map_sum, add_mul,
+        · simp only [h1, if_true, map_mul, hX, hC, map_neg, map_sum, add_mul,
             Finset.sum_add_distrib, mul_neg, Finset.mul_sum, mul_assoc, neg_add]
         · simp only [h1, if_false, add_zero, map_mul, hX, hC, map_neg, map_sum]
       · have e1 : ∀ r', φ r' = X (r', b) := by
@@ -71,7 +71,7 @@ theorem relation_map_comm_transvection (c : ι) (i k : Fin (d.D + 1)) (hik : i �
     change _ = trv (R := Ω c) (D := d.D) (N := d.N) i k Polynomial.X (φ a)
     rw [hφtrv a]
     by_cases h1 : a = i
-    · simp only [h1, eq_self_iff_true, if_true, Polynomial.map_add, Polynomial.map_mul, Polynomial.map_C,
+    · simp only [h1, if_true, Polynomial.map_add, Polynomial.map_mul, Polynomial.map_C,
         Polynomial.map_X]
       rfl
     · simp only [h1, if_false, add_zero, Polynomial.map_C]

@@ -20,7 +20,7 @@ theorem evalF_rename_mul {M : Type} [TopologicalSpace M] {n : ℕ} (A : HolAtlas
     (u : α → A.Pt → Ev n) (v : β → A.Pt → Ev n) (R : MvPolynomial α ℝ) (Q : MvPolynomial β ℝ) :
     evalF A (Sum.elim u v) (rename Sum.inl R * rename Sum.inr Q) = evalF A u R * evalF A v Q := by
   funext x
-  simp only [evalF, LineForm.fld, Pi.mul_apply, Polynomial.map_mul, MvPolynomial.map_rename, map_mul, aeval_rename]
+  simp only [evalF, LineForm.fld, Pi.mul_apply, MvPolynomial.map_rename, map_mul, aeval_rename]
   rfl
 
 theorem evalF_chernRoots {M : Type} [TopologicalSpace M] {n : ℕ} (A : HolAtlas M n) {ι : Type} (m : ι → ℕ)

@@ -89,7 +89,7 @@ private theorem appSec_res_appSec_eq_of_comm_iso {Y Y' Z Z' : Scheme} {s : Z ⟶
       (eY.hom ≫ c').appLE U' _ e1 τ := by
     change eY.hom.app V' (Y'.presheaf.map (homOfLE hV').op (c'.app U' τ)) = _
     rw [Scheme.Hom.comp_appLE, Scheme.Hom.app_eq_appLE]
-    simp only [CommRingCat.comp_apply]
+    simp only
     rw [← CommRingCat.comp_apply, Scheme.Hom.map_appLE]
     rfl
   have R : Sec.res t hV (appSec s t c (eZ.hom ⁻¹ᵁ U') (appSec s' s eZ.hom U' τ)) =

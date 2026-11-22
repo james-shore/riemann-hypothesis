@@ -63,7 +63,7 @@ private theorem fromRows_gram_mul_fromCols_eq_one_of_hypDec {D : D7} {S S₀ : H
     exact h
   rw [Matrix.fromRows_mul_fromCols]
   simp only [Matrix.mul_smul, Matrix.smul_mul, h1, h0, h0', h2, smul_zero, smul_smul,
-    inv_mul_cancel₀ hμ, mul_inv_cancel₀ hμ, one_smul, Matrix.fromBlocks_one]
+    mul_inv_cancel₀ hμ, one_smul, Matrix.fromBlocks_one]
 
 theorem continuous_symm : ∀ (D : D7) (A : HSp D) (μ : D.host.E), IsSkew μ → ∀ (κ : GA D (dblSp A) ≃* G D A.rank), IsChart A μ κ →
     Continuous κ.symm := by

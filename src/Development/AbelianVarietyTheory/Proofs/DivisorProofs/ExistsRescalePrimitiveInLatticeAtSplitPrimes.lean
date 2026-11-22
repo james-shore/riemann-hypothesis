@@ -62,8 +62,6 @@ theorem exists_smul_mem {n : ℕ} (L : Submodule (𝓞 E) (Fin n → E)) (hL : L
   | exact @_root_.GlobalTheory.NonzeroSmulMembership.exists_ne_zero_smul_mem
   | exact _root_.GlobalTheory.NonzeroSmulMembership.exists_ne_zero_smul_mem
   | (apply _root_.GlobalTheory.NonzeroSmulMembership.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NonzeroSmulMembership.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NonzeroSmulMembership.exists_ne_zero_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NonzeroSmulMembership.exists_ne_zero_smul_mem ..)
 
 theorem exists_max {n : ℕ} (L : Submodule (𝓞 E) (Fin n → E)) (hL : L.IsLattice E) {x : Fin n → E} (hx : x ≠ 0)

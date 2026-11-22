@@ -19,28 +19,22 @@ variable {D : D7} {T : D.host.E} {F0 : FlagG (VS D) D.R.rS T} {f : Fin D.R.rS �
 theorem rs_mem_one_iff (x : D.host.E) :
     x ∈ (1 : Submodule (𝓞 D.host.E) D.host.E) ↔ ∃ o : 𝓞 D.host.E, (o : D.host.E) = x := by
   rw [Submodule.mem_one]
-  all_goals first
-    | rfl
-    | exact ⟨fun ⟨y, hy⟩ => ⟨y, hy⟩, fun ⟨y, hy⟩ => ⟨y, hy⟩⟩
 
 theorem rs_fone_iff (x : D.host.E) :
     x ∈ (1 : FractionalIdeal (nonZeroDivisors (𝓞 D.host.E)) D.host.E) ↔ ∃ o : 𝓞 D.host.E, (o : D.host.E) = x := by
   rw [FractionalIdeal.mem_one_iff]
-  all_goals first
-    | rfl
-    | exact ⟨fun ⟨y, hy⟩ => ⟨y, hy⟩, fun ⟨y, hy⟩ => ⟨y, hy⟩⟩
 
 theorem rs_mem_dual {h : (VS D).V →ₗ⋆[D.host.E] (VS D).V →ₗ[D.host.E] D.host.E}
     {L : Submodule (𝓞 D.host.E) (VS D).V} {v : (VS D).V} :
     v ∈ Formalism.HermitianLatticesTheory.dual h L ↔ ∀ y ∈ L, h y v ∈ (1 : Submodule (𝓞 D.host.E) D.host.E) := by
   simp only [Formalism.HermitianLatticesTheory.dual, Formalism.E.hdual, Submodule.mem_iInf, Submodule.mem_comap,
-    LinearMap.restrictScalars_apply, LinearMap.coe_restrictScalars]
+    LinearMap.restrictScalars_apply]
 
 theorem rs_mem_dualW {h : WbQ D F0 →ₗ⋆[D.host.E] WbQ D F0 →ₗ[D.host.E] D.host.E}
     {L : Submodule (𝓞 D.host.E) (WbQ D F0)} {v : WbQ D F0} :
     v ∈ Formalism.HermitianLatticesTheory.dual h L ↔ ∀ y ∈ L, h y v ∈ (1 : Submodule (𝓞 D.host.E) D.host.E) := by
   simp only [Formalism.HermitianLatticesTheory.dual, Formalism.E.hdual, Submodule.mem_iInf, Submodule.mem_comap,
-    LinearMap.restrictScalars_apply, LinearMap.coe_restrictScalars]
+    LinearMap.restrictScalars_apply]
 
 theorem rs_inv_mul {a : Fin D.R.rS} {s x : D.host.E} (hs : s ∈ (aaI D a)⁻¹) (hx : x ∈ aaI D a) :
     ∃ o : 𝓞 D.host.E, (o : D.host.E) = s * x := by
@@ -65,7 +59,6 @@ private theorem hs_lemma_2 (x z : (VS D).V) : star ((VS D).hT x z) = (VS D).hT z
   have h := (VS D).herm.eq x z
   first
     | exact h
-    | rwa [starRingEnd_apply] at h
 
 private theorem hT_eq_hT_vPr_right_add_sum (x z : (VS D).V) : (VS D).hT x z =
     (VS D).hT x (vPr D F0 f z) + ∑ b, (VS D).hT (F0.e b) z * (VS D).hT x (f b) := by
@@ -73,7 +66,7 @@ private theorem hT_eq_hT_vPr_right_add_sum (x z : (VS D).V) : (VS D).hT x z =
 
 private theorem hT_eq_hT_vPr_left_add_sum (x z : (VS D).V) : (VS D).hT x z =
     (VS D).hT (vPr D F0 f x) z + ∑ a, star ((VS D).hT (F0.e a) x) * (VS D).hT (f a) z := by
-  simp [vPr, LinearMap.map_sub₂, LinearMap.map_sum₂, LinearMap.map_smulₛₗ₂, starRingEnd_apply]
+  simp [vPr, starRingEnd_apply]
 
 private theorem mem_perpS_X_of_hT_e_eq_zero (z : (VS D).V) (hz : ∀ b, (VS D).hT (F0.e b) z = 0) :
     z ∈ perpS (VS D) F0.X := by
@@ -141,10 +134,6 @@ theorem rs_dual_le_lam (hf : PartnerOK D F0 f) (hM : IsGlueLat (hWb D F0) (zbar 
       rw [ddS, Ne, FractionalIdeal.coeIdeal_eq_zero]
       first
         | exact Ideal.map_ne_bot_of_ne_bot differentIdeal_ne_bot
-        | exact Ideal.map_ne_bot_of_ne_bot (differentIdeal_ne_bot (A := ℤ))
-        | (intro h
-           rw [Ideal.map_eq_bot_iff_of_injective (FaithfulSMul.algebraMap_injective _ _)] at h
-           exact differentIdeal_ne_bot h)
     rw [aaI]
     exact zpow_ne_zero _ hd
   have heX : ∀ a, F0.e a ∈ F0.X := by
@@ -201,7 +190,7 @@ theorem rs_dual_le_lam (hf : PartnerOK D F0 f) (hM : IsGlueLat (hWb D F0) (zbar 
       rw [hT_eq_hT_vPr_right_add_sum (F0 := F0) (f := f) t v]
       simp only [htf, mul_zero, Finset.sum_const_zero, add_zero]
       rw [ht]
-      simp [LinearMap.map_sub₂, LinearMap.map_sum₂, LinearMap.map_smulₛₗ₂, hT_e_vPr_eq_zero_of_partnerOK hf]
+      simp [hT_e_vPr_eq_zero_of_partnerOK hf]
     rw [← e1]
     exact hv' t htL
   have hWM : (Submodule.Quotient.mk ⟨vPr D F0 f v, hPerp⟩ : WbQ D F0) ∈

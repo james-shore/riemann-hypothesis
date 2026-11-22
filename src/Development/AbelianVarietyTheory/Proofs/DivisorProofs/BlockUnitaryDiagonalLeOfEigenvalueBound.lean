@@ -22,7 +22,6 @@ theorem re_inner_apply_le_of_eigen {E : Type*} [NormedAddCommGroup E] [InnerProd
     rw [← inner_conj_symm (b i) y, Complex.norm_conj]
     first
       | (rw [Complex.mul_conj']; push_cast; rfl)
-      | (rw [mul_comm, Complex.conj_mul']; push_cast; rfl)
   have h1 : inner ℂ y (T y) = ∑ i, ((ev i * ‖inner ℂ (b i) y‖ ^ 2 : ℝ) : ℂ) := by
     rw [← b.sum_inner_mul_inner y (T y)]
     refine Finset.sum_congr rfl fun i _ => ?_

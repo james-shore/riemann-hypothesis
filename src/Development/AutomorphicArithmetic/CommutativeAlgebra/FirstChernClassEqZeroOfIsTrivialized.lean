@@ -359,7 +359,7 @@ private theorem glDet_map {A B : CommRingCat.{0}} (f : A ⟶ B) (m : GL (Fin 1) 
     Matrix.GeneralLinearGroup.det (Matrix.GeneralLinearGroup.map f.hom m) =
       Units.map f.hom.toMonoidHom (Matrix.GeneralLinearGroup.det m) := by
   ext
-  simp [Matrix.GeneralLinearGroup.det, RingHom.map_det]
+  simp [Matrix.GeneralLinearGroup.det]
 
 private theorem lineUnit_res {V U : Scheme.{0}} (g : V ⟶ U) (x : Sx X 1 U) :
     lineUnit L (x.res g) = ur g (lineUnit L x) := by
@@ -453,9 +453,9 @@ private theorem main (L : X ⟶ ofCat (glCat 1)) (w : ∀ T : Scheme.{0}, Sx X 0
     have ha' : a ^ q = w V ((x.res g).face 0) := by rw [face_res, hwn, ha]
     have hb' : (v * a) ^ q = w V ((x.res g).face 1) := by rw [← hwc, mul_pow, hv', ha']
     rw [(hd V).2 0 0 1 (by omega) (by omega) (x.res g), h1 V (x.res g) v hv', hsign, one_smul, Fin.sum_univ_two]
-    simp only [hβ, zero_add, hf0, hf1, A0, A1, Fin.val_zero, Fin.val_one, pow_zero, pow_one, one_smul, neg_smul]
+    simp only [hβ, hf0, hf1, A0, A1, Fin.val_zero, Fin.val_one, pow_zero, pow_one, one_smul, neg_smul]
     rw [Ph_root hV hv' ha', Dd_root hV ha', Dd_root hV hb']
-    simp only [ff, smap_add, smap_sub, smap_neg]
+    simp only [ff, smap_add, smap_sub]
     abel
   · obtain rfl : s = 0 := by omega
     have hU := hI U ⟨(x.face 0).face 0⟩

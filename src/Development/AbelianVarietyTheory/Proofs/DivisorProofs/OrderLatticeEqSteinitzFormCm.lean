@@ -115,7 +115,7 @@ theorem isFractional_latB (c : Ideal (OF E)) (y : (Af E)ˣ) {θ : E} (hθ : θ �
       (algebraMap (𝓞 E) E β - cc (algebraMap (𝓞 E) E β)) * ((k : E) * (θ - cc θ)⁻¹) := by
     have hδ := sub_conj_ne hθ
     rw [hβ, Algebra.smul_def]
-    simp only [map_mul, map_natCast, map_intCast, map_sub]
+    simp only [map_mul, map_natCast, map_intCast]
     push_cast
     rw [← hbx]
     unfold lam

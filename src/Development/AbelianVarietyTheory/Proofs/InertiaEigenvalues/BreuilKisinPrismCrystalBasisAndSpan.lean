@@ -76,7 +76,7 @@ theorem main : ∀ (l : ℕ) [Fact l.Prime] (a e : ℕ) [NeZero a] [NeZero e] (O
       fun i => exists_eq_sum_toAc t K o _
     choose s hs' using hf
     refine ⟨Module.finrank ℤ_[l] O, fun _ q => o q, s, hci ?_⟩
-    simp only [map_sum, hsm, hom, hb]
+    simp only [map_sum]
     funext τ i
     have h6 := congrArg (fun f : ZMod a → A O K => (f τ : K⟦X⟧)) (hs' i)
     simp only [Finset.sum_apply, Pi.smul_apply, AddSubmonoidClass.coe_finsetSum, SetLike.val_smul] at h6

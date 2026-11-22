@@ -270,7 +270,6 @@ theorem grep_step (D : DegPre R) (n : ℕ) : ∃ v, GRep D.P.L D.P.A
       simp only [ofMul_mul, ofMul_inv, ofMul_pow]
       module) (fun _ _ _ _ _ => rfl), fun y J hJ => ?_⟩
   have C : IsCub (cubV D.cub (T := 𝟙_ _) y J) := isCub_cubV D.cub hJ
-  beta_reduce
   rw [Category.comp_id, C.N_one, C.face, normd_one (u := D.sym) ⟨D.sym_gen, D.sym_rig⟩ hJ]
   simp
 

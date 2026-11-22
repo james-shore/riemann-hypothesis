@@ -55,7 +55,7 @@ theorem mem_bdry_conj_iff : ∀ (K : Type) [Fintype K] (J : K → Type) [∀ k, 
       funext q
       simp only [GroundTheory.Heights₂.Heights.LowerBoundFree.torusSmul, GroundTheory.Heights₂.Heights.LowerBoundFree.conjVec]
       rw [e]
-      simp [inv_mul_cancel_left₀, (map_ne_zero (starRingEnd ℂ)).2 (hc q.1)]
+      simp [(map_ne_zero (starRingEnd ℂ)).2 (hc q.1)]
     rw [e2] at h2
     exact h2.2
   · intro h

@@ -39,7 +39,7 @@ private lemma inJ_diagonal_conj_iff {k : Type} [Field k] {n t : ℕ} (d : Fin n 
     split_ifs with hxy
     · subst hxy
       rw [h1, one_mul]
-    · simp [hc]
+    · simp
 
 private lemma inv_pow_mul_pow_succ_eq {k : Type} [Field k] (u : kˣ) (x y : ℕ) (h : x + 1 = y) :
     (((u ^ x)⁻¹ * u ^ y : kˣ) : k) = u := by

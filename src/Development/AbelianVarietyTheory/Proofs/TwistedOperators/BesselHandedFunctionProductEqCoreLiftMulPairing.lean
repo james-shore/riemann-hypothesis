@@ -27,7 +27,7 @@ theorem handP_boxT : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (σ : ℕ) (J
         fun v => omb (h₀, h₁) Ξ₁ 0 * omz (h₀, 1) Φ' v := by
       funext v
       simp only [OrthDec.boxT, AddEquiv.apply_symm_apply]
-    simp only [contractT, e, thPair]
+    simp only [contractT, thPair]
     rw [← integral_const_mul]
     congr 1; funext w
     have ew := congrFun e w

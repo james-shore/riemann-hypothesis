@@ -20,4 +20,4 @@ theorem _root_.GlobalTheory.T.keyOrigin_retraction_localises : ∀ (T O A₁ EA�
     ∃ ρ₁ : Localization.AtPrime QA₁ →+* A₁,
       GlobalTheory.KeyOriginEnlarge.Retracts T O A₁ i₁ EA₁ QA₁ jA₁ ρ₁ ∧
       ρ₁.comp (algebraMap EA₁ (Localization.AtPrime QA₁)) = ρ' := by
-  first | (exact @GlobalTheory.KeyOriginEnlargeLoc.retract_localises) | (exact GlobalTheory.KeyOriginEnlargeLoc.retract_localises) | (intros; apply GlobalTheory.KeyOriginEnlargeLoc.retract_localises  <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginEnlargeLoc.retract_localises)

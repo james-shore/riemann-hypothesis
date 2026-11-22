@@ -21,7 +21,7 @@ theorem isUnit_map_of_mul_eq_smul {R D : Type} [CommRing R] [CommRing D] {d : �
   have h2 : M.map g * M'.map g = g r • (1 : Matrix (Fin d) (Fin d) D) := by
     rw [← Matrix.map_mul, h]
     ext i j
-    by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+    by_cases hij : i = j <;> simp [hij]
   have h3 := congrArg Matrix.det h2
   rw [Matrix.det_mul, Matrix.det_smul, Matrix.det_one, mul_one, Fintype.card_fin] at h3
   exact isUnit_of_mul_isUnit_left (h3 ▸ hr.pow d)

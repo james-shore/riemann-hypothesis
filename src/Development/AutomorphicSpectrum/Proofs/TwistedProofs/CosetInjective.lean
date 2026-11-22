@@ -78,7 +78,7 @@ theorem cosetInj : CosetInj := by
       rw [h, map_zero] at hϖ
       exact WithZero.coe_ne_zero hϖ.symm
     rw [levi_mul_last hli, mat_inv_apply, Fin.rev_last, h0, h1', map_zpow₀, hσϖ, ← zpow_add₀ hϖ0]
-    congr 1 <;> ring
+    congr 1
   have hv0 : 0 < Valued.v ϖ := by rw [hϖ]; exact WithZero.zero_lt_coe _
   have hv1 : Valued.v ϖ < 1 := by
     rw [hϖ]

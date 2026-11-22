@@ -17,7 +17,7 @@ theorem PositivityTheory.Xgn.multihomogeneous_eval_scale : ∀ (K : Type) [Finty
       Fintype.sum_sigma, Finset.sum_eq_single k]
     · simp [GroundTheory.Heights₂.Heights.NumbersDVR.blockWeight]
     · intro j _ hj
-      simp [GroundTheory.Heights₂.Heights.NumbersDVR.blockWeight, Pi.single_apply, hj, hj.symm]
+      simp [GroundTheory.Heights₂.Heights.NumbersDVR.blockWeight, hj.symm]
     · simp
   have h1 : ∏ p : (Σ k, ι k), c p.1 ^ m p = ∏ k, c k ^ a k := by
     rw [Fintype.prod_sigma]

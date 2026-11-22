@@ -58,7 +58,6 @@ theorem sum_inj_eq_sum_pairs {R : Type} [CommRing R] {p n : ℕ} (F : (Fin p →
     funext j
     first
       | simp only [Function.comp_apply, Equiv.ofBijective_apply]; exact hg j
-      | simp [hg]
 
 theorem cbSorted : CBSorted := by
   unfold CBSorted

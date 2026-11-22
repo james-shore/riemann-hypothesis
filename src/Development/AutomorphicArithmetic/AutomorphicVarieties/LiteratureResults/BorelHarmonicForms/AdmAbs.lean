@@ -151,4 +151,4 @@ theorem UpperTheory.V.Lit.Bor.admissible_abs_bound :
     rw [map_add, map_smul]
   rw [hDZ, hsZ, map_add, map_neg, map_smul, Matrix.conjTranspose_add, Matrix.conjTranspose_smul,
     Matrix.add_mul, Matrix.smul_mul, eX, eV, Matrix.mul_add, Matrix.mul_neg, Matrix.mul_smul]
-  simp [Complex.star_def]
+  simp

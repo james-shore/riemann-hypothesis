@@ -76,7 +76,7 @@ theorem cjS_add {n : ℕ} (π : Formalism.L2.NG.FinTyp D.host.E n) (x y : π.S) 
   Subtype.ext (funext fun _ => star_add _ _)
 
 theorem cjS_smul {n : ℕ} (π : Formalism.L2.NG.FinTyp D.host.E n) (a : ℂ) (x : π.S) : cjS π (a • x) = star a • cjS π x :=
-  Subtype.ext (funext fun _ => by simp [cjS, mul_comm])
+  Subtype.ext (funext fun _ => by simp [cjS])
 
 theorem conjT_conjT {n : ℕ} (π : Formalism.L2.NG.FinTyp D.host.E n) : principalLevelFrame.FinTyp.conjT (principalLevelFrame.FinTyp.conjT π) = π := by
   rcases π with ⟨S0, _, _, _, _⟩

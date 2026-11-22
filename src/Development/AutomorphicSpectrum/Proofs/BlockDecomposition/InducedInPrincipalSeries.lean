@@ -108,7 +108,6 @@ theorem paramChar_leviProj (α : Fin n → ℂˣ) (p : blockUpper k n (id : Fin 
     have key : ∀ d : Fin n → kˣ, (∀ i, valuation k (d i : k) = 1) →
         ∀ i j, (diagGL k n d : GL (Fin n) k) i j ∈ 𝒪[k] := by
       intro d hd i j
-      change (diagGL k n d : Matrix (Fin n) (Fin n) k) i j ∈ _
       rw [coe_diagGL, diagonal_apply]
       split_ifs
       · exact (hd i).le

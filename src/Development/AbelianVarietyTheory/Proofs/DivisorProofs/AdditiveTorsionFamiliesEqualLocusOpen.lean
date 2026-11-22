@@ -71,7 +71,7 @@ theorem eq_of_eq_single {S : Scheme.{0}} {κ : Type} [Fintype κ] [DecidableEq �
       ext j
       by_cases h : j = i
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     rw [e, map_zsmul, map_zsmul]
     congr 1
     simpa [F, G] using congrArg Additive.ofMul (hφ i)

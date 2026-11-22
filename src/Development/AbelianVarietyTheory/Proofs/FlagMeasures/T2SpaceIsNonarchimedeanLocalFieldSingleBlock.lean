@@ -25,7 +25,7 @@ theorem tendsto_pow_zero (K : Type) [Field K] [ValuativeRel K] [TopologicalSpace
   intro γ _
   obtain ⟨n, hn⟩ := exists_pow_lt₀ hz γ
   filter_upwards [eventually_ge_atTop n] with m hm
-  simp only [Set.mem_setOf_eq, map_pow]
+  simp only [map_pow]
   exact lt_of_le_of_lt (pow_le_pow_right_of_le_one' hz.le hm) hn
 
 theorem norm_le_one_of_isIntegral {Ω : Type} [NormedField Ω] [IsUltrametricDist Ω] {x : Ω}

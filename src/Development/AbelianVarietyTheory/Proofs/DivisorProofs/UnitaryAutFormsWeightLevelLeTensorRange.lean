@@ -61,7 +61,7 @@ theorem eq_zero_of_sum (lam : InfinitePlace E → DomWeight n) {ι : Type} [Fint
   · rw [← hP _ (hT k)]; simp
   · intro j _ hj
     rw [← hP _ (hT j)]
-    simp [Module.Basis.coord_apply, Module.Basis.repr_self, Finsupp.single_apply, hj]
+    simp [Module.Basis.coord_apply, Module.Basis.repr_self, hj]
   · simp
 
 end GlobalTheory.BCT.TrKer
@@ -163,7 +163,6 @@ theorem mem_range_of_mem (S : Set (Pl E)) (K' : ∀ w : Pl E, Subgroup (UL n w))
       rw [← hwi, hT j _ (inv_mem i.2)]
       change T j w ((finPt γ).1 * x.1) = T j w (x.1 * i.1⁻¹)
       rw [GlobalTheory.DefU.fin_mul_inf x.2 (inv_mem i.2), ← hl, hri]
-      congr 1
       group
     · refine LinearMap.ext fun w => ?_
       rw [hFa, hFa]

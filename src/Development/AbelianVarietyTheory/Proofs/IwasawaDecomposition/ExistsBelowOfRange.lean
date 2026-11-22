@@ -33,8 +33,6 @@ theorem exists_below_of_range (D D' : D7) (h : Set.range D.what₂.embLL ⊆ Set
   | exact @_root_.GlobalTheory.PrimeBelow.exists_below
   | exact _root_.GlobalTheory.PrimeBelow.exists_below
   | (apply _root_.GlobalTheory.PrimeBelow.exists_below <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PrimeBelow.exists_below <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PrimeBelow.exists_below <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PrimeBelow.exists_below ..)
 
 theorem resChar_of_below {D D' : D7} {v : D.what₂.places.Pl} {v' : D'.what₂.places.Pl} (hB : Below D D' v v') :

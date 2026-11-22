@@ -79,7 +79,7 @@ theorem gq_count (hA : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Num
       bc (inclR (F := D.host.F) (AF D.host.F)) δ = matHom V (γ : GA D V) := by
     intro γ
     have h1 := γ.2
-    simp only [GQ, HFinIn, HFin, Subgroup.mem_subgroupOf, Subgroup.mem_map] at h1
+    simp only [GQ, HFinIn, HFin] at h1
     obtain ⟨δ, -, hδ⟩ := h1
     exact ⟨δ, hδ⟩
   choose φ hφ using hex

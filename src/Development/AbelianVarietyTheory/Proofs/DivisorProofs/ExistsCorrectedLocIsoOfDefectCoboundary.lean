@@ -68,7 +68,7 @@ theorem exists_corr_of_defect : ∀ (R R₀ : Type) [CommRing R] [CommRing R₀]
     have hn : mp (OAff s₀) a (S.p U b) = S.p V (mp S.F a b) := (S.nat a b).symm
     rw [hn] at h0
     have h1 := (hθ U V a).der b
-    simp only [α, AlgHom.coe_comp, Function.comp_apply] at h1
+    simp only [AlgHom.coe_comp, Function.comp_apply] at h1
     rw [hψv, hψv, map_add]
     simp only [AlgEquiv.coe_toAlgHom] at h0 h1 ⊢
     linear_combination h0 - h1

@@ -57,7 +57,7 @@ theorem conj_blockLower_mem_theta : ∀ (k : Type) [Field k] [ValuativeRel k] [T
     have e : (z⁻¹ * g * z).val.toSquareBlockProp (fun i => i ≤ m) =
         of fun (i j : {a // a ≤ m}) => (d i)⁻¹ * (of fun (i j : {a // a ≤ m}) => d j * G i j) i j := by
       ext i j
-      simp only [hG, toSquareBlockProp_def, toBlock_apply, of_apply, hent]
+      simp only [hG, toSquareBlockProp_def, of_apply, hent]
       ring
     rw [e, det_mul_column (fun i : {a // a ≤ m} => (d i)⁻¹), det_mul_row (fun j : {a // a ≤ m} => d j) G,
       ← mul_assoc, ← Finset.prod_mul_distrib]

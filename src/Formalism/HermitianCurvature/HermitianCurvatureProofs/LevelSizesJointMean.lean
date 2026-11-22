@@ -25,7 +25,6 @@ theorem t_BoxSumLattice : BoxSumLattice := by
     first
     | exact w.nonneg l
     | exact apply_nonneg w l
-    | exact w.1.nonneg l
   have hfac : ∀ (z : InfinitePlace E → ℝ) (l : E) (w : InfinitePlace E), 0 ≤ z w →
       0 ≤ min 1 ((z w / w l) ^ K) := fun z l w hz =>
     le_min zero_le_one (pow_nonneg (div_nonneg hz (hwl w l)) K)
@@ -83,7 +82,6 @@ theorem t_BoxSumLattice : BoxSumLattice := by
   have h2 : 2 < Θ / a := by
     first
     | (rw [lt_div_iff₀ hapos]; linarith)
-    | (rw [lt_div_iff hapos]; linarith)
   have h3 : (3 : ℝ) ≤ K := by exact_mod_cast hK
   have hB := hC₀ E aa haa y (Θ / a) K hypos h2 h3 heq S hS'
   have hZ : (Θ / a) ^ (-((K : ℝ) - 5 / 2)) = a ^ ((K : ℝ) - 5 / 2) * Θ ^ (-((K : ℝ) - 5 / 2)) := by
@@ -263,9 +261,6 @@ theorem mext {y z : euclidean.mixedSpace E} (h : ∀ w, y.snd w = z.snd w) : y =
   first
   | exact WithLp.prod_ext h1 h2
   | exact WithLp.ofLp_injective 2 (Prod.ext h1 h2)
-  | exact WithLp.ofLp_injective (Prod.ext h1 h2)
-  | (apply WithLp.prod_ext <;> assumption)
-  | (rcases y with ⟨y⟩; rcases z with ⟨z⟩; exact congrArg (WithLp.toLp 2) (Prod.ext h1 h2))
 
 def phiL : CV E ≃ₗ[ℝ] euclidean.mixedSpace E where
   toFun x := WithLp.toLp 2 (0, WithLp.toLp 2 (fun w : {w : InfinitePlace E // w.IsComplex} => x w.1))
@@ -293,8 +288,6 @@ theorem ee_mp : MeasurePreserving (ee E) := by
   rw [h]
   first
   | exact (euclidean.volumePreserving_toMixed E).comp (phi E).measurePreserving
-  | exact euclidean.volumePreserving_toMixed.comp (phi E).measurePreserving
-  | exact (euclidean.volumePreserving_toMixed E).comp (LinearIsometryEquiv.measurePreserving (phi E))
 
 theorem ee_cemb (t : E) : ee E (cemb E t) = mixedEmbedding E t := by
   ext w

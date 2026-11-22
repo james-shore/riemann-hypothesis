@@ -36,7 +36,7 @@ theorem prod_xi {Ψ : Type} [DecidableEq Ψ] (τ : Ψ) (hb : (b : ℕ) = a + 1) 
     have e1 : i = b ↔ (i : ℕ) = a + 1 := by rw [Fin.ext_iff, hb]
     have e2 : i = a ↔ (i : ℕ) = a := Fin.ext_iff
     simp only [xiCoef, if_true, e1, e2]
-    split_ifs <;> first | omega | (simp; done) | (simp; rfl)
+    split_ifs <;> first | omega | (simp)
   simp only [h, Finset.prod_mul_distrib, Finset.prod_ite_eq', Finset.mem_univ, if_true]
 
 theorem prod_xi' {Ψ : Type} [Fintype Ψ] [DecidableEq Ψ] (τ : Ψ) (D : Ψ × Fin N → L) :

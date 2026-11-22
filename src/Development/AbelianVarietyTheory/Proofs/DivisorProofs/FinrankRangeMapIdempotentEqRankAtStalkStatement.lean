@@ -7,4 +7,4 @@ theorem _root_.GlobalTheory.T.finrank_range_map_idempotent_eq_rankAtStalk : ∀ 
     ∀ (k : Type) [Field k] (g : A →+* k),
       Module.finrank k (LinearMap.range (P.map g).mulVecLin) =
         Module.rankAtStalk (LinearMap.range P.mulVecLin) (⟨RingHom.ker g, RingHom.ker_isPrime g⟩ : PrimeSpectrum A) := by
-  first | (exact @GlobalTheory.IdemRankStalk.finrank_range_map_eq_rankAtStalk) | (exact GlobalTheory.IdemRankStalk.finrank_range_map_eq_rankAtStalk) | (intros; apply GlobalTheory.IdemRankStalk.finrank_range_map_eq_rankAtStalk  <;> assumption)
+  first | (exact @GlobalTheory.IdemRankStalk.finrank_range_map_eq_rankAtStalk)

@@ -14,8 +14,6 @@ theorem norm_multisetProd_sub_one_le_exp (s : Multiset ℂ) {t : ℝ} (ht : 0 �
   | exact @_root_.GlobalTheory.CuspFormEvaluationComplement.main
   | exact _root_.GlobalTheory.CuspFormEvaluationComplement.main
   | (apply _root_.GlobalTheory.CuspFormEvaluationComplement.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CuspFormEvaluationComplement.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CuspFormEvaluationComplement.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CuspFormEvaluationComplement.main ..)
 
 theorem norm_det_one_add_sub_one_le_exp {n : Type*} [Fintype n] [DecidableEq n]
@@ -87,7 +85,7 @@ theorem norm_prod_sign_mul_det_submatrix_sub_one_le {r : ℕ} (j : Fin r → ℂ
     by_cases h : a = b
     · subst h
       rcases hj (e a) with h | h <;> simp [h]
-    · simp [h, he.eq_iff, diagonal_apply]
+    · simp [h, he.eq_iff]
   have h2 := norm_det_one_add_sub_one_le_exp
     (diagonal (fun a => j (e a)) * (G - diagonal j).submatrix e e) hε (fun a b => by
       rw [diagonal_mul, norm_mul, submatrix_apply]

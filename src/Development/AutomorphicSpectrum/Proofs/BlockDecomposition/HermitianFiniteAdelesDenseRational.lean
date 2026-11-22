@@ -66,7 +66,7 @@ theorem denseRange_inclR (F E : Type) [Field F] [NumberField F] [Field E] [Numbe
   rw [Function.comp_apply, Homeomorph.apply_symm_apply]
   funext k
   show (Algebra.TensorProduct.basis R b).repr ((1 : R) ⊗ₜ[F] (b.equivFun.symm a)) k = _
-  simp [Algebra.TensorProduct.basis_repr_tmul, Finsupp.single_apply, apply_ite]
+  simp [Algebra.TensorProduct.basis_repr_tmul, Finsupp.single_apply]
 
 theorem hermE_dense_finite : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E] (σ : E →ₐ[F] E),
     IsCMExt F E σ → ∀ (n : ℕ) (U : AddSubgroup (HermR (Af F) σ n)), IsOpen (U : Set (HermR (Af F) σ n)) →

@@ -37,8 +37,7 @@ private theorem lin_term {ι L : Type} [Fintype ι] [Field L] [CharZero L] (c : 
       · rw [pow_succ, mul_coeff_zero, ih.1]
         simp
       · rw [pow_succ, hmul, ih.1, ih.2]
-        simp [coeff_one, coeff_C_mul_X]
-        push_cast
+        simp [coeff_one]
         ring
   have hprod : ∀ (m : ι → ℕ) (s : Finset ι), (∏ i ∈ s, (1 + C (c i) * X) ^ m i).coeff 0 = 1 ∧
       (∏ i ∈ s, (1 + C (c i) * X) ^ m i).coeff 1 = ∑ i ∈ s, (m i : L) * c i := by

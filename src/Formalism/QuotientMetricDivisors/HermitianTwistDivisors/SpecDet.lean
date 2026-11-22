@@ -26,7 +26,7 @@ lemma majAt_eq {d : ℕ} (X : InfinitePlace K → Matrix (Fin d) (Fin d) ℂ) (v
     (x y : Fin d → K) :
     Formalism.HermitianLatticesTheory.majAt (Pi.basisFun K (Fin d)) X v x y =
       star (cv v.embedding x) ⬝ᵥ (metMat X v *ᵥ cv v.embedding y) := by
-  simp only [Formalism.HermitianLatticesTheory.majAt, Formalism.HermitianLatticesTheory.fcoord, Formalism.HermitianLatticesTheory.vecAt, Pi.basisFun_repr]
+  simp only [Formalism.HermitianLatticesTheory.majAt, Formalism.HermitianLatticesTheory.fcoord]
   rw [metMat, ← Matrix.mulVec_mulVec, Matrix.dotProduct_mulVec, ← Matrix.star_mulVec]
   rfl
 
@@ -115,7 +115,7 @@ lemma det_of_scalar {D : ℕ} (σ : K →+* ℂ) {Ix : Type} [Fintype Ix]
   have hcol : ∀ a, (fun i => Qs i a) = cv σ (b (e.symm a)) := by
     intro a
     ext i
-    simp [hQs, hQdef, cv, Module.Basis.toMatrix_apply, Module.Basis.reindex_apply]
+    simp [hQs, hQdef, cv, Module.Basis.toMatrix_apply]
   have hmem : ∀ a, b (e.symm a) ∈ Qp (e.symm a).1 := fun a => hint.collectedBasis_mem _ _
   have key : Qsᴴ * N1 * Qs = Matrix.diagonal (fun a => c (e.symm a).1) * (Qsᴴ * N2 * Qs) := by
     ext a a'
@@ -170,7 +170,7 @@ theorem spectral_determinant_formula : SpecDet := by
     rw [h]
     exact Finset.prod_congr rfl (fun p _ => by rw [hdim j p])
   rw [h1, Finset.prod_congr rfl (fun j _ => h2 j)]
-  simp only [mul_pow, Finset.prod_mul_distrib, Finset.prod_pow_eq_pow_sum, hsum, Finset.prod_pow]
+  simp only [mul_pow, Finset.prod_mul_distrib, Finset.prod_pow_eq_pow_sum, hsum]
   congr 1
   rw [Finset.prod_comm]
   refine Finset.prod_congr rfl (fun p _ => ?_)

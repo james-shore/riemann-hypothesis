@@ -75,7 +75,7 @@ theorem coeff_comparison : ∀ (A B : Type) [CommRing A] [CommRing B] (π : A �
     by_cases hi : i = Fin.last p
     · subst hi
       simp [add_mul]
-    · simp [Function.update_of_ne hi, hi]
+    · simp [hi]
   have hsum : ∑ i, π (c₁ i) * δ ^ (i : ℕ) = ∑ i,
       π (Function.update c₂ (Fin.last p) (c₂ (Fin.last p) + u ⟨1, h1⟩ ^ p) i) * δ ^ (i : ℕ) := by
     simp only [hlast, Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.mem_univ, if_true]

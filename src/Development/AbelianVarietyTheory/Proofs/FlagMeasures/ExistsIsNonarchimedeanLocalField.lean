@@ -48,7 +48,7 @@ theorem mem_pow_iff {ϖ : o} (hϖ : Irreducible ϖ) (n : ℕ) (x : (val o F).int
       val o F (x : F) ≤ val o F (algebraMap o F ϖ) ^ n := by
   rw [← Ideal.map_pow, hϖ.maximalIdeal_eq, Ideal.span_singleton_pow, Ideal.map_span,
     Set.image_singleton, Ideal.mem_span_singleton, (Valuation.integer.integers _).dvd_iff_le]
-  simp only [map_pow, equivInt_val]
+  simp only [map_pow]
   exact Iff.rfl
 
 end GlobalTheory.LocFieldOfDVR

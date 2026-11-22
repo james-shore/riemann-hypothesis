@@ -30,7 +30,7 @@ theorem exists_read_map {Γ : Type} [Group Γ] {a d : ℕ} (ρ : Γ →* GL (Fin
   let w : Fin a → Om l := fun k => (v k : Om l)
   have hΦs : ∀ (c : ℚ_[l]) x, Φ (c • x) = c • Φ x := by
     intro c x
-    simp only [Φ, Finset.smul_sum, Pi.smul_apply, smul_eq_mul, map_mul, mul_smul, algebraMap_smul]
+    simp only [Φ, Finset.smul_sum, Pi.smul_apply, smul_eq_mul, mul_smul, algebraMap_smul]
   have hΦa : ∀ x y, Φ (x + y) = Φ x + Φ y := by
     intro x y
     simp only [Φ, Pi.add_apply, map_add, add_smul, Finset.sum_add_distrib]

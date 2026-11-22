@@ -184,7 +184,7 @@ theorem hurInt_subst_expOf {d : ℕ} (G : LogFGL v d) {f : MvPowerSeries (Fin d)
       have : ∀ i ∈ Finset.univ.erase k,
           (((β + Finsupp.single k 1 : Fin d →₀ ℕ) i).factorial : C) = ((β i).factorial : C) := by
         intro i hi
-        simp [Finsupp.single_apply, Ne.symm (Finset.ne_of_mem_erase hi)]
+        simp [Ne.symm (Finset.ne_of_mem_erase hi)]
       rw [Finset.prod_congr rfl this]
       simp [Nat.factorial_succ]
       ring

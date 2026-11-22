@@ -24,15 +24,15 @@ private theorem Hpk_mul_self_eq_one : Hpk k r * Hpk k r = 1 := by
   rw [Finset.sum_eq_single (if i.val < r ∨ r + k < i.val then i.rev else i)]
   · by_cases h : i.val < r ∨ r + k < i.val
     · rw [if_pos h]
-      simp only [Hpk, Fin.val_rev, Fin.ext_iff, and_true]
+      simp only [Hpk, Fin.val_rev, Fin.ext_iff]
       split_ifs <;> first | (exfalso; omega) | norm_num
     · rw [if_neg h]
       simp only [Hpk, Fin.ext_iff, and_true]
       split_ifs <;> first | (exfalso; omega) | norm_num
   · intro l _ hl
     have hl' := l.isLt
-    simp only [Hpk, Fin.ext_iff, Fin.val_rev, and_true, ne_eq] at hl ⊢
-    split_ifs at hl ⊢ <;> (try simp only [ne_eq, Fin.ext_iff, Fin.val_rev] at hl) <;>
+    simp only [Hpk, Fin.ext_iff, ne_eq] at hl ⊢
+    split_ifs at hl ⊢ <;> (try simp only [Fin.val_rev] at hl) <;>
       first | (exfalso; omega) | norm_num
   · simp
 
@@ -115,8 +115,6 @@ theorem measurable_shG (m : Mat k r) : Measurable (Function.uncurry (shG (k := k
   refine measurable_pi_iff.mpr fun i => measurable_pi_iff.mpr fun j => hs.mul ?_
   first
     | exact (hG.matrix_elem i j).measurable
-    | exact (by fun_prop : Continuous fun p : Mt k r × Mt k r =>
-        (Matrix.of p.2 * (Matrix.of p.1 * m * (Matrix.of p.1 : Mat k r).adjugate) : Mat k r) i j).measurable
 
 theorem shL_mp (D : RealPlaceData k r Wp Wp) (hF : BEFacts D) {h0 m : Mat k r} (hh0 : h0 ∈ UWset k r D.z)
     (hm : m ∈ Nset k r) : MeasurePreserving (shL h0 m) (D.μW.prod D.μN) (D.μW.prod D.μN) := by
@@ -127,12 +125,10 @@ theorem shL_mp (D : RealPlaceData k r Wp Wp) (hF : BEFacts D) {h0 m : Mat k r} (
   haveI : SigmaFinite D.μW := by
     first
       | infer_instance
-      | exact sigmaFinite_of_locallyFinite
   haveI : IsFiniteMeasureOnCompacts D.μN := ⟨fun K hK => D.haarN.finite_compact K hK⟩
   haveI : SigmaFinite D.μN := by
     first
       | infer_instance
-      | exact sigmaFinite_of_locallyFinite
   unfold shL
   refine hf.skew_product (measurable_shG m) ?_
   filter_upwards [hW] with x hx
@@ -165,11 +161,9 @@ theorem shR_mp (D : RealPlaceData k r Wp Wp) (hF : BEFacts D) {h0 m : Mat k r} (
   haveI : SigmaFinite D.μW := by
     first
       | infer_instance
-      | exact sigmaFinite_of_locallyFinite
   haveI : SigmaFinite D.μN := by
     first
       | infer_instance
-      | exact sigmaFinite_of_locallyFinite
   have hlm : ∀ a : Mat k r, Continuous (lmulM (k := k) (r := r) a) := fun a => by unfold lmulM; fun_prop
   have hcm : ∀ a : Mat k r, Continuous (conjM (k := k) (r := r) a) := fun a => by unfold conjM; fun_prop
   have h1 : MeasurePreserving (lmulM h0⁻¹) D.μW D.μW :=

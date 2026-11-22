@@ -82,7 +82,7 @@ theorem isotropic_dual : ∀ {F : Type} [Field F] [ValuativeRel F] [TopologicalS
       add_zero, hyf]
   · simp only [H.h_add_left, h_add_right, h_sum_left, h_sum_right, H.h_smul_left, h_smul_right,
       hyE, hEy, hEf, mul_zero, mul_ite, mul_one, Finset.sum_const_zero, add_zero,
-      Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      Finset.sum_ite_eq', Finset.mem_univ, if_true]
     linear_combination hm a b
 
 end GlobalTheory.IsotropicDual

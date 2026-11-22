@@ -34,8 +34,8 @@ theorem e_gram (Zh : Matrix (Fin (r + 1)) (Fin (r + 1)) E) (T T' : F) (i j : Ix 
   rcases i with a | a <;> rcases j with b | b <;>
     simp only [gramG, Matrix.fromBlocks_apply₁₁, Matrix.fromBlocks_apply₁₂, Matrix.fromBlocks_apply₂₁,
       Matrix.fromBlocks_apply₂₂, Matrix.of_apply, map_mul, map_add, map_sub, map_neg, e_cor,
-      Formalism.L2.SG.LocalCountModules.UnitaryGroupMassFormula.LocCntUG.e_alg, e_cjR, e_cjA] <;>
-    refine Prod.ext ?_ ?_ <;> simp [e_cjR, e_cjA] <;> ring
+      Formalism.L2.SG.LocalCountModules.UnitaryGroupMassFormula.LocCntUG.e_alg, e_cjR] <;>
+    refine Prod.ext ?_ ?_ <;> simp
 
 theorem sum_ind_l (x : Fin (r + 1) → F) (b : Fin (r + 1)) :
     ∑ a, x a * ind r a b = if b = Fin.last r then x (Fin.last r) else 0 := by
@@ -65,6 +65,6 @@ theorem e_llMap (Z : M.Mat (r + 1)) (TT : M.R) (m : Fin (r + 1) → M.R) (b : Fi
     refine Prod.ext ?_ ?_ <;>
       simp [llMap, Matrix.mulVec, dotProduct, map_sum, Prod.fst_sum, Prod.snd_sum, e_dgR, trO_coe]
   · refine Prod.ext ?_ ?_ <;>
-      simp [hb, llMap, Matrix.mulVec, dotProduct, map_sum, Prod.fst_sum, Prod.snd_sum, e_dgR, trO_coe]
+      simp [hb, llMap, Matrix.mulVec, dotProduct, map_sum, Prod.fst_sum, Prod.snd_sum]
 
 end Formalism.L2.SG.LocalCountModules.AlgGSplit

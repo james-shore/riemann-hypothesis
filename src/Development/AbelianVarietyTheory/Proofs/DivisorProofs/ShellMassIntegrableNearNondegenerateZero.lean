@@ -106,7 +106,7 @@ theorem _root_.GlobalTheory.OTY.ShellZero.shell_near_zero : ∀ (n : ℕ) (Y : T
     simp only [hψdef, _root_.GlobalTheory.Published.L2Extension.psi, h1, hlam, e.left_inv hx, hZ]
     rw [norm_one, one_pow, one_mul, mul_comm (Real.exp _)]
   have hψm : Measurable ψ := by
-    simp only [hψdef, _root_.GlobalTheory.Published.L2Extension.psi]
+    simp only [hψdef]
     exact measurable_const.mul (Real.measurable_log.comp (A.continuous_sqn hs).measurable)
   obtain ⟨ρ, hρ, hball, hshell⟩ := _root_.GlobalTheory.ShellMass.shell_mass n hn (e P) e.target Z lam e.open_target hp hZd hZ0
     hdet hlamc φ (2 / δ) (1 / 30) hφc (by positivity) (by norm_num)

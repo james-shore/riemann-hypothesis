@@ -163,7 +163,7 @@ theorem pat_hX {a b : Fin r} (hab : b.val < a.val) (s : ℂ) : QRR.Pat k r b (hX
   · obtain ⟨rfl, rfl⟩ := h2
     right; rw [esI_val, esI_val]; omega
   exfalso; apply hij
-  simp [hX, Matrix.single_apply, h1, h2]
+  simp [hX, h1, h2]
 
 theorem ell_hX {z : Fin (2 * r + k + 1) → ℂ} (hz : inWb k r z) {a b : Fin r} (hab : b.val < a.val) (s : ℂ) :
     ell k r z (hX k b a s) = if a.val = b.val + 1 then s else 0 := by

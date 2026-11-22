@@ -23,7 +23,7 @@ theorem map_sum_smul {O E : Type} [CommRing O] [CommRing E] [Algebra O E] {σ : 
   refine Finset.sum_congr rfl fun i _ => ?_
   ext α
   rw [coeff_map, MvPowerSeries.coeff_smul, MvPowerSeries.coeff_smul, coeff_map]
-  simp only [smul_eq_mul, map_mul]
+  simp only [map_mul]
 
 theorem Chart.isLie_comb : ∀ (p : ℕ) [Fact p.Prime] (O E : Type) [CommRing O] [CommRing E] [Algebra O E], IsFrame p E (RingHom.id O) → ∀ (G : PDivGroup p O) (d : ℕ) (c : QLog.Chart G d), ∀ (ι : Type) [Fintype ι] (e : ι → MvPowerSeries (Fin d) E) (l : ι → G.dual.Lie) (b : ι → O), (∀ i, QL c.μ ⊤ (e i)) → (∀ i, c.IsLie (e i) (l i)) → c.IsLie (comb b e) (∑ i, b i • l i) := by
   intro p _ O E _ _ _ hF G d c ι _ e l b _ hl

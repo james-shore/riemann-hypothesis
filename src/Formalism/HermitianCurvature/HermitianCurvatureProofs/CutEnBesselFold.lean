@@ -157,7 +157,7 @@ theorem besselFoldBuilt_of (hC : CVInCC) : BesselFoldBuilt := by
         (foldCV S.G.k S.G.r s a (B.JF Db F)) := by
       intro g₀ hg₀
       obtain ⟨U, F', hU, hgU, hc, he⟩ := hfold.1 g₀
-        ⟨mem_level_zero_of_mem_group hg₀.2, hg₀.1.2, fun b => hg₀.1.1 _ (by simp <;> omega)⟩
+        ⟨mem_level_zero_of_mem_group hg₀.2, hg₀.1.2, fun b => hg₀.1.1 _ (by simp)⟩
       exact ⟨U, F', hU, hgU, hc.of_le (by exact_mod_cast le_top), fun g hgU hgG => he g hgU (mem_level_zero_of_mem_group hgG)⟩
     have hloc := coefficient_vector_locality S.G.k S.G.r _ (Q.OmPlus S.G.k S.G.r Db.z Db.z') (B.JF Db H)
       (foldCV S.G.k S.G.r s a (B.JF Db F)) (x.2 : ℂ) hOp hJHk hfk

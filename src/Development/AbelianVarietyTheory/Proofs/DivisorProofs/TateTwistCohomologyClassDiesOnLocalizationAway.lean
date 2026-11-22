@@ -68,8 +68,7 @@ def cocone : Cocone (diag M) where
   ι := { app := fun a => CommRingCat.ofHom (toLoc M a)
          naturality := fun a b h => by
            ext1; apply ext_away
-           simp only [CommRingCat.hom_ofHom, CommRingCat.hom_comp, diag, Functor.const_obj_map,
-             CommRingCat.hom_id, RingHom.id_comp]
+           simp only [CommRingCat.hom_ofHom, CommRingCat.hom_comp, diag, Functor.const_obj_map]
            rw [RingHom.comp_assoc, trans_comp, toLoc_comp]
            exact (toLoc_comp M a).symm }
 

@@ -37,7 +37,7 @@ theorem _root_.PositivityTheory.SiegelWeilFormula.TBij_k.Adp.crd_smul (a : AF F)
 def _root_.PositivityTheory.SiegelWeilFormula.TBij_k.Adp.cmbL : (_root_.PositivityTheory.SiegelWeilFormula.TBij_k.Adp.Ix d → AF F) →ₗ[AF F] Mx F E d.m d.n where
   toFun := d.cmb
   map_add' c c' := by ext i j; simp [_root_.PositivityTheory.SiegelWeilFormula.SD_k.cmb, TensorProduct.add_tmul, Finset.sum_add_distrib]
-  map_smul' a c := by ext i j; simp [_root_.PositivityTheory.SiegelWeilFormula.SD_k.cmb, Finset.smul_sum, TensorProduct.smul_tmul']
+  map_smul' a c := by ext i j; simp [_root_.PositivityTheory.SiegelWeilFormula.SD_k.cmb, TensorProduct.smul_tmul']
 def _root_.PositivityTheory.SiegelWeilFormula.TBij_k.Adp.ek (k : _root_.PositivityTheory.SiegelWeilFormula.TBij_k.Adp.Ix d) : Mx F E d.m d.n := d.cmb fun j => if k = j then 1 else 0
 theorem _root_.PositivityTheory.SiegelWeilFormula.TBij_k.Adp.cmb_sum (c : _root_.PositivityTheory.SiegelWeilFormula.TBij_k.Adp.Ix d → AF F) : d.cmb c = ∑ k, c k • _root_.PositivityTheory.SiegelWeilFormula.TBij_k.Adp.ek d k :=
   LinearMap.pi_apply_eq_sum_univ (_root_.PositivityTheory.SiegelWeilFormula.TBij_k.Adp.cmbL d) c

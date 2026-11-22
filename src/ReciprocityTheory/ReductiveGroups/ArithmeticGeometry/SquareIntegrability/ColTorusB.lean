@@ -52,7 +52,7 @@ theorem ct_base_num (q c : ℕ) (hq : 1 ≤ q) {t0 : ℝ}
   have hc0 : (0 : ℝ) ≤ c := Nat.cast_nonneg c
   rcases Nat.eq_zero_or_pos c with hc | hc
   · subst hc
-    simp only [Nat.cast_zero, zero_mul, zero_add, pow_zero] at hC5 ⊢
+    simp only [Nat.cast_zero, zero_add, pow_zero] at hC5 ⊢
     exact Real.one_le_exp (by linarith)
   have hq1 : (1 : ℝ) ≤ q := by exact_mod_cast hq
   have hc1 : (1 : ℝ) ≤ c := by exact_mod_cast hc

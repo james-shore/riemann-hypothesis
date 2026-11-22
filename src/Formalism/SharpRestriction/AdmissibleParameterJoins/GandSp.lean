@@ -67,7 +67,6 @@ theorem hs2 {τ R : Type} [CommRing R] {a b : MvPowerSeries τ R} (ha : constant
     HasSubst (![a, b] : Fin 2 → MvPowerSeries τ R) :=  by
   first
   | exact MvPowerSeries.hasSubst_of_constantCoeff_zero fun i => by fin_cases i <;> simp [ha, hb]
-  | exact ⟨fun i => by fin_cases i <;> simp [ha, hb], fun d => Set.toFinite _⟩
 
 variable {p}
 

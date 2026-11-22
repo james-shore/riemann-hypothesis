@@ -72,7 +72,7 @@ private theorem act_nU (D : Dat F E) (u t s z₀ z₁ : A F) :
       D.mkE (s - 2 * (u * z₀ - UpperTheory.ConvolutionTheory.R2.rt D.δ * (t * z₁))) 0 := by
     rw [gl_val]
     simp [Dat.herm, Matrix.mul_apply, Fin.sum_univ_two, h0, hb]
-    simp only [Dat.mkE, map_sub, map_mul, map_add, map_neg, map_zero, map_ofNat]
+    simp only [Dat.mkE, map_sub, map_mul, map_neg, map_zero, map_ofNat]
     linear_combination (2 * AdeleBaseChange.adeleMap F E t * AdeleBaseChange.adeleMap F E z₁) * hθ
   have z0 : D.co 0 = ![0, 0] := by rw [← h0, co_mkE]
   rw [Dat.act, Dat.unherm, e11, e01, e00, co_mkE, co_mkE, z0]

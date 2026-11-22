@@ -34,7 +34,7 @@ theorem form_ne_zero_of_isIrr : ∀ {K : Type} [Field K] [CharZero K] {Γ : Type
     rw [h2, ← Matrix.mul_assoc, ← Matrix.mul_assoc, hu, Matrix.one_mul]
   let Wk : Submodule K (Fin 2 → K) := LinearMap.ker (Matrix.mulVecLin (ofCoord y))
   have hmem : ∀ x, x ∈ Wk ↔ ofCoord y *ᵥ x = 0 := fun x => by
-    simp [Wk, LinearMap.mem_ker, Matrix.mulVecLin_apply]
+    simp [Wk, LinearMap.mem_ker]
   have hinv : IsInv ρ Wk := by
     intro g x hx
     rw [hmem] at hx ⊢
@@ -51,9 +51,9 @@ theorem form_ne_zero_of_isIrr : ∀ {K : Type} [Field K] [CharZero K] {Γ : Type
     · simpa [hc] using h2
   rcases hirr.2.2 Wk le_top hinv with h | h
   · have hv1 : (![y 0, -y 2] : Fin 2 → K) ∈ Wk := by
-      rw [hmem]; ext i; fin_cases i <;> simp [ofCoord, Matrix.mulVec, dotProduct, Fin.sum_univ_two] <;> first | linear_combination | linear_combination hq | linear_combination -hq
+      rw [hmem]; ext i; fin_cases i <;> simp [ofCoord, Matrix.mulVec, dotProduct, Fin.sum_univ_two] <;> first | linear_combination | linear_combination hq
     have hv2 : (![y 2, y 1] : Fin 2 → K) ∈ Wk := by
-      rw [hmem]; ext i; fin_cases i <;> simp [ofCoord, Matrix.mulVec, dotProduct, Fin.sum_univ_two] <;> first | linear_combination | linear_combination hq | linear_combination -hq
+      rw [hmem]; ext i; fin_cases i <;> simp [ofCoord, Matrix.mulVec, dotProduct, Fin.sum_univ_two] <;> first | linear_combination | linear_combination hq
     rw [h, Submodule.mem_bot] at hv1 hv2
     have a0 := congrFun hv1 0
     have a1 := congrFun hv1 1

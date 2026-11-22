@@ -127,8 +127,6 @@ theorem exists_smul_mem_of_mem_span [Module (𝓞 K) V] [IsScalarTower (𝓞 K) 
   | exact @_root_.GlobalTheory.NonzeroScalarMultipleMembership.exists_ne_zero_smul_mem
   | exact _root_.GlobalTheory.NonzeroScalarMultipleMembership.exists_ne_zero_smul_mem
   | (apply _root_.GlobalTheory.NonzeroScalarMultipleMembership.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NonzeroScalarMultipleMembership.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NonzeroScalarMultipleMembership.exists_ne_zero_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NonzeroScalarMultipleMembership.exists_ne_zero_smul_mem ..)
 
 theorem fg_of_injective [Module (𝓞 K) V] [IsScalarTower (𝓞 K) K V] [Module (𝓞 K) W] [IsScalarTower (𝓞 K) K W]

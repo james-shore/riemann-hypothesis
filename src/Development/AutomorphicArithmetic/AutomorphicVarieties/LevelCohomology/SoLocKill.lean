@@ -119,7 +119,7 @@ theorem UpperTheory.V.X.So.locKill :
       rw [hc, ← Units.val_mul]
       congr 1
       simp only [map_inv, MonoidHom.mul_apply, MonoidHom.inv_apply, MonoidHom.zpow_apply, zpow_sub,
-        zpow_one, mul_inv, div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc]
+        zpow_one, mul_inv, mul_left_comm]
     have hmem : ∀ φ : H0 τ, ι (φ : TDual (ZMod (l ^ r)) M) ∈ Set.range ι₀ := by
       intro φ
       rw [← hι₀rng]

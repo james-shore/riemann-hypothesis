@@ -11,7 +11,7 @@ private lemma C_dvd_iff_map_mk_eq_zero {A : Type} [CommRing A] (ϖ : A) (f : Pow
   constructor
   · rintro ⟨q, rfl⟩
     ext d
-    simp [coeff_C_mul, Ideal.Quotient.eq_zero_iff_mem, Ideal.mem_span_singleton]
+    simp
   · intro h
     have hd : ∀ d, ϖ ∣ coeff d f := fun d ↦ by
       have := congrArg (coeff d) h

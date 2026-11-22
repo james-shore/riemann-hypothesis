@@ -12,7 +12,7 @@ theorem det_eq_one_of_one_row {k n : Type*} [Field k] [Fintype n] [DecidableEq n
     · subst ha
       by_cases hb : b = a
       · subst hb; simp [Matrix.mul_apply, hii]
-      · simp [Matrix.mul_apply, Matrix.one_apply, Pi.single_apply, hb, Ne.symm hb]
+      · simp [Matrix.mul_apply, hb, Ne.symm hb]
     · simp [Matrix.mul_apply, h a b ha, Pi.single_apply, ha]
   rw [e, det_one_add_replicateCol_mul_replicateRow]
   simp [hii]

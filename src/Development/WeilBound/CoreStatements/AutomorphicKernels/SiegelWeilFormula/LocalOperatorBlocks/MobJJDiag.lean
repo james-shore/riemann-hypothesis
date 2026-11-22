@@ -83,14 +83,14 @@ theorem mob_K (sg : ℤˣ) (M : M2 n) (hM : InK M) (hV : IsUnit (M.toBlocks₂�
   rw [← hM'] at hc
   simp only [JJ, Matrix.fromBlocks_multiply] at hc
   simp only [Matrix.zero_mul, Matrix.one_mul, zero_add, add_zero, Matrix.mul_zero, Matrix.mul_one, Matrix.mul_neg,
-    Matrix.neg_mul, neg_zero] at hc
+    Matrix.neg_mul] at hc
   obtain ⟨e1, e2, -, -⟩ := Matrix.fromBlocks_inj.mp hc
   set σ : ℂ := ((sg : ℤ) : ℂ)
   have hσ := sg_sq sg
   set X := M.toBlocks₂₁ * Z0 sg + M.toBlocks₂₂ with hX
   have hnum : M.toBlocks₁₁ * Z0 sg + M.toBlocks₁₂ = (Complex.I * σ) • X := by
     rw [hX, e1, e2]
-    simp only [Z0, Matrix.mul_smul, Matrix.mul_one, smul_add, Matrix.neg_mul, smul_neg, smul_smul]
+    simp only [Z0, Matrix.mul_smul, Matrix.mul_one, smul_add, smul_neg, smul_smul]
     rw [show Complex.I * σ * (Complex.I * σ) = -1 by rw [mul_mul_mul_comm, Complex.I_mul_I, hσ]; ring]
     simp [neg_smul]; abel
   unfold mob

@@ -118,7 +118,7 @@ private theorem exists_mem_bilinForm_eq_of_selfDual {V : Type} [AddCommGroup V] 
     intro j
     rw [← hc]
     simp only [x, map_sum, LinearMap.map_smul₂, LinearMap.sum_apply,
-      LinearMap.smul_apply, smul_eq_mul, Matrix.vecMul, dotProduct, Gq, Matrix.map_apply, hG]
+      smul_eq_mul, Matrix.vecMul, dotProduct, Gq, Matrix.map_apply, hG]
   have hxy : ∀ y : L, B x y = ψ y := by
     intro y
     rw [hexp]
@@ -278,8 +278,8 @@ theorem exists_eq_smul_of_isTheta1 : ∀ (E : Type) [Field E] [NumberField E] [I
     simp only [pv, per, Function.comp_apply, Pi.add_apply]
     split_ifs
     · simp only [Data.emb, hermC]
-      simp [map_add, Finset.sum_add_distrib, mul_add, add_mul, dotProduct_add]
-    · first | unfold Data.emb | skip
+      simp [map_add, Finset.sum_add_distrib, mul_add]
+    · first | unfold Data.emb
       simp [Matrix.mulVec, dotProduct, mul_add, Finset.sum_add_distrib]
   let p : (Fin r → E) →ₗ[ℤ] (Fin g → ℂ) := (AddMonoidHom.mk' (pv X idx x) hadd).toIntLinearMap
   have hp : ∀ v, p v = pv X idx x v := fun v => rfl

@@ -58,7 +58,7 @@ theorem gram_single {d : ℕ} (X : InfinitePlace K → Matrix (Fin d) (Fin d) �
     ext a b
     by_cases hab : a = b
     · subst hab; simp
-    · simp [hab, Matrix.one_apply]
+    · simp [hab]
   rw [gram_eq, h, Matrix.mul_one]
 
 end GlobalTheory.LcvSub

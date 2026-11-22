@@ -154,12 +154,12 @@ theorem UpperTheory.Gal.CertificateRingHomMap.pSatVal_of :
   · have hz : ∀ g, (((algRep W).comp (locF hw)) g f).1 v = 0 := fun g => by
       rw [← hrep, h0, map_zero]
     have e1 : (∑ g ∈ R, ((algRep W).comp (locF hw)) g f).1 v = ∑ g ∈ R, (((algRep W).comp (locF hw)) g f).1 v := by
-      simp [AddSubmonoidClass.coe_finset_sum, LinearMap.sum_apply]
+      simp [LinearMap.sum_apply]
     rw [e1, Finset.sum_eq_zero fun g _ => hz g]
     simp [h0]
   · have h1 := (hsat v h0).2.2.2 ϖ hϖ j hj
     rw [hRe] at h1
     have e1 : (∑ g ∈ R, ((algRep W).comp (locF hw)) g f).1 v = ∑ g ∈ R, (((algRep W).comp (locF hw)) g f).1 v := by
-      simp [AddSubmonoidClass.coe_finset_sum, LinearMap.sum_apply]
+      simp [LinearMap.sum_apply]
     rw [e1, Finset.sum_congr rfl fun g _ => (hrep g v).symm, h1]
     rfl

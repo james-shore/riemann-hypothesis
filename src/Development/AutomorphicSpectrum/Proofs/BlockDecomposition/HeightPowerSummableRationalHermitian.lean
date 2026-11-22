@@ -81,7 +81,7 @@ theorem summable_height_rpow : ∀ (D : D7) (ρ : ℕ) (H : G D ρ → ℝ≥0),
       push_cast
       ring
     rw [e2]
-    simp only [hΦ, e1, MonoidHom.one_apply, OneMemClass.coe_one, NNReal.coe_mul, GlobalTheory.Doubling.npow]
+    simp only [hΦ, e1, MonoidHom.one_apply, NNReal.coe_mul, GlobalTheory.Doubling.npow]
     rw [Real.mul_rpow (NNReal.coe_nonneg _) (NNReal.coe_nonneg _), Complex.ofReal_mul,
       ← Complex.ofReal_cpow (NNReal.coe_nonneg _)]
     simp

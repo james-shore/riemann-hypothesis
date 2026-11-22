@@ -223,7 +223,7 @@ theorem freeR (n : ℕ) : ∃ (W : Type) (_ : AddCommGroup W) (_ : Module ℂ W)
     have r1 := hr p q
     have l1 := hl p q
     cases s <;> cases t <;> simp only [aR, dR, Bool.false_eq_true, if_false, if_true, sub_mul, mul_sub, add_mul, mul_add,
-      r1, l1, c1, ← c2, Prod.mk.injEq, reduceCtorEq, false_and, true_and, and_true] <;> by_cases h : p = q <;> simp [h] <;> abel
+      r1, l1, c1, ← c2, Prod.mk.injEq, reduceCtorEq, false_and, true_and] <;> by_cases h : p = q <;> simp [h] <;> abel
   · rintro ⟨s, p⟩ k t ht
     cases s
     · exact lT_mem Fil (a p) 1 (fun l z hz => hF.a_mem p l z hz) k t ht

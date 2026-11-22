@@ -43,8 +43,7 @@ theorem finYX4 (hd : d.AxH 𝒜) (h : d.S1) (c : ι) :
         (ratio (Ω := Ω c) (d.thp (hd.sel k) c) (e c)) := by
       have h1 := hp c
       first
-        | (simp only [dif_pos (rfl : c = c)] at h1; exact h1)
-        | simpa using h1
+        | (simp only at h1; exact h1)
     have hq0 := hq c
     have hKT : ∀ r : KTp K d.D d.N, d.KTtoS h c (algebraMap _ _ r) = d.sH c r := fun r => by
       simp [Data.KTtoS]
@@ -55,7 +54,6 @@ theorem finYX4 (hd : d.AxH 𝒜) (h : d.S1) (c : ι) :
         div_mul_eq_mul_div, ← Finset.sum_div, ← hpc]
       first
         | exact (mul_div_cancel_left₀ y hq0).symm
-        | field_simp
     rw [hy]
     exact Submodule.sum_mem _ fun k _ => Submodule.smul_mem _ _
       (Submodule.subset_span (Finset.mem_coe.2 (Finset.mem_image_of_mem _ (Finset.mem_univ k))))

@@ -24,7 +24,7 @@ theorem phi_mem_MMl_of_mem_Y : ∀ (O K : Type) [CommRing O] [NormedField K] [Is
   convert h2 using 1
   rw [Subalgebra.smul_def]
   funext τ i
-  simp only [Pi.smul_apply, smul_eq_mul, Subtype.coe_mk]
+  simp only [Pi.smul_apply, smul_eq_mul]
   rw [PowerSeries.smul_eq_C_mul, ← mul_assoc, ← map_mul, ← mul_pow, inv_mul_cancel₀ hl, one_pow,
     map_one, one_mul]
 

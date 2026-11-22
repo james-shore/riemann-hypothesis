@@ -12,10 +12,6 @@ theorem exists_isIdempotentElem_tmul_one_eq_of_smooth :
         ∃ a : A, IsIdempotentElem a ∧ a ⊗ₜ[R] (1 : FractionRing R) = ε := by
   first
   | exact @_root_.GlobalTheory.IdempotentTensorOne.exists_idempotent_tmul_one_eq
-  | exact _root_.GlobalTheory.IdempotentTensorOne.exists_idempotent_tmul_one_eq
-  | (apply _root_.GlobalTheory.IdempotentTensorOne.exists_idempotent_tmul_one_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IdempotentTensorOne.exists_idempotent_tmul_one_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IdempotentTensorOne.exists_idempotent_tmul_one_eq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IdempotentTensorOne.exists_idempotent_tmul_one_eq ..)
 
 end GlobalTheory

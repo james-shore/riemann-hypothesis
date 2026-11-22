@@ -35,11 +35,6 @@ theorem eq_of_map_eq {O k : Type} [CommRing O] [IsDomain O] [Field k] (f : O →
     {x y : O} (hx : x ^ M = 1) (hy : y ^ M = 1) (h : f x = f y) : x = y := by
   first
   | (rename_i h_2 h_3 h_4; revert O k h_2 h_3 h_4 f M hM x y hx hy h; exact @_root_.GlobalTheory.RootsOfUnityInjectiveInertiaEigenvalues.main)
-  | exact @_root_.GlobalTheory.RootsOfUnityInjectiveInertiaEigenvalues.main
-  | exact _root_.GlobalTheory.RootsOfUnityInjectiveInertiaEigenvalues.main
-  | (apply _root_.GlobalTheory.RootsOfUnityInjectiveInertiaEigenvalues.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RootsOfUnityInjectiveInertiaEigenvalues.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RootsOfUnityInjectiveInertiaEigenvalues.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RootsOfUnityInjectiveInertiaEigenvalues.main ..)
 
 end GlobalTheory.TameRed

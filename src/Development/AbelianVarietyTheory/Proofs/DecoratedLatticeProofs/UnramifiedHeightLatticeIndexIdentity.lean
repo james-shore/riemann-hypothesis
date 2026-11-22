@@ -52,7 +52,7 @@ theorem diag_index : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace
   rw [← Nat.cast_mul, ← Finset.prod_mul_distrib, Finset.prod_congr rfl (fun i _ => h1 i),
     Finset.prod_pow_eq_pow_sum]
   have hs : sumAbs e = ((∑ i, (e i).natAbs : ℕ) : ℤ) := by
-    unfold sumAbs; push_cast; simp [Int.natCast_natAbs]
+    unfold sumAbs; push_cast; simp
   rw [hs, zpow_natCast]
   push_cast
   rfl

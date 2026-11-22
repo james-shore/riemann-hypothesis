@@ -64,7 +64,7 @@ private theorem exists_mul_add_mul_eq_C_of_monic_irreducible {k : Type} [Field k
     mul_ne_zero (nonZeroDivisors.coe_ne_zero ca) (nonZeroDivisors.coe_ne_zero cb), ?_⟩
   apply Polynomial.map_injective _ hinj
   simp only [Polynomial.map_add, Polynomial.map_mul, Polynomial.map_C, hA, hB,
-    polynomial_smul_eq_C_algebraMap_mul, map_mul, Polynomial.C_mul]
+    polynomial_smul_eq_C_algebraMap_mul, map_mul]
   linear_combination (Polynomial.C (algebraMap (Polynomial k) (FractionRing (Polynomial k)) ca) *
     Polynomial.C (algebraMap (Polynomial k) (FractionRing (Polynomial k)) cb)) * hab
 

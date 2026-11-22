@@ -83,6 +83,5 @@ theorem szRow_TO_lower : SzRow (fun C D L => ((C.T.CP * zBase L ^ C.T.eP) ^ 4 * 
   rw [hPe, hCp]
   first
     | (rw [Real.rpow_one]; exact a.trans hT')
-    | (rw [pow_one]; exact a.trans hT')
 
 end GlobalTheory.EX

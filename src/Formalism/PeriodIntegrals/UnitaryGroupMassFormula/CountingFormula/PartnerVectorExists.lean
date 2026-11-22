@@ -19,7 +19,6 @@ theorem hT_sub_sum_left {r : ℕ} (x w : S.V) (c : Fin r → E) (y : Fin r → S
   first
   | simp [map_sub, map_sum, LinearMap.sub_apply, LinearMap.sum_apply,
       LinearMap.map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, starRingEnd_apply]
-  | simp [map_sub, map_sum, LinearMap.sub_apply, LinearMap.map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, starRingEnd_apply]
 
 theorem hT_sub_sum_right {r : ℕ} (x w : S.V) (c : Fin r → E) (y : Fin r → S.V) :
     S.hT w (x - ∑ d, c d • y d) = S.hT w x - ∑ d, c d * S.hT w (y d) := by
@@ -49,7 +48,6 @@ theorem coord_surj {r : ℕ} {T : E} (F0 : FlagG S r T) :
     intro x
     first
     | simpa [map_sum, LinearMap.sum_apply, LinearMap.map_smulₛₗ, smul_eq_mul, starRingEnd_apply, star_star] using key x
-    | simpa [map_sum, LinearMap.map_smulₛₗ, smul_eq_mul, starRingEnd_apply, star_star] using key x
   have hc : ∀ a, ψ (Pi.single a 1) = 0 := by
     intro a
     have h0 := (Fintype.linearIndependent_iff.mp F0.e_indep) _ hv a
@@ -59,7 +57,7 @@ theorem coord_surj {r : ℕ} {T : E} (F0 : FlagG S r T) :
   intro i x
   have hs : (Pi.single i x : Fin r → E) = x • (Pi.single i 1 : Fin r → E) := by
     ext j
-    by_cases h : j = i <;> simp [Pi.single_apply, h]
+    by_cases h : j = i <;> simp [h]
   rw [hs, map_smul, hc i]
   simp
 
@@ -67,7 +65,6 @@ private theorem star_hT_eq_hT_swap (x y : S.V) : star (S.hT x y) = S.hT y x := b
   have h : starRingEnd E (S.hT x y) = S.hT y x := by
     first
     | exact S.herm.eq x y
-    | exact S.herm x y
   simpa [starRingEnd_apply] using h
 
 theorem partner_exists {r : ℕ} {T : E} (F0 : FlagG S r T) (hT0 : T ≠ 0) :
@@ -109,14 +106,12 @@ theorem partner_exists {r : ℕ} {T : E} (F0 : FlagG S r T) (hT0 : T ≠ 0) :
     rw [hT_sub_sum_left]
     simp only [hf1]
     rw [hT_sub_sum_right]
-    simp only [hgeE, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+    simp only [hgeE, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
     have hs : star (c a b) = S.hT (g a) (g b) / 2 := by
       simp only [c]
       rw [← star_hT_eq_hT_swap (S := S) (g a) (g b)]
       first
       | simp [star_div₀]
-      | simp [star_div']
-      | simp
     rw [hs]
     simp only [c]
     ring

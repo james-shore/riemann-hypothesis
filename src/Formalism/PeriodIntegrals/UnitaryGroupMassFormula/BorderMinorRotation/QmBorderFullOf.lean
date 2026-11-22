@@ -22,7 +22,6 @@ private theorem bfMid_of_expLastCol_expLastRow_skipSucc_bfCross (hLC : ExpLastCo
     simp [bS]
   have hb2 : bS v es (Fin.last (t + 1)) = es := by simp [bS]
   rw [Fin.sum_univ_succ, Fin.sum_univ_castSucc] at hexp
-  beta_reduce at hexp
   rw [hb1, hb2, Fin.succ_last, hX A n t E e es v hG hB u w, UnitaryGroupMassFormula.QmBorderFull.Four.mid_comp] at hexp
   simp only [Nat.succ_eq_add_one] at hexp
   have e1 : bE e (bS (v ∘ w.succAbove) es) ∘ Fin.succ = bS (v ∘ w.succAbove) es := by
@@ -55,8 +54,8 @@ private theorem bfMid_of_expLastCol_expLastRow_skipSucc_bfCross (hLC : ExpLastCo
       Formalism.REAL.Tm E (u - ↑(t + 1) - 1) es es * E e (v x) := fun x =>
     (UnitaryGroupMassFormula.QmBorderFull.tm_comm_E E hG _ es e (v x) hees.symm (hB.2.2.2 x)).symm
   clear hexp hb1 hb2 e1 e2 e3 g1 g2 hu1 hu2 hX hLC hLR hS1 hsk
-  simp only [UnitaryGroupMassFormula.QmBorderFull.Four.zmul, mul_smul_comm, smul_mul_assoc, smul_add, smul_smul, mul_add,
-    Finset.mul_sum, Finset.smul_sum, Finset.sum_mul, mul_ite, mul_zero, smul_ite, smul_zero, mul_assoc, hT]
+  simp only [UnitaryGroupMassFormula.QmBorderFull.Four.zmul, mul_smul_comm, smul_mul_assoc, smul_smul, mul_add,
+    Finset.mul_sum, Finset.sum_mul, mul_ite, mul_zero, mul_assoc, hT]
   have k1 : ((-1 : ℤ) ^ (t + 1 + 0) * (-1) ^ ((w : ℕ) + 1)) = (-1) ^ ((w : ℕ) + 1 + (t + 1)) := by ring
   have k2 : ∀ a b : ℤ, a * (b * ((-1) ^ (w : ℕ) * (-1) ^ ((w : ℕ) + 1))) = -(a * b) := by
     intro a b

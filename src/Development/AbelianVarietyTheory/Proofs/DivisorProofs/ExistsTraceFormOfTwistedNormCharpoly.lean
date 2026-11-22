@@ -103,7 +103,7 @@ theorem exists_trace_form : ∀ (K : GlobalTheory.UnitLemma.UQ) (B : GlobalTheor
     change Sᵀ * N' = _ at h0
     rw [h0]
     ext i j
-    simp [f, hf, hε, Matrix.map_apply, Matrix.smul_apply]
+    simp [f, hε, Matrix.map_apply, Matrix.smul_apply]
     exact hf _
   have hSc : S.map K.c = ε • (Sᵀ * N') := by rw [hkey, smul_smul, hεε, one_smul]
   set Y := ((δ.val * GlobalTheory.Tw.Phi a L)ᵀ).map f with hY

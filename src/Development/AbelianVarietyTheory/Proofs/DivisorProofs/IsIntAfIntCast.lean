@@ -78,8 +78,6 @@ theorem actOn_tmul {C V : Type} [Ring C] [Algebra ℚ C] [AddCommGroup V] [Modul
   rw [Algebra.smul_def]
   first
   | exact Algebra.TensorProduct.lift_tmul _ _ _ r c
-  | (erw [Algebra.TensorProduct.lift_tmul]; rfl)
-  | rfl
 
 theorem EFA_actOn (L : Link D G) (X : AfP p ⊗[ℚ] G.C) (v w : AfP p ⊗[ℚ] VQ D) :
     EFA D (actOn L.rep (AfP p) X v) w = EFA D v (actOn L.rep (AfP p) (starT G.star (AfP p) X).unop w) := by

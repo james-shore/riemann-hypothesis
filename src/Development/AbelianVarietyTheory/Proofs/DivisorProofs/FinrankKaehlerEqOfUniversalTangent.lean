@@ -32,10 +32,10 @@ theorem finrank_kaehler_eq_of_universal_tangent :
       map_add' := fun a b => by simp
       map_smul' := fun r a => by
         funext i
-        simp [Algebra.smul_def, hψR, hψf, hsR, RingHom.algebraMap_toAlgebra] }
+        simp [Algebra.smul_def, hψR, hψf, RingHom.algebraMap_toAlgebra] }
     (fun a b => by
       funext i
-      simp [hψf, hsA, mul_comm])
+      simp [hψf, hsA])
   have hE : ∀ a, E a = (ψ a).snd := fun a => rfl
   let El : Ω[A⁄R] →ₗ[A] (Fin d → k) := E.liftKaehlerDifferential
   have hEl : ∀ a, El (KaehlerDifferential.D R A a) = (ψ a).snd := fun a => by

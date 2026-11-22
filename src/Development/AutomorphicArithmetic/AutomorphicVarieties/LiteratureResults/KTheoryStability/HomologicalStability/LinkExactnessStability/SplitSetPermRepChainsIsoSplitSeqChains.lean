@@ -29,7 +29,7 @@ theorem splitSet_chains_incl : ∀ (R : Type) [CommRing R] (n p : ℕ), Function
   have hD : ∀ c : SplitSet R n (p + 1) →₀ ℤ, (splitD R n p).hom c =
       (∑ i : Fin (p + 1), (-1 : ℤ) ^ (i : ℕ) • Finsupp.mapDomain (face R n p i) c : SplitSet R n p →₀ ℤ) := by
     intro c
-    simp [splitD, permMap, Rep.sum_hom, Rep.hom_ofHom, Rep.zsmul_hom, Rep.smul_hom,
+    simp [splitD, permMap, Rep.sum_hom, Rep.smul_hom,
       Representation.IntertwiningMap.sum_apply, Representation.IntertwiningMap.smul_apply]
   refine ⟨?_, ?_, ?_⟩
   · exact Finsupp.mapDomain_injective Subtype.val_injective

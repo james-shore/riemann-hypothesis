@@ -191,7 +191,7 @@ theorem val_blockScalar (e : (Σ a, m a) ≃ n) (a : α) (z : kˣ) :
     by_cases hb : b = a
     · subst hb
       simp [GeneralLinearGroup.scalar, diagonal_apply]
-    · simp [Pi.mulSingle_eq_of_ne hb, diagonal_apply, hb, one_apply]
+    · simp [diagonal_apply, hb, one_apply]
   · rw [blockScalar, leviEmb_apply_ne k e _ h, diagonal_apply_ne]
     intro h'
     exact h (congrArg Sigma.fst (e.injective h'))
@@ -381,7 +381,7 @@ theorem inSupport_of_flag_jac (π : Representation ℂ (GL n k) V) (f : (Σ j, c
         simp
       · rw [Pi.mulSingle_eq_of_ne hj]
         ext x y
-        rw [leviProj_apply, hu _ _ (by simp [hE, hlt, ht j hj])]
+        rw [leviProj_apply, hu _ _ (by simp [hE, ht j hj])]
         simp [one_apply]
     refine ⟨_, ⟨_, h0, rfl⟩, fun x => ?_⟩
     have h2 : Submodule.mkQ (twKer π (unipRad k f) 1) (π v x) = Submodule.mkQ _ x :=
@@ -401,7 +401,7 @@ theorem inSupport_of_flag_jac (π : Representation ℂ (GL n k) V) (f : (Σ j, c
         by_cases hj : b = j₀
         · subst hj
           simp [val_blockScalar, diagonal_apply, hE, heq, ht0]
-        · simp [Pi.mulSingle_eq_of_ne hj, diagonal_apply, hE, heq, hj, one_apply]
+        · simp [diagonal_apply, hE, heq, hj, one_apply]
       · rw [leviEmb_apply_ne k f _ hb, diagonal_apply_ne]
         intro h'
         exact hb (congrArg Sigma.fst (f.injective h'))

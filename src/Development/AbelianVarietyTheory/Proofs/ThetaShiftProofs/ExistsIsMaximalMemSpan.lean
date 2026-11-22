@@ -43,9 +43,7 @@ theorem exists_smul_mem (X : Data E r) (v : Fin r → E) : ∃ n : ℤ, n ≠ 0 
   first
   | exact @_root_.GlobalTheory.SubmoduleScalarClosure.main
   | exact _root_.GlobalTheory.SubmoduleScalarClosure.main
-  | (apply _root_.GlobalTheory.SubmoduleScalarClosure.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SubmoduleScalarClosure.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SubmoduleScalarClosure.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.SubmoduleScalarClosure.main)
   | (intros; exact _root_.GlobalTheory.SubmoduleScalarClosure.main ..)
 
 section Torus

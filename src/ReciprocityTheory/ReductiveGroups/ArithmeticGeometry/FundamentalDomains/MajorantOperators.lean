@@ -147,14 +147,14 @@ theorem gI_Bop_left {z : Frame X.Ψ r} (hz : z ∈ X.dom) (u v : X.Ψ → Fin r 
     gI z (Bop z u) v = ∑ τ, (2 * τ.1 (-X.ξ0) * hermC τ.1 X.Gm (u τ) (v τ)).re := by
   unfold gI
   refine Finset.sum_congr rfl fun τ _ => ?_
-  simp only [Bop, UnipotentCoefficientShift.Hf_smul_left, Data.Hf_eq_jp, Data.jp_smul, hermC_smul_left_embedding, X.jp_jp hz]
+  simp only [Bop, Data.Hf_eq_jp, Data.jp_smul, hermC_smul_left_embedding, X.jp_jp hz]
 
 theorem gI_Bop_right {z : Frame X.Ψ r} (hz : z ∈ X.dom) (u v : X.Ψ → Fin r → ℂ) :
     gI z u (Bop z v) = -gI z (Bop z u) v := by
   rw [gI_Bop_left hz, ← Finset.sum_neg_distrib]
   unfold gI
   refine Finset.sum_congr rfl fun τ _ => ?_
-  simp only [Bop, UnipotentCoefficientShift.Hf_smul_right, Data.Hf_eq_jp, hermC_smul_right_embedding, X.hermC_jp_jp hz, map_mul, map_neg,
+  simp only [Bop, Data.Hf_eq_jp, hermC_smul_right_embedding, X.hermC_jp_jp hz, map_mul, map_neg,
     conj_purely_imaginary_generator, neg_neg, map_ofNat]
   simp [neg_mul, mul_neg, Complex.neg_re]
 

@@ -50,7 +50,7 @@ theorem prod_mem_span {m n : ℕ} {X : Set (Fin m → k)} {Y : Set (Fin n → k)
       rw [this]; exact add_mem h h'
     | smul c y _ h =>
       have : vecMulVec x (c • y) = c • vecMulVec x y := by
-        ext i j; simp [vecMulVec_apply, Submonoid.smul_def, smul_eq_mul]
+        ext i j; simp [vecMulVec_apply]
       rw [this]; exact Submodule.smul_mem _ c h
   | zero =>
     have : vecMulVec (0 : Fin m → k) y = 0 := by ext i j; simp [vecMulVec_apply]
@@ -60,7 +60,7 @@ theorem prod_mem_span {m n : ℕ} {X : Set (Fin m → k)} {Y : Set (Fin n → k)
     rw [this]; exact add_mem h h'
   | smul c x _ h =>
     have : vecMulVec (c • x) y = c • vecMulVec x y := by
-      ext i j; simp [vecMulVec_apply, Submonoid.smul_def, smul_eq_mul]
+      ext i j; simp [vecMulVec_apply]
     rw [this]; exact Submodule.smul_mem _ c h
 
 theorem exists_ne_zero_of_mem_nhds {U : Set k} (hU : U ∈ 𝓝 (0 : k)) : ∃ t ∈ U, t ≠ 0 := by
@@ -165,7 +165,7 @@ theorem span_eq_top_left {m n : ℕ} (hn : 0 < n) {X : Set (Fin m → k)} {Y : S
   let H : Submodule 𝒪[k] (Matrix (Fin m) (Fin n) k) :=
     { carrier := {Z | ∀ j, ∑ i, Z i j * ℓ i = 0}
       add_mem' := fun {A B} hA hB j => by
-        simp only [Set.mem_setOf_eq, Matrix.add_apply, add_mul, Finset.sum_add_distrib, hA j, hB j, add_zero]
+        simp only [Matrix.add_apply, add_mul, Finset.sum_add_distrib, hA j, hB j, add_zero]
       zero_mem' := fun j => by simp
       smul_mem' := fun c A hA j => by
         have := hA j
@@ -219,7 +219,7 @@ theorem span_eq_top_right {m n : ℕ} (hm : 0 < m) {X : Set (Fin m → k)} {Y : 
   let H : Submodule 𝒪[k] (Matrix (Fin m) (Fin n) k) :=
     { carrier := {Z | ∀ i, ∑ j, Z i j * ℓ j = 0}
       add_mem' := fun {A B} hA hB i => by
-        simp only [Set.mem_setOf_eq, Matrix.add_apply, add_mul, Finset.sum_add_distrib, hA i, hB i, add_zero]
+        simp only [Matrix.add_apply, add_mul, Finset.sum_add_distrib, hA i, hB i, add_zero]
       zero_mem' := fun i => by simp
       smul_mem' := fun c A hA i => by
         have := hA i

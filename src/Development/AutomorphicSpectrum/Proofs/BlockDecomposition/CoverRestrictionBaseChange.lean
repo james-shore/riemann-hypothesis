@@ -43,7 +43,7 @@ theorem invSign_eq (τ : κ → ι) {s : Finset κ} {x : κ} (hs : Set.InjOn τ 
   have h1 := hx a ha
   have h2 := hxs a ha
   rcases lt_or_gt_of_ne h1 with h3 | h3 <;> rcases lt_or_gt_of_ne h2 with h4 | h4 <;>
-    simp [h3, h4, h3.le, h4.le, not_lt.2 h3.le, not_lt.2 h4.le]
+    simp [h3, h4, not_lt.2 h3.le, not_lt.2 h4.le]
 
 theorem image_erase_of_injOn (τ : κ → ι) {t : Finset κ} {i : κ} (hi : i ∈ t)
     (ht : Set.InjOn τ t) : (t.erase i).image τ = (t.image τ).erase (τ i) := by
@@ -57,7 +57,7 @@ theorem image_erase_of_injOn (τ : κ → ι) {t : Finset κ} {i : κ} (hi : i �
 
 theorem sign_erase (τ : κ → ι) {t : Finset κ} {i : κ} (hi : i ∈ t) (ht : Set.InjOn τ t) :
     cubeSign t i * sortSign τ (t.erase i) = sortSign τ t * cubeSign (t.image τ) (τ i) := by
-  have hs : Set.InjOn τ (t.erase i : Finset κ) := ht.mono (by simp [Finset.erase_subset])
+  have hs : Set.InjOn τ (t.erase i : Finset κ) := ht.mono (by simp)
   have hx : ∀ a ∈ t.erase i, τ a ≠ τ i := fun a ha e =>
     (Finset.mem_erase.1 ha).1 (ht (Finset.mem_erase.1 ha).2 hi e)
   have h1 : sortSign τ t = sortSign τ (t.erase i) * invSign τ (t.erase i) i := by
@@ -99,7 +99,7 @@ theorem sign_collision (τ : κ → ι) {t : Finset κ} {a b : κ} (ha : a ∈ t
   have hr' : r = (t.erase b).erase a := Finset.erase_right_comm
   have hbm : b ∈ t.erase a := Finset.mem_erase.2 ⟨hab.symm, hb⟩
   have ham : a ∈ t.erase b := Finset.mem_erase.2 ⟨hab, ha⟩
-  have hs : Set.InjOn τ (r : Finset κ) := hi.mono (by simp [hr, Finset.erase_subset])
+  have hs : Set.InjOn τ (r : Finset κ) := hi.mono (by simp [hr])
   have hx : ∀ c ∈ r, τ c ≠ τ b := fun c hc e => by
     have h1 := Finset.mem_erase.1 hc
     exact h1.1 (hi h1.2 hbm e)
@@ -154,7 +154,7 @@ theorem totalD_total (X : ∀ s, A.obj s) (t : Finset κ) :
   by_cases ht : Set.InjOn τ (t : Set κ)
   · rw [total_of_inj _ _ ht, Cube.totalD_apply, Finset.sum_image ht, map_sum, Finset.smul_sum]
     refine Finset.sum_congr rfl fun i hi => ?_
-    have hs : Set.InjOn τ (t.erase i : Finset κ) := ht.mono (by simp [Finset.erase_subset])
+    have hs : Set.InjOn τ (t.erase i : Finset κ) := ht.mono (by simp)
     rw [total_of_inj _ _ hs, map_zsmul, ← P.app_res (Finset.erase_subset i t), map_zsmul,
       Cube.res_congr A X (image_erase_of_injOn τ hi ht) _ (Finset.erase_subset _ _),
       smul_smul, smul_smul, sign_erase τ hi ht]

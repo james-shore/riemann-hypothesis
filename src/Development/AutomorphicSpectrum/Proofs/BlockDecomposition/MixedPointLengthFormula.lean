@@ -88,7 +88,7 @@ theorem isMultiHomog_X (p : Σ k, ι k) : IsMultiHomog (X p : MRing ι) (Pi.sing
       rw [Finsupp.single_apply, if_neg]
       intro e
       exact hk (congrArg Sigma.fst e).symm
-    simp [this, Pi.single_apply, hk]
+    simp [this, hk]
 
 theorem isMultiHomog_pow {f : MRing ι} {a : K → ℕ} (hf : IsMultiHomog f a) (e : ℕ) :
     IsMultiHomog (f ^ e) (e • a) := by
@@ -250,7 +250,7 @@ theorem chartMap_surjective [Finite Ω] (y : (Σ k, ι k) → Ω) (c c₀ : ∀ 
   have hyF : ∀ p, y p ∈ F := by
     intro p
     have e : y p = ratioCoord y c p * (ratioCoord y c ⟨p.1, c₀ p.1⟩)⁻¹ := by
-      simp only [ratioCoord, h₁, mul_one, mul_inv, inv_inv]
+      simp only [ratioCoord, h₁, mul_one, inv_inv]
       field_simp [hc p.1]
     rw [e]
     exact F.mul_mem (hmem p) (F.inv_mem (hmem _))
@@ -291,7 +291,7 @@ theorem charOf_mCoordIdeal {K : Type} [Fintype K] {ι : K → Type} [∀ k, Fint
     rw [Ideal.mem_comap, Ideal.mem_span_singleton, ← CharP.intCast_eq_zero_iff Ω p]
     change mConeMap y (C a) = 0 ↔ _
     have : mConeMap y (C a) = C (a : Ω) := by
-      simp [mConeMap, MvPolynomial.algebraMap_eq]
+      simp [mConeMap]
     rw [this, MvPolynomial.C_eq_zero]
   have := Submodule.IsPrincipal.span_singleton_generator ((mCoordIdeal y).comap (C : ℤ →+* MRing ι))
   rw [charOf]

@@ -157,8 +157,7 @@ private theorem exists_invPt_mul_eq_invPt_mul_of_mem_GQ (V : HSp D) {γ : GA D V
     ∃ A : GL (Fin V.rank) D.host.E, ∀ (g : GA D V) {a : ℕ} (ξ : Matrix (Fin V.rank) (Fin a) D.host.E),
       GlobalTheory.SiegelFormula.invPt V (γ * g) ξ =
         GlobalTheory.SiegelFormula.invPt V g ((A : Matrix (Fin V.rank) (Fin V.rank) D.host.E) * ξ) := by
-  simp only [GQ, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.HFinIn, Subgroup.mem_subgroupOf, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.HFin,
-    Subgroup.mem_map] at hγ
+  simp only [GQ, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.HFinIn, Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.HFin] at hγ
   obtain ⟨g0, -, hg0⟩ := hγ
   refine ⟨g0⁻¹, fun g a ξ => ?_⟩
   have key : ((Formalism.L2.Theta.matHom V γ⁻¹ : GL _ _) : Matrix _ _ _) =

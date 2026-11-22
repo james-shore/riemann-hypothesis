@@ -25,7 +25,7 @@ theorem llPos_lt (j : ℤ) (l l' : ℕ) (hll : l < l') (hl' : l' < (Fr.LLset j).
   have e : ∀ k (hk : k < (Fr.LLset j).card), ((Fr.LLset j).sort (· ≤ ·)).getD k 0 =
       ((Fr.LLset j).sort (· ≤ ·))[k]'(by rw [hlen]; exact hk) := by
     intro k hk
-    simp [List.getD_eq_getElem?_getD, List.getElem?_eq_getElem, hlen, hk]
+    simp [List.getD_eq_getElem?_getD, hlen, hk]
   rw [e l (by omega), e l' hl']
   exact hs (a := ⟨l, by rw [hlen]; omega⟩) (b := ⟨l', by rw [hlen]; exact hl'⟩) hll
 
@@ -41,7 +41,7 @@ private theorem llPos_mem_LLset' (j : ℤ) (l : ℕ) (hl : l < (Fr.LLset j).card
   have hlen : ((Fr.LLset j).sort (· ≤ ·)).length = (Fr.LLset j).card := Finset.length_sort _
   have e : ((Fr.LLset j).sort (· ≤ ·)).getD l 0 =
       ((Fr.LLset j).sort (· ≤ ·))[l]'(by rw [hlen]; exact hl) := by
-    simp [List.getD_eq_getElem?_getD, List.getElem?_eq_getElem, hlen, hl]
+    simp [List.getD_eq_getElem?_getD, hlen, hl]
   rw [e, ← Finset.mem_sort (· ≤ ·)]
   exact List.getElem_mem _
 

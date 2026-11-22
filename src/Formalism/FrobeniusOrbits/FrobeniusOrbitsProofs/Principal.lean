@@ -20,14 +20,12 @@ variable {e q d : ℕ} {L : Type} [Field L] [NumberField L] {ζ a b : L}
 theorem bE_mem_KinE (ζ a b : L) : bE ζ a b ∈ KinE ζ a b := by
   first
   | exact IntermediateField.mem_adjoin_simple_self ℚ (bE ζ a b)
-  | (unfold KinE; exact IntermediateField.mem_adjoin_simple_self ℚ _)
 
 theorem galE_restrict_mem_Psi (σ : hostE ζ a b ≃ₐ[KinE ζ a b] hostE ζ a b) :
     galE e ζ a b (σ.restrictScalars ℚ) ∈ Psi e := by
   have h1 : (σ.restrictScalars ℚ) (bE ζ a b) = bE ζ a b := by
     first
     | exact σ.commutes ⟨bE ζ a b, bE_mem_KinE ζ a b⟩
-    | simpa using σ.commutes ⟨bE ζ a b, bE_mem_KinE ζ a b⟩
   rw [Psi, MonoidHom.mem_ker]
   simp [chD, galE, sgn, h1]
 
@@ -107,7 +105,6 @@ theorem comm_of (hqd : HypOdd q d) (h : IsLayer (e + 2) q d ζ a b) (σ : (hostE
   have h1 := congrArg (fun φ : (hostE ζ a b) ≃ₐ[ℚ] (hostE ζ a b) => φ x) hc
   first
   | exact h1
-  | simpa using h1
 
 theorem comm_symm (σ : (hostE ζ a b) ≃ₐ[ℚ] (hostE ζ a b))
     (hc : ∀ (τ : (hostE ζ a b) ≃ₐ[KinE ζ a b] (hostE ζ a b)) (x : (hostE ζ a b)), σ (τ x) = τ (σ x))
@@ -135,8 +132,6 @@ theorem mem_dual_iff (hqd : HypOdd q d) (h : IsLayer (e + 2) q d ζ a b) (y : (h
     fun w => by
       first
       | exact trace_eq_sum_automorphisms w
-      | exact Algebra.trace_eq_sum_automorphisms w
-      | exact IsGalois.trace_eq_sum_automorphisms w
   have hint : ∀ t : KinE ζ a b, IsIntegral ℤ (algebraMap (KinE ζ a b) (hostE ζ a b) t) ↔
       t ∈ (algebraMap (𝓞 (KinE ζ a b)) (KinE ζ a b)).range := by
     intro t
@@ -194,8 +189,6 @@ theorem mem_diff_iff (hqd : HypOdd q d) (h : IsLayer (e + 2) q d ζ a b) (z : �
   rw [hz]
   first
   | rw [coeIdeal_differentIdeal (𝓞 (KinE ζ a b)) (KinE ζ a b) (hostE ζ a b) (𝓞 (hostE ζ a b))]
-  | rw [coeIdeal_differentIdeal (𝓞 (KinE ζ a b)) (KinE ζ a b)]
-  | rw [coeIdeal_differentIdeal]
   rw [FractionalIdeal.mem_inv_iff hd0]
   constructor
   · intro hmem y hy
@@ -207,7 +200,6 @@ private theorem coe_powerSeries_smul_eq_smul (σ : (hostE ζ a b) ≃ₐ[ℚ] (h
     ((σ • z : 𝓞 (hostE ζ a b)) : hostE ζ a b) = σ (z : hostE ζ a b) := by
   first
   | rfl
-  | simp
 
 theorem dual_smul (σ : (hostE ζ a b) ≃ₐ[ℚ] (hostE ζ a b))
     (hc : ∀ (τ : (hostE ζ a b) ≃ₐ[KinE ζ a b] (hostE ζ a b)) (x : (hostE ζ a b)), σ (τ x) = τ (σ x)) (y : (hostE ζ a b))

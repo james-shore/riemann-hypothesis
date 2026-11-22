@@ -79,7 +79,7 @@ theorem UpperTheory.V.Fr.pr_norm2 :
     have h0 : p (A i j) = 0 := by
       have := hAI i j
       rwa [RingHom.mem_ker] at this
-    simp only [Units.val_mk, Matrix.map_apply, Matrix.add_apply, map_add, h0, add_zero,
+    simp only [Matrix.map_apply, Matrix.add_apply, map_add, h0, add_zero,
       Matrix.one_apply]
     split_ifs <;> simp
   · apply Units.ext

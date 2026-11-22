@@ -280,10 +280,10 @@ theorem swap_perm_eq_elementary_product (x y : Fin r) (hxy : x ≠ y) :
       (1 + Matrix.single y y (-2)) := by
   have hyx : y ≠ x := Ne.symm hxy
   simp only [add_mul, mul_add, mul_one, one_mul, Matrix.single_mul_single_same,
-    Matrix.single_mul_single_of_ne, ne_eq, hxy, hyx, not_false_eq_true, add_zero, zero_add]
+    Matrix.single_mul_single_of_ne, ne_eq, hxy, not_false_eq_true, add_zero]
   ext i j
   simp only [t2wPm, Matrix.of_apply, Matrix.add_apply, Matrix.one_apply, Matrix.single_apply,
-    Matrix.zero_apply, Equiv.swap_apply_def]
+    Equiv.swap_apply_def]
   by_cases hi : i = x <;> by_cases hj : j = x <;> by_cases hi' : i = y <;> by_cases hj' : j = y <;>
     simp_all [eq_comm] <;> ring_nf
 
@@ -536,7 +536,7 @@ theorem prod_rows_pow_row_weight (d : Fin r → R) (m : Fin r × Fin n →₀ �
     Formalism.GradedWeylDivisibility.rowW, ← Finset.prod_pow_eq_pow_sum]
   rw [Finset.prod_comm]
   refine Finset.prod_congr rfl fun v _ => ?_
-  rw [Finset.prod_eq_single v.1 (fun b _ hb => by simp [Pi.single_apply, hb]) (by simp)]
+  rw [Finset.prod_eq_single v.1 (fun b _ hb => by simp [hb]) (by simp)]
   simp
 
 theorem row_action_diagonal_homogeneous (d : Fin r → R) (f : MvPolynomial (Fin r × Fin n) R) (μ : Fin r → ℕ)
@@ -578,7 +578,7 @@ theorem length_quotient_dvr_basis (R : Type) [CommRing R] [IsDomain R] [IsDiscre
     · rw [Submodule.span_le]
       rintro _ ⟨_, ⟨i, rfl⟩, rfl⟩
       intro j _
-      simp only [LinearEquiv.coe_coe, map_smul, Module.Basis.equivFun_self, Pi.smul_apply, Pi.single_apply, smul_eq_mul]
+      simp only [LinearEquiv.coe_coe, map_smul, Module.Basis.equivFun_self, Pi.smul_apply, smul_eq_mul]
       split_ifs with h
       · subst h; rw [mul_one]; exact Ideal.mem_span_singleton_self _
       · rw [mul_zero]; exact Submodule.zero_mem _
@@ -655,7 +655,7 @@ theorem prod_update_pow_alt {R : Type} [CommRing R] (j : Fin r) (p : R) (μ : Fi
   rw [Finset.prod_eq_single j]
   · simp
   · intro b _ hb
-    simp [Function.update_apply, hb]
+    simp [hb]
   · intro h
     exact absurd (Finset.mem_univ j) h
 

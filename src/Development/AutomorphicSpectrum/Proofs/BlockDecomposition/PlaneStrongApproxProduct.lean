@@ -24,7 +24,7 @@ theorem trunc_mul {d : R} (hd : d * d = d) (A B : Matrix n n R) :
     rw [Matrix.smul_mul, Matrix.mul_smul, smul_smul, hd]
   unfold trunc
   rw [Matrix.add_mul, Matrix.mul_add, Matrix.mul_add, h]
-  simp only [Matrix.one_mul, Matrix.mul_one, Matrix.sub_mul, Matrix.mul_sub, smul_sub, smul_add]
+  simp only [Matrix.one_mul, Matrix.mul_one, Matrix.sub_mul, Matrix.mul_sub, smul_sub]
   abel
 
 theorem cT_trunc (c : R →+* R) {d : R} (hc : c d = d) (A : Matrix n n R) :

@@ -418,7 +418,6 @@ theorem GlobalTheory.CovGmin.span_thFam : ∃ C : ℝ, 0 ≤ C ∧ ∀ (D : D7) 
       first
         | rfl
         | exact (Nat.cast_smul_eq_nsmul _ _ _).symm
-        | simp
   have hχ : ∀ a n, Dom a n → ∀ k, GlobalTheory.Dict.ChiOne ((Y.U σ₀).X k) (laU (Y.U σ₀) a n k) :=
     fun a n hd k ga hga => hG.chiTriv σ₀ hσ₀ a n hd k ga hga
   have hbad : 0 < badC Y := by

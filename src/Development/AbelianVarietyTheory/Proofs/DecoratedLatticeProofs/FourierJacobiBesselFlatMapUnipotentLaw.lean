@@ -67,7 +67,7 @@ theorem unip_law : ∀ (D : D7), GlobalTheory.FinPl.FlatLaws D → OmLoc D → �
   have hΦ'' : Φ'.1 = (((μS * μT⁻¹) (Matrix.GeneralLinearGroup.det (1 : GL (n' ⊕ Fin (c + 1)) k)) : ℂˣ) : ℂ) •
       om μS⁻¹ 1 (embA n u) Φ.1 := by
     funext t
-    simp only [om, hdet, map_one, Units.val_one, nabs, Real.one_rpow, inv_one, one_mul, one_smul, Pi.smul_apply,
+    simp only [om, hdet, map_one, Units.val_one, nabs, inv_one, one_mul, one_smul, Pi.smul_apply,
       Matrix.mul_one, hΦ t]
     norm_num
   have hω := hOm k p ψ J.W B.V st.χV st.χW st.om st.weil μS μT hμS hμT (n ⊕ Fin c) (n' ⊕ Fin (c + 1)) FW FV Tm hTm

@@ -92,7 +92,6 @@ theorem onLetter_apply (i : L) (β : Fin r →₀ ℕ) (j : L) (a : Fin r) :
       exact h (congrArg Prod.fst hb).symm
     first
       | exact Finsupp.mapDomain_of_notMem_range _ _ hne
-      | exact Finsupp.mapDomain_notin_range _ _ hne
 
 def letE (α : L × Fin r →₀ ℕ) (i : L) : Fin r →₀ ℕ := Finsupp.equivFunOnFinite.symm fun a => α (i, a)
 
@@ -150,7 +149,7 @@ theorem der' (hDER : DER K v p) (hD : DVRHyp v p) (r g : ℕ) (M : Fin r →₀ 
     ext a
     have hm := Nat.mod_add_div (η a) (p ^ g)
     simp [divE_apply, hρf]
-    all_goals first | exact hm.symm | omega
+    all_goals first | exact hm.symm
   have hterm : ∀ t, monomial (ρ' ρf t) (cf ρf t) * expand (p ^ g) (monomial (δ ρf t) (1 : K) *
       ddiv (κ ρf t) (monomial (divE (p ^ g) η) (1 : K))) =
       monomial (ρ' ρf t + p ^ g • (δ ρf t + (divE (p ^ g) η - κ ρf t)))
@@ -450,8 +449,6 @@ theorem liftE_new (hP : 0 < D.P p t) (α : D.EA) (ρ1 δ1 κ1 : Fin D.r →₀ �
       simp [liftE_apply_eq_sum_elim, Formalism.MainNotions.PlaneGram.offE_apply, onLetter_apply, mw]
       first
         | (rw [← mul_add, Nat.add_mul_div_left _ _ hP]; omega)
-        | (rw [Nat.add_mul_div_left _ _ hP]; omega)
-        | omega
     · simp [liftE_apply_eq_sum_elim, Formalism.MainNotions.PlaneGram.offE_apply, onLetter_apply, mw, h]
   · simp [liftE_apply_eq_sum_elim, Formalism.MainNotions.PlaneGram.offE_apply, onLetter_apply, mw]
 

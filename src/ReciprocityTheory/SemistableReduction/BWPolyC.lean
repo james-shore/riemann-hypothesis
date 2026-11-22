@@ -61,15 +61,14 @@ theorem bwp_finite_det_id_line {p : ℕ} (z : Fin p × Fin p → ℂ) :
   ext i j
   by_cases h : i = j
   · subst h
-    simp [Matrix.charmatrix_apply, bwpMat, bwpId, Matrix.diagonal_apply]
+    simp [bwpMat, bwpId]
     ring
-  · simp [Matrix.charmatrix_apply, bwpMat, bwpId, Matrix.diagonal_apply, h]
+  · simp [bwpMat, bwpId, h]
 
 theorem bwp_continuous_of_matrix {p : ℕ} :
     Continuous (fun y : Fin p → Fin p → ℂ => Matrix.of y) := by
   first
     | exact continuous_id
-    | exact continuous_pi fun i => continuous_pi fun j => (continuous_apply j).comp (continuous_apply i)
 
 theorem bwp_exists_bound_unitary {p : ℕ} (P : Matrix (Fin p) (Fin p) ℂ → ℂ) (hP : IsHoloGL P) :
     ∃ C : ℝ, ∀ U ∈ Matrix.unitaryGroup (Fin p) ℂ, ‖P U‖ ≤ C := by
@@ -88,8 +87,6 @@ theorem bwp_exists_bound_unitary {p : ℕ} (P : Matrix (Fin p) (Fin p) ℂ → �
       (pi_norm_le_iff_of_nonneg zero_le_one).mpr fun j => ?_
     first
       | exact entry_norm_bound_of_unitary hU i j
-      | exact Matrix.UnitaryGroup.entry_norm_bound hU i j
-      | exact Matrix.norm_entry_le_one_of_unitary hU i j
   have hK : IsCompact S := Metric.isCompact_of_isClosed_isBounded hcl hbd
   have hsub : S ⊆ {y | (Matrix.of y).det ≠ 0} := fun y hy => by
     have h := congrArg Matrix.det (show Matrix.conjTranspose (Matrix.of y) * Matrix.of y = 1 from hy)
@@ -151,7 +148,6 @@ theorem bwp_line_poly (hH : LemmaHStatement) (hO : OnePolyGrowthStatement) {p : 
         cases s
         first
           | simp only [Function.update_self]
-          | simp only [Function.update_same]
         exact hT (x ()) b (hx ()) hb htri)
       (fun k hk => hC (k ()) (hk ())) hR (fun _ => bwpMat (z + t • v)) (fun _ => hdet)
       (fun _ j => hcol j)

@@ -145,7 +145,7 @@ private theorem core (Q : Scheme.{0} → Prop) (hQ : ∀ {V U : Scheme.{0}}, (V 
   refine ⟨Sec.map ((inl φ).v n (n - 1) (by omega)) a₂ - Sec.map ((inr φ).f (n - 1)) c₂ -
     Sec.res t (Sec.map ((inl φ).v n (n - 1) (by omega)) a), ?_⟩
   rw [res_comp, hdec, ms_sub, ms_sub, d_inl φ n a₂ ha₂, d_inr, ← sm_res, hdc1, hφ, hy']
-  simp only [sm_res, res_add, map_sub, map_add]
+  simp only [sm_res, map_sub, map_add]
   abel
 
 end UpperTheory.ConeLoc

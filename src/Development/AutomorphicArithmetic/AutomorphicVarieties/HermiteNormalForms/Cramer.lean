@@ -38,7 +38,7 @@ theorem UpperTheory.V.KT.cramer :
   intro N G c hG hd hc a
   have hs : ∀ (i : Fin N) (v : Fin N → ℂ), star (Pi.single i (1 : ℂ) : Fin N → ℂ) ⬝ᵥ v = v i := by
     intro i v
-    simp [← Pi.single_star]
+    simp
   have he : ∀ i j : Fin N, star (Pi.single i (1 : ℂ) : Fin N → ℂ) ⬝ᵥ
       (G *ᵥ (Pi.single j (1 : ℂ) : Fin N → ℂ)) = G i j := by
     intro i j

@@ -16,7 +16,7 @@ variable {E : Type} [Field E] [NumberField E] [StarRing E]
 
 theorem exists_smul_mem {S : HSpace E} (Λ : Submodule (𝓞 E) S.V) (hΛ : Submodule.IsLattice E Λ)
     (v : S.V) : ∃ c : 𝓞 E, c ≠ 0 ∧ c • v ∈ Λ := by
-  first | exact Bl.general_b_fact_left_alt.goal1 .. | (apply Bl.general_b_fact_left_alt.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_left_alt.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_alt.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_left_alt.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_alt.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_left_alt.goal1 .. | (apply Bl.general_b_fact_left_alt.goal1 <;> assumption)
 
 theorem finrank_orth_add_le (S : HSpace E) {ι : Type} [Fintype ι] (u : ι → S.V)
     (hu : LinearIndependent E u) (U : Submodule E S.V) (hU : ∀ i, u i ∈ U) :

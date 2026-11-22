@@ -62,7 +62,7 @@ theorem eq_zero_of_vecMul_eq_zero {q : ℕ} {κ : Type*} [Fintype κ]
     simp only [Module.finrank_fintype_fun_eq_card, Fintype.card_fin] at h0
     exact Submodule.finrank_eq_zero.mp (by omega)
   have hm : y ∈ LinearMap.ker Fᵀ.mulVecLin := by
-    simp [Matrix.mulVec_transpose, hy]
+    simp [hy]
   rw [hk] at hm
   simpa using hm
 

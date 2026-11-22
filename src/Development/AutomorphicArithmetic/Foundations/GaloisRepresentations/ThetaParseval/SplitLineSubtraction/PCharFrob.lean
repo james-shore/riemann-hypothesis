@@ -19,7 +19,7 @@ theorem charFrob_holds : CharFrob := by
   · have h1 : μ s = 1 := (h.unr_iff ha hv hA).mpr hu s hs
     simp [rk1, h1]
   · have h1 : ((μ σ : (Qbar l)ˣ) : Qbar l) = (ι.symm ((χ.val w : ℂˣ) : ℂ))⁻¹ := h.frob_unr ha hv hu hA hσ
-    simp [rk1, Matrix.charpoly, Matrix.det_fin_one, h1, Polynomial.map_sub]
+    simp [rk1, Matrix.charpoly, h1, Polynomial.map_sub]
 
 end UpperTheory.Gal.TP.Sub
 

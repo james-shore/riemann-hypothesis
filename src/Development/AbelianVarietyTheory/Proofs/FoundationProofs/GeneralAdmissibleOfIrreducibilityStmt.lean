@@ -29,8 +29,6 @@ theorem span_eq_top_of_trace_eq {Γ K : Type} [Monoid Γ] [Field K] {n : ℕ}
   | exact @_root_.GlobalTheory.TraceFormNondegenerate.span_eq_top_of_trace_eq
   | exact _root_.GlobalTheory.TraceFormNondegenerate.span_eq_top_of_trace_eq
   | (apply _root_.GlobalTheory.TraceFormNondegenerate.span_eq_top_of_trace_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TraceFormNondegenerate.span_eq_top_of_trace_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TraceFormNondegenerate.span_eq_top_of_trace_eq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TraceFormNondegenerate.span_eq_top_of_trace_eq ..)
 
 theorem trace_eq_of_charpoly_eq {K : Type} [Field K] {n : ℕ} {A B : Matrix (Fin n) (Fin n) K}

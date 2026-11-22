@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.projective_baseChange_of_presentation_matrix_split
     (∀ b l, ∑ a, algebraMap R B (r b a) * v a l = 0) →
     (∀ a l, v a l = (if a = l then 1 else 0) + ∑ b, w a b * algebraMap R B (r b l)) →
     Module.Projective B (B ⊗[R] M) := by
-  first | (exact @GlobalTheory.projective_baseChange_of_presentation_split) | (exact GlobalTheory.projective_baseChange_of_presentation_split) | (intros; apply GlobalTheory.projective_baseChange_of_presentation_split <;> assumption)
+  first | (exact @GlobalTheory.projective_baseChange_of_presentation_split)

@@ -102,7 +102,7 @@ theorem metaplecticRepresentation_holds : GlobalTheory.Published.MetaplecticRepr
     refine ⟨c, by rw [hP]; exact hc, ?_⟩
     ext x
     rw [hω, e.apply_symm_apply, hes, hcx, SchwartzMap.smul_apply, smul_eq_mul, hφ₀]
-    simp only [PiLp.toLp_apply]
+    simp only
     rw [hq x]
 
 end GlobalTheory

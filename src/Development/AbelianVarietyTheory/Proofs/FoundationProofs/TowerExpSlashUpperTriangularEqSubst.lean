@@ -25,7 +25,7 @@ theorem exp_sl_upper (Ω : Type) [Field Ω] [Algebra ℚ Ω] (ε : Ω →+* ℂ)
   rw [dif_pos hpos]
   set e := (OrderIso.mulLeft₀ (ent g 0 0 / ent g 1 1) hpos).toOrderEmbedding with he
   have hs : s = e (s * ent g 1 1 / ent g 0 0) := by
-    simp only [he, RelIso.coe_toRelEmbedding, OrderIso.coe_toOrderEmbedding, OrderIso.mulLeft₀_apply]
+    simp only [he, OrderIso.coe_toOrderEmbedding, OrderIso.mulLeft₀_apply]
     field_simp
   rw [hs, HahnSeries.embDomain_coeff]
   have key := X.exp_upper g hg f (s * ent g 1 1 / ent g 0 0)

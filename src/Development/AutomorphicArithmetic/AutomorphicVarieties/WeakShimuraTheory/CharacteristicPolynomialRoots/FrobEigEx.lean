@@ -10,7 +10,7 @@ private theorem frob_back {F Ω : Type} [Field F] [NumberField F] [Field Ω] [Al
     rw [valuation_lt_one_iff', valuation_lt_one_iff',
       ValuationSubring.mem_pointwise_smul_iff_inv_smul_mem,
       ValuationSubring.mem_pointwise_smul_iff_inv_smul_mem]
-    simp [AlgEquiv.smul_def, map_inv₀]
+    simp [AlgEquiv.smul_def]
   refine ⟨?_, fun x hx => ?_⟩
   · have hs : σ • g • A = g • A := hσ.1
     show (g⁻¹ * σ * g) • A = A

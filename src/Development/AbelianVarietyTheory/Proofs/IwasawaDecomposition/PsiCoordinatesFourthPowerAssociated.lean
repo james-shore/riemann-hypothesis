@@ -43,7 +43,7 @@ theorem gm_top {Z : Scheme.{0}} (q : Z ⟶ Spec (CommRingCat.of R)) (z : Z) {V :
     (hV : ⊤ ≤ V) (g : Γ(Spec (CommRingCat.of R), V)ˣ) : ∃ u : Rˣ, (gm q z V g).val = cst q z (u : R) := by
   refine ⟨Units.map (Scheme.ΓSpecIso (CommRingCat.of R)).hom.hom.toMonoidHom (res hV g), ?_⟩
   rw [← gm_res q z hV trivial g, ← gs_unit q z ⊤ trivial]
-  simp only [cst, Units.coe_map, MonoidHom.coe_coe]
+  simp only [cst, Units.coe_map]
   congr 1
   change _ = ((Scheme.ΓSpecIso (CommRingCat.of R)).hom ≫ (Scheme.ΓSpecIso (CommRingCat.of R)).inv).hom _
   rw [Iso.hom_inv_id]

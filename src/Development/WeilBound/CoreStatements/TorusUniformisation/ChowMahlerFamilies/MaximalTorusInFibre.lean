@@ -123,7 +123,7 @@ theorem surj_of_inj (φ : Y →+ X)
     refine MonoidHom.ext fun y => Units.ext ?_
     have hy : (QuotientAddGroup.mk' φ.range) (φ (Multiplicative.toAdd y)) = 0 :=
       (QuotientAddGroup.eq_zero_iff _).mpr ⟨_, rfl⟩
-    simp [θ, univ, AddMonoidAlgebra.one_def, AddMonoidAlgebra.of_apply, hy]
+    simp [θ, univ, AddMonoidAlgebra.one_def, hy]
   intro x
   have h3 := congrArg (fun f => ((f (Multiplicative.ofAdd x) : (AddMonoidAlgebra K Q)ˣ) :
     AddMonoidAlgebra K Q)) hθ

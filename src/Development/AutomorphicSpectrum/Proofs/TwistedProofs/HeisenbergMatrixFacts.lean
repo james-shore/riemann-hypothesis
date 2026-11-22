@@ -287,13 +287,13 @@ theorem heis_ml (i : Fin N) : heisMat r b c (mid i) (Fin.last (N + 1)) = b i := 
 
 theorem heisenberg_last_first_zero : heisMat r b c (Fin.last (N + 1)) 0 = 0 := by
   have h0 : (0 : Fin (N + 2)) ≠ Fin.last (N + 1) := fun h => last_ne_zero h.symm
-  simp [heisMat, h0, last_ne_zero]
+  simp [heisMat, h0]
 
 theorem heis_lm (j : Fin N) : heisMat r b c (Fin.last (N + 1)) (mid j) = 0 := by
-  simp [heisMat, last_ne_zero, mid_ne_last j, (mid_ne_last j).symm]
+  simp [heisMat, mid_ne_last j, (mid_ne_last j).symm]
 
 theorem heis_ll : heisMat r b c (Fin.last (N + 1)) (Fin.last (N + 1)) = 1 := by
-  simp [heisMat, last_ne_zero]
+  simp [heisMat]
 
 end Values
 
@@ -329,23 +329,23 @@ theorem heis_unitary (hσσ : ∀ x, σ (σ x) = x) (r b : Fin N → L) (c : L) 
   · simp [heisenberg_last_first_zero, heisenberg_middle_first_zero, heis_00, heis_lm, mid_ne_last q]
   · simp [heisenberg_last_first_zero, heisenberg_middle_first_zero, heis_00, heis_ll]
   · simp only [heis_lm, heis_mm, heisenberg_middle_first_zero, heis_0m, heisenberg_last_first_zero, map_zero, zero_mul, mul_zero,
-      zero_add, add_zero, Finset.sum_const_zero, Fin.rev_zero]
+      add_zero, Finset.sum_const_zero]
     rw [if_neg (mid_ne_zero _).symm]
   · simp only [heis_lm, heis_mm, heis_0m, map_zero, zero_mul, mul_zero, zero_add, add_zero, hσδ p]
     simp only [mid_injective.eq_iff]
     by_cases h : q = p.rev
     · subst h
       simp [Matrix.one_apply]
-    · simp [Matrix.one_apply, h, Ne.symm h]
+    · simp [Matrix.one_apply, h]
   · simp only [heis_lm, heis_ml, heis_mm, heis_0m, heis_ll, heis_0l, hσδ p, map_zero, zero_mul, zero_add, mul_one]
     rw [if_neg (mid_ne_last _).symm]
     simp [Matrix.one_apply, hb, Fin.rev_rev]
   · simp [heis_ll, heis_00, heis_ml, heisenberg_middle_first_zero, heis_0l, heisenberg_last_first_zero]
   · simp only [heis_ll, heis_0m, heis_ml, heis_mm, heis_0l, heis_lm, map_one, one_mul, mul_zero,
-      add_zero, hbσ, Fin.rev_last]
+      add_zero, hbσ]
     rw [if_neg (mid_ne_zero _)]
     simp [Matrix.one_apply]
-  · simp only [heis_ll, heis_0l, heis_ml, map_one, one_mul, mul_one, hbσ, Fin.rev_last]
+  · simp only [heis_ll, heis_0l, heis_ml, map_one, one_mul, mul_one, hbσ]
     rw [if_neg last_ne_zero]
     simp only [hb, neg_mul_neg]
     linear_combination hc

@@ -28,8 +28,6 @@ theorem norm_sum_le_of_le {p : ℕ} [Fact p.Prime] {ι : Type} (s : Finset ι) (
   | exact @_root_.GlobalTheory.SingleStatement.main
   | exact _root_.GlobalTheory.SingleStatement.main
   | (apply _root_.GlobalTheory.SingleStatement.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SingleStatement.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SingleStatement.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SingleStatement.main ..)
 
 section Core

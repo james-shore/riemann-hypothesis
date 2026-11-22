@@ -142,8 +142,7 @@ theorem pairing_mem_intAt (q : SplitPt D k) {ρ : ℕ} (B : BesLev D ρ) {n : Ty
       field_simp
     have h := (FrameLat.csec_mem_iff hM _).1 hx _ hz
     convert h using 1
-    simp only [FrameLat.pairing, FrameLat.row, map_sum, map_mul, FrameLat.cA_incA, star_sum, star_mul,
-      Pi.star_apply, star_star]
+    simp only [FrameLat.pairing, FrameLat.row, map_sum, map_mul, FrameLat.cA_incA, star_star]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun i _ => ?_
     rw [Finset.sum_mul]
@@ -241,7 +240,7 @@ theorem normalFr_incAdj_yZero_mem_latO_iff : ∀ {D : D7} (ψ : AddChar (AF D.ho
       rw [Finset.sum_comm]
       exact Finset.sum_congr rfl fun b _ => Finset.sum_congr rfl fun c _ => by ring
     simp only [map_mul, map_add, GlobalTheory.LastPrimSplit.pr_e, pr_cA_e, GlobalTheory.LocSympl.conj_conj, FrameLat.cA_incA, hzz, hpz,
-      add_zero, zero_add, mul_one, one_mul] at h3 h4
+      add_zero, zero_add, one_mul] at h3 h4
     rw [GlobalTheory.SplitLine.mem_intAt_iff_pr l.q ht]
     rw [Valuation.mem_integer_iff] at h3 h4
     rw [map_mul, map_mul, hxiv, hhz1, mul_one, mul_one] at h3

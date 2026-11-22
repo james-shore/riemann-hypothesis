@@ -158,7 +158,7 @@ theorem twisted_unit_eq_unit : ∀ (K : UQ) (B : InvAlg K), B.g * B.σ B.g = 1 �
   have hgg : B.σ B.g * B.g = 1 := by rw [mul_comm]; exact hg
   have hgad : B.g ∈ Algebra.adjoin K.O {B.σ B.g} := mem_adjoin_of_mul_eq_one hgg hi
   ext L
-  simp only [Set.mem_setOf_eq, InvAlg.X, InvAlg.herm, Units.val_mul, ← hT, ← hR]
+  simp only [Set.mem_setOf_eq, InvAlg.X, InvAlg.herm, ← hT, ← hR]
   constructor
   · rintro ⟨hLat, hU⟩
     have h1 : ∀ y ∈ L, B.σ B.g * y ∈ L := by

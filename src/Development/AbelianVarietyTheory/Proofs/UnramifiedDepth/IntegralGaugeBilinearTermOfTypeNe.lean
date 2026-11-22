@@ -261,7 +261,7 @@ theorem coeff_bexp_mul_X (f : MvPowerSeries (Fin 2 × κ) C) (s t y : κ) :
     rw [bexp, if_pos (le_add_self), if_pos rfl, mul_one, add_tsub_cancel_right]
   · rw [if_neg hy, if_neg]
     rw [Finsupp.single_le_iff]
-    simp [bexp, Finsupp.single_apply, Ne.symm hy]
+    simp [bexp, Ne.symm hy]
 
 theorem coeff_bexp_X_mul (f : MvPowerSeries (Fin 2 × κ) C) (s t x : κ) :
     coeff (bexp s t) (X (0, x) * f) = if x = s then coeff (Finsupp.single (1, t) 1) f else 0 := by
@@ -271,7 +271,7 @@ theorem coeff_bexp_X_mul (f : MvPowerSeries (Fin 2 × κ) C) (s t x : κ) :
     rw [bexp, if_pos (le_self_add), if_pos rfl, one_mul, add_tsub_cancel_left]
   · rw [if_neg hy, if_neg]
     rw [Finsupp.single_le_iff]
-    simp [bexp, Finsupp.single_apply, Ne.symm hy]
+    simp [bexp, Ne.symm hy]
 
 theorem two_le_order_hAt (h : RLaw Y V) {τ : Type} {a b : κ → MvPowerSeries τ C}
     (ha : ∀ x, constantCoeff (a x) = 0) (hb : ∀ x, constantCoeff (b x) = 0) (e : τ →₀ ℕ)

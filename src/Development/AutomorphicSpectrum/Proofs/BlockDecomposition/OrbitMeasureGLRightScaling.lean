@@ -22,7 +22,7 @@ theorem map_two {γ δ : Type} [MeasurableSpace γ] [MeasurableSpace δ] (c : Me
     (h1 : c.map f = r • c) (h2 : e.map h = s • e) :
     (c.prod e).map (Prod.map f h) = (r * s) • c.prod e := by
   rw [← Measure.map_prod_map c e hf hh, h1, h2]
-  simp only [ENNReal.smul_def, Measure.prod_smul_left, Measure.prod_smul_right, smul_smul, ENNReal.coe_mul, smul_eq_mul]
+  simp only [ENNReal.smul_def, Measure.prod_smul_left, Measure.prod_smul_right, smul_smul, ENNReal.coe_mul]
   rw [mul_comm]
 
 theorem map_id_prod {β γ : Type} [MeasurableSpace β] [MeasurableSpace γ] (b : Measure β) (X : Measure γ)

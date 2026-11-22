@@ -195,7 +195,7 @@ private theorem isExp_partial (L U : ∀ i, Module.End ℂ (V i)) (hL : ∀ i, L
       by_cases h : i = a
       · subst h
         simp [ha]
-      · simp [h, Function.update_of_ne h]
+      · simp [h]
     rw [e, Finset.sum_insert ha]
     refine isExp_add (isExp_atPl (hU a)) ih ?_ fun v => ?_
     · refine Commute.sum_right _ _ _ fun w hw => atPl_comm ?_ _ _

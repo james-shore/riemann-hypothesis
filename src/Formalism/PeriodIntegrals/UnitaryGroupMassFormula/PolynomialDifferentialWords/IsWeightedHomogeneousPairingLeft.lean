@@ -148,7 +148,7 @@ theorem chi_psi_dvd (i0 : Fin k) (f : Pol K k) :
     · simp [chiF, psiF]
     · by_cases hj : j = i0
       · subst hj
-        simp only [chiF, psiF, Sum.elim_inr, if_true, eq_self_iff_true]
+        simp only [chiF, psiF, Sum.elim_inr, if_true]
         have e : X (Sum.inl j) * X (Sum.inr j) - -tp K j = tt K k := by
           rw [sub_neg_eq_add, tp, tt, ← Finset.add_sum_erase _ _ (Finset.mem_univ j)]
         rw [e]

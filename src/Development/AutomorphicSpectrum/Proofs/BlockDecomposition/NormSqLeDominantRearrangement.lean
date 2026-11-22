@@ -180,7 +180,6 @@ theorem dirac_ineq0 : ∀ {n : ℕ} (lam : Fin n → ℤ) (V : Type) [NormedAddC
       rw [Finset.mul_sum]
       exact Finset.sum_congr rfl fun i _ => by
         rw [Pi.smul_apply, inner_smul_right, inner_self_eq_norm_sq_to_K]
-        push_cast
         rfl
     rw [← e1, hsk, e2]
   have hEq' : (∑ i, ‖D x i‖ ^ 2) = -((4 * (S - R) + 3 * R - T) * ∑ i, ‖x i‖ ^ 2) := by

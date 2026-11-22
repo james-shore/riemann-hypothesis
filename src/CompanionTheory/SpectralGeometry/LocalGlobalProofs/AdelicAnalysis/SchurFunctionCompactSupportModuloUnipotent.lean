@@ -261,7 +261,7 @@ theorem exists_density (μ : Measure V) [IsFiniteMeasure μ] (hφ : Integrable (
         ENNReal.measurable_ofReal.comp hcD.measurable)
       (Eventually.of_forall fun y => ENNReal.ofReal_lt_top)]
   refine integral_congr_ae (Eventually.of_forall fun v => ?_)
-  simp only [Function.comp_apply]
+  simp only
   rw [ENNReal.toReal_ofReal (dens_re_nonneg μ hφ v), ← hdF, ← hof v, inner_smul_right,
     Complex.real_smul]
   simp only [smul_eq_mul, Complex.ofReal_re]

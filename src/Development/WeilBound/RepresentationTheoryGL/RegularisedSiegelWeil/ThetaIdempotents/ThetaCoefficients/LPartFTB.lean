@@ -66,7 +66,7 @@ theorem eId_eq {K : Type} [Field K] (hn : r + t = n) : eId K n r = bl hn 1 0 0 0
   rw [bl_ee, eId, Matrix.diagonal_apply]
   simp only [(ee hn).injective.eq_iff]
   rcases s with k | k <;> rcases s' with k' | k' <;>
-    simp [Matrix.one_apply, ee_inl_val, ee_inr_val]
+    simp [Matrix.one_apply]
 
 theorem cT_blk4 {K : Type} [Field K] (σ : K →+* K) (A B C E : Matrix (Fin n) (Fin n) K) :
     cT σ (blk4 A B C E) = blk4 (cT σ A) (cT σ C) (cT σ B) (cT σ E) := by
@@ -98,12 +98,11 @@ theorem wE_unit {K : Type} [Field K] (σ : K →+* K) (e : Matrix (Fin n) (Fin n
   constructor
   · refine Matrix.isUnit_det_of_right_inverse (B := blk4 (1 - e) (-e) e (1 - e)) ?_
     rw [wE, submatrix_fromBlocks_mul, ← block_matrix_one]
-    congr 1 <;> (simp only [Matrix.mul_neg, Matrix.neg_mul, neg_neg, h1, h2, h3, he, neg_zero, add_zero, zero_add,
-      sub_add_cancel, neg_add_cancel]; try abel)
+    congr 1 <;> (simp only [Matrix.mul_neg, Matrix.neg_mul, neg_neg, h1, h2, h3, he, neg_zero, add_zero, sub_add_cancel]; try abel)
   · unfold IsUnitary
     rw [wE, cT_blk4, cT_sub, cT_one, hσ, cT_neg, hσ, PositivityTheory.GramSchwartzFunctions.EC.Jm, submatrix_fromBlocks_mul, submatrix_fromBlocks_mul]
     congr 1 <;> (simp only [Matrix.mul_neg, Matrix.neg_mul, neg_neg, h1, h2, h3, he, neg_zero, add_zero, zero_add,
-      Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, Matrix.one_mul, sub_add_cancel, neg_add_cancel]; try abel)
+      Matrix.mul_zero, Matrix.mul_one]; try abel)
 
 def πe (hn : r + t = n) : Equiv.Perm (Fin n) := (ff hn).symm.trans ((Equiv.sumComm _ _).trans (ee hn))
 
@@ -147,6 +146,6 @@ theorem eId_conj {K : Type} [Field K] (hn : r + t = n) :
   rcases s with k | k <;> rcases s' with k' | k' <;>
     simp only [bl_ee, Matrix.submatrix_apply, πe_symm_ee_inl, πe_symm_ee_inr] <;>
     rw [eId, Matrix.diagonal_apply] <;>
-    simp [(ff hn).injective.eq_iff, ff_inl_val, ff_inr_val, Matrix.one_apply] <;> simp [Fin.ext_iff] <;> omega
+    simp [Matrix.one_apply] <;> simp [Fin.ext_iff] <;> omega
 
 end PositivityTheory.Rg.Rsw.L.LPartFT

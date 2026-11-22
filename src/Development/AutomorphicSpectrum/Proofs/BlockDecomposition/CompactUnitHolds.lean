@@ -146,7 +146,7 @@ theorem setup (n : ℕ) : IsTopologicalGroup (UA E n) ∧ LocallyCompactSpace (U
     refine ⟨fun a b => ?_, by simp⟩
     by_cases e : a = b
     · subst e; simp
-    · simp [Matrix.one_apply, e, Ne.symm e]
+    · simp [e, Ne.symm e]
   obtain ⟨K, hK, hKe⟩ := GlobalTheory.AnisoCocompact.exists_compact σ₀ hcm 1 hherm hform_one_ne_zero
   haveI := GlobalTheory.RationalDiscrete.discreteTopology_HFinIn σ₀ (1 : Matrix (Fin n) (Fin n) E)
   have hcf : Continuous (fun x : ratU E n =>

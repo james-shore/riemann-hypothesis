@@ -117,7 +117,7 @@ def ev (d : ℕ) (p : Hh → σ → R) : homogeneousSubmodule σ R d →ₗ[R] (
 
 theorem ev_apply (d : ℕ) (p : Hh → σ → R) (F : homogeneousSubmodule σ R d) (h : Hh) :
     ev d p F h = eval (p h) (F : MvPolynomial σ R) := by
-  simp [ev, coe_aeval_eq_eval]
+  simp [ev]
 
 theorem eval_eq_zero_of_mem_vanIdeal {d : ℕ} {p : Hh → σ → R} {F : MvPolynomial σ R} (hF : F ∈ vanIdeal d p)
     (h : Hh) : eval (p h) F = 0 := by

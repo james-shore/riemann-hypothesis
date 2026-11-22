@@ -165,7 +165,7 @@ theorem GlobalTheory.TChart.exists_chart_at : ∀ g : ℕ, 1 ≤ g → ∀ φ : 
     have h := hFam.2.2.2.2
     rw [hyl, Category.assoc] at h
     rw [h, ← hsA]
-    simp only [jK, spMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp, Category.assoc]
+    simp only [spMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp]
   have hκy := hpt yU hSPB hyUs
   have hξU : spMap (algebraMap C.R (Localization.Away (∏ k, C.t k))) ≫ ξ = yU ≫ j := by
     refine GlobalTheory.ChartHit.away_hom_ext C.R (∏ k, C.t k) htne l hl S _ _ ?_

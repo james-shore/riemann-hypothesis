@@ -541,7 +541,7 @@ theorem dl_lower (hd : LocalDatum K R ψ) (r : Matrix Unit ι K) :
       fromBlocks (1 : Matrix ι ι K) 0 0 Di * fromBlocks (1 : Matrix ι ι K) 0 s 1 *
         fromBlocks (1 : Matrix ι ι K) 0 0 D := by
     rw [Matrix.fromBlocks_multiply, Matrix.fromBlocks_multiply]
-    simp only [Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, Matrix.one_mul, add_zero, zero_add]
+    simp only [Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, add_zero, zero_add]
     rw [hs_def, ← Matrix.mul_assoc, hDD, Matrix.one_mul]
   have hdet1 : IsUnit (fromBlocks (1 : Matrix ι ι K) 0 0 Di).det := by
     rw [Matrix.det_fromBlocks_zero₂₁, hDi, Matrix.det_diagonal]
@@ -787,8 +787,8 @@ theorem modK_det_pt (s : List ℕ) (t : ℕ → Kˣ) :
       Option.mem_def, Option.some.injEq, hσ, Function.Involutive.coe_toPerm]
     split_ifs with h1 h2 h2
     · simp
-    · exact absurd (Fin.ext (by simp only [Function.Involutive.coe_toPerm, Formalism.DoubleCosetMeasures.P.Phase.revF_val]; exact h1.symm)) h2
-    · exact absurd (by rw [← h2]; simp only [Function.Involutive.coe_toPerm, Formalism.DoubleCosetMeasures.P.Phase.revF_val]) h1
+    · exact absurd (Fin.ext (by simp only [Formalism.DoubleCosetMeasures.P.Phase.revF_val]; exact h1.symm)) h2
+    · exact absurd (by rw [← h2]; simp only [Formalism.DoubleCosetMeasures.P.Phase.revF_val]) h1
     · simp
   rw [hpt, Matrix.det_mul, Matrix.det_diagonal, Matrix.det_permutation]
   rcases Int.units_eq_one_or (Equiv.Perm.sign σ) with h | h <;> rw [h] <;> simp [modK_neg]

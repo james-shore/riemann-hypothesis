@@ -13,7 +13,7 @@ section Generic
 
 theorem map_id_apply {S σ : Type} [CommRing S] (f : MvPowerSeries σ S) : MvPowerSeries.map (algebraMap S S) f = f := by
   ext n
-  simp [MvPowerSeries.coeff_map]
+  simp
 
 variable {E : Type} [Field E] [NumberField E] [IsCMField E] {S : Type} [CommRing S] [Algebra ℚ S] {d n : ℕ} [StarRing (𝓞 E)] (B : FB S d (𝓞 E)) {h : PS S 2 d}
   (hg : B.IsCanonGauge S h)
@@ -45,8 +45,6 @@ omit hg [Algebra ℚ S] in
 theorem actK_eq (a : 𝓞 E) : B.actK S a = B.A.act a := by
   first
   | rfl
-  | (simp [FB.actK]; done)
-  | (unfold FB.actK; rfl)
 
 theorem g_ad (a : 𝓞 E) (u v : Q S d n) :
     E2 (B.ad a) u v = FB.expS S (E2 h (ac (AQ B.A a) u) v - E2 h u (ac (AQ B.A (star a)) v)) := by

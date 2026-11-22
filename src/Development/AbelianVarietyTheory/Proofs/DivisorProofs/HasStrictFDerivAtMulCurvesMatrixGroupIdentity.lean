@@ -49,5 +49,5 @@ theorem GlobalTheory.hasStrictFDerivAt_mul_curves_at_identity : ∀ (ι : Type) 
   clear_value f₁ f₂
   clear hf₁ hf₂ h₁ h₂ hσ ht σ t
   refine ContinuousLinearMap.ext fun w => ?_
-  simp [z₁, z₂, Matrix.one_apply, Finset.sum_add_distrib, ite_mul]
+  simp [z₁, z₂, Matrix.one_apply, Finset.sum_add_distrib]
   ring

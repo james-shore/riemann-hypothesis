@@ -147,7 +147,7 @@ theorem exists_local_det {R M : Type} [CommRing R] [AddCommGroup M] [Module R M]
       have h1 := hK w
       rw [hw] at h1
       have hsingle : ∑ k, (Pi.single j (f * t) : Fin r → R) k • m k = f • t • m j := by
-        rw [Finset.sum_eq_single j (fun k _ hk => by simp [Pi.single_apply, hk]) (by simp)]
+        rw [Finset.sum_eq_single j (fun k _ hk => by simp [hk]) (by simp)]
         simp [mul_smul]
       obtain ⟨τ, hτ, hτc⟩ := linIndep_at_of_gen_at q (hr q) m hgm
         (A.mulVec w - Pi.single j (f * t)) (by
@@ -160,7 +160,7 @@ theorem exists_local_det {R M : Type} [CommRing R] [AddCommGroup M] [Module R M]
       rw [Matrix.mulVec_smul, Pi.smul_apply, smul_eq_mul, hk]
       by_cases hkj : k = j
       · subst hkj; simp
-      · simp [Pi.single_apply, hkj]
+      · simp [hkj]
     choose τ hτ w hw using hcol
     let B : Matrix (Fin r) (Fin r) R := Matrix.of fun k j => w j k
     have hAB : A * B = Matrix.diagonal τ := by
@@ -172,7 +172,7 @@ theorem exists_local_det {R M : Type} [CommRing R] [AddCommGroup M] [Module R M]
       rw [h, Matrix.diagonal_apply]
       by_cases hkj : k = j
       · subst hkj; simp
-      · simp [Pi.single_apply, hkj]
+      · simp [hkj]
     have hprod : A.det * B.det ∉ q.asIdeal := by
       rw [← Matrix.det_mul, hAB, Matrix.det_diagonal]
       exact q.asIdeal.primeCompl.prod_mem (fun j _ => hτ j)

@@ -113,7 +113,7 @@ theorem levN_sum {T : LocLat G Qp LL O} (c : ZMod n) (ζ : LL) {r : ℕ} {b : Fi
     W.levN T c ζ ⟨∑ m, a m • b m, hy⟩ j =
       ∑ m, smulS (W.lev c ζ (a m)) (W.levN T c ζ ⟨b m, hbN m⟩) j := by
   have e : (⟨∑ m, a m • b m, hy⟩ : ↥(W.N T)) = ∑ m, a m • (⟨b m, hbN m⟩ : ↥(W.N T)) :=
-    Subtype.ext (by simp [Submodule.coe_sum])
+    Subtype.ext (by simp)
   rw [e, map_sum, Finset.sum_apply]
   refine Finset.sum_congr rfl fun m _ => ?_
   rw [W.levN_smul]
@@ -157,7 +157,7 @@ theorem rank_le (hFr : IsFractionRing O LL) (T : LocLat G Qp LL O) (c : ZMod n) 
         _ = 0 := by rw [← Finset.smul_sum, hsum, smul_zero]
     obtain ⟨y, hy, hyz⟩ := h3.1 _ hcz
     set z : W.DD T := ∑ i, o i • b i with hz
-    have hzc : ((∑ i, o i • bN i : ↥(W.N T)) : W.DD T) = z := by simp [hz, bN, Submodule.coe_sum]
+    have hzc : ((∑ i, o i • bN i : ↥(W.N T)) : W.DD T) = z := by simp [hz, bN]
     have hy' : (letπ : LetA O n) • y = z := by
       rw [← hzc, ← hyz]
       simp [Formalism.MainNotions.DeltaInvariantLattices.smulA]

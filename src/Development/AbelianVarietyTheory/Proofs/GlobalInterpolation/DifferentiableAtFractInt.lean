@@ -85,8 +85,6 @@ lemma zeta_eq_of_one_lt {s : ℂ} (hs : 1 < s.re) :
   | exact @_root_.GlobalTheory.ZetaFractionalIntegral.zeta_eq_sub_integral_fract
   | exact _root_.GlobalTheory.ZetaFractionalIntegral.zeta_eq_sub_integral_fract
   | (apply _root_.GlobalTheory.ZetaFractionalIntegral.zeta_eq_sub_integral_fract <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ZetaFractionalIntegral.zeta_eq_sub_integral_fract <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ZetaFractionalIntegral.zeta_eq_sub_integral_fract <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ZetaFractionalIntegral.zeta_eq_sub_integral_fract ..)
 
 theorem zeta_eq {s : ℂ} (hs : 0 < s.re) (hs1 : s ≠ 1) :

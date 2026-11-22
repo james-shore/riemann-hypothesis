@@ -69,12 +69,12 @@ theorem frobenius_uniformizer_pow_dvd [IsDomain O] (hR : Formalism.MainNotions.U
     funext i
     by_cases hi : i = c
     · subst hi
-      simp only [Pi.mul_apply, hgdef, if_pos rfl]
+      simp only [Pi.mul_apply, hgdef]
       rw [hf i, hg', subst_mul (hsub i), subst_X (hsub i)]
       simp
     · have : a i = ((letE c : LetA O n) * a) i := by rw [hc]
       rw [this]
-      simp [letE, Pi.single_eq_of_ne hi, hgdef, hi]
+      simp [letE, hgdef, hi]
   refine ⟨g, ?_, hag⟩
   refine Formalism.MainNotions.UnusedSlot80.ToolsR.cancel_AΔ (W := W) hR.1 (fun i => Formalism.MainNotions.UnusedSlot80.ToolsR.π₀₁_ne hR) ?_
   rw [← hag]; exact ha

@@ -171,7 +171,7 @@ theorem besselLevel_chi_conj_eq_finite_bessel_character (X : HidaSetting D) (u :
       intro v
       rw [hy, fmat_mul, fmat_mul]
       simp only [Matrix.sub_mulVec, Matrix.mulVec_sub, Matrix.one_mulVec, Matrix.mulVec_mulVec,
-        Matrix.sub_mul, Matrix.one_mul, Matrix.mul_sub, Matrix.mul_assoc, fmat_inv_mul]
+        Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc, fmat_inv_mul]
     intro v
     conv_lhs => rw [e1, hs, Matrix.mulVec_smul, ← e1]
   have split : ∀ (M : Matrix (Fin X.B.I.n) (Fin X.B.I.n) (X.B.I.E ⊗[X.B.I.F] Formalism.MainNotions.S.Af X.B.I.F)) (f v : VA X.B.I),

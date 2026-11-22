@@ -264,7 +264,7 @@ theorem mem_dom_of_eq {x y : Frame X.Ψ r} (hx : x ∈ X.dom) (hy : ∀ τ, (mat
     y ∈ X.dom := by
   have hxd : ∀ τ, (mat x τ).det ≠ 0 := fun τ => ((Data.mem_dom_iff X x).mp hx τ).1
   have hb : (fun τ => ((mat x τ)⁻¹ * mat y τ : Matrix (Fin r) (Fin r) ℂ)) ∈ Bor X.Ψ r := by
-    simp only [Bor, Set.mem_setOf_eq]
+    simp only [Bor]
     intro τ
     refine ⟨?_, ?_⟩
     · show ((mat x τ)⁻¹ * mat y τ).det ≠ 0

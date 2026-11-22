@@ -28,7 +28,7 @@ theorem blockAct_univ {K : Type} [Field K] {ι : Type} {n : ℕ} (F : MvPolynomi
       fun g => ?_⟩
     rw [map_mul, map_mul, hU]
     congr 1
-    simp [Formalism.GradedWeylDivisibility.blockAct, MvPolynomial.aeval_X]
+    simp [Formalism.GradedWeylDivisibility.blockAct]
 
 theorem lin_map_eval {K σ τ : Type} [Field K] (ℓ : MvPolynomial σ K →ₗ[K] K)
     (U : MvPolynomial σ (MvPolynomial τ K)) (p : τ → K) :

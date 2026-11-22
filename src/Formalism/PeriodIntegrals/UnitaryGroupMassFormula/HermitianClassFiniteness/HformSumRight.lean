@@ -101,7 +101,7 @@ theorem Frame.Jt_inv (fr : Frame I S) :
     by_cases h : i = j
     · subst h
       simp [Formalism.UG.cT]
-    · simp [Formalism.UG.cT, Matrix.one_apply, h, Ne.symm h]
+    · simp [Formalism.UG.cT, h, Ne.symm h]
   have hc : cT (starRingEnd I.E) fr.B * cT (starRingEnd I.E) fr.Bi = 1 := by
     rw [← cT_mul', fr.inv_mul, h1]
   calc fr.Jt * (fr.Bi * I.J⁻¹ * cT (starRingEnd I.E) fr.Bi)
@@ -146,7 +146,7 @@ theorem Frame.hform_J' (fr : Frame I S) (x y : Fin fr.k → I.E) :
       hform (starRingEnd I.E) I.J (fr.B *ᵥ Sum.elim 0 x) (fr.B *ᵥ Sum.elim 0 y) := by
   rw [← hform_cT]
   simp only [hform, Fintype.sum_sum_type, Sum.elim_inl, Sum.elim_inr, Pi.zero_apply, map_zero, zero_mul,
-    mul_zero, Finset.sum_const_zero, zero_add, add_zero]
+    mul_zero, Finset.sum_const_zero, zero_add]
   rfl
 
 theorem Frame.orth_vec (fr : Frame I S) (x : Fin fr.k → I.E) :

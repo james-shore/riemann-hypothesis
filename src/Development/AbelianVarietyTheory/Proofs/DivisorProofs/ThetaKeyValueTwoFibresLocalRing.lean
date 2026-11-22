@@ -78,7 +78,7 @@ theorem frame_coords_lift {W K₀ K₁ : Type} [CommRing W] [IsDomain W] [Field 
   · ext j l
     have h1 : i₁ (↑v⁻¹ : W) = a₁⁻¹ := by
       rw [← ha, ← hv]; exact map_units_inv i₁ v
-    simp only [RingHom.mapMatrix_apply, Matrix.map_apply, Matrix.of_apply, map_mul, h1, Option.elim_some, hN1]
+    simp only [RingHom.mapMatrix_apply, Matrix.map_apply, Matrix.of_apply, map_mul, h1, hN1]
     field_simp
 
 theorem thJet_frameChange_castDim {K : Type} [Field K] [CharZero K] (x : KeyIn K) (th : x.P.L.Sec) (hth) (v : Fin x.P.g → (epsR K ⟶ x.P.A)) (hv)

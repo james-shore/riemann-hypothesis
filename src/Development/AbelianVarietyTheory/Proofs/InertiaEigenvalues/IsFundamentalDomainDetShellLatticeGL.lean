@@ -50,7 +50,7 @@ theorem isFundamentalDomain_shell : ∀ (E : Type) [Field E] [NumberField E] [Is
         {x | ¬∃ γ : (ratGL E a).range, γ • x ∈ 𝓕}) = 0 :=
       measure_iUnion_null fun n => (measurePreserving_mul_left μ _).quasiMeasurePreserving.preimage_null hN
     refine Filter.mem_of_superset (compl_mem_ae_iff.2 hB) fun x hx => ?_
-    simp only [Set.mem_compl_iff, Set.mem_iUnion, Set.mem_preimage, Set.mem_setOf_eq, not_exists, not_not] at hx
+    simp only [Set.mem_compl_iff, Set.mem_iUnion, Set.mem_preimage, Set.mem_setOf_eq, not_exists] at hx
     obtain ⟨m, hm1, hm2⟩ := exists_mem_Ioc_zpow (hδ0 x) hT1
     obtain ⟨γ, hγ⟩ := not_forall_not.1 (hx (-(m + 1)))
     obtain ⟨γ0, hγ0⟩ := γ.2

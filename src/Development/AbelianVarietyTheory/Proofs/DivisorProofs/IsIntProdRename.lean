@@ -104,7 +104,7 @@ theorem coeff_mvExp_lin {σ : Type} [Fintype σ] (c : σ → C) (α : σ →₀ 
         ∏ s ∈ ({i}ᶜ : Finset σ), c s ^ β s / ((β s).factorial : C) := by
       refine Finset.prod_congr rfl fun s hs => ?_
       have hs' : s ≠ i := by simpa using hs
-      simp [Finsupp.single_apply, Ne.symm hs']
+      simp [Ne.symm hs']
     rw [hrest]
     simp only [Finsupp.add_apply, Finsupp.single_eq_same]
     rw [Nat.factorial_succ]

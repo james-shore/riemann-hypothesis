@@ -18,7 +18,7 @@ private theorem rev_lin (r : ℂ) (hr : r ≠ 0) :
   · rw [revAt_le (by norm_num)]
     simp [coeff_X, coeff_C, coeff_one]
   · rw [revAt_eq_self_of_lt (by omega)]
-    simp [coeff_X, coeff_one, coeff_C]
+    simp [coeff_X, coeff_one]
 
 open Polynomial in
 private theorem rev_prod (s : Multiset ℂ) (hs : ∀ z ∈ s, z ≠ 0) :

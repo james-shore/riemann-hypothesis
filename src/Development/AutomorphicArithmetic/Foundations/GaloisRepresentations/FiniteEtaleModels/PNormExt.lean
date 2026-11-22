@@ -188,7 +188,7 @@ private theorem isIso_fromNormalization_of_normal_noetherian {U S : Scheme} (i :
       (Spec.map (i.normalizationDiagramMap.app (.op V)) :
         i.normalizationOpenCover.X W ⟶ Spec Γ(S, V)) := by
     refine (cancel_mono hV.fromSpec).mp ?_
-    simp [IsAffineOpen.isoSpec_hom, e, Scheme.Hom.ι_fromNormalization]
+    simp [IsAffineOpen.isoSpec_hom, e]
     exact i.ι_fromNormalization ⟨V, hV⟩
   show IsIso (e.inv ≫ (i.fromNormalization ∣_ V) ≫ hV.isoSpec.hom)
   rw [key]

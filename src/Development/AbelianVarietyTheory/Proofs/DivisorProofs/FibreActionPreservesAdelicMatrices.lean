@@ -34,9 +34,6 @@ theorem kron_one {T : Type} [Fintype T] [DecidableEq T] {J : T → Type} [∀ t,
   first
   | exact @_root_.GlobalTheory.KroneckerIdentity.kron_identity
   | exact _root_.GlobalTheory.KroneckerIdentity.kron_identity
-  | (apply _root_.GlobalTheory.KroneckerIdentity.kron_identity <;> assumption)
-  | (intros; apply _root_.GlobalTheory.KroneckerIdentity.kron_identity <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.KroneckerIdentity.kron_identity <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.KroneckerIdentity.kron_identity ..)
 
 theorem rhoMat_mul {n : ℕ} (la : Fin n → ℕ) (g h : Matrix (Fin n) (Fin n) K) :

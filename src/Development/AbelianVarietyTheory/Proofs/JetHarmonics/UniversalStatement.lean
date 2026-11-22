@@ -23,8 +23,6 @@ theorem surj_of_sq {A B : Type} [CommRing A] [Algebra V A] [CommRing B] [Algebra
   | exact @_root_.GlobalTheory.SurjectiveOfKerSq.surjective_of_ker_le_map_sup_sq
   | exact _root_.GlobalTheory.SurjectiveOfKerSq.surjective_of_ker_le_map_sup_sq
   | (apply _root_.GlobalTheory.SurjectiveOfKerSq.surjective_of_ker_le_map_sup_sq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SurjectiveOfKerSq.surjective_of_ker_le_map_sup_sq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SurjectiveOfKerSq.surjective_of_ker_le_map_sup_sq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SurjectiveOfKerSq.surjective_of_ker_le_map_sup_sq ..)
 
 open Chart (JetR zR jetAug_zR jet_ext jetLift jetLift_zR ker_jetAug_pow zR_mem_ker)

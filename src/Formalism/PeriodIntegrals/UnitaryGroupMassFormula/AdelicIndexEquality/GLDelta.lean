@@ -40,7 +40,7 @@ theorem chi_transvection [CharZero k] (χ : GL (Fin n) k →* ℚ) (hpos : ∀ g
     funext x
     by_cases hx : x = i
     · subst hx; simp [ha]
-    · simp [Function.update_apply, hx]
+    · simp [hx]
   have key' : diagonal (Function.update (1 : Fin n → k) i 2⁻¹) *
       diagonal (Function.update (1 : Fin n → k) i 2) = 1 := by
     simpa using key 2⁻¹ (inv_ne_zero h2)

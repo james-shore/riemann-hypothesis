@@ -109,7 +109,7 @@ theorem const_lev (i : ZMod n) (a : LetA O n) :
     (a - algebraMap O (LetA O n) (PowerSeries.constantCoeff (a i)) - letπ * fun _ => b) (by
       simp only [Pi.sub_apply, Pi.mul_apply, letπ, Pi.algebraMap_apply]
       rw [← hb]
-      simp [PowerSeries.algebraMap_apply])
+      simp)
   rw [map_sub, map_sub, map_mul, AlgHom.commutes] at h
   have h2 := congrArg PowerSeries.constantCoeff h
   rw [map_sub, map_sub, map_mul, const_lev_π, zero_mul, sub_zero, map_zero, sub_eq_zero] at h2

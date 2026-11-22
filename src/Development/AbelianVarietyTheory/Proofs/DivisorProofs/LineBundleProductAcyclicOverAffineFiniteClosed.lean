@@ -107,7 +107,7 @@ theorem cech_sliceFst_singleton_acyclic {𝔦 𝔧 : Type} [LinearOrder 𝔦] [L
     intro n
     rw [IsZero.iff_id_eq_zero]
     have := congrArg (fun φ => homologyMap ((cubeFunctor _ R).map φ) n) hr
-    simp only [Functor.map_comp, Functor.map_id, homologyMap_comp, homologyMap_id] at this
+    simp only [Functor.map_comp, homologyMap_comp] at this
     have h0 : homologyMap ((cubeFunctor _ R).map ρ₁) n = 0 := (h₃ n).eq_of_src _ _
     rw [h0, comp_zero, CategoryTheory.Functor.map_id, homologyMap_id] at this
     exact this.symm

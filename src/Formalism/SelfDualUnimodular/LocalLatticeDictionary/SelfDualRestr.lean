@@ -91,8 +91,8 @@ theorem h_decomp (h : V →ₗ⋆[K] V →ₗ[K] K) (X : V) (hX : h X X ≠ 0) (
     (x y : V) :
     h x y = star (coef h X x) * coef h X y * h X X + h (proj h X hX x) (proj h X hX y) := by
   conv_lhs => rw [decomp h X hX x, decomp h X hX y]
-  simp only [LinearMap.map_add₂, map_add, LinearMap.map_smulₛₗ₂, map_smul, smul_eq_mul, starRingEnd_apply,
-    LinearMap.add_apply, LinearMap.smul_apply]
+  simp only [map_add, LinearMap.map_smulₛₗ₂, map_smul, smul_eq_mul, starRingEnd_apply,
+    LinearMap.add_apply]
   rw [LinearMap.mem_ker.mp (proj h X hX y).2, h_ker_X h X hs (proj h X hX x)]
   ring
 

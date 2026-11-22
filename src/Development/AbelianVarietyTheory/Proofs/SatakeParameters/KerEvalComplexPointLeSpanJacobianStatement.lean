@@ -14,4 +14,4 @@ theorem _root_.GlobalTheory.T.ker_evalComplexPoint_le_span_jacobian : ∀ (X : S
       RingHom.ker (GlobalTheory.CxPts.evHom hz) ≤
         Ideal.span (Set.range fun j => φ j - ReciprocityTheory.ChartRestriction.G.DVR.FlatBC.algX p U (GlobalTheory.CxPts.evHom hz (φ j))) ⊔
           RingHom.ker (GlobalTheory.CxPts.evHom hz) ^ 2 := by
-  first | (exact @GlobalTheory.JacSpan.ker_le_span_jac) | (exact GlobalTheory.JacSpan.ker_le_span_jac) | (intros; apply GlobalTheory.JacSpan.ker_le_span_jac  <;> assumption)
+  first | (exact @GlobalTheory.JacSpan.ker_le_span_jac)

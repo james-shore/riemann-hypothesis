@@ -57,8 +57,7 @@ theorem TG_comb (c : FreeE w → ℂ) (b : Fin (D.R.rS + 1)) :
     rw [Matrix.mulVec_mulVec, h1, Matrix.one_mulVec]
   rw [yM_G X u u' w v hw c b]
   simp only [G_eq, Matrix.mulVec_sub, Matrix.mulVec_sum, Matrix.mulVec_smul, hA, Matrix.sub_apply, sub_smul,
-    Finset.sum_sub_distrib, Matrix.one_apply, ite_smul, one_smul, zero_smul, Finset.sum_ite_eq', Finset.sum_ite_eq,
-    Finset.mem_univ, if_true]
+    Finset.sum_sub_distrib, Matrix.one_apply, ite_smul, one_smul, zero_smul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
 
 include hw in
 theorem inN_u' (c : FreeE w → ℂ) :

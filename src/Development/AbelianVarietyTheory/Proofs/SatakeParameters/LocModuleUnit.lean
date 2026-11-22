@@ -16,7 +16,7 @@ def locModule (N : Submonoid (ULift.{1} R)) : ModuleCat.{1} (ULift.{1} R) ⥤ Mo
   map_id A := by
     ext x
     induction x using LocalizedModule.induction_on with
-    | h a s => simp [IsLocalizedModule.map_LocalizedModules]
+    | h a s => simp
   map_comp f g := by
     ext x
     induction x using LocalizedModule.induction_on with

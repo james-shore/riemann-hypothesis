@@ -30,12 +30,9 @@ theorem discr_K {R : Ranks} (H : Host R) : discr H.K = -(H.d : ℤ) := by
         Set.image_singleton]
       first
       | rfl
-      | (simp only [IntermediateField.val_mk]; rfl)
-      | simp [Formalism.HC.HostRaw.K]
     convert key
     all_goals first
       | exact Subsingleton.elim _ _
-      | (apply Algebra.algebra_ext; intro r; simp [Algebra.algebraMap_eq_smul_one])
   · exact Int.squarefree_natAbs.mp (by simpa using hdp.prime.squarefree)
   · omega
   · omega

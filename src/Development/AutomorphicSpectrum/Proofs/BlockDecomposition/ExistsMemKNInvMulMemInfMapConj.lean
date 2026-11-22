@@ -38,7 +38,7 @@ theorem exists_mem_KN_inv_mul_mem_inf_map_conj
   refine Subgroup.mem_inf.2 ⟨J.mul_mem (J.inv_mem hbJ) (J.inv_mem huJ), ?_⟩
   refine Subgroup.mem_map.2 ⟨(g⁻¹ * (leviEmb k (stdBlocks d hd) x)⁻¹ * g) * (g⁻¹ * u⁻¹ * g),
     J.mul_mem h1 h4, ?_⟩
-  simp only [MonoidHom.coe_coe, MulEquiv.coe_toMonoidHom, MulAut.conj_apply]
+  simp only [MulEquiv.coe_toMonoidHom, MulAut.conj_apply]
   group
 
 end GlobalTheory.CompanionTheory.Casselman

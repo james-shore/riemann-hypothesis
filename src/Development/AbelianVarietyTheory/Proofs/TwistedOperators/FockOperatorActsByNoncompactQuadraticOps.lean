@@ -64,7 +64,7 @@ theorem comb (hS : IsPMat pS YS) (hT : IsPMat pT YT) (V : Fin m → Fin n → W)
       simp only [act, Matrix.sub_apply, Matrix.mul_apply, Matrix.single_apply]
       by_cases h1 : c₀ = d <;> by_cases h2 : i₀ = i <;> simp [h1, h2, sub_eq_add_neg]
     rw [lin, e1]
-    split_ifs <;> simp [sub_eq_add_neg, add_smul]
+    split_ifs <;> simp [add_smul]
   simp only [e, Finset.sum_add_distrib, Finset.sum_ite_eq, Finset.mem_univ, if_true]
   congr 1
   · rw [Finset.sum_eq_single c₀ (fun c _ hc => by simp [Ne.symm hc]) (by simp)]
@@ -97,7 +97,7 @@ theorem pderiv_quadOp_one {ι : Type} [DecidableEq ι] (c : ℂ) (z z' y : ι) :
     pderiv y (quadOp c z z' (1 : MvPolynomial ι ℂ)) =
       c • ((if y = z then X z' else 0) + (if y = z' then X z else 0)) := by
   unfold quadOp
-  simp only [pderiv_mul, pderiv_X, Pi.single_apply, map_add, mul_one, pderiv_one, map_zero, smul_zero, sub_zero, Derivation.map_smul]
+  simp only [pderiv_mul, pderiv_X, Pi.single_apply, mul_one, pderiv_one, map_zero, smul_zero, sub_zero, Derivation.map_smul]
   simp only [@eq_comm _ y, ite_mul, mul_ite, one_mul, mul_one, zero_mul, mul_zero]
 
 variable {D : D7} {m n pS pT : ℕ} {YS : Matrix (Fin n) (Fin n) ℂ} {YT : Matrix (Fin m) (Fin m) ℂ} {τ : D.what₂.Tau}
@@ -492,7 +492,7 @@ theorem annih_pure {f : WO S T → ℂ} (hf : IsThetaFunO ψ S T f)
     refine congrArg₂ (· + ·) ?_ (aPlus_smul hψ hθ _ _ _ _ (hm _))
     by_cases h : k = j
     · subst h; simp
-    · simp [h, Pi.single_apply, Ne.symm h]
+    · simp [h, Ne.symm h]
 
 end Model
 

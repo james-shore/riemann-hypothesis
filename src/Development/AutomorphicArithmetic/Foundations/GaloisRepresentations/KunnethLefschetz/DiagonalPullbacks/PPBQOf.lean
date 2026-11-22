@@ -85,14 +85,14 @@ theorem UpperTheory.Gal.KunnethLefschetz.Di.pBQOf_holds :
     rw [t0 (j := ((0 : Fin (M + 2)) : ℕ)) (a := 2 - 2 * (((0 : Fin (M + 2)) : ℕ) : ℤ)) (n := 2)
         hR r hE ξ (by simp) _ (by simp),
       t1 (j := ((1 : Fin (M + 2)) : ℕ)) (a := 2 - 2 * (((1 : Fin (M + 2)) : ℕ) : ℤ))
-        hR r hE ξ (by simp [Fin.val_one]) _ (by norm_num [Fin.val_one])] at hz
+        hR r hE ξ (by simp) _ (by norm_num [Fin.val_one])] at hz
     exact ⟨_, _, hz⟩
   · intro u v huv
     let a : ∀ j : Fin (M + 2), V l Z (2 - 2 * ((j : ℕ) : ℤ)) := fun j =>
       if h0 : (j : ℕ) = 0 then tr (by rw [h0]; norm_num) u
       else if h1 : (j : ℕ) = 1 then tr (by rw [h1]; norm_num) v else 0
     have ha0 : a 0 = tr (by simp) u := by simp [a]
-    have ha1 : a 1 = tr (by norm_num [Fin.val_one]) v := by simp [a, Fin.val_one]
+    have ha1 : a 1 = tr (by norm_num [Fin.val_one]) v := by simp [a]
     have hzero : a = 0 := by
       apply (hPBV 2).1
       beta_reduce
@@ -102,7 +102,7 @@ theorem UpperTheory.Gal.KunnethLefschetz.Di.pBQOf_holds :
         t0 (j := ((0 : Fin (M + 2)) : ℕ)) (a := 2 - 2 * (((0 : Fin (M + 2)) : ℕ) : ℤ)) (n := 2)
           hR r hE ξ (by simp) _ (by simp),
         t1 (j := ((1 : Fin (M + 2)) : ℕ)) (a := 2 - 2 * (((1 : Fin (M + 2)) : ℕ) : ℤ))
-          hR r hE ξ (by simp [Fin.val_one]) _ (by norm_num [Fin.val_one]),
+          hR r hE ξ (by simp) _ (by norm_num [Fin.val_one]),
         tr_tr, tr_tr, tr_self, tr_self]
       exact huv
     have h1 := congrFun hzero 1

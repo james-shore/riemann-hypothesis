@@ -45,8 +45,6 @@ private theorem integral_circleMap_smul_eq_two_pi_mul {n : ℕ} {a : ℝ} {h : V
           simp only [deriv_circleMap, sub_zero, smul_eq_mul]
           first
           | (rw [mul_comm (circleMap 0 1 θ) Complex.I, mul_assoc, mul_inv_cancel_left₀ hne])
-          | field_simp
-          | (field_simp; ring)
       _ = ∮ l in C(0, 1), (l - 0)⁻¹ • h (x + l • z) := rfl
       _ = (2 * Real.pi * Complex.I : ℂ) • h (x + (0 : ℂ) • z) := hC
       _ = 2 * Real.pi * Complex.I * h x := by rw [e0, smul_eq_mul]
@@ -140,9 +138,6 @@ private theorem integral_moll_mul_eq_of_differentiableOn_ball {n : ℕ} {a : ℝ
       first
       | exact MeasureTheory.Integrable.prod_mul hg1 (integrable_moll n ha).abs
       | exact MeasureTheory.Integrable.mul_prod hg1 (integrable_moll n ha).abs
-      | exact MeasureTheory.Integrable.prod_smul hg1 (integrable_moll n ha).abs
-      | exact MeasureTheory.Integrable.comp_snd ((integrable_moll n ha).abs.const_mul C) _
-      | exact ((integrable_moll n ha).abs.const_mul C).comp_snd
     refine Integrable.mono' hbd
       hcont.aestronglyMeasurable (Filter.Eventually.of_forall fun p => ?_)
     show ‖(moll n a p.2 : ℂ) * h (x + circleMap 0 1 p.1 • p.2)‖ ≤ C * |moll n a p.2|

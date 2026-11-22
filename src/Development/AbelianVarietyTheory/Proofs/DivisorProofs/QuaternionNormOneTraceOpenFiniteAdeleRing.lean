@@ -116,7 +116,7 @@ private lemma nrm_apply_eq_nrm_finAdele_loc {a b : F}
   let φ := RestrictedProduct.evalRingHom (fun v : HeightOneSpectrum (𝓞 F) => v.adicCompletion F)
     (B := fun v => v.adicCompletionIntegers F) (𝓕 := Filter.cofinite) v
   change φ (_root_.GlobalTheory.QSA.nrm x) = _
-  simp only [_root_.GlobalTheory.QSA.nrm, map_sub, map_add, map_mul, map_pow]
+  simp only [_root_.GlobalTheory.QSA.nrm]
   rfl
 
 open NumberField IsDedekindDomain in

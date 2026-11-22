@@ -666,7 +666,7 @@ theorem lx_rename_minorB (i : Fin n) :
   simp only [AlgHom.mapMatrix_apply, Matrix.map_apply, Matrix.of_apply, rename_X]
   refine congrArg (fun v => (X v : MvPolynomial (Fin N × Fin N) K)) (Prod.ext ?_ (Fin.ext rfl))
   simp only [lxRho, Formalism.BranchingDeterminantCap.rowsB]
-  split_ifs <;> first | exact Fin.ext rfl | exact Fin.ext (by simp [iL])
+  split_ifs <;> first | exact Fin.ext rfl
 
 variable {K}
 

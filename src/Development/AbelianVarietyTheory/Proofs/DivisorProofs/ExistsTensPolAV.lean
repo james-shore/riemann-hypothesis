@@ -59,7 +59,7 @@ theorem lbIso_diag_data {R : Type} [CommRing R] [IsDomain R] (Q : Data R) :
   refine lbIso_nested hL _ _ _ _ _ _ ?_
   rw [Fintype.prod_unique, zpow_one, Fin.prod_univ_two]
   refine (prod_lam _ _ (cls Q.M.L)).trans ?_
-  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, zpow_one]
+  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, zpow_one]
   refine key.trans ?_
   rw [einv]
   rfl

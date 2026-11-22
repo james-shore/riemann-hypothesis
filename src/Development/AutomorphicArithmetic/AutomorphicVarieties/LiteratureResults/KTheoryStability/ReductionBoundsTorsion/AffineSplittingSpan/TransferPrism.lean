@@ -14,12 +14,12 @@ theorem dc_cons {m : ℕ} (G : (Fin (m + 2) → Y) → ℝ) (a : Y) (t : Fin (m 
   unfold dc
   rw [Fin.sum_univ_succ]
   have h0 : (fun j => (Fin.cons a t : Fin (m + 3) → Y) ((0 : Fin (m + 3)).succAbove j)) = t := by
-    funext j; simp [Fin.succAbove_zero]
+    funext j; simp
   have hs : ∀ i : Fin (m + 2), (fun j => (Fin.cons a t : Fin (m + 3) → Y) (i.succ.succAbove j)) =
       Fin.cons a (fun j => t (i.succAbove j)) := by
     intro i; funext j
     refine Fin.cases ?_ (fun j => ?_) j
-    · simp [Fin.succ_succAbove_zero]
+    · simp
     · simp [Fin.succ_succAbove_succ]
   rw [h0]
   simp only [hs, Fin.val_zero, pow_zero, one_mul, Fin.val_succ, pow_succ]
@@ -72,7 +72,7 @@ theorem prism_base (φ : Y → Y) (F : (Fin 2 → Y) → ℝ) (x : Fin 2 → Y) 
   simp only [prism, Fin.cons_zero, Fin.tail_cons]
   simp only [Fin.comp_cons]
   simp only [dc_cons, dc1]
-  simp only [Fin.cons_zero, Fin.cons_one, Fin.tail_cons, Function.comp_def]
+  simp only [Fin.cons_zero, Fin.cons_one, Function.comp_def]
   ring
 
 theorem prism_htpy (φ : Y → Y) : ∀ (m : ℕ) (F : (Fin (m + 2) → Y) → ℝ) (x : Fin (m + 2) → Y),

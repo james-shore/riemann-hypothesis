@@ -28,7 +28,6 @@ theorem cmap_comp {κ X A A' : Type} [AddCommGroup X] [CommRing A] [CommRing A']
   have hx := congrArg (fun f => ((Additive.toMul (f (Multiplicative.toAdd x)) : A'ˣ) : A')) hlin
   first
   | exact hx
-  | simpa using hx
 
 open ReciprocityTheory.ChartRestriction.G.Semi in
 theorem appLE_res {X Y : Scheme.{0}} (g : Y ⟶ X) {U U₀ : X.Opens} (hU : U ≤ U₀) {V W : Y.Opens}
@@ -40,6 +39,5 @@ theorem appLE_res {X Y : Scheme.{0}} (g : Y ⟶ X) {U U₀ : X.Opens} (hU : U �
   have h2 := congrArg (fun f => f.hom u.val) key
   first
   | exact h2
-  | simpa [res, pullU] using h2
 
 end ReciprocityTheory.ChartRestriction.G.Out.GtBCPf

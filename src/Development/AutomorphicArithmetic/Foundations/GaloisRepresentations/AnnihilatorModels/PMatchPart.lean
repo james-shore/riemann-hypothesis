@@ -61,7 +61,7 @@ theorem UpperTheory.Gal.crystallineComparison.matchPart_of :
       (redMod (ρ ϖ ^ (N + 1) ^ N) (Multiset.map (fun i k => ρ (u' i k)) Finset.univ.val)) := by
     have := (hSN (B ⧸ Ideal.span {ϖ ^ (N + 1) ^ N}) ι).1 _ (Ideal.quotientMap _ ρ hle) _ _ hsame
     convert this using 1 <;>
-      simp [redMod, Multiset.map_map, Function.comp_def, Ideal.quotientMap_mk]
+      simp [redMod, Multiset.map_map, Ideal.quotientMap_mk]
   have hM := hMatch (B ⧸ Ideal.span {1 - e}) (ρ ϖ) hnzd hu ι N
     (Multiset.map (fun i k => ρ (u i k)) Finset.univ.val)
     (Multiset.map (fun i k => ρ (u' i k)) Finset.univ.val) (by simp [hI]) (by simp [hI']) hsame' ?_ ?_

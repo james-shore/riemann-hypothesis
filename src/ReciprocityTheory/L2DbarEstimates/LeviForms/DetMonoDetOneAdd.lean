@@ -7,6 +7,6 @@ open Matrix
 open scoped ComplexOrder MatrixOrder
 
 theorem maDet (n : ℕ) : DetMonoStatement n := by
-  first | exact Bl.DetMonotoneStarMulSelf.goal1 .. | (apply Bl.DetMonotoneStarMulSelf.goal1 <;> assumption) | (intros; apply Bl.DetMonotoneStarMulSelf.goal1 <;> assumption)
+  first | exact Bl.DetMonotoneStarMulSelf.goal1 .. | (apply Bl.DetMonotoneStarMulSelf.goal1)
 
 end ReciprocityTheory.L2DbarEstimates.I

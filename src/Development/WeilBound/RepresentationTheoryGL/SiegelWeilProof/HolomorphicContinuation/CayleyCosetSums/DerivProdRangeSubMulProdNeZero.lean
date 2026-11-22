@@ -16,12 +16,12 @@ theorem embOn_single_pf (s : Finset (Fin n)) (a b : s) :
   ext i j
   by_cases hi : i = (a : Fin n) <;> by_cases hj : j = (b : Fin n)
   · subst hi hj
-    simp [embOn, Matrix.single_apply]
-  · simp only [embOn, Matrix.single_apply, hj, and_false, if_false]
+    simp [embOn]
+  · simp only [embOn, Matrix.single_apply]
     split_ifs with h h' <;> simp_all [Subtype.ext_iff]
-  · simp only [embOn, Matrix.single_apply, hi, false_and, if_false]
+  · simp only [embOn, Matrix.single_apply]
     split_ifs with h h' <;> simp_all [Subtype.ext_iff]
-  · simp only [embOn, Matrix.single_apply, hi, false_and, if_false]
+  · simp only [embOn, Matrix.single_apply]
     split_ifs with h h' <;> simp_all [Subtype.ext_iff]
 
 theorem deriv_prod_range_sub_mul_prod_ne_zero (n m : ℕ) (hmn : m < n) :

@@ -173,7 +173,7 @@ theorem jordan_exists (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF :
     ext v
     rw [mem_locF_span_iff hK hF hP b v, mem_locF_span_iff hK hF hP x v, hbS, hys]
   · rw [hb i, hb j]
-    simp only [map_smulₛₗ, LinearMap.smul_apply, map_smul, hyo i j hij, smul_zero]
+    simp only [map_smulₛₗ, LinearMap.smul_apply, hyo i j hij, smul_zero]
   · rw [hb i, ha i, map_smulₛₗ h, LinearMap.smul_apply, map_smul, smul_eq_mul, smul_eq_mul,
       starRingEnd_apply, hτfix]
     ring

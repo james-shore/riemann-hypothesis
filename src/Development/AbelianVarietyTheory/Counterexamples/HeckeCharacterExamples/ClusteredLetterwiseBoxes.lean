@@ -139,7 +139,6 @@ end
 
 theorem inert_iff (D : D7) (p : ℕ) : InertUnr D p ↔ TwistedPlaces.InertK D p := by
   unfold InertUnr TwistedPlaces.InertK
-  change _ ↔ D.host.cls p = _ ∨ D.host.cls p = _
   unfold Host.cls primeClass
   split_ifs <;> simp_all
 

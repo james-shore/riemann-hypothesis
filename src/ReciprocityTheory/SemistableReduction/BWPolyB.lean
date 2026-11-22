@@ -25,7 +25,7 @@ theorem bwp_ext_poly {σ : Type*} [Fintype σ] [DecidableEq σ] (k : ℕ) (g D :
       intro t; ext i
       by_cases hi : i = m
       · subst hi; simp [z, e]
-      · simp [z, e, Function.update_apply, hi, Pi.single_apply]
+      · simp [z, e, hi]
     let Pc : ℂ → ℂ[X] := fun c => if h : D (z + c • w) = 0 then 0 else P (z + c • w) e h
     let R : Finset ℂ → ℂ[X] := fun S =>
       ∑ c ∈ S, Polynomial.C ((Lagrange.basis S id c).eval 0) * Pc c

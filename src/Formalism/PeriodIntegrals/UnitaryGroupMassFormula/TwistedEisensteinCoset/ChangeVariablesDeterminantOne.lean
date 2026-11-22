@@ -30,7 +30,7 @@ theorem qt_transvec (t : TransvectionStruct ι E) :
     by_cases h : k = t.i
     · subst h
       simp [TransvectionStruct.toMatrix, Matrix.transvection, Matrix.add_mulVec,
-        Matrix.single_mulVec, em] <;> ring
+        Matrix.single_mulVec, em]
     · simp [TransvectionStruct.toMatrix, Matrix.transvection, Matrix.add_mulVec,
         Matrix.single_mulVec, em, h]
   exact qt_congr (qt_em hN hp hq hK t.i t.j one_ne_zero t.c 0 (Or.inl t.hij.symm)) hmv (by rw [t.det])
@@ -49,7 +49,7 @@ theorem qt_diag (D : ι → E) (hD : ∀ i, D i ≠ 0) :
         by_cases hk : k = a
         · subst hk
           simp [em, ha]
-        · simp [em, hk, Function.update_apply]
+        · simp [em, hk]
       · rw [Finset.sum_insert ha, zpow_add₀ hK, mul_comm]
   refine qt_congr (key Finset.univ) (fun v => by funext k; simp [Matrix.mulVec_diagonal]) ?_
   rw [Matrix.det_diagonal, vq_prod (s := Finset.univ) (f := D) (hf := fun i _ => hD i)]
@@ -96,7 +96,7 @@ theorem qt_transl (τ : ι → E) : QT P (fun v : ι → E => v + τ) (1 : K) :=
         by_cases hk : k = a
         · subst hk
           simp [em, ha]
-        · simp [em, hk, Function.update_apply]
+        · simp [em, hk]
       · rw [vq_one, zpow_zero, one_mul]
         all_goals assumption
   exact qt_congr (key Finset.univ) (fun v => by funext k; simp) rfl

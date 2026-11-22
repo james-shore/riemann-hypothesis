@@ -150,7 +150,7 @@ theorem cmul_comm (a b : ℤ → K) : cmul a b = cmul b a := by
 theorem cmul_single_zero_one (a : ℤ → K) : cmul a (Pi.single 0 1) = a := by
   funext n
   unfold cmul
-  rw [tsum_eq_single n fun i hi => by simp [Pi.single_apply, sub_eq_zero, Ne.symm hi]]
+  rw [tsum_eq_single n fun i hi => by simp [sub_eq_zero, Ne.symm hi]]
   simp
 
 theorem single_zero_one_cmul (a : ℤ → K) : cmul (Pi.single 0 1) a = a := by

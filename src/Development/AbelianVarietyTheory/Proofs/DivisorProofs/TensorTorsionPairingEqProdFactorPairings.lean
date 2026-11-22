@@ -99,7 +99,7 @@ theorem tk_tens (W : Matrix (Fin r) (Fin r) ℤ) (φ : N'.A → Fin r → N.A) (
   have hG := hq.2.2 p'.1.1.toAdd
   simp only [hU, ← Units.val_mul] at hG
   replace hG := Units.ext hG
-  simp only [hp.1, hq.2.1, ← N'.QT_pow_b p'] at hG
+  simp only [hp.1, ← N'.QT_pow_b p'] at hG
   have hX : ∀ i j, N.tk (qs i * qs j) (ps i * ps j) / (N.tk (qs i) (ps i) * N.tk (qs j) (ps j)) =
       (qs j).1.2.s (ps i).1.1.toAdd * (qs i).1.2.s (ps j).1.1.toAdd /
         (N.θ (N.c (ps j).1.1.toAdd) (qs j).1.2.b (N.c (ps i).1.1.toAdd) *

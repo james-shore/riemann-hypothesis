@@ -19,7 +19,7 @@ theorem UpperTheory.exists_polynomial_eq_map_eval_roots_of_perm_invariant :
   · intro S _ _ x hx
     ext n
     rw [Polynomial.coeff_map, Polynomial.coeff_map, Polynomial.finset_sum_coeff]
-    simp only [Polynomial.coeff_monomial, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_range]
+    simp only [Polynomial.coeff_monomial, Finset.sum_ite_eq', Finset.mem_range]
     split_ifs with hn
     · rw [AlgHom.toRingHom_eq_coe, RingHom.coe_coe, ha n S x hx]
     · rw [Polynomial.coeff_eq_zero_of_natDegree_lt (by omega)]

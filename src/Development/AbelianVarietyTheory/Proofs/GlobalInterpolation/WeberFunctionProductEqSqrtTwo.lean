@@ -58,7 +58,6 @@ theorem eulerProd_identity {t : ℂ} (ht : ‖t‖ < 1) :
   rw [← pow_mul] at c
   norm_num at c
   have d := oddProd_neg_mul ht
-  norm_num at c
   linear_combination (eulerProd t * eulerProd (t ^ 4)) * a + (oddProd (-t) * eulerProd (t ^ 2) * eulerProd (t ^ 4)) * b +
     (eulerProd (t ^ 2) ^ 2 * eulerProd (t ^ 4)) * d - eulerProd (t ^ 2) ^ 2 * c
 

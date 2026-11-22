@@ -29,7 +29,6 @@ theorem symm_iter : ∀ (n : ℕ) (W : Type) [NormedAddCommGroup W] [NormedSpace
   have hle : ∀ k : ℕ, ((k : ℕ) : WithTop ℕ∞) ≤ ∞ := fun k => by
     first
     | exact WithTop.coe_le_coe.2 le_top
-    | exact_mod_cast (le_top : ((k : ℕ∞)) ≤ ⊤)
   intro n
   induction n with
   | zero =>
@@ -79,7 +78,6 @@ theorem symm_iter : ∀ (n : ℕ) (W : Type) [NormedAddCommGroup W] [NormedSpace
         rw [iteratedFDeriv_succ_apply_left, iteratedFDeriv_succ_eq_comp_left, LinearIsometryEquiv.comp_fderiv]
         first
         | rfl
-        | simp [continuousMultilinearCurryLeftEquiv_symm_apply]
       rw [hrepr, hrepr]
       have hg : ContDiffAt ℝ 2 (iteratedFDeriv ℝ m f) x :=
         hfx.iteratedFDeriv_right (by have := hle (2 + m); push_cast at this ⊢; exact this)
@@ -178,7 +176,6 @@ theorem taylor_expansion_holds : GTCLRTaylor := by
   have hle : ∀ k : ℕ, ((k : ℕ) : WithTop ℕ∞) ≤ ((⊤ : ℕ∞) : WithTop ℕ∞) := fun k => by
     first
     | exact WithTop.coe_le_coe.2 le_top
-    | exact_mod_cast (le_top : ((k : ℕ∞)) ≤ ⊤)
   have hψat : ContDiffAt ℝ i ψ ζ₀ := (hψ.contDiffAt (hU.mem_nhds hζ)).of_le (hle i)
   have hS : ContDiff ℝ i (fun ζ : ℂ => ∑ j ∈ Finset.range (N + 1),
       ((j.factorial : ℝ)⁻¹) • iteratedFDeriv ℝ j ψ ζ₀ (fun _ => ζ - ζ₀)) :=

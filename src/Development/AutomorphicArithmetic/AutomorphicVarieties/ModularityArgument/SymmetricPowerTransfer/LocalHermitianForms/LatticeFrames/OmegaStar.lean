@@ -87,7 +87,7 @@ theorem poly_Mu {r : K} (h1 : r ≠ 0) (h2 : 2 + r ≠ 0) (hr : r ^ 2 = 2 + τ) 
   rcases ha with rfl | rfl <;> ext <;> simp [Mu] <;> field_simp <;> ring
 
 theorem u_norm {r : K} (h1 : r ≠ 0) (hr : r ^ 2 = 2 + τ) : (r⁻¹ • (1 + ω) : Etau K τ) * (r⁻¹ • (1 + star ω)) = 1 := by
-  ext <;> simp <;> field_simp <;> first | ring1 | linear_combination -hr | linear_combination -2 * hr
+  ext <;> simp <;> field_simp <;> first | ring1 | linear_combination -hr
 
 theorem Mu_Mu (a b : Etau K τ) (v : K × Etau K τ) : Mu a (Mu b v) = Mu (a * b) v := by simp [Mu, mul_assoc]
 
@@ -218,7 +218,7 @@ private theorem mkL_mu_half_one_add_omega_eq {R : K} (h1 : R ≠ 0) (h2 : 2 + R 
 private theorem sq_inv_smul_one_add_omega_eq_omega {R : K} (h1 : R ≠ 0) (hr : R ^ 2 = 2 + τ) :
     (R⁻¹ • (1 + ω) : Etau K τ) * (R⁻¹ • (1 + ω)) = ω := by
   ext <;> simp <;> field_simp <;>
-    first | ring1 | linear_combination hr | linear_combination -hr | linear_combination 2 * hr | linear_combination -2 * hr
+    first | ring1 | linear_combination hr | linear_combination -hr
 
 private theorem isInt_herm_mkL_iff_bf_integral (L : IsLoc O Δ) (hσ : Δ * σ ^ 2 = algebraMap O K ε) (hσ0 : σ ≠ 0)
     (v w v' w' : K × Etau K τ) :
@@ -364,7 +364,7 @@ theorem fix_down (L : IsLoc O Δ) (hσ : Δ * σ ^ 2 = algebraMap O K ε) (h1 : 
       obtain ⟨v', w', rfl⟩ := mkL_surj hσ0 x
       obtain ⟨hv'0, h0w'⟩ := hsplit v' w' hx
       rw [isInt_herm_mkL_iff_bf_integral L hσ hσ0]
-      simp only [map_zero, LinearMap.zero_apply, mul_zero, sub_zero]
+      simp only [map_zero, mul_zero, sub_zero]
       exact ⟨h v' hv'0, h w' (hswap1 w' h0w')⟩
   · ext v
     constructor

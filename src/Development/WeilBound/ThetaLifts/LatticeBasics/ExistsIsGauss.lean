@@ -27,7 +27,7 @@ theorem trace_evI (hF : IsTotallyReal F) (a : AF F) : Algebra.trace ℝ (mixedEm
     Algebra.trace_eq_matrix_trace (Pi.basisFun ℝ _), Matrix.trace]
   refine Fintype.sum_equiv (Equiv.subtypeUnivEquiv IsTotallyReal.isReal) _ _ fun w => ?_
   simp only [Matrix.diag, Algebra.leftMulMatrix_eq_repr_mul, Pi.basisFun_repr, Pi.basisFun_apply, Pi.mul_apply,
-    Pi.single_eq_same, mul_one, Equiv.subtypeUnivEquiv_apply]
+    Pi.single_eq_same, mul_one]
   exact congrArg Complex.re (InfinitePlace.Completion.extensionEmbeddingOfIsReal_apply w.2 (a.1 w.1))
 
 theorem piInf_cA (h : IsCMExt F E σ) {w : InfinitePlace F} (τ : EmbOver E w) (z : AE F E) :

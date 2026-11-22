@@ -159,8 +159,8 @@ theorem coef_mem (O : Type) [CommRing O] (N : ℕ) (ν : Fin N → ℕ) (m : Fin
     rw [rowSubst_eq_sum_genSub_of_parts]
     refine Finset.sum_subset (fun m' hm' => hs m' (genSub_coeff_le_of_parts O N D _ (totalDegree_le_of_mem_of_parts O N ν _ f.2) m'
       (MvPolynomial.mem_support_iff.1 hm'))) (fun m' _ hm' => ?_) |>.trans (Finset.sum_congr rfl fun m' _ => ?_)
-    · simp [Cm, MvPolynomial.notMem_support_iff.1 hm']
-    · simp only [Cm, LinearMap.coe_mk, AddHom.coe_mk, lduHom, aeval_monomial, map_one, one_mul]
+    · simp [MvPolynomial.notMem_support_iff.1 hm']
+    · simp only [Cm, lduHom, aeval_monomial, map_one, one_mul]
       rfl
   have hcoef : ∀ k : Fin N × Fin N →₀ ℕ, ∑ m' ∈ s, (lduHom O N (monomial m' 1)).coeff k • Cm m' =
       ∑ i, (r i).coeff k • Φ (p i) := by

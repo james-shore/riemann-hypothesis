@@ -24,8 +24,8 @@ theorem WittVector.ghostComponent_injective_of_noTorsion :
     have hn := h n
     rw [_root_.WittVector.ghostComponent_apply, _root_.WittVector.ghostComponent_apply,
       wittPolynomial_eq_sum_C_mul_X_pow] at hn
-    simp only [map_sum, map_mul, map_pow, MvPolynomial.aeval_C, MvPolynomial.aeval_X,
-      eq_intCast, Int.cast_natCast, map_natCast] at hn
+    simp only [map_sum, map_mul, map_pow, MvPolynomial.aeval_X,
+      map_natCast] at hn
     rw [Finset.sum_range_succ, Finset.sum_range_succ] at hn
     have hs : ∑ i ∈ Finset.range n, ((l : ℕ) : A) ^ i * x.coeff i ^ l ^ (n - i) =
         ∑ i ∈ Finset.range n, ((l : ℕ) : A) ^ i * y.coeff i ^ l ^ (n - i) :=

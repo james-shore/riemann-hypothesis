@@ -14,7 +14,6 @@ private lemma sum_erase_union_le (f : ℤ → ℕ) (A B : Finset ℤ) :
   have h := Finset.sum_union_inter (s₁ := A.erase 0) (s₂ := B.erase 0) (f := f)
   first
   | omega
-  | (rw [← h]; exact Nat.le_add_right _ _)
 
 private lemma sum_Icc_padicValNat_add_factorial_eq (ℓ : ℕ) [Fact ℓ.Prime] (m L : ℕ) :
     (∑ n ∈ Finset.Icc (m + 1) (m + L), padicValNat ℓ n) + padicValNat ℓ m.factorial =

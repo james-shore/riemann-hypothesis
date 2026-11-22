@@ -168,7 +168,7 @@ theorem UpperTheory.V.Z.Sym.Loc.pKappa :
       have e3 : ((PS.nU z : Kˣ) : K) ^ 2 * (QuadraticAlgebra.norm ((z ^ 2 * 1 * b⁻¹ : (Etau K τ)ˣ) : Etau K τ))⁻¹
           = algebraMap O K π := by
         rw [← PS.nU_val, ← hnb, ← PS.nU_val]
-        simp only [map_mul, map_pow, map_one, mul_one, map_inv, Units.val_mul, Units.val_pow_eq_pow_val,
+        simp only [map_mul, map_pow, mul_one, map_inv, Units.val_mul, Units.val_pow_eq_pow_val,
           Units.val_inv_eq_inv_val]
         field_simp
       rwa [e3] at h3

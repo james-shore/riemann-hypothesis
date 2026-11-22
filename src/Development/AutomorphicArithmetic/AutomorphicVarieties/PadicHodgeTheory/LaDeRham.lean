@@ -53,7 +53,7 @@ private theorem bridge_transfer {F E Ω : Type} [Field F] [NumberField F] [Field
     rw [← ecomm', MulEquiv.apply_symm_apply, Bw.e_comm]
   have hrep : Bw.repE L r₁ = Bw'.repE L r₀ := by
     refine MonoidHom.ext fun g => ?_
-    simp [LocBridge.repE, r₁, hB]
+    simp [LocBridge.repE, r₁]
     rfl
   have hV₁ : Bw.IsdRE P L r₁ := by
     unfold LocBridge.IsdRE at hV ⊢

@@ -172,14 +172,14 @@ private def eW {S : Scheme.{0}} (g : S ⟶ C) (s : S ⟶ B) (h : g ≫ π = s) :
   hom_inv_id := by
     apply pullback.hom_ext
     · apply pullback.hom_ext
-      · simp [pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
-      · simp [pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
-    · simp [pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+      · simp [pullback.lift_fst, pullback.lift_fst_assoc]
+      · simp [pullback.lift_fst, pullback.lift_snd]
+    · simp [pullback.lift_snd, pullback.lift_fst_assoc]
   inv_hom_id := by
     apply pullback.hom_ext
     · rw [Category.assoc, pullback.lift_fst, ← Category.assoc, ← Iso.eq_comp_inv, Category.id_comp]
-      apply pullback.hom_ext <;> simp [pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
-    · simp [pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+      apply pullback.hom_ext <;> simp [pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc]
+    · simp [pullback.lift_snd, pullback.lift_fst_assoc]
 
 end IsosW
 

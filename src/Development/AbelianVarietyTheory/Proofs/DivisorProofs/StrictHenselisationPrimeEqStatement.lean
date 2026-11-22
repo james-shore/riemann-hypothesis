@@ -29,4 +29,4 @@ theorem _root_.GlobalTheory.T.strict_henselisation_prime_eq : ∀ (T O : Type) [
         ∀ σ : D₁ →+* GlobalTheory.LocAcyc.GenFib T O,
           σ.comp (algebraMap (GlobalTheory.LocAcyc.GenFib T (Localization.AtPrime Q)) D₁) = ψ →
           Nonempty (D →ₐ[GlobalTheory.LocAcyc.GenFib T O] GlobalTheory.LocAcyc.GenFib T O) := by
-  first | (exact @GlobalTheory.KeyOriginCut.exists_stage_torsor) | (exact GlobalTheory.KeyOriginCut.exists_stage_torsor) | (intros; apply GlobalTheory.KeyOriginCut.exists_stage_torsor  <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginCut.exists_stage_torsor)

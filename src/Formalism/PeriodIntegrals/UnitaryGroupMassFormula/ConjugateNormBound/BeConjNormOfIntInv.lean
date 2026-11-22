@@ -18,7 +18,6 @@ theorem coeff_one_subst (a f : PowerSeries ℂ_[p]) (ha : PowerSeries.constantCo
   have hs : PowerSeries.HasSubst a := by
     first
     | exact PowerSeries.HasSubst.of_constantCoeff_zero' ha
-    | exact PowerSeries.HasSubst.of_constantCoeff_zero ha
   have h1 : PowerSeries.coeff 1 (PowerSeries.subst a f : PowerSeries ℂ_[p]) =
       ∑ᶠ k : ℕ, PowerSeries.coeff k f * PowerSeries.coeff 1 (a ^ k) :=
     (PowerSeries.coeff_subst hs f (Finsupp.single () 1)).trans (finsum_congr fun k => smul_eq_mul _ _)
@@ -40,7 +39,6 @@ private theorem coeff_zero_subst_of_constantCoeff_eq_zero (a f : PowerSeries ℂ
   have hs : PowerSeries.HasSubst a := by
     first
     | exact PowerSeries.HasSubst.of_constantCoeff_zero' ha
-    | exact PowerSeries.HasSubst.of_constantCoeff_zero ha
   have h1 : PowerSeries.coeff 0 (PowerSeries.subst a f : PowerSeries ℂ_[p]) =
       ∑ᶠ k : ℕ, PowerSeries.coeff k f * PowerSeries.coeff 0 (a ^ k) :=
     (PowerSeries.coeff_subst hs f (Finsupp.single () 0)).trans (finsum_congr fun k => smul_eq_mul _ _)

@@ -26,8 +26,8 @@ theorem dg_one : dg (1 : Fin n → ℂˣ) = 1 := by
 noncomputable def pm (σ : Equiv.Perm (Fin n)) : GL (Fin n) ℂ where
   val := σ.toPEquiv.toMatrix
   inv := σ.symm.toPEquiv.toMatrix
-  val_inv := by rw [PEquiv.toMatrix_toPEquiv_mul]; ext i j; simp [one_apply, eq_comm]
-  inv_val := by rw [PEquiv.toMatrix_toPEquiv_mul]; ext i j; simp [one_apply, eq_comm]
+  val_inv := by rw [PEquiv.toMatrix_toPEquiv_mul]; ext i j; simp [one_apply]
+  inv_val := by rw [PEquiv.toMatrix_toPEquiv_mul]; ext i j; simp [one_apply]
 
 theorem pm_mul_dg (σ : Equiv.Perm (Fin n)) (d : Fin n → ℂˣ) :
     pm σ * dg d = dg (d ∘ σ) * pm σ := by
@@ -103,7 +103,7 @@ theorem char_dg (χ : GL (Fin n) ℂ →* ℝ≥0) (hz : ∀ z : GL (Fin n) ℂ,
     intro k l
     rw [hv_def, Finset.prod_apply, Finset.prod_apply]
     exact Fintype.prod_equiv (Equiv.mulRight (Equiv.swap k l)) _ _
-      (fun σ => by simp [Equiv.Perm.mul_apply, Equiv.swap_apply_right])
+      (fun σ => by simp [Equiv.swap_apply_right])
   have hcent : ∀ g, dg v * g = g * dg v := by
     intro g
     ext1

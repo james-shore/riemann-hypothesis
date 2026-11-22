@@ -38,7 +38,7 @@ theorem pt_inj (hc : Spec.map φ ≫ jU = jW ≫ Z.hom) [IsOpenImmersion jW] {G 
     [Mono i] {R : CommRingCat.{0}} {χ : A ⟶ R} (ψ ψ' : B ⟶ R) (h : φ ≫ ψ = χ) (h' : φ ≫ ψ' = χ)
     (e : pt hc ψ h ≫ i = pt hc ψ' h' ≫ i) : ψ = ψ' := by
   have e1 := congrArg CommaMorphism.left (cancel_mono i |>.mp e)
-  simp only [pt, Over.homMk_left] at e1
+  simp only [pt] at e1
   exact Spec.map_injective ((cancel_mono jW).mp e1)
 
 end GlobalTheory.FiniteKilled

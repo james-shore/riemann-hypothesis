@@ -15,8 +15,6 @@ namespace GlobalTheory.HalfUnit
 theorem cc_star (D : D7) (x : D.host.E) : cc (star x) = x := by
   first
   | exact star_star x
-  | rfl
-  | simp [cc]
 
 theorem mem_conjI_of (D : D7) (P : Ideal (𝓞 D.host.E)) (s : 𝓞 D.host.E)
     (h : Formalism.L2.Col.cO D.host.E s ∈ P) : s ∈ conjI P :=

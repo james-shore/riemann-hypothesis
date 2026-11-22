@@ -69,8 +69,6 @@ theorem exists_max_over (D : D7) (𝔪 : Ideal (𝓞 D.host.E)) (h0 : 𝔪 ≠ �
   | exact @_root_.GlobalTheory.MaximalIdealDividingNorm.exists_maximal_above_of_dvd_norm_host
   | exact _root_.GlobalTheory.MaximalIdealDividingNorm.exists_maximal_above_of_dvd_norm_host
   | (apply _root_.GlobalTheory.MaximalIdealDividingNorm.exists_maximal_above_of_dvd_norm_host <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MaximalIdealDividingNorm.exists_maximal_above_of_dvd_norm_host <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MaximalIdealDividingNorm.exists_maximal_above_of_dvd_norm_host <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MaximalIdealDividingNorm.exists_maximal_above_of_dvd_norm_host ..)
 
 theorem coprime_of_inert (D : D7) (𝔪 : Ideal (𝓞 D.host.E)) (h0 : 𝔪 ≠ ⊥) (hc : IsCoprime 𝔪 (D.host.conj • 𝔪))

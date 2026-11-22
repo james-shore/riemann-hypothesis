@@ -136,7 +136,7 @@ theorem _root_.GlobalTheory.T.exists_representatives_half_quotient_pairing_trivi
   let f : ↥A →+ ↥Λ :=
     { toFun := fun y => ⟨K • (y : WO (G.pS (.core i)) (G.pT (.core i))), hKy _ y.2.1 y.2.2⟩
       map_zero' := by ext1; simp
-      map_add' := fun a b => by ext1; simp [nsmul_add] }
+      map_add' := fun a b => by ext1; simp }
   let g : ↥A →+ ↥Λ ⧸ N := (QuotientAddGroup.mk' N).comp f
   have hker : ∀ y : ↥A, y ∈ g.ker ↔ (y : WO (G.pS (.core i)) (G.pT (.core i))) ∈ Λ := by
     intro y

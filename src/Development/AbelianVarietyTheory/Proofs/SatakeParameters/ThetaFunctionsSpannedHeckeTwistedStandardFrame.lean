@@ -47,7 +47,7 @@ theorem main : ∀ (D : D7) (ψ : AddChar (Formalism.MainNotions.GlobalTheoryThe
     (((ηw (Matrix.GeneralLinearGroup.det (Matrix.GeneralLinearGroup.map c.toRingHom (s.loc n h))) : ℂˣ) : ℂ) • τ Φ') (by
       rw [Submodule.coe_smul, hτom μw _ _ Φ Φ' hΦ'']
       congr 2
-      simp [mul_inv_rev, mul_comm])
+      simp [mul_inv_rev])
   simp only [LinearMap.comp_apply, MonoidHom.comp_apply]
   show om (PV.ψ h, PW.ψ g) (Tm (τ Φ)) = _
   rw [key, map_smul]

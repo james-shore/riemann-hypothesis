@@ -186,7 +186,7 @@ theorem nonempty_prodPG_zero {i : ℕ} {V W : Type} [AddCommGroup V] [Module ℂ
 theorem dpowM_zero (n : ℕ) : dpowM (k := k) n (((0 : ℕ) : ℝ) / 2) = 1 := by
   have h0 : (((((0 : ℕ) : ℝ) / 2 : ℝ)) : ℂ) = 0 := by simp
   ext g
-  simp [dpowM, dpow, h0, detChar]
+  simp [dpowM, dpow, detChar]
 
 theorem mtw_zero_rho {n : ℕ} (τ : MRep k n) : (mtw τ (((0 : ℕ) : ℝ) / 2)).ρ = τ.ρ := by
   show twist τ.ρ (dpowM n (((0 : ℕ) : ℝ) / 2)) = τ.ρ

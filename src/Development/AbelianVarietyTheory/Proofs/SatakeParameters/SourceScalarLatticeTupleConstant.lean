@@ -55,7 +55,7 @@ theorem source_scalar_const : AllSites (fun {D L hT Gi Gl Kc Dx cX ex u μ w hg 
   generalize (embT D τ) (d.gam j hj.le La).1.det = g at hgn ⊢
   generalize (embT D τ) (gMat J j hj.le 1).det = G
   generalize e τ = ee
-  simp only [mul_zpow, zpow_neg, zpow_sub₀ hm, zpow_sub₀ hgn, zpow_add₀ hm, zpow_add₀ hgn]
+  simp only [mul_zpow, zpow_neg, zpow_sub₀ hm, zpow_sub₀ hgn, zpow_add₀ hgn]
   field_simp
   ring
 

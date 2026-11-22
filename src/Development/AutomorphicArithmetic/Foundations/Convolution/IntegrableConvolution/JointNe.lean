@@ -29,7 +29,7 @@ theorem UpperTheory.ConvolutionTheory.L1.jointNe :
   obtain ⟨hcl, hinv, hirr⟩ := UpperTheory.ConvolutionTheory.L1.cutIrr Γ G H π V m ι E A U h
   have hmemVE : ∀ w, w ∈ eigIn V E 1 ↔ w ∈ V ∧ E w = w := by
     intro w
-    simp [eigIn, Module.End.mem_eigenspace_iff, Submodule.mem_inf]
+    simp [eigIn, Submodule.mem_inf]
   have hmemZ : ∀ (k : Fin (m + 1)) w, w ∈ eigIn (eigIn V E 1) (A k) y ↔
       w ∈ eigIn V E 1 ∧ A k w = (y : ℂ) • w := by
     intro k w

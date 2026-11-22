@@ -113,7 +113,7 @@ theorem spec_good (D : D7) (C A : Type) [AddCommGroup C] [CommGroup A] (u : Univ
         have z1 : idemAt P' * idemAt PP = 0 := h.1.mul_eq_zero hP' hPP (Ne.symm hne)
         have z2 : idemAt PP * cA D (idemAt P') = 0 := h.1.mul_conj hPP hP'
         linear_combination (idemAt P' + cA D (idemAt P')) * h1 + ((x : AE D) - 1) * (z1 + z2)
-      simp [UnivTwist.delQ, hd, Pi.single_apply, hne]
+      simp [UnivTwist.delQ, hd, Pi.single_apply]
       intro e
       exact absurd (congrArg Subtype.val e) hne
 

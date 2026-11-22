@@ -13,8 +13,7 @@ theorem UpperTheory.V.KT.blockdet :
         Matrix.kronecker (1 : Matrix (Fin N) (Fin N) ℂ) E := by
     ext ⟨i, a⟩ ⟨j, b⟩
     simp [Matrix.mul_apply, Fintype.sum_prod_type, Matrix.one_apply, Matrix.blockDiagonal_apply,
-      Matrix.kronecker, Matrix.kroneckerMap_apply, ite_mul, mul_ite, Finset.sum_ite_eq,
-      Finset.sum_ite_eq', Matrix.conjTranspose_apply]
+      Matrix.kronecker, Matrix.kroneckerMap_apply, ite_mul, mul_ite, Finset.sum_ite_eq', Matrix.conjTranspose_apply]
     refine Finset.sum_congr rfl fun x _ => ?_
     rw [Finset.sum_eq_single i]
     · simp

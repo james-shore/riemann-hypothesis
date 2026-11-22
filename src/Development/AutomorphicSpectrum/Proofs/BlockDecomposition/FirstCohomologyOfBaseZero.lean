@@ -57,7 +57,6 @@ theorem box_square (f : Z1 (box F)) {a a' b b' : C} (φ : a ⟶ a') (ψ : b ⟶ 
   rw [mp_box_right] at e1
   rw [mp_box_left] at e2
   rw [← e1, ← e2]
-  congr 1
   simp
 
 end Kunneth
@@ -76,7 +75,6 @@ theorem kunneth (R : Type) [CommRing R] (C : Type) [Category.{0} C] [Finite C] [
     have e := Z1.comp f (show ((T, b) : C × C) ⟶ (T', b) from (φ, 𝟙 b)) (show ((T', b) : C × C) ⟶ (T'', b) from (ψ, 𝟙 b))
     rw [mp_box_left] at e
     rw [← e]
-    congr 1
     simp
     rfl
   choose t ht using hz

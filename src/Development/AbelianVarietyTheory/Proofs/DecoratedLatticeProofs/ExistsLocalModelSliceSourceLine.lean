@@ -153,7 +153,7 @@ theorem exists_isModel_slice : ∀ (D : D7) (k : Type) [Field k] [ValuativeRel k
       intro t
       rw [tens_apply, tens_apply, hΦ]
       congr 2
-      ext i j; simp [Matrix.toCols₁, fromCols]
+      ext i j; simp [fromCols]
     have h2 := hT.trans (fromCols x 0) _ _ h1
     funext u
     rw [hT₁, h2, ← up_slice S FS h x]

@@ -84,9 +84,7 @@ theorem irr_iff {G : Type} [Group G] {V : Type} [AddCommGroup V] [Module ℂ V]
   first
   | exact @_root_.GlobalTheory.SubrepTopBot.main
   | exact _root_.GlobalTheory.SubrepTopBot.main
-  | (apply _root_.GlobalTheory.SubrepTopBot.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SubrepTopBot.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SubrepTopBot.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.SubrepTopBot.main)
   | (intros; exact _root_.GlobalTheory.SubrepTopBot.main ..)
 
 theorem irr_conj (e : W ≃ₗ[ℂ] W') {ρ : Representation ℂ (GQ L n) W} (h : ρ.IsIrreducible) :

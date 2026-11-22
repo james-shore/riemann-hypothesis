@@ -153,7 +153,7 @@ theorem Q_of_Q_sub_one
         sub_self]
   obtain ⟨k', f', b'', y'', hb'', hby''⟩ := ih l w'' z'' hw'' hz'' hw''0 hz''0
   refine ⟨k', f' ≫ h ≫ f, b'' + pb (K.map f') v + pb (K.map (f' ≫ h)) σ, y'' + ρ, ?_, ?_⟩
-  · simp only [δ_add, δ_pb, hb'', hw''def, hw'def, pb_sub, pb_pb, Functor.map_comp, Category.assoc]
+  · simp only [δ_add, δ_pb, hb'', hw''def, hw'def, pb_sub, pb_pb, Functor.map_comp]
     abel
   · simp only [pb_add, pb_pb, c.w, hby'', hz''def, hz'def, δ_add]
     abel

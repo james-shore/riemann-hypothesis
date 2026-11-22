@@ -38,14 +38,14 @@ theorem blow_transpose {n : ℕ} (A : Matrix (Fin n) (Fin n) (w.adicCompletion E
   ext i j
   by_cases hij : i = j
   · subst hij; simp [blow]
-  · simp [blow, Matrix.one_apply, hij, Ne.symm hij]
+  · simp [blow, hij, Ne.symm hij]
 
 theorem blow_map_cA (σ : E →ₐ[F] E) {c : w.adicCompletion E →+* w.adicCompletion E} (hc : IsConjAt σ h c) {n : ℕ}
     (A : Matrix (Fin n) (Fin n) (w.adicCompletion E)) : (blow hw h A).map (cA σ) = blow hw h (A.map c) := by
   ext i j
   by_cases hij : i = j
   · subst hij; simp [blow, cA_ptAt hw h σ hc]
-  · simp [blow, Matrix.one_apply, hij, cA_ptAt hw h σ hc]
+  · simp [blow, hij, cA_ptAt hw h σ hc]
 
 theorem map_pt_mul_incM {n : ℕ} (A : Matrix (Fin n) (Fin n) (w.adicCompletion E)) (J : Matrix (Fin n) (Fin n) E) :
     A.map (ptAt hw h) * incM F J = (A * J.map (algebraMap E _)).map (ptAt hw h) := by
@@ -245,7 +245,7 @@ theorem GlobalTheory.InertPlace.exists_hom_inert : ∀ (F E : Type) [Field F] [N
     ext i j
     by_cases hij : i = j
     · subst hij; simp [blow, locW_ptAt]
-    · simp [blow, Matrix.one_apply, hij, locW_ptAt]
+    · simp [blow, hij, locW_ptAt]
   · refine ⟨hAt g, fun z hz => ⟨?_, ?_⟩⟩
     · show ((embHom hw h P φ g : GL (Fin n) (AE F E)) : Matrix (Fin n) (Fin n) (AE F E)) *ᵥ z ∈ _
       rw [embHom_val]

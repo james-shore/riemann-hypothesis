@@ -111,8 +111,7 @@ private theorem conj_push {D : Type} [Group D] (r : D →* GG 3 R) (h : GL (Fin 
     (conjBy (GeneralLinearGroup.map (f : R →+* R') h)⁻¹ (UnitaryThreeInertia.push f r) g).mat a b = f ((conjBy h⁻¹ r g).mat a b) := by
   have e : conjBy (GeneralLinearGroup.map (f : R →+* R') h)⁻¹ (UnitaryThreeInertia.push f r) g =
       GG.map (f : R →+* R') (conjBy h⁻¹ r g) := by
-    simp only [conjBy, UnitaryThreeInertia.push, MonoidHom.comp_apply, MulEquiv.coe_toMonoidHom, MulAut.conj_apply, map_mul,
-      map_inv, inv_inv]
+    simp only [conjBy, UnitaryThreeInertia.push, MonoidHom.comp_apply, MulEquiv.coe_toMonoidHom, map_inv]
     simp [GG.map, SemidirectProduct.map_inl]
   rw [e, GG.map_mat]
   rfl
@@ -192,7 +191,6 @@ private theorem cut_TD {D : Type} [Group D] (η : D →* ℤˣ) (Ψ : D →* Oˣ
     exact canon_map.1 (f : R →+* R') _ h hh
   refine ⟨Cut.congr CT ?_, Cut.congr (Cut.and CT CL) ?_⟩
   · intro R' _ _ _ f
-    beta_reduce
     rw [(cond_iff_canon η Ψ I (UnitaryThreeInertia.push f r) x _ (red_push hr f) hx hu (hcan R' f)).1]
     constructor
     · rintro ⟨ht, hi⟩
@@ -208,7 +206,6 @@ private theorem cut_TD {D : Type} [Group D] (η : D →* ℤˣ) (Ψ : D →* Oˣ
       · rw [conj_push, ht g hg (a, b) hab, map_zero]
       · rw [conj_push, hi s hs hs1 a, AlgHom.commutes]
   · intro R' _ _ _ f
-    beta_reduce
     rw [(cond_iff_canon η Ψ I (UnitaryThreeInertia.push f r) x _ (red_push hr f) hx hu (hcan R' f)).2]
     constructor
     · rintro ⟨⟨ht, hi⟩, hl⟩
@@ -233,7 +230,6 @@ private theorem cut_U {D : Type} [Group D] (η : D →* ℤˣ) (Ψ : D →* Oˣ)
   refine Cut.congr (Cut.all fun s => Cut.all fun _ : s ∈ kerBar η Ψ I => Cut.all fun p : Fin 3 × Fin 3 =>
     Cut.eq ((r s).mat p.1 p.2) ((1 : Matrix (Fin 3) (Fin 3) R) p.1 p.2)) ?_
   intro R' _ _ _ f
-  beta_reduce
   have hone : ∀ a b, f ((1 : Matrix (Fin 3) (Fin 3) R) a b) = (1 : Matrix (Fin 3) (Fin 3) R') a b := by
     intro a b
     rw [Matrix.one_apply, Matrix.one_apply]
@@ -275,11 +271,10 @@ private theorem cut_N {D : Type} [Group D] (c g : D) (r : D →* GG 3 R) :
     (Cut.all fun p : Fin 3 × Fin 3 => Cut.eq ((r c).mat p.1 p.2) ((1 : Matrix (Fin 3) (Fin 3) R) p.1 p.2))
     (Cut.and (Cut.eq (zmat c g r 0 1) 0) (Cut.eq (zmat c g r 1 0) 0))) ?_
   intro R' _ _ _ f
-  beta_reduce
   have hm : ∀ x, (UnitaryThreeInertia.push f r x).mat = (r x).mat.map f := fun x => GG.map_mat _ _
   have hz : ∀ a b, zmat c g (UnitaryThreeInertia.push f r) a b = f (zmat c g r a b) := by
     intro a b
-    simp [zmat, hm, Matrix.sub_apply, map_sub]
+    simp [zmat, Matrix.sub_apply, map_sub]
   have hone : ∀ a b, f ((1 : Matrix (Fin 3) (Fin 3) R) a b) = (1 : Matrix (Fin 3) (Fin 3) R') a b := by
     intro a b
     rw [Matrix.one_apply, Matrix.one_apply]
@@ -323,7 +318,6 @@ private theorem cut_pt {G Γ ι : Type} [Group G] [Group Γ] [TopologicalSpace �
         (Cut.all fun _ : v ∉ F.Tb => cut_U (F.ηv v) (F.Ψv v) (F.Iv v) _ (hloc v))))
     (cut_N F.c g₁ r)) ?_
   intro R' _ _ _ f
-  beta_reduce
   constructor
   · intro h
     exact ⟨fun v => h.loc v, h.norm⟩

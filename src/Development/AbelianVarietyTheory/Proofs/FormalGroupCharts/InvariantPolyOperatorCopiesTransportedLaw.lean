@@ -19,7 +19,7 @@ theorem dofN_ev {m : ℕ} (F : Fin d → PS k 2 d) (b : Fin n) (u : Fin d → k)
     DofN F b u (ev V g) = ∑ c : Fin m, ∑ l : Fin d, ev V (pderiv k (c, l) g) * DofN F b u (V c l) := by
   unfold DofN
   simp only [pderiv_ev V hV]
-  simp only [Finset.mul_sum (s := (Finset.univ : Finset (Fin m))), Finset.mul_sum (f := fun l => ev V _ * _)]
+  simp only [Finset.mul_sum (s := (Finset.univ : Finset (Fin m)))]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun c _ => ?_
   simp only [Finset.mul_sum]

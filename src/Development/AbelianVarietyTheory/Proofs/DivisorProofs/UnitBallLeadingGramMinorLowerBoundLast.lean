@@ -145,7 +145,7 @@ theorem finiteRing_sq_sub_mul_sq_eq_of_card (X : Data E (p + 1)) (hp : X.p0 = p)
       split_ifs with h
       · have hi : (i : ℕ) = 0 := by omega
         have hj : (j : ℕ) = 0 := by omega
-        simp [lowMat, hi, hj, Fin.ext_iff]
+        simp [lowMat, hi, hj]
       · rfl
     rw [hB]
     rfl
@@ -187,9 +187,8 @@ theorem finiteRing_sq_sub_mul_sq_eq_of_card (X : Data E (p + 1)) (hp : X.p0 = p)
         Fin.castSucc (⟨a, by omega⟩ : Fin p) := fun a => Fin.ext rfl
     rw [Matrix.submatrix_apply, hc, hc, entry_tdm, Fin.sum_univ_castSucc]
     simp only [n_top X hp, n_last X hp, Fin.val_castSucc, Fin.val_last, sgn, hp, Fin.is_lt, if_true,
-      lt_irrefl, if_false, Matrix.transpose_apply, Matrix.sub_apply, Matrix.mul_apply,
-      Matrix.conjTranspose_apply, Matrix.vecMulVec_apply, Matrix.vecMul, dotProduct, Pi.star_apply, N, q, ← hw]
-    simp only [Matrix.mul_apply, Matrix.conjTranspose_apply, Complex.ofReal_one, Complex.ofReal_neg,
+      lt_irrefl, if_false, Matrix.transpose_apply, Matrix.sub_apply, Matrix.vecMulVec_apply, Matrix.vecMul, dotProduct, Pi.star_apply, N, q, ← hw]
+    simp only [Complex.ofReal_one, Complex.ofReal_neg,
       mul_one, Complex.star_def]
     rw [sub_eq_add_neg]
     congr 1

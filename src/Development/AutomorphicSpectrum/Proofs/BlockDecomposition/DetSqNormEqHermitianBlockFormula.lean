@@ -51,9 +51,9 @@ theorem norm_det_bottom_block_sq :
       rw [hinv]
       ring
     have e3 : ((‖η‖ ^ 2 : ℝ) : ℂ) * ((s : ℂ) * (s : ℂ)) = ((‖η‖ ^ 2 * (s * s) : ℝ) : ℂ) := by
-      first | (push_cast; ring) | push_cast | simp
+      first | (push_cast; ring)
     rw [e3, e2]
-    first | (push_cast; ring) | push_cast | simp
+    first | (push_cast; ring)
   have ha' : star (-(η * (s : ℂ))) * -(η * (s : ℂ)) = (s : ℂ)⁻¹ * (s : ℂ)⁻¹ := by
     rw [mul_comm]; exact ha
   have hs_ij : ∀ i j, star (h i j) = h j i := by
@@ -117,6 +117,5 @@ theorem norm_det_bottom_block_sq :
   have hre := congrArg Complex.re hdet
   first
     | (rw [Complex.ofReal_re, Complex.re_ofReal_mul] at hre; exact hre)
-    | (simpa [Complex.mul_re] using hre)
 
 end GlobalTheory.CompanionTheory.KWhit

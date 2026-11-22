@@ -110,7 +110,7 @@ theorem exists_poly (K : FinExt l) (s : ℕ) (hs : 1 ≤ s) (ζ : Om l) (hζ : I
       ← natDegree_cyclotomic (l ^ s) ↥(K0 K), ← GlobalTheory.Cyc.minpoly_unramifiedSubfield_eq_cyclotomic K s hs ζ hζ]
     exact natDegree_modByMonic_lt _ (minpoly.monic hint) (minpoly.ne_one _ _)
   · rw [taylor_apply, aeval_comp]
-    simp only [map_add, aeval_X, aeval_C, map_one, sub_add_cancel]
+    simp only [map_add, aeval_X, map_one, sub_add_cancel]
     exact aeval_modByMonic_eq_self_of_root (minpoly.aeval _ _)
 
 theorem main : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (s : ℕ), 1 ≤ s → ∀ ζ : Om l, IsPrimitiveRoot ζ (l ^ s) → ∀ t : OC l, (t : ℂ_[l]) = ((ζ - 1 : Om l) : ℂ_[l]) → (∀ r : Polynomial (WK K), r.natDegree < l ^ (s - 1) * (l - 1) → r.eval₂ (intToOC (unr K)) t = 0 → r = 0) ∧ (K.1 ≤ Ks K s → ∀ x : ↥(OL K), ∃ r : Polynomial (WK K), r.eval₂ (intToOC (unr K)) t = intToOC K x) := by

@@ -150,7 +150,7 @@ theorem glift_mem (g : HA R2 σ J) : glift R1 R2 (HA.mat R2 σ J g) ∈ HR (R1 �
   apply mext
   · rw [Matrix.map_mul, Matrix.map_mul, map_fst_conj_transpose, map_fst_form, matrix_lift_fst]
     ext i j
-    simp [Formalism.UG.cT, Matrix.one_apply]
+    simp [Formalism.UG.cT]
   · rw [Matrix.map_mul, Matrix.map_mul, map_snd_conj_transpose, map_snd_form, matrix_lift_snd]
     exact hg
 

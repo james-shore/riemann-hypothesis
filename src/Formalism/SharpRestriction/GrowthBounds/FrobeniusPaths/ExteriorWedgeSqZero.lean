@@ -193,7 +193,7 @@ lemma w_single (a : Fin k) (I : Finset (Fin k)) (c : A) :
       by_cases hJ : J = insert a I
       · subst hJ
         rw [Finset.erase_insert haI]
-        simp [Pi.single_apply]
+        simp
       · have hne : J.erase a ≠ I := fun h => hJ (by rw [← h, Finset.insert_erase haJ])
         rw [Pi.single_apply, if_neg hne, Pi.single_apply, if_neg hJ, mul_zero]
     · rw [if_neg haJ, Pi.single_apply, if_neg (fun (h : J = insert a I) => haJ (h ▸ Finset.mem_insert_self a I))]

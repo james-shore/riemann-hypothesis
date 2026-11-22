@@ -22,10 +22,10 @@ private def eD : (V →L[ℂ] ℂ) ≃ₗ[ℂ] EuclideanSpace ℂ (Fin (Module.f
     ext v
     have h := (stdOrthonormalBasis ℂ V).sum_repr' v
     conv_rhs => rw [← h]
-    simp [ContinuousLinearMap.sum_apply, map_sum, mul_comm]
+    simp [map_sum, mul_comm]
   right_inv y := by
     ext j
-    simp [ContinuousLinearMap.sum_apply, OrthonormalBasis.inner_eq_ite]
+    simp [OrthonormalBasis.inner_eq_ite]
 
 private theorem eD_apply (ξ : V →L[ℂ] ℂ) (i) : eD ξ i = ξ (stdOrthonormalBasis ℂ V i) := rfl
 
@@ -75,11 +75,11 @@ private theorem trace_pr (A : V →L[ℂ] V) :
   simp only [Matrix.trace, Matrix.diag, LinearMap.toMatrix_apply]
   refine Finset.sum_congr rfl fun i _ => ?_
   simp only [OrthonormalBasis.coe_toBasis_repr_apply, OrthonormalBasis.coe_toBasis, OrthonormalBasis.repr_apply_apply,
-    EuclideanSpace.basisFun_apply, EuclideanSpace.basisFun_repr, ContinuousLinearMap.coe_coe, pr_apply, eD_apply]
+    EuclideanSpace.basisFun_apply, ContinuousLinearMap.coe_coe, pr_apply]
   rw [EuclideanSpace.inner_single_left, map_one, one_mul, eD_apply, ContinuousLinearMap.comp_apply]
   show (∑ j, (EuclideanSpace.single i (1 : ℂ)) j • innerSL ℂ (stdOrthonormalBasis ℂ V j))
     (A (stdOrthonormalBasis ℂ V i)) = _
-  simp [ContinuousLinearMap.sum_apply, EuclideanSpace.single_apply]
+  simp
 
 end SlopeTestRemainingChoices
 
@@ -99,7 +99,6 @@ theorem UpperTheory.RealTr.dualEx :
   have hinv : Continuous (fun k : UK n => k⁻¹) := by
     first
     | exact continuous_inv
-    | exact Continuous.subtype_mk (continuous_star.comp continuous_subtype_val) _
   let ρ' : UK n →* (EuclideanSpace ℂ (Fin (Module.finrank ℂ E.V)) →L[ℂ] EuclideanSpace ℂ (Fin (Module.finrank ℂ E.V))) :=
     { toFun := fun k => pr (E.ρ k⁻¹)
       map_one' := by simp [pr_one]

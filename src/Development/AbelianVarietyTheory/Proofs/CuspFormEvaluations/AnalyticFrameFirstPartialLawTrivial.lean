@@ -36,7 +36,7 @@ theorem tay_coord {N : ℕ} (k : Fin N) : tay (fun v : Fin N → ℂ => v k) 0 =
     rw [this, TM.tay_const, MvPowerSeries.pderiv_X]
     by_cases h : k = j
     · subst h; simp
-    · simp [h, Prod.ext_iff, Ne.symm h]
+    · simp [h, Prod.ext_iff]
   · rw [constantCoeff_tay, TM.mD_zero]; simp
 
 theorem jetOf_coord {N : ℕ} (m : ℕ) (k : Fin N) :

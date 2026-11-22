@@ -83,7 +83,6 @@ theorem pts_eps_of_mul : ∀ {E : Type} [Field E] [NumberField E] [IsCMField E] 
   have hr : r ≫ spMap f = r ≫ spMap (GlobalTheory.RigChart.constHom f) := by
     simp only [r, spMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp]
     congr 2
-    all_goals (ext z; simp [GlobalTheory.RigChart.constHom])
   have heq : ∀ y, x y = x₂ y := by
     intro y
     let X : 𝟙_ (Over (Sp (DualNumber k))) ⟶ o'.t.G := Over.homMk (x y) (hxG y)

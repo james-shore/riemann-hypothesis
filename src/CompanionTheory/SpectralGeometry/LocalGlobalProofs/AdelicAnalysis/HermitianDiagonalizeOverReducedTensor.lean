@@ -340,7 +340,7 @@ theorem split_step (ih : DiagProp (R := R) A s ι) {S : Matrix (Unit ⊕ ι) (Un
     have e1 : (u • (1 : Matrix Unit Unit A)) * (-(v • b)) + b = 0 := by
       simp [smul_smul, huv']
     have e2 : -(v • c) * (u • (1 : Matrix Unit Unit A)) + c = 0 := by
-      simp [smul_smul, huv, huv']
+      simp [smul_smul, huv]
     simp only [Matrix.one_mul, Matrix.zero_mul, Matrix.mul_one, Matrix.mul_zero, add_zero, zero_add, e2, e1]
     congr 1
     rw [hd']

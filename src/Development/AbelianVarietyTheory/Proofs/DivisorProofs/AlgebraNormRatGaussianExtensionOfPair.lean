@@ -40,7 +40,7 @@ theorem norm_gEmb_F (a b : F) : Algebra.norm F (gEmb F (a, b)) = a ^ 2 + b ^ 2 :
   simp only [Algebra.leftMulMatrix_apply, LinearMap.toMatrix_apply, Algebra.coe_lmul_eq_mul,
     LinearMap.mul_apply']
   rw [basisOneI_zero, mul_one, basisOneI_one, gEmb_mul_ii, gEmb_eq]
-  simp [Module.Basis.repr_self, Finsupp.single_apply]
+  simp [Module.Basis.repr_self]
   ring
 
 theorem norm_gEmb (a b : F) :

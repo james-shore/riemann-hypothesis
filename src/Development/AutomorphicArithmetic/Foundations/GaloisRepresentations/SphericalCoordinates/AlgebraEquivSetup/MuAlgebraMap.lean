@@ -17,7 +17,7 @@ private theorem mu_algebraMap {R E : Type} [CommRing R] [Algebra ℚ R] [Field E
   rw [h, hμ r 1 i k]
   by_cases hik : i = k
   · subst hik; simp
-  · simp [Matrix.one_apply, hik]
+  · simp [hik]
 
 private theorem conj_form {K : Type} [CommRing K] (σ : K →+* K) {n : ℕ} (D : Matrix (Fin n) (Fin n) K)
     (a g : GL (Fin n) K) (c : K) (ha : (a.val.map σ)ᵀ * D * a.val = 1)

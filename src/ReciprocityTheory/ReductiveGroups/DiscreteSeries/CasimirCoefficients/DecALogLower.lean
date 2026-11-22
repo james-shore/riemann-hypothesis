@@ -40,8 +40,7 @@ lemma decA_spec {Y : Matrix (Fin n) (Fin n) ℂ} (hY : inP ε Y) :
   refine ⟨hA.eigenvectorUnitary, hA.eigenvalues, (hA.eigenvectorUnitary).2, ?_⟩
   first
     | exact hA.spectral_theorem
-    | simpa [Matrix.star_eq_conjTranspose] using hA.spectral_theorem
-    | (conv_lhs => rw [hA.spectral_theorem]); rfl
+    | (conv_lhs => rw [hA.spectral_theorem])
 
 lemma decA_exp {U : Matrix (Fin n) (Fin n) ℂ} (hU : U ∈ Matrix.unitaryGroup (Fin n) ℂ) (y : Fin n → ℝ) :
     NormedSpace.exp (U * Matrix.diagonal (fun j => (y j : ℂ)) * Uᴴ) =
@@ -55,9 +54,8 @@ lemma decA_exp {U : Matrix (Fin n) (Fin n) ℂ} (hU : U ∈ Matrix.unitaryGroup 
   have hd : NormedSpace.exp (fun j => ((y j : ℝ) : ℂ)) = fun j => ((Real.exp (y j) : ℝ) : ℂ) := by
     funext j
     first
-      | (rw [Pi.exp_apply]; simp [← Complex.exp_eq_exp_ℂ, Complex.ofReal_exp])
-      | (simp [Pi.exp_def, ← Complex.exp_eq_exp_ℂ, Complex.ofReal_exp])
-      | (simp [NormedSpace.exp_pi, ← Complex.exp_eq_exp_ℂ, Complex.ofReal_exp])
+      | (rw [Pi.exp_apply])
+      | (simp [← Complex.exp_eq_exp_ℂ, Complex.ofReal_exp])
   rw [← hinv, Matrix.exp_conj U _ hu, Matrix.exp_diagonal, hd]
 
 lemma decA_lead_re {U : Matrix (Fin n) (Fin n) ℂ} (y : Fin n → ℝ) (i : ℕ) (hi : i ≤ n) :

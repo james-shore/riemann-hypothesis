@@ -32,7 +32,7 @@ theorem exists_anti (σ : E →ₐ[F] E) (hCM : IsCMExt F E σ) : ∃ δ : E, δ
 
 theorem anti_coeff (σ : E →ₐ[F] E) {δ : E} (hδ0 : δ ≠ 0) (hσδ : σ δ = -δ) (s t : F)
     (h : σ (s • (1 : E) + t • δ) = s • 1 + t • δ) : t = 0 := by
-  simp only [Algebra.smul_def, map_add, map_mul, AlgHom.commutes, map_one, hσδ, mul_one] at h
+  simp only [Algebra.smul_def, map_add, map_mul, AlgHom.commutes, hσδ, mul_one] at h
   have h2 : (2 : E) * (algebraMap F E t * δ) = 0 := by linear_combination -h
   rcases mul_eq_zero.1 h2 with h3 | h3
   · exact absurd h3 two_ne_zero

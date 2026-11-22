@@ -75,8 +75,7 @@ def polyDer (δ : Derivation k R S) (v : Fin r → S) : Derivation k (MvPolynomi
   leibniz' p q := by
     show snd (polyHom δ v (p * q)) = p • snd (polyHom δ v q) + q • snd (polyHom δ v p)
     rw [map_mul, TrivSqZeroExt.snd_mul, polyHom_fst, polyHom_fst]
-    simp only [MulOpposite.smul_eq_mul_unop, MulOpposite.unop_op, smul_eq_mul, Algebra.smul_def,
-      Algebra.algebraMap_self, RingHom.id_apply]
+    simp only [MulOpposite.smul_eq_mul_unop, MulOpposite.unop_op, smul_eq_mul, Algebra.smul_def]
     ring
 
 theorem polyDer_C (δ : Derivation k R S) (v : Fin r → S) (a : R) : polyDer δ v (C a) = δ a := by

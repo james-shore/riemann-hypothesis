@@ -23,7 +23,7 @@ theorem key_injective (N : ℕ) : Function.Injective (key N) := by
   · omega
   · have h3 : Nat.pair a b = Nat.pair a' b' := by omega
     rw [Nat.pair_eq_pair] at h3
-    ext <;> simp [Fin.ext_iff, h3.1, h3.2]
+    ext <;> simp [h3.1, h3.2]
 
 def Var (N : ℕ) : Type := Fin N × Fin N
 
@@ -79,7 +79,7 @@ theorem lead_apply (v w : Fin N × Fin N) :
     lead N v w = (if v = w then 1 else 0) +
       (if v.1 = v.2 then 0 else if (min v.1 v.2, min v.1 v.2) = w then 1 else 0) := by
   unfold lead
-  split_ifs <;> simp_all [Finsupp.single_apply]
+  split_ifs <;> simp_all
 
 theorem entry_lead [Nontrivial O] (a b : Fin N) :
     (ord N).degree (lduHom O N (X (a, b))) = lead N (a, b) ∧
@@ -190,7 +190,7 @@ theorem image_monomial_lead [Nontrivial O] (m : Fin N × Fin N →₀ ℕ) :
     have hle : leadExp N (Finsupp.single (a, b) k) = k • lead N (a, b) := by
       rw [leadExp, Finset.sum_eq_single (a, b)]
       · simp
-      · intro w _ hw; simp [Finsupp.single_apply, Ne.symm hw]
+      · intro w _ hw; simp [Ne.symm hw]
       · simp
     refine ⟨?_, h2.pow⟩
     rw [MonomialOrder.degree_pow_of_pow_leadingCoeff_ne_zero (by rw [h2.leadingCoeff_eq_one, one_pow]; exact one_ne_zero),

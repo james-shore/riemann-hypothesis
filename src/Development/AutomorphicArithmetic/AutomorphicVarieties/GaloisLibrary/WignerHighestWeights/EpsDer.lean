@@ -16,7 +16,7 @@ private theorem update_swap_mul_eq_update {n : ℕ} (σ : Equiv.Perm (Fin n)) {a
   · have h2 : σ j ≠ b := h1 ▸ hab
     simp [h1, hab]
   · by_cases h2 : σ j = b
-    · simp [h1, h2, Equiv.swap_apply_right]
+    · simp [h2, Equiv.swap_apply_right]
     · simp [h1, h2, Equiv.swap_apply_of_ne_of_ne h1 h2]
 
 private theorem sum_sign_smul_update_eq_ite {M : Type} [AddCommGroup M] [Module ℂ M] {n : ℕ}

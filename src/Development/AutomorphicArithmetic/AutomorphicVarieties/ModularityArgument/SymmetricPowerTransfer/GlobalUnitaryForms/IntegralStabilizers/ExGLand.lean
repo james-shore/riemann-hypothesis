@@ -92,14 +92,14 @@ theorem exG_land {Δ : F} (hΔ : ∀ σ : F →+* ℝ, σ Δ < 0) (g : Fin 3 →
       by_cases h : a = b
       · subst h
         simp
-      · simp [Matrix.one_apply, h, Ne.symm h])
+      · simp [h, Ne.symm h])
     (by
       intro a b
       rw [hcc]
       by_cases h : a = b
       · subst h
         simp [hG', hstar]
-      · simp [hG', Matrix.diagonal_apply, h, Ne.symm h])
+      · simp [hG', h, Ne.symm h])
     (by simp)
     (by
       rw [hdet]
@@ -120,7 +120,7 @@ theorem exG_land {Δ : F} (hΔ : ∀ σ : F →+* ℝ, σ Δ < 0) (g : Fin 3 →
             Matrix.diagonal_apply, Matrix.one_apply]
           simp [hσ']
           rw [← Complex.ofReal_mul, Real.mul_self_sqrt (hg a σ).le]
-        · simp [hG', Matrix.diagonal_apply, h, Ne.symm h, Matrix.mul_apply, Matrix.one_apply])
+        · simp [hG', Matrix.diagonal_apply, h, Matrix.mul_apply])
     (by
       refine ⟨y⁻¹, ?_⟩
       rw [hcc, det_one, hdet, hy, star_inv₀, one_div, mul_inv])

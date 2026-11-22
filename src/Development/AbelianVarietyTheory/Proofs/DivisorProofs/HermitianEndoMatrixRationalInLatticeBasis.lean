@@ -8,14 +8,14 @@ def imFormRight {g : ℕ} (H : Matrix (Fin g) (Fin g) ℂ) (z : Fin g → ℂ) :
   toFun w := (z ⬝ᵥ H *ᵥ star w).im
   map_add' a b := by simp [star_add, mulVec_add, dotProduct_add]
   map_smul' r w := by
-    simp [star_smul, mulVec_smul, dotProduct_smul, Complex.smul_im]
+    simp [star_smul, mulVec_smul, dotProduct_smul]
 
 def imFormLeft {g : ℕ} (H : Matrix (Fin g) (Fin g) ℂ) (w : Fin g → ℂ) :
     (Fin g → ℂ) →ₗ[ℝ] ℝ where
   toFun z := (z ⬝ᵥ H *ᵥ star w).im
   map_add' a b := by simp [add_dotProduct]
   map_smul' r z := by
-    simp [smul_dotProduct, Complex.smul_im]
+    simp [smul_dotProduct]
 
 theorem herm_endo_matrix_rat : ∀ (g n : ℕ) (e : Module.Basis (Fin n) ℝ (Fin g → ℂ)) (H₁ H₂ : Matrix (Fin g) (Fin g) ℂ),
     (∀ z : Fin g → ℂ, z ≠ 0 → 0 < (z ⬝ᵥ H₁.mulVec (star z)).re) →

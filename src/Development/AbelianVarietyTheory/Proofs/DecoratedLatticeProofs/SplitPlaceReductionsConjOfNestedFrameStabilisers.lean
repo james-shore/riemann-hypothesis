@@ -31,7 +31,7 @@ theorem conj_single_apply {n : ℕ} (a b : Matrix (Fin n) (Fin n) K) (hab : a * 
     (a * Matrix.transvection i j (1 : K) * b) p q = (1 : Matrix (Fin n) (Fin n) K) p q + a p i * b j q := by
   rw [Matrix.transvection, Matrix.mul_add, Matrix.add_mul, Matrix.mul_one, hab, Matrix.add_apply]
   congr 1
-  simp [Matrix.mul_apply, Matrix.single_apply, ite_and, ite_mul, Finset.sum_ite_eq, Finset.sum_ite_eq']
+  simp [Matrix.mul_apply, Matrix.single_apply, ite_and, ite_mul, Finset.sum_ite_eq]
 
 theorem prod_mem_off {n : ℕ} (γ : GL (Fin n) K)
     (hγ : ∀ h : GL (Fin n) A, ∀ p q,
@@ -115,7 +115,7 @@ theorem exists_int_conj {n : ℕ} (γ : GL (Fin n) K)
     have h0 : a = 0 := by
       ext p i
       have h1 := hmax (p, i) (Finset.mem_univ _)
-      simp only [← hc_def, hc, map_zero] at h1
+      simp only [hc, map_zero] at h1
       exact (Valuation.zero_iff _).1 (le_antisymm h1 zero_le')
     have h2 : (1 : Matrix (Fin n) (Fin n) K) = 0 := by rw [← hab, h0, Matrix.zero_mul]
     have := congrFun (congrFun h2 ⟨0, hn⟩) ⟨0, hn⟩

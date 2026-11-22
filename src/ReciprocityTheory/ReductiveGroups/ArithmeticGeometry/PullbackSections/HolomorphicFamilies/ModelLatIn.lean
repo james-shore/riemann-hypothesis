@@ -67,8 +67,6 @@ theorem finrank_E (D : D7) : Module.finrank ℚ D.host.E = 2 * D.R.f := by
     first
       | rw [Nat.card_eq_fintype_card, Int.card_units_eq_two]
       | simp
-      | (rw [Nat.card_eq_fintype_card]; rfl)
-      | (rw [Nat.card_eq_fintype_card]; decide)
   have hA : Nat.card D.R.MA = D.R.ord := by
     unfold Formalism.HC.Frame.MA
     rw [Nat.card_congr Multiplicative.toAdd]

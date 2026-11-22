@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.adicTensor_exists_rational_add_integral_mul : ∀ 
     (v : HeightOneSpectrum ℤ) (x : v.adicCompletion ℚ ⊗[ℚ] L) (D : ℤ), D ≠ 0 →
     ∃ (y : L) (ρ : v.adicCompletion ℚ ⊗[ℚ] L), IsIntB v ℓ ρ ∧
       x = (1 : v.adicCompletion ℚ) ⊗ₜ[ℚ] y + (D : v.adicCompletion ℚ ⊗[ℚ] L) * ρ := by
-  first | (exact @GlobalTheory.AdicSpan.exists_tmul_add_mul_isIntB) | (exact GlobalTheory.AdicSpan.exists_tmul_add_mul_isIntB) | (intros; apply GlobalTheory.AdicSpan.exists_tmul_add_mul_isIntB  <;> assumption)
+  first | (exact @GlobalTheory.AdicSpan.exists_tmul_add_mul_isIntB)

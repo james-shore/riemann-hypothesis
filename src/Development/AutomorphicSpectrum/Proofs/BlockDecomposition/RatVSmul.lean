@@ -139,7 +139,7 @@ private lemma exists_GL_mulVec_single_eq_of_ne_zero (m : ι) (v : ι → k) (hv 
     simp
   · intro c hc
     rw [IsUnit.unit_spec, hact]
-    simp [Pi.single_apply, hc.symm]
+    simp [hc.symm]
 
 lemma exists_inv_mulVec_eq (i : ι) {ξ : ι → k} (hξ : ξ ≠ 0) :
     ∃ g : GL ι k, ((g⁻¹ : GL ι k) : Matrix ι ι k) *ᵥ Pi.single i 1 = ξ := by
@@ -155,7 +155,7 @@ lemma exists_inv_mulVec_eq (i : ι) {ξ : ι → k} (hξ : ξ ≠ 0) :
         rw [Pi.add_apply, Pi.single_eq_same, Pi.single_eq_of_ne hji.symm, add_zero]
         exact one_ne_zero)
     obtain ⟨G₁, hG₁, hG₁'⟩ := exists_GL_mulVec_single_eq_of_ne_zero j (ξ - Pi.single i 1 : ι → k)
-      (by simp [Pi.single_apply, hji, hj])
+      (by simp [hji, hj])
     refine ⟨(G₁ * G₂)⁻¹, ?_⟩
     rw [inv_inv, Units.val_mul, ← Matrix.mulVec_mulVec, hG₂, Matrix.mulVec_add, hG₁, hG₁' i hji.symm]
     abel

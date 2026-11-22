@@ -83,7 +83,7 @@ theorem act_pGl (e : ℕ) :
     ((Over.pullback (thick R I e)).map E.aG).left ≫ pGl U e = pGl U e ≫ E.aB.left := by
   have h1 := congrArg (fun f => f.left) (E.q_lin e)
   simp only [Over.comp_left] at h1
-  simp only [GtCoord.pG, Over.comp_left, Over.map_map_left, DegPre.prBe, Over.homMk_left]
+  simp only [Over.comp_left, Over.map_map_left, DegPre.prBe, Over.homMk_left]
   rw [← Category.assoc, h1, Category.assoc, Category.assoc]
   congr 1
   simp only [Over.pullback_map_left]
@@ -103,7 +103,7 @@ theorem exists_secG (k' k : ℕ) (β : LB.Gen (LB.LinComb U.LG.L (K := Fin 3) ![
       simp only [Sum.elim_inl, Sum.elim_inr, Fin.prod_univ_three, Matrix.cons_val, Category.comp_id,
         Fintype.prod_unique, oneLeft]
       apply Additive.ofMul.injective
-      simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow, ofMul_one]
+      simp only [ofMul_mul, ofMul_zpow]
       module)
     (pullMulSec σ E.aG.left (LB.mulGen U.LG.L _ _ _ _ β ρ) (mulGen_isGen _ _ _ _ _ _ _ hβ hρ))
   refine ⟨s, fun Z r z J hJ => (hs Z r z J hJ).trans ((sval_pullMulSec _ _ _ _ r z hJ).trans ?_)⟩
@@ -139,7 +139,7 @@ theorem exists_secB (k' k : ℕ) (κ : LB.Gen (kapLB D.toPre E.aB k' k)) (hκ : 
       rw [p₁, p₂, p₃, p₄]
       simp only [Fin.prod_univ_three, Matrix.cons_val, Fintype.prod_unique, oneLeft, Over.id_left]
       apply Additive.ofMul.injective
-      simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow, ofMul_one]
+      simp only [ofMul_mul, ofMul_inv, ofMul_zpow]
       module)
     (pullMulSec f E.aB.left (LB.mulGen D.toPre.P.L _ _ _ _ (LB.mulGen D.toPre.P.L _ _ _ _ κ ρ) (E.u χ))
       (mulGen_isGen _ _ _ _ _ _ _ (mulGen_isGen _ _ _ _ _ _ _ hκ hρ) (E.u_norm χ).1))
@@ -177,7 +177,7 @@ theorem main : ∀ (R : Type) [CommRing R] [IsDomain R] (I : Ideal R) (D : DegDa
   obtain ⟨S, hS⟩ := expandsAt_val U e k σ f (hf e)
   refine expandsAt_of_val U e k' σ' f' (S.image E.h) fun y J hJ => ?_
   obtain ⟨b₁, b₂⟩ := hS _ ((Over.pullback (thick R I e)).map E.aG).left y J hJ
-  simp only [act_pGl E e, act_fGl E e] at b₁
+  simp only [act_pGl E e] at b₁
   refine ⟨fun α hα => ?_, fun jL hL => ?_⟩
   · by_cases hb : α ∈ Set.range E.h
     · obtain ⟨χ, rfl⟩ := hb

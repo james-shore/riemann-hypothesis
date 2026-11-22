@@ -35,7 +35,7 @@ theorem row_mat {S T : HSp D} (hS : S.gram = 1) (βS : GL (Fin S.rank) (EAf D)) 
   rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, hb, Matrix.one_mul, hg, Matrix.one_mul]
   ext i j
   simp only [Matrix.smul_apply, Matrix.mul_apply, Matrix.map_apply, Matrix.transpose_apply, Matrix.of_apply,
-    partAt, finW, smul_eq_mul, Fin.sum_univ_one, map_sum]
+    partAt, finW, smul_eq_mul, map_sum]
 
 theorem rowRed_zero (T : HSp D) (βT : GL (Fin T.rank) (EAf D)) (a e : AE D) (PP : Formalism.L2.DIV.Pl D.host.E) :
     rowRed T βT a e PP 0 = 0 := by

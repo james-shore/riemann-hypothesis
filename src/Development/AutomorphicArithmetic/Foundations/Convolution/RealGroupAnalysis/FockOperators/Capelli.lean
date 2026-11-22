@@ -27,8 +27,7 @@ theorem UpperTheory.ConvolutionTheory.R2.Fo.capelli :
   simp only [ha, Fin.sum_univ_two, h2, h01, h10, if_true, if_false]
   refine ⟨?_, ?_, ?_⟩
   all_goals
-    try simp only [mul_add, add_mul, mul_sub, sub_mul, mul_neg, neg_mul, neg_zero, zero_sub, neg_neg, mul_one, one_mul, mul_assoc, hDX, hDX', h01, h10, and_self, and_true, true_and, and_false, false_and, if_true, if_false, add_zero,
-      hX 1 1 0 0, hX 1 1 0 1, hX 1 1 1 0, hX 1 0 0 0, hX 1 0 0 1, hX 0 1 0 0,
+    try simp only [mul_add, add_mul, mul_sub, sub_mul, mul_neg, neg_mul, neg_zero, zero_sub, mul_one, one_mul, mul_assoc, hDX, hDX', h01, h10, and_self, and_true, and_false, if_true, if_false, add_zero,
       hX' 1 1 0 0, hX' 1 1 0 1, hX' 1 1 1 0, hX' 1 0 0 0, hX' 1 0 0 1, hX' 0 1 0 0,
       hD 1 1 0 0, hD 1 1 0 1, hD 1 1 1 0, hD 1 0 0 0, hD 1 0 0 1, hD 0 1 0 0]
   all_goals abel

@@ -13,10 +13,10 @@ private def baseChangePts {R A S K : Type} [CommRing R] [CommRing A] [CommRing S
     apply Algebra.TensorProduct.ext
     · ext
     · ext s
-      simp [Algebra.ofId_apply]
+      simp
   right_inv g := by
     ext s
-    simp [Algebra.ofId_apply]
+    simp
 
 theorem UpperTheory.Gal.crystallineComparison.injSplit_of :
     RankOfDeg → SplitsOfEquiv → InjSplit := by

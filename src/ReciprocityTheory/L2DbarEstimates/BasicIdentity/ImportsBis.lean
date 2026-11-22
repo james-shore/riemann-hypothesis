@@ -138,13 +138,11 @@ theorem comm (n : ℕ) (M : Type*) [TopologicalSpace M] : CommStatement n M := b
     intro v w
     first
       | exact hcH.isSymmSndFDerivAt (by simp) v w
-      | exact hcH.isSymmSndFDerivAt (by simp [minSmoothness_of_isRCLikeNormedField]) v w
   have hsymP : ∀ v w : V n, fderiv ℝ (fderiv ℝ ((fun y => ((ph y : ℝ) : ℂ)) ∘ e0.symm)) (z x) v w =
       fderiv ℝ (fderiv ℝ ((fun y => ((ph y : ℝ) : ℂ)) ∘ e0.symm)) (z x) w v := by
     intro v w
     first
       | exact hcP.isSymmSndFDerivAt (by simp) v w
-      | exact hcP.isSymmSndFDerivAt (by simp [minSmoothness_of_isRCLikeNormedField]) v w
   have hloc1 : ((db n z j u) ∘ e0.symm) =ᶠ[nhds (z x)] wdb n j (u ∘ e0.symm) := by
     filter_upwards [hnb] with y hy
     rw [Function.comp_apply, db_eq_wdb_comp_chart_symm z e0 he0 j u _ (e0.map_target hy),

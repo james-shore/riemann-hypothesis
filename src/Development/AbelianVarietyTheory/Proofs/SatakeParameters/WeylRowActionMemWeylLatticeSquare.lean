@@ -47,7 +47,7 @@ theorem coeffMap_mem_weyl {R S : Type} [CommRing R] [CommRing S] (φ : R →+* S
     | add x y _ _ hx hy =>
       intro s
       have : coeffMap c (s • (x + y)) = coeffMap c (s • x) + coeffMap c (s • y) := by
-        ext m; simp [coeff_coeffMap, mul_add]
+        ext m; simp [coeff_coeffMap]
       rw [this]; exact Submodule.add_mem _ (hx s) (hy s)
     | smul a x _ hx =>
       intro s
@@ -119,8 +119,7 @@ theorem isUnit_shift (R : Type) [CommRing R] {r : ℕ} (M : Matrix (Fin r) (Fin 
     refine Matrix.ext fun i j => ?_
     simp only [hA, Matrix.map_apply, Matrix.add_apply, Matrix.smul_apply, smul_eq_mul, map_add,
       map_mul, HahnSeries.ofPowerSeries_X, HahnSeries.ofPowerSeries_C, mul_add, ← mul_assoc, hT,
-      one_mul, toInv, Polynomial.coe_eval₂RingHom, Polynomial.eval₂_C, Polynomial.eval₂_X,
-      Matrix.one_apply]
+      one_mul, toInv, Polynomial.coe_eval₂RingHom, Matrix.one_apply]
     rw [add_comm]
     split_ifs <;> simp
   rw [Matrix.isUnit_iff_isUnit_det, h3, Matrix.det_smul]

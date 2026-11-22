@@ -69,16 +69,16 @@ theorem coef_logs_inv_frob : ∀ (p : ℕ) [Fact p.Prime] (B Q : Type) [CommRing
         · have h1 : s ((Pi.single a (1 : Q) : Fin d → Q) j) = algebraMap B Q ((Pi.single a (1 : B) : Fin d → B) j) := by
             by_cases haj : j = a
             · subst haj; simp
-            · simp [Pi.single_apply, haj]
+            · simp [haj]
           have hS : ∑ l, algebraMap B Q (U l (Sum.inl a)) * x j l = ∑ l, algebraMap B Q
               (U l (Sum.inl a) * (p : B)) * coeff (Finsupp.single j p) (e l) :=
-            Finset.sum_congr rfl fun l _ => by simp only [hx, Sum.elim_inl, map_mul, map_natCast]; ring
+            Finset.sum_congr rfl fun l _ => by simp only [hx, map_mul, map_natCast]; ring
           simp only [Sum.elim_inl] at hbe
           rw [hS, map_sub, ← h1]
           linear_combination -hbe
         · by_cases haj : a = j
           · subst haj; simp; ring
-          · simp [Pi.single_apply, haj, Ne.symm haj]; ring
+          · simp [haj, Ne.symm haj]; ring
       · obtain ⟨b1, -, hb1⟩ := (h (Sum.inr r)).1 (Finsupp.single j p)
         obtain ⟨b0, hb0⟩ := hint (Sum.inr r) j
         rw [hco, hb0, hs] at hb1

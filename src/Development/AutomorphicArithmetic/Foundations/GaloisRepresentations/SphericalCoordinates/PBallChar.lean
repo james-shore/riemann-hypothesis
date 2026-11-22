@@ -39,7 +39,7 @@ private theorem transpose_rho_mul_herm_eq_herm_mul_bar {O : Type} [Ring O] {bar 
     rw [← Matrix.mulVec_mulVec]
     congr 2
     funext i
-    simp [Matrix.mulVec, dotProduct, map_sum, Pi.star_apply]
+    simp [Matrix.mulVec, dotProduct, Pi.star_apply]
   set A := (ρ x)ᵀ * M₀ - M₀ * (ρ (bar x)).map star with hA
   have key : ∀ p q : D.La, (P₀ p ⬝ᵥ A *ᵥ star (P₀ q)).im = 0 := by
     intro p q
@@ -167,7 +167,7 @@ theorem UpperTheory.Gal.W2.ballChar_of :
       Matrix.diagonal fun i => starRingEnd ℂ (v i) := by
     intro v
     ext i j
-    by_cases h : i = j <;> simp [Matrix.diagonal_apply, h]
+    by_cases h : i = j <;> simp [h]
   set P := Sb.map star with hPdef
   have hPdet : P.det ≠ 0 := by
     have : P.det = starRingEnd ℂ Sb.det := by
@@ -332,7 +332,7 @@ theorem UpperTheory.Gal.W2.ballChar_of :
   haveI : Invertible (H.map star) := (H.map star).invertibleOfIsUnitDet hHbu
   have h1 : Sb⁻¹ * H = Matrix.diagonal ev * Sb⁻¹ := by
     calc Sb⁻¹ * H = Sb⁻¹ * (H * Sb) * Sb⁻¹ := by simp [Matrix.mul_assoc]
-      _ = Matrix.diagonal ev * Sb⁻¹ := by rw [hHS]; simp [Matrix.mul_assoc]
+      _ = Matrix.diagonal ev * Sb⁻¹ := by rw [hHS]; simp
   have h2 : H.map star * P = P * Eb := by
     have := congrArg (fun M : Matrix (Fin g) (Fin g) ℂ => M.map star) hHS
     simp only [hmapmul, hdiagmap] at this
@@ -359,7 +359,7 @@ theorem UpperTheory.Gal.W2.ballChar_of :
       map_smul' := by
         intro r b
         funext j
-        simp [Matrix.mul_smul, Matrix.smul_mul] }
+        simp }
   have hinj : Function.Injective ψ := by
     rw [← LinearMap.ker_eq_bot, LinearMap.ker_eq_bot']
     intro b hb

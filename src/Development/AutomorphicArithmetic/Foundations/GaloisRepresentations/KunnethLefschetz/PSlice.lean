@@ -24,6 +24,5 @@ theorem slice_holds : Slice := by
   congr 1
   first
   | exact hR.one_nat y.1 hunitX
-  | exact hR.one_nat y.1 hunit
 
 end UpperTheory.Gal.KunnethLefschetz

@@ -38,7 +38,7 @@ theorem flat_noetherian_nzd_intClosed : ∀ (A : Type) [CommRing A] [IsDomain A]
     have h1 : ∀ z : R, algebraMap (Polynomial A) R Polynomial.X * z = 0 → z = 0 := by
       intro z hz
       apply hreg
-      simp only [Algebra.smul_def, smul_zero, mul_zero]
+      simp only [Algebra.smul_def, mul_zero]
       exact hz
     exact ⟨h1, fun z hz => h1 z (by rw [mul_comm]; exact hz)⟩
   · intro f hf

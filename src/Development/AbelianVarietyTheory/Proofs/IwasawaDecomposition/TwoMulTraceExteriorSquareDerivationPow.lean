@@ -126,14 +126,14 @@ theorem kron_left_pow (L : Matrix (Fin M) (Fin M) R) (m : ℕ) :
     (Matrix.kroneckerMap (· * ·) L (1 : Matrix (Fin M) (Fin M) R)) ^ m =
       Matrix.kroneckerMap (· * ·) (L ^ m) (1 : Matrix (Fin M) (Fin M) R) := by
   induction m with
-  | zero => simp [Matrix.one_kronecker_one]
+  | zero => simp
   | succ m ih => rw [pow_succ, ih, ← Matrix.mul_kronecker_mul, Matrix.mul_one, pow_succ]
 
 theorem kron_right_pow (L : Matrix (Fin M) (Fin M) R) (m : ℕ) :
     (Matrix.kroneckerMap (· * ·) (1 : Matrix (Fin M) (Fin M) R) L) ^ m =
       Matrix.kroneckerMap (· * ·) (1 : Matrix (Fin M) (Fin M) R) (L ^ m) := by
   induction m with
-  | zero => simp [Matrix.one_kronecker_one]
+  | zero => simp
   | succ m ih => rw [pow_succ, ih, ← Matrix.mul_kronecker_mul, Matrix.mul_one, pow_succ]
 
 theorem sum_tensorLie_pow_swap (L : Matrix (Fin M) (Fin M) R) (n : ℕ) :

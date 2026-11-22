@@ -49,7 +49,7 @@ theorem exists_open_fix (hX : IsBottomTri W i j X) (t : T) :
   choose U hU hfix using fun k => fixTranslate hX t (x k) (hx k)
   refine ⟨⨅ k, U k, ?_, fun κ hκ hf => ?_⟩
   · have e2 : (((⨅ k, U k) : Subgroup (GA D A')) : Set (GA D A')) = ⋂ k, (U k : Set (GA D A')) := by
-      ext y; simp [Subgroup.mem_iInf]
+      ext y; simp
     rw [e2]
     exact isOpen_iInter_of_finite hU
   · rw [e, map_sum]
@@ -81,7 +81,7 @@ theorem eq_of_finE_eq (V : HSp D) {a b : GA D V} (ha : a ∈ GfC V) (hb : b ∈ 
       apply Units.ext
       ext p q
       have := congrArg (fun z : GL (Fin V.rank) (Lev.EAf D) => z.1 p q) hxy
-      simp only [Formalism.UG.bc, Units.coe_map, MonoidHom.coe_coe, RingHom.mapMatrix_apply, Matrix.map_apply] at this
+      simp only [Formalism.UG.bc, Units.coe_map] at this
       exact (Algebra.TensorProduct.comm D.host.F (Af D.host.F) D.host.E).injective this
     exact inj h
   have h2 : a⁻¹ * b ∈ GinfC V ⊓ GfC V := by

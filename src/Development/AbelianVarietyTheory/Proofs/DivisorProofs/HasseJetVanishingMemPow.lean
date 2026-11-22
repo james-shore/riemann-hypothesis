@@ -40,7 +40,7 @@ theorem hasseJet_vanishing_mem_pow (k A : Type) [Field k] [IsAlgClosed k] [CommR
     have := hL 1 hN1 1 1
     rw [Finset.sum_range_succ, Finset.sum_range_one] at this
     norm_num [h01] at this
-    first | exact this | linear_combination -this
+    first | exact this
   have hvan : ∀ j, ∀ u ∈ Q ^ j, ∀ l < N, l < j → Δ l u = 0 := by
     intro j
     induction j with

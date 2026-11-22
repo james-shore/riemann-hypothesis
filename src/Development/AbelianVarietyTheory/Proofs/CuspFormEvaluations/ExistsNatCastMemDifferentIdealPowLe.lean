@@ -14,8 +14,6 @@ theorem exists_prime_dvd_natCast_mem {R : Type*} [CommRing R] {P : Ideal R} (hP 
   | exact @_root_.GlobalTheory.CuspFormEvaluationSupplement.main
   | exact _root_.GlobalTheory.CuspFormEvaluationSupplement.main
   | (apply _root_.GlobalTheory.CuspFormEvaluationSupplement.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CuspFormEvaluationSupplement.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CuspFormEvaluationSupplement.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CuspFormEvaluationSupplement.main ..)
 
 theorem span_natCast_dvd_differentIdeal_sq (E : Type) [Field E] [NumberField E] [IsGalois ℚ E] (N : ℕ)

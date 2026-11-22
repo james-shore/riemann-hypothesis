@@ -151,7 +151,7 @@ theorem blockIntegral_of (hG : GaussCoord) : BlockIntegral := by
         π ^ Fintype.card ι * (2 * (∑ i, ν τ i) + 2) ^ Fintype.card ι := fun τ => by
       have hne := (hN1 τ).ne'
       have hi : ∀ i : ι, π / (1 / ((∑ j, ν (τ, i).1 j) + 1) / 2) = π * (2 * (∑ i, ν τ i) + 2) :=
-        fun i => by first | (field_simp; ring) | field_simp
+        fun i => by first | (field_simp) | field_simp
       rw [Finset.prod_congr rfl fun i _ => hi i, Finset.prod_const, Finset.card_univ, mul_pow]
     rw [Finset.prod_congr rfl fun τ _ => hb τ, Finset.prod_mul_distrib, Finset.prod_const, Finset.card_univ,
       ← pow_mul, mul_comm (Fintype.card ι)]

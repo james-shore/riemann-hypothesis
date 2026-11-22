@@ -275,7 +275,7 @@ theorem GlobalTheory.Ord2.LocW.local_height_at_frobenius : ∀ (l : ℕ) [Fact l
     generalize mat W τ - 1 = M at hMO ⊢
     intro i j
     rw [Matrix.adjugate_fin_two]
-    fin_cases i <;> fin_cases j <;> simp <;> first | exact hMO _ _ | exact neg_mem (hMO _ _)
+    fin_cases i <;> fin_cases j <;> simp <;> first | exact hMO _ _
   have hbO : ∀ i, b i ∈ c.O := fun i => by rw [hb]; exact mulVec_mem c _ _ hadjO (hzO τ) i
   have hbn : ∀ i, ‖b i‖ ≤ 1 := fun i => norm_le_one_of_mem c (hbO i)
   have hden : ‖de‖ ≤ 1 := norm_le_one_of_mem c hdeO

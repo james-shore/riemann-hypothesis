@@ -30,7 +30,7 @@ theorem conn_flat {n : Type*} [Fintype n] [DecidableEq n] {H : V → Matrix n n 
     rw [mdel_mul (h1.transpose.inv hu') (h2.mdel (by norm_num) ζ).transpose,
       mdel_inv h1.transpose hu', mdel_transpose (fun x => mdel H x ζ), mdel_transpose]
   rw [e, e, mdel_mdel_comm h2 ξ₁ ξ₂]
-  simp only [conn, Matrix.mul_add, Matrix.add_mul, Matrix.mul_neg, Matrix.neg_mul,
+  simp only [conn, Matrix.neg_mul,
     Matrix.mul_assoc]
   abel
 
@@ -70,7 +70,7 @@ theorem covDelHol_extFormAdj_eq_zero {U : Set V} {H : V → Matrix (m ⊕ l) (m 
   simp only [covDelHol, homDel, hd, hv, hS, hQ]
   rw [← neg_eq_zero, ← key]
   simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_neg,
-    Matrix.neg_mul, Matrix.mul_assoc, neg_neg, neg_sub, neg_add]
+    Matrix.neg_mul, Matrix.mul_assoc, neg_sub]
   abel
 
 end GlobalTheory.SubQuotDelHol

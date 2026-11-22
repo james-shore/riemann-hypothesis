@@ -17,7 +17,7 @@ theorem similitude_eigvec_orthogonal : ∀ {n : ℕ} (h g : Matrix (Fin n) (Fin 
     rw [← e1, ← hgZ]
     simp only [hH, conjTranspose_mul, Matrix.mul_assoc]
     rw [← Matrix.mul_assoc gᴴ, ← Matrix.mul_assoc (gᴴ * h), hg]
-    simp [Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_assoc]
+    simp
   have hc' : ∀ i, (starRingEnd ℂ) (lam i) * lam i = (c : ℂ) := by
     intro i
     rw [mul_comm, Complex.mul_conj, Complex.normSq_eq_norm_sq]

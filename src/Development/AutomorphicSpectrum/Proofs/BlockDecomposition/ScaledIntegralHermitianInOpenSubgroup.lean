@@ -156,7 +156,7 @@ theorem exists_smul_mem_open : ∀ (F E : Type) [Field F] [NumberField F] [Field
     have hentry : (hermIn (Af F) σ n ((((D₁ * D₂ * N : ℕ) : F) / t) • c)).1 a a' =
         (1 : Af F) ⊗ₜ[F] (((((D₁ * D₂ * N : ℕ) : F) / t) • c).1 a a') := rfl
     rw [hentry, Algebra.TensorProduct.basis_repr_tmul]
-    simp only [Finsupp.smul_apply, one_smul, Finsupp.mapRange_apply]
+    simp only [one_smul, Finsupp.mapRange_apply]
     rfl
   have hfin : hermIn (Af F) σ n ((((D₁ * D₂ * N : ℕ) : F) / t) • c) ∈ (U : Set (HermR (Af F) σ n)) := by
     rw [← hU']

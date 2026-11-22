@@ -29,8 +29,6 @@ theorem card_fixed_ge (β : Type) [Fintype β] [DecidableEq β] (hβ : 1 ≤ Fin
     rw [← Fintype.card_perm, ← Finset.card_univ]
     first
     | exact Finset.card_filter_add_card_filter_not _
-    | exact Finset.filter_card_add_filter_neg_card_eq_card _
-    | exact Finset.card_filter_add_card_filter_neg _
   have hneg : ((univ : Finset (Equiv.Perm β)).filter (fun s => ¬ ∃ x, s x = x)).card =
       Fintype.card (derangements β) := by
     rw [Fintype.card_subtype]

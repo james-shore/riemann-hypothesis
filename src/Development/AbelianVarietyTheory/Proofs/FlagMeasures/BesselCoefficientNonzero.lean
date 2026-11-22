@@ -31,6 +31,6 @@ theorem besselIntg_sum (L : LocBessel k r) {ι : Type} (s : Finset ι)
     (g : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ) (p : PairSp k r) :
     besselIntg L (fun q => ∑ a ∈ s, F a q) g p = ∑ a ∈ s, besselIntg L (F a) g p := by
   ext η
-  simp [besselIntg, ContinuousLinearMap.sum_apply, map_sum, Finset.smul_sum]
+  simp [besselIntg, map_sum, Finset.smul_sum]
 
 end GlobalTheory.AmpTKOne

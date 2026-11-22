@@ -48,7 +48,7 @@ theorem isRatPath_map {F Ω : Type} [Field F] [Field Ω] (φ : F →+* Ω) {Y : 
         algebraMap (PowerSeries Ω) (LaurentSeries Ω) (PowerSeries.map φ (p : PowerSeries F)) :=
       congrArg (fun f => f (p : PowerSeries F)) hψ
     have h3 : PowerSeries.map φ (p : PowerSeries F) = ((p.map φ : Polynomial Ω) : PowerSeries Ω) := by
-      ext n; simp [Polynomial.coeff_map]
+      ext n; simp
     have hc : ∀ (K : Type) [Field K] (q : Polynomial K),
         algebraMap (RatFunc K) (LaurentSeries K) (algebraMap (Polynomial K) (RatFunc K) q) =
           algebraMap (PowerSeries K) (LaurentSeries K) (q : PowerSeries K) :=

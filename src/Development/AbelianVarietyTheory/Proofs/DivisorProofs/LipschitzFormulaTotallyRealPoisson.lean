@@ -46,7 +46,7 @@ theorem summable_lhsTerm [IsTotallyReal F] (M : FractionalIdeal (𝓞 F)⁰ F) (
 
 theorem fourier_prod_coord (ι : Type) [Fintype ι] (f : ι → ℝ → ℂ) (x : EuclideanSpace ℝ ι) :
     𝓕 (fun ξ : EuclideanSpace ℝ ι => ∏ i, f i (ξ i)) x = ∏ i, 𝓕 (f i) (x i) := by
-  simp only [Real.fourier_eq', Real.fourier_real_eq]
+  simp only [Real.fourier_eq']
   rw [← integral_fintype_prod_volume_eq_prod,
     ← (PiLp.volume_preserving_toLp ι).integral_comp (MeasurableEquiv.toLp 2 (ι → ℝ)).measurableEmbedding]
   refine integral_congr_ae (Filter.Eventually.of_forall fun ξ => ?_)

@@ -58,7 +58,7 @@ private theorem epM_entry {X : Type} [CommRing X] {g n : ℕ} (Z : Fin g → Mat
       by_cases h : i = j
       · subst h
         simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     · funext i
       show Z j a b * (0 : Fin g → X) i + (0 : Fin g → X) i * 0 = (0 : Fin g → X) i
       simp

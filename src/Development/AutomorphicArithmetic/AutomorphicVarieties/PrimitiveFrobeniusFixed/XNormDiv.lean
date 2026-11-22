@@ -109,7 +109,6 @@ private theorem algebraMap_norm_eq_prod_sg_ker_unitsMap (M q : ℕ) [NeZero M] [
     unfold sg
     exact MulEquiv.apply_symm_apply _ _
   · intro σ _
-    change σ y = sg (q * M) K' (IsCyclotomicExtension.Rat.galEquivZMod (q * M) K' (σ.restrictScalars ℚ)) y
     unfold sg
     rw [MulEquiv.symm_apply_apply]
     rfl
@@ -177,10 +176,10 @@ private theorem map_relNorm_eq_prod_conjI_ker_unitsMap (M q : ℕ) [NeZero M] [N
   simp_rw [algebraMap_sgO_eq_sg_algebraMap]
   refine Finset.prod_nbij' (·⁻¹) (·⁻¹) ?_ ?_ ?_ ?_ ?_
   · intro k hk
-    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.coe_filter, Set.mem_setOf_eq] at hk ⊢
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hk ⊢
     rw [map_inv, hk, inv_one]
   · intro k hk
-    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.coe_filter, Set.mem_setOf_eq] at hk ⊢
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hk ⊢
     rw [map_inv, hk, inv_one]
   · intro k _
     simp
@@ -200,10 +199,10 @@ private theorem map_conjI_relNorm_eq_prod_conjI_fiber_unitsMap (M q : ℕ) [NeZe
     map_relNorm_eq_prod_conjI_ker_unitsMap M q K K' 𝔞 h𝔞, ideal_comap_ringEquiv_prod]
   refine Finset.prod_nbij' (· * t₀) (· * t₀⁻¹) ?_ ?_ ?_ ?_ ?_
   · intro k hk
-    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.coe_filter, Set.mem_setOf_eq] at hk ⊢
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hk ⊢
     rw [map_mul, hk, one_mul]
   · intro k hk
-    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.coe_filter, Set.mem_setOf_eq] at hk ⊢
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hk ⊢
     rw [map_mul, hk, map_inv, mul_inv_cancel]
   · intro k _
     simp
@@ -290,10 +289,10 @@ theorem UpperTheory.V.ML.xNormDiv :
       ← thDist M q b hq hb u hu (ZMod.unitsMap (dvd_mul_left M q) t')]
     refine Finset.sum_nbij' (t' * ·) (t'⁻¹ * ·) ?_ ?_ ?_ ?_ ?_
     · intro k hk
-      simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.coe_filter, Set.mem_setOf_eq] at hk ⊢
+      simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hk ⊢
       rw [map_mul, hk, mul_one]
     · intro k hk
-      simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.coe_filter, Set.mem_setOf_eq] at hk ⊢
+      simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hk ⊢
       rw [map_mul, hk, map_inv, inv_mul_cancel]
     · intro k _
       simp

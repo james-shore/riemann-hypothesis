@@ -25,8 +25,6 @@ theorem exists_section_of_isFinite {R K : Type} [CommRing R] [IsDomain R] [IsInt
   | exact @_root_.GlobalTheory.FactorAndSection.exists_section
   | exact _root_.GlobalTheory.FactorAndSection.exists_section
   | (apply _root_.GlobalTheory.FactorAndSection.exists_section <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FactorAndSection.exists_section <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FactorAndSection.exists_section <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FactorAndSection.exists_section ..)
 
 theorem pow_eq_one_iff {S : Scheme.{0}} (G : Over S) [GrpObj G] (n : ℕ) {T : Over S} (z : T ⟶ G) :

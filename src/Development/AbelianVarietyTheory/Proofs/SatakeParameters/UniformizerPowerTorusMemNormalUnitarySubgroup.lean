@@ -167,7 +167,7 @@ theorem exists_mem_pm (σ : L →+* L) {n : ℕ} (hσv : ∀ x, Valued.v (σ x) 
   congr 1 <;> funext i <;>
     rcases idx_cases i with ⟨h1, h2⟩ | ⟨h1, h2⟩ | ⟨h1, h2, h3⟩ <;>
     simp only [Fin.val_rev] at h1 h2 <;>
-    simp [hu, hl, h1, h2, Fin.rev_rev, hy0]
+    simp [hu, hl, h1, h2, hy0]
 
 end GlobalTheory.TorusNormal
 

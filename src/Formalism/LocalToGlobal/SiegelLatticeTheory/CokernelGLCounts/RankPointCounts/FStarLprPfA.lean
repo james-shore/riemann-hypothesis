@@ -97,7 +97,6 @@ theorem y_eq_om {r : ℕ} (f f' : Fin (r + 1) → V) (α : Fin (r + 1) → E)
     first
       | rw [Matrix.smul_mulVec_assoc, Matrix.one_mulVec]
       | rw [Matrix.smul_mulVec, Matrix.one_mulVec]
-      | (ext a; simp [Matrix.mulVec, dotProduct, Matrix.one_apply])
   have hdet : W.det = M.L.cj Z.det := by
     first
       | exact (RingHom.map_det M.L.cj Z).symm

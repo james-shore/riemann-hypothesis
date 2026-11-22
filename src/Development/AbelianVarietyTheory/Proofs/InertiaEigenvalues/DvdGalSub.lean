@@ -98,7 +98,7 @@ theorem GlobalTheory.BKLim.Frame.isCr_of_wSeed : ∀ (l : ℕ) [Fact l.Prime] (K
       rw [e]
       exact hZ.map _
   have k2 := congrArg (fun M => Matrix.map M q) key
-  simp only [hsm, Matrix.map_mul, hqS] at k2
+  simp only [hsm, Matrix.map_mul] at k2
   rw [hPG] at k2
   simp only [map_pow, hqS] at k2
   have k3 : q (bk.iS bk.E) ^ s.N • (P.map q * (((F.ε g).map bk.iA).map q - 1)) = 0 := by

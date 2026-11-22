@@ -70,7 +70,7 @@ theorem single_mulVec_one {n : ℕ} (x y : Fin n) (v : Fin n → ℂ) : Matrix.s
   by_cases h : l = x
   · subst h
     simp [bvec]
-  · simp [bvec, Pi.single_apply, h]
+  · simp [bvec, h]
 
 theorem unitB_fr (hgU : g ∈ UH (Hpk k r)) (a b : Fin k) :
     unitB (Hpk k r) (fr k r g) a b = g * Matrix.single (wI k r a.castSucc) (wI k r b.castSucc) (1 : ℂ) * g⁻¹ := by

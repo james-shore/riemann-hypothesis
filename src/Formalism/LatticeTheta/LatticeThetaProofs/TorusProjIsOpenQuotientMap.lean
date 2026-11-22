@@ -38,7 +38,6 @@ theorem equivFunL_symm_eq (e : Module.Basis ι ℝ V) (t : ι → ℝ) :
     e.equivFunL.symm t = ∑ i, t i • e i := by
   first
   | exact e.equivFun_symm_apply t
-  | simp [Module.Basis.equivFunL, Module.Basis.equivFun_symm_apply]
 
 theorem periodic_comp (e : Module.Basis ι ℝ V) (G : V → ℂ)
     (hper : ∀ l ∈ Submodule.span ℤ (Set.range e), ∀ x, G (l + x) = G x)
@@ -100,7 +99,7 @@ theorem boxIoc_ae_eq :
   have h1 : ({x : ι → ℝ | ∀ i, x i ∈ Ioc ((0 : ι → ℝ) i) ((0 : ι → ℝ) i + 1)} : Set (ι → ℝ)) =
       Set.univ.pi fun i => Ioc ((0 : ι → ℝ) i) ((1 : ι → ℝ) i) := by
     ext x
-    simp [Set.mem_univ_pi]
+    simp
   rw [h1]
   show _ =ᵐ[Measure.pi fun _ => volume] _
   exact Measure.univ_pi_Ioc_ae_eq_Icc.trans Measure.univ_pi_Ico_ae_eq_Icc.symm
@@ -113,7 +112,7 @@ theorem mFourierCoeff_torusFunC (e : Module.Basis ι ℝ V) (G : V → ℂ) (hG 
   have hS : (Set.univ.pi fun _ : ι => Ioc (0 : ℝ) (0 + 1)) =
       {x : ι → ℝ | ∀ i, x i ∈ Ioc ((0 : ι → ℝ) i) ((0 : ι → ℝ) i + 1)} := by
     ext x
-    simp [Set.mem_univ_pi]
+    simp
   have hmp : MeasurePreserving (torusProj ι)
       (volume.restrict {x : ι → ℝ | ∀ i, x i ∈ Ioc ((0 : ι → ℝ) i) ((0 : ι → ℝ) i + 1)})
       (@volume (UnitAddTorus ι)
@@ -123,8 +122,6 @@ theorem mFourierCoeff_torusFunC (e : Module.Basis ι ℝ V) (G : V → ℂ) (hG 
       first
       | rfl
       | (rw [AddCircle.volume_eq_smul_haarAddCircle]; simp; rfl)
-      | (simp [AddCircle.volume_eq_smul_haarAddCircle])
-      | (rw [AddCircle.volume_eq_smul_haarAddCircle]; simp)
     rw [← hS]
     show MeasurePreserving _ ((Measure.pi fun _ => volume).restrict _)
       (Measure.pi fun _ => @volume UnitAddCircle instMeasureSpaceUnitAddCircle)
@@ -147,6 +144,5 @@ theorem mFourierCoeff_torusFunC (e : Module.Basis ι ℝ V) (G : V → ℂ) (hG 
   congr 1
   push_cast
   ring
-  all_goals first | infer_instance | assumption
 
 end Formalism.H

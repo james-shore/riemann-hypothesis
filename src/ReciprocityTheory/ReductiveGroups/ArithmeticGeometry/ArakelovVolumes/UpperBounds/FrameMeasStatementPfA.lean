@@ -83,7 +83,7 @@ theorem β0_bound {C : Set (Frame X.Ψ r)} (hC : IsCompact C) (hCd : C ⊆ X.dom
       ((continuous_apply b).comp ((continuous_apply a).comp (cont_β0 X τ))).norm
     show Continuous fun x : C => ‖β0 X x.1 τ a b‖
     refine (h1.comp (continuous_inclusion hCd)).congr fun x => ?_
-    simp only [Function.comp_apply, Set.coe_inclusion]
+    simp only [Function.comp_apply]
   choose R hR using fun (τ : X.Ψ) (a b : Fin r) => hC.bddAbove_image (hcont τ a b)
   refine ⟨∑ τ, ∑ a, ∑ b, max (R τ a b) 0, fun x hx τ a b => ?_⟩
   have h1 : ‖β0 X x τ a b‖ ≤ R τ a b := hR τ a b ⟨x, hx, rfl⟩

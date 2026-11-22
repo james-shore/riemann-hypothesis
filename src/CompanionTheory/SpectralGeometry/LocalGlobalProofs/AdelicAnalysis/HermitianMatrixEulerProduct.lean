@@ -96,7 +96,7 @@ def mg (σ : E →ₐ[F] E) (G : Matrix (Fin n) (Fin n) (R ⊗[F] E)) :
     Matrix (Fin n) (Fin n) (R ⊗[F] E) →ₗ[R] Matrix (Fin n) (Fin n) (R ⊗[F] E) where
   toFun S := cT (sigR R σ) G * S * G
   map_add' S T := by simp [Matrix.mul_add, Matrix.add_mul]
-  map_smul' r S := by simp [Matrix.mul_smul, Matrix.smul_mul]
+  map_smul' r S := by simp
 
 theorem psi_mem {σ : E →ₐ[F] E} (hinv : ∀ x, σ (σ x) = x) (b : Module.Basis (Fin d) F E)
     (x : Idx n d → R) : psi R σ b x ∈ HermR R σ n :=

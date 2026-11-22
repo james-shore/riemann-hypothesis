@@ -36,7 +36,7 @@ theorem UpperTheory.V.ConeExtensionAcyclic.nerve_sep :
   let C : Set F := X ∩ ⋂ j ∈ σ, A j
   have hCmem : ∀ x, x ∈ C ↔ x ∈ X ∧ ∀ j ∈ σ, x ∈ A j := by
     intro x
-    simp [C, Set.mem_iInter₂]
+    simp [C]
   have hCk : IsCompact C := hXk.inter_right (isClosed_biInter fun j _ => hAc j)
   have hCv : Convex ℝ C := hXc.inter (convex_iInter₂ fun j _ => hAv j)
   have hDk : IsCompact (X ∩ A i) := hXk.inter_right (hAc i)

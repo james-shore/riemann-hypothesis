@@ -51,7 +51,7 @@ theorem redM_frMapO_add {D : D7} {S T : HSp D} (βS : GL (Fin S.rank) (EAf D)) (
     have := GlobalTheory.PlaceDatum.frMapO_add βS βT a b 1 p q
     simpa using this
   ext p q
-  simp only [redM, e, Matrix.add_apply, Matrix.of_apply]
+  simp only [redM, e, Matrix.add_apply]
   rw [dif_pos (add_mem (ha p q) (hb p q)), dif_pos (ha p q), dif_pos (hb p q), ← map_add]
   rfl
 

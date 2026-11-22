@@ -156,7 +156,7 @@ theorem induced_eq (H : Subgroup G) (hcl : IsClosed (H : Set G)) (μ : Measure G
   have hmne : m ≠ 0 := by
     intro h0
     have hu := hmA Set.univ MeasurableSet.univ
-    simp only [Set.indicator_univ, Pi.one_apply, lintegral_const, one_mul, lintegral_one] at hu
+    simp only [Set.indicator_univ, Pi.one_apply, lintegral_const, one_mul] at hu
     rw [h0, Measure.coe_zero, Pi.zero_apply] at hu
     have hν : ν Set.univ ≠ 0 := isOpen_univ.measure_ne_zero ν Set.univ_nonempty
     have hρ : ρ' Set.univ ≠ 0 := by
@@ -167,7 +167,7 @@ theorem induced_eq (H : Subgroup G) (hcl : IsClosed (H : Set G)) (μ : Measure G
     apply hmne
     rw [hm]
     ext s _
-    simp [← hcdef, ENNReal.coe_eq_zero.1 h0]
+    simp [ENNReal.coe_eq_zero.1 h0]
   have hctop : (c : ℝ≥0∞) ≠ ⊤ := ENNReal.coe_ne_top
   refine ⟨(c : ℝ≥0∞)⁻¹, ENNReal.inv_ne_zero.2 hctop, ENNReal.inv_ne_top.2 hc0, fun f hf => ?_⟩
   rw [← hmf f hf, hm]

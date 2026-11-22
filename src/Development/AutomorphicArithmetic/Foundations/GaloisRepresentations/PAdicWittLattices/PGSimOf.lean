@@ -168,7 +168,6 @@ private theorem glue {p : ℕ} (hp : p.Prime) {h : ℕ → G.La →+ G.La} {w : 
         rw [e]
         exact isCoprime_one_left.add_mul_left_left k
     · intro x y
-      beta_reduce
       refine gli n hn _ ?_ ?_
       · have d1 := mn_form (fa n hn x) (fa n hn y)
         have d2 := H.isom _ hApos hAp x y
@@ -210,7 +209,6 @@ private theorem glue {p : ℕ} (hp : p.Prime) {h : ℕ → G.La →+ G.La} {w : 
       exact mn_trans (mn_of_dvd ⟨b, hb⟩ (fa _ hN x)) (mn_trans ht (mn_symm (fa n hn x)))
     · exact mn_trans (mn_of_dvd hdQ (fq _ hN x)) (mn_symm (fq n hn x))
   · intro n m hn hm
-    beta_reduce
     have hN : 0 < n * m := Nat.mul_pos hn hm
     obtain ⟨hdA, hdQ⟩ := hdv n m hn hm
     refine gli n hn _ ?_ ?_

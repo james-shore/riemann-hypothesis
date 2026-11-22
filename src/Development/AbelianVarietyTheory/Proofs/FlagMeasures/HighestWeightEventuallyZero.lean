@@ -177,7 +177,7 @@ lemma rd_integral {ε : Fin n → Bool} {lam : Fin n → ℝ} {l : Fin n → Fin
 
 private lemma dInt_add_smul {ε : Fin n → Bool} (l : Fin n → Fin n → Mt → ℂ) (X Y z : Mt) (k : KG ε)
     (c : ℂ) : dInt l (X + c • Y) z k = dInt l X z k + c * dInt l Y z k := by
-  simp only [dInt, Matrix.mul_add, Matrix.add_mul, Matrix.mul_smul, Matrix.smul_mul, Matrix.add_apply,
+  simp only [dInt, Matrix.mul_add, Matrix.mul_smul, Matrix.smul_mul, Matrix.add_apply,
     Matrix.smul_apply, smul_eq_mul, add_mul, Finset.sum_add_distrib, Finset.mul_sum, mul_assoc]
 
 lemma eab_integral {ε : Fin n → Bool} {lam : Fin n → ℝ} {l : Fin n → Fin n → Mt → ℂ}

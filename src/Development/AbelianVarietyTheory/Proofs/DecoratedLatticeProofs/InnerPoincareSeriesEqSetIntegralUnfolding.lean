@@ -127,6 +127,5 @@ theorem GlobalTheory.Core.Mi.inner_pser_eq_setIntegral : ∀ (D : D7) (X : Forma
     congr 1
     first
       | exact Complex.conj_conj (f a)
-      | simp [Complex.star_def]
   rw [eL, e4, e1, e2]
   exact tsum_congr fun δ => (e3 δ).symm

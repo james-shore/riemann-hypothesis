@@ -268,8 +268,6 @@ theorem locFin_sE (hF : LocFin ε E) (hF' : LocFin ε E') : LocFin ε (sE E E') 
         | infer_instance
         | (rw [← Submodule.range_subtype S₁, ← Submodule.range_subtype S₂, ← LinearMap.range_prodMap]
            infer_instance)
-        | (rw [← Submodule.range_subtype S₁, ← Submodule.range_subtype S₂, ← LinearMap.range_prod_map]
-           infer_instance)
     infer_instance
   · intro a b hab w hw
     obtain ⟨p, hp, rfl⟩ := Submodule.mem_map.1 hw

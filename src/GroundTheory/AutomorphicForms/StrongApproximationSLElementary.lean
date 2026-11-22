@@ -67,8 +67,6 @@ theorem transvection_mul_eq_diagonal_update (i j : n) (hij : i ≠ j) (u : Rˣ) 
     Matrix.one_apply, Matrix.single_apply]
   by_cases hbj : b = j <;> by_cases hbi : b = i <;> by_cases hai : a = i <;> by_cases haj : a = j <;>
     simp [hbj, hbi, hai, haj, hij, Ne.symm hij, @eq_comm _ i, @eq_comm _ j]
-  all_goals (try ring_nf)
-  all_goals (try simp)
 
 def diagonalGL : (n → Rˣ) →* GL n R where
   toFun d :=

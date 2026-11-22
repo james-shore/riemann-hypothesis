@@ -240,13 +240,13 @@ theorem trace_one_tmul (e : E) : Algebra.trace (Fv F v) (Fv F v ⊗[F] E) (1 ⊗
 
 theorem crd_basis (i : Fin (Module.finrank F E)) : crd v (bA E v i) = Pi.single i 1 := by
   funext j
-  simp [crd, Module.Basis.equivFun_apply, Module.Basis.repr_self, Finsupp.single_apply, Pi.single_apply, eq_comm]
+  simp [crd, Pi.single_apply, eq_comm]
 
 theorem nA_basis_le (i : Fin (Module.finrank F E)) : nA v (bA E v i) ≤ 1 := by
   unfold nA; rw [crd_basis, pi_norm_le_iff_of_nonneg zero_le_one]
   intro j; by_cases h : j = i
   · subst h; simp
-  · simp [Pi.single_apply, h]
+  · simp [h]
 
 theorem exists_trace_ge : ∃ c, 0 < c ∧ ∀ a : Fv F v ⊗[F] E, ∃ a', nA v a' ≤ 1 ∧
     c * nA v a ≤ ‖Algebra.trace (Fv F v) (Fv F v ⊗[F] E) (a' * a)‖ := by

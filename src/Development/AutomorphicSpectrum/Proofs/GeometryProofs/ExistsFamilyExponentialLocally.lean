@@ -489,7 +489,6 @@ theorem famExp_of_inverse (M : LieModel G (𝟙 (Sp R)) (Fin g → R)) (hρ : 0 
       have hx := (hret p.1 (ball_subset_ball hρδ hpb') x hxV (fun j => by rw [hf]; exact h2 j)).2
       rw [hT] at hx
       refine hx.trans ?_
-      change Ψ p.1 (fun a => p.2 (Fin.castAdd N a)) = ex p.1 (L (p.1, fun a => p.2 (Fin.castAdd N a)))
       rw [(hexa p.1 hpb').2 _ hpL', (hA p.1 hpb' _ hps').2.2.1]
 
 end Family

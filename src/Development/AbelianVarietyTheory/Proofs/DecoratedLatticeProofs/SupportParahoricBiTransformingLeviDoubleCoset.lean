@@ -42,7 +42,7 @@ theorem det_lower_diagT (c : A ⊕ D → kˣ) :
 theorem prod_mulSingle_inr (p : A ⊕ D) (u : kˣ) :
     (∏ i : D, (Pi.mulSingle p u : A ⊕ D → kˣ) (.inr i)) = if p.isRight then u else 1 := by
   rcases p with a | d
-  · simp [Pi.mulSingle_apply]
+  · simp
   · simp [Pi.mulSingle_apply]
 
 end GlobalTheory.ParHeckeSupp
@@ -133,11 +133,11 @@ def toAD : GL (Fin (Fintype.card A + Fintype.card D)) k →* GL (A ⊕ D) k :=
 
 theorem toAD_val (g : GL (Fin (Fintype.card A + Fintype.card D)) k) (x y : A ⊕ D) :
     (toAD k A D g : Matrix (A ⊕ D) (A ⊕ D) k) x y = (g : Matrix _ _ k) (numE x) (numE y) := by
-  simp [toAD, reindexAlgEquiv_apply, reindex_apply]
+  simp [toAD, reindex_apply]
 
 theorem toAD_surj (g : GL (A ⊕ D) k) : ∃ g₀, toAD k A D g₀ = g :=
   ⟨Units.map (reindexAlgEquiv k k (numE (A := A) (D := D))).toMonoidHom g,
-    Units.ext (Matrix.ext fun x y => by rw [toAD_val]; simp [reindexAlgEquiv_apply, reindex_apply])⟩
+    Units.ext (Matrix.ext fun x y => by rw [toAD_val]; simp [reindex_apply])⟩
 
 theorem toAD_incl_mem (u : GlobalTheory.IndefiniteRowSideFullHecke.CuspidalSupportClasses.unipLevel k (Fintype.card A + Fintype.card D)) :
     toAD k A D (GlobalTheory.IndefiniteRowSideFullHecke.CuspidalSupportClasses.incl k _ u) ∈ parahoric k A D := by
@@ -146,7 +146,7 @@ theorem toAD_incl_mem (u : GlobalTheory.IndefiniteRowSideFullHecke.CuspidalSuppo
     fun i j => ?_⟩
   · ext x y
     rw [toAD_val, GlobalTheory.TypeDim.incl_val]
-    simp [reindexAlgEquiv_apply, reindex_apply]
+    simp [reindex_apply]
     rfl
   · rw [toAD_val, GlobalTheory.TypeDim.incl_val]
     have h := ((mem_unipB _).1 (Subgroup.mem_comap.1 u.2)).1 _ _ (numE_lt j i)

@@ -28,7 +28,7 @@ lemma mul_hpk_apply (A : Mx k r) (i j : Fin (2 * r + k + 1)) :
   · congr 1
     have := j.isLt
     simp only [Hpk, WeylGroupFacts.tau, WeylGroupFacts.sgn, Fin.ext_iff, Fin.val_mk]
-    split_ifs <;> first | rfl | (exfalso; omega) | norm_num
+    split_ifs <;> first | rfl | (exfalso; omega)
   · intro b _ hb
     have hb' : b.val ≠ (WeylGroupFacts.tau k r j).val := fun e => hb (Fin.ext e)
     have := j.isLt
@@ -47,7 +47,7 @@ private lemma hpk_mul_lemma (A : Mx k r) (i j : Fin (2 * r + k + 1)) :
   · congr 1
     have := i.isLt
     simp only [Hpk, WeylGroupFacts.tau, WeylGroupFacts.sgn, Fin.ext_iff, Fin.val_mk]
-    split_ifs <;> first | rfl | (exfalso; omega) | norm_num
+    split_ifs <;> first | rfl | (exfalso; omega)
   · intro b _ hb
     have hb' : b.val ≠ (WeylGroupFacts.tau k r i).val := fun e => hb (Fin.ext e)
     have := i.isLt
@@ -180,7 +180,7 @@ lemma dag_dag (A : Mx k r) : dag k r (dag k r A) = A := by
     Matrix.mul_one]
 
 lemma star_half : star (1 / 2 : ℂ) = 1 / 2 := by
-  first | simp | (rw [Complex.star_def]; simp)
+  first | simp
 
 lemma star_inv2I : star (1 / (2 * Complex.I) : ℂ) = -(1 / (2 * Complex.I)) := by
   rw [Complex.star_def, map_div₀, map_one, map_mul, Complex.conj_I, map_ofNat]

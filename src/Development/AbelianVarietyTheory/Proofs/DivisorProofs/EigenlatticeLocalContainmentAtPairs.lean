@@ -28,8 +28,6 @@ theorem exists_smul_mem_of_mem_span {A : Submodule (𝓞 K) Z} {x : Z} (hx : x �
   | exact @_root_.GlobalTheory.TargetLemmaCollection.target
   | exact _root_.GlobalTheory.TargetLemmaCollection.target
   | (apply _root_.GlobalTheory.TargetLemmaCollection.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TargetLemmaCollection.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TargetLemmaCollection.target <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TargetLemmaCollection.target ..)
 
 theorem span_cut {A : Submodule (𝓞 K) Z} (hA : Submodule.span K (A : Set Z) = ⊤) (W : Submodule K Z) :

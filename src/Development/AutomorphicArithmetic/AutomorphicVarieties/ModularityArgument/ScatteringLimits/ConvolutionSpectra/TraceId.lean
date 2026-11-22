@@ -60,7 +60,7 @@ theorem UpperTheory.V.Z.IntegralApplyAeEq.traceId :
   have u1 : ∀ h, M.F.U a (M.abelian₂ T T h) = M.abelian₂ (T - a) (T + a) (M.F.U a h) := fun h => by
     obtain ⟨x1, x2⟩ := (hP _ _ (mI T) (mI T)).2.2.2.2 a
     have y1 : (fun x : ℝ => x + a) ⁻¹' Ioi T = Ioi (T - a) := by ext x; simp [sub_lt_iff_lt_add]
-    have y2 : (fun x : ℝ => x - a) ⁻¹' Ioi T = Ioi (T + a) := by ext x; simp [lt_sub_iff_add_lt]
+    have y2 : (fun x : ℝ => x - a) ⁻¹' Ioi T = Ioi (T + a) := by ext x; simp
     rw [y1] at x1; rw [y2] at x2
     have z1 := DFunLike.congr_fun x1 h
     have z2 := DFunLike.congr_fun x2 h

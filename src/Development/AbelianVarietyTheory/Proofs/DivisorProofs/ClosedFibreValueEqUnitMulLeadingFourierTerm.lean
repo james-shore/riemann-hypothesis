@@ -199,7 +199,7 @@ theorem closedFibre_val : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing 
       (∏ κ, Gw (𝟙 Z ≫ DegPre.gtφT _ _ ξ'.b x κ) ^ DegPre.gtε κ) = Gw r ^ k := by
     simp only [hO, Fin.prod_univ_four]
     simp only [DegPre.famφB, DegPre.Oφ, DegPre.famε, DegPre.gtε, Matrix.cons_val_zero, Matrix.cons_val_one,
-      Matrix.cons_val_two, Matrix.cons_val_three, Matrix.head_cons, Over.id_left, Category.comp_id]
+      Matrix.cons_val_two, Matrix.cons_val_three, Over.id_left, Category.comp_id]
     exact commGroup_fourFactor_exponents_cancel_pow _ _ _ _ k
   have E3' : sval τ y z J' = sval b (y ≫ Y.q.left) z J' *
       (val ((Y.Φ (Over.mk (y ≫ Y.H.hom)) (Over.homMk y rfl)).s (T.hD.xe x)) (𝟙 Z) z J').val := E3

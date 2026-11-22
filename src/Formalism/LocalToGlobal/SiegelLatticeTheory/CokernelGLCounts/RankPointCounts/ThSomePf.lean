@@ -56,7 +56,7 @@ theorem det_add_corner (A : Matrix (Fin (r + 1)) (Fin (r + 1)) K) (c : K) :
       rw [Matrix.updateCol_self]
       by_cases ha : a = Fin.last r
       · subst ha; simp
-      · simp [ha, Pi.single_eq_of_ne ha]
+      · simp [ha]
     · rw [Matrix.updateCol_ne hb]
       simp [hb]
   rw [e, Matrix.det_updateCol_add, Formalism.L2.SG.Pf.ScalKindPf.det_updateCol_last_single]
@@ -443,7 +443,7 @@ theorem blkMod_comps (p : PlF D) (sg : Loc.SplitAt (D.s.atP p).Fp (D.s.atP p).Ep
   obtain ⟨hi1, hi2⟩ := proj_inverse_algebraMap sg.e (sg.q : (D.s.atP p).Fp) hq
   have hnu : nu D.R.rS (D.R.rS + 1) (D.R.rS + 1 + 1 - 1) = 0 := by unfold nu; omega
   have hc : (D.R.rS + 1 + 1 - 1 = D.R.rS + 1 ∧ (1 : ℕ) = 1) := ⟨by omega, rfl⟩
-  simp only [blkMod, tMod, if_pos hc, hnu, pow_zero, Ring.inverse_one, one_mul, twist, qE, tau0, hsD]
+  simp only [blkMod, tMod, hnu, pow_zero, Ring.inverse_one, one_mul, twist, qE, tau0, hsD]
   refine ⟨?_, ?_⟩
   · rw [map_sub, map_mul, if_pos (show D.R.rS + 1 + 1 - 1 = D.R.rS + 1 ∧ True from ⟨by omega, trivial⟩), map_mul,
       fst_proj_symm, fst_proj_symm, hi1, adeleInfiniteComponent_apply]

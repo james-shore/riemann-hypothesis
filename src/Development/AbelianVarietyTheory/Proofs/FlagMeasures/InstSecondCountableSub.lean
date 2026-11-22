@@ -129,7 +129,7 @@ def BC (ε : Fin n → Bool) : Subgroup (Matrix (Fin n) (Fin n) ℂ)ˣ where
     refine ⟨mul_mem hg.1 hh.1, isLo_mul hg.2.1 hh.2.1, fun l => ?_⟩
     rw [Units.val_mul, isLo_mul_diag hg.2.1 hh.2.1]
     exact mul_pos (hg.2.2 l) (hh.2.2 l)
-  one_mem' := ⟨one_mem _, fun i j h => by simp [Matrix.one_apply, h.ne], fun l => by simp⟩
+  one_mem' := ⟨one_mem _, fun i j h => by simp [h.ne], fun l => by simp⟩
   inv_mem' := by
     intro g hg
     refine ⟨inv_mem hg.1, isLo_inv hg.2.1, fun l => ?_⟩

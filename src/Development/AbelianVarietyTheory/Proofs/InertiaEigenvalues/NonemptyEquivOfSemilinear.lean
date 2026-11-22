@@ -451,7 +451,7 @@ theorem exists_sum_reduction {lam : O} (T T' Z : LocLat G Qp LL O) (u : ↥Z.L.T
     rw [← he]
     exact congrArg e (Prod.ext (map_zero (A.ρ g)).symm rfl)
   · have : ⇑((e.toLinearMap ∘ₗ LinearMap.inl k _ _).coprod (e.toLinearMap ∘ₗ LinearMap.inr k _ _)) = e :=
-      funext fun x => by simp [← map_add]
+      funext fun x => by simp
     rw [this]
     exact e.bijective
   · change e (q (u z).1, q' (u z).2) = e (q (u z).1, 0) + e (0, q' (u z).2)

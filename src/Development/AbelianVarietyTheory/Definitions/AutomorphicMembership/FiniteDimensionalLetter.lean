@@ -50,9 +50,7 @@ theorem span_letterMk : Submodule.span F (Set.range (letterMk m F τ)) = ⊤ := 
   first
   | exact @_root_.GlobalTheory.SpanQuotientTensor.main
   | exact _root_.GlobalTheory.SpanQuotientTensor.main
-  | (apply _root_.GlobalTheory.SpanQuotientTensor.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SpanQuotientTensor.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SpanQuotientTensor.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.SpanQuotientTensor.main)
   | (intros; exact _root_.GlobalTheory.SpanQuotientTensor.main ..)
 
 theorem letter_hom_ext {M : Type*} [AddCommGroup M] [Module F M] {f g : Letter m F τ →ₗ[F] M}

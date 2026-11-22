@@ -57,7 +57,7 @@ theorem coord_mulLeft {d : ℕ} (e : Module.Basis (Fin d) ℚ_[l] V) (r : Fin d)
       (LinearMap.mulLeft ℚ_[l] c) x) = c * coord e r x := by
   induction x using TensorProduct.induction_on with
   | zero => simp
-  | tmul v y => simp [coord_tmul, mul_smul_comm]
+  | tmul v y => simp [coord_tmul]
   | add x y hx hy => simp only [map_add, hx, hy, mul_add]
 
 theorem coord_mem {d : ℕ} (e : Module.Basis (Fin d) ℚ_[l] V) (r : Fin d) (F : Submodule ℚ_[l] B)
@@ -151,4 +151,4 @@ theorem GlobalTheory.crysLattice_basis_mem_sum_fil_dR : ∀ (l : ℕ) [Fact l.Pr
     rw [← h2]
     by_cases hr : r = j
     · subst hr; simp
-    · simp [hr, Finsupp.single_apply, Pi.single_apply, Ne.symm hr]
+    · simp [hr]

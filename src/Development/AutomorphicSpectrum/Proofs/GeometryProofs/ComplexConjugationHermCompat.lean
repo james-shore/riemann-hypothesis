@@ -78,7 +78,7 @@ theorem conjLine_tensor (A B : HermLine ι) :
 theorem conjLine_conjLine (A : HermLine ι) : conjLine (conjLine A) = A := by
   cases A with
   | mk a h pos smul =>
-    simp only [conjLine, HermLine.mk.injEq, heq_eq_eq, true_and]
+    simp only [conjLine, HermLine.mk.injEq, true_and]
     funext z
     rw [conjPt_conjPt]
 

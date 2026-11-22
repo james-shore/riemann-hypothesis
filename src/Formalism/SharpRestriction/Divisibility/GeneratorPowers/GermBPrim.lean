@@ -145,7 +145,7 @@ theorem exists_wP : ∃ wP : PrimTyG t, IsPrimG t wP := by
   obtain ⟨u, hu⟩ := exists_ratio t.PP.L hL (φ' := fun _ : PUnit => eSec t.G) (ε' := fun _ => 1)
     (fun U _ h => by
       rw [Fintype.prod_sum_type]
-      simp only [Sum.elim_inl, Sum.elim_inr, Fin.prod_univ_one, Category.comp_id, zpow_neg, Finset.prod_inv_distrib,
+      simp only [Sum.elim_inl, Sum.elim_inr, Category.comp_id, zpow_neg, Finset.prod_inv_distrib,
         hpt, Fintype.prod_unique]
       rw [cube_one_left t (fun p => h p.left), inv_one, _root_.mul_one])
     (LB.pullGen t.PP.L _ _ w1 (eSec t.G)) (ReciprocityTheory.ChartRestriction.G.DVR.pullGen_isGen _ _ _ _ hw1 _) t.PP.rig t.PP.rigGen

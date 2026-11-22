@@ -78,7 +78,7 @@ theorem ld_boxes_le (p w i q : ℕ) (lam2 tau : Fin q → ℕ) (htau : tau ∈ s
         (lam2 a : ℤ) ≤ c + (a.val : ℤ) ∧ c + (a.val : ℤ) < (tau a : ℤ)).max' hS).val : ℤ) := by
       exact_mod_cast hab
     have htb := hanti a _ hab
-    simp only [colLen, Finset.mem_filter, Finset.mem_univ, true_and]
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and]
     constructor <;> omega
 
 theorem muLe : MuLe := by

@@ -18,7 +18,7 @@ theorem reindex_symm_reindex {κ : Type} [CommRing κ] {a b : ℕ} (e : Fin a �
     Units.map (Matrix.reindexAlgEquiv κ κ e.symm).toMonoidHom (Units.map (Matrix.reindexAlgEquiv κ κ e).toMonoidHom y) = y := by
   apply Units.ext
   ext i j
-  simp [Matrix.reindexAlgEquiv_apply]
+  simp
 
 theorem of_reindex_mem_HK {κ : Type} [CommRing κ] {a n r t m : ℕ} (h : a = n) (hn : n = r + m * t) (hra : r ≤ a)
     (y : GL (Fin a) κ)

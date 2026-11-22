@@ -55,7 +55,7 @@ def diagForm {ι : Type*} [Fintype ι] [DecidableEq ι] (a : ι → Fˣ) :
       intro x j
       rw [Finset.sum_eq_single j]
       · simp
-      · intro i _ hij; simp [Pi.single_apply, hij]
+      · intro i _ hij; simp [hij]
       · simp
     constructor
     · intro x y hxy

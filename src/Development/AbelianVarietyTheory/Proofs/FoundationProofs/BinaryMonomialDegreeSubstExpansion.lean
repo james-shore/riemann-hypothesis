@@ -88,7 +88,7 @@ theorem polySlash_monomial_isHomogeneous (w : ℕ) (m : Matrix (Fin 2) (Fin 2) �
 
 theorem map₃ (R : Type) [CommRing R] (w : ℕ) (m : Matrix (Fin 2) (Fin 2) ℤ) (k : Fin (w + 1)) :
     MvPolynomial.map (Int.castRingHom R) (slP m (mon ℤ w k)) = slP m (mon R w k) := by
-  simp [slP, mon, map_mul, map_pow, MvPolynomial.aeval_X, MvPolynomial.smul_eq_C_mul]
+  simp [slP, mon, map_mul, map_pow, MvPolynomial.smul_eq_C_mul]
 
 theorem map_mon (R : Type) [CommRing R] (w : ℕ) (i : Fin (w + 1)) :
     MvPolynomial.map (Int.castRingHom R) (mon ℤ w i) = mon R w i := by

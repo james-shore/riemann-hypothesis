@@ -30,7 +30,7 @@ private theorem slice_mem {F : Type} [Field F] [NumberField F] {f : V4 F → ℂ
   have hv : ∀ x : Fin 2 ⊕ Fin 2 → A F, M.map (algebraMap F (A F)) *ᵥ x = fun i => x (e.symm i) := by
     intro x
     funext i
-    simp only [Matrix.mulVec, dotProduct, Matrix.map_apply, M, Matrix.submatrix_apply, id]
+    simp only [Matrix.mulVec, dotProduct, Matrix.map_apply, M, Matrix.submatrix_apply]
     rw [← Equiv.sum_comp e.symm]
     simp [Matrix.one_apply, apply_ite]
   have h1 := GroundTheory.Heights₂.Theta.comp_mulVec_mem_schwartzBruhatPi M N hNM hMN hf

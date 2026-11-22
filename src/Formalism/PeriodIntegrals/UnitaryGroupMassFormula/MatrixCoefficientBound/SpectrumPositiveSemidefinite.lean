@@ -37,8 +37,6 @@ theorem spectrum_positive_semidefinite : SpecPSD := by
       rw [Matrix.sub_mulVec] at h
       first
         | rw [Matrix.smul_mulVec] at h
-        | rw [Matrix.smul_mulVec_assoc] at h
-        | simp only [Matrix.smul_mulVec_assoc] at h
       rw [Matrix.one_mulVec] at h
       rw [sub_smul, ← h]
       abel

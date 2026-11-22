@@ -99,7 +99,7 @@ private lemma natCast_mul_sum_trace_inv_mul_trace_mul_eq {L G : Type} [Field L] 
   have := congrArg (fun S => LinearMap.trace L _ (S * ρ b)) key
   simp only [smul_mul_assoc, map_smul, one_mul, smul_eq_mul, htr] at this
   rw [← this, hZdef, Finset.sum_mul, map_sum]
-  simp [map_mul, smul_mul_assoc]
+  simp [map_mul]
 
 open Module in
 variable {K : Type} [Field K] [CharZero K] {G : Type} [Group G] [Fintype G] in
@@ -113,7 +113,7 @@ private lemma trace_leftReg_mul_mulRight_eq_sum_coeff {K G : Type} [Field K] [Gr
   rw [Matrix.diag_apply, LinearMap.toMatrix_apply, MonoidAlgebra.basis_apply]
   simp only [_root_.GlobalTheory.MultOneRealised.leftReg, MonoidHom.coe_mk, OneHom.coe_mk, Module.End.mul_apply,
     LinearMap.mulLeft_apply, LinearMap.mulRight_apply, ← mul_assoc, MonoidAlgebra.single_mul_single, mul_one]
-  simp [MonoidAlgebra.basis, MonoidAlgebra.single_mul_apply, mul_assoc]
+  simp [MonoidAlgebra.basis, mul_assoc]
 
 open Module in
 variable {K : Type} [Field K] [CharZero K] {G : Type} [Group G] [Fintype G] in

@@ -77,7 +77,7 @@ theorem vK_mem (ch : Choice R) (large₂ : SizeData₂ D) (F : Face D A) (CF b :
   · unfold GridChoice.invGam
     exact mul_mem (prod_mem fun j _ => inv_mem (natCast_mem _ _)) (prod_mem fun i _ => inv_mem (natCast_mem _ _))
   · unfold GridChoice.pairAt
-    simp only [Finsupp.sum, LinearMap.sum_apply, LinearMap.smul_apply, LinearMap.compl₁₂_apply, smul_eq_mul]
+    simp only [Finsupp.sum, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul]
     refine sum_mem fun d hd => mul_mem ?_ ?_
     · obtain ⟨X, Y, e⟩ := (hτf β hβ).coef_eq hd
       rw [e]

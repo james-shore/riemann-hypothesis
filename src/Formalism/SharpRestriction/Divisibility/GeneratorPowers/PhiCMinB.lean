@@ -109,36 +109,36 @@ def Pf (η ζ : Y →ₗ[ℤ] ℝ) (a c : Y) : ℝ :=
 
 theorem Pf_add_left (η ζ : Y →ₗ[ℤ] ℝ) (a b c : Y) :
     Pf E η ζ (a + b) c = Pf E η ζ a c + Pf E η ζ b c := by
-  simp only [Pf, comp_add, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.conj_re, Complex.conj_im, ← Finset.sum_add_distrib]
+  simp only [Pf, comp_add, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.conj_re, Complex.conj_im, ← Finset.sum_add_distrib]
   exact Finset.sum_congr rfl fun σ _ => by ring
 
 theorem Pf_add_right (η ζ : Y →ₗ[ℤ] ℝ) (a b c : Y) :
     Pf E η ζ a (b + c) = Pf E η ζ a b + Pf E η ζ a c := by
-  simp only [Pf, comp_add, map_add, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.conj_re, Complex.conj_im, ← Finset.sum_add_distrib]
+  simp only [Pf, comp_add, map_add, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.conj_re, Complex.conj_im, ← Finset.sum_add_distrib]
   exact Finset.sum_congr rfl fun σ _ => by ring
 
 theorem Pf_symm (η ζ : Y →ₗ[ℤ] ℝ) (a c : Y) : Pf E η ζ a c = Pf E η ζ c a := by
-  simp only [Pf, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.conj_re, Complex.conj_im]
+  simp only [Pf, Complex.re_sum, Complex.add_re, Complex.mul_re, Complex.conj_re, Complex.conj_im]
   exact Finset.sum_congr rfl fun σ _ => by ring
 
 theorem Pf_comm (η ζ : Y →ₗ[ℤ] ℝ) (a c : Y) : Pf E η ζ a c = Pf E ζ η a c := by
-  simp only [Pf, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.conj_re, Complex.conj_im]
+  simp only [Pf, Complex.re_sum, Complex.add_re, Complex.mul_re, Complex.conj_re, Complex.conj_im]
   exact Finset.sum_congr rfl fun σ _ => by ring
 
 theorem Pf_fadd (η η' ζ : Y →ₗ[ℤ] ℝ) (a c : Y) :
     Pf E (η + η') ζ a c = Pf E η ζ a c + Pf E η' ζ a c := by
-  simp only [Pf, comp_fadd, map_add, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.conj_re, Complex.conj_im, ← Finset.sum_add_distrib]
+  simp only [Pf, comp_fadd, map_add, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.conj_re, Complex.conj_im, ← Finset.sum_add_distrib]
   exact Finset.sum_congr rfl fun σ _ => by ring
 
 theorem Pf_fsmul (r : ℝ) (η ζ : Y →ₗ[ℤ] ℝ) (a c : Y) :
     Pf E (r • η) ζ a c = r * Pf E η ζ a c := by
-  simp only [Pf, comp_fsmul, map_mul, Complex.conj_ofReal, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.conj_re, Complex.conj_im, Complex.ofReal_re,
+  simp only [Pf, comp_fsmul, map_mul, Complex.conj_ofReal, Complex.re_sum, Complex.add_re, Complex.mul_re, Complex.mul_im, Complex.conj_re, Complex.conj_im, Complex.ofReal_re,
     Complex.ofReal_im, Finset.mul_sum]
   exact Finset.sum_congr rfl fun σ _ => by ring
 
 theorem Pf_self (η : Y →ₗ[ℤ] ℝ) (a : Y) :
     Pf E η η a a = 2 * ∑ σ : E →+* ℂ, Complex.normSq (comp η σ a) := by
-  simp only [Pf, Complex.re_sum, Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im, Complex.conj_re, Complex.conj_im, Complex.normSq_apply, Finset.mul_sum]
+  simp only [Pf, Complex.re_sum, Complex.add_re, Complex.mul_re, Complex.conj_re, Complex.conj_im, Complex.normSq_apply, Finset.mul_sum]
   exact Finset.sum_congr rfl fun σ _ => by ring
 
 theorem Pf_self_nonneg (η : Y →ₗ[ℤ] ℝ) (a : Y) : 0 ≤ Pf E η η a a := by

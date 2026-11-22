@@ -89,7 +89,7 @@ theorem hasDerivAt_genW {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
   refine hcomp.congr_of_eventuallyEq ?_
   have hc : Filter.Tendsto (fun t : ℝ => (x.1, x.2 * NormedSpace.exp ((t : ℂ) • genW k r w))) (nhds 0) (nhds x) := by
     have h := hγ.continuousAt.tendsto
-    first | (rw [hγ0] at h; exact h) | exact hγ0 ▸ h | (simp only [hγ0] at h; exact h)
+    first | (rw [hγ0] at h) | exact hγ0 ▸ h | (simp only [hγ0] at h; exact h)
   filter_upwards [hc (hU.mem_nhds hx)] with t ht
   exact he _ ht (glev_mul_exp hxG w t)
 
@@ -115,9 +115,9 @@ theorem hs_apply (p i m : Fin (2 * r + k + 1)) :
     (Hpk k r * Matrix.single p p (1 : ℂ)) i m = if m = p then Hpk k r i p else 0 := by
   rw [Matrix.mul_apply, Finset.sum_eq_single p]
   · by_cases hm : m = p
-    · subst hm; simp [Matrix.single_apply]
-    · simp [Matrix.single_apply, Ne.symm hm, hm]
-  · intro l _ hl; simp [Matrix.single_apply, Ne.symm hl]
+    · subst hm; simp
+    · simp [Ne.symm hm, hm]
+  · intro l _ hl; simp [Ne.symm hl]
   · intro h; exact absurd (Finset.mem_univ p) h
 
 theorem hpk_single (p : Fin (2 * r + k + 1)) (hp : r ≤ p.val ∧ p.val ≤ r + k) :

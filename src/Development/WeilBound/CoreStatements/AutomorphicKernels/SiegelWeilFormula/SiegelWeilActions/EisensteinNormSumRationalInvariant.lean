@@ -18,8 +18,7 @@ variable {d : SD σ} (R : RD d) (L : LD d)
 theorem uA_zero : uA L 0 = 1 := by simp [uA]
 
 theorem uA_col (u : Fin L.n → AE F E) (j : Fin d.n) : uA L u j L.i₀ = if j = L.i₀ then 1 else 0 := by
-  simp [uA, Matrix.add_apply, Matrix.sum_apply, Matrix.single_apply, Matrix.one_apply, fun k => (ComplexParameterFamilyContinuity.em_ne L k),
-    fun k => (ComplexParameterFamilyContinuity.em_ne L k).symm]
+  simp [uA, Matrix.add_apply, Matrix.sum_apply, Matrix.one_apply, fun k => (ComplexParameterFamilyContinuity.em_ne L k)]
 
 theorem uA_mul_aB (u : Fin L.n → AE F E) (δ : E) (a : AF F) : uA L u * aB L δ a = aB L δ a := by
   simp only [uA, aB, add_mul, one_mul, Finset.sum_mul]
@@ -53,10 +52,10 @@ def padB (β : Matrix (Fin L.n) (Fin L.n) (AE F E)) : Matrix (Fin d.n) (Fin d.n)
   ∑ k, ∑ l, Matrix.single (L.em k) (L.em l) (β k l)
 
 theorem padB_apply_i0_eq_zero (β : Matrix (Fin L.n) (Fin L.n) (AE F E)) (j : Fin d.n) : padB L β L.i₀ j = 0 := by
-  simp [padB, Matrix.sum_apply, Matrix.single_apply, fun k => ComplexParameterFamilyContinuity.em_ne L k]
+  simp [padB, Matrix.sum_apply, fun k => ComplexParameterFamilyContinuity.em_ne L k]
 
 theorem pad_block_col_zero (β : Matrix (Fin L.n) (Fin L.n) (AE F E)) (i : Fin d.n) : padB L β i L.i₀ = 0 := by
-  simp [padB, Matrix.sum_apply, Matrix.single_apply, fun k => ComplexParameterFamilyContinuity.em_ne L k]
+  simp [padB, Matrix.sum_apply, fun k => ComplexParameterFamilyContinuity.em_ne L k]
 
 theorem padB_em (β : Matrix (Fin L.n) (Fin L.n) (AE F E)) (k l : Fin L.n) : padB L β (L.em k) (L.em l) = β k l := by
   simp [padB, Matrix.sum_apply, Matrix.single_apply, L.inj.eq_iff, ite_and, Finset.sum_ite_eq']
@@ -148,8 +147,7 @@ theorem nb_split (h : Hyp L nb uM nb' w₁ cM δ) (β : nA σ d.Y d.b) :
   ext i j
   rcases idx L i with rfl | ⟨k, rfl⟩ <;> rcases idx L j with rfl | ⟨l, rfl⟩ <;>
     simp only [Matrix.add_apply, sB_i0i0, sB_i0em, siegel_block_embedded_row, sB_emem, padB_apply_i0_eq_zero, pad_block_col_zero, padB_em, aB,
-      Matrix.single_apply, C4.prj_val, Matrix.submatrix_apply, pb, pa, eA_eq, fun k => ComplexParameterFamilyContinuity.em_ne L k,
-      fun k => (ComplexParameterFamilyContinuity.em_ne L k).symm, and_self, and_false, false_and, if_true, if_false, add_zero, zero_add]
+      Matrix.single_apply, C4.prj_val, Matrix.submatrix_apply, pb, pa, eA_eq, fun k => (ComplexParameterFamilyContinuity.em_ne L k).symm, and_self, and_false, false_and, if_true, if_false, add_zero, zero_add]
   · have hy : cA σ (β.1 L.i₀ L.i₀) = -(((R.ε : ℤ) : AE F E)) * β.1 L.i₀ L.i₀ := by
       have e := hcij L.i₀ L.i₀
       calc cA σ (β.1 L.i₀ L.i₀) = -(((R.ε : ℤ) : AE F E)) * -(((R.ε : ℤ) : AE F E) * cA σ (β.1 L.i₀ L.i₀)) := by

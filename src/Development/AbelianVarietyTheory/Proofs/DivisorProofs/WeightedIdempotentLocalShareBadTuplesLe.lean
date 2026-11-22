@@ -23,8 +23,8 @@ theorem eU_coeff_one_ne (g N : ℕ) [NeZero g] (ψ₀ : AddChar (ZMod g) ℂ) :
   have h1 : (1 : GL (Fin N) (ZMod g)) ∈ J := by
     rw [hJ, Finset.mem_filter]
     refine ⟨Finset.mem_univ _, fun a b => ⟨fun h => ?_, fun h => ?_⟩⟩
-    · simp [Matrix.one_apply, (ne_of_gt h)]
-    · simp [Matrix.one_apply, h]
+    · simp [(ne_of_gt h)]
+    · simp [h]
   have h0 : (∑ i ∈ Finset.range (N - 1), Formalism.MainNotions.ArithmeticCylinders.entN ((1 : GL (Fin N) (ZMod g)) :
       Matrix (Fin N) (Fin N) (ZMod g)) i (i + 1)) = 0 := by
     refine Finset.sum_eq_zero fun i _ => ?_

@@ -35,7 +35,7 @@ private theorem exists_mul_pow_eq (I : Ideal R) (c : ↥I)
       Polynomial.monomial n ((c : R) ^ n) := by
     rw [SubmonoidClass.coe_pow, reesGenerator_coe, Polynomial.monomial_pow, one_mul]
   push_cast [reesDegreeZeroEquiv_coe_coe, hxr, hpow]
-  simp [Polynomial.C_mul_monomial, Polynomial.monomial_mul_C, mul_comm]
+  simp [Polynomial.C_mul_monomial, mul_comm]
   rw [← Polynomial.C_pow, Polynomial.monomial_mul_C]
 
 end UpperTheory.ChartGen

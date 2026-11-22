@@ -129,7 +129,6 @@ theorem term_eq (q N : ℕ) (hq : 0 < q) (α : Fin N → ℂˣ) (S : Finset (Fin
   push_cast [Nat.cast_sub hnN]
   simp only [Finset.sum_add_distrib, Finset.sum_sub_distrib, ← Finset.mul_sum, Finset.sum_const,
     nsmul_eq_mul]
-  push_cast
   linear_combination hc
 
 end GlobalTheory.SatakeSubsetSum

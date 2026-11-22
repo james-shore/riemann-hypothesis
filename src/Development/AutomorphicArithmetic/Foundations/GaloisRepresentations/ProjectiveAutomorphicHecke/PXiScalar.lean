@@ -18,7 +18,7 @@ theorem UpperTheory.Gal.CertificateRingHomMap.pXiScalar_of :
     rw [hinv]
     change ((((Formalism.L2.Col.brpSc E t⁻¹ : GL (Fin n) E)) : Matrix (Fin n) (Fin n) E).map u.embedding) i k = _
     rw [Formalism.L2.Col.brpSc_coe, Formalism.L2.Col.brpSc_coe]
-    by_cases h : i = k <;> simp [Matrix.one_apply, h]
+    by_cases h : i = k <;> simp [h]
   have hr := Formalism.L2.Col.tensorWeights_scalar_action (K := ℂ) W (fun u => Units.map (u.embedding : E →* ℂ) t⁻¹)
   rw [← hemb] at hr
   simp only [xi, MonoidHom.coe_mk, OneHom.coe_mk, Representation.dual_apply]

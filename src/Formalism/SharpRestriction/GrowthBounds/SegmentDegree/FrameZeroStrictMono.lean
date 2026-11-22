@@ -83,7 +83,6 @@ theorem sum_prodQ (hX : X.Hyp p K) : ∏ j ∈ Finset.range X.F.J, X.Qc p K (j :
     have p1 := fr_add_mul_period hX.valid 0 (r - 1) 1
     have p2 := sum_Rj_per X p K hX.valid 0 1
     simp only [zero_add, one_mul] at p1 p2
-    beta_reduce
     rw [p1, p2]
     push_cast
     ring

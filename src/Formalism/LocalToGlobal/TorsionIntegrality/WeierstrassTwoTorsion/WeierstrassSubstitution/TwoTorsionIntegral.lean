@@ -334,7 +334,7 @@ theorem wpInU_of (hS : WpShape.{u}) : WpInU.{u} := by
   have e4' : PowerSeries.subst (logSer W : K⟦X⟧) (C (W.b₂ / 12) : K⟦X⟧) = C (W.b₂ / 12) := by
     rw [← PowerSeries.coe_substAlgHom hl]
     exact (PowerSeries.substAlgHom hl).commutes _
-  simp only [e1, e2, e3, e4, hel, e3', e4'] at h2
+  simp only [hel, e3', e4'] at h2
   exact h2
 
 theorem tInZ_of (hS : WpShape.{u}) : TInZ.{u} := by

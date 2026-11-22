@@ -183,6 +183,6 @@ theorem sp_sub_single_other (ε : Fin n → Bool) {c c' : Bool} (h : c ≠ c') (
     sp_sub ε c' (single (blk ε c r) (blk ε c s) x) = 0 := by
   ext i j
   have hne : blk ε c r ≠ blk ε c' i := fun e => h (by rw [← eps_blk ε c r, e, eps_blk ε c' i])
-  simp [sp_sub, Matrix.single_apply, hne]
+  simp [sp_sub, hne]
 
 end ReciprocityTheory.ChartRestriction.TR.Weyl

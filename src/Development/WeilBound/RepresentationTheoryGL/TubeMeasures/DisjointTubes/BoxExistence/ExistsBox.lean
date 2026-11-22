@@ -100,7 +100,6 @@ theorem low : VolSt → StabSt → NumSt → LowSt := by
     first
       | exact (ENNReal.mul_le_mul_right hB0 hBt).1 h1
       | exact (ENNReal.mul_le_mul_iff_left hB0 hBt).1 h1
-      | exact (ENNReal.mul_le_mul_iff_right hB0 hBt).1 h1
   have hfin : Module.finrank ℚ D.host.E = 2 * D.R.f := by
     rw [show Module.finrank ℚ D.host.E = 4 * D.R.ord from D.host.finrank_cmField]
     unfold Ranks.f Ranks.n; ring

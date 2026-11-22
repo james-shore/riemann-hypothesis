@@ -54,7 +54,7 @@ private lemma hermite1_rec (n : ℕ) (x : ℝ) :
     refine ((h2.mul h3).mul h4).congr_deriv ?_
     simp only [A, B, C, Pi.pow_apply, Pi.mul_apply]
     push_cast
-    simp only [Nat.add_one_sub_one, pow_one]
+    simp only [pow_one]
     ring
   have key := integral_eq_zero_of_hasDerivAt_of_integrable hd
     (((iA.const_mul _).sub (iB.const_mul _)).add (iC.const_mul _)) iC

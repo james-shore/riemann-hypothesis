@@ -139,12 +139,12 @@ theorem cp_td (h : Sep a c d) (r : ℕ) : ∀ m, m ≤ r →
   | 1, hm => by
     refine ⟨by simp [td, K, hm], ?_⟩
     by_cases h2 : 2 ≤ r
-    · simp only [td, show 0 + 2 ≤ r from h2, if_true, h2, show (1 : ℕ) ≤ r by omega, one_ne_zero, if_false]
-      simp only [show ¬ (1 : Fin 2) = 0 from by decide, if_false, mul_zero, sub_zero]
+    · simp only [td, show 0 + 2 ≤ r from h2, if_true, show (1 : ℕ) ≤ r by omega, one_ne_zero, if_false]
+      simp only [mul_zero, sub_zero]
       have hc := (h (r - (0 + 2)) (r - 1) (by omega)).2.2.1
       rw [hc.eq]
       simp [K]
-    · simp only [td, show ¬ (0 + 2 ≤ r) by omega, if_false, show ¬ (1 + 1 ≤ r) by omega]
+    · simp only [td, show ¬ (0 + 2 ≤ r) by omega, if_false]
   | m + 2, hm => by
     obtain ⟨i1, i1'⟩ := cp_td h r (m + 1) (by omega)
     obtain ⟨i0, i0'⟩ := cp_td h r m (by omega)
@@ -226,7 +226,7 @@ theorem cp_vAB (Y : ℂ) : ∀ i, i ≤ r → ∀ f : WSm r X,
   | i + 1, hi, f => by
     obtain ⟨h1, h2⟩ := cp_vAB Y i (by omega) f
     have hir : i < r := by omega
-    simp only [Q.vAB, dif_pos hir, bu, aS, eS, dif_pos hir]
+    simp only [Q.vAB, bu, aS, eS, dif_pos hir]
     refine ⟨?_, ?_⟩
     · rw [h1, h2]
       rfl

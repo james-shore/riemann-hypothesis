@@ -58,8 +58,6 @@ private theorem ne_zero_of_isIdemAt' {P : HeightOneSpectrum (𝓞 D.host.E)} {e 
   rw [h0, zero_mul] at h
   first
   | exact h (by simp)
-  | simp at h
-  | exact h (map_zero (finPart D) ▸ (intAE D).zero_mem)
 
 private theorem not_isConjPl_of_isIdemAt {P : HeightOneSpectrum (𝓞 D.host.E)} {e : AE D}
     (he : Formalism.L2.NTheta.IsIdemAt e P) : ¬ Lev.IsConjPl (D := D) P P := by

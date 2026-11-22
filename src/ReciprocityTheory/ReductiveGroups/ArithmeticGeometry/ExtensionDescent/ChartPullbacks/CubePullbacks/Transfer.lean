@@ -47,7 +47,6 @@ theorem prod_sameSum {M : Type} [CommGroup M] {Y X : Scheme.{0}} {K K' : Type} [
   congr 1
   first
   | exact hS φ
-  | convert hS φ
 
 open ReciprocityTheory.ChartRestriction.G.Pdiv.PullbackComparison (gU unit_ext gU_res gU_pullU gU_pullU_congr base_eq) in
 

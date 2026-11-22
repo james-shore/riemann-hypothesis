@@ -18,7 +18,7 @@ theorem UpperTheory.exists_mem_KO_eq_stdFrame_mul_of_isPrimFrame_fin :
   have hYrank : Y.rank = a' := by
     have hY0 : Y0 k σ * (Y0 k σ).transpose = 1 := by
       ext i j
-      simp [Y0, Matrix.mul_apply, Matrix.one_apply, Finset.sum_ite_eq']
+      simp [Y0, Matrix.mul_apply, Matrix.one_apply]
     have hW : Y * (((h⁻¹ : GL D k) : Matrix D D k) * (Y0 k σ).transpose) = 1 := by
       rw [hYeq, Matrix.mul_assoc, ← Matrix.mul_assoc (h : Matrix D D k), ← Units.val_mul,
         mul_inv_cancel, Units.val_one, Matrix.one_mul, hY0]

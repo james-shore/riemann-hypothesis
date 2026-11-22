@@ -18,7 +18,7 @@ namespace GlobalTheory.ZarhinFam
 open Matrix
 
 def formPolUnit (d : ℕ) : ord d :=
-  ⟨form d * single (Sum.inl 0) (Sum.inr 0) 1, fun i j => by simp [Matrix.mul_apply, Matrix.single_apply]⟩
+  ⟨form d * single (Sum.inl 0) (Sum.inr 0) 1, fun i j => by simp [Matrix.mul_apply]⟩
 
 theorem idem_mul_formPolUnit (d : ℕ) : idem d * formPolUnit d = polUnit d := by
   ext1

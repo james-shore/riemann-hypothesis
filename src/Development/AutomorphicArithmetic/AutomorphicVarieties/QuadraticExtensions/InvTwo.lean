@@ -26,7 +26,7 @@ private theorem UpperTheory.V.Two.invTwo_sign (Γ : Type) [Group Γ] [Topologica
         by_cases hv : v ∈ H <;> simp [ε, hv, hx, h10]
       · convert hcl.isOpen_compl using 1
         ext v
-        by_cases hv : v ∈ H <;> simp [ε, hv, hx, h10, h10.symm]
+        by_cases hv : v ∈ H <;> simp [ε, hv, hx, h10.symm]
     · intro a b
       have hab := Subgroup.mul_mem_iff_of_index_two hidx (a := a) (b := b)
       by_cases ha : a ∈ H <;> by_cases hb : b ∈ H <;> simp [ε, ha, hb, hab] <;> decide

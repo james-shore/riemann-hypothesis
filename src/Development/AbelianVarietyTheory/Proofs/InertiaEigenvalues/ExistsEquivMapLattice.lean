@@ -71,7 +71,7 @@ theorem exists_semilinear {L V O K U : Type} [Field L] [AddCommGroup V] [Module 
       show _ = e (b₀.repr (b₀ i) j)
       by_cases hij : i = j
       · subst hij; simp
-      · simp [hij, Ne.symm hij]
+      · simp [Ne.symm hij]
     rw [h2]
     exact h1 _
   let A : Submodule O (Fin (Module.finrank L V) → K) := Submodule.span O (f₀ '' S)

@@ -68,7 +68,7 @@ theorem exists_siegel_split {X X₁ : Type} [AddCommGroup X] [AddCommGroup X₁]
       simp only [map_zero, LinearMap.zero_apply, mul_zero, add_zero]
       exact (g12 _ _).2.2.2.symm
     · rw [hq₂, hq₂, hr₂, hr₂]
-      simp only [map_zero, LinearMap.zero_apply, mul_zero, zero_add]
+      simp only [map_zero, mul_zero, zero_add]
       rw [hg₂, (g22 _ _).2]
 
 theorem projective_int_of_projective {O M : Type} [CommRing O] [AddCommGroup M] [Module O M] [Module.Free ℤ O]

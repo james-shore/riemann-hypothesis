@@ -31,7 +31,7 @@ theorem UpperTheory.Gal.crystallineComparison.detCo_of :
       simp [co, onR, hT, Matrix.mulVec, dotProduct, TensorProduct.sum_tmul,
         Algebra.TensorProduct.tmul_mul_tmul]
     | add x y hx hy =>
-      simp only [map_add, Pi.add_apply] at hx hy ⊢
+      simp only [map_add] at hx hy ⊢
       simp_all [co, Matrix.mulVec, dotProduct, mul_add, Finset.sum_add_distrib]
   · convert (AlgebraTensorModule.congr (LinearEquiv.funUnique (Fin 1) L L)
       (LinearEquiv.refl F B)).bijective using 1

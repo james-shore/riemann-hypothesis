@@ -20,10 +20,6 @@ theorem lieEigen_rank_cover : ∀ (p : ℕ) [Fact p.Prime] (D : Datum p) (R : Ty
       u ∈ ⨆ i, eigSp (ρ.comp (algebraMap (𝓞 D.F) D.O)) (τ i) := by
   first
   | exact @_root_.GlobalTheory.LieEigenspaceFinrank.lie_type_of_unif
-  | exact _root_.GlobalTheory.LieEigenspaceFinrank.lie_type_of_unif
-  | (apply _root_.GlobalTheory.LieEigenspaceFinrank.lie_type_of_unif <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LieEigenspaceFinrank.lie_type_of_unif <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LieEigenspaceFinrank.lie_type_of_unif <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LieEigenspaceFinrank.lie_type_of_unif ..)
 
 end GlobalTheory.UPel.HT.LieType

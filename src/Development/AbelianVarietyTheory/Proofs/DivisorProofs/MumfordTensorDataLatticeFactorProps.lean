@@ -15,7 +15,7 @@ theorem mul_single_mul_apply (M N : Matrix (Fin r) (Fin r) ℤ) (i₀ i j : Fin 
   · congr 1
     simp [Matrix.mul_apply, Matrix.single_apply]
   · intro b _ hb
-    simp [Matrix.mul_apply, Matrix.single_apply, Ne.symm hb]
+    simp [Matrix.mul_apply, Ne.symm hb]
   · simp
 
 theorem mul_single_apply' (M : Matrix (Fin r) (Fin r) ℤ) (i₀ i j : Fin r) :
@@ -23,9 +23,9 @@ theorem mul_single_apply' (M : Matrix (Fin r) (Fin r) ℤ) (i₀ i j : Fin r) :
   rw [Matrix.mul_apply, Finset.sum_eq_single i₀]
   · by_cases h : j = i₀
     · subst h; simp
-    · simp [Matrix.single_apply, Ne.symm h, h]
+    · simp [Ne.symm h, h]
   · intro b _ hb
-    simp [Matrix.single_apply, Ne.symm hb]
+    simp [Ne.symm hb]
   · simp
 
 theorem Tens.xe_xi (T : Tens D D' W) (i₀ : Fin r) (y : D.X) :

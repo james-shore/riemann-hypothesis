@@ -49,7 +49,7 @@ theorem UpperTheory.V.Ws.Lab.exNorm :
     have := congrFun (congrFun h' i) j
     rw [Matrix.map_apply] at this
     rw [this]
-    by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+    by_cases hij : i = j <;> simp [hij]
   set w₁ := wM S pr with hw₁
   set r₀ := P₁.r g0 with hr₀def
   set u₁ := P₁.n () with hu₁def

@@ -72,8 +72,6 @@ theorem aeval_mem {F V : Type} [Field F] [AddCommGroup V] [Module F V] (g : Modu
   | exact @_root_.GlobalTheory.PolynomialEvaluationMembership.aeval_apply_mem
   | exact _root_.GlobalTheory.PolynomialEvaluationMembership.aeval_apply_mem
   | (apply _root_.GlobalTheory.PolynomialEvaluationMembership.aeval_apply_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PolynomialEvaluationMembership.aeval_apply_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PolynomialEvaluationMembership.aeval_apply_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PolynomialEvaluationMembership.aeval_apply_mem ..)
 
 theorem mem_image_of_mem_span {F V : Type} [Field F] [AddCommGroup V] [Module F V] (g : Module.End F V)

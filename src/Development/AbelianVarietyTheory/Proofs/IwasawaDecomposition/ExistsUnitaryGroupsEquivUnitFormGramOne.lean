@@ -21,20 +21,20 @@ theorem castGL_bc {A B : Type} [CommRing A] [CommRing B] (f : A →+* B) {m n : 
     castGL h (Formalism.UG.bc f x) = Formalism.UG.bc f (castGL h x) := by
   subst h
   ext i j
-  simp [castGL, Formalism.UG.bc, Matrix.reindexAlgEquiv_apply]
+  simp [castGL, Formalism.UG.bc]
 
 theorem castGL_symm_castGL' {A : Type} [CommRing A] {m n : ℕ} (h : m = n) (x : GL (Fin m) A) :
     castGL h.symm (castGL h x) = x := by
   subst h
   ext i j
-  simp [castGL, Matrix.reindexAlgEquiv_apply]
+  simp [castGL]
 
 theorem castGL_mem_UJ_one {A : Type} [CommRing A] (σ : A →+* A) {m n : ℕ} (h : m = n) (x : GL (Fin m) A)
     (hx : x ∈ Formalism.UG.UJ σ (1 : Matrix (Fin m) (Fin m) A)) : castGL h x ∈ Formalism.UG.UJ σ (1 : Matrix (Fin n) (Fin n) A) := by
   subst h
   have e : castGL (rfl : m = m) x = x := by
     ext i j
-    simp [castGL, Matrix.reindexAlgEquiv_apply]
+    simp [castGL]
   rwa [e]
 
 theorem bc_injective {A B : Type} [CommRing A] [CommRing B] (f : A →+* B) (hf : Function.Injective f) {m : ℕ} :

@@ -101,7 +101,6 @@ theorem rep_memQ (y : ↥(Formalism.RepresentationBoundsCohomology.LocallyConsta
     rw [map_smul, rep_mk]
     first
       | exact y.2.2
-      | simpa [divBy] using y.2.2
   have h := hW _ hlc hmem
   have e : trC Cd ((((ℓ : O') ^ cB • rep F ℓ cB y : coZ1s _)) : Dw → M) =
       σ ((ℓ : O') ^ cB) • trC Cd ((rep F ℓ cB y : coZ1s _) : Dw → M) := by

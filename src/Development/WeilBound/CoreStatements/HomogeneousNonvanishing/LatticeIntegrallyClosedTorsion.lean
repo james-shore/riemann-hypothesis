@@ -97,7 +97,7 @@ theorem fullTorsion_of_equiv {X : Scheme.{0}} {Ω Ω' : Type} [Field Ω] [Field 
     rw [← Spec.map_comp, ← CommRingCat.ofHom_comp]
   refine ⟨Over.homMk (spMap κ.symm.toRingHom ≫ x.left) ?_, ?_⟩
   · have := Over.w x
-    simp only [Over.mk_left, Over.mk_hom, Functor.id_obj, Functor.const_obj_obj, Functor.id_map] at this ⊢
+    simp only [Over.mk_left, Over.mk_hom] at this ⊢
     simp only [Category.assoc, this]
     rw [← Category.assoc, h1, Category.id_comp]
   · simp only [Over.homMk_left]

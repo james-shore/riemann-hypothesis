@@ -202,7 +202,7 @@ theorem mem_cone_of_sum : ∀ (O : Type) [CommRing O] (bar : O → O) (φ : InvF
   have hfun : (fun a b => ∑ j, (1 : ℝ) * (γ j a b : ℝ)) = fun a b => ∑ i, c i * (γ' i a b : ℝ) := by
     funext a b
     have := LinearMap.congr_fun₂ hsum a b
-    simp only [toReal_apply, LinearMap.sum_apply, Finset.sum_apply, LinearMap.smul_apply, smul_eq_mul] at this
+    simp only [toReal_apply, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul] at this
     simpa using this
   have eqφ : ∑ j, φ.evalZ (γ j) = ∑ i, c i * φ.evalZ (γ' i) := by
     have := lin1.symm.trans ((congrArg (φ.eval X) hfun).trans lin2)
@@ -223,9 +223,8 @@ theorem mem_cone_of_sum : ∀ (O : Type) [CommRing O] (bar : O → O) (φ : InvF
   have hk' : (k : ℝ) ≠ 0 := by exact_mod_cast hk.ne'
   ext a b
   have h4 := congrArg (fun f : LinearMap.BilinForm ℤ X => ((f a b : ℤ) : ℝ)) hkc
-  simp only [LinearMap.smul_apply, LinearMap.sum_apply, Finset.sum_apply, nsmul_eq_mul, smul_eq_mul,
-    Int.cast_sum, Int.cast_mul, Int.cast_natCast] at h4
-  simp only [toReal_apply, LinearMap.sum_apply, Finset.sum_apply, LinearMap.smul_apply, smul_eq_mul]
+  simp only [LinearMap.smul_apply, LinearMap.sum_apply, nsmul_eq_mul, Int.cast_sum, Int.cast_mul, Int.cast_natCast] at h4
+  simp only [toReal_apply, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul]
   have h5 : ∑ x, (c' x : ℝ) / k * (γ' x a b : ℝ) = 1 / k * ∑ x, (c' x : ℝ) * (γ' x a b : ℝ) := by
     rw [Finset.mul_sum]
     exact Finset.sum_congr rfl fun x _ => by ring
@@ -289,7 +288,7 @@ theorem ray_of_mem_cone : ∀ (O : Type) [CommRing O] (bar : O → O) (φ : InvF
   have hfun : (fun x y => ∑ i, a j i * (γ' i x y : ℝ)) = fun x y => (γ j x y : ℝ) := by
     funext x y
     have := LinearMap.congr_fun₂ (hsum j) x y
-    simp only [toReal_apply, LinearMap.sum_apply, Finset.sum_apply, LinearMap.smul_apply, smul_eq_mul] at this
+    simp only [toReal_apply, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul] at this
     exact this.symm
   have hev : φ.evalZ (γ j) = ∑ i, a j i * φ.evalZ (γ' i) := by
     have := hγ'.linear (a j) (ha j)
@@ -318,7 +317,7 @@ theorem ray_of_mem_cone : ∀ (O : Type) [CommRing O] (bar : O → O) (φ : InvF
     apply toReal_injective
     rw [hsum j]
     ext x y
-    simp only [toReal_apply, LinearMap.sum_apply, Finset.sum_apply, LinearMap.smul_apply, smul_eq_mul,
+    simp only [toReal_apply, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul,
       LinearMap.zero_apply, Int.cast_zero]
     refine Finset.sum_eq_zero fun i _ => ?_
     by_cases h0 : a j i = 0
@@ -458,15 +457,15 @@ theorem onModule (hD : ∀ (X : Type) [AddCommGroup X] [Module O X] [Module.Fini
     · ext x y
       have h1 := LinearMap.congr_fun₂ hBe (e.symm x) (e.symm y)
       simp only [pullR_apply, LinearEquiv.coe_coe, LinearEquiv.apply_symm_apply, LinearMap.sum_apply,
-        Finset.sum_apply, LinearMap.smul_apply, smul_eq_mul, toReal_apply] at h1
+        LinearMap.smul_apply, smul_eq_mul, toReal_apply] at h1
       rw [h1]
-      simp only [LinearMap.sum_apply, Finset.sum_apply, LinearMap.smul_apply, smul_eq_mul, toReal_apply,
+      simp only [LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul, toReal_apply,
         pull_apply, LinearEquiv.coe_coe]
       have h2 : ∀ j, (δ j (e.symm x) (e.symm y) : ℝ) =
           ∑ i, a j i * ((n i : ℝ) * (u i (e.symm x) (e.symm y) : ℝ)) := by
         intro j
         have h3 := LinearMap.congr_fun₂ (hδa j) (e.symm x) (e.symm y)
-        simp only [toReal_apply, LinearMap.sum_apply, Finset.sum_apply, LinearMap.smul_apply, smul_eq_mul] at h3
+        simp only [toReal_apply, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul] at h3
         rw [h3]
         refine Finset.sum_congr rfl fun i _ => ?_
         rw [hnu i]

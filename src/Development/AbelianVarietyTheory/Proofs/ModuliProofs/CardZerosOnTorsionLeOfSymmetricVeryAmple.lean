@@ -305,7 +305,6 @@ theorem card_zeros_on_torsion_le_of_symmetric_veryAmple :
       (LBIso.symm (GlobalTheory.T.mulA_pullback_iso_pow_sq_symmetric_abelianVariety K P M k hM hsym)) (secPull (secOfPowOne h) (Out.mulA P.A k).left)
     refine ⟨secCast (Nat.one_mul _).symm h', fun z => ?_⟩
     rw [nonzeroLocus_secCast, hh', nonzeroLocus_secPull, nonzeroLocus_secOfPowOne]
-    beta_reduce
     rw [e z]
     rfl
 

@@ -13,7 +13,7 @@ private lemma norm_one_add_prime_padic (l : ℕ) [Fact l.Prime] : ‖(1 : ℚ_[l
   have h1 : ‖(l : ℚ_[l])‖ < 1 := Padic.norm_p_lt_one
   have hne : ‖(1 : ℚ_[l])‖ ≠ ‖(l : ℚ_[l])‖ := by rw [norm_one]; exact ne_of_gt h1
   first
-  | rw [padicNormE.add_eq_max_of_ne hne, norm_one]; exact max_eq_left h1.le
+  | rw [padicNormE.add_eq_max_of_ne hne, norm_one]
   | rw [IsUltrametricDist.norm_add_eq_max_of_norm_ne_norm hne, norm_one]; exact max_eq_left h1.le
 
 private lemma zmod_pow_ne_one_of_pow_mod_ne_one (l : ℕ) [Fact l.Prime] (n : ℕ) (hn : 0 < n) :

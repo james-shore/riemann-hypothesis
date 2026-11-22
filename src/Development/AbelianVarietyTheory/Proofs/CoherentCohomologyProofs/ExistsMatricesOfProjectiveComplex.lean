@@ -65,7 +65,7 @@ theorem projMatrix_mulVec {R : Type} [CommRing R] (R' : Type) [CommRing R'] [Alg
       rw [LinearMap.toMatrix'_mulVec]
     rw [LinearMap.baseChange_tmul, hy]
     simp only [TensorProduct.piScalarRight_apply, TensorProduct.piScalarRightHom_tmul,
-      Matrix.mulVec, dotProduct, Matrix.map_apply, Finset.sum_smul, Algebra.smul_def, map_mul,
+      Matrix.mulVec, dotProduct, Matrix.map_apply, Algebra.smul_def, map_mul,
       map_sum, Finset.sum_mul, mul_assoc]
 
 theorem projMatrix_sum {R : Type} [CommRing R] (R' : Type) [CommRing R'] [Algebra R R']

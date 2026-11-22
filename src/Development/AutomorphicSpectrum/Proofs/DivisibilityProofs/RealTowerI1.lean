@@ -17,7 +17,7 @@ variable {Ψ : Type} [Fintype Ψ] [DecidableEq Ψ] {N : ℕ}
 theorem linA_eq (c : Option (Ψ × Fin N) → ℝ) :
     linA (fun τ i => c (some (τ, i))) (-c none) = -∑ x, C (c x) * X x := by
   rw [Fintype.sum_option]
-  simp only [linA, toA, linRoot, map_neg, map_sum, map_mul, rename_C, rename_X, neg_add_rev, C_neg]
+  simp only [linA, toA, linRoot, map_neg, map_sum, map_mul, rename_C, rename_X, neg_add_rev]
   simp only [Prod.mk.eta]
   ring
 

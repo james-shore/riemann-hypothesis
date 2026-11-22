@@ -504,8 +504,6 @@ theorem exists_dil (R : Type) [CommRing R] [IsDomain R] [IsDiscreteValuationRing
   | exact @_root_.GlobalTheory.FiniteFieldCountEstimate.main
   | exact _root_.GlobalTheory.FiniteFieldCountEstimate.main
   | (apply _root_.GlobalTheory.FiniteFieldCountEstimate.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiniteFieldCountEstimate.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiniteFieldCountEstimate.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiniteFieldCountEstimate.main ..)
 
 theorem exists_ext {R B B' S : Type} [CommRing R] [CommRing B] [CommRing B'] [CommRing S] [Algebra R B] [Algebra R B']

@@ -114,9 +114,7 @@ theorem sum_four_swap_pairs_reverse_inner {R α β : Type} [AddCommMonoid R] [Fi
   first
   | exact @_root_.GlobalTheory.TargetEquivalence.target
   | exact _root_.GlobalTheory.TargetEquivalence.target
-  | (apply _root_.GlobalTheory.TargetEquivalence.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TargetEquivalence.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TargetEquivalence.target <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.TargetEquivalence.target)
   | (intros; exact _root_.GlobalTheory.TargetEquivalence.target ..)
 
 theorem splitTrace' {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E] {σ : E →ₐ[F] E}

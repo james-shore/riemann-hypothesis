@@ -38,7 +38,7 @@ theorem adjEnt_rmul {Ψ : Finset (E →+* ℂ)} (k b : Frame Ψ r) (hb : b ∈ B
     (hca : c < a) : adjEnt k (rmul k b) τ a c = 0 := by
   have h1 : mat (rmul k b) τ = mat k τ * mat b τ := rfl
   rw [adjEnt, h1, ← Matrix.mul_assoc, Matrix.adjugate_mul]
-  simp [Matrix.smul_mul, mat, (hb τ).2 a c hca]
+  simp [mat, (hb τ).2 a c hca]
 
 omit [NumberField E] [IsCMField E] in
 

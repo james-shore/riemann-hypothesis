@@ -48,8 +48,7 @@ theorem _root_.GlobalTheory.LatticeMinuscule.lattice_elementary_divisors (R K : 
   have key : ∀ z : Fin n → R, B0 *ᵥ (fun i => algebraMap R K (z i)) =
       ((b'.equivFun.symm z : Λ) : Fin n → K) := by
     intro z; ext i
-    simp [B0, Matrix.mulVec, dotProduct, Module.Basis.equivFun_symm_apply, Submodule.coe_sum,
-      Finset.sum_apply, Algebra.smul_def, mul_comm]
+    simp [B0, Matrix.mulVec, dotProduct, Module.Basis.equivFun_symm_apply, Finset.sum_apply, Algebra.smul_def, mul_comm]
   have memL : ∀ y, y ∈ Λ ↔ ∃ z : Fin n → R, y = B0 *ᵥ (fun i => algebraMap R K (z i)) := by
     intro y; constructor
     · intro hy; refine ⟨b'.equivFun ⟨y, hy⟩, ?_⟩; rw [key, LinearEquiv.symm_apply_apply]

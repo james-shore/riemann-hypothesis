@@ -33,7 +33,7 @@ theorem homog_rename (k₀ : K) {F : MvPolynomial (J k₀) ℤ} {n : ℕ} (h : F
       Finsupp.mapDomain_notin_range _ _ (by
         rintro ⟨i', hi'⟩
         exact hk (congrArg Sigma.fst hi').symm)
-    simp [h0, Pi.single_apply, hk]
+    simp [h0, hk]
 
 theorem rel_at_point {y : (Σ k, J k) → Ω} (k₀ k : K) {A B : MvPolynomial (J k₀) ℤ} {n : ℕ}
     (hA : A.IsHomogeneous n) (hB : B.IsHomogeneous n) (j j' : J k)
@@ -71,7 +71,7 @@ theorem gForm_homog (k₀ : K) (i : J k₀) (e : ℕ) {G : K → MvPolynomial (J
   by_cases hk : k' = k₀
   · subst hk
     simp [Finset.sum_apply]
-  · simp [Finset.sum_apply, Pi.single_apply, hk]
+  · simp [Finset.sum_apply, hk]
 
 def hDeg (k₀ : K) : K → ℕ := fun k => if k = k₀ then 0 else 1
 
@@ -144,7 +144,7 @@ theorem ampleQ_of_forms (y : (Σ k, J k) → Ω) (k₀ : K) (a : K → ℤ) (ha�
     by_cases hk : k = k₀
     · subst hk
       simp [hDeg, ha₀]
-    · simp [hDeg, Pi.single_apply, hk, ha k hk]
+    · simp [hDeg, hk, ha k hk]
 
   have hform : ∀ (p : I) (j : ∀ k, J k), IsMultiHomog (gForm k₀ p.2 (eT p.1) fun k => F k (p.1 k) (j k))
       (Pi.single k₀ N) ∧ aeval y (gForm k₀ p.2 (eT p.1) fun k => F k (p.1 k) (j k)) = S p * aeval y (hForm k₀ j) := by
@@ -165,7 +165,7 @@ theorem ampleQ_of_forms (y : (Σ k, J k) → Ω) (k₀ : K) (a : K → ℤ) (ha�
       simp [ha k (Finset.ne_of_mem_erase hk)]
     have e2 : ∏ k ∈ Finset.univ.erase k₀, y ⟨k, c k⟩ ^ (-(((1 : ℕ) : ℤ) * ((1 * (Pi.single k₀ N : K → ℕ) k : ℕ) : ℤ))) = 1 := by
       refine Finset.prod_eq_one fun k hk => ?_
-      simp [Pi.single_apply, Finset.ne_of_mem_erase hk]
+      simp [Finset.ne_of_mem_erase hk]
     rw [e1, e2]
     simp [ha₀]
     ring

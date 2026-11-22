@@ -40,7 +40,7 @@ private theorem core_lemma {R A : Type} [CommRing R] [Ring A] [Algebra R A] {t c
     rw [h, hMP]
   have hPP : P * P = (2 - t) • P := by
     nth_rewrite 1 [hP]
-    simp only [add_mul, sub_mul, smul_mul_assoc, one_mul, mul_assoc, hMP2, hMP]
+    simp only [add_mul, sub_mul, smul_mul_assoc, one_mul, mul_assoc, hMP]
     module
   have key : (c * (2 - t)) • P = P := by rw [hc, one_smul]
   have hcc : c * c * (2 - t) = c := by rw [mul_assoc, hc, mul_one]
@@ -63,8 +63,7 @@ private theorem H_affine_combination_eq_of_quadratic_relation {R A : Type} [Comm
     simp only [Psi, mul_add, mul_smul_comm, sub_mul, one_mul, hee, hEME, sub_self, smul_zero,
       add_zero]
   have h1 : Psi t M E z * (1 - E) = 0 := by
-    simp only [Psi, add_mul, smul_mul_assoc, mul_sub, mul_one, hee, hMEE, sub_self, smul_zero,
-      add_zero]
+    simp only [Psi, add_mul, smul_mul_assoc, mul_sub, mul_one, hee, hMEE, sub_self]
   have h2 : (1 - E) * (1 - E) = 1 - E := by
     simp only [mul_sub, sub_mul, one_mul, mul_one, hee, sub_self, sub_zero]
   rw [add_mul, mul_add, mul_add, Psi_mul hee hc hn, h0, h1, h2, add_zero, zero_add]
@@ -227,14 +226,14 @@ theorem UpperTheory.exists_hermitian_conjugation_of_unitary_tau :
   obtain ⟨v, hv⟩ : ∃ v : EL Δ τ, v = ⟨algebraMap K (Lsq K Δ) τ, -1⟩ := ⟨_, rfl⟩
   have hωv : (QuadraticAlgebra.omega : EL Δ τ) * v = 1 := by
     rw [hv]
-    ext <;> simp [QuadraticAlgebra.omega, QuadraticAlgebra.re_one, QuadraticAlgebra.im_one] <;> ring
+    ext <;> simp [QuadraticAlgebra.omega, QuadraticAlgebra.re_one, QuadraticAlgebra.im_one]
   have hofE : ofE Δ (QuadraticAlgebra.omega : Etau K τ) = QuadraticAlgebra.omega := by
     ext <;> simp [ofE, QuadraticAlgebra.omega]
   obtain ⟨u, hu⟩ : ∃ u : EL Δ τ, u = sigL d * v := ⟨_, rfl⟩
   have hdu : d * u = 1 := by rw [hu, ← mul_assoc, hd, hofE, hωv]
   have hus : (⟨star u.re, star u.im⟩ : EL Δ τ) = d * v := by
     rw [hu, hv]
-    ext <;> simp [sigL, QuadraticAlgebra.re_mul, QuadraticAlgebra.im_mul, star_mul', hstar] <;> ring
+    ext <;> simp [sigL, QuadraticAlgebra.re_mul, QuadraticAlgebra.im_mul, star_mul', hstar]
   have huu : u * (⟨star u.re, star u.im⟩ : EL Δ τ) * QuadraticAlgebra.omega = 1 := by
     rw [hus]
     calc u * (d * v) * QuadraticAlgebra.omega

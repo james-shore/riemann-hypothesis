@@ -76,8 +76,6 @@ theorem stalkIdeal_eq (Z : W.IdealSheafData) (U V : W.affineOpens) (x : W) (hU :
     | exact isBasis_affine_open W
     | exact isBasis_affineOpens W
     | exact W.isBasis_affineOpens
-    | exact Scheme.isBasis_affineOpens W
-    | exact AlgebraicGeometry.Scheme.isBasis_affine_open W
   obtain ⟨O, hO, hxO, hOle⟩ :=
     (Opens.isBasis_iff_nbhd.1 hB) (show x ∈ U.1 ⊓ V.1 from ⟨hU, hV⟩)
   let O' : W.affineOpens := ⟨O, hO⟩
@@ -128,13 +126,11 @@ theorem isBranch_of_germ {T : Set W} (hT : IsClosed T) {U V : W.Opens} {s : Γ(W
     rw [map_mul]
     first
     | (erw [TopCat.Presheaf.germ_res_apply, TopCat.Presheaf.germ_res_apply, ht])
-    | (simp only [TopCat.Presheaf.germ_res_apply, ht])
   obtain ⟨O₀, hyO₀, i₁, i₂, hO₀⟩ :=
     W.presheaf.germ_eq y hyV (show y ∈ U ⊓ U₁ from ⟨hyU, hy1⟩) s' _ (heq.trans e1.symm)
   have hsp : (IsIrreducible.genericPoint hirr) ⤳ y := by
     first
     | exact (IsIrreducible.isGenericPoint_genericPoint_closure hirr).specializes (subset_closure hyC)
-    | exact (IsIrreducible.genericPoint_spec hirr).specializes (subset_closure hyC)
   have hηO : (IsIrreducible.genericPoint hirr) ∈ O₀ := hsp.mem_open O₀.isOpen hyO₀
   have hzV : (IsIrreducible.genericPoint hirr) ∈ V := i₁.le hηO
   have hz1 : (IsIrreducible.genericPoint hirr) ∈ U₁ := (i₂.le hηO).2
@@ -144,7 +140,6 @@ theorem isBranch_of_germ {T : Set W} (hT : IsClosed T) {U V : W.Opens} {s : Γ(W
     first
     | (erw [TopCat.Presheaf.germ_res_apply, TopCat.Presheaf.germ_res_apply, map_mul,
         TopCat.Presheaf.germ_res_apply, TopCat.Presheaf.germ_res_apply] at h1; exact h1)
-    | (simp only [TopCat.Presheaf.germ_res_apply, map_mul] at h1; exact h1)
   refine ⟨hC, hyC, hirr, hzV, ?_⟩
   simp only [Scheme.zeroLocus_singleton, Set.mem_compl_iff, SetLike.mem_coe] at hηZ ⊢
   rw [Scheme.mem_basicOpen _ _ _ hηU] at hηZ
@@ -163,8 +158,6 @@ theorem exists_nbhd_zeroLocus {U V : W.Opens} {x : W} (hxU : x ∈ U) (hxV : x �
     rw [map_mul]
     first
     | (erw [TopCat.Presheaf.germ_res_apply, TopCat.Presheaf.germ_res_apply, ht])
-    | (simp only [TopCat.Presheaf.germ_res_apply, ht])
-    | (simp only [Scheme.germ_res_apply, ht])
   obtain ⟨O₀, hxO₀, i₁, i₂, hO₀⟩ := W.presheaf.germ_eq x hxV (show x ∈ U ⊓ U₁ from ⟨hxU, hx1⟩) s' _ (heq.trans e1.symm)
   refine ⟨O₀ ⊓ W.basicOpen t, ⟨hxO₀, hxt⟩, fun z hz => ?_⟩
   have hzV : z ∈ V := i₁.le hz.1
@@ -176,8 +169,6 @@ theorem exists_nbhd_zeroLocus {U V : W.Opens} {x : W} (hxU : x ∈ U) (hxV : x �
     first
     | (erw [TopCat.Presheaf.germ_res_apply, TopCat.Presheaf.germ_res_apply, map_mul,
         TopCat.Presheaf.germ_res_apply, TopCat.Presheaf.germ_res_apply] at h1; exact h1)
-    | (simp only [TopCat.Presheaf.germ_res_apply, map_mul] at h1; exact h1)
-    | (simp only [Scheme.germ_res_apply, map_mul] at h1; exact h1)
   have hunit : IsUnit (W.presheaf.germ U₁ z hz1 t) := (Scheme.mem_basicOpen _ _ z hz1).1 hz.2
   simp only [Scheme.zeroLocus_singleton, Set.mem_compl_iff, SetLike.mem_coe]
   rw [Scheme.mem_basicOpen _ _ z hzU, Scheme.mem_basicOpen _ _ z hzV, hg, IsUnit.mul_iff]

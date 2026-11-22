@@ -101,7 +101,7 @@ private theorem sim_val {K : Type} [Field K] [NumberField K] [Algebra ℚ K] (P 
   have e2 := hP
   rw [hN, Nat.cast_pow, map_pow, e1, ← pow_mul, ← WithZero.exp_nsmul, WithZero.exp_inj] at e2
   have e3 : P.asIdeal.ramificationIdx (𝓞 ℚ) * P.asIdeal.inertiaDeg (𝓞 ℚ) = 1 := by
-    simp only [smul_eq_mul, nsmul_eq_mul, mul_neg, mul_one] at e2
+    simp only [nsmul_eq_mul, mul_neg, mul_one] at e2
     omega
   have e4 := Nat.eq_one_of_mul_eq_one_right e3
   have e5 := Nat.eq_one_of_mul_eq_one_left e3
@@ -131,7 +131,7 @@ private theorem unit_nat {K : Type} [Field K] [NumberField K] (P : Plc K) (c : �
 private theorem scalar_val {A : Type} [CommRing A] (n : ℕ) (t : Aˣ) :
     (GeneralLinearGroup.scalar (Fin n) t).val = (t : A) • (1 : Matrix (Fin n) (Fin n) A) := by
   ext i j
-  by_cases h : i = j <;> simp [GeneralLinearGroup.scalar, h, Matrix.one_apply]
+  by_cases h : i = j <;> simp [GeneralLinearGroup.scalar, h]
 
 private theorem sim_scalar {A B : Type} [CommRing A] [CommRing B] (σ : A →+* A) (i : B →+* A) (n : ℕ) (t : Aˣ) (s : Bˣ)
     (h : σ t * t = i s) : (GeneralLinearGroup.scalar (Fin n) t, s) ∈ Sim σ i n := by
@@ -148,7 +148,7 @@ private theorem comp_mk {E : Type} [Field E] [NumberField E] [IsCMField E] {n : 
   ext i j : 1
   change pLoc E u ((GeneralLinearGroup.scalar (Fin n) t).val i j) = _
   rw [scalar_val]
-  by_cases h : i = j <;> simp [h, Matrix.one_apply]
+  by_cases h : i = j <;> simp [h]
 
 end UpperTheory.Gal.CertificateRingHomMap.ZetaNonvanishing₂.CentralCharacterExamples
 

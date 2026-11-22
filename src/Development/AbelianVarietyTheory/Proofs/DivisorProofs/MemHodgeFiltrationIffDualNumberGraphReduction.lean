@@ -29,8 +29,8 @@ theorem mem_Fil_iff_exists_graphFil_corr (A₀ : Over (Sp k)) [GrpObj A₀] (hA 
     refine ⟨d, ⟨y, hy, 0, zero_mem _, fun c ↦ by rw [hd c]; simp⟩, fun c ↦ ?_⟩
     obtain ⟨z, rfl⟩ := (isBC_constMor hA).2 c
     induction z using TensorProduct.induction_on with
-    | zero => simp only [map_zero, TrivSqZeroExt.fst_zero]
-    | add a b ha hb => simp only [map_add, ha, hb, TrivSqZeroExt.fst_add]
+    | zero => simp only [map_zero]
+    | add a b ha hb => simp only [map_add, ha, hb]
     | tmul a c =>
       rw [liftSemi_tmul, map_smulₛₗ, map_smul, crysRed_pull_constMor_pull, map_smul, hd c]
       simp

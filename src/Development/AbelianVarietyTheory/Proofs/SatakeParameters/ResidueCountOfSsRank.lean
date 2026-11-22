@@ -19,8 +19,6 @@ theorem absIrr_id {K : Type} [Field K] [IsAlgClosed K] {n : ℕ} (hn : 1 ≤ n) 
   | exact @_root_.GlobalTheory.AbsolutelyIrreduciblePullback.absIrrSub_top
   | exact _root_.GlobalTheory.AbsolutelyIrreduciblePullback.absIrrSub_top
   | (apply _root_.GlobalTheory.AbsolutelyIrreduciblePullback.absIrrSub_top <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AbsolutelyIrreduciblePullback.absIrrSub_top <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AbsolutelyIrreduciblePullback.absIrrSub_top <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AbsolutelyIrreduciblePullback.absIrrSub_top ..)
 
 theorem twGL_val {K : Type} [Field K] {a : ℕ} (ρ : Γ →* GL (Fin a) K) (χ : Γ →* Kˣ) (g : Γ) :
@@ -60,9 +58,7 @@ theorem sub_fin_one {K : Type} [Field K] (W : Submodule K (Fin 1 → K)) : W = �
   first
   | exact @_root_.GlobalTheory.SatakeMainTheorem.main
   | exact _root_.GlobalTheory.SatakeMainTheorem.main
-  | (apply _root_.GlobalTheory.SatakeMainTheorem.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SatakeMainTheorem.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SatakeMainTheorem.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.SatakeMainTheorem.main)
   | (intros; exact _root_.GlobalTheory.SatakeMainTheorem.main ..)
 
 theorem scaleRoots_list_prod {K : Type} [Field K] (l : List K[X]) (s : K) :

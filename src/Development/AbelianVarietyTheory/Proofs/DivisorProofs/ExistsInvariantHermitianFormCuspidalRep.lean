@@ -44,9 +44,6 @@ theorem exists_invariant_hermitian : GlobalTheory.Published.CuspFormsBoundedGL �
     change 0 < (⟪T φ, T φ⟫_ℂ).re
     first
       | exact (re_inner_self_pos (𝕜 := ℂ)).2 hT
-      | exact inner_self_pos.2 hT
-      | exact (RCLike.inner_self_pos).2 hT
-      | (rw [inner_self_eq_norm_sq_to_K]; norm_cast; simpa using hT)
   · intro k φ ψ
     change ⟪T (π.op (.fin k) φ), T (π.op (.fin k) ψ)⟫_ℂ = ⟪T φ, T ψ⟫_ℂ
     rw [← hR (finGL E a k) (T φ) (T ψ)]

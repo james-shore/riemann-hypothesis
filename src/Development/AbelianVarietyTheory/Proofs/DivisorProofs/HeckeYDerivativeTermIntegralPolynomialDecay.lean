@@ -130,7 +130,7 @@ theorem intZ_decay (K : Set ℂ) (hK : IsCompact K) (hKH : K ⊆ halfPlane) (N :
           _ ≤ |R| + b := by rw [Complex.norm_natCast]; gcongr; exact (hR σ hσ).trans (le_abs_self R)
       have key : 2 * Real.pi * |ν| * ‖intZ σ ν a b m y‖ ≤ (|(a : ℝ)| * |C1| + 2 * (|R| + b) * (|C2| + |C3|)) * X := by
         have hn : ‖2 * (Real.pi : ℂ) * I * ν * intZ σ ν a b m y‖ = 2 * Real.pi * |ν| * ‖intZ σ ν a b m y‖ := by
-          simp [norm_mul, Complex.norm_real, abs_of_pos Real.pi_pos]
+          simp [Complex.norm_real, abs_of_pos Real.pi_pos]
         rw [← hn, hibp]
         have f1 : ‖intZ σ ν (a + 1) b m y‖ ≤ |C1| * X := by
           rw [hX, ← mul_div_assoc]; exact e1.trans (by gcongr; exact le_abs_self _)

@@ -29,7 +29,7 @@ theorem aniso_ex (W : Submodule E V.V) (hW : ∀ y ∈ W, (∀ z ∈ W, V.hT y z
   have q0 : V.hT (y + z) (y + z) = V.hT y y + V.hT y z + V.hT z y + V.hT z z := by
     simp only [map_add, LinearMap.add_apply]; ring
   have q1 : V.hT (y + δ • z) (y + δ • z) = V.hT y y + δ * V.hT y z + star δ * V.hT z y + star δ * δ * V.hT z z := by
-    simp only [map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, map_smul, smul_eq_mul, starRingEnd_apply,
+    simp only [map_add, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply, smul_eq_mul, starRingEnd_apply,
       RingHom.id_apply]
     ring
   have s : V.hT z y = star (V.hT y z) := (V.herm.eq y z).symm
@@ -116,7 +116,7 @@ theorem sig_of_diag {n : ℕ} (J : Matrix (Fin n) (Fin n) ℂ) (ε : Fin n → B
     · have : ε (e (Sum.inr a)) = false := Bool.eq_false_iff.2 (e2 a).2
       by_cases hab : a = b
       · subst hab; simp [Formalism.UG.Jpq, this]
-      · simp [Formalism.UG.Jpq, Matrix.one_apply, hab]
+      · simp [Formalism.UG.Jpq, hab]
   have hU : IsUnit (Q.submatrix e e) := by
     rw [Matrix.isUnit_iff_isUnit_det, Matrix.det_submatrix_equiv_self]
     exact (Matrix.isUnit_iff_isUnit_det Q).1 hQ
@@ -283,7 +283,7 @@ theorem diag_sig {n p q : ℕ} (ε : Fin n → Bool) (hp : (Finset.univ.filter f
   · have : ε (e (Sum.inr a)) = false := Bool.eq_false_iff.2 (e2 a).2
     by_cases hab : a = b
     · subst hab; simp [Formalism.UG.Jpq, this]
-    · simp [Formalism.UG.Jpq, Matrix.one_apply, hab]
+    · simp [Formalism.UG.Jpq, hab]
 
 theorem cpt_bas_ex (V : HSp D) (hV : V.SigOK) (τ : D.what₂.Tau) :
     ∃ A : Matrix (Fin (V.sig (tauE D τ)).1 ⊕ Fin (V.sig (tauE D τ)).2) (Fin V.rank) ℂ,

@@ -14,7 +14,7 @@ namespace Formalism.MainNotions.G.Joints.PlaneGramSpan
 open Formalism.MainNotions.G Formalism.MainNotions.G.Joints
 
 theorem card_val_lt {n h : ℕ} (hh : h ≤ n) : (univ.filter fun m : Fin n => m.val < h).card = h := by
-  first | exact GlobalTheory.CardFilterLt.card_filter_val_lt .. | (apply GlobalTheory.CardFilterLt.card_filter_val_lt <;> assumption) | (intros; apply GlobalTheory.CardFilterLt.card_filter_val_lt <;> assumption) | (apply @GlobalTheory.CardFilterLt.card_filter_val_lt <;> assumption) | (intros; apply @GlobalTheory.CardFilterLt.card_filter_val_lt <;> assumption) | (apply @GlobalTheory.CardFilterLt.card_filter_val_lt <;> first | assumption | infer_instance) | exact @GlobalTheory.CardFilterLt.card_filter_val_lt n h hh | exact @GlobalTheory.CardFilterLt.card_filter_val_lt n h | exact @GlobalTheory.CardFilterLt.card_filter_val_lt n
+  first | exact GlobalTheory.CardFilterLt.card_filter_val_lt .. | (apply GlobalTheory.CardFilterLt.card_filter_val_lt <;> assumption) | exact @GlobalTheory.CardFilterLt.card_filter_val_lt n h hh | exact @GlobalTheory.CardFilterLt.card_filter_val_lt n h | exact @GlobalTheory.CardFilterLt.card_filter_val_lt n
 
 theorem colH_le {n : ℕ} (mu : Fin n → ℤ) (c : ℤ) : colH mu c ≤ n := by
   unfold colH

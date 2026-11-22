@@ -31,7 +31,7 @@ theorem adj_one_sub {n : ℕ} (M : Matrix (Fin n) (Fin n) D.host.E) : adj D (1 -
   ext i j
   by_cases h : i = j
   · subst h; simp [adj]
-  · simp [adj, Matrix.one_apply, h, Ne.symm h]
+  · simp [adj, h, Ne.symm h]
 
 theorem det_adj {n : ℕ} (M : Matrix (Fin n) (Fin n) D.host.E) : (adj D M).det = D.host.conj M.det := by
   unfold adj
@@ -43,7 +43,7 @@ theorem adj_diagonal {n : ℕ} (d : Fin n → D.host.E) :
   ext i j
   by_cases h : i = j
   · subst h; simp [adj]
-  · simp [adj, Matrix.diagonal_apply, h, Ne.symm h]
+  · simp [adj, h, Ne.symm h]
 
 theorem sd_of_moves {g : GA D N} {L : Submodule (𝓞 D.host.E) (Fin N → D.host.E)}
     (h : Moves D (g : GL (Fin N) (AE D)) L) : SD D L := by

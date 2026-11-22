@@ -49,7 +49,7 @@ theorem mx_smul (c : ℂ) (X : Matrix (Fin n) (Fin n) ℂ) : mx T (c • X) = c 
   simp [mx, smul_smul, Finset.smul_sum]
 
 theorem mx_single (a b : Fin n) : mx T (Matrix.single a b 1) = T a b := by
-  simp [mx, Matrix.single_apply, ite_smul, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq']
+  simp [mx, Matrix.single_apply, ite_smul, ite_and, Finset.sum_ite_eq]
 
 theorem mat_decomp (Y Z : Matrix (Fin n) (Fin n) ℂ) :
     Y = (1 / 2 : ℂ) • (Y - Z) + (-(Complex.I / 2)) • (Complex.I • (Y + Z)) := by

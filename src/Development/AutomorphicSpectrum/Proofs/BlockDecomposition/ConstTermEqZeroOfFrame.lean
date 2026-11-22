@@ -102,7 +102,7 @@ theorem constTerm_eq_zero_of_frame : ∀ (D : D7) (V : HSp D) (r : ℕ) (C₁ C�
     GlobalTheory.Cusp.constTerm (GlobalTheory.Cusp.frameFlag h₁) φ = 0 → GlobalTheory.Cusp.constTerm (GlobalTheory.Cusp.frameFlag h₂) φ = 0 := by
   intro D V r C₁ C₂ h₁ h₂ φ hφ h0
   have hθ : (1 / 2 : D.host.E) + star (1 / 2 : D.host.E) = 1 := by
-    have e : star (1 / 2 : D.host.E) = 1 / 2 := by simp [star_div₀]
+    have e : star (1 / 2 : D.host.E) = 1 / 2 := by simp
     rw [e, add_halves]
   have e₁ : C₁ᴴ * V.gram * C₁ = 0 := h₁.2.2
   have e₂ : C₂ᴴ * V.gram * C₂ = 0 := h₂.2.2

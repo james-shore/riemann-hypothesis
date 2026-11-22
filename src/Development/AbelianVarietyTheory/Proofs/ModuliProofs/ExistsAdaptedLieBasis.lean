@@ -165,7 +165,6 @@ theorem GlobalTheory.exists_adapted_lieBasis : ∀ (E : Type) [Field E] [NumberF
       first
       | rfl
       | (unfold Chart.sp; simp)
-      | (simp [Chart.sp, Algebra.id.map_eq_id])
     constructor
     · intro h
       apply Over.OverMorphism.ext

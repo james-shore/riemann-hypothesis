@@ -102,7 +102,7 @@ theorem sum_ineq (hF : WedgeF) (hI : WedgeI) (hS : WedgeSub) (hFS : FinSupp)
     have a₃ := f₃ w
     rw [map_fromCols] at a₂ a₃
     rw [map_fromCols, map_fromCols] at a₀
-    simp only [Pi.add_apply]
+    simp only
     rw [map_fromCols, map_fromCols, map_fromCols, map_fromCols]
     exact log_ineq (fun _ _ _ A => nF A) (hF _ _) hS _ _ _ a₀ (f₁ w) a₂ a₃
   linarith

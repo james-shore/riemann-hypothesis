@@ -19,13 +19,9 @@ private theorem lintegral_prod_le_lintegral_lintegral {α β : Type*} [Measurabl
   have e : μ.prod ν = Measure.bind μ (fun x => Measure.map (Prod.mk x) ν) := by
     first
       | exact Measure.prod_def μ ν
-      | rw [Measure.prod_def]
-      | rw [Measure.prod]
   rw [e]
   first
     | rw [Measure.bind, Measure.lintegral_join hgm.aemeasurable]
-    | (unfold Measure.bind; rw [Measure.lintegral_join hgm.aemeasurable])
-    | rw [Measure.bind, Measure.lintegral_join hgm]
   calc ∫⁻ m, ∫⁻ p, g p ∂m ∂(Measure.map (fun x => Measure.map (Prod.mk x) ν) μ)
       ≤ ∫⁻ x, ∫⁻ p, g p ∂(Measure.map (Prod.mk x) ν) ∂μ :=
         lintegral_map_le (fun m : Measure (α × β) => ∫⁻ p, g p ∂m) _
@@ -53,24 +49,18 @@ private theorem side {k r : ℕ} (s : Fin (r + 1) → ℝ) (hs : ∀ l, 0 ≤ s 
     split_ifs with ha
     · first
         | (simp only [Matrix.of_apply]; fun_prop)
-        | fun_prop
-        | exact (continuous_apply _).comp (continuous_apply _)
     · first
         | (simp only [Matrix.mulVec, dotProduct, Matrix.of_apply]; fun_prop)
-        | (simp only [Matrix.mulVec, Matrix.dotProduct, Matrix.of_apply]; fun_prop)
-        | exact (continuous_apply _).comp (Continuous.matrix_mulVec continuous_id continuous_const)
   have hWfin : μW Set.univ < ∞ := by
     have h2 : μW Set.univ ≤ μW (UWset k r z) + μW (UWset k r z)ᶜ := by
       first
         | exact measure_univ_le_add_compl _
-        | (rw [← Set.union_compl_self (UWset k r z)]; exact measure_union_le _ _)
     rw [hW.conc, add_zero] at h2
     exact lt_of_le_of_lt h2 (hW.finite_compact _ hcomp)
   have hae : ∀ᵐ x ∂μW, Matrix.of x ∈ UWset k r z := by
     rw [ae_iff]
     first
       | exact hW.conc
-      | exact measure_mono_null (fun a ha => ha) hW.conc
   have hinner : ∀ h ∈ UWset k r z, (∫⁻ n : Mt k r, (xiN k r s (Matrix.of n * h) : ℝ≥0∞) *
       ENNReal.ofReal ((1 + |lam k r z (Matrix.of n)|) ^ (-(2 : ℝ))) ∂μN) ≤
       ENNReal.ofReal C * IInt μN z s (1 / 2) := by
@@ -84,8 +74,6 @@ private theorem side {k r : ℕ} (s : Fin (r + 1) → ℝ) (hs : ∀ l, 0 ≤ s 
       first
         | exact continuous_pi fun i => continuous_pi fun j => by
             simp only [conjM, Matrix.mul_apply, Matrix.of_apply]; fun_prop
-        | (unfold conjM; fun_prop)
-        | (unfold conjM; exact (continuous_const.matrix_mul continuous_id).matrix_mul continuous_const)
     have hG : Measurable (fun m : Mt k r => ENNReal.ofReal (xiR k r s (Matrix.of m)) *
         ENNReal.ofReal ((1 + |lam k r z (Matrix.of m)|) ^ (-(1 / 2 : ℝ)))) := by
       have hm1 : Measurable (fun m : Mt k r => ENNReal.ofReal (xiR k r s (Matrix.of m))) :=
@@ -142,7 +130,6 @@ private theorem side {k r : ℕ} (s : Fin (r + 1) → ℝ) (hs : ∀ l, 0 ≤ s 
     _ < ∞ := by
         first
           | exact ENNReal.mul_lt_top (ENNReal.mul_lt_top ENNReal.ofReal_lt_top hI) hWfin
-          | exact ENNReal.mul_lt_top (ENNReal.mul_lt_top ENNReal.ofReal_ne_top hI.ne) hWfin.ne
 
 end XI
 

@@ -216,8 +216,6 @@ theorem exists_common_eigenvector {V ι : Type*} [AddCommGroup V] [Module ℂ V]
   | exact @_root_.GlobalTheory.CommonEigenvector.common_eigenvector
   | exact _root_.GlobalTheory.CommonEigenvector.common_eigenvector
   | (apply _root_.GlobalTheory.CommonEigenvector.common_eigenvector <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CommonEigenvector.common_eigenvector <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CommonEigenvector.common_eigenvector <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CommonEigenvector.common_eigenvector ..)
 
 theorem exists_hw_of_height {V ι ρ : Type*} [AddCommGroup V] [Module ℂ V] [Fintype ι]

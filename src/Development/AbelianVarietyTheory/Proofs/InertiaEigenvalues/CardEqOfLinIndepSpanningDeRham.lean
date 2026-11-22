@@ -35,7 +35,7 @@ theorem card_eq_of_indep_spans_dR : ∀ (l : ℕ) [Fact l.Prime] (P : LocPrime l
       ext k
       by_cases h : k = j
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     rw [← Finset.univ_sum_single x]
     exact Submodule.sum_mem _ fun j _ => hj j
   have h2 : a ≤ m := by

@@ -19,7 +19,6 @@ theorem subsingleton_cohomology_trivial_zmod (G : Type) [Group G] [TopologicalSp
   let A : Rep.{0} (ULift.{0} ℤ) G := Rep.trivial (ULift.{0} ℤ) G (ULift.{0} (ZMod q))
   have hq0 : q ≠ 0 := NeZero.ne q
   have hA : ∀ a : A, q • a = 0 := fun a => by
-    change (q • a : ULift.{0} (ZMod q)) = 0
     ext
     simp
   have htors : IsAddTorsion A := fun a =>

@@ -393,7 +393,7 @@ theorem exists_goodProj_coord (K : Type) [Fintype K] (ι : K → Type) [∀ k, F
       simp only [RingHom.coe_coe, evC_segC, GroundTheory.Heights₂.Heights.SegreCoordGoodProj.segre_scaleBlock,
         hzi, mul_zero, Polynomial.eval₂_at_zero, map_zero, RingHom.comp_apply] at this
       rw [← this]
-      simp only [AlgHom.coe_toRingHom, RingHom.coe_coe, evC_aeval]
+      simp only [evC_aeval]
       refine congrArg (fun v => aeval v c0) (funext fun j => ?_)
       rw [evC_forms]
       simp only [GroundTheory.Heights₂.Heights.SegreCoordGoodProj.segre_scaleBlock, hudef, hVdef, Finset.mul_sum]

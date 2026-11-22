@@ -225,7 +225,7 @@ theorem exists_cp_linComb (P : UU.CP G₀) {K : Type} [Fintype K] (f : K → (H 
     have s1 : val P.sym (eSec G₀) y JL = 1 := by
       have := (val_pull hJL P.sym (eSec G₀) (𝟙 _)).symm.trans ((val_corr hJL P.sym_rig (𝟙 _)).trans (val_one _))
       rwa [Category.id_comp] at this
-    simp only [Category.id_comp, Category.assoc, e₂, he, s1, one_zpow, Finset.prod_const_one, mul_inv_cancel,
+    simp only [Category.id_comp, e₂, he, s1, one_zpow, Finset.prod_const_one, mul_inv_cancel,
       _root_.mul_one]
   · intro T x y u z J hJ
     obtain ⟨JL, hJL⟩ := UU.exists_good_pt P.L.isLB z

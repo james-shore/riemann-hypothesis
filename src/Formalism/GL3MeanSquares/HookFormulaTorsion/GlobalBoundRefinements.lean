@@ -256,7 +256,6 @@ theorem shortIntervalImpliesProgressions_statement : ShortIntervalImpliesProgres
   have htot0 : 0 < m.totient := by
     first
     | exact Nat.totient_pos.mpr (by omega)
-    | exact Nat.totient_pos (by omega)
   have htot1 : (1 : ℝ) ≤ (m.totient : ℝ) := by exact_mod_cast htot0
   have htotB : (m.totient : ℝ) ≤ 4 * m := by
     have h1 : (m.totient : ℝ) ≤ m := by exact_mod_cast Nat.totient_le m
@@ -306,8 +305,6 @@ theorem shortIntervalImpliesProgressions_statement : ShortIntervalImpliesProgres
     rw [hunion, Finset.filter_union]
     first
     | exact Finset.card_union_of_disjoint hdisj
-    | exact Finset.card_disjoint_union hdisj
-    | exact Finset.card_union_eq_card_add_card.mpr hdisj
   have key2 : c * h * (4 * (m : ℝ)) ^ (-6 : ℝ) * Y / Real.log Y ≤
       (((Icc 1 ⌊Y * (1 + h)⌋₊).filter (fun p => p.Prime ∧ Nat.ModEq m p a)).card : ℝ)
         - (((Icc 1 ⌊Y⌋₊).filter (fun p => p.Prime ∧ Nat.ModEq m p a)).card : ℝ) := key

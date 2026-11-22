@@ -149,9 +149,9 @@ theorem algHom_dualNumber_ext : ∀ (C : Type) [Field C] [IsAlgClosed C] [CharZe
     · intro s
       obtain ⟨k, rfl⟩ := e.surjective s
       rw [hE, Finset.sum_eq_single k]
-      · simp [d, pderiv_X]
+      · simp [d]
       · intro j _ hj
-        simp [pderiv_X, hj, hj.symm]
+        simp [hj.symm]
       · simp
     · intro j
       rw [RingHom.coe_coe, map_sub, hCa, AlgHom.commutes, ha, sub_self]

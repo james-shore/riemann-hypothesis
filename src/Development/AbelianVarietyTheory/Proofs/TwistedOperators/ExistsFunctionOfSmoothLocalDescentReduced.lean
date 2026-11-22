@@ -26,9 +26,7 @@ theorem exists_factor_pi {J : Type} [Fintype J] [DecidableEq J] (A : J → Type)
   first
   | exact @_root_.GlobalTheory.FactorThroughProjection.exists_factor_through_projection
   | exact _root_.GlobalTheory.FactorThroughProjection.exists_factor_through_projection
-  | (apply _root_.GlobalTheory.FactorThroughProjection.exists_factor_through_projection <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FactorThroughProjection.exists_factor_through_projection <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FactorThroughProjection.exists_factor_through_projection <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.FactorThroughProjection.exists_factor_through_projection)
   | (intros; exact _root_.GlobalTheory.FactorThroughProjection.exists_factor_through_projection ..)
 
 open scoped TensorProduct in

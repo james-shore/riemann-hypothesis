@@ -106,7 +106,7 @@ theorem phi_skew {p q n : ℕ} (br : Bool) (e : Ix p q ≃ Fin n) (i j : Ix p q)
   obtain ⟨a, rfl⟩ := e.surjective a
   obtain ⟨b, rfl⟩ := e.surjective b
   rw [phi_apply]
-  cases br <;> simp [cjc, Eab, Matrix.single_apply] <;> split_ifs <;> simp
+  cases br <;> simp [cjc, Eab, Matrix.single_apply] <;> split_ifs
 
 theorem phi_symm {p q n : ℕ} (br : Bool) (e : Ix p q ≃ Fin n) (i j : Ix p q) :
     phi br e (((sb br : ℂ) * Complex.I) • (Eab i j + Eab j i)) =
@@ -115,7 +115,7 @@ theorem phi_symm {p q n : ℕ} (br : Bool) (e : Ix p q ≃ Fin n) (i j : Ix p q)
   obtain ⟨a, rfl⟩ := e.surjective a
   obtain ⟨b, rfl⟩ := e.surjective b
   rw [phi_apply]
-  cases br <;> simp [cjc, sb, Eab, Matrix.single_apply] <;> split_ifs <;> simp
+  cases br <;> simp [cjc, sb, Eab, Matrix.single_apply] <;> split_ifs
 
 theorem phi_torus {p q n : ℕ} (br : Bool) (e : Ix p q ≃ Fin n) (x : Fin n → ℝ) :
     phi br e (Matrix.diagonal fun j => Complex.exp (((sb br * x (e j) : ℝ) : ℂ) * Complex.I)) =

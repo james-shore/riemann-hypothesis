@@ -64,9 +64,6 @@ private lemma isJacobsonRing_int_regular_local_rings : IsJacobsonRing ℤ := by
   · have hmax : P.IsMaximal := by
       first
         | exact Ideal.IsPrime.isMaximal hP hb
-        | exact hP.isMaximal hb
-        | exact Ideal.IsPrime.to_maximal_ideal hb
-        | exact Ring.DimensionLEOne.maximalOfPrime hb hP
     exact sInf_le ⟨le_rfl, hmax⟩
 
 private lemma not_isMaximal_of_chZero (Q : Ideal (MvPolynomial σ ℤ)) (hQ : ChZero Q) :

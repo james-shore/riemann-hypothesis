@@ -60,7 +60,7 @@ private theorem slicePr_apply_eq (V W : Type) (w : List W) (z : List V × List W
     by_cases h : w' = w
     · subst h
       simp [Finsupp.single_apply]
-    · simp [h, Finsupp.single_apply, Ne.symm h]
+    · simp [h, Ne.symm h]
 
 theorem slicePr_mem {V W : Type} (D : Set (List V × List W)) (p b : ℕ) (w : List W) :
     ∀ z ∈ chains2 D p b, slicePr V W w z ∈ chains {l | (l, w) ∈ D} p := by
@@ -103,7 +103,7 @@ theorem sum_slicePr {V W : Type} (z : List V × List W →₀ ℤ) (U : Finset (
   apply Finset.sum_congr rfl
   intro q hq
   simp [slicePr, Finsupp.linearCombination_single, hU q hq, Finset.sum_ite_eq,
-    Finset.sum_ite_eq', Finsupp.smul_single]
+    Finsupp.smul_single]
 
 theorem exists_sum_bd {V : Type} (F : Set (List V)) (p : ℕ) {ι : Type} (S : Finset ι)
     (f : ι → List V →₀ ℤ) (hS : ∀ i ∈ S, ∃ b ∈ chains F (p + 1), bd V b = f i) :
@@ -152,12 +152,4 @@ open GlobalTheory.SeqCx
 theorem _root_.GlobalTheory.T.exists_bd_of_vbd_eq_of_oneTerm_cycle : ∀ (V W : Type) (D : Set (List V × List W)) (F : Set (List V)) (p : ℕ), (∀ u : W, (∃ l, (l, [u]) ∈ D) → ∀ c ∈ chains {l | (l, [u]) ∈ D} p, bd V c = 0 → ∃ b ∈ chains F (p + 1), bd V b = c) → ∀ z ∈ chains2 D p 1, hbd V W z = 0 → ∀ c : List V →₀ ℤ, vbd V W z = Finsupp.mapDomain (fun l => (l, ([] : List W))) c → ∃ b ∈ chains F (p + 1), bd V b = c := by
   first
   | exact @GlobalTheory.SeqCx.OneTermEnd.bd_of_oneTerm_cycle
-  | exact @GlobalTheory.SeqCx.OneTermEnd.exists_sum_bd
-  | exact @GlobalTheory.SeqCx.OneTermEnd.sum_slicePr
-  | exact @GlobalTheory.SeqCx.OneTermEnd.vbd_eq
-  | exact @GlobalTheory.SeqCx.OneTermEnd.slicePr_mem
-  | exact @GlobalTheory.SeqCx.OneTermEnd.slicePr_hbd
-  | exact @GlobalTheory.SeqCx.OneTermEnd.slicePr_mapDomain
-  | exact @GlobalTheory.SeqCx.OneTermEnd.lc_single_one
-  | exact @GlobalTheory.SeqCx.OneTermEnd.bd_single_one
 end

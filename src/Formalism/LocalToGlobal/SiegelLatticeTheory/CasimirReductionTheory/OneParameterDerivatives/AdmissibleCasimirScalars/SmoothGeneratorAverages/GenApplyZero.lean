@@ -66,7 +66,7 @@ theorem eq_sum_gen {ε : Fin n → Bool} {Z : Matrix (Fin n) (Fin n) ℂ} (hZ : 
   rcases lt_trichotomy i j with h | rfl | h
   · rw [Fintype.sum_eq_add (i, j) (j, i) (by simp [h.ne])
       (fun q hq => by rw [gen_apply_zero ε q i j hq.1 hq.2, mul_zero])]
-    simp [coord, gen, h, h.ne, h.ne', not_lt.mpr h.le, Matrix.single_apply]
+    simp [coord, gen, h, h.ne, h.ne', not_lt.mpr h.le]
   · rw [Fintype.sum_eq_single (i, i) (fun q hq => by rw [gen_apply_zero ε q i i hq hq, mul_zero])]
     have he := entry_of_inG hZ i i
     simp only [sg, if_true] at he
@@ -74,12 +74,12 @@ theorem eq_sum_gen {ε : Fin n → Bool} {Z : Matrix (Fin n) (Fin n) ℂ} (hZ : 
       have h2 := congrArg Complex.re he
       simp at h2
       linarith
-    simp [coord, gen, Matrix.single_apply]
+    simp [coord, gen]
     try (apply Complex.ext <;> simp [hre])
   · rw [Fintype.sum_eq_add (i, j) (j, i) (by simp [h.ne'])
       (fun q hq => by rw [gen_apply_zero ε q i j hq.1 hq.2, mul_zero])]
     rw [entry_of_inG hZ i j]
-    simp [coord, gen, h, h.ne, h.ne', not_lt.mpr h.le, Matrix.single_apply, sg_swap]
+    simp [coord, gen, h, h.ne, h.ne', not_lt.mpr h.le, sg_swap]
     try (apply Complex.ext <;> simp <;> ring)
 
 theorem inG_of_log {ε : Fin n → Bool} (e : OpenPartialHomeomorph (Matrix (Fin n) (Fin n) ℂ) (Matrix (Fin n) (Fin n) ℂ))

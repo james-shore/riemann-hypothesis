@@ -230,7 +230,7 @@ theorem per_conj (W : G.Weil) {V₀ Lz : HSp D} {ρ : ℕ} (d : HypDec (G.V (.gr
   · refine integral_congr_ae (ae_of_all _ fun n => ?_)
     show star (φ h) * star (F (n.1 * embA d o h)) * star (psiBes W.ψ d 1 (vecB o ζ) n.1) = _
     rw [hE, hψ n.1 n.2]
-    simp only [star_star, map_mul, Complex.star_def, Complex.conj_conj]
+    simp only [map_mul, Complex.star_def, Complex.conj_conj]
   · refine integral_congr_ae (ae_of_all _ fun n => ?_)
     show _ = starRingEnd ℂ (star (star (φ h)) * F (n.1 * embTop G h * (G.besTop.y : GA D (G.V (.grid D.R.m 0)))) *
       star (besChar W.ψ G.besTop n.1))

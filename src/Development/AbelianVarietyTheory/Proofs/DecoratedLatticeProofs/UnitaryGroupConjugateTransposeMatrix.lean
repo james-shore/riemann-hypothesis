@@ -21,8 +21,6 @@ theorem integral_adelic_lattice_mul_mem {z w : GlobalTheory.AdLat.RA F E}
   | exact @_root_.GlobalTheory.AdelicLatticeClosure.adelic_hat_one_mul_mem
   | exact _root_.GlobalTheory.AdelicLatticeClosure.adelic_hat_one_mul_mem
   | (apply _root_.GlobalTheory.AdelicLatticeClosure.adelic_hat_one_mul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AdelicLatticeClosure.adelic_hat_one_mul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AdelicLatticeClosure.adelic_hat_one_mul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AdelicLatticeClosure.adelic_hat_one_mul_mem ..)
 
 theorem one_int_af : ∀ v : HeightOneSpectrum (𝓞 F),

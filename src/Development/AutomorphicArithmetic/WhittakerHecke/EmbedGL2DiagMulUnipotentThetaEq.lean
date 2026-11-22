@@ -16,4 +16,4 @@ theorem UpperTheory.embedGL2_diag_mul_unipotent_theta_eq :
   refine Units.ext ?_
   ext i j
   simp only [nE, Units.val_mul, Matrix.mul_apply, Fin.sum_univ_two, hm]
-  fin_cases i <;> fin_cases j <;> simp [aE, hn, hk, map_mul, mul_assoc]
+  fin_cases i <;> fin_cases j <;> simp [aE, hk, map_mul, mul_assoc]

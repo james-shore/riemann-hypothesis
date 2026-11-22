@@ -82,7 +82,7 @@ theorem aeval_mul_of_intertwine {K : Type} [Field K] {n : ℕ} {B C H : Matrix (
     have e : B ^ d * H = H * C ^ d :=
       (((show SemiconjBy H C B from h.symm).pow_right d).eq).symm
     rw [aeval_monomial, aeval_monomial]
-    simp only [Algebra.algebraMap_eq_smul_one, smul_mul_assoc, one_mul, mul_smul_comm, mul_assoc, e]
+    simp only [Algebra.algebraMap_eq_smul_one, smul_mul_assoc, one_mul, mul_smul_comm, e]
 
 theorem cT_mul {K : Type} [Field K] (s : K →+* K) {n : ℕ} (B C : Matrix (Fin n) (Fin n) K) :
     cT s (B * C) = cT s C * cT s B := by

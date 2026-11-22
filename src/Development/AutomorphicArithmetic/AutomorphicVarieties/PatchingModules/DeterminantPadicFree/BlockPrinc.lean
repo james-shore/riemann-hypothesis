@@ -15,7 +15,7 @@ private theorem coc_comb {F G : Type} [Field F] [Group G] {n m : ℕ} (χ : G �
   show ∑ k, α k • z k (g * h) = ∑ k, α k • z k g + χ g • (r g * (∑ k, α k • z k h) * r g⁻¹)
   rw [Finset.sum_congr rfl fun k _ => by rw [hz k g (Set.mem_univ _) h (Set.mem_univ _)]]
   simp [smul_add, Finset.sum_add_distrib, Finset.mul_sum, Finset.sum_mul, Finset.smul_sum,
-    Matrix.mul_smul, Matrix.smul_mul, smul_smul, mul_comm]
+    smul_smul, mul_comm]
 
 private theorem cut_mul {F : Type} [Field F] {n : ℕ} (p q : Fin n → Prop) [∀ i j, Decidable (p i ∧ q j)]
     (Z B : Matrix (Fin n) (Fin n) F) (hB : ∀ k j, ¬ (q k ↔ q j) → B k j = 0) (i j : Fin n) :
@@ -148,7 +148,7 @@ theorem UpperTheory.V.Pa.Det.ann :
     Det.shapiro D D.χF s L Y2 (fun g => by simp [DetFr.χF, D.χσ]) hla.sq hLc hLo hLp hL2
   have hT : YKᵀ = -YK := by
     have h := congrArg Matrix.transpose hYKs
-    simp only [Matrix.transpose_smul, Matrix.transpose_transpose, neg_smul, one_smul] at h
+    simp only [neg_smul, one_smul] at h
     exact h.symm
   have hα : α = 0 := hκ.indep α YK hYKo hT fun g => by
     have := hYK g

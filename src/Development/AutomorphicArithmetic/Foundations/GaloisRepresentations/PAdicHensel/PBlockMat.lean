@@ -75,7 +75,7 @@ theorem UpperTheory.Gal.G1.pBlockMat :
     constructor
     · intro i j
       fin_cases i <;> fin_cases j <;> simp [b] <;>
-        first | assumption | exact S.neg_mem hsy
+        first | assumption
     · intro i j
       fin_cases i <;> fin_cases j <;> simp [b'] <;>
         first | exact S.neg_mem (S.mul_mem hcS hy) | exact S.mul_mem hcS hsx | exact S.mul_mem hcS hsy | exact S.mul_mem hcS hx | exact S.mul_mem hcS hy

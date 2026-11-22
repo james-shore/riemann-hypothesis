@@ -10,9 +10,7 @@ theorem finite_injective_localHom_and_extend (V R K : Type) [CommRing V] [IsDoma
   first
   | exact @_root_.GlobalTheory.ValuationExtensionExistence.main
   | exact _root_.GlobalTheory.ValuationExtensionExistence.main
-  | (apply _root_.GlobalTheory.ValuationExtensionExistence.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ValuationExtensionExistence.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ValuationExtensionExistence.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.ValuationExtensionExistence.main)
   | (intros; exact _root_.GlobalTheory.ValuationExtensionExistence.main ..)
 
 end GlobalTheory

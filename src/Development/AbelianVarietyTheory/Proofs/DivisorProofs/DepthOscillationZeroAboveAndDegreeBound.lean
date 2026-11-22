@@ -95,7 +95,7 @@ theorem oscLe_zero_above_and_degree : ∀ (E : Type) [Field E] [NumberField E] [
     intro T io e ho y
     obtain ⟨h1, h2⟩ := h T io e ho y
     refine ⟨by simpa using h1, fun ha => (h2 ha).trans ?_⟩
-    simp only [Finset.sum_const_zero, Nat.cast_zero, zero_add]
+    simp only [Nat.cast_zero, zero_add]
     exact EReal.coe_le_coe_iff.2 hsum
 
 end GlobalTheory.RefSum

@@ -307,9 +307,8 @@ lemma inv_blk {k : ℕ} (T : Fin k → ℂ) (m : Fin k → Fin k → ℂ) (hm : 
   ext a b
   refine Fin.cases ?_ (fun a => ?_) a <;> refine Fin.cases ?_ (fun b => ?_) b
   · simp [blk, Matrix.mul_apply, Fin.sum_univ_succ]
-  · simp [blk, Matrix.mul_apply, Fin.sum_univ_succ, vecMul, dotProduct, Matrix.one_apply,
-      (Fin.succ_ne_zero b).symm]
-  · simp [blk, Matrix.mul_apply, Fin.sum_univ_succ, Matrix.one_apply]
+  · simp [blk, Matrix.mul_apply, Fin.sum_univ_succ, vecMul, dotProduct, (Fin.succ_ne_zero b).symm]
+  · simp [blk, Matrix.mul_apply, Fin.sum_univ_succ]
   · have := congrFun (congrFun h a) b
     simpa [blk, Matrix.mul_apply, Fin.sum_univ_succ, Matrix.one_apply, invM] using this
 

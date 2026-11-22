@@ -16,11 +16,7 @@ theorem mem_intW_of (D : D7) (w : D.what₂.places.Pl) {x : D.what₂.LL} (hx : 
 theorem vAdd_one (D : D7) (w : D.what₂.places.Pl) : vAdd (D.plEq w) (1 : D.what₂.LL) = 0 := by
   first
   | rfl
-  | (simp [vAdd]; done)
-  | (norm_num [vAdd]; done)
-  | (simp; done)
-  | (unfold vAdd; simp; done)
-  | aesop
+  | (simp [vAdd])
 
 theorem div_mem_intW (D : D7) (w : D.what₂.places.Pl) {a b : D.what₂.LL} (ha : a ≠ 0) (hb : b ≠ 0)
     (h : vAdd (D.plEq w) a ≤ vAdd (D.plEq w) b) : b / a ∈ intW D.what₂.places w := by
@@ -42,10 +38,7 @@ theorem VGe_of_mem {z : V} (hz : z ∈ locW D.what₂.places w Λ) : VGe D w Λ 
   refine ⟨1, z, hz, (one_smul _ _).symm, Or.inr ?_⟩
   rw [vAdd_one]
   first
-  | (simp [ur]; done)
-  | (norm_num [ur]; done)
-  | (unfold ur; simp; done)
-  | (simp; done)
+  | (simp [ur])
 
 theorem valuation_ge_add_of_le {a1 a2 : D.what₂.LL} {z1 z2 : V} {s : ℝ} (h1 : a1 ≠ 0) (h2 : a2 ≠ 0)
     (hz1 : z1 ∈ locW D.what₂.places w Λ) (hz2 : z2 ∈ locW D.what₂.places w Λ)
@@ -172,11 +165,7 @@ theorem sum_bounds (m : ℕ) (hm : 1 ≤ m) (sp v : ℝ) :
 theorem card_lifts (D : D7) : ((SizeData₂.lifts D).card : ℝ) = (D.R.m : ℝ) := by
   first
   | rfl
-  | (simp [SizeData₂.lifts]; done)
-  | (norm_num [SizeData₂.lifts]; done)
-  | (simp; done)
-  | (unfold SizeData₂.lifts; simp; done)
-  | aesop
+  | (simp [SizeData₂.lifts])
 
 theorem base_map_mem_local_lattice {D : D7} (T : TwForms D) (u : D.what₂.Word) (μ : D.what₂.Tup) (w : D.what₂.places.Pl)
     (x : ((D.fm u).lat 0).V) (hx : x ∈ locW D.what₂.places w ((D.fm u).lat 0).L) :

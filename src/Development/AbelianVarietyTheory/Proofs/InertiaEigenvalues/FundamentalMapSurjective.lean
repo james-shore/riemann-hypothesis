@@ -26,8 +26,6 @@ theorem exists_lim [IsAdicComplete (Ideal.span {(p : R)}) R] (f : ℕ → R)
   | exact @_root_.GlobalTheory.LimitOfDivisibility.exists_limit_of_pow_dvd_sub
   | exact _root_.GlobalTheory.LimitOfDivisibility.exists_limit_of_pow_dvd_sub
   | (apply _root_.GlobalTheory.LimitOfDivisibility.exists_limit_of_pow_dvd_sub <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LimitOfDivisibility.exists_limit_of_pow_dvd_sub <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LimitOfDivisibility.exists_limit_of_pow_dvd_sub <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LimitOfDivisibility.exists_limit_of_pow_dvd_sub ..)
 
 theorem eq_zero_of_dvd [IsAdicComplete (Ideal.span {(p : R)}) R] (x : R)

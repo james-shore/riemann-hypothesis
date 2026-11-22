@@ -111,7 +111,6 @@ theorem free_etale_sheaf_zmod_exists_hom_sending_generator (hcm : IsCMExt F E σ
       rw [heA', hzs, Finset.mul_sum]
       congr 1
       refine Finset.sum_congr rfl fun i _ => ?_
-      change ae ((1 - e) * η i) * _ = _
       rw [map_mul, mul_assoc]
     rw [hfin]
     obtain ⟨u, hu⟩ := hzu

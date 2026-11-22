@@ -33,7 +33,6 @@ theorem charSum {F : Type} [Field F] [Fintype F] (ψ₀ : AddChar F ℂ) (hψ : 
   have hps : ∑ c : Fin m → F, ∏ i, ψ₀ (ν i * c i) = ∏ i, ∑ t : F, ψ₀ (ν i * t) := by
     first
       | exact (Fintype.prod_sum (fun i t => ψ₀ (ν i * t))).symm
-      | (rw [Finset.prod_univ_sum]; simp)
   simp_rw [addChar_sum ψ₀]
   rw [hps]
   simp_rw [charSum_one ψ₀ hψ]

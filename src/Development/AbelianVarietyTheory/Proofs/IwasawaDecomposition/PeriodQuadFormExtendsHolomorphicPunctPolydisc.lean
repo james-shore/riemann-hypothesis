@@ -105,7 +105,7 @@ theorem periodVec_extends : ∀ (n a g : ℕ) (ha : a ≤ n) (ρ₁ : ℝ) (τ :
         have : ¬ (j : ℕ) < a := by
           intro hlt; apply hj; exact ⟨⟨j, hlt⟩, by simp, Fin.ext rfl⟩
         simp [m', this]
-      · intro k _; simp [m', Fin.coe_castLE, k.isLt]
+      · intro k _; simp [m', k.isLt]
     have hexp : ∀ k : Fin a, (z (Fin.castLE ha k)) ^ (m k).toNat
         = Complex.exp (s (Fin.castLE ha k) * ((m k : ℤ) : ℂ)) := by
       intro k

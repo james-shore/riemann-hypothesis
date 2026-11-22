@@ -49,8 +49,8 @@ theorem modK_twist {δ : ∀ p : PlF D, (D.s.atP p).Fp} {M : ∀ p : PlF D, Loc.
     · simp only [twist, hsp]
       apply sg.e.injective
       rw [map_mul, map_one]
-      simp only [map_one, RingEquiv.apply_symm_apply, AlgEquiv.apply_symm_apply]
-      refine Prod.ext ?_ ?_ <;> first | (simp; done) | (simp [← mul_pow]; done) | (simp; rw [← mul_pow]; norm_num)
+      simp only [AlgEquiv.apply_symm_apply]
+      refine Prod.ext ?_ ?_ <;> first | (simp; done) | (simp [← mul_pow])
   have hu : IsUnit (twist p s 1) := ⟨⟨twist p s 1, twist p s 1, htw1, htw1⟩, rfl⟩
   have hsq : A5.modK (M p).R (twist p s 1) * A5.modK (M p).R (twist p s 1) = 1 := by
     rw [← Formalism.FourierDecayAlt.P.A5x5.modK_mul' hd hu hu, htw1, h1]
@@ -72,10 +72,6 @@ theorem alg_mem_R {M : ∀ p : PlF D, Loc.Model (D.s.atP p).Fp (D.s.atP p).Ep}
     | (rw [show algebraMap (D.s.atP p).Fp (D.s.atP p).Ep b =
           algebraMap 𝒪[(D.s.atP p).Fp] (D.s.atP p).Ep ⟨b, hb⟩ from rfl]
        exact isIntegral_algebraMap)
-    | (rw [show algebraMap (D.s.atP p).Fp (D.s.atP p).Ep b =
-          algebraMap 𝒪[(D.s.atP p).Fp] (D.s.atP p).Ep ⟨b, hb⟩ from
-          (IsScalarTower.algebraMap_apply 𝒪[(D.s.atP p).Fp] (D.s.atP p).Fp (D.s.atP p).Ep ⟨b, hb⟩)]
-       exact isIntegral_algebraMap)
   · simp only [Loc.Model.R, hsp]
     rw [Subring.mem_comap, Subring.mem_map]
     refine ⟨(⟨b, hb⟩, ⟨b, hb⟩), ?_, ?_⟩
@@ -93,16 +89,11 @@ theorem modK_natUnit {δ : ∀ p : PlF D, (D.s.atP p).Fp} {M : ∀ p : PlF D, Lo
   have hinv : (((n : ℕ) : (D.s.atP p).Fp))⁻¹ ∈ 𝒪[(D.s.atP p).Fp] := by
     first
     | (rw [Valuation.mem_integer_iff, map_inv₀, hv, inv_one])
-    | (show valuation _ _ ≤ 1
-       rw [map_inv₀, hv, inv_one])
-    | (simp only [Valuation.mem_integer_iff, map_inv₀, hv, inv_one, le_refl])
   obtain ⟨w, hw⟩ : ∃ w : 𝒪[(D.s.atP p).Fp], (w : (D.s.atP p).Fp) * ((n : ℕ) : (D.s.atP p).Fp) = 1 :=
     ⟨⟨_, hinv⟩, inv_mul_cancel₀ hn0⟩
   have hnO : ((n : ℕ) : (D.s.atP p).Fp) ∈ 𝒪[(D.s.atP p).Fp] := by
     first
     | exact natCast_mem _ n
-    | exact Subring.natCast_mem _ n
-    | simpa using (n : 𝒪[(D.s.atP p).Fp]).2
   have hxR := alg_mem_R (M := M) p hnO
   have hyR := alg_mem_R (M := M) p w.2
   have hxy : algebraMap (D.s.atP p).Fp (D.s.atP p).Ep (w : (D.s.atP p).Fp) *
@@ -201,16 +192,16 @@ theorem modK_tMod {δ : ∀ p : PlF D, (D.s.atP p).Fp} {M : ∀ p : PlF D, Loc.M
     · simp only [twist, hsp]
       apply sg.e.injective
       rw [map_mul]
-      simp only [map_one, RingEquiv.apply_symm_apply, AlgEquiv.apply_symm_apply]
-      refine Prod.ext ?_ ?_ <;> first | (simp; done) | (simp; ring) | ring
+      simp only [map_one, AlgEquiv.apply_symm_apply]
+      refine Prod.ext ?_ ?_ <;> first | (simp)
   have htw1 : twist p s 1 * twist p s 1 = 1 := by
     rcases hsp : (D.s.atP p).split with _ | sg
     · simp [twist, hsp]
     · simp only [twist, hsp]
       apply sg.e.injective
       rw [map_mul, map_one]
-      simp only [map_one, RingEquiv.apply_symm_apply, AlgEquiv.apply_symm_apply]
-      refine Prod.ext ?_ ?_ <;> first | (simp; done) | (simp [← mul_pow]; done) | (simp; rw [← mul_pow]; norm_num)
+      simp only [AlgEquiv.apply_symm_apply]
+      refine Prod.ext ?_ ?_ <;> first | (simp; done) | (simp [← mul_pow])
   have htw1u : IsUnit (twist p s 1) := ⟨⟨twist p s 1, twist p s 1, htw1, htw1⟩, rfl⟩
   have hδu : IsUnit (algebraMap (D.s.atP p).Fp (D.s.atP p).Ep (δ p)) :=
     (isUnit_iff_ne_zero.mpr (hA p).2.1).map _
@@ -263,9 +254,6 @@ theorem norm_nat (n : ℕ) : Algebra.norm ℚ ((n : ℕ) : D.host.E) = (n : ℚ)
   | exact Formalism.MainNotions.TwistedPlaces.finrank_E_host D
   | exact Formalism.MainNotions.LatticeGluingRadicals.j_finrank D
   | exact Formalism.MainNotions.BridgeLemma.szf_finrankE D
-  | exact Formalism.L2.SG.Pf.AllRowsRedKer.finrank_cmField D
-  | exact Formalism.L2.Geo.Rec.StarEmbeddingNorm.finrank_E_eq
-  | exact Formalism.MainNotions.BridgeLemma.sza_finrank_host D
 
 theorem modNorm_of (hDP : DeltaProd D) : ModNorm D := by
   intro δ M hA ν s t ht
@@ -319,8 +307,5 @@ namespace Formalism.L2.SG.Pf
 theorem localModelS_of_delta {D : Formalism.BasicNotions.D7} (hDP : LMK.DeltaProd D) : Formalism.L2.SG.DataCut.LocalModelS D := by
   first
   | exact localModelS_of (LMK.modNorm_of hDP)
-  | exact Formalism.L2.SG.Pf.localModelS_of (LMK.modNorm_of hDP)
-  | exact Formalism.L2.SG.localModelS_of (LMK.modNorm_of hDP)
-  | exact Formalism.L2.SG.DataCut.localModelS_of (LMK.modNorm_of hDP)
 
 end Formalism.L2.SG.Pf

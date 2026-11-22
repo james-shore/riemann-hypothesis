@@ -21,7 +21,7 @@ private def sh (g : G → V →ₗ[R] V) (c : G →* U) (rep : U → G) (z : G �
 private theorem sh_arg (c : G →* U) (rep : U → G) (hr : ∀ y, c (rep y) = y) (s : G) (y : U) :
     c ((rep y)⁻¹ * s * rep (y * (c s)⁻¹)) = 1 := by
   simp only [map_mul, map_inv, hr]
-  simp [mul_comm, mul_left_comm]
+  simp [mul_left_comm]
 
 private theorem sh_coc (g : G → V →ₗ[R] V) (hg : ∀ s t v, g (s * t) v = g s (g t v)) (c : G →* U) (rep : U → G)
     (hr : ∀ y, c (rep y) = y) (P : AddSubgroup V) (hP : ∀ s, ∀ v ∈ P, g s v ∈ P) (z : G → V)

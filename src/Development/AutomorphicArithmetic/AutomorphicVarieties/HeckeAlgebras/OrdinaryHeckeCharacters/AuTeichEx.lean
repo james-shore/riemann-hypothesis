@@ -60,12 +60,12 @@ private theorem exists_teichmuller_lift' {O : Type} [CommRing O] [IsLocalRing O]
   haveI := IsAdicComplete.henselianRing O (maximalIdeal O)
   have h1 : eval a₀ (X ^ N - C 1) ∈ maximalIdeal O := by
     rw [← IsLocalRing.residue_eq_zero_iff]
-    simp only [eval_sub, eval_pow, eval_X, eval_C, eval_one, map_sub, map_pow, map_one]
+    simp only [eval_sub, eval_pow, eval_X, eval_one, map_sub, map_pow, map_one]
     rw [hN, FiniteField.pow_card_sub_one_eq_one _ hu, sub_self]
   have h2 : IsUnit (Ideal.Quotient.mk (maximalIdeal O) (eval a₀ (derivative (X ^ N - C 1)))) := by
     change IsUnit (residue O _)
     rw [isUnit_iff_ne_zero]
-    simp only [derivative_sub, derivative_X_pow, derivative_C, sub_zero, eval_mul, eval_C, eval_pow, eval_X,
+    simp only [derivative_sub, derivative_X_pow, derivative_C, sub_zero, eval_mul, eval_pow, eval_X,
       eval_natCast, map_mul, map_pow, map_natCast]
     rw [hN, card_residueField_sub_one_eq_neg_one]
     exact mul_ne_zero (neg_ne_zero.mpr one_ne_zero) (pow_ne_zero _ hu)
@@ -73,7 +73,7 @@ private theorem exists_teichmuller_lift' {O : Type} [CommRing O] [IsLocalRing O]
     (monic_X_pow_sub_C 1 hN0) a₀ h1 h2
   refine ⟨a, ?_, ?_⟩
   · have h : eval a (X ^ N - C 1) = 0 := hroot
-    simp only [eval_sub, eval_pow, eval_X, eval_C, eval_one] at h
+    simp only [eval_sub, eval_pow, eval_X, eval_C] at h
     exact sub_eq_zero.mp h
   · exact Ideal.Quotient.eq.mpr hmem
 

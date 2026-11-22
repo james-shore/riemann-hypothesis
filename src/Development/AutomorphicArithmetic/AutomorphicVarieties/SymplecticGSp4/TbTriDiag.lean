@@ -68,7 +68,7 @@ private def tbFst (X : M4 (DualNumber E)) : M4 E := Matrix.of fun i j => (X i j)
 
 private theorem tbSnd_mul (X Y : M4 (DualNumber E)) : tbSnd (X * Y) = tbFst X * tbSnd Y + tbSnd X * tbFst Y := by
   ext a b
-  simp [tbSnd, tbFst, Matrix.mul_apply, Fin.sum_univ_four, DualNumber.snd_mul]
+  simp [tbSnd, tbFst, Matrix.mul_apply, Fin.sum_univ_four]
   ring
 
 private theorem tbFst_mul (X Y : M4 (DualNumber E)) : tbFst (X * Y) = tbFst X * tbFst Y := by

@@ -23,7 +23,7 @@ private theorem Cm_mul_Cmi_eq_one : Cm n * Cmi n = 1 := by
   simp only [Cm, Cmi, Matrix.fromBlocks_multiply]
   rw [← Matrix.fromBlocks_one]
   congr 1 <;> ext i j <;> by_cases hij : i = j <;> simp [Matrix.one_apply, hij] <;> ring_nf <;>
-    simp [Complex.I_sq] <;> ring_nf
+    simp [Complex.I_sq]
 
 private theorem Cm_inv_eq_Cmi : (Cm n)⁻¹ = Cmi n := Matrix.inv_eq_right_inv Cm_mul_Cmi_eq_one
 

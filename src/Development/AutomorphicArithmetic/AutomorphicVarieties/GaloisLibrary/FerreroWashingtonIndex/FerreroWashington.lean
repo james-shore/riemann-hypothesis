@@ -25,7 +25,7 @@ theorem UpperTheory.V.FW.cyc (l : ℕ) [hl : Fact l.Prime] (f : ℕ) (hf : f.Cop
   have hcodd : Odd (2 * (f * l) + 1) := ⟨f * l, by ring⟩
   have hc1 : 1 < 2 * (f * l) + 1 := by omega
   have hcfl : (2 * (f * l) + 1).Coprime (f * l) := by
-    simp [Nat.coprime_mul_left_add_left]
+    simp
   obtain ⟨N, n₀, hn₀2, hmem⟩ := memZ l f (2 * (f * l) + 1) hf hcodd hc1 hcfl
   obtain ⟨B, hB⟩ := ambCyc l f hf
   by_cases hl2 : l = 2

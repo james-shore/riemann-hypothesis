@@ -15,9 +15,6 @@ theorem lt_parM (ℓ hh g : ℕ) (hℓ : 2 ≤ ℓ) : hh + 2 * g < (ℓ - 1) * p
   have hm : 0 < ℓ - 1 := by omega
   first
     | exact Nat.lt_mul_div_succ _ hm
-    | (have h1 := Nat.div_add_mod (hh + 2 * g) (ℓ - 1)
-       have h2 := Nat.mod_lt (hh + 2 * g) hm
-       nlinarith)
 
 section shape
 variable {O : Type} [CommRing O]
@@ -53,7 +50,6 @@ theorem QQ.map {l : O} (f : PowerSeries O →ₐ[O] PowerSeries O) {x : PowerSer
   have hC : f (C l) = C l := by
     first
       | exact f.commutes l
-      | simpa [PowerSeries.algebraMap_eq] using f.commutes l
   refine ⟨w, b + f a, hw, ?_⟩
   rw [map_add, map_mul, map_mul, map_pow, hC, hwb]
   ring
@@ -81,7 +77,6 @@ theorem p_eq (B : Base O) (s : ℕ) : B.p s = (⇑B.φ)^[s] X + C (B.ℓ : O) :=
   have hC : ∀ c : O, B.φ (C c) = C c := fun c => by
     first
       | exact B.φ.commutes c
-      | simpa [PowerSeries.algebraMap_eq] using B.φ.commutes c
   unfold Base.p Base.q
   induction s with
   | zero => simp
@@ -374,8 +369,6 @@ theorem unit_phiIt {V₀ : Type} [AddCommGroup V₀] [Module (PowerSeries O) V�
   | succ k ih =>
     first
       | rw [Lat.phiIt, ih, L₀.φ_semi, h, Function.iterate_succ_apply']
-      | (simp only [Lat.phiIt]
-         rw [ih, L₀.φ_semi, h, Function.iterate_succ_apply'])
 
 theorem unit_phiFree {ϖ : O} (hϖ : Irreducible ϖ) {e : ℕ} (hB : PrimBase B ϖ e)
     {V₀ : Type} [AddCommGroup V₀] [Module (PowerSeries O) V₀] {L₀ : Lat B n V₀} {e₀ : V₀}
@@ -489,7 +482,6 @@ theorem theorem_E_primitive_form : ThmEPrim := by
   · unfold parA
     first
       | omega
-      | nlinarith [Nat.zero_le (2 * g * ellmax)]
   · exact Prim.arcHyp hϖ hB (hN.ell_le c hc) (hA c hc)
 
 end Formalism.ExponentWindows.E

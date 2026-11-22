@@ -21,7 +21,7 @@ theorem secOn_mul {S : Type} [CommRing S] {Y : Scheme.{0}} {f : Y ⟶ Spec (Comm
   rw [Category.assoc, hs, ← Spec.map_comp]
   congr 1
   ext a
-  simp only [CommRingCat.comp_apply, CommRingCat.hom_ofHom]
+  simp only [CommRingCat.hom_ofHom]
   exact IsLocalization.Away.awayToAwayRight_eq e e' a
 
 theorem section_of_secOn_one {S : Type} [CommRing S] {Y : Scheme.{0}}
@@ -34,7 +34,7 @@ theorem section_of_secOn_one {S : Type} [CommRing S] {Y : Scheme.{0}}
   have hid : CommRingCat.ofHom (Algebra.algebraMap S (Localization.Away (1 : S))) ≫
       CommRingCat.ofHom (eqv.symm : Localization.Away (1 : S) →+* S) = 𝟙 _ := by
     ext a
-    simp only [CommRingCat.comp_apply, CommRingCat.hom_ofHom, CommRingCat.id_apply]
+    simp only
     exact eqv.symm.commutes a
   rw [hid, Spec.map_id]
 

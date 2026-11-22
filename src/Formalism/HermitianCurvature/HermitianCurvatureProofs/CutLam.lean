@@ -17,14 +17,12 @@ theorem cfg_v_ge_vlast (hok : c.Ok) (i : ℕ) (hi : i + 1 ≤ c.k) : c.vlast ≤
   have hD := hok.hDel
   have hi' : (i : ℝ) + 1 ≤ (c.k : ℝ) := by exact_mod_cast hi
   simp only [Sz.Cfg.v]
-  push_cast
   nlinarith
 
 theorem cfg_v_lt (hok : c.Ok) {i j : ℕ} (hij : i < j) : c.v j < c.v i := by
   have hD := hok.hDel
   have hij' : (i : ℝ) + 1 ≤ (j : ℝ) := by exact_mod_cast hij
   simp only [Sz.Cfg.v]
-  push_cast
   nlinarith
 
 theorem cfg_b_lt (hok : c.Ok) : ∀ {j j' : ℕ}, 1 ≤ j → j < j' → j' ≤ c.m → c.b j < c.b j' := by

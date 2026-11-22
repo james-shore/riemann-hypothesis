@@ -16,4 +16,4 @@ theorem _root_.GlobalTheory.T.exists_gluedQuotientMap_of_local_quotients : ∀ (
         w ≫ pullback.fst _ _ = y ≫ (q j).left → w ≫ pullback.snd _ _ = z ≫ pullback.snd _ _ → w ≫ b j k = z ≫ (q k).left) →
     (∀ j k, pullback.fst _ _ ≫ ψ j = b j k ≫ ψ k) → (∀ j, ψ j ≫ F = (B j).hom ≫ 𝒰.f j) →
     ∃ Qm : A.left ⟶ G, Qm ≫ F = A.hom ∧ ∀ j, (q j).left ≫ ψ j = pullback.fst A.hom (𝒰.f j) ≫ Qm := by
-  first | (exact @GlobalTheory.QuotGlue.exists_glueMap) | (exact GlobalTheory.QuotGlue.exists_glueMap) | (intros; apply GlobalTheory.QuotGlue.exists_glueMap  <;> assumption)
+  first | (exact @GlobalTheory.QuotGlue.exists_glueMap)

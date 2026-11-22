@@ -20,7 +20,7 @@ theorem UpperTheory.Gal.Int.Geo.grHom_of :
       by_cases h : j' = j
       · subst h
         omega
-      · simp [Pi.single_apply, h]
+      · simp [h]
     have hw := (mem _ _).1 (hinv (c j + 1) g _ hv) i (by omega)
     simpa [Matrix.mulVec, dotProduct, Pi.single_apply] using hw
   let D : Matrix (Fin d) (Fin d) k → Matrix (Fin d) (Fin d) k :=

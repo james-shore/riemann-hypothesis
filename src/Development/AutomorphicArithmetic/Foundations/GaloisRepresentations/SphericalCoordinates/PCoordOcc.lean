@@ -13,7 +13,7 @@ theorem UpperTheory.Gal.W2.coordOcc_of :
   obtain ⟨Q, hQ, hrel⟩ := (RD B).per a.2
   have hev : Even (Module.finrank ℚ D.F) := by
     rw [← NumberField.InfinitePlace.card_add_two_mul_card_eq_rank]
-    simp [NumberField.IsTotallyComplex.nrRealPlaces_eq_zero]
+    simp
   have hg : 2 * D.g = Module.finrank ℤ D.La := by
     obtain ⟨k, hk⟩ := hev
     rw [D.rankLa, Datum.g, hk, ← two_mul, mul_left_comm, Nat.mul_div_cancel_left _ (by norm_num : 0 < 2)]

@@ -38,17 +38,15 @@ private theorem smt_block {s ρ : ℕ} (z1 z2 : O) (E : Matrix (Fin s) (Fin ρ) 
     simp only [Matrix.sub_mul, Matrix.one_mul, Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_neg,
       Matrix.mul_assoc, smul_smul]
     module
-  · simp only [Matrix.one_mul, Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_neg, Matrix.neg_mul,
-      Matrix.mul_assoc, smul_smul, neg_smul]
+  · simp only [Matrix.one_mul, Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_neg, smul_smul, neg_smul]
     module
-  · simp only [Matrix.one_mul, Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_neg, Matrix.neg_mul,
-      Matrix.mul_assoc, smul_smul]
+  · simp only [Matrix.one_mul, Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_neg]
     module
   · have e : (z1 * z2) • (1 : Matrix (Fin ρ) (Fin ρ) O) = (z1 * z2) • ((1 - C * E) * (1 - C * E)⁻¹) := by
       rw [hVi]
     rw [e]
     simp only [Matrix.sub_mul, Matrix.one_mul, Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_neg,
-      Matrix.neg_mul, Matrix.mul_assoc, smul_smul, neg_smul]
+      Matrix.mul_assoc, smul_smul, neg_smul]
     module
 
 theorem lemmaSMat {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] (σ ρ : ℕ) (z1 z2 : O) (h1 : z1 ≠ 0) (h2 : z2 ≠ 0) (N : Matrix (Fin σ) (Fin ρ) O) (B : Matrix (Fin ρ) (Fin σ) O) :
@@ -121,8 +119,8 @@ theorem lemmaSMat {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing 
         have hne : i0 ≠ i0.succAbove k' := Fin.ne_succAbove i0 k'
         have hne' : i0.succAbove k' ≠ i0 := Fin.succAbove_ne i0 k'
         simp only [S, Em, Matrix.mul_apply, Matrix.of_apply, sub_mul, Finset.sum_sub_distrib, ite_mul,
-          one_mul, zero_mul, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true, Matrix.one_apply]
-        simp [hne, hne', Fin.succAbove_right_inj]
+          one_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ, if_true, Matrix.one_apply]
+        simp [hne]
       have hrow : Ei * N = (z1 * z2) • dd := by
         ext i l
         simp [Ei, dd, Matrix.mul_apply, ite_mul]

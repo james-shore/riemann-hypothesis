@@ -34,7 +34,7 @@ theorem finrank_range_idem_le_of_embReg : ∀ (K Γ V : Type) [Field K] [CharZer
       rw [this, Representation.asAlgebraHom_of, hjρ h v i]
       rfl
     | add b c hb hc => intro v i; simp [map_add, LinearMap.add_apply, hb, hc, add_mul]
-    | smul r b hb => intro v i; simp [map_smul, LinearMap.smul_apply, hb, smul_mul_assoc]
+    | smul r b hb => intro v i; simp [map_smul, LinearMap.smul_apply, hb]
   refine ⟨finrank K (LinearMap.range (LinearMap.mulLeft K a')), ?_, ?_⟩
   · rw [GlobalTheory.T.finrank_range_mulLeft_idempotent_groupAlgebra K H a' hidem', hc1]
   · let R := LinearMap.range (LinearMap.mulLeft K a')

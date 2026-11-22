@@ -216,7 +216,7 @@ theorem polFun_smul_ten {K ι : Type} [CommRing K] [Fintype ι] {n : ℕ} (r : K
     polFun (r • map (Int.castRingHom K) (Formalism.L2.Forms.ten f)) =
       fun y => r * ∏ τ, eval (fun k : Fin n × Fin n => y τ k.1 k.2) (map (Int.castRingHom K) (f τ)) := by
   funext y
-  simp [polFun, Formalism.L2.Forms.ten, smul_eq_C_mul, map_prod, eval_prod, eval_rename, Function.comp_def, map_rename]
+  simp [polFun, Formalism.L2.Forms.ten, smul_eq_C_mul, map_prod, eval_rename, Function.comp_def, map_rename]
 
 end GlobalTheory.IntSpanCmp
 

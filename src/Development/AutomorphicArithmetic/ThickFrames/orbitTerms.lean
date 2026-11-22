@@ -13,7 +13,7 @@ private theorem ot_binUpper_le (G N : ℕ) (δ : ℝ) (h0 : 0 ≤ δ) (h1 : δ �
     unfold Formalism.G0.binUpper
     have hset : Icc 0 G = range (G + 1) := by
       ext j
-      simp [Nat.lt_succ_iff]
+      simp
     rw [hset]
     calc ∑ j ∈ range (G + 1), (G.choose j : ℝ) * δ ^ j * (1 - δ) ^ (G - j)
         = ∑ j ∈ range (G + 1), δ ^ j * (1 - δ) ^ (G - j) * (G.choose j : ℝ) := by

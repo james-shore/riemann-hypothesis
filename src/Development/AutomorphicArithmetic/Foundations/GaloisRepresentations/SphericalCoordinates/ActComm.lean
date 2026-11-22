@@ -69,7 +69,7 @@ private theorem per_act {D : Datum p} {G : HTGroup p} (L : Link D G) (β : G.Cˣ
     apply Submodule.span_mono
     rintro _ ⟨w, rfl⟩
     exact ⟨_, hQ w⟩
-  · simp [Matrix.IsHermitian, Matrix.conjTranspose_smul, hH.eq, Complex.star_def, Complex.conj_ofReal]
+  · simp [Matrix.IsHermitian, Matrix.conjTranspose_smul, hH.eq]
   · rw [hsc, Complex.re_ofReal_mul]
     exact mul_pos hr (hpos z hz)
   · rw [← act_inv L β y u, ← act_inv L β y w, hQ, hQ, hsc, form_act, Complex.im_ofReal_mul, him]

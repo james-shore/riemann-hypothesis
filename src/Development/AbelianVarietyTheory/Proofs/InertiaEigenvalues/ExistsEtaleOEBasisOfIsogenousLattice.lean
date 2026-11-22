@@ -67,7 +67,7 @@ theorem main : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (τ : Ain
   have hfadj : zW f * zW f.adjugate = algebraMap ℤ_[l] (WCb l) f.det • (1 : Matrix (Fin d) (Fin d) (WCb l)) := by
     rw [← hzWmul, Matrix.mul_adjugate]
     ext i j
-    by_cases h : i = j <;> simp [zW, h, Matrix.one_apply]
+    by_cases h : i = j <;> simp [zW, h]
   have hTdet : F.T.det ≠ 0 := ((Matrix.isUnit_iff_isUnit_det _).1 F.unit).ne_zero
   have hdf : algebraMap ℤ_[l] (WCb l) f.det ≠ 0 := algebraMap_ne_zero _ hf
   set Y1 := zW f.adjugate * F.T with hY1

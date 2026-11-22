@@ -189,7 +189,7 @@ theorem deg_d_test (τ : Ψ) (j : ℕ) (S : Finset (Fin N)) (c : ℝ)
   unfold testPoly testDeg
   rw [Derivation.leibniz, Derivation.leibniz_pow, hc, d_fib τ j S hS, ← degFl_C_mul]
   congr 1
-  simp only [smul_zero, zero_add, smul_eq_mul, nsmul_eq_mul, Nat.add_sub_cancel, map_mul, map_add, map_one,
+  simp only [smul_eq_mul, nsmul_eq_mul, Nat.add_sub_cancel, map_mul, map_add, map_one,
     map_natCast]
   push_cast
   ring

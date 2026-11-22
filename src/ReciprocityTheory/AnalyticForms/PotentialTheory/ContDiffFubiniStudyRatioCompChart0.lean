@@ -381,7 +381,6 @@ theorem projLine_isPlurisubharmonic : IsPsh p1 fsPot := by
     rw [projLine_leviForm_radial (F := fun w => fubiniStudyProfile (fsQ w)) (Filter.Eventually.of_forall fun w => rfl) hG hG' v]
     refine mul_nonneg ?_ (by positivity)
     have h1 : (0 : ℝ) < 1 + ‖y 0‖ ^ 2 := by positivity
-    beta_reduce
     generalize ‖y 0‖ ^ 2 = t at ht h1 ⊢
     have key : 1 / 2 * (-1 / (1 + t) ^ 2) * t + 1 / 2 * (1 + t)⁻¹ = 1 / (2 * (1 + t) ^ 2) := by
       field_simp
@@ -397,7 +396,6 @@ theorem projLine_isPlurisubharmonic : IsPsh p1 fsPot := by
     rw [projLine_leviForm_radial (F := fun w => fubiniStudyProfileInv (fsQ w)) (Filter.Eventually.of_forall fun w => rfl) hG hG' v]
     refine mul_nonneg ?_ (by positivity)
     simp only [Pi.mul_apply]
-    beta_reduce
     generalize ‖y 0‖ ^ 2 = t at ht ⊢
     have ht0 : t ≠ 0 := ht.ne'
     have ht1 : t + 1 ≠ 0 := by positivity

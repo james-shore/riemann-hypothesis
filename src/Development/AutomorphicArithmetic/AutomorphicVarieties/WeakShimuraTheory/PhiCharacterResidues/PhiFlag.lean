@@ -21,7 +21,7 @@ theorem UpperTheory.V.Ws.phiFlag :
       (⟨adj (X.P.n (K.e v)), X.P.n (K.e v), h1, h2⟩ : GL (Fin 4) X.A)⁻¹ : GL (Fin 4) X.A) :
         Matrix (Fin 4) (Fin 4) X.A) =
       (algebraMap c'.O X.A (K.sc n s)) • (adj (X.P.n (K.e v)) * X.P.r (resLe T.F_le s) * X.P.n (K.e v)) := by
-    simp [UpperTheory.V.Ws.Link.rho_apply, Matrix.mul_smul, Matrix.smul_mul]
+    simp [UpperTheory.V.Ws.Link.rho_apply]
   refine ⟨fun i j hij => ?_, fun i => ?_⟩
   · rw [hval, Matrix.smul_apply, X.pair.flag (K.e v) _ hs' i j hij, smul_zero]
   · rw [hval, Matrix.smul_apply]

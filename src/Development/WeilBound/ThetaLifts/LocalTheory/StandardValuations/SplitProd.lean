@@ -181,18 +181,18 @@ theorem int_cone (hm : IsVol m) (hϖ : IsUnif ϖ) {b : ℕ} {jc : Fin d₁ → F
     have e1 : ((tm (cut P Z) + Y).submatrix id e).submatrix mid mid = y.submatrix id e₁ := by
       ext i j
       have := hP i (e₁ j)
-      simp [tm, cut, hYd, ← he, this, ext_mid hmi hc, single_apply, m0]
+      simp [tm, cut, hYd, ← he, this, ext_mid hmi hc, m0]
     have e2 : (tm (cut P Z) + Y).submatrix id e 0 (Fin.last _) = s := by
       simp [tm, cut, hYd, hb, ext_off y (Or.inl m0)]
     have e3 : (tm (cut P Z) + Y).submatrix id e (Fin.last _) 0 = Z (Fin.last _, e 0) := by
       have := hY _ ha
       simp only [submatrix_apply, id, Matrix.add_apply, this, tm, of_apply, cut, if_pos ha, add_zero]
     rcases hAB with ⟨x1, x2⟩ | ⟨x1, x2⟩
-    · rw [detB _ (fun j hj => by simp [tm, cut, hYd, x1 j hj, ext_off y (Or.inl m0), single_apply, hei.eq_iff, hj.symm])
-        (fun i => by simp [tm, cut, hYd, x2 i, ext_off y (Or.inr h0), single_apply, m0]), e1, e2, e3]
+    · rw [detB _ (fun j hj => by simp [tm, cut, hYd, x1 j hj, ext_off y (Or.inl m0), hei.eq_iff, hj.symm])
+        (fun i => by simp [tm, cut, hYd, x2 i, ext_off y (Or.inr h0), m0]), e1, e2, e3]
       ring
-    · rw [detA _ (fun i hi => by simp [tm, cut, hYd, x1 i hi, ext_off y (Or.inr h1), single_apply, hi.symm])
-        (fun j => by simp [tm, cut, hYd, x2 j, ext_off y (Or.inl ml), single_apply, l0.symm]), e1, e2, e3]
+    · rw [detA _ (fun i hi => by simp [tm, cut, hYd, x1 i hi, ext_off y (Or.inr h1), hi.symm])
+        (fun j => by simp [tm, cut, hYd, x2 j, ext_off y (Or.inl ml), l0.symm]), e1, e2, e3]
       ring
   have hr : ∀ j, jc j ∈ Set.range e ↔ j ∈ Set.range e₁ := fun j => by
     refine ⟨fun ⟨i, hi⟩ => ?_, fun ⟨i, hi⟩ => ⟨mid i, by rw [← he, hi]⟩⟩

@@ -36,7 +36,7 @@ private theorem finite_sign_pattern_cases (A B : ℤ) (T : ℤ × ℤ → Prop) 
   refine key.imp ?_ (Or.imp ?_ (Or.imp ?_ (Or.imp ?_ (Or.imp ?_ ?_)))) <;> rintro ⟨a, b, c⟩ <;>
     refine ⟨⟨by decide, a⟩, ⟨by decide, b⟩, ?_⟩ <;> casesm* _ ∧ _ <;> rintro w ⟨hw, ht⟩ <;>
     rcases (mem_rank_two_roots_iff w).1 hw with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl <;>
-    first | exact absurd ht ‹_› | (simp [nP, qQ, nM, wAl, wBe, wTh, wPs]; done)
+    first | exact absurd ht ‹_› | (simp [nP, qQ, nM, wAl, wBe, wTh, wPs])
 
 private theorem root_system_linear_program_cases (C : ℤ × ℤ → ℕ → Prop) (h0 : ∀ w, w ≠ -wPs → ¬ C w 0) (h1 : ∃ k, C (-wPs) k)
     (h2 : ∃ w ∈ vV, ∃ k, C w k) :

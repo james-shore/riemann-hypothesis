@@ -34,7 +34,7 @@ private theorem sum_smooth {V : Type} [NormedAddCommGroup V] [NormedSpace ℝ V]
   induction n with
   | zero =>
     intro F _ _ _ y hy hb
-    simp only [CharP.cast_eq_zero, Nat.cast_zero, contDiffOn_zero]
+    simp only [CharP.cast_eq_zero, contDiffOn_zero]
     exact fun p hp => (sum_deriv hY hy hb hp).2.continuousAt.continuousWithinAt
   | succ n ih =>
     intro F _ _ _ y hy hb

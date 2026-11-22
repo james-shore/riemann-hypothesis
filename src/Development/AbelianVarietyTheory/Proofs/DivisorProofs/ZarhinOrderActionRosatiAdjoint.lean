@@ -90,7 +90,7 @@ theorem mul_form_eq {d : ℕ} {N : Matrix (Fin 4 ⊕ Fin 4) (Fin 4 ⊕ Fin 4) �
   congr 1
   · simp
   · simp only [Matrix.mul_smul, Matrix.mul_one]
-  · simp [Matrix.smul_mul]
+  · simp
   · simp only [Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_one, smul_add]
 
 theorem blocks_bar {d : ℕ} (hd : 0 < d) (N : ord d) :

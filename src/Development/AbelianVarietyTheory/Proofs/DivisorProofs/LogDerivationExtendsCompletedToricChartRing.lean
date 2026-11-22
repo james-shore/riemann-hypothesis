@@ -30,7 +30,7 @@ theorem logDer_extend_chartRing : ∀ (E : Type) [Field E] [NumberField E] [IsCM
     rw [mem_genBd]
     unfold GlobalTheory.LogKS.interior Model.j
     have hc : ∀ w, (Y.jQ ≫ pullback.fst Y.s (spMap (RingHom.id c.F))) w = genι Y (Y.jQ w) := fun w => rfl
-    simp only [Scheme.Hom.coe_opensRange, Set.mem_range, hc]
+    simp only [Set.mem_range]
     constructor
     · rintro h ⟨w, hw⟩
       exact h ⟨w, (genι Y).isOpenEmbedding.injective hw⟩

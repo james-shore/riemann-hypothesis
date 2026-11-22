@@ -95,12 +95,12 @@ theorem theta_om_rational : ∀ (F : Type) [Field F] [NumberField F] [LocallyCom
   · intro x
     rw [← fromCols_toCols x, fromCols_map, hdd, hd, hd]
     ext (i | i) <;> simp [dblCoord]
-  · ext (i | i) j <;> by_cases h : i = j <;> simp [diagCols, h, Matrix.one_apply, Algebra.TensorProduct.one_def]
+  · ext (i | i) j <;> by_cases h : i = j <;> simp [diagCols, h, Algebra.TensorProduct.one_def]
   · rw [hgd, hγ]
     ext (i | i) (j | j)
     · simp
     · simp
     · simp
-    · by_cases h : i = j <;> simp [h, Matrix.one_apply, Algebra.TensorProduct.one_def]
+    · by_cases h : i = j <;> simp [h, Algebra.TensorProduct.one_def]
 
 end GlobalTheory.CompanionTheory.ThetaMember

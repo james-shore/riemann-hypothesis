@@ -80,7 +80,7 @@ theorem lowL_single (hr : r ≤ a) (p p' : Fin (a - r)) (x : Cinf E) :
   obtain ⟨j, rfl⟩ := (GlobalTheory.LeviGA.blkEquiv hr).surjective j
   rcases i with i | i <;> rcases j with j | j <;>
     simp [toL, Matrix.reindex_apply, Matrix.single_apply, (GlobalTheory.LeviGA.blkEquiv hr).injective.eq_iff] <;>
-    by_cases hi : i = p <;> by_cases hj : j = p' <;> simp [hi, hj, Pi.single_apply] <;> intros <;> simp_all
+    by_cases hi : i = p <;> by_cases hj : j = p' <;> simp [hi, hj] <;> intros <;> simp_all
 
 theorem slice_mem_Sm (hr : r ≤ a) (m₁ : GA E r) (f : Sm E a) :
     (fun m₂ : GA E (a - r) => f.1 (GlobalTheory.LeviGA.blkGL hr (m₁, m₂))) ∈ Sm E (a - r) := fun m₂ =>

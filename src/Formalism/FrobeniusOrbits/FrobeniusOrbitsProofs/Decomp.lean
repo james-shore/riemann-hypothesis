@@ -117,7 +117,6 @@ theorem restrict_smul (σ : hostE ζ a b ≃ₐ[ℚ] hostE ζ a b) (τ : Gal(L/�
   ext
   first
     | exact hστ x
-    | simpa using hστ x
 
 theorem mem_P_iff (P : Ideal (𝓞 (hostE ζ a b))) (Q : Ideal (𝓞 L)) [Q.LiesOver P]
     (x : 𝓞 (hostE ζ a b)) : x ∈ P ↔ algebraMap (𝓞 (hostE ζ a b)) (𝓞 L) x ∈ Q := by
@@ -192,12 +191,10 @@ theorem hPart_inertia (hqd : HypOdd q d) (h : IsLayer (e + 2) q d ζ a b) (p : �
         ((ρ (tt : hostE ζ a b) : hostE ζ a b) : L) - ((tt : hostE ζ a b) : L) := by
       first
         | rfl
-        | simp
     have e2 : ((zz ^ n + zz ^ ((2 ^ (e + 2) - 1) * n) - zz - zz ^ (2 ^ (e + 2) - 1) : 𝓞 L) : L) =
         (zz : L) ^ n + (zz : L) ^ ((2 ^ (e + 2) - 1) * n) - (zz : L) - (zz : L) ^ (2 ^ (e + 2) - 1) := by
       first
         | rfl
-        | simp
     rw [e1, e2, htt, hth, hu, hzz, pow_mul, ← hinv]
     ring
   obtain ⟨zq, hzq⟩ : ∃ w, Ideal.Quotient.mk Q zz = w := ⟨_, rfl⟩
@@ -211,9 +208,8 @@ theorem hPart_inertia (hqd : HypOdd q d) (h : IsLayer (e + 2) q d ζ a b) (p : �
     have e3 : ((zz ^ (2 ^ (e + 2)) : 𝓞 L) : L) = (zz : L) ^ (2 ^ (e + 2)) := by
       first
         | rfl
-        | simp
     rw [e3, hzz, hζN]
-    all_goals first | rfl | simp
+    all_goals first | rfl
   have hneg : ζ ^ (2 ^ (e + 1)) = -1 := by
     have hsq : ζ ^ (2 ^ (e + 1)) * ζ ^ (2 ^ (e + 1)) = 1 := by
       rw [← pow_add, ← two_mul, ← pow_succ']
@@ -231,9 +227,8 @@ theorem hPart_inertia (hqd : HypOdd q d) (h : IsLayer (e + 2) q d ζ a b) (p : �
     have e4 : ((zz ^ (2 ^ (e + 1)) : 𝓞 L) : L) = (zz : L) ^ (2 ^ (e + 1)) := by
       first
         | rfl
-        | simp
     rw [e4, hzz, hneg]
-    all_goals first | rfl | simp
+    all_goals first | rfl
   have h2notQ : (2 : 𝓞 L) ∉ Q := by
     intro h2
     have h2' : (2 : ℤ) ∈ Q.under ℤ := Ideal.mem_comap.mpr (by simpa using h2)
@@ -345,14 +340,12 @@ theorem stab_two_sgn (hqd : HypOdd q d) (hd16 : d % 16 = 7) (h : IsLayer (e + 2)
           (ω : hostE ζ a b) * (1 - (ω : hostE ζ a b)) := by
         first
           | rfl
-          | push_cast; rfl
-          | simp
+          | push_cast
       have e4 : ((2 * (m2 : 𝓞 (hostE ζ a b)) : 𝓞 (hostE ζ a b)) : hostE ζ a b) =
           2 * (m2 : hostE ζ a b) := by
         first
           | rfl
-          | push_cast; rfl
-          | simp
+          | push_cast
       rw [e3, e4, hωv]
       have hb2 : bE ζ a b ^ 2 = 1 - 8 * (m2 : hostE ζ a b) := by
         rw [hbsq, ← hm]
@@ -363,12 +356,10 @@ theorem stab_two_sgn (hqd : HypOdd q d) (hd16 : d % 16 = 7) (h : IsLayer (e + 2)
       have e1 : ((σ • ω : 𝓞 (hostE ζ a b)) : hostE ζ a b) = σ (ω : hostE ζ a b) := by
         first
           | rfl
-          | simp
       have e2 : ((1 - ω : 𝓞 (hostE ζ a b)) : hostE ζ a b) = 1 - (ω : hostE ζ a b) := by
         first
           | rfl
-          | push_cast; rfl
-          | simp
+          | push_cast
       rw [e1, e2, hωv, map_div₀, map_add, map_one, hσb, map_ofNat]
       ring
     have hsmul : ∀ z, σ • z ∈ P ↔ z ∈ P := smul_mem_iff_of_stab σ P hσ
@@ -564,7 +555,6 @@ theorem hostDecompConj : HostDecompConj := by
     have h3 : chD e (cc e) = -1 := by
       first
         | rfl
-        | simp [chD, cc, c0]
     exact hm1 (h3.symm.trans (MonoidHom.mem_ker.mp hmem))
   rcases hp with rfl | rfl | ⟨rfl, he2⟩
   · haveI : P.LiesOver (span {(2 : ℤ)}) := by
@@ -601,7 +591,7 @@ theorem hostDecompConj : HostDecompConj := by
       simpa using h4
     have hd7 : ((p : ℕ) : ZMod 16) = 7 := by
       rw [← ZMod.natCast_mod, hd16]
-      all_goals first | rfl | decide
+      all_goals first | rfl
     have h49 : (7 : ZMod 16) ^ 2 = 1 := by decide
     have h7 : (7 : ZMod 16) ^ (2 * j + 1) = 7 := by
       rw [pow_succ, pow_mul, h49, one_pow, one_mul]

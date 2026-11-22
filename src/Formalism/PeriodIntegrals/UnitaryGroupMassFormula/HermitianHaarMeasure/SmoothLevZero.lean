@@ -98,7 +98,6 @@ theorem hI (H : Hyp k r z z' i μ) : IntOn μ (ιo k r) (testSub k r i) :=
 theorem hG (H : Hyp k r z z' i μ) : ∀ᵐ x ∂μ, ιo k r x ∈ Glev k r i := by
   first
     | exact ae_iff.mpr H.hμ.conc
-    | (rw [ae_iff]; exact H.hμ.conc)
 
 def EOp (k r : ℕ) (i : Fin (r + 1)) (a b : Fin (mdim k r i)) : (Mx k r → ℂ) → Mx k r → ℂ :=
   EH k r (posL k r i a) (posL k r i b)

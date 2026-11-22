@@ -319,7 +319,7 @@ private theorem num (ω : Fin n → kˣ →* ℂˣ) {j : ℕ} (hj : j ≤ n) :
   have hu : ∀ s : ℂ, ((absPow k s (unif k) : ℂˣ) : ℂ) = ((Nat.card 𝓀[k] : ℂ) ^ s)⁻¹ := by
     intro s
     rw [val_absPow, GlobalTheory.LGrp.nabs_eq_zpow, ord_eq_one UpperTheory.V.Hi.GlAx.unif_spec]
-    simp only [Complex.ofReal_zpow, zpow_neg, zpow_one, Complex.ofReal_inv, Complex.ofReal_natCast, resCard]
+    simp only [zpow_neg, zpow_one, Complex.ofReal_inv, Complex.ofReal_natCast, resCard]
     exact Complex.inv_cpow _ _ harg
   have he : ∀ (s : ℂ) (i : Fin n), ((absPow k s (unif k ^ (if (i : ℕ) < j then 1 else 0 : ℤ)) : ℂˣ) : ℂ)
       = if (i : ℕ) < j then ((Nat.card 𝓀[k] : ℂ) ^ s)⁻¹ else 1 := by

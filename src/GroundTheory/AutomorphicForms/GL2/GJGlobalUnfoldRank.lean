@@ -12,8 +12,6 @@ variable {K : Type*} [Field K] {n : ℕ} (k : ℕ)
 def U0 : Submodule K (Fin n → K) := by
   first
   | exact @GroundTheory.Variant₂.N1.initialCoordSubspace _ _ _ k
-  | exact GroundTheory.Variant₂.N1.initialCoordSubspace ..
-  | (intros; apply GroundTheory.Variant₂.N1.initialCoordSubspace <;> assumption)
 
 variable {k}
 

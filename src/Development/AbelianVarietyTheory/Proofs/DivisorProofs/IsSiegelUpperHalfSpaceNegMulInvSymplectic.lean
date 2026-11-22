@@ -41,7 +41,7 @@ theorem IsSiegel.neg_mul_inv_of_symplectic (l : Type) [Fintype l] [DecidableEq l
   have key : Pᴴ * Q - Qᴴ * P = -(2 * I) • (1 : Matrix l l ℂ) := by
     rw [hPe, hQe]
     simp only [conjTranspose_sub, conjTranspose_smul, hAs, hBs, hCs, hDs, Complex.star_def, conj_I,
-      sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, smul_smul]
+      sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm]
     linear_combination (norm := (match_scalars <;> ring_nf <;> (try simp only [I_sq]) <;> ring_nf)) -h11 - h22 + I • h12 - I • h21
   have hu : IsUnit P.det := isUnit_iff_ne_zero.mpr hdet
   set τ := -(Q * P⁻¹) with hτ
@@ -62,7 +62,7 @@ theorem IsSiegel.neg_mul_inv_of_symplectic (l : Type) [Fintype l] [DecidableEq l
     have e : Pᴴ * (τ - τᴴ) * P = (2 * I) • (1 : Matrix l l ℂ) := by
       rw [Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_assoc, hτP, hQP]
       rw [Matrix.mul_neg, Matrix.neg_mul]
-      linear_combination (norm := (match_scalars <;> ring_nf <;> (try simp only [I_sq]) <;> ring_nf)) -key
+      linear_combination (norm := (match_scalars <;> ring_nf <;> (try simp only [I_sq]))) -key
     rw [hdiff, Matrix.mul_smul, Matrix.smul_mul] at e
     exact smul_right_injective _ (by simp [I_ne_zero] : (2 * I) ≠ 0) e
   have e1 : (P⁻¹)ᴴ * Pᴴ = 1 := by rw [← conjTranspose_mul, mul_nonsing_inv _ hu, conjTranspose_one]

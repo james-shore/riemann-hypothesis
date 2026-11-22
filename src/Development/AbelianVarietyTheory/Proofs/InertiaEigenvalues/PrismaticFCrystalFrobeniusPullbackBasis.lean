@@ -42,7 +42,7 @@ theorem exists_pow_smul_eq_zero_of_sum {A M ι : Type} [CommRing A] [AddCommGrou
   have hlin : ∀ x : M, LocalizedModule.mk x (1 : Submonoid.powers t) =
       LocalizedModule.mkLinearMap (Submonoid.powers t) M x := fun _ => rfl
   rw [hlin, map_sub, map_smul, map_smul, map_sum]
-  simp only [map_smul, ← hlin, hw, h1, hZ, Finset.smul_sum, smul_smul]
+  simp only [← hlin, h1, hZ, Finset.smul_sum, smul_smul]
   rw [sub_eq_zero]
   refine Finset.sum_congr rfl fun j _ => ?_
   rw [← LocalizedModule.smul'_mk, hw, smul_smul, smul_smul]

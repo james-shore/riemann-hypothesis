@@ -80,7 +80,7 @@ theorem ker_eq_span_homogeneous {F E : Type} [Field F] [Field E] [Algebra F E]
   let ρ : MvPolynomial P F →ₐ[F] MvPolynomial P F := (rename a).comp ρ'
   have hρX : ∀ p, ρ (MvPolynomial.X p) = ∑ i, MvPolynomial.C (c p i) * MvPolynomial.X (a i) := by
     intro p
-    simp [ρ, ρ', map_sum, aeval_X, rename_C, rename_X]
+    simp [ρ, ρ', map_sum, rename_X]
   have hxp : ∀ p, x p = ∑ i, algebraMap F E (c p i) * x (a i) := by
     intro p
     simp only [hx, Finset.mul_sum]
@@ -99,7 +99,7 @@ theorem ker_eq_span_homogeneous {F E : Type} [Field F] [Field E] [Algebra F E]
       exact (isHomogeneous_X F p).sub
         (IsHomogeneous.sum _ _ _ fun i _ => isHomogeneous_C_mul_X (c p i) (a i))
     · rw [hρX]
-      simp only [map_sub, aeval_X, map_sum, map_mul, algHom_C, algebraMap_eq]
+      simp only [map_sub, aeval_X, map_sum, map_mul, algHom_C]
       simpa [sub_eq_zero] using hxp p
   have hle : Ideal.span S ≤ RingHom.ker (aeval x : MvPolynomial P F →ₐ[F] E) := by
     rw [Ideal.span_le]

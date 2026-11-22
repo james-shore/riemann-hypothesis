@@ -19,7 +19,7 @@ private theorem isHS_prj (E : Submodule ℂ H) [FiniteDimensional ℂ E] : IsHil
 
 private theorem mem_eigIn {W : Submodule ℂ H} {A : H →L[ℂ] H} {x : ℝ} {v : H} :
     v ∈ eigIn W A x ↔ v ∈ W ∧ A v = (x : ℂ) • v := by
-  simp [eigIn, Submodule.mem_inf, Module.End.mem_eigenspace_iff]
+  simp [eigIn, Submodule.mem_inf]
 
 private theorem prj_mem {V : Submodule ℂ H} (hV : IsClosed (V : Set H)) (v : H) : prj V v ∈ V := by
   have h : prj V v ∈ V.topologicalClosure := Submodule.starProjection_apply_mem _ v

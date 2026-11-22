@@ -107,7 +107,7 @@ private theorem ex_X (t : ℝ) : ∃ X, infGL E 2 X = em E (rot t) := by
       rw [AdeleBaseChange.adeleMap_apply, AdeleBaseChange.adeleMap_apply, e2]
     change (AdeleBaseChange.adeleMap ℚ E ((rot t).val i j)).2 = _
     rw [e3]
-    fin_cases i <;> fin_cases j <;> simp [Matrix.one_apply] <;> rfl
+    fin_cases i <;> fin_cases j <;> simp <;> rfl
   rw [h1, map_one, mul_one] at h
   exact ⟨_, h⟩
 

@@ -50,7 +50,7 @@ theorem exists_conj_mul_eq_of_residue_one {R : Type} [CommRing R] [HenselianLoca
     exact neg_mem (Ideal.mul_mem_left _ _ ha)
   have hP2 : IsUnit (Ideal.Quotient.mk (maximalIdeal R) (P.derivative.eval 1)) := by
     have : P.derivative.eval 1 = 1 := by
-      simp [P, derivative_X_pow]
+      simp [P]
     rw [this, map_one]; exact isUnit_one
   obtain ⟨u, hu, hu1⟩ := HenselianRing.is_henselian (I := maximalIdeal R) P hP 1 hP1 (by exact hP2)
   have hroot : u ^ 2 - u = n * a := by

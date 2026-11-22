@@ -63,7 +63,7 @@ def fl (p : ι → Prop) : Φ.Pr T₂ →ₗ[ℤ[X]] Φ.Pr T₂ :=
       rw [← map_smul]
       congr 1
       ext a
-      by_cases ha : p a <;> simp [Finsupp.filter_apply, ha]
+      by_cases ha : p a <;> simp [ha]
 
 theorem fl_coe (p : ι → Prop) (x : Φ.Pr T₂) (r : ℕ) :
     (fl Φ e he p x r).1 = e (Finsupp.filter p (e.symm (x r).1)) := rfl
@@ -82,7 +82,7 @@ theorem diag {φ₂ : T₂ ⟶ T₂} {φ₁ : T₁ ⟶ T₁} {c : ι → Λ}
     rw [hd, e.symm_apply_apply]
     by_cases h : b = a
     · subst h; simp
-    · simp [Finsupp.single_apply, h]
+    · simp [h]
 
 theorem co_nat {φ₂ : T₂ ⟶ T₂} {φ₁ : T₁ ⟶ T₁} {c : ι → Λ}
     (hd : ∀ a m, (F.map φ₂).hom (e (Finsupp.single a m)) = e (Finsupp.single a (c a • (F.map φ₁).hom m)))
@@ -126,7 +126,7 @@ theorem fl_idem (p : ι → Prop) (x : Φ.Pr T₂) : fl Φ e he p (fl Φ e he p 
   rw [e.symm_apply_apply]
   congr 1
   ext a
-  by_cases ha : p a <;> simp [Finsupp.filter_apply, ha]
+  by_cases ha : p a <;> simp [ha]
 
 theorem fl_orth {p q : ι → Prop} (h : ∀ a, p a → ¬ q a) (x : Φ.Pr T₂) :
     fl Φ e he q (fl Φ e he p x) = 0 := by
@@ -136,8 +136,8 @@ theorem fl_orth {p q : ι → Prop} (h : ∀ a, p a → ¬ q a) (x : Φ.Pr T₂)
   convert map_zero e
   ext a
   by_cases ha : p a
-  · simp [Finsupp.filter_apply, ha, h a ha]
-  · by_cases hb : q a <;> simp [Finsupp.filter_apply, ha, hb]
+  · simp [h a ha]
+  · by_cases hb : q a <;> simp [ha, hb]
 
 def ev (T : C) (r : ℕ) : Φ.Pr T →+ F.obj T where
   toFun x := (x r).1
@@ -162,10 +162,10 @@ theorem fl_sum {d : ℕ} {a₀ : ι} {t : T₁ ⟶ T₂} (ht : ∀ m, e (Finsupp
   cases hKa : K a with
   | none =>
     obtain rfl := hK a hKa
-    simp [Finsupp.filter_apply, hKa]
+    simp [hKa]
   | some k₀ =>
     have hne : a₀ ≠ a := by rintro rfl; simp [hK₀] at hKa
-    simp [Finsupp.filter_apply, hKa, Finsupp.single_apply, hne]
+    simp [Finsupp.filter_apply, hKa, hne]
 
 theorem fl_fix {p : ι → Prop} {x : Φ.Pr T₂} (h : fl Φ e he p x = x) (r : ℕ) (a : ι) (ha : ¬ p a) :
     e.symm (x r).1 a = 0 := by

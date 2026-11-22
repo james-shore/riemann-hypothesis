@@ -32,9 +32,9 @@ theorem cover_geometric_fibre : ∀ (S : Scheme.{0}) (A : Over S) [GrpObj A], Is
   have e : (A ⊗ Over.mk ξ).hom = ((Over.pullback ξ).obj A).hom ≫ ξ := by
     first | rfl | exact pullback.condition
   have hx : (fst A (Over.mk ξ)).left = Over.Hom.left (𝟙 ((Over.pullback ξ).obj A)) ≫ pullback.fst A.hom ξ := by
-    first | rfl | simp
+    first | rfl
   have hy : ∀ i, (snd A (Over.mk ξ) ≫ a i).left = (toUnit ((Over.pullback ξ).obj A) ≫ a' i).left ≫ pullback.fst A.hom ξ := by
-    intro i; first | rfl | simp [a]
+    intro i; first | rfl
   have key₁ : ∀ i, (fst A (Over.mk ξ) * (snd A (Over.mk ξ) ≫ a i)).left =
       (𝟙 ((Over.pullback ξ).obj A) * (toUnit ((Over.pullback ξ).obj A) ≫ a' i)).left ≫ pullback.fst A.hom ξ := fun i =>
     GlobalTheory.CoverOpCompat.push_mul hpb (T := ((Over.pullback ξ).obj A).left) (ρ := ((Over.pullback ξ).obj A).hom)

@@ -35,8 +35,6 @@ theorem constO_eq_strMap : constO G = (GlobalTheory.IndefiniteRowSideFullHecke.H
   first
     | (erw [CommRingCat.comp_apply, TopCat.Presheaf.germ_res_apply]; done)
     | (erw [CommRingCat.comp_apply, TopCat.Presheaf.germ_res_apply]; rfl)
-    | (rw [← CommRingCat.comp_apply, ← CommRingCat.comp_apply, ← CommRingCat.comp_apply, Category.assoc, TopCat.Presheaf.germ_res]; rfl)
-    | (simp only [← CommRingCat.comp_apply, Category.assoc, TopCat.Presheaf.germ_res]; rfl)
 
 theorem free_finite_cotangent_of_eq [Smooth G.hom] (φ : R →+* G.left.presheaf.stalk (origin G))
     (hφ : φ = (GlobalTheory.IndefiniteRowSideFullHecke.HodgeTateCharacterSystems.strMap G).hom) :

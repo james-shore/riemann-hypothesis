@@ -51,7 +51,7 @@ def balBilEquiv : balBil H.bar (J → 𝓞 E) ≃ₗ[ℤ] (J → J → (𝓞 E �
     simp only [formOfFamily_apply, LinearMap.coe_comp, Function.comp_apply, LinearMap.coe_single]
     rw [Finset.sum_eq_single i, Finset.sum_eq_single j]
     · simp
-    · intro j' _ hj; simp [Pi.single_apply, hj]
+    · intro j' _ hj; simp [hj]
     · simp
     · intro i' _ hi; simp [Pi.single_apply, hi]
     · simp

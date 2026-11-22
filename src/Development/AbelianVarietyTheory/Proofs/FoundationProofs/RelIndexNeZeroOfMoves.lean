@@ -51,8 +51,6 @@ theorem finite_quot {E : Type} [Field E] [NumberField E] {n : ℕ} (L₀ L : Sub
   | exact @_root_.GlobalTheory.FiniteQuotientComap.finite_quotient_comap
   | exact _root_.GlobalTheory.FiniteQuotientComap.finite_quotient_comap
   | (apply _root_.GlobalTheory.FiniteQuotientComap.finite_quotient_comap <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiniteQuotientComap.finite_quotient_comap <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiniteQuotientComap.finite_quotient_comap <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiniteQuotientComap.finite_quotient_comap ..)
 
 theorem eq_lat {D : D7} {n : ℕ} {g : GL (Fin n) (AE D)} {L : Submodule (𝓞 D.host.E) (Fin n → D.host.E)}

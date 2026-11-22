@@ -43,7 +43,7 @@ theorem char_mul {l : ℕ} [Fact l.Prime] (P : LocPrime l) (AI : LocAinf l P) (T
     rw [if_pos rfl, multV] at hm1
     have hfil : finrank ↥LL.1 ↥(FildR (P.PD K) ν₃ τ (J₁ τ + J₂ τ)) ≤ finrank ↥LL.1 ↥(DdRE (P.PD K) ν₃ τ) :=
       Submodule.finrank_mono (inf_le_left : FildR (P.PD K) ν₃ τ _ ≤ DdRE (P.PD K) ν₃ τ)
-    simp only [finrank_fin_fun, finrank_self, Module.finrank_pi, Fintype.card_fin] at hle
+    simp only [Module.finrank_pi, Fintype.card_fin] at hle
     omega
   obtain ⟨e1, -⟩ := GlobalTheory.DeRhamSplit.finrank_DdR (P.PD K) ν₃ hc 0
   rw [IsDR, e1, Finset.sum_congr rfl fun τ _ => hone τ]

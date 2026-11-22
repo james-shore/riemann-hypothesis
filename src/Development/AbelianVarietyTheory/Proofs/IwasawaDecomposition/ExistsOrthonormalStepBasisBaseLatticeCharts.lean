@@ -87,7 +87,7 @@ theorem stepBasis_std : ∀ {K : Ctx} {B : Base} {f : Fr B.toPre} {T : TwDat B} 
           exact this ▸ hz
       rw [hmap, ← e1]
       refine (e2 _).trans ?_
-      simp only [TC.baseL, Set.mem_setOf_eq, reV, LinearEquiv.funCongrLeft_apply, LinearMap.funLeft_apply]
+      simp only [TC.baseL, reV, LinearEquiv.funCongrLeft_apply]
       constructor
       · intro H a
         obtain ⟨r, hr1, hr2⟩ := H (finCongr hr a)

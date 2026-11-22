@@ -76,8 +76,8 @@ theorem sum_sq_translate {H : Type} [NormedAddCommGroup H] [InnerProductSpace �
   let Te : S ≃ₗᵢ[ℂ] S := T.toLinearIsometryEquiv rfl
   let l : S →ₗ[ℂ] ℂ :=
     { toFun := fun x => ⟪ξ, σ (Formalism.MainNotions.S.umat g) (x : H)⟫_ℂ
-      map_add' := fun x y => by simp [inner_add_right]
-      map_smul' := fun c x => by simp [inner_smul_right] }
+      map_add' := fun x y => by simp
+      map_smul' := fun c x => by simp }
   have hmul : ∀ x : H, σ (Formalism.MainNotions.S.umat (g * k)) x = σ (Formalism.MainNotions.S.umat g) (σ (Formalism.MainNotions.S.umat k) x) := by
     intro x
     have : Formalism.MainNotions.S.umat (g * k) = Formalism.MainNotions.S.umat g * Formalism.MainNotions.S.umat k := rfl
@@ -109,8 +109,8 @@ theorem kMaj : CompanionTheory.RgExh.Dec.N.S.KMaj := by
   · intro g
     let l : S →ₗ[ℂ] ℂ :=
       { toFun := fun x => ⟪ξ, σ (Formalism.MainNotions.S.umat g) (x : H)⟫_ℂ
-        map_add' := fun x y => by simp [inner_add_right]
-        map_smul' := fun c x => by simp [inner_smul_right] }
+        map_add' := fun x y => by simp
+        map_smul' := fun c x => by simp }
     have h := sq_le_of_basis l b ⟨(u : H), huS⟩
     show ‖l ⟨(u : H), huS⟩‖ₑ ^ 2 ≤ ENNReal.ofReal (‖(u : H)‖ ^ 2) * ∑ i, ‖l (b i)‖ₑ ^ 2
     rw [sum_enorm_sq, ← ENNReal.ofReal_mul (by positivity), ← ofReal_norm_eq_enorm, ← ENNReal.ofReal_pow (norm_nonneg _)]

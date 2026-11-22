@@ -110,7 +110,7 @@ theorem exists_step (hcc : ∀ a, c (c a) = a) (hεε : ε * ε = ε) (hεc : c 
       convert this using 1
       rw [hXt]
       simp only [map_sub, map_sum, map_smul, map_smulₛₗ, LinearMap.sub_apply, LinearMap.sum_apply,
-        LinearMap.smul_apply, smul_eq_mul, hcc, mul_sub, Finset.mul_sum, RingHom.id_apply]
+        LinearMap.smul_apply, smul_eq_mul, hcc, mul_sub, Finset.mul_sum]
       congr 1
       exact Finset.sum_congr rfl fun i _ => by ring
   have hz : ∀ l, j ≤ l → (∑ i ∈ s, (β' * h (X (b j)) (g i)) • b i) l = 0 := fun l hl => by

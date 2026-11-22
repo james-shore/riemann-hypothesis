@@ -140,8 +140,6 @@ theorem tateTwistSection_constantOnPoints_of_connLoc_lift (hT : LateralTheory.Et
       first
         | (rw [mul_nsmul, q_nsmul, nsmul_zero])
         | (rw [mul_nsmul', q_nsmul, nsmul_zero])
-        | (rw [mul_nsmul', q_nsmul, smul_zero])
-        | (rw [mul_nsmul, q_nsmul, smul_zero])
     · right
       intro W h hW hz
       haveI := hW

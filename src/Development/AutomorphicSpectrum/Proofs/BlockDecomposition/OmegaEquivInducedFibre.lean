@@ -173,7 +173,7 @@ theorem fibStr : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] 
       rw [hδ]
       simp only [fibChar, omChar, MonoidHom.comp_apply, MonoidHom.mul_apply, detChar_apply,
         MonoidHom.inr_apply, MonoidHom.coe_fst, MonoidHom.coe_snd, map_one, one_mul, hd, map_mul,
-        neg_div, absPow_neg, MonoidHom.inv_apply, absPow_add, mul_inv, inv_inv, inv_one]
+        neg_div, absPow_neg, MonoidHom.inv_apply]
       ext
       simp only [Units.val_mul, Units.val_inv_eq_inv_val]
       field_simp)
@@ -187,6 +187,6 @@ theorem fibStr : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] 
     ← map_mul, ← map_mul]
   refine congrArg₂ _ (congrArg _ (congrArg _ (by simp))) (congrArg _ (Subtype.ext ?_))
   simp only [lAct_val, act, topEmbR, Units.val_mul, topR_mul, _root_.mul_inv_rev, Matrix.mul_assoc,
-    Units.val_one, Matrix.one_mul, inv_one, Matrix.mul_one]
+    Units.val_one, Matrix.one_mul, inv_one]
 
 end GlobalTheory.CompanionTheory.ThetaGLLen

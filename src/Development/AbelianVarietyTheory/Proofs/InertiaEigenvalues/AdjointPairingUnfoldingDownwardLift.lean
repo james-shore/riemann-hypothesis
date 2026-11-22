@@ -77,7 +77,7 @@ theorem integral_val_thF_eq : GlobalTheory.Published.CuspRapidDecay → ∀ (D :
     have e : (R.cV i).ext ((R.HV i t).e u) h = ∑ k, ⟪b k, R.extV i t u h⟫_ℂ • b k := (b.sum_repr' _).symm
     rw [e, map_sum]
     unfold jointVec RealDat.ptP
-    simp only [map_sum, map_smul, thetaKO, LinearMap.sum_apply, Finset.sum_apply,
+    simp only [map_sum, map_smul, thetaKO, Finset.sum_apply,
       Pi.smul_apply, smul_eq_mul]
   have hL1 : ∀ᵐ g ∂((R.νW i).restrict (R.fdW i)), star (val R i v y g) * R.thF i t u (fun ρ => v ρ) g =
       ∑ k, ∫ h in R.fdV i t, Φ k g h ∂(R.νV i t) := by

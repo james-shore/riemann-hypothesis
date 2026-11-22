@@ -26,7 +26,6 @@ lemma nu_eq_zero_of (b : Fin d → E) (c : Fin d → ℝ) (j : Fin d) (h : ∀ l
   · have h0 : ⟪gs b j, b l⟫_ℝ = 0 := by
       first
       | exact gramSchmidt_inv_triangular ℝ b hlj
-      | exact gramSchmidt_inv_triangular b hlj
     simp [mu, h0]
   · simp [h l hjl]
 
@@ -40,7 +39,6 @@ private lemma mu_self_of_linearIndependent (b : Fin d → E) (hb : LinearIndepen
   have hne : gs b j ≠ 0 := by
     first
     | exact gramSchmidt_ne_zero j hb
-    | exact gramSchmidt_ne_zero (𝕜 := ℝ) j hb
   rw [mu, e]
   exact div_self (pow_ne_zero 2 (norm_ne_zero_iff.mpr hne))
 
@@ -58,7 +56,6 @@ private lemma nu_eq_add_sum_mu (b : Fin d → E) (hb : LinearIndependent ℝ b) 
     have h0 : ⟪gs b j, b l⟫_ℝ = 0 := by
       first
       | exact gramSchmidt_inv_triangular ℝ b hlt
-      | exact gramSchmidt_inv_triangular b hlt
     simp [mu, h0]
   · intro hj
     exfalso
@@ -124,14 +121,14 @@ lemma filter_le_succ (n : ℕ) (h : n + 1 < d) :
     univ.filter (fun j : Fin d => j.val ≤ n + 1) =
       insert ⟨n + 1, h⟩ (univ.filter (fun j : Fin d => j.val ≤ n)) := by
   ext j
-  simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_insert, Fin.ext_iff, Fin.val_mk]
+  simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_insert, Fin.ext_iff]
   omega
 
 lemma filter_ge (n : ℕ) (h : n < d) :
     univ.filter (fun j : Fin d => n ≤ j.val) =
       insert ⟨n, h⟩ (univ.filter (fun j : Fin d => n + 1 ≤ j.val)) := by
   ext j
-  simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_insert, Fin.ext_iff, Fin.val_mk]
+  simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_insert, Fin.ext_iff]
   omega
 
 lemma sum_gs_le (b : Fin d → E)
@@ -206,7 +203,6 @@ lemma coeff_bound (b : Fin d → E) (hb : LinearIndependent ℝ b)
   have hp : ((3 : ℝ) / 2) ^ (d - (j.val + 1)) ≤ (3 / 2) ^ d := by
     first
     | exact pow_le_pow_right₀ (by norm_num) (by omega)
-    | exact pow_le_pow_right (by norm_num) (by omega)
   have hM' := mul_le_mul_of_nonneg_right hp hM0
   linarith
 

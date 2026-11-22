@@ -75,7 +75,7 @@ private lemma sum_norm_sq_diag_eq_sum_range_min (p q : ℕ) (h : ℕ → ℝ) :
   simp_rw [hrow]
   rw [Fin.sum_univ_eq_sum_range (fun i => if i < q then h i ^ 2 else 0) p, ← Finset.sum_filter]
   congr 1
-  ext i; simp [lt_min_iff]
+  ext i; simp
 
 open MvPolynomial in
 private lemma hsNorm_aOf_eq_sqrt_two_mul_sum_sq (p q : ℕ) (h : ℕ → ℝ) :

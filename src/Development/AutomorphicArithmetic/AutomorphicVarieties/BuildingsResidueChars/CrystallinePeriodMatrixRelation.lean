@@ -81,7 +81,7 @@ theorem UpperTheory.crystalline_period_matrix_relation :
       simp only [Φ, Finset.smul_sum, ← TensorProduct.tmul_smul]
       refine Finset.sum_congr rfl fun i _ => ?_
       congr 1
-      simp only [Matrix.mulVec, dotProduct, Finset.smul_sum, Pi.smul_apply, Algebra.smul_def, map_mul, j,
+      simp only [Matrix.mulVec, dotProduct, Pi.smul_apply, Algebra.smul_def, map_mul, j,
         ← IsScalarTower.algebraMap_apply, Finset.mul_sum]
       exact Finset.sum_congr rfl fun k _ => by ring)
     ((φVB ((PP l).PD K) (LL := ℚ_[l]) (V := V) : Module.End ℚ_[l] (V ⊗[ℚ_[l]] Bcr l)) ^ f) F

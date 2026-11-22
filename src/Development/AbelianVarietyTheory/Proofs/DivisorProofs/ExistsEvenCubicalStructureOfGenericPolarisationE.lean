@@ -29,7 +29,7 @@ theorem jK_sq (hρ : Function.Injective ρ) : jK R' ≫ spMap ρ =
   simp only [jK, spMap, ← Spec.map_comp, ← CommRingCat.ofHom_comp]
   congr 2
   ext x
-  simp [IsFractionRing.map, IsLocalization.map_eq]
+  simp [IsFractionRing.map]
 
 theorem exists_genericMap (hρ : Function.Injective ρ) {G : Over (Sp R)} {G₁ : Over (Sp R')} {β : G₁.left ⟶ G.left}
     (w : β ≫ G.hom = G₁.hom ≫ spMap ρ) : ∃ κ : pullback G₁.hom (jK R') ⟶ pullback G.hom (jK R),

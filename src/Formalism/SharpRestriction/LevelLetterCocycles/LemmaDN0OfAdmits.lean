@@ -182,16 +182,12 @@ theorem lev_q_X_mul (i : ZMod n) (ζ : LL) (hζ : IsPrimitiveRoot ζ PD.p) (hp2 
     intro g
     first
       | simpa using PowerSeries.coeff_succ_X_mul (n := 0) (φ := g)
-      | simpa using PowerSeries.coeff_succ_X_mul (R := LL) 0 g
-      | simp [PowerSeries.coeff_X_mul]
-      | simp [mul_comm PowerSeries.X g, PowerSeries.coeff_succ_mul_X]
   have hd : ∀ f : PowerSeries LL, PowerSeries.constantCoeff (PowerSeries.derivative LL f) = PowerSeries.coeff 1 f := by
     intro f
     rw [← PowerSeries.coeff_zero_eq_constantCoeff_apply]
     first
-      | (rw [PowerSeries.derivative_coe, PowerSeries.coeff_derivativeFun]; simp)
+      | (rw [PowerSeries.derivative_coe, PowerSeries.coeff_derivativeFun])
       | (rw [PowerSeries.coeff_derivative]; simp)
-      | simp [PowerSeries.derivative, PowerSeries.coeff_derivativeFun]
   have hD : PowerSeries.derivative LL (E ^ PD.p) = (PD.p : PowerSeries LL) * E ^ PD.p := by
     rw [Derivation.leibniz_pow, hED, smul_eq_mul, ← pow_succ, Nat.sub_add_cancel (by omega : 1 ≤ PD.p), nsmul_eq_mul]
   have h1 : PowerSeries.coeff 1 (E ^ PD.p) = 0 := by
@@ -216,13 +212,12 @@ variable {G : Type} [Group G] [TopologicalSpace G] {Qp K₀ K : Type} [Field Qp]
     (W : LocWach PD LL O v n)
 
 theorem Q_eq_q (hs : W.s = 1) : W.Q = W.q := by
-  simp [LocWach.Q, LocWach.q, hs]
+  simp [LocWach.Q, hs]
 
 theorem coeff_Xpow_mul_lt (k j : ℕ) (hj : j < k) (f : PowerSeries LL) :
     PowerSeries.coeff j (PowerSeries.X ^ k * f) = 0 := by
   first
     | (rw [PowerSeries.coeff_X_pow_mul']; exact if_neg (by omega))
-    | simp [PowerSeries.coeff_X_pow_mul', Nat.not_le.mpr hj]
 
 theorem lead_indep [IsDomain O] [IsFractionRing O LL] (Pt : ZMod n → LL → (K →ₐ[Qp] LL) → Prop)
     (hK : Function.Bijective (algebraMap K₀ K)) (hQ : Formalism.MainNotions.RamifiedCoefficientChains.DdREqDcris PD LL)
@@ -671,7 +666,7 @@ theorem lemmaDN0_of_admits [IsLocalRing O] [IsAdicComplete (IsLocalRing.maximalI
     · rw [map_neg, γD_smulA W T₂, htΔ δ hδ, hxΔ δ hδ]
   have heq : ((PD.p : O) ^ S) • x = W.π₀ • (-(t • x)) + Formalism.MainNotions.LiftingTheory.qp W ^ (b i + S) • y := by
     rw [← algebraMap_smul (LetA O n) ((PD.p : O) ^ S) x, map_pow, map_natCast, hgeom, ← hyx]
-    simp only [smul_neg, smul_smul, ← neg_smul, ← add_smul]
+    simp only [smul_smul, ← neg_smul, ← add_smul]
     congr 1
     ring
   rw [heq]

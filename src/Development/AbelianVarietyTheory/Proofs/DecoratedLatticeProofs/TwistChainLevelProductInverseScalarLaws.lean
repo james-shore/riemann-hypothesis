@@ -176,7 +176,7 @@ theorem place_law (D : D7) (c : Comm D) (v : VCom c) (t : Tup c) (w : VTup t) (F
     rw [map_one, map_one, Units.val_one, one_smul, mul_inv, inv_inv, om_twist, ((F.Q i).laws.1 j (d + 1) hjd).2 ⟨x, hx⟩,
       smul_smul]
     congr 1
-    simp only [map_one, MonoidHom.inv_apply, inv_one, Units.val_one, one_mul, inv_inv, mul_inv, Units.val_inv_eq_inv_val]
+    simp only [map_one, MonoidHom.inv_apply, Units.val_one, one_mul, inv_inv, mul_inv, Units.val_inv_eq_inv_val]
     ring
   · obtain ⟨f, hf, hfe⟩ := eQ_comb_at_place D c v t w F hc hv hP (j + 1) (by omega) Ψ₂ h₂ i
     rw [hfe]

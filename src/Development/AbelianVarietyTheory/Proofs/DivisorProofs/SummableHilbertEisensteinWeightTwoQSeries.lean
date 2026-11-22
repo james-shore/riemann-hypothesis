@@ -55,7 +55,7 @@ theorem norm_qPow (ξ : F) (z : Emb F → ℂ) :
     ‖qPow ξ z‖ = Real.exp (-(2 * Real.pi * ∑ τ, τ ξ * (z τ).im)) := by
   rw [qPow, Complex.norm_exp]
   congr 1
-  simp [Complex.mul_re, Complex.mul_im, Complex.re_sum, Complex.im_sum, Finset.mul_sum]
+  simp [Complex.mul_re, Complex.mul_im, Complex.re_sum, Finset.mul_sum]
 
 end GlobalTheory.HeckeTwoSum
 

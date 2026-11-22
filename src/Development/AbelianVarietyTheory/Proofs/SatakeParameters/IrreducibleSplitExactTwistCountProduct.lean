@@ -30,7 +30,7 @@ theorem unrChar_mul (α β : ℂˣ) : unrChar k (α * β) = unrChar k α * unrCh
 theorem twist_detRep (n : Type) [Fintype n] [DecidableEq n] (ψ φ : kˣ →* ℂˣ) :
     twist (detRep n ψ) (detChar n φ) = detRep n (ψ * φ) := by
   refine MonoidHom.ext fun g => LinearMap.ext fun x => ?_
-  simp [detRep, ofChar_apply, twist_apply, mul_comm, mul_left_comm, mul_assoc]
+  simp [detRep, ofChar_apply, twist_apply, mul_comm, mul_left_comm]
 
 theorem nonempty_equiv_of_cast {n m : ℕ} (h : n = m) (x : Irr k n) (ψ : kˣ →* ℂˣ)
     (e : Nonempty ((h ▸ x : Irr k m).π.Equiv (detRep (Fin m) ψ))) :

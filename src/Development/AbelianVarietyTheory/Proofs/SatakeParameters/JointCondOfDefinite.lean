@@ -105,7 +105,6 @@ theorem isIntegral_half (y : D.host.E) (hy : y * y = -((D.host.d : ℕ) : D.host
       linear_combination this
     simp only [eval₂_add, eval₂_sub, eval₂_X_pow, eval₂_X, eval₂_C]
     simp only [Int.cast_mul, Int.cast_ofNat, Int.cast_natCast, algebraMap_int_eq, eq_intCast]
-    push_cast
     rw [hd] at hy
     linear_combination (1/4 : D.host.E) * hy
 

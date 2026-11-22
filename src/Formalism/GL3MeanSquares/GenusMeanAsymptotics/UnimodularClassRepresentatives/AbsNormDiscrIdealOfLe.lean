@@ -19,7 +19,7 @@ theorem det_update_sum {ι : Type*} [Fintype ι] [DecidableEq ι] (b : Basis ι 
     ext r s
     rcases eq_or_ne r i with rfl | hr
     · simp [Basis.toMatrix_apply, Matrix.updateRow_self, Finset.sum_apply, map_sum, map_smul]
-    · simp [Basis.toMatrix_apply, Matrix.updateRow_ne hr, Function.update_apply, hr]
+    · simp [Basis.toMatrix_apply, hr]
   rw [e, Matrix.det_updateRow_sum, smul_eq_mul]
 
 theorem exists_adjust (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) {P : Ideal (𝓞 K)} (hP : P.IsMaximal) {c : 𝓞 K}
@@ -32,7 +32,7 @@ theorem exists_adjust (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) {P : 
     have e : conjO K r = s := by
       apply IsFractionRing.injective (𝓞 K) K
       have e1 : algebraMap (𝓞 K) K (conjO K r) = star (algebraMap (𝓞 K) K r) := by
-        first | rfl | simp [conjO]
+        first | rfl
       rw [e1, hrs, star_star]
     rw [e]
     exact hs

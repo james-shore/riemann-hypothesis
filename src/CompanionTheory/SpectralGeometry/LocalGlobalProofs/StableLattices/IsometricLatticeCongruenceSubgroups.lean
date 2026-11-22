@@ -85,7 +85,7 @@ theorem mem_UG_iff (s : L →+* L) (J : Matrix (Fin n) (Fin n) L) (g : GL (Fin n
       funext k
       by_cases hk : k = i
       · subst hk; simp
-      · simp [Pi.single_apply, hk]
+      · simp [hk]
     rw [hsi] at this
     simpa using this
 

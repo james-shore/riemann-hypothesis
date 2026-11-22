@@ -15,7 +15,7 @@ theorem eq_zero_of_scalar {O : Type} [CommRing O] [IsDomain O] {n : ℕ} (d : O)
   have e : (d • (1 : Matrix (Fin n) (Fin n) O)).map (algebraMap O (FractionRing O)) =
       algebraMap O (FractionRing O) d • (1 : Matrix (Fin n) (Fin n) (FractionRing O)) := by
     ext a b
-    by_cases hab : a = b <;> simp [Matrix.one_apply, hab]
+    by_cases hab : a = b <;> simp [hab]
   rw [e, Matrix.smul_mulVec, Matrix.one_mulVec] at h
   have h1 : algebraMap O (FractionRing O) d - 1 ≠ 0 := fun h0 =>
     hd (IsFractionRing.injective O (FractionRing O) (by rw [map_one]; exact sub_eq_zero.1 h0))

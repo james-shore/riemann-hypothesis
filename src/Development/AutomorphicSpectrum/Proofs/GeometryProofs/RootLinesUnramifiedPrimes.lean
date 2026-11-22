@@ -114,7 +114,7 @@ theorem deg_neg_one {G G' : Lat ξ Ω} {T : Set (Cpt ξ)} {a : K → ℤ} {e : �
   rw [ht.2, zpow_neg_one] at h1
   have h2 := span_inv (regAt ξ q) hs.1 h1
   have e1 : (∏ k, y ⟨k, c k⟩ ^ (-a) k) • e⁻¹ = ((∏ k, y ⟨k, c k⟩ ^ a k) • e)⁻¹ := by
-    simp [Pi.neg_apply, zpow_neg, Finset.prod_inv_distrib, mul_inv, mul_comm]
+    simp [Pi.neg_apply, zpow_neg, Finset.prod_inv_distrib, mul_comm]
   rw [h q hq, hs.2, e1]
   exact h2
 

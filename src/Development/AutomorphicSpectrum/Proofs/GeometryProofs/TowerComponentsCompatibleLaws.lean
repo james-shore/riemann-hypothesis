@@ -262,7 +262,7 @@ theorem lin_core {Ω₀ Ω Li₀ Li : Type} [Field Ω₀] [Field Ω] [Algebra Ω
   have hTm := fun s => GlobalTheory.T.generic_flag_triangular_change Ω Li (r s) (fun k => j (ec s k)) (b s)
     (fun k => ∑ l, u s l k • j (cc s l)) (v s) (w s) (hf s) (hb s) (hv1 s) (hv0 s) (hw0 s) (hw s) (fun k => by
       rw [← hvw s]
-      simp only [Matrix.mul_apply, Matrix.map_apply, Matrix.transpose_apply, Finset.sum_smul, smul_smul]
+      simp only [Matrix.mul_apply, Matrix.map_apply, Matrix.transpose_apply, Finset.sum_smul]
       rw [Finset.sum_comm]
       refine Finset.sum_congr rfl fun l _ => ?_
       have e1 : j (cc s l) = ∑ m, algebraMap Ω₀ Ω (P s l m) • j (ec s m) := by

@@ -99,8 +99,6 @@ theorem li_int (F : Type) [Field F] [CharZero F] {N r : ℕ} {M : Submodule ℤ 
   have hvQ : LinearIndependent ℚ v := by
     first
       | exact (LinearIndependent.iff_fractionRing ℤ ℚ).1 hvZ
-      | exact (LinearIndependent.iff_fractionRing (R := ℤ) (K := ℚ)).1 hvZ
-      | exact hvZ.localization ℚ (nonZeroDivisors ℤ)
   have hb : LinearIndependent F fun m =>
       mapSL (σ := Fin N × Fin N) (algebraMap ℚ F) (MvPolynomial.basisMonomials (Fin N × Fin N) ℚ m) := by
     have h := (MvPolynomial.basisMonomials (Fin N × Fin N) F).linearIndependent

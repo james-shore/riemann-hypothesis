@@ -90,7 +90,7 @@ theorem haar_split {A B : Type} [TopologicalSpace G] [IsTopologicalGroup G] [Mea
   have hc : Measure.haarScalarFactor (μ.map e) (μ₁.prod ν) ≠ 0 :=
     (Measure.haarScalarFactor_pos_of_isHaarMeasure _ _).ne'
   refine ⟨μ₁, Measure.haarScalarFactor (μ.map e) (μ₁.prod ν) • ν, inferInstance, ?_, ?_⟩
-  · first | exact Measure.IsHaarMeasure.nnreal_smul _ hc | exact IsHaarMeasure.nnreal_smul _ hc | exact Measure.isHaarMeasure_nnreal_smul _ hc
+  · first | exact Measure.IsHaarMeasure.nnreal_smul _ hc
   · rw [Measure.prod_smul_right]
     exact h1
 
@@ -171,7 +171,7 @@ theorem cV_embInf (v w : InfinitePlace E) (y : GL (Fin n) ℂ) :
   by_cases h : w = v
   · subst h
     simp
-  · simp [h, Pi.mulSingle_eq_of_ne h]
+  · simp [h]
 
 theorem pFin_embInf (v : InfinitePlace E) (y : GL (Fin n) ℂ) :
     GeneralLinearGroup.map (pFin E) (embInf n v y) = 1 := by

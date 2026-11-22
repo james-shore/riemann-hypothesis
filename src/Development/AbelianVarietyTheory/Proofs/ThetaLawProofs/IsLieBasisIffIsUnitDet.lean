@@ -46,8 +46,7 @@ theorem tanExp_tanExp (hv : ∀ i, IsTangent (v i)) {m : ℕ} (M : Fin m → Fin
   refine Finset.prod_congr rfl fun i _ => ?_
   refine (comp_lieExp v _ _ _).trans ?_
   exact lieExp_congr _ (fun j => by
-    simp [epsTo, dualTo_apply, TrivSqZeroExt.algebraMap_eq_inl, TrivSqZeroExt.inl_mul_inr,
-      mul_comm, smul_smul]) _ _
+    simp [epsTo, dualTo_apply, TrivSqZeroExt.algebraMap_eq_inl, mul_comm, smul_smul]) _ _
 
 theorem tanExp_single (hv : ∀ i, IsTangent (v i)) (i : Fin n) :
     tanExp v (Pi.single i (1 : R)) = v i := by

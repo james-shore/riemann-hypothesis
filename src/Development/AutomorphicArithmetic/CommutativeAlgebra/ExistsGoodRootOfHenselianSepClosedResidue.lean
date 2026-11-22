@@ -48,8 +48,7 @@ theorem UpperTheory.exists_goodRoot_of_henselian_sepClosed_residue :
       simp [hz.pow_eq_one])
     (by
       simp only [Polynomial.derivative_sub, Polynomial.derivative_one, sub_zero,
-        Polynomial.derivative_X_pow, Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_natCast,
-        Polynomial.eval_pow, Polynomial.eval_X]
+        Polynomial.derivative_X_pow, Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_pow, Polynomial.eval_X]
       exact hqu.mul (ha0.pow _))
   have hζq : ζ ^ q = 1 := by
     have h := hroot.eq_zero

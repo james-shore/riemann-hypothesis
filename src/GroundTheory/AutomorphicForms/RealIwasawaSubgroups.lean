@@ -353,7 +353,6 @@ theorem upperPosDiagPart_inv_mul_mem (b : upperPosSubgroup n 𝕜) :
   rw [mem_upperUnipotentSubgroup, e]
   refine ⟨(blockTriangular_diagonal _).mul b.2.1, fun i => ?_⟩
   rw [diagonal_mul]
-  push_cast
   rw [ofReal_re_of_pos (b.2.2 i)]
   exact inv_mul_cancel₀ (b.2.2 i).ne'
 

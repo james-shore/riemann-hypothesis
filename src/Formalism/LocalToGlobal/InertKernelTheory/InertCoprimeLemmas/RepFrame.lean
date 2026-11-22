@@ -412,8 +412,7 @@ theorem frVec_inl_same {j : ℕ} {L0 : X.Lt j} {La' : X.Lt (j + 1)} (φ : Frm X 
     simp
   · simp only [if_neg hs, zOfX, Finset.mul_sum, ← mul_assoc, map_sum, coeff_CC_mul_X]
     obtain ⟨v, r, a, b⟩ := e
-    simp only [Sum.inl.injEq, Sum.inr.injEq, reduceCtorEq, if_neg hs, if_false, Finset.sum_const_zero,
-      Sigma.mk.inj_iff, heq_eq_eq, Prod.mk.injEq, true_and]
+    simp only [Sum.inl.injEq, Sigma.mk.inj_iff, heq_eq_eq, Prod.mk.injEq, true_and]
     rw [Finset.sum_eq_single a (fun x _ hx => by simp [hx]) (by simp),
       Finset.sum_eq_single b (fun x _ hx => by simp [hx]) (by simp),
       Finset.sum_eq_single r (fun x _ hx => by simp [hx]) (by simp)]
@@ -436,8 +435,7 @@ theorem frVec_inr_same {j : ℕ} {L0 : X.Lt j} {La' : X.Lt (j + 1)} (φ : Frm X 
   by_cases hs : IsOddPos s
   · simp only [if_pos hs, zOfX, Finset.mul_sum, ← mul_assoc, map_sum, coeff_CC_mul_X]
     obtain ⟨v, r, a, b⟩ := e
-    simp only [Sum.inl.injEq, Sum.inr.injEq, reduceCtorEq, if_pos hs, if_false, Finset.sum_const_zero,
-      Sigma.mk.inj_iff, heq_eq_eq, Prod.mk.injEq, true_and]
+    simp only [Sum.inr.injEq, Sigma.mk.inj_iff, heq_eq_eq, Prod.mk.injEq, true_and]
     rw [Finset.sum_eq_single a (fun x _ hx => by simp [hx]) (by simp),
       Finset.sum_eq_single b (fun x _ hx => by simp [hx]) (by simp),
       Finset.sum_eq_single r (fun x _ hx => by simp [hx]) (by simp)]
@@ -1055,7 +1053,7 @@ theorem entry_int {W Qq : Type} [CommRing W] [Field Qq] [Algebra W Qq] {k l : �
   have h2 : A.mulVec (fun y => Gs y c) = Gt.mulVec (fun d => algebraMap W Qq (w d)) := by
     rw [← hw]
     funext i
-    simp only [Finset.sum_apply, Pi.smul_apply, Algebra.smul_def, Matrix.mulVec, dotProduct]
+    simp only [Finset.sum_apply, Algebra.smul_def, Matrix.mulVec, dotProduct]
     exact Finset.sum_congr rfl fun d _ => mul_comm _ _
   rw [h1, h2, Matrix.mulVec_mulVec, hG, Matrix.one_mulVec]
 

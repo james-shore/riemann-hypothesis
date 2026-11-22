@@ -199,7 +199,7 @@ lemma bd_of_equation (W : WeierstrassCurve ℂ_[q]) (h1 : ‖W.a₁‖ ≤ 1) (h
       + C W.a₆ * (w * w)) := by
     refine h.trans ?_
     have hC : ∀ a : ℂ_[q], algebraMap ℂ_[q] ℂ_[q]⟦X⟧ a = C a := fun _ => rfl
-    simp [Peq, hC]
+    simp [Peq]
     ring
   have hU : ∀ n, IntLt n u := fun n m _ => hu m
   have key : ∀ n, IntLt n w := by

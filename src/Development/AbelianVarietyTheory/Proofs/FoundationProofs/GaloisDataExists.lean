@@ -17,8 +17,6 @@ theorem exists_sum_of_mem_La (D : D7) (T : Tor D) {N N' : ℕ}
   | exact @_root_.GlobalTheory.LatticeSumMembership.La_mem_sum
   | exact _root_.GlobalTheory.LatticeSumMembership.La_mem_sum
   | (apply _root_.GlobalTheory.LatticeSumMembership.La_mem_sum <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LatticeSumMembership.La_mem_sum <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LatticeSumMembership.La_mem_sum <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LatticeSumMembership.La_mem_sum ..)
 
 theorem galEx_of_galStar (D : D7) (hS : galStar D) : galEx D := by

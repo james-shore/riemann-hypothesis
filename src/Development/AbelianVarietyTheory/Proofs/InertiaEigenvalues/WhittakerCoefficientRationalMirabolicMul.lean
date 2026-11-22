@@ -220,7 +220,6 @@ theorem coefF_ratGL_mul : ∀ (E : Type) [Field E] [NumberField E] (a : ℕ) (ψ
   have hu : blkU x * (ratGL E a γ * g) = ratGL E a γ * (blkU (colEquiv γ⁻¹ hri x) * g) := by
     rw [← mul_assoc, blkU_mul (ratGL E a γ) (ratGL_rows _ hr), mul_assoc, ← map_inv]
     rfl
-  beta_reduce
   rw [hd, hu, hl γ hγ]
 
 end GlobalTheory.CuspGeneric

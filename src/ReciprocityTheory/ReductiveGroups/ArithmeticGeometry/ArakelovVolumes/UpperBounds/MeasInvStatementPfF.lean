@@ -79,7 +79,6 @@ theorem lintegral_flat {g : (Ix ι r → ℂ) → ENNReal} (hg : Measurable g) :
   rw [lintegral_lu]
   first
   | rw [← lintegral_indicator measurableSet_sS]
-  | rw [← lintegral_indicator _ measurableSet_sS]
   rw [← hmp.symm.lintegral_comp_emb (eS ι r).symm.measurableEmbedding, Measure.volume_eq_prod]
   refine (lintegral_prod _ ?_).trans ?_
   · exact (hFm.comp (eS ι r).symm.measurable).aemeasurable
@@ -90,4 +89,3 @@ theorem lintegral_flat {g : (Ix ι r → ℂ) → ENNReal} (hg : Measurable g) :
   · rw [if_neg h]
     first
     | exact Set.indicator_of_notMem (fun hm => h ((mem_sS_eS x y).1 hm)) _
-    | exact Set.indicator_of_not_mem (fun hm => h ((mem_sS_eS x y).1 hm)) _

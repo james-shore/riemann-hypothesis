@@ -111,7 +111,7 @@ theorem evR_mem_maximalIdeal : ∀ (E : Type) [Field E] [NumberField E] [IsCMFie
     obtain ⟨x₀, hx₀⟩ := h1
     have h2 : (w ≫ inc₀ X Z ≫ X.π) (IsLocalRing.closedPoint V) = (χ ≫ genι Y) (IsLocalRing.closedPoint V) := by
       rw [← Category.assoc, hwq, q2]
-    simp only [Scheme.Hom.comp_apply] at h2
+    simp only at h2
     have h3 : genι Y (Y.jQ x₀) = genι Y (χ (IsLocalRing.closedPoint V)) := hx₀.trans h2
     refine (mem_genBd_iff.1 hbd) ?_
     rw [← h3]

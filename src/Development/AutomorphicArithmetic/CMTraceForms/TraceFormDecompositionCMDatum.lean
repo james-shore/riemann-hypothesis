@@ -77,7 +77,7 @@ private theorem trace_eq_sum (E : Type) [Field E] [NumberField E] (p : ℕ) [Fac
         c • (Algebra.lmul ℤ (𝓞 E) y).baseChange ℤ_[p] := by
       rw [Algebra.baseChange_lmul, h0]
       ext z
-      simp [smul_mul_assoc]
+      simp
     have h2 : LinearMap.trace ℤ_[p] _ (LinearMap.mulLeft ℤ_[p] (c ⊗ₜ[ℤ] y : ℤ_[p] ⊗[ℤ] 𝓞 E)) =
         c * ((Algebra.trace ℤ (𝓞 E) y : ℤ) : ℤ_[p]) := by
       rw [h1, map_smul, LinearMap.trace_baseChange, smul_eq_mul, Algebra.trace_apply]

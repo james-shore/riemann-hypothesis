@@ -25,7 +25,6 @@ theorem isOpen_fix_of {ψ : UA E n → ℂ} (U : Set (finU E n)) (hU : IsOpen U)
       mul_mem' := fun {a b} ha hb => by
         change RU E n ((a : UA E n) * b) ψ = ψ
         rw [← RU_RU]
-        change RU E n a (RU E n b ψ) = ψ
         rw [hb]; exact ha
       one_mem' := by
         change RU E n ((1 : finU E n) : UA E n) ψ = ψ

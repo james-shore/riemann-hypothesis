@@ -24,7 +24,7 @@ theorem mixed_diff_nonneg : GlobalTheory.Published.ArCalc → ∀ (k : Type) [Co
   have hiso : ∀ j, (comb L (E j)).Isometric (F j) := by
     rintro (_ | i)
     · apply HermLB.icls_eq_iff.1
-      simp [icls_comb, Fin.sum_univ_two, L, E, F, HermLB.icls_tens, HermLB.icls_dual, sub_eq_add_neg]
+      simp [icls_comb, Fin.sum_univ_two, L, E, F, HermLB.icls_tens, HermLB.icls_dual]
     · exact isometric_comb_single L i
   have hΦ' := ((hC.arIso k X p D hX).2 (Fin 2) L Φ hΦ).2.2 (Option (Fin 2)) F E hiso
   let n : Fin 2 → ℤ := ![(x : ℤ), (y : ℤ)]
@@ -37,7 +37,7 @@ theorem mixed_diff_nonneg : GlobalTheory.Published.ArCalc → ∀ (k : Type) [Co
   have hpoly : aeval (fun j => lin fun i => ((E j i : ℤ) : ℝ))
       (MvPolynomial.X none * rename some (lin fun i => ((n i : ℤ) : ℝ)) ^ D) =
       (MvPolynomial.X 0 - MvPolynomial.X 1) * (C (x : ℝ) * MvPolynomial.X 0 + C (y : ℝ) * MvPolynomial.X 1) ^ D := by
-    simp [aeval_rename, lin, Fin.sum_univ_two, E, n, Function.comp_def, Pi.single_apply]
+    simp [lin, Fin.sum_univ_two, E, n]
     left
     ring
   rw [LinearMap.comp_apply, AlgHom.toLinearMap_apply, hpoly] at hmix

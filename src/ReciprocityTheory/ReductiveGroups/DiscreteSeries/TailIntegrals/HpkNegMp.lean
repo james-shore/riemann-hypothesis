@@ -39,7 +39,7 @@ theorem ga_unit (k r : ℕ) (l : Fin (r + 1)) {U : Matrix (Fin (2 * r + k + 1)) 
 
 private lemma conjTranspose_Hpk_eq_Hpk (k r' : ℕ) : (Hpk k r')ᴴ = Hpk k r' := by
   ext i j
-  simp only [Matrix.conjTranspose_apply, Hpk, Matrix.of_apply, Fin.ext_iff]
+  simp only [Matrix.conjTranspose_apply, Hpk, Fin.ext_iff]
   split_ifs <;> first | (exfalso; omega) | rfl | norm_num
 
 private lemma Hpk_sq_eq_one (k r' : ℕ) : Hpk k r' * Hpk k r' = 1 := by
@@ -48,11 +48,11 @@ private lemma Hpk_sq_eq_one (k r' : ℕ) : Hpk k r' * Hpk k r' = 1 := by
   have hσ : (if (i : ℕ) < r' ∨ r' + k < (i : ℕ) then 2 * r' + k - i else (i : ℕ)) < 2 * r' + k + 1 := by
     split_ifs <;> omega
   rw [Finset.sum_eq_single ⟨_, hσ⟩]
-  · simp only [Hpk, Matrix.of_apply, Matrix.one_apply, Fin.ext_iff]
+  · simp only [Hpk, Matrix.one_apply, Fin.ext_iff]
     split_ifs <;> first | (exfalso; omega) | rfl | norm_num
   · intro l _ hl
     have h0 : Hpk k r' i l = 0 := by
-      simp only [Hpk, Matrix.of_apply, ne_eq, Fin.ext_iff] at hl ⊢
+      simp only [Hpk, ne_eq, Fin.ext_iff] at hl ⊢
       split_ifs at hl ⊢ <;> first | (exfalso; omega) | rfl
     rw [h0, zero_mul]
   · intro h

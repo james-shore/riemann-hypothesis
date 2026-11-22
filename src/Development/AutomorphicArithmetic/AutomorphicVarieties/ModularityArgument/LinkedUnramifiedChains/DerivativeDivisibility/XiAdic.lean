@@ -67,11 +67,11 @@ private theorem xi_lift {l : ℕ} [Fact l.Prime] {O A O₁ : Type} [CommRing O] 
   · exact xi_adic j (hc.2 v i)
   · change res O₁ O₁ (j (ρ.r g i i)) = _
     rw [xi_key j f hf (ρ.r g i i) _ (hb.1 g i)]
-    simp [Fr.Frame.ext, map_pow]
+    simp [Fr.Frame.ext]
     rfl
   · change res O₁ O₁ (j ((ρ.ψ v i g : Aˣ) : A)) = _
     rw [xi_key j f hf _ _ (hb.2 v i g)]
-    simp [Fr.Frame.ext, map_pow]
+    simp [Fr.Frame.ext]
     rfl
   · change res O₁ O₁ (j (ρ.r g i k)) = 0
     rw [xi_key j f hf (ρ.r g i k) 0 (by rw [map_zero]; exact hd g i k hik), map_zero]

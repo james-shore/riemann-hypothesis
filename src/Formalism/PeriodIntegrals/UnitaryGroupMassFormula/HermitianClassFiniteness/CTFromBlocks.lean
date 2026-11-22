@@ -21,7 +21,6 @@ theorem σA_ιA (e : I.E) : σA I (ιA I e) = ιA I (starRingEnd I.E e) := by
         (starRingEnd I.E e) ⊗ₜ[I.F] (1 : Formalism.MainNotions.S.Af I.F)
      rw [Algebra.TensorProduct.map_tmul]
      rfl)
-  | (simp [sigR, inclE]; rfl)
 
 theorem cT_map {p q : Type} (M : Matrix p q I.E) :
     cT (σA I) (M.map (ιA I)) = (cT (starRingEnd I.E) M).map (ιA I) := by
@@ -35,7 +34,7 @@ theorem cT_one' {p : Type} [DecidableEq p] {A : Type} [CommRing A] (σ : A →+*
   by_cases hij : i = j
   · subst hij
     simp [cT]
-  · simp [cT, Matrix.one_apply, hij, Ne.symm hij]
+  · simp [cT, hij, Ne.symm hij]
 
 theorem cT_zero' {p q : Type} {A : Type} [CommRing A] (σ : A →+* A) :
     cT σ (0 : Matrix p q A) = 0 := by
@@ -130,7 +129,7 @@ theorem Frame.MA_11 (h : HfinS I S) : (fr.MA h).toBlocks₁₁ = 1 := by
 
 theorem Frame.MA_21 (h : HfinS I S) : (fr.MA h).toBlocks₂₁ = 0 := by
   ext i j
-  simp [Matrix.toBlocks₂₁, fr.MA_inl, Matrix.one_apply]
+  simp [Matrix.toBlocks₂₁, fr.MA_inl]
 
 theorem Frame.MA_unitary (h : HfinS I S) :
     cT (σA I) (fr.MA h) * fr.Jt.map (ιA I) * fr.MA h = fr.Jt.map (ιA I) := by
@@ -168,8 +167,7 @@ theorem Frame.MA_eq (h : HfinS I S) :
   rw [fr.JtA_blocks, hM, cT_fromBlocks, cT_one', cT_zero', Matrix.fromBlocks_multiply,
     Matrix.fromBlocks_multiply] at hU
   obtain ⟨-, h12, -, h22⟩ := Matrix.fromBlocks_inj.1 hU
-  simp only [Matrix.one_mul, Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add,
-    Matrix.mul_one] at h12 h22
+  simp only [Matrix.one_mul, Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add] at h12 h22
   have hX0 : (fr.MA h).toBlocks₁₂ = 0 := unit_cancel fr fr.Jt.toBlocks₁₁ hdet _ h12
   refine ⟨?_, ?_⟩
   · rw [hM, hX0]
@@ -177,7 +175,7 @@ theorem Frame.MA_eq (h : HfinS I S) :
     simpa [cT_zero'] using h22
 
 theorem Frame.MA_mul (h₁ h₂ : HfinS I S) : fr.MA (h₁ * h₂) = fr.MA h₁ * fr.MA h₂ := by
-  simp only [Frame.MA, Subgroup.coe_mul, Units.val_mul, Matrix.mul_assoc]
+  simp only [Frame.MA, Subgroup.coe_mul, Matrix.mul_assoc]
   rw [← Matrix.mul_assoc fr.BA fr.BiA, fr.BA_BiA, Matrix.one_mul,
     show I.fmat ((h₁ : I.Gf) * (h₂ : I.Gf)) = I.fmat h₁ * I.fmat h₂ from rfl, Matrix.mul_assoc]
 

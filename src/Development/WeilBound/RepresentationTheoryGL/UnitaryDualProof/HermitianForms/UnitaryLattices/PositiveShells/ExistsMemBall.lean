@@ -96,7 +96,6 @@ theorem sum_translate {A H : AddSubgroup (Fin (m + 1) → k)} {T : Finset (Fin (
     ∑ t ∈ T, π (colEl k m N h (t + a)) v = ∑ t ∈ T, π (colEl k m N h t) v := by
   apply sum_transversal_add_eq_sum_of_periodic A H T hT.2.2.1 hT.2.2.2 (fun x => π (colEl k m N h x) v) _ a ha
   intro x y hy
-  beta_reduce
   rw [pi_colEl_add, hv y hy]
 
 theorem avgL_colEl {A H : AddSubgroup (Fin (m + 1) → k)} {T : Finset (Fin (m + 1) → k)} (hT : IsTr A H T) {v : V}

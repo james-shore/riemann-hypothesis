@@ -30,7 +30,7 @@ theorem eventually_rate_cocompact (σ : ℂ) (C δ : ℝ) (hδ : 0 < δ) :
   rw [← div_eq_mul_inv, div_le_iff₀ hpos]
   have h2 : |C| = δ * (|C| / δ) := by
     first
-    | (field_simp; ring)
+    | (field_simp)
     | field_simp
   calc C ≤ |C| := le_abs_self C
     _ = δ * (|C| / δ) := h2

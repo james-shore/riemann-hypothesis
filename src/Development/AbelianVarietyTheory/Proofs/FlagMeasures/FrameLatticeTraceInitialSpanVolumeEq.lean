@@ -57,8 +57,7 @@ private theorem span_image_frameScaledDifferenceFamily_eq_lemma_3 {E V : Type} [
         _root_.GlobalTheory.HL.TraceVol.dfam, Sum.map_inl]
       rw [unitriangular_sum_castLE_eq hJ f s hs j]
     · rw [Fintype.sum_sum_type]
-      simp only [Matrix.fromBlocks_apply₁₂, Matrix.fromBlocks_apply₂₂, Matrix.submatrix_apply,
-        Sum.elim_inl, Sum.elim_inr, _root_.GlobalTheory.HL.TraceVol.dfam, Sum.map_inr]
+      simp only [Matrix.fromBlocks_apply₁₂, Matrix.fromBlocks_apply₂₂, Sum.elim_inl, Sum.elim_inr, _root_.GlobalTheory.HL.TraceVol.dfam, Sum.map_inr]
       rw [unitriangular_sum_castLE_eq hJ f s hs j, unitriangular_sum_castLE_eq hJ f' s' hs' j]
       simp only [Matrix.neg_apply, Matrix.smul_apply, Matrix.submatrix_apply, neg_smul, smul_sub,
         Finset.smul_sum, smul_smul, smul_eq_mul, Finset.sum_neg_distrib]

@@ -16,13 +16,13 @@ theorem h1dual_of_vanish_fix : ∀ (l : ℕ) [Fact l.Prime] (Ω : Type) [Field �
     intro v
     show Matrix.toLin' ((dual1 W a : GL (Fin 2) (Qbar l)) : Matrix (Fin 2) (Fin 2) (Qbar l)) v = _
     rw [dual1, UpperTheory.V.Af.tw_val, hWa]
-    simp [dt, hWa, eps, Matrix.toLin'_apply]
+    simp [dt, hWa, eps]
   have hcomm : ∀ g, z (a * g) = z (g * a) := by
     intro g
     have hn : (g * a)⁻¹ * (a * g) ∈ N0g W := by
       refine ⟨?_, ?_⟩
       · show cycBar ℚ Ω l ((g * a)⁻¹ * (a * g)) = 1
-        simp [map_mul, map_inv, mul_comm, mul_left_comm, mul_assoc]
+        simp [map_mul, map_inv, mul_comm, mul_assoc]
       · show W ((g * a)⁻¹ * (a * g)) = 1
         simp [map_mul, map_inv, hWa]
     have h1 : a * g = (g * a) * ((g * a)⁻¹ * (a * g)) := by group

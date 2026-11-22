@@ -164,8 +164,7 @@ theorem trace_real_toLin' {r : ℕ} (N : Matrix (Fin r) (Fin r) ℂ) :
     LinearMap.trace ℝ _ ((toLin' N).restrictScalars ℝ) = 2 * N.trace.re := by
   classical
   rw [LinearMap.trace_eq_matrix_trace ℝ (Complex.basisOneI.smulTower (Pi.basisFun ℂ (Fin r)))]
-  simp [Matrix.trace, LinearMap.toMatrix_apply, Fintype.sum_prod_type, two_mul,
-    Finset.sum_add_distrib]
+  simp [Matrix.trace, LinearMap.toMatrix_apply, Fintype.sum_prod_type, two_mul]
 
 theorem trace_real_blocks {ι : Type} [Fintype ι] {r : ℕ} (N : ι → Matrix (Fin r) (Fin r) ℂ)
     (f : (ι → Fin r → ℂ) →ₗ[ℝ] (ι → Fin r → ℂ)) (hf : ∀ u τ, f u τ = N τ *ᵥ u τ) :
@@ -338,7 +337,7 @@ theorem realMap_surjective (hspan : Submodule.span E (Set.range φ) = ⊤) :
   intro u
   have : u = ∑ i, (fun τ => u τ i) • (fun (τ : Φ) j => τ.1 ((Pi.single i 1 : Fin r → E) j)) := by
     funext τ j
-    simp [Finset.sum_apply, Pi.single_apply, apply_ite τ.1]
+    simp [Finset.sum_apply, Pi.single_apply]
   rw [this]
   exact (LinearMap.range (realMap D Φ φ)).sum_mem fun i _ => hst _ _ (hv _)
 

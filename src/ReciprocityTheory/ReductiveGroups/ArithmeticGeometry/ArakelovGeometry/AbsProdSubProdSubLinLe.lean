@@ -57,7 +57,7 @@ theorem abs_prod_sub_prod_le {α : Type*} [LinearOrder α] (s : Finset α) (y ε
         gcongr
         exact hε i hi
     _ = E * (Y + E) ^ ((s.filter (· < i)).card + (s.filter (i < ·)).card) := by rw [pow_add]; ring
-    _ ≤ E * (Y + E) ^ (s.card - 1) := by gcongr <;> first | exact hYE | omega
+    _ ≤ E * (Y + E) ^ (s.card - 1) := by gcongr
 
 theorem abs_prod_sub_prod_sub_lin_le {α : Type*} [LinearOrder α] (s : Finset α) (y ε : α → ℝ) {Y E : ℝ}
     (hY : 1 ≤ Y) (hE : 0 ≤ E) (hy : ∀ i ∈ s, |y i| ≤ Y) (hε : ∀ i ∈ s, |ε i| ≤ E) :
@@ -98,7 +98,7 @@ theorem abs_prod_sub_prod_sub_lin_le {α : Type*} [LinearOrder α] (s : Finset �
         exact hε i hi
     _ = a * E ^ 2 * (Y + E) ^ (a - 1 + b) := by rw [pow_add]; ring
     _ ≤ ((s.card - 1 : ℕ) : ℝ) * E ^ 2 * (Y + E) ^ (s.card - 2) := by
-        gcongr <;> first | exact hYE | omega | exact has
+        gcongr <;> first | exact hYE | omega
 
 end Scalar
 

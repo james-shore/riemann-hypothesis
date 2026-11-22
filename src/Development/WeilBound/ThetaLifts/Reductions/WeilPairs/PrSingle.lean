@@ -116,7 +116,6 @@ theorem PositivityTheory.ThKW.PhaseFourierInjectivity.finj : ∀ (F E : Type) [F
       ((fun i j => u (finProdFinEquiv (i, j))) : WOF F E nS nT)
     first
       | exact continuous_pi fun i => continuous_pi fun j => continuous_apply _
-      | fun_prop
   haveI : IsTopologicalAddGroup (AF F ⊗[F] E) := IsModuleTopology.topologicalAddGroup (AF F) (AF F ⊗[F] E)
   let E' : WOF F E nS nT ≃ₜ+ (Fin (nT * nS) → AF F ⊗[F] E) :=
     { toAddEquiv := vecE F E nS nT, continuous_toFun := he, continuous_invFun := he' }

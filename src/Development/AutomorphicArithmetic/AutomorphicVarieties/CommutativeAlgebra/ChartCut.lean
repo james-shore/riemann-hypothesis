@@ -96,7 +96,7 @@ private theorem coeff_low_degree_algHom_apply_eq [Fintype σ] (ψ : MvPowerSerie
   have hr := h2 _ (cc_expand f) d hd
   simp only [map_sub, sub_eq_zero] at hr
   rw [hr]
-  simp only [map_add, map_sum, map_smul, map_one, coeff_smul, smul_eq_mul]
+  simp only [map_add, map_sum, map_smul, map_one, smul_eq_mul]
 
 private theorem cc_fix [Fintype σ] {w : σ → Y} {w' : τ → Y} {G : σ → MvPowerSeries τ E}
     {g : σ → MvPowerSeries σ E} (hG : ∀ j, Low 1 (G j)) (hg : ∀ j, Low 2 (g j))

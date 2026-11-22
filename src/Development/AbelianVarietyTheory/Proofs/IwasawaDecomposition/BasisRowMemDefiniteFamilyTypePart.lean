@@ -35,7 +35,7 @@ theorem row_type : (GlobalTheory.Published.DiscreteSeriesCover ∧ GlobalTheory.
   obtain ⟨hj1, hj2⟩ := Finset.mem_Icc.1 hj
   have hj' : j - 1 < D.R.m := by omega
   have e := h2 ⟨j - 1, hj'⟩ A3.A.μ0 (D.what₂.ft σ) (Or.inl Y.tup0) (hiso σ ⟨j - 1, hj'⟩)
-  simp only [Fin.val_mk, Nat.sub_add_cancel hj1, Y.tup0] at e
+  simp only [Nat.sub_add_cancel hj1, Y.tup0] at e
   unfold RealDat3.lamN
   rw [dif_pos hj', e]
   rfl

@@ -13,4 +13,4 @@ theorem _root_.GlobalTheory.T.exists_mul_mem_integralClosureOverGenericFibre : �
     [Module.Finite (GlobalTheory.LocAcyc.GenFib A R) D] (s : Finset D),
     ∃ a : A, a ≠ 0 ∧ ∀ d ∈ s,
       GlobalTheory.KeyOriginNoeth.baseHom A R D (algebraMap A R a) * d ∈ GlobalTheory.KeyOriginNoeth.closure A R D := by
-  first | (exact @GlobalTheory.KeyOriginNoeth.exists_common_multiple_mem_closure) | (exact GlobalTheory.KeyOriginNoeth.exists_common_multiple_mem_closure) | (intros; apply GlobalTheory.KeyOriginNoeth.exists_common_multiple_mem_closure <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginNoeth.exists_common_multiple_mem_closure)

@@ -133,7 +133,7 @@ private theorem borelGL_s_eq_leviEmb_points_leviTorus (k : Type) [Field k] [Topo
   change ((_root_.GlobalTheory.LGrp.diagHom k n t : GL n k) : Matrix n n k) i j = _
   rw [_root_.GlobalTheory.LGrp.diagHom_val]
   simp [_root_.GlobalTheory.SmGL.leviEmb, _root_.GlobalTheory.SmGL.leviTorus, _root_.GlobalTheory.SmGL.points]
-  by_cases h : i = j <;> simp [Matrix.diagonal_apply, h]
+  by_cases h : i = j <;> simp [h]
 
 open MeasureTheory ValuativeRel in
 open scoped NNReal in

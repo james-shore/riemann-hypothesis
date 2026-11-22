@@ -63,7 +63,7 @@ private lemma mddbar_sum_smul_coordVec {n : ℕ} {r : Type}
       ∑ c, ∑ d, (x c * starRingEnd ℂ (y d)) •
         _root_.GlobalTheory.HermFrame.mddbar G z (_root_.GlobalTheory.GoodMetric.coordVec c) (_root_.GlobalTheory.GoodMetric.coordVec d) := by
   ext i j
-  simp [_root_.GlobalTheory.HermFrame.mddbar_apply, Matrix.sum_apply, Finset.mul_sum, mul_assoc]
+  simp [_root_.GlobalTheory.HermFrame.mddbar_apply, Matrix.sum_apply, mul_assoc]
   rw [Finset.sum_comm]
 
 set_option autoImplicit false in

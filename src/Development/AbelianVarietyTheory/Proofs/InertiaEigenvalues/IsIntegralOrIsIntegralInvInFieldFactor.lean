@@ -54,7 +54,7 @@ theorem isIntegral_or_isIntegral_of_fieldFactor : ∀ (K : UQ) (B : InvAlg K) (f
     refine ⟨⟨0, 1, fun h => hf0 ?_⟩, mul_comm, ?_⟩
     · obtain ⟨c, hc⟩ := (hmk 0 1).1 h
       have := congrArg (f * ·) hc
-      simp only [mul_sub, mul_zero, mul_one, zero_sub] at this
+      simp only [zero_sub] at this
       rw [← mul_assoc, mul_sub, mul_one, hf.eq, sub_self, zero_mul] at this
       simpa using this
     · intro a ha
@@ -79,7 +79,6 @@ theorem isIntegral_or_isIntegral_of_fieldFactor : ∀ (K : UQ) (B : InvAlg K) (f
     rw [AlgEquiv.commutes]
     first
       | exact IsScalarTower.algebraMap_apply K.O K.E (B.A ⧸ I) x
-      | rw [← Ideal.Quotient.mk_algebraMap, ← Ideal.Quotient.mk_algebraMap, ← IsScalarTower.algebraMap_apply]
   haveI : Algebra.IsIntegral (FractionRing K.O) (B.A ⧸ I) := by
     refine ⟨fun x => ?_⟩
     have hx : IsIntegral K.E x := Algebra.IsIntegral.isIntegral x

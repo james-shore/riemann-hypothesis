@@ -58,8 +58,6 @@ theorem exists_coeff (V : HSpace E) {k : ℕ} (x : Fin k → V.V)
   | exact @_root_.GlobalTheory.MiscellaneousLemmas.main
   | exact _root_.GlobalTheory.MiscellaneousLemmas.main
   | (apply _root_.GlobalTheory.MiscellaneousLemmas.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.MiscellaneousLemmas.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.MiscellaneousLemmas.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.MiscellaneousLemmas.main ..)
 
 theorem mem_latHat_iff :

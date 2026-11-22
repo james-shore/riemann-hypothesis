@@ -33,7 +33,7 @@ theorem sum_inner_classReps_indep : ∀ (Γ Gi Gf : Type) [Group Γ] [Group Gi] 
       obtain ⟨c, ⟨γ, κ, h⟩, -⟩ := hs (s' c')
       refine ⟨c, (hs' (s c)).unique (hg c) ⟨γ⁻¹, κ⁻¹, ?_⟩⟩
       rw [h]
-      simp only [map_mul, map_inv, Subgroup.coe_mul, Subgroup.coe_inv]
+      simp only [map_inv, Subgroup.coe_inv]
       group
   refine Fintype.sum_bijective g hbij _ _ (fun c => ?_)
   obtain ⟨γ, κ, h⟩ := hg c

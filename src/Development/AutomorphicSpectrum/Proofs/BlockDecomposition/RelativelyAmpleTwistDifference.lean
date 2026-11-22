@@ -112,7 +112,7 @@ theorem relAmple_tw_of_roots : ∀ (R : Type) [CommRing R] (X : Over (Spec (Comm
     have f₁ : ((n * (n + 1) : ℕ) : ℤ) • GlobalTheory.CechPic.cls C hC = ((n + 1 : ℕ) : ℤ) • GlobalTheory.CechPic.cls Q hQ := by
       rw [← e₂, smul_smul]; congr 1 <;> (push_cast; ring)
     have f₂ : ((n * (n + 1) : ℕ) : ℤ) • GlobalTheory.CechPic.cls A hA = (n : ℤ) • GlobalTheory.CechPic.cls Q hQ := by
-      rw [← e₁, smul_smul]; congr 1 <;> (push_cast; ring)
+      rw [← e₁, smul_smul]; congr 1
     rw [f₁, f₂, ← sub_smul]
     simp
   obtain ⟨w, hw⟩ : LBIso Q (pw (tw C A (-1)) ((n * (n + 1) : ℕ) : ℤ)) := (GlobalTheory.CechPic.cls_eq_iff hQ hP).1 hcls.symm

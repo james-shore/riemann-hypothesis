@@ -28,17 +28,6 @@ theorem finiteDimensional_prodSub {V₁ : Submodule ℂ M₁} {V₂ : Submodule 
   unfold prodSub
   first
     | (rw [Submodule.comap_equiv_eq_map_symm]; exact (h₁'.prod h₂').map _)
-    | (have heq : Submodule.comap (WithLp.linearEquiv 2 ℂ (M₁ × M₂)).toLinearMap (V₁.prod V₂) =
-          Submodule.map (WithLp.linearEquiv 2 ℂ (M₁ × M₂)).symm.toLinearMap (V₁.prod V₂) := by
-         ext x
-         simp only [Submodule.mem_comap, Submodule.mem_map]
-         constructor
-         · intro hx
-           exact ⟨_, hx, by simp⟩
-         · rintro ⟨y, hy, rfl⟩
-           simpa using hy
-       rw [heq]
-       exact (h₁'.prod h₂').map _)
 
 theorem prodSub_kStable {ε : Fin n → Bool} {E₁ : Fin n → Fin n → Module.End ℂ M₁}
     {E₂ : Fin n → Fin n → Module.End ℂ M₂} {V₁ : Submodule ℂ M₁} {V₂ : Submodule ℂ M₂}
@@ -58,8 +47,6 @@ theorem casimir_mem_genSub {M : Type*} [AddCommGroup M] [Module ℂ M] (E : Fin 
        refine Submodule.sum_mem _ fun a _ => ?_
        rw [LinearMap.sum_apply]
        exact Submodule.sum_mem _ fun b _ => hT a b _ (hT b a _ (hVT hw)))
-    | (simp only [LinearMap.coeFn_sum, Finset.sum_apply]
-       exact Submodule.sum_mem _ fun a _ => Submodule.sum_mem _ fun b _ => hT a b _ (hT b a _ (hVT hw)))
 
 theorem casimir_eq_casVal_of_model {ε : Fin n → Bool} {lam : Fin n → ℝ} (hgap : StdGap ε lam)
     {M₁ : Type*} [NormedAddCommGroup M₁] [InnerProductSpace ℂ M₁] {E₁ : Fin n → Fin n → Module.End ℂ M₁}

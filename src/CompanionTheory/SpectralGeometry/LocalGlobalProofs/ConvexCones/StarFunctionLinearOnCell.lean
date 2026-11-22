@@ -66,7 +66,7 @@ theorem starFun_linearOn : ∀ (O : Type) [CommRing O] [IsDedekindDomain O] [Cha
       have := psv 1 0 zero_le_one fun _ => le_rfl
       simpa using this
     have psγs : ∀ j, (starDepth bar ψ w).evalZ (γ (s j)) = 0 := fun j => by
-      have := psv 0 (Pi.single j 1) le_rfl fun i => by by_cases hi : i = j <;> simp [Pi.single_apply, hi]
+      have := psv 0 (Pi.single j 1) le_rfl fun i => by by_cases hi : i = j <;> simp [hi]
       simpa [Pi.single_apply] using this
     have ψv : ∀ (a : ℝ) (d : Fin m' → ℝ), 0 ≤ a → (∀ j, 0 ≤ d j) →
         evalR ψ (a • toReal β₀ + ∑ j, d j • toReal (γ (s j))) = a * ψ.evalZ β₀ + ∑ j, d j * ψ.evalZ (γ (s j)) := by

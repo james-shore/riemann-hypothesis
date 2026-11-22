@@ -107,13 +107,11 @@ theorem tens_rel {E : GLOps n K V} (hE : IsGLRep E) (a b c d : Fin n) :
   simp only [LinearMap.sub_apply, Module.End.mul_apply] at hc
   simp only [LinearMap.sub_apply, Module.End.mul_apply, Pi.sub_apply, tensOps_apply, map_add]
   split_ifs at hc ⊢ <;> subst_vars <;>
-    (try simp only [tensOps_apply, LinearMap.zero_apply, Pi.zero_apply, map_zero, add_zero, zero_add,
-      sub_zero, LinearMap.sub_apply] at hc ⊢) <;>
+    (try simp only [tensOps_apply, LinearMap.zero_apply, Pi.zero_apply, map_zero, add_zero, sub_zero] at hc ⊢) <;>
     (try split_ifs at hc ⊢) <;> (try subst_vars) <;>
     first
     | abel1
     | (rw [sub_eq_iff_eq_add] at hc; rw [hc]; abel1)
-    | skip
   all_goals done
 
 theorem tens_single_wt (E : GLOps n K V) (ν : Fin n → ℤ) (i : Fin n) (x : V) (hx : x ∈ weightSp E ν) :

@@ -154,7 +154,7 @@ theorem MonoDegLE.sum_eq_sum_range {ι N : Type*} [Finite ι] [AddCommMonoid N] 
   have h1 := Finset.sum_subtype (p := fun α : ι →₀ ℕ => α.degree ≤ k)
     (F := MonoDegLE.fintype ι k) (Finsupp.finite_of_degree_le (σ := ι) k).toFinset (by simp) g
   rw [← h1, ← Finset.sum_fiberwise_of_maps_to (t := Finset.range (k + 1)) (g := Finsupp.degree)
-    (by simp [Nat.lt_succ_iff])]
+    (by simp)]
   refine Finset.sum_congr rfl fun a ha => Finset.sum_subtype _ (fun α => ?_) g
   rw [Finset.mem_range] at ha
   simp only [Finset.mem_filter, Set.Finite.mem_toFinset, Set.mem_setOf_eq]

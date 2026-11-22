@@ -85,9 +85,9 @@ theorem kapEquiv : KapEquiv := by
         (fun H H' => -(fderiv ℝ k y (y * H')) * ε H + k y * ε H * fderiv ℝ Fr 1 H')
         (fun H₁ H₂ H' => by simp only [map_add, mul_add, add_mul]; abel)
         (fun c H H' => by simp only [map_smul, mul_smul_comm, smul_mul_assoc, smul_add])
-        (fun H H₁ H₂ => by simp only [Matrix.mul_add, map_add, neg_add, add_mul, mul_add]; abel)
+        (fun H H₁ H₂ => by simp only [map_add, neg_add, add_mul, mul_add]; abel)
         (fun c H H' => by
-          simp only [Matrix.mul_smul, map_smul, neg_smul, smul_mul_assoc, mul_smul_comm, smul_add, ← smul_neg])
+          simp only [map_smul, smul_mul_assoc, mul_smul_comm, smul_add, ← smul_neg])
       have hkapR : kapR ε Fr k y = ∑ p, B (hb p) (hb p) := rfl
       have hterm : ∀ p, -(Rd (hb p) k (y * k₂.1)) * ε (hb p) + k (y * k₂.1) * ε (hb p) * fderiv ℝ Fr 1 (hb p) =
           B (Y p) (Y p) * E.ρ k₂ := by

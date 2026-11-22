@@ -131,7 +131,7 @@ private theorem isURepOn_embH_of_signs {e : Option (Fin n) ≃ Fin (n + 1)} {ε 
   have hc : Continuous (embH e) := by
     refine continuous_pi fun a => continuous_pi fun b => ?_
     simp only [embH]
-    rcases e.symm a with _ | i <;> rcases e.symm b with _ | j <;> first | fun_prop | exact continuous_const
+    rcases e.symm a with _ | i <;> rcases e.symm b with _ | j <;> first | fun_prop
   refine ⟨⟨?_, fun a ha b hb => ?_⟩, fun g hg v => hπ.2.1 _ (embH_mem_UJset_of_signs hs hg) v,
     fun v => (hπ.2.2 v).comp hc.continuousOn (fun h hh => embH_mem_UJset_of_signs hs hh)⟩
   · simp only [embH_one]

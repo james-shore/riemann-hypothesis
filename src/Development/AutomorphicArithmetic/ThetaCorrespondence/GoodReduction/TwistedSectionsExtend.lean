@@ -41,7 +41,7 @@ theorem twisted_sections_extend : ∀ (K W K' : Type) [Field K] [CommRing W] [Is
     simp only [Over.comp_left, Over.id_left] at h
     simp only [Category.assoc]
     rw [reassoc_of% h]
-    simp only [pullback.map, Category.id_comp, pullback.lift_fst, Category.comp_id]
+    simp only [pullback.map, pullback.lift_fst, Category.comp_id]
   have hq : ρ ≫ pullback.snd G.hom (spMap (algebraMap W K')) =
       pullback.snd G.hom (spMap (algebraMap W K')) ≫ spMap (σ : K' →+* K') := by
     subst hρ

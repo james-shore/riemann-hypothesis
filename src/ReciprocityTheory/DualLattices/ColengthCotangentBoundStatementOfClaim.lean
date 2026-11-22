@@ -62,8 +62,6 @@ theorem colengthCotangentBound_of_claim (p : ℕ) [Fact p.Prime] (C : Type) [Fie
   rw [hcol lenN hlen]
   first
     | exact pow_le_pow_left₀ zero_le hle _
-    | exact pow_le_pow_left zero_le hle _
-    | gcongr
 
 theorem colengthCotangentBoundStatement_of_claim (hcl : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsAlgClosed C] [CharZero C]
     (v : Valuation C NNReal) (R : Type) [CommRing R] [Algebra R C],

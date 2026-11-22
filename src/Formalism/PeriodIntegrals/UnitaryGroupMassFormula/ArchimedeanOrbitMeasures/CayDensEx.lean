@@ -29,14 +29,12 @@ theorem eS_symm_inl (a : Fin (pP ε)) : ε ((eS ε).symm (Sum.inl a)) = true := 
   first
     | (simp; done)
     | (simp; exact ((Fintype.equivFin _).symm a).2)
-    | exact ((Fintype.equivFin _).symm a).2
 
 theorem eS_symm_inr (b : Fin (pQ ε)) : ε ((eS ε).symm (Sum.inr b)) = false := by
   unfold eS
   first
     | (simp; done)
     | (simpa using ((Fintype.equivFin _).symm b).2)
-    | (simp; simpa using ((Fintype.equivFin _).symm b).2)
 
 abbrev rA : Matrix (Fin n) (Fin n) ℂ ≃ₐ[ℂ] Matrix (Fin (pP ε) ⊕ Fin (pQ ε)) (Fin (pP ε) ⊕ Fin (pQ ε)) ℂ :=
   reindexAlgEquiv ℂ ℂ (eS ε)
@@ -50,10 +48,10 @@ theorem rA_Jm : rA ε (Formalism.REAL.Jm ε) = HcS.UG.Jpq (pP ε) (pQ ε) := by
   simp only [rA, reindexAlgEquiv_apply, Matrix.reindex_apply, Matrix.submatrix_apply, Formalism.REAL.Jm, HcS.UG.Jpq,
     Matrix.diagonal_apply, (eS ε).symm.injective.eq_iff]
   rcases i with a | a <;> rcases j with b | b
-  · by_cases h : a = b <;> simp [h, eS_symm_inl, Matrix.one_apply]
+  · by_cases h : a = b <;> simp [h, eS_symm_inl]
   · simp
   · simp
-  · by_cases h : a = b <;> simp [h, eS_symm_inr, Matrix.one_apply]
+  · by_cases h : a = b <;> simp [h, eS_symm_inr]
 
 theorem rA_mem_iff (M : Matrix (Fin n) (Fin n) ℂ) :
     (rA ε M)ᴴ * HcS.UG.Jpq (pP ε) (pQ ε) * rA ε M = HcS.UG.Jpq (pP ε) (pQ ε) ↔ Formalism.REAL.inUJ ε M := by
@@ -123,8 +121,6 @@ def phiU : Formalism.REAL.UJ ε ≃* HcS.BasicNotions.UpqT (pP ε) (pQ ε) where
 theorem continuous_phiF : Continuous (phiF ε) := by
   first
   | exact (HcInf.isClosedEmbedding_mat _ _).isInducing.continuous_iff.mpr
-      ((continuous_rA ε).comp (Units.continuous_val.comp continuous_subtype_val))
-  | exact (HcInf.isClosedEmbedding_mat _ _).toIsInducing.continuous_iff.mpr
       ((continuous_rA ε).comp (Units.continuous_val.comp continuous_subtype_val))
 
 theorem continuous_toS : Continuous fun h : HcS.BasicNotions.UpqT (pP ε) (pQ ε) =>

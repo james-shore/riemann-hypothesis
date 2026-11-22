@@ -132,7 +132,7 @@ theorem UpperTheory.exists_pow_locK_mul_inf_eq_one_of_levelLe_two :
       simp only [one_pow] at hp
       rw [← hp, ← pow_mul, ← zpow_natCast, mul_zpow, ← zpow_natCast (χ.locK P k) h, ← zpow_mul,
         ← zpow_mul]
-      congr 2 <;> push_cast <;> ring
+      congr 2 <;> push_cast
     have e2 : χ.inf a ^ (c * ((mf P * N : ℕ) : ℤ)) * χ.locK P a ^ (c * ((mf P * N : ℕ) : ℤ)) = 1 := by
       rw [← mul_zpow, show c * ((mf P * N : ℕ) : ℤ) = (N : ℤ) * (c * mf P) by push_cast; ring,
         zpow_mul, zpow_natCast, hA, one_zpow]

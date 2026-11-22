@@ -20,8 +20,6 @@ theorem herm_eq (x y : S.V) : S.hT y x = star (S.hT x y) := by
   first
     | exact (S.herm x y).symm
     | exact (S.herm.eq x y).symm
-    | (rw [← S.herm x y]; rfl)
-    | (rw [← S.herm.eq x y]; rfl)
 
 theorem tvMap_isom (e v : S.V) (l : E) (hee : S.hT e e = 0) (hev : S.hT e v = 0)
     (hl : l + star l = -S.hT v v) (x y : S.V) :
@@ -32,7 +30,7 @@ theorem tvMap_isom (e v : S.V) (l : E) (hee : S.hT e e = 0) (hev : S.hT e v = 0)
   rw [tvMap_apply, tvMap_apply]
   simp only [map_add, map_sub, map_smul, map_smulₛₗ, LinearMap.add_apply, LinearMap.sub_apply,
     LinearMap.smul_apply, hee, hev, hve, hxe, hxv, smul_eq_mul, starRingEnd_apply, star_mul',
-    mul_zero, zero_mul, add_zero, sub_zero, zero_add]
+    mul_zero, add_zero, sub_zero]
   linear_combination (star (S.hT e x) * S.hT e y) * hl
 
 def IntLat (Λ : Submodule (𝓞 E) S.V) : Prop := ∀ x ∈ Λ, ∀ y ∈ Λ, ∃ o : 𝓞 E, S.hT x y = (o : E)
@@ -129,8 +127,6 @@ theorem tv_mem_NLam (Λ : Submodule (𝓞 E) S.V) (hint : IntLat Λ) (F : LFlag 
     have hc : ((-ov - l : 𝓞 E) : E) = -S.hT v v - (l : E) := by
       first
         | (rw [hov]; push_cast; ring)
-        | (rw [hov]; push_cast)
-        | simp [hov]
     have h := tvMap_comp (F.fl.e a) (-v) (-S.hT v v - (l : E)) (l : E) hee (by simp [hev])
       (by simp [hve]) y
     rw [neg_neg] at h
@@ -172,8 +168,6 @@ theorem actsBy_frameAct {n : ℕ} {φ : S.V ≃ₗ[E] S.V} {f : Fin n → S.V} {
     rw [Matrix.mul_apply]
     first
       | (push_cast; rfl)
-      | push_cast
-      | simp
   unfold ActsBy at h
   simp only [frameAct, map_sum, map_smul, h, Finset.smul_sum, smul_smul, hcoe, Finset.sum_smul]
   rw [Finset.sum_comm]

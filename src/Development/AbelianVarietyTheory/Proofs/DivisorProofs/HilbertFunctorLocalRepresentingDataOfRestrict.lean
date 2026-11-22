@@ -62,8 +62,8 @@ lemma restrictIso_natural {Y H : Scheme.{0}} (b : Y ⟶ W.toScheme) (h : H ⟶ W
       (restrictIso z W h).hom = (restrictIso z W b).hom ≫ bc z c (h ≫ W.ι) (b ≫ W.ι) w := by
   apply pullback.hom_ext
   · simp only [bc, pullback.map, pullback.lift_fst, pullback.lift_fst_assoc, Category.assoc, Category.comp_id,
-      restrictIso_hom_fst_assoc, restrictIso_hom_fst]
-  · simp only [bc, pullback.map, pullback.lift_snd, pullback.lift_snd_assoc, Category.assoc, Category.comp_id,
+      restrictIso_hom_fst]
+  · simp only [bc, pullback.map, pullback.lift_snd, Category.assoc, Category.comp_id,
       restrictIso_hom_snd_assoc, restrictIso_hom_snd]
 
 theorem isHilbRep_restrict_local : ∀ {S Z : Scheme.{0}} (z : Z ⟶ S) (r : ℕ) (W : S.Opens),

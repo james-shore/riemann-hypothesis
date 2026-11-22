@@ -150,13 +150,13 @@ theorem hasDerivAt_rhoFun (w : l ⊕ l → ℝ) (f : Sch l) (x : EuclideanSpace 
 
 theorem dRho_add (w w' : l ⊕ l → ℝ) : dRho (w + w') = dRho w + dRho w' := by
   ext f x
-  simp only [ContinuousLinearMap.add_apply, SchwartzMap.add_apply, dRho_apply, pPart_add, qPart_add, inner_add_left,
+  simp only [ContinuousLinearMap.add_apply, dRho_apply, pPart_add, qPart_add, inner_add_left,
     map_add, ofReal_add]
   ring
 
 theorem dRho_smul (t : ℝ) (w : l ⊕ l → ℝ) : dRho (t • w) = (t : ℂ) • dRho w := by
   ext f x
-  simp only [ContinuousLinearMap.smul_apply, SchwartzMap.smul_apply, dRho_apply, pPart_smul, qPart_smul,
+  simp only [ContinuousLinearMap.smul_apply, dRho_apply, pPart_smul, qPart_smul,
     real_inner_smul_left, map_smul, ofReal_mul, smul_eq_mul, real_smul]
   ring
 
@@ -180,8 +180,7 @@ theorem dRho_comm (w w' : l ⊕ l → ℝ) :
   ext f x
   have hs : fderiv ℝ (fderiv ℝ f) x (pPart w) (pPart w') = fderiv ℝ (fderiv ℝ f) x (pPart w') (pPart w) :=
     ((f.smooth 2).contDiffAt.isSymmSndFDerivAt (by simp)) _ _
-  simp only [ContinuousLinearMap.sub_apply, ContinuousLinearMap.mul_apply, SchwartzMap.sub_apply,
-    ContinuousLinearMap.smul_apply, ContinuousLinearMap.one_apply, SchwartzMap.smul_apply, smul_eq_mul]
+  simp only [ContinuousLinearMap.sub_apply, ContinuousLinearMap.mul_apply, ContinuousLinearMap.smul_apply, ContinuousLinearMap.one_apply, smul_eq_mul]
   rw [dRho_apply w (dRho w' f), dRho_apply w' (dRho w f), key, key, dRho_apply, dRho_apply, hs]
   simp only [sympl, real_inner_comm (pPart w) (qPart w'), ofReal_sub]
   ring
@@ -303,7 +302,7 @@ theorem quad_fromBlocks {A B C D : Matrix l l ℝ} (hX : fromBlocks A B C D ∈ 
     have := dRho_comm (l := l) (Pi.single (Sum.inl j) 1) (Pi.single (Sum.inr k) 1)
     rw [sympl_single] at this
     rw [← sub_eq_iff_eq_add', this]
-    by_cases h : j = k <;> simp [Matrix.J, h, Matrix.one_apply]
+    by_cases h : j = k <;> simp [Matrix.J, h]
   have hQa : ∀ k (g : Sch l), Q k g x = 2 * π * I * x k * g x := fun k g => dRho_single_inr k g x
   have hq : quad (fromBlocks A B C D) = (4 * π * I : ℂ)⁻¹ • ((∑ j, ∑ k, (B j k : ℂ) • (P j * P k)) -
       (∑ j, ∑ k, (2 * A j k : ℂ) • (Q k * P j)) - (2 * π * I * (A.trace : ℝ) : ℂ) • 1 -
@@ -328,7 +327,7 @@ theorem quad_fromBlocks {A B C D : Matrix l l ℝ} (hX : fromBlocks A B C D ∈ 
   rw [hq]
   simp only [ContinuousLinearMap.smul_apply, ContinuousLinearMap.sub_apply, ContinuousLinearMap.sum_apply,
     ContinuousLinearMap.add_apply, ContinuousLinearMap.mul_apply, ContinuousLinearMap.one_apply,
-    SchwartzMap.smul_apply, SchwartzMap.sub_apply, SchwartzMap.add_apply, SchwartzMap.sum_apply, smul_eq_mul, hQa]
+    smul_eq_mul, hQa]
   simp only [hP, dRho_single_inl, mul_sub, Finset.mul_sum]
   congr 1
   · congr 1

@@ -22,6 +22,6 @@ theorem UpperTheory.V.Th.Sp.trp :
       split_ifs <;> simp
   have hchar : (A.map f).charpoly = ((Finset.univ.val.map fun i => f (α i)).map fun a => X - C a).prod := by
     rw [Matrix.charpoly_map, h, Polynomial.map_prod]
-    simp [Finset.prod_eq_multiset_prod, Multiset.map_map, Function.comp_def]
+    simp [Finset.prod_eq_multiset_prod, Function.comp_def]
   rw [htr, haeval, GlobalTheory.CompanionTheory.TraceSpec.trace_aeval_matrix, hchar, Polynomial.roots_multiset_prod_X_sub_C, map_sum]
-  simp [Multiset.map_map, Finset.sum_eq_multiset_sum, Function.comp_def]
+  simp [Finset.sum_eq_multiset_sum, Function.comp_def]

@@ -102,7 +102,7 @@ theorem entryLe_antisymm_del : ∀ (K : Type) [Fintype K] (X A Ta Tb Dab Dba dAa
         + ((wa * wb : ℝ) : ℂ) • (X * (ddAab - ddAba)) := by
     push_cast
     simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, smul_sub, smul_add, Matrix.mul_add,
-      Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_assoc, mul_comm (wb : ℂ) (wa : ℂ)]
+      Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_assoc, mul_comm (wb : ℂ) (wa : ℂ)]
     abel
   have hwa : wa * b ≤ b := by nlinarith
   have hwb : wb * b ≤ b := by nlinarith

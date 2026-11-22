@@ -42,7 +42,7 @@ theorem layer_le_of_stable {T : Submodule ℂ M} (hVT : V ≤ T)
 theorem layer_le_genSub (k : ℕ) : layer ε E V k ≤ genSub E V := by
   refine layer_le_of_stable (le_sInf fun T hT => hT.1) ?_ k
   intro a b v hv
-  simp only [genSub, Submodule.mem_sInf, Set.mem_setOf_eq] at hv ⊢
+  simp only [Submodule.mem_sInf, Set.mem_setOf_eq] at hv ⊢
   intro T hT
   exact hT.2 a b v (hv T hT)
 

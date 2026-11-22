@@ -47,7 +47,6 @@ theorem mem_UJ_gramN_iff_map_symm : ∀ (D : D7) (X : HidaSetting D) (g : GL (Fi
     unfold Formalism.UG.cT
     first
       | rfl
-      | (ext i j; rfl)
   have hinj : Function.Injective
       (fun A : Matrix (Fin (D.R.N 0)) (Fin (D.R.N 0)) D.host.E => A.map X.ιE.symm) :=
     Matrix.map_injective X.ιE.symm.injective

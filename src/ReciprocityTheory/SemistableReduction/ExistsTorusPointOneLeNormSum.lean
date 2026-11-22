@@ -14,8 +14,6 @@ theorem mem_unitBallRing {K : Type*} [NormedField K] [IsUltrametricDist K] (x : 
   first
   | (change ‖x‖₊ ≤ 1 ↔ ‖x‖ ≤ 1
      rw [← NNReal.coe_le_coe, coe_nnnorm, NNReal.coe_one])
-  | (rw [unitBallRing, Valuation.mem_valuationSubring_iff]
-     simp [NormedField.valuation_apply, ← NNReal.coe_le_coe])
 
 theorem residue_eq_zero_iff_norm_lt_one {K : Type*} [NormedField K] [IsUltrametricDist K]
     (x : unitBallRing K) :
@@ -38,7 +36,6 @@ theorem residue_eq_zero_iff_norm_lt_one {K : Type*} [NormedField K] [IsUltrametr
     have h := congrArg (fun t : unitBallRing K => ‖(t : K)‖) hy
     first
     | simp only [MulMemClass.coe_mul, OneMemClass.coe_one, norm_mul, norm_one] at h
-    | simp at h
     have hy1 : ‖(y : K)‖ ≤ 1 := (mem_unitBallRing (y : K)).1 y.2
     nlinarith [norm_nonneg (x : K), norm_nonneg (y : K)]
 

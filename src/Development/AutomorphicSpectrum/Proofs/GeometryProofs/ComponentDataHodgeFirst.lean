@@ -46,10 +46,10 @@ private theorem isMultiHomog_X_geometry {K : Type} {Jt : K → Type} [∀ k, Fin
     rw [Finset.sum_eq_single i]
     · simp
     · intro b _ hb
-      simp [Finsupp.single_apply, Ne.symm hb]
+      simp [Ne.symm hb]
     · intro h; exact absurd (Finset.mem_univ i) h
   · have hk' : k ≠ k' := Ne.symm hk
-    simp [Finsupp.single_apply, hk, hk']
+    simp [hk]
 
 private theorem isMultiHomog_prod_X_one {K : Type} [Fintype K] {Jt : K → Type} [∀ k, Fintype (Jt k)]
     (ch : (k : K) → Jt k) :

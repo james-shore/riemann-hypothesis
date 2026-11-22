@@ -9,6 +9,6 @@ theorem fdom_exists_all {G : Type*} [Group G] [TopologicalSpace G] [IsTopologica
     [SecondCountableTopology G] [MeasurableSpace G] [OpensMeasurableSpace G]
     (Γ : Subgroup G) [DiscreteTopology Γ] :
     ∃ s : Set G, MeasurableSet s ∧ ∀ μ : Measure G, IsFundamentalDomain Γ s μ := by
-  first | exact Bl.SecondBlockLemmaC.goal1 .. | (apply Bl.SecondBlockLemmaC.goal1 <;> assumption) | (intros; apply Bl.SecondBlockLemmaC.goal1 <;> assumption)
+  first | exact Bl.SecondBlockLemmaC.goal1 ..
 
 end Formalism.IndefR.Eqv.G5

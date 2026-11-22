@@ -52,9 +52,9 @@ theorem continuous_glEmb (n : ℕ) : Continuous (glEmb k n) := by
   refine continuous_pi fun i => continuous_pi fun j => ?_
   induction i using Fin.lastCases with
   | last => induction j using Fin.lastCases <;> simp [glEmbMat] <;>
-      first | exact continuous_const | exact (continuous_apply _).comp (continuous_apply _) | fun_prop
+      first | exact continuous_const
   | cast i => induction j using Fin.lastCases <;> simp [glEmbMat] <;>
-      first | exact continuous_const | exact (continuous_apply _).comp (continuous_apply _) | fun_prop
+      first | exact continuous_const | exact (continuous_apply _).comp (continuous_apply _)
 
 theorem continuous_levi_comp_subtype (m : ℕ) : Continuous ((levi k (m + 1)).comp (Mir k m).subtype) :=
   continuous_induced_rng.2 ((continuous_glEmb (m + 1)).comp continuous_subtype_val)

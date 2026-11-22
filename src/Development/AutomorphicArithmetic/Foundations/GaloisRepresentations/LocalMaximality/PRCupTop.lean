@@ -15,7 +15,7 @@ namespace UpperTheory.Gal.productCup_of_system.RCT
 private theorem wd_one {ι E : Type} [LinearOrder ι] [AddCommGroup E] [Module ℂ E] (c : Finset ι → E) (s : Finset ι) :
     wd (fun _ : ι => (1 : Module.End ℂ E)) c s = deltaL ℂ ι E c s := by
   show _ = ∑ i ∈ s, GlobalTheory.cubeSign s i • c (s.erase i)
-  simp [wd, Units.smul_def]
+  simp [wd]
 
 private theorem card_filters {n : ℕ} (i : Fin n) :
     (Finset.univ.filter (· ≤ i)).card + (Finset.univ.filter (i ≤ ·)).card = n + 1 := by
@@ -197,7 +197,7 @@ theorem UpperTheory.Gal.productCup_of_system.rCupTop_of :
       intro i
       show (bil τ ρ).flip _ (((-1 : ℤ) ^ (Finset.univ.filter (· ≤ i)).card) •
         ∑ j ∈ J, GlobalTheory.cubeSign J j • y (uni (Finset.univ.filter (· ≤ i)) (J.erase j))) = _
-      simp only [Units.smul_def, map_zsmul, map_sum, LinearMap.flip_apply, Finset.smul_sum]
+      simp only [map_zsmul, map_sum, LinearMap.flip_apply, Finset.smul_sum]
       exact Finset.sum_congr rfl fun j _ => smul_comm _ _ _
     show ∑ j ∈ J, GlobalTheory.cubeSign J j • ∑ i, ((-1 : ℤ) ^ (Finset.univ.filter (· ≤ i)).card) •
         bil τ ρ (y (uni (Finset.univ.filter (· ≤ i)) (J.erase j))) (α (Finset.univ.filter (i ≤ ·))) =

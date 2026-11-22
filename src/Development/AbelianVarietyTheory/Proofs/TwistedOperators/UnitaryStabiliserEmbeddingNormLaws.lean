@@ -140,7 +140,7 @@ theorem stab (hs : Signs e ε ε') {g : Mat (n + 1)} (hg : g ∈ UJset ε) (hc :
     intro b
     have h1 := congrFun (congrFun hJ b) (e none)
     simp only [Matrix.mul_apply, hc, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true] at h1
-    simp only [Jm, Matrix.mul_diagonal, Matrix.conjTranspose_apply, Matrix.diagonal_apply, mul_ite, mul_zero,
+    simp only [Jm, Matrix.conjTranspose_apply, Matrix.diagonal_apply, mul_ite, mul_zero,
       Finset.sum_ite_eq', Finset.mem_univ, if_true, hs.1, mul_one] at h1
     have h2 := congrArg star h1
     simp only [star_star] at h2

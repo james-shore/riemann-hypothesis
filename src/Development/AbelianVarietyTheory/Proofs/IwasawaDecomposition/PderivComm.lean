@@ -20,7 +20,7 @@ theorem pderiv_comm' {σ : Type} (i j : σ) (p : MvPolynomial σ ℂ) :
   | mul_X p s hp =>
     simp only [Derivation.leibniz, pderiv_X, map_add, smul_eq_mul, hp]
     simp only [Pi.single_apply]
-    split_ifs <;> simp [Derivation.leibniz] <;> ring
+    split_ifs <;> simp <;> ring
 
 variable {κ σ : Type} [Fintype κ] [DecidableEq κ] [DecidableEq σ]
 
@@ -55,7 +55,7 @@ theorem pair_eq (e : κ → σ) (he : Function.Injective e) (p : κ → Prop) [D
     rw [Derivation.leibniz, pderiv_X, smul_eq_mul, smul_eq_mul]
     simp only [Pi.single_apply, he.eq_iff]
     by_cases h : a = b
-    · simp [h, mul_comm]
+    · simp [h]
     · simp [h, Ne.symm h]
   have hkl := hA k l
   have hlk := hA l k
@@ -77,7 +77,7 @@ theorem pair_eq (e : κ → σ) (he : Function.Injective e) (p : κ → Prop) [D
   · have hn : ¬ (k = l ∧ ¬ p k) := fun h => h.2 hk
     have e1 : (p k ↔ p l) := by simp [hk, hl]
     rw [if_neg hn, wp k hk, wp l hl, vp k hk, vp l hl]
-    simp only [gT, ms k l e1, ms l k e1.symm, ns k l e1, ns l k e1.symm, fp k hk, fp l hl, zero_div, map_zero, C_0]
+    simp only [gT, ms k l e1, ms l k e1.symm, ns k l e1, ns l k e1.symm, fp k hk, fp l hl, zero_div, map_zero]
     ring
   · have hne : k ≠ l := fun h => hl (h ▸ hk)
     have hn : ¬ (k = l ∧ ¬ p k) := fun h => hne h.1
@@ -86,7 +86,7 @@ theorem pair_eq (e : κ → σ) (he : Function.Injective e) (p : κ → Prop) [D
     rw [if_neg e1] at hkl
     rw [if_neg e2] at hlk
     rw [if_neg hn, wp k hk, wn l hl, vp k hk, vn l hl]
-    simp only [gT, md k l e1, md l k e2, nd k l e1, nd l k e2, fp k hk, fn l hl, hlk, hkl, map_zero, C_0, zero_div]
+    simp only [gT, md k l e1, md l k e2, nd k l e1, nd l k e2, fp k hk, fn l hl, hlk, hkl, map_zero]
     rw [h2 (A k l), h2 (A l k), hd l k]
     ring
   · have hne : k ≠ l := fun h => hk (h ▸ hl)
@@ -96,7 +96,7 @@ theorem pair_eq (e : κ → σ) (he : Function.Injective e) (p : κ → Prop) [D
     rw [if_neg e1] at hkl
     rw [if_neg e2] at hlk
     rw [if_neg hn, wn k hk, wp l hl, vn k hk, vp l hl]
-    simp only [gT, md k l e1, md l k e2, nd k l e1, nd l k e2, fn k hk, fp l hl, hlk, hkl, map_zero, C_0, zero_div]
+    simp only [gT, md k l e1, md l k e2, nd k l e1, nd l k e2, fn k hk, fp l hl, hlk, hkl, map_zero]
     rw [h2 (A k l), h2 (A l k), hd l k]
     ring
   · have e1 : (p k ↔ p l) := by simp [hk, hl]
@@ -104,11 +104,11 @@ theorem pair_eq (e : κ → σ) (he : Function.Injective e) (p : κ → Prop) [D
     rw [if_pos e1] at hkl
     rw [if_pos e2] at hlk
     rw [wn k hk, wn l hl, vn k hk, vn l hl, hx, hx]
-    simp only [gT, ms k l e1, ms l k e2, ns k l e1, ns l k e2, fn k hk, fn l hl, hlk, hkl, map_zero, C_0, zero_div,
+    simp only [gT, ms k l e1, ms l k e2, ns k l e1, ns l k e2, fn k hk, fn l hl, hlk, hkl, map_zero, zero_div,
       map_neg]
     by_cases h : k = l
     · subst h
-      simp only [if_true, true_and, if_pos hk, not_false_eq_true, if_pos (show ¬ p k from hk)]
+      simp only [if_true, true_and, if_pos hk]
       rw [h2' (A k k)]
       ring
     · have h' : l ≠ k := Ne.symm h
@@ -239,7 +239,7 @@ theorem aK_conj {X : Matrix (Fin n) (Fin n) ℂ} {Y : Matrix (Fin m) (Fin m) ℂ
       linear_combination (sgn (sgB pT i) * sgn (sgB pT i') * Y i' i) * hb j
     · subst h2
       have h1' : j' ≠ j := Ne.symm h1
-      simp only [if_true, if_neg h1, if_neg h1', map_zero, zero_sub, hX, map_neg]
+      simp only [if_true, if_neg h1, if_neg h1', map_zero, zero_sub, hX]
       linear_combination (-(sgn (sgB pS j) * sgn (sgB pS j') * X j j')) * ha i
     · have h1' : j' ≠ j := Ne.symm h1
       have h2' : i' ≠ i := Ne.symm h2

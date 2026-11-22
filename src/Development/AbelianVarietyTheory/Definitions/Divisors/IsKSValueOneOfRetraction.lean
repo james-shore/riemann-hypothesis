@@ -459,17 +459,17 @@ theorem tanVal_mul {v w : epsR R ⟶ A} (hv : IsTangent v) (hw : IsTangent w)
         DualNumber R →+* DualNumber R) ≫ u.left = spMap (algebraMap R (DualNumber R)) ≫ η[A].left
     rw [hk, Cris.spMap_comp, Category.assoc, hu']
   have e1 : dg.comp p₁ = AlgHom.id R _ :=
-    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [dg, p₁, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) (by simp [dg, p₁, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map])
+    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [dg, p₁, TrivSqZeroExt.fst_map]) (by simp [dg, p₁, TrivSqZeroExt.snd_map])
   have e2 : dg.comp p₂ = AlgHom.id R _ :=
-    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [dg, p₂, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) (by simp [dg, p₂, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map])
+    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [dg, p₂, TrivSqZeroExt.fst_map]) (by simp [dg, p₂, TrivSqZeroExt.snd_map])
   have e3 : q₁.comp p₁ = AlgHom.id R _ :=
-    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [q₁, p₁, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) (by simp [q₁, p₁, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map])
+    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [q₁, p₁, TrivSqZeroExt.fst_map]) (by simp [q₁, p₁, TrivSqZeroExt.snd_map])
   have e4 : q₁.comp p₂ = TrivSqZeroExt.map (0 : R →ₗ[R] R) :=
-    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [q₁, p₂, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) (by simp [q₁, p₂, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map])
+    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [q₁, p₂, TrivSqZeroExt.fst_map]) (by simp [q₁, p₂, TrivSqZeroExt.snd_map])
   have e5 : q₂.comp p₁ = TrivSqZeroExt.map (0 : R →ₗ[R] R) :=
-    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [q₂, p₁, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) (by simp [q₂, p₁, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map])
+    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [q₂, p₁, TrivSqZeroExt.fst_map]) (by simp [q₂, p₁, TrivSqZeroExt.snd_map])
   have e6 : q₂.comp p₂ = AlgHom.id R _ :=
-    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [q₂, p₂, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) (by simp [q₂, p₂, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map])
+    AlgHom.ext fun x ↦ TrivSqZeroExt.ext (by simp [q₂, p₂, TrivSqZeroExt.fst_map]) (by simp [q₂, p₂, TrivSqZeroExt.snd_map])
   have hZd : spOver dg ≫ Z = v * w := by
     show spOver dg ≫ ((spOver p₁ ≫ v) * (spOver p₂ ≫ w)) = v * w
     rw [MonObj.comp_mul, ← Category.assoc, ← Category.assoc, spOver_comp, spOver_comp, e1, e2, specMap_id₂,
@@ -489,9 +489,9 @@ theorem tanVal_mul {v w : epsR R ⟶ A} (hv : IsTangent v) (hw : IsTangent w)
     intro φ u hπ hi hu
     rw [tanVal_apply, SqExt.val_map E (SqExt.dual R) φ (AlgHom.id R R) hπ hi Z.left (pt_w Z) u.left
       (pt_w u) (congrArg Over.Hom.left hu) f]
-  rw [key dg (v * w) (fun c ↦ by simp [E, dg, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) (fun b ↦ by simp [E, dg, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) hZd,
-    key q₁ v (fun c ↦ by simp [E, q₁, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) (fun b ↦ by simp [E, q₁, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) hZ1,
-    key q₂ w (fun c ↦ by simp [E, q₂, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) (fun b ↦ by simp [E, q₂, TrivSqZeroExt.fst_map, TrivSqZeroExt.snd_map]) hZ2]
+  rw [key dg (v * w) (fun c ↦ by simp [E, dg, TrivSqZeroExt.fst_map]) (fun b ↦ by simp [E, dg]) hZd,
+    key q₁ v (fun c ↦ by simp [E, q₁, TrivSqZeroExt.fst_map]) (fun b ↦ by simp [E, q₁]) hZ1,
+    key q₂ w (fun c ↦ by simp [E, q₂, TrivSqZeroExt.fst_map]) (fun b ↦ by simp [E, q₂]) hZ2]
   obtain ⟨V, hV⟩ : ∃ V : TrivSqZeroExt R (R × R), E.val Z.left (pt_w Z) f.1 = V := ⟨_, rfl⟩
   rw [hV]
   show TrivSqZeroExt.snd (TrivSqZeroExt.map (LinearMap.fst R R R + LinearMap.snd R R R) V) =
@@ -765,7 +765,7 @@ theorem evalAt_pull_g {X X' : Scheme.{0}} (L : LB X) (φ : X' ⟶ X) {B : Type} 
     evalAt (x ≫ φ) _ h (L.g (j PUnit.unit) (j' PUnit.unit)).val =
       evalAt x _ h' ((L.pull φ).g j j').val := by
   unfold LB.pull LB.LinComb
-  simp only [Fintype.prod_unique, zpow_one, pow_one]
+  simp only [Fintype.prod_unique, zpow_one]
   exact evalAt_pull φ x _ h h' _
 
 theorem isChern_pull {X X' : Scheme.{0}} {κ : DividedPowers I} {κ' : DividedPowers I'} {s : X ⟶ Sp R}

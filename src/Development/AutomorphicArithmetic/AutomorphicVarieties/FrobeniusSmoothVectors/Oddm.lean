@@ -50,7 +50,7 @@ theorem UpperTheory.V.Fr.oddm :
           rw [if_neg]
           intro hall
           have := hall _ hlt
-          simp [Finsupp.tsub_apply, Finsupp.single_apply, Ne.symm (ne_of_lt hlt)] at this
+          simp [Finsupp.tsub_apply, Ne.symm (ne_of_lt hlt)] at this
           exact hj0 this
         · rw [if_neg hjl]
       · intro h

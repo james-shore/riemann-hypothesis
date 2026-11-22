@@ -98,11 +98,6 @@ theorem bijective_of_ne_zero {ρ : Representation ℂ G V} {ρ' : Representation
     Function.Bijective F := by
   first
   | (rename_i h_3 h_4 h_5 h_6 h_7; revert G V V' h_3 h_4 h_5 h_6 h_7 ρ ρ' hρ hρ' F hF h0; exact @_root_.GlobalTheory.BijectiveIntertwining.bijective_of_intertwining)
-  | exact @_root_.GlobalTheory.BijectiveIntertwining.bijective_of_intertwining
-  | exact _root_.GlobalTheory.BijectiveIntertwining.bijective_of_intertwining
-  | (apply _root_.GlobalTheory.BijectiveIntertwining.bijective_of_intertwining <;> assumption)
-  | (intros; apply _root_.GlobalTheory.BijectiveIntertwining.bijective_of_intertwining <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.BijectiveIntertwining.bijective_of_intertwining <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.BijectiveIntertwining.bijective_of_intertwining ..)
 
 end Irr

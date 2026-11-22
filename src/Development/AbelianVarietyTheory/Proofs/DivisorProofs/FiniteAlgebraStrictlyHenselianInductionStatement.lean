@@ -12,4 +12,4 @@ theorem _root_.GlobalTheory.T.finiteAlgebra_strictlyHenselian_induction : ∀ (A
     P T₁ → P T₂ → P (T₁ × T₂)) →
   (∀ (T : Type) [CommRing T] [Algebra A T], Module.Finite A T → SH T → P T) →
   ∀ (T : Type) [CommRing T] [Algebra A T], Module.Finite A T → P T := by
-  first | (exact @GlobalTheory.EtC.GmStep.FinSH.induction_principle) | (exact GlobalTheory.EtC.GmStep.FinSH.induction_principle) | (intros; apply GlobalTheory.EtC.GmStep.FinSH.induction_principle  <;> assumption)
+  first | (exact @GlobalTheory.EtC.GmStep.FinSH.induction_principle)

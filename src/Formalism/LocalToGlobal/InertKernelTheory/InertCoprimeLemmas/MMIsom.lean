@@ -303,7 +303,7 @@ theorem frameONB_of (hLB : LocBasisMM) (hRC : RatCoord) (hFC : FixConj) : FrameO
     · intro i' _ hi'
       have hne : ¬ i' = ((0 : Fin 4), τ).1 := hi'
       have hne' : ¬ i' = ((0 : Fin 4), τ'').1 := hi'
-      simp only [Matrix.mul_apply, Matrix.transpose_apply, Matrix.map_apply, Matrix.of_apply, hne, hne', if_false,
+      simp only [Matrix.mul_apply, Matrix.transpose_apply, Matrix.map_apply, Matrix.of_apply, hne, if_false,
         map_zero, mul_zero, zero_mul, Finset.sum_const_zero]
     · intro h0
       exact absurd (Finset.mem_univ _) h0

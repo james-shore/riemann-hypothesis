@@ -108,9 +108,6 @@ theorem mem_locPart {T L : Subgroup H} {x g : H} :
   first
   | exact @_root_.GlobalTheory.ConjugateIntersectionMembership.mem_inter_conj_iff
   | exact _root_.GlobalTheory.ConjugateIntersectionMembership.mem_inter_conj_iff
-  | (apply _root_.GlobalTheory.ConjugateIntersectionMembership.mem_inter_conj_iff <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ConjugateIntersectionMembership.mem_inter_conj_iff <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ConjugateIntersectionMembership.mem_inter_conj_iff <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ConjugateIntersectionMembership.mem_inter_conj_iff ..)
 
 theorem exists_mul_of_mem_sup {L N : Subgroup H} (hLN : ∀ l ∈ L, ∀ n ∈ N, l * n * l⁻¹ ∈ N) {k : H}

@@ -160,7 +160,7 @@ theorem exists_eq_fderiv : ∀ (k : Type) [CommRing k] (Y : Scheme.{0}) (p : Y �
       simp [v]
   refine ⟨v, fun a => ?_⟩
   have h1 := congrArg (fun D : Γ(Y, Y.basicOpen g) →+ ℂ => D (resG Y hWU a)) hD
-  simp only [Dd, AddMonoidHom.mk'_apply, AddMonoidHom.zero_apply, hψW, dualHom_snd, sub_eq_zero] at h1
+  simp only [Dd, AddMonoidHom.mk'_apply, AddMonoidHom.zero_apply, hψW, sub_eq_zero] at h1
   rw [show δ a = (ψU a).snd from (dualHom_snd _ _ _ a).symm, h1]
   have e : ev p σ _ (resG Y hWU a) ∘ c.e.symm =ᶠ[𝓝 (c.e x₀)] ev p σ U.1 a ∘ c.e.symm := by
     filter_upwards [hn] with w hw

@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.exists_etale_polynomial_descent_of_directed_union 
       Algebra.Etale (Polynomial (𝒜 i)) E₀ ∧
       letI : Algebra (Polynomial (𝒜 i)) (Polynomial T) := (Polynomial.mapRingHom (𝒜 i).subtype).toAlgebra
       Nonempty (TensorProduct (Polynomial (𝒜 i)) (Polynomial T) E₀ ≃ₐ[Polynomial T] E) := by
-  first | (exact @GlobalTheory.EtaleDescent.exists_etale_polynomial_model_of_directed_union) | (exact GlobalTheory.EtaleDescent.exists_etale_polynomial_model_of_directed_union) | (intros; apply GlobalTheory.EtaleDescent.exists_etale_polynomial_model_of_directed_union  <;> assumption)
+  first | (exact @GlobalTheory.EtaleDescent.exists_etale_polynomial_model_of_directed_union)

@@ -22,12 +22,7 @@ noncomputable def ev [CompleteSpace C] (π : C) (h : ‖π‖ < 1) : bdd C →+*
 theorem main : ∀ (C : Type) [NontriviallyNormedField C] [IsUltrametricDist C] [CompleteSpace C] (π : C), ‖π‖ < 1 → ∃ (B : Subring (PowerSeries C)) (ev : B →+* C) (t : B), (∀ Φ, Φ ∈ B ↔ ∃ b : ℝ, ∀ n, ‖PowerSeries.coeff n Φ‖ ≤ b) ∧ (∀ Φ : B, ev Φ = ∑' n, PowerSeries.coeff n (Φ : PowerSeries C) * π ^ n) ∧ t ≠ 0 ∧ (∀ Φ, ev Φ = 0 ↔ t ∣ Φ) ∧ ∀ Φ : B, Φ ≠ 0 → ∃ n : ℕ, ¬ t ^ n ∣ Φ := by
   first
   | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact @_root_.GlobalTheory.SummableSeriesBounds.main
-  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact _root_.GlobalTheory.SummableSeriesBounds.main
-  | exact @_root_.GlobalTheory.SummableSeriesBounds.main
-  | exact _root_.GlobalTheory.SummableSeriesBounds.main
-  | (apply _root_.GlobalTheory.SummableSeriesBounds.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SummableSeriesBounds.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SummableSeriesBounds.main <;> first | assumption | infer_instance)
+  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll]))
   | (intros; exact _root_.GlobalTheory.SummableSeriesBounds.main ..)
 
 end GlobalTheory.MBLow.BddPS

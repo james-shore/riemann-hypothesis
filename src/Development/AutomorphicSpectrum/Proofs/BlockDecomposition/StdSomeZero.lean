@@ -164,7 +164,6 @@ theorem crit_none (hp : p ≠ 0) (𝒱 : Set X.Opens) (r : ℤ) :
 theorem ladder (hp : p ≠ 0) (𝒱 : Set X.Opens) :
     (polyS (γ := γ) (q := q) (κ := κ) hp 𝒱).Ladder (fun r => stdI _ (some r) 0) (fun _ => stdI _ none 0) 0 where
   le r' T := by
-    change (stdI _ none 0).S T ≤ (stdI _ (some r') 0).S T
     rw [std_none_bot]
     exact bot_le
   ca _ h := crit_some hp 𝒱 0 h

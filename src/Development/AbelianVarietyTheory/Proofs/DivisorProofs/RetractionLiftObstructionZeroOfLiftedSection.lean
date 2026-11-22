@@ -22,7 +22,7 @@ namespace GlobalTheory.Obs
 theorem appLE_apply_of_eq_id {X : Scheme.{0}} {g : X ⟶ X} (hg : g = 𝟙 X) {U V : X.Opens} (e : V ≤ g ⁻¹ᵁ U)
     (e' : V ≤ U) (x : Γ(X, U)) : (g.appLE U V e).hom x = (X.presheaf.map (homOfLE e').op).hom x := by
   subst hg
-  simp only [Scheme.Hom.appLE, Scheme.Hom.id_app, Category.id_comp]
+  simp only [Scheme.Hom.appLE, Scheme.Hom.id_app]
   rfl
 
 theorem appLE_appLE_of_retr {X₀ Z₀ : Scheme.{0}} {j₀ : X₀ ⟶ Z₀} {f₀ : Z₀ ⟶ X₀} (hjf : j₀ ≫ f₀ = 𝟙 X₀)
@@ -42,7 +42,7 @@ theorem ext_tri_res_pull1 {R₀ : Type} [CommRing R₀] (R₁ : Type) [CommRing 
     ((extMap R₁ (pairPull h')).comp (extMap R₁ (cechTripleRestrictFirst ψ φ s''))) { app U := 𝟙 _ } (fun U b ↦ ?_) a
   erw [mp_id]
   induction b using TensorProduct.induction_on with
-  | zero => (erw [map_zero]) <;> rfl
+  | zero => (erw [map_zero])
   | tmul x y => rfl
   | add x y hx hy => erw [map_add, map_add, hx, hy]
 

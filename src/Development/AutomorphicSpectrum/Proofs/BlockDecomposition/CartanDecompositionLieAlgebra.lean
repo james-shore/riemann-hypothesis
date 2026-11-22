@@ -64,7 +64,7 @@ theorem skew_add_upper {n : ℕ} (𝔤 : Submodule ℝ (Matrix (Fin n) (Fin n) �
       Matrix.conjTranspose_conjTranspose, star_trivial]
     ext i j
     simp only [Matrix.sub_apply, Matrix.add_apply, Matrix.neg_apply, Matrix.smul_apply]
-    simp only [smul_eq_mul, Complex.real_smul, smul_sub]
+    simp only [Complex.real_smul, smul_sub]
     ring
   · intro i j hji
     have hji' : j < i := hji

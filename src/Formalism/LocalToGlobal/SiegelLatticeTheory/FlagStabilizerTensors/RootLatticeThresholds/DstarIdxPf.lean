@@ -129,7 +129,7 @@ theorem ggC_eq (R : Formalism.BasicNotions.Ranks) (g : ℕ) :
   have hc0 : Nat.card (Formalism.FourierDecayAlt.S3.Idx R.rS R.k) = Nat.card (Fin (R.k + R.m - 1)) := by
     obtain ⟨t, ht⟩ := R.m_even
     have h2 := R.two_le_m
-    simp only [Formalism.FourierDecayAlt.S3.Idx, Formalism.FourierDecayAlt.S3.Mid, Nat.card_sum, Nat.card_eq_fintype_card, Fintype.card_sum, Fintype.card_fin,
+    simp only [Formalism.FourierDecayAlt.S3.Idx, Formalism.FourierDecayAlt.S3.Mid, Nat.card_eq_fintype_card, Fintype.card_sum, Fintype.card_fin,
       Fintype.card_unit, Formalism.BasicNotions.Ranks.rS]
     omega
   have hc : Fintype.card (Formalism.FourierDecayAlt.S3.Idx R.rS R.k) = Fintype.card (Fin (R.k + R.m - 1)) := by

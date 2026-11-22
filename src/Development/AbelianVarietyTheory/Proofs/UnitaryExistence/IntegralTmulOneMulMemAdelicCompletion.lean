@@ -163,7 +163,6 @@ theorem _root_.GlobalTheory.AdLat.trivial_level_of_half : ∀ (F E : Type) [Fiel
     exact smul_right_injective _ hM0 hxy
   have heM : e (M : 𝓞 E) = algebraMap F (_root_.GlobalTheory.AdLat.RA F E) M := by
     simp only [e, map_natCast]
-    push_cast
     rw [← Algebra.TensorProduct.includeRight_apply, map_natCast]
   have hMI : (M : 𝓞 E) ∈ I := by
     have h1 : (M : 𝓞 E) ∈ Ideal.span {(M : 𝓞 E)} := Ideal.mem_span_singleton_self _

@@ -34,7 +34,7 @@ def unitScalar (z : Circle) : UJ ε :=
     by rw [smul_mul_smul_comm, circle_star_mul, Matrix.one_mul, one_smul]⟩, by
     show ((z : ℂ) • (1 : Matrix (Fin n) (Fin n) ℂ))ᴴ * Jm ε * ((z : ℂ) • (1 : Matrix (Fin n) (Fin n) ℂ)) = Jm ε
     simp only [Matrix.conjTranspose_smul, Matrix.conjTranspose_one, Matrix.smul_mul, Matrix.mul_smul,
-      Matrix.one_mul, Matrix.mul_one, smul_smul, circle_star_mul, circle_mul_star, one_smul]⟩
+      Matrix.one_mul, Matrix.mul_one, smul_smul, circle_mul_star, one_smul]⟩
 
 theorem umat_unitScalar (z : Circle) : umat (unitScalar ε z) = (z : ℂ) • (1 : Matrix (Fin n) (Fin n) ℂ) := rfl
 

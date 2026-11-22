@@ -45,7 +45,7 @@ theorem phase_eq_of_two_steps : ∀ {k : Type} [Field k] [ValuativeRel k] [Topol
     rw [hP1]
     linear_combination -h0
   · rintro ⟨i, hi⟩ ⟨h1, h2⟩
-    simp only [ne_eq, Fin.ext_iff, Fin.val_mk] at h1 h2
+    simp only [ne_eq, Fin.ext_iff] at h1 h2
     rw [sub_eq_zero, hch ⟨i, hi⟩ h1 h2]
     congr 1
     by_cases hij : i + 1 = j

@@ -152,7 +152,7 @@ theorem exists_decomp_twist {O L Γ : Type} [CommRing O] [IsDomain O] [IsLocalRi
       erw [h0]
       refine Prod.ext rfl (funext fun c => ?_)
       have hk := congrArg (fun χ : Γ →* Oˣ => χ g) (key c c.2)
-      simp only [MonoidHom.mul_apply, MonoidHom.zpow_apply, zpow_neg, zpow_natCast] at hk
+      simp only [MonoidHom.mul_apply, zpow_neg, zpow_natCast] at hk
       simp only [Prod.smul_snd, Pi.smul_apply, smul_eq_mul]
       rw [← mul_assoc, ← map_mul, ← Units.val_mul, mul_comm (_ : Oˣ), hk]
       simp)

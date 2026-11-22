@@ -104,7 +104,7 @@ theorem freeAt_of_basis_lattice (K : Type) [Field K] (C : ACurve K) (V : Type) [
         refine Finset.sum_congr rfl fun j _ => ?_
         rw [map_zsmul, zsmul_eq_mul]
         ring
-      · simp [hss]
+      · simp
     | add a a' ha ha' =>
       rw [map_add, LinearMap.add_apply, map_add, ha, ha']
       split_ifs <;> simp [map_add]

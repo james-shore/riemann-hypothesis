@@ -65,7 +65,7 @@ theorem phi_eq {c : HeightOneSpectrum (𝓞 F) → ℕ} (hc : {w | c w ≠ 0}.Fi
   funext x
   rw [schwartzBruhatTensor2, hφ, gFin, finiteTensor2_apply, Phi]
   simp only [infPart, finPart, toR_homeomorphMixedSpace, Matrix.cons_val_zero, Matrix.cons_val_one,
-    Matrix.head_cons, cosetIndicator_apply, sub_zero]
+    cosetIndicator_apply, sub_zero]
   congr 1
   have h0 := mem_nId_iff hc (pFin F (x 0))
   have h1 := mem_nId_iff hc (pFin F (x 1) - 1)
@@ -94,8 +94,7 @@ theorem fourier_phi {c : HeightOneSpectrum (𝓞 F) → ℕ} (hc : {w | c w ≠ 
   rw [phi_eq hc φ hφ, adelicFourier2_schwartzBruhatTensor2, schwartzBruhatTensor2,
     mixedFourier2Schwartz_apply, hφ', mixedFourier2_arch, gFin, finiteFourier2_finiteTensor2,
     finiteTensor2_apply]
-  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
-    finiteFourier_cosetIndicator, zero_mul, one_mul, AddChar.map_zero_eq_one, Circle.coe_one,
+  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, finiteFourier_cosetIndicator, zero_mul, one_mul, AddChar.map_zero_eq_one, Circle.coe_one,
     infPart, finPart, toR_homeomorphMixedSpace, PhiH, cst]
   have h0 := mem_dual_iff hc (pFin F (y 0))
   have h1 := mem_dual_iff hc (pFin F (y 1))
@@ -112,7 +111,7 @@ theorem fourier_phi {c : HeightOneSpectrum (𝓞 F) → ℕ} (hc : {w | c w ≠ 
     simp only [Set.indicator_apply, SetLike.mem_coe, a, b, if_true, if_false, Pi.one_apply]
     ring
   · rw [if_neg (fun h => a (h0.1 fun w => (h w).1))]
-    simp only [Set.indicator_apply, SetLike.mem_coe, a, b, if_true, if_false, Pi.one_apply]
+    simp only [Set.indicator_apply, SetLike.mem_coe, a, b, if_false, Pi.one_apply]
     ring
 
 theorem rowA_zero : rowA (0 : Fin 2 → F) = 0 := by

@@ -113,7 +113,7 @@ private lemma smith_step [IsUltrametricDist K] {b : Type*} [Fintype b] [Decidabl
     ext i j
     have := hN i j
     rw [h0, norm_zero] at this
-    simp [norm_le_zero_iff.mp this, Matrix.diagonal_apply]
+    simp [norm_le_zero_iff.mp this]
   have hpos : 0 < ‖x‖ := norm_pos_iff.mpr h0
   let C : Matrix b Unit K := Matrix.of fun i _ => N (Sum.inr i) (Sum.inl ()) / x
   let B : Matrix Unit b K := Matrix.of fun _ j => N (Sum.inl ()) (Sum.inr j) / x

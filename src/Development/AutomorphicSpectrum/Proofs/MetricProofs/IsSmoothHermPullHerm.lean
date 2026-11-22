@@ -17,7 +17,7 @@ theorem pullDeg_zero {K K' : Type} (κ : K → K') : pullDeg κ (0 : K → ℤ) 
   funext k
   by_cases h : ∃ a, κ a = k
   · simp [pullDeg, Function.extend_def, h]
-  · simp [pullDeg, Function.extend_def, h]
+  · simp [pullDeg, h]
 
 theorem isSmoothHerm_pullHerm {K K' : Type} [Fintype K] [Fintype K'] {ι : K → Type} {ι' : K' → Type}
     [∀ k, Fintype (ι k)] [∀ k, Fintype (ι' k)] {κ : K → K'} {v : (Σ k, ι k) → (Σ k', ι' k')}

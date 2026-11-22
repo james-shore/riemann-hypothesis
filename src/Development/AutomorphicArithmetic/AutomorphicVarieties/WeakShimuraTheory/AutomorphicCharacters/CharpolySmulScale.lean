@@ -23,7 +23,7 @@ private theorem charpoly_smul_scale {K : Type} [Field K] [CharZero K] {n : ℕ} 
   by_cases h : i = j
   · subst h
     simp [Matrix.scalar_apply, Matrix.diagonal_apply_eq, mul_sub]
-  · simp [Matrix.scalar_apply, Matrix.diagonal_apply_ne _ h, mul_sub]
+  · simp [Matrix.scalar_apply, Matrix.diagonal_apply_ne _ h]
 
 private theorem chi_comap_single {n : ℕ} {A G H : Type} [CommRing A] [Group G] [Group H] (D : W.GDet n A G) (φ : H →* G)
     (g : H) : (D.comap φ).chi (MonoidAlgebra.single g 1) = D.chi (MonoidAlgebra.single (φ g) 1) := by
@@ -43,7 +43,7 @@ private theorem chi_map_single {n : ℕ} {A B G : Type} [CommRing A] [CommRing B
       MonoidAlgebra.single 1 X - MonoidAlgebra.single g 1 := by
     simp [F]
   rw [e] at h
-  simp only [W.GDet.chi, W.GDet.map, map_sub, MonoidAlgebra.mapRingHom_single, map_one]
+  simp only [W.GDet.chi, W.GDet.map, MonoidAlgebra.mapRingHom_single, map_one]
   exact h
 
 private theorem scale_point {A B K : Type} [CommRing A] [CommRing B] [Field K] [CharZero K] {n : ℕ} (i : B →+* A)

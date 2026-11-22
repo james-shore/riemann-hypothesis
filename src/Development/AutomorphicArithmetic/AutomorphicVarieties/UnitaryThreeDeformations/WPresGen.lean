@@ -257,7 +257,7 @@ private theorem two_le_order_sub_constant_add_linear {A τ : Type} [CommRing A] 
   apply MvPowerSeries.nat_le_order
   intro d hd
   rcases eq_zero_or_exists_eq_single_of_degree_lt_two d hd with rfl | ⟨j, rfl⟩
-  · simp [coeff_C, coeff_C_mul, coeff_X]
+  · simp
   · simp [coeff_C, coeff_C_mul, coeff_X, Finsupp.single_eq_single_iff]
 
 theorem max_le_erase {σ : Type} [Fintype σ] (π : MvPowerSeries σ O →ₐ[O] R) (hz : ∀ i, π (X i) ∈ maximalIdeal R)

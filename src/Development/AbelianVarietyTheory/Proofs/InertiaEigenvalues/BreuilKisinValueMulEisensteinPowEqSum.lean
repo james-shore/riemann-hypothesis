@@ -34,7 +34,7 @@ theorem value_mul_E_pow_eq_sum : ∀ (l : ℕ) [Fact l.Prime] (a e : ℕ) [NeZer
     simp only [inclL_smul_coord, hc]
     funext i
     simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Pi.single_apply, mul_ite, mul_one, mul_zero,
-      Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+      Finset.sum_ite_eq, Finset.mem_univ, if_true]
     rw [hYi i, pow_add]
     simp only [map_mul, map_pow]
     ring

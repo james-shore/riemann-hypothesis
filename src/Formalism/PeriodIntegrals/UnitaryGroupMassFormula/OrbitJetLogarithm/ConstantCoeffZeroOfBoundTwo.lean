@@ -27,7 +27,6 @@ theorem hs_gSub {τ : Type*} (ep : ℂ_[p]) (v : τ) : HasSubst (gSub ep v) := b
     split_ifs <;> simp
   first
   | exact MvPowerSeries.hasSubst_of_constantCoeff_zero h0
-  | exact ⟨fun s => by rw [h0 s]; exact IsNilpotent.zero, fun d => Set.toFinite _⟩
 
 theorem cc_gSub {τ : Type*} (ep : ℂ_[p]) (v : τ) (be : MvPowerSeries (ZMod 2) ℂ_[p])
     (hbe : constantCoeff be = 0) : constantCoeff (subst (gSub ep v) be) = 0 := by
@@ -36,18 +35,6 @@ theorem cc_gSub {τ : Type*} (ep : ℂ_[p]) (v : τ) (be : MvPowerSeries (ZMod 2
     split_ifs <;> simp
   first
   | exact MvPowerSeries.constantCoeff_subst_eq_zero (hs_gSub ep v) h0 hbe
-  | exact MvPowerSeries.constantCoeff_subst_eq_zero (hs_gSub ep v) hbe h0
-  | (rw [MvPowerSeries.constantCoeff_subst (hs_gSub ep v)]
-     apply finsum_eq_zero_of_forall_eq_zero
-     intro d
-     by_cases hd : d = 0
-     · subst hd
-       simp [hbe]
-     · obtain ⟨s, hs⟩ := Finsupp.ne_iff.1 hd
-       simp only [Finsupp.coe_zero, Pi.zero_apply] at hs
-       rw [Finsupp.prod, map_prod, Finset.prod_eq_zero (i := s) (Finsupp.mem_support_iff.2 hs)]
-       · simp
-       · simp [h0 s, zero_pow hs])
 
 theorem constantCoeff_zero_of_bound_two (be : MvPowerSeries (ZMod 2) ℂ_[p]) (h : OJ.B3 p 2 be) : constantCoeff be = 0 := by
   by_contra hne

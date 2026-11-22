@@ -55,8 +55,6 @@ theorem exists_nat_IhE (D : D7) (cc : Ideal (𝓞 D.host.K)) (r : D.host.E) :
     have hk' : IsIntegral ℤ ((k : D.host.K) : D.host.E) := by
       first
         | exact (NumberField.RingOfIntegers.isIntegral_coe k).algebraMap
-        | exact IsIntegral.algebraMap k.2
-        | exact (NumberField.RingOfIntegers.isIntegral_coe k).map (IsScalarTower.toAlgHom ℤ D.host.K D.host.E)
     rw [← mul_assoc, ← map_mul, e1]
     refine mul_mem (inc_mem_OhE ?_) hs'
     exact ((q.2.mul x.2).mul hk').mul b.2

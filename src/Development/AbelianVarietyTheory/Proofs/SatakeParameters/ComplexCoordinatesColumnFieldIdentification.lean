@@ -14,7 +14,7 @@ theorem iE_single {a : ℕ} (j : Fin a) : (fun k => s.iE ((Pi.single j (1 : X.E)
   funext k
   by_cases h : k = j
   · subst h; simp
-  · simp [Pi.single_apply, h]
+  · simp [h]
 
 theorem seamHom_injective {a b : ℕ} : Function.Injective (seamHom s (a := a) (b := b)) := by
   intro x x' h

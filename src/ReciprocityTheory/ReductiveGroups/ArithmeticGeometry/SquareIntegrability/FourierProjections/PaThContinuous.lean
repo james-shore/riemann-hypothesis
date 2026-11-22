@@ -105,8 +105,6 @@ theorem key2 (q : ℕ) (γ x : EuclideanSpace ℂ ι) :
     push_cast
     first
     | rfl
-    | simp
-    | norm_cast
   have hexp : ∀ r : ℝ, ((Real.exp r : ℝ) : ℂ) = cexp (r : ℂ) := fun r => Complex.ofReal_exp r
   simp only [paW, hH, hexp]
   rw [← Complex.exp_conj, ← Complex.exp_add, ← Complex.exp_add]
@@ -229,7 +227,6 @@ theorem unfold_pt {Y : GT ι} {q : ℕ} (hC : Coc Y q) (F : EuclideanSpace ℂ �
   have hmc : paTh Y q F x * (starRingEnd ℂ) (paTh Y q F x) = ((‖paTh Y q F x‖ ^ 2 : ℝ) : ℂ) := by
     first
     | rw [Complex.mul_conj, Complex.normSq_eq_norm_sq]
-    | (rw [Complex.mul_conj']; push_cast; ring)
   push_cast at hmc ⊢
   linear_combination (paW q x : ℂ) * hmc
 

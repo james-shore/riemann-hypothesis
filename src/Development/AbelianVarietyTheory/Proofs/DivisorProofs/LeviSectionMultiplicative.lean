@@ -30,11 +30,11 @@ theorem levi_mul_cols {σ : E →ₐ[F] E} {b : ℕ} {W : Spc F E (b + 2)} {W₁
   · have := congrFun hx i
     simp only [Matrix.mulVec, dotProduct, Pi.smul_apply, smul_eq_mul] at this
     simp [cols2, Matrix.mul_apply]
-    first | (rw [this]; ring) | (rw [mul_comm (incV F H.x i), ← this]; exact Finset.sum_congr rfl fun _ _ => mul_comm _ _)
+    first | (rw [this]; ring)
   · have := congrFun hy i
     simp only [Matrix.mulVec, dotProduct, Pi.smul_apply, smul_eq_mul] at this
     simp [cols2, Matrix.mul_apply]
-    first | (rw [this]; ring) | (rw [mul_comm (incV F H.y i), ← this]; done) | (rw [mul_comm (incV F H.y i), ← this]; exact Finset.sum_congr rfl fun _ _ => mul_comm _ _)
+    first | (rw [this]; ring)
 
 theorem isLevi_mul {σ : E →ₐ[F] E} {b : ℕ} {W : Spc F E (b + 2)} {W₁ : Spc F E b} (H : Plane E (b + 2) b)
     {l l' : (AE F E)ˣ} {g₀ g₀' : UA σ W₁.J} {h h' : UA σ W.J} (hL : IsLevi H l g₀ h) (hL' : IsLevi H l' g₀' h') :

@@ -42,7 +42,7 @@ theorem pullback_wedge_cup_square {Y Z : Over (Sp R)} (f : Y ⟶ Z)
   | add x y _ _ hx hy =>
     rw [map_add, map_add, map_add, map_add, map_add, hx, hy]
   | smul a x _ hx =>
-    simp only [map_smul, map_smulₛₗ, RingHom.id_apply]
+    simp only [map_smul]
     rw [hx]
 
 end MainStatements.Hodge.Pf.WedgeProjections

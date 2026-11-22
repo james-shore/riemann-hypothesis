@@ -259,7 +259,7 @@ lemma coeff_one_gLog [CharZero K] {τ : Type} [DecidableEq τ] {l d : ℕ} (hl :
     have := hl.two_le
     nlinarith
   rw [Finsupp.degree_single, Finset.sum_range_succ, Finset.sum_range_one]
-  simp [Finsupp.single_eq_single_iff, hl1, Ne.symm hl1, hl.one_lt.ne']
+  simp [Finsupp.single_eq_single_iff, Ne.symm hl1]
 
 lemma isIdMod2_letLog [CharZero K] {l d : ℕ} [NeZero d] (hl : l.Prime) :
     Formalism.FG.IsIdMod2 (letLog (K := K) (d := d) l) := by
@@ -433,9 +433,9 @@ lemma mXY_shift (hd : Even d) (σ : K →+* K) {om oms : ι → K}
   unfold mXY
   by_cases h : s.val % 2 = 0
   · have h' : (s - 2).val % 2 = 0 := by omega
-    cases b <;> simp [h, h', key _ (hfix r).1, key _ (hfix r).2]
+    cases b <;> simp [h, h', key _ (hfix r).1]
   · have h' : ¬ (s - 2).val % 2 = 0 := by omega
-    cases b <;> simp [h, h', key _ (hfix r).1, key _ (hfix r).2]
+    cases b <;> simp [h, h', key _ (hfix r).2]
 
 lemma zXY_shift [CharZero K] [Fintype ι] {l : ℕ} (hl : l.Prime) (hd : Even d) (σ : K →+* K)
     {om oms : ι → K} (hfix : ∀ r, σ^[d] (om r) = om r ∧ σ^[d] (oms r) = oms r) (s : ZMod d) :

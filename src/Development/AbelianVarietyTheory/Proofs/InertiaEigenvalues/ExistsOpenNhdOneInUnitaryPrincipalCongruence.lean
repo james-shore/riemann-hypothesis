@@ -108,7 +108,7 @@ theorem exists_open_cong : ∀ (L : Type) [Field L] [NumberField L] [IsCMField L
       refine add_mem (mul_mem (natCast_mem _ N) hy) ?_
       by_cases h : s = t
       · simp [Matrix.one_apply, h, one_mem]
-      · simp [Matrix.one_apply, h, zero_mem]
+      · simp [h, zero_mem]
     exact ⟨hU, key⟩
 
 end GlobalTheory.CongOpen

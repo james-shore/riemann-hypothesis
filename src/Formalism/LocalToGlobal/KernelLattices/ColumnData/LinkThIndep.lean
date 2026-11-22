@@ -40,11 +40,8 @@ theorem star_conj (x : D.host.E) : (letI := D.host.cmStar; star x) = D.host.conj
   haveI : IsCMField D.host.E := by
     first
     | exact D.host.isCMField_hostE
-    | exact D.host.der.cm
   first
   | exact NumberField.IsCMField.complexEmbedding_complexConj D.host.E ψ x
-  | exact NumberField.IsCMField.complexEmbedding_complexConj (K := D.host.E) ψ x
-  | exact NumberField.IsCMField.complexEmbedding_complexConj (K := D.host.E) (φ := ψ) (x := x)
 
 theorem emb_conj (φ : D.host.E →+* ℂ) (x : D.host.E) :
     φ (D.host.conj x) = starRingEnd ℂ (φ x) :=
@@ -217,7 +214,6 @@ theorem norm_chi_eq_one_of_normOne (χ : IdE D → ℂ) (hχ : IsChi D χ) {𝔞
     have e2 : z * star z = 1 := by rw [star_conj]; exact hz
     first
     | exact Unitary.mem_iff.mpr ⟨e1, e2⟩
-    | exact ⟨e1, e2⟩
 
   have hn : ∀ τ, ‖embT D τ z‖ = 1 := by
     intro τ

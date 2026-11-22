@@ -135,7 +135,7 @@ theorem UpperTheory.V.Z.J.stepF :
       (t g : Matrix (Fin 3) (Fin 3) E) i.castSucc i.succ * (diag t ht i.succ h : E) := by
     intro g h
     rw [mul_entry, hd, hd]
-    fin_cases i <;> simp [h10, h20, h21]
+    fin_cases i <;> simp [h10, h21]
   have c2 := cont_two _ _ _ hb (ce _ _) (ce _ _) (ce _ _)
   have h2 : CrOn φ (two (diag t ht i.castSucc) (diag t ht i.succ)
       (fun g => (t g : Matrix (Fin 3) (Fin 3) E) i.castSucc i.succ) hb) H := by

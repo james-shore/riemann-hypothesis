@@ -44,10 +44,10 @@ theorem UpperTheory.V.Pa.gr_I :
       by_cases h2 : i' = j'
       · subst h2
         rw [U.x_st, U.tr_ep]
-        simp [Matrix.single_apply]
+        simp
       · rw [hU.1 i' j' h2, map_zero]
-        simp [Matrix.single_apply, h2, Ne.symm h2]
-    · simp [Matrix.single_apply, Ne.symm h1]
+        simp [h2]
+    · simp [Ne.symm h1]
   · intro y i j b h
     rw [Submodule.mem_bot, sub_eq_zero] at h
     change φ y i j = b at h

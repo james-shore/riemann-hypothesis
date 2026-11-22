@@ -41,7 +41,7 @@ theorem posDef_cj {P : Matrix ι ι ℂ} (h : P.PosDef) : (cj P).PosDef := by
   exact h.transpose
 
 theorem cj_mulVec (A : Matrix ι ι ℂ) (v : ι → ℂ) : cj A *ᵥ star v = star (A *ᵥ v) := by
-  ext i; simp [cj, mulVec, dotProduct, map_sum]
+  ext i; simp [cj, mulVec, dotProduct]
 
 theorem re_term_cj (P G : Matrix ι ι ℂ) (v : ι → ℂ) :
     (star (G *ᵥ star v) ⬝ᵥ (cj P *ᵥ (G *ᵥ star v))).re = (star (cj G *ᵥ v) ⬝ᵥ (P *ᵥ (cj G *ᵥ v))).re := by

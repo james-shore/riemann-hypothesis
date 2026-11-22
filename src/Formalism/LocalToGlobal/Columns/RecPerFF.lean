@@ -48,9 +48,7 @@ variable {X : Fields} {Pr : Primes X} {R : Ranks} (W : Wts X Pr.Word R) (Ch : Ch
 theorem rowTy_inv_cast : (rowTy Ch sel mu P).inv = rcol_rowSG_eq sel mu hQ ▸ (rowTyG Ch P).inv := by
   refine levFam_eq_cast (rcol_rowSG_eq sel mu hQ) _ _ fun w hw => ?_
   first
-  | (simp only [LevFam.inv, rowTy, LevFam.glue, dif_pos hw]; done)
-  | (unfold LevFam.inv rowTy LevFam.glue; rw [dif_pos hw])
-  | (simp [LevFam.inv, rowTy, LevFam.glue, hw])
+  | (simp only [LevFam.inv, rowTy, LevFam.glue, dif_pos hw])
 
 def zOfRow (σ₀ : X.K →+* ℂ) (hM : (rowGSD W (rowTyG Ch P).inv).Ok) (F : MtildeV W Ch sel mu P) : Fin ((rowGSD W (rowTyG Ch P).inv).hDim hM) → ℂ :=
   zOfRow0 W (rowTyG Ch P).inv σ₀ hM (rowCast W (rcol_rowSG_eq sel mu hQ) (rowTyG Ch P).inv _ (rowTy_inv_cast Ch sel mu hQ P) F)

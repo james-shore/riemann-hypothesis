@@ -19,7 +19,7 @@ theorem rel_b (Z : Matrix (Fin (r + 1)) (Fin (r + 1)) O) (t t' : O) :
     Submodule.Quotient.eq, mem_relC_iff O cj hO Z t t']
   refine ⟨0, Pi.single (Fin.last r) 1, ?_, ?_⟩
   · funext j
-    simp [elimL, elimR, Matrix.mulVec_single, Pi.single_apply]
+    simp [elimL, elimR, Matrix.mulVec_single]
   · funext j
     simp [elimL, elimR, Matrix.mulVec_zero, Pi.single_apply]
 
@@ -75,7 +75,7 @@ def gsEquiv (hu₁ : IsUnit (Z₁.map O.subtype).det) (hu₂ : IsUnit (Z₂.map 
       have s2 := gsLin_spec O cj hO t t' Z₂ Z₁ hu₂ hu₁ hη₁ θ.symm.toLinearMap (gam_bwd O cj t t' Z₁ Z₂ θ hΓ)
       apply uniqR O cj hO Z₂ hu₂ t t' hη₂
       · rw [LinearMap.comp_apply, ← (s1 _).1, ← (s2 m).1, LinearMap.id_apply]
-        simp only [LinearEquiv.coe_coe, LinearEquiv.apply_symm_apply, LinearEquiv.symm_apply_apply]
+        simp only [LinearEquiv.coe_coe, LinearEquiv.apply_symm_apply]
       · rw [LinearMap.comp_apply, (s1 _).2, (s2 m).2, LinearMap.id_apply])
     (by
       apply LinearMap.ext; intro m
@@ -83,7 +83,7 @@ def gsEquiv (hu₁ : IsUnit (Z₁.map O.subtype).det) (hu₂ : IsUnit (Z₂.map 
       have s2 := gsLin_spec O cj hO t t' Z₂ Z₁ hu₂ hu₁ hη₁ θ.symm.toLinearMap (gam_bwd O cj t t' Z₁ Z₂ θ hΓ)
       apply uniqR O cj hO Z₁ hu₁ t t' hη₁
       · rw [LinearMap.comp_apply, ← (s2 _).1, ← (s1 m).1, LinearMap.id_apply]
-        simp only [LinearEquiv.coe_coe, LinearEquiv.apply_symm_apply, LinearEquiv.symm_apply_apply]
+        simp only [LinearEquiv.coe_coe, LinearEquiv.symm_apply_apply]
       · rw [LinearMap.comp_apply, (s2 _).2, (s1 m).2, LinearMap.id_apply])
 
 def gEquiv (hu₁ : IsUnit (Z₁.map O.subtype).det) (hu₂ : IsUnit (Z₂.map O.subtype).det) (hη₁ : EtaNZD O cj Z₁ t t') (hη₂ : EtaNZD O cj Z₂ t t')
@@ -97,7 +97,7 @@ def gEquiv (hu₁ : IsUnit (Z₁.map O.subtype).det) (hu₂ : IsUnit (Z₂.map O
       have s2 := gLin_spec O cj hO t t' Z₂ Z₁ hu₂ hu₁ hη₁ θ.symm.toLinearMap (gam_bwd' O cj t t' Z₁ Z₂ θ hΓ')
       apply uniqL O cj hO Z₂ hu₂ t t' hη₂
       · rw [LinearMap.comp_apply, ← (s1 _).1, ← (s2 m).1, LinearMap.id_apply]
-        simp only [LinearEquiv.coe_coe, LinearEquiv.apply_symm_apply, LinearEquiv.symm_apply_apply]
+        simp only [LinearEquiv.coe_coe, LinearEquiv.apply_symm_apply]
       · rw [LinearMap.comp_apply, (s1 _).2, (s2 m).2, LinearMap.id_apply])
     (by
       apply LinearMap.ext; intro m
@@ -105,7 +105,7 @@ def gEquiv (hu₁ : IsUnit (Z₁.map O.subtype).det) (hu₂ : IsUnit (Z₂.map O
       have s2 := gLin_spec O cj hO t t' Z₂ Z₁ hu₂ hu₁ hη₁ θ.symm.toLinearMap (gam_bwd' O cj t t' Z₁ Z₂ θ hΓ')
       apply uniqL O cj hO Z₁ hu₁ t t' hη₁
       · rw [LinearMap.comp_apply, ← (s2 _).1, ← (s1 m).1, LinearMap.id_apply]
-        simp only [LinearEquiv.coe_coe, LinearEquiv.apply_symm_apply, LinearEquiv.symm_apply_apply]
+        simp only [LinearEquiv.coe_coe, LinearEquiv.symm_apply_apply]
       · rw [LinearMap.comp_apply, (s2 _).2, (s1 m).2, LinearMap.id_apply])
 
 theorem gsEquiv_spec (hu₁ : IsUnit (Z₁.map O.subtype).det) (hu₂ : IsUnit (Z₂.map O.subtype).det) (hη₁ : EtaNZD O cj Z₁ t t') (hη₂ : EtaNZD O cj Z₂ t t')

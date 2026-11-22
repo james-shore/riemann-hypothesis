@@ -30,10 +30,10 @@ theorem hasSig_map_conj {n r s : ℕ} {M : Matrix (Fin n) (Fin n) ℂ} (h : Glob
   simp only [Matrix.map_mul] at this
   have e1 : (A.map star)ᵀ * M.map (starRingEnd ℂ) * (A.map star).map star =
       (Aᵀ).map (starRingEnd ℂ) * M.map (starRingEnd ℂ) * (A.map star).map (starRingEnd ℂ) := by
-    congr 2 <;> ext i j <;> simp
+    congr 2 <;> ext i j
   have e2 : (Matrix.fromBlocks 1 0 0 (-1) : Matrix (Fin r ⊕ Fin s) (Fin r ⊕ Fin s) ℂ).map (starRingEnd ℂ) =
       Matrix.fromBlocks 1 0 0 (-1) := by
-    ext (i | i) (j | j) <;> simp [Matrix.fromBlocks, Matrix.one_apply] <;> split_ifs <;> simp
+    ext (i | i) (j | j) <;> simp [Matrix.fromBlocks, Matrix.one_apply] <;> split_ifs
   rw [e1, this, e2]
 
 theorem hasSig_neg {n r s : ℕ} {M : Matrix (Fin n) (Fin n) ℂ} (h : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.HasSig M r s) :

@@ -38,8 +38,8 @@ theorem e3c : SmoothMapSeminormBound := by
     have hw : Sm ε σ w := hD.1 _ (((1 + casimirK ε A) ^ m) y).2
     let F : kfin ε σ →ₗ[ℂ] (Matrix (Fin n) (Fin n) ℂ → ℂ) :=
       { toFun := fun η g => ⟪w, σ g (η : H)⟫_ℂ
-        map_add' := fun a b => by funext g; simp [inner_add_right]
-        map_smul' := fun c a => by funext g; simp [inner_smul_right] }
+        map_add' := fun a b => by funext g; simp
+        map_smul' := fun c a => by funext g; simp }
     have hF : ∀ (η : kfin ε σ) g, F η g = ⟪w, σ g (η : H)⟫_ℂ := fun _ _ => rfl
     have h1 : ∀ η : kfin ε σ, ContinuousOn (F η) (ReciprocityTheory.ChartRestriction.DS.UJset ε) := fun η => by
       have := (continuousOn_const (c := w) (s := UJset ε)).inner (𝕜 := ℂ) (hU.2.2 (η : H))

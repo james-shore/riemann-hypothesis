@@ -256,7 +256,7 @@ theorem UpperTheory.V.Pa.B2.odHalf :
         simp [Matrix.mul_add, Matrix.add_mul]
       map_smul' := fun c m => by
         funext p
-        simp [Matrix.mul_smul, Matrix.smul_mul] }
+        simp }
   have hsurj : Function.Surjective gmap := by
     intro t
     let Y : Matrix (Fin n) (Fin n) X := Matrix.of fun i j =>

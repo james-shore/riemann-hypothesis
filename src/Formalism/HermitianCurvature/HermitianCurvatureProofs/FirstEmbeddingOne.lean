@@ -12,32 +12,32 @@ theorem first_embedding_mul (M N : Matrix (Fin 2) (Fin 2) B) : E1 (M * N) = E1 M
   unfold Formalism.YangianSpanCharacter.T.E1
   ext ⟨i, k⟩ ⟨j, l⟩
   fin_cases i <;> fin_cases k <;> fin_cases j <;> fin_cases l <;>
-    simp [Matrix.mul_apply, Matrix.one_apply, Fintype.sum_prod_type, Fin.sum_univ_two]
+    simp [Matrix.mul_apply, Fintype.sum_prod_type, Fin.sum_univ_two]
 
 theorem entries_mem_mul (M N : Matrix (Fin 2) (Fin 2) B) : E2 (M * N) = E2 M * E2 N := by
   unfold Formalism.YangianSpanCharacter.T.E2
   ext ⟨i, k⟩ ⟨j, l⟩
   fin_cases i <;> fin_cases k <;> fin_cases j <;> fin_cases l <;>
-    simp [Matrix.mul_apply, Matrix.one_apply, Fintype.sum_prod_type, Fin.sum_univ_two]
+    simp [Matrix.mul_apply, Fintype.sum_prod_type, Fin.sum_univ_two]
 
 theorem first_embedding_one : E1 (1 : Matrix (Fin 2) (Fin 2) B) = 1 := by
   unfold Formalism.YangianSpanCharacter.T.E1
   ext ⟨i, k⟩ ⟨j, l⟩
   fin_cases i <;> fin_cases k <;> fin_cases j <;> fin_cases l <;>
-    simp [Matrix.mul_apply, Matrix.one_apply, Fintype.sum_prod_type, Fin.sum_univ_two]
+    simp [Matrix.one_apply]
 
 theorem entries_mem_one : E2 (1 : Matrix (Fin 2) (Fin 2) B) = 1 := by
   unfold Formalism.YangianSpanCharacter.T.E2
   ext ⟨i, k⟩ ⟨j, l⟩
   fin_cases i <;> fin_cases k <;> fin_cases j <;> fin_cases l <;>
-    simp [Matrix.mul_apply, Matrix.one_apply, Fintype.sum_prod_type, Fin.sum_univ_two]
+    simp [Matrix.one_apply]
 
 theorem first_second_embedding_commute (A C : Matrix (Fin 2) (Fin 2) B)
     (h : ∀ i j k l, A i j * C k l = C k l * A i j) : E1 A * E2 C = E2 C * E1 A := by
   unfold Formalism.YangianSpanCharacter.T.E1 Formalism.YangianSpanCharacter.T.E2
   ext ⟨i, k⟩ ⟨j, l⟩
   fin_cases i <;> fin_cases k <;> fin_cases j <;> fin_cases l <;>
-    simp [Matrix.mul_apply, Fintype.sum_prod_type, Fin.sum_univ_two, h]
+    simp [Matrix.mul_apply, Fintype.sum_prod_type, h]
 
 theorem transpose_mul_of_comm (A C : Matrix (Fin 2) (Fin 2) B)
     (h : ∀ i j k l, A i j * C k l = C k l * A i j) : (A * C)ᵀ = Cᵀ * Aᵀ := by
@@ -147,10 +147,8 @@ theorem wordFusion_list (L : List ((R → Matrix (Fin 2) (Fin 2) B) × (R → R)
     refine ⟨?_, ?_⟩
     · first
       | exact e1
-      | simpa using e1
     · first
       | exact e2
-      | simpa using e2
 
 end Words
 

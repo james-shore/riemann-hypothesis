@@ -215,7 +215,7 @@ theorem om_vac {μ₀ : T} (hL : L.Is μ₀) (W : G.Weil) (t : T) {i : ℕ} (hi 
     W.om (.mu t D.R.m i) (g, h) f = (∏ w ∈ locPl G t, splitScal G (.mu t D.R.m i) w g h) • f := by
   have hm := D.R.two_le_m
   have hp : (Pair.mu t D.R.m i : Pair T).InRange D.R.m := by
-    simp only [Pair.InRange, Pair.big, Node.InRange]; omega
+    simp only [Pair.InRange, Node.InRange]; omega
   have sd : ∀ l, l ≤ D.R.m → IsSelfDualC (G.V (.grid D.R.m l)) (G.Λ (.grid D.R.m l)) := fun l hl =>
     (G.isV (X := .grid D.R.m l) ⟨le_rfl, hl⟩ (fun j e => by simp at e; omega)).sd
   exact GlobalTheory.LatStabScalar.om_eq_prod_splitFac (W.om_is _ hp) (sd i hi.le) (sd (i + 1) hi) (locPl G t)

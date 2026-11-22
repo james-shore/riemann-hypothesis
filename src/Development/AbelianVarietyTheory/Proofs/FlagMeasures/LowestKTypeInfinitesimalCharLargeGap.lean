@@ -139,7 +139,7 @@ lemma compress_of_formula (hF : FormulaGap) {ε : Fin n → Bool} {lam : Fin n �
     linarith
   have hreal : star (Phi lam ((toMK k')ᴴ * NormedSpace.exp X * toMK k')) =
       Phi lam ((toMK k')ᴴ * NormedSpace.exp X * toMK k') :=
-    Complex.ext (by simp [Complex.star_def]) (by simp [Complex.star_def, him])
+    Complex.ext (by simp) (by simp [him])
   rw [hreal]
   try rfl
 

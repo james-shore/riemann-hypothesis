@@ -49,8 +49,8 @@ theorem prism_boundary_map_square_zero_holds : leaf_bdbd := by
     simp only [inv]
     split_ifs with h h2 h2
     · exfalso; simp at h2; omega
-    · simp [Prod.ext_iff, Fin.ext_iff]
-    · simp [Prod.ext_iff, Fin.ext_iff]
+    · simp
+    · simp
     · exfalso; simp at h2; omega
 
 end LateralTheory.EtaleFoundations.SteenPf

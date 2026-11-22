@@ -73,7 +73,6 @@ theorem UpperTheory.V.Two.idxAdic :
     have d3 : ¬ (2 : ℤ) ^ 3 ∣ ((8 * k + 3 : ℕ) : ℤ) - 1 := by
       rintro ⟨t, ht⟩
       push_cast at ht
-      norm_num at ht
       omega
     obtain ⟨h0, h⟩ := index_closed_dyadic_subgroup H u (8 * k + 3) 3 hH hu hp (by norm_num) d1 d2 d3
     refine ⟨h0, ?_⟩
@@ -98,7 +97,6 @@ theorem UpperTheory.V.Two.idxAdic :
     have d3 : ¬ (2 : ℤ) ^ 4 ∣ ((16 * k + 7 : ℕ) : ℤ) - 1 := by
       rintro ⟨t, ht⟩
       push_cast at ht
-      norm_num at ht
       omega
     obtain ⟨h0, h⟩ := index_closed_dyadic_subgroup H u (16 * k + 7) 4 hH hu hp (by norm_num) d1 d2 d3
     refine ⟨h0, ?_⟩

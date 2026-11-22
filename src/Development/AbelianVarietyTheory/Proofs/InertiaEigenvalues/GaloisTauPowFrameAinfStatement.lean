@@ -10,4 +10,4 @@ open Formalism Formalism.BasicNotions Formalism.BasicNotions.Loc Formalism.Weakl
 open scoped Formalism.Per NNReal
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.galois_tauPow_frame_ainf : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (τ : Ainf l) (N d : ℕ) (ρ : ↥(GK K) → Matrix (Fin d) (Fin d) ℤ_[l]) (F : Frame bk N d ρ) (Y : Matrix (Fin d) (Fin d) (Ainf l)), Y.map (inclW l) = inclW l τ ^ N • F.T → ∀ g : ↥(GK K), τ ^ N • ((ρ g).map (Per.zA l) * Y.map (Per.σA (g : GQ l))) = Per.σA (g : GQ l) τ ^ N • (Y * F.ε g) := by
-  first | (exact @GlobalTheory.BKLim.gal_tauPow_frame) | (exact GlobalTheory.BKLim.gal_tauPow_frame) | (intros; apply GlobalTheory.BKLim.gal_tauPow_frame  <;> assumption)
+  first | (exact @GlobalTheory.BKLim.gal_tauPow_frame)

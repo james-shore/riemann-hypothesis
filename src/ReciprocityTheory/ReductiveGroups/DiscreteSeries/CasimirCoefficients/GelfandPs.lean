@@ -41,10 +41,8 @@ private lemma toMK_inv_mul_and_mul_inv (g : KG ε) : toMK g⁻¹ * toMK g = 1 �
   refine ⟨?_, ?_⟩
   · first
       | simpa [Matrix.star_eq_conjTranspose] using Matrix.mem_unitaryGroup_iff'.mp hg.1
-      | simpa [Matrix.star_eq_conjTranspose] using Unitary.star_mul_self_of_mem hg.1
   · first
       | simpa [Matrix.star_eq_conjTranspose] using Matrix.mem_unitaryGroup_iff.mp hg.1
-      | simpa [Matrix.star_eq_conjTranspose] using Unitary.mul_star_self_of_mem hg.1
 
 private lemma submatrix_rev_mul_eq_one_of_mul_eq_one (M N : Matrix (Fin n) (Fin n) ℂ) (h : M * N = 1) :
     M.submatrix Fin.rev Fin.rev * N.submatrix Fin.rev Fin.rev = 1 := by
@@ -53,7 +51,6 @@ private lemma submatrix_rev_mul_eq_one_of_mul_eq_one (M N : Matrix (Fin n) (Fin 
   rw [h, Matrix.submatrix_one_equiv] at e
   first
     | exact e
-    | simpa [Fin.revPerm] using e
 
 theorem gelfand_psM (T : KType ε Λ) (μ : Fin n → ℤ) (lam : Fin n → ℝ) (hμ : IsMu lam μ) :
     ∃ U : Set (Matrix (Fin n) (Fin n) ℂ), IsOpen U ∧ posSet n ⊆ U ∧ DifferentiableOn ℂ (psM T μ) U ∧

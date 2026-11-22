@@ -85,8 +85,8 @@ theorem weil_basis_existence : WBasis := by
     rintro ⟨s, t⟩
     refine ⟨∑ b, (s b • f b + t b • e b), ?_⟩
     refine Prod.ext (funext fun a => ?_) (funext fun a => ?_)
-    · simp [φ, hG_sum_right, hG_add_right, hG_smul_right, hef, hee, Prod.fst_sum, Finset.sum_apply]
-    · simp [φ, hG_sum_right, hG_add_right, hG_smul_right, hfe, hff, Prod.snd_sum, Finset.sum_apply]
+    · simp [φ, hG_add_right, hG_smul_right, hef, hee, Prod.fst_sum, Finset.sum_apply]
+    · simp [φ, hG_add_right, hG_smul_right, hfe, hff, Prod.snd_sum, Finset.sum_apply]
   have hker : Module.finrank I.E (LinearMap.ker φ) = k + 1 := by
     have h1 := LinearMap.finrank_range_add_finrank_ker φ
     rw [LinearMap.range_eq_top.2 hsurj, finrank_top, Module.finrank_prod, Module.finrank_fin_fun,

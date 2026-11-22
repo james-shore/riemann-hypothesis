@@ -50,9 +50,7 @@ theorem esum_mul_le (M : Matrix m k ℂ) (N : Matrix k p ℂ) : esum (M * N) ≤
   first
   | exact @_root_.GlobalTheory.SpectralLemmaSecond.main
   | exact _root_.GlobalTheory.SpectralLemmaSecond.main
-  | (apply _root_.GlobalTheory.SpectralLemmaSecond.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SpectralLemmaSecond.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SpectralLemmaSecond.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.SpectralLemmaSecond.main)
   | (intros; exact _root_.GlobalTheory.SpectralLemmaSecond.main ..)
 
 theorem esum_le_of_entry (M : Matrix m k ℂ) {c : ℝ} (h : ∀ i j, ‖M i j‖ ≤ c) :

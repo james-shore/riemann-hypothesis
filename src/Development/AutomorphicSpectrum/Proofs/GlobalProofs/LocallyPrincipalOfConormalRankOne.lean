@@ -39,7 +39,6 @@ theorem exists_generator_of_rankAtStalk_eq_one {B M : Type*} [CommRing B] [AddCo
   refine ⟨(v : B) * ((u : B) * (s0 : B)), (v * (u * s0)).2, (v : B) * a, ?_⟩
   first
     | (rw [mul_smul (v : B) ((u : B) * (s0 : B)) x, mul_smul (v : B) a m]; exact hv)
-    | simpa only [Submonoid.smul_def, mul_smul] using hv
 
 theorem locPrincipal_of_rankAtStalk_eq_one {A : Type} [CommRing A] [IsDomain A]
     [IsNoetherianRing A] (I : Ideal A) [Module.Finite (A ⧸ I) I.Cotangent]
@@ -57,8 +56,6 @@ theorem locPrincipal_of_rankAtStalk_eq_one {A : Type} [CommRing A] [IsDomain A]
     intro r y
     first
       | (rw [← Ideal.Quotient.algebraMap_eq]; exact algebraMap_smul (A ⧸ I) r y)
-      | rfl
-      | (obtain ⟨y', rfl⟩ := Ideal.toCotangent_surjective I y; rfl)
   have step : ∀ x ∈ I, ∃ s ∉ p, ∃ b : A, s * x - b * f0 ∈ I ^ 2 := by
     intro x hx
     obtain ⟨sq, hsq, bq, hsb⟩ := hm0 (I.toCotangent ⟨x, hx⟩)
@@ -134,7 +131,6 @@ theorem locPrincipal_of_rankAtStalk_eq_one {A : Type} [CommRing A] [IsDomain A]
     rw [h0rank] at hP
     first
       | exact zero_ne_one hP
-      | simp at hP
   refine ⟨t, f0, ht, hf0I, hf0ne, fun g hg => ⟨1, ?_⟩⟩
   rw [pow_one]
   exact htI g hg

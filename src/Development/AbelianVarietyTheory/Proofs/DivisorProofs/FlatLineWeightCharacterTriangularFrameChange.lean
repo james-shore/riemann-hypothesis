@@ -22,7 +22,7 @@ theorem exOf_flatWt_some (τ : Psi H) (σ : E →+* ℂ) (i : Fin (Dw.mult σ)) 
     have hne : σ ≠ conjEmb τ.1 := fun e => conj_not_mem τ (e ▸ h)
     by_cases e : σ = τ.1
     · have : (⟨σ, h⟩ : Psi H) = τ := Subtype.ext e
-      simp [flatWt, parWt, this, e]
+      simp [flatWt, parWt, e]
     · have : (⟨σ, h⟩ : Psi H) ≠ τ := fun e' => e (congrArg Subtype.val e')
       simp [flatWt, parWt, this, e, hne]
   · have h' := conj_mem h

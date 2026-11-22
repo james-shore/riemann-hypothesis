@@ -39,7 +39,7 @@ theorem sum_mixTop_position_sub {n : ℕ} {r : Type} [Fintype r] [DecidableEq r]
         simp [h1, this]
       · have : ¬ ((i : ℕ) < j) := fun h => h1 (Fin.lt_def.mpr h)
         by_cases h2 : i = j
-        · simp [h1, h2, this]
+        · simp [h2]
         · simp [h1, h2, this]
   rw [Finset.sum_congr rfl (fun j _ => hterm j)]
   rw [Fin.sum_univ_eq_sum_range (fun k => T (k + 1) - T k) n, Finset.sum_range_sub]

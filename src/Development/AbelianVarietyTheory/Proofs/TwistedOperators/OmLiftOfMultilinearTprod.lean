@@ -47,7 +47,7 @@ theorem invFun_of_multilinear : ∀ {ι : Type} [Fintype ι] [DecidableEq ι] {S
     rw [omRep, Representation.tprod_apply, TensorProduct.map_tmul, Representation.tprod_apply,
       TensorProduct.map_tmul, Representation.tprod_apply, TensorProduct.map_tmul]
     simp only [piTprod, MonoidHom.comp_apply, PiTensorProduct.mapMonoidHom_apply, PiTensorProduct.map_tprod,
-      Pi.monoidHom_apply, omLiftOfMultilinear_tprod]
+      omLiftOfMultilinear_tprod]
     exact hΦ g x y v φ
   exact LinearMap.congr_fun key z
 

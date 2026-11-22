@@ -223,7 +223,6 @@ theorem prod_smul_mem (F F' : FlagD H r) (Λ : Submodule (𝓞 K) V) (aa : Fin r
     Finset.mul_sum, starRingEnd_apply]
   first
     | (refine Finset.sum_congr rfl fun c _ => Finset.sum_congr rfl fun d _ => by ring)
-    | (rw [Finset.sum_comm]; refine Finset.sum_congr rfl fun c _ => Finset.sum_congr rfl fun d _ => by ring)
 
 omit [Module (𝓞 K) V] [IsScalarTower (𝓞 K) K V] in
 theorem Dl_ne (N : NF H r) : Dl N.F N.F' N.j (N.j_le.trans (Nat.le_succ r)) ≠ 0 := by

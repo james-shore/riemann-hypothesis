@@ -80,8 +80,8 @@ theorem vol_lt_top (hV : GlobalTheory.FlagMeas.AbsoluteVolume) (B : RowsAut) (p 
   have hrd1 : (1 : ℝ) ≤ B.I.rd := hrd
   have hx := hV B.I p q hs hq hn (2 * B.I.f * B.I.rd + B.I.rd + 2) (by nlinarith) (by nlinarith)
     (by nlinarith) c B.μf
-  first | unfold GlobalTheory.FlagMeas.gaugeVol at hx | unfold gaugeVol at hx | skip
-  first | unfold GlobalTheory.FlagMeas.IsGaugeAll at hx | unfold IsGaugeAll at hx | skip
+  first | unfold GlobalTheory.FlagMeas.gaugeVol at hx
+  first | unfold GlobalTheory.FlagMeas.IsGaugeAll at hx
   have hx2 := hx hc
   have hcov := (GlobalTheory.CovolRat.covol_eq_inter_fund B.I B.μf B.fund Set.univ B.fund_spec
     MeasurableSet.univ (by simp)).1
@@ -99,7 +99,6 @@ theorem half_le_least (I : AutInst) (hn : 1 ≤ I.n) (h0 : ∀ v, rkR (I.ε v) =
   obtain ⟨v⟩ : Nonempty (InfinitePlace I.F) := by
     first
     | exact inferInstance
-    | exact ⟨InfinitePlace.mk (Classical.arbitrary _)⟩
   have h1 := (GlobalTheory.FlagIso.flag_isotropic I x).2.1 v
   rw [h0 v] at h1
   have hbot : stepLt I x (1 / 2) = ⊥ := by
@@ -149,8 +148,6 @@ theorem bessel (B : RowsAut) (C : ℝ) (t : B.I.GA → ℝ) (w : B.Hs) (hw : ‖
     rw [hc]
     first
     | exact Complex.conj_mul' _
-    | exact RCLike.conj_mul _
-    | simp [Complex.conj_mul']
   have hon : Orthonormal ℂ (fun i => T i w) :=
     ⟨fun i => by simp [hiso, hw], fun i j hij => horth i j hij w w⟩
   have hAn : ‖A w‖ ^ 2 = S := by
@@ -163,9 +160,6 @@ theorem bessel (B : RowsAut) (C : ℝ) (t : B.I.GA → ℝ) (w : B.Hs) (hw : ‖
     rw [e1]
     first
     | exact RCLike.ofReal_re _
-    | exact Complex.ofReal_re _
-    | simp only [RCLike.re_to_complex, Complex.ofReal_re]
-    | rfl
   have hAn' : ‖A w‖ = Real.sqrt S := by
     rw [← hAn, Real.sqrt_sq (norm_nonneg _)]
   have key : S ≤ C * t x * Real.sqrt S := by
@@ -297,7 +291,6 @@ theorem rows_finiteDimensional : GlobalTheory.DSId.DecGap → GlobalTheory.FlagM
     refine ⟨[], B.w, by simp, fun v => (hB v).2.2.1.2, ?_⟩
     first
     | rfl
-    | simp [GlobalTheory.IndefiniteRowSideFullHecke.OrthonormalPlaceBasis.wordAct]
   have hG : ∀ i, IsContRep B (T i (B.tens B.w)) (Fr i (B.tens B.w)) :=
     fun i => (hFr i 0 _ hmem).1
   have hy : ∀ i, ‖T i (B.tens B.w)‖ = 1 := fun i => by rw [hiso, hw1]

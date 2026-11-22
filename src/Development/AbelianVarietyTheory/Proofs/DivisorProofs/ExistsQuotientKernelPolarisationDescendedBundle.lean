@@ -31,7 +31,7 @@ theorem exists_quotient_lam : ∀ (R : Type) [CommRing R] [IsNoetherianRing R] (
   have hev : ∀ (Y : Over (Sp R)) (a : Y ⟶ A) (t : Y ⟶ B), evc hP a t = evc hP₀ a t - evc hP₀ 1 t := by
     intro Y a t
     have e : lift a t ≫ c = lift (1 : Y ⟶ A) t := by
-      simp only [c, lift_snd_assoc, comp_lift, MonObj.comp_one, Category.comp_id, lift_snd]
+      simp only [c, comp_lift, MonObj.comp_one, Category.comp_id, lift_snd]
     simp only [evc]
     rw [hcls, map_sub, ← GlobalTheory.CechPic.pull_comp, ← Over.comp_left, e]
   have hform' : ∀ (Y : Over (Sp R)) (a x : Y ⟶ A), evc hP a (x ≫ q) = GlobalTheory.CechPic.pull (a * x).left (cls L hL) - GlobalTheory.CechPic.pull a.left (cls L hL) - GlobalTheory.CechPic.pull x.left (cls L hL) + GlobalTheory.CechPic.pull (1 : Y ⟶ A).left (cls L hL) := by

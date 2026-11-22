@@ -101,8 +101,8 @@ theorem exists_derivations_sum_sub_mem_sq [Bialgebra k H] [Algebra.FiniteType k 
     intro a b
     rw [← map_smul, ← map_smul, ← map_add, hq, hq, Ideal.Quotient.eq]
     have : p (a * b) - p (counit (R := k) a • b + counit (R := k) b • a) = p a * p b := by
-      simp only [hp, map_add, map_smul, counit_mul, smul_eq_mul, map_mul, Algebra.smul_def,
-        counit_algebraMap, Algebra.algebraMap_self, RingHom.id_apply]
+      simp only [hp, map_add, counit_mul, map_mul, Algebra.smul_def,
+        counit_algebraMap]
       ring
     rw [this, sq]
     exact Ideal.mul_mem_mul (hpI a) (hpI b)

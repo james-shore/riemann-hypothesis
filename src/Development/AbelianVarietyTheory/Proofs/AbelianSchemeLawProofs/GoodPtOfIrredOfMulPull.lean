@@ -135,7 +135,7 @@ theorem exists_invariant_gen (hL : L.IsLB) (t : G → (Y ⟶ Y)) (t₁ : t 1 = �
       obtain ⟨U', hU', hv'⟩ := exists_gen hL (φ' := fun k => M ≫ ![t ((x ^ n) ^ (i + 1)), 𝟙 Y] k) (ε' := ![1, -1])
         (fun U _ h => by
           have e : (x ^ i) ^ n = (x ^ n) ^ i := pow_right_comm _ _ _
-          simp [Fin.prod_univ_succ, Fintype.prod_sum_type, reassoc_of% (tM (x ^ i)), tM, tm, e, pow_succ, mul_comm])
+          simp [Fin.prod_univ_succ, Fintype.prod_sum_type, reassoc_of% (tM (x ^ i)), tm, e, pow_succ, mul_comm])
         (LB.mulGen L _ _ _ _ U (LB.pullGen L _ _ u (t (x ^ i))))
         (DVR.mulGen_isGen _ _ _ _ _ _ _ hU (DVR.pullGen_isGen _ _ _ _ hu _))
       refine ⟨U', hU', fun w c hw y J hJ => ?_⟩

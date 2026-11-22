@@ -42,7 +42,7 @@ private theorem smul_a (c : X) (u : DD X g) : (c • u).a = c * u.a := rfl
 private theorem smul_ep (c : X) (u : DD X g) (m : Fin g) : (c • u).ep m = c * u.ep m := by
   rw [Algebra.smul_def]
   show _ = _
-  simp [DD.instAlgebra]
+  simp
   rw [RingHom.algebraMap_toAlgebra]
   simp [DD.C]
   change c * u.ep m + (0 : Fin g → X) m * u.a = c * u.ep m

@@ -90,10 +90,10 @@ theorem isGrpPullback_comp {S S' S'' : Scheme.{0}} {G : Over S} {G' : Over S'} {
     rintro _ rfl x₀ y₀ hx hy
     let x₁ : Over.mk (T.hom ≫ g) ⟶ G' := Over.homMk (x.left ≫ ψ) (by
       have := h'.1.w
-      simp only [Over.mk_hom, Category.assoc, this, Over.w_assoc, Over.w])
+      simp only [Over.mk_hom, Category.assoc, this, Over.w_assoc])
     let y₁ : Over.mk (T.hom ≫ g) ⟶ G' := Over.homMk (y.left ≫ ψ) (by
       have := h'.1.w
-      simp only [Over.mk_hom, Category.assoc, this, Over.w_assoc, Over.w])
+      simp only [Over.mk_hom, Category.assoc, this, Over.w_assoc])
     have e₁ := h'.2 T x y x₁ y₁ rfl rfl
     have e₂ := h.2 (Over.mk (T.hom ≫ g)) x₁ y₁ x₀ y₀ (by simpa [x₁] using hx) (by simpa [y₁] using hy)
     rw [e₂, e₁]
@@ -301,7 +301,7 @@ theorem stratum_good : GlobalTheory.Published.SemiAbelianHomExtension → ∀ (X
       rw [LieTangent.spec_comp, ← RootHt.dualMap_comp]
     rw [e5, CategoryTheory.Category.assoc, ← e3, Over.comp_left]
     show _ = ((spMap g1 ≫ (MT.pt δ').left) ≫ τ.i.left) ≫ φ
-    simp only [CategoryTheory.Category.assoc, Over.comp_left]
+    simp only [CategoryTheory.Category.assoc]
     rfl
   obtain ⟨hlo, hhi⟩ := hb zc zX hzX Mz hMz v hv w
   have hΓ : ∀ a b, RootHt.gramAt h zX v a b = (B.metric.form σ).inner ((1 : GroundTheory.Heights₂.Heights.ComplexAt σ) ⊗ₜ[𝓞 L] ε a)

@@ -269,7 +269,7 @@ theorem UpperTheory.V.Z.InvariantSubmoduleMonicPolynomial.IwahoriBlocks.xOcc :
         by_cases hj : j = i
         · subst hj
           simp [g2]
-        · simp [g2, hj, Pi.mulSingle_eq_of_ne hj]
+        · simp [g2, hj]
       have hn : ι g2 * h' ∈ levOn (im w) U := by
         refine (hlev U _).2 ⟨g2, h', rfl, fun j => ?_, hc, hint⟩
         by_cases hj : j = i

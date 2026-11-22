@@ -91,7 +91,7 @@ theorem lam_formula {σ : E →ₐ[F] E} {B : Base F E} (hB : B.IsGood σ) {nS n
     congr 1
     funext ξ
     subst ha hch hemb
-    simp only [symV, dotProduct_zero, zero_dotProduct, zero_sub]
+    simp only [symV, dotProduct_zero, zero_sub]
     exact psi_cancel B.ψ _ _ _
   have hFint : ∀ ξ, Integrable (fun u => a ξ * ch ξ u) (ν.restrict 𝓕) := fun ξ =>
     (Integrable.of_bound (hch_cont _).aestronglyMeasurable 1 (ae_of_all _ fun u => (hch_norm _ _).le)).const_mul _

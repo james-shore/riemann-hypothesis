@@ -47,7 +47,6 @@ theorem ker_stalkMap_fiberι (B Y : Scheme.{0}) (π : Y ⟶ B) (b : B) (z : π.f
       first
         | (rw [Spec.map_comp (π.stalkMap y) (CommRingCat.ofHom (Ideal.Quotient.mk I)), Category.assoc,
             Scheme.SpecMap_stalkMap_fromSpecStalk])
-        | (erw [Spec.map_comp, Category.assoc, Scheme.SpecMap_stalkMap_fromSpecStalk])
       all_goals rfl
     let ℓ : Spec (CommRingCat.of (S ⧸ I)) ⟶ π.fiber b := Limits.pullback.lift g t w
     have hℓ : ℓ ≫ π.fiberι b = g := Limits.pullback.lift_fst _ _ _

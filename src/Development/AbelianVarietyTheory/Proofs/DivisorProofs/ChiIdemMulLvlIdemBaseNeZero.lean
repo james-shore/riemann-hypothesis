@@ -34,7 +34,7 @@ theorem sum_character_eq_zero_iff {G V : Type} [Group G] [Fintype G] [AddCommGro
   have h := ρ.card_inv_mul_sum_char_eq_finrank
   have e : ∑ g, ρ.character g = 0 ↔ ρ.invariants = ⊥ := by
     rw [← Submodule.finrank_eq_zero, ← Nat.cast_eq_zero (R := ℂ), ← h]
-    simp [hc]
+    simp
   rw [e, Submodule.eq_bot_iff]
   simp only [Representation.mem_invariants]
 

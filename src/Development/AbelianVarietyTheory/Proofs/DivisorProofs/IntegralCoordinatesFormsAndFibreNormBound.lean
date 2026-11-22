@@ -234,7 +234,7 @@ theorem exists_ortho {σ : c.F →+* ℂ} {r : ℕ} {U : Unf Xo c σ r} {ξ : �
       fun _ => 1 := by
     funext b
     have h3 : (ρ : ℂ) * ((2 * Real.pi * ξ : ℝ) : ℂ) * ρ = 1 := by exact_mod_cast hρκ
-    simp only [Y, Matrix.conjTranspose_smul, Matrix.conjTranspose_one, Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_one,
+    simp only [Y, Matrix.conjTranspose_smul, Matrix.conjTranspose_one, Matrix.mul_smul, Matrix.mul_one,
       smul_smul, Complex.star_def, Complex.conj_ofReal]
     rw [← mul_assoc, h3, one_smul]
   rw [hG, norm_one, one_pow, mul_one] at hm1

@@ -15,10 +15,6 @@ namespace GlobalTheory.KapOrb.SelfDualPull
 theorem exists_basis_of_lattice : ∀ (K : GlobalTheory.UnitLemma.UQ) (V : Type) [AddCommGroup V] [Module K.E V] [Module K.O V] [IsScalarTower K.O K.E V] [FiniteDimensional K.E V] (L : Submodule K.O V), L.FG → Submodule.span K.E (L : Set V) = ⊤ → ∃ b : Module.Basis (Fin (Module.finrank K.E V)) K.E V, ∀ y, y ∈ L ↔ ∀ i, b.repr y i ∈ (algebraMap K.O K.E).range := by
   first
   | exact @_root_.GlobalTheory.LatticeIntegralCoordinates.lattice_eq_integral_coords
-  | exact _root_.GlobalTheory.LatticeIntegralCoordinates.lattice_eq_integral_coords
-  | (apply _root_.GlobalTheory.LatticeIntegralCoordinates.lattice_eq_integral_coords <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LatticeIntegralCoordinates.lattice_eq_integral_coords <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LatticeIntegralCoordinates.lattice_eq_integral_coords <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LatticeIntegralCoordinates.lattice_eq_integral_coords ..)
 
 theorem exists_orthonormal_of_selfDual : ∀ (K : GlobalTheory.UnitLemma.UQ) (V : Type) [AddCommGroup V] [Module K.E V] [Module K.O V] [IsScalarTower K.O K.E V] [FiniteDimensional K.E V] (h : V → V → K.E), (∀ y y' z, h (y + y') z = h y z + h y' z) → (∀ (a : K.E) y z, h (a • y) z = a * h y z) → (∀ y z, h z y = K.c (h y z)) → (∀ y, (∀ z, h y z = 0) → y = 0) → ∀ L : Submodule K.O V, L.FG → Submodule.span K.E (L : Set V) = ⊤ → (∀ y, y ∈ L ↔ ∀ z ∈ L, h y z ∈ (algebraMap K.O K.E).range) → ∃ f : Fin (Module.finrank K.E V) → V, (∀ i j, h (f i) (f j) = if i = j then 1 else 0) ∧ ∀ y, y ∈ L ↔ ∀ i, h y (f i) ∈ (algebraMap K.O K.E).range := by

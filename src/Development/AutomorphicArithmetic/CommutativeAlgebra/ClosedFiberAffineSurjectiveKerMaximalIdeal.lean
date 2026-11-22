@@ -38,14 +38,14 @@ theorem UpperTheory.closed_fiber_affine_surjective_ker_maximalIdeal :
       rw [← cancel_epi (Scheme.ΓSpecIso (CommRingCat.of A)).inv,
         ← cancel_mono (Scheme.ΓSpecIso (CommRingCat.of (Γ(X, ⊤) ⧸ I))).hom]
       simp only [z, cpt, Scheme.Hom.comp_appTop, Category.assoc, Scheme.ΓSpecIso_naturality,
-        Scheme.ΓSpecIso_naturality_assoc, reassoc_of% hinv, Iso.inv_hom_id_assoc, Category.id_comp]
+        Scheme.ΓSpecIso_naturality_assoc, reassoc_of% hinv, Iso.inv_hom_id_assoc]
       ext a
       rfl
     let u := h.lift z (Spec.map χ) hz
     have hu : u ≫ r = z := h.lift_fst _ _ _
     have hzt : z.appTop ≫ (Scheme.ΓSpecIso (CommRingCat.of (Γ(X, ⊤) ⧸ I))).hom = π := by
       simp only [z, Scheme.Hom.comp_appTop, Category.assoc, Scheme.ΓSpecIso_naturality,
-        reassoc_of% hinv, Category.id_comp]
+        reassoc_of% hinv]
     have e1 : z.appTop = r.appTop ≫ u.appTop := by
       rw [← Scheme.Hom.comp_appTop, hu]
     have e2 := congrArg (fun f => f.hom b) hzt

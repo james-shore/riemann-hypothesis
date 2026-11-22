@@ -235,7 +235,7 @@ theorem count (δ : ℕ) (c₀ : Kˣ) :
     intro c j
     rw [Formalism.IrreducibleCountingLemmas.GaloisIrreducibility.monicOf.eq_1, Polynomial.coeff_add, Polynomial.coeff_X_pow,
       Polynomial.finset_sum_coeff]
-    simp [Polynomial.coeff_C_mul_X_pow, Fin.val_inj, j.isLt.ne]
+    simp [Fin.val_inj, j.isLt.ne]
   have hinj : Function.Injective (Formalism.IrreducibleCountingLemmas.GaloisIrreducibility.monicOf : (Fin δ → K) → K[X]) :=
     fun c c' h => funext fun j => by rw [← hcoeff c j, ← hcoeff c' j, h]
   have hgen : ∀ (k : ℕ) (a : K), 0 < k → δ * (Finset.univ.filter (fun c : Fin δ → K =>

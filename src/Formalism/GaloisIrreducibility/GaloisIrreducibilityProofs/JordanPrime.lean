@@ -20,7 +20,6 @@ theorem conj_pow_eq (x g : Perm α) (u : ℤ) (hx : x * g * x⁻¹ = g ^ u) :
     calc x ^ (n + 1) * g * (x ^ (n + 1))⁻¹ = x ^ n * (x * g * x⁻¹) * (x ^ n)⁻¹ := by
           first
             | (rw [pow_succ, mul_inv_rev]; simp only [mul_assoc])
-            | group
       _ = x ^ n * g ^ u * (x ^ n)⁻¹ := by rw [hx]
       _ = (x ^ n * g * (x ^ n)⁻¹) ^ u := key
       _ = (g ^ (u ^ n)) ^ u := by rw [ih]
@@ -52,15 +51,15 @@ theorem comm_of_conj (x y g : Perm α) (u w : ℤ) (hx : x * g * x⁻¹ = g ^ u)
   have hw : y⁻¹ * g * y = g ^ v' := by rw [inv_inv] at hw0; exact hw0
   have huv : g ^ (u * v) = g := by
     rw [← conj_key x g u hx v, ← hv]
-    first | group | simp [mul_assoc]
+    first | group
   have hwv : g ^ (w * v') = g := by
     rw [← conj_key y g w hy v', ← hw]
-    first | group | simp [mul_assoc]
+    first | group
   have k1 := conj_key x⁻¹ g v hv0 v'
   rw [inv_inv] at k1
   have e1 : (x * y * x⁻¹ * y⁻¹) * g * (x * y * x⁻¹ * y⁻¹)⁻¹ =
       x * (y * (x⁻¹ * (y⁻¹ * g * y) * x) * y⁻¹) * x⁻¹ := by
-    first | group | simp only [mul_inv_rev, inv_inv, mul_assoc]
+    first | group
   rw [e1, hw, k1, conj_key y g w hy (v * v'), conj_key x g u hx (w * (v * v'))]
   have he : u * (w * (v * v')) = (u * v) * (w * v') := by ring
   rw [he, zpow_mul, huv, hwv]
@@ -104,7 +103,6 @@ theorem exists_agree (G : Subgroup (Perm α)) (Γ : Finset α)
   have h3 : (g : Perm α) (e (Γ.equivFin ⟨γ, hγ⟩)) = π (e (Γ.equivFin ⟨γ, hγ⟩)) := by
     first
       | exact h
-      | (simp only [Function.Embedding.smul_apply, Subgroup.smul_def, Perm.smul_def] at h; exact h)
   rwa [h2] at h3
 
 theorem sylow_adjust (G : Subgroup (Perm α)) (g : Perm α) (p : ℕ) (hp : p.Prime)

@@ -185,8 +185,6 @@ theorem semistandardPeel : SSYTPeel := by
     intro x
     first
       | exact Finsupp.tsub_apply _ _ _
-      | simp
-      | rfl
   have hpart : ∀ (S : Finset (Fin r)) (t : Fin n),
       ∑ b ∈ S, (m - colExp c hh) (b, t) =
         ∑ b ∈ S, m (b, t) - (if ht : t.val < h then (if c ⟨t.val, ht⟩ ∈ S then 1 else 0) else 0) := by
@@ -211,8 +209,6 @@ theorem semistandardPeel : SSYTPeel := by
   refine ⟨h, hh, c, hcmono, hiff, ?_, ?_, ?_⟩
   · first
       | exact Finsupp.le_def.mpr (fun x => hle x.1 x.2)
-      | exact fun x => hle x.1 x.2
-      | (intro x; exact hle x.1 x.2)
   · intro l j hlj a
     show (∑ b : Fin r with b ≤ a, (m - colExp c hh) (b, j)) ≤
       0 + ∑ b : Fin r with b < a, (m - colExp c hh) (b, l)

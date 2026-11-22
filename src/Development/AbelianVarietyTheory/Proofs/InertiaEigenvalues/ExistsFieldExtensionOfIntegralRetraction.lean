@@ -74,8 +74,7 @@ theorem ext_mul (h : LL.1 ≤ LL'.1) (r : ↥(OL LL') →+ ↥(OL LL))
   let y : ↥(OL LL') := ⟨d • x, hi⟩
   let a'' : ↥(OL LL) := ⟨e • a, hie⟩
   have hy : ((incO h a'' * y : ↥(OL LL')) : LL'.1) = (e * d) • (IntermediateField.inclusion h a * x) := by
-    simp only [incO, y, a'', RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk, Subalgebra.coe_mul,
-      SetLike.val_smul, map_smul]
+    simp only [incO, y, a'', RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk, Subalgebra.coe_mul]
     simp only [Algebra.smul_def, map_mul]
     have hc : IntermediateField.inclusion h (algebraMap ℤ_[l] LL.1 e) = algebraMap ℤ_[l] LL'.1 e := by simp
     rw [hc]

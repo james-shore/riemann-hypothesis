@@ -70,7 +70,7 @@ theorem det_Bm_lift (Z : Gl r k) (μ l : k) (h : (Bm Z).det = 0) :
     | zero =>
       intro m
       have h0 : x 0 = 0 := by
-        funext i; simp [x, GlobalTheory.JR.Step.eL, Pi.single_apply, Fin.castSucc_ne_last]
+        funext i; simp [x, GlobalTheory.JR.Step.eL, Fin.castSucc_ne_last]
       rw [h0, mulVec_zero, dotProduct_zero]
     | succ j ih =>
       intro m
@@ -78,7 +78,7 @@ theorem det_Bm_lift (Z : Gl r k) (μ l : k) (h : (Bm Z).det = 0) :
         funext i
         simp only [x, pow_succ', ← mulVec_mulVec]
         rw [full_mulVec_cs]
-        simp [mul_comm]
+        simp
       rw [hxs, mulVec_add, dotProduct_add, mulVec_mulVec, ← pow_succ, ih, mulVec_smul, dotProduct_smul, hw']
       simp
   refine (Matrix.exists_vecMul_eq_zero_iff (M := Bm (GlobalTheory.JR.Step.lift Z μ l))).mp ?_
@@ -116,7 +116,7 @@ theorem det_Cm_lift (Z : Gl r k) (μ l : k) (h : (Cm Z).det = 0) :
       have h0 : u 0 = 0 := by
         funext i
         simp only [u, pow_zero, vecMul_one, GlobalTheory.JR.Step.eL]
-        simp [Pi.single_apply, Fin.castSucc_ne_last]
+        simp [Fin.castSucc_ne_last]
       rw [h0, zero_dotProduct]
     | succ j ih =>
       intro m
@@ -124,7 +124,7 @@ theorem det_Cm_lift (Z : Gl r k) (μ l : k) (h : (Cm Z).det = 0) :
         funext i
         simp only [u, pow_succ, ← vecMul_vecMul]
         rw [vecMul_full_cs]
-        simp [mul_comm]
+        simp
       rw [hus, add_dotProduct, ← dotProduct_mulVec, mulVec_mulVec, ← pow_succ', ih, smul_dotProduct, hv']
       simp
   refine (Matrix.exists_mulVec_eq_zero_iff (M := Cm (GlobalTheory.JR.Step.lift Z μ l))).mp ?_

@@ -115,9 +115,6 @@ theorem tame_of_pow : Ev fun K => ∀ X : Stages, K.Over X.B.toPre → (∀ (k :
       have h2 := X.toD7.R.two_le_m
       first
       | (show 1 ≤ X.toD7.R.k + X.toD7.R.m - 1; omega)
-      | omega
-      | (simp only [Formalism.MainNotions.Ranks.r]; omega)
-      | (unfold Formalism.MainNotions.Ranks.r; omega)
     have e : X.toD7.nd.chiT k v = fun j : Fin X.B.R.m => w ^ (2 * (j.1 + 1)) := funext hchi
     haveI : Fact (X.toD7.host.g k).Prime := ⟨X.toD7.host.g_prime k⟩
     have h := GlobalTheory.EX.DC.TameGen.tameDistinct_gen X.toD7.R.r (X.toD7.host.g k) X.B.R.m w hw hb hr
@@ -127,7 +124,7 @@ theorem tame_of_pow : Ev fun K => ∀ X : Stages, K.Over X.B.toPre → (∀ (k :
   refine ⟨1, one_pos, ?_⟩
   intro eps C8 _ _ _ _
   refine ⟨?k0, fun C _ _ _ => ⟨0, fun cD _ => ⟨0, fun ch _ => ⟨0, fun K => ?_⟩⟩⟩⟩
-  case k0 => first | exact ⟨0, 0, 0, 0⟩ | exact default | exact Classical.arbitrary _
+  case k0 => first | exact ⟨0, 0, 0, 0⟩
   first
   | exact key K
   | exact fun _ => key K
@@ -135,8 +132,5 @@ theorem tame_of_pow : Ev fun K => ∀ X : Stages, K.Over X.B.toPre → (∀ (k :
   | exact fun _ _ _ => key K
   | exact fun _ _ _ _ => key K
   | exact fun _ _ _ _ _ => key K
-  | exact fun _ _ _ _ _ _ => key K
-  | exact fun _ _ _ _ _ _ _ => key K
-  | exact fun _ _ _ _ _ _ _ _ => key K
 
 end GlobalTheory.Mem.Top.TamePow

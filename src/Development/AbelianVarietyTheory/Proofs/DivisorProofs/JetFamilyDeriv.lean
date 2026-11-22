@@ -132,7 +132,7 @@ theorem jet_family_deriv : AllC fun {R} _ _ {D} _ {N} ν => ∀ (g' r g : ℕ) (
       rw [hh.1] at e1
       rw [leftComponent_join] at e1 e2
       rw [secondBlock_join] at e2
-      simp only [dotProduct_zero, mul_zero, Complex.exp_zero, one_mul] at e2
+      simp only [dotProduct_zero, mul_zero, Complex.exp_zero] at e2
       linear_combination (d.fr (d.t12 *ᵥ co bX α + z) : ℂ) * e1 - f α (d.ex z) * e2
     have hB : ∀ Y, F Y = Complex.exp ((2 * Real.pi * Complex.I : ℂ) * (co bX α ⬝ᵥ tP σ Y)) * F (join σ (zP σ Y) 0) :=
       fun Y => by

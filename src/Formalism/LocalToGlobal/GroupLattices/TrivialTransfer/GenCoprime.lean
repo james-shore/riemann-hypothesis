@@ -28,7 +28,7 @@ theorem gen_coprime (U : Subgroup (GL (Fin k) 𝒜)) (g : ℕ) (hg : g.Prime) (v
     RingHom.injective _
   have hz : (x⁻¹ * bc (inclE (F := F) 𝔸) γ * x) ^ N = 1 := by
     rw [show x⁻¹ * bc (inclE (F := F) 𝔸) γ * x = MulAut.conj x⁻¹ (bc (inclE (F := F) 𝔸) γ) by
-      simp [MulAut.conj_apply], ← map_pow, hγN, map_one]
+      simp, ← map_pow, hγN, map_one]
   have hmem := hU _ hγ
   have hwN : (bc ρ (bc (prV (E := E) v) (x⁻¹ * bc (inclE (F := F) 𝔸) γ * x))) ^ N = 1 := by
     rw [← map_pow, ← map_pow, hz, map_one, map_one]

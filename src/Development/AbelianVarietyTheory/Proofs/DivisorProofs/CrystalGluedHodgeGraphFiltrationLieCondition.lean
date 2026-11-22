@@ -160,7 +160,7 @@ theorem mem_glueFil_of_crd (f : Fin d → (HdR A₀ →ₗ[k] HdR A₀)) (u : Cr
   · simp only [crd_apply, TrivSqZeroExt.fst_add, TrivSqZeroExt.fst_inl, TrivSqZeroExt.fst_inr, add_zero]
     rfl
   · simp only [crd_apply, TrivSqZeroExt.snd_add, TrivSqZeroExt.snd_inl, TrivSqZeroExt.snd_inr, zero_add,
-      LinearMap.add_apply, LinearMap.sub_apply, add_sub_cancel]
+      add_sub_cancel]
     rfl
 
 theorem mem_glueFil_of_crd_mem (f : Fin d → (HdR A₀ →ₗ[k] HdR A₀)) (Z : Submodule k (HdR A₀)) (hZ : Z ≤ Fil A₀)
@@ -219,7 +219,7 @@ theorem one_sub_mem_lieZ {r : Fin D.a → ℕ} (lam : ∀ i, Fin (r i) → k) (c
     (fun o => Option.elim o 1 (fun s => -lam s.1 s.2)) (fun o => Option.elim o 1 (fun s => c s.1 s.2)) hy
     (fun j => by
       rw [Fintype.sum_option, Fintype.sum_sigma]
-      simp only [Option.elim_none, Option.elim_some, map_one, one_mul, neg_mul, Finset.sum_neg_distrib]
+      simp only [Option.elim_none, Option.elim_some, map_one, neg_mul, Finset.sum_neg_distrib]
       rw [Finset.sum_congr rfl fun i _ => hc i j, Finset.sum_ite_eq']
       simp)
   convert H using 1

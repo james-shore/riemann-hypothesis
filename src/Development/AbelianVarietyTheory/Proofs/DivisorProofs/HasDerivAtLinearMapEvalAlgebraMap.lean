@@ -12,7 +12,7 @@ theorem hasDerivAt_linearMap_eval_algebraMap {A : Type*} [CommRing A] [Algebra �
       (Φ ((derivative R).eval (algebraMap ℝ A τ))) τ := by
   induction R using Polynomial.induction_on' with
   | add p q hp hq =>
-    simp only [eval_add, map_add, derivative_add]
+    simp only [eval_add, map_add]
     exact hp.add hq
   | monomial n a =>
     simp only [eval_monomial, derivative_monomial]

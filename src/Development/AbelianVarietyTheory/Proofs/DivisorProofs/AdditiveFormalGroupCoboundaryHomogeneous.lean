@@ -195,7 +195,7 @@ theorem eqB {d : ℕ} (a β : Fin d →₀ ℕ) (j i : Fin d) (hji : j ≠ i) (h
     ext k
     simp only [Finsupp.coe_add, Finsupp.coe_tsub, Pi.add_apply, Pi.sub_apply, Finsupp.single_apply]
     by_cases h1 : j = k
-    · subst h1; simp [hji]; omega
+    · subst h1; simp; omega
     · by_cases h2 : i = k
       · subst h2; simp [h1]
       · simp [h1, h2]
@@ -204,7 +204,7 @@ theorem eqB {d : ℕ} (a β : Fin d →₀ ℕ) (j i : Fin d) (hji : j ≠ i) (h
     have := DFunLike.congr_fun e k
     simp only [Finsupp.coe_add, Finsupp.coe_tsub, Pi.add_apply, Pi.sub_apply, Finsupp.single_apply] at this ⊢
     by_cases h1 : j = k
-    · subst h1; simp [hji] at this ⊢; omega
+    · subst h1; simp at this ⊢; omega
     · by_cases h2 : i = k
       · subst h2; simp [h1] at this ⊢; omega
       · simp [h1, h2] at this ⊢; omega
@@ -213,7 +213,7 @@ theorem neB {d : ℕ} (a β : Fin d →₀ ℕ) (j i : Fin d) (hji : j ≠ i) (h
     a + Finsupp.single j 1 ≠ β + Finsupp.single i 1 := by
   intro e
   have := DFunLike.congr_fun e j
-  simp [Finsupp.single_apply, hji.symm] at this
+  simp [hji.symm] at this
   omega
 
 theorem eqC {d : ℕ} (β : Fin d →₀ ℕ) (j : Fin d) (h : 1 ≤ β j) :
@@ -228,7 +228,7 @@ theorem subA {d : ℕ} (β : Fin d →₀ ℕ) (j : Fin d) :
   ext k
   rcases k with k | k
   · simp only [Finsupp.coe_tsub, Pi.sub_apply, mdl_inl, Finsupp.single_apply, Sum.inl.injEq]
-  · simp [mdl_inr, Finsupp.single_apply]
+  · simp [mdl_inr]
 
 theorem subB {d : ℕ} (β : Fin d →₀ ℕ) (j i : Fin d) :
     (β.mapDomain Sum.inl : Fin d ⊕ Fin d →₀ ℕ) + Finsupp.single (Sum.inr i) 1 -
@@ -305,14 +305,14 @@ theorem coeff_prod_addLaw (d n : ℕ) : ∀ α : Fin d →₀ ℕ, α.degree = n
     · rw [map_add, coeff_mul_monomial, coeff_mul_monomial]
       by_cases hji : j = i
       · subst hji
-        rw [if_pos (c := Finsupp.single (Sum.inr j) 1 ≤ _) (by simp [Finsupp.single_le_iff]),
+        rw [if_pos (c := Finsupp.single (Sum.inr j) 1 ≤ _) (by simp),
           add_tsub_cancel_right, (ih a ha _).1]
         simp only [add_left_inj]
         by_cases hb : 1 ≤ β j
         · rw [if_pos (by rw [Finsupp.single_le_iff]; simpa [mdl_inl] using hb), subB, (ih a ha _).2,
             eqC β j hb]
           by_cases hab : a = β
-          · subst hab; simp <;> ring
+          · subst hab; simp
           · simp [hab]
         · rw [if_neg (by rw [Finsupp.single_le_iff]; simpa [mdl_inl] using hb), zero_add]
           by_cases hab : a = β
@@ -321,9 +321,9 @@ theorem coeff_prod_addLaw (d n : ℕ) : ∀ α : Fin d →₀ ℕ, α.degree = n
             simp [this]
           · simp [hab]
       · rw [if_neg (c := Finsupp.single (Sum.inr j) 1 ≤ _)
-          (by rw [Finsupp.single_le_iff]; simp [mdl_inr, Finsupp.single_apply, Ne.symm hji]), add_zero]
+          (by rw [Finsupp.single_le_iff]; simp [mdl_inr, Ne.symm hji]), add_zero]
         have hi : (((a + Finsupp.single j 1 : Fin d →₀ ℕ) i : ℕ) : R) = (a i : R) := by
-          simp [Finsupp.single_apply, hji]
+          simp [hji]
         rw [hi]
         by_cases hb : 1 ≤ β j
         · rw [if_pos (by rw [Finsupp.single_le_iff]; simpa [mdl_inl] using hb), subB, (ih a ha _).2,
@@ -358,7 +358,7 @@ theorem coeff_cob1_additive_law_mixed (d : ℕ) (f : MvPowerSeries (Fin d) R) (�
     rw [if_neg, smul_zero]
     intro h
     have := DFunLike.congr_fun h (Sum.inr i)
-    simp [mdl_inr, Finsupp.mapDomain_apply Sum.inl_injective] at this
+    simp [mdl_inr] at this
   have h2 : (∑ᶠ δ : Fin d →₀ ℕ, coeff δ f • (if β.mapDomain Sum.inl + Finsupp.single (Sum.inr i) 1 =
       δ.mapDomain Sum.inr then (1 : R) else 0)) = 0 := by
     refine finsum_eq_zero_of_forall_eq_zero fun δ => ?_

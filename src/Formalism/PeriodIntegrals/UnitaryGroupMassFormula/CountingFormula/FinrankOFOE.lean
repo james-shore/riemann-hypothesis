@@ -28,9 +28,7 @@ theorem absNorm_ddS (D : Formalism.BasicNotions.D7) :
     (Ideal.map (algebraMap (𝓞 D.host.F) (𝓞 D.host.E)) (differentIdeal ℤ (𝓞 D.host.F)))
     (by
       first
-        | (open scoped Pointwise in rw [one_smul]; rfl)
-        | (exact (one_smul _ _).trans rfl)
-        | (open scoped Pointwise in simp; rfl))
+        | (open scoped Pointwise in rw [one_smul]; rfl))
   rw [h, Ideal.absNorm_algebraMap, finrank_OF_OE,
     NumberField.absNorm_differentIdeal (K := D.host.F)]
   simp

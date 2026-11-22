@@ -43,7 +43,7 @@ theorem cr_comm (c : ℝ) (k l : Ix m n) (P : PX m n) :
     cr c k (cr c l P) = cr c l (cr c k P) := by
   classical
   simp only [cr_apply, map_sub, Derivation.map_smul, Derivation.leibniz, pderiv_X, Pi.single_apply, smul_eq_mul]
-  simp only [MvPolynomial.smul_eq_C_mul, pderiv_C, mul_zero, zero_mul, add_zero, zero_add]
+  simp only [MvPolynomial.smul_eq_C_mul]
   rw [pderiv_comm' k l P]
   have e : (flp l = k) ↔ (flp k = l) :=
     ⟨fun h => by rw [← h, flp_flp], fun h => by rw [← h, flp_flp]⟩
@@ -221,7 +221,7 @@ theorem err_deg (c : ℝ) : ∀ d : ℕ, ∀ s : Ix m n →₀ ℕ, s.degree = d
       intro i
       by_cases hi : i = k
       · subst hi; simp; omega
-      · simp [Finsupp.single_apply, Ne.symm hi]
+      · simp [Ne.symm hi]
     set s' := s - Finsupp.single k 1 with hs'
     have hsplit : s = s' + Finsupp.single k 1 := (tsub_add_cancel_of_le hle).symm
     have hd' : s'.degree = d := by
@@ -232,7 +232,7 @@ theorem err_deg (c : ℝ) : ∀ d : ℕ, ∀ s : Ix m n →₀ ℕ, s.degree = d
       rw [← fock_monomial, ← fock_monomial, hsplit, add_comm, monomial_single_add, pow_one, fock_X_mul]
     have e : err c s = (2 * c : ℂ) • (X (flp k) * err c s') - pderiv k (Sm c s' + err c s') := by
       rw [err, hrec, cr_apply, hsplit, Sm_succ, err]
-      simp only [sub_add_cancel, mul_sub, smul_sub]
+      simp only [mul_sub, smul_sub]
       abel
     rw [e]
     refine DegLT.sub (DegLT.smul _ (DegLT.X_mul _ (ih s' hd'))) (DegLT.pderiv _ (DegLT.add ?_ ((ih s' hd').mono (by omega))))

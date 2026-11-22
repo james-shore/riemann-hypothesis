@@ -158,9 +158,7 @@ theorem conj_rt (σ : E →+* ℂ) : ComplexEmbedding.conjugate σ (H.rt : E) = 
   first
   | exact @_root_.GlobalTheory.ConjugateNegativeSquare.conjugate_rt
   | exact _root_.GlobalTheory.ConjugateNegativeSquare.conjugate_rt
-  | (apply _root_.GlobalTheory.ConjugateNegativeSquare.conjugate_rt <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ConjugateNegativeSquare.conjugate_rt <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ConjugateNegativeSquare.conjugate_rt <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.ConjugateNegativeSquare.conjugate_rt)
   | (intros; exact _root_.GlobalTheory.ConjugateNegativeSquare.conjugate_rt ..)
 
 theorem cm_generator_sq_quadratic_eq : ∃ m : 𝓞 E, H.w0 ^ 2 = H.w0 - 2 * m := by

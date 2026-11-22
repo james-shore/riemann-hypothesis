@@ -230,8 +230,6 @@ theorem densF_pos (x0 : Frame X.Ψ r) {z : V (nd X)} (hz : z ∈ OmF X x0) : 0 <
     simp at h
   first
   | exact zpow_pos (norm_pos_iff.mpr hne) _
-  | exact Real.rpow_pos_of_pos (norm_pos_iff.mpr hne) _
-  | positivity
 
 private lemma continuous_dmin_Gm (τ : X.Ψ) (i : Fin (r + 1)) :
     Continuous fun y : Frame X.Ψ r => dmin X.Gm y τ i := by
@@ -255,8 +253,6 @@ private lemma continuous_cpt' (x0 : Frame X.Ψ r) : Continuous (cpt X x0) := by
   · simp only [dif_pos h]
     first
     | fun_prop
-    | exact (continuous_apply _).comp (PiLp.continuous_ofLp 2 _)
-    | continuity
   · simp only [dif_neg h]
     exact continuous_const
 
@@ -266,8 +262,6 @@ theorem densF_meas (x0 : Frame X.Ψ r) : Measurable (densF X x0) := by
   have hm := ((continuous_dmin_Gm X τ i.castSucc).comp (continuous_cpt' X x0)).norm.measurable
   first
   | exact hm.pow_const _
-  | (simp only [zpow_neg]; exact (hm.pow_const _).inv)
-  | fun_prop
 
 def rhoF (x0 : Frame X.Ψ r) (Fp : Wt X.Ψ r) (ψ : Frame X.Ψ r → ℝ) (bb : ℝ) (z : V (nd X)) : ℝ :=
   Real.exp (-(phla X Fp (cpt X x0 z) + ψ (cpt X x0 z)) + bb * rhF X x0 z + Real.log (densF X x0 z))
@@ -324,7 +318,6 @@ theorem rhoF_cont (x0 : Frame X.Ψ r) (ho : IsOrth X x0) (Fp : Wt X.Ψ r) (ψ : 
     refine tendsto_finset_prod _ fun τ _ => tendsto_finset_prod _ fun i _ => ?_
     first
     | exact (hdm τ _).norm.zpow₀ _ (Or.inl (norm_ne_zero_iff.mpr (hne τ _)))
-    | exact (hdm τ _).norm.rpow_const (Or.inl (norm_ne_zero_iff.mpr (hne τ _)))
   unfold rhoF
   exact (((hph.add hψ).neg.add (continuousAt_const.mul hrh)).add
     (hdF.log (densF_pos X x0 hz).ne')).rexp

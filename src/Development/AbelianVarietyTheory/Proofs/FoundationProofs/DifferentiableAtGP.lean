@@ -401,7 +401,7 @@ theorem _root_.GlobalTheory.Sieg.DlogOne.E_eq {x : Fin 2 → ℚ}
         push_cast
         ring
       simp only [_root_.GlobalTheory.Sieg.fTerm, Equiv.prodCongr_apply, Equiv.coe_addRight,
-        Equiv.coe_refl, Prod.map_apply, id_eq, hy1]
+        Equiv.coe_refl, hy1]
       rw [key]
       rfl
   have hbase := E_ee_pt_eq_neg_F_of_mem_Ico hy (Int.fract_nonneg _)

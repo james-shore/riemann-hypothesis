@@ -64,7 +64,6 @@ theorem ratios {K σ S : Type} [CommRing K] [CommRing S] {Z : Scheme.{0}} {p : Z
     simp only [LB.pull, LB.LinComb, LB.wchart, Scheme.Hom.coe_preimage]
     first
       | exact Set.iInter_const _
-      | simp
   have hxD : x ⁻¹ᵁ D = ⊤ := by
     rw [← hD]
     exact Scheme.Hom.preimage_opensRange x

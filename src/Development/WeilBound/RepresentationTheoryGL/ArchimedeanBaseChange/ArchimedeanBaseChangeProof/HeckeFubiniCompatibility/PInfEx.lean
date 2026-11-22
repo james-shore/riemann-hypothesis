@@ -49,7 +49,7 @@ theorem exists_enum (s : Multiset ℂ) : ∀ n, Multiset.card s = n → ∃ r : 
     obtain ⟨r, hr⟩ := ih _ rfl
     refine ⟨Fin.cons a r, ?_⟩
     conv_rhs => rw [← hr]
-    simp [Fin.univ_succ, Multiset.map_map, Function.comp_def]
+    simp [Fin.univ_succ, Function.comp_def]
 
 theorem exists_gelf (V : Type) [AddCommGroup V] [Module ℂ V] (m : ℕ) (M : Fin (m + 1) → Fin (m + 1) → Module.End ℂ V)
     (hM : Formalism.REAL.GlRel M) (v : V) (hv : v ≠ 0) (t : ℕ → ℂ) (ht : ∀ k, Formalism.REAL.etr M k v = t k • v) :

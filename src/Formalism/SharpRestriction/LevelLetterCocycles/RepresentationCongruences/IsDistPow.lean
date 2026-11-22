@@ -195,7 +195,7 @@ theorem ArcLengthThreeDescent.letE_mem (W : LocWach PD LL O v n) (c : ZMod n) : 
   by_cases h : i = c
   · subst h
     simp [Formalism.BasicNotions.letE]
-  · simp [Formalism.BasicNotions.letE, Pi.single_apply, h]
+  · simp [Formalism.BasicNotions.letE, h]
 
 theorem ArcLengthThreeDescent.split [IsDomain O] [IsDiscreteValuationRing O] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     (W : LocWach PD LL O v n) (hcase : Formalism.MainNotions.LiftingTheory.CaseA W) (hP9 : Formalism.MainNotions.DeltaInvariantLattices.P9W W)

@@ -45,7 +45,7 @@ private theorem theta_triGL {B : Type} [CommRing B] (t : Fin 3 → Bˣ) (x y z :
   rw [hinv]
   ext i j
   fin_cases i <;> fin_cases j <;>
-    simp [Jmat, triM, Matrix.mul_apply, Fin.sum_univ_three, Matrix.transpose_apply, Fin.rev] <;> ring
+    simp [Jmat, triM, Matrix.mul_apply, Fin.sum_univ_three, Matrix.transpose_apply, Fin.rev]
 
 private theorem triGL_mul {B : Type} [CommRing B] (t s : Fin 3 → Bˣ) (x y z x' y' z' : B) :
     triGL t x y z * triGL s x' y' z' = triGL (fun i => t i * s i)

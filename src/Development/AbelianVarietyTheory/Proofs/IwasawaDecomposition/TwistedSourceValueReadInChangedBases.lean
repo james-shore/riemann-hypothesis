@@ -110,7 +110,7 @@ theorem srcFun_secC_read : ∀ {B : Base} {X : PreX B.toPre} (I : TC B X), I.Ok 
     have hez : (eY z).1 = y := (hId z).trans hz
     simp only [evP, LinearMap.coe_mk, AddHom.coe_mk, fnOf, GL3Theta.evFr, hfr, hde, hez, Matrix.one_mul, Pi.one_apply] at h1
     rw [← hR0] at h1
-    simp only [map_mul, map_prod, map_pow, eval_mul, eval_prod, eval_pow, eval_detP (D := I.rec7 l Z)]
+    simp only [map_mul, map_prod, map_pow, eval_detP (D := I.rec7 l Z)]
     have e1 : ∀ τ, (y τ).det ^ (((I.rec7 l Z).chTw u μ).sSharp i τ - twB (I.rec7 l Z) u μ i τ).toNat =
         (y τ).det ^ (-twB (I.rec7 l Z) u μ i τ) * (y τ).det ^ (((I.rec7 l Z).chTw u μ).sSharp i τ) := by
       intro τ
@@ -150,8 +150,7 @@ theorem srcFun_secC_read : ∀ {B : Base} {X : PreX B.toPre} (I : TC B X), I.Ok 
     fun τ => ((Matrix.isUnits_det_units Bm).map _).ne_zero
   simp only [hBs, hA]
   rw [map_twSubK_field, polFun_apply, eval_twSubK _ _ _ _ (fun τ => g τ * y τ)]
-  simp only [map_mul, map_prod, map_pow, eval_mul, eval_prod, eval_pow, eval_detP (D := I.rec7 l Z),
-    Matrix.mul_assoc, Matrix.det_mul, hdetA]
+  simp only [map_mul, map_prod, map_pow, Matrix.mul_assoc, Matrix.det_mul, hdetA]
   have hev : ∀ τ, eval (fun k : GL3Theta.FrV (I.rec7 l Z) ((I.rec7 l Z).R.N i) =>
       ((Bm : Matrix (Fin ((I.rec7 l Z).R.N i)) (Fin ((I.rec7 l Z).R.N i)) (I.rec7 l Z).host.E).map
         ((Pl.iL w).comp (Formalism.L2.G.Cmp.tEL (I.rec7 l Z) k.1)) * (g k.1 * y k.1)) k.2.1 k.2.2)

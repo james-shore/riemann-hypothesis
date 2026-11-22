@@ -12,4 +12,4 @@ theorem _root_.GlobalTheory.T.lastRowCongruenceDetWeight_measurable_invariant : 
     Measurable (GlobalTheory.ZUnf.wt (E := E) (m := m) N x) ∧
     (∀ γ ∈ mirU E (m + 1) m, ∀ g, GlobalTheory.ZUnf.wt N x (ratGL E (m + 1) γ * g) = GlobalTheory.ZUnf.wt N x g) ∧
     ∀ (k : ℕ) (y : UnipotentBlockColumnIndex (m + 1) k k → Ad E) (g : GA E (m + 1)), GlobalTheory.ZUnf.wt N x (blkU y * g) = GlobalTheory.ZUnf.wt N x g := by
-  first | exact @GlobalTheory.ZUnfWt.wt_measurable_invariant | exact GlobalTheory.ZUnfWt.wt_measurable_invariant | (intros; apply GlobalTheory.ZUnfWt.wt_measurable_invariant; all_goals assumption)
+  first | exact @GlobalTheory.ZUnfWt.wt_measurable_invariant

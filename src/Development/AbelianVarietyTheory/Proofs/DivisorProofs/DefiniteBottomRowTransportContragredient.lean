@@ -211,7 +211,7 @@ theorem idem_mem (hL : LieRel q q' n) (τ : ι) (S : Matrix (Fin d) (Fin d) ℂ)
   intro P P' h
   have hinv : (1 + (t - 1) • S)⁻¹ = 1 + (t⁻¹ - 1) • S := by
     apply Matrix.inv_eq_left_inv
-    simp only [add_mul, mul_add, one_mul, mul_one, smul_mul_assoc, mul_smul_comm, hS, smul_smul, add_assoc, ← add_smul]
+    simp only [add_mul, mul_add, one_mul, mul_one, smul_mul_assoc, mul_smul_comm, hS, add_assoc]
     have : t⁻¹ - 1 + (t - 1) * (1 + (t⁻¹ - 1)) = 0 := by field_simp; ring
     simp only [smul_add, smul_smul, ← add_smul]
     have h2 : t⁻¹ - 1 + (t - 1 + (t - 1) * (t⁻¹ - 1)) = 0 := by rw [← this]; ring
@@ -401,7 +401,7 @@ theorem fockT_neg (τ : D.what₂.Tau) (Y : Matrix (Fin b) (Fin b) ℂ) (P : Pol
   · subst h
     simp [raiO, lowO, sgn]
     module
-  · simp [raiO, lowO, sgn, h, pderiv_X, Pi.single_apply, Ne.symm h]
+  · simp [raiO, lowO, sgn, h, pderiv_X, Ne.symm h]
 
 theorem actT_true {M X : HSp D} (A : GlobalTheory.ChainFr.Fr M) (B : GlobalTheory.ChainFr.Fr X) (eS : D.what₂.Tau → ℚ) (τ : D.what₂.Tau)
     (hA : ∀ j, A.ε τ j = true) (hB : ∀ i, B.ε τ i = true) (Y : Matrix (Fin X.rank) (Fin X.rank) ℂ)

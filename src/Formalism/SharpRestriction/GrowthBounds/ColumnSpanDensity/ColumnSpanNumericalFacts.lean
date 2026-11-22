@@ -25,17 +25,17 @@ theorem sum_pi_cast {ι : Type} [Fintype ι] [DecidableEq ι] (lo hi : ℕ) (g :
       ∑ A ∈ Fintype.piFinset (fun _ : ι => Finset.Icc lo hi), g (fun s => (A s : ℤ)) := by
   refine Finset.sum_nbij' (fun aa s => (aa s).toNat) (fun A s => (A s : ℤ)) ?_ ?_ ?_ ?_ ?_
   · intro aa haa
-    simp only [Finset.mem_coe, Fintype.mem_piFinset, Finset.mem_Icc] at haa ⊢
+    simp only [Fintype.mem_piFinset, Finset.mem_Icc] at haa ⊢
     intro s
     have := haa s
     omega
   · intro A hA
-    simp only [Finset.mem_coe, Fintype.mem_piFinset, Finset.mem_Icc] at hA ⊢
+    simp only [Fintype.mem_piFinset, Finset.mem_Icc] at hA ⊢
     intro s
     have := hA s
     omega
   · intro aa haa
-    simp only [Finset.mem_coe, Fintype.mem_piFinset, Finset.mem_Icc] at haa
+    simp only [Fintype.mem_piFinset, Finset.mem_Icc] at haa
     funext s
     have := haa s
     show ((aa s).toNat : ℤ) = aa s
@@ -45,7 +45,7 @@ theorem sum_pi_cast {ι : Type} [Fintype ι] [DecidableEq ι] (lo hi : ℕ) (g :
     show ((A s : ℤ)).toNat = A s
     omega
   · intro aa haa
-    simp only [Finset.mem_coe, Fintype.mem_piFinset, Finset.mem_Icc] at haa
+    simp only [Fintype.mem_piFinset, Finset.mem_Icc] at haa
     congr 1
     funext s
     have := haa s
@@ -160,10 +160,6 @@ theorem sum_first {ι : Type} [Fintype ι] [DecidableEq ι] (a ua lb ub c : ℕ)
     first
     | exact Finset.filter_card_add_filter_neg_card_eq_card _
     | exact Finset.card_filter_add_card_filter_not _
-    | (rw [← Finset.card_union_of_disjoint (Finset.disjoint_filter_filter_neg _ _ _),
-        Finset.filter_union_filter_neg_eq])
-    | (rw [← Finset.card_disjoint_union (Finset.disjoint_filter_filter_neg _ _ _),
-        Finset.filter_union_filter_neg_eq])
   rw [hF] at hcard ⊢
   have hcS : (pa ×ˢ pb).card = (Finset.Icc a ua).card ^ Fintype.card ι * (Finset.Icc lb ub).card ^ Fintype.card ι := by
     rw [Finset.card_product, hpa, hpb, Fintype.card_piFinset, Fintype.card_piFinset, Finset.prod_const,
@@ -193,12 +189,12 @@ private theorem sum_piFinset_Icc_shift_eq {ι : Type} [Fintype ι] [DecidableEq 
       ∑ A ∈ Fintype.piFinset (fun _ : ι => Finset.Icc (lo + c) (hi + c)), g A := by
   refine Finset.sum_nbij' (fun A s => A s + c) (fun A s => A s - c) ?_ ?_ ?_ ?_ ?_
   · intro A hA
-    simp only [Finset.mem_coe, Fintype.mem_piFinset, Finset.mem_Icc] at hA ⊢
+    simp only [Fintype.mem_piFinset, Finset.mem_Icc] at hA ⊢
     intro s
     have := hA s
     omega
   · intro A hA
-    simp only [Finset.mem_coe, Fintype.mem_piFinset, Finset.mem_Icc] at hA ⊢
+    simp only [Fintype.mem_piFinset, Finset.mem_Icc] at hA ⊢
     intro s
     have := hA s
     omega
@@ -207,7 +203,7 @@ private theorem sum_piFinset_Icc_shift_eq {ι : Type} [Fintype ι] [DecidableEq 
     show A s + c - c = A s
     omega
   · intro A hA
-    simp only [Finset.mem_coe, Fintype.mem_piFinset, Finset.mem_Icc] at hA
+    simp only [Fintype.mem_piFinset, Finset.mem_Icc] at hA
     funext s
     have := hA s
     show A s - c + c = A s

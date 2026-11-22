@@ -49,15 +49,15 @@ private theorem pm_y {B Y Y' U V : Scheme.{0}} (p : Y ⟶ B) (g : Y' ⟶ Y) (x :
     (h : x = a ≫ y) (c₁ c₂ c₃ c₄ c₅ c₆ c₇ c₈) :
     pullback.map (g ≫ p) x (g ≫ p) y (𝟙 Y') a (𝟙 B) c₁ c₂ ≫ pullback.map (g ≫ p) y p y g (𝟙 V) (𝟙 B) c₃ c₄ =
       pullback.map (g ≫ p) x p x g (𝟙 U) (𝟙 B) c₅ c₆ ≫ pullback.map p x p y (𝟙 Y) a (𝟙 B) c₇ c₈ := by
-  apply pullback.hom_ext <;> simp [pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc, h]
+  apply pullback.hom_ext <;> simp [pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
 
 private theorem pm_w {A₁ A₂ A₃ A₄ W B : Scheme.{0}} (s₁ : A₁ ⟶ B) (s₂ : A₂ ⟶ B) (s₃ : A₃ ⟶ B) (s₄ : A₄ ⟶ B) (ι : W ⟶ B)
     (r : A₁ ⟶ A₂) (m₂ : A₂ ⟶ A₄) (m₁ : A₁ ⟶ A₃) (r' : A₃ ⟶ A₄) (h : r ≫ m₂ = m₁ ≫ r') (c₁ c₂ c₃ c₄ c₅ c₆ c₇ c₈) :
     pullback.map s₁ ι s₂ ι r (𝟙 W) (𝟙 B) c₁ c₂ ≫ pullback.map s₂ ι s₄ ι m₂ (𝟙 W) (𝟙 B) c₃ c₄ =
       pullback.map s₁ ι s₃ ι m₁ (𝟙 W) (𝟙 B) c₅ c₆ ≫ pullback.map s₃ ι s₄ ι r' (𝟙 W) (𝟙 B) c₇ c₈ := by
   apply pullback.hom_ext
-  · simp [pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc, h]
-  · simp [pullback.map, pullback.lift_fst, pullback.lift_snd, pullback.lift_fst_assoc, pullback.lift_snd_assoc]
+  · simp [pullback.map, pullback.lift_fst, pullback.lift_fst_assoc, h]
+  · simp [pullback.map, pullback.lift_snd]
 
 private theorem mY_nat {B Y Y' : Scheme.{0}} (p : Y ⟶ B) (g : Y' ⟶ Y) {U V : B.Etale} (a : U ⟶ V) :
     resY (g ≫ p) a ≫ mY p g V = mY p g U ≫ resY p a :=

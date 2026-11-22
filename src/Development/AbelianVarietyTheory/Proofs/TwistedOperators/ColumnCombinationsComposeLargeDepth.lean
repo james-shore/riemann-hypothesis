@@ -51,7 +51,6 @@ open GlobalTheory.ColComb in
 theorem GlobalTheory.ColComb.main : Big fun {D} _ _ _ _ {T} _ _ _ _ _ _ ch => ∀ (c : Combs ch.G) (c' c'' : ∀ j : ℕ, WO (ch.G.V (.top j)) (ch.G.V (.top (j + 1))) →₀ ℂ), (∀ j, j < D.R.m → ∀ f, comb ch.W.ψ _ _ (c'' j) f = comb ch.W.ψ _ _ (c.1 j) (comb ch.W.ψ _ _ (c' j) f)) → ∀ (C : BiFam ch.G) (u : ColPt ch.G), evT (combC ch.W c (combC ch.W (c', 0) C)) 1 u 0 = evT (combC ch.W (c'', 0) C) 1 u 0 := by
   refine ⟨0, fun _ _ _ => ⟨0, ?_⟩⟩
   intro D _ _ _ _ _ _ _ T _ _ _ _ _ _ _ _ ch _ _
-  beta_reduce
   intro c c' c'' hc C u
   unfold evT
   congr 1

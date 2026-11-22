@@ -45,7 +45,7 @@ def cocone : Cocone (diag Ω) where
   pt := CommRingCat.of Ω
   ι := { app := fun s => CommRingCat.ofHom (sr Ω s).subtype
          naturality := fun s t h => by
-           simp only [Functor.const_obj_map, Category.comp_id]
+           simp only [Functor.const_obj_map]
            exact incl_comp_subtype Ω h.le }
 
 theorem cocone_ι (s : Finset Ω) : (cocone Ω).ι.app s = CommRingCat.ofHom (sr Ω s).subtype := rfl
@@ -100,7 +100,7 @@ theorem galois_sec_isLocallyConstant : ∀ (R : Type) [CommRing R] (F : Shv R), 
     IntermediateField.finiteDimensional_adjoin (fun a _ => Algebra.IsIntegral.isIntegral a)
   have hopen : IsOpen {σ : Ω ≃ₐ[K] Ω | τ₀⁻¹ * σ ∈ (IntermediateField.adjoin K (s : Set Ω)).fixingSubgroup} :=
     (IntermediateField.fixingSubgroup_isOpen _).preimage (continuous_const.mul continuous_id)
-  filter_upwards [hopen.mem_nhds (by simp [one_mem])] with τ hτ
+  filter_upwards [hopen.mem_nhds (by simp)] with τ hτ
   have hs : Set.EqOn (τ : Ω →+* Ω) (τ₀ : Ω →+* Ω) (s : Set Ω) := fun b hb => by
     have h1 := (IntermediateField.mem_fixingSubgroup_iff _ _).1 hτ b (IntermediateField.subset_adjoin K _ hb)
     have h2 := congrArg τ₀ h1

@@ -51,11 +51,10 @@ theorem gram_eq (F G : PtRepPf.Fr ε r k) (hT : F.T = G.T) (i j : PtRepPf.Fr.Ix 
     simp only [PtRepPf.Fr.bv, Sum.elim_inl, Sum.elim_inr] <;>
     first
       | (simp [F.ee, G.ee, F.ff, G.ff, F.ef, G.ef, F.ez, G.ez, F.fz, G.fz, F.zz, G.zz, hT, F.ww, G.ww,
-          F.ew, G.ew, F.fw, G.fw, F.zw, G.zw]; done)
+          F.ew, G.ew, F.fw, G.fw, F.zw, G.zw])
       | (conv_lhs => rw [← PtRepPf.hJ_conj]
          conv_rhs => rw [← PtRepPf.hJ_conj]
-         simp [F.ee, G.ee, F.ff, G.ff, F.ef, G.ef, F.ez, G.ez, F.fz, G.fz, F.zz, G.zz, hT, F.ww, G.ww,
-          F.ew, G.ew, F.fw, G.fw, F.zw, G.zw])
+         simp [F.ef, G.ef, F.ez, G.ez, F.fz, G.fz, F.ew, G.ew, F.fw, G.fw, F.zw, G.zw])
 
 def trL (F G : PtRepPf.Fr ε r k) : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ) where
   toFun y := ∑ i, hJ ε (F.dv i) y • G.bv i
@@ -109,8 +108,6 @@ theorem trM_isom (F G : PtRepPf.Fr ε r k) (hT : F.T = G.T) (x y : Fin n → ℂ
       simp [PtRepPf.Fr.Ix]
     first
       | exact hli.span_eq_top_of_card_eq_finrank hcard
-      | exact span_eq_top_of_linearIndependent_of_card_eq_finrank hli hcard
-      | exact hli.span_eq_top_of_card_eq_finrank' hcard
   have hmem : ∀ z : Fin n → ℂ, ∃ c : PtRepPf.Fr.Ix r k → ℂ, ∑ i, c i • F.bv i = z := fun z =>
     (Submodule.mem_span_range_iff_exists_fun ℂ).1 (by rw [hspan]; exact Submodule.mem_top)
   have hM : ∀ c : PtRepPf.Fr.Ix r k → ℂ, trM F G *ᵥ ∑ i, c i • F.bv i = ∑ i, c i • G.bv i := by

@@ -72,7 +72,7 @@ theorem exists_sum_mul_mul_eq_matrixUnit (n : ℕ) (hn : 0 < n) (hC : Module.fin
       smul_mem' := by
         intro c f hf s x
         simp only [Set.mem_setOf_eq] at hf
-        simp [hf s x, mul_smul_comm] }
+        simp [hf s x] }
   have hrange : LinearMap.range Φ.toLinearMap ≤ W := by
     rintro _ ⟨t, rfl⟩
     exact hWl t
@@ -80,7 +80,7 @@ theorem exists_sum_mul_mul_eq_matrixUnit (n : ℕ) (hn : 0 < n) (hC : Module.fin
   let θ : (Fin r → S) →ₗ[F] C :=
     { toFun := fun β => ∑ k, (β k : C) * e k
       map_add' := by intro a b; simp [add_mul, Finset.sum_add_distrib]
-      map_smul' := by intro c a; simp [Finset.smul_sum, smul_mul_assoc] }
+      map_smul' := by intro c a; simp [Finset.smul_sum] }
   have hθ : ∀ β, θ β = ∑ k, (β k : C) * e k := fun β => rfl
   have hθinj : Function.Injective θ := by
     intro a b hab

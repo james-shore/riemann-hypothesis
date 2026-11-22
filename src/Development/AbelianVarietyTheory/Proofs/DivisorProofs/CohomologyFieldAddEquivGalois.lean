@@ -179,7 +179,7 @@ theorem cechPt_δ (m : ℕ) (i : Fin (m + 2)) {U : Scheme.{0}} (x : U ⟶ X) (y 
       rfl
     · erw [Category.assoc, WidePullback.lift_base, WidePullback.lift_base, WidePullback.lift_base]
   have := congrArg (fun φ => φ.app (op U) (𝟙 U)) key
-  simp only [FunctorToTypes.comp] at this
+  simp only at this
   exact this
 end Cech
 

@@ -19,8 +19,8 @@ theorem full_mulVec (d : CD N g' r bX) (σ : Fin g ≃ Fin g' ⊕ Fin r) (S : Ma
   ext i
   simp only [CD.full, Matrix.submatrix_mulVec_equiv, Function.comp_apply, Pi.add_apply, Matrix.fromBlocks_mulVec]
   rcases h : σ i with j | j
-  · simp [tP]
-  · simp [tP, Matrix.add_mulVec, add_assoc]
+  · simp
+  · simp [Matrix.add_mulVec, add_assoc]
     rfl
 
 theorem leftComponent_fullMatrix_mulVec (d : CD N g' r bX) (σ : Fin g ≃ Fin g' ⊕ Fin r) (S : Matrix (Fin r) (Fin r) ℂ) (x : Fin g → ℂ) :
@@ -118,8 +118,7 @@ theorem main_eq {N : NumD ℂ} {g' r g : ℕ} {bX : Module.Basis (Fin r) ℤ N.X
     linear_combination t * this
   rw [← Complex.exp_nat_mul]
   refine key _ _ _ _ _ _ ?_
-  simp only [Matrix.add_mulVec, dotProduct_add, dotProduct_smul, smul_eq_mul, add_zero, Matrix.zero_mulVec,
-    dotProduct_zero, h1, h2, h3, hK]
+  simp only [Matrix.add_mulVec, dotProduct_add, dotProduct_smul, smul_eq_mul, add_zero, h1, h2, h3, hK]
   field_simp
   ring
 

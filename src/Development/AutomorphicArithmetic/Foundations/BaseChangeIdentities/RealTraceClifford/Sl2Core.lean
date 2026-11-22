@@ -119,7 +119,7 @@ theorem UpperTheory.RealTr.hwDom :
   have hBG : ∀ v, F b b (F b a v) = F b a (F b b v) + F b a v := by
     intro v
     have h := LinearMap.congr_fun (hgl b b b a) v
-    simp only [if_neg hne, if_neg hne.symm, if_true, LinearMap.sub_apply, Module.End.mul_apply,
+    simp only [if_neg hne, if_true, LinearMap.sub_apply, Module.End.mul_apply,
       LinearMap.zero_apply] at h
     rw [← sub_eq_zero]
     rw [← sub_eq_zero] at h

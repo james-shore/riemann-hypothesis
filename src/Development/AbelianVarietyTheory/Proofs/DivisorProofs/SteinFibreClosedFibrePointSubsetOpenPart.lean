@@ -21,7 +21,7 @@ theorem steinFibre_subset_range : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLo
     have h1 : i ≫ a'' ≫ b'' ≫ PSpace.str R E.N = H'.ι ≫ E.H.ι ≫ G'.hom ≫ M.π := by
       rw [reassoc_of% hog, E.f_over]
     have h2 := congrArg (fun f => f.base z) h1
-    simp only [Scheme.Hom.comp_base, ContinuousMap.comp_apply] at h2
+    simp only [Scheme.Hom.comp_base] at h2
     exact h2.trans hz
   obtain ⟨C, hC, hCeq⟩ := GlobalTheory.T.embeddedPart_points_over_closedProjPoint_closed R M.S M.π M.proper G' hG.smooth E H' X'' i (a'' ≫ b'') hsep hog hH0
     (b'' (a'' (i z))) hy

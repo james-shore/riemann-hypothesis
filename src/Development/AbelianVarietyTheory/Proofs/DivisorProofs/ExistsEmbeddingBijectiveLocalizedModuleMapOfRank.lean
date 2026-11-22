@@ -69,7 +69,7 @@ theorem localizedModule_map_surjective_of_smul_mem_range
     rw [LocalizedModule.map_mk, LocalizedModule.mk_eq]
     refine ⟨1, ?_⟩
     rw [hx]
-    simp only [one_smul, Submonoid.smul_def, Submonoid.coe_mul, mul_smul]
+    simp only [one_smul, Submonoid.smul_def, mul_smul]
     exact smul_comm _ _ _
 
 theorem exists_pow_smul_eq_zero_of_localizedModule_map_injective
@@ -163,7 +163,7 @@ theorem exists_embedding_bijective_localizedModule_map_of_rankAtStalk :
     obtain ⟨n, hn⟩ := exists_pow_smul_eq_zero_of_localizedModule_map_injective φ f hloc _ hk
     rw [← LocalizedModule.zero_mk s, LocalizedModule.mk_eq]
     refine ⟨⟨f ^ n, n, rfl⟩ * u, ?_⟩
-    simp only [Submonoid.smul_def, smul_zero, Submonoid.coe_mul, mul_smul]
+    simp only [Submonoid.smul_def, smul_zero, mul_smul]
     exact hn
 
 end GlobalTheory

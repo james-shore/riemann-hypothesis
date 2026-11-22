@@ -66,7 +66,7 @@ theorem GlobalTheory.upperCone_conj_compact : ∀ (E : Type) [Field E] [NumberFi
       (hAc.prod (hBc.image MulOpposite.continuous_op))
   intro r d hr hcone hd b hb
   have hN : (fun p q : Fin a => if p ≤ q then r q / r p else 0) ∈ K := by
-    simp only [hK, Set.mem_pi]
+    simp only [hK]
     intro p _ q _
     rw [Set.mem_Icc]
     by_cases hpq : p ≤ q
@@ -80,7 +80,7 @@ theorem GlobalTheory.upperCone_conj_compact : ∀ (E : Type) [Field E] [NumberFi
     exact Matrix.blockTriangular_inv_of_blockTriangular (htri b hb)
   refine ⟨?_, ?_⟩
   · refine ⟨(_, b), ⟨hN, hb⟩, ?_⟩
-    simp only [Units.val_mul]
+    simp only
     exact (GlobalTheory.upperCone_conj_diag_eq a r hr d hd b.val (htri b hb)).symm
   · refine ⟨(d⁻¹ * b * d)⁻¹.val, ⟨(_, b), ⟨hN, hb⟩, ?_⟩, rfl⟩
     have : (d⁻¹ * b * d)⁻¹ = d⁻¹ * b⁻¹ * d := by group

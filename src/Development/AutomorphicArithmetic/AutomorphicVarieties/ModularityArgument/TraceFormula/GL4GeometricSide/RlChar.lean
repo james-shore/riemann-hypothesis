@@ -48,6 +48,6 @@ theorem UpperTheory.V.Z.GSp4Splitting.rlChar :
       (fun a b u => by
         have := D.hE2 w b a u
         simp only [barF, LinearMap.neg_apply, map_neg, LinearMap.comp_apply, Submodule.subtype_apply,
-          Submodule.coe_neg, this, neg_neg]) m x
+          this, neg_neg]) m x
     rw [e, map_smul]
     simpa [PositivityTheory.RgBcC.Bridge.eopW] using h2 _ (D.i x).2 m

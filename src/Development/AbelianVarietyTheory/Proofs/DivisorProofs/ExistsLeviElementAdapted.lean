@@ -26,7 +26,7 @@ theorem lev_mulVec (J : Matrix (Fin n) (Fin n) R) (X Y : Fin n → R) (s r : R) 
 
 theorem fm_skew (hc : ∀ x, c (c x) = x) (J : Matrix (Fin n) (Fin n) R) (hJ : ∀ i j, c (J j i) = -J i j)
     (p q : Fin n → R) : fm c J p q = -c (fm c J q p) := by
-  simp only [fm, dotProduct, Matrix.mulVec, map_sum, map_mul, hc, Finset.mul_sum, Finset.sum_mul]
+  simp only [fm, dotProduct, Matrix.mulVec, map_sum, map_mul, hc, Finset.mul_sum]
   rw [Finset.sum_comm, ← Finset.sum_neg_distrib]
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [← Finset.sum_neg_distrib]
@@ -102,7 +102,7 @@ theorem lev_unitary (s r : R) (hsr : s * c r = 1) :
     rw [lev_mulVec, lev_mulVec]
     simp only [fm_add_left, fm_sub_left, fm_smul_left, fm_add_right, fm_sub_right, fm_smul_right, hxx, hyy, hxy, hyx]
     rw [fm_skew c hc J hJ X v, fm_skew c hc J hJ Y v]
-    simp only [map_mul, map_sub, map_one, map_neg]
+    simp only [map_mul, map_sub, map_one]
     linear_combination (-(fm c J u Y * c (fm c J v X))) * hsr + (fm c J u X * c (fm c J v Y)) * hrs
   ext i j
   rw [entry, key]
@@ -159,7 +159,7 @@ theorem cAr_inclR (σ : E →ₐ[F] E) (e : E) :
 theorem fm_inc (σ : E →ₐ[F] E) {n : ℕ} (J : Matrix (Fin n) (Fin n) E) (x y : Fin n → E) :
     fm (cA σ).toRingHom (incM F J) (incV F x) (incV F y) = inclR (F := F) (AF F) (form σ J x y) := by
   simp only [fm, form, incV, incM, dotProduct, Matrix.mulVec, Matrix.map_apply, map_sum, map_mul,
-    AlgHom.coe_toRingHom, cAr_inclR, cA_inclR]
+    cAr_inclR]
 
 end GlobalTheory.LeviPlane
 

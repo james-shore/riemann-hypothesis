@@ -24,8 +24,6 @@ theorem eigSum_mul_proj_eq {E I C : Type} [AddCommGroup E] [Module ℂ E] [Finit
   | exact @_root_.GlobalTheory.IndependentInfimum.main
   | exact _root_.GlobalTheory.IndependentInfimum.main
   | (apply _root_.GlobalTheory.IndependentInfimum.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IndependentInfimum.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IndependentInfimum.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IndependentInfimum.main ..)
 
 end GlobalTheory.Hk3

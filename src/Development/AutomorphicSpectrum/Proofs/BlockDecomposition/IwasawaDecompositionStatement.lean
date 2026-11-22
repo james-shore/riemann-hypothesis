@@ -42,7 +42,7 @@ lemma exists_transv {T : Finset ι} {i j : ι} (hi : i ∈ T) (hij : i ≠ j) (c
     by_cases h : l = j
     · subst h
       simp [Matrix.vecMul, dotProduct, Matrix.single_apply]
-    · simp [Matrix.vecMul, dotProduct, Matrix.single_apply, h, Ne.symm h]
+    · simp [Matrix.vecMul, dotProduct, h, Ne.symm h]
   exact ⟨_, ⟨⟨κ, rfl⟩, fun v hv => by rw [key, hv i hi]; simp⟩, key⟩
 
 lemma exists_mul_or [IsDomain O] [ValuationRing O] [IsFractionRing O L] (a b : L) :
@@ -67,17 +67,17 @@ lemma exists_clear [IsDomain O] [ValuationRing O] [IsFractionRing O L] {T : Fins
     obtain ⟨k₂, a₂, h₂⟩ := exists_transv (O := O) (L := L) hp hjp.symm (-1)
     refine ⟨k₁ * k₂, a₁.mul a₂, ?_, fun l hl hl' => ?_⟩
     · rw [Units.val_mul, ← Matrix.vecMul_vecMul, h₂, h₁]
-      simp [Pi.single_apply, hjp, hjp.symm, hc]
+      simp [hjp, hc]
       ring
     · rw [Units.val_mul, ← Matrix.vecMul_vecMul, h₂, h₁]
-      simp [Pi.single_apply, hl, hl']
+      simp [hl, hl']
   · obtain ⟨k, a, h⟩ := exists_transv (O := O) (L := L) hp hjp.symm (-c)
     refine ⟨k, a, ?_, fun l hl _ => ?_⟩
     · rw [h]
       simp [hc]
       ring
     · rw [h]
-      simp [Pi.single_apply, hl]
+      simp [hl]
 
 lemma exists_clear_set [IsDomain O] [ValuationRing O] [IsFractionRing O L] {T : Finset ι} {p : ι}
     (hp : p ∈ T) (z : ι → L) (s : Finset ι) (hs : s ⊆ T) (hps : p ∉ s) :

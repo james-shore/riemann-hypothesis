@@ -275,7 +275,7 @@ theorem dimFl_pos {Ψ : Type} [Fintype Ψ] [Nonempty Ψ] {N : ℕ} (hN : 2 ≤ N
   have h2 : 1 ≤ N * (N - 1) / 2 := by
     obtain ⟨m, rfl⟩ : ∃ m, N = m + 2 := ⟨N - 2, by omega⟩
     rw [Nat.le_div_iff_mul_le (by norm_num)]
-    simp only [Nat.add_sub_cancel, Nat.add_succ_sub_one]
+    simp only [Nat.add_succ_sub_one]
     nlinarith
   exact Nat.mul_pos h1 h2
 
@@ -338,7 +338,7 @@ theorem GlobalTheory.CompanionTheory.Ar.Plug.growth_le_vol_deg : GlobalTheory.Co
       M.δ * (T.vol (κ Z) * Top.flagDeg (reW u)) := by
     have e1 : (∑ r, MvPolynomial.C (nOf u (some r) : ℝ) * MvPolynomial.X r : Top.RP (CMType H) (Dw.p + Dw.q)) =
         Top.linRoot (reW u) := by
-      simp only [Top.linRoot, nOf, reW, Int.cast_neg, map_neg, neg_mul, Finset.sum_neg_distrib, neg_neg]
+      simp only [Top.linRoot, nOf, reW, Int.cast_neg, map_neg, neg_mul, Finset.sum_neg_distrib]
     have := geomDeg_combLine_top hIn M (nOf u) rfl
     rw [e1] at this
     exact this.trans (by rw [hP.2.1 B (κ Z)]; rfl)

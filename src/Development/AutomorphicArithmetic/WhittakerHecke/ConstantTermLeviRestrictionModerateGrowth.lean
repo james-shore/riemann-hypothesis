@@ -55,14 +55,14 @@ private theorem emb_eq {R : Type} [CommRing R] (g : GL (Fin r) R) : embGL (Fin.c
       simp only [extN_apply_right _ _ _ (hn j)]
       have := hn j i
       simp only [Fin.castAddEmb_apply] at this
-      simp [Matrix.one_apply, this]
+      simp [this]
   | right i =>
     simp only [extN_apply_left _ _ (hn i)]
     induction j using Fin.addCases with
     | left j =>
       have := (hn i j).symm
       simp only [Fin.castAddEmb_apply] at this
-      simp [Matrix.one_apply, this]
+      simp [this]
     | right j => simp [Matrix.one_apply]
 
 variable [IsTotallyComplex E]

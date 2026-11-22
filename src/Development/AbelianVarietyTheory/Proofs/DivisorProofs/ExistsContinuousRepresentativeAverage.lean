@@ -72,7 +72,7 @@ theorem _root_.GlobalTheory.LocRep.exists_continuous_rep_average : ∀ (G : Type
       (hslice y).1.const_mul (η y), ?_⟩
     refine Integrable.mono' (hηI.norm.mul_const (M * ‖v‖)) hmeas.norm.integral_prod_right' ?_
     refine Filter.Eventually.of_forall fun y => ?_
-    simp only [norm_mul, Function.uncurry_apply_pair]
+    simp only [norm_mul]
     rw [Real.norm_of_nonneg (integral_nonneg fun _ => by positivity), integral_const_mul]
     exact mul_le_mul_of_nonneg_left (hslice y).2 (norm_nonneg _)
   calc ∫ x in C, ι (∫ y, η y • ρ y v ∂μ) x ∂μ = Λ (∫ y, η y • ρ y v ∂μ) := (hΛ _).symm

@@ -34,7 +34,7 @@ theorem two_mul_card_psi_le :
       (Finset.univ.filter (fun τ : E →+* ℂ => ¬ InPsi H τ)).card := by
     refine Finset.card_le_card_of_injOn (fun τ => (starRingEnd ℂ).comp τ) ?_ ?_
     · intro τ hτ
-      simp only [Finset.coe_filter, Finset.mem_filter, Finset.mem_coe, Finset.mem_univ, true_and, Set.mem_setOf_eq] at hτ ⊢
+      simp only [Finset.coe_filter, Finset.mem_univ, true_and, Set.mem_setOf_eq] at hτ ⊢
       unfold InPsi at hτ ⊢
       simp only [RingHom.coe_comp, Function.comp_apply, hτ]
       exact hne
@@ -55,7 +55,7 @@ theorem card_big_fiber_le {Dw : Datum H} {F k m : ℕ} (hS : Shape Dw F k m) (τ
   calc _ ≤ (Finset.Ico (k - 2) Dw.p).card := by
         refine Finset.card_le_card_of_injOn (fun f => f.2.val) ?_ ?_
         · intro f hf
-          simp only [Finset.coe_filter, Finset.mem_filter, Finset.mem_coe, Finset.mem_univ, true_and,
+          simp only [Finset.coe_filter, Finset.mem_coe, Finset.mem_univ, true_and,
             Set.mem_setOf_eq, Finset.mem_Ico] at hf ⊢
           obtain ⟨⟨hpsi, hk⟩, -⟩ := hf
           have hlt := f.2.isLt
@@ -63,7 +63,7 @@ theorem card_big_fiber_le {Dw : Datum H} {F k m : ℕ} (hS : Shape Dw F k m) (τ
           have hk' : k ≤ f.2.val + 1 + 1 := hk
           omega
         · intro f hf g hg hfg
-          simp only [Finset.coe_filter, Finset.mem_filter, Finset.mem_coe, Finset.mem_univ, true_and,
+          simp only [Finset.coe_filter, Finset.mem_univ, true_and,
             Set.mem_setOf_eq] at hf hg
           obtain ⟨τ1, j1⟩ := f
           obtain ⟨τ2, j2⟩ := g

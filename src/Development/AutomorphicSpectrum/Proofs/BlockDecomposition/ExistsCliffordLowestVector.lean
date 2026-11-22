@@ -28,7 +28,7 @@ theorem annM_conj : annMᴴ = !![0, 0; 1, 0] := by
 
 theorem annM_car : annM * annMᴴ + annMᴴ * annM = 1 := by
   rw [annM_conj]
-  ext i j; fin_cases i <;> fin_cases j <;> simp [annM, Matrix.mul_apply, Fin.sum_univ_two]
+  ext i j; fin_cases i <;> fin_cases j <;> simp [annM]
 
 theorem parM_sq : parM * parM = 1 := by
   ext i j; fin_cases i <;> fin_cases j <;> simp [parM, Matrix.mul_apply, Fin.sum_univ_two]
@@ -37,7 +37,7 @@ theorem parM_herm : parMᴴ = parM := by
   ext i j; fin_cases i <;> fin_cases j <;> simp [parM, Matrix.conjTranspose_apply]
 
 theorem parM_annM : parM * annM + annM * parM = 0 := by
-  ext i j; fin_cases i <;> fin_cases j <;> simp [parM, annM, Matrix.mul_apply, Fin.sum_univ_two]
+  ext i j; fin_cases i <;> fin_cases j <;> simp [parM, annM]
 
 theorem annM_vacM : annM * vacM = 0 := by
   ext i j; fin_cases i <;> fin_cases j <;> simp [annM, vacM, Matrix.mul_apply, Fin.sum_univ_two]
@@ -159,7 +159,7 @@ theorem coef_rel {n : ℕ} {s : ℂ} (hs : s * s = 2) (a b d e : Fin n) :
       if a = e ∧ b = d then 2 else 0 := by
   rcases lt_trichotomy a b with hab | rfl | hab <;> rcases lt_trichotomy d e with hde | rfl | hde
   · have : ¬ (a = e ∧ b = d) := by rintro ⟨rfl, rfl⟩; exact lt_asymm hab hde
-    simp [coefA, coefC, hab, hde, lt_asymm hab, lt_asymm hde, this]
+    simp [coefA, coefC, hab, hde, this]
   · have h1 : ¬ (a = d ∧ b = d) := by rintro ⟨rfl, rfl⟩; exact lt_irrefl _ hab
     simp [modeOf_lt hab, modeOf_self, h1]
   · simp only [modeOf_lt hab, modeOf_gt hde, Prod.mk.injEq, coefA, coefC, hab, hde, lt_asymm hab,
@@ -172,7 +172,7 @@ theorem coef_rel {n : ℕ} {s : ℂ} (hs : s * s = 2) (a b d e : Fin n) :
     split_ifs <;> norm_num
   · have h1 : ¬ (a = e ∧ a = d) := by rintro ⟨rfl, rfl⟩; exact lt_irrefl _ hde
     have h3 : ¬ (a = d ∧ a = e) := fun h => h1 ⟨h.2, h.1⟩
-    simp [modeOf_gt hde, modeOf_self, h1, h3]
+    simp [modeOf_gt hde, modeOf_self, h1]
   · simp only [modeOf_gt hab, modeOf_lt hde, Prod.mk.injEq, coefA, coefC, hab, hde, lt_asymm hab,
       lt_asymm hde, if_true, if_false]
     by_cases h : b = d ∧ a = e

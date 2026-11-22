@@ -54,7 +54,7 @@ def homPi {e : ι → Γ(F, U)} (he : IsFrame e) (h : V ≤ U) : Γ(homMod F G, 
       classical
       refine LinearMap.ext fun n => funext fun j => ?_
       simp only [LinearMap.comp_apply, LinearMap.sum_apply, LinearMap.pi_apply, map_sum, homEval_apply,
-        LinearMap.proj_apply, LinearMap.id_apply, homApp_homIns, resM_self, Finset.sum_apply]
+        LinearMap.proj_apply, LinearMap.id_apply, homApp_homIns, resM_self]
       simp only [← he.basis_apply, Module.Basis.repr_self]
       simp [Finsupp.single_apply])
     (LinearMap.ext fun ψ => by

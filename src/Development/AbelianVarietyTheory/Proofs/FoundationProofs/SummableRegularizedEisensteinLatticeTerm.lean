@@ -87,7 +87,7 @@ theorem difdif_bound (j L : ℕ) (v : ℤ × ℤ) (τ : ℍ) (hj : 1 ≤ j) (hL 
           apply div_le_div_of_nonneg_left (by positivity) hp3 hpow
       _ = B := by rw [hB]; ring
   rw [difdif L hL v _ x]
-  simp only [lin_shift τ, lin_shift2 τ]
+  simp only [lin_shift τ]
   rw [← hz, ← hw]
   calc ‖((L : ℂ) ^ 2)⁻¹ * ∑ r' ∈ Finset.range L, ∑ r ∈ Finset.range L,
         (trm j 0 z - trm j 0 (z + (r : ℂ) * w) - trm j 0 (z + (r' : ℂ) * w)

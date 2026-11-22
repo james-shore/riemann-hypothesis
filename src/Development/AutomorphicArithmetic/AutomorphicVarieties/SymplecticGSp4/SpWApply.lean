@@ -53,7 +53,7 @@ private theorem spW_neg {O : Type} [CommRing O] {X : M4 O} (hX : X ∈ spW O (-w
   have h31 := congrFun (congrFun hadj 3) 1
   simp [adj_apply, sgn] at h31
   ext i j
-  fin_cases i <;> fin_cases j <;> simp [Xm, Matrix.single_apply] <;>
+  fin_cases i <;> fin_cases j <;> simp [Xm] <;>
     first | exact h31 | exact h31.symm | exact hz _ _ (by simp [wt, lamW, muW, wPs])
 
 end UpperTheory.V.GradeZeroInterpolatingElement

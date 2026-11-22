@@ -93,7 +93,7 @@ theorem levi_stepPot_cell : ∀ (N j : ℕ), j ≤ N → ∀ (i : Fin N) (w : Pa
     have hb := b.2
     dsimp only
     simp only [hσ]
-    split_ifs <;> first | (exfalso; omega) | norm_num | ring
+    split_ifs <;> first | (exfalso; omega) | norm_num
   · have h1 : N - j ≤ N := by omega
     have h2 : (i : ℕ) + 1 - j ≤ N := by omega
     have hN : N ≤ N := le_refl N
@@ -123,6 +123,6 @@ theorem levi_stepPot_cell : ∀ (N j : ℕ), j ≤ N → ∀ (i : Fin N) (w : Pa
     have hb := b.2
     dsimp only
     simp only [hσ]
-    split_ifs <;> first | (exfalso; omega) | norm_num | ring
+    split_ifs <;> first | (exfalso; omega) | norm_num
 
 end GlobalTheory.CompanionTheory.Ar.PB

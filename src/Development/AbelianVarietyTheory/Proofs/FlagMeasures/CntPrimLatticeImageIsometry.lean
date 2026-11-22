@@ -73,8 +73,6 @@ theorem primInv_le (h : V →ₗ⋆[K] V →ₗ[K] K) (γ : V ≃ₗ[K] V) (hγ 
     exact primInv_mem h γ hγ L j de M hM
   first
     | exact Set.encard_le_encard hsub
-    | exact Set.encard_mono hsub
-    | exact Set.encard_le_card hsub
 
 end
 

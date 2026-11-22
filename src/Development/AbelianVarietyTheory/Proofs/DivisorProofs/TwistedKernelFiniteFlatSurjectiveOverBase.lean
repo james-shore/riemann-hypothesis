@@ -27,7 +27,6 @@ theorem twisted_kernel : ∀ (R : Type) [CommRing R] [IsNoetherianRing R] (A : O
     first
     | infer_instance
     | (show LocallyOfFiniteType (pullback.fst A.hom T.hom ≫ A.hom); infer_instance)
-    | (show LocallyOfFiniteType (pullback.snd A.hom T.hom ≫ T.hom); infer_instance)
   have : IsLocallyNoetherian (A ⊗ T).left := LocallyOfFiniteType.isLocallyNoetherian (A ⊗ T).hom
   have hΛ : Fam A (abelian₂ A L) := ⟨LB.isLB_linComb hL _ _,
     (GlobalTheory.CubeDual.isAdditive_lam GlobalTheory.CubeTop.cubeTheorem hA hL (LB.isLB_linComb hL _ _)).1⟩

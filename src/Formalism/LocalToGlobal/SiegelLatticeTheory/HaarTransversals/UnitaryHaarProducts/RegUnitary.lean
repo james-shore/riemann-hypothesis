@@ -60,8 +60,6 @@ theorem rp_rep_ae_eq [μ.IsMulLeftInvariant] [Countable Γ] (h : rr_FD μ Γ D) 
     unfold rr_rep
     first
     | exact dif_pos hex
-    | rw [dif_pos hex]
-    | simp only [dif_pos hex]
   rw [e, hr'] at hx
   show ∃ γ₁ ∈ Γ, ∃ γ₂ ∈ Γ, γ₁ ≠ γ₂ ∧ γ₁ * (x * g) ∈ D ∧ γ₂ * (x * g) ∈ D
   exact ⟨hex.choose, hex.choose_spec.1, γ, hγ, fun heq => hx (by rw [heq]), hex.choose_spec.2, hD⟩
@@ -159,8 +157,6 @@ theorem rp_map [μ.IsMulLeftInvariant] [Countable Γ] (h : rr_FD μ Γ D) {g : G
     unfold rr_rep
     first
     | exact dif_pos hex
-    | rw [dif_pos hex]
-    | simp only [dif_pos hex]
   haveI : Nonempty Γ := ⟨1⟩
   obtain ⟨e, he⟩ := exists_surjective_nat Γ
   have hp : ∀ y : G, ∃ n, (e n : G) * y ∈ D := fun y => by
@@ -195,8 +191,6 @@ theorem rp_rep_comp [μ.IsMulLeftInvariant] [Countable Γ] (h : rr_FD μ Γ D) (
     unfold rr_rep
     first
     | exact dif_pos hex
-    | rw [dif_pos hex]
-    | simp only [dif_pos hex]
   rw [ae_iff]
   refine measure_mono_null (fun x hx => ?_) hnull
   simp only [Set.mem_setOf_eq] at hx
@@ -260,8 +254,6 @@ variable (I : AutInst)
 theorem muInf_right : (ProjRows.muInf I).IsMulRightInvariant := by
   first
   | infer_instance
-  | (unfold ProjRows.muInf; infer_instance)
-  | (unfold Formalism.L2.SG.ProjRows.muInf Formalism.REAL.muG; infer_instance)
 
 theorem rp_inst (μf : Measure I.Gf) [SigmaFinite μf] (g : I.Ginf) :
     RPres (I.muA μf) ((g, 1) : I.GA) := by
@@ -311,13 +303,11 @@ theorem adele_tendsto (μf : Measure I.Gf) [SigmaFinite μf] {A : Set I.GA} (hA 
         = (fun x : I.Ginf => (x, y)) ⁻¹' A \ (fun x => x * g) ⁻¹' ((fun x : I.Ginf => (x, y)) ⁻¹' A) := by
     intro g y
     ext x
-    simp [Set.mem_diff]
+    simp
   have hmA : ∀ y : I.Gf, MeasurableSet ((fun x : I.Ginf => (x, y)) ⁻¹' A) := fun y => by
     first
     | exact hA.preimage measurable_prod_mk_right
     | exact hA.preimage measurable_prodMk_right
-    | exact hA.preimage (measurable_id.prodMk measurable_const)
-    | exact hA.preimage (measurable_id.prod_mk measurable_const)
   have hB : ∀ g : I.Ginf, MeasurableSet (A \ (fun x => x * ((g, 1) : I.GA)) ⁻¹' A) := fun g =>
     hA.diff (hA.preimage (measurable_mul_const _))
   have hF : ∀ g : I.Ginf, I.muA μf (A \ (fun x => x * ((g, 1) : I.GA)) ⁻¹' A)
@@ -439,7 +429,6 @@ theorem reg_norm (g : I.Ginf) (F : I.L2 μf fund) : ‖R (g, 1) F‖ = ‖F‖ :
     intro g' F'
     first
     | exact hR g' F'
-    | (filter_upwards [hR g' F'] with x hx; rw [hx]; rfl)
   exact rp_norm hFD hReg (rp_inst I μf g) (rp_inst_inv I μf g) F
 
 include hfd hR in
@@ -518,7 +507,6 @@ theorem reg_mul (a b : I.Ginf) : R (a * b, 1) = (R (a, 1)).comp (R (b, 1)) := by
     intro g' F'
     first
     | exact hR g' F'
-    | (filter_upwards [hR g' F'] with x hx; rw [hx]; rfl)
   have e : ((a * b, 1) : I.GA) = ((a, 1) : I.GA) * ((b, 1) : I.GA) := Prod.ext (by simp) (by simp)
   rw [e]
   exact rp_mul hFD hReg (rp_inst I μf a) (rp_inst_inv I μf a) (by rw [← e]; exact rp_inst I μf (a * b))
@@ -602,7 +590,6 @@ theorem ind_tendsto {s : Set I.GA} (hs : MeasurableSet s) (hμs : (I.muA μf).re
     intro g' F'
     first
     | exact hR g' F'
-    | (filter_upwards [hR g' F'] with x hx; rw [hx]; rfl)
   classical
   have hrep : ∀ y : I.GA, ∃ c ∈ Γ, rr_rep (Γ : Set I.GA) fund y = c * y ∧ c * y ∈ fund := by
     intro y
@@ -611,15 +598,12 @@ theorem ind_tendsto {s : Set I.GA} (hs : MeasurableSet s) (hμs : (I.muA μf).re
     unfold rr_rep
     first
     | exact dif_pos hex
-    | rw [dif_pos hex]
-    | simp only [dif_pos hex]
   have hN0 : I.muA μf (rr_N Γ fund) = 0 := by
     have h0 := rp_N_pre hFD (rp_inst I μf 1)
     have e1 : (fun x : I.GA => x * (((1 : I.Ginf), (1 : I.Gf)) : I.GA)) = id :=
       funext fun x => mul_one x
     first
     | (rw [e1, Set.preimage_id] at h0; exact h0)
-    | simpa using h0
   have hs' : MeasurableSet (s ∩ fund) := hs.inter hfd.1
   have hs'f : I.muA μf (s ∩ fund) ≠ ∞ := by
     rw [← Measure.restrict_apply hs]
@@ -649,19 +633,16 @@ theorem ind_tendsto {s : Set I.GA} (hs : MeasurableSet s) (hμs : (I.muA μf).re
       filter_upwards [compl_mem_ae_iff.mpr (rp_N_pre hFD (rp_inst I μf g))] with x hx
       first
       | simpa only [Set.mem_compl_iff, Set.mem_preimage] using hx
-      | exact hx
     have F6 : ∀ᵐ x ∂(I.muA μf).restrict fund, x ∉ rr_N Γ fund := by
       refine ae_restrict_of_ae ?_
       filter_upwards [compl_mem_ae_iff.mpr hN0] with x hx
       first
       | simpa only [Set.mem_compl_iff] using hx
-      | exact hx
     filter_upwards [Lp.coeFn_sub (R (g, 1) X) X, hReg (g, 1) X, F3, hXs, ae_restrict_mem hfd.1, F6, F7]
       with x e1 e2 e3 e4 hxD hx6 hx7
     rw [e1]
     first
     | rw [Pi.sub_apply]
-    | skip
     rw [e2, e3, e4]
     obtain ⟨c, hc, hcy, hcD⟩ := hrep (x * ((g, 1) : I.GA))
     rw [hcy]
@@ -702,9 +683,9 @@ theorem ind_tendsto {s : Set I.GA} (hs : MeasurableSet s) (hμs : (I.muA μf).re
     by_cases h1 : c * (x * ((g, 1) : I.GA)) ∈ s <;> by_cases h0 : x ∈ s
     · simp [Set.indicator_apply, h1, h0]
     · have hxE : x ∈ E g := hEx.mpr (Or.inl ⟨hP1.mp h1, fun h => h0 (hP0.mpr h)⟩)
-      simp [Set.indicator_apply, h1, h0, hxE]
+      simp [h1, h0, hxE]
     · have hxE : x ∈ E g := hEx.mpr (Or.inr ⟨hP0.mp h0, fun h => h1 (hP1.mpr h)⟩)
-      simp [Set.indicator_apply, h1, h0, hxE]
+      simp [h1, h0, hxE]
     · simp [Set.indicator_apply, h1, h0]
   have hET : ∀ g : I.Ginf, (I.muA μf).restrict fund (E g) ≤ I.muA μf (T g) := by
     intro g
@@ -791,7 +772,6 @@ theorem ind_tendsto {s : Set I.GA} (hs : MeasurableSet s) (hμs : (I.muA μf).re
     first
     | rw [ENNReal.zero_toReal] at h3
     | rw [ENNReal.toReal_zero] at h3
-    | simp only [ENNReal.zero_toReal] at h3
     exact h3
   refine h2.congr (fun g => ?_)
   exact (Lp.norm_def _).symm

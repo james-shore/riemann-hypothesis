@@ -71,7 +71,7 @@ theorem pc_shape {s r : ℕ} {A : ℕ} {Ai Ci : Fin s → ℕ} {M : ℕ} (hA : �
       have hB : (if t = 0 then 0 else (A : ℤ)) + (t : ℤ) * M + (if t = 0 then (A : ℤ) else M) ≤
           (if t + 1 = 0 then 0 else (A : ℤ)) + ((t + 1 : ℕ) : ℤ) * M := by
         rcases Nat.eq_zero_or_pos t with rfl | htpos
-        · norm_num <;> linarith
+        · norm_num
         · rw [if_neg (by omega), if_neg (by omega), if_neg (by omega)]
           push_cast
           nlinarith

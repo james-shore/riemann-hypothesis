@@ -95,7 +95,7 @@ theorem cok_sub_of_isGL (M : Loc.Model F E) {m : ℕ} (ZZ : M.Mat (m + 1)) (h : 
   rw [Submodule.Quotient.subsingleton_iff, eq_top_iff]
   intro x _
   refine ⟨Matrix.mulVec CR x, ?_⟩
-  simp [Matrix.mulVecLin_apply, Matrix.mulVec_mulVec, hCR]
+  simp [Matrix.mulVec_mulVec, hCR]
 
 theorem clsOf_triv (M : Loc.Model F E) {m : ℕ} (A : Matrix (Fin (m + 1)) (Fin (m + 1)) E) (h : IsGL M.R A) :
     clsOf M A = some (LocModel.trivCls M m) := by
@@ -485,7 +485,7 @@ theorem loU_corner (p : PlF D) (c : (D.s.atP p).Ep) {L N : LsDatumB.MatP D p} (h
   ext a b
   rw [Matrix.mul_apply, Finset.sum_eq_single (Fin.last _)]
   · rw [Matrix.mul_apply, Finset.sum_eq_single (Fin.last _)]
-    · simp only [cornerM, Matrix.of_apply, true_and, and_true]
+    · simp only [cornerM, Matrix.of_apply, and_true]
       rw [hLl, hNl]
       by_cases ha : a = Fin.last _ <;> by_cases hb : b = Fin.last _ <;> simp [ha, hb]
     · intro k _ hk; simp [cornerM, hk]

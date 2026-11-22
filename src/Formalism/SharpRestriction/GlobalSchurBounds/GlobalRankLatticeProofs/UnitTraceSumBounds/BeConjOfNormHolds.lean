@@ -11,8 +11,6 @@ open Formalism.MainNotions.GL3Theta Formalism.MainNotions.TaylorLogMetric Formal
 theorem l0 {p : ℕ} [Fact p.Prime] (g : G1 p) : PowerSeries.constantCoeff g.l = 0 := by
   first
     | (unfold Formalism.MainNotions.GL3Theta.G1.l flog; simp)
-    | (simp [Formalism.MainNotions.GL3Theta.G1.l, flog, PowerSeries.coeff_mk])
-    | (show PowerSeries.coeff 0 (flog _ _) = 0; simp [flog])
 
 theorem beConjOfNorm_holds : BeConjOfNorm := by
   intro p _ g S hOk hsw hadd hint hF hN hdec hph hbi

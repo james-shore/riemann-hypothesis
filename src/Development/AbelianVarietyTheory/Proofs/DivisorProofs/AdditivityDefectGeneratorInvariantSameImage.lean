@@ -107,7 +107,7 @@ theorem gm_addGen {S : Scheme.{0}} {A A' T Z : Over S} [GrpObj A] [GrpObj A'] (q
   have eS : y.left ≫ (ptSnd A T).left = (lift a' t).left := by
     rw [← Over.comp_left, hy]
     unfold ptSnd
-    simp [comp_lift]
+    simp
   have eM : y.left ≫ (ptMul A T).left = (lift (a * a') t).left := by
     rw [← Over.comp_left, hy]
     unfold ptMul

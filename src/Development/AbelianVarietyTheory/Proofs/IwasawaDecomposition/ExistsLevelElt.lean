@@ -24,9 +24,7 @@ theorem exists_bound {m : ℕ} (A : Matrix (Fin m) (Fin m) K) :
   first
   | exact @_root_.GlobalTheory.EntriesExpBound.exists_entries_le_exp
   | exact _root_.GlobalTheory.EntriesExpBound.exists_entries_le_exp
-  | (apply _root_.GlobalTheory.EntriesExpBound.exists_entries_le_exp <;> assumption)
-  | (intros; apply _root_.GlobalTheory.EntriesExpBound.exists_entries_le_exp <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.EntriesExpBound.exists_entries_le_exp <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.EntriesExpBound.exists_entries_le_exp)
   | (intros; exact _root_.GlobalTheory.EntriesExpBound.exists_entries_le_exp ..)
 
 theorem mul_bound {m : ℕ} {A C : Matrix (Fin m) (Fin m) K} {a c : WithZero (Multiplicative ℤ)}

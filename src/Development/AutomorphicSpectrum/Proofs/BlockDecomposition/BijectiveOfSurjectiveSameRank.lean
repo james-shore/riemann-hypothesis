@@ -29,7 +29,7 @@ theorem bijective_of_surjective_of_VB : ∀ (R A B : Type) [CommRing R] [AddComm
   let E : (LinearMap.ker f × B) ≃ₗ[R] A :=
     LinearEquiv.ofLinear ((LinearMap.ker f).subtype.coprod g) (s.prod f)
       (by
-        ext a <;> simp [s, hg'])
+        ext a <;> simp [s])
       (by
         ext x <;> simp [s, hg'])
   have hsub : Subsingleton (LinearMap.ker f) := by

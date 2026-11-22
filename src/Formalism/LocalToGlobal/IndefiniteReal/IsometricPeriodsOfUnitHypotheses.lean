@@ -33,7 +33,6 @@ theorem vw_eq_zero_of_pow {k : K} {n : ℕ} (hn : 0 < n) (hk : k ^ n = 1) (w : H
     rw [← FractionalIdeal.count_pow]
     first
     | rw [FractionalIdeal.spanSingleton_pow]
-    | rw [← FractionalIdeal.spanSingleton_pow]
     rw [hk, FractionalIdeal.spanSingleton_one, FractionalIdeal.count_one]
   rcases mul_eq_zero.mp h1 with h | h
   · exact absurd h (by exact_mod_cast hn.ne')

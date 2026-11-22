@@ -356,7 +356,7 @@ theorem mem_O_inl (y : (D.s.atP p).Fp) (hy : y ∈ 𝒪[(D.s.atP p).Fp]) : sg.e.
   · refine ⟨Polynomial.X ^ 2 - Polynomial.X, Polynomial.monic_X_pow_sub (by rw [Polynomial.degree_X]; norm_num), ?_⟩
     have h : sg.e.symm (1, 0) * sg.e.symm (1, 0) = sg.e.symm ((1 : (D.s.atP p).Fp), (0 : (D.s.atP p).Fp)) := by
       rw [← map_mul]; congr 1; ext <;> simp
-    simp [Polynomial.eval₂_sub, Polynomial.eval₂_X_pow, pow_two, h]
+    simp [Polynomial.eval₂_sub, pow_two, h]
 
 theorem comp_mem (z : (D.s.atP p).Ep) (hz : z ∈ (D.s.atP p).O) :
     (sg.e z).1 ∈ 𝒪[(D.s.atP p).Fp] ∧ (sg.e z).2 ∈ 𝒪[(D.s.atP p).Fp] := by
@@ -522,7 +522,7 @@ def PinHostC : Prop :=
 
 theorem not_both (D : D7) (p : PlF D) (h0 : ((D.host.g 0 : ℕ) : 𝓞 D.host.F) ∈ p.asIdeal)
     (h1 : ((D.host.g 1 : ℕ) : 𝓞 D.host.F) ∈ p.asIdeal) : False := by
-  first | exact UpperTheory.Reformulated.B.Qf52.not_both .. | (apply UpperTheory.Reformulated.B.Qf52.not_both <;> assumption) | (intros; apply UpperTheory.Reformulated.B.Qf52.not_both <;> assumption) | (apply @UpperTheory.Reformulated.B.Qf52.not_both <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.Qf52.not_both <;> assumption) | (apply @UpperTheory.Reformulated.B.Qf52.not_both <;> first | assumption | infer_instance) | exact @UpperTheory.Reformulated.B.Qf52.not_both D p h0 h1 | exact @UpperTheory.Reformulated.B.Qf52.not_both D p h0 | exact @UpperTheory.Reformulated.B.Qf52.not_both D p | exact @UpperTheory.Reformulated.B.Qf52.not_both D
+  first | exact UpperTheory.Reformulated.B.Qf52.not_both .. | (apply UpperTheory.Reformulated.B.Qf52.not_both <;> assumption) | exact @UpperTheory.Reformulated.B.Qf52.not_both D p h0 h1 | exact @UpperTheory.Reformulated.B.Qf52.not_both D p h0 | exact @UpperTheory.Reformulated.B.Qf52.not_both D p | exact @UpperTheory.Reformulated.B.Qf52.not_both D
 
 theorem locDualC_of (hG : LocDualGenC) (hU : LocUnramC) (hP : PinHostC) : LocDualC := by
   intro D hT p

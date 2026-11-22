@@ -103,7 +103,7 @@ theorem _root_.GlobalTheory.VolPow.vol_div_eq_zpow : ∀ (G : Type) [Group G] [T
     ENNReal.toReal_pos (hK.measure_ne_zero μ ⟨1, (H₁ ⊓ H₂).one_mem⟩) hcpt.measure_lt_top.ne
   refine ⟨(b₁ : ℤ) - b₂, ?_⟩
   rw [e₁, e₂, hb₁, hb₂, ENNReal.toReal_mul, ENNReal.toReal_mul]
-  simp only [ENNReal.toReal_pow, ENNReal.toReal_natCast]
+  simp only [ENNReal.toReal_natCast]
   have hq0 : (q : ℝ) ≠ 0 := by exact_mod_cast hq.ne_zero
   rw [zpow_sub₀ hq0, zpow_natCast, zpow_natCast]
   field_simp

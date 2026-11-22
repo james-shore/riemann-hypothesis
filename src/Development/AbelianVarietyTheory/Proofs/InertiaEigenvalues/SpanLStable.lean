@@ -27,7 +27,7 @@ theorem loc_mulVec {k : ℕ} (M : GE D.nd →* Matrix (Fin k) (Fin k) (D.nd.O i)
   rw [RingHom.map_mulVec]
   congr 1
   ext p q
-  simp [Br.loc, Br.locM, Br.locO, mapM, Br.iota, Br.toLLK_alg]
+  simp [Br.loc, Br.locM, Br.locO, mapM, Br.toLLK_alg]
   rfl
 
 variable (r : D.nd.X i → (GE D.nd →* GL (Fin D.R.nV) (D.nd.O i))) (Xs : Set (D.nd.X i))

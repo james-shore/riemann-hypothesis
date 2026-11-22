@@ -274,7 +274,7 @@ theorem gam_eq_zero (y : (Fin m → SignType) → ℝ) (M : ℝ) (a : Fin m → 
     refine Finset.sum_congr (by ext s; simp) fun c _ => ?_
     rw [Finset.prod_ite_zero]
     by_cases h : ∀ e ∈ c, y e < sdot e a
-    · simp [h]
+    · simp
     · simp [h]
 
   have key : ∀ c ∈ T, tg ε i c ≠ 0 ∧ y (tg ε i c) < sdot (tg ε i c) a ∧ tg ε i c i ≠ -ε ∧

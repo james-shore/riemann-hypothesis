@@ -9,14 +9,14 @@ noncomputable section
 theorem third_fderiv_symm_one_two {D : ℕ} (φ : (Fin D → ℂ) → ℝ) (z : Fin D → ℂ) (h : ContDiffAt ℝ 3 φ z)
     (u x : Fin D → ℂ) :
     fderiv ℝ (fderiv ℝ (fderiv ℝ φ)) z u x = fderiv ℝ (fderiv ℝ (fderiv ℝ φ)) z x u := by
-  have h2 : ContDiffAt ℝ 2 (fderiv ℝ φ) z := h.fderiv_right (by first | norm_num | simp | rfl)
-  exact h2.isSymmSndFDerivAt (by first | simp | norm_num | (simp only [minSmoothness_of_isRCLikeNormedField]; norm_num)) u x
+  have h2 : ContDiffAt ℝ 2 (fderiv ℝ φ) z := h.fderiv_right (by first | norm_num)
+  exact h2.isSymmSndFDerivAt (by first | simp) u x
 
 theorem differentiableAt_snd_fderiv {D : ℕ} (φ : (Fin D → ℂ) → ℝ) (z : Fin D → ℂ)
     (h : ContDiffAt ℝ 3 φ z) : DifferentiableAt ℝ (fderiv ℝ (fderiv ℝ φ)) z := by
-  have h2 : ContDiffAt ℝ 2 (fderiv ℝ φ) z := h.fderiv_right (by first | norm_num | simp | rfl)
-  have h1 : ContDiffAt ℝ 1 (fderiv ℝ (fderiv ℝ φ)) z := h2.fderiv_right (by first | norm_num | simp | rfl)
-  exact h1.differentiableAt (by first | norm_num | simp | exact one_ne_zero)
+  have h2 : ContDiffAt ℝ 2 (fderiv ℝ φ) z := h.fderiv_right (by first | norm_num)
+  have h1 : ContDiffAt ℝ 1 (fderiv ℝ (fderiv ℝ φ)) z := h2.fderiv_right (by first | norm_num)
+  exact h1.differentiableAt (by first | norm_num)
 
 theorem third_fderiv_symm_two_three {D : ℕ} (φ : (Fin D → ℂ) → ℝ) (z : Fin D → ℂ) (h : ContDiffAt ℝ 3 φ z)
     (u x y : Fin D → ℂ) :
@@ -26,14 +26,14 @@ theorem third_fderiv_symm_two_three {D : ℕ} (φ : (Fin D → ℂ) → ℝ) (z 
       fderiv ℝ (⇑(evalL x y) ∘ fderiv ℝ (fderiv ℝ φ)) z =
         (evalL x y).comp (fderiv ℝ (fderiv ℝ (fderiv ℝ φ)) z) :=
     fun x y => ((evalL x y).hasFDerivAt.comp z hd.hasFDerivAt).fderiv
-  have h2 : ContDiffAt ℝ 2 φ z := h.of_le (by first | norm_num | simp | rfl)
-  have hev : ∀ᶠ w in 𝓝 z, ContDiffAt ℝ 2 φ w := h2.eventually (by first | simp | norm_num | decide | exact ENat.coe_ne_top _)
+  have h2 : ContDiffAt ℝ 2 φ z := h.of_le (by first | norm_num)
+  have hev : ∀ᶠ w in 𝓝 z, ContDiffAt ℝ 2 φ w := h2.eventually (by first | simp)
   have ev : (⇑(evalL x y) ∘ fderiv ℝ (fderiv ℝ φ)) =ᶠ[𝓝 z]
       (⇑(evalL y x) ∘ fderiv ℝ (fderiv ℝ φ)) := by
     filter_upwards [hev] with w hw
     simp only [Function.comp_apply, evalL, ContinuousLinearMap.coe_comp',
       ContinuousLinearMap.apply_apply]
-    exact hw.isSymmSndFDerivAt (by first | simp | norm_num | (simp only [minSmoothness_of_isRCLikeNormedField]; norm_num)) x y
+    exact hw.isSymmSndFDerivAt (by first | simp) x y
   have e := Filter.EventuallyEq.fderiv_eq (𝕜 := ℝ) ev
   rw [key x y, key y x] at e
   have e2 := congrArg (fun L => L u) e
@@ -141,9 +141,6 @@ theorem dz_add (hf : DifferentiableAt ℝ f z) (hg : DifferentiableAt ℝ g z) :
   have e : fderiv ℝ (fun y => f y + g y) z = fderiv ℝ f z + fderiv ℝ g z := by
     first
     | (exact (hf.hasFDerivAt.add hg.hasFDerivAt).fderiv)
-    | (exact (hf.hasFDerivAt.fun_add hg.hasFDerivAt).fderiv)
-    | (exact fderiv_add hf hg)
-    | (exact fderiv_fun_add hf hg)
   unfold dz
   rw [e, ContinuousLinearMap.add_apply, ContinuousLinearMap.add_apply]
   ring
@@ -153,9 +150,6 @@ theorem dz_mul (hf : DifferentiableAt ℝ f z) (hg : DifferentiableAt ℝ g z) :
   have e : fderiv ℝ (fun y => f y * g y) z = f z • fderiv ℝ g z + g z • fderiv ℝ f z := by
     first
     | (exact (hf.hasFDerivAt.mul hg.hasFDerivAt).fderiv)
-    | (exact (hf.hasFDerivAt.fun_mul hg.hasFDerivAt).fderiv)
-    | (exact fderiv_mul hf hg)
-    | (exact fderiv_fun_mul hf hg)
   unfold dz
   rw [e]
   simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply, smul_eq_mul]
@@ -173,7 +167,7 @@ theorem dzb_of_eventually_zero (h : f =ᶠ[𝓝 z] fun _ => 0) : dzb j f z = 0 :
 
 theorem differentiableAt_dzb (hf : ContDiffAt ℝ 2 f z) : DifferentiableAt ℝ (dzb j f) z := by
   have hd : DifferentiableAt ℝ (fderiv ℝ f) z :=
-    (hf.fderiv_right (m := 1) (by first | norm_num | simp | rfl)).differentiableAt (by first | norm_num | simp | exact one_ne_zero)
+    (hf.fderiv_right (m := 1) (by first | norm_num)).differentiableAt (by first | norm_num)
   have h1 : DifferentiableAt ℝ (fun y => fderiv ℝ f y (Pi.single j 1)) z :=
     hd.clm_apply (differentiableAt_const _)
   have h2 : DifferentiableAt ℝ (fun y => fderiv ℝ f y (Complex.I • Pi.single j 1)) z :=
@@ -187,7 +181,6 @@ theorem differentiableAt_dzb (hf : ContDiffAt ℝ 2 f z) : DifferentiableAt ℝ 
     first
       | (exact h4.div_const (2 : ℂ))
       | (simpa only [div_eq_mul_inv] using h4.mul_const (2⁻¹ : ℂ))
-      | (fun_prop)
   exact h5
 
 end DzCalc
@@ -226,7 +219,7 @@ private lemma sum_superset_neg_one_pow_fin_eq_ite_univ (N : ℕ) (T : Finset (Fi
   rw [h1, h0]
   by_cases hT : T = Finset.univ
   · have h2 : Tᶜ = ∅ := by rw [hT]; simp
-    simp [h2, hT]
+    simp [hT]
   · have h2 : Tᶜ ≠ ∅ := by
       intro h
       apply hT
@@ -314,8 +307,6 @@ private lemma prod_cons_eq_sum_mul_prod_cons_single {n : ℕ} (A : Matrix (Fin (
     | (rw [Finset.sum_eq_single (σ i0) (fun x _ hx => by simp [hx]) (by simp)]
        rw [Finset.sum_eq_single i0 (fun x _ hx => by simp [hx]) (by simp)]
        simp)
-    | (simp [ite_and])
-    | (simp [ite_and, Finset.sum_ite_eq', Finset.sum_ite_eq])
 
 theorem mixedDisc_cons_eq_sum {n : ℕ} (A : Matrix (Fin (n + 1)) (Fin (n + 1)) ℂ)
     (B : Fin n → Matrix (Fin (n + 1)) (Fin (n + 1)) ℂ) :
@@ -370,7 +361,7 @@ theorem monge_ampere_density_cofactor : MaDensCofStatement := by
     intro j k
     have hv2 : ContDiffAt ℝ 2 v z := hv.contDiffAt (hU.mem_nhds hz)
     have hDv : DifferentiableAt ℝ (fderiv ℝ v) z :=
-      (hv2.fderiv_right (m := 1) (by first | norm_num | simp | rfl)).differentiableAt (by first | norm_num | simp | exact one_ne_zero)
+      (hv2.fderiv_right (m := 1) (by first | norm_num)).differentiableAt (by first | norm_num)
     have hw : ∀ w : Fin (n + 1) → ℂ, HasFDerivAt (fun y => ((fderiv ℝ v y w : ℝ) : ℂ))
         (Complex.ofRealCLM.comp
           ((ContinuousLinearMap.apply ℝ ℝ w).comp (fderiv ℝ (fderiv ℝ v) z))) z :=
@@ -385,15 +376,12 @@ theorem monge_ampere_density_cofactor : MaDensCofStatement := by
               (fderiv ℝ (fderiv ℝ v) z)))) z := by
       first
         | (exact ((hw _).add ((hw _).const_mul Complex.I)).const_mul (1 / 2 : ℂ))
-        | (exact ((hw _).fun_add ((hw _).const_mul Complex.I)).const_mul (1 / 2 : ℂ))
-        | (exact ((hw _).add ((hw _).fun_const_mul Complex.I)).fun_const_mul (1 / 2 : ℂ))
-        | (exact ((hw _).fun_add ((hw _).fun_const_mul Complex.I)).fun_const_mul (1 / 2 : ℂ))
     have heq : dzb k (cplx v) =ᶠ[𝓝 z] fun y => (1 / 2 : ℂ) *
         (((fderiv ℝ v y (Pi.single k 1) : ℝ) : ℂ) +
           Complex.I * ((fderiv ℝ v y (Complex.I • Pi.single k 1) : ℝ) : ℂ)) := by
       filter_upwards [hU.mem_nhds hz] with y hy
       have hdy : DifferentiableAt ℝ v y :=
-        (hv.contDiffAt (hU.mem_nhds hy)).differentiableAt (by first | norm_num | simp | exact one_ne_zero)
+        (hv.contDiffAt (hU.mem_nhds hy)).differentiableAt (by first | norm_num)
       have hf : fderiv ℝ (cplx v) y = Complex.ofRealCLM.comp (fderiv ℝ v y) :=
         (Complex.ofRealCLM.hasFDerivAt.comp y hdy.hasFDerivAt).fderiv
       unfold dzb

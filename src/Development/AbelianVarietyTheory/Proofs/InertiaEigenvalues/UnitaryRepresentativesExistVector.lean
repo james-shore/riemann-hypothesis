@@ -30,8 +30,6 @@ theorem weighted_mem {E : Type} [AddCommGroup E] [Module ℂ E] (V : Submodule �
   | exact @_root_.GlobalTheory.WeightSum.weight_sum_mem
   | exact _root_.GlobalTheory.WeightSum.weight_sum_mem
   | (apply _root_.GlobalTheory.WeightSum.weight_sum_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.WeightSum.weight_sum_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.WeightSum.weight_sum_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.WeightSum.weight_sum_mem ..)
 
 end GlobalTheory.UnitaryToGl
@@ -109,8 +107,8 @@ theorem tor_X (p : D.what₂.Tau → ℕ) (τ : D.what₂.Tau) (c : Fin n) (z : 
     by_cases hd : d = c
     · subst hd
       by_cases hi : (i : ℕ) < p σ <;> simp [hi, smul_eq_C_mul]
-    · by_cases hi : (i : ℕ) < p σ <;> simp [hi, hd, Function.update_of_ne hd]
-  · simp [tor, Function.update_of_ne hσ, ex, hσ, Matrix.one_apply]
+    · by_cases hi : (i : ℕ) < p σ <;> simp [hi, hd]
+  · simp [tor, ex, hσ, Matrix.one_apply]
 
 theorem tor_monomial (p : D.what₂.Tau → ℕ) (τ : D.what₂.Tau) (c : Fin n) (z : ℂˣ) (s : Formalism.IndefR.Datum.FVar D m n →₀ ℕ)
     (a : ℂ) : GlobalTheory.ExportSeries.fockSubst p (tor τ c z) (monomial s a : PolF D m n) =
@@ -130,8 +128,8 @@ theorem gder_single_X (p : D.what₂.Tau → ℕ) (τ : D.what₂.Tau) (c : Fin 
     simp only [if_true]
     by_cases hd : d = c
     · subst hd
-      by_cases hi : (i : ℕ) < p σ <;> simp [ex, hi, Matrix.single_apply, smul_eq_C_mul]
-    · by_cases hi : (i : ℕ) < p σ <;> simp [ex, hi, hd, Matrix.single_apply, Ne.symm hd]
+      by_cases hi : (i : ℕ) < p σ <;> simp [ex, hi, Matrix.single_apply]
+    · by_cases hi : (i : ℕ) < p σ <;> simp [ex, hi, hd, Ne.symm hd]
   · simp [ex, hσ]
 
 theorem gder_monomial (p : D.what₂.Tau → ℕ) (τ : D.what₂.Tau) (c : Fin n) (s : Formalism.IndefR.Datum.FVar D m n →₀ ℕ) (a : ℂ) :
@@ -234,7 +232,7 @@ theorem transp_subst
     {u : GlobalTheory.ExportSeries.GLR D n} (hu : IsUF u) :
     Transp w BS r ρ (GlobalTheory.ExportSeries.fockSubst (m := m) w.p u).toLinearMap := by
   have hg : GlobalTheory.ExportSeries.inBasis BS (BS * u * BS⁻¹) = u := by
-    simp [GlobalTheory.ExportSeries.inBasis, MulAut.conj_apply, mul_assoc]
+    simp [GlobalTheory.ExportSeries.inBasis, mul_assoc]
   obtain ⟨k, hk⟩ := hr (BS * u * BS⁻¹) (by rw [hg]; exact hu)
   refine ⟨(((GlobalTheory.ExportSeries.detFam w.c (BS * u * BS⁻¹)) : ℂˣ) : ℂ) • ρ k, fun φ hφ => ?_⟩
   refine LinearMap.ext fun x => ?_
@@ -320,11 +318,11 @@ theorem sop_eq (w : GlobalTheory.ExportSeries.Weight D n) (τ : D.what₂.Tau) (
           · subst hca; simp [Finset.sum_ite_eq]
           · simp [hca, Ne.symm hca]
       · intro i _ hij
-        by_cases hi : (i : ℕ) < w.p σ <;> simp [T, hi, Pi.single_apply, hij]
+        by_cases hi : (i : ℕ) < w.p σ <;> simp [T, hi, hij]
       · simp
     · rw [if_neg hσ, neg_zero]
       refine Finset.sum_eq_zero fun i _ => ?_
-      by_cases hi : (i : ℕ) < w.p τ <;> simp [T, hi, Pi.single_apply, Ne.symm hσ]
+      by_cases hi : (i : ℕ) < w.p τ <;> simp [T, hi, Ne.symm hσ]
   have hA : GlobalTheory.LowestKType.sop (m := m) w τ a b = ∑ i : Fin m,
       (GlobalTheory.IndefiniteRowSideFullHecke.RaisingLoweringOperators.raiO τ (fun _ : Fin n => true) (fun j : Fin m => decide ((j : ℕ) < w.p τ)) i a *
         GlobalTheory.IndefiniteRowSideFullHecke.RaisingLoweringOperators.lowO τ (fun _ : Fin n => true) (fun j : Fin m => decide ((j : ℕ) < w.p τ)) i b +
@@ -332,9 +330,9 @@ theorem sop_eq (w : GlobalTheory.ExportSeries.Weight D n) (τ : D.what₂.Tau) (
     unfold GlobalTheory.LowestKType.sop GlobalTheory.IndefiniteRowSideFullHecke.RaisingLoweringOperators.fockS
     rw [Finset.sum_eq_single a, Finset.sum_eq_single b]
     · simp
-    · intro k _ hk; simp [Matrix.single_apply, Ne.symm hk]
+    · intro k _ hk; simp [Ne.symm hk]
     · simp
-    · intro j _ hj; refine Finset.sum_eq_zero fun k _ => ?_; simp [Matrix.single_apply, Ne.symm hj]
+    · intro j _ hj; refine Finset.sum_eq_zero fun k _ => ?_; simp [Ne.symm hj]
     · simp
   have hneg : ∀ P, -(gder (m := m) w.p τ (Matrix.single b a 1) P) = ∑ i, T i P := by
     intro P; rw [← sumApp, hD, Derivation.neg_apply]
@@ -352,7 +350,7 @@ theorem sop_eq (w : GlobalTheory.ExportSeries.Weight D n) (τ : D.what₂.Tau) (
     · subst hab
       simp only [if_true, Pi.single_eq_same, mul_one, LinearMap.smul_apply, Module.End.one_apply]
       module
-    · simp [hab, Pi.single_apply]
+    · simp [hab]
 
 theorem subst_comp_gder (p : D.what₂.Tau → ℕ) (τ : D.what₂.Tau) (g : GlobalTheory.ExportSeries.GLR D n) (Z : Matrix (Fin n) (Fin n) ℂ) :
     (GlobalTheory.ExportSeries.fockSubst (m := m) p g).toLinearMap ∘ₗ (gder p τ Z).toLinearMap =
@@ -458,15 +456,13 @@ theorem givens (a b : Fin n) (hab : a ≠ b) : ∃ G : GL (Fin n) ℂ,
       by_cases h1 : j = t <;> by_cases h2 : k = t <;> simp_all
   have hGG : (1 + α • P + s • J) * (1 + α • P - s • J) = 1 := by
     simp only [P, J, Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.smul_mul, Matrix.mul_smul,
-      Matrix.one_mul, Matrix.mul_one, mm, hab, hba, if_true, if_false, ↓reduceIte, Matrix.zero_mul, Matrix.mul_zero,
-      add_zero, zero_add, sub_zero, zero_sub, smul_zero]
-    simp only [α, s, zero_mul, mul_zero, add_zero, zero_add, sub_zero, zero_sub, smul_zero, smul_neg, neg_zero]
+      Matrix.one_mul, Matrix.mul_one, mm, hab, hba, ↓reduceIte, add_zero, zero_add, sub_zero, zero_sub]
+    simp only [α, s, smul_neg]
     module
   have hGG' : (1 + α • P - s • J) * (1 + α • P + s • J) = 1 := by
     simp only [P, J, Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.smul_mul, Matrix.mul_smul,
-      Matrix.one_mul, Matrix.mul_one, mm, hab, hba, if_true, if_false, ↓reduceIte, Matrix.zero_mul, Matrix.mul_zero,
-      add_zero, zero_add, sub_zero, zero_sub, smul_zero]
-    simp only [α, s, zero_mul, mul_zero, add_zero, zero_add, sub_zero, zero_sub, smul_zero, smul_neg, neg_zero]
+      Matrix.one_mul, Matrix.mul_one, mm, hab, hba, ↓reduceIte, add_zero, zero_add, sub_zero, zero_sub]
+    simp only [α, s, smul_neg]
     module
   refine ⟨⟨1 + α • P + s • J, 1 + α • P - s • J, hGG, hGG'⟩, ?_, ?_⟩
   · rw [Matrix.mem_unitaryGroup_iff]
@@ -474,15 +470,15 @@ theorem givens (a b : Fin n) (hab : a ≠ b) : ∃ G : GL (Fin n) ℂ,
       simp only [P, J, star_add, star_sub, star_smul, star_one, Matrix.star_eq_conjTranspose, Matrix.conjTranspose_single,
         star_one]
       simp only [α, s]
-      have h1 : star (-2 / 5 : ℂ) = -2 / 5 := by simp [Complex.ext_iff]
-      have h2 : star (4 / 5 : ℂ) = 4 / 5 := by simp [Complex.ext_iff]
+      have h1 : star (-2 / 5 : ℂ) = -2 / 5 := by simp
+      have h2 : star (4 / 5 : ℂ) = 4 / 5 := by simp
       rw [h1, h2]
       module
     rw [this]; exact hGG
   · change (1 + α • P + s • J) * Matrix.single a a 1 * (1 + α • P - s • J) = _
     simp only [P, J, Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.smul_mul, Matrix.mul_smul,
-      Matrix.one_mul, Matrix.mul_one, mm, hab, hba, if_true, if_false, ↓reduceIte]
-    simp only [α, s, zero_mul, mul_zero, add_zero, zero_add, sub_zero, zero_sub, smul_zero, smul_neg, neg_zero]
+      Matrix.one_mul, Matrix.mul_one, mm, hab, hba, ↓reduceIte]
+    simp only [α, s, zero_mul, add_zero, sub_zero, zero_sub, smul_zero, smul_neg]
     module
 
 theorem dU_conj (a b : Fin n) (hab : a ≠ b) :
@@ -500,7 +496,7 @@ theorem dU_conj (a b : Fin n) (hab : a ≠ b) :
   simp only [Matrix.add_apply, Matrix.smul_apply, Matrix.single_apply, smul_eq_mul, Function.update_apply, Pi.one_apply,
     Units.val_inv_eq_inv_val, Units.val_mk0, Complex.inv_I]
   clear h1 h2
-  split_ifs <;> subst_vars <;> simp_all <;> ring
+  split_ifs <;> subst_vars <;> simp_all
 
 theorem gder_add (p : D.what₂.Tau → ℕ) (τ : D.what₂.Tau) (Z Z' : Matrix (Fin n) (Fin n) ℂ) :
     gder (m := m) p τ (Z + Z') = gder p τ Z + gder p τ Z' := by

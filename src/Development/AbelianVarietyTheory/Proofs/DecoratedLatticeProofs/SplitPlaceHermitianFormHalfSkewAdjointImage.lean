@@ -16,7 +16,7 @@ theorem hO_ofAdj_right {D : D7} (L S : HSp D) (X : WO L S) (z : Mx D L.rank S.ra
     hO L S X (GlobalTheory.IndefiniteRowSideFullHecke.SkewGramHalfModule.ofAdj L S z) = incA D (D.host.xi0⁻¹) * (z ⬝ X).trace := by
   rw [hO_eq_trace, GlobalTheory.IndefiniteRowSideFullHecke.SkewGramHalfModule.ofAdj]
   simp only [adj_smul, adj_mul, adj_adj, adj_gA, adj_giA, Matrix.smul_mul, Matrix.mul_smul, Matrix.mul_assoc,
-    giA_gA_cancel, gA_giA_cancel, trace_smul, smul_eq_mul]
+    giA_gA_cancel, trace_smul, smul_eq_mul]
   rw [GlobalTheory.DualPairCheck.cA_incA, star_neg, star_inv₀, GlobalTheory.DualPairCheck.star_purely_imaginary_eq_neg, inv_neg, neg_neg]
 
 theorem map_trace {D : D7} {k : Type} [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k]
@@ -50,7 +50,7 @@ theorem key : ∀ (D : D7) (k : Type) [Field k] [ValuativeRel k] [TopologicalSpa
     rw [← Matrix.mul_assoc FS.γ, FS.γβ, Matrix.one_mul]
   rw [e1, Matrix.trace_mul_comm, ← Matrix.mul_assoc, ← Matrix.mul_assoc, hγ]
   have hx := Witness.xi_ne p
-  simp only [Matrix.smul_mul, Matrix.one_mul, Matrix.trace_smul, smul_eq_mul, Matrix.trace, Matrix.diag,
+  simp only [Matrix.smul_mul, Matrix.one_mul, Matrix.trace, Matrix.diag,
     Matrix.mul_apply, Finset.univ_unique, Finset.sum_singleton]
   simp only [Matrix.smul_apply, smul_eq_mul, neg_mul, Finset.sum_neg_distrib, mul_assoc, ← Finset.mul_sum, mul_neg,
     inv_mul_cancel_left₀ hx]

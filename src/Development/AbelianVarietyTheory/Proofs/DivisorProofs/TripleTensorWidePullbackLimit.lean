@@ -26,7 +26,7 @@ def l3 : Fin (2 + 1) → (B →+* B ⊗[A] (B ⊗[A] B)) :=
 theorem triple_tensor_inclusion_comp_algebraMap : ∀ i, (l3 A B i).comp (algebraMap A B) = algebraMap A (B ⊗[A] (B ⊗[A] B)) := by
   intro i
   fin_cases i <;>
-  · simp only [l3, Fin.isValue, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.head_cons]
+  · simp only [l3]
     rw [AlgHom.toRingHom_eq_coe]
     first
     | exact AlgHom.comp_algebraMap _

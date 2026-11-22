@@ -111,7 +111,6 @@ theorem coinv_equiv (H U : Subgroup G) (Q : Subgroup M) (s : M →* G) (q : G �
       have := f.1.1.2 ⟨_, hUH hn⟩ (s x)
       rw [← this]
       show f.1.1.1 (s x * u) = f.1.1.1 (s x * u * (s x)⁻¹ * s x)
-      congr 1
       group
     show ((χ x : ℂˣ) : ℂ) • c ((cInd H σ (u : G) f - ((1 : U →* ℂˣ) u : ℂ) • f).1.1.1 (s x)) = 0
     have e2 : (cInd H σ (u : G) f - ((1 : U →* ℂˣ) u : ℂ) • f).1.1.1 (s x)
@@ -130,7 +129,6 @@ theorem coinv_equiv (H U : Subgroup G) (Q : Subgroup M) (s : M →* G) (q : G �
       exact (smul_eq_zero.1 h2).resolve_left (Units.ne_zero _)
     have h3 : f.1.1.1 g = σ ⟨_, hUH (hdec g)⟩ (f.1.1.1 (s (q g))) := by
       rw [← f.1.1.2 ⟨_, hUH (hdec g)⟩ (s (q g))]
-      congr 1
       group
     rw [h3, hcu _ (hdec g), h1]
   have hmemH : ∀ g, q g ∈ Q → g ∈ H := by

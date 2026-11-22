@@ -70,7 +70,7 @@ theorem perfect_frac (p : ℕ) [Fact p.Prime] (R F : Type) [CommRing R] [IsDomai
   obtain ⟨a, b, -, rfl⟩ := IsFractionRing.div_surjective (A := R) x
   obtain ⟨a', rfl⟩ := (bijective_frobenius R p).2 a
   obtain ⟨b', rfl⟩ := (bijective_frobenius R p).2 b
-  exact ⟨algebraMap R F a' / algebraMap R F b', by simp [frobenius_def, div_pow]⟩
+  exact ⟨algebraMap R F a' / algebraMap R F b', by simp [frobenius_def]⟩
 
 end BridgeWittDvd
 

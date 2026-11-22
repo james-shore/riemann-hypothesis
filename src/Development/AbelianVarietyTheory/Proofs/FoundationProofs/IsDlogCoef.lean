@@ -12,8 +12,6 @@ theorem smul_mk (J : Ideal (On p n)) (a b : On p n) :
     a • (Ideal.Quotient.mk J b) = Ideal.Quotient.mk J (a * b) := by
   first
   | rfl
-  | exact (Submodule.Quotient.mk_smul _ _ _).symm
-  | simp [Algebra.smul_def]
 
 theorem deriv_pow (J : Ideal (On p n)) (D : Derivation (O0 p) (On p n) (On p n ⧸ J))
     (r c : On p n) (h : D r = Ideal.Quotient.mk J (c * r)) (i : ℕ) :

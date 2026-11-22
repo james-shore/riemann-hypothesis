@@ -45,4 +45,3 @@ theorem UpperTheory.arithmetic_subgroups_commensurable :
     fun h0 => h2 (Subgroup.relIndex_eq_zero_of_le_right inf_le_right h0)
   first
     | exact ⟨h4, h5⟩
-    | exact ⟨⟨h4⟩, ⟨h5⟩⟩

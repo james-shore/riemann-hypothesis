@@ -90,7 +90,7 @@ theorem der_one (ψ : AddChar (ZMod g) ℂ) (F : Gn g 1 → ℂ) (h : Gn g 0) : 
   rw [eU_one, Finset.sum_eq_single (1 : Gn g 1)]
   · rw [MonoidAlgebra.coeff_single, Finsupp.single_eq_same, one_mul, res_one]
   · intro b _ hb
-    simp [MonoidAlgebra.coeff_single, Finsupp.single_apply, Ne.symm hb]
+    simp [MonoidAlgebra.coeff_single, Ne.symm hb]
   · intro h1
     exact absurd (Finset.mem_univ _) h1
 

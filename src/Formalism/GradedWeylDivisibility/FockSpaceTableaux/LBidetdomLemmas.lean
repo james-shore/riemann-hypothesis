@@ -176,7 +176,7 @@ theorem sum_min_eq_shapeDeg {n K : ℕ} (sz : Fin K → ℕ) (hsz : ∀ k, sz k 
   intro k' _
   rw [Finset.sum_boole, Finset.filter_filter]
   have e : #{t : Fin n | t.val < k ∧ t.val < sz k'} = #{t : Fin n | t.val < min k (sz k')} := by
-    congr 1; ext t; simp [lt_min_iff]
+    congr 1; ext t; simp
   rw [Nat.cast_id, e, Fin.card_filter_val_lt]
   have := hsz k'
   omega

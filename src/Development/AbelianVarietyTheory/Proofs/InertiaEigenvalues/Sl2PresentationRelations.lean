@@ -220,7 +220,7 @@ lemma rho_mul (hn0 : n 0 = 1) (hn : ∀ a b, n (a + b) = n a * n b) (hm : ∀ a 
       change en h i j = en _ i j
       rw [en_mul]
       fin_cases i <;> fin_cases j <;>
-        simp only [a0, a1, a2, a3, b0, b1, b2, b3, Units.val_mk0, Fin.zero_eta, Fin.mk_one, hc] <;> first | ring1 | (field_simp; done) | (field_simp; ring1) | (field_simp; linear_combination hdet) | (field_simp; linear_combination -hdet) | (field_simp; linear_combination (en h 1 0) * hdet) | (field_simp; linear_combination (-en h 1 0) * hdet)
+        simp only [a0, a1, a2, a3, b0, b1, b2, b3, Units.val_mk0, Fin.zero_eta, Fin.mk_one, hc] <;> first | ring1 | (field_simp; done) | (field_simp; ring1) | (field_simp; linear_combination hdet)
     rw [show g * h = g * mS (Units.mk0 (en h 0 0) ha) * nS (en h 0 1 / en h 0 0) from by
       conv_lhs => rw [hh]
       rw [mul_assoc]]

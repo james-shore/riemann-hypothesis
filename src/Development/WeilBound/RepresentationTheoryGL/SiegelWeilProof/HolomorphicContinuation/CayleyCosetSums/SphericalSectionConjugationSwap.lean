@@ -117,7 +117,7 @@ theorem norm_sq_det_cayley_blocks_eq (M : M2 n) (h : InG M) : ‖(u1 M).det‖ ^
     rw [← sub_eq_zero, ← hb]
     abel
   have e1 : u1 M * (u1 M)ᴴ = u2 M * (u2 M)ᴴ := by
-    simp [u1, u2, Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, Matrix.mul_smul, smul_smul, key]
+    simp [u1, u2, Matrix.add_mul, Matrix.mul_add, smul_smul, key]
     abel
   have hn : ∀ u : Matrix (Fin n) (Fin n) ℂ, ((‖u.det‖ ^ 2 : ℝ) : ℂ) = (u * uᴴ).det := by
     intro u
@@ -144,8 +144,7 @@ theorem zkey (a b c d : Matrix (Fin n) (Fin n) ℂ) (E1 : aᴴ * c - cᴴ * a = 
   have h4 : dᴴ * a = 1 + bᴴ * c := by
     rw [← E2']
     abel
-  simp [Matrix.add_mul, Matrix.mul_add, Matrix.sub_mul, Matrix.mul_sub, Matrix.smul_mul, Matrix.mul_smul,
-    smul_smul]
+  simp [Matrix.add_mul, Matrix.mul_add, Matrix.mul_sub, smul_smul]
   rw [h1, h3, h2, h4]
   simp only [smul_add]
   abel
@@ -193,7 +192,7 @@ private theorem conjTranspose_I_smul_add_sub_eq_two_I (a b c d : Matrix (Fin n) 
   have h4 : dᴴ * a = 1 + bᴴ * c := by
     rw [← E2']
     abel
-  simp [Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, Matrix.mul_smul, smul_smul]
+  simp [Matrix.add_mul, Matrix.mul_add, smul_smul]
   rw [h1, h3, h2, h4]
   simp only [smul_add]
   module

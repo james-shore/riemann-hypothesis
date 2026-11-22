@@ -142,7 +142,7 @@ theorem UpperTheory.V.Z.Sym.So.weakOne :
       exact zero_ne_one hvB
     have hexpr : ((Units.map (algebraMap L (Kw w) : L →* Kw w) (a * ca⁻¹) / x w : (Kw w)ˣ) : Kw w) =
         (algebraMap L (Kw w) a * (((x w)⁻¹ : (Kw w)ˣ) : Kw w)) * (algebraMap L (Kw w) (cj a))⁻¹ := by
-      simp only [Units.val_div_eq_div_val, Units.coe_map, Units.val_mul, Units.val_inv_eq_inv_val, ca,
+      simp only [Units.coe_map, Units.val_mul, Units.val_inv_eq_inv_val, ca,
         Units.val_mk0, MonoidHom.coe_coe, map_mul, map_inv₀, div_eq_mul_inv]
       ring
     rw [hexpr]

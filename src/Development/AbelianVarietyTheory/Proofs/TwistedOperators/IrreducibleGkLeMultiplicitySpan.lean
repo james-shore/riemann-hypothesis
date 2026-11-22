@@ -238,11 +238,11 @@ theorem IsPartMult.rTr_comp (hθ : IsInfFam (D := D) θ) {A : Submodule ℂ (GA 
   refine ⟨fun u => hA.k τ g hg _ (hF.mem u), fun τ' hτ' h hh hk u w hw => ?_, fun τ' hτ' Y hY u w hw => ?_,
     fun τ' hτ' u w => ?_⟩
   · have hne : τ ≠ τ' := fun e => hτ (e ▸ hτ')
-    simp only [LinearMap.compMultilinearMap_apply, rTrL, LinearMap.coe_mk, AddHom.coe_mk]
+    simp only [LinearMap.compMultilinearMap_apply, rTrL]
     rw [hF.equivK τ' hτ' h hh hk u w hw]
     exact (place_comm θ V hθ τ τ' hne).1 g hg.1 h hh _
   · have hne : τ ≠ τ' := fun e => hτ (e ▸ hτ')
-    simp only [LinearMap.compMultilinearMap_apply, rTrL, LinearMap.coe_mk, AddHom.coe_mk]
+    simp only [LinearMap.compMultilinearMap_apply, rTrL]
     rw [hF.equivLie τ' hτ' Y hY u w hw]
     exact ((place_comm θ V hθ τ τ' hne).2.1 g hg.1 Y hY _).symm
   · simp only [LinearMap.compMultilinearMap_apply, hF.other τ' hτ' u w, map_smul]

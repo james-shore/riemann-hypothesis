@@ -57,7 +57,6 @@ theorem lg_agree (G : LogFGL v d) {p : ℕ} (hp : p.Prime) {γ : Fin d → Fin d
       have hle : s ≤ m := by
         first
         | exact (Nat.pow_dvd_pow_iff_le_right hp.one_lt).mp hd
-        | exact (Nat.pow_dvd_pow_iff_le_right' ).mp hd
       omega
     rw [hzero, add_zero]
     apply Finset.sum_congr rfl
@@ -144,7 +143,6 @@ private theorem lgCurve_const_zero (G : LogFGL v d) (a : Fin d) :
   have h0 : HasSubst (fun _ : Fin d => (0 : PowerSeries C)) := by
     first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero (fun _ => by simp)
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_zero' (fun _ => by simp)
   ext j
   rw [map_zero]
   change MvPowerSeries.coeff (Finsupp.single () j) (subst _ (G.lg a)) = 0

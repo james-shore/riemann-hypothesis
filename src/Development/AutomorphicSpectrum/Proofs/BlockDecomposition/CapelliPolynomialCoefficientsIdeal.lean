@@ -12,7 +12,7 @@ def preserving (I : Submodule ℂ V) : Subalgebra ℂ (Module.End ℂ V) where
   mul_mem' {f g} hf hg F hF := hf _ (hg F hF)
   add_mem' {f g} hf hg F hF := I.add_mem (hf F hF) (hg F hF)
   algebraMap_mem' r F hF := by
-    simp only [Set.mem_setOf_eq, Module.algebraMap_end_apply]
+    simp only [Module.algebraMap_end_apply]
     exact I.smul_mem r hF
 
 lemma pow_apply_mem (D : Module.End ℂ V) (Wn : Submodule ℂ V) (hD : ∀ F ∈ Wn, D F ∈ Wn) :
@@ -78,7 +78,7 @@ lemma sumPoly_eval {A : Type} [CommRing A] (c : ℕ → A) (n : ℕ) (x : A) :
 
 lemma sumPoly_coeff {A : Type} [CommRing A] (c : ℕ → A) (n m : ℕ) :
     (sumPoly c n).coeff m = if m < n + 1 then c m else 0 := by
-  simp [sumPoly, finset_sum_coeff, coeff_C_mul_X_pow]
+  simp [sumPoly]
 
 lemma sumPoly_monic {A : Type} [CommRing A] (c : ℕ → A) (n : ℕ) (h : c n = 1) :
     (sumPoly c n).Monic := by

@@ -113,14 +113,14 @@ theorem tpt_ψ {T : Over S} (a b c : T ⟶ A) (h₁ : a ≫ sq A = b ≫ sq A) (
     show GlobalTheory.PolRoot.tri _ _ _ _ _ _ ≫ pullback.snd _ _ ≫ pullback.snd _ _ = c.left
     rw [GlobalTheory.PolRoot.tri, pullback.lift_snd_assoc, pullback.lift_snd])
   apply CartesianMonoidalCategory.hom_ext
-  · rw [Category.assoc, ψ, lift_fst, lift_fst, comp_dif]; congr 1 <;> assumption
-  · rw [Category.assoc, ψ, lift_snd, lift_snd, comp_dif]; congr 1 <;> assumption
+  · rw [Category.assoc, ψ, lift_fst, lift_fst, comp_dif]; congr 1
+  · rw [Category.assoc, ψ, lift_snd, lift_snd, comp_dif]; congr 1
 
 variable (A)
 
 theorem fst_δ : (pullback.fst _ _ : Triple (sq A).left ⟶ _) ≫ (δ A).left = (dif (t₁ A) (t₂ A) (t₁₂_sq A)).left := by
   have : (Over.homMk (pullback.fst _ _) rfl : tripO A ⟶ pairO A) ≫ δ A = dif (t₁ A) (t₂ A) (t₁₂_sq A) := by
-    rw [δ, comp_dif]; congr 1 <;> exact Over.OverMorphism.ext rfl
+    rw [δ, comp_dif]; congr 1
   exact congrArg CommaMorphism.left this
 
 theorem snd_δ : (pullback.snd _ _ : Triple (sq A).left ⟶ _) ≫ (δ A).left = (dif (t₂ A) (t₃ A) (t₂₃_sq A)).left := by

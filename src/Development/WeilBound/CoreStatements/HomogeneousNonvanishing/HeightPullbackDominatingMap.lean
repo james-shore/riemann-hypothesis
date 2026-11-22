@@ -303,7 +303,7 @@ theorem om_decomp {R : Type} [CommRing R] [IsLocalRing R] {X : Scheme.{0}} {x : 
         simp
       · intro a _ hne
         rw [LinearMap.smul_apply, hjd, hδ]
-        simp [Module.Basis.coord_apply, Finsupp.single_apply, hne.symm]
+        simp [Module.Basis.coord_apply, hne.symm]
       · simp
     have A : ∀ l, P (j (j₁ l)) = 0 := fun l => by
       have hl : l ∈ Submodule.span R (Set.range b) := by

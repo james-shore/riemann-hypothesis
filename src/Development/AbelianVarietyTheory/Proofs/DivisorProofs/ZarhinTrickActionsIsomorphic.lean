@@ -109,44 +109,44 @@ def lo (d : ℕ) (k : Fin 4 ⊕ Fin 4) : ord d :=
     split_ifs <;> simp⟩
 
 def up (d : ℕ) (k : Fin 4 ⊕ Fin 4) : ord d :=
-  ⟨single (Sum.inl 0) k 1, fun i j => by simp [single_apply]⟩
+  ⟨single (Sum.inl 0) k 1, fun i j => by simp⟩
 
 def ecol (d : ℕ) (k : Fin 4 ⊕ Fin 4) (i : Fin 4) : ord d :=
-  ⟨single k (Sum.inr i) 1, fun a b => by simp [single_apply]⟩
+  ⟨single k (Sum.inr i) 1, fun a b => by simp⟩
 
 def erow (d : ℕ) (i : Fin 4) (l : Fin 4 ⊕ Fin 4) : ord d :=
-  ⟨single (Sum.inl i) l 1, fun a b => by simp [single_apply]⟩
+  ⟨single (Sum.inl i) l 1, fun a b => by simp⟩
 
 theorem lo_inl (d : ℕ) (i : Fin 4) : lo d (Sum.inl i) = (d : ℤ) • erow d i (Sum.inl 0) := by
-  ext1; ext a b; rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel]
+  ext1; ext a b; rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, Matrix.smul_apply, lo, erow, single_apply, ite_and] <;> (try split_ifs)
 
 theorem up_inr (d : ℕ) (i : Fin 4) : up d (Sum.inr i) = polUnit d * ecol d (Sum.inr 0) i := by
-  ext1; ext a b; rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel]
+  ext1; ext a b; rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, up, ecol, polUnit, Matrix.mul_apply, single_apply, ite_and, Finset.sum_ite_eq] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul]
 
 theorem lo_idem_pol (d : ℕ) (k : Fin 4 ⊕ Fin 4) : lo d k * idem d * polUnit d = (d : ℤ) • ecol d k 0 := by
-  ext1; ext a b; rcases k with k | k <;> rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel]
+  ext1; ext a b; rcases k with k | k <;> rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, Matrix.smul_apply, lo, idem, ecol, polUnit, Matrix.mul_apply, single_apply, ite_and, Finset.sum_ite_eq] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul]
 
 theorem lo_idem_up_sum (d : ℕ) : ∑ k, lo d k * idem d * up d k = (d : ℤ) • (1 : ord d) := by
   apply Subtype.ext
   rw [AddSubmonoidClass.coe_finset_sum, AddSubgroupClass.coe_zsmul, OneMemClass.coe_one]
   ext a b
   rw [Matrix.sum_apply, Matrix.smul_apply, Matrix.one_apply]
-  rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel]
+  rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, lo, up, idem, Matrix.mul_apply, single_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq'] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul]
 
 theorem idem_lo (d : ℕ) (k : Fin 4 ⊕ Fin 4) : idem d * lo d k = if k = Sum.inl 0 then (d : ℤ) • idem d else 0 := by
   split_ifs with hk
-  · subst hk; ext1; ext a b; rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel]
-  · ext1; ext a b; rcases k with k | k <;> rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try (intros; subst_vars; simp_all))
+  · subst hk; ext1; ext a b; rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, Matrix.smul_apply, lo, idem, Matrix.mul_apply, single_apply, ite_and, Finset.sum_ite_eq] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul]
+  · ext1; ext a b; rcases k with k | k <;> rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, lo, idem, Matrix.mul_apply, single_apply, ite_and, Finset.sum_ite_eq] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul] <;> (try (intros; subst_vars; simp_all))
 
 theorem zarhinOrderUpperMatrixUnit_inl_zero (d : ℕ) : up d (Sum.inl 0) = idem d := rfl
 
 theorem mul_lo (d : ℕ) (o : ord d) (k : Fin 4 ⊕ Fin 4) :
     o * lo d k = ∑ j, (o : Matrix _ _ ℤ) j k • lo d j := by
-  ext1; ext a b; rcases k with k | k <;> rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel]
+  ext1; ext a b; rcases k with k | k <;> rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, lo, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq'] <;> (try split_ifs)
 
 theorem up_mul (d : ℕ) (o : ord d) (k : Fin 4 ⊕ Fin 4) :
     up d k * o = ∑ j, (o : Matrix _ _ ℤ) k j • up d j := by
-  ext1; ext a b; rcases k with k | k <;> rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try split_ifs) <;> simp_all [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, AddSubmonoidClass.coe_finset_sum, Matrix.smul_apply, Matrix.one_apply, lo, up, idem, ecol, erow, polUnit, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel]
+  ext1; ext a b; rcases k with k | k <;> rcases a with a | a <;> rcases b with b | b <;> simp [-zsmul_eq_mul, -nsmul_eq_mul, AddSubgroupClass.coe_zsmul, up, Matrix.mul_apply, single_apply, Fintype.sum_sum_type, Matrix.sum_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel] <;> (try split_ifs)
 
 end GlobalTheory.ZarhinUniqIso
 

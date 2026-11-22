@@ -473,7 +473,6 @@ theorem genVal_prim (hw : w + star w = 1)
       funext k
       fin_cases k <;> simp [l']
       abel
-    beta_reduce
     rw [show u.ex (z + l) = u.ex z by rw [u.ex_add, (u.ker l).2 l.2, _root_.mul_one], e₂,
       genVal_add_period hL ah t (isLift_prim hf z), norm_mul]
     refine (congrArg (· * _) ?_).trans (_root_.one_mul _)
@@ -527,7 +526,7 @@ theorem psi_weight_zero_linear_combination (oa : D.OAct O) {w : O} (hw : w + sta
     · exact jFK_eSec
   · simp [Fintype.prod_sum_type, tauLift, Fin.prod_univ_four, A.ct_smul]
     apply Additive.ofMul.injective
-    simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_pow]
+    simp only [ofMul_mul, ofMul_inv, ofMul_pow]
     abel
   · refine (genVal_mul_of (genVal_tau rig hψ _ _) (genVal_pull_of (jFK_xK hct x)
       (genVal_prim D.P.isLB lam ah hf hw t ht h₀ _))).trans

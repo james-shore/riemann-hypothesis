@@ -17,7 +17,7 @@ theorem evalDiag_T_step (w n : ℕ) (V : ℍ → ℂ[X]) (hV : ∀ τ, V τ ∈ 
     push_cast; ring
   rw [← hT τ, eval_polySlash w _ _ _ (hV _), hm, hc]
   · simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-      Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_cons, Matrix.head_fin_const]
+      Matrix.empty_val', Matrix.cons_val_fin_one]
     push_cast
     simp
   · rw [hm]

@@ -280,7 +280,7 @@ theorem exists_adapted : ∀ (K : Type) [Field K] (R : Subring K) [IsLocalRing R
   obtain ⟨p, hind, hfl⟩ := exists_cols R g H r le_rfl
   have hS : {a : Fin r | (a : ℕ) < r} = Set.univ := by
     ext a
-    simp [a.2]
+    simp
   rw [hS, linearIndepOn_univ] at hind
   obtain ⟨u, hu⟩ := isUnit_det_of_red R p hind
   have hdet : (R.subtype.mapMatrix (Matrix.of fun i a => p a i)).det =

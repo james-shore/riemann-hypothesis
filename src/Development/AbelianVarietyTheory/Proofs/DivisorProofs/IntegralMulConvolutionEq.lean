@@ -27,7 +27,7 @@ theorem integral_mul_convolution_eq (H : Type) [Group H] [TopologicalSpace H]
     refine Filter.Eventually.of_forall fun p => ?_
     simp only [Function.comp, G, inv_mul_cancel_left]
     by_cases h1 : κ p.1 = 0
-    · simp only [h1, zero_mul, norm_zero, mul_zero]; positivity
+    · simp only [h1, zero_mul, norm_zero]; positivity
     by_cases h2 : a p.2 = 0
     · simp only [h2, mul_zero, norm_zero]; rfl
     have hx : p.1 ∈ tsupport κ := subset_tsupport _ h1

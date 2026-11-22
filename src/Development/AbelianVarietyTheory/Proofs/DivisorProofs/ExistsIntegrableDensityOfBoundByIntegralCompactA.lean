@@ -110,6 +110,6 @@ theorem exists_integrable_density_of_bound_by_integral_compact : ∀ (X : Type) 
     refine integral_congr_ae ?_
     filter_upwards [hae] with x hx
     rw [hx]
-    simp [mul_comm]
+    simp
 
 end GlobalTheory

@@ -41,7 +41,7 @@ theorem counit_pw (Δ : H →ₐ[K] H ⊗[K] H) (ε : H →ₐ[K] K) (hL : Couni
         simp
       | add s t hs ht => simp only [map_add, hs, ht]
     have hx := DFunLike.congr_fun hL x
-    simp only [CounitL, AlgHom.comp_apply, AlgHom.id_apply] at hx
+    simp only [AlgHom.comp_apply, AlgHom.id_apply] at hx
     show ε (Algebra.TensorProduct.lmul' K (Algebra.TensorProduct.map (pw Δ ε n) (AlgHom.id K H) (Δ x))) = ε x
     rw [key, hx]
 
@@ -77,7 +77,7 @@ theorem pw_sub_mem (Δ : H →ₐ[K] H ⊗[K] H) (ε : H →ₐ[K] K) (hL : Coun
     have h1 := gen (pw Δ ε n) (counit_pw Δ ε hL hR n) (Δ x)
     have hLx := DFunLike.congr_fun hL x
     have hRx := DFunLike.congr_fun hR x
-    simp only [CounitL, CounitR, AlgHom.comp_apply, AlgHom.id_apply] at hLx hRx
+    simp only [AlgHom.comp_apply, AlgHom.id_apply] at hLx hRx
     rw [← comp_lmul_map_id ε (pw Δ ε n), ← comp_lmul_map_id ε e, hRx, hLx] at h1
     have hex : e x = 0 := by simp [he, hx0]
     rw [hex, add_zero] at h1

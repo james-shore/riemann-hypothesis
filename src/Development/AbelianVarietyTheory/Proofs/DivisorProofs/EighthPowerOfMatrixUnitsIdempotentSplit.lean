@@ -52,7 +52,7 @@ theorem matUnits_univ_of_idem : ∀ {S : Scheme.{0}} (G H : Over S) [GrpObj G] [
       · intro h; exact absurd (Finset.mem_univ b) h
     rw [← Category.assoc, hx, ← hri]
     simp only [Category.assoc]
-    simp only [reassoc_of% hir, hir, Category.comp_id]
+    simp only [hir, Category.comp_id]
   · intro z hz
     calc z = z ≫ ∏ b, E b b := by rw [hsum, Category.comp_id]
       _ = ∏ b, z ≫ E b b := comp_prod' _ _ _

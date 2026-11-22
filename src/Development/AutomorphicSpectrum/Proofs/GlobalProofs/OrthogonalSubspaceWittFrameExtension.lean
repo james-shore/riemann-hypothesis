@@ -48,7 +48,7 @@ theorem exists_basis_of_duality {E : Type} [Field E] {n m : ℕ} (X Y : Matrix (
   have hcol : ∀ i, col i ∈ LinearMap.range C0.mulVecLin := fun i =>
     ⟨Pi.single i 1, by
       funext k
-      simp [Matrix.mulVecLin_apply, C0]⟩
+      simp [C0]⟩
   have hX : ∀ (j : Fin m), (fun k => X k j) ∈ LinearMap.range C0.mulVecLin := by
     intro j
     have hi : j.val < n := by have := j.2; omega
@@ -93,7 +93,7 @@ theorem exists_basis_of_duality {E : Type} [Field E] {n m : ℕ} (X Y : Matrix (
       have eBY : ∀ w, B *ᵥ (Y *ᵥ w) = w := fun w => by rw [Matrix.mulVec_mulVec, hBY, Matrix.one_mulVec]
       rw [hK, hmem]
       constructor
-      · simp only [Matrix.mulVec_sub, eAX, eAY, sub_self, sub_zero]
+      · simp only [Matrix.mulVec_sub, eAX, eAY, sub_self]
       · simp only [Matrix.mulVec_sub, eBX, eBY, sub_self, sub_zero]
     have h3 := hKr ⟨_, hk⟩
     have h1 := hmv X hX (A *ᵥ v)

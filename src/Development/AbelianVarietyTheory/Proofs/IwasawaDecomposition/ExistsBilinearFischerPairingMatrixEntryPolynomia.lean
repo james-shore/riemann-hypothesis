@@ -24,7 +24,7 @@ theorem wt_add_single (α : σ →₀ ℕ) (v : σ) : wt (α + Finsupp.single v 
     apply Finset.prod_congr rfl
     intro x hx
     have hxv : x ≠ v := Finset.ne_of_mem_erase hx
-    simp [Finsupp.single_apply, Ne.symm hxv]
+    simp [Ne.symm hxv]
   rw [h3]
   simp only [Finsupp.add_apply, Finsupp.single_eq_same, Nat.factorial_succ]
   push_cast
@@ -65,7 +65,7 @@ theorem pderiv_lin_X (A : σ → σ → ℂ) (v u : σ) : pderiv v (lin A (X u))
   rw [lin_X, map_sum, Finset.sum_eq_single v]
   · simp [smul_eq_C_mul]
   · intro w _ hw
-    simp [pderiv_X, Pi.single_apply, hw]
+    simp [pderiv_X, hw]
   · simp
 
 theorem pderiv_lin (A : σ → σ → ℂ) (v : σ) (Q : MvPolynomial σ ℂ) :
@@ -82,7 +82,7 @@ theorem pderiv_lin (A : σ → σ → ℂ) (v : σ) (Q : MvPolynomial σ ℂ) :
     rw [Finset.sum_eq_single u]
     · simp [smul_eq_C_mul, mul_comm]
     · intro w _ hw
-      simp [pderiv_X, Pi.single_apply, hw, Ne.symm hw]
+      simp [pderiv_X, Ne.symm hw]
     · simp
 
 theorem coeff_zero_lin (A : σ → σ → ℂ) (Q : MvPolynomial σ ℂ) : coeff 0 (lin A Q) = coeff 0 Q := by

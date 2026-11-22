@@ -61,7 +61,7 @@ theorem exists_evC_eq_of_relations [Fintype ι] [DecidableEq ι] (Γ : Set (Matr
   refine ⟨Matrix.of fun i j => x (i, j), funext fun k => ?_⟩
   have hk : Φ k - C (z k) ∈ M := hIM (Ideal.subset_span ⟨k, rfl⟩)
   rw [hx, mem_vanishingIdeal_singleton_iff] at hk
-  simp only [map_sub, aeval_C, Algebra.algebraMap_self, RingHom.id_apply, coe_aeval_eq_eval] at hk
+  simp only [map_sub, aeval_C, Algebra.algebraMap_self, RingHom.id_apply] at hk
   have : evC (Φ k) (Matrix.of fun i j => x (i, j)) = aeval x (Φ k) := rfl
   rw [this]
   exact (sub_eq_zero.1 hk).symm

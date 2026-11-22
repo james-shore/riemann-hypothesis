@@ -92,7 +92,7 @@ theorem exists_quot_basis {r : ℕ} (x : Fin r → V)
     rw [map_sum, Finset.sum_apply, Fintype.sum_prod_type, Finset.sum_eq_single j]
     · simp [hφB]
     · intro j' _ hj'
-      simp [hφB, Pi.single_apply, Ne.symm hj']
+      simp [hφB, Ne.symm hj']
     · simp
 
 theorem isLatOf_quot {C : ACurve K} (i : C.I) {r : ℕ} {x : Fin r → V}
@@ -199,7 +199,7 @@ private theorem vmap_basis_linearIndependent_and_span {Ω : Type} [Field Ω] (A 
     simpa [Function.comp_def, hL] using this
   refine ⟨hK, Submodule.eq_top_of_finrank_eq ?_⟩
   rw [finrank_span_eq_card hK, ← Module.finrank_eq_card_basis (Basis.mk hli hsp.ge)]
-  simp [Module.finrank_prod, Module.finrank_fin_fun]
+  simp [Module.finrank_prod]
 
 theorem isHBasis_trans
     {x : Fin r → (Fin d → (C.v i).valuationSubring) × (Fin d → (C.v i).valuationSubring)}

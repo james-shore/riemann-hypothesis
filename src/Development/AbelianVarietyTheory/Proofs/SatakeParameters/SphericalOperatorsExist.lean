@@ -131,8 +131,6 @@ theorem esymm_inv_algSat {q : ℕ} (hq : q ≠ 0) {a : ℕ} {B : Multiset ℂˣ}
   | exact @_root_.GlobalTheory.ElementarySymmetricInverse.esymm_inv_algSat
   | exact _root_.GlobalTheory.ElementarySymmetricInverse.esymm_inv_algSat
   | (apply _root_.GlobalTheory.ElementarySymmetricInverse.esymm_inv_algSat <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ElementarySymmetricInverse.esymm_inv_algSat <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ElementarySymmetricInverse.esymm_inv_algSat <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ElementarySymmetricInverse.esymm_inv_algSat ..)
 
 theorem sphOps : SphOps := by

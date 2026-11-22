@@ -88,8 +88,6 @@ theorem lhs_sum (A : FinHolAtlas (e + 1) X) (L : LocPot X) (s : X → X → ℂ)
         first
           | exact_mod_cast (le_top : (2 : ℕ∞) ≤ ⊤)
           | exact WithTop.coe_le_coe.2 le_top
-          | (norm_num; done)
-          | (simp; done)
       exact h.of_le hle
     have key : ∀ F G : (Fin (e + 1) → ℂ) → ℝ, ContDiffAt ℝ 2 F y → ContDiffAt ℝ 2 G y →
         maDens (Fin.cons (fun w => F w + G w) ψs) y =
@@ -149,7 +147,6 @@ theorem lhs_sum (A : FinHolAtlas (e + 1) X) (L : LocPot X) (s : X → X → ℂ)
       rw [hdens j' y hy, Finset.mul_sum]
     first
       | exact setIntegral_congr_fun (A.chart j').open_target.measurableSet heq
-      | exact setIntegral_congr (A.chart j').open_target.measurableSet heq
   · simp
 
 theorem pl_good (A : FinHolAtlas (e + 1) X) (L : LocPot X) (s : X → X → ℂ) {r : ℕ} (m : Fin r → ℕ)

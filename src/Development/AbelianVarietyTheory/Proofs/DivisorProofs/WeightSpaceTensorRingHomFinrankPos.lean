@@ -45,7 +45,7 @@ theorem weightSpace_tensor_ringHom_pos : ∀ (k : Type) [Field k] [IsAlgClosed k
       (Algebra.TensorProduct.includeRight : C →ₐ[ℤ] k ⊗[ℤ] C).toRingHom) c) - χ c • (1 : Module.End k (k ⊗[ℤ] C))
       = Algebra.lmul k (k ⊗[ℤ] C) x := by
     ext y
-    simp [x, sub_mul, Algebra.smul_def]
+    simp [x, Algebra.smul_def]
   rw [hf, ← map_pow]
   simpa using key x hxm
 

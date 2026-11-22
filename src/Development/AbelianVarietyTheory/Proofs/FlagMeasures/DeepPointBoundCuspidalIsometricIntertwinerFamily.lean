@@ -25,7 +25,6 @@ theorem one_mem_NA (I : AutInst) (W : Submodule I.E (Fin I.n → I.E)) : (1 : I.
   · have hdet : IsUnit (I.P v).det := by
       first
       | exact (Matrix.isUnit_iff_isUnit_det _).mp (I.P_unit v)
-      | exact I.P_unit v
     have hg : I.P v * uMat ((1 : I.GA).1 v) * (I.P v)⁻¹ = 1 := by
       rw [show uMat ((1 : I.GA).1 v) = 1 from rfl, mul_one]
       exact Matrix.mul_nonsing_inv _ hdet
@@ -38,8 +37,6 @@ theorem one_mem_NA (I : AutInst) (W : Submodule I.E (Fin I.n → I.E)) : (1 : I.
   · have hf : I.fmat (1 : I.GA).2 = 1 := by
       first
       | rfl
-      | simp
-      | exact map_one _
     rw [hf]
     unfold AutInst.InUnipRad
     simp

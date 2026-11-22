@@ -107,7 +107,7 @@ theorem exists_equiv_outerTensor (hirr : (prodRep ρ₁ ρ₂ hcomm).IsIrreducib
   set Tp : Bool → Set (End ℂ W) := fun i => if i then range T₁ else range T₂
   have hcommTp : ∀ i j, i ≠ j → ∀ s ∈ Tp i, ∀ t ∈ Tp j, Commute s t := by
     intro i j hij s hs t ht
-    cases i <;> cases j <;> simp only [Tp, if_true, if_false] at hs ht
+    cases i <;> cases j <;> simp only [Tp, if_true] at hs ht
     · exact absurd rfl hij
     · obtain ⟨b, rfl⟩ := hs
       obtain ⟨a, rfl⟩ := ht

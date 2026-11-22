@@ -29,7 +29,7 @@ theorem pe_iso (hk : 1 ≤ k) (a b : Fin (r + 1)) :
   · rw [if_neg ha, inner_smul_left, inner_add_left, inner_bvec, inner_bvec, hpk_mulVec, hpk_mulVec,
       phiV_apply, phiV_apply]
     simp only [sigI_val, sgnI, starRingEnd_apply]
-    split_ifs <;> first | rfl | (exfalso; omega) | ring | simp
+    split_ifs <;> first | rfl | (exfalso; omega) | ring
 
 theorem phiV'_linInd' (hk : 1 ≤ k) : LinearIndependent ℂ (phiV' k r) :=
   (pe_orth hk).linearIndependent.map' (WithLp.linearEquiv 2 ℂ (Fin (2 * r + k + 1) → ℂ)).toLinearMap

@@ -88,7 +88,7 @@ theorem factorAd_commutator (k : ℕ) (i : Fin k) (a b c d : Fin n) :
   generalize κ i = p <;>
   obtain ⟨p1, p2⟩ := p <;>
   simp only <;>
-  split_ifs <;> subst_vars <;> first | rfl | abel1 | (simp_all <;> abel1) | simp_all
+  split_ifs <;> subst_vars <;> first | rfl | abel1 | (simp_all)
 
 end BigRepA
 section BigRepB

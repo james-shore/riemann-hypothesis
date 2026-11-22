@@ -47,7 +47,7 @@ theorem exists_frameIdem_eq_pre_mul (s : Fin r) {β : FrameIx r} (h : frameLev s
       by_cases hj : j = b
       · subst hj
         simp [P, pre, Matrix.mul_apply, Matrix.single_apply]
-      · simp [P, Matrix.mul_apply, Matrix.single_apply, Ne.symm hj]
+      · simp [P, Matrix.mul_apply, Ne.symm hj]
     simp only [frameIdem]
     rw [e, Matrix.mul_assoc]
   · by_cases hb : b ≤ s <;> simp [frameLev, hb] at h
@@ -69,7 +69,7 @@ theorem exists_frameIdem_eq_mul_form (s : Fin r) {α : FrameIx r} (h : frameLev 
       by_cases hi : i = a
       · subst hi
         simp [P, Matrix.mul_apply, Matrix.single_apply]
-      · simp [P, Matrix.mul_apply, Matrix.single_apply, Ne.symm hi]
+      · simp [P, Matrix.mul_apply, Ne.symm hi]
     simp only [frameIdem]
     rw [Matrix.mul_assoc, e, Matrix.mul_assoc]
 
@@ -92,7 +92,7 @@ theorem frameIdem_mul_pre (s : Fin r) {α : FrameIx r} (h : frameLev s α = 1) :
       rw [Matrix.mul_assoc _ _ X, hyx, Matrix.mul_one]
     ext k j
     simp only [frameIdem, this, Matrix.submatrix_apply, id]
-    simp [Matrix.mul_apply, Matrix.single_apply, (castLE_ne hi j).symm]
+    simp [Matrix.mul_apply, (castLE_ne hi j).symm]
   · have : Y * (single i i (1 : E) : Matrix (Fin r) (Fin r) E) * (cT S X * J) * X = 0 := by
       rw [Matrix.mul_assoc _ _ X, hxx, Matrix.mul_zero]
     simp only [frameIdem, this]
@@ -123,7 +123,7 @@ theorem form_mul_frameIdem (s : Fin r) {β : FrameIx r} (h : frameLev s β = 1) 
       rw [Matrix.mul_assoc Y, ← Matrix.mul_assoc _ Y, hxy, Matrix.one_mul]
     ext j l
     simp only [frameIdem, this, Matrix.submatrix_apply, id]
-    simp [Matrix.mul_apply, Matrix.single_apply, (castLE_ne hi j).symm]
+    simp [Matrix.mul_apply, (castLE_ne hi j).symm]
 
 end Frame
 

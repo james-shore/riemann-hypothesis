@@ -39,7 +39,7 @@ def normHom : B.Aˣ →* fixG B where
     rw [map_mul, B.σ_σ, mul_comm]⟩
   map_one' := by
     apply Subtype.ext; apply Units.ext
-    simp [sigU_val]
+    simp
   map_mul' := by
     intro a b
     apply Subtype.ext; apply Units.ext

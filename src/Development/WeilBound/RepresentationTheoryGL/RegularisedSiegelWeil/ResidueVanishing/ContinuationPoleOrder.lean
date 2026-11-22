@@ -84,7 +84,7 @@ theorem continuation_pole_order : PositivityTheory.Rg.Rsw.Kplug.K2 := by
       have hzs : z - s₀ ≠ 0 := sub_ne_zero.mpr (ne_of_mem_sphere hz hε.ne')
       obtain ⟨r, hr⟩ : ∃ r, m = r + j + 1 := ⟨m - 1 - j, by omega⟩
       have hr' : m - 1 - j = r := by omega
-      simp only [smul_eq_mul, hdeval, hF, hr', hr]
+      simp only [smul_eq_mul, hdeval, hF, hr]
       by_cases hqz : q.eval z = 0
       · simp [hqz]
       · generalize z - s₀ = w at hzs ⊢

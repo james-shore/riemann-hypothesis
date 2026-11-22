@@ -22,7 +22,7 @@ theorem infinitePlace_eq_of_embedding_comp_algebraMap_eq (F E : Type) [Field F] 
   obtain ⟨b, hb⟩ := mkAlg (ComplexEmbedding.conjugate w₁.embedding) (by
     ext r
     have := RingHom.congr_fun hτreal r
-    simp only [RingHom.comp_apply, ComplexEmbedding.conjugate_coe_eq, Function.comp_apply]
+    simp only [RingHom.comp_apply, ComplexEmbedding.conjugate_coe_eq]
     simpa [ComplexEmbedding.conjugate_coe_eq, hτ] using this)
   obtain ⟨c, hc⟩ := mkAlg w₂.embedding h.symm
   have hab : a ≠ b := by

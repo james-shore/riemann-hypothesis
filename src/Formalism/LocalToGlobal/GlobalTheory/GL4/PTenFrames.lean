@@ -36,10 +36,10 @@ theorem famOf_sumBasis (coE : V ≃ₗ[K] (Cl → W)) (BK : Basis J0 K W) (φ : 
   have hs : ∀ (f : J0 → W), Pi.single (M := fun _ : Cl => W) c (∑ i', f i') = ∑ i', Pi.single c (f i') := by
     intro f
     exact (map_sum (LinearMap.single K (fun _ : Cl => W) c) f Finset.univ)
-  simp only [famOf, sumBasis_apply]
+  simp only [famOf]
   rw [Fintype.sum_prod_type]
   simp only [Matrix.blockDiagonal_apply, ite_smul, zero_smul]
-  simp only [Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+  simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true]
   rw [hφ, hs, map_sum]
   simp only [Pi.single_smul, map_smul, sumBasis_apply]
 

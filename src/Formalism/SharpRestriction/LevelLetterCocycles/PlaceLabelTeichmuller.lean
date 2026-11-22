@@ -119,13 +119,11 @@ theorem tens_one : tens (fun i => (1 : MonoidAlgebra ℂ (G i))) = 1 := by
     rw [show (1 : MonoidAlgebra ℂ (G j)).coeff = Finsupp.single 1 1 by
       first
       | rfl
-      | exact SkewMonoidAlgebra.ofCoeff_eq_one.mp rfl
       | exact MonoidAlgebra.ofCoeff_eq_one.mp rfl, Finsupp.single_apply]
   have h2 : (1 : MonoidAlgebra ℂ (∀ i, G i)).coeff g = if (1 : ∀ i, G i) = g then 1 else 0 := by
     rw [show (1 : MonoidAlgebra ℂ (∀ i, G i)).coeff = Finsupp.single 1 1 by
       first
       | rfl
-      | exact SkewMonoidAlgebra.ofCoeff_eq_one.mp rfl
       | exact MonoidAlgebra.ofCoeff_eq_one.mp rfl, Finsupp.single_apply]
   simp only [h1, h2]
   by_cases hg : g = 1
@@ -144,7 +142,7 @@ theorem sum_tens {P : ι → Type} [∀ i, Fintype (P i)] [DecidableEq ι]
   have hs : ∀ {M κ : Type} (s : Finset κ) (f : κ → MonoidAlgebra ℂ M) (x : M),
       (∑ j ∈ s, f j).coeff x = ∑ j ∈ s, (f j).coeff x :=
     fun {M κ} s f x => map_sum (AddMonoidHom.mk' (fun y : MonoidAlgebra ℂ M => y.coeff x)
-      (fun y z => by first | rfl | simp)) f s
+      (fun y z => by first | rfl)) f s
   simp only [hs, tens_coeff]
   rw [Fintype.prod_sum]
 
@@ -162,7 +160,7 @@ theorem tens_mul_plc (a : ∀ i, MonoidAlgebra ℂ (G i)) (i : ι) (b : MonoidAl
   by_cases hj : j = i
   · subst hj
     simp
-  · simp [Function.update_apply, hj]
+  · simp [hj]
 
 theorem plc_central (i : ι) (a : MonoidAlgebra ℂ (G i)) (h : ∀ x, a * x = x * a)
     (x : MonoidAlgebra ℂ (∀ i, G i)) : plc i a * x = x * plc i a := by
@@ -171,7 +169,7 @@ theorem plc_central (i : ι) (a : MonoidAlgebra ℂ (G i)) (h : ∀ x, a * x = x
   by_cases hj : j = i
   · subst hj
     simpa using h y
-  · simp [Function.update_apply, hj]
+  · simp [hj]
 
 theorem mapDomain_mulSingle (i : ι) (a : MonoidAlgebra ℂ (G i)) :
     MonoidAlgebra.ofCoeff (Finsupp.mapDomain (fun h => Pi.mulSingle (M := G) i h) a.coeff) = plc i a := by
@@ -186,7 +184,6 @@ theorem mapDomain_mulSingle (i : ι) (a : MonoidAlgebra ℂ (G i)) :
     rw [show (1 : MonoidAlgebra ℂ (G j)).coeff = Finsupp.single 1 1 by
       first
       | rfl
-      | exact SkewMonoidAlgebra.ofCoeff_eq_one.mp rfl
       | exact MonoidAlgebra.ofCoeff_eq_one.mp rfl, Finsupp.single_apply]
   have hinj : Function.Injective (fun h : G i => Pi.mulSingle (M := G) i h) := Pi.mulSingle_injective i
   by_cases hg : ∀ j, j ≠ i → g j = 1
@@ -200,14 +197,14 @@ theorem mapDomain_mulSingle (i : ι) (a : MonoidAlgebra ℂ (G i)) :
     · simp
     · intro j hj
       rw [Pi.mulSingle_eq_of_ne hj]
-      first | rw [Function.update_of_ne hj] | rw [Function.update_noteq hj]
+      first | rw [Function.update_of_ne hj]
       rw [h1, if_pos rfl]
   · push_neg at hg
     obtain ⟨j, hj, hgj⟩ := hg
     rw [Finsupp.mapDomain_notin_range]
     · symm
       refine Finset.prod_eq_zero (Finset.mem_univ j) ?_
-      first | rw [Function.update_of_ne hj] | rw [Function.update_noteq hj]
+      first | rw [Function.update_of_ne hj]
       rw [h1]
       exact if_neg (Ne.symm hgj)
     · rintro ⟨h, rfl⟩
@@ -295,7 +292,7 @@ theorem onC_eGood (hid : ∀ i p, E i p * E i p = E i p) (hcen : ∀ i p a, E i 
       simp only [hid]
       congr 1
       funext j
-      by_cases hj : j = i <;> simp [Function.update_apply, hj]
+      by_cases hj : j = i <;> simp [hj]
     have hcp : plc i (E i (p i)) ∈ Subalgebra.center ℂ (MonoidAlgebra ℂ (∀ i, G i)) := by
       rw [Subalgebra.mem_center_iff]
       intro y
@@ -397,7 +394,7 @@ variable [DecidableEq (Σ k : Fin 2, D.nd.PlG k)]
 
 private theorem coeff_sum_lemma_3 {M ι : Type} (s : Finset ι) (f : ι → MonoidAlgebra ℂ M) (g : M) :
     (∑ i ∈ s, f i).coeff g = ∑ i ∈ s, (f i).coeff g :=
-  map_sum (AddMonoidHom.mk' (fun x : MonoidAlgebra ℂ M => x.coeff g) (fun x y => by first | rfl | simp)) f s
+  map_sum (AddMonoidHom.mk' (fun x : MonoidAlgebra ℂ M => x.coeff g) (fun x y => by first | rfl)) f s
 
 theorem e0_eq : D.ntypes.e0 = eGood (ESer D) (goodVec D) := by
   classical
@@ -407,11 +404,10 @@ theorem e0_eq : D.ntypes.e0 = eGood (ESer D) (goodVec D) := by
       if goodVec D p then ∏ kv, (ESer D kv (p kv)).coeff (g kv) else 0 := by
     first
     | rfl
-    | (unfold Formalism.BasicNotions.NTypes.e0; rfl)
   rw [h1, finsum_eq_sum_of_fintype]
   unfold eGood
   rw [coeff_sum_lemma_3]
-  refine Finset.sum_congr (by first | rfl | (congr 1; exact Subsingleton.elim _ _) | convert rfl) (fun p _ => ?_)
+  refine Finset.sum_congr (by first | rfl) (fun p _ => ?_)
   split_ifs <;> rfl
 
 theorem atPlace_eq (k : Fin 2) (v : D.nd.PlG k) (a : MonoidAlgebra ℂ (GL (Fin D.R.r) (ZMod (D.host.g k)))) :
@@ -420,7 +416,7 @@ theorem atPlace_eq (k : Fin 2) (v : D.nd.PlG k) (a : MonoidAlgebra ℂ (GL (Fin 
   unfold Formalism.MainNotions.ArithmeticCylinders.atPlace
   convert mapDomain_mulSingle
     (G := fun kv : (Σ k : Fin 2, D.nd.PlG k) => GL (Fin D.R.r) (ZMod (D.host.g kv.1))) ⟨k, v⟩ a
-    <;> first | rfl | exact Subsingleton.elim _ _
+    <;> first | rfl
 
 end Record
 
@@ -492,7 +488,6 @@ theorem pp_arith (l n : ℕ) (hl : l.Prime) (hn : 0 < n) :
   have htot : 0 < Nat.totient Q := by
     first
     | exact Nat.totient_pos.mpr hQpos
-    | exact Nat.totient_pos hQpos
   rw [← hPQ]
   refine (Nat.modEq_and_modEq_iff_modEq_mul hcop).mp ⟨?_, ?_⟩
   · have h1 : P ∣ P * ((P : ZMod Q)⁻¹).val := dvd_mul_right _ _
@@ -501,7 +496,6 @@ theorem pp_arith (l n : ℕ) (hl : l.Prime) (hn : 0 < n) :
   · have h1 : P * ((P : ZMod Q)⁻¹).val ≡ 1 [MOD Q] := by
       first
       | rw [← ZMod.natCast_eq_natCast_iff]
-      | rw [← ZMod.eq_iff_modEq_nat]
       rw [Nat.cast_mul, ZMod.natCast_zmod_val, Nat.cast_one]
       exact ZMod.coe_mul_inv_eq_one P hcop
     exact h1.trans (Nat.ModEq.pow_totient hcop).symm
@@ -545,11 +539,8 @@ theorem bigM_pos (hg : 2 ≤ g) (N : ℕ) : 0 < bigM g N := by
   have h2 : 1 < g ^ d := by
     first
     | exact Nat.one_lt_pow (by omega) (by omega)
-    | exact Nat.one_lt_pow _ _ (by omega) (by omega)
-    | exact one_lt_pow₀ (by omega) (by omega)
   first
   | exact Nat.sub_pos_of_lt h2
-  | omega
 
 theorem root_pow {N : ℕ} {f : (ZMod g)[X]} (h0 : f.coeff 0 ≠ 0) (hd : f.natDegree = N)
     {x : Formalism.CyclotomicNorms.Fbar g} (hx : x ∈ Formalism.CyclotomicNorms.rootsBar f) : x ^ bigM g N = 1 := by
@@ -571,7 +562,6 @@ theorem root_pow {N : ℕ} {f : (ZMod g)[X]} (h0 : f.coeff 0 ≠ 0) (hd : f.natD
       g ^ (minpoly (ZMod g) x).natDegree := by
     first
     | rw [Module.card_eq_pow_finrank (K := ZMod g), ZMod.card, IntermediateField.adjoin.finrank hint]
-    | rw [card_eq_pow_finrank (K := ZMod g), ZMod.card, IntermediateField.adjoin.finrank hint]
   have hy : (⟨x, IntermediateField.mem_adjoin_simple_self (ZMod g) x⟩ :
       IntermediateField.adjoin (ZMod g) ({x} : Set (Formalism.CyclotomicNorms.Fbar g))) ≠ 0 := by
     intro h

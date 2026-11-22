@@ -63,7 +63,7 @@ theorem rowMatrix_holds : RowMatrix := by
   have hA : (fun y => (∑ i, (innerSL ℂ (e i)).smulRight (f i y)) v) =
       fun y => ∑ i ∈ Finset.univ, (⟪e i, v⟫_ℂ) • f i y := by
     funext y
-    simp [ContinuousLinearMap.sum_apply]
+    simp
   obtain ⟨h1, h2, h3⟩ := RowLin.sum_sec μ E hLg hU hR hCl hOps f₀ hf₀.1 f (fun i => (hf i).1)
     (fun i => (hf i).2.1) (fun i => ⟪e i, v⟫_ℂ) Finset.univ
   show Row μ E F h v (fun y => (∑ i, (innerSL ℂ (e i)).smulRight (f i y)) v)

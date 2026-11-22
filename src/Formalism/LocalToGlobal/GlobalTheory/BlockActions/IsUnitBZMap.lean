@@ -88,7 +88,7 @@ theorem base_eq (Tf : FormsTiedSym D u Ch chOf) (hL : Formalism.L2.Rows.LowerMap
       have e1 : (fun τ => (1 : D.what₂.Tau → Matrix (Fin (D.R.N D.R.m)) (Fin (D.R.N D.R.m)) ℂ) τ * M' τ) = M' :=
         funext fun τ => by simp
       rw [e1, fnOf_change _ _ (mZ u Tf.til.z0) M' hmZ, hmapPL]
-      simp only [map_smul, LinearMap.smul_apply, Pi.smul_apply, smul_eq_mul, Units.val_inv_eq_inv_val]
+      simp only [map_smul, Pi.smul_apply, smul_eq_mul, Units.val_inv_eq_inv_val]
       rfl
     · intro τ
       simp only [Equiv.apply_symm_apply]

@@ -221,7 +221,7 @@ theorem GlobalTheory.CompanionTheory.AvgFree.nearNF_cover : ∀ (F E : Type) [Fi
   refine ⟨G, ?_, ?_, ?_⟩
   · have h1 : G.card ≤ n * Rep.card ^ n := by
       refine Finset.card_image_le.trans ?_
-      simp [Finset.card_product, Fintype.card_piFinset_const]
+      simp [Finset.card_product]
     have h2 : (G.card : ℝ≥0) ≤ n * (Rep.card : ℝ≥0) ^ n := by exact_mod_cast h1
     refine h2.trans ?_
     rw [pow_mul, inv_pow]

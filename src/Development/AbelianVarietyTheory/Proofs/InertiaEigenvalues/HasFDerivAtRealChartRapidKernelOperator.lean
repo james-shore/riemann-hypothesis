@@ -242,7 +242,7 @@ theorem hasFDerivAt_chart_kernel : ∀ (E : Type) [Field E] [NumberField E] [IsT
       ContinuousOn.measurable_piecewise hΨc continuousOn_const isOpen_invSet.measurableSet
     have e : (fun x => Ψ (Γ x)) = (invSet E a).piecewise Ψ 0 ∘ Γ := by
       funext x
-      simp [Set.piecewise, Γ, val_mem_invSet (γ x)]
+      simp [Γ, val_mem_invSet (γ x)]
     have h3 : AEStronglyMeasurable (fun x => Ψ (Γ x)) ν := by
       rw [e]; exact (hm.comp hΓm).aestronglyMeasurable
     exact hk.aestronglyMeasurable.smul h3

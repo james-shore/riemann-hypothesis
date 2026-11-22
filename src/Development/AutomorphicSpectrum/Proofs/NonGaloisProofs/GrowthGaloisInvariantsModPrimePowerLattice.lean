@@ -25,7 +25,7 @@ theorem card_quot_pow {O : Type} [CommRing O] [IsDomain O] (ϖ : O) (hϖ : ϖ �
     have : Subsingleton (O ⧸ Ideal.span {ϖ ^ 0}) := by
       rw [pow_zero, Ideal.span_singleton_one]
       exact Ideal.Quotient.subsingleton_iff.mpr rfl
-    simp [Nat.card_of_subsingleton (0 : O ⧸ Ideal.span {ϖ ^ 0})]
+    simp
   | succ n ih =>
     let f : O →+ O := AddMonoidHom.mulLeft (ϖ ^ n)
     have hle : Submodule.toAddSubgroup (Ideal.span {ϖ ^ (n + 1)} : Ideal O) ≤
@@ -160,7 +160,7 @@ theorem smul_eq_zero_of_ne [IsDomain O] [IsFractionRing O LL] {s : O} (hs : s �
 
 theorem exists_smul_mem [IsDomain O] [IsFractionRing O LL] (v : A.V) :
     ∃ a : O, a ≠ 0 ∧ a • v ∈ LA.T :=
-  by apply _root_.UpperTheory.Reformulated.B.ExistsSmulMemBis.exists_smul_mem <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.ExistsSmulMemBis.exists_smul_mem
 
 def fixT : Submodule O ↥LA.T := ((H0V A.ρ).restrictScalars O).comap LA.T.subtype
 

@@ -63,7 +63,7 @@ theorem bas_apply (i : Fin l) : (bas hex i : R) = u ^ (i : ℕ) := by
   change (∑ j : Fin l, u ^ (j : ℕ) * φ ((Pi.single i (1 : R) : Fin l → R) j) : R) = u ^ (i : ℕ)
   rw [Finset.sum_eq_single i]
   · simp
-  · intro j _ hj; simp [Pi.single_apply, hj]
+  · intro j _ hj; simp [hj]
   · simp
 
 end Main
@@ -186,13 +186,13 @@ theorem psi_single [NeZero l] (j : ℕ) (hj : j < l) (a : R) :
   have e1 : (u ^ j * φ a : R) = expL φ u l (Pi.single (⟨j, hj⟩ : Fin l) a) := by
     rw [expL_apply, Finset.sum_eq_single (⟨j, hj⟩ : Fin l)]
     · simp
-    · intro b _ hb; simp [Pi.single_apply, hb]
+    · intro b _ hb; simp [hb]
     · simp
   unfold psi
   rw [e1, repr_expL]
   by_cases hj0 : j = 0
   · subst hj0; simp
-  · simp [Pi.single_apply, Fin.ext_iff, hj0, Ne.symm hj0]
+  · simp [Fin.ext_iff, hj0, Ne.symm hj0]
 
 theorem psi_gam [NeZero l] (hu : u ^ l = φ u) (γ γi : R →+* R) (h1 : ∀ a, γ (γi a) = a)
     (h2 : ∀ a, γi (γ a) = a) (hφγ : ∀ a, φ (γ a) = γ (φ a))

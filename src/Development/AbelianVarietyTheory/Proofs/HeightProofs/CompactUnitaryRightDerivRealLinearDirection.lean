@@ -67,7 +67,7 @@ def entryDerStar (ε : Fin n → Bool) (k : KG ε) (a b : Fin n) : Mx n →ₗ[�
     simp only [Matrix.add_apply, mul_add, Finset.sum_add_distrib, star_add]
   map_smul' r Y := by
     simp only [Matrix.smul_apply, RingHom.id_apply, Complex.real_smul]
-    simp only [star_sum, Finset.mul_sum, star_mul', Complex.star_def, map_mul, Complex.conj_ofReal]
+    simp only [star_sum, Finset.mul_sum, star_mul', Complex.star_def, Complex.conj_ofReal]
     refine Finset.sum_congr rfl fun l _ => ?_
     ring
 

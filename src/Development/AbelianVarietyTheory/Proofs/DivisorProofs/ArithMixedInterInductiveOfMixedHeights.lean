@@ -82,7 +82,7 @@ theorem arMix_of_mixHt : ArchInteg →
     rw [Fin.prod_univ_succ]
     simp only [Fin.cons_zero, Fin.cons_succ, Finset.prod_const, Finset.card_univ, Fintype.card_fin, lin_intCast,
       Fintype.sum_option, m₀, m₁, Option.elim, zero_smul, zero_add, one_smul]
-    simp only [Pi.zero_apply, Int.cast_zero, Int.cast_one, zsmul_eq_mul, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, mul_one, one_mul]
+    simp only [Pi.zero_apply, Int.cast_zero, zsmul_eq_mul, zero_mul, Finset.sum_const_zero, add_zero]
     ring
   have hval : Φ₀.toAddMonoidHom ((∑ i, n i • (MvPolynomial.X (some i) : MvPolynomial (Option ι) ℝ)) ^ D *
       MvPolynomial.X none) = T (D + 1) (Fin.cons M (fun _ => comb L n)) (genericPoint X) := by

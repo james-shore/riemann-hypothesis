@@ -58,7 +58,7 @@ theorem map_inclK_mem_Kres_iff (K : IntermediateField ℚ_[p] (PadicAlgCl p)) (n
     GeneralLinearGroup.map (inclK p K r).toRingHom g ∈ Kres p K n r ↔ g ∈ GlobalTheory.LKLoc.KintK p K n := by
   unfold Kres GlobalTheory.LKLoc.KintK
   rw [mem_range_map_subtype, mem_range_map_subtype, ← map_inv]
-  simp only [GeneralLinearGroup.map, MonoidHom.coe_mk, OneHom.coe_mk, Units.coe_map, RingHom.mapMatrix_apply]
+  simp only [GeneralLinearGroup.map, Units.coe_map]
   simp [Matrix.map_apply, inclK_mem_intKQ_iff]
 
 theorem scalar_mem_Kint_iff (r : ℕ) (s : ℚ_[p]ˣ) :

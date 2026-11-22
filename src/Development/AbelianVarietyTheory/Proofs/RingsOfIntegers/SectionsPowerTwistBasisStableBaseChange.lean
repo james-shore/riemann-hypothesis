@@ -103,8 +103,7 @@ theorem exists_tr' (hL : L.IsLB) (hu : u.IsGen) (h₁ : σ ≫ τ = 𝟙 Y) (h�
     (s' : LB.Sec (LB.LinComb L ψ ε')) : ∃ s, Tr u s' s := by
   have hv := DVR.pullGen_isGen _ _ _ _ (DVR.invGen_isGen _ _ _ _ hu) σ
   obtain ⟨s, hs⟩ := exists_sec (φ' := φ) (ε' := ε) hL (fun U _ h => by
-    simp only [Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr, zpow_neg, Finset.prod_inv_distrib, inv_inv,
-      reassoc_of% h₁]
+    simp only [Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr, zpow_neg, Finset.prod_inv_distrib, reassoc_of% h₁]
     rw [mul_inv, inv_inv, mul_inv_cancel_left]) (pullMulSec s' σ _ hv)
   refine ⟨s, fun Z r z J hJ => ?_⟩
   rw [hs Z _ z J hJ, sval_pullMulSec s' σ _ hv _ z hJ, val_pull hJ, val_inv, Category.assoc, h₂, Category.comp_id,

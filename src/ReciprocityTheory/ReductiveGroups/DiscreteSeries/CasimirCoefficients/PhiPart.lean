@@ -73,7 +73,7 @@ private theorem fderiv_PhiM_of_lead_curve (μ : Fin n → ℤ) {z V : Matrix (Fi
     have h := HasDerivAt.finset_prod (u := Finset.range ((i : ℕ) + 1)) (x := (0 : ℂ))
       (f := fun a t => 1 + t * D a) (f' := fun a => D a)
       (fun a _ => by simpa using ((hasDerivAt_id (0 : ℂ)).mul_const (D a)).const_add 1)
-    refine (h.congr_deriv (by simp [Finset.prod_apply])).congr_of_eventuallyEq
+    refine (h.congr_deriv (by simp)).congr_of_eventuallyEq
       (Filter.Eventually.of_forall fun t => ?_)
     simp [hp, Finset.prod_apply]
   have hp0 : ∀ i : Fin n, p i 0 = 1 := fun i => by simp [hp]
@@ -87,7 +87,7 @@ private theorem fderiv_PhiM_of_lead_curve (μ : Fin n → ℤ) {z V : Matrix (Fi
       ((∑ i : Fin n, (((-(μ i - muNext μ i)) : ℤ) : ℂ) * ∑ a ∈ Finset.range ((i : ℕ) + 1), D a) *
         PhiM μ z) 0 := by
     have h := (HasDerivAt.finset_prod (u := Finset.univ) (fun i _ => hfd i)).mul_const (PhiM μ z)
-    refine (h.congr_deriv (by simp [hp0, Finset.prod_apply])).congr_of_eventuallyEq
+    refine (h.congr_deriv (by simp [hp0])).congr_of_eventuallyEq
       (Filter.Eventually.of_forall fun t => ?_)
     simp [Finset.prod_apply]
   have htel : ∀ N : ℕ, ∑ k ∈ Finset.range N, (m (k + 1) - m k) * ∑ a ∈ Finset.range (k + 1), D a =
@@ -238,15 +238,15 @@ theorem phiM_part (μ : Fin n → ℤ) {z B : Matrix (Fin n) (Fin n) ℂ} (hz : 
   have e1 : B + lowMinusUp B = X1 := by
     ext a b
     rcases lt_trichotomy a b with h | rfl | h
-    · simp [lowMinusUp, hX1, h, lt_asymm h, ne_of_lt h] <;> ring
+    · simp [lowMinusUp, hX1, h, lt_asymm h, ne_of_lt h]
     · simp [lowMinusUp, hX1]
-    · simp [lowMinusUp, hX1, h, lt_asymm h, (ne_of_lt h).symm] <;> ring
+    · simp [lowMinusUp, hX1, h] <;> ring
   have e2 : B - lowMinusUp B = X2 := by
     ext a b
     rcases lt_trichotomy a b with h | rfl | h
-    · simp [lowMinusUp, hX2, h, lt_asymm h, ne_of_lt h] <;> ring
+    · simp [lowMinusUp, hX2, h, lt_asymm h] <;> ring
     · simp [lowMinusUp, hX2]
-    · simp [lowMinusUp, hX2, h, lt_asymm h, (ne_of_lt h).symm] <;> ring
+    · simp [lowMinusUp, hX2, h, lt_asymm h, (ne_of_lt h).symm]
   have hL : IsLowerTri X1 := fun a b hab => by simp [hX1, lt_asymm hab, ne_of_lt hab]
   have hU : IsUpperTri X2 := fun a b hab => by simp [hX2, lt_asymm hab, (ne_of_lt hab).symm]
   have hsplit : B * z + z * B = (z * lowMinusUp B - lowMinusUp B * z) + (X1 * z + z * X2) := by

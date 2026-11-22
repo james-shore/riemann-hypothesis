@@ -271,7 +271,6 @@ theorem stepBv_ring {A : Type} [Ring A] [Algebra ℂ A] {n : ℕ} (E : Fin n →
       norm_num
     rw [h11, Int.cast_one, one_mul, Fin.succAbove_last]
     congr 3
-    all_goals (funext i; simp only [Function.comp_apply, Fin.cons_succ]; exact congrFun hcs2 i)
   rw [Formalism.FourierDecayAlt.P.expansion_last_column A n (t + 1) E a b u, map_sum, Fin.sum_univ_castSucc, Fin.sum_univ_castSucc]
   have hrest : ∀ m : Fin t, Λ ((((-1 : ℤ) ^ (t + 1 + ((m.castSucc.castSucc : Fin (t + 2)) : ℕ)) : ℤ) : A) *
       (qminor E (a ∘ m.castSucc.castSucc.succAbove) (b ∘ Fin.castSucc) u *

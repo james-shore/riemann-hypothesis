@@ -84,7 +84,7 @@ theorem core (J P D : Matrix (Fin n) (Fin n) ℂ) (j1 : J * J = 1) (j2 : Jᴴ = 
   rw [← hB] at d2
   have hBJP : B * (J * P) = 0 := by
     rw [hB]
-    simp only [mul_assoc, sub_mul, mul_sub, one_mul, mul_one, hJJ, p2, hPP, sub_self, mul_zero]
+    simp only [mul_assoc, sub_mul, mul_sub, mul_one, hJJ, p2, sub_self]
   have hBJB : B * (J * B) = 0 := by
     calc B * (J * B) = B * (J * (P * B)) := by rw [d2]
       _ = B * (J * P) * B := by simp only [mul_assoc]
@@ -94,8 +94,7 @@ theorem core (J P D : Matrix (Fin n) (Fin n) ℂ) (j1 : J * J = 1) (j2 : Jᴴ = 
     rwa [conjTranspose_mul, p1] at h
   have hPBh : P * Bᴴ = 0 := by
     rw [hB]
-    simp only [conjTranspose_mul, conjTranspose_sub, conjTranspose_one, j2, p1, mul_sub, sub_mul,
-      one_mul, mul_one, mul_assoc, hPJP, hPDh, sub_zero, sub_self]
+    simp only [conjTranspose_mul, conjTranspose_sub, j2, p1, mul_sub, mul_one, mul_assoc, hPJP, hPDh, sub_self]
   have hPBhX : ∀ X : Matrix (Fin n) (Fin n) ℂ, P * (Bᴴ * X) = 0 := fun X => by
     rw [← mul_assoc, hPBh, zero_mul]
   have hPJB : P * (J * B) = 0 := by

@@ -46,7 +46,7 @@ theorem posDef_im_on_ball_of_logExp : ∀ (n a : ℕ) (J : Type) [Fintype J] [De
   have hqim : ∀ w, (q w).im = star x ⬝ᵥ ((Δ w).map Complex.im *ᵥ x) := by
     intro w
     simp [q, dotProduct, mulVec, Complex.im_sum, Complex.mul_im, Finset.mul_sum, mul_comm,
-      mul_left_comm, mul_assoc]
+      mul_left_comm]
   have hqd : DifferentiableOn ℂ q U := by
     rw [hq]
     apply DifferentiableOn.fun_sum
@@ -73,7 +73,7 @@ theorem posDef_im_on_ball_of_logExp : ∀ (n a : ℕ) (J : Type) [Fintype J] [De
   set F : (Fin n → ℂ) → ℂ := fun w => Complex.exp (Complex.I * q w) with hF
   have hFn : ∀ w, ‖F w‖ = Real.exp (-(q w).im) := by
     intro w
-    simp [F, Complex.norm_exp, Complex.I_mul_re]
+    simp [F, Complex.norm_exp]
   have hFd : DifferentiableOn ℂ F U := (hqd.const_mul Complex.I).cexp
   have hmax : IsMaxOn (norm ∘ F) U z := by
     intro w hw

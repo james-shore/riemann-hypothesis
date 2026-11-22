@@ -103,7 +103,7 @@ theorem bwd' (hc : ∀ c ∈ D.host.AAbar, star c ∈ D.host.AA) (S : HSp D)
   refine ⟨conjO b, ?_⟩
   have e : ((conjO b : 𝓞 D.host.E) : D.host.E) = hS S s (star c • y) := by
     rw [coe_conjO, hb, star_mul', star_star, hS_smul_right]
-  first | exact e | exact e.symm
+  first | exact e
 
 end GlobalTheory.SkewLat.DualPairConj
 

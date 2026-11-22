@@ -365,7 +365,7 @@ theorem e2VanishingOtherColumns_of_colKillP (hK : ColKillP) : E2VanishingOtherCo
       dh (Polynomial.aeval (RuL (P := P) u (p + 1) (q + 2)) g H) := by
     have h := congrArg (fun r => Polynomial.aeval (RuL (P := P) u (p + 2) (q + 2)) r x) hdiv
     simp only [map_mul, map_sub, Polynomial.aeval_X, Polynomial.aeval_C, Module.End.mul_apply,
-      LinearMap.sub_apply, Module.algebraMap_end_apply, map_one, Module.End.one_apply, one_smul] at h
+      LinearMap.sub_apply, Module.algebraMap_end_apply, map_one, Module.End.one_apply] at h
     rw [← h, ← hE, hA, map_sub]
     rfl
   obtain ⟨hG1, hG2⟩ := hD g

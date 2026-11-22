@@ -37,7 +37,7 @@ theorem charpoly_map_diagEnd {n m : ℕ} (f : Module.End ℂ (Fin n → ℂ)) (c
   have e : LinearMap.toMatrix (Pi.basisFun ℂ (Fin m)) (Pi.basisFun ℂ (Fin m)) (diagEnd c) =
       Matrix.diagonal c := by
     ext i j
-    simp [LinearMap.toMatrix_apply, Matrix.diagonal_apply, Pi.single_apply]
+    simp [Matrix.diagonal_apply, Pi.single_apply]
   rw [← LinearMap.charpoly_toMatrix _ (b.tensorProduct (Pi.basisFun ℂ (Fin m))),
     TensorProduct.toMatrix_map, e]
   have e2 : Matrix.kroneckerMap (· * ·) (LinearMap.toMatrix b b f) (Matrix.diagonal c) =

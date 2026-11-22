@@ -72,7 +72,7 @@ theorem volume_pTop : (volume : Measure (PTop k r r)) Set.univ = 1 := by
   haveI : IsEmpty {p : UT r // r ≤ p.1.1.val} := ⟨fun p => absurd p.2 (not_le.2 p.1.1.1.2)⟩
   rw [← Set.univ_prod_univ, Measure.volume_eq_prod, Measure.prod_prod, ← Set.univ_prod_univ,
     Measure.volume_eq_prod, Measure.prod_prod]
-  simp [volume_pi, Measure.pi_univ]
+  simp [volume_pi]
 
 theorem lebesgueCommonStabilizerNormalForm_full_eq (β : Fin r → ℕ) : lebR0 k r r β = lebR k r β := by
   have hc : Continuous fun x : UTin β → ℂ => Matrix.of.symm (uEmb k r (upperIn β x)) := by

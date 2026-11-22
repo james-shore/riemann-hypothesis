@@ -40,12 +40,10 @@ theorem latticeBoundAtMaximum_of_transference (hD5 : CoveringRadiusStatement) : 
       first
       | exact QuadraticCoefficientForms.card_Psi
       | exact QuadraticCoefficientForms.card_Psi (X := X.toData)
-      | exact QuadraticCoefficientForms.card_Psi X.toData
     have hcardpos : 0 < Fintype.card X.Ψ := by
       first
       | exact QuadraticCoefficientForms.card_Psi_pos
       | exact QuadraticCoefficientForms.card_Psi_pos (X := X.toData)
-      | exact QuadraticCoefficientForms.card_Psi_pos X.toData
     haveI : Nonempty X.Ψ := Fintype.card_pos_iff.mp hcardpos
     have hdet : ∀ τ : X.Ψ, (mat x0 τ).det ≠ 0 := fun τ => (hx0 τ).1
     have hc0 : (0 : ℝ) < Fintype.card X.Ψ := by exact_mod_cast hcardpos
@@ -66,7 +64,6 @@ theorem latticeBoundAtMaximum_of_transference (hD5 : CoveringRadiusStatement) : 
       rw [← Int.cast_abs]
       first
       | exact_mod_cast Int.one_le_abs (NumberField.discr_ne_zero E)
-      | exact_mod_cast Int.one_le_abs NumberField.discr_ne_zero
 
     have hmaj : ∀ (τ : X.Ψ) (w : Fin r → ℂ),
         X.maj z0 τ w = ReciprocityTheory.MultiplicativeHeights.normSq ((mat x0 τ)⁻¹ *ᵥ w) := by
@@ -75,7 +72,6 @@ theorem latticeBoundAtMaximum_of_transference (hD5 : CoveringRadiusStatement) : 
       first
       | exact (FlowMajorantFlags.maj_flag hz0 hx0 hflag τ w).symm
       | exact (FlowMajorantFlags.maj_flag X.toData hz0 hx0 hflag τ w).symm
-      | exact (FlowMajorantFlags.maj_flag (X := X.toData) hz0 hx0 hflag τ w).symm
     have hconst : ∑ _τ : X.Ψ, (laStar / Real.sqrt (Fintype.card X.Ψ)) ^ 2 = laStar ^ 2 := by
       rw [Finset.sum_const, Finset.card_univ, nsmul_eq_mul, div_pow, Real.sq_sqrt hc0.le]
       field_simp
@@ -105,7 +101,6 @@ theorem latticeBoundAtMaximum_of_transference (hD5 : CoveringRadiusStatement) : 
       intro i
       first
       | (rw [Matrix.det_nonsing_inv, Ring.inverse_eq_inv']; exact inv_ne_zero (hdet i))
-      | simp [Matrix.det_nonsing_inv, hdet i]
     have hcm : ∀ τ : E →+* ℂ, (∃ i : X.Ψ, i.1 = τ) ↔
         ¬ ∃ i : X.Ψ, i.1 = ComplexEmbedding.conjugate τ := by
       intro τ
@@ -136,7 +131,7 @@ theorem latticeBoundAtMaximum_of_transference (hD5 : CoveringRadiusStatement) : 
         one_le_mul_of_one_le_of_one_le h3 hd
       rw [hμdef]
       unfold d5mu
-      first | rw [le_div_iff₀ hl0] | rw [le_div_iff hl0]
+      first | rw [le_div_iff₀ hl0]
       nlinarith [h4, hl1]
     have hμ0 : 0 ≤ μ := by linarith
 
@@ -166,7 +161,6 @@ theorem latticeBoundAtMaximum_of_transference (hD5 : CoveringRadiusStatement) : 
           have hkj : k ≠ j := fun h => by rw [h] at hk; omega
           first
           | exact Pi.single_eq_of_ne hkj 1
-          | simp [Pi.single_apply, hkj]
         have hw0 : (Pi.single j (1 : ℂ) : Fin r → ℂ) ≠ 0 := by
           intro h
           have h' := congrFun h j
@@ -181,7 +175,6 @@ theorem latticeBoundAtMaximum_of_transference (hD5 : CoveringRadiusStatement) : 
           have hkj : k ≠ j := fun h => by rw [h] at hk; omega
           first
           | exact Pi.single_eq_of_ne hkj 1
-          | simp [Pi.single_apply, hkj]
         have hw0 : (Pi.single j (1 : ℂ) : Fin r → ℂ) ≠ 0 := by
           intro h
           have h' := congrFun h j
@@ -193,7 +186,7 @@ theorem latticeBoundAtMaximum_of_transference (hD5 : CoveringRadiusStatement) : 
       · intro j τ
         have hA : 4 * μ ≤ ReciprocityTheory.MultiplicativeHeights.approxR r μ ρ := by
           unfold ReciprocityTheory.MultiplicativeHeights.approxR
-          first | rw [le_div_iff₀ hρ0] | rw [le_div_iff hρ0]
+          first | rw [le_div_iff₀ hρ0]
           nlinarith [mul_le_mul_of_nonneg_left hρ1 hμ0, mul_le_mul_of_nonneg_right hsr hμ0]
         have hT : (1 : ℝ) ≤ 2 * ReciprocityTheory.MultiplicativeHeights.approxR r μ ρ := by linarith
         have hTμ : 2 * μ ^ 2 ≤ (2 * ReciprocityTheory.MultiplicativeHeights.approxR r μ ρ) ^ 2 := by

@@ -31,7 +31,7 @@ private theorem HasDen.add {D : Datum p} {u w : AfP p ⊗[ℚ] VQ D} (hu : HasDe
     exact AddSubgroup.nsmul_mem _ hd c
 
 private theorem hasDen_zero (D : Datum p) : HasDen D 0 := by
-  exact ⟨1, Nat.one_pos, Nat.coprime_one_left p, by simp [AddSubgroup.zero_mem]⟩
+  exact ⟨1, Nat.one_pos, Nat.coprime_one_left p, by simp⟩
 
 private theorem hasDen_gen (D : Datum p) (a : AfP p) (x : D.La) :
     HasDen D (a ⊗ₜ[ℚ] ((1 : ℚ) ⊗ₜ[ℤ] x : VQ D)) := by
@@ -80,7 +80,7 @@ theorem UpperTheory.Gal.W2.Seed.pDenom :
     | mem y hy =>
       rw [← Finset.mul_prod_erase s c hy, mul_comm, mul_smul]
       exact AddSubgroup.nsmul_mem _ (hcm y) _
-    | zero => simp [AddSubgroup.zero_mem]
+    | zero => simp
     | add y z _ _ hy hz =>
       rw [map_add, map_add, smul_add]
       exact AddSubgroup.add_mem _ hy hz
@@ -96,7 +96,7 @@ theorem UpperTheory.Gal.W2.Seed.pDenom :
       simp [inAfH, TensorProduct.smul_tmul']
     rw [e, map_smul, smul_comm]
     exact GlobalTheory.W2.smul_mem_laHat ha (hgen x)
-  | zero => simp [AddSubgroup.zero_mem]
+  | zero => simp
   | add y z _ _ hy hz =>
     rw [map_add, smul_add]
     exact AddSubgroup.add_mem _ hy hz

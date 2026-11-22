@@ -189,8 +189,6 @@ theorem pivot_w {E : Type} [NormedField E] [IsUltrametricDist E] [StarRing E]
   | exact @_root_.GlobalTheory.UnitValueExistence.main
   | exact _root_.GlobalTheory.UnitValueExistence.main
   | (apply _root_.GlobalTheory.UnitValueExistence.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UnitValueExistence.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UnitValueExistence.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UnitValueExistence.main ..)
 
 end Piv

@@ -17,7 +17,7 @@ theorem UpperTheory.V.Lit.Geo.corrBd :
   obtain ⟨m1, -, m3⟩ := hM h h1 h2
   obtain ⟨t, ht, e⟩ := hT g h h1 h2
   have hcomm : infGL E a h * finGL E a x = finGL E a x * infGL E a h := by
-    first | exact GlobalTheory.CuspRep.infGL_comm _ _ | exact TR.infGL_comm _ _
+    first | exact GlobalTheory.CuspRep.infGL_comm _ _
   rw [hg, mul_assoc, ← hcomm, ← mul_assoc, ← map_mul] at e
   set X : Fin q → Herm E a := fun i => hv.symm ((1 / 2 : ℝ) • sand h⁻¹ (v i)) with hX
   have hc := hw (y * h) x X

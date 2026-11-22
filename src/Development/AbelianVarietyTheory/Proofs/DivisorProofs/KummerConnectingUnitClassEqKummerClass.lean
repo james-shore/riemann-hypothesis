@@ -127,7 +127,7 @@ theorem units_map_comp {W V U : Scheme.{0}} (h : W ⟶ V) (g : V ⟶ U) (u : (Γ
     Units.map (h ≫ g).appTop.hom.toMonoidHom u =
       Units.map h.appTop.hom.toMonoidHom (Units.map g.appTop.hom.toMonoidHom u) := by
   ext
-  simp [Scheme.Hom.comp_appTop]
+  simp
   rfl
 
 theorem isUnit_q_res {V U : Scheme.{0}} (g : V ⟶ U) {q : ℕ} (hq : IsUnit (q : Γ(U, ⊤))) : IsUnit (q : Γ(V, ⊤)) := by

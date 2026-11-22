@@ -59,8 +59,7 @@ theorem lc_dC {G : Type} [Group G] {k : ℕ} (b : (Fin (k + 1) → G) → ℝ)
   rw [Finsupp.linearCombination_single, one_smul]
   unfold bd
   rw [Finsupp.linearCombination_single, one_smul, map_add, map_sum]
-  simp only [map_smul, map_zsmul, Finsupp.linearCombination_single, one_smul, smul_eq_mul, zsmul_eq_mul,
-    Int.cast_pow, Int.cast_neg, Int.cast_one]
+  simp only [map_smul, Finsupp.linearCombination_single, smul_eq_mul]
   unfold dC
   rw [Fin.sum_univ_succ]
   congr 1

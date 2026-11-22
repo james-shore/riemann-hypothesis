@@ -21,9 +21,9 @@ theorem setIntegral_addSubgroup_add {X : Type} [AddCommGroup X] [MeasurableSpace
     funext x
     by_cases hx : x ∈ H
     · have hx' : x + h ∈ H := H.add_mem hx hh
-      simp [Set.indicator_apply, hx, hx']
+      simp [hx, hx']
     · have hx' : x + h ∉ H := fun h' => hx (by simpa using H.sub_mem h' hh)
-      simp [Set.indicator_apply, hx, hx']
+      simp [hx, hx']
   rw [key, integral_add_right_eq_self (Set.indicator (H : Set X) g) h]
 
 theorem setIntegral_pair_char {X : Type} [AddCommGroup X] [TopologicalSpace X] [MeasurableSpace X]

@@ -62,7 +62,7 @@ theorem pt_mul {K : Type} [CommRing K] (s : List ℕ) (t : ℕ → Kˣ) :
   simp only [Matrix.mul_apply, pt]
   rw [Finset.sum_eq_single ⟨revIn s a, revIn_lt s a a.2⟩]
   · rw [if_pos rfl]
-    simp only [Fin.val_mk]
+    simp only
     rw [revIn_revIn s a a.2, blk_revIn s a a.2, Matrix.one_apply]
     by_cases h : c = a
     · subst h

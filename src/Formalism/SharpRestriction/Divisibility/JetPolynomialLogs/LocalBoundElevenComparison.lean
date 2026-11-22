@@ -48,7 +48,7 @@ theorem local_bound_eleven_comparison (L : product_zeroth_first_parts.Loc) (k : 
     Finset.sum_nonneg fun s _ => by
       unfold Formalism.DworkPowerSeriesWeights.OddLevelGainBounds.oddLevelGainSum
       exact tsum_nonneg fun e => by
-        split_ifs <;> first | exact le_max_right _ _ | exact le_rfl | positivity
+        split_ifs <;> first | exact le_max_right _ _ | exact le_rfl
   have h11 : 11 / (L.l : ℝ) * ∑ s, w s = 11 * (∑ s, w s) / (L.l : ℝ) := by ring
   unfold product_zeroth_first_parts.Loc.FD
   linarith

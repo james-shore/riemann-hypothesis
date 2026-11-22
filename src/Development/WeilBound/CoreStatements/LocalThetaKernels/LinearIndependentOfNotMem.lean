@@ -47,7 +47,6 @@ theorem exists_finite_orbit {G V : Type} [Group G] [TopologicalSpace G] [AddComm
   have hli : LinearIndependent ℂ fun n => f (c n (T n)) := by
     refine linearIndependent_of_notMem (fun n => f (c n (T n))) (fun n => (T n : Set V)) (fun m n hmn => ?_)
       fun n => hc' n (T n)
-    beta_reduce
     induction n, hmn using Nat.le_induction with
     | base => rw [Nat.succ_eq_add_one, hT]; exact Finset.mem_coe.2 (Finset.mem_insert_self _ _)
     | succ n _ ih => rw [hT]; exact Finset.mem_coe.2 (Finset.mem_insert_of_mem ih)

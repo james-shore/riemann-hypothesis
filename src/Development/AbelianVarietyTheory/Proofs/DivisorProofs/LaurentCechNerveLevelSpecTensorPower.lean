@@ -147,6 +147,6 @@ theorem level_iso : ∀ (A A' : Type) [CommRing A] [CommRing A'] [Algebra A A'] 
       exact RingHom.ext fun x => by simp [laurentMap_C]
   · change e.hom ≫ WidePullback.base _ = _
     rw [← WidePullback.π_arrow _ 0, ← Category.assoc, he 0]
-    simp only [laurentHom, ← Functor.map_comp, ← Spec.map_comp, ← CommRingCat.ofHom_comp, laurentMap_comp, hιA 0]
+    simp only [← Functor.map_comp, ← Spec.map_comp, ← CommRingCat.ofHom_comp, laurentMap_comp, hιA 0]
 
 end GlobalTheory.EtC.GmStep.LevelIso

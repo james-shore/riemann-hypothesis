@@ -114,7 +114,6 @@ theorem exists_basicOpen_eq {Y : Scheme.{0}} {M : LB Y} (hM : M.IsLB) (m n : ℕ
     have h1 := Y.basicOpen_res f (homOfLE (le_top : M.U i ≤ ⊤)).op
     rw [← h1]
     refine (congrArg Y.basicOpen (hf i)).trans ?_
-    beta_reduce
     rw [Scheme.basicOpen_mul, Scheme.basicOpen_pow _ _ hm, Y.basicOpen_of_isUnit (Units.isUnit _)]
     exact inf_eq_left.2 (Y.basicOpen_le _)
   simp only [← key]

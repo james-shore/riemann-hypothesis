@@ -111,7 +111,7 @@ theorem log_absNorm_of_selfDual {𝔞 : FractionalIdeal (nonZeroDivisors (𝓞 E
   have hd : (0 : ℝ) < (|discr E| : ℤ) := by exact_mod_cast abs_pos.2 (discr_ne_zero E)
   have h2 : (0 : ℝ) < Module.finrank ℚ E := by exact_mod_cast Module.finrank_pos
   simp only [map_mul, map_inv₀, Rat.cast_mul, Rat.cast_inv, FractionalIdeal.coeIdeal_absNorm,
-    FractionalIdeal.absNorm_span_singleton, absNorm_differentIdeal E (𝓞 E), Rat.cast_natCast, Nat.cast_natAbs,
+    FractionalIdeal.absNorm_span_singleton, absNorm_differentIdeal E (𝓞 E), Nat.cast_natAbs,
     Rat.cast_intCast] at h3
   rw [Real.log_mul (inv_ne_zero hd.ne') (inv_ne_zero (nz h0)), Real.log_inv, Real.log_inv,
     log_absNorm_conjFrac h𝔞, Real.log_mul (by simpa using hN) (nz h𝔞)] at h3

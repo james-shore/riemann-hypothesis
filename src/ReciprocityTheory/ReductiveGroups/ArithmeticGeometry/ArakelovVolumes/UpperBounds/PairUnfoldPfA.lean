@@ -14,7 +14,7 @@ theorem gramE {γ : GL (Fin r) E} (hγ : γ ∈ X.Γ) :
   have hU := (X.Γ_stab γ hγ).1
   ext i j
   have e1 : herm X.Gm (Pi.single i 1) (Pi.single j 1) = X.Gm i j := by
-    simp [herm, Pi.single_apply, apply_ite cc, cc_one, cc_zero]
+    simp [herm, Pi.single_apply, apply_ite cc]
   rw [← e1, ← hU (Pi.single i 1) (Pi.single j 1)]
   simp only [herm, Matrix.mulVec_single_one, Matrix.col_apply, Matrix.mul_apply, Matrix.transpose_apply,
     Matrix.map_apply, Finset.sum_mul]

@@ -249,12 +249,12 @@ variable {R : Type} [CommRing R] [IsDomain R] {D : DegPre R} {K : Type} [Fintype
 
 theorem expand_single [DecidableEq K] (hB : D.TauBimult) (j : K) : Expand D (Pi.single j (1 : ℤ)) x y := by
   have hY : ∏ i, y i ^ (Pi.single j (1 : ℤ) : K → ℤ) i = y j := by
-    rw [Fintype.prod_eq_single j (fun i hi => by simp [Pi.single_apply, hi])]
+    rw [Fintype.prod_eq_single j (fun i hi => by simp [hi])]
     simp
   have hK : ∀ {U : Type} [CommGroup U] (f : K × Fin 4 → U),
       ∏ k, f k ^ (-((Pi.single j (1 : ℤ) : K → ℤ) k.1 * Oε k.2)) = ∏ m, f (j, m) ^ (-Oε m) := by
     intro U _ f
-    rw [Fintype.prod_prod_type, Fintype.prod_eq_single j (fun i hi => by simp [Pi.single_apply, hi])]
+    rw [Fintype.prod_prod_type, Fintype.prod_eq_single j (fun i hi => by simp [hi])]
     simp
   obtain ⟨κ, hκ, hv⟩ := exists_gen D.P.isLB
     (φ' := Sum.elim (lamPts x (∏ i, y i ^ (Pi.single j (1 : ℤ) : K → ℤ) i)) (fun k : K × Fin 4 => lamPts x (y k.1) k.2))
@@ -267,17 +267,17 @@ theorem expand_single [DecidableEq K] (hB : D.TauBimult) (j : K) : Expand D (Pi.
       simp only [Fin.prod_univ_four, lamPts, Oε, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two,
         Matrix.cons_val_three, Matrix.head_cons, Matrix.tail_cons]
       apply Additive.ofMul.injective
-      simp only [ofMul_mul, ofMul_inv, ofMul_zpow, ofMul_prod]
+      simp only [ofMul_mul, ofMul_zpow]
       simp
       abel)
     (LB.oneGen D.P.L (Y := T.left)) oneGen_isGen'
   refine ⟨κ, hκ, fun p a b hx hy z J hJ => ?_⟩
   rw [hv _ _ z J hJ, val_one, _root_.mul_one]
   have e0 : (∑ i, (Pi.single j (1 : ℤ) : K → ℤ) i • b i) = b j := by
-    rw [Fintype.sum_eq_single j (fun i hi => by simp [Pi.single_apply, hi])]
+    rw [Fintype.sum_eq_single j (fun i hi => by simp [hi])]
     simp
   have e1 : (∏ i, val (D.tau a (b i)) (𝟙 _) z J ^ (Pi.single j (1 : ℤ) : K → ℤ) i) = val (D.tau a (b j)) (𝟙 _) z J := by
-    rw [Fintype.prod_eq_single j (fun i hi => by simp [Pi.single_apply, hi])]
+    rw [Fintype.prod_eq_single j (fun i hi => by simp [hi])]
     simp
   rw [e0, e1]
 

@@ -39,7 +39,7 @@ theorem herm_cplxD_pos [Fintype ι] (c : ∀ w : ι, Matrix (Ix (P w) (Q w)) (Ix
     0 < -2 * (∑ w, ∑ a, ∑ b, lineSign a b * c w a b * star (cplxD ι P Q R S c w a b)).im := by
   have h : ∀ w a b, (lineSign a b * c w a b * star (cplxD ι P Q R S c w a b)).im = -Complex.normSq (c w a b) := by
     intro w a b
-    rcases lineSign_cases a b with h | h <;> simp [cplxD_apply, h, Complex.normSq_apply] <;> ring
+    rcases lineSign_cases a b with h | h <;> simp [cplxD_apply, h, Complex.normSq_apply]
   simp only [Complex.im_sum, h, Finset.sum_neg_distrib]
   obtain ⟨w, a, b, hw⟩ : ∃ w a b, c w a b ≠ 0 := by
     by_contra h0
@@ -62,7 +62,7 @@ theorem cplxD_single [DecidableEq ι] (w : ι) (a : Ix (P w) (Q w)) (b : Ix (R w
     by_cases hab : a = a' ∧ b = b'
     · obtain ⟨rfl, rfl⟩ := hab
       rcases lineSign_cases a b with h | h <;> simp [h]
-    · simp [Matrix.single_apply, hab]
+    · simp [hab]
   · simp [hw]
 
 end Sign

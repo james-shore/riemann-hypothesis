@@ -47,7 +47,7 @@ theorem eigenHom_eq_eigSp (τ : 𝓞 E →+* k) (σ : E →+* k) (h : σ.comp (a
   ext c
   have hσ : ∀ a : 𝓞 E, σ (a : E) = τ a := fun a => by rw [← h]; rfl
   simp only [GlobalTheory.CompanionTheory.Ar.HT.eigSp, Submodule.mem_iInf, LinearMap.mem_ker, LinearMap.sub_apply,
-    sub_eq_zero, Module.End.smul_def, Module.End.one_apply, hσ]
+    sub_eq_zero, hσ]
   constructor
   · intro hc a
     ext x

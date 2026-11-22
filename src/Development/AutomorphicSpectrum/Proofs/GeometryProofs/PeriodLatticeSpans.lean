@@ -318,7 +318,7 @@ theorem isHolTo_torusExp : IsHolTo Set.univ (fun w => (torusExp (X := X) β w).l
     refine ReciprocityTheory.ChartRestriction.G.PullbackSections.isHolTo_of_affine (T := Spec (torusRing ZU X)) isOpen_univ fun r => ?_
     obtain ⟨α, rfl⟩ : ∃ α, r = (Scheme.ΓSpecIso (torusRing ZU X)).inv.hom α :=
       ⟨(Scheme.ΓSpecIso (torusRing ZU X)).hom.hom r, by simp⟩
-    simp only [valAt'_torusFst]
+    simp only
     exact (differentiable_torusExp_coord β α).differentiableOn.congr fun w _ => valAt'_torusFst _ α
   have h2 : IsHolTo (V := Fin d → ℂ) Set.univ (fun _ => 𝟙 (Sp ℂ)) :=
     fun U f => ⟨by simp only [Set.mem_univ, true_and]; exact isOpen_const, differentiableOn_const _⟩

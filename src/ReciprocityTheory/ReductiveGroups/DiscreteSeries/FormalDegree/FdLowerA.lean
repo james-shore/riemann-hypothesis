@@ -26,9 +26,6 @@ theorem fdl_inner_continuous {ε : Fin n → Bool} (lam : Fin n → ℝ) {Λ : F
   have hmk : Continuous fun k : KG ε => toMK k := by
     first
     | fun_prop
-    | (unfold toMK; fun_prop)
-    | exact Units.continuous_val.comp (continuous_subtype_val.comp continuous_subtype_val)
-    | (unfold toMK toM; fun_prop)
   have hM : Continuous fun p : (PCoord ε → ℂ) × KG ε => toMK p.2⁻¹ * pmat p.1 * toMK p.2 :=
     ((hmk.comp continuous_snd.inv).matrix_mul (hpm.comp continuous_fst)).matrix_mul
       (hmk.comp continuous_snd)

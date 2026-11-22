@@ -159,7 +159,7 @@ private theorem flowMatV_uvec_eq_zmat {r : ℕ} (X : Data E r) (u : Fin 2 → Fi
   ext p j
   simp only [Data.flowMatV, Data.zmat, Data.uvec, Matrix.of_apply, Fin.sum_univ_two,
     Pi.add_apply, Pi.smul_apply, smul_eq_mul, map_add, map_mul, mul_add, add_mul,
-    Finset.mul_sum, Finset.sum_mul, ← Finset.sum_add_distrib]
+    Finset.mul_sum, ← Finset.sum_add_distrib]
   congr 1
   refine Finset.sum_congr rfl fun l _ => ?_
   ring

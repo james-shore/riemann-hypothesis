@@ -132,7 +132,7 @@ lemma end_coeff_continuous {M : Type} [AddCommGroup M] [Module ℂ M]
           rw [← h1]
       _ = _ := by
           rw [h2, map_sum]
-          simp [LinearMap.single_apply]
+          simp
   simp only [key]
   refine continuous_finset_sum _ fun i _ => ?_
   obtain ⟨ℓ', hℓ'⟩ := LinearMap.exists_extend (c ∘ₗ LinearMap.single ℂ (fun _ : Fin (Module.finrank ℂ A) => (A : Type)) i)

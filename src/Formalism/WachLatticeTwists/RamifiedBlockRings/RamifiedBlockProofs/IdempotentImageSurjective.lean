@@ -43,8 +43,6 @@ theorem rootsInt : StatRootsInt := by
   have hPm : P.Monic := by
     first
     | exact Polynomial.monic_of_injective hinj hmon
-    | (rw [Polynomial.Monic, ← hinj.eq_iff, map_one, ← Polynomial.leadingCoeff_map_of_injective hinj]
-       exact hmon)
   have hint : ∀ i, ∃ b : O, algebraMap O (FractionRing O) b = α i := by
     intro i
     have hroot : Polynomial.eval₂ (algebraMap O (FractionRing O)) (α i) P = 0 := by

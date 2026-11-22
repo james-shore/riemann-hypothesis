@@ -48,7 +48,7 @@ theorem flowMat_nsmul (X : Data E r) (n : ℕ) (v : Fin r → E) (τ : X.Ψ) (z 
     X.flowMat ((n : E) • v) τ z = X.flowMat v τ ((n : ℂ) ^ 2 * z) := by
   ext a b
   simp only [Data.flowMat, Matrix.of_apply, Pi.smul_apply, smul_eq_mul, map_mul, map_natCast,
-    Complex.conj_natCast, Finset.mul_sum]
+    Finset.mul_sum]
   congr 1
   refine Finset.sum_congr rfl fun k _ => ?_
   ring
@@ -66,7 +66,7 @@ theorem flow_nsmul (X : Data E r) {n : ℕ} (hn : 0 < n) (v : Fin r → E) (t : 
 theorem lact_mul_q {Ψ : Finset (E →+* ℂ)} (a b : GL (Fin r) E) (x : Frame Ψ r) :
     lact (a * b) x = lact a (lact b x) := by
   funext τ
-  simp only [lact, mat, Units.val_mul, Matrix.map_mul, Matrix.of_apply]
+  simp only [lact, mat, Units.val_mul, Matrix.map_mul]
   rw [Matrix.mul_assoc]
   rfl
 

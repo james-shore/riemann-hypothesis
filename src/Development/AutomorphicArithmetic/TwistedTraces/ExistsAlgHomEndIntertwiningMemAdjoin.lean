@@ -12,7 +12,7 @@ private theorem burnside_endomorphism {S A : Type} [AddCommGroup S] [Module ℂ 
       map_smul' := by
         intro d m
         obtain ⟨c, rfl⟩ := hb.2 d
-        simp [Module.algebraMap_end_apply] }
+        simp }
   let b := Module.finBasis ℂ S
   obtain ⟨a, ha⟩ := jacobson_density f (Finset.univ.image b)
   refine ⟨a, fun m => ?_⟩

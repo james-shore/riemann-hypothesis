@@ -66,7 +66,7 @@ def cosetEquiv (Γ K : Subgroup G) (x g : G) (γ₀ : Γ) (h₀ : γ₀ ∈ cose
     have h1 : x⁻¹ * ((((γ : Γ)) : G)⁻¹ * g) ∈ K := γ.2
     have := K.mul_mem h0 (K.inv_mem h1)
     convert this using 1
-    simp only [Subgroup.coe_mul, Subgroup.coe_inv]
+    simp only [Subgroup.coe_inv]
     group⟩⟩
   left_inv δ := by ext; simp
   right_inv γ := by ext; simp

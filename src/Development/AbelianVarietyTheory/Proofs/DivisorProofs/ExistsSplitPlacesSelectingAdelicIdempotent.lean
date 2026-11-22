@@ -109,10 +109,8 @@ theorem field_decomp (D : D7) (x : D.host.E) :
     exact_mod_cast h2
   have h2 : star (2 : D.host.E) = 2 := star_ofNat 2
   obtain ⟨u, hu⟩ := (D.sp.cm.fixed ((x + star x) / 2)).1 (by
-    change star _ = _
     rw [star_div₀, star_add, star_star, h2, add_comm])
   obtain ⟨w, hw⟩ := (D.sp.cm.fixed ((x - star x) / (2 * D.host.sqrtMinusD))).1 (by
-    change star _ = _
     rw [star_div₀, star_sub, star_star, star_mul', h2, star_delta]
     field_simp
     ring)

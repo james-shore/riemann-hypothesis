@@ -63,7 +63,7 @@ theorem exists_isom_move' (hs : h.IsSymm) {x y : V} (hxy : h x x = h y y)
     intro u v
     rw [hτ, hτ]
     have hu : h u z = star (h z u) := (hsym z u).symm
-    simp only [map_sub, map_smulₛₗ, map_smul, LinearMap.sub_apply, LinearMap.smul_apply,
+    simp only [map_sub, map_smulₛₗ, LinearMap.sub_apply, LinearMap.smul_apply,
       smul_eq_mul, starRingEnd_apply, star_mul, star_inv₀, RingHom.id_apply, hu, hzz]
     field_simp
     try ring

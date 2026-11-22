@@ -40,7 +40,7 @@ theorem UpperTheory.V.CA.f_gma :
     refine (isUnit_one.neg.pow n).mul ?_
     refine (isUnit_map_iff (algebraMap B k) _).1 ?_
     rw [← coeff_map, hchi, hx, coeff_zero_eq_eval_zero, isUnit_iff_ne_zero]
-    simp [eval_prod]
+    simp
   have hk : ∀ x, π x = 0 → x ∈ Ring.jacobson E := by
     intro x hx
     rw [← Ideal.jacobson_bot, Ideal.mem_jacobson_iff]

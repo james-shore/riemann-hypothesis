@@ -116,7 +116,7 @@ theorem wmp_hStd_osmul_left (u z : Sp E n) (s : 𝓞 E) :
 
 theorem wmp_exists_unif (P : HeightOneSpectrum (𝓞 E)) :
     ∃ a ∈ P.asIdeal, ∃ c : 𝓞 E, c ∉ P.asIdeal ∧ ∀ p ∈ P.asIdeal, ∃ t : 𝓞 E, c * p = a * t := by
-  first | exact Bl.general_b_fact_right_more.goal1 .. | (apply Bl.general_b_fact_right_more.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_right_more.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_more.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_right_more.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_more.goal1 <;> first | assumption | infer_instance) | exact @Bl.general_b_fact_right_more.goal1 E ‹_› ‹_› ‹_› P | exact @Bl.general_b_fact_right_more.goal1 E ‹_› ‹_› ‹_› | exact @Bl.general_b_fact_right_more.goal1 E ‹_› ‹_› | exact @Bl.general_b_fact_right_more.goal1 E ‹_› | exact @Bl.general_b_fact_right_more.goal1 E
+  first | exact Bl.general_b_fact_right_more.goal1 .. | exact @Bl.general_b_fact_right_more.goal1 E ‹_› ‹_› ‹_› P | exact @Bl.general_b_fact_right_more.goal1 E ‹_› ‹_› ‹_› | exact @Bl.general_b_fact_right_more.goal1 E ‹_› ‹_› | exact @Bl.general_b_fact_right_more.goal1 E ‹_› | exact @Bl.general_b_fact_right_more.goal1 E
 
 end WmPSym
 

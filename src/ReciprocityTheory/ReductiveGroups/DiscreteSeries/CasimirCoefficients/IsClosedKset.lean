@@ -37,10 +37,7 @@ lemma isClosed_Kset (ε : Fin n → Bool) : IsClosed (Kset ε) := by
 lemma isClosed_KG (ε : Fin n → Bool) : IsClosed ((KG ε : Set (UJ ε))) := by
   show IsClosed {g : UJ ε | toM g ∈ Kset ε}
   exact (isClosed_Kset ε).preimage (by first
-    | fun_prop
-    | continuity
-    | exact continuous_subtype_val
-    | exact Units.continuous_val.comp continuous_subtype_val)
+    | fun_prop)
 
 instance (ε : Fin n → Bool) : LocallyCompactSpace (KG ε) := (isClosed_KG ε).locallyCompactSpace
 

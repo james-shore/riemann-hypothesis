@@ -13,7 +13,7 @@ variable {V : Type} [CommRing V] [IsDomain V]
 
 theorem isLocalization_frac [IsDiscreteValuationRing V] {ϖ : V} (hϖ : Irreducible ϖ) :
     IsLocalization.Away ϖ (FractionRing V) := by
-  first | exact Bl.general_b_fact_further.goal1 .. | (apply Bl.general_b_fact_further.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_further.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_further.goal1 .. | (apply Bl.general_b_fact_further.goal1 <;> assumption)
 
 theorem isOpenImmersion_frac [IsDiscreteValuationRing V] {ϖ : V} (hϖ : Irreducible ϖ) :
     IsOpenImmersion (spMap (algebraMap V (FractionRing V))) := by

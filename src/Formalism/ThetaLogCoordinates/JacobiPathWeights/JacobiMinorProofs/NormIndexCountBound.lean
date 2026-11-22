@@ -182,7 +182,7 @@ theorem dGT_zero (n : ℕ) : dGT n 0 = 1 := by
   | succ n ih =>
     have h : gtBox (0 : Fin (n + 1) → ℤ) = {0} := by
       ext κ
-      simp [gtBox, Fintype.mem_piFinset, funext_iff]
+      simp [gtBox, funext_iff]
     show ∑ κ ∈ gtBox (0 : Fin (n + 1) → ℤ), dGT n κ = 1
     rw [h, Finset.sum_singleton, ih]
 

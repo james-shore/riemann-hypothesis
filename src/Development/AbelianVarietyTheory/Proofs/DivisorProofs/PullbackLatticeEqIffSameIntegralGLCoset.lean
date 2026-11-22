@@ -51,7 +51,7 @@ theorem entries_int_of_le (w : Pl E) {K : GlobalTheory.UnitLemma.UQ} {e : K.E �
     rw [Matrix.mulVec_mulVec, ← Units.val_mul, inv_mul_cancel, Units.val_one, Matrix.one_mulVec]
     by_cases hk : k = j
     · subst hk; simp
-    · simp [Pi.single_apply, hk]
+    · simp [hk]
   have := (mem_pullLat_iff w hB B ψ hψ g y).1 (h hy') i
   rw [hψy, Matrix.mulVec_mulVec, ← Units.val_mul, Matrix.mulVec_single_one] at this
   simpa using this

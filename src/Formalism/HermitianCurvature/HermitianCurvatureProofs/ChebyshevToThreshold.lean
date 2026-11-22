@@ -25,7 +25,7 @@ theorem pull {α X : Type} [DecidableEq X] (η : α → X) (F : Finset α) (k : 
     refine Finset.sum_congr rfl (fun y hy => ?_)
     have h1 := (Finset.mem_filter.mp hx).2
     have h2 := (Finset.mem_filter.mp hy).2
-    rw [h1, h2] <;> ring
+    rw [h1, h2]
   have key : (∑ x ∈ F, ∑ y ∈ F, a x * conj (a y) * k (η x) (η y)) =
       ∑ u ∈ F.image η, ∑ v ∈ F.image η, b u * conj (b v) * k u v := by
     simp_rw [rhs]

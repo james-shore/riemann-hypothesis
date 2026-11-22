@@ -111,7 +111,7 @@ private theorem neBot : (Filter.codiscreteWithin Hs).NeBot := by
   exact le_iSup₂ (f := fun x (_ : x ∈ Hs) => nhdsWithin x (Hs \ {x})) Complex.I hI
 
 private theorem mob_dg (k : ℕ) (hk : 0 < k) (z : ℂ) : mob (dg k) z = k * z := by
-  simp [mob, dg, toGQ, ent, Matrix.det_fin_two, hk, Matrix.GeneralLinearGroup.mk']
+  simp [mob, dg, toGQ, ent, Matrix.det_fin_two, hk]
 
 private theorem prod_siegel {Ω : Type} [Field Ω] [Algebra ℚ Ω] [IsAlgClosure ℚ Ω] {ε : Ω →+* ℂ} (X : Tower Ω ε)
     (c k : ℕ) (x : Fin 2 → ℚ) (hA : GlobalTheory.Sieg.admitted c x) (hk : 0 < k) (hc : Nat.Coprime c k) :
@@ -213,9 +213,9 @@ theorem UpperTheory.V.Z.Kato.Sym.sgIsog :
         ((((k * (x 0).val : ℕ) : ZMod (k * M)).val : ℕ) : ℚ) / ((k * M : ℕ) : ℚ)
       rw [ZMod.val_natCast, Nat.mod_eq_of_lt hlt0]
       push_cast
-      field_simp <;> ring
+      field_simp
     · show (((x 1).val : ℚ) / M + j) / k =
         (((((x 1).val + j * M : ℕ) : ZMod (k * M)).val : ℕ) : ℚ) / ((k * M : ℕ) : ℚ)
       rw [ZMod.val_natCast, Nat.mod_eq_of_lt (hlt1 j hj')]
       push_cast
-      field_simp <;> ring
+      field_simp

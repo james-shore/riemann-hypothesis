@@ -103,9 +103,6 @@ variable {s : W ⟶ Spec (.of ℂ)}
 theorem AffPres.isAffineOpen (P : AffPres s) : IsAffineOpen P.V := by
   first
   | exact IsAffine.of_isIso P.iso.hom
-  | exact AlgebraicGeometry.isAffine_of_isIso P.iso.hom
-  | exact (inferInstance : IsAffine (Spec (.of (MvPolynomial (Fin P.n) ℂ ⧸ P.K)))).of_isIso P.iso.hom
-  | exact isAffine_of_isIso P.iso.hom
 
 def AffPres.affOpen (P : AffPres s) : W.affineOpens := ⟨P.V, P.isAffineOpen⟩
 

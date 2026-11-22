@@ -273,7 +273,7 @@ theorem pointSum_eq_pointSide_of_commensurable : ∀ {Γ G₁ G₂ : Type} [Grou
     rw [hPS]
     unfold pointSide orbK orbC
     rcases hor with h | h
-    · simp [hF0, h]
-    · simp [hF0, h]
+    · simp [h]
+    · simp [h]
 
 end GlobalTheory.LKCountComm

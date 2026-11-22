@@ -16,9 +16,6 @@ theorem csGlobApprox_vD (v : HeightOneSpectrum (𝓞 F)) (r : 𝓞 F) :
     Valued.v (algebraMap (𝓞 F) (v.adicCompletion F) r) = v.intValuation r := by
   first
   | exact (v.valuedAdicCompletion_eq_valuation r).trans (v.valuation_of_algebraMap r)
-  | exact (v.valuedAdicCompletion_eq_valuation r).trans (v.valuation_of_algebraMap (K := F) r)
-  | (rw [IsScalarTower.algebraMap_apply (𝓞 F) F (v.adicCompletion F)]
-     exact (v.valuedAdicCompletion_eq_valuation' _).trans (v.valuation_of_algebraMap (K := F) r))
 
 theorem csGlobApprox_local (v : HeightOneSpectrum (𝓞 F)) (D : 𝓞 F) (hD : D ≠ 0)
     (x : v.adicCompletion F) (hx : x ∈ v.adicCompletionIntegers F) :
@@ -82,8 +79,6 @@ private theorem valued_v_algebraMap_adicCompletion {F : Type} [Field F] [NumberF
     Valued.v (algebraMap F (w.adicCompletion F) k) = w.valuation F k := by
   first
   | exact w.valuedAdicCompletion_eq_valuation' k
-  | rfl
-  | simp [HeightOneSpectrum.valuedAdicCompletion_eq_valuation']
 
 theorem csGlob_intAdApprox : Formalism.UG.CS.IntAdApprox := by
   intro F _ _ D hD a ha
@@ -119,7 +114,6 @@ theorem csGlob_intAdApprox : Formalism.UG.CS.IntAdApprox := by
         push_neg at hlt
         first
         | exact hw ((w.intValuation_lt_one_iff_mem D).1 hlt)
-        | exact hw (Ideal.dvd_span_singleton.1 ((w.intValuation_lt_one_iff_dvd D).1 hlt))
       rw [h1]
       refine le_trans (Valuation.map_sub _ _ _) (max_le ?_ ?_)
       · exact ha' w
@@ -131,7 +125,6 @@ theorem csGlob_intAdApprox : Formalism.UG.CS.IntAdApprox := by
       algebraMap F (FiniteAdeleRing (𝓞 F) F) (algebraMap (𝓞 F) F D) := by
     first
     | exact IsScalarTower.algebraMap_apply (𝓞 F) F (FiniteAdeleRing (𝓞 F) F) D
-    | rfl
   have hunit : algebraMap (𝓞 F) (FiniteAdeleRing (𝓞 F) F) D *
       algebraMap F (FiniteAdeleRing (𝓞 F) F) (algebraMap (𝓞 F) F D)⁻¹ = 1 := by
     rw [hsc, ← map_mul, mul_inv_cancel₀ hd, map_one]
@@ -144,7 +137,6 @@ theorem csGlob_intAdApprox : Formalism.UG.CS.IntAdApprox := by
       rw [hY]
       first
       | rfl
-      | simp
     rw [hcoord]
     have hle : Valued.v ((a w - algebraMap (𝓞 F) (w.adicCompletion F) r0) *
         algebraMap F (w.adicCompletion F) (algebraMap (𝓞 F) F D)⁻¹) ≤ 1 := by
@@ -153,7 +145,6 @@ theorem csGlob_intAdApprox : Formalism.UG.CS.IntAdApprox := by
             first
             | exact mul_le_mul_right (hbound w) _
             | exact mul_le_mul_of_nonneg_right (hbound w) zero_le'
-            | (gcongr; exact hbound w)
         _ = 1 := mul_inv_cancel₀ (hγ w)
     exact hle
   · rw [hY]

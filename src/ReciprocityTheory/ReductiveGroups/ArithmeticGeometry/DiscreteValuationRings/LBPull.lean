@@ -51,7 +51,6 @@ lemma pullback_generator_isGenerator {X Y Z : Scheme.{0}} (L : LB X) {K : Type} 
     rw [ha1, ha0]
     first
       | (rw [map_prod, map_prod]; exact Finset.prod_congr rfl fun k _ => by rw [map_zpow, map_zpow])
-      | simp only [map_prod, map_zpow]
   rw [hg]
   erw [res_res', res_res']
   exact h1
@@ -128,7 +127,6 @@ lemma product_generator_isGenerator {X Y : Scheme.{0}} (L : LB X) {K K' : Type} 
     first
       | (rw [map_prod, map_prod]
          congr 1 <;> exact Finset.prod_congr rfl fun k _ => by rw [map_zpow])
-      | simp only [map_prod, map_zpow]
   have h1 := congrArg (fun z : Γ(Y, (LB.LinComb L φ ε).U (i ∘ Sum.inl) ⊓ (LB.LinComb L φ ε).U (j ∘ Sum.inl))ˣ =>
     res hA z) (ht (i ∘ Sum.inl) (j ∘ Sum.inl))
   have h2 := congrArg (fun z : Γ(Y, (LB.LinComb L φ' ε').U (i ∘ Sum.inr) ⊓ (LB.LinComb L φ' ε').U (j ∘ Sum.inr))ˣ =>

@@ -38,12 +38,12 @@ theorem lower_bound_of_cyclic_coef : ∀ {Γ : Type} [Group Γ] [TopologicalSpac
     have h1' : ⟪v, i (c.sum fun x t => t • σ x w₀)⟫_ℂ = ⟪z, i w₀⟫_ℂ := by
       rw [hz]
       simp only [Finsupp.sum, map_sum, map_smul, inner_sum, sum_inner, inner_smul_right,
-        inner_smul_left, hi', hadj, Complex.conj_conj, RCLike.conj_conj, starRingEnd_self_apply]
+        inner_smul_left, hi', hadj, Complex.conj_conj]
     have h2' : ⟪c.sum fun x t => t • σ x w₀, T (c.sum fun x t => t • σ x w₀)⟫_ℂ =
         starRingEnd ℂ ⟪z, E z⟫_ℂ := by
       rw [hz]
       simp only [Finsupp.sum, map_sum, map_smul, inner_sum, sum_inner, inner_smul_right,
-        inner_smul_left, hTE', map_mul, Complex.conj_conj, RCLike.conj_conj, starRingEnd_self_apply]
+        inner_smul_left, hTE', map_mul, Complex.conj_conj]
     rw [Set.mem_setOf_eq, h1', h2', Complex.conj_re]
     exact hE z
   have ha : a ∈ closure (Submodule.span ℂ (Set.range fun x => σ x w₀) : Set A) := by

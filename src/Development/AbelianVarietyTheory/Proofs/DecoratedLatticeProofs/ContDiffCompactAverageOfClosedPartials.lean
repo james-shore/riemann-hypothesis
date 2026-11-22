@@ -28,7 +28,7 @@ theorem clm_expand (L : (Fin n → ℝ) →L[ℝ] ℂ) : L = ∑ i, L (Pi.single
     · subst h; simp
     · simp [h]
   rw [e]
-  simp [coordC, ContinuousLinearMap.sum_apply, Complex.real_smul, mul_comm]
+  simp [coordC, Complex.real_smul, mul_comm]
 
 theorem hasFDerivAt_avg (μ : Measure K) [IsFiniteMeasure μ] {F : K → (Fin n → ℝ) → ℂ}
     {G : Fin n → K → (Fin n → ℝ) → ℂ} (hF : Continuous fun p : K × (Fin n → ℝ) => F p.1 p.2)

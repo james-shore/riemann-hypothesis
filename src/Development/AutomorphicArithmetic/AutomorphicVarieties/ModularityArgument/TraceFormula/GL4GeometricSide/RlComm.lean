@@ -84,7 +84,7 @@ private theorem commute_rt_Eop {τ : E →+* ℂ} {w : InfinitePlace E} (h : Inf
   have c1 : ∀ p q, coord τ ((yAt w k).val p q) = (1 : Matrix (Fin n) (Fin n) ℂ) p q := coord_atW h k.1
   have c2 : ∀ p q, coord τ (((yAt w k)⁻¹ : GL (Fin n) (Cinf E)).val p q) = (1 : Matrix (Fin n) (Fin n) ℂ) p q :=
     coord_atW h (star k.1)
-  simp only [c1, c2, Matrix.one_apply, ite_mul, mul_ite, one_mul, mul_one, zero_mul, mul_zero, ite_smul, one_smul, zero_smul,
+  simp only [c1, c2, Matrix.one_apply, mul_ite, mul_one, mul_zero, ite_smul, one_smul, zero_smul,
     Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true] at e
   exact e.symm
 

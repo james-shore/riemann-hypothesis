@@ -90,9 +90,7 @@ theorem exists_bound {ι : Type} [Fintype ι] (f : ι → R) : ∃ e ∈ 𝒪[K]
   first
   | exact @_root_.GlobalTheory.SmulIntegralDenominator.main
   | exact _root_.GlobalTheory.SmulIntegralDenominator.main
-  | (apply _root_.GlobalTheory.SmulIntegralDenominator.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SmulIntegralDenominator.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SmulIntegralDenominator.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.SmulIntegralDenominator.main)
   | (intros; exact _root_.GlobalTheory.SmulIntegralDenominator.main ..)
 
 def piL {N r : ℕ} (Hm : Matrix (Fin N) (Fin N) R) (X Y : Fin r → Fin N → R) (T : Finset (Fin r))

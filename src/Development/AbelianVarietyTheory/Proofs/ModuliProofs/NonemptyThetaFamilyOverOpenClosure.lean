@@ -89,7 +89,6 @@ theorem exists_fac_field {R K : Type} [CommRing R] [Field K] (x : Sp R ⟶ S) [I
     have hq : q = p := by
       first
       | exact Subsingleton.elim q p
-      | exact PrimeSpectrum.ext (by rw [Ideal.eq_bot_of_prime (show PrimeSpectrum K from q).asIdeal, Ideal.eq_bot_of_prime (show PrimeSpectrum K from p).asIdeal])
     rw [hq]; exact hp
   obtain ⟨y, hy⟩ := exists_spMap (IsOpenImmersion.lift x z hsub)
   exact ⟨y, by rw [← hy]; exact IsOpenImmersion.lift_fac x z hsub⟩
@@ -116,8 +115,6 @@ theorem exists_fac_away {R T : Type} [CommRing R] [CommRing T] (x : Sp R ⟶ S) 
     refine ⟨r, ?_⟩
     first
     | simp [hr]
-    | (rw [hr]; simp)
-    | exact hr
   obtain ⟨y, hy⟩ := exists_spMap (IsOpenImmersion.lift x _ hsub)
   exact ⟨y, by rw [← hy]; exact IsOpenImmersion.lift_fac x _ hsub⟩
 
@@ -138,10 +135,6 @@ theorem isNoetherianRing_of_open {R : Type} [CommRing R] [IsNoetherianRing o] {s
   haveI : IsLocallyNoetherian (Sp R) := LocallyOfFiniteType.isLocallyNoetherian (x ≫ i ≫ PSpace.str o N)
   first
   | exact (isLocallyNoetherian_Spec (R := CommRingCat.of R)).1 this
-  | exact isLocallyNoetherian_Spec.1 this
-  | exact (isNoetherian_Spec (R := CommRingCat.of R)).1 inferInstance
-  | exact (isNoetherian_Spec (R := CommRingCat.of R)).1 (IsNoetherian.mk)
-  | exact (isNoetherian_Spec (R := CommRingCat.of R)).1 { }
 
 end General
 
@@ -201,7 +194,6 @@ theorem genericObj_of (h₂ : Out.Laws2) (w w' : J)
   · rw [← hker]
     first
     | exact RingHom.ker_comp_of_injective y e.injective
-    | (ext a; simp [RingHom.mem_ker])
   · rw [shape_cast]
     exact (GlobalTheory.shape_prim_pull_and_descend _ _ _ _ _ Mat κ w w' _ _ _ _ _ t tc htc).1 hsh
   · rw [hasTh_cast]
@@ -280,7 +272,6 @@ theorem exists_chart [IsNoetherianRing o] (hG : GenericObj C Y Mat κ)
   haveI : IsOpenImmersion (spMap (algebraMap R0 (Localization.Away f))) := by
     first
     | infer_instance
-    | (unfold spMap; infer_instance)
   refine ⟨Localization.Away f, inferInstance, spMap (algebraMap R0 (Localization.Away f)) ≫ x0,
     fun a => algebraMap R0 (Localization.Away f) (v0 a), cast t hbt, ?_, ?_⟩
   · unfold IsChart
@@ -377,7 +368,6 @@ theorem Covered.dense (h : Covered Mat κ univ) (hG : GenericObj C Y Mat κ) : D
     rw [← hpt]
     first
     | rfl
-    | simp
   refine ⟨(spMap y ≫ x) pt, ?_, ⟨K, inferInstance, spMap y ≫ x, ⟨pt, rfl⟩, hfc2⟩⟩
   rw [e3]; exact hqW
 
@@ -431,7 +421,6 @@ theorem Covered.hasTh_iff (h : Covered Mat κ univ) (h₁ : Out.Laws) (h₂ : Ou
     refine ⟨Localization.Away f, inferInstance, algebraMap R (Localization.Away f), ?_, ?_, hsc⟩
     · first
       | infer_instance
-      | (unfold spMap; infer_instance)
     · change p ∈ Set.range (PrimeSpectrum.comap (algebraMap R (Localization.Away f)))
       rw [PrimeSpectrum.localization_away_comap_range (Localization.Away f) f]
       exact hf
@@ -473,7 +462,6 @@ theorem exists_covered (h₁ : Out.Laws) (h₂ : Out.Laws2) {m : ℕ} (hm : 2 �
   have hUι : ∀ q : U.toScheme, U.ι q = q.1 := fun q => by
     first
     | rfl
-    | simp
   have hrange : ∀ {R : Type} [CommRing R] (x : Sp R ⟶ Y.MM) (v : Ix g (N' ^ 2) → R)
       (t : TObj g (N' ^ 2) J b (x ≫ Y.s)), IsChart Y Mat κ x v t → Set.range x ⊆ Set.range U.ι := by
     intro R _ x v t hc q hq
@@ -544,11 +532,9 @@ theorem nonempty_wFam : Out.Laws → Out.Laws2 → ∀ (g : ℕ) (J : Type) [Fin
     have hq : q = pt := by
       first
       | exact Subsingleton.elim q pt
-      | exact PrimeSpectrum.ext (by rw [Ideal.eq_bot_of_prime (show PrimeSpectrum K from q).asIdeal, Ideal.eq_bot_of_prime (show PrimeSpectrum K from pt).asIdeal])
     rw [hq]
     first
     | (rw [Scheme.Opens.range_ι]; exact hU)
-    | exact ⟨⟨_, hU⟩, rfl⟩
   refine ⟨IsOpenImmersion.lift U.ι x hrange, IsOpenImmersion.lift_fac _ _ _, ?_⟩
   exact hcov.tmap K _ t' (by rw [← Category.assoc, IsOpenImmersion.lift_fac]) v hsh hth
     (by rw [IsOpenImmersion.lift_fac]; exact hsc)

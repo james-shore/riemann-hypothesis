@@ -25,7 +25,7 @@ theorem single_mul_single_one (i j k l : Fin n) :
 
 theorem lhol_neg (X : Matrix (Fin n) (Fin n) ℂ) (F : Matrix (Fin n) (Fin n) ℂ → ℂ)
     (z : Matrix (Fin n) (Fin n) ℂ) : Lhol (-X) F z = -Lhol X F z := by
-  simp [Lhol, Matrix.neg_mul]
+  simp [Lhol]
 
 theorem phiM_contDiffOn (μ : Fin n → ℤ) : ContDiffOn ℂ ∞ (PhiM μ) (OmegaSet n) :=
   fun _ hz => (contDiffAt_phiM μ hz).contDiffWithinAt
@@ -46,7 +46,7 @@ theorem eOp_phiT (μ : Fin n → ℤ) (X : Matrix (Fin n) (Fin n) ℂ) (c : ℂ)
   by_cases hz : z ∈ OmegaSet n
   · rw [ltOp_of_mem _ hz, lhol_congr (phiT_eqOn μ).symm hz, h z hz, ← phiT_eqOn μ hz]
   · rw [ltOp_of_not_mem _ hz]
-    simp [phiT, Set.indicator_apply, hz]
+    simp [phiT, hz]
 
 def xRev (n : ℕ) : Fin n → Fin n → Matrix (Fin n) (Fin n) ℂ :=
   fun a b => -Matrix.single (Fin.rev a) (Fin.rev b) 1
@@ -63,11 +63,11 @@ theorem xRev_rel (a b c d : Fin n) : xRev n c d * xRev n a b - xRev n a b * xRev
     by_cases h2 : d = a
     · subst h2
       simp <;> abel
-    · simp [h2, Ne.symm h2]
+    · simp [h2]
   · by_cases h2 : d = a
     · subst h2
-      simp [h1, Ne.symm h1]
-    · simp [h1, h2, Ne.symm h1, Ne.symm h2]
+      simp [h1]
+    · simp [h1, h2]
 
 theorem xTr_rel (a b c d : Fin n) : xTr n c d * xTr n a b - xTr n a b * xTr n c d =
     (if b = c then xTr n a d else 0) - (if d = a then xTr n c b else 0) := by
@@ -77,7 +77,7 @@ theorem xTr_rel (a b c d : Fin n) : xTr n c d * xTr n a b - xTr n a b * xTr n c 
   · subst h1
     by_cases h2 : d = a
     · subst h2
-      simp <;> abel
+      simp
     · simp [h2, Ne.symm h2]
   · by_cases h2 : d = a
     · subst h2

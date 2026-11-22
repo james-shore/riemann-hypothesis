@@ -68,7 +68,7 @@ theorem exists_kappa {L : Type} [Field L] {O : Subring L} {n : ℕ} {ϖ : L} (h0
       have e3 : max (-(m : ℤ)) 0 = 0 := by omega
       have e4 : min (-(m : ℤ)) 0 = -(m : ℤ) := by omega
       have hm : ϖ ^ m ≠ 0 := pow_ne_zero m h0
-      refine ⟨?_, ?_, ?_, ?_⟩ <;> simp [e1, e2, e3, e4, hm, h0]
+      refine ⟨?_, ?_, ?_, ?_⟩ <;> simp [e2, hm]
   have hmem : ∀ (M : Matrix (Fin n) (Fin n) L) (f : Fin n → L), (∀ i, f i ∈ O) → M = Matrix.diagonal f →
       ∀ i j, M i j ∈ O := by
     intro M f hf hM i j

@@ -209,7 +209,7 @@ theorem gram_skew_unimodular : ∀ (F E : Type) [Field F] [NumberField F] [Field
       rw [map_inv₀, HeightOneSpectrum.valuation_of_algebraMap,
         HeightOneSpectrum.intValuation_eq_one_iff.mpr hdv, inv_one]
     · rw [Algebra.algebraMap_eq_smul_one (A := E) (algebraMap (𝓞 F) F d)⁻¹, GlobalTheory.InertSelfDual.inclR_smul, smul_smul]
-      first | rfl | simp
+      first | rfl
   have hlift : ∀ a : AF F, At (evFin F v) a → evFin F v a ∈ v.adicCompletionIntegers F →
       ∃ t ∈ Formalism.UG.intL L, ι t = a • (1 : AE F E) := by
     intro a ha hai

@@ -143,7 +143,7 @@ theorem ceLam_zb_pt (hA : IsAbelianScheme A) (hB : IsAbelianScheme B) {P : LB (A
     simp only [← pull_comp, hφP]
     change evc hD.isLB _ _ - evc hD.isLB _ _ - evc hD.isLB _ _ + evc hD.isLB _ _ = _
     simp only [toBase_mul, toBase_one, MonObj.mul_comp, MonObj.one_comp, evc_mul_left hD,
-      evc_mul_right hD hD', hl1, hr1]
+      evc_mul_right hD hD', hl1]
     abel
   have hA0 : ∀ i, lam (pull (pA (B := B) s i).left (cls L hL)) a u =
       evc hD.isLB (toBase _ s a ≫ prj _ i ≫ fst A B) (toBase _ s u ≫ prj _ i ≫ fst A B ≫ l) := by
@@ -225,12 +225,12 @@ theorem ceEMap_fst (mu : B ⟶ A) [IsMonHom mu] (α : Matrix (Fin 4) (Fin 4) ℤ
     a ≫ eMap mu α m ≫ prj _ i ≫ fst A B =
       (a ≫ prj _ i ≫ fst A B) * (∏ j, (a ≫ prj _ j ≫ snd A B ≫ mu) ^ (α i j))⁻¹ := by
   simp only [eMap, g4lift_prj'_assoc, lift_fst, MonObj.comp_mul, GrpObj.comp_inv, Fin.prod_univ_four,
-    GrpObj.comp_zpow, Category.assoc]
+    GrpObj.comp_zpow]
 
 theorem ceEMap_snd (mu : B ⟶ A) (α : Matrix (Fin 4) (Fin 4) ℤ) (m : ℕ) {Y : Over S}
     (a : Y ⟶ G4 (A ⊗ B)) (i : Fin 4) :
     a ≫ eMap mu α m ≫ prj _ i ≫ snd A B = (a ≫ prj _ i ≫ snd A B) ^ (2 * m) := by
-  simp only [eMap, g4lift_prj'_assoc, lift_snd, MonObj.comp_pow, Category.assoc]
+  simp only [eMap, g4lift_prj'_assoc, lift_snd, MonObj.comp_pow]
 
 theorem ceEMap_mul (mu : B ⟶ A) [IsMonHom mu] (α : Matrix (Fin 4) (Fin 4) ℤ) (m : ℕ) {Y : Over S}
     (a b : Y ⟶ G4 (A ⊗ B)) : (a * b) ≫ eMap mu α m = (a ≫ eMap mu α m) * (b ≫ eMap mu α m) := by
@@ -298,8 +298,7 @@ private theorem ceZc_alg_lemma {GA GB Q : Type*} [AddCommGroup GA] [AddCommGroup
   have ho : ∀ j k, j ≠ k → α 0 j * α 0 k + α 1 j * α 1 k + α 2 j * α 2 k + α 3 j * α 3 k = 0 := by
     intro j k hne
     simpa [Matrix.one_apply, hne] using hjk j k
-  simp only [map_sub, map_sum, map_zsmul, map_nsmul, AddMonoidHom.sub_apply, AddMonoidHom.finset_sum_apply,
-    AddMonoidHom.smul_apply, hml, hs, Fin.sum_univ_four, map_add, AddMonoidHom.add_apply]
+  simp only [map_sub, map_zsmul, map_nsmul, AddMonoidHom.sub_apply, AddMonoidHom.smul_apply, hml, hs, Fin.sum_univ_four, map_add, AddMonoidHom.add_apply]
   linear_combination (norm := module)
       ((-2 : ℤ) * (m : ℤ)) • ((hd 0) • E (mu (z' 0)) (z 0)) +
       ((-2 : ℤ) * (m : ℤ)) • ((ho 0 1 (by decide)) • E (mu (z' 0)) (z 1)) +
@@ -481,7 +480,7 @@ theorem two_cls_eMap {Ω : Type} [Field Ω] [IsAlgClosed Ω] (hA : IsAbelianSche
     rw [hc1, lam_pull_eq_lam_comp_of_hom _ hMmul hMone, ceLam_zb_pt hA hB hD hD' l mu α s L hL e, toBase_map, toBase_map,
       ceZcPair_eMap hD hD' l mu α m hm h₂ hα (fun x y => ceEvc_sym hA hD.isLB l s L hL e x y), hLsum,
       lam_eq_lamHom]
-    simp only [map_sum, map_zsmul, one_smul, ← lam_eq_lamHom]
+    simp only [map_sum, one_smul, ← lam_eq_lamHom]
     rw [Fintype.sum_prod_type]
     simp only [Fin.sum_univ_four, line_bundle_pairing_zeroth hD l mu s L hL e, line_bundle_pairing_first hD hD' l mu s L hL e,
       line_bundle_pairing_second hD l mu s L hL e, line_bundle_pairing_third hD hD' l mu s L hL e, two_nsmul]

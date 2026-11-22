@@ -43,7 +43,6 @@ theorem main : ∀ (K F V : Type) [Field K] [NumberField K] [StarRing K] [Field 
   obtain ⟨a0', ha0'⟩ : a0 ∈ Set.range (algebraMap (𝓞 F) (𝓞 K)) := by
     refine (conjO_eq_iff_mem_range hF a0).1 (RingOfIntegers.ext ?_)
     rw [conjO_coe]
-    change star ((a0 : K)) = (a0 : K)
     rw [ha0x]; exact hs.eq x x
   have ha0ne : a0' ≠ 0 := by
     rintro rfl

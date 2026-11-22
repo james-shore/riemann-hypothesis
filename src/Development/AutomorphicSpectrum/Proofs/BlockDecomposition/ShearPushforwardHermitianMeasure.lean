@@ -125,7 +125,7 @@ theorem diagAt_shearM (a : Fin n) (x : Fin n → K) (hx : x a = 0) :
     by_cases hi : i = j
     · subst hi
       simp [hx]
-    · simp [Matrix.one_apply, hi] <;> ring
+    · simp [hi] <;> ring
   · by_cases hij : i = j
     · subst hij
       simp [hj]

@@ -56,7 +56,7 @@ theorem sum_comm_of_antiInv (K L : Subgroup G) (hKL : K ≤ L) (θ : G → G)
     (isDC_of_reps hA') hF).1
   have e := congrFun key 1
   simp only [Formalism.IndefR.Bridge.dcOp, one_mul, map_mul, Module.End.mul_apply] at e
-  simp only [map_sub, map_sum, LinearMap.zero_apply]
+  simp only [map_sub, map_sum]
   rw [sub_eq_zero]
   exact e
 

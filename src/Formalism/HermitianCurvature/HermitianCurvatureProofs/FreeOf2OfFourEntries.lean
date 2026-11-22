@@ -74,18 +74,14 @@ variable {A S : Type} [Ring A] [StarRing A] [Algebra ℂ A] [StarModule ℂ A] [
 lemma io_mul (x y : A) : (io (x * y) : SlopeTestRemainingChoices S A) = io x * io y := by
   first
   | exact map_mul (Matrix.scalar (Ix S)) x y
-  | simp [io]
 
 lemma io_one : (io (1 : A) : SlopeTestRemainingChoices S A) = 1 := by
   first
   | exact map_one (Matrix.scalar (Ix S))
-  | simp [io]
 
 lemma io_star (x : A) : star (io x : SlopeTestRemainingChoices S A) = io (star x) := by
   first
   | exact Matrix.diagonal_conjTranspose (fun _ : Ix S => x)
-  | (show star (Matrix.scalar (Ix S) x) = Matrix.scalar (Ix S) (star x)
-     simp [Matrix.scalar_apply, Matrix.star_eq_conjTranspose, Matrix.diagonal_conjTranspose]; rfl)
 
 lemma io_comm {x y : A} (h : x * y = y * x) : Commute (io x : SlopeTestRemainingChoices S A) (io y) := by
   show (io x : SlopeTestRemainingChoices S A) * io y = io y * io x
@@ -101,8 +97,7 @@ lemma free_io (a : S) (x : A) : FreeOf a (io x : SlopeTestRemainingChoices S A) 
   intro i j
   exact mul_scalar_comm_of_entries_zero_or_one (eU a i j) x (fun k l => by
     first
-    | (simp only [eU, Matrix.of_apply]; split_ifs <;> simp)
-    | (rw [eU]; simp only [Matrix.of_apply]; split_ifs <;> simp))
+    | (simp only [eU, Matrix.of_apply]; split_ifs <;> simp))
 
 lemma free_mul {a : S} {x y : SlopeTestRemainingChoices S A} (hx : FreeOf a x) (hy : FreeOf a y) : FreeOf a (x * y) := fun i j => (hx i j).mul_right (hy i j)
 
@@ -136,43 +131,34 @@ lemma free_star {a : S} {x : SlopeTestRemainingChoices S A} (hx : FreeOf a x) : 
   | (have h3 := (hx j i).star_star
      rw [e1] at h3
      exact h3)
-  | (show eU a i j * star x = star x * eU a i j
-     rw [← e1, ← star_mul, ← star_mul, (hx j i).eq])
 
 lemma freeOf2_of_four_entries {a : S} {x y z w : SlopeTestRemainingChoices S A} (hx : FreeOf a x) (hy : FreeOf a y) (hz : FreeOf a z)
     (hw : FreeOf a w) : FreeOf2 a !![x, y; z, w] := by
   intro i j
-  fin_cases i <;> fin_cases j <;> first | exact hx | exact hy | exact hz | exact hw | simp [hx, hy, hz, hw]
+  fin_cases i <;> fin_cases j <;> first | exact hx | exact hy | exact hz | exact hw
 
 private lemma d0_eq_diagonal (b : SlopeTestRemainingChoices S A) : d0 b = !![b, 0; 0, b] := by
   first
   | (refine Matrix.ext fun i j => ?_
      fin_cases i <;> fin_cases j <;> rfl)
-  | (refine Matrix.ext fun i j => ?_
-     fin_cases i <;> fin_cases j <;> simp [d0])
 
 lemma gauss_entries (Fs dd ls l p t F : SlopeTestRemainingChoices S A) :
     d0 Fs * !![1, ls; 0, 1] * d0 dd * !![p, 0; 0, t] * !![1, 0; l, 1] * d0 F =
       !![Fs * (dd * p + ls * (dd * t) * l) * F, Fs * (ls * (dd * t)) * F;
         Fs * (dd * t * l) * F, Fs * (dd * t) * F] := by
   first
-  | (simp only [d0_eq_diagonal, Matrix.mul_fin_two, mul_one, one_mul, mul_zero, zero_mul, add_zero, zero_add,
-      mul_add, add_mul, mul_assoc]; done)
-  | (refine Matrix.ext fun i j => ?_
-     fin_cases i <;> fin_cases j <;>
-       simp [d0, Matrix.mul_apply, Fin.sum_univ_two, Matrix.diagonal, mul_add, add_mul, mul_assoc])
+  | (simp only [d0_eq_diagonal, Matrix.mul_fin_two, mul_one, mul_zero, zero_mul, add_zero, zero_add,
+      mul_add, add_mul, mul_assoc])
 
 lemma lam_conj (l : SlopeTestRemainingChoices S A) : (!![1, 0; l, 1] : M2 (SlopeTestRemainingChoices S A))ᴴ = !![1, star l; 0, 1] := by
   first
   | (refine Matrix.ext fun i j => ?_
      fin_cases i <;> fin_cases j <;> simp)
-  | (ext i j; fin_cases i <;> fin_cases j <;> simp)
 
 lemma diag_conj (x y : SlopeTestRemainingChoices S A) : (!![x, 0; 0, y] : M2 (SlopeTestRemainingChoices S A))ᴴ = !![star x, 0; 0, star y] := by
   first
   | (refine Matrix.ext fun i j => ?_
      fin_cases i <;> fin_cases j <;> simp)
-  | (ext i j; fin_cases i <;> fin_cases j <;> simp)
 
 end Slots
 
@@ -183,7 +169,6 @@ variable {A S : Type} [Ring A] [StarRing A] [Algebra ℂ A] [StarModule ℂ A] [
 lemma fn_comm (L : LevelData A r) {g h : A} (hg : g ∈ zfns L) (hh : h ∈ zfns L) : g * h = h * g := by
   first
   | exact L.16 g (Set.mem_union_right _ hg) h (Set.mem_union_right _ hh)
-  | exact L.16 g (Or.inr hg) h (Or.inr hh)
 
 lemma mem_ζ (L : LevelData A r) : L.ζ ∈ zfns L := by
   simp [zfns]
@@ -217,7 +202,6 @@ lemma star_GG {L : LevelData A r} (h : IsStarLevel L) : star L.GG = L.GG := by
   rw [L.GG_def, star_sub, e]
   first
   | rw [← algebraMap_star_comm, h'.2.2]
-  | rw [Algebra.algebraMap_eq_smul_one, star_smul, star_one, h'.2.2]
 
 lemma star_GGi {L : LevelData A r} (h : IsStarLevel L) : star L.GGi = L.GGi := by
   calc star L.GGi = star L.GGi * (L.GG * L.GGi) := by rw [L.GG_GGi, mul_one]
@@ -375,11 +359,8 @@ lemma diag_entries (p1 p2 w c1 c2 e1 e2 : SlopeTestRemainingChoices S A) :
     !![p1, 0; 0, p2] * d0 w * !![c1, 0; 0, c2] * !![e1, 0; 0, e2] =
       !![p1 * w * c1 * e1, 0; 0, p2 * w * c2 * e2] := by
   first
-  | (simp only [d0_eq_diagonal, Matrix.mul_fin_two, mul_one, one_mul, mul_zero, zero_mul, add_zero, zero_add,
-      mul_assoc]; done)
-  | (refine Matrix.ext fun i j => ?_
-     fin_cases i <;> fin_cases j <;>
-       simp [d0, Matrix.mul_apply, Fin.sum_univ_two, Matrix.diagonal, mul_assoc])
+  | (simp only [d0_eq_diagonal, Matrix.mul_fin_two, mul_zero, zero_mul, add_zero, zero_add,
+      mul_assoc])
 
 theorem plusForm (L : LevelData A r) (f : FrameData S A) (a : S) (Ya : ℂ) (H : PlusHyp L f a Ya) :
     (f.plus L a Ya).RR = star (f.plus L a Ya).F * (f.plus L a Ya).d L * (f.plus L a Ya).F := by
@@ -465,7 +446,7 @@ theorem plusForm (L : LevelData A r) (f : FrameData S A) (a : S) (Ya : ℂ) (H :
   have hZ : (!![io L.ζi, 0; 0, io L.ζbi] * !![1, 0; io L.GG * f.l L Ya, io L.GG] : M2 (SlopeTestRemainingChoices S A)) =
       !![io L.ζi, 0; 0, io L.ζbi * io L.GG] * !![1, 0; f.l L Ya, 1] := by
     rw [Matrix.mul_fin_two, Matrix.mul_fin_two]
-    simp only [mul_one, mul_zero, zero_mul, add_zero, zero_add, one_mul, mul_assoc]
+    simp only [mul_one, mul_zero, zero_mul, add_zero, zero_add, mul_assoc]
   show f.RR * ins a (f.TT Ya) =
     star (ins a (!![io L.ζi, 0; 0, io L.ζbi] * !![1, 0; io L.GG * f.l L Ya, io L.GG]) * f.F) *
       ((wt L : SlopeTestRemainingChoices S A) ^ (f.N + 1) * (f.c * ins a !![f.q Ya • f.xi (Ya + 1), 0; 0, f.x Ya])) *

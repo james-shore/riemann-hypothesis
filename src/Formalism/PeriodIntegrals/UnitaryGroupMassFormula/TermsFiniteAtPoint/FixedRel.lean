@@ -52,7 +52,7 @@ variable {E : Type} [Field E] [NumberField E] [StarRing E] {S : HSpace E} {r : �
 def piL (e f : Fin r → S.V) : S.V →ₗ[E] S.V := LinearMap.id - ∑ c, (S.hT (f c)).smulRight (e c)
 
 theorem piL_apply (e f : Fin r → S.V) (x : S.V) : piL e f x = x - ∑ c, S.hT (f c) x • e c := by
-  simp [piL, LinearMap.smulRight_apply]
+  simp [piL]
 
 theorem herm_star (x y : S.V) : star (S.hT x y) = S.hT y x := by
   exact S.herm.eq x y
@@ -137,7 +137,7 @@ theorem related_gen (hH : HeisOp) (hSk : SkewSolve) {T T' : E} (Λ : Submodule (
       have hh : star (S.hT (a c) (a c)) = S.hT (a c) (a c) := herm_star _ _
       simp only [s, lt_irrefl, if_false, if_true, star_neg, star_mul', hh]
       linear_combination (-(S.hT (a c) (a c))) * hθ
-    · simp [s, h, not_lt.2 h.le, h.ne, h.ne', herm_star]
+    · simp [s, h, not_lt.2 h.le, h.ne', herm_star]
   have haa : ∀ c d, S.hT (a c) (a d) = (((nd * nQ) ^ 2 : ℕ) : E) * S.hT (a' c) (a' d) := by
     intro c d
     rw [haa', haa', map_smul, LinearMap.map_smulₛₗ, LinearMap.smul_apply]

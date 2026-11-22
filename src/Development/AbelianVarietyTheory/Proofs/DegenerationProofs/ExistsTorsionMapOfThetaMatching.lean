@@ -14,7 +14,7 @@ namespace GlobalTheory.Ex.TorsMatch
 theorem txT_zero {O : Type} [CommRing O] (N : NumD O) (m : ℕ) (p : N.QT (m ^ 2)) (hp : p.1.1 = 1) :
     N.txT m p 0 = N.uth m p.1.2.b 1 := by
   simp only [NumD.txT, NumD.vt, NumD.wQ, NumB.uth, NumB.mth, NumB.uV, hp, toAdd_one, NumD.ψ_zero, NumD.Gt.s_zero,
-    NumD.c_zero, N.cub.N_one, N.cub.face, _root_.one_mul, div_one, NumD.Gt.pow_b, Units.val_one, div_eq_mul_inv,
+    NumD.c_zero, N.cub.N_one, N.cub.face, _root_.one_mul, NumD.Gt.pow_b, Units.val_one, div_eq_mul_inv,
     Units.val_mul, inv_one]
   ring
 

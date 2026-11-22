@@ -39,12 +39,10 @@ theorem kum_smul (Ω : Type) [Field Ω] [Algebra ℚ Ω] (ε : Ω →+* ℂ) (X 
     haveI : NeZero (l ^ n) := ⟨hl.ne'⟩
     simp only
     rw [← mul_pow, hrel δ hδ z hz, mul_pow, mul_pow, ZMod.val_mul]
-    push_cast
     have em := exp_val_mod (l ^ n) (k * (χ δ).val) hl
     push_cast at em
     rw [em, ← Complex.exp_nat_mul]
     congr 2
-    push_cast
     ring
 
 end GlobalTheory.KZ.H3

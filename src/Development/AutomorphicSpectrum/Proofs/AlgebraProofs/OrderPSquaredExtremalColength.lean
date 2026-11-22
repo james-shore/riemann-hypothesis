@@ -288,7 +288,7 @@ theorem exists_hasColen_tens (p : ℕ) [Fact p.Prime] (hv : v.Integers R) (hp : 
     by_cases h : x = j
     · subst h
       simp
-    · simp [h, Matrix.one_apply]
+    · simp [h]
   have hc₁ : HasColen R v A₁.carrier (v (Matrix.of fun x j : ZMod p => e j x).det) :=
     ⟨Matrix.of fun x j : ZMod p => e j x, rfl, rfl⟩
   have hc₂ : HasColen R v A₂.carrier 1 :=

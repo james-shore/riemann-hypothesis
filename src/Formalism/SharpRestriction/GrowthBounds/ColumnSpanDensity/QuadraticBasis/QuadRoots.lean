@@ -125,8 +125,8 @@ private theorem qr_hensel {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuat
   have hmax := (IsDiscreteValuationRing.irreducible_iff_uniformizer w).mp hw
   have hd : eval a₀ (derivative (X ^ 2 + C B * X + C D)) = 2 * a₀ + B := by
     simp only [derivative_add, derivative_X_pow, derivative_mul, derivative_C, derivative_X, eval_add, eval_mul,
-      eval_C, eval_X, eval_pow, eval_zero, eval_one, eval_natCast, zero_mul, mul_one, add_zero, zero_add]
-    (try norm_num) <;> ring
+      eval_C, eval_X, eval_pow, zero_mul, mul_one, add_zero, zero_add]
+    (try norm_num)
   obtain ⟨θ, hθ, hθa⟩ := HenselianRing.is_henselian (I := IsLocalRing.maximalIdeal O)
     (X ^ 2 + C B * X + C D) (by monicity!) a₀
     (by rw [hmax, Ideal.mem_span_singleton]; simpa using h1)
@@ -150,7 +150,7 @@ private theorem qr_transport (p n : ℕ) {W₁ W₂ : Type} [CommRing W₁] [Com
   obtain ⟨ψ, hψ⟩ : ∃ ψ : (W₁ ⧸ Ideal.span {(p : W₁)}) ≃+* (W₂ ⧸ Ideal.span {(p : W₂)}),
       ∀ x, ψ (Ideal.Quotient.mk _ x) = Ideal.Quotient.mk _ (φ x) :=
     ⟨Ideal.quotientEquiv _ _ φ (by rw [Ideal.map_span, Set.image_singleton]; simp),
-      fun x => by first | exact Ideal.quotientEquiv_mk _ _ _ _ x | simp [Ideal.quotientEquiv_mk] | rfl⟩
+      fun x => by first | exact Ideal.quotientEquiv_mk _ _ _ _ x | rfl⟩
   refine ⟨?_, ?_⟩
   · have h := Polynomial.map_dvd (ψ : (W₁ ⧸ Ideal.span {(p : W₁)}) →+* (W₂ ⧸ Ideal.span {(p : W₂)})) hd
     simpa [hψ] using h
@@ -211,7 +211,7 @@ private theorem qr_side (p n : ℕ) (hp : p.Prime) (hn : 0 < n) (W O : Type) [Co
         have e : Ideal.Quotient.mk (Ideal.span {w}) (2 * a₀ + j b) =
             2 * Ideal.Quotient.mk (Ideal.span {w}) a₀ + ι (Ideal.Quotient.mk _ b) := by
           rw [hι, map_add, map_mul]
-          first | rfl | (rw [map_ofNat]) | norm_num | simp
+          first | rfl
         rw [← e, Ideal.Quotient.eq_zero_iff_mem, Ideal.mem_span_singleton]
         exact hdv)
     refine ⟨θ, hθ, fun a ha => htn (Ideal.Quotient.mk _ a) ?_⟩

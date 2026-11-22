@@ -9,4 +9,4 @@ theorem _root_.GlobalTheory.T.finite_complexPoints_transversal_zeros : ∀ (X : 
     ∀ (k : ℕ) (φ : Fin k → Γ(X, U)), {z : CxPts p (RingHom.id ℂ) | ∃ hz : z ∈ CxPts.ptsIn p (RingHom.id ℂ) U,
       (∀ j, CxPts.evHom hz (φ j) = 0) ∧
         RingHom.ker (CxPts.evHom hz) ≤ Ideal.span (Set.range φ) ⊔ RingHom.ker (CxPts.evHom hz) ^ 2}.Finite := by
-  first | (exact @GlobalTheory.TransvZeros.finite_transv_zeros) | (exact GlobalTheory.TransvZeros.finite_transv_zeros) | (intros; apply GlobalTheory.TransvZeros.finite_transv_zeros  <;> assumption)
+  first | (exact @GlobalTheory.TransvZeros.finite_transv_zeros)

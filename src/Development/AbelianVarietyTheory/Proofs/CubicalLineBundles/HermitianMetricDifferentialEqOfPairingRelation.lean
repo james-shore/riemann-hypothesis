@@ -76,7 +76,7 @@ private lemma hermForm_sum_smul_right {g : ℕ} (Hm : Matrix (Fin g) (Fin g) ℂ
     rw [Finset.sum_insert hi, Finset.sum_insert hi, ← ih]
     simp only [hermForm, star_add, star_smul, Matrix.mulVec_add, Matrix.mulVec_smul, dotProduct_add,
       dotProduct_smul, smul_eq_mul]
-    simp [Complex.star_def]
+    simp
 
 private lemma hermFam_form_apply_zero {K V : Type*} [Field K] [AddCommGroup V] [Module K V] (h : HermFam K V)
     (σ : K →+* ℂ) (x : V) : h.form σ x 0 = 0 := by

@@ -41,7 +41,6 @@ theorem isBaseCond_cond0 : ∀ (R : Ranks) (H : Formalism.BasicNotions.Host R) (
     unfold cond0
     first
     | exact Ideal.mul_le_right
-    | exact Ideal.mul_le_left
   refine ⟨?_, ?_, ?_⟩
   · intro h
     rcases Ideal.mul_eq_bot.mp h with h1 | h1

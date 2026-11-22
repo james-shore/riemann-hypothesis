@@ -16,7 +16,7 @@ lemma isAdmissibleSmoothingFactor_divided_indices (c m : ℕ) (x : Fin 2 → ℚ
   refine ⟨hc1, hc6, ?_⟩
   rintro ⟨⟨k, hk⟩, ⟨l, hl⟩⟩
   have hmQ : (m : ℚ) ≠ 0 := by exact_mod_cast hm.ne'
-  simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons] at hk hl
+  simp only [Matrix.cons_val_zero, Matrix.cons_val_one] at hk hl
   apply hnot
   refine ⟨⟨m * k - c * a, ?_⟩, ⟨m * l - c * b, ?_⟩⟩
   · push_cast; rw [hk]; field_simp; ring

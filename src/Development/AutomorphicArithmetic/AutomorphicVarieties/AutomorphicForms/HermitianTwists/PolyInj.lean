@@ -15,10 +15,8 @@ theorem UpperTheory.V.Af.Rn.polyInj :
   have hqC : ((q : ℂ) ^ j) ≠ 0 := zpow_ne_zero _ (by exact_mod_cast hq.ne')
   have h1 := Multiset.map_injective (mul_right_injective₀ hqC) hroots
   unfold UpperTheory.V.Af.algSat at h1
-  simp only [Multiset.bind_def, Multiset.pure_def, Multiset.bind_singleton, ← Multiset.map_map] at h1
+  simp only [Multiset.bind_def, Multiset.pure_def, Multiset.bind_singleton] at h1
   refine Multiset.map_injective (fun _ _ e ↦ Units.ext e) (Multiset.map_injective (mul_right_injective₀ ?_) h1)
   have hq' : (0 : ℝ) < q := by exact_mod_cast hq
   first
     | exact Complex.ofReal_ne_zero.mpr (Real.rpow_pos_of_pos hq' _).ne'
-    | simp [hq.ne']
-    | exact_mod_cast (Real.rpow_pos_of_pos hq' _).ne'

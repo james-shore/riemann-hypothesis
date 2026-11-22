@@ -91,7 +91,7 @@ private theorem Ch.pow (hχ : L.Ch χ) {d : ∀ v, Fin 3 → G v} (hd : L.Dm d) 
   induction N with
   | zero =>
     simp only [pow_zero]
-    exact hχ.lev 1 (fun v _ i => by simp [Subgroup.one_mem])
+    exact hχ.lev 1 (fun v _ i => by simp)
   | succ n ih =>
     rw [pow_succ, pow_succ, hχ.mul _ _ (hd.pow n) hd, ih]
 
@@ -197,7 +197,7 @@ theorem UpperTheory.V.Z.Sym.So.charShape :
     ⟨fun y v => ![pp v, hat y v, (pp v)⁻¹], fun _ _ => rfl⟩
   have hdm : ∀ {d d' : ParN F 3}, A.DomS d → A.DomS d' → A.DomS (d * d') :=
     fun hd hd' v hv => dom_mul' (hd v hv) (hd' v hv)
-  have hχ1 : χ 1 = 1 := hlev 1 (fun v _ i => by simp [Subgroup.one_mem])
+  have hχ1 : χ 1 = 1 := hlev 1 (fun v _ i => by simp)
   have hπ : ∀ v, 0 < valuation (Kv v) ((pp v : (Kv v)ˣ) : Kv v) ∧
       valuation (Kv v) ((pp v : (Kv v)ˣ) : Kv v) < 1 := fun v => by
     rw [hpp]

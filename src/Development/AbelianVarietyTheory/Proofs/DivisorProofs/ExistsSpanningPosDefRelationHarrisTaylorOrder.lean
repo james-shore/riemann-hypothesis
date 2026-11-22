@@ -194,8 +194,6 @@ theorem exists_W_datum (D : Datum p) : ∃ (r : ℕ) (x : Module.Basis (Fin r) �
     have h : 0 < LinearMap.trace ℤ D.La (DistribMulAction.toLinearMap ℤ D.La (a * (D.star a).unop)) := by
       first
         | exact GlobalTheory.UPel.HT.trace_mul_star_pos p D a ha
-        | exact GlobalTheory.UPel.HT.trace_mul_star_pos D a ha
-        | exact GlobalTheory.UPel.HT.trace_mul_star_pos a ha
     have h' : htTrace D (htStar D a * a) = htTrace D (a * htStar D a) := htTrace_mul_comm D _ _
     have h'' : 0 < htTrace D (a * htStar D a) := h
     omega

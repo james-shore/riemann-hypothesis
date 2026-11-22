@@ -121,8 +121,7 @@ theorem thI_hR (v : InfinitePlace I.F) (x : Fin I.n → I.E) (w : Fin I.n → TI
 theorem phi_hE (v : InfinitePlace I.F) (x y : Fin I.n → I.E) :
     I.φ v (Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.hE I.cm.sig I.J x y) = Bv I v (phV I v x) (phV I v y) := by
   have hs : ∀ a : I.E, I.φ v (I.cm.sig a) = star (I.φ v a) := fun a => I.cm.cmUnram.2.1 (I.φ v) a
-  simp only [Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.hE, Formalism.UG.hform, map_sum, map_mul, AlgHom.coe_toRingHom,
-    RingHom.coe_coe, hs, Bv, phV]
+  simp only [Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.hE, Formalism.UG.hform, map_sum, map_mul, RingHom.coe_coe, hs, Bv, phV]
 
 theorem hJ_conj (v : InfinitePlace I.F) (a b : Fin I.n → ℂ) :
     Formalism.L2.SG.HidaSetting.hJ (I.ε v) ((I.P v)⁻¹ *ᵥ a) ((I.P v)⁻¹ *ᵥ b) = Bv I v a b := by

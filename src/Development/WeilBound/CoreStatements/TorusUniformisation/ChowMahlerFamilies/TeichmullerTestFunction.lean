@@ -594,7 +594,7 @@ theorem PositivityTheory.Xgn.teichmuller_test_function : ∀ (E : Type) [Field E
       rw [← e1, Finset.sum_mul, ← Finset.sum_add_distrib]
       refine Finset.sum_congr rfl fun k _ => ?_
       rw [← hχσ, ht, hk, map_mul]
-      simp only [RingHom.comp_apply, Subalgebra.coe_algebraMap]
+      simp only [RingHom.comp_apply]
       ring)
     refine part3 hκ (toN_zero sc) (fun k x => pq (Ideal.Quotient.mk _ (RingOfIntegers.basis E k)) • x)
       (fun k => mulT _ p (RingOfIntegers.basis E k)) (fun k => P.ρ (RingOfIntegers.basis E k))

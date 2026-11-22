@@ -46,11 +46,6 @@ theorem exists_mul_mem_adjoin {R F K : Type} [CommRing R] [IsDomain R] [Field F]
     ∃ d : R, d ≠ 0 ∧ algebraMap R K d * z ∈ Algebra.adjoin R {θ} := by
   first
   | (rename_i h_3 h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11; revert R F K h_3 h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11 θ z hz; exact @_root_.GlobalTheory.TargetInequalityLemmas.target)
-  | exact @_root_.GlobalTheory.TargetInequalityLemmas.target
-  | exact _root_.GlobalTheory.TargetInequalityLemmas.target
-  | (apply _root_.GlobalTheory.TargetInequalityLemmas.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TargetInequalityLemmas.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TargetInequalityLemmas.target <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TargetInequalityLemmas.target ..)
 
 theorem exists_primitive_monic_separable_specialization :

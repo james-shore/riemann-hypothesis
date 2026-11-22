@@ -65,7 +65,7 @@ theorem few_roots {m p M : ℕ} {Ω : Fin m → Type} [∀ i, Field (Ω i)] [∀
           refine Finset.card_le_card_of_injOn (fun j => ((t j : ℚ) : Ω i)) ?_ ?_
           · intro j hj
             simp only [Finset.coe_filter, Finset.mem_univ, true_and, Set.mem_setOf_eq] at hj
-            simp only [Finset.coe_sort_coe, Finset.mem_coe, Multiset.mem_toFinset]
+            simp only [Finset.mem_coe, Multiset.mem_toFinset]
             rw [Polynomial.mem_roots hP0, Polynomial.IsRoot.def, hev]
             exact hj
           · intro a _ b _ hab

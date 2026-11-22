@@ -146,7 +146,7 @@ private theorem e_nn {k : ℕ} (i : Fin k) : 0 ≤ e i := by
   simp only [e, Pi.zero_apply]
   rcases eq_or_ne j i with rfl | h
   · simp
-  · simp [Pi.single_apply, h]
+  · simp [h]
 
 private theorem dif_congr {k : ℕ} (h h' : Deg k → ℤ) (hh : ∀ᶠ d in atTop, h d = h' d) (L : List (Deg k)) :
     ∀ᶠ d in atTop, dif L h d = dif L h' d := by

@@ -108,7 +108,7 @@ theorem eq_idempotent_mul_add_of_mul_sub_eq {n : ℕ} (a : Matrix (Fin n) (Fin c
     · intro hn; exact absurd (Finset.mem_univ _) hn
   · have hp' : c - 1 - q.1 < ρ := by have := q.2; omega
     rw [Finset.sum_eq_zero, Finset.sum_eq_single ⟨c - 1 - q.1, hp'⟩]
-    · rw [if_pos (by have := q.2; simp only [Fin.val_mk]; omega), zero_add,
+    · rw [if_pos (by have := q.2; simp only; omega), zero_add,
         show ((Fin.castLE h ⟨c - 1 - q.1, hp'⟩ : Fin c).rev) = q from Fin.ext (by simp [Fin.val_rev]; omega),
         mul_comm, ← mul_assoc, inv_mul_cancel₀ (hs _), one_mul]
     · intro p _ hp

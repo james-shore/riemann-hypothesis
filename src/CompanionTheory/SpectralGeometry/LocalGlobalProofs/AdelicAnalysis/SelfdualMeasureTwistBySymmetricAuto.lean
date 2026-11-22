@@ -38,7 +38,7 @@ theorem selfDual_twist : ∀ (V : Type) [AddCommGroup V] [TopologicalSpace V] [I
     refine h4.congr (Filter.Eventually.of_forall fun y => ?_)
     have hsR : (s : ℝ) ≠ 0 := by exact_mod_cast hs0
     have hsC : ((s : ℝ) : ℂ) ≠ 0 := by exact_mod_cast hsR
-    simp [NNReal.smul_def, smul_smul]
+    simp [NNReal.smul_def]
     rw [← mul_assoc, mul_inv_cancel₀ hsC, one_mul]
   have hintH : Integrable H μ := by
     have h5 : Integrable H (μ.map B) := (hemb.integrable_map_iff).2 hint2

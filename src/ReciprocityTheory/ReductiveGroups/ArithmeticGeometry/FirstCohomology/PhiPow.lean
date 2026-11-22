@@ -24,8 +24,6 @@ theorem trPt_one : DegPre.trPt D F 1 = 𝟙 _ := by
   rw [show padd D.P.A (D.prB F) 1 = D.prB F * 1 from rfl, _root_.mul_one]
   first
     | exact lift_fst_snd
-    | (simp [DegPre.prB]; done)
-    | (unfold DegPre.prB; clear * -; done)
 
 theorem trPt_mul (m m' : TF (R := R) F ⟶ D.P.A) :
     DegPre.trPt D F m ≫ DegPre.trPt D F m' = DegPre.trPt D F (m * m') := by
@@ -45,8 +43,6 @@ theorem trPt_mul (m m' : TF (R := R) F ⟶ D.P.A) :
     intro m₀
     first
       | exact lift_snd _ _
-      | (simp only [DegPre.prB, lift_snd]; rfl)
-      | (simp [DegPre.prB]; rfl)
   simp only [DegPre.trPt]
   rw [comp_lift, lift_fst]
   congr 1

@@ -62,17 +62,13 @@ theorem heis_lint_fin (m : ℕ) {d : ℝ} (hd : (2 * m + 1 : ℝ) < d) :
     haveI hC : (volume : Measure ℂ).IsAddHaarMeasure := by
       first
         | infer_instance
-        | exact Complex.isAddHaarMeasure_volume
     haveI hP : (volume : Measure (Fin m → ℂ)).IsAddHaarMeasure := by
       first
         | infer_instance
-        | exact MeasureTheory.Measure.pi.isAddHaarMeasure _
     haveI hV : (volume : Measure ((Fin m → ℂ) × ℝ)).IsAddHaarMeasure := by
       first
         | infer_instance
         | exact MeasureTheory.Measure.prod.instIsAddHaarMeasure _ _
-        | (show ((volume : Measure (Fin m → ℂ)).prod (volume : Measure ℝ)).IsAddHaarMeasure
-           infer_instance)
     apply finite_integral_one_add_norm
     simp only [Module.finrank_prod, Module.finrank_pi_fintype, Complex.finrank_real_complex,
       Module.finrank_self, Finset.sum_const, Finset.card_univ, Fintype.card_fin, smul_eq_mul]

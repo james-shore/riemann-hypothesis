@@ -109,7 +109,7 @@ theorem exists_pow_smul_mem [IsDomain R] [Finite T] {A : Subalgebra R (T → R)}
     obtain ⟨d, hd, hfull⟩ := hA.full
     have hg : (⟨d • Pi.single t (1 : R), hfull _⟩ : A) ∈ augIdeal A := by
       rw [OrderApi.mem_augIdeal]
-      simp [Pi.single_apply, ht.symm]
+      simp [ht.symm]
     have h1 := congrFun (congrArg Subtype.val (hu _ hg)) t
     have h2 : (u : T → R) t * d = 0 := by simpa using h1
     exact (mul_eq_zero.1 h2).resolve_right hd
@@ -122,7 +122,7 @@ theorem exists_pow_smul_mem [IsDomain R] [Finite T] {A : Subalgebra R (T → R)}
     · subst hx
       simp [hu1]
     · have : t⁻¹ * x ≠ 1 := fun h => hx (by rw [inv_mul_eq_one] at h; exact h.symm)
-      simp [Pi.single_apply, hx, hut _ this]
+      simp [hx, hut _ this]
   refine ⟨k, fun f => ?_⟩
   have h1 : n ^ k • f = ∑ t, f t • (n ^ k • (Pi.single t (1 : R) : T → R)) := by
     ext x
@@ -148,7 +148,7 @@ theorem isBaseChange_of_sandwich [Fintype W] (L : Submodule R (W → Ω)) (c : R
   have hb : ∀ a : W, (c : Ω) • (Pi.single a (1 : Ω) : W → Ω) ∈ L := fun a => h2 _ fun b => by
     by_cases h : b = a
     · subst h; simp [R.one_mem]
-    · simp [Pi.single_apply, h, R.zero_mem]
+    · simp [h, R.zero_mem]
   let bas : W → L := fun a => ⟨_, hb a⟩
   have hsum : ∀ l : L, ∑ a, (⟨(l : W → Ω) a, h1 _ l.2 a⟩ : R) • bas a = c • l := by
     intro l
@@ -212,7 +212,7 @@ theorem lat_clauses [Finite T] [Fintype W] {A : Subalgebra R (T → R)} (hA : Is
   have h3 : ∀ h : W → Ω, (∀ a, h a ∈ R) → (c : Ω) • h ∈ M := by
     intro h hh
     refine (hM _).2 ⟨c • fun t => ⟨h (fromN t), hh _⟩, hfull _, fun a => ?_⟩
-    simp [hft, Subalgebra.smul_def]
+    simp [hft]
   have hpm : ∀ g, g ∈ stdLat R W ↔ ∀ a, g a ∈ R := by
     intro g
     simp [stdLat, AddSubgroup.mem_pi]

@@ -40,7 +40,7 @@ theorem heisFun_parFun : ∀ (F : Type) [Field F] [CharZero F] [ValuativeRel F] 
     have h := form_mul c Q p (fromCols x' 0) (fromCols x 0)
     change form c Q (fromCols x' 0 * mat c p) (fromCols x 0 * mat c p) = _ at h
     rw [key, key] at h
-    simp only [Matrix.zero_mul, add_zero, zero_add] at h
+    simp only [Matrix.zero_mul, add_zero] at h
     rw [spl (x' * A) (x' * B), spl (x * A) (x * B), form_add_left, form_add_right, form_add_right,
       form_left_left, form_left_left, form_right_right, form_swap c hc hQ (fromCols (x * A) 0) (fromCols 0 (x' * B))] at h
     linear_combination h

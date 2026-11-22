@@ -51,7 +51,7 @@ theorem algebraMap_mem_intE {d : ℕ} (bs : Module.Basis (Fin d) F E) (v : Heigh
 
 theorem repr_tmul_apply {d : ℕ} (bs : Module.Basis (Fin d) F E) (R : Type) [CommRing R] [Algebra F R] (c : R) (x : E)
     (k : Fin d) : (Algebra.TensorProduct.basis R bs).repr (c ⊗ₜ[F] x) k = c * algebraMap F R (bs.repr x k) := by
-  simp [Algebra.TensorProduct.basis_repr_tmul, Algebra.smul_def, mul_comm]
+  simp [Algebra.TensorProduct.basis_repr_tmul]
 
 theorem eq_sum_tmul {d : ℕ} (bs : Module.Basis (Fin d) F E) (R : Type) [CommRing R] [Algebra F R] (e : R ⊗[F] E) :
     e = ∑ k, (Algebra.TensorProduct.basis R bs).repr e k ⊗ₜ[F] bs k := by

@@ -23,7 +23,7 @@ theorem boundary_closed_torus_conj : ∀ (X : Scheme.{0}) (Ω : Type) [Field Ω]
       ext w
       have hw : w.1 ∈ mcPts (mCoordIdeal y) := w.2
       rw [Set.mem_iInter₂]
-      simp only [mcPts, Set.mem_preimage, Set.mem_inter_iff, Set.mem_ofPred_eq] at hw ⊢
+      simp only [mcPts, Set.mem_ofPred_eq] at hw ⊢
       exact ⟨fun h => h.2.2, fun h => ⟨hw, hw.1, h⟩⟩
     rw [e]
     refine isClosed_iInter fun f => isClosed_iInter fun _ => isClosed_eq ?_ continuous_const

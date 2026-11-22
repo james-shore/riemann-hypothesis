@@ -19,7 +19,7 @@ theorem mem_adjoin (L : ℕ) (x : On p L) : x ∈ Algebra.adjoin (O0 p) {xn p L,
   have hb : ∀ b : O0 p, Ideal.Quotient.mk (towerIdeal p L) (C (C b)) ∈ S := by
     intro b
     have : Ideal.Quotient.mk (towerIdeal p L) (C (C b)) = algebraMap (O0 p) (On p L) b := by
-      first | rfl | simp [Ideal.Quotient.algebraMap_eq, Polynomial.algebraMap_apply]
+      first | rfl
     rw [this]; exact S.algebraMap_mem b
   have hC : ∀ a : Polynomial (O0 p), Ideal.Quotient.mk (towerIdeal p L) (C a) ∈ S := by
     intro a

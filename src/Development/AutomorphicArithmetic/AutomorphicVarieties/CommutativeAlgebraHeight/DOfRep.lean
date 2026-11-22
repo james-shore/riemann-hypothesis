@@ -17,7 +17,7 @@ private theorem chiS_ofRep {n : ℕ} {A E ι : Type} [CommRing A] [Ring E] [Alge
   rw [map_sub, h1, Det.repS_tmul, Matrix.charpoly, Matrix.charmatrix]
   congr 2
   ext1 a b
-  by_cases hab : a = b <;> simp [hab, Matrix.one_apply, Matrix.diagonal_apply]
+  by_cases hab : a = b <;> simp [hab]
 
 private theorem chi_ofRep {n : ℕ} {A E ι : Type} [CommRing A] [Ring E] [Algebra A E] [Fintype ι] [DecidableEq ι]
     (h : Fintype.card ι = n) (r : E →ₐ[A] Matrix ι ι A) (x : E) :
@@ -26,7 +26,7 @@ private theorem chi_ofRep {n : ℕ} {A E ι : Type} [CommRing A] [Ring E] [Algeb
   rw [map_sub, Det.repS_tmul, Det.repS_tmul, Matrix.charpoly, Matrix.charmatrix]
   congr 2
   · ext1 a b
-    by_cases hab : a = b <;> simp [hab, Matrix.one_apply, Matrix.diagonal_apply]
+    by_cases hab : a = b <;> simp [hab]
   · ext1 a b
     simp
 

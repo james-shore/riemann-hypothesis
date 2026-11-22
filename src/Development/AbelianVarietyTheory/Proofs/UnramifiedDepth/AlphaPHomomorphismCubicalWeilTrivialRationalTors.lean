@@ -47,13 +47,11 @@ theorem cubWeil_alpha_rational : ∀ (Ω : Type) [Field Ω] (p : ℕ) [Fact p.Pr
   · have : ζ A a = 1 := unitsOfΓ_injective s A (key.trans (map_one _).symm)
     exact this ▸ hζ A a ha
   · intro A B _ _ _ _ f a ha
-    beta_reduce
     have hb : f a ^ p = 0 := by rw [← map_pow, ha, map_zero]
     have h₁ := (hζ A a ha).comp (homAt s f)
     rw [← hg.1 A B f a ha, ← Category.assoc, hom_comp, Subsingleton.elim (f.comp (Algebra.ofId Ω A)) (Algebra.ofId Ω B)] at h₁
     rw [(hζ B (f a) hb).unique h₁, unitsOfΓ_natural]
   · intro A _ _ a a' ha ha'
-    beta_reduce
     have hs : (a + a') ^ p = 0 := by
       rcases subsingleton_or_nontrivial A with _ | _
       · exact Subsingleton.elim _ _

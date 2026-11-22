@@ -40,7 +40,7 @@ theorem frobS_eis_mem : ∀ (l : ℕ) [Fact l.Prime] (a e : ℕ) [NeZero a] [NeZ
       · subst h1
         have hfac : (l : K)⁻¹ * (l.factorial : K) = ((l - 1).factorial : K) := by
           rw [← Nat.mul_factorial_pred hlp.ne_zero, Nat.cast_mul, ← mul_assoc, inv_mul_cancel₀ hl0, one_mul]
-        simp only [h0, hle, if_false, if_true, zero_add, mul_one, map_natCast]
+        simp only [h0, if_false, if_true, zero_add, mul_one, map_natCast]
         rw [Nat.mul_div_cancel _ (Nat.pos_of_ne_zero (NeZero.ne e)), mul_comm, hfac]
       · simp [h0, h1]
   · funext τ

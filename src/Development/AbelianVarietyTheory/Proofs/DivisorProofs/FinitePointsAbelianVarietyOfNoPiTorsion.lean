@@ -40,7 +40,7 @@ theorem act_natCast (act : OAct (𝓞 E) A) (n : ℕ) : act.act (n : 𝓞 E) = �
     have h := act.add 0 0
     rw [add_zero] at h
     rw [Nat.cast_zero, pow_zero]
-    first | exact left_eq_mul.1 h | exact self_eq_mul_right.1 h
+    first | exact left_eq_mul.1 h
   | succ n ih => rw [Nat.cast_succ, act.add, ih, act.one, pow_succ]
 
 theorem comp_act_natCast (act : OAct (𝓞 E) A) (x : 𝟙_ (Over (Sp k)) ⟶ A) (n : ℕ) :

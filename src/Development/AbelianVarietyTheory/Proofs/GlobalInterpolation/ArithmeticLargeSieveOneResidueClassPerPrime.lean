@@ -63,7 +63,7 @@ private lemma totient_mul_sigma_pow_le_pow_succ (K : ℕ) :
         rw [← pow_add]; congr 1
         cases a with
         | zero => omega
-        | succ a => simp [Nat.succ_sub_one]; ring
+        | succ a => simp; ring
       _ ≤ (p ^ a) ^ (K + 1) := by rw [← pow_mul]
   | zero => exact absurd hn (lt_irrefl 0)
   | one => simp
@@ -386,7 +386,7 @@ private lemma norm_sum_sq_le_totient_mul_of_avoids_classes (S : Finset ℕ) :
   by_cases h1 : d = 1
   · subst h1
     have : (Finset.range 1).filter (Nat.Coprime 1) = {0} := by decide
-    simp [this]
+    simp
   obtain ⟨p, hp, hpd⟩ := Nat.exists_prime_and_dvd h1
   obtain ⟨d₁, rfl⟩ := hpd
   rw [mul_comm p d₁] at hsq hcl ⊢

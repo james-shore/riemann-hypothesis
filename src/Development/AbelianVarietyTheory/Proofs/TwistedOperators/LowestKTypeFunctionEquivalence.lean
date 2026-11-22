@@ -191,7 +191,7 @@ theorem fderiv_tau_thE {abelian₂ Λ : Fin n → ℝ} {u : V} (hτ : IsTau ε a
     ext c d
     simp only [S, T, Matrix.map_apply, Matrix.sub_apply, Matrix.add_apply, Matrix.smul_apply,
       Matrix.single_apply]
-    split_ifs <;> simp <;> ring
+    split_ifs <;> simp
   have hBm : (Complex.I • (S + T)).map star = (-Complex.I) • S + (-Complex.I) • T := by
     ext c d
     simp only [S, T, Matrix.map_apply, Matrix.add_apply, Matrix.smul_apply, Matrix.single_apply]

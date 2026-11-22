@@ -24,8 +24,8 @@ theorem matrix_left_inverse_lift : ∀ {F E : Type} [Field F] [NumberField F] [F
     ext i j
     have h := hπ i j
     by_cases hij : i = j
-    · subst hij; simp [Zm, Matrix.map_apply, Matrix.add_apply, Matrix.one_apply, h]
-    · simp [Zm, Matrix.map_apply, Matrix.add_apply, Matrix.one_apply, hij, h]
+    · subst hij; simp [Zm, Matrix.map_apply, Matrix.add_apply, h]
+    · simp [Zm, Matrix.map_apply, Matrix.add_apply, hij, h]
   have hM₁ := hmap π₁ N₁ hZ₁
   have hM₂ := hmap π₂ N₂ hZ₂
   refine ⟨Zm + 1, ?_, hM₁, hM₂⟩

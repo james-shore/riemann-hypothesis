@@ -48,7 +48,7 @@ theorem line_fQ (s : ℂ) (hs : s = 1 ∨ s = -1) (z : ℂ) (m : ℕ) (Q : Fm n)
   simp only [fQ, opD, LinearMap.add_apply, opH_eq, evQ_add, evQ_multPart, evQ_derPart, trace_eU, sum_bool_fin, gD,
     Bool.false_eq_true, if_false, if_true, Matrix.smul_apply, sandwich_eU, smul_eq_mul, cB, alB, vals,
     Polynomial.eval_add, Polynomial.eval_C, Polynomial.eval_X, zero_smul, add_zero]
-  simp only [Finset.mul_sum, Finset.sum_add_distrib, mul_add]
+  simp only [Finset.mul_sum, mul_add]
   ring_nf
   congr 1
   · congr 1

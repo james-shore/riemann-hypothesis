@@ -26,7 +26,7 @@ theorem isFrameJ_of {r k : ℕ} {ε : Fin (2 * r + k + 1) → Bool} {e f : Fin r
     (hzw : ∀ a, hJ ε z (wf a) = 0) : IsFrameJ ε e f wf (z0v T z) := by
   have hl : ∀ (x y : Fin (2 * r + k + 1) → ℂ) (c : ℂ), hJ ε (c • x) y = star c * hJ ε x y := by
     intro x y c
-    simp [Formalism.L2.SG.HidaSetting.hJ, Matrix.mulVec_smul]
+    simp [Formalism.L2.SG.HidaSetting.hJ]
   have hr : ∀ (x y : Fin (2 * r + k + 1) → ℂ) (c : ℂ), hJ ε x (c • y) = c * hJ ε x y := by
     intro x y c
     simp [Formalism.L2.SG.HidaSetting.hJ, Matrix.mulVec_smul]

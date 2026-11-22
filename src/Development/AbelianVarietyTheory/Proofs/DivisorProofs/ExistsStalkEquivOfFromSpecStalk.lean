@@ -35,7 +35,7 @@ theorem exists_stalk_equiv_of_fromSpecStalk (X : Scheme.{0}) (x : X)
     intro U hxU
     ext s
     have h3 := congrArg (fun f => f.hom s) (TopCat.Presheaf.germ_stalkSpecializes X.presheaf hxU hs)
-    simp only [CommRingCat.hom_comp, RingHom.comp_apply, CommRingCat.hom_ofHom] at h3
+    simp only [CommRingCat.hom_comp, RingHom.comp_apply] at h3
     change e ((X.presheaf.stalkSpecializes hs).hom ((X.presheaf.germ U _ hxU).hom s)) =
       algebraMap _ (Localization.AtPrime p.asIdeal) ((X.presheaf.germ U _ hxU).hom s)
     rw [h3]

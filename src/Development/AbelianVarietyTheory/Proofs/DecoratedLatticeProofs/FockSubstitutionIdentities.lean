@@ -26,7 +26,7 @@ theorem mvZ_subY_comp (hab : a ≤ b) (g : ι → Matrix (Fin a) (Fin a) ℂ) (h
   apply MvPolynomial.algHom_ext
   intro v
   rw [AlgHom.comp_apply, AlgHom.comp_apply, subY, lft, aeval_X, aeval_X, map_sum, map_sum]
-  simp only [map_mul, mvZ, subY, aeval_X, algHom_C, algebraMap_eq, map_sum]
+  simp only [map_mul, mvZ, subY, aeval_X, algHom_C, algebraMap_eq]
   simp only [Matrix.mul_apply, map_sum, map_mul, Finset.mul_sum, Finset.sum_mul]
   rw [sum_three_fintype_reverse]
   refine Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => ?_
@@ -72,7 +72,7 @@ theorem subY_smul (hab : a ≤ b) (t : ι → ℂ) (y' : ι → Matrix (Fin b) (
   apply MvPolynomial.algHom_ext
   intro v
   simp only [subY, scaleFP, AlgHom.comp_apply, aeval_X, map_sum, map_mul, algHom_C,
-    Matrix.smul_apply, smul_eq_mul, C_mul, algebraMap_eq]
+    Matrix.smul_apply, smul_eq_mul, algebraMap_eq]
   refine Finset.sum_congr rfl fun β _ => ?_
   ring
 

@@ -82,8 +82,6 @@ theorem exists_int_smul_mem {j : ℕ} (Λ : Submodule (𝓞 E) (Fin j → E))
   | exact @_root_.GlobalTheory.IntegralMultiple.main
   | exact _root_.GlobalTheory.IntegralMultiple.main
   | (apply _root_.GlobalTheory.IntegralMultiple.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralMultiple.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralMultiple.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegralMultiple.main ..)
 
 theorem pairing_rational (hE : IsTotallyComplex E) {j : ℕ} (x y : Fin j → E) :

@@ -18,4 +18,4 @@ theorem _root_.GlobalTheory.T.strictHenselisation_etale_over_polynomial_alt : �
       ∃ φ : Localization.AtPrime (y.comap (algebraMap (Polynomial T) E)) →+* S,
         φ.comp (algebraMap (Polynomial T) _) = algebraMap (Polynomial T) S ∧
         GlobalTheory.IndefiniteRowSideFullHecke.ProjectiveSpaceOverSpec.IsStrictHenselisation φ := by
-  first | (exact @GlobalTheory.strictHenselisation_etale_over_polynomial) | (exact GlobalTheory.strictHenselisation_etale_over_polynomial) | (intros; apply GlobalTheory.strictHenselisation_etale_over_polynomial  <;> assumption)
+  first | (exact @GlobalTheory.strictHenselisation_etale_over_polynomial)

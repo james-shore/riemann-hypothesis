@@ -12,7 +12,7 @@ theorem longElt_conj_apply {R : Type} [CommRing R] {n : ℕ} (A : Matrix (Fin n)
     ((longElt n R : Matrix (Fin n) (Fin n) R) * A * (longElt n R : Matrix (Fin n) (Fin n) R)) i j
       = A i.rev j.rev := by
   simp only [Matrix.mul_apply, longElt, Matrix.of_apply, ite_mul, one_mul, zero_mul, mul_ite, mul_one, mul_zero]
-  simp only [Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+  simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true]
   rw [Finset.sum_eq_single j.rev]
   · simp
   · intro b _ hb; rw [if_neg]; intro e; exact hb (by rw [e, Fin.rev_rev])
@@ -64,7 +64,7 @@ theorem longElt_invT_conj_unipB : ∀ (R : Type) [CommRing R] (n : ℕ) (u : GL 
     refine Fintype.sum_equiv Fin.revPerm _ _ fun p => ?_
     rw [← Finset.sum_neg_distrib]
     refine Fintype.sum_equiv Fin.revPerm _ _ fun q => ?_
-    simp only [Fin.revPerm_apply, Fin.rev_rev]
+    simp only [Fin.revPerm_apply]
 
     have hiff : ((q.rev : Fin n) : ℕ) = (p.rev : ℕ) + 1 ↔ (p : ℕ) = q + 1 := by
       simp only [Fin.val_rev]; have := p.isLt; have := q.isLt; omega

@@ -131,11 +131,11 @@ theorem deltaAt_eq (τ : D.what₂.Tau) {p q : ℕ} (hm : p + q ≤ m) (hpn : p 
   · refine Finset.prod_congr rfl fun i _ => ?_
     rw [map_pow, minorPlus_eq τ (by omega) hpn i]
     congr 1
-    try (unfold GlobalTheory.IndefiniteRowSideFullHecke.CornerMinors.nextPart; split_ifs <;> rfl)
+    try (unfold GlobalTheory.IndefiniteRowSideFullHecke.CornerMinors.nextPart)
   · refine Finset.prod_congr rfl fun i _ => ?_
     rw [map_pow, minorMinus_eq τ hm hqn i]
     congr 1
-    try (unfold GlobalTheory.IndefiniteRowSideFullHecke.CornerMinors.nextPart; split_ifs <;> rfl)
+    try (unfold GlobalTheory.IndefiniteRowSideFullHecke.CornerMinors.nextPart)
 
 theorem hookOf_eq_hookProd (l : ℕ) (a : ℕ → ℕ) (ha : Antitone a) :
     (hookOf l a : ℂ) = ((GlobalTheory.IndefiniteRowSideFullHecke.CornerMinors.hookProd (fun i : Fin l => a i) : ℚ) : ℂ) := by

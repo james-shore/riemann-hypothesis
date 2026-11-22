@@ -276,7 +276,7 @@ theorem exists_character_ne_one : ∀ (K : Type) [Field K] (N : Over (Sp K)) [Gr
     refine eq_of_forall_apply (R := K) fun φ => ?_
     have h2 := congr(($h1 φ) a)
     rw [pairingMap_tmul, LinearMap.id_apply] at h2
-    simp only [ofConv_toConv, AlgHom.id_apply]
+    simp only [AlgHom.id_apply]
     rw [← h2]
     simp [one_apply, Algebra.algebraMap_eq_smul_one, mul_comm, AlgHom.convOne_apply]
   have hgl := (isPerfectBicharacter_canonical K B).left

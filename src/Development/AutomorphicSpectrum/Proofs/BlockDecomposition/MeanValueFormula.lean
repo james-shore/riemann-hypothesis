@@ -225,7 +225,6 @@ theorem err_bound (hC : CountBd) (F : Type) [Field F] [NumberField F] (hF : IsTo
       ∑ x ∈ B, G (θ δ * algebraMap F (Ainf F) x) * ∏' v, g v (algebraMap F (Fv F v) x) := by
     refine tsum_ne_zero_eq_sum (fun x => G (θ δ * algebraMap F (Ainf F) x) * ∏' v, g v (algebraMap F (Fv F v) x)) B hB0 ?_
     intro x hx hxB
-    change G (θ δ * algebraMap F (Ainf F) x) * ∏' v, g v (algebraMap F (Fv F v) x) = 0
     rcases hout x hx hxB with h | ⟨v, hv, -⟩
     · rw [h, zero_mul]
     · rw [tprod_of_exists_eq_zero (f := fun v => g v (algebraMap F (Fv F v) x)) ⟨v, hv⟩, mul_zero]

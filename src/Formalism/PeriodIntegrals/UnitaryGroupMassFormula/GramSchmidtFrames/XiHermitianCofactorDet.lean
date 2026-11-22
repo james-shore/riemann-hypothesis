@@ -28,7 +28,7 @@ lemma herm_out_wb {v u : Fin (2 * r + k + 1) → ℂ}
     · rw [hv l hl.1 hl.2, mul_zero]
     · have h0 : Hpk k r j l = 0 := by
         simp only [Hpk]
-        split_ifs with h1 h2 h3 <;> first | rfl | (exfalso; omega) | (exfalso; apply hl; rw [← h3.2.2]; exact hj)
+        split_ifs with h1 h2 h3 <;> first | rfl | (exfalso; omega)
       rw [h0, zero_mul]
   · rw [hu j (by omega), star_zero, zero_mul]
 

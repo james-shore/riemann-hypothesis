@@ -115,7 +115,7 @@ private theorem ent_surj (A : Type) [AddCommGroup A] (i : Fin 2) : Function.Surj
     rw [Matrix.single_apply, if_neg]
     rintro ⟨rfl, rfl⟩
     exact absurd h (not_lt.mpr hlt.le)
-  · simp [Matrix.single_apply, hlt.ne, hlt.ne']
+  · simp [hlt.ne, hlt.ne']
   · show Matrix.single i.castSucc i.succ a i.castSucc i.succ = a
     simp
 

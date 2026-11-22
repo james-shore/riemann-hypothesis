@@ -117,8 +117,8 @@ theorem finite_charpoly (N : ℕ) (P : k[X]) (hP : P ≠ 0) :
     ext i j
     by_cases hij : i = j
     · subst hij
-      simp [T, ψ, charmatrix_apply, Matrix.algebraMap_matrix_apply]
-    · simp [T, ψ, charmatrix_apply, Matrix.algebraMap_matrix_apply, hij]
+      simp [T, ψ, Matrix.algebraMap_matrix_apply]
+    · simp [T, ψ, Matrix.algebraMap_matrix_apply, hij]
   rw [h1, h2, sub_zero, h3] at hQ
   have h4 := congrArg Matrix.det hQ
   rw [det_mul, Matrix.algebraMap_eq_diagonal] at h4

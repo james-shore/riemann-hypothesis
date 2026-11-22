@@ -92,7 +92,7 @@ theorem deg_iSup_map_of_gram : ∀ (K : Type) [Field K] [NumberField K] (W V : T
       rw [← Complex.abs_re_eq_norm.mpr him, abs_of_pos hre]
     rw [heq, hn, Real.log_mul (pow_pos (Complex.pos_iff.mp (hA1 s)).1 p).ne' hre.ne', Real.log_pow]
   have hlogW : ∀ s : K →+* ℂ, Real.log (hW.gram s ![c]).det.re = Real.log (hW.form s c c).re := by
-    intro s; simp [HermFam.gram, Matrix.det_fin_one]
+    intro s; simp [HermFam.gram]
   refine ⟨?_, ?_⟩
   · obtain ⟨s⟩ : Nonempty (K →+* ℂ) := inferInstance
     intro h; have := (hkey s).1; rw [h, map_zero] at this; simp at this

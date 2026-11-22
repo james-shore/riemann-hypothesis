@@ -88,16 +88,16 @@ theorem lFull_holds : ∀ D : D7, LFull D := by
     intro i
     refine Finset.prod_nbij' (fun l => D.R.t - l) (fun n => D.R.t - n) ?_ ?_ ?_ ?_ ?_
     · intro l hl
-      simp only [Finset.mem_range, Finset.mem_Icc, Finset.mem_coe] at hl ⊢
+      simp only [Finset.mem_range, Finset.mem_Icc] at hl ⊢
       omega
     · intro n hn
-      simp only [Finset.mem_range, Finset.mem_Icc, Finset.mem_coe] at hn ⊢
+      simp only [Finset.mem_range, Finset.mem_Icc] at hn ⊢
       omega
     · intro l hl
-      simp only [Finset.mem_range, Finset.mem_Icc, Finset.mem_coe] at hl
+      simp only [Finset.mem_range] at hl
       omega
     · intro n hn
-      simp only [Finset.mem_range, Finset.mem_Icc, Finset.mem_coe] at hn
+      simp only [Finset.mem_Icc] at hn
       omega
     · intro l hl
       have hl' := Finset.mem_range.1 hl

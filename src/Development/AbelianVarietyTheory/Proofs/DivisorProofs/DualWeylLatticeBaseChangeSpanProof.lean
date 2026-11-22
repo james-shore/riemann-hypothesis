@@ -118,7 +118,7 @@ theorem nabStd_le_span_map {ι : Type} [Fintype ι] {n : ℕ} (f : K₀ →+* K)
 theorem map_smul_int {σ : Type} (f : K₀ →+* K) (t : 𝓞 K₀) (P : MvPolynomial σ K₀) :
     RingOfIntegers.mapRingHom f t • MvPolynomial.map f P = MvPolynomial.map f (t • P) := by
   ext m
-  simp only [MvPolynomial.coeff_smul, MvPolynomial.coeff_map]
+  simp only [MvPolynomial.coeff_map]
   change ((RingOfIntegers.mapRingHom f t : 𝓞 K) : K) * f (P.coeff m) = f ((t : K₀) * P.coeff m)
   rw [map_mul]
   rfl

@@ -27,7 +27,6 @@ lemma boxG_le_b (pG : IsPowGrp G' G j) (jN : Fin j → LG.ι) (jL : LG'.ι) :
   intro x hx
   first
     | exact Set.mem_iInter.2 fun _ => hx
-    | simpa [LB.wchart] using hx
 
 lemma boxG_le_c (pG : IsPowGrp G' G j) (jN : Fin j → LG.ι) (jL : LG'.ι) (i : Fin j) :
     (LB.div (boxLB LG pG.pr) LG').U (jN, jL) ≤
@@ -37,7 +36,6 @@ lemma boxG_le_c (pG : IsPowGrp G' G j) (jN : Fin j → LG.ι) (jL : LG'.ι) (i :
   intro x hx
   first
     | exact Set.mem_iInter.2 fun _ => hx
-    | simpa [LB.wchart] using hx
 
 def IsBoxSecG (pG : IsPowGrp G' G j) (w : LB.Iso LG' (boxLB LG pG.pr)) (k : ℕ) (σ' : H0 LG' k)
     (σ : Fin j → H0 LG k) : Prop :=

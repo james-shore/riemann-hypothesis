@@ -94,7 +94,7 @@ lemma tsact_fact_succ (m : σ →₀ ℕ) (v : σ) :
       ∏ k ∈ (insert v m.support).erase v, (m k).factorial := by
     refine Finset.prod_congr rfl fun k hk => ?_
     rw [Finset.mem_erase] at hk
-    simp [Finsupp.single_apply, Ne.symm hk.1]
+    simp [Ne.symm hk.1]
   rw [h2]
   simp only [Finsupp.coe_add, Pi.add_apply, Finsupp.single_eq_same, Nat.factorial_succ]
   ring
@@ -125,7 +125,7 @@ lemma tsact_coeff_zero (G : Matrix (Fin r) (Fin r) R) (h : MvPolynomial (Fin r �
   induction h using MvPolynomial.induction_on
   next a => simp [rowAct]
   next p q hp hq => simp only [map_add, hp, hq]
-  next p v hp => simp [hp, rowAct]
+  next p v hp => simp [rowAct]
 
 lemma tsact_chain (G : Matrix (Fin r) (Fin r) R) (b : Fin r) (s : Fin n) (h : MvPolynomial (Fin r × Fin n) R) :
     pderiv (b, s) (rowAct R G h) = ∑ a : Fin r, G a b • rowAct R G (pderiv (a, s) h) := by

@@ -34,7 +34,7 @@ theorem squareTriple_sig_rank_lt : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc :
       have e2 : (A.map star).map (starRingEnd ℂ) = A := by ext; simp
       have e3 : (Matrix.fromBlocks 1 0 0 (-1) : Matrix (Fin ((G.V (.grid (↑i + 1) (↑j + 1))).rank - Γ.p) ⊕ Fin Γ.p) (Fin ((G.V (.grid (↑i + 1) (↑j + 1))).rank - Γ.p) ⊕ Fin Γ.p) ℂ).map
           (starRingEnd ℂ) = Matrix.fromBlocks 1 0 0 (-1) := by
-        ext (k | k) (l | l) <;> simp [Matrix.fromBlocks_map, Matrix.one_apply] <;> split_ifs <;> simp
+        ext (k | k) (l | l) <;> simp [Matrix.one_apply] <;> split_ifs
       rw [e1, e2, e3] at this
       simpa only [Matrix.transpose_map] using this
     let f : Fin (G.V (.grid (↑i + 1) (↑j + 1))).rank ≃ Fin ((G.V (.grid (↑i + 1) (↑j + 1))).rank - Γ.p) ⊕ Fin Γ.p := (finSumFinEquiv.trans (finCongr hrs)).symm

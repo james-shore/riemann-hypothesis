@@ -32,7 +32,6 @@ private theorem std_gen {K : Type} [Field K] [NumberField K]
     rw [this, hJ, neg_zero, WithZero.exp_zero]
     exact hy
   · rw [(h8 y).2 v' hv]
-    change Valued.v (0 : v'.adicCompletion K) ≤ _
     rw [map_zero]
     exact zero_le
 

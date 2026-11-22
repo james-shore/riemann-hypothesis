@@ -192,7 +192,7 @@ theorem exists_place {σ : E →ₐ[F] E} (hCM : IsCMExt F E σ) (J : Matrix (Fi
     refine ⟨Q, hQ, ?_⟩
     rw [← e]
     ext i j
-    fin_cases i <;> fin_cases j <;> simp [G', Matrix.diagonal_apply, ← hc, ← hδ]
+    fin_cases i <;> fin_cases j <;> simp [G', ← hc, ← hδ]
   obtain ⟨P, -, hP⟩ := GlobalTheory.QNorm.landherr_and_landherrSt.1 E 2 J G'
     (fun i j => by rw [hcc]; exact hJ.1 j i) hG'c hJ.2
     (by rw [hG'd]; exact mul_ne_zero ha0 (mul_ne_zero ha0 hD0)) hsig

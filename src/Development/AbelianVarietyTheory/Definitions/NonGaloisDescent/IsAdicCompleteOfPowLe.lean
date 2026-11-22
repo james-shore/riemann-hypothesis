@@ -888,7 +888,7 @@ variable {l e} (ϖ : PiSys l e)
 
 theorem exists_theta_ev_eq (x : ↥(OL (ϖ.field a))) :
     ∃ y, Per.θ l (ϖ.ev a y) = intToOC (ϖ.field a) x := by
-  first | exact Bridge.exists_powerSeries_eval_eq | exact Bridge.exists_powerSeries_eval_eq .. | (intros; apply Bridge.exists_powerSeries_eval_eq <;> assumption)
+  first | exact Bridge.exists_powerSeries_eval_eq | exact Bridge.exists_powerSeries_eval_eq ..
 
 def quotToOC : ((Wq l a)⟦X⟧ ⧸ Ideal.span {eis l a e}) →+* OC l :=
   Ideal.Quotient.lift _ ((Per.θ l).comp (ϖ.ev a)) fun x hx =>

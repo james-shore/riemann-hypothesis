@@ -16,7 +16,7 @@ theorem frobenius_integrality_vec_O : ∀ (l : ℕ) [Fact l.Prime] (O : Type) [C
       refine Matrix.ext fun j u => ?_
       have := congrFun h j
       simp only [Matrix.map_apply, Matrix.of_apply, Matrix.add_apply, Matrix.mul_apply, Matrix.mulVec,
-        dotProduct, Fintype.sum_unique, Pi.add_apply] at this ⊢
+        dotProduct, Pi.add_apply] at this ⊢
       exact this) i ()
   exact key
 

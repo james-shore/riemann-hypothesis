@@ -96,7 +96,7 @@ theorem det_sub_det_mem_span_of_mulVec_eq :
         ext i j
         by_cases h : i = p
         · subst h; simp [M]
-        · simp [M, Matrix.updateRow_ne h, h]
+        · simp [M, h]
       have e2 : (M S).updateRow p (c p) = M S := by
         ext i j
         by_cases h : i = p

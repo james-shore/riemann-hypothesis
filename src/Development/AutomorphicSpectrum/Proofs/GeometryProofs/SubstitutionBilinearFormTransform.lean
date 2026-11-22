@@ -91,13 +91,13 @@ theorem coeff_xz_rename (P Q : PS R 1 d) (a b : Fin d) :
         · by_cases h0 : t = ((0 : Fin 2), a)
           · subst h0; simp; omega
           by_cases h1 : t = ((1 : Fin 2), b)
-          · subst h1; simp [Finsupp.single_apply, hne.symm, hu]
-          simp [Finsupp.single_apply, Ne.symm h0, (hrest t h0 h1).1]
+          · subst h1; simp [hne.symm, hu]
+          simp [Ne.symm h0, (hrest t h0 h1).1]
         · by_cases h1 : t = ((1 : Fin 2), b)
           · subst h1; simp; omega
           by_cases h0 : t = ((0 : Fin 2), a)
-          · subst h0; simp [Finsupp.single_apply, hne, hv]
-          simp [Finsupp.single_apply, Ne.symm h1, (hrest t h0 h1).2]
+          · subst h0; simp [hne, hv]
+          simp [Ne.symm h1, (hrest t h0 h1).2]
       · rw [hB v hv, mul_zero]
     · rw [hA u hu, zero_mul]
   · intro h

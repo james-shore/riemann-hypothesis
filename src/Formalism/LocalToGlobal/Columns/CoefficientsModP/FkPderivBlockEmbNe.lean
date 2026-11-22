@@ -37,7 +37,7 @@ theorem fk_pderiv_blockEmb_ne {τ τ' : ι} (h : τ ≠ τ') (v : Fin n × Fin n
   induction g using MvPolynomial.induction_on with
   | C a => simp
   | add p q hp hq => simp [hp, hq]
-  | mul_X p w hp => simp [Derivation.leibniz, hp, pderiv_X, Pi.single_apply, Prod.ext_iff, Ne.symm h]
+  | mul_X p w hp => simp [Derivation.leibniz, hp, pderiv_X, Prod.ext_iff, Ne.symm h]
 
 theorem fk_fock_right (τ : ι) (P Q : MvPolynomial (ι × Fin n × Fin n) K) (hP : ∀ v, pderiv (τ, v) P = 0)
     (g : MvPolynomial (Fin n × Fin n) K) :

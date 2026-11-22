@@ -105,7 +105,7 @@ theorem UpperTheory.V.Fr.framePoint_y_coord_eq :
       exact hf (by rw [← inv_eq_one.mp h.symm, sub_self])
     refine ⟨algebraMap k Q (1 - ((F.Ψ (F.loc v t) : k))⁻¹)⁻¹ * ρ.r (F.loc0 v t) 2 1, fun s => ?_⟩
     have h21 := congrFun (congrFun (ρ.ord v ![t, s, t]) 2) 1
-    simp [ordProd, Matrix.mul_apply, Fin.sum_univ_three, Matrix.one_apply, hd0, hd1, hd2, h01, h02, h12,
+    simp [ordProd, Matrix.mul_apply, Fin.sum_univ_three, Matrix.one_apply, hd1, hd2, h01, h02, h12,
       hψ0, hψ1, hψ2, hl] at h21
     simp only [Algebra.smul_def, mul_one] at h21
     have hD : (algebraMap k Q ((F.Ψ (F.loc v t) : k))⁻¹ - algebraMap k Q ((F.Ψ (F.loc v t) : k))) * algebraMap k Q (((F.Ψ (F.loc v t) : k))⁻¹ - ((F.Ψ (F.loc v t) : k)))⁻¹ = 1 := by

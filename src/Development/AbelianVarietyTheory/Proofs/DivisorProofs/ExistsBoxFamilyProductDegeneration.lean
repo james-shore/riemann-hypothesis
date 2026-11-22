@@ -102,7 +102,7 @@ theorem famMult_box₂ (hrig : IsBoxGen w (𝟙 _) (𝟙 _) D.rig D₁.rig D₂.
   rw [GlobalTheory.BoxFamily.prod_delta_zero F D k α mu (om w y J₁ J₂ J), GlobalTheory.BoxFamily.famMult_val F hJ,
     GlobalTheory.BoxFamily.famMult_val F hJ₁, GlobalTheory.BoxFamily.famMult_val F hJ₂, c₃, c₁ mu, c₁ α, c₂]
   apply Additive.ofMul.injective
-  simp only [ofMul_mul, ofMul_inv, ofMul_pow, ofMul_zpow]
+  simp only [ofMul_mul, ofMul_inv, ofMul_pow]
   module
 
 end Values

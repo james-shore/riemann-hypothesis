@@ -28,13 +28,12 @@ private theorem isGrpPullback_pullback_obj {S S' : Scheme.{0}} (G : Over S) [Grp
       simp only [Over.lift_left, pullback.lift_fst, pullback.lift_fst_assoc, hx]
     · simp only [Category.assoc]
       rw [Over.μ_pullback_left_fst_snd]
-      simp only [Over.lift_left, pullback.lift_snd, pullback.lift_snd_assoc, pullback.lift_fst_assoc, hy]
+      simp only [Over.lift_left, pullback.lift_snd, pullback.lift_snd_assoc, hy]
   rw [Hom.mul_def, Hom.mul_def, Over.comp_left, Over.comp_left, e, Functor.obj.μ_def, Over.comp_left]
   simp only [Category.assoc]
   refine congrArg (_ ≫ ·) (congrArg (_ ≫ ·) ?_)
   first
     | exact (pullback.lift_fst _ _ _).symm
-    | (erw [Over.pullback_map_left]; simp)
 
 theorem kTriv_away_of_kTriv_fibre : Out.GlobalFnsSt → ∀ (R : Type) [CommRing R] [IsNoetherianRing R] (A : Over (Sp R)) [GrpObj A] (L : LB A.left) (K : Type) [Field K] (x : R →+* K), IsAbelianScheme A → L.IsLB → Out.RelAmple A L → Out.KTriv ((Over.pullback (spMap x)).obj A) (L.pull (pullback.fst A.hom (spMap x))) → ∃ f : R, x f ≠ 0 ∧ Out.KTriv ((Over.pullback (spMap (algebraMap R (Localization.Away f)))).obj A) (L.pull (pullback.fst A.hom (spMap (algebraMap R (Localization.Away f))))) := by
   intro _ R _ _ A _ L K _ x hA hL hR hK

@@ -17,7 +17,7 @@ private theorem psum_two_01 {S : Scheme.{0}} (G : Over S) [GrpObj G] [IsCommMonO
     psum G ![u, v] {0, 1} = u * v := by
   have hl : (List.finRange 2).filter (· ∈ ({0, 1} : Finset (Fin 2))) = [0, 1] := by decide
   rw [psum, hl]
-  simp [padd, pzero, Hom.mul_def, Hom.one_def]
+  simp [padd, pzero, Hom.mul_def]
 
 private theorem psum_two_e {S : Scheme.{0}} (G : Over S) [GrpObj G] [IsCommMonObj G] {T : Over S} (u v : T ⟶ G) :
     psum G ![u, v] ∅ = 1 := by
@@ -31,7 +31,7 @@ private theorem psum_two_0 {S : Scheme.{0}} (G : Over S) [GrpObj G] [IsCommMonOb
   rw [psum, hl]
   have := psum_two_e G u v
   rw [psum] at this
-  simp only [List.foldr_cons, List.foldr_nil, List.filter] at this ⊢
+  simp only [List.foldr_cons, List.foldr_nil] at this ⊢
   show u * pzero G T = u
   simp [pzero, Hom.one_def] at this ⊢
 

@@ -23,12 +23,12 @@ theorem UpperTheory.V.Th.Coc.rel :
     simp [repR, GDet.repAlg]
   have hs : ∀ r : R, MonoidAlgebra.single (1 : G) r = r • (1 : MonoidAlgebra R G) := by
     intro r
-    simp [MonoidAlgebra.one_def, MonoidAlgebra.smul_single']
+    simp [MonoidAlgebra.one_def]
   let Φ : MonoidAlgebra R G →* Matrix (Fin n) (Fin n) (DualNumber X) :=
     { toFun := fun a => dualM (bar X (repR x ρ a)) (d a)
       map_one' := by
         ext i j
-        · by_cases hij : i = j <;> simp [dualM, hbar1, Matrix.one_apply, hij]
+        · by_cases hij : i = j <;> simp [dualM, Matrix.one_apply, hij]
         · by_cases hij : i = j <;> simp [dualM, hd1, Matrix.one_apply, hij]
       map_mul' := by
         intro a b

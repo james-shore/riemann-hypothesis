@@ -67,7 +67,6 @@ theorem pairs_sum_le : ∀ (D : D7) (large₂ : SizeData₂ D) (X : HidaSetting 
     (fun x x' => ENNReal.ofReal (GlobalTheory.DegAsm.datBd D.host.E D.R.k D.R.rS (k2Del D j' δ') (DbL D j' δ') (NT D u) x *
           GlobalTheory.DegAsm.datBd D.host.E D.R.k D.R.rS (k2Del D j'' δ'') (DbL D j'' δ'') (NT D u) x')))).trans ?_)
   ·
-    beta_reduce
     have hrw : ∑ p ∈ S with p.1.lam = Λ, wRow D (X.Fu u) p.1.lam * (wRow D (X.Fu u) p.1.lam' * (omT p.1 * omT p.2)) =
         wRow D (X.Fu u) Λ * ∑ p ∈ S with p.1.lam = Λ, wRow D (X.Fu u) p.1.lam' * (omT p.1 * omT p.2) := by
       rw [Finset.mul_sum]

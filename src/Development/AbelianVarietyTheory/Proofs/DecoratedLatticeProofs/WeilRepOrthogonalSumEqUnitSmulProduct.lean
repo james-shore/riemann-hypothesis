@@ -60,7 +60,7 @@ theorem opB_heisO {ψ : AddChar (AF D.host.F) ℂ} {χ χ' : (AE D)ˣ →* Circl
     ring
   rw [heisO_sum, opB_apply, opB_apply, AddEquiv.apply_symm_apply, AddEquiv.apply_symm_apply,
     AddEquiv.apply_symm_apply]
-  simp only [AddEquiv.apply_symm_apply]
+  simp only
   rw [e, map_smul, hom.om_heis b h _ _ hg, Pi.smul_apply, smul_eq_mul, heisO]
   ring
 
@@ -80,7 +80,7 @@ theorem opA_heisO {ψ : AddChar (AF D.host.F) ℂ} {χ χ' : (AE D)ˣ →* Circl
     ring
   rw [heisO_sum, opA_apply, opA_apply, AddEquiv.apply_symm_apply, AddEquiv.apply_symm_apply,
     AddEquiv.apply_symm_apply]
-  simp only [AddEquiv.apply_symm_apply]
+  simp only
   rw [e, map_smul, hom.om_heis a h _ _ hg, Pi.smul_apply, smul_eq_mul, heisO]
   ring
 

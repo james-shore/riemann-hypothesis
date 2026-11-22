@@ -124,7 +124,7 @@ lemma vol_std_ne_bot {a : ℕ} {b : ℤ} {d : ℕ} {ha : 0 < a} {hd : 0 < d} {la
   · have hD : (Matrix.of fun (j i : m) => if i = j then lam * (a : ℂ) else 0) =
         Matrix.diagonal (fun _ => lam * (a : ℂ)) := by
       ext i j
-      by_cases h : i = j <;> simp [Matrix.diagonal_apply, h, eq_comm]
+      by_cases h : i = j <;> simp [h, eq_comm]
     rw [hD, Matrix.det_diagonal, Finset.prod_const]
     exact pow_ne_zero _ (mul_ne_zero hlam (by exact_mod_cast ha.ne'))
 

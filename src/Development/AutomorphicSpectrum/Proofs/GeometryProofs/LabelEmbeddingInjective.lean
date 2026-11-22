@@ -87,9 +87,9 @@ theorem labels_all_once : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E]
             · exact absurd h τ.2
             · rw [h, map_neg, hconj0, neg_neg]⟩
         left_inv := fun τ => Subtype.ext (RingHom.ext fun x => by
-            simp [ComplexEmbedding.conjugate_coe_eq])
+            simp)
         right_inv := fun τ => Subtype.ext (RingHom.ext fun x => by
-            simp [ComplexEmbedding.conjugate_coe_eq]) }
+            simp) }
     have hc : Nat.card (CMType H ⊕ CMType H) = Nat.card (E →+* ℂ) :=
       Nat.card_congr ((Equiv.sumCongr (Equiv.refl _) e).trans (Equiv.sumCompl _))
     rw [hc, Nat.card_eq_fintype_card, NumberField.Embeddings.card E ℂ]

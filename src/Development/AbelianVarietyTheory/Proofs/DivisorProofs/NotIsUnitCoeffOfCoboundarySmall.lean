@@ -99,8 +99,8 @@ theorem linear_coeff_law (μ : Fin d → MvPowerSeries (Fin d ⊕ Fin d) O) (hμ
     rw [ReciprocityTheory.ChartRestriction.G.TB.ChartChgPfTP.pderiv_subst _ yZero_const, map_sum] at h2
     simp only [map_mul, constantCoeff_subst_of yZero_const] at h2
     simp only [Fintype.sum_sum_type, yZero,
-      Sum.elim_inl, Sum.elim_inr, map_zero, mul_zero, Finset.sum_const_zero, add_zero, pderiv_X, map_sum, map_mul] at h2
-    simp only [Pi.single_apply, apply_ite, map_one, map_zero, mul_ite, mul_one, mul_zero,
+      Sum.elim_inl, Sum.elim_inr, map_zero, mul_zero, Finset.sum_const_zero, add_zero, pderiv_X] at h2
+    simp only [Pi.single_apply, apply_ite, map_one, map_zero, mul_one, mul_zero,
       Finset.sum_ite_eq', Finset.mem_univ, if_true] at h2
     split_ifs at h2 ⊢ <;> exact h2
   have hsw : ∀ k : Fin d ⊕ Fin d, constantCoeff ((Sum.elim (fun i => (X (Sum.inr i) : MvPowerSeries (Fin d ⊕ Fin d) O))
@@ -112,8 +112,7 @@ theorem linear_coeff_law (μ : Fin d → MvPowerSeries (Fin d ⊕ Fin d) O) (hμ
   rw [ReciprocityTheory.ChartRestriction.G.TB.ChartChgPfTP.pderiv_subst _ hsw, map_sum] at h2
   simp only [map_mul, constantCoeff_subst_of hsw] at h2
   simp only [Fintype.sum_sum_type, Sum.elim_inl, Sum.elim_inr, pderiv_X, Pi.single_apply, Sum.inr.injEq,
-    reduceCtorEq, if_false, map_zero, mul_zero, Finset.sum_const_zero, add_zero, apply_ite, map_one, mul_ite,
-    mul_one, Finset.sum_ite_eq', Finset.mem_univ, if_true] at h2
+    reduceCtorEq, if_false, map_zero, mul_zero, Finset.sum_const_zero, add_zero, apply_ite, map_one, mul_one, Finset.sum_ite_eq', Finset.mem_univ, if_true] at h2
   rw [← h2, hx]
 
 end GlobalTheory.Katz.SmallDeriv

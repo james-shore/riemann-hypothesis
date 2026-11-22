@@ -25,9 +25,6 @@ private lemma res_res_lemma {X : Scheme.{0}} {U V W : X.Opens} (h₁ : V ≤ U) 
   simp only [res, Units.coe_map, MonoidHom.coe_coe]
   first
     | (rw [← CommRingCat.comp_apply, ← Functor.map_comp]; rfl)
-    | (rw [← RingHom.comp_apply, ← CommRingCat.hom_comp, ← Functor.map_comp]; rfl)
-    | simp [← Functor.map_comp_apply]
-    | simp
 
 private lemma isGen_mulGen_of_isGen {X Y : Scheme.{0}} (L : LB X) {K K' : Type} [Fintype K] [Fintype K']
     (φ : K → (Y ⟶ X)) (ε : K → ℤ) (φ' : K' → (Y ⟶ X)) (ε' : K' → ℤ)
@@ -75,7 +72,7 @@ theorem GV.mul (a : GV M F v) (b : GV M F' v') :
     simp only [Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr, hF, hF']
   · intro Z r z J hJ
     rw [val_mul, hv Z r z J hJ, hv' Z r z J hJ]
-    all_goals first | assumption | exact hJ
+    all_goals first | assumption
 
 theorem GV.inv (a : GV M F v) : GV M (fun U _ h => (F U h)⁻¹) fun Z r z J => (v Z r z J)⁻¹ := by
   obtain ⟨K, hK, φ, ε, u, hu, hF, hv⟩ := a
@@ -84,7 +81,6 @@ theorem GV.inv (a : GV M F v) : GV M (fun U _ h => (F U h)⁻¹) fun Z r z J => 
     simp only [zpow_neg, Finset.prod_inv_distrib, hF]
   · intro Z r z J hJ
     rw [val_inv, hv Z r z J hJ]
-    all_goals first | assumption | exact hJ
 
 theorem GV.pow (a : GV M F v) (n : ℕ) : GV M (fun U _ h => F U h ^ n) fun Z r z J => v Z r z J ^ n := by
   have key : ∀ {G G' : ∀ (U : Type) [CommGroup U], ((Y ⟶ X) → U) → U}

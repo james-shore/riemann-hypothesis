@@ -56,7 +56,6 @@ theorem orthSplit_of (hM : OrthMin) (hR : SplitRank) : OrthSplit := by
     have h2 : (c : ℚ_[p]) = 0 := (mul_eq_zero.mp h1).resolve_right hxx
     first
     | exact PadicInt.coe_eq_zero.mp h2
-    | exact Subtype.ext h2
   have hsup : Submodule.span ℤ_[p] {x} ⊔ K = L := by
     apply le_antisymm
     · exact sup_le ((Submodule.span_le).mpr (Set.singleton_subset_iff.mpr hxL)) hKL
@@ -81,7 +80,6 @@ theorem splitRank_proved : SplitRank := by
     · left
       first
       | exact PadicInt.coe_eq_zero.mp h
-      | exact Subtype.ext h
     · right
       exact h
   haveI : Module.Finite ℤ_[p] L := Module.Finite.iff_fg.mpr hfg

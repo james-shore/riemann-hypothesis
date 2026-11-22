@@ -36,7 +36,7 @@ theorem integral_rightCoset_fun_eq_finsum (G Λ : Type) [Group G] [TopologicalSp
         intro l
         by_cases h : π g = l
         · subst h; simp
-        · simp [Set.indicator_apply, h]
+        · simp [h]
       simp only [this, Finset.sum_ite_eq]
       split_ifs with h
       · rfl

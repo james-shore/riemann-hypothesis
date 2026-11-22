@@ -79,7 +79,7 @@ theorem lineSkew : LineSkew := by
     rw [hM, hθ]
     refine ⟨by simp, by simp, fun x hx => ?_⟩
     have key : (1 : Matrix (Fin d) (Fin d) ℂ) *ᵥ x ⬝ᵥ ((c : ℂ) • (1 : Matrix (Fin d) (Fin d) ℂ)) *ᵥ star x = ((c * ∑ i, Complex.normSq (x i) : ℝ) : ℂ) := by
-      simp [Matrix.smul_mulVec, dotProduct, Finset.mul_sum, Complex.mul_conj]
+      simp [Matrix.smul_mulVec, dotProduct, Finset.mul_sum]
       refine Finset.sum_congr rfl (fun j _ => ?_)
       rw [← Complex.mul_conj]
       ring

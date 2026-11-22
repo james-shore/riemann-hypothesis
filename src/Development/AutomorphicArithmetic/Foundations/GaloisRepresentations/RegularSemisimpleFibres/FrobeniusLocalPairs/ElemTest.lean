@@ -112,6 +112,6 @@ theorem elemTest : ElemTest := by
       ext
       simp [GeneralLinearGroup.val_det_apply, val_diagT, Matrix.det_diagonal]
     rw [map_mul, map_mul, hdiag]
-    simp only [mul_comm, mul_left_comm, mul_assoc]
+    simp only [mul_comm, mul_left_comm]
 
 end UpperTheory.Gal.InertialTypesAlt.L

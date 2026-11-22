@@ -27,13 +27,13 @@ theorem le_finrank_lagr : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [
         simp only [Prod.fst_add, Prod.snd_add, Submodule.coe_add, Matrix.add_vecMulVec, Matrix.add_mul]; abel
       map_smul' := fun c p => by
         ext i j
-        simp [Matrix.vecMulVec_apply, Matrix.mul_apply, Finset.smul_sum, smul_mul_assoc, smul_add] }
+        simp [Matrix.vecMulVec_apply, Matrix.mul_apply, Finset.smul_sum, smul_add] }
   have hΦ : ∀ p, Φ p = Matrix.vecMulVec p.1 H'.x + (p.2 : Matrix (Fin n) (Fin d₁) E) * H'.ιᵀ := fun _ => rfl
   have h1 : incM F (1 : Matrix (Fin n) (Fin n) E) = 1 := by
     ext i j
     by_cases h : i = j
     · subst h; simp [incM]
-    · simp [incM, Matrix.one_apply, h]
+    · simp [incM, h]
   have hmem : ∀ p, f (Φ p) ∈ lagr M M₁ H' := by
     intro p
     rw [mem_lagr, hfe, LinearEquiv.symm_apply_apply]

@@ -154,7 +154,7 @@ theorem eI_mul (I : MaximalSpectrum R) {r : R} (hr : r ∈ I.asIdeal) : eI I * r
   funext J
   by_cases h : J = I
   · subst h
-    simp [equivPi_apply', Ideal.Quotient.eq_zero_iff_mem.2 hr]
+    simp [Ideal.Quotient.eq_zero_iff_mem.2 hr]
   · simp [Pi.single_eq_of_ne h]
 
 theorem sum_eI : ∑ I : MaximalSpectrum R, eI I = 1 := by

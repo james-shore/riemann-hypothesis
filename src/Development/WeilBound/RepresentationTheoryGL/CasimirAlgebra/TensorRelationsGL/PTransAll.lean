@@ -72,15 +72,15 @@ theorem main (hT : Trans) (N : ℕ) : TAk N := by
     intro F
     simp only [LinearMap.comp_apply, cj_apply, LinearEquiv.apply_symm_apply, Module.End.mul_apply, LinearEquiv.coe_coe]
     rw [cA_split (fun p => lab p = τ0) col (fun p p' h => by rw [hcl p p' h]) b]
-    simp only [LinearEquiv.apply_symm_apply, Module.End.mul_apply]
+    simp only [LinearEquiv.apply_symm_apply]
     rw [hcAl]
   have hkey0 : ℓ ∘ₗ cA col b ∘ₗ cj (spl (n := n) (M := M) (fun p : P => lab p = τ0)) (lift (P := {p : P // lab p = τ0}) S1 * S0) =
         ((ℓ ∘ₗ cA (fun p : {p : P // ¬ lab p = τ0} => col p) (fun p => b p) ∘ₗ S1) ∘ₗ cA (M := TV n M {p : P // ¬ lab p = τ0}) (fun p : {p : P // lab p = τ0} => col p) (fun p => b p) ∘ₗ S0) ∘ₗ (spl (n := n) (M := M) (fun p : P => lab p = τ0)).toLinearMap := by
     apply LinearMap.ext
     intro F
-    simp only [LinearMap.comp_apply, cj_apply, LinearEquiv.apply_symm_apply, Module.End.mul_apply, LinearEquiv.coe_coe]
+    simp only [LinearMap.comp_apply, cj_apply, Module.End.mul_apply, LinearEquiv.coe_coe]
     rw [cA_split (fun p => lab p = τ0) col (fun p p' h => by rw [hcl p p' h]) b]
-    simp only [LinearEquiv.apply_symm_apply, Module.End.mul_apply]
+    simp only [LinearEquiv.apply_symm_apply]
     rw [hcAl]
   refine ⟨cj (spl (n := n) (M := M) (fun p : P => lab p = τ0)) (lift (P := {p : P // lab p = τ0}) S1 * S0), ?_, ?_, ?_⟩
   · unfold envAlg

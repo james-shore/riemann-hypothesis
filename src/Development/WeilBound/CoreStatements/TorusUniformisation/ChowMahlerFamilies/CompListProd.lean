@@ -69,7 +69,7 @@ theorem comb_bc {n : ℕ} {v : Fin n → (Sp (DualNumber S) ⟶ t.G.left)} {a : 
     rw [hu, ← Category.assoc, ← Category.assoc, spMap_cp, spMap_cp]
     congr 2
     refine RingHom.ext fun s => ?_
-    ext <;> simp [GlobalTheory.CompanionTheory.Ar.dualMap, epsMul, GlobalTheory.CompanionTheory.Ar.epsMul, mul_comm]
+    ext <;> simp [GlobalTheory.CompanionTheory.Ar.dualMap, epsMul, mul_comm]
   · have := comp_listProd (epsBC f x) (List.ofFn u)
     rw [List.map_ofFn] at this
     exact (congrArg (fun q => q.left) this).symm

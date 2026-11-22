@@ -51,9 +51,7 @@ theorem det_mul_eq_sum {V : Type} [CommRing V] {m g : ℕ} (M : Matrix (Fin m) (
   first
   | exact @_root_.GlobalTheory.DeterminantExpansion.det_mul_expand
   | exact _root_.GlobalTheory.DeterminantExpansion.det_mul_expand
-  | (apply _root_.GlobalTheory.DeterminantExpansion.det_mul_expand <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DeterminantExpansion.det_mul_expand <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DeterminantExpansion.det_mul_expand <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.DeterminantExpansion.det_mul_expand)
   | (intros; exact _root_.GlobalTheory.DeterminantExpansion.det_mul_expand ..)
 
 theorem exists_minor_dvd : ∀ (V : Type) [CommRing V] [IsDomain V] [ValuationRing V] (m g : ℕ) (M : Matrix (Fin m) (Fin g) V) (C : Matrix (Fin g) (Fin m) V) (δ : V), δ ≠ 0 → M * C = δ • (1 : Matrix (Fin m) (Fin m) V) → (∃ I : Fin m → Fin g, (M.submatrix id I).det ∣ δ ^ m) ∧ ∃ J : Fin m → Fin g, (C.submatrix J id).det ∣ δ ^ m := by

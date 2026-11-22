@@ -247,7 +247,7 @@ theorem repr_eq_zero_of_mem (w : Module.Basis (Fin r) Ω E) {i : ℕ} {v : E} (h
     have hkj : k ≠ j := fun h => by
       subst h
       exact absurd hk (not_lt.2 hj)
-    simp [Module.Basis.coord_apply, Finsupp.single_apply, hkj]
+    simp [Module.Basis.coord_apply, hkj]
   simpa [Module.Basis.coord_apply] using h hv
 
 theorem sub_repr_mem (w : Module.Basis (Fin r) Ω E) (i : Fin r) {v : E}

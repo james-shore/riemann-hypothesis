@@ -40,8 +40,8 @@ theorem exists_down_three {XA XP XG XT Y Y' : Scheme.{0}} {LA : LB XA} {LP : LB 
   rw [Category.comp_id] at e₃
   rw [e₂, e₃] at e₁
   simp only [pw, GlobalTheory.ArcPull.om, tf, Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one,
-    Matrix.head_cons, Category.assoc] at e₁ ⊢
-  simp only [reassoc_of% h₁, reassoc_of% hm, reassoc_of% h₂, reassoc_of% h₃, h₁, hm, h₂, h₃] at e₁ ⊢
+    Category.assoc] at e₁ ⊢
+  simp only [reassoc_of% h₂, h₁, hm, h₂, h₃] at e₁ ⊢
   apply Additive.ofMul.injective
   have e' := congrArg Additive.ofMul e₁
   simp only [ofMul_mul, ofMul_inv, ofMul_zpow] at e' ⊢

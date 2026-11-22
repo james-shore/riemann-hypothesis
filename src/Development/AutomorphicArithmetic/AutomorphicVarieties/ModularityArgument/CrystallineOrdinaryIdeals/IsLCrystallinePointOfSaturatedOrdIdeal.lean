@@ -59,7 +59,7 @@ theorem main : LocalPublishedTheorems → ∀ {l : ℕ} [Fact l.Prime] {O : Type
       conjBy (Matrix.GeneralLinearGroup.map (q : B' →+* B) h) (push f U.r.hom) (g : GQ l) := by
     simp only [conjBy, push, MonoidHom.comp_apply, MulEquiv.coe_toMonoidHom, MulAut.conj_apply, map_mul, map_inv,
       GG.map_map, hqf']
-    congr 2 <;> simp [GG.ofGL, GG.map, SemidirectProduct.map_inl]
+    congr 2
   rw [MonoidHom.comp_apply, hρ g, ← e1]
   rfl
 

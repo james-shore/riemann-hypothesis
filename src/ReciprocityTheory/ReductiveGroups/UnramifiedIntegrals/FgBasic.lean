@@ -16,7 +16,6 @@ theorem integralMv_iff_divBy_one (F : MvPowerSeries ι K) : IntegralMv F ↔ Div
   first
   | exact Iff.rfl
   | (unfold IntegralMv DivByMv; simp)
-  | simp [IntegralMv, DivByMv]
 theorem integralPS_iff_mv (f : PowerSeries K) : IntegralPS f ↔ IntegralMv (ι := Unit) f := by
   rw [integralMv_iff_divBy_one]
   unfold IntegralPS DivByMv
@@ -277,7 +276,6 @@ theorem integralMv_subst {f : PowerSeries K} {P : MvPowerSeries ι K} (hf : Inte
     rwa [norm_one] at h1
   first
   | rw [PowerSeries.coeff_subst ha]
-  | rw [PowerSeries.coeff_subst' ha]
   exact norm_finsum_le_of_forall_norm_le _ zero_le_one fun k => by
     rw [smul_eq_mul, norm_mul]
     exact mul_le_one₀ (hf' k) (norm_nonneg _) (hPk k)
@@ -291,7 +289,6 @@ theorem divByMv_subst {x : K} {f : PowerSeries K} {P : MvPowerSeries ι K} (hf :
     rwa [norm_one] at h1
   first
   | rw [PowerSeries.coeff_subst ha]
-  | rw [PowerSeries.coeff_subst' ha]
   exact norm_finsum_le_of_forall_norm_le _ (norm_nonneg _) fun k => by
     rw [smul_eq_mul, norm_mul]
     calc ‖coeff k f‖ * ‖MvPowerSeries.coeff d (P ^ k)‖ ≤ ‖x‖ * 1 :=

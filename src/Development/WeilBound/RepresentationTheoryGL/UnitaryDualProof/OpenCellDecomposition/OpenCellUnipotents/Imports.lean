@@ -103,7 +103,7 @@ theorem exists_bump (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] [
         ((fun g : GL (Fin N) k => pm k (wOpen d hd) * g * (pm k (wOpen d hd))⁻¹) ⁻¹'
           (unipRadLower k (stdBlocks d hd) : Set (GL (Fin N) k))) := by
       ext u
-      simp [unipU, Subgroup.mem_inf, Subgroup.mem_comap, MulAut.conj_apply]
+      simp [unipU, MulAut.conj_apply]
     rw [this]
     exact h1.inter h3
   have hOeq : ((fun g : GL (Fin N) k => pm k (wOpen d hd) * g * (pm k (wOpen d hd))⁻¹) ⁻¹'

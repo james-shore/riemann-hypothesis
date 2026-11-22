@@ -88,7 +88,7 @@ theorem spanP_of (h : DensLow R) : Formalism.IndefR.Eqv.Act.SpanP R := by
       PiTensorProduct.tprod ℂ v ∈ Submodule.span ℂ {x | ∃ φ w, Tm φ w = x} := by
     intro v hv
     refine Submodule.subset_span ⟨1, PiTensorProduct.tprod ℂ (fun τ => (⟨v τ, hv τ⟩ : Kf τ)), ?_⟩
-    simp only [Tm, LinearMap.smulRight_apply, LinearMap.id_apply, LinearMap.smul_apply, one_smul,
+    simp only [Tm, LinearMap.smulRight_apply, LinearMap.id_apply, one_smul,
       PiTensorProduct.map_tprod]
     rfl
   have h0 := Formalism.IndefR.Eqv.ioUniqueAt_holds D _ _ M R.θ _ _ Kf ℂ (⨂[ℂ] τ, Kf τ) Tm (fun τ ℓ hℓ hK => h i τ ℓ hℓ hK)

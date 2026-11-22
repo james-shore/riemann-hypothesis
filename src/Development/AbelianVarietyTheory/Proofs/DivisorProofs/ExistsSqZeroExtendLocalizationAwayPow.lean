@@ -78,7 +78,7 @@ theorem exists_sqZero_extend_base (R' A S : Type) [CommRing R'] [CommRing A] [Co
         sqZeroInterp _ hJg ((IsScalarTower.toAlgHom R' S (Localization.Away g)).comp α₀)
           (ψ.comp π) (fun q => hψ (π q)) (algebraMap S (Localization.Away g) g ^ M) := by
       apply MvPolynomial.algHom_ext; intro i
-      simp only [AlgHom.comp_apply, sqZeroInterp_apply, IsScalarTower.coe_toAlgHom', β₀, α₀,
+      simp only [AlgHom.comp_apply, IsScalarTower.coe_toAlgHom', β₀, α₀,
         MvPolynomial.aeval_X, map_add, hy'eq]
       rfl
     exact DFunLike.congr_fun e p

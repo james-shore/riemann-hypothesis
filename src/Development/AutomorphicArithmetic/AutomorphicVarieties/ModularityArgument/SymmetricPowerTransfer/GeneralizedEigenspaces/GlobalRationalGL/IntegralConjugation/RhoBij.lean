@@ -83,7 +83,7 @@ private theorem tt_surj (P : Pre L) (v : Pl (Lp L)) : Function.Surjective (tt P 
   have hc : (![c 0, c 1] : Fin 2 → Kv v) = c := by
     funext i
     fin_cases i <;> rfl
-  simp only [QuadraticAlgebra.re, QuadraticAlgebra.im]
+  simp only
   rw [hc]
   exact (Algebra.TensorProduct.basis (Kv v) (bas P)).equivFun.symm_apply_apply t
 

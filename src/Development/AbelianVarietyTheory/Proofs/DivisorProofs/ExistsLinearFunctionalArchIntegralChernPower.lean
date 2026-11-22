@@ -25,7 +25,7 @@ theorem exists_linear_of_rel {α V : Type} [AddCommGroup V] [Module ℝ V] (v : 
   have e2 := LinearMap.congr_fun hg ⟨A (Finsupp.single a 1), LinearMap.mem_range_self _ _⟩
   rw [e1]
   simp only [LinearMap.comp_apply, Submodule.subtype_apply, LinearEquiv.coe_coe,
-    LinearMap.quotKerEquivRange_symm_apply_image, Submodule.liftQ_apply] at e2
+    LinearMap.quotKerEquivRange_symm_apply_image] at e2
   rw [e2]
   simp [F]
 

@@ -53,4 +53,4 @@ theorem _root_.GlobalTheory.T.rankinSelberg_cell_integral_finite_part_nonneg : �
           F ∈ GroundTheory.Automorphic.GJMatrix.schwartzBruhatPi E (Fin (m + 1)) → ∀ x : ℝ, 1 < x →
           ∫⁻ g in 𝓕₀ ∩ GlobalTheory.CellDec.C0 E (m + 1) S, (‖GlobalTheory.JSW.whit φ' (g)‖ₑ ^ 2 * ‖GroundTheory.Automorphic.GJMatrix.adelicFourierPi E F (GlobalTheory.ZEul.lastRow (g))‖ₑ *
           ENNReal.ofReal (GlobalTheory.RSnm.detAbs (g) ^ x)) ∂μ ≠ ⊤) := by
-  first | (exact @GlobalTheory.RSnmFT.exists_cellPart_unfoldedIntegral_positive_alt) | (exact GlobalTheory.RSnmFT.exists_cellPart_unfoldedIntegral_positive_alt) | (intros; apply GlobalTheory.RSnmFT.exists_cellPart_unfoldedIntegral_positive_alt  <;> assumption)
+  first | (exact @GlobalTheory.RSnmFT.exists_cellPart_unfoldedIntegral_positive_alt)

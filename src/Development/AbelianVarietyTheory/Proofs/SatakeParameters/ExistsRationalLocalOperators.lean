@@ -28,8 +28,6 @@ theorem not_dvd_normV {E : Type} [Field E] [NumberField E] {l : ℕ} (hl : l.Pri
   | exact @_root_.GlobalTheory.NormDivisibility.not_dvd_norm_of_not_mem
   | exact _root_.GlobalTheory.NormDivisibility.not_dvd_norm_of_not_mem
   | (apply _root_.GlobalTheory.NormDivisibility.not_dvd_norm_of_not_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NormDivisibility.not_dvd_norm_of_not_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NormDivisibility.not_dvd_norm_of_not_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NormDivisibility.not_dvd_norm_of_not_mem ..)
 
 theorem norm_le_one {l : ℕ} [Fact l.Prime] (ι : Qbar l ≃+* ℂ) (m : ℤ) (q e : ℕ) (hq : ¬ l ∣ q) :

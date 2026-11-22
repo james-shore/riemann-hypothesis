@@ -24,7 +24,6 @@ theorem unitsOfLocal : UnitsOfLocal := by
   have hcop : IsCoprime (p : ℤ) c := by
     first
     | exact (Irreducible.coprime_iff_not_dvd hpz.irreducible).2 hc
-    | exact (Prime.coprime_iff_not_dvd hpz).2 hc
   obtain ⟨u, v, huv⟩ := hcop
   have h1 : (u : O) * (p : O) + (v : O) * (c : O) = 1 := by
     have := congrArg (fun z : ℤ => (z : O)) huv

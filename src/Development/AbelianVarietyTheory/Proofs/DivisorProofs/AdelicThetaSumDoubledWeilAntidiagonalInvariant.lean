@@ -66,7 +66,7 @@ theorem negOp_negOp (φ : (κ ⊕ κ → AF F) → ℂ) : negOp F (negOp F φ) =
 theorem negOp_schr [Fintype κ] (ψ : AddChar (AF F) ℂ) (w : (κ ⊕ κ → AF F) × (κ ⊕ κ → AF F)) (φ : (κ ⊕ κ → AF F) → ℂ) :
     negOp F (schr ψ w φ) = schr ψ (negSnd w.1, negSnd w.2) (negOp F φ) := by
   funext x
-  simp only [negOp_apply, schr, negSnd_dot, negSnd_dot_negSnd, negSnd_add, negSnd_negSnd]
+  simp only [negOp_apply, schr, negSnd_dot, negSnd_add, negSnd_negSnd]
 
 theorem pureA_negSnd [Fintype κ] (f : (κ ⊕ κ → mixedEmbedding.mixedSpace F) → ℂ)
     (g : (κ ⊕ κ → FiniteAdeleRing (𝓞 F) F) → ℂ) :

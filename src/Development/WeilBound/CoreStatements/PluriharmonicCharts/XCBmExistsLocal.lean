@@ -41,7 +41,7 @@ theorem logR_le {n a : ℕ} {w₀ w : Fin n → ℂ} {ρ : ℝ} (hρ : 0 < ρ) (
     obtain ⟨hS', h0'⟩ := ha i hi
     have hpos : 0 < ‖w (π.symm i)‖ := norm_pos_iff.2 (hS _ hS')
     have hu : ‖uncentre w₀ ρ π w i‖ = ρ⁻¹ * ‖w (π.symm i)‖ := by
-      simp [uncentre, h0', norm_mul, abs_of_pos hρ]
+      simp [uncentre, h0', abs_of_pos hρ]
     have hx : ‖w (π.symm i)‖ ≤ ρ⁻¹ * ‖w (π.symm i)‖ := by nlinarith
     apply Real.log_le_log
     · rw [hu]

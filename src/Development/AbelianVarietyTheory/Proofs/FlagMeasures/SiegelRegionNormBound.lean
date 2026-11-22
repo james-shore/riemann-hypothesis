@@ -99,8 +99,6 @@ theorem norm_mul_apply_le {n : ℕ} (A B : Matrix (Fin n) (Fin n) ℂ) (a b : �
   | exact @_root_.GlobalTheory.LatticeFactsFlagMeasures.main
   | exact _root_.GlobalTheory.LatticeFactsFlagMeasures.main
   | (apply _root_.GlobalTheory.LatticeFactsFlagMeasures.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LatticeFactsFlagMeasures.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LatticeFactsFlagMeasures.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LatticeFactsFlagMeasures.main ..)
 
 theorem uni_bound (m : ℕ) (B0 δ : ℝ) (hB0 : 1 ≤ B0) (hδ : 0 < δ) (hδ1 : δ ≤ 1) :

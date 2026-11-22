@@ -14,9 +14,9 @@ theorem traceOpen_near_of_isUnit : ∀ (R : Type) [CommRing R] [TopologicalSpace
     refine continuous_pi fun i => ?_
     fin_cases i
     · simpa [coords, φ] using continuous_fst
-    · simp only [coords, φ]; exact (continuous_snd.mul continuous_const : Continuous fun p : R × R => p.2 * _)
-    · simp only [coords, φ]; exact (continuous_snd.mul continuous_const : Continuous fun p : R × R => p.2 * _)
-    · simp only [coords, φ]; exact (continuous_snd.mul continuous_const : Continuous fun p : R × R => p.2 * _)
+    · simp only [φ]; exact (continuous_snd.mul continuous_const : Continuous fun p : R × R => p.2 * _)
+    · simp only [φ]; exact (continuous_snd.mul continuous_const : Continuous fun p : R × R => p.2 * _)
+    · simp only [φ]; exact (continuous_snd.mul continuous_const : Continuous fun p : R × R => p.2 * _)
   have hφs : φ (s, 1) = g := by ext <;> simp [φ, s]
   have hpre : φ ⁻¹' W ∈ 𝓝 (s, (1 : R)) := hφ.continuousAt.preimage_mem_nhds (by rw [hφs]; exact hW)
   obtain ⟨O₀, hO₀, V, hV, hOV⟩ := mem_nhds_prod_iff.1 hpre

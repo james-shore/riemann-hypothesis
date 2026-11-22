@@ -14,7 +14,7 @@ variable {E : Type} [Field E] [NumberField E] [StarRing E] {n : ℕ}
 
 theorem vec_denom (M : Submodule (𝓞 E) (Fin n → E)) (hsp : Submodule.span E (M : Set (Fin n → E)) = ⊤)
     (v : Fin n → E) : ∃ m : ℕ, 0 < m ∧ (m : 𝓞 E) • v ∈ M := by
-  first | exact Bl.DenominatorsAlt.goal1 .. | (apply Bl.DenominatorsAlt.goal1 <;> assumption) | (intros; apply Bl.DenominatorsAlt.goal1 <;> assumption)
+  first | exact Bl.DenominatorsAlt.goal1 .. | (apply Bl.DenominatorsAlt.goal1 <;> assumption)
 
 theorem lat_denom (L M : Submodule (𝓞 E) (Fin n → E)) (hL : L.FG)
     (hsp : Submodule.span E (M : Set (Fin n → E)) = ⊤) :

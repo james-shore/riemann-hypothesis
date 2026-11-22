@@ -175,7 +175,7 @@ theorem block_tri (L : Type) [Field L] (s : L →+* L) (n r m : ℕ)
         have := cnt_le S l'
         simp only [lx, ly] at hw hlv
         omega
-      · simp [hrow, Matrix.one_apply, hc]
+      · simp [hrow, hc]
   · rw [lz] at hw
     omega
   · have := cnt_le S l'

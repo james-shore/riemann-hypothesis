@@ -121,8 +121,6 @@ theorem tors_free (h4 : ∀ y, W.QInv y → (ℓ : ℤ_[ℓ]) • y ∈ W.N → 
   obtain ⟨k, u, hcu⟩ : ∃ (k : ℕ) (u : ℤ_[ℓ]ˣ), c = u * (ℓ : ℤ_[ℓ]) ^ k := by
     first
       | exact IsDiscreteValuationRing.eq_unit_mul_pow_irreducible hc PadicInt.irreducible_p
-      | exact DiscreteValuationRing.eq_unit_mul_pow_irreducible hc PadicInt.irreducible_p
-      | exact ⟨_, _, PadicInt.unitCoeff_spec hc⟩
   rw [hcu, mul_comm, mul_smul] at hcy
   have h5 := key k _ ((QS W).smul_of_tower_mem (u : ℤ_[ℓ]) hy) hcy
   have h6 := W.N.smul_of_tower_mem (↑u⁻¹ : ℤ_[ℓ]) h5

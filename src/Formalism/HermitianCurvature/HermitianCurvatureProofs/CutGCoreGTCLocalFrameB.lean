@@ -88,7 +88,7 @@ theorem gcl_wirt_slice {r : ℕ} (F : MA.E r → ℂ) (x : MA.E r) (hF : Differe
   · simp only [MA.wirt, NF.dZ, e1, hd]
     simp [M.vz] <;> ring
   · simp only [MA.wirt, NF.dZb, e2, hd]
-    simp [M.vzb] <;> ring
+    simp [M.vzb]
 
 theorem gcl_radR_sum {k r : ℕ} {z z' : Fin (2 * r + k + 1) → ℂ} {μsec : ℂ → Matrix (Fin (k + 1)) (Fin (k + 1)) ℂ}
     {E : Type} [NormedAddCommGroup E] [NormedSpace ℂ E] {ι : Type} (s : Finset ι) (F : ι → Q.Fn k r E)

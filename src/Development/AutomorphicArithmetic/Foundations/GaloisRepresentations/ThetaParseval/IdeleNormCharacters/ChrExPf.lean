@@ -105,7 +105,6 @@ theorem UpperTheory.Gal.TP.Chr.chrEx :
     refine Finset.prod_congr rfl fun w _ => ?_
     obtain ⟨a, b, ha, hb, h1, h2⟩ := exps hev (hm w)
     have hz : (emb w).1 (x : E) ≠ 0 := (map_ne_zero (emb w).1).2 x.ne_zero
-    beta_reduce
     rw [ha, hb, ← typ_term _ hz a b, h1, h2]
   · have h1 := hEI E emb (fun w => k * m w) (fun w => k' * m w) s s' fun x => by
       rw [← inf_psi hAb emb μ m hμi k s x, ← inf_psi hAb emb μ m hμi k' s' x, h]

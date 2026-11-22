@@ -43,7 +43,7 @@ theorem dens_scale (c : Fin n → ℂ) (β : Alt n) : dens (scale c β) = (∏ a
 theorem scale_dz (c : Fin n → ℂ) (a : Fin n) : scale c (dz a) = c a • dz a ∧ scale c (dzb a) = c a • dzb a := by
   simp only [dz, dzb, ← map_smul]
   constructor <;> refine (ExteriorAlgebra.map_apply_ι _ _).trans (congrArg _ (funext ?_)) <;> rintro (b | b) <;>
-    by_cases h : b = a <;> simp [Matrix.mulVec_diagonal, Pi.single_apply, h]
+    by_cases h : b = a <;> simp [Matrix.mulVec_diagonal, h]
 
 theorem scale_sym (c : Fin n → ℂ) (a b : Fin n) :
     scale c (sym (a, b) : Ev n) = (c a * c b) • ((sym (a, b) : Ev n) : Alt n) := by

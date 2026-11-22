@@ -22,8 +22,6 @@ namespace GlobalTheory.AscRungB
 theorem rapidDec_star {D : D7} {V : HSp D} {f : GA D V → ℂ} (h : RapidDec V f) : RapidDec V (star f) := by
   first
   | exact h.conj
-  | exact RapidDec.of_le h (fun γ hγ g => by simp only [Pi.star_apply]; rw [h.left hγ g])
-      h.continuous.star (fun g => by simp only [Pi.star_apply, norm_star, le_refl])
 
 theorem exists_step {D : D7} {ψ : AddChar (AF D.host.F) ℂ} {V V₀ W W₀ : HSp D} {ρ σ : ℕ} (dV : HypDec V V₀ ρ) (dW : HypDec W W₀ σ)
     {χV χW : (AE D)ˣ →* Circle} {om : Om V W} (h : IsWeilDatumO ψ V W χV χW om) (vW : GlobalTheory.Unf.Vol W) :

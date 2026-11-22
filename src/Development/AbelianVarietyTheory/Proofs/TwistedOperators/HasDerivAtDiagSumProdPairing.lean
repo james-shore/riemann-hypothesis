@@ -33,7 +33,7 @@ theorem hasDerivAt_diag_sum_prod_pairing
     intro x t
     conv_lhs => rw [← e.sum_repr x]
     simp only [map_sum, map_smul, LinearMap.sum_apply, LinearMap.smul_apply, Finset.mul_sum,
-      Complex.real_smul, Finset.sum_mul]
+      Complex.real_smul]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
     ring

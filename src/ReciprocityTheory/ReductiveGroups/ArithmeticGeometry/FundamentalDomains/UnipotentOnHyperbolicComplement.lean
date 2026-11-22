@@ -86,7 +86,6 @@ private lemma hermC_Gm_eq_conj_swap (τ : X.Ψ) (u w : Fin r → ℂ) :
     rw [← X.Gm_herm b a, cc]
     first
       | exact NumberField.IsCMField.complexEmbedding_complexConj E _ _
-      | exact (NumberField.IsCMField.complexEmbedding_complexConj E _ _).symm
   simp only [hermC, map_sum, map_mul, Complex.conj_conj]
   conv_rhs => rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
@@ -231,9 +230,6 @@ lemma hsym (u w : Fin r → ℂ) : hermC τ.1 X.Gm u w = conj (hermC τ.1 X.Gm w
     rw [← X.Gm_herm b a, cc]
     first
       | exact NumberField.IsCMField.complexEmbedding_complexConj E _ _
-      | exact (NumberField.IsCMField.complexEmbedding_complexConj E _ _).symm
-      | exact NumberField.IsCMField.complexEmbedding_complexConj E _
-      | exact (NumberField.IsCMField.complexEmbedding_complexConj E _).symm
   simp only [hermC, map_sum, map_mul, Complex.conj_conj]
   conv_rhs => rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_

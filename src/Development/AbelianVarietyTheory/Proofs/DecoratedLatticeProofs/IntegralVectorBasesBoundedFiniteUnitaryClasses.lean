@@ -56,7 +56,7 @@ theorem fix_one (I : AutInst) {N : ℕ} (e : Fin N → Fin I.n → I.E) (A : Mat
     intro l
     by_cases h : l = j
     · subst h; simpa using isIntegral_one
-    · simp [Pi.single_apply, h, isIntegral_zero]
+    · simp [h, isIntegral_zero]
   have := congrFun (key _ hs) i
   rw [Matrix.mulVec_single_one] at this
   simpa [Matrix.col, Matrix.one_apply, Pi.single_apply, eq_comm] using this

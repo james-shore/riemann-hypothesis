@@ -40,8 +40,6 @@ theorem relAmple_diag_lam {k : Type} [Field k] {B : Over (Sp k)} [GrpObj B] [IsC
   have hI : ((𝟙 B)⁻¹ : B ⟶ B) ≫ (𝟙 B)⁻¹ = 𝟙 B := by
     first
     | rw [GrpObj.comp_inv, Category.comp_id, inv_inv]
-    | rw [GrpObj.inv_def, Category.id_comp, GrpObj.inv_inv]
-    | simp [GrpObj.comp_inv]
   haveI : IsIso ((𝟙 B)⁻¹ : B ⟶ B) := ⟨⟨_, hI, hI⟩⟩
   haveI : IsIso ((𝟙 B)⁻¹ : B ⟶ B).left :=
     ⟨⟨((𝟙 B)⁻¹ : B ⟶ B).left, by rw [← Over.comp_left, hI, Over.id_left],
@@ -139,7 +137,7 @@ theorem exists_polAV_hypS_retract : ∀ (k : Type) [Field k] [IsAlgClosed k] (B 
   have hG : Out.GlobalFnsSt := hL1.globalFns
   letI : IsCommMonObj B := hB.comm
   have hΘ : ∃ t : LB.Gen (Theta B M), t.IsGen := GlobalTheory.exists_gen_theta_of_isAbelianScheme k B hB M hM
-  let b : GlobalTheory.ZM.TBase k 1 := ⟨1, by simp, fun K _ β => by simp [IsPrimitiveRoot.one]⟩
+  let b : GlobalTheory.ZM.TBase k 1 := ⟨1, by simp, fun K _ β => by simp⟩
   let c := siegOne hG hB hM g
   have hc : c.Principal :=
     ⟨relAmple_diag_lam hB hM hΘ ha, fun T x hx => GlobalTheory.SiegelOfPolarised.eq_one_of_lam hM hK x hx⟩

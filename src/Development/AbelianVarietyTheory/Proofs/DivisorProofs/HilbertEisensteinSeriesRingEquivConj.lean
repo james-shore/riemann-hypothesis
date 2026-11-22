@@ -37,10 +37,10 @@ theorem _root_.GlobalTheory.HilbFam.hser_conj : ∀ (F : Type) [Field F] [Number
   congr 1
   refine Finset.sum_nbij' (fun μ j ↦ μ (π.symm j)) (fun μ i ↦ μ (π i)) ?_ ?_ ?_ ?_ ?_
   · intro μ hμ
-    simp only [Finset.mem_coe, Finset.mem_Iic] at hμ ⊢
+    simp only [Finset.mem_Iic] at hμ ⊢
     exact fun j ↦ hμ (π.symm j)
   · intro μ hμ
-    simp only [Finset.mem_coe, Finset.mem_Iic] at hμ ⊢
+    simp only [Finset.mem_Iic] at hμ ⊢
     intro i
     simpa using hμ (π i)
   · intro μ _

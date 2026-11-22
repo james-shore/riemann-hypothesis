@@ -85,7 +85,7 @@ theorem baseChange_flat {R W O : Type} [CommRing R] [CommRing W] [Algebra R W] [
     intro b
     induction b using TensorProduct.induction_on with
     | zero => simp
-    | tmul o w => simp [g, TensorProduct.tmul_sub]
+    | tmul o w => simp [g]
     | add x y hx hy => rw [map_add, map_add, ← hx, ← hy]; abel
   have gsurj : Function.Surjective g := fun y => by
     obtain ⟨b, hb⟩ := hs y

@@ -24,7 +24,7 @@ theorem dvr_matrix_proj_preimage (O K : Type) [CommRing O] [IsDomain O] [IsDiscr
     rw [Submodule.Quotient.mk_eq_zero]
     rw [hmem] at hcx ⊢
     have e : (fun i => algebraMap O K ((c • v) i)) = algebraMap O K c • (fun i => algebraMap O K (v i)) := by
-      funext i; simp [Algebra.smul_def]
+      funext i; simp
     rw [e] at hcx
     have hc' : algebraMap O K c ≠ 0 := by
       intro h; exact hc ((IsFractionRing.injective O K) (by rw [h, map_zero]))

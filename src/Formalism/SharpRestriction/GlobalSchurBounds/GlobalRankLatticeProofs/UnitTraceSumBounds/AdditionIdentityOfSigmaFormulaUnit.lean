@@ -344,9 +344,9 @@ theorem tauK_sK_sq : tauK D lam (sK D : D.host.K) ^ 2 = -((D.host.d : ℤ) : ℂ
     Subtype.ext (by push_cast; exact sqrtMinusD_sq D)
   have h1 : ((sK D : D.host.K)) ^ 2 = ((-(D.host.d : ℤ) : ℤ) : D.host.K) := by
     rw [show ((sK D : D.host.K)) = ⟨D.host.sqrtMinusD, Formalism.MainNotions.UnusedSlot33.HK.bE_mem D.host⟩ from rfl, h0]
-    first | (push_cast; done) | (push_cast; ring) | (push_cast; rfl) | simp
+    first | (push_cast; done) | (push_cast; ring)
   rw [sq, ← tauK_mul, ← sq, h1, tauK_int_lemma_5]
-  first | (push_cast; done) | (push_cast; ring) | (push_cast; rfl) | simp
+  first | (push_cast; done) | (push_cast; ring)
 
 theorem norm_tauK_sK_sq : ‖tauK D lam (sK D : D.host.K)‖ ^ 2 = ‖((D.host.d : ℤ) : ℤ_[p])‖ := by
   rw [← norm_pow, tauK_sK_sq, norm_neg, norm_int_cp]

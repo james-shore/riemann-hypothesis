@@ -35,8 +35,6 @@ theorem etale_normalized_free_chains_differential_one_zero_eq_zero : ((chainsN R
     Fin.sum_univ_two, SimplicialObject.δ, sch]
   first
     | (erw [one_zsmul, neg_one_zsmul, add_neg_cancel])
-    | (erw [one_smul, neg_one_smul, add_neg_cancel])
-    | (erw [← add_smul]; norm_num)
   all_goals rfl
 
 theorem d10 : ((chains R).obj (sch.obj X)).d (-1) 0 ≫ (chainsXIso R (sch.obj X) 0).hom = 0 := by

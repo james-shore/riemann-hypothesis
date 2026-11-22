@@ -46,7 +46,7 @@ private theorem induced_map_apply {U V : Type} [AddCommGroup U] [Module ℂ U] [
     polarizationInductionMap π hπ D hD (π u) = π (D u) := by
   have e : (π.quotKerEquivOfSurjective hπ).symm (π u) = Submodule.Quotient.mk u := by
     rw [LinearEquiv.symm_apply_eq]; rfl
-  simp only [polarizationInductionMap, LinearMap.coe_comp, LinearEquiv.coe_coe, Function.comp_apply, e, Submodule.mapQ_apply]
+  simp only [polarizationInductionMap, LinearMap.coe_comp, LinearEquiv.coe_coe, Function.comp_apply, e]
   rfl
 private theorem acts_zero_at_infinity {F : Type} [Field F] [NumberField F] {κ : Type} [Fintype κ]
     (T : Module.End ℂ ((κ → AF F) → ℂ)) :
@@ -108,5 +108,5 @@ theorem _root_.GlobalTheory.T.polarization_kernel_compact_vanishing : _root_.Glo
     (Bs : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.Base F E) (a a' : ℕ) (G : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.Geo σ a a') (Xc : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.Chars F E)
     (om : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.Rep σ G.V G.W) (om' : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.Rep σ G.V' G.W) (R : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.RealMaps F a a')
     (Rf : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.FinMaps F a a'), GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.IsMatched Bs G Xc om om' R Rf → ∀ k ∈ GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.KInf σ G.W Bs.emb, ∀ Φ, GlobalTheory.PolKer.PolZero Bs G Xc R Rf (Φ) → GlobalTheory.PolKer.PolZero Bs G Xc R Rf (om (1, k) Φ) := by
-  first | exact @_root_.GlobalTheory.PolKerCpt.polarization_zero_of_compact | exact _root_.GlobalTheory.PolKerCpt.polarization_zero_of_compact | (intros; apply _root_.GlobalTheory.PolKerCpt.polarization_zero_of_compact <;> assumption)
+  first | exact @_root_.GlobalTheory.PolKerCpt.polarization_zero_of_compact
 end

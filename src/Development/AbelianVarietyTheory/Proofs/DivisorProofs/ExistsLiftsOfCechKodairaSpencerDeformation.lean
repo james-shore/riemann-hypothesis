@@ -30,11 +30,11 @@ theorem cst_base (P : GPt A) :
 
 theorem fst_comp_dualMap (P : GPt A) :
     (TrivSqZeroExt.fstHom K P.B P.B : DualNumber P.B →+* P.B).comp (algebraMap K (DualNumber P.B)) = algebraMap K P.B := by
-  ext r; simp [TrivSqZeroExt.algebraMap_eq_inl, TrivSqZeroExt.algebraMap_eq_inl']
+  ext r; simp
 
 theorem fst_comp_inl (P : GPt A) :
     (TrivSqZeroExt.fstHom K P.B P.B : DualNumber P.B →+* P.B).comp (algebraMap P.B (DualNumber P.B)) = RingHom.id _ := by
-  ext r; simp [TrivSqZeroExt.algebraMap_eq_inl, TrivSqZeroExt.algebraMap_eq_inl']
+  ext r; simp [TrivSqZeroExt.algebraMap_eq_inl]
 
 theorem cst_red (P : GPt A) :
     spMap (TrivSqZeroExt.fstHom K P.B P.B : DualNumber P.B →+* P.B) ≫ P.cst.x = P.x := by

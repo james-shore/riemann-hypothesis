@@ -159,7 +159,7 @@ theorem twist_of_val {S₁ : Scheme.{0}} {A₁ : Over S₁} [GrpObj A₁] {M : L
           (fun k => I (𝟙 _ ≫ (![(snd T A₁).left, m.left] : Fin 2 → _) k)) *
         trF (L := M) (fun _ : Fin 1 => (snd T A₁).left) (fun _ => b) ψ.left y (fun _ => j 1)
           (fun _ => I (ψ.left ≫ (snd T A₁).left)) := by
-    simp only [trF, Fin.prod_univ_one, Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+    simp only [trF, Fin.prod_univ_one, Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one]
     rw [hψm]
     simp only [zpow_neg, _root_.mul_assoc]
     exact (_root_.mul_one _).symm.trans (congrArg (HMul.hMul _) (inv_mul_cancel _).symm)
@@ -205,7 +205,7 @@ theorem twist_move (hL₁ : L₁.IsLB) (w : LB.Iso L₁ (L₀.pull φ))
     intro U _ hh
     rw [Fintype.prod_sum_type]
     simp only [Sum.elim_inl, Sum.elim_inr, Fin.prod_univ_one, Fin.prod_univ_two, Matrix.cons_val_zero,
-      Matrix.cons_val_one, Matrix.head_cons, e2, zpow_neg]
+      Matrix.cons_val_one, e2, zpow_neg]
     rw [_root_.mul_left_comm, mul_inv_cancel, _root_.mul_one]
   obtain ⟨s', hs'⟩ := exists_sec hL₁ hfe (pullMulSec s ψA.left α₁ hα₁)
   have hval : ∀ (Z : Scheme.{0}) (r : Z ⟶ (T ⊗ A).left) (z : Z) (J : (Z ⟶ A.left) → L₁.ι), Good L₁ z J →
@@ -227,11 +227,11 @@ theorem twist_move (hL₁ : L₁.IsLB) (w : LB.Iso L₁ (L₀.pull φ))
   rw [e1, t1, e3] at t0
   rw [t2] at t0
   rw [t0, hval Z r z J hJ]
-  simp only [Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+  simp only [Fin.prod_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one]
   simp only [← _root_.mul_assoc, ← Units.val_mul]
   congr 2
   apply Additive.ofMul.injective
-  simp only [ofMul_mul, ofMul_zpow, ofMul_inv, smul_eq_mul, neg_mul, _root_.one_mul, neg_smul]
+  simp only [ofMul_mul, ofMul_zpow, neg_smul]
   abel
 
 end TwistMove
@@ -278,14 +278,13 @@ theorem mulGen_move {E : Type} [Field E] [NumberField E] [NumberField.IsCMField 
   have p1 := val_pmaps' w hc hm (eSec t'.G) y J₀ J hJ₀' hJ
   have p2 := val_pmaps' w hce hr (𝟙 _) y J₀ J hJ₀' hJ
   rw [show eSec t'.G ≫ m.φ = m.cm.e ≫ eSec t.G from m.cm.e_comm, c0] at p1
-  simp only [Fin.prod_univ_two, Fin.isValue, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
-    Category.comp_id, hmul] at p1
+  simp only [Fin.prod_univ_two, Fin.isValue, Matrix.cons_val_zero, Matrix.cons_val_one, Category.comp_id, hmul] at p1
   simp only [Finset.univ_unique, Finset.prod_singleton, Category.id_comp, zpow_one] at p2
   rw [val_pull hJ, val_mul hJ, val_rigPow, val_inv, Category.id_comp]
   rw [p2] at p1
   rw [eq_inv_mul_of_mul_eq p1.symm]
   apply ofMul_eq'
-  simp only [ofMul_mul, ofMul_inv, ofMul_zpow, smul_eq_mul, neg_mul, _root_.one_mul, neg_smul, mul_zpow, zsmul_eq_mul]
+  simp only [ofMul_mul, ofMul_inv, ofMul_zpow, neg_smul, mul_zpow]
   abel
 
 end MulMove

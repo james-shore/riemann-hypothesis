@@ -137,7 +137,6 @@ theorem circ_cont {X : Type*} [TopologicalSpace X] {f : X → Circle} (hf : Cont
     Continuous f := by
   first
   | exact continuous_induced_rng.2 hf
-  | exact Circle.isEmbedding_coe.continuous_iff.2 hf
 
 end GlobalTheory.TensorScalarOne
 
@@ -225,7 +224,7 @@ end GlobalTheory.TensorScalarOne
 namespace GlobalTheory.TensorScalarOne
 
 theorem suppAt_one {D : D7} (U : HSp D) (e : AE D) : SuppAt e U (1 : GA D U) := by
-  intro i j; simp [GlobalTheory.AdelicLatMove.mt_one]
+  intro i j; simp
 
 theorem tensor_scalar_one : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (S A B T : HSp D) (o : OrthDec S A B) (χA χB χT : (AE D)ˣ →* Circle) (omS : Om S T) (omA : Om A T) (omB : Om B T), IsWeilDatumO ψ S T (χA * χB) χT omS → IsWeilDatumO ψ A T χA χT omA → IsWeilDatumO ψ B T χB χT omB → ∀ a b h f, IsThetaFunO ψ S T f → ∀ u v, omS (o.emb (a, b), h) f ((o.resS T).symm (u, v)) = omA (a, h) (fun u' => omB (b, h) (fun v' => f ((o.resS T).symm (u', v'))) v) u := by
   intro D ψ S A B T o χA χB χT omS omA omB hS hA hB

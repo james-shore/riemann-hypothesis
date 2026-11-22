@@ -19,7 +19,7 @@ private theorem tens_sep {V B : Type} [AddCommGroup V] [Module ℂ V] [AddCommGr
     intro j y
     induction y using TensorProduct.induction_on with
     | zero => simp
-    | tmul v w => simp [F, TensorProduct.equivFinsuppOfBasisLeft_apply_tmul_apply]
+    | tmul v w => simp [F]
     | add x y hx hy => simp only [map_add, Finsupp.add_apply, hx, hy]
   apply F.injective
   rw [map_zero]

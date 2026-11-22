@@ -576,7 +576,7 @@ theorem vertexGlued (D : D7) : VertexGlued D := by
           simp only [tensCol, Pi.smul_apply, smul_eq_mul, mul_assoc]
         rw [e, ← DualityIsometry]
         funext z
-        simp only [tensCol, Pi.add_apply, Finset.sum_apply, Pi.smul_apply, smul_eq_mul, add_mul, Finset.sum_mul]
+        simp only [tensCol, Pi.add_apply, Finset.sum_apply, add_mul, Finset.sum_mul]
       have hm : ∀ Q' ∈ withLat Q.lat, (Θ vP (xm Q') yP).1 = (Θ vP (xmv Q') yP).1 := by
         intro Q' hQ'
         have := key vP _ (hM Q') (latInd Q.lat Λ) hL (charInd (resChar χ hχ q) Q') (vecInd Q.lat) btot btot

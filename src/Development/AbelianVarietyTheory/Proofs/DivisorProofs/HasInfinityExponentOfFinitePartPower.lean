@@ -26,7 +26,7 @@ theorem finAdEquiv_one_tmul (D : D7) (k : D.host.E) :
   intro w
   rw [GlobalTheory.LFun.finAdEquiv_tmul]
   simp only [GlobalTheory.BotFormula.toFinE, Formalism.MainNotions.StandardLatticesGL3.inc, Formalism.UG.inclE, RingEquiv.trans_apply,
-    AlgEquiv.toRingEquiv_eq_coe, AlgEquiv.coe_ringEquiv, Algebra.TensorProduct.includeLeftRingHom_apply,
+    AlgEquiv.coe_ringEquiv, Algebra.TensorProduct.includeLeftRingHom_apply,
     Algebra.TensorProduct.comm_tmul]
   rw [GlobalTheory.LFun.finAdEquiv_tmul]
   simp

@@ -30,7 +30,7 @@ theorem not_sq_mul_unit (K : Type) [Field K] [NumberField K] (Q : Ideal (𝓞 K)
     apply IsLocalization.injective (Localization.AtPrime Q) Q.primeCompl_le_nonZeroDivisors
     simp only at hzt
     rw [map_mul, map_mul, ← hw, ← hzt]
-    simp only [map_natCast, eq_intCast, Int.cast_natCast]
+    simp only [map_natCast]
     ring
   have hp0 : (p : 𝓞 K) ≠ 0 := by exact_mod_cast hp.ne_zero
   have h4 : (t : 𝓞 K) ^ 2 * u = p * z ^ 2 := by

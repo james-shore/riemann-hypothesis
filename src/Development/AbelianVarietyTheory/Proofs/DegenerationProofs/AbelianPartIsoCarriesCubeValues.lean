@@ -82,7 +82,7 @@ theorem cubV_move (hG : GlobalFnsSt) (hA : IsAbelianScheme A) {L : RigLB A} {L' 
         cubV c' z J' (lift σ x ≫ g) (lift σ y ≫ g) (lift σ u ≫ g) := by
     intro Z σ z J J' hJ hJ' Ω hΩ x y u
     have r₀ : (lift x (lift y (lift u σ)) : Z ⟶ Y) ≫ t = σ := by simp [t, Y]
-    have r₁ : (lift x (lift y (lift u σ)) : Z ⟶ Y) ≫ x₁ = x := by simp [x₁, Y]
+    have r₁ : (lift x (lift y (lift u σ)) : Z ⟶ Y) ≫ x₁ = x := by simp [x₁]
     have r₂ : (lift x (lift y (lift u σ)) : Z ⟶ Y) ≫ x₂ = y := by simp [x₂, Y]
     have r₃ : (lift x (lift y (lift u σ)) : Z ⟶ Y) ≫ x₃ = u := by simp [x₃, Y]
     refine ⟨(hv _ _ z J J' hJ hJ').trans (congrArg₂ (· * ·) (Eq.trans (Finset.prod_congr rfl fun I _ => ?_)

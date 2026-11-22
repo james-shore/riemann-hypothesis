@@ -11,4 +11,4 @@ theorem _root_.GlobalTheory.T.affinePointProperty_of_le_ker_app : ∀ (S : Schem
   (∀ (V : S.Opens) (hV : IsAffineOpen V), Represents (ptQ P V hV) (killIdeal (ptQ P V hV))) →
   ∀ (R' : Type) [CommRing R'] (x : Sp R' ⟶ S),
     (∀ (V : S.Opens) (hV : IsAffineOpen V), killIdeal (ptQ P V hV) ≤ RingHom.ker (x.app V).hom) → P R' x := by
-  first | (exact @GlobalTheory.PtClosed.of_le_ker_app) | (exact GlobalTheory.PtClosed.of_le_ker_app) | (intros; apply GlobalTheory.PtClosed.of_le_ker_app  <;> assumption)
+  first | (exact @GlobalTheory.PtClosed.of_le_ker_app)

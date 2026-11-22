@@ -13,7 +13,7 @@ private theorem gsp_map {B B' : Type} [CommRing B] [CommRing B'] (f : B →+* B'
     rw [(grp B).2.2.2.2.2.1, Matrix.map_mul]
   have e2 : f ν • (1 : M4 B') = (ν • (1 : M4 B)).map f := by
     ext i j
-    by_cases h : i = j <;> simp [Matrix.one_apply, h]
+    by_cases h : i = j <;> simp [h]
   unfold IsGSp
   rw [e1, e2]
   exact ⟨fun h => by rw [h], fun hf h => Matrix.map_injective hf h⟩

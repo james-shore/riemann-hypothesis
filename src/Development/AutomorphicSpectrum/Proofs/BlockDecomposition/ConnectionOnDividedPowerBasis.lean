@@ -33,7 +33,7 @@ lemma smul_mem_grade (e : Module.Basis ℕ B M) (I : ℕ → Ideal B) (r j : ℕ
   by_cases h : j = k
   · subst h
     simpa using ha
-  · simp [Finsupp.single_apply, h]
+  · simp [h]
 
 noncomputable def shift (e : Module.Basis ℕ B M) : Module.End B M :=
   e.constr B (fun k => e (k + 1))

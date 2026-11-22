@@ -16,8 +16,6 @@ theorem exists_unif' : ∃ ϖ : k, ϖ ≠ 0 ∧ valuation k ϖ < 1 := by
   refine ⟨r, ?_, hr1⟩
   first
     | exact hr0
-    | exact (Valuation.ne_zero_iff _).1 hr0
-    | simpa using hr0
 
 theorem pi_lt_mem_nhds {n : ℕ} {γ : ValueGroupWithZero k} (hγ : γ ≠ 0) :
     Set.univ.pi (fun _ : Fin n => {y : k | valuation k y < γ}) ∈ nhds (0 : Fin n → k) :=

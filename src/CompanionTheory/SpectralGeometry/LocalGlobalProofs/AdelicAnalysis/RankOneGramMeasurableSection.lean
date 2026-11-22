@@ -78,14 +78,14 @@ theorem reflM_unitary (τ : A →+* A) (hτ : ∀ a, τ (τ a) = a) (J : Matrix 
   have h4 : cT τ (reflM τ J a d) * J = J - τ a • Q := by
     rw [hc, sub_mul, one_mul, Matrix.smul_mul, h1]
   rw [h4]
-  simp only [reflM, ← hw, sub_mul, mul_sub, one_mul, mul_one, Matrix.smul_mul, Matrix.mul_smul, h2, h3, smul_smul]
+  simp only [reflM, ← hw, sub_mul, mul_sub, mul_one, Matrix.smul_mul, Matrix.mul_smul, h2, h3, smul_smul]
   calc _ = J - (a + τ a - a * τ a * hform τ J d d) • Q := by module
     _ = J := by rw [sub_eq_zero.2 h]; simp
 
 theorem reflM_mulVec (τ : A →+* A) (J : Matrix n n A) (a : A) (d p : n → A) :
     (reflM τ J a d).mulVec p = p - (a * hform τ J d p) • d := by
   simp only [reflM, Matrix.sub_mulVec, Matrix.one_mulVec, Matrix.smul_mulVec, Matrix.vecMulVec_mulVec, rowOf_dot]
-  ext i; simp [Matrix.vecMulVec_apply, mul_comm, mul_left_comm, mul_assoc]
+  ext i; simp [mul_comm, mul_left_comm]
 
 theorem refl_facts (τ : A →+* A) (hτ : ∀ a, τ (τ a) = a) (J : Matrix n n A)
     (hJ : ∀ i j, τ (J j i) = J i j) (p y : n → A) (hyp : hform τ J y y = hform τ J p p)

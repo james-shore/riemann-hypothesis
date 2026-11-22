@@ -61,7 +61,6 @@ theorem exists_prim {m : ℕ} (c : Fin m → 𝓞 K) (hc : c ≠ 0) (𝔭 : Idea
     exact hyS
   first
   | rw [mul_inv_cancel₀ hJF] at hle
-  | rw [FractionalIdeal.mul_inv_cancel hJF] at hle
   rw [← FractionalIdeal.coeIdeal_top, FractionalIdeal.coeIdeal_le_coeIdeal] at hle
   exact h𝔪.ne_top (top_le_iff.mp hle)
 
@@ -72,21 +71,15 @@ variable {M : Type} [AddCommGroup M] [Module (𝓞 K) M] [Module.Finite (𝓞 K)
 private theorem absNorm_eq_card_quotient (I : Ideal (𝓞 K)) : Ideal.absNorm I = Nat.card (𝓞 K ⧸ I) := by
   first
   | rw [Ideal.absNorm_apply, Submodule.cardQuot_apply]
-  | simp [Ideal.absNorm_apply, Submodule.cardQuot_apply]
-  | rfl
 
 private theorem finite_quotient_of_ne_bot (I : Ideal (𝓞 K)) (hI : I ≠ ⊥) : Finite (𝓞 K ⧸ I) := by
   first
   | exact Nat.finite_of_card_ne_zero (by
       rw [← absNorm_eq_card_quotient]; exact fun h => hI (Ideal.absNorm_eq_zero_iff.mp h))
-  | exact Ideal.finiteQuotientOfFreeOfNeBot I hI
 
 private theorem ringOfIntegers_coe_injective : Function.Injective (fun x : 𝓞 K => (x : K)) := by
   first
   | exact RingOfIntegers.coe_injective
-  | exact Subtype.val_injective
-  | exact FaithfulSMul.algebraMap_injective (𝓞 K) K
-  | exact IsFractionRing.injective (𝓞 K) K
 
 private theorem card_le_card_pow_of_not_linearIndependent {k V : Type*} [Field k] [Finite k] [AddCommGroup V] [Module k V]
     [Module.Finite k V] (n : ℕ) (h : ∀ v : Fin (n + 1) → V, LinearIndependent k v → False) :
@@ -110,7 +103,6 @@ theorem card_quot_le (𝔭 : Ideal (𝓞 K)) [h𝔭 : 𝔭.IsMaximal] (n : ℕ)
   have hbot : 𝔭 ≠ ⊥ := by
     first
     | exact Ring.ne_bot_of_isMaximal_of_not_isField h𝔭 (NumberField.RingOfIntegers.not_isField K)
-    | exact Ring.ne_bot_of_isMaximal_of_not_isField h𝔭 NumberField.RingOfIntegers.not_isField
   haveI : Finite (𝓞 K ⧸ 𝔭) := finite_quotient_of_ne_bot 𝔭 hbot
   haveI : Module.Finite (𝓞 K ⧸ 𝔭) (M ⧸ 𝔭 • (⊤ : Submodule (𝓞 K) M)) :=
     Module.Finite.of_restrictScalars_finite (𝓞 K) _ _
@@ -130,10 +122,6 @@ theorem card_quot_le (𝔭 : Ideal (𝓞 K)) [h𝔭 : 𝔭.IsMaximal] (n : ℕ)
     first
     | (show (o i : K) * (c j : K) = (o j : K) * (c i : K)
        rw [ho, ho]; ring)
-    | (simp only [map_mul]
-       rw [ho, ho]; ring)
-    | (push_cast
-       rw [ho, ho]; ring)
   have hsum0 : ∑ i, o i • y i = 0 := by
     have h1 : c j • ∑ i, o i • y i = o j • ∑ i, c i • y i := by
       rw [Finset.smul_sum, Finset.smul_sum]
@@ -149,8 +137,6 @@ theorem card_quot_le (𝔭 : Ideal (𝓞 K)) [h𝔭 : 𝔭.IsMaximal] (n : ℕ)
     rw [← hy i, Submodule.mkQ_apply, Submodule.Quotient.mk_smul]
     first
     | rfl
-    | (rw [← Ideal.Quotient.algebraMap_eq, algebraMap_smul])
-    | exact algebraMap_smul _ _ _
   have h4 := (Fintype.linearIndependent_iff.mp hv) _ h2 i₀
   exact hi₀ (o i₀) (ho i₀) (Ideal.Quotient.eq_zero_iff_mem.mp h4)
 
@@ -169,7 +155,6 @@ theorem smul_toAddSubgroup (π : 𝓞 K) (N : Submodule (𝓞 K) M) :
     Submodule.mem_smul_pointwise_iff_exists, AddSubgroup.mem_map]
   first
   | simp
-  | exact Iff.rfl
 
 theorem smul_inj (π : 𝓞 K) (hπ : π ≠ 0) : Function.Injective (DistribSMul.toAddMonoidHom M π) := by
   intro x y h
@@ -179,7 +164,6 @@ private theorem card_quotient_eq_index {R N : Type*} [Ring R] [AddCommGroup N] [
     (S : Submodule R N) : Nat.card (N ⧸ S) = S.toAddSubgroup.index := by
   first
   | rfl
-  | exact (Submodule.cardQuot_apply S).symm
 
 private theorem mem_smul_univ_iff_coe_mem_smul (I : Ideal (𝓞 K)) (N : Submodule (𝓞 K) M) (x : N) :
     x ∈ I • (⊤ : Submodule (𝓞 K) N) ↔ (x : M) ∈ I • N := by
@@ -201,18 +185,12 @@ private theorem relIndex_smul_eq_card_quotient_smul (I : Ideal (𝓞 K)) (N : Su
     ext x
     first
     | simp
-    | (constructor
-       · rintro ⟨y, -, rfl⟩
-         exact y.2
-       · intro hx
-         exact ⟨⟨x, hx⟩, trivial, rfl⟩)
   have hc : AddSubgroup.comap N.subtype.toAddMonoidHom (I • N).toAddSubgroup =
       (I • (⊤ : Submodule (𝓞 K) N)).toAddSubgroup := by
     ext x
     rw [AddSubgroup.mem_comap, Submodule.mem_toAddSubgroup, Submodule.mem_toAddSubgroup, mem_smul_univ_iff_coe_mem_smul]
     first
     | rfl
-    | simp
   rw [← hmap, ← AddSubgroup.relIndex_comap, AddSubgroup.relIndex_top_right, hc, card_quotient_eq_index]
 
 theorem relIndex_smul_ne_zero (N : Submodule (𝓞 K) M) (hN : N.FG) (d : 𝓞 K) (hd : d ≠ 0) :
@@ -235,7 +213,6 @@ private theorem relIndex_mul_relIndex_of_le_of_le {G : Type*} [AddGroup G] {H J 
     H.relIndex J * J.relIndex L = H.relIndex L := by
   first
   | exact AddSubgroup.relIndex_mul_relIndex H J L h1 h2
-  | exact AddSubgroup.relIndex_mul_relIndex h1 h2
 
 theorem relIndex_principal (N : Submodule (𝓞 K) M) (hN : N.FG) (n : ℕ) (ι : (Fin n → 𝓞 K) →ₗ[𝓞 K] M)
     (hι : Function.Injective ι) (hιN : LinearMap.range ι ≤ N) (d : 𝓞 K) (hd : d ≠ 0)
@@ -249,8 +226,6 @@ theorem relIndex_principal (N : Submodule (𝓞 K) M) (hN : N.FG) (n : ℕ) (ι 
     intro x hx
     first
     | exact Submodule.smul_mono le_rfl hιN hx
-    | exact Submodule.smul_mono_right _ hιN hx
-    | exact Submodule.smul_mono_right hιN hx
   have hAB : (Ideal.span {π} • N).toAddSubgroup ≤ N.toAddSubgroup := fun x hx => Submodule.smul_le_right hx
   have e1 := relIndex_mul_relIndex_of_le_of_le hDC hCB
   have e2 := relIndex_mul_relIndex_of_le_of_le hDA hAB
@@ -260,14 +235,6 @@ theorem relIndex_principal (N : Submodule (𝓞 K) M) (hN : N.FG) (n : ℕ) (ι 
       ← AddSubgroup.relIndex_comap]
     first
     | rw [AddSubgroup.comap_map_eq_self_of_injective (smul_inj π hπ)]
-    | (congr 1
-       ext x
-       rw [AddSubgroup.mem_comap, AddSubgroup.mem_map]
-       constructor
-       · rintro ⟨y, hy, hyx⟩
-         rwa [← smul_inj π hπ hyx]
-       · intro hx
-         exact ⟨x, hx, rfl⟩)
   have hCB0 : (LinearMap.range ι).toAddSubgroup.relIndex N.toAddSubgroup ≠ 0 := by
     have hdC : (Ideal.span {d} • N).toAddSubgroup ≤ (LinearMap.range ι).toAddSubgroup := fun x hx => hdN hx
     have e4 := relIndex_mul_relIndex_of_le_of_le hdC hCB
@@ -324,12 +291,6 @@ theorem relIndex_eq_card (I : Ideal (𝓞 K)) (N : Submodule (𝓞 K) M) :
 theorem fg_smul (I : Ideal (𝓞 K)) (N : Submodule (𝓞 K) M) (hN : N.FG) : (I • N).FG := by
   first
   | exact Submodule.FG.smul (IsNoetherian.noetherian I) hN
-  | exact hN.smul (IsNoetherian.noetherian I)
-  | (haveI : IsNoetherian (𝓞 K) N := isNoetherian_of_fg_of_noetherian N hN
-     have e : Submodule.map N.subtype (I • (⊤ : Submodule (𝓞 K) N)) = I • N := by
-       rw [Submodule.map_smul'', Submodule.map_subtype_top]
-     rw [← e]
-     exact (IsNoetherian.noetherian _).map _)
 
 theorem relIndex_prime_le (𝔭 : Ideal (𝓞 K)) [𝔭.IsMaximal] (n : ℕ) (N : Submodule (𝓞 K) M) (hN : N.FG)
     (hD : HDep n N) : (𝔭 • N).toAddSubgroup.relIndex N.toAddSubgroup ≤ Ideal.absNorm 𝔭 ^ n := by
@@ -351,8 +312,6 @@ theorem relIndex_prime_le (𝔭 : Ideal (𝓞 K)) [𝔭.IsMaximal] (n : ℕ) (N 
 private theorem ideal_mul_smul_submodule (I J : Ideal (𝓞 K)) (N : Submodule (𝓞 K) M) : (I * J) • N = I • J • N := by
   first
   | exact Submodule.mul_smul I J N
-  | (rw [← Ideal.smul_eq_mul]; exact Submodule.smul_assoc I J N)
-  | exact mul_smul I J N
 
 private theorem relIndex_smul_le_absNorm_pow_of_hDep (n k : ℕ) : ∀ (𝔞 : Ideal (𝓞 K)), Ideal.absNorm 𝔞 ≤ k → 𝔞 ≠ ⊥ →
     ∀ (N : Submodule (𝓞 K) M), N.FG → HDep n N →
@@ -433,7 +392,6 @@ theorem relIndex_eq (n : ℕ) (𝔞 : Ideal (𝓞 K)) (h𝔞 : 𝔞 ≠ ⊥) (N 
       (𝔞 • N).toAddSubgroup.relIndex N.toAddSubgroup < Ideal.absNorm 𝔟 ^ n * Ideal.absNorm 𝔞 ^ n := by
     first
     | exact lt_of_le_of_lt (Nat.mul_le_mul_right _ h2) (Nat.mul_lt_mul_of_pos_left hlt hB)
-    | nlinarith
   exact absurd hprod (ne_of_lt hlt2)
 
 end General

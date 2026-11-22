@@ -213,7 +213,7 @@ theorem exists_ne_zero : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] 
     · simp [deMul, h0]
     · have h : X.p0 = r := hp.resolve_left h0
       have hr : r ≠ 0 := h ▸ h0
-      simp [deMul, h0, h, hr, i.isLt]
+      simp [deMul, h, hr, i.isLt]
   · exact Finset.prod_ne_zero_iff.mpr fun τ _ => zpow_ne_zero _ (hx τ).1
 
 end GlobalTheory.DefConst

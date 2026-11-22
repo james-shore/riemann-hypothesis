@@ -30,8 +30,6 @@ theorem eq_one_of_pow_close {z : ℂ} (h : ∀ n : ℕ, ‖z ^ n - 1‖ < 1 / 2)
   | exact @_root_.GlobalTheory.UnitNormRealPartBound.main
   | exact _root_.GlobalTheory.UnitNormRealPartBound.main
   | (apply _root_.GlobalTheory.UnitNormRealPartBound.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UnitNormRealPartBound.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UnitNormRealPartBound.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UnitNormRealPartBound.main ..)
 
 theorem exists_ball_ker {K : Type} [NormedAddCommGroup K] [IsUltrametricDist K] (ψ : AddChar K ℂ)

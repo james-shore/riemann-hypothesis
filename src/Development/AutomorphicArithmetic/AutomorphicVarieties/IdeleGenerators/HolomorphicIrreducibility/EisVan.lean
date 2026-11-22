@@ -166,8 +166,7 @@ theorem UpperTheory.V.Sd.eisVan :
     rw [Ne, ZMod.intCast_zmod_eq_zero_iff_dvd]
     exact hγ
   have e : (![0, a] ᵥ* ((γ : SL(2, ZMod N)) : Matrix (Fin 2) (Fin 2) (ZMod N))) 0 = a * ((γ 1 0 : ℤ) : ZMod N) := by
-    simp [Matrix.vecMul, dotProduct, Fin.sum_univ_two, SpecialLinearGroup.map_apply_coe,
-      RingHom.mapMatrix_apply]
+    simp [Matrix.vecMul, dotProduct, Fin.sum_univ_two]
   rw [e]
   intro h
   exact hc ((ha.mul_right_eq_zero).mp h)

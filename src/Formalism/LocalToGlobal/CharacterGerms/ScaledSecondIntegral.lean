@@ -60,7 +60,7 @@ theorem exists_std (b : I) : ∃ x, X.IsCurve (X.ty (Sum.inl b)) (Pi.single b 1)
   have hty : ∀ c, X.ty (Sum.inl c) ≠ X.ty (Sum.inl b) → (Pi.single b (1 : C) : I → C) c = 0 := by
     intro c hc
     have : c ≠ b := fun h => hc (h ▸ rfl)
-    simp [Pi.single_apply, this]
+    simp [this]
   obtain ⟨x, hx, h0, h1⟩ := X.t4 _ _ hu hty
   exact ⟨x, hx, h0, h1⟩
 
@@ -87,7 +87,7 @@ theorem lift_apply (h : I ⊕ J → C) (i : ℕ) (n : I ⊕ J) : X.lift h i n =
 theorem lift_zero (h : I ⊕ J → C) : X.lift h 0 = h := by
   funext n
   rw [lift_apply]
-  simp only [pow_zero, pow_one, (X.std_spec _).2.1, const0, if_pos rfl]
+  simp only [pow_zero, pow_one, (X.std_spec _).2.1, const0]
   cases n with
   | inl b' => simp [Pi.single_apply]
   | inr j => simp

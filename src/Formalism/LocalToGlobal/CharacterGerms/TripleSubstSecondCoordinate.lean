@@ -104,7 +104,6 @@ private theorem hasSubst_of_Z0 {σ τ : Type} [Finite σ] {a : σ → MvPowerSer
     (ha : ∀ s, MvPowerSeries.constantCoeff (a s) = 0) : MvPowerSeries.HasSubst a := by
   first
   | exact MvPowerSeries.hasSubst_of_constantCoeff_zero ha
-  | exact ⟨fun s => by rw [ha s]; exact IsNilpotent.zero, fun d => Set.toFinite _⟩
 
 private theorem constantCoeff_P2_eq_zero {a b : Fin dd → MvPowerSeries τ C} (ha : ∀ i, MvPowerSeries.constantCoeff (a i) = 0)
     (hb : ∀ i, MvPowerSeries.constantCoeff (b i) = 0) : ∀ q, MvPowerSeries.constantCoeff (P2 a b q) = 0 := by
@@ -185,7 +184,7 @@ private theorem ev_pt_pair {n : ℕ} (x y : Pt C n dd) : ev (n := n) ![x, y] Y.h
   congr 1
   funext q
   rcases q with ⟨j, l⟩
-  fin_cases j <;> first | rfl | simp [P2]
+  fin_cases j <;> first | rfl
 
 theorem addOf_eq {n : ℕ} (a b : Pt C n dd) : addOf (Y.B.FK C) a b = addAt Y a b := by
   funext i
@@ -193,12 +192,12 @@ theorem addOf_eq {n : ℕ} (a b : Pt C n dd) : addOf (Y.B.FK C) a b = addAt Y a 
       (MvPowerSeries.map (algebraMap C C) (Y.B.G.F i)) = MvPowerSeries.subst (P2 a b) (Y.B.G.F i)
   have hm : MvPowerSeries.map (algebraMap C C) (Y.B.G.F i) = Y.B.G.F i := by
     ext n
-    simp [MvPowerSeries.coeff_map]
+    simp
   rw [hm]
   congr 1
   funext q
   rcases q with ⟨j, l⟩
-  fin_cases j <;> first | rfl | simp [P2]
+  fin_cases j <;> first | rfl
 
 section Three
 

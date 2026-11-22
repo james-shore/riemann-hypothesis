@@ -141,9 +141,6 @@ theorem val_scale {Y Z : Scheme.{0}} {K : Type} [Fintype K] (φ : K → (Y ⟶ t
       all_goals rfl)
   first
     | exact key
-    | (simp only [CommRingCat.hom_comp, RingHom.comp_apply] at key
-       simp only [MonoidHom.coe_comp, Function.comp_apply, MonoidHom.comp_apply, Units.coe_map, MonoidHom.coe_coe]
-       exact key)
 
 abbrev ρn (n m : ℕ) : jOG x0 d m n ⟶ jOG x0 d (m + 1) n :=
   homAt x0 (jetTrunc : Jet S (Fin n × Fin d) (m + 1) →ₐ[S] Jet S (Fin n × Fin d) m)
@@ -222,7 +219,6 @@ theorem pe_trunc {x : ∀ m, jOG x0 d m 1 ⟶ t.G} {e : ∀ m, FrTyG t x0 d x m}
     first
     | exact ReciprocityTheory.ChartRestriction.G.Geo.Tor.val_corr (htr m) _
     | exact ReciprocityTheory.ChartRestriction.G.Geo.Tor.val_corr hJ (htr m) _
-    | exact ReciprocityTheory.ChartRestriction.G.Geo.Tor.val_corr (htr m) _ hJ
   try unfold peG
   refine h1.trans ?_
   rw [hcomp, hc]

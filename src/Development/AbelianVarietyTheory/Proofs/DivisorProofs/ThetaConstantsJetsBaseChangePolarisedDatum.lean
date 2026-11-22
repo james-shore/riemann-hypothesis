@@ -165,7 +165,7 @@ theorem dual_solve {K : Type} [Field K] (M : ℕ) (u₁ T' : DualNumber K) (u₀
   have hv : u₁ = inl u₀ * (1 + inr (u₁.snd / u₀)) := by
     ext
     · simp [hu]
-    · simp [hu]; field_simp
+    · simp; field_simp
   rw [hv, mul_pow, one_add_inr_pow, mul_pow, inl_mul, inl_pow, _root_.mul_assoc, _root_.mul_assoc] at h
   have hu0 : IsUnit (inl (u₀ ^ M) : DualNumber K) := by
     refine ⟨⟨inl (u₀ ^ M), inl ((u₀ ^ M)⁻¹), ?_, ?_⟩, rfl⟩ <;>

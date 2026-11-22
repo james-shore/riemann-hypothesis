@@ -35,7 +35,7 @@ abbrev QL := A.L ⧸ (Ideal.span {e}).map (algebraMap A.K A.L)
 
 instance twQ : IsScalarTower F (QK A e) (QL A e) := IsScalarTower.of_algebraMap_eq fun x => by
   rw [IsScalarTower.algebraMap_apply F A.K (QK A e)]
-  simp only [Ideal.Quotient.algebraMap_eq, RingHom.comp_apply, Ideal.Quotient.algebraMap_quotient_map_quotient]
+  simp only [Ideal.Quotient.algebraMap_eq, Ideal.Quotient.algebraMap_quotient_map_quotient]
   show Ideal.Quotient.mk _ (algebraMap F A.L x) = _
   rw [IsScalarTower.algebraMap_apply F A.K A.L]
 
@@ -140,7 +140,7 @@ theorem exists_idem (K : Type) [CommRing K] [IsArtinianRing K] [IsReduced K] [No
     simp at this
   · intro h
     have := congrFun (congrArg φ h) j
-    simp [Pi.single_apply, hij] at this
+    simp [hij] at this
 
 end GlobalTheory.JR.EtQuot
 

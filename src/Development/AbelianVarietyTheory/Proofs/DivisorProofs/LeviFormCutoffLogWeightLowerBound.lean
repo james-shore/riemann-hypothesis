@@ -146,8 +146,7 @@ theorem levi_cutLog_lower : ∀ (χ : ℝ → ℝ) (A : ℝ), ContDiff ℝ ∞ �
   have hρC : (ρ : ℂ) ≠ 0 := by exact_mod_cast hρ.ne'
   have hv : ∀ y : V n, ‖y‖ ^ 2 / ρ ^ 2 = v y := by
     intro y
-    simp only [hvdef, hLapp, Complex.normSq_mul, Complex.normSq_inv, Complex.normSq_ofReal,
-      EuclideanSpace.norm_sq_eq, Complex.normSq_eq_norm_sq, Finset.sum_div]
+    simp only [hvdef, hLapp, EuclideanSpace.norm_sq_eq, Complex.normSq_eq_norm_sq, Finset.sum_div]
     refine Finset.sum_congr rfl fun j _ => ?_
     rw [Complex.norm_mul, norm_inv, Complex.norm_real, Real.norm_eq_abs, abs_of_pos hρ]
     field_simp
@@ -168,7 +167,7 @@ theorem levi_cutLog_lower : ∀ (χ : ℝ → ℝ) (A : ℝ), ContDiff ℝ ∞ �
   have hwdL : ∀ j m, wd n m (fun y => L j y) z = (ρ : ℂ)⁻¹ * (if j = m then 1 else 0) := by
     intro j m
     rw [wd_of_differentiableAt (L j).differentiableAt, (L j).fderiv, hLapp]
-    simp [bas, EuclideanSpace.single_apply]
+    simp [bas]
   have hLevi : leviV n (fun y => ((v y : ℝ) : ℂ)) z ξ =
       ((∑ j, Complex.normSq ((ρ : ℂ)⁻¹ * ξ j) : ℝ) : ℂ) := by
     rw [show (fun y => ((v y : ℝ) : ℂ)) = fun y => ((∑ j, Complex.normSq (L j y) : ℝ) : ℂ) from rfl,

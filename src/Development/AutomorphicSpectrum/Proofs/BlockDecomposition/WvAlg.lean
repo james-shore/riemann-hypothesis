@@ -16,8 +16,6 @@ theorem wvAlg : WvAlg := by
     simp only [PositivityTheory.RgBcC.Fc.wv, PositivityTheory.RgBcC.Fc.chj, h2, h0, if_true, hsq, pow_zero, one_mul]
     first
       | ring
-      | (simp [hsq]; ring_nf)
-      | simp [hsq]
   · simp [PositivityTheory.RgBcC.Fc.wv, PositivityTheory.RgBcC.Fc.chj]
   · simp [PositivityTheory.RgBcC.Fc.wv, PositivityTheory.RgBcC.Fc.chj]
   · intro j

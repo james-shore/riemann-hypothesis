@@ -51,7 +51,7 @@ theorem eval_spec {F K : Type} [Field F] [Field K] [Algebra F K] {D N : ℕ}
 theorem lineSubst_lin {K : Type} [Field K] {N : ℕ} (a b y : Fin N → K) :
     lineSubst a b (lin y) = Polynomial.C (∑ j, a j * y j) + Polynomial.C (∑ j, b j * y j) * Polynomial.X := by
   simp only [lin, lineSubst, map_sum, map_mul, aeval_X, aeval_C, Polynomial.algebraMap_eq, add_mul,
-    Finset.sum_add_distrib, Polynomial.C_mul, Finset.sum_mul, map_sum]
+    Finset.sum_add_distrib, Finset.sum_mul, map_sum]
   congr 1
   refine Finset.sum_congr rfl fun j _ => ?_
   ring

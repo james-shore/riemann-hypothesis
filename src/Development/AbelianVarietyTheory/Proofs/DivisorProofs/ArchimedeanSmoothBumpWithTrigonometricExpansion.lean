@@ -19,8 +19,6 @@ theorem exists_bounded_trig {X : Type} [PseudoMetricSpace X] [ProperSpace X] (xâ
   | exact @_root_.GlobalTheory.RealAlgebraCharacters.main
   | exact _root_.GlobalTheory.RealAlgebraCharacters.main
   | (apply _root_.GlobalTheory.RealAlgebraCharacters.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RealAlgebraCharacters.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RealAlgebraCharacters.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RealAlgebraCharacters.main ..)
 
 variable {F : Type} [Field F] [NumberField F]

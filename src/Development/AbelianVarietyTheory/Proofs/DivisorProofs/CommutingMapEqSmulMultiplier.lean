@@ -8,7 +8,7 @@ theorem commuting_map_eq_smul_multiplier :
   let S : W →ₗ[ℂ] W :=
     { toFun := fun f => ⟨h' * (T f : B), hW _ (T f).2⟩
       map_add' := fun f g => by ext; simp [mul_add]
-      map_smul' := fun c f => by ext; simp [mul_smul_comm] }
+      map_smul' := fun c f => by ext; simp }
   haveI : Nontrivial W := by
     by_contra hnt
     rw [not_nontrivial_iff_subsingleton] at hnt

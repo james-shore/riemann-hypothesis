@@ -14,7 +14,7 @@ theorem UpperTheory.V.PropA.lift :
   have hcomm : ∀ v : Fin R → ℤ_[l], π (Matrix.mulVec (Matrix.of fun i j => s j i) v) = g (π v) := by
     have h : π ∘ₗ (Matrix.of fun i j => s j i).mulVecLin = g ∘ₗ π := by
       ext j
-      simp [Matrix.mulVec_single_one]
+      simp
       rw [← hs j]
       rfl
     intro v
@@ -22,8 +22,7 @@ theorem UpperTheory.V.PropA.lift :
   set A : Matrix (Fin R) (Fin R) ℤ_[l] := c • (Matrix.of fun i j => s j i) - 1 with hA
   have hcommA : ∀ v, π (A.mulVecLin v) = (c • g - 1) (π v) := by
     intro v
-    simp only [hA, Matrix.mulVecLin_apply, Matrix.sub_mulVec, Matrix.smul_mulVec,
-      Matrix.one_mulVec, map_sub, map_smul, hcomm, LinearMap.sub_apply, LinearMap.smul_apply,
+    simp only [hA, Matrix.mulVecLin_apply, Matrix.one_mulVec, map_sub, map_smul, hcomm, LinearMap.sub_apply, LinearMap.smul_apply,
       Module.End.one_apply]
   let φ : (Fin R → ℤ_[l]) →ₗ[ℤ_[l]] X ⧸ LinearMap.range (c • g - 1) :=
     (LinearMap.range (c • g - 1)).mkQ ∘ₗ π

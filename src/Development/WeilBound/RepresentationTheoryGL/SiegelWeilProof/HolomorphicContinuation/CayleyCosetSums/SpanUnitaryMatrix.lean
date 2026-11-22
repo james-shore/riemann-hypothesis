@@ -23,7 +23,7 @@ theorem pm_unit (σ : Equiv.Perm (Fin n)) : (pm σ)ᴴ * pm σ = 1 := by
   ext i j
   simp only [pm, Matrix.mul_apply, Matrix.conjTranspose_apply, Matrix.of_apply, Matrix.one_apply]
   rw [Finset.sum_eq_single (σ.symm i)]
-  · by_cases h : i = j <;> simp [h, eq_comm, Equiv.apply_eq_iff_eq_symm_apply]
+  · by_cases h : i = j <;> simp [h]
   · intro k _ hk
     have : σ k ≠ i := fun e => hk (by rw [← e]; simp)
     simp [this]

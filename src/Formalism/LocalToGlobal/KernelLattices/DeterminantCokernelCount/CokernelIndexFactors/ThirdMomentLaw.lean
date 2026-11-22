@@ -69,9 +69,6 @@ theorem movHom_inv_apply {K : Type*} [Field K] {N N' : ℕ} (k : GL (Fin N) K) (
   first
   | (rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, Units.inv_mul, Matrix.one_mul, Matrix.mul_assoc,
       Units.inv_mul, Matrix.mul_one])
-  | (simp only [← Matrix.mul_assoc, Units.inv_mul, Matrix.one_mul]
-     rw [Matrix.mul_assoc, Units.inv_mul, Matrix.mul_one])
-  | simp [Matrix.mul_assoc]
 
 theorem movHom_inv_injective {K : Type*} [Field K] {N N' : ℕ} (k : GL (Fin N) K) (k' : GL (Fin N') K) :
     Function.Injective (movHom K k⁻¹ k'⁻¹) := by
@@ -86,8 +83,6 @@ private theorem zpow_identity_aux_lemma {K : Type*} [Field K] (x y z : K) (hx : 
   rw [zpow_sub₀ hx, h1, h2]
   first
   | ring
-  | (field_simp
-     ring)
 
 theorem relIndexFormula : RelIndexFormula := by
   unfold RelIndexFormula
@@ -117,12 +112,8 @@ theorem relIndexFormula : RelIndexFormula := by
     refine ⟨z, hz.trans ?_⟩
     first
     | (simp only [movHom, AddMonoidHom.coe_mk, ZeroHom.coe_mk, inv_inv, Matrix.mul_apply, Matrix.of_apply,
-        mul_ite, mul_one, mul_zero, ite_mul, zero_mul, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ,
-        ite_true]; done)
-    | (simp only [movHom, AddMonoidHom.coe_mk, ZeroHom.coe_mk, inv_inv, Matrix.mul_apply, Matrix.of_apply,
-        mul_ite, mul_one, mul_zero, ite_mul, zero_mul, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ,
-        if_true]; done)
-    | (simp [movHom, Matrix.mul_apply, mul_ite, ite_mul]; done)
+        mul_ite, mul_one, mul_zero, ite_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ,
+        ite_true])
   choose D hD using hent
   obtain ⟨Mat, hMat⟩ : ∃ Mat : Matrix (Fin N' × Fin N) (Fin N' × Fin N) O, ∀ i j p q,
       algebraMap O K (Mat (i, j) (p, q)) =
@@ -162,9 +153,7 @@ theorem relIndexFormula : RelIndexFormula := by
             (k : Matrix (Fin N) (Fin N) K) l j * algebraMap O K (x (m, l)) := by
           rw [hΦ, Matrix.toLin'_apply]
           first
-          | (simp only [Matrix.mulVec, dotProduct, Fintype.sum_prod_type, map_sum, map_mul, hMat]; done)
-          | (simp only [Matrix.mulVec, Matrix.dotProduct, Fintype.sum_prod_type, map_sum, map_mul, hMat]; done)
-          | (simp [Matrix.mulVec, dotProduct, Fintype.sum_prod_type, map_sum, hMat]; done)
+          | (simp only [Matrix.mulVec, dotProduct, Fintype.sum_prod_type, map_sum, map_mul, hMat])
       _ = ∑ l : Fin N, (∑ m : Fin N', ((k'⁻¹ : GL (Fin N') K) : Matrix (Fin N') (Fin N') K) i m * Φ x m l) *
             (k : Matrix (Fin N) (Fin N) K) l j := by
           rw [Finset.sum_comm]
@@ -175,8 +164,7 @@ theorem relIndexFormula : RelIndexFormula := by
           ring
       _ = movHom K k⁻¹ k'⁻¹ (Φ x) i j := by
           first
-          | (simp only [movHom, AddMonoidHom.coe_mk, ZeroHom.coe_mk, inv_inv, Matrix.mul_apply]; done)
-          | rfl
+          | (simp only [movHom, AddMonoidHom.coe_mk, ZeroHom.coe_mk, inv_inv, Matrix.mul_apply])
   have hsub : ((matLat O K N N').comap (movHom K k k')).comap Φ =
       (LinearMap.range (Matrix.toLin' Mat)).toAddSubgroup := by
     ext x
@@ -194,7 +182,6 @@ theorem relIndexFormula : RelIndexFormula := by
       (((matLat O K N N').comap (movHom K k k')).comap Φ).index := by
     first
     | (rw [AddSubgroup.index_comap, hrange])
-    | (rw [← AddSubgroup.relIndex_top_right, AddSubgroup.relIndex_comap, ← AddMonoidHom.range_eq_map, hrange])
   have hrc : (matLat O K N N').relIndex ((matLat O K N N').map (movHom K k k')) =
       ((matLat O K N N').comap (movHom K k k')).relIndex (matLat O K N N') := by
     first
@@ -204,14 +191,11 @@ theorem relIndexFormula : RelIndexFormula := by
       ((k'⁻¹ : GL (Fin N') K) : Matrix (Fin N') (Fin N') K) (k : Matrix (Fin N) (Fin N) K).transpose := by
     ext ⟨i, j⟩ ⟨p, q⟩
     first
-    | (rw [RingHom.mapMatrix_apply, Matrix.map_apply, hMat, Matrix.kroneckerMap_apply, Matrix.transpose_apply]; done)
-    | (simp [hMat, Matrix.kroneckerMap_apply]; done)
+    | (rw [RingHom.mapMatrix_apply, Matrix.map_apply, hMat, Matrix.kroneckerMap_apply, Matrix.transpose_apply])
   have hdetA : ((k'⁻¹ : GL (Fin N') K) : Matrix (Fin N') (Fin N') K).det =
       ((k' : Matrix (Fin N') (Fin N') K).det)⁻¹ := by
     first
     | exact eq_inv_of_mul_eq_one_left (by rw [← Matrix.det_mul, Units.inv_mul, Matrix.det_one])
-    | rw [Matrix.coe_units_inv, Matrix.det_nonsing_inv, Ring.inverse_eq_inv']
-    | simp
   have hπ : algebraMap O K ϖ ≠ 0 := (map_ne_zero_iff _ (IsFractionRing.injective O K)).2 hϖ.ne_zero
   obtain ⟨u₀, hu₀⟩ : ∃ u₀ : Oˣ, algebraMap O K (u₀ : O) =
       algebraMap O K (w : O) ^ N' * (algebraMap O K (w' : O))⁻¹ ^ N :=
@@ -247,7 +231,6 @@ theorem relIndexFormula : RelIndexFormula := by
     (matLat O K N N').map (movHom K k k') from rfl, hrc, hidx, hsub]
   first
   | rfl
-  | exact AddSubgroup.index_eq_card _
 
 end IdxMain
 

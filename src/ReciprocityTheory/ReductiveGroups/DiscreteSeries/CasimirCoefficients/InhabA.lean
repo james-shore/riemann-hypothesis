@@ -26,7 +26,7 @@ theorem hasDerivAt_exp_entry (X : Matrix ι ι ℂ) (i j : ι) :
 theorem hasDerivAt_det_of_one (A : ℝ → Matrix ι ι ℂ) (A' : Matrix ι ι ℂ) (h0 : A 0 = 1)
     (h : ∀ i j, HasDerivAt (fun t => A t i j) (A' i j) 0) :
     HasDerivAt (fun t => (A t).det) A'.trace 0 := by
-  first | exact Bl.MovedPointExistence.goal1 .. | (apply Bl.MovedPointExistence.goal1 <;> assumption) | (intros; apply Bl.MovedPointExistence.goal1 <;> assumption)
+  first | exact Bl.MovedPointExistence.goal1 .. | (apply Bl.MovedPointExistence.goal1 <;> assumption)
 
 end DetDeriv
 

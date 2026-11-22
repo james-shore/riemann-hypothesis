@@ -88,7 +88,7 @@ private theorem isMultiHomog_prod_X_pow' {O : Type} [CommRing O] {K : Type} [Fin
     (fun k => e k • blockWeight ι ⟨k, c k⟩) (fun k _ => hXpow _ _)
   have hsum : (∑ k, e k • blockWeight ι ⟨k, c k⟩) = e := by
     funext k'
-    simp [Finset.sum_apply, blockWeight, Pi.single_apply, Pi.smul_apply]
+    simp [Finset.sum_apply, blockWeight, Pi.single_apply]
   rw [hsum] at h
   exact h
 

@@ -207,7 +207,7 @@ private theorem sec_res_twGen (q : ℕ) (i : ℤ) (V' V : Scheme) (g : V' ⟶ V)
   have h := (toSheafify Scheme.etaleTopology (Scheme.Γ ⋙ twF q i)).naturality g.op
   have h2 := congrArg (fun f => ModuleCat.Hom.hom f
     (Submodule.Quotient.mk (Finsupp.single ζ 1) : (Scheme.Γ ⋙ twF q i).obj (op V))) h
-  simp only [ModuleCat.hom_comp, LinearMap.comp_apply] at h2
+  simp only [ModuleCat.hom_comp] at h2
   erw [← h2]
   refine congrArg (ModuleCat.Hom.hom
     ((toSheafify Scheme.etaleTopology (Scheme.Γ ⋙ twF q i)).app (op V'))) ?_

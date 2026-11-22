@@ -85,7 +85,7 @@ theorem UpperTheory.ConvolutionTheory.L1.quotFin :
             hρ.comp ((him).mul_const y)
           have h2 : ∫⁻ t, ρ ((i t)⁻¹ * y) ∂ν = 1 := by
             have := (Measure.measurePreserving_inv ν).lintegral_comp hm
-            simp only [Pi.inv_apply, map_inv] at this
+            simp only [map_inv] at this
             rw [this, hnorm']
           have hm' : Measurable fun t : T => ρ ((i t)⁻¹ * y) := hρ.comp (him.inv.mul_const y)
           rw [lintegral_const_mul (ind y) hm', h2, mul_one]

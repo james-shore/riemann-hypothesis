@@ -68,7 +68,6 @@ lemma card_notPhi : (univ.filter (fun g : E0 × H => ¬ InPhi g)).card = (PhiSet
 lemma conj_eq_neg (ψ : AddChar (E0 × H) ℂ) (g : E0 × H) : starRingEnd ℂ (ψ g) = ψ (-g) := by
   first
   | exact (AddChar.map_neg_eq_conj ψ g).symm
-  | rw [AddChar.map_neg_eq_inv, Complex.inv_eq_conj (AddChar.norm_apply ψ g)]
 
 lemma ortho (g h : E0 × H) :
     ∑ ψ : AddChar (E0 × H) ℂ, starRingEnd ℂ (ψ g) * ψ h
@@ -94,8 +93,6 @@ lemma chC_sq (g : E0 × H) : (chC : AddChar (E0 × H) ℂ) g * chC g = 1 := by
 private theorem zero_apply_lemma (g : E0 × H) : (0 : AddChar (E0 × H) ℂ) g = 1 := by
   first
   | exact AddChar.zero_apply g
-  | rfl
-  | simp
 
 lemma chC_mul_self : (chC : AddChar (E0 × H) ℂ) * chC = 0 := by
   ext g
@@ -203,7 +200,6 @@ theorem primitive_value_pow : PrimValPow (H := H) := by
   first
   | rw [Nat.primeFactors_prime_pow (by omega) hp, Finset.prod_singleton, hp.factorization_pow,
       Finsupp.single_eq_same]
-  | simp [Nat.primeFactors_prime_pow (by omega : i ≠ 0) hp, hp.factorization_pow]
 
 end
 
@@ -214,8 +210,6 @@ lemma natCard_eq_filter (I : AddSubgroup (E0 × H)) [DecidablePred (fun x => x �
     Nat.card I = (univ.filter (fun x => x ∈ I)).card := by
   first
   | (rw [Nat.card_eq_fintype_card]; exact Fintype.card_subtype _)
-  | (rw [Nat.card_eq_fintype_card]; convert Fintype.card_subtype (fun x => x ∈ I))
-  | simp [Nat.card_eq_fintype_card, Fintype.card_subtype]
 
 open Classical in
 lemma ortho_coset (I : AddSubgroup (E0 × H)) (h g : E0 × H) :
@@ -240,14 +234,13 @@ lemma ortho_coset (I : AddSubgroup (E0 × H)) (h g : E0 × H) :
   have e3 : ∀ x : E0 × H, (h + x = g) ↔ (x = g - h) := fun x => by
     rw [eq_sub_iff_add_eq, add_comm]
   simp_rw [ortho, e3]
-  simp only [Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_filter, Finset.mem_univ, true_and]
+  simp only [Finset.sum_ite_eq', Finset.mem_filter, Finset.mem_univ, true_and]
   rw [hS]
   have hΦ := phi_card_ne_zero (H := H)
   split_ifs
   · rw [card_G]
     first
-    | (field_simp; done)
-    | (field_simp; ring)
+    | (field_simp)
   · simp
 
 end
@@ -311,7 +304,6 @@ lemma sum_vonMangoldt_primePow (N : ℕ) (X : ℕ → ℂ)
     have h2 : k < p ^ k := by
       first
       | exact Nat.lt_pow_self hp.one_lt
-      | exact Nat.lt_pow_self hp.one_lt k
     refine ⟨(p, k), ?_, ?_, rfl⟩
     · rw [Finset.mem_product, Finset.mem_filter, Finset.mem_range, Finset.mem_Icc]
       exact ⟨⟨Nat.lt_succ_of_le (h1.trans hn.2), hp⟩, hk, (h2.trans_le hn.2).le⟩
@@ -364,7 +356,6 @@ lemma term_real (a w : ℝ) (hw : w ≠ 0) (n : ℕ) : a / n - w = w * (a / w / 
   have hw' : w * (a / w) = a := by
     first
     | field_simp
-    | rw [mul_div_assoc', mul_comm, mul_div_assoc, div_self hw, mul_one]
   rw [mul_sub, mul_one, mul_div_assoc', hw']
 
 lemma sum_cut (D : ArithData H) (ψ : AddChar (E0 × H) ℂ) (N : ℕ) (a W : ℝ) (ha : 0 < a) (hW : 0 < W)

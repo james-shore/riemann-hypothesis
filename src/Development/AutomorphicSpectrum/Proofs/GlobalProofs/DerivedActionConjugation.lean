@@ -35,7 +35,7 @@ theorem dRep_equivariant : ∀ {n : ℕ} {G : Set (Matrix (Fin n) (Fin n) ℂ)} 
     intro t
     have hconj : NormedSpace.exp (t • (g * X * g⁻¹)) = g * NormedSpace.exp (t • X) * g⁻¹ := by
       have : t • (g * X * g⁻¹) = g * (t • X) * g⁻¹ := by
-        simp [Matrix.mul_assoc, Matrix.mul_smul, Matrix.smul_mul]
+        simp [Matrix.mul_assoc]
       rw [this, Matrix.exp_conj _ _ hu]
     have hge : g * NormedSpace.exp (t • X) ∈ G := hG.mul_mem _ hg _ (hX t)
     have h1 : π (g * NormedSpace.exp (t • X) * g⁻¹ * g) =

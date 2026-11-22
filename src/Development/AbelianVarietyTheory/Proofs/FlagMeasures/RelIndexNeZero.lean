@@ -20,8 +20,6 @@ theorem exists_mul_mem {A : Submodule (𝓞 K) V} (hA : Submodule.span K (A : Se
   | exact @_root_.GlobalTheory.IntMulIntegral.main
   | exact _root_.GlobalTheory.IntMulIntegral.main
   | (apply _root_.GlobalTheory.IntMulIntegral.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntMulIntegral.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntMulIntegral.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntMulIntegral.main ..)
 
 theorem exists_mul_le {A : Submodule (𝓞 K) V} (hA : Submodule.span K (A : Set V) = ⊤)
@@ -30,8 +28,6 @@ theorem exists_mul_le {A : Submodule (𝓞 K) V} (hA : Submodule.span K (A : Set
   | exact @_root_.GlobalTheory.IntegerMultipleIntegral.exists_int_smul_le
   | exact _root_.GlobalTheory.IntegerMultipleIntegral.exists_int_smul_le
   | (apply _root_.GlobalTheory.IntegerMultipleIntegral.exists_int_smul_le <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegerMultipleIntegral.exists_int_smul_le <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegerMultipleIntegral.exists_int_smul_le <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegerMultipleIntegral.exists_int_smul_le ..)
 
 theorem finite_between {Λ : Submodule (𝓞 K) V} (hΛ : Λ.FG) {a b : ℤ} (ha : a ≠ 0) (hb : b ≠ 0) :

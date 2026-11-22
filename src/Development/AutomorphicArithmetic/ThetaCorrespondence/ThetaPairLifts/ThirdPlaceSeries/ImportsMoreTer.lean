@@ -33,6 +33,5 @@ theorem main_alt_alt : _root_.GlobalTheory.Pass.ResidueStatement := by
   funext g
   first
     | rfl
-    | (ext a b; simp [mapM, rhoO, redRep, mapRep])
 end GlobalTheory.Pass.ResidualSpan
 end

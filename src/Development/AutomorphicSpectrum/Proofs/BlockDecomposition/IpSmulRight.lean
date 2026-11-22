@@ -54,7 +54,7 @@ theorem adj_one_r : adj (1 : Mx D a a) = 1 := by
   · subst h
     simp [adj]
   · have h' : j ≠ i := fun q => h q.symm
-    simp [adj, Matrix.one_apply, h, h']
+    simp [adj, h, h']
 
 theorem adj_rat_inv (b₀ : HermE D r) (hb : b₀.1.det ≠ 0) : adj (rat b₀.1⁻¹) = rat b₀.1⁻¹ := by
   have h1 : adj (mm (rat b₀.1⁻¹) (rat b₀.1)) = 1 := by rw [rat_inv_mul b₀ hb, adj_one_r]

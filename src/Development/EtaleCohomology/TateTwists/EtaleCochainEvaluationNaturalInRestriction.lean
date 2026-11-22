@@ -15,7 +15,7 @@ theorem freeGen_nat {R : Type} [CommRing R] (P : PSh) {V U : Scheme.{0}} (g : V 
   unfold freeGen
   have h := congrArg (fun f => f.hom (ModuleCat.freeMk (R := ULift.{1} R) (ULift.up x)))
     ((toSheafify Scheme.etaleTopology ((freeP R).obj P)).naturality g.op)
-  simp only [ModuleCat.hom_comp, LinearMap.coe_comp, Function.comp_apply] at h
+  simp only [ModuleCat.hom_comp, LinearMap.coe_comp] at h
   have hm : (((freeP R).obj P).map g.op).hom (ModuleCat.freeMk (R := ULift.{1} R) (ULift.up x)) =
       ModuleCat.freeMk (R := ULift.{1} R) (ULift.up (P.map g.op x)) := by
     simp only [freeP, Functor.whiskeringRight_obj_obj, Functor.comp_map]; erw [ModuleCat.free_map_apply]; rfl

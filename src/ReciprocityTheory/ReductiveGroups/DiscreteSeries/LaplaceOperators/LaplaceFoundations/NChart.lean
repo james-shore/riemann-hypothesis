@@ -39,7 +39,7 @@ theorem Hpk_apply (i j : Fin (2 * r + k + 1)) :
   have hi := i.isLt
   have hj := j.isLt
   simp only [Hpk, sgnB, Fin.ext_iff, flipB_val]
-  split_ifs <;> first | rfl | omega | norm_num
+  split_ifs <;> first | rfl | omega
 
 theorem sgnB_flip (a : Fin (2 * r + k + 1)) : sgnB k r (flipB k r a) = sgnB k r a := by
   have ha := a.isLt

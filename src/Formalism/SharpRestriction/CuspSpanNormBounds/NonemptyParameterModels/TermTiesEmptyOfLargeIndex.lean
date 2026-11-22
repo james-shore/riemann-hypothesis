@@ -39,7 +39,7 @@ theorem tie_hypE_indep (D : D7) : LinearIndependent D.host.E D.sp.hypE := by
     rw [tie_hypFE]
     by_cases h : i = j
     · subst h; simp
-    · simp [h, Ne.symm h, Pi.single_apply]
+    · simp [h, Ne.symm h]
   rw [hfun]
   exact (Pi.basisFun D.host.E (Fin D.R.rS)).linearIndependent
 
@@ -61,7 +61,7 @@ theorem tie_zmOf_norm (D : D7) (u : D.what₂.Word) :
   rw [LinearMap.map_smulₛₗ₂, map_smul, hz, ← hq]
   simp only [Tu, smul_eq_mul, starRingEnd_apply, star_inv₀, tie_star]
   field_simp
-  <;> ring
+
 
 def tie_flag0 (D : D7) (u : D.what₂.Word) : FlagG (VS D) D.R.rS ((Tu D u : ℕ) : D.host.E) where
   e := D.sp.hypE
@@ -162,8 +162,8 @@ theorem tie_diagPt_mat {K : Type*} [Zero K] {n : ℕ} (f : Fin n → K) (hf : �
   rw [tie_ptEntry_diag]
   by_cases h : a = b
   · subst h
-    simp [List.getD_eq_getElem, Matrix.diagonal_apply_eq]
-  · simp [h, Fin.val_inj, Matrix.diagonal_apply_ne _ h]
+    simp [Matrix.diagonal_apply_eq]
+  · simp [h, Fin.val_inj]
 
 theorem zero_of_gram_point_exists (D : D7) (u u' : D.what₂.Word) :
     ∃ w : Point D.host.E (D.R.rS + 1), Gpt (D.mem u).A.T (D.mem u').A.T w = 0 := by

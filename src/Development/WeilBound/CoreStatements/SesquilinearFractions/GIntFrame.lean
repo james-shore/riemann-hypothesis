@@ -27,7 +27,7 @@ private theorem isTanAt_iff_epsScale_zero_comp_eq_one {R : Type} [CommRing R] {S
   have hid : (TrivSqZeroExt.fstHom R R R).toRingHom.comp (algebraMap R (DualNumber R)) = RingHom.id R := by
     apply RingHom.ext
     intro a
-    simp [TrivSqZeroExt.algebraMap_eq_inl]
+    simp
   have hsec : Spec.map (CommRingCat.ofHom (TrivSqZeroExt.fstHom R R R).toRingHom) ≫
       Spec.map (CommRingCat.ofHom (algebraMap R (DualNumber R))) = 𝟙 _ := by
     rw [← Spec.map_comp, ← CommRingCat.ofHom_comp, hid, CommRingCat.ofHom_id, Spec.map_id]

@@ -24,7 +24,7 @@ theorem UpperTheory.exists_nhds_displacement_le_half_of_derivOp_bound :
   have h0 : (0 : 𝔤) ∈ (h.chart 1).symm.source := h.zero_mem_nhd
   have hexp0 : h.expG 0 = 1 := by
     apply Subtype.ext; apply Units.ext
-    simp [IsExpLieAlgebra.coe_expG]
+    simp
   refine ⟨h.expG '' {X : 𝔤 | f X < 1 / 2}, ?_, ?_⟩
   · have h1 := (h.chart 1).symm.image_mem_nhds h0 hO
     have e1 : (h.chart 1).symm 0 = 1 := by

@@ -27,7 +27,7 @@ theorem wsum_eq_zero_iff : ∀ (R : Type) [CommRing R] (C : Type) [Category.{0} 
       simp only [wsum, map_sum, wedge_eq_ιMulti, exteriorPower.pairingDual_ιMulti_ιMulti,
         Matrix.det_fin_two, map_zero, Pi.zero_apply] at h0
       simp only [Matrix.of_apply, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_fin_one,
-        Matrix.head_cons, hδ, hδ'] at h0
+        hδ, hδ'] at h0
       rw [← h0, map_sum]
       refine Finset.sum_congr rfl fun k _ => ?_
       rw [map_sub, map_mul, map_mul]
@@ -43,7 +43,7 @@ theorem wsum_eq_zero_iff : ∀ (R : Type) [CommRing R] (C : Type) [Category.{0} 
     have hexp : ∀ w : Glob1 F, w.1 T = ∑ i, L i w • (Φ.w i).1 T := by
       intro w
       conv_lhs => rw [hL w]
-      simp [Submodule.coe_sum, Finset.sum_apply]
+      simp [Finset.sum_apply]
     let x : Fin m → Fin m → Om R (F.obj T) 2 := fun i j => wedge R _ ((Φ.w i).1 T) ((Φ.w j).1 T)
     let c : Fin m → Fin m → R := fun i j => ∑ k, L i (u k) * L j (v k)
     have hc : ∀ i j, c i j = c j i := by

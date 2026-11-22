@@ -32,7 +32,7 @@ theorem continuous_mul_norm_rpow_neg_half :
         = fun z => ‖z‖ ^ (1 / 2 : ℝ) := by
       funext z
       rcases eq_or_ne z 0 with rfl | hz
-      · simp [Real.zero_rpow (show (1 / 2 : ℝ) ≠ 0 by norm_num)]
+      · simp
       · have hp : 0 < ‖z‖ := norm_pos_iff.mpr hz
         rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
           abs_of_nonneg (Real.rpow_nonneg (norm_nonneg _) _)]

@@ -165,7 +165,7 @@ theorem hasBase_of_split {k R : Type} [Field k] [CommRing R] (O : ValuationSubri
         · rw [hx1]
           field_simp
         · rw [hy1, ← hud, ← hud']
-          field_simp <;> ring
+          field_simp
       · rintro ⟨⟨x, hx, hx1⟩, ⟨y, hy, hy1⟩⟩
         refine ⟨⟨x, hx, ?_⟩, ⟨u' * u⁻¹ * y, mul_mem (mul_mem hu2 hu') hy, ?_⟩⟩
         · have h3 : (φ r).1 = α / α' * (α' / α * (φ r).1) := by field_simp
@@ -173,7 +173,7 @@ theorem hasBase_of_split {k R : Type} [Field k] [CommRing R] (O : ValuationSubri
           field_simp
         · have h3 : (φ r).2 = α' / α * (α / α' * (φ r).2) := by field_simp
           rw [h3, hy1, ← hud, ← hud']
-          field_simp <;> ring
+          field_simp
 
 theorem hasBase_place : ∀ {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E] {σ : E →ₐ[F] E}, IsCMExt F E σ → ∀ (v : HeightOneSpectrum (𝓞 F)), HasBase (sigR (Fv F v) σ) (intLoc F E v) := by
   intro F E _ _ _ _ _ σ hcm v

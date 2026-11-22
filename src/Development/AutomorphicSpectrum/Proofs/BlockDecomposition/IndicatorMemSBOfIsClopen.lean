@@ -51,7 +51,6 @@ private theorem totallyDisconnectedSpace_finiteAdeleRing :
   have hf : Continuous f := by
     first
     | exact RestrictedProduct.continuous_coe
-    | fun_prop
   have hi : Function.Injective f := by
     first
     | exact RestrictedProduct.coe_injective

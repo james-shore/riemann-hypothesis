@@ -54,14 +54,13 @@ theorem quotNormSq_eq_of_blockFrame : ∀ (N j : ℕ) (hj : j ≤ N) (G G' T : M
     obtain ⟨z, rfl⟩ := e.surjective y
     rcases z with a | k
     · simp [hel, hT1, Matrix.one_apply, hhinj.eq_iff]
-    · simp [her, hT2, Matrix.one_apply, (hht a' k).symm]
+    · simp [her, hT2, (hht a' k).symm]
   have key : ∀ M : Matrix (Fin N) (Fin N) ℂ,
       (Mᴴ * G * M).submatrix (headIdx hj) (headIdx hj) =
         (M.submatrix id (headIdx hj))ᴴ * G * M.submatrix id (headIdx hj) := by
     intro M
     first
       | rfl
-      | (ext a a'; simp [Matrix.mul_apply, Matrix.conjTranspose_apply])
   have hhh : G'.submatrix (headIdx hj) (headIdx hj) = G.submatrix (headIdx hj) (headIdx hj) := by
     rw [hG', key T, hcol, ← key 1]
     simp

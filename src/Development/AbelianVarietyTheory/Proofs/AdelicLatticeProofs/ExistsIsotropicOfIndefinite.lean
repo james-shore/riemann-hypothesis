@@ -137,7 +137,7 @@ theorem _root_.GlobalTheory.UTrans.exists_isotropic_of_indefinite : ∀ (E : Typ
     rw [_root_.GlobalTheory.UTrans.herm_diagonal_self, Finset.sum_eq_single i]
     · simp [hi]
     · intro j _ hj
-      simp [Pi.single_apply, hj]
+      simp [hj]
     · simp
   · push_neg at hd0
     refine _root_.GlobalTheory.UTrans.exists_isotropic_diagonal hn hd hd0 fun τ => ?_

@@ -280,7 +280,7 @@ theorem one_add_unit {z : E} (hz : z ∈ L.O) : ∃ e ∈ L.O, e * (1 + algebraM
   obtain ⟨v, hv⟩ := hu.exists_left_inv
   have hv' := congrArg (fun c : 𝒪[F] => algebraMap F E (c : F)) hv
   push_cast at hv'
-  simp only [map_mul, map_add, map_one, ← ht, ← hn] at hv'
+  simp only [← ht, ← hn] at hv'
   refine ⟨algebraMap F E v * (1 + algebraMap F E S.ϖ * L.cj z),
     L.O.mul_mem (algO S v) (L.O.add_mem L.O.one_mem (L.O.mul_mem (algO S _) hc)), ?_⟩
   linear_combination hv'

@@ -16,7 +16,6 @@ theorem coefWf_iff {p : ℕ} [Fact p.Prime] (f : PowerSeries ℂ_[p]) :
     have hn : n = Finsupp.single () (n ()) := by
       first
         | exact Finsupp.unique_single n
-        | (ext; simp)
     rw [hn]
     exact h (n ())
 

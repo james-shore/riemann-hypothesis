@@ -154,8 +154,7 @@ theorem hasse_kummer_unram' (N : ℕ+)
     apply Additive.toMul.injective
     apply Units.ext
     rw [hwc']
-    simp only [toMul_add, toMul_sub, toMul_zsmul, Units.val_mul, Units.val_div_eq_div_val,
-      Units.val_zpow_eq_zpow_val, bf]
+    simp only [toMul_add, toMul_zsmul, Units.val_mul, Units.val_zpow_eq_zpow_val, bf]
     rw [hc', coe_unitsInvariant]
     have hL : ((Additive.toMul (((zRepOfMonoidEnd (galUnitsHom K Ω)) (s 0))
           (Additive.ofMul (Yu ^ (urChar K Ω N (s 1)).val)) -
@@ -164,8 +163,7 @@ theorem hasse_kummer_unram' (N : ℕ+)
         (s 0) Y ^ a1 * (Y ^ a01)⁻¹ * Y ^ a0 := by
       show ((Additive.toMul ((Additive.ofMul (galUnitsHom K Ω (s 0) (Yu ^ a1)) : Additive Ωˣ) -
           Additive.ofMul (Yu ^ a01) + Additive.ofMul (Yu ^ a0)) : Ωˣ) : Ω) = _
-      simp only [toMul_add, toMul_sub, toMul_ofMul, Units.val_mul, Units.val_div_eq_div_val,
-        coe_galUnitsHom_apply, Units.val_inv_eq_inv_val, Units.val_pow_eq_pow_val, Yu, Units.val_mk0,
+      simp only [toMul_add, toMul_sub, toMul_ofMul, Units.val_mul, coe_galUnitsHom_apply, Units.val_inv_eq_inv_val, Units.val_pow_eq_pow_val, Yu, Units.val_mk0,
         map_pow, div_eq_mul_inv]
     refine Eq.trans hL ?_
     rw [hκ (s 0), mul_pow]

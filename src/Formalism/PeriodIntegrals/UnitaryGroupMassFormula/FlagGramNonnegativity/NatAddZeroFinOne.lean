@@ -28,7 +28,7 @@ theorem det_succ_schur {E : Type} [Field E] {r : ℕ} (Z : Matrix (Fin (r + 1)) 
     Matrix.invOf_eq_nonsing_inv, Matrix.det_unique (n := Fin 1)]
   congr 1
   rw [Matrix.sub_apply, Matrix.mul_assoc]
-  simp only [Matrix.mul_apply, Matrix.mulVec, dotProduct, Matrix.of_apply] <;> rfl
+  simp only [Matrix.mul_apply, Matrix.mulVec, dotProduct, Matrix.of_apply]
 
 theorem leadMinorE_succ {E : Type} [Field E] {r : ℕ} (Z : Matrix (Fin (r + 1)) (Fin (r + 1)) E) :
     leadMinorE Z (r + 1) = Z.det := by

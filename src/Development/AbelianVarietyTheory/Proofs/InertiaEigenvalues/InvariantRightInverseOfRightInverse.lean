@@ -12,10 +12,6 @@ theorem invariant_right_inverse_of_right_inverse :
       ∃ Λ : Matrix N b L, κ * Λ = 1 ∧ ∀ g, Λ.map (act g) = Λ := by
   first
   | exact @_root_.GlobalTheory.InvariantRightInverse.exists_invariant_rightInverse
-  | exact _root_.GlobalTheory.InvariantRightInverse.exists_invariant_rightInverse
-  | (apply _root_.GlobalTheory.InvariantRightInverse.exists_invariant_rightInverse <;> assumption)
-  | (intros; apply _root_.GlobalTheory.InvariantRightInverse.exists_invariant_rightInverse <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.InvariantRightInverse.exists_invariant_rightInverse <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.InvariantRightInverse.exists_invariant_rightInverse ..)
 
 end GlobalTheory

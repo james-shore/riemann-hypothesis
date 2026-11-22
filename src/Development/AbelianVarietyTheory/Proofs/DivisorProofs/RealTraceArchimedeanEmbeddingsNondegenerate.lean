@@ -63,13 +63,13 @@ theorem realTrace_nondeg : ∀ (D : D7) (θ : D.what₂.Tau → (Ainf D.host.F �
     by_cases hu : u = v
     · subst hu
       simp [he, hb, hv]
-    · simp [he, hb, Pi.single_apply, hu]
+    · simp [he, hb, hu]
   have hee : e * e = e := by
     funext u
     rw [hmul]
     by_cases hu : u = v
     · subst hu; simp [he]
-    · simp [he, Pi.single_apply, hu]
+    · simp [he, hu]
   have hidem : ∀ σ, χ σ e = 0 ∨ χ σ e = 1 := by
     intro σ
     have h1 : χ σ e * χ σ e = χ σ e := by rw [← map_mul, hee]

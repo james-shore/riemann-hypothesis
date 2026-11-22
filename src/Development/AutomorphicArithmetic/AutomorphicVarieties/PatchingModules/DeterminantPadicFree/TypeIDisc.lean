@@ -49,7 +49,7 @@ private theorem span_top {n : ℕ} {A L : Type} [CommRing A] [Field L] [Algebra 
   refine Submodule.sum_mem _ fun i _ => Submodule.sum_mem _ fun j _ => ?_
   have e : Matrix.single i j (Z i j) = Z i j • (algebraMap A L).mapMatrix (Matrix.single i j (1 : A)) := by
     ext a b
-    by_cases h : i = a ∧ j = b <;> simp [Matrix.single_apply, h]
+    by_cases h : i = a ∧ j = b <;> simp [h]
   rw [e]
   exact Submodule.smul_mem _ _ (h2 _)
 

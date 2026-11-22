@@ -223,7 +223,7 @@ theorem smul_mem_stdLat_of_mem_hh {o Ω : Type} [CommRing o] [Field Ω] [Algebra
   simp only [AddSubgroup.mem_iInf] at hv
   have h2 : (w • (Pi.single j 1 : Fin n → Ω)) ⬝ᵥ v ∈ R := hv _ hl
   have h3 : (w • (Pi.single j 1 : Fin n → Ω)) ⬝ᵥ v = (w • v) j := by
-    simp [smul_dotProduct, single_one_dotProduct]
+    simp [smul_dotProduct]
   rwa [h3] at h2
 
 theorem main : ∀ {o Ω : Type} [CommRing o] [Field Ω] [Algebra o Ω] {F : Type} [Zero F] [One F] [Fintype F] {n : ℕ} {Sg : Type} {r s : Sg → ℕ} (D : LieLatticeData Ω F n Sg r s) (R : Subalgebra o Ω) (p : ℕ) (w : Ω) (χ : Sg → F → Ω), CharData R p w χ → D.Base R p w → D.Good₁ R p χ → D.Good₂ R p χ → (∀ τ, mulLat w (stdLat R _) ≤ D.af R p (χ τ)) → ∀ (C : Type) [Field C] [Algebra o C] [Algebra Ω C] [IsScalarTower o Ω C] (RC : Subalgebra o C), (∀ a ∈ R, algebraMap Ω C a ∈ RC) → ∀ τ, (D.bc RC).kerH RC p τ (fun a => algebraMap Ω C (χ τ a)) = spanOver RC (bcMap Ω C _ '' D.kerH R p τ (χ τ)) := by

@@ -69,11 +69,11 @@ theorem resQ_of (hT : ThetaBas σ J ψ v) : ResQ σ J ψ v := by
       sc (E := E) v (iO v a) := fun a => inclR_alg' v (a : F)
   have hiθ2 : iθ * iθ = sc (E := E) v (iO v t) * iθ - sc (E := E) v (iO v m) := by
     have e1 := congrArg (fun y : 𝓞 E => inclR (F := F) (Fv F v) (y : E)) hθ2
-    simp only [MulMemClass.coe_mul, AddSubgroupClass.coe_sub, map_mul, map_sub, hinc] at e1
+    simp only [map_mul, map_sub, hinc] at e1
     exact e1
   have hsiθ : sigR (Fv F v) σ iθ = sc (E := E) v (iO v t) - iθ := by
     have e1 := congrArg (fun y : 𝓞 E => inclR (F := F) (Fv F v) (y : E)) hσθ
-    simp only [AddSubgroupClass.coe_sub, map_sub, hinc, sigO_coe] at e1
+    simp only [map_sub, hinc, sigO_coe] at e1
     rw [hiθ, sigR_incl]
     exact e1
   let T0 : v.adicCompletionIntegers F := ⟨iO v t, mem_O_iO v t⟩
@@ -185,7 +185,7 @@ theorem resQ_of (hT : ThetaBas σ J ψ v) : ResQ σ J ψ v := by
       ring
     show ρf y = sigQ σ v (ρf x)
     rw [hρ y _ _ hy]
-    simp only [ρf, map_add, map_mul, map_neg, hgt, sigQ_alg]
+    simp only [ρf, map_add, map_mul, map_neg]
     have hsq : sigQ σ v θb = Ideal.Quotient.mk (IE (E := E) v) (algebraMap (𝓞 F) (𝓞 E) t) - θb := by
       simp only [θb]
       rw [sigQ_mk, hσθ, map_sub]

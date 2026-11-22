@@ -63,12 +63,12 @@ theorem isCartanInv_cart (M : DSModel V S) (τ : D.what₂.Tau) : IsCartanInv (g
   have h1 : ((M.fr τ)⁻¹)ᴴ * (M.fr τ)ᴴ = 1 := by
     rw [← conjTranspose_mul, Matrix.mul_nonsing_inv _ hd, conjTranspose_one]
   have hJ : (Formalism.REAL.Jm (M.ε τ)) * Formalism.REAL.Jm (M.ε τ) = 1 := by
-    ext i j; by_cases h : i = j <;> simp [Formalism.REAL.Jm, diagonal_apply, h, Matrix.one_apply] <;> split_ifs <;> simp
+    ext i j; by_cases h : i = j <;> simp [Formalism.REAL.Jm, h, Matrix.one_apply] <;> split_ifs <;> simp
   have hJh : (Formalism.REAL.Jm (M.ε τ))ᴴ = Formalism.REAL.Jm (M.ε τ) := by
     ext i j
     by_cases h : i = j
-    · subst h; simp [Formalism.REAL.Jm, diagonal_apply]; split_ifs <;> simp
-    · simp [Formalism.REAL.Jm, diagonal_apply, h, Ne.symm h]
+    · subst h; simp [Formalism.REAL.Jm]; split_ifs <;> simp
+    · simp [Formalism.REAL.Jm, h, Ne.symm h]
   have hg : ((M.fr τ)⁻¹)ᴴ * gramAt D V τ * (M.fr τ)⁻¹ = Formalism.REAL.Jm (M.ε τ) := by
     rw [← M.fr_gram τ, ← Matrix.mul_assoc, ← Matrix.mul_assoc, h1, Matrix.one_mul, Matrix.mul_assoc,
       Matrix.mul_nonsing_inv _ hd, Matrix.mul_one]
@@ -91,7 +91,7 @@ theorem exists_maj_cart (θ : InfFam D) (hθ : IsInfFam θ) (M : DSModel V S) :
     simp only [Matrix.mul_assoc]
   rw [this, hε, diagonal_mul_diagonal]
   ext i j
-  by_cases h : i = j <;> simp [diagonal_apply, h, Matrix.one_apply] <;> split_ifs <;> simp
+  by_cases h : i = j <;> simp [h, Matrix.one_apply] <;> split_ifs <;> simp
 
 theorem exists_kStable (M : DSModel V S) (τ : D.what₂.Tau) {w : M.H τ} (hw : w ∈ GlobalTheory.IndefiniteRowSideFullHecke.ThetaSourceAction.kfin M τ) :
     ∃ W : Submodule ℂ (M.H τ), FiniteDimensional ℂ W ∧ w ∈ W ∧ Formalism.MainNotions.S.IsKStableOn (M.ε τ) (M.σ τ) W := by

@@ -22,8 +22,6 @@ theorem fpmSh_eq_fpm (q : KB.Pl (shP P u u') Wp Wq') (f : B.Mat P.k P.r → (Wq 
     fpmSh q f A p₀ = TBBx4.fpm q (fun g => (f g).comp (A g)) (fun _ => ContinuousLinearMap.id ℂ Wq') p₀ := by
   first
   | rfl
-  | (unfold fpmSh; rfl)
-  | unfold fpmSh
 
 theorem inCC_compSh (q : KB.Pl (shP P u u') Wp Wq') {f : B.Mat P.k P.r → (Wq →L[ℂ] Wp)}
     {A : B.Mat P.k P.r → (Wq' →L[ℂ] Wq)} {A₀ : ℝ} {d : ℕ} (hf : ∀ m : ℕ, B.InCC A₀ m f) (hA : PolyOp d A) :
@@ -34,7 +32,6 @@ theorem inCC_compSh (q : KB.Pl (shP P u u') Wp Wq') {f : B.Mat P.k P.r → (Wq �
   first
   | exact h
   | (convert h using 2; rw [fpmSh_eq_fpm]; simp [TBBx4.fpm])
-  | (convert h using 2; rw [fpmSh_eq_fpm]; unfold TBBx4.fpm)
 
 end sh
 

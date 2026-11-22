@@ -275,7 +275,6 @@ theorem ker_repHom_le_comap {k : Type} [CommRing k] {A B : Rep.{0} k G} (f : A �
   intro a ha
   change f.hom (A.ρ g a) = 0
   rw [Rep.hom_comm_apply]
-  change B.ρ g (f.hom a) = 0
   rw [show f.hom a = 0 from ha, map_zero]
 
 omit [IsTopologicalGroup G] [CompactSpace G] [TotallyDisconnectedSpace G] in
@@ -383,7 +382,7 @@ theorem single_mem_divFun (j : I) (F : G → QZ) (hF : IsLocallyConstant F ∧ �
   refine ⟨(Set.finite_singleton j).subset fun i hi => ?_, fun i => ?_⟩
   · by_contra h
     have h' : i ≠ j := fun e => h (Set.mem_singleton_iff.2 e)
-    exact hi (by simp [Pi.single_apply, h'])
+    exact hi (by simp [h'])
   · by_cases h : i = j
     · subst h
       simp only [Pi.single_eq_same]
@@ -410,7 +409,7 @@ theorem divFunSuppSequence_shortExact (T : Finset I) (j : I) (hj : j ∉ T) :
       single_mem_divFun φ j _ (e.2.2 PUnit.unit)⟩, (mem_divFunSupp_iff φ _ _).2 fun i hi => ?_⟩, ?_⟩
     · have hij : i ≠ j := fun h => hi (h ▸ Finset.mem_insert_self j T)
       change (Pi.single j ((e.1 : PUnit → G → QZ) PUnit.unit) : I → G → QZ) i = 0
-      simp [Pi.single_apply, hij]
+      simp [hij]
     · apply Subtype.ext
       funext u
       exact Pi.single_eq_same j _

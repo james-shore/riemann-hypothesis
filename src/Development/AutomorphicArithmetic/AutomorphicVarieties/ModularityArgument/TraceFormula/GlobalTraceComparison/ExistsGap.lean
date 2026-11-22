@@ -64,7 +64,7 @@ private lemma exists_sep {K : Set X} (hK : IsCompact K)
       simp
     have hbχ : Φ (b : B) χ ≠ 0 := by
       have e : Φ (b : B) χ = Φ (a : B) χ - p a := by
-        simp [hbdef, AlgHomClass.commutes, Algebra.algebraMap_eq_smul_one]
+        simp [hbdef, Algebra.algebraMap_eq_smul_one]
       rw [e]
       exact sub_ne_zero.2 ha
     have hpos : 0 < ‖Φ (b : B) χ‖ ^ 2 / 2 := by
@@ -184,7 +184,7 @@ private theorem core (a₀ : A) (x : B) {ρ : ℝ} (ha : p a₀ = 1) (hρ : 0 < 
   · rw [hgdef, map_pow, map_sub, map_one, map_mul, hd.1, mul_zero, sub_zero, one_pow]
   have hgχ : ∀ χ, Φ (g : B) χ = (((1 - (Φ (d : B) χ).re / M) ^ n : ℝ) : ℂ) := fun χ => by
     have e : Φ (g : B) χ = (1 - (M : ℂ)⁻¹ * Φ (d : B) χ) ^ n := by
-      simp [hgdef, AlgHomClass.commutes, Algebra.algebraMap_eq_smul_one]
+      simp [hgdef, Algebra.algebraMap_eq_smul_one]
     rw [e, ht χ]
     push_cast
     simp [div_eq_inv_mul]

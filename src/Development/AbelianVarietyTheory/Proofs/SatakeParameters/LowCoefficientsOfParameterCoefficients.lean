@@ -88,7 +88,7 @@ theorem low_coeff_of_param (p : ℕ) [Fact p.Prime] (ι : Type) [Fintype ι] (K1
     intro k hk
     have hkS := hS k hk
     rw [hWdef, map_sub, map_sum]
-    simp only [MvPowerSeries.coeff_smul, MvPowerSeries.coeff_monomial, smul_eq_mul, mul_ite, mul_one, mul_zero]
+    simp only [MvPowerSeries.coeff_smul, MvPowerSeries.coeff_monomial, mul_ite, mul_one, mul_zero]
     rw [Finset.sum_ite_eq S k]
     simp [hkS, hc]
   have hV : MvPowerSeries.subst (Pf.en_Ec p K1) W =
@@ -102,6 +102,6 @@ theorem low_coeff_of_param (p : ℕ) [Fact p.Prime] (ι : Type) [Fintype ι] (K1
   rw [hV, map_sub, map_sum, sub_eq_zero] at h0
   rw [h0]
   refine Finset.sum_congr rfl fun n _ => ?_
-  simp only [MvPowerSeries.coeff_smul, MvPowerSeries.coeff_map, hc, smul_eq_mul]
+  simp only [MvPowerSeries.coeff_smul, MvPowerSeries.coeff_map, hc]
 
 end GlobalTheory.TwU

@@ -306,13 +306,13 @@ variable {V : Type} [NormedAddCommGroup V] [NormedSpace ℝ V] {L : Type} [Finty
 
 theorem D_add (c c' : L → ℂ) (f : 𝓢(V, ℂ)) : H.D (c + c') f = H.D c f + H.D c' f := by
   ext x
-  simp only [SchwartzMap.add_apply, H.hD, map_add, ContinuousLinearMap.add_apply]
+  simp only [SchwartzMap.add_apply, H.hD, map_add]
   push_cast
   ring
 
 theorem D_smul (t : ℝ) (c : L → ℂ) (f : 𝓢(V, ℂ)) : H.D (t • c) f = (t : ℂ) • H.D c f := by
   ext x
-  simp only [SchwartzMap.smul_apply, H.hD, map_smul, ContinuousLinearMap.smul_apply, smul_eq_mul, real_smul]
+  simp only [SchwartzMap.smul_apply, H.hD, map_smul, smul_eq_mul, real_smul]
   push_cast
   ring
 
@@ -561,14 +561,14 @@ theorem exists_fockMap : ∃ φ : MvPolynomial L ℂ →ₗ[ℂ] 𝓢(V, ℂ), F
   have haa : ∀ l l', a l * a l' = a l' * a l := fun l l' => by
     rw [hc]; by_cases h : l = l' <;> simp [Pi.single_apply, h, @eq_comm _ l' l, a]
   have hbb : ∀ l l', b l * b l' = b l' * b l := fun l l' => by
-    rw [hc]; by_cases h : l = l' <;> simp [Pi.single_apply, h, @eq_comm _ l' l, b]
+    rw [hc]; by_cases h : l = l' <;> simp [Pi.single_apply, h, b]
   have hab : ∀ l l', a l * b l' = b l' * a l + (-4 * Real.pi * I * if l = l' then 1 else 0 : ℂ) • 1 := fun l l' => by
-    rw [hc]; by_cases h : l = l' <;> simp [Pi.single_apply, h, @eq_comm _ l' l, a, b]
+    rw [hc]; by_cases h : l = l' <;> simp [Pi.single_apply, h, a, b]
   have hba : ∀ l l', b l * a l' = a l' * b l + (4 * Real.pi * I * if l = l' then 1 else 0 : ℂ) • 1 := fun l l' => by
     rw [hc]; by_cases h : l = l' <;> simp [Pi.single_apply, h, @eq_comm _ l' l, a, b]
   obtain ⟨φ, h1, h2, h3⟩ := exists_fock (fun l => (2 * r)⁻¹ • (a l - I • b l)) (fun l => (2 * r)⁻¹ • (-a l - I • b l))
     (fun l l' => by
-      simp only [smul_mul_smul_comm, sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm]
+      simp only [sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm]
       rw [haa l l', hbb l l', hab l l', hba l l']
       module)
     (fun l l' => by
@@ -580,7 +580,7 @@ theorem exists_fockMap : ∃ φ : MvPolynomial L ℂ →ₗ[ℂ] 𝓢(V, ℂ), F
             field_simp; linear_combination (-4) * hr2, one_smul]
         · simp
       rw [e]
-      simp only [smul_mul_smul_comm, sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, neg_mul, mul_neg]
+      simp only [sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, neg_mul, mul_neg]
       rw [haa l l', hbb l l', hab l l', hba l l']
       module)
     G hG (fun l => by

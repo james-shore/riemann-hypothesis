@@ -28,7 +28,7 @@ theorem isMonomial_pull {V R : Type} [CommRing V] [IsDomain V] [CommRing R] [IsD
   refine ⟨u' * Units.map h.toMonoidHom u, n, Fin.forall_fin_one.2 (hn 0), ?_⟩
   have e : (u' : R) * h ((u : V) * ∏ i, ![ϖ] i ^ n i) =
       ((u' * Units.map h.toMonoidHom u : Rˣ) : R) * ∏ i, ![h ϖ] i ^ n i := by
-    simp [Fin.prod_univ_one, map_mul, map_pow]
+    simp [map_mul, map_pow]
     ring
   exact e ▸ hu'
 

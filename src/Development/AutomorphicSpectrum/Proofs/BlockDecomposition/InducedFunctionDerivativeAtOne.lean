@@ -101,9 +101,9 @@ theorem det_one_add_single_diag {ι : Type*} [Fintype ι] [DecidableEq ι] (a : 
       by_cases hra : r = a
       · subst hra
         simp [Matrix.add_apply]
-      · simp [Matrix.add_apply, Matrix.single_apply, hra, Ne.symm hra]
+      · simp [Matrix.add_apply, hra, Ne.symm hra]
     · have : ¬ (a = r ∧ a = s) := fun e => hrs (e.1.symm.trans e.2)
-      simp [Matrix.add_apply, Matrix.single_apply, Matrix.one_apply, hrs, this, diagonal_apply]
+      simp [Matrix.add_apply, hrs, this]
   rw [this, det_diagonal, Finset.prod_ite_eq' univ a]
   simp
 
@@ -154,7 +154,7 @@ theorem fRaw_off {lam : Fin n → ℤ} {lev : Fin n → ℕ} (hl : IsLev lam lev
         have : ¬ (a = r ∧ b = s) := by
           rintro ⟨rfl, rfl⟩
           exact hc ⟨hr, hs⟩
-        simp [Matrix.add_apply, Matrix.single_apply, Matrix.one_apply, hrs, this]
+        simp [Matrix.add_apply, hrs, this]
     simp [hlm, hgm]
 
 theorem prod_zpow_eq {ι : Type*} (s : Finset ι) {u : ℂ} (hu : u ≠ 0) (e : ι → ℤ) :
@@ -188,7 +188,7 @@ theorem fRaw_diag (lam : Fin n → ℤ) (lev : Fin n → ℕ) (a : Fin n) {z : �
     · intro r s hr hs
       have hrs : r ≠ s := fun e => absurd hr (not_le.2 (e ▸ hs))
       have : ¬ (a = r ∧ a = s) := fun e => hrs (e.1.symm.trans e.2)
-      simp [Matrix.add_apply, Matrix.single_apply, Matrix.one_apply, hrs, this]
+      simp [Matrix.add_apply, hrs, this]
   rw [fRaw, Set.indicator_of_mem hdet]
   have hfac : ∀ j : Fin n, lm j (1 + single a a z) ^ dif (muZ lam lev) j *
       gm j (1 + single a a z) ^ dif (yZ lam lev) j =

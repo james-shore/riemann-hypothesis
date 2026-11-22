@@ -106,11 +106,11 @@ theorem exists_vec (κ : Rule) {R : Type} [CommRing R] [IsDomain R] [IsNoetheria
       have e := congrArg TrivSqZeroExt.snd (((hT _ (hW0 _ l rfl) (bX l')).symm).trans ((hr l).2 (bX l')))
       have hc : co bX (bX l') = Pi.single l' 1 := by
         funext i
-        by_cases hi : i = l' <;> simp [co, hi, Finsupp.single_apply, eq_comm]
+        by_cases hi : i = l' <;> simp [co, hi]
       rw [hc, single_one_dotProduct] at e
       simp only [TrivSqZeroExt.snd_add, TrivSqZeroExt.snd_one, TrivSqZeroExt.snd_inr, zero_add, Module.Basis.repr_self] at e
       refine e.trans ?_
-      by_cases hi : l' = l <;> simp [hi, Finsupp.single_apply]
+      by_cases hi : l' = l <;> simp [hi]
   obtain ⟨hd, hv⟩ := hK vB (fun i => (gm (σ.symm (Sum.inl i))).b) MB k₀ hb hl (fun i => by
     change IsD ν d.toAB ((2 * Real.pi * Complex.I : ℂ)⁻¹ • (2 * Real.pi * Complex.I : ℂ) • W (σ.symm (Sum.inl i))) _
     rw [hs]; exact hW _) hk

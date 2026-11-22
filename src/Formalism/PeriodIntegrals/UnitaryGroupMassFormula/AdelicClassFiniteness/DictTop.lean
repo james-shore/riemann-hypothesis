@@ -142,7 +142,7 @@ theorem mInj_of (hG : MGen) : MInj := by
     exact dictTop_into hG I x y h z hz
   · intro hz
     have h2 := dictTop_into hG I y x h.symm _ hz
-    simp only [Matrix.mulVec_mulVec, Matrix.mul_assoc] at h2
+    simp only [Matrix.mulVec_mulVec] at h2
     rwa [← Matrix.mul_assoc (I.fmat x), dictTop_mul_inv, Matrix.one_mul, dictTop_inv_mul,
       Matrix.one_mulVec] at h2
 

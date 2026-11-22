@@ -53,8 +53,6 @@ theorem exists_root_norm_lt {F : ℂ[X]} (hF : F.Monic) {ε : ℝ} (hε : 0 < ε
   | exact @_root_.GlobalTheory.RootNormLowerBound.exists_root_norm_lt
   | exact _root_.GlobalTheory.RootNormLowerBound.exists_root_norm_lt
   | (apply _root_.GlobalTheory.RootNormLowerBound.exists_root_norm_lt <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RootNormLowerBound.exists_root_norm_lt <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RootNormLowerBound.exists_root_norm_lt <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RootNormLowerBound.exists_root_norm_lt ..)
 
 theorem exists_eventually_norm_le {R B : Type*} [CommRing R] [CommRing B] [Algebra R B]

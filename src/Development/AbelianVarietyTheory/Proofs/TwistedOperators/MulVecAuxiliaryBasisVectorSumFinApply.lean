@@ -121,7 +121,7 @@ theorem oneClass (hc : 1 ≤ c) {ϖ : 𝒪[k]} (hϖ : Irreducible ϖ) {ψ : AddC
     rw [Matrix.mulVec_smul, Pi.smul_apply, Pi.smul_apply, mulVec_auxiliaryBasisVectorSumFin_apply]
     rcases r with r | r
     · simp [pt_eq, basePt, colMat, aux]
-    · simp only [pt_eq, basePt, colMat, aux, Pi.single_apply, Fin.ext_iff]
+    · simp only [pt_eq, basePt, colMat, aux, Pi.single_apply]
       by_cases hr : r.val = 0 <;> simp [hr, Fin.ext_iff]
   obtain ⟨u, hu, huΛ⟩ := GlobalTheory.RootEx.UnfoldFlag.exists_unipotent k n c hc ϖ h0 Λ h1 h2
   refine ⟨h1, h2, ⟨u, hu, huΛ⟩, ?_⟩

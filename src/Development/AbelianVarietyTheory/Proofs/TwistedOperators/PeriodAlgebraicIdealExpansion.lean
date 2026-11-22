@@ -98,7 +98,7 @@ theorem lat_eq_inV {D : D7} {V : HSp D} {r : GlobalTheory.IndefiniteRowSideFullH
     (r.Λ : Set (Fin V.rank → D.host.E)) = GlobalTheory.MovedDict.inV 1 (StandardLatticesGL3.stdL D V.rank) := by
   ext y
   rw [SetLike.mem_coe, h.2.1]
-  simp [GlobalTheory.MovedDict.inV, StandardLatticesGL3.stdL, Submodule.mem_pi, Submodule.mem_one]
+  simp [GlobalTheory.MovedDict.inV, StandardLatticesGL3.stdL, Submodule.mem_one]
 
 end GlobalTheory.BottomFieldDict
 

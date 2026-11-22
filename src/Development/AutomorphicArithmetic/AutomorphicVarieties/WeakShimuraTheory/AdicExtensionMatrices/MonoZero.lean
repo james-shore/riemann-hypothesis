@@ -17,8 +17,8 @@ private theorem UpperTheory.V.Ws.single_diag_mem_of_inverse_differences_mem {A :
       ext k l
       by_cases hkl : k = l
       · subst hkl
-        simp [Matrix.diagonal_apply, Algebra.algebraMap_eq_smul_one, Matrix.one_apply, Subring.smul_def, mul_sub]
-      · simp [Matrix.diagonal_apply, Algebra.algebraMap_eq_smul_one, Matrix.one_apply, hkl, Subring.smul_def]
+        simp [Algebra.algebraMap_eq_smul_one, Subring.smul_def, mul_sub]
+      · simp [Algebra.algebraMap_eq_smul_one, hkl, Subring.smul_def]
     rw [h]
     exact S.smul_mem (S.sub_mem hd (S.algebraMap_mem _)) _
   have hP := S.mul_mem (S.mul_mem (hF u1 (d j1) m1 (hE j1)) (hF u2 (d j2) m2 (hE j2)))
@@ -30,13 +30,13 @@ private theorem UpperTheory.V.Ws.single_diag_mem_of_inverse_differences_mem {A :
   · subst hkl
     by_cases hki : k = i
     · subst hki
-      simp [Matrix.single_apply, e1, e2, e3]
+      simp [e1, e2, e3]
     · rcases hc k with h | h | h | h
       · exact absurd h hki
-      · subst h; simp [Matrix.single_apply, Ne.symm n1]
-      · subst h; simp [Matrix.single_apply, Ne.symm n2]
-      · subst h; simp [Matrix.single_apply, Ne.symm n3]
-  · simp [Matrix.single_apply, Matrix.diagonal_apply, hkl]
+      · subst h; simp [Ne.symm n1]
+      · subst h; simp [Ne.symm n2]
+      · subst h; simp [Ne.symm n3]
+  · simp [Matrix.single_apply, hkl]
     rintro rfl rfl
     exact absurd rfl hkl
 

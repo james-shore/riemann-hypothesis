@@ -54,7 +54,7 @@ theorem series_differentiable : ∀ (E : Type) [Field E] [NumberField E] [IsCMFi
     simp only [ContinuousLinearMap.apply_apply] at hm
     rw [hm]
     refine tsum_congr fun q => ?_
-    simp [hf', ContinuousLinearMap.sum_apply, Pi.single_apply]
+    simp [hf', Pi.single_apply]
   rwa [hev] at hL
 
 end GlobalTheory.DeformedSum.Series

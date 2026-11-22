@@ -21,8 +21,6 @@ theorem exists_zsmul_mem_of_span (M : Submodule (𝓞 E) (Fin n → E))
   | exact @_root_.GlobalTheory.IntSmulIsIntegral.exists_int_smul_mem
   | exact _root_.GlobalTheory.IntSmulIsIntegral.exists_int_smul_mem
   | (apply _root_.GlobalTheory.IntSmulIsIntegral.exists_int_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntSmulIsIntegral.exists_int_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntSmulIsIntegral.exists_int_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntSmulIsIntegral.exists_int_smul_mem ..)
 
 theorem exists_zsmul_le (L M : Submodule (𝓞 E) (Fin n → E)) (hL : Module.Finite (𝓞 E) L)

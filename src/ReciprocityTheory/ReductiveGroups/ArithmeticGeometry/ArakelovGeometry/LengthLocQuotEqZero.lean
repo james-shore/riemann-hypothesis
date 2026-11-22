@@ -133,7 +133,7 @@ theorem length_loc_chain (P : Ideal R) [P.IsPrime] : ∀ (N : ℕ) (F : Fin (N +
       (by simpa [Fin.succ_last] using hlast)
       (fun j => by
         have h := hj j.succ
-        first | rwa [← Fin.succ_castSucc] at h | rwa [Fin.succ_castSucc] at h)
+        first | rwa [← Fin.succ_castSucc] at h)
       (fun j => hmin j.succ)
     obtain ⟨h1, _, h3⟩ := hj 0
     rw [Fin.castSucc_zero] at h1 h3

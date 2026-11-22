@@ -63,7 +63,7 @@ theorem ppos_ortho {x : Frame X.Ψ r} (hx : x ∈ X.dom) (ho : X.IsOrtho x) (τ 
     simp only [Data.gramPos, Matrix.submatrix_apply, ho τ, Matrix.diagonal_apply, Fin.castLE_inj,
       Matrix.one_apply]
     split_ifs with h
-    · simp [sgn, Fin.coe_castLE, a.isLt]
+    · simp [sgn, a.isLt]
     · rfl
   unfold Data.ppos
   rw [hg, Matrix.inv_eq_left_inv (mul_one (1 : Matrix (Fin X.p0) (Fin X.p0) ℂ))]

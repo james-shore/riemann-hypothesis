@@ -108,7 +108,7 @@ theorem cocycle_lift : ∀ (p : ℕ) [Fact p.Prime] (O C : Type) [CommRing O] [C
   have hlift : IsLift (RingHom.id O) μ := by
     refine ⟨hμ.const, hμ.unit, hμ.comm, ?_⟩
     have : (fun i => map (RingHom.id O) (μ i)) = μ := by
-      funext i; ext α; simp [coeff_map]
+      funext i; ext α; simp
     rw [this]; exact hμ
   have hc'0 : constantCoeff c' = 0 := by
     simp [hc', hc0]

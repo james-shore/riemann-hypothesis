@@ -145,13 +145,13 @@ theorem exists_move [FiniteDimensional L V] (hσσ : ∀ x, σ (σ x) = x) (hσ 
   have s₀e : s₀ e = e := f₀ e fun w hw => by rw [← hB, (mem_perp.1 hw).2.1, map_zero]
   have s₀f : s₀ f = f := f₀ f fun w hw => by rw [← hB, (mem_perp.1 hw).2.2, map_zero]
   have se : refl B f μ' (refl B e μ e) = (1 - π * p * B e e) • e + (-((1 - π * p * B e e) * p')) • f := by
-    simp only [refl_apply, map_sub, map_smul, hμp, hμp', hfe, smul_eq_mul]
+    simp only [refl_apply, map_sub, map_smul, hμp, hμp', hfe]
     match_scalars <;> field_simp <;> ring
   have key : 1 + p * p' = π * (p * p' * (τ * B e e * (-δ⁻¹) + δ * (τ * B f f) + π * (τ * B e e * (τ * B f f)))) := by
     have := mul_inv_cancel₀ hδ0
     linear_combination (-(p' * (-δ⁻¹ + π * (τ * B f f)))) * hp1 - hp1' - (p * p') * this
   have sf : refl B f μ' (refl B e μ f) = (-p) • e + (1 + p * p' - π * p' * B f f) • f := by
-    simp only [refl_apply, map_sub, map_smul, hμp, hμp', hfe, hef, smul_eq_mul]
+    simp only [refl_apply, map_sub, map_smul, hμp, hμp', hfe, hef]
     match_scalars <;> field_simp <;> ring
   refine ⟨refl B f μ' * refl B e μ * s₀, mul_mem (mul_mem r₂ r₁) i₀, fun u hu => ?_, fun v hv => ?_⟩
   · simp only [Module.End.mul_apply]

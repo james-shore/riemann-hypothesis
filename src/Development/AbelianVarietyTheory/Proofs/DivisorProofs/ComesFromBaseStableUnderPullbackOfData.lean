@@ -65,7 +65,7 @@ theorem divFrom_pull : ∀ {E : Type} [Field E] [NumberField E] [IsCMField E] {H
   obtain ⟨h1, hp2, hx2⟩ := GlobalTheory.T.exists_isPullDeg_rescale_both_sides hD g g' ψR hab
   obtain ⟨r, hpr, hxr⟩ := GlobalTheory.T.exists_isPullDeg_comp_of_first_top hD1 h1 hW1
   refine ⟨g', r, fun y => ?_, fun y => ?_, fun x => ?_⟩
-  · simp only [g', Units.val_inv_eq_inv_val, inv_inv, Units.val_mk0, map_zpow]
+  · simp only [g', inv_inv, Units.val_mk0]
     rfl
   · exact (hxr y).trans ((hx1 _).trans ((congrArg hD0.xe (hx2 y)).trans ((hxe _).trans (he' y).symm)))
   · letI := H.starRing

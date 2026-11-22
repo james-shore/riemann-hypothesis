@@ -11,7 +11,7 @@ variable {F : Type} [Field F] [NumberField F] [IsTotallyReal F]
 
 private theorem quadraticForm_add_expand (δ : F) (v : V4 F) (i : Fin 4) (a : A F) :
     q4 δ (v + Pi.single i a) = q4 δ v + a * (B4 δ v (Pi.single i 1) + a * q4 δ (Pi.single i 1)) := by
-  fin_cases i <;> simp [q4, B4, Pi.single_apply] <;> ring
+  fin_cases i <;> simp [q4, B4] <;> ring
 
 private theorem psi_add (x y : A F) : ψ (x + y) = ψ x * ψ y := by
   simp [ψ, (adelicChar F).map_add_eq_mul]
@@ -53,21 +53,21 @@ private theorem p_apply (O : Ops F) (δ : F) (w : InfinitePlace F) (i : Fin 4) (
     have : TR.pInf F (2 : A F) = 2 := map_ofNat _ 2
     simp [cw, this]
   fin_cases i
-  · have : B4 δ v (Pi.single 0 1) = -v 1 := by simp [B4, Pi.single_apply]
+  · have : B4 δ v (Pi.single 0 1) = -v 1 := by simp [B4]
     simp only [Fin.zero_eta, this, hn, Ops.p]
-    simp [hs, O.x_apply]
+    simp [O.x_apply]
     ring
-  · have : B4 δ v (Pi.single 1 1) = -v 0 := by simp [B4, Pi.single_apply]
+  · have : B4 δ v (Pi.single 1 1) = -v 0 := by simp [B4]
     simp only [Fin.mk_one, this, hn, Ops.p]
-    simp [hs, O.x_apply]
+    simp [O.x_apply]
     ring
-  · have : B4 δ v (Pi.single 2 1) = 2 * v 2 := by simp [B4, Pi.single_apply]
+  · have : B4 δ v (Pi.single 2 1) = 2 * v 2 := by simp [B4]
     simp only [Fin.reduceFinMk, this, cw_mul, h2, Ops.p]
-    simp [hs, O.x_apply]
+    simp [O.x_apply]
     ring
-  · have : B4 δ v (Pi.single 3 1) = (-2 * rt δ) * v 3 := by simp [B4, Pi.single_apply]; ring
+  · have : B4 δ v (Pi.single 3 1) = (-2 * rt δ) * v 3 := by simp [B4]; ring
     simp only [Fin.reduceFinMk, this, cw_mul, hn, h2, Ops.p]
-    simp [hs, O.x_apply]
+    simp [O.x_apply]
     ring
 
 end SlopeTestRemainingChoices

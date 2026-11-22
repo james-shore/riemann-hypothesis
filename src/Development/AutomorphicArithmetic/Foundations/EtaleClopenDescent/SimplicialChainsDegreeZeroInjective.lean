@@ -26,7 +26,7 @@ private lemma top_comm {K L : CochainComplex C ℤ} (φ : K ⟶ L) (k : ℤ) (hK
   apply HomologicalComplex.from_single_hom_ext
   rw [HomologicalComplex.comp_f, HomologicalComplex.comp_f, top_f, top_f]
   change ((HomologicalComplex.single C (ComplexShape.up ℤ) k).map (φ.f k)).f k ≫ _ = _
-  simp only [HomologicalComplex.single_map_f_self, Category.assoc, Iso.cancel_iso_hom_left]
+  simp only [HomologicalComplex.single_map_f_self, Category.assoc]
   simp
   rfl
 

@@ -251,7 +251,7 @@ theorem valuation_pairwiseDifferenceProduct_pow_le_colength_sq (C : Type) [Field
       intro c τ i
       simp only [Bb, Matrix.mulVec, dotProduct, Fintype.sum_prod_type, Matrix.reindex_apply,
         Matrix.submatrix_apply, Equiv.prodComm_symm, Equiv.prodComm_apply, Prod.swap_prod_mk,
-        Matrix.blockDiagonal_apply, ite_mul, zero_mul, Finset.sum_ite_eq, Finset.mem_univ, if_true]
+        Matrix.blockDiagonal_apply, ite_mul, zero_mul]
       rw [Finset.sum_eq_single τ (fun b _ hb => by simp [Ne.symm hb]) (by simp)]
       simp
     have hpts : Sb.pts = sumPts Mτ := by

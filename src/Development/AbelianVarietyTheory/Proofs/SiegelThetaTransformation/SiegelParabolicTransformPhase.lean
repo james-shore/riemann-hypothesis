@@ -70,7 +70,7 @@ theorem trans_explicit (κ ι : Type) [Fintype κ] [Fintype ι] [DecidableEq ι]
     have hC' : qm σ.toBlocks₂₁ = 0 := by rw [hC]; ext i j; simp [qm]
     unfold spAct
     rw [hden, hinv, hC', hdetD]
-    simp only [Matrix.mul_zero, Matrix.zero_mulVec, dotProduct_zero, Finset.sum_const_zero,
+    simp only [Matrix.zero_mulVec, dotProduct_zero, Finset.sum_const_zero,
       mul_zero, Complex.exp_zero, mul_one]
     let e : Matrix κ ι ℚ ≃ Matrix κ ι ℚ :=
       { toFun := fun x => x * A

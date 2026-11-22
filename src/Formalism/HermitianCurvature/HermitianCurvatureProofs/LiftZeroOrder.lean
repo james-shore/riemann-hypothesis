@@ -27,7 +27,7 @@ theorem lift_zero_order : TL.LiftZero := by
     simp only [T0, MinorPolynomials.mkTerm, MinorPolynomials.cv, MinorPolynomials.cvs, C6.Epart, C6.monoM, t, fib, cf]
     rw [Finset.prod_eq_single (Fin.last (P.r + 1)) (fun l _ hl => by simp [hl])
       (fun h => absurd (Finset.mem_univ _) h)]
-    simp only [↓reduceIte, pow_zero, List.map_cons, List.map_nil, List.prod_cons, List.prod_nil, mul_one]
+    simp only [↓reduceIte, List.map_cons, List.map_nil, List.prod_cons, List.prod_nil, mul_one]
     rw [hq g]
     simp only [PI.UnitaryGroupMassFormula.UsCompose.vars]
     congr 1

@@ -59,6 +59,5 @@ theorem exists_valuation_one_element_at_grid_places : ∀ {D : D7} {T : Type} {L
   rw [map_natCast] at key
   first
   | exact (HeightOneSpectrum.valuedAdicCompletion_eq_valuation' (v := G.pl.w v) _).trans key
-  | (erw [HeightOneSpectrum.valuedAdicCompletion_eq_valuation']; exact key)
 
 end GlobalTheory.AAUnit

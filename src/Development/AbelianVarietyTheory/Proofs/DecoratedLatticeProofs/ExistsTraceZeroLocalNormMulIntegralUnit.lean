@@ -216,7 +216,7 @@ theorem exists_skew_norm_mul_unit : ∀ D : D7, ∃ μ : D.host.E, IsSkew μ ∧
   have hint : IsIntegral ℤ a₀ := IsIntegral.of_pow two_pos (by rw [hsq]; exact (isIntegral_natCast _).neg)
   set a : 𝓞 D.host.E := ⟨a₀, hint⟩
   have ha : a ^ 2 = -(D.host.q : 𝓞 D.host.E) := RingOfIntegers.ext (by
-    simp only [RingOfIntegers.coe_eq_algebraMap, map_pow, map_neg, map_natCast]; exact hsq)
+    simp only [map_pow, map_neg, map_natCast]; exact hsq)
   let c : 𝓞 D.host.E →+* 𝓞 D.host.E := MulSemiringAction.toRingHom _ _ D.host.conj
   have hcv : ∀ x, ((c x : 𝓞 D.host.E) : D.host.E) = star (x : D.host.E) := fun x => (hs x).symm
   have hcc : ∀ x, c (c x) = x := fun x => RingOfIntegers.ext (by rw [hcv, hcv, star_star])
@@ -237,7 +237,7 @@ theorem exists_skew_norm_mul_unit : ∀ D : D7, ∃ μ : D.host.E, IsSkew μ ∧
   · rw [h] at hsq
     exact_mod_cast (by simpa using hsq : (D.host.q : D.host.E) = 0)
   · have := congrArg (fun z : 𝓞 D.host.E => (z : D.host.E)) e
-    simp only [RingOfIntegers.coe_eq_algebraMap, map_mul] at this
+    simp only [map_mul] at this
     exact (congrArg _ (hcv α).symm).trans this
 
 end GlobalTheory.StdUnn.SkewNorm

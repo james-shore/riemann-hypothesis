@@ -617,7 +617,7 @@ theorem UpperTheory.V.CA.univDet :
       have hu' := hu.map (TrivSqZeroExt.fstHom (ResidueField O) (ResidueField O) (ResidueField O))
       have h0 : TrivSqZeroExt.fstHom (ResidueField O) (ResidueField O) (ResidueField O)
           (x - algebraMap O (DualNumber (ResidueField O)) (cst (TrivSqZeroExt.fst x))) = 0 := by
-        simp [TrivSqZeroExt.algebraMap_eq_inl, cst_spec]
+        simp
         rw [sub_eq_zero]
         exact (cst_spec _).symm
       rw [h0] at hu'
@@ -639,7 +639,7 @@ theorem UpperTheory.V.CA.univDet :
       intro E hE i g
       obtain ⟨E0, hE0⟩ := exists_comap_quot E (U : Subgroup G) (hU E hE.cont (hred E hE))
       rw [← hE0, coord_comap, coord_comap]
-      simp [QuotientGroup.out_eq']
+      simp
     apply d_gext
     intro g i h1 h2
     change coord D (i, g) = coord D' (i, g)

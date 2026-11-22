@@ -31,7 +31,7 @@ theorem UpperTheory.Gal.TypesAndIwahori.grpFacts :
       rw [pow_one] at hu
       have hr : unitRes k u = 1 := by
         ext
-        simp only [unitRes, Units.coe_map, MonoidHom.coe_coe, Units.val_one]
+        simp only [unitRes, Units.coe_map, Units.val_one]
         have hz : IsLocalRing.residue 𝒪[k] ((u : 𝒪[k]) - 1) = 0 := (IsLocalRing.residue_eq_zero_iff _).2 hu
         rw [map_sub, map_one, sub_eq_zero] at hz
         exact hz

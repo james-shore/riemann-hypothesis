@@ -67,7 +67,7 @@ theorem smul_e_mem_coefFil (δ : DividedPowers J) (Q : PDPoly B) {r k : ℕ} {b 
   · subst h
     simpa using hb
   · have : Q.e.repr (b • Q.e k) j = 0 := by
-      simp [Finsupp.single_apply, Ne.symm h]
+      simp [Ne.symm h]
     rw [this]
     exact Ideal.zero_mem _
 

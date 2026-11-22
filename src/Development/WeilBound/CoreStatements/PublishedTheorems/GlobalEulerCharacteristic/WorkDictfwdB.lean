@@ -120,7 +120,7 @@ theorem isCCAt_conj {w : InfinitePlace F} (hw : w.IsReal) {c c' : G F Ω} (hc : 
     · exact h
     · calc j'.comp (algebraMap F Ω)
           = ComplexEmbedding.conjugate (ComplexEmbedding.conjugate (j'.comp (algebraMap F Ω))) :=
-            by ext x; simp [ComplexEmbedding.conjugate_coe_eq]
+            by ext x; simp
         _ = ComplexEmbedding.conjugate (j.comp (algebraMap F Ω)) := by rw [h]
         _ = j.comp (algebraMap F Ω) := ComplexEmbedding.isReal_iff.1 hreal
   let _ : Algebra Ω ℂ := j.toAlgebra

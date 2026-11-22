@@ -218,7 +218,7 @@ theorem sum_dy (M : FlagModel y Ψ N j) (p : Ψ × Fin N) (l : K → ℝ) :
     rw [Finset.sum_neg_distrib]
   · cases hb : M.blk p with
     | none => simp
-    | some k => simp [eq_comm]
+    | some k => simp
 
 def cc (M : FlagModel y Ψ N j) (τ : Ψ) (ζ : NonPluckerBlocks M.blk → ℂ) (S : Matrix (Fin N) (Fin N) ℂ) : K → ℂ := fun k =>
   if h : ∀ p, M.blk p ≠ some k then ζ ⟨k, h⟩

@@ -21,11 +21,11 @@ def permGL (τ : Equiv.Perm (Fin N)) : GL (Fin N) k where
   val_inv := by
     rw [PEquiv.mul_toMatrix_toPEquiv, PEquiv.toMatrix_toPEquiv_eq]
     ext i j
-    simp [Matrix.one_apply, Equiv.Perm.permMatrix, PEquiv.toMatrix_apply]
+    simp [Matrix.one_apply]
   inv_val := by
     rw [PEquiv.mul_toMatrix_toPEquiv, PEquiv.toMatrix_toPEquiv_eq]
     ext i j
-    simp [Matrix.one_apply, Equiv.Perm.permMatrix, PEquiv.toMatrix_apply]
+    simp [Matrix.one_apply]
 
 theorem permGL_conj (τ : Equiv.Perm (Fin N)) (M : GL (Fin N) k) :
     ((permGL τ * M * (permGL τ)⁻¹ : GL (Fin N) k) : Matrix (Fin N) (Fin N) k) =

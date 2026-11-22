@@ -91,8 +91,8 @@ variable (k) in
 theorem swapP' (h : GlobalTheory.BZSeg.LUnlinkedComm k) : SwapP k := fun x a b A B Δ Γ ha hb hl hx => by
   have hd : ∑ i, (![a, b] i).1 = a.1 + b.1 := by simp [Fin.sum_univ_two]
   have hd' : ∑ i, (![b, a] i).1 = a.1 + b.1 := by simp [Fin.sum_univ_two, add_comm]
-  have h1 : ∑ i, ([a, b].get i).1 = a.1 + b.1 := by simp [sum_get_eq']
-  have h2 : ∑ i, ([b, a].get i).1 = a.1 + b.1 := by simp [sum_get_eq', add_comm]
+  have h1 : ∑ i, ([a, b].get i).1 = a.1 + b.1 := by simp
+  have h2 : ∑ i, ([b, a].get i).1 = a.1 + b.1 := by simp [add_comm]
   exact embL_block h1 h2 (emb_of_iso (iso_trans (pr_congr (by simp [List.ofFn_succ]) h1 hd)
     (iso_trans (iso_pr_of _ _ hd hd' (h Δ Γ a b _ hd hd' hl ha hb)) (pr_congr (by simp [List.ofFn_succ]) hd' h2)))) hx
 

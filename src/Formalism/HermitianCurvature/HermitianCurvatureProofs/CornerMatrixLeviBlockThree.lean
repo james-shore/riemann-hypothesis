@@ -37,7 +37,7 @@ theorem corner_matrix_levi_block_three (z z' : Fin (2 * (p + ρ) + k + 1) → �
   have hw : ∀ M : Matrix (Fin p) (Fin p) ℂ, G.wMat p * (G.wMat p * M * G.wMat p) = M * G.wMat p := by
     intro M
     rw [← Matrix.mul_assoc, ← Matrix.mul_assoc, Ux3.wMat_mul_self, Matrix.one_mul]
-  congr 2 <;> simp only [Matrix.zero_mul, Matrix.one_mul, zero_add, add_zero, Matrix.mul_zero]
+  congr 2 <;> simp only [Matrix.zero_mul, Matrix.one_mul, zero_add, add_zero]
   · rw [← Matrix.mul_assoc, hw, Matrix.mul_assoc]
   · rw [← Matrix.mul_assoc (G.wMat p), hw]; simp only [Matrix.mul_assoc]
 
@@ -79,7 +79,7 @@ theorem zh_eq_blk (y : B.Mat k (p + ρ)) :
   rw [Ux3.wMat_mul_apply]
   simp only [Matrix.submatrix_apply, U.Zh]
   congr 1
-  all_goals (ext; first | (rw [Ux3.block_index_last_val]; simp [Fin.val_rev]; omega) | (rw [Ux3.block_index_first_val]))
+  all_goals (ext; first | (rw [Ux3.block_index_last_val]; simp [Fin.val_rev]; omega))
 
 theorem minor_leviElement_mul_high (z z' : Fin (2 * (p + ρ) + k + 1) → ℂ) (hz : inWb k (p + ρ) z) (hz' : inWb k (p + ρ) z')
     (q : Matrix (Fin p) (Fin p) ℂ) (g : B.Mat k (p + ρ)) (m : ℕ) (hm : m ≤ ρ + 1) :

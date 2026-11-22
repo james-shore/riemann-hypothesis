@@ -97,4 +97,4 @@ theorem GlobalTheory.EtC.cech_level_representable : ∀ (P : MorphismProperty Sc
   refine this.trans ?_
   change yoneda.map (p 0 ≫ f) ≫ iso.hom.app none = _
   simp [iso, WidePullbackShape.diagramIsoWideCospan]
-  first | exact Category.comp_id _ | rfl | (erw [eqToHom_refl, Category.comp_id])
+  first | exact Category.comp_id _

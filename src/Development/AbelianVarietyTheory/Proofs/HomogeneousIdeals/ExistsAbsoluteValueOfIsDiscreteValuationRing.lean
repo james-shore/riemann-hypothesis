@@ -30,9 +30,7 @@ theorem exists_adicCompletion_ringHom_extend (I : Ideal A) (f : A →+* B)
   first
   | exact @_root_.GlobalTheory.PowerExtensionEvaluation.exists_extension
   | exact _root_.GlobalTheory.PowerExtensionEvaluation.exists_extension
-  | (apply _root_.GlobalTheory.PowerExtensionEvaluation.exists_extension <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PowerExtensionEvaluation.exists_extension <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PowerExtensionEvaluation.exists_extension <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.PowerExtensionEvaluation.exists_extension)
   | (intros; exact _root_.GlobalTheory.PowerExtensionEvaluation.exists_extension ..)
 
 end Extend

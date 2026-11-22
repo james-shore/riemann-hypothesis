@@ -22,7 +22,7 @@ theorem lTensor_smul_id_apply (R M O : Type) [CommRing R] [AddCommGroup M] [Modu
     (r • LinearMap.id : M →ₗ[R] M).lTensor O x = algebraMap R O r • x := by
   induction x using TensorProduct.induction_on with
   | zero => simp
-  | tmul o n => simp [LinearMap.lTensor_tmul, algebraMap_smul, TensorProduct.tmul_smul]
+  | tmul o n => simp [algebraMap_smul]
   | add x y hx hy => rw [map_add, hx, hy, smul_add]
 
 end GlobalTheory.HartFlatBaseChange
@@ -58,7 +58,7 @@ theorem GlobalTheory.GoodEtale.hart_tensor_of_flat : ∀ (A R M O : Type) [CommR
       funext i
       simp only [g, f, LinearMap.pi_apply, LinearMap.coe_comp, Function.comp_apply, Pi.zero_apply,
         Submodule.mkQ_apply, Submodule.Quotient.mk_eq_zero, N, LinearMap.mem_range]
-      exact ⟨algebraMap A R i.1 • x, by simp [f, smul_comm (algebraMap A R a)]⟩
+      exact ⟨algebraMap A R i.1 • x, by simp [smul_comm (algebraMap A R a)]⟩
   have hexO := Module.Flat.lTensor_exact O hex
   have hcomp : ∀ (z : O ⊗[R] (s → M ⧸ N)) (i : s),
       TensorProduct.piRight R R O (fun _ : s => M ⧸ N) z i = (LinearMap.proj i).lTensor O z := by

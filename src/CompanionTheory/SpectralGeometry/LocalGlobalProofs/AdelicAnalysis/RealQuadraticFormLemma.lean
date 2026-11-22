@@ -358,7 +358,7 @@ theorem fourier_coefficient : ∀ (F : Type) [Field F] [NumberField F], ∀ [Mea
         intro x
         rw [ph_neg, ph_mul, hz', add_neg_cancel, ph_zero]
       simp_rw [this]
-      simp [setIntegral_const, Measure.real])
+      simp [Measure.real])
     (by
       intro z hz
       by_cases hall : ∀ ω, s z ω = 0

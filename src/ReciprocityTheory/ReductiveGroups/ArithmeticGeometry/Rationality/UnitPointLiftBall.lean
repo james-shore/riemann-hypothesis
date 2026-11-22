@@ -50,8 +50,6 @@ theorem exists_unit_point (K₀ : Subfield K) (hK₀ : ResidueFieldInfiniteOn (K
     have hm : a * ⟨_, hinv⟩ = 1 := Subtype.ext (by simp [ha0])
     first
       | exact IsUnit.of_mul_eq_one _ hm
-      | exact IsUnit.of_mul_eq_one hm
-      | exact ⟨⟨a, ⟨_, hinv⟩, hm, by rw [mul_comm]; exact hm⟩, rfl⟩
   have norm_of_unit : ∀ a : unitBallRing K, IsUnit a → ‖(a : K)‖ = 1 := by
     intro a ha
     obtain ⟨b, hb⟩ := ha.exists_right_inv

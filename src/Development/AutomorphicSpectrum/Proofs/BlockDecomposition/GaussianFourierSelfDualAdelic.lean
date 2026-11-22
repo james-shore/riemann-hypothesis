@@ -68,7 +68,7 @@ theorem fourier_coefficient_any : ∀ (F : Type) [Field F] [NumberField F], ∀ 
         intro x
         rw [ph_neg, ph_mul, hz', add_neg_cancel, ph_zero]
       simp_rw [this]
-      simp [setIntegral_const, Measure.real])
+      simp [Measure.real])
     (by
       intro z hz
       by_cases hall : ∀ ω, s z ω = 0
@@ -445,7 +445,7 @@ theorem core_zero : ∀ (F : Type) [Field F] [NumberField F], IsTotallyReal F �
     have hz0 : algebraMap F (A F) 0 = 0 := map_zero _
     have hD1 : ∫ x in D, Complex.exp (-(2 * (Real.pi : ℂ) * Complex.I) * ((∑ w, ρ w (0 : F) * x w : ℝ) : ℂ)) = (v : ℂ) := by
       simp_rw [hph]
-      simp [setIntegral_const, hvD]
+      simp [hvD]
     rw [integral_sub j1 j2, e2, e3, hD1, hind, d5 a ha, i5, hvD, show (volume D).toReal = v from hvD, hi0, hz0] at h2
     have e4 : ((v : ℝ) : ℂ) * ((I : ℝ) : ℂ) - (1 * ((v : ℝ) : ℂ) + ((N₁ * N₂ : ℕ) : ℂ) ^ Module.finrank ℚ F *
         ((kap F ^ (2 * M - 2) * (Real.sqrt |((Algebra.norm ℚ B.det : ℚ) : ℝ)|)⁻¹ * Df a 0 : ℝ) : ℂ) *

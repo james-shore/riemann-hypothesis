@@ -27,7 +27,7 @@ theorem UpperTheory.V.Z.Kato.Nb.sRel0 :
       conv_lhs => rw [← hr y]
       rw [← hm, hr, mul_inv_cancel_left]
     rw [hm, hr, eq_inv_mul_of_mul_eq h1]
-    simp [mul_comm, mul_left_comm]
+    simp [mul_left_comm]
   have hB := sBStab Ω ε X l N (2 * e - 1) hN
   obtain ⟨-, -, -, hsum, -, -, hgal, -⟩ := sApi Ω ε X l n
   let P : X.Fn l →+ (Fin 2 → Qbar l) := AddMonoidHom.mk' pr hadd

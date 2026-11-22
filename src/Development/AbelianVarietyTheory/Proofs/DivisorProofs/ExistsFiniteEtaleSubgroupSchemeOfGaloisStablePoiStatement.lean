@@ -8,4 +8,4 @@ open GlobalTheory GlobalTheory.HTLat GlobalTheory.Published.AbVarRed GlobalTheor
 attribute [local instance] Over.cartesianMonoidalCategory
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.exists_finiteEtale_subgroupScheme_of_galoisStable_points : ∀ (K : Type) [Field K] (A : AbVar K) (G : Subgroup A.Pt), Finite G → ((Nat.card G : ℕ) : K) ≠ 0 → (∀ (σ : Gal K) (x : A.Pt), x ∈ G → galPts A.X σ x ∈ G) → ∃ (H : Over (Sp K)) (_ : GrpObj H) (i : H ⟶ A.X), IsMonHom i ∧ Mono i ∧ IsFinite H.hom ∧ Etale H.hom ∧ ∀ x : A.Pt, x ∈ G ↔ ∃ y, y ≫ i = x := by
-  first | (exact @GlobalTheory.FinEtSubgroup.exists_finiteEtale_subgroup_of_points) | (exact GlobalTheory.FinEtSubgroup.exists_finiteEtale_subgroup_of_points) | (intros; apply GlobalTheory.FinEtSubgroup.exists_finiteEtale_subgroup_of_points  <;> assumption)
+  first | (exact @GlobalTheory.FinEtSubgroup.exists_finiteEtale_subgroup_of_points)

@@ -131,19 +131,18 @@ theorem two_gram {n : ℕ} (J : Matrix (Fin n) (Fin n) E) {a b a' b' p q r u : E
   induction i using Fin.cases with
   | zero =>
     induction j using Fin.cases with
-    | zero => simp [two, Fin.tail, hform, h1, -Fin.succ_zero_eq_one, -Fin.succ_zero_eq_one', ← add_assoc]
+    | zero => simp [two, Fin.tail, hform, h1, -Fin.succ_zero_eq_one, -Fin.succ_zero_eq_one']
     | succ j =>
       cases j using Fin.cases <;>
-        simp [two, Fin.tail, hform, h2, -Fin.succ_zero_eq_one, -Fin.succ_zero_eq_one', ← add_assoc]
+        simp [two, Fin.tail, hform, h2, -Fin.succ_zero_eq_one, -Fin.succ_zero_eq_one']
   | succ i =>
     induction j using Fin.cases with
     | zero =>
       cases i using Fin.cases <;>
-        simp [two, Fin.tail, hform, h3, -Fin.succ_zero_eq_one, -Fin.succ_zero_eq_one', ← add_assoc]
+        simp [two, Fin.tail, hform, h3, -Fin.succ_zero_eq_one, -Fin.succ_zero_eq_one']
     | succ j =>
       cases i using Fin.cases <;> cases j using Fin.cases <;>
-        simp [two, Fin.tail, hform, h4, -Fin.succ_zero_eq_one, -Fin.succ_zero_eq_one', ← add_assoc,
-          Matrix.one_apply, apply_ite s]
+        simp [two, Fin.tail, hform, h4, -Fin.succ_zero_eq_one, -Fin.succ_zero_eq_one', Matrix.one_apply, apply_ite s]
 
 theorem Bin.cong {a b a' b' : E} (h : Bin s a b a' b') (ha : a' ≠ 0) (hb : b' ≠ 0) {n : ℕ}
     {J : Matrix (Fin n) (Fin n) E} (hJ : J.det ≠ 0) : Cong s (blk a (blk b J)) (blk a' (blk b' J)) := by
@@ -175,7 +174,7 @@ theorem cong_of_col {n : ℕ} {J R S : Matrix (Fin (n + 1)) (Fin (n + 1)) E} {a 
   have hU' : U = blk 1 (U.submatrix Fin.succ Fin.succ) := by
     ext i j
     cases i using Fin.cases <;> cases j using Fin.cases <;>
-      simp [hc, hr, Matrix.one_apply, Fin.succ_ne_zero]
+      simp [hc, hr, Fin.succ_ne_zero]
   rw [hU', cT_blk, blk_mul, blk_mul] at hU
   rw [hU', det_blk, one_mul] at hd
   exact ⟨_, hd, (blk_inj hU).2⟩
@@ -567,7 +566,7 @@ theorem exists_coboundary : ∀ (F E : Type) [Field F] [NumberField F] [Field E]
           ext i j
           rw [mul_incl]
           cases i using Fin.cases <;>
-            simp [incl, Matrix.mul_apply, Matrix.one_apply, Fin.succ_ne_zero, (Fin.succ_ne_zero _).symm])
+            simp [incl, Matrix.mul_apply, Matrix.one_apply, (Fin.succ_ne_zero _).symm])
       rw [← this]
       simp [cT_blk, blk_mul])
     (by

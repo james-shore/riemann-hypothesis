@@ -34,7 +34,6 @@ theorem conjPl_eq_conjP {E : Type} [Field E] [NumberField E] [StarRing E] (P : H
   have : Formalism.L2.DIV.starOHom r = Formalism.L2.Col.cO E r := by
     first
       | rfl
-      | (apply RingOfIntegers.ext; simp [Formalism.L2.DIV.starOHom, Formalism.L2.DIV.starO_coe, Formalism.L2.Col.cO])
   rw [this]
 
 set_option maxHeartbeats 1000000 in

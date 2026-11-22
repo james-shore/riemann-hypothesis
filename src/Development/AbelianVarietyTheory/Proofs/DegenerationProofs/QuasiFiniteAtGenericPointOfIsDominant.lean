@@ -41,7 +41,7 @@ private theorem isFinite_pullback_unit_of_surjective_on_points (k : Type) [Field
       (pointOfClosedPoint_comp _ _ _))
     refine ⟨x.left (IsLocalRing.closedPoint k), ?_⟩
     have h := congrArg (fun φ : 𝟙_ (Over (_root_.ReciprocityTheory.ChartRestriction.G.Geo.Tor.Sp k)) ⟶ G' => φ.left (IsLocalRing.closedPoint k)) hx
-    simp only [Over.comp_left, Scheme.Hom.comp_apply] at h
+    simp only [Over.comp_left] at h
     exact h.trans (pointOfClosedPoint_apply _ _ _ _)
   have hgen : i.left (genericPoint G.left) = genericPoint G'.left := by
     have hη : closure {genericPoint G.left} = Set.univ := genericPoint_spec G.left

@@ -26,7 +26,6 @@ theorem T_fac : ∀ {W A C₀ : Type} [CommRing W] [CommRing A] [CommRing C₀] 
     intro x y
     first
     | rfl
-    | simp [E, TensorProduct.liftAddHom_tmul]
   have hEs : ∀ (x : K₀) (t : K₀ ⊗[W] L), E (x • t) = ι (k x) * E t := by
     intro x t
     induction t using TensorProduct.induction_on with
@@ -47,7 +46,6 @@ theorem T_fac : ∀ {W A C₀ : Type} [CommRing W] [CommRing A] [CommRing C₀] 
       have hT : T c k hk (b.coord s) (a ⊗ₜ y) = c a * k (b.repr ((1 : K₀) ⊗ₜ y) s) := by
         first
         | rfl
-        | simp [T, TensorProduct.liftAddHom_tmul, Module.Basis.coord_apply]
       rw [hEs, hT, map_mul, mul_assoc]
     rw [hG, hsum, hE, map_one, map_one, one_mul, hi]
   | add x y hx hy =>

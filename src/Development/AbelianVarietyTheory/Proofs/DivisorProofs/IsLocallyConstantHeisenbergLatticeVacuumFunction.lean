@@ -30,8 +30,6 @@ theorem lc_pow_near_one {z : ℂ} (h : ∀ n : ℕ, ‖z ^ n - 1‖ < 1 / 2) : z
   | exact @_root_.GlobalTheory.IsotropicVectorExistence.main
   | exact _root_.GlobalTheory.IsotropicVectorExistence.main
   | (apply _root_.GlobalTheory.IsotropicVectorExistence.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IsotropicVectorExistence.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IsotropicVectorExistence.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IsotropicVectorExistence.main ..)
 
 theorem lc_exists_open_ker {K : Type} [AddCommGroup K] [TopologicalSpace K] [NonarchimedeanAddGroup K]

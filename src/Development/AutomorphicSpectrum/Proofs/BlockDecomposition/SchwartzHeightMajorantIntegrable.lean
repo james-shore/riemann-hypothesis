@@ -143,7 +143,7 @@ theorem blockMatrix_conj_lowerUnipotent (hn : ρ + p = n) (α β : R) (h : α * 
         (bl hn (α • (1 : Matrix (Fin ρ) (Fin ρ) R)) 0 0 1) = bl hn 1 0 (α • c) 1 := by
   rw [blockMatrix_multiply, blockMatrix_multiply]
   congr 1
-  · simp [smul_smul, h, mul_comm β α]
+  · simp [smul_smul, h]
   · simp
   · simp
   · simp

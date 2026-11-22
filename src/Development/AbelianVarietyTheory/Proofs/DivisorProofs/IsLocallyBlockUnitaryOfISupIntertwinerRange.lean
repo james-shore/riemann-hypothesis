@@ -33,7 +33,7 @@ theorem locU_of_iSup_range_eq_top : ∀ (ι M : Type) [Fintype ι] [DecidableEq 
     refine ⟨Pi.single (e ⟨i, hi⟩) x, ?_⟩
     rw [hg, Finset.sum_eq_single (e ⟨i, hi⟩)]
     · simp [f]
-    · intro b _ hb; simp [Pi.single_apply, hb]
+    · intro b _ hb; simp [hb]
     · simp
   choose z hz using fun y hy => LinearMap.mem_range.1 (hrange y hy)
   obtain ⟨U, hU, hUU⟩ := GlobalTheory.T.isLocallyBlockUnitary_pi_fin ι M s F hloc SS.card (t.attach.image fun y : {x // x ∈ t} => z y.1 y.2)

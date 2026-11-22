@@ -339,10 +339,10 @@ theorem decomp {V : Type} [AddCommGroup V] [Module ℂ V] {ι : Type} [Fintype �
   have hDR : ∀ i u, Dop i u ∈ R := fun i u => R.sum_mem fun k _ => R.smul_mem (hBR i k) _
   have hCv : ∀ i u (w : W), ((Cop i u w : W) : V) = (∑ k ∈ Finset.range (r + 1), u ^ k • A i k) w := by
     intro i u w
-    simp [Cop, A', LinearMap.sum_apply, Submodule.coe_sum]
+    simp [Cop, A', LinearMap.sum_apply]
   have hDv : ∀ i u (w : W), ((Dop i u w : W) : V) = (∑ l ∈ Finset.range (s + 1), u ^ l • B i l) w := by
     intro i u w
-    simp [Dop, B', LinearMap.sum_apply, Submodule.coe_sum]
+    simp [Dop, B', LinearMap.sum_apply]
 
   let v' : W := ⟨v, hv⟩
   let W' : Submodule ℂ W := (Subalgebra.toSubmodule R).map (LinearMap.applyₗ v')
@@ -410,10 +410,10 @@ theorem decomp {V : Type} [AddCommGroup V] [Module ℂ V] {ι : Type} [Fintype �
       have hb : b s = 1 := LinearMap.ext fun w => Subtype.ext (Subtype.ext (Subtype.ext (hB1 i _ w.1.1.2)))
       have hval : ∀ u (w : P χ), ((((∑ k ∈ Finset.range (r + 1), u ^ k • a k) w : P χ) : W') : W) = Cop i u w := by
         intro u w
-        simp [a, f, Cop, LinearMap.sum_apply, Submodule.coe_sum]
+        simp [a, f, Cop, LinearMap.sum_apply]
       have hvalD : ∀ u (w : P χ), ((((∑ l ∈ Finset.range (s + 1), u ^ l • b l) w : P χ) : W') : W) = Dop i u w := by
         intro u w
-        simp [b, f, Dop, LinearMap.sum_apply, Submodule.coe_sum]
+        simp [b, f, Dop, LinearMap.sum_apply]
       have hrelP : ∀ u : ℂ, (∑ k ∈ Finset.range (r + 1), u ^ k • a k) * (∑ l ∈ Finset.range (s + 1), u ^ l • b l) =
           ((m i).map (u + ·)).prod • (1 : Module.End ℂ (P χ)) := by
         intro u

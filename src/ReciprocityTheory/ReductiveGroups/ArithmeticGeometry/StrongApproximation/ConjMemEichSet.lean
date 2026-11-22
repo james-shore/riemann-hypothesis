@@ -21,8 +21,8 @@ theorem tor_conj_e {e f : ι → K} (he : hf σ J e e = 0) (hff : hf σ J f f = 
   rw [ext_iff_mulVec]
   intro x
   rw [← mulVec_mulVec, ← mulVec_mulVec, eich_mulVec, tor_mulVec, tor_mulVec, eich_mulVec]
-  simp only [hf_add_left, hf_sub_left, hf_smul_left, hf_smul_right, hσ, he, hff, hef, hfe, hue, huf,
-    heu, hfu, mul_zero, mul_one, add_zero, sub_zero, zero_add]
+  simp only [hf_add_left, hf_sub_left, hf_smul_left, hf_smul_right, hσ, he, hef, hfe, hue, huf,
+    heu, hfu, mul_zero, mul_one, add_zero, sub_zero]
   ext i
   simp only [Pi.add_apply, Pi.sub_apply, Pi.smul_apply, smul_eq_mul]
   linear_combination (-(hf σ J x e * u i) - l * c * hf σ J x e * e i) * hml

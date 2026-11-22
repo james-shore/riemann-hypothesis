@@ -11,7 +11,7 @@ namespace GlobalTheory.CompanionTheory.Ar.Num.HodgeModel.FlagBasis
 theorem flagStep_full {E : Type} [AddCommGroup E] (Ω : Type) [Field Ω] [Module Ω E] {r : ℕ} (b : Fin r → E) :
     GlobalTheory.CompanionTheory.Ar.flagStep Ω b r = Submodule.span Ω (Set.range b) := by
   unfold GlobalTheory.CompanionTheory.Ar.flagStep
-  have : {k : Fin r | (k : ℕ) < r} = Set.univ := by ext k; simp [k.2]
+  have : {k : Fin r | (k : ℕ) < r} = Set.univ := by ext k; simp
   rw [this, Set.image_univ]
 
 theorem flag_b_basis : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (H : Host E) (D : Datum H) (l : Level H)

@@ -26,8 +26,8 @@ variable {E : Type} [Field E] [NumberField E] [IsTotallyComplex E]
 def conjPerm : Equiv.Perm (E →+* ℂ) where
   toFun := ComplexEmbedding.conjugate
   invFun := ComplexEmbedding.conjugate
-  left_inv τ := by ext x; simp [ComplexEmbedding.conjugate_coe_eq]
-  right_inv τ := by ext x; simp [ComplexEmbedding.conjugate_coe_eq]
+  left_inv τ := by ext x; simp
+  right_inv τ := by ext x; simp
 
 theorem sum_atEmb_I : ∑ τ : E →+* ℂ, atEmb τ Complex.I = 0 := by
   have e : ∀ τ : E →+* ℂ, atEmb (conjPerm τ) Complex.I = -atEmb τ Complex.I := by
@@ -74,8 +74,8 @@ theorem zc_eq_sum_Eop : ∀ (E : Type) [Field E] [NumberField E] [IsTotallyCompl
   unfold zc
   congr 1
   funext k l
-  simp [toL, Finset.sum_apply, Matrix.single_apply, eq_comm]
-  simp only [Finset.sum_apply, Pi.single_apply]
+  simp [toL, Finset.sum_apply]
+  simp only [Pi.single_apply]
   by_cases h : k = l
   · subst h; simp [ite_apply, Pi.single_apply]
   · simp [ite_apply, Pi.single_apply, h, Ne.symm h]

@@ -28,7 +28,7 @@ private noncomputable def p3 (ε : B) (h0 : π ε = 0) (hε : ∀ b, b * ε = π
     have h : π c.1.1 = c.1.2.fst := c.2
     have h' : π c'.1.1 = c'.1.2.fst := c'.2
     simp only [Subalgebra.coe_mul, Prod.fst_mul, Prod.snd_mul, DualNumber.snd_mul, add_mul, mul_add, mul_smul_comm,
-      smul_mul_assoc, mul_comm ε c'.1.1, hε, h, h', h0, smul_smul, add_smul, mul_zero, zero_smul, add_zero]
+      smul_mul_assoc, mul_comm ε c'.1.1, hε, h', smul_smul, add_smul]
     rw [map_add, map_smul, h0, smul_zero, add_zero, h, mul_comm c'.1.2.snd, mul_comm c.1.2.snd]
     abel
   commutes' a := by simp [algebraMap_eq_inl]

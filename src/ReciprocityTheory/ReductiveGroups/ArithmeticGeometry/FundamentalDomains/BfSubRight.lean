@@ -60,7 +60,7 @@ lemma Lv_n (Z : X.Coord) (τ : X.Ψ) (v : Fin r → ℂ) (m : Fin (r - X.p0)) :
   rw [sum_eq_sum_castLE_p0_of_vanish_above X]
   · refine Finset.sum_congr rfl fun c _ => ?_
     rw [dif_pos (by simp)]
-    first | rfl | (congr 2) | simp
+    first | rfl
   · intro j hj
     rw [dif_neg (not_lt.mpr hj), zero_mul]
 

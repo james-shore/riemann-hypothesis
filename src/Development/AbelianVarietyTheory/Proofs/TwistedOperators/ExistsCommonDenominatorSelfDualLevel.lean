@@ -67,7 +67,7 @@ theorem exists_denom_stab (hc : Formalism.BasicNotions.CMData F E) (J : Matrix (
     funext l
     by_cases e : l = j
     · subst e; simp [nsmul_eq_mul]
-    · simp [Pi.single_eq_of_ne e, nsmul_eq_mul]
+    · simp [Pi.single_eq_of_ne e]
   rw [ez] at hzmem
   have hkz := (hs _).1 hzmem
   have h2 := natCast_smul_mem_hatL_std Λ c hce _ hkz
@@ -75,7 +75,7 @@ theorem exists_denom_stab (hc : Formalism.BasicNotions.CMData F E) (J : Matrix (
   have h3 := h2 i
   rw [Matrix.mulVec_smul] at h3
   convert h3 using 1
-  simp [Matrix.mulVec_single_one, mul_comm, mul_left_comm, mul_assoc]
+  simp [mul_left_comm, mul_assoc]
 
 end GlobalTheory.LevelDenom
 

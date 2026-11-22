@@ -26,7 +26,7 @@ private lemma aeval_unitary_conj_eq_conj_aeval {ι : Type} [Fintype ι] [Decidab
   | add p q hp hq => simp [hp, hq, Matrix.mul_add, Matrix.add_mul]
   | monomial n a =>
     rw [aeval_monomial, aeval_monomial, unitary_conj_pow U D hU]
-    simp [Algebra.algebraMap_eq_smul_one, Matrix.mul_smul, Matrix.smul_mul]
+    simp [Algebra.algebraMap_eq_smul_one]
 
 open Matrix Polynomial in
 open scoped Kronecker ComplexOrder TensorProduct in
@@ -34,7 +34,7 @@ private lemma aeval_diagonal_adelic_lattice {ι : Type} [Fintype ι] [DecidableE
     aeval (diagonal f) p = diagonal fun i => p.eval (f i) := by
   induction p using Polynomial.induction_on' with
   | add p q hp hq => simp [hp, hq]
-  | monomial n a => simp [Polynomial.aeval_monomial, diagonal_pow, Algebra.algebraMap_eq_smul_one]; ext i j; by_cases h : i = j <;> simp [h, diagonal_apply]
+  | monomial n a => simp [Polynomial.aeval_monomial, diagonal_pow, Algebra.algebraMap_eq_smul_one]; ext i j; by_cases h : i = j <;> simp [h]
 
 open Matrix Polynomial in
 open scoped Kronecker ComplexOrder TensorProduct in
@@ -72,7 +72,7 @@ private lemma aeval_conj_eq_conj_aeval {ι : Type} [Fintype ι] [DecidableEq ι]
   | add p q hp hq => simp [hp, hq, Matrix.mul_add, Matrix.add_mul]
   | monomial n a =>
     rw [aeval_monomial, aeval_monomial, hpow n]
-    simp [Algebra.algebraMap_eq_smul_one, Matrix.mul_smul, Matrix.smul_mul]
+    simp [Algebra.algebraMap_eq_smul_one]
 
 open Matrix Polynomial in
 open scoped Kronecker ComplexOrder TensorProduct in
@@ -92,7 +92,7 @@ private lemma isLog_neg_inv {ι : Type} [Fintype ι] [DecidableEq ι] {H A : Mat
   obtain ⟨U, d, hU, rfl, rfl⟩ := hH
   have hU' : Uᴴ * U = 1 := mul_eq_one_comm.mp hU
   refine ⟨U, fun i => -d i, hU, ?_, ?_⟩
-  · simp [Matrix.neg_mul, Matrix.mul_neg, ← diagonal_neg]
+  · simp [← diagonal_neg]
   · apply Matrix.inv_eq_right_inv
     calc (U * diagonal (fun i => ((Real.exp (d i) : ℝ) : ℂ)) * Uᴴ) * (U * diagonal (fun i => ((Real.exp (-d i) : ℝ) : ℂ)) * Uᴴ)
         = U * (diagonal (fun i => ((Real.exp (d i) : ℝ) : ℂ)) * diagonal (fun i => ((Real.exp (-d i) : ℝ) : ℂ))) * Uᴴ := by
@@ -254,7 +254,7 @@ private lemma gram_expansion_quartic_in_t {ι : Type} [Fintype ι] [DecidableEq 
   simp only [conjTranspose_mul, conjTranspose_add, conjTranspose_sub, conjTranspose_one, conjTranspose_smul,
     Complex.star_def, Complex.conj_ofReal]
   simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.smul_mul, Matrix.mul_smul,
-    smul_smul, Matrix.mul_assoc, Matrix.one_mul, Matrix.mul_one, hNN', hNN, smul_zero, Matrix.mul_zero]
+    Matrix.mul_assoc, Matrix.one_mul, Matrix.mul_one]
   module
 
 open Matrix Polynomial in
@@ -355,7 +355,7 @@ theorem _root_.GlobalTheory.ClassFin.exists_conj_harm_of_span : ∀ (ι : Type) 
     have hlin : ∀ t : ℝ, |t| < ε0 → 0 ≤ t * (2 * ∑ s, ℓ s) + t ^ 2 * ∑ s, K s := by
       intro t ht
       have hQQ : (1 + (t : ℂ) • N) * (1 - (t : ℂ) • N) = 1 := by
-        simp [Matrix.mul_sub, Matrix.add_mul, Matrix.smul_mul, Matrix.mul_smul, smul_smul, hNN]
+        simp [Matrix.mul_sub, Matrix.add_mul, hNN]
       have hQdet : IsUnit (1 + (t : ℂ) • N).det := Matrix.isUnit_det_of_right_inverse hQQ
       have hQ'det : IsUnit (1 - (t : ℂ) • N).det := Matrix.isUnit_det_of_left_inverse hQQ
       have hP' : IsUnit ((1 + (t : ℂ) • N) * P).det := by rw [Matrix.det_mul]; exact hQdet.mul hP

@@ -23,8 +23,6 @@ theorem exists_zsmul_mem_of_isLattice {Λ : Submodule (𝓞 K) (Fin r → K)} (h
   | exact @_root_.GlobalTheory.IntSmulIntegral.exists_int_smul_mem
   | exact _root_.GlobalTheory.IntSmulIntegral.exists_int_smul_mem
   | (apply _root_.GlobalTheory.IntSmulIntegral.exists_int_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntSmulIntegral.exists_int_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntSmulIntegral.exists_int_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntSmulIntegral.exists_int_smul_mem ..)
 
 def IsLatticeEmb (φ : M →ₗ[𝓞 K] (Fin r → K)) : Prop :=

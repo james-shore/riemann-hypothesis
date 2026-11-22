@@ -34,7 +34,7 @@ theorem normC_one (w : List C.Letter) : TBB.normC (fun _ => (1 : ℝ)) w = 1 := 
   unfold TBB.normC
   induction w with
   | nil => simp
-  | cons a w ih => simp [ih]
+  | cons a w ih => simp
 
 theorem topPD_self (p : KB.Pl P Wp Wq) (F : B.Mat P.k P.r → (Wq →L[ℂ] Wp)) (w : List C.Letter)
     (c : Fin (P.r + 1) → ℂ) : topPD p F F w c = topD p F w c := by

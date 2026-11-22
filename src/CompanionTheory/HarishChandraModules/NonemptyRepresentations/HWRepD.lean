@@ -52,7 +52,7 @@ theorem curve_tri {a b : Fin k} (hab : a ≤ b) (t : ℂ) :
   intro c d h
   have h' : d < c := h
   have : ¬(a = c ∧ b = d) := by rintro ⟨rfl, rfl⟩; exact absurd hab (not_le.2 h')
-  simp [Matrix.one_apply, h'.ne', Matrix.single_apply, this]
+  simp [h'.ne', this]
 
 theorem D_upper {a b : Fin k} (hab : a < b) : R.D (Matrix.single a b 1) *ᵥ R.v0 = 0 := by
   have h := R.hasDerivAt_curve (fun t : ℝ => 1 + (t : ℂ) • Matrix.single a b (1 : ℂ)) _ (by simp)
@@ -60,7 +60,7 @@ theorem D_upper {a b : Fin k} (hab : a < b) : R.D (Matrix.single a b 1) *ᵥ R.v
   have hdiag : ∀ (t : ℂ) c, (1 + t • Matrix.single a b (1 : ℂ) : Matrix (Fin k) (Fin k) ℂ) c c = 1 := by
     intro t c
     have : ¬(a = c ∧ b = c) := by rintro ⟨rfl, rfl⟩; exact lt_irrefl _ hab
-    simp [Matrix.single_apply, this]
+    simp [this]
   have e : (fun t : ℝ => R.ρ (1 + (t : ℂ) • Matrix.single a b (1 : ℂ)) *ᵥ R.v0) = fun _ => R.v0 := by
     funext t
     rw [R.hw _ (curve_tri hab.le _)]
@@ -78,7 +78,7 @@ theorem D_diag (a : Fin k) : R.D (Matrix.single a a 1) *ᵥ R.v0 = (ν a : ℂ) 
     intro t c
     by_cases hc : c = a
     · simp [hc]
-    · simp [Matrix.single_apply, hc, Ne.symm hc]
+    · simp [hc, Ne.symm hc]
   have h1 : HasDerivAt (fun t : ℝ => (1 : ℂ) + t) 1 0 := by
     simpa using (Complex.ofRealCLM.hasDerivAt (x := (0 : ℝ))).const_add (1 : ℂ)
   have hne : ∀ᶠ t : ℝ in nhds 0, (1 : ℂ) + t ≠ 0 :=
@@ -97,8 +97,7 @@ theorem D_diag (a : Fin k) : R.D (Matrix.single a a 1) *ᵥ R.v0 = (ν a : ℂ) 
     simpa using hasDerivAt_zpow (ν a) (1 : ℂ) (Or.inl one_ne_zero)
   have h2 : HasDerivAt (fun t : ℝ => ((1 : ℂ) + t) ^ ν a) (ν a : ℂ) 0 := by
     have := (hz.hasFDerivAt.restrictScalars ℝ).comp_hasDerivAt (0 : ℝ) h1
-    simp only [ContinuousLinearMap.coe_restrictScalars', ContinuousLinearMap.toSpanSingleton_apply, one_smul,
-      ContinuousLinearMap.smulRight_apply, ContinuousLinearMap.one_apply] at this
+    simp only [ContinuousLinearMap.coe_restrictScalars', ContinuousLinearMap.toSpanSingleton_apply, one_smul] at this
     exact this
   exact (h.congr_of_eventuallyEq e).unique (h2.smul_const R.v0)
 

@@ -138,23 +138,23 @@ theorem fdegHC_le {N : ℕ} (lam : Fin N → ℝ) (s : Fin N) (hw : ∀ a c, a <
     by_cases ha : a = s
     · subst ha
       have e1 : lam' a = lam a - 1 := by simp [hlam']
-      have e2 : lam' b = lam b := by simp [hlam', Pi.single_apply, hne.symm]
+      have e2 : lam' b = lam b := by simp [hlam', hne.symm]
       rw [if_pos rfl, e1, e2, abs_of_pos (by linarith), abs_of_pos (by linarith)]
       linarith
     · rw [if_neg ha, one_mul]
       by_cases hb : b = s
       · subst hb
-        have e1 : lam' a = lam a := by simp [hlam', Pi.single_apply, ha]
+        have e1 : lam' a = lam a := by simp [hlam', ha]
         have e2 : lam' b = lam b - 1 := by simp [hlam']
         rw [e1, e2, abs_of_pos (by linarith), abs_of_pos (by linarith)]
         linarith
-      · have e1 : lam' a = lam a := by simp [hlam', Pi.single_apply, ha]
-        have e2 : lam' b = lam b := by simp [hlam', Pi.single_apply, hb]
+      · have e1 : lam' a = lam a := by simp [hlam', ha]
+        have e2 : lam' b = lam b := by simp [hlam', hb]
         rw [e1, e2]
   have hcount : ∏ a : Fin N, ∏ b ∈ univ.filter (fun b : Fin N => a < b), (if a = s then (2 : ℝ) else 1) ≤
       2 ^ (N - 1) := by
     rw [Finset.prod_eq_single s (fun a _ ha => by simp [ha]) (fun h => absurd (Finset.mem_univ s) h)]
-    simp only [if_pos rfl, Finset.prod_const]
+    simp only [Finset.prod_const]
     apply pow_le_pow_right₀ (by norm_num)
     have hsub : univ.filter (fun b : Fin N => s < b) ⊆ univ.erase s := by
       intro b hb

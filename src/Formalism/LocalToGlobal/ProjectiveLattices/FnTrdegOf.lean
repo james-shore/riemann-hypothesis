@@ -33,7 +33,6 @@ theorem fnFG_of (h : KapFG Xo c) : FnFG Xo c := by
       by
         first
           | exact ⟨a, ha, rfl⟩
-          | (rw [← SetLike.mem_coe, IntermediateField.coe_map]; exact Set.mem_image_of_mem _ ha)
     rw [IntermediateField.adjoin_map] at h1
     refine IntermediateField.adjoin.mono _ _ _ ?_ h1
     rintro _ ⟨b, hb, rfl⟩
@@ -90,11 +89,6 @@ theorem fnTrdeg_of (d : ℕ) (h : KapTrdeg Xo c d) : FnTrdeg Xo c (d + Nat.card 
   have e1 : Algebra.trdeg (kap Z) (MvPolynomial (FlagVar Dw) (kap Z)) = Cardinal.mk (FlagVar Dw) := by
     first
       | (rw [MvPolynomial.trdeg_of_isDomain, Cardinal.lift_id])
-      | (rw [Algebra.trdeg_mvPolynomial, Cardinal.lift_id])
-      | (rw [MvPolynomial.trdeg_eq, Cardinal.lift_id])
-      | (rw [MvPolynomial.lift_trdeg, Cardinal.lift_id])
-      | (rw [Algebra.trdeg_MvPolynomial, Cardinal.lift_id])
-      | (rw [MvPolynomial.trdeg_eq_cardinalMk, Cardinal.lift_id])
   have e2 : Algebra.trdeg (MvPolynomial (FlagVar Dw) (kap Z)) (Om Z) = 0 := by
     unfold Algebra.trdeg
     refine le_antisymm (ciSup_le' fun s => ?_) zero_le
@@ -103,7 +97,6 @@ theorem fnTrdeg_of (d : ℕ) (h : KapTrdeg Xo c d) : FnTrdeg Xo c (d + Nat.card 
   have hcard : Cardinal.mk (FlagVar Dw) = ((Nat.card (FlagVar Dw) : ℕ) : Cardinal) := by
     first
       | exact Nat.cast_card.symm
-      | simp [Cardinal.mk_fintype, Nat.card_eq_fintype_card]
   have T1 := lift_trdeg_add_eq (kap Z) (MvPolynomial (FlagVar Dw) (kap Z)) (Om Z)
   have T2 := lift_trdeg_add_eq c.F (kap Z) (Om Z)
   simp only [Cardinal.lift_id] at T1 T2

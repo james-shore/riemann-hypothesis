@@ -68,8 +68,6 @@ theorem exists_smul_mem_lat (L : Submodule (𝓞 E) S.V) (hL : Submodule.IsLatti
   | exact @_root_.GlobalTheory.NonzeroIntegerSmulMem.exists_ne_zero_smul_mem
   | exact _root_.GlobalTheory.NonzeroIntegerSmulMem.exists_ne_zero_smul_mem
   | (apply _root_.GlobalTheory.NonzeroIntegerSmulMem.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NonzeroIntegerSmulMem.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NonzeroIntegerSmulMem.exists_ne_zero_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NonzeroIntegerSmulMem.exists_ne_zero_smul_mem ..)
 
 theorem z_not_mem_X (Λ : Submodule (𝓞 E) S.V) (F : LFlag S r T)
@@ -118,7 +116,7 @@ theorem exists_partner_rep (Λ : Submodule (𝓞 E) S.V) (F : LFlag S r T)
         apply RingOfIntegers.ext
         simp only [hψ, RingHom.id_apply, smul_eq_mul, map_mul, Submodule.coe_smul]
         rw [← algebraMap_smul E c (x : S.V), map_smul]
-        simp [hψ] }
+        simp }
   obtain ⟨w, hw⟩ := GlobalTheory.LoopC.FunIdx.exists_dual_vec S M0 Λ hlat hprimM ψ'
   have hwM : ∀ x (hx : x ∈ M0), S.hT w x = φ x := fun x hx => by
     rw [← hw ⟨x, hx⟩]; exact hψ ⟨x, hx⟩

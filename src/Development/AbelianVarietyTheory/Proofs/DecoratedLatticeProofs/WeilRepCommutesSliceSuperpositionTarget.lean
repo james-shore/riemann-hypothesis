@@ -136,7 +136,6 @@ theorem weil_comm_sliceSum_target : ∀ (D : D7) (ψ : AddChar (AF D.host.F) ℂ
     simp only [Pi.add_apply, Pi.neg_apply]
     first
       | exact (decomp_re_im (a' w)).symm
-      | exact decomp_re_im (a' w)
   have e1 : (fun u => ∫ w, a w * Fs (k w) u ∂μ) = fun u => ∫ w, a' w * Fs (k w) u ∂μ := by
     funext u; exact integral_congr_ae (hae.mono fun w hw => by simp only [hw])
   have e2 : ∫ w, a w * om p (Fs (k w)) u₀ ∂μ = ∫ w, a' w * om p (Fs (k w)) u₀ ∂μ :=

@@ -108,7 +108,7 @@ def clSum : S.Forms →ₛₗ[σ] X where
   toFun f := ∑ c, (Nat.card (stab ι J (P.y c)) : ℂ)⁻¹ • k (P.y c) (P.extL f (P.y c))
   map_add' f f' := by simp [Finset.sum_add_distrib]
   map_smul' a f := by
-    simp only [map_smulₛₗ, Pi.smul_apply, map_smul, Finset.smul_sum, RingHom.id_apply]
+    simp only [map_smulₛₗ, Pi.smul_apply, Finset.smul_sum, RingHom.id_apply]
     exact Finset.sum_congr rfl fun c _ => smul_comm _ _ _
 
 theorem clSum_apply (f : S.Forms) :

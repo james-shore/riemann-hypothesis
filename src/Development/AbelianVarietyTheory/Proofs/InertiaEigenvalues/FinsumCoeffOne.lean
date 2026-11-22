@@ -78,7 +78,7 @@ theorem lev_letE (i j : ZMod n) (ζ : LL) : R.lev i ζ (letE j) = if i = j then 
   rw [← Dc.ex_jA, show Dc.jA (letE j) = Dc.cstC (Pi.single j 1) from Subtype.ext (toL_letE j), ex_cstC]
   by_cases h : i = j
   · subst h; simp
-  · simp [Pi.single_eq_of_ne h, h]
+  · simp [h]
 
 theorem letE_mul_cst (i : ZMod n) (c : ZMod n → LL) : b₀ (letE i) * Dc.J (Dc.cstC c) = c i • b₀ (letE i) := by
   rw [← Dc.J_jA, ← map_mul, ← map_smul]
@@ -548,7 +548,7 @@ theorem bT_eq (hT : IsCrys PD T.ρ) (F : Frame Dc Mo T) (x : ↥(Mo.N T)) :
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [← Finset.sum_smul]
   simp only [← map_mul, ← map_sum, h1]
-  simp only [map_mul, map_pow, Dc.J_jA, mul_assoc]
+  simp only [map_mul, map_pow, Dc.J_jA]
 
 omit hP in
 theorem ιV_smul_sub (ι : LL →ₐ[Qp] BdR) (a : LL ⊗[Qp] B) (m : T.V ⊗[Qp] B) :
@@ -578,7 +578,7 @@ theorem ιV_smul_sub (ι : LL →ₐ[Qp] BdR) (a : LL ⊗[Qp] B) (m : T.V ⊗[Qp
     · induction m using TensorProduct.induction_on with
       | zero => simp
       | add x y hx hy => simp only [map_add, hx, hy]
-      | tmul x y => simp [ιV, mulVR, mul_assoc]
+      | tmul x y => simp [ιV, mulVR]
 
 theorem dR_basis (hT : IsCrys PD T.ρ) (F : Frame Dc Mo T) (ι : LL →ₐ[Qp] BdR) (x : ↥(Mo.N T)) :
     mulVR T (tS ^ F.w) (ιV PD (LL := LL) (V := T.V) (bT T x)) -

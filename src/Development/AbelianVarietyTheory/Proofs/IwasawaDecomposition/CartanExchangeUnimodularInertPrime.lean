@@ -88,7 +88,7 @@ theorem exists_unif_star (P : HeightOneSpectrum (𝓞 E)) (hP : conjPrime₂ P =
   have key : (x : E) * (r1 : E) - (r2 : E) = ((x : E) - star (x : E)) * star (a : E) := by
     change algebraMap (𝓞 E) E x * algebraMap (𝓞 E) E (a + cO E a) - algebraMap (𝓞 E) E (x * a + cO E (x * a)) =
       (algebraMap (𝓞 E) E x - star (algebraMap (𝓞 E) E x)) * star (algebraMap (𝓞 E) E a)
-    simp only [map_add, map_mul, algebraMap_cO, star_mul]
+    simp only [map_add, map_mul, algebraMap_cO]
     ring
   have hvx : P.valuation E ((x : E) - star (x : E)) = 1 := by
     have e : ((x : E) - star (x : E)) = -(algebraMap (𝓞 E) E (cO E x - x)) := by

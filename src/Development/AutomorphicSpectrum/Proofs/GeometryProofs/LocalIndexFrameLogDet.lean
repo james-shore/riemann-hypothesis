@@ -83,7 +83,6 @@ theorem gIdx_locAt_frame (L : Type) [Field L] [NumberField L] (n : ℕ) (v : Fin
     rw [Matrix.smul_apply]
     have : c • T i j = algebraMap (NumberField.RingOfIntegers L) L r := by
       rw [hr, smul_eq_mul, Algebra.smul_def]
-      all_goals rfl
     rw [this]
     exact place_int_le_one v r
   have hcI : ∀ i j, v ((c • (1 : Matrix (Fin n) (Fin n) L)) i j) ≤ 1 := by

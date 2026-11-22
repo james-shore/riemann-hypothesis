@@ -97,7 +97,7 @@ theorem haarTr_holds (u u' : D.what₂.Word) (τ : D.what₂.Tau) : HaarTr C u u
       exact Formalism.L2.SG.Pf.Bridge.inN_Q hT' hsN'
     have hcomp : (Formalism.QuantumDeterminants.lmulM s) ∘ f = f ∘ (fun x => y0 * x) := by
       funext x
-      simp only [Function.comp, hf, Formalism.QuantumDeterminants.lmulM, Matrix.of_symm_apply]
+      simp only [Function.comp, hf, Formalism.QuantumDeterminants.lmulM]
       rw [trG_mul]
       congr 1
       show s = C.Qi τ * (C.Q τ * s * C.Qi τ) * C.Q τ

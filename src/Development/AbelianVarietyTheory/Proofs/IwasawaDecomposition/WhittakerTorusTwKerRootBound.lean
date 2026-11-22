@@ -102,7 +102,7 @@ theorem GlobalTheory.whittaker_torus_twKer_rootBound : ∀ (k : Type) [Field k] 
         rw [← Module.End.mul_apply, ← map_mul, ← Module.End.mul_apply, ← map_mul]
         congr 2
         group
-      simp only [MonoidHom.one_apply, Units.val_one, one_smul, map_sub, hρ, hl _ hmem, hsd]
+      simp only [map_sub, hρ, hl _ hmem, hsd]
       ring
     by_cases hu0 : (u : Matrix (Fin n) (Fin n) k) i j = 0
     · refine ⟨1, fun t ht => absurd ?_ ht⟩

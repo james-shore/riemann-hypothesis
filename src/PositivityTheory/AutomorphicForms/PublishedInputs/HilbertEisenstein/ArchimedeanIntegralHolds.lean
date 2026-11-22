@@ -365,7 +365,7 @@ theorem archimedean_integral_holds : ArchInt := by
     refine (Integrable.fintype_prod_dep (fun v => (hloc v).1)).congr ?_
     exact Eventually.of_forall fun z => (hpt z).symm
   · rw [infiniteIdeleMeasure, he.integral_map]
-    simp only [Function.comp_apply, hpt]
+    simp only [hpt]
     rw [integral_fintype_prod_eq_prod]
     simp only [fun v => (hloc v).2]
     rw [Finset.prod_ite_zero]

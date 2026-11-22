@@ -212,7 +212,6 @@ theorem UpperTheory.Gal.productCup_of_system.pCup_of :
     simp only [rcup, lft_uni', rgt_uni']
     first
       | exact Submodule.smul_of_tower_mem _ _ hsum
-      | exact Submodule.smul_mem _ _ hsum
   · rw [LinearMap.mem_ker]
     have hz : ∀ (l : Mi d) (m : DR ℂ K ⊗[ℂ] DR ℂ K) (y : DR ℂ K),
         muP F K τ ((sysZ K x a).act ((sysZ K x a).mu l) m) y =

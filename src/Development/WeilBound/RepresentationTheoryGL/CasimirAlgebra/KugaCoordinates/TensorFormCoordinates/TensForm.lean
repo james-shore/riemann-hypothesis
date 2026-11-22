@@ -75,7 +75,7 @@ theorem tensForm_holds : TensForm := by
     exact Finset.sum_pos' (fun j _ => hnn _) ⟨k, Finset.mem_univ _, hpos _ hk⟩
   · intro φ ψ v w
     simp only [B, LinearMap.mk₂'ₛₗ_apply, ec, TensorProduct.piScalarRightHom_tmul, map_smulₛₗ,
-      LinearMap.smul_apply, map_smul, smul_eq_mul, dotProduct, Finset.mul_sum, Pi.star_apply]
+      LinearMap.smul_apply, smul_eq_mul, dotProduct, Finset.mul_sum, Pi.star_apply]
     refine Finset.sum_congr rfl fun k _ => ?_
     simp only [starRingEnd_apply, RingHom.id_apply]
     ring

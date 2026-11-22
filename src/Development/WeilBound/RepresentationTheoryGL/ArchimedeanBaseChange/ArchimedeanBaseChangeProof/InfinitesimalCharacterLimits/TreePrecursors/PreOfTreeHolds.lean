@@ -40,9 +40,9 @@ theorem sum_filter_pos (l : List (Σ M : ℕ, Submodule ℂ (Sm E M))) :
   | nil => rfl
   | cons x l ih =>
     by_cases hx : 0 < x.1
-    · simp [List.filter_cons, hx, ih]
+    · simp [hx, ih]
     · have h0 : x.1 = 0 := by omega
-      simp [List.filter_cons, hx, ih, h0]
+      simp [ih, h0]
 
 theorem preOfTree : PreOfTree := by
   intro E _ _ _ N t ht _ _

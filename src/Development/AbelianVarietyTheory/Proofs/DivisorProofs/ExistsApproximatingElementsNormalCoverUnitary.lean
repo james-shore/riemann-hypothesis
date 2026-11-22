@@ -57,7 +57,7 @@ theorem exists_elements_cover : ∀ (E : Type) [Field E] [NumberField E] [IsCMFi
   have hgen : Set.range (jK (Φ.V y) ≫ (spMap ρ ≫ ξ) ≫ π) ⊆ Set.range C.iF := by
     intro x hx
     obtain ⟨p, hp⟩ := range_jK_spMap_subset V (Φ.V y) ρ hρi _ (ξ ≫ π) (by simpa only [Category.assoc] using hx)
-    simp only [Category.assoc] at hp
+    simp only at hp
     rw [← hξ, Scheme.Hom.comp_apply] at hp
     exact ⟨_, hp⟩
   obtain ⟨ξ₁, hξ₁p, hξ₁⟩ := hxi (Φ.V y) (spMap ρ ≫ ξ) (Φ.ev y) hζ' hgen

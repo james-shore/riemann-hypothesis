@@ -157,7 +157,7 @@ theorem hor_exp [IsDomain O] (Ti : Comparison₂ W levB) (hR : Formalism.MainNot
     simp only [hcc, hy 0 hM, (hsol j).2]
     rw [Finset.sum_eq_single j]
     · simp
-    · intro m _ hm; simp [Pi.single_apply, hm]
+    · intro m _ hm; simp [hm]
     · intro h; exact absurd (Finset.mem_univ j) h
   · rw [if_neg (by omega)]
     obtain ⟨x', hx'Δ, hx'e⟩ := (hsol j).1 M κ y hy
@@ -203,8 +203,6 @@ theorem levB_Qφ (Ti : Comparison₂ W levB) (hs : W.s = 1) (T : LocLat G Qp LL 
   have hQ : W.Q = W.q := by
     first
     | exact Formalism.MainNotions.LiftingTheory.wmap_Q_one W hs
-    | exact Formalism.MainNotions.LiftingTheory.lifta_Q_eq W hs
-    | exact Formalism.MainNotions.N.Pv.LocalLengthBound.Q_eq_q hs
   have hx : W.Q ^ m • W.φD T (z : W.DD T) ∈ W.N T := by rw [hQ]; exact hz
   have h1 : (⟨W.q ^ m • W.φD T (z : W.DD T), hz⟩ : ↥(W.N T)) = ⟨W.Q ^ m • W.φD T (z : W.DD T), hx⟩ :=
     Subtype.ext (show W.q ^ m • W.φD T (z : W.DD T) = W.Q ^ m • W.φD T (z : W.DD T) by rw [hQ])

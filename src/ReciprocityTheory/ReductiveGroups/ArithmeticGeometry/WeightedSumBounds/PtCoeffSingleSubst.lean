@@ -116,7 +116,7 @@ theorem pt_degree_eq_one {σ : Type*} {α : σ →₀ ℕ} (h : α.degree = 1) :
       Finset.single_le_sum (f := fun i => α i) (fun _ _ => Nat.zero_le _) hs
     omega
   · have hst : s ≠ t := Ne.symm hts
-    simp only [Finsupp.single_apply, hst, hts, if_false]
+    simp only [Finsupp.single_apply, hst, if_false]
     by_contra hne
     have ht : t ∈ α.support := Finsupp.mem_support_iff.mpr hne
     have hsub : ({s, t} : Finset _) ⊆ α.support := by
@@ -147,7 +147,6 @@ private theorem vmul_lemma {ρ K : Type*} [CommRing K] {P Q : MvPowerSeries ρ K
 private theorem vzero_lemma_2 {ρ : Type*} {e : ρ →₀ ℕ} (h : e.degree = 0) : e = 0 := by
   first
   | exact (Finsupp.degree_eq_zero_iff _).mp h
-  | exact Finsupp.degree_eq_zero_iff.mp h
 
 private theorem vpow_lemma_3 {ρ K : Type*} [CommRing K] {A : MvPowerSeries ρ K}
     (hA : constantCoeff A = 0) (k : ℕ) :
@@ -179,7 +178,6 @@ theorem pt_coeff_single_subst {σ τ : Type*} [Fintype σ]
   have hi1 : (Finsupp.single i 1 : τ →₀ ℕ).degree = 1 := by
     first
     | exact Finsupp.degree_single i 1
-    | simp [Finsupp.degree]
   have hsupp : (Function.support fun d : σ →₀ ℕ =>
       coeff d f • coeff (Finsupp.single i 1) (d.prod fun s e => A s ^ e)) ⊆
       ↑(Finset.univ.image fun s : σ => Finsupp.single s 1) := by
@@ -250,7 +248,7 @@ theorem pt_F_lin (G : LogFGL v d) (a : Fin d) (i : Fin d ⊕ Fin d) :
     pt_coeff_single_subst (hX Sum.inl) (fun b => constantCoeff_X _) (G.lg_const a),
     pt_coeff_single_subst (hX Sum.inr) (fun b => constantCoeff_X _) (G.lg_const a)] at key
   simp only [G.lg_lin, pt_coeff_single_X, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq,
-    Finset.sum_ite_eq', Finset.mem_univ, if_true] at key
+    Finset.mem_univ, if_true] at key
   convert key
 
 end Law

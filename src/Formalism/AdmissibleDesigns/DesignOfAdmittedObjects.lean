@@ -77,7 +77,7 @@ theorem eq_diag_of {K : Type} [Field K] {r t : ℕ} (M : Matrix (Fin (r + t)) (F
   have hac : ∀ (a : Fin r) (c : Fin t), M (Fin.castAdd t a) (Fin.natAdd r c) = 0 := by
     intro a c
     rw [h1]
-    simp [Matrix.mulVec, dotProduct, Pi.single_apply, castAdd_ne_natAdd]
+    simp [Matrix.mulVec, dotProduct, castAdd_ne_natAdd]
   have hc : ∀ c d : Fin t, M (Fin.natAdd r c) (Fin.natAdd r d) = if c = d then 1 else 0 := by
     intro c d
     rw [h2]

@@ -25,7 +25,7 @@ theorem ord_one' : ord (1 : F) = 0 := by
 
 def unrC (z : ℂˣ) : Fˣ →* ℂˣ where
   toFun x := z ^ ord (x : F)
-  map_one' := by simp [ord_one']
+  map_one' := by simp
   map_mul' x y := by rw [ord_units_mul, _root_.zpow_add]
 
 theorem unrC_apply (z : ℂˣ) (x : Fˣ) : unrC z x = z ^ ord (x : F) := rfl

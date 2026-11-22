@@ -63,7 +63,7 @@ theorem GlobalTheory.UPoinc.uTraitUniqSt_holds : UTraitUniqSt := by
     intro y
     obtain ⟨u, n, hn, hc⟩ := T.mono y
     obtain ⟨u', n', hn', hc'⟩ := T'.mono (e y)
-    simp only [Fin.prod_univ_one, Matrix.cons_val_zero, Matrix.cons_val_fin_one] at hn hc hn' hc'
+    simp only [Fin.prod_univ_one, Matrix.cons_val_fin_one] at hn hc hn' hc'
     have hc1 : PsiCoord T.P.D.toPre (e1 (e1.symm y)) (u * T.ϖ ^ n 0) := by
       rw [LinearEquiv.apply_symm_apply]; exact hc
     obtain ⟨v, hv⟩ := he1 _ _ hc1

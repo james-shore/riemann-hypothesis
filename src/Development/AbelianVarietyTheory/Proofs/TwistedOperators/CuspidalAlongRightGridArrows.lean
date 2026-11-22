@@ -88,7 +88,7 @@ theorem isCuspListed_smul : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : Consts
   rcases X with ⟨i, j⟩ | i | j
   · intro τ
     have e : (fun g => star ((c • F) g)) = star c • fun g => star (F g) := by
-      funext g; simp [Pi.smul_apply, smul_eq_mul, star_mul', mul_comm]
+      funext g; simp [Pi.smul_apply, smul_eq_mul, star_mul']
     show IsTypeAt _ _ _ _ fun g => star ((c • F) g)
     rw [e]
     exact GlobalTheory.Mem.Th.isTypeAt_smul _ (h3 τ)
@@ -97,7 +97,7 @@ theorem isCuspListed_smul : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : Consts
 
 theorem kerA_mul_left_invariant : ∀ {D : D7} {Γ : Type} [Group Γ] [Fintype Γ] {Pl0 T : Type} {A : FamIn D.what₂.LL Γ Pl0 T D.R.m} {Ks : Type} [Field Ks] [NumberField Ks] [Algebra Ks D.what₂.LL] {R : RealDat D A Ks} {sc : Consts} {G' : GridData R.toLevCh sc} (W : G'.Weil) (i j : ℕ), i < D.R.m → j ≤ D.R.m → ∀ Φ : Sch G' (.right i j), IsThetaFunO W.ψ (G'.pS (.chi i j)) (G'.pT (.chi i j)) Φ → ∀ F : Fn G' (.grid i j), IsCuspListed W.θ (.grid i j) F → ∀ h, ∀ γ ∈ GQ (G'.V (.grid i j)), ∀ g, W.kerA (.right i j) Φ (γ * g) h * F (γ * g) = W.kerA (.right i j) Φ g h * F g := by
   intro D Γ _ _ Pl0 T A Ks _ _ _ R sc G' W i j hi hj Φ hΦ F hF h γ hγ g
-  have hω := W.om_is (.chi i j) (by first | exact ⟨hi, hj⟩ | exact ⟨hj, hi⟩ | simpa using ⟨hi, hj⟩)
+  have hω := W.om_is (.chi i j) (by first | exact ⟨hi, hj⟩)
   show thetaKO (W.om (.chi i j)) (negGA _ h) (γ * g) Φ * F (γ * g) = thetaKO (W.om (.chi i j)) (negGA _ h) g Φ * F g
   rw [GlobalTheory.UpArrowConv.thetaKO_left_snd hω hΦ _ γ hγ g, hF.1.left γ hγ g]
 

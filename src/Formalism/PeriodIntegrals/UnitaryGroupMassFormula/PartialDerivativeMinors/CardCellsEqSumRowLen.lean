@@ -17,7 +17,6 @@ theorem card_cells_eq_sum_rowLen (α : YoungDiagram) (n : ℕ) (h : ∀ r, n ≤
     rw [YoungDiagram.rowLen_eq_card]
     first
       | rfl
-      | (simp only [YoungDiagram.row]; congr 1)
   · intro x hx
     simp only [Finset.mem_coe, Finset.mem_range] at hx ⊢
     by_contra hc

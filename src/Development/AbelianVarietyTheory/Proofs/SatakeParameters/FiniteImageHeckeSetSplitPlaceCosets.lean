@@ -93,7 +93,7 @@ theorem local_cong (ϖ : v.adicCompletion F) (k N : ℕ) (hϖ : Valued.v ϖ ≤ 
   · apply smul_right_injective _ hϖ0
     simp only
     rw [Units.val_mul, ← Matrix.smul_mul, hgi, hg', ha, hb]
-    simp only [add_mul, mul_add, Matrix.mul_smul, Matrix.smul_mul, smul_add, mul_assoc, haa', hDD', hbb, hbb']
+    simp only [add_mul, mul_add, Matrix.mul_smul, Matrix.smul_mul, smul_add, mul_assoc, haa', hDD', hbb]
     module
 end Loc
 
@@ -150,7 +150,7 @@ theorem mem_Umax_of_loc (s : SplitPlace L) (x : GA L n) (hx : TrivOutside {s.v} 
       refine (Valuation.map_sub _ _ _).trans (max_le (h2 j i) ?_)
       by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
   have := add_mem hz (show (1 : Matrix (Fin n) (Fin n) (AL L)) i j ∈ ALint L by
-    by_cases hij : i = j <;> simp [Matrix.one_apply, hij, Subring.one_mem, Subring.zero_mem])
+    by_cases hij : i = j <;> simp [Matrix.one_apply, hij])
   simpa using this
 
 theorem cong_of_loc (s : SplitPlace L) (N : ℕ) (hN : 0 < N) (κ : GAf L n) (hκ : TrivOutside {s.v} κ)

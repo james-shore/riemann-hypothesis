@@ -217,9 +217,9 @@ theorem inS_of_fix {e : Fin r → Fin n → ℂ} {z : Fin n → ℂ} {g : Matrix
     (he : ∀ a, g *ᵥ e a = e a) (hz : g *ᵥ z = z) : InS e z g := by
   refine ⟨fun a => ?_, ?_⟩
   · rw [Matrix.sub_mulVec, Matrix.one_mulVec, he, sub_self]
-    first | exact Submodule.zero_mem _ | exact zero_mem _
+    first | exact Submodule.zero_mem _
   · rw [Matrix.sub_mulVec, Matrix.one_mulVec, hz, sub_self]
-    first | exact Submodule.zero_mem _ | exact zero_mem _
+    first | exact Submodule.zero_mem _
 
 theorem diagDC_pair (sc : ℝ) (e : Fin r → Fin n → ℂ) (z z' : Fin n → ℂ) (T T' : ℝ)
     (hee : ∀ a b, hJ ε (e a) (e b) = 0) (hez : ∀ a, hJ ε (e a) z = 0) (hez' : ∀ a, hJ ε (e a) z' = 0)

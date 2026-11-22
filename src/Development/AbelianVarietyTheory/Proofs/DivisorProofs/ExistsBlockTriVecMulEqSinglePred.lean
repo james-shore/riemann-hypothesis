@@ -76,7 +76,7 @@ theorem exists_gl_vecMul_eq_single {F : Type} [Field F] {r : ℕ} (S : Fin r →
     by_cases hj : j = c
     · subst hj
       simp [vecMul, dotProduct, Matrix.single_apply]
-    · simp [vecMul, dotProduct, Matrix.single_apply, hj, Ne.symm hj]
+    · simp [vecMul, dotProduct, hj, Ne.symm hj]
   obtain ⟨h, hh1, hh2⟩ := exists_gl_vecMul_eq_single_of_ne S c hc (Matrix.vecMul l (transvection a c (1 : F)))
     (by rw [hv]; simpa [hlc] using ha)
     (by
@@ -89,7 +89,7 @@ theorem exists_gl_vecMul_eq_single {F : Type} [Field F] {r : ℕ} (S : Fin r →
   · refine eq_one_off_mul S (transvection a c (1 : F)) _ ?_ hh1
     intro i j hij
     have : ¬ (a = i ∧ c = j) := fun h => hij ⟨h.1 ▸ hS a ha, h.2 ▸ hc⟩
-    simp [transvection, Matrix.single_apply, this]
+    simp [transvection, this]
   · rw [← hh2, vecMul_vecMul]
     rfl
 

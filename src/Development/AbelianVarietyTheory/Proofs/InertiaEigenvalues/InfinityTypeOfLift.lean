@@ -75,7 +75,7 @@ theorem evPt_eq_tinv (τ : L →+* ℂ) (B : GL (Fin n) ℂ) :
     · subst h2
       simp [NG.evPt, tinv, hne]
     · have h3 : σ ≠ ComplexEmbedding.conjugate (ComplexEmbedding.conjugate τ) := by rwa [conj_conj]
-      simp [NG.evPt, h1, h2, h3]
+      simp [NG.evPt, h1, h2]
 
 theorem inv_upper {B : GL (Fin n) ℂ} (hB : B.val.BlockTriangular id) : (B⁻¹).val.BlockTriangular id := by
   haveI : Invertible B.val := B.invertible

@@ -15,10 +15,6 @@ namespace GlobalTheory.TameInertia
 theorem eq_one_of_pow_eq_one_of_sub_mem_sq : ∀ (A B : Type) [CommRing A] [CommRing B] [IsDomain B] [IsNoetherianRing B] [Algebra A B] (Q : Ideal B) (ρ : B ≃ₐ[A] B) (m : ℕ), Q ≠ ⊤ → IsUnit (m : B) → ρ ^ m = 1 → (∀ x, ρ x - x ∈ Q) → (∀ x ∈ Q, ρ x - x ∈ Q ^ 2) → ρ = 1 := by
   first
   | exact @_root_.GlobalTheory.AlgEquivTrivialPowerCongruence.algEquiv_eq_one
-  | exact _root_.GlobalTheory.AlgEquivTrivialPowerCongruence.algEquiv_eq_one
-  | (apply _root_.GlobalTheory.AlgEquivTrivialPowerCongruence.algEquiv_eq_one <;> assumption)
-  | (intros; apply _root_.GlobalTheory.AlgEquivTrivialPowerCongruence.algEquiv_eq_one <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.AlgEquivTrivialPowerCongruence.algEquiv_eq_one <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.AlgEquivTrivialPowerCongruence.algEquiv_eq_one ..)
 
 theorem exists_generator_mod_sq : ∀ (B : Type) [CommRing B] [IsDedekindDomain B] (Q : Ideal B) [Q.IsPrime], Q ≠ ⊥ → (∃ π ∈ Q, π ∉ Q ^ 2 ∧ ∀ x ∈ Q, ∃ c, x - c * π ∈ Q ^ 2) ∧ ∀ a b : B, a * b ∈ Q ^ 2 → a ∉ Q → b ∈ Q ^ 2 := by

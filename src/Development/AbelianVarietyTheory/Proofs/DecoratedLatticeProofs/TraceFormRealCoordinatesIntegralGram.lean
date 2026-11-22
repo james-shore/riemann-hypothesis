@@ -152,8 +152,8 @@ theorem det_ne_zero {e : Fin N → Fin I.n → I.E} (he : IsZBasis I e) (c : ℕ
     have e2 : (fun i => starRingEnd I.E (y0 i)) = Pi.single k ((I.J *ᵥ x) k)⁻¹ := by
       funext i
       by_cases h : i = k
-      · subst h; simp [hy0def, star_inv₀, starRingEnd_apply, star_star]
-      · simp [hy0def, Pi.single_apply, h]
+      · subst h; simp [hy0def, starRingEnd_apply, star_star]
+      · simp [hy0def, h]
     rw [e2]
     simp [dotProduct, Pi.single_apply]
     exact inv_mul_cancel₀ (by simpa using hk)

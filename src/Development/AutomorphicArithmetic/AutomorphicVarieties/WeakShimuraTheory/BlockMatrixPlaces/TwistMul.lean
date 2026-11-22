@@ -10,7 +10,7 @@ private theorem ac_mul {S A : Type} [TopologicalSpace S] [CommRing A] {I : Ideal
     {M N : S → M4 A} (hM : ∀ a b, AdicCont I fun s => M s a b) (hN : ∀ a b, AdicCont I fun s => N s a b) :
     ∀ a b, AdicCont I fun s => (M s * N s) a b := by
   intro a b n
-  simp only [Matrix.mul_apply, map_sum, map_mul, Fin.sum_univ_four, map_add]
+  simp only [Matrix.mul_apply, map_mul, Fin.sum_univ_four, map_add]
   exact ((((hM a 0 n).mul (hN 0 b n)).add ((hM a 1 n).mul (hN 1 b n))).add ((hM a 2 n).mul (hN 2 b n))).add
     ((hM a 3 n).mul (hN 3 b n))
 
@@ -49,7 +49,7 @@ theorem UpperTheory.V.Ws.Bl.cocA :
     have e2 := (hI _ _).1 (Submodule.smul_mem _ t e1) i j
     rw [Ideal.Quotient.eq]
     convert e2 using 1
-    simp [smul_sub, mul_sub]
+    simp [smul_sub]
   refine ⟨MonoidHom.mk ⟨fun g => (1 + (t • z g).1) * r g, by simp [z1]⟩
       (twist_mul hb.bg.blk (fun g => (t • z g).2.1) coc), fun g => (t • z g).1, (t • y).1, fun _ => rfl,
     ac_mul zc hb.cont, fun g => (t • z g).2, (t • y).2, fun g i j => ?_, by simp [hz.cz], fun g hg => by simp [hz.kill g hg],

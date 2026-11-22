@@ -106,7 +106,7 @@ theorem divided_power_padic_valuation_bound {ι : Type} [Fintype ι] {n : ℕ} (
     have hma : m' (l, a) = m (l, a) - f l := by
       rw [hm']; simp [ha, hb, hab]
     have hmb : m' (l, b) = m (l, b) + f l := by
-      rw [hm']; simp [ha, hb, hab, Ne.symm hab]
+      rw [hm']; simp [ha, hb, Ne.symm hab]
     have hmc : ∀ c, c ≠ a → c ≠ b → m' (l, c) = m (l, c) := by
       intro c hca hcb
       rw [hm']; simp [ha, hb, hca, hcb]
@@ -139,7 +139,6 @@ theorem divided_power_padic_valuation_bound {ι : Type} [Fintype ι] {n : ℕ} (
     have hnat : (∏ l ∈ f.support, zf l).natAbs = ∏ l ∈ f.support, (zf l).natAbs := by
       first
         | exact map_prod Int.natAbsHom zf f.support
-        | simpa using map_prod Int.natAbsHom zf f.support
     rw [hnat, Finset.prod_congr rfl (fun l _ => hz l)]
     refine Finset.prod_subset (Finset.subset_univ _) fun l _ hl => ?_
     simp only [Finsupp.mem_support_iff, not_not] at hl

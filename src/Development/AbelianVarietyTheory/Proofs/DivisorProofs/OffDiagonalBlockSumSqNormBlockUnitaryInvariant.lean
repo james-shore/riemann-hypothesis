@@ -14,13 +14,13 @@ lemma Pm_eq {n : ℕ} (ε : Fin n → Bool) : Pm ε = (1/2 : ℂ) • (1 + Jm ε
   ext i j
   by_cases h : i = j
   · subst h; cases hε : ε i <;> simp [Pm, Jm, hε] <;> norm_num
-  · simp [Pm, Jm, h, diagonal_apply_ne _ h, one_apply_ne h]
+  · simp [Pm, Jm, h, one_apply_ne h]
 
 lemma Qm_eq {n : ℕ} (ε : Fin n → Bool) : Qm ε = 1 - Pm ε := by
   ext i j
   by_cases h : i = j
   · subst h; cases hε : ε i <;> simp [Pm, Qm, hε]
-  · simp [Pm, Qm, h, diagonal_apply_ne _ h, one_apply_ne h]
+  · simp [Pm, Qm, h, one_apply_ne h]
 
 lemma comm_Pm {n : ℕ} {ε : Fin n → Bool} {a : Matrix (Fin n) (Fin n) ℂ}
     (h : a * Jm ε = Jm ε * a) : a * Pm ε = Pm ε * a := by

@@ -48,7 +48,7 @@ theorem exists_conj_integral {O : Type} [CommRing O] [IsDomain O] [IsPrincipalId
     have : S t *ᵥ w = ∑ k, u k • gen (⟨t, ht⟩, k) := by
       ext a
       simp only [gen, Matrix.mulVec_single_one]
-      simp only [Finset.sum_apply, Pi.smul_apply, Matrix.transpose_apply, Matrix.col_apply, Algebra.smul_def,
+      simp only [Finset.sum_apply, Algebra.smul_def,
         Matrix.mulVec, dotProduct, ← hu]
       exact Finset.sum_congr rfl fun k _ => mul_comm _ _
     rw [this]

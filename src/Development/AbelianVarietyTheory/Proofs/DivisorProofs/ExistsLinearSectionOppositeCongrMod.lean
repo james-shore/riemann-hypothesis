@@ -47,7 +47,7 @@ theorem exists_cell_section : ∀ {E : Type} [Field E] [NumberField E] [IsCMFiel
     refine ⟨⟨b, hb⟩, ?_⟩
     simp only [g, LinearMap.comp_apply, Submodule.subtype_apply, Submodule.mkQ_apply, he]
     rw [Submodule.Quotient.eq]
-    exact ⟨e, by simp [mulN, muln]⟩
+    exact ⟨e, by simp [muln]⟩
   obtain ⟨s, hs⟩ := Module.projective_lifting_property g (S.mkQ ∘ₗ ε) hg
   have hs' : ∀ a, ∃ e, y (s a) = ε a + n • e := by
     intro a
@@ -64,7 +64,7 @@ theorem exists_cell_section : ∀ {E : Type} [Field E] [NumberField E] [IsCMFiel
     exact add_mem (h.proj a).2 (Z'.nsmul_mem (s (q a)).2 N)
   · have hqb : q b = 0 := by rw [hqa, h.proj_of_mem hb, sub_self]
     simp only [LinearMap.add_apply, LinearMap.smul_apply, LinearMap.comp_apply, Submodule.subtype_apply, hqb,
-      map_zero, ZeroMemClass.coe_zero, smul_zero, add_zero]
+      map_zero, smul_zero, add_zero]
     exact h.proj_of_mem hb
   · obtain ⟨e, he⟩ := hs' (q a)
     refine ⟨N • e, ?_⟩

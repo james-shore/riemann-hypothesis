@@ -84,7 +84,7 @@ theorem exists_Kmat (hk : 1 ≤ k) (c u : Fin (r + 1) → EE k r) (hc : Orthonor
     have h2 : inner ℂ (WithLp.toLp 2 (κ *ᵥ Pi.single i 1) : EE k r) (WithLp.toLp 2 (κ *ᵥ Pi.single j 1)) =
         inner ℂ (WithLp.toLp 2 (Pi.single i 1) : EE k r) (WithLp.toLp 2 (Pi.single j 1)) := by
       rw [hκ, hκ, LinearIsometryEquiv.inner_map_map]
-    simp only [EuclideanSpace.inner_eq_star_dotProduct, WithLp.ofLp_toLp, dotProduct] at h2
+    simp only [EuclideanSpace.inner_eq_star_dotProduct, dotProduct] at h2
     simp only [mul_apply, conjTranspose_apply, one_apply]
     convert h2 using 1
     · refine Finset.sum_congr rfl fun m _ => ?_
@@ -108,9 +108,7 @@ theorem exists_Kmat (hk : 1 ≤ k) (c u : Fin (r + 1) → EE k r) (hc : Orthonor
 theorem inner_bvec (i : Fin (2 * r + k + 1)) (v : Fin (2 * r + k + 1) → ℂ) :
     inner ℂ (WithLp.toLp 2 (bvec i) : EE k r) (WithLp.toLp 2 v) = v i := by
   first
-    | (simp [bvec, PiLp.inner_apply, Pi.single_apply])
-    | (show inner ℂ (EuclideanSpace.single i (1 : ℂ)) (WithLp.toLp 2 v : EE k r) = v i
-       rw [EuclideanSpace.inner_single_left]; simp)
+    | (simp [bvec, PiLp.inner_apply])
 
 theorem phiV_apply (b : Fin (r + 1)) (i : Fin (2 * r + k + 1)) :
     phiV k r b i = if b.val < r then (if i.val = 2 * r + k - b.val then 1 else 0) else
@@ -125,8 +123,8 @@ theorem phiV_apply (b : Fin (r + 1)) (i : Fin (2 * r + k + 1)) :
     · rw [if_neg hi, if_neg (show ¬ i = esI k r ⟨b.val, hb⟩ from fun h => hi (congrArg Fin.val h))]
   · rw [dif_neg hb, if_neg hb]
     simp [epsV, bvec, Pi.single_apply, Fin.ext_iff]
-    have e1 : ((wI k r 0 : Fin (2 * r + k + 1)) : ℕ) = r := by first | rfl | simp [wI]
-    have e2 : ((wI k r (Fin.last k) : Fin (2 * r + k + 1)) : ℕ) = r + k := by first | rfl | simp [wI]
+    have e1 : ((wI k r 0 : Fin (2 * r + k + 1)) : ℕ) = r := by first | rfl
+    have e2 : ((wI k r (Fin.last k) : Fin (2 * r + k + 1)) : ℕ) = r + k := by first | rfl
     rw [e1, e2]
 
 theorem toLp_phiV (a : Fin (r + 1)) : (WithLp.toLp 2 (phiV k r a) : EE k r) =
@@ -134,8 +132,8 @@ theorem toLp_phiV (a : Fin (r + 1)) : (WithLp.toLp 2 (phiV k r a) : EE k r) =
       ((Real.sqrt 2)⁻¹ : ℂ) • (WithLp.toLp 2 (bvec ⟨r, by omega⟩) + WithLp.toLp 2 (bvec ⟨r + k, by omega⟩)) := by
   ext i
   by_cases ha : a.val < r
-  · simp [ha, phiV_apply, bvec, Pi.single_apply, Fin.ext_iff]
-  · simp [ha, phiV_apply, bvec, Pi.single_apply, Fin.ext_iff, mul_add, mul_ite]
+  · simp [ha, phiV_apply, bvec, Fin.ext_iff]
+  · simp [ha, phiV_apply, bvec, Fin.ext_iff, mul_add, mul_ite]
 
 theorem hcc : star ((Real.sqrt 2)⁻¹ : ℂ) * ((Real.sqrt 2)⁻¹ : ℂ) = 1 / 2 := by
   have h2 : (Real.sqrt 2 : ℂ) * (Real.sqrt 2 : ℂ) = 2 := by
@@ -143,7 +141,6 @@ theorem hcc : star ((Real.sqrt 2)⁻¹ : ℂ) * ((Real.sqrt 2)⁻¹ : ℂ) = 1 /
   have hs : star ((Real.sqrt 2 : ℂ))⁻¹ = ((Real.sqrt 2 : ℂ))⁻¹ := by
     first
       | (rw [star_inv₀]; congr 1; exact Complex.conj_ofReal _)
-      | simp
   rw [hs, ← mul_inv, h2]; norm_num
 
 theorem qe_orth (hk : 1 ≤ k) : Orthonormal ℂ (fun a => (WithLp.toLp 2 (phiV k r a) : EE k r)) := by

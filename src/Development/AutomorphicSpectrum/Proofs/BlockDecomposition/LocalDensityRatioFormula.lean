@@ -554,8 +554,8 @@ theorem pure_le {w : ∀ v : HeightOneSpectrum (𝓞 F), Fv F v → ℝ} (hG0 : 
   unfold PositivityTheory.Rg.Base1.pure
   refine ENNReal.ofReal_le_ofReal (mul_le_mul_of_nonneg_left ?_ (mul_nonneg (hG0 _) (Finset.prod_nonneg fun v _ => hg0 v _)))
   set U := (finite_mulSupport_off hw a S).toFinset ∪ (finite_mulSupport_off h1 a S).toFinset with hU
-  rw [finprod_eq_prod_of_mulSupport_subset (s := U) _ (fun x hx => by simp [hU, Set.Finite.mem_toFinset] at hx ⊢; exact Or.inl hx),
-    finprod_eq_prod_of_mulSupport_subset (s := U) _ (fun x hx => by simp [hU, Set.Finite.mem_toFinset] at hx ⊢; exact Or.inr hx)]
+  rw [finprod_eq_prod_of_mulSupport_subset (s := U) _ (fun x hx => by simp [hU] at hx ⊢; exact Or.inl hx),
+    finprod_eq_prod_of_mulSupport_subset (s := U) _ (fun x hx => by simp [hU] at hx ⊢; exact Or.inr hx)]
   exact Finset.prod_le_prod (fun x _ => (hw x.1).2.2.1 _) (fun x _ => (hw x.1).2.2.2 _)
 
 theorem eventually_pure_eq (he : ∀ v, e v = 1 ∨ e v = -1) (a : (AF F)ˣ) :

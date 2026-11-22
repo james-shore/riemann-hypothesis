@@ -263,7 +263,7 @@ theorem exists_hecke_of_eta (F E : Type) [Field F] [NumberField F] [Field E] [Nu
       set u : E := (k : E) / σ (k : E) with hu
       have hxq : ((x / C x : (AF F ⊗[F] E)ˣ) : AF F ⊗[F] E) = HeckeCharacterZeroLocus.ThmBIn.incA F E u := by
         rw [hq']
-        simp only [Units.coe_map, MonoidHom.coe_coe, Units.val_div_eq_div_val]
+        simp only [Units.coe_map, Units.val_div_eq_div_val]
         rfl
       rw [hxq] at hse
       have hM0 : (M : E) ≠ 0 := by exact_mod_cast (show M ≠ 0 by omega)

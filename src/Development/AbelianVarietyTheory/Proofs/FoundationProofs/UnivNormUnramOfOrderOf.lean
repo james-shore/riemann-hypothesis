@@ -200,7 +200,7 @@ theorem exists_cob_of_coprime : ∀ (Γ : Type) [Group Γ] [TopologicalSpace Γ]
         congr 1
         · simp
         · ext i k
-          fin_cases i <;> simp [hc s s.2 t t.2, Matrix.mul_apply, Matrix.mulVec, dotProduct, add_comm]
+          fin_cases i <;> simp [hc s s.2 t t.2, Matrix.mul_apply, add_comm]
         · simp
         · simp }
   obtain ⟨N, hn, ho, hN⟩ := exists_open_ker M hcop

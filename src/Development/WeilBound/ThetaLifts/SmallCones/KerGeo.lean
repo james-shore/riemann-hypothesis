@@ -53,7 +53,7 @@ theorem mid_eq (ι : Matrix (Fin n) (Fin n₁) S) (ι' : Matrix (Fin d) (Fin d�
     Matrix.transpose_apply, Matrix.mulVec, dotProduct, Finset.sum_mul, Finset.mul_sum]
   rw [Finset.sum_comm]
   exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by
-    simp [Pi.single_apply, mul_comm, mul_left_comm]
+    simp [mul_comm, mul_left_comm]
 
 theorem hT_vm {ι : Matrix (Fin n) (Fin n₁) S} {ι' : Matrix (Fin d) (Fin d₁) S} {a : Fin n → S} {b : Fin d → S}
     (h : (∀ z, bf c.toRingHom J a (ι *ᵥ z) = 0) ∨ ∀ z, bf c.toRingHom J' b (ι' *ᵥ z) = 0) (w : Matrix (Fin n₁) (Fin d₁) S) :
@@ -168,7 +168,7 @@ theorem pg_of (hB : B.IsGood σ) {Y : Spc F E n} {Y₁ : Spc F E n₁} {H : Plan
   · refine Matrix.eq_zero_of_vecMul_eq_zero hd (funext fun j => ?_)
     have := hv (Pi.single j 1)
     have e : (fun l => σ.toRingHom ((Pi.single j 1 : Fin n → E) l)) = Pi.single j 1 := funext fun l => by
-      by_cases h : l = j <;> simp [Pi.single_apply, h]
+      by_cases h : l = j <;> simp [h]
     rw [bf, e, Matrix.dotProduct_mulVec] at this
     simpa using this
   · let L : (E × (Fin n₁ → E) × E) →ₗ[E] (Fin n → E) :=

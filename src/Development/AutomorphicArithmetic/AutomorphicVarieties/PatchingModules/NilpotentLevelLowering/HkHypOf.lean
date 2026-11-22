@@ -267,7 +267,7 @@ private theorem comm_dd {j j' : Fin q} (h : j ≠ j') (K K' : Subgroup (GLw n (w
 
 private theorem mem_pi (H : ∀ j, Subgroup (GLw n (w j))) (m : M) :
     m ∈ fixd ρ (Subgroup.pi Set.univ H) ↔ ∀ j, m ∈ fixd (ρ.comp (atJ n w j)) (H j) :=
-  by apply _root_.UpperTheory.Reformulated.B.Gr29.mem_pi <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.Gr29.mem_pi
 
 private theorem pres (j : Fin q) : ∀ m ∈ fixd ρ (UC n w fun _ => ⊤),
     dc (ρ.comp (atJ n w j)) (KO _ (Fin n)) (iwC _ n ⊤) 1 m ∈ fixd ρ (UC n w fun _ => ⊤) := by

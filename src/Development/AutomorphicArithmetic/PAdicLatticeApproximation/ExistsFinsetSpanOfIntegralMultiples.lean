@@ -37,7 +37,6 @@ theorem UpperTheory.exists_finset_span_of_integral_multiples :
       rw [Pi.smul_apply, hc i, nsmul_eq_mul]
     rw [hx, ← Finset.univ_sum_single (fun i => (c i : F)), map_sum]
     refine AddSubgroup.sum_mem _ fun i _ => ?_
-    beta_reduce
     let Φ : F →+ V := kp.symm.toAddMonoidHom.comp (AddMonoidHom.single (fun _ : Fin n => F) i)
     have hΦa : ∀ y, kp.symm (Pi.single i y) = Φ y := fun y => rfl
     have hci : ((c i : 𝓞 F) : F) = ∑ j, (b.repr (c i) j) • ib j := by

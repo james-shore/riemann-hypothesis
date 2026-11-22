@@ -101,7 +101,7 @@ theorem heis_dRho_fock_eval (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (θ : InfF
       ((hid.pow 2).mul_const (gq (fw D) e : ℂ))
     have h3 := h1.sub (h2.div_const 2)
     convert h3 using 1
-    all_goals first | rfl | (funext t; rfl) | simp
+    all_goals first | rfl | (funext t) | simp
   have hD : HasDerivAt (fun t : ℝ => Complex.exp (-((Real.pi : ℂ) * I) * ((t : ℂ) * (omF A B z e : ℂ)) -
       ((gq (fw D) z : ℂ) + (t : ℂ) * (gD (fw D) z e : ℂ) + (t : ℂ) ^ 2 * (gq (fw D) e : ℂ)) / 2) *
         rd ψ σ A B h x (z + t • e)) _ 0 := hP.cexp.mul hRd

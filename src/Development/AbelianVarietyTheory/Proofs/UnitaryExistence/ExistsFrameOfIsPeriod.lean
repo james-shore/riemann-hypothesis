@@ -366,8 +366,6 @@ theorem exists_row {Λ : Type} [AddCommGroup Λ] [Module (𝓞 E) Λ] {r : ℕ} 
   | exact @_root_.GlobalTheory.ExistsSmulMemRange.exists_coeffs
   | exact _root_.GlobalTheory.ExistsSmulMemRange.exists_coeffs
   | (apply _root_.GlobalTheory.ExistsSmulMemRange.exists_coeffs <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ExistsSmulMemRange.exists_coeffs <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ExistsSmulMemRange.exists_coeffs <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ExistsSmulMemRange.exists_coeffs ..)
 
 theorem trace_eq_sum_re (Ψ : Finset (E →+* ℂ))
@@ -409,8 +407,6 @@ theorem cmType_host (H : Host E) (Ψ : Finset (E →+* ℂ)) (hΨ : ∀ τ, τ �
   | exact @_root_.GlobalTheory.ConjugateMembership.mem_iff_conjugate_notMem
   | exact _root_.GlobalTheory.ConjugateMembership.mem_iff_conjugate_notMem
   | (apply _root_.GlobalTheory.ConjugateMembership.mem_iff_conjugate_notMem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ConjugateMembership.mem_iff_conjugate_notMem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ConjugateMembership.mem_iff_conjugate_notMem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ConjugateMembership.mem_iff_conjugate_notMem ..)
 
 theorem hermC_eq {r : ℕ} (τ : E →+* ℂ) (G : Matrix (Fin r) (Fin r) E) (u v : Fin r → ℂ) :

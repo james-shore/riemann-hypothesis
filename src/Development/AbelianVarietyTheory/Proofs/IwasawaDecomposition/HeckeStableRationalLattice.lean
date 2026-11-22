@@ -270,7 +270,7 @@ theorem exists_integral_descent {LL : Type} [Field LL] [NumberField LL] (L0 : In
   rintro _ ⟨c, hc, rfl⟩
   refine ⟨c, fun a => B.repr.injective (Finsupp.ext fun k => ?_), fun t => hs _⟩
   have h1 := congrArg (fun z : 𝓞 L0 => (z : L0)) (hc (a, k))
-  simp only [RingOfIntegers.coe_eq_algebraMap, map_sum, map_mul, map_zero] at h1
+  simp only [map_sum, map_mul, map_zero] at h1
   simp only [← RingOfIntegers.coe_eq_algebraMap, hA'] at h1
   have h2 : ∑ t, (c t : L0) * α (t, a, k) = 0 := by
     apply mul_left_cancel₀ hd0

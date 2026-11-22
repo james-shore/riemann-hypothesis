@@ -34,7 +34,7 @@ lemma eval_shift {w M : ℕ} {p : ℂ[X]} (hp : p ∈ degreeLT ℂ (w + 1))
   rw [h] at h1
   rw [h1, eval_eq_sum_range' (natDeg_lt hp)]
   refine Finset.sum_congr rfl fun i _ => ?_
-  simp [upU, mat, add_comm]
+  simp [upU, mat]
 
 lemma eq_const_of_shift {w M : ℕ} (hM : 0 < M) {p : ℂ[X]} (hp : p ∈ degreeLT ℂ (w + 1))
     (h : slP w (mat (upU M)) p = p) : p = C (p.eval 0) := by

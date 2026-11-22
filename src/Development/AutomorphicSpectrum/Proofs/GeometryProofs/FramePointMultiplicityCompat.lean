@@ -137,7 +137,7 @@ open MonoidalCategory CartesianMonoidalCategory MonObj in
 
 theorem one_left_eq {X : Scheme.{0}} {A : Type} [CommRing A] (G : Over X) [GrpObj G] (x : Sp A ⟶ X) :
     (1 : Over.mk x ⟶ G).left = x ≫ η[G].left := by
-  simp [Hom.one_def, Out.PullGtPf.toUnit_left']
+  simp [Hom.one_def]
 
 theorem fst_dualMap {A B : Type} [CommRing A] [CommRing B] (θ : A →+* B) :
     (TrivSqZeroExt.fstHom B B B).toRingHom.comp (Formalism.L2.Pj.dualMap θ) =
@@ -170,7 +170,7 @@ theorem exists_tied (Y : Model Xo c β) {B : Type} [CommRing B] (y : Sp B ⟶ Xo
   have e3 : η[Y.oF.t.G].left ≫ Y.oF.t.G.hom = 𝟙 _ := Over.w η[Y.oF.t.G]
   have hsec : spMap (TrivSqZeroExt.fstHom B B B).toRingHom ≫ spMap (algebraMap B (DualNumber B)) = 𝟙 _ := by
     have e : (TrivSqZeroExt.fstHom B B B).toRingHom.comp (algebraMap B (DualNumber B)) = RingHom.id B :=
-      RingHom.ext fun a => by simp [TrivSqZeroExt.algebraMap_eq_inl]
+      RingHom.ext fun a => by simp
     rw [GlobalTheory.Frames.ChgBC.spMap_comp_ring, e, GlobalTheory.Frames.ChgBC.spMap_id]
   have u0 : spMap (TrivSqZeroExt.fstHom B B B).toRingHom ≫ u = y ≫ η[Y.oF.t.G].left := by
     refine hq.hom_ext ?_ ?_

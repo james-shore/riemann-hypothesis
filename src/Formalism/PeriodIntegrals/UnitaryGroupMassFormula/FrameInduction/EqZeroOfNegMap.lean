@@ -18,7 +18,7 @@ lemma re_herm (k r : ℕ) (x : Fin (2 * r + k + 1) → ℂ) :
   rw [herm_Pk, Complex.re_sum]
   refine Finset.sum_congr rfl (fun i _ => ?_)
   by_cases h : i.val < r + k <;>
-    simp [h, dK, epsK, Complex.mul_re, Complex.normSq_apply, Complex.star_def] <;> ring
+    simp [h, dK, epsK, Complex.mul_re, Complex.normSq_apply]
 
 lemma Pk_inj (k r : ℕ) (x : Fin (2 * r + k + 1) → ℂ) (h : Pk k r *ᵥ x = 0) : x = 0 := by
   have hA : (Hpk k r * ((Pk k r)ᴴ * Formalism.REAL.Jm (epsK k r))) * Pk k r = 1 := by

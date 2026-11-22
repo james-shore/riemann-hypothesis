@@ -29,7 +29,7 @@ theorem exists_isAlgebraic_ratFunc_of_ringHom (k B : Type) [Field k] [CommRing B
     refine ⟨fun x hx => hs ?_, fun x hx => hs ?_⟩
     · show b • x = b • (0 : R)
       rw [smul_zero, Algebra.smul_def]
-      first | exact hx | (rw [mul_comm]; exact hx)
+      first | exact hx
     · show b • x = b • (0 : R)
       rw [smul_zero, Algebra.smul_def]
       first | exact hx | (rw [mul_comm]; exact hx)

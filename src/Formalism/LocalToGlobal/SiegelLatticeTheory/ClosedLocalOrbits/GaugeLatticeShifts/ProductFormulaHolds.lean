@@ -17,9 +17,6 @@ theorem good_eq {D : D7} (X : Formalism.L2.SG.HidaSetting.HidaSetting D) (u u' :
   ext y
   first
   | (simp only [Good, GoodLoc, Set.mem_pi, Set.mem_univ, true_implies, Set.mem_setOf_eq])
-  | (simp only [Good, Set.mem_pi, Set.mem_univ, true_implies, Set.mem_setOf_eq]; rfl)
-  | (simp [Good, GoodLoc])
-  | (show _ ↔ _; exact Iff.rfl)
 
 theorem product_formula_holds : P5 := by
   intro hJac hDC hSM hU hNH hR D X u u' sc hsc

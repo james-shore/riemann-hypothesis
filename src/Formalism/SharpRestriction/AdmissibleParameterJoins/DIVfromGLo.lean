@@ -145,7 +145,7 @@ theorem aTop_eq (D : D7) (u : D.what₂.Word) (τ : D.what₂.Tau) :
     have h0 := D.R.N_pos 0
     rwa [N_zero] at h0
   have h := lam_entryR D u 0 (Nat.zero_le _) τ ⟨0, D.R.N_pos 0⟩
-  simp only [flipTwoThree.lamLiftN, Fin.val_mk, hk, ↓reduceIte] at h
+  simp only [flipTwoThree.lamLiftN, hk, ↓reduceIte] at h
   unfold MemberForms.aTop
   exact h
 
@@ -157,7 +157,7 @@ theorem bTop_eq (D : D7) (u : D.what₂.Word) (τ : D.what₂.Tau) :
     rw [N_zero] at h0 ⊢
     omega
   have h := lam_entryR D u 0 (Nat.zero_le _) τ ⟨D.R.N 0 - 1, by omega⟩
-  simp only [flipTwoThree.lamLiftN, Fin.val_mk, hk, ↓reduceIte] at h
+  simp only [flipTwoThree.lamLiftN, hk, ↓reduceIte] at h
   unfold MemberForms.bTop DomWeight.detShift
   rw [dif_pos hN]
   push_cast

@@ -265,7 +265,7 @@ private theorem w_conj (t : A F) : wW F * nU t * (wW F)⁻¹ = lU (-t) := by
   rw [mul_inv_eq_iff_eq_mul]
   apply Subtype.ext
   show (!![0, 1; -1, 0] : Matrix (Fin 2) (Fin 2) (A F)) * !![1, t; 0, 1] = !![1, 0; -t, 1] * !![0, 1; -1, 0]
-  simp [Matrix.mul_fin_two]
+  simp
 
 end UpperTheory.ConvolutionTheory.R2.H.T0
 

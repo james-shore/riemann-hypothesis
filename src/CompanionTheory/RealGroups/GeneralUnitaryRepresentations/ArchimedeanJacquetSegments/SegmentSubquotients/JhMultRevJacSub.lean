@@ -64,14 +64,14 @@ theorem jhMult_rev_jac_sub (hG : GeometricLemma) (hR : RhoNuRhoReducible) {d : �
     refine Fin.ext ?_
     refine (Eq.trans ?_ (consecBlocks_val 2 d a j).symm)
     rw [stdBlocks_val]
-    fin_cases a <;> simp [hu1, Fin.sum_univ_two, mul_comm, add_comm]
+    fin_cases a <;> simp [hu1, mul_comm, add_comm]
   have he' : stdBlocks (fun a => (u (Fin.rev a)).1) hu' = consecBlocks 2 d := by
     refine Equiv.ext ?_
     rintro ⟨a, j⟩
     refine Fin.ext ?_
     refine (Eq.trans ?_ (consecBlocks_val 2 d a j).symm)
     rw [stdBlocks_val]
-    fin_cases a <;> simp [hu1, Fin.sum_univ_two, mul_comm, add_comm]
+    fin_cases a <;> simp [hu1, mul_comm, add_comm]
   let φ : ∀ a, (segTerm σ.ρ 2 a).Equiv (u a).rep := fun a =>
     (twistEquiv (IrrGL.equivOf σ.ρ σ.smooth σ.irr) _).trans (x.twEquiv _ (isSmoothChar_absPow _))
   have Φ : (multiProd (consecBlocks 2 d) (segTerm σ.ρ 2)).Equiv (prodIrr u hu) := by

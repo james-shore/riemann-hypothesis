@@ -54,7 +54,7 @@ theorem infOne_em {k : GL (Fin 2) (A ℚ)} (h : ∀ i j, (k.val i j).1 = ((1 : M
   have e2 : (AdeleBaseChange.adeleMap ℚ E (k.val i j)).1 = (AdeleBaseChange.adeleMap ℚ E ((1 : Matrix (Fin 2) (Fin 2) (A ℚ)) i j)).1 := by
     rw [AdeleBaseChange.adeleMap_apply, AdeleBaseChange.adeleMap_apply, h]
   rw [e, e2]
-  fin_cases i <;> fin_cases j <;> simp [Matrix.one_apply]
+  fin_cases i <;> fin_cases j <;> simp
 
 variable [IsTotallyComplex E]
 
@@ -103,7 +103,6 @@ theorem Gd_translate {D : Dat ℚ E} {P : CuspSub E 2} {L N : ℕ} {φ : GL (Fin
       rw [e]
       exact hE (g * hU D u)
   · intro k hk g
-    change φ (g * em E k * hU D u) = φ (g * hU D u)
     rw [mul_assoc, comm_of (finOne_hU D u) (infOne_em hk.1), ← mul_assoc]
     exact hG.lev k hk _
   · intro y x hne v hv

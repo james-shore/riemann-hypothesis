@@ -24,7 +24,7 @@ def ineEig (a : WDRep h V) (χ : Ine (F := E) A → ℂ) : Submodule ℂ V :=
 
 theorem mem_ineEig {a : WDRep h V} {χ : Ine (F := E) A → ℂ} {v : V} :
     v ∈ a.ineEig χ ↔ ∀ σ : Ine (F := E) A, a.ρ (ineIncl h σ) v = χ σ • v := by
-  simp [ineEig, Submodule.mem_iInf, Module.End.mem_eigenspace_iff]
+  simp [ineEig, Submodule.mem_iInf]
 
 def Mono0Ine (a : WDRep h V) (χ : Ine (F := E) A → ℂ) : Prop :=
   ∀ v ∈ a.ineEig χ, a.N v = 0

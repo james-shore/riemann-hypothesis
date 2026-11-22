@@ -20,12 +20,12 @@ theorem wLat0_eq : wLat0 I w = w.asIdeal • I.L := by
   apply le_antisymm
   · refine Submodule.span_le.2 ?_
     rintro _ ⟨a, ha, y, hy, rfl⟩
-    have e : ((a : 𝓞 I.E) : I.E) • y = a • y := by first | rfl | (ext i; simp [Algebra.smul_def])
+    have e : ((a : 𝓞 I.E) : I.E) • y = a • y := by first | rfl
     rw [SetLike.mem_coe, e]
     exact Submodule.smul_mem_smul ha hy
   · refine Submodule.smul_le.2 ?_
     intro a ha y hy
-    have e : ((a : 𝓞 I.E) : I.E) • y = a • y := by first | rfl | (ext i; simp [Algebra.smul_def])
+    have e : ((a : 𝓞 I.E) : I.E) • y = a • y := by first | rfl
     exact Submodule.subset_span ⟨a, ha, y, hy, e.symm⟩
 
 theorem wLat0_le : wLat0 I w ≤ I.L := by
@@ -43,7 +43,7 @@ theorem smul_mem_Lw {a : 𝓞 I.E} (ha : a ∈ w.asIdeal) {y : Fin I.n → I.E �
   | mem x hx =>
     obtain ⟨⟨l, hl⟩, rfl⟩ := hx
     have e : Formalism.UG.inclE (F := I.F) (Af I.F) (a : I.E) • iv I l = iv I ((a : I.E) • l) := by
-      funext i; simp [iv, Algebra.smul_def]
+      funext i; simp [iv]
     rw [e]
     exact iv_mem_Lw I w (Submodule.subset_span ⟨a, ha, l, hl, rfl⟩)
   | zero => rw [smul_zero]; exact (Lw I w).zero_mem
@@ -92,7 +92,7 @@ theorem mem_wLat0_of_iv (p : ℕ) (hp0 : 0 < p) (hpw : (p : 𝓞 I.E) ∈ w.asId
   have hu : iv I ((p : I.E)⁻¹ • (y - l)) = y' := by
     have e : iv I ((p : I.E)⁻¹ • (y - l)) =
         Formalism.UG.inclE (F := I.F) (Af I.F) ((p : I.E)⁻¹) • iv I (y - l) := by
-      funext i; simp [iv, Algebra.smul_def]
+      funext i; simp [iv]
     rw [e, hsub, smul_smul]
     have e2 : Formalism.UG.inclE (F := I.F) (Af I.F) ((p : I.E)⁻¹) * (p : I.E ⊗[I.F] Af I.F) = 1 := by
       rw [← map_natCast (Formalism.UG.inclE (F := I.F) (Af I.F)) p, ← map_mul, inv_mul_cancel₀ hpE, map_one]
@@ -146,7 +146,7 @@ theorem indep {b : Fin I.n → (Fin I.n → I.E)} (hb : ∀ i, b i ∈ I.L)
     (c : Fin I.n → 𝓞 I.E) (hc : ∑ j, c j • b j ∈ w.asIdeal • I.L) (j0 : Fin I.n) : c j0 ∈ w.asIdeal := by
   classical
   have hsm : ∀ (a : 𝓞 I.E) (v : Fin I.n → I.E), a • v = (a : I.E) • v := fun a v => by
-    first | rfl | (ext i; simp [Algebra.smul_def])
+    first | rfl
   obtain ⟨r, hr1, hr⟩ : ∃ r : 𝓞 I.E, r - 1 ∈ w.asIdeal ∧
       ∀ x ∈ I.L, r • x ∈ Submodule.span (𝓞 I.E) (Set.range b) := by
     set S := Submodule.span (𝓞 I.E) (Set.range b) with hS
@@ -216,7 +216,7 @@ theorem zcoef (p : ℕ) (hp : p.Prime) (hcard : Nat.card (𝓞 I.E ⧸ w.asIdeal
     rw [← wLat0_eq]
     convert hz using 1
     refine Finset.sum_congr rfl fun j _ => ?_
-    ext i; simp [Algebra.smul_def, zsmul_eq_mul]
+    ext i; simp [Algebra.smul_def]
   have h := indep I w hb.1 hsp (fun j => (z j : 𝓞 I.E)) hc l
   rw [int_mem_iff I w p hp hcard] at h
   exact (ZMod.intCast_zmod_eq_zero_iff_dvd _ _).2 h

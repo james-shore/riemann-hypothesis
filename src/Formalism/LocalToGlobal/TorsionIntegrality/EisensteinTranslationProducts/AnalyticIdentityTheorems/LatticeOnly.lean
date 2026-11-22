@@ -64,11 +64,9 @@ lemma wEta_eq (h : L.lattice = L'.lattice) : wEta L = wEta L' := by
   have hb0 : L.basis 0 = L.ω₁ := by
     first
       | exact L.basis_zero
-      | simp [PeriodPair.basis]
   have hb1 : L.basis 1 = L.ω₂ := by
     first
       | exact L.basis_one
-      | simp [PeriodPair.basis]
   have hω₁ : L.ω₁ ∈ L.lattice := PeriodPair.mem_lattice.mpr ⟨1, 0, by simp⟩
   have hω₂ : L.ω₂ ∈ L.lattice := PeriodPair.mem_lattice.mpr ⟨0, 1, by simp⟩
   apply L.basis.ext
@@ -118,16 +116,8 @@ theorem lattice_only : LatticeOnly := by
     LatOnly.quasiPeriodConst_eq h, LatOnly.sgStar_eq h, LatOnly.wp_eq h, ?_, ?_⟩
   · first
       | simp only [PeriodPair.g₂, LatOnly.G_eq h]
-      | (unfold PeriodPair.g₂
-         rw [LatOnly.G_eq h])
-      | (unfold PeriodPair.g₂
-         done)
   · first
       | simp only [PeriodPair.g₃, LatOnly.G_eq h]
-      | (unfold PeriodPair.g₃
-         rw [LatOnly.G_eq h])
-      | (unfold PeriodPair.g₃
-         done)
 
 namespace Homog
 
@@ -169,7 +159,7 @@ lemma wZeta_scale (z : ℂ) : wZeta (scalePair L c hc) (c * z) = c⁻¹ * wZeta 
   have hc2 : c * (c ^ 2)⁻¹ = c⁻¹ := by
     rw [pow_two, mul_inv, ← mul_assoc, mul_inv_cancel₀ hc, one_mul]
   rw [e]
-  simp only [one_div, mul_inv, div_eq_mul_inv, mul_pow]
+  simp only [mul_inv, div_eq_mul_inv, mul_pow]
   linear_combination (z * ((l : ℂ) ^ 2)⁻¹) * hc2
 
 omit L in
@@ -212,7 +202,6 @@ lemma wEta_basis₁ (L : PeriodPair) : wEta L L.ω₁ = 2 * wZeta L (L.ω₁ / 2
   have hb : L.basis 0 = L.ω₁ := by
     first
       | exact L.basis_zero
-      | simp [PeriodPair.basis]
   have h1 := L.basis.constr_basis ℝ ![2 * wZeta L (L.ω₁ / 2), 2 * wZeta L (L.ω₂ / 2)] 0
   rw [hb] at h1
   simpa [wEta] using h1
@@ -221,7 +210,6 @@ lemma wEta_basis₂ (L : PeriodPair) : wEta L L.ω₂ = 2 * wZeta L (L.ω₂ / 2
   have hb : L.basis 1 = L.ω₂ := by
     first
       | exact L.basis_one
-      | simp [PeriodPair.basis]
   have h1 := L.basis.constr_basis ℝ ![2 * wZeta L (L.ω₁ / 2), 2 * wZeta L (L.ω₂ / 2)] 1
   rw [hb] at h1
   simpa [wEta] using h1
@@ -230,11 +218,9 @@ lemma wEta_scale (z : ℂ) : wEta (scalePair L c hc) (c * z) = c⁻¹ * wEta L z
   have hb0 : L.basis 0 = L.ω₁ := by
     first
       | exact L.basis_zero
-      | simp [PeriodPair.basis]
   have hb1 : L.basis 1 = L.ω₂ := by
     first
       | exact L.basis_one
-      | simp [PeriodPair.basis]
   have k1 : wEta (scalePair L c hc) (c * L.ω₁) = c⁻¹ * wEta L L.ω₁ := by
     have h := wEta_basis₁ (scalePair L c hc)
     change wEta (scalePair L c hc) (c * L.ω₁) = 2 * wZeta (scalePair L c hc) (c * L.ω₁ / 2) at h
@@ -254,13 +240,9 @@ lemma wEta_scale (z : ℂ) : wEta (scalePair L c hc) (c * z) = c⁻¹ * wEta L z
         | (show wEta (scalePair L c hc) (c * L.basis 0) = c⁻¹ * wEta L (L.basis 0)
            rw [hb0]
            exact k1)
-        | (simp only [LinearMap.comp_apply, LinearMap.mulLeft_apply, Fin.zero_eta, hb0]
-           exact k1)
     · first
         | (show wEta (scalePair L c hc) (c * L.basis 1) = c⁻¹ * wEta L (L.basis 1)
            rw [hb1]
-           exact k2)
-        | (simp only [LinearMap.comp_apply, LinearMap.mulLeft_apply, Fin.mk_one, hb1]
            exact k2)
   exact LinearMap.congr_fun key z
 
@@ -275,7 +257,6 @@ lemma area_scale : area (scalePair L c hc) = ‖c‖ ^ 2 * area L := by
   rw [e]
   first
     | rw [Complex.im_ofReal_mul]
-    | simp only [Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im, zero_mul, add_zero]
   rw [abs_mul, abs_of_nonneg (by positivity)]
 
 lemma quasiPeriodConst_scale : s2 (scalePair L c hc) = (c ^ 2)⁻¹ * s2 L := by
@@ -294,11 +275,6 @@ lemma quasiPeriodConst_scale : s2 (scalePair L c hc) = (c ^ 2)⁻¹ * s2 L := by
   first
     | (field_simp
        done)
-    | (field_simp
-       ring)
-    | (rw [div_eq_iff (mul_ne_zero hc hcc)]
-       field_simp
-       ring)
 
 lemma sgStar_scale (z : ℂ) : sgStar (scalePair L c hc) (c * z) = c * sgStar L z := by
   simp only [sgStar]
@@ -343,12 +319,8 @@ theorem homogeneity_thm : Homogeneity := by
   · first
       | (simp only [PeriodPair.g₂, Homog.G_scale L c hc]
          ring)
-      | (unfold PeriodPair.g₂
-         done)
   · first
       | (simp only [PeriodPair.g₃, Homog.G_scale L c hc]
          ring)
-      | (unfold PeriodPair.g₃
-         done)
 
 end Formalism.L2.Th1.F

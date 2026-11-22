@@ -151,7 +151,7 @@ omit [IsTotallyComplex E] in
 theorem blockGL_col {R : Type} [CommRing R] (hmn : m < n) (h : GL (Fin m) R) {l : Fin n} (hl : l.val = m)
     (i : Fin n) : (blockGL hmn.le h : Matrix (Fin n) (Fin n) R) i l = (1 : Matrix (Fin n) (Fin n) R) i l := by
   rw [coe_blockGL, blockMat_apply, one_apply]
-  split_ifs with h1 h2 h3 <;> first | rfl | omega | (subst h3; omega)
+  split_ifs with h1 h2 h3 <;> first | rfl | omega
 
 omit [IsTotallyComplex E] in
 theorem det_colGL {R : Type} [CommRing R] (k : ℕ) (y : Fin k → R) :
@@ -304,7 +304,7 @@ theorem norm_le_of_inS (hmn : m < n) {φ : GA E n → ℂ} (hφ : φ ∈ goodFns
   have hw : (fun t => pFin E (w t)) = Φ fun i => pFin E (x i) := by
     funext t
     simp only [w, Φ, colGL, coe_uGL, uMat_apply, colX_apply]
-    split_ifs <;> first | (simp; done) | (exfalso; simp only [Fin.lt_def] at *; omega) | (simp only [Fin.lt_def] at *; omega)
+    split_ifs <;> first | (simp; done) | (exfalso; simp only [Fin.lt_def] at *; omega)
   have b2 := h₂ (invT n (Ad E) (g * u)) 1 rfl _ hne2 (by rw [hcol, hw]; exact ⟨_, hx, rfl⟩)
   rw [mul_one, hcol] at b2
   change ‖φ (invT n (Ad E) (invT n (Ad E) (g * u)))‖ ≤ C₂ * (_ / detAbs (invT n (Ad E) (g * u))) ^ N at b2

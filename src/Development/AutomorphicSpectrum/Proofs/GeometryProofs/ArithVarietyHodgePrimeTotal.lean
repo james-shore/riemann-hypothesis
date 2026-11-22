@@ -260,7 +260,7 @@ theorem der_overlap {R₁ R₂ R' : Type} [CommRing R₁] [IsDomain R₁] [CommR
   let cl : Module.Dual R₂ L₂ :=
     { toFun := c
       map_add' := fun a b => cinj _ _ (by
-        rw [map_add, mul_add, hc, hc, hc]; simp only [map_add, LinearMap.map_add]; ring)
+        rw [map_add, mul_add, hc, hc, hc]; simp only [map_add]; ring)
       map_smul' := fun a e => cinj _ _ (by
         have hb2 : β₂ (a • e) = algebraMap R₂ R' a • β₂ e := β₂.map_smulₛₗ a e
         have e2 := hc e

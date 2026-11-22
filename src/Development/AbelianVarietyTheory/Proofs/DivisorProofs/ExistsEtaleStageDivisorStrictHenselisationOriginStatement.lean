@@ -19,4 +19,4 @@ theorem _root_.GlobalTheory.T.exists_etaleStage_divisor_strictHenselisation_orig
         j.comp (algebraMap (Polynomial T) (Localization.AtPrime Q)) = algebraMap (Polynomial T) O ∧
       ∃ (b₁ c₁ : Localization.AtPrime Q),
         b₁ * c₁ = algebraMap T (Localization.AtPrime Q) s ∧ j b₁ = b ∧ j c₁ = c := by
-  first | (exact @GlobalTheory.KeyOriginCut.exists_stage_divisor) | (exact GlobalTheory.KeyOriginCut.exists_stage_divisor) | (intros; apply GlobalTheory.KeyOriginCut.exists_stage_divisor  <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginCut.exists_stage_divisor)

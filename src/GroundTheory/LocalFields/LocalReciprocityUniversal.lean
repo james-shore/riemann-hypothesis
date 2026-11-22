@@ -80,11 +80,11 @@ theorem ker_restrictNormalHom :
   constructor
   · intro h x hx
     have := congrArg (fun τ : L ≃ₐ[K] L => ((τ ⟨x, hx⟩ : L) : Ω)) h
-    simp only [AlgEquiv.restrictNormalHom_apply, hc, AlgEquiv.one_apply] at this
+    simp only [AlgEquiv.restrictNormalHom_apply, AlgEquiv.one_apply] at this
     exact this
   · intro h
     ext x
-    simp only [AlgEquiv.restrictNormalHom_apply, hc, AlgEquiv.one_apply]
+    simp only [AlgEquiv.restrictNormalHom_apply, AlgEquiv.one_apply]
     exact h x x.2
 
 variable [IsMulCommutative (L ≃ₐ[K] L)]

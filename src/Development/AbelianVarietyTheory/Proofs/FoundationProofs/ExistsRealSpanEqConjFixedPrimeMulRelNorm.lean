@@ -224,7 +224,7 @@ theorem exists_mul_sq_integral (t : F) (ht : t ≠ 0) : ∃ (b : F) (u : 𝓞 E)
     rw [this]; rfl
   refine ⟨algebraMap _ _ b, algebraMap (𝓞 F) (𝓞 E) (a * b), hb0, fun h => ?_, e, fun v m hm => ?_⟩
   · rw [h] at e
-    simp only [map_zero, RingOfIntegers.coe_eq_algebraMap, map_eq_zero] at e
+    simp only [map_zero, map_eq_zero] at e
     exact mul_ne_zero ht (pow_ne_zero _ hb0) e
   · have h1 : v.valuation F (algebraMap (𝓞 F) F b) ≠ 0 := by simpa using hb0
     refine ⟨WithZero.log (v.valuation F (algebraMap (𝓞 F) F b)), ?_⟩
@@ -282,7 +282,7 @@ theorem exists_span_eq (hq : IsQuad δ θ σ) (s : 𝓞 E ≃+* 𝓞 E)
       obtain ⟨x, hx⟩ := fixed_mem_range hq π (by rw [← hs, hπ])
       have hπ0 : π ≠ 0 := by
         rintro rfl
-        simp only [map_zero, RingOfIntegers.coe_eq_algebraMap] at hπv
+        simp only [map_zero] at hπv
         exact WithZero.exp_ne_zero hπv.symm
       have hx0 : (w₀.under (𝓞 F)).valuation F x ≠ 0 := by
         rw [Valuation.ne_zero_iff]

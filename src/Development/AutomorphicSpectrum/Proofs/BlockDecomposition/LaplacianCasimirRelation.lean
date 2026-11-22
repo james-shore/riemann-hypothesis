@@ -68,7 +68,7 @@ theorem Lap_eq (hO : OmFormula) {f : Mat n → V} (hf : ContDiffOn ℝ ∞ f (GL
     Rd_sq_add _ _ hf hg
   have hS : ∑ p, Rd (bs p) (Rd (bs p) f) g = ∑ a, ∑ c, P a c + ∑ a, ∑ c, Q a c := by
     simp only [Fintype.sum_prod_type, Fintype.sum_bool, GlobalTheory.CompanionTheory.SecBd.basis_true_eq_single, GlobalTheory.CompanionTheory.SecBd.bs_f,
-      Finset.sum_add_distrib, hP, hQ]
+      hP, hQ]
   have hOm : Om f g = ∑ a, ∑ c, M a c - ∑ a, ∑ c, N a c := by
     rw [hO n V f hf g hg]
     simp only [Finset.sum_sub_distrib, hM, hN]

@@ -63,7 +63,7 @@ theorem redMat0_of_actsAs : ∀ (I : AutInst) (N p : ℕ) (w : IsDedekindDomain.
       simp [c, Finset.sum_apply, Pi.single_apply]
     have e1 := (hz _).1 e0
     convert e1 using 1
-    simp [Z, B, Submodule.coe_sum]
+    simp [Z, B]
     rfl
   · let V : I.Lf := ⟨I.fmat x *ᵥ iv I (b i), Inhab.mulVec_mem hx (B i).2⟩
     have hV : fr.c V = M *ᵥ Pi.single i 1 := by rw [← hB i]; exact hM (B i) V.2

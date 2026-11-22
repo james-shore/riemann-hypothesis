@@ -23,7 +23,7 @@ theorem T_mul (c : 𝔸) (z : 𝒜) : adelstabT F E (((1 : E) ⊗ₜ[F] c) * z) 
   induction z using TensorProduct.induction_on with
   | zero => simp
   | tmul e a =>
-    simp [adelstabT, Algebra.TensorProduct.tmul_mul_tmul, mul_smul_comm]
+    simp [adelstabT, Algebra.TensorProduct.tmul_mul_tmul]
   | add x y hx hy => rw [mul_add, map_add, map_add, hx, hy, mul_add]
 
 theorem T_int (z : 𝒜) (hz : ∀ v, prV (E := E) v z ∈ SV E v) : adelstabT F E z ∈ intAd F := by

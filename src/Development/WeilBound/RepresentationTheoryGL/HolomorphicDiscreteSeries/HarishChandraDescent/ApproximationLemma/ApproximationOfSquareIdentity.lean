@@ -62,6 +62,6 @@ theorem approximation_of_square_identity : SqId → Approx := by
   rw [hkey]
   refine le_trans (Complex.re_le_norm _) (le_trans (norm_inner_le_norm _ _) ?_)
   gcongr
-  exact le_of_eq (by simp only [two_smul, two_nsmul])
+  exact le_of_eq (by simp only [two_smul])
 
 end PositivityTheory.RgHe3

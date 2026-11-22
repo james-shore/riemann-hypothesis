@@ -65,7 +65,6 @@ theorem key_centre {O A : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRi
   haveI : IsNoetherianRing A := by
     first
     | exact Algebra.FiniteType.isNoetherianRing O A
-    | infer_instance
   refine Formalism.L2.Pj.RegB.mem_loc_of_heightOne qq f (fun P hP h1 hle => ?_)
   haveI := hP
   by_cases hv : Ideal.map (algebraMap O A) (maximalIdeal O) ≤ P

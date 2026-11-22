@@ -139,7 +139,7 @@ theorem _root_.GlobalTheory.ShortLawsCompare.unimod_std [IsCMField E] (n : ℕ) 
       · subst hij; simp
       · simp [hij]
     have hc := h _ hsingle
-    simp only [Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq',
+    simp only [Pi.single_apply, mul_ite, mul_zero, Finset.sum_ite_eq',
       Finset.mem_univ, if_true] at hc
     obtain ⟨b, hb⟩ := hc
     obtain ⟨a, ha⟩ := complexConj_coe_mem_range_algebraMap b
@@ -189,7 +189,7 @@ theorem _root_.GlobalTheory.ShortLawsCompare.isUnit_idealAt {n b : ℕ} {Λ : _r
     ⟨_, FractionalIdeal.isFractional_of_fg hfg⟩
   have hdet : ((k : E) ^ n) ∈ _root_.Formalism.L2.Pj.detSet Λ.La := by
     rw [_root_.GlobalTheory.BetaEx.mem_detSet]
-    refine ⟨(k : E) • (1 : Matrix (Fin n) (Fin n) E), fun i => ?_, by simp [Matrix.det_smul]⟩
+    refine ⟨(k : E) • (1 : Matrix (Fin n) (Fin n) E), fun i => ?_, by simp⟩
     have hrow : ((k : E) • (1 : Matrix (Fin n) (Fin n) E)) i =
         ((k : ℕ) : 𝓞 E) • (1 : Matrix (Fin n) (Fin n) E) i := by
       ext j

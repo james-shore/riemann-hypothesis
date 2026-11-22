@@ -107,7 +107,7 @@ theorem exists_const_l2SG_transport_eq_mul_lintegral {n : ℕ} (hn : n = 2 * r +
     have h0 : μSB {x | (Matrix.of x : Matrix _ _ ℂ) ∉ Formalism.QuantumDeterminants.Sset k r z} = 0 := hSB.2.2.1
     filter_upwards [measure_eq_zero_iff_ae_notMem.1 h0] with y hy
     rw [hrange]
-    simp only [Set.mem_setOf_eq, not_not] at hy
+    simp only [not_not] at hy
     exact hSsub hy
   have hInvU : QPK.InvOn μSU K := by
     refine ⟨?_, ?_, ?_, ?_⟩
@@ -151,7 +151,7 @@ theorem exists_const_l2SG_transport_eq_mul_lintegral {n : ℕ} (hn : n = 2 * r +
       apply (lintegral_eq_zero_iff' ((hFt.comp hmulP).comp (measurable_id.prodMk measurable_const)).aemeasurable).2
       have h0 : μSB {x | (Matrix.of x : Matrix _ _ ℂ) ∉ Formalism.QuantumDeterminants.Sset k r z} = 0 := hSB.2.2.1
       filter_upwards [measure_eq_zero_iff_ae_notMem.1 h0] with s hs
-      simp only [Set.mem_setOf_eq, not_not] at hs
+      simp only [not_not] at hs
       apply hFt0
       intro hmem
       apply hy

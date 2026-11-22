@@ -32,6 +32,6 @@ theorem resSplit : CrystallineSemistableComparison.E.ResLoc → CrystallineSemis
           (Sec.map ((GlobalTheory.EtC.res R F).d (↑s) (↑(s + 1))) y)
         = Sec.map ((GlobalTheory.EtC.res R F).d (↑s) (↑(s + 1)) ≫ (GlobalTheory.EtC.res R F).d (↑(s + 1)) (↑(s + 1 + 1))) y := rfl
       _ = Sec.map 0 y := by rw [h]
-      _ = 0 := by first | rfl | simp [Sec.map]
+      _ = 0 := by first | rfl
 
 end GlobalTheory.CompanionTheory.ResSplitProof

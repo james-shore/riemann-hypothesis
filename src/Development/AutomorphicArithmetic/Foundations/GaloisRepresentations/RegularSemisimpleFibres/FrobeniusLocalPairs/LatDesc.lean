@@ -19,7 +19,7 @@ variable {R S : Type} [CommRing R] [CommRing S] {n : ℕ}
 private theorem map_map_pow (τ : R →+* R) (M : Matrix (Fin n) (Fin n) R) (i : ℕ) :
     (M.map (τ ^ i)).map τ = M.map (τ ^ (i + 1)) := by
   ext a b
-  simp [pow_succ', Function.iterate_succ_apply']
+  simp [pow_succ']
 
 private theorem map_pow_map (τ : R →+* R) (M : Matrix (Fin n) (Fin n) R) (i : ℕ) :
     (M.map τ).map (τ ^ i) = M.map (τ ^ (i + 1)) := by
@@ -45,7 +45,7 @@ private theorem map_one' (f : R →+* S) : (1 : Matrix (Fin n) (Fin n) R).map f 
 private theorem cp_succ' (τ : R →+* R) (c : Matrix (Fin n) (Fin n) R) (i : ℕ) :
     cp τ c (i + 1) = c * (cp τ c i).map τ := by
   induction i with
-  | zero => simp [cp_succ, cp_zero, map_one']
+  | zero => simp [cp_succ, cp_zero]
   | succ i ih =>
     conv_lhs => rw [cp_succ τ c (i + 1), ih]
     rw [Matrix.mul_assoc, cp_succ τ c i, Matrix.map_mul, map_map_pow]
@@ -59,7 +59,7 @@ private theorem pow_intertwine (f : R →+* S) (τ : R →+* R) (t : S →+* S)
 private theorem cp_map (f : R →+* S) (τ : R →+* R) (t : S →+* S) (hf : ∀ x, f (τ x) = t (f x))
     (c : Matrix (Fin n) (Fin n) R) (i : ℕ) : (cp τ c i).map f = cp t (c.map f) i := by
   induction i with
-  | zero => simp [cp_zero, map_one']
+  | zero => simp [cp_zero]
   | succ i ih =>
     rw [cp_succ, cp_succ, Matrix.map_mul, ih]
     congr 1

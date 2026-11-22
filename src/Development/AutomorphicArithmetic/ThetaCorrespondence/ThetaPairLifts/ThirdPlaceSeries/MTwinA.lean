@@ -25,7 +25,7 @@ theorem local_component_class_eq_of_good (hL : _root_.UpperTheory.Zero.LLC.RecTE
   rw [← P.H.emb i Q, ← D.nbc.embAV_loc i Q sp.w] at h3
   rw [← P.H.emb i Q', ← D.nbc.embAV_loc i Q' sp.w] at h3'
   rw [he] at h3
-  first | (have hOpn := UpperTheory.One.M.opn _ (_root_.GlobalTheory.CuspRep.ParLawsT.isRecT_locRecT hL (D.nd.plOm.2 sp.w)); obtain ⟨a, ha, ε, hlaws⟩ := hOpn) | obtain ⟨a, ha, ε, -, hlaws⟩ := _root_.GlobalTheory.CuspRep.ParLawsT.isRecT_locRecT hL (D.nd.plOm.2 sp.w)
+  first | (have hOpn := UpperTheory.One.M.opn _ (_root_.GlobalTheory.CuspRep.ParLawsT.isRecT_locRecT hL (D.nd.plOm.2 sp.w)); obtain ⟨a, ha, ε, hlaws⟩ := hOpn)
   exact _root_.UpperTheory.One.M.LawsM.inj hlaws _ _ hg (h3.symm.trans h3')
 end UpperTheory.One.M
 end

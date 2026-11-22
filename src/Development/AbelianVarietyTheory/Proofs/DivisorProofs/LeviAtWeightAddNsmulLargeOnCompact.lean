@@ -82,7 +82,7 @@ theorem curv_large : ∀ (n : ℕ) (Y : Type) [TopologicalSpace Y] [T2Space Y] [
   have hG := re_leviV_lower _ v B hFu ξ
   have hc' := hcK v hv (WithLp.toLp 2 ξ)
   rw [EuclideanSpace.norm_sq_eq] at hc'
-  simp only [PiLp.toLp_apply, WithLp.ofLp_toLp] at hc'
+  simp only at hc'
   have hk' : (t + 2 * B) / c ≤ k := (Nat.le_ceil _).trans (by exact_mod_cast hk)
   have hkc : t + 2 * B ≤ k * c := by rwa [div_le_iff₀ hc] at hk'
   have hS0 : 0 ≤ ∑ j, ‖ξ j‖ ^ 2 := Finset.sum_nonneg fun _ _ => sq_nonneg _

@@ -73,7 +73,7 @@ theorem dg_mem_kGL {ι : Type} [Fintype ι] [DecidableEq ι] (x : Rˣ) (h1 : (x 
     cases a with
     | inl a => simp
     | inr a =>
-      simp only [Function.comp, Sum.elim_inr, Pi.star_apply, RCLike.star_def, Complex.mul_conj,
+      simp only [Sum.elim_inr, Pi.star_apply, RCLike.star_def, Complex.mul_conj,
         Complex.normSq_eq_norm_sq, h3 w]
       simp
 

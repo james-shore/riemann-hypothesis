@@ -22,7 +22,7 @@ private theorem map_aeval_matrix {R S : Type} [CommRing R] [CommRing S] (f : R â
   have hc : (f.mapMatrix (m := Fin n)).comp (algebraMap R (Matrix (Fin n) (Fin n) R)) =
       (algebraMap S (Matrix (Fin n) (Fin n) S)).comp f := by
     ext x i j
-    simp [Matrix.algebraMap_matrix_apply, Matrix.one_apply, apply_ite f]
+    simp [Matrix.algebraMap_matrix_apply, apply_ite f]
   rw [hc] at h
   rw [aeval_def, aeval_def, evalâ‚‚_map]
   exact h

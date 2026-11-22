@@ -23,7 +23,6 @@ theorem comm_pow {R : Type*} [Ring R] {x y z : R} (h : x * y = y * x + z) (hz : 
             succ_nsmul (y ^ (k + 1) * z) (k + 1)]
           first
           | abel
-          | rw [add_assoc, add_comm (y ^ (k + 1) * z)]
 
 section
 
@@ -36,14 +35,10 @@ theorem pf_eq (E : GLOps n K V) (a b : Fin n) (s T : ℕ) :
     pf E a b s T = ∑ k ∈ Finset.range (T + 1), cA K s k • ((E b a) ^ k * (E a b) ^ k) := by
   first
   | simp only [pf, cA]
-  | unfold pf cA
   refine Finset.sum_congr rfl fun k _ => ?_
   unfold divPowE
   first
   | rw [smul_mul_smul_comm, smul_smul]
-  | simp only [smul_mul_smul_comm, smul_smul]
-  | simp only [smul_mul_assoc, mul_smul_comm, smul_smul, mul_assoc]
-  | simp [smul_smul, mul_assoc, mul_comm, mul_left_comm]
 
 theorem cA_succ [CharZero K] (s k : ℕ) :
     ((k + 1 : ℕ) : K) * cA K s (k + 1) = - ((s : K) + 1)⁻¹ * cA K (s + 1) k := by

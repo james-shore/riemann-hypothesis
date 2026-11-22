@@ -33,7 +33,7 @@ private theorem pullback_fin_relation (l : ℕ) [Fact l.Prime] (k : Type) [Field
     intro r x hx y hy a b
     rw [map_mul, Matrix.mul_apply, TrivSqZeroExt.snd_sum]
     simp only [TrivSqZeroExt.snd_mul, hfst r x hx, hfst r y hy]
-    simp [Finset.sum_add_distrib, Matrix.one_apply, ite_smul, add_comm]
+    simp [Finset.sum_add_distrib, Matrix.one_apply, add_comm]
   have hone : ∀ r : {r : Γ →* Matrix ι ι (DualNumber k) //
       (∀ g a b, (r g a b).fst = rbar g a b) ∧ ∀ a b, IsLocallyConstant fun g => r g a b},
       ∀ a b, (r.1 1 a b).snd = 0 := by

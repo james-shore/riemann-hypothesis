@@ -148,7 +148,7 @@ theorem inj
     simp only [LinearMap.comp_apply, LinearMap.lTensor_tmul, TensorProduct.map_tmul]
     congr 1
     apply Subtype.ext
-    simp [ρ, nat_apply]
+    simp [ρ]
   have hy : LinearMap.lTensor _ (φ.app (op V)).hom.rangeRestrict
       (TensorProduct.map (C.map g.op).hom (P.map g.op).hom (LinearMap.lTensor _ B₀.subtype x₀)) = 0 := by
     have := congrArg (fun L => L x₀) key

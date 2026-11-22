@@ -63,7 +63,7 @@ theorem norm_bound :
     obtain ⟨c, hc⟩ := pair_int (Λ := Λ) (X := X) (y0 := y0) hun hiso horth hl hm
     refine ⟨c, ?_⟩
     rw [hc, hc0]
-    simp only [brS, map_smulₛₗ, LinearMap.smul_apply, map_smul, smul_eq_mul, starRingEnd_apply, RingHom.id_apply]
+    simp only [brS, map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, starRingEnd_apply, RingHom.id_apply]
     ring
   set J := Jfrac Λ X y0 hun hiso horth hy0 c0 hc0 hc0ne with hJ
   have hle : FractionalIdeal.spanSingleton (nonZeroDivisors (𝓞 D.host.E)) (c0 : D.host.E) * J ≤ 1 := by

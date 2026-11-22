@@ -18,8 +18,6 @@ theorem exists_basis_primeTo {K V : Type} [Field K] [NumberField K] [AddCommGrou
   | exact @_root_.GlobalTheory.CoprimeBasisExistence.exists_basis_coprime
   | exact _root_.GlobalTheory.CoprimeBasisExistence.exists_basis_coprime
   | (apply _root_.GlobalTheory.CoprimeBasisExistence.exists_basis_coprime <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CoprimeBasisExistence.exists_basis_coprime <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CoprimeBasisExistence.exists_basis_coprime <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CoprimeBasisExistence.exists_basis_coprime ..)
 
 open Formalism.MainNotions.TaylorLogMetric in

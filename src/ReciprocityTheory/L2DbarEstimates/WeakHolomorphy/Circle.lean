@@ -110,9 +110,9 @@ theorem circle_mean_sq {n : ℕ} {c w : V n} {R : ℝ} {u : V n → ℂ}
       integral_mono ((hint3.const_mul 2).sub (integrable_const (‖u c‖ ^ 2))) hint2 hpt
     rw [integral_sub (hint3.const_mul 2) (integrable_const _), integral_const_mul, hre,
       integral_const] at h
-    simp only [Measure.restrict_apply_univ, Real.volume_Ioc, sub_zero, smul_eq_mul] at h
+    simp only [smul_eq_mul] at h
     have hv : (volume.restrict (Ioc (0 : ℝ) (2 * Real.pi))).real univ = 2 * Real.pi := by
-      simp [Measure.real, Real.volume_Ioc, hpi, Real.pi_pos.le]
+      simp [Measure.real, Real.volume_Ioc, Real.pi_pos.le]
     rw [hv] at h
     linarith
   have hen : ∀ θ, ‖F θ‖ₑ ^ 2 = ENNReal.ofReal (‖F θ‖ ^ 2) := fun θ => by

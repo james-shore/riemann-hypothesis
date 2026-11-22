@@ -8,7 +8,7 @@ namespace GlobalTheory.ScalConj
 theorem single_conj_apply {K : Type} [Field K] {n : ℕ} (A B : Matrix (Fin n) (Fin n) K) (a b i j : Fin n) :
     (A * (Matrix.single a b (1 : K) : Matrix (Fin n) (Fin n) K) * B) i j = A i a * B b j := by
   rw [Matrix.mul_apply]
-  simp [Matrix.mul_apply, Matrix.single_apply, Finset.sum_ite_eq, Finset.sum_ite_eq', ite_and]
+  simp [Matrix.mul_apply, Matrix.single_apply, Finset.sum_ite_eq, ite_and]
 
 def conjInt {K : Type} [Field K] (O : ValuationSubring K) {n : ℕ} (m : GL (Fin n) K) :
     Subalgebra O (Matrix (Fin n) (Fin n) O) where

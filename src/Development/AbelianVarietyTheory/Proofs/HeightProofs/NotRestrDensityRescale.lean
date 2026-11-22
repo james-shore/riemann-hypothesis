@@ -78,10 +78,10 @@ theorem eq_wsmul_iff (h : LawsCore T) {j : ℕ} (ka wL : WeightFamilies.Wt D j) 
       exact_mod_cast this
   · rintro rfl
     refine Prod.ext (funext fun x => ?_) ?_
-    · simp only [wtZ, Prod.smul_fst, Pi.smul_apply, nsmul_eq_mul, wtA_wsmul_apply]
+    · simp only [wtZ, nsmul_eq_mul, wtA_wsmul_apply]
       push_cast
       rfl
-    · simp only [wtZ, Prod.smul_snd, nsmul_eq_mul]
+    · simp only [wtZ, nsmul_eq_mul]
       show ((n * wL.n : ℕ) : ℤ) = _
       push_cast
       rfl

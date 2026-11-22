@@ -214,7 +214,7 @@ theorem psi_dOf (hz : inWb k ρ Bj.z) {q : Mt k ρ × Mt k ρ}
     unfold dOf
     rw [yA_eq hq]
     unfold LeftFubiniLemmas.rcAct
-    simp only [Matrix.of_apply, Matrix.mul_assoc]
+    simp only [Matrix.mul_assoc]
     rfl
   rw [hsplit, LeftFubiniLemmas.psi_right_action_comm k p ρ Bj.z _ _ hz (Formalism.FourierDecayAlt.P.BigCellInversePair.uw_inv hq.1)]
   set ν := (Matrix.of q.2 : B.Mat k ρ) with hν

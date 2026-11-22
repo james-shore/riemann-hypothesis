@@ -13,7 +13,6 @@ theorem inst_exp_real_entry (l : ℝ) (y : ℂ) :
     rw [Complex.ofReal_exp]
     first
       | rw [Complex.exp_eq_exp_ℂ]
-      | exact (congrFun Complex.exp_eq_exp_ℂ (l : ℂ)).symm
   rw [hE]
   constructor
   · intro h
@@ -36,28 +35,14 @@ private theorem exists_unitary_diagonal_of_isHermitian {n : ℕ} (X : Matrix (Fi
       (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) = 1 := by
     first
       | exact hX.eigenvectorUnitary.2.1
-      | exact (Matrix.mem_unitaryGroup_iff'.mp hX.eigenvectorUnitary.2)
-      | exact Unitary.star_mul_self_of_mem hX.eigenvectorUnitary.2
-      | exact unitary.star_mul_self_of_mem hX.eigenvectorUnitary.2
   have h2 : (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) *
       star (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) = 1 := by
     first
       | exact hX.eigenvectorUnitary.2.2
-      | exact (Matrix.mem_unitaryGroup_iff.mp hX.eigenvectorUnitary.2)
-      | exact Unitary.mul_star_self_of_mem hX.eigenvectorUnitary.2
-      | exact unitary.mul_star_self_of_mem hX.eigenvectorUnitary.2
   refine ⟨hX.eigenvectorUnitary, hX.eigenvalues, h1, h2, ?_⟩
   first
     | (conv_lhs => rw [hX.spectral_theorem]); simp [Function.comp_def]
-    | (conv_lhs => rw [hX.spectral_theorem]); simp [Function.comp_def, Unitary.conjStarAlgAut_apply]
-    | (have h3 := hX.star_mul_self_mul_eq_diagonal
-       calc X = (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) *
-              (star (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) * X *
-                (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ)) *
-              star (hX.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) := by
-             simp only [← Matrix.mul_assoc, h2, Matrix.one_mul]
-             rw [Matrix.mul_assoc, h2, Matrix.mul_one]
-         _ = _ := by rw [h3]; simp [Function.comp_def])
+    | (conv_lhs => rw [hX.spectral_theorem])
 
 theorem exponent_fixed_instance : InstExpFix := by
   intro n X hX w
@@ -73,11 +58,9 @@ theorem exponent_fixed_instance : InstExpFix := by
       funext i
       first
         | exact Pi.exp_apply _ _
-        | simp [Pi.exp_def]
-        | rfl
+        | simp
     first
       | rw [Matrix.exp_conj _ _ hunit, hd]
-      | rw [Matrix.exp_conj ℂ _ _ hunit, hd]
   have inj : ∀ a b : Fin n → ℂ, U *ᵥ a = U *ᵥ b → a = b := by
     intro a b h
     have h2 := congrArg (fun v => star U *ᵥ v) h

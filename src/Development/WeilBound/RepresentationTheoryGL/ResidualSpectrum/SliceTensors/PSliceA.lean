@@ -325,7 +325,7 @@ theorem lev_unipGL_right (r s r₂ : ℕ) (h : 0 < r₂) (A : UPos s r₂ → Ad
           s' ≤ ((GlobalTheory.SmGL.stdSum (rfl : r + s = r + s) (Sum.inr d) : Fin (r + s)) : ℕ) :=
         ⟨r + r₂, by simp, by rw [A_stdSum_inr]; omega, by rw [A_stdSum_inr]; omega⟩
       rw [dif_pos hb, dif_pos h', joinPos, dif_neg]
-      · refine congrArg A (Subtype.ext (Prod.ext (Fin.ext ?_) (Fin.ext ?_))) <;> simp [eR, A_stdSum_inr]
+      · refine congrArg A (Subtype.ext (Prod.ext (Fin.ext ?_) (Fin.ext ?_))) <;> simp [eR]
       · intro ht
         have := ht.1
         change ((GlobalTheory.SmGL.stdSum (rfl : r + s = r + s) (Sum.inr b) : Fin (r + s)) : ℕ) < r at this

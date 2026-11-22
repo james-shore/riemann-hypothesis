@@ -411,7 +411,6 @@ theorem diff_prod {g : ℕ} (x₀ : R →+* K) {q : Y ⟶ Sp K} {s : X ⟶ Sp R}
       w a (m₂ ⁻¹ᵁ O) (pbT m₂ f (m₂ ⁻¹ᵁ O))) (LocDerK_mono hd₂' l') hb agree1 agree2 O hO
   have := congrFun hU f
   rw [this]
-  beta_reduce
   rw [add_sub_cancel_left]
   refine Finset.sum_congr rfl (fun a _ => ?_)
   rw [rsT_pbT_of_le_of_le_preimage p (θ a) (fun x hx => hO hx) hpe]

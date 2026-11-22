@@ -96,7 +96,6 @@ theorem exists_mean {K V : Type} [Group K] [TopologicalSpace K] [IsTopologicalGr
       intro t
       rw [← setIntegral_comp_of_stable hS.measurableSet (hν t) (hAS t) hkF]
       refine setIntegral_congr_fun hS.measurableSet fun x hx => ?_
-      beta_reduce
       rw [← hkA t x hx]
       have := hχ0 t
       field_simp
@@ -256,7 +255,6 @@ theorem integral_mul_ortho (la : Wt X.Ψ r) {x₀ : Frame X.Ψ r}
       linear_combination (-κ (X.lmulC (T t) x) x₀) * h1)
   rw [← hGI, ← integral_mul_const, ← integral_mul_const]
   refine setIntegral_congr_fun hS.measurableSet fun x hx => ?_
-  beta_reduce
   rw [mul_assoc, key x (hSU hx), hG0', mul_assoc]
 
 end GlobalTheory.SW.Repro
@@ -286,7 +284,6 @@ theorem kern_reproducing : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E
   have hI : ∫ x in slab X δ, κ x₀ x * κ x x₀ = ((∫ x in slab X δ, ‖κ x₀ x‖ ^ 2 : ℝ) : ℂ) := by
     rw [← integral_complex_ofReal]
     refine setIntegral_congr_fun hS.measurableSet fun x hx => ?_
-    beta_reduce
     rw [hsym x₀ hx₀' x (hSU hx), Complex.mul_conj']
     push_cast
     rfl
@@ -330,13 +327,11 @@ theorem kern_reproducing : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E
     rw [← setIntegral_comp_of_stable hS.measurableSet hu1 hu2 (f := fun x => κ x' x * F x)
       (((hcont x' hx'').mul (hF.continuousOn.mono hSU)).aestronglyMeasurable hS.measurableSet)]
     refine setIntegral_congr_fun hS.measurableSet fun x hx => ?_
-    beta_reduce
     rw [← hinv u huu x₀ hx₀' x (hSU hx), hux]
   have h3 : ∫ x in slab X δ, κ (rmul x' b) x * F x =
       bchar (wtOf X hr c c' n) b * ∫ x in slab X δ, κ x' x * F x := by
     rw [← integral_const_mul]
     refine setIntegral_congr_fun hS.measurableSet fun x hx => ?_
-    beta_reduce
     rw [(hhol x (hSU hx)).2 x' hx'' b hb, mul_assoc]
   rw [h2, hI, hux, hre] at key
   have hk1 : ((κ x₀ x₀).re : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 hk0.ne'

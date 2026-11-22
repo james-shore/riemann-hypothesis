@@ -28,7 +28,7 @@ theorem sympl_xZero {V V₀ W W₀ : HSp D} {ρ : ℕ} (dB : HypDec V V₀ ρ) (
   rw [symplO, h]
   congr 2
   have e1 : gA W ⬝ dJ.jX = adj dJ.pY := by rw [dJ.pY_eq, adj_mul, adj_gA, adj_adj]
-  simp only [pairS, hO_eq_trace, adj_zero, Matrix.zero_mul, Matrix.mul_zero, trace_zero, add_zero, e1]
+  simp only [pairS, hO_eq_trace, adj_zero, Matrix.mul_zero, trace_zero, add_zero, e1]
   rw [← adj_mul, Matrix.mul_assoc]
   exact trace_adj _
 

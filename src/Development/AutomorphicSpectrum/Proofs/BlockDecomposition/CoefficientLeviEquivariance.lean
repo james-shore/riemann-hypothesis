@@ -67,10 +67,10 @@ theorem exists_lv (hn : ρ + p = n) (a : GL (Fin p) (AE D)) :
   have e' : (a⁻¹).1 * a.1 = 1 := by rw [← Units.val_mul, inv_mul_cancel, Units.val_one]
   refine ⟨⟨bl hn 1 0 0 a.1, bl hn 1 0 0 (a⁻¹).1, ?_, ?_⟩, rfl⟩
   · rw [blockMatrix_multiply]
-    simp only [Matrix.mul_zero, Matrix.zero_mul, Matrix.one_mul, Matrix.mul_one, add_zero, zero_add, e]
+    simp only [Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, add_zero, zero_add, e]
     exact blockMatrix_one hn
   · rw [blockMatrix_multiply]
-    simp only [Matrix.mul_zero, Matrix.zero_mul, Matrix.one_mul, Matrix.mul_one, add_zero, zero_add, e']
+    simp only [Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_one, add_zero, zero_add, e']
     exact blockMatrix_one hn
 
 theorem det_lv (hn : ρ + p = n) (a : GL (Fin p) (AE D)) (b : GL (Fin n) (AE D)) (hb : b.1 = bl hn 1 0 0 a.1) :

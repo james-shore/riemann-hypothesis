@@ -20,8 +20,6 @@ theorem double_count {G E : Type} [Group G] [TopologicalSpace G] [IsTopologicalG
   | exact @_root_.GlobalTheory.SeparatedSetCardBound.main
   | exact _root_.GlobalTheory.SeparatedSetCardBound.main
   | (apply _root_.GlobalTheory.SeparatedSetCardBound.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SeparatedSetCardBound.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SeparatedSetCardBound.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SeparatedSetCardBound.main ..)
 
 def toEuc {m : ℕ} (A : Mat m) : EuclideanSpace ℂ (Fin m × Fin m) := WithLp.toLp 2 fun p => A p.1 p.2

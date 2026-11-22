@@ -44,7 +44,7 @@ private theorem zaeval_mem {σ τ : Type} {p : MvPolynomial σ ℂ} (hp : p ∈ 
   induction q using MvPolynomial.induction_on with
   | C z =>
     refine RingHom.mem_range.mpr ⟨C z, ?_⟩
-    simp [MvPolynomial.algebraMap_eq]
+    simp
   | add p q hp' hq' =>
     rw [map_add, map_add]
     exact add_mem hp' hq'

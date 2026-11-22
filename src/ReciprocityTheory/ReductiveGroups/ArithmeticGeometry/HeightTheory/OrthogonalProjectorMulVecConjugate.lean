@@ -37,8 +37,7 @@ theorem orthogonalProjector_mulVec_conjugate (σ : K →+* ℂ) {b : Fin k → F
     (hPm (conjugate σ) b *ᵥ fun l => (conjugate σ) (x l)) = star (hPm σ b *ᵥ fun l => σ (x l)) := by
   rw [orthogonalProjector_conjugate σ hb]
   ext i
-  simp [Matrix.mulVec, dotProduct, NumberField.ComplexEmbedding.conjugate_coe_eq, map_sum,
-    mul_comm]
+  simp [Matrix.mulVec, dotProduct, NumberField.ComplexEmbedding.conjugate_coe_eq]
 
 theorem conj_sum_projected_inner (b : Fin k → Fin r → K) (hb : LinearIndependent K b) (a a' : K)
     (x y : Fin r → K) :
@@ -50,11 +49,11 @@ theorem conj_sum_projected_inner (b : Fin k → Fin r → K) (hb : LinearIndepen
   have hinv : Function.Involutive (NumberField.ComplexEmbedding.conjugate (K := K)) := by
     intro σ
     ext z
-    simp [NumberField.ComplexEmbedding.conjugate_coe_eq]
+    simp
   refine Fintype.sum_bijective _ hinv.bijective _ _ (fun σ => ?_)
   rw [orthogonalProjector_mulVec_conjugate σ hb x, orthogonalProjector_mulVec_conjugate σ hb y,
     NumberField.ComplexEmbedding.conjugate_coe_eq, NumberField.ComplexEmbedding.conjugate_coe_eq]
-  simp [dotProduct, map_sum, mul_comm, mul_left_comm]
+  simp [dotProduct, map_sum, mul_comm]
 
 theorem quotientGram_conjTranspose (σ : K →+* ℂ) {b : Fin k → Fin r → K} (hb : LinearIndependent K b)
     (c : Fin m → Fin r → K) : (ReciprocityTheory.MultiplicativeHeights.quotGramC 1 σ b c)ᴴ = ReciprocityTheory.MultiplicativeHeights.quotGramC 1 σ b c := by
@@ -114,7 +113,7 @@ theorem det_gram_projectedLatticeVectors (b : Fin k → Fin r → K) (hb : Linea
     rw [Matrix.map_apply, Complex.ofRealHom_eq_coe, hent]
     simp [Matrix.mul_apply, Matrix.conjTranspose_apply, Fintype.sum_prod_type,
       Matrix.kroneckerMap_apply, Matrix.blockDiagonal_apply, Matrix.one_apply, ite_mul, mul_ite,
-      Finset.sum_ite_eq, Finset.sum_ite_eq', apply_ite (starRingEnd ℂ), map_zero]
+      Finset.sum_ite_eq', apply_ite (starRingEnd ℂ), map_zero]
   have hdet : ((gram ℝ (hwv b c)).det : ℂ) =
       star ((1 : Matrix (Fin m) (Fin m) ℂ) ⊗ₖ Ω).det *
         (Matrix.blockDiagonal (fun q => ReciprocityTheory.MultiplicativeHeights.quotGramC 1 (e q) b c)).det *

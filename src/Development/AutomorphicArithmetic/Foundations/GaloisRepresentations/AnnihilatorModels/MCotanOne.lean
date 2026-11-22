@@ -25,7 +25,7 @@ private theorem tangent_of_form {κ B : Type} [Field κ] [CommRing B] [Algebra �
     have hz := h2 _ hm
     have e : x * y = (x - algebraMap κ B (ε x)) * (y - algebraMap κ B (ε y)) + ε y • x
         + ε x • y - (ε x * ε y) • (1 : B) := by
-      simp only [Algebra.smul_def, map_mul, mul_one]
+      simp only [Algebra.smul_def, map_mul]
       ring
     rw [e, map_sub, map_add, map_add, hz, map_smul, map_smul, map_smul, h1]
     simp only [smul_eq_mul]
@@ -34,7 +34,7 @@ private theorem tangent_of_form {κ B : Type} [Field κ] [CommRing B] [Algebra �
     { toFun := fun x => TrivSqZeroExt.inl (ε x) + TrivSqZeroExt.inr (d x)
       map_add' := by
         intro x y
-        ext <;> simp <;> ring
+        ext <;> simp
       map_smul' := by
         intro a x
         ext <;> simp }

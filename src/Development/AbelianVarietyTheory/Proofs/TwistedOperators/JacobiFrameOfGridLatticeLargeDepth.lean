@@ -141,7 +141,7 @@ theorem big_jacP : Big fun ch => JacP ch := by
     refine (congrArg (· * (-1)) (mul_col_eq _ _ (-((rowJac ch.G (j + 1) h₁ σ h₂).e'.map p.pr)) _ i (fun l => ?_) r)).trans ?_
     rotate_left
     · rw [Matrix.mul_neg, Matrix.neg_apply, T2, hz_besAt]
-      simp only [Matrix.neg_apply, Matrix.map_apply, mul_diagonal, pr_mul', star_pow, GlobalTheory.DualPairCheck.star_purely_imaginary_eq_neg, place_proj_neg_xi_pow]
+      simp only [Matrix.map_apply, mul_diagonal, pr_mul', star_pow, GlobalTheory.DualPairCheck.star_purely_imaginary_eq_neg, place_proj_neg_xi_pow]
       have key := jacobiDualColumn_scalar_identity p.xi hxi i (σ - 1 - i)
       rw [show (i : ℕ) + 1 + (σ - 1 - i) = σ by omega] at key
       exact neg_mul_neg_one_eq_of_eq _ _ _ key

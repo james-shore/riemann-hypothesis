@@ -71,7 +71,7 @@ theorem siegelWeilAll_of_hypotheses : GlobalTheory.Published.WeilRepresentationU
     have hmem := GlobalTheory.T.doublingSiegelWeilSection_mem_degeneratePrincipalSeries hW D ψ A B χB omh homh ν 𝓕 hcov φ hφ a hK
     have hre : (A.rank : ℝ) / 2 < (sZero A B).re := by
       have : (sZero A B).re = ((B.rank : ℝ) - A.rank) / 2 := by
-        simp [sZero, Complex.div_re]
+        simp [sZero]
       rw [this]
       have : (2 * A.rank : ℝ) < B.rank := by exact_mod_cast hb
       linarith

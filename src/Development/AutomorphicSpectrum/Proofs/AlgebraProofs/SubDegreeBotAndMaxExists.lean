@@ -126,7 +126,7 @@ theorem subDeg_bot [FiniteDimensional K V] (L : C.I → AddSubgroup V) : subDeg 
   have : IsEmpty (Fin (Module.finrank K (⊥ : Submodule K V))) := by
     rw [finrank_bot]; infer_instance
   refine finsum_eq_zero_of_forall_eq_zero fun i => ?_
-  simp [Module.Basis.det_apply]
+  simp
 
 theorem subDeg_bdd [FiniteDimensional K V] (L : C.I → AddSubgroup V) (h : IsBun C L) :
     ∃ B : ℤ, ∀ W : Submodule K V, subDeg C L W ≤ B := by

@@ -60,7 +60,7 @@ theorem oev_gen (a : 𝓞 E) : inclR (F := F) (Fv F v) (a : E) ∈ OEv (E := E) 
 
 theorem oev_mul {s t : Fv F v ⊗[F] E} (hs : s ∈ OEv (E := E) v) (ht : t ∈ OEv (E := E) v) :
     s * t ∈ OEv (E := E) v := by
-  first | exact UpperTheory.Reformulated.B.Qh24.oev_mul .. | (apply UpperTheory.Reformulated.B.Qh24.oev_mul <;> assumption) | (intros; apply UpperTheory.Reformulated.B.Qh24.oev_mul <;> assumption) | (apply @UpperTheory.Reformulated.B.Qh24.oev_mul <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.Qh24.oev_mul <;> assumption) | (apply @UpperTheory.Reformulated.B.Qh24.oev_mul <;> first | assumption | infer_instance) | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v s t hs ht | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v s t hs | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v s t | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v s | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F
+  first | exact UpperTheory.Reformulated.B.Qh24.oev_mul .. | (apply UpperTheory.Reformulated.B.Qh24.oev_mul <;> assumption) | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v s t hs ht | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v s t hs | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v s t | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v s | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› v | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E ‹_› | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F E | exact @UpperTheory.Reformulated.B.Qh24.oev_mul F
 
 theorem oev_alg (c : v.adicCompletionIntegers F) : ((c : Fv F v) ⊗ₜ[F] (1 : E)) ∈ OEv (E := E) v := by
   have h : ((c : Fv F v) ⊗ₜ[F] (1 : E)) = c • inclR (F := F) (Fv F v) ((1 : 𝓞 E) : E) := by
@@ -131,7 +131,7 @@ theorem oev_smul_lat {t : Fv F v ⊗[F] E} (ht : t ∈ OEv (E := E) v) {w : Fin 
     | smul c y _ hy =>
       have e : (fun i => inclR (F := F) (Fv F v) (a : E) * (c • y) i) =
           c • (fun i => inclR (F := F) (Fv F v) (a : E) * y i) := by
-        funext i; simp [mul_smul_comm]
+        funext i; simp
       rw [e]; exact Submodule.smul_mem _ c hy
   | zero =>
     convert zero_mem (latLoc v (Lb : Set (Fin n → E))) using 1
@@ -140,7 +140,7 @@ theorem oev_smul_lat {t : Fv F v ⊗[F] E} (ht : t ∈ OEv (E := E) v) {w : Fin 
     have e : (fun i => (x + y) * w i) = (fun i => x * w i) + (fun i => y * w i) := by funext i; simp [add_mul]
     rw [e]; exact add_mem hx hy
   | smul c x _ hx =>
-    have e : (fun i => (c • x) * w i) = c • (fun i => x * w i) := by funext i; simp [smul_mul_assoc]
+    have e : (fun i => (c • x) * w i) = c • (fun i => x * w i) := by funext i; simp
     rw [e]; exact Submodule.smul_mem _ c hx
 
 theorem swVv_mem_latLoc {z : Fin n → E ⊗[F] Fv F v}
@@ -159,7 +159,7 @@ theorem swVv_mem_latLoc {z : Fin n → E ⊗[F] Fv F v}
     rw [this]; exact add_mem hx hy
   | smul s x _ hx =>
     have : swVv v (s • x) = fun i => swp v (s : E ⊗[F] Fv F v) * swVv v x i := by
-      funext i; simp [swVv, Submodule.coe_smul_of_tower, Subring.smul_def, smul_eq_mul, map_mul]
+      funext i; simp [swVv, Subring.smul_def, smul_eq_mul, map_mul]
     rw [this]
     exact oev_smul_lat v Lb (swp_mem_oev v s.2) hx
 

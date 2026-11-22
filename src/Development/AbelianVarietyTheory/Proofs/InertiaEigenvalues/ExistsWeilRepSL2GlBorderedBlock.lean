@@ -81,9 +81,9 @@ theorem GlobalTheory.JR.weil_repG : ∀ (F E : Type) [NontriviallyNormedField F]
         simp only [rowAct, rowMap, ptrB, nS, ft]
         congr 1
         funext b
-        simp only [SpecialLinearGroup.coe_mk, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero,
-          Matrix.cons_val_one, Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_cons, mul_zero, add_zero,
-          mul_one, zero_add, mom, pow_zero, Matrix.one_mulVec]
+        simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero,
+          Matrix.cons_val_one, Matrix.empty_val', Matrix.cons_val_fin_one, mul_zero, add_zero,
+          mul_one, mom, pow_zero, Matrix.one_mulVec]
         have hu : (fun i => c i * t + u i) = t • c + u := by funext i; simp [mul_comm]
         rw [hu, dotProduct_add, dotProduct_smul, smul_eq_mul, dotProduct_comm b c,
           AddChar.map_add_eq_mul]

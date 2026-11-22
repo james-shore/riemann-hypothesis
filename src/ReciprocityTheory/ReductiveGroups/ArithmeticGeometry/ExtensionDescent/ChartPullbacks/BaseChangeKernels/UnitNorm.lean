@@ -21,7 +21,6 @@ private lemma app_res_app_res_lemma {X Y Z : Scheme.{0}} (f : X ⟶ Y) (g : Y �
       (f ≫ g).app U ≫ X.presheaf.map (homOfLE hO').op := by
   first
     | rw [Scheme.Hom.naturality_assoc]
-    | rw [← Scheme.Hom.naturality_assoc]
   rw [← Functor.map_comp, ← Category.assoc]
   rfl
 
@@ -31,7 +30,6 @@ private lemma res_app_res_lemma_2 {X Y : Scheme.{0}} (f : X ⟶ Y) (V₁ V : Y.O
       f.app V ≫ X.presheaf.map (homOfLE hO').op := by
   first
     | rw [Scheme.Hom.naturality_assoc]
-    | rw [← Scheme.Hom.naturality_assoc]
   rw [← Functor.map_comp]
   rfl
 

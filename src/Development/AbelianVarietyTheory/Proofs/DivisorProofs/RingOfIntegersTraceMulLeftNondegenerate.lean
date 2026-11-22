@@ -19,9 +19,8 @@ theorem ringOfIntegers_trace_mulLeft_nondegenerate :
     apply RingOfIntegers.coe_injective
     show (x : K) * (d • (x : K)⁻¹) = ((algebraMap ℤ (𝓞 K) d : 𝓞 K) : K)
     rw [eq_intCast, zsmul_eq_mul]
-    push_cast
     field_simp
-    first | exact (map_intCast (algebraMap (𝓞 K) K) d).symm | norm_cast | simp
+    first | exact (map_intCast (algebraMap (𝓞 K) K) d).symm
   have h := hx y
   rw [hxy] at h
   have h2 : LinearMap.trace ℤ (𝓞 K) (LinearMap.mulLeft ℤ (algebraMap ℤ (𝓞 K) d))

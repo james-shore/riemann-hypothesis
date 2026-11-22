@@ -13,7 +13,7 @@ theorem rowSubst_mul_comp (O : Type) [CommRing O] (N : ℕ) (R : Type) [CommRing
     apply MvPolynomial.algHom_ext
     intro v
     simp only [rowSubst, AlgHom.comp_apply, AlgHom.restrictScalars_apply, aeval_X, map_sum, map_mul,
-      algHom_C, Algebra.algebraMap_self, RingHom.id_apply, Matrix.mul_apply]
+      algHom_C, Matrix.mul_apply]
     simp only [Finset.mul_sum, Finset.sum_mul, mul_assoc]
     exact Finset.sum_comm
   rw [h]; rfl

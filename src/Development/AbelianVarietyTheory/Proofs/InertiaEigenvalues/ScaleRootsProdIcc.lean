@@ -34,7 +34,7 @@ theorem natDegree_blk {R : Type} [CommRing R] [Nontrivial R] {r : ℕ} (B : Matr
     (a : ℕ → R) (t : ℕ) : (B.charpoly * ∏ c ∈ Finset.Icc 1 t, (X - C (a c))).natDegree = r + t := by
   rw [(Matrix.charpoly_monic B).natDegree_mul (monic_prod_of_monic _ _ fun c _ => monic_X_sub_C (a c)),
     Matrix.charpoly_natDegree_eq_dim, natDegree_prod_of_monic _ _ fun c _ => monic_X_sub_C (a c)]
-  simp [natDegree_X_sub_C]
+  simp
 
 theorem scale_mem {R : Type} [CommRing R] (J : Ideal R) (p q : R[X]) (hdeg : p.natDegree = q.natDegree) (s : R)
     (h : ∀ k, (p - q).coeff k ∈ J) (k : ℕ) : (p.scaleRoots s - q.scaleRoots s).coeff k ∈ J := by

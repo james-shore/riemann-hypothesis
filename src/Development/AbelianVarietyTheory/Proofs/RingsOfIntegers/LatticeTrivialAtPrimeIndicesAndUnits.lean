@@ -188,10 +188,8 @@ theorem trivAt_units : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (H
           | rfl
           | exact rfl
           | exact Subsingleton.elim _ _
-          | (apply Algebra.algebra_ext; intro r; simp)
       · first
           | exact hnat
-          | convert hnat using 2
     unfold vV
     rw [key]
     simp

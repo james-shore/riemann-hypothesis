@@ -30,4 +30,4 @@ theorem _root_.GlobalTheory.T.lintegral_theta_above_det_one : ∀ (E : Type) [Fi
     ∀ (μ : Measure (GA E (m + 1))) [μ.IsHaarMeasure] (𝓕 : Set (GA E (m + 1))),
     IsFundamentalDomain (ratGL E (m + 1)).range 𝓕 μ → ∀ x : ℝ,
       ∫⁻ g in 𝓕 ∩ {g | 1 ≤ GlobalTheory.RSnm.detAbs g}, ‖φ' g‖ₑ ^ 2 * (∑' ξ : {ξ : Fin (m + 1) → E // ξ ≠ 0}, ‖G (Matrix.vecMul (fun j => algebraMap E (Ad E) (ξ.1 j)) g.val)‖ₑ) * ENNReal.ofReal (GlobalTheory.RSnm.detAbs g ^ x) ∂μ ≠ ⊤ := by
-  first | (exact @GlobalTheory.SBThetaUpper.lintegral_theta_upper_ne_top) | (exact GlobalTheory.SBThetaUpper.lintegral_theta_upper_ne_top) | (intros; apply GlobalTheory.SBThetaUpper.lintegral_theta_upper_ne_top  <;> assumption)
+  first | (exact @GlobalTheory.SBThetaUpper.lintegral_theta_upper_ne_top)

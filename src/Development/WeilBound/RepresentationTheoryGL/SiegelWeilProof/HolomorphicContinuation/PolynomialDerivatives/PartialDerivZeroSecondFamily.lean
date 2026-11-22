@@ -49,8 +49,8 @@ theorem pderiv_mem_supported (S : Set (Fin m × Fin n × Bool)) (k) {p : PX m n}
     obtain ⟨j, _, rfl⟩ := hx
     rw [pderiv_X]
     by_cases h : k = j
-    · subst h; simp [Subalgebra.one_mem]
-    · simp [Pi.single_apply, Ne.symm h, h]
+    · subst h; simp
+    · simp [Ne.symm h]
   | algebraMap r => simp
   | add x y _ _ hx hy => rw [map_add]; exact add_mem hx hy
   | mul x y hx' hy' hx hy =>

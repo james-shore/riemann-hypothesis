@@ -68,7 +68,7 @@ theorem coeff_one_zOf_mul (ψ : G → ℂ) (a : MonoidAlgebra ℂ G) :
   rw [coeff_mul', tr, Finset.mul_sum]
   refine Fintype.sum_equiv (Equiv.inv G) _ _ fun q => ?_
   rw [zOf, coeff_sum_single]
-  simp only [Equiv.inv_apply, inv_inv, mul_one]
+  simp only [Equiv.inv_apply, mul_one]
   ring
 
 theorem zOf_mul_avg_eq_zero (ψ : G → ℂ) (hψ : IsIrr ψ) (P : G → Prop) [DecidablePred P] (χ : G →* ℂ) (h1 : P 1)

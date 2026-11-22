@@ -107,7 +107,7 @@ theorem det_vV_add_eq_zero : ∀ (K : Type) [Field K] [NumberField K] (𝔓 : He
     | smul a w _ h =>
       obtain ⟨p, hp⟩ := h
       refine ⟨a • p, fun k => ?_⟩
-      simp only [Pi.smul_apply, Algebra.smul_def, hp, Finset.mul_sum, smul_eq_mul, map_mul, mul_assoc]
+      simp only [Pi.smul_apply, Algebra.smul_def, hp, Finset.mul_sum, map_mul, mul_assoc]
       exact Finset.sum_congr rfl fun _ _ => by simp only [Algebra.algebraMap_self, RingHom.id_apply]
 
   have hPint : ∀ i, ∃ p : Fin n → T.V, ∀ l, P i l = algebraMap T.V T.Fr (p l) := by

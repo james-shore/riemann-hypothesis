@@ -21,11 +21,6 @@ theorem exists_eq_of_mem_iSup {ι κ M : Type} [AddCommGroup M] [Module ℂ M] (
     (hx : ∀ i, op i x = ψ i • x) (hmem : x ∈ ⨆ k, E k) : ∃ k, χ k = ψ := by
   first
   | (rename_i h_3 h_4; revert ι κ M h_3 h_4 op χ E hE ψ x hx0 hx hmem; exact @_root_.GlobalTheory.JointEigenSupremum.target)
-  | exact @_root_.GlobalTheory.JointEigenSupremum.target
-  | exact _root_.GlobalTheory.JointEigenSupremum.target
-  | (apply _root_.GlobalTheory.JointEigenSupremum.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.JointEigenSupremum.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.JointEigenSupremum.target <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.JointEigenSupremum.target ..)
 
 theorem exists_part_eq {ι C H M : Type} [AddCommGroup H] [Module ℂ H] [AddCommGroup M] [Module ℂ M] (e : H →ₗ[ℂ] M)

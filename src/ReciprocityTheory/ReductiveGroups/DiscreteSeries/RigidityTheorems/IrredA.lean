@@ -55,7 +55,6 @@ lemma K_inv {ε : Fin n → Bool} {k : Matrix (Fin n) (Fin n) ℂ} (hk : k ∈ K
   refine ⟨⟨?_, ?_⟩, Matrix.mem_unitaryGroup_iff.mp hu⟩
   · first
     | exact Unitary.star_mem hu
-    | exact unitary.star_mem hu
   · have h := congrArg Matrix.conjTranspose hc
     rw [Matrix.conjTranspose_mul, Matrix.conjTranspose_mul, jH] at h
     exact h.symm

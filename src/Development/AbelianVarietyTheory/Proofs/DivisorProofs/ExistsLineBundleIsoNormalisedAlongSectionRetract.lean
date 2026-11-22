@@ -28,7 +28,7 @@ theorem norm_glue_comm {G : Type} [CommGroup G] (A B F G' R R' : G) (k : A * G' 
 
 theorem norm_match_comm {G : Type} [CommGroup G] (A S R R' : G) (h : S = A * R' * R⁻¹) :
     A * S⁻¹ * R' = R := by
-  rw [h]; simp only [mul_inv]; simp [mul_comm, mul_left_comm, _root_.mul_assoc]
+  rw [h]; simp only [mul_inv]; simp [mul_comm, mul_left_comm]
 
 theorem exists_norm (X Y : Scheme.{0}) (p : X ⟶ Y) (e : Y ⟶ X) (hep : e ≫ p = 𝟙 Y) (V : Y.Opens)
     (W₁ W₂ : X.Opens) (L M : LB X) (w : Cmp (p ⁻¹ᵁ V) L M) (r : RigD e L) (r' : RigD e M)
@@ -59,7 +59,7 @@ theorem exists_norm (X Y : Scheme.{0}) (p : X ⟶ Y) (e : Y ⟶ X) (hep : e ≫ 
     rw [hu i y hy.1, hu j y hy.2]
     obtain ⟨⟨hV, ha, hb⟩, -, ha', hb'⟩ := hy
     have k := congrArg (Units.map (e.stalkMap y).hom.toMonoidHom) (hw (e y) hV i.1 j.1 i.2 j.2 ha ha' hb hb')
-    simp only [map_mul, ← germ_pull_eq_stalkMap] at k
+    simp only [map_mul] at k
     rw [← germ_pull_eq_stalkMap e y (p ⁻¹ᵁ V ⊓ (L.U i.1 ⊓ M.U i.2)) ⟨hV, ha, hb⟩,
       ← germ_pull_eq_stalkMap e y (M.U i.2 ⊓ M.U j.2) ⟨hb, hb'⟩,
       ← germ_pull_eq_stalkMap e y (L.U i.1 ⊓ L.U j.1) ⟨ha, ha'⟩,

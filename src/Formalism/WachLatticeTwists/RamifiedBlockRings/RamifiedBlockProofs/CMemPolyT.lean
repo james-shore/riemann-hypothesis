@@ -68,8 +68,8 @@ private theorem matrix_charpolyRev_map {R S : Type*} [CommRing R] [CommRing S] (
   ext i j
   by_cases h : i = j
   · subst h
-    simp [Matrix.one_apply]
-  · simp [Matrix.one_apply, h]
+    simp
+  · simp [h]
 
 theorem detT (hG1 : ∀ (g : G) (k : ℕ), (fun x => (Matrix.charpolyRev (r g x)).coeff k) ∈ T)
     (M : Xs → Matrix d d O[X]) (hM : M ∈ tSpan (polyT T) (rPoly r)) (k : ℕ) :
@@ -111,8 +111,8 @@ theorem blockPolyT : StatBlockPolyT := by
       ext i j
       by_cases h : i = j
       · subst h
-        simp [Algebra.algebraMap_eq_smul_one, smul_mul_assoc, Matrix.one_apply]
-      · simp [Algebra.algebraMap_eq_smul_one, smul_mul_assoc, Matrix.one_apply, h]
+        simp [Algebra.algebraMap_eq_smul_one]
+      · simp [Algebra.algebraMap_eq_smul_one, h]
     rw [hq]
     exact Subalgebra.add_mem _ (Subalgebra.sub_mem _
       (Subalgebra.mul_mem _ (Subalgebra.algebraMap_mem _ _) hE) hA)

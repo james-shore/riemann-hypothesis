@@ -17,7 +17,7 @@ theorem coeff_sum_monomial_pow (l : ℕ) [Fact l.Prime] (E : ℕ) (a : ℕ → �
     (∑ i ∈ Finset.range (E + 1), monomial (l ^ i) (a i) : ℂ_[l][X]).coeff (l ^ k) = a k := by
   have hl : 2 ≤ l := (Fact.out : l.Prime).two_le
   rw [finsetSum_coeff, Finset.sum_eq_single k]
-  · simp [coeff_monomial]
+  · simp
   · intro i _ hik
     rw [coeff_monomial, if_neg]
     intro h

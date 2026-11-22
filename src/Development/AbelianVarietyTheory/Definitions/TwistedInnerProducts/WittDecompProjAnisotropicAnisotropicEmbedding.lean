@@ -278,24 +278,24 @@ theorem levi_jY : mt S (d.levi a) ⬝ d.jY = d.jY ⬝ adj (a⁻¹).1 := d.ofImag
 
 theorem pX_levi : d.pX ⬝ mt S (d.levi a) = a.1 ⬝ d.pX :=
   d.mat_ext (by simp only [levi_jX, cancel₂ d.pX_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [wittDecomp_levi_inclAnisotropic,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pX_jX, Matrix.mul_one, Matrix.one_mul]) (by simp only [wittDecomp_levi_inclAnisotropic,
+      Matrix.mul_assoc, pX_j0, Matrix.mul_zero])
     (by simp only [levi_jY, cancel₂ d.pX_jY,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pX_jY, Matrix.mul_zero, Matrix.zero_mul])
 
 theorem wittDecomp_projAnisotropic_levi : d.p0 ⬝ mt S (d.levi a) = d.p0 :=
   d.mat_ext (by simp only [levi_jX, cancel₂ d.p0_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [wittDecomp_levi_inclAnisotropic,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, p0_jX, Matrix.zero_mul]) (by simp only [wittDecomp_levi_inclAnisotropic,
+      Matrix.mul_assoc, p0_j0])
     (by simp only [levi_jY, cancel₂ d.p0_jY,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, p0_jY, Matrix.zero_mul])
 
 theorem pY_levi : d.pY ⬝ mt S (d.levi a) = adj (a⁻¹).1 ⬝ d.pY :=
   d.mat_ext (by simp only [levi_jX, cancel₂ d.pY_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [wittDecomp_levi_inclAnisotropic,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pY_jX, Matrix.mul_zero, Matrix.zero_mul]) (by simp only [wittDecomp_levi_inclAnisotropic,
+      Matrix.mul_assoc, pY_j0, Matrix.mul_zero])
     (by simp only [levi_jY, cancel₂ d.pY_jY,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pY_jY, Matrix.mul_one, Matrix.one_mul])
 
 theorem levi_mem_GQ {a : GL (Fin ρ) (AE D)} (h : a.1 ∈ ratMx D ρ ρ) (h' : (a⁻¹).1 ∈ ratMx D ρ ρ) : d.levi a ∈ GQ S :=
   d.ofImages_mem_GQ (d.images_levi a) (ratMx_mul (rat_mem _) h) (rat_mem _) (ratMx_mul (rat_mem _) (ratMx_adj h'))
@@ -339,24 +339,24 @@ theorem wittDecomp_anisotropicEmbedding_inclY : mt S (d.emb0 g) ⬝ d.jY = d.jY 
 
 theorem wittDecomp_projX_anisotropicEmbedding : d.pX ⬝ mt S (d.emb0 g) = d.pX :=
   d.mat_ext (by simp only [wittDecomp_anisotropicEmbedding_inclX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [wittDecomp_anisotropicEmbedding_inclAnisotropic, cancel₂ d.pX_j0,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pX_jX]) (by simp only [wittDecomp_anisotropicEmbedding_inclAnisotropic, cancel₂ d.pX_j0,
+      Matrix.mul_assoc, pX_j0, Matrix.zero_mul])
     (by simp only [wittDecomp_anisotropicEmbedding_inclY,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pX_jY])
 
 theorem wittDecomp_projAnisotropic_anisotropicEmbedding : d.p0 ⬝ mt S (d.emb0 g) = mt S₀ g ⬝ d.p0 :=
   d.mat_ext (by simp only [wittDecomp_anisotropicEmbedding_inclX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [wittDecomp_anisotropicEmbedding_inclAnisotropic, cancel₂ d.p0_j0,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, p0_jX, Matrix.mul_zero]) (by simp only [wittDecomp_anisotropicEmbedding_inclAnisotropic, cancel₂ d.p0_j0,
+      Matrix.mul_assoc, p0_j0, Matrix.mul_one, Matrix.one_mul])
     (by simp only [wittDecomp_anisotropicEmbedding_inclY,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, p0_jY, Matrix.mul_zero])
 
 theorem wittDecomp_projY_anisotropicEmbedding : d.pY ⬝ mt S (d.emb0 g) = d.pY :=
   d.mat_ext (by simp only [wittDecomp_anisotropicEmbedding_inclX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [wittDecomp_anisotropicEmbedding_inclAnisotropic, cancel₂ d.pY_j0,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pY_jX]) (by simp only [wittDecomp_anisotropicEmbedding_inclAnisotropic, cancel₂ d.pY_j0,
+      Matrix.mul_assoc, pY_j0, Matrix.zero_mul])
     (by simp only [wittDecomp_anisotropicEmbedding_inclY,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pY_jY])
 
 theorem wittDecomp_anisotropicEmbedding_mem_rationalPoints {g : GA D S₀} (h : g ∈ GQ S₀) : d.emb0 g ∈ GQ S :=
   d.ofImages_mem_GQ (d.wittDecomp_frameImages_anisotropicEmbedding g) (rat_mem _) (ratMx_mul (rat_mem _) ((mem_GQ_iff S₀ g).1 h)) (rat_mem _)
@@ -376,7 +376,7 @@ theorem images_nB (b : Mx D ρ S₀.rank) : Images S S₀ d.jX (d.j0 + d.jX ⬝ 
   refine ⟨d.gram_XX, ?_, ?_, ?_, ?_, ?_⟩ <;>
     simp only [adj_add, adj_sub, adj_mul d.jX, adj_mul d.j0, Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul,
       Matrix.mul_assoc, d.gram_XX, d.gram_YY, d.gram_YX, d.gram_XY, d.gram_00, d.gram_0X, d.gram_0Y, d.wittDecomp_gram_X_anisotropic,
-      d.gramR_Y0_eq_TI, cancel₃ d.gram_XX, cancel₃ d.gram_YX, cancel₃ d.gram_00, cancel₃ d.gram_0X, cancel₃ d.wittDecomp_gram_X_anisotropic,
+      cancel₃ d.gram_XX, cancel₃ d.gram_YX, cancel₃ d.gram_00, cancel₃ d.gram_0X, cancel₃ d.wittDecomp_gram_X_anisotropic,
       cancel₃ d.gramR_Y0_eq_TI, Matrix.zero_mul, Matrix.mul_zero, Matrix.one_mul, Matrix.mul_one, add_zero, sub_zero, zero_add,
       gA_plus]
   · rw [adj_smul, cA_half, adj_mul_plus, adj_plus, Matrix.mul_assoc]
@@ -416,47 +416,47 @@ theorem nC_jY : mt S (d.nC c) ⬝ d.jY = d.jY + d.jX ⬝ c.1 := d.ofImages_jY (d
 
 theorem pX_nB : d.pX ⬝ mt S (d.nB b) = d.pX + b ⬝ d.p0 - (half D • (b ⬝ plus S₀ b)) ⬝ d.pY :=
   d.mat_ext (by simp only [nB_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, pX_jX, p0_jX, pY_jX, Matrix.mul_zero, add_zero, sub_zero])
     (by simp only [nB_j0, cancel₂ d.pX_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, pX_j0, p0_j0, pY_j0, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, zero_add, sub_zero])
     (by simp only [nB_jY, cancel₂ d.pX_jX, cancel₂ d.pX_j0,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_sub, pX_jY, p0_jY, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, sub_zero, zero_sub])
 
 theorem wittDecomp_projAnisotropic_unipotentMixed : d.p0 ⬝ mt S (d.nB b) = d.p0 - plus S₀ b ⬝ d.pY :=
   d.mat_ext (by simp only [nB_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.sub_mul, p0_jX, pY_jX, Matrix.mul_zero, sub_zero])
     (by simp only [nB_j0, cancel₂ d.p0_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.sub_mul, Matrix.mul_add, p0_j0, pY_j0, Matrix.mul_zero, Matrix.zero_mul, add_zero, sub_zero])
     (by simp only [nB_jY, cancel₂ d.p0_jX, cancel₂ d.p0_j0,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.sub_mul, Matrix.mul_sub, p0_jY, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.zero_mul, sub_zero, zero_sub])
 
 theorem pY_nB : d.pY ⬝ mt S (d.nB b) = d.pY :=
   d.mat_ext (by simp only [nB_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [nB_j0, cancel₂ d.pY_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pY_jX]) (by simp only [nB_j0, cancel₂ d.pY_jX,
+      Matrix.mul_assoc, Matrix.mul_add, pY_j0, Matrix.zero_mul, add_zero])
     (by simp only [nB_jY, cancel₂ d.pY_jX, cancel₂ d.pY_j0,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.mul_sub, pY_jY, Matrix.zero_mul, sub_zero])
 
 theorem pX_nC : d.pX ⬝ mt S (d.nC c) = d.pX + c.1 ⬝ d.pY :=
   d.mat_ext (by simp only [nC_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [nC_j0,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.add_mul, pX_jX, pY_jX, Matrix.mul_zero, add_zero]) (by simp only [nC_j0,
+      Matrix.mul_assoc, Matrix.add_mul, pX_j0, pY_j0, Matrix.mul_zero, add_zero])
     (by simp only [nC_jY, cancel₂ d.pX_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.add_mul, Matrix.mul_add, pX_jY, pY_jY, Matrix.mul_one, Matrix.one_mul, zero_add])
 
 theorem wittDecomp_projAnisotropic_unipotentSkew : d.p0 ⬝ mt S (d.nC c) = d.p0 :=
   d.mat_ext (by simp only [nC_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [nC_j0,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, p0_jX]) (by simp only [nC_j0,
+      Matrix.mul_assoc, p0_j0])
     (by simp only [nC_jY, cancel₂ d.p0_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.mul_add, p0_jY, Matrix.zero_mul, add_zero])
 
 theorem pY_nC : d.pY ⬝ mt S (d.nC c) = d.pY :=
   d.mat_ext (by simp only [nC_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub]) (by simp only [nC_j0,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, pY_jX]) (by simp only [nC_j0,
+      Matrix.mul_assoc, pY_j0])
     (by simp only [nC_jY, cancel₂ d.pY_jX,
-      Matrix.mul_assoc, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_sub, pX_jX, pX_j0, pX_jY, p0_jX, p0_j0, p0_jY, pY_jX, pY_j0, pY_jY, Matrix.mul_one, Matrix.one_mul, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, sub_zero, zero_sub])
+      Matrix.mul_assoc, Matrix.mul_add, pY_jY, Matrix.zero_mul, add_zero])
 
 end Unip
 

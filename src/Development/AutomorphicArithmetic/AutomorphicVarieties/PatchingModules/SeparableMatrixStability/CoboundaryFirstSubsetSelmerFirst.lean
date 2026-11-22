@@ -86,11 +86,11 @@ private theorem bd_rho_mem {l : ℕ} [Fact l.Prime] {F : GFrame l} {n : ℕ} {x 
         simp [DD.epM, DD.add_ep, DD.one_ep, hK m i i Iff.rfl]
     · refine ⟨?_, ?_, fun hd => ?_, fun hd => ?_⟩
       · funext m
-        simp [DD.epM, DD.add_ep', Matrix.one_apply_ne hij, DD.zero_ep']
-      · simp [DD.epM, DD.add_eta, Matrix.one_apply_ne hij, DD.zero_eta]
+        simp [DD.epM, Matrix.one_apply_ne hij]
+      · simp [DD.epM, Matrix.one_apply_ne hij]
       · funext m
-        simp [DD.epM, DD.add_ep, Matrix.one_apply_ne hij, DD.zero_ep, hK m i j hd]
-      · simp [DD.epM, DD.add_a, Matrix.one_apply_ne hij, DD.zero_a]
+        simp [DD.epM, Matrix.one_apply_ne hij, hK m i j hd]
+      · simp [DD.epM, Matrix.one_apply_ne hij]
   · rw [bd_mem_iff]
     intro i j
     simp only [NP.ρX, Matrix.map_apply, hC]

@@ -21,7 +21,7 @@ theorem disc_bound {K : Type} [NormedField K] [IsUltrametricDist K] [CompleteSpa
     have h2 : (fun χ : Fin 1 → ℤ => c (χ 0) * t ^ (χ 0) * ∏ i, τ i ^ χ i) =
         fun χ => (fun m : ℤ => c m * (t * τ 0) ^ m) (e χ) := by
       funext χ
-      simp [e, Fin.prod_univ_one, mul_zpow, mul_assoc]
+      simp [e, mul_zpow, mul_assoc]
     rw [h2]
     convert h using 2
     exact e.tsum_eq (fun m : ℤ => c m * (t * τ 0) ^ m)

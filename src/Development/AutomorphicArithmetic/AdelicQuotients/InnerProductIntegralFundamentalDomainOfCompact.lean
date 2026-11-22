@@ -50,7 +50,7 @@ theorem UpperTheory.innerProduct_integral_fundamentalDomain_of_compact :
     have hint : IntegrableOn (fun h => Complex.normSq (f h)) 𝓕 μ := by
       have := (intg (fun h => f h * starRingEnd ℂ (f h)) (hf.mul (Complex.continuous_conj.comp hf))
         (fun γ hγ h => by simp [hfi γ hγ])).re
-      simp only [hff, Complex.ofReal_re] at this
+      simp only [hff] at this
       exact this
     refine lt_of_le_of_ne (integral_nonneg hnn) (fun h0 => hne ?_)
     have hae := (integral_eq_zero_iff_of_nonneg hnn hint).mp h0.symm

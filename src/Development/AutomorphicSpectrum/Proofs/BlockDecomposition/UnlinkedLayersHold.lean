@@ -97,7 +97,7 @@ theorem unlinkedLayers (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k
   have h1 : (Finset.univ.val.map m.toList.get : Multiset (Segment k)) = m := by
     rw [Fin.univ_val_map, List.ofFn_get, Multiset.coe_toList]
   conv_rhs => rw [← hb, ← h1]
-  simp [Multiset.bind, Multiset.map_map, Function.comp_def]
+  simp [Multiset.bind, Function.comp_def]
 
 end GlobalTheory.CompanionTheory.SegLayers
 

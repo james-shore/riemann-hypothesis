@@ -53,7 +53,7 @@ theorem gen_of_cyclic {R W : Type} [CommRing R] [AddCommGroup W] [Module R W] {A
     have h3 : x = (x - r • (a : W)) + r • (a : W) := by abel
     rw [h3]
     exact Submodule.add_mem_sup h2 (Submodule.smul_mem _ r (Submodule.subset_span (by simp)))
-  · exact sup_le hle (Submodule.span_le.mpr (by simp [a.2]))
+  · exact sup_le hle (Submodule.span_le.mpr (by simp))
 
 theorem exponents (n D k s l : ℝ) (hn : 1 ≤ n) (hD : 1 ≤ D) (hs : 0 ≤ s) :
     n ^ ((k - s) / 2) * (n * D) ^ ((9 * s + 8 + 4 * l) / 2) ≤
@@ -131,8 +131,6 @@ private theorem le_dual_of_integral_form {K V : Type} [Field K] [NumberField K] 
   first
   | exact hi x hx y hy
   | exact hi y hy x hx
-  | simpa using hi x hx y hy
-  | simpa using hi y hy x hx
 
 private theorem norm_cofactor_le_of_factorization {K V : Type} [Field K] [NumberField K] [StarRing K] [AddCommGroup V] [Module K V]
     [Module (𝓞 K) V] [IsScalarTower (𝓞 K) K V] (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (h : V →ₗ⋆[K] V →ₗ[K] K)

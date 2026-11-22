@@ -89,7 +89,7 @@ private lemma nonneg_of_le_add_self {σ : Type*} [DecidableEq σ] (s : σ →₀
     apply Finset.prod_congr rfl
     intro k hk
     have hkv : k ≠ v := Finset.ne_of_mem_erase hk
-    simp [Finsupp.single_apply, Ne.symm hkv]
+    simp [Ne.symm hkv]
   rw [h3, Finsupp.add_apply, Finsupp.single_eq_same, add_comm 1 (s v), Nat.factorial_succ]
   try ring
 
@@ -161,7 +161,7 @@ private lemma pderiv_rowAct_eq_sum_C_mul_rowAct_pderiv {r n : ℕ} (h : Matrix (
       simp only [pderiv_C_mul, pderiv_X, Pi.single_apply]
       by_cases hv : v.2 = w.2
       · rw [if_pos hv, Finset.sum_eq_single w.1]
-        · simp [Prod.ext_iff, hv]
+        · simp [hv]
         · intro c _ hc
           rw [if_neg (fun hh : (c, v.2) = w => hc (by rw [← hh])), mul_zero]
         · simp

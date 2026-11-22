@@ -63,7 +63,7 @@ private theorem up_diag {K : Type} [CommRing K] {X Y : M4 K} (hX : IsUp X) (hY :
 private theorem adj_map {R R' : Type} [CommRing R] [CommRing R'] (f : R →+* R') (X : M4 R) :
     adj (X.map f) = (adj X).map f := by
   ext i j
-  simp [adj_apply, map_zsmul]
+  simp [adj_apply]
 
 private theorem conj_map {R R' : Type} [CommRing R] [CommRing R'] (f : R →+* R') (n x : M4 R) :
     adj (n.map f) * x.map f * n.map f = (adj n * x * n).map f := by

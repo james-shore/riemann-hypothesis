@@ -35,7 +35,7 @@ theorem corr_pullGen {φ : K → (Y ⟶ X)} {ε : K → ℤ} {φ' : K' → (Y �
   have hx : ∀ k k', φ k = φ' k' → j k = j' k' := fun k k' e => hjj k k' (congrArg (fun f => h ≫ f) e)
   have E := congrArg Units.val (H j j' hc hc' hx)
   apply Units.ext
-  simp only [LB.pullGen, res, pullU, Units.coe_map, MonoidHom.coe_coe] at E ⊢
+  simp only [LB.pullGen, res, pullU] at E ⊢
   apply fn_ext
   intro y hy
   have hy1 : h y ∈ LB.wchart L φ j ⊓ LB.wchart L φ' j' :=

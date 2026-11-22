@@ -15,7 +15,6 @@ private theorem sq_neg_one {O : Type} [CommRing O] {N : ℕ} (χ : DirichletChar
     exact neg_one_sq
   first
     | rw [← map_pow, h, map_one]
-    | rw [sq, ← χ.map_mul, ← sq, h, χ.map_one]
 
 private theorem pow_app {O : Type} [CommRing O] {N : ℕ} (χ : DirichletCharacter O N) (k : ℕ) (a : ℤ)
     (ha : IsCoprime a (N : ℤ)) : (χ ^ k) (a : ZMod N) = χ a ^ k := by
@@ -83,8 +82,6 @@ theorem UpperTheory.V.X.dirData :
       have h4 : ZMod.χ₄ ((-1 : ℤ) : ZMod 4) = -1 := by
         first
           | decide
-          | rfl
-          | simp
       have n1 : (-1 : ZMod f) = ((-1 : ℤ) : ZMod f) := by simp
       have n2 : (-1 : ZMod (2 ^ (c2 ψ - 1))) = ((-1 : ℤ) : ZMod (2 ^ (c2 ψ - 1))) := by simp
       rw [n1, n2, e1, e2, h4]

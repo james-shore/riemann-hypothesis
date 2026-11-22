@@ -272,7 +272,7 @@ theorem exists_lsmul_eq {K A : Type} [Field K] [IsAlgClosed K] [Ring A] [Algebra
     (S0 : Type) [AddCommGroup S0] [Module K S0] [Module A S0] [IsScalarTower K A S0]
     [FiniteDimensional K S0] [IsSimpleModule A S0] (φ : S0 →ₗ[K] S0) :
     ∃ u : A, ∀ v : S0, u • v = φ v := by
-  first | exact Bl.ScalarIdentities.goal1 .. | (apply Bl.ScalarIdentities.goal1 <;> assumption) | (intros; apply Bl.ScalarIdentities.goal1 <;> assumption)
+  first | exact Bl.ScalarIdentities.goal1 ..
 
 theorem lin_indep {K A : Type} [Field K] [IsAlgClosed K] [Ring A] [Algebra K A]
     (t : Finset (A → K[X])) (ht : ↑t ⊆ simpleCps K A) (c : (A → K[X]) → K)

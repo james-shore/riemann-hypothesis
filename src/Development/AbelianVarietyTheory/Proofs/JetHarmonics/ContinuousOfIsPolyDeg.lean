@@ -20,7 +20,7 @@ private lemma norm_opApply_le_of_polynomial_coeffs_lemma {k r : ℕ} {Wp Wq : Ty
       ∀ g ∈ _root_.Formalism.FourierDecayAlt.B.GV k r, ‖_root_.Formalism.FourierDecayAlt.B.opApply Θ G g‖ ≤ C * B * _root_.Formalism.FourierDecayAlt.B.gN g ^ ((κ : ℝ) - A) := by
   induction Θ with
   | nil => exact ⟨0, le_rfl, fun G B hG g _ => by
-      simp [_root_.Formalism.FourierDecayAlt.B.opApply, _root_.Formalism.FourierDecayAlt.P.B4.gN_rpow_nonneg, mul_nonneg (mul_nonneg le_rfl (_root_.Formalism.FourierDecayAlt.P.B4.cc_nonneg hG))]⟩
+      simp [_root_.Formalism.FourierDecayAlt.B.opApply]⟩
   | cons T Θ ih =>
     obtain ⟨C₁, hC₁0, hC₁⟩ := ih (fun S hS => hΘ S (List.mem_cons_of_mem _ hS))
     obtain ⟨hlen, Q, hQ, hcoef⟩ := hΘ T List.mem_cons_self

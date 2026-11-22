@@ -160,7 +160,7 @@ theorem kerBack (hJu : IsUnit J.det) : KerBack O θ s J P := by
       have e1 := congrFun a1z j
       have e2 := congrFun a2z j
       simp only [t1, t2, Pi.zero_apply, RingHom.comp_apply, RingHom.coe_fst, RingHom.coe_snd,
-        AlgEquiv.toAlgHom_eq_coe, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, AlgHom.coe_coe] at e1 e2
+        AlgHom.toRingHom_eq_coe, RingHom.coe_coe] at e1 e2
       ext
       · simpa using e1
       · simpa using e2

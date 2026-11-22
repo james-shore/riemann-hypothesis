@@ -230,7 +230,7 @@ theorem isNilpotent_ker_specMap {R R₀ : CommRingCat.{u}} (π : R ⟶ R₀)
   have e : RingHom.ker (Spec.map π).appTop.hom =
       (RingHom.ker π.hom).map (Scheme.ΓSpecIso R).inv.hom := by
     have h₁ : (Spec.map π).appTop = (Scheme.ΓSpecIso R).hom ≫ π ≫ (Scheme.ΓSpecIso R₀).inv := by
-      simp [← Scheme.ΓSpecIso_naturality_assoc]
+      simp
     rw [h₁]
     have := Ideal.map_symm (I := RingHom.ker π.hom) (Scheme.ΓSpecIso R).commRingCatIsoToRingEquiv
     refine Eq.trans ?_ this.symm

@@ -68,7 +68,7 @@ theorem translGen {P : Pl Γ} (D : Dat A P) (M : FRep A Γ) (ι : D.M.X →ₗ[A
       rw [← map_sub, ← map_add, ← sub_eq_zero, ← map_sub, hk]
       simp only [map_add, map_sub, he, hr']
       convert add_mem (sub_mem (hN w g _ (hτ i w h)) (hτ i w (g * h))) (hτ i w g) using 1
-      simp only [d1_apply, map_add, map_sub, map_mul, hb']
+      simp only [d1_apply, map_sub, map_mul, hb']
       abel
   refine ⟨fun i => ⟨_, mem i⟩, fun c hB => ?_⟩
   obtain ⟨x0, c1, e1, e2⟩ := hB

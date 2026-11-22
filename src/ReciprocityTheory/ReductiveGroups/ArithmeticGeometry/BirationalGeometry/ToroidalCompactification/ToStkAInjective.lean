@@ -24,8 +24,6 @@ theorem top_le_iff_cpt [IsLocalRing A] (x : Sp A ⟶ X) (U : X.Opens) : ⊤ ≤ 
   · intro h z _
     first
     | exact (IsLocalRing.specializes_closedPoint z).mem_open (x ⁻¹ᵁ U).isOpen h
-    | exact ((PrimeSpectrum.le_iff_specializes z (cpt A)).mp
-        (IsLocalRing.le_maximalIdeal z.isPrime.ne_top)).mem_open (x ⁻¹ᵁ U).isOpen h
 
 theorem toStkA_valR (x : Sp A ⟶ X) (U : X.Opens) (z : Sp A) (ht : ⊤ ≤ x ⁻¹ᵁ U) (a : Γ(X, U)ˣ) :
     toStkA z (valR x U a.val) = (gm x z U a).val := by
@@ -148,7 +146,6 @@ private theorem gm_pullU_eq_gm_comp {S T W : Scheme.{0}} (h : T ⟶ S) (r : W �
     simp only [gm, dif_pos hz, dif_pos hz']
     first
     | rfl
-    | (ext; simp [pullU, Scheme.comp_app])
   · have hz' : (r ≫ h) z ∉ V := hz
     simp only [gm, dif_neg hz, dif_neg hz', MonoidHom.one_apply]
 
@@ -158,7 +155,7 @@ theorem gm_pullGen' (L : LB X) {K : Type} [Fintype K] (φ : K → (Y ⟶ X)) (ε
   by_cases hz : r z ∈ LB.wchart L (fun k => h ≫ φ k) j
   · exact (gm_res r z _ hz (pullU h _ (t.s j))).trans (gm_pullU_eq_gm_comp h r z _ _)
   · have hz' : (r ≫ h) z ∉ LB.wchart L φ j := fun H => hz (Set.mem_iInter.2 fun k => Set.mem_iInter.1 H k)
-    simp only [gm, dif_neg hz, dif_neg hz', MonoidHom.one_apply]
+    simp only [gm, dif_neg hz, dif_neg hz']
     rfl
 
 theorem pmaps_pullGen {L : LB X} {L' : LB X'} {F : X' ⟶ X} {w : LB.Iso L' (L.pull F)} {K : Type} [Fintype K]
@@ -236,13 +233,11 @@ theorem thick_map_eq {R : Type} [CommRing R] {I : Ideal R} {n : ℕ} {G G' : Ove
     first
     | (simp [Over.pullback]; done)
     | (simp [Over.pullback]; exact pullback.lift_fst _ _ _)
-    | exact pullback.lift_fst _ _ _
   have m2 : ((Over.pullback (Out.thick R I n)).map ψ).left ≫ pullback.snd G'.hom (Out.thick R I n) =
       pullback.snd G.hom (Out.thick R I n) := by
     first
     | (simp [Over.pullback]; done)
     | (simp [Over.pullback]; exact pullback.lift_snd _ _ _)
-    | exact pullback.lift_snd _ _ _
   apply pullback.hom_ext
   · rw [hh', m1]
   · rw [m2, ← cancel_mono (Out.thick R I n), Category.assoc,

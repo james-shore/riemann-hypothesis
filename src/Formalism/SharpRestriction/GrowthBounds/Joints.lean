@@ -880,7 +880,7 @@ theorem bad_share_of_extension_proposition (D : Formalism.BasicNotions.D7) (C₀
 
 theorem posAdd_iff {n' : ℕ} (x y : Fin n') (d : ℕ) (hd1 : 1 ≤ d) (hdn : d ≤ n') :
     posAdd x d = y ↔ posAdd y (n' - d) = x := by
-  simp only [posAdd, Fin.ext_iff, Fin.val_mk]
+  simp only [posAdd, Fin.ext_iff]
   constructor
   · intro h
     rw [← h, Nat.mod_add_mod, show x.val + d + (n' - d) = x.val + n' by omega, Nat.add_mod_right,
@@ -955,17 +955,17 @@ theorem sum_boxLoc {n' : ℕ} (TT : Finset (Fin n')) (W : Finset ℤ) (f : (TT �
   refine Finset.sum_nbij' (fun a => fun t : TT => a t) (fun aa i => if h : i ∈ TT then aa ⟨i, h⟩ else 0)
     ?_ ?_ ?_ ?_ ?_
   · intro a ha
-    simp only [boxLoc, Finset.mem_coe, Fintype.mem_piFinset] at ha ⊢
+    simp only [boxLoc, Fintype.mem_piFinset] at ha ⊢
     intro t
     simpa [t.2] using ha t
   · intro aa haa
-    simp only [boxLoc, Finset.mem_coe, Fintype.mem_piFinset] at haa ⊢
+    simp only [boxLoc, Fintype.mem_piFinset] at haa ⊢
     intro i
     by_cases h : i ∈ TT
     · simpa [h] using haa ⟨i, h⟩
     · simp [h]
   · intro a ha
-    simp only [boxLoc, Finset.mem_coe, Fintype.mem_piFinset] at ha
+    simp only [boxLoc, Fintype.mem_piFinset] at ha
     funext i
     by_cases h : i ∈ TT
     · simp [h]
@@ -981,8 +981,7 @@ theorem sum_boxLoc {n' : ℕ} (TT : Finset (Fin n')) (W : Finset ℤ) (f : (TT �
 open Classical in
 theorem card_boxLoc {n' : ℕ} (TT : Finset (Fin n')) (W : Finset ℤ) :
     (boxLoc n' TT W).card = W.card ^ TT.card := by
-  simp [boxLoc, Fintype.card_piFinset, apply_ite Finset.card, Finset.prod_ite,
-    Finset.filter_mem_eq_inter]
+  simp [boxLoc, Fintype.card_piFinset, apply_ite Finset.card]
 
 theorem meanLoc_eq (D : Formalism.BasicNotions.D7) (K : Consts) (s : Formalism.BasicNotions.Scale) {n' : ℕ} (TT : Finset (Fin n')) (m : ℕ)
     (Y a bl bu : ℝ) (κ : (TT → ℤ) → (TT → ℤ) → ℝ) (hA : winA D s = Formalism.MainNotions.flipOneThree.IaZ m Y a)
@@ -1236,7 +1235,6 @@ theorem tI_le_tIf (D : D7) (L : SizeData₂ D) (K : Consts) (C : ℝ) (hK : K.No
       have := mul_le_mul hNp hcl (Nat.cast_nonneg _) hNp0
       linarith
     have e3 := mul_le_mul_of_nonneg_left hcl (by positivity : (0 : ℝ) ≤ 2 * (n' : ℝ))
-    push_cast at e2 e3
     linarith
   have hin2 : (p : ℝ) ^ Gp L.sc * ((((8 * (DIf K L p n' + 1) : ℕ) : ℝ)) + C * (TT.card : ℝ) * (D.R.k : ℝ) *
         Real.logb p L.sc.a + 4 * (TT.card : ℝ) * ((⌊cG L⌋₊ : ℕ) : ℝ) + 2 * (n' : ℝ) * ((⌊cG L⌋₊ : ℕ) : ℝ)) +
@@ -1859,7 +1857,7 @@ theorem linear_programming_input_of_hypotheses (D : D7) (L : SizeData₂ D) (X :
       · have e : (Fin.cast (by rw [hm]) (0 : Fin (D.R.k - 1 + 1)) : Fin ((D.gat u w hg).P.m + 1)) = 0 := Fin.ext rfl
         simp only [e, h0, ha, wPos, Fin.val_cast]
       · have e : (Fin.cast (by rw [hm]) (Fin.last (D.R.k - 1)) : Fin ((D.gat u w hg).P.m + 1)) = Fin.last (D.gat u w hg).P.m :=
-          Fin.ext (by simp [hm])
+          Fin.ext (by simp)
         simp only [e, hl, hb, wPos, Fin.val_cast]
       · exact (hmid _ (by simpa using hi0) (by simp only [Fin.val_cast]; omega)).trans (by exact_mod_cast hcl)
     · have hs' : Fin.cast hn'.symm s ∉ (Y.Fl u w hg).TT v := fun h => hs ((hmemTT s).1 h)

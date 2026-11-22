@@ -45,7 +45,7 @@ theorem cosocle_quotient_of_quotient : ∀ {G V W X : Type} [Group G] [AddCommGr
     have h1 : e.symm (f v) = Submodule.Quotient.mk v := by
       rw [LinearEquiv.symm_apply_eq]
       rfl
-    simp only [gl, LinearMap.comp_apply, LinearEquiv.coe_coe, h1, Submodule.liftQ_apply]
+    simp only [gl, LinearMap.comp_apply, LinearEquiv.coe_coe, h1]
     rfl
   refine ⟨⟨gl, fun h => ?_⟩, ?_⟩
   · refine LinearMap.ext fun x => ?_

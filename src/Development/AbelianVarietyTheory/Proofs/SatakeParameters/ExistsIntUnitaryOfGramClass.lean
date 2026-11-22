@@ -57,7 +57,7 @@ theorem exists_intUnitary_of_gramClass : ∀ (L : Type) [Field L] [Valued L (Wit
     intro j k
     by_cases h : k = j
     · subst h; simpa [ej] using (Formalism.UG.intL L).pow_mem hϖint (a k)
-    · simp [ej, Pi.single_apply, h]
+    · simp [ej, h]
   have hej_dvd : ∀ j k, GlobalTheory.Hk3.IntWitt.DvdPow ϖ (a k) (ej j k) := by
     intro j k
     by_cases h : k = j

@@ -66,7 +66,7 @@ private theorem exists_isUnit_det_apply_eq_sum_of_mem_Nof {C : Type} [CommRing C
   have e20 := congrFun (congrFun h 2) 0
   have e10 := congrFun (congrFun h 1) 0
   have e21 := congrFun (congrFun h 2) 1
-  simp [Matrix.mul_apply, Fin.sum_univ_three, Matrix.mul_diagonal, t10, t20, t21, t00, t11, t22] at e20 e10 e21
+  simp [Matrix.mul_apply, Fin.sum_univ_three, t10, t20, t21, t11, t22] at e20 e10 e21
   have m20 : M 2 0 = 0 := by
     have : (p 2 - p 0) * M 2 0 = 0 := by linear_combination e20
     exact (hp 2 0 (by decide)).mul_right_eq_zero.mp this
@@ -87,9 +87,9 @@ private theorem upperTriangular_fin_three_mul_entries {C : Type} [CommRing C] (A
   obtain ⟨b10, b20, b21⟩ := hB
   refine ⟨fun i => ?_, ?_, ?_, ?_⟩
   · fin_cases i <;> simp [Matrix.mul_apply, Fin.sum_univ_three, a10, a20, a21, b10, b20, b21]
-  · simp [Matrix.mul_apply, Fin.sum_univ_three, a10, a20, a21, b10, b20, b21]
-  · simp [Matrix.mul_apply, Fin.sum_univ_three, a10, a20, a21, b10, b20, b21]
-  · simp [Matrix.mul_apply, Fin.sum_univ_three, a10, a20, a21, b10, b20, b21]
+  · simp [Matrix.mul_apply, Fin.sum_univ_three, b21]
+  · simp [Matrix.mul_apply, Fin.sum_univ_three, a10]
+  · simp [Matrix.mul_apply, Fin.sum_univ_three]
 
 open GlobalTheory.OrdLoc in
 

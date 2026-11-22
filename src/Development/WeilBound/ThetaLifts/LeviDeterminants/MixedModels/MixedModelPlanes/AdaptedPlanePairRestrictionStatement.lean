@@ -12,4 +12,4 @@ theorem _root_.PositivityTheory.Mix.T.adapted_plane_pair_restriction : ∀ (F E 
     ∀ (n₁ : ℕ) (X₁ : Spc F E n₁) (H : Plane E n n₁) (j₀ j₁ : ℕ) (M₁ : Model σ X₁ W) (om₁ : Rep σ X₁ W) (r₁ s₁ : ℕ),
       H.IsAdapted σ B X X₁ j₀ j₁ → IsPair B M₁ χX χW om₁ r₁ s₁ r' s' →
       ∃ e, IsEv B M M₁ H.ι 1 {u | ∃ z, u = Matrix.vecMulVec (incV F H.x) z} e := by
-  first | exact @GlobalTheory.ThKMixXEx.exists_isEv_mixedX_m | exact fun _ => @GlobalTheory.ThKMixXEx.exists_isEv_mixedX_m | exact GlobalTheory.ThKMixXEx.exists_isEv_mixedX_m | exact @GlobalTheory.ThKMixXEx.exists_isEv_mixedX_m trivial
+  first | exact @GlobalTheory.ThKMixXEx.exists_isEv_mixedX_m

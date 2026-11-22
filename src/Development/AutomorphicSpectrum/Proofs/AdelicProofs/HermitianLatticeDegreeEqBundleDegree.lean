@@ -19,7 +19,7 @@ theorem gramAt_standard {L : Type} [Field L] {i : ℕ} (h : Matrix (Fin i) (Fin 
     · subst hk; simp [embVec]
     · simp [embVec, Pi.single_eq_of_ne hk]
   ext a b
-  simp [gramAt, he, Matrix.mulVec_single_one, Matrix.col_apply]
+  simp [gramAt, he, Matrix.col_apply]
 
 theorem degree_eq_degreeWith (L : Type) [Field L] [NumberField L] (B : HermitianBundle.{0} L)
     (F : Submodule (𝓞 L) B.carrier) (i : ℕ) (f : Fin i → F) (c : F →ₗ[𝓞 L] (Fin i → L))

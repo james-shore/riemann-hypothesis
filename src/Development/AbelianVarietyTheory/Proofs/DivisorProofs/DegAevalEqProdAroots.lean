@@ -36,7 +36,6 @@ theorem deg_aeval_eq_prod_aroots : ∀ (K : Type) [Field K] (A : AbVar K) (f : E
     have e : Polynomial.aeval f (Polynomial.C n - Polynomial.X) = ((n : End A) - f) := by
       rw [map_sub, Polynomial.aeval_X, Polynomial.aeval_C, eq_intCast]
     simp only [e]
-    push_cast
     rfl
 
 end GlobalTheory.AV.AbVar

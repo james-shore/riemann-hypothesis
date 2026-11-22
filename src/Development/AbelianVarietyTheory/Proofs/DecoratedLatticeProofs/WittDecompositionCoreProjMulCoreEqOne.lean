@@ -119,7 +119,7 @@ theorem colMul_rat {m : ℕ} (q : Matrix (Fin ρ) (Fin m) D.host.E) (f : Matrix 
     (y : Fin m → AE D) : colMul (rat f) i ((rat q *ᵥ y) i) = rat (colProj q f i) *ᵥ y := by
   funext k
   simp only [colMul, colProj, rat, Matrix.mulVec, dotProduct, Matrix.map_apply, Matrix.of_apply, map_mul,
-    Finset.sum_mul, Finset.mul_sum]
+    Finset.sum_mul]
   refine Finset.sum_congr rfl fun l _ => ?_
   ring
 

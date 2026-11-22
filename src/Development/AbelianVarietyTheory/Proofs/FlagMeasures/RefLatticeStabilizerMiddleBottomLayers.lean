@@ -514,14 +514,14 @@ theorem GlobalTheory.RowStab.middle_bottom_layers : ∀ (K V : Type) [Field K] [
       set ia := s (N.ist a) - N.ist a
       rw [e1, e2] at hiso ⊢
       simp only [map_add, LinearMap.add_apply, star_add, H.herm] at hiso ⊢
-      simp only [N.ist_iso b a hb ha, N.ist_iso a b ha hb, hX, zero_add, add_zero] at hiso ⊢
+      simp only [N.ist_iso b a hb ha, hX, zero_add, add_zero] at hiso ⊢
       linear_combination hiso
   ·
     intro S hS
     have hrel : ∀ a b, star (S a b) + S b a + H.B ((0 : Fin r → V) a) ((0 : Fin r → V) b) = 0 := by
       intro a b
       have := (hS b a).2
-      simp only [Pi.zero_apply, map_zero, LinearMap.zero_apply, add_zero]
+      simp only [Pi.zero_apply, map_zero, add_zero]
       rw [add_comm]; exact this
     obtain ⟨s, hs, hsv⟩ := exists_stab hK N L hz hzW hL 0 S (fun _ => zero_mem _) (fun _ _ => zero_mem _)
       (fun a b _ _ => (hS a b).1) hrel

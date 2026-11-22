@@ -108,7 +108,7 @@ theorem cong_assemble : ∀ (D : D7) (V : HSp D) (Λ : Submodule (𝓞 D.host.E)
     have hJ0 : J ≠ ⊥ := fun h => h𝔪0 (le_bot_iff.1 (h ▸ hJ))
     have hQ := h𝔪 ⟨J, hJp, hJ0⟩ hJ
     calc (∏ PP ∈ Z, PP.asIdeal) = (∏ PP ∈ Z.erase ⟨J, hJp, hJ0⟩, PP.asIdeal) * J := (Finset.prod_erase_mul _ _ hQ).symm
-      _ ≤ J := by first | exact Ideal.mul_le_left | exact Ideal.mul_le_right | exact Ideal.mul_le_left'
+      _ ≤ J := by first | exact Ideal.mul_le_left | exact Ideal.mul_le_right
   obtain ⟨N, hN⟩ := Ideal.exists_radical_pow_le_of_fg 𝔪 (IsNoetherian.noetherian _)
   have hle : (∏ PP ∈ Z, PP.asIdeal ^ N) ≤ 𝔪 := by
     rw [Finset.prod_pow]

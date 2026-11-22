@@ -148,7 +148,7 @@ private theorem wOf_eq {x : GG 3 R} {a b c d : R} (hx : x.mat = !![a, 0, b; 0, 1
   split_ifs
   · rfl
   · ext i j
-    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two, Matrix.diagonal]
+    fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Matrix.diagonal]
 
 private theorem pB_ad {x : GG 3 R} (hx : IsBlockSL2Embedding x) (t : R) (ht : t * t = 1) (X : Matrix (Fin 3) (Fin 3) R) :
     pB t (x.adFun X) = ((if x.right = 1 then 1 else t) • wOf x) *ᵥ pB t X := by
@@ -165,7 +165,7 @@ private theorem ad_sB {x : GG 3 R} (hx : IsBlockSL2Embedding x) (t : R) (ht : t 
   rw [ad_eq h hx, theta_eq, conj_eq, wOf_eq hx]
   ext i j
   split_ifs <;> fin_cases i <;> fin_cases j <;>
-    simp [sB, Matrix.mulVec, dotProduct, Fin.sum_univ_two] <;>
+    simp [sB, dotProduct, Fin.sum_univ_two] <;>
     first | ring1 | linear_combination (c * v 0 - d * v 1) * ht | linear_combination (-a * v 0 + b * v 1) * ht
 
 private theorem pC_ad {x : GG 3 R} (hx : IsBlockSL2Embedding x) (X : Matrix (Fin 3) (Fin 3) R) :
@@ -205,7 +205,7 @@ private theorem pA_ad_c {x : GG 3 R} (hx : x.mat = 1) (h1 : x.right = -1) (Y : M
   rw [ad_eq (by ring) hx', if_neg (by rw [h1]; decide), theta_eq]
   ext i j
   fin_cases i <;> fin_cases j <;>
-    simp [sA, pA, Jmat, Fin.rev, Matrix.mul_apply, Fin.sum_univ_three, Fin.sum_univ_two]
+    simp [sA, pA, Jmat, Fin.rev, Matrix.mul_apply, Fin.sum_univ_two]
 
 private def repA {Γ : Type} [Group Γ] (r : Γ →* GG 3 R) (hr : ∀ g, IsBlockSL2Embedding (r g)) :
     Representation R Γ (Matrix (Fin 2) (Fin 2) R) where

@@ -36,7 +36,7 @@ theorem analyticAt_cuspFunction_of_hasSum {f : ℍ → ℂ} {a : ℕ → ℂ}
     refine p.le_radius_of_tendsto (l := 0) ?_
     have ht' : Tendsto (fun n : ℕ => ‖a n‖ * (r : ℝ) ^ n) atTop (𝓝 0) := by simpa using ht
     convert ht' using 2 with n
-    simp [hp, FormalMultilinearSeries.ofScalars_norm]
+    simp [hp]
   have hpos : 0 < p.radius := lt_of_lt_of_le zero_lt_one hrad
   have hP := p.hasFPowerSeriesOnBall hpos
   have hAn : AnalyticAt ℂ p.sum 0 := hP.analyticAt

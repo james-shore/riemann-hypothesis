@@ -101,7 +101,6 @@ private theorem isChart_choose_and_symm_apply {B : Type} [CommRing B] [IsLocalRi
     (PrimeSpectrum.le_iff_specializes _ _).1 (IsLocalRing.le_maximalIdeal p.isPrime.ne_top)
   first
   | exact (hle.map x.continuous).mem_open W.isOpen h
-  | exact (hle.map x.base.hom.continuous).mem_open W.isOpen h
 
 end Alg
 

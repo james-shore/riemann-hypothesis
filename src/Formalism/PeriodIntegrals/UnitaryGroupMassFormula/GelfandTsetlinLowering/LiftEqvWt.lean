@@ -70,7 +70,7 @@ theorem weight_rowW_apply {r c : ℕ} (m : Fin r × Fin c →₀ ℕ) (a : Fin r
     simp [rowW]
   · intro b _ hb
     refine Finset.sum_eq_zero fun s _ => ?_
-    simp [rowW, Pi.single_apply, Ne.symm hb]
+    simp [rowW, Ne.symm hb]
   · simp
 
 theorem weight_colW_apply {r c : ℕ} (m : Fin r × Fin c →₀ ℕ) (j : Fin c) :
@@ -81,7 +81,7 @@ theorem weight_colW_apply {r c : ℕ} (m : Fin r × Fin c →₀ ℕ) (j : Fin c
   rw [Finset.sum_eq_single j]
   · simp [colW]
   · intro b _ hb
-    simp [colW, Pi.single_apply, Ne.symm hb]
+    simp [colW, Ne.symm hb]
   · simp
 
 theorem weight_lastW {n : ℕ} (m : Fin (n + 1) × Fin (n + 1) →₀ ℕ) :
@@ -148,7 +148,7 @@ theorem coeff_eq_of_eqv {n : ℕ} (lam : DomWeight (n + 1)) (mu : DomWeight n)
   rw [hκ, map_smul, embGL_diagGL] at h1
   have h2 := congrArg (coeff m) h1
   rw [coeff_smul, coeff_sqAct_diag, smul_eq_mul, Fin.prod_univ_castSucc, Fin.prod_univ_castSucc] at h2
-  simp only [Fin.coe_castSucc, Fin.is_lt, dite_true, dif_pos, Fin.eta, Fin.val_last, lt_self_iff_false,
+  simp only [Fin.coe_castSucc, Fin.is_lt, dif_pos, Fin.eta, Fin.val_last, lt_self_iff_false,
     dite_false, Units.val_one, one_pow, mul_one] at h2
   exact mul_right_cancel₀ hm (by linear_combination (-1 : ℂ) * h2)
 

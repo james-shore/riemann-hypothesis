@@ -48,7 +48,7 @@ theorem lowerWedge_sub_flip :
   ext i j
   simp only [lowerWedge, LinearMap.sub_apply, LinearMap.flip_apply, LinearMap.coe_comp,
     Function.comp_apply, Finsupp.lsingle_apply, Finsupp.linearCombination_single, one_smul,
-    LinearMap.smul_apply, wedgeBil_apply]
+    wedgeBil_apply]
   rcases lt_trichotomy i j with h | rfl | h
   · simp [h, h.not_gt]
   · simp only [lt_irrefl, if_false, sub_zero]

@@ -143,7 +143,7 @@ theorem eq_of_hkRelFr_frBor : ∀ {E : Type} [Field E] [NumberField E] [NumberFi
       intro a
       ext <;> simp [epsMul]
     rw [e0]
-    first | rfl | exact Spec.map_id _ | simp [spMap] | (rw [CommRingCat.ofHom_id]; exact Spec.map_id _)
+    first | rfl | exact Spec.map_id _
   letI : Field (Formalism.L2.Pj.CAt σ) := inferInstanceAs (Field ℂ)
   have col : ∀ (zz : Formalism.L2.Pj.FrPt Xo c (Formalism.L2.Pj.CAt σ)) (tt : Formalism.L2.Pj.Ix Dw → (Formalism.L2.Pj.CAt σ)ˣ)
       (ψ0 : pullback Xo.univ.t.G.hom (U.un k x).x ⟶ pullback Xo.univ.t.G.hom zz.x)

@@ -48,7 +48,7 @@ theorem scaled_bessel_isometric : HypsG → ∀ (k r : ℕ) (ε : Fin (2 * r + k
   have hae := Formalism.FourierDecayAlt.P.DDSmoothness.ae_UH_of_quot hG.2.2.1 hS0 hS1 hq
   have hn : 0 < ‖l v‖ := norm_pos_iff.mpr hlv
   have hin : ⟪l v, l v⟫_ℂ = ((‖l v‖ ^ 2 : ℝ) : ℂ) := by
-    rw [inner_self_eq_norm_sq_to_K]; first | rfl | norm_cast | simp
+    rw [inner_self_eq_norm_sq_to_K]; first | rfl | norm_cast
   have hbe : ∀ y ∈ R.sm, be z Formalism.QuantumDeterminants.cStd π R.σ μW μN y v (l v) = ((‖l v‖ ^ 2 : ℝ) : ℂ) • l y := by
     intro y hy
     rw [(hl.2 y hy v hv).2, ContinuousLinearMap.smulRight_apply, innerSL_apply_apply, hin]

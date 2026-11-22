@@ -41,7 +41,7 @@ theorem frobSemilinear_iterate_eq_zero : ∀ (p : ℕ) [Fact p.Prime] (S : Type)
     ext i
     by_cases h : i = j
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   let J : Ideal S := Ideal.span (Set.range fun ji : ι × ι => L^[N] (Pi.single ji.1 1) ji.2)
   have hJnil : IsNilpotent J := by
     refine (Ideal.FG.isNilpotent_iff_le_nilradical (Submodule.fg_span (Set.finite_range _))).2 ?_

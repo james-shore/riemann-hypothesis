@@ -49,8 +49,6 @@ theorem gen_irred_adm {V : Type} [AddCommGroup V] [Module ℂ V]
   | exact @_root_.GlobalTheory.FiltrationEquivalenceRelation.main
   | exact _root_.GlobalTheory.FiltrationEquivalenceRelation.main
   | (apply _root_.GlobalTheory.FiltrationEquivalenceRelation.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiltrationEquivalenceRelation.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiltrationEquivalenceRelation.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiltrationEquivalenceRelation.main ..)
 
 def prodAct {V V' : Type} [AddCommGroup V] [Module ℂ V] [AddCommGroup V'] [Module ℂ V']

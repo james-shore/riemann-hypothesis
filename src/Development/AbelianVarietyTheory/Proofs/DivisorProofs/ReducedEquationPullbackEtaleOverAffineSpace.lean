@@ -109,7 +109,7 @@ theorem reducedEq_pullback_etale : ∀ (X Y : Scheme.{0}) [IsLocallyNoetherian X
   set g' := resG X hU' g
   set V := X.basicOpen g'
   have hV' : V = X.basicOpen g := by
-    simp only [V, g', resG, Scheme.basicOpen_res]
+    simp only [V, g', Scheme.basicOpen_res]
     exact inf_eq_right.2 hgU'
   have hVU' : V ≤ U'.1 := X.basicOpen_le g'
   have hVU : V ≤ U.1 := hVU'.trans hU'

@@ -37,7 +37,7 @@ private theorem weilSign_anticommute_operator {F E : Type} [Field F] [NumberFiel
 private theorem R_p {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E]
     [IsTotallyReal F] [IsTotallyComplex E] {D : Dat F E} (W : Weil D) (O : Ops F) (w : InfinitePlace F) (i : Fin 4) :
     W.Om (mD (-1 : (A F)ˣ)) * O.p D.δ w i = -(O.p D.δ w i * W.Om (mD (-1 : (A F)ˣ))) := by
-  fin_cases i <;> simp [Ops.p, mul_smul_comm, smul_mul_assoc, weilSign_anticommute_operator W O w]
+  fin_cases i <;> simp [Ops.p, weilSign_anticommute_operator W O w]
 
 theorem UpperTheory.ConvolutionTheory.R2.Fo.pW :
     ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E] [IsTotallyReal F] [IsTotallyComplex E] (D : Dat F E) (W : Weil D) (O : Ops F) w i, O.p D.δ w i * W.Om (wW F) = -(W.Om (wW F) * O.d w i) := by

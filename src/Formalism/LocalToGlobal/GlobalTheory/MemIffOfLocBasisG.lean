@@ -19,7 +19,7 @@ theorem subAll_comp {K : Type} [Field K] {ι : Type} {n : ℕ} (g h : ι → Mat
       Matrix.mul_apply, Finset.mul_sum, Finset.sum_mul]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl (fun d _ => Finset.sum_congr rfl (fun b _ => ?_))
-    first | ring | (rw [C_mul]; ring)
+    first | ring
   exact congrArg (fun φ => φ p) this
 
 theorem actAll_comp {K : Type} [Field K] {ι : Type} [Fintype ι] {n : ℕ} (lam : ι → DomWeight n)

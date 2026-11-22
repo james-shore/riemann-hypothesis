@@ -97,7 +97,7 @@ theorem eq_zero_of_trace {xi u : E} (hxi : xi ≠ 0)
     IsIntegralClosure.algebraMap_mk' (𝓞 E) _ hint] at h1
   have h2 : xi * (m • (z / (xi * u)) * u) = (m : ℚ) • z := by
     rw [zsmul_eq_mul, Algebra.smul_def]
-    simp only [eq_intCast, map_intCast]
+    simp only [map_intCast]
     field_simp
   rw [h2, map_smul, hz] at h1
   simp at h1

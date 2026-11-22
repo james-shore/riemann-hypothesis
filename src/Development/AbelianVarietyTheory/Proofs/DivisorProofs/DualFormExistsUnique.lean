@@ -134,6 +134,6 @@ theorem dualForm_existsUnique : ∀ (E : Type) [Field E] [NumberField E] [IsCMFi
     apply LinearMap.ext_basis cb cb
     intro i j
     rw [Matrix.toLinearMap₂_apply_basis, clBasis_apply, clBasis_apply, hB']
-    simp [Gc, gram_apply, b]
+    simp [Gc, gram_apply]
 
 end GlobalTheory.DualFormExists

@@ -92,7 +92,6 @@ theorem perPair : PI.KerLat.PerPair := by
   rw [← AddSubgroup.toIntSubmodule_closure]
   first
   | rw [AddSubgroup.toIntSubmodule_toAddSubgroup]
-  | change AddSubgroup.closure {ω 0, ω 1} = _
   apply le_antisymm
   · refine AddSubgroup.closure_mono ?_
     rintro w (rfl | rfl)

@@ -15,7 +15,7 @@ theorem ode_bound (U U' : ℝ → ℂ) (a b : ℂ) (ha : a.re = 0) {δ : ℝ} (h
   have hg : ∀ t : ℝ, HasDerivAt g (-(a + (t : ℂ) * b)) t := by
     intro t
     have h3 := ((hofs t).const_mul a).neg.sub (((hofs t).pow 2).mul_const b |>.div_const 2)
-    exact h3.congr_deriv (by first | ring | (norm_num; ring) | norm_num | (simp; ring) | simp)
+    exact h3.congr_deriv (by first | ring)
   set W : ℝ → ℂ := fun t => U t * cexp (g t) with hW
   have hWd : ∀ t ∈ Set.Icc (0 : ℝ) 1,
       HasDerivAt W ((U' t - (a + (t : ℂ) * b) * U t) * cexp (g t)) t := by
@@ -130,7 +130,7 @@ theorem one_param {V H : Type*} [NormedAddCommGroup V] [NormedSpace ℂ V]
     simp only [map_smul, map_add, inner_smul_right, inner_add_right]
     rw [hm, hstρ, map_add, inner_add_left, e1, e3]
     simp only [map_add, map_smul, inner_add_right, inner_smul_right, inner_add_left, inner_smul_left,
-      hdst, map_mul, Complex.conj_ofReal, Complex.conj_conj, RCLike.conj_conj, hdX]
+      hdst, map_mul, Complex.conj_ofReal, Complex.conj_conj, hdX]
     linear_combination (d Yl * ⟪w, u s w⟫_ℂ) * h1 + (d ρ1 * ⟪w, u s w⟫_ℂ) * h2
   rw [hmain]
   have hT0 : (0 : ℝ) ≤ T := by linarith

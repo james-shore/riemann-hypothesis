@@ -52,7 +52,7 @@ theorem Hgt_pow (hd : d.AxH 𝒜) (h : d.S1) (G : WT) (f : ∀ c, A c)
   induction n with
   | zero =>
     refine ⟨fun c => ?_, ?_, ?_⟩ <;>
-      simp only [zero_add, pow_one, one_smul, one_nsmul, Nat.cast_one, one_mul]
+      simp only [zero_add, pow_one, one_smul, Nat.cast_one, one_mul]
     · exact hf c
     · exact hI
   | succ n ih =>

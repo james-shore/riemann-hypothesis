@@ -688,7 +688,7 @@ end Generic
 section Heights
 
 lemma colH_spec {n : ℕ} {mu : Fin n → ℤ} (hd : Dominant mu) (c : ℤ) (m : Fin n) : c ≤ mu m ↔ m.val < colH mu c := by
-  first | exact Bl.general_b_fact_left_further.goal1 .. | (apply Bl.general_b_fact_left_further.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_left_further.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_further.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_left_further.goal1 <;> assumption) | (apply @Bl.general_b_fact_left_further.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_left_further.goal1 .. | (apply Bl.general_b_fact_left_further.goal1 <;> assumption)
 
 lemma colH_strip {n : ℕ} {nu mu : Fin n → ℤ} {b : ℕ} (hn : Dominant nu) (hm : Dominant mu) (h : HStrip nu mu b)
     (c : ℤ) : colH nu c ≤ colH mu c ∧ colH mu c ≤ colH nu c + 1 := by

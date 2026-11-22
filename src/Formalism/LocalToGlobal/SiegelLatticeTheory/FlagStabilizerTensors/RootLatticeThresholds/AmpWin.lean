@@ -63,8 +63,8 @@ theorem kap_eq {u u' : D.what₂.Word} {τ : D.what₂.Tau} (hc : 0 < cOf hB u �
     rwa [div_mul_cancel₀ _ hd.ne'] at h1
   have hx : 0 ≤ a * d / L := div_nonneg (mul_nonneg hc.le hd.le) hL.le
   first
-    | (rw [Complex.normSq_mul, Complex.normSq_ofReal, map_inv₀, Complex.normSq_ofReal, Real.mul_self_sqrt hx]; field_simp; ring)
-    | (simp only [Complex.normSq_mul, map_inv₀, Complex.normSq_ofReal, Real.mul_self_sqrt hx]; field_simp; ring)
+    | (rw [Complex.normSq_mul, Complex.normSq_ofReal, map_inv₀, Complex.normSq_ofReal, Real.mul_self_sqrt hx]; field_simp)
+    | (simp only [Complex.normSq_mul, map_inv₀, Complex.normSq_ofReal, Real.mul_self_sqrt hx]; field_simp)
     | (rw [Complex.normSq_mul, Complex.normSq_ofReal, map_inv₀, Complex.normSq_ofReal, Real.mul_self_sqrt hx]; field_simp)
 
 theorem finrank_tau (u : D.what₂.Word) :
@@ -113,10 +113,9 @@ theorem poincareConstant_nonneg (w : D.what₂.Word) : 0 ≤ c0X X w (Y.FN w) :=
   unfold c0X
   first
     | positivity
-    | (have := X.levelVolume_pos; positivity)
-    | (have := X.volK2_nonneg; positivity)
+    | (have := X.levelVolume_pos)
+    | (have := X.volK2_nonneg)
     | (unfold HidaSetting.volK2; positivity)
-    | (unfold Formalism.L2.SG.HidaSetting.HidaSetting.volK2; done)
 
 theorem K0_eq_covN_of_ampWin (hA : AmpWinP Y u u' C hB) (hV : 0 < X.volK2) :
     Formalism.L2.SG.Pf.LocNorm.K0 Y u u' C hB =
@@ -144,8 +143,6 @@ theorem K0_eq_covN_of_ampWin (hA : AmpWinP Y u u' C hB) (hV : 0 < X.volK2) :
     have hden : (√(a * b))⁻¹ * V * ((√(a * b))⁻¹ * V) = V ^ 2 / (a * b) := by
       first
         | rw [inv_mul_eq_div, div_mul_div_comm, ← sq, ← sq, hs]
-        | (field_simp; rw [hs]; ring)
-        | (field_simp; rw [Real.mul_self_sqrt h0.le]; ring)
     rw [hden, div_div_eq_mul_div, div_eq_iff (pow_pos hV 2).ne']
     linarith [hA]
 
@@ -161,8 +158,6 @@ theorem K0_mem_covWin_of_ampWin (hA : AmpWinP Y u u' C hB) (hV : 0 < X.volK2) {l
   rw [K0_eq_covN_of_ampWin Y u u' C hB hA hV]
   first
     | exact hW
-    | (unfold Formalism.L2.SG.LoopTerm.CovWinN at hW; exact hW)
-    | (unfold Formalism.L2.SG.LoopTerm.CovWinN at hW; done)
 
 end Main
 

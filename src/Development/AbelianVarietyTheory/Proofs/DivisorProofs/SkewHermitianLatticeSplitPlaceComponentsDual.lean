@@ -64,7 +64,7 @@ theorem eq_dualGlob {σ : E →ₐ[F] E} {n : ℕ} {J : Matrix (Fin n) (Fin n) E
         exact key d hd
       · simp
       · intro a b _ _ ha hb
-        simp only [Subalgebra.coe_add, map_add, add_mul]
+        simp only [map_add, add_mul]
         exact add_mem ha hb
       · intro c a _ ha
         have e2 : σ ((c • a : 𝓞 E) : E) * form σ J y x = σ (c : E) * (σ (a : E) * form σ J y x) := by

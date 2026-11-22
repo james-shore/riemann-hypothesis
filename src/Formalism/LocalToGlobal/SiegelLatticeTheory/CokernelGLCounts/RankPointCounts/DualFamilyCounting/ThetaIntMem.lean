@@ -38,14 +38,14 @@ theorem xblk {X : HidaSetting D} (u : D.what₂.Word) (X0 : Matrix (Fin D.R.rS) 
     blkQ X u X0 xs M (Sum.inl (Sum.inl p)) - tauQ X u (Sum.inl (Sum.inl p)) (blkQ X u X0 xs M) =
       embV X (X0 p.1.1 p.1.2) := by
   simp only [blkQ, tauQ]
-  first | exact sub_zero _ | rfl | simp
+  first | exact sub_zero _
 
 theorem rblk {X : HidaSetting D} (u : D.what₂.Word) (X0 : Matrix (Fin D.R.rS) (Fin D.R.rS) D.host.E)
     (xs : Fin D.R.rS → (VS D).V) (M : Matrix (Fin D.R.rS) (Fin D.R.rS) D.host.E) (b : Fin D.R.rS) :
     blkQ X u X0 xs M (Sum.inl (Sum.inr b)) - tauQ X u (Sum.inl (Sum.inr b)) (blkQ X u X0 xs M) =
       rowV X u (xs b) := by
   simp only [blkQ, tauQ]
-  first | exact sub_zero _ | rfl | simp
+  first | exact sub_zero _
 
 theorem fibQ_holds : FibQ := by
   intro D X u X0 xs M hok

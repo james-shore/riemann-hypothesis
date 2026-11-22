@@ -16,7 +16,6 @@ variable {k r : ℕ}
 theorem inv_eq_ring_inverse (A : Q.Mx k r) : A⁻¹ = Ring.inverse A := by
   first
     | exact Matrix.nonsing_inv_eq_ringInverse A
-    | exact Matrix.nonsing_inv_eq_ring_inverse A
 
 def lieU (k r : ℕ) (z : Fin (2 * r + k + 1) → ℂ) : Submodule ℝ (Q.Mx k r) where
   carrier := {X | InLieW k r z X}

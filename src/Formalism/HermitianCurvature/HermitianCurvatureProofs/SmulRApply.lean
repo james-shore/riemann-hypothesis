@@ -79,7 +79,6 @@ theorem smulR_apply {E : Type} [NormedAddCommGroup E] [NormedSpace ℝ E] [Norme
     (c : X →L[ℝ] ℂ) (e : E) (v : X) : smulR c e v = c v • e := by
   first
   | rfl
-  | simp [smulR]
 
 theorem jetR_iter (p : X →L[ℝ] ℂ) {U : Set ℂ} {V : Set X} (hU : IsOpen U) (hV : IsOpen V)
     (hVU : ∀ x ∈ V, p x ∈ U) {q : X} (hq : q ∈ V) (j : ℕ) :

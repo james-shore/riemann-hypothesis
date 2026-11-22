@@ -175,7 +175,7 @@ theorem update_positionAt_dual {V : ℕ} (B : Finset (Fin V)) (v : Fin V) :
   by_cases h : u = v
   · subst h
     simp [vertexLabel]
-  · simp [vertexLabel, Function.update_apply, h]
+  · simp [vertexLabel, h]
 
 theorem update_positionAt_base {V : ℕ} (B : Finset (Fin V)) (v : Fin V) :
     Function.update (vertexLabel B) v Slot.base = vertexLabel (B.erase v) := by
@@ -184,7 +184,7 @@ theorem update_positionAt_base {V : ℕ} (B : Finset (Fin V)) (v : Fin V) :
   by_cases h : u = v
   · subst h
     simp [vertexLabel]
-  · simp [vertexLabel, Function.update_apply, h]
+  · simp [vertexLabel, h]
 
 theorem update_positionAt_dual_self {V : ℕ} {B : Finset (Fin V)} {v : Fin V} (hv : v ∈ B) :
     Function.update (vertexLabel B) v Slot.dual = vertexLabel B := by
@@ -196,7 +196,7 @@ theorem update_positionAt_base_self {V : ℕ} {B : Finset (Fin V)} {v : Fin V} (
   by_cases h : u = v
   · subst h
     simp [vertexLabel, hv]
-  · simp [Function.update_apply, h]
+  · simp [h]
 
 theorem L_sideAt_le {R X : Type} [CommRing R] [AddCommGroup X] [Module R X] {V : ℕ}
     (L : (Fin V → Slot) → Submodule R X)
@@ -266,7 +266,7 @@ theorem expo_step {V : ℕ} (m : ℕ) {B : Finset (Fin V)} (i : Fin V → ℕ) {
   by_cases huv : u = v
   · subst huv
     simp [hv]
-  · simp [Function.update_apply, huv]
+  · simp [huv]
 
 theorem accT_step {V : ℕ} (a b c : Fin V → ℕ) (m c₀ : ℕ) {B : Finset (Fin V)}
     (i : Fin V → ℕ) {v : Fin V} (hv : v ∈ B) (u : Fin V) :
@@ -276,7 +276,7 @@ theorem accT_step {V : ℕ} (a b c : Fin V → ℕ) (m c₀ : ℕ) {B : Finset (
   by_cases huv : u = v
   · subst huv
     simp [accT, hv] <;> ring
-  · simp [accT, Function.update_apply, huv]
+  · simp [accT, huv]
 
 theorem expo_move {V : ℕ} {m : ℕ} {B : Finset (Fin V)} {i : Fin V → ℕ} {v w : Fin V}
     (hv : v ∈ B) (hiv : i v + 1 = m) (hw : (w : ℕ) = top B + 1) (hiw : i w = 0) (u : Fin V) :
@@ -287,15 +287,15 @@ theorem expo_move {V : ℕ} {m : ℕ} {B : Finset (Fin V)} {i : Fin V → ℕ} {
   by_cases huv : u = v
   · subst v
     have h1 : ¬((u : ℕ) < top B ∧ u ∉ B) := fun h => h.2 hv
-    simp [h1, hv, hiv]
+    simp [hv, hiv]
   · by_cases huw : u = w
     · subst w
       have hwB : u ∉ B := fun h => by have := le_top h; omega
       have h2 : ¬((u : ℕ) < top B) := by omega
-      simp [huv, hwB, h2, hiw, Function.update_apply]
+      simp [huv, hwB, h2, hiw]
     · by_cases huB : u ∈ B
-      · simp [huv, huw, huB, Function.update_apply]
-      · simp [huv, huw, huB, Function.update_apply]
+      · simp [huv, huw, huB]
+      · simp [huv, huw, huB]
 
 theorem accT_move {V : ℕ} (a b c : Fin V → ℕ) {m c₀ : ℕ} {B : Finset (Fin V)}
     {i : Fin V → ℕ} {v w : Fin V}
@@ -313,15 +313,15 @@ theorem accT_move {V : ℕ} (a b c : Fin V → ℕ) {m c₀ : ℕ} {B : Finset (
       rw [h] at this
       omega
     subst m
-    simp [h1, hv, huw] <;> ring
+    simp [hv, huw] <;> ring
   · by_cases huw : u = w
     · subst w
       have hwB : u ∉ B := fun h => by have := le_top h; omega
       have h2 : ¬((u : ℕ) < top B) := by omega
-      simp [huv, hwB, h2, hiw, Function.update_apply]
+      simp [huv, hwB, h2, hiw]
     · by_cases huB : u ∈ B
-      · simp [huv, huw, huB, Function.update_apply]
-      · simp [huv, huw, huB, Function.update_apply]
+      · simp [huv, huw, huB]
+      · simp [huv, huw, huB]
 
 theorem accT_le {V : ℕ} (a b c : Fin V → ℕ) (m c₀ : ℕ) {B : Finset (Fin V)}
     {i : Fin V → ℕ} (hi : ∀ u ∈ B, i u < m) (u : Fin V) :
@@ -388,7 +388,7 @@ theorem main : WalkSharp := by
     by_cases h : w = u
     · subst h
       simp
-    · simp [Function.update_apply, h]
+    · simp [h]
   have hyM : ∀ u, ∀ x ∈ L (fun _ => Slot.base), y u x ∈ L (fun _ => Slot.base) := by
     intro u x hx
     have h1 : x ∈ L (Function.update (fun _ => Slot.base) u Slot.base) := by
@@ -593,10 +593,10 @@ theorem main : WalkSharp := by
             by_cases huv : u = v
             · subst u
               have h1 : ¬((v : ℕ) < top B ∧ v ∉ B) := fun h => h.2 hv
-              simp [expo, h1, hv, hiv]
+              simp [expo, hv, hiv]
             · by_cases huB : u ∈ B
               · have h1 : ¬((u : ℕ) < top B ∧ u ∉ B) := fun h => h.2 huB
-                simp [expo, h1, huB, huv]
+                simp [expo, huB, huv]
               · have hlt2 : (u : ℕ) < top B := by
                   obtain ⟨t', ht', htt⟩ := top_mem ⟨v, hv⟩
                   have h1 : (u : ℕ) ≠ top B := fun h =>
@@ -689,7 +689,7 @@ theorem main : WalkSharp := by
     funext u
     by_cases hu : u ∈ B₀
     · have h1 : ¬((u : ℕ) < top B₀ ∧ u ∉ B₀) := fun h => h.2 hu
-      simp [expo, h1, hu]
+      simp [expo, hu]
     · have h1 : ¬((u : ℕ) < top B₀) := fun h => hu ((hB₀ u).mpr (by omega))
       simp [expo, h1, hu]
   have hacc0 : acc a b c m c₀ B₀ (fun _ => 0) = ∑ u ∈ B₀, b u := by
@@ -697,7 +697,7 @@ theorem main : WalkSharp := by
       intro u
       by_cases hu : u ∈ B₀
       · have h1 : ¬((u : ℕ) < top B₀ ∧ u ∉ B₀) := fun h => h.2 hu
-        simp [accT, h1, hu]
+        simp [accT, hu]
       · have h1 : ¬((u : ℕ) < top B₀) := fun h => hu ((hB₀ u).mpr (by omega))
         simp [accT, h1, hu]
     unfold acc

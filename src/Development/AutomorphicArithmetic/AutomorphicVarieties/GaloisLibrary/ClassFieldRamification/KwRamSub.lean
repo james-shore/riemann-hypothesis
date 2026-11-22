@@ -25,7 +25,7 @@ theorem UpperTheory.V.CF.kwRamSub :
   refine ⟨n, ψ ξ, hξ.map_of_injective ψ.injective, ?_⟩
   have hnorm : (ψ.comp g).fieldRange = L :=
     @AlgHom.fieldRange_of_normal ℚ Ω _ _ _ L
-      (by convert hgal.to_normal; all_goals first | rfl | exact Subsingleton.elim _ _) (ψ.comp g)
+      (by convert hgal.to_normal; all_goals first | rfl) (ψ.comp g)
   rw [← hnorm]
   intro x hx
   obtain ⟨y, rfl⟩ := AlgHom.mem_fieldRange.mp hx

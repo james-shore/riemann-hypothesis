@@ -32,7 +32,7 @@ theorem redGL_eq_one_of_cong {E : Type} [Field E] [NumberField E] [StarRing E] {
   by_cases h : a = b
   · subst h
     simp [reduction_one₂]
-  · simp [Pi.single_apply, h, reduction_zero]
+  · simp [h, reduction_zero]
 
 theorem rhoS_det_one : ∀ (X : Fields) (Pr : Primes X) (R : Ranks) (Ch : Chars X Pr R.m) (sel : HeightOneSpectrum (𝓞 X.F) → HeightOneSpectrum (𝓞 X.E)) (S : Set ℕ)
     (mu : Tup X.F X.E X.K S) (cst : LocCst X (rowSG Pr sel mu)), cst.Ok → ∀ (i n : ℕ) (P : rowSG Pr sel mu) (k : GLint X.E n P.1),

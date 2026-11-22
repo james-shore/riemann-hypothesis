@@ -77,7 +77,6 @@ theorem gsv_tan (hx : IsUnivChart _ n xc) (cc : Fin n → L) : IsTanAt x (gsvVec
     first
     | exact Formalism.L2.Pj.GSR.rel_uniq_w hc htk hr (Formalism.L2.Pj.GSR.rel_one hc htk)
     | exact Formalism.L2.Pj.GSR.rel_uniq_w hc hr (Formalism.L2.Pj.GSR.rel_one hc htk)
-    | exact Formalism.L2.Pj.GSR.rel_uniq_w hr (Formalism.L2.Pj.GSR.rel_one hc htk)
   calc spMap (TrivSqZeroExt.fstHom L L L).toRingHom ≫ gsvVec x xc cc
       = (Formalism.L2.Pj.GSR.liftT x (ReciprocityTheory.ChartRestriction.G.Chart.spMap (ReciprocityTheory.ChartRestriction.G.Chart.fstD L)) ≫
           gsvW xc cc).left := rfl
@@ -97,9 +96,6 @@ theorem gsv_exists (hx : IsUnivChart _ n xc) (w : Sp (DualNumber L) ⟶ Xo.univ.
   obtain ⟨v, hv⟩ : ∃ v, Formalism.L2.Pj.GSR.Rel (F := 𝟙 Xo.univ.t.G.left) x x W v := by
     first
     | exact Formalism.L2.Pj.GSR.rel_exists_v hc htk W
-    | exact Formalism.L2.Pj.GSR.rel_exists_v hc htk
-    | exact Formalism.L2.Pj.GSR.rel_exists_v hc W
-    | exact Formalism.L2.Pj.GSR.rel_exists_v W
   have hone : Formalism.L2.Pj.GSR.liftT x (ReciprocityTheory.ChartRestriction.G.Chart.spMap (ReciprocityTheory.ChartRestriction.G.Chart.fstD L)) ≫ W = 1 := by
     apply Over.OverMorphism.ext
     let e : viaT x (ReciprocityTheory.ChartRestriction.G.Chart.sp (R₀ := L) L) ⟶ Over.mk x :=
@@ -140,8 +136,6 @@ theorem gsv_eig_iff [Algebra c.F L] (hx : IsUnivChart _ n xc) (τ : E →+* ℂ)
     simp
     first
     | exact pullback.lift_fst _ _ _
-    | erw [pullback.lift_fst]
-    | (rw [limit.lift_π]; rfl)
   have key : ∀ a : 𝓞 E, (gsvVec x xc cc ≫ (Xo.univ.t.act.act a).left =
       spMap (epsMul (algebraMap c.F L (embK c τ a))) ≫ gsvVec x xc cc) ↔
       (tvec (x := xc) cc ≫ (Over.pullback x).map (Xo.univ.t.act.act a) =
@@ -193,8 +187,6 @@ theorem gsv_comb_iff (hx : IsUnivChart _ n xc) {m : ℕ} (e : Fin m → Fin n �
     rw [gsv_tvec_sum hx]
     first
     | exact Formalism.L2.Pj.GSR.rel_prod hc htk u0 _ hrel
-    | exact Formalism.L2.Pj.GSR.rel_prod hc u0 _ hrel
-    | exact Formalism.L2.Pj.GSR.rel_prod u0 _ hrel
   have hleft : ((List.ofFn u0).prod).left = gsvVec x xc (∑ j, a j • e j) := by
     have h : ((List.ofFn u0).prod).left ≫ 𝟙 _ =
         (tvec (x := xc) (∑ j, a j • e j)).left ≫ pullback.fst Xo.univ.t.G.hom x := hprod

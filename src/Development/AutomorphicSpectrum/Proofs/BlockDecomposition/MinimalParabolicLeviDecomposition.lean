@@ -23,8 +23,7 @@ def leviM (X Y : Matrix (Fin n) (Fin r) R) (Xs Ys : Matrix (Fin r) (Fin n) R) (D
 variable {X Y : Matrix (Fin n) (Fin r) R} {Xs Ys : Matrix (Fin r) (Fin n) R}
 
 theorem piM_mul_X (hxx : Xs * X = 0) (hyx : Ys * X = 1) : piM X Y Xs Ys * X = 0 := by
-  simp only [piM, Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc, hxx, hyx, Matrix.mul_one, Matrix.mul_zero, sub_self,
-    sub_zero]
+  simp only [piM, Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc, hxx, hyx, Matrix.mul_one, Matrix.mul_zero, sub_self]
 
 theorem piM_mul_Y (hxy : Xs * Y = 1) (hyy : Ys * Y = 0) : piM X Y Xs Ys * Y = 0 := by
   simp only [piM, Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc, hxy, hyy, Matrix.mul_one, Matrix.mul_zero, sub_self,
@@ -35,8 +34,7 @@ theorem Xs_mul_piM (hxx : Xs * X = 0) (hxy : Xs * Y = 1) : Xs * piM X Y Xs Ys = 
     sub_zero]
 
 theorem Ys_mul_piM (hyx : Ys * X = 1) (hyy : Ys * Y = 0) : Ys * piM X Y Xs Ys = 0 := by
-  simp only [piM, Matrix.mul_sub, Matrix.mul_one, ← Matrix.mul_assoc, hyx, hyy, Matrix.zero_mul, Matrix.one_mul, sub_self,
-    sub_zero]
+  simp only [piM, Matrix.mul_sub, Matrix.mul_one, ← Matrix.mul_assoc, hyx, hyy, Matrix.zero_mul, Matrix.one_mul, sub_self]
 
 theorem piM_mul (W : Matrix (Fin n) (Fin n) R) : piM X Y Xs Ys * W = W - X * (Ys * W) - Y * (Xs * W) := by
   simp only [piM, Matrix.sub_mul, Matrix.one_mul, Matrix.mul_assoc]
@@ -142,7 +140,7 @@ theorem cT_diagonal' (d : Fin r → R) : cT s (diagonal d) = diagonal (fun i => 
   by_cases hij : i = j
   · subst hij
     simp [cT]
-  · simp [cT, Matrix.diagonal_apply, hij, Ne.symm hij]
+  · simp [cT, hij, Ne.symm hij]
 
 theorem cT_piM_mul (hF : PFr s Jm X Y) :
     cT s (piM X Y (cT s X * Jm) (cT s Y * Jm)) * Jm = Jm * piM X Y (cT s X * Jm) (cT s Y * Jm) := by

@@ -304,7 +304,6 @@ private theorem commute_kap_diagonal {P : M.Par} (f : M.Ty P → ℂ) (v : M.Ty 
   have hk : MA.kap P (MA.DQ P) f = Matrix.diagonal fun π => algebraMap ℂ (MA.DQ P).Pr (f π) := by
     first
     | rfl
-    | (ext i j; simp [MA.kap, Matrix.diagonal_apply])
   rw [hk]
   show Matrix.diagonal _ * Matrix.diagonal v = Matrix.diagonal v * Matrix.diagonal _
   rw [Matrix.diagonal_mul_diagonal, Matrix.diagonal_mul_diagonal]
@@ -319,7 +318,6 @@ private theorem rai_kap_SS_DQ {P : M.Par} : Rai (MA.kap P (MA.DQ P)) (MA.SS P (M
     intro h
     first
     | rfl
-    | (ext i j; simp [MA.kap, Matrix.diagonal_apply])
   rw [hk, hk]
   ext π' π
   rw [Matrix.diagonal_mul, Matrix.mul_diagonal]
@@ -392,9 +390,7 @@ theorem quadratic_shift_identity : GQSS := by
         funext π
         first
         | (rw [starRingEnd_apply, algebraMap_star_comm])
-        | exact (algebraMap_star_comm (f π)).symm
-        | simp [Algebra.algebraMap_eq_smul_one, star_smul]
-        | (simp only [Algebra.algebraMap_eq_smul_one, star_smul, star_one]; rfl))
+        | exact (algebraMap_star_comm (f π)).symm)
   refine ⟨?_, ?_⟩
   · have e1 := ss_expand d.κ d.SS hRel.2.2.2.1 hP (fun Y => d.QQ Y 1 0)
       (fun Y => d.L.GG * d.x Y * d.L.l0 Y) hdB (fun Y => rfl) hl

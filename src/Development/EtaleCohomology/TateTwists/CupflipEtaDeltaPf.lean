@@ -166,7 +166,7 @@ theorem d_phi {N : ℕ} {U : Scheme.{0}} (x : Sx E N U) (s t : ℤ) (hst : s + 1
     Sec.map (K.d s t) (phi μ hk α.1 β.1 x s c) = ((k.negOnePow : ℤˣ) : ℤ) • phi μ hk α.1 β.1 x t (Pr.d N c) := by
   rw [phi_eq, phi_eq]
   refine Finsupp.induction_linear c ?_ ?_ ?_
-  · simp only [map_zero, secmap_zero', smul_zero]
+  · simp only [map_zero, smul_zero]
   · intro f g hf hg
     rw [map_add, map_add, map_add, secmap_add', hf, hg, smul_add]
   · intro z a

@@ -22,7 +22,7 @@ theorem ordProd_map {H K K' : Type} [CommRing K] [CommRing K'] {n : ℕ} (f : K 
   simp only [Function.comp_apply, map_sub]
   congr 1
   ext a b
-  by_cases h : a = b <;> simp [h, Matrix.one_apply]
+  by_cases h : a = b <;> simp [h]
 
 @[ext] structure NRep (K : Type) [CommRing K] where
   r : F.G0 →* Matrix (Fin n) (Fin n) K

@@ -67,11 +67,6 @@ theorem isRoot_charpoly_of_isRoot_minpoly {F C E : Type} [Field F] [Ring C] [Alg
     (x : C) (μ : E) (hμ : ((minpoly F x).map τ).IsRoot μ) : (ρ x).charpoly.IsRoot μ := by
   first
   | (rename_i h_3 h_4 h_5 h_6 h_7 h_8 h_9; revert F C E h_3 h_4 h_5 h_6 h_7 h_8 h_9 τ n hn ρ hρ x μ hμ; exact @_root_.GlobalTheory.SumScalarVanishing.isRoot_charpoly_of_isRoot_minpoly)
-  | exact @_root_.GlobalTheory.SumScalarVanishing.isRoot_charpoly_of_isRoot_minpoly
-  | exact _root_.GlobalTheory.SumScalarVanishing.isRoot_charpoly_of_isRoot_minpoly
-  | (apply _root_.GlobalTheory.SumScalarVanishing.isRoot_charpoly_of_isRoot_minpoly <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SumScalarVanishing.isRoot_charpoly_of_isRoot_minpoly <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SumScalarVanishing.isRoot_charpoly_of_isRoot_minpoly <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SumScalarVanishing.isRoot_charpoly_of_isRoot_minpoly ..)
 
 end GlobalTheory.GlobEig
@@ -267,7 +262,7 @@ theorem isRoot_inv (G : HTGroup p) (i : Fin G.m) (β y : G.Cˣ) (c : ℚˣ)
       _ = rhoE G i ((y⁻¹ : G.Cˣ) : G.C) *ᵥ ((rhoE G i (y : G.C) * rhoE G i (β : G.C) *
             rhoE G i (sh G y)) *ᵥ v) := by
           rw [hM]
-          simp only [hw, Matrix.mulVec_mulVec, mul_assoc]
+          simp only [hw, Matrix.mulVec_mulVec]
       _ = (rhoE G i ((y⁻¹ : G.Cˣ) : G.C) * rhoE G i (y : G.C)) *ᵥ
             (rhoE G i (β : G.C) *ᵥ (rhoE G i (sh G y) *ᵥ v)) := by
           simp only [Matrix.mulVec_mulVec, mul_assoc]

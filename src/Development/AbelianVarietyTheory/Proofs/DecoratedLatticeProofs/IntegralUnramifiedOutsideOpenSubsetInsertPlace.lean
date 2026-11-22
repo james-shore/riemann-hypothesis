@@ -39,7 +39,7 @@ theorem integral_openOff_insert : ∀ (D : D7) (A : HSp D) (L : Lat A), IsSelfDu
     let H : Subgroup (GA D A) :=
       ⨅ u, ⨅ (_ : u ∉ S), (stabLoc D.sp.cm.sig A.gram L u).comap (proj D.sp.cm.sig A.gram u)
     have eH : (H : Set (GA D A)) = openOff A L S := by
-      ext g; simp [H, openOff, Subgroup.mem_iInf]
+      ext g; simp [H, openOff]
     rw [← eH]
     refine Subgroup.isOpen_mono (H₁ := levelOpen D.sp.cm.sig A.gram L) ?_ (isOpen_levelOpen _ _ L)
     intro g hg

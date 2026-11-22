@@ -86,7 +86,7 @@ theorem exists_section : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] 
       have h6 := congrArg Complex.re (GlobalTheory.T.unitaryChartSectionFrameEntriesFDeriv_skew X hx z τ a a)
       have h7 := GlobalTheory.T.unitaryChartSectionFrameEntriesFDeriv_diag_im X hx z τ a
       simp only [Complex.add_re, Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, Complex.conj_re,
-        Complex.conj_im, h7, Complex.zero_re, mul_zero, sub_zero, zero_mul, neg_zero] at h6
+        Complex.conj_im, h7, Complex.zero_re, mul_zero, sub_zero, neg_zero] at h6
       have hs := PoinPf.sgn_ne X.p0 (a : ℕ)
       have hre : (dY X z τ a a).re = 0 := by
         have : 2 * sgn X.p0 (a : ℕ) * (dY X z τ a a).re = 0 := by linarith

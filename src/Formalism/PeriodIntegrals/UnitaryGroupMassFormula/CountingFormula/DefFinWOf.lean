@@ -91,7 +91,7 @@ theorem defFinW_of (hW : WPos) : DefFinW := by
   rintro w ⟨hwP, h1, h2, h3, hc⟩
   have hwA0 : w ∈ A0 := Submodule.mem_inf.mpr ⟨hwP, ⟨h1, h2, h3⟩⟩
   refine ⟨⟨w, hA0U w hwA0⟩, ⟨hwA0, ?_⟩, rfl⟩
-  simp only [B, LinearMap.mk₂_apply, Subtype.coe_mk, hc]
+  simp only [B, LinearMap.mk₂_apply, hc]
   linarith
 
 end PI.UnitaryGroupMassFormula.CntFormula

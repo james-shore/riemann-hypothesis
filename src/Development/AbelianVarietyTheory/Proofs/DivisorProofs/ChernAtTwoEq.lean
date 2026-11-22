@@ -97,7 +97,7 @@ theorem coeff_two {R : Type} [CommRing R] (F : Matrix (Fin 1 ⊕ Fin 1) (Fin 1 �
     intro a b c d
     simp only [map_add, map_sub, map_mul]; ring
   simp only [if_true, reduceCtorEq, if_false, e]
-  simp [Polynomial.coeff_one, Polynomial.coeff_X, -map_add, -map_sub, -map_mul]
+  simp [Polynomial.coeff_one, -map_add, -map_sub, -map_mul]
 
 theorem aeval_curvPoly {r : Type} [Fintype r] [DecidableEq r] (G : V n → Matrix r r ℂ) (v : V n) (p q : r) :
     MvPolynomial.aeval sym (GlobalTheory.GoodMetric.curvPoly G v p q) = ofValues (fun ξ η => curv G v ξ η p q) := by

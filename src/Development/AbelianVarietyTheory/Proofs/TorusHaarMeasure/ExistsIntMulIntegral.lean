@@ -80,8 +80,6 @@ theorem exists_int_smul_mem {r : ℕ} (Λ : Submodule (𝓞 E) (Fin r → E))
   | exact @_root_.GlobalTheory.IntegralMultiples.main
   | exact _root_.GlobalTheory.IntegralMultiples.main
   | (apply _root_.GlobalTheory.IntegralMultiples.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegralMultiples.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegralMultiples.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegralMultiples.main ..)
 
 theorem finite_vectors (r : ℕ) (X : Data E r) (R : ℝ) :

@@ -41,7 +41,7 @@ theorem GlobalTheory.riemann_relations_period_matrix : ∀ (g d : ℕ) (Hm : Mat
     have h := hFE j k
     rw [hF j, lin1] at h
     simp only [hAr, Complex.im_sum, Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im,
-      mul_zero, add_zero] at h
+      mul_zero] at h
     simpa [Matrix.mul_apply, Matrix.one_apply, Y] using h
   have hAY : a * Y = 1 := by
     have h := congrArg Matrix.transpose hYA

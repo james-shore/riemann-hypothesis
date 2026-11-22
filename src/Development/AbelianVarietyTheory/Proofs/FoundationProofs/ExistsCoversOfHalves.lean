@@ -173,7 +173,6 @@ theorem unrAt_of_not_mem {Ks : Type} [Field Ks] [NumberField Ks] [Algebra Ks D.w
   · obtain ⟨c', hc', e⟩ := h _ (hN P' hP')
     have e' : c' = (N : 𝓞 D.host.E) := RingOfIntegers.ext (by
       rw [e]
-      change star ((N : 𝓞 D.host.E) : D.host.E) = ((N : 𝓞 D.host.E) : D.host.E)
       rw [show ((N : 𝓞 D.host.E) : D.host.E) = (N : D.host.E) from map_natCast (algebraMap (𝓞 D.host.E) D.host.E) N,
         star_natCast])
     exact hP (e' ▸ hc')

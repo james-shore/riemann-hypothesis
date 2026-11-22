@@ -87,6 +87,6 @@ theorem stMat_int_iff : ∀ (D : D7) (X : HidaSetting D) (Y : Full X) (u u' : D.
     rw [hM, ← e1]
     have h1 : p.1.1 ≠ p.1.2 := ne_of_lt p.2.1
     simp only [B, if_neg h1, dif_pos p.2]
-    all_goals first | rfl | (congr 1)
+    all_goals first | rfl
 
 end GlobalTheory.HL.StIntLat

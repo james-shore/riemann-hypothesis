@@ -439,7 +439,6 @@ theorem phiR_injective {e : ι → Fin s × Fin s} (he : Function.Injective e) :
     | exact congrArg Sum.inl (he (Prod.ext h.1 h.2))
     | exact congrArg Sum.inr (he (Prod.ext h.1 h.2))
     | exact absurd h.2.2 (by decide)
-    | simp at h
 
 def JLin (e : ι → Fin s × Fin s) :
     EuclideanSpace ℝ (ι ⊕ ι) →ₗ[ℝ] EuclideanSpace ℝ (Fin s × Fin s × Bool) :=
@@ -484,9 +483,9 @@ theorem realify_emb (e : ι → Fin s × Fin s) (v : ι → ℂ) :
   rw [JLin_apply]
   cases b
   · simp only [Fintype.sum_sum_type, phiR, reals]
-    simp [realifyFun, emb, Complex.re_sum, apply_ite Complex.re, Prod.ext_iff, and_assoc]
+    simp [realifyFun, emb, Complex.re_sum, apply_ite Complex.re, Prod.ext_iff]
   · simp only [Fintype.sum_sum_type, phiR, reals]
-    simp [realifyFun, emb, Complex.im_sum, apply_ite Complex.im, Prod.ext_iff, and_assoc]
+    simp [realifyFun, emb, Complex.im_sum, apply_ite Complex.im, Prod.ext_iff]
 
 theorem lieE_eq_range {e : ι → Fin s × Fin s} (he : Function.Injective e) {S : Set (Matrix (Fin s) (Fin s) ℂ)}
     (hS : lieOf S = Set.range (emb e)) : lieE S = LinearMap.range (JIso he).toLinearMap := by

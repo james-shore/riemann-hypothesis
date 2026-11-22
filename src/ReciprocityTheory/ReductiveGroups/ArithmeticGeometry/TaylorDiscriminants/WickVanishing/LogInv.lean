@@ -54,7 +54,6 @@ theorem pderiv_pt {n : ℕ} (v : Fin n × Fin d) (j : Fin n) (i : Fin d) :
     pderiv k v (pt k (n := n) d j i) = if (j, i) = v then 1 else 0 := by
   first
   | rw [pt_apply, MvPowerSeries.pderiv_X, Pi.single_apply]
-  | (rw [pt_apply, MvPowerSeries.pderiv_X]; simp [Pi.single_apply])
 
 def Jac : Fin d → Fin d → PS k 1 d := fun i b => ev (n := 1) ![pt k d 0, 0] (pderiv k ((1 : Fin 2), b) (G.F i))
 

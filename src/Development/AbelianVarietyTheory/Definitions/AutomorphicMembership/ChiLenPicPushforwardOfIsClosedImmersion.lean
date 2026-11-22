@@ -297,7 +297,7 @@ theorem vDeg_vPull_of_isIso (D : B.VDivZ) (x : PicSym B.X) :
   have key (I : B.effVert) : B'.vDeg (Model.vPull hf (Model.ofEff I)) (picSymPull f x) = B.vDeg (Model.ofEff I) x := by
     let g := (I.1.comapIso f).hom ≫ pullback.snd _ _
     have hg : (I.1.comap f).subschemeι ≫ f = g ≫ I.1.subschemeι := by
-      simp [g, ← pullback.condition]
+      simp [g]
     have e : (Scheme.Modules.pushforward f).obj (divMod (I.1.comap f)) ≅ divMod I.1 :=
       (Scheme.Modules.pushforwardComp _ _ ≪≫ Scheme.Modules.pushforwardCongr hg ≪≫
         (Scheme.Modules.pushforwardComp _ _).symm).app _ ≪≫

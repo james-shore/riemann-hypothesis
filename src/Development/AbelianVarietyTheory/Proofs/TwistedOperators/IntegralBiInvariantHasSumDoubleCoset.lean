@@ -21,10 +21,6 @@ theorem integral_biInvariant_hasSum_doubleCoset :
       (m.real (DoubleCoset.doubleCoset c.out (J : Set G) (J : Set G)) : ℂ) * F c.out) (∫ g, F g ∂m) := by
   first
   | exact @_root_.GlobalTheory.TwistedOperatorMainTheorem.main_thm
-  | exact _root_.GlobalTheory.TwistedOperatorMainTheorem.main_thm
-  | (apply _root_.GlobalTheory.TwistedOperatorMainTheorem.main_thm <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TwistedOperatorMainTheorem.main_thm <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TwistedOperatorMainTheorem.main_thm <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TwistedOperatorMainTheorem.main_thm ..)
 
 end GlobalTheory

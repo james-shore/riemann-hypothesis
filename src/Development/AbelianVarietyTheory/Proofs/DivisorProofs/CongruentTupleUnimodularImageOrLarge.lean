@@ -49,7 +49,7 @@ theorem dichDetCongr {X₀ X : Type} [AddCommGroup X₀] [Module.Free ℤ X₀] 
   choose w hw using fun j => h (b j)
   let hh : X₀ →ₗ[ℤ] X := b.constr ℤ w
   have hg : g = k + (N : ℤ) • hh := b.ext fun j => by
-    simp [hh, hw j, Module.Basis.constr_basis, natCast_zsmul]
+    simp [hh, hw j, natCast_zsmul]
   have e : ε.toLinearMap ∘ₗ g = ε.toLinearMap ∘ₗ k + (N : ℤ) • (ε.toLinearMap ∘ₗ hh) := by
     rw [hg, LinearMap.comp_add, LinearMap.comp_smul]
   rw [e, ← LinearMap.det_toMatrix b, ← LinearMap.det_toMatrix b, map_add, map_smul]
@@ -132,7 +132,7 @@ private theorem quad_sub_le (β : LinearMap.BilinForm ℤ X) (hs : ∀ x y, β x
 
 private theorem quad_nsmul (β : LinearMap.BilinForm ℤ X) (w : X) :
     β (N • w) (N • w) = (N : ℤ) * ((N : ℤ) * β w w) := by
-  simp [map_nsmul, LinearMap.smul_apply, nsmul_eq_mul]
+  simp [map_nsmul, LinearMap.smul_apply]
 
 end Help
 

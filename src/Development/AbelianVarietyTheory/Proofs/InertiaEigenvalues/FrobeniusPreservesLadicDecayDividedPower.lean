@@ -140,10 +140,10 @@ theorem frob_keeps_decay (l : ℕ) [hl : Fact l.Prime] (a e : ℕ) [NeZero a] [N
       exact (mul_eq_zero.1 m1).resolve_left hl0
     constructor
     · rw [e1]
-      simp only [Pi.add_apply, Pi.smul_apply, z1, zero_add, nsmul_eq_mul, Nat.cast_pow]
+      simp only [Pi.add_apply, z1, zero_add, nsmul_eq_mul, Nat.cast_pow]
       exact Dvd.dvd.mul_right (pow_dvd_pow _ (Nat.le_succ r)) _
     · rw [e2]
-      simp only [Pi.add_apply, Pi.smul_apply, z2, zero_add, nsmul_eq_mul, Nat.cast_pow]
+      simp only [Pi.add_apply, z2, zero_add, nsmul_eq_mul, Nat.cast_pow]
       exact Dvd.intro _ rfl
   exact ⟨fun r => (key r).mono fun _ h => h.1, fun r => (key r).mono fun _ h => h.2⟩
 

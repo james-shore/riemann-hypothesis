@@ -32,12 +32,12 @@ theorem adL_iter_e {i j : Fin n} (hij : i ≠ j) (a : Fin n × Fin n) :
   have hji : j ≠ i := hij.symm
   by_cases h1 : i = c <;> by_cases h2 : d = j
   · subst h1; subst h2
-    simp [adL_e, adL_sub, adL_neg, adL_zero, hij, hji]
+    simp [adL_e, adL_sub, adL_neg, hij]
   · subst h1
-    simp [adL_e, adL_sub, adL_neg, adL_zero, hij, hji, h2]
+    simp [adL_e, adL_zero, hij, h2]
   · subst h2
-    simp [adL_e, adL_sub, adL_neg, adL_zero, hij, hji, h1]
-  · simp [adL_e, adL_sub, adL_neg, adL_zero, h1, h2]
+    simp [adL_e, adL_neg, adL_zero, hij, h1]
+  · simp [adL_e, adL_zero, h1, h2]
 
 theorem pow_mul_mem_Jp_of_le {F w : U n} {N N' : ℕ} (h : N ≤ N') (hw : F ^ N * w ∈ Jp n) :
     F ^ N' * w ∈ Jp n := by

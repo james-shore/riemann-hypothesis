@@ -38,7 +38,7 @@ theorem path_eq_of_content_sequence {q n : ℕ} {lam2 tau tau' : Fin q → ℕ} 
 
 theorem lca_single_ne {q : ℕ} {r a : Fin q} (h : a ≠ r) (A : Fin q → ℕ) :
     (A + Pi.single r 1 : Fin q → ℕ) a = A a := by
-  simp [Pi.single_apply, h]
+  simp [h]
 
 theorem lca_single_eq {q : ℕ} (r : Fin q) (A : Fin q → ℕ) :
     (A + Pi.single r 1 : Fin q → ℕ) r = A r + 1 := by simp

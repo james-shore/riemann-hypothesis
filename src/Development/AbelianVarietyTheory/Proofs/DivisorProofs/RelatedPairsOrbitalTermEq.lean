@@ -154,7 +154,7 @@ theorem toAf_val (P : DPair G) (x : (AfP p ⊗[ℚ] G.C)ˣ) (t : (AfP p)ˣ) (hx 
 
 theorem toQr_val (P : DPair G) (r : ℕ) (z : Gr G r) (v : P.cent) :
     P.toQr r z v = z⁻¹ * inclG G r (locC G v.1) * z := by
-  simp [DPair.toQr, carry, MulAut.conj_apply]
+  simp [DPair.toQr, carry]
 
 theorem locC_conj (y : G.Cˣ) (v : G.Cˣ × ℚˣ) :
     locC G (y * v.1 * y⁻¹, v.2) = locC G (y, 1) * locC G v * (locC G (y, 1))⁻¹ := by

@@ -86,7 +86,7 @@ theorem isTanScal_push {O : Type} [Ring O] {G : Over S} {G' : Over S'} [GrpObj G
   have fs : spMap (TrivSqZeroExt.fstHom R' R' R').toRingHom ≫ spMap (algebraMap R' (DualNumber R')) = 𝟙 _ := by
     refine (Spec.map_comp _ _).symm.trans ((congrArg Spec.map ?_).trans (Spec.map_id _))
     ext a
-    simp [TrivSqZeroExt.algebraMap_eq_inl]
+    simp
   refine and_congr ?_ ?_
   · rw [one, he]
     refine ⟨fun E => by rw [← E]; exact (Category.assoc _ _ _).symm,

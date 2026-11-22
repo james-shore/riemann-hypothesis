@@ -77,7 +77,7 @@ theorem mem_closure_of_lower {k : Matrix (κ ⊕ κ) (κ ⊕ κ) F} (hk : Sp k) 
   simp only [Matrix.toBlocks_fromBlocks₁₂] at h12
   subst h12
   obtain ⟨hc, hAD, -⟩ := full_of_depthZeroLabels_of_one_le_d hk
-  simp only [Matrix.transpose_zero, Matrix.mul_zero, sub_zero] at hAD
+  simp only [Matrix.mul_zero, sub_zero] at hAD
   have hdet : IsUnit A.det := by
     have := congrArg Matrix.det hAD
     rw [Matrix.det_mul, Matrix.det_transpose, Matrix.det_one] at this
@@ -128,7 +128,7 @@ private theorem exists_symm_isUnit_det_sub_mul_of_finrank_ker (b : Matrix κ κ 
     rw [hEdef, Matrix.mulVec_diagonal]
     by_cases hj : j = i
     · subst hj; simp
-    · simp [Pi.single_apply, hj]
+    · simp [hj]
   have hET : Eᵀ = E := by rw [hEdef, Matrix.diagonal_transpose]
   set d' := d - E * b with hd'
   have hd'v : ∀ y, d' *ᵥ y = d *ᵥ y - Pi.single i ((b *ᵥ y) i) := by
@@ -226,7 +226,7 @@ theorem main (g : Matrix (κ ⊕ κ) (κ ⊕ κ) F) (hg : Sp g) : g ∈ Submonoi
       sp_of_mem_closure (fromBlocks_one_symm_mem_closure_gens (-S) (by rw [Matrix.transpose_neg, hS]))
     exact hn.mul hg1
   have hk12 : k.toBlocks₁₂ = 0 := by
-    simp [hk, Matrix.fromBlocks_multiply, Matrix.neg_mul, hSd]
+    simp [hk, Matrix.fromBlocks_multiply, hSd]
   have hkm := mem_closure_of_lower hkSp hk12
   have e2 : Matrix.fromBlocks a b c d =
       Matrix.fromBlocks 1 0 (-(-C)) 1 * (Matrix.fromBlocks 1 S 0 1 * k) := by

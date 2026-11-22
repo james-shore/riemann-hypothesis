@@ -51,7 +51,7 @@ theorem Cm_one : Cm Zd p 1 = 1 := by
   ext c b
   rw [Cm_apply]
   by_cases h : c = b
-  · subst h; simp [uFi_mul, mul_uFi]
+  · subst h; simp [uFi_mul]
   · simp [Matrix.one_apply_ne h]
 
 theorem comb_Cm {T' : D.host.E} (F' : LFlag (VS D) D.R.rS T')

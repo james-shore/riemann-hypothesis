@@ -35,7 +35,7 @@ theorem dt_eq_fderiv {U : ℝ → Mat n → V}
     (hU : ContDiffOn ℝ ∞ (Function.uncurry U) (Set.univ ×ˢ GLs n)) {t : ℝ} {g : Mat n} (hg : g ∈ GLs n) :
     Dt U t g = fderiv ℝ (Function.uncurry U) (t, g) ((1 : ℝ), (0 : Mat n)) := by
   have hd : DifferentiableAt ℝ (Function.uncurry U) (t, g) :=
-    (GlobalTheory.CompanionTheory.WaveMult.WaveZ.joint_contDiffAt hU t hg).differentiableAt (by first | simp | exact WithTop.coe_ne_zero.2 ENat.top_ne_zero | decide)
+    (GlobalTheory.CompanionTheory.WaveMult.WaveZ.joint_contDiffAt hU t hg).differentiableAt (by first | simp)
   exact (hd.hasFDerivAt.comp_hasDerivAt t (GlobalTheory.CompanionTheory.WaveMult.WaveZ.hasDerivAt_line t g)).deriv
 
 theorem dt_joint {U : ℝ → Mat n → V}
@@ -52,7 +52,7 @@ theorem time_differentiableAt {U : ℝ → Mat n → V}
     (hU : ContDiffOn ℝ ∞ (Function.uncurry U) (Set.univ ×ˢ GLs n)) (t : ℝ) {g : Mat n} (hg : g ∈ GLs n) :
     DifferentiableAt ℝ (fun s => U s g) t := by
   have hd : DifferentiableAt ℝ (Function.uncurry U) (t, g) :=
-    (GlobalTheory.CompanionTheory.WaveMult.WaveZ.joint_contDiffAt hU t hg).differentiableAt (by first | simp | exact WithTop.coe_ne_zero.2 ENat.top_ne_zero | decide)
+    (GlobalTheory.CompanionTheory.WaveMult.WaveZ.joint_contDiffAt hU t hg).differentiableAt (by first | simp)
   exact (hd.hasFDerivAt.comp_hasDerivAt t (GlobalTheory.CompanionTheory.WaveMult.WaveZ.hasDerivAt_line t g)).differentiableAt
 
 theorem symm_mixed {M W : Type} [NormedAddCommGroup M] [NormedSpace ℝ M] [NormedAddCommGroup W] [NormedSpace ℝ W]
@@ -60,13 +60,13 @@ theorem symm_mixed {M W : Type} [NormedAddCommGroup M] [NormedSpace ℝ M] [Norm
     HasDerivAt (fun s => fderiv ℝ Φ (s, g) ((0 : ℝ), y))
       (fderiv ℝ (fun x => fderiv ℝ Φ (t, x) ((1 : ℝ), (0 : M))) g y) t := by
   have h2 : ContDiffAt ℝ 2 Φ (t, g) :=
-    hc.of_le (by first | exact ENat.LEInfty.out | exact_mod_cast le_top | simp)
+    hc.of_le (by first | exact ENat.LEInfty.out)
   have hD1 : ContDiffAt ℝ 1 (fderiv ℝ Φ) (t, g) :=
-    h2.fderiv_right (by first | exact le_of_eq one_add_one_eq_two | norm_num)
+    h2.fderiv_right (by first | exact le_of_eq one_add_one_eq_two)
   have hDd : HasFDerivAt (fderiv ℝ Φ) (fderiv ℝ (fderiv ℝ Φ) (t, g)) (t, g) :=
     (hD1.differentiableAt one_ne_zero).hasFDerivAt
   have hsymm : IsSymmSndFDerivAt ℝ Φ (t, g) :=
-    h2.isSymmSndFDerivAt (by first | exact minSmoothness_of_isRCLikeNormedField.le | simp)
+    h2.isSymmSndFDerivAt (by first | exact minSmoothness_of_isRCLikeNormedField.le)
   have hpath : HasDerivAt (fun s : ℝ => (s, g)) ((1 : ℝ), (0 : M)) t :=
     (hasDerivAt_id t).prodMk (hasDerivAt_const t g)
   have hL : HasDerivAt (fun s => fderiv ℝ Φ (s, g) ((0 : ℝ), y))

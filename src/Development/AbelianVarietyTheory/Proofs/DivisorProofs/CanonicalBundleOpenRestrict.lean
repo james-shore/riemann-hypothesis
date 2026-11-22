@@ -72,7 +72,7 @@ theorem resG_oBundle_g (K : CanonLB f d) (a b : OIdx e K)
           ((K.bundle.g a.1 b.1 : Γ(X, K.bundle.U a.1 ⊓ K.bundle.U b.1))) := by
   simp only [oBundle, ZH.UFib.refinePull, res, pullU, Units.coe_map, MonoidHom.coe_coe]
   erw [← CommRingCat.comp_apply, ← CommRingCat.comp_apply]
-  simp only [Scheme.Hom.appLE, Category.assoc, resG]
+  simp only [Scheme.Hom.appLE]
   rw [← Functor.map_comp]
   rfl
 

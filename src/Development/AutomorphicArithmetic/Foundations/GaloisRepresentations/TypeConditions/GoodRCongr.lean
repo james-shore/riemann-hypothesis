@@ -256,7 +256,7 @@ theorem goodR_part (D : D7) (h0 : SumRepresentations.tie0 D) (h2 : AutomorphicGa
     simp only [Function.comp_apply, Multiset.map_map]
     congr 1
     funext z
-    simp only [Function.comp_apply, he]
+    simp only [he]
     push_cast; ring
 
 theorem goodR_iso : ∀ D : D7, SumRepresentations.tie0 D → AutomorphicGaloisAdmissible D.nd D.naut → ∀ (i : D.nd.Loc) (P : D.naut.AV i)

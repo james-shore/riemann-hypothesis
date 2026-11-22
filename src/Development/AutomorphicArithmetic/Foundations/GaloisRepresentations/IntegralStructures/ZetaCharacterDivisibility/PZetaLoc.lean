@@ -17,7 +17,7 @@ private theorem map_scalar' {R S : Type} [CommRing R] [CommRing S] (f : R →+* 
   ext i j
   by_cases h : i = j
   · subst h; simp [Matrix.GeneralLinearGroup.scalar]
-  · simp [Matrix.GeneralLinearGroup.scalar, Matrix.diagonal_apply, h]
+  · simp [Matrix.GeneralLinearGroup.scalar, h]
 
 section
 

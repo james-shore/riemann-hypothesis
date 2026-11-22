@@ -110,7 +110,7 @@ theorem mem_hermSub_sym (γ : Matrix (Fin n) (Fin n) D.host.E) : γ + γᴴ ∈ 
   ext i j
   simp only [Matrix.transpose_apply, Matrix.map_apply, Matrix.add_apply, Matrix.conjTranspose_apply, map_add]
   have hs : ∀ e : D.host.E, D.sp.cm.sig e = star e := fun e => rfl
-  simp only [hs, star_add, star_star]
+  simp only [hs, star_star]
   rw [add_comm]
 
 theorem rat_ker {ψ : AddChar (AF D.host.F) ℂ} (hψ : IsCharAF D.host.F ψ) (x : hermA D n)

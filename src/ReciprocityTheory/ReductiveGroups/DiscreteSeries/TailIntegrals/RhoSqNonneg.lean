@@ -29,13 +29,13 @@ private lemma sclL_apply (τ : ℝ) (p m : ℕ) (x : Xp (p + 1) m) : sclL τ p m
     by_cases hi : i = 0
     · subst hi
       simp [fL, gL, Complex.real_smul]
-    · simp [fL, gL, hi, Function.update_apply]
+    · simp [fL, gL, hi]
   have h2 : fL τ⁻¹ p b = Function.update b 0 (b 0 / (τ : ℂ)) := by
     funext i
     by_cases hi : i = 0
     · subst hi
       simp [fL, gL, Complex.real_smul, div_eq_inv_mul]
-    · simp [fL, gL, hi, Function.update_apply]
+    · simp [fL, gL, hi]
   simp [sclL, scl, h1, h2]
 
 theorem scl_mp {p m : ℕ} (τ : ℝ) (hτ : τ ≠ 0) :

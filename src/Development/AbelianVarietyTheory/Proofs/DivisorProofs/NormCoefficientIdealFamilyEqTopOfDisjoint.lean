@@ -17,7 +17,7 @@ theorem normIdeal_top (A K L B : Type) [CommRing A] [Field K] [Field L] [Algebra
   have hform : GlobalTheory.NormSheaf.normForm K L (fun _ : Fin 1 => algebraMap B L 1) =
       X 0 ^ Module.finrank K L := by
     unfold GlobalTheory.NormSheaf.normForm
-    simp [Fin.sum_univ_one, map_one, Matrix.det_smul]
+    simp [map_one]
   rw [hform, coeff_X_pow]
   simp
 

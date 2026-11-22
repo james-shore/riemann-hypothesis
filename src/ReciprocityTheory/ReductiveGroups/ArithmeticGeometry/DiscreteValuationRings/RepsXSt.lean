@@ -72,7 +72,7 @@ theorem uu_of (hG : GlobalFnsSt) (hT : TwistBaseChangeStatement) (hR : RepsXSt) 
     dsimp only at h0
     rw [DVR.smul_f, h0, map_mul, resTop, resTop, resTop, map_mul, _root_.mul_assoc]
   have hcard : Fintype.card ((Fin D.toPre.rank → Fin k) × Fin (k ^ D.toPre.P.g)) = k ^ (D.toPre.rank + D.toPre.P.g) := by
-    simp [Fintype.card_prod, Fintype.card_fun, pow_add]
+    simp [Fintype.card_prod, pow_add]
   let e := Fintype.equivFinOfCardEq hcard
   let S : Finset D.toPre.X := Finset.univ.image rep
   have hS : ∀ χ : D.toPre.X, ∃ α ∈ S, ∃ m0, χ = α + k • m0 := fun χ => by
@@ -157,18 +157,14 @@ private theorem repsX_statement : RepsXSt := by
       omega
     · apply b.equivFun.injective
       ext i
-      simp only [map_add, map_nsmul, LinearEquiv.apply_symm_apply, Pi.add_apply, Pi.smul_apply, nsmul_eq_mul]
+      simp only [map_add, map_nsmul, LinearEquiv.apply_symm_apply, Pi.add_apply, nsmul_eq_mul]
       rw [Int.toNat_of_nonneg (Int.emod_nonneg _ hk0.ne')]
       first
         | exact Int.emod_add_mul_ediv _ _
-        | exact Int.emod_add_ediv _ _
-        | (rw [Int.emod_def]; ring)
-        | (have := Int.mul_ediv_add_emod (b.equivFun χ i) (k : ℤ); linarith)
   · intro a a' mu mu' h
     funext i
     have h' := congrArg (fun x => b.equivFun x i) h
-    simp only [map_add, map_nsmul, LinearEquiv.apply_symm_apply, Pi.add_apply, Pi.smul_apply,
-      nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply] at h'
+    simp only [map_add, map_nsmul, LinearEquiv.apply_symm_apply, Pi.add_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply] at h'
     have e1 : ((a i : ℕ) : ℤ) = (((a i : ℕ) : ℤ) + k * b.equivFun mu i) % k := by
       rw [Int.add_mul_emod_self_left, Int.emod_eq_of_lt (by positivity) (by exact_mod_cast (a i).isLt)]
     have e2 : ((a' i : ℕ) : ℤ) = (((a' i : ℕ) : ℤ) + k * b.equivFun mu' i) % k := by
@@ -190,7 +186,6 @@ private theorem ceil_statement : CeilSt := by
     rw [h, v.map_zero] at hπ
     first
       | simp at hπ
-      | exact absurd hπ (by rw [← WithTop.coe_one]; exact WithTop.top_ne_coe)
   have hpow : ∀ (x : F) (t : ℚ) (k : ℕ), v x = t → v (x ^ k) = ((k * t : ℚ) : WithTop ℚ) := by
     intro x t k ht
     rw [v.map_pow, ht, ← WithTop.coe_nsmul, nsmul_eq_mul]

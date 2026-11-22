@@ -17,7 +17,7 @@ theorem flagRoot_term_big {H : Host E} (Dw : Datum H) (la : GlobalTheory.AllWt.W
   rw [he, GlobalTheory.AllWt.wtOf_big la 0 τ i i.2]
   unfold flagRoot
   rw [dif_pos τ.2]
-  simp only [sub_zero, map_neg, neg_mul, neg_neg]
+  simp only [sub_zero, map_neg, neg_mul]
   rfl
 
 theorem flagRoot_term_small {H : Host E} (Dw : Datum H) (la : GlobalTheory.AllWt.Weight Dw) (τ : GlobalTheory.AllWt.Psi H)

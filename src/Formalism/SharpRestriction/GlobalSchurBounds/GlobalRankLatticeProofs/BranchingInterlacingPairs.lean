@@ -39,7 +39,7 @@ theorem sum_bern_var (δ : ℝ) :
   rw [sum_bern_card δ (fun ν => (((Fintype.card α : ℕ) : ℝ) * δ - ν) ^ 2)]
   have h := congrArg (Polynomial.eval δ) (bernsteinPolynomial.variance ℝ (Fintype.card α))
   simp only [Polynomial.eval_finset_sum, Polynomial.eval_mul, Polynomial.eval_pow,
-    Polynomial.eval_sub, Polynomial.eval_smul, Polynomial.eval_X, Polynomial.eval_natCast,
+    Polynomial.eval_sub, Polynomial.eval_X, Polynomial.eval_natCast,
     nsmul_eq_mul, Polynomial.eval_one] at h
   rw [← h]
   refine Finset.sum_congr rfl fun ν _ => ?_
@@ -57,8 +57,6 @@ theorem branching_interlacing_pairs (D : D7) (sc : Scale) : Conclusion6 D sc := 
     rw [hndef]
     first
       | exact_mod_cast Formalism.HC.Frame.card_A (φ := D.R.toFrame)
-      | exact_mod_cast Formalism.HC.Frame.card_A D.R.toFrame
-      | (rw [Formalism.HC.Frame.card_A]; rfl)
   rw [← hn] at hδn ⊢
   have hnpos : (0 : ℝ) < n := by nlinarith
   have hbern0 : ∀ T : Finset (HH D), 0 ≤ bern δ T := fun T => bern_nonneg hδ0.le hδ1 T

@@ -42,7 +42,7 @@ theorem measurePreserving_swapPi {ι κ X : Type*} [Fintype ι] [Fintype κ] [Me
     MeasurePreserving (fun (f : ι → κ → X) (k : κ) (i : ι) => f i k)
       (Measure.pi fun _ : ι => Measure.pi fun _ : κ => ν)
       (Measure.pi fun _ : κ => Measure.pi fun _ : ι => ν) := by
-  first | exact UpperTheory.Reformulated.B.Qe3b.measurePreserving_swapPi .. | (apply UpperTheory.Reformulated.B.Qe3b.measurePreserving_swapPi <;> assumption) | (intros; apply UpperTheory.Reformulated.B.Qe3b.measurePreserving_swapPi <;> assumption) | (apply @UpperTheory.Reformulated.B.Qe3b.measurePreserving_swapPi <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.Qe3b.measurePreserving_swapPi <;> assumption) | (apply @UpperTheory.Reformulated.B.Qe3b.measurePreserving_swapPi <;> first | assumption | infer_instance)
+  first | exact UpperTheory.Reformulated.B.Qe3b.measurePreserving_swapPi ..
 
 end ReciprocityTheory.GeometryOfNumbersTheory
 

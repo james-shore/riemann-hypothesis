@@ -25,7 +25,7 @@ theorem algType_alt (hP : _root_.UpperTheory.V.Af.Hypotheses') : AlgType := by
     induction j with
     | zero => exact good_cong H0 (funext fun _ => by simp) (pow_zero _).symm
     | succ j ih =>
-      exact good_cong (good_mul ih H1) (funext fun _ => by simp only [Pi.add_apply, Nat.cast_add, Nat.cast_one] <;> ring)
+      exact good_cong (good_mul ih H1) (funext fun _ => by simp only [Pi.add_apply, Nat.cast_add, Nat.cast_one])
         (pow_succ _ _).symm
   have key : ∀ n : ℕ, Good art ι (fun e => (n : ℤ) * a e + j) (κ ^ n * cycBar K Ω l ^ j) := by
     intro n

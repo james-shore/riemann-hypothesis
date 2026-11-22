@@ -114,7 +114,7 @@ private theorem sum_congr_conj (X : Tower Ω ε) (l : ℕ) [Fact l.Prime] {n N M
     (MulAut.conj (Matrix.SpecialLinearGroup.map (Int.castRingHom (ZMod M)) g₀)⁻¹).toEquiv
   have he : ∀ γ, e γ = (Matrix.SpecialLinearGroup.map (Int.castRingHom (ZMod M)) g₀)⁻¹ * γ *
       Matrix.SpecialLinearGroup.map (Int.castRingHom (ZMod M)) g₀ := fun γ => by
-    simp [e, MulAut.conj_apply]
+    simp [e]
   have hmem : ∀ γ, γ ∈ S ↔ e γ ∈ S := by
     intro γ
     rw [hS, hS, he]

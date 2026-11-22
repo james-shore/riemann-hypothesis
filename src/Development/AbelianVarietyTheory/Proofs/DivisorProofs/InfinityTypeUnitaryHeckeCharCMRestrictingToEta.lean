@@ -36,7 +36,7 @@ theorem char_eq_zpow (χ : ℂˣ →* ℂˣ) (hc : Continuous χ) (hu : ∀ z, �
   have hz0 : (z : ℂ) ≠ 0 := z.ne_zero
   have hn0 : (‖(z : ℂ)‖ : ℂ) ≠ 0 := by exact_mod_cast norm_ne_zero_iff.2 hz0
   have hw : (z : ℂ) / (‖(z : ℂ)‖ : ℂ) ∈ Submonoid.unitSphere ℂ := by
-    simp [Submonoid.unitSphere, mem_sphere_zero_iff_norm, norm_div, hz0]
+    simp [Submonoid.unitSphere, hz0]
   let w : Circle := (⟨_, hw⟩ : Circle)
   let r : ℂˣ := Units.mk0 (‖(z : ℂ)‖ : ℂ) hn0
   have hzr : z = Circle.toUnits w * r := Units.ext (by
@@ -170,7 +170,7 @@ theorem infType : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E] (μ : H
   · let zv : InfinitePlace E → ℂˣ := fun v => Units.map (Pi.evalMonoidHom (fun _ : InfinitePlace E => ℂ) v) z
     have hz : z = ∏ v, single v (zv v) := Units.ext (by
       rw [Units.coe_prod]
-      simp only [single, zv, Units.coe_map, MonoidHom.coe_coe, MonoidHom.mulSingle_apply, Pi.evalMonoidHom_apply]
+      simp only [single, zv, Units.coe_map, MonoidHom.mulSingle_apply, Pi.evalMonoidHom_apply]
       exact (Finset.univ_prod_mulSingle z.val).symm)
     conv_lhs => rw [hz]
     rw [map_prod, Units.coe_prod]

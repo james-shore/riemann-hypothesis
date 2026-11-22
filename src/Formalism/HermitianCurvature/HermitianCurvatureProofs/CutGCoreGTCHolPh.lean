@@ -30,8 +30,8 @@ theorem re_conj_fderiv {TT : ℝ} {u : ℂ → ℂ} (hu : ContDiffOn ℝ ((⊤ :
     simp
   have hz := hP.fderiv.symm.trans (hconst.fderiv_eq.trans (hasFDerivAt_const (𝕜 := ℝ) (1 : ℂ) ζ).fderiv)
   have hv := congrArg (fun L => (L h).re) hz
-  simp [Complex.mul_re, Complex.star_def] at hv
-  simp [Complex.mul_re, Complex.star_def]
+  simp [Complex.mul_re] at hv
+  simp [Complex.mul_re]
   linarith
 
 theorem im_conj_dZ_mul {TT : ℝ} {u : ℂ → ℂ} (hu : ContDiffOn ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) u (AnnT TT))
@@ -46,7 +46,7 @@ theorem im_conj_dZ_mul {TT : ℝ} {u : ℂ → ℂ} (hu : ContDiffOn ℝ ((⊤ :
     rw [map_add, map_smul, map_smul]
   rw [hlin]
   simp only [NF.dZ]
-  simp [Complex.mul_re, Complex.mul_im, Complex.star_def] at hr1 hrI ⊢
+  simp [Complex.mul_re, Complex.mul_im] at hr1 hrI ⊢
   linear_combination (h.im / 2) * hr1 - (h.re / 2) * hrI
 
 theorem winding {TT : ℝ} {u : ℂ → ℂ} (hu : ContDiffOn ℝ ((⊤ : ℕ∞) : WithTop ℕ∞) u (AnnT TT))
@@ -172,7 +172,7 @@ theorem curv_alg (u0 p q s11 sii : ℂ) (hn : u0 * star u0 = 1) (ha : (star u0 *
     (hII : (star q * q + star u0 * sii).re = 0) :
     ((star p + Complex.I * star q) * (p - Complex.I * q) + star u0 * (s11 + sii)).re = 0 := by
   have hn' := congrArg Complex.re hn
-  simp [Complex.mul_re, Complex.mul_im, Complex.star_def] at hn' ha hb h11 hII ⊢
+  simp [Complex.mul_re, Complex.mul_im] at hn' ha hb h11 hII ⊢
   linear_combination h11 + hII - 2 * (-u0.re * q.im + u0.im * q.re) * ha
     - 2 * (u0.re * p.im - u0.im * p.re) * hb + 2 * (q.re * p.im - q.im * p.re) * hn'
 

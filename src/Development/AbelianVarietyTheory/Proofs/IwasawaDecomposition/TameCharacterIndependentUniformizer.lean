@@ -31,7 +31,6 @@ theorem valuation_uniformiser_le {E Ω : Type} [Field E] [NumberField E] [Field 
     le_antisymm (valuation_algebraMap_int_le_one A s) (not_lt.1 fun h => hsP ((hP s).1 h))
   have e : algebraMap E Ω (a : E) * algebraMap E Ω (ϖ : E) = algebraMap E Ω (ϖ' : E) * algebraMap E Ω (s : E) := by
     rw [← map_mul, ← map_mul]
-    congr 1
     exact_mod_cast ha
   have hv := congrArg A.valuation e
   rw [map_mul, map_mul, hs1, mul_one] at hv

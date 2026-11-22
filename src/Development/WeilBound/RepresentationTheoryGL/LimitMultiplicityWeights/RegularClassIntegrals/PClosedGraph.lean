@@ -38,7 +38,7 @@ lemma tsum_single [DecidableEq I] (i : I) (x : Ω) : ∑' j, (lp.single 1 i (1 :
   rw [tsum_eq_single i]
   · simp [lp.single_apply]
   · intro j hj
-    simp [lp.single_apply, Pi.single_apply, hj]
+    simp [lp.single_apply, hj]
 
 end MainStatements.WeightKernel.PClosedGraph
 

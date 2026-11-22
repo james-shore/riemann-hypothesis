@@ -57,7 +57,6 @@ theorem globOf : GlobOf := by
     congr 1
     first
     | exact Algebra.algebra_ext _ _ (fun x => (hcomp x).symm)
-    | exact Algebra.algebra_ext _ _ (fun x => hcomp x)
   have hp2 := hp.two_le
   haveI : FiniteDimensional (HeightOneSpectrum.adicCompletion F v) (HeightOneSpectrum.adicCompletion E w.1) :=
     Module.finite_of_finrank_pos (by omega)

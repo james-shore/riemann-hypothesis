@@ -73,7 +73,7 @@ noncomputable def shearIso : A ⊗ A ≅ A ⊗ A where
   hom_inv_id := by
     ext <;> simp [shear, MonObj.comp_mul, GrpObj.comp_inv]
   inv_hom_id := by
-    ext <;> simp [shear, MonObj.comp_mul, GrpObj.comp_inv]
+    ext <;> simp [shear, MonObj.comp_mul]
 
 instance : IsIso (shear A true) := (shearIso A).isIso_hom
 

@@ -15,7 +15,7 @@ section embG
 variable {k p ρ : ℕ}
 
 theorem embG_mul (a b : B.Mat k ρ) : U.embG k p ρ (a * b) = U.embG k p ρ a * U.embG k p ρ b := by
-  simp only [U.embG, Ux5.block3_mul_blocks, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.mul_one, Matrix.one_mul]
+  simp only [U.embG, Ux5.block3_mul_blocks, Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.mul_one]
 
 private theorem embG_one' : U.embG k p ρ (1 : B.Mat k ρ) = 1 := by
   ext i j

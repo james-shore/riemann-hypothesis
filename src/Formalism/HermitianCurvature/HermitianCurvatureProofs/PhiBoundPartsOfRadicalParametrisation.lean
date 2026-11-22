@@ -372,7 +372,7 @@ def kap (Y : Mat k r) : Mat k r := (1 + Y) * (1 - Y)⁻¹
 def iot (Z : Mat k r) : Mat k r := (Z - 1) * (Z + 1)⁻¹
 
 lemma kap_mem {Y : Mat k r} (hY : inLie k r Y) (hu : IsUnit (1 - Y).det) : kap Y ∈ GV k r := by
-  first | exact UpperTheory.Reformulated.B.Qk20.kap_mem .. | (apply UpperTheory.Reformulated.B.Qk20.kap_mem <;> assumption) | (intros; apply UpperTheory.Reformulated.B.Qk20.kap_mem <;> assumption) | (apply @UpperTheory.Reformulated.B.Qk20.kap_mem <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.Qk20.kap_mem <;> assumption) | (apply @UpperTheory.Reformulated.B.Qk20.kap_mem <;> first | assumption | infer_instance) | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k r Y hY hu | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k r Y hY | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k r Y | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k r | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k
+  first | exact UpperTheory.Reformulated.B.Qk20.kap_mem .. | (apply UpperTheory.Reformulated.B.Qk20.kap_mem <;> assumption) | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k r Y hY hu | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k r Y hY | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k r Y | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k r | exact @UpperTheory.Reformulated.B.Qk20.kap_mem k
 
 lemma iot_facts {h : Mat k r} (hh : h ∈ GV k r) (hu : IsUnit (h + 1).det) :
     inLie k r (iot h) ∧ IsUnit (1 - iot h).det ∧ kap (iot h) = h := by
@@ -1040,7 +1040,7 @@ lemma cont_lowW {p : ℕ} (σ : Equiv.Perm (Fin p)) {f : X → LW σ → ℂ} (h
       Matrix (Fin p) (Fin p) ℂ) := by
     refine continuous_pi fun a => continuous_pi fun b => ?_
     by_cases h : b < a ∧ σ.symm b < σ.symm a
-    · simp only [Matrix.of_apply, h, dite_true]
+    · simp only [Matrix.of_apply, h]
       exact (continuous_apply _).comp hf
     · simp only [Matrix.of_apply, h, dite_false]
       exact continuous_const
@@ -1111,14 +1111,14 @@ lemma cont_supS {p : ℕ} {f : X → Matrix (Fin p) (Fin p) ℂ} (hf : Continuou
 lemma cont_cornerA {p s : ℕ} {f : X → Fin s → Fin p → ℂ} (hf : Continuous f) : Continuous fun x => cornerA (f x) := by
   unfold cornerA
   by_cases h : 0 < s ∧ 0 < p
-  · simp only [h, dite_true]; exact (continuous_apply_apply _ _).comp hf
+  · simp only [h]; exact (continuous_apply_apply _ _).comp hf
   · simp only [h, dite_false]; exact continuous_const
 
 @[fun_prop]
 lemma cont_cornerB {p s : ℕ} {f : X → Fin p → Fin s → ℂ} (hf : Continuous f) : Continuous fun x => cornerB (f x) := by
   unfold cornerB
   by_cases h : 0 < s ∧ 0 < p
-  · simp only [h, dite_true]; exact (continuous_apply_apply _ _).comp hf
+  · simp only [h]; exact (continuous_apply_apply _ _).comp hf
   · simp only [h, dite_false]; exact continuous_const
 
 @[fun_prop]

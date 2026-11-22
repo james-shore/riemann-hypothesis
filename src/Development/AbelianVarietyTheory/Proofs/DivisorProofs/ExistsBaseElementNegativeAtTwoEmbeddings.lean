@@ -61,7 +61,7 @@ theorem eq_or_eq_conjugate (hd : Module.finrank K L = 2) (σ : L →+* L) (hσ :
     rw [LinearIndependent.pair_iff]
     intro a b hab
     have h2 := congrArg σ hab
-    simp only [Algebra.smul_def, map_add, map_mul, hK, hσt, map_one, map_zero, mul_one] at h2 hab
+    simp only [Algebra.smul_def, map_add, map_mul, hK, hσt, map_zero, mul_one] at h2 hab
     have hb2 : (2 : L) * (algebraMap K L b * t) = 0 := by linear_combination hab - h2
     have hb : b = 0 := by simpa [ht0] using hb2
     subst hb

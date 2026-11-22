@@ -9,7 +9,6 @@ open UpperTheory.Comparison₂ Deduction.CH Formalism Formalism.HC Formalism.D5 
 private theorem embedding_generator_eq (φ : Frame) (s : φ.A) : toE φ (φ.tau1 s) = Multiplicative.ofAdd ((0 : E0), s) := by
   first
   | rfl
-  | simp [toE, Frame.tau1, Frame.iota, Frame.iotaInv, sgn2]
 
 private theorem toE_iod (φ : Frame) : toE φ φ.iod = Multiplicative.ofAdd (sgc0 : E0 × φ.A) := by
   rfl

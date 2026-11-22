@@ -72,7 +72,6 @@ private lemma coi_pi {J : Type} [Fintype J] [DecidableEq J] {I : J → Type} [�
     rw [← Finset.prod_mul_distrib]
     exact Finset.prod_congr rfl fun j _ => (he j).toOrthogonalIdempotents.idem (τ j)
   · obtain ⟨j, hj⟩ := Function.ne_iff.1 h
-    change (∏ j, e j (τ j)) * (∏ j, e j (τ' j)) = 0
     rw [← Finset.prod_mul_distrib]
     exact Finset.prod_eq_zero (Finset.mem_univ j) ((he j).toOrthogonalIdempotents.ortho hj)
   · have h : ∏ j, ∑ i, e j i = 1 := by simp [fun j => (he j).complete]

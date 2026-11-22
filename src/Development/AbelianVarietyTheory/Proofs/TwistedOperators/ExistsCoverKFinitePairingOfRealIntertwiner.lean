@@ -22,7 +22,7 @@ private theorem hasDerivAt_exp_smul_of_smoothVec {n : ℕ} {H : Type} [NormedAdd
     HasDerivAt (fun t : ℝ => σ (NormedSpace.exp (t • X)) w) (dRep σ X w) 0 := by
   have h1 := hw 1 (fun _ => X) (fun _ => hX)
   have hc : ContDiff ℝ 1 (fun t : ℝ => (fun _ : Fin 1 => t)) := contDiff_pi.2 (fun _ => contDiff_id)
-  have h2 := (h1.of_le (by first | simp | exact_mod_cast le_top)).comp hc
+  have h2 := (h1.of_le (by first | simp)).comp hc
   have h3 := ((h2.differentiable one_ne_zero) 0).hasDerivAt
   have e : ((fun t : Fin 1 → ℝ => σ (List.ofFn fun i => NormedSpace.exp (t i • X)).prod w) ∘
       fun t : ℝ => (fun _ : Fin 1 => t)) = fun t : ℝ => σ (NormedSpace.exp (t • X)) w := by

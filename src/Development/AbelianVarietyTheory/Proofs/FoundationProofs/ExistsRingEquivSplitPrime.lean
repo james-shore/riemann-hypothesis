@@ -32,8 +32,6 @@ theorem exists_extension {K L : Type} [Field K] [NumberField K] [Field L] [Numbe
   | exact @_root_.GlobalTheory.ContinuousValuationExtension.exists_continuous_extension
   | exact _root_.GlobalTheory.ContinuousValuationExtension.exists_continuous_extension
   | (apply _root_.GlobalTheory.ContinuousValuationExtension.exists_continuous_extension <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ContinuousValuationExtension.exists_continuous_extension <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ContinuousValuationExtension.exists_continuous_extension <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ContinuousValuationExtension.exists_continuous_extension ..)
 
 theorem exists_ringEquiv_splitPrime : ∀ {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E]

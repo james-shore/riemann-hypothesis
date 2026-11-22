@@ -121,12 +121,12 @@ theorem evA_cob2_eq_cobTwo_and_op_assoc : ∀ (p : ℕ) (k : Type) [CommRing k] 
   have o12 : ∀ i, evA k _ h (op μ x1 x2 i) = gFst k (G.A n) (Coalgebra.comul (c.x n i)) := by
     intro i
     rw [op, connectedPDivGroupChart_eval_nilpotent_pair c n _ hE x1 x2 c1 c2 (gFst k (G.A n)) (fun j => by rw [e1]; simp [Algebra.TensorProduct.one_def])
-      (fun j => by rw [e2]; simp [Algebra.TensorProduct.one_def]), hμ n i]
+      (fun j => by rw [e2]; simp), hμ n i]
   have o23 : ∀ i, evA k _ h (op μ x2 x3 i) =
       Algebra.TensorProduct.includeRight (Coalgebra.comul (c.x n i)) := by
     intro i
     rw [op, connectedPDivGroupChart_eval_nilpotent_pair c n _ hE x2 x3 c2 c3 Algebra.TensorProduct.includeRight
-      (fun j => by rw [e2]; simp [Algebra.TensorProduct.one_def]) (fun j => by rw [e3]; simp [Algebra.TensorProduct.one_def]), hμ n i]
+      (fun j => by rw [e2]; simp) (fun j => by rw [e3]; simp), hμ n i]
   have a2 := connectedPDivGroupChart_eval_nilpotent_pair c n _ hE (op μ x1 x2) x3 (cop _ _ c1 c2) c3 (gSumL k (G.A n))
     (fun j => by rw [o12, gFst_eq_assoc]; simp)
     (fun j => by rw [e3]; simp [Algebra.TensorProduct.one_def])
@@ -134,9 +134,9 @@ theorem evA_cob2_eq_cobTwo_and_op_assoc : ∀ (p : ℕ) (k : Type) [CommRing k] 
     (fun j => by rw [e1]; simp [Algebra.TensorProduct.one_def]) (fun j => by rw [o23]; simp)
   refine ⟨fun s => ?_, fun i => ?_⟩
   · have a1 := connectedPDivGroupChart_eval_nilpotent_pair c n _ hE x2 x3 c2 c3 Algebra.TensorProduct.includeRight
-      (fun j => by rw [e2]; simp [Algebra.TensorProduct.one_def]) (fun j => by rw [e3]; simp [Algebra.TensorProduct.one_def]) s
+      (fun j => by rw [e2]; simp) (fun j => by rw [e3]; simp) s
     have a4 := connectedPDivGroupChart_eval_nilpotent_pair c n _ hE x1 x2 c1 c2 (gFst k (G.A n))
-      (fun j => by rw [e1]; simp [Algebra.TensorProduct.one_def]) (fun j => by rw [e2]; simp [Algebra.TensorProduct.one_def]) s
+      (fun j => by rw [e1]; simp [Algebra.TensorProduct.one_def]) (fun j => by rw [e2]; simp) s
     rw [cob2, map_sub, map_add, map_sub, a1, a2, a3, a4, cobTwo_eq]
   · change evA k _ h (at2 (μ i) (op μ x1 x2) x3) = evA k _ h (at2 (μ i) x1 (op μ x2 x3))
     rw [a2, a3, hμ n i, gSumL_apply, gSumR_apply, Coalgebra.coassoc_apply]

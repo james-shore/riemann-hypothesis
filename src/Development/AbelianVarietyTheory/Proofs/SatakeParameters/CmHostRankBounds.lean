@@ -52,7 +52,7 @@ theorem dv_mem_span_of_formallyUnramified : ∀ (k K L : Type) [Field k] [Field 
     refine h.symm.trans ?_
     refine Finset.sum_congr rfl fun j _ => ?_
     rw [map_smul, ← hw j, KaehlerDifferential.map_D, ← hφ]
-    first | rfl | simp [Subalgebra.smul_def]
+    first | rfl
   have hpull : ∀ a : K, mapDR k K L (ι1 (D k K a)) = ι1 (D k L (algebraMap K L a)) := by
     intro a
     rw [mapDR, ExteriorAlgebra.lift_ι_apply]

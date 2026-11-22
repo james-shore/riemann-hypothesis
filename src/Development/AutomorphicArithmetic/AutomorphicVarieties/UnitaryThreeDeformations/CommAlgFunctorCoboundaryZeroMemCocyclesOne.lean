@@ -127,13 +127,13 @@ private theorem exists_norm {G C : Type} [Group G] [CommRing C] (η : G →* ℤ
   · have w0 : wt 0 1 = 1 := by decide
     have w1 : wt1 1 = 0 := by decide
     simp only [zvar, diagonal_rep_matrix_eq, Matrix.sub_apply, Matrix.mul_diagonal, Pi.sub_apply,
-      cob, adRep_baseLift_apply, hηs, hM.ηg, if_true, hΨs, w0, w1, zpow_one, zpow_zero, inv_inv, Units.val_one]
+      cob, adRep_baseLift_apply, hηs, hM.ηg, if_true, hΨs, w0, w1, zpow_one, zpow_zero, Units.val_one]
     simp only [Matrix.of_apply, Matrix.cons_val, ← hp, ← hq]
     linear_combination (-(γ g₁ 0 1 - γ (gstar c g₁) 0 1)) * hv + (p - q) * hs
   · have w0 : wt 1 0 = -1 := by decide
     have w1 : wt1 0 = 1 := by decide
     simp only [zvar, diagonal_rep_matrix_eq, Matrix.sub_apply, Matrix.mul_diagonal, Pi.sub_apply,
-      cob, adRep_baseLift_apply, hηs, hM.ηg, if_true, hΨs, w0, w1, zpow_one, _root_.zpow_neg_one, inv_inv, Units.val_one]
+      cob, adRep_baseLift_apply, hηs, hM.ηg, if_true, hΨs, w0, w1, zpow_one, _root_.zpow_neg_one, inv_inv]
     simp only [Matrix.of_apply, Matrix.cons_val, ← hp, ← hq]
     linear_combination (-(γ g₁ 1 0 * p - γ (gstar c g₁) 1 0 * q)) * hv - (p - q) * ht
 

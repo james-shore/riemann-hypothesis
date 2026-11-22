@@ -21,8 +21,6 @@ theorem exists_mem_HnGe {E : Type} [Field E] (Ψ : Finset (E →+* ℂ)) {Z : CM
   | exact @_root_.GlobalTheory.PosSemidefShiftByScalar.main
   | exact _root_.GlobalTheory.PosSemidefShiftByScalar.main
   | (apply _root_.GlobalTheory.PosSemidefShiftByScalar.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PosSemidefShiftByScalar.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PosSemidefShiftByScalar.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PosSemidefShiftByScalar.main ..)
 
 theorem entry_bound {C D Z : Matrix (Fin N) (Fin N) ℂ} {δ : ℝ} (hδ : 0 < δ)

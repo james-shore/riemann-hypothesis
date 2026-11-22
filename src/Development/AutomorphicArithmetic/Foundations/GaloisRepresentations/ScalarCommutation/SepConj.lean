@@ -35,7 +35,7 @@ private theorem sep_of_mul_closed [IsAlgClosed K] {M N : Matrix (Fin m) (Fin m) 
     have e : Matrix.scalar (Fin m) (a / x) - N = (-x⁻¹) • (N * (Matrix.scalar (Fin m) x - M)) := by
       rw [Matrix.mul_sub, h, Matrix.scalar_apply, Matrix.scalar_apply]
       ext i j
-      by_cases hij : i = j <;> simp [hij, Matrix.mul_apply, Matrix.diagonal_apply, Matrix.one_apply] <;> field_simp <;> ring
+      by_cases hij : i = j <;> simp [hij, Matrix.mul_apply, Matrix.diagonal_apply] <;> field_simp <;> ring
     rw [e, Matrix.det_smul, Matrix.det_mul, hx0, mul_zero, mul_zero]
   have hnd : M.charpoly.roots.Nodup := Polynomial.nodup_roots hM
   have hcM : M.charpoly.roots.card = m := by
@@ -70,7 +70,7 @@ private theorem sep_of_mul {M N : Matrix (Fin m) (Fin m) K} {a : K} (ha : a ≠ 
       algebraMap K (AlgebraicClosure K) a • (1 : Matrix (Fin m) (Fin m) (AlgebraicClosure K)) := by
     rw [← Matrix.map_mul, h]
     ext i j
-    by_cases hij : i = j <;> simp [hij, Matrix.one_apply]
+    by_cases hij : i = j <;> simp [hij]
   have h2 := sep_of_mul_closed (K := AlgebraicClosure K) (a := algebraMap K (AlgebraicClosure K) a)
     (by simpa using ha) h' (by rw [Matrix.charpoly_map]; exact hM.map)
   rw [Matrix.charpoly_map] at h2
@@ -94,7 +94,7 @@ theorem UpperTheory.Gal.Spc.sepConj :
     refine Eq.trans ?_ (h1.trans ?_)
     · congr 1
     · ext i j
-      by_cases hij : i = j <;> simp [hij, Matrix.one_apply]
+      by_cases hij : i = j <;> simp [hij]
   have h3 := UpperTheory.Gal.Spc.sep_of_mul ha h2 hw
   rw [Matrix.charpoly_transpose, Matrix.charpoly_map] at h3
   exact (Polynomial.separable_map _).1 h3

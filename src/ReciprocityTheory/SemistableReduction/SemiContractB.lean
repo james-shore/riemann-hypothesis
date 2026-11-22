@@ -183,7 +183,7 @@ theorem sc_gram_lt {K : Type} [Field K] [NumberField K] {r k m : ℕ} (hm : 0 < 
     rw [quotGramC, Matrix.mul_assoc (gramX H σ c b), ← hYdef, hCC, hXcb]
     have hY' : Bmᴴ * (H * (Bm * Y)) = Bmᴴ * (H * Cm) := by simpa only [Matrix.mul_assoc] using hY
     simp only [hC'def, Matrix.conjTranspose_sub, Matrix.conjTranspose_mul, Matrix.sub_mul, Matrix.mul_sub,
-      Matrix.mul_assoc, hY', sub_self, sub_zero]
+      Matrix.mul_assoc, hY']
     abel
   have hC'inj : Function.Injective C'.mulVec := by
     intro x y hxy

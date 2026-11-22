@@ -122,7 +122,7 @@ theorem dT_zero {n : ℕ} : dT (0 : Fin n → ℝ) = 1 := by
 theorem dT_two_pi {n : ℕ} (a : Fin n) : dT (Pi.single a (2 * Real.pi)) = 1 := by
   rw [dT, ← Matrix.diagonal_one]; congr 1; funext b
   by_cases h : b = a
-  · subst h; simp only [Pi.single_eq_same, Pi.one_apply]
+  · subst h; simp only [Pi.single_eq_same]
     rw [Complex.exp_eq_one_iff]; exact ⟨1, by push_cast; ring⟩
   · simp [Pi.single_eq_of_ne h]
 

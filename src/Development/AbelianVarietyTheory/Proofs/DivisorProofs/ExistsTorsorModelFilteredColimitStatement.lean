@@ -19,4 +19,4 @@ theorem _root_.GlobalTheory.T.exists_torsor_model_filtered_colimit : ∀ (ι : T
       ∃ (Di : Type) (_ : CommRing Di) (_ : Algebra (R i) Di)
         (acti : Multiplicative (ZMod q) →* (Di ≃ₐ[R i] Di)),
         GlobalTheory.KeyOriginCut.IsZTorsor (R i) Di q acti ∧ Nonempty (TensorProduct (R i) B Di ≃ₐ[B] D) := by
-  first | (exact @GlobalTheory.TorsorColimElem.exists_torsor_model_of_elements) | (exact GlobalTheory.TorsorColimElem.exists_torsor_model_of_elements) | (intros; apply GlobalTheory.TorsorColimElem.exists_torsor_model_of_elements  <;> assumption)
+  first | (exact @GlobalTheory.TorsorColimElem.exists_torsor_model_of_elements)

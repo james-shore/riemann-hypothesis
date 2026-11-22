@@ -185,12 +185,12 @@ theorem prodW (hd : d.Ok) {a : ℕ} (ha : a ≤ n) {w : Pl E} (hw : w ∈ d.B) :
       rw [hc]
       exact atW_trans d (atW_mul d (atW_refl d w (d.betaL a ha)) ih) (beta_cw d hd ha w _)
     · have hc : (Sum.inr (Sum.inl u) :: ls : List (LL d)).countP Sum.isLeft = ls.countP Sum.isLeft := by
-        simp [List.countP_cons]
+        simp
       rw [hc]
       exact nb _ (atW_refl d w _)
     · have hc : (Sum.inr (Sum.inr ⟨⟨w', hg⟩, k, intersection_update_fsHerm_neg_one, st⟩) :: ls : List (LL d)).countP Sum.isLeft =
           ls.countP Sum.isLeft := by
-        simp [List.countP_cons]
+        simp
       rw [hc]
       have hG : d.IsGen a ha (d.hL a ha w' k intersection_update_fsHerm_neg_one) := Or.inr ⟨w', k, intersection_update_fsHerm_neg_one, hg, rfl⟩
       cases st

@@ -33,7 +33,7 @@ theorem expCover_add_single (h : a ≤ n) (w : Fin n → ℂ) (i : Fin a) :
     simp only [expCover, Pi.add_apply, Pi.single_eq_same, if_pos hi, Complex.exp_add,
       Complex.exp_two_pi_mul_I]
     exact mul_one _
-  · simp [expCover, Pi.single_apply, hk]
+  · simp [expCover, hk]
 
 theorem exists_mem_logCover (h : a ≤ n) : ∃ w : Fin n → ℂ, w ∈ logCover h := by
   refine ⟨fun k => if k.val < a then -1 else 0, fun i => ?_, fun k hk => ?_⟩

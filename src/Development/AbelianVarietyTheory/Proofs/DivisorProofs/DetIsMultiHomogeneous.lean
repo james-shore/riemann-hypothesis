@@ -34,7 +34,7 @@ theorem mh_X (i : Fin B) (j : Fin n) :
   subst this
   by_cases hb : b = i
   · subst hb; simp [Finsupp.single_apply]
-  · simp [Finsupp.single_apply, hb, Pi.single_apply]
+  · simp [hb]
 
 theorem mh_add {a : Fin B → ℕ} {f g : MvPolynomial (Fin B × Fin n) R}
     (hf : IsMultiHomogeneous a f) (hg : IsMultiHomogeneous a g) : IsMultiHomogeneous a (f + g) := by

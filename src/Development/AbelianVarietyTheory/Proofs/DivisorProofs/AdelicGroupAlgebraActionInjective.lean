@@ -34,7 +34,7 @@ theorem baseChangeAlgebraRepresentationAction_injective {C V : Type} [Ring C] [A
     | zero => simp
     | tmul r x =>
       have h1 : actOn rep R (r ⊗ₜ x) ((1 : R) ⊗ₜ b i) = r ⊗ₜ (rep x (b i)) := by
-        simp only [actOn, Algebra.TensorProduct.lift_tmul, Module.End.mul_apply]
+        simp only [actOn]
         change r • ((rep x).baseChange R ((1 : R) ⊗ₜ b i)) = _
         rw [LinearMap.baseChange_tmul, TensorProduct.smul_tmul', smul_eq_mul, _root_.mul_one]
       rw [h1]

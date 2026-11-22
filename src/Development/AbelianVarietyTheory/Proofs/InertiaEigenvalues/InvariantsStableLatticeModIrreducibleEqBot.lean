@@ -20,8 +20,6 @@ theorem exists_isCompl_of_saturated {O M : Type} [CommRing O] [IsDomain O] [IsPr
   | exact @_root_.GlobalTheory.SaturatedComplement.exists_isCompl_of_saturated
   | exact _root_.GlobalTheory.SaturatedComplement.exists_isCompl_of_saturated
   | (apply _root_.GlobalTheory.SaturatedComplement.exists_isCompl_of_saturated <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SaturatedComplement.exists_isCompl_of_saturated <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SaturatedComplement.exists_isCompl_of_saturated <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SaturatedComplement.exists_isCompl_of_saturated ..)
 
 section General

@@ -59,7 +59,7 @@ theorem isUnit_saturated_basis : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk
     obtain ⟨a', rfl⟩ := surjective_frobenius (OCb l) l a
     obtain ⟨b', rfl⟩ := surjective_frobenius (OCb l) l b
     exact ⟨algebraMap (OCb l) (Cb l) a' / algebraMap (OCb l) (Cb l) b', by
-      simp [frobenius_def, div_pow, map_pow]⟩
+      simp [frobenius_def, map_pow]⟩
   have hl0 : (l : WCb l) ≠ 0 := WittVector.p_nonzero l (Cb l)
   have hlu : ¬ IsUnit (l : bk.S) := fun h => by
     have := h.map bk.evW

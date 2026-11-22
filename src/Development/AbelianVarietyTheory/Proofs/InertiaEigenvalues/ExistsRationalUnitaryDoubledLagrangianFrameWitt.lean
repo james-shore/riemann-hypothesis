@@ -219,8 +219,7 @@ theorem frameOf_submatrix (W : HSp D)
   rw [frameOf, blk_submatrix]
   rw [← fromBlocks_toBlocks g, cT_fromBlocks, fromBlocks_multiply, fromBlocks_mul_fromRows,
     fromBlocks_mul_fromRows] at key
-  simp only [toBlocks_fromBlocks₁₁, toBlocks_fromBlocks₁₂, toBlocks_fromBlocks₂₁, toBlocks_fromBlocks₂₂,
-    Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.mul_one, Matrix.mul_neg, Matrix.neg_mul] at key
+  simp only [Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.mul_one, Matrix.mul_neg, Matrix.neg_mul] at key
   obtain ⟨k1, k2⟩ := fromRows_inj key
   have a1 : cT (D.sp.cm.sig : D.host.E →+* D.host.E) (g.toBlocks₂₂ - g.toBlocks₁₂) * W.gram = W.gram * C.1 := by
     rw [cT_sub, Matrix.sub_mul, ← neg_neg (W.gram * C.1), k2]; abel

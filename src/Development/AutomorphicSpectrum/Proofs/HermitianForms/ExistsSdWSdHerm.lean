@@ -71,7 +71,7 @@ theorem exists_of_std (ψ : AddChar K ℂ) (hψ : GlobalTheory.JR.IsStdChar ψ) 
   · intro x
     obtain ⟨n, hn⟩ := hex e x
     refine ⟨-(n : ℤ), fun i => (hn i).trans_eq ?_⟩
-    simp [norm_zpow]
+    simp
   · intro y
     obtain ⟨n, hn⟩ := hex e' y
     refine ⟨(n : ℤ), fun i => (hn i).trans_eq ?_⟩

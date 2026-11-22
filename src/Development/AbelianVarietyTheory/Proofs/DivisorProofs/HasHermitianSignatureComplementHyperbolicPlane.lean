@@ -29,7 +29,7 @@ theorem hasSig_map_conj_of_hasSignature {n r s : ℕ} {G : Matrix (Fin n) (Fin n
       (Formalism.UG.cT (starRingEnd ℂ) (P : Matrix _ _ ℂ) * G.reindex e e * (P : Matrix _ _ ℂ)).map (starRingEnd ℂ) := by
     ext i j; simp [Matrix.mul_apply, map_sum, Formalism.UG.cT]
   rw [hL, h3, hP]
-  ext (a | a) (b | b) <;> simp [Formalism.UG.Jpq, Matrix.one_apply] <;> split_ifs <;> simp
+  ext (a | a) (b | b) <;> simp [Formalism.UG.Jpq, Matrix.one_apply] <;> split_ifs
 
 theorem gram_conj {k l : Type} [Fintype k] [Fintype l] {n : ℕ} (M : Matrix (Fin n) (Fin n) ℂ)
     (A : Matrix (Fin n) k ℂ) (B : Matrix (Fin n) l ℂ) :
@@ -86,8 +86,7 @@ theorem hasSig_complement_plane : ∀ (n n₁ : ℕ) (M : Matrix (Fin n) (Fin n)
     fromRows (fromRows (T'ᴴ * J) (Tᴴ * J)) (P * (1 - T * (T'ᴴ * J) - T' * (Tᴴ * J))) with hL
   have hLQ : L * Q = 1 := by
     rw [Matrix.mul_assoc] at h1 h2 h3 h4 h5 h3'
-    simp only [hL, hQ, fromRows_mul, mul_fromCols, Matrix.mul_assoc, Matrix.mul_sub, Matrix.sub_mul, Matrix.one_mul,
-      Matrix.mul_one, h1, h2, h3, h4, h5, h3', hP, Matrix.mul_zero, sub_zero, sub_self, zero_sub]
+    simp only [hL, hQ, fromRows_mul, mul_fromCols, Matrix.mul_assoc, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_one, h1, h2, h3, h4, h5, h3', hP, Matrix.mul_zero, sub_zero, sub_self]
     ext ((a | a) | a) ((b | b) | b) <;> simp [Matrix.one_apply]
   obtain ⟨f⟩ : Nonempty (Fin n ≃ (Fin 1 ⊕ Fin 1) ⊕ Fin n₁) := Fintype.card_eq.1 (by simp; omega)
   set Q' : Matrix (Fin n) (Fin n) ℂ := Q.submatrix id f with hQ'
@@ -104,7 +103,7 @@ theorem hasSig_complement_plane : ∀ (n n₁ : ℕ) (M : Matrix (Fin n) (Fin n)
     rw [Matrix.mul_assoc] at h1 h2 h3 h4 h5 h3' h4' h5'
     simp only [hQ, conjTranspose_fromCols_eq_fromRows_conjTranspose, Matrix.mul_assoc, mul_fromCols, fromRows_mul,
       h1, h2, h3, h4, h5, h3', h4', h5']
-    ext ((a | a) | a) ((b | b) | b) <;> simp [Matrix.mul_assoc]
+    ext ((a | a) | a) ((b | b) | b) <;> simp
   have h6 : (ιᴴ * J * ι).det ≠ 0 := by
     have h7 : (Q'ᴴ * J * Q').det ≠ 0 := by
       rw [det_mul, det_mul, det_conjTranspose]

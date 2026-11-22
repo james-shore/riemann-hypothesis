@@ -118,7 +118,6 @@ theorem ext_exists (p : ℕ) (π : A)
             map_zero' := by simpa using hA 0
             map_add' := hadd
             commutes' := fun r => ?_ }, hA⟩
-  change F _ = _
   rw [IsScalarTower.algebraMap_apply O A E, hA, f.commutes]
 
 def cst (O : Type) [CommRing O] (n : ℕ) : (ZMod n → O) →ₐ[O] LetA O n :=

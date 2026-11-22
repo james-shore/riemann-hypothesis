@@ -67,8 +67,6 @@ theorem root_eq_one {F : Type} [Field F] (V : ValuationSubring F) {m : ℕ} (hm 
   | exact @_root_.GlobalTheory.RootOfUnityEqOne.main
   | exact _root_.GlobalTheory.RootOfUnityEqOne.main
   | (apply _root_.GlobalTheory.RootOfUnityEqOne.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.RootOfUnityEqOne.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.RootOfUnityEqOne.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.RootOfUnityEqOne.main ..)
 
 theorem fix_root {L : Type} [Field L] (B : ValuationSubring L) {m : ℕ} (hm0 : m ≠ 0) (hm : B.valuation (m : L) = 1)

@@ -179,9 +179,6 @@ private theorem distinct_four_eigenvalues_injective {R : Type} [CommRing R] {z :
     | exact absurd e.symm hzz
     | exact absurd (neg_eq_iff_eq_neg.1 e.symm) hn
     | exact absurd (neg_eq_iff_eq_neg.1 e) hn
-    | exact absurd (neg_eq_iff_eq_neg.1 e).symm hn
-    | exact absurd (neg_inj.1 e).symm h1
-    | exact absurd (neg_inj.1 e) h1
 
 private abbrev bU (c : Coef l) : c.Oˣ →* (ResidueField c.O)ˣ := Units.map (residue c.O : c.O →* ResidueField c.O)
 

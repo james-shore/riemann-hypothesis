@@ -47,9 +47,6 @@ lemma even_im_hermitian_sub (a : ℕ) (b c : ℤ) (d : ℕ) (h : 4 * (a : ℤ) *
   · have hkk : Even (k * (k + 1)) := by
       first
         | exact Int.even_mul_succ_self k
-        | (rcases Int.even_or_odd k with hk' | hk'
-           · exact hk'.mul_right _
-           · exact hk'.add_one.mul_left _)
     obtain ⟨j, hj⟩ := hkk
     have h' : 4 * ((a : ℤ) * c) = 4 * (k * (k + 1)) + 1 + d := by
       rw [hk] at h
@@ -70,8 +67,6 @@ lemma form_even_iff (a b c m n : ℤ) (ha : Odd a) (hb : Odd b) (hc : Even c) :
   rw [← Int.not_even_iff_odd]
   first
     | simp only [cmForm, Int.even_add, Int.even_mul, Int.even_pow' two_ne_zero]
-    | simp only [cmForm, Int.even_add, Int.even_mul, Int.even_pow, ne_eq, OfNat.ofNat_ne_zero,
-        not_false_eq_true, and_true]
   tauto
 
 lemma exp_pi_int (n : ℤ) :

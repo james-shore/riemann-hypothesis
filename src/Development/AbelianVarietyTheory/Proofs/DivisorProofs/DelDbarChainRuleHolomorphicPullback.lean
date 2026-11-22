@@ -19,7 +19,7 @@ variable {n : ℕ}
 theorem repr_algebraMap (t : ℂ) (S : Finset (Fin (n + n))) :
     (bas n).repr (algebraMap ℂ (Alt n) t) S = if S = ∅ then t else 0 := by
   rw [Algebra.algebraMap_eq_smul_one, ← bas_empty, map_smul, Module.Basis.repr_self]
-  by_cases h : S = ∅ <;> simp [Finsupp.single_apply, h, eq_comm]
+  by_cases h : S = ∅ <;> simp [h]
 
 theorem delAt_dbarAt_algebraMap (g : V n → ℂ) (v : V n) :
     delAt (fun x => algebraMap ℂ (Alt n) (g x)) v = ∑ a, del g v (coordVec a) • dz a ∧

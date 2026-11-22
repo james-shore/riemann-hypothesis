@@ -13,4 +13,4 @@ theorem _root_.GlobalTheory.T.localOrderTensorPadic_isAzumaya_almost_all : ∀ (
     ∃ N : ℕ, 0 < N ∧ ∀ (ℓ : ℕ) [Fact ℓ.Prime], ¬ ℓ ∣ N →
       letI := GlobalTheory.LocMatrix.cenAlgebra ℓ F B Λ hΛ
       IsAzumaya (cenOrder ℓ F) (locOrder ℓ Λ) := by
-  first | (exact @GlobalTheory.LocAzumaya.locOrder_isAzumaya) | (exact GlobalTheory.LocAzumaya.locOrder_isAzumaya) | (intros; apply GlobalTheory.LocAzumaya.locOrder_isAzumaya <;> assumption)
+  first | (exact @GlobalTheory.LocAzumaya.locOrder_isAzumaya)

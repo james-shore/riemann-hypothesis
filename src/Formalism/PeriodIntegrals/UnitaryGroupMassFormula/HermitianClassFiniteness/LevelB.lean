@@ -77,7 +77,7 @@ theorem lvB_lat_up (L : Submodule (𝓞 E) (Fin n → E)) (hL : L.FG) :
 
 theorem lvB_span_int (L : Submodule (𝓞 E) (Fin n → E)) (v : Fin n → E)
     (hv : v ∈ Submodule.span E (L : Set (Fin n → E))) : ∃ m : ℤ, m ≠ 0 ∧ m • v ∈ L := by
-  first | exact Bl.IntegerMulIntegral.goal1 .. | (apply Bl.IntegerMulIntegral.goal1 <;> assumption) | (intros; apply Bl.IntegerMulIntegral.goal1 <;> assumption) | (apply @Bl.IntegerMulIntegral.goal1 <;> assumption) | (intros; apply @Bl.IntegerMulIntegral.goal1 <;> assumption) | (apply @Bl.IntegerMulIntegral.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.IntegerMulIntegral.goal1 .. | (apply Bl.IntegerMulIntegral.goal1 <;> assumption)
 
 theorem lvB_lat_down (L : Submodule (𝓞 E) (Fin n → E))
     (hspan : Submodule.span E (L : Set (Fin n → E)) = ⊤) :

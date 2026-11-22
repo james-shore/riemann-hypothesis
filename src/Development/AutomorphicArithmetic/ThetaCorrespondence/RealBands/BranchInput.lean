@@ -118,8 +118,6 @@ theorem UpperTheory.Lit.Branch.realInputE :
     have hX : 0 ≤ colLen e g ^ (-(2 * (n : ℝ) + 7)) := by
       first
         | exact Real.rpow_nonneg hcl _
-        | exact zpow_nonneg hcl _
-        | positivity
     apply mul_le_mul_of_nonneg_right _ hX
     calc ((muG ε') (nbh ε' (1 / 4))).toReal * big C1 n B
         ≤ c * big (C2 + 100 + 100 + 1) n B * big C1 n B :=

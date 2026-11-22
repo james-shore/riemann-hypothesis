@@ -43,7 +43,7 @@ theorem eval_colSub {ι : Type} [Fintype ι] {a : ℕ} (β x : ι → Matrix (Fi
   | C c => simp [colSub]
   | add p q hp hq => simp only [map_add, hp, hq]
   | mul_X p v hp =>
-    simp only [map_mul, hp, colSub, MvPolynomial.aeval_X, MvPolynomial.eval_X, Matrix.mul_apply]
+    simp only [map_mul, colSub, MvPolynomial.aeval_X, MvPolynomial.eval_X, Matrix.mul_apply]
     congr 1
     rw [map_sum]
     refine Finset.sum_congr rfl fun r _ => ?_

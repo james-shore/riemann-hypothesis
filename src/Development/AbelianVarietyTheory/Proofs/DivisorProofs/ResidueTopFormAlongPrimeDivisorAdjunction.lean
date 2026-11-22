@@ -60,7 +60,7 @@ theorem exists_basis_D_cons (k V : Type) [Field k] [CharZero k] [CommRing V] [Is
     simp only [Function.comp_apply, TensorProduct.mk_apply, z, Fin.cons_zero, Fin.cons_succ] at hg
     have hφ := congrArg (mapBaseChange k V κ) hg
     simp only [map_add, map_sum, map_smul, map_zero, mapBaseChange_tmul, one_smul, map_D, ht₀,
-      Derivation.map_zero, smul_zero, zero_add] at hφ
+      smul_zero, zero_add] at hφ
     have hs : ∀ i : Fin n, g i.succ = 0 :=
       Fintype.linearIndependent_iff.mp hdli (fun i => g i.succ) hφ
     simp only [hs, zero_smul, Finset.sum_const_zero, add_zero] at hg
@@ -180,7 +180,7 @@ theorem residue_dForm : ∀ {L K : Type} [Field L] [Field K] (cL : ℂ →+* L) 
   have hsub : (ψ.mapMatrix M).submatrix Fin.succ Fin.succ = N := Matrix.ext fun _ _ => rfl
   have h0 : ∀ j : Fin n, ψ.mapMatrix M 0 j.succ = 0 := fun j => by
     rw [RingHom.mapMatrix_apply, Matrix.map_apply, hrow]
-    simp [Finsupp.single_apply, (Fin.succ_ne_zero j).symm]
+    simp
   have h00 : ψ.mapMatrix M 0 0 = ψ u := by
     rw [RingHom.mapMatrix_apply, Matrix.map_apply, hrow]
     simp

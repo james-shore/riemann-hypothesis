@@ -66,13 +66,13 @@ theorem level_all [Finite T] (t₀ : T) (hX : IsBottomTri W i j X) :
   refine ⟨⨅ t, K t, ⟨?_, ?_⟩, fun t P h k hk g => hinv t P h k ?_ g⟩
   · have e : (((⨅ t, K t).comap (Lev.finE A') : Subgroup (GA D A')) : Set (GA D A')) =
         ⋂ t, (((K t).comap (Lev.finE A') : Subgroup (GA D A')) : Set (GA D A')) := by
-      ext x; simp [Subgroup.mem_iInf]
+      ext x; simp
     rw [e]
     exact isOpen_iInter_of_finite fun t => (hK t).1
   · have hcl : IsClosed ((((⨅ t, K t).comap (Lev.finE A') : Subgroup (GA D A')) : Set (GA D A'))) := by
       have e : (((⨅ t, K t).comap (Lev.finE A') : Subgroup (GA D A')) : Set (GA D A')) =
           ⋂ t, (((K t).comap (Lev.finE A') : Subgroup (GA D A')) : Set (GA D A')) := by
-        ext x; simp [Subgroup.mem_iInf]
+        ext x; simp
       rw [e]
       exact isClosed_iInter fun t => Subgroup.isClosed_of_isOpen _ (hK t).1
     have e2 : ((Lev.levA A' (⨅ t, K t) : Subgroup (GA D A')) : Set (GA D A')) =

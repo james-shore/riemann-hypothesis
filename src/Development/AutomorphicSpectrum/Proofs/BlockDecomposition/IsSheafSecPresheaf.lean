@@ -62,7 +62,7 @@ theorem sec_rel {W : X.Opens} {s : ∀ α, κ α → Γ(X, W ⊓ U α)} (hs : s 
 
 instance secModule (W : X.Opens) : Module Γ(X, W) (secGroup g W) where
   smul a s := ⟨fun α k => rs inf_le_left a * s.1 α k, fun α β k => by
-    simp only [map_mul, s.2 α β k, rs_rs, Finset.mul_sum]
+    simp only [map_mul, s.2 α β k, Finset.mul_sum]
     refine Finset.sum_congr rfl fun k' _ => ?_
     rw [rs_rs _ _ (inf_le_left.trans inf_le_left), mul_left_comm,
       rs_rs _ _ (inf_le_left.trans inf_le_left)]⟩

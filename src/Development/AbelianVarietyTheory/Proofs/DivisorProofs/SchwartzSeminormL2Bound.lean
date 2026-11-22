@@ -30,9 +30,7 @@ theorem schwartz_pow_mul_iteratedFDeriv_le_sqrt_sum_weighted_sq :
   set G : E → ContinuousMultilinearMap ℝ (fun _ : Fin n => E) ℂ := iteratedFDeriv ℝ n f with hGdef
   have hG : ContDiff ℝ (⊤ : ℕ∞) G := (f.smooth ⊤).iteratedFDeriv_right (by
     first
-    | (rw [← WithTop.coe_natCast, ← WithTop.coe_add, top_add])
-    | exact le_of_eq (by simp)
-    | (norm_cast))
+    | (rw [← WithTop.coe_natCast, ← WithTop.coe_add, top_add]))
   have hdec : ∀ j ≤ m, Tendsto (iteratedFDeriv ℝ j G) (cocompact E) (𝓝 0) := by
     intro j _
     rw [tendsto_zero_iff_norm_tendsto_zero]

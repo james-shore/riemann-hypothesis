@@ -48,8 +48,8 @@ theorem card_places (σ : E →ₐ[F] E) (hCM : IsCMExt F E σ) (ψ : AddChar (A
       (Equiv.piCongrRight fun _ => eR.symm.toEquiv).bijective
     exact hP.bij.comp (eT.symm.bijective.comp h1)
   have hr := (LinearEquiv.ofBijective (L : (Fin 2 → InfinitePlace F → ℝ) →ₗ[ℝ] (ι → ℂ)) hbij).finrank_eq
-  simp only [Module.finrank_pi, Module.finrank_fin_fun, Module.finrank_pi_fintype, Complex.finrank_real_complex,
-    Finset.sum_const, Finset.card_univ, Fintype.card_fin, smul_eq_mul, Module.finrank_self] at hr
+  simp only [Module.finrank_pi, Module.finrank_pi_fintype, Complex.finrank_real_complex,
+    Finset.sum_const, Finset.card_univ, Fintype.card_fin, smul_eq_mul] at hr
   have hc : Fintype.card (InfinitePlace F) = Module.finrank ℚ F := by
     rw [NumberField.InfinitePlace.card_eq_nrRealPlaces_add_nrComplexPlaces, IsTotallyReal.nrComplexPlaces_eq_zero,
       add_zero, IsTotallyReal.finrank]

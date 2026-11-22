@@ -63,7 +63,7 @@ theorem eig_flat {V V' : Type} [CommRing V] [IsNoetherianRing V] [CommRing V'] [
     refine (congrFun (hL a (Pi.single k 1)) j).symm.trans ?_
     refine congrArg (fun q => L' a q j) ?_
     funext s
-    by_cases h : k = s <;> simp [Pi.single_apply, h, eq_comm]
+    by_cases h : k = s <;> simp [h, eq_comm]
   refine (GlobalTheory.commonEigenvectors_flat_baseChange V J n m M χ).1 V b (fun k a => (hM a _).trans (hb k a))
     (fun z hz => ?_) V' w (fun a => (hM' a w).trans (hw a))
   simp only [Algebra.algebraMap_self, RingHom.id_apply, RingHom.coe_id, Matrix.map_id] at hz ⊢

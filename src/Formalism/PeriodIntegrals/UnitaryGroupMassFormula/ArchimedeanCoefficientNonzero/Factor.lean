@@ -70,7 +70,6 @@ theorem regBracket_eq {k r : ℕ} {Wp Wq H : Type} [NormedAddCommGroup Wp] [Inne
       have hk : (a * b) ^ kap k r = a ^ kap k r * b ^ kap k r := by
         first
         | exact mul_pow a b _
-        | exact Real.mul_rpow ha.le hb.le
       rw [hk]
       simp only [Complex.ofReal_mul]
       ring

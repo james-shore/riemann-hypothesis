@@ -40,8 +40,7 @@ theorem chrW_triple_split_nu : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : Con
     show (locChar X.ν (splitPrime τ) (Units.map (complMap hv).toMonoidHom x) : ℂ) = _
     rw [e1, locChar_eq_of_chrEq (GlobalTheory.FunObj.SqNum.chrEq_nu G t i j hL)]
     have hj : (j : ℕ) < D.R.m := j.2
-    simp only [GlobalTheory.FunObj.SqNum.nuH, Grid.nu, locGrid, muBase, dif_pos hj, MonoidHom.div_apply,
-      Formalism.L2.Host.HChar.loc_mul, Formalism.L2.Host.HChar.loc_inv, div_eq_mul_inv]
+    simp only [GlobalTheory.FunObj.SqNum.nuH, Grid.nu, locGrid, muBase, dif_pos hj, Formalism.L2.Host.HChar.loc_mul, Formalism.L2.Host.HChar.loc_inv, div_eq_mul_inv]
     rfl
   · ext x
     show (locChar X.α (splitPrime τ) _ : ℂ) =

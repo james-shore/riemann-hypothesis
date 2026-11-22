@@ -67,7 +67,7 @@ def weightedL2Continuous (s : ℝ) : Submodule ℂ (ℝ → ℂ) where
       simp only [Pi.smul_apply, smul_eq_mul, enorm_mul]
       ring
     rw [this]
-    exact ENNReal.mul_lt_top (by simp [ENNReal.pow_lt_top]) hf'
+    exact ENNReal.mul_lt_top (by simp) hf'
 
 theorem inUJ_mul {ε : Fin n → Bool} {g h : Matrix (Fin n) (Fin n) ℂ} (hg : Formalism.REAL.inUJ ε g)
     (hh : Formalism.REAL.inUJ ε h) : Formalism.REAL.inUJ ε (g * h) := by

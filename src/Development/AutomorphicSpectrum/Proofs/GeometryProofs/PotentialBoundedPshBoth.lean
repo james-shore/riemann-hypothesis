@@ -18,7 +18,7 @@ theorem harmonicOnNhd_line {n : ℕ} {φ : (Fin n → ℂ) → ℝ} {O : Set (Fi
   have hcont : Continuous (fun t : ℂ => z₀ + t • e) := by fun_prop
   have hU : IsOpen ((fun t : ℂ => z₀ + t • e) ⁻¹' O) := hO.preimage hcont
   have hφ2 : ∀ y ∈ O, ContDiffAt ℝ 2 φ y := fun y hy =>
-    ((hφ y hy).contDiffAt (hO.mem_nhds hy)).of_le (by first | exact WithTop.coe_le_coe.mpr le_top | simp)
+    ((hφ y hy).contDiffAt (hO.mem_nhds hy)).of_le (by first | exact WithTop.coe_le_coe.mpr le_top)
   have hlap : ∀ t ∈ (fun t : ℂ => z₀ + t • e) ⁻¹' O,
       Laplacian.laplacian (fun t : ℂ => φ (z₀ + t • e)) t = 0 := by
     intro t ht
@@ -135,7 +135,7 @@ theorem contDiffAt_phT {t : ℝ} (ht : 0 < t) (ht' : t ≤ S.t₀) (j : Fin S.A.
   have hs := ((S.reg a).2.2 t ht ht').1 j
   have hmem : (S.A.chart j).target ∩ (S.A.chart j).symm ⁻¹' Set.univ ∈ 𝓝 y := by
     simpa using (S.A.chart j).open_target.mem_nhds hy
-  exact (hs.contDiffAt hmem).of_le (by first | exact WithTop.coe_le_coe.mpr le_top | simp)
+  exact (hs.contDiffAt hmem).of_le (by first | exact WithTop.coe_le_coe.mpr le_top)
 
 theorem levi_potT_eq_zero (h : ∀ t, IsPsh S.A ((S.potT a t).rsmul (-1)) ∧ IsPsh S.A (S.potT a t))
     {t : ℝ} (ht : 0 < t) (ht' : t ≤ S.t₀) (j : Fin S.A.n) {y : Fin e → ℂ}
@@ -148,7 +148,7 @@ theorem levi_potT_eq_zero (h : ∀ t, IsPsh S.A ((S.potT a t).rsmul (-1)) ∧ Is
     have hs := (S.sing a).1.1 p j
     have hmem : (S.A.chart j).target ∩ (S.A.chart j).symm ⁻¹' (S.th a).U p ∈ 𝓝 y :=
       ((S.A.chart j).isOpen_inter_preimage_symm ((S.th a).isOpen_U p)).mem_nhds ⟨hy, hU⟩
-    exact (hs.contDiffAt hmem).of_le (by first | exact WithTop.coe_le_coe.mpr le_top | simp)
+    exact (hs.contDiffAt hmem).of_le (by first | exact WithTop.coe_le_coe.mpr le_top)
   have hG : ContDiffAt ℝ 2 ((S.potT a t).φ p ∘ (S.A.chart j).symm) y :=
     hth.add (contDiffAt_phT S a ht ht' j hy)
   refine ⟨hG, ?_⟩

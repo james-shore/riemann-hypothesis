@@ -14,7 +14,7 @@ theorem weightSpace_iff_idempotent_fixed : ∀ (k : Type) [Field k] (C : Type) [
   let T : C → k ⊗[ℤ] C := fun c => (1 : k) ⊗ₜ[ℤ] c - algebraMap k (k ⊗[ℤ] C) (χ c)
   have hφT : ∀ c, φ (T c) = 0 := by
     intro c
-    simp [T, hφt, AlgHom.commutes]
+    simp [T, hφt]
   have hρT : ∀ c, ρ (T c) = DistribSMul.toLinearMap k M ((1 : k) ⊗ₜ[ℤ] c) - χ c • (1 : Module.End k M) := by
     intro c
     simp only [T]
@@ -52,7 +52,7 @@ theorem weightSpace_iff_idempotent_fixed : ∀ (k : Type) [Field k] (C : Type) [
       | zero => simp
       | tmul x c =>
         have : x ⊗ₜ[ℤ] c - algebraMap k (k ⊗[ℤ] C) (φ (x ⊗ₜ[ℤ] c)) = x • T c := by
-          simp only [T, hφt, smul_sub, Algebra.smul_def, map_mul, Algebra.TensorProduct.algebraMap_apply,
+          simp only [T, hφt, Algebra.smul_def, map_mul, Algebra.TensorProduct.algebraMap_apply,
             Algebra.TensorProduct.tmul_mul_tmul]
           rw [mul_sub, Algebra.TensorProduct.tmul_mul_tmul, Algebra.TensorProduct.tmul_mul_tmul]
           simp

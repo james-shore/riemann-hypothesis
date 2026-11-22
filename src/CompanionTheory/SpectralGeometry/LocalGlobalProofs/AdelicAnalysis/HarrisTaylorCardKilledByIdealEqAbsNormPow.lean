@@ -267,7 +267,7 @@ theorem mean_close (lam : Measure R) [lam.IsAddHaarMeasure] [SigmaFinite lam] (A
     rw [Measure.pi_pi]
     exact ENNReal.prod_lt_top fun _ _ => hAf
   have hvol : (Measure.pi fun _ : ι => lam).real (box ι A) = lam.real A ^ Fintype.card ι := by
-    simp [Measure.real, Measure.pi_pi, ENNReal.toReal_prod]
+    simp [Measure.real, Measure.pi_pi]
   have hone : (c : ℝ) ^ Fintype.card ι * (Measure.pi fun _ : ι => lam).real (box ι A) = 1 := by
     rw [hvol, ← mul_pow, mul_comm, hcm, one_pow]
   have hconst : IntegrableOn (fun _ : ι → R => v) (box ι A) (Measure.pi fun _ : ι => lam) :=

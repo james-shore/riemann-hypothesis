@@ -36,7 +36,7 @@ theorem spMap_eps_alg {R : Type} [CommRing R] (a : R) :
 theorem spMap_fst_alg {R : Type} [CommRing R] :
     spMap (TrivSqZeroExt.fstHom R R R).toRingHom ≫ spMap (algebraMap R (DualNumber R)) = 𝟙 (Sp R) := by
   rw [← Spec.map_comp, ← Spec.map_id]
-  exact congrArg Spec.map (CommRingCat.hom_ext (RingHom.ext fun x => by simp [TrivSqZeroExt.algebraMap_eq_inl]))
+  exact congrArg Spec.map (CommRingCat.hom_ext (RingHom.ext fun x => by simp))
 
 theorem cancel_g_ψ (hψ : IsPullback ψ G'.hom t.G.hom p) {b : X ⟶ X} {g : G'.left ⟶ G'.left}
     (hg : IsPullback g G'.hom G'.hom b) {T : Scheme.{0}} {u₁ u₂ : T ⟶ G'.left}

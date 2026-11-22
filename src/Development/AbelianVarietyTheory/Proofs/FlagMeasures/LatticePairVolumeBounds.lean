@@ -66,8 +66,6 @@ theorem exists_smul_mem {K : Type} [Field K] [NumberField K] {b : ℕ}
   | exact @_root_.GlobalTheory.FiniteSumFlagMeasures.main
   | exact _root_.GlobalTheory.FiniteSumFlagMeasures.main
   | (apply _root_.GlobalTheory.FiniteSumFlagMeasures.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FiniteSumFlagMeasures.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FiniteSumFlagMeasures.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FiniteSumFlagMeasures.main ..)
 
 theorem homLat_span {K : Type} [Field K] [NumberField K] {a b : ℕ}

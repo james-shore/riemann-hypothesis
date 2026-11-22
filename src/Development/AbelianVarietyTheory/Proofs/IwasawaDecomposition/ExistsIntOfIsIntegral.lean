@@ -19,7 +19,6 @@ theorem isIntegral_of_eq_rt0 {x : c.F} (hx : (x : ℂ) = H.rt0) : IsIntegral ℤ
   refine IsIntegral.of_pow two_pos ?_
   have e : x ^ 2 = algebraMap ℤ c.F (-(H.d : ℤ)) := by
     apply Subtype.ext
-    change ((x ^ 2 : c.F) : ℂ) = ((algebraMap ℤ c.F (-(H.d : ℤ)) : c.F) : ℂ)
     rw [IntermediateField.coe_pow, hx, H.sqrt_neg_disc_sq]
     simp
   rw [e]
@@ -29,7 +28,6 @@ theorem isIntegral_of_eq_zeta {x : c.F} (hx : (x : ℂ) = zeta l.A) : IsIntegral
   refine IsIntegral.of_pow l.A_pos ?_
   have e : x ^ l.A = 1 := by
     apply Subtype.ext
-    change ((x ^ l.A : c.F) : ℂ) = ((1 : c.F) : ℂ)
     rw [IntermediateField.coe_pow, hx]
     exact (Complex.isPrimitiveRoot_exp l.A l.A_pos.ne').pow_eq_one
   rw [e]

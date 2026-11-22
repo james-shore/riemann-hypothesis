@@ -142,7 +142,7 @@ theorem twOrb_level_eq_stSum : ∀ (E : Type) [Field E] [NumberField E] [IsCMFie
         refine ⟨c, g'⁻¹ * g, ?_⟩
         show _ = _ * dlt e b ((β₀ : B.A) * ((Quot.out c).1 : B.Aˣ)) * _
         rw [hg']
-        simp only [map_mul, map_inv, _root_.mul_inv_rev, inv_inv, mul_assoc, mul_inv_cancel_left, inv_mul_cancel_left])
+        simp only [map_mul, map_inv, _root_.mul_inv_rev, inv_inv, mul_assoc, mul_inv_cancel_left])
       (by
         intro c c' hcc
         obtain ⟨a, ha⟩ := (GlobalTheory.T.twistedConj_iff_mul_norm_invAlg E hE w hw K e hc hint hval B m b u hadj β₀ hβ₀' hgram (Quot.out c).1

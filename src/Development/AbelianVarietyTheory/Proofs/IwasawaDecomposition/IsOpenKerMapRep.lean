@@ -43,8 +43,7 @@ theorem isOpen_ker_mapRep {Γ : Type} [Group Γ] [TopologicalSpace Γ] [IsTopolo
     ext i j
     have := hφ (hg i j)
     rw [RingHom.mem_ker, map_sub, sub_eq_zero] at this
-    simp only [mapRep, MonoidHom.coe_comp, Function.comp_apply, Units.coe_map, MonoidHom.coe_coe,
-      RingHom.mapMatrix_apply, Matrix.map_apply, Units.val_one]
+    simp only [mapRep, MonoidHom.coe_comp, Function.comp_apply, Units.coe_map, Units.val_one]
     change φ ((ρ g : Matrix (Fin a) (Fin a) O) i j) = (1 : Matrix (Fin a) (Fin a) k) i j
     rw [this, Matrix.one_apply, Matrix.one_apply]
     split_ifs <;> simp

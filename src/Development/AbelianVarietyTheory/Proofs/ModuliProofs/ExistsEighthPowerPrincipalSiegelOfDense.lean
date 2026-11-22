@@ -45,7 +45,7 @@ theorem exists_isSharp_of_dense : Out.Laws → Out.Laws2 → (∀ (S : Scheme.{0
     simp only [lev, Pi.single_add, map_add, Pi.add_apply, zpow_add, Finset.prod_mul_distrib, MonObj.mul_comp]
   have hpt : ∀ i u, (t.pt i ≫ pr u).left = (lev (bas (Pi.single i 1) u)).left := fun i u => by
     have e₁ : ρ (Matrix.single 0 u 1) ≫ pr 0 = pr u := by
-      rw [hρ, List.prod_ofFn, Finset.prod_eq_single u] <;> simp +contextual [Matrix.single_apply, eq_comm]
+      rw [hρ, List.prod_ofFn, Finset.prod_eq_single u] <;> simp +contextual [eq_comm]
     have e₂ := rpt (Sum.inr (Matrix.single 0 u 1)) i
     have e₃ : (fun u' => ∑ v, (Sum.elim a id (Sum.inr (Matrix.single 0 u 1)) : Matrix (Fin 8) (Fin 8) ℤ) u' v •
         bas (Pi.single i 1) v) = Pi.single 0 (bas (Pi.single i 1) u) := by
@@ -53,7 +53,7 @@ theorem exists_isSharp_of_dense : Out.Laws → Out.Laws2 → (∀ (S : Scheme.{0
       by_cases hu : u' = 0
       · subst hu
         simp [Matrix.single_apply]
-      · simp [Matrix.single_apply, hu, Ne.symm hu]
+      · simp [hu, Ne.symm hu]
     rw [e₃, List.prod_ofFn] at e₂
     rw [← e₁, ← Category.assoc, e₂]
     rfl

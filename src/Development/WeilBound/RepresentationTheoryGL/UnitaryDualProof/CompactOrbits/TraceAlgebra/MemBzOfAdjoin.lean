@@ -61,7 +61,7 @@ theorem dich : Dich (k := k) := by
         have hconj : ∀ j : ℕ, (g.val * (x - s) * g⁻¹.val) ^ j = g.val * (x - s) ^ j * g⁻¹.val := by
           intro j
           induction j with
-          | zero => simp [← Units.val_mul]
+          | zero => simp
           | succ j ih =>
             rw [pow_succ, ih, pow_succ]
             simp only [Matrix.mul_assoc]

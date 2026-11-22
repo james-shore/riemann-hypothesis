@@ -22,7 +22,7 @@ theorem hessCRestrict_thm : HessCRestrictStatement := by
     rw [hLc]
     funext m
     by_cases hm : m = j
-    · rw [hm]; simp [Pi.single_apply, (Fin.succAbove_ne j i).symm]
+    · rw [hm]; simp [(Fin.succAbove_ne j i).symm]
     · obtain ⟨k, rfl⟩ := Fin.exists_succAbove_eq hm
       simp [Pi.single_apply]
   have hs1 : ∀ i : Fin n, Lc (Pi.single i 1) = Pi.single (j.succAbove i) 1 := by
@@ -37,11 +37,11 @@ theorem hessCRestrict_thm : HessCRestrictStatement := by
       Lc.continuous.continuousAt.preimage_mem_nhds (hU.mem_nhds hy)
     filter_upwards [hU'] with y' hy'
     rw [fderiv_comp y' ((hφa _ hy').differentiableAt
-      (by first | exact one_le_two | exact two_ne_zero | norm_num)) Lc.differentiableAt,
+      (by first | exact one_le_two | exact two_ne_zero)) Lc.differentiableAt,
       Lc.fderiv]
   have hd1 : DifferentiableAt ℝ (fderiv ℝ φ) (Lc y) :=
     ((hφa _ hy).fderiv_right (m := 1)
-      (by first | exact le_rfl | exact one_add_one_eq_two.le | norm_num)).differentiableAt
+      (by first | exact le_rfl)).differentiableAt
       (by first | exact le_rfl | exact one_ne_zero)
   have hc : DifferentiableAt ℝ (fun y' => fderiv ℝ φ (Lc y')) y :=
     hd1.comp y Lc.differentiableAt

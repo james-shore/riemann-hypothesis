@@ -89,7 +89,7 @@ theorem _root_.PositivityTheory.SiegelWeilFormula.SD_k.chiW_pos_pf (w : Infinite
       rw [Place.piInf_cA d.cm, _root_.PositivityTheory.SiegelWeilFormula.KC.uW_eq_k, map_add, (_root_.PositivityTheory.SiegelWeilFormula.KC.sec_spec_k d).2.1, Place.piInf_finOne, add_zero]
       by_cases h : w' = w
       · subst h; simp
-      · simp [Function.update_apply, h]
+      · simp [h]
     · rw [← map_smul, _root_.PositivityTheory.SiegelWeilFormula.KC.uW_eq_k, smul_add, (_root_.PositivityTheory.SiegelWeilFormula.KC.sec_spec_k d).2.2.1, zero_add, smul_smul, KC.finOne_mul_self, map_smul,
         map_one]
   have huw : d.uW w (r : ℂ) = d.uW w t * cA σ (d.uW w t) := by

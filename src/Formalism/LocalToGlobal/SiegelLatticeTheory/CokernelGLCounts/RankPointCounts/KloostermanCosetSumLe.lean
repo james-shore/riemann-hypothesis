@@ -180,8 +180,6 @@ theorem labFacts_conc (t : GTu Y u) :
     unfold Dl leadMinorE
     first
       | exact Matrix.det_isEmpty
-      | simp
-      | done
 
 theorem cosetsC_holds : CosetsC := by
   intro Cg cb Cw cT CT C0 CH hCH

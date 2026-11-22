@@ -46,7 +46,7 @@ theorem psiS_chiImg (j₀ : Fin (N + 1)) (x : Fin N → Ω) (v : TVar D N)
       exact (Fin.insertNth_apply_same (α := fun _ => MvPolynomial (SVar D N) Ω) j₀ _ _).trans
         (if_neg hi)
     rw [h1, h2]
-    simp [psiS, map_neg, map_sum, map_mul, MvPolynomial.rename_X, MvPolynomial.rename_C]
+    simp [psiS, map_neg, map_sum, map_mul, MvPolynomial.rename_X]
   · obtain ⟨k, hk⟩ := Fin.exists_succAbove_eq hj
     rw [← hk]
     have h1 : chiImg j₀ x (i, j₀.succAbove k) = X (i, k) :=
@@ -66,7 +66,7 @@ theorem psiS_chiImg_base (j₀ : Fin (N + 1)) (x : Fin N → Ω) :
   have h1 : chiImg j₀ x ((0 : Fin (D + 1)), j₀) = -∑ k, X ((0 : Fin (D + 1)), k) * C (x k) :=
     Fin.insertNth_apply_same (α := fun _ => MvPolynomial (Fin (D + 1) × Fin N) Ω) j₀ _ _
   rw [h1]
-  simp [psiS, map_neg, map_sum, map_mul, MvPolynomial.rename_X, MvPolynomial.rename_C]
+  simp [psiS, map_neg, map_sum, map_mul, MvPolynomial.rename_X]
 
 theorem sImg_base (j₀ : Fin (N + 1)) (x : Fin N → Ω) :
     sImg (Ω := Ω) j₀ x ((0 : Fin (D + 1)), j₀) =
@@ -75,7 +75,6 @@ theorem sImg_base (j₀ : Fin (N + 1)) (x : Fin N → Ω) :
   congr 1
   first
   | exact (Fin.insertNth_apply_same (α := fun _ => MvPolynomial (SVar D N) Ω) j₀ _ _).trans (if_pos rfl)
-  | simp [Fin.succAboveCases]
 
 theorem sImg_succAbove (j₀ : Fin (N + 1)) (x : Fin N → Ω) (i : Fin (D + 1)) (k : Fin N) :
     sImg (Ω := Ω) j₀ x (i, j₀.succAbove k) =
@@ -93,7 +92,6 @@ theorem ker_eval_ne_bot (hΩ : Algebra.trdeg K Ω = D) (j₀ : Fin (N + 1)) (x :
       chiP (K := K) (D := D) j₀ x := by
     first
     | (ext i; simp)
-    | exact (MvPolynomial.aeval_unique _).symm
   have hind : AlgebraicIndependent K
       (fun i : TVar D N => chiP (K := K) (D := D) j₀ x (MvPolynomial.X i)) := by
     rw [algebraicIndependent_iff_injective_aeval, hphi]
@@ -199,7 +197,7 @@ theorem ker_eval_le_of_place (hd : d.AxH 𝒜) (c : ι) {p : Ideal (KTp K d.D d.
     first
     | (rw [AlgHom.toRingHom_eq_coe, RingHom.coe_coe, AlgHom.commutes]
        exact IsScalarTower.algebraMap_apply K _ _ k)
-    | (simp only [AlgHom.toRingHom_eq_coe, RingHom.coe_coe, AlgHom.commutes]
+    | (simp only [AlgHom.toRingHom_eq_coe, RingHom.coe_coe]
        exact IsScalarTower.algebraMap_apply K _ _ k)
     | (simp [IsScalarTower.algebraMap_apply K (MvPolynomial (SVar d.D d.N) (Ω c)) (OmS (Ω c) d.D d.N)])
   have key : ∀ G : KTp K d.D d.N, 0 ≤ w (psiS (chiP (K := K) (D := d.D) (d.jc c) (d.x c) G)) ∧ 0 < w (d.sH c G - psiS (chiP (K := K) (D := d.D) (d.jc c) (d.x c) G)) := by

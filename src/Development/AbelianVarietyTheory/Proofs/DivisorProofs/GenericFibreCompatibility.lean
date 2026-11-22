@@ -21,4 +21,4 @@ theorem _root_.GlobalTheory.T.generic_fibre_compatibility : ∀ (T O A A₁ R R�
       ψA₁.comp (algebraMap R₁ (GlobalTheory.LocAcyc.GenFib A₁ R₁)) = (algebraMap O (GlobalTheory.LocAcyc.GenFib T O)).comp jA₁ ∧
       ψA₁.comp β = ψA ∧
       β.comp (algebraMap R (GlobalTheory.LocAcyc.GenFib A R)) = (algebraMap R₁ (GlobalTheory.LocAcyc.GenFib A₁ R₁)).comp γ := by
-  first | (exact @GlobalTheory.GenFibBaseChange.exists_genFib_maps) | (exact GlobalTheory.GenFibBaseChange.exists_genFib_maps) | (intros; apply GlobalTheory.GenFibBaseChange.exists_genFib_maps  <;> assumption)
+  first | (exact @GlobalTheory.GenFibBaseChange.exists_genFib_maps)

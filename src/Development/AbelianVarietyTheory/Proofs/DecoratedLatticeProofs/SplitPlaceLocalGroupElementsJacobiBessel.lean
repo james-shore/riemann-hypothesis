@@ -97,7 +97,7 @@ theorem pair_zero {S : HSp D} {g : GA D S} (hg : SuppAt p.e S g) {a b : ℕ} (A 
   rw [m1, ← Matrix.map_mul, ← Matrix.map_mul] at h1 h2
   have e1 : adj (mt S g) ⬝ gA S = gA S ⬝ mt S g⁻¹ := by rw [GlobalTheory.MixModel.mt_inv, gA_giA_cancel]
   have e2 : adj (adj A ⬝ gA S ⬝ (mt S g - 1) ⬝ B) = adj B ⬝ gA S ⬝ (mt S g⁻¹ - 1) ⬝ A := by
-    simp only [adj_mul, adj_sub, adj_one, adj_adj, adj_gA, Matrix.mul_assoc, Matrix.sub_mul, Matrix.mul_sub, Matrix.one_mul,
+    simp only [adj_mul, adj_sub, adj_adj, adj_gA, Matrix.mul_assoc, Matrix.sub_mul, Matrix.mul_sub, Matrix.one_mul,
       cancel₂ e1]
   refine eq_zero_of_comp p ?_ h1 ?_
   · have : (p.e + cA D p.e) • (adj A ⬝ gA S ⬝ (mt S g - 1) ⬝ B) = adj A ⬝ gA S ⬝ (mt S g - 1) ⬝ B := by
@@ -182,7 +182,7 @@ theorem Tri.XX (h : Tri p d F₀ N) {i j : Fin ρ} (hij : i ≤ j) :
 theorem Tri.YY (h : Tri p d F₀ N) {i j : Fin ρ} (hij : i ≤ j) :
     ((adj d.jX ⬝ gA S).map p.π * N * d.jY.map p.π) i j = 0 := by
   rw [← d.pY_eq]
-  exact h (Sum.inr (Sum.inr i)) (Sum.inr (Sum.inr j)) (by simp only [wlev, Sum.elim_inr, Sum.elim_inl]; omega)
+  exact h (Sum.inr (Sum.inr i)) (Sum.inr (Sum.inr j)) (by simp only [wlev, Sum.elim_inr]; omega)
 
 theorem mem_flagN {g : GA D S} (hg : SuppAt p.e S g) (h : Tri p d F₀ ((mt S g).map p.π - 1))
     (h' : Tri p d F₀ ((mt S g⁻¹).map p.π - 1)) : g ∈ flagN d := by

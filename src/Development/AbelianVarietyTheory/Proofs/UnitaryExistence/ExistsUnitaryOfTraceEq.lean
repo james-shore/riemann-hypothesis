@@ -152,8 +152,6 @@ theorem exists_smul_mem (Λ : Submodule (𝓞 E) (Fin n → E)) (hΛ : Submodule
   | exact @_root_.GlobalTheory.SmulMemSpanTop.exists_smul_mem_of_span_eq_top
   | exact _root_.GlobalTheory.SmulMemSpanTop.exists_smul_mem_of_span_eq_top
   | (apply _root_.GlobalTheory.SmulMemSpanTop.exists_smul_mem_of_span_eq_top <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SmulMemSpanTop.exists_smul_mem_of_span_eq_top <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SmulMemSpanTop.exists_smul_mem_of_span_eq_top <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SmulMemSpanTop.exists_smul_mem_of_span_eq_top ..)
 
 theorem exists_matrix_of_lattice (Λ : Submodule (𝓞 E) (Fin n → E))

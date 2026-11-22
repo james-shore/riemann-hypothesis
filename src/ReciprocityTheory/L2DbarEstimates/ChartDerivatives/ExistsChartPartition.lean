@@ -63,7 +63,7 @@ theorem exists_chart_bump {M : Type*} [TopologicalSpace M] [T2Space M] (n : ℕ)
       have h2 : e y ∈ Metric.ball (e x) r := by
         rw [← φ.support_eq]; exact h1
       exact ⟨e y, Metric.ball_subset_closedBall h2, e.left_inv hys⟩
-    · exact absurd (by simp [ψ, Set.indicator_apply, hys]) hy
+    · exact absurd (by simp [ψ, hys]) hy
   have htsK : tsupport ψ ⊆ K := closure_minimal hsupp hKc.isClosed
   refine ⟨e, ψ, he, ?_, hKc.of_isClosed_subset (isClosed_tsupport _) htsK, htsK.trans hKs,
     fun y => ?_, ?_⟩
@@ -90,7 +90,7 @@ theorem exists_chart_bump {M : Type*} [TopologicalSpace M] [T2Space M] (n : ℕ)
   · by_cases hys : y ∈ e.source
     · simp only [ψ, Set.indicator_of_mem hys]
       exact ⟨φ.nonneg, φ.le_one⟩
-    · simp [ψ, Set.indicator_apply, hys]
+    · simp [ψ, hys]
   · have h1 : IsOpen (e.source ∩ e ⁻¹' Metric.ball (e x) (r / 2)) :=
       e.isOpen_inter_preimage Metric.isOpen_ball
     filter_upwards [h1.mem_nhds ⟨hxe, Metric.mem_ball_self (by positivity)⟩] with y hy

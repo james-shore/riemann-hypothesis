@@ -15,7 +15,7 @@ private theorem enorm_tsum_le' {β : Type*} (f : β → ℂ) : ‖∑' b, f b‖
     have h1 : ‖∑' b, f b‖ ≤ ∑' b, ‖f b‖ := norm_tsum_le_tsum_norm hs
     have h2 : ENNReal.ofReal (∑' b, ‖f b‖) = ∑' b, ‖f b‖ₑ := by
       rw [ENNReal.ofReal_tsum_of_nonneg (fun _ => norm_nonneg _) hs]
-      simp [ofReal_norm_eq_enorm]
+      simp
     rw [← h2, ← ofReal_norm_eq_enorm]
     exact ENNReal.ofReal_le_ofReal h1
 

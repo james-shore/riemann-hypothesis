@@ -75,7 +75,7 @@ theorem lpChar_lpSum (x a b : WD h) : x.lpChar (a.lpSum b) = (x.lpChar a).lpSum 
     | zero => simp only [map_zero]
     | tmul p q =>
       obtain ⟨q₁, q₂⟩ := q
-      simp [TensorProduct.tmul_add]
+      simp
     | add p q hp hq => simp only [map_add, hp, hq]
 
 theorem charPol_lpZero (σ : Weil h) : (WD.lpZero h).charPol σ = 1 :=

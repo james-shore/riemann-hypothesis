@@ -7,7 +7,7 @@ noncomputable def reForm {g : ℕ} (H : Matrix (Fin g) (Fin g) ℂ) :
     (Fin g → ℂ) →ₗ[ℝ] (Fin g → ℂ) →ₗ[ℝ] ℝ :=
   LinearMap.mk₂ ℝ (fun z w => (z ⬝ᵥ H *ᵥ star w).re)
     (by intro a b c; simp [add_dotProduct])
-    (by intro c a b; simp [smul_dotProduct, Complex.smul_re])
+    (by intro c a b; simp [smul_dotProduct])
     (by intro a b c; simp [star_add, mulVec_add, dotProduct_add])
     (by intro c a b
         have : star (c • b) = c • star b := by

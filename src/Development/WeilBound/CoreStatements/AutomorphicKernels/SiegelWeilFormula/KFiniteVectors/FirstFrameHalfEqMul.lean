@@ -84,7 +84,7 @@ theorem hasDerivAt_normSq (y v : ℂ) :
     simpa using ((hasDerivAt_id (0 : ℝ)).mul_const v.im).const_add y.im
   refine ((h1.pow 2).add (h2.pow 2)).congr_deriv ?_
   rw [show (star y * v).re = y.re * v.re + y.im * v.im by simp [Complex.mul_re]]
-  simp only [zero_mul, add_zero, pow_one, Nat.cast_ofNat]
+  simp only [zero_mul, add_zero, Nat.cast_ofNat]
   ring
 
 theorem cw_add_smul (w : InfinitePlace F) (X Z : Mx F E d.m d.n) (t : ℝ) :
@@ -179,7 +179,7 @@ theorem frame_form (R : RD d) (w : InfinitePlace F) :
   have := congrArg (fun x => x.map (d.B.emb w).1) R.hε
   simp only [Matrix.map_mul, Matrix.transpose_map, cst, hd] at this
   rw [this]
-  ext (i | i) (j | j) <;> by_cases hij : i = j <;> simp [jE, Matrix.fromBlocks, Matrix.smul_apply, Matrix.one_apply, hij]
+  ext (i | i) (j | j) <;> by_cases hij : i = j <;> simp [jE, Matrix.fromBlocks, Matrix.smul_apply, hij]
 
 theorem map_mul_incM_transpose_eq {p q r : Type} [Fintype q] (w : InfinitePlace F) (x : Matrix p q (AE F E)) (y : Matrix r q E) :
     (x * (incM F y)ᵀ).map (piInf (d.B.emb w)) = x.map (piInf (d.B.emb w)) * (y.map (d.B.emb w).1)ᵀ := by

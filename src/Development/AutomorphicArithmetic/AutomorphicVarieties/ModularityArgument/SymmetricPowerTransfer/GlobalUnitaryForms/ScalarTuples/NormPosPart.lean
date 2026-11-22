@@ -168,7 +168,7 @@ private theorem norm_pos_part {Δ : F} (hneg : ∀ σ : F →+* ℝ, σ Δ < 0) 
     0 ≤ σ (QuadraticAlgebra.norm y) := by
   have h := hneg σ
   rw [QuadraticAlgebra.norm_def]
-  simp only [map_add, map_sub, map_mul, map_zero, zero_mul, add_zero]
+  simp only [map_sub, map_mul, zero_mul, add_zero]
   nlinarith [sq_nonneg (σ y.re), sq_nonneg (σ y.im), mul_nonneg (neg_nonneg.mpr h.le) (sq_nonneg (σ y.im))]
 
 end Main
@@ -193,7 +193,7 @@ theorem exG : ExG := by
     simp at h1
   have hx1 : herm c m (0, ⟨1, 0⟩) (0, ⟨1, 0⟩) = algebraMap F (Lsq F Δ) g := by
     rw [hg, herm, tr_form]
-    simp only [star_zero, star_one, mul_zero, zero_mul, mul_one, add_zero, zero_add, map_zero]
+    simp only [star_zero, star_one, mul_zero, mul_one, add_zero, zero_add]
     rfl
   have hgpos : TPos g := by
     have h1 := hpos _ hx1ne
@@ -270,8 +270,6 @@ theorem exG : ExG := by
     have e1 : ∀ z, Pe z = P *ᵥ Co z := fun z => by
       first
         | rfl
-        | (simp only [Pe, LinearEquiv.trans_apply]; rw [← Matrix.toLin'_apply]; rfl)
-        | (simp only [Pe, LinearEquiv.trans_apply, ← LinearEquiv.coe_toLinearMap, Matrix.toLinearEquiv'_apply, Matrix.toLin'_apply])
     rw [e1, e1, diag_sum P (fun i => algebraMap F (Lsq F Δ) (gi i)) hPe, Fin.sum_univ_three, hform]
     simp [Co, gi]
   obtain ⟨δ, ι', hM⟩ := exG_models hdat Pe hherm

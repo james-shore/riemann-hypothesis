@@ -62,7 +62,6 @@ private theorem gens_lemma_2 [Fintype κ] (x : κ → Ω) (e : Fin (D + 1) → �
       first
         | (rw [Polynomial.algebraMap_apply, Polynomial.coe_evalRingHom, Polynomial.eval_C]
            exact IntermediateField.algebraMap_mem _ a)
-        | simpa using IntermediateField.algebraMap_mem (fnField (x ∘ e)) a
     next p1 p2 h1 h2 =>
       rw [map_add, map_add]
       exact add_mem h1 h2
@@ -108,7 +107,6 @@ private theorem gens_lemma_2 [Fintype κ] (x : κ → Ω) (e : Fin (D + 1) → �
         have h3 : x i / x j = x i / x (e 0) / (x j / x (e 0)) := by
           first
             | rw [div_div_div_cancel_right₀ hne]
-            | field_simp
         show x i / x j ∈ IntermediateField.adjoin (fnField (x ∘ e)) S
         rw [h3]
         have hi : x i / x (e 0) ∈ IntermediateField.adjoin (fnField (x ∘ e)) S :=
@@ -164,9 +162,6 @@ theorem exists_indep_sections' [Fintype κ] (x : κ → Ω) (e : Fin (D + 1) →
       exact hint i
     first
       | rw [IntermediateField.adjoin_toSubalgebra_of_isAlgebraic (fun w hw => (hSi w hw).isAlgebraic)] at h1
-      | rw [IntermediateField.adjoin_toSubalgebra_of_isIntegral hSi] at h1
-      | rw [IntermediateField.adjoin_algebraic_toSubalgebra (fun w hw => (hSi w hw).isAlgebraic)] at h1
-      | rw [IntermediateField.adjoin_integral_toSubalgebra hSi] at h1
     have h2 : z ∈ Subalgebra.toSubmodule (Algebra.adjoin (fnField (x ∘ e))
         (Set.range fun i => x i / x (e 0))) := h1
     rwa [Algebra.adjoin_eq_span] at h2
@@ -193,7 +188,6 @@ theorem exists_indep_sections' [Fintype κ] (x : κ → Ω) (e : Fin (D + 1) →
       (Set.range (Subtype.val : b → IntermediateField.extendScalars (fnField_comp_le' x e))) := by
     first
       | rw [Subtype.range_coe, hbspan, hspan]
-      | rw [Subtype.range_val, hbspan, hspan]
   let B := Basis.mk hbli hbtop
   haveI : Finite b := Module.Finite.finite_basis B
   haveI : Fintype b := Fintype.ofFinite b
@@ -202,7 +196,6 @@ theorem exists_indep_sections' [Fintype κ] (x : κ → Ω) (e : Fin (D + 1) →
     unfold projDeg
     first
       | exact IntermediateField.relfinrank_eq_finrank_of_le (fnField_comp_le' x e)
-      | rfl
   have hcard : Fintype.card b = projDeg x e := by
     rw [hpd, Module.finrank_eq_card_basis B]
   let eqv : Fin (projDeg x e) ≃ b := (Fintype.equivFinOfCardEq hcard).symm
@@ -279,7 +272,6 @@ theorem eq_zero_of_trace [Fintype κ] (x : κ → Ω) (e : Fin (D + 1) → κ) (
     unfold projDeg
     first
       | exact IntermediateField.relfinrank_eq_finrank_of_le (fnField_comp_le' x e)
-      | rfl
   haveI : Nonempty (Fin (projDeg x e)) := ⟨⟨0, by
     have h4 := hrank
     rw [Fintype.card_fin] at h4
@@ -296,7 +288,6 @@ theorem eq_zero_of_trace [Fintype κ] (x : κ → Ω) (e : Fin (D + 1) → κ) (
       (IntermediateField.extendScalars (fnField_comp_le' x e))).Nondegenerate := by
     first
       | exact traceForm_nondegenerate _ _
-      | exact Algebra.traceForm_nondegenerate _ _
   have key : ∀ n, Algebra.traceForm (fnField (x ∘ e))
       (IntermediateField.extendScalars (fnField_comp_le' x e)) t n = 0 := by
     intro n
@@ -306,9 +297,6 @@ theorem eq_zero_of_trace [Fintype κ] (x : κ → Ω) (e : Fin (D + 1) → κ) (
   first
     | exact hnd t key
     | exact hnd.1 t key
-    | exact hnd.1.1 t key
-    | (unfold LinearMap.BilinForm.Nondegenerate LinearMap.Nondegenerate LinearMap.SeparatingLeft at hnd
-       exact hnd.1 t key)
 
 def chartGen (x : κ → Ω) (e : Fin (D + 1) → κ) (l : Fin (D + 1)) (k : {k // k ≠ l}) :
     fnField (x ∘ e) :=
@@ -342,9 +330,6 @@ theorem chartGen_indep (x : κ → Ω) (e : Fin (D + 1) → κ) (hfree : coordId
       rw [← h1]
       first
         | simp [Finsupp.weight_apply, Finsupp.sum_fintype]
-        | simp [Finsupp.degree_eq_sum]
-        | exact (Finsupp.sum_fintype _ _ (by simp)).symm
-        | simp [Finsupp.degree, Finsupp.sum_fintype]
     rw [mul_div_assoc]
     congr 1
     simp_rw [div_pow]
@@ -362,9 +347,6 @@ theorem chartGen_indep (x : κ → Ω) (e : Fin (D + 1) → κ) (hfree : coordId
       rw [← h1]
       first
         | simp [Finsupp.weight_apply, Finsupp.sum_fintype]
-        | simp [Finsupp.degree_eq_sum]
-        | exact (Finsupp.sum_fintype _ _ (by simp)).symm
-        | simp [Finsupp.degree, Finsupp.sum_fintype]
     rw [← hdeg]
     simp only [mul_pow, Finset.prod_mul_distrib, Finset.prod_pow_eq_pow_sum, eq_intCast, map_mul,
       map_prod, map_pow, map_intCast]
@@ -481,7 +463,6 @@ theorem chartRing_frac (x : κ → Ω) (e : Fin (D + 1) → κ) (hfree : coordId
       simp only [Function.comp_apply]
       first
         | rw [div_div_div_cancel_right₀ (hne l)]
-        | field_simp
     show _ ∈ Subfield.closure T
     rw [h3]
     exact div_mem (hgen i) (hgen j)
@@ -573,7 +554,6 @@ theorem coord_div_isIntegral (x : κ → Ω) (e : Fin (D + 1) → κ) (h : IsPro
     have h2 := congrArg Subtype.val (eqv.apply_symm_apply (φ v))
     first
       | exact h2
-      | (simp only [eqv, Subring.coe_equivMapOfInjective_apply] at h2; exact h2)
   have hpt : x i / x (e l) = Polynomial.evalRingHom (x (e l))⁻¹ (Polynomial.C (x i) * Polynomial.X) := by
     simp [div_eq_mul_inv]
   rw [hcomp, hpt, ← Polynomial.hom_eval₂, hp, map_zero]
@@ -597,9 +577,6 @@ theorem sec_div_isIntegral (x : κ → Ω) (e : Fin (D + 1) → κ) [Fintype κ]
       rw [← h1]
       first
         | simp [Finsupp.weight_apply, Finsupp.sum_fintype]
-        | simp [Finsupp.degree_eq_sum]
-        | exact (Finsupp.sum_fintype _ _ (by simp)).symm
-        | simp [Finsupp.degree, Finsupp.sum_fintype]
     rw [mul_div_assoc]
     congr 1
     simp_rw [div_pow]
@@ -611,8 +588,6 @@ theorem sec_div_isIntegral (x : κ → Ω) (e : Fin (D + 1) → κ) [Fintype κ]
     have hS : MvPolynomial.aeval (fun i => x i / x (e l)) p = S.val (MvPolynomial.aeval y' p) := by
       first
         | (rw [← AlgHom.comp_apply, MvPolynomial.comp_aeval]; rfl)
-        | (rw [← AlgHom.comp_apply, MvPolynomial.comp_aeval])
-        | exact (DFunLike.congr_fun (MvPolynomial.comp_aeval (R := ℤ) S.val) p).symm
     rw [← hhom, hS]
     exact (MvPolynomial.aeval y' p).2
   exact (isIntegral_algHom_iff (IsScalarTower.toAlgHom (chartRing x e l)
@@ -643,7 +618,6 @@ theorem trace_mem_chart [Fintype κ] (x : κ → Ω) (e : Fin (D + 1) → κ) (h
         (IntermediateField.extendScalars (fnField_comp_le' x e)) = 0 := by
       first
         | exact Algebra.trace_eq_zero_of_not_exists_basis _ hnb
-        | exact Algebra.trace_eq_zero_of_not_exists_basis hnb
     rw [h0, LinearMap.zero_apply]
     exact zero_mem _
 

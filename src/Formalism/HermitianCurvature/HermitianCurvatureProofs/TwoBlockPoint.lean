@@ -18,12 +18,10 @@ def eN (hN : N = a + s) : Fin a ⊕ Fin s ≃ Fin N := finSumFinEquiv.trans (fin
 theorem eN_inl (hN : N = a + s) (i : Fin a) : ((eN hN (Sum.inl i) : Fin N) : ℕ) = i := by
   first
     | simp [eN]
-    | rfl
 
 theorem eN_inr (hN : N = a + s) (i : Fin s) : ((eN hN (Sum.inr i) : Fin N) : ℕ) = a + i := by
   first
     | simp [eN]
-    | rfl
 
 def blkM (hN : N = a + s) (A : Matrix (Fin a) (Fin a) K) (B : Matrix (Fin a) (Fin s) K)
     (C : Matrix (Fin s) (Fin a) K) (D : Matrix (Fin s) (Fin s) K) : Matrix (Fin N) (Fin N) K :=
@@ -253,7 +251,7 @@ theorem sLow_blkM (hN : N = a + s) (A : Matrix (Fin a) (Fin a) K) (B : Matrix (F
       (if a + (i : ℕ) = a + j + 1 then D i j else 0) = (if (i : ℕ) = j + 1 then D i j else 0) := by
     intro j i
     simp only [show (a + (i : ℕ) = a + j + 1) ↔ ((i : ℕ) = j + 1) by omega]
-  simp only [hB, hC, hD, Finset.sum_const_zero, add_zero, zero_add]
+  simp only [hB, hC, hD, Finset.sum_const_zero, add_zero]
   unfold cornL
   abel
 
@@ -296,7 +294,7 @@ theorem sUp_blkM (hN : N = a + s) (A : Matrix (Fin a) (Fin a) K) (B : Matrix (Fi
       (if a + (i : ℕ) = a + j + 1 then D j i else 0) = (if (i : ℕ) = j + 1 then D j i else 0) := by
     intro j i
     simp only [show (a + (i : ℕ) = a + j + 1) ↔ ((i : ℕ) = j + 1) by omega]
-  simp only [hB, hC, hD, Finset.sum_const_zero, add_zero, zero_add]
+  simp only [hB, hC, hD, Finset.sum_const_zero, add_zero]
   unfold cornU
   abel
 
@@ -480,7 +478,7 @@ private lemma pt_unit_lemma_5 (s : List ℕ) (t : ℕ → Kˣ) : IsUnit (pt s t)
       simp [pt, revIn_invol_lemma_3 s c c.2, blk_revIn_lemma_4 s c c.2]
     · have h1 : (c : ℕ) ≠ a := fun e => hca (Fin.ext e)
       have h2 : a ≠ c := fun e => hca e.symm
-      simp [pt, revIn_invol_lemma_3 s a a.2, blk_revIn_lemma_4 s a a.2, Matrix.one_apply, h1, h2]
+      simp [pt, revIn_invol_lemma_3 s a a.2, h1, h2]
   · intro b _ hb
     have : (b : ℕ) ≠ revIn s a := fun e => hb (Fin.ext e)
     simp [pt, this]
@@ -519,7 +517,7 @@ theorem pt_append' (L l l' : List ℕ) (hL : L = l ++ l') (T T₁ T₂ : ℕ →
 
 theorem two_block_point_size_sum (h : Point K) (m : ℕ) (t c : Kˣ) :
     (pt2 h m t c).1.sum = h.1.sum + (pt2 (h0 : Point K) m t c).1.sum := by
-  simp [pt2, h0, addBlock, List.sum_append, add_assoc]
+  simp [pt2, h0, addBlock, List.sum_append]
 
 theorem two_block_point_block_matrix (h : Point K) (m : ℕ) (t c : Kˣ) :
     pt (pt2 h m t c).1 (pt2 h m t c).2 =
@@ -528,11 +526,11 @@ theorem two_block_point_block_matrix (h : Point K) (m : ℕ) (t c : Kˣ) :
   refine pt_append' _ h.1 _ ?_ _ h.2 _ ?_ ?_ (two_block_point_size_sum h m t c)
   · simp [pt2, h0, addBlock]
   · intro b hb
-    simp [pt2, addBlock, Function.update_apply, show b ≠ h.1.length by omega,
+    simp [pt2, addBlock, show b ≠ h.1.length by omega,
       show b ≠ h.1.length + 1 by omega]
   · intro b hb
     have hb2 : b < 2 := by simpa [pt2, h0, addBlock] using hb
-    interval_cases b <;> simp [pt2, h0, addBlock, Function.update_apply]
+    interval_cases b <;> simp [pt2, h0, addBlock]
 
 theorem add_sum (h : Point K) (s : ℕ) (z : Kˣ) :
     (addBlock h s z).1.sum = h.1.sum + (addBlock (h0 : Point K) s z).1.sum := by
@@ -644,8 +642,7 @@ theorem orbZ_J (v : lowW K h.1 h.2 × lowW K g.1 g.2) (u : upUniG K h.1.sum × u
   rw [e1, lowJ_m, upJ_m, hW, blkM_mul, blkM_mul]
   unfold bigZ orbZ
   congr 1 <;>
-    simp only [sec_m, Matrix.mul_add, Matrix.add_mul, Matrix.mul_assoc, Matrix.one_mul, Matrix.mul_one,
-      Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add] <;> abel
+    simp only [sec_m, Matrix.mul_assoc, Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add]
 
 theorem lowJ_mul (a v : lowW K h.1 h.2 × lowW K g.1 g.2)
     (ρ ξ : Matrix (Fin g.1.sum) (Fin h.1.sum) K) :
@@ -659,7 +656,7 @@ theorem lowJ_mul (a v : lowW K h.1 h.2 × lowW K g.1 g.2)
     rw [← Matrix.mul_assoc, ← Matrix.coe_units_inv, Units.inv_mul, Matrix.one_mul]
   rw [hm, lowJ_m, lowJ_m, lowJ_m, blkM_mul, Prod.fst_mul, Prod.snd_mul, hm, hm]
   congr 1 <;>
-    simp only [Matrix.add_mul, Matrix.mul_add, Matrix.mul_assoc, Matrix.mul_zero, Matrix.zero_mul,
+    simp only [Matrix.add_mul, Matrix.mul_assoc, Matrix.mul_zero, Matrix.zero_mul,
       add_zero, zero_add, hi]
 
 theorem lowJ_surj (V : lowW K w.1 w.2) : ∃ v ξ, V = lowJ hN hW v ξ := by
@@ -806,7 +803,7 @@ theorem upJ_mul (u b : upUniG K h.1.sum × upUniG K g.1.sum)
     rw [← Matrix.mul_assoc, ← Matrix.coe_units_inv, Units.mul_inv, Matrix.one_mul]
   rw [hm, upJ_m, upJ_m, upJ_m, blkM_mul, Prod.fst_mul, Prod.snd_mul, hm, hm]
   congr 1 <;>
-    simp only [Matrix.add_mul, Matrix.mul_add, Matrix.mul_assoc, Matrix.mul_zero, Matrix.zero_mul,
+    simp only [Matrix.mul_add, Matrix.mul_assoc, Matrix.mul_zero, Matrix.zero_mul,
       add_zero, zero_add, hi]
 
 theorem upJ_surj (V : upUniG K w.1.sum) : ∃ u η, V = upJ hN u η := by
@@ -1066,7 +1063,7 @@ theorem bigZ_translate (hN : N = a + s) (Z1 : Matrix (Fin a) (Fin a) K)
   rw [blkM_mul, blkM_mul]
   congr 1 <;>
     simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_assoc, Matrix.one_mul, Matrix.mul_one,
-      Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add] <;> abel
+      Matrix.zero_mul, Matrix.mul_zero, add_zero] <;> abel
 
 theorem bigZ_conj (hN : N = a + s) (Z1 : Matrix (Fin a) (Fin a) K)
     (X : Matrix (Fin s) (Fin a) K) (Y : Matrix (Fin a) (Fin s) K)
@@ -1077,7 +1074,7 @@ theorem bigZ_conj (hN : N = a + s) (Z1 : Matrix (Fin a) (Fin a) K)
   rw [blkM_mul, blkM_mul]
   congr 1 <;>
     simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_assoc, Matrix.one_mul, Matrix.mul_one,
-      Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add] <;> abel
+      Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add]
 
 def Tsum (ψ : AddChar K ℂ) {n' : ℕ} (Z' : Matrix (Fin n') (Fin n') K)
     (Z1 : Matrix (Fin a) (Fin a) K) (X : Matrix (Fin s) (Fin a) K) (Y : Matrix (Fin a) (Fin s) K)

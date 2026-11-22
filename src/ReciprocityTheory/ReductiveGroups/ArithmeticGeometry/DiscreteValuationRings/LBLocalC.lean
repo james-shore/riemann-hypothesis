@@ -150,7 +150,6 @@ lemma genHasVal_units {X : Scheme.{0}} (L : LB X) {Ix : Type} [Fintype Ix]
   · rw [Units.val_mul, hj]
     first
       | exact Units.mul_inv_cancel_right _ _
-      | simp
   · exact (inv_mul_cancel_right _ _).symm
 
 set_option maxHeartbeats 1000000 in
@@ -176,7 +175,7 @@ lemma genHasVal_top {X : Scheme.{0}} (L : LB X) {Ix : Type} [Fintype Ix]
   rw [h1]
   erw [map_mul]
   congr 1
-  · simp only [resTop, scal, Scheme.Hom.id_appTop, ← CommRingCat.comp_apply, ← Functor.map_comp]
+  · simp only [resTop, scal, Scheme.Hom.id_appTop, ← CommRingCat.comp_apply]
     have : (homOfLE (le_top : LB.wchart L (fun k => jK V ≫ φ k) j₀ ≤ ⊤)).op ≫ (homOfLE hK).op =
         𝟙 (Opposite.op (⊤ : (Spec (CommRingCat.of (FractionRing V))).Opens)) := Subsingleton.elim _ _
     rw [Category.id_comp, ← Functor.map_comp]
@@ -187,7 +186,7 @@ lemma genHasVal_top {X : Scheme.{0}} (L : LB X) {Ix : Type} [Fintype Ix]
     have hnat := congrArg (fun f => (CommRingCat.Hom.hom f)
         (((Spec (CommRingCat.of V)).presheaf.map (homOfLE hV).op).hom (e.s j₀).val))
       (Scheme.ΓSpecIso_naturality (CommRingCat.ofHom (algebraMap V (FractionRing V))))
-    simp only [CommRingCat.comp_apply, CommRingCat.hom_ofHom] at hnat
+    simp only at hnat
     erw [← hnat]
     rw [CommRingCat.comp_apply]
     congr 1

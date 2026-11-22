@@ -41,12 +41,12 @@ theorem isFormQuot_of_mem [CharZero Ω] {x : σ → Ω} {i : σ} (hi : x i ≠ 0
   | mem b hb =>
     obtain ⟨j, rfl⟩ := hb
     refine ⟨1, 1, MvPolynomial.X j, one_ne_zero, MvPolynomial.isHomogeneous_X _ _, ?_⟩
-    simp only [MvPolynomial.aeval_X, Nat.cast_one, one_mul, pow_one]
+    simp only [MvPolynomial.aeval_X, Nat.cast_one, pow_one]
     field_simp
   | algebraMap r =>
     refine ⟨r.den, 0, MvPolynomial.C r.num, r.den_nz, MvPolynomial.isHomogeneous_C _ _, ?_⟩
     have hd : (r.den : Ω) ≠ 0 := Nat.cast_ne_zero.2 r.den_nz
-    simp only [MvPolynomial.aeval_C, pow_zero, mul_one, eq_ratCast, eq_intCast, Rat.cast_def, map_intCast]
+    simp only [pow_zero, eq_ratCast, eq_intCast, Rat.cast_def, map_intCast]
     field_simp
   | add a b _ _ ha hb =>
     obtain ⟨N, n, G, hN, hG, he⟩ := ha
@@ -60,8 +60,7 @@ theorem isFormQuot_of_mem [CharZero Ω] {x : σ → Ω} {i : σ} (hi : x i ≠ 0
       · convert ((MvPolynomial.isHomogeneous_C _ _).mul
           ((MvPolynomial.isHomogeneous_X _ i).pow n)).mul hG' using 1
         omega
-    · simp only [map_add, map_mul, map_pow, MvPolynomial.aeval_C, MvPolynomial.aeval_X, he, he', eq_intCast,
-        Int.cast_natCast, Nat.cast_mul, map_natCast]
+    · simp only [map_add, map_mul, map_pow, MvPolynomial.aeval_X, he, he', Nat.cast_mul, map_natCast]
       ring
   | mul a b _ _ ha hb =>
     obtain ⟨N, n, G, hN, hG, he⟩ := ha
@@ -86,8 +85,7 @@ theorem common_denominator {κ : Type} [Fintype κ] {x : σ → Ω} {i : σ} {b 
       rw [← pow_add, Nat.sub_add_cancel hle]
     have hq : ((∏ l, N l : ℕ) : Ω) = (N j : Ω) * ((∏ l ∈ Finset.univ.erase j, N l : ℕ) : Ω) := by
       rw [← Nat.cast_mul, Finset.mul_prod_erase Finset.univ N (Finset.mem_univ j)]
-    simp only [map_mul, map_pow, MvPolynomial.aeval_C, MvPolynomial.aeval_X, he, eq_intCast, Int.cast_natCast,
-      map_natCast]
+    simp only [map_mul, map_pow, MvPolynomial.aeval_X, he, map_natCast]
     rw [hp, hq]
     ring
 

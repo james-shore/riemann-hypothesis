@@ -249,10 +249,10 @@ def cup {m n k : ℕ} (h : m + n = k) : H F m →ₗ[R] H F n →ₗ[R] H F k :=
     { toFun := cupProductCocycleClass μ h
       map_add' := fun f f' => Submodule.linearMap_qext _ (LinearMap.ext fun g => by
         simp only [cupProductCocycleClass, LinearMap.comp_apply, Submodule.mkQ_apply, Submodule.liftQ_apply, map_add,
-          LinearMap.add_apply, Submodule.Quotient.mk_add])
+          LinearMap.add_apply])
       map_smul' := fun r f => Submodule.linearMap_qext _ (LinearMap.ext fun g => by
         simp only [cupProductCocycleClass, LinearMap.comp_apply, Submodule.mkQ_apply, Submodule.liftQ_apply, map_smul,
-          LinearMap.smul_apply, Submodule.Quotient.mk_smul, RingHom.id_apply]) }
+          LinearMap.smul_apply, RingHom.id_apply]) }
     fun f hf => by
       rw [LinearMap.mem_ker]
       refine Submodule.linearMap_qext _ (LinearMap.ext fun g => ?_)
@@ -313,7 +313,6 @@ def triv : LB L where
 def mul (E E' : LB L) : LB L where
   g α β _ y := E.g α β y * E'.g α β y
   g_map := fun {_ _ _ _} φ {_} h1 h2 => by
-    change E.g _ _ _ * E'.g _ _ _ = Units.map _ (E.g _ _ _ * E'.g _ _ _)
     rw [E.g_map φ h1 h2, E'.g_map φ h1 h2, map_mul]
   g_self h := by rw [E.g_self h, E'.g_self h, mul_one]
   g_comp h1 h2 h3 := by rw [mul_mul_mul_comm, E.g_comp h1 h2 h3, E'.g_comp h1 h2 h3]
@@ -324,7 +323,6 @@ def pull {b' : Base} {L' : b'.Fun} {σ : b.R →+* b'.R} (M : Mor L L' σ) (E : 
     have e : M.pt.app B' (L'.Pt.map φ y) = L.Pt.map φ (M.pt.app B y) := by
       first
         | exact NatTrans.naturality_apply M.pt φ y
-        | simpa using ConcreteCategory.congr_hom (M.pt.naturality φ) y
     change E.g (M.c β) (M.c γ) (M.pt.app B' (L'.Pt.map φ y)) = _
     rw [e, E.g_map φ (M.inc h1) (M.inc h2)]
   g_self h := E.g_self (M.inc h)

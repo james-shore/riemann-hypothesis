@@ -170,7 +170,7 @@ lemma exists_midpoint (N r : ℝ) (x : ℝ × ℝ) :
     simp only
     constructor <;> linarith
   · rw [midpoint_eq_smul_add]
-    ext <;> simp <;> ring
+    ext <;> simp
 
 lemma chain4 (hTC : TubeChain) {X : Type} [NormedAddCommGroup X] [NormedSpace ℂ X] [CompleteSpace X]
     {T : Type} [TopologicalSpace T] [FirstCountableTopology T] {Ω₀ Ω₁ Ω₂ Ω₃ : Set (ℝ × ℝ)}

@@ -43,8 +43,7 @@ theorem fvec_eq (F : FlagG S r (T : E)) (F' : FlagG S r (T' : E)) (b : Fin (r + 
   induction b using Fin.lastCases with
   | last =>
     rw [Fin.sum_univ_castSucc]
-    simp only [Um, Matrix.of_apply, if_pos rfl, Fin.snoc_castSucc, Fin.snoc_last, gv, FlagG.fvec,
-      one_smul]
+    simp only [Um, Matrix.of_apply, Fin.snoc_castSucc, Fin.snoc_last, gv, FlagG.fvec]
     rw [zp_eq F F', add_comm]
     simp [kk]
   | cast b =>

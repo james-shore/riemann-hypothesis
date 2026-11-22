@@ -16,40 +16,39 @@ theorem mem_lieSet_iff_entry {X : Mx n} : X ∈ lieSet ε ↔
 theorem smul_unitE_diag_mem (a : Fin n) {c : ℂ} (hc : star c = -c) : c • unitE a a ∈ lieSet ε := by
   rw [mem_lieSet_iff_entry]
   intro i j
-  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, unitE, single_apply, smul_eq_mul, star_mul', hc,
-    star_sub, star_add]
+  simp only [Matrix.smul_apply, unitE, single_apply, smul_eq_mul, star_mul', hc]
   split_ifs <;> simp only [star_one, star_zero] at * <;> grind
 
 theorem smul_unitE_sub_mem_same {a b : Fin n} (h : ε a = ε b) {c : ℂ} (hc : star c = c) :
     c • (unitE a b - unitE b a) ∈ lieSet ε := by
   rw [mem_lieSet_iff_entry]
   intro i j
-  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, unitE, single_apply, smul_eq_mul, star_mul', hc,
-    star_sub, star_add]
+  simp only [Matrix.smul_apply, Matrix.sub_apply, unitE, single_apply, smul_eq_mul, star_mul', hc,
+    star_sub]
   split_ifs <;> simp only [star_one, star_zero] at * <;> grind
 
 theorem smul_unitE_add_mem_same {a b : Fin n} (h : ε a = ε b) {c : ℂ} (hc : star c = -c) :
     c • (unitE a b + unitE b a) ∈ lieSet ε := by
   rw [mem_lieSet_iff_entry]
   intro i j
-  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, unitE, single_apply, smul_eq_mul, star_mul', hc,
-    star_sub, star_add]
+  simp only [Matrix.smul_apply, Matrix.add_apply, unitE, single_apply, smul_eq_mul, star_mul', hc,
+    star_add]
   split_ifs <;> simp only [star_one, star_zero] at * <;> grind
 
 theorem smul_unitE_add_mem_opp {a b : Fin n} (h : ε a ≠ ε b) {c : ℂ} (hc : star c = c) :
     c • (unitE a b + unitE b a) ∈ lieSet ε := by
   rw [mem_lieSet_iff_entry]
   intro i j
-  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, unitE, single_apply, smul_eq_mul, star_mul', hc,
-    star_sub, star_add]
+  simp only [Matrix.smul_apply, Matrix.add_apply, unitE, single_apply, smul_eq_mul, star_mul', hc,
+    star_add]
   split_ifs <;> simp only [star_one, star_zero] at * <;> grind
 
 theorem smul_unitE_sub_mem_opp {a b : Fin n} (h : ε a ≠ ε b) {c : ℂ} (hc : star c = -c) :
     c • (unitE a b - unitE b a) ∈ lieSet ε := by
   rw [mem_lieSet_iff_entry]
   intro i j
-  simp only [Matrix.smul_apply, Matrix.sub_apply, Matrix.add_apply, unitE, single_apply, smul_eq_mul, star_mul', hc,
-    star_sub, star_add]
+  simp only [Matrix.smul_apply, Matrix.sub_apply, unitE, single_apply, smul_eq_mul, star_mul', hc,
+    star_sub]
   split_ifs <;> simp only [star_one, star_zero] at * <;> grind
 
 theorem star_invSqrtTwo : star invSqrtTwo = invSqrtTwo := by
@@ -62,7 +61,7 @@ theorem kList_mem_lieSet {X : Mx n} (hX : X ∈ kList ε) : X ∈ lieSet ε := b
   simp only [kList, List.mem_append, List.mem_map, List.mem_flatMap, List.mem_cons, List.not_mem_nil,
     or_false] at hX
   rcases hX with ⟨a, -, rfl⟩ | ⟨p, hp, hX⟩
-  · exact smul_unitE_diag_mem a (by simp [Complex.star_def])
+  · exact smul_unitE_diag_mem a (by simp)
   · have hs : ε p.1 = ε p.2 := by
       simp [pairs] at hp
       exact hp.2.2

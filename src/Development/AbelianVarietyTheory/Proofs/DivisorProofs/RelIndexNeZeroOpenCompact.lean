@@ -108,7 +108,7 @@ variable {G : Type} [Group G]
 
 theorem map_conj_one (A : Subgroup G) : A.map (MulAut.conj (1 : G)).toMonoidHom = A := by
   ext z
-  simp [mem_map_conj]
+  simp
 
 theorem vol_self (A : Subgroup G) : vol A A = 1 := by
   simp [vol, Subgroup.relIndex_self]

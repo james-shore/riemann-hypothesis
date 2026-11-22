@@ -32,7 +32,7 @@ theorem exists_scaled {R : Type} [CommRing R] [IsDomain R] {D₀ : Out.DegPre R}
     show spMap (TrivSqZeroExt.fstHom R R R).toRingHom ≫ spMap (algebraMap R (DualNumber R)) = 𝟙 _
     rw [spMap_comp_spMap]
     have : (TrivSqZeroExt.fstHom R R R).toRingHom.comp (algebraMap R (DualNumber R)) = RingHom.id R := by
-      ext a; simp [TrivSqZeroExt.algebraMap_eq_inl]
+      ext a; simp
     rw [this]
     exact Spec.map_id (CommRingCat.of R))
   have hz : z ≫ sc ≫ w = 1 := by

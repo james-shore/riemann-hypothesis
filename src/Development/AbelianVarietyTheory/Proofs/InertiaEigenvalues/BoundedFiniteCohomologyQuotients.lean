@@ -71,9 +71,7 @@ theorem exists_smul_mem [IsDomain O] [IsFractionRing O LL] (L : Lattice (O := O)
   first
   | exact @_root_.GlobalTheory.NonzeroScalarLattice.exists_ne_zero_smul_mem
   | exact _root_.GlobalTheory.NonzeroScalarLattice.exists_ne_zero_smul_mem
-  | (apply _root_.GlobalTheory.NonzeroScalarLattice.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NonzeroScalarLattice.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NonzeroScalarLattice.exists_ne_zero_smul_mem <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.NonzeroScalarLattice.exists_ne_zero_smul_mem)
   | (intros; exact _root_.GlobalTheory.NonzeroScalarLattice.exists_ne_zero_smul_mem ..)
 
 theorem exists_torsion_lift [IsDomain O] [IsFractionRing O LL] (L : Lattice (O := O) ρ)

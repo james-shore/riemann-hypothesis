@@ -50,7 +50,7 @@ theorem matrixUnits_apply {La : Type} [AddCommGroup La]
     · rw [Matrix.single_mul_single_of_ne _ _ _ _ huv]; simp
   · have : (∑ u : Fin 8, Matrix.single u 0 (1:ℤ) * Matrix.single (0 : Fin 8) u (1:ℤ)) = 1 := by
       ext i j
-      simp only [Matrix.single_mul_single_same, Matrix.sum_apply, Matrix.single_apply, Matrix.one_apply, mul_one]
+      simp only [Matrix.single_mul_single_same, Matrix.sum_apply, Matrix.single_apply, Matrix.one_apply]
       by_cases hij : i = j
       · subst hij; simp
       · rw [if_neg hij]
@@ -272,7 +272,7 @@ theorem polarised_lattice_eighth_power :
       ext i k
       by_cases hi : i = 0
       · subst hi; simp [Matrix.sum_apply, Matrix.single_apply]
-      · simp [Matrix.sum_apply, Matrix.single_apply, hi, Ne.symm hi]
+      · simp [Matrix.sum_apply, hi, Ne.symm hi]
     rw [hφ, ← Module.End.mul_apply, ← map_mul, this, map_sum, LinearMap.sum_apply,
       Submodule.coe_sum]
     refine Finset.sum_congr rfl fun v _ => ?_

@@ -33,7 +33,7 @@ private lemma leading_polynomial_eq_zero_iff_lt_weightedOrder {k : Type} [Field 
         MvPowerSeries.coeff e f := by
     intro e he
     rw [Polynomial.finset_sum_coeff, Finset.sum_eq_single e]
-    · simp [Polynomial.coeff_C_mul_X_pow]
+    · simp
     · intro e' he' hne
       rw [Polynomial.coeff_C_mul_X_pow, if_neg]
       intro h1

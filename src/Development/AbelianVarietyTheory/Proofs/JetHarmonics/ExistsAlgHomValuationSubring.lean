@@ -27,8 +27,6 @@ theorem exists_extend_character {H M F : Type} [CommGroup H] [CommGroup M] [Fiel
   | exact @_root_.GlobalTheory.DivisibleUnits.target
   | exact _root_.GlobalTheory.DivisibleUnits.target
   | (apply _root_.GlobalTheory.DivisibleUnits.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DivisibleUnits.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DivisibleUnits.target <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DivisibleUnits.target ..)
 
 variable {O : Type} [CommRing O]

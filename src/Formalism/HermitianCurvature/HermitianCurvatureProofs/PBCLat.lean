@@ -139,7 +139,7 @@ theorem mul_single {f : ℕ} (σ : crystallineComparison.V f) (v : Fin f) (w : �
 
 theorem exp_eq_one_iff_int (x : ℝ) :
     Complex.exp (2 * Real.pi * Complex.I * (x : ℂ)) = 1 ↔ ∃ n : ℤ, x = n := by
-  first | exact Bl.general_b_fact_right_side.goal1 .. | (apply Bl.general_b_fact_right_side.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_right_side.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_side.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_right_side.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_side.goal1 <;> first | assumption | infer_instance) | exact @Bl.general_b_fact_right_side.goal1 x
+  first | exact Bl.general_b_fact_right_side.goal1 .. | exact @Bl.general_b_fact_right_side.goal1 x
 
 theorem add_conj (w : ℂ) : w + (starRingEnd ℂ) w = ((2 * w.re : ℝ) : ℂ) := by
   apply Complex.ext <;> simp; ring

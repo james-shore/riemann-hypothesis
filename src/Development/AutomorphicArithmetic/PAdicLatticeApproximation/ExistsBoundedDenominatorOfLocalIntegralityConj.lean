@@ -99,5 +99,4 @@ theorem UpperTheory.exists_bounded_denominator_of_local_integrality_conj :
   push_cast at hci ⊢
   rw [← Finset.prod_erase_mul _ _ (Finset.mem_univ i)]
   refine (congrArg (fun t => (∏ x ∈ Finset.univ.erase i, (m x : G.F)) * t) hci).trans ?_
-  beta_reduce
   ring

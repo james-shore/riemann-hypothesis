@@ -49,8 +49,6 @@ theorem exists_pow_smul_mem {p : E} (hp : p ∈ O) (hdiv : ∀ e : E, ∃ a : �
   | exact @_root_.GlobalTheory.PowSmulMem.main
   | exact _root_.GlobalTheory.PowSmulMem.main
   | (apply _root_.GlobalTheory.PowSmulMem.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PowSmulMem.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PowSmulMem.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PowSmulMem.main ..)
 
 def congSub (Λ : Submodule O V) (c : E) : Subgroup (V ≃ₗ[E] V) where

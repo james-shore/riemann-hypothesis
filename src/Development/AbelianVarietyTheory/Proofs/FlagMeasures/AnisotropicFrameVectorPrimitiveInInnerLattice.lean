@@ -36,7 +36,7 @@ theorem exists_quad (L : Formalism.MainNotions.S.Loc.LocE F E) (d : E) : ∃ t n
   have hs := hmon.as_sum
   rw [hdeg] at hs
   rw [hs] at h0
-  simp only [map_add, map_pow, aeval_X, map_sum, map_mul, aeval_C, Finset.sum_range_succ, Finset.sum_range_zero,
+  simp only [map_add, map_pow, aeval_X, map_mul, aeval_C, Finset.sum_range_succ, Finset.sum_range_zero,
     zero_add, pow_zero, pow_one, mul_one] at h0
   refine ⟨-f.charpoly.coeff 1, f.charpoly.coeff 0, ?_⟩
   rw [map_neg]
@@ -166,7 +166,7 @@ theorem mkW_mem_of_mem_img : ∀ {F : Type} [Field F] [ValuativeRel F] [Topologi
         Finset.sum_eq_zero (fun i _ => by
           rw [show H.h (Fr.e i) (Fr.e b) = 0 from Fr.h_iso _ _ (Or.inl (Fin.castSucc_lt_last i).ne), mul_zero])
       have z2 : ∑ i, H.h a (Fr.e i) * H.h (Fr.es i) (Fr.e b) = H.h a (Fr.e b) := by
-        simp only [hes_e, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+        simp only [hes_e, mul_ite, mul_one, mul_zero]
         rw [Finset.sum_ite_eq]; simp
       rw [z1, z2]; ring
     | zero => exact h_zero_right' H _

@@ -57,7 +57,7 @@ theorem topSelf_lower : ∀ (k : Type) [Field k] [Infinite k] (X : Scheme.{0}) [
     refine Fin.cases ?_ (fun j => ?_) i
     · simp [n, Fin.sum_univ_two]
     · simp only [n, Fin.sum_univ_two, Fin.cons_succ]
-      simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, natCast_zsmul]
+      simp only [Matrix.cons_val_zero, Matrix.cons_val_one, natCast_zsmul]
       show cls L _ = _
       rw [hcls, add_comm])
   have hterm : ∀ α : Fin (d + 1) → Fin 2,

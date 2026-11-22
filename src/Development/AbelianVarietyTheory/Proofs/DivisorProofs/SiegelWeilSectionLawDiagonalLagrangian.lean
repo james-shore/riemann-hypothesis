@@ -136,9 +136,7 @@ theorem main_law : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberF
   obtain ⟨h, hh⟩ := exists_gaf σ (GlobalTheory.WeilSchrodinger.DblTargetF.dblG JT) p
   have hg : mtF σ JS 1 = ((1 : UG (cA σ) (incM F JB))⁻¹).1.1ᵀ := by
     first
-      | (simp only [mtF, map_one, inv_one]; simp; done)
-      | (simp [mtF, matHomF]; exact map_one _)
-      | (simp [mtF, matHomF]; rfl)
+      | (simp only [mtF, map_one, inv_one]; simp)
   obtain ⟨hmem, heq⟩ := htr p 1 1 h hh hg Φ hΦ
   refine ⟨hmem, ?_⟩
   rw [heq]

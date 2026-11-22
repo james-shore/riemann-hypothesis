@@ -13,13 +13,13 @@ theorem hbd_single (V W : Type) (z : List V × List W) :
     hbd V W (Finsupp.single z 1) =
       ∑ i ∈ Finset.range z.1.length, (-1 : ℤ) ^ i • Finsupp.single (z.1.eraseIdx i, z.2) (1 : ℤ) := by
   simp [hbd, bd, Finsupp.linearCombination_single, Finsupp.mapDomain_finset_sum,
-    Finsupp.mapDomain_smul, Finsupp.mapDomain_single]
+    Finsupp.mapDomain_single]
 
 theorem vbd_single (V W : Type) (z : List V × List W) :
     vbd V W (Finsupp.single z 1) =
       ∑ j ∈ Finset.range z.2.length, (-1 : ℤ) ^ j • Finsupp.single (z.1, z.2.eraseIdx j) (1 : ℤ) := by
   simp [vbd, bd, Finsupp.linearCombination_single, Finsupp.mapDomain_finset_sum,
-    Finsupp.mapDomain_smul, Finsupp.mapDomain_single]
+    Finsupp.mapDomain_single]
 
 theorem hbd_mapDomain (V W : Type) (w : List W) (c : List V →₀ ℤ) :
     hbd V W (Finsupp.mapDomain (fun x => (x, w)) c) = Finsupp.mapDomain (fun x => (x, w)) (bd V c) := by
@@ -94,12 +94,4 @@ open GlobalTheory.SeqCx
 theorem _root_.GlobalTheory.T.pairSeqDoubleComplex_boundary_relations : ∀ (V W : Type), (∀ x, hbd V W (hbd V W x) = 0) ∧ (∀ x, vbd V W (vbd V W x) = 0) ∧ (∀ x, hbd V W (vbd V W x) = vbd V W (hbd V W x)) := by
   first
   | exact @GlobalTheory.SeqCx.dbl_bd
-  | exact @GlobalTheory.SeqCx.DblBd.hbd_vbd
-  | exact @GlobalTheory.SeqCx.DblBd.vbd_vbd
-  | exact @GlobalTheory.SeqCx.DblBd.hbd_hbd
-  | exact @GlobalTheory.SeqCx.DblBd.vbd_mapDomain
-  | exact @GlobalTheory.SeqCx.DblBd.hbd_mapDomain
-  | exact @GlobalTheory.SeqCx.DblBd.vbd_single
-  | exact @GlobalTheory.SeqCx.DblBd.hbd_single
-  | exact @GlobalTheory.SeqCx.DblBd.single_eq_smul
 end

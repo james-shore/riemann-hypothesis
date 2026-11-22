@@ -193,12 +193,12 @@ private lemma isFlat_flW_lemma {n' m : ℕ} (d : Fin n' → ℕ) : IsFlat (m := 
   · funext i
     by_cases hi : i = Fin.last m
     · subst hi
-      simp [lamAt, vecE, flW, hs, Pi.single_apply]
+      simp [lamAt, vecE, flW, hs]
     · have hr : i.rev ≠ 0 := by
         intro h0
         apply hi
         rw [← Fin.rev_rev i, h0, Fin.rev_zero]
-      simp [lamAt, vecE, flW, hs, Pi.single_apply, hi, hr]
+      simp [lamAt, vecE, flW, hs, hi, hr]
 
 theorem restCloudY_of (D : Formalism.BasicNotions.D7) (CLa Ck Crk Cdeg CLa' CD Csz CH CE C6 C18 : ℝ)
     (h6a : SourcePrimitiveIntegrality D CLa Ck Crk Cdeg) (h6b : RemainingInputsAfter D CLa Ck Crk Cdeg CLa' CD Csz CH CE C6 C18) :

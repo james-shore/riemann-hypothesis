@@ -16,7 +16,6 @@ theorem isHolTo_comp {Y Y' : Scheme.{0}} {B : Set V} {y : V → (Sp ℂ ⟶ Y)} 
   have hpre : ∀ b, (y b ≫ φ) ⁻¹ᵁ U = y b ⁻¹ᵁ (φ ⁻¹ᵁ U) := fun b => by
     first
       | rfl
-      | simp
   obtain ⟨h1, h2⟩ := hy (φ ⁻¹ᵁ U) (φ.app U f)
   simp only [hpre]
   refine ⟨h1, ?_⟩
@@ -28,8 +27,6 @@ theorem isHolTo_comp {Y Y' : Scheme.{0}} {B : Set V} {y : V → (Sp ℂ ⟶ Y)} 
   rw [dif_pos hb2, dif_pos hb.2]
   first
     | rfl
-    | simp [Scheme.comp_app]
-    | (simp only [Scheme.comp_app]; done)
 
 theorem isHolTo_of_local {Y : Scheme.{0}} {B : Set V} {y : V → (Sp ℂ ⟶ Y)}
     (h : ∀ (U : Y.Opens) (f : Γ(Y, U)) (b₀ : V), b₀ ∈ B → ⊤ ≤ y b₀ ⁻¹ᵁ U →

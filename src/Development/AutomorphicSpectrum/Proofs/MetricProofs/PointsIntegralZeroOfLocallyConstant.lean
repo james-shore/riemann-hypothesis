@@ -50,7 +50,7 @@ theorem mixedDisc_eq_zero_of_eq_zero {D : ℕ} (A : Fin D → Matrix (Fin D) (Fi
   · intro S _
     by_cases h : j ∈ S
     · simp [h, Finset.insert_erase]
-    · simp [h, Finset.erase_insert]
+    · simp [h]
 
 theorem cxHessian_zero {D : ℕ} (z : Fin D → ℂ) : cxHessian (fun _ => (0 : ℝ)) z = 0 := by
   have h : fderiv ℝ (fderiv ℝ (fun _ : Fin D → ℂ => (0 : ℝ))) z = 0 := by
@@ -60,7 +60,7 @@ theorem cxHessian_zero {D : ℕ} (z : Fin D → ℂ) : cxHessian (fun _ => (0 : 
     rw [h1]
     exact fderiv_const_apply 0
   ext a b
-  simp [cxHessian, h]
+  simp [cxHessian]
 
 theorem sheetDensity_update_zero {K : Type} [Fintype K] {ι : K → Type} [∀ k, Fintype (ι k)]
     (P : Ideal (MRing ι)) {e : ℕ} (φ : Fin e → ((Σ k, ι k) → ℂ) → ℝ) (j : Fin e)

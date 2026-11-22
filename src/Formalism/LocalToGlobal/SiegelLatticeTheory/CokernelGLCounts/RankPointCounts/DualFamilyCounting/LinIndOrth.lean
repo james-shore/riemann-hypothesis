@@ -36,7 +36,7 @@ theorem NU.mul {x y : K} (hx : NU 𝔭 x) (hy : NU 𝔭 y) : NU 𝔭 (x * y) := 
 theorem NU.inv {x : K} (hx : NU 𝔭 x) : NU 𝔭 x⁻¹ := by
   obtain ⟨a, ha, h1, h2⟩ := hx
   have hs : star a⁻¹ = (star a)⁻¹ := by
-    first | exact star_inv₀ a | exact star_inv' a | simp
+    first | exact star_inv₀ a
   have e : x⁻¹ * (a⁻¹ * star a⁻¹) = (x * (a * star a))⁻¹ := by
     rw [hs, mul_inv, mul_inv]
   refine ⟨a⁻¹, inv_ne_zero ha, ?_, ?_⟩
@@ -52,9 +52,9 @@ theorem NU.of_mul_left {x y : K} (hxy : NU 𝔭 (x * y)) (hy : NU 𝔭 y) (hy0 :
 theorem NU.norm_mul {u z : K} (h1 : u ∈ SP K 𝔭) (h2 : u⁻¹ ∈ SP K 𝔭) (hz : z ≠ 0) :
     NU 𝔭 (star z * u * z) := by
   have hs : star z⁻¹ = (star z)⁻¹ := by
-    first | exact star_inv₀ z | exact star_inv' z | simp
+    first | exact star_inv₀ z
   have hsz : star z ≠ 0 := by
-    first | exact star_ne_zero.2 hz | simpa using hz
+    first | exact star_ne_zero.2 hz
   have e : star z * u * z * (z⁻¹ * star z⁻¹) = u := by
     rw [hs]
     calc star z * u * z * (z⁻¹ * (star z)⁻¹) = u * (z * z⁻¹) * (star z * (star z)⁻¹) := by ring
@@ -73,7 +73,7 @@ theorem NU.prod {ι : Type} (s : Finset ι) (f : ι → K) (hf : ∀ i ∈ s, NU
 theorem NU.pair {A C : K} (hA : A ≠ 0) (hAs : star A = A) (h1 : C * A⁻¹ ∈ SP K 𝔭)
     (h2 : A * C⁻¹ ∈ SP K 𝔭) : NU 𝔭 (A * C) := by
   have hs : star A⁻¹ = (star A)⁻¹ := by
-    first | exact star_inv₀ A | exact star_inv' A | simp
+    first | exact star_inv₀ A
   have e : A * C * (A⁻¹ * star A⁻¹) = C * A⁻¹ := by
     rw [hs, hAs]
     calc A * C * (A⁻¹ * A⁻¹) = C * A⁻¹ * (A * A⁻¹) := by ring

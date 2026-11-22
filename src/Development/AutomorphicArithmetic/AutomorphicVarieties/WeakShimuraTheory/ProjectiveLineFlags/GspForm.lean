@@ -26,5 +26,5 @@ theorem UpperTheory.V.Ws.P1.gspForm :
     fin_cases i <;> fin_cases j <;> simp [UpperTheory.V.Ws.P1.formJ]
   · intro ν g hg
     have h : UpperTheory.V.GradeZeroInterpolatingElement.adj g * g = ν • 1 := hg
-    simp only [Units.val_mk]
+    simp only
     rw [UpperTheory.V.Ws.P1.formJ_adj, mul_assoc, h, Matrix.mul_smul, Matrix.mul_one]

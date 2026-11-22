@@ -148,7 +148,7 @@ theorem lieSecond2 (hM : LocalLift) : GlobalTheory.RealLift.DerEx → GlobalTheo
       ring
     rw [hT0] at hne
     simp only [hT0, map_add, map_smul, map_sum, Fintype.sum_sum_type, Sum.elim_inl, Sum.elim_inr, kill _ (hh _),
-      kill _ (hv _), t1, t2, zero_add, add_zero, Finset.sum_neg_distrib, add_neg_cancel, smul_zero, smul_eq_mul,
+      kill _ (hv _), t1, t2, zero_add, add_zero, Finset.sum_neg_distrib, add_neg_cancel, smul_eq_mul,
       trace_blocks, tr, id, ofReal_zero, zero_mul, Complex.exp_zero, one_mul, ofReal_one, mul_zero] at h3
     have h4 := mul_right_cancel₀ hne h3
     simp only [mul_add, Finset.sum_add_distrib] at h4

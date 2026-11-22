@@ -107,7 +107,7 @@ lemma aeval_substZeroOneOne {A : Type*} [CommRing A] [Algebra F A] (w : Fin 2 ×
     intro i
     by_cases hi : i = (1,1)
     · subst hi; simp [substZeroOneOne]
-    · simp [substZeroOneOne, hi, Function.update_of_ne hi]
+    · simp [substZeroOneOne, hi]
   exact DFunLike.congr_fun this r
 
 theorem det_two_ne_zero : (D2 : MvPolynomial (Fin 2 × Fin 2) F) ≠ 0 := by

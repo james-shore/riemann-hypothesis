@@ -123,7 +123,6 @@ theorem det_clear {A B Af Bw : Type} [CommRing A] [CommRing B] [CommRing Af] [Co
     ext k l
     first
       | exact hcol k l
-      | simpa using hcol k l
   rw [hmat, Matrix.det_mul_column, Finset.prod_const, Finset.card_univ, Fintype.card_fin,
     ← pow_mul]
   rfl

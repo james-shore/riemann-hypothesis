@@ -50,7 +50,7 @@ theorem coef_of_mem {n : ℕ} (Y : Fin n → Fin r → ℂ) (S : Set (Fin n)) {v
     obtain ⟨j, hj, rfl⟩ := hx
     refine ⟨Pi.single j 1, fun i hi => ?_, ?_⟩
     · have hij : i ≠ j := fun e => hi (e ▸ hj)
-      simp [Pi.single_apply, hij]
+      simp [hij]
     · simp [Pi.single_apply]
   | zero => exact ⟨0, fun _ _ => rfl, by simp⟩
   | add x y _ _ hx hy =>

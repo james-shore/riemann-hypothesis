@@ -35,7 +35,7 @@ theorem tens_finite :
           induction x using TensorProduct.induction_on with
           | zero => simp
           | tmul a e =>
-            simp [Algebra.smul_def, TensorProduct.smul_tmul']
+            simp [Algebra.smul_def]
             rw [show algebraMap K (E ⊗[F] K) c = (1 : E) ⊗ₜ[F] c from rfl,
               Algebra.TensorProduct.tmul_mul_tmul, one_mul]
           | add x y hx hy => simp_all [smul_add] }

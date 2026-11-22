@@ -48,7 +48,7 @@ theorem cjv_smul {n : ℕ} (r : ℂ) (x : Fin n → ℂ) : cjv s (r • x) = For
 theorem cjv_single {n : ℕ} (i : Fin n) : cjv s (Pi.single i (1 : ℂ)) = Pi.single i 1 := by
   funext k
   unfold cjv
-  by_cases h : k = i <;> simp [h, Pi.single_apply]
+  by_cases h : k = i <;> simp [h]
 
 def ChainTieT : Prop :=
   ∀ u (x : Fin ((fc P.zs).Dc.a (m u)) → K) (y : Fin ((fc P.zs).Df1.nV Bs.μ0) → K),
@@ -222,10 +222,6 @@ theorem twist_of_realT (Q : Formalism.IndefR.RealT R P Dcf Spf Zscf S Ks) (a : D
     P.A3.fam3.base3.v0.embedding a = Formalism.IndefR.Links.cj (twQ P) (D.what₂.embLL a) := by
   first
   | exact twist_of_mk D.what₂.embLL _ Q.Rl.hv0 a
-  | exact twist_of_mk D.what₂.embLL _ Q.Rl.hv0.symm a
-  | exact twist_of_mk D.what₂.embLL _ Q.hv0 a
-  | exact twist_of_mk D.what₂.embLL _ Q.hv0.symm a
-  | exact twist_of_mk D.what₂.embLL _ Q.Rl.toRealDat.hv0 a
 
 def JoinSI.toJoinAt (J : JoinSI R S Q) :
     JoinAt S.X S.G S.Y (jOf S) S.tr (cx Q) Q.F.fc (Q.F.eV (cx Q).zs) Q.sEE (twQ P) D.what₂.embLL where

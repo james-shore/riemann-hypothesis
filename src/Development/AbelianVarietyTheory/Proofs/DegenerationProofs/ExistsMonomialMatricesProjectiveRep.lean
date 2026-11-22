@@ -99,8 +99,6 @@ theorem _root_.GlobalTheory.ThetaReal.exists_monomial_matrices : ∀ (o A M : Ty
     convert (Matrix.map_one f (map_zero f) (map_one f)).symm
     all_goals first
       | rfl
-      | exact Subsingleton.elim _ _
-      | (funext x y; exact Subsingleton.elim _ _)
   · intro a a'
     obtain ⟨e, he⟩ := hmul a a'
     refine ⟨e, hinj ?_⟩

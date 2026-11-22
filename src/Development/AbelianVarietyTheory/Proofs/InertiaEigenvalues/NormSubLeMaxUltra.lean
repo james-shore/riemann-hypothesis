@@ -39,12 +39,12 @@ theorem exists_glO_pair {F : Type} [NormedField F] [IsUltrametricDist F] (r : �
     | last =>
       induction b using Fin.lastCases with
       | last => simp [row, col, hwv]
-      | cast c => simp [row, col, hwu, Matrix.one_apply, (Fin.castSucc_lt_last c).ne']
+      | cast c => simp [row, col, hwu, (Fin.castSucc_lt_last c).ne']
     | cast c =>
       induction b using Fin.lastCases with
       | last =>
         simp [row, col, ρ, sub_dotProduct, smul_dotProduct, single_dotProduct, hwv,
-          Matrix.one_apply, (Fin.castSucc_lt_last c).ne]
+          (Fin.castSucc_lt_last c).ne]
       | cast c' =>
         simp only [row, col, Fin.lastCases_castSucc, ρ, sub_dotProduct, smul_dotProduct,
           single_dotProduct, hwu, smul_eq_mul, mul_zero, sub_zero, one_mul, u, Pi.sub_apply,
@@ -63,7 +63,7 @@ theorem exists_glO_pair {F : Type} [NormedField F] [IsUltrametricDist F] (r : �
   have hsingle : ∀ i j : Fin (r + 1), ‖(Pi.single i (1 : F) : Fin (r + 1) → F) j‖ ≤ 1 := by
     intro i j; by_cases h : j = i
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   have hcol : ∀ b a, ‖col b a‖ ≤ 1 := by
     intro b a
     induction b using Fin.lastCases with

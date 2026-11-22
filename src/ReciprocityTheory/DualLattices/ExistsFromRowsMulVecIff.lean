@@ -90,13 +90,13 @@ lemma exists_fromRows_mulVec_iff [IsDomain R] {Ht Bt : Matrix (Fin g) (Ix g) R} 
     have hs1 : Ht *ᵥ ((Eᵀ)⁻¹ *ᵥ z) = 0 := by
       have h : cp • (Ht *ᵥ ((Eᵀ)⁻¹ *ᵥ z)) = 0 := by
         rw [← Matrix.mulVec_smul, ← Matrix.mulVec_smul, ← hz]
-        simp only [Matrix.mulVec_mulVec, Matrix.mul_assoc]
+        simp only [Matrix.mulVec_mulVec]
         rw [hHF, Matrix.zero_mulVec]
       exact (smul_eq_zero.mp h).resolve_left hcp
     have hs2 : Bt *ᵥ ((Eᵀ)⁻¹ *ᵥ z) = x := by
       have h : cp • (Bt *ᵥ ((Eᵀ)⁻¹ *ᵥ z)) = cp • x := by
         rw [← Matrix.mulVec_smul, ← Matrix.mulVec_smul, ← hz]
-        simp only [Matrix.mulVec_mulVec, Matrix.mul_assoc]
+        simp only [Matrix.mulVec_mulVec]
         rw [hBF, smulMV, Matrix.one_mulVec]
       exact smul_right_injective _ hcp h
     generalize (Eᵀ)⁻¹ *ᵥ z = s at hs1 hs2

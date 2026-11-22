@@ -157,7 +157,7 @@ lemma sum_prod_inv_one_add_norm_pow_le (ι : Type) [Fintype ι] (n : ℕ) (hn : 
     rw [hBvol]; exact ENNReal.prod_ne_top fun _ _ => measure_ball_lt_top.ne
   have hBreal : ∀ w, (volume : Measure (ι → EuclideanSpace ℂ (Fin n))).real (B w) = vb ^ d := by
     intro w
-    simp only [Measure.real, hBvol, ENNReal.toReal_prod, Finset.prod_const, Finset.card_univ, hvb, hd,
+    simp only [Measure.real, hBvol, Finset.prod_const, Finset.card_univ, hvb, hd,
       ENNReal.toReal_pow]
   have hGint : Integrable G := by
     rw [volume_pi]

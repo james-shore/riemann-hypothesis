@@ -64,7 +64,7 @@ private lemma eps_dl (Φ : Fr l A j) (ε : PowerSeries Φ.R →+* ℂ_[l]) (w : 
     rw [← map_mul, Ring.inverse_mul_cancel _ hP, map_one]
   unfold dl dd
   rw [map_mul, map_mul, h1, h2, hz, eps_ser Φ ε w hC hz, eps_ser Φ ε w hC hz, Polynomial.derivative_map]
-  simp only [map_div₀, map_mul, div_eq_mul_inv, map_inv₀]
+  simp only [map_mul, div_eq_mul_inv, map_inv₀]
 
 private lemma lam_act (Φ : Fr l A j) {c : Coef l} (β : Bas c) (a : c.O) (x : Fin β.d → Φ.R) :
     Φ.lam β (fun i => ∑ k, algebraMap ℤ_[l] Φ.R (β.mat a i k) * x k) =

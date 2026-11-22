@@ -25,7 +25,7 @@ theorem posSemidef_of_hasSum {ι J : Type*} [Fintype ι] (f : J → ι → ℂ) 
     refine h1.unique ?_
     convert h2 using 1
     funext j
-    simp only [star_mul', star_star, Complex.star_def, Complex.conj_ofReal, Complex.conj_conj]
+    simp only [star_mul', Complex.star_def, Complex.conj_ofReal, Complex.conj_conj]
     ring
   refine ⟨hherm, fun v => ?_⟩
   simp only [Finsupp.sum]
@@ -344,7 +344,7 @@ theorem totPos_of_kind {T T' : ℕ} {w w' : Point D.host.E (D.R.rS + 1)} (hk : k
     rw [dmin_top_eq_zeta w h0]
     rw [dmin_top_eq_zeta w' h0'] at h'τ
     rw [hz]
-    simp only [map_mul, Complex.normSq_mul] at h'τ ⊢
+    simp only [map_mul] at h'τ ⊢
     have hp : 0 < Complex.normSq (D.host.emb (D.eTau τ : D.R.GG) (Dmin w D.R.rS)) :=
       Complex.normSq_pos.mpr ((map_ne_zero _).mpr h0)
     have hp' : 0 < Complex.normSq (D.host.emb (D.eTau τ : D.R.GG) (Dmin w' D.R.rS)) :=

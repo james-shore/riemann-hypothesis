@@ -46,7 +46,6 @@ def trO (hs : M.split = some g) : M.R →+ 𝒪[F] where
   map_add' x y := by
     apply Subtype.ext
     simp only [Subring.coe_add, map_add, Prod.fst_add, Prod.snd_add]
-    push_cast
     ring
 
 theorem trO_coe (hs : M.split = some g) (x : M.R) :

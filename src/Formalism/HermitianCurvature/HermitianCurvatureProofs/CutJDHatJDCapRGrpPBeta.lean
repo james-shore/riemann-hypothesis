@@ -65,10 +65,10 @@ theorem residue_rows_injective {t t' : Fin (k + 1)} (h : rowsR k r t = rowsR k r
   by_contra hne
   rcases lt_or_gt_of_ne (fun e => hne (Fin.ext e) : t.val ≠ t'.val) with hl | hl
   · have := congrArg Fin.val (congrFun h ⟨r + t.val, by have := t'.isLt; omega⟩)
-    simp only [rowsR_val, Fin.val_mk] at this
+    simp only [rowsR_val] at this
     split_ifs at this <;> omega
   · have := congrArg Fin.val (congrFun h ⟨r + t'.val, by have := t.isLt; omega⟩)
-    simp only [rowsR_val, Fin.val_mk] at this
+    simp only [rowsR_val] at this
     split_ifs at this <;> omega
 
 theorem rowsR_mem (t : Fin (k + 1)) : rowsR k r t ∈ jSetR k r := by
@@ -194,7 +194,7 @@ theorem claimA (J : Fin (r + k) → Fin (2 * r + k + 1)) (hJ : StrictMono J) (σ
     rw [if_neg (by omega), if_pos hq, e]
     omega
   · rw [hgt q hq, hJeq, rowsR_val]
-    simp only [Fin.val_mk]
+    simp only
     split_ifs <;> omega
 
 end det
@@ -284,7 +284,7 @@ theorem hpk_mulVec_eI (a : Fin r) (w : Fin (2 * r + k + 1) → ℂ) : (Hpk k r *
       have := a.isLt
       unfold Hpk
       simp only [eI, esI]
-      split_ifs <;> first | rfl | (exfalso; omega) | (simp_all [Fin.ext_iff] <;> omega)
+      split_ifs <;> first | rfl | (exfalso; omega) | (simp_all)
     rw [this, one_mul]
   · intro j _ hj
     have hj' : j.val ≠ 2 * r + k - a.val := fun e => hj (Fin.ext (by simp only [esI]; omega))
@@ -292,7 +292,7 @@ theorem hpk_mulVec_eI (a : Fin r) (w : Fin (2 * r + k + 1) → ℂ) : (Hpk k r *
       have := a.isLt; have := j.isLt
       unfold Hpk
       simp only [eI]
-      split_ifs <;> first | rfl | (exfalso; omega) | (simp_all [Fin.ext_iff] <;> omega)
+      split_ifs <;> first | rfl | (exfalso; omega) | (simp_all [Fin.ext_iff])
     rw [this, zero_mul]
   · simp
 

@@ -84,7 +84,7 @@ theorem span_genericForm_isPrime_or_eq_top :
   haveI : IsScalarTower P B (K ⊗[k] A) := by
     refine IsScalarTower.of_algebraMap_eq fun p => ?_
     rw [hφ]
-    simp [φ, Algebra.TensorProduct.algebraMap_apply]
+    simp [φ]
     rfl
   have H : (algebraMap B (K ⊗[k] A)).comp Algebra.TensorProduct.includeRight.toRingHom =
       Algebra.TensorProduct.includeRight.toRingHom := by

@@ -130,7 +130,7 @@ theorem jetLogG_one {β : Type*} (v : ZMod 1 × β) :
     if m = Finsupp.single (v.1 - 2 * (e : ZMod 1), v.2) ((p ^ 2) ^ e) then ((p : ℂ_[p]) ^ e)⁻¹ else 0) = _
   simp only [h]
   refine Finset.sum_congr rfl fun e _ => ?_
-  split_ifs <;> first | rfl | (exfalso; tauto)
+  split_ifs <;> first | rfl
 
 theorem logPl_one (D : Formalism.BasicNotions.D7) (hn : Formalism.MainNotions.G.nP D p = 1) {β : Type} (v : Pl D × β) :
     logPl D p v = PowerSeries.subst (X v : MvPowerSeries (Pl D × β) ℂ_[p]) (Lp p) := by
@@ -144,7 +144,7 @@ theorem logPl_one (D : Formalism.BasicNotions.D7) (hn : Formalism.MainNotions.G.
     if m = Finsupp.single (backPl D p v.1 (2 * e), v.2) ((p ^ 2) ^ e) then ((p : ℂ_[p]) ^ e)⁻¹ else 0) = _
   simp only [h]
   refine Finset.sum_congr rfl fun e _ => ?_
-  split_ifs <;> first | rfl | (exfalso; tauto)
+  split_ifs <;> first | rfl
 
 end PI.OrbJet.AO
 

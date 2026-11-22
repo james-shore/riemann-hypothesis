@@ -47,14 +47,14 @@ theorem exists_half_canMult : ∀ (g : ℕ) (Λ : Submodule ℤ (Fin g → ℂ))
     intro i
     refine ⟨funext fun k => ?_, funext fun k => ?_, funext fun k => ?_, funext fun k => ?_⟩ <;>
       by_cases hk : k = i
-    · subst hk; simp [hsame]
-    · simp [hsame, Pi.single_apply, hk, Ne.symm hk]
-    · simp [hsame]
-    · simp [hsame]
-    · simp [hsame]
-    · simp [hsame]
-    · subst hk; simp [hsame]
-    · simp [hsame, Pi.single_apply, hk, Ne.symm hk]
+    · subst hk; simp
+    · simp [hk]
+    · simp
+    · simp
+    · simp
+    · simp
+    · subst hk; simp
+    · simp [hk]
   have hdot : ∀ (a : Fin g → ℝ) (i : Fin g),
       (a ⬝ᵥ fun k => (((Pi.single i 1 : Fin g → ℤ) k : ℤ) : ℝ)) = a i := by
     intro a i

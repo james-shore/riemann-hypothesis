@@ -26,7 +26,7 @@ theorem weight_level_zero_eq_one (hst : ∀ c, Subsingleton ((D.mem u).C.stab 0 
   have : Nat.card ((D.mem u).C.stab 0 c) = 1 := by
     haveI := hst c
     exact Nat.card_eq_one_iff_unique.2 ⟨hst c, ⟨1⟩⟩
-  simp [Formalism.BasicNotions.ColumnChain.wt, this]
+  simp [Formalism.BasicNotions.ColumnChain.wt]
 
 def oc (v : InfinitePlace D.what₂.LL) (c : (D.mem u).C.cls 0) :
     Frames (gramC (gramN D 0 (Nat.zero_le _)) (embS D v.embedding)) :=

@@ -131,8 +131,8 @@ theorem map_transvection_entry {R k : Type} [CommRing R] [CommRing k] (φ : R �
     φ ((1 : Matrix (Fin n) (Fin n) R) a c + if a = i ∧ c = j then x else 0) = Matrix.transvection i j (φ x) a c := by
   rw [transvection_apply', map_add]
   by_cases h1 : a = c
-  · subst h1; simp [Matrix.one_apply, apply_ite φ]
-  · simp [h1, Matrix.one_apply, apply_ite φ]
+  · subst h1; simp [apply_ite φ]
+  · simp [h1, apply_ite φ]
 
 end GlobalTheory.ParaForce
 
@@ -261,7 +261,7 @@ theorem para_of_colMat_fixed : ∀ (L : Type) [Field L] [NumberField L] [IsCMFie
         have h2 : a ≠ c := fun h => by subst h; omega
         show M a c = 0
         rw [hMe]
-        simp [Matrix.one_apply, h1, h2]
+        simp [h1, h2]
       · have h1 : a ≠ m := fun h => by subst h; omega
         show M a a = 1
         rw [hMe]
@@ -276,7 +276,7 @@ theorem para_of_colMat_fixed : ∀ (L : Type) [Field L] [NumberField L] [IsCMFie
         rw [map_incl_apply]
         show ((M a c : Os s) : s.v.adicCompletion (maximalRealSubfield L)) = 0
         rw [hMe]
-        simp [Matrix.one_apply, h1, h2]
+        simp [h1, h2]
       · rfl
     have hdd : NG.detDD s r (Matrix.GeneralLinearGroup.map (incl s) y) = 1 := by
       rw [detDD_map]
@@ -313,7 +313,7 @@ theorem para_of_colMat_fixed : ∀ (L : Type) [Field L] [NumberField L] [IsCMFie
         · have h2 : a ≠ c := fun h => by subst h; omega
           have h3 : ¬ (a = i ∧ c = j) := fun h => by obtain ⟨rfl, rfl⟩ := h; omega
           rw [hent]
-          simp [Matrix.one_apply, h2, h3]
+          simp [h2, h3]
         · have h3 : ¬ (a = i ∧ a = j) := fun h => hne (h.1.symm.trans h.2)
           rw [hent]
           simp [h3]
@@ -324,11 +324,11 @@ theorem para_of_colMat_fixed : ∀ (L : Type) [Field L] [NumberField L] [IsCMFie
         rw [map_incl_apply, hent]
         by_cases h1 : a = i ∧ c = j
         · obtain ⟨rfl, rfl⟩ := h1
-          simp [hij, hjr, Matrix.one_apply, hne, x']
+          simp [hij, hjr, hne, x']
         · rw [if_neg h1]
           split_ifs with h4
           · have h2 : a ≠ c := fun h => by subst h; omega
-            simp [Matrix.one_apply, h2]
+            simp [h2]
           · rfl
       have hsup : NG.supDiag s r (Matrix.GeneralLinearGroup.map (incl s) y) = x0 := by
         unfold NG.supDiag

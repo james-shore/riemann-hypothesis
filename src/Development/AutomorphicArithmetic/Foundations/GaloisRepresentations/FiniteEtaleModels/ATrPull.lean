@@ -55,7 +55,7 @@ theorem trPull : TrPull := by
     apply hext
     · rw [Category.assoc, hl1', ← Category.assoc, m.act a, Category.assoc, hA,
         Category.assoc, m'.act a, ← Category.assoc l, hl1, Category.assoc]
-    · simp only [Category.assoc, hl2', Over.w, hl2]
+    · simp only [Category.assoc, Over.w, hl2]
   · intro x
     apply Over.OverMorphism.ext
     simp only [Over.comp_left, hψ₁]
@@ -89,7 +89,7 @@ theorem trPull : TrPull := by
       apply hext
       · rw [Category.assoc, hl1', ← Category.assoc, hkey, Category.assoc,
           hgal.inv ⟨o.eta (N • f x), mem_heckeSubA o f N x⟩, hl1]
-      · simp only [Category.assoc, hl2', Over.w, hl2]
+      · simp only [Category.assoc, Over.w, hl2]
     · rintro ⟨h, x, rfl⟩
       exact ⟨⟨o.eta (N • f x), mem_heckeSubA o f N x⟩, hkey _⟩
     · rintro ⟨h, x, rfl⟩

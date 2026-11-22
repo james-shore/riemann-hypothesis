@@ -20,7 +20,7 @@ theorem ncard_primesOver_of_norm {E : Type} [Field E] [NumberField E] {p : ℕ} 
     (Ideal.primesOver (Ideal.span {(p : ℤ)}) (𝓞 E)).ncard = Module.finrank ℚ E := by
   classical
   have hp0 : Ideal.span {(p : ℤ)} ≠ ⊥ := by
-    simp [Ideal.span_singleton_eq_bot, hp.ne_zero]
+    simp [hp.ne_zero]
   haveI := span_prime_isMaximal' hp
   rw [← Ideal.sum_ramification_inertia (R := ℤ) (S := 𝓞 E) ℚ E hp0,
     ← IsDedekindDomain.coe_primesOverFinset hp0 (𝓞 E), Set.ncard_coe_finset, Finset.card_eq_sum_ones]
@@ -64,7 +64,7 @@ theorem splitsF_of_norm : ∀ (D : D7) (p : ℕ), p.Prime →
       left_inv := fun v => rfl
       right_inv := fun P => rfl }
   · have := P.2.2
-    have h0 : Ideal.span {(p : ℤ)} ≠ ⊥ := by simp [Ideal.span_singleton_eq_bot, hp.ne_zero]
+    have h0 : Ideal.span {(p : ℤ)} ≠ ⊥ := by simp [hp.ne_zero]
     exact Ideal.ne_bot_of_liesOver_of_ne_bot h0 P.1
   · have := P.2.2
     have h2 := (Ideal.mem_of_liesOver P.1 (Ideal.span {(p : ℤ)}) (p : ℤ)).mp (Ideal.mem_span_singleton_self _)

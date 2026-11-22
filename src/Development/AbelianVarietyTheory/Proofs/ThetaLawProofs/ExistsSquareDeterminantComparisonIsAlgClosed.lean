@@ -107,7 +107,7 @@ theorem exists_transl_ratio (laws : Out.Laws) {R : Type} [CommRing R] (x : KeyIn
   have hu := DVR.mulGen_isGen _ _ _ _ _ _ _ hw (DVR.invGen_isGen _ _ _ _ hw')
   obtain ⟨a, ha⟩ := exists_ratio x.P.isLB (fun U _ h => by
       simp only [Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr, ← Over.comp_left, tr_alMap, zpow_neg,
-        Finset.prod_inv_distrib, zpow_one, inv_inv]
+        Finset.prod_inv_distrib, zpow_one]
       simp only [mul_inv, inv_inv, mul_mul_mul_comm _ _⁻¹, inv_mul_cancel])
     (Out.powObj x.P.A 4).hom (laws.globalFns _ _ (AbelianSchemeGerms.isAbelianScheme_powObj _ x.P.isAb 3)).2
     (DVR.pullGen_isGen _ _ _ _ hu (tr x v.1).left) hu

@@ -125,8 +125,7 @@ theorem formEq_drop {ψ : K0 ⊕ K0 → (Y ⟶ X)} {ε₀ : K0 → ℤ} (p : Y �
       (Sum.elim (Sum.elim ε₀ (fun k => -ε₀ k)) (fun k => -(Sum.elim ε₀ (fun k => -ε₀ k)) k))
       ψ (Sum.elim ε₀ (fun k => -ε₀ k)) := by
   intro U _ h
-  simp only [Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr, hz, zpow_neg, neg_neg, inv_inv,
-    Finset.prod_inv_distrib]
+  simp only [Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr, hz, zpow_neg, Finset.prod_inv_distrib]
   group
 end Drop
 

@@ -37,7 +37,7 @@ theorem sum_single (r : ℕ) : ∑ i : Fin r, (Matrix.single i i 1 : Matrix (Fin
   rw [Matrix.sum_apply, Finset.sum_eq_single a]
   · by_cases h : a = b
     · subst h; simp
-    · simp [Matrix.single_apply, Matrix.one_apply, h]
+    · simp [h]
   · intro k _ hk
     simp only [Matrix.single_apply]
     rw [if_neg (fun e => hk e.1)]

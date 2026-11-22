@@ -20,8 +20,6 @@ theorem norm_pow_sub_one_le {K : Type*} [NormedField K] [IsUltrametricDist K]
   | exact @_root_.GlobalTheory.NormPowSubOne.main
   | exact _root_.GlobalTheory.NormPowSubOne.main
   | (apply _root_.GlobalTheory.NormPowSubOne.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NormPowSubOne.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NormPowSubOne.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NormPowSubOne.main ..)
 
 theorem norm_sub_one_le {K : Type*} [NormedField K] [IsUltrametricDist K]

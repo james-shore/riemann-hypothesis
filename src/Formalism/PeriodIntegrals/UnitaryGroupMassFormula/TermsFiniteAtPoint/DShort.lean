@@ -133,7 +133,6 @@ theorem eq_of_trace_basis {E : Type} [Field E] [NumberField E] (a b : E)
     first
     | exact (traceForm_nondegenerate ℚ E) (a - b) hall
     | exact (traceForm_nondegenerate ℚ E).1 (a - b) hall
-    | exact (traceForm_nondegenerate (K := ℚ) (L := E)) (a - b) hall
   exact sub_eq_zero.1 hab
 
 theorem trace_int_of_isIntegral {E : Type} [Field E] [NumberField E] (z : E) (hz : IsIntegral ℤ z) :

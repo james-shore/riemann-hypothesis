@@ -152,7 +152,7 @@ theorem paPoly_coord (i : ι) : (fun v : EuclideanSpace ℂ ι => v i) ∈ paPol
     rw [paMono_eq, Finset.prod_eq_single i]
     · simp
     · intro b _ hb
-      simp [Finsupp.single_apply, hb, Ne.symm hb]
+      simp [hb]
     · intro hi
       exact absurd (Finset.mem_univ i) hi
   rw [h1]

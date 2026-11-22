@@ -67,7 +67,6 @@ theorem cxFlat_of : CxFlat := by
       else 0) S ?_
   intro z hz
   refine hS z ?_
-  beta_reduce at hz
   split_ifs at hz with hfix
   · have h12 := left_ne_zero_of_mul hz
     exact ⟨hfix, left_ne_zero_of_mul h12, right_ne_zero_of_mul h12⟩

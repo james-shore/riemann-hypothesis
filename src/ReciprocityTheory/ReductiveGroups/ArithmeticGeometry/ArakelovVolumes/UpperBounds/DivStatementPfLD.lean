@@ -17,7 +17,6 @@ theorem comp_O (L : V n ≃L[ℂ] V n) (k : Fin n) :
     first
       | exact norm_le_pi_norm (L z) k
       | exact PiLp.norm_apply_le (L z) k
-      | simpa using norm_le_pi_norm (L z) k
   exact (h2.trans h1).trans (isBigO_norm_right.mpr (isBigO_refl _ _))
 
 theorem sub_val_O {g : V n → ℂ} (hg : AnalyticAt ℂ g 0) :

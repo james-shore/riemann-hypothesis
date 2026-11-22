@@ -12,8 +12,8 @@ private lemma det_one_sub_smul_matrix {n : Type} [Fintype n] [DecidableEq n]
   congr 1
   ext i j
   by_cases h : i = j
-  · subst h; simp [Matrix.one_apply]; ring
-  · simp [Matrix.one_apply, h]; ring
+  · subst h; simp; ring
+  · simp [h]; ring
 
 private lemma det_one_sub_smul_linear {V : Type} [AddCommGroup V] [Module ℂ V]
     [FiniteDimensional ℂ V] (f : V →ₗ[ℂ] V) (y : ℂ) :

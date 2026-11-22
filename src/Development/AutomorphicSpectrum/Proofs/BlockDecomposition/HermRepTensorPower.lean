@@ -87,7 +87,7 @@ theorem chart_pow {B : LB (MP ℤ m n)} (A : Geo.HermLine (Bk n)) (r : ℕ) (j :
   have hW : (lbPow B r).U j ⊓ (mchart c ⊓ mchart c') ≤ B.U (j PUnit.unit) ⊓ (mchart c ⊓ mchart c') :=
     inf_le_inf_right _ (pow_le r j)
   have e := congrArg (fun t => Semi.res hW t ^ r) h
-  simp only [map_mul, mul_pow, map_prod, map_zpow, res_blockUnit, GlobalTheory.CuspDim.IsoPow.res_res] at e
+  simp only [map_mul, mul_pow, map_prod, map_zpow, GlobalTheory.CuspDim.IsoPow.res_res] at e
   simp only [map_pow, GlobalTheory.CuspDim.IsoPow.res_res]
   refine e.trans (congrArg _ ?_)
   rw [← Finset.prod_pow]

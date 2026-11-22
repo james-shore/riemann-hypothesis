@@ -114,24 +114,6 @@ private theorem denseRange_algebraMap_adicCompletion' : DenseRange (algebraMap F
   first
   | exact IsDedekindDomain.HeightOneSpectrum.adicCompletion.denseRange_coe F v
   | exact IsDedekindDomain.HeightOneSpectrum.denseRange_algebraMap F v
-  | exact IsDedekindDomain.HeightOneSpectrum.denseRange_coe F v
-  | exact (v.valuation F).denseRange_coe
-  | exact Valuation.Completion.denseRange_coe
-  | exact UniformSpace.Completion.denseRange_coe (α := WithVal (v.valuation F))
-  | (intro x; exact UniformSpace.Completion.denseRange_coe x)
-  | exact (UniformSpace.Completion.denseRange_coe (α := WithVal (v.valuation F))).comp
-      (WithVal.equiv (v.valuation F)).symm.surjective.denseRange
-      (UniformSpace.Completion.continuous_coe _)
-  | exact @UniformSpace.Completion.denseRange_coe F v.adicValued.toUniformSpace
-  | (letI := v.adicValued; exact UniformSpace.Completion.denseRange_coe)
-  | (refine Dense.mono ?_ (UniformSpace.Completion.denseRange_coe (α := WithVal (v.valuation F)))
-     rintro _ ⟨y, rfl⟩
-     first
-     | exact ⟨WithVal.equiv _ y, rfl⟩
-     | exact ⟨WithVal.ofVal y, rfl⟩
-     | exact ⟨y, rfl⟩
-     | exact ⟨WithVal.equiv _ y, by simp⟩
-     | exact ⟨WithVal.ofVal y, by simp⟩)
   | (delta IsDedekindDomain.HeightOneSpectrum.adicCompletion
      exact UniformSpace.Completion.denseRange_coe)
   | (unfold IsDedekindDomain.HeightOneSpectrum.adicCompletion Valuation.Completion

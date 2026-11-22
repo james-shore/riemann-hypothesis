@@ -97,7 +97,7 @@ theorem exists_genericFlag : Out.WeilSt → ∀ (E : Type) [Field E] [NumberFiel
 
   obtain ⟨A', e, j₁, m, he, hf, hm, hcst, hR, hext, hpt, hHT', hV⟩ := GlobalTheory.T.hodge_cpt_field_extension E H D l Xo c _ _ Y S Ω Ω' i K Unit
     J (fun _ => κ₃) y y' A y₀ M₃.X M₃.ξ (f₃ ≫ f₂) hy hS (fun p hp => (hHT p hp).2) M₃.all
-    (by convert htie using 1 <;> first | exact Subsingleton.elim _ _ | skip) hnormal hdh
+    (by convert htie using 1 <;> first | exact Subsingleton.elim _ _) hnormal hdh
   have hd' : GlobalTheory.CompanionTheory.Ar.Dominates A'.ξ A.ξ (e.hom ≫ f₃ ≫ f₂) i := by
     show A'.ξ ≫ e.hom ≫ f₃ ≫ f₂ = _
     rw [← Category.assoc, he]

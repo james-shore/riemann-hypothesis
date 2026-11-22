@@ -26,7 +26,6 @@ theorem lam_add_sub_le : ∀ (l : ℕ) [Fact l.Prime] (h j : ℕ) (r : ℝ) (x y
   have key := GlobalTheory.T.ultrametric_norm_hasSum_sub_finset_sum_le ℂ_[l] ℤ _ _ ∅ _ hε hs (by
     intro n _
     set k : ℤ := n * h + j
-    beta_reduce
     rw [hpw.1 k x y]
     have e : (l : ℂ_[l]) ^ (-n) * sh (pw k x + pw k y) - (l : ℂ_[l]) ^ (-n) * sh (pw k x)
         - (l : ℂ_[l]) ^ (-n) * sh (pw k y)

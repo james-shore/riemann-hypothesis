@@ -186,8 +186,6 @@ theorem IsLocModerate.bound_of_isCompact {F : GA E a → ℂ} (hF : IsLocModerat
   | exact @_root_.GlobalTheory.CompactUniformHeightBound.compact_uniform_bound
   | exact _root_.GlobalTheory.CompactUniformHeightBound.compact_uniform_bound
   | (apply _root_.GlobalTheory.CompactUniformHeightBound.compact_uniform_bound <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CompactUniformHeightBound.compact_uniform_bound <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CompactUniformHeightBound.compact_uniform_bound <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CompactUniformHeightBound.compact_uniform_bound ..)
 
 theorem locSpan_le_regSpan {π : CuspSub E a} {φ : Sm E a} (hφ : φ ∈ π.V) (S : Finset (HeightOneSpectrum (𝓞 E))) :

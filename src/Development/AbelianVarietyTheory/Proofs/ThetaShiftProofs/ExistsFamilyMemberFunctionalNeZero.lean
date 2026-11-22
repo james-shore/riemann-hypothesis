@@ -62,7 +62,7 @@ theorem sum_cm {r : ℕ} (X : Data E r) (g : (E →+* ℂ) → ℕ) :
 
 theorem card_cm {r : ℕ} (X : Data E r) : Fintype.card X.Ψ = fdeg E := by
   have h := sum_cm X (fun _ => (1 : ℕ))
-  simp only [Finset.sum_const, Finset.card_univ, smul_eq_mul, mul_one] at h
+  simp only [Finset.sum_const, Finset.card_univ, smul_eq_mul] at h
   unfold fdeg
   rw [← NumberField.Embeddings.card E ℂ]
   omega

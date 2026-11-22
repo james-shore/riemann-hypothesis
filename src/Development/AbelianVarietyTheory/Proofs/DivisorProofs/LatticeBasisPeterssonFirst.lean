@@ -105,7 +105,7 @@ theorem consecutiveGap_weightZero_ge (Dw : Datum H) (P : WtPar Dw) (τ : Psi H) 
     (hg : g ≤ gap (P.u₁ τ) k) : ((FlagTan.dimFlag Dw : ℤ) + 1) * g - 2 ≤ gap (P.wt 0 τ) k := by
   have hr := (P.gap_rem τ k).1
   have hk : -2 ≤ FlagTan.kap Dw τ ⟨k, by omega⟩ - FlagTan.kap Dw τ ⟨k + 1, h⟩ := by
-    simp only [FlagTan.kap, Fin.val_mk]
+    simp only [FlagTan.kap]
     split_ifs <;> push_cast <;> omega
   rw [gap, dif_pos h] at hr hg ⊢
   simp only [WtPar.wt, WtPar.uc, WtPar.u₂, Pi.add_apply, Pi.smul_apply, zero_smul, add_zero, Pi.zero_apply] at hr ⊢

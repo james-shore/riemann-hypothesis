@@ -24,15 +24,11 @@ def shiftEmb {m k : ℕ} (σ : Fin m ↪o Fin k) : Fin m ↪o Fin (k + 1) :=
 @[simp] theorem consEmb_zero {m k : ℕ} (σ : Fin m ↪o Fin k) : consEmb σ 0 = 0 := by
   first
     | rfl
-    | exact Fin.cons_zero (α := fun _ => Fin (k + 1)) _ _
-    | (show Fin.cons (α := fun _ => Fin (k + 1)) 0 (fun a => (σ a).succ) 0 = 0; simp)
 
 @[simp] theorem consEmb_succ {m k : ℕ} (σ : Fin m ↪o Fin k) (a : Fin m) :
     consEmb σ a.succ = (σ a).succ := by
   first
     | rfl
-    | exact Fin.cons_succ (α := fun _ => Fin (k + 1)) _ _ _
-    | (show Fin.cons (α := fun _ => Fin (k + 1)) 0 (fun a => (σ a).succ) a.succ = (σ a).succ; simp)
 
 @[simp] theorem shiftEmb_apply {m k : ℕ} (σ : Fin m ↪o Fin k) (a : Fin m) :
     shiftEmb σ a = (σ a).succ := rfl
@@ -101,12 +97,10 @@ theorem interleave_embeddings : ∀ {T : Type 1} {u v w : List T}, Zc.Comb.Inter
       · rw [GlobalTheory.CompanionTheory.WordProd.Intl.consEmb_succ]
         first
           | exact hu x
-          | simpa using hu x
     · intro x
       rw [GlobalTheory.CompanionTheory.WordProd.Intl.shiftEmb_apply]
       first
         | exact hv x
-        | simpa using hv x
   | @right a u v w _ ih =>
     obtain ⟨r, σ₀, σ₁, h0, h1, hu, hv⟩ := ih
     refine ⟨(Fin.cons (1 : Fin 2) r : Fin (w.length + 1) → Fin 2), GlobalTheory.CompanionTheory.WordProd.Intl.shiftEmb σ₀,
@@ -132,7 +126,6 @@ theorem interleave_embeddings : ∀ {T : Type 1} {u v w : List T}, Zc.Comb.Inter
       rw [GlobalTheory.CompanionTheory.WordProd.Intl.shiftEmb_apply]
       first
         | exact hu x
-        | simpa using hu x
     · intro x
       obtain rfl | ⟨x, rfl⟩ := Fin.eq_zero_or_eq_succ (n := v.length) x
       · rw [GlobalTheory.CompanionTheory.WordProd.Intl.consEmb_zero]
@@ -140,6 +133,5 @@ theorem interleave_embeddings : ∀ {T : Type 1} {u v w : List T}, Zc.Comb.Inter
       · rw [GlobalTheory.CompanionTheory.WordProd.Intl.consEmb_succ]
         first
           | exact hv x
-          | simpa using hv x
 
 end GlobalTheory.CompanionTheory.WordProd.Intl

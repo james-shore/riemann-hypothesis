@@ -15,8 +15,6 @@ theorem lUnlinkedIrr_pole (hZ : GlobalTheory.Published.SegmentRepresentation) :
   have hA : GlobalTheory.Published.IrreducibleAdmissibleGL := by
     first
     | exact PositivityTheory.Tls2.BZGL.irreducibleAdmissibleGL_top
-    | exact PositivityTheory.Exh.irreducibleAdmissibleGL
-    | exact GlobalTheory.RgGu.irreducibleAdmissibleGL
   exact lUnlinkedIrr_nu k (GlobalTheory.CompanionTheory.SegCoarse.lSegJacquet hA hZ)
     PositivityTheory.Geo.geometricLemmaFiltration (PositivityTheory.RgGu.NR.nuPair k)
 

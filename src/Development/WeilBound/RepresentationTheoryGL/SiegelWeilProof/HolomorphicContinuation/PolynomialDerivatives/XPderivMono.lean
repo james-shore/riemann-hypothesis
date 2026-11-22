@@ -24,16 +24,16 @@ theorem dop_split (ε : Fin m → Bool) (c : ℝ) (a b : Fin m) {f g : PX m n} (
     cases ha : ε a
     · have hb : ε b = false := by rw [← hab, ha]
       simp only [Bool.false_eq_true, if_false]
-      simp only [Finset.sum_mul, Finset.mul_sum, neg_mul, mul_neg, ← Finset.sum_neg_distrib,
-        ← Finset.sum_add_distrib, ← Finset.sum_sub_distrib]
+      simp only [Finset.sum_mul, Finset.mul_sum, mul_neg, ← Finset.sum_neg_distrib,
+        ← Finset.sum_add_distrib]
       refine Finset.sum_congr rfl fun i _ => ?_
       rw [hL, hL, partial_deriv_zero_second_family ε (k := (a, i, true)) (by simp [inF1, ha]) hg,
         partial_deriv_zero_first_family ε (k := (b, i, false)) (by simp [inF1, hb]) hf]
       ring
     · have hb : ε b = true := by rw [← hab, ha]
       simp only [if_true]
-      simp only [Finset.sum_mul, Finset.mul_sum, neg_mul, mul_neg, ← Finset.sum_neg_distrib,
-        ← Finset.sum_add_distrib, ← Finset.sum_sub_distrib]
+      simp only [Finset.sum_mul, Finset.mul_sum, neg_mul, ← Finset.sum_neg_distrib,
+        ← Finset.sum_add_distrib]
       refine Finset.sum_congr rfl fun i _ => ?_
       rw [hL, hL, partial_deriv_zero_first_family ε (k := (a, i, true)) (by simp [inF1, ha]) hf,
         partial_deriv_zero_second_family ε (k := (b, i, false)) (by simp [inF1, hb]) hg]
@@ -42,8 +42,8 @@ theorem dop_split (ε : Fin m → Bool) (c : ℝ) (a b : Fin m) {f g : PX m n} (
     cases ha : ε a
     · have hb : ε b = true := by cases h' : ε b <;> simp_all
       simp only [Bool.false_eq_true, if_false]
-      simp only [Finset.sum_mul, Finset.mul_sum, smul_mul_assoc, mul_smul_comm, Finset.smul_sum, neg_mul, mul_neg,
-        neg_smul, ← Finset.sum_neg_distrib, ← Finset.sum_add_distrib, ← Finset.sum_sub_distrib]
+      simp only [Finset.sum_mul, Finset.mul_sum, smul_mul_assoc, mul_smul_comm, Finset.smul_sum, mul_neg,
+        neg_smul, ← Finset.sum_add_distrib]
       refine Finset.sum_congr rfl fun i _ => ?_
       rw [hL, map_add, hL2 _ f, hL2 _ g, partial_deriv_zero_second_family ε (k := (a, i, true)) (by simp [inF1, ha]) hg,
         partial_deriv_zero_second_family ε (k := (b, i, false)) (by simp [inF1, hb]) hg]
@@ -51,8 +51,7 @@ theorem dop_split (ε : Fin m → Bool) (c : ℝ) (a b : Fin m) {f g : PX m n} (
       ring
     · have hb : ε b = false := by cases h' : ε b <;> simp_all
       simp only [if_true]
-      simp only [Finset.sum_mul, Finset.mul_sum, smul_mul_assoc, mul_smul_comm, Finset.smul_sum, neg_mul, mul_neg,
-        neg_smul, ← Finset.sum_neg_distrib, ← Finset.sum_add_distrib, ← Finset.sum_sub_distrib]
+      simp only [Finset.sum_mul, Finset.mul_sum, smul_mul_assoc, mul_smul_comm, Finset.smul_sum, neg_mul, neg_smul, ← Finset.sum_add_distrib]
       refine Finset.sum_congr rfl fun i _ => ?_
       rw [hL, partial_deriv_zero_first_family ε (k := (a, i, true)) (by simp [inF1, ha]) hf, mul_zero, add_zero, hL2 _ f,
         partial_deriv_zero_first_family ε (k := (b, i, false)) (by simp [inF1, hb]) hf, mul_zero, add_zero]

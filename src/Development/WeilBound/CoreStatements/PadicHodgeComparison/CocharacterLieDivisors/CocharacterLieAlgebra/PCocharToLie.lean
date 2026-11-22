@@ -16,7 +16,7 @@ theorem eval₂_dual {R K σ : Type} [CommRing R] [Field K] [Fintype σ] (φ : R
   classical
   induction f using MvPolynomial.induction_on
   next a =>
-    simp [MvPolynomial.eval₂_C, MvPolynomial.pderiv_C]
+    simp [MvPolynomial.eval₂_C]
   next p q hp hq =>
     simp only [MvPolynomial.eval₂_add, hp, hq, map_add, add_mul, Finset.sum_add_distrib]
     ring
@@ -30,7 +30,7 @@ theorem eval₂_dual {R K σ : Type} [CommRing R] [Field K] [Fintype σ] (φ : R
       · subst h
         simp [MvPolynomial.eval₂_add, MvPolynomial.eval₂_mul, MvPolynomial.eval₂_X]
         try ring
-      · simp [MvPolynomial.eval₂_add, MvPolynomial.eval₂_mul, MvPolynomial.eval₂_X, Pi.single_apply, h, Ne.symm h]
+      · simp [MvPolynomial.eval₂_mul, MvPolynomial.eval₂_X, h, Ne.symm h]
         try ring
     rw [MvPolynomial.eval₂_mul, hp, Finset.sum_congr rfl fun i _ => hterm i, Finset.sum_add_distrib,
       ← Finset.mul_sum, Finset.sum_ite_eq']

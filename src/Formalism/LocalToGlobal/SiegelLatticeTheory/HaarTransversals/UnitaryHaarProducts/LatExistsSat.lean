@@ -41,7 +41,7 @@ lemma fi_mul_mem {I J K : 𝓕} (hIJ : I * J = K) {x y : E} (hx : x ∈ I) (hy :
 
 lemma exists_smul_mem_of_mem_span {Λ : Submodule (𝓞 E) V} {v : V}
     (hv : v ∈ Submodule.span E (Λ : Set V)) : ∃ d : 𝓞 E, d ≠ 0 ∧ d • v ∈ Λ := by
-  first | exact Bl.SecondBlockLemmaE.goal1 .. | (apply Bl.SecondBlockLemmaE.goal1 <;> assumption) | (intros; apply Bl.SecondBlockLemmaE.goal1 <;> assumption)
+  first | exact Bl.SecondBlockLemmaE.goal1 .. | (apply Bl.SecondBlockLemmaE.goal1 <;> assumption)
 
 lemma sub_smul_mem_span_init {n : ℕ} (w : Fin (n + 1) → V) (f : V →ₗ[E] E)
     (hf1 : f (w (Fin.last n)) = 1) (hf0 : ∀ i : Fin n, f (w i.castSucc) = 0) {x : V}

@@ -45,7 +45,7 @@ theorem fibre_of : SchurY → SchurHomog → SchurDet → Fibre := by
     intro i
     rw [← mul_prod_erase univ _ (mem_univ t₀), ← mul_prod_erase (univ.erase t₀) _ h1mem,
       ← mul_prod_erase (univ.erase t₀) (fun t => sch (lam t) (g t)) h1mem, hrest i]
-    simp only [twist, eq_self_iff_true, ↓reduceIte, h10]
+    simp only [twist, ↓reduceIte, h10]
     rw [hconst, hconst, prod_scaleOff, mul_pow, ← pow_mul, pow_add]
     ring
   calc ∑ i, (∏ t, sch (lam t) (twist t₀ t₁ ε y i g t)) *

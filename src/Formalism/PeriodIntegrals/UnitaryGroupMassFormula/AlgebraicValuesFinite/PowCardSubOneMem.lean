@@ -67,7 +67,6 @@ theorem exists_pow_close (n : ℕ) : ∃ N : ℕ, 0 < N ∧ ∀ x : v.adicComple
     have hw : Valued.v w = exp (-((n : ℤ) + 1)) := by
       rw [hw_def, map_pow, val_alg, valuation_of_algebraMap, hπ, ← WithZero.exp_nsmul]
       congr 1
-      push_cast
       ring
     have hw0 : w ≠ 0 := by
       intro h0

@@ -157,8 +157,7 @@ private lemma degreeOf_zero_t {a : k} (ha : a ≠ 0) : (T (monomial v a)).degree
   have hT : T (MvPolynomial.C a) = MvPolynomial.C a := (shear k n _).commutes a
   rw [← natDegree_finSuccEquiv, monomial_eq, Finsupp.prod_pow v fun a ↦ X a]
   simp only [hT, Fin.prod_univ_succ, Fin.sum_univ_succ, map_mul, map_prod, map_pow,
-    shear_X_zero, shear_X_succ, AlgEquiv.commutes, algebraMap_eq,
-    map_add, finSuccEquiv_X_zero, finSuccEquiv_X_succ]
+    shear_X_zero, shear_X_succ, map_add, finSuccEquiv_X_zero, finSuccEquiv_X_succ]
   have h (i : Fin n) :
       (Polynomial.C (X (R := k) i) + Polynomial.X ^ r i.succ) ^ v i.succ ≠ 0 :=
     pow_ne_zero (v i.succ) (Polynomial.leadingCoeff_ne_zero.mp <| by

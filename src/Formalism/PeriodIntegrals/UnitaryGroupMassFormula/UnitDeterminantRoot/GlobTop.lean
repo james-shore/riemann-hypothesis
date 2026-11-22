@@ -11,8 +11,6 @@ lemma isIntegral_algebraMap_O (F : IntermediateField ℚ ℂ) (o : 𝓞 F) :
     IsIntegral ℤ (algebraMap (𝓞 F) ℂ o) := by
   first
     | exact (NumberField.RingOfIntegers.isIntegral o).algebraMap
-    | exact IsIntegral.algebraMap o.isIntegral_coe
-    | exact (o.isIntegral_coe).map (IsScalarTower.toAlgHom ℤ F ℂ)
 
 lemma lunit_of (F : IntermediateField ℚ ℂ) {α β u : ℂ} {k l : ℕ} (hα : α ≠ 0) (hβ : β ≠ 0) (hu : u ≠ 0)
     (hl : ¬ l ∣ k)

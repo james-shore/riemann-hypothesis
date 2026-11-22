@@ -39,7 +39,6 @@ theorem relIndex_sup_span_singleton_eq_absNorm
     · intro htop
       apply hu
       have : (1 : 𝓞 F) ∈ LinearMap.ker f := by
-        change (1 : 𝓞 F) ∈ (LinearMap.ker f : Submodule (𝓞 F) (𝓞 F))
         rw [show (LinearMap.ker f : Submodule (𝓞 F) (𝓞 F)) = ⊤ from htop]
         trivial
       simpa using (hmem 1).mp this

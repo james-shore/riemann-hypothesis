@@ -24,7 +24,7 @@ private theorem rhoC_true (n : ℕ) : Formalism.REAL.rhoC (fun _ : Fin n => true
     rw [Nat.sub_sub, Nat.cast_sub (by omega)]
     push_cast
     ring
-  simp only [Formalism.REAL.rhoC, rhoV, eq_self_iff_true]
+  simp only [Formalism.REAL.rhoC, rhoV]
   rw [h1, h2, Fin.card_Ioi, Fin.card_Iio, h3]
   ring
 
@@ -57,7 +57,7 @@ private theorem clif_map {A B : Type} [Ring A] [Ring B] [Algebra ℂ A] [Algebra
 
 private theorem cas_gel {V : Type} [NormedAddCommGroup V] [InnerProductSpace ℂ V] {n : ℕ}
     (E : Fin n → Fin n → Module.End ℂ V) : Cas E = gelA E 2 := by
-  simp [Cas, gelA, epow, Finset.sum_ite_eq]
+  simp [Cas, gelA, epow]
 
 private theorem cas_bar {V : Type} [NormedAddCommGroup V] [InnerProductSpace ℂ V] {n : ℕ}
     (E : Fin n → Fin n → Module.End ℂ V) : Cas E = gelA (barF E) 2 := by
@@ -134,11 +134,11 @@ theorem UpperTheory.RealTr.diracHW :
   have hskew : ∀ y z : Ten J V, ⟪D y, z⟫_ℂ = -⟪y, D z⟫_ℂ := by
     intro y z
     calc ⟪D y, z⟫_ℂ = ∑ a, ∑ b, ⟪T a b y, z⟫_ℂ := by
-          simp [hDdef, LinearMap.sum_apply, sum_inner]
+          simp [hDdef, LinearMap.sum_apply]
       _ = ∑ a, ∑ b, -⟪y, T b a z⟫_ℂ := by simp_rw [hT]
       _ = -⟪y, D z⟫_ℂ := by
           rw [Finset.sum_comm]
-          simp [hDdef, LinearMap.sum_apply, inner_sum, Finset.sum_neg_distrib]
+          simp [hDdef, LinearMap.sum_apply, Finset.sum_neg_distrib]
   set A0 : ℝ := nsq fun a => (lam a : ℝ) + rhoV n a with hA0
   set R : ℝ := nsq (rhoV n) with hR
   set N : ℝ := nsq (κ + rhoV n) with hN

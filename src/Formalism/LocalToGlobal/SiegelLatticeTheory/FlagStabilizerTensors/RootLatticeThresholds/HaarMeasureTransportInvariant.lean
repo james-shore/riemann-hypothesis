@@ -106,7 +106,7 @@ theorem haar_measure_transport_invariant (hH : IsHaarLoc (StSet (Formalism.L2.SG
       exact Formalism.L2.SG.Pf.Bridge.inN_Q hTu' hsN'
     have hcomp : (Formalism.QuantumDeterminants.lmulM s) ∘ F = F ∘ (fun x => y0 * x) := by
       funext x
-      simp only [Function.comp, hF, Formalism.QuantumDeterminants.lmulM, Matrix.of_symm_apply]
+      simp only [Function.comp, hF, Formalism.QuantumDeterminants.lmulM]
       rw [trG_mul_g hT]
       congr 1
       show s = Qi * (Q * s * Qi) * Q
@@ -137,7 +137,7 @@ theorem fin_g (ν : Measure (Formalism.REAL.UJ (X.B.I.ε v))) (hq : IsQuotLoc μ
     intro h0
     have h := hq (fun _ => 1) measurable_const
     rw [h0] at h
-    simp only [lintegral_const, Measure.coe_zero, Pi.zero_apply, mul_zero, lintegral_zero_measure] at h
+    simp only [lintegral_const, Measure.coe_zero, Pi.zero_apply, mul_zero] at h
     have : Formalism.REAL.muG (X.B.I.ε v) Set.univ = 0 := by simpa using h
     exact (isOpen_univ.measure_pos (Formalism.REAL.muG (X.B.I.ε v)) Set.univ_nonempty).ne' this
 

@@ -16,7 +16,7 @@ theorem pderiv_linF {ι : Type} [Fintype ι] (x : ι → ℝ) (j : ι) :
   rw [linF, map_sum, Finset.sum_eq_single j]
   · simp
   · intro b _ hb
-    simp [MvPolynomial.pderiv_X, Pi.single_apply, hb, hb.symm]
+    simp [hb]
   · simp
 
 theorem iterD_linF_pow {ι : Type} [Fintype ι] (x : ι → ℝ) (N : ℕ) : ∀ (m : ℕ) (a : Fin m → ι),

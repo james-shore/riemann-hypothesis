@@ -29,7 +29,7 @@ theorem eq_zero_of_form {g : ℕ} (b : Module.Basis (Fin g) R V) (t : ⋀[R]^2 V
       ![b.coord (Set.powersetCard.ofFinEmbEquiv.symm s 0),
         b.coord (Set.powersetCard.ofFinEmbEquiv.symm s 1)] := by
     funext i
-    fin_cases i <;> first | rfl | simp
+    fin_cases i <;> first | rfl
   have key : exteriorPower.ιMultiDual R 2 b s =
       GlobalTheory.CompanionTheory.HopfC.Wedge.form (b.coord (Set.powersetCard.ofFinEmbEquiv.symm s 0))
         (b.coord (Set.powersetCard.ofFinEmbEquiv.symm s 1)) := by
@@ -146,7 +146,7 @@ theorem coord_self (b : Module.Basis (Fin g) R (H 1)) (i : Fin g) : b.coord i (b
 
 theorem coord_ne (b : Module.Basis (Fin g) R (H 1)) {i j : Fin g} (h : i ≠ j) :
     b.coord i (b j) = 0 := by
-  simp [Module.Basis.coord_apply, Finsupp.single_apply, h, h.symm]
+  simp [Module.Basis.coord_apply, h]
 
 theorem eq_zero_of_iter
     (hD : ∀ n l x z, D (n + 1) l (L (n + 1) x z) = l x • τ (n + 1) z - L n x (D n l z))
@@ -275,7 +275,5 @@ theorem exteriorSquare_equiv {R : Type} [CommRing R] (H : ℕ → Type) [∀ n, 
   refine ⟨LinearEquiv.ofBijective φ hbij, fun a a' => ?_⟩
   first
     | (rw [LinearEquiv.ofBijective_apply]; simpa using hφ ![a, a'])
-    | exact hφ ![a, a']
-    | simpa using hφ ![a, a']
 
 end GlobalTheory.CompanionTheory.HopfC.Wedge

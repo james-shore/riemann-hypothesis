@@ -28,9 +28,7 @@ theorem exists_bridge (τ : E →+* Qbar l) : ∃ (w : HeightOneSpectrum (𝓞 E
   first
   | exact @_root_.GlobalTheory.PlaceBallNormLemmas.exists_bridge
   | exact _root_.GlobalTheory.PlaceBallNormLemmas.exists_bridge
-  | (apply _root_.GlobalTheory.PlaceBallNormLemmas.exists_bridge <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PlaceBallNormLemmas.exists_bridge <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PlaceBallNormLemmas.exists_bridge <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.PlaceBallNormLemmas.exists_bridge)
   | (intros; exact _root_.GlobalTheory.PlaceBallNormLemmas.exists_bridge ..)
 
 end Jumps

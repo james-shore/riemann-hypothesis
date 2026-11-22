@@ -40,14 +40,14 @@ theorem derivation_prod_succAbove_xt {σ : Type*} {n : ℕ}
   rfl
 
 theorem pderiv_rowW_zero_xt (u : Fin 2 → ℝ) (v : ℝ) : pderiv (some 0) (rowW u v) = C (u 0) := by
-  simp [rowW, pderiv_X, Pi.single_apply, pderiv_C, Derivation.leibniz]
+  simp [rowW, pderiv_X, Derivation.leibniz]
 
 theorem pderiv_rowW_one_xt (u : Fin 2 → ℝ) (v : ℝ) : pderiv (some 1) (rowW u v) = C (u 1) := by
-  simp [rowW, pderiv_X, Pi.single_apply, pderiv_C, Derivation.leibniz]
+  simp [rowW, pderiv_X, Derivation.leibniz]
 
 theorem pderiv_C_mul_xt {σ : Type*} [DecidableEq σ] (j : σ) (a : ℝ) (p : MvPolynomial σ ℝ) :
     pderiv j (C a * p) = C a * pderiv j p := by
-  simp [Derivation.leibniz, pderiv_C]
+  simp [Derivation.leibniz]
 
 theorem linear_form_linear_combination (a b : ℝ) (n m : Fin 3 → ℝ) :
     lin4 (fun i => a * n i + b * m i) = C a * lin4 n + C b * lin4 m := by

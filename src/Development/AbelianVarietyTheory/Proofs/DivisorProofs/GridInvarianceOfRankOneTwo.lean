@@ -50,8 +50,6 @@ lemma comm_pow_of {A : Type} [Ring A] [Algebra ℚ A] {H X : A} {s : ℚ} (h : H
   | exact @_root_.GlobalTheory.CommutatorPowerFormula.commutator_pow_of_commutator_eq_smul
   | exact _root_.GlobalTheory.CommutatorPowerFormula.commutator_pow_of_commutator_eq_smul
   | (apply _root_.GlobalTheory.CommutatorPowerFormula.commutator_pow_of_commutator_eq_smul <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CommutatorPowerFormula.commutator_pow_of_commutator_eq_smul <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CommutatorPowerFormula.commutator_pow_of_commutator_eq_smul <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CommutatorPowerFormula.commutator_pow_of_commutator_eq_smul ..)
 
 lemma commute_pair_pow {A : Type} [Ring A] [Algebra ℚ A] {H X Y : A} {s : ℚ} (hX : H * X - X * H = s • X)

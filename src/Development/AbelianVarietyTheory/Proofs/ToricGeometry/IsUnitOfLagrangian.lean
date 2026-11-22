@@ -75,7 +75,7 @@ theorem _root_.GlobalTheory.SiegelNormalForm.isUnit_of_lagrangian (P Hm : Matrix
       (P *ᵥ xc) ⬝ᵥ u = ∑ i, xc i * ((P *ᵥ Pi.single i 1) ⬝ᵥ u) := by
     intro u
     simp only [mulVec_single_one]
-    simp only [mulVec, dotProduct, Finset.mul_sum, Finset.sum_mul, transpose_apply]
+    simp only [mulVec, dotProduct, Finset.mul_sum, Finset.sum_mul]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun k _ => ?_
     simp only [Matrix.col_apply]
@@ -292,7 +292,7 @@ theorem _root_.GlobalTheory.SiegelNormalForm.exists_normal_form : (∀ (g : ℕ)
     have hv : star (τ *ᵥ Pi.single j 1) =
         τ *ᵥ Pi.single j 1 - (2 * I) • (fun x => ((τ x j).im : ℂ)) := by
       ext x
-      simp only [mulVec_single_one, Pi.star_apply, transpose_apply, Pi.sub_apply, Pi.smul_apply,
+      simp only [mulVec_single_one, Pi.star_apply, Pi.sub_apply, Pi.smul_apply,
         smul_eq_mul]
       apply Complex.ext <;> simp <;> ring
     have hYim : (Y.map (↑) : Matrix (Fin g) (Fin g) ℂ) *ᵥ (fun x => ((τ x j).im : ℂ)) =

@@ -76,7 +76,7 @@ theorem cz_zero (p q : ℕ) (e : ℤ) (a b : M2 n) (ha : InG a) (hb : InG b) (ψ
   have hmul : ∀ g h : GR n, mR (g * h) = mR g * mR h := fun _ _ => rfl
   have hdetN : ∀ x, (nU (herm x) : M2 n).det = 1 := by
     intro x
-    simp [nU, det_fromBlocks_zero₂₁]
+    simp [nU]
   unfold czLoc
   rw [← integral_const_mul]
   congr 1
@@ -88,7 +88,7 @@ theorem cz_zero (p q : ℕ) (e : ℤ) (a b : M2 n) (ha : InG a) (hb : InG b) (ψ
       exact det_one
     exact left_ne_zero_of_mul_eq_one h1
   unfold jLoc
-  simp only [Complex.cpow_zero, one_mul, F0, hmul, mR_mkG, nbEl, det_mul, hdetN, mul_one, mul_zpow,
+  simp only [Complex.cpow_zero, one_mul, F0, hmul, mR_mkG, nbEl, det_mul, hdetN, mul_zpow,
     mul_assoc, integral_const_mul]
   generalize (mR (k : GR n)).det ^ e = D at hk ⊢
   have hD := inv_mul_cancel₀ hk

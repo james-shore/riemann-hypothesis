@@ -96,7 +96,7 @@ theorem wtOK_sites : AllSites (fun {D L hT Gi Gl Kc Dx cX ex u μ w hg Lv I H X}
     have hcomm := Nat.mul_comm j (D.R.t + 1)
     have hiN : i.1 < D.R.k + j * (D.R.t + 1) := by have := i.2; simp only [Ranks.N] at this; exact this
     apply Int.cast_injective (α := ℚ)
-    simp only [hvs, Sys.nuv, nu]
+    simp only [Sys.nuv, nu]
     by_cases hr : i.1 < D.R.k
     · rw [if_pos (show 1 ≤ i.1 + 1 ∧ i.1 + 1 ≤ (sysS H X std).G.P.m + 1 by omega)]
       simp only [lamI]

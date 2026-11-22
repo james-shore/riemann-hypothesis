@@ -121,7 +121,7 @@ private lemma rt_eq (i : Io n) (a : Fin n) :
     split_ifs <;> first | omega | norm_num
   · intro d _ hd
     simp only [sg, min_def, max_def]
-    split_ifs at hd <;> split_ifs <;> first | rfl | omega | norm_num
+    split_ifs at hd <;> split_ifs <;> first | rfl | omega
 
 private lemma sgN (A : Finset (Io n)) (a : Fin n) :
     ∑ d, sg a d * (if pr a d ∈ A then 1 else 0) = ∑ i ∈ A, rt i.1.1 i.1.2 a := by

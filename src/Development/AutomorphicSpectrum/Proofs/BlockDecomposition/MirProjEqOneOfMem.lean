@@ -52,8 +52,8 @@ theorem mem_of_mirProj_eq_one (n : ℕ) (y : Mir k n) (hy : mirabolicProjection 
   rcases Fin.eq_castSucc_or_eq_last i with ⟨i, rfl⟩ | rfl <;>
     rcases Fin.eq_castSucc_or_eq_last j with ⟨j, rfl⟩ | rfl
   · simp [Matrix.one_apply, Fin.castSucc_ne_last, hblock]
-  · simp [Matrix.one_apply, Fin.castSucc_ne_last]
-  · simp [Matrix.one_apply, Fin.castSucc_ne_last, (Fin.castSucc_ne_last _).symm, hrow,
+  · simp [Fin.castSucc_ne_last]
+  · simp [Fin.castSucc_ne_last, (Fin.castSucc_ne_last _).symm, hrow,
       GlobalTheory.BZMir.eLast]
   · simp [hrow, GlobalTheory.BZMir.eLast]
 

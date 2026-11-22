@@ -89,7 +89,7 @@ theorem wExact_colimit : ∀ (T : Type 1) [Category.{0} T] (N : T ⥤ AddCommGrp
     obtain ⟨x, hx⟩ := (hW k).2.1 _ h2
     refine ⟨N.map (cU.ι.app k) x, ?_⟩
     rw [← hNc, ← hab', hNc]
-    simp only [Functor.comp_obj] at hx
+    simp only at hx
     rw [hx, ← hNc, hXι]
   · intro n
     rw [HomologicalComplex.exactAt_iff' _ n (n + 1) (n + 2) (by simp) (by simp), ShortComplex.ab_exact_iff]

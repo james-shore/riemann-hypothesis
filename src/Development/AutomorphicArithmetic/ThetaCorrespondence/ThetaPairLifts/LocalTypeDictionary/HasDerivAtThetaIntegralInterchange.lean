@@ -49,7 +49,7 @@ theorem thetaInterchange_isPure (hPr : _root_.GlobalTheory.FunPr.ThetaLocalInput
     simp only [hc, hΛ]
     rw [hasDerivAt_iff_tendsto_slope]
     refine ((Λ.continuous.tendsto g).comp hlim).congr' (Eventually.of_forall fun t => ?_)
-    simp [slope_def_module, map_sub, map_smul]
+    simp [slope_def_module, map_sub]
 end GlobalTheory.ThetaInterchange
 open GlobalTheory.ThetaInterchange in
 theorem GlobalTheory.ThetaInterchange.hasDerivAt_theta_integral_interchange : _root_.GlobalTheory.FunPr.ThetaLocalInputs → ∀ (D : D7) {n k : ℕ} (Xs : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.Spc D.host.F D.host.E n) (Ws : GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.Spc D.host.F D.host.E k)
@@ -109,5 +109,5 @@ theorem _root_.GlobalTheory.T.theta_interchange_derivative_pure : _root_.GlobalT
         HasDerivAt (fun t : ℝ => GlobalTheory.TripleRead.thO Mo ψ' G e
             (om (1, γ (Multiplicative.ofAdd t)) (GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.tens (GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.evI D.host.F) f r)) x)
           (GlobalTheory.TripleRead.thO Mo ψ' G e (GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.tens (GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.evI D.host.F) f₁ r) x) 0 := by
-  first | exact @_root_.GlobalTheory.ThetaInterchange.hasDerivAt_theta_integral_interchange | exact _root_.GlobalTheory.ThetaInterchange.hasDerivAt_theta_integral_interchange | (intros; apply _root_.GlobalTheory.ThetaInterchange.hasDerivAt_theta_integral_interchange <;> assumption)
+  first | exact @_root_.GlobalTheory.ThetaInterchange.hasDerivAt_theta_integral_interchange
 end

@@ -45,10 +45,7 @@ variable (W : LocWach PD LL O v n)
 theorem dv_succ (T : LocLat G Qp LL O) (e : ℕ) {d : ℕ} (b : Fin d → W.DD T) (c₀ : Fin d → LL) :
     dv W T (e + 1) b c₀ = φVB PD (LL := LL) (V := T.V) (dv W T e b c₀) := by
   first
-  | (simp only [dv, pow_succ', Module.End.mul_apply, map_sum, map_smul]; done)
-  | (simp only [dv, pow_succ', LinearMap.mul_apply, map_sum, map_smul]; done)
-  | (simp [dv, LinearMap.pow_apply, Function.iterate_succ_apply']; done)
-  | (simp [dv, pow_succ']; exact (trivial : True))
+  | (simp only [dv, pow_succ', Module.End.mul_apply, map_sum, map_smul])
 
 theorem dv_add (T : LocLat G Qp LL O) (e : ℕ) {d : ℕ} (b : Fin d → W.DD T) (c₀ c₁ : Fin d → LL) :
     dv W T e b (c₀ + c₁) = dv W T e b c₀ + dv W T e b c₁ := by
@@ -79,7 +76,6 @@ theorem dvO_eq (T : LocLat G Qp LL O) (e : ℕ) {d : ℕ} (b : Fin d → W.DD T)
     dvO W T e b c₀ = ∑ m, algebraMap O LL (c₀ m) • dv W T e b (Pi.single m 1) := by
   first
   | (unfold dvO; exact dv_eq_sum W T e b _)
-  | (simp only [dvO]; exact dv_eq_sum W T e b _)
 
 theorem dvO_single (T : LocLat G Qp LL O) (e : ℕ) {d : ℕ} (b : Fin d → W.DD T) (k : Fin d) :
     dvO W T e b (Pi.single k 1) = dv W T e b (Pi.single k 1) := by
@@ -107,7 +103,7 @@ theorem filS_anti (T : LocLat G Qp LL O) (a : ZMod n) (s : ℕ) {u u' : ℤ} (h 
 theorem filS_zero_iff (T : LocLat G Qp LL O) (a : ZMod n) (u : ℤ) (x : T.V ⊗[Qp] B) :
     x ∈ FilS W T a 0 u ↔ x ∈ FilCris PD T.ρ u ⊓ DcrisL PD T.ρ (W.emb a) := by
   unfold FilS
-  simp [pow_zero, Submodule.map_id]
+  simp [pow_zero]
   try rfl
 
 theorem filS_one_of (T : LocLat G Qp LL O) (a : ZMod n) (u : ℤ) (x : T.V ⊗[Qp] B)

@@ -12,15 +12,12 @@ theorem blockIndex_succ_false (m j : ℕ) (a : Fin m) :
   apply Fin.ext
   first
     | rfl
-    | simp [GlobalTheory.BZMir.Leib.eGP, GlobalTheory.SmGL.two, GlobalTheory.SmGL.stdSum]
 
 theorem blockIndex_succ_true_castSucc (m j : ℕ) (b : Fin (j + 1)) :
     eGP m (j + 1) ⟨true, Fin.castSucc b⟩ = (Fin.castSucc (eGP m j ⟨true, b⟩) : Fin (m + j + 1 + 1)) := by
   apply Fin.ext
   first
     | rfl
-    | simp [GlobalTheory.BZMir.Leib.eGP, GlobalTheory.SmGL.two, GlobalTheory.SmGL.stdSum]
-    | (simp [GlobalTheory.BZMir.Leib.eGP, GlobalTheory.SmGL.two, GlobalTheory.SmGL.stdSum]; omega)
 
 theorem blockIndex_succ_true_last (m j : ℕ) :
     eGP m (j + 1) ⟨true, Fin.last (j + 1)⟩ = (Fin.last (m + j + 1) : Fin (m + j + 1 + 1)) := by

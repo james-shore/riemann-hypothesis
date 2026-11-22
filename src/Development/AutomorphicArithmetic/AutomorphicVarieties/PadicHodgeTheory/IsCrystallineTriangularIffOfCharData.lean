@@ -52,4 +52,4 @@ theorem UpperTheory.isCrystalline_triangular_iff_of_charData :
   · refine ((isCrys_isDR_sub_quot φ hφ _ _ hc (contAction_charExtension_of_continuous_cocycle (hκ.cont 1) (hκ.cont 2) cy hy) f2 fun g v => ?_).2
       fun v => ⟨![0, v.1, v.2], rfl⟩).1 hcr
     rw [colRep_apply, hρ, characterExtensionRep_apply]
-    ext <;> simp [f2, triM, Matrix.mulVec, dotProduct, Fin.sum_univ_three]
+    ext <;> simp [f2, triM, dotProduct, Fin.sum_univ_three]

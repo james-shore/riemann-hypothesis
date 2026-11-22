@@ -10,7 +10,7 @@ private theorem exists_eigvec {k : Type} [Field k] (M : Matrix (Fin 2) (Fin 2) k
   rw [Matrix.sub_mulVec] at hMv
   have hs : Matrix.scalar (Fin 2) c *ᵥ v = c • v := by
     ext i
-    simp [Matrix.scalar_apply, Matrix.mulVec_smul]
+    simp [Matrix.scalar_apply]
   rw [hs] at hMv
   exact (sub_eq_zero.mp hMv).symm
 

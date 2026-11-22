@@ -70,7 +70,7 @@ theorem vGe_of (Y : Pend X) {j : ℕ} {F : X.Fm j} {g : ℝ} (hE : Eqv X j F)
       simp only [Pi.smul_apply]
       rw [← hy', smul_smul, inv_mul_cancel₀ hc, one_smul]
       exact hy
-    · simp [smul_smul, inv_mul_cancel₀ hc, mul_inv_cancel₀ hc]
+    · simp [smul_smul, inv_mul_cancel₀ hc]
 
 variable (X)
 
@@ -173,7 +173,7 @@ variable {X}
 theorem map_smulK (Y : Pend X) {σ : Type*} (a : X.G.Kf) (x : MvPolynomial σ X.G.Kf) :
     MvPolynomial.map (algebraMap X.G.Kf Y.Kc) (a • x) = a • MvPolynomial.map (algebraMap X.G.Kf Y.Kc) x := by
   ext m
-  simp [MvPolynomial.coeff_map, MvPolynomial.coeff_smul, Algebra.smul_def, map_mul]
+  simp [MvPolynomial.coeff_map, Algebra.smul_def, map_mul]
 
 def KSum (Y : Pend X) (j : ℕ) (cK : Y.Kc) (Cl Yb : Type) [Fintype Cl] [Fintype Yb] (wt : Cl → ℕ)
     (La : Cl → Yb → X.Lt j) : Prop :=

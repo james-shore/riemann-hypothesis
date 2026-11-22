@@ -176,7 +176,7 @@ variable {k r : ℕ} {E : Type} [NormedAddCommGroup E] [NormedSpace ℂ E] {i : 
 
 theorem uC_last (Y : ℂ) : uC k r (Fin.last r) Y = Y + (k : ℂ) / 2 := by
   unfold uC mdim
-  simp <;> ring
+  simp
 
 theorem uC_succ (Y : ℂ) : uC k r i (Y + 1) = uC k r i Y + 1 := by
   unfold uC

@@ -107,7 +107,7 @@ theorem polyMat_embU {ι : Type} (P : ι → ι → MvPolynomial ((L →+* ℂ) 
       · exact h2 (by rw [← h]; ext z; simp)
     have h4 := MonoidHom.mem_ker.1 (Subgroup.mem_iInf.1 (Subgroup.mem_iInf.1 (Subgroup.mem_inf.1 x.2).2 σ) hk)
     rw [h4]
-    simp [Matrix.one_apply, h3]
+    simp [h3]
 
 theorem pair_ext {W : Type} [AddCommGroup W] [Module ℂ W] {ρ : Representation ℂ (GQ L n) W} (a : NG.AlgWt L n)
     (R : UA L n →* Module.End ℂ W) (hfin : ∀ k ∈ finU L n, R k = 1)

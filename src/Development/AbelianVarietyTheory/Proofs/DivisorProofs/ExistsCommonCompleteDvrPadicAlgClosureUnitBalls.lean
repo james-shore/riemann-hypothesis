@@ -43,7 +43,7 @@ theorem comp_secK (K : IntermediateField ℚ_[p] (PadicAlgCl p)) :
     rw [RingHom.comp_apply, RingHom.comp_apply, RingHom.comp_apply]
     refine (IsFractionRing.lift_algebraMap (intRing_injective K) w).trans ?_
     have := (IsLocalization.algEquiv (nonZeroDivisors (intRing K)) (FractionRing (intRing K)) K).commutes w
-    simp only [AlgEquiv.toRingEquiv_eq_coe, RingEquiv.toRingHom_eq_coe, AlgEquiv.toRingEquiv_toRingHom,
+    simp only [RingEquiv.toRingHom_eq_coe, AlgEquiv.toRingEquiv_toRingHom,
       RingHom.coe_coe, this]
     rfl
   rw [h, RingHom.comp_assoc]

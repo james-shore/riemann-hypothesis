@@ -85,7 +85,7 @@ theorem weight_eq_sum (d : (Σ k, ι k) →₀ ℕ) (k : K) :
     Fintype.sum_sigma, Finset.sum_eq_single k]
   · simp [blockWeight]
   · intro k' _ hk
-    simp [blockWeight, Pi.single_apply, hk, hk.symm]
+    simp [blockWeight, hk.symm]
   · intro h1
     exact absurd (Finset.mem_univ k) h1
 

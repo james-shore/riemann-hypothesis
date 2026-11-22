@@ -25,7 +25,6 @@ theorem UpperTheory.V.Ws.Lk.prFacts :
       first
       | exact exists_orderOf_eq_prime_pow_iff.1 hg'
       | exact hg'
-      | simpa using hg'
     refine ⟨a, ?_⟩
     rw [← map_pow, QuotientGroup.mk'_apply, QuotientGroup.eq_one_iff] at ha
     have hle : (commutator (Dec (F := L) (s.A v))).topologicalClosure ≤

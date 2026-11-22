@@ -28,4 +28,4 @@ theorem _root_.GlobalTheory.T.divisorsOfConstants_flat_normal_stage_at_origin : 
       γ.comp β = jA ∧ γ.comp (algebraMap A' B') = (algebraMap T O).comp α ∧ ι sA ≠ 0 ∧
       ∀ 𝔭 : Ideal A', 𝔭.IsPrime → 𝔭.height = 1 → ι sA ∈ 𝔭 →
         (𝔭.map (algebraMap A' B')).IsPrime := by
-  first | (exact @GlobalTheory.GoodStageOrigin.good_stage) | (exact GlobalTheory.GoodStageOrigin.good_stage) | (intros; apply GlobalTheory.GoodStageOrigin.good_stage <;> assumption)
+  first | (exact @GlobalTheory.GoodStageOrigin.good_stage)

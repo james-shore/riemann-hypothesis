@@ -20,7 +20,7 @@ private theorem archExp_single (K : Type) [Field K] [NumberField K] (r s : ℕ) 
     intro p
     by_cases hp : p.1 = (Fin.castAdd s i, Fin.natAdd r j)
     · simp [P, hp]
-    · simp only [P, hp, if_false]
+    · simp only [P, hp]
       rfl
   have hc := conj_unipGL_eq_archExp (1 : AdelicGLn.AdelicGL K (r + s)) P h0
   simp only [inv_one, one_mul, mul_one] at hc
@@ -43,7 +43,7 @@ private theorem archExp_single (K : Type) [Field K] [NumberField K] (r s : ℕ) 
         apply hab
         simp only [Prod.mk.injEq] at heq
         exact ⟨heq.1.symm, heq.2.symm⟩
-      simp only [P, hne, if_false]
+      simp only [P, hne]
       exact (map_zero e).symm
     · exact (map_zero e).symm
 

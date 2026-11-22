@@ -70,7 +70,7 @@ theorem UpperTheory.ConvolutionTheory.FX.rearrange :
       set t := τ (Multiplicative.ofAdd (Matrix.vecMul v b.emb)) with ht
       have hl : aeval ξ (lin v) = algebraMap ℂ A c + ∑ j, ((Matrix.vecMul v b.emb j : ℝ) : ℂ) • D j := by
         simp only [lin, map_sum, map_mul, aeval_C, aeval_X, hξ, hc, mul_add, Finset.sum_add_distrib, Matrix.vecMul, dotProduct,
-          Complex.ofReal_sum, Complex.ofReal_mul, Finset.sum_smul, Finset.mul_sum, Algebra.smul_def, mul_assoc]
+          Complex.ofReal_sum, Complex.ofReal_mul, Finset.mul_sum, Algebra.smul_def]
         rw [Finset.sum_comm]
         simp only [Finset.sum_mul, mul_assoc]
       have hp : ∀ q : MvPolynomial ι ℂ, lift D τ (aeval (fun i => (AddMonoidAlgebra.single 0 (C (b.Λ i) + lin (b.emb i)) : EP (Fin b.r))) q) =

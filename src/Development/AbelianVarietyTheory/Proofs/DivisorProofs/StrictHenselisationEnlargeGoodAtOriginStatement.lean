@@ -49,4 +49,4 @@ theorem _root_.GlobalTheory.T.strictHenselisation_enlarge_good_at_origin : ∀ (
           ψA'.comp β = ψA ∧
           h.comp (algebraMap (GlobalTheory.LocAcyc.GenFib A (Localization.AtPrime QA)) DA) =
             (algebraMap (GlobalTheory.LocAcyc.GenFib A' (Localization.AtPrime QA')) DA').comp β := by
-  first | (exact @GlobalTheory.KeyOriginEnlarge.enlarge_good) | (exact GlobalTheory.KeyOriginEnlarge.enlarge_good) | (intros; apply GlobalTheory.KeyOriginEnlarge.enlarge_good  <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginEnlarge.enlarge_good)

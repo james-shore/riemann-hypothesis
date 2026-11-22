@@ -173,6 +173,6 @@ theorem kak (k : M2 n) (hk : InK k) :
     rw [mM_unitary P hP, mM_unitary u' hu', kth_eq, fromBlocks_multiply, fromBlocks_multiply]
     simp only [Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add, Matrix.mul_neg, Matrix.neg_mul]
     rw [← hC0, ← hS0]
-    simp only [Matrix.mul_neg, Matrix.neg_mul, neg_zero, add_zero, hXA, hYB]
+    simp only [neg_zero, add_zero, hXA, hYB]
 
 end PositivityTheory.Rg.Sw.Glob.VacG

@@ -29,7 +29,7 @@ theorem pm_col_star (j : ℕ) (V : ℕ → Fin (2 * r + k + 1) → ℂ)
   have hsg : (NFOne.sg k r (esI k r b)).val = b.val := by rw [sg_esI]; rfl
   have hcol : ((1 + NFOne.Pm k r j V) *ᵥ bvec (esI k r b)) p =
       (if p = esI k r b then 1 else 0) + NFOne.Pm k r j V p (esI k r b) := by
-    simp [bvec, Matrix.mulVec, dotProduct, Pi.single_apply, Matrix.add_apply, Matrix.one_apply, add_mul]
+    simp [bvec, Matrix.mulVec, dotProduct, Pi.single_apply, Matrix.add_apply, Matrix.one_apply]
   rw [hcol]
   by_cases hp1 : p.val < r
   · rw [NFOne.P_XS k r j V p _ hp1 hq, hsg, if_pos hb, if_neg (fun e => by rw [e] at hp1; omega), zero_add]
@@ -122,7 +122,7 @@ theorem herm_bvec_esI (v : Fin (2 * r + k + 1) → ℂ) (b : Fin r) :
   rw [Finset.sum_eq_single (esI k r b)]
   · simp only [Pi.star_apply, Pi.single_eq_same, star_one, one_mul, hrow]
     simp
-  · intro q _ hq; simp [Pi.single_apply, hq]
+  · intro q _ hq; simp [hq]
   · simp
 
 end N2

@@ -52,7 +52,7 @@ private lemma toMatrix_entry_lemma (β : ι → Matrix (Fin r) (Fin r) ℂ) (i j
   rw [Finset.sum_eq_single a']
   · by_cases h : τ' = τ ∧ b' = b
     · obtain ⟨rfl, rfl⟩ := h
-      simp [hj, Pi.single_apply]
+      simp [hj]
     · rw [if_neg h]
       split_ifs with h'
       · simp

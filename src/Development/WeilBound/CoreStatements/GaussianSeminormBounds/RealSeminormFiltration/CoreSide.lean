@@ -17,7 +17,7 @@ theorem sd_trace_Eab (a b : Ix r s) : (Eab a b).trace = if a = b then 1 else 0 :
   split_ifs with h
   · subst h
     simp [Matrix.trace]
-  · simp [Matrix.trace, Matrix.single, h, Ne.symm h]
+  · simp [Matrix.trace, Matrix.single, Ne.symm h]
 
 theorem sd_sb_trans {a b c : Ix r s} (h1 : sameBlock a b) (h2 : sameBlock b c) : sameBlock a c := by
   rcases a with a | a <;> rcases b with b | b <;> rcases c with c | c <;> simp_all [sameBlock]

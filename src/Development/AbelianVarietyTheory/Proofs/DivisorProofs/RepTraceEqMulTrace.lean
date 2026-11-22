@@ -27,7 +27,7 @@ theorem trace_lsmul_restrictScalars {K L V : Type} [Field K] [Field L] [Algebra 
   let c := Module.finBasis K L
   rw [LinearMap.trace_eq_matrix_trace K (c.smulTower b), Algebra.trace_eq_matrix_trace c]
   simp [Matrix.trace, LinearMap.toMatrix_apply, Fintype.sum_prod_type, Algebra.leftMulMatrix_eq_repr_mul,
-    Module.Basis.smulTower_repr_mk, smul_smul, Finsupp.single_apply, Finset.mul_sum, mul_comm]
+    smul_smul, Finset.mul_sum, mul_comm]
 
 end RepTrace
 

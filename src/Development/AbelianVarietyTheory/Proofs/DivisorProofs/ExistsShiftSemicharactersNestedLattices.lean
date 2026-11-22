@@ -20,10 +20,10 @@ def imForm {g : ℕ} (Hm : Matrix (Fin g) (Fin g) ℂ) :
     (Fin g → ℂ) →ₗ[ℝ] (Fin g → ℂ) →ₗ[ℝ] ℝ :=
   LinearMap.mk₂ ℝ (fun y w => (hermForm Hm y w).im)
     (fun a b w => by simp [hermForm, add_dotProduct])
-    (fun c a w => by simp [hermForm, smul_dotProduct, Complex.smul_im])
+    (fun c a w => by simp [hermForm, smul_dotProduct])
     (fun y a b => by simp [hermForm, Matrix.mulVec_add, dotProduct_add])
     (fun c y a => by
-      simp [hermForm, star_smul, Matrix.mulVec_smul, dotProduct_smul, Complex.smul_im])
+      simp [hermForm, star_smul, Matrix.mulVec_smul, dotProduct_smul])
 
 theorem imForm_apply {g : ℕ} (Hm : Matrix (Fin g) (Fin g) ℂ) (y w : Fin g → ℂ) :
     imForm Hm y w = (hermForm Hm y w).im := rfl
@@ -125,7 +125,7 @@ theorem exists_shift_of_semichar : ∀ (g : ℕ) (Λ Λ₁ : Submodule ℤ (Fin 
   have hne : ∀ l, χ₁ l ≠ 0 := fun l e => by simpa [e] using hχ₁ l
   have hne' : ∀ l, χ l ≠ 0 := fun l e => by simpa [e] using hχ l
   let ρ : Λ → ℂ := fun l => χ l / χ₁ (Submodule.inclusion h l)
-  have hn : ∀ l, ‖ρ l‖ = 1 := fun l => by simp [ρ, norm_div, hχ, hχ₁]
+  have hn : ∀ l, ‖ρ l‖ = 1 := fun l => by simp [ρ, hχ, hχ₁]
   have hmul : ∀ l m, ρ (l + m) = ρ l * ρ m := by
     intro l m
     simp only [ρ]

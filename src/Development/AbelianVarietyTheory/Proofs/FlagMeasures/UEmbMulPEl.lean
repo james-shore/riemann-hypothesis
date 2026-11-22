@@ -40,9 +40,9 @@ theorem uEmb_mul_pEl (u : Matrix (Fin r) (Fin r) ℂ) (hu : IsUnit u.det) (B : F
   ext x y
   rw [Matrix.mul_apply, Matrix.mul_apply, sum3, sum3]
   induction x using cases3 <;> induction y using cases3 <;>
-    simp only [pEl_ee, pEl_ew, pEl_es, pEl_we, pEl_ww, pEl_ws, pEl_se, pEl_sw, pEl_ss, ← mI_eq,
+    simp only [pEl_ee, pEl_es, pEl_se, pEl_ss, ← mI_eq,
       u_ee, u_em, u_es, u_me, u_mm, u_ms, u_se, u_sm, u_ss] <;> simp only [mI_eq] <;>
-    simp [pEl_ee, pEl_ew, pEl_es, pEl_we, pEl_ww, pEl_ws, pEl_se, pEl_sw, pEl_ss]
+    simp [pEl_ew, pEl_we, pEl_ww, pEl_ws, pEl_sw]
   · simp [rowAct, Finset.sum_mul, mul_assoc]
   · rename_i a b
     set G : Matrix (Fin r) (Fin r) ℂ := Matrix.of fun a b => herm (Hb k) (B b) (B a) with hG

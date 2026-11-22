@@ -77,7 +77,7 @@ theorem integrable_of_summable_quotient_periodic :
   refine ⟨hcont.aestronglyMeasurable, ?_⟩
   have hsum : ∑' x, ‖f (r x)‖ₑ < ⊤ := by
     have h1 : ∑' x, ‖f (r x)‖ₑ = ∑' x, ENNReal.ofReal ‖f (r x)‖ := by
-      simp [ofReal_norm_eq_enorm]
+      simp
     rw [h1]
     exact hs.tsum_ofReal_lt_top
   have hint : ∫⁻ g, ‖f g‖ₑ ∂ν = (∑' x, ‖f (r x)‖ₑ) * ν (U : Set G) := by

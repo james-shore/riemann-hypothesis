@@ -30,14 +30,14 @@ theorem ip_creL (i : Lt n) (x z : Cq n V) : ip (creL i x) z = ip x (annL i z) :=
     rw [Finset.sum_filter]
     refine Finset.sum_congr rfl fun A _ => ?_
     rw [GlobalTheory.CompanionTheory.LvChain.creL_apply]
-    split_ifs <;> simp [inner_smul_left, GlobalTheory.CompanionTheory.LvChainAdj.sgL_conj] <;> ring
+    split_ifs <;> simp [GlobalTheory.CompanionTheory.LvChainAdj.sgL_conj] <;> ring
   have hR : GlobalTheory.CompanionTheory.LvChainAdj.ip x (PositivityTheory.RgBcC.RealD.annL i z) =
       ∑ B ∈ Finset.univ.filter (fun B => i ∉ B),
         PositivityTheory.RgBcC.RealD.sgL i B * ⟪x B, z (insert i B)⟫_ℂ := by
     rw [Finset.sum_filter]
     refine Finset.sum_congr rfl fun B _ => ?_
     rw [GlobalTheory.CompanionTheory.LvChain.annL_apply]
-    split_ifs <;> simp [inner_smul_right]
+    split_ifs <;> simp
   rw [hL, hR]
   refine Finset.sum_nbij' (fun A => A.erase i) (fun B => insert i B) ?_ ?_ ?_ ?_ ?_
   · intro A _
@@ -120,7 +120,7 @@ theorem adCL_conj (p q : Fin n) (l k : Lt n) : (starRingEnd ℂ) (adCL false p q
 
 theorem adCL_swap (p q : Fin n) (l k : Lt n) : adCL false p q l k = adCL false q p k l := by
   unfold PositivityTheory.RgBcC.RealD.adCL
-  simp only [Bool.false_xor, Bool.false_bne, Prod.ext_iff]
+  simp only [Bool.false_xor, Prod.ext_iff]
   congr 1
   · exact if_congr
       ⟨fun ⟨h1, h2, h3, h4⟩ => ⟨h3.symm, h2.symm, h1.symm, h4.symm⟩,

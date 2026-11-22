@@ -12,4 +12,4 @@ theorem _root_.GlobalTheory.T.zmodTorsor_exists_point_finite_separable : ∀ (B 
     GlobalTheory.KeyOriginCut.IsZTorsor B D q act →
     ∃ (L : Type) (_ : Field L) (_ : Algebra K L) (_ : FiniteDimensional K L) (_ : Algebra.IsSeparable K L)
       (σ : D →+* L), σ.comp (algebraMap B D) = (algebraMap K L).comp f := by
-  first | (exact @GlobalTheory.TorsorFieldPoint.exists_point_finite_separable) | (exact GlobalTheory.TorsorFieldPoint.exists_point_finite_separable) | (intros; apply GlobalTheory.TorsorFieldPoint.exists_point_finite_separable  <;> assumption)
+  first | (exact @GlobalTheory.TorsorFieldPoint.exists_point_finite_separable)

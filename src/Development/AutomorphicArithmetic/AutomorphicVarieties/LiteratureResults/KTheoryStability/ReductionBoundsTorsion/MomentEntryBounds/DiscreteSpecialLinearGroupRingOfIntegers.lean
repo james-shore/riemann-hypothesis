@@ -78,7 +78,7 @@ theorem discrete_specialLinearGroup_ringOfIntegers : SDisc := by
           by_cases hij : i = j
           · subst hij
             simp
-          · simp [Matrix.one_apply, hij]
+          · simp [hij]
       subst hσ
       apply Subtype.ext
       simp

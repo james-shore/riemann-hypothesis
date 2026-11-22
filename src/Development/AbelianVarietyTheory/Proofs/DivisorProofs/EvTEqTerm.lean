@@ -239,7 +239,7 @@ theorem wQ_fr {m t : ℕ} (ht : m ^ 2 = 2 * t + 1) (M Nn : Fin g → ℤ) (p : N
   obtain ⟨nB, hB⟩ := half_int (half_bF d σ) Nn
   have hw : (m : ℂ) ^ 2 * ((m : ℂ) ^ 2)⁻¹ = 1 := mul_inv_cancel₀ (pow_ne_zero _ m0)
   have htc : (m : ℂ) ^ 2 = 2 * t + 1 := by exact_mod_cast ht
-  simp only [autV, ← Complex.exp_add, ← Complex.exp_nat_mul, dotProduct_zero, mul_zero, sub_zero]
+  simp only [← Complex.exp_add, ← Complex.exp_nat_mul, dotProduct_zero, mul_zero, sub_zero]
   rw [Complex.exp_eq_exp_iff_exists_int]
   refine ⟨-(nL + nA - nB), ?_⟩
   push_cast

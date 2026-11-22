@@ -26,7 +26,7 @@ theorem smooth_mul {T : Scheme.{0}} (G : Over T) [GrpObj G] [Smooth G.hom] : Smo
       hom_inv_id := by
         apply CartesianMonoidalCategory.hom_ext <;> simp [MonObj.comp_mul, GrpObj.comp_inv]
       inv_hom_id := by
-        apply CartesianMonoidalCategory.hom_ext <;> simp [MonObj.comp_mul, GrpObj.comp_inv] }
+        apply CartesianMonoidalCategory.hom_ext <;> simp [MonObj.comp_mul] }
   have h : μ[G] = σ.hom ≫ fst G G := by
     simp [σ, Hom.mul_def]
   have h₁ : Smooth (fst G G).left := inferInstanceAs (Smooth (pullback.fst G.hom G.hom))

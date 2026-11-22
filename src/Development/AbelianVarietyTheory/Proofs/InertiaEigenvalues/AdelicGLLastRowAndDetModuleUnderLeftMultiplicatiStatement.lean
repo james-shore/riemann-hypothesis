@@ -29,4 +29,4 @@ theorem _root_.GlobalTheory.T.adelicGLLastRow_and_detModule_under_left_multiplic
       GlobalTheory.RSnm.detAbs (blkU y * g) = GlobalTheory.RSnm.detAbs g) ∧
     (∀ (X : GroundTheory.Automorphic.FourierWhittaker.Pos (m + 1) → Ad E) (g : GA E (m + 1)),
       GlobalTheory.RSnm.detAbs (uGL X * g) = GlobalTheory.RSnm.detAbs g) := by
-  first | (exact @GlobalTheory.UnfoldRows.rows_main) | (exact GlobalTheory.UnfoldRows.rows_main) | (intros; apply GlobalTheory.UnfoldRows.rows_main  <;> assumption)
+  first | (exact @GlobalTheory.UnfoldRows.rows_main)

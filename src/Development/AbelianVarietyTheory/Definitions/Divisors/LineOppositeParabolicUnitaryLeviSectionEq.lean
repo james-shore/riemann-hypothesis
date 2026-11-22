@@ -374,7 +374,7 @@ theorem diagEntries_val {b : n → α} (hb : Function.Injective b) (q : blockQ k
 theorem diagHom_diagEntries {b : n → α} (hb : Function.Injective b) (q : blockQ k b) :
     diagHom k n (diagEntries hb q) = blockProj b q := by
   ext i j
-  by_cases h : i = j <;> simp [diagHom_val, diagEntries_val, blockProj_val, blockPart, diagonal_apply, h, hb.eq_iff]
+  by_cases h : i = j <;> simp [diagHom_val, diagEntries_val, blockProj_val, blockPart, h, hb.eq_iff]
 
 variable [TopologicalSpace k] [IsTopologicalRing k] [T2Space k]
 

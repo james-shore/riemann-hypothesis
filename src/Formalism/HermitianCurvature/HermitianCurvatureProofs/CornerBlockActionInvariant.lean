@@ -19,25 +19,24 @@ theorem liftVec_eB (u : Fin (2 * ρ + k + 1) → ℂ) (x : U.Ix k p ρ) :
   · have ha := a.isLt
     simp only [liftVec, Sum.elim_inl]
     rw [dif_neg]
-    simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, Sum.map_inr, finSumFinEquiv_apply_left,
-      finSumFinEquiv_apply_right, finCongr_apply, Equiv.refl_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
+    simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, finSumFinEquiv_apply_left,
+      finCongr_apply, Fin.coe_cast, Fin.coe_castAdd]
     omega
   · have hb := b.isLt
     simp only [liftVec, Sum.elim_inl, Sum.elim_inr]
     rw [dif_pos]
     · congr 1
       ext
-      simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, Sum.map_inr, finSumFinEquiv_apply_left,
-      finSumFinEquiv_apply_right, finCongr_apply, Equiv.refl_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
+      simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, finSumFinEquiv_apply_left,
+      finSumFinEquiv_apply_right, finCongr_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd]
       omega
-    · simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, Sum.map_inr, finSumFinEquiv_apply_left,
-      finSumFinEquiv_apply_right, finCongr_apply, Equiv.refl_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
+    · simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, finSumFinEquiv_apply_left,
+      finSumFinEquiv_apply_right, finCongr_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd]
       omega
   · have hc := c.isLt
     simp only [liftVec, Sum.elim_inr]
     rw [dif_neg]
-    simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, Sum.map_inr, finSumFinEquiv_apply_left,
-      finSumFinEquiv_apply_right, finCongr_apply, Equiv.refl_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
+    simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inr, finSumFinEquiv_apply_right, finCongr_apply, Equiv.refl_apply, Fin.coe_cast, Fin.coe_natAdd]
     omega
 
 theorem inWb_liftVec {z : Fin (2 * ρ + k + 1) → ℂ} (hz : inWb k ρ z) : inWb k (p + ρ) (liftVec k p ρ z) := by
@@ -49,25 +48,25 @@ theorem inWb_liftVec {z : Fin (2 * ρ + k + 1) → ℂ} (hz : inWb k ρ z) : inW
 
 theorem eI_X (a : Fin p) : eI k (p + ρ) (Fin.castAdd ρ a) = U.eB k p ρ (Sum.inl (Sum.inl a)) := by
   ext
-  simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, Sum.map_inr, finSumFinEquiv_apply_left,
-      finSumFinEquiv_apply_right, finCongr_apply, Equiv.refl_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
+  simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, finSumFinEquiv_apply_left,
+      finCongr_apply, Fin.coe_cast, Fin.coe_castAdd, eI]
 
 theorem eI_V (a : Fin ρ) : eI k (p + ρ) (Fin.natAdd p a) = U.eB k p ρ (Sum.inl (Sum.inr (eI k ρ a))) := by
   ext
-  simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, Sum.map_inr, finSumFinEquiv_apply_left,
-      finSumFinEquiv_apply_right, finCongr_apply, Equiv.refl_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
+  simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, finSumFinEquiv_apply_left,
+      finSumFinEquiv_apply_right, finCongr_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
 
 theorem eI_V' (a : ℕ) (ha : a < ρ) (h : p + a < p + ρ) :
     eI k (p + ρ) ⟨p + a, h⟩ = U.eB k p ρ (Sum.inl (Sum.inr (eI k ρ ⟨a, ha⟩))) := by
   ext
-  simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, Sum.map_inr, finSumFinEquiv_apply_left,
-      finSumFinEquiv_apply_right, finCongr_apply, Equiv.refl_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
+  simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, finSumFinEquiv_apply_left,
+      finSumFinEquiv_apply_right, finCongr_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
 
 theorem eI_X' (a : ℕ) (ha : a < p) (h : a < p + ρ) :
     eI k (p + ρ) ⟨a, h⟩ = U.eB k p ρ (Sum.inl (Sum.inl ⟨a, ha⟩)) := by
   ext
-  simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, Sum.map_inr, finSumFinEquiv_apply_left,
-      finSumFinEquiv_apply_right, finCongr_apply, Equiv.refl_apply, Fin.coe_cast, Fin.coe_castAdd, Fin.coe_natAdd, eI]
+  simp only [U.eB, Equiv.trans_apply, Equiv.sumCongr_apply, Sum.map_inl, finSumFinEquiv_apply_left,
+      finCongr_apply, Fin.coe_cast, Fin.coe_castAdd, eI]
 
 local macro "blks" : tactic => `(tactic| simp only [Ux3.block3_apply, Matrix.fromBlocks_apply₁₁, Matrix.fromBlocks_apply₁₂,
   Matrix.fromBlocks_apply₂₁, Matrix.fromBlocks_apply₂₂, Matrix.fromRows_apply_inl, Matrix.fromRows_apply_inr,
@@ -158,7 +157,7 @@ theorem ell_muP (z : Fin (2 * ρ + k + 1) → ℂ) (hz : inWb k ρ z) (q : Matri
         have := congrArg Fin.val e
         simp [eI] at this
       rw [hV']
-      simp [U.muP, Ux6.block3_apply, Matrix.one_apply, hne]
+      simp [U.muP, Ux6.block3_apply, hne]
     · rw [muP_mulVec_liftVec_eB_apply]
       exact hz _ (Or.inl (by simp [eI]))
 
@@ -172,14 +171,14 @@ theorem psi_measure_preserving : PsiMuP := by
   show (starRingEnd ℂ) (Complex.exp _) = _
   rw [← Complex.exp_conj]
   congr 1
-  simp [neg_mul, Complex.ofReal_neg]
+  simp [neg_mul]
   ring
 
 theorem upper_isUpUni (u : G.UT p → ℂ) : Formalism.DoubleCosetMeasures.IsUpUni (G.upper u) := by
   refine ⟨fun i j hij => ?_, fun a => ?_⟩
   · have h1 : i ≠ j := ne_of_gt hij
     have h2 : ¬ i < j := not_lt.mpr (le_of_lt hij)
-    simp [G.upper, G.strictUpper, Matrix.one_apply, h1, h2]
+    simp [G.upper, G.strictUpper, h1, h2]
   · simp [G.upper, G.strictUpper]
 
 theorem rn_nset (x : U.RC k p ρ) : U.Rn k p ρ x ∈ QuantumDeterminants.Nset k (p + ρ) :=

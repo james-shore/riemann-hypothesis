@@ -16,16 +16,15 @@ lemma m_last (p r : ℕ) (h1 : 0 + (p + 1) ≤ p + r + 1) (h2 : 0 + p ≤ p + r 
   apply Fin.ext
   simp [SimplexCategory.δ, Fin.succAbove, Fin.lt_def, sb_apply]
   try split_ifs
-  all_goals (try simp_all [Fin.lt_def, sb_apply])
+  all_goals (try simp_all)
   all_goals omega
 
 lemma m_zero (p r : ℕ) (h1 : p + (r + 1) ≤ p + r + 1) (h2 : (p + 1) + r ≤ p + r + 1) :
     SimplexCategory.δ 0 ≫ sb p (r + 1) h1 = sb (p + 1) r h2 := by
   ext i : 3
   apply Fin.ext
-  simp [SimplexCategory.δ, Fin.succAbove, Fin.lt_def, sb_apply]
+  simp [SimplexCategory.δ, Fin.succAbove, sb_apply]
   try split_ifs
-  all_goals (try simp_all [Fin.lt_def, sb_apply])
   all_goals omega
 
 lemma m_lo (p r : ℕ) (k : Fin (p + r + 2)) (hk : (k : ℕ) ≤ p) (h1 : 0 + p ≤ p + r)
@@ -35,8 +34,7 @@ lemma m_lo (p r : ℕ) (k : Fin (p + r + 2)) (hk : (k : ℕ) ≤ p) (h1 : 0 + p 
   apply Fin.ext
   simp [SimplexCategory.δ, Fin.succAbove, Fin.lt_def, sb_apply]
   try split_ifs
-  all_goals (try simp_all [Fin.lt_def, sb_apply])
-  all_goals omega
+  all_goals (try simp_all [sb_apply])
 
 lemma simplex_subinterval_back_comp_face_within_front (p r : ℕ) (k : Fin (p + r + 2)) (hk : (k : ℕ) ≤ p) (h1 : p + r ≤ p + r)
     (h2 : (p + 1) + r ≤ p + r + 1) :
@@ -45,7 +43,7 @@ lemma simplex_subinterval_back_comp_face_within_front (p r : ℕ) (k : Fin (p + 
   apply Fin.ext
   simp [SimplexCategory.δ, Fin.succAbove, Fin.lt_def, sb_apply]
   try split_ifs
-  all_goals (try simp_all [Fin.lt_def, sb_apply])
+  all_goals (try simp_all [sb_apply])
   all_goals omega
 
 lemma m_hi (p r : ℕ) (k : Fin (p + r + 2)) (hk : p < (k : ℕ)) (h1 : 0 + p ≤ p + r)
@@ -55,7 +53,7 @@ lemma m_hi (p r : ℕ) (k : Fin (p + r + 2)) (hk : p < (k : ℕ)) (h1 : 0 + p �
   apply Fin.ext
   simp [SimplexCategory.δ, Fin.succAbove, Fin.lt_def, sb_apply]
   try split_ifs
-  all_goals (try simp_all [Fin.lt_def, sb_apply])
+  all_goals (try simp_all [sb_apply])
   all_goals omega
 
 lemma simplex_subinterval_back_comp_face_above_front (p r : ℕ) (k : Fin (p + r + 2)) (hk : p < (k : ℕ)) (h1 : p + r ≤ p + r)
@@ -65,7 +63,7 @@ lemma simplex_subinterval_back_comp_face_above_front (p r : ℕ) (k : Fin (p + r
   apply Fin.ext
   simp [SimplexCategory.δ, Fin.succAbove, Fin.lt_def, sb_apply]
   try split_ifs
-  all_goals (try simp_all [Fin.lt_def, sb_apply])
+  all_goals (try simp_all [sb_apply])
   all_goals omega
 
 def T (n p r : ℕ) (h : p + r ≤ n) : Pr n := ⟨p, r, sb 0 p (by omega), sb p r h⟩

@@ -47,7 +47,7 @@ theorem pderiv_prim (ω : τ → MvPowerSeries τ k)
         set p := n - Finsupp.single w 1 with hp
         have hpn : p + Finsupp.single w 1 = n := tsub_add_cancel_of_le hle
         have hpv : p v = n v := by
-          simp [hp, Finsupp.tsub_apply, Finsupp.single_apply, hwv]
+          simp [hp, Finsupp.tsub_apply, hwv]
         have hpw : p w + 1 = n w := by
           simp only [hp, Finsupp.tsub_apply, Finsupp.single_eq_same]; omega
         have h1 : n + Finsupp.single v 1 - Finsupp.single w 1 = p + Finsupp.single v 1 := by

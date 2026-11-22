@@ -291,12 +291,11 @@ theorem hasProd_locL_conj {a b : ℕ} (σ : CG E a) (σ' : CG E b)
 
 theorem psum_coeM (A : Multiset ℂˣ) (n : ℕ) :
     (A.map fun α => (α : ℂ) ^ n).sum = (A.map fun α : ℂˣ => (α : ℂ) ^ n).sum := by
-  simp [Multiset.bind_def, Multiset.pure_def, Multiset.bind_singleton, Multiset.map_map, Function.comp_def]
+  simp [Multiset.bind_def, Multiset.pure_def, Multiset.bind_singleton, Multiset.map_map]
 
 theorem psum_conj_coeM (A : Multiset ℂˣ) (n : ℕ) :
     (A.map fun β => (starRingEnd ℂ (β : ℂ)) ^ n).sum = conj (A.map fun α : ℂˣ => (α : ℂ) ^ n).sum := by
-  simp [Multiset.bind_def, Multiset.pure_def, Multiset.bind_singleton, Multiset.map_map, Function.comp_def,
-    map_multiset_sum]
+  simp [Multiset.bind_def, Multiset.pure_def, Multiset.bind_singleton, Multiset.map_map, map_multiset_sum]
 
 theorem logRankinSelberg : (∀ (q : ℕ) (A B : Multiset ℂˣ) (s : ℂ), 1 < q → (∀ α ∈ A, ∀ β ∈ B, ‖(α : ℂ) * (β : ℂ)‖ * (q : ℝ) ^ (-s.re) < 1) → ∃ L : ℂ, HasSum (fun r : ℕ => (A.map fun α => (α : ℂ) ^ (r + 1)).sum * (B.map fun β => (β : ℂ) ^ (r + 1)).sum * (q : ℂ) ^ (-(((r : ℂ) + 1) * s)) / ((r : ℂ) + 1)) L ∧ locL q A B s = Complex.exp L) ∧ (∀ (E : Type) [Field E] [NumberField E] [IsTotallyComplex E] (a b : ℕ) (σ : CG E a) (σ' : CG E b), σ.IsUnitary → σ'.IsUnitary → ∀ T : Finset (HeightOneSpectrum (𝓞 E)), UnrOutside T σ → UnrOutside T σ' → ∀ x : ℝ, 1 < x → Summable (fun p : {w : HeightOneSpectrum (𝓞 E) // w ∉ T} × ℕ => ‖((sat σ p.1.1).map fun α => (α : ℂ) ^ (p.2 + 1)).sum * ((sat σ' p.1.1).map fun β => (starRingEnd ℂ (β : ℂ)) ^ (p.2 + 1)).sum * (Ideal.absNorm p.1.1.asIdeal : ℂ) ^ (-(((p.2 : ℂ) + 1) * (x : ℂ))) / ((p.2 : ℂ) + 1)‖) ∧ HasProd (fun w : {w : HeightOneSpectrum (𝓞 E) // w ∉ T} => locL (Ideal.absNorm w.1.asIdeal) (sat σ w.1) ((sat σ' w.1).map (Units.map (starRingEnd ℂ).toMonoidHom)) (x : ℂ)) (Complex.exp (∑' p : {w : HeightOneSpectrum (𝓞 E) // w ∉ T} × ℕ, ((sat σ p.1.1).map fun α => (α : ℂ) ^ (p.2 + 1)).sum * ((sat σ' p.1.1).map fun β => (starRingEnd ℂ (β : ℂ)) ^ (p.2 + 1)).sum * (Ideal.absNorm p.1.1.asIdeal : ℂ) ^ (-(((p.2 : ℂ) + 1) * (x : ℂ))) / ((p.2 : ℂ) + 1)))) := by
   refine ⟨fun q A B s _ h => ?_, fun E _ _ _ a b σ σ' hσ hσ' T hT hT' x hx => ?_⟩

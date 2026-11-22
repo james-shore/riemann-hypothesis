@@ -88,7 +88,6 @@ theorem unip_pow_card_eq_zero {K : Type*} [Field K] [CharZero K] {r : ℕ} (N : 
     refine le_trans ?_ hmdeg
     first
       | exact Polynomial.natDegree_modByMonic_le P hmon
-      | exact Polynomial.natDegree_modByMonic_le P m
   have hP'0 : P'.coeff 0 = 0 := by
     have h := congrArg (fun p => Polynomial.coeff p 0) hdiv
     simp only [Polynomial.coeff_add, Polynomial.mul_coeff_zero, hmc, zero_mul, add_zero] at h

@@ -55,7 +55,7 @@ private theorem exists_dual_map {G K Γ V W : Type} [Group G] [TopologicalSpace 
       have e : B w (ψ l) = 0 := by rw [h0]; simp
       rw [hψ, map_sum] at e
       rw [← e]
-      simp only [T, LinearMap.sum_apply, map_sum, LinearMap.zero_apply]
+      simp only [T, LinearMap.sum_apply, map_sum]
       refine Finset.sum_congr rfl fun γ _ => ?_
       have e2 := hinv (s γ) (ρ γ⁻¹ w) v0
       rw [hs γ, ← Module.End.mul_apply, ← map_mul, mul_inv_cancel, map_one, Module.End.one_apply] at e2

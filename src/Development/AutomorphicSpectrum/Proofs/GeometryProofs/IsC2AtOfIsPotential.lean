@@ -64,7 +64,7 @@ theorem isC2At_of_isPotential {e : ℕ} {X : Type} [TopologicalSpace X] (A : Fin
   have hm : A.chart j x ∈ (A.chart j).target ∩ (A.chart j).symm ⁻¹' P.U x :=
     ⟨(A.chart j).map_source hj, by
       rw [Set.mem_preimage, (A.chart j).left_inv hj]; exact P.mem_U x⟩
-  exact ((hP.1 x j).contDiffAt (hopen.mem_nhds hm)).of_le (by first | exact ENat.LEInfty.out | exact (WithTop.coe_le_coe.2 (le_top : (2 : ℕ∞) ≤ ⊤)) | simp)
+  exact ((hP.1 x j).contDiffAt (hopen.mem_nhds hm)).of_le (by first | exact ENat.LEInfty.out)
 
 theorem mInt_potOf_eq_of_deg {P J : Ideal (MRing ι)} {e : ℕ} (R : AnLogRes P J e) {L L' : Fin e → HermLine ι}
     (hL : ∀ j, IsSmoothHerm (L j)) (hL' : ∀ j, IsSmoothHerm (L' j)) (ha : ∀ j, (L j).a = (L' j).a) :
@@ -146,7 +146,7 @@ theorem sum_neg_mul_rootCoef [Fintype Ψ] (lam : Ψ × Fin N → ℝ) (p : Ψ ×
   have h3 : GlobalTheory.CompanionTheory.Ar.PB.gap lam (τ, l) =
       lam (τ, l) - if h : (l : ℕ) + 1 < N then lam (τ, ⟨(l : ℕ) + 1, h⟩) else 0 := by
     unfold GlobalTheory.CompanionTheory.Ar.PB.gap gapX
-    split_ifs with h <;> simp [h]
+    split_ifs with h <;> simp
   rw [h3, ← h1, ← h2, ← Finset.sum_sub_distrib]
   refine Finset.sum_congr rfl fun r _ => ?_
   simp only [rootCoef]

@@ -237,7 +237,6 @@ theorem geom_inj_le {ι : Type} [Fintype ι] (t : ι → ℕ) (ht : Function.Inj
   rw [← tsum_geometric_of_lt_one h0 h1]
   first
     | exact hs.sum_le_tsum _ (fun i _ => pow_nonneg h0 i)
-    | exact sum_le_tsum _ (fun i _ => pow_nonneg h0 i) hs
 
 end Reals
 

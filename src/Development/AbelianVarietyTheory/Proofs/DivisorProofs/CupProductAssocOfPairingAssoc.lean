@@ -20,7 +20,7 @@ theorem sum_range_triangle {A : Type*} [AddCommMonoid A] (G : ℕ → ℕ → A)
   · rintro ⟨a, b⟩ h
     simp at h ⊢ <;> omega
   · rintro ⟨a, b⟩ h
-    simp at h ⊢ <;> omega
+    simp at h ⊢
   · rintro ⟨a, b⟩ h
     rfl
 

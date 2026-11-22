@@ -87,7 +87,7 @@ theorem gram_scaleFrame [StarRing K] {d m : ℕ} (t : InfinitePlace K → ℝ) (
     simp only [Matrix.mulVec, dotProduct, Matrix.smul_apply, smul_eq_mul, Finset.mul_sum, mul_assoc]
   ext a c
   simp only [gram, Formalism.HN.gramPl, Formalism.HermitianLatticesTheory.majAt, Formalism.HermitianLatticesTheory.fcoord, Matrix.of_apply,
-    Matrix.smul_apply, smul_eq_mul, hs, hmv, star_mul', map_mul, Complex.star_def,
+    Matrix.smul_apply, smul_eq_mul, hs, hmv, star_mul', Complex.star_def,
     Complex.conj_ofReal, Finset.mul_sum]
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [← sqrt_mul_sqrt_complex (t v) (ht v)]

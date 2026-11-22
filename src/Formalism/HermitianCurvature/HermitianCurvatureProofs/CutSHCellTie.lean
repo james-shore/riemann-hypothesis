@@ -14,7 +14,7 @@ private theorem castV_liftVec_liftVec_eq_castV_liftVec_succ {k j ρ m n : ℕ} (
       D.castV h2 (QuantumDeterminants.liftVec k (j + 1) ρ v) := by
   funext p
   simp only [D.castV, QuantumDeterminants.liftVec, Fin.coe_cast]
-  split_ifs <;> first | rfl | (exfalso; omega) | (congr 1; ext; simp only [Fin.coe_cast]; omega)
+  split_ifs <;> first | rfl | (exfalso; omega)
 
 private theorem consC_castM_ιLev_mem_DomR_of_mem_DomR {k ρ m : ℕ} (e : 1 + ρ = m) {t : ℂ} (ht : t ≠ 0)
     (z z' : Fin (2 * ρ + k + 1) → ℂ) (c : Fin ρ → ℂ) (g : Q.Mx k ρ)

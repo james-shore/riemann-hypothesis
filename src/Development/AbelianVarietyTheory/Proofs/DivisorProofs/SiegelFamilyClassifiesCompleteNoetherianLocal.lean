@@ -34,7 +34,7 @@ theorem ext_affine : ∀ (R : Type) [CommRing R] (I : Ideal R), IsHausdorff I R 
     have he := h e
     rw [← Spec.map_preimage f, ← Spec.map_preimage f', Out.thick, ← Spec.map_comp, ← Spec.map_comp] at he
     have he' := congrArg (fun q => q.hom a) (Spec.map_injective he)
-    simp only [CommRingCat.comp_apply, CommRingCat.hom_ofHom] at he'
+    simp only at he'
     rw [SModEq, Submodule.Quotient.eq, smul_eq_mul, Ideal.mul_top]
     exact Ideal.Quotient.eq.1 he'
 

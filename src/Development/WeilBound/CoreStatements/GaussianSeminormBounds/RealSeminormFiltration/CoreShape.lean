@@ -68,7 +68,7 @@ theorem getD_pad_left (p k i : ℕ) (z : ℤ) :
     (pad (List.replicate p z) k []).getD i 0 = if i < p then (z : ℚ) else 0 := by
   simp only [pad, List.append_nil, List.getD_eq_getElem?_getD, List.getElem?_map,
     List.getElem?_append, List.getElem?_replicate, List.length_replicate]
-  split_ifs <;> simp_all <;> omega
+  split_ifs <;> simp_all
 
 theorem getD_pad_right (q r i : ℕ) (z : ℤ) (hq : q ≤ r) (hi : i < r) :
     (pad [] (r - q) (List.replicate q z)).getD i 0 = if r ≤ i + q then (z : ℚ) else 0 := by
@@ -119,10 +119,10 @@ theorem shape_pos {p q r s n m : ℕ} (hp : p ≤ r) (hq : q ≤ s) (hn : 0 < n)
     · funext x
       rcases x with i | j
       · simp only [shiftNu, ofBlocks, List.length_replicate, List.length_nil, Nat.sub_self,
-          Nat.zero_sub, getD_pad_left, i.isLt, if_true]
+          getD_pad_left, i.isLt, if_true]
         rw [h1]; push_cast; ring
       · simp only [shiftNu, ofBlocks, List.length_replicate, List.length_nil, Nat.sub_self,
-          Nat.zero_sub, getD_pad_left, j.isLt, if_true]
+          getD_pad_left, j.isLt, if_true]
         rw [h2]; push_cast; ring
     · simp only [List.length_replicate, List.length_nil, Nat.sub_zero]
       exact shift_pos_eq p q r s n m

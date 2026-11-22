@@ -91,7 +91,7 @@ theorem UpperTheory.V.Chr.clsFacts :
     rw [hval, root_of_unity_pow_natCast_zmod_val N ζ hζ, pow_sub₀ ζ h0 hN1, hζ, pow_one, one_mul]
     apply j.injective
     have hjζ := hj ζ
-    simp only [AlgEquiv.toRingEquiv_eq_coe, AlgEquiv.coe_ringEquiv] at hjζ
+    simp only [AlgEquiv.coe_ringEquiv] at hjζ
     rw [hjζ, map_inv₀]
     have hz : (j ζ) ^ N = 1 := by rw [← map_pow, hζ, map_one]
     have hn : ‖j ζ‖ = 1 := Complex.norm_eq_one_of_pow_eq_one hz (NeZero.ne N)

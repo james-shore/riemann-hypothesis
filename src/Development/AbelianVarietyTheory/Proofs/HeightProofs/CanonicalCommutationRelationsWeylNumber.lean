@@ -15,8 +15,6 @@ theorem exists_parseval_family {R : Type} [AddCommGroup R] [Module ℝ R] [Finit
   | exact @_root_.GlobalTheory.PolynomialCoeffEq.main
   | exact _root_.GlobalTheory.PolynomialCoeffEq.main
   | (apply _root_.GlobalTheory.PolynomialCoeffEq.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PolynomialCoeffEq.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PolynomialCoeffEq.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PolynomialCoeffEq.main ..)
 
 theorem weyl_number : ∀ (M R : Type) [AddCommGroup M] [Module ℂ M] [AddCommGroup R] [Module ℝ R] [FiniteDimensional ℝ R] (Dop : R → Module.End ℂ M) (om : R →ₗ[ℝ] R →ₗ[ℝ] ℝ) (κ : ℂ) (j : R →ₗ[ℝ] R), (∀ u v, Dop (u + v) = Dop u + Dop v) → (∀ (c : ℝ) u, Dop (c • u) = (c : ℂ) • Dop u) → κ ≠ 0 → (∀ u v, Dop u * Dop v - Dop v * Dop u = (κ * (om u v : ℝ)) • (1 : Module.End ℂ M)) → (∀ u v, om v u = -om u v) → (∀ u, j (j u) = -u) → (∀ u v, om (j u) (j v) = om u v) → (∀ u, u ≠ 0 → 0 < om u (j u)) → (∀ u v, ∃ β : ℂ, (Dop u + Complex.I • Dop (j u)) * (Dop v - Complex.I • Dop (j v)) - (Dop v - Complex.I • Dop (j v)) * (Dop u + Complex.I • Dop (j u)) = β • (1 : Module.End ℂ M)) ∧ ∃ (n : ℕ) (e : Fin n → R) (lam : ℂ), lam ≠ 0 ∧ ∀ u, (Dop u + Complex.I • Dop (j u)) * (∑ k, (Dop (e k) - Complex.I • Dop (j (e k))) * (Dop (e k) + Complex.I • Dop (j (e k)))) = ((∑ k, (Dop (e k) - Complex.I • Dop (j (e k))) * (Dop (e k) + Complex.I • Dop (j (e k)))) + lam • (1 : Module.End ℂ M)) * (Dop u + Complex.I • Dop (j u)) := by
@@ -32,19 +30,17 @@ theorem weyl_number : ∀ (M R : Type) [AddCommGroup M] [Module ℂ M] [AddCommG
       (Dop v - Complex.I • Dop (j v)) * (Dop u + Complex.I • Dop (j u)) +
         (2 * κ * ((om u v : ℝ) - Complex.I * (om u (j v) : ℝ))) • (1 : Module.End ℂ M) := by
     intro u v
-    simp only [add_mul, mul_add, sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, smul_smul,
-      Complex.I_mul_I]
+    simp only [add_mul, mul_add, sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm]
     rw [hc u v, hc u (j v), hc (j u) v, hc (j u) (j v), hom, h1]
     push_cast
     match_scalars <;> (try ring_nf) <;> (try simp) <;> (try ring)
   have haa : ∀ u v, (Dop u + Complex.I • Dop (j u)) * (Dop v + Complex.I • Dop (j v)) =
       (Dop v + Complex.I • Dop (j v)) * (Dop u + Complex.I • Dop (j u)) := by
     intro u v
-    simp only [add_mul, mul_add, smul_mul_assoc, mul_smul_comm, smul_smul,
-      Complex.I_mul_I]
+    simp only [add_mul, mul_add, smul_mul_assoc, mul_smul_comm]
     rw [hc u v, hc u (j v), hc (j u) v, hc (j u) (j v), hom, h1]
     push_cast
-    match_scalars <;> (try ring_nf) <;> (try simp) <;> (try ring)
+    match_scalars <;> (try ring_nf) <;> (try simp)
   refine ⟨fun u v => ⟨_, by rw [hac u v, add_sub_cancel_left]⟩, ?_⟩
   obtain ⟨n, e, he⟩ := exists_parseval_family (om.compl₂ j)
     (fun u v => by

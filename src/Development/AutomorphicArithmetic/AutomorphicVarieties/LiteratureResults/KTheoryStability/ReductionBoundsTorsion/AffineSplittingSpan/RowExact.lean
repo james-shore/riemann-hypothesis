@@ -88,7 +88,7 @@ theorem row_exact (pr : P →* Q) {a b : ℕ} (F : Bi P Q (a + 2) (b + 1)) (hF :
         Fin.cons c (fun j => u (k.succAbove j)) := by
     intro c u k
     funext j
-    cases j using Fin.cases <;> simp [Fin.succ_succAbove_zero, Fin.succ_succAbove_succ]
+    cases j using Fin.cases <;> simp [Fin.succ_succAbove_succ]
   refine ⟨fun x y => F (Fin.cons (pr (y 0)) x) y, ?_, ?_⟩
   · intro g x y
     show F (Fin.cons (pr (g * y 0)) (fun i => pr g * x i)) (fun j => g * y j) = F (Fin.cons (pr (y 0)) x) y

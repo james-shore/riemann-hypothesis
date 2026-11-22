@@ -31,7 +31,6 @@ private theorem hT_swap_eq_star (x y : S.V) : S.hT y x = star (S.hT x y) := by
   first
   | exact (S.herm x y).symm
   | exact (S.herm.eq x y).symm
-  | simpa using (S.herm x y).symm
 
 theorem hT_z_X (F : FlagG S r T) {x : S.V} (hx : x ∈ F.X) : S.hT F.z x = 0 := by
   induction hx using Submodule.span_induction with

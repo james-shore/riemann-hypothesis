@@ -382,8 +382,8 @@ theorem genusCovol_dualBasis (h : V →ₗ⋆[K] V →ₗ[K] K) (N : ℕ)
     have e : ((b x (y i) : ℚ) : ℝ) = (((c i : ℤ) : ℚ) : ℝ) := by
       rw [hb, hsum, sum_inner]
       simp_rw [real_inner_smul_left, bR, Basis.ofZLatticeBasis_apply, ← hmι, ← hb, hdelta]
-      rw [Finset.sum_eq_single i (fun k _ hk => by simp [Matrix.one_apply, hk]) (by simp)]
-      simp [Matrix.one_apply]
+      rw [Finset.sum_eq_single i (fun k _ hk => by simp [hk]) (by simp)]
+      simp
     exact_mod_cast e
   have hyy : ∀ i j, b (y i) (y j) = Gi j i := by
     intro i j

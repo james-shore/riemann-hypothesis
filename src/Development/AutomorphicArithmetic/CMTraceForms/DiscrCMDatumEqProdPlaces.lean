@@ -232,7 +232,7 @@ private theorem discr_CMDatum_eq_prod_places_lemma_6 {p : ℕ} [Fact p.Prime] {R
     rw [UpperTheory.PlacesDiscr.sumMap_apply, Finset.sum_eq_single i]
     · simp
     · intro j _ hj
-      simp [Pi.single_apply, hj]
+      simp [hj]
     · simp
   have hsplit : ∀ x y, UpperTheory.PlacesDiscr.splitEquiv h1 h2 h3 (x, y)
       = UpperTheory.PlacesDiscr.sumMap w x + sig p R (UpperTheory.PlacesDiscr.sumMap w y) := fun x y => rfl

@@ -19,7 +19,7 @@ variable {K : Type} [Field K] {C : ACurve K} {V : Type} [AddCommGroup V] [Module
 theorem basis_mem {i : C.I} {n : ℕ} {b : Module.Basis (Fin n) K V} {L : AddSubgroup V}
     (h : IsLatOf C i b L) (q : Fin n) : b q ∈ L := by
   refine (h _).2 fun r => ?_
-  by_cases e : q = r <;> simp [e, Finsupp.single_apply]
+  by_cases e : q = r <;> simp [e]
 
 theorem smul_mem_lat {i : C.I} {n : ℕ} {b : Module.Basis (Fin n) K V} {L : AddSubgroup V}
     (h : IsLatOf C i b L) {a : K} (ha : C.v i a ≤ 1) {x : V} (hx : x ∈ L) : a • x ∈ L := by

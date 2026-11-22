@@ -73,7 +73,7 @@ theorem flL_zLoc_contDiffOn (hD : A.D0 L w w0 s) (i : ι) :
   unfold WeightedAtlas.zLoc
   rw [contDiffOn_piLp]
   intro k
-  simp only [WithLp.ofLp_toLp]
+  simp only
   exact ReciprocityTheory.L2DbarEstimates.C.holo_contDiffOn_complex (flL_isOpen_O A hD i) (flL_comp_diff A hD i k)
 
 theorem flL_mem_O (hD : A.D0 L w w0 s) {x : Y} (hx : x ∈ A.Mset w0 s De) {i : ι}
@@ -322,8 +322,8 @@ theorem levi_flat_loc {n : ℕ} {Y : Type u} [TopologicalSpace Y] [T2Space Y] [S
   have hU : ContDiffAt ℝ 2 (fun p => ((φ ((A.chart i).symm p) : ℝ) : ℂ))
       (A.chart i ((E.symm (E x) : A.Mset w0 s De) : Y)) := by
     rw [hEx]
-    exact (Complex.ofRealCLM.contDiff.contDiffAt.comp _ hφ).of_le (by first | exact WithTop.coe_le_coe.2 (le_top : (2 : ℕ∞) ≤ ⊤) | decide | norm_num | exact_mod_cast (le_top : ((2 : ℕ) : ℕ∞) ≤ ⊤))
-  have hG2 : ContDiffAt ℂ 2 (fun v' => A.chart i (E.symm v' : Y)) (E x) := hG.of_le (by first | exact WithTop.coe_le_coe.2 (le_top : (2 : ℕ∞) ≤ ⊤) | decide | norm_num | exact_mod_cast (le_top : ((2 : ℕ) : ℕ∞) ≤ ⊤))
+    exact (Complex.ofRealCLM.contDiff.contDiffAt.comp _ hφ).of_le (by first | exact WithTop.coe_le_coe.2 (le_top : (2 : ℕ∞) ≤ ⊤))
+  have hG2 : ContDiffAt ℂ 2 (fun v' => A.chart i (E.symm v' : Y)) (E x) := hG.of_le (by first | exact WithTop.coe_le_coe.2 (le_top : (2 : ℕ∞) ≤ ⊤))
   have hcomp : (fun y : A.Mset w0 s De => ((φ y : ℝ) : ℂ)) ∘ E.symm =ᶠ[𝓝 (E x)]
       (fun p => ((φ ((A.chart i).symm p) : ℝ) : ℂ)) ∘ (fun v' => A.chart i (E.symm v' : Y)) := by
     filter_upwards [hsrc] with v' h
@@ -474,7 +474,7 @@ theorem leviAt_log_normSq {n : ℕ} {Y : Type u} [TopologicalSpace Y] [T2Space Y
       have hdR := hd.restrictScalars ℝ
       have hN : ‖h ((A.chart i).symm v)‖ ^ 2 ≠ 0 := pow_ne_zero 2 (norm_ne_zero_iff.2 hv0)
       rw [wdb_ofReal_comp (k := Real.log) (v := fun v => ‖h ((A.chart i).symm v)‖ ^ 2)
-        (Real.differentiableAt_log hN) (by first | exact DifferentiableAt.norm_sq ℝ hdR | exact hdR.norm_sq (𝕜 := ℝ) | exact hdR.norm_sq ℂ)]
+        (Real.differentiableAt_log hN) (by first | exact DifferentiableAt.norm_sq ℝ hdR)]
       have hsq : (fun y => (((‖h ((A.chart i).symm y)‖ ^ 2 : ℝ)) : ℂ)) =
           fun y => h ((A.chart i).symm y) * (starRingEnd ℂ) (h ((A.chart i).symm y)) := by
         funext y

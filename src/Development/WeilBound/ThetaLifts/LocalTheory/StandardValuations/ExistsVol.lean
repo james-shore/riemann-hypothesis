@@ -187,7 +187,7 @@ theorem stdB : StdB := by
     refine L₁.bij.2.1 ((hl.vac w).2 ▸ Submodule.mem_map_of_mem s) ((SB _).smul_mem _ s₁) (funext fun y => ?_)
     rw [ev0W hm hB hu h t.geo.hM t₁.geo.hM he hl L L₁ (unit_J h t.geo.hV t.geo.hW).1 (by rw [cf.eV]; exact pe_one _ _) pe' px' cv' s,
       a1, map_smul, b1]
-    exact int_ev hm hϖ (skF_inj _ _ _) (fun i => Fin.ext (by simp [hjc, skF, skip, eA_val, eB_val])) _
+    exact int_ev hm hϖ (skF_inj _ _ _) (fun i => Fin.ext (by simp [skF, skip, eA_val, eB_val])) _
       (fun ⟨i, hi⟩ => by have := congrArg Fin.val hi; have := i.2; simp [eA_val, eB_val] at *; omega) (fun j => (nz j).1.symm) y
   let P : Finset (Fin (b + 2) × Fin (a + (b + 2))) :=
     Finset.univ.filter fun p => p.1 = Fin.last _ ∨ p.2 = eB a (b + 2) (Fin.last _) ∧ p.1 ≠ 0

@@ -118,7 +118,6 @@ theorem zeta_zo_nonpos (K : Type) [Field K] [NumberField K] (j : ℤ) (hj : j �
       rw [hFdef, Function.update_apply, if_pos rfl]
       exact hL0
     · filter_upwards [self_mem_nhdsWithin, hGu] with s hs hGs
-      beta_reduce at hGs
       rw [completed_zeta_continued_eq K hs, hGs]
       have hFs : F s = s * completedDedekindZeta K s := by
         rw [hFdef, Function.update_apply, if_neg (show s ≠ 0 from hs)]

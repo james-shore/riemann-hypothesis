@@ -34,8 +34,7 @@ theorem exists_distr_on (ξ : (S → ℂ) →ₗ[ℂ] ℂ) {C : Set S} (hC : IsC
   have h1 : r (restr hC f) = ⟨restr hC f, LinearMap.mem_range_self _ f⟩ :=
     LinearMap.congr_fun hr ⟨_, _⟩
   rw [LinearMap.comp_apply, h1]
-  simp only [D0, LinearMap.comp_apply, LinearEquiv.coe_coe, LinearMap.quotKerEquivRange_symm_apply_image,
-    Submodule.liftQ_apply]
+  simp only [D0, LinearMap.comp_apply, LinearEquiv.coe_coe, LinearMap.quotKerEquivRange_symm_apply_image]
   rfl
 
 theorem exists_functional {C : Set S} (hC : IsClosed C) (E : Distr C) :

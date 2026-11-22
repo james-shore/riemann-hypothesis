@@ -140,7 +140,7 @@ theorem fac_ne_zero (hj : j ≤ N) (i : Fin N) {h : Matrix (Fin N) (Fin N) ℂ} 
   have hN : 0 < N := by have := i.2; omega
   have hd' := GlobalTheory.CompanionTheory.Ar.PB.CPts.detFac_ne_zero hj (⟨N - 1, by omega⟩ : Fin N) hh hd
   have e1 : j ≤ N - 1 + 1 := by omega
-  simp only [detFac, if_pos e1, show N - 1 + 1 = N by omega, if_true, if_pos hj] at hd'
+  simp only [detFac, show N - 1 + 1 = N by omega, if_true, if_pos hj] at hd'
   simp only [Fib.facOf]
   have := left_ne_zero_of_mul hd'
   have := right_ne_zero_of_mul hd'
@@ -161,7 +161,7 @@ theorem xi_sum (τ : Ψ) {a b : Fin N} (hb : (b : ℕ) = a + 1) (D : Fin N → �
     have e1 : ((i : ℕ) = (a : ℕ) + 1) ↔ i = b := by rw [Fin.ext_iff, hb]
     simp only [xiCoef, if_true, e1]
     push_cast
-    split_ifs <;> first | ring | simp
+    split_ifs <;> first | ring
   simp only [e, Finset.sum_sub_distrib, Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   congr 2
   by_cases ha : (a : ℕ) = 0

@@ -41,8 +41,6 @@ theorem aeval_sub_le {J : Type} {x y : J → k} {δ : ℝ} (hδ : 0 ≤ δ) (hx 
   | exact @_root_.GlobalTheory.NormAevalSubBound.norm_aeval_sub_le
   | exact _root_.GlobalTheory.NormAevalSubBound.norm_aeval_sub_le
   | (apply _root_.GlobalTheory.NormAevalSubBound.norm_aeval_sub_le <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NormAevalSubBound.norm_aeval_sub_le <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NormAevalSubBound.norm_aeval_sub_le <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NormAevalSubBound.norm_aeval_sub_le ..)
 
 end GlobalTheory.Cong

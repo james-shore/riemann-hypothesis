@@ -147,7 +147,7 @@ theorem isHeat_tsum {ι : Type} {D : ι → CM Ψ N N → CM Ψ n N → CM Ψ n 
 theorem isHeat_const_mul {D : CM Ψ N N → CM Ψ n N → CM Ψ n N → ℂ} (hD : IsHeat Ψ D) (c : ℂ) :
     IsHeat Ψ fun Z z z' => c * D Z z z' := by
   refine ⟨hD.1.const_mul c, fun Z hZ z z' τ a b => ?_⟩
-  simp only [deriv_const_mul_field', deriv_const_mul_field]
+  simp only [deriv_const_mul_field]
   rw [← Finset.mul_sum, ← hD.2 Z hZ z z' τ a b]
   ring
 
@@ -183,7 +183,7 @@ theorem hFac_inv_bound (n N : ℕ) {δ : ℝ} (hδ : 0 < δ) (B : ℝ) :
           (C * (I • (1 : Matrix (Fin N) (Fin N) ℂ)) + D)ᴴ := by
         simp only [Matrix.mul_smul, Matrix.mul_one, conjTranspose_add, conjTranspose_smul,
           Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, hr, Complex.star_def, Complex.conj_I,
-          smul_add, smul_smul, neg_smul, Matrix.mul_neg, smul_neg, I_mul_I, neg_neg, one_smul]
+          smul_add, smul_smul, neg_smul, Matrix.mul_neg, I_mul_I, one_smul]
         abel
       rw [e]
       exact PosDef.mul_conjTranspose_self _

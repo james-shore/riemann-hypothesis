@@ -45,7 +45,7 @@ theorem foldr_replicate' (z : Module.End ℂ (Sm E a)) (χ : Module.End ℂ (Sm 
   | zero => simp
   | succ n ih =>
     rw [List.replicate_succ, List.foldr_cons, ih, pow_succ', map_mul, Module.End.mul_apply]
-    simp [sub_smul, Polynomial.aeval_X, Polynomial.aeval_C]
+    simp [Polynomial.aeval_X, Polynomial.aeval_C]
 
 variable (E a) in
 

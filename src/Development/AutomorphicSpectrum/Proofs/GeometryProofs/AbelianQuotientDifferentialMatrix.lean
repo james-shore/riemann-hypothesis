@@ -197,7 +197,7 @@ theorem germ_tg (g : GermAt t x0 d) (l : Fin d) :
       subst this
       by_cases h : b = j
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     rw [e]
   have h := comb_eq (g.chart.zero 1) g.B.G (g.chart.law 1) hdir (g.chart.tan l)
   rw [h]
@@ -258,7 +258,7 @@ theorem linQ_eq_diff (E : Type) [Field E] [NumberField E] [IsCMField E] (H : Hos
         intro h
         apply hb
         rw [h, Subsingleton.elim a 0]
-      simp [Pi.single_apply, hbl]
+      simp [hbl]
     · intro h; exact absurd (Finset.mem_univ _) h
   have hvq : v ≫ Q.q.left = (tanPt Q.tB (𝟙 (Sp k)) gB.x (fun i => linQ Qs i l)).left := by
     have hm : (fibPt t x (g.x 1)).left ≫ Q.q.left = (homAt (𝟙 (Sp k)) (sub1 Qs 1) ≫ gB.x 1).left :=

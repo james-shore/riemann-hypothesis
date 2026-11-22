@@ -51,14 +51,14 @@ theorem locPair_extend_vac : ∀ (L : Type) [Field L] [CharZero L] [Valued L (Wi
       apply Finsupp.lhom_ext
       intro x v
       simp only [LinearMap.comp_apply, Sh, T, Finsupp.lsum_single, LinearMap.smul_apply, Finsupp.lsingle_apply, map_smul]
-      simp only [LinearMap.coe_comp, Function.comp_apply, Submodule.coe_subtype]
+      simp only [Submodule.coe_subtype]
       rw [← Module.End.mul_apply, hP.rho_mul]
       rfl
     have h2 : ρ y ∘ₗ T' = T' ∘ₗ Sh := by
       apply Finsupp.lhom_ext
       intro x v
       simp only [LinearMap.comp_apply, Sh, T', Finsupp.lsum_single, LinearMap.smul_apply, Finsupp.lsingle_apply, map_smul]
-      simp only [LinearMap.coe_comp, Function.comp_apply, Submodule.coe_subtype]
+      simp only [Submodule.coe_subtype]
       rw [← Module.End.mul_apply, hP.rho_mul]
       rfl
     apply LinearMap.ext
@@ -196,7 +196,7 @@ theorem locPair_act_vac_comb : ∀ (L : Type) [Field L] [CharZero L] [Valued L (
       obtain ⟨cb, hcb⟩ := hb
       refine ⟨a • cb, ?_⟩
       rw [map_smul, hcb, Finsupp.sum_smul_index' (h := fun x z => z • ρ x s0) (fun _ => zero_smul ℂ _), Finsupp.smul_sum]
-      simp [Finsupp.sum, Finset.smul_sum, smul_smul]
+      simp [Finsupp.sum, smul_smul]
   obtain ⟨c, hc⟩ := hspan (ω p s0)
   have hps0 : ω p s0 = c.sum fun x z => z • ρ x s0 := by
     have e := congrArg (fun F => F s0) (hpN B0 hB0)

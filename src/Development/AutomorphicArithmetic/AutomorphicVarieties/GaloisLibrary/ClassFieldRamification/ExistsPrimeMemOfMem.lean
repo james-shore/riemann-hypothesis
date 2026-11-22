@@ -76,11 +76,9 @@ theorem UpperTheory.V.CF.kwRay :
       convert hcyc
       all_goals first
         | rfl
-        | exact Subsingleton.elim _ _
     refine UpperTheory.V.CF.splitCyc N ℚ⟮ζ⟯ v p hp hpv hpN ?_
     convert hsplit
     all_goals first
       | rfl
-      | exact Subsingleton.elim _ _
   obtain ⟨hv', hcls⟩ := UpperTheory.V.CF.rayPrime 𝔪 v p hp hpv hmod
   exact (GroundTheory.Global.Modulus.splitsCompletely_rayClassField_iff 𝔪 Ω hv').mpr hcls

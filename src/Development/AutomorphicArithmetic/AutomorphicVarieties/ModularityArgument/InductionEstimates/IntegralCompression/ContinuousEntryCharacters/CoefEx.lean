@@ -78,13 +78,12 @@ private lemma c1 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' 
   obtain ⟨π, hi, hj, hl⟩ : ∃ π : Equiv.Perm (Fin (2 + 2)), π 0 = 0 ∧ π 1 = 1 ∧ π 3 = 3 := by decide
   refine ⟨F 0 1 3 α β γ δ, F_exp π _ _ _ hi hj hl α β γ δ _ ?_, F_star _ _ _ _ _ _ _, fun a b => ?_⟩
   · funext x
-    fin_cases x <;> simp [wt, Pi.single_apply] <;> omega
+    fin_cases x <;> simp [wt] <;> omega
   · have ha := det_ne_zero_of_U2 a
     have hb := det_ne_zero_of_U2 b
     rw [hn, hq, hn', hq']
-    simp only [F, en_bd, det_bd, s0, s1, s2, s3, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
-      Matrix.zero_apply, unitary_two_conj_entry_eq, ← Matrix.det_fin_two, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
-      zpow_add₀ ha, zpow_add₀ hb, zpow_sub₀ ha, zpow_sub₀ hb, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
+    simp only [F, en_bd, det_bd, s0, s1, s3, fromBlocks_apply₁₁, fromBlocks_apply₂₂,
+      unitary_two_conj_entry_eq, ← Matrix.det_fin_two, KT.psi, Nat.sub_self, pow_zero, mul_one, zpow_add₀ ha, zpow_sub₀ hb, zpow_natCast, mul_zpow, mul_pow, inv_pow]
     field_simp
 
 private lemma c2 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' : ℤ) (hn : n = α + β) (hq : q = δ)
@@ -92,13 +91,13 @@ private lemma c2 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' 
   obtain ⟨π, hi, hj, hl⟩ : ∃ π : Equiv.Perm (Fin (2 + 2)), π 0 = 0 ∧ π 1 = 2 ∧ π 3 = 3 := by decide
   refine ⟨F 0 2 3 α β γ δ, F_exp π _ _ _ hi hj hl α β γ δ _ ?_, F_star _ _ _ _ _ _ _, fun a b => ?_⟩
   · funext x
-    fin_cases x <;> simp [wt, Pi.single_apply] <;> omega
+    fin_cases x <;> simp [wt] <;> omega
   · have ha := det_ne_zero_of_U2 a
     have hb := det_ne_zero_of_U2 b
     rw [hn, hq, hn', hq']
-    simp only [F, en_bd, det_bd, s0, s1, s2, s3, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
-      Matrix.zero_apply, unitary_two_conj_entry_eq, ← Matrix.det_fin_two, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
-      zpow_add₀ ha, zpow_add₀ hb, zpow_sub₀ ha, zpow_sub₀ hb, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
+    simp only [F, en_bd, det_bd, s0, s2, s3, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
+      Matrix.zero_apply, unitary_two_conj_entry_eq, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
+      zpow_sub₀ hb, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
     field_simp
 
 private lemma c3 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' : ℤ) (hn : n = α + β + γ) (hq : q = δ - γ)
@@ -106,13 +105,13 @@ private lemma c3 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' 
   obtain ⟨π, hi, hj, hl⟩ : ∃ π : Equiv.Perm (Fin (2 + 2)), π 0 = 0 ∧ π 1 = 2 ∧ π 3 = 1 := by decide
   refine ⟨F 0 2 1 α β γ δ, F_exp π _ _ _ hi hj hl α β γ δ _ ?_, F_star _ _ _ _ _ _ _, fun a b => ?_⟩
   · funext x
-    fin_cases x <;> simp [wt, Pi.single_apply] <;> omega
+    fin_cases x <;> simp [wt] <;> omega
   · have ha := det_ne_zero_of_U2 a
     have hb := det_ne_zero_of_U2 b
     rw [hn, hq, hn', hq']
-    simp only [F, en_bd, det_bd, s0, s1, s2, s3, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
-      Matrix.zero_apply, unitary_two_conj_entry_eq, ← Matrix.det_fin_two, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
-      zpow_add₀ ha, zpow_add₀ hb, zpow_sub₀ ha, zpow_sub₀ hb, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
+    simp only [F, en_bd, det_bd, s0, s1, s2, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
+      Matrix.zero_apply, unitary_two_conj_entry_eq, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
+      zpow_sub₀ ha, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
     field_simp
 
 private lemma c4 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' : ℤ) (hn : n = β) (hq : q = δ)
@@ -120,13 +119,13 @@ private lemma c4 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' 
   obtain ⟨π, hi, hj, hl⟩ : ∃ π : Equiv.Perm (Fin (2 + 2)), π 0 = 2 ∧ π 1 = 0 ∧ π 3 = 3 := by decide
   refine ⟨F 2 0 3 α β γ δ, F_exp π _ _ _ hi hj hl α β γ δ _ ?_, F_star _ _ _ _ _ _ _, fun a b => ?_⟩
   · funext x
-    fin_cases x <;> simp [wt, Pi.single_apply] <;> omega
+    fin_cases x <;> simp [wt] <;> omega
   · have ha := det_ne_zero_of_U2 a
     have hb := det_ne_zero_of_U2 b
     rw [hn, hq, hn', hq']
-    simp only [F, en_bd, det_bd, s0, s1, s2, s3, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
-      Matrix.zero_apply, unitary_two_conj_entry_eq, ← Matrix.det_fin_two, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
-      zpow_add₀ ha, zpow_add₀ hb, zpow_sub₀ ha, zpow_sub₀ hb, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
+    simp only [F, en_bd, det_bd, s0, s2, s3, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
+      Matrix.zero_apply, unitary_two_conj_entry_eq, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
+      zpow_sub₀ hb, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
     field_simp
 
 private lemma c5 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' : ℤ) (hn : n = β + γ) (hq : q = δ - γ)
@@ -134,13 +133,13 @@ private lemma c5 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' 
   obtain ⟨π, hi, hj, hl⟩ : ∃ π : Equiv.Perm (Fin (2 + 2)), π 0 = 2 ∧ π 1 = 0 ∧ π 3 = 1 := by decide
   refine ⟨F 2 0 1 α β γ δ, F_exp π _ _ _ hi hj hl α β γ δ _ ?_, F_star _ _ _ _ _ _ _, fun a b => ?_⟩
   · funext x
-    fin_cases x <;> simp [wt, Pi.single_apply] <;> omega
+    fin_cases x <;> simp [wt] <;> omega
   · have ha := det_ne_zero_of_U2 a
     have hb := det_ne_zero_of_U2 b
     rw [hn, hq, hn', hq']
-    simp only [F, en_bd, det_bd, s0, s1, s2, s3, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
-      Matrix.zero_apply, unitary_two_conj_entry_eq, ← Matrix.det_fin_two, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
-      zpow_add₀ ha, zpow_add₀ hb, zpow_sub₀ ha, zpow_sub₀ hb, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
+    simp only [F, en_bd, det_bd, s0, s1, s2, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
+      Matrix.zero_apply, unitary_two_conj_entry_eq, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
+      zpow_sub₀ ha, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
     field_simp
 
 private lemma c6 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' : ℤ) (hn : n = γ) (hq : q = δ - γ)
@@ -148,13 +147,12 @@ private lemma c6 (α β γ : ℕ) (δ : ℤ) (n : ℕ) (q : ℤ) (n' : ℕ) (q' 
   obtain ⟨π, hi, hj, hl⟩ : ∃ π : Equiv.Perm (Fin (2 + 2)), π 0 = 2 ∧ π 1 = 3 ∧ π 3 = 1 := by decide
   refine ⟨F 2 3 1 α β γ δ, F_exp π _ _ _ hi hj hl α β γ δ _ ?_, F_star _ _ _ _ _ _ _, fun a b => ?_⟩
   · funext x
-    fin_cases x <;> simp [wt, Pi.single_apply] <;> omega
+    fin_cases x <;> simp [wt] <;> omega
   · have ha := det_ne_zero_of_U2 a
     have hb := det_ne_zero_of_U2 b
     rw [hn, hq, hn', hq']
-    simp only [F, en_bd, det_bd, s0, s1, s2, s3, fromBlocks_apply₁₁, fromBlocks_apply₁₂, fromBlocks_apply₂₁, fromBlocks_apply₂₂,
-      Matrix.zero_apply, unitary_two_conj_entry_eq, ← Matrix.det_fin_two, KT.psi, Nat.sub_self, pow_zero, mul_one, mul_zero, sub_zero,
-      zpow_add₀ ha, zpow_add₀ hb, zpow_sub₀ ha, zpow_sub₀ hb, zpow_natCast, mul_zpow, mul_pow, inv_pow, pow_add]
+    simp only [F, en_bd, det_bd, s1, s2, s3, fromBlocks_apply₁₁, fromBlocks_apply₂₂,
+      unitary_two_conj_entry_eq, ← Matrix.det_fin_two, KT.psi, Nat.sub_self, pow_zero, mul_one, zpow_add₀ hb, zpow_sub₀ ha, zpow_natCast, mul_zpow, mul_pow, inv_pow]
     field_simp
 
 end UpperTheory.V.Z.InvariantSubmoduleMonicPolynomial.EA

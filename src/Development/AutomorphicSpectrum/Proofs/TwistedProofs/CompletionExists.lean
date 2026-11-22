@@ -160,7 +160,7 @@ theorem exists_block (hσσ : ∀ x, σ (σ x) = x) (hσv : ∀ x, Valued.v (σ 
   obtain ⟨P, hP⟩ : ∃ P : Matrix (Fin n ⊕ Fin n) (Fin n ⊕ Fin n) L, P = fromBlocks A Ψ₁ B Ψ₂ := ⟨_, rfl⟩
   have hDDi : D * Di = 1 := by
     rw [hD, hDi, fromBlocks_multiply, ← fromBlocks_one]
-    simp only [Matrix.one_mul, Matrix.mul_one, Matrix.smul_mul, Matrix.mul_neg, Matrix.neg_mul, neg_neg, smul_neg]
+    simp only [Matrix.one_mul, Matrix.mul_one, Matrix.mul_neg, neg_neg]
     rw [fromBlocks_inj]
     refine ⟨e1, by simp, by simp, ?_⟩
     rw [add_comm]; exact e1
@@ -169,14 +169,13 @@ theorem exists_block (hσσ : ∀ x, σ (σ x) = x) (hσv : ∀ x, Valued.v (σ 
     simp [hJ]
   have hDg : cT σ D * Jd * D = H := by
     rw [hD, hJd, hH, cT_fromBlocks, fromBlocks_multiply, fromBlocks_multiply]
-    simp only [cT_neg', cT_smul', cT_one, hσσ, Matrix.one_mul, Matrix.mul_one, Matrix.mul_zero, Matrix.zero_mul,
-      add_zero, zero_add, Matrix.smul_mul, Matrix.mul_smul, Matrix.neg_mul, Matrix.mul_neg, neg_neg, smul_neg]
+    simp only [cT_neg', cT_smul', cT_one, hσσ, Matrix.one_mul, Matrix.mul_one, Matrix.mul_zero, add_zero, zero_add, Matrix.smul_mul, Matrix.mul_smul, Matrix.neg_mul, Matrix.mul_neg, neg_neg, smul_neg]
     rw [fromBlocks_inj]
     refine ⟨by simp, by rw [add_comm]; exact e2, e2, ?_⟩
     rw [smul_comm, add_neg_cancel]
   have hPg : cT σ P * Jd * P = H := by
     rw [hP, hJd, hH, cT_fromBlocks, fromBlocks_multiply, fromBlocks_multiply]
-    simp only [Matrix.mul_zero, Matrix.zero_mul, add_zero, zero_add, Matrix.neg_mul, Matrix.mul_neg]
+    simp only [Matrix.mul_zero, add_zero, zero_add, Matrix.neg_mul, Matrix.mul_neg]
     simp only [← sub_eq_add_neg]
     rw [fromBlocks_inj]
     exact ⟨sub_eq_zero.2 hAB, g12, g21, g22⟩

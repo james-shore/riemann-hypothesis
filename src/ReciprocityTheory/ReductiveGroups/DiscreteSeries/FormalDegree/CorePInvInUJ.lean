@@ -25,8 +25,6 @@ theorem inv_inUJ {ε : Fin n → Bool} {g : Matrix (Fin n) (Fin n) ℂ} (hg : in
   have h2 : g * (Jm ε * gᴴ * Jm ε) = 1 := by
     first
     | exact mul_eq_one_comm.mp h1
-    | exact Matrix.mul_eq_one_comm.mp h1
-    | exact (Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _)).mp h1
   have h3 : ∀ X : Matrix (Fin n) (Fin n) ℂ, g * (Jm ε * (gᴴ * X)) = Jm ε * X := fun X => by
     calc g * (Jm ε * (gᴴ * X)) = g * (Jm ε * gᴴ * Jm ε) * (Jm ε * X) := by
           simp only [Matrix.mul_assoc, hJJ]

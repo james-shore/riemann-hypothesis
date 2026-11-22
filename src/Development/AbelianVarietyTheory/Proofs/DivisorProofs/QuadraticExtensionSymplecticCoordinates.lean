@@ -42,9 +42,9 @@ theorem eq_zero_of_pairBil (σ : E →ₐ[F] E) (hσ : ∀ x, σ (σ x) = x) {d 
       rw [Finset.sum_eq_single l]
       · simp [hσ]
       · intro l' _ h
-        simp [Pi.single_apply, h]
+        simp [h]
       · simp
-    simp only [hs, Matrix.vecMul, dotProduct, Pi.zero_apply, Finset.sum_mul]
+    simp only [hs, Matrix.vecMul, dotProduct, Finset.sum_mul]
     rw [← Finset.sum_neg_distrib]
     refine Finset.sum_congr rfl fun j _ => ?_
     ring

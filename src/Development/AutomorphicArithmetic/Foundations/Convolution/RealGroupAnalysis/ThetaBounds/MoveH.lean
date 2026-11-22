@@ -15,7 +15,7 @@ theorem UpperTheory.ConvolutionTheory.R2.Ff.moveH :
   have hF := opsFock F E D O
   have hh : O.h w φ ∈ Fock D.δ := by
     have h2 : O.h w φ = (∑ i, O.x w i (O.d w i φ)) + (2 : ℂ) • φ := by
-      simp [Fo.Ops.h, LinearMap.sum_apply, two_smul, LinearMap.add_apply, Module.End.mul_apply, one_add_one_eq_two.symm, add_mul, Module.End.one_apply]
+      simp [Fo.Ops.h, LinearMap.sum_apply, LinearMap.add_apply, Module.End.mul_apply, one_add_one_eq_two.symm, Module.End.one_apply]
       rw [add_smul, one_smul]
     rw [h2]
     exact add_mem (sum_mem fun i _ => (hF w i _ (hF w i φ hφ).2).1) (Submodule.smul_mem _ _ hφ)

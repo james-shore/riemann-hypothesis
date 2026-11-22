@@ -81,7 +81,7 @@ theorem descent : ∀ (F : Type) [Field F] [NumberField F] (X W : Scheme.{0}) [I
       haveI : IsIso (ρ γ).hom := Iso.isIso_hom (ρ γ)
       have h1 := (genericPoint_spec X).image (ρ γ).hom.continuous
       have hs : Function.Surjective (ρ γ).hom.base := (ρ γ).hom.surjective
-      simp only [Set.top_eq_univ, Set.image_univ, hs.range_eq, closure_univ] at h1
+      simp only [Set.image_univ, hs.range_eq, closure_univ] at h1
       exact h1.eq (genericPoint_spec X)
     have hfix := GlobalTheory.T.fromSpecResidueField_comp_aut_eq_of_fixes X Γ ρ γ _ hη (fun u _ => by rw [hσu, hγ, sub_self]; exact zeroAt_zero _)
     have h0 := hin γ _ 1 hfix (D.isEqn_genericPoint 1)

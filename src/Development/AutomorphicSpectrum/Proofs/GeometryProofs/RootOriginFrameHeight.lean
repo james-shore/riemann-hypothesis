@@ -54,7 +54,7 @@ theorem exists_coeff_of_mem {b₀ : Fin r → E} {n : ℕ} {x : E} (hx : x ∈ f
     refine ⟨Pi.single k 1, by simp [Pi.single_apply], fun j hj => ?_⟩
     have hk' : (k : ℕ) < n := hk
     have : j ≠ k := fun e => by subst e; omega
-    simp [Pi.single_apply, this]
+    simp [this]
   | zero => exact ⟨0, by simp, fun _ _ => rfl⟩
   | add x y _ _ hx hy =>
     obtain ⟨t, rfl, ht⟩ := hx

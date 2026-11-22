@@ -93,7 +93,6 @@ private theorem algebraMap_integers_injective {E : Type} [Field E] [NumberField 
     Function.Injective (algebraMap (𝓞 E) E) := by
   first
     | exact IsFractionRing.injective (𝓞 E) E
-    | exact FaithfulSMul.algebraMap_injective (𝓞 E) E
 
 private theorem mul_not_mem_of_not_mem {E : Type} [Field E] [NumberField E] [StarRing E] {P : HeightOneSpectrum (𝓞 E)} {s t : 𝓞 E}
     (hs : s ∉ P.asIdeal) (ht : t ∉ P.asIdeal) : s * t ∉ P.asIdeal :=
@@ -133,7 +132,6 @@ private theorem mk_mul_redP_eq_of_mul_eq {E : Type} [Field E] [NumberField E] [S
   haveI : P.asIdeal.IsMaximal := by
     first
       | exact P.isMaximal
-      | exact P.isPrime.isMaximal P.ne_bot
   have hs0 : Ideal.Quotient.mk P.asIdeal s ≠ 0 := by
     rwa [Ne, Ideal.Quotient.eq_zero_iff_mem]
   obtain ⟨b, hb⟩ := Ideal.Quotient.exists_inv hs0
@@ -310,10 +308,8 @@ theorem bounded_matrix_entries : BddEntP := by
   · have h1 := (hmem _).mp (hb _ (he s)).2 l
     first
       | exact h1
-      | simpa using h1
   · have h1 := (hmem _).mp (hb _ (he s)).1 l
     first
       | exact h1
-      | simpa using h1
 
 end PI.TwistedEisensteinNonvanishing.W

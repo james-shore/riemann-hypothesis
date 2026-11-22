@@ -77,10 +77,9 @@ private theorem ok_link (P : GC.Hypotheses₂) {Ω : Type} [Field Ω] [CharZero 
     rw [k.j_loc] at h
     simp only [Frame.om, MonoidHom.comp_apply, k.eps] at h
     have h1 := congrArg Units.val h
-    simp only [Units.coe_map, Units.val_one, MonoidHom.coe_coe, RingHom.coe_comp,
-      Function.comp_apply] at h1
+    simp only [Units.coe_map, Units.val_one] at h1
     apply Units.ext
-    simp only [cycMod, MonoidHom.comp_apply, Units.coe_map, MonoidHom.coe_coe, Units.val_one]
+    simp only [cycMod, MonoidHom.comp_apply, Units.coe_map, Units.val_one]
     exact one_of_cast l (ResidueField O) _ h1
   have hfin : Finite (ResidueField O) := hG.fin
   have hok : Φ.Ok C₀ :=

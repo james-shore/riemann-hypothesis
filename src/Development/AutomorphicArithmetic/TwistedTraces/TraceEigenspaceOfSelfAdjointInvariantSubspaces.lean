@@ -33,13 +33,13 @@ private theorem eigIn_closed {W : Submodule ℂ H} (hW : IsClosed (W : Set H)) (
     IsClosed (eigIn W A x : Set H) := by
   have : (eigIn W A x : Set H) = (W : Set H) ∩ {v | A v = (x : ℂ) • v} := by
     ext v
-    simp [eigIn, Module.End.mem_eigenspace_iff]
+    simp [eigIn]
   rw [this]
   exact hW.inter (isClosed_eq A.continuous (continuous_const_smul _))
 
 private theorem mem_eigIn {W : Submodule ℂ H} {A : H →L[ℂ] H} {x : ℝ} {v : H} :
     v ∈ eigIn W A x ↔ v ∈ W ∧ A v = (x : ℂ) • v := by
-  simp [eigIn, Module.End.mem_eigenspace_iff]
+  simp [eigIn]
 
 private theorem prj_inf {P X : Submodule ℂ H} (hP : IsClosed (P : Set H)) (hX : IsClosed (X : Set H))
     (h : ∀ v ∈ X, prj P v ∈ X) : prj X * prj P = prj (X ⊓ P) ∧ prj P * prj X = prj (X ⊓ P) := by

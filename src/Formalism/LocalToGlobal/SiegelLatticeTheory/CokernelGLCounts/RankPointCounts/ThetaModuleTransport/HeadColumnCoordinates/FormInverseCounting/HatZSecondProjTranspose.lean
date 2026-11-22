@@ -29,7 +29,7 @@ theorem uV_mulVec (N : Matrix (Fin (r + 1)) (Fin (r + 1)) M.R) (v : Fin (r + 1) 
     uV g (N.mulVec v) = (Matrix.fromBlocks (N.map (rh1 g)) 0 0 (N.map (rh2 g))).mulVec (uV g v) := by
   funext i
   rcases i with a | a <;>
-    simp [uV, Matrix.mulVec, dotProduct, Fintype.sum_sum_type, firstProj_ring_sum, secondProj_ring_sum, ringFirstProj_apply, ringSecondProj_apply]
+    simp [uV, Matrix.mulVec, dotProduct, Fintype.sum_sum_type, ringFirstProj_apply, ringSecondProj_apply]
 
 theorem mul_crn (N : Matrix (Fin (r + 1)) (Fin (r + 1)) F) (hN : ∀ i, N i (Fin.last r) = if i = Fin.last r then 1 else 0)
     (c : F) : N * crn r c = crn r c := by

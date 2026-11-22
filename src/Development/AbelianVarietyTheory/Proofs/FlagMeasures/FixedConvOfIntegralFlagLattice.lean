@@ -18,8 +18,6 @@ theorem loc_gen {E : Type} [Field E] [NumberField E] (P : IsDedekindDomain.Heigh
   | exact @_root_.GlobalTheory.LocalGenerators.main
   | exact _root_.GlobalTheory.LocalGenerators.main
   | (apply _root_.GlobalTheory.LocalGenerators.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LocalGenerators.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LocalGenerators.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LocalGenerators.main ..)
 
 end GlobalTheory.FixConvRow

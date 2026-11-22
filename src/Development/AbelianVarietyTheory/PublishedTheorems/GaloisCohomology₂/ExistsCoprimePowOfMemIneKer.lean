@@ -126,9 +126,7 @@ theorem exists_pow_of_finite {K L : Type} [Field K] [Fintype K] [Field L] [Algeb
   first
   | exact @_root_.GlobalTheory.CardinalPower.exists_pow_card_eq
   | exact _root_.GlobalTheory.CardinalPower.exists_pow_card_eq
-  | (apply _root_.GlobalTheory.CardinalPower.exists_pow_card_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CardinalPower.exists_pow_card_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CardinalPower.exists_pow_card_eq <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.CardinalPower.exists_pow_card_eq)
   | (intros; exact _root_.GlobalTheory.CardinalPower.exists_pow_card_eq ..)
 
 theorem mem_Ine_of_integral {F Ω : Type} [Field F] [NumberField F] [Field Ω] [Algebra F Ω]

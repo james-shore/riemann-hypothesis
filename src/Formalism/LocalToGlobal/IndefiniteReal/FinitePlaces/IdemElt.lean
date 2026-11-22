@@ -198,7 +198,6 @@ theorem incA_alg (f : D.host.F) : incA D (algebraMap D.host.F D.host.E f) = alge
   unfold incA
   first
     | exact AlgHom.commutes _ _
-    | simp [inclR]
 
 def compV (ι : D.host.E →ₐ[D.host.F] v.adicCompletion D.host.F) :
     Af D.host.F ⊗[D.host.F] D.host.E →ₐ[D.host.F] v.adicCompletion D.host.F :=
@@ -208,7 +207,7 @@ theorem compV_phiE (ι : D.host.E →ₐ[D.host.F] v.adicCompletion D.host.F) (a
     compV v ι (finPart D (phiE v a)) = a := by
   have h1 : algebraMap (AF D.host.F) (AE D) (sA v a) = sA v a ⊗ₜ[D.host.F] (1 : D.host.E) := rfl
   simp only [compV, phiE, finPart, h1, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
-    Algebra.TensorProduct.map_tmul, AlgHom.id_apply, Algebra.TensorProduct.lift_tmul, map_one, mul_one]
+    Algebra.TensorProduct.map_tmul, Algebra.TensorProduct.lift_tmul, map_one, mul_one]
   exact sglV_same v a
 
 theorem compV_incA (ι : D.host.E →ₐ[D.host.F] v.adicCompletion D.host.F) (w : D.host.E) :

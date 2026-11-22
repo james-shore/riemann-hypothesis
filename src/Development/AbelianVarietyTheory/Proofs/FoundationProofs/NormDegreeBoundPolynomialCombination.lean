@@ -14,10 +14,6 @@ theorem natDegree_norm_of_coord_degree : ∀ (k A : Type) [Field k] [Infinite k]
  (∀ (d : ℕ) (p : Fin n → k[X]), (∀ i, (p i).degree < d) → (∑ i, (C (lam i) * X ^ d + p i) • b i) ≠ 0 ∧ (Algebra.norm k[X] (∑ i, (C (lam i) * X ^ d + p i) • b i)).natDegree = n * d + c) := by
   first
   | exact @_root_.GlobalTheory.NormFormBound.norm_degree
-  | exact _root_.GlobalTheory.NormFormBound.norm_degree
-  | (apply _root_.GlobalTheory.NormFormBound.norm_degree <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NormFormBound.norm_degree <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NormFormBound.norm_degree <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NormFormBound.norm_degree ..)
 
 end

@@ -16,8 +16,6 @@ theorem order_prod_sub_prod {R τ ι : Type} [CommRing R] (s : Finset ι)
   | exact @_root_.GlobalTheory.OrderProductDifference.target
   | exact _root_.GlobalTheory.OrderProductDifference.target
   | (apply _root_.GlobalTheory.OrderProductDifference.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.OrderProductDifference.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.OrderProductDifference.target <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.OrderProductDifference.target ..)
 
 theorem order_pow_sub_pow {R τ : Type} [CommRing R] (u l : MvPowerSeries τ R)

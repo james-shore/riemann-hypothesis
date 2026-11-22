@@ -29,7 +29,7 @@ theorem _root_.GlobalTheory.TwIntegral.intg_inv {A : Matrix (Fin n) (Fin n) E}
       rw [updateRow_self]
       by_cases hl : l = i
       · subst hl; simp
-      · simp [Pi.single_apply, hl]
+      · simp [hl]
     · rw [updateRow_ne hk]
       exact hA k l
   rw [inv_def, Ring.inverse_eq_inv', Matrix.smul_apply, smul_eq_mul, norm_mul, norm_inv, hd,
@@ -299,8 +299,7 @@ theorem _root_.GlobalTheory.TwIntegral.integral_twConj_mem_cent_mul : ∀ (F E :
     unfold _root_.GlobalTheory.Tw.twConj
     rw [_root_.GlobalTheory.Tw.Model.theta_mul]
     have hck : IsUnit (c * k).det := by rw [det_mul]; exact hcd.mul hkdu
-    simp only [Matrix.mul_inv_rev, nonsing_inv_nonsing_inv _ hδdu, nonsing_inv_nonsing_inv _ hck,
-      nonsing_inv_nonsing_inv _ hcd, nonsing_inv_nonsing_inv _ hkdu, mul_assoc,
+    simp only [Matrix.mul_inv_rev, nonsing_inv_nonsing_inv _ hδdu, nonsing_inv_nonsing_inv _ hcd, nonsing_inv_nonsing_inv _ hkdu, mul_assoc,
       mul_nonsing_inv_cancel_left _ _ hθkdu, mul_nonsing_inv _ hkdu, mul_one]
   have hsi : ∀ i j, ‖(_root_.GlobalTheory.Tw.adj δ c * c) i j‖ ≤ 1 := by
     rw [hs]

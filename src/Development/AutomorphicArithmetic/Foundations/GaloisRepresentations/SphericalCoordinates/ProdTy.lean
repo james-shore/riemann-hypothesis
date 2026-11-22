@@ -65,10 +65,10 @@ theorem UpperTheory.Gal.W2.fibW_of :
         ε τ = 1 ∧ ε (ComplexEmbedding.conjugate τ) = 0) with ⟨e1, e2⟩ | ⟨e1, e2⟩
     · rw [e1, Nat.mul_zero, Multiset.card_eq_zero] at hc1
       rw [hc1, e1]
-      simp [Function.comp_def]
+      simp
     · rw [e2, Nat.mul_zero, Multiset.card_eq_zero] at hc2
       rw [hc2, e1]
-      simp [Function.comp_def]
+      simp
   have hr0 : (rts χ t₀).erase mu = (evAt ty ev (ComplexEmbedding.conjugate t₀)).map (starRingEnd ℂ) := by
     rw [hrts, evFull, hmu, Multiset.singleton_add, Multiset.erase_cons_head]
   have hpair : A t₀ * B t₀ * (A (ComplexEmbedding.conjugate t₀) * B (ComplexEmbedding.conjugate t₀)) =

@@ -78,7 +78,7 @@ private theorem tri_of_eq {g : GL (Fin N) R} {m : GL (Fin r) R × GL (Fin s) R} 
   have e : m.1.val * ((m.1⁻¹).val * Y) = Y := by
     rw [← Matrix.mul_assoc, ← Units.val_mul]; simp
   rw [Units.val_mul, ← Matrix.submatrix_mul_equiv _ _ _ (GlobalTheory.ResW.blkE h), a, nU_sub, GlobalTheory.ResW.HeckeCT.blk_sub, Matrix.fromBlocks_multiply]
-  simp [e]
+  simp
 
 private theorem tri_blk_nU (m : GL (Fin r) R × GL (Fin s) R) (X : Matrix (Fin r) (Fin s) R) :
     Tri h (GlobalTheory.ResW.blk h m * nU h X) m := by
@@ -388,7 +388,6 @@ private theorem term_eq {a b p₁ p₂ : ℕ} (h1 : p₁ ≤ a) (h2 : p₂ ≤ b
       ← ofAdd_nsmul, ← ofAdd_nsmul, ← ofAdd_sub]
     congr 2
     simp only [nsmul_eq_mul]
-    push_cast
     ring
   have hq : (qV E w : ℂ) ≠ 0 := by exact_mod_cast (qV_pos w).ne'
   rw [absHalf_eq _ _ ho, ← Complex.cpow_natCast, ← Complex.cpow_add _ _ hq]

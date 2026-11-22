@@ -64,8 +64,8 @@ private theorem twK_sum (θ : Twist μ) {ι : Type} (s : Finset ι) (c : ι → 
   · exact Finset.sum_congr rfl fun i _ => (mul_finsum _ _).symm
   · intro i _
     refine (twK_fin θ (f i) x).subset fun γ hγ h0 => hγ ?_
-    simp only [Function.mem_support, not_not] at h0 ⊢
-    simp only [Function.mem_support, ne_eq, Decidable.not_not] at *
+    simp only at h0 ⊢
+    simp only [Function.mem_support, ne_eq] at *
     rw [h0, mul_zero]
 
 private theorem twK_cont (θ : Twist μ) (f : TG K n) : Continuous (twK θ f) := by

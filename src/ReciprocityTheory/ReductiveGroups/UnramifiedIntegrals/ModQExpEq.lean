@@ -46,7 +46,7 @@ theorem IsMF.qExp_eq {k : ℤ} {f : ℍ → ℂ} (hf : IsMF k f) {s : PowerSerie
     have he : ‖PowerSeries.coeff n (qExpansion 1 f)‖ * ‖x‖ ^ n =
         ‖PowerSeries.coeff n (qExpansion 1 f) * (y : ℂ) ^ n‖ * (‖x‖ / y) ^ n := by
       rw [norm_mul, norm_pow, hyn, div_pow]
-      field_simp <;> ring
+      field_simp
     rw [he]
     exact mul_le_mul_of_nonneg_right hb (by positivity)
   refine eq_of_ev_eq hconv hs fun x hx0 hx1 => ?_

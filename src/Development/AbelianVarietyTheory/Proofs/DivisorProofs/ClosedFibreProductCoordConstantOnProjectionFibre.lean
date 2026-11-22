@@ -67,7 +67,5 @@ theorem Near.closed_fibre_constant : ∀ (R : Type) [CommRing R] [IsDomain R] [I
   rw [← ht (IsLocalRing.closedPoint _), ← ht' (IsLocalRing.closedPoint _)]
   first
     | exact this
-    | simpa only [Scheme.Hom.comp_apply] using this
-    | simpa only [Scheme.comp_base_apply] using this
 
 end GlobalTheory.Mum

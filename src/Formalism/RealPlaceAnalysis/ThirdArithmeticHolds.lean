@@ -50,7 +50,7 @@ theorem wdCas : WDCas := by
   have h1 := sumOfSquaresIdentity_holds V n ε E w hU
   have h2 := sumOfSquaresIdentity_holds V n ε (fun a b => if ε a = ε b then E a b else 0) w hU'
   rw [hCas', hCasK'] at h2
-  first | rw [two_nsmul] at h1 h2 | rw [two_smul] at h1 h2
+  first | rw [two_nsmul] at h1 h2
   rw [add_sub_cancel_right, hK, inner_smul_right, inner_self_eq_norm_sq_to_K] at h2
   rw [LinearMap.sub_apply, LinearMap.add_apply, inner_sub_right, inner_add_right, hK,
     inner_smul_right, inner_self_eq_norm_sq_to_K] at h1

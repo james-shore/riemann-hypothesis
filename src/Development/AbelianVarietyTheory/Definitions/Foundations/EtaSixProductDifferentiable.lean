@@ -110,7 +110,7 @@ def eta6Mult : SL(2, ℤ) →* ℂ where
 def eta6Group : Subgroup SL(2, ℤ) := eta6Mult.toHomUnits.ker
 
 lemma mem_eta6Group (γ : SL(2, ℤ)) : γ ∈ eta6Group ↔ eta6Mult γ = 1 := by
-  simp [eta6Group, MonoidHom.mem_ker, Units.ext_iff]
+  simp [eta6Group, MonoidHom.mem_ker]
 
 lemma eta_six_holomorphic : MDiff eta6 := by
   rw [UpperHalfPlane.mdifferentiable_iff]

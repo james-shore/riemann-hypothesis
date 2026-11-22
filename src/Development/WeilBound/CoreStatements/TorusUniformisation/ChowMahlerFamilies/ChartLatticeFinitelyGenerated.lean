@@ -17,8 +17,8 @@ theorem PositivityTheory.Xgn.chart_lattice_finitely_generated : ∀ (O : Type) [
     refine (hiff l (b l q)).2 ⟨Pi.single q 1, fun q' => ⟨0, ?_⟩, ?_⟩
     · by_cases h : q' = q
       · subst h
-        simp [Subalgebra.one_mem]
-      · simp [Pi.single_apply, h, Subalgebra.zero_mem]
+        simp
+      · simp [h]
     · simp [Pi.single_apply, ite_smul]
   choose nn hnn using hgen
   obtain ⟨g, hg⟩ : ∃ g : Fin k × Fin r → Fin r → Ω, g = fun p => f p.1 ^ nn p.1 p.2 • b p.1 p.2 :=

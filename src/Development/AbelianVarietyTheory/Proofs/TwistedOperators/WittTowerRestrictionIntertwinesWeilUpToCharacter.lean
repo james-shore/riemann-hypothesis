@@ -68,17 +68,17 @@ theorem mt_mul' (S : HSp D) (h k : GA D S) :
 
 theorem actO_one_mul (S T : HSp D) (h k : GA D T) (x : WO S T) :
     actO S T 1 h (actO S T 1 k x) = actO S T 1 (h * k) x := by
-  simp [actO, mt_one', mt_mul', Matrix.mul_assoc]
+  simp [actO, mt_mul', Matrix.mul_assoc]
 
 theorem actO_one_one (S T : HSp D) (x : WO S T) : actO S T 1 1 x = x := by
-  simp [actO, mt_one']
+  simp [actO]
 
 theorem actO_iso_mid (V V' W : HSp D) {r : ℕ} (C : Matrix (Fin V.rank) (Fin r) D.host.E)
     (B : Matrix (Fin V.rank) (Fin V'.rank) D.host.E) (k : GA D W) (y : Mx D W.rank r) (x : WO V' W) :
     actO V W 1 k (isoPart V W C y + midPart V V' W B x) =
       isoPart V W C (HMul.hMul (Formalism.L2.Theta.mt W k) (y : Matrix (Fin W.rank) (Fin r) (AE D)) : Mx D W.rank r) +
         midPart V V' W B (actO V' W 1 k x) := by
-  simp [actO, isoPart, midPart, mt_one', Matrix.mul_add, Matrix.add_mul, Matrix.mul_assoc]
+  simp [actO, isoPart, midPart, Matrix.mul_add, Matrix.mul_assoc]
 
 theorem move (S T : HSp D) {χS χT : (AE D)ˣ →* Circle} {ω : GA D S × GA D T →* Module.End ℂ (WO S T → ℂ)}
     (hω : IsWeilDatumO ψ S T χS χT ω) (h : GA D T) (w : WO S T) (P : WO S T → ℂ) (hP : IsThetaFunO ψ S T P) :

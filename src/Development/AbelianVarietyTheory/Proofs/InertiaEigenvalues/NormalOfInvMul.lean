@@ -26,7 +26,7 @@ theorem norm_adjugate_le_one {F : Type} [NormedField F] [IsUltrametricDist F] {m
     rw [Matrix.updateRow_self]
     by_cases hb : b = i
     · subst hb; simp
-    · simp [Pi.single_apply, hb]
+    · simp [hb]
   · rw [Matrix.updateRow_ne h]; exact hA a b
 
 theorem norm_inv_le_one_of_det {F : Type} [NormedField F] [IsUltrametricDist F] {m : Type} [Fintype m]

@@ -39,7 +39,7 @@ theorem cpull_map_fst {K₁ L₁ K₂ L₂ : Cx R} (φ₁ : K₁ ⟶ L₁) (φ�
       (mappingCone.fst φ₁).1.comp (Cochain.ofHom a) (add_zero 1) := by
     refine (mappingCone.ext_cochain_from_iff φ₁ 0 1 rfl).2 ⟨?_, ?_⟩
     · rw [← Cochain.comp_assoc _ _ _ (show -1 + 0 = -1 by omega) (zero_add 1) (by omega), ← Cochain.comp_assoc _ _ _ (show -1 + 1 = 0 by omega) (add_zero 1) (by omega)]
-      simp [mappingCone.map, Cochain.comp_assoc_of_second_is_zero_cochain]
+      simp [mappingCone.map]
     · rw [← Cochain.comp_assoc_of_first_is_zero_cochain, ← Cochain.comp_assoc_of_first_is_zero_cochain]
       simp [mappingCone.map, Cochain.comp_assoc_of_first_is_zero_cochain]
   rw [← Cochain.comp_assoc_of_first_is_zero_cochain, key, Cochain.comp_assoc_of_second_is_zero_cochain]

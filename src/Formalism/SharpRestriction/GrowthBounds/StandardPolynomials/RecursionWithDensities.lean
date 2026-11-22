@@ -43,13 +43,13 @@ theorem glAct_X' (Lt : Letters (Fin N)) (S : Set (Fin N)) (c d : Fin r) (a : Fin
         by_cases he : e = d
         · subst he; simp
         · have : (a, d) ≠ (a, e) := fun h => he (Prod.mk.inj h).2.symm
-          simp [he, Pi.single_apply, Ne.symm this]
+          simp [he, Ne.symm this]
       · simp only [if_pos hl, if_neg hv, LinearMap.neg_apply, LinearMap.comp_apply, LinearMap.mulLeft_apply,
           Derivation.coeFn_coe, pderiv_X]
         by_cases he : e = c
         · subst he; simp
         · have : (a, c) ≠ (a, e) := fun h => he (Prod.mk.inj h).2.symm
-          simp [he, Pi.single_apply, Ne.symm this]
+          simp [he, Ne.symm this]
     · simp only [if_neg hl, LinearMap.zero_apply]
   · intro l _ hla
     have h1 : ∀ b : Fin r, pderiv (l, b) (X (a, e) : MvPolynomial (Fin N × Fin r) K) = 0 := by
@@ -81,10 +81,10 @@ theorem chWt_single (LL : ChainLetters N) (j : ℕ) (a : Fin N) (e : Fin r) :
   · by_cases he : e = 0
     · subst he; simp
     · have : (a, e) ≠ (a, (0 : Fin r)) := fun h => he (Prod.mk.inj h).2
-      simp [he, Finsupp.single_apply, this]
+      simp [he, this]
   · intro i _ hia
     have : (a, e) ≠ (i, (0 : Fin r)) := fun h => hia (Prod.mk.inj h).1.symm
-    simp [Finsupp.single_apply, this]
+    simp [this]
   · intro h; exact absurd (Finset.mem_univ _) h
 
 theorem ycond_of_stable (LL : ChainLetters N) (j : ℕ) (M : WithTop ℤ) (V : Submodule K (MvPolynomial (Fin N × Fin r) K))

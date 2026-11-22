@@ -130,7 +130,7 @@ theorem GlobalTheory.JacSubst.integral_mulVec : ∀ (F E : Type) [Field F] [Numb
     rw [h1, hχ, chi_AF_det]
     congr 1
     ext
-    simp only [IsUnit.unit_spec, hdet, Units.coe_map, MonoidHom.coe_coe, map_one, one_pow, mul_one, pow_one]
+    simp only [IsUnit.unit_spec, hdet, Units.coe_map, map_one, one_pow, mul_one, pow_one]
   have hmap : μ.map φ = (addEquivAddHaarChar φ)⁻¹ • μ := by
     have key := addEquivAddHaarChar_smul_map μ φ
     have hne : addEquivAddHaarChar φ ≠ 0 := (addEquivAddHaarChar_pos φ).ne'

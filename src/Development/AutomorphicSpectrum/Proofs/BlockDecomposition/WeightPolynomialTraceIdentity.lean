@@ -58,8 +58,7 @@ theorem evL_frL (z : Fin n → ℂˣ) (f : LP n) : evL z (frL n f) = evL (fun a 
     refine AddMonoidAlgebra.algHom_ext (fun μ => ?_) (Subsingleton.elim _ _)
     simp only [AlgHom.comp_apply, frL, AddMonoidAlgebra.mapDomainAlgHom_apply, AddMonoidAlgebra.mapDomain_single]
     rw [evL_single, evL_single]
-    simp only [one_mul, AddMonoidHom.smul_apply, AddMonoidHom.id_apply, Pi.smul_apply, smul_eq_mul,
-      Units.val_pow_eq_pow_val]
+    simp only [one_mul, AddMonoidHom.smul_apply, AddMonoidHom.id_apply, Pi.smul_apply, Units.val_pow_eq_pow_val]
     refine Finset.prod_congr rfl fun a _ => ?_
     rw [← zpow_natCast, ← _root_.zpow_mul]; push_cast; ring_nf
   exact congrArg (fun φ : LP n →ₐ[ℂ] ℂ => φ f) this
@@ -69,7 +68,7 @@ theorem evL_pPL (z : Fin n → ℂˣ) : evL z (pPL n) = ∏ a, ∏ b, (1 + (z a 
   refine Finset.prod_congr rfl fun a _ => Finset.prod_congr rfl fun b _ => ?_
   congr 1
   have key : ∀ a : Fin n, ∏ c, (z c : ℂ) ^ ((Pi.single a (1 : ℤ) : Fin n → ℤ) c) = z a := fun a => by
-    rw [Finset.prod_eq_single a (fun c _ hc => by simp [Pi.single_apply, hc]) (fun h => absurd (Finset.mem_univ a) h)]
+    rw [Finset.prod_eq_single a (fun c _ hc => by simp [hc]) (fun h => absurd (Finset.mem_univ a) h)]
     simp
   simp only [Pi.sub_apply, zpow_sub₀ (Units.ne_zero _), Finset.prod_div_distrib, key]
 

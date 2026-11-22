@@ -189,7 +189,7 @@ theorem eq_lin (s : (Fin m → ℤ) →₀ ℂ) (h : ∀ κ, s κ ≠ 0 → κ =
   simp only [lin, Finsupp.add_apply, Finsupp.finset_sum_apply, Finsupp.single_apply]
   by_cases h0 : κ = 0
   · subst h0
-    simp [single_ne_zero', neg_single_ne_zero']
+    simp
   by_cases h1 : ∃ k, κ = Pi.single k 1
   · obtain ⟨j, rfl⟩ := h1
     simp only [if_neg (Ne.symm h0), zero_add, hinj, fun k => (single_ne_neg_single j k).symm, if_false, add_zero,
@@ -296,7 +296,7 @@ theorem satU_ne_zero : ∀ (K : Type) [Field K] [Valued K (WithZero (Multiplicat
     refine Finset.sum_congr rfl fun k _ => ?_
     by_cases hk : α k = 0
     · simp [hk]
-    · simp [hk, mul_inv_cancel₀ hk]
+    · simp [hk]
   have hc : ((Finset.univ.filter fun k => α k = 0).card : ℂ) ≠ 0 :=
     Nat.cast_ne_zero.2 (Finset.card_ne_zero_of_mem (Finset.mem_filter.2 ⟨Finset.mem_univ _, hα₀⟩))
   rw [hcnt] at e1

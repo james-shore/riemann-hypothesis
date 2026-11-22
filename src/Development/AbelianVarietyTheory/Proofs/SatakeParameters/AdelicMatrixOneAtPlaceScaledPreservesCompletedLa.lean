@@ -107,7 +107,7 @@ theorem basis_coeff {E N : Type} [Field E] [AddCommGroup N] [Module F N] [Algebr
     (bE : Module.Basis (Fin d) F E) (x : Fin d → N) (k : Fin d) :
     TensorProduct.equivFinsuppOfBasisLeft bE (∑ j, bE j ⊗ₜ[F] x j) k = x k := by
   classical
-  simp [map_sum, TensorProduct.equivFinsuppOfBasisLeft_apply_tmul_apply, Module.Basis.repr_self,
+  simp [map_sum, Module.Basis.repr_self,
     Finsupp.single_apply]
 
 theorem basis_expand {E N : Type} [Field E] [AddCommGroup N] [Module F N] [Algebra F E] {d : ℕ}

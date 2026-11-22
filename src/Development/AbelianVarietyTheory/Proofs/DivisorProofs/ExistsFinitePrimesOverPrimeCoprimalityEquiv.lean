@@ -13,10 +13,6 @@ theorem primes_over_l : ∀ {F : Type} [Field F] [NumberField F] (l : ℕ), l.Pr
       ∀ I : Ideal (𝓞 F), CoprimeTo F (∏ 𝔭 ∈ P, 𝔭) I ↔ CoprimeTo F (Ideal.span {(l : 𝓞 F)}) I := by
   first
   | exact @_root_.GlobalTheory.PrimesAboveExistence.exists_primes_above
-  | exact _root_.GlobalTheory.PrimesAboveExistence.exists_primes_above
-  | (apply _root_.GlobalTheory.PrimesAboveExistence.exists_primes_above <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PrimesAboveExistence.exists_primes_above <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PrimesAboveExistence.exists_primes_above <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PrimesAboveExistence.exists_primes_above ..)
 
 end GlobalTheory.PrimesOverL

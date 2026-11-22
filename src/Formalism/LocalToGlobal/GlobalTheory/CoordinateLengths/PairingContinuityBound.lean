@@ -74,6 +74,6 @@ theorem len_pi_sum {R : Type*} [CommRing R] {G : Type*} [Fintype G] [DecidableEq
   first
   | exact Module.length_pi
   | exact Module.length_pi_of_fintype _
-  | simp [Module.length_pi]
+  | simp
 
 end Formalism.L2.GlobalTheoryTheory.LemB

@@ -25,7 +25,7 @@ theorem lattice_zbasis {K : Type} [Field K] [NumberField K] {r : ℕ} (L : Submo
     intro v hv
     refine ⟨fun j => b.repr ⟨v, hv⟩ j, ?_⟩
     have h' := congrArg (fun z : L => (z : Fin r → K)) (b.sum_repr ⟨v, hv⟩)
-    simp only [Submodule.coe_sum, Submodule.coe_smul] at h'
+    simp only [Submodule.coe_sum] at h'
     conv_lhs => rw [← h']
     exact Finset.sum_congr rfl fun j _ => (Int.cast_smul_eq_zsmul ℚ _ _).symm
   have hS : ∀ v ∈ L, v ∈ Submodule.span ℚ (Set.range f) := by

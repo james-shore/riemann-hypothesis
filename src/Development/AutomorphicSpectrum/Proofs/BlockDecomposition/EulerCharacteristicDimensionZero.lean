@@ -88,11 +88,6 @@ theorem chi_eq_geoNum : ∀ (m : ℕ) (n : Fin (m + 1) → ℕ) (Z : Scheme.{0})
   haveI : IsAffine Z := by
     first
       | exact IsAffine.of_isIso Z.topIso.inv
-      | exact isAffine_of_isIso Z.topIso.inv
-      | exact AlgebraicGeometry.isAffineOpen_top_iff.mp hA
-      | exact (AlgebraicGeometry.isAffineOpen_top_iff Z).mp hA
-      | exact IsAffine.of_isIso (Scheme.topIso Z).inv
-      | exact hA.isAffine_of_top
   rw [GlobalTheory.chi_structureModule_of_isAffine Z (ZMod p)]
   have hb := bijective_top Z hd
   have hRes : CharP (Z.residueField (genericPoint Z)) p :=
@@ -106,7 +101,7 @@ theorem chi_eq_geoNum : ∀ (m : ℕ) (n : Fin (m + 1) → ℕ) (Z : Scheme.{0})
     rw [Ideal.mem_comap, Ideal.mem_span_singleton,
       ← CharP.intCast_eq_zero_iff ((MP ℤ m n).residueField (f (genericPoint Z))) p]
     simp only [ptIdeal, ReciprocityTheory.ChartRestriction.G.Geo.mCoordIdeal, RingHom.mem_ker, ReciprocityTheory.ChartRestriction.G.Geo.mConeMap,
-      MvPolynomial.aeval_C, MvPolynomial.algebraMap_apply, MvPolynomial.C_eq_zero, eq_intCast]
+      eq_intCast]
     rw [map_intCast, ← map_intCast (MvPolynomial.C : (MP ℤ m n).residueField (f (genericPoint Z)) →+*
       MvPolynomial (Fin (m + 1)) ((MP ℤ m n).residueField (f (genericPoint Z)))), MvPolynomial.C_eq_zero]
   have hchar : charOf (ptIdeal (f (genericPoint Z))) = p := by

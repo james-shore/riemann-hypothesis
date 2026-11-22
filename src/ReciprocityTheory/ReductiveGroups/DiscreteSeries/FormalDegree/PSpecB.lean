@@ -21,9 +21,6 @@ private lemma pmat_eigenvectorUnitary_star_mul_self {ε : Fin n → Bool} (z : P
   have hU := ((pmat_isHermitian z).eigenvectorUnitary).2
   first
   | exact Matrix.mem_unitaryGroup_iff'.mp hU
-  | exact Unitary.star_mul_self_of_mem hU
-  | exact unitary.star_mul_self_of_mem hU
-  | simp
 
 private lemma pmat_eq_eigenvectorUnitary_mul_diagonal_mul_star {ε : Fin n → Bool} (z : PCoord ε → ℂ) :
     pmat z = ((pmat_isHermitian z).eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) *
@@ -32,8 +29,6 @@ private lemma pmat_eq_eigenvectorUnitary_mul_diagonal_mul_star {ε : Fin n → B
   conv_lhs => rw [(pmat_isHermitian z).spectral_theorem]
   first
   | rfl
-  | (congr 2; ext i j; simp [pev, Matrix.diagonal_apply])
-  | simp [pev, Function.comp_def]
 
 theorem pmat_mul_evU {ε : Fin n → Bool} (z : PCoord ε → ℂ) :
     pmat z * ((pmat_isHermitian z).eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ) =
@@ -51,12 +46,10 @@ theorem neg_pmat_eq {ε : Fin n → Bool} (z : PCoord ε → ℂ) :
   rw [h]
   have hd : diagonal (fun a => ((-pev z a : ℝ) : ℂ)) = -diagonal (fun a => (pev z a : ℂ)) := by
     ext i j
-    by_cases hij : i = j <;> simp [diagonal_apply, hij]
+    by_cases hij : i = j <;> simp [hij]
   rw [hd]
   first
   | rw [Matrix.mul_neg, Matrix.neg_mul]
-  | simp [Matrix.mul_neg, Matrix.neg_mul]
-  | noncomm_ring
 
 theorem jm_mul_jm (ε : Fin n → Bool) : Jm ε * Jm ε = 1 := by
   unfold Jm
@@ -87,11 +80,9 @@ private lemma charpoly_roots_diagonal (d : Fin n → ℂ) :
       by_cases hij : i = j
       · subst hij
         first
-        | simp [Matrix.charmatrix_apply]
-        | simp [Matrix.charmatrix]
+        | simp
       · first
-        | simp [Matrix.charmatrix_apply, hij]
-        | simp [Matrix.charmatrix, hij]
+        | simp [hij]
     rw [hc, det_diagonal]
   rw [h1, Finset.prod_eq_multiset_prod]
   have hm : (univ.val.map fun i => Polynomial.X - Polynomial.C (d i)) =
@@ -115,7 +106,6 @@ theorem pev_neg_multiset {ε : Fin n → Bool} (z : PCoord ε → ℂ) :
       (univ.val.map (pev z)).map (fun x : ℝ => (x : ℂ)) := by
     first
     | (rw [Multiset.map_map, Multiset.map_map]; exact h3)
-    | simpa [Multiset.map_map, Function.comp_def] using h3
   exact Multiset.map_injective Complex.ofReal_injective h4
 
 theorem sum_pev_neg {ε : Fin n → Bool} (z : PCoord ε → ℂ) (g : ℝ → ℝ) :
@@ -141,7 +131,6 @@ theorem quad_evU {ε : Fin n → Bool} (z : PCoord ε → ℂ) (c : Fin n → �
   have h1 : star (c a) * c a = ((‖c a‖ : ℂ)) ^ 2 := by
     first
     | exact Complex.conj_mul' (c a)
-    | simp [← Complex.conj_mul']
   rw [← h1]
   ring
 
@@ -205,7 +194,6 @@ theorem card_pos_le {ε : Fin n → Bool} (z : PCoord ε → ℂ) (b : Bool) :
   have hle := LinearMap.finrank_le_finrank_of_injective hinj
   first
   | simpa [Fintype.card_subtype] using hle
-  | (simp only [Module.finrank_fintype_fun_eq_card, Fintype.card_subtype] at hle; convert hle using 2)
 
 theorem pev_card_pos {ε : Fin n → Bool} (z : PCoord ε → ℂ) :
     (univ.filter (fun a => 0 < pev z a)).card ≤ q0 ε := by
@@ -231,13 +219,9 @@ theorem pev_pos_sum_sq {ε : Fin n → Bool} (z : PCoord ε → ℂ) :
     have hh : pmat z j i = star (pmat z i j) := by
       first
       | exact ((pmat_isHermitian z).apply j i).symm
-      | (have e := congrFun (congrFun (pmat_isHermitian z).eq j) i
-         rw [Matrix.conjTranspose_apply] at e
-         exact e.symm)
     rw [hh]
     first
     | exact Complex.mul_conj' _
-    | (rw [mul_comm]; exact Complex.conj_mul' _)
   have hsum : ∑ a, pev z a ^ 2 = ∑ i, ∑ j, ‖pmat z i j‖ ^ 2 := by
     have e := h1.symm.trans h2
     exact_mod_cast e
@@ -275,8 +259,6 @@ theorem sum_pos_pev_le {ε : Fin n → Bool} (z : PCoord ε → ℂ) :
       ∑ a ∈ univ.filter (fun a => 0 < pev z a), pev z a ^ 2 := by
     first
     | exact sq_sum_le_card_mul_sum_sq
-    | (have e := Finset.sum_mul_sq_le_sq_mul_sq (univ.filter (fun a => 0 < pev z a)) (fun _ => (1 : ℝ)) (pev z)
-       simpa using e)
   rw [pev_pos_sum_sq] at hcs
   have hq : ((univ.filter (fun a => 0 < pev z a)).card : ℝ) ≤ q0 ε := by exact_mod_cast pev_card_pos z
   have hhs : 0 ≤ hs (pmat z) := by unfold hs; positivity

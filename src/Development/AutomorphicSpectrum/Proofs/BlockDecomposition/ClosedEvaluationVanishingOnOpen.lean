@@ -30,7 +30,7 @@ theorem sEmb_row (n : ℕ) (m : Mir k n) (j : Fin (n + 1 + 1)) :
     · subst hj
       simp [GlobalTheory.BZMir.eLast]
     · rw [Matrix.one_apply_ne (fun e => hj (Fin.castSucc_injective _ e).symm)]
-      simp [GlobalTheory.BZMir.eLast, Pi.single_apply, hj]
+      simp [GlobalTheory.BZMir.eLast, hj]
 
 theorem dEmb_mul_sEmb_mem_Cl (i t : ℕ) (d : Fin (t + 1) → k) (m : Mir k ((i + 1) + t)) :
     dEmb k i t d * sEmb k _ m ∈ Cl k i t := by

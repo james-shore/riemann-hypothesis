@@ -48,7 +48,7 @@ theorem weight_rowW_eq {N : ℕ} (m : Fin N × Fin N →₀ ℕ) (a : Fin N) :
   rw [Finset.sum_eq_single a]
   · simp [rowW, rowDeg]
   · intro b _ hb
-    simp [rowW, Pi.single_apply, Ne.symm hb]
+    simp [rowW, Ne.symm hb]
   · simp
 
 theorem glRel_eV (N : ℕ) (ν : Fin N → ℕ) : GlRel N (eV N ν) := by
@@ -61,14 +61,14 @@ theorem glRel_eV (N : ℕ) (ν : Fin N → ℕ) : GlRel N (eV N ν) := by
   rw [eV_val ν a b ha hb, eV_val ν c d hc hd, eV_val ν c d hc hd, eV_val ν a b ha hb, h]
   by_cases hbc : b = c <;> by_cases hda : d = a
   · subst hbc hda
-    simp only [if_true, LinearMap.sub_apply, Submodule.coe_sub, eV_val ν d d ha hd, eV_val ν b b hc hb]
+    simp only [if_true, eV_val ν d d ha hd, eV_val ν b b hc hb]
   · subst hbc
     have : (⟨d, hd⟩ : Fin N) ≠ ⟨a, ha⟩ := fun h => hda (Fin.mk.inj h)
     simp only [if_true, this, if_false, hda, sub_zero, eV_val ν a d ha hd]
     simp
   · subst hda
     have : (⟨b, hb⟩ : Fin N) ≠ ⟨c, hc⟩ := fun h => hbc (Fin.mk.inj h)
-    simp only [if_true, this, if_false, hbc, zero_sub, LinearMap.neg_apply, Submodule.coe_neg, eV_val ν c b hc hb]
+    simp only [if_true, this, if_false, hbc, zero_sub, eV_val ν c b hc hb]
     simp
   · have h1 : (⟨b, hb⟩ : Fin N) ≠ ⟨c, hc⟩ := fun h => hbc (Fin.mk.inj h)
     have h2 : (⟨d, hd⟩ : Fin N) ≠ ⟨a, ha⟩ := fun h => hda (Fin.mk.inj h)

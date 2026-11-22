@@ -55,5 +55,5 @@ theorem UpperTheory.Gal.W2.fibDet_of :
     rw [LinearMap.toMatrix_apply, hf, map_smul, bb.repr_self]
     by_cases h : x = z
     · subst h; simp
-    · simp [Matrix.diagonal_apply, Finsupp.single_apply, h, Ne.symm h]
+    · simp [h]
   rw [hmat, Matrix.det_diagonal, Fintype.prod_sigma]

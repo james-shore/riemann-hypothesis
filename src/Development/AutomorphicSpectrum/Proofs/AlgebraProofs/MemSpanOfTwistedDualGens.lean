@@ -89,7 +89,7 @@ theorem mem_span_of_twistedDualGens (E : ChartBundle O (mseg x) N V) {M : ℕ} {
     have h3 : ∀ v ∈ E.lat s₀, (f l ^ n₀ • bas.coord q) v ∈ chartRing O (mseg x) s₀ := by
       intro v hv
       obtain ⟨β, hβ, rfl⟩ := hgen v hv
-      simp only [LinearMap.smul_apply, map_sum, map_smul, smul_eq_mul, Finset.mul_sum]
+      simp only [LinearMap.smul_apply, map_sum, map_smul, smul_eq_mul]
       refine sum_mem fun g _ => ?_
       exact mul_mem (hβ g) (h2 g)
     obtain ⟨u, -, hu⟩ := hg.generate s₀ hs _ h3

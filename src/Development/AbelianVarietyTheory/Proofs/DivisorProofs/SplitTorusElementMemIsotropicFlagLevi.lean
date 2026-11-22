@@ -85,7 +85,7 @@ theorem exists_diagonal (h : IsCMExt F E σ) {a : GAd σ J} (ha : a ∈ infPts �
     have hev : evInf F w (pairA F (c j) 1) = c j w := rfl
     have hc : infEmb τ (compInf F E w ((pairA F (c j) 1 : AF F) ⊗ₜ[F] (1 : E))) = (s j : ℂ) := by
       simp only [compInf, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, Algebra.TensorProduct.map_tmul,
-        AlgHom.coe_id, id_eq, hev, infEmb_tmul, map_one, mul_one]
+        hev, infEmb_tmul, map_one, mul_one]
       rw [← InfinitePlace.Completion.extensionEmbeddingOfIsReal_apply (hR w),
         ← InfinitePlace.Completion.ringEquivRealOfIsReal_apply (hR w), RingEquiv.apply_symm_apply]
     have hij := congrFun (congrFun (hs w τ) i) j

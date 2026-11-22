@@ -190,7 +190,7 @@ theorem smoothed_pres_of_shCoc [IsAlgClosure ℚ Ω] (A : ValuationSubring Ω) (
   · have := congrFun (hY r s u x) 1
     show Y r (s * u) x 1 = Y r s x 1 + (ν s : Qbar l) * Y r u (x * (cycMod ℚ Ω l r s)⁻¹) 1
     rw [this, hν s hs]
-    simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two, hD s hs]
+    simp [hD s hs]
   · obtain ⟨E0, hE⟩ := hc r n
     exact ⟨E0, fun s s' h => hE s s' 1 h⟩
   · exact Units.ext (by rw [hν s (Ine_le_Dec A hs), hI s hs, Units.val_one])

@@ -15,7 +15,7 @@ theorem wS_nS_wS_eq_unit {k : Type} [CommRing k] (z : kˣ) :
   ext i j
   simp only [Matrix.SpecialLinearGroup.coe_mul, cw, cn, cm]
   fin_cases i <;> fin_cases j <;>
-    simp [Matrix.mul_fin_two] <;> ring_nf <;> simp [h1]
+    simp <;> ring_nf
 
 theorem lam_flip_eq_zero : ∀ (F E : Type) [NontriviallyNormedField F] [NontriviallyNormedField E] [NormedAlgebra F E] [StarRing E] [Unram F E] (A : Et F E) (ψ : AddChar F ℂ) (μK : Measure A.K), μK.IsAddHaarMeasure → ∀ Ψ : SpecialLinearGroup (Fin 2) A.K → ℂ, A.InI Ψ → (∀ z, Ψ (wS A.K * nS z) = 0) → ∀ (a : A.K) (c : F), A.abelian₂ μK ψ a (fun h => Ψ (h * wS A.K)) c = 0 := by
   intro F E _ _ _ _ _ A ψ μK hμ Ψ hΨ h0 a c

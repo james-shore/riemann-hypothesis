@@ -152,7 +152,7 @@ theorem beK_posDef (k : ℕ) (c : (Σ _ : Fin k, Module.Free.ChooseBasisIndex �
         refine Finset.sum_congr rfl fun t _ => ?_
         simp [B, bK, Pi.basis_apply, NumberField.integralBasis_apply]
       · refine Finset.sum_eq_zero fun t _ => ?_
-        simp [bK, Pi.basis_apply, Pi.single_apply, Ne.symm hm']
+        simp [bK, Pi.basis_apply, Ne.symm hm']
     have hcard : Fintype.card (Module.Free.ChooseBasisIndex ℤ (𝓞 D.host.E)) =
         Fintype.card (D.host.E →ₐ[ℚ] ℂ) := by
       rw [AlgHom.card, Module.finrank_eq_card_basis B]
@@ -165,8 +165,7 @@ theorem beK_posDef (k : ℕ) (c : (Σ _ : Fin k, Module.Free.ChooseBasisIndex �
     have hv := Matrix.eq_zero_of_vecMul_eq_zero hdet (v := fun t => (c ⟨m0, t⟩ : ℂ)) (by
       funext j
       simp only [Matrix.vecMul, dotProduct, Algebra.embeddingsMatrixReindex,
-        Algebra.embeddingsMatrix, Matrix.reindex_apply, Matrix.submatrix_apply, Equiv.refl_apply,
-        Equiv.symm_symm, Matrix.of_apply, Pi.zero_apply]
+        Algebra.embeddingsMatrix, Matrix.reindex_apply, Matrix.submatrix_apply, Equiv.symm_symm, Matrix.of_apply, Pi.zero_apply]
       exact hred (e j))
     have h1 := congrFun hv t0
     simp only [Pi.zero_apply, Complex.ofReal_eq_zero] at h1

@@ -34,8 +34,6 @@ theorem exists_emb_eq {d : ℕ} (hd : 0 < d) {w : Fbar g} (hw : w ^ g ^ d = w) :
   | exact @_root_.GlobalTheory.FixedMemRange.main
   | exact _root_.GlobalTheory.FixedMemRange.main
   | (apply _root_.GlobalTheory.FixedMemRange.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FixedMemRange.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FixedMemRange.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FixedMemRange.main ..)
 
 theorem gen_prim (L : LabelDatum g) {d : ℕ} (hd : 0 < d) : IsPrimitiveRoot (L.gen d) (g ^ d - 1) :=

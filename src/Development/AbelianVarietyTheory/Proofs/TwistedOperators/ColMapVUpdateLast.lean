@@ -23,7 +23,7 @@ theorem fockComp_mul_right (B : VertexFrames G) (t : T) (j : ℕ) (hj : (Pair.to
   unfold jetTab kerFin GridData.Weil.ker thetaKO
   have e1 : G.toPair (.top t j) (a : GA D (G.V (Pair.top t j : Pair T).small)) ((b * h : FinPt G (.top (j + 1))) : GA D _) =
       G.toPair (.top t j) a b * G.toPair (.top t j) 1 h.1 := by
-    simp [GridData.toPair, Prod.ext_iff]
+    simp [GridData.toPair]
   have e2 : G.toPair (.top t j) 1 h.1 = ((1 : GA D _), h.1) := rfl
   rw [e1, map_mul, Module.End.mul_apply, e2]
   unfold fockIn

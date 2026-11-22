@@ -43,7 +43,7 @@ theorem exists_gauge : ∀ (R : Type) [CommRing R] [IsDomain R] (Q : DegPre R) (
     simp only [zpow_neg, Finset.prod_inv_distrib, Fintype.prod_sum_type, Sum.elim_inl, Sum.elim_inr,
       Fintype.prod_unique, Fin.prod_univ_two]
     rw [GlobalTheory.TorusModel.prod_pt, Ray.Φ_b, hcq, e₁, e₂]
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, Over.comp_left]
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Over.comp_left]
     apply Additive.ofMul.injective
     simp only [ofMul_mul, ofMul_inv, ofMul_zpow]
     abel

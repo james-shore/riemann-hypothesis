@@ -188,7 +188,6 @@ theorem mem_of_app_mem {P : PhiMod O K l e a ι} {Q : PhiMod O K l e a κ} (F : 
     rw [Hom.app_apply, Matrix.mulVec_mulVec, hΛ]
     first
       | rw [Matrix.smul_mulVec, Matrix.one_mulVec]
-      | (ext j; simp [Matrix.mulVec, dotProduct, Matrix.one_apply])
   have h2 : (Matrix.mulVec Λ (F.app w τ)) i ∈ Rpi O K l e := by
     simp only [Matrix.mulVec, dotProduct]
     exact Subalgebra.sum_mem _ fun j _ => mul_mem (A_le_Rpi l e (hΛA i j))

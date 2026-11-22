@@ -25,8 +25,6 @@ theorem exists_mul_of_fg {O M : Type} [CommRing O] [AddCommGroup M] [Module O M]
   | exact @_root_.GlobalTheory.CommonSmulMembership.exists_common_smul_mem
   | exact _root_.GlobalTheory.CommonSmulMembership.exists_common_smul_mem
   | (apply _root_.GlobalTheory.CommonSmulMembership.exists_common_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CommonSmulMembership.exists_common_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CommonSmulMembership.exists_common_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CommonSmulMembership.exists_common_smul_mem ..)
 
 variable {F : Type} [Field F] [NumberField F]

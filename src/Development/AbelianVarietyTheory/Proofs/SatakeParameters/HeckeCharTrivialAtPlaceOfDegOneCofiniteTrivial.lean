@@ -61,7 +61,6 @@ theorem trivAt_of_degOne_cofinite : ∀ (F E : Type) [Field F] [NumberField F] [
   have hιinj : Function.Injective ι := by
     first
     | exact FaithfulSMul.algebraMap_injective (𝓞 F) (𝓞 E)
-    | exact NoZeroSMulDivisors.algebraMap_injective (𝓞 F) (𝓞 E)
   set m : Ideal (𝓞 F) := Ideal.span {D} * Ideal.comap ι (∏ Q ∈ S, Q.asIdeal) with hm
   have hm0 : m ≠ ⊥ := by
     have hP : (∏ Q ∈ S, Q.asIdeal) ≠ ⊥ := by

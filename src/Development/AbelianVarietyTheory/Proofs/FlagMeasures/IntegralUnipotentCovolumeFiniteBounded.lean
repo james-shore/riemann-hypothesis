@@ -34,7 +34,6 @@ theorem covN_pi_smul {ι : Type} [Fintype ι] {α : Type} [MeasurableSpace α] (
     first
     | (have h : ((c : ℝ≥0∞) • μ) = c • μ := (ENNReal.smul_def c μ).symm
        rw [h]; infer_instance)
-    | (rw [← ENNReal.smul_def]; infer_instance)
   refine (Measure.pi_eq fun s hs => ?_)
   rw [Measure.smul_apply, Measure.pi_pi, smul_eq_mul]
   simp only [Measure.smul_apply, smul_eq_mul, Finset.prod_mul_distrib, Finset.prod_const, Finset.card_univ]

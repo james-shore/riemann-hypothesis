@@ -90,15 +90,15 @@ theorem Dual.emb_mul (h : Dual c J X Y) (g g' f f' : Matrix k k R) :
   have hBX1 : (J * X.map c)ᵀ * X = 0 := by rw [tr_mul, h.xx, transpose_zero]
   have hBY1 : (J * X.map c)ᵀ * Y = -1 := by rw [tr_mul, h.yx, transpose_neg, transpose_one]
   simp only [embM, Matrix.add_mul, Matrix.mul_add, Matrix.sub_mul, Matrix.mul_sub, Matrix.one_mul, Matrix.mul_one,
-    Matrix.mul_assoc, hAX, hAY, hBX, hBY, hAX1, hAY1, hBX1, hBY1, Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_neg,
-    Matrix.neg_mul, sub_zero, zero_sub, add_zero, zero_add, sub_neg_eq_add, neg_neg]
+    Matrix.mul_assoc, hAX, hAY, hBX, hBY, Matrix.mul_zero, Matrix.mul_neg,
+    sub_zero, add_zero, sub_neg_eq_add]
   abel
 
 theorem Dual.emb_tr (h : Dual c J X Y) (g f : Matrix k k R) :
     (embM c J X Y g (f.map c)ᵀ)ᵀ * J = J * (embM c J X Y f (g.map c)ᵀ).map c := by
   simp only [embM, transpose_add, transpose_sub, transpose_one, transpose_mul, transpose_transpose, mapc_add',
     mapc_sub', mapc_mul, mapc_one, mapc_transpose, h.mcc, h.skew, Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub,
-    Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_neg, Matrix.neg_mul, Matrix.mul_assoc]
+    Matrix.sub_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_neg, Matrix.mul_assoc]
   abel
 
 theorem star_mul (g f : GL k R) : ((((g * f)⁻¹).1).map c)ᵀ = ((g⁻¹).1.map c)ᵀ * ((f⁻¹).1.map c)ᵀ := by
@@ -107,7 +107,7 @@ theorem star_mul (g f : GL k R) : ((((g * f)⁻¹).1).map c)ᵀ = ((g⁻¹).1.ma
 theorem Dual.emb_inv (h : Dual c J X Y) (g : GL k R) :
     embM c J X Y g.1 ((g⁻¹).1.map c)ᵀ * embM c J X Y (g⁻¹).1 ((g⁻¹⁻¹).1.map c)ᵀ = 1 := by
   rw [h.emb_mul, ← star_mul]
-  simp [embM, mapc_one]
+  simp [embM]
 
 def Dual.emb (h : Dual c J X Y) : GL k R →* UG c J where
   toFun g := ⟨⟨embM c J X Y g.1 ((g⁻¹).1.map c)ᵀ, embM c J X Y (g⁻¹).1 ((g⁻¹⁻¹).1.map c)ᵀ, h.emb_inv g,

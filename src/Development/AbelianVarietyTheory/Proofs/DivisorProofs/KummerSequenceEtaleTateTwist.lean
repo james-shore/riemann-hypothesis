@@ -278,7 +278,7 @@ theorem glue_inj {R : Type} [CommRing R] {F G : Shv R} (φ : F ⟶ G) (hinj : �
 
 theorem appTop_comp {W V U : Scheme.{0}} (k : W ⟶ V) (g : V ⟶ U) (x : Γ(U, ⊤)) :
     (k ≫ g).appTop.hom x = k.appTop.hom (g.appTop.hom x) := by
-  simp [Scheme.Hom.comp_appTop]
+  simp
   rfl
 
 end GlobalTheory.EtC.KummerSeq

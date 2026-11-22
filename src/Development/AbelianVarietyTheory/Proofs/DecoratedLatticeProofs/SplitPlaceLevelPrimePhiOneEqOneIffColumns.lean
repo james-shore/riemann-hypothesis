@@ -147,7 +147,7 @@ theorem maps_rd_iff_colCond : ∀ {D : D7} {k : Type} [Field k] [ValuativeRel k]
     have e1 : (fun r' => φ (algebraMap (𝓞 D.host.E) D.host.E ((Pi.single r 1 : Fin S.rank → 𝓞 D.host.E) r'))) =
         Pi.single r 1 := by
       ext r'
-      by_cases h' : r' = r <;> simp [Pi.single_apply, h']
+      by_cases h' : r' = r <;> simp [h']
     have e2 : (Pi.single r 1 : Fin S.rank → 𝓞 D.host.E) l = if r.1 + 1 = S.rank then 1 else 0 := by
       rw [Pi.single_apply]
       exact if_congr ⟨fun h => h ▸ hl, fun h => Fin.ext (by omega)⟩ rfl rfl

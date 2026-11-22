@@ -18,8 +18,6 @@ theorem norm_le_one_of_isIntegral (x : PadicAlgCl l) (hx : IsIntegral ℤ_[l] x)
   | exact @_root_.GlobalTheory.PadicIntegralNormLeOne.norm_le_one_of_isIntegral
   | exact _root_.GlobalTheory.PadicIntegralNormLeOne.norm_le_one_of_isIntegral
   | (apply _root_.GlobalTheory.PadicIntegralNormLeOne.norm_le_one_of_isIntegral <;> assumption)
-  | (intros; apply _root_.GlobalTheory.PadicIntegralNormLeOne.norm_le_one_of_isIntegral <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.PadicIntegralNormLeOne.norm_le_one_of_isIntegral <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.PadicIntegralNormLeOne.norm_le_one_of_isIntegral ..)
 
 theorem norm_le_one_of_memO (c : Coef l) {x : Qbar l} (hx : x ∈ c.O) : ‖x‖ ≤ 1 := by

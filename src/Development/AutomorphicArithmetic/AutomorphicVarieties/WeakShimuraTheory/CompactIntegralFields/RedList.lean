@@ -91,7 +91,7 @@ private theorem UpperTheory.V.Ws.red_eii {Γ K : Type} [Group Γ] [Field K] (r :
         ext a b
         by_cases hab : a = b
         · subst hab
-          simp [Matrix.one_apply, div_eq_inv_mul]
+          simp [div_eq_inv_mul]
         · simp [Matrix.diagonal_apply_ne _ hab, Matrix.one_apply_ne hab]
       have hprod : Matrix.diagonal (fun k => ∏ j' ∈ insert j s, (d k - d j') / (d i - d j')) =
           Matrix.diagonal (fun k => (d k - d j) / (d i - d j)) *

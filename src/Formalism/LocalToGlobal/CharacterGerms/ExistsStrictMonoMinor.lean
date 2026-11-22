@@ -115,7 +115,7 @@ theorem lenCoker_mul_le (v : AddValuation R (WithTop ℝ)) (hv : ∀ x, 0 ≤ v 
   let er : Fin n ⊕ Fin p ≃ Fin (n + p) := finSumFinEquiv
   let ec : Fin p ⊕ Fin n ≃ Fin (n + p) := (Equiv.sumComm (Fin p) (Fin n)).trans finSumFinEquiv
   have hZ : Z' * Zi = 1 := by
-    simp only [Z', Zi, Matrix.fromBlocks_multiply, Matrix.zero_mul, Matrix.mul_zero, add_zero, zero_add]
+    simp only [Z', Zi, Matrix.fromBlocks_multiply, Matrix.zero_mul, Matrix.mul_zero, add_zero]
     rw [hSW, hSQ, hQW, hQQ, Matrix.fromBlocks_one]
   have hZZ : Matrix.reindex er ec Z' * Matrix.reindex ec er Zi = 1 := by
     simp only [Matrix.reindex_apply]
@@ -306,7 +306,7 @@ theorem derivation_prod {F : Type*} [CommRing F] [Algebra R F] {n : ℕ} (D : De
   refine Finset.induction_on s (by simp) ?_
   intro i s hi ih
   rw [Finset.prod_insert hi, Finset.sum_insert hi, Derivation.leibniz, ih, hD]
-  simp only [Algebra.smul_def, smul_eq_mul, map_add, Algebra.algebraMap_self, RingHom.id_apply]
+  simp only [Algebra.smul_def, map_add, Algebra.algebraMap_self, RingHom.id_apply]
   ring
 
 end Derivatives

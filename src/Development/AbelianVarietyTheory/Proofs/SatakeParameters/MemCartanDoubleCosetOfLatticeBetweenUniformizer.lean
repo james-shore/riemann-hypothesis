@@ -59,8 +59,6 @@ theorem antitone_zero_one {n j : ℕ} (a : Fin n → ℤ) (ha : Antitone a)
   | exact @_root_.GlobalTheory.ClosedSubgroupCriterion.main
   | exact _root_.GlobalTheory.ClosedSubgroupCriterion.main
   | (apply _root_.GlobalTheory.ClosedSubgroupCriterion.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ClosedSubgroupCriterion.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ClosedSubgroupCriterion.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ClosedSubgroupCriterion.main ..)
 
 end Adic

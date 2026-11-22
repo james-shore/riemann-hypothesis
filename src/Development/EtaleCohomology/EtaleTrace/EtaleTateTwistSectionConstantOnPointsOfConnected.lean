@@ -61,8 +61,6 @@ theorem etale_tate_twist_zero_section_eq_zero_of_vanishing_at_points (hT : Later
     first
       | (rw [mul_nsmul, q_nsmul, nsmul_zero])
       | (rw [mul_nsmul', q_nsmul, nsmul_zero])
-      | (rw [mul_nsmul', q_nsmul, smul_zero])
-      | (rw [mul_nsmul, q_nsmul, smul_zero])
   rw [res_comp, h0, res_zero', res_zero']
 
 theorem tateTwistSections_determinedByPoints_of_constant (hT : LateralTheory.EtaleFoundations.CongruenceLocalDecomposition.TwLoc) (hC : PtCov) (hK : EtaleTateTwistSectionConstantOnPointsOfConnectedProper) : EtaleTateTwistSectionsDeterminedByPointsOfProper := by

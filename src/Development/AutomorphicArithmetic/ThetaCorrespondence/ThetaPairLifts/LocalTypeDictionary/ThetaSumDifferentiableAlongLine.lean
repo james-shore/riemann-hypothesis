@@ -72,7 +72,7 @@ theorem hasDerivAt_theta_sum_along_line : _root_.GlobalTheory.FunPr.ThetaLocalIn
     intro i
     rw [hasDerivAt_iff_tendsto_slope]
     refine ((Λ i).continuous.tendsto (g i) |>.comp (hlim i)).congr' (Filter.Eventually.of_forall fun t => ?_)
-    simp [slope_def_module, map_sub, map_smul]
+    simp [slope_def_module, map_sub]
   rw [hcurve, hend]
   have := HasDerivAt.sum (u := Finset.univ) fun i _ => hc0 i
   simpa [Finset.sum_fn] using this
@@ -101,5 +101,5 @@ theorem _root_.GlobalTheory.T.theta_sum_differentiable_along_line : _root_.Globa
     (∀ i, GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.ActsD (GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.evI F) (fun t => om (1, γ (Multiplicative.ofAdd t))) (f i) (f₁ i)) →
     ∀ u, HasDerivAt (fun t : ℝ => GlobalTheory.WeilM.thetaSum F (M.co.rho ψ u (om (1, γ (Multiplicative.ofAdd t)) (∑ i, GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.pure (f i) (φ i)))))
       (GlobalTheory.WeilM.thetaSum F (M.co.rho ψ u (∑ i, GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.pure (f₁ i) (φ i)))) 0 := by
-  first | exact @_root_.GlobalTheory.ThetaLineDer.hasDerivAt_theta_sum_along_line | exact _root_.GlobalTheory.ThetaLineDer.hasDerivAt_theta_sum_along_line | (intros; apply _root_.GlobalTheory.ThetaLineDer.hasDerivAt_theta_sum_along_line <;> assumption)
+  first | exact @_root_.GlobalTheory.ThetaLineDer.hasDerivAt_theta_sum_along_line
 end

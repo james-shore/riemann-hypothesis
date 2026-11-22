@@ -31,10 +31,10 @@ private theorem SecMeasLoc_holds_lemma_4 {n r : ℕ} (ε : Fin n → Bool) (e p 
     · simp [h, Ne.symm h]
   apply tvm_isIsom
   · intro a b hab
-    simp only [hJ_add_l, hJ_add_r, hJ_smul_l, hJ_smul_r, hee, hpp, hep, hpe, if_neg hab, if_neg (Ne.symm hab)]
+    simp only [hJ_add_l, hJ_add_r, hJ_smul_l, hJ_smul_r, hee, hpp, hep, hpe, if_neg hab]
     simp
   · intro b
-    simp only [hJ_add_l, hJ_add_r, hJ_smul_l, hJ_smul_r, hee, hpp, hep, hpe, if_pos rfl, if_true, mul_one,
+    simp only [hJ_add_l, hJ_add_r, hJ_smul_l, hJ_smul_r, hee, hpp, hep, hpe, if_true, mul_one,
       mul_zero, zero_add, add_zero]
     by_cases hs : s b = 0
     · simp [hs]
@@ -55,7 +55,7 @@ private theorem SecMeasLoc_holds_lemma_5 {n r : ℕ} (ε : Fin n → Bool) (e p 
     · simp [h, Ne.symm h]
   have h1 : ((starRingEnd ℂ) (s a))⁻¹ * hJ ε (e a + s a • p a) (e a) = 1 := by
     have hc : (starRingEnd ℂ) (s a) ≠ 0 := (map_ne_zero _).mpr hs
-    simp only [hJ_add_l, hJ_smul_l, hee, hpe, if_pos rfl, if_true, mul_one, zero_add]
+    simp only [hJ_add_l, hJ_smul_l, hee, hpe, if_true, mul_one, zero_add]
     field_simp
   have h2 : ∀ b, b ≠ a → hJ ε (e b + s b • p b) (e a) = 0 := by
     intro b hb

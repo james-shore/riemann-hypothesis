@@ -163,7 +163,7 @@ theorem exists_clear {Ω : Type} [Field Ω] [CharZero Ω] (r : σ → Ω) {b : �
     obtain ⟨N1, A1, h1, e1⟩ := hx
     obtain ⟨N2, A2, h2, e2⟩ := hw
     refine ⟨N1 * N2, C (N2 : ℤ) * A1 + C (N1 : ℤ) * A2, mul_ne_zero h1 h2, ?_⟩
-    simp only [map_add, map_mul, aeval_C, eq_intCast, Int.cast_natCast, map_natCast, ← e1, ← e2, Nat.cast_mul]
+    simp only [map_add, map_mul, map_natCast, ← e1, ← e2, Nat.cast_mul]
     ring
   | mul x w _ _ hx hw =>
     obtain ⟨N1, A1, h1, e1⟩ := hx
@@ -301,7 +301,7 @@ theorem exists_finset_at [CharZero Ω] (k₀ : K) (hy : ∀ k, ∃ j, y ⟨k, j�
       obtain ⟨N1, A1, h1, e1, v1⟩ := hx
       obtain ⟨N2, A2, h2, e2, v2⟩ := hw
       refine ⟨N1 * N2, C (N2 : ℤ) * A1 + C (N1 : ℤ) * A2, mul_ne_zero h1 h2, ?_, ?_⟩
-      · simp only [map_add, map_mul, aeval_C, eq_intCast, Int.cast_natCast, map_natCast, ← e1, ← e2,
+      · simp only [map_add, map_mul, map_natCast, ← e1, ← e2,
           Nat.cast_mul, AddMemClass.coe_add]
         ring
       · simp only [map_add, map_mul, v1, v2, mul_zero, add_zero]
@@ -316,7 +316,7 @@ theorem exists_finset_at [CharZero Ω] (k₀ : K) (hy : ∀ k, ∃ j, y ⟨k, j�
   have hG : aeval (ratio y k₀ i) (G - C (N : ℤ)) = 0 := by
     simp [← e1]
   have h1 := vanish y hz i hi hzi _ hG
-  simp only [map_sub, e2, aeval_C, eq_intCast, zero_sub, neg_eq_zero, Int.cast_natCast, map_natCast] at h1
+  simp only [map_sub, e2, zero_sub, neg_eq_zero, map_natCast] at h1
   exact hN (Nat.cast_eq_zero.mp h1)
 
 theorem exists_finset [CharZero Ω] (k₀ : K) (hy : ∀ k, ∃ j, y ⟨k, j⟩ ≠ 0)

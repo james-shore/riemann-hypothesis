@@ -50,7 +50,7 @@ private theorem mk_sE (hq : θ ^ 2 = algebraMap F (Kv v) D.δ) (h0 : θ ≠ 0) (
   have h2 := two_ne (F := F) v
   unfold sE
   rw [mk_mul]
-  simp only [sg_mul', ← sg_add', map_mul, cp_sg', cp_rt']
+  simp only [sg_mul', ← sg_add', cp_rt']
   rw [← hq]
   congr 2
   · congr 1; field_simp
@@ -61,7 +61,7 @@ private theorem mk_sB (hq : θ ^ 2 = algebraMap F (Kv v) D.δ) (h0 : θ ≠ 0) (
   have h2 := two_ne (F := F) v
   unfold sB
   rw [mk_mul]
-  simp only [sg_mul', ← sg_add', map_mul, cp_sg', cp_rt']
+  simp only [sg_mul', ← sg_add', cp_rt']
   rw [← hq]
   congr 2
   · congr 1; field_simp; ring
@@ -86,7 +86,7 @@ private theorem sE_sB (hq : θ ^ 2 = algebraMap F (Kv v) D.δ) (h0 : θ ≠ 0) (
   rw [mul_comm]
   refine h.trans ?_
   unfold sE
-  simp [sg_zero', mk_zero]
+  simp [sg_zero']
 
 private theorem bar_sE (k : Kv v) : D.bar (sE D v θ k) = sB D v θ k := by
   unfold sE sB

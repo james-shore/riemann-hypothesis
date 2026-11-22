@@ -61,7 +61,7 @@ theorem goodModel_coords_rat_symplectic : ∀ (F E : Type) [Field F] [NumberFiel
         obtain ⟨w, hw⟩ := hrat0 x
         have h1 := hfk (Submodule.subset_span (show w ∈ G from ⟨x, hw⟩))
         rw [LinearMap.mem_ker, hfc] at h1
-        simp only [LinearEquiv.coe_coe, LinearEquiv.coe_toLinearMap, hw, ← map_mul, ← map_sum, h1, map_zero]
+        simp only [LinearEquiv.coe_coe, hw, ← map_mul, ← map_sum, h1, map_zero]
       | zero => simp
       | add x y _ _ hx hy => simp [add_mul, Finset.sum_add_distrib, hx, hy]
       | smul a x _ hx => simp [mul_assoc, ← Finset.mul_sum, hx]
@@ -115,7 +115,7 @@ theorem goodModel_coords_rat_symplectic : ∀ (F E : Type) [Field F] [NumberFiel
     ext i j
     have key : ∀ N : Matrix ((Fin n × Fin d) ⊕ (Fin n × Fin d)) ((Fin n × Fin d) ⊕ (Fin n × Fin d)) (AF F),
         N i j = Pi.single i 1 ⬝ᵥ (N *ᵥ Pi.single j 1) := by
-      intro N; simp [Matrix.mulVec_single_one]
+      intro N; simp
     rw [key (Aᵀ * Matrix.fromBlocks 0 1 (-1) 0 * A), key (Matrix.fromBlocks 0 1 (-1) 0)]
     rw [← Matrix.mulVec_mulVec, ← Matrix.mulVec_mulVec, Matrix.dotProduct_mulVec, Matrix.vecMul_transpose]
     have e1 : ∀ s, A *ᵥ s = Φ₁ (Φ₀.symm s) := fun s => by rw [← hA, LinearEquiv.apply_symm_apply]

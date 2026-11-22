@@ -89,7 +89,7 @@ theorem form_X (k : K) (i : J k) : IsMultiHomog (X ⟨k, i⟩ : MRing J) (Pi.sin
   by_cases h : k' = k
   · subst h
     simp [Finsupp.single_apply]
-  · simp [Finsupp.single_apply, Pi.single_apply, h, Ne.symm h]
+  · simp [h]
 
 theorem form_pow {f : MRing J} {a : K → ℕ} (h : IsMultiHomog f a) (n : ℕ) : IsMultiHomog (f ^ n) (n • a) := by
   induction n with

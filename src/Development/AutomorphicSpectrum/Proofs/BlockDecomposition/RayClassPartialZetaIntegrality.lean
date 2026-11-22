@@ -17,7 +17,7 @@ namespace GlobalTheory.CompanionTheory.Hypotheses₂.Shintani.Integrality
 theorem eqOn_compl_one {H R : ℂ → ℂ} (hH : DifferentiableOn ℂ H {1}ᶜ) (hR : DifferentiableOn ℂ R {1}ᶜ)
     (h : ∀ s : ℂ, 1 < s.re → H s = R s) : Set.EqOn H R {1}ᶜ := by
   have hconn : IsPreconnected ({1}ᶜ : Set ℂ) :=
-    (isConnected_compl_singleton_of_one_lt_rank (by rw [Complex.rank_real_complex]; first | exact Cardinal.one_lt_two | norm_num | exact_mod_cast (show (1:ℕ) < 2 by norm_num)) 1).isPreconnected
+    (isConnected_compl_singleton_of_one_lt_rank (by rw [Complex.rank_real_complex]; first | exact Cardinal.one_lt_two) 1).isPreconnected
   have hmem : (2 : ℂ) ∈ ({1}ᶜ : Set ℂ) := by
     rw [Set.mem_compl_singleton_iff]; norm_num
   have hopen : IsOpen {s : ℂ | 1 < s.re} := isOpen_lt continuous_const Complex.continuous_re
@@ -125,7 +125,7 @@ theorem classTwist_value_int : ∀ (F : Type) [Field F] [NumberField F] [IsTotal
     refine ⟨(Ideal.absNorm (Ideal.span {conePt (y j) (v j) m})) ^ (k - 1), ?_⟩
     try beta_reduce
     rw [Finset.prod_pow, h1]
-    first | norm_cast | (push_cast; ring) | simp
+    first | norm_cast
   choose qj Kj zj hqj hzj using hint
   obtain ⟨K', Z, hZ⟩ := exists_pow_mul_sum Finset.univ l qj Kj zj hzj
   have hs0 : (1 - (k : ℂ)) = -(((k - 1 : ℕ)) : ℂ) := by rw [Nat.cast_sub hk]; push_cast; ring

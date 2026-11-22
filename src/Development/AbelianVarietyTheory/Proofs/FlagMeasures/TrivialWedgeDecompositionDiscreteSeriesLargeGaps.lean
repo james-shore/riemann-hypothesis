@@ -241,7 +241,7 @@ theorem lOneNorm_add_single_unit_le {n : ℕ} (x : Fin n → ℤ) (a : Fin n) (z
     rw [Finset.sum_eq_single a]
     · simp [hz]
     · intro b _ hb
-      simp [Pi.single_apply, hb]
+      simp [hb]
     · simp
   calc ∑ i, ((x + (Pi.single a z : Fin n → ℤ)) i).natAbs ≤ ∑ i, ((x i).natAbs + ((Pi.single a z : Fin n → ℤ) i).natAbs) :=
         Finset.sum_le_sum fun i _ => h1 i
@@ -291,7 +291,7 @@ theorem tensH_trivial : BranchingSupport.HypsG → ∀ (k r : ℕ) (lam : Fin (2
     (fun s => hF _ (hμs s)) (fun s => hG2 _ (hμs s)) a (by
       intro s hs he
       have := congrFun he s
-      simp [Pi.single_apply, hs] at this
+      simp [hs] at this
       linarith)
   rw [add_sub_cancel_right, Function.update_self] at hU
   have hUI : ∀ I : Sub (2 * r + k + 1) 0, ∃ U : (F ν).H ≃ₗᵢ[ℂ] (F' (ν + eZ I.1)).H,

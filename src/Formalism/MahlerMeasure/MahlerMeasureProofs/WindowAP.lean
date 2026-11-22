@@ -29,8 +29,6 @@ lemma dvd_of_norm_lt (k : ℤ) (i : ℕ) (hk : ‖(k : ℚ_[p])‖ < (p : ℝ) ^
     first
       | exact padicNormE.values_discrete hx
       | exact ⟨_, Padic.norm_eq_zpow_neg_valuation hx⟩
-      | exact ⟨_, Padic.norm_eq_pow_val hx⟩
-      | exact Padic.norm_values_discrete hx
   rw [hz] at hk
   have hv : -z < 1 - (i : ℤ) := (zpow_lt_zpow_iff_right₀ hp1).mp hk
   have hle : ‖(k : ℚ_[p])‖ ≤ (p : ℝ) ^ (-(i : ℤ)) := by
@@ -40,7 +38,6 @@ lemma dvd_of_norm_lt (k : ℤ) (i : ℕ) (hk : ‖(k : ℚ_[p])‖ < (p : ℝ) ^
     first
       | exact padicNormE.norm_int_le_pow_iff_dvd k i
       | exact Padic.norm_int_le_pow_iff_dvd k i
-      | (have h0 := padicNormE.norm_int_le_pow_iff_dvd (p := p) k i; push_cast at h0; exact h0)
   exact hnd (hiff.mp hle)
 
 omit [NormedAlgebra ℚ_[p] K] in

@@ -36,7 +36,6 @@ theorem ad_herm_symm (v w : Fin (2 * r + k + 1) → ℂ) :
   unfold herm
   first
     | rw [star_dotProduct]
-    | rw [Matrix.star_dotProduct]
   rw [Matrix.star_mulVec, ← Matrix.dotProduct_mulVec, GBasic.Hpk_herm]
 
 theorem ad_unitB_mulVec {m : ℕ} (Bs : Fin m → Fin (2 * r + k + 1) → ℂ) (a b : Fin m)

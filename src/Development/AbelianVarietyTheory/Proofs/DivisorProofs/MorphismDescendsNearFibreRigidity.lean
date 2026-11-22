@@ -59,8 +59,6 @@ theorem morphism_descends : ∀ (R : Type) [CommRing R] (S Y Z W : Scheme.{0}) (
     refine @IsIso.comp_isIso _ _ _ _ _ _ _ hiso ?_
     first
       | exact Functor.map_isIso _ _
-      | exact (Z.presheaf.mapIso (eqToIso _).op).isIso_hom
-      | (apply Functor.map_isIso)
   obtain ⟨g₀, hg₀⟩ := factor_of_isIso_appTop (p ∣_ V) (IsOpenImmersion.lift O'.ι _ hrange)
   refine ⟨V, hV, g₀ ≫ O'.ι, hy₀, ?_⟩
   rw [← Category.assoc, hg₀, hg]

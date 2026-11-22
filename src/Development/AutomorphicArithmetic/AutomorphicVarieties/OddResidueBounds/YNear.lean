@@ -26,7 +26,6 @@ theorem UpperTheory.V.Odd.yNear :
     rw [hz _, MonoidAlgebra.smul_single]
     first
       | rw [← MonoidAlgebra.single_sub]
-      | erw [← Finsupp.single_sub]
     congr 1
     simp only [smul_eq_mul]
     push_cast

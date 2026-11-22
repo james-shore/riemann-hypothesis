@@ -24,8 +24,8 @@ private theorem pow_nhds {K : Type} [NontriviallyNormedField K] [CompleteSpace K
       have := hmul (q (p x ^ k)) x
       rwa [ih] at this
   let Bl : (ι → K) →ₗ[K] (ι → K) →ₗ[K] (ι → K) := LinearMap.mk₂ K (fun a b => q (p a * p b))
-    (fun a a' b => by simp [add_mul]) (fun c a b => by simp [smul_mul_assoc])
-    (fun a b b' => by simp [mul_add]) (fun c a b => by simp [mul_smul_comm])
+    (fun a a' b => by simp [add_mul]) (fun c a b => by simp)
+    (fun a b b' => by simp [mul_add]) (fun c a b => by simp)
   let B : (ι → K) →L[K] (ι → K) →L[K] (ι → K) :=
     LinearMap.toContinuousLinearMap (LinearMap.toContinuousLinearMap.toLinearMap ∘ₗ Bl)
   have hB : ∀ a b, B a b = q (p a * p b) := fun a b => rfl
@@ -237,7 +237,7 @@ private theorem loc_open {K : Type} [NontriviallyNormedField K] [CompleteSpace K
       by_cases hij : i = j
       · rw [hij, Matrix.one_apply_eq]
         exact isIntegral_one
-      · simp [Matrix.one_apply, hij, isIntegral_zero]
+      · simp [hij, isIntegral_zero]
     have ht : Tendsto (fun y => (nD Δ y)⁻¹ - 1) (𝓝 ![1, 0, 0, 0]) (𝓝 0) := by
       have h3 := ((hcont.tendsto ![1, 0, 0, 0]).inv₀ (by rw [h1]; exact one_ne_zero)).sub_const 1
       rwa [h1, inv_one, sub_self] at h3

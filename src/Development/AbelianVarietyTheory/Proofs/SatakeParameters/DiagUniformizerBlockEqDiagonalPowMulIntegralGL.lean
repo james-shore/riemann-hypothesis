@@ -22,7 +22,7 @@ theorem getD_pattern (k m i : ℕ) :
     (List.replicate k (1 : ℤ) ++ List.replicate m 0).getD i 0 = if i < k then 1 else 0 := by
   rw [List.getD_eq_getElem?_getD, List.getElem?_append]
   split_ifs with h1 h2 h2
-  · simp [List.getElem?_replicate, h2]
+  · simp [h2]
   · simp at h1; omega
   · simp at h1; omega
   · simp [List.getElem?_replicate]

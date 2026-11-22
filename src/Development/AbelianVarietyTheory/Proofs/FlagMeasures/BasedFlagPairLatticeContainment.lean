@@ -129,12 +129,7 @@ theorem exists_nat_smul_mem (Λ : LV D) (hΛ : Submodule.IsLattice D.host.E Λ) 
     ∃ n : ℕ, 0 < n ∧ (n : D.host.E) • v ∈ Λ := by
   first
   | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact @_root_.GlobalTheory.NatSmulMemOfSpan.exists_nat_smul_mem
-  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact _root_.GlobalTheory.NatSmulMemOfSpan.exists_nat_smul_mem
-  | exact @_root_.GlobalTheory.NatSmulMemOfSpan.exists_nat_smul_mem
-  | exact _root_.GlobalTheory.NatSmulMemOfSpan.exists_nat_smul_mem
-  | (apply _root_.GlobalTheory.NatSmulMemOfSpan.exists_nat_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatSmulMemOfSpan.exists_nat_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatSmulMemOfSpan.exists_nat_smul_mem <;> first | assumption | infer_instance)
+  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll]))
   | (intros; exact _root_.GlobalTheory.NatSmulMemOfSpan.exists_nat_smul_mem ..)
 
 end GlobalTheory.CompScale

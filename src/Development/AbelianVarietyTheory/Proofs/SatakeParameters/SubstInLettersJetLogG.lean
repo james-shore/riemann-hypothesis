@@ -29,7 +29,7 @@ def posEquiv (n r0 r1 : ℕ) [NeZero n] : Zidx n r0 r1 ≃ ZMod n × Fin r0 × F
   left_inv z := by
     ext <;> simp [toFin, ZMod.val_natCast, Nat.mod_eq_of_lt z.1.2]
   right_inv v := by
-    ext <;> simp [toFin, ZMod.natCast_zmod_val]
+    ext <;> simp [toFin]
 
 theorem coeff_inLetters {n r0 r1 : ℕ} [NeZero n] {R : Type} [Semiring R] (f : MvPowerSeries (Zidx n r0 r1) R)
     (m : ZMod n × Fin r0 × Fin r1 →₀ ℕ) :

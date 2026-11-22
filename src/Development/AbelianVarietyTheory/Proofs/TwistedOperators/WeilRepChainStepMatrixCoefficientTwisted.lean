@@ -167,7 +167,7 @@ theorem part3 (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNona
     push_cast
     ring_nf
   rw [hc, ← key]
-  simp only [Fintype.card_sum, Fintype.card_fin, Complex.real_smul, smul_eq_mul, mul_one]
+  simp only [Fintype.card_sum, Fintype.card_fin, Complex.real_smul, mul_one]
   push_cast
   ring
 

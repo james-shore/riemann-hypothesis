@@ -319,7 +319,7 @@ private theorem pt_ne_zero (hX : IsBottomTri W i j X) (t : T) {P : PolF D WW.ran
       simp [Matrix.one_apply, Matrix.diagonal_apply, apply_ite]
     · rw [(hX.std.2.2 τ).1, (hX.std.2.2 τ).2]
       ext a b
-      simp [Matrix.one_apply, Matrix.diagonal_apply, apply_ite]
+      simp [Matrix.one_apply, apply_ite]
   have hinj := GlobalTheory.FockPolyInj.pureTensorO_injective_of_on W.ψ W.θ (GlobalTheory.Grid.neg A) WW h.isVac.1 h.isVac.2.inf
     (fun τ => -X.rA.s τ) X.rA.B X.rW.s X.rW.B (fun _ => 0) pW hA hpW (X.f t) (f_theta hX t) (f_fock hX t) (f_ne_zero hX t)
   exact fun h0 => hP (hinj (h0.trans (map_zero _).symm))

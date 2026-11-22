@@ -131,7 +131,7 @@ private theorem trace_bc_lemma_8 (z : AE D) :
     sndA D.host.F (Algebra.trace (AF D.host.F) (AE D) z) =
       Algebra.trace (Af D.host.F) (Af D.host.F ⊗[D.host.F] D.host.E) (finPart D z) := by
   induction z using TensorProduct.induction_on with
-  | zero => simp only [map_zero] <;> rfl
+  | zero => simp only [map_zero]
   | tmul a e =>
     have h1 : (a ⊗ₜ[D.host.F] e : AE D) = a • ((1 : AF D.host.F) ⊗ₜ[D.host.F] e : AE D) := by
       rw [TensorProduct.smul_tmul', smul_eq_mul, mul_one]

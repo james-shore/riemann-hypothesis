@@ -18,8 +18,6 @@ theorem hJ_add_l {n : ℕ} (ε : Fin n → Bool) (x y z : Fin n → ℂ) : hJ ε
   first
     | simp only [hJ, star_add, Matrix.add_dotProduct]
     | simp only [hJ, star_add, add_dotProduct]
-    | simp [hJ, Matrix.add_dotProduct]
-    | simp [hJ, add_dotProduct]
 
 theorem hJ_conj' {n : ℕ} (ε : Fin n → Bool) (x y : Fin n → ℂ) : hJ ε y x = star (hJ ε x y) := by
   simp only [hJ, Formalism.REAL.Jm, dotProduct, Matrix.mulVec_diagonal, star_sum, Pi.star_apply]

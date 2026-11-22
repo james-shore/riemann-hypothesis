@@ -71,7 +71,7 @@ theorem khwExists : CompanionTheory.D.DSIC.KHWExists := by
     have e : ∀ (X Y : Module.End ℂ U) (p q : ℂ),
         (X - p • 1) * (Y - q • 1) - (Y - q • 1) * (X - p • 1) = X * Y - Y * X := by
       intro X Y p q
-      simp only [sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, mul_one, one_mul, smul_smul]
+      simp only [sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, mul_one, one_mul]
       module
     show (_ - _ • 1) * (_ - _ • 1) - (_ - _ • 1) * (_ - _ • 1) = _
     rw [e, h]

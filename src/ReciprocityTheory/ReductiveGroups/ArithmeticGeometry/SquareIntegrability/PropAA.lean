@@ -370,8 +370,8 @@ theorem paPF_diff (p : MvPolynomial ι ℂ) : Differentiable ℂ (paPF p) ∧
     simp only [EuclideanSpace.coe_proj, EuclideanSpace.single_apply, smul_eq_mul, paPF, map_add,
       map_mul, MvPolynomial.eval_X, Pi.single_apply]
     by_cases h : j = k
-    · subst h; simp <;> ring
-    · simp [h, Ne.symm h] <;> ring
+    · subst h; simp
+    · simp [Ne.symm h]
 
 theorem paPF_contDiff (p : MvPolynomial ι ℂ) : ContDiff ℂ (⊤ : ℕ∞) (paPF p) := by
   induction p using MvPolynomial.induction_on with

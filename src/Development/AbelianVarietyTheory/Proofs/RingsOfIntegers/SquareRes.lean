@@ -58,7 +58,7 @@ private theorem linComb_unit_U_le {X Y : Scheme.{0}} (N : LB X) (e : Y ⟶ X) (a
 private theorem linComb_unit_g_eq {X Y : Scheme.{0}} (N : LB X) (e : Y ⟶ X) (a b : N.ι) :
     (LB.LinComb N (K := PUnit) (fun _ => e) (fun _ => 1)).g (fun _ => a) (fun _ => b) =
       res (linComb_unit_U_le N e a b) (pullU e (N.U a ⊓ N.U b) (N.g a b)) := by
-  simp only [LB.LinComb, Fintype.prod_unique, zpow_one, pow_one]
+  simp only [LB.LinComb, Fintype.prod_unique, zpow_one]
   rfl
 
 private theorem res_pullU_id_eq_res'' {X : Scheme.{0}} {U V : X.Opens} (x : Γ(X, U)ˣ) (h : V ≤ (𝟙 X) ⁻¹ᵁ U) :
@@ -98,7 +98,7 @@ theorem idIso_rig (hL : L.IsLB) {eG : S₀ ⟶ G} {eG' : S₀ ⟶ G'} (rL : LB.G
     simp only [map_mul, sec_res_comp_algebraMap, res_self_lemma] at H2
     dsimp only
     erw [sec_res_comp_algebraMap]
-    simp only [pow_one, zpow_one]
+    simp only [zpow_one]
     exact H2
   · unfold LB.Gen.Corr GeneratorPullback.finProdGen
     intro j₁ j' c₁ c₂ hj
@@ -186,7 +186,7 @@ theorem square_res (hM' : M'.IsLB)
     have a4 := h₄ hx
     clear h₁ h₃ Q hwe hw2 h₂ h₄ hx
     simp only [LB.div, LB.pull, LB.LinComb, LB.wchart, TopologicalSpace.Opens.mem_inf, TopologicalSpace.Opens.mem_mk,
-      TopologicalSpace.Opens.coe_mk, Set.mem_iInter, Set.mem_preimage, SetLike.mem_coe, Scheme.Hom.mem_preimage, Set.mem_inter_iff] at a2 a4 ⊢
+      TopologicalSpace.Opens.coe_mk, Set.mem_iInter, Set.mem_preimage, SetLike.mem_coe, Scheme.Hom.mem_preimage] at a2 a4 ⊢
     refine ⟨⟨a2.1, ?_⟩, a2.1, ?_⟩
     · exact Set.mem_iInter.2 fun _ => Set.mem_iInter.2 fun k => a4.1 k
     · exact Set.mem_iInter.2 fun _ => Set.mem_iInter.2 fun k => a4.2 k
@@ -196,7 +196,7 @@ theorem square_res (hM' : M'.IsLB)
   dsimp only at hg
   rw [pull_g_eq_res_pullU] at hg
   erw [pull_g_eq_res_pullU] at hg
-  simp only [map_mul, map_inv, sec_res_comp_algebraMap] at hg
+  simp only [sec_res_comp_algebraMap] at hg
   have hVp : V ≤ p' ⁻¹ᵁ M'.U jM' := fun y hy => (h₁ hy).2
   have hself : ∀ (k : V ≤ p' ⁻¹ᵁ (M'.U jM' ⊓ M'.U jM')),
       res k (pullU p' (M'.U jM' ⊓ M'.U jM') (M'.g jM' jM')) = 1 := by

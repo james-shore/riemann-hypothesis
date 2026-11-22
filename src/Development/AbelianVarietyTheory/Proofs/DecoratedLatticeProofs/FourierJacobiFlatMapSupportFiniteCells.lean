@@ -10,7 +10,7 @@ namespace GlobalTheory.LocFlat.CellSupport
 theorem det_colE {k : Type} [Field k] {n : Type} [Fintype n] [DecidableEq n] (c p : ℕ) (β : n → k) :
     Matrix.GeneralLinearGroup.det (colE c p β) = 1 := by
   ext
-  simp [Matrix.GeneralLinearGroup.val_det_apply, colE, upU, Matrix.det_fromBlocks_zero₂₁]
+  simp [Matrix.GeneralLinearGroup.val_det_apply, colE, upU]
 
 variable {k : Type} [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k]
 

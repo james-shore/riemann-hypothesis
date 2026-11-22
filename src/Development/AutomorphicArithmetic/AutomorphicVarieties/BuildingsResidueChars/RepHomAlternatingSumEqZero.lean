@@ -26,7 +26,7 @@ theorem UpperTheory.rep_hom_alternating_sum_eq_zero :
     intro x
     rw [key 0 x]
     have hre : K.re (id : Fin 1 → Fin 1) x = x := Subtype.ext rfl
-    simp [Fintype.sum_unique, hre]
+    simp [hre]
   · intro p hp
     apply PC_ext
     intro t
@@ -49,7 +49,7 @@ theorem UpperTheory.rep_hom_alternating_sum_eq_zero :
       refine Finset.sum_congr rfl ?_
       intro π _
       have hre : K.re (⇑((Equiv.mulLeft (Equiv.swap a b)) π)) t = K.re π t :=
-        Subtype.ext (funext fun k => by simp [Cx.re, Equiv.Perm.mul_apply, ht])
+        Subtype.ext (funext fun k => by simp [Cx.re, ht])
       rw [hre, Equiv.coe_mulLeft, Equiv.Perm.sign_mul, Equiv.Perm.sign_swap hab]
       push_cast
       rw [neg_one_mul, neg_smul]

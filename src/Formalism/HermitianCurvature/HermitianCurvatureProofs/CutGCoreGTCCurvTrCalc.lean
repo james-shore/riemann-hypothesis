@@ -30,7 +30,7 @@ theorem dZb_modA (P : M.Par) (ρ : M.Ty P) {ζ : ℂ} (hζ : ζ ∈ Ann P) :
   simp only [NF.dZb]
   rw [hF'.fderiv]
   rw [← hns]
-  simp [Complex.star_def]
+  simp
   field_simp
   ring_nf
   simp only [Complex.I_sq]

@@ -105,7 +105,7 @@ theorem d_act_p (p : ℕ) [CharP R p] {G : FGLaw R d} (A : OAct O G) (i j : Fin 
     rw [d1 (Z_add G (Z_pt 0) (Z_pt 1)), evsum hb]
     refine Finset.sum_congr rfl fun c _ => ?_
     rw [evm hb, ev1 hb (Z_add G (Z_pt 0) (Z_pt 1)), ep_add G hb (Z_pt 0) (Z_pt 1), ep_pt hb, ep_pt hb]
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, p_add_zero G (Z_pt 0)]
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, p_add_zero G (Z_pt 0)]
     congr 1
     · exact ev_pt_self _ (fun l => by fin_cases l; rfl) _
     · show ev _ (pderiv R _ (ev ![pt R d 0, pt R d 1] (G.F c))) = _
@@ -120,7 +120,7 @@ theorem d_act_p (p : ℕ) [CharP R p] {G : FGLaw R d} (A : OAct O G) (i j : Fin 
       zero_add, evsum hb, evm hb]
     refine Finset.sum_eq_zero fun e _ => ?_
     rw [ev1 hb (Z_pt 1), ep_pt hb]
-    simp only [Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_zero, ev_at_zero, cc_pderiv,
+    simp only [Matrix.cons_val_one, Matrix.cons_val_zero, ev_at_zero, cc_pderiv,
       hp0, map_zero, mul_zero]
   have e := congrArg (fun F : Pt R 2 d => ev ![pt R d 0, (0 : Pt R 1 d)]
     (pderiv R ((1 : Fin 2), k) (F i))) (A.hom (p : O))
@@ -158,8 +158,7 @@ private theorem ev_zero_pderiv_pow1_eq_zero {z : Pt R n d} (hz : Z z) (k : Fin d
   refine ev_d_prod hb _ _ (fun l => ?_) N
   rw [d3 (Z_comp1 (Z_act B.A _) (Z_pt 0)) (Z_pt 0) (Z_pt 1)]
   simp only [eva hb, evsum hb, evm hb, ev3 hb (Z_comp1 (Z_act B.A _) (Z_pt 0)) (Z_pt 0) (Z_pt 1),
-    ep_comp1 _ hb (Z_pt 0), ep_pt hb, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
-    germComp1_zero_of_noConstantCoeff (Z_act _ _), deriv_first_first_form_zero B hz, deriv_second_first_form_zero B hz, zero_mul, Finset.sum_const_zero,
+    ep_comp1 _ hb (Z_pt 0), ep_pt hb, Matrix.cons_val_zero, Matrix.cons_val_one, germComp1_zero_of_noConstantCoeff (Z_act _ _), deriv_first_first_form_zero B hz, deriv_second_first_form_zero B hz, zero_mul, Finset.sum_const_zero,
     zero_add]
   refine Finset.sum_eq_zero fun e _ => ?_
   simp [dpt, evz hb]
@@ -196,7 +195,7 @@ theorem deriv_first_power_char_p (p : ℕ) [CharP R p] (j : Fin d) : pderiv R ((
     rw [d2 (Z_pt 1) (Z_pt 2)]
     simp only [dpt, Prod.mk.injEq, true_and, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq',
       Finset.mem_univ, if_true]
-    simp [dpt]
+    simp
     rw [ev2 hb (Z_pt 1) (Z_pt 2), ep_pt hb, ep_pt hb]
     simpa using ev_zero_pderiv_pow1_eq_zero B (Z_pt (R := R) (d := d) (n := 2) 1) k p
   have hC : pderiv R ((1 : Fin 3), k) (ev ![comp1 (B.A.act (p : O)) (pt R d 0),

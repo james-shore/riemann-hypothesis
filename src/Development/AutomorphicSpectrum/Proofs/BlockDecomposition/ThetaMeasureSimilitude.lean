@@ -60,7 +60,7 @@ theorem JR_smul (R : Type) [CommRing R] [Algebra F R] {M : ℕ} (c : E)
 theorem gramE_smul (σ : E →ₐ[F] E) {M n : ℕ} (c : E) (J : Matrix (Fin M) (Fin M) E)
     (X : Fin n → Fin M → E) : gramE σ (c • J) X = c • gramE σ J X := by
   ext a b
-  simp only [gramE, hE, hform, Matrix.of_apply, Matrix.smul_apply, smul_eq_mul, Finset.mul_sum]
+  simp only [gramE, hE, hform, Matrix.smul_apply, smul_eq_mul, Finset.mul_sum]
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
   ring
 

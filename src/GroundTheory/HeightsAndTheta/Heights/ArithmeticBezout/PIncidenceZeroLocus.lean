@@ -84,7 +84,7 @@ theorem proof : IncidenceZeroLocus.Statement := by
       exact fun q hq => hle hq
     obtain ⟨i, hi⟩ := hno y hy0 hyQ
     have h := hy _ (Ideal.subset_span ⟨Sum.inr i, rfl⟩)
-    simp [G, φv, coe_aeval_eq_eval] at h
+    simp [G, φv] at h
     exact hi h
   have hrad : ∀ j, ∃ m, (X j : MvPolynomial (Fin n) Ω) ^ m ∈ Jv := by
     intro j
@@ -115,7 +115,7 @@ theorem proof : IncidenceZeroLocus.Statement := by
   let Mf : Finset (Fin n →₀ ℕ) :=
     (Finset.range (N + 1)).biUnion fun d => (Finset.univ : Finset (Fin n)).finsuppAntidiag d
   have memMf : ∀ m, m ∈ Mf ↔ m.degree ≤ N := fun m => by
-    simp [Mf, Finset.mem_finsuppAntidiag, Finsupp.degree_eq_sum, Nat.lt_succ_iff]
+    simp [Mf, Finset.mem_finsuppAntidiag, Finsupp.degree_eq_sum]
   let c : (S ⊕ Fin k) × Mf → MvPolynomial (Fin n) (MvPolynomial (Fin k × Fin n) F) :=
     fun p => homogeneousComponent N (monomial (p.2 : Fin n →₀ ℕ) 1 * G p.1)
   let Mx : Matrix Rows ((S ⊕ Fin k) × Mf) (MvPolynomial (Fin k × Fin n) F) :=
@@ -224,7 +224,7 @@ theorem proof : IncidenceZeroLocus.Statement := by
       intro hw
       have h := congrFun hw ⟨_, hmemj⟩
       simp only [w, Pi.zero_apply] at h
-      rw [Fintype.prod_eq_single j (fun i hi => by simp [Finsupp.single_apply, Ne.symm hi])] at h
+      rw [Fintype.prod_eq_single j (fun i hi => by simp [Ne.symm hi])] at h
       simp only [Finsupp.single_eq_same] at h
       exact hj ((pow_eq_zero_iff (n := N) (by omega)).mp h)
     have hwM : Matrix.vecMul w ((Mx.map φu).submatrix id σ') = 0 := by

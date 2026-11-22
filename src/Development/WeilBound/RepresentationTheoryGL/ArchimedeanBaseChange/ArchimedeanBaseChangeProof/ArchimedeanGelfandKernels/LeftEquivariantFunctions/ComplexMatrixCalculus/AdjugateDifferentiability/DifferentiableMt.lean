@@ -74,8 +74,7 @@ theorem fr0Der_of (hG : GamDer) (hGm : GamMul) (hM : MtLaws) (hR : RmLaws) : Mat
   · rw [key]
     exact ((kronC _ _).hasFDerivAt_of_bilinear hFd.hasFDerivAt hGd.hasFDerivAt).differentiableAt
   · have h := congrArg (fun L => L X) ((kronC _ _).fderiv_of_bilinear hFd hGd)
-    simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.precompR_apply,
-      ContinuousLinearMap.precompL_apply, hF1, hG1] at h
+    simp only [ContinuousLinearMap.add_apply, hF1, hG1] at h
     rw [key]
     refine h.trans ?_
     rw [add_comm]

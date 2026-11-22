@@ -416,7 +416,6 @@ theorem strip_integral : B1 → B2 → HorizontalIntegralTwisted → U2 := by
         congr 2
         first
           | (push_cast; ring)
-          | push_cast
       rw [← coeff_term k M ν ψ a ha0 s n, integral_const_mul, hI, one_div,
         Complex.inv_cpow _ _ (by rw [Complex.arg_ofReal_of_nonneg hr.le]; exact Real.pi_pos.ne)]
       ring

@@ -24,7 +24,7 @@ theorem lieE_G : Formalism.MainNotions.S.lieE (UH (Hpk k r)) = (uH k r).map RL :
 theorem lieG' : LieG := fun k r => lieE_G
 
 theorem mulVec_bvec (X : Mat k r) (j i : Fin (2 * r + k + 1)) : (X *ᵥ bvec j) i = X i j := by
-  simp [Formalism.QuantumDeterminants.bvec, Matrix.mulVec_single_one]
+  simp [Formalism.QuantumDeterminants.bvec]
 
 theorem mid_or (j : Fin (2 * r + k + 1)) (h : ¬ Mid k r j) :
     (∃ a : Fin r, j = eI k r a) ∨ (∃ a : Fin r, j = esI k r a) := by

@@ -33,7 +33,6 @@ lemma splitIdem_eps {e' : AE D} (h : IsSplitIdem D e') : (e' + cA D e') * fI D =
   all_goals first
     | rfl
     | (simp only [pairA]; exact Prod.ext (mul_zero _) (mul_one _))
-    | (simp only [pairA]; ext <;> simp)
 
 lemma supp_fin {e' : AE D} (he : IsSplitIdem D e') {V : HSp D} {g : GA D V} (hg : SuppAt e' V g) (i j : Fin V.rank) :
     (mt V g - 1) i j * fI D = (mt V g - 1) i j := by

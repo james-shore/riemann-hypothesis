@@ -20,7 +20,7 @@ lemma linF_line (a : ι → Fin r → ℝ) (b : ι → ℝ) (j : ι) (x : Fin r 
     intro k
     by_cases hk : k = i
     · subst hk; simp; ring
-    · simp [Pi.single_apply, hk]
+    · simp [hk]
   simp only [linF, h, Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   ring
 
@@ -76,7 +76,7 @@ lemma hasDerivAt_Fr (a : ι → Fin r → ℝ) (b : ι → ℝ) (ha : ∀ j i, 0
       ring
     · refine Finset.prod_congr rfl fun k hk => ?_
       have hkj : k ≠ j := Finset.ne_of_mem_erase hk
-      simp [Pi.single_apply, hkj]
+      simp [hkj]
   rw [hF, smul_eq_mul]
   ring
 
@@ -95,7 +95,7 @@ theorem hasDerivAt_DLR_Fr (ι : Type) [Fintype ι] [DecidableEq ι] (r : ℕ) (a
         refine mul_nonneg hτ ?_
         by_cases hk : k = i
         · subst hk; simp
-        · simp [Pi.single_apply, hk]
+        · simp [hk]
       simpa using add_nonneg (hx k) this
     simpa [DLR] using hasDerivAt_Fr a b ha hb s β i x τ hy
   | cons c cs ih =>
@@ -104,7 +104,7 @@ theorem hasDerivAt_DLR_Fr (ι : Type) [Fintype ι] [DecidableEq ι] (r : ℕ) (a
       have : 0 ≤ (Pi.single c 1 : Fin r → ℝ) k := by
         by_cases hk : k = c
         · subst hk; simp
-        · simp [Pi.single_apply, hk]
+        · simp [hk]
       simpa using add_nonneg (hx k) this
     have hsw : ∀ (G : (Fin r → ℝ) → ℂ) (t : ℝ),
         DLR (c :: cs) G (x + t • (Pi.single i 1 : Fin r → ℝ))

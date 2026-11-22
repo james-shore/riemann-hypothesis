@@ -44,7 +44,7 @@ theorem pencil_det_adjugate_coeff :
   have hZ : e.mapMatrix Z = (Polynomial.X : Polynomial (MvPolynomial τ ℂ)) • A.map Polynomial.C +
       B.map Polynomial.C := by
     refine Matrix.ext fun i j => ?_
-    simp only [RingHom.mapMatrix_apply, Matrix.map_apply, Matrix.add_apply, Matrix.smul_apply,
+    simp only [Matrix.map_apply, Matrix.add_apply, Matrix.smul_apply,
       smul_eq_mul, Z, he]
     exact pencil_map_entry (A i j) (B i j)
   have hdet : MvPolynomial.optionEquivLeft ℂ τ Z.det =
@@ -74,7 +74,7 @@ theorem pencil_det_adjugate_coeff :
         simp only [Matrix.updateRow_self, if_true]
         by_cases hc : c = j
         · subst hc; simp
-        · simp [Pi.single_apply, hc]
+        · simp [hc]
       · simp only [Matrix.updateRow_ne hr, if_neg hr, Matrix.add_apply, Matrix.smul_apply,
           Matrix.map_apply, smul_eq_mul]
         compute_degree

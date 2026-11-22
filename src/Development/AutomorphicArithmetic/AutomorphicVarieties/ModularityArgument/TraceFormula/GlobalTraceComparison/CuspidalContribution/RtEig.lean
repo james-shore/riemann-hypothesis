@@ -32,7 +32,6 @@ private theorem rt_eig {E : Type} [Field E] [NumberField E] [IsCMField E] {a : �
     ⟨fun u hu g => ?_, fun g => ?_⟩, fun t => ⟨(h.cap t).1, fun u => ?_⟩, fun w hw' => ?_⟩
   · change φ.1 (g * finGL E a u * k) = φ.1 (g * k)
     rw [← h.ty.1 _ (hle (hn kf hmem u hu)) (g * k)]
-    congr 1
     conv_lhs => rw [hk₀]
     conv_rhs => rw [hk₀]
     rw [mul_assoc g, ← mul_assoc (finGL E a u), ← infGL_comm]
@@ -41,7 +40,6 @@ private theorem rt_eig {E : Type} [Field E] [NumberField E] [IsCMField E] {a : �
       simpa only [map_mul, mul_assoc] using h.ty.2 (g * finGL E a kf * infGL E a (Unitary.toUnits c))) k₀
     convert h1 using 2 with k'
     change φ.1 (g * _ * k) = _
-    congr 1
     conv_lhs => rw [hk₀]
     rw [mul_assoc g (finGL E a kf), ← infGL_comm, map_mul, map_mul]
     simp only [mul_assoc]

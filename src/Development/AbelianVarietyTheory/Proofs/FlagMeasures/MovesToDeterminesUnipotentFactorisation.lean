@@ -33,8 +33,6 @@ theorem upUni_mul {N : ℕ} {K : Type} [Field K] {A B : Matrix (Fin N) (Fin N) K
   | exact @_root_.GlobalTheory.UpperUnipotentMulFlagMeasures.isUpUni_mul
   | exact _root_.GlobalTheory.UpperUnipotentMulFlagMeasures.isUpUni_mul
   | (apply _root_.GlobalTheory.UpperUnipotentMulFlagMeasures.isUpUni_mul <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UpperUnipotentMulFlagMeasures.isUpUni_mul <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UpperUnipotentMulFlagMeasures.isUpUni_mul <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UpperUnipotentMulFlagMeasures.isUpUni_mul ..)
 
 theorem unip_tri {D : D7} {T : D.host.E} (F : LFlag (VS D) D.R.rS T) (n : (VS D).V ≃ₗ[D.host.E] (VS D).V)
@@ -77,7 +75,7 @@ theorem step : ∀ (D : D7) (X : HidaSetting D) (Y : Full X) (u u' : D.what₂.W
       rw [frame_mapLF _ ht0]
     have e1 : frame t.frame b = t.lin (frame (lf D (X.Fu u')) b) := frame_mapLF _ ht1 _ b
     rw [e1, ht]
-    simp only [LinearEquiv.mul_apply, LinearEquiv.apply_symm_apply]
+    simp only [LinearEquiv.mul_apply]
     have hinv : ∀ x, n (n⁻¹ x) = x := fun x => by
       rw [← LinearEquiv.mul_apply, mul_inv_cancel]
       rfl

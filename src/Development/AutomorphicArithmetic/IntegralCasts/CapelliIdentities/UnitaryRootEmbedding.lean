@@ -527,11 +527,11 @@ private theorem pm_cases {n : ℕ} (A A1 B B1 k : Fin n) :
     simp [h1]
   by_cases h3 : k = B
   · subst h3
-    simp [h1, h2, Fin.ext_iff]
+    simp [h1, h2]
   by_cases h4 : k = B1
   · subst h4
-    simp [h1, h2, h3, Fin.ext_iff]
-  · simp [h1, h2, h3, h4, Fin.ext_iff]
+    simp [h1, h2, h3]
+  · simp [h1, h2, h3, h4]
     omega
 
 private theorem pm_invol {n : ℕ} {A A1 B B1 : Fin n} (hA : (A : ℕ) + 1 = A1) (hB : (B : ℕ) + 1 = B1)
@@ -630,7 +630,7 @@ private theorem partner_nU {L : Type} [Field L] (σ : L →+* L) (z : L) :
     fin_cases i <;> fin_cases j <;> simp [cT]
   simp only [partner]
   rw [e, e2]
-  simp [w2, Matrix.mul_fin_two]
+  simp [w2]
 
 private theorem S_apply {L : Type} [Field L] {n a : ℕ} (σ : L →+* L)
     (hσ : ∀ x : L, σ (σ x) = x) (h : 2 * (a + 2) ≤ n) (i j : Fin n) :

@@ -95,7 +95,7 @@ theorem pullLat_selfDual : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E
     funext j
     rw [Finset.sum_apply]
     simp only [hφs, z, hpre, Pi.smul_apply, Pi.single_apply, smul_eq_mul, mul_ite, mul_one, mul_zero,
-      Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      Finset.sum_ite_eq, Finset.mem_univ, if_true]
     exact (ha j).symm
   have hsd : ∀ y, (∀ i, φ y i ∈ w.adicCompletionIntegers E) ↔
       ∀ z' ∈ pullLat w B ψ g, B.herm x y z' ∈ (algebraMap K.O K.E).range := by
@@ -116,7 +116,7 @@ theorem pullLat_selfDual : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E
         unfold stdH
         rw [Finset.sum_eq_single i]
         · simp
-        · intro k _ hk; simp [Pi.single_apply, hk]
+        · intro k _ hk; simp [hk]
         · simp
       rwa [hcalc] at this
   refine ⟨⟨?_, ?_⟩, ?_⟩

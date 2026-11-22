@@ -46,10 +46,10 @@ private lemma norm_sum_smul_map_le_mul_of_bounded {A : Submodule ℤ E} {B : Sub
 
   have hyE : (((∑ i, round ((n : ℝ) * c i) • b i : A)) : E) =
       ∑ i, ((round ((n : ℝ) * c i) : ℤ) : ℝ) • ((b i : A) : E) := by
-    simp [Submodule.coe_sum, Int.cast_smul_eq_zsmul]
+    simp [Int.cast_smul_eq_zsmul]
   have heF : ((e (∑ i, round ((n : ℝ) * c i) • b i) : B) : F) =
       ∑ i, ((round ((n : ℝ) * c i) : ℤ) : ℝ) • ((e (b i) : B) : F) := by
-    simp [map_sum, map_zsmul, Submodule.coe_sum, Int.cast_smul_eq_zsmul]
+    simp [map_sum, Int.cast_smul_eq_zsmul]
   have dF : (n : ℝ) • ∑ i, c i • ((e (b i) : B) : F) =
       ((e (∑ i, round ((n : ℝ) * c i) • b i) : B) : F) +
         ∑ i, ((n : ℝ) * c i - (round ((n : ℝ) * c i) : ℝ)) • ((e (b i) : B) : F) := by
@@ -162,9 +162,7 @@ theorem norm_starProjection_le {G : Type*} [AddCommGroup G] (α : G →+ E) (β 
           (K := span ℝ (α '' S)) (α g)
        rw [sub_eq_of_eq_add hd.symm]
        first
-       | exact Submodule.starProjection_apply_mem _ _
-       | exact ((span ℝ (α '' S)).orthogonalProjection (α g)).2
-       | simp)
+       | exact Submodule.starProjection_apply_mem _ _)
   obtain ⟨n, c, gg, hf⟩ := Submodule.mem_span_set'.mp hw
   have hs : ∀ i, ∃ s ∈ S, α s = (gg i : E) := fun i => (gg i).2
   choose s hsS hsα using hs
@@ -244,9 +242,7 @@ private lemma mem_of_starProjection_orthogonal_eq_zero {X : Type*} [NormedAddCom
     | (have hd := Submodule.starProjection_add_starProjection_orthogonal (K := K) x
        rw [sub_eq_of_eq_add hd.symm]
        first
-       | exact Submodule.starProjection_apply_mem _ _
-       | exact (K.orthogonalProjection x).2
-       | simp)
+       | exact Submodule.starProjection_apply_mem _ _)
   rwa [h, sub_zero] at hw
 
 private theorem slopeIneq_of_lemma {R V W E F : Type*} [Ring R] [AddCommGroup V] [Module R V]

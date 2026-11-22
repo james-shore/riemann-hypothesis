@@ -47,7 +47,7 @@ theorem haarLc : HaarLc := by
       simp [Matrix.mulVec, dotProduct, Matrix.mul_apply]
     have hu : hΛ.unit = Units.map (Algebra.norm (AF F) : AE F E →* AF F) (Matrix.GeneralLinearGroup.det t) := by
       ext
-      simp only [IsUnit.unit_spec, hdet, Units.coe_map, MonoidHom.coe_coe, map_one, one_pow, mul_one, pow_one]
+      simp only [IsUnit.unit_spec, hdet, Units.coe_map, map_one, one_pow, mul_one, pow_one]
     rw [h1, hχ, chi_AF_det, hu, ht, norm_det_unitary hcm hJ g, map_one]
 
   have hV : ∀ (ν : Measure (Fin m → AE F E)), ν.IsAddHaarMeasure → ν.map φ = ν := by

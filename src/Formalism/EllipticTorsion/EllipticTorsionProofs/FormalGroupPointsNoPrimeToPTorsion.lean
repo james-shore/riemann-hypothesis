@@ -384,7 +384,7 @@ lemma key [DecidableEq K] (hW : IntegralModel W) (P Q : W.toAffine.Point) (hP : 
     rw [hz]
     refine ⟨hP, ?_⟩
     obtain ⟨-, ht, -, -⟩ := zfacts hW h1.1 hP
-    simp only [zf, sub_zero, sub_self, norm_zero]
+    simp only [zf, sub_self, norm_zero]
     exact lt_max_of_lt_left ht
   · by_cases hxy : x1 = x2 ∧ y1 = W.toAffine.negY x2 y2
     · rw [Affine.Point.add_of_Y_eq hxy.1 hxy.2, Affine.Point.zero_def]

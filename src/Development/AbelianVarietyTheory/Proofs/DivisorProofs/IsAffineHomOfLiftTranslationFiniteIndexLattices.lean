@@ -76,7 +76,7 @@ theorem isAffineHom_of_lift : ∀ (g : ℕ) (A : Over (Sp ℂ)) [GrpObj A], IsAb
     obtain ⟨z, rfl⟩ := exists_ex_apply_eq u x hxc
     have hx' : ((u.ex z).left ≫ ψ) (IsLocalRing.closedPoint ℂ) =
         ((u.ex z₀).left ≫ ψ) (IsLocalRing.closedPoint ℂ) := by
-      first | exact hx | simpa using hx | (simp only [Scheme.Hom.comp_apply]; exact hx)
+      first | exact hx
     rw [hex, hex] at hx'
     have e1 : u'.ex (z + a) = u'.ex (z₀ + a) :=
       Over.OverMorphism.ext (ext_of_apply_closedPoint_eq B.hom (Over.w _) (Over.w _) hx')

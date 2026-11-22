@@ -72,7 +72,7 @@ theorem nsq_K (x : CI k r → ℂ) (s : Fin r → ℝ) (a b : Fin r) : Complex.n
     have h3 : a ≠ b := ne_of_lt h1
     simp [h1, h2, h3]
   · by_cases h2 : b < a
-    · simp [h1, h2, (ne_of_lt h2).symm, Complex.normSq_neg, Complex.star_def, Complex.normSq_conj]
+    · simp [h1, h2, (ne_of_lt h2).symm, Complex.normSq_neg, Complex.normSq_conj]
     · have h3 : a = b := le_antisymm (not_lt.mp h2) (not_lt.mp h1)
       subst h3
       simp [Complex.normSq_mul, Complex.normSq_I, Complex.normSq_ofReal]

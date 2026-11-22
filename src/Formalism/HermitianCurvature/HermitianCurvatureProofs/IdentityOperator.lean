@@ -31,8 +31,6 @@ theorem identity_operator : TL.IdOp := by
       | exact contDiffOn_const
       | (open scoped Formalism.FourierDecayAlt.B in exact contDiffOn_const)
       | (open scoped Matrix.Norms.Elementwise in exact contDiffOn_const)
-      | (open scoped Matrix.Norms.Operator in exact contDiffOn_const)
-      | exact @contDiffOn_const _ _ _ _ _ _ _ _ _ _ _ _
   · intro p _ f _ g _
     simp only [hap]
   · intro T' hT'

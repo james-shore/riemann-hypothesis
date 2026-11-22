@@ -123,7 +123,7 @@ private theorem iw_of_cong {w : Plc E} (a g : GLw n w) (ha : a ∈ KGL w n)
   have c2 := sub_lt_of_conj a g⁻¹ ha h'
   refine ((GlobalTheory.CompanionTheory.IwEntries.iwGL_KGL_entries E w n g).1).2 ⟨le_one_of_sub_lt c1, le_one_of_sub_lt c2, fun i j hij => ?_⟩
   have e : g.val i j = (g.val - 1) i j := by
-    simp [Matrix.one_apply, (ne_of_lt hij).symm]
+    simp [(ne_of_lt hij).symm]
   rw [e]
   exact c1 i j
 

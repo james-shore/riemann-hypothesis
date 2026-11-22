@@ -122,7 +122,7 @@ theorem ms_skewOfCoords {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] {
       simp [hab, hba, hne]
     · by_cases hba : b < a
       · have hne : a ≠ b := ne_of_gt hba
-        simp [hab, hba, hne, Complex.star_def]
+        simp [hab, hba, hne]
       · have hab' : a = b := le_antisymm (not_lt.1 hba) (not_lt.1 hab)
         subst hab'
         simp
@@ -285,7 +285,7 @@ theorem chart_spec (g : B.Mat k (j + ρ)) (hg : g ∈ B.GV k (j + ρ)) (hD : DjU
   have eS : chS g = skewOf x.2 := by
     unfold chS
     rw [eC, e31, hb, block_three_top_left, Matrix.mul_assoc _ (G.wMat j * Z), i1, Matrix.mul_one]
-    simp only [sub_sub_cancel_left, Matrix.mul_neg, neg_neg, Matrix.mul_add, ← Matrix.mul_assoc, hWW,
+    simp only [Matrix.mul_neg, Matrix.mul_add, ← Matrix.mul_assoc, hWW,
       Matrix.one_mul, Matrix.mul_sub]
     module
   have eX : chX g = x := by

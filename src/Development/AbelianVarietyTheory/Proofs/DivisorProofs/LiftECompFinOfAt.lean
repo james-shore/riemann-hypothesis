@@ -57,14 +57,14 @@ def liftU (v : Pl F) : (Fv F v ⊗[F] E)ˣ →* (AE F E)ˣ where
     by rw [one_add_liftE_mul, Units.mul_inv, sub_self, map_zero, add_zero],
     by rw [one_add_liftE_mul, Units.inv_mul, sub_self, map_zero, add_zero]⟩
   map_one' := by ext; simp
-  map_mul' z w := by ext; simp only [Units.val_mul, Units.val_mk]; rw [one_add_liftE_mul]
+  map_mul' z w := by ext; simp only [Units.val_mul]; rw [one_add_liftE_mul]
 
 def liftUF (v : Pl F) : (Fv F v)ˣ →* (AF F)ˣ where
   toFun a := ⟨1 + GlobalTheory.LatVac.liftV v ((a : Fv F v) - 1), 1 + GlobalTheory.LatVac.liftV v (((a⁻¹ : (Fv F v)ˣ) : Fv F v) - 1),
     by rw [one_add_liftV_mul, Units.mul_inv, sub_self, map_zero, add_zero],
     by rw [one_add_liftV_mul, Units.inv_mul, sub_self, map_zero, add_zero]⟩
   map_one' := by ext; simp
-  map_mul' z w := by ext; simp only [Units.val_mul, Units.val_mk]; rw [one_add_liftV_mul]
+  map_mul' z w := by ext; simp only [Units.val_mul]; rw [one_add_liftV_mul]
 
 theorem liftU_val (v : Pl F) (z : (Fv F v ⊗[F] E)ˣ) :
     ((liftU v z : (AE F E)ˣ) : AE F E) = 1 + liftE v ((z : Fv F v ⊗[F] E) - 1) := rfl

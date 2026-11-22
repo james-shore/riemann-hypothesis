@@ -267,7 +267,7 @@ theorem locReal_typed (hA : ∀ p, Agree δ M p) (u u' : D.what₂.Word) (p : Pl
     rw [hΔ2, conj_mul_apply, Finset.mul_sum]
     refine Subring.sum_mem _ fun k _ => ?_
     have hz := hc' (Sum.inl (1, i, k, j))
-    simp only [Sum.elim_inl, Fin.one_eq_zero_iff, one_ne_zero, if_false] at hz
+    simp only [Sum.elim_inl, one_ne_zero, if_false] at hz
     rw [hSe, show a' * (cfv i * (s i * oB2 k i * s k) * cfiv k * A2⁻¹ k j) =
       (s i * oB2 k i * s k) * (a' * (cfv i * cfiv k * A2⁻¹ k j)) by ring]
     exact Subring.mul_mem _ (Subring.mul_mem _ (Subring.mul_mem _ (hsO i) (hoB2 k i)) (hsO k)) hz
@@ -284,7 +284,7 @@ theorem locReal_typed (hA : ∀ p, Agree δ M p) (u u' : D.what₂.Word) (p : Pl
     rw [hE2, mul_conj_apply, Finset.mul_sum]
     refine Subring.sum_mem _ fun k _ => ?_
     have hz := hc' (Sum.inr (1, i, k, j))
-    simp only [Sum.elim_inr, Fin.one_eq_zero_iff, one_ne_zero, if_false] at hz
+    simp only [Sum.elim_inr, one_ne_zero, if_false] at hz
     rw [hSe, show a' * (B2⁻¹ i k * (cfiv k * (s k * oL2 j k * s j) * cfv j)) =
       (s k * oL2 j k * s j) * (a' * (B2⁻¹ i k * cfiv k * cfv j)) by ring]
     exact Subring.mul_mem _ (Subring.mul_mem _ (Subring.mul_mem _ (hsO k) (hoL2 j k)) (hsO j)) hz

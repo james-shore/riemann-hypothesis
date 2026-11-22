@@ -111,7 +111,7 @@ theorem rpAbs_holds : RPAbs := by
     convert h1.mul h2 using 1
     funext i
     by_cases hi : i ∈ T0
-    · simp [hi, Set.mulIndicator_apply]
+    · simp [hi]
     · have hind : ∫ w, (L i).indicator (1 : W i → ℂ) w ∂m i = (((m i) (L i)).toReal : ℂ) := by
         rw [show (1 : W i → ℂ) = fun _ => (1 : ℂ) from rfl, integral_indicator_const _ (hL i)]
         simp [Measure.real]

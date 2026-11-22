@@ -57,8 +57,6 @@ private lemma addVal_le_length_quot_span (a : O) :
       apply IsDiscreteValuationRing.not_isField O
       first
         | exact IsArtinianRing.isField_of_isDomain O
-        | exact IsArtinianRing.isField_of_domain O
-        | exact IsArtinianRing.isField_of_isDomain
     have e : (O ⧸ Ideal.span ({0} : Set O)) ≃ₗ[O] O :=
       Submodule.quotEquivOfEqBot _ (Ideal.span_singleton_eq_bot.mpr rfl)
     rw [e.length_eq, htop]

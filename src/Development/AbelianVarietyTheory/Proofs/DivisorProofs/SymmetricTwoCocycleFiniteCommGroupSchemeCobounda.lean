@@ -87,7 +87,7 @@ theorem tensor_assoc_comul_placement_eq (K B : Type) [CommRing K] [CommRing B] [
         (Algebra.TensorProduct.map (AlgHom.id K B) (Bialgebra.comulAlgHom K B)) := by
   refine Algebra.TensorProduct.ext' fun a b => ?_
   simp only [Algebra.TensorProduct.lift_tmul, AlgHom.comp_apply, Algebra.TensorProduct.map_tmul,
-    AlgHom.id_apply, Bialgebra.comulAlgHom_apply, AlgHom.coe_coe]
+    AlgHom.id_apply, Bialgebra.comulAlgHom_apply]
   have hab : a ⊗ₜ[K] Coalgebra.comul (R := K) b =
       (a ⊗ₜ[K] (1 : B ⊗[K] B)) * ((1 : B) ⊗ₜ[K] Coalgebra.comul (R := K) b) := by simp
   rw [hab, map_mul]
@@ -159,7 +159,7 @@ theorem exists_coboundary : ∀ (K : Type) [Field K] [IsAlgClosed K] (N : Over (
     have E3 : Algebra.TensorProduct.lift ι₂ ι₃ (fun _ _ => Commute.all _ _) =
         (Algebra.TensorProduct.assoc K K K B B B).symm.toAlgHom.comp
           (Algebra.TensorProduct.includeRight : B ⊗[K] B →ₐ[K] B ⊗[K] (B ⊗[K] B)) :=
-      Algebra.TensorProduct.ext' fun a b => by simp [ι₂, ι₃, iL, iR]
+      Algebra.TensorProduct.ext' fun a b => by simp [ι₂, ι₃, iR]
     have E2 : Algebra.TensorProduct.lift ((Algebra.TensorProduct.lift ι₁ ι₂ (fun _ _ => Commute.all _ _)).comp
         (Bialgebra.comulAlgHom K B)) ι₃ (fun _ _ => Commute.all _ _) =
         Algebra.TensorProduct.map (Bialgebra.comulAlgHom K B) (AlgHom.id K B) := by

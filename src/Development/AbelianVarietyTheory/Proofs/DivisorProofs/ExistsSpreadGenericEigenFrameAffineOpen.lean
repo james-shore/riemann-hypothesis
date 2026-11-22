@@ -229,7 +229,7 @@ theorem GlobalTheory.LogKSDiv.spread_genFrame : ∀ (E : Type) [Field E] [Number
       funext j
       by_cases hjk : j = k
       · subst hjk; simp [cst_apply]
-      · simp [Matrix.diagonal_apply, Pi.single_apply, hjk, Ne.symm hjk]
+      · simp [hjk, Ne.symm hjk]
     have hc : IsCombAtG TF.Y.t (LogKS.chart ⟨_, hU'⟩) (fun j => vec TF.Y.t _ xcU (cU j))
         (Pi.single k (cst TF.Y.s (TF.Y.X.basicOpen g') (embK c (e.symm k).1 a)))
         (vec TF.Y.t _ xcU (cst TF.Y.s (TF.Y.X.basicOpen g') (embK c (e.symm k).1 a) • cU k)) := by

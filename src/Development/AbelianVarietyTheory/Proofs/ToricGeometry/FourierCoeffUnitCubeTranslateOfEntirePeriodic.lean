@@ -15,8 +15,6 @@ theorem apply_add_intCast_vec_of_unit_periods {ι R E : Type*} [Fintype ι] [Dec
   | exact @_root_.GlobalTheory.IntegerShiftSingle.main
   | exact _root_.GlobalTheory.IntegerShiftSingle.main
   | (apply _root_.GlobalTheory.IntegerShiftSingle.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IntegerShiftSingle.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IntegerShiftSingle.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IntegerShiftSingle.main ..)
 
 theorem setIntegral_unitCube_add_right_of_periodic {ι E : Type*} [Fintype ι] [DecidableEq ι]

@@ -164,8 +164,6 @@ theorem exists_lb_of_localEq : ∀ (X Y : Scheme.{0}) (j : Y ⟶ X) (L : LB Y) (
       have hx : O.ι x ∈ O := by
         first
           | exact x.2
-          | exact (Scheme.Opens.range_ι O).le ⟨x, rfl⟩
-          | simp [Scheme.Opens.ι_apply]
       rw [TopologicalSpace.Opens.mem_iSup] at hx ⊢
       exact hx
     · intro k

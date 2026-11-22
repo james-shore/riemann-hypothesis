@@ -23,9 +23,8 @@ theorem measurePreserving_swapMat (m n : ℕ) :
           (Equiv.prodComm (Fin m) (Fin n))) ∘
           (MeasurableEquiv.curry (Fin m) (Fin n) ℂ).symm := by
     funext π j i
-    simp only [MeasurableEquiv.coe_curry_symm, MeasurableEquiv.curry, Function.comp]
-    simp only [MeasurableEquiv.coe_mk, Equiv.coe_fn_mk, Function.curry_apply,
-      MeasurableEquiv.coe_piCongrLeft]
+    simp only [MeasurableEquiv.curry, Function.comp]
+    simp only [MeasurableEquiv.coe_mk, MeasurableEquiv.coe_piCongrLeft]
     exact (Equiv.piCongrLeft_apply_apply (fun _ : Fin n × Fin m => ℂ)
       (Equiv.prodComm (Fin m) (Fin n)) (Function.uncurry π) (i, j)).symm
   rw [h5]

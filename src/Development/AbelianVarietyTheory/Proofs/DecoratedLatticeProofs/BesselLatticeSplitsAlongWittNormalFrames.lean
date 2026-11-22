@@ -154,7 +154,7 @@ theorem proj_sec (q : SplitPt D k) {S S₀ : HSp D} {ρ : ℕ} (d : HypDec S S�
   · change rat d.q0 *ᵥ _ = _
     rw [GlobalTheory.CoreFrameLat.rat_mulVec_sec, ← hP, Matrix.mulVec_add, Matrix.mulVec_add, Matrix.mulVec_mulVec,
       Matrix.mulVec_mulVec, Matrix.mulVec_mulVec, m, m, m, GlobalTheory.SeeSaw.SplitLat.wittDecomposition_coreProj_mul_core_eq_one, GlobalTheory.SeeSaw.SplitLat.wittDecomposition_coreProj_mul_e_eq_zero, GlobalTheory.SeeSaw.SplitLat.wittZeroProjection_mul_dualBasis_eq_zero]
-    simp only [z, o, Matrix.zero_mulVec, Matrix.one_mulVec, zero_add, add_zero]
+    simp only [z, o, Matrix.zero_mulVec, Matrix.one_mulVec, add_zero]
 
 end GlobalTheory.MonoBes
 

@@ -10,10 +10,6 @@ theorem cauchy_roots_bound : ∀ (n : ℕ) (B : Multiset ℂˣ) (M : ℝ), B.car
     ∀ b ∈ B, ‖(b : ℂ)‖ ≤ n * M := by
   first
   | exact @_root_.GlobalTheory.ElementarySymmetricNormBound.norm_unit_le_of_esymm
-  | exact _root_.GlobalTheory.ElementarySymmetricNormBound.norm_unit_le_of_esymm
-  | (apply _root_.GlobalTheory.ElementarySymmetricNormBound.norm_unit_le_of_esymm <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ElementarySymmetricNormBound.norm_unit_le_of_esymm <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ElementarySymmetricNormBound.norm_unit_le_of_esymm <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ElementarySymmetricNormBound.norm_unit_le_of_esymm ..)
 
 end GlobalTheory

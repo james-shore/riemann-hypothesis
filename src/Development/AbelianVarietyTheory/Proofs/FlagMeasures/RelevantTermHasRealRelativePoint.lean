@@ -21,8 +21,6 @@ theorem loUni_mul {l l' : Matrix (Fin n) (Fin n) R} (h : IsLoUni l) (h' : IsLoUn
   | exact @_root_.GlobalTheory.LowerUnipotentMul.main
   | exact _root_.GlobalTheory.LowerUnipotentMul.main
   | (apply _root_.GlobalTheory.LowerUnipotentMul.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LowerUnipotentMul.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LowerUnipotentMul.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LowerUnipotentMul.main ..)
 
 theorem upUni_mul {l l' : Matrix (Fin n) (Fin n) R} (h : IsUpUni l) (h' : IsUpUni l') : IsUpUni (l * l') := by
@@ -30,8 +28,6 @@ theorem upUni_mul {l l' : Matrix (Fin n) (Fin n) R} (h : IsUpUni l) (h' : IsUpUn
   | exact @_root_.GlobalTheory.UpperUnipotentProductFlagMeasures.upUni_mul
   | exact _root_.GlobalTheory.UpperUnipotentProductFlagMeasures.upUni_mul
   | (apply _root_.GlobalTheory.UpperUnipotentProductFlagMeasures.upUni_mul <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UpperUnipotentProductFlagMeasures.upUni_mul <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UpperUnipotentProductFlagMeasures.upUni_mul <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UpperUnipotentProductFlagMeasures.upUni_mul ..)
 
 end Uni

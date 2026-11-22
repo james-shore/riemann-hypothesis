@@ -23,7 +23,6 @@ theorem gCSch : GCSch := by
     rwa [Matrix.transpose_smul, Matrix.transpose_sub, Matrix.conjTranspose_transpose] at h
   have hP2 : ((-(Complex.I / 2)) • (-Z'ᵀ - (-Z'ᵀ)ᴴ)).PosDef := by
     have h := hZ'.transpose
-    unfold IsSiegel at h
     rw [Matrix.conjTranspose_conjTranspose, Matrix.transpose_smul, Matrix.transpose_sub,
       Matrix.conjTranspose_transpose] at h
     rwa [Matrix.conjTranspose_neg, sub_neg_eq_add, neg_add_eq_sub]

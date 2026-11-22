@@ -124,7 +124,7 @@ theorem indEt_isDomain [IsDomain T] [IsIntegrallyClosed T] [Algebra.Smooth T B] 
   have hnat : ∀ {i k : J} (f : i ⟶ k) (x : D.obj i), (s.app k).hom ((D.map f).hom x) = (s.app i).hom x := by
     intro i k f x
     have := s.naturality f
-    simp only [Functor.const_obj_map, Category.comp_id] at this
+    simp only [Functor.const_obj_map] at this
     exact congrArg (fun g => g.hom x) this
   haveI : NoZeroDivisors A := ⟨by
     intro a b hab

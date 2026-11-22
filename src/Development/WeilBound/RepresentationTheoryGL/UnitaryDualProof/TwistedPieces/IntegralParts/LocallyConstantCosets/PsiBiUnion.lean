@@ -110,7 +110,7 @@ theorem psi_act (hZ : CR Z) (A : Set (Matrix (Fin n) (Fin n) k)) (h : Sp k n →
   · have hm : (act g p).1 ∉ CC Z := fun h' => by
       have h2 := (cc_conj hZ hg' h').1
       simp only [act, inv_inv, mul_assoc, Units.inv_mul, Units.inv_mul_cancel_left,
-        Units.mul_inv, mul_one] at h2
+        mul_one] at h2
       exact hp h2
     rw [psi_of_not hm, psi_of_not hp]
 

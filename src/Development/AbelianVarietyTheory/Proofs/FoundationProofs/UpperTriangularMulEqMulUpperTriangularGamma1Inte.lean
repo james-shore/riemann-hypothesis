@@ -28,7 +28,7 @@ theorem tinv_fin_fin : ∀ (N l q j : ℕ) (γ : SL(2, ℤ)), q.Prime → ¬ q �
     ext i k; fin_cases i <;> fin_cases k <;> rfl
   rw [hmat] at hA ⊢
   simp only [Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-    Matrix.head_cons, Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_fin_const] at hA
+    Matrix.empty_val', Matrix.cons_val_fin_one] at hA
   set A : ℤ := a + j * c with hAdef
   set B : ℤ := b + j * d with hBdef
   have hAq : ((A : ℤ) : ZMod q) ≠ 0 := by

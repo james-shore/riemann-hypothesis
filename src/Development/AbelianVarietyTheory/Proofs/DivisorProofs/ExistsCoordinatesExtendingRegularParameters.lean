@@ -60,8 +60,6 @@ theorem span_tmul_eq_top {R M : Type} [CommRing R] [IsLocalRing R] [AddCommGroup
   | exact @_root_.GlobalTheory.TensorUnitSpanTop.main
   | exact _root_.GlobalTheory.TensorUnitSpanTop.main
   | (apply _root_.GlobalTheory.TensorUnitSpanTop.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TensorUnitSpanTop.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TensorUnitSpanTop.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TensorUnitSpanTop.main ..)
 
 end GlobalTheory.CoordExt

@@ -18,8 +18,6 @@ theorem exists_not_isUnit_sub [Nontrivial V] (hV : Module.rank ℂ V ≤ ℵ₀)
   | exact @_root_.GlobalTheory.NonUnitShift.exists_not_isUnit_sub
   | exact _root_.GlobalTheory.NonUnitShift.exists_not_isUnit_sub
   | (apply _root_.GlobalTheory.NonUnitShift.exists_not_isUnit_sub <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NonUnitShift.exists_not_isUnit_sub <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NonUnitShift.exists_not_isUnit_sub <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NonUnitShift.exists_not_isUnit_sub ..)
 
 variable {G : Type} [Group G]

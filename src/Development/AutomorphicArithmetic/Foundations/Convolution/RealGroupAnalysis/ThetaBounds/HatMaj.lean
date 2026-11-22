@@ -175,7 +175,6 @@ theorem UpperTheory.ConvolutionTheory.R2.Ff.hatMaj :
       first
         | exact h0
         | (rw [← Units.val_pow_eq_pow_val, h0]; rfl)
-        | simpa using congrArg Units.val h0
     exact (pow_eq_one_iff_of_nonneg (norm_nonneg _) two_ne_zero).1 (by rw [← norm_pow, h, norm_one])
   set v' : V4 F := ![0, ((a⁻¹ : (A F)ˣ) : A F) * x, a * u, a * t] with hv'
   have hm : hat (W.Om (mD a) (∑ i, c i • W.L (infGL E 2 y) (e i))).1 ![0, x, u, t] =

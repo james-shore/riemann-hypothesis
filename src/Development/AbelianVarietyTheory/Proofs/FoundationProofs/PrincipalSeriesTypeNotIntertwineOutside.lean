@@ -60,8 +60,6 @@ theorem not_intertwine : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalS
       rw [map_mul]
       first
         | exact mul_le_of_le_one_left' hs
-        | exact (mul_le_mul' hs le_rfl).trans_eq (one_mul _)
-        | exact mul_le_of_le_one_left (zero_le _) hs
     · simp only [Matrix.add_apply, Matrix.one_apply, Matrix.vecMulVec_apply, Pi.single_eq_of_ne hi', mul_zero,
         if_neg (ne_of_lt hii'), add_zero]
       exact hprops.2.2.1 _
@@ -70,7 +68,7 @@ theorem not_intertwine : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalS
       intro i
       by_cases hi : i = a
       · subst hi; simp [hsu]
-      · simp [Pi.single_eq_of_ne hi, hi]
+      · simp [hi]
     rw [hθj, hθ]
     intro h
     exact hne (Units.ext h).symm

@@ -31,7 +31,7 @@ theorem tensor_exists_smul_eq_eval₂ (S K L : Type) [CommRing S] [IsDomain S]
     obtain ⟨p, hp⟩ := AdjoinRoot.mk_surjective (φ d)
     have hd : d = aeval t p := by
       rw [aeval_algHom_apply, AdjoinRoot.aeval_eq, hp]
-      simp [t]
+      simp
     refine ⟨C ⟨s • l, hint⟩ * p.map (algebraMap S (integralClosure S L)), s, hs, ?_⟩
     rw [eval₂_mul, eval₂_C, eval₂_map]
     have : (gA.toRingHom.comp (algebraMap S (integralClosure S L))) =
@@ -73,5 +73,5 @@ theorem normalisation_mul_eq_aeval_root (S K L : Type) [CommRing S] [IsDomain S]
       (φ.symm (AdjoinRoot.root (Polynomial.X ^ e - Polynomial.C π))))
   simp only [AlgHom.toRingHom_eq_coe, AlgHom.coe_toRingHom, Subalgebra.coe_val] at hc
   rw [hc]
-  convert h using 2 <;> first | rfl | exact RingHom.ext fun _ => rfl
+  convert h using 2 <;> first | rfl
 end GlobalTheory

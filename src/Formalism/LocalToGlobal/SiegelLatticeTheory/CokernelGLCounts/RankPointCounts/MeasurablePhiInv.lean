@@ -44,8 +44,6 @@ private theorem mem_idealLattice_iff' (K : Type) [Field K] [NumberField K]
     x ∈ idealLattice K I ↔ ∃ a : K, a ∈ (I : FractionalIdeal (nonZeroDivisors (𝓞 K)) K) ∧ mixedEmbedding K a = x := by
   first
   | (rw [mem_idealLattice]; rfl)
-  | exact mem_idealLattice K I
-  | simp [idealLattice]
 
 theorem idealLattice_fd (K : Type) [Field K] [NumberField K] (I : (FractionalIdeal (nonZeroDivisors (𝓞 K)) K)ˣ) :
     ∃ FL : Set (mixedSpace K), MeasurableSet FL ∧
@@ -95,12 +93,10 @@ private theorem phiMap_mixedEmbedding_eq {K : Type} [Field K] [NumberField K] {�
   · rw [(hφ i).resolve_left h, ComplexEmbedding.conjugate_coe_eq]
     first
     | rfl
-    | simp [mixedEmbedding]
   · have h' : φ i = (σ i).1.embedding := by simpa using h
     rw [h']
     first
     | rfl
-    | simp [mixedEmbedding]
 
 theorem exists_fd (K : Type) [Field K] [NumberField K] [IsEmpty {w : InfinitePlace K // w.IsReal}]
     (ι : Type) [Fintype ι] (φ : ι → (K →+* ℂ)) (σ : ι ≃ {w : InfinitePlace K // w.IsComplex})

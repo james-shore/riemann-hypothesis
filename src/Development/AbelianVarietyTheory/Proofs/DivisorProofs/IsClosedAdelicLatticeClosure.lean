@@ -42,7 +42,7 @@ theorem isCompact_intAd : IsCompact (intAd F : Set (AF F)) := by
   have e : (intAd F : Set (AF F)) = (({0} : Set (InfiniteAdeleRing F)) ×ˢ
       {b : FiniteAdeleRing (𝓞 F) F | ∀ v : HeightOneSpectrum (𝓞 F), b.1 v ∈ v.adicCompletionIntegers F} : Set _) := by
     ext a
-    simp only [SetLike.mem_coe, Set.mem_prod, Set.mem_singleton_iff, Set.mem_setOf_eq]
+    simp only [SetLike.mem_coe]
     show (evI F a = 0 ∧ ∀ v, evFin F v a ∈ v.adicCompletionIntegers F) ↔ _
     have h1 : evI F a = 0 ↔ a.1 = 0 := by
       simp only [evI]; exact (InfiniteAdeleRing.ringEquiv_mixedSpace F).map_eq_zero_iff
@@ -61,7 +61,7 @@ theorem incV_zero {E : Type} [Field E] [NumberField E] [Algebra F E] {n : ℕ} :
 
 theorem incV_zsmul {E : Type} [Field E] [NumberField E] [Algebra F E] {n : ℕ} (m : ℤ) (x : Fin n → E) :
     incV F (m • x) = m • incV F x := by
-  funext i; simp [incV, map_zsmul]
+  funext i; simp [incV]
 
 theorem isClosed_latHat : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E] (n : ℕ)
     (X : Spc F E n), X.L.IsLattice E → IsClosed ((latHat X : AddSubgroup (Fin n → AE F E)) : Set (Fin n → AE F E)) := by
@@ -100,7 +100,7 @@ theorem isClosed_latHat : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [
       · intro i _
         by_cases h : i = ⟨y, hy⟩
         · subst h; simpa using ha
-        · simp [Pi.single_apply, h, zero_mem]
+        · simp [h, zero_mem]
       · simp [ψ, Pi.single_apply, ite_smul]
     | zero =>
       intro a _

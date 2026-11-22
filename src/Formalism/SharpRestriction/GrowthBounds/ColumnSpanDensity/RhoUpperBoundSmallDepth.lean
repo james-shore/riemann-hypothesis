@@ -67,7 +67,7 @@ theorem famS (v : Fin k → R.W ⧸ Ideal.span {(p : R.W)}) (hv : v ≠ 0) :
   · apply Submodule.subset_span
     refine ⟨j, ?_⟩
     funext i
-    simp [V, mapM, dj, Matrix.mul_diagonal, Matrix.updateCol_apply]
+    simp [V, mapM, dj, Matrix.mul_diagonal]
     try ring
   · intro x hx
     unfold colSpan at hx
@@ -78,11 +78,11 @@ theorem famS (v : Fin k → R.W ⧸ Ideal.span {(p : R.W)}) (hv : v ≠ 0) :
       · subst hc
         refine ⟨1, 0, ?_⟩
         funext i
-        simp [V, mapM, dj, Matrix.mul_diagonal, Matrix.updateCol_apply]
+        simp [V, mapM, dj, Matrix.mul_diagonal]
         try ring
       · refine ⟨0, fun i => (1 : Matrix (Fin k) (Fin k) R.W) i c0, ?_⟩
         funext i
-        simp [V, mapM, dj, Matrix.mul_diagonal, Matrix.updateCol_apply, hc]
+        simp [V, mapM, dj, Matrix.mul_diagonal, hc]
         try ring
     | zero =>
       exact ⟨0, 0, by funext i; simp⟩
@@ -107,9 +107,9 @@ theorem phi_col (c : Fin k → R.W ⧸ Ideal.span {(p : R.W)}) (j : Fin k) (a : 
     (hij : i ≠ j) : phi R c (fun l => VT R j a l i) = c i - R.res (a i) * c j := by
   unfold phi VT
   rw [Fintype.sum_eq_add i j hij]
-  · simp [Matrix.updateRow_ne hij, Matrix.one_apply, hij] <;> ring
+  · simp [hij] <;> ring
   · rintro l ⟨hli, hlj⟩
-    simp [Matrix.updateRow_ne hlj, Matrix.one_apply, hli]
+    simp [Matrix.updateRow_ne hlj, hli]
 
 theorem famT (c : Fin k → R.W ⧸ Ideal.span {(p : R.W)}) (j : Fin k) (a : Fin k → R.W)
     (ha : ∀ i, R.res (a i) * c j = c i) :

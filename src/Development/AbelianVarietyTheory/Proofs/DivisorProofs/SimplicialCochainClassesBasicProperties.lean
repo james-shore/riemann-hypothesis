@@ -35,7 +35,7 @@ theorem resι_d (F : Shv R) : resι R F ≫ (res R F).d 0 1 = 0 := by
   rw [h0, zero_comp] at h
   change ((HomologicalComplex.singleObjXSelf (ComplexShape.up ℤ) 0 F).inv ≫ (injectiveResolution F).ι'.f 0) ≫ (injectiveResolution F).cochainComplex.d 0 1 = 0
   erw [Category.assoc, h]
-  all_goals first | rfl | exact comp_zero
+  all_goals first | rfl
 
 theorem chains_d (E : Spc) (n : ℕ) :
     ((chains R).obj E).d (-((n + 1 : ℕ) : ℤ)) (-(n : ℤ)) =

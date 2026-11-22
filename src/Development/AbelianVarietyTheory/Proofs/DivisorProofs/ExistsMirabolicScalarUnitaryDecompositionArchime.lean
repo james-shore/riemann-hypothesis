@@ -72,15 +72,15 @@ theorem iwasawa_lastRow : ∀ (E : Type) [Field E] [NumberField E] [IsTotallyCom
   have hinv : (((Unitary.toUnits (⟨K, hK⟩ : Kinf E (m + 1)))⁻¹ : GL (Fin (m + 1)) (Cinf E)) : Matrix (Fin (m + 1)) (Fin (m + 1)) (Cinf E)) = star K := rfl
   have hρv : ((hρ.unit⁻¹ : (Cinf E)ˣ) : Cinf E) v = (r v)⁻¹ := by
     have h1 := congrFun hρ.unit.inv_mul v
-    simp only [Units.val_mul, Pi.mul_apply, IsUnit.unit_spec, Units.val_one, Pi.one_apply] at h1
+    simp only [Pi.mul_apply, IsUnit.unit_spec, Pi.one_apply] at h1
     exact eq_inv_of_mul_eq_one_left h1
   have hrow : ∀ l, Y (Fin.last m) l v = r v * kv v (Fin.last m) l := fun l => hℓ v l
   have hu := congrFun (congrFun (mem_unitaryGroup_iff.mp (hkv v)) (Fin.last m)) j
-  simp only [Units.val_mul, Units.coe_map_inv, MonoidHom.coe_coe, hinv]
+  simp only [Units.val_mul, Units.coe_map_inv, hinv]
   rw [← hY]
   show (Y * star K * Matrix.scalar (Fin (m + 1)) ((hρ.unit⁻¹ : (Cinf E)ˣ) : Cinf E)) (Fin.last m) j v = _
   rw [Matrix.scalar_apply, Matrix.mul_diagonal]
-  simp only [Matrix.scalar_apply, Matrix.mul_diagonal, Pi.mul_apply, hρv, Matrix.mul_apply, Finset.sum_apply, hrow, Matrix.star_apply, Pi.star_apply, hKdef, Matrix.of_apply] at hu ⊢
+  simp only [Pi.mul_apply, hρv, Matrix.mul_apply, Finset.sum_apply, hrow, Matrix.star_apply, Pi.star_apply, hKdef, Matrix.of_apply] at hu ⊢
   have hs : ∑ x, r v * kv v (Fin.last m) x * star (kv v j x) = r v * ∑ x, kv v (Fin.last m) x * star (kv v j x) := by
     rw [Finset.mul_sum]; simp [mul_assoc]
   rw [hs, hu, Matrix.one_apply]

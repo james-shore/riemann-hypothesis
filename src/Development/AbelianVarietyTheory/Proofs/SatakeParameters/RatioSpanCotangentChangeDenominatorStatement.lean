@@ -15,4 +15,4 @@ theorem _root_.GlobalTheory.T.ratio_span_cotangent_change_denominator : ∀ (X :
           RingHom.ker (CxPts.evHom hza) ^ 2 →
       RingHom.ker (CxPts.evHom hzb) ≤ Ideal.span (Set.range fun j => GlobalTheory.EtProj.fRatio ι (f j) b (hf j) hb) ⊔
           RingHom.ker (CxPts.evHom hzb) ^ 2 := by
-  first | (exact @GlobalTheory.EtProj.span_ratio_of_span_ratio) | (exact GlobalTheory.EtProj.span_ratio_of_span_ratio) | (intros; apply GlobalTheory.EtProj.span_ratio_of_span_ratio  <;> assumption)
+  first | (exact @GlobalTheory.EtProj.span_ratio_of_span_ratio)

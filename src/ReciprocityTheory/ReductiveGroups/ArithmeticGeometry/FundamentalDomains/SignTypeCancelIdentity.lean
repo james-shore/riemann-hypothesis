@@ -158,18 +158,18 @@ lemma minor_gt {x : Frame X.Ψ r} (ho : X.IsOrtho x) {Z : X.Coord} (hZ : X.zN Z 
         finSumFinEquiv finSumFinEquiv =
         Matrix.fromBlocks (1 - Aᵀ * A.map (starRingEnd ℂ)) (-Bᵀ) (-(B.map (starRingEnd ℂ))) (-1) := by
       ext (a | m) (b | m')
-      · simp only [Matrix.submatrix_apply, Function.comp_apply, hc1, Gp_pp, Matrix.fromBlocks_apply₁₁]
+      · simp only [Matrix.submatrix_apply, hc1, Gp_pp, Matrix.fromBlocks_apply₁₁]
         simp [hA, Matrix.one_apply, Matrix.mul_apply]
-      · simp only [Matrix.submatrix_apply, Function.comp_apply, hc1, hc2, Gp_pn, Matrix.fromBlocks_apply₁₂]
+      · simp only [Matrix.submatrix_apply, hc1, hc2, Gp_pn, Matrix.fromBlocks_apply₁₂]
         simp [hB]
-      · simp only [Matrix.submatrix_apply, Function.comp_apply, hc1, hc2, Gp_np, Matrix.fromBlocks_apply₂₁]
+      · simp only [Matrix.submatrix_apply, hc1, hc2, Gp_np, Matrix.fromBlocks_apply₂₁]
         simp [hB]
-      · simp only [Matrix.submatrix_apply, Function.comp_apply, hc2, Gp_nn, Matrix.fromBlocks_apply₂₂]
+      · simp only [Matrix.submatrix_apply, hc2, Gp_nn, Matrix.fromBlocks_apply₂₂]
         simp [Matrix.one_apply, Fin.castLE_inj]
     rw [hblk, Matrix.det_fromBlocks₂₂, invOf_neg, invOf_one, Matrix.det_neg, Matrix.det_one, Fintype.card_fin,
       mul_one]
     congr 2
-    simp only [Matrix.neg_mul, Matrix.mul_neg, Matrix.mul_one, neg_neg, sub_neg_eq_add]
+    simp only [Matrix.mul_neg, Matrix.mul_one, neg_neg, sub_neg_eq_add]
   rw [heq]
   exact signType_cancel_identity k _ (pos_re_of_posDef hpd)
 

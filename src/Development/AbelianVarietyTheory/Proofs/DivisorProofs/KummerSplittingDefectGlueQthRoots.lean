@@ -16,7 +16,7 @@ private theorem unitsMap_comp_appTop {W V U : Scheme.{0}} (k : W ⟶ V) (g : V �
     Units.map (k ≫ g).appTop.hom.toMonoidHom u =
       Units.map k.appTop.hom.toMonoidHom (Units.map g.appTop.hom.toMonoidHom u) := by
   ext
-  simp [Scheme.Hom.comp_appTop]
+  simp
   rfl
 
 private theorem isUnit_natCast_appTop {V U : Scheme.{0}} (g : V ⟶ U) (q : ℕ) (h : IsUnit (q : Γ(U, ⊤))) :

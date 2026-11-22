@@ -222,7 +222,7 @@ private theorem mem_NE {K : Type} [Field K] [CharZero K] (τ : K) (t : Kˣ) : t 
   · rintro ⟨z, rfl⟩
     refine ⟨(z : QuadraticAlgebra K (-1) τ).re + τ * (z : QuadraticAlgebra K (-1) τ).im / 2,
       (z : QuadraticAlgebra K (-1) τ).im / 2, ?_⟩
-    simp only [Units.coe_map, MonoidHom.coe_coe, QuadraticAlgebra.norm_def]
+    simp only [Units.coe_map, QuadraticAlgebra.norm_def]
     field_simp
     ring
   · rintro ⟨a, b, hab⟩
@@ -234,7 +234,7 @@ private theorem mem_NE {K : Type} [Field K] [CharZero K] (τ : K) (t : Kˣ) : t 
       simpa only [e] using t.ne_zero
     refine ⟨hz.unit, ?_⟩
     ext
-    simp only [Units.coe_map, MonoidHom.coe_coe, IsUnit.unit_spec, QuadraticAlgebra.norm_def]
+    simp only [Units.coe_map, IsUnit.unit_spec, QuadraticAlgebra.norm_def]
     rw [← hab]
     ring
 

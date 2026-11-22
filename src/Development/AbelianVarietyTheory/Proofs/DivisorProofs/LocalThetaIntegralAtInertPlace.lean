@@ -65,8 +65,6 @@ theorem exists_bound {n : ℕ} (W : Spc F E n) (hL : W.L.FG) (v : Pl F) :
   | exact @_root_.GlobalTheory.CoordinateEmbeddingMaps.main
   | exact _root_.GlobalTheory.CoordinateEmbeddingMaps.main
   | (apply _root_.GlobalTheory.CoordinateEmbeddingMaps.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CoordinateEmbeddingMaps.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CoordinateEmbeddingMaps.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CoordinateEmbeddingMaps.main ..)
 
 theorem exists_mul_mem {n : ℕ} (L : Submodule (𝓞 E) (Fin n → E)) (hL : L.IsLattice E) (y : Fin n → E) :
@@ -75,8 +73,6 @@ theorem exists_mul_mem {n : ℕ} (L : Submodule (𝓞 E) (Fin n → E)) (hL : L.
   | exact @_root_.GlobalTheory.LatticeIntegerMultipleMembership.exists_int_smul_mem_of_isLattice
   | exact _root_.GlobalTheory.LatticeIntegerMultipleMembership.exists_int_smul_mem_of_isLattice
   | (apply _root_.GlobalTheory.LatticeIntegerMultipleMembership.exists_int_smul_mem_of_isLattice <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LatticeIntegerMultipleMembership.exists_int_smul_mem_of_isLattice <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LatticeIntegerMultipleMembership.exists_int_smul_mem_of_isLattice <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LatticeIntegerMultipleMembership.exists_int_smul_mem_of_isLattice ..)
 
 theorem exists_entry_bound {n : ℕ} (W : Spc F E n) (hL : W.L.IsLattice E) (v : Pl F) :

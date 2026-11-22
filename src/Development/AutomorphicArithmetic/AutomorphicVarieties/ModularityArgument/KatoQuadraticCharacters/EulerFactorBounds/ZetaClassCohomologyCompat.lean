@@ -73,7 +73,7 @@ private theorem castHom_rx_zero_eq_natCast (l L N M : ℕ) (x : ZMod N) (hd : l 
     ZMod.castHom hd (ZMod l) (rx l L N M x 0) = (N : ZMod l) := by
   simp only [rx, Matrix.cons_val_zero, map_natCast]
   push_cast
-  simp [ZMod.natCast_self, zero_pow hL]
+  simp [zero_pow hL]
 
 private theorem castHom_ry_one_eq_natCast (l L N M : ℕ) (hd : l ∣ M) :
     ZMod.castHom hd (ZMod l) (ry l L N M 1) = (N : ZMod l) := by
@@ -84,11 +84,11 @@ private theorem ok (l L N M : ℕ) [Fact l.Prime] (x : ZMod N) (hl : l ≠ 2) (h
   refine ⟨?_, ?_⟩
   · intro h0
     apply two_ne l N M hl h hd _ 0 (castHom_rx_zero_eq_natCast l L N M x hd hL)
-    simp only [two_nsmul, two_smul] at h0 ⊢
+    simp only [two_smul] at h0 ⊢
     exact h0
   · intro h0
     apply two_ne l N M hl h hd _ 1 (castHom_ry_one_eq_natCast l L N M hd)
-    simp only [two_nsmul, two_smul] at h0 ⊢
+    simp only [two_smul] at h0 ⊢
     exact h0
 
 private theorem bas (l L N M : ℕ) [Fact l.Prime] [NeZero M] (x : ZMod N) (h : Nat.Coprime l N) (hd : l ∣ M) (hL : L ≠ 0) :
@@ -130,7 +130,7 @@ private theorem ix (l L N M : ℕ) [NeZero M] (x : ZMod N) (h : N * l ^ L = M) :
     refine ⟨j, ?_⟩
     simp only [toQ]
     rw [← hj]
-    simp only [ixV, Matrix.cons_val_one, Matrix.head_cons]
+    simp only [ixV, Matrix.cons_val_one]
     push_cast
     ring
 
@@ -303,7 +303,6 @@ theorem UpperTheory.V.Z.Kato.Nb.katoZetaElement_normCompatible_in_lTower :
       have hP : (fun z => π1 z = t) = (fun z => π0 (Units.map (ZMod.castHom hTT
           (ZMod (topM l n r (N * N))) : ZMod (topM l (n + 1) r (N * N)) →* ZMod (topM l n r (N * N))) z) = t) :=
         funext fun z => by rw [hπ01]
-      beta_reduce
       rw [hP]
       exact h1)
   have E := sXiCoh Ω ε X l n N (N * l ^ (r + n)) (topM l n r (N * N)) w g hlev0 hL

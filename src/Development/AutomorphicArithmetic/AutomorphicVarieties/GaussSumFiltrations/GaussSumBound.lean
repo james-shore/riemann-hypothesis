@@ -90,7 +90,7 @@ theorem norm_ez (ξ : F) (z : Hn F) :
     ‖ez ξ z‖ = Real.exp (-(2 * Real.pi) * ∑ v, reAt v ξ * (z v).im) := by
   rw [ez, Complex.norm_exp]
   congr 1
-  simp [Complex.mul_re, Complex.mul_im, Complex.im_sum, Complex.re_sum, Finset.mul_sum]
+  simp [Complex.mul_re, Complex.mul_im, Complex.re_sum, Finset.mul_sum]
 
 theorem one_le_fac (w : UpperHalfPlane) : 1 ≤ (1 + ‖(w : ℂ)‖ ^ 2) / w.im := by
   have hy := w.im_pos

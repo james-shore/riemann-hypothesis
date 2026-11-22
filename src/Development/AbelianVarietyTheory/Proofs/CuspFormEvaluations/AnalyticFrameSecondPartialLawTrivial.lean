@@ -47,7 +47,7 @@ theorem tay_coord {N : ℕ} (k : Fin N) :
     congr 2
     by_cases h : k = j
     · subst h; simp
-    · simp [Pi.single_apply, h, Prod.ext_iff]
+    · simp [h, Prod.ext_iff]
 
 theorem psJet_X' {κ : Type} [Fintype κ] [DecidableEq κ] (m : ℕ) (p : κ) :
     psJet m (MvPowerSeries.X p : MvPowerSeries κ ℂ) = Ideal.Quotient.mk _ (MvPolynomial.X p) := by

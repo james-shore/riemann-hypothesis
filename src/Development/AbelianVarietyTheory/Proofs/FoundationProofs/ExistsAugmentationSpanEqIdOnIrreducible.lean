@@ -145,7 +145,7 @@ theorem exists_mem_span_sub_one_eq_id_on :
       conv_lhs => rw [← b.sum_repr w]
       refine Finset.sum_congr rfl fun i _ => ?_
       simp only [Module.End.mul_apply, LinearMap.smul_apply, LinearMap.smulRight_apply, map_smul,
-        smul_eq_mul, smul_smul, Module.Basis.coord_apply]
+        smul_smul, Module.Basis.coord_apply]
       congr 1
       field_simp
     rw [heq]

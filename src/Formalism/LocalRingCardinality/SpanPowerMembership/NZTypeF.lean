@@ -60,7 +60,7 @@ def cfQ (f : Λ) (h : Γ) : ℚ :=
 
 theorem esZ_coeff [CharZero K] (f : Λ) (h : Γ) : (esZ K Γ fA fB f).coeff h = (cfQ Γ fA fB f h : K) := by
   unfold esZ cfQ
-  split_ifs <;> simp [eT_coeff, one_def, MonoidAlgebra.coeff_single_apply, *]
+  split_ifs <;> simp [eT_coeff, one_def, *]
 
 variable {K Γ fA fB} [CharZero K] (hAB : fA ≠ fB)
 

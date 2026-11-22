@@ -27,7 +27,7 @@ theorem block_three_mul_apply_last (A11 : Matrix (Fin p) (Fin p) ℂ) (A12 : Mat
     · simp
     · simp
     · have : q ≠ a := fun h => hq (by rw [h])
-      simp [Matrix.one_apply, this.symm]
+      simp [this.symm]
   · intro h; exact absurd (Finset.mem_univ _) h
 
 theorem zh_row (a : Fin p) : (⟨2 * (p + ρ) + k - a.val, by omega⟩ : Fin (2 * (p + ρ) + k + 1)) =

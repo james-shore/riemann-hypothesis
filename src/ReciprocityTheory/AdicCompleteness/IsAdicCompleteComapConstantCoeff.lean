@@ -19,7 +19,7 @@ theorem map_C_sup_span_X :
     · rw [Ideal.map_le_iff_le_comap]
       intro a ha
       simpa using ha
-    · simp [Ideal.span_singleton_le_iff_mem]
+    · simp
   · intro f hf
     rw [f.eq_X_mul_shift_add_const]
     exact add_mem

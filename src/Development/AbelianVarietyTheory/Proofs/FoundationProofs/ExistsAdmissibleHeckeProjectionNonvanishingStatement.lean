@@ -46,4 +46,4 @@ theorem _root_.GlobalTheory.T.exists_admissible_hecke_projection_nonvanishing : 
     (∀ d : ℕ, Nat.Coprime d N → ∀ b, b ∈ X.B N l (2 * e - 1) → pr (X.diam N l d b) = ((χ d : ℤ_[l]) : Qbar l) • pr b) ∧
     (∀ b ∈ X.B N l (2 * e - 1), pr (X.heckeU l b) = ev Letter.U • pr b) ∧
     IsLamFR2 X A N (2 * e - 1) χ j pr cf ((((l : ℕ) : Qbar l) ^ a) • lam) := by
-  first | (exact @GlobalTheory.AdmProj.exists_admissible_hecke_projection_nonvanishing_alt) | (exact GlobalTheory.AdmProj.exists_admissible_hecke_projection_nonvanishing_alt) | (intros; apply GlobalTheory.AdmProj.exists_admissible_hecke_projection_nonvanishing_alt  <;> assumption)
+  first | (exact @GlobalTheory.AdmProj.exists_admissible_hecke_projection_nonvanishing_alt)

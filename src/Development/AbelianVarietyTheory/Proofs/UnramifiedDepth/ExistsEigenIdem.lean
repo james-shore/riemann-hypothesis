@@ -83,7 +83,7 @@ private theorem frob_ext {p : ℕ} [Fact p.Prime] {O OE : Type} [CommRing O] [Is
     have h4 : IsLocalRing.residue O (algebraMap ℤ_[p] O c) = (c.zmodRepr : IsLocalRing.ResidueField O) := by
       have : c = d * p + c.zmodRepr := by rw [hd]; ring
       conv_lhs => rw [this]
-      simp [hp0]
+      simp
     rw [h2, h2, map_mul, map_mul, map_mul, (key _ _).1 (h a), h4, map_natCast]
 
 private theorem exists_eigB {O OE : Type} [CommRing O] [IsLocalRing O] [CommRing OE] {g m : ℕ}

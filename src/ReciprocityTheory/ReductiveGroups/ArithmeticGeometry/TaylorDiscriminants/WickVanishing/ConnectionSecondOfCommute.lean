@@ -16,9 +16,9 @@ theorem Dof_X (F : Fin d → PS k 2 d) (u : Fin d → k) (j : Fin d) :
   unfold Dof
   simp only [MvPowerSeries.pderiv_X]
   rw [Finset.sum_eq_single j]
-  · simp [Pi.single_apply]
+  · simp
   · intro b _ hb
-    simp [Pi.single_apply, hb]
+    simp [hb]
   · simp
 
 theorem vf_fm (B : FB R d O) (h : PS k 2 d) (u φ u' : Fin d → k) :

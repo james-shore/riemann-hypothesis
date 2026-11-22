@@ -182,7 +182,7 @@ theorem column_expand {F E R W n κ : Type} [Field F] [Field E] [Algebra F E] [C
 
 theorem natCast_mul_apply {F : Type} [Field F] [NumberField F] (N : ℕ) (a : FiniteAdeleRing (𝓞 F) F)
     (v : HeightOneSpectrum (𝓞 F)) :
-    ((N : FiniteAdeleRing (𝓞 F) F) * a) v = (N : v.adicCompletion F) * a v := by first | rfl | simp
+    ((N : FiniteAdeleRing (𝓞 F) F) * a) v = (N : v.adicCompletion F) * a v := by first | rfl
 
 open Formalism.BasicNotions Formalism.BasicNotions.TH Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes Formalism.L2.Theta
 

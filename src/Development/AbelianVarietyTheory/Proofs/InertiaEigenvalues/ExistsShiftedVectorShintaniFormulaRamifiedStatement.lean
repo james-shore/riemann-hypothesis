@@ -27,5 +27,3 @@ theorem _root_.GlobalTheory.T.exists_shifted_vector_shintani_formula_ramified : 
             GlobalTheory.RSCell.sphZ (Ideal.absNorm w.asIdeal) (fun i => ((α ⟨w, h⟩ i : ℂˣ) : ℂ)) (l.1 w)) := by
   first
   | exact @GlobalTheory.RamShift.exists_shifted_bump_shintani
-  | exact GlobalTheory.RamShift.exists_shifted_bump_shintani
-  | (intros; apply GlobalTheory.RamShift.exists_shifted_bump_shintani <;> assumption)

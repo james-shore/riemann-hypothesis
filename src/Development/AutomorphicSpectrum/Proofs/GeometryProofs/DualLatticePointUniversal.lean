@@ -75,7 +75,7 @@ theorem iota_comp_map (q : V) :
     iota.comp (TrivSqZeroExt.map (LinearMap.toSpanSingleton R V q)).toRingHom =
       (epsMul (TrivSqZeroExt.inr q : TrivSqZeroExt R V)).comp (dualMap (algebraMap R (TrivSqZeroExt R V))) := by
   refine RingHom.ext fun a => TrivSqZeroExt.ext ?_ ?_
-  · simp [iota_fst, epsMul_fst, dualMap_fst, TrivSqZeroExt.algebraMap_eq_inl]
+  · simp [iota_fst, TrivSqZeroExt.algebraMap_eq_inl]
   · simp only [RingHom.comp_apply, iota_snd, epsMul_snd, dualMap_snd]
     refine TrivSqZeroExt.ext ?_ ?_
     · simp
@@ -90,15 +90,15 @@ theorem dualMap_fst_comp_iota :
     (dualMap (TrivSqZeroExt.fstHom R R V).toRingHom).comp iota =
       (TrivSqZeroExt.map (0 : V →ₗ[R] R)).toRingHom := by
   refine RingHom.ext fun a => TrivSqZeroExt.ext ?_ ?_
-  · simp [iota_fst, dualMap_fst]
-  · simp [iota_snd, dualMap_snd]
+  · simp [iota_fst]
+  · simp [iota_snd]
 
 theorem reduce_epsMul (b : TrivSqZeroExt R V) :
     ((dualMap (TrivSqZeroExt.fstHom R R V).toRingHom).comp (epsMul b)).comp (dualMap (algebraMap R (TrivSqZeroExt R V))) =
       epsMul b.fst := by
   refine RingHom.ext fun a => TrivSqZeroExt.ext ?_ ?_
-  · simp [epsMul_fst, dualMap_fst, TrivSqZeroExt.algebraMap_eq_inl]
-  · simp [epsMul_snd, dualMap_snd, TrivSqZeroExt.algebraMap_eq_inl]
+  · simp [TrivSqZeroExt.algebraMap_eq_inl]
+  · simp [TrivSqZeroExt.algebraMap_eq_inl]
 
 end Ring
 
@@ -127,8 +127,8 @@ def dMor : epsAt x ⟶ epsAt (xB x V) :=
     congr 2
     ext r : 2
     refine TrivSqZeroExt.ext ?_ ?_
-    · simp [dualMap_fst, TrivSqZeroExt.algebraMap_eq_inl]
-    · simp [dualMap_snd, TrivSqZeroExt.algebraMap_eq_inl])
+    · simp [TrivSqZeroExt.algebraMap_eq_inl]
+    · simp [TrivSqZeroExt.algebraMap_eq_inl])
 
 theorem dMor_cMor : dMor x V ≫ cMor x V = hom x (0 : V →ₗ[R] R) := by
   ext1

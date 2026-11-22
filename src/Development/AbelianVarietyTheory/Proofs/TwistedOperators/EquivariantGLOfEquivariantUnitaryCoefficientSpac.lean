@@ -25,7 +25,7 @@ theorem exists_poly_blockAct_coef {k : ℕ} (f : MvPolynomial (ι × Fin k × Fi
       Formalism.GradedWeylDivisibility.blockAct ℂ g p = map (eval fun x => g x.1 x.2.1 x.2.2) (T p) := by
     intro g p
     induction p using MvPolynomial.induction_on with
-    | C a => simp [T, aeval_C, MvPolynomial.algebraMap_eq, map_C, eval_C]
+    | C a => simp [T, MvPolynomial.algebraMap_eq, map_C, eval_C]
     | add p q hp hq => simp only [map_add, hp, hq, T]
     | mul_X p v hp =>
       simp only [T] at hp ⊢

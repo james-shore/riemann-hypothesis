@@ -36,7 +36,7 @@ noncomputable def ext : PowerSeries O₁ →+ K :=
   ∑ j, (AddMonoidHom.mulLeft (io (b j))).comp ((i : PowerSeries O →+ K).comp (comp b j))
 
 lemma ext_apply (f : PowerSeries O₁) : ext b i io f = ∑ j, io (b j) * i (comp b j f) := by
-  simp [ext, AddMonoidHom.finset_sum_apply]
+  simp [ext]
 
 variable {b i io}
 

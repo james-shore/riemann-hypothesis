@@ -369,14 +369,14 @@ theorem exists_unif_of_interior : Top.Given → ∀ (E : Type) [Field E] [Number
       ext k
       by_cases h : k = c
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
   have hs : ∀ (Q : Matrix (Fin C.g) (Fin C.g) ℂ) c d,
       hermForm Q (Pi.single c 1) (Pi.single d 1) = Q c d := fun Q c d => by
     have : star (Pi.single d 1 : Fin C.g → ℂ) = Pi.single d 1 := by
       ext k
       by_cases h : k = d
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     simp [hermForm, this]
   have hG1 := (hR C.g _ w (Matrix.of fun c d => (Real.pi : ℂ) * hermForm Hm
     (fun k => C.ψ b ((Pi.single c 1 : Fin C.g → C.R) k)) (fun k => C.ψ b ((Pi.single d 1 : Fin C.g → C.R) k))) hvv).2

@@ -111,7 +111,6 @@ theorem comm_top (𝒱 : Set X.Opens) (r r' : ℤ) (j : ℕ) (i : Fin m) (n : S.
   obtain ⟨z, rfl⟩ := Ideal.Quotient.mk_surjective y
   first
     | rfl
-    | (simp only [NatTrans.id_app, CategoryTheory.Functor.map_id]; rfl)
 
 theorem used_TF {R : Type} [CommRing R] {J : Ideal R} {δ : DividedPowers J} {κ : O →+* R ⧸ J} (l s : ℕ) :
     Used (TF l s : ObjectProperty (Thick (nlFun δ 0 X q κ))) :=

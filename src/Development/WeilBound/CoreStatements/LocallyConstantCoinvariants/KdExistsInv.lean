@@ -137,7 +137,7 @@ theorem symp_eq (h : IsSec σ t sec) (hG : Grams σ t JA JB) {u : Matrix α β (
   congr 1
   simp only [map_mul, map_neg, map_one, AddMonoidHom.map_trace, Matrix.map_mul, transpose_map, h.conj1, h.conj2, hA, hB, coord, dot_ofM,
     transpose_smul, transpose_transpose, Matrix.smul_mul, Matrix.mul_smul, smul_smul, trace_smul, smul_eq_mul, transpose_neg,
-    transpose_mul, Matrix.neg_mul, Matrix.mul_neg, neg_neg, trace_neg]
+    transpose_mul, Matrix.neg_mul, Matrix.mul_neg, neg_neg]
   set A := JA.map (piW t)
   set B := JB.map (piW t)
   set P := u.map (piW t)

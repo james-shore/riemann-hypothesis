@@ -43,7 +43,7 @@ theorem exists_section (R : Type) [CommRing R] [IsLocalRing R] [IsNoetherianRing
       simp only [w, MonObj.comp_mul, GrpObj.comp_inv, lift_snd_assoc, lift_fst]
       group
     · refine nonempty_preimage O _ ((snd G X ≫ k i)⁻¹ * fst G X) ?_ z hz'
-      simp only [w, MonObj.comp_mul, GrpObj.comp_inv, lift_snd_assoc, lift_fst]
+      simp only [w, MonObj.comp_mul, lift_snd_assoc, lift_fst]
       group
   have hirr' : IrreducibleSpace (G ⊗ X).left := hirr
   let U : (G ⊗ X).left.Opens :=

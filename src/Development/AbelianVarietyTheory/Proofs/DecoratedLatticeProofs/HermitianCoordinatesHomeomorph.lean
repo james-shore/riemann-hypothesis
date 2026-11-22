@@ -42,7 +42,6 @@ theorem pair_eq (h : IsCMExt F E σ) {n : ℕ} (S T : HermR R σ n) :
     pairHerm R σ n S T = coordPair R σ n (hermCoord R σ S) (hermCoord R σ T) := by
   unfold pairHerm coordPair
   rw [sum_sum_split (fun a b => (S : Matrix (Fin n) (Fin n) (R ⊗[F] E)) a b * (T : Matrix (Fin n) (Fin n) _) b a)]
-  beta_reduce
   rw [map_add, map_sum, map_sum, mul_add, Finset.mul_sum, Finset.mul_sum]
   congr 1
   · refine Finset.sum_congr rfl fun a _ => ?_

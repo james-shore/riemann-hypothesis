@@ -66,10 +66,10 @@ theorem exists_integral_posDef_perturbation : ∀ (E : Type) [Field E] [NumberFi
     intro k i j σ
     by_cases h1 : σ ∈ Ψ
     · have h2 : ComplexEmbedding.conjugate σ ∉ Ψ := hΨ σ h1
-      simp [c, h1, h2, complexEmbedding_conjugate_conjugate]
+      simp [c, h1, h2]
     · by_cases h2 : ComplexEmbedding.conjugate σ ∈ Ψ
       · simp [c, h1, h2]
-      · simp [c, h1, h2, complexEmbedding_conjugate_conjugate]
+      · simp [c, h1, h2]
   choose a ha using fun (k : ℕ) (i : I) (j : J) => hB (c k i j) (hc k i j)
   let D : ℕ → (E →+* ℂ) → Matrix I J ℂ := fun k τ =>
     Matrix.of fun i j => ((n : ℂ) / k) * (τ (a k i j : E) - c k i j τ)
@@ -82,7 +82,7 @@ theorem exists_integral_posDef_perturbation : ∀ (E : Type) [Field E] [NumberFi
     simp only [Matrix.map_apply, Matrix.add_apply, Matrix.smul_apply, Matrix.of_apply, D, c, f,
       if_pos hτ, smul_eq_mul]
     push_cast
-    simp only [map_add, map_nsmul, nsmul_eq_mul, map_mul, map_natCast]
+    simp only [map_add, nsmul_eq_mul, map_mul, map_natCast]
     field_simp
     ring
   have hD : ∀ τ, Filter.Tendsto (fun k : ℕ => D k τ) Filter.atTop (nhds 0) := by

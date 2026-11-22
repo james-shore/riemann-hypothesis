@@ -39,8 +39,6 @@ theorem mulVec_sum_smul {n : ℕ} (c : G → K) (M : G → Matrix (Fin n) (Fin n
       rw [Finset.sum_insert ha, Finset.sum_insert ha, Matrix.add_mulVec, ← ih]
       first
         | rw [Matrix.smul_mulVec]
-        | rw [Matrix.smul_mulVec_assoc]
-        | simp [Matrix.mulVec, dotProduct, Finset.mul_sum, mul_assoc]
   exact key Finset.univ
 
 theorem cpt_sum_smul (σ : K →+* ℂ) {n : ℕ} (c : G → K) (y : G → Fin n → K) :

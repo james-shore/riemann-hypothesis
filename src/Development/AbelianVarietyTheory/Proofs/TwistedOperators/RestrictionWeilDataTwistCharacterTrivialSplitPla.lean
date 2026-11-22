@@ -220,7 +220,7 @@ theorem charTwist_eq_one_at_split : ∀ (D : D7) (V V' W : HSp D) (r : ℕ) (C :
   have h4 : (c g : ℂ) = ((r₁ / (r₂ * κ) : ℝ) : ℂ) := by
     rw [Complex.ofReal_div, Complex.ofReal_mul, eq_div_iff (by exact_mod_cast hpos.ne'), h3]
   have hn : ‖(c g : ℂ)‖ = 1 := by
-    first | exact Circle.norm_coe (c g) | exact Circle.abs_coe (c g) | exact mem_sphere_zero_iff_norm.1 (c g).2
+    first | exact Circle.norm_coe (c g)
   rw [h4, Complex.norm_real, Real.norm_eq_abs, abs_of_pos (div_pos hr₁ hpos)] at hn
   have h5 : (c g : ℂ) = 1 := by rw [h4, hn, Complex.ofReal_one]
   exact Circle.ext (by rw [h5, Circle.coe_one])

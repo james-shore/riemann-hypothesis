@@ -46,7 +46,7 @@ theorem pow_two_O (h : ℕ) : (2 : 𝓞 (Kq m)) ^ h = mkO m (2 ^ h) 0 := by
   | zero => simp [one_O]
   | succ k ih =>
     rw [pow_succ, ih, two_O, mkO_mul]
-    congr 1 <;> ring
+    congr 1
 
 theorem star_O (x y : ℤ) :
     RingOfIntegers.mapRingHom (starRingEnd (Kq m)) (mkO m x y) = mkO m (x + y) (-y) := by

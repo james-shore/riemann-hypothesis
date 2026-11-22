@@ -56,7 +56,7 @@ theorem GlobalTheory.JR.Hyp.pt_isTest : ∀ (F E : Type) [NontriviallyNormedFiel
   have hβapp : ∀ u b, β u b = Algebra.trace F A.K ((x : A.K) * u * b) := fun u b => by simp [β, Algebra.traceForm_apply, mul_assoc]
   have hsymm : β.IsSymm := by
     refine ⟨fun u b => ?_⟩
-    simp only [RingHom.id_apply, hβapp]
+    simp only [hβapp]
     ring_nf
   have htr := (GlobalTheory.T.etaleHermitianPair_structure_facts F E A).2.2.1
   have hsepL : ∀ u : A.K, (∀ b, β u b = 0) → u = 0 := fun u hu => by

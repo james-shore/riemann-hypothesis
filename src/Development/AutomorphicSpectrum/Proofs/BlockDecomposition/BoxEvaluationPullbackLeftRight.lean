@@ -18,8 +18,6 @@ private theorem cochainReindex_apply_const_obj (F : C ⥤ CommAlgCat.{0} R) {n m
       x ((Functor.const (Fin (n + 1))).obj T₀) := by
   first
   | exact GlobalTheory.CatCoh.mp_id F T₀ _
-  | exact (GlobalTheory.CatCoh.mp_id F T₀ (x ((Functor.const (Fin (n + 1))).obj T₀)) : _)
-  | (simp only [GlobalTheory.CompanionTheory.HopfC.pr]; exact GlobalTheory.CatCoh.mp_id F T₀ _)
 
 theorem cocycle_const (F : C ⥤ CommAlgCat.{0} R) (T₀ : C) (x : Cn F 1) (hx : dn F 1 x = 0) :
     x ((Functor.const (Fin (1 + 1))).obj T₀) = 0 := by
@@ -28,23 +26,19 @@ theorem cocycle_const (F : C ⥤ CommAlgCat.{0} R) (T₀ : C) (x : Cn F 1) (hx :
   rw [GlobalTheory.CompanionTheory.HopfC.dn_eq] at h
   first
   | rw [Fin.sum_univ_three] at h
-  | simp only [Fin.sum_univ_succ, Fin.sum_univ_zero] at h
   simp only [Pi.add_apply, Pi.smul_apply, cochainReindex_apply_const_obj] at h
   first
   | simpa using h
-  | (norm_num at h; exact h)
 
 theorem evL_tmul_one (F : C ⥤ CommAlgCat.{0} R) (T₀ T : C) (ε : F.obj T₀ →ₐ[R] R) (a : F.obj T₀) :
     evL F T₀ T ε (a ⊗ₜ[R] 1) = algebraMap R (F.obj T) (ε a) := by
   first
   | simp [MainStatements.Hodge.evL, Algebra.ofId_apply]
-  | (rw [MainStatements.Hodge.evL, Algebra.TensorProduct.lift_tmul]; simp [Algebra.ofId_apply])
 
 theorem evL_one_tmul (F : C ⥤ CommAlgCat.{0} R) (T₀ T : C) (ε : F.obj T₀ →ₐ[R] R) (b : F.obj T) :
     evL F T₀ T ε (1 ⊗ₜ[R] b) = b := by
   first
   | simp [MainStatements.Hodge.evL, Algebra.ofId_apply]
-  | (rw [MainStatements.Hodge.evL, Algebra.TensorProduct.lift_tmul]; simp [Algebra.ofId_apply])
 
 theorem boxE_pull_boxL_boxR (F : C ⥤ CommAlgCat.{0} R) (T₀ : C) (ε : F.obj T₀ →ₐ[R] R) (x : Cn F 1)
     (hx : dn F 1 x = 0) :

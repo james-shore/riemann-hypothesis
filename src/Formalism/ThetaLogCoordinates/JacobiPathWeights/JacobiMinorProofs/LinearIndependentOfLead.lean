@@ -397,7 +397,7 @@ theorem sum_emb {M : Type*} [AddCommMonoid M] (J : Finset (Fin n)) {k : ℕ} (h 
 
 theorem card_filter_lt_emb (J : Finset (Fin n)) {k : ℕ} (h : J.card = k) (i : Fin k) :
     (J.filter (· < J.orderEmbOfFin h i)).card = i.val := by
-  first | exact Bl.general_b_fact_right_further.goal1 .. | (apply Bl.general_b_fact_right_further.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_right_further.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_further.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_right_further.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_further.goal1 <;> first | assumption | infer_instance) | exact @Bl.general_b_fact_right_further.goal1 n J k h i | exact @Bl.general_b_fact_right_further.goal1 n J k h | exact @Bl.general_b_fact_right_further.goal1 n J k | exact @Bl.general_b_fact_right_further.goal1 n J | exact @Bl.general_b_fact_right_further.goal1 n
+  first | exact Bl.general_b_fact_right_further.goal1 .. | exact @Bl.general_b_fact_right_further.goal1 n J k h i | exact @Bl.general_b_fact_right_further.goal1 n J k h | exact @Bl.general_b_fact_right_further.goal1 n J k | exact @Bl.general_b_fact_right_further.goal1 n J | exact @Bl.general_b_fact_right_further.goal1 n
 
 theorem colDiag_eq (J : Finset (Fin n)) {k : ℕ} (h : J.card = k) (r : Fin k → Fin n)
     (hr : ∀ i, (r i).val = i.val) : colDiag J = mon r (J.orderEmbOfFin h) 1 := by

@@ -165,7 +165,7 @@ theorem face_EE {p : ℕ} (a b : ℕ) (m : Ch p) :
   induction x using Fin.lastCases with
   | last =>
     have : (Fin.last (p + 1)).castSucc.succAbove (Fin.last (p + 1)) = Fin.last (p + 2) := by
-      ext; simp [Fin.succAbove, Fin.lt_def]
+      ext; simp [Fin.succAbove]
     simp [this, add_assoc]
   | cast x =>
     have : (Fin.last (p + 1)).castSucc.succAbove x.castSucc = x.castSucc.castSucc := by

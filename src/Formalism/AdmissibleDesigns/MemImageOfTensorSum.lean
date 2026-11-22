@@ -126,7 +126,6 @@ theorem latBasisG_of [IsPrincipalIdealRing O] (j : ℕ) (hfg : Module.Finite O �
   haveI hfree : Module.Free O (↥(FfG ρL iL Zf) ⧸ Submodule.torsion O ↥(FfG ρL iL Zf)) := by
     first
       | exact Module.free_of_finite_type_torsion_free'
-      | infer_instance
   let e := Module.finBasisOfFinrankEq _ _ hrk
   choose f hf using fun a => Submodule.Quotient.mk_surjective (Submodule.torsion O ↥(FfG ρL iL Zf)) (e a)
   have hw : ∀ a, ∃ w : ↥(coZ1s ρL), w ∈ (finPreG iL Zf).comap (coZ1s ρL).subtype ∧
@@ -157,7 +156,6 @@ theorem latBasisG_of [IsPrincipalIdealRing O] (j : ℕ) (hfg : Module.Finite O �
     refine ⟨(c : O), ?_, ?_⟩
     · first
         | exact nonZeroDivisors.coe_ne_zero c
-        | exact nonZeroDivisors.ne_zero c.2
     · have h2 := congrArg Subtype.val hc
       simpa [zF, Submonoid.smul_def, Submodule.coe_smul, Submodule.coe_sub, Submodule.coe_sum, ← hwf] using h2
   · intro b c hc hsum

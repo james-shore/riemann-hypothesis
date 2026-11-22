@@ -173,7 +173,6 @@ theorem UpperTheory.V.Z.J.yEx :
     have hp : (t s : Matrix (Fin 3) (Fin 3) O) i.castSucc i.castSucc
         * (((t s)⁻¹ : GL (Fin 3) O) : Matrix (Fin 3) (Fin 3) O) i.succ i.succ = algebraMap ℤ_[l] O (ε s) := by
       rw [hdiag s, mul_assoc, (hinv s).2, mul_one]
-    beta_reduce
     rw [hp, hβc, Algebra.smul_def, Algebra.smul_def, Ideal.Quotient.algebraMap_eq]
     simp only [map_add, map_sub, map_mul]
   obtain ⟨y, ⟨hylc, hycoc⟩, hy⟩ := lift l D ε d k hk hLE (Matrix (Fin 3) (Fin 3) (Ok l O k)) ρ

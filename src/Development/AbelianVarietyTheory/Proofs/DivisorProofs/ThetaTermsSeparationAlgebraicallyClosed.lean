@@ -98,7 +98,6 @@ theorem exists_kap_of_torsFrame {N : ℕ} {ρ₀ : LB.Gen (D.P.L.pull (eSec D.P.
       have p₁ : val (rigPow D.P.A D.P.L ρ₀ ((N : ℤ) ^ 2)) (𝟙 _) y J =
         val (L := D.P.L) (φ := fun _ : PUnit => eSec D.P.A) (ε := fun _ => 1) ρ₀ (𝟙 _) y J ^ ((N : ℤ) ^ 2) := map_zpow _ _ _
       rw [p₁] at q₁
-      beta_reduce
       rw [Category.comp_id, Over.w, ← eta_eq]
       change val α (eSec D.P.A) y J * val ρ₀ (𝟙 _) y J * (val ρ₀ (𝟙 _) y J ^ (N ^ 2))⁻¹ = 1
       rw [q₁, ← Nat.cast_pow, zpow_natCast]

@@ -64,7 +64,5 @@ theorem ext_vals : ∀ (D : D7) (V : HSp D), Seed.FrmC.StdLat V → ∀ (c : Coe
       ((rhoVr (labLL D) lam γE).restrictScalars (𝓞 D.what₂.LL)) := ⟨_, hmem, rfl⟩
   first
     | exact Submodule.smul_mem _ z h2
-    | exact (algebraMap_smul D.what₂.LL z _ ▸ Submodule.smul_mem _ z h2)
-    | simpa [Algebra.smul_def] using Submodule.smul_mem _ z h2
 
 end GlobalTheory.MtIn

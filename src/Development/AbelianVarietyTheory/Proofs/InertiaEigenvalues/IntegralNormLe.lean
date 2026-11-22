@@ -63,10 +63,8 @@ theorem exists_root {Ω : Type} [Field Ω] [IsAlgClosed Ω] (A : ValuationSubrin
   set Q : Polynomial Ω := X ^ (m + 1) + X ^ m + C u with hQ
   have hdeg : Q.natDegree = m + 1 := by
     rw [hQ]; compute_degree!
-    all_goals omega
   have hmon : Q.Monic := by
     rw [hQ]; monicity!
-    all_goals omega
   have hnext : Q.nextCoeff = 1 := by
     rw [nextCoeff_of_natDegree_pos (by omega), hdeg, hQ]
     simp [coeff_X_pow, coeff_C, hm.ne']

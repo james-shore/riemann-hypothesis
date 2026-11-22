@@ -36,7 +36,6 @@ theorem isAutFormU_coef : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E]
     change ℓ (R g⁻¹ (F g0)) = ℓ (R g⁻¹ (F g))
     rw [e]
   · intro γ hγ g
-    change ℓ (R (γ * g)⁻¹ (F (γ * g))) = ℓ (R g⁻¹ (F g))
     rw [hrat γ hγ g, _root_.mul_inv_rev, map_mul, Module.End.mul_apply, ← Module.End.mul_apply (R γ⁻¹), ← map_mul,
       inv_mul_cancel, map_one, Module.End.one_apply]
   · let φ : UA E n → ℂ := fun g => ℓ (R g⁻¹ (F g))
@@ -51,7 +50,6 @@ theorem isAutFormU_coef : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E]
         inv_mem' := fun {a} ha => by
           change RU E n ((a : UA E n)⁻¹) _ = _
           conv_lhs => rw [← ha]
-          change RU E n ((a : UA E n)⁻¹) (RU E n (a : UA E n) _) = _
           rw [GlobalTheory.DefU.RU_RU, inv_mul_cancel, map_one]; rfl }
     have hnb : {k : finU E n | ∀ g, F (g * (k : UA E n)) = F g} ∈ 𝓝 (1 : finU E n) :=
       (continuous_subtype_val.tendsto (1 : finU E n)).eventually hsm

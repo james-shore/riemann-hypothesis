@@ -373,7 +373,7 @@ theorem classSetAssembly_finite_between (hE : FinIntermediate) {K W : Type} [Fie
         have key : c i % e + e * (c i / e) = c i := by
           first
           | exact Int.emod_add_ediv (c i) e
-          | (have := Int.ediv_add_emod (c i) e; linarith)
+          | (have := Int.ediv_add_emod (c i) e)
           | (rw [Int.emod_def]; ring)
         linarith
       rw [hsum]

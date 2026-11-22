@@ -110,7 +110,7 @@ theorem exists_local_dbasis (k K : Type) [Field k] [Field K] [Algebra k K] (B : 
     obtain ⟨c, hc⟩ := (Submodule.mem_span_range_iff_exists_fun B).1 (hfN v)
     refine ⟨c, ?_⟩
     have := congrArg (KaehlerDifferential.map k k B K) hc
-    simp only [map_sum, LinearMap.map_smul, KaehlerDifferential.map_D, Subalgebra.smul_def] at this
+    simp only [map_sum, LinearMap.map_smul, KaehlerDifferential.map_D] at this
     exact this.symm
   let W : Submodule K Ω[K⁄k] := Submodule.span K (Set.range fun j => D k K (u j : K))
   have hB : ∀ v : B, D k K (v : K) ∈ W := by

@@ -29,15 +29,15 @@ theorem hasProd_split {ι : Type*} [DecidableEq ι] (f : ι → ℂ) (T : Finset
   have h2' : HasProd ({v | v ∉ insert w T}.mulIndicator f) B :=
     (hasProd_subtype_iff_mulIndicator (s := {v | v ∉ insert w T})).mp h2
   have h3 : HasProd (({w} : Set ι).mulIndicator f) (f w) := by
-    have := hasProd_single (f := ({w} : Set ι).mulIndicator f) w (fun b hb => by simp [Set.mulIndicator_apply, hb])
+    have := hasProd_single (f := ({w} : Set ι).mulIndicator f) w (fun b hb => by simp [hb])
     simpa using this
   have h4 := h3.mul h2'
   have heq : (fun v => ({w} : Set ι).mulIndicator f v * {v | v ∉ insert w T}.mulIndicator f v) =
       {v | v ∉ T}.mulIndicator f := by
     funext v
     by_cases hv : v = w
-    · subst hv; simp [Set.mulIndicator_apply, hw]
-    · by_cases hvT : v ∈ T <;> simp [Set.mulIndicator_apply, hv, hvT]
+    · subst hv; simp [hw]
+    · by_cases hvT : v ∈ T <;> simp [hv, hvT]
   rw [heq] at h4
   exact h1'.unique h4
 

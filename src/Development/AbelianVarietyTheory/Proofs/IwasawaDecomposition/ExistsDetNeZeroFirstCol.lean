@@ -17,7 +17,7 @@ theorem exists_det_ne_zero_first_col {n : ℕ} (v : Fin (n + 1) → ℂ) (hv : v
   have hQcol : ∀ k, Q k k₀ = v k := by
     intro k
     simp only [Q, u]
-    by_cases h : k = k₀ <;> simp [Matrix.mul_apply, Matrix.one_apply, Pi.single_apply, h]
+    by_cases h : k = k₀ <;> simp [Matrix.mul_apply, h]
   refine ⟨Q.submatrix id (Equiv.swap 0 k₀), ?_, fun k => ?_⟩
   · rw [det_permute', hQdet]
     exact mul_ne_zero (by simp) hk₀

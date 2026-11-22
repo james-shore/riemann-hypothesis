@@ -64,14 +64,14 @@ theorem fibAt_lat_eq_stdLat : ∀ (X : Scheme.{0}) (G : Over X) [GrpObj G] (Ω :
         rw [Finset.sum_eq_single i]
         · simp
         · intro b _ hb
-          simp [Pi.single_apply, hb]
+          simp [hb]
         · intro hi
           exact absurd (Finset.mem_univ i) hi
       have hs : (fun j => ψ ((Pi.single i 1 : Fin g → regAt ξ ⟨_, h₁⟩) j)) = (Pi.single i 1 : Fin g → K) := by
         ext j
         by_cases hj : j = i
         · subst hj; simp
-        · simp [Pi.single_apply, hj]
+        · simp [hj]
       rw [hc, hs] at h3
       rw [hMC]
       exact h3

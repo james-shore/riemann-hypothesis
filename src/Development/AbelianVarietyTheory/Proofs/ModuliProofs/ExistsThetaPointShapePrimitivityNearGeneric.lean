@@ -257,7 +257,6 @@ theorem spread_hasTh (hL : Out.Laws) (hL2 : Out.Laws2) {o : Type} [CommRing o] {
   have := congrArg (IsLocalization.Away.lift f u₁) (e' i)
   rw [map_mul (IsLocalization.Away.lift f u₁), IsLocalization.Away.lift_eq, IsLocalization.Away.lift_eq, map_mul,
     ← hu₃] at this
-  beta_reduce
   rw [_root_.mul_assoc, ← this, Units.inv_mul_cancel_left]
 
 theorem range_spMap_fractionRing (R K : Type) [CommRing R] [IsDomain R] [Field K] [Algebra R K] [IsFractionRing R K] :

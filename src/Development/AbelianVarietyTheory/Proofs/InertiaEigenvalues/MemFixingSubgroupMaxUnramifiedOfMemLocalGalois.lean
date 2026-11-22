@@ -373,8 +373,6 @@ theorem algebraMap_RW_injective (LL : FinExt l) :
     rw [Module.Flat.flat_iff_torsion_eq_bot_of_isBezout]
     first
       | exact Submodule.isTorsionFree_iff_torsion_eq_bot.1 inferInstance
-      | exact Submodule.torsion_eq_bot ..
-      | simp
   have h : Function.Injective (algebraMap ℤ_[l] (WCb l)) :=
     (WittVector.map_injective _ (ZMod.castHom_injective (Cb l))).comp
       (WittVector.equiv l).symm.injective

@@ -42,9 +42,9 @@ theorem v2con_der_X {R : Type*} [CommRing R] {ι : Type*} [Fintype ι] {n : ℕ}
       else 0 := by
   unfold letterPolarizationDerivation
   rw [v2con_sum_apply, Finset.sum_eq_single l]
-  · split_ifs <;> simp_all [pderiv_X, Pi.single_apply]
+  · split_ifs <;> simp_all [pderiv_X]
   · intro l' _ hl'
-    split_ifs <;> simp [pderiv_X, Pi.single_apply, Ne.symm hl']
+    split_ifs <;> simp [pderiv_X, Ne.symm hl']
   · simp
 
 end Formalism.MainNotions.G.GLWeightTheory

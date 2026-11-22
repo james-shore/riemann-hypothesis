@@ -106,8 +106,6 @@ theorem count_int (I : Ideal (𝓞 E)) (hI : I ≠ ⊥) (m : 𝓞 E) (hm : m ≠
     first
     | exact h
     | (rw [← Nat.card_eq_fintype_card]; exact h)
-    | (rw [← Nat.card_eq_fintype_card]; unfold Units.torsionOrder at h; exact h)
-    | (simpa [Units.torsionOrder, Nat.card_eq_fintype_card] using h)
   have hS' : S.card ≤ 2 * (Module.finrank ℚ E) ^ 2 * Ideal.absNorm M :=
     hcard.trans (Nat.mul_le_mul htors hcardJ)
   calc S.card * Ideal.absNorm I ^ 2

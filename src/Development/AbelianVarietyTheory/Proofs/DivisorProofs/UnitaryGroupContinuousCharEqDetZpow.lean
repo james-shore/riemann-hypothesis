@@ -58,7 +58,7 @@ theorem exists_conj_diagonal (u : Matrix.unitaryGroup (Fin n) ℂ) :
     have h4 : diagonal (fun i => z⁻¹ * (-Complex.I * e i + 1 / 2)) =
         z⁻¹ • ((-Complex.I) • diagonal e + (1 / 2 : ℂ) • (1 : Matrix (Fin n) (Fin n) ℂ)) := by
       ext i j
-      by_cases h : i = j <;> simp [diagonal_apply, one_apply, h]
+      by_cases h : i = j <;> simp [one_apply, h]
     rw [h4, ← hs]
     simp only [mul_smul_comm, smul_mul_assoc, mul_sub, sub_mul, mul_one, hWW, smul_smul, neg_mul,
       Complex.I_mul_I, neg_neg, one_smul, sub_add_cancel, inv_mul_cancel₀ hz0]

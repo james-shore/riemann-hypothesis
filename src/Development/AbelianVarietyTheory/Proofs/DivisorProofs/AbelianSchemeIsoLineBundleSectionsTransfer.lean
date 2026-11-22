@@ -179,12 +179,12 @@ theorem GlobalTheory.BasisMatch.exists_basis_match : ∀ (K W K' : Type) [Field 
       (pullback.snd G.hom (spMap (algebraMap W K'))) A.hom (spMap (algebraMap K K')) := by
     refine (IsPullback.of_hasPullback A.hom (spMap (algebraMap K K'))).of_iso
       ((Over.forget _).mapIso e).symm (Iso.refl _) (Iso.refl _) (Iso.refl _) ?_ ?_ ?_ ?_
-    · simp only [Functor.mapIso_symm, Iso.symm_hom, Functor.mapIso_inv, Over.forget_map, Iso.refl_hom,
+    · simp only [Iso.symm_hom, Functor.mapIso_inv, Over.forget_map, Iso.refl_hom,
         Category.comp_id]
       rw [← Category.assoc, ← Over.comp_left, e.inv_hom_id, Over.id_left]
       exact (Category.id_comp _).symm
     · have := Over.w e.inv
-      simp only [Functor.mapIso_symm, Iso.symm_hom, Functor.mapIso_inv, Over.forget_map, Iso.refl_hom,
+      simp only [Iso.symm_hom, Functor.mapIso_inv, Over.forget_map, Iso.refl_hom,
         Category.comp_id]
       exact this.symm
     · simp

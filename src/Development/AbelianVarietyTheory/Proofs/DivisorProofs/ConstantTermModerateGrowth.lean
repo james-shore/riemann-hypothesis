@@ -78,7 +78,7 @@ theorem uniform_growth (φ : Sm E a) (hopen : IsOpen {k | finRep E a k φ = φ})
       finGL E a (t⁻¹ * Matrix.GeneralLinearGroup.map (pFin E) h) := by
     apply ga_ext
     · simp only [map_mul, pInf_infGL, pInf_finGL, one_mul, mul_one]
-    · simp only [map_mul, pFin_infGL, pFin_finGL, one_mul, mul_one, mul_inv_cancel_left]
+    · simp only [map_mul, pFin_infGL, pFin_finGL, mul_one, mul_inv_cancel_left]
   rw [e, hS _ hkt]
   have hcy := hB _ ⟨h, hh, rfl⟩ y
   have h0 := one_le_height (Matrix.GeneralLinearGroup.map (pInf E) h * y)

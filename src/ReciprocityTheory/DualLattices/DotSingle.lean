@@ -19,7 +19,7 @@ theorem dot_single {ι : Type} [Fintype ι] [DecidableEq ι] (f : (ι → R) →
     ext i
     by_cases hi : i = k
     · subst hi; simp
-    · simp [Pi.single_apply, hi]
+    · simp [hi]
   rw [hk, map_smul, smul_eq_mul, mul_comm]
 
 theorem eq_of_dot {ι : Type} [Fintype ι] [DecidableEq ι] {w w' : ι → R}
@@ -251,7 +251,7 @@ theorem block (hv : v.Integers R) {ι κ' : Type} [Fintype ι] [DecidableEq ι] 
       rw [Matrix.range_mulVecLin]; rfl
     rw [e3]
     apply le_antisymm
-    · rintro _ ⟨z, rfl⟩; exact ⟨Q' *ᵥ z, by simp [mulVec_mulVec]⟩
+    · rintro _ ⟨z, rfl⟩; exact ⟨Q' *ᵥ z, by simp⟩
     · rintro _ ⟨z, rfl⟩
       refine ⟨Q'⁻¹ *ᵥ z, ?_⟩
       show (Mᵀ * Q') *ᵥ (Q'⁻¹ *ᵥ z) = Mᵀ *ᵥ z

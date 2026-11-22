@@ -228,7 +228,6 @@ private theorem biLe_single_one_X (x : ι) (k : κ) :
     first
       | exact zero_le _
       | exact fun i => Nat.zero_le _
-      | simp
   · rw [if_neg hβ] at hn
     simp at hn
 
@@ -309,7 +308,6 @@ lemma weight_posWt (s : σ) (n : σ × Fin r0 × Fin r1 →₀ ℕ) :
     intro i _
     first
       | exact zero_smul ℕ _
-      | simp
   case hs =>
     calc ∑ i ∈ n.support ∪ Finset.univ.image (fun x : Fin r0 × Fin r1 => ((s, x) : σ × Fin r0 × Fin r1)),
           n i • posWt r0 r1 s i
@@ -330,7 +328,7 @@ lemma minorAt_posWt {l : ℕ} (s s' : σ) (T : Fin l → Fin r0 → K) (I : Fin 
     MvPolynomial.IsWeightedHomogeneous (posWt r0 r1 s) (minorAt s' T I)
       (if s' = s then l else 0) := by
   have hdeg : (if s' = s then l else 0) = 0 + ∑ _i : Fin l, (if s' = s then 1 else 0) := by
-    split_ifs with h <;> simp [h]
+    split_ifs with h <;> simp
   rw [hdeg, minorAt, Matrix.det_apply']
   refine MvPolynomial.IsWeightedHomogeneous.sum _ _ _ (fun e _ => ?_)
   refine MvPolynomial.IsWeightedHomogeneous.mul ?hsign

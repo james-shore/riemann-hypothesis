@@ -48,7 +48,6 @@ theorem cell_lintegral [MeasurableSpace (GA E n)] [BorelSpace (GA E n)] (μ : Me
     show (C0 E n S).indicator (fun h => B (t * h)) (u * g) = (C0 E n S).indicator (fun h => B (t * h)) g
     by_cases hg : g ∈ C0 E n S
     · rw [Set.indicator_of_mem (adelicUnitriangular_mul_mem_unipotentTimesIntegral hu hg), Set.indicator_of_mem hg]
-      change B (t * (u * g)) = B (t * g)
       rw [show t * (u * g) = (t * u * t⁻¹) * (t * g) by group]
       exact hinv _ (tl_conj_mem ϖ l.1 hu) _
     · have : u * g ∉ C0 E n S := fun h => hg (by simpa using adelicUnitriangular_mul_mem_unipotentTimesIntegral (inv_mem hu) h)

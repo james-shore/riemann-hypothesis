@@ -157,7 +157,7 @@ theorem absAt : ∀ (D : D7) (k : Type) [Field k] [ValuativeRel k] [TopologicalS
   have h1 := GlobalTheory.T.valued_v_map_irreducible_eq_ofAdd_neg_one D.host.F p.v k φ hφ q.1 q.2
   have h2 := GlobalTheory.T.card_residueField_of_ringEquiv_adicCompletion D.host.F p.v k φ hφ
   have h3 : (((Multiplicative.ofAdd (-1 : ℤ) : Multiplicative ℤ) : WithZero (Multiplicative ℤ))).log = -1 := by
-    first | rfl | simp [WithZero.log] | exact WithZero.log_coe _
+    first | rfl
   rw [GlobalTheory.IndefiniteRowSideFullHecke.SplitLinearModelNorm.absV, hn, GlobalTheory.LatPair.Unif.unit, Units.val_mk0, h1, resCard, h2, h3, zpow_neg_one]
 
 open GlobalTheory.SplitLinAt GlobalTheory.SplitLinear

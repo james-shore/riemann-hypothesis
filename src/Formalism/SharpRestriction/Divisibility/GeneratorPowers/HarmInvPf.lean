@@ -43,7 +43,6 @@ theorem tie_val (C : ChartAt Xo c y) (φ : Fin C.d → MvPowerSeries (Fin 1 × F
     funext i
     first
       | simp [FB.FK, FGLaw.mapF]
-      | (ext n; simp [FB.FK, FGLaw.mapF, MvPowerSeries.coeff_map])
   have hφ' : IsExpOf (C.B.FK S) C.uvec φ := by
     rw [hFK]
     exact hφ
@@ -66,8 +65,7 @@ theorem cc_diagL {d : ℕ} {O : Type} [CommRing O] [StarRing O] (B : FB S d O) (
       (fun j' i' => by
         fin_cases j'
         first
-          | exact hpt j i'
-          | simp [pt])
+          | exact hpt j i')
       ((HarmInvB.logOf_props B.G).1 i)
   unfold diagL
   refine ReciprocityTheory.ChartRestriction.G.TB.LogPf.constantCoeff_ev ?_ ?_
@@ -75,13 +73,11 @@ theorem cc_diagL {d : ℕ} {O : Type} [CommRing O] [StarRing O] (B : FB S d O) (
     fin_cases j
     · first
         | exact hpt 0 i
-        | simp [pt]
     · exact ReciprocityTheory.ChartRestriction.G.TB.LogPf.constantCoeff_ev
         (fun j' i' => by
           fin_cases j'
           first
-            | exact hpt 0 i'
-            | simp [pt])
+            | exact hpt 0 i')
         (B.A.const w0 i)
   · unfold bilL
     rw [map_sum]
@@ -90,10 +86,6 @@ theorem cc_diagL {d : ℕ} {O : Type} [CommRing O] [StarRing O] (B : FB S d O) (
     refine Finset.sum_eq_zero fun l _ => ?_
     first
       | simp [hlg]
-      | simp [hlg, MvPowerSeries.smul_eq_C_mul]
-      | (rw [← MvPowerSeries.coeff_zero_eq_constantCoeff_apply, MvPowerSeries.coeff_smul,
-            MvPowerSeries.coeff_zero_eq_constantCoeff_apply, map_mul, hlg]
-         simp)
 
 end HarmInvPf
 

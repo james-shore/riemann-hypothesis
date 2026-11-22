@@ -190,7 +190,7 @@ theorem exists_std : ∀ {R : Type} [CommRing R] [TopologicalSpace R] [IsTopolog
           have hγ : d.e.symm (0, Pi.single i (((u : Rˣ) : R) * z)) ∈ Γ := by
             rw [hΓ, LinearEquiv.apply_symm_apply]
             refine ⟨fun j => by simp, fun j => ?_⟩
-            by_cases hj : j = i <;> simp [Pi.single_apply, hj, hz]
+            by_cases hj : j = i <;> simp [hj, hz]
           have h3 := hall _ hγ
           rw [hB1, LinearEquiv.apply_symm_apply] at h3
           simp only [zero_dotProduct, dotProduct_single, zero_sub] at h3
@@ -205,7 +205,7 @@ theorem exists_std : ∀ {R : Type} [CommRing R] [TopologicalSpace R] [IsTopolog
         have hγ : d.e.symm (Pi.single i z, 0) ∈ Γ := by
           rw [hΓ, LinearEquiv.apply_symm_apply]
           refine ⟨fun j => ?_, fun j => by simp⟩
-          by_cases hj : j = i <;> simp [Pi.single_apply, hj, hz]
+          by_cases hj : j = i <;> simp [hj, hz]
         have h3 := hall _ hγ
         rw [hB1, LinearEquiv.apply_symm_apply] at h3
         simp only [single_dotProduct, dotProduct_zero, sub_zero] at h3
@@ -265,6 +265,6 @@ theorem exists_std : ∀ {R : Type} [CommRing R] [TopologicalSpace R] [IsTopolog
     rwa [← hyg']
   · intro h0
     have h5 := congrArg (fun g : GlobalTheory.WeilM.SB (κ → R) => (g : (κ → R) → ℂ) 0) h0
-    simp [ind, Set.indicator_apply] at h5
+    simp [ind] at h5
 
 end GlobalTheory.CompanionTheory.StdLattice

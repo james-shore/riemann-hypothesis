@@ -25,7 +25,7 @@ theorem linearIndependent_of_span {R M : Type*} [CommRing R] [AddCommGroup M] [M
   rw [Fintype.linearIndependent_iff]
   intro a ha
   have h1 : g a = g 0 := by
-    simp only [g, LinearMap.comp_apply, LinearEquiv.coe_coe, map_zero, f, Fintype.linearCombination_apply, ha]
+    simp only [g, LinearMap.comp_apply, map_zero, f, Fintype.linearCombination_apply, ha]
   exact fun i => congrFun (hgi h1) i
 
 theorem twmap_smul {G : Type} [Group G] [TopologicalSpace G] {Qp LL O : Type} [Field Qp] [Field LL]

@@ -60,7 +60,7 @@ theorem substitution_comp_relation (hd : d.AxH 𝒜) (c : ι) :
   simp only [Data.relationEliminateColumn, aeval_X]
   split_ifs with ht
   · rw [map_neg, map_sum]
-    simp only [map_mul, hrho, MvPolynomial.aeval_C, MvPolynomial.algebraMap_eq]
+    simp only [map_mul, hrho]
 
     have htot : ∑ k, (d.affineRowCombination c 0 * X (t.1.succ, k) - d.affineRowCombination c t.1.succ * X (0, k)) *
         C (d.affineCoord c k) = 0 := by
@@ -77,7 +77,7 @@ theorem substitution_comp_relation (hd : d.AxH 𝒜) (c : ι) :
 theorem substitution_vanishes_of_relation (hd : d.AxH 𝒜) (c : ι) (Q : KTp K d.D d.N) (hQ : d.relationEliminateColumn c Q = 0) :
     d.linearSubstitution c (bilinearSubstitution Q) = 0 := by
   have h := congrArg (fun φ => φ Q) (d.substitution_comp_relation hd c)
-  simp only [AlgHom.comp_apply, AlgHom.restrictScalars_apply, hQ, map_zero] at h
+  simp only [AlgHom.comp_apply, hQ, map_zero] at h
   exact h
 
 theorem substitution_split_irreducible (hd : d.AxH 𝒜) (c : ι) (F0 : KTp K d.D d.N) (hirr : Irreducible F0) (d0 : ℕ)

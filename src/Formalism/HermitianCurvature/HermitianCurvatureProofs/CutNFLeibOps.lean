@@ -106,8 +106,8 @@ theorem nfLeibOps_sum_key {E : Type*} [AddCommGroup E] [Module ℂ E] {α : Type
           f q • ((l.filter fun t' => key t' = (q : ℕ)).map a).sum := by
       intro q
       by_cases h : key t = (q : ℕ)
-      · simp [List.filter_cons, h, smul_add]
-      · simp [List.filter_cons, h]
+      · simp [h, smul_add]
+      · simp [h]
     rw [Finset.sum_congr rfl (fun q _ => hsplit q), Finset.sum_add_distrib]
     congr 1
     rw [Finset.sum_eq_single ⟨key t, hq⟩]

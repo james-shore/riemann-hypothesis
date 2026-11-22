@@ -39,7 +39,6 @@ theorem ffa_Kset {k : Matrix (Fin n) (Fin n) ℂ} (hk : k ∈ Kset ε) : ∃ k' 
     first
     | exact unitary.star_mul_self_of_mem hu
     | exact Unitary.star_mul_self_of_mem hu
-    | exact (Matrix.mem_unitaryGroup_iff'.1 hu)
   have hu' : kᴴ * k = 1 := by simpa [Matrix.star_eq_conjTranspose] using hs
   have hUJ : k ∈ UJset ε := by
     show kᴴ * Jm ε * k = Jm ε
@@ -59,12 +58,8 @@ theorem ffa_Kset {k : Matrix (Fin n) (Fin n) ℂ} (hk : k ∈ Kset ε) : ∃ k' 
   refine ⟨⟨y, ?_⟩, ?_⟩
   · first
     | exact (show S7.toM y ∈ Kset ε from by rw [show S7.toM y = k from hy]; exact ⟨hu, hc⟩)
-    | exact (show Formalism.MainNotions.S.umat y ∈ Kset ε from by rw [hy]; exact ⟨hu, hc⟩)
-    | (unfold S7.KG; exact ⟨hu, hc⟩)
   · first
     | exact hy
-    | (unfold S7.toMK; exact hy)
-    | simpa [S7.toMK, S7.toM] using hy
 
 theorem ffa_UJ_lift {g : Matrix (Fin n) (Fin n) ℂ} (hg : g ∈ UJset ε) :
     ∃ y : Formalism.REAL.UJ ε, Formalism.MainNotions.S.umat y = g := by
@@ -81,7 +76,6 @@ theorem ffa_UJ_lift {g : Matrix (Fin n) (Fin n) ℂ} (hg : g ∈ UJset ε) :
     exact hJ h.symm
   first
   | exact ⟨⟨Matrix.nonsingInvUnit g hdet, hg'⟩, rfl⟩
-  | exact ⟨⟨((Matrix.isUnit_iff_isUnit_det g).2 hdet).unit, hg'⟩, rfl⟩
 
 theorem ffa_toMK_mem (k : S7.KG ε) : S7.toMK k ∈ UJset ε := by
   unfold S7.toMK
@@ -90,20 +84,10 @@ theorem ffa_toMK_mem (k : S7.KG ε) : S7.toMK k ∈ UJset ε := by
 theorem ffa_cont_toMK : Continuous fun k : S7.KG ε => S7.toMK k := by
   first
   | fun_prop
-  | exact Units.continuous_val.comp (continuous_subtype_val.comp continuous_subtype_val)
-  | (unfold S7.toMK S7.toM; fun_prop)
-  | (unfold S7.toMK; exact Units.continuous_val.comp (continuous_subtype_val.comp continuous_subtype_val))
 
 private theorem isURepOn_rreg' : IsURepOn (UJset ε) (rreg ε) := by
   first
   | exact rreg_isURepOn ε
-  | exact rreg_isURepOn
-  | exact isURepOn_rreg ε
-  | exact isURepOn_rreg
-  | exact rreg_isURep ε
-  | exact rreg_urep ε
-  | exact rreg_rep ε
-  | exact rregRep ε
 
 theorem ffa_rreg_mul (k₁ k₂ : S7.KG ε) (x : L2 ε) :
     rreg ε (S7.toMK (k₁ * k₂)) x = rreg ε (S7.toMK k₁) (rreg ε (S7.toMK k₂) x) := by
@@ -200,7 +184,6 @@ theorem ffa_eval {F : Matrix (Fin n) (Fin n) ℂ → ℂ} (hF : ContinuousOn F (
     rw [integral_integral_swap hint]
     first
     | (simp_rw [integral_const_mul]; exact h1')
-    | (simp_rw [integral_mul_left]; exact h1')
   have hae : Φ =ᵐ[Formalism.REAL.muG ε] 0 := by
     first
     | exact ae_eq_zero_of_forall_setIntegral_isCompact_eq_zero hΦc.locallyIntegrable hS
@@ -231,7 +214,6 @@ theorem ffa_op_inner (T : S7.KType ε Λ) (k : S7.KG ε) (x y : T.V) :
     first
     | exact unitary.star_mul_self_of_mem (T.τ k).2
     | exact Unitary.star_mul_self_of_mem (T.τ k).2
-    | exact (unitary.mem_iff.1 (T.τ k).2).1
   rw [← ContinuousLinearMap.adjoint_inner_right, ← ContinuousLinearMap.mul_apply, h1,
     ContinuousLinearMap.one_apply]
 
@@ -363,8 +345,6 @@ private theorem inner_uniformisationL2_eq_norm_sq_mul_inner (hP : IsPsiFor ε la
     rw [inner_self_eq_norm_sq_to_K, inner_self_eq_norm_sq_to_K, T.w_norm] at h1
     first
     | (push_cast at h1 ⊢; linear_combination -h1)
-    | (simp only [one_pow, mul_one, map_one] at h1; push_cast; exact h1.symm.trans (by push_cast; ring))
-    | (simp at h1 ⊢; linear_combination -h1)
   rw [hform, hc']
 
 theorem ffa_kmap_zero (hgap : StdGap ε lam) (hP : IsPsiFor ε lam T Ψ) (hv₀ : v₀ ≠ 0)
@@ -425,8 +405,6 @@ theorem ffa_kmap_zero (hgap : StdGap ε lam) (hP : IsPsiFor ε lam T Ψ) (hv₀ 
     obtain ⟨k, hk⟩ : ∃ k : S7.KG ε, S7.toMK k = g := by
       first
       | exact ffa_Kset hg
-      | exact ffa_Kset (by rw [← mir_Kset_eq]; exact hg)
-      | exact ffa_Kset (by simpa [Kset, Formalism.REAL.Kset] using hg)
     apply Subtype.ext
     simp only [Submodule.coe_subtype] at h1 h2
     rw [h2, hφ, hφ, h1, ← hk, hJdk, hB, map_add]
@@ -454,7 +432,6 @@ theorem ffa_kmap_zero (hgap : StdGap ε lam) (hP : IsPsiFor ε lam T Ψ) (hv₀ 
     rintro _ ⟨u, rfl⟩
     first
     | exact horth u v
-    | exact LinearMap.mem_ker.2 (by simpa using horth u v)
   refine LinearMap.ext fun v => ?_
   have hmem : φ ⟨uniformisationL2 ε Ψ v₀ v, datumEmbedding_mem_Hlam hP v⟩ ∈ lowKSubLam ε Ψ v₀ := by
     rw [← heq]
@@ -471,7 +448,6 @@ theorem ffa_kmap_zero (hgap : StdGap ε lam) (hP : IsPsiFor ε lam T Ψ) (hv₀ 
   have h6 : inner ℂ (B v) (c • B v) = 0 := by
     first
     | exact hspan v h3
-    | simpa using LinearMap.mem_ker.1 (hspan v h3)
   rw [inner_smul_right] at h6
   have h7 : inner ℂ (B v) (B v) = 0 := (mul_eq_zero.1 h6).resolve_left hc0
   rw [LinearMap.zero_apply]

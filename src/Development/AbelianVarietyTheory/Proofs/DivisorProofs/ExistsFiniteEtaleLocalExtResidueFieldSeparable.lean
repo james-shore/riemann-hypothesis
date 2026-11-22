@@ -52,7 +52,7 @@ theorem exists_finExt_etale_of_isSeparable : ∀ (R : Type) [CommRing R] [IsDoma
       rw [Algebra.smul_def, _root_.mul_one, map_sub, hxy, sub_self]
     exact (smul_eq_zero.mp h0).resolve_right one_ne_zero
   · ext r
-    simp only [RingHom.comp_apply, σ, AlgEquiv.toRingEquiv_eq_coe, RingEquiv.toRingHom_eq_coe,
+    simp only [RingHom.comp_apply, σ, RingEquiv.toRingHom_eq_coe,
       RingHom.coe_coe, AlgEquiv.coe_ringEquiv, AlgEquiv.commutes, AlgHom.toRingHom_eq_coe]
     change g2 (algebraMap (ResidueField R) (ResidueField R ⊗[R] A) (residue R r)) = _
     rw [Algebra.TensorProduct.algebraMap_apply]

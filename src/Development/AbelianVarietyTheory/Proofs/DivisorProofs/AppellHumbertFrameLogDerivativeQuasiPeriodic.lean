@@ -71,7 +71,7 @@ theorem main : ∀ (A : Over (Sp ℂ)) [GrpObj A] (g : ℕ) (L : LB A.left) (u :
         simp
       rwa [h3] at h2
     have hca := (hsm'.contDiffAt ((hopen _).mem_nhds hz)).fderiv_right (m := 1)
-      (by first | exact WithTop.coe_le_coe.2 le_top | exact_mod_cast (le_top : (2 : ℕ∞) ≤ ⊤))
+      (by first | exact WithTop.coe_le_coe.2 le_top)
     have h1 : DifferentiableAt ℂ (fun w => fderiv ℂ (u.fr i) w v) z :=
       (hca.differentiableAt one_ne_zero).clm_apply (differentiableAt_const v)
     have h4 := h1.mul ((hfra i z hz).inv (hfr0 i z hz))

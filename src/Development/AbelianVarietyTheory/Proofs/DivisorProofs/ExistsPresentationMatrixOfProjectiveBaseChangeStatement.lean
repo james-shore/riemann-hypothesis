@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.exists_presentation_matrix_of_projective_baseChang
     ∃ (v : Fin n → Fin n → B) (w : Fin n → Fin m → B),
     (∀ b l, ∑ a, algebraMap R B (r b a) * v a l = 0) ∧
     (∀ a l, v a l = (if a = l then 1 else 0) + ∑ b, w a b * algebraMap R B (r b l)) := by
-  first | (exact @GlobalTheory.projective_baseChange_presentation_matrix) | (exact GlobalTheory.projective_baseChange_presentation_matrix) | (intros; apply GlobalTheory.projective_baseChange_presentation_matrix <;> assumption)
+  first | (exact @GlobalTheory.projective_baseChange_presentation_matrix)

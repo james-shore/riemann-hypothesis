@@ -39,7 +39,7 @@ theorem root_of_eig (Y : Mat C N) (μ : C) (v : Fin N → C) (hv : v ≠ 0) (h :
   rw [Polynomial.IsRoot, Matrix.eval_charpoly, ← Matrix.exists_mulVec_eq_zero_iff]
   refine ⟨v, hv, ?_⟩
   rw [Matrix.sub_mulVec, h, Matrix.scalar_apply]
-  ext k; simp [Matrix.mulVec_diagonal]
+  ext k; simp
 
 theorem deg_shift (x : Mat C N) (c : C) (h : Deg n x) : Deg n (x + algebraMap C (Mat C N) c) := by
   obtain ⟨q, hq, hd, ha⟩ := h

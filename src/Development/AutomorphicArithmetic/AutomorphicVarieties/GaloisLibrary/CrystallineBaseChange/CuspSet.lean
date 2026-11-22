@@ -68,7 +68,7 @@ private theorem dec (x : TR.Kinf F 2) : ∃ s θ, x = eps s * rot θ := by
     (by simpa using e 0 0 v) (by simpa using e 0 1 v) (by simpa using e 1 1 v)
   refine ⟨s, θ, ?_⟩
   ext i j v
-  fin_cases i <;> fin_cases j <;> simp [rot, eps, Matrix.mul_apply, Fin.sum_univ_succ, h1, h2, h3, h4]
+  fin_cases i <;> fin_cases j <;> simp [rot, eps, h1, h2, h3, h4]
 
 variable [IsTotallyReal F]
 

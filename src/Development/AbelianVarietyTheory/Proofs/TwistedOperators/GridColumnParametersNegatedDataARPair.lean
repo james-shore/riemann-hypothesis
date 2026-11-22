@@ -80,8 +80,7 @@ theorem recon_left (S : SPar) (c : ℚ) (hc : ∀ p ∈ S, p.1 ≠ c) :
     dualPar (signed (desc (lowS S c) ++ desc (highS S c)) ([] ++ desc (negS S c)) (-c)) = S := by
   ext ⟨x, b⟩
   rw [mem_dualPar_signed]
-  simp only [List.mem_append, mem_desc, mem_lowS, mem_highS, mem_negS, List.nil_append, List.not_mem_nil,
-    false_or, sub_sub_cancel]
+  simp only [List.mem_append, mem_desc, mem_lowS, mem_highS, mem_negS, List.nil_append, sub_sub_cancel]
   cases b
   · simp
   · have := hc (x, true)

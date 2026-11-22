@@ -24,7 +24,7 @@ theorem ker_fg_of_projective {P C M : Type*} [CommRing P] [CommRing C] [Algebra 
     refine Finset.sum_congr rfl fun i _ => ?_
     congr 2
     ext j
-    simp [b, Pi.single_apply, eq_comm]
+    simp [Pi.single_apply, eq_comm]
   have hπC : ∀ x, π x = ∑ i, algebraMap P C (x i) • b i := fun x => by
     rw [hπb]
     simp only [algebraMap_smul]

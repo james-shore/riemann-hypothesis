@@ -135,8 +135,6 @@ theorem isUnit_two (h : (2 : 𝓞 F) ∉ v.asIdeal) : IsUnit (2 : intLoc F E v) 
   have hc : ((2 : intLoc F E v) : Fv F v ⊗[F] E) = 2 := by
     first
     | rfl
-    | norm_cast
-    | simp
   refine isUnit_iff_exists_inv.2 ⟨⟨_, tmul_mem_intLoc hmem (1 : 𝓞 E)⟩, Subtype.ext ?_⟩
   push_cast
   rw [hc, h2, Algebra.TensorProduct.tmul_mul_tmul, mul_inv_cancel₀ h0, one_mul,

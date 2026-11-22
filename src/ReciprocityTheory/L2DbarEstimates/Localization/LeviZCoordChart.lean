@@ -84,8 +84,8 @@ theorem leviZ_wd_coord (n : ℕ) (j l : Fin n) (y : V n) :
   rw [hL]
   by_cases h : j = l
   · subst h
-    simp [bas, EuclideanSpace.single_apply, Complex.I_mul_I]
-  · simp [bas, EuclideanSpace.single_apply, h, Ne.symm h]
+    simp [bas, Complex.I_mul_I]
+  · simp [bas, h, Ne.symm h]
 
 theorem leviZ_d_coord {M : Type*} [TopologicalSpace M] (n : ℕ) (z : M → V n)
     (hz : IsLocalHomeomorph z) (j l : Fin n) (x : M) :
@@ -115,7 +115,7 @@ private theorem wdb_sum_mul_conj_eq_coord (n : ℕ) (k : Fin n) (p : V n) :
     HasFDerivAt.fun_sum (fun l _ => (hP l).mul (hC l))
   unfold wdb
   rw [hF.fderiv]
-  simp [bas, EuclideanSpace.single_apply]
+  simp [bas]
   simp only [apply_ite (starRingEnd ℂ), map_zero, mul_ite, mul_zero, Complex.conj_I,
     Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   linear_combination ((starRingEnd ℂ (p.ofLp k) - p.ofLp k) / 2) * Complex.I_sq

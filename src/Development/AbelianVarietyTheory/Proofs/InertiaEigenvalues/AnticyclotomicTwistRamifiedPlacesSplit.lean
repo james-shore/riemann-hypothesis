@@ -192,7 +192,6 @@ theorem fix_cube_root (τ : Ω ≃+* Ω) (hm : ∀ x, A.valuation (τ x) < 1 ↔
     push_cast
     first
     | linear_combination (-(a - 1) * (a - t + 1)) * hk'
-    | linear_combination ((a - 1) * (a - t + 1)) * hk'
   have hR : A.valuation ((a ^ 3 - 1) - p * k * (a - 1) * ((a - t) + 1)) < 1 := by
     refine lt_of_le_of_lt (Valuation.map_sub _ _ _) (max_lt ha3 ?_)
     refine val_mul_lt_one_left A (val_mul_lt_one_left A (val_mul_lt_one_left A hpv (hs1 k)) (by simpa using hle 1))

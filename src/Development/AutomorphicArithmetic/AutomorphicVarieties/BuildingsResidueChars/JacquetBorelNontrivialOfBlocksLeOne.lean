@@ -61,7 +61,7 @@ theorem UpperTheory.jacquet_borel_nontrivial_of_blocks_le_one :
     have hv : ((hh * g * hh⁻¹ : GL (Fin N) k) : Matrix (Fin N) (Fin N) k)
         = σ.toPEquiv.toMatrix * (g : Matrix (Fin N) (Fin N) k) * σ.symm.toPEquiv.toMatrix := rfl
     rw [hv, PEquiv.mul_toMatrix_apply, ← Equiv.toPEquiv_symm, Equiv.symm_symm, Equiv.toPEquiv_apply]
-    simp only [Matrix.mul_assoc]
+    simp only
     rw [PEquiv.toMatrix_mul_apply, Equiv.toPEquiv_apply]
   have memR : ∀ n : unipB k (Fin N), hh * (n : GL (Fin N) k) * hh⁻¹ ∈ unipRad k e := by
     intro n
@@ -94,7 +94,7 @@ theorem UpperTheory.jacquet_borel_nontrivial_of_blocks_le_one :
     simp only [SetLike.mem_coe, Submodule.mem_comap, MonoidHom.one_apply, Units.val_one, one_smul, map_sub]
     apply Submodule.subset_span
     refine ⟨⟨hh * (n : GL (Fin N) k) * hh⁻¹, memR n⟩, π hh v, ?_⟩
-    simp only [MonoidHom.one_apply, Units.val_one, one_smul, map_mul, Module.End.mul_apply]
+    simp only [map_mul, Module.End.mul_apply]
     rw [← Module.End.mul_apply (π hh⁻¹), ← map_mul, inv_mul_cancel, map_one, Module.End.one_apply]
   rw [eq_top_iff]
   intro v _

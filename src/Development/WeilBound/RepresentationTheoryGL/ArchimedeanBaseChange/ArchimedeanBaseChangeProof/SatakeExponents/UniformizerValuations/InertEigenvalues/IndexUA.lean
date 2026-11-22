@@ -29,7 +29,6 @@ theorem wexp_anti {n : ℕ} {l : Fin (n / 2) → ℤ} (hl : Cone l) {i j : Fin n
   have hA : ∀ a b : ℕ, ∀ (ha : a < n / 2) (hb : b < n / 2), a ≤ b → l ⟨b, hb⟩ ≤ l ⟨a, ha⟩ :=
     fun a b ha hb hab => cone_anti hl (Fin.le_def.2 hab)
   delta wexp
-  beta_reduce
   split_ifs
   all_goals first
     | omega
@@ -38,7 +37,6 @@ theorem wexp_anti {n : ℕ} {l : Fin (n / 2) → ℤ} (hl : Cone l) {i j : Fin n
     | exact (neg_nonpos.2 (hP' _).le).trans (hP' _).le
     | exact (hP' _).le
     | exact neg_nonpos.2 (hP' _).le
-    | exact le_rfl
 
 theorem wexp_rev {n : ℕ} (l : Fin (n / 2) → ℤ) (i : Fin n) : wexp n l i.rev = -wexp n l i := by
   have hr : (i.rev : ℕ) = n - (i + 1) := Fin.val_rev i
@@ -46,19 +44,16 @@ theorem wexp_rev {n : ℕ} (l : Fin (n / 2) → ℤ) (i : Fin n) : wexp n l i.re
     rintro a b ha hb rfl
     rfl
   delta wexp
-  beta_reduce
   split_ifs
   all_goals first
     | omega
     | exact hl' _ _ _ _ (by omega)
     | exact congrArg Neg.neg (hl' _ _ _ _ (by omega))
     | (rw [neg_neg]; exact hl' _ _ _ _ (by omega))
-    | simp
 
 theorem wexp_castLE {n : ℕ} (l : Fin (n / 2) → ℤ) (i : Fin (n / 2)) :
     wexp n l (Fin.castLE (Nat.div_le_self n 2) i) = l i := by
   delta wexp
-  beta_reduce
   rw [dif_pos (by rw [Fin.val_castLE]; exact i.2)]
   rfl
 

@@ -42,7 +42,7 @@ private lemma entry_bound {L : Type} [Field L] [Valued L (WithZero (Multiplicati
     rfl
   rw [key] at hy
   have e : ((h : Matrix (Fin n) (Fin n) L) *ᵥ Pi.single j 1) i = (h : Matrix (Fin n) (Fin n) L) i j := by
-    simp [Matrix.mulVec_single_one]
+    simp
   have hi := hy i
   rw [e] at hi
   constructor

@@ -71,7 +71,7 @@ theorem schur_polarised (p q : ℕ) (T : GrpData p q) (D : DSRep T) (u₁ w₁ u
     (fun x y => ((D.fdeg : ℂ))⁻¹ * inner ℂ u₂ u₁ * star (inner ℂ y x)) (-Complex.I) ?_ ?_
     (fun x => schur_half D x u₁ u₂) w₁ w₂
   · intro x y g
-    simp only [inner_add_left, inner_sub_left, inner_smul_left, map_add, map_sub, map_mul, map_neg,
+    simp only [inner_add_left, inner_sub_left, inner_smul_left, map_neg,
       star_add, star_sub, star_mul', Complex.star_def, Complex.conj_I, neg_neg]
     linear_combination (1 / 2 : ℂ) *
       (inner ℂ x (D.U.π g u₁) * (starRingEnd ℂ) (inner ℂ y (D.U.π g u₂))

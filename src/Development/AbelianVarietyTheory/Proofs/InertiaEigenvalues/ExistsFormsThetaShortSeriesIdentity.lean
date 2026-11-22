@@ -87,7 +87,7 @@ theorem thetaSum_value_emb : ∀ (D : D7) (H : Geo.Tor.Host D.host.E) (Dw : Datu
       Dc.sympl hx hsd Dw.p V.rank Dc.hr Dc.eL hrpq hVP.1.even Dc.dir_eq d.nab₂ hnab' ϑ v κ' (hrd₂ ϑ hϑ) hv hκ mk₂ hm₂ hB₂
       Λ.La hVset N hN Y hY a _ hP2 (fun q => d.eF (w t q)) 1 (vt t) (hvt t)
     rw [e1, MvPolynomial.map_map, hcomp]
-    simp only [halg, map_mul, map_inv₀, map_natCast, map_one, inv_one, one_mul]
+    simp only [halg, map_mul, map_inv₀, map_natCast, inv_one, one_mul]
     rfl
 
   obtain ⟨vr, hvr⟩ := GlobalTheory.PtId.exists_isVarOf V W hr _ (hMod (dict g).1) Dw.p Dc.hr

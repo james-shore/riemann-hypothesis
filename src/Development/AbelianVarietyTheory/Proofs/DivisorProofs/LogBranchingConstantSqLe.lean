@@ -12,8 +12,8 @@ theorem branching_D1_le_weight_difference (n : ℕ) (lam : DomWeight (n + 1)) (s
   have h1 : Formalism.MainNotions.PrimeDegreeVariant.D1 rfl lam sg ≤ ∑ i : Fin n, (g i - g (i + 1)) := by
     unfold Formalism.MainNotions.PrimeDegreeVariant.D1
     refine Finset.sum_le_sum fun i _ => ?_
-    have a : g i = lam.w ⟨i.1, by omega⟩ := by simp [g, show i.1 < n + 1 by omega]
-    have b : g (i + 1) = lam.w ⟨i.1 + 1, by omega⟩ := by simp [g, show i.1 + 1 < n + 1 by omega]
+    have a : g i = lam.w ⟨i.1, by omega⟩ := by simp [g]
+    have b : g (i + 1) = lam.w ⟨i.1 + 1, by omega⟩ := by simp [g]
     rw [a, b]
     exact min_le_left _ _
   have h2 : ∑ i : Fin n, (g i - g (i + 1)) = g 0 - g n := by

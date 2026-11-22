@@ -61,7 +61,6 @@ theorem exists_perm_isUnit_leading_minors_localRing :
           omega
         simp only [submatrix_apply, id, w, Equiv.ofBijective_apply, f, hb, dite_false]
         congr 2
-        all_goals (ext; simp)
       rw [heq]
       exact hv k hk'
     · obtain rfl : k = n + 1 := le_antisymm hk hge

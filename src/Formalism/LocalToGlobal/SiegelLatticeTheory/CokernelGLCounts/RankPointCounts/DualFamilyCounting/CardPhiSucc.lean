@@ -21,8 +21,6 @@ theorem starO_ι (a : 𝓞 F) : star (algebraMap (𝓞 F) (𝓞 K) a) = algebraM
   have h1 : ((algebraMap (𝓞 F) (𝓞 K) a : 𝓞 K) : K) = algebraMap F K (a : F) := by
     first
     | rfl
-    | exact (IsScalarTower.algebraMap_apply (𝓞 F) (𝓞 K) K a).symm.trans
-        (IsScalarTower.algebraMap_apply (𝓞 F) F K a)
   rw [h1]
   exact ((Fact.out : IsFixF K F) _).2 ⟨_, rfl⟩
 

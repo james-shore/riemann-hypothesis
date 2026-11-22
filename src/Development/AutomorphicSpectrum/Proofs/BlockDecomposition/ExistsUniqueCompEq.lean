@@ -74,8 +74,6 @@ theorem existsUnique_comp_eq (π : B) (g : B →+* T)
     rw [RingHom.comp_apply, hf n y b hb, hf m y b (hle h _ hb)]
     first
       | rfl
-      | exact Ideal.Quotient.factor_mk _ _
-      | simp [Ideal.Quotient.factorPow]
   refine ⟨IsAdicComplete.liftRingHom _ f hcompat, ?_, ?_⟩
   · ext b
     apply key

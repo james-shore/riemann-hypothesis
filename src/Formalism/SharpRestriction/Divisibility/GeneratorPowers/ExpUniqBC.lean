@@ -38,9 +38,6 @@ theorem br_mul {A : Type} [CommRing A] [Algebra S A] (f g : overAt x0 A ⟶ G) :
   simp only [br, Adjunction.homEquiv_unit]
   first
   | rw [Functor.map_mul, comp_mul]
-  | rw [Functor.map_mul, Hom.comp_mul]
-  | rw [Functor.map_mul, MonObj.comp_mul]
-  | rw [Functor.map_mul, Mon_Class.comp_mul]
 
 theorem br_one {A : Type} [CommRing A] [Algebra S A] : br G x0 (1 : overAt x0 A ⟶ G) = 1 := by
   simp [br, Adjunction.homEquiv_unit]
@@ -49,7 +46,6 @@ theorem homAt_eq {A B : Type} [CommRing A] [Algebra S A] [CommRing B] [Algebra S
     homAt x0 ψ = (Over.map x0).map (spMap ψ) := by
   first
   | rfl
-  | exact Over.OverMorphism.ext rfl
 
 theorem br_comp {A B : Type} [CommRing A] [Algebra S A] [CommRing B] [Algebra S B] (ψ : A →ₐ[S] B)
     (f : overAt x0 A ⟶ G) : br G x0 (homAt x0 ψ ≫ f) = spMap ψ ≫ br G x0 f := by

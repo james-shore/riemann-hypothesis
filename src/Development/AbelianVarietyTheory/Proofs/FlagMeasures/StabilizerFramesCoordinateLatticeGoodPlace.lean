@@ -112,7 +112,6 @@ theorem stab_coordLat : ∀ {F : Type} [Field F] [ValuativeRel F] [TopologicalSp
           first
             | exact LinearEquiv.map_smul_of_tower g c x
             | exact g.toLinearMap.map_smul_of_tower c x
-            | (rw [Subring.smul_def, map_smul, ← Subring.smul_def])
         rw [e]; exact (coordLat S).smul_mem c hx
     intro x hx
     obtain ⟨-, hcompl, -⟩ := GlobalTheory.FrameBasic.main L r k S

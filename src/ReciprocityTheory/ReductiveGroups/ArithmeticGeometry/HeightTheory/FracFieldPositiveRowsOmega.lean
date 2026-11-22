@@ -64,13 +64,13 @@ private theorem sumRingEquiv_X_inr' (R S₁ S₂ : Type) [CommSemiring R] (q : S
       MvPolynomial.C (MvPolynomial.X q) := by
   first
   | exact MvPolynomial.sumToIter_Xr R S₁ S₂ q
-  | simp [MvPolynomial.sumRingEquiv, MvPolynomial.X, MvPolynomial.monomial, MvPolynomial.C, AddMonoidAlgebra.one_def]
+  | simp [MvPolynomial.sumRingEquiv, MvPolynomial.X, MvPolynomial.monomial, MvPolynomial.C]
 
 private theorem sumRingEquiv_C' (R S₁ S₂ : Type) [CommSemiring R] (a : R) :
     MvPolynomial.sumRingEquiv R S₁ S₂ (MvPolynomial.C a) = MvPolynomial.C (MvPolynomial.C a) := by
   first
   | exact MvPolynomial.sumToIter_C R S₁ S₂ a
-  | simp [MvPolynomial.sumRingEquiv, MvPolynomial.monomial, MvPolynomial.C, AddMonoidAlgebra.one_def]
+  | simp [MvPolynomial.sumRingEquiv, MvPolynomial.monomial, MvPolynomial.C]
 
 theorem compat0 (c : ι) (P : KTp K d.D d.N) :
     d.eEX4 c (d.sH c P) = algebraMap (MvPolynomial (Fin (d.N + 1)) (d.FracFieldPositiveRowsOmega c)) _
@@ -128,15 +128,13 @@ theorem compat0 (c : ι) (P : KTp K d.D d.N) :
       rcases Fin.eq_self_or_eq_succAbove (d.jc c) j with rfl | ⟨k, rfl⟩
       · by_cases hi : i = 0
         · subst hi
-          simp [e2, sImg, sac1, d.eEX4_algebraMap, hEX, hLX, hXlE, hXlL, hXrE, hXrL, hCE,
-            FractionFieldVariableLift.eS, FractionFieldVariableLift.eT, FractionFieldVariableLift.toFracY]
-        · simp [e2, sImg, sac1, hi, d.eEX4_algebraMap, hEX, hLX, hXlE, hXlL, hXrE, hXrL, hCE,
-            FractionFieldVariableLift.eS, FractionFieldVariableLift.eT, FractionFieldVariableLift.toFracY, d.psiE_apply, hpsiX, hpsiC]
+          simp [e2, sImg, d.eEX4_algebraMap, hEX, hLX, hXlE, hXlL, FractionFieldVariableLift.eS, FractionFieldVariableLift.eT, FractionFieldVariableLift.toFracY]
+        · simp [e2, sImg, hi, d.eEX4_algebraMap, hEX, hLX, hXrE, hXrL, hCE,
+            FractionFieldVariableLift.eS, FractionFieldVariableLift.eT, FractionFieldVariableLift.toFracY, d.psiE_apply, hpsiX]
       · by_cases hi : i = 0
         · subst hi
-          simp [e2, sImg, sac2, d.eEX4_algebraMap, hEX, hLX, hXlE, hXlL, hXrE, hXrL,
-            FractionFieldVariableLift.eS, FractionFieldVariableLift.eT, FractionFieldVariableLift.toFracY]
-        · simp [e2, sImg, sac2, hi, d.eEX4_algebraMap, hEX, hLX, hXlE, hXlL, hXrE, hXrL,
+          simp [e2, sImg, d.eEX4_algebraMap, hEX, hLX, hXlE, hXlL, FractionFieldVariableLift.eS, FractionFieldVariableLift.eT, FractionFieldVariableLift.toFracY]
+        · simp [e2, sImg, hi, d.eEX4_algebraMap, hEX, hLX, hXrE, hXrL,
             FractionFieldVariableLift.eS, FractionFieldVariableLift.eT, FractionFieldVariableLift.toFracY, d.psiE_apply, hpsiX]
   exact RingHom.congr_fun key P
 

@@ -99,7 +99,7 @@ theorem rescale : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing R], Base
       sval s' r z J = (gw T.ℓ r z (J (r ≫ T.β)) (J' r)).val * sval σ' r z J' := by
     intro Z r z J J' hJ hJ'
     rw [hs', hs Z r z J J' hJ hJ']
-    simp [pw, Fin.prod_univ_one]
+    simp [pw]
   let σ₁ : SecK C.P.L.L T.β 1 := ReciprocityTheory.ChartRestriction.G.DVR.SecOps.secScale (scal T.G.hom (v : W)) s'
   have hC₁ : T.Carries (v : W) σ' σ₁ := by
     intro Z r z J J' hJ hJ'

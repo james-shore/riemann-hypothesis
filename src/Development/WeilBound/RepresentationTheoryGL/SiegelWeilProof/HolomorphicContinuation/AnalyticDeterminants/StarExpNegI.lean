@@ -61,6 +61,6 @@ theorem rot_conj (j : ℕ) (θ : ℝ) (r s : Fin n) :
   simp only [dA, dB, zLow, zMid, zTop, blkB, Finset.mem_compl, exp_neg_I]
   by_cases hr : r ∈ blkA j <;> by_cases hs : s ∈ blkA j <;>
     simp [hr, hs, fromBlocks_smul, fromBlocks_add, fromBlocks_neg, smul_single, fromBlocks_inj]
-  all_goals constructor <;> congr 1 <;> field_simp <;> ring
+  all_goals constructor <;> congr 1 <;> field_simp
 
 end PositivityTheory.Rg.Sw.LVs.TC

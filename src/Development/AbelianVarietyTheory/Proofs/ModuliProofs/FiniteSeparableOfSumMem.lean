@@ -143,7 +143,6 @@ theorem residue_finite_separable : ∀ (Γ : Type) [Group Γ] [Finite Γ] (A B :
       ψ g (Ideal.Quotient.mk q b) = Ideal.Quotient.mk q ((g : Γ) • b) := fun g b => by
     first
       | rfl
-      | simp [ψ, Ideal.Quotient.stabilizerHom]
   have hι : ∀ u : B ⧸ q, u ≠ 0 → algebraMap (B ⧸ q) K u ≠ 0 := fun u hu h0 =>
     hu (IsFractionRing.injective (B ⧸ q) K (h0.trans (map_zero _).symm))
   have hsplit : ∀ F : Γ → K, (∀ g : Γ, g ∉ MulAction.stabilizer Γ q → F g = 0) →

@@ -42,7 +42,7 @@ theorem aeval_firstOrder {B A : Type} [CommRing B] [Algebra k B] [CommRing A] [A
           MvPolynomial.pderiv_X]
         by_cases hij : j = i
         · subst hij; simp
-        · simp [Pi.single_apply, hij, Ne.symm hij]
+        · simp [hij]
       simp only [key, mul_ite, mul_zero, Finset.sum_ite_eq, Finset.mem_univ, if_true]
       have hX : θ (P * MvPolynomial.X ((0 : Fin 2), j)) = 0 := by simp [hθ]
       rw [hX, map_zero, zero_add]

@@ -10,7 +10,7 @@ def tp (n : ℕ) (z : Fin n → ℂ) : ℂ[X] := ∏ i, (X - C (z i))
 
 theorem tp_natDeg (n : ℕ) (z : Fin n → ℂ) : (tp n z).natDegree ≤ n := by
   unfold tp
-  exact (natDegree_prod_le _ _).trans (by simp [natDegree_X_sub_C])
+  exact (natDegree_prod_le _ _).trans (by simp)
 
 theorem tp_eval (n : ℕ) (z : Fin n → ℂ) (x : ℂ) : (tp n z).eval x = ∏ i, (x - z i) := by
   simp [tp, eval_prod]

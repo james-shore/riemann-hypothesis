@@ -24,13 +24,10 @@ theorem leftActC'_of_PD (hPD : ∀ D : D7, Formalism.L2.SG.Saturated.PDIso D) : 
   have hB : Formalism.L2.SG.Pf.SatGramActL.ChiNBiAll := by
     first
     | exact fun D X => chi_n_bilinear X
-    | (intro D X; exact chi_n_bilinear X)
   have hGen : ∀ D : D7, Formalism.L2.SG.Saturated.GenIso (VS D) D.R.rS (gS D) := by
     intro D
     first
     | exact Formalism.L2.SG.Pf.generic_isomorphism_holds (gS D)
-    | exact Formalism.L2.SG.Pf.generic_isomorphism_holds _
-    | exact Formalism.L2.SG.Pf.generic_isomorphism_holds _ _ _
   exact Formalism.L2.SG.Pf.SatGramActL.left_action_of_local_data hPD hGen Formalism.L2.SG.Pf.iotaRepC_holds
     Formalism.L2.SG.Pf.ampRepNC_holds hB
 
@@ -38,7 +35,6 @@ theorem rightActC'_holds : Formalism.L2.SG.Pf.SatGramActR.RightActC' := by
   have hB : Formalism.L2.SG.Pf.SatGramActL.ChiNBiAll := by
     first
     | exact fun D X => chi_n_bilinear X
-    | (intro D X; exact chi_n_bilinear X)
   exact Formalism.L2.SG.Pf.SatGramActR.right_action_three_families hB Formalism.L2.SG.Pf.iotaRepC_holds Formalism.L2.SG.Pf.ampRepNC_holds
 
 theorem normExpSatC'_of_PD (hPD : ∀ D : D7, Formalism.L2.SG.Saturated.PDIso D) : NormExpSatC' := by

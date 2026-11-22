@@ -101,7 +101,7 @@ theorem coeff_aeval_alt (p : K[X]) : (aeval (T : AnnulusRing K I) p).coeff = pol
   induction p using Polynomial.induction_on' with
   | add p q hp hq =>
     rw [map_add, coeff_add, hp, hq]
-    funext n; simp only [Pi.add_apply, polySeq, coeff_add]; split_ifs <;> simp
+    funext n; simp only [Pi.add_apply, polySeq]; split_ifs <;> simp
   | monomial n c =>
     rw [aeval_monomial, Algebra.algebraMap_eq_smul_one, smul_mul_assoc, one_mul, coeff_smul,
       coeff_T_pow]
@@ -120,7 +120,7 @@ theorem eq_zpow_mul_aeval (P : AnnulusRing K I) {L H : ℤ}
   refine ⟨∑ i ∈ Finset.range (H - L + 1).toNat, monomial i (P.coeff (L + i)), ?_⟩
   ext n
   rw [coeff_mul, coeff_unitT_zpow, coeff_aeval_alt, cmul_single_left]
-  simp only [one_mul, polySeq, finsetSum_coeff, coeff_monomial, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_range]
+  simp only [one_mul, polySeq, finsetSum_coeff, coeff_monomial, Finset.sum_ite_eq', Finset.mem_range]
   by_cases h1 : 0 ≤ n - L
   · rw [if_pos h1]
     by_cases h2 : (n - L).toNat < (H - L + 1).toNat

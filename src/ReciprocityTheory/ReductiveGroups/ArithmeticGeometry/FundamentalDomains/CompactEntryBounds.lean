@@ -25,7 +25,7 @@ theorem hermC_expand (τ : E →+* ℂ) (P : Matrix (Fin r) (Fin r) E) (u w : Fi
   have hR : ∀ k l, u k * conj (w l) *
       τ (herm X.Gm (P *ᵥ Pi.single k 1) (P *ᵥ Pi.single l 1)) = ∑ a, ∑ b, u k * conj (w l) * (τ (P a k) * τ (X.Gm a b) * conj (τ (P b l))) := by
     intro k l
-    simp only [herm, Matrix.mulVec_single_one, Matrix.transpose_apply, map_sum, map_mul, hcc,
+    simp only [herm, Matrix.mulVec_single_one, map_sum, map_mul, hcc,
       Finset.mul_sum]
     rfl
   simp only [hermC, hL, hR]

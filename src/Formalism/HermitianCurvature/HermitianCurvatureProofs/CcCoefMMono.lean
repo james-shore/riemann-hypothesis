@@ -141,7 +141,7 @@ theorem sliceContQa : ∃ Cs : ℝ, 0 ≤ Cs ∧ ∀ Cc : ℝ, Cs ≤ Cc →
     simp only [P5.mmUser, P5.nV, hPk, hPr, hnd]
   have hAU : P5.Auser P0 N = 127 * ((r : ℝ) + 1) ^ 3 * ((N : ℝ) * (nd : ℝ) ^ 2 + (nd : ℝ) ^ 3) := by
     simp only [P5.Auser, P5.nV, hPk, hPr, hnd]
-    try (push_cast; try ring)
+    try (push_cast)
   have hX1 : (1 : ℝ) ≤ (N : ℝ) * (nd : ℝ) ^ 2 + (nd : ℝ) ^ 3 := by exact_mod_cast b5
   have hAsR : (As : ℝ) = 11 * ((N : ℝ) * (nd : ℝ) ^ 2 + (nd : ℝ) ^ 3) + 5 := by
     rw [hAs]; push_cast; ring

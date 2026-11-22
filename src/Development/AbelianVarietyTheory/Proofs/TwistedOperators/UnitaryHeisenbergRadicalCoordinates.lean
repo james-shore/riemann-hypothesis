@@ -46,13 +46,13 @@ theorem form_mid_last {M : Matrix (Fin (N + 2)) (Fin (N + 2)) L} {r b : Fin N �
     (j : Fin N) : (cT σ M * antiJ L (N + 2) * M) (mid j) (Fin.last (N + 1)) = b j.rev + σ (r j) := by
   obtain ⟨h00, h0m, h0l, hm0, hmm, hml, hl0, hlm, hll⟩ := h
   rw [form_apply, sum_idx]
-  simp [Fin.rev_zero, Fin.rev_last, ← mid_rev, h00, h0m, h0l, hm0, hmm, hml, hl0, hlm, hll, sum_rev_ite]
+  simp [Fin.rev_zero, Fin.rev_last, ← mid_rev, h0m, h0l, hmm, hml, hlm, hll, sum_rev_ite]
 
 theorem form_last_last {M : Matrix (Fin (N + 2)) (Fin (N + 2)) L} {r b : Fin N → L} {c : L} (h : Shape M r b c) :
     (cT σ M * antiJ L (N + 2) * M) (Fin.last (N + 1)) (Fin.last (N + 1)) = c + ∑ k, σ (b k.rev) * b k + σ c := by
   obtain ⟨h00, h0m, h0l, hm0, hmm, hml, hl0, hlm, hll⟩ := h
   rw [form_apply, sum_idx]
-  simp [Fin.rev_zero, Fin.rev_last, ← mid_rev, h00, h0m, h0l, hm0, hmm, hml, hl0, hlm, hll, sum_rev_ite]
+  simp [Fin.rev_zero, Fin.rev_last, ← mid_rev, h0l, hml, hll]
 
 theorem zero_ne_mid (i : Fin N) : (0 : Fin (N + 2)) ≠ mid i := (mid_ne_zero i).symm
 theorem last_ne_mid (i : Fin N) : Fin.last (N + 1) ≠ mid i := (mid_ne_last i).symm
@@ -84,22 +84,21 @@ def heisMat (r b : Fin N → L) (c : L) : Matrix (Fin (N + 2)) (Fin (N + 2)) L :
 
 theorem shape_heisMat (r b : Fin N → L) (c : L) : Shape (heisMat r b c) r b c := by
   refine ⟨by simp [heisMat], fun j => ?_, by simp [heisMat, last_ne_zero.symm], fun i => ?_, fun i j => ?_,
-    fun i => ?_, by simp [heisMat, last_ne_zero], fun j => ?_, by simp [heisMat]⟩
+    fun i => ?_, by simp [heisMat], fun j => ?_, by simp [heisMat]⟩
   · have := j.2
     simp [heisMat, zero_ne_mid, mid_ne_last]
   · simp [heisMat, mid_ne_zero, last_ne_zero.symm]
   · simp [heisMat, mid_injective.eq_iff, mid_ne_zero, mid_ne_last]
   · have := i.2
     simp [heisMat, mid_ne_zero, mid_ne_last]
-  · simp [heisMat, last_ne_mid, last_ne_zero]
+  · simp [heisMat, last_ne_mid]
 
 theorem mem_radQ_of_shape {u : GU σ (N + 2)} {r b : Fin N → L} {c : L} (h : Shape (mat u) r b c) :
     u ∈ radQ σ N := by
   obtain ⟨h00, h0m, h0l, hm0, hmm, hml, hl0, hlm, hll⟩ := h
   intro i j hij
   rcases idx_cases i with rfl | ⟨i, rfl⟩ | rfl <;> rcases idx_cases j with rfl | ⟨j, rfl⟩ | rfl <;>
-    simp [Matrix.one_apply, h00, h0m, h0l, hm0, hmm, hml, hl0, hlm, hll, mid_ne_zero, mid_ne_last, zero_ne_mid,
-      last_ne_mid, mid_injective.eq_iff] at hij ⊢
+    simp [Matrix.one_apply, h00, hm0, hmm, hl0, hlm, hll, mid_ne_zero, last_ne_mid, mid_injective.eq_iff] at hij ⊢
 
 theorem mul_coords {u u' : GU σ (N + 2)} (hu : u ∈ radQ σ N) (hu' : u' ∈ radQ σ N) :
     rowOf (u * u') = rowOf u + rowOf u' ∧ colOf (u * u') = colOf u + colOf u' ∧
@@ -108,7 +107,7 @@ theorem mul_coords {u u' : GU σ (N + 2)} (hu : u ∈ radQ σ N) (hu' : u' ∈ r
   obtain ⟨h00', h0m', h0l', hm0', hmm', hml', hl0', hlm', hll'⟩ := shape_of_mem hu'
   refine ⟨funext fun j => ?_, funext fun i => ?_, ?_⟩
   · simp only [rowOf, mat_mul, Matrix.mul_apply, sum_idx, Pi.add_apply]
-    simp [h00, h0m, h0l, hmm', hl0', hlm', h0m']
+    simp [h00, h0m, h0l, hmm', hlm', h0m']
     ring
   · simp only [colOf, mat_mul, Matrix.mul_apply, sum_idx, Pi.add_apply]
     simp [hm0, hmm, hml, hml', hll', h0l']

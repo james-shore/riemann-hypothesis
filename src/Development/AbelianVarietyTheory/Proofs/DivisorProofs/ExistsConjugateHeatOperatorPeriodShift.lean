@@ -29,7 +29,7 @@ theorem exists_gauge_translate : ∀ {R : Type} [CommRing R] [IsDomain R] {Q : D
     (by
       intro U _ g
       simp only [Fintype.prod_sum_type, Fin.prod_univ_two, Fin.prod_univ_one, Sum.elim_inl, Sum.elim_inr,
-        Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+        Matrix.cons_val_zero, Matrix.cons_val_one]
       rw [zpow_mul, zpow_mul, zpow_one, zpow_neg_one, _root_.mul_comm]
       exact inv_mul_cancel_right _ _)
     (pullMulSec τ (𝟙 Y.H * (toUnit Y.H ≫ x)).left (GeneratorPullback.powGen Q.P.L _ _ e k) (ReciprocityTheory.ChartRestriction.G.DVR.powGen_isGen _ _ _ e he k))

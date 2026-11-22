@@ -42,9 +42,8 @@ private theorem sum_quadratic_column_indicator_eq_dotProduct_mulVec {k : Type} [
       if b = b' then dotProduct u (β.mulVec v) + dotProduct v (β.mulVec u) else 0 := by
   by_cases hb : b = b'
   · subst hb
-    simp only [Prod.mk.injEq, ite_and, mul_ite, ite_mul, mul_one, mul_zero, zero_mul,
-      Finset.sum_add_distrib, if_true]
-    simp [Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.sum_ite_irrel]
+    simp only [Prod.mk.injEq, ite_and, mul_ite, mul_one, mul_zero, Finset.sum_add_distrib, if_true]
+    simp [Finset.sum_ite_eq', Finset.sum_ite_irrel]
     simp only [dotProduct, Matrix.mulVec, Finset.mul_sum]
     congr 1
     · exact Finset.sum_congr rfl fun x _ => Finset.sum_congr rfl fun y _ => by ring
@@ -64,7 +63,7 @@ theorem quadratic_column_derivative : QuadColDerivSt := by
   refine ⟨?_, ?_, ?_⟩
   · simp [quadCol, map_sum]
   · intro u b
-    simp only [dAdd, quadCol, map_sum, pderiv_C_mul_X_mul_X, pderiv_C_mul', map_add, map_mul,
+    simp only [dAdd, quadCol, map_sum, pderiv_C_mul_X_mul_X, map_add, map_mul,
       MvPowerSeries.constantCoeff_X, mul_zero, add_zero, Finset.sum_const_zero]
   · intro u v b b'
 

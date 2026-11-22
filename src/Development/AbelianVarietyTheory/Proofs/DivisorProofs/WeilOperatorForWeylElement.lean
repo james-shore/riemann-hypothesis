@@ -28,8 +28,8 @@ theorem GlobalTheory.WeylFour.weyl_hasOp : ∀ (F : Type) [Field F] [NumberField
       spAct (weylM (F := F) (κ := κ)) w = (w.2, -w.1) := by
     intro R _ _ w
     ext k
-    · simp [spAct, weylM, Matrix.fromBlocks_map, Matrix.mulVec, dotProduct, Matrix.fromBlocks, Matrix.one_apply]
-    · simp [spAct, weylM, Matrix.fromBlocks_map, Matrix.mulVec, dotProduct, Matrix.fromBlocks, Matrix.one_apply]
+    · simp [spAct, weylM, Matrix.mulVec, dotProduct, Matrix.fromBlocks, Matrix.one_apply]
+    · simp [spAct, weylM, Matrix.mulVec, dotProduct, Matrix.fromBlocks, Matrix.one_apply]
 
   have hSB := fun v => GlobalTheory.T.local_fourier_schwartz_stable F ψ hψ v (hnt v) κ
   have hInv := fun v => GlobalTheory.T.local_fourier_double_reflection F ψ hψ v (hnt v) κ

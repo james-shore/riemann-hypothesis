@@ -340,7 +340,7 @@ theorem aeval_one {I : Type} [Fintype I] [DecidableEq I] (c : I → R) (hc : ∀
     simp only [smul_mul_assoc, hc, smul_zero, Finset.sum_const_zero, add_zero, coeff_mul_X']
     rw [Finset.sum_eq_single n]
     · simp [Algebra.smul_def]
-    · intro b _ hb; simp [Finsupp.single_apply, hb, hb.symm]
+    · intro b _ hb; simp [hb.symm]
     · simp
 
 theorem aeval_two {d : ℕ} (a b : Fin d → R) (ha : ∀ i j, a i * a j = 0) (hb : ∀ i j, b i * b j = 0)
@@ -363,19 +363,19 @@ theorem aeval_two {d : ℕ} (a b : Fin d → R) (ha : ∀ i j, a i * a j = 0) (h
     · simp only [add_mul, Finset.sum_mul, smul_mul_assoc, ha, h3, smul_zero, Finset.sum_const_zero, add_zero,
         coeff_mul_X', Fin.zero_eta, Matrix.cons_val_zero]
       rw [Finset.sum_eq_single n (f := fun i => _ • a i), Finset.sum_eq_single n (f := fun i => ∑ j, _ • (a i * b j))]
-      · simp [Algebra.smul_def, Finsupp.single_apply, mul_comm]
-      · intro b _ hb; simp [Finsupp.single_apply, hb, hb.symm]
+      · simp [Algebra.smul_def, mul_comm]
+      · intro b _ hb; simp [hb.symm]
       · simp
-      · intro b _ hb; simp [Finsupp.single_apply, hb, hb.symm]
+      · intro b _ hb; simp [hb.symm]
       · simp
     · simp only [add_mul, Finset.sum_mul, smul_mul_assoc, hb, h4, smul_zero, Finset.sum_const_zero, add_zero,
         coeff_mul_X', Fin.mk_one, Matrix.cons_val_one, Matrix.cons_val_zero]
       rw [Finset.sum_comm, Finset.sum_eq_single n (f := fun i => _ • b i),
         Finset.sum_eq_single n (f := fun j => ∑ i, _ • (a i * b j))]
-      · simp [Algebra.smul_def, Finsupp.single_apply, mul_comm]
-      · intro b _ hb; simp [Finsupp.single_apply, hb, hb.symm]
+      · simp [Algebra.smul_def, mul_comm]
+      · intro b _ hb; simp [hb.symm]
       · simp
-      · intro b _ hb; simp [Finsupp.single_apply, hb, hb.symm]
+      · intro b _ hb; simp [hb.symm]
       · simp
 
 theorem span_sq {I : Type} (c : I → R) (hc : ∀ i j, c i * c j = 0) : Ideal.span (Set.range c) ^ 2 = ⊥ := by

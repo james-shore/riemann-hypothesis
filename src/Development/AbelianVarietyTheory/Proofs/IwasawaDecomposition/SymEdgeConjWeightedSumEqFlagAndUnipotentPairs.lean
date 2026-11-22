@@ -15,7 +15,7 @@ theorem term_eq {R : Type} [CommRing R] (ρ k : ℕ) (s : Bool) {r : ℕ} (M : M
       if j.val = i.val + 1 then ((cw ρ k s i.val : ℤ) : R) * M i j else 0 := by
   unfold symEdge GlobalTheory.Mem.SymChar.wtB cw
   simp only [Int.cast_ite, Int.cast_zero, Int.cast_one, Int.cast_neg]
-  split_ifs <;> first | rfl | omega | (simp_all; done) | simp
+  split_ifs <;> first | rfl | omega | (simp_all)
 
 theorem row_sum {R : Type} [CommRing R] {r : ℕ} (M : Matrix (Fin r) (Fin r) R) (c : R) (i : Fin r) :
     (∑ j : Fin r, if j.val = i.val + 1 then c * M i j else 0) =
@@ -102,7 +102,6 @@ theorem weighted_sum_eq : ∀ {R : Type} [CommRing R] (ρ k r : ℕ) (hr : r = 2
   congr 1
   · refine (Fin.sum_univ_eq_sum_range (fun a => if a + 1 < ρ then -F (2 * ρ + k - a - 1) else F (ρ + k)) ρ).symm.trans
       (Finset.sum_congr rfl fun a _ => ?_)
-    beta_reduce
     split_ifs with h
     · rw [hFv _ (2 * ρ + k - a.val) (by omega) (by omega) (by omega)]
     · rw [hFv _ (ρ + k + 1) (by omega) (by omega) (by omega)]
@@ -110,7 +109,6 @@ theorem weighted_sum_eq : ∀ {R : Type} [CommRing R] (ρ k r : ℕ) (hr : r = 2
     · simp only [Bool.false_eq_true, if_false]
       refine (Fin.sum_univ_eq_sum_range (fun i => if i + 1 < k then -F (ρ + k - 2 - i) else 0) k).symm.trans
         (Finset.sum_congr rfl fun i _ => ?_)
-      beta_reduce
       split_ifs with h
       · rw [hFv _ (ρ + k - 1 - i.val) (by omega) (by omega) (by omega)]
       · rfl

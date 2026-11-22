@@ -24,7 +24,7 @@ theorem compactMatrix_conjTranspose {ε : Fin n → Bool} (w : KCo ε) : (kMat w
   by_cases hab : a = b
   · subst hab
     simp only [kMat, if_true]
-    simp [Complex.ext_iff]
+    simp
   · have hba : b ≠ a := Ne.symm hab
     by_cases h1 : b < a ∧ ε a = ε b
     · have h2 : ¬ (a < b ∧ ε b = ε a) := fun h => lt_asymm h.1 h1.1

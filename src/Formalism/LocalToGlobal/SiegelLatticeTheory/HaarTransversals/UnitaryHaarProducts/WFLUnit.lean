@@ -125,7 +125,7 @@ private theorem Hpk_apply_middle_right_eq_ite (t' t : Fin (2 * r + k + 1)) (h1 :
     Hpk k r t' t = if t' = t then 1 else 0 := by
   unfold Hpk
   simp only [Fin.ext_iff]
-  split_ifs <;> first | rfl | omega | (exfalso; omega) | norm_num
+  split_ifs <;> first | rfl | omega
 
 private theorem hJ_Qm_mulVec_eq_sum (x c : Fin (2 * r + k + 1) → ℂ) :
     hJ ε x (Qm e f wf z0 *ᵥ c) = ∑ t, c t * hJ ε x (colQ e f wf z0 t) := by
@@ -149,7 +149,7 @@ theorem piB_entry (hF : IsFrameJ ε e f wf z0) (h : Matrix (Fin (2 * r + k + 1))
     have hw : (wI k r ⟨c.val, by omega⟩).val = r + c.val := rfl
     unfold colQ
     split_ifs <;> simp only [hew, hfw, hzw, hww, Fin.ext_iff, wI, Fin.val_mk] <;> (try split_ifs) <;>
-      first | rfl | omega | (exfalso; omega)
+      first | rfl | omega
   have v1 : (Qm e f wf z0)ᴴ *ᵥ (Formalism.REAL.Jm ε *ᵥ wf b) = bvec (wI k r ⟨b.val, by omega⟩) := by
     ext t
     rw [conjTranspose_Qm_mulVec_Jm_apply_eq_hJ_colQ, hcol]
@@ -180,7 +180,7 @@ private theorem Hpk_apply_middle_left_eq_ite (t t' : Fin (2 * r + k + 1)) (h1 : 
     Hpk k r t t' = if t' = t then 1 else 0 := by
   unfold Hpk
   simp only [Fin.ext_iff]
-  split_ifs <;> first | rfl | omega | (exfalso; omega) | norm_num
+  split_ifs <;> first | rfl | omega
 
 theorem piB_mat_unitary (hF : IsFrameJ ε e f wf z0) {T : ℝ} (hT : 0 < T)
     {h : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ} (hh : h ∈ UWset k r (zBv k r T)) :

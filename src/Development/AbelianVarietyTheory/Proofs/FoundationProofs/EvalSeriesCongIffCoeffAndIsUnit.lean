@@ -26,12 +26,12 @@ theorem psi_C {T : GlobalTheory.K5.Tower p Ω} {n : ℕ} {ψ : O0 p →+* Ω} (h
   rw [h.sub (HahnSeries.C z) (HahnSeries.C z), zp, HahnSeries.C_apply]
   · intro i
     by_cases hi : i = 0
-    · simp [hi, HahnSeries.C_apply, HahnSeries.coeff_single]
+    · simp [hi, HahnSeries.C_apply]
     · have : (p : ℤ) ^ n * i ≠ 0 := mul_ne_zero hpn hi
-      simp [hi, this, HahnSeries.C_apply, HahnSeries.coeff_single]
+      simp [hi, this, HahnSeries.C_apply]
   · intro r hr
     have : r ≠ 0 := by rintro rfl; exact hr (dvd_zero _)
-    simp [this, HahnSeries.C_apply, HahnSeries.coeff_single]
+    simp [this, HahnSeries.C_apply]
 
 theorem psi_int {T : GlobalTheory.K5.Tower p Ω} {n : ℕ} {ψ : O0 p →+* Ω} (h : IsReb T n ψ) (y : O0 p) :
     IsInt p (ψ y) := by
@@ -49,7 +49,7 @@ theorem dvd_C_iff (k : ℕ) (z : ℤ_[p]) : (p : Lau p) ^ k ∣ HahnSeries.C z �
   · intro h m
     by_cases hm : m = 0
     · simpa [hm, HahnSeries.C_apply, HahnSeries.coeff_single] using h
-    · simp [hm, HahnSeries.C_apply, HahnSeries.coeff_single]
+    · simp [hm, HahnSeries.C_apply]
 
 section Val
 
@@ -165,7 +165,7 @@ theorem GlobalTheory.Glue.ev_cong_iff_and_unit : ∀ (p : ℕ) [Fact p.Prime], �
       exact Finset.sum_congr rfl fun s _ => Finset.sum_congr rfl fun t _ => by ring
     have hc2 : ∀ r, c r = S ψ π κ (fun j s => HahnSeries.C ((B j s).coeff r)) := by
       intro r
-      simp only [S, psi_C hψ, hB, HahnSeries.coeff_sum, HahnSeries.C_mul_eq_smul, HahnSeries.coeff_smul,
+      simp only [S, hB, HahnSeries.coeff_sum, HahnSeries.C_mul_eq_smul, HahnSeries.coeff_smul,
         smul_eq_mul, zp_eq, map_sum, map_mul, hc, hesp, Finset.sum_mul, Finset.mul_sum]
       rw [Finset.sum_comm]
       refine Finset.sum_congr rfl fun j _ => ?_

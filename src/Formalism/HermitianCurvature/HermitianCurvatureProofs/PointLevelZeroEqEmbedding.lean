@@ -143,7 +143,7 @@ theorem point_level_zero_eq_embedding (P : M.Par) (hj : 0 + 1 ≤ P.r) (Z : Matr
     rw [LevelPointCoordinates.zfull_apply]
     have hi : i.val = 0 := by have := i.isLt; omega
     have hl : l.val = 0 := by have := l.isLt; omega
-    simp [hi]
+    simp
   unfold LevelPointCoordinates.x0 LevelPointCoordinates.mLev
   rw [hz]
 

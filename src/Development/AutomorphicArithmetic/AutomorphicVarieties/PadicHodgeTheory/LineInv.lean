@@ -8,7 +8,7 @@ private theorem coord_lTensor {K V B B' ι : Type} [Field K] [AddCommGroup V] [M
     equivFinsuppOfBasisLeft b (LinearMap.lTensor V f x) i = f (equivFinsuppOfBasisLeft b x i) := by
   induction x using TensorProduct.induction_on with
   | zero => simp
-  | tmul v y => simp [equivFinsuppOfBasisLeft_apply_tmul_apply]
+  | tmul v y => simp
   | add y z hy hz => simp only [map_add, Finsupp.add_apply, hy, hz]
 
 private theorem line_abs {K V B B' : Type} [Field K] [AddCommGroup V] [Module K V] [AddCommGroup B]

@@ -49,7 +49,7 @@ def mvMap (R : Type) [CommRing R] {U V E U' V' E' : Spc} (f : U ⟶ E) (g : V �
   τ₂ := biprod.map ((chains R).map u) ((chains R).map v)
   τ₃ := (chains R).map p
   comm₁₂ := by
-    apply biprod.hom_ext <;> simp [mvS, ← Functor.map_comp] <;> congr 1 <;> first | exact pullback.lift_fst _ _ _ | exact pullback.lift_snd _ _ _ | simp [pullback.map]
+    apply biprod.hom_ext <;> simp [mvS, ← Functor.map_comp] <;> congr 1 <;> first | exact pullback.lift_fst _ _ _ | exact pullback.lift_snd _ _ _
   comm₂₃ := by
     apply biprod.hom_ext' <;> simp [mvS, ← Functor.map_comp, hu, hv]
 

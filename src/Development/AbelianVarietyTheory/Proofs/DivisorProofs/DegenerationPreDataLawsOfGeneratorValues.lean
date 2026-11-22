@@ -132,7 +132,7 @@ theorem rlaws_transfer : ∀ (R : Type) [CommRing R] [IsDomain R] (D₀ : DegPre
       fun x hx => Set.mem_iInter.2 fun _ => hV hx
     refine ⟨(res hle ((ψ y).s j)).val, Units.isUnit _, ?_⟩
     have e := congrArg (fun q => q.hom ((ψ y).s j).val) ((jK R).naturality (homOfLE hle).op)
-    simp only [CommRingCat.hom_comp, RingHom.comp_apply] at e
+    simp only [CommRingCat.hom_comp] at e
     refine e.trans ?_
     show _ = ((TK R).left.presheaf.map (homOfLE h).op).hom (((TK R).left.presheaf.map (homOfLE _).op).hom
       (((jK R).app _).hom ((ψ y).s j).val))

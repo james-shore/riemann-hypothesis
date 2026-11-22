@@ -124,14 +124,14 @@ theorem isRiemannMatrix_unique {Xo : Moduli D l} {σ : KA l →+* ℂ} {n a : �
       ext b
       by_cases h : b = c
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
   have hs : ∀ (K : Matrix (Fin C.g) (Fin C.g) ℂ) c d,
       hermForm K (Pi.single c 1) (Pi.single d 1) = K c d := fun K c d => by
     have : star (Pi.single d 1 : Fin C.g → ℂ) = Pi.single d 1 := by
       ext b
       by_cases h : b = d
       · subst h; simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     simp [hermForm, this]
   have h1 := (hA C.g _ v (Matrix.of fun c d => (Real.pi : ℂ) * hermForm A
     (fun b => C.ψ z ((Pi.single c 1 : Fin C.g → C.R) b)) (fun b => C.ψ z ((Pi.single d 1 : Fin C.g → C.R) b))) hvv).2

@@ -40,7 +40,7 @@ theorem unipotent_scalar_identity : CutSH.UUiwScalar := by
     · intro u v
       have hU : YangianSpanCharacter.T.Uinv (A := A) (if l.plus = true then s else star s) i j ∈ (⊥ : Subalgebra ℂ A) := by
         fin_cases i <;> fin_cases j <;>
-          simp [YangianSpanCharacter.T.Uinv, Subalgebra.one_mem, Subalgebra.zero_mem, Subalgebra.algebraMap_mem]
+          simp [YangianSpanCharacter.T.Uinv]
       simp only [Wd.lift0, Matrix.map_apply, Wd.io, Matrix.scalar_apply, Matrix.diagonal_apply]
       exact ite_zero_mem_bot_subalgebra _ _ hU
 

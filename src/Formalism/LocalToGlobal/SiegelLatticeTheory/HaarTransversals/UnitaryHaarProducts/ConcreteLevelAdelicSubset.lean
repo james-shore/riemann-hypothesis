@@ -1153,22 +1153,22 @@ theorem dcrel_of {Λ Λ' : Submodule (𝓞 E) S.V} {T T' : E} (F : LFlag S r T) 
       rw [xa_mapFlag] at hx ⊢
       obtain ⟨y, hy, rfl⟩ := hx
       refine ⟨n' y - y, hn'.2.1 j y hy, ?_⟩
-      simp [le_mul_app, le_inv_app, map_sub]
+      simp [le_inv_app, map_sub]
     · change x ∈ orth S (mapFlag γ hγ F'.fl).X at hx
       change _ ∈ (mapFlag γ hγ F'.fl).X
       rw [x_mapFlag] at hx ⊢
       have hy := orth_map γ hγ _ x hx
       refine ⟨n' (γ.symm x) - γ.symm x, hn'.2.2 _ hy, ?_⟩
-      simp [le_mul_app, le_inv_app, map_sub]
+      simp [le_inv_app, map_sub]
   refine ⟨n, hn, γ * n' * γ⁻¹, hm, fun a => ?_, ?_⟩
   · rw [mapLF, mapLF, dif_pos hγ, dif_pos hγ₂]
     show (mapFlag γ₂ hγ₂ F'.fl).fvec a = n ((γ * n' * γ⁻¹) ((mapFlag γ hγ F'.fl).fvec a))
     rw [fvec_mapFlag, fvec_mapFlag, h]
-    simp [le_mul_app, le_inv_app]
+    simp [le_inv_app]
   · rw [mapLF, mapLF, dif_pos hγ, dif_pos hγ₂]
     show γ₂ F'.zt = n ((γ * n' * γ⁻¹) (γ F'.zt))
     rw [h]
-    simp [le_mul_app, le_inv_app]
+    simp [le_inv_app]
 
 end Gen
 

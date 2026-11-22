@@ -275,7 +275,7 @@ theorem lift2a [NeZero n] [Fintype (K →ₐ[Qp] LL)] [IsDomain O] [IsDiscreteVa
     simp only [lE, pow_zero, one_mul, Fin.sum_univ_one, hf₂]
     by_cases hk : k = k₀
     · simp [hk]
-    · simp [hk, Pi.single_apply]
+    · simp [hk]
   obtain ⟨n₂, hn₂N, hn₂R⟩ := hnl2 f₂ ⟨hf₂Fr, 0, hSec₂⟩
 
   obtain ⟨y, hyΔ, hylet, hn₂y⟩ := hn₂N

@@ -105,8 +105,6 @@ theorem exists_reps {K : Subgroup G} (hK : Formalism.UG.IsCommensurated K) (g : 
   | exact @_root_.GlobalTheory.FinsetConjugateRepresentatives.exists_finset_reps
   | exact _root_.GlobalTheory.FinsetConjugateRepresentatives.exists_finset_reps
   | (apply _root_.GlobalTheory.FinsetConjugateRepresentatives.exists_finset_reps <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FinsetConjugateRepresentatives.exists_finset_reps <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FinsetConjugateRepresentatives.exists_finset_reps <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FinsetConjugateRepresentatives.exists_finset_reps ..)
 
 variable {H : Type} [Group H] {ρ : G →* H} {S : G → Prop} {K : Set G} {K' : Subgroup H}

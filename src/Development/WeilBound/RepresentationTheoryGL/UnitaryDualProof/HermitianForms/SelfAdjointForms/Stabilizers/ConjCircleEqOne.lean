@@ -54,8 +54,7 @@ theorem sum_char {ψ : AddChar k Circle} (hψ : Continuous ψ) (hψ1 : ψ ≠ 1)
     set F : (Fin (m + 1) → k) → ℂ := fun η => starRingEnd ℂ ((ψ (η ⬝ᵥ u) : Circle) : ℂ) with hFdef
     have hF : ∀ a, ∀ d ∈ ann ψ A', F (a + d) = F a := by
       intro a d hd
-      simp only [hFdef, add_dotProduct, AddChar.map_add_eq_mul, Circle.coe_mul, map_mul, hd u hu, Circle.coe_one,
-        map_one, mul_one]
+      simp only [hFdef, add_dotProduct, AddChar.map_add_eq_mul, hd u hu, mul_one]
     have e := sum_translate_transversal (ann ψ A) (ann ψ A') R hR.1 hR.2 F hF η₀ hη₀A
     have e2 : ∀ η, F (η + η₀) = F η * starRingEnd ℂ ((ψ (η₀ ⬝ᵥ u) : Circle) : ℂ) := by
       intro η

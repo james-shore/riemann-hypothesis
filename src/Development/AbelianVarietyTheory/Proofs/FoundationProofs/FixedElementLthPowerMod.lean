@@ -20,8 +20,6 @@ theorem exists_residue_pow_pow_eq (l : ℕ) [Fact l.Prime] {Ω : Type} [Field Ω
   | exact @_root_.GlobalTheory.ResiduePowerFixed.residue_pow_fixed
   | exact _root_.GlobalTheory.ResiduePowerFixed.residue_pow_fixed
   | (apply _root_.GlobalTheory.ResiduePowerFixed.residue_pow_fixed <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ResiduePowerFixed.residue_pow_fixed <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ResiduePowerFixed.residue_pow_fixed <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ResiduePowerFixed.residue_pow_fixed ..)
 
 theorem fixA_eq_pow_add_mul : ∀ (l : ℕ) [Fact l.Prime] (Ω : Type) [Field Ω] [Algebra ℚ Ω] [IsAlgClosure ℚ Ω]

@@ -60,7 +60,7 @@ theorem rowInvUp : RowInvUpSt := by
         unfold rowShift
         rfl
       rw [hx, aeval_X]
-      split_ifs <;> simp only [Polynomial.eval_add, Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_X] <;> ring
+      split_ifs <;> simp only [Polynomial.eval_add, Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_X]
   have hQ : Φ P - Polynomial.C P = 0 := by
     apply Polynomial.eq_zero_of_infinite_isRoot
     apply Set.Infinite.mono (s := Set.range (fun q : ℚ => (C (q : K) : MvPolynomial (Letter Ty r n) K)))

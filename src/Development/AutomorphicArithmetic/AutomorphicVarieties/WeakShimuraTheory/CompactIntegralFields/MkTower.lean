@@ -114,7 +114,6 @@ private theorem mem_or_mul_mem_fixing_of_quadratic {Ω : Type} [Field Ω] [CharZ
     have hc : Nat.card (@AlgEquiv ℚ K K _ _ _ K.algebra' K.algebra') = 2 := by
       rw [← hc0]
       congr 1
-      all_goals exact Subsingleton.elim _ _
     obtain ⟨y, hy, hu⟩ := (Nat.card_eq_two_iff' (1 : @AlgEquiv ℚ K K _ _ _ K.algebra' K.algebra')).mp hc
     by_contra hm
     have e1 := hu _ hh

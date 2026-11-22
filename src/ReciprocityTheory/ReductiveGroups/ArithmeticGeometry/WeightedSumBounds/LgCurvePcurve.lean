@@ -32,7 +32,6 @@ private theorem lgCurve_zero' (G : LogFGL v d) (a : Fin d) :
   have h0 : HasSubst (fun _ : Fin d => (0 : PowerSeries C)) := by
     first
     | exact MvPowerSeries.hasSubst_of_constantCoeff_zero (fun _ => by simp)
-    | exact MvPowerSeries.HasSubst.of_constantCoeff_zero' (fun _ => by simp)
   ext j
   rw [map_zero]
   change MvPowerSeries.coeff (Finsupp.single () j) (subst _ (G.lg a)) = 0

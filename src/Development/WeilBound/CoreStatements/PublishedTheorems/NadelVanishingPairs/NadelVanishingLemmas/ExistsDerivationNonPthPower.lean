@@ -110,7 +110,7 @@ private theorem exists_inclusion_mul_eq_mul_inclusion_of_normal (p : ℕ) [Fact 
   have hpow : (inl x + inr v : TrivSqZeroExt K K) ^ p = inl (x ^ p) := by
     ext
     · simp [fst_pow]
-    · simp [snd_pow, CharP.cast_eq_zero K p]
+    · simp [snd_pow]
   let m : Polynomial L := Polynomial.X ^ p - Polynomial.C c
   have hφm : φ m = 0 := by
     simp only [m, map_sub, map_pow, φ, Polynomial.coe_eval₂RingHom, Polynomial.eval₂_X,

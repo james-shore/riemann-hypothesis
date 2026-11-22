@@ -18,8 +18,6 @@ theorem exists_pow_smul_mem (LL : FinExt l) (T : QLat LL) (v : T.V)
   | exact @_root_.GlobalTheory.LatticePowerScalar.exists_pow_smul_mem_lattice
   | exact _root_.GlobalTheory.LatticePowerScalar.exists_pow_smul_mem_lattice
   | (apply _root_.GlobalTheory.LatticePowerScalar.exists_pow_smul_mem_lattice <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LatticePowerScalar.exists_pow_smul_mem_lattice <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LatticePowerScalar.exists_pow_smul_mem_lattice <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LatticePowerScalar.exists_pow_smul_mem_lattice ..)
 
 theorem main : ∀ (l : ℕ) [Fact l.Prime] (LL : FinExt l) (T : QLat LL) (v : T.V), ∃ n : ℕ, ∃ x ∈ T.L.T, x = ((l : ↥LL.1) ^ n) • v := by

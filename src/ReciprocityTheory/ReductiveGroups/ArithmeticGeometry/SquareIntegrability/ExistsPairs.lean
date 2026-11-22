@@ -14,7 +14,6 @@ variable {ι : Type} [Fintype ι]
 
 theorem Hf_inner (v w : EuclideanSpace ℂ ι) : Hf v w = inner ℂ w v := by
   simp only [Hf, PiLp.inner_apply, RCLike.inner_apply]
-  all_goals (refine Finset.sum_congr rfl fun i _ => ?_; ring)
 
 theorem Hf_add_l (v v' w : EuclideanSpace ℂ ι) : Hf (v + v') w = Hf v w + Hf v' w := by
   simp only [Hf, PiLp.add_apply, add_mul, Finset.sum_add_distrib]
@@ -41,8 +40,6 @@ theorem Hf_self (v : EuclideanSpace ℂ ι) : Hf v v = ((‖v‖ ^ 2 : ℝ) : �
   rw [Hf_inner]
   first
     | exact_mod_cast inner_self_eq_norm_sq_to_K (𝕜 := ℂ) v
-    | (rw [inner_self_eq_norm_sq_to_K]; simp)
-    | (rw [inner_self_eq_norm_sq_to_K]; norm_cast)
 
 theorem Hf_self_im (v : EuclideanSpace ℂ ι) : (Hf v v).im = 0 := by
   rw [Hf_self, Complex.ofReal_im]
@@ -187,7 +184,6 @@ def eb : Module.Basis (Fin (Fintype.card ι)) ℂ (EuclideanSpace ℂ ι) :=
 theorem eb_apply (i) : eb e f hee hef i = e i := by
   first
     | exact Module.Basis.mk_apply _ _ _
-    | simp [eb]
 
 end Core
 
@@ -331,7 +327,6 @@ theorem hF_qp (hf : ∀ j, f j ∈ lat Y.b) (q : ℕ) (F : EuclideanSpace ℂ ι
     have hb : b = c + d + g - a := by linear_combination h
     rw [hb, Complex.exp_sub, Complex.exp_add, Complex.exp_add]
     field_simp [Complex.exp_ne_zero]
-    all_goals ring
   have hPhi : Phi e (z + tau e f hee hef j) = Phi e z + f j := by
     rw [Phi_add, Phi_tau]
   have hsec := hFs.2 (f j) (hf j) (Phi e z)
@@ -352,17 +347,13 @@ theorem hF_diff (q : ℕ) (F : EuclideanSpace ℂ ι → ℂ) (hd : Differentiab
     unfold Phi
     first
       | fun_prop
-      | exact Differentiable.sum fun i _ => (differentiable_apply i).smul_const (e i)
   have hQ : Differentiable ℂ (Qf e) := by
     unfold Qf
     first
       | fun_prop
-      | exact Differentiable.sum fun i _ => Differentiable.sum fun l _ =>
-          ((differentiable_apply i).mul (differentiable_apply l)).mul_const _
   have hL : Differentiable ℂ (fun z : Fin (Fintype.card ι) → ℂ => ∑ l, Lk Y e l * z l) := by
     first
       | fun_prop
-      | exact Differentiable.sum fun l _ => (differentiable_apply l).const_mul _
   unfold hF
   exact (hd.comp hPhi).mul (((differentiable_const _).mul hQ).sub hL).cexp
 
@@ -397,7 +388,6 @@ theorem Av_smul {k : ℕ} (Ψ : (Fin k → ℂ) → ℂ) (c : ℂ) (w : Fin k �
   simp only [DimB.Av]
   first
     | exact MeasureTheory.integral_const_mul c _
-    | exact MeasureTheory.integral_mul_left c _
 
 variable (e f : Fin (Fintype.card ι) → EuclideanSpace ℂ ι)
   (hee : ∀ i j, (Hf (e i) (e j)).im = 0)

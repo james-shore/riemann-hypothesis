@@ -15,8 +15,6 @@ theorem differentiableAt_det (M : ℝ → Matrix σ σ ℂ) (t : ℝ)
   | exact @_root_.GlobalTheory.DifferentiableDet.differentiableAt_det
   | exact _root_.GlobalTheory.DifferentiableDet.differentiableAt_det
   | (apply _root_.GlobalTheory.DifferentiableDet.differentiableAt_det <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DifferentiableDet.differentiableAt_det <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DifferentiableDet.differentiableAt_det <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DifferentiableDet.differentiableAt_det ..)
 
 theorem differentiableAt_inv_apply (M : ℝ → Matrix σ σ ℂ) (t : ℝ)

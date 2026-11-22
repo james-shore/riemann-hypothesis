@@ -21,7 +21,6 @@ theorem cd_nM (τ : X.Ψ) (a b : Fin r) : ContDiff ℂ ∞ fun z : V (nd X) => n
     first
       | exact (EuclideanSpace.proj (𝕜 := ℂ) _).contDiff
       | fun_prop
-      | exact ((EuclideanSpace.proj (𝕜 := ℂ) _).contDiff).congr fun z => rfl
   · simp only [dif_neg h]
     exact contDiff_const
 

@@ -22,7 +22,7 @@ theorem single_mem_stdLat {E : Type} [Field E] [NumberField E] {n : ℕ} (i : Fi
   rw [Submodule.mem_one]
   by_cases h : j = i
   · subst h; exact ⟨o, by simp⟩
-  · exact ⟨0, by simp [Pi.single_apply, h]⟩
+  · exact ⟨0, by simp [h]⟩
 
 theorem nsmul_tmul {F : Type} [Field F] [NumberField F] {E : Type} [Field E] [NumberField E] [Algebra F E]
     (a : ℕ) (β : Af F) (x : E) : a • (β ⊗ₜ[F] x) = β ⊗ₜ[F] (((a : 𝓞 E) : E) * x) := by
@@ -67,7 +67,7 @@ theorem sq_smul_mulVec_mem_hat : ∀ (D : D7) (n : ℕ) (Λ : Submodule (𝓞 D.
         by_cases hk : k = i
         · subst hk
           rw [Pi.smul_apply, Pi.smul_apply, Pi.single_eq_same, Pi.single_eq_same, nsmul_tmul, Algebra.smul_def]
-        · simp [Pi.single_apply, hk]
+        · simp [hk]
       | zero => simp
       | add x y _ _ hx hy => rw [Pi.single_add, smul_add]; exact add_mem hx hy
       | neg x _ hx => rw [Pi.single_neg, smul_neg]; exact neg_mem hx

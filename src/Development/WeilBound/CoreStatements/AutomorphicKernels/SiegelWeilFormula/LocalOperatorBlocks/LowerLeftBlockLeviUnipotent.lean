@@ -41,7 +41,7 @@ theorem nb_eq {c : Matrix (Fin n) (Fin n) ℂ} (hc : cᴴ = c) (hu : IsUnit c.de
   unfold nbM mLc nU JJ
   rw [h3]
   simp only [Matrix.fromBlocks_multiply]
-  simp [h1, h2, Matrix.neg_mul, Matrix.mul_neg]
+  simp [h1, h2]
 
 def dT (i0 : Fin n) (t : ℝ) : Matrix (Fin n) (Fin n) ℂ := Matrix.diagonal fun i => if i = i0 then (t : ℂ) else 1
 

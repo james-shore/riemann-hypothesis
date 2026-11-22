@@ -24,7 +24,7 @@ theorem fi_eq_lse {ε : Fin n → Bool} (z : PCoord ε → ℂ) {i : ℕ} (hi : 
   have h : (∑ S, ((wS z hi S : ℝ) : ℂ) * Complex.exp ((t * yS z S.1 : ℝ) : ℂ)) =
       ((∑ S, wS z hi S * Real.exp (t * yS z S.1) : ℝ) : ℂ) := by
     push_cast
-    simp only [Complex.ofReal_exp, Complex.ofReal_mul]
+    simp only
   rw [h, Complex.ofReal_re]
 
 theorem fi_pmat_eq_fi_one_smul_pmat {ε : Fin n → Bool} (z : PCoord ε → ℂ) (i : ℕ) :

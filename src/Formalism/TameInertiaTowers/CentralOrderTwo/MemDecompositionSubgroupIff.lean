@@ -13,8 +13,6 @@ lemma neg_one_ne_one_int : (-1 : ℤˣ) ≠ 1 := by
 lemma card_units_int : Nat.card ℤˣ = 2 := by
   first
     | (rw [Nat.card_eq_fintype_card, Fintype.card_units_int])
-    | rfl
-    | simp [Nat.card_eq_fintype_card]
 
 lemma card_unitsTwoPow (n : ℕ) (hn : 1 ≤ n) : Nat.card (ZMod (2 ^ n))ˣ = 2 ^ (n - 1) := by
   haveI : NeZero (2 ^ n) := ⟨by positivity⟩
@@ -47,7 +45,6 @@ lemma mem_zpowers_JJ {n : ℕ} {g : GalL n} (h : g ∈ zpowers (JJ n)) : g = 1 �
 lemma mem_decomposition_subgroup_iff {n : ℕ} {g : GalL n} : g ∈ D2 n ↔ g.2.2 = 1 := by
   first
     | exact Iff.rfl
-    | simp [D2]
 
 end ModelEmbedding
 
@@ -141,10 +138,6 @@ lemma unitsMap_five_mod_four (n : ℕ) (h : 4 ∣ 2 ^ n) : ZMod.unitsMap h (u5 n
   apply Units.ext
   first
     | (rw [ZMod.unitsMap_def, Units.coe_map, u5, ZMod.coe_unitOfCoprime, MonoidHom.coe_coe, map_natCast]
-       decide)
-    | (simp only [ZMod.unitsMap_def, Units.coe_map, u5, ZMod.coe_unitOfCoprime, MonoidHom.coe_coe, map_natCast]
-       decide)
-    | (rw [ZMod.unitsMap_def, Units.coe_map, u5, ZMod.coe_unitOfCoprime, ZMod.castHom_apply, ZMod.cast_natCast h]
        decide)
 
 lemma unitsMap_neg_one (n m : ℕ) (h : m ∣ n) :
@@ -261,14 +254,14 @@ private lemma chi4_unitsMap_neg_one_eq_neg_one {N : ℕ} (h : 4 ∣ N) :
   rw [unitsMap_neg_one]
   apply Units.ext
   rw [MulChar.coe_toUnitHom]
-  first | rfl | decide | simp | (simp; decide)
+  first | rfl
 
 private lemma chi8_unitsMap_neg_one_eq_one {N : ℕ} (h : 8 ∣ N) :
     ZMod.χ₈.toUnitHom (ZMod.unitsMap h (-1 : (ZMod N)ˣ)) = 1 := by
   rw [unitsMap_neg_one]
   apply Units.ext
   rw [MulChar.coe_toUnitHom]
-  first | rfl | decide | simp | (simp; decide)
+  first | rfl
 
 private lemma chi8_unitsMap_u5_eq_neg_one (k : ℕ) (h : 8 ∣ 2 ^ (k + 3)) :
     ZMod.χ₈.toUnitHom (ZMod.unitsMap h (u5 (k + 3))) = -1 := by
@@ -277,10 +270,8 @@ private lemma chi8_unitsMap_u5_eq_neg_one (k : ℕ) (h : 8 ∣ 2 ^ (k + 3)) :
   have h5 : ((ZMod.unitsMap h (u5 (k + 3)) : (ZMod 8)ˣ) : ZMod 8) = 5 := by
     first
       | (rw [ZMod.unitsMap_def, Units.coe_map, u5, ZMod.coe_unitOfCoprime, MonoidHom.coe_coe, map_natCast]; rfl)
-      | (simp only [ZMod.unitsMap_def, Units.coe_map, u5, ZMod.coe_unitOfCoprime, MonoidHom.coe_coe, map_natCast]; rfl)
-      | (rw [ZMod.unitsMap_def, Units.coe_map, u5, ZMod.coe_unitOfCoprime, ZMod.castHom_apply, ZMod.cast_natCast h]; rfl)
   rw [h5]
-  first | rfl | decide
+  first | rfl
 
 lemma index_KK_le (k : ℕ) : (KK (k + 3)).index ≤ 8 := by
   have h4 : 4 ∣ 2 ^ (k + 3) := ⟨2 ^ (k + 1), by ring⟩

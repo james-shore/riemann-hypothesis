@@ -20,10 +20,10 @@ private noncomputable def cU (w : InfinitePlace F) (t : ℝ) : GL (Fin 2) (TR.Ri
   ⟨!![1, Pi.single w t; 0, 1], !![1, Pi.single w (-t); 0, 1],
     by
       ext i j v
-      fin_cases i <;> fin_cases j <;> by_cases h : v = w <;> simp [Matrix.mul_apply, Fin.sum_univ_two, Pi.single_apply, h],
+      fin_cases i <;> fin_cases j <;> by_cases h : v = w <;> simp [Matrix.mul_apply, Fin.sum_univ_two, h],
     by
       ext i j v
-      fin_cases i <;> fin_cases j <;> by_cases h : v = w <;> simp [Matrix.mul_apply, Fin.sum_univ_two, Pi.single_apply, h]⟩
+      fin_cases i <;> fin_cases j <;> by_cases h : v = w <;> simp [Matrix.mul_apply, Fin.sum_univ_two, h]⟩
 
 private theorem cU_val (w : InfinitePlace F) (t : ℝ) : (cU w t).val = !![1, Pi.single w t; 0, 1] := rfl
 
@@ -31,7 +31,7 @@ private theorem cU_add (w : InfinitePlace F) (s t : ℝ) : cU w (s + t) = cU w s
   refine Units.ext ?_
   rw [Units.val_mul, cU_val, cU_val, cU_val]
   ext i j v
-  fin_cases i <;> fin_cases j <;> by_cases h : v = w <;> simp [Matrix.mul_apply, Fin.sum_univ_two, Pi.single_apply, h, add_comm]
+  fin_cases i <;> fin_cases j <;> by_cases h : v = w <;> simp [Matrix.mul_apply, Fin.sum_univ_two, h, add_comm]
 
 private theorem cU_der (w : InfinitePlace F) :
     HasDerivAt (fun t => TR.toL (cU w t).val) (TR.toL (Matrix.single 0 1 (Pi.single w 1))) 0 := by
@@ -39,7 +39,7 @@ private theorem cU_der (w : InfinitePlace F) :
       fun t : ℝ => TR.toL (1 : Matrix (Fin 2) (Fin 2) (TR.Rinf F)) + t • TR.toL (Matrix.single 0 1 (Pi.single w 1)) := by
     funext t
     ext i j v
-    fin_cases i <;> fin_cases j <;> by_cases h : v = w <;> simp [cU_val, Matrix.single_apply, Pi.single_apply, h]
+    fin_cases i <;> fin_cases j <;> by_cases h : v = w <;> simp [cU_val, h]
   rw [e]
   have h := ((hasDerivAt_id (0 : ℝ)).smul_const (TR.toL (Matrix.single 0 1 (Pi.single w 1)) : TR.Lie F 2)).const_add
     (TR.toL (1 : Matrix (Fin 2) (Fin 2) (TR.Rinf F)) : TR.Lie F 2)

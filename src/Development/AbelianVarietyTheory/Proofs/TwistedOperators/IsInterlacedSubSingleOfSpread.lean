@@ -11,7 +11,7 @@ theorem interlaced_sub_single : ∀ {n : ℕ} {ε : Fin (n + 1) → Bool} {lam :
     intro a
     by_cases h : a = s
     · subst h; simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   have hb : ∀ a, 0 ≤ (Pi.single s (1:ℝ) : Fin (n+1) → ℝ) a ∧ (Pi.single s (1:ℝ) : Fin (n+1) → ℝ) a ≤ 1 := by
     intro a
     rcases h01 a with h | h <;> rw [h] <;> norm_num

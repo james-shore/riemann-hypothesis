@@ -66,7 +66,7 @@ def primeOf {L : Type} [Field L] [NumberField L] [Algebra L Ω] (A : ValuationSu
     exact Valuation.map_add_lt _ ha hb
   zero_mem' := by simp
   smul_mem' c b hb := by
-    simp only [Set.mem_setOf_eq, smul_eq_mul, map_mul, Valuation.map_mul] at hb ⊢
+    simp only [Set.mem_setOf_eq, smul_eq_mul, map_mul] at hb ⊢
     calc A.valuation (algebraMap L Ω (c : L)) * A.valuation (algebraMap L Ω (b : L))
         ≤ 1 * A.valuation (algebraMap L Ω (b : L)) := mul_le_mul_left (val_int_le A c) _
       _ < 1 := by rw [one_mul]; exact hb
@@ -90,7 +90,7 @@ instance isPrime_primeOf {L : Type} [Field L] [NumberField L] [Algebra L Ω] (A 
     simp only [not_or, not_lt] at hn
     have ha := le_antisymm (val_int_le A a) hn.1
     have hb := le_antisymm (val_int_le A b) hn.2
-    simp only [map_mul, Valuation.map_mul, ha, hb, one_mul] at hab
+    simp only [map_mul, ha, hb, one_mul] at hab
     exact lt_irrefl _ hab
 
 open ReciprocityTheory.DiscreteGroups.GlobalClassField in

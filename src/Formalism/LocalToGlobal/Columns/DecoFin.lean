@@ -340,8 +340,6 @@ theorem dual_anti {L M : Submodule (𝓞 E) (Sp E n)} (h : L ≤ M) :
 private theorem hStd_symm_lemma_8 : (hStd E n).IsSymm := by
   first
   | exact fun x y => by
-      simp only [hStd, LinearMap.mk₂'ₛₗ_apply, map_sum, map_mul, starRingEnd_apply, star_star]
-      exact Finset.sum_congr rfl fun i _ => mul_comm _ _
   | exact ⟨fun x y => by
       simp only [hStd, LinearMap.mk₂'ₛₗ_apply, map_sum, map_mul, starRingEnd_apply, star_star]
       exact Finset.sum_congr rfl fun i _ => mul_comm _ _⟩
@@ -880,7 +878,7 @@ variable {E : Type} [Field E] [NumberField E] [StarRing E] {n : ℕ}
   simp [eLast]
 
 @[simp] theorem eLast_castSucc (i : Fin n) : eLast E n i.castSucc = 0 := by
-  simp [eLast, Pi.single_apply, Fin.castSucc_ne_last]
+  simp [eLast, Fin.castSucc_ne_last]
 
 @[simp] theorem initL_eLast : initL E n (eLast E n) = 0 := by
   funext i

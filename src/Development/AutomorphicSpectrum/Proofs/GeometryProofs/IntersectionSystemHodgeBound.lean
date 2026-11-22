@@ -58,7 +58,7 @@ theorem blk_tt (k k' : Fin (N - j)) : blk hj C (tailIdx hj k) (tailIdx hj k') = 
   simp [blk, ← blockEquiv_inr, Matrix.one_apply]
 
 theorem det_blk : (blk hj C).det = 1 := by
-  simp [blk, Matrix.det_reindex_self, Matrix.det_fromBlocks_zero₂₁]
+  simp [blk]
 
 end GlobalTheory
 

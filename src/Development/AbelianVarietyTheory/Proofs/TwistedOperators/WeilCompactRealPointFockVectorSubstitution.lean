@@ -122,7 +122,7 @@ theorem om_pureTensorO_compact_all (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (θ
         · funext ρ
           by_cases h : ρ = τ
           · subst h; simp [MSs, hτ]
-          · simp [MSs, Function.update_of_ne h, h]
+          · simp [MSs, h]
       have eT : realAll θ T (MTs (insert τ s)) = atTau θ T τ (compAt θ τ (mt T y)) * realAll θ T (MTs s) := by
         rw [realAll_eq_atTau_mul hθ (hUTs (insert τ s)) τ]
         congr 2
@@ -130,7 +130,7 @@ theorem om_pureTensorO_compact_all (D : D7) (ψ : AddChar (AF D.host.F) ℂ) (θ
         · funext ρ
           by_cases h : ρ = τ
           · subst h; simp [MTs, hτ]
-          · simp [MTs, Function.update_of_ne h, h]
+          · simp [MTs, h]
       rw [eS, eT, ← Prod.mk_mul_mk, map_mul, Module.End.mul_apply, ih Q, map_smul,
         GlobalTheory.FockCompact.om_pureTensorO_compact D ψ θ S T χS χT om hom hθ sS BS sT BT pS pT hpS hpT hS hT hBS hBT f hf τ
           (κS τ) (κT τ) (hκS τ) (hκT τ) _ _ (hAS τ) (hAT τ) (e τ) (he τ),

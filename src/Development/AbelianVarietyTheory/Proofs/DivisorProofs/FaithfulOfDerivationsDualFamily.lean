@@ -285,11 +285,11 @@ lemma step_down [Fintype ι] (d : ℕ) (u : U)
     simp only [map_smul, LinearMap.smul_apply, smul_eq_mul] at h1
     rw [Finset.sum_eq_single s0] at h1
     · have hne := (pair_ne_zero_iff e hcomm π hder χ a ha hδ ((s0 : Multiset ι).toList) s0
-        (by simp [s0.2])).mpr (by simp)
+        (by simp)).mpr (by simp)
       exact (mul_eq_zero.mp h1).resolve_right hne
     · intro s _ hs
       have hiff := pair_ne_zero_iff e hcomm π hder χ a ha hδ ((s : Multiset ι).toList) s0
-        (by simp [s.2, s0.2])
+        (by simp)
       have h0 : χ (π (W s) (testProd a s0)) = 0 := by
         by_contra hh
         exact hs (Sym.coe_injective (by simpa using hiff.mp hh))

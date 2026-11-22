@@ -50,7 +50,7 @@ theorem grad_lin (p : Fin n → ℂ) (i : Fin n) : gradP p (X i - C (p i)) = Pi.
 
 theorem sub_C_mem_span_lin (p : Fin n → ℂ) (a : MvPolynomial (Fin n) ℂ) :
     a - C (eval p a) ∈ Ideal.span (Set.range fun i => X i - C (p i)) := by
-  first | exact Bl.general_b_fact_left_more.goal1 .. | (apply Bl.general_b_fact_left_more.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_left_more.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_left_more.goal1 .. | (apply Bl.general_b_fact_left_more.goal1)
 
 theorem ptIdeal_eq_span (p : Fin n → ℂ) :
     ptI p = Ideal.span (Set.range fun i => X i - C (p i)) := by

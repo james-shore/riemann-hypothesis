@@ -115,11 +115,11 @@ theorem cmp_split [IsDomain R] {ι κ : Type*} [Fintype ι] [DecidableEq ι] [Fi
     · rw [hM1 (.inl a) b]
       by_cases hab : a = b
       · subst hab
-        simp [Matrix.one_apply, Matrix.diagonal_apply]
-      · simp [Matrix.one_apply, Matrix.diagonal_apply, hab]
+        simp
+      · simp [hab]
     · simp [Matrix.toBlocks₁₂]
     · rw [hM1 (.inr a) b]
-      simp [Matrix.one_apply]
+      simp
     · simp [Matrix.toBlocks₂₂]
   rw [hMb] at hGram
   simp only [Matrix.fromBlocks_map, Matrix.fromBlocks_transpose, Matrix.fromBlocks_multiply,

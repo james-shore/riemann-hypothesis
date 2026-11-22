@@ -11,7 +11,7 @@ theorem map_compLeft_pi {ι : Type} {G G' : Type*} [AddGroup G] [AddGroup G'] (�
     (AddSubgroup.pi Set.univ A).map (φ.compLeft ι) =
       AddSubgroup.pi Set.univ (fun i => (A i).map φ) := by
   ext y
-  simp only [AddSubgroup.mem_map, AddSubgroup.mem_pi, Set.mem_univ, true_implies, forall_const]
+  simp only [AddSubgroup.mem_map, AddSubgroup.mem_pi, Set.mem_univ, forall_const]
   constructor
   · rintro ⟨x, hx, rfl⟩ i
     exact ⟨x i, hx i, rfl⟩

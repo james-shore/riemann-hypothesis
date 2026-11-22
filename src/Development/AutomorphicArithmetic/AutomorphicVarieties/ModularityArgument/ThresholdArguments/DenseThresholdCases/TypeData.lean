@@ -150,7 +150,7 @@ private theorem gMainV (hLit : _root_.GlobalTheory.Mem.LiteralAutomorphy.LitLocA
     rw [← hx] at hP
     rw [hP]
     refine ⟨hl.1.2 fun y hy => ?_, fun t => ?_⟩
-    · simp only [List.mem_ofFn, Set.mem_range] at hy
+    · simp only [List.mem_ofFn] at hy
       obtain ⟨b, rfl⟩ := hy
       rw [hur b]
       exact (step_unrTwist E Ω A w h (u b) _ (hψ b) (hu b)).1

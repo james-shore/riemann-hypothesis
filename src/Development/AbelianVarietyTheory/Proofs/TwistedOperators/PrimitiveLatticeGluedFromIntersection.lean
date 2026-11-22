@@ -40,8 +40,6 @@ theorem exists_smul_mem {E : Type} [Field E] [NumberField E] {V : Type} [AddComm
   | exact @_root_.GlobalTheory.TargetStatementSixOneSixtyEight.target
   | exact _root_.GlobalTheory.TargetStatementSixOneSixtyEight.target
   | (apply _root_.GlobalTheory.TargetStatementSixOneSixtyEight.target <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TargetStatementSixOneSixtyEight.target <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TargetStatementSixOneSixtyEight.target <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TargetStatementSixOneSixtyEight.target ..)
 
 theorem isLattice_capX_and_exists_glue (D : D7) (u : D.what₂.Word) (Y X : HSp D) (ι : X.V →ₗ[D.host.E] Y.V) (z : Y.V)

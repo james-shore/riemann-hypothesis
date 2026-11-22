@@ -166,9 +166,9 @@ theorem exists_sqrt : Out.Laws → ∀ (h k : ℕ) (o : Type) [CommRing o] (ζ :
   letI : Algebra R R₂ := ((algebraMap R₁ R₂).comp (algebraMap R R₁)).toAlgebra
   haveI : IsScalarTower R R₁ R₂ := IsScalarTower.of_algebraMap_eq (fun _ => rfl)
   refine ⟨R₂, inferInstance, inferInstance, P, ψ₀, ⟨?_, ?_, ?_⟩, ?_, ?_⟩
-  · first | exact Module.Finite.trans R₁ R₂ | infer_instance
-  · first | exact Algebra.Etale.comp R R₁ R₂ | infer_instance
-  · first | exact Module.FaithfullyFlat.trans R R₁ R₂ | infer_instance
+  · first | exact Module.Finite.trans R₁ R₂
+  · first | exact Algebra.Etale.comp R R₁ R₂
+  · first | exact Module.FaithfullyFlat.trans R R₁ R₂
   · have e : spMap (algebraMap R R₂) ≫ f =
         ((𝟙 _ ≫ spMap (algebraMap R₁ R₂)) ≫ spMap (algebraMap R R₁)) ≫ f := by
       rw [Category.id_comp, ← spMap_comp_var]

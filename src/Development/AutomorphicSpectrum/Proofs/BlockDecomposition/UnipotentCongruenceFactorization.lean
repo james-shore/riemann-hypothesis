@@ -37,7 +37,7 @@ theorem rowM_mul (n : ℕ) (a b : Fin (n + 1) → k) :
   simp only [Matrix.add_apply, Matrix.mul_apply, Matrix.of_apply, rowM_apply, Pi.add_apply, Pi.smul_apply, smul_eq_mul]
   by_cases hr : r = Fin.last n
   · subst hr
-    simp [Finset.sum_ite_eq', ite_mul]
+    simp [Finset.sum_ite_eq']
     ring
   · simp [hr]
 

@@ -38,8 +38,7 @@ theorem sum_isoProj : ∀ (O K : Type) [CommRing O] [NormedField K] [IsUltrametr
   classical
   rw [Finset.sum_eq_single (1 : rootsOfUnity e K)]
   · ext1 τ
-    simp only [map_one, TameGal.root_one, inv_one, one_pow, Pi.smul_apply, Finset.sum_apply,
-      diagScale_apply, one_smul, Module.End.one_apply, Finset.sum_const, Finset.card_univ, ZMod.card]
+    simp only [map_one, TameGal.root_one, inv_one, one_pow, Pi.smul_apply, diagScale_apply, one_smul, Module.End.one_apply, Finset.sum_const, Finset.card_univ, ZMod.card]
     rw [← Nat.cast_smul_eq_nsmul K, smul_smul, inv_mul_cancel₀ he, one_smul]
   · intro ζ _ hζ
     ext1 τ

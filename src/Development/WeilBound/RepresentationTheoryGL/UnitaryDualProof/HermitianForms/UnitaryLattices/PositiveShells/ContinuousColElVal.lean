@@ -75,8 +75,8 @@ theorem colEl_val {m N : ℕ} (h : m + 2 ≤ N) (x : Fin (m + 1) → k) (i j : F
       congr 1
       · simp [one_apply, Fin.ext_iff]
       · by_cases c : (j : ℕ) = m + 1 ∧ (i : ℕ) ≤ m
-        · rw [dif_pos ⟨c.1, by simp only [Fin.val_mk]; omega⟩, dif_pos c]
-        · rw [dif_neg (by simp only [Fin.val_mk]; omega), dif_neg c]
+        · rw [dif_pos ⟨c.1, by simp only; omega⟩, dif_pos c]
+        · rw [dif_neg (by simp only; omega), dif_neg c]
     · rw [blkAt_val_right h _ i j (by omega), dif_neg (by omega), add_zero]
   · rw [blkAt_val_left h _ i j (by omega), dif_neg (by omega), add_zero]
 
@@ -208,7 +208,7 @@ theorem scalAt_mem_Mir (m : ℕ) (z : kˣ) : scalAt k (m + 1) (m + 1 + 1) (by om
   by_cases hj : j = Fin.last (m + 1)
   · subst hj; simp [eLast]
   · rw [diagonal_apply_ne _ (Ne.symm hj)]
-    simp [eLast, Pi.single_apply, hj]
+    simp [eLast, hj]
 
 theorem blkAt_scalAt {m N : ℕ} (h : m + 2 ≤ N) (z : kˣ) :
     blkAt k (m + 1 + 1) N h (scalAt k (m + 1) (m + 1 + 1) (by omega) z) = scalAt k (m + 1) N (by omega) z := by

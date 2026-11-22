@@ -160,7 +160,7 @@ theorem dLin_logOf (G : FGLaw S d) : ReciprocityTheory.ChartRestriction.G.TB.dLi
     rw [Finset.sum_eq_single ((0 : Fin 1), j)]
     · simp [coeff_zero_eq_constantCoeff_apply]
     · intro w _ hw
-      simp [Finsupp.single_apply, Ne.symm hw]
+      simp [Ne.symm hw]
     · intro h
       exact absurd (Finset.mem_univ _) h
   show coeff (Finsupp.single ((0 : Fin 1), j) 1) (ReciprocityTheory.ChartRestriction.G.TB.LogPf.logOf G i) = (1 : Matrix (Fin d) (Fin d) S) i j
@@ -289,7 +289,7 @@ theorem psTrunc_two_twist (G : FGLaw S d) (c : Fin d → Fin d → S) :
       MvPolynomial.coeff e (psTrunc 2 g) = if e.degree ≤ 2 then coeff e g else 0 := by
     intro g e
     rw [psTrunc, MvPolynomial.coeff_sum]
-    simp only [MvPolynomial.coeff_monomial, Finset.sum_ite_eq', Finset.sum_ite_eq]
+    simp only [MvPolynomial.coeff_monomial, Finset.sum_ite_eq']
     by_cases h : e.degree ≤ 2
     · rw [if_pos ((hmem e).2 h), if_pos h]
     · rw [if_neg (fun h' => h ((hmem e).1 h')), if_neg h]

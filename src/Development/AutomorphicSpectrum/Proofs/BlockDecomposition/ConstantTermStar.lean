@@ -52,7 +52,7 @@ theorem det_lr {k : Type} [Field k] {a b : ℕ} (A : Matrix (Fin a) (Fin a) k) (
     simp only [LinearMap.comp_apply, LinearEquiv.coe_coe, hL, Matrix.toLin'_apply, Matrix.mulVec, dotProduct,
       Fintype.sum_prod_type, Matrix.kroneckerMap_apply, Matrix.transpose_apply]
     show (A * (Matrix.of fun l c => v (l, c)) * B) i j = _
-    simp only [Matrix.mul_apply, Finset.sum_mul, Finset.mul_sum, Matrix.of_apply]
+    simp only [Matrix.mul_apply, Finset.sum_mul, Matrix.of_apply]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun l _ => Finset.sum_congr rfl fun c _ => ?_
     ring

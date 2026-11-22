@@ -20,11 +20,11 @@ theorem d2 {n : ℕ} {p q : Pt k n d} (hpq : CZ (![p, q] : Fin 2 → Pt k n d)) 
 
 theorem cz0z : CZ (![pt k (n := 2) d 0, 0, pt k d 1] : Fin 3 → Pt k 2 d) := by
   intro j i
-  fin_cases j <;> simp [cc_pt, cc_zero]
+  fin_cases j <;> simp [cc_pt]
 
 theorem zero_constant_zero_second : CZ (![0, pt k (n := 2) d 1] : Fin 2 → Pt k 2 d) := by
   intro j i
-  fin_cases j <;> simp [cc_pt, cc_zero]
+  fin_cases j <;> simp [cc_pt]
 
 theorem eval_first_axis_restrict (g : PS k 2 d) :
     ev (n := 2) ![pt k d 0] (ev (n := 1) ![pt k d 0, 0] g) = ev (n := 2) ![pt k d 0, 0] g := by
@@ -41,11 +41,11 @@ variable {R : Type} [CommRing R] {k : Type} [CommRing k] [Algebra R k] {d : ℕ}
 
 theorem integral_family_first_zero_second : ∀ j i, (![pt k (n := 2) d 0, 0, pt k d 1] : Fin 3 → Pt k 2 d) j i ∈ Ig R k (Fin 2 × Fin d) := by
   intro j i
-  fin_cases j <;> simp [ig_pt, Subring.zero_mem]
+  fin_cases j <;> simp [ig_pt]
 
 theorem ig_fam_0z : ∀ j i, (![0, pt k (n := 2) d 1] : Fin 2 → Pt k 2 d) j i ∈ Ig R k (Fin 2 × Fin d) := by
   intro j i
-  fin_cases j <;> simp [ig_pt, Subring.zero_mem]
+  fin_cases j <;> simp [ig_pt]
 
 end Fam
 
@@ -54,15 +54,15 @@ variable {k : Type} [CommRing k] [Algebra ℚ k] [Algebra R k]
 
 theorem constantCoeff_second_factor (B : FB R d O) : constantCoeff B.ph2 = 1 := by
   have h := congrArg constantCoeff B.cocycleRight_zero_fst
-  rwa [cc_ev' (by intro j i; fin_cases j <;> simp [cc_pt, cc_zero]), map_one] at h
+  rwa [cc_ev' (by intro j i; fin_cases j <;> simp [cc_pt]), map_one] at h
 
 theorem cc_sy (B : FB R d O) : constantCoeff B.sy = 1 := by
   have h := congrArg constantCoeff B.symmetry_zero_fst
-  rwa [cc_ev' (by intro j i; fin_cases j <;> simp [cc_pt, cc_zero]), map_one] at h
+  rwa [cc_ev' (by intro j i; fin_cases j <;> simp [cc_pt]), map_one] at h
 
 theorem cc_ad (B : FB R d O) (a : O) : constantCoeff (B.ad a) = 1 := by
   have h := congrArg constantCoeff (B.adjoint_zero_fst a)
-  rwa [cc_ev' (by intro j i; fin_cases j <;> simp [cc_pt, cc_zero]), map_one] at h
+  rwa [cc_ev' (by intro j i; fin_cases j <;> simp [cc_pt]), map_one] at h
 
 theorem constantCoeff_add_second_third (B : FB R d O) (l : Fin d) :
     constantCoeff (addOf (B.FK k) (pt k (n := 3) d 1) (pt k d 2) l) = 0 := constantCoeff_ev cz12 ((lawK k B).const l)
@@ -107,11 +107,11 @@ theorem second_derivative_shift_integral {B : FB R d O} {h : PS k 2 d} (hc : B.I
   have e02 : (fun j i => ev (n := 2) ![pt k d 0, pt k d 1, 0]
       ((![pt k (n := 3) d 0, pt k d 2] : Fin 2 → Pt k 3 d) j i)) = ![pt k (n := 2) d 0, 0] := by
     funext j i
-    fin_cases j <;> simp [pt_apply, ev_X czZ, ev_zero' czZ]
+    fin_cases j <;> simp [pt_apply, ev_X czZ]
   have e12 : (fun j i => ev (n := 2) ![pt k d 0, pt k d 1, 0]
       ((![pt k (n := 3) d 1, pt k d 2] : Fin 2 → Pt k 3 d) j i)) = ![pt k (n := 2) d 1, 0] := by
     funext j i
-    fin_cases j <;> simp [pt_apply, ev_X czZ, ev_zero' czZ]
+    fin_cases j <;> simp [pt_apply, ev_X czZ]
   have e0A : (fun j i => ev (n := 2) ![pt k d 0, pt k d 1, 0]
       ((![pt k (n := 3) d 0, A] : Fin 2 → Pt k 3 d) j i)) = ![pt k (n := 2) d 0, pt k d 1] := by
     funext j i

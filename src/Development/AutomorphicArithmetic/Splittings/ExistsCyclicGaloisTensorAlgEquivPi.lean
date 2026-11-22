@@ -11,7 +11,7 @@ private lemma comp_eq {F E K A : Type} [Field F] [Field E] [Algebra F E] [Field 
   have h : (1 : K) ⊗ₜ[F] (algebraMap F E c) = algebraMap K (K ⊗[F] E) (algebraMap F K c) := by
     rw [Algebra.algebraMap_eq_smul_one c, TensorProduct.tmul_smul, Algebra.TensorProduct.algebraMap_apply,
       Algebra.algebraMap_eq_smul_one c]
-    simp [Algebra.TensorProduct.one_def, TensorProduct.smul_tmul']
+    simp [TensorProduct.smul_tmul']
   simp only [RingHom.comp_apply, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
     Algebra.TensorProduct.includeRight_apply]
   rw [h, AlgHom.commutes]

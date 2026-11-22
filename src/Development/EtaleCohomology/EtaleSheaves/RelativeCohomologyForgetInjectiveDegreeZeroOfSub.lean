@@ -47,7 +47,7 @@ theorem relative_cohomology_forget_injective_degree_zero_of_subsingleton (R : Ty
   have hβc : δ (-1) 0 β = 0 := by
     simp only [β]
     rw [δ_comp _ _ (by norm_num) 0 1 0 (by norm_num) (by norm_num) (by norm_num), mappingCone.δ_inl, hz'c]
-    simp only [Cochain.comp_zero, smul_zero, add_zero, Cochain.ofHom_comp]
+    simp only [Cochain.comp_zero, Cochain.ofHom_comp]
     rw [Cochain.comp_assoc_of_first_is_zero_cochain, hinr]
     simp
   have hβ0 : CohomologyClass.mk (Cocycle.mk β 0 (by norm_num) hβc) = (0 : H R U F (-1)) := Subsingleton.elim _ _
@@ -59,7 +59,7 @@ theorem relative_cohomology_forget_injective_degree_zero_of_subsingleton (R : Ty
     rw [mappingCone.ext_cochain_from_iff φ (-1) 0 (by norm_num)]
     constructor
     · simp [β] at hε
-      simp [hε, β]
+      simp [hε]
     · simp [hinr]
   rw [CohomologyClass.mk_eq_zero_iff]
   refine ⟨-1, by norm_num, w + mappingCone.descCochain φ ε 0 (by norm_num), ?_⟩

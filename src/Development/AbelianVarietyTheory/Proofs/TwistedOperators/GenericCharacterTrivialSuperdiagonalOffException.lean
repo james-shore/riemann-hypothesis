@@ -62,7 +62,7 @@ theorem col_mem {D : D7} {A B : HSp D} {c : ℕ} {ε : D.host.E} (d : HermitianO
     · subst hq; simpa using ht
     · rw [Pi.single_eq_of_ne hq]; exact (𝔟 q).zero_mem
   · funext m
-    simp [Matrix.mulVec, dotProduct, Pi.single_apply, mul_comm]
+    simp
 
 theorem uni_off : OnStd fun {D} _ _ {sc} {G} W F => ∀ ρ (h : 2 * ρ + 2 ≤ D.R.m) (M : WO (G.V (.grid (2 * ρ + 2) 0)) (G.V (.grid (2 * ρ + 1) 0))), M ∈ latRow G (2 * ρ + 1) → ∀ i j : Fin ρ, j.1 = i.1 + 1 → ∀ v : GlobalTheory.FinPl.Pl D, v ∉ G.pl.S0 → ∀ o ∈ intAt D (· = v), psiE W.ψ (o * ((F.dJ ρ h).pX ⬝ (M ⬝ (F.dB ρ h).jX)) i j) = 1 := by
   intro D _ T L _ _ sc G W _ _ F hF ρ h M hM i j hij v hv o ho

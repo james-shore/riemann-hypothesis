@@ -324,7 +324,7 @@ theorem exists_adj (hp : IsPair E1 E2) {p : Module.End ℂ V × Module.End ℂ W
   | algebraMap r =>
     refine ⟨algebraMap ℂ _ (starRingEnd ℂ r), Subalgebra.algebraMap_mem _ _, fun x y => ?_⟩
     show ⟪algebraMap ℂ (Module.End ℂ V) r x, y⟫_ℂ = ⟪x, algebraMap ℂ (Module.End ℂ V) (starRingEnd ℂ r) y⟫_ℂ
-    simp [Module.algebraMap_end_apply, inner_smul_left, inner_smul_right, mul_comm]
+    simp [Module.algebraMap_end_apply, mul_comm]
   | add x y _ _ hx hy =>
     obtain ⟨q, hq, hq'⟩ := hx
     obtain ⟨q', hr, hr'⟩ := hy

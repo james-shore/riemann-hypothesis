@@ -16,13 +16,9 @@ theorem uniformiser_ring_of_hypotheses (D : D7) (HW : HWOf D.loc) (F : FonOf D.l
   have hs : ((HW l).W K 1 LL hG).s = 1 := by
     first
     | exact (HW l).W_s K 1 LL hG
-    | exact (HW l).hs K 1 LL hG
-    | exact (HW l).s_eq K 1 LL hG
-    | exact (HW l).W_s
-    | rfl
   obtain ⟨-, ⟨π', E, hr, -⟩, -⟩ := h9 hs (by rw [hpe]; exact hl)
   refine ⟨π', E, ?_⟩
-  convert hr using 2 <;> first | rfl | (simp only [eK, sK, hpe]) | (unfold eK sK; simp [hpe])
+  convert hr using 2 <;> first | rfl | (simp only [hpe])
 
 end Formalism.MainNotions.N.Ln34
 

@@ -229,7 +229,7 @@ theorem fibG_supp (hD : DensAll μ f ι ν U) (hU : IsOpen U) (hf : Continuous f
     MeasurableEmbedding.subtype_coe hU.measurableSet
   rw [fibG, hme.map_apply]
   have hOeq : (Subtype.val : U → V) ⁻¹' (f ⁻¹' {ι b} ∩ U)ᶜ = (f ∘ Subtype.val) ⁻¹' {ι b}ᶜ := by
-    ext u; simp [u.2]
+    ext u; simp
   have hO : IsOpen ((f ∘ Subtype.val : U → Y) ⁻¹' {ι b}ᶜ) :=
     isOpen_compl_singleton.preimage (hf.comp continuous_subtype_val)
   rw [hOeq]

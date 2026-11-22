@@ -42,7 +42,7 @@ theorem isOpen_of_padicLattice {p : ℕ} [Fact p.Prime] {V : Type*} [AddCommGrou
     rw [norm_div, div_le_one hpos]
     exact hv i
   have h0 : (0 : V) ∈ U := by
-    simp [U, hpos.le]
+    simp [U]
   exact AddSubgroup.isOpen_of_mem_nhds A (Filter.mem_of_superset (hU.mem_nhds h0) hUA)
 
 end GlobalTheory.LKRes

@@ -143,7 +143,7 @@ theorem std_eq_blkM (ε : Fin n → Bool) (e : Fin k ≃ S) (u : UstdSub ε S) :
     · simp [blkM, emb0, resB, ha, hb, Matrix.one_apply]
     · have hab : b ≠ a := fun h => ha (h ▸ hb)
       rw [std_row ε u a ha b hab]
-      simp [blkM, emb0, ha, Matrix.one_apply, hab.symm]
+      simp [blkM, emb0, ha, hab.symm]
   · rw [u.2 b hb a, blkM_col e _ b hb a]
 
 theorem embHom_surjective (ε : Fin n → Bool) (hε : ∀ i ∈ S, ε i = true) (e : Fin k ≃ S) :

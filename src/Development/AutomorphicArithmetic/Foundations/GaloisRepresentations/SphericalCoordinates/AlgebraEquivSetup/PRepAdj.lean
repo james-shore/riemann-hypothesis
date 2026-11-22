@@ -75,10 +75,10 @@ theorem UpperTheory.Gal.W2.Seed.pRepAdj :
     intro j
     simp only [hermStar, RingHom.coe_mk, MonoidHom.coe_mk, OneHom.coe_mk, MulOpposite.unop_op, Arith.H]
     rw [Matrix.diagonal_map (map_zero _)]
-    simp only [Function.comp_def, RingHom.coe_coe, hreal]
+    simp only [RingHom.coe_coe, hreal]
     rw [hD _ hne, ← Matrix.mulVec_mulVec, ← Matrix.mulVec_mulVec, Matrix.mulVec_diagonal]
     rw [show ∀ d : Fin n → E, diagonal d *ᵥ s = fun m => d m * s m from fun d => funext (Matrix.mulVec_diagonal d s)]
-    simp only [Matrix.mulVec, dotProduct, transpose_apply, map_apply, RingHom.coe_coe]
+    simp only [Matrix.mulVec, dotProduct, transpose_apply, map_apply]
     congr 1
     refine Finset.sum_congr rfl fun k _ => ?_
     ring

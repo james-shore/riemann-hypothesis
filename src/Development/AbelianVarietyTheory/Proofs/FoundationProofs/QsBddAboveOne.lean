@@ -24,7 +24,7 @@ theorem qs_bdd_above_one : ∀ (b : ℕ → ℂ), PolyB b → ∃ M : ℝ, ∀ �
     intro n
     rw [norm_mul, norm_mul, norm_cexp_qterm, norm_cexp_qterm]
     gcongr
-    simp only [UpperHalfPlane.I_im, mul_one]
+    simp only [UpperHalfPlane.I_im]
     have h0 : (0 : ℝ) ≤ 2 * π * n := by positivity
     nlinarith
   calc ‖qs b τ‖ ≤ ∑' n : ℕ, ‖b n * cexp (2 * π * Complex.I * n * τ)‖ := by

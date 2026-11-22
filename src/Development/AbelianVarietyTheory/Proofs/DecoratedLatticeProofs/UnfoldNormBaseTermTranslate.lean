@@ -21,7 +21,7 @@ namespace GlobalTheory.Unf
 
 theorem mt_mem_GQ_rat' {D : D7} (V : HSp D) {γ : GA D V} (hγ : γ ∈ GQ V) :
     ∃ M : Matrix (Fin V.rank) (Fin V.rank) D.host.E, mt V γ = rat M := by
-  simp only [GQ, HFinIn, HFin, Subgroup.mem_subgroupOf] at hγ
+  simp only [GQ, HFinIn, HFin] at hγ
   obtain ⟨u, -, hu⟩ := hγ
   exact ⟨u.1, (congrArg Units.val hu).symm⟩
 

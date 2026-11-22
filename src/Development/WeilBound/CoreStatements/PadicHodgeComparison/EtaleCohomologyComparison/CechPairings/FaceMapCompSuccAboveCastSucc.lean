@@ -219,7 +219,7 @@ theorem vsA {n : ℕ} (p : Fin (n+1)) (x : Fin n) : (p.succAbove x : ℕ) = if (
   unfold Fin.succAbove; split_ifs with h1 h2 h2 <;> simp_all [Fin.lt_def]
 
 theorem vpA {n : ℕ} (p : Fin n) (x : Fin (n+1)) : (p.predAbove x : ℕ) = if (p:ℕ) < x then (x:ℕ) - 1 else x := by
-  unfold Fin.predAbove; split_ifs with h1 h2 h2 <;> rw [Fin.lt_def, Fin.val_castSucc] at h1 <;> simp_all <;> omega
+  unfold Fin.predAbove; split_ifs with h1 h2 h2 <;> rw [Fin.lt_def, Fin.val_castSucc] at h1 <;> simp_all
 
 theorem vbb {n : ℕ} (i : Fin (n+1)) (x : Fin (n+2)) : bb i x = if (i:ℕ) < x then 1 else 0 := by
   unfold bb; simp [Fin.lt_def]

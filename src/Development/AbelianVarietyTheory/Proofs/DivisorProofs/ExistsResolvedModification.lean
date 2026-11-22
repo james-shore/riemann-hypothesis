@@ -158,7 +158,7 @@ theorem exists_resolved_modification : GlobalTheory.Published.Principalisation �
     · rw [Category.assoc, Category.assoc, hcf, ← reassoc_of% hwe]
     · simp only [f, ← hw', Category.assoc]
       rw [reassoc_of% hrM]
-      simp only [r₀, pullback.lift_snd, Category.assoc]
+      simp only [r₀, pullback.lift_snd]
   choose d hd hzd using key
   haveI : Nonempty UW.toScheme := ⟨⟨_, hηUW⟩⟩
   haveI : IsIntegral UW.toScheme := isIntegral_of_isOpenImmersion UW.ι

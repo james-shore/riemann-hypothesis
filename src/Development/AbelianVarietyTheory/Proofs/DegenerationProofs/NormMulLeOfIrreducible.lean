@@ -208,7 +208,7 @@ theorem proj_stable (φ : o →+* OO p) (T : AddSubgroup S.Gam) (c : T →+ ZMod
     funext j
     rw [ThetaSys.proj, finsum_eq_sum_of_fintype, Finset.sum_apply]
     simp only [Matrix.mulVec, dotProduct, Matrix.map_apply, Matrix.smul_apply, Matrix.sum_apply, smul_eq_mul,
-      Finset.mul_sum, map_sum, Finset.sum_mul, Pi.smul_apply, Finset.smul_sum]
+      map_sum, Finset.sum_mul, Pi.smul_apply, Finset.smul_sum]
     rw [Finset.sum_comm]
     refine Finset.sum_congr rfl fun t _ => Finset.sum_congr rfl fun i _ => ?_
     change _ = (OO p).subtype _ * _

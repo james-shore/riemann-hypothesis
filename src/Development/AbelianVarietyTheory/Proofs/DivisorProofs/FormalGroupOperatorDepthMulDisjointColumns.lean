@@ -323,7 +323,7 @@ theorem depth_mul_of_disjoint_columns : ∀ (C : Type) [Field C] [CharZero C]
     rw [← monAlong_add]
     congr 1
     ext x
-    by_cases hx : x.1 ∈ S <;> simp [l, r, Finsupp.filter_apply, hx]
+    by_cases hx : x.1 ∈ S <;> simp [l, r]
   have hA : ∀ γ, SuppIn {y : Σ b, ι b | y.1 ∈ S} (monAlong G u (l γ)) := fun γ =>
     monAlong_suppIn G u _ S fun x hx => by
       by_contra h
@@ -361,10 +361,10 @@ theorem depth_mul_of_disjoint_columns : ∀ (C : Type) [Field C] [CharZero C]
   apply le_antisymm
   · have hl : l (l γ₁ + r γ₂) = l γ₁ := by
       ext x
-      by_cases hx : x.1 ∈ S <;> simp [l, r, Finsupp.filter_apply, hx]
+      by_cases hx : x.1 ∈ S <;> simp [l, r, hx]
     have hr : r (l γ₁ + r γ₂) = r γ₂ := by
       ext x
-      by_cases hx : x.1 ∈ S <;> simp [l, r, Finsupp.filter_apply, hx]
+      by_cases hx : x.1 ∈ S <;> simp [l, r, hx]
     refine (h5 _ (l γ₁ + r γ₂)).trans ?_
     rw [h1, hl, hr, e₁, e₂]
     exact add_le_add (h2 γ₁) (h3 γ₂)

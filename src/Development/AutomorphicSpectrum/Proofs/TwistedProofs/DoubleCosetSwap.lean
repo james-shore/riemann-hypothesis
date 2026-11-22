@@ -27,13 +27,13 @@ theorem hAct_dosetInd (hK : IsCommensurated K) (g : G) (f : G → ℂ) :
   rw [finsum_eq_sum_of_support_subset (s := cosetsIn hK g)]
   · refine Finset.sum_congr rfl fun x hx => ?_
     have hm : x.out ∈ DoubleCoset.doubleCoset g (K : Set G) (K : Set G) := mem_cosetsIn.mp hx
-    simp [dosetInd, Set.indicator_apply, hm]
+    simp [dosetInd, hm]
   · intro x hx
     rw [Function.mem_support] at hx
     rw [Finset.mem_coe, mem_cosetsIn]
     by_contra hm
     apply hx
-    simp [dosetInd, Set.indicator_apply, hm]
+    simp [dosetInd, hm]
 
 theorem eq_of_mem_cosetsIn {hK : IsCommensurated K} {f : G → ℂ} (hf : IsBiInv K f) {g : G} {x : G ⧸ K}
     (hx : x ∈ cosetsIn hK g) : f x.out = f g := by

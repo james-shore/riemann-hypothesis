@@ -61,7 +61,7 @@ theorem exists_genericPoints_equiv_any : ∀ (R : Type) [CommRing R] [IsDomain R
       (TFK (R := R) F) k _ _ _ _ (unitOn c) (heR₀ _) (heR₀ _)).2 h2
   · have hσ : σ.toRingHom.comp (algebraMap (FractionRing R) F) = algebraMap (FractionRing R) F := by
       refine IsLocalization.ringHom_ext (nonZeroDivisors R) (RingHom.ext fun r => ?_)
-      simp only [RingHom.comp_apply, AlgHom.coe_toRingHom]
+      simp only [RingHom.comp_apply]
       rw [hc r]
       exact σ.commutes _
     refine gR.1.hom_ext ?_ ?_

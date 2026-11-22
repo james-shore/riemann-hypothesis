@@ -29,7 +29,7 @@ theorem lin_normal (K : ℕ) (M : ℕ → Matrix m m F) (h : Normal (K + 1) M) :
       by_cases hj : j = Fin.last K
       · subst hj
         simp [lin, h1, Matrix.one_apply]
-      · simp [lin, hj, Matrix.one_apply, Ne.symm hj]
+      · simp [lin, hj, Ne.symm hj]
     · simp [lin, hi, Matrix.one_apply]
   · intro n hn r c
     have h0 : n ≠ 0 := by omega

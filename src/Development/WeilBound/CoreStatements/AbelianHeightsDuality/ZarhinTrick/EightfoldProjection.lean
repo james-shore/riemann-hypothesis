@@ -155,7 +155,7 @@ theorem zcPair_positionA (hD : IsDual A B P) (l : A ⟶ B) [IsMonHom l] (mu : B 
   have e : ∀ k : Fin 4, (if k = i then x' else (1 : Y ⟶ A)) ≫ l = if k = i then x' ≫ l else 1 := by
     intro k; split_ifs <;> simp [c1]
   simp only [zcPair, eightfold_fst, eightfold_snd, eightfold_fst_assoc, eightfold_snd_assoc, e, c2, r1, add_zero, smul_zero,
-    Finset.sum_const_zero, apply_ite (evc hD.isLB _), l1]
+    Finset.sum_const_zero, apply_ite (evc hD.isLB _)]
   simp
   rw [Finset.sum_eq_single i (fun k _ hk => by simp [hk, l1]) (by simp)]
   simp
@@ -178,11 +178,11 @@ theorem zcPair_positionB (hD : IsDual A B P) (l : A ⟶ B) [IsMonHom l] (mu : B 
   simp only [zcPair, eightfold_fst, eightfold_snd, eightfold_fst_assoc, eightfold_snd_assoc, c1, r1, l1, add_zero, zero_add, smul_zero,
     Finset.sum_const_zero]
   rw [Finset.sum_comm]
-  simp only [apply_ite (evc hD.isLB _), r1, smul_ite, smul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only [apply_ite (evc hD.isLB _), r1, smul_ite, smul_zero]
   congr 1
-  · rw [Finset.sum_eq_single j (fun k _ hk => by simp [hk, e, e', r1]) (by simp)]
+  · rw [Finset.sum_eq_single j (fun k _ hk => by simp [hk]) (by simp)]
     simp
-  · rw [Finset.sum_eq_single j (fun k _ hk => by simp [hk, e, r1]) (by simp)]
+  · rw [Finset.sum_eq_single j (fun k _ hk => by simp [hk, r1]) (by simp)]
     simp
 
 end Slots

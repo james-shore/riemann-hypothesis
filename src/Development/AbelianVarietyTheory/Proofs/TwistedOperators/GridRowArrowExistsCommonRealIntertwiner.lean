@@ -130,7 +130,7 @@ theorem dataAR_row (D : D7) (hS : GlobalTheory.IndefiniteRowSideFullHecke.CuspAl
   · exfalso
     set c' : ℚ := -(G.e (j + 1) : ℚ) + δ' with hc'
     have hx0 : ((D.R.t : ℚ) - 1) / 2 ∈ Formalism.BasicNotions.TH.block D.R.t :=
-      by simp only [Formalism.BasicNotions.TH.block, List.mem_map, List.mem_range]; simp; exact ⟨0, by omega, by simp⟩
+      by simp only [Formalism.BasicNotions.TH.block, List.mem_map]; simp; exact ⟨0, by omega, by simp⟩
     have m1 : (((D.R.t : ℚ) - 1) / 2 + c', false) ∈ partner D.R.t true (-(G.e (j + 1) : ℚ) + δ) c' P := by
       rw [hP']
       simp only [signed, Finset.mem_union, List.mem_toFinset, List.mem_map]

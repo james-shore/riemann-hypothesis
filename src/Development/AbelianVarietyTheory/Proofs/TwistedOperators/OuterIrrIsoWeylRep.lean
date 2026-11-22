@@ -103,7 +103,7 @@ theorem leftRep_prod (n : ℕ) (g : UG ι n) (f : ι → MvPolynomial (Fin n × 
     simp only [map_mul, hp]
     congr 1
     simp [Formalism.GradedWeylDivisibility.rowAct, Fintype.sum_prod_type, Matrix.kroneckerMap_apply, Matrix.one_apply, Matrix.transpose_apply,
-      mul_ite, ite_mul, apply_ite C, Finset.sum_ite_eq', Finset.sum_ite_eq]
+      mul_ite, ite_mul, apply_ite C, Finset.sum_ite_eq']
 
 theorem hwVec_eq (n : ℕ) (hn : 0 < n) (lam : ι → ℕ → ℤ) (μ : ι → DomWeight n) (h : ∀ τ (i : Fin n), (μ τ).w i = lam τ i) :
     hwVec n lam = ∏ τ, rename (Prod.mk τ) (extremal ℂ n (μ τ)) := by
@@ -115,8 +115,8 @@ theorem hwVec_eq (n : ℕ) (hn : 0 < n) (lam : ι → ℕ → ℤ) (μ : ι → 
   have hnat : ∀ i : Fin n, ((μ τ).natW i : ℤ) = lam τ i - lam τ (n - 1) := by
     intro i
     have hle : (μ τ).w ⟨n - 1, by omega⟩ ≤ (μ τ).w i :=
-      (μ τ).anti (Fin.le_iff_val_le_val.2 (by simp only [Fin.val_mk]; omega))
-    rw [DomWeight.natW, Int.toNat_of_nonneg (by rw [hd]; have := h τ ⟨n - 1, by omega⟩; simp only [Fin.val_mk] at this; omega), hd, h τ i]
+      (μ τ).anti (Fin.le_iff_val_le_val.2 (by simp only; omega))
+    rw [DomWeight.natW, Int.toNat_of_nonneg (by rw [hd]; have := h τ ⟨n - 1, by omega⟩; simp only at this; omega), hd, h τ i]
   have hmin : ∀ (s : Fin n) (h1 : s.val + 1 ≤ n) (h2 : s.val + 1 ≤ n),
       rename (Prod.mk τ) (Formalism.GradedWeylDivisibility.lpMinor ℂ (s.val + 1) h1 h2) = minor n τ s := by
     intro s h1 h2
@@ -131,10 +131,10 @@ theorem hwVec_eq (n : ℕ) (hn : 0 < n) (lam : ι → ℕ → ℤ) (μ : ι → 
   · congr 1
     have ha := hnat s
     have hb := hnat ⟨s.val + 1, hs⟩
-    simp only [Fin.val_mk] at hb
+    simp only at hb
     have hst := (μ τ).anti (show s ≤ ⟨s.val + 1, hs⟩ from Fin.le_iff_val_le_val.2 (by simp))
     rw [h, h] at hst
-    simp only [Fin.val_mk] at hst
+    simp only at hst
     have hc : (((lam τ s - lam τ (s + 1)).toNat : ℕ) : ℤ) = lam τ s - lam τ (s + 1) :=
       Int.toNat_of_nonneg (by omega)
     rw [Formalism.GradedWeylDivisibility.nuNext, dif_pos hs]
@@ -248,7 +248,7 @@ theorem outer_irr_iso_weylRep (ι : Type) [Fintype ι] [DecidableEq ι] (n : ℕ
         (detChar n (fun τ => lam τ (n - 1)) g : ℂ) • leftRep n g (j (PiTensorProduct.tprod ℂ f)) := by
     intro g f
     rw [outer_apply, PiTensorProduct.map_tprod, hjt, hjt, leftRep_prod]
-    simp only [coe_irr_apply_eq_detU_pow_smul_act, hds, map_smul, MvPolynomial.smul_eq_C_mul, map_mul, MvPolynomial.rename_C,
+    simp only [coe_irr_apply_eq_detU_pow_smul_act, hds, MvPolynomial.smul_eq_C_mul, map_mul, MvPolynomial.rename_C,
       Finset.prod_mul_distrib]
     congr 1
     rw [← map_prod]

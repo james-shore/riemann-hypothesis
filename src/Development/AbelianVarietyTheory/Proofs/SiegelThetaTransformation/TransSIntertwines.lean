@@ -49,7 +49,7 @@ private lemma inverse_block_combination_eq_fst (A B C D : Matrix ι ι ℚ) (a b
     (b * Dᵀ - a * Cᵀ) * B + (a * Aᵀ - b * Bᵀ) * D = a := by
   have e : (b * Dᵀ - a * Cᵀ) * B + (a * Aᵀ - b * Bᵀ) * D =
       b * (Dᵀ * B + -(Bᵀ * D)) - a * (Cᵀ * B + -(Aᵀ * D)) := by
-    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_sub, Matrix.mul_neg,
+    simp only [Matrix.mul_add, Matrix.sub_mul, Matrix.mul_neg,
       Matrix.mul_assoc]; abel
   rw [e, h, h']; simp
 
@@ -61,7 +61,7 @@ private lemma inverse_block_combination_eq_snd (A B C D : Matrix ι ι ℚ) (a b
     (b * Dᵀ - a * Cᵀ) * A + (a * Aᵀ - b * Bᵀ) * C = b := by
   have e : (b * Dᵀ - a * Cᵀ) * A + (a * Aᵀ - b * Bᵀ) * C =
       b * (Dᵀ * A + -(Bᵀ * C)) - a * (Cᵀ * A + -(Aᵀ * C)) := by
-    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_sub, Matrix.mul_neg,
+    simp only [Matrix.mul_add, Matrix.sub_mul, Matrix.mul_neg,
       Matrix.mul_assoc]; abel
   rw [e, h, h']; simp
 
@@ -73,7 +73,7 @@ private lemma block_combination_mul_transpose_sub_eq_fst (A B C D : Matrix ι ι
     (b * B + a * D) * Aᵀ - (b * A + a * C) * Bᵀ = a := by
   have e : (b * B + a * D) * Aᵀ - (b * A + a * C) * Bᵀ =
       b * (B * Aᵀ + -(A * Bᵀ)) + a * (D * Aᵀ + -(C * Bᵀ)) := by
-    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_sub, Matrix.mul_neg,
+    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_neg,
       Matrix.mul_assoc]; abel
   rw [e, h, h']; simp
 
@@ -85,7 +85,7 @@ private lemma block_combination_mul_transpose_sub_eq_snd (A B C D : Matrix ι ι
     (b * A + a * C) * Dᵀ - (b * B + a * D) * Cᵀ = b := by
   have e : (b * A + a * C) * Dᵀ - (b * B + a * D) * Cᵀ =
       -(b * (B * Cᵀ + -(A * Dᵀ))) - a * (D * Cᵀ + -(C * Dᵀ)) := by
-    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.sub_mul, Matrix.mul_sub, Matrix.mul_neg,
+    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_neg,
       Matrix.mul_assoc]; abel
   rw [e, h, h']; simp
 
@@ -196,7 +196,7 @@ private lemma isUnit_det_spDen_of_mem_siegel {σ : Matrix (ι ⊕ ι) (ι ⊕ ι
     simp only [hτc, Matrix.transpose_apply, Matrix.map_apply, h]
   have hs : ∀ (M : Matrix ι ι ℂ) (w : ι → ℂ),
       M.map (starRingEnd ℂ) *ᵥ star w = star (M *ᵥ w) := fun M w ↦ by
-    ext i; simp [mulVec, dotProduct, map_sum, Complex.star_def]
+    ext i; simp [mulVec, dotProduct]
   have e : _root_.GlobalTheory.SW.qm σ.toBlocks₂₁ * τc + _root_.GlobalTheory.SW.qm σ.toBlocks₂₂ =
       (_root_.GlobalTheory.SW.qm σ.toBlocks₂₁ * τ + _root_.GlobalTheory.SW.qm σ.toBlocks₂₂).map
         (starRingEnd ℂ) := by
@@ -368,7 +368,6 @@ private lemma transS_heisS_rowAct {σ : Matrix (ι ⊕ ι) (ι ⊕ ι) ℚ}
   rw [hJ, hτ'] at hT' ⊢
   rw [hJ] at hu
   simp only [← hC] at hT' ⊢
-  beta_reduce at hT'
   have hJ1 : J⁻¹ * J = 1 := Matrix.nonsing_inv_mul J hu
   have hJ2 : J * J⁻¹ = 1 := Matrix.mul_nonsing_inv J hu
   have hNJ : Nᵀ * J = Jᵀ * N := by
@@ -436,7 +435,6 @@ private lemma transS_heisS_rowAct {σ : Matrix (ι ⊕ ι) (ι ⊕ ι) ℚ}
       rw [mulVec_add, hJdef, add_mulVec, ← mulVec_mulVec, ← hpq]; abel
     rw [← mulVec_mulVec, hx, mulVec_sub, mulVec_mulVec, hJ1, one_mulVec]
   rw [thS_heisenberg_translate _ _ _ hτ'sym, thS_heisenberg_translate _ _ _ hτs]
-  beta_reduce
   have harg : (fun k ↦ ζ k ᵥ* J⁻¹ + _root_.GlobalTheory.SW.qv (a' k)
       + (N * J⁻¹) *ᵥ _root_.GlobalTheory.SW.qv (b' k)) =
       fun k ↦ (ζ k + _root_.GlobalTheory.SW.qv ((b' * σ.toBlocks₁₂ + a' * σ.toBlocks₂₂) k)

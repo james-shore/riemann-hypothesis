@@ -242,8 +242,6 @@ theorem exists_smul_prIso (D : D7) (θ : InfFam D) (MX : DSModel D.sp.X' (parB (
       have hww : ⟪w, w⟫_ℂ = ((‖w‖ ^ 2 : ℝ) : ℂ) := by
         first
           | (rw [inner_self_eq_norm_sq_to_K]; push_cast; rfl)
-          | exact_mod_cast inner_self_eq_norm_sq_to_K (𝕜 := ℂ) w
-          | simp [inner_self_eq_norm_sq_to_K]
       rw [hTμ, inner_smul_right, hww]
     rw [e2, hs] at e1
     have hn : ((‖w‖ ^ 2 : ℝ) : ℂ) ≠ 0 := Complex.ofReal_ne_zero.2 hwpos.ne'

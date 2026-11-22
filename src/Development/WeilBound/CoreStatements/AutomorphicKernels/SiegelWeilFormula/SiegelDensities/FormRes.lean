@@ -124,7 +124,6 @@ theorem form_res (σ : E →ₐ[F] E) (hCM : IsCMExt F E σ) (J : Matrix (Fin 1)
     calc Valued.v (ϖ : Fv F v) * Valued.v u ≤ Valued.v (ϖ : Fv F v) := by
           first
           | exact mul_le_of_le_one_right' huO
-          | exact mul_le_of_le_one_right zero_le' huO
       _ < 1 := hϖv
 
 end PositivityTheory.SiegelWeilFormula.Densx

@@ -156,8 +156,8 @@ theorem claim {U : Set V} {A : Γ →* (V →L[ℝ] V)} {φ : V → ℝ} (hL : P
     have hcard : (s.filter (Nr U A φ h)).card ≤ hO.toFinset.card := by
       apply Finset.card_le_card_of_injOn (fun γ => γ0⁻¹ * γ)
       · intro γ hγ
-        simp only [Finset.coe_filter, Finset.mem_filter, Set.mem_setOf_eq, Finset.mem_coe] at hγ
-        simp only [Finset.coe_filter, Set.Finite.coe_toFinset, Set.Finite.mem_toFinset, Finset.mem_coe]
+        simp only [Finset.coe_filter, Set.mem_setOf_eq] at hγ
+        simp only [Set.Finite.coe_toFinset]
         exact nr_mul hOv hγ0 hγ.2
       · intro a _ b _ hab
         exact mul_left_cancel hab

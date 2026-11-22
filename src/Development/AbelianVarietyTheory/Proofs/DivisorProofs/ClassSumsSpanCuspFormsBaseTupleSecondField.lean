@@ -258,7 +258,7 @@ theorem kernel_eq_shortVal (hC : GlobalTheory.Hk3.Core R F) (hT : TieIn T R κ v
   refine Eq.trans (congrArg (fun z => ka * (_ * z)) e1.symm) ?_
   refine Eq.trans ?_ (congrArg (fun z => _ * z) hgeo.symm)
   have halg : ∀ s : O.c'.F, algebraMap O.c'.F ℂ s = inC O.c' s := fun _ => rfl
-  simp only [cmpConst, halg, map_mul, map_inv₀, map_natCast, map_one, inv_one, one_mul]
+  simp only [cmpConst, halg, map_mul, map_inv₀, map_natCast, inv_one, one_mul]
   have key : ∀ s c m k e a z n th : ℂ, ka * (s * (c * m * k) * (e * a * z) * n * th) =
       ka * s * c * m * e * (a * n * z * k * th) := fun s c m k e a z n th => by ring
   exact key _ _ _ _ _ _ _ _ _

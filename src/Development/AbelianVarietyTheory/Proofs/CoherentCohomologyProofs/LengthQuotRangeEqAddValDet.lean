@@ -16,9 +16,7 @@ theorem length_quot_range_eq_addVal_det {M : Type*} [AddCommGroup M] [Module R M
   first
   | exact @_root_.GlobalTheory.LengthCokernelFinrank.length_coker_eq_addVal_det
   | exact _root_.GlobalTheory.LengthCokernelFinrank.length_coker_eq_addVal_det
-  | (apply _root_.GlobalTheory.LengthCokernelFinrank.length_coker_eq_addVal_det <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LengthCokernelFinrank.length_coker_eq_addVal_det <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LengthCokernelFinrank.length_coker_eq_addVal_det <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.LengthCokernelFinrank.length_coker_eq_addVal_det)
   | (intros; exact _root_.GlobalTheory.LengthCokernelFinrank.length_coker_eq_addVal_det ..)
 
 end CokernelLength

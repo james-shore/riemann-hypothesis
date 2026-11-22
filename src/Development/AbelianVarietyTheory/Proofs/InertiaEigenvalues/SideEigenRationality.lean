@@ -92,7 +92,7 @@ theorem model_of_conj : ∀ {R : Ranks} {H : Host R} {what₂ : Rows.Data R} (N 
   intro R H what₂ N A i a ρ P hc hP
   let ρ' : G H.E N.Om →* GL (Fin a) (Qbar (N.l i)) := (MulAut.conj P⁻¹).toMonoidHom.comp ρ
   have hρ' : ∀ g, ρ' g = P⁻¹ * ρ g * P := fun g => by
-    simp [ρ', MulAut.conj_apply]
+    simp [ρ']
   have hc' : SumRepresentations.At.ContQ N i ρ' := by
     unfold SumRepresentations.At.ContQ at hc ⊢
     have e : (fun g => ((ρ' g : GL _ _) : Matrix (Fin a) (Fin a) (Qbar (N.l i)))) =

@@ -14,11 +14,9 @@ lemma opn_conj {n : ℕ} {P g : Matrix (Fin n) (Fin n) ℂ} (hP : P ∈ Matrix.u
   have h1 : star P * P = 1 := by
     first
       | exact Unitary.star_mul_self_of_mem hP
-      | exact unitary.star_mul_self_of_mem hP
   have h2 : P * star P = 1 := by
     first
       | exact Unitary.mul_star_self_of_mem hP
-      | exact unitary.mul_star_self_of_mem hP
   have hPinv : P⁻¹ = star P := Matrix.inv_eq_left_inv h1
   have hU1 : star (Matrix.toEuclideanCLM (𝕜 := ℂ) P) * Matrix.toEuclideanCLM (𝕜 := ℂ) P = 1 := by
     rw [← map_star, ← map_mul, h1, map_one]

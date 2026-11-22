@@ -14,7 +14,7 @@ variable {k r : ℕ}
 lemma single_conj (A B : Mx k r) (a b p q : Fin (2 * r + k + 1)) :
     ((A * Matrix.single a b 1 * B : Mx k r)) p q = A p a * B b q := by
   simp only [Matrix.mul_apply, Matrix.single_apply, ite_and, mul_ite, mul_one, mul_zero, ite_mul, zero_mul,
-    Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+    Finset.sum_ite_eq, Finset.mem_univ, if_true]
 
 private lemma hpk_eq_lemma (i j : Fin (2 * r + k + 1)) :
     Hpk k r i j = if j = tau k r i then WeylGroupFacts.sgn k r i else 0 := by
@@ -22,11 +22,11 @@ private lemma hpk_eq_lemma (i j : Fin (2 * r + k + 1)) :
   have hj := j.isLt
   unfold Hpk WeylGroupFacts.sgn
   simp only [Fin.ext_iff, tau_val]
-  split_ifs <;> first | rfl | omega | norm_num
+  split_ifs <;> first | rfl | omega
 
 lemma hpkVec (u : Fin (2 * r + k + 1) → ℂ) (s : Fin (2 * r + k + 1)) :
     (Hpk k r *ᵥ u) s = WeylGroupFacts.sgn k r s * u (tau k r s) := by
-  simp only [Matrix.mulVec, dotProduct, hpk_eq_lemma, ite_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only [Matrix.mulVec, dotProduct, hpk_eq_lemma, ite_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
 
 lemma posL_in (l : Fin r) (j : Fin (mdim k r l.succ)) :
     l.val < (posL k r l.succ j).val ∧ (posL k r l.succ j).val < 2 * r + k - l.val := by
@@ -61,7 +61,7 @@ lemma ell_form {z : Fin (2 * r + k + 1) → ℂ} (hz : inWb k r z) {l : Fin r} {
   · split_ifs with h
     · unfold fvec
       rw [dif_pos (show l.succ.val < r by simp only [Fin.val_succ]; exact h)]
-      simp only [bvec, Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      simp only [bvec, Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
       rfl
     · unfold fvec
       rw [dif_neg (show ¬ l.succ.val < r by simp only [Fin.val_succ]; exact h)]
@@ -118,8 +118,8 @@ private lemma hpk_mul_conjTranspose_mul_hpk_apply (M : Mx k r) (p q : Fin (2 * r
   rw [Matrix.mul_apply]
   have inner : ∀ y, (Hpk k r * Mᴴ) p y = WeylGroupFacts.sgn k r p * star (M y (tau k r p)) := fun y => by
     rw [Matrix.mul_apply]
-    simp only [hpk_eq_lemma, Matrix.conjTranspose_apply, ite_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
-  simp only [inner, hpk_col_lemma, mul_ite, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+    simp only [hpk_eq_lemma, Matrix.conjTranspose_apply, ite_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only [inner, hpk_col_lemma, mul_ite, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
 
 private lemma sp_of_sp_tau {l : Fin r} {p q : Fin (2 * r + k + 1)}
     (h : SP k r l (tau k r q) (tau k r p)) : SP k r l p q := by
@@ -176,7 +176,7 @@ lemma case1 (hz : inWb k r z) (hL : LeftEq k r z l.castSucc D f) (hc : c ≠ 0)
   have hB : ∀ q, (g₁⁻¹ * w1 k r l (star c)) (eI k r l) q = if q = esI k r l then c⁻¹ else 0 :=
     fun q => by
       rw [Matrix.mul_apply]
-      simp only [hire, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      simp only [hire, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq, Finset.mem_univ, if_true]
       rw [weyl_cell_apply_basis, star_star]
   have hMe : ∀ p q, (w1 k r l c * g₁ * Matrix.single v (eI k r l) 1 * (w1 k r l c * g₁)⁻¹ : Mx k r) p q =
       g₁ p v * (if q = esI k r l then c⁻¹ else 0) := fun p q => by
@@ -191,11 +191,11 @@ lemma case1 (hz : inWb k r z) (hL : LeftEq k r z l.castSucc D f) (hc : c ≠ 0)
     · rw [if_neg hq, mul_zero]
   rw [core hz hL hg v (eI k r l) hS, ell_form hz hS, ell_dag_form hz hS]
   congr 1
-  simp only [hMe, h0e, zero_mul, Finset.sum_const_zero, zero_add, eq_self_iff_true, if_true]
+  simp only [hMe, h0e, zero_mul, Finset.sum_const_zero, zero_add, if_true]
   unfold herm
   simp only [dotProduct, Pi.star_apply]
   simp only [hpkVec]
-  simp only [Matrix.mulVec, dotProduct, bvec, Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+  simp only [Matrix.mulVec, dotProduct, bvec, Pi.single_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   rw [star_sum, Finset.mul_sum]
   refine Finset.sum_congr rfl fun q _ => ?_
   simp only [star_mul', star_star, star_sgn]
@@ -217,7 +217,7 @@ lemma case2 (hz : inWb k r z) (hL : LeftEq k r z l.castSucc D f) (hc : c ≠ 0)
   have hA : ∀ p, (w1 k r l c * g₁) p (esI k r l) = if p = eI k r l then (star c)⁻¹ else 0 :=
     fun p => by
       rw [Matrix.mul_apply]
-      simp only [hces, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      simp only [hces, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
       rw [reflection_column_dual_isotropic]
   have h0 : g₁⁻¹ v (esI k r l) = 0 := by rw [hices, if_neg hv2]
   have hB : ∀ q, (g₁⁻¹ * w1 k r l (star c)) v q = g₁⁻¹ v q := fun q =>
@@ -235,8 +235,7 @@ lemma case2 (hz : inWb k r z) (hL : LeftEq k r z l.castSucc D f) (hc : c ≠ 0)
     · rw [if_neg hp, zero_mul]
   rw [core hz hL hg (esI k r l) v hS, ell_form hz hS, ell_dag_form hz hS]
   congr 1
-  simp only [hMe, h0, mul_zero, star_zero, zero_mul, Finset.sum_const_zero, add_zero, eq_self_iff_true,
-    if_true]
+  simp only [hMe, h0, mul_zero, star_zero, zero_mul, Finset.sum_const_zero, add_zero, if_true]
   simp only [Matrix.mulVec, dotProduct]
   rw [Finset.mul_sum]
   refine Finset.sum_congr rfl fun q _ => ?_
@@ -254,12 +253,12 @@ lemma case3 (hz : inWb k r z) (hL : LeftEq k r z l.castSucc D f) (hc : c ≠ 0)
   have hA : ∀ p, (w1 k r l c * g₁) p (esI k r l) = if p = eI k r l then (star c)⁻¹ else 0 :=
     fun p => by
       rw [Matrix.mul_apply]
-      simp only [hces, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      simp only [hces, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
       rw [reflection_column_dual_isotropic]
   have hB : ∀ q, (g₁⁻¹ * w1 k r l (star c)) (eI k r l) q = if q = esI k r l then c⁻¹ else 0 :=
     fun q => by
       rw [Matrix.mul_apply]
-      simp only [hire, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      simp only [hire, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq, Finset.mem_univ, if_true]
       rw [weyl_cell_apply_basis, star_star]
   have hMe : ∀ p q,
       (w1 k r l c * g₁ * Matrix.single (esI k r l) (eI k r l) 1 * (w1 k r l c * g₁)⁻¹ : Mx k r) p q =

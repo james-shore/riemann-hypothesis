@@ -46,7 +46,7 @@ theorem block3_mul
   simp only [blk3, Matrix.reindex_apply, Matrix.submatrix_mul_equiv]
   congr 1
   ext ((a | a) | a) ((b | b) | b) <;>
-    simp [Matrix.mul_apply, Fintype.sum_sum_type, Matrix.add_apply] <;> ring
+    simp [Matrix.mul_apply, Fintype.sum_sum_type, Matrix.add_apply]
 
 theorem block3_one : (1 : B.Mat k (j + ρ)) = blk3 (k := k) (j := j) (ρ := ρ) 1 0 0 0 1 0 0 0 1 := by
   apply ext_eB
@@ -114,7 +114,7 @@ theorem wMat_mul_self (d : ℕ) : G.wMat d * G.wMat d = 1 := by
     · subst h
       simp [Fin.rev_rev]
     · have h' : b ≠ a.rev.rev := by rw [Fin.rev_rev]; exact Ne.symm h
-      simp [h, h', Ne.symm h]
+      simp [h, Ne.symm h]
   · intro c _ hc
     simp [hc]
   · intro h
@@ -179,8 +179,8 @@ theorem Rn_mul_RnInv (x : RC k j ρ) : Rn k j ρ x * RnInv x = 1 := by
   rw [Rn, RnInv, block3_mul, block3_one]
   congr 1 <;>
     simp only [Matrix.mul_assoc, Matrix.mul_add, Matrix.mul_sub, Matrix.mul_neg, Matrix.neg_mul,
-      Matrix.mul_smul, Matrix.smul_mul, Matrix.one_mul, Matrix.mul_one, Matrix.zero_mul,
-      Matrix.mul_zero, add_zero, zero_add, neg_neg, smul_zero, sub_zero, neg_zero, zero_sub] <;> abel
+      Matrix.mul_smul, Matrix.one_mul, Matrix.mul_one, Matrix.zero_mul,
+      Matrix.mul_zero, add_zero, zero_add, neg_neg, smul_zero, sub_zero, neg_zero] <;> abel
 
 theorem Rn_inv_eq (x : RC k j ρ) : (Rn k j ρ x)⁻¹ = RnInv x := Matrix.inv_eq_right_inv (Rn_mul_RnInv x)
 

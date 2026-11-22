@@ -172,7 +172,6 @@ lemma rectInt_ker (l a b c d : ℝ) (ha : a < 0) (hb : 0 < b) (hc : c < 0) (hd :
     intro G γ v p q hγd hγc hne hG
     apply intervalIntegral.integral_eq_sub_of_hasDerivAt (f := fun t => G (γ t))
     · intro t ht
-      beta_reduce
       have := (hG t ht).comp t (hγd t)
       rw [sub_zero, mul_comm]
       exact this

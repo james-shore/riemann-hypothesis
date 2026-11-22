@@ -44,8 +44,7 @@ theorem psiM_local (T : KType ε (lowK ε lam)) (μ : Fin n → ℤ) (hμ : IsMu
                  | rw [← Rat.norm_cast_real, Real.norm_eq_abs]
                  | rfl }
          first
-           | exact @NormedSpace.exp_continuous _ _ _ (FiniteDimensional.complete ℂ _)
-           | exact @NormedSpace.exp_continuous _ _ _ _ (FiniteDimensional.complete ℂ _))
+           | exact @NormedSpace.exp_continuous _ _ _ (FiniteDimensional.complete ℂ _))
   have hnegP : ∀ X : Matrix (Fin n) (Fin n) ℂ, inP ε X → inP ε (-X) := by
     intro X hX
     obtain ⟨h1, h2⟩ := hX
@@ -128,7 +127,6 @@ theorem psiM_local (T : KType ε (lowK ε lam)) (μ : Fin n → ℤ) (hμ : IsMu
       (𝓝 (NormedSpace.exp (-PolarDecomposition.polar_L g₀), (0 : Matrix (Fin n) (Fin n) ℂ))) := by
     first
       | exact hEt.prodMk_nhds hℓt
-      | exact hEt.prod_mk_nhds hℓt
   have hev2 := hPt.eventually hcpt
   obtain ⟨O, hOo, hg₀O, hOsub⟩ := mem_nhdsWithin.1 (hev1.and hev2)
   have hdetO : IsOpen {g : Matrix (Fin n) (Fin n) ℂ | g.det ≠ 0} :=
@@ -141,8 +139,6 @@ theorem psiM_local (T : KType ε (lowK ε lam)) (μ : Fin n → ℤ) (hμ : IsMu
       refine continuousAt_matrix_inv g ?_
       first
         | (rw [Ring.inverse_eq_inv']; exact continuousAt_inv₀ hg')
-        | (simp only [show (Ring.inverse : ℂ → ℂ) = Inv.inv from funext Ring.inverse_eq_inv]
-           exact continuousAt_inv₀ hg')
     exact (h1.mul continuousAt_const).continuousWithinAt
   have hO₂ : IsOpen ({g : Matrix (Fin n) (Fin n) ℂ | g.det ≠ 0} ∩
       (fun g : Matrix (Fin n) (Fin n) ℂ => g⁻¹ * toMK k₀) ⁻¹' V) :=

@@ -185,7 +185,7 @@ theorem isEdge_of_basis [IsDomain W] [IsFractionRing W Qq] (p n' r : ℕ) (hp0 :
         (if c.val < r then Ideal.span {(p : W)} else ⊤ : Submodule W W)) := by
     ext y
     simp only [Submodule.map_equiv_eq_comap_symm, Submodule.mem_comap, Submodule.subtype_apply,
-      Submodule.coe_subtype, LinearEquiv.coe_coe, hcoe, mem_src_iff_lemma_2 p r hp0 B hBu,
+      LinearEquiv.coe_coe, hcoe, mem_src_iff_lemma_2 p r hp0 B hBu,
       Submodule.mem_pi, Set.mem_univ, true_implies]
     constructor
     · intro h c
@@ -431,7 +431,7 @@ theorem plane_le_of_tgt [IsDomain W] [IsFractionRing W Qq] (φ : WF p n' ≃+* W
     rw [h5, map_sum, Finset.sum_mul]
     refine Finset.sum_congr rfl (fun i _ => ?_)
     by_cases hi : i.val < r
-    · simp only [hi, if_true, map_mul, map_one, mul_one]
+    · simp only [hi, if_true, map_mul, mul_one]
       rw [mul_assoc, mul_assoc, mul_left_comm ((p : Qq))⁻¹, inv_mul_cancel₀ hpQ, mul_one]
     · simp only [hi, if_false, map_mul, map_natCast, mul_one]
       ring

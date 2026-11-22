@@ -58,7 +58,7 @@ theorem aeval_conj_units (y : GL (Fin n) ℂ) (A : Matrix (Fin n) (Fin n) ℂ) (
   | add p q hp hq => simp only [map_add, hp, hq, Matrix.mul_add, Matrix.add_mul]
   | monomial k a =>
     simp only [aeval_monomial, hpow, Algebra.algebraMap_eq_smul_one, smul_mul_assoc, Matrix.one_mul,
-      Matrix.mul_smul, Matrix.smul_mul]
+      Matrix.mul_smul]
 
 theorem aeval_diagonal (lam : Fin n → ℂ) (q : ℂ[X]) :
     aeval (diagonal lam) q = diagonal fun j => q.eval (lam j) := by
@@ -112,7 +112,7 @@ theorem diag_proper (lam : Fin n → ℂ) (hl : Function.Injective lam)
       simp only [G, h1, hp]
       rw [Matrix.mul_apply]
       simp only [Matrix.mul_diagonal, mul_ite, mul_one, mul_zero, ite_mul, zero_mul,
-        Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+        Finset.sum_ite_eq', Finset.mem_univ, if_true]
     rw [← h2]
     exact ((norm_le_pi_norm _ b).trans ((norm_le_pi_norm _ a).trans (norm_le_pi_norm _ i))).trans (hB _ hy)
 
@@ -297,7 +297,7 @@ theorem main : PositivityTheory.Rg.BcB.D4.LocProper := by
     refine ⟨(P * k, twConj (thetaR (starRingEnd ℂ) n) x d), ⟨⟨k, hk, rfl⟩, hx'⟩, ?_⟩
     show (P * k) * twConj (thetaR (starRingEnd ℂ) n) x d * (thetaR (starRingEnd ℂ) n (P * k))⁻¹ = _
     rw [hx2]
-    simp only [twConj, map_mul, map_inv]
+    simp only [twConj, map_mul]
     group
   obtain ⟨u, hu, e, he, hze⟩ := hDp z hcomm hzC
   refine ⟨u, hu, e * (P * k), Set.mul_mem_mul he ⟨k, hk, rfl⟩, ?_⟩

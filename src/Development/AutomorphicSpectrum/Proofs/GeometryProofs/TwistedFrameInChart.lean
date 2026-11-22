@@ -184,7 +184,5 @@ theorem exists_chart_frame : ∀ (X : Scheme.{0}) (Ω : Type) [Field Ω] (ξ : S
     first
       | (rw [div_mul_eq_mul_div, mul_div_assoc', mul_comm (x c ^ m), mul_div_assoc, div_self hxm,
           mul_one, mul_comm])
-      | (field_simp; ring)
-      | field_simp
 
 end GlobalTheory.CompanionTheory.Ar.FlagBun.Sm

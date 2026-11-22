@@ -61,7 +61,7 @@ lemma lac_key [CharZero C] {e : Fin n → C} (hL : IsLac e) {i j k l : Fin n} (h
     · subst hkj
       exact hki (inj (mul_left_cancel₀ (two_ne_zero (α := C)) (by linear_combination -h')))
     · have := hL {i} {k, j} (by simp) (by simp)
-        (by simp [Finset.disjoint_left]; exact ⟨hki.symm, hij⟩)
+        (by simp; exact ⟨hki.symm, hij⟩)
       apply this
       rw [Finset.card_pair hkj, Finset.sum_pair hkj]; simp; linear_combination h'
   · by_cases hkj : k = j
@@ -108,7 +108,7 @@ theorem Grade_of : Grade := by
   have heig : ∀ kl : Fin n × Fin n, adX X (p kl.1 * Y * p kl.2) = (e kl.1 - e kl.2) • (p kl.1 * Y * p kl.2) := by
     intro kl
     rw [adX_apply, ← mul_assoc, ← mul_assoc, hXp, mul_assoc (p kl.1 * Y), hpX]
-    simp [sub_smul, smul_mul_assoc, mul_smul_comm]
+    simp [sub_smul]
   have hstab : ∀ Z ∈ g, adX X Z ∈ g := fun Z hZ => by rw [adX_apply]; exact hg Z hZ
   let q : C[X] := ∏ kl ∈ (Finset.univ : Finset (Fin n × Fin n)).erase (i, j), (Polynomial.X - Polynomial.C (e kl.1 - e kl.2))
   have hq : aeval (adX X) q Y = q.eval (e i - e j) • (p i * Y * p j) := by

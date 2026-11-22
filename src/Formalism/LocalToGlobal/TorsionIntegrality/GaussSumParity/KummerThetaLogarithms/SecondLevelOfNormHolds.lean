@@ -27,7 +27,7 @@ private theorem lgF_zero_lemma (l : ℕ) : PowerSeries.constantCoeff (lgF K l) =
 private theorem lgF_one_lemma_2 {l : ℕ} (hl : 2 ≤ l) : PowerSeries.coeff 1 (lgF K l) = 1 := by
   have h1 : l ^ 2 ≠ 1 := by nlinarith
   rw [lgF, PowerSeries.coeff_mk]
-  simp [Finset.sum_range_succ, h1, h1.symm]
+  simp [Finset.sum_range_succ, h1.symm]
 
 theorem logPair {l : ℕ} (hl : 2 ≤ l) : C.IsLogPair (lgF K l) (expF K l) := by
   have h0 := lgF_zero_lemma (K := K) l
@@ -209,7 +209,7 @@ theorem all {l : ℕ} {σ : K →+* K} (hU : UnrOK K l σ) {F : MvPowerSeries (F
     show ‖(2 : K)⁻¹‖ ≤ 1
     rw [norm_inv, norm_two hU, inv_one]
   have hu2 : IsUnit (2 : Osub σ) :=
-    ⟨unitO (a := 2) (norm_two hU) (by simp [map_ofNat]), Subtype.ext (by show (2 : K) = _; first | rfl | norm_num | push_cast; rfl)⟩
+    ⟨unitO (a := 2) (norm_two hU) (by simp [map_ofNat]), Subtype.ext (by show (2 : K) = _; first | rfl | push_cast)⟩
   have hDn : ∀ a ∈ Set.range (fun u : (Osub σ)ˣ => (u : Osub σ)),
       C.EndInt (Formalism.G.unitBall K) (lgF K l) (expF K l) ((Osub σ).subtype a) ∧
       C.PhNormAt (Formalism.G.unitBall K) (lgF K l) (expF K l) ph ((Osub σ).subtype a) ((Osub σ).subtype (star a)) := by

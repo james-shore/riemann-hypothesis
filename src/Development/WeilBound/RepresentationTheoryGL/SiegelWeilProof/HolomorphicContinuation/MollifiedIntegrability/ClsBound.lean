@@ -118,14 +118,14 @@ theorem dirC_detU {s : ℂ} (hs : s = 1 ∨ s = -1) (y : E n) (k l : Fin n) :
   simp_rw [detU_eq]
   rw [dirC_comp (hasDerivAt_inv (det_Am_ne hs y)) (diffAt_of (contDiff_detAm s) y), dirC_detAm hs]
   have := det_Am_ne hs y
-  field_simp <;> ring
+  field_simp
 
 theorem dirC_detV {s : ℂ} (hs : s = 1 ∨ s = -1) (y : E n) (k l : Fin n) :
     dirC (fun y => (vM s y).det) (vkl k l) y = -(Complex.I * s * vM s y k l * (vM s y).det) := by
   simp_rw [detV_eq]
   rw [dirC_comp (hasDerivAt_inv (det_Bm_ne hs y)) (diffAt_of (contDiff_detBm s) y), dirC_detBm hs]
   have := det_Bm_ne hs y
-  field_simp <;> ring
+  field_simp
 
 theorem dirC_pow {f : E n → ℂ} {y : E n} (hf : DifferentiableAt ℝ f y) (p : ℕ) (w : Fin n → Fin n → ℂ) (c : ℂ)
     (hc : dirC f w y = c * f y) : dirC (fun y => f y ^ p) w y = p * c * f y ^ p := by
@@ -170,7 +170,7 @@ theorem dirC_dPpow {s : ℂ} (hs : s = 1 ∨ s = -1) (z : ℂ) (y : E n) (k l : 
   rw [show ((Bm s y).det * (-(Complex.I * s) * (Am s y).det * uM s y k l) +
       (Am s y).det * (Complex.I * s * (Bm s y).det * vM s y k l)) =
       -(Complex.I * s) * ((Bm s y).det * (Am s y).det) * (uM s y k l - vM s y k l) by ring, ← dP_eq hs]
-  field_simp <;> ring
+  field_simp
 
 def ent (s : ℂ) (e : Bool × Fin n × Fin n) (y : E n) : ℂ := if e.1 then vM s y e.2.1 e.2.2 else uM s y e.2.1 e.2.2
 

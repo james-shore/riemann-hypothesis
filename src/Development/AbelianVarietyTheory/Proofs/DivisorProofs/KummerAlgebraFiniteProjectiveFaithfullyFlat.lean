@@ -79,14 +79,11 @@ def liftRoot [Module.Invertible B L] (φ : MultilinearMap B (fun _ : Fin (q + 1)
     · exact hle ha
     refine Ideal.span_le.2 ?_
     rintro r ((⟨⟨a, b⟩, rfl⟩ | ⟨⟨c, a⟩, rfl⟩) | ⟨ℓ, rfl⟩)
-    · simp only [SetLike.mem_coe, RingHom.mem_ker, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
-        map_sub, aeval_X, map_add]
+    · simp only [SetLike.mem_coe, RingHom.mem_ker, map_sub, aeval_X, map_add]
       ring
-    · simp only [SetLike.mem_coe, RingHom.mem_ker, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
-        map_sub, map_mul, aeval_X, aeval_C, map_smul, smul_eq_mul]
+    · simp only [SetLike.mem_coe, RingHom.mem_ker, map_sub, map_mul, aeval_X, aeval_C, map_smul, smul_eq_mul]
       ring
-    · simp only [SetLike.mem_coe, RingHom.mem_ker, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
-        map_sub, map_prod, aeval_X, aeval_C]
+    · simp only [SetLike.mem_coe, RingHom.mem_ker, map_sub, map_prod, aeval_X, aeval_C]
       rw [sub_eq_zero, Finset.prod_mul_distrib, Finset.prod_mul_distrib, Finset.prod_const,
         Finset.prod_const, Finset.card_univ, Fintype.card_fin, hx]
       have key := congrArg (algebraMap B R) (pow_mul_eq_mul_prod_position φ e ℓ)

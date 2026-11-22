@@ -146,12 +146,12 @@ theorem measurable_base (e : Fin r ≃ Fin p ⊕ Fin q) : Measurable (base e) :=
 
 theorem det_shear (A : Matrix (Fin p ⊕ Fin q) (Fin p ⊕ Fin q) ℂ) (Z : Matrix (Fin p) (Fin q) ℂ) :
     (shear A Z).det = A.det := by
-  simp [shear, det_conjTranspose, det_fromBlocks_zero₂₁]
+  simp [shear, det_conjTranspose]
 
 theorem posDef_shear {A : Matrix (Fin p ⊕ Fin q) (Fin p ⊕ Fin q) ℂ} (hA : A.PosDef) (Z : Matrix (Fin p) (Fin q) ℂ) :
     (shear A Z).PosDef :=
   hA.conjTranspose_mul_mul_same (mulVec_injective_of_isUnit ((isUnit_iff_isUnit_det _).2
-    (by simp [det_fromBlocks_zero₂₁])))
+    (by simp)))
 
 theorem det_eq_mul_schur {H : Matrix (Fin p ⊕ Fin q) (Fin p ⊕ Fin q) ℂ} (h : IsUnit H.toBlocks₂₂.det) :
     H.det = H.toBlocks₂₂.det * (schur H).det := by

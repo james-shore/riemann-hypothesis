@@ -66,7 +66,7 @@ theorem finrank_quot_one_sub_idem_eq_mul : ∀ (k : Type) [Field k] (A : Type) [
           intro a x
           obtain ⟨y, rfl⟩ := Ideal.Quotient.mk_surjective x
           change f (Ideal.Quotient.mk _ (a * y)) = φ a * f (Ideal.Quotient.mk _ y)
-          simp [f, Ideal.quotientKerAlgEquivOfSurjective_apply] }
+          simp [f] }
     let e6 : (k ⊗[A] H) ≃ₗ[A] H ⧸ (RingHom.ker φ • ⊤ : Submodule A H) :=
       (LinearEquiv.rTensor H g.symm).trans (TensorProduct.quotTensorEquivQuotSMul H (RingHom.ker φ))
     rw [← (e6.restrictScalars k).finrank_eq,

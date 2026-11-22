@@ -22,7 +22,7 @@ theorem blkAt_apply (n N : ℕ) (h : n ≤ N) (g : GL (Fin n) k) (i j : Fin N) :
       if hij : (i : ℕ) < n ∧ (j : ℕ) < n then (g : Matrix (Fin n) (Fin n) k) ⟨i, hij.1⟩ ⟨j, hij.2⟩
       else (1 : Matrix (Fin N) (Fin N) k) i j := by
   simp only [blkAt, glCongr, blkGL, blkHom]
-  simp [Matrix.reindexAlgEquiv_apply, Matrix.reindex_apply]
+  simp [Matrix.reindex_apply]
   rw [blkAt_apply_lemma, blkAt_apply_lemma]
   by_cases hi : (i : ℕ) < n <;> by_cases hj : (j : ℕ) < n <;>
     simp [hi, hj, Matrix.one_apply, Fin.ext_iff]
@@ -216,7 +216,7 @@ theorem lvlChar_colEl' (ψ : AddChar k Circle) {m N : ℕ} (h : m + 2 ≤ N) (x 
   rw [lvlChar_apply]
   congr 2
   rw [Finset.sum_eq_single ((⟨m, by omega⟩, ⟨m + 1, by omega⟩) : Fin N × Fin N)]
-  · simp [colEl_apply, cIdx, padV, xi0, Matrix.one_apply, Fin.ext_iff]
+  · simp [colEl_apply, cIdx, padV, xi0, Fin.ext_iff]
     rfl
   · rintro ⟨⟨a, ha⟩, ⟨b, hb⟩⟩ hp hne
     simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hp
@@ -274,7 +274,7 @@ theorem scalAt_comm_blkAt' {m N : ℕ} (h : m + 1 ≤ N) (z : kˣ) (g : GL (Fin 
   rw [← map_mul, ← map_mul]
   congr 1
   apply Units.ext
-  simp only [Units.val_mul, Units.coe_map, MonoidHom.coe_coe]
+  simp only [Units.val_mul, Units.coe_map]
   exact Algebra.commutes _ _
 
 theorem colEl_mul_apply {m N : ℕ} (h : m + 2 ≤ N) (x : Fin (m + 1) → k) (M : Matrix (Fin N) (Fin N) k)

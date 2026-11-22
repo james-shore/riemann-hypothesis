@@ -28,7 +28,7 @@ private lemma proj_germ_id {A σ : Type} [CommRing A] [SetLike σ A] [AddSubgrou
   simp only [RingHom.id_apply]
   rw [← IsLocalization.mk'_pow, ← IsLocalization.mk'_mul]
   apply IsLocalization.mk'_eq_of_eq
-  simp only [Submonoid.coe_mul, SubmonoidClass.coe_pow, map_mul, map_pow]
+  simp only [Submonoid.coe_mul, SubmonoidClass.coe_pow]
   ring
 
 private lemma ι_appLE {X : Scheme.{0}} (U : X.Opens) (h : ⊤ ≤ U.ι ⁻¹ᵁ U) : U.ι.appLE U ⊤ h = U.topIso.inv := by

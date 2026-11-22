@@ -128,9 +128,9 @@ theorem slTwo_zmod_mul_crt_exists_and_eq_one : ∀ a b : ℕ, Nat.Coprime a b �
       rw [← e2]; rfl
     refine Prod.ext ?_ ?_
     · rw [h1, h1, f1]
-      by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+      by_cases hij : i = j <;> simp [hij]
     · rw [h2, h2, f2]
-      by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+      by_cases hij : i = j <;> simp [hij]
 
 theorem glue : ∀ (k : ℕ) (G G₁ G₂ : Type) [Group G] [Group G₁] [Group G₂] (ρ₁ : G →* G₁) (ρ₂ : G →* G₂), (∀ g₁ g₂, ∃ g, ρ₁ g = g₁ ∧ ρ₂ g = g₂) → (∀ g, ρ₁ g = 1 → ρ₂ g = 1 → g = 1) → commutator G₁ = ⊤ → (∀ (E : Type) [Group E] (π : E →* G₁), Function.Surjective π → π.ker ≤ Subgroup.center E → (∀ x ∈ π.ker, x ^ k = 1) → ∀ x ∈ π.ker, x ∈ commutator E → x ^ 2 = 1) → (∀ (E : Type) [Group E] (π : E →* G₂), Function.Surjective π → π.ker ≤ Subgroup.center E → (∀ x ∈ π.ker, x ^ k = 1) → ∀ x ∈ π.ker, x ∈ commutator E → x ^ 2 = 1) → (∀ (E : Type) [Group E] (π : E →* G), Function.Surjective π → π.ker ≤ Subgroup.center E → (∀ x ∈ π.ker, x ^ k = 1) → ∀ x ∈ π.ker, x ∈ commutator E → x ^ 2 = 1) := by
   intro k G G₁ G₂ _ _ _ ρ₁ ρ₂ hsur hinj hperf Q₁ Q₂ E _ π hs hc hk x hx hxc

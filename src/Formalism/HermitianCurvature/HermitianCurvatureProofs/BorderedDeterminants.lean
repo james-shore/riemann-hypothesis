@@ -139,8 +139,7 @@ theorem icast_apply (z : ℤ) (f : Module.End ℂ V) (v : V) :
     (((z : ℤ) : Module.End ℂ V) * f) v = (z : ℂ) • f v := by
   rw [Module.End.mul_apply]
   first
-  | (simp [Int.cast_smul_eq_zsmul]; done)
-  | (simp; exact (Int.cast_smul_eq_zsmul ℂ z (f v)).symm)
+  | (simp [Int.cast_smul_eq_zsmul])
 
 theorem sumBorder {n : ℕ} (Y H : Fin n → Module.End ℂ V) (M : Fin n → Fin n → Module.End ℂ V)
     (Ψ : Fin n → Fin n → V) (c : Fin n → ℂ) (v : V) (h1 : ∀ x, ∑ i, Ψ i x = H x v)
@@ -191,7 +190,7 @@ theorem comm_last {n : ℕ} (E : Fin (n + 1) → Fin (n + 1) → Module.End ℂ 
   refine Commute.sum_right _ _ _ (fun σ _ => ?_)
   refine Commute.mul_right (Int.cast_commute _ _).symm ?_
   refine Commute.list_prod_right _ _ (fun y hy => ?_)
-  simp only [List.mem_ofFn, Set.mem_range] at hy
+  simp only [List.mem_ofFn] at hy
   obtain ⟨k, rfl⟩ := hy
   exact hT _ _ _
 

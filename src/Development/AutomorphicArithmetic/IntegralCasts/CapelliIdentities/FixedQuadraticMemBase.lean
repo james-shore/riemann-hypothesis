@@ -20,7 +20,7 @@ theorem UpperTheory.fixed_quadratic_mem_base :
       field_simp
       linear_combination -hst'
     subst ht
-    simp only [zero_smul, add_zero, Algebra.smul_def, mul_one] at hst
+    simp only [Algebra.smul_def, mul_one] at hst
     exact ⟨by simpa using hst, rfl⟩
   have hspan : Submodule.span F (Set.range ![(1 : E), x]) = ⊤ :=
     li.span_eq_top_of_card_eq_finrank' (by simp [h])

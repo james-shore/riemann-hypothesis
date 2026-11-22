@@ -38,7 +38,7 @@ theorem exp_val_add {m : ℕ} [NeZero m] (x y : ZMod m) :
         = 2 * Real.pi * Complex.I * ((x.val : ℂ) + (y.val : ℂ)) / (m : ℂ) := by ring
       _ = 2 * Real.pi * Complex.I * ((((x.val + y.val) % m : ℕ) : ℂ) + (m : ℂ) * (((x.val + y.val) / m : ℕ) : ℂ)) /
             (m : ℂ) := by rw [hc]
-      _ = _ := by field_simp <;> ring
+      _ = _ := by field_simp
   rw [key, Complex.exp_add, Complex.exp_nat_mul_two_pi_mul_I, mul_one]
 
 instance neZero_pow (l n : ℕ) [Fact l.Prime] : NeZero (l ^ n) :=

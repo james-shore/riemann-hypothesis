@@ -79,7 +79,7 @@ private theorem lc_orbit {D M : Type} [Group D] [TopologicalSpace D] [IsTopologi
   rw [IsLocallyConstant.iff_exists_open]
   intro g
   refine ⟨(fun y => g⁻¹ * y) ⁻¹' (ρ.ker : Set D), h.preimage (continuous_const.mul continuous_id), ?_, ?_⟩
-  · simp [MonoidHom.mem_ker]
+  · simp
   · intro x hx
     have hk : ρ (g⁻¹ * x) = 1 := MonoidHom.mem_ker.mp hx
     have hx' : x = g * (g⁻¹ * x) := by group

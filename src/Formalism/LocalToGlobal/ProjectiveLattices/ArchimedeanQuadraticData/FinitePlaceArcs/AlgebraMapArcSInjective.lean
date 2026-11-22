@@ -45,8 +45,6 @@ theorem arcNum_algebraMap {K₁ : Type} [Field K₁] (P : MvPolynomial (ArcLt Dw
   · rename_i h
     first
       | exact algebraMap_arcS_injective Dw K₁ h.choose_spec
-      | exact (algebraMap_arcS_injective Dw K₁ h.choose_spec).symm
-      | exact algebraMap_arcS_injective Dw K₁ h.choose_spec.symm
   · rename_i h
     exact absurd ⟨P, rfl⟩ h
 

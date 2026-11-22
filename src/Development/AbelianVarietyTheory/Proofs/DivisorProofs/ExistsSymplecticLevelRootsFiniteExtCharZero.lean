@@ -31,8 +31,8 @@ theorem pairing_prod {H U : Type} [CommGroup H] [CommGroup U] (e : H →* H →*
     fun p _ u m => by split_ifs <;> simp
   rw [hz]
   simp only [map_prod, map_zpow, MonoidHom.finset_prod_apply, MonoidHom.zpow_apply, Fintype.prod_sum_type,
-    map_mul, MonoidHom.mul_apply, h₁, h₂, h₃, h₄, one_zpow, Finset.prod_const_one, _root_.one_mul, _root_.mul_one,
-    hi, Finset.prod_ite_eq, Finset.prod_ite_eq', Finset.mem_univ, if_true, ← Finset.prod_mul_distrib]
+    map_mul, MonoidHom.mul_apply, h₁, h₂, h₃, h₄, one_zpow, _root_.one_mul, _root_.mul_one,
+    hi, Finset.prod_ite_eq', Finset.mem_univ, if_true, ← Finset.prod_mul_distrib]
   refine Finset.prod_congr rfl fun i _ => ?_
   simp only [← zpow_mul, inv_zpow', ← zpow_add, zpow_sub, ← zpow_neg]
   congr 1
@@ -68,7 +68,7 @@ theorem exists_points (hL : Laws) (K : Type) [Field K] [IsAlgClosed K] (P : PolA
     rw [he]
     simp only [κ, Sum.elim_inl, Sum.elim_inr, Fin.ext_iff]
     rw [stdSymp_mk]
-    split_ifs <;> first | omega | (simp; done)
+    split_ifs <;> first | omega | (simp)
 
 theorem exists_level_and_roots : ∀ (R : Type) [CommRing R] (P : PolAV (Sp R)) (K : Type) [Field K] [CharZero K] (j : R →+* K) (n : ℕ), 0 < n → ∀ (ζ : Kˣ), IsPrimitiveRoot ζ n → ∀ (r : ℕ) (c : Fin r → (𝟙_ (Over (Sp R)) ⟶ P.A)), ∃ (L : Type) (_ : Field L) (_ : Algebra K L) (_ : FiniteDimensional K L) (lev : (Fin P.g ⊕ Fin P.g → ℤ) → (Over.mk (spMap ((algebraMap K L).comp j)) ⟶ P.A)) (d : Fin r → (Over.mk (spMap ((algebraMap K L).comp j)) ⟶ P.A)), (∀ x y, lev (x + y) = lev x * lev y) ∧ (∀ x, lev x ^ n = 1) ∧ (∀ x y, Out.WeilIs P.A P.L n (lev x) (lev y) (unitOn (Units.map (algebraMap K L).toMonoidHom ζ ^ omegaStd x y))) ∧ ∀ i, d i ^ n = toUnit _ ≫ c i := by
   intro R _ P K _ _ j n hn ζ hζ r c

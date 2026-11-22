@@ -20,4 +20,4 @@ theorem _root_.GlobalTheory.T.localRing_mod_t_embeds_strictHenselian : ∀ (T O 
       Function.Injective i₁ ∧ IsLocalHom i₁ ∧ i₁.comp f = i ∧
       e.comp (algebraMap (Polynomial A) EA) = f.comp (Polynomial.evalRingHom 0) ∧
       ∀ x : EA, algebraMap T O (i₁ (e x)) - j x ∈ Ideal.span {algebraMap (Polynomial T) O Polynomial.X} := by
-  first | (exact @GlobalTheory.FibreRetract.fibre_retract) | (exact GlobalTheory.FibreRetract.fibre_retract) | (intros; apply GlobalTheory.FibreRetract.fibre_retract  <;> assumption)
+  first | (exact @GlobalTheory.FibreRetract.fibre_retract)

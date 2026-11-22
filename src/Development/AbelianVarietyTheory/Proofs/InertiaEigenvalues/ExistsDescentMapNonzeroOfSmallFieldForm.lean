@@ -55,7 +55,7 @@ theorem exists_desc_of_isKsForm : ∀ (D : D7) (S : RatDat D.ntw) (j : ℕ), (S.
     apply bF.equivFun.injective
     rw [hΦ, bF.equivFun.map_smul, hΦ, bL.repr.map_smul]
     funext r
-    simp only [Pi.smul_apply, smul_eq_mul, map_smul, Finsupp.smul_apply]
+    simp only [Pi.smul_apply, smul_eq_mul, Finsupp.smul_apply]
     rw [hfc, map_mul]
   · intro T hT w
     let T' : Module.End S.Ks (FmK S j) := (T.restrictScalars S.Ks).restrict (p := (S.A j).WK) (q := (S.A j).WK) hT

@@ -410,8 +410,7 @@ theorem GlobalTheory.SW.exists_shortIso : ∀ (E : Type) [Field E] [NumberField 
       have h4 : τ.1 (Γ i j) = D * ((fun a => τ.1 (V i a)) ⬝ᵥ G.map τ.1 *ᵥ
           star fun a => τ.1 (V j a)) := by
         rw [hΓ, Matrix.mul_assoc]
-        simp [Matrix.mul_apply, ccT, emb_cc, dotProduct, mulVec, Finset.mul_sum, mul_assoc,
-          mul_left_comm]
+        simp [Matrix.mul_apply, ccT, emb_cc, dotProduct, mulVec, Finset.mul_sum, mul_left_comm]
       rw [h4, norm_mul, Complex.norm_natCast]
       gcongr
     intro σ

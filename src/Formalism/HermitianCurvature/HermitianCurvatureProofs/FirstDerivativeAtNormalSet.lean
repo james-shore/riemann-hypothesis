@@ -212,7 +212,7 @@ theorem liftDeg_core {k r : ℕ} (T : D.LevTower k r Wp Wq) (F : B.Mat k r → (
     rw [integral_smul, hc', smul_smul]
   have hcast : j - s + 1 = i0 + 1 := by omega
   refine ⟨fun l => c' (Fin.cast hcast l), ?_, fun y => ?_⟩
-  · have : Fin.cast hcast (Fin.last (j - s)) = Fin.last i0 := Fin.ext (by simp <;> omega)
+  · have : Fin.cast hcast (Fin.last (j - s)) = Fin.last i0 := Fin.ext (by simp)
     simp only [this]
     exact hc'top
   · rw [hc'exp y]

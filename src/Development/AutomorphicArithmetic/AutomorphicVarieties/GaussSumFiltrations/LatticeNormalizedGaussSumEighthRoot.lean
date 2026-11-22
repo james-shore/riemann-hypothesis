@@ -236,7 +236,7 @@ theorem gauss_reps {V : Type} [AddCommGroup V] {A B C : AddSubgroup V} {T : Fins
   have hrow : ∀ x : Fin 4 → B ⧸ A.addSubgroupOf B, ∑ i, φ (Φ x i) = ∑ i, -φ (x i) := by
     intro x
     rw [Fin.sum_univ_four, Fin.sum_univ_four, hΦ0, hΦ1, hΦ2, hΦ3]
-    simp only [hφadd, hφsmul, hβadd1, hβadd2, hβz1, hβz2]
+    simp only [hφadd, hφsmul, hβadd1, hβz1, hβz2]
     linear_combination (norm := module) hsφ (x 0) + hsφ (x 1) + hsφ (x 2) + hsφ (x 3)
   have hpow4 : ∀ H : (B ⧸ A.addSubgroupOf B) → ℂ,
       (∑ q, H q) ^ 4 = ∑ x : Fin 4 → B ⧸ A.addSubgroupOf B, ∏ i, H (x i) := by
@@ -560,4 +560,4 @@ open NumberField IsDedekindDomain Neutral.B1 Formalism.L2.Host Formalism.Conjuga
 open scoped Matrix
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.lattice_normalized_gaussSum_eighth_root : ∀ (F : Type) [Field F] [NumberField F] (κ : Type) [Fintype κ] [DecidableEq κ] (G : Matrix κ κ ℤ), EvenPos G → ∀ t : ℕ, G.det = (t : ℤ) ^ 2 → ∀ k : ℕ, Fintype.card κ = 2 * k → ∀ (N : ℕ) (a b c d : F) (T : Finset (κ → F)), 0 < N → (∀ y ∈ dualL F G, (N : F) • y ∈ LL F κ ∧ IsIntegral ℤ ((N : F) * QF G y)) → IsIntegral ℤ a → IsIntegral ℤ b → IsIntegral ℤ (c / N) → IsIntegral ℤ d → a * d - b * c = 1 → c ≠ 0 → IsReps (aL κ c) (aL κ (1 : F)) T → (wC k t c c * ∑ x ∈ T, et (a / c * QF G x)) ^ 8 = 1 := by
-  first | exact @GlobalTheory.HilbertThetaSeries.gaussSum_pow_eight | exact GlobalTheory.HilbertThetaSeries.gaussSum_pow_eight | (intros; apply GlobalTheory.HilbertThetaSeries.gaussSum_pow_eight <;> assumption)
+  first | exact @GlobalTheory.HilbertThetaSeries.gaussSum_pow_eight

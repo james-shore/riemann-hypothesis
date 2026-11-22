@@ -57,11 +57,6 @@ theorem exists_finset_fixed {G LL V : Type} [Group G] [Field LL] [AddCommGroup V
     ∃ s : Finset G, ∀ v : V, (∀ g ∈ s, ρ g v = v) → v ∈ H0V ρ := by
   first
   | (rename_i h_3 h_4 h_5 h_6 h_7; revert G LL V h_3 h_4 h_5 h_6 h_7 ρ; exact @_root_.GlobalTheory.FixedFinsetInvariants.exists_finset_fixed_mem_invariants)
-  | exact @_root_.GlobalTheory.FixedFinsetInvariants.exists_finset_fixed_mem_invariants
-  | exact _root_.GlobalTheory.FixedFinsetInvariants.exists_finset_fixed_mem_invariants
-  | (apply _root_.GlobalTheory.FixedFinsetInvariants.exists_finset_fixed_mem_invariants <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FixedFinsetInvariants.exists_finset_fixed_mem_invariants <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FixedFinsetInvariants.exists_finset_fixed_mem_invariants <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.FixedFinsetInvariants.exists_finset_fixed_mem_invariants ..)
 
 theorem exists_artinRees_pow {O M P : Type} [CommRing O] [IsNoetherianRing O] [AddCommGroup M]
@@ -92,11 +87,6 @@ theorem exists_smul_mem {O LL V : Type} [CommRing O] [IsDomain O] [Field LL] [Al
     ∃ d : O, d ≠ 0 ∧ d • x ∈ T := by
   first
   | (rename_i h_3 h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11; revert O LL V h_3 h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11 T hspan x; exact @_root_.GlobalTheory.NonzeroScalarMembership.exists_ne_zero_smul_mem)
-  | exact @_root_.GlobalTheory.NonzeroScalarMembership.exists_ne_zero_smul_mem
-  | exact _root_.GlobalTheory.NonzeroScalarMembership.exists_ne_zero_smul_mem
-  | (apply _root_.GlobalTheory.NonzeroScalarMembership.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NonzeroScalarMembership.exists_ne_zero_smul_mem <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NonzeroScalarMembership.exists_ne_zero_smul_mem <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NonzeroScalarMembership.exists_ne_zero_smul_mem ..)
 
 theorem exists_basis_comap {O LL V : Type} [CommRing O] [IsDomain O] [IsPrincipalIdealRing O]
@@ -296,7 +286,7 @@ theorem growth_core {G LL O V : Type} [Group G] [Field LL] [CommRing O] [IsDomai
       · have h0 : r - c = 0 := by omega
         refine ⟨(0, Submodule.Quotient.mk x0), ?_⟩
         simp only [F, LinearMap.coprod_apply, map_zero, zero_add, Submodule.liftQ_apply, f2,
-          LinearMap.comp_apply, Submodule.mkQ_apply, LinearMap.smul_apply, LinearMap.id_apply, h0,
+          LinearMap.comp_apply, Submodule.mkQ_apply, LinearMap.id_apply, h0,
           pow_zero, one_smul]
     choose σ hσ using hsurj
     have hσinj : Function.Injective σ := fun x y hxy =>

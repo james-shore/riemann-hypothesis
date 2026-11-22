@@ -48,8 +48,8 @@ theorem exists_second_order_nbhd : ∀ (O : Type) [CommRing O] [Algebra ℂ O] (
   · exact Ideal.mem_sup_right (Ideal.mem_span_singleton_self _)
   · intro x; ext <;> simp [i, j, e₁]
   · intro x; ext <;> simp [i, j, e₂]
-  · intro x; ext <;> simp [i, j, e₂]
-  · intro x; ext <;> simp [i, j, e₁, h]
+  · intro x; ext <;> simp [j, e₂]
+  · intro x; ext <;> simp [i, e₁, h]
   · intro x hx
     have := congrArg (fun z : DualNumber (DualNumber O) => z.snd.snd) hx
     simpa [i, j, e₁, e₂] using this

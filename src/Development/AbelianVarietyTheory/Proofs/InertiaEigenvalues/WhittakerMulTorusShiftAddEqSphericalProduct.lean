@@ -47,12 +47,12 @@ theorem whittaker_torusShift_add_factorisation_induction (E : Type) [Field E] [N
       ext w i
       by_cases hw : a = w
       · subst hw; simp [hfa]
-      · simp [Finsupp.single_apply, hw]
+      · simp [hw]
     have hjoin : (l₀ - Finsupp.single a (l₀ a) + f) + Finsupp.single a (l₀ a) = l₀ + f := by
       ext w i
       by_cases hw : a = w
       · subst hw; simp [hfa]
-      · simp [Finsupp.single_apply, hw]
+      · simp [hw]
     set g := x * GlobalTheory.CellDec.tl (m + 1) ϖ (l₀ - Finsupp.single a (l₀ a) + f) with hg
     have hga : GeneralLinearGroup.map ((pLoc E a).comp (pFin E)) g = 1 := by
       change GlobalTheory.CellDec.compV E (m + 1) a g = 1
@@ -76,7 +76,7 @@ theorem whittaker_torusShift_add_factorisation_induction (E : Type) [Field E] [N
           GlobalTheory.RSCell.sphZ (Ideal.absNorm w.asIdeal) (fun i => ((α ⟨w, h⟩ i : ℂˣ) : ℂ)) (f w)) := by
       refine Finset.prod_congr rfl fun w hw => ?_
       have hne : a ≠ w := fun e => ha (e ▸ hw)
-      simp [Finsupp.single_apply, hne]
+      simp [hne]
     rw [hval, hrest]
     change GlobalTheory.RSCell.sphZ (Ideal.absNorm a.asIdeal) _ b * _ = _
     ring

@@ -66,14 +66,14 @@ theorem dOf_fac (P : Weyl.Pre a) (N : ℕ) (τ : E →+* ℂ) (X : Lie E a) :
       (by rw [hL]; exact (diff_coef P i j _).hasFDerivAt.restrictScalars ℝ) L.hasFDerivAt
   have h2 := (coordL τ).hasFDerivAt.comp (oneL E a) (contDiff_det.differentiable (by simp) (oneL E a)).hasFDerivAt
   have hd : (Matrix.of (oneL E a)).det = 1 := Matrix.det_one
-  have h3 := ((hasDerivAt_inv (x := coordL τ (Matrix.of (oneL E a)).det) (by simp [hd])).pow N).hasFDerivAt.restrictScalars ℝ
+  have h3 := ((hasDerivAt_inv (x := coordL τ (Matrix.of (oneL E a)).det) (by simp)).pow N).hasFDerivAt.restrictScalars ℝ
   have h4 := (h3.comp (oneL E a) h2).mul h1
   have h5 := h4.congr_of_eventuallyEq (extGL_eventuallyEq (f := fun y => fac P N τ y i j)
     (fun y => rfl) (x := oneL E a) isUnit_one)
   rw [dOf, Matrix.of_apply, h5.fderiv]
   have h6 : P.coef i j (Weyl.oneM a) = (1 : Matrix _ _ ℂ) i j := congrFun (congrFun (map_one P.mat) i) j
   have h7 : P.D ((Matrix.of X).map (coord τ)) i j = fderiv ℂ (P.coef i j) (Weyl.oneM a) (L X) := rfl
-  simp [hd, hL, h6, h7, fderiv_det_one]
+  simp [hL, h6, h7, fderiv_det_one]
   ring
 
 open Classical in

@@ -38,7 +38,7 @@ theorem DictLat.sigR_inclE (I : AutInst) (e : I.E) :
       Formalism.UG.inclE (F := I.F) (Af I.F) (star e) := by
   first
     | rfl
-    | simp [Formalism.UG.sigR, Formalism.UG.inclE, Algebra.TensorProduct.map_tmul]; rfl
+    | simp [Formalism.UG.sigR, Formalism.UG.inclE, Algebra.TensorProduct.map_tmul]
 
 theorem DictLat.sigR_one_tmul (I : AutInst) (a : Af I.F) :
     Formalism.UG.sigR I.cm.sig (Af I.F) ((1 : I.E) ⊗ₜ[I.F] a) = (1 : I.E) ⊗ₜ[I.F] a := by

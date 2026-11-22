@@ -57,7 +57,7 @@ theorem pair_eG (hcj : ∀ x, cj (cj x) = x) (hO : ∀ x ∈ O, cj x ∈ O)
       rw [Finset.sum_eq_single a]
       · simp
       · intro b _ hb
-        simp [Pi.single_apply, hb]
+        simp [hb]
       · intro h
         exact absurd (Finset.mem_univ a) h
     rw [hs] at hB

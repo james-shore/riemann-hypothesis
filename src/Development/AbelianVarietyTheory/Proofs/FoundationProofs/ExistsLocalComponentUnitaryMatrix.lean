@@ -60,7 +60,7 @@ theorem glue_mul {A : Type} [CommRing A] {n : ℕ} {f : A} (hf : f * f = f) {σ 
   have h1 : (1 - f) * (1 - f) = 1 - f := by linear_combination hf
   have h2 : (1 - f) * f = 0 := by linear_combination -hf
   have h3 : f * (1 - f) = 0 := by linear_combination -hf
-  simp only [add_mul, mul_add, Matrix.smul_mul, Matrix.mul_smul, smul_add, smul_smul, h, h1, h2, h3, hf, zero_smul,
+  simp only [add_mul, mul_add, Matrix.smul_mul, Matrix.mul_smul, smul_smul, h, h1, h2, h3, hf, zero_smul,
     Matrix.mul_one, add_zero, zero_add]
   rw [← add_smul, sub_add_cancel, one_smul]
 

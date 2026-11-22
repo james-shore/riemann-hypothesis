@@ -147,7 +147,7 @@ theorem two_re_le (ε : Fin n → Bool) (B : Mode ε → ℂ) :
     intro w
     rw [← hinv, Matrix.exp_conj _ _ hunit, Matrix.exp_diagonal, Pi.exp_def, ← Complex.exp_eq_exp_ℂ]
   have hdn : diagonal (fun i => -d i) = -diagonal d := by
-    ext i j; by_cases h : i = j <;> simp [diagonal_apply, h]
+    ext i j; by_cases h : i = j <;> simp [h]
   have hneg : -pB ε B = U * diagonal (fun i => -d i) * star U := by
     rw [hdec, hdn, Matrix.mul_neg, Matrix.neg_mul]
   have hmul : ∀ v w : Fin n → ℂ, (U * diagonal v * star U) * (U * diagonal w * star U) =
@@ -191,7 +191,7 @@ theorem stExpLow : StExpLow := by
   have h2 := two_re_le ε B
   rw [trace_neg_side, trace_projection_mul_modeMatrix_mul_self, Complex.ofReal_re] at h2
   have hT : (∑ x, ‖B x‖ ^ 2) ≤ T.re := by
-    have : (T - -T).re = 2 * T.re := by simp [Complex.sub_re, Complex.neg_re]; ring
+    have : (T - -T).re = 2 * T.re := by simp; ring
     rw [this] at h2; linarith
   have hTn : ‖T‖ ≤ ∑ x : Mode ε, ‖B x‖ * ‖E x.1.1 x.1.2‖ := by
     rw [show T = ∑ x : Mode ε, B x * E x.1.2 x.1.1 from trace_projection_mul_modeMatrix_mul ε B E]

@@ -15,9 +15,9 @@ def vmvBil (E : Type) [Field E] [NumberField E] (n r : ℕ) :
     (Fin n → E) →ₗ[𝓞 E] (Fin r → E) →ₗ[𝓞 E] Matrix (Fin n) (Fin r) E :=
   LinearMap.mk₂ (𝓞 E) (fun v u => vecMulVec v u)
     (fun v v' u => by ext i j; simp [vecMulVec, add_mul])
-    (fun a v u => by ext i j; simp [vecMulVec, smul_mul_assoc])
+    (fun a v u => by ext i j; simp [vecMulVec])
     (fun v u u' => by ext i j; simp [vecMulVec, mul_add])
-    (fun a v u => by ext i j; simp [vecMulVec, mul_smul_comm])
+    (fun a v u => by ext i j; simp [vecMulVec])
 
 theorem tens_quot_finite {E : Type} [Field E] [NumberField E] {n r : ℕ} (Λ : Lt E n) (L : Lt E r)
     (hΛ : Λ.FG) (hL : L.FG) (𝔞 𝔪 : Ideal (𝓞 E)) (hm : 𝔪 ≠ ⊥) :

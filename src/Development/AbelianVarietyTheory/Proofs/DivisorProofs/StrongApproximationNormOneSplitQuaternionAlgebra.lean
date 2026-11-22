@@ -96,7 +96,7 @@ theorem Ψ_one : Ψ φ 1 = 1 := by
 
 theorem Φ_rat (y : ℍ[F, a, b]) : Φ φ (rat y) = (φ y).map (algebraMap F (AF F)) := by
   conv_rhs => rw [decomp y]
-  simp only [Φ_apply, map_add, map_smul, map_one, Matrix.map_add, map_smul_F, Matrix.map_one _ (map_zero _) (map_one (algebraMap F (AF F)))]
+  simp only [Φ_apply, map_add, map_smul, map_one]
   ext i j
   simp only [Matrix.add_apply, Matrix.smul_apply, Matrix.map_apply, Matrix.one_apply, smul_eq_mul, map_add, map_mul, rat]
   split_ifs <;> simp

@@ -56,7 +56,7 @@ theorem semiPull_exists {k k' : Type} [Field k] [CharP k p] [PerfectRing k p] [F
           coeff α ((WittVector.map (p := p) σ r) • MvPowerSeries.map (frMap p σ) f.1)
         rw [← algebraMap_smul (Fr p k) r f.1, ← algebraMap_smul (Fr p k') (WittVector.map (p := p) σ r),
           coeff_map, coeff_smul, coeff_smul, coeff_map]
-        simp only [smul_eq_mul, map_mul, frMap_algebraMap]) }
+        simp only [map_mul, frMap_algebraMap]) }
   let m0 : Mod p hμ →ₛₗ[WittVector.map (p := p) σ] Mod p hσμ :=
     Submodule.mapQ _ _ L0 (fun f hf => (hB f.1 f.2).2.1 hf)
   refine ⟨m1.comp m0, fun f => ?_⟩

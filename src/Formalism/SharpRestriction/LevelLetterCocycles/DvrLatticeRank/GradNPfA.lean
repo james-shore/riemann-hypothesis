@@ -30,7 +30,6 @@ theorem gradNPf_γD_smul (g : W.Gam) (a : LetA O n) (x : W.DD T) :
   rw [algebraMap_smul, W.γE_ext, algebraMap_smul] at h
   first
   | exact h
-  | simpa [Formalism.BasicNotions.LocWach.γA] using h
 
 theorem gradNPf_tf (a : LetA O n) (ha : IsUnit (algebraMap (LetA O n) W.EE a)) (x : W.DD T)
     (hx : a • x = 0) : x = 0 := by
@@ -42,8 +41,6 @@ theorem gradNPf_tf (a : LetA O n) (ha : IsUnit (algebraMap (LetA O n) W.EE a)) (
 private theorem mem_DelS_iff_forall_gammaD_fixed {x : W.DD T} : x ∈ DelS W T ↔ ∀ δ ∈ W.DelF, W.γD T δ x = x := by
   first
   | exact mem_DelS W T x
-  | simp only [DelS, Submodule.mem_iInf, LinearMap.mem_ker, LinearMap.sub_apply, LinearMap.id_apply,
-      sub_eq_zero]
 
 theorem gradNPf_DelS_γ (g : W.Gam) {x : W.DD T} (hx : x ∈ DelS W T) : W.γD T g x ∈ DelS W T := by
   have hx' := (mem_DelS_iff_forall_gammaD_fixed W T).mp hx
@@ -54,8 +51,6 @@ private theorem mem_letS_iff_letE_smul_eq (c : ZMod n) {x : W.DD T} :
     x ∈ letS W T c ↔ (letE c : LetA O n) • x = x := by
   first
   | exact mem_letS W T c x
-  | simp only [letS, LinearMap.mem_ker, LinearMap.restrictScalars_apply, LinearMap.coe_restrictScalars,
-      LinearMap.sub_apply, LinearMap.smul_apply, LinearMap.id_apply, sub_eq_zero]
 
 theorem gradNPf_letS_γ (g : W.Gam) (c : ZMod n) {x : W.DD T} (hx : x ∈ letS W T c) :
     W.γD T g x ∈ letS W T c := by
@@ -67,7 +62,6 @@ theorem gradNPf_PiNS_DelS (π' : LetA O n) (k : ℕ) {x : W.DD T} (hx : x ∈ Pi
     x ∈ DelS W T := by
   first
   | exact (Submodule.mem_inf.mp hx).2
-  | (simp only [PiNS, Submodule.mem_inf] at hx; exact hx.2)
 
 theorem gradNPf_PiNS_anti (π' : LetA O n) {j k : ℕ} (h : j ≤ k) {x : W.DD T}
     (hx : x ∈ PiNS W T π' k) : x ∈ PiNS W T π' j := by

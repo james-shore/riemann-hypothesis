@@ -59,7 +59,7 @@ theorem fr_card {F E : Type} [Field F] [ValuativeRel F] [TopologicalSpace F] [Co
   let P : Submodule 𝒪[F] (Fin 2 → 𝒪[F]) := Submodule.pi Set.univ fun _ => Ideal.span {ϖ}
   have hmap : I'.map (b.equivFun : A →ₗ[𝒪[F]] (Fin 2 → 𝒪[F])) = P := by
     ext v
-    simp only [Submodule.mem_map, Submodule.restrictScalars_mem, P, Submodule.mem_pi, Set.mem_univ,
+    simp only [Submodule.mem_map, P, Submodule.mem_pi, Set.mem_univ,
       true_implies, Ideal.mem_span_singleton']
     constructor
     · rintro ⟨x, hx, rfl⟩ i

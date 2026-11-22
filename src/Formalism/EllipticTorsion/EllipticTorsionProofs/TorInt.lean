@@ -23,17 +23,14 @@ lemma y_int {K : Type u} [NormedField K] [IsUltrametricDist K] (W : WeierstrassC
     rw [norm_mul]
     first
     | exact mul_le_one₀ ha (norm_nonneg _) hb
-    | nlinarith [norm_nonneg a, norm_nonneg b]
   have hx2 : ‖x ^ 2‖ ≤ 1 := by
     rw [norm_pow]
     first
     | exact pow_le_one₀ (norm_nonneg _) hx
-    | nlinarith [norm_nonneg x]
   have hx3 : ‖x ^ 3‖ ≤ 1 := by
     rw [norm_pow]
     first
     | exact pow_le_one₀ (norm_nonneg _) hx
-    | nlinarith [norm_nonneg x, hx2]
   have hR : ‖x ^ 3 + W.a₂ * x ^ 2 + W.a₄ * x + W.a₆‖ ≤ 1 :=
     hadd _ _ (hadd _ _ (hadd _ _ hx3 (hmul _ _ h2 hx2)) (hmul _ _ h4 hx)) h6
   by_contra hy
@@ -50,7 +47,6 @@ lemma y_int {K : Type u} [NormedField K] [IsUltrametricDist K] (W : WeierstrassC
   have hy2 : y ^ 2 = (x ^ 3 + W.a₂ * x ^ 2 + W.a₄ * x + W.a₆) - (W.a₁ * x * y + W.a₃ * y) := by
     first
     | linear_combination h'
-    | (rw [← h']; ring)
   have hsub : ‖(x ^ 3 + W.a₂ * x ^ 2 + W.a₄ * x + W.a₆) - (W.a₁ * x * y + W.a₃ * y)‖ ≤ ‖y‖ := by
     rw [sub_eq_add_neg]
     refine (IsUltrametricDist.norm_add_le_max _ _).trans (max_le (hR.trans hy.le) ?_)

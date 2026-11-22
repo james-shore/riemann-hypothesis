@@ -15,8 +15,6 @@ private theorem valuationSubring_valuation_le_one_of_mem {K : Type} [Field K] (O
     (hx : x ∈ O) : O.valuation x ≤ 1 := by
   first
   | exact (O.valuation_le_one_iff x).mpr hx
-  | exact O.valuation_le_one ⟨x, hx⟩
-  | exact (ValuationSubring.valuation_le_one_iff O x).2 hx
 
 theorem v_small {g y : K} (hg : O.valuation g < 1) (hy : y ∈ O) : O.valuation (g * y) < 1 := by
   rw [map_mul]
@@ -25,7 +23,6 @@ theorem v_small {g y : K} (hg : O.valuation g < 1) (hy : y ∈ O) : O.valuation 
         first
         | exact mul_le_mul_left' h1 _
         | exact mul_le_mul_of_nonneg_left h1 zero_le'
-        | gcongr
     _ = O.valuation g := mul_one _
     _ < 1 := hg
 
@@ -34,15 +31,10 @@ theorem v_add_small {e m : K} (he : O.valuation e = 1) (hm : O.valuation m < 1) 
   have h : O.valuation m < O.valuation e := by rw [he]; exact hm
   first
   | exact (Valuation.map_add_eq_of_lt_left _ h).trans he
-  | exact (O.valuation.map_add_eq_of_lt_left h).trans he
-  | (rw [add_comm]; exact (Valuation.map_add_eq_of_lt_right _ h).trans he)
-  | (rw [add_comm]; exact (O.valuation.map_add_eq_of_lt_right h).trans he)
 
 theorem v_neg_one : O.valuation (-1 : K) = 1 := by
   first
   | simp
-  | exact (Valuation.map_neg _ 1).trans (map_one _)
-  | rw [Valuation.map_neg, map_one]
 
 end Main
 
@@ -50,13 +42,11 @@ private theorem sub_vecMul_field {K : Type} [Field K] {n : ℕ} (M : Matrix (Fin
     (x y : Fin n → K) : (x - y) ᵥ* M = x ᵥ* M - y ᵥ* M := by
   first
   | exact Matrix.sub_vecMul M x y
-  | (funext j; simp [Matrix.vecMul, dotProduct, sub_mul, Finset.sum_sub_distrib])
 
 private theorem add_vecMul_field {K : Type} [Field K] {n : ℕ} (M : Matrix (Fin n) (Fin n) K)
     (x y : Fin n → K) : (x + y) ᵥ* M = x ᵥ* M + y ᵥ* M := by
   first
   | exact Matrix.add_vecMul M x y
-  | (funext j; simp [Matrix.vecMul, dotProduct, add_mul, Finset.sum_add_distrib])
 
 private theorem smul_vecMul_field {K : Type} [Field K] {n : ℕ} (M : Matrix (Fin n) (Fin n) K)
     (c : K) (x : Fin n → K) : (c • x) ᵥ* M = c • (x ᵥ* M) := by
@@ -96,8 +86,8 @@ private theorem exists_pr_orthogonal_left_sub_smul_mem {K : Type} [Field K] (O :
   refine ⟨u0 - g • w, Λ1.sub_mem hu0 (smem O hg hw), fun j => ?_, w, hw, rfl⟩
   rw [← hS]
   constructor
-  · simp [pr_sub_right, pr_sum_right, pr_add_right, pr_smul_right, e1, e2, e3, e4]
-  · simp [pr_sub_right, pr_sum_right, pr_add_right, pr_smul_right, e1, e2, e3, e4]
+  · simp [pr_sub_right, pr_sum_right, pr_add_right, pr_smul_right, e1, e3]
+  · simp [pr_sub_right, pr_sum_right, pr_add_right, pr_smul_right, e2, e4]
 
 private theorem exists_pr_orthogonal_right_sub_smul_mem {K : Type} [Field K] (O : ValuationSubring K) {n r : ℕ}
     (P : Matrix (Fin n) (Fin n) K) (Λ2 : Submodule O (Fin n → K)) (a a' α α' : Fin r → Fin n → K)
@@ -117,8 +107,8 @@ private theorem exists_pr_orthogonal_right_sub_smul_mem {K : Type} [Field K] (O 
   refine ⟨φ0 - g • w, Λ2.sub_mem hφ0 (smem O hg hw), fun j => ?_, w, hw, rfl⟩
   rw [← hS]
   constructor
-  · simp [pr_sub_left, pr_sum_left, pr_add_left, pr_smul_left, e1, e2, e3, e4]
-  · simp [pr_sub_left, pr_sum_left, pr_add_left, pr_smul_left, e1, e2, e3, e4]
+  · simp [pr_sub_left, pr_sum_left, pr_add_left, pr_smul_left, e1, e4]
+  · simp [pr_sub_left, pr_sum_left, pr_add_left, pr_smul_left, e2, e3]
 
 private theorem exists_isAdmissible_of_chain_lemma_8 {K : Type} [Field K] {O : ValuationSubring K} {n r : ℕ}
     {P : Matrix (Fin n) (Fin n) K} {Λ1 Λ2 : Submodule O (Fin n → K)} {a a' α α' : Fin r → Fin n → K}
@@ -138,15 +128,12 @@ private theorem exists_isAdmissible_of_chain_lemma_8 {K : Type} [Field K] {O : V
       (T2 : Matrix (Fin n) (Fin n) K) * (T1 : Matrix (Fin n) (Fin n) K) := by
     first
     | exact Units.val_mul T2 T1
-    | rfl
-    | simp
   refine ⟨T2 * T1, good_mul _ _ _ _ _ _ _ _ hT2 hT1, ?_, ?_⟩
   · rw [hcoe, ← Matrix.mulVec_mulVec, hT1u, hT2u]
   · rw [hcoe, ← Matrix.vecMul_vecMul, hT2φ, smul_vecMul_field, hT1φ, smul_smul]
     congr 1
     first
     | rw [div_mul_div_comm, mul_comm (pr P φm um) (pr P φp up), mul_div_mul_right _ _ hm0]
-    | (field_simp; try ring)
 
 theorem existsLatticeAutomorphismApprox : LocLin := by
   unfold LocLin
@@ -216,7 +203,6 @@ theorem existsLatticeAutomorphismApprox : LocLin := by
     rw [← hTu, Matrix.mulVec_mulVec]
     first
     | simp
-    | rw [← Units.val_mul, inv_mul_cancel, Units.val_one, Matrix.one_mulVec]
   have hφ0e : φ0 = φ1 + g • w2 := by
     rw [hφ1e]
     abel
@@ -229,6 +215,5 @@ theorem existsLatticeAutomorphismApprox : LocLin := by
   · rw [hTφ, hc, hφ0e, add_vecMul_field, sub_vecMul_field, smul_vecMul_field, smul_vecMul_field]
     first
     | module
-    | (simp only [add_smul, one_smul, smul_sub, mul_smul]; abel)
 
 end PI.UnitaryGroupMassFormula.ScXuExists

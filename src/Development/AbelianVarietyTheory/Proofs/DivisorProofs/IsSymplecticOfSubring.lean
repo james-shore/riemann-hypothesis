@@ -43,7 +43,7 @@ theorem translFixed_of_pair {S : Scheme.{0}} {h M : ℕ} (A : Over S) [GrpObj A]
 theorem units_map_comp_appTop {X Y Z : Scheme.{0}} (f : X ⟶ Y) (g : Y ⟶ Z) (u : Γ(Z, ⊤)ˣ) :
     Units.map (f ≫ g).appTop.hom.toMonoidHom u =
       Units.map f.appTop.hom.toMonoidHom (Units.map g.appTop.hom.toMonoidHom u) :=
-  Units.ext (by simp [Scheme.Hom.comp_appTop]; rfl)
+  Units.ext (by simp; rfl)
 
 theorem isSymplectic_of_subring : ∀ (h M : ℕ) (B R : Type) [CommRing B] [CommRing R] (ζ : Bˣ) (R₁ : Subring R) (s₁ : Sp R₁ ⟶ Sp B) (A : Over (Sp R)) [GrpObj A] (P : LB (A ⊗ A).left) (lv : Std h M → (𝟙_ (Over (Sp R)) ⟶ A)) (A₁ : Over (Sp R₁)) [GrpObj A₁] (P₁ : LB (A₁ ⊗ A₁).left) (lv₁ : Std h M → (𝟙_ (Over (Sp R₁)) ⟶ A₁)), 0 < M → ζ ^ M = 1 → IsUnit (M : R₁) → IsSymmetricPair h A₁ P₁ → IsPrincipal A₁ P₁ → IsLevel A₁ lv₁ → P.IsLB → IsPullbackTriple A P lv A₁ P₁ lv₁ (spMap R₁.subtype) → IsSymplectic ζ (spMap R₁.subtype ≫ s₁) A P lv → IsSymplectic ζ s₁ A₁ P₁ lv₁ := by
   intro h M B R _ _ ζ R₁ s₁ A _ P lv A₁ _ P₁ lv₁ hM hζ hu H₁ H₂ H₃ hPR Hpb Hs
@@ -86,7 +86,6 @@ theorem isSymplectic_of_subring : ∀ (h M : ℕ) (B R : Type) [CommRing B] [Com
       have e := congrArg (fun q => q.hom z) (Scheme.ΓSpecIso_naturality (CommRingCat.ofHom R₁.subtype))
       first
         | exact e
-        | (simp only [CommRingCat.hom_comp, RingHom.comp_apply, CommRingCat.hom_ofHom, Subring.subtype_apply] at e; exact e)
     intro x y hxy
     have h2 := congrArg (Scheme.ΓSpecIso (CommRingCat.of R)).hom.hom hxy
     rw [k, k] at h2
@@ -106,7 +105,7 @@ theorem isSymplectic_of_subring : ∀ (h M : ℕ) (B R : Type) [CommRing B] [Com
   have hinj : Function.Injective (Units.map (toUnit X').left.appTop.hom.toMonoidHom) := fun u v huv =>
     Units.ext (inj (by
       have := congrArg Units.val huv
-      simp only [Units.coe_map, MonoidHom.coe_coe, Over.toUnit_left] at this
+      simp only [Units.coe_map, Over.toUnit_left] at this
       exact this))
   have q₂ : Units.map (toUnit X').left.appTop.hom.toMonoidHom
       (Units.map ((𝟙_ (Over (Sp R₁))).hom ≫ s₁).appTop.hom.toMonoidHom (unitOn (ζ ^ (2 * stdForm a b).val))) =

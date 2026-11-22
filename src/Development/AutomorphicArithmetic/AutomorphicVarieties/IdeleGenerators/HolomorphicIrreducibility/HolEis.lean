@@ -137,7 +137,7 @@ private theorem proj (hR : RayFin) (hC : CharPick) {φ : TR.Sm F 2} {ψ : GA F 2
   have am : ∀ t u : Ideles F, aff (t * u) (0 : Ad F) = aff u 0 * aff t 0 := fun t u => by rw [aff_mul, mul_comm]; simp
   have hH : ∀ g, IsOpen (H g : Set (Ideles F)) ∧ (H g).FiniteIndex := fun g => by
     refine hR F (H g) (fun a t => ?_) (fun y hy t => ?_) ?_
-    · simp only [f, am, mul_assoc, hT, mul_inv, map_mul, map_inv, ν.2.2 a, inv_one, mul_one]
+    · simp only [f, am, mul_assoc, hT, map_mul, map_inv, ν.2.2 a, mul_one]
     · simp only [f, am, mul_assoc, hI y hy, mul_inv, map_mul, map_inv, Units.val_mul, Units.inv_mul_cancel_left]
     · set k := Matrix.GeneralLinearGroup.map (pFin F) g
       have h1 := (isOpen_ker_finIdele F (ν.1.comp (finId F)) (ν.2.1.comp (continuous_finId F))).mem_nhds (map_one _)
@@ -160,7 +160,7 @@ private theorem proj (hR : RayFin) (hC : CharPick) {φ : TR.Sm F 2} {ψ : GA F 2
   have hc : Continuous χ := continuous_of_continuousAt_one χ <| (continuousAt_const (y := 1)).congr <|
     Filter.eventually_of_mem ((hH g₀).1.mem_nhds (one_mem _)) fun u hu => (hχ u hu).symm
   have hd : ∀ a : Fˣ, χ (diagUnits F a) = 1 := fun a => hχ _ fun t => by
-    simp only [f, am, mul_assoc, hT, mul_inv, map_mul, map_inv, ν.2.2 a, inv_one, mul_one]
+    simp only [f, am, mul_assoc, hT, map_mul, map_inv, ν.2.2 a, mul_one]
   refine ⟨⟨χ, hc, hd⟩, fun g => L (f g), ?_, Function.ne_iff.2 ⟨g₀, hL0⟩, ?_, fun a x g => ?_⟩
   · have := (hH g₀).2
     refine isOfFinOrder_iff_pow_eq_one.2 ⟨(H g₀).index, Nat.pos_of_ne_zero this.index_ne_zero, Subtype.ext (MonoidHom.ext fun t => ?_)⟩

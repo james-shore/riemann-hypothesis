@@ -26,14 +26,14 @@ theorem mixed_eq_zero (u : mixedEmbedding.mixedSpace F)
       (∑ w, z.1 w) + ∑ w, 2 * (z.2 w).re := by
     intro z
     rw [Algebra.trace_prod_apply, GroundTheory.Global.SemiLocal.trace_pi, GroundTheory.Global.SemiLocal.trace_pi]
-    simp [Algebra.trace_self_apply, Algebra.trace_complex_apply]
+    simp [Algebra.trace_complex_apply]
   refine Prod.ext (funext fun w => ?_) (funext fun w => ?_)
   · have h1 := h (Pi.single w 1, 0)
     rw [htr] at h1
     simpa [Pi.single_apply] using h1
   · have h1 := h (0, Pi.single w (star (u.2 w)))
     rw [htr] at h1
-    simp [Pi.single_apply, Complex.star_def] at h1
+    simp [Pi.single_apply] at h1
     rw [Finset.sum_eq_single w (fun v _ hv => by simp [hv]) (by simp)] at h1
     simp at h1
     have ha : (u.2 w).re = 0 := by nlinarith [mul_self_nonneg (u.2 w).re, mul_self_nonneg (u.2 w).im]
@@ -212,13 +212,13 @@ theorem schur : GlobalTheory.FunPr.Hypotheses₂ → ∀ (F : Type) [Field F] [N
       · rw [Complex.zero_re, ← RCLike.re_to_complex, ← integral_re hI]
         have e : (fun x => RCLike.re (ψ (x ⬝ᵥ y) * (D x : ℂ))) = fun x => ((1 : ℂ) * ψ (x ⬝ᵥ y)).re * D x := by
           funext x
-          simp [Complex.mul_re]
+          simp
         rw [e]
         exact hre y 1
       · rw [Complex.zero_im, ← RCLike.im_to_complex, ← integral_im hI]
         have e : (fun x => RCLike.im (ψ (x ⬝ᵥ y) * (D x : ℂ))) = fun x => ((-Complex.I) * ψ (x ⬝ᵥ y)).re * D x := by
           funext x
-          simp [Complex.mul_re, Complex.mul_im]
+          simp [Complex.mul_re]
         rw [e]
         exact hre y (-Complex.I)
     have hD0 := GlobalTheory.CharFourierInj.real_eq_zero (G := κ → AF F) (A := κ → AF F) (fun y x => ψ (x ⬝ᵥ y)) hcy

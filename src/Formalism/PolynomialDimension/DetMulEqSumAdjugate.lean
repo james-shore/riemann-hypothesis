@@ -41,8 +41,6 @@ theorem graphMinor : Formalism.CountingSumsFrames.GraphMinor := by
       rw [Matrix.mulVec_mulVec, Matrix.mul_adjugate]
       first
         | rw [Matrix.smul_mulVec, Matrix.one_mulVec]
-        | rw [Matrix.smul_mulVec_assoc, Matrix.one_mulVec]
-        | (ext x; simp [Matrix.mulVec, dotProduct, Matrix.one_apply])
     rw [h0, Matrix.mulVec_zero] at h1
     exact (smul_eq_zero.mp h1.symm).resolve_left hA
   obtain ⟨i, hi⟩ : ∃ i, Matrix.mulVec (H.submatrix id (Fin.castLE h)).adjugate (fun m => H m c) i ≠ 0 := by
@@ -160,8 +158,6 @@ theorem detMulEqSumAdjugate : Formalism.CountingSumsFrames.DetMulEqSumAdjugate :
   calc T.det * s a = Matrix.mulVec (T.det • (1 : Matrix (Fin r) (Fin r) R)) s a := by
         first
           | (rw [Matrix.smul_mulVec, Matrix.one_mulVec]; rfl)
-          | (rw [Matrix.smul_mulVec_assoc, Matrix.one_mulVec]; rfl)
-          | simp [Matrix.mulVec, dotProduct, Matrix.one_apply, Matrix.smul_apply]
     _ = Matrix.mulVec (T.adjugate * T) s a := by rw [Matrix.adjugate_mul]
     _ = Matrix.mulVec T.adjugate (Matrix.mulVec T s) a := by rw [Matrix.mulVec_mulVec]
     _ = ∑ l, Matrix.mulVec T s l * T.adjugate a l := by
@@ -209,7 +205,7 @@ theorem keyVanish : Formalism.CountingSumsFrames.KeyVanish := by
     simp only [Matrix.mul_diagonal, Matrix.vecMul, dotProduct, T', P, G, Matrix.of_apply]
     refine Finset.sum_congr rfl fun i _ => ?_
     by_cases hi : i.val < r
-    · simp [hi, Matrix.diagonal_apply]
+    · simp [hi]
     · have h0 : t l i = 0 := ht l i (by omega)
       simp [hi, h0, zero_pow (hpne _)]
   · intro a t v ha ht hv
@@ -248,10 +244,8 @@ theorem cleanInduction : Formalism.CountingSumsFrames.CleanInduction := by
           obtain ⟨hxy, hyo, hsp⟩ := hch y hy
           refine ih (o + c' - level y) (by omega) y le_rfl (by omega) ?_ ?_
           · simp only [hsp]
-            push_cast at h1 ⊢
             linarith
           · simp only [hsp]
-            push_cast at h2 ⊢
             linarith
         choose! gy hgyD hgyF hgyF' using hy
         refine ⟨raw x - ∑ y ∈ ch, gy y, Deg.sub_mem (hdeg x).2 (sum_mem fun y hy => hgyD y hy), ?_, ?_⟩
@@ -277,7 +271,6 @@ theorem cleanInduction : Formalism.CountingSumsFrames.CleanInduction := by
       nlinarith [mul_nonneg (show (0 : ℤ) ≤ 2 * Q + 1 by positivity) (show (0 : ℤ) ≤ level x - o by linarith),
         (show (0 : ℤ) ≤ Q by positivity), (show (0 : ℤ) ≤ c' by positivity)]
     · simp only [hsp]
-      push_cast
       linarith
   choose! g hgD hgF hgF' using hinit
   refine ⟨∑ x ∈ S, g x, sum_mem fun x hx => hgD x hx, ?_, sum_mem fun x hx => hgF' x hx⟩
@@ -323,7 +316,6 @@ theorem lemma4Geom : Formalism.CountingSumsFrames.Lemma4Geom := by
     have h1 : ∑ m ∈ insert 0 S, (1 / p ^ 2) ^ m ≤ ∑' m : ℕ, (1 / p ^ 2) ^ m := by
       first
         | exact hsum.sum_le_tsum _ (fun m _ => pow_nonneg hx0 m)
-        | exact sum_le_tsum _ (fun m _ => pow_nonneg hx0 m) hsum
     rw [Finset.sum_insert h0S, pow_zero, tsum_geometric_of_lt_one hx0 hx1] at h1
     have h2 : (1 - 1 / p ^ 2)⁻¹ - 1 = 1 / (p ^ 2 - 1) := by
       have hp2' : p ^ 2 - 1 ≠ 0 := by linarith

@@ -81,8 +81,6 @@ private lemma gN_right_lemma_3 {k r : ℕ} {κ : Mat k r} (hκ : κᴴ * κ = 1)
   have hκ' : κ * κᴴ = 1 := by
     first
       | exact mul_eq_one_comm.mp hκ
-      | exact (Matrix.mul_eq_one_comm).1 hκ
-      | exact Matrix.mul_eq_one_comm_of_equiv (Equiv.refl _) hκ
   unfold gN
   congr 1
   apply Complex.ofReal_injective

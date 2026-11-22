@@ -62,7 +62,6 @@ theorem integrableOn_chart [CompactSpace X] [T2Space X] (A : FinHolAtlas e X)
       (g ((A.chart j).symm u) * locDens A Φ j u)) ((A.chart j) '' tsupport (Pt.χ j)) := by
     first
       | exact hI.continuousOn_mul (hχc.mono hKt) hKc
-      | exact IntegrableOn.continuousOn_mul (hχc.mono hKt) hI hKc
   simp only [mul_assoc]
   refine hI2.of_forall_diff_eq_zero (A.chart j).open_target.measurableSet ?_
   rintro u ⟨hut, huK⟩

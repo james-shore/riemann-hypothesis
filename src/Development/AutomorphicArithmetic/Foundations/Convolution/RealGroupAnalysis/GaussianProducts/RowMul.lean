@@ -47,12 +47,12 @@ theorem UpperTheory.ConvolutionTheory.R2.G.rowMul :
     refine inv_eq_of_mul_eq_one_right ?_
     refine Subtype.ext ?_
     show (nU b).1 * (nU (-b)).1 = 1
-    simp [nU, Matrix.one_fin_two, Matrix.mul_fin_two]
+    simp [nU, Matrix.one_fin_two]
   have hwinv : (wW F)⁻¹ = wW F * wW F * wW F := by
     refine inv_eq_of_mul_eq_one_right ?_
     refine Subtype.ext ?_
     show (wW F).1 * ((wW F).1 * (wW F).1 * (wW F).1) = 1
-    simp [wW, Matrix.one_fin_two, Matrix.mul_fin_two]
+    simp [wW, Matrix.one_fin_two]
   let T : Subgroup (G1 F) :=
     { carrier := {g | P g ∧ P g⁻¹}
       mul_mem' := fun {a b} ha hb => ⟨hmul a b ha.1 hb.1, by

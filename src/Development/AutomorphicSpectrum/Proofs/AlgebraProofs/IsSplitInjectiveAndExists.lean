@@ -29,7 +29,7 @@ theorem isSplit_injective_and_exists (O k S : Type) [CommRing O] [Field k] [Fint
       | add u v hu hv' => simp [map_add, hu, hv']
     have h1 := key y
     rw [hy] at h1
-    simp [Pi.single_apply, Ne.symm hne] at h1
+    simp [Ne.symm hne] at h1
   · intro ψ
     let Ψ : TensorProduct ℤ k O →ₐ[k] k :=
       Algebra.TensorProduct.lift (AlgHom.id k k) ψ.toIntAlgHom (fun _ _ => Commute.all _ _)
@@ -53,7 +53,7 @@ theorem isSplit_injective_and_exists (O k S : Type) [CommRing O] [Field k] [Fint
       by_cases hts : t = s
       · subst hts
         simp
-      · simp [Pi.single_apply, hts]
+      · simp [hts]
     ext o
     have h1 := congrArg Ψ (hmul ((1 : k) ⊗ₜ[ℤ] o))
     have h2 : Ψ ((1 : k) ⊗ₜ[ℤ] o) = ψ o := by

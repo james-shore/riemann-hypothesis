@@ -29,10 +29,6 @@ theorem L_apply (ν : Measure (GA E k)) [IsFiniteMeasure ν] (φ' x : XB E k) (h
     L ν φ' h x = ∫ g, x (g * h) * conj (φ' g) ∂ν := by
   first
     | rfl
-    | (simp only [L, I, ContinuousLinearMap.coe_comp', Function.comp_apply, ContinuousLinearMap.flip_apply,
-        ContinuousLinearMap.mul_apply', LinearMap.mkContinuous_apply, LinearMap.coe_mk, AddHom.coe_mk,
-        BoundedContinuousFunction.mul_apply, BoundedContinuousFunction.star_apply]
-       rfl)
 
 end PKY
 

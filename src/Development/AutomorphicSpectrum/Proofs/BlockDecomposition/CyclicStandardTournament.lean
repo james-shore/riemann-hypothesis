@@ -60,7 +60,7 @@ theorem cyc_eq {t : Fin n → Fin n → ℝ} (h : IsT t) (a c : Fin n) : cyc t a
   split_ifs with e
   · subst e; simp [h.diag]
   · rw [h.diag]
-    rcases h.pm c a e with x | x <;> simp [x, h.anti c a, h.diag]
+    rcases h.pm c a e with x | x <;> simp [x, h.anti c a]
 
 theorem cyc_le {t : Fin n → Fin n → ℝ} (h : IsT t) {a b c : Fin n} (hab : a ≠ b) (hbc : b ≠ c) (hca : c ≠ a) :
     cyc t a b c ≤ 1 := by

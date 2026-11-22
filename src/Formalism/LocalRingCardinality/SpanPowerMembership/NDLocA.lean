@@ -51,8 +51,6 @@ theorem mem_ball (x : PadicAlgCl l) : x ∈ ball l ↔ ‖x‖ ≤ 1 := by
   rw [ball, Valuation.mem_valuationSubring_iff]
   first
     | exact Iff.rfl
-    | (rw [← NNReal.coe_le_coe]; rfl)
-    | simp
 
 variable {l} {Ω : Type} [Field Ω]
 
@@ -72,7 +70,6 @@ theorem val_lt_one_iff {A : ValuationSubring Ω} {j : Ω →+* PadicAlgCl l}
     rw [e1, ← not_le, ValuationSubring.valuation_le_one_iff, hj, map_inv₀, norm_inv, not_le]
     first
       | exact one_lt_inv₀ hpos
-      | (rw [one_lt_inv_iff₀]; simp [hpos])
 
 variable (l) in
 theorem prime_l : Prime ((l : ℕ) : 𝓞 ℚ) := by
@@ -132,8 +129,6 @@ theorem isPlaceOver_vQ [Algebra ℚ Ω] (A : ValuationSubring Ω) (hA : A.valuat
   rw [intCast_mem_vQ, ← val_intCast_lt_one_iff A hA n]
   first
     | simp
-    | (push_cast; rfl)
-    | norm_cast
 
 theorem exists_emb [Algebra ℚ Ω] [IsAlgClosure ℚ Ω] (A : ValuationSubring Ω)
     (hA : A.valuation ((l : ℕ) : Ω) < 1) :

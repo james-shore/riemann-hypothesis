@@ -16,9 +16,7 @@ theorem exists_natCast_smul_coeff_isIntegral {σ K : Type} [Field K] [CharZero K
   first
   | exact @_root_.GlobalTheory.NatMultipleIntegralCoefficients.exists_nat_smul_coeff_isIntegral
   | exact _root_.GlobalTheory.NatMultipleIntegralCoefficients.exists_nat_smul_coeff_isIntegral
-  | (apply _root_.GlobalTheory.NatMultipleIntegralCoefficients.exists_nat_smul_coeff_isIntegral <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatMultipleIntegralCoefficients.exists_nat_smul_coeff_isIntegral <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatMultipleIntegralCoefficients.exists_nat_smul_coeff_isIntegral <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.NatMultipleIntegralCoefficients.exists_nat_smul_coeff_isIntegral)
   | (intros; exact _root_.GlobalTheory.NatMultipleIntegralCoefficients.exists_nat_smul_coeff_isIntegral ..)
 
 theorem smul_mem_HHa {T : Type} {r : T → ℕ} {n : ℕ} {k : Type} [Field k] {cc : T → T} {isX : T → Prop}
@@ -36,6 +34,6 @@ theorem exists_natCast_smul_mem_harmA :
   refine ⟨N, hN, ⟨smul_mem_HHa _ hP, fun m => h m⟩, ?_⟩
   have hN' : (N : c.F) ≠ 0 := Nat.cast_ne_zero.2 hN.ne'
   ext m
-  simp [MvPolynomial.mem_support_iff, MvPolynomial.coeff_smul, hN']
+  simp [MvPolynomial.mem_support_iff, hN']
 
 end GlobalTheory

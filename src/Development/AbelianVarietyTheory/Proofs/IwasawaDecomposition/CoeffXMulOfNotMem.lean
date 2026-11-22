@@ -139,7 +139,7 @@ theorem IsPDer.X_mul {k : σ} {E D : MvPowerSeries σ ℂ} (h : IsPDer k E D) (m
   · obtain ⟨β, rfl⟩ := hα
     simp only
     rw [coeff_X_mul_add, add_right_comm, coeff_X_mul_add, ← h β]
-    simp [Finsupp.single_apply, Ne.symm hk]
+    simp [Ne.symm hk]
   · obtain ⟨h1, h2⟩ := coeff_X_mul_of_notMem m D hα
     rw [h2, (coeff_X_mul_of_notMem m E _).2, mul_zero]
     rintro ⟨β, hβ⟩

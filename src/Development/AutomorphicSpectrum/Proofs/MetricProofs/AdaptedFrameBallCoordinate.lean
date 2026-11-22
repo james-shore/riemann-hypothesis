@@ -37,7 +37,7 @@ theorem sgUInv_mulVec (u : Matrix (Sg j j') (Sg j j') ℂ) (x : Fin j' → ℂ) 
       Sum.elim (-(u.toBlocks₂₁ᴴ *ᵥ x)) (u.toBlocks₂₂ᴴ *ᵥ x) := by
   conv_lhs => rw [← fromBlocks_toBlocks u]
   simp only [sgI, fromBlocks_conjTranspose, fromBlocks_multiply, fromBlocks_mulVec]
-  ext (i | i) <;> simp [Matrix.neg_mulVec, Matrix.mulVec_neg]
+  ext (i | i) <;> simp [Matrix.neg_mulVec]
 
 theorem mulVec_elim_zero (u : Matrix (Sg j j') (Sg j j') ℂ) (w : Fin j → ℂ) :
     u *ᵥ Sum.elim w 0 = Sum.elim (u.toBlocks₁₁ *ᵥ w) (u.toBlocks₂₁ *ᵥ w) := by
@@ -51,7 +51,7 @@ theorem moebW_zero (u : Matrix (Sg j j') (Sg j j') ℂ) :
 
 theorem star_conj_single (d : Matrix (Fin j') (Fin j') ℂ) (a b : Fin j') :
     star (dᴴ *ᵥ Pi.single a 1) ⬝ᵥ (dᴴ *ᵥ Pi.single b 1) = (d * dᴴ) a b := by
-  simp [Matrix.mul_apply, dotProduct, Matrix.mulVec_single_one, Matrix.conjTranspose_apply]
+  simp [Matrix.mul_apply, dotProduct, Matrix.conjTranspose_apply]
 
 end Pure
 

@@ -176,7 +176,7 @@ theorem Hk_finv_emb {k : ℕ} (q : GK L N) {ω : Form (HS L N) k} (hω : ∀ γ,
     have eq : q * toK L N (σ c).out = toK L N t * ((q * toK L N c.out) * toK L N γ) := by
       have hsplit : (σ c).out = ((σ c).out * (c.out * γ)⁻¹) * (c.out * γ) := by group
       rw [hsplit, map_mul (toK L N) _ (c.out * γ), ← hx]
-      simp [MulAut.conj_apply, mul_assoc]
+      simp [mul_assoc]
     have ht : FInv ω (toP L N (toK L N t)) := hω t
     rw [eq, map_mul, map_mul, pb_mul_eq_pb_of_fInv_of_mem_Pos ht _ hh]
     rfl

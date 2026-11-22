@@ -71,7 +71,7 @@ theorem chT_div (hExt : ExtendStatement n M) (hz : IsLocalHomeomorph z) (he : Is
             by_cases hG0 : G (e.symm y) = 0
             · simp [hG0]
             · rw [(chT_wd ρ φ O hOo h1 y (hGO y hy hG0) j).1]
-          · simp [Set.indicator_apply, hy]
+          · simp [hy]
   have hR : ∫ x, D x * e.source.indicator (ψ ∘ e) x ∂vol n z =
       ∫ y, e.target.indicator (D ∘ e.symm) y * φ y := by
     calc _ = ∫ y in e.target, D (e.symm y) * e.source.indicator (ψ ∘ e) (e.symm y) :=
@@ -85,7 +85,7 @@ theorem chT_div (hExt : ExtendStatement n M) (hz : IsLocalHomeomorph z) (he : Is
             by_cases hD0 : D (e.symm y) = 0
             · simp [hD0]
             · simp [hψdef, h1 y (h2O y hy hD0)]
-          · simp [Set.indicator_apply, hy]
+          · simp [hy]
   rw [hL, hR] at hw
   exact hw
 
@@ -150,7 +150,7 @@ theorem chT_S (hExt : ExtendStatement n M) (hz : IsLocalHomeomorph z) (he : IsCh
             by_cases hG0 : G (e.symm y) = 0
             · simp [hG0]
             · rw [(chT_wd ρ φ O hOo h1 y (hGO y hy hG0) j).2, (chT_wd ρ φ O hOo h1 y (hGO y hy hG0) k).2]
-          · simp [Set.indicator_apply, hy]
+          · simp [hy]
   have hR : ∫ x, S x j k * e.source.indicator (ψ ∘ e) x ∂vol n z =
       ∫ y, e.target.indicator (S ∘ e.symm) y j k * φ y := by
     have hSjk : AEStronglyMeasurable (fun x => S x j k) (vol n z) :=
@@ -166,7 +166,7 @@ theorem chT_S (hExt : ExtendStatement n M) (hz : IsLocalHomeomorph z) (he : IsCh
             by_cases hS0 : S (e.symm y) = 0
             · simp [hS0]
             · simp [hψdef, h1 y (h2O y hy hS0)]
-          · simp [Set.indicator_apply, hy]
+          · simp [hy]
   rw [hL, hR] at hw
   exact hw
 
@@ -270,7 +270,7 @@ theorem chT_back (hExt : ExtendStatement n M) (hz : IsLocalHomeomorph z) (he : I
   set g : M → V n := e.source.indicator (G' ∘ e) with hgdef
   have hgj : ∀ j, (fun x => g x j) = e.source.indicator ((fun u => G' u j) ∘ e) := fun j => by
     funext x
-    by_cases hx : x ∈ e.source <;> simp [hgdef, Set.indicator_apply, hx]
+    by_cases hx : x ∈ e.source <;> simp [hgdef, hx]
   have hdiv : ∀ x, divF n z g x =
       e.source.indicator (fun x => ∑ i, wd n i (fun u => G' u i) (e x)) x := by
     intro x
@@ -298,7 +298,7 @@ theorem chT_back (hExt : ExtendStatement n M) (hz : IsLocalHomeomorph z) (he : I
   refine ⟨g, ?_, ?_, ?_, ?_, ?_⟩
   · intro j
     rw [hgj j]
-    exact ⟨fun e' he' => ((hE j).1 e' he').of_le (by first | (simp; done) | (norm_num; done) | exact_mod_cast (le_top : ((2 : ℕ) : ℕ∞) ≤ ⊤) | exact WithTop.coe_le_coe.2 le_top | exact le_top), (hE j).2.1⟩
+    exact ⟨fun e' he' => ((hE j).1 e' he').of_le (by first | (simp; done) | (norm_num; done) | exact_mod_cast (le_top : ((2 : ℕ) : ℕ∞) ≤ ⊤) | exact WithTop.coe_le_coe.2 le_top), (hE j).2.1⟩
   · intro x hx
     by_cases hxs : x ∈ e.source
     · rw [hgdef, Set.indicator_of_mem hxs, Function.comp_apply]
@@ -310,7 +310,7 @@ theorem chT_back (hExt : ExtendStatement n M) (hz : IsLocalHomeomorph z) (he : I
       apply htr
       · exact (((hind G' hG'd.continuous).sub hG).norm.pow 2).aemeasurable.ennreal_ofReal
       · intro x hx
-        simp [hgdef, Set.indicator_apply, hx, hGz x hx]
+        simp [hgdef, hx, hGz x hx]
       · intro y hy
         rw [hgdef, Set.indicator_of_mem (e.map_target hy), Function.comp_apply, e.right_inv hy,
           Set.indicator_of_mem hy, Function.comp_apply, ENNReal.ofReal_pow (norm_nonneg _),
@@ -328,7 +328,7 @@ theorem chT_back (hExt : ExtendStatement n M) (hz : IsLocalHomeomorph z) (he : I
       apply htr
       · exact (((hind _ hcs').sub hD).norm.pow 2).aemeasurable.ennreal_ofReal
       · intro x hx
-        simp [Set.indicator_apply, hx, hDz x hx]
+        simp [hx, hDz x hx]
       · intro y hy
         rw [Set.indicator_of_mem (e.map_target hy), e.right_inv hy, Set.indicator_of_mem hy, Function.comp_apply,
           ENNReal.ofReal_pow (norm_nonneg _), ofReal_norm_eq_enorm]
@@ -353,14 +353,14 @@ theorem chT_back (hExt : ExtendStatement n M) (hz : IsLocalHomeomorph z) (he : I
           Finset.aestronglyMeasurable_fun_sum _ fun k _ => ?_
         exact ((hind _ ((hcf _ (hG'j k) j).2.sub (hcf _ (hG'j j) k).2)).sub (hSjk j k)).norm.pow 2
       · intro x hx
-        simp [sq2, Set.indicator_apply, hx, hSz x hx]
+        simp [sq2, hx, hSz x hx]
       · intro y hy
         simp only [sq2, Set.indicator_of_mem (e.map_target hy), Set.indicator_of_mem hy,
           e.right_inv hy, Function.comp_apply]
       · intro y hy
         have hyK : y ∉ K₀ := fun h => hy (hK₀t h)
         have h0 : ∀ i j, wdb n i (fun u => G' u j) y = 0 := fun i j => (hwz j y hyK i).2
-        simp [sq2, h0, Set.indicator_apply, hy]
+        simp [sq2, h0, hy]
     rw [heq]
     exact h3
 

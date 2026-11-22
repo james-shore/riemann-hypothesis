@@ -40,7 +40,6 @@ theorem map_letA_smul_comm {T₁ T₂ : LocLat G Qp LL O} (F : LatHom T₁.L T�
   first
   | exact map_smul (W.map F) a x
   | exact LinearMap.map_smul_of_tower (W.map F) a x
-  | (rw [← algebraMap_smul W.EE a x, map_smul, algebraMap_smul])
 
 theorem map_gamma_comm {T₁ T₂ : LocLat G Qp LL O} (F : LatHom T₁.L T₂.L) (x : W.DD T₁) :
     W.map F (W.γ T₁ x) = W.γ T₂ (W.map F x) := by
@@ -50,7 +49,6 @@ theorem smul_eq_algebraMap_letA_smul (T : LocLat G Qp LL O) (c : O) (y : W.DD T)
     c • y = (algebraMap (LetA O n) W.EE (algebraMap O (LetA O n) c)) • y := by
   first
   | (rw [algebraMap_smul, algebraMap_smul])
-  | simp [algebraMap_smul]
 
 theorem gammaD_smul_letA (T : LocLat G Qp LL O) (g : W.Gam) (a : LetA O n) (x : W.DD T) :
     W.γD T g (a • x) = W.γA g a • W.γD T g x := by
@@ -63,12 +61,11 @@ theorem letGamma_idempotent (g₀ : PowerSeries O →ₐ[O] PowerSeries O) (i : 
   rw [e]
   by_cases h : j = i
   · subst h; simp [letE]
-  · simp [letE, Pi.single_apply, h]
+  · simp [letE, h]
 
 theorem idempotent_mul_self' (i : ZMod n) : (letE i : LetA O n) * letE i = letE i := by
   first
   | (unfold letE; rw [← Pi.single_mul, mul_one])
-  | (funext j; by_cases h : j = i <;> simp [letE, h])
 
 theorem gammaD_idempotent_smul' (T : LocLat G Qp LL O) (g : W.Gam) (i : ZMod n) (x : W.DD T) :
     W.γD T g ((letE i : LetA O n) • x) = (letE i : LetA O n) • W.γD T g x := by
@@ -148,7 +145,6 @@ theorem mem_invariantLetter_iff {T : LocLat G Qp LL O} {i : ZMod n} {x : W.DD T}
     x ∈ invariantLetter W T i ↔ Formalism.MainNotions.LiftingTheory.InNΔi W T i x := by
   first
   | exact Iff.rfl
-  | simp [invariantLetter, Formalism.MainNotions.LiftingTheory.InNΔi]
 
 theorem idempotent_smul_of_mem_letter {T : LocLat G Qp LL O} {i : ZMod n} {x : W.DD T} (h : x ∈ W.Nl T i) :
     (letE i : LetA O n) • x = x := by

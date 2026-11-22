@@ -33,7 +33,7 @@ def Mq (X : Data E r) (x0 x : Frame X.Ψ r) (τ : X.Ψ) :
 theorem Jd_submatrix (X : Data E r) : (Jd X).submatrix (eS X) (eS X) = -Jf (r - X.p0) X.p0 := by
   ext a b
   rcases a with i | j <;> rcases b with k | l <;>
-    simp [Jd, Jf, Matrix.diagonal_apply, Matrix.one_apply, sgn, eS_inl, eS_inr, Equiv.apply_eq_iff_eq]
+    simp [Jd, Jf, Matrix.diagonal_apply, Matrix.one_apply, sgn, eS_inl, eS_inr]
   all_goals (try split_ifs)
   all_goals (try simp_all)
 
@@ -227,7 +227,7 @@ theorem lminor_orth_ne (X : Data E r) {x0 x : Frame X.Ψ r} (hx0 : IsOrth X x0) 
   have h22 := congrArg Matrix.toBlocks₂₂ hU
   rw [← Matrix.fromBlocks_toBlocks (Mq X x0 x τ)] at h22
   simp only [Jf, Matrix.fromBlocks_conjTranspose, Matrix.fromBlocks_multiply, Matrix.toBlocks_fromBlocks₂₂,
-    Matrix.mul_one, Matrix.mul_zero, Matrix.zero_mul, Matrix.mul_neg, add_zero, zero_add] at h22
+    Matrix.mul_one, Matrix.mul_zero, Matrix.mul_neg, add_zero, zero_add] at h22
   set B := (Mq X x0 x τ).toBlocks₁₂
   set D := (Mq X x0 x τ).toBlocks₂₂
   have hDD : Dᴴ * D = 1 + Bᴴ * B := by
@@ -405,7 +405,7 @@ theorem orth_mem_dom (X : Data E r) {x : Frame X.Ψ r} (hx : IsOrth X x) : x ∈
     unfold dmin lminor
     rw [hx τ, Matrix.submatrix_diagonal _ _ (Fin.castLE_injective _), Matrix.det_diagonal, psgn,
       Complex.ofReal_prod, Finset.prod_range]
-    simp [Fin.coe_castLE]
+    simp
   rw [hd, Complex.ofReal_re]
   have hne : psgn X.p0 i ≠ 0 := by
     unfold psgn

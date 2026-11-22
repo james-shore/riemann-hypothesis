@@ -22,7 +22,7 @@ theorem crd_map_mulVec (m : (VS D).V →ₗ[D.host.E] (VS D).V) (y : (VS D).V) :
     rw [Finset.sum_eq_single j]
     · simp
     · intro b _ hbj
-      simp [Pi.single_apply, hbj]
+      simp [hbj]
     · intro h
       exact absurd (Finset.mem_univ j) h
   simp only [hb]

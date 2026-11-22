@@ -52,7 +52,7 @@ theorem transp_rel : ∀ (Ω : Type) [Field Ω] [Algebra ℚ Ω] (A : ValuationS
           Subtype.ext (r.2 s hs)
         rw [e, Derivation.map_algebraMap] }
   have key := hT ⊤ (by simp) (by simp) (TwDiff A τ) D hD
-  simp only [Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons] at key
+  simp only [Fin.sum_univ_two, Matrix.cons_val_zero, Matrix.cons_val_one] at key
   change τ a • dA A (τ b) + τ (-a') • dA A (τ b') = (0 : KaehlerDifferential (fixA A) A) at key
   rw [map_neg, hτc, hτd, hτc', hτd', neg_smul, ← sub_eq_add_neg, sub_eq_zero] at key
   exact key

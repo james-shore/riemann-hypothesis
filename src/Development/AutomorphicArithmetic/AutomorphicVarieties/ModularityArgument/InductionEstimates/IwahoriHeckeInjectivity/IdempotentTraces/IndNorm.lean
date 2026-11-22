@@ -183,7 +183,7 @@ theorem UpperTheory.V.Z.InvariantSubmoduleMonicPolynomial.E.indNorm :
         rw [Fin.sum_univ_two]
         simp only [Matrix.cons_val_zero, Matrix.cons_val_one]
         rw [Multiset.map_add, ← e₁, ← e₂, hw₁, bcSat, e₃, hfr]
-        simp [Multiset.map_map, Function.comp_def]
+        simp [Multiset.map_map]
   · intro τ τ' m m' hne' hk hm hm'
     have e1 : m₁ τ = m := ((Dp.parEx M 2 two_pos _ τ₁ hs₁).1 τ).unique (hA₁.1 τ) ((Dp.sInfIff M 2 _ π τ₁ hτ₁ τ m).2 hm)
     have e2 : m₂ τ = m' := by

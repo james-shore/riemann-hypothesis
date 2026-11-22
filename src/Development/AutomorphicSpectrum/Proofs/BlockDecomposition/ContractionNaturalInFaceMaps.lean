@@ -42,7 +42,7 @@ theorem Con_prB {R : Type} [CommRing R] {C : Type} [Category.{0} C] (F : C ⥤ C
     Con F Ξ q' (prB F e B) = pr F e (Con F Ξ q B) := by
   funext b
   rw [pr_apply, Con_apply, Con_apply]
-  simp only [prB_apply, tmap_id_eq]
+  simp only [prB_apply]
   exact con_lTensor (fun a : Fin (p + 1) ⥤ C ↦ F.obj (a.obj (Fin.last p))) Ξ _ _
 
 theorem con_prA {R : Type} [CommRing R] {C : Type} [Category.{0} C] (F : C ⥤ CommAlgCat.{0} R) {p p' : ℕ}
@@ -60,7 +60,7 @@ theorem con_prA {R : Type} [CommRing R] {C : Type} [Category.{0} C] (F : C ⥤ C
       funext a; exact map_zero _
     rw [h]; simp
   | hp f m =>
-    simp only [LinearMap.rTensor_tmul]
+    simp only
     rw [con_pure (V := fun a : Fin (p + 1) ⥤ C ↦ F.obj (a.obj (Fin.last p)))]
     exact con_pure (fun a : Fin (p' + 1) ⥤ C ↦ F.obj (a.obj (Fin.last p'))) M Ξ' (pr F e f) m
   | ha u v hu hv =>
@@ -83,7 +83,7 @@ theorem Con_prA {R : Type} [CommRing R] {C : Type} [Category.{0} C] (F : C ⥤ C
     Con F Ξ' q (prA F e B) = Con F (Ξ' ∘ₗ (pr F e).toLinearMap) q B := by
   funext b
   rw [Con_apply, Con_apply]
-  simp only [prA_apply, tmap_id_eq']
+  simp only [prA_apply]
   exact con_prA F Ξ' e _ (fun a ↦ B a b)
 
 theorem con_pr : ∀ {R : Type} [CommRing R] {C : Type} [Category.{0} C] (F : C ⥤ CommAlgCat.{0} R) {p p' q q' : ℕ} [Finite (Fin (p + 1) ⥤ C)] [Finite (Fin (p' + 1) ⥤ C)] (Ξ : Cn F p →ₗ[R] R) (Ξ' : Cn F p' →ₗ[R] R) (e : Fin (q + 1) →o Fin (q' + 1)) (e' : Fin (p + 1) →o Fin (p' + 1)), (∀ B : Bi F p q, Con F Ξ q' (prB F e B) = pr F e (Con F Ξ q B)) ∧ (∀ B : Bi F p q, Con F Ξ' q (prA F e' B) = Con F (Ξ' ∘ₗ (pr F e').toLinearMap) q B) :=

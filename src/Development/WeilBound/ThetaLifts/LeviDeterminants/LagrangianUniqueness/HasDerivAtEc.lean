@@ -167,7 +167,7 @@ theorem Test.fourier {S S' : Set (E × E)} (h : Test S) (hS : ∀ w ∈ S, (-w.2
   refine integral_congr_ae (Filter.Eventually.of_forall fun v => ?_)
   simp only [hec, hr v, smul_eq_mul, ← mul_assoc, ← ec_add]
   congr 2
-  simp only [inner_add_left, inner_add_right, inner_neg_left, inner_neg_right, real_inner_comm x]
+  simp only [inner_add_left, inner_add_right, inner_neg_right, real_inner_comm x]
   ring
 
 theorem Test.shear {S S' : Set (E × E)} (h : Test S) (b : E →ₗ[ℝ] E) (hb : ∀ x y, ⟪x, b y⟫ = ⟪y, b x⟫)

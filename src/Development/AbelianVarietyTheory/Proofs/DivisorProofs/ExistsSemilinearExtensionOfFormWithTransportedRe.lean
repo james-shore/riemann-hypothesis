@@ -24,7 +24,7 @@ theorem exists_semilinear_extension_rep :
     rw [Finset.sum_eq_single k]
     · simp
     · intro j _ hj
-      simp [Finsupp.single_apply, hj.symm]
+      simp [hj.symm]
     · simp
   have hcu : ∀ F, f (cu F) = R F := by
     intro F

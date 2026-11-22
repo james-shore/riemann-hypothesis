@@ -98,7 +98,7 @@ theorem trace_rtL (H : Host E) : Algebra.trace ℚ (Kf H) (rtL H) = 0 := by
   refine h.trans ?_
   rw [Polynomial.nextCoeff_of_natDegree_pos (by rw [Polynomial.natDegree_X_pow_add_C]; norm_num),
     Polynomial.natDegree_X_pow_add_C]
-  simp [Polynomial.coeff_X, Polynomial.coeff_C]
+  simp
 
 theorem trace_coord (H : Host E) (x : Kf H) (u v : ℚ) (hx : (x : E) = u + v * (H.rt : E)) :
     Algebra.trace ℚ (Kf H) x = 2 * u := by
@@ -116,7 +116,7 @@ theorem trace_div_rt (H : Host E) (x : Kf H) (u v : ℚ) (hx : (x : E) = u + v *
   have h0 := rt_ne H
   have h2 := rt_sq H
   push_cast
-  simp only [IntermediateField.coe_mul, IntermediateField.coe_inv, coe_rtL, hx]
+  simp only [coe_rtL, hx]
   field_simp
   linear_combination (u : E) * h2
 

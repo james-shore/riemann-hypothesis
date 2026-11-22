@@ -39,7 +39,7 @@ theorem exists_invariant_maps_of_affine_open : ∀ (R : Type) [CommRing R] (R' :
       simp only [thick, spMap, ← Spec.map_comp]
       congr 1
       ext r
-      simp [Ideal.quotientMap_mk, IsScalarTower.algebraMap_apply R R' C', Ideal.Quotient.algebraMap_eq]
+      simp
       exact (IsScalarTower.algebraMap_apply _ _ _ _).symm
     refine ⟨{ f.hom with commutes' := fun r => congrArg (fun g => g.hom r) hc }, ?_⟩
     exact hf'
@@ -106,7 +106,7 @@ theorem exists_invariant_maps_of_affine_open : ∀ (R : Type) [CommRing R] (R' :
       { Ideal.quotientMap ((maximalIdeal R' ^ (e + 1)).map (algebraMap R' C')) (algebraMap R' C')
           Ideal.le_comap_map with
         commutes' := fun r => by
-          simp [Ideal.quotientMap_mk, Ideal.Quotient.algebraMap_eq, IsScalarTower.algebraMap_apply R R' C']
+          simp
           exact (IsScalarTower.algebraMap_apply _ _ _ _).symm }
     have hb : (Ideal.Quotient.mkₐ R ((maximalIdeal R' ^ (e + 1)).map (algebraMap R' C'))).comp
         (IsScalarTower.toAlgHom R R' C') = b.comp (Ideal.Quotient.mkₐ R _) := by

@@ -77,8 +77,6 @@ theorem Glob_topGroup (σ : E →ₐ[F] E) {n : ℕ} (J : Matrix (Fin n) (Fin n)
   haveI : IsTopologicalRing (Af F ⊗[F] E) := Glob_topRing
   first
     | exact inferInstanceAs (IsTopologicalGroup (HR (Af F) σ J))
-    | (unfold HA; infer_instance)
-    | (show IsTopologicalGroup (HR (Af F) σ J); infer_instance)
 
 end Top
 
@@ -90,8 +88,6 @@ def Glob_basis : Module.Basis (Fin 2) (Af I.F) (Af I.F ⊗[I.F] I.E) :=
 theorem Glob_swap_symm_tmul (a : Af I.F) (x : I.E) : (swapE I).symm (a ⊗ₜ[I.F] x) = x ⊗ₜ[I.F] a := by
   first
     | rfl
-    | simp [swapE]
-    | (rw [LinearEquiv.symm_apply_eq]; rfl)
 
 theorem Glob_nhd_zero (N : ℕ) (hN : 1 ≤ N) :
     ∀ᶠ t in 𝓝 (0 : Af I.F ⊗[I.F] I.E), PI.InvTopW.InNInt I N ((swapE I).symm t) := by
@@ -127,8 +123,6 @@ theorem Glob_m_one : Glob_m I 1 = 1 := rfl
 theorem Glob_continuous_m : Continuous (Glob_m I) := by
   first
     | fun_prop
-    | exact Units.continuous_val.comp continuous_subtype_val
-    | exact Units.continuous_val.comp ((HA.mat (Af I.F) I.cm.sig I.J).continuous)
 
 theorem Glob_nhd_one (hb : AdBridgeIso I) (g : ℕ) (hg : 1 ≤ g) :
     tf I hb '' I.Kg g ∈ 𝓝 (1 : HA (Af I.F) I.cm.sig I.J) := by
@@ -198,8 +192,6 @@ def Glob_KppH (hK : X.LevelSubgroupCharacter) : Subgroup (HA (Af X.B.I.F) X.B.I.
 theorem Glob_coe_KppH (hK : X.LevelSubgroupCharacter) : (Glob_KppH X hb hK : Set _) = levelUnitary X hb := by
   first
     | rfl
-    | (ext h; simp [Glob_KppH, Glob_K2Sub, levelUnitary])
-    | (unfold levelUnitary; ext h; simp [Glob_KppH, Glob_K2Sub])
 
 theorem Glob_KppS_eq (hK : X.LevelSubgroupCharacter) : KppS X hb = Glob_KppH X hb hK := by
   unfold KppS

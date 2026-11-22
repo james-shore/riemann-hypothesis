@@ -35,7 +35,6 @@ theorem PDPoly.derLin_e_mul_e (Q : PDPoly B) (m n : ℕ) :
     show a + 1 + (b + 1) = (a + b + 1) + 1 by omega, Q.derLin_e_succ, show a + 1 + b = a + b + 1 by omega,
     show b + 1 + a = a + b + 1 by omega, Nat.choose_succ_succ' (a + b + 1) a,
     Nat.choose_symm_of_eq_add (show a + b + 1 = (b + 1) + a by omega)]
-  push_cast
   rw [nsmul_eq_mul]
   push_cast
   ring

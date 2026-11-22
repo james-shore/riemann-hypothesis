@@ -38,7 +38,7 @@ private theorem sum_basis_tmul_crd_eq (y : O ⊗[Z] W) : ∑ i, b i ⊗ₜ[Z] cr
 
 private theorem crd_sum_lemma_4 (j : I) (v : I → W) : crd b j (∑ i, b i ⊗ₜ[Z] v i) = v j := by
   classical
-  simp [map_sum, crd_tmul_lemma, Module.Basis.coord_apply, Finsupp.single_apply]
+  simp [map_sum, Finsupp.single_apply]
 
 theorem mem_pow_iff (w : W) (n : ℕ) (x : O ⊗[Z] W) :
     x ∈ Ideal.span {((1 : O) ⊗ₜ[Z] w) ^ n} ↔ ∀ i, crd b i x ∈ Ideal.span {w ^ n} := by

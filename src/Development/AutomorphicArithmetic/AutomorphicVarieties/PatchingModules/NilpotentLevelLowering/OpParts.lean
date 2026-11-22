@@ -223,10 +223,10 @@ theorem freePart {Λ : Type} [CommRing Λ] [IsLocalRing Λ] [IsNoetherianRing Λ
   let act : MvPowerSeries (Fin q × Fin n) Λ →ₐ[Λ] Module.End Λ (LinearMap.range i) :=
     { toFun := fun z => E.conj (Algebra.lsmul Λ Λ N (s z))
       map_one' := by ext x; simp [LinearEquiv.conj_apply]
-      map_mul' := by intro a b; ext x; simp [LinearEquiv.conj_apply, mul_smul]
+      map_mul' := by intro a b; ext x; simp [LinearEquiv.conj_apply]
       map_zero' := by ext x; simp [LinearEquiv.conj_apply]
-      map_add' := by intro a b; ext x; simp [LinearEquiv.conj_apply, add_smul]
-      commutes' := by intro c; ext x; simp [LinearEquiv.conj_apply, algebraMap_smul] }
+      map_add' := by intro a b; ext x; simp [LinearEquiv.conj_apply]
+      commutes' := by intro c; ext x; simp [LinearEquiv.conj_apply] }
   have hact : ∀ z y, act z (E y) = E (s z • y) := by
     intro z y
     show E.conj (Algebra.lsmul Λ Λ N (s z)) (E y) = _

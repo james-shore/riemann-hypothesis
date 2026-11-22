@@ -46,7 +46,7 @@ theorem fixed_eq_tmul (σ : E →ₐ[F] E) (hfix : ∀ x, σ x = x ↔ x ∈ (al
       intro w
       induction w using TensorProduct.induction_on with
       | zero => simp
-      | tmul a x => simp [φ, sigR, TensorProduct.tmul_sub]
+      | tmul a x => simp [φ, sigR]
       | add y w hy hw => rw [map_add, hy, hw, map_add]; abel
     rw [key, hz, sub_self]
   obtain ⟨w, hw⟩ := (hex' z).1 hφ

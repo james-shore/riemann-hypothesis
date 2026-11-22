@@ -52,7 +52,7 @@ theorem generalLinearGroup_det_map_fin_one {A B : Type} [CommRing A] [CommRing B
     Matrix.GeneralLinearGroup.det (Matrix.GeneralLinearGroup.map f M) =
       Units.map f.toMonoidHom (Matrix.GeneralLinearGroup.det M) := by
   ext
-  simp [RingHom.map_det]
+  simp
 
 theorem glMat_δ1 {U : Scheme.{0}} (y : Sx (ofCat (glCat 1)) 2 U) :
     glMat (((ofCat (glCat 1)).δ 1).app (op U) y) =

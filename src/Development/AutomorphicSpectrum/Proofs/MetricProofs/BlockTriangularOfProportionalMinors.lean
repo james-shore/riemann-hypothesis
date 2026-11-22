@@ -69,8 +69,8 @@ theorem eq_zero_of_minors (B : Matrix (Fin N) (Fin N) ℂ) (hB : B.det ≠ 0) (S
     have h1 : Mᵀ.updateCol x v = (B.submatrix (Function.update e x r) e)ᵀ := by
       ext a b
       by_cases hb : b = x
-      · subst hb; simp [Matrix.updateCol_apply, v]
-      · simp [Matrix.updateCol_apply, hb, M, Function.update_of_ne hb]
+      · subst hb; simp [v]
+      · simp [hb, M]
     rw [Matrix.cramer_apply, h1, Matrix.det_transpose]
     exact det_submatrix_eq_zero B S hA _ x (by simpa using hr)
   have hv : Mᵀ.det • v = 0 := by rw [← Matrix.mulVec_cramer, hcr, Matrix.mulVec_zero]

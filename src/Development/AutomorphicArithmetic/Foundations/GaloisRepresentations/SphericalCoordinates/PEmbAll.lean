@@ -18,8 +18,7 @@ theorem UpperTheory.Gal.W2.embAll_of :
   · obtain ⟨i, σ, hσ⟩ := G.emb_all _ h
     refine ⟨i, σ, Or.inr fun x => ?_⟩
     have hx := congrArg (fun f : G.F →+* PadicAlgCl p => f (IsCMField.complexConj G.F x)) hσ
-    simp only [RingHom.comp_apply, RingEquiv.toRingHom_eq_coe, RingEquiv.coe_toRingHom,
-      conjQ_apply] at hx
+    simp only [RingHom.comp_apply, RingEquiv.coe_toRingHom] at hx
     have hc : (conjQ G.F).toRingHom ((IsCMField.complexConj G.F) x) = x := by
       simp [conjQ_apply]
     rw [hc] at hx

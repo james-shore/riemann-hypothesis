@@ -19,8 +19,6 @@ theorem valued_algebraMap_int (a : R) :
     ← IsDedekindDomain.HeightOneSpectrum.valuedAdicCompletion_eq_valuation']
   first
   | rfl
-  | congr 1
-  | simp [IsScalarTower.algebraMap_apply R K (v.adicCompletion K)]
 
 theorem isUnit_algebraMap_int_iff (a : R) :
     IsUnit (algebraMap R (v.adicCompletionIntegers K) a) ↔ a ∈ v.asIdeal.primeCompl := by

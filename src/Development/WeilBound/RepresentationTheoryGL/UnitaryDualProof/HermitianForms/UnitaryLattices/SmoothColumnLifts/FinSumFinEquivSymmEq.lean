@@ -44,7 +44,7 @@ theorem glEmbMat_apply' (n : ℕ) (A : Matrix (Fin n) (Fin n) k) (i j : Fin (n +
     | last => simp [glEmbMat]
     | cast j => simp [glEmbMat, Fin.ext_iff]; omega
   | cast i => induction j using Fin.lastCases with
-    | last => simp [glEmbMat, Fin.ext_iff]
+    | last => simp [glEmbMat]
     | cast j => simp [glEmbMat]
 
 theorem blkAt_glEmb (n N : ℕ) (h : n ≤ N) (h' : n + 1 ≤ N) (g : GL (Fin n) k) :
@@ -104,9 +104,9 @@ theorem colEl_val (m N : ℕ) (h : m + 2 ≤ N) (x : Fin (m + 1) → k) (r c : F
     simp [hr, hc, hne, hc']
   · have hne : r ≠ c := fun e => hr (e ▸ hc)
     have hr' : ¬ (r : ℕ) < m + 1 := by omega
-    simp [hr, hc, hne, hr']
+    simp [hr, hne, hr']
   · have hr' : ¬ (r : ℕ) < m + 1 := by omega
-    simp [hr, hc, hr']
+    simp [hr, hr']
 
 theorem det_glEmbMat' (n : ℕ) (A : Matrix (Fin n) (Fin n) k) : (glEmbMat k n A).det = A.det := by
   rw [Matrix.det_succ_row _ (Fin.last n), Fin.sum_univ_castSucc]

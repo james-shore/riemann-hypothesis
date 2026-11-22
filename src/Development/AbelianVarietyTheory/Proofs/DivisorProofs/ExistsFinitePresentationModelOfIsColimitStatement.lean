@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.exists_finitePresentation_descent_of_isColimit : �
       (_ : Algebra.FinitePresentation (F.obj j) A),
       letI : Algebra (F.obj j) c.pt := (c.ι.app j).hom.toAlgebra;
       Nonempty (c.pt ⊗[F.obj j] A ≃ₐ[c.pt] D) := by
-  first | (exact @GlobalTheory.FpDescent.exists_finitePresentation_model_of_isColimit) | (exact GlobalTheory.FpDescent.exists_finitePresentation_model_of_isColimit) | (intros; apply GlobalTheory.FpDescent.exists_finitePresentation_model_of_isColimit  <;> assumption)
+  first | (exact @GlobalTheory.FpDescent.exists_finitePresentation_model_of_isColimit)

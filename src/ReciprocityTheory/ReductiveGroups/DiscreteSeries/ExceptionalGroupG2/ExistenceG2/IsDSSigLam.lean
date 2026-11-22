@@ -38,7 +38,5 @@ theorem isDS_sigLam (hgap : StdGap ε lam) (hP : IsPsiFor ε lam T Ψ) (hv₀ : 
     fun μ S hS => (sigLam_kType_bounds hgap hP hv₀ S hS).1⟩
   first
     | infer_instance
-    | (unfold Hlam closGen
-       exact (Submodule.isClosed_topologicalClosure _).completeSpace_coe)
 
 end ReciprocityTheory.ChartRestriction.DS.G2

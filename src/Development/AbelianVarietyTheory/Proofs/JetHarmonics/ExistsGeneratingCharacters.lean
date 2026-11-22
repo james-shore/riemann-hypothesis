@@ -9,8 +9,6 @@ theorem exists_extend_of_injective {H M F : Type} [CommGroup H] [CommGroup M] [F
   | exact @_root_.GlobalTheory.ExtensionCharacter.exists_extension_character
   | exact _root_.GlobalTheory.ExtensionCharacter.exists_extension_character
   | (apply _root_.GlobalTheory.ExtensionCharacter.exists_extension_character <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ExtensionCharacter.exists_extension_character <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ExtensionCharacter.exists_extension_character <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ExtensionCharacter.exists_extension_character ..)
 
 theorem exists_factor_of_ker_le {H M F : Type} [CommGroup H] [CommGroup M] [Field F] [IsAlgClosed F]

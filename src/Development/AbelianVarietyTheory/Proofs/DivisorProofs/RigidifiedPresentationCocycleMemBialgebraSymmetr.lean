@@ -46,7 +46,7 @@ theorem coc_mem_symCocycles (R : Type) [CommRing R] (A : Over (Sp R)) [GrpObj A]
       | add x y hx hy => rw [map_add, map_add, hx, hy, map_add]
       | tmul a b =>
         rw [LinearMap.rTensor_tmul, lift_tmul]
-        simp only [i12, AlgHom.convMul_apply, ofConv_toConv]
+        simp only [i12, AlgHom.convMul_apply]
         induction (Coalgebra.comul (R := R) a : H ⊗[R] H) with
         | zero => simp
         | add x y hx hy => simp only [add_tmul, map_add, hx, hy, add_mul]
@@ -58,7 +58,7 @@ theorem coc_mem_symCocycles (R : Type) [CommRing R] (A : Over (Sp R)) [GrpObj A]
       | add x y hx hy => rw [map_add, map_add, hx, hy]
       | tmul a b =>
         rw [LinearMap.lTensor_tmul, lift_tmul]
-        simp only [i23, AlgHom.convMul_apply, ofConv_toConv]
+        simp only [i23, AlgHom.convMul_apply]
         induction (Coalgebra.comul (R := R) b : H ⊗[R] H) with
         | zero => simp
         | add x y hx hy => simp only [tmul_add, map_add, hx, hy, mul_add]
@@ -71,7 +71,7 @@ theorem coc_mem_symCocycles (R : Type) [CommRing R] (A : Over (Sp R)) [GrpObj A]
       | add x y hx hy => rw [map_add, map_add, hx, hy]
       | tmul a b => simp [i1, i2, Algebra.TensorProduct.tmul_mul_tmul, includeLeft_apply, includeRight_apply]
     rw [cobTwo_apply, e1, e2, e3, e4, V, V, V, V]
-    simp only [i12, i23, toConv_ofConv, M, mul_assoc]
+    simp only [i12, i23, toConv_ofConv, M]
     have hc := (hg (H ⊗[R] (H ⊗[R] H))).2 (spOver i1 ≫ t.y n) (spOver i2 ≫ t.y n) (spOver i3 ≫ t.y n)
     rw [mul_assoc (toConv i1)]
     linear_combination hc

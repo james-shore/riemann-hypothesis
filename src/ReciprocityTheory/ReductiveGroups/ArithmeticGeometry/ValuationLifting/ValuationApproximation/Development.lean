@@ -15,7 +15,6 @@ theorem valApprox_of (hP : PairSep) (hL : LargeSmall) (hN : NearOne) (hA : Assem
     first
     | exact WithZero.one_lt_exp_of_pos zero_lt_one
     | (rw [← WithZero.exp_zero, WithZero.exp_lt_exp]; exact zero_lt_one)
-    | exact WithZero.coe_lt_coe.2 (by decide)
   obtain ⟨x, hx⟩ := hA Ω ι v h1' (hN Ω ι v (hL Ω ι v hgt (hP Ω ι v h1' hne))) n
   exact ⟨x, hx⟩
 

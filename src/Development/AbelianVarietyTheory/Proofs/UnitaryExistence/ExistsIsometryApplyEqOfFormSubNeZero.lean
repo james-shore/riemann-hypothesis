@@ -22,7 +22,7 @@ theorem exists_isometry_apply_eq_of_form_sub_ne_zero (B : V →ₗ[ℂ] V →ₗ
   · intro x y
     simp only [LinearMap.sub_apply, LinearMap.id_apply, LinearMap.smulRight_apply,
       LinearMap.smul_apply, LinearMap.flip_apply, map_sub, map_smul, map_smulₛₗ, smul_eq_mul,
-      map_mul, map_inv₀, hdd, hB y d, RingHom.id_apply]
+      map_mul, map_inv₀, hdd, hB y d]
     field_simp
     ring
   · simp only [LinearMap.sub_apply, LinearMap.id_apply, LinearMap.smulRight_apply,
@@ -51,7 +51,7 @@ theorem form_eq_smul_of_const_on_orbit (A B : V →ₗ[ℂ] V →ₗ⋆[ℂ] ℂ
     have hww : B w w = 0 := by
       have h2 : (starRingEnd ℂ) 2 = 2 := map_ofNat _ 2
       simp only [hw, map_add, map_smul, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply,
-        smul_eq_mul, ha, hB x₀ y, map_div₀, map_neg, map_mul, ← hB y y, h2, RingHom.id_apply]
+        smul_eq_mul, ha, hB x₀ y, map_div₀, map_neg, map_mul, ← hB y y, h2]
       field_simp
       ring
     have hxw : B x₀ w = B x₀ y := by
@@ -95,16 +95,15 @@ theorem form_eq_smul_of_const_on_orbit (A B : V →ₗ[ℂ] V →ₗ⋆[ℂ] ℂ
         rw [← hBre v]; exact_mod_cast hss
       have := reach2 ((s : ℂ) • v) (by
         simp only [map_smul, map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, Complex.conj_ofReal,
-          RingHom.id_apply, haC]
+          haC]
         linear_combination hssC)
-      simp only [map_smul, map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, Complex.conj_ofReal,
-          RingHom.id_apply] at this
+      simp only [map_smul, map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, Complex.conj_ofReal] at this
       rw [← this, ← hssC]; ring
     have diag : ∀ y, (a : ℂ) * A y y = e * B y y := by
       intro y
       have hcont : Continuous fun t : ℝ => a * (B (x₀ + (t : ℂ) • y) (x₀ + (t : ℂ) • y)).re := by
         simp only [map_add, map_smul, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply,
-          smul_eq_mul, Complex.conj_ofReal, RingHom.id_apply]
+          smul_eq_mul, Complex.conj_ofReal]
         fun_prop
       have hpos : 0 < (fun t : ℝ => a * (B (x₀ + (t : ℂ) • y) (x₀ + (t : ℂ) • y)).re) 0 := by
         simp only [Complex.ofReal_zero, zero_smul, add_zero]
@@ -119,7 +118,7 @@ theorem form_eq_smul_of_const_on_orbit (A B : V →ₗ[ℂ] V →ₗ⋆[ℂ] ℂ
         exact_mod_cast (by positivity : (ε / 2 : ℝ) ≠ 0)
       generalize (ε / 2 : ℝ) = t at h1 h2 hεC
       simp only [map_add, map_smul, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply,
-          smul_eq_mul, Complex.conj_ofReal, RingHom.id_apply, h0, haC] at h1 h2
+          smul_eq_mul, Complex.conj_ofReal, h0, haC] at h1 h2
       push_cast at h1 h2
       have : (t : ℂ) ^ 2 * ((a : ℂ) * A y y - e * B y y) = 0 := by
         linear_combination (1 / 2 : ℂ) * (h1 + h2)
@@ -134,7 +133,7 @@ theorem form_eq_smul_of_const_on_orbit (A B : V →ₗ[ℂ] V →ₗ⋆[ℂ] ℂ
     have h3 := diag x
     have h4 := diag y
     simp only [map_add, map_smul, map_smulₛₗ, LinearMap.add_apply, LinearMap.smul_apply,
-          smul_eq_mul, Complex.conj_I, RingHom.id_apply] at h1 h2
+          smul_eq_mul, Complex.conj_I] at h1 h2
     push_cast
     rw [← heC]
     field_simp

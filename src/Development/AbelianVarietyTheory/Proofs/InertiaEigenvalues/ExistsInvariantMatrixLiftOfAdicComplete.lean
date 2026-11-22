@@ -97,8 +97,7 @@ theorem average_step (σ : G → A →+* A) (hσ : ∀ g h a, σ (g * h) a = σ 
       rw [← QuotientGroup.eq]
       simp only [QuotientGroup.out_eq']
       obtain ⟨y, rfl⟩ := QuotientGroup.mk_surjective x
-      simp only [MulAction.Quotient.smul_mk, smul_eq_mul, QuotientGroup.mk_mul, QuotientGroup.out_eq',
-        Quotient.out_eq]
+      simp only [MulAction.Quotient.smul_mk, smul_eq_mul, QuotientGroup.mk_mul, Quotient.out_eq]
     rw [hgx, map_mul, hUr _ n hn]
     have hfac : M (g • x).out * M n * U.map (σ (g • x).out) - M (g • x).out * U.map (σ (g • x).out)
         = M (g • x).out * ((M n - 1) * U.map (σ (g • x).out)) := by

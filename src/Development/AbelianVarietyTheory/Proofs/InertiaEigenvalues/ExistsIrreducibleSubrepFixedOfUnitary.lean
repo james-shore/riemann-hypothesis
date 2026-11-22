@@ -13,8 +13,6 @@ theorem exists_orth_proj (B : W →ₗ⋆[ℂ] W →ₗ[ℂ] ℂ) (hdef : ∀ v,
   | exact @_root_.GlobalTheory.OrthogonalProjection.exists_orth_proj
   | exact _root_.GlobalTheory.OrthogonalProjection.exists_orth_proj
   | (apply _root_.GlobalTheory.OrthogonalProjection.exists_orth_proj <;> assumption)
-  | (intros; apply _root_.GlobalTheory.OrthogonalProjection.exists_orth_proj <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.OrthogonalProjection.exists_orth_proj <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.OrthogonalProjection.exists_orth_proj ..)
 
 theorem rho_inv_rho (ρ : Representation ℂ H W) (g : H) (u : W) : ρ g⁻¹ (ρ g u) = u := by

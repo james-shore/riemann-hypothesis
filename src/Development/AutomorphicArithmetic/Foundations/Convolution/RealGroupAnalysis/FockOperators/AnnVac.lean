@@ -23,7 +23,7 @@ private theorem kap_eq (δ : F) (w : InfinitePlace F) (i : Fin 4) :
 
 private theorem form_step (δ : F) (v : V4 F) (i : Fin 4) (s : A F) :
     qG δ (v + Pi.single i s) = qG δ v + kA δ i * (2 * v i * s + s * s) := by
-  fin_cases i <;> simp [qG, kA, Pi.single_apply] <;> ring
+  fin_cases i <;> simp [qG, kA] <;> ring
 
 private theorem sum_step (w : InfinitePlace F) (K b : InfinitePlace F → ℝ) (t : ℝ) :
     ∑ w', (K * (2 * b * Pi.single w t + Pi.single w t * Pi.single w t) : InfinitePlace F → ℝ) w' =
@@ -151,7 +151,7 @@ theorem UpperTheory.ConvolutionTheory.R2.Fo.annVac :
       rw [h1, Fintype.sum_prod_type, Finset.sum_apply, Finset.sum_eq_single j]
       · rw [Finset.sum_apply]
         refine Finset.sum_congr rfl fun w _ => ?_
-        simp [c, ← h1]
+        simp [c]
       · intro b _ hb
         rw [Finset.sum_apply]
         exact Finset.sum_eq_zero fun w _ => Pi.single_eq_of_ne hb.symm _

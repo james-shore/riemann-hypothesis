@@ -32,6 +32,6 @@ theorem gl_rep_weight_shift {E : GLOps n K V} (hE : IsGLRep E) {mu : Fin n â†’ â
   rw [gl_commutation_apply hE c c a b x, hx c, map_smul]
   simp only [rootW, Pi.add_apply, Pi.sub_apply, Pi.single_apply]
   push_cast
-  split_ifs <;> subst_vars <;> first | module | (exfalso; simp_all; done)
+  split_ifs <;> subst_vars <;> first | module | (exfalso; simp_all)
 
 end Formalism.MainNotions.G.GLWeightTheory

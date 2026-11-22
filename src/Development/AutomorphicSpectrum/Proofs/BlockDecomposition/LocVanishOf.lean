@@ -38,7 +38,7 @@ theorem locVanish_of (hN : NilChange) (hQ : QuotVanish) : LocVanish := by
       have hm : (uOf X).val - 1 ∈ nilrad W₁ W₂ := by simpa using X.2
       rw [huN _ hm, mul_comm]
       congr 2
-      simp only [hg, hΦ, twConj, map_mul, _root_.mul_inv_rev]
+      simp only [hΦ, twConj, map_mul, _root_.mul_inv_rev]
       group
     have e2 : ∫ X, g (Φ X) ∂ν = (c : ℝ) • ∫ Y, g Y ∂ν := by
       rw [← integral_map hΦc.measurable.aemeasurable hgc.aestronglyMeasurable, hc,

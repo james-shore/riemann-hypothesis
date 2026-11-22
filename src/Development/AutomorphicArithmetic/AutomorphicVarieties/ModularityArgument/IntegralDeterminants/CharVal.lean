@@ -133,7 +133,7 @@ theorem UpperTheory.V.Z.Int.charVal :
       map_pow, map_pow, haw, hunif, ← WithZero.exp_nsmul, ← WithZero.exp_nsmul, hN]
     rw [div_eq_one_iff_eq (by simp)]
     congr 1
-    simp only [smul_eq_mul, nsmul_eq_mul]
+    simp only [nsmul_eq_mul]
     push_cast
     ring
   have hzy : z = y * unif w ^ N := by rw [hy, div_mul_cancel]

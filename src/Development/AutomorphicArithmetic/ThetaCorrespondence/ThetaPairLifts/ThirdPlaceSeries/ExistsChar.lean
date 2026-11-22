@@ -53,7 +53,7 @@ theorem exists_galois_character_crystalline_at_places (hL : _root_.UpperTheory.Z
     have f := frobEig_wdOf hl ι hcr (e1 ▸ y1) hB hg
     rw [e1, y2] at f
     have h1 : (r g : Matrix (Fin 1) (Fin 1) (Qbar l)).charpoly = X - C ((r g : Matrix (Fin 1) (Fin 1) (Qbar l)) 0 0) := by
-      simp [Matrix.charpoly, Matrix.det_fin_one, Matrix.charmatrix_apply]
+      simp [Matrix.charpoly]
     rw [h1] at f
     have f2 := congrArg (fun p => p.coeff 0) f
     simp at f2

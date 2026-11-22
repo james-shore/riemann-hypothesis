@@ -27,13 +27,13 @@ theorem iso_tensor_dual (a : WDRep h V) (b : WDRep h V') :
     | zero => simp
     | tmul f g =>
       refine TensorProduct.ext' fun m n => ?_
-      simp [TensorProduct.dualDistrib_apply]
+      simp
     | add x y hx hy => simp only [map_add, hx, hy]
   · induction x using TensorProduct.induction_on with
     | zero => simp
     | tmul f g =>
       refine TensorProduct.ext' fun m n => ?_
-      simp [TensorProduct.dualDistrib_apply]
+      simp
       ring
     | add x y hx hy => simp only [map_add, hx, hy]
 
@@ -45,8 +45,8 @@ theorem qPow_neg' (s : ℝ) : qPow w (-s) = (qPow w s)⁻¹ :=
 theorem iso_tw_dual (a : WDRep h V) (s : ℝ) : (a.tw s).dual.Iso (a.dual.tw (-s)) := by
   refine ⟨LinearEquiv.refl ℂ _, fun σ f => ?_, fun f => rfl⟩
   ext v
-  simp only [WDRep.tw, WDRep.dual_ρ, WDRep.twist_ρ, unrChar_apply, LinearEquiv.refl_apply,
-    LinearMap.dualMap_apply, LinearMap.smul_apply, map_smul, smul_eq_mul, qPow_neg', map_inv, _root_.inv_zpow']
+  simp only [WDRep.tw, WDRep.dual_ρ, WDRep.twist_ρ, LinearEquiv.refl_apply,
+    LinearMap.dualMap_apply, LinearMap.smul_apply, map_smul, smul_eq_mul, qPow_neg', map_inv]
   congr 2
   simp
 
@@ -54,7 +54,7 @@ theorem shiftEnd_single {n : ℕ} (j : Fin n) :
     shiftEnd n (Pi.single j 1) = if hj : (j : ℕ) + 1 < n then Pi.single ⟨j + 1, hj⟩ 1 else 0 := by
   ext k
   rw [shiftEnd_apply]
-  split_ifs with h1 h2 h2 <;> simp only [Pi.single_apply, Fin.ext_iff, Fin.val_mk, Pi.zero_apply] <;>
+  split_ifs with h1 h2 h2 <;> simp only [Pi.single_apply, Fin.ext_iff, Pi.zero_apply] <;>
     split_ifs <;> first | rfl | (exfalso; have := k.2; have := j.2; omega)
 
 theorem spEig_rev {n : ℕ} (i : Fin n) : WDRep.spEig w n i.rev = (WDRep.spEig w n i)⁻¹ := by

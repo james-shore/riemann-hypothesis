@@ -41,7 +41,7 @@ theorem baseChange_middle_equiv_of_exact : ∀ (R R' : Type) [CommRing R] [CommR
     | add x y hx hy => simp only [map_add, hx, hy]
   have hex : Function.Exact (LinearMap.baseChange R' i) (LinearMap.baseChange R' p) := by
     rw [LinearMap.baseChange_eq_ltensor, LinearMap.baseChange_eq_ltensor]
-    first | exact lTensor_exact R' hip hp | exact LinearMap.lTensor_exact R' hip hp
+    first | exact lTensor_exact R' hip hp
   have hsurj : Function.Surjective (LinearMap.baseChange R' p) := by
     rw [LinearMap.baseChange_eq_ltensor]; exact LinearMap.lTensor_surjective R' hp
   have hinj : Function.Injective f := by

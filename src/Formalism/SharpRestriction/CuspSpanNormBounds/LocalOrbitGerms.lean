@@ -133,8 +133,6 @@ theorem skew (S : ι → Prop) [DecidablePred S] (g : (ι → E) → ι → E) (
   have hz : Measurable (fun v : {i // ¬ S i} → E => ((0 : Subtype S → E), v)) := by
     first
       | exact measurable_const.prodMk measurable_id
-      | exact measurable_const.prod_mk measurable_id
-      | exact Measurable.prod measurable_const measurable_id
   let G : ({i // ¬ S i} → E) → (Subtype S → E) := fun v i => g (Φ.symm (0, v)) i.1
   have hGm : Measurable G := by
     refine measurable_pi_iff.2 fun i => ?_
@@ -146,7 +144,6 @@ theorem skew (S : ι → Prop) [DecidablePred S] (g : (ι → E) → ι → E) (
     · exact (hGm.comp measurable_fst).add measurable_snd
     · first
         | exact Filter.Eventually.of_forall fun v => map_add_left_eq_self _ (G v)
-        | exact Filter.eventually_of_forall fun v => map_add_left_eq_self _ (G v)
   have hsw1 : MeasurePreserving (Prod.swap : (Subtype S → E) × ({i // ¬ S i} → E) → _)
       ((Measure.pi fun _ : Subtype S => μ).prod (Measure.pi fun _ : {i // ¬ S i} => μ))
       ((Measure.pi fun _ : {i // ¬ S i} => μ).prod (Measure.pi fun _ : Subtype S => μ)) :=
@@ -271,19 +268,11 @@ theorem merge : CoordinateMergeMeasurable := by
     · first
         | simp [MeasurableEquiv.piCongrLeft, Equiv.piCongrLeft_apply_apply, MeasurableEquiv.sumPiEquivProdPi,
             Equiv.sumPiEquivProdPi]
-        | (simp only [MeasurableEquiv.trans_apply, Equiv.symm_apply_apply]
-           rfl)
     · first
         | simp [MeasurableEquiv.piCongrLeft, Equiv.piCongrLeft_apply_apply, MeasurableEquiv.sumPiEquivProdPi,
             Equiv.sumPiEquivProdPi]
-        | (simp only [MeasurableEquiv.trans_apply, Equiv.symm_apply_apply]
-           rfl)
   · first
       | exact (measurePreserving_sumPiEquivProdPi_symm (fun _ : ι₁ ⊕ ι₂ => μ)).trans
-          (measurePreserving_piCongrLeft (fun _ : ι => μ) e)
-      | exact (measurePreserving_sumPiEquivProdPi_symm (fun _ : ι₁ ⊕ ι₂ => μ)).trans
-          (measurePreserving_piCongrLeft (fun _ => E) (fun _ : ι => μ) e)
-      | exact (MeasurePreserving.symm _ (measurePreserving_sumPiEquivProdPi (fun _ : ι₁ ⊕ ι₂ => μ))).trans
           (measurePreserving_piCongrLeft (fun _ : ι => μ) e)
 
 end Formalism.MainNotions.LocalOrbitGerms
@@ -656,12 +645,10 @@ theorem grp (hS : TriangularShearMeasurePreserving) : UnipotentProductMeasureInv
     first
       | (unfold Grp.meas
          infer_instance)
-      | exact inferInstanceAs (SFinite ((Measure.pi fun _ => μ).map (Grp.homeo hcL).toMeasurableEquiv))
   haveI : SFinite (Grp.meas hcU μ) := by
     first
       | (unfold Grp.meas
          infer_instance)
-      | exact inferInstanceAs (SFinite ((Measure.pi fun _ => μ).map (Grp.homeo hcU).toMeasurableEquiv))
   refine ⟨Grp.meas hcL μ, Grp.meas hcU μ, ⟨fun g => ?_⟩, ⟨fun g => ?_⟩, inferInstance, inferInstance,
     Grp.meas_int hcL μ R hR, Grp.meas_int hcU μ R hR, fun G => ?_⟩
   · exact Grp.meas_map_of hcL hS μ (· * g) (continuous_mul_right g)
@@ -855,10 +842,6 @@ theorem prodEquiv [TopologicalSpace K] [IsTopologicalRing K] [SecondCountableTop
     simp only [T, Matrix.mul_apply]
     first
       | exact Finset.measurable_sum _ fun c _ => (measurable_entry h₁ p.1.1 c).mul (measurable_entry h₂ c p.1.2)
-      | exact Finset.measurable_sum' _ fun c _ => (measurable_entry h₁ p.1.1 c).mul (measurable_entry h₂ c p.1.2)
-      | (apply Finset.measurable_sum
-         intro c _
-         exact (measurable_entry h₁ p.1.1 c).mul (measurable_entry h₂ c p.1.2))
   have hsum : ∀ (z : {p // P p} → K) (a b : Fin n) (hp : P (a, b)),
       mk Q₁ (res h₁ z) a b + mk Q₂ (res h₂ z) a b = z ⟨(a, b), hp⟩ := by
     intro z a b hp
@@ -902,8 +885,6 @@ theorem prodEquiv [TopologicalSpace K] [IsTopologicalRing K] [SecondCountableTop
     have hs : (splitEquiv h₁ h₂ hor hd).symm ⟨q.1, h₁ _ q.2⟩ = Sum.inl q := by
       first
         | simp [splitEquiv, q.2]
-        | (show (if h : Q₁ q.1 then Sum.inl ⟨q.1, h⟩ else Sum.inr ⟨q.1, _⟩) = Sum.inl q
-           rw [dif_pos q.2])
     rw [hs]
     try rfl
   have hres2 : res h₂ (m (x, y)) = y := by
@@ -914,8 +895,6 @@ theorem prodEquiv [TopologicalSpace K] [IsTopologicalRing K] [SecondCountableTop
     have hs : (splitEquiv h₁ h₂ hor hd).symm ⟨q.1, h₂ _ q.2⟩ = Sum.inr q := by
       first
         | simp [splitEquiv, hn]
-        | (show (if h : Q₁ q.1 then Sum.inl ⟨q.1, h⟩ else Sum.inr ⟨q.1, _⟩) = Sum.inr q
-           rw [dif_neg hn])
     rw [hs]
     try rfl
   have hx : (m.trans e) (x, y) = T (m (x, y)) := by
@@ -1036,7 +1015,6 @@ theorem main (hS : TriangularShearMeasurePreserving) (hM : CoordinateMergeMeasur
       (Measure.pi fun _ : {p // PV sb p} => μ) (Measure.pi fun _ : {p // PUV sb p} => μ) := by
     first
       | exact measurePreserving_piCongrLeft (fun _ : {p // PUV sb p} => μ) (revEquiv hsb)
-      | exact measurePreserving_piCongrLeft (fun _ => K) (fun _ : {p // PUV sb p} => μ) (revEquiv hsb)
   have hB2 : MeasurePreserving (((MeasurableEquiv.piCongrLeft (fun _ => K) (revEquiv hsb)).prodCongr
         (MeasurableEquiv.refl ({p // PN sb p} → K))).trans b)
       ((Measure.pi fun _ : {p // PV sb p} => μ).prod (Measure.pi fun _ : {p // PN sb p} => μ))
@@ -1297,7 +1275,6 @@ theorem lastCoord_eq (R : Subring E) (m : ℕ) (x : Fin (m + 1) → E) :
   first
     | (simp only [lastCoord, LinearMap.coeFn_sum, Finset.sum_apply]
        rw [Finset.sum_eq_single (Fin.last m)]
-       · simp
        · intro j _ hj
          rw [if_neg]
          · simp
@@ -1362,13 +1339,9 @@ theorem det_orbZ (w : A5.Point E) (p : lowW E w.1 w.2 × upUniG E w.1.sum) :
     first
       | (rw [Matrix.det_of_lowerTriangular _ p.1.2.1.1]
          simp [p.1.2.1.2])
-      | (rw [Matrix.det_of_lowerTriangular p.1.2.1.1]
-         simp [p.1.2.1.2])
   have h2 : ((p.2 : GL (Fin w.1.sum) E) : Matrix (Fin w.1.sum) (Fin w.1.sum) E).det = 1 := by
     first
       | (rw [Matrix.det_of_upperTriangular p.2.2.1]
-         simp [p.2.2.2])
-      | (rw [Matrix.det_of_upperTriangular _ p.2.2.1]
          simp [p.2.2.2])
   rw [h1, h2, one_mul, mul_one]
 
@@ -1570,7 +1543,6 @@ theorem mul_mem_left (R : Subring K) (L : Submodule R K) {A Y : Matrix (Fin n) (
   refine sum_mem fun k _ => ?_
   first
     | exact L.smul_mem (⟨A i k, hA i k⟩ : R) (hY k j)
-    | (have h := L.smul_mem (⟨A i k, hA i k⟩ : R) (hY k j); simpa [Subring.smul_def] using h)
 
 theorem mul_mem_right (R : Subring K) (L : Submodule R K) {A Y : Matrix (Fin n) (Fin n) K} (hA : IsInt R A)
     (hY : ∀ i j, Y i j ∈ L) : ∀ i j, (Y * A) i j ∈ L := by
@@ -1580,7 +1552,6 @@ theorem mul_mem_right (R : Subring K) (L : Submodule R K) {A Y : Matrix (Fin n) 
   rw [mul_comm]
   first
     | exact L.smul_mem (⟨A k j, hA k j⟩ : R) (hY i k)
-    | (have h := L.smul_mem (⟨A k j, hA k j⟩ : R) (hY i k); simpa [Subring.smul_def] using h)
 
 end Shapes
 

@@ -180,7 +180,7 @@ theorem isMultMap_heckeOn {T : MMap M} (h : IsMultMap θ M J χ T) {R : Finset (
     IsMultMap θ M J χ (heckeOn M R T) := by
   have e : heckeOn M R T = ∑ k ∈ R, heckeOn M {k} T := by
     ext v g
-    simp [heckeOn, postOn_apply, heckeLin_apply, MultilinearMap.sum_apply]
+    simp [heckeOn, postOn_apply, heckeLin_apply]
   have h0 : IsMultMap θ M ∅ χ (heckeOn M R T) := by
     rw [← GlobalTheory.MultMem.mem_mult_iff, e]
     exact sum_mem fun k hk => (GlobalTheory.MultMem.mem_mult_iff ..).2 (isMultMap_single h (hR k hk))

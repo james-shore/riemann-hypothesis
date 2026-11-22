@@ -28,7 +28,7 @@ theorem form_eq_of_csq (n : HermFam K V) (n' : HermFam K W) (e : V ≃ₗ[K] W)
   have hx := hc σ 1 ![1] ![x]
   have hy := hc σ 1 ![1] ![y]
   simp only [csq, Fin.sum_univ_two, Fin.sum_univ_one, Matrix.cons_val_zero, Matrix.cons_val_one,
-    Matrix.cons_val_fin_one, Matrix.head_cons, map_one, one_mul, mul_one, Complex.add_re] at h1 h2 hx hy
+    Matrix.cons_val_fin_one, map_one, one_mul, mul_one, Complex.add_re] at h1 h2 hx hy
   rw [← n.conj_symm σ x y, ← n'.conj_symm σ (e x) (e y)] at h1 h2
   simp only [Complex.mul_re, Complex.conj_re, Complex.conj_im, Complex.I_re, Complex.I_im,
     Complex.conj_I, Complex.neg_re, Complex.neg_im, Complex.mul_im] at h1 h2

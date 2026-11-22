@@ -30,7 +30,7 @@ theorem hsVecR_dSl (U V : Wq →L[ℂ] Wp) :
   rw [hs]
   simp only [map_add, map_mul, Complex.conj_ofReal, Complex.conj_I, Complex.add_re, Complex.ofReal_re,
     Complex.mul_re, Complex.I_re, Complex.ofReal_im, Complex.I_im, Complex.add_im, Complex.mul_im]
-  simp only [mul_zero, mul_one, sub_zero, zero_add, add_zero, zero_sub]
+  simp only [mul_zero, mul_one, sub_zero, zero_add, add_zero]
   rw [← Complex.coe_smul, ← Complex.coe_smul]
   module
 
@@ -400,7 +400,7 @@ def wlist7 : Fin 7 → List (Fin 6) :=
 theorem seven_derivatives_of_word_operator (X : ActualOps k r z z' π π') (l : Fin r) (js : List (Fin 6)) (Ψ : RadSp k r z z' π π')
     (i : Fin 7) : wd7 X l (wOp X l js Ψ) i = wOp X l (wlist7 i ++ js) Ψ := by
   fin_cases i <;>
-    simp [wd7, wlist7, wOp, dT, dTb, List.map_cons, List.prod_cons, Module.End.mul_apply, mul_assoc]
+    simp [wd7, wlist7, wOp, dT, dTb, List.map_cons, List.prod_cons, Module.End.mul_apply]
 
 theorem wOp_lcJ (X : ActualOps k r z z' π π') (l : Fin r) (js : List (Fin 6)) :
     ∀ Ψ ∈ lcSub k r z z' π π', wOp X l js Ψ ∈ lcSub k r z z' π π' := by

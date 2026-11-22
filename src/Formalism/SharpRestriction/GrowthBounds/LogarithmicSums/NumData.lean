@@ -149,7 +149,6 @@ theorem fourth_bound_arith (z C lx La a k p0 x : ℝ) (hC : 0 ≤ C) (hlx : 0 �
       have hx0 : x ≠ 0 := hx.ne'
       first
         | (field_simp; ring)
-        | field_simp
 
 end Formalism.MainNotions.AuxBlock8.Pf.G5.Nu
 

@@ -47,9 +47,7 @@ theorem pairM_chart {K : Type} [Field K] {n d : ℕ} (A : Matrix (Fin n) (Fin n)
   first
   | exact @_root_.GlobalTheory.TracePairingBasisChange.pair_change_basis
   | exact _root_.GlobalTheory.TracePairingBasisChange.pair_change_basis
-  | (apply _root_.GlobalTheory.TracePairingBasisChange.pair_change_basis <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TracePairingBasisChange.pair_change_basis <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TracePairingBasisChange.pair_change_basis <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.TracePairingBasisChange.pair_change_basis)
   | (intros; exact _root_.GlobalTheory.TracePairingBasisChange.pair_change_basis ..)
 
 theorem sum_four_swap_pairs_alt {R α β : Type} [AddCommMonoid R] [Fintype α] [Fintype β] (f : α → β → α → β → R) :
@@ -57,9 +55,7 @@ theorem sum_four_swap_pairs_alt {R α β : Type} [AddCommMonoid R] [Fintype α] 
   first
   | exact @_root_.GlobalTheory.SumFourSwap.sum_four_swap
   | exact _root_.GlobalTheory.SumFourSwap.sum_four_swap
-  | (apply _root_.GlobalTheory.SumFourSwap.sum_four_swap <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SumFourSwap.sum_four_swap <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SumFourSwap.sum_four_swap <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.SumFourSwap.sum_four_swap)
   | (intros; exact _root_.GlobalTheory.SumFourSwap.sum_four_swap ..)
 
 theorem symp_at_split : ∀ {F E : Type} [Field F] [NumberField F] [Field E] [NumberField E] [Algebra F E] {σ : E →ₐ[F] E}, IsCMExt F E σ →
@@ -84,7 +80,7 @@ theorem symp_at_split : ∀ {F E : Type} [Field F] [NumberField F] [Field E] [Nu
   change psiLoc ψ v _ = psiLoc ψ v _
   congr 1
   rw [pairM_comm (coY σ X Y t b c x), coX, coX, coY, coY, pairM_chart, pairM_chart]
-  simp only [map_mul, map_neg, map_one, neg_one_mul, GlobalTheory.WeilM.hTens, map_sum, piW_cA', piW_incl,
+  simp only [map_mul, map_neg, neg_one_mul, GlobalTheory.WeilM.hTens, map_sum, piW_cA', piW_incl,
     GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.incM, Matrix.map_apply, hss, AlgHom.comp_apply, hX, hY]
   rw [sub_eq_add_neg]
   congr 1

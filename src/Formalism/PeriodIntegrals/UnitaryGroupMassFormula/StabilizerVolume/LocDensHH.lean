@@ -143,10 +143,6 @@ theorem aaInt (x : F) : ∀ᶠ v in cofinite,
 
   first
   | exact (algebraMap F (FiniteAdeleRing (𝓞 F) F) x).2
-  | (rw [Filter.eventually_cofinite]
-     refine (HeightOneSpectrum.Support.finite (𝓞 F) x).subset fun v hv => ?_
-     simp only [Set.mem_setOf_eq, HeightOneSpectrum.mem_adicCompletionIntegers, not_le] at hv
-     simpa [HeightOneSpectrum.Support, HeightOneSpectrum.valuedAdicCompletion_eq_valuation'] using hv)
 
 def GoodV (b : Module.Basis (Fin d) F E) (v : HeightOneSpectrum (𝓞 F)) (σ : E →ₐ[F] E) {M a : ℕ}
     (J : Matrix (Fin M) (Fin M) E) (Tinv : Matrix (Fin a) (Fin a) E) : Prop :=

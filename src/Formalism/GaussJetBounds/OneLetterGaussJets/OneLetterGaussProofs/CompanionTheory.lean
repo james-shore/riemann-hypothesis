@@ -23,7 +23,6 @@ lemma inv_le_gamma {l : ℕ} (hl : 3 ≤ l) : 1 / (l : ℝ) ≤ gam l := by
   have h2 : (0:ℝ) < (l:ℝ) ^ 2 - 1 := by nlinarith
   first
   | (rw [div_le_div_iff₀ h1 h2]; nlinarith)
-  | (rw [div_le_div_iff h1 h2]; nlinarith)
 
 lemma two_gamma_le_three_div {l : ℕ} (hl : 3 ≤ l) : 2 * gam l ≤ 3 / (l : ℝ) := by
   unfold gam
@@ -33,7 +32,6 @@ lemma two_gamma_le_three_div {l : ℕ} (hl : 3 ≤ l) : 2 * gam l ≤ 3 / (l : �
   rw [mul_div_assoc']
   first
   | (rw [div_le_div_iff₀ h2 h1]; nlinarith)
-  | (rw [div_le_div_iff h2 h1]; nlinarith)
 
 theorem proposition_six : PropSix7 := by
   intro l d inst hl hd hev TT k D w E hk hw hE hoff hon
@@ -151,7 +149,6 @@ lemma tsum_le_of_dominated {f g b : ℕ → ℝ} (hg0 : ∀ e, 0 ≤ g e) (hgf :
   have hg : Summable g := Summable.of_nonneg_of_le hg0 (fun e => (hgf e).trans (hfb e)) hb
   first
   | exact Summable.tsum_le_tsum hgf hg hf
-  | exact tsum_le_tsum hgf hg hf
 
 lemma least_odd_top_level_spec {d : ℕ} [NeZero d] (TT : Finset (ZMod d)) (s : ZMod d) (e : ℕ)
     (h : dTop d TT s = (e : ℕ∞)) :
@@ -168,7 +165,6 @@ lemma least_odd_top_level_spec {d : ℕ} [NeZero d] (TT : Finset (ZMod d)) (s : 
     rw [htop] at h
     first
     | exact ENat.top_ne_coe e h
-    | simp at h
   have hle : ∀ e' : ℕ, Odd e' → s + (e' : ZMod d) ∈ TT → dTop d TT s ≤ (e' : ℕ∞) := by
     intro e' h1 h2
     unfold dTop

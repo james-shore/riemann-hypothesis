@@ -82,7 +82,6 @@ theorem key_free {Z X : Scheme.{0}} {f : Z ⟶ X} {I : Shv R} {J : Shv S} (A : f
     (fun U y => show Sec (freeSch S Z) U from Sec.map ι (Sec.map tR (freeGen R (yoneda.obj X) U y)))
     (fun V U g y => by
       refine (map_res ι g _).trans ?_
-      change Sec.map ι (Sec.res g (Sec.map tR (freeGen R (yoneda.obj X) U y))) = _
       rw [map_res, freeGen_res])
   have hT := huniq t' (isTransfer_reduce φ htR ι hι t' ht')
   subst hT

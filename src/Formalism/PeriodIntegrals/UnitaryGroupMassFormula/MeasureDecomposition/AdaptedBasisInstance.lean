@@ -76,7 +76,6 @@ theorem adapted_basis_instance : InstAdaptBasis := by
       have h4 : Module.finrank ℂ (Fin n → ℂ) = n := by
         first
           | exact Module.finrank_fin_fun ℂ
-          | simp
       unfold Matrix.rank
       omega
     · have h := inst_rank_add_le Q P

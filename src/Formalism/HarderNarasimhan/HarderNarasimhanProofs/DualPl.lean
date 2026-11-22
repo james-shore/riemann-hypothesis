@@ -815,9 +815,9 @@ theorem dualLat_span [FiniteDimensional K V] (A : Submodule (𝓞 K) V) (hA : A.
       obtain ⟨a, rfl⟩ := hz
       by_cases h : a = i
       · refine ⟨1, ?_⟩
-        simp [LinearMap.smul_apply, map_smul, Basis.dualBasis_apply_self, h, hyK]
+        simp [LinearMap.smul_apply, map_smul, h, hyK]
       · refine ⟨0, ?_⟩
-        simp [LinearMap.smul_apply, map_smul, Basis.dualBasis_apply_self, h]
+        simp [LinearMap.smul_apply, map_smul, h]
     | zero => exact ⟨0, by simp⟩
     | add z w _ _ hz hw =>
       obtain ⟨a, ha⟩ := hz
@@ -1035,7 +1035,6 @@ theorem ht_dual_ann (b : Basis ι K V) (X : InfinitePlace K → Matrix ι ι ℂ
   unfold ht
   rw [hrkAd, ← hdim, rpow_neg_half_nat_pow hD, rpow_neg_half_nat_pow hD, rpow_neg_half_nat_pow hD]
   rw [hn] at hcov
-  push_cast
   exact ht_alg (nPl K) _ _ _ _ _ _ _ (rpow_neg_half_sq_mul hD) hcov
 
 theorem ht_bot (b : Basis ι K V) (X : InfinitePlace K → Matrix ι ι ℂ) :
@@ -1094,7 +1093,7 @@ theorem realize_eval (b : Basis ι K V) (X : InfinitePlace K → Matrix ι ι �
       Formalism.HermitianLatticesTheory.vecAt b v x := by
     intro v
     funext i
-    simp [Formalism.HermitianLatticesTheory.vecAt, Basis.dualBasis_repr, Basis.dualBasis_apply]
+    simp [Formalism.HermitianLatticesTheory.vecAt, Basis.dualBasis_repr]
   have hf : ∀ v, Formalism.HermitianLatticesTheory.fcoord b.dualBasis.dualBasis X v (Module.Dual.eval K V x) =
       Formalism.HermitianLatticesTheory.fcoord b X v x := by
     intro v

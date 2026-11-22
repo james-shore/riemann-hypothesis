@@ -70,7 +70,6 @@ theorem valuation_genericRatio_eq_restriction (hd : d.AxH 𝒜) (c : ι) (w : Ad
   rw [hsum, AddValuation.map_mul, hunit, zero_add]
   first
     | rfl
-    | simp [Data.Wres, AddValuation.comap_apply]
 
 theorem ordMinMax_at_good_place (hd : d.AxH 𝒜) (c : ι) (w : AddValuation (OmS (Ω c) d.D d.N) (WithTop ℤ))
     (hv : d.admitted c (d.Wres c w)) (j0 : Fin (d.N + 1)) (hj0 : d.w j0 c ≠ 0)

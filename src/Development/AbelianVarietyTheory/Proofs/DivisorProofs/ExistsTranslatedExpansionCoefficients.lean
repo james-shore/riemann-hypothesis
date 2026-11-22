@@ -123,7 +123,7 @@ theorem formEq_coef {R : Type} [CommRing R] [IsDomain R] (D D₂ : DegPre R) (β
     Matrix.tail_cons, Category.id_comp, h0, h2, h3, _root_.one_mul]
   rw [mul_right_comm β (toUnit D₂.P.A ≫ D.c χ)]
   simp only [DegPre.famε, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val_two, Matrix.cons_val_three,
-    Matrix.head_cons, Matrix.tail_cons, Nat.cast_one, sub_self, zpow_zero, zpow_neg, zpow_one, inv_inv]
+    Matrix.head_cons, Matrix.tail_cons, Nat.cast_one, sub_self, zpow_zero, zpow_neg, zpow_one]
   apply Additive.ofMul.injective
   simp only [ofMul_mul, ofMul_inv, ofMul_one]
   abel

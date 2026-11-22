@@ -170,7 +170,7 @@ theorem pathArgs_row (j : ℕ) : ∀ (n : ℕ) (x : ∀ i : Fin n, WO (G.pS (Arr
       · subst hi
         rw [argAt]
         exact dif_pos rfl
-      · rw [argAt, dif_neg (by simp only [edgeOf, ne_eq, GlobalTheory.SplitFlip.Edge.ex.injEq, not_and]; intro h'; exact absurd h'.symm hi)]
+      · rw [argAt, dif_neg (by simp only [edgeOf, GlobalTheory.SplitFlip.Edge.ex.injEq, not_and]; intro h'; exact absurd h'.symm hi)]
         exact pathArgs_row j n (fun i => x i.castSucc) i (by omega)
 
 theorem pathArgs_down (i : ℕ) : ∀ (n : ℕ) (y : ∀ j : Fin n, WO (G.pS (Arrow.down t i j).pair) (G.pT (Arrow.down t i j).pair))
@@ -393,7 +393,7 @@ theorem pathArgs_opp (B : Frames G) (w : Pl D.host.E) (x y) :
     · obtain ⟨hj, rfl⟩ := h
       refine (hc.1 ((mem_edges_down t _ _ _).2 ⟨j, hj, rfl⟩)).trans ?_
       rw [pathArgs_down B t w _ _ y j hj]
-      simp only [oppArgs, locArg, hj, le_refl, and_self, and_true, true_and, ↓reduceDIte]
+      simp only [oppArgs, locArg, hj, le_refl, and_self, ↓reduceDIte]
       exact Matrix.ext fun a b => rfl
     · have h1 : GlobalTheory.SplitFlip.Edge.theta i j ∉ edges (downPath t D.R.m D.R.m) := by
         rw [mem_edges_down]
@@ -416,7 +416,7 @@ theorem pathArgs_opp (B : Frames G) (w : Pl D.host.E) (x y) :
     by_cases h : i < D.R.m ∧ j = D.R.m
     · obtain ⟨hi, rfl⟩ := h
       rw [pathArgs_row B t w _ _ x i hi]
-      simp only [oppArgs, locArg, hi, le_refl, and_self, and_true, true_and, ↓reduceDIte]
+      simp only [oppArgs, locArg, hi, le_refl, and_self, ↓reduceDIte]
       exact Matrix.ext fun a b => rfl
     · have h2 : GlobalTheory.SplitFlip.Edge.ex i j ∉ edges (rowPath T D.R.m D.R.m) := by
         rw [mem_edges_row]

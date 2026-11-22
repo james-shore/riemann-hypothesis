@@ -34,7 +34,7 @@ theorem fw_subst {s : MvPowerSeries (Fin 2) R} (hs : cc s = 0) :
     rw [← PowerSeries.coe_substAlgHom hs']
     exact (PowerSeries.substAlgHom hs').commutes a
   rw [← PowerSeries.coe_substAlgHom hs']
-  simp only [fw, fu, fwAt, fuAt, map_sub, map_mul, map_add, map_pow, map_ofNat, map_one]
+  simp only [fw, fwAt, map_sub, map_mul, map_pow, map_ofNat, map_one]
   rw [PowerSeries.coe_substAlgHom hs']
   simp only [hC, PowerSeries.subst_X hs', WeierstrassCurve.map_a₁, WeierstrassCurve.map_a₂,
     WeierstrassCurve.map_a₃, WeierstrassCurve.map_a₄, WeierstrassCurve.map_a₆]
@@ -47,10 +47,10 @@ theorem fu_subst {s : MvPowerSeries (Fin 2) R} (hs : cc s = 0) :
     rw [← PowerSeries.coe_substAlgHom hs']
     exact (PowerSeries.substAlgHom hs').commutes a
   rw [← PowerSeries.coe_substAlgHom hs']
-  simp only [fw, fu, fwAt, fuAt, map_sub, map_mul, map_add, map_pow, map_ofNat, map_one]
+  simp only [fu, fuAt, map_mul, map_add, map_pow, map_ofNat]
   rw [PowerSeries.coe_substAlgHom hs']
   simp only [hC, PowerSeries.subst_X hs', WeierstrassCurve.map_a₁, WeierstrassCurve.map_a₂,
-    WeierstrassCurve.map_a₃, WeierstrassCurve.map_a₄, WeierstrassCurve.map_a₆]
+    WeierstrassCurve.map_a₄]
   try ring
 
 theorem weq_subst {s : MvPowerSeries (Fin 2) R} (hs : cc s = 0) :
@@ -62,7 +62,7 @@ theorem weq_subst {s : MvPowerSeries (Fin 2) R} (hs : cc s = 0) :
   have h := (unit_flow R W).2.2.1.1
   unfold WEq at h ⊢
   have h2 := congrArg (PowerSeries.substAlgHom (R := R) hs') h
-  simp only [map_sub, map_mul, map_add, map_pow, map_ofNat, map_one] at h2
+  simp only [map_mul, map_add, map_pow] at h2
   rw [PowerSeries.coe_substAlgHom hs'] at h2
   simp only [hC, PowerSeries.subst_X hs', WeierstrassCurve.map_a₁, WeierstrassCurve.map_a₂,
     WeierstrassCurve.map_a₃, WeierstrassCurve.map_a₄, WeierstrassCurve.map_a₆] at h2 ⊢
@@ -290,7 +290,7 @@ private theorem eq_zero_of_pderiv_zero_of_pderiv_one_eq_zero {h : MvPowerSeries 
       · subst hj
         simp
         omega
-      · simp [Finsupp.single_apply, Ne.symm hj]
+      · simp [Ne.symm hj]
     rw [hsum] at h2
     exact (mul_eq_zero.mp h2).resolve_right (Nat.cast_add_one_ne_zero _)
 
@@ -438,7 +438,7 @@ theorem fgl_symm : fgl W = (fgl W).subst
       mvsubst_psubst (PowerSeries.HasSubst.of_constantCoeff_zero (MvPowerSeries.constantCoeff_X 0)) hsw,
       mvsubst_psubst (PowerSeries.HasSubst.of_constantCoeff_zero (MvPowerSeries.constantCoeff_X 1)) hsw,
       MvPowerSeries.subst_X hsw, MvPowerSeries.subst_X hsw]
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons]
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one]
     rw [add_comm]
     exact hL
   have hZsw : MvPowerSeries.HasSubst
@@ -506,7 +506,7 @@ theorem inv_field {K : Type u} [Field K] [CharZero K] (W : WeierstrassCurve K) :
       mvsubst_psubst (PowerSeries.HasSubst.of_constantCoeff_zero (MvPowerSeries.constantCoeff_X 0)) hb,
       mvsubst_psubst (PowerSeries.HasSubst.of_constantCoeff_zero (MvPowerSeries.constantCoeff_X 1)) hb,
       MvPowerSeries.subst_X hb, MvPowerSeries.subst_X hb] at h
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons] at h
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one] at h
     rw [hself, hN.1, add_neg_cancel] at h
     exact h
   have hsh := PowerSeries.sub_const_eq_X_mul_shift (expSer W)
@@ -549,7 +549,6 @@ theorem formal_group_group_law : FglGroup.{u} := by
   rw [he]
   first
   | exact hs
-  | exact hs.symm
 
 theorem formal_group_inverse : FglInv.{u} := by
   intro R _ W

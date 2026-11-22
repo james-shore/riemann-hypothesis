@@ -23,7 +23,7 @@ theorem Level0_of (h : LevelPush) : Level0 := by
     (lev0Iso g).hom ≫ (Arrow.mapCechConerve (sqHom g φ')).app (SimplexCategory.mk 0), ?_, fun m hm => ?_⟩
   · refine hp.of_iso (Iso.refl _) (Iso.refl _) (lev0Iso g).symm (Iso.refl _) ?_ ?_ ?_ ?_
     · simp
-    · simp only [Iso.refl_hom, Category.comp_id, Category.id_comp, Iso.symm_hom, Category.assoc]
+    · simp only [Iso.refl_hom, Category.id_comp, Iso.symm_hom]
       change c ≫ WidePushout.head _ ≫ (lev0Iso g).inv = c ≫ g
       rw [← WidePushout.arrow_ι (fun _ : Fin 1 => g) 0]
       change c ≫ (g ≫ (lev0Iso g).hom) ≫ (lev0Iso g).inv = c ≫ g
@@ -176,8 +176,8 @@ theorem wp {C D : CommRingCat.{0}} (g : C ⟶ D) (k : ℕ) :
   · intro s
     apply WidePushout.hom_ext
     · intro j
-      simp [up, ιd, ιd_assoc, hd, hd_assoc]
-    · simp [up, ιd, ιd_assoc, hd, hd_assoc]
+      simp [up, ιd, ιd_assoc]
+    · simp [up, hd, hd_assoc]
       exact s.condition.symm
   · intro s
     simp [ιd]
@@ -189,7 +189,7 @@ theorem wp {C D : CommRingCat.{0}} (g : C ⟶ D) (k : ℕ) :
       | cast i =>
         simp only [WidePushout.ι_desc, Fin.lastCases_castSucc]
         rw [← h1]
-        simp [up, ιd, ιd_assoc]
+        simp [up, ιd_assoc]
     · simp only [WidePushout.head_desc]
       rw [← h2, ← Category.assoc]
       exact congrArg (· ≫ m) (WidePushout.arrow_ι (fun _ : Fin (k + 2) => g) (Fin.last _)).symm

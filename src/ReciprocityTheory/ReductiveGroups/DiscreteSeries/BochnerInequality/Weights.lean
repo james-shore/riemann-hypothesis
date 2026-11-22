@@ -46,7 +46,7 @@ private theorem w_sum_update (φ : Fin n × Fin n → ℤ) {k : ℕ} (κ : Fin k
     funext j
     by_cases h : j = i
     · subst h; simp
-    · simp [Function.update_apply, h]
+    · simp [h]
   have h1 : ∑ j, φ (Function.update κ i p j) = φ p + ∑ j ∈ Finset.univ \ {i}, φ (κ j) := by
     rw [show (∑ j, φ (Function.update κ i p j)) = ∑ j, Function.update (fun j => φ (κ j)) i (φ p) j
       from congrArg (fun f => ∑ j, f j) hfun, Finset.sum_update_of_mem (Finset.mem_univ i)]

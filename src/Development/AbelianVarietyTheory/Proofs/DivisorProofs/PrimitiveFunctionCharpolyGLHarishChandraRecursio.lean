@@ -23,7 +23,7 @@ theorem mem_stab_low_iff (a n : ℕ) (x : GL (Fin n) F) : x ∈ stab (low (F := 
     have hv : (Pi.single j 1 : Fin n → F) ∈ low a n := by
       intro k hk
       have : k ≠ j := by intro e; subst e; omega
-      simp [Pi.single_apply, this]
+      simp [this]
     have := h _ hv i hi
     simpa [Matrix.toLin'_apply, Matrix.mulVec_single_one] using this
   · intro h v hv i hi
@@ -59,14 +59,14 @@ theorem resMat_low {a n : ℕ} (ha : a ≤ n) (p : GL (Fin n) F) (hp : p ∈ sta
     · simp only [Pi.single_apply, Fin.ext_iff, Fin.val_castLE]
     · have : k ≠ Fin.castLE ha j := by
         intro e; rw [e, Fin.val_castLE] at h; exact h j.2
-      simp [Pi.single_apply, this]
+      simp [this]
   simp only [resMat, MonoidHom.coe_mk, OneHom.coe_mk, LinearMap.toMatrix'_apply, LinearEquiv.conj_apply_apply]
   change (Matrix.toLin' (p : Matrix (Fin n) (Fin n) F) ((lowEquiv (F := F) ha).symm (Pi.single j 1)).1)
     (Fin.castLE ha i) = _
   rw [hs, Matrix.toLin'_apply, Matrix.mulVec_single_one]
   have hi : (i : ℕ) < n := by omega
   have hj : (j : ℕ) < n := by omega
-  simp only [tl, ent, dif_pos (And.intro hi hj), Matrix.transpose_apply]
+  simp only [tl, ent, dif_pos (And.intro hi hj)]
   rfl
 
 theorem tl_isUnit {a n : ℕ} (ha : a ≤ n) (p : GL (Fin n) F) (hp : InPar a p) :
@@ -190,6 +190,6 @@ theorem psiG_eq_chG_sub_hc (F : Type) [Field F] [Finite F] (S : F[X] → ℂ) (n
   by_cases hx : ∀ v ∈ W, Matrix.toLin' (x : Matrix (Fin n) (Fin n) F) v ∈ W
   · simp only [Finset.mem_range, ne_top_iff_finrank_lt, and_iff_left hx]
   · have hx' : x ∉ stab W := hx
-    simp [resPsi, hx', hx]
+    simp [resPsi, hx']
 
 end GlobalTheory.ShinPsiRec

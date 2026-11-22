@@ -19,7 +19,7 @@ open scoped Classical MatrixGroups nonZeroDivisors in
 private lemma length_word_eq_sum {I : Type} [Fintype I] (κ : I → ℕ) :
     (_root_.GlobalTheory.HilbFam.word κ).length = ∑ i, κ i := by
   unfold _root_.GlobalTheory.HilbFam.word
-  simp [List.length_flatMap, Finset.sum_toList]
+  simp [List.length_flatMap]
 
 open NumberField UpperHalfPlane in
 open scoped Classical MatrixGroups nonZeroDivisors in

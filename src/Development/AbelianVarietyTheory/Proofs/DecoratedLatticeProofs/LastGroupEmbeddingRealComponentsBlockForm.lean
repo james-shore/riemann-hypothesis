@@ -25,11 +25,11 @@ theorem iXm_entry {D : D7}
     rw [LinearEquiv.symm_apply_eq]
     ext j
     simp only [LinearEquiv.trans_apply, LinearEquiv.funCongrLeft_apply, Module.Basis.equivFun_apply, Module.Basis.repr_self,
-      Pi.single_apply, Finsupp.single_apply, Fin.ext_iff, Fin.val_cast, finCongr_symm, finCongr_apply, Fin.coe_cast, LinearMap.funLeft_apply, Function.comp_apply]
+      Pi.single_apply, Finsupp.single_apply, Fin.ext_iff, Fin.val_cast, finCongr_symm, finCongr_apply, LinearMap.funLeft_apply]
     split_ifs <;> first | rfl | (exfalso; omega)
   simp only [LinearMap.comp_apply, LinearEquiv.coe_coe, hs, key]
   simp only [LinearEquiv.trans_apply, LinearEquiv.funCongrLeft_apply, Module.Basis.equivFun_apply, Module.Basis.repr_self,
-      Pi.single_apply, Finsupp.single_apply, Fin.ext_iff, Fin.val_cast, finCongr_symm, finCongr_apply, Fin.coe_cast, LinearMap.funLeft_apply, Function.comp_apply]
+      Finsupp.single_apply, Fin.ext_iff, Fin.val_cast, finCongr_symm, finCongr_apply, LinearMap.funLeft_apply]
   split_ifs <;> first | rfl | (exfalso; omega)
 
 end GlobalTheory.EmbTopBlock

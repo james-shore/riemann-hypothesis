@@ -38,7 +38,7 @@ theorem clm_expand (φ : RW T S →L[ℝ] ℂ) : φ = ∑ i, φ (bas S T i) • 
     rw [map_sum]
     simp only [map_smul]
   rw [e]
-  simp [coordC, ContinuousLinearMap.sum_apply, Complex.real_smul, mul_comm]
+  simp [coordC, Complex.real_smul, mul_comm]
 
 theorem norm_heisO_le (hψ : IsStdChar D ψ (-1)) (x : WO S T) {G : WO S T → ℂ} {C : ℝ} (hC : ∀ y, ‖G y‖ ≤ C)
     (w : WO S T) : ‖heisO ψ S T x G w‖ ≤ C := by

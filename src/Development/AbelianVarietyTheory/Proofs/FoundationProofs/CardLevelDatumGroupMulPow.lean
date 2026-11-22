@@ -85,7 +85,7 @@ theorem lev_card : ∀ (g : ℕ) [Fact g.Prime] (N : ℕ), ∀ L : Lev g N,
       ((∀ a, u.val a a = 1) ∧ ∀ a b, a ≠ b → (a, b) ∉ U \ R → u.val a b = 0) := by
     intro u
     simp only [Lev.Mem, IsUp, hU, hR, Finset.mem_sdiff, Finset.mem_filter, Finset.mem_univ, true_and,
-      Finset.mem_product, not_and, not_not]
+      Finset.mem_product, not_and]
     constructor
     · rintro ⟨⟨h1, h2⟩, h3⟩
       refine ⟨h1, fun a b hab h => ?_⟩

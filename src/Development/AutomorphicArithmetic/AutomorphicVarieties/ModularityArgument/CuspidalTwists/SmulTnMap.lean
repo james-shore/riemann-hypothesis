@@ -53,7 +53,6 @@ private theorem on_form {R : Type} [CommRing R] (X : Matrix (Fin 2) (Fin 2) R)
   simp [Matrix.mul_apply, Fin.sum_univ_two] at e
   first
     | linear_combination e + (X 1 0 + X 0 1) * h10
-    | linear_combination -e + (X 1 0 + X 0 1) * h10
 
 private theorem on_inv {R : Type} [CommRing R] (X Y : Matrix (Fin 2) (Fin 2) R) (a1 : X 1 1 = X 0 0) (b1 : X 1 0 = X 0 1)
     (a2 : Y 1 1 = Y 0 0) (b2 : Y 1 0 = Y 0 1) (h : X * Y = 1) :

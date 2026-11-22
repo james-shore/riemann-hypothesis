@@ -59,7 +59,7 @@ theorem int_hs_of_cpt {a b : ℂ → (Wq →L[ℂ] Wp)} (ha : Continuous a) (hac
     refine hac.mono' fun x hx => subset_tsupport _ ?_
     intro h0
     apply hx
-    simp only [h0, Pi.zero_apply]
+    simp only [h0]
     exact hsInner_zero_left _
   exact hc.integrable_of_hasCompactSupport hs
 
@@ -212,7 +212,7 @@ theorem pLogAdjHS (A Bf : ℂ → (Wq →L[ℂ] Wp)) (hA : ContDiffOn ℝ 1 A {c
         (c * NF.dZ (psiC n) c) * (B.hsInner (A c) (Bf c) / ((‖c‖ ^ 2 : ℝ) : ℂ)) := by
     intro n; funext c
     by_cases hc : c = 0
-    · subst hc; simp [hs_smul_left]
+    · subst hc; simp
     · have hd := dZv_smul (φ := psiC n) (A := A) (((psiC_contDiff n).differentiable (by simp)) c) (hAd c hc)
       rw [show dZv (F n) c = dZv (fun w => psiC n w • A w) c from rfl, hd]
       simp only [smul_add, hs_add_left, hs_smul_left]

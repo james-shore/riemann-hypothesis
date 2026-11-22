@@ -220,7 +220,7 @@ theorem eq_zero_of_vecCoeff_eq_zero {f : (ι → 𝔸[K]) → ℂ} (hc : Continu
     rw [Measure.restrict_apply' measurableSet_vecDomain] at h2
     convert h2 using 2
     ext x
-    simp [hU, Complex.normSq_eq_zero]
+    simp [hU]
   have hinv : ∀ g : vecLattice K ι, g +ᵥ U = U := by
     intro g
     ext x

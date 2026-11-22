@@ -197,7 +197,7 @@ theorem conj_half_onto : ∀ (D : D7) (S T : HSp D) (ΛS : Submodule (𝓞 D.hos
       rw [Matrix.transpose_apply, Matrix.map_apply, hentry, Matrix.smul_apply, smul_eq_mul]
       congr 1
       generalize Y * Z = W
-      simp only [Matrix.mul_apply, Finset.mul_sum, Finset.sum_mul]
+      simp only [Matrix.mul_apply, Finset.mul_sum]
       rw [Finset.sum_comm]
       refine Finset.sum_congr rfl fun l _ => Finset.sum_congr rfl fun k _ => ?_
       ring

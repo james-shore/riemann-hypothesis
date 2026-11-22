@@ -134,9 +134,7 @@ theorem decomp {M : Type} [AddCommMonoid M] (R K : Subgroup G) (T : Finset G) : 
   first
   | exact @_root_.GlobalTheory.DoubleCosetIndicator.main
   | exact _root_.GlobalTheory.DoubleCosetIndicator.main
-  | (apply _root_.GlobalTheory.DoubleCosetIndicator.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DoubleCosetIndicator.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DoubleCosetIndicator.main <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.DoubleCosetIndicator.main)
   | (intros; exact _root_.GlobalTheory.DoubleCosetIndicator.main ..)
 
 theorem indicator_fun_apply {X Y : Type} (s : Set X) (c : Y → ℂ) (x : X) (y : Y) :

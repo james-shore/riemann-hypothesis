@@ -276,7 +276,7 @@ theorem UpperTheory.Gal.W2.placeEx_of :
     obtain ⟨a1, a2, a3, a4, a5⟩ := hw2 n hn hc
     refine ⟨a1, a2, a3, a4, fun a a' => ?_⟩
     have h5 := a5 a a'
-    simp only [Datum.plat, LinearMap.smul_apply, nsmul_eq_mul, Nat.cast_ofNat] at h5
+    simp only [Datum.plat] at h5
     exact h5
   obtain ⟨x, c, htriv, -⟩ := hAd p D G L β D' j hplace f ν hwit
   let F : LKCx.Form G := ⟨β, hβs, ⟨x, c, htriv⟩, hR⟩

@@ -216,10 +216,10 @@ theorem leading_block_of_base_point {k r j : ℕ} (hj : j + 1 ≤ r) (Z : Matrix
   simp only [Fin.cast_cast]
   have key : ∀ q : Fin (2 * (j + 1 + (r - (j + 1))) + k + 1), q.val = 2 * (j + (r - j)) + k - a.val →
       q = U.eB k (j + 1) (r - (j + 1)) (Sum.inr ⟨j - a.val, by omega⟩) := by
-    intro q hq; ext; rw [Ux3.block_index_last_val]; simp only [Fin.val_mk]; omega
+    intro q hq; ext; rw [Ux3.block_index_last_val]; simp only; omega
   rw [key (Fin.cast _ _) (by simp), LeftFubiniLemmas.embedding_map_apply_last_block, dif_pos (by simp only [Fin.val_cast]; omega), zfull_apply,
-    dif_pos (by simp only [Fin.val_rev, Fin.val_cast, Fin.val_mk]; omega)]
-  congr 1 <;> ext <;> simp only [Fin.val_rev, Fin.val_cast, Fin.val_mk] <;> omega
+    dif_pos (by simp only [Fin.val_rev, Fin.val_cast]; omega)]
+  congr 1 <;> ext <;> simp only [Fin.val_rev] <;> omega
 
 end head
 

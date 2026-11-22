@@ -16,7 +16,7 @@ theorem form_coords {F E : Type} [Field F] [NumberField F] [Field E] [NumberFiel
   have hs : ∀ a : E, (cm.sig : E →+* E) a = star a := fun _ => rfl
   simp only [hE, Formalism.UG.hform, map_sum, LinearMap.sum_apply, LinearMap.map_smulₛₗ, map_smul,
     LinearMap.smul_apply, smul_eq_mul, Formalism.BasicNotions.HSpace.gram, hs,
-    Finset.mul_sum, starRingEnd_apply, RingHom.id_apply]
+    Finset.mul_sum, starRingEnd_apply]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
   ring

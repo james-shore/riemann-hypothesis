@@ -36,8 +36,8 @@ theorem gram_G (L : PeriodPair) {n : Type} [Fintype n] [DecidableEq n] (h : Matr
       (((area L : ℝ) : ℂ)⁻¹ • (1 : Matrix (Fin 4 × n) (Fin 4 × n) ℂ)) u w := by
     by_cases huw : u = w
     · subst huw
-      simp [Pi.single_apply, Matrix.one_apply]
-    · simp [Pi.single_apply, Matrix.one_apply, huw]
+      simp [Pi.single_apply]
+    · simp [Pi.single_apply, huw]
       intro hi
       exact absurd hi.symm huw
   rw [hl] at h1

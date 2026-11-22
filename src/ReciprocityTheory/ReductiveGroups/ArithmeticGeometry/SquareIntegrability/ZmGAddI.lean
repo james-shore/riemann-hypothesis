@@ -107,7 +107,6 @@ theorem zmG_add (hI : IsSplit P I) {s : (Fin 1 → Vsp X.dim) → ℂ} (hs : s �
   simp only [HC, Fin.sum_univ_one, Nat.cast_one, one_mul]
   rw [e3, Col.Hf_decomp (K := IR I) (Hf_im_eq_zero_on_IR_of_isSplit hI) v γ, Col.Hf_decomp (K := IR I) (Hf_im_eq_zero_on_IR_of_isSplit hI) γ γ, e1, e2]
   unfold gaugeExp
-  push_cast
   ring
 
 end ZM

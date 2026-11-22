@@ -72,7 +72,7 @@ theorem index_one_root : ∀ (E K : Type) [Field E] [NumberField E] [Field K] [N
   set z : 𝓞 K := ⟨Z, hZi⟩ with hzdef
   have hz : z ^ k = ((g : ℕ) : 𝓞 K) := by
     apply NumberField.RingOfIntegers.ext
-    simp only [RingOfIntegers.coe_eq_algebraMap, map_pow, map_natCast]
+    simp only [map_pow, map_natCast]
     exact hZ
   have hgP : ((g : ℕ) : 𝓞 K) ∈ P := by
     have h0 : ((g : ℕ) : 𝓞 E) ∈ P.under (𝓞 E) := hPv ▸ hgv

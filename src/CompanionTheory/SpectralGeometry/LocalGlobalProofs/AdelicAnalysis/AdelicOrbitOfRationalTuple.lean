@@ -32,7 +32,7 @@ theorem gramE_herm (σ : E →ₐ[F] E) (hσ : ∀ x : E, σ (σ x) = x) {M n : 
     (J : Matrix (Fin M) (Fin M) E)
     (hJ : ∀ i j, σ (J j i) = J i j) (X : Fin n → Fin M → E) (a b : Fin n) :
     σ (gramE σ J X b a) = gramE σ J X a b := by
-  simp only [gramE, hE, hform, map_sum, map_mul, RingHom.coe_coe, AlgHom.commutes]
+  simp only [gramE, hE, hform, map_sum, map_mul, RingHom.coe_coe]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
   rw [hσ, hJ]
@@ -77,7 +77,7 @@ theorem trans_uc : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [NumberF
     by_cases hab : a = b
     · subst hab
       simp [D', inclR_algebraMap]
-    · simp [Matrix.diagonal_apply_ne _ hab, hab]
+    · simp [hab]
   have P := fun (Z : Fin n → Fin M → R ⊗[F] E) (H H' : Matrix (Fin n) (Fin n) (R ⊗[F] E)) =>
     GlobalTheory.T.gram_right_mul_action_laws F E σ hCM R M n J Z H H'
   have hX1 : gramR R σ J (rmul R (ratTup R X) G) =

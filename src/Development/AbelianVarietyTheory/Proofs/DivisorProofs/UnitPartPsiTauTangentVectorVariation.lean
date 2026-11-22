@@ -115,7 +115,6 @@ theorem alg_eval {k S : Type} [Field k] [CharZero k] [CommRing S] (φ : DualNumb
   have hX : IsUnit (Ac + φ (TrivSqZeroExt.inr c₁) * A'c) := by
     first
       | exact hnil.isUnit_add_left_of_commute hAc (Commute.all _ _)
-      | exact IsUnit.add_of_isNilpotent hAc hnil
   have hK : IsUnit (φ (κ.val * (1 + TrivSqZeroExt.inr ℓα))) := by
     refine IsUnit.map φ (IsUnit.mul κ.isUnit ?_)
     refine ⟨⟨1 + TrivSqZeroExt.inr ℓα, 1 - TrivSqZeroExt.inr ℓα, ?_, ?_⟩, rfl⟩ <;>
@@ -132,7 +131,7 @@ theorem alg_eval {k S : Type} [Field k] [CharZero k] [CommRing S] (φ : DualNumb
       φ ee.val * φ (κ.val * (1 + TrivSqZeroExt.inr ℓα)) * φ (TrivSqZeroExt.inr c₁) := by
     rw [← map_mul, ← map_mul, ← map_mul, hee]
     congr 1
-    ext <;> simp <;> ring
+    ext <;> simp
   have hWt' : Wt.val * W0.val = Wi.val := by rw [← Units.val_mul, hWt]
   apply Units.ext
   simp only [Units.val_mul, Units.coe_map, RingHom.toMonoidHom_eq_coe, MonoidHom.coe_coe]

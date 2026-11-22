@@ -11,10 +11,6 @@ theorem exists_pos_nat_smul_mem_of_fg_of_span_eq_top :
         ∃ n : ℕ, 0 < n ∧ ∀ v ∈ Λ', (n : E) • v ∈ Λ := by
   first
   | exact @_root_.GlobalTheory.DenominatorExistence.main
-  | exact _root_.GlobalTheory.DenominatorExistence.main
-  | (apply _root_.GlobalTheory.DenominatorExistence.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.DenominatorExistence.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.DenominatorExistence.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.DenominatorExistence.main ..)
 
 end GlobalTheory

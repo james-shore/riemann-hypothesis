@@ -20,7 +20,7 @@ private theorem conj_map (j : R →+* R') (n X : M4 R) :
 private theorem isGSp_map (j : R →+* R') {ν : R} {X : M4 R} (hX : IsGSp ν X) : IsGSp (j ν) (X.map j) := by
   have h : (j ν) • (1 : M4 R') = (ν • (1 : M4 R)).map j := by
     ext i i'
-    by_cases h : i = i' <;> simp [Matrix.one_apply, h]
+    by_cases h : i = i' <;> simp [h]
   unfold IsGSp at hX ⊢
   rw [adj_map, ← Matrix.map_mul, h, hX]
 

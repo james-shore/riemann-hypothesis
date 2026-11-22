@@ -136,7 +136,7 @@ theorem natCast_mul_mem (s : SplitPlace L) (c : ℕ) (x : GA L n) (hx : TrivOuts
       exact (Valuation.map_sub _ _ _).trans (max_le (h2 j i) (hdel j i))
   have hd : (c : AL L) * (1 : Matrix (Fin n) (Fin n) (AL L)) i j ∈ ALint L :=
     Subring.mul_mem _ (natCast_mem (ALint L) c)
-      (by by_cases hij : i = j <;> simp [Matrix.one_apply, hij, Subring.one_mem, Subring.zero_mem])
+      (by by_cases hij : i = j <;> simp [Matrix.one_apply, hij])
   simpa using add_mem hz hd
 
 theorem tSet_denom (s : SplitPlace L) (ϖ : s.v.adicCompletion L⁺) (k : ℕ) (hϖ : Formalism.AUTREP.IsUnif L s.v ϖ)

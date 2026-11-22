@@ -63,7 +63,7 @@ theorem exists_decomp_one (V V' : HSp D) {r : ℕ} (C : Matrix (Fin V.rank) (Fin
     simp only [Pi, N, Matrix.mul_assoc]
     rw [← Matrix.mul_assoc G, Matrix.mul_nonsing_inv _ hG, Matrix.one_mul, ← adj_mul, hKC, adj_one]
   have hKN' : K * N' = 0 := by
-    simp only [N', Matrix.mul_sub, ← Matrix.mul_assoc, hKC, hKB, Matrix.one_mul, Matrix.zero_mul, sub_self, sub_zero]
+    simp only [N', Matrix.mul_sub, ← Matrix.mul_assoc, hKC, hKB, Matrix.one_mul, Matrix.zero_mul, sub_self]
   have hPmN' : Pm * N' = 0 := by
     simp only [N', Matrix.mul_sub, ← Matrix.mul_assoc, hPmC, hPmB, Matrix.one_mul, Matrix.zero_mul, sub_zero, sub_self]
   have hPiN' : Pi * N' = 1 := by
@@ -95,7 +95,7 @@ theorem half_decomp : ∀ (D : D7) (V V' W : HSp D) (r : ℕ) (C : Matrix (Fin V
     HMul.hMul (u : Matrix (Fin W.rank) (Fin V.rank) (AE D)) (C.map (incA D)),
     isHalf_mul hu _, isHalf_mul hu _, isHalf_mul hu _, ?_⟩
   have h1 := congrArg (fun M : Matrix (Fin V.rank) (Fin V.rank) D.host.E => M.map (incA D)) hN'
-  simp only [Matrix.map_add, Matrix.map_mul, Matrix.map_one _ (map_zero _) (map_one _)] at h1
+  simp only [Matrix.map_one _ (map_zero _) (map_one _)] at h1
   simp only [isoPart, midPart, restEmb, Matrix.map_mul, Matrix.mul_assoc]
   conv_lhs => rw [← Matrix.mul_one u, ← h1]
   simp only [Matrix.map_add _ (map_add (incA D)), Matrix.map_mul, Matrix.mul_add, Matrix.mul_assoc]

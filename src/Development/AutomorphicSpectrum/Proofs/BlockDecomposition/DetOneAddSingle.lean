@@ -134,14 +134,14 @@ theorem fderiv_evalMatrix (p : MvPolynomial (Fin n × Fin n) ℂ) (g v : Mat n) 
       · subst hi
         simp [evP]
       · have : i ≠ (c, d) := fun h => hi h.symm
-        simp [evP, hi, Pi.single_apply, this]
+        simp [evP, hi, this]
     rw [h.fderiv]
     simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply, hp, smul_eq_mul, entryL_apply, key,
       add_mul, Finset.sum_add_distrib, Finset.mul_sum, mul_assoc]
     obtain ⟨i₁, i₂⟩ := i
     rw [add_comm]
     congr 1
-    simp [Prod.mk.injEq, ite_and, Finset.sum_ite_eq]
+    simp [Prod.mk.injEq, ite_and]
 
 theorem evP_Tp (a b : Fin n) (p : MvPolynomial (Fin n × Fin n) ℂ) (g : Mat n) :
     evP (Tp a b p) g = ∑ c, g c a * evP (MvPolynomial.pderiv (c, b) p) g := by
@@ -152,7 +152,7 @@ theorem mul_single_entry (g : Mat n) (a b c d : Fin n) :
   by_cases h : d = b
   · subst h
     simp [Matrix.mul_apply, Matrix.single_apply]
-  · simp [Matrix.mul_apply, Matrix.single_apply, h, Ne.symm h]
+  · simp [Matrix.mul_apply, h, Ne.symm h]
 
 theorem fderiv_evalMatrix_mul_single (p : MvPolynomial (Fin n × Fin n) ℂ) (g : Mat n) (a b : Fin n) :
     fderiv ℂ (evP p) g (g * Matrix.single a b (1 : ℂ)) = evP (Tp a b p) g := by
@@ -196,8 +196,8 @@ theorem det_one_add_single (a b : Fin n) (t : ℂ) :
         by_cases hi : i = a
         · subst hi
           simp
-        · simp [hi, Ne.symm hi, Matrix.single_apply]
-      · simp [Matrix.one_apply, Matrix.single_apply, hij, Matrix.diagonal_apply]
+        · simp [hi, Ne.symm hi]
+      · simp [Matrix.single_apply, hij]
         intro h1 h2
         exact absurd (h1.symm.trans h2) hij
     rw [e, Matrix.det_diagonal]
@@ -364,12 +364,12 @@ theorem Kf_wf (e : Fin n → ℤ) (m : ℤ) (p : MvPolynomial (Fin n × Fin n) �
         by_cases h1 : a = i ∧ b = j
         · obtain ⟨rfl, rfl⟩ := h1
           simp
-        · simp [Matrix.single_apply, h1]
+        · simp [h1]
       simp [Matrix.conjTranspose_add, Matrix.conjTranspose_single, hn, add_comm]
     have := Qf_kill e _ hX hg hQd
     rwa [Matrix.mul_add, map_add] at this
   rw [Kf_val a b w hg, Eu_val, Eu_val, hfd, hL]
-  simp only [_root_.add_apply, _root_.smul_apply, smul_eq_mul, Complex.real_smul, hres, if_true, Bool.false_eq_true,
+  simp only [_root_.add_apply, _root_.smul_apply, smul_eq_mul, hres, if_true, Bool.false_eq_true,
     if_false]
   rw [hI a b, hI b a, hIr, hIr]
   rw [← hI a b, ← hI b a]

@@ -48,6 +48,6 @@ theorem isFrame_pull (X : Scheme.{0}) (C : Type) [Category.{0} C] (V : C → X.O
     erw [res_res_eq_res_trans, res_res_eq_res_trans, res_res_eq_res_trans]
     exact e
   · have e := congrArg (fun x ↦ res (hle T' j) (pullU φ _ x)) (hcomp (H.obj T) (H.obj T') (H.map a) (j PUnit.unit))
-    simp only [map_mul, res_pullU_res_eq_res_pullU', res_res_eq_res_trans] at e
+    simp only [map_mul, res_pullU_res_eq_res_pullU'] at e
     simp only [res_res_eq_res_trans]
     exact e

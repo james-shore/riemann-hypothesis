@@ -47,11 +47,11 @@ private theorem mulVec_eN_eq_of_mem_HPar {κ : Type} [CommRing κ] {n r k rS t s
       by_cases hrS : rS = 0
       · rcases Nat.lt_or_gt_of_ne hik with h | h
         · exact s3 _ _ h (by simp [hrS])
-        · exact s1 _ _ (by simp only [symIdx, Fin.val_mk, hrS]; split_ifs <;> omega)
-      · exact s1 _ _ (by simp only [symIdx, Fin.val_mk]; split_ifs <;> omega)
+        · exact s1 _ _ (by simp only [symIdx, hrS]; split_ifs <;> omega)
+      · exact s1 _ _ (by simp only [symIdx]; split_ifs <;> omega)
   · rw [if_neg (fun h => hir (by rw [h]; exact hkr))]
     exact hB _ _ (by
-      simp only [blkOf, Fin.val_mk, if_pos hkr, if_neg hir]
+      simp only [blkOf, if_pos hkr, if_neg hir]
       exact Nat.succ_pos _)
 
 theorem fixE_colLevSym (Ch : Chars X Pr R.m) {m2 : ℕ} (hm : R.m = m2 + 2) : FixE (R := R) (colLevSym Ch) m2 := by

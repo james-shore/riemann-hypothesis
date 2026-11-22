@@ -474,7 +474,6 @@ theorem gauss_mul_integral_A (C : Ctx σ B JS JT ξ₀ θ ι) (hG : GoodLat Λ) 
     simp only [coe_opFF, right_side C halt, left_side C hG hR hA ha hb hw halt hbij] at e
     rw [e, ← Summable.tsum_finsetSum, ← tsum_mul_left]
     · refine tsum_congr fun y => ?_
-      beta_reduce
       rw [← Finset.sum_mul, mul_assoc κ]
     · intro i _
       refine Summable.of_norm ((summable_coefQF C hG hR hA hpos w (u i)).congr fun y => ?_)

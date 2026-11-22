@@ -12,7 +12,7 @@ namespace GlobalTheory.RealLiftGen
 
 theorem map_star_mul {l m n : Type} [Fintype m] (A : Matrix l m ℂ) (B : Matrix m n ℂ) :
     (A * B).map star = A.map star * B.map star := by
-  ext i j; simp [Matrix.mul_apply, Matrix.map_apply, star_sum]
+  ext i j; simp [Matrix.mul_apply, Matrix.map_apply]
 
 theorem map_star_star {m n : Type} (A : Matrix m n ℂ) : (A.map star).map star = A := by
   ext i j; simp

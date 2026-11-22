@@ -68,22 +68,22 @@ theorem weyl_number_operator_commutation
     rw [ha, hc]
     simp only [mul_sub, sub_mul, mul_add, add_mul, neg_mul, mul_neg, smul_mul_assoc, mul_smul_comm]
     rw [hsw z w, hsw z (J w), hsw (J z) w, hsw (J z) (J w)]
-    simp only [hJJ, map_neg, inner_neg_right, inner_neg_left, hJl, neg_neg]
+    simp only [hJJ, map_neg, inner_neg_right, hJl, neg_neg]
     match_scalars <;> (ring_nf; try simp only [Complex.I_sq, I3]; try ring_nf)
   have hcc : ∀ z w, c z * c w = c w * c z := by
     intro z w
     rw [← sub_eq_zero, hc, hc]
-    simp only [mul_sub, sub_mul, mul_add, add_mul, neg_mul, mul_neg, smul_mul_assoc, mul_smul_comm]
+    simp only [mul_sub, sub_mul, smul_mul_assoc, mul_smul_comm]
     rw [hsw z w, hsw z (J w), hsw (J z) w, hsw (J z) (J w)]
-    simp only [hJJ, map_neg, inner_neg_right, inner_neg_left, hJl, neg_neg]
-    match_scalars <;> (ring_nf; try simp only [Complex.I_sq, I3]; try ring_nf)
+    simp only [hJJ, map_neg, inner_neg_right, hJl, neg_neg]
+    match_scalars <;> (ring_nf; try simp only [I3]; try ring_nf)
   have haa : ∀ z w, a z * a w = a w * a z := by
     intro z w
     rw [← sub_eq_zero, ha, ha]
-    simp only [mul_sub, sub_mul, mul_add, add_mul, neg_mul, mul_neg, smul_mul_assoc, mul_smul_comm]
+    simp only [mul_add, add_mul, neg_mul, mul_neg, smul_mul_assoc, mul_smul_comm]
     rw [hsw z w, hsw z (J w), hsw (J z) w, hsw (J z) (J w)]
-    simp only [hJJ, map_neg, inner_neg_right, inner_neg_left, hJl, neg_neg]
-    match_scalars <;> (ring_nf; try simp only [Complex.I_sq, I3]; try ring_nf)
+    simp only [hJJ, map_neg, inner_neg_right, hJl, neg_neg]
+    match_scalars <;> (ring_nf; try simp only [I3]; try ring_nf)
   have hcsum := key c hca hcs
   have hasum := key a haa' has
   refine ⟨?_, ?_, ?_, ?_⟩

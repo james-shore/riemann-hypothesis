@@ -38,7 +38,7 @@ theorem eulerCoord : EulerCoord := by
     · subst h
       by_cases hv : v = w
       · subst hv; simp
-      · simp [hv, Pi.single_apply]
+      · simp [hv]
     · split_ifs <;> simp [HahnSeries.coeff_single_of_ne h]
   · ext γ
     simp only [euler, LinearMap.coe_mk, AddHom.coe_mk, HahnSeries.algebraMap_apply]
@@ -58,7 +58,7 @@ theorem coord_ne (r : ℕ) (v : Var r) : coord v ≠ 0 := by
 variable {r : ℕ}
 
 theorem mulOp_mul (f g : Fn r) : mulOp f * mulOp g = mulOp (f * g) := by
-  ext h : 1; simp [mulOp, mul_assoc]
+  ext h : 1; simp [mulOp]
 theorem mulOp_add (f g : Fn r) : mulOp f + mulOp g = mulOp (f + g) := by
   ext h : 1; simp [mulOp, add_mul]
 

@@ -71,7 +71,7 @@ private theorem unit_sep {R : Type} [CommRing R] [IsLocalRing R] (u : Rˣ) (hu :
     generalize Units.map (residue R).toMonoidHom u = v at h2
     have h4 : v ^ (wt1 i - wt1 j) = 1 := by rw [_root_.zpow_sub, h2, mul_inv_cancel]
     have h5 : wt1 i - wt1 j ∣ 2 := by
-      revert hij; fin_cases i <;> fin_cases j <;> simp [wt1] <;> decide
+      revert hij; fin_cases i <;> fin_cases j <;> simp [wt1]
     obtain ⟨k, hk⟩ := h5
     rw [← zpow_natCast, Nat.cast_ofNat, hk, _root_.zpow_mul, h4, _root_.one_zpow]
   have h6 : residue R ((u : R) ^ 2 - 1) = 0 := by

@@ -46,7 +46,7 @@ theorem constFn_comp_spMap_c {R S : Type} [CommRing R] [CommRing S] {Y : Scheme.
     (q.appLE ⊤ W le_top).hom ((Scheme.ΓSpecIso (CommRingCat.of S)).inv.hom (x t))
   rw [e1, CommRingCat.comp_apply]
   congr 1
-  simp only [CommRingCat.comp_apply] at h2
+  simp only at h2
   exact h2.symm
 
 theorem pull_g_val {X Y : Scheme.{0}} (L : LB X) (f : Y ⟶ X) (j j' : PUnit → L.ι) {O : Y.Opens}

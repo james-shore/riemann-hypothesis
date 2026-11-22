@@ -33,7 +33,7 @@ private theorem con_span {K Γ n : Type} [Field K] [Group Γ] [Fintype n] [Decid
     | smul_right r a b _ _ h => simp only [smul_mul_assoc, mul_smul_comm, h]
   obtain ⟨i, j, hij⟩ := exists_pair_ne n
   have := congrFun (congrFun (h3 (Matrix.single i j 1) (Matrix.single j j 1)) i) j
-  simp [hij, hij.symm] at this
+  simp [hij.symm] at this
 
 private def con_e : Fin 2 ⊕ Fin 2 ≃ Fin 4 where
   toFun := Sum.elim ixA ixB

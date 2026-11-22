@@ -119,7 +119,7 @@ theorem GlobalTheory.AvgJet.avg_jet : ∀ (ι : Type) [Fintype ι] (a b : ℕ), 
     have hsub : GlobalTheory.CompactHowe.substF hh (fun τ => (((r k τ)⁻¹ : GL (Fin a) ℂ) : Matrix (Fin a) (Fin a) ℂ)ᵀ) Q =
         mvZ (fun _ => 1) hh (mvZ (fun τ => (((r k τ : GL (Fin a) ℂ) : Matrix (Fin a) (Fin a) ℂ))⁻¹) (fun _ => 1) Q) := by
       rw [hcomp]
-      simp only [mul_one, one_mul, Matrix.coe_units_inv]
+      simp only [mul_one, Matrix.coe_units_inv]
       rfl
     rw [map_inv r k, hΛ]
     simp only [evalAt_rhoK]

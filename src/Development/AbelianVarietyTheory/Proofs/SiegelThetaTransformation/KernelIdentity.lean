@@ -252,7 +252,6 @@ theorem kernel_identity : ∀ (E : Type) [Field E] [NumberField E] [IsCMField E]
     refine analyticAt_and_hasSum_bd_of_hasSum_gaussian (P j) (barP (P j)) (letterDir X hr idx) _ S
       (fun γ => (a * classSum M (fun Λ => ip (Φ L₁ Λ) (Φ (mapL γ L₂) Λ)) * conj (μ γ L₂)) * A γ)
       B (fun γ p => ?_) hpt
-    beta_reduce
     rw [hAB γ p]
     ring
   have eT : T = fun q : (Fin n → Fin g → ℂ) × (Fin n → Fin g → ℂ) =>

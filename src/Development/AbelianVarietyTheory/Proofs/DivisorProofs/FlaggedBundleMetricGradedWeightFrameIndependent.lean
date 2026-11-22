@@ -23,10 +23,6 @@ theorem grWeight_frame_indep : ∀ (F : Type) [Field F] (σ : F →+* ℂ) (X : 
         -Real.log (‖ratVal ((B * A'⁻¹) x.1 x.2 x.2 / f) y‖ ^ 2) - Real.log (grD (H A' y x.1) x.2) := by
   first
   | exact @_root_.GlobalTheory.LeadingMinorPositivity.green_frame_indep
-  | exact _root_.GlobalTheory.LeadingMinorPositivity.green_frame_indep
-  | (apply _root_.GlobalTheory.LeadingMinorPositivity.green_frame_indep <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LeadingMinorPositivity.green_frame_indep <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LeadingMinorPositivity.green_frame_indep <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LeadingMinorPositivity.green_frame_indep ..)
 
 end GlobalTheory.ChernCalc

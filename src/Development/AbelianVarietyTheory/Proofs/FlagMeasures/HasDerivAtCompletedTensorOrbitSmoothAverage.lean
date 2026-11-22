@@ -155,7 +155,7 @@ theorem hasDerivAt_orbit_average : ∀ (B : RowsAut) (F : (InfinitePlace B.I.F �
       map_smul' := by
         intro r M
         funext v i j
-        simp only [Pi.smul_apply, smul_eq_mul, RingHom.id_apply, Complex.real_smul, Finset.mul_sum]
+        simp only [Pi.smul_apply, RingHom.id_apply, Complex.real_smul, Finset.mul_sum]
         exact Finset.sum_congr rfl fun k _ => mul_left_comm _ _ _ }
   let L := LinearMap.toContinuousLinearMap Lm
   let F' : (InfinitePlace B.I.F → Fin B.I.n → Fin B.I.n → ℂ) → ℂ := fun M => fderiv ℝ F M (L M)

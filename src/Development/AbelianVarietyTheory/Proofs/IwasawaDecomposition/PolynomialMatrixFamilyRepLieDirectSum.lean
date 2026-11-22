@@ -19,6 +19,6 @@ theorem lie_sum {ι : Type} [Fintype ι] {m : ι → ℕ} (ρ σ : PolyRep m) {R
       (pderiv v (blockSum ρ.ent σ.ent i j)) * A v.1 v.2.1 v.2.2 = _
   obtain ⟨x, rfl⟩ := finSumFinEquiv.surjective i
   obtain ⟨y, rfl⟩ := finSumFinEquiv.surjective j
-  rcases x with x | x <;> rcases y with y | y <;> simp [lie, sum, blockSum]
+  rcases x with x | x <;> rcases y with y | y <;> simp [blockSum]
 
 end GlobalTheory.GoodMetric.PolyRep

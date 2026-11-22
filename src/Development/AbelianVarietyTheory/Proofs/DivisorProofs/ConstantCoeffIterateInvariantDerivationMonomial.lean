@@ -56,7 +56,7 @@ theorem prod_X_pow (n : Fin d → ℕ) :
     rw [Finsupp.finset_sum_apply, Finset.sum_eq_single j]
     · simp
     · intro b _ hb
-      simp [Finsupp.single_apply, hb]
+      simp [hb]
     · simp
   rw [this, hsum]
 
@@ -311,7 +311,7 @@ theorem constantCoeff_iterate_invDer_monomial : ∀ (R : Type) [CommRing R] (d :
           rw [Finset.prod_eq_single j]
           · simp
           · intro b _ hb
-            simp [Finsupp.single_apply, Ne.symm hb]
+            simp [Ne.symm hb]
           · simp
         rw [hp]
         ring

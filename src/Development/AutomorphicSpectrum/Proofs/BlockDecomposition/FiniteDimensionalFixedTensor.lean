@@ -22,8 +22,8 @@ theorem coord_lTensor (b : Module.Basis ι ℂ X) (f : W →ₗ[ℂ] W) (y : X �
       f (TensorProduct.equivFinsuppOfBasisLeft b y i) := by
   induction y with
   | zero => simp
-  | add x y hx hy => simp only [TensorProduct.tmul_add, map_add, Finsupp.add_apply, hx, hy]
-  | tmul x w => simp [TensorProduct.equivFinsuppOfBasisLeft_apply_tmul_apply]
+  | add x y hx hy => simp only [map_add, Finsupp.add_apply, hx, hy]
+  | tmul x w => simp
 
 theorem mem_range_lTensor_fixed (σ : Representation ℂ G W) (K : Subgroup G) (y : X ⊗[ℂ] W)
     (hy : ∀ k : K, (σ (k : G)).lTensor X y = y) :

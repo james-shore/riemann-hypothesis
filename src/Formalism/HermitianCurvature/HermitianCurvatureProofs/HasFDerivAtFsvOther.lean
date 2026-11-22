@@ -79,7 +79,7 @@ theorem qminorOp_smulC {t : ℕ}
       α • (List.ofFn fun k : Fin t => Formalism.QuantumDeterminants.Top Eop (u - ((k : ℕ) : ℂ)) (a (σ k)) (b k)).foldr (fun T h => T h) f :=
     foldr_smulC (List.ofFn fun k : Fin t => Formalism.QuantumDeterminants.Top Eop (u - ((k : ℕ) : ℂ)) (a (σ k)) (b k))
       (fun T hT => by
-        simp only [List.mem_ofFn, Set.mem_range] at hT
+        simp only [List.mem_ofFn] at hT
         obtain ⟨k, rfl⟩ := hT
         exact top_smulC hE _ _ _) α f
   rw [hT, smul_comm]
@@ -140,20 +140,15 @@ theorem hasFDerivAt_fsv_other (t : ℂ) (l : Fin m) (c : Fin m → ℂ) :
   have hlin : Differentiable ℝ (fun z : ℂ => t * z - conj t * conj z) := by
     first
       | fun_prop
-      | (apply Differentiable.sub
-         · exact (differentiable_id (𝕜 := ℝ) (E := ℂ)).const_mul t
-         · exact hconj.const_mul (conj t))
   have hg : DifferentiableAt ℝ (fun z : ℂ => fsv t z) (c l) := by
     unfold fsv
     first
       | exact ((Complex.differentiable_exp (𝕜 := ℝ)).comp hlin) (c l)
-      | exact (hlin (c l)).cexp
-      | fun_prop
   refine ⟨(fderiv ℝ (fun z : ℂ => fsv t z) (c l)).comp (ContinuousLinearMap.proj l), ?_, ?_⟩
   · have h := hg.hasFDerivAt.comp c (hasFDerivAt_apply (𝕜 := ℝ) l c)
     exact h
   · intro l' hl' v
-    simp [Pi.single_apply, Ne.symm hl']
+    simp [Ne.symm hl']
 
 theorem wirt_fsv_smul_other (t : ℂ) {l l' : Fin m} (hl : l' ≠ l) (φ : (Fin m → ℂ) → E) (c : Fin m → ℂ)
     (hφ : DifferentiableAt ℝ φ c) :
@@ -275,7 +270,6 @@ theorem Ts_mem {T : Subalgebra ℂ (Pr V)} (σ : Site (Pr V)) (Y : ℂ) (hp : σ
       | exact T.add_mem (T.algebraMap_mem Y) hp
       | exact hc
       | exact hci
-      | exact T.neg_mem hc
 
 end Cen
 

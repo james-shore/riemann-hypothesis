@@ -221,7 +221,7 @@ theorem isScal_of_normalises (K : Type) [Field K] (O : ValuationSubring K) (k : 
         · have hij : i ≠ j := fun e => by unfold symEdge at he; rw [e] at he; omega
           show a i j * r ((x' : Matrix (Fin n) (Fin n) O) i j) = _
           rw [hx'e, Matrix.one_apply_ne hij]
-          simp only [map_add, map_mul, map_zero, zero_add]
+          simp only [map_mul, zero_add]
           ring
         · rw [mul_zero]
       rw [← hev, hψx, hxr, edgeVal_one, AddChar.map_zero_eq_one]

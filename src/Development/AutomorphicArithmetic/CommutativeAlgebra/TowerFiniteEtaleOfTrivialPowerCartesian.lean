@@ -62,9 +62,9 @@ theorem UpperTheory.tower_finiteEtale_of_trivial_powerCartesian :
       T.X.tr _ _ 1 hx hy ≫ pullback.lift ρ _ e0 := by
     apply pullback.hom_ext
     · rw [Category.assoc, pullback.lift_fst, Category.assoc, pullback.lift_fst, htr']
-      simp only [hm, pullback.lift_fst_assoc, pullback.map, pullback.lift_fst]
+      simp only [pullback.lift_fst_assoc]
     · rw [Category.assoc, pullback.lift_snd, Category.assoc, pullback.lift_snd, T.X.10]
-      simp only [hm, pullback.map, pullback.lift_snd, pullback.lift_snd_assoc, Category.comp_id]
+      simp only [pullback.lift_snd, Category.comp_id]
   haveI := hop
   haveI := hcl
   haveI := T.X.13 _ _ hx hy

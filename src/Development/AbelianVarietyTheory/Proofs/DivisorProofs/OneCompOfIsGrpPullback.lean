@@ -33,12 +33,12 @@ theorem lift_sqMap {A : Over S} {A' : Over S'} [GrpObj A] [GrpObj A'] {f : S' �
     (ha : a'.left ≫ φ = φ ≫ a.left) (hb : b'.left ≫ φ = φ ≫ b.left) :
     (lift a' b').left ≫ sqMap h.1.w = φ ≫ (lift a b).left := by
   apply pullback.hom_ext
-  · simp only [sqMap, pullback.map, Category.assoc, pullback.lift_fst, pullback.lift_fst_assoc]
+  · simp only [sqMap, pullback.map, Category.assoc, pullback.lift_fst]
     have k₁ : (lift a' b').left ≫ pullback.fst A'.hom A'.hom = a'.left :=
       congrArg (fun z => z.left) (lift_fst a' b')
     have k₂ : (lift a b).left ≫ pullback.fst A.hom A.hom = a.left := congrArg (fun z => z.left) (lift_fst a b)
     rw [← Category.assoc, k₁, k₂, ha]
-  · simp only [sqMap, pullback.map, Category.assoc, pullback.lift_snd, pullback.lift_snd_assoc]
+  · simp only [sqMap, pullback.map, Category.assoc, pullback.lift_snd]
     have k₁ : (lift a' b').left ≫ pullback.snd A'.hom A'.hom = b'.left :=
       congrArg (fun z => z.left) (lift_snd a' b')
     have k₂ : (lift a b).left ≫ pullback.snd A.hom A.hom = b.left := congrArg (fun z => z.left) (lift_snd a b)

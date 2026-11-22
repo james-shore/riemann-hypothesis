@@ -47,7 +47,7 @@ theorem coeff_single (p : Fin r × Fin n) (e : Fin r × Fin n →₀ ℕ) (he : 
         ext v
         by_cases hv : v = p
         · simp [hv, he]
-        · simp [h, Finsupp.erase_ne hv, Finsupp.single_apply, Ne.symm hv]
+        · simp [h, Finsupp.erase_ne hv]
       simp [h1, h2, ← h]
     · rw [if_neg h]
       split_ifs with h1
@@ -123,12 +123,12 @@ theorem eval_applyWord (e : Fin r × Fin n →₀ ℕ) (L : List (Fin r × Fin n
     simp only [Polynomial.coeff_map] at hc
     have hc' : unitri R L (rowDiv R ⟨p.2.val, hpr⟩ p.1 (e p) F) =
         (single R p (unitri R (L ++ [p]) F)).coeff (e p) := hc
-    rw [hc', coeff_single _ _ (by simp [Finsupp.filter_apply, hpL])]
+    rw [hc', coeff_single _ _ (by simp [hpL])]
     congr 1
     ext v
     by_cases hv : v = p
-    · subst hv; simp [Finsupp.filter_apply, hpL]
-    · simp [Finsupp.filter_apply, hv, Finsupp.single_apply, Ne.symm hv]
+    · subst hv; simp [hpL]
+    · simp [Finsupp.filter_apply, hv]
 
 def positions (r n : ℕ) : List (Fin r × Fin n) :=
   (List.finRange n).reverse.flatMap fun s =>

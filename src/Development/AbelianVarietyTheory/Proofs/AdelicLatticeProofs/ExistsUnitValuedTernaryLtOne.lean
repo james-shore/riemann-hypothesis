@@ -16,9 +16,7 @@ theorem exists_ne_zero_sum_eq_zero {k : Type*} [Field k] [Finite k] (a : Fin 3 â
   first
   | exact @_root_.GlobalTheory.NonzeroIsotropic.exists_nonzero_isotropic
   | exact _root_.GlobalTheory.NonzeroIsotropic.exists_nonzero_isotropic
-  | (apply _root_.GlobalTheory.NonzeroIsotropic.exists_nonzero_isotropic <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NonzeroIsotropic.exists_nonzero_isotropic <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NonzeroIsotropic.exists_nonzero_isotropic <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.NonzeroIsotropic.exists_nonzero_isotropic)
   | (intros; exact _root_.GlobalTheory.NonzeroIsotropic.exists_nonzero_isotropic ..)
 
 end TernaryResidue

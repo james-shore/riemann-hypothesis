@@ -139,7 +139,7 @@ theorem torS_conj (D : Formalism.BasicNotions.D7) (k r : ℕ) (M : Mx k r) :
       gStd (kaB D) M := by
   rw [torS_muT, torS_muT_inv, gStd]
   have hI : (Complex.I ^ r) ≠ 0 := pow_ne_zero _ Complex.I_ne_zero
-  simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, inv_mul_cancel₀ hI, mul_inv_cancel₀ hI, one_smul]
+  simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, inv_mul_cancel₀ hI, one_smul]
   simp only [cj, Matrix.mul_assoc]
 
 theorem torS_conjI (D : Formalism.BasicNotions.D7) (k r : ℕ) (M : Mx k r) :
@@ -147,7 +147,7 @@ theorem torS_conjI (D : Formalism.BasicNotions.D7) (k r : ℕ) (M : Mx k r) :
       tT k r * cjI k r (kaB D)⁻¹ 1 M * tTi k r := by
   rw [torS_muT, torS_muT_inv]
   have hI : (Complex.I ^ r) ≠ 0 := pow_ne_zero _ Complex.I_ne_zero
-  simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, inv_mul_cancel₀ hI, mul_inv_cancel₀ hI, one_smul]
+  simp only [Matrix.smul_mul, Matrix.mul_smul, smul_smul, mul_inv_cancel₀ hI, one_smul]
   simp only [cjI, Matrix.mul_assoc]
 
 end Formalism.L2.SG.Pf.Carrier.CarPinTor

@@ -52,7 +52,6 @@ theorem exists_isDetRoot_finPart_one {D : D7} (V : HSp D) (a : GA D V) (ha : fin
   show y = (matHom V a).1.det * sigR (AF D.host.F) D.sp.cm.sig y
   refine GlobalTheory.PlaceIdem.parts_inj D _ _ ?_ ?_
   · have h1 := congrArg (infPart D) hz
-    unfold IsDetRoot at h1
     rw [RingHom.map_mul, hc] at h1
     rw [RingHom.map_mul, hc, hyi]
     exact h1

@@ -54,7 +54,7 @@ theorem ptEntry_monomial {K : Type} [Field K] (bs : List (K × ℕ)) (hbs : ∀ 
       · obtain ⟨f1, f2, f3⟩ := e4 (b - m) (by omega)
         have h5 : m ≤ b := by omega
         have h6 : b = σ (a - m) + m ↔ b - m = σ (a - m) := by omega
-        simp only [h3, h5, h4, if_false, h6, f3, and_self, and_false, and_true]
+        simp only [h3, h5, h4, if_false, h6, f3, and_self]
         refine ⟨fun hab => ?_, fun hab => ?_, by simp⟩
         · have := f1 (by omega); omega
         · have := f2 (by omega); omega

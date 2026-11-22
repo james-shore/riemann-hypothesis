@@ -30,7 +30,7 @@ theorem hG_add_right (x y z : Fin I.n → I.E) : hG I x (y + z) = hG I x y + hG 
   refine Finset.sum_congr rfl (fun i _ => ?_)
   rw [← Finset.sum_add_distrib]
   refine Finset.sum_congr rfl (fun j _ => ?_)
-  simp only [Pi.add_apply, map_add]
+  simp only [Pi.add_apply]
   ring
 
 theorem hG_zsmul_left (q : ℤ) (x y : Fin I.n → I.E) : hG I (q • x) y = (q : I.E) * hG I x y := by
@@ -48,7 +48,7 @@ theorem hG_zsmul_right (q : ℤ) (x y : Fin I.n → I.E) : hG I x (q • y) = (q
   refine Finset.sum_congr rfl (fun i _ => ?_)
   rw [Finset.mul_sum]
   refine Finset.sum_congr rfl (fun j _ => ?_)
-  simp only [Pi.smul_apply, zsmul_eq_mul, map_mul, map_intCast]
+  simp only [Pi.smul_apply, zsmul_eq_mul]
   ring
 
 theorem hG_zero_right (x : Fin I.n → I.E) : hG I x 0 = 0 := by
@@ -171,7 +171,7 @@ theorem side_mem {r k M : ℕ} (e f : Fin r → Fin I.n → I.E) (θ : 𝓞 I.E)
     show qa • ((ga : I.E) • x) ∈ S'
     have hv : qa • ((ga : I.E) • x) = (G : I.E) • ((w : I.E) • x) := by
       ext j
-      simp only [Pi.smul_apply, Pi.mul_apply, Pi.intCast_apply, zsmul_eq_mul, smul_eq_mul]
+      simp only [Pi.smul_apply, zsmul_eq_mul, smul_eq_mul]
       linear_combination (x j) * hga
     rw [hv]
     exact hG' _ (osmul_mem I ⟨(w : 𝓞 I.E), by simp⟩ hx)

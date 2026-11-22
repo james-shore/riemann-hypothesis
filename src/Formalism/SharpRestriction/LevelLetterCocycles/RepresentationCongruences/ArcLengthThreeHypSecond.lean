@@ -90,7 +90,7 @@ theorem arc_length_three_hyp_second (W : LocWach PD LL O v n) (hcase : Formalism
       rw [smul_smul, smul_smul, pow_two, Module.End.mul_apply]
       congr 1
       rw [hQ, map_pow, map_mul, hps1, hu]
-      simp only [Units.val_mul, Units.val_pow_eq_pow_val, Units.coe_map, MonoidHom.coe_coe, mul_pow]
+      simp only [mul_pow]
       have h1' : ((u⁻¹ : (LetA O n)ˣ) : LetA O n) * (u : LetA O n) = 1 := Units.inv_mul u
       rw [hu] at h1'
       simp only [Units.val_mul, Units.val_pow_eq_pow_val, Units.coe_map, MonoidHom.coe_coe] at h1'
@@ -170,7 +170,7 @@ theorem arc_length_three_hyp_second (W : LocWach PD LL O v n) (hcase : Formalism
   rw [hz₀eq, hL, hRt, hJJ]
   congr 1
   have hπ : W.π₀ ^ M = W.π₀ * W.π₀ ^ (M - 1) := by
-    rw [← pow_succ']; (try congr 1); (try omega)
+    rw [← pow_succ']; (try congr 1)
   have hqN : qA W ^ N = qA W ^ A₀ * qA W ^ (N - b₁ - A₀ - A.η) * qA W ^ A.η * qA W ^ b₁ := by
     rw [← pow_add, ← pow_add, ← pow_add]; (try congr 1); (try omega)
   rw [hπ, hqN]

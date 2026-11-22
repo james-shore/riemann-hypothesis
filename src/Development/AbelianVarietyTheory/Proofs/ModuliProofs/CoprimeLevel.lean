@@ -56,8 +56,6 @@ theorem exists_eq_of_mem_adjoin_quadratic_generator (H : Host E) {a : 𝓞 E} (h
   | exact @_root_.GlobalTheory.CMGeneratorSquareModuli.main
   | exact _root_.GlobalTheory.CMGeneratorSquareModuli.main
   | (apply _root_.GlobalTheory.CMGeneratorSquareModuli.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CMGeneratorSquareModuli.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CMGeneratorSquareModuli.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CMGeneratorSquareModuli.main ..)
 
 theorem bar_mem_of_mem (H : Host E) {n : ℕ} (hn : AuxiliaryInertOddPrime H n) (P : Ideal (𝓞 E)) (hP : P.IsPrime)

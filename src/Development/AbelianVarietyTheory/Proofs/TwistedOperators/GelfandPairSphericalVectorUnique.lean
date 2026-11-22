@@ -44,8 +44,4 @@ open GlobalTheory.GelfandLine in
 theorem GlobalTheory.fixed_eq_span_of_gelfandPair : ∀ (G : Type) [Group G] [TopologicalSpace G] [IsTopologicalGroup G] (K : Subgroup G), IsOpen (K : Set G) → IsCompact (K : Set G) → ∀ θ : G → G, (∀ x y, θ (x * y) = θ y * θ x) → (∀ x, θ (θ x) = x) → (∀ g, ∃ a ∈ K, ∃ b ∈ K, θ g = a * g * b) → ∀ (W : Type) [AddCommGroup W] [Module ℂ W] (ρ : Representation ℂ G W), ρ.IsIrreducible → IsAdmissible ρ → ∀ x ∈ fixed ρ K, x ≠ 0 → fixed ρ K = ℂ ∙ x := by
   first
   | exact @_root_.GlobalTheory.GroupAverageProjection.main
-  | exact _root_.GlobalTheory.GroupAverageProjection.main
-  | (apply _root_.GlobalTheory.GroupAverageProjection.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.GroupAverageProjection.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.GroupAverageProjection.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.GroupAverageProjection.main ..)

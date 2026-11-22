@@ -40,7 +40,6 @@ theorem exists_fin (H : Scheme.{0}) (G : Over H) [IsSeparated G.hom] :
         exact hh k.succ)
       refine ⟨h'', show h'' ≫ i' ≫ e = h by rw [← Category.assoc, hh'', hl], fun g hg => hu'' g ?_⟩
       change g ≫ i' ≫ e = h at hg
-      change g ≫ i' = l
       apply (cancel_mono e).1
       rw [Category.assoc, hg, hl]
 

@@ -52,7 +52,7 @@ private theorem cont_twist {l : ℕ} [Fact l.Prime] {Γ : Type} [Group Γ] [Topo
     rw [e]
     exact (Units.continuous_val.comp hδ).smul (Units.continuous_val.comp h)
   refine Units.continuous_iff.2 ⟨hv, ?_⟩
-  simp only [Function.comp_def, ← Units.val_inv_eq_inv_val, ← map_inv]
+  simp only [← map_inv]
   exact hv.comp continuous_inv
 
 private theorem cc_mul_self {Ω : Type} [Field Ω] [CharZero Ω] [IsAlgClosure ℚ Ω] {c : G ℚ Ω} (hc : Sd.IsCC c) : c * c = 1 := by
@@ -115,7 +115,7 @@ private theorem adjoint_zero_twist {Γ k : Type} [Group Γ] [Field k] (r : Γ �
     simpa [Matrix.GeneralLinearGroup.val_det_apply] using this
   have hD : ((tw r δ s : GL (Fin 2) k) : Matrix (Fin 2) (Fin 2) k).det = (δ s : k) ^ 2 * (r s : Matrix (Fin 2) (Fin 2) k).det := by
     rw [tw_val, Matrix.det_smul]; simp
-  simp only [ad0, tw_val, MonoidHom.comp_apply, MonoidHom.inv_apply, Units.coe_map, MonoidHom.coe_coe]
+  simp only [ad0, tw_val, MonoidHom.comp_apply, MonoidHom.inv_apply, Units.coe_map]
   simp only [Units.val_inv_eq_inv_val, Matrix.GeneralLinearGroup.val_det_apply, hD, ← tw_val]
   simp only [tw_val]
   ext i j

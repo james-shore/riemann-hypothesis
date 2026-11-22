@@ -19,7 +19,7 @@ def combMap {F B : Type} [Field F] [NumberField F] [Ring B] [Algebra F B]
     (Fin d → ℚ_[ℓ] ⊗[ℚ] F) →ₗ[ℚ_[ℓ]] ℚ_[ℓ] ⊗[ℚ] B where
   toFun c := ∑ i, cenMap ℓ F B (c i) * ((1 : ℚ_[ℓ]) ⊗ₜ v i)
   map_add' c c' := by simp [add_mul, Finset.sum_add_distrib]
-  map_smul' r c := by simp [Finset.smul_sum, smul_mul_assoc]
+  map_smul' r c := by simp [Finset.smul_sum]
 
 theorem combMap_apply {F B : Type} [Field F] [NumberField F] [Ring B] [Algebra F B]
     [Algebra ℚ B] [IsScalarTower ℚ F B] (ℓ : ℕ) [Fact ℓ.Prime] {d : ℕ} (v : Fin d → B)

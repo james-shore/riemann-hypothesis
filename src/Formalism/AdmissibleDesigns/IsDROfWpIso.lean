@@ -70,8 +70,7 @@ theorem phiX_equiv (hD : Formalism.RepresentationBoundsCohomology.ringDataObject
     intro h
     rw [← map_inv, hχ, map_inv]
   have hrep : ∀ (h : GE D.nd) (y : D.nd.X i), RepresentationBoundsCohomology.repX D.nd r h y = rO D.nd i r y h := fun _ _ => rfl
-  simp [Formalism.NG.uElt, hsm, hr, hu, hrep, MrTw, twistM, TruncatedSeriesCountingIdentities.locC, TruncatedSeriesCountingIdentities.chi1C, mapM, loc_apply, locChi_apply,
-    Matrix.mulVec, dotProduct, Matrix.smul_apply, Matrix.map_apply, map_sum, map_mul]
+  simp [Formalism.NG.uElt, hsm, hr, hu, hrep, MrTw, twistM, TruncatedSeriesCountingIdentities.locC, TruncatedSeriesCountingIdentities.chi1C, mapM, Matrix.mulVec, dotProduct, Matrix.smul_apply, Matrix.map_apply, map_sum, map_mul]
   refine Finset.sum_congr rfl fun k _ => ?_
   refine congrArg₂ (· * ·) (congrArg₂ (· * ·) ?_ ?_) ?_
   · exact ((Units.val_inv_eq_inv_val
@@ -224,7 +223,7 @@ theorem decomp_at (hDec : TruncatedSeriesCountingIdentities.SemisimpleDecomposit
       eK (D.nbr i w hw) ((toK D.nd i (((chiU D.nd i 1 h)⁻¹ : (D.nd.O i)ˣ) : D.nd.O i) • mapM (toK D.nd i) (rhoO D.nd i ρ π) h) a b) := by
     intro a b
     subst hh
-    simp [WpO, twistM, mapM, loc_apply] <;> rfl
+    simp [WpO, twistM, mapM, loc_apply]
   have hc : ∀ j : Fin D.R.t, MsC i hw j g 0 0 = eK (D.nbr i w hw) (toK D.nd i ((chiU D.nd i ((j : ℕ) + 1) h : (D.nd.O i)ˣ) : D.nd.O i) * toK D.nd i (((chiU D.nd i 1 h)⁻¹ : (D.nd.O i)ˣ) : D.nd.O i)) := by
     intro j
     subst hh

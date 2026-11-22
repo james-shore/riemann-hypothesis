@@ -54,7 +54,7 @@ lemma massTelescope_ortho (n : ℕ) :
   · by_cases hij : i = j
     · subst hij
       simp
-    · simp [hij, Pi.single_eq_of_ne hij]
+    · simp [hij]
   · intro b _ hb
     simp [Pi.single_eq_of_ne hb]
   · intro hi
@@ -78,8 +78,6 @@ lemma massTelescope_trace_pos (hCM : IsCMUnram K) (a : K) (ha : a ≠ 0) :
       ∑ σ : K →ₐ[ℚ] ℂ, σ (star a * a) := by
     first
     | exact trace_eq_sum_embeddings ℂ
-    | exact trace_eq_sum_embeddings (E := ℂ)
-    | exact Algebra.trace_eq_sum_embeddings ℂ
   simp only [key] at hE
   rw [eq_ratCast (algebraMap ℚ ℂ)] at hE
   have hR := congrArg Complex.re hE

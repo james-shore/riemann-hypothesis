@@ -73,8 +73,7 @@ theorem ampleCub_pull_and_pullPow : ∀ (S : Scheme.{0}) (G : Over S) [GrpObj G]
     obtain ⟨i, hi⟩ := exists_chart_local (S := S) hL (eSec G)
     have hrig := hasGen_of_chart hL (eSec G) i hi
     have h := MulPull.hasGen_pow hL hcube (𝟙 G) ((hrig.pull (toUnit G).left).of_formEq hL (fun U _ h => by
-        simp only [Finset.univ_unique, Finset.prod_singleton, Fin.prod_univ_succ, Fin.prod_univ_zero,
-          Matrix.cons_val_zero, _root_.mul_one]
+        simp only [Finset.univ_unique, Finset.prod_singleton]
         rfl))
       (hsym.inv.of_formEq hL (fun U _ h => by
         rw [Fin.prod_univ_two, Fin.prod_univ_two, Hom.inv_def, Category.id_comp, mul_comm]

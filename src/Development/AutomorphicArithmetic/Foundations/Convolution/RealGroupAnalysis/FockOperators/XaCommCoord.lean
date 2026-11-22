@@ -57,15 +57,15 @@ private lemma Da_Xa (θ : ℂ) (hθ : θ ≠ 0) {x d : Fin 4 → A}
     Da θ d a b * Xa θ x c e = Xa θ x c e * Da θ d a b + if a = c ∧ b = e then 1 else 0 := by
   fin_cases a <;> fin_cases b <;> fin_cases c <;> fin_cases e <;>
     simp only [Xa, Da, Fin.zero_eta, Fin.mk_one, Fin.isValue, Matrix.cons_val_zero, Matrix.cons_val_one,
-      Matrix.cons_val, add_mul, mul_add, sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, smul_add, smul_sub, hw] <;>
+      add_mul, mul_add, sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, smul_add, smul_sub, hw] <;>
     simp <;> match_scalars <;> field_simp <;> ring
 
 private lemma Xa_det (θ c : ℂ) (hc : θ ^ 2 = c) {x : Fin 4 → A} (h : ∀ i j, Commute (x i) (x j)) :
     Xa θ x 0 1 * Xa θ x 1 0 - Xa θ x 0 0 * Xa θ x 1 1 = x 2 * x 2 - c • (x 3 * x 3) - x 1 * x 0 := by
   have h32 : x 3 * x 2 = x 2 * x 3 := h 3 2
   subst hc
-  simp only [Xa, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val, add_mul, mul_add, sub_mul, mul_sub,
-    smul_mul_assoc, mul_smul_comm, smul_add, smul_sub, smul_smul, h32]
+  simp only [Xa, Matrix.cons_val_zero, Matrix.cons_val_one, add_mul, mul_sub,
+    smul_mul_assoc, mul_smul_comm, smul_add, smul_smul, h32]
   match_scalars <;> ring
 
 private lemma Da_det (θ c : ℂ) (hθ : θ ≠ 0) (hc : θ ^ 2 = c) {d : Fin 4 → A} (h : ∀ i j, Commute (d i) (d j)) :
@@ -73,14 +73,13 @@ private lemma Da_det (θ c : ℂ) (hθ : θ ≠ 0) (hc : θ ^ 2 = c) {d : Fin 4 
       (4 : ℂ)⁻¹ • (d 2 * d 2) - (4 * c)⁻¹ • (d 3 * d 3) - d 1 * d 0 := by
   have h32 : d 3 * d 2 = d 2 * d 3 := h 3 2
   subst hc
-  simp only [Da, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val, add_mul, mul_add, sub_mul, mul_sub,
+  simp only [Da, Matrix.cons_val_zero, Matrix.cons_val_one, add_mul, mul_sub,
     smul_mul_assoc, mul_smul_comm, smul_add, smul_sub, smul_smul, h32]
   match_scalars <;> field_simp <;> ring
 
 private lemma Xa_Da_sum (θ : ℂ) (hθ : θ ≠ 0) (x d : Fin 4 → A) :
     ∑ a, ∑ b, Xa θ x a b * Da θ d a b = ∑ i, x i * d i := by
-  simp only [Fin.sum_univ_two, Fin.sum_univ_four, Xa, Da, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.cons_val,
-    add_mul, mul_add, sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, smul_add, smul_sub, smul_smul]
+  simp only [Fin.sum_univ_two, Fin.sum_univ_four, Xa, Da, Matrix.cons_val_zero, Matrix.cons_val_one, add_mul, mul_add, sub_mul, mul_sub, smul_mul_assoc, mul_smul_comm, smul_add, smul_sub, smul_smul]
   match_scalars <;> field_simp <;> ring
 
 end Abstract

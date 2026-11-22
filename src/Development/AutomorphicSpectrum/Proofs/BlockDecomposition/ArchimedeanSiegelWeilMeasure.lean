@@ -43,7 +43,7 @@ theorem isSplitK_of_isCoord {F E : Type} [Field F] [NumberField F] [Field E] [Nu
   rw [← h1] at h2
   have h3 : Algebra.trace (Ainf F) (Ainf F ⊗[F] E) (algebraMap (Ainf F) (Ainf F ⊗[F] E) a) = 2 * a := by
     rw [Algebra.trace_algebraMap_of_basis (Algebra.TensorProduct.basis (Ainf F) (Module.finBasis F E))]
-    simp [hCM.2.2.1, two_mul, two_nsmul]
+    simp [hCM.2.2.1, two_mul]
   rw [h3, map_mul, map_ofNat] at h2
   have h4 : ((2 : NumberField.InfinitePlace F → ℝ) w) = 2 := rfl
   rw [Pi.mul_apply, h4] at h2
@@ -73,7 +73,7 @@ theorem dom_generic {K W : Type} [CommRing K] [Fintype W] (κ : K ≃+* (W → �
     {ε : ℝ≥0∞} (hε : ε ≠ 0) :
     ∃ R ε' : ℝ, 0 < ε' ∧ ∀ Y, MeasurableSet Y →
       ∫⁻ X in (goodK κ R ε')ᶜ ∩ q ⁻¹' Y, ‖φ X‖ₑ ∂μ ≤ ε * ν Y := by
-  have hε2 : ε / 2 ≠ 0 := by simp [ENNReal.div_eq_top, hε]
+  have hε2 : ε / 2 ≠ 0 := by simp [hε]
   obtain ⟨R, hR, htail⟩ := GlobalTheory.T.exists_box_radius_tail_lintegral_le_eps_mul K W κ n M H μ ν q C₀ hC hbox hq hbm φ hdec (ε / 2) hε2
   set Bc : ℝ≥0∞ := ENNReal.ofReal B with hBc
   have hBt : Bc + 1 ≠ ⊤ := by simp [hBc]
@@ -305,7 +305,7 @@ theorem avgInf_tendsto : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [N
         · subst hpq
           simp [HeckeCharacterZeroLocus.SiegelWeilU.cT, g, hsal]
         · have hqp : q ≠ p := fun h => hpq h.symm
-          simp [HeckeCharacterZeroLocus.SiegelWeilU.cT, g, Matrix.diagonal_apply, hpq, hqp]
+          simp [HeckeCharacterZeroLocus.SiegelWeilU.cT, g, hpq, hqp]
       show (HeckeCharacterZeroLocus.SiegelWeilU.cT (sigR (Ainf F) σ) g * (S : Matrix (Fin n) (Fin n) (Ainf F ⊗[F] E)) * g) i j = _
       rw [h1]
       simp only [g, Matrix.mul_diagonal, Matrix.diagonal_mul]

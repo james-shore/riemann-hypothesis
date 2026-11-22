@@ -507,9 +507,9 @@ theorem sum_letterDir_xVar {n : ℕ} (y : Frame X.Ψ r) (v : Fin r → E) (τ : 
       rcases ρ with i | i
       · simp [letterDir, perGe, Pi.single_apply]
       · have := i.isLt
-        simp [letterDir, perGe, Pi.single_apply]
+        simp [letterDir, perGe]
         omega
-    · simp [letterDir, perGe, Pi.single_apply, ht]
+    · simp [letterDir, perGe, ht]
   · simp [letterDir, hk]
 
 theorem sum_letterDir_yVar {n : ℕ} (y : Frame X.Ψ r) (v : Fin r → E) (τ : X.Ψ) (k : Fin n) :
@@ -523,11 +523,11 @@ theorem sum_letterDir_yVar {n : ℕ} (y : Frame X.Ψ r) (v : Fin r → E) (τ : 
     by_cases ht : t = τ
     · subst ht
       rcases ρ with i | i
-      · simp [letterDir, perLt, Pi.single_apply]
+      · simp [letterDir, perLt]
       · have := i.isLt
         simp [letterDir, perLt, Pi.single_apply]
         omega
-    · simp [letterDir, perLt, Pi.single_apply, ht]
+    · simp [letterDir, perLt, ht]
   · simp [letterDir, hk]
 
 variable {X bas} (hs : IsSympl X bas)

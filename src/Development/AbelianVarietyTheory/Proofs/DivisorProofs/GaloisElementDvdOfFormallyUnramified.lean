@@ -47,7 +47,7 @@ theorem galElt_dvd_of_unramified : ∀ (R C O : Type) [CommRing R] [CommRing C] 
     · subst hg
       have : galMap act σ e g = τ e := rfl
       simp [this, hii]
-    · simp [Pi.single_apply, hg]
+    · simp [hg]
   refine ⟨e, ?_⟩
   rw [← hfix]
   simp only [galElt, Finset.sum_mul]

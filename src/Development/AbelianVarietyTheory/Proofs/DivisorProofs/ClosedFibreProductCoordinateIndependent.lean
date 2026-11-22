@@ -35,18 +35,18 @@ theorem Near.closed_product_unique : ∀ (R : Type) [CommRing R] [IsDomain R] [I
   have hA : g₁ ≫ ca = g₂ ≫ ca' := by
     ext1
     rw [← cancel_mono E.j]
-    simp only [Over.comp_left, Over.homMk_left, Category.assoc, hca, hca']
+    simp only [Over.comp_left, Category.assoc, hca, hca']
     rw [hg₁, hg₂, reassoc_of% e₁, reassoc_of% e₂]
   have hB : g₁ ≫ cb = g₂ ≫ cb' := by
     ext1
     rw [← cancel_mono E.j]
-    simp only [Over.comp_left, Over.homMk_left, Category.assoc, hcb, hcb']
+    simp only [Over.comp_left, Category.assoc, hcb, hcb']
     rw [hg₁, hg₂, reassoc_of% e₁, reassoc_of% e₂]
   have hC : g₁ ≫ (ca * cb) = g₂ ≫ (ca' * cb') := by
     rw [MonObj.comp_mul, MonObj.comp_mul, hA, hB]
   have hfU : spMap (j₁.comp io₁) ≫ c ≫ fU = spMap (j₁.comp io₁) ≫ c' ≫ fU := by
     have := congrArg (fun g => g.left ≫ E.j) hC
-    simp only [Over.comp_left, Over.homMk_left, Category.assoc, hcc, hcc'] at this
+    simp only [Over.comp_left, Category.assoc, hcc, hcc'] at this
     rw [hg₁, hg₂, reassoc_of% e₁, reassoc_of% e₂] at this
     exact this
 

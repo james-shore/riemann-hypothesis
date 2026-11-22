@@ -78,7 +78,7 @@ theorem integral_conj_mul_eq (U : Sch l →ₗ[ℂ] Sch l)
   have k2 := key (-1)
   have k3 := key (-(RCLike.I : ℂ))
   have k4 := key (RCLike.I : ℂ)
-  simp only [one_smul, neg_one_smul, neg_smul, ← sub_eq_add_neg] at k1 k2 k3 k4
+  simp only [one_smul, neg_smul, ← sub_eq_add_neg] at k1 k2 k3 k4
   have e1 := SchwartzMap.inner_toL2_toL2_eq (U f) (U g) volume
   have e2 := SchwartzMap.inner_toL2_toL2_eq f g volume
   simp only [RCLike.inner_apply] at e1 e2
@@ -136,8 +136,6 @@ theorem schur_schwartz : GlobalTheory.FunPr.Hypotheses₂ → ∀ (l : Type) [Fi
     have hnb : ‖U g y0‖ = ‖g y0‖ := by
       first
         | exact (sq_eq_sq₀ (norm_nonneg _) (norm_nonneg _)).1 h2
-        | exact pow_left_injective₀ (norm_nonneg _) (norm_nonneg _) two_ne_zero h2
-        | nlinarith [norm_nonneg (U g y0), norm_nonneg (g y0)]
     have hb0 : U g y0 ≠ 0 := by
       intro h
       apply hg

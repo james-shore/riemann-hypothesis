@@ -115,7 +115,7 @@ theorem UpperTheory.V.Ws.bl :
     rw [map_mul, ← adj_map] at h1
     refine h1.trans ?_
     ext i j
-    by_cases h : i = j <;> simp [Matrix.one_apply, h]
+    by_cases h : i = j <;> simp [h]
   · rintro ⟨Y, hY, hblk⟩
     have h3 : IsUnit (2 : 𝔞.K) := by have := h2.map 𝔞.toK; rwa [map_ofNat] at this
     have h4 := noCompl _ _ (mapRep 𝔞.toK r) (fun g => ((z g).map f).map 𝔞.toK) D.cc Y h3 hBK (fun g => (hzK g).1)

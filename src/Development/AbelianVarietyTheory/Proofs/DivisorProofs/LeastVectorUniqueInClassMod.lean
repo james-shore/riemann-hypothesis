@@ -32,7 +32,7 @@ theorem least_lt_add_smul : ∀ (s : ℕ) (W : Matrix (Fin s) (Fin s) ℤ), PosW
   have hq := qW_add_zsmul W β mu₀ nu
   have h1 : 0 ≤ qW W β (mu₀ + nu) := qW_nonneg hW hs hβ _
   rw [← one_zsmul nu, hq 1] at h1
-  simp only [one_mul, one_pow] at h1
+  simp only [one_pow] at h1
   have hN' : qW W β (mu₀ + N₁ • nu) = qW W β mu₀ + (N₁ : ℤ) * cross W β mu₀ nu + (N₁ : ℤ) ^ 2 * qW W β nu := by
     rw [← hq, natCast_zsmul]
   rw [hN']

@@ -123,7 +123,7 @@ theorem exists_trait_finite_residueField_charZero_avoiding : ∀ (B : Type) [Com
   refine ⟨V, inferInstance, inferInstance, inferInstance, inferInstance, g.comp φ, hcV, hVfin, ?_, ?_⟩
   · rw [RingHom.comp_apply]; intro e; apply hφh; apply hg; rw [e, map_zero]
   · have hgm : Ideal.comap g (IsLocalRing.maximalIdeal V) = IsLocalRing.maximalIdeal D := by
-      ext x; simp [IsLocalRing.mem_maximalIdeal, mem_nonunits_iff, isUnit_map_iff]
+      ext x; simp [IsLocalRing.mem_maximalIdeal, mem_nonunits_iff]
     rw [← Ideal.comap_comap, hgm, hcomp]
 
 end GlobalTheory

@@ -93,7 +93,7 @@ private theorem asIdeal_pow_dvd_finprod_iff {R : Type*} [CommRing R] [IsDedekind
       by_cases hwv : w = v
       · subst hwv
         simp [hb]
-      · simp [hb, hwv, Function.update_of_ne hwv]
+      · simp [hb, hwv]
     rw [hsplit] at hk
     have hpow : v.asIdeal ^ k = v.asIdeal ^ a v * v.asIdeal ^ (k - a v) := by
       rw [← pow_add]

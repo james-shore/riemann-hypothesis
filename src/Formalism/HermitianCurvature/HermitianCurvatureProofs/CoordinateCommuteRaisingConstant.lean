@@ -5527,8 +5527,7 @@ theorem wirt_wirt (v w : M.Var r) {F : E r → ℂ} {s : Set (E r)} (hs : IsOpen
   have e1 : wirt v (wirt w F) x = WL v (fderiv ℝ (wirt w F) x) := by rw [wirt_eq v (wirt w F)]
   have e2 : wirt w (wirt v F) x = WL w (fderiv ℝ (wirt v F) x) := by rw [wirt_eq w (wirt v F)]
   rw [e1, e2, key, key]
-  simp only [WL_apply, ContinuousLinearMap.coe_comp, Function.comp_apply, map_add, map_smul,
-    add_apply, smul_apply, smul_eq_mul]
+  simp only [WL_apply, ContinuousLinearMap.coe_comp, Function.comp_apply]
   rw [hsym (dirE w) (dirE v), hsym (dirE w) (Complex.I • dirE v), hsym (Complex.I • dirE w) (dirE v),
     hsym (Complex.I • dirE w) (Complex.I • dirE v)]
   ring
@@ -5585,7 +5584,6 @@ theorem gg_apply (q : Qp r TT) : ((ggQ r TT : SmQ r TT) : Qp r TT → ℂ) q =
     coordE M.vz q.1 * coordE M.vzb q.1 - (TT : ℂ) := by
   first
   | rfl
-  | simp [ggQ, DAlg.gg, anQ, coordQ]
 
 theorem gg_ne (q : Qp r TT) : ((ggQ r TT : SmQ r TT) : Qp r TT → ℂ) q ≠ 0 := by
   rw [gg_apply, coordE_vz, coordE_vzb, Complex.mul_conj]

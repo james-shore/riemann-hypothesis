@@ -145,8 +145,6 @@ theorem exists_factor [IsLocalRing O] {α β : O} (hαβ : ¬ IsUnit (α * β)) 
   | exact @_root_.GlobalTheory.UnipotentDecomposition.main
   | exact _root_.GlobalTheory.UnipotentDecomposition.main
   | (apply _root_.GlobalTheory.UnipotentDecomposition.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UnipotentDecomposition.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UnipotentDecomposition.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UnipotentDecomposition.main ..)
 
 theorem isUnit_diag [IsLocalRing O] {α β : O} (hβ : ¬ IsUnit β) {g : Matrix (Fin n) (Fin n) O}
@@ -207,8 +205,6 @@ theorem existsUnique_factor [IsLocalRing O] {α β : O} (hβ : ¬ IsUnit β) (g 
   | exact @_root_.GlobalTheory.UnipotentBorder.iwahori_factorisation
   | exact _root_.GlobalTheory.UnipotentBorder.iwahori_factorisation
   | (apply _root_.GlobalTheory.UnipotentBorder.iwahori_factorisation <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UnipotentBorder.iwahori_factorisation <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UnipotentBorder.iwahori_factorisation <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UnipotentBorder.iwahori_factorisation ..)
 
 theorem existsUnique_factor_opp [IsLocalRing O] {α β : O} (hβ : ¬ IsUnit β) (g : GL (Fin n) O)

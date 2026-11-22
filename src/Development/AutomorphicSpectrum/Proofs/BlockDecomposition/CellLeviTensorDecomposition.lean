@@ -24,11 +24,11 @@ def permU (s : n ≃ n) : GL n R where
   val_inv := by
     rw [PEquiv.mul_toMatrix_toPEquiv, PEquiv.toMatrix_toPEquiv_eq]
     ext i j
-    simp [Matrix.one_apply, Equiv.Perm.permMatrix, PEquiv.toMatrix_apply]
+    simp [Matrix.one_apply]
   inv_val := by
     rw [PEquiv.mul_toMatrix_toPEquiv, PEquiv.toMatrix_toPEquiv_eq]
     ext i j
-    simp [Matrix.one_apply, Equiv.Perm.permMatrix, PEquiv.toMatrix_apply]
+    simp [Matrix.one_apply]
 
 theorem permU_conj (s : n ≃ n) (M : GL n R) :
     permU s.symm * M * (permU s.symm)⁻¹ = reindexGL s M := by

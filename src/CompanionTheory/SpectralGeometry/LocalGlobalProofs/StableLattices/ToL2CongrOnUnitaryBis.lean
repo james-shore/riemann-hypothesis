@@ -212,7 +212,6 @@ theorem frechet (n : ℕ) (ε : Fin n → Bool) (X : GMod n) (c : X.V →ₗ[ℂ
     refine h1.congr_of_eventuallyEq (Eventually.of_forall fun t => ?_)
     show c u (g * NormedSpace.exp ((t : ℂ) • Y)) = c u (g * NormedSpace.exp ((s : ℂ) • Y) * NormedSpace.exp (((t - s : ℝ) : ℂ) • Y))
     rw [Matrix.mul_assoc, ← Matrix.exp_add_of_commute _ _ (((Commute.refl Y).smul_left _).smul_right _), ← add_smul]
-    congr 4
     push_cast
     ring_nf
   have hbd : ∀ s ∈ Icc (0:ℝ) 1, ‖c (∑ a, ∑ b, Y a b • X.E a b u) (g * NormedSpace.exp ((s : ℂ) • Y)) - T‖ ≤
@@ -242,7 +241,7 @@ theorem frechet (n : ℕ) (ε : Fin n → Bool) (X : GMod n) (c : X.V →ₗ[ℂ
   have hmv := Convex.norm_image_sub_le_of_norm_hasDerivWithin_le h1 hbd (convex_Icc 0 1)
     (⟨le_rfl, zero_le_one⟩ : (0:ℝ) ∈ Icc (0:ℝ) 1) (⟨zero_le_one, le_rfl⟩ : (1:ℝ) ∈ Icc (0:ℝ) 1)
   simp only [Complex.ofReal_one, Complex.ofReal_zero, one_smul, zero_smul, sub_zero, NormedSpace.exp_zero,
-    Matrix.mul_one, norm_one, mul_one] at hmv
+    norm_one, mul_one] at hmv
   rw [sub_right_comm] at hmv
   exact hmv
 

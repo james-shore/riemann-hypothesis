@@ -39,7 +39,7 @@ theorem exists_cut {N : ℕ} (φ : Fin (N + 1) → C) :
       (φ (k0.succAbove ν) / φ k0) * (if k = k0 then 1 else 0), ⟨fun ν k => ?_,
       fun k c => if k = k0.succAbove c then 1 else 0, fun k c => ge_ite _, fun c c' => ?_⟩, fun ν => ?_⟩
   · exact (ge_ite _).sub ((div_int (hk0 _ (Finset.mem_univ _))).mul_int (ge_ite _))
-  · simp [Fin.succAbove_ne, eq_comm]
+  · simp [eq_comm]
   · simp only [sub_mul, Finset.sum_sub_distrib, mul_assoc, ← Finset.mul_sum, ite_mul, one_mul, zero_mul,
       Finset.sum_ite_eq', Finset.mem_univ, if_true]
     by_cases h0 : φ k0 = 0
@@ -78,7 +78,7 @@ theorem exists_sat_ker {I κ : Type} [Fintype I] [DecidableEq I] (P : Finset I) 
     refine ⟨P.card, fun ν c => if c = (P.equivFin.symm ν : I) then 1 else 0, ⟨fun ν c => ge_ite _,
       fun c ν => if c = (P.equivFin.symm ν : I) then 1 else 0, fun c ν => ge_ite _, fun ν ν' => ?_⟩,
       fun ν c hc => ?_, by simp, by simp⟩
-    · simp [Subtype.val_inj, eq_comm]
+    · simp [eq_comm]
     · refine if_neg ?_
       rintro rfl
       exact hc (P.equivFin.symm ν).2

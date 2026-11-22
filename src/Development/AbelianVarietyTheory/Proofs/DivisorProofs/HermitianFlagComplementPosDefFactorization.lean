@@ -25,7 +25,7 @@ theorem schur_complement_step_cpx : ∀ (n r : ℕ) (J θ : Matrix (Fin n) (Fin 
     ext a c
     rw [Matrix.mul_apply, Fin.sum_univ_add]
     simp only [K, Fin.addCases_left, Fin.addCases_right, Matrix.add_apply, Matrix.one_apply,
-      mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true,
+      mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true,
       Matrix.mul_apply]
     rw [add_comm]
     rfl

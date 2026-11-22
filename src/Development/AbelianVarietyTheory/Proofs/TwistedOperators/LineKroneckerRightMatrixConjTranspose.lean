@@ -39,7 +39,7 @@ theorem inner_X_mul (h : IsFockIP ι) (i : σ) (P Q : MvPolynomial σ ℂ) :
         · congr 1
           · simp [add_comm 1, Nat.factorial_succ]
           · refine Finset.prod_congr rfl fun j hj => ?_
-            simp [Finsupp.single_apply, (Finset.ne_of_mem_erase hj).symm]
+            simp [(Finset.ne_of_mem_erase hj).symm]
         · intro j hj
           by_cases hji : j = i
           · simp [hji]
@@ -300,7 +300,7 @@ theorem minusPart_fockAct1_offDiagonal {Z : Mat p q} (h : IsPC Z) (P : Pol p q r
   rw [e]
   split_ifs
   · simp
-  · rw [Finset.sum_eq_single c] <;> simp +contextual [kron1, Matrix.one_apply, eq_comm]
+  · rw [Finset.sum_eq_single c] <;> simp +contextual [kron1, eq_comm]
 
 theorem minusPart_fockAct2_offDiagonal {Z : Mat r s} (h : IsPC Z) (P : Pol p q r s) :
     minusPart (fockAct2 p q r s Z) P = ∑ a, ∑ c, ∑ d,
@@ -311,7 +311,7 @@ theorem minusPart_fockAct2_offDiagonal {Z : Mat r s} (h : IsPC Z) (P : Pol p q r
   refine Finset.sum_congr rfl fun d _ => ?_
   split_ifs
   · simp
-  · rw [Finset.sum_eq_single a] <;> simp +contextual [kron2, Matrix.one_apply, eq_comm]
+  · rw [Finset.sum_eq_single a] <;> simp +contextual [kron2, eq_comm]
 
 end Lines
 

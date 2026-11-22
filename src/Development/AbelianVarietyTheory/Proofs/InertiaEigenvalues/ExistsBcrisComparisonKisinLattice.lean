@@ -128,7 +128,7 @@ theorem kisin_kB_comp_jB (hm : ∀ v ∈ LA t ϖ P, ∃ z : TW (OA l O) T, I.j (
     funext j
     by_cases hij : j = i
     · subst hij; simp
-    · simp [Pi.single_apply, hij]
+    · simp [hij]
   exact LinearMap.congr_fun h v
 
 theorem kisin_jB_comp_kB (hm : ∀ v ∈ LA t ϖ P, ∃ z : TW (OA l O) T, I.j (inclO l O m • v) = TWincl (inclO l O) T z)

@@ -37,7 +37,7 @@ theorem conj_lat : ∀ (D : D7) (j : Fin D.R.m) (B : Base (Vc D j) (Wc D j)), B.
         simp only [Pi.add_apply, map_add, smul_add]
       map_smul' := fun a F => by
         funext h
-        simp only [Pi.smul_apply, map_smul, map_smulₛₗ, RingHom.id_apply]
+        simp only [Pi.smul_apply, map_smul, map_smulₛₗ]
         exact smul_comm _ _ _ }
   have hC : ∀ F h, C F h = Φ ((τ κ / κ) • GlobalTheory.CoefModel.mapVV (τ : ℂ →+* ℂ) (lamV D j) (π (F h))) := fun _ _ => rfl
   have hconjAt : ∀ F, (∀ h, F h ∈ B.valSpace) → ConjAt Φ κ τ F (C F) := fun F hF h =>

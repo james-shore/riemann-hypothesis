@@ -21,8 +21,6 @@ theorem tendsto_finiteAdele {ι : Type} {l : Filter ι} (f : ι → FiniteAdeleR
   | exact @_root_.GlobalTheory.TendstoOfIntegrals.target_check
   | exact _root_.GlobalTheory.TendstoOfIntegrals.target_check
   | (apply _root_.GlobalTheory.TendstoOfIntegrals.target_check <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TendstoOfIntegrals.target_check <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TendstoOfIntegrals.target_check <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TendstoOfIntegrals.target_check ..)
 
 def ev (v : HeightOneSpectrum (𝓞 L)) : AdeleRing (𝓞 L) L →* v.adicCompletion L where

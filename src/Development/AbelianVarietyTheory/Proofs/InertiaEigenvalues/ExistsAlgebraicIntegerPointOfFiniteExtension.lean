@@ -131,7 +131,6 @@ theorem exists_ptC_of_finExt : ∀ (E : Type) [Field E] [NumberField E] [IsCMFie
     show vV (adicCompletionIntegers L w) (kMap w x) = _
     simp only [vV, vLa]
     rw [h1, WithZero.log_pow]
-    push_cast
     ring
   have hFin : T.FinRes := finite_res w
 

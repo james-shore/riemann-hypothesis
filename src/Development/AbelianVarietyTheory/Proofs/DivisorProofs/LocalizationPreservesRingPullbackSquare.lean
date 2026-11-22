@@ -18,12 +18,7 @@ theorem locPullback : ∀ {A R₀ A' B₀ : Type} [CommRing A] [CommRing R₀] [
     (∀ t, Φ t = 0 → Ψ t = 0 → t = 0) ∧ ∀ a b, Aα a = Kκ b → ∃ t, Φ t = a ∧ Ψ t = b := by
   first
   | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact @_root_.GlobalTheory.QuotientMapComposition.main
-  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll])); exact _root_.GlobalTheory.QuotientMapComposition.main
-  | exact @_root_.GlobalTheory.QuotientMapComposition.main
-  | exact _root_.GlobalTheory.QuotientMapComposition.main
-  | (apply _root_.GlobalTheory.QuotientMapComposition.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.QuotientMapComposition.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.QuotientMapComposition.main <;> first | assumption | infer_instance)
+  | (run_tac Lean.Elab.Tactic.liftMetaTactic (fun g => do pure [← g.revertAll]))
   | (intros; exact _root_.GlobalTheory.QuotientMapComposition.main ..)
 
 end GlobalTheory

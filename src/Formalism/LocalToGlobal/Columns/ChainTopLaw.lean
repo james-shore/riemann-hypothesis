@@ -212,7 +212,7 @@ theorem columns_ctl_fact {n : ℕ} (x : Sp E (n + 0)) : x ∈ LocE.lamY P q n 0 
   rw [Submodule.mem_comap, ciMem_stdAt, ciMem_stdAt]
   refine forall_congr' fun l => ?_
   have hl : l.1 < n := l.2
-  simp [LocE.scE, hl]
+  simp [LocE.scE]
 
 theorem ctl_stab0 {n : ℕ} {κ : Sp E n ≃ₗ[E] Sp E n} (hκ : κ ∈ GLint E n P) :
     κ ∈ stabL E (n + 0) (LocE.lamY P q n 0 (fun i => i + 1)) := by

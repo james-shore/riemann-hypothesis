@@ -173,10 +173,10 @@ theorem mem_iff_swap (hL : ∀ x, x ∈ L ↔ ∀ i, x i ∈ Set.range (algebraM
     rw [← map_inv, ← map_inv]
     funext j
     rw [hw]
-    simp only [Formalism.UG.bc, Units.coe_map, MonoidHom.coe_coe, Matrix.mulVec, dotProduct, map_sum, map_mul]
+    simp only [Formalism.UG.bc, Units.coe_map, Matrix.mulVec, dotProduct, map_sum, map_mul]
     rw [← e.symm.sum_comp]
     refine Finset.sum_congr rfl fun k _ => ?_
-    simp [Matrix.reindexAlgEquiv_apply, Matrix.reindex_apply, Formalism.UG.inclE]
+    simp [Matrix.reindex_apply, Formalism.UG.inclE]
   show w ∈ _ ↔ _ ∈ Formalism.UG.latS (F := F) (FiniteAdeleRing (𝓞 F) F)
       (Formalism.UG.tensInt (F := F) (FiniteAdeleRing (𝓞 F) F) (Formalism.UG.intOE E) (Formalism.UG.intAd F)) (Formalism.L2.Col.stdLat E m)
   rw [hv]
@@ -206,7 +206,7 @@ theorem mem_selfDualLatticeCoords_iff_integral_posSpace (D : D7) (W : HSpace D.h
       rw [Finset.sum_apply, Finset.sum_eq_single i]
       · simp [Pi.basisFun_apply]
       · intro b _ hb
-        simp [Pi.basisFun_apply, Pi.single_apply, Ne.symm hb]
+        simp [Pi.basisFun_apply, Ne.symm hb]
       · simp
     rw [← congrFun hc i, e1, Algebra.smul_def, mul_one]
   · intro hx
@@ -216,7 +216,7 @@ theorem mem_selfDualLatticeCoords_iff_integral_posSpace (D : D7) (W : HSpace D.h
     rw [Finset.sum_apply, Finset.sum_eq_single j]
     · simp [Pi.basisFun_apply, Algebra.smul_def, hc]
     · intro b _ hb
-      simp [Pi.basisFun_apply, Pi.single_apply, Ne.symm hb]
+      simp [Pi.basisFun_apply, Ne.symm hb]
     · simp
 
 theorem mem_selfDualLatticeCoords_iff_integral_rowSpace (X : Stages) {px : PreX X.B.toPre} (I : Col2.ColIn X.B px) (hI : I.Ok)

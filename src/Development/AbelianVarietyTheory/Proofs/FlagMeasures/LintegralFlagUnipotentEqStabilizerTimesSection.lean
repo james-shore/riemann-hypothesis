@@ -36,7 +36,7 @@ theorem isNilpotent_upper_sub_one {r : ℕ} (x : UT r → ℂ) : IsNilpotent (up
   have ht : (upper x - 1).BlockTriangular id := by
     intro i j h
     have h' : j < i := h
-    simp [upper, not_lt.2 h'.le, h'.ne', Matrix.one_apply]
+    simp [upper, not_lt.2 h'.le, h'.ne']
   have h := Matrix.aeval_self_charpoly (upper x - 1)
   rw [Matrix.charpoly_of_isUpperTriangular _ ht] at h
   refine ⟨r, ?_⟩
@@ -82,7 +82,7 @@ theorem isNilpotent_conjA {r : ℕ} (u : Matrix (Fin r) (Fin r) ℂ) (h : IsNilp
   have e : conjA u - 1 = LinearMap.mulLeft ℝ (u - 1) * (1 + LinearMap.mulRight ℝ (u - 1)ᴴ) +
       LinearMap.mulRight ℝ (u - 1)ᴴ := by
     ext1 S
-    simp [conjA_apply, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_add, Matrix.mul_assoc]
+    simp [conjA_apply, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_assoc]
   rw [e]
   have hc2 : Commute (LinearMap.mulLeft ℝ (u - 1)) (1 + LinearMap.mulRight ℝ (u - 1)ᴴ) :=
     (Commute.one_right _).add_right hc
@@ -91,7 +91,7 @@ theorem isNilpotent_conjA {r : ℕ} (u : Matrix (Fin r) (Fin r) ℂ) (h : IsNilp
 
 def rowL {r m : ℕ} (u : Matrix (Fin r) (Fin r) ℂ) : (Fin r → Fin m → ℂ) →ₗ[ℝ] (Fin r → Fin m → ℂ) where
   toFun B := fun a => ∑ c, star (u a c) • B c
-  map_add' p q := by ext; simp [mul_add, Finset.sum_add_distrib]
+  map_add' p q := by ext; simp [Finset.sum_add_distrib]
   map_smul' c p := by ext; simp [Finset.mul_sum, mul_left_comm]
 
 theorem rowL_apply {r m : ℕ} (u : Matrix (Fin r) (Fin r) ℂ) (B : Fin r → Fin m → ℂ) (a : Fin r) :

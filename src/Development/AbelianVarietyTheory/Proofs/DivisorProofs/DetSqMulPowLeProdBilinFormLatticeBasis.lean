@@ -16,7 +16,7 @@ theorem cast_quad {n : ℕ} (M : Matrix (Fin n) (Fin n) ℤ) (z : Fin n → ℤ)
 theorem gram_quad {n : ℕ} {Y : Type} [AddCommGroup Y] (β : LinearMap.BilinForm ℤ Y)
     (v : Fin n → Y) (z : Fin n → ℤ) :
     z ⬝ᵥ (Matrix.of fun i j => β (v i) (v j)) *ᵥ z = β (∑ i, z i • v i) (∑ i, z i • v i) := by
-  simp [dotProduct, mulVec, map_sum, LinearMap.sum_apply, Finset.mul_sum, mul_comm, mul_left_comm]
+  simp [dotProduct, mulVec, map_sum, LinearMap.sum_apply, Finset.mul_sum, mul_comm]
   conv_rhs => rw [Finset.sum_comm]
   exact Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => by ring
 
@@ -84,7 +84,7 @@ theorem det_sq_mul_pow_le_prod :
   have hM : Mz = Aᵀ * Gz * A := by
     ext j l
     simp only [Mz, Gz, Matrix.of_apply, Matrix.mul_apply, Matrix.transpose_apply, hkb]
-    simp [map_sum, LinearMap.sum_apply, Finset.mul_sum, Finset.sum_mul, mul_comm, mul_left_comm]
+    simp [map_sum, LinearMap.sum_apply, Finset.sum_mul, mul_comm, mul_left_comm]
   have hdetA : A.det = LinearMap.det (ε.toLinearMap ∘ₗ k) := LinearMap.det_toMatrix b _
   have hGs : Gzᵀ = Gz := by ext i j; simp [Gz, hsym]
   have hMs : Mzᵀ = Mz := by ext i j; simp [Mz, hsym]

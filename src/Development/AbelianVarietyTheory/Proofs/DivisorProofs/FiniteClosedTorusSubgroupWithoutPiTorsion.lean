@@ -192,7 +192,6 @@ theorem finite_of_isClosed_of_no_pi_torsion :
     (fun s hs h1 => e.injective (by
       rw [map_one]
       refine htors _ hs ?_
-      change e s ≫ act.act π = 1
       rw [hpt, h1, map_one]))
   have e' : H ≃ C := e.toEquiv.subtypeEquiv fun _ => Iff.rfl
   exact e'.finite_iff.1 h

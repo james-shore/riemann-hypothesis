@@ -42,9 +42,9 @@ theorem dbl_hand_of_chars {D : D7} {T : Type} {L : LevCh D T} {sc : Consts} (G :
               (besDecAt G (j + 1 + 1) σ (by omega))).om (h₁, h₂) Φ₂))) := by
   intro vN Φ₁ Φ₂ φ hΦ₁ hΦ₂ hφ g h₁ h₂
   have rA : Pair.InRange D.R.m (.top t j) := by
-    simp [Pair.InRange, Pair.big, Node.InRange]; omega
+    simp [Pair.InRange, Node.InRange]; omega
   have rB : Pair.InRange D.R.m (.top t (j + 1)) := by
-    simp [Pair.InRange, Pair.big, Node.InRange]; omega
+    simp [Pair.InRange, Node.InRange]; omega
   have hA := Wl.om_is (.top t j) rA
   have hB := Wl.om_is (.top t (j + 1)) rB
   have hoa : IsWeilDatumO Wl.ψ (G.V (.top j)) (G.V (.top (j + 1))) (G.chrS (.top t j)) (G.chrT (.mu t D.R.m j))

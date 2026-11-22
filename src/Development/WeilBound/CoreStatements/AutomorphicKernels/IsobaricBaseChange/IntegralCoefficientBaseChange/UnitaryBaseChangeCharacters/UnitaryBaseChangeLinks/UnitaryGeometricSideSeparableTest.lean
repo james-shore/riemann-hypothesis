@@ -496,7 +496,7 @@ theorem geomURat_eq_geomU : ∀ (E : Type) [Field E] [NumberField E] [IsCMField 
       · rw [if_neg h, if_neg h, mul_zero]
     · refine ((F.finite_toSet.biUnion fun P hP => (fixedP hU hn hS ((hmemF P).1 hP).1 hK' hf).1)).subset fun c hc => ?_
       obtain ⟨h1, h2⟩ := hsupp c hc
-      exact Set.mem_biUnion h1 (by simp only [Function.mem_support, if_pos rfl]; exact h2)
+      exact Set.mem_biUnion h1 (by simp only [Function.mem_support]; exact h2)
 
   let A : Set (E[X] × E[X]) := {p | p.1.Monic ∧ p.2.Monic ∧ p.1 * p.2 ∈ Ell E n}
   let V : E[X] × E[X] → ℂ := fun p => if p ∈ A then kap (p.1 * p.2) * chW lam (p.1 * p.2) *

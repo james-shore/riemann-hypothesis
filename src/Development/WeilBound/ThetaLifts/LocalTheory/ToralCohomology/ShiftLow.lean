@@ -123,7 +123,7 @@ theorem eq_sum (Z : ι → Matrix I I ℂ) : Z = ∑ w, ∑ a, ∑ b, Z w a b �
   ext w a b
   simp only [un, Finset.sum_apply, Pi.smul_apply, Matrix.sum_apply, Matrix.smul_apply, smul_eq_mul]
   rw [Finset.sum_eq_single w, Finset.sum_eq_single a, Finset.sum_eq_single b] <;>
-    simp +contextual [Pi.single_apply, Matrix.single_apply, eq_comm]
+    simp +contextual [Matrix.single_apply, eq_comm]
 
 theorem alg_le {r : I → I → Prop} {S : Submodule ℂ (ι → Matrix I I ℂ)} (h : ∀ w a b, r a b → un w a b ∈ S) : alg ι r ≤ S := by
   intro Z hZ
@@ -186,7 +186,7 @@ theorem dg_br (h : I → ℝ) (w : ι) (a b : I) : dg ι h * un w a b - un w a b
 theorem dg_eq (h : I → ℝ) : dg ι h = ∑ w, ∑ a, (h a : ℂ) • un w a a := by
   conv_lhs => rw [eq_sum (dg ι h)]
   refine Finset.sum_congr rfl fun w _ => Finset.sum_congr rfl fun a _ => ?_
-  rw [Finset.sum_eq_single a] <;> simp +contextual [dg, Matrix.diagonal_apply, eq_comm]
+  rw [Finset.sum_eq_single a] <;> simp +contextual [dg, eq_comm]
 
 theorem dg_hw {act : (ι → Matrix I I ℂ) →ₗ[ℂ] Module.End ℂ M} (h : I → ℝ) {Λ : ι → I → ℂ} {f : M}
     (hf : ∀ w a, act (un w a a) f = Λ w a • f) : f ∈ (act (dg ι h)).eigenspace (∑ w, ∑ a, h a * Λ w a) := by

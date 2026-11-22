@@ -51,7 +51,7 @@ theorem wirt_mono (c : ℂ → ℂ) (a : ℂ → Φ → ℂ) (σ : ℂ) {z : Φ 
     simp [sub_mul, Finset.sum_sub_distrib, ite_mul]
   rw [he, Complex.exp_sub, ← Complex.ofReal_exp, Real.exp_log hy]
   have hy' : ((z τ₀).im : ℂ) ≠ 0 := by exact_mod_cast hy.ne'
-  cases b <;> simp <;> field_simp <;> ring
+  cases b <;> simp <;> field_simp
 
 theorem wirtWord_mono (U : Set (Φ → ℂ)) (hU : IsOpen U) (hUpos : ∀ z ∈ U, ∀ τ, 0 < (z τ).im) (w : List (Φ × Bool)) :
     ∀ (c : ℂ → ℂ) (a : ℂ → Φ → ℂ), Differentiable ℂ c → (∀ τ, Differentiable ℂ (fun σ => a σ τ)) →

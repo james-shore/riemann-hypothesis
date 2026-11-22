@@ -28,7 +28,7 @@ theorem sum_laOf_eq {E : Type} [Field E] [NumberField E] [IsCMField E] {H : Reci
   rw [hs, hq, add_zero]
   obtain ⟨r, rfl⟩ := hn
   have : (r + r) / 2 = r := by omega
-  simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul, this, hq, add_zero]
+  simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin, nsmul_eq_mul, this]
   push_cast
   ring
 

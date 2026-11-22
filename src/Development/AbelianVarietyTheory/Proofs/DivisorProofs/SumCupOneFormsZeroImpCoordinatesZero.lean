@@ -75,7 +75,7 @@ theorem sum_toO_eq_zero_of_sum_cup : ∀ (R : Type) [CommRing R] (C : Type) [Cat
     simp only [map_sub]
     abel
   rw [key, map_sum]
-  simp only [Submodule.coe_sum, Finset.sum_apply, Submodule.coe_smul, Pi.smul_apply, hfn,
+  simp only [Submodule.coe_sum, Finset.sum_apply, Submodule.coe_smul, hfn,
     LinearMap.map_smul, hδw, smul_eq_mul, Algebra.smul_def]
   refine Finset.sum_congr rfl fun k _ => ?_
   rw [mul_comm]

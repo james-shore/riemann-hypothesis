@@ -45,7 +45,6 @@ theorem pullback_isColimit {U : Scheme.{0}} {ι : Type} {V : ι → Scheme.{0}} 
     refine hdis i k (pullback.snd y (j i) p) (pullback.snd y (j k) q) ?_
     rw [← Scheme.Hom.comp_apply, ← Scheme.Hom.comp_apply, ← pullback.condition, ← pullback.condition,
       Scheme.Hom.comp_apply, Scheme.Hom.comp_apply]
-    change y ((pullback.fst y (j i)) p) = y ((pullback.fst y (j k)) q)
     rw [hp, hq]
 
 theorem sec_subsingleton_of_isEmpty {R : Type} [CommRing R] (G : Shv R) (W : Scheme.{0}) [IsEmpty W] :

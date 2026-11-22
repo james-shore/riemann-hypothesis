@@ -28,7 +28,7 @@ theorem frame_last {T : D.host.E} (F : LFlag (VS D) D.R.rS T) :
 theorem xflag_top {T : D.host.E} (F : LFlag (VS D) D.R.rS T) : Xflag F D.R.rS = Xsp F := by
   simp only [Xflag, Xsp, FlagG.Xa, FlagG.X]
   congr 1
-  have : {i : Fin D.R.rS | i.1 < D.R.rS} = Set.univ := by ext i; simp [i.2]
+  have : {i : Fin D.R.rS | i.1 < D.R.rS} = Set.univ := by ext i; simp
   rw [this, Set.image_univ]
 
 theorem xflag_mono {T : D.host.E} (F : LFlag (VS D) D.R.rS T) {i j : ℕ} (h : i ≤ j) : Xflag F i ≤ Xflag F j := by

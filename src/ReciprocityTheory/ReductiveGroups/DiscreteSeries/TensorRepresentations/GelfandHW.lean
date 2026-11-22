@@ -22,7 +22,7 @@ theorem hwShift_eq_icShift (ν : Fin n → ℝ) : hwShift ν = icShift (ν + rho
 theorem ePow_hw_lower {E : Fin n → Fin n → Module.End ℂ M} (hE : IsGlRep E) {ν : Fin n → ℝ} {v : M}
     (hv : IsHWVec E ν v) (k : ℕ) (s r : Fin n) (hsr : s < r) : ePow E k s r v = 0 := by
   induction k generalizing s r with
-  | zero => simp [ePow, Bl.ThirdBlockLemmaA.goal1, Matrix.one_apply, hsr.ne]
+  | zero => simp [ePow, Bl.ThirdBlockLemmaA.goal1, hsr.ne]
   | succ k ih =>
     rw [show ePow E (k + 1) s r = ∑ c, E s c * ePow E k c r from by simp only [ePow, Bl.ThirdBlockLemmaA.goal1, pow_succ', Matrix.mul_apply, Matrix.of_apply], LinearMap.sum_apply]
     apply Finset.sum_eq_zero
@@ -40,7 +40,7 @@ theorem ePow_hw_lower {E : Fin n → Fin n → Module.End ℂ M} (hE : IsGlRep E
 theorem ePow_hw_diag {E : Fin n → Fin n → Module.End ℂ M} (hE : IsGlRep E) {ν : Fin n → ℝ} {v : M}
     (hv : IsHWVec E ν v) (k : ℕ) (r : Fin n) : ePow E k r r v = gx (hwShift ν) k r • v := by
   induction k generalizing r with
-  | zero => simp [ePow, Bl.ThirdBlockLemmaA.goal1, Matrix.one_apply, gx]
+  | zero => simp [ePow, Bl.ThirdBlockLemmaA.goal1, gx]
   | succ k ih =>
     have key : ∀ c, E r c (ePow E k c r v) =
         ((if c = r then (ν r : ℂ) * gx (hwShift ν) k r else 0) +

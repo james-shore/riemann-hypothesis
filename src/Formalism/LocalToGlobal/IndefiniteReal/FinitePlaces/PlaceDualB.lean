@@ -116,7 +116,7 @@ lemma gen_single (hS : IsSelfDualC S ΛS) (hT : IsSelfDualC T ΛT) (i : Fin T.ra
       (NS : D.host.E) * (if j = j' then 1 else 0) := by
     intro j'
     have h1 : ∀ k, star (((NS : D.host.E) • star w) k) = (NS : D.host.E) * w k := fun k => by
-      simp [Pi.smul_apply, star_smul, star_natCast]
+      simp [Pi.smul_apply, star_natCast]
     simp_rw [h1, mul_assoc, ← Finset.mul_sum]
     congr 1
     have h2 : ∑ k, w k * S.gram k j' = (Matrix.vecMul w S.gram) j' := rfl

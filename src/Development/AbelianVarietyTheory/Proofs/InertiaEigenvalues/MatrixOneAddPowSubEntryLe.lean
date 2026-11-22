@@ -26,7 +26,7 @@ theorem matrix_one_add_pow_sub_entry_le :
           + (m : E) • (Y * Y) := by
       rw [pow_succ]
       push_cast
-      simp only [mul_add, add_mul, mul_one, one_mul, sub_mul, smul_mul_assoc, add_smul, one_smul]
+      simp only [mul_add, mul_one, one_mul, sub_mul, smul_mul_assoc, add_smul, one_smul]
       abel
     intro i j
     rw [key]

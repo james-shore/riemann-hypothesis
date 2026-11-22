@@ -32,7 +32,7 @@ theorem harmonicAt_update_of_levi_eq_zero :
     rw [← hupd]
     simpa using hz
   have hφ2 : ∀ y ∈ O, ContDiffAt ℝ 2 φ y := fun y hy =>
-    ((hφ y hy).contDiffAt (hO.mem_nhds hy)).of_le (by first | exact WithTop.coe_le_coe.mpr le_top | simp)
+    ((hφ y hy).contDiffAt (hO.mem_nhds hy)).of_le (by first | exact WithTop.coe_le_coe.mpr le_top)
   have hlap : ∀ t ∈ (fun t : ℂ => z0 + t • e) ⁻¹' O,
       Laplacian.laplacian (fun t : ℂ => φ (z0 + t • e)) t = 0 := by
     intro t ht

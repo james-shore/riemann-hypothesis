@@ -34,7 +34,7 @@ theorem hc_u_step {R : Ranks} (h : HCParam R) (i : ℕ) (hi : i + 1 < R.k) :
 theorem lamCol_eq (D : D7) (u : D.what₂.Word) (τ : D.what₂.Tau) (i : ℕ) (hi : i < D.R.k) :
     lamCol D u τ i = (D.hcW u τ).u ⟨i, hi⟩ - (((D.R.k : ℚ) - 1) / 2 - i) := by
   rw [lamCol, dif_pos hi]
-  simp only [hcToWeightQ, rhoVec, Fin.val_mk]
+  simp only [hcToWeightQ, rhoVec]
 
 theorem wJ_eq (D : D7) (u : D.what₂.Word) (τ : D.what₂.Tau) (j : ℕ) (hj : j < D.R.m) :
     wJ D u τ j = (D.hc τ).e ⟨j, hj⟩ - (D.R.k : ℚ) / 2 - (2 * ((j : ℚ) + 1) - 1) * ((D.R.t : ℚ) + 1) / 2 := by

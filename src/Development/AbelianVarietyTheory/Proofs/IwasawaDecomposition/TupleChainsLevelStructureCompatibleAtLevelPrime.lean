@@ -97,7 +97,7 @@ theorem tw_lv_tied_and_same : ∀ {B : Base} {X : PreX B.toPre} (I : TC B X), I.
     intro u μ i hm y
     unfold twYS
     rw [hW.eY u μ i hm]
-    simp only [Equiv.trans_apply, Equiv.refl_symm, Equiv.refl_apply]
+    simp only [Equiv.trans_apply]
     unfold eYS
     split_ifs with h
     · exact (hF u).1.eY i hm h y
@@ -125,12 +125,12 @@ theorem tw_lv_tied_and_same : ∀ {B : Base} {X : PreX B.toPre} (I : TC B X), I.
     rw [hW.eCls0 u μ, hW.eY u μ 0 (Nat.zero_le _)]
     refine (GlobalTheory.Mem.Col2.TC.StepZero.lvSame_zero I hOk hP l Z l0 u μ (W.atT u μ) (hW.eVT u μ) fun v r => ?_).some
     have h := hW.eFv u μ v r
-    simp only [TwAtT.res, RingHom.comp_apply, (hF u).1.res] at h
+    simp only [TwAtT.res, (hF u).1.res] at h
     exact h
   · intro u i hi
     refine lvSameMu0 I l Z l0 u i hi (W.atT u _) (hW.eVT u _) fun v r => ?_
     have h := hW.eFv u (I.rec7 l Z).what₂.mu0 v r
-    simp only [TwAtT.res, RingHom.comp_apply, (hF u).1.res] at h
+    simp only [TwAtT.res, (hF u).1.res] at h
     exact h
 
 end GlobalTheory.Mem.Col2.TC

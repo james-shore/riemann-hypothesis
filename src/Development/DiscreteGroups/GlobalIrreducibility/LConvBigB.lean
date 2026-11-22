@@ -39,7 +39,7 @@ theorem exists_eq_mul_corner {p : GL (Fin (m + 1)) k} (hp : IsP p) :
     have hp' : ∀ j, (p : Matrix (Fin (m + 1)) (Fin (m + 1)) k) (Fin.last m) j =
         (1 : Matrix (Fin (m + 1)) (Fin (m + 1)) k) (Fin.last m) j := hp
     rw [Matrix.det_succ_row _ (Fin.last m), Fin.sum_univ_castSucc]
-    simp [hp', Matrix.one_apply, hne, Fin.succAbove_last, A, he]
+    simp [hp', hne, Fin.succAbove_last, A, he]
   have hA : A.det ≠ 0 := by
     rw [← hdet]
     exact ((Matrix.isUnit_iff_isUnit_det _).1 p.isUnit).ne_zero

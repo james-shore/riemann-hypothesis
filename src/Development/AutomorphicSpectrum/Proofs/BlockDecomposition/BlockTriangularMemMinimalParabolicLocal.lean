@@ -41,7 +41,7 @@ theorem mat_extH_eq_add (σ : E →ₐ[F] E) {n : ℕ} (J : Matrix (Fin n) (Fin 
   · subst h
     simp [map_sub]
     ring
-  · simp [Matrix.one_apply, h]
+  · simp [h]
 
 theorem extH_stab (σ : E →ₐ[F] E) {n r : ℕ} (J : Matrix (Fin n) (Fin n) E) (g : HA R σ J)
     (X : Matrix (Fin n) (Fin r) E) (B : Matrix (Fin r) (Fin r) (R ⊗[F] E)) (hB : B.BlockTriangular id)
@@ -52,7 +52,7 @@ theorem extH_stab (σ : E →ₐ[F] E) {n r : ℕ} (J : Matrix (Fin n) (Fin n) E
   · intro a b hab
     have hne : a ≠ b := fun e => by subst e; exact lt_irrefl _ hab
     have h0 : B a b = 0 := hB hab
-    simp [Matrix.one_apply, hne, h0]
+    simp [hne, h0]
   · rw [mat_extH_eq_add, Matrix.add_mul, Matrix.mul_add, Matrix.one_mul, Matrix.mul_one, map_tensNU_mul_inclR,
       inclR_mul_map_tensNU, Matrix.sub_mul, Matrix.mul_sub, h, Matrix.one_mul, Matrix.mul_one]
 

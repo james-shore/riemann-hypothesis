@@ -91,7 +91,7 @@ theorem etaEq_one : EtaEq (1 : Sym m n) 0 := by
 theorem etaEq_X_inl (k : Fin m × Fin n × Bool) : EtaEq (X (Sum.inl k) : Sym m n) 0 := by
   intro t ht
   rw [support_X, Finset.mem_singleton] at ht
-  subst ht; simp [ed, Finsupp.single_apply]
+  subst ht; simp [ed]
 
 theorem etaEq_X_inr (k : Fin m × Fin n × Bool) : EtaEq (X (Sum.inr k) : Sym m n) 1 := by
   intro t ht
@@ -213,20 +213,20 @@ theorem opL_pair (ε : Fin m → Bool) (c : ℝ) (hc : c ≠ 0) (a b : Fin m) :
   cases ha : ε a <;> cases hb : ε b
   · refine ⟨1, LinearMap.ext fun f => ?_⟩
     rw [key]
-    simp [firstFamilyOperatorEnd, D1, vecVar, covVar, ha, hb, op_mul_X_inl, op_mul_X_inr, op_X_inl, op_X_inr]
+    simp [firstFamilyOperatorEnd, D1, vecVar, covVar, ha, hb, op_mul_X_inl, op_X_inr]
   · refine ⟨1 / (2 * (c : ℂ)), LinearMap.ext fun f => ?_⟩
     rw [key]
-    simp [firstFamilyOperatorEnd, D1, vecVar, covVar, ha, hb, op_mul_X_inl, op_mul_X_inr, op_X_inl, op_X_inr]
+    simp [firstFamilyOperatorEnd, D1, vecVar, covVar, ha, hb, op_mul_X_inr, op_X_inr]
     rw [smul_smul, show ((c : ℂ)⁻¹ * 2⁻¹) * (2 * c) = 1 by field_simp, one_smul]
     exact Finset.sum_congr rfl fun i _ => pderiv_comm' _ _ f
   · refine ⟨-(2 * (c : ℂ)), LinearMap.ext fun f => ?_⟩
     rw [key]
-    simp [firstFamilyOperatorEnd, D1, vecVar, covVar, ha, hb, op_mul_X_inl, op_mul_X_inr, op_X_inl, op_X_inr]
+    simp [firstFamilyOperatorEnd, D1, vecVar, covVar, ha, hb, op_mul_X_inl, op_X_inl]
     rw [smul_smul, show (2 * (c : ℂ)) * ((c : ℂ)⁻¹ * 2⁻¹) = 1 by field_simp, one_smul]
     exact Finset.sum_congr rfl fun i _ => by ring
   · refine ⟨-1, LinearMap.ext fun f => ?_⟩
     rw [key]
-    simp [firstFamilyOperatorEnd, D1, vecVar, covVar, ha, hb, op_mul_X_inl, op_mul_X_inr, op_X_inl, op_X_inr]
+    simp [firstFamilyOperatorEnd, D1, vecVar, covVar, ha, hb, op_mul_X_inr, op_X_inl]
 
 theorem symK_pair (ε : Fin m → Bool) (i j : Fin n) (a b : Fin m) : symK ε i j (pairSym (n := n) ε a b) = 0 := by
   unfold pairSym
@@ -234,7 +234,7 @@ theorem symK_pair (ε : Fin m → Bool) (i j : Fin n) (a b : Fin m) : symK ε i 
   simp only [Derivation.leibniz, smul_eq_mul]
   unfold vecVar covVar
   cases ha : ε a <;> cases hb : ε b <;>
-    simp [symK, mkDerivation_X, ha, hb, mul_ite, ite_mul, Finset.sum_add_distrib] <;> ring
+    simp [symK, mkDerivation_X, ha, hb, mul_ite, Finset.sum_add_distrib] <;> ring
 
 theorem pair_comm_K (ε : Fin m → Bool) (a b : Fin m) (i j : Fin n) :
     opL (pairSym (n := n) ε a b) * KopL ε i j = KopL ε i j * opL (pairSym (n := n) ε a b) := by
@@ -343,7 +343,7 @@ theorem op_inj {s : Sym m n} (h : ∀ f, op s f = 0) : s = 0 := by
       rw [Finsupp.comapDomain_apply, Nat.descFactorial_self]
       exact_mod_cast Nat.factorial_ne_zero _
     · ext k
-      simp [Finsupp.tsub_apply, Finsupp.finset_sum_apply, Finsupp.single_apply]
+      simp [Finsupp.single_apply]
   · intro b hb hbt
     split_ifs with hc
     · apply mul_eq_zero_of_right
@@ -364,7 +364,7 @@ theorem op_inj {s : Sym m n} (h : ∀ f, op s f = 0) : s = 0 := by
       | inr k => exact heq k (Finset.mem_univ _)
       | inl k =>
         have hck := DFunLike.congr_fun hc k
-        simp [Finsupp.tsub_apply, Finsupp.finset_sum_apply, Finsupp.single_apply, heq k (Finset.mem_univ _)] at hck
+        simp [Finsupp.single_apply, heq k (Finset.mem_univ _)] at hck
         exact hck
     · rw [mul_zero]
   · intro hn

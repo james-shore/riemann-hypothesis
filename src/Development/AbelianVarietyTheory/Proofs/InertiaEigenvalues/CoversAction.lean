@@ -84,8 +84,6 @@ theorem GlobalTheory.BKGal.covers_action : ∀ (l : ℕ) [Fact l.Prime] (a e : �
       GlobalTheory.MemLoc.IsTiltOf.untilt_eq hz]
     first
     | exact (map_pow (algebraMap (Om l) ℂ_[l]) ω j).symm
-    | norm_cast
-    | exact (UniformSpace.Completion.coe_pow ..).symm
   refine ⟨fun x hx => ?_, ?_⟩
   · rcases eq_or_ne x 0 with rfl | hx0
     · rw [map_zero, zero_pow (pow_ne_zero _ (Fact.out : l.Prime).ne_zero)]

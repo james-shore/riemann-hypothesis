@@ -41,7 +41,7 @@ theorem equivFun_map {T : Type} [AddCommGroup T] [Module ℤ_[l] T] {ι : Type} 
   | tmul a t =>
     rw [TensorProduct.map_tmul, Module.Basis.baseChange_repr_tmul, AlgEquiv.toLinearMap_apply,
       ← LinearMap.toMatrix_mulVec_repr b b r t]
-    simp only [Module.Basis.baseChange_repr_tmul, Matrix.mulVec, dotProduct, map_smul, Algebra.smul_def,
+    simp only [Module.Basis.baseChange_repr_tmul, Matrix.mulVec, dotProduct, Algebra.smul_def,
       Finset.sum_mul, map_mul, mul_assoc, map_sum, AlgEquiv.commutes]
   | add y z hy hz =>
     simp only [map_add, Finsupp.add_apply, hy, hz, mul_add, Finset.sum_add_distrib]
@@ -73,12 +73,12 @@ theorem realises_of_mreal : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK
     apply (b.baseChange (WCb l)).equivFun.injective
     rw [hj]
     simp only [c, Module.Basis.map_apply, Pi.basisFun_apply, LinearEquiv.trans_apply,
-      LinearEquiv.apply_symm_apply, Matrix.toLinearEquiv'_apply, Matrix.toLin'_apply]
+      LinearEquiv.apply_symm_apply]
     refine congrArg _ (funext fun k => ?_)
     rw [Module.Basis.equivFun_self]
     by_cases h : i = k
     · subst h; simp
-    · simp [h, Pi.single_apply, Ne.symm h]
+    · simp [h, Ne.symm h]
   have hu : IsUnit (inclW l (bk.ev bk.E)) := isUnit_inclW_of_span bk.span_ev
   obtain ⟨d₀, hd₀⟩ : ∃ d₀ : ↥(ainfObj K).I, ((d₀ : (ainfObj K).A) : Ainf l) = bk.ev bk.E :=
     ⟨⟨bk.ι.f bk.E, bk.ι.f_I _ (Ideal.mem_span_singleton_self _)⟩, rfl⟩

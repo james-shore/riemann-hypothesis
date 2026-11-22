@@ -70,7 +70,7 @@ theorem norm_pair_sq_le (a ξ : Fin n → ℂ) :
     ‖∑ j, a j * conj (ξ j)‖ ^ 2 ≤ (∑ j, ‖a j‖ ^ 2) * ∑ j, ‖ξ j‖ ^ 2 := by
   have h1 : ‖∑ j, a j * conj (ξ j)‖ ≤ ∑ j, ‖a j‖ * ‖ξ j‖ := by
     refine (norm_sum_le _ _).trans (le_of_eq (Finset.sum_congr rfl fun j _ => ?_))
-    simp [norm_mul]
+    simp
   calc ‖∑ j, a j * conj (ξ j)‖ ^ 2 ≤ (∑ j, ‖a j‖ * ‖ξ j‖) ^ 2 :=
         pow_le_pow_left₀ (norm_nonneg _) h1 2
     _ ≤ _ := Finset.sum_mul_sq_le_sq_mul_sq _ _ _

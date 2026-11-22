@@ -75,7 +75,6 @@ theorem det_ne_zero_of_chars [DecidableEq ι] (χ : ι → A →+* L) (hχ : Fun
     _ = 0 := by
         first
         | exact h
-        | simpa [Matrix.mulVec, dotProduct] using h
 
 end Chars
 

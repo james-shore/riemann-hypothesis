@@ -57,9 +57,9 @@ theorem goodPos_of_dual {r : ℕ} (e f : Fin r → Fin n → ℂ) (z z'' : Fin n
     simp only [UnitaryIsometries.hJ_sub_right, UnitaryIsometries.hJ_sum_right, hee, mul_zero, Finset.sum_const_zero, sub_zero, hef]
   · rw [hg]
     simp only [UnitaryIsometries.hJ_sub_right, UnitaryIsometries.hJ_sub_left, UnitaryIsometries.hJ_sum_right, UnitaryIsometries.hJ_sum_left, hee, hfe, mul_zero,
-      Finset.sum_const_zero, sub_zero, mul_ite, mul_one, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ,
+      Finset.sum_const_zero, sub_zero, mul_ite, mul_one, Finset.sum_ite_eq', Finset.mem_univ,
       if_true, UnitaryIsometries.hJ_sum_left]
-    simp only [hef, ite_mul, zero_mul, one_mul, mul_ite, mul_zero, mul_one, Finset.sum_ite_eq, Finset.sum_ite_eq',
+    simp only [hef, mul_ite, mul_zero, mul_one, Finset.sum_ite_eq',
       Finset.mem_univ, if_true, map_mul]
     rw [← UnitaryIsometries.hJ_conj ε (f a) (f b)]
     simp only [map_div₀, map_one, map_ofNat]

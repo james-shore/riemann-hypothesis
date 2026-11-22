@@ -116,7 +116,7 @@ def rhoGE (y : G) (g : stab ι J' y) : Module.End K S.V where
   map_smul' b x := by
     apply coef_injective P
     rw [map_smulₛₗ, coef_cinv P (rhoG_rg P J' χ' hχ' hρ _ _ _), coef_cinv P (rhoG_rg P J' χ' hχ' hρ _ _ _)]
-    simp only [rhoG, map_smulₛₗ, RingHom.id_apply, map_smul]
+    simp only [rhoG, map_smulₛₗ, RingHom.id_apply]
     rw [smul_comm]
 
 theorem coef_rhoGE (y : G) (g : stab ι J' y) (x : S.V) :

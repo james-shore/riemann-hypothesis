@@ -98,8 +98,6 @@ theorem map_binomialSeries_alt {A : Type*} [CommRing A] [Algebra R A] (c : R) :
   ext n
   first
     | simp [PowerSeries.binomialSeries_coeff, Algebra.smul_def]
-    | simp [PowerSeries.binomialSeries, Algebra.smul_def]
-    | simp [PowerSeries.binomialSeries]
 
 theorem binomialSeries_subst_sub_one_eq_mul {A : Type*} [CommRing A] [Algebra R A] (d e : R) :
     (binomialSeries A d).subst (binomialSeries A e - 1 : A⟦X⟧) = binomialSeries A (d * e) := by
@@ -109,8 +107,6 @@ theorem binomialSeries_subst_sub_one_eq_mul {A : Type*} [CommRing A] [Algebra R 
         (PowerSeries.map (algebraMap R A) (binomialSeries R e - 1 : R⟦X⟧)) := by
     first
       | exact PowerSeries.map_subst hs _
-      | exact PowerSeries.map_subst hs (algebraMap R A) _
-      | exact PowerSeries.map_subst (h := algebraMap R A) hs _
   rw [map_sub, map_one, map_binomialSeries_alt, map_binomialSeries_alt, binomialSeries_subst_comp, map_binomialSeries_alt] at hm
   exact hm.symm
 
@@ -131,8 +127,6 @@ variable (l : ℕ) [Fact l.Prime] (O : Type) [CommRing O] [Algebra ℤ_[l] O]
 theorem constantCoeff_binomialSeriesSubOne (c : ℤ_[l]) : constantCoeff (br l O c) = 0 := by
   first
     | simp [br]
-    | (simp only [br, map_sub, map_one, sub_eq_zero, ← PowerSeries.coeff_zero_eq_constantCoeff_apply]
-       simp [PowerSeries.binomialSeries])
 
 theorem hasSubst_br_padic (c : ℤ_[l]) : HasSubst (br l O c) := by
   apply PowerSeries.HasSubst.of_constantCoeff_zero
@@ -183,7 +177,7 @@ theorem action_laws_holds : ActLaws := by
 theorem X_mul_q_eq_one_add_X_pow_sub_one : X * q l O = (1 + X) ^ l - 1 := by
   ext n
   rcases n with _ | m
-  · simp [coeff_one_add_X_pow_alt]
+  · simp
   · simp [q, coeff_one_add_X_pow_alt, PowerSeries.coeff_succ_X_mul]
 
 theorem q_multiplicative_holds : QMul := by
@@ -330,9 +324,7 @@ theorem br_eq_X_mul_shift (d : ℤ_[l]) :
 
 theorem coeff_one_br (d : ℤ_[l]) : coeff 1 (br l O d) = algebraMap ℤ_[l] O d := by
   first
-    | simp [br, PowerSeries.binomialSeries_coeff, Ring.choose_one_right, Algebra.smul_def]
-    | simp [br, PowerSeries.binomialSeries, Ring.choose_one_right, Algebra.smul_def]
-    | simp [br, PowerSeries.binomialSeries, Ring.choose_one_right]
+    | simp [br, PowerSeries.binomialSeries_coeff, Algebra.smul_def]
 
 theorem r1_holds : R1 := by
   intro l _ O _ _ hl
@@ -425,9 +417,6 @@ lemma map_subst_powerSeries {R S : Type} [CommRing R] [CommRing S] (h : R →+* 
     PowerSeries.map h (f.subst a) = (PowerSeries.map h f).subst (PowerSeries.map h a) := by
   first
     | exact PowerSeries.map_subst ha f
-    | exact PowerSeries.map_subst ha h f
-    | exact PowerSeries.map_subst (R := R) (S := S) ha (h := h) f
-    | exact (PowerSeries.map_subst ha).symm
 
 lemma dvd_subst_self {R : Type} [CommRing R] {a f : R⟦X⟧} (ha : HasSubst a)
     (hf : constantCoeff f = 0) : a ∣ f.subst a := by

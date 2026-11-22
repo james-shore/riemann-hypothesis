@@ -25,22 +25,18 @@ theorem pie_sw_self {n : ℕ} (mu : Fin n → ℕ) (j : Fin n) : pie_sw mu j j =
   unfold pie_sw
   first
   | rw [Function.update_self]
-  | rw [Function.update_same]
-  | simp
 
 theorem pie_sw_pr {n : ℕ} (mu : Fin n → ℕ) {j : Fin n} (h : 0 < j.val) :
     pie_sw mu j (pie_pr j) = mu j - 1 := by
   unfold pie_sw
   first
   | rw [Function.update_of_ne (pie_pr_ne h), Function.update_self]
-  | rw [Function.update_noteq (pie_pr_ne h), Function.update_same]
 
 theorem pie_sw_other {n : ℕ} (mu : Fin n → ℕ) {j k : Fin n} (hk : k ≠ j) (hk' : k ≠ pie_pr j) :
     pie_sw mu j k = mu k := by
   unfold pie_sw
   first
   | rw [Function.update_of_ne hk, Function.update_of_ne hk']
-  | rw [Function.update_noteq hk, Function.update_noteq hk']
 
 theorem pie_sw_rho {n : ℕ} (mu : Fin n → ℕ) {j : Fin n} (h : 0 < j.val) (h1 : 1 ≤ mu j) :
     pie_sw mu j + rhoN n = (mu + rhoN n) ∘ Equiv.swap (pie_pr j) j := by
@@ -108,7 +104,6 @@ private lemma pie_cnt_injective {n b : ℕ} {s1 s2 : Sym (Fin n) b} (h : pie_cnt
   apply Subtype.ext
   first
   | exact Multiset.ext' fun a => congrFun h a
-  | exact Multiset.ext.2 fun a => congrFun h a
 
 theorem pie_step2 (n b : ℕ) (lam : Fin n → ℕ) :
     ∑ s : Sym (Fin n) b, alt n (lam + rhoN n + pie_cnt s) = ∑ mu ∈ pie_S lam b, alt n (mu + rhoN n) := by
@@ -247,8 +242,6 @@ theorem pie_bad_zero (n b : ℕ) (lam : Fin n → ℕ) (hlam : Antitone lam) :
     rw [hg, pie_sw_rho mu hj0 hj1, pie_alt_swap n _ (pie_pr_ne hj0)]
     first
     | exact add_neg_cancel _
-    | exact add_right_neg _
-    | simp
   · intro mu hmu hne
     have hmu' := hmu
     rw [Finset.mem_filter, pie_mem_S] at hmu'

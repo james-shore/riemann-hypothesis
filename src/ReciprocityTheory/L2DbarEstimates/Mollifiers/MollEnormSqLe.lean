@@ -79,7 +79,6 @@ theorem moll_young_sq (E : Type*) [NormedAddCommGroup E] [NormedSpace ℝ E] [Fi
     refine lintegral_congr fun x => ?_
     first
     | rfl
-    | (by_cases hx : x - t ∈ T <;> simp [Set.indicator_apply, hx])
   have hpt : ∀ t, ∫⁻ x in s, F x t ∂μ ≤ ENNReal.ofReal (K.toFun t) * ∫⁻ y in T, ‖u y‖ₑ ^ 2 ∂μ := by
     intro t
     simp only [hFdef]

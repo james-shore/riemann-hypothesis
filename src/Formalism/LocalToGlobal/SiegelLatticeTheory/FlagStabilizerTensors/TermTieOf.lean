@@ -536,7 +536,6 @@ theorem hT_X_zero (F : LFlag S r T) (a : Fin (r + 1)) {x : S.V} (hx : x ∈ Xsp 
   have hs : ∀ x y, starRingEnd E (S.hT x y) = S.hT y x := fun x y => by
     first
       | exact S.herm.eq x y
-      | exact S.herm x y
   have he : ∀ i, S.hT (F.fl.fvec a) (F.fl.e i) = 0 := by
     intro i
     induction a using Fin.lastCases with

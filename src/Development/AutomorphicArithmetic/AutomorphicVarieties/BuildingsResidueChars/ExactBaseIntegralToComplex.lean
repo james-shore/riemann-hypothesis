@@ -19,13 +19,12 @@ private theorem ladder {X Y : Type} [DecidableEq X] [DecidableEq Y] (f : (X →�
         rw [TensorProduct.finsuppScalarRight_apply_tmul_apply]
         by_cases hx : x = x'
         · subst hx; simp
-        · simp [Finsupp.single_apply, hx]
+        · simp [hx]
       have e2 : Finsupp.single x n = n • Finsupp.single x (1 : ℤ) := by simp
       ext y
       rw [e1, map_smul, LinearMap.lTensor_tmul, TensorProduct.finsuppScalarRight_apply_tmul_apply, e2, map_smul,
         Finsupp.smul_apply, Finsupp.smul_apply, h]
       simp only [smul_eq_mul, zsmul_eq_mul, Int.cast_mul]
-      push_cast
       ring
 
 theorem UpperTheory.exactBase_integral_to_complex :

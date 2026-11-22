@@ -49,7 +49,7 @@ def matrixBaseChange (R : Type) [CommRing R] (K : Type) [CommRing K] [Algebra R 
     (n : Type) [Fintype n] [DecidableEq n] : K ⊗[R] Matrix n n R ≃ₐ[K] Matrix n n K :=
   AlgEquiv.ofRingEquiv (f := (matrixEquivTensor n R K).symm.toRingEquiv) (by
     intro c
-    simp only [AlgEquiv.toRingEquiv_eq_coe, AlgEquiv.coe_ringEquiv, Algebra.TensorProduct.algebraMap_apply,
+    simp only [AlgEquiv.coe_ringEquiv, Algebra.TensorProduct.algebraMap_apply,
       Algebra.algebraMap_self, RingHom.id_apply, matrixEquivTensor_apply_symm, Matrix.map_one _ (map_zero _) (map_one _)]
     rw [Algebra.algebraMap_eq_smul_one])
 

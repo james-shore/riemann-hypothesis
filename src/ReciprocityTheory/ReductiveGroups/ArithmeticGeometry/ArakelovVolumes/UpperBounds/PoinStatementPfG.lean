@@ -122,7 +122,6 @@ theorem cs_tsum {ι : Type*} (u v : ι → ℝ≥0∞) :
       ≤ (∑ i ∈ s, u i ^ (2 : ℝ)) ^ (1 / 2 : ℝ) * (∑ i ∈ s, v i ^ (2 : ℝ)) ^ (1 / 2 : ℝ) := by
         first
           | exact ENNReal.inner_le_Lp_mul_Lq s u v .two_two
-          | exact ENNReal.inner_le_Lp_mul_Lq s u v Real.HolderConjugate.two_two
     _ ≤ _ := by
         gcongr
         · exact ENNReal.sum_le_tsum s
@@ -165,7 +164,7 @@ theorem cont_dmin (X : Data E r) (τ : X.Ψ) (i : Fin (r + 1)) :
   refine Continuous.matrix_det (Continuous.matrix_submatrix ?_ _ _)
   refine continuous_matrix fun a b => ?_
   unfold hermC col mat
-  simp only [Matrix.of_apply, Matrix.mul_apply]
+  simp only [Matrix.of_apply]
   fun_prop
 
 theorem cont_lminor_gM (X : Data E r) (x0 : Frame X.Ψ r) (τ : X.Ψ) (i : Fin (r + 1)) :

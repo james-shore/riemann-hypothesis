@@ -106,7 +106,7 @@ theorem cvr_step {ϖ : O} (hϖ : Irreducible ϖ) {e : ℕ} (he : 1 ≤ e) {ℓ :
     calc _ ≤ (a : ℝ≥0∞) + 2 * ∑ s ∈ Finset.range ell, (g : ℝ≥0∞) * (e : ℝ≥0∞) +
           b₀ * ENNReal.ofReal (τ / ℓ) := by
           gcongr with s _
-          all_goals first | exact hF s | exact hF0
+          all_goals first | exact hF s
       _ = ENNReal.ofReal ((a : ℝ) + 2 * e * g * ell + b₀ / ℓ * τ) := by
           have h1 : (a : ℝ) + 2 * e * g * ell + b₀ / ℓ * τ =
               (a : ℝ) + ((2 * e * g * ell : ℕ) : ℝ) + b₀ * (τ / ℓ) := by push_cast; ring
@@ -177,7 +177,6 @@ theorem lemmaCValRam_proof : LemmaCValRam := by
     have hne : B - c ≠ 0 := hD0.ne'
     first
     | (field_simp; ring)
-    | field_simp
   refine ⟨hmain.trans hD.le, (hmain.trans hD.le).trans ?_⟩
   rw [div_le_iff₀ hD0]
   nlinarith [mul_le_mul_of_nonneg_left h2' hA0]

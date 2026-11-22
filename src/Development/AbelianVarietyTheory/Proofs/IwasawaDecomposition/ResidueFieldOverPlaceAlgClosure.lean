@@ -12,10 +12,6 @@ namespace GlobalTheory.ResidueBar
 theorem residueField_ringEquiv_fbar : ∀ (E Ω : Type) [Field E] [NumberField E] [Field Ω] [Algebra E Ω] [IsAlgClosure E Ω] (A : ValuationSubring Ω) (v : HeightOneSpectrum (𝓞 E)), IsPlaceOver (F := E) A v → ∀ (g : ℕ) [Fact g.Prime], ((g : ℕ) : 𝓞 E) ∈ v.asIdeal → Nonempty (IsLocalRing.ResidueField A ≃+* Formalism.CyclotomicNorms.Fbar g) := by
   first
   | exact @_root_.GlobalTheory.ResidueFieldAlgClosed.residueField_equiv
-  | exact _root_.GlobalTheory.ResidueFieldAlgClosed.residueField_equiv
-  | (apply _root_.GlobalTheory.ResidueFieldAlgClosed.residueField_equiv <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ResidueFieldAlgClosed.residueField_equiv <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ResidueFieldAlgClosed.residueField_equiv <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ResidueFieldAlgClosed.residueField_equiv ..)
 
 end GlobalTheory.ResidueBar

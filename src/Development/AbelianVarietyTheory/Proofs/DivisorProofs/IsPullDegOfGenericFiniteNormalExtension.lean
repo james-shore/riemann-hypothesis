@@ -141,7 +141,7 @@ theorem isPullDeg_of_generic : ∀ (R R' : Type) [CommRing R] [IsDomain R] [Comm
     rw [Category.assoc, gκ.1.w]
     show (r' ≫ jK (FractionRing R') ≫ (E.c y).left) ≫ E.P.A.hom ≫ spMap (algebraMap R' (FractionRing R')) =
       (jK R' ≫ (D₃.c x).left) ≫ D₃.P.A.hom
-    simp only [Category.assoc, reassoc_of% b1, b3, Category.id_comp, Category.comp_id]
+    simp only [Category.assoc, reassoc_of% b1, b3]
     rw [← Category.assoc, hrj, Category.id_comp]; rfl
   have hx : e ≫ κ = D₃.xK x := gpp.1.hom_ext a1 a2
   obtain ⟨JE, hJE⟩ := GlobalTheory.DegPull.exists_good' E.P.isLB z

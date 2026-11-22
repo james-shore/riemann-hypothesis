@@ -83,8 +83,7 @@ theorem dT_dT (I J : Cx R) (U : Scheme.{0}) (w : ℤ) (x : Tens I J U w) :
   apply DirectSum.linearMap_ext; intro p; apply TensorProduct.ext'; intro a b
   simp only [LinearMap.comp_apply, LinearMap.zero_apply]
   rw [dT_lof, map_add, map_zsmul, dT_lof, dT_lof]
-  simp only [sec_dd, TensorProduct.zero_tmul, TensorProduct.tmul_zero, map_zero, zero_add, add_zero, smul_add,
-    smul_zero, Int.negOnePow_succ, Units.val_neg, neg_smul, smul_smul]
+  simp only [sec_dd, TensorProduct.zero_tmul, TensorProduct.tmul_zero, map_zero, zero_add, add_zero, smul_zero, Int.negOnePow_succ, Units.val_neg, neg_smul]
   exact neg_add_cancel _
 
 theorem tensorDifferential_comp_eq_zero (I J : Cx R) (w : ℤ) : dP I J w ≫ dP I J (w + 1) = 0 := by

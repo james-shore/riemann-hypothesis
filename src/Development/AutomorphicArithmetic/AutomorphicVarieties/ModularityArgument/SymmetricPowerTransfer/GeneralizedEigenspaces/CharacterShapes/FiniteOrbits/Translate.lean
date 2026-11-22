@@ -18,25 +18,25 @@ section Comm
 variable {K G : Type} [Field K] [CommGroup G]
 
 private def e12 (x : K) : GL (Fin 2) K :=
-  ⟨!![1, x; 0, 1], !![1, -x; 0, 1], by simp [Matrix.mul_fin_two, Matrix.one_fin_two], by simp [Matrix.mul_fin_two, Matrix.one_fin_two]⟩
+  ⟨!![1, x; 0, 1], !![1, -x; 0, 1], by simp [Matrix.one_fin_two], by simp [Matrix.one_fin_two]⟩
 
 private def e21 (x : K) : GL (Fin 2) K :=
-  ⟨!![1, 0; x, 1], !![1, 0; -x, 1], by simp [Matrix.mul_fin_two, Matrix.one_fin_two], by simp [Matrix.mul_fin_two, Matrix.one_fin_two]⟩
+  ⟨!![1, 0; x, 1], !![1, 0; -x, 1], by simp [Matrix.one_fin_two], by simp [Matrix.one_fin_two]⟩
 
 private def dt (t : K) (h : t ≠ 0) : GL (Fin 2) K :=
-  ⟨!![t, 0; 0, 1], !![t⁻¹, 0; 0, 1], by simp [Matrix.mul_fin_two, Matrix.one_fin_two, h], by simp [Matrix.mul_fin_two, Matrix.one_fin_two, h]⟩
+  ⟨!![t, 0; 0, 1], !![t⁻¹, 0; 0, 1], by simp [Matrix.one_fin_two, h], by simp [Matrix.one_fin_two, h]⟩
 
 private theorem upper_elementary_add (x y : K) : e12 (x + y) = e12 x * e12 y :=
-  Units.ext (by simp [e12, Matrix.mul_fin_two, add_comm])
+  Units.ext (by simp [e12, add_comm])
 
 private theorem lower_elementary_add (x y : K) : e21 (x + y) = e21 x * e21 y :=
-  Units.ext (by simp [e21, Matrix.mul_fin_two, add_comm])
+  Units.ext (by simp [e21, add_comm])
 
 private theorem hom_trivial_on_upper_elementary (t : K) (h : t ≠ 0) (y : K) : dt t h * e12 y = e12 (t * y) * dt t h :=
-  Units.ext (by simp [e12, dt, Matrix.mul_fin_two])
+  Units.ext (by simp [e12, dt])
 
 private theorem diagonal_conj_lower_elementary (t : K) (h : t ≠ 0) (y : K) : dt t h * e21 (y * t) = e21 y * dt t h :=
-  Units.ext (by simp [e21, dt, Matrix.mul_fin_two])
+  Units.ext (by simp [e21, dt])
 
 private theorem diagonal_conj_upper_elementary (D : GL (Fin 2) K →* G) (t : K) (h0 : t ≠ 0) (h1 : t ≠ 1) (x : K) : D (e12 x) = 1 := by
   have hs : t - 1 ≠ 0 := sub_ne_zero.2 h1
@@ -71,7 +71,7 @@ private theorem D_ne (D : GL (Fin 2) K →* G) (t : K) (h0 : t ≠ 0) (h1 : t �
     ext i j
     fin_cases i <;> fin_cases j <;> simp
     all_goals field_simp
-    all_goals first | ring1 | linear_combination hd | linear_combination -hd | linear_combination 2 * hd | linear_combination -2 * hd
+    all_goals first | ring1 | linear_combination hd | linear_combination -hd
   rw [e, map_mul, map_mul, diagonal_conj_upper_elementary D t h0 h1, diagonal_conj_upper_elementary D t h0 h1, hom_trivial_on_lower_elementary D t h0 h1]
   simp
 

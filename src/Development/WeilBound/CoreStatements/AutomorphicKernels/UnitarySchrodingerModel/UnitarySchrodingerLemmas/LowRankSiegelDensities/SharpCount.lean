@@ -68,7 +68,7 @@ theorem gauss_const (hF : ringChar k ≠ 2) (ψ : AddChar k ℂ) (hψ : ψ ≠ 1
   have hβapp : ∀ x y, β x y = x ⬝ᵥ (B *ᵥ y) := fun x y => by rw [hβ]; exact Matrix.toBilin'_apply' B x y
   have hsymm : β.IsSymm := by
     refine ⟨fun x y => ?_⟩
-    simp only [RingHom.id_apply, hβapp]
+    simp only [hβapp]
     rw [Matrix.dotProduct_mulVec, ← Matrix.mulVec_transpose, hB.eq, dotProduct_comm]
   obtain ⟨v, hv⟩ := LinearMap.BilinForm.exists_orthogonal_basis (LinearMap.BilinForm.isSymm_iff.1 hsymm)
   have hn2 : Module.finrank k (ι → k) = 2 * M := by rw [Module.finrank_fintype_fun_eq_card, hM]

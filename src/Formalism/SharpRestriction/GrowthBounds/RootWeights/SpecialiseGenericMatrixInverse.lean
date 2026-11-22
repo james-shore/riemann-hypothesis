@@ -37,12 +37,12 @@ theorem torus_acts_through_weight : TorusActsThroughWeight := by
   · intro v _
     congr 1
     split_ifs with h1 h2
-    · rw [Finset.sum_eq_single v.2 (fun b _ hb => by simp [Matrix.diagonal_apply, hb, Ne.symm hb])
+    · rw [Finset.sum_eq_single v.2 (fun b _ hb => by simp [hb])
         (fun h => absurd (Finset.mem_univ _) h)]
-      simp [Matrix.diagonal_apply]
-    · rw [Finset.sum_eq_single v.2 (fun b _ hb => by simp [Matrix.diagonal_apply, hb, Ne.symm hb])
+      simp
+    · rw [Finset.sum_eq_single v.2 (fun b _ hb => by simp [Ne.symm hb])
         (fun h => absurd (Finset.mem_univ _) h)]
-      simp [Matrix.diagonal_apply]
+      simp
     · simp
 
 theorem specialise_coefficientMap {R : Type*} [CommRing R] {n : ℕ} {K : Type*} [CommRing K] (φ : R →+* K)

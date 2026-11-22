@@ -437,7 +437,7 @@ theorem lev0Mpr_of [NeZero n] (C : Formalism.MainNotions.UnusedSlot80.LevC.Ctx W
             AlgHom.commutes, PowerSeries.algebraMap_apply]
           ring
         rw [h']
-        simp only [hcj, map_mul, map_pow, map_sum]
+        simp only [hcj, map_mul, map_pow]
         linear_combination h
       have hdg := dg_core hFa (fun j => W.lev a' ζ (cj j * (W.q ^ H * W.φA (abelian₂ W A a e)))) vv
         (fun i j => algebraMap O LL (c₀ i j)) (fun i => W.lev a' ζ (W.q ^ (H + H) * Nn i)) (fun i => α i 0)

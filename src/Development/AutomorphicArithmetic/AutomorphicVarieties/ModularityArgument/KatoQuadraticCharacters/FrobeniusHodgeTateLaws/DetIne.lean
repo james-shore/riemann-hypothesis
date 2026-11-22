@@ -153,7 +153,7 @@ theorem UpperTheory.V.Z.Kato.Joint.detIne :
     apply ι.injective
     rw [RingEquiv.apply_symm_apply]
     simp only [f]
-    simp [map_inv]
+    simp
     apply mul_right_cancel₀ (pow_ne_zero (2 * e) hn0)
     rw [← hdet]
     field_simp

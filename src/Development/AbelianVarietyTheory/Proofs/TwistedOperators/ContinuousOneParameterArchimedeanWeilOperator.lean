@@ -94,7 +94,6 @@ theorem archOp_apply_continuous : ∀ {F E : Type} [Field F] [NumberField F] [Fi
   have ha := acts_archOp om (γ (Multiplicative.ofAdd t)) f (hex _ hh f) r₀ (hrest f)
   simp only [Function.comp_apply]
   show _ = om _ _ (liftV x)
-  change _ = om (1, γ (Multiplicative.ofAdd t)) (tens (evI F) (⇑f) r₀) (liftV x)
   rw [ha]
   have h1 : r₀ (liftV x) = 1 := hr₀1 _ fun i => rfl
   have h2 : (fun i => evI F (liftV x i)) = x := by

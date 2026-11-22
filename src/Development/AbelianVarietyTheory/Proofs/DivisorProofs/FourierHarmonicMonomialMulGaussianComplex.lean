@@ -105,8 +105,8 @@ private theorem hasFDerivAt_conj_pow_mul_gaussian_half (n : ℕ) (l : ℂ) :
   have hQ := hR.cexp
   refine ⟨_, ((hP.pow n).mul hQ).const_mul ((1 / 2 : ℂ) * (-Complex.I) ^ n), ?_⟩
   simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply,
-    ContinuousLinearMap.id_apply, Complex.conjCLE_apply, Complex.ofRealCLM_apply, innerSL_apply_apply,
-    smul_eq_mul, Function.comp_apply]
+    ContinuousLinearMap.id_apply, Complex.ofRealCLM_apply, innerSL_apply_apply,
+    smul_eq_mul]
   have c2 : (starRingEnd ℂ) 2 = 2 := map_ofNat _ 2
   have e1 : (Complex.conjCLE : ℂ →L[ℝ] ℂ) ((1 / 2 : ℝ) • (1 : ℂ)) = 1 / 2 := by
     simp [Complex.real_smul, c2]
@@ -153,11 +153,9 @@ private theorem fourier_fourierSMulRight_sub_I_mul_eq_fourier_conj_mul (g : ℂ 
   have h1 : ((innerSL ℝ) v : ℂ →L[ℝ] ℝ) 1 = v.re := by
     first
     | (rw [innerSL_apply_apply]; simp [Complex.inner])
-    | (show ⟪v, (1 : ℂ)⟫ = v.re; simp [Complex.inner])
   have hI : ((innerSL ℝ) v : ℂ →L[ℝ] ℝ) Complex.I = v.im := by
     first
     | (rw [innerSL_apply_apply]; simp [Complex.inner])
-    | (show ⟪v, Complex.I⟫ = v.im; simp [Complex.inner])
   rw [hc, h1, hI]
   ring_nf
   simp only [Complex.I_sq, Complex.real_smul]

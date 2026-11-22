@@ -51,7 +51,7 @@ theorem tang_iff (v : epsPt t ⟶ G) :
     rw [spMap_comp']
     congr 2
     refine RingHom.ext fun x => ?_
-    simp [epsMul, s]
+    simp [epsMul]
 
 end GlobalTheory.UPel.HT.LieLin.LieAlgebraMultiplication
 
@@ -112,8 +112,8 @@ theorem lieMult_iff_finrank : ∀ (O : Type) [CommRing O] (S : Scheme.{0}) (G : 
         let y : eigSub (actR (x0 := t) (S := k) act) τ := ∑ i, c i • b i
         have hy : IsLieEigen act t τ (tv (y : TanM t G)) := (mem_iff t act τ _).1 y.2
         obtain ⟨d, _, hd⟩ := huniq _ hy
-        have h1 := hd c (key y c (by simp [y, Submodule.coe_sum]))
-        have h2 := hd c' (key y c' (by rw [show y = ∑ i, c' i • b i from hcc]; simp [Submodule.coe_sum]))
+        have h1 := hd c (key y c (by simp [y]))
+        have h2 := hd c' (key y c' (by rw [show y = ∑ i, c' i • b i from hcc]; simp))
         exact h1.trans h2.symm
       · intro y
         have hy : IsLieEigen act t τ (tv (y : TanM t G)) := (mem_iff t act τ _).1 y.2
@@ -126,7 +126,7 @@ theorem lieMult_iff_finrank : ∀ (O : Type) [CommRing O] (S : Scheme.{0}) (G : 
         apply Subtype.ext
         apply tanM_ext
         rw [hw]
-        simp [Submodule.coe_sum]
+        simp
     rw [← (LinearEquiv.ofBijective _ hb).finrank_eq, Module.finrank_fin_fun]
   · intro h
     let B := Module.finBasisOfFinrankEq k (eigSub (actR (x0 := t) (S := k) act) τ) h
@@ -152,7 +152,7 @@ theorem lieMult_iff_finrank : ∀ (O : Type) [CommRing O] (S : Scheme.{0}) (G : 
         apply tanM_ext
         show w = _
         rw [hwu]
-        simp [Submodule.coe_sum]
+        simp
       rw [hy, ← B.equivFun_symm_apply, LinearEquiv.apply_symm_apply]
 
 end GlobalTheory.UPel.HT.LieLin

@@ -38,9 +38,8 @@ theorem glChar_transvection {R : Type} [CommRing R] (h2 : IsUnit (2 : R)) {n : â
     change Matrix.diagonal f * u.1 = u.1 * u.1 * Matrix.diagonal f
     rw [hu, Matrix.transvection_mul_transvection_same _ _ hij]
     ext a b
-    simp only [Matrix.transvection, Matrix.add_mul, Matrix.mul_add, Matrix.mul_one, Matrix.one_mul,
-      Matrix.add_apply, Matrix.diagonal_mul, Matrix.mul_diagonal, Matrix.single_apply,
-      Matrix.diagonal_apply, Matrix.one_apply]
+    simp only [Matrix.transvection, Matrix.add_apply, Matrix.diagonal_mul, Matrix.mul_diagonal, Matrix.single_apply,
+      Matrix.one_apply]
     clear_value f g d
     clear hfg hgf
     split_ifs <;> subst_vars <;> simp_all <;> ring

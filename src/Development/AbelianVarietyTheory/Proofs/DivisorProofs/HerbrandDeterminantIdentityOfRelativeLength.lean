@@ -202,7 +202,7 @@ theorem exists_basis_eigSub (d : Int0 v) (hd : d ≠ 0)
     rw [map_sum]
     simp only [map_smul, hze]
     funext j
-    simp [Finset.sum_apply, Pi.single_apply, mul_comm, mul_left_comm]
+    simp [Finset.sum_apply, Pi.single_apply, mul_comm]
   have hli : LinearIndependent (Int0 v) (fun i => (⟨z i, hz i⟩ : eigSub a τ (Fin N → RS a))) := by
     rw [Fintype.linearIndependent_iff]
     intro w hw

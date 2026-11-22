@@ -13,16 +13,12 @@ theorem oSmulW {W : Type*} [AddCommGroup W] [Module E W] [Module (𝓞 E) W] [Is
     (o : 𝓞 E) (w : W) : o • w = (o : E) • w := by
   first
   | exact (algebraMap_smul E o w).symm
-  | rfl
-  | simp [Algebra.smul_def]
 
 private theorem coe_ne_zero_of_ne_zero (o : 𝓞 E) (h : o ≠ 0) : (o : E) ≠ 0 := by
   intro h'
   apply h
   first
   | exact_mod_cast h'
-  | exact RingOfIntegers.ext h'
-  | simpa using h'
 
 private theorem inv_smul_apply_smul_eq_of_smul_mem {W : Type*} [AddCommGroup W] [Module E W] [Module (𝓞 E) W] [IsScalarTower (𝓞 E) E W]
     (P : Submodule (𝓞 E) S.V) (f : P →ₗ[𝓞 E] W) (u : S.V) (a b : 𝓞 E) (ha : a ≠ 0) (hb : b ≠ 0)
@@ -51,7 +47,7 @@ theorem ext_lat {W : Type*} [AddCommGroup W] [Module E W] [Module (𝓞 E) W] [I
     intro u a b h
     rw [mul_smul]
     exact P.smul_mem b h
-  have hal : ∀ o : 𝓞 E, algebraMap (𝓞 E) E o = (o : E) := fun o => by first | rfl | simp
+  have hal : ∀ o : 𝓞 E, algebraMap (𝓞 E) E o = (o : E) := fun o => by first | rfl
   refine ⟨{ toFun := fun x => ((d x.1 x.2 : E))⁻¹ • f ⟨d x.1 x.2 • x.1, hdP x.1 x.2⟩,
             map_add' := ?_, map_smul' := ?_ }, ?_⟩
   · intro x y

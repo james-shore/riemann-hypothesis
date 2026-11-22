@@ -149,7 +149,6 @@ theorem gWb_Mof {γ : (VS D).V ≃ₗ[D.host.E] (VS D).V} (hγ : γ ∈ stabF D 
     rw [gPerp_apply]
     first
     | exact hdc
-    | simpa using hdc
 
 end Induced
 

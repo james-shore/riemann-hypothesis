@@ -51,5 +51,3 @@ theorem UpperTheory.Gal.Mod.opCover :
   rw [← hf, ← hp, hw, hw', hpull, ← LinearMap.comp_assoc, hpush, hcomp, LinearMap.smul_comp]
   first
     | rfl
-    | simp only [Int.cast_natCast, Nat.cast_smul_eq_nsmul]
-    | (norm_cast; simp [Nat.cast_smul_eq_nsmul])

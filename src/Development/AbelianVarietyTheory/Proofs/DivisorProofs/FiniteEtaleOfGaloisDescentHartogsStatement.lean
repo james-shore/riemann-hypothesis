@@ -14,4 +14,4 @@ theorem _root_.GlobalTheory.T.finiteEtale_of_galois_descent_hartogs : ∀ (A R C
     GlobalTheory.GoodEtale.TorsionFreeOver A R C → GlobalTheory.GoodEtale.Hart A R C → GlobalTheory.GoodEtale.EtaleLow A R C →
     Nonempty (C →ₐ[R] O) →
     Module.Finite R C ∧ Algebra.Etale R C := by
-  first | (exact @GlobalTheory.GoodEtale.descent_finiteEtale) | (exact GlobalTheory.GoodEtale.descent_finiteEtale) | (intros; apply GlobalTheory.GoodEtale.descent_finiteEtale  <;> assumption)
+  first | (exact @GlobalTheory.GoodEtale.descent_finiteEtale)

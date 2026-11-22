@@ -91,5 +91,5 @@ theorem GlobalTheory.AscFin.primAt_jac_std : OnStd fun {D} _ _ {sc} {G} W F => �
   · intro hs'
     refine GlobalTheory.SeeSaw.idV_mono ?_ v hs'
     rw [← hid]
-    calc _ ≤ 𝔟 i * (𝔟 j)⁻¹ * 1 := by first | exact FractionalIdeal.mul_left_mono _ FractionalIdeal.coeIdeal_le_one | exact mul_le_mul_right FractionalIdeal.coeIdeal_le_one _ | exact mul_le_mul_left FractionalIdeal.coeIdeal_le_one _ | exact mul_le_mul' le_rfl FractionalIdeal.coeIdeal_le_one
+    calc _ ≤ 𝔟 i * (𝔟 j)⁻¹ * 1 := by first | exact FractionalIdeal.mul_left_mono _ FractionalIdeal.coeIdeal_le_one | exact mul_le_mul_right FractionalIdeal.coeIdeal_le_one _
       _ = _ := mul_one _

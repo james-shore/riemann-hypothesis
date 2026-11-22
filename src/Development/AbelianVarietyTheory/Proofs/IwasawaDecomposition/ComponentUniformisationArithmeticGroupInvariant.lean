@@ -17,7 +17,7 @@ theorem one_mem_bor {E : Type} [Field E] (Ψ : Finset (E →+* ℂ)) (r : ℕ) :
   refine ⟨?_, fun a b hab => ?_⟩
   · change ¬ (1 : Matrix (Fin r) (Fin r) ℂ).det = 0
     simp
-  · simp [Matrix.one_apply, (ne_of_lt hab).symm]
+  · simp [(ne_of_lt hab).symm]
 
 theorem rmul_one {E : Type} [Field E] (Ψ : Finset (E →+* ℂ)) (r : ℕ) (x : ReciprocityTheory.ChartRestriction.G.FD.Frame Ψ r) :
     ReciprocityTheory.ChartRestriction.G.FD.rmul x (fun _ => (1 : Matrix (Fin r) (Fin r) ℂ)) = x := by

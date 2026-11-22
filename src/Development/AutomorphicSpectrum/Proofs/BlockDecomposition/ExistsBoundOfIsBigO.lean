@@ -98,7 +98,7 @@ theorem coeff_and_decay {N : ℕ} [NeZero N] {k : ℤ} {F : Type*} [FunLike F �
       (k := k) f
     have hO := CuspFormClass.exp_decay_atImInfty (Γ := (Gamma1 N : Subgroup (GL (Fin 2) ℝ)))
       (k := k) (h := 1) f one_pos hΓ
-    simp only [Nat.cast_one, div_one] at hO
+    simp only [div_one] at hO
     exact exists_exp_bound (by simpa using hO) hC
 
 end GlobalTheory.CompanionTheory.CuspDecay

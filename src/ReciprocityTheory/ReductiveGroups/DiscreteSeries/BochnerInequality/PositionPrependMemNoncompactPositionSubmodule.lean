@@ -26,7 +26,6 @@ theorem wordContraction_apply (k : ℕ) (F : Big n k M) :
   first
   | simp only [phi, LinearMap.coeFn_sum, Finset.sum_apply, LinearMap.comp_apply, coord_apply']
   | (rw [phi, LinearMap.sum_apply]; rfl)
-  | simp [phi, coord_apply']
 
 theorem mAct_apply' (k : ℕ) (a b : Fin n) (F : Big n k M) (κ : Fin k → Fin n × Fin n) :
     mAct E k a b F κ = E a b (F κ) := rfl
@@ -39,21 +38,15 @@ theorem factorAd_apply' (k : ℕ) (i : Fin k) (a b : Fin n) (F : Big n k M)
   first
   | (simp only [factorAd, ofCoords_apply', LinearMap.sub_apply]
      split_ifs <;> simp [coord_apply'])
-  | (show ((if (κ i).1 = a then coord k (Function.update κ i (b, (κ i).2)) else 0) -
-        (if (κ i).2 = b then coord k (Function.update κ i ((κ i).1, a)) else 0) :
-        Big n k M →ₗ[ℂ] M) F = _
-     split_ifs <;> simp [coord_apply'])
 
 theorem rootWordProduct_zero (κ : Fin 0 → Fin n × Fin n) : word E κ = 1 := by
   first
   | rfl
-  | simp [word]
 
 theorem rootWordProduct_cons {k : ℕ} (p : Fin n × Fin n) (κ : Fin k → Fin n × Fin n) :
     word E (Fin.cons p κ : Fin (k + 1) → Fin n × Fin n) = E p.1 p.2 * word E κ := by
   first
   | simp only [word, List.ofFn_succ, List.prod_cons, Fin.cons_zero, Fin.cons_succ]
-  | simp [word, List.ofFn_succ]
 
 theorem commutator_rootWordProduct (hE : IsGlRep E) (a b : Fin n) : ∀ {k : ℕ} (κ : Fin k → Fin n × Fin n),
     E a b * word E κ - word E κ * E a b =
@@ -88,7 +81,7 @@ theorem sum_ite_update_reindex {k : ℕ} (i : Fin k) (P Q : Fin n × Fin n → P
   refine Finset.sum_nbij' (fun κ => Function.update κ i (f (κ i)))
     (fun κ => Function.update κ i (g (κ i))) ?_ ?_ ?_ ?_ ?_ <;>
   intro κ hκ <;>
-  simp only [Finset.mem_coe, Finset.coe_filter, Set.mem_setOf_eq, Finset.mem_filter,
+  simp only [Finset.mem_filter,
     Finset.mem_univ, true_and] at hκ ⊢
   · simpa using hf _ hκ
   · simpa using hg _ hκ
@@ -137,11 +130,8 @@ theorem wordContraction_tensorAction (hE : IsGlRep E) (k : ℕ) (a b : Fin n) (F
     first
     | simp only [LinearMap.sub_apply, Module.End.mul_apply, LinearMap.sum_apply,
         ite_linearMap_zero_apply] at h
-    | simp only [LinearMap.sub_apply, Module.End.mul_apply, LinearMap.coe_sum, Finset.sum_apply,
-        ite_linearMap_zero_apply] at h
     first
     | exact sub_eq_iff_eq_add'.mp h
-    | (rw [← h]; abel)
   rw [wordContraction_apply, wordContraction_apply, map_sum]
   simp only [positionTensorAction_apply, factorAd_apply', map_add, map_sum, map_sub,
     linearMap_apply_ite_zero, hc, Finset.sum_add_distrib]
@@ -175,7 +165,6 @@ theorem mem_noncompactPositionSubmodule_iff' {k : ℕ} {F : Big n k M} :
     F ∈ ncV ε V k ↔ ∀ κ, F κ ∈ (if ∀ i, ε (κ i).1 ≠ ε (κ i).2 then V else ⊥) := by
   first
   | (rw [ncV, Submodule.mem_iInf]; rfl)
-  | simp only [ncV, Submodule.mem_iInf, Submodule.mem_comap, coord_apply']
 
 theorem wordContraction_mem_noncompactLayer' {k : ℕ} {F : Big n k M} (hF : F ∈ ncV ε V k) :
     phi E k F ∈ layer ε E V k := by
@@ -203,7 +192,7 @@ theorem wordContraction_prepend {k : ℕ} (p : Fin n × Fin n) (G : Big n k M) :
   rw [← Finset.sum_filter]
   refine Finset.sum_nbij' (fun κ => Fin.tail κ) (fun κ' => Fin.cons p κ') ?_ ?_ ?_ ?_ ?_ <;>
   intro κ hκ <;>
-  simp only [Finset.mem_coe, Finset.coe_filter, Set.mem_setOf_eq, Finset.mem_filter,
+  simp only [Finset.mem_filter,
     Finset.mem_univ, true_and] at hκ ⊢
   · simp
   · rw [← hκ]; exact Fin.cons_self_tail κ

@@ -32,7 +32,7 @@ theorem incAdj_yZero_mulVec_gen {D : D7} {S A L T T₀ : HSp D} (o : OrthDec S A
     intro i
     simp only [ell, Fin.ext_iff]
     split_ifs with h1 h2 h2 <;> first | omega | simp
-  simp only [HypDec.incAdj_apply, HypDec.incY_apply, yZero, zEll, adj_smul, adj_neg, GlobalTheory.FinPl.colMul, Matrix.mulVec, dotProduct,
+  simp only [HypDec.incAdj_apply, HypDec.incY_apply, yZero, zEll, GlobalTheory.FinPl.colMul, Matrix.mulVec, dotProduct,
     Matrix.mul_apply, Matrix.smul_apply, Matrix.neg_apply, adj, Matrix.transpose_apply, Matrix.map_apply,
     Matrix.vecMulVec_apply, smul_eq_mul, map_mul, map_neg, hell]
   rw [Finset.sum_congr rfl fun l _ => by

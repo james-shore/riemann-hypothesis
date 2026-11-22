@@ -244,7 +244,6 @@ theorem exists_section {D : D7} {H : ReciprocityTheory.ChartRestriction.G.Geo.To
     obtain ⟨z, hz⟩ := (S.hasPts.1 σ).1
     have h2 := fun z hz => S.homN_eq (σ := (starRingEnd ℂ).comp σ) (z := z) hz
     rw [h1] at h2
-    beta_reduce
     rw [← h2 z hz, S.homN_eq hz]
   · intro σ hσ y hy
     have h1 := pow_le_pow_left' (hb σ hσ y hy).2 8

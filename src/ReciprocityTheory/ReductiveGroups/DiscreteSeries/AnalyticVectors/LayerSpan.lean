@@ -93,7 +93,6 @@ theorem le_span_weightVecs (hE : IsGlRep E) (hU : IsInfUnitary ε E) (hVf : Fini
         have hev : Module.End.HasEigenvalue (T a) (χ a) := by
           first
             | exact Module.End.hasEigenvalue_of_hasEigenvector ⟨hy a, hy0⟩
-            | exact (Submodule.ne_bot_iff _).2 ⟨y, hy a, hy0⟩
         exact Complex.conj_eq_iff_re.1 ((hsym a).conj_eigenvalue_eq_self hev)
       refine Submodule.subset_span ⟨y.2, fun a => (χ a).re, fun a => ?_⟩
       have h := Module.End.mem_eigenspace_iff.1 (hy a)

@@ -73,7 +73,6 @@ theorem GlobalTheory.CellDec.lastRow_tl_mul_mem_latt_iff : ∀ (E : Type) [Field
   rw [GroundTheory.Global.mem_idealFiniteAdeles, GroundTheory.Global.mem_idealFiniteAdeles]
   refine forall_congr' fun v => ?_
   rw [sub_single_apply, sub_single_apply]
-  beta_reduce
   rw [htv]
   by_cases hv : v ∈ T
   · rw [l.2 v hv]

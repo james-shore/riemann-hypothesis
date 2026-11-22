@@ -66,8 +66,6 @@ theorem one_mem : (1 : Fv F v ⊗[F] E) ∈ OEv (E := E) v := by
 theorem int_mem (r : 𝓞 F) : algebraMap F (Fv F v) (r : F) ∈ v.adicCompletionIntegers F := by
   first
     | exact v.coe_mem_adicCompletionIntegers r
-    | simpa using v.coe_mem_adicCompletionIntegers (K := F) r
-    | exact IsDedekindDomain.HeightOneSpectrum.coe_algebraMap_mem (𝓞 F) F v r
 
 theorem inclR_alg (a : F) : inclR (F := F) (Fv F v) (algebraMap F E a) =
     algebraMap (Fv F v) (Fv F v ⊗[F] E) (algebraMap F (Fv F v) a) := by

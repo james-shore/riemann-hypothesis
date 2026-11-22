@@ -25,7 +25,7 @@ theorem UpperTheory.Gal.G1.pIsoEx :
       rw [Matrix.diagonal_map (map_zero _)]
       congr 1
       funext i
-      simp only [Function.comp_apply, Arith.dg]
+      simp only [Arith.dg]
       split_ifs <;> simp
     rw [hd]
     exact ha

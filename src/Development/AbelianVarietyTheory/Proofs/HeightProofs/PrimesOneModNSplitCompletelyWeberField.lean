@@ -73,7 +73,7 @@ theorem g₂_ne_zero (hd : discr K < -4) : L.g₂ ≠ 0 := by
   haveI : Fact (Nat.Prime 3) := ⟨Nat.prime_three⟩
   haveI : IsCyclotomicExtension {3} ℚ K :=
     isCyclotomic_of_root h2 (cyclotomic.irreducible_rat (by norm_num))
-      (by rw [Nat.totient_prime Nat.prime_three] <;> norm_num) haK
+      (by rw [Nat.totient_prime Nat.prime_three]) haK
   have hdisc := IsCyclotomicExtension.Rat.discr_prime 3 K
   norm_num at hdisc
   rw [hdisc] at hd
@@ -243,11 +243,11 @@ theorem frob_congr {K N : Type} [Field K] [Field N] [Algebra K N] (ι : N →+* 
   have hle : ∀ m : ℤ, W.valuation (m : ℂ) ≤ 1 := fun m =>
     (W.valuation_le_one_iff _).mpr (intCast_mem W m)
   have hy : W.valuation (ι (σ (d • x) - (d • x) ^ p)) < 1 := hσ ⟨d • x, hx⟩
-  simp only [map_sub, map_pow, map_zsmul, zsmul_eq_mul, map_mul, map_intCast] at hy
+  simp only [map_sub, map_pow, zsmul_eq_mul, map_mul, map_intCast] at hy
   have hX : W.valuation (ι x) ≤ 1 := by
     have h0 := valuation_le_one_of_isIntegral W (hx.map ι.toIntAlgHom)
     have e : ι.toIntAlgHom (d • x) = (d : ℂ) * ι x := by
-      simp [RingHom.toIntAlgHom, map_zsmul, zsmul_eq_mul]
+      simp [RingHom.toIntAlgHom, zsmul_eq_mul]
     rw [e, map_mul, hd1, one_mul] at h0
     exact h0
   have hdvd : (p : ℤ) ∣ d ^ p - d := by
@@ -278,7 +278,7 @@ theorem eq_zero_of_valuation_lt_one {N : Type} [Field N] (ι : N →+* ℂ)
   have hd1 : W.valuation (d : ℂ) = 1 := valuation_intCast_eq_one W hp hW hd
   have h1 := valuation_le_one_of_isIntegral W (hx.map ι.toIntAlgHom)
   have e : ι.toIntAlgHom (d • x⁻¹) = (d : ℂ) * (ι x)⁻¹ := by
-    simp [RingHom.toIntAlgHom, map_zsmul, zsmul_eq_mul, map_inv₀]
+    simp [RingHom.toIntAlgHom, zsmul_eq_mul, map_inv₀]
   rw [e, map_mul, hd1, one_mul, map_inv₀] at h1
   have hne : W.valuation (ι x) ≠ 0 :=
     (Valuation.ne_zero_iff _).mpr ((map_ne_zero ι).mpr hx0)

@@ -17,7 +17,7 @@ private noncomputable def flipConj {V : Type} [AddCommGroup V] [Module ℂ V]
     (by intro v₁ v₂ w; simp [map_add])
     (by intro c v w; simp [map_smulₛₗ, smul_eq_mul])
     (by intro v w₁ w₂; simp [map_add])
-    (by intro c v w; simp [map_smulₛₗ, smul_eq_mul])
+    (by intro c v w; simp [smul_eq_mul])
 
 private theorem flipConj_apply {V : Type} [AddCommGroup V] [Module ℂ V]
     (B : V →ₗ[ℂ] V →ₗ⋆[ℂ] ℂ) (v w : V) :

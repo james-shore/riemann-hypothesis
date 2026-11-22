@@ -39,7 +39,6 @@ theorem exists_stdVec_of_parVec : ∀ (p : ℕ) [Fact p.Prime] (r : ℕ) (α : T
       intro i j hij
       have hyv : y.val i j = x.val (σ.symm i) (σ.symm j) := by
         rw [← GlobalTheory.Parabolic.conj_permGL_apply σ.symm y i j, hy]
-        congr 2
         group
       rw [hyv, hx _ _ (fun h => hij ⟨hlo i h.1, hhi j h.2⟩)]
       simp

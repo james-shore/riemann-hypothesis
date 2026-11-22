@@ -222,13 +222,13 @@ def Htl (T : LocLat S.G S.Qp S.LL S.O) : Submodule S.O (TW S.RW T) where
   carrier := {x | ∀ g : S.G, g ∈ Hker S → TWact (S.gR g) T g x = x}
   add_mem' := by
     intro a b ha hb g hg
-    simp only [Set.mem_setOf_eq, map_add, ha g hg, hb g hg]
+    simp only [map_add, ha g hg, hb g hg]
   zero_mem' := by
     intro g _
     simp only [map_zero]
   smul_mem' := by
     intro c x hx g hg
-    simp only [Set.mem_setOf_eq, map_smul, hx g hg]
+    simp only [map_smul, hx g hg]
 
 def FNatW : Prop := FNat S (fun _ => ⊤)
 

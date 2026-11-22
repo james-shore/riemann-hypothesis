@@ -76,10 +76,10 @@ theorem exists_unit (q : Ideal B) [q.IsMaximal] :
     rw [Finset.smul_prod']
     refine Finset.prod_nbij' (fun g => h * g) (fun g => h⁻¹ * g) ?_ ?_ ?_ ?_ ?_
     · intro g hg
-      simp only [hD, Finset.mem_coe, Finset.mem_filter, Finset.mem_univ, true_and] at hg ⊢
+      simp only [hD, Finset.mem_filter, Finset.mem_univ, true_and] at hg ⊢
       rw [mul_smul, hg, hh]
     · intro g hg
-      simp only [hD, Finset.mem_coe, Finset.mem_filter, Finset.mem_univ, true_and] at hg ⊢
+      simp only [hD, Finset.mem_filter, Finset.mem_univ, true_and] at hg ⊢
       rw [mul_smul, hg, inv_smul_eq_iff, hh]
     · intro g _; simp
     · intro g _; simp

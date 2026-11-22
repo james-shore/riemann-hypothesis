@@ -13,4 +13,4 @@ theorem _root_.PositivityTheory.Mix.T.adapted_plane_pair_theta_integral : ∀ (F
       H.IsAdapted σ B X X₁ j₀ j₁ → IsPair B M₁ χX χW om₁ r₁ s₁ r' s' →
       ∀ e, IsEv B M M₁ H.ι 1 {u | ∃ z, u = Matrix.vecMulVec (incV F H.x) z} e →
       ∀ u ∈ unip σ X H, ∀ Φ ∈ schA F (Fin n × Fin d), e (om (u, 1) Φ) = e Φ := by
-  first | exact @GlobalTheory.MixXUnip.unip_trivial_m | exact fun _ => @GlobalTheory.MixXUnip.unip_trivial_m | exact GlobalTheory.MixXUnip.unip_trivial_m | exact @GlobalTheory.MixXUnip.unip_trivial_m trivial
+  first | exact @GlobalTheory.MixXUnip.unip_trivial_m

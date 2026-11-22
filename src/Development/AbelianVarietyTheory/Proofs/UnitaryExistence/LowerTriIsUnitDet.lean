@@ -23,8 +23,6 @@ theorem lowerTri_mul (A B : Matrix (Fin n) (Fin n) S) (hA : ∀ i j, i < j → A
   | exact @_root_.GlobalTheory.LowerTriangularMul.main
   | exact _root_.GlobalTheory.LowerTriangularMul.main
   | (apply _root_.GlobalTheory.LowerTriangularMul.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LowerTriangularMul.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LowerTriangularMul.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LowerTriangularMul.main ..)
 
 theorem lowerTri_mul_diag (A B : Matrix (Fin n) (Fin n) S) (hA : ∀ i j, i < j → A i j = 0)

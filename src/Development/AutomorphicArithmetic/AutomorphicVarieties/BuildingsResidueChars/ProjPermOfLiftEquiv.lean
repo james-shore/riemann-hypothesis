@@ -21,4 +21,4 @@ theorem UpperTheory.projPerm_of_liftEquiv :
     simp [UpperTheory.V.Af.BA.permC_single, hψ]
   · apply UpperTheory.V.Af.BA.PC_ext
     intro x
-    simp [Rep.hom_comp, Rep.hom_ofHom, hψe]
+    simp [Rep.hom_comp, hψe]

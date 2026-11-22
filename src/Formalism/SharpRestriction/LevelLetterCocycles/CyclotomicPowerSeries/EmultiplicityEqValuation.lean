@@ -10,8 +10,6 @@ theorem pow_dvd_iff_le_valuation (x : ℤ_[l]) (hx : x ≠ 0) (n : ℕ) :
     (l : ℤ_[l]) ^ n ∣ x ↔ n ≤ x.valuation := by
   first
   | (rw [← Ideal.mem_span_singleton]; exact PadicInt.mem_span_pow_iff_le_valuation x hx n)
-  | (rw [← Ideal.mem_span_singleton, ← PadicInt.norm_le_pow_iff_mem_span_pow];
-     exact PadicInt.norm_le_pow_iff_le_valuation x hx n)
 
 theorem emultiplicity_prime_eq_valuation (x : ℤ_[l]) (hx : x ≠ 0) :
     emultiplicity (l : ℤ_[l]) x = x.valuation := by
@@ -25,7 +23,7 @@ theorem not_dvd_natCast (b : ℕ) (hb : ¬ l ∣ b) : ¬ (l : ℤ_[l]) ∣ (b : 
   apply hb
   obtain ⟨c, hc⟩ := h
   have h2 := congrArg (PadicInt.toZMod : ℤ_[l] →+* ZMod l) hc
-  simp only [map_natCast, map_mul, CharP.cast_eq_zero, ZMod.natCast_self, zero_mul] at h2
+  simp only [map_natCast, map_mul, CharP.cast_eq_zero, zero_mul] at h2
   exact (CharP.cast_eq_zero_iff (ZMod l) l b).1 h2
 
 theorem toZModPow_eq_one_iff (k : ℕ) (x : ℤ_[l]) (hx : x - 1 ≠ 0) :
@@ -38,8 +36,6 @@ theorem toZModPow_eq_one_iff (k : ℕ) (x : ℤ_[l]) (hx : x - 1 ≠ 0) :
 private theorem prime_natCast_padicInt : Prime (l : ℤ_[l]) := by
   first
   | exact PadicInt.prime_p
-  | exact UniqueFactorizationMonoid.irreducible_iff_prime.mp PadicInt.irreducible_p
-  | exact PadicInt.irreducible_p.prime
 
 theorem factV (hl2 : l ≠ 2) (u : ℤ_[l]) (hu : (u - 1).valuation = 1) (m : ℕ) (hm : m ≠ 0) :
     (u ^ m - 1).valuation = 1 + padicValNat l m := by
@@ -73,8 +69,6 @@ theorem factV (hl2 : l ≠ 2) (u : ℤ_[l]) (hu : (u - 1).valuation = 1) (m : �
         emultiplicity (l : ℤ_[l]) (u - 1) + e := by
       first
       | exact emultiplicity_pow_prime_pow_sub_pow_prime_pow hprime hodd hdvd hndvd e
-      | exact multiplicity.emultiplicity_pow_prime_pow_sub_pow_prime_pow hprime hodd hdvd hndvd e
-      | exact multiplicity.pow_prime_pow_sub_pow_prime_pow hprime hodd hdvd hndvd e
     rwa [one_pow] at h
   have hE2 : emultiplicity (l : ℤ_[l]) ((u ^ (l ^ e)) ^ m' - 1) =
       emultiplicity (l : ℤ_[l]) (u ^ (l ^ e) - 1) := by
@@ -88,20 +82,16 @@ theorem factV (hl2 : l ≠ 2) (u : ℤ_[l]) (hu : (u - 1).valuation = 1) (m : �
         emultiplicity (l : ℤ_[l]) (u ^ (l ^ e) - 1) := by
       first
       | exact emultiplicity_pow_sub_pow_of_prime hprime hx1 hx2 hx3
-      | exact multiplicity.emultiplicity_pow_sub_pow_of_prime hprime hx1 hx2 hx3
-      | exact multiplicity.pow_sub_pow_of_prime hprime hx1 hx2 hx3
     rwa [one_pow] at h
   have htot : emultiplicity (l : ℤ_[l]) (u ^ (l ^ e * m') - 1) = ((1 + e : ℕ) : ℕ∞) := by
     rw [pow_mul, hE2, hE1, emultiplicity_prime_eq_valuation _ hu0, hu]
     first
     | norm_cast
-    | simp
   have hne : u ^ (l ^ e * m') - 1 ≠ 0 := by
     intro h
     rw [h, emultiplicity_zero] at htot
     first
     | exact ENat.top_ne_coe _ htot
-    | simp at htot
   rw [emultiplicity_prime_eq_valuation _ hne] at htot
   exact_mod_cast htot
 
@@ -139,7 +129,6 @@ theorem isPrimitiveRoot_pow_eq_pow_iff_zmod_eq {N : ℕ} [NeZero N] {ξ : LL} (h
   have hz : (a : ZMod N) = b ↔ a % N = b % N := by
     first
     | exact ZMod.natCast_eq_natCast_iff' a b N
-    | (rw [ZMod.natCast_eq_natCast_iff]; rfl)
   rw [hz, hmod a, hmod b]
   exact ⟨fun h => hξ.pow_inj (Nat.mod_lt _ hN) (Nat.mod_lt _ hN) h, fun h => by rw [h]⟩
 
@@ -147,7 +136,6 @@ private theorem mem_primitiveRoots_iff_isPrimitiveRoot {k : ℕ} (h0 : 0 < k) {�
     ζ ∈ primitiveRoots k LL ↔ IsPrimitiveRoot ζ k := by
   first
   | exact mem_primitiveRoots h0
-  | (haveI : NeZero k := ⟨h0.ne'⟩; exact mem_primitiveRoots)
 
 theorem pow_mem_Rs (s : ℕ) (a : (ZMod (l ^ (s + 1)))ˣ) {ξ : LL}
     (hξ : ξ ∈ primitiveRoots (l ^ (s + 1)) LL) :
@@ -165,11 +153,9 @@ theorem Rs_transitive (s : ℕ) {ξ η : LL} (hξ : ξ ∈ primitiveRoots (l ^ (
   obtain ⟨i, -, hi⟩ : ∃ i < l ^ (s + 1), ξ ^ i = η := by
     first
     | exact hξ.eq_pow_of_pow_eq_one hη.pow_eq_one
-    | exact hξ.eq_pow_of_pow_eq_one hη.pow_eq_one h0
   have hcop : i.Coprime (l ^ (s + 1)) := by
     first
     | exact (hξ.pow_iff_coprime h0 i).1 (hi ▸ hη)
-    | exact (hξ.pow_iff_coprime i).1 (hi ▸ hη)
   refine ⟨ZMod.unitOfCoprime i hcop, ?_, ?_⟩
   · simp only [ZMod.coe_unitOfCoprime]
     rw [← hi, isPrimitiveRoot_pow_eq_pow_iff_zmod_eq hξ, ZMod.natCast_zmod_val]
@@ -184,7 +170,6 @@ private theorem isPrimitiveRoot_pow_val_mul_eq_pow_pow {N : ℕ} [NeZero N] {ξ 
   rw [← pow_mul, isPrimitiveRoot_pow_eq_pow_iff_zmod_eq hξ, Nat.cast_mul]
   first
   | rw [ZMod.natCast_zmod_val, ZMod.natCast_zmod_val, ZMod.natCast_zmod_val]
-  | simp only [ZMod.natCast_val, ZMod.cast_id', id_eq]
 
 theorem invariants_const (hl2 : l ≠ 2) (s : ℕ) (u : ℤ_[l]) (hu : (u - 1).valuation = 1)
     (f : LL → LL)
@@ -246,13 +231,9 @@ theorem invariants_const (hl2 : l ≠ 2) (s : ℕ) (u : ℤ_[l]) (hu : (u - 1).v
       exact Nat.Coprime.pow_left s hcopl
     first
     | rw [Nat.Coprime.orderOf_pow hcop, hubord]
-    | rw [orderOf_pow_coprime hcop, hubord]
-    | rw [orderOf_pow' ub (by omega : l - 1 ≠ 0), hcop.gcd_eq_one, Nat.div_one, hubord]
   haveI hcyc : IsCyclic (ZMod (l ^ (s + 1)))ˣ := by
     first
     | exact ZMod.isCyclic_units_of_prime_pow l hl hl2 (s + 1)
-    | exact ZMod.isCyclic_units_of_prime_pow hl hl2 (s + 1)
-    | exact ZMod.isCyclic_units_prime_pow l hl hl2 (s + 1)
   have hwpow : (ub ^ (l - 1)) ^ (l ^ s) = 1 := by
     rw [← hw]
     exact pow_orderOf_eq_one _
@@ -277,8 +258,6 @@ theorem invariants_const (hl2 : l ≠ 2) (s : ℕ) (u : ℤ_[l]) (hu : (u - 1).v
         simpa using hj
       first
       | exact pow_injOn_Iio_orderOf hi' hj' hij
-      | (have h2 := (pow_inj_mod).1 hij
-         rwa [Nat.mod_eq_of_lt hi', Nat.mod_eq_of_lt hj'] at h2)
     have hle := IsCyclic.card_pow_eq_one_le (α := (ZMod (l ^ (s + 1)))ˣ) (pow_pos hl.pos s)
     have heq := Finset.eq_of_subset_of_card_le hsub (by rw [hcard]; exact hle)
     have hbmem : b ∈ Finset.univ.filter (fun x : (ZMod (l ^ (s + 1)))ˣ => x ^ (l ^ s) = 1) := by
@@ -298,7 +277,6 @@ theorem invariants_const (hl2 : l ≠ 2) (s : ℕ) (u : ℤ_[l]) (hu : (u - 1).v
       rw [mul_pow, inv_pow, ← hk, ← pow_mul, ← pow_mul, mul_comm k]
       first
       | exact inv_mul_cancel _
-      | simp
     have hSt : ∀ ξ ∈ primitiveRoots (l ^ (s + 1)) LL,
         f (ξ ^ (((ub ^ k)⁻¹ * a : (ZMod (l ^ (s + 1)))ˣ) : ZMod (l ^ (s + 1))).val) = f ξ := by
       intro ξ hξ

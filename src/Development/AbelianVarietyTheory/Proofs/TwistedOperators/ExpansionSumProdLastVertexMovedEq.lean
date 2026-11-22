@@ -130,7 +130,7 @@ theorem prod_edgeFactor_last (hm : 1 ≤ Γ.m) (g : GL (Fin (Γ.rank (Γ.m, Γ.m
   rw [oppositePath, List.map_append, List.prod_append, List.map_map, List.map_map, List.map_reverse, List.prod_reverse,
     ← List.prod_toFinset _ List.nodup_range, ← List.prod_toFinset _ List.nodup_range, List.toFinset_range,
     Finset.prod_eq_single (Γ.m - 1), Finset.prod_eq_single (Γ.m - 1)]
-  · simp only [Function.comp, hf, Edge.src, Edge.tgt, e1, and_self, if_true, Prod.mk.injEq, show Γ.m - 1 ≠ Γ.m by omega, false_and, and_false, if_false,
+  · simp only [Function.comp, hf, Edge.src, Edge.tgt, e1, if_true, Prod.mk.injEq, show Γ.m - 1 ≠ Γ.m by omega, false_and, and_false, if_false,
       map_one, Grid.kappa, Grid.blockChar, MonoidHom.div_apply, e2]
     simp only [Units.val_div_eq_div_val, Units.val_inv_eq_inv_val, Units.val_one]
     field_simp

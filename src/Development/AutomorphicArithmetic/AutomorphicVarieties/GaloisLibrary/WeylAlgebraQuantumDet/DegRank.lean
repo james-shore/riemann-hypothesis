@@ -27,4 +27,4 @@ theorem UpperTheory.V.Weyl.degRank :
             have := congrArg Fin.val (congrFun h i)
             simpa using this)
     _ = (N + 1) ^ (n * n) := by
-      simp [Nat.card_eq_fintype_card, Fintype.card_fun]
+      simp [Nat.card_eq_fintype_card]

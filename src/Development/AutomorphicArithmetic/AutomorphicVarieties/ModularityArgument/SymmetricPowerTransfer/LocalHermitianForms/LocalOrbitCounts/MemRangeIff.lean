@@ -124,7 +124,6 @@ theorem UpperTheory.V.Z.Sym.Loc.dIso :
     simp only [← hr']
     rfl
   · rw [Units.ext_iff, ← minj.eq_iff]
-    beta_reduce
     rw [hm, Units.mul_inv_eq_iff_eq_mul]
     have e : ((Matrix.GeneralLinearGroup.scalar (Fin 2) z : GL (Fin 2) K) : Matrix (Fin 2) (Fin 2) K).map (algebraMap K (Lsq K Δ)) =
         Matrix.scalar (Fin 2) (algebraMap K (Lsq K Δ) z) := by

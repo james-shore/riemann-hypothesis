@@ -31,7 +31,7 @@ private theorem fx_alg {M : Type} [Ring M] (A0 Ai A1 B1 R Ri y : M) (h1 : A0 * A
   have h1' : ∀ x, A0 * (Ai * x) = x := fun x => by rw [← mul_assoc, h1, one_mul]
   have h2' : ∀ x, Ai * (A0 * x) = x := fun x => by rw [← mul_assoc, h2, one_mul]
   have h3' : ∀ x, R * (Ri * x) = x := fun x => by rw [← mul_assoc, h3, one_mul]
-  simp only [mul_add, add_mul, mul_sub, sub_mul, mul_neg, neg_mul, mul_assoc, h1', h2', h3', h1, h2, h3, mul_one]
+  simp only [mul_add, add_mul, mul_sub, sub_mul, mul_neg, neg_mul, mul_assoc, h1', h2', h3']
   abel
 private theorem tri_mul {K : Type} [CommRing K] {n : ℕ} (M N : Matrix (Fin n) (Fin n) K)
     (hM : ∀ i j, j < i → M i j = 0) (hN : ∀ i j, j < i → N i j = 0) :

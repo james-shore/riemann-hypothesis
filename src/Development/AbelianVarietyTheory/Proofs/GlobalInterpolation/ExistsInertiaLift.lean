@@ -20,8 +20,6 @@ theorem exists_den_field {E Ω : Type*} [Field E] [NumberField E] [Field Ω] (ι
   | exact @_root_.GlobalTheory.UnitDenominatorValuation.exists_unit_denominator
   | exact _root_.GlobalTheory.UnitDenominatorValuation.exists_unit_denominator
   | (apply _root_.GlobalTheory.UnitDenominatorValuation.exists_unit_denominator <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UnitDenominatorValuation.exists_unit_denominator <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UnitDenominatorValuation.exists_unit_denominator <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UnitDenominatorValuation.exists_unit_denominator ..)
 
 end GlobalTheory.CMRam

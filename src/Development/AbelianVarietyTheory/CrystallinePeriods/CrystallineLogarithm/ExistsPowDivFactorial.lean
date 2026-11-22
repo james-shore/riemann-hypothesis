@@ -31,7 +31,7 @@ theorem expand {A : Type*} [CommRing A] {p : ℕ} (hp : p.Prime) (m : A) :
   have h2 : r.coeff 0 = 1 := by
     simp [hp1] at h1
     apply mul_left_cancel₀ hp0
-    first | simpa using h1.symm | simpa using h1 | (rcases h1 with h1 | h1 <;> simp_all)
+    first | simpa using h1.symm
   obtain ⟨s, hs⟩ := Polynomial.X_dvd_sub_C (p := r)
   rw [h2, sub_eq_iff_eq_add] at hs
   refine ⟨Polynomial.aeval m s, ?_⟩

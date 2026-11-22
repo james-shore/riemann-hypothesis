@@ -66,7 +66,7 @@ theorem GlobalTheory.QLog.small_first_of_frob : ∀ (p : ℕ) [Fact p.Prime] (C 
         by_cases h : i' = i
         · subst h; simp
         · have h' : i ≠ i' := Ne.symm h
-          simp [Pi.single_apply, h', h]
+          simp [h', h]
       have hsum : ∑ l, algebraMap F.B F.Q ((U * blk d k (p : F.B) 1) l (Sum.inl i')) * coeff α (e l) =
           algebraMap F.B F.Q (∑ l, U l (Sum.inl i') * cc l) := by
         rw [key, Finset.mul_sum]

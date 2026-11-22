@@ -36,7 +36,7 @@ theorem antidiag_twisted_norm : ∀ (E : Type) [Field E] (c : E ≃+* E), (∀ x
         simp only [Fin.rev_rev, if_true, hsign]
         rw [mul_one, mul_left_comm, hpm, mul_one]
       · have : ¬ k = i.rev.rev := by rwa [Fin.rev_rev]
-        simp [this, h, Ne.symm h]
+        simp [h, Ne.symm h]
     · intro j _ hj; simp [hj]
     · intro h; exact absurd (Finset.mem_univ _) h
   have hright : Φ * Φ.transpose = 1 := by
@@ -61,7 +61,7 @@ theorem antidiag_twisted_norm : ∀ (E : Type) [Field E] (c : E ≃+* E), (∀ x
     intro A; ext i j; simp [hc]
   refine ⟨hT, hdet, fun δ hδ => ⟨?_, ?_⟩⟩
   · rw [hmapmul, hΦc, Matrix.transpose_mul, Matrix.mul_inv_rev, hTinv, hinv, hT]
-    simp only [Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_assoc]
+    simp only [Matrix.mul_smul, Matrix.mul_assoc]
   · have hYd : IsUnit ((δ.map c).transpose).det := by
       rw [Matrix.det_transpose]
       have h1 := RingHom.map_det (c : E →+* E) δ

@@ -55,7 +55,7 @@ theorem cls_tLd (K : ClsTied u i hi) (c : (D.mem u).C.cls i) (y : Fin (D.R.N i) 
     intro w
     ext k
     simp only [Matrix.mulVec, dotProduct, Matrix.map_apply, Matrix.smul_apply, Matrix.one_apply,
-      smul_eq_mul, mul_ite, mul_one, mul_zero, apply_ite, map_zero, ite_mul, zero_mul,
+      smul_eq_mul, mul_one, mul_zero, apply_ite, map_zero, ite_mul, zero_mul,
       Finset.sum_ite_eq, Finset.mem_univ, if_true, map_natCast, Pi.smul_apply, nsmul_eq_mul]
   rw [hv, hGm, Matrix.mulVec_smul]
 

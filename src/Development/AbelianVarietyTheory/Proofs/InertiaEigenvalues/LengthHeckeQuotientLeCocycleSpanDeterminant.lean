@@ -231,7 +231,7 @@ theorem exists_homs (hinj : Function.Injective (algebraMap O K)) {X ι ρ τ : T
         algebraMap O K c • (1 : Matrix κ κ K) := by
       intro κ _ _
       ext i j
-      by_cases hij : i = j <;> simp [Matrix.algebraMap_matrix_apply, Matrix.one_apply, hij]
+      by_cases hij : i = j <;> simp [Matrix.algebraMap_matrix_apply, hij]
     rw [← h _ (A.algebraMap_mem c), Pi.algebraMap_apply, h1, h1, Matrix.mul_smul, Matrix.mul_one,
       Matrix.smul_mul, hPQ, ← Matrix.fromBlocks_one, Matrix.fromBlocks_smul, Matrix.smul_one_eq_diagonal,
       Matrix.smul_one_eq_diagonal]

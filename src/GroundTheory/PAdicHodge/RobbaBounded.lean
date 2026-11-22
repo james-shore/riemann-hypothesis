@@ -68,7 +68,7 @@ theorem ConvergesAt.geomInv (hρ : 0 < ρ) (hu : ConvergesAt u ρ) (hq : gaussNo
   refine Filter.eventually_cofinite.2 (hS.subset fun n hn => ?_)
   simp only [Set.mem_setOf_eq, not_lt] at hn
   by_contra hcon
-  simp only [Set.mem_iUnion, Set.mem_setOf_eq, Finset.mem_range, not_exists, not_and, not_le]
+  simp only [Set.mem_iUnion, Set.mem_setOf_eq, Finset.mem_range, not_exists, not_le]
     at hcon
   have hρn : 0 < ρ ^ n := zpow_pos hρ n
   have : ‖Laurent.geomInv u n‖ * ρ ^ n ≤ ε / 2 := by

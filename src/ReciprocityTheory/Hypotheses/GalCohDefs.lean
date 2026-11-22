@@ -76,8 +76,6 @@ theorem evalPair_equiv (χ : Γ →* Rˣ) (rho : Representation R Γ M) (g : Γ)
   have e : rho g⁻¹ (rho g m) = m := by
     first
       | exact Representation.inv_self_apply rho g m
-      | rw [← Module.End.mul_apply, ← map_mul, inv_mul_cancel, map_one, Module.End.one_apply]
-      | rw [← LinearMap.mul_apply, ← map_mul, inv_mul_cancel, map_one, LinearMap.one_apply]
   rw [evalPair_apply, twDual_apply, charRep_apply, evalPair_apply, e]
 
 end Coeff

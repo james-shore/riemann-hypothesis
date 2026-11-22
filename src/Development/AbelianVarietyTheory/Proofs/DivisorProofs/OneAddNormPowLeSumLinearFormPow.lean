@@ -56,7 +56,7 @@ theorem onePlusNormPow_le_sum_linearForm_pow : ∀ (F : Type) [Field F] [NumberF
     linarith [hnorm y]
   have h2 := pow_sum_le_card_mul_sum_pow hf n
   rw [Finset.card_univ, Fintype.card_option, Fintype.card_fin, Fintype.sum_option] at h2
-  simp only [f, Option.elim_none, Option.elim_some, one_pow] at h2
+  simp only [f, Option.elim_none, Option.elim_some] at h2
   have h3 : ∑ j, (|l j y| * w j) ^ (n + 1) ≤ W ^ (n + 1) * ∑ j, |l j y| ^ (n + 1) := by
     rw [Finset.mul_sum]
     refine Finset.sum_le_sum fun j _ => ?_

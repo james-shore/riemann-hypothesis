@@ -21,8 +21,6 @@ theorem exists_smul_mem (Λ : Submodule (𝓞 E) (Fin n → E))
   | exact @_root_.GlobalTheory.SaturatedSublattice.main
   | exact _root_.GlobalTheory.SaturatedSublattice.main
   | (apply _root_.GlobalTheory.SaturatedSublattice.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SaturatedSublattice.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SaturatedSublattice.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SaturatedSublattice.main ..)
 
 theorem exists_common (Λ : Submodule (𝓞 E) (Fin n → E))
@@ -54,7 +52,7 @@ theorem exists_coeffs (Λ : Submodule (𝓞 E) (Fin n → E))
     apply Subtype.ext
     ext i
     simp only [Submodule.coe_smul, Submodule.coe_sum, Finset.sum_apply, Pi.smul_apply,
-      smul_eq_mul, Algebra.smul_def (R := 𝓞 E) (A := E), Pi.single_apply]
+      Algebra.smul_def (R := 𝓞 E) (A := E), Pi.single_apply]
     have h4 : ∀ x, algebraMap (𝓞 E) E (b x) * (algebraMap (𝓞 E) E D * if i = x then 1 else 0) =
         if i = x then algebraMap (𝓞 E) E (b x) * algebraMap (𝓞 E) E D else 0 := by
       intro x
@@ -111,7 +109,7 @@ theorem bc_single (p : HeightOneSpectrum (𝓞 F)) (i : Fin n) :
   ext j
   by_cases h : j = i
   · subst h; simp [Places.bc]
-  · simp [Places.bc, Pi.single_apply, h]
+  · simp [Places.bc, h]
 
 theorem int_mem (p : HeightOneSpectrum (𝓞 F)) (o : 𝓞 E) : (A.loc p).ιE (o : E) ∈ (A.L p).O :=
   ((PlacesInt.integers_local A).1 (o : E)).2 ⟨o, rfl⟩ p

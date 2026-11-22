@@ -86,7 +86,6 @@ theorem Datum.conj_ω : IsCMField.complexConj D.F (D.ω : D.F) = D.tr - D.ω := 
   have h := congrArg (fun z : 𝓞 D.F => (z : D.F)) D.tr_eq
   simp only [map_add, map_intCast] at h
   rw [← D.bar_eq]
-  push_cast at h ⊢
   linear_combination h
 
 def Datum.del : D.F := if 0 < D.ρc.im then (D.tr : D.F) - 2 * D.ω else 2 * D.ω - D.tr

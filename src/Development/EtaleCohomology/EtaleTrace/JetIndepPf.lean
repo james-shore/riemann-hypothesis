@@ -14,7 +14,7 @@ theorem jetIndep_chain {n : ℕ} (w : Fin n → K) (F : MvPolynomial (Fin n) k) 
   | C a => simp
   | add f g hf hg => simp [hf, hg, add_smul, Finset.sum_add_distrib]
   | mul_X f i hf =>
-    simp only [map_mul, aeval_X, Derivation.leibniz, hf, pderiv_X, Finset.sum_add_distrib, mul_smul, Finset.smul_sum, Derivation.leibniz]
+    simp only [map_mul, aeval_X, Derivation.leibniz, hf, pderiv_X, Finset.smul_sum, Derivation.leibniz]
     simp [Pi.single_apply]
     simp only [apply_ite (aeval w), map_zero, add_smul, ite_smul, zero_smul, Finset.sum_add_distrib,
       Finset.sum_ite_eq, Finset.mem_univ, if_true, mul_smul]

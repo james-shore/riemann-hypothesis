@@ -32,8 +32,6 @@ theorem nOf_eq_nS {W : Type} [AddCommGroup W] [Module K W] (τ : Representation 
   unfold Formalism.IndefR.IndefiniteEpsilonOperator.nOf Formalism.IndefR.TransferLatticeStatement.nS
   first
   | (unfold Formalism.IndefR.IndefiniteEpsilonOperator.epSp; rw [epOp_eq_epP τ P ψ χ hχ])
-  | (simp only [Formalism.IndefR.IndefiniteEpsilonOperator.epSp, epOp_eq_epP τ P ψ χ hχ])
-  | (rw [← epOp_eq_epP τ P ψ χ hχ]; rfl)
 
 end Bridge
 

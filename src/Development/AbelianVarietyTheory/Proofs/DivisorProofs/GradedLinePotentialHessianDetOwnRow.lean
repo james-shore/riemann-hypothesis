@@ -38,7 +38,7 @@ noncomputable def rowEquiv {ι : Type} (m : ι → ℕ) (τ : ι) (i : Fin (m τ
 theorem add_sum_coord_apply {n : ℕ} {B : Type} [Fintype B] (e : B → Fin n) (he : Function.Injective e)
     (z : V n) (t : B → ℂ) (k : Fin n) :
     (z + ∑ a, t a • coordVec (e a)) k = z k + ∑ a, if k = e a then t a else 0 := by
-  simp [coordVec, Finset.sum_apply, EuclideanSpace.single_apply, Pi.single_apply, mul_ite]
+  simp [coordVec, Finset.sum_apply, Pi.single_apply, mul_ite]
 
 end GlobalTheory.FlagCell2
 
@@ -107,7 +107,7 @@ theorem row_levi_det_of (hR : ∀ (n : ℕ) (B : Type) [Fintype B] [DecidableEq 
         rw [if_neg]
         intro h'
         have := ε.symm.injective h'
-        simp only [e, Sum.inr.injEq, Sigma.mk.inj_iff, heq_eq_eq, true_and] at this
+        simp only [Sum.inr.injEq, Sigma.mk.inj_iff, heq_eq_eq, true_and] at this
         exact h (this ▸ b.2)
     have hfa : ∀ a : Option {j : Low (m τ) // j.1.2 = i}, Option.elim a 1 (fun a => fb ε w' ⟨τ, a.1⟩) = Option.elim a 1 (fun a => w (e a) + t a) := by
       rintro (_ | b)

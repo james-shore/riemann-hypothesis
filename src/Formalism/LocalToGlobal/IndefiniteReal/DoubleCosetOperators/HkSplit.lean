@@ -31,7 +31,7 @@ theorem extM_one (ι : S →ₙ+* R) : extM ι (1 : Matrix n n S) = 1 := by
   ext i j
   by_cases h : i = j
   · subst h; simp [extM]
-  · simp [extM, Matrix.one_apply, h]
+  · simp [extM, h]
 
 theorem extM_mul (ι : S →ₙ+* R) (A B : Matrix n n S) : extM ι (A * B) = extM ι A * extM ι B := by
   have hc : (1 - ι 1) * (1 - ι 1) = 1 - ι 1 := by
@@ -55,7 +55,7 @@ theorem extM_cT (ι : S →ₙ+* R) (σS : S →+* S) (σR : R →+* R) (hι : �
   ext i j
   by_cases h : i = j
   · subst h; simp [cT, extM, hι, he]
-  · simp [cT, extM, Matrix.one_apply, h, Ne.symm h, hι]
+  · simp [cT, extM, h, Ne.symm h, hι]
 
 theorem extGL_mem (ι : S →ₙ+* R) (σS : S →+* S) (σR : R →+* R) (hι : ∀ x, ι (σS x) = σR (ι x))
     (JS : Matrix n n S) (JR : Matrix n n R) (hJ : JS.map ι = ι 1 • JR) (g : GL n S) (hg : g ∈ UJ σS JS) :

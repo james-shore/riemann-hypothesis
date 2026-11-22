@@ -20,7 +20,6 @@ lemma lfockq_mat_conjTranspose {r : ℕ} (a b : Fin r) (t : ℂ) :
   split_ifs <;> first
     | (simp_all; done)
     | grind
-    | (obtain ⟨h1, h2⟩ := ‹_ ∧ _›; subst h1; simp_all)
 
 lemma lfockq_eval_rowGen {r n : ℕ} (a b : Fin r) (t : ℂ) (f : MvPolynomial (Fin r × Fin n) ℂ) :
     Polynomial.eval (C t) (rowGen ℂ a b f) = rowAct ℂ (lfockq_mat a b t) f := by
@@ -39,8 +38,8 @@ lemma lfockq_eval_rowGen {r n : ℕ} (a b : Fin r) (t : ℂ) (f : MvPolynomial (
       simp [add_mul, Finset.sum_add_distrib, apply_ite (C : ℂ → MvPolynomial (Fin r × Fin n) ℂ),
         ite_mul, Finset.sum_ite_eq, Finset.sum_ite_eq']
       exact mul_comm _ _
-    · simp [hv, add_mul, Finset.sum_add_distrib, apply_ite (C : ℂ → MvPolynomial (Fin r × Fin n) ℂ),
-        ite_mul, Finset.sum_ite_eq, Finset.sum_ite_eq']
+    · simp [hv, apply_ite (C : ℂ → MvPolynomial (Fin r × Fin n) ℂ),
+        ite_mul, Finset.sum_ite_eq]
 
 lemma lfockq_eval_C {σ : Type*} (P : Polynomial (MvPolynomial σ ℂ)) (N : ℕ) (hN : P.natDegree < N)
     (t : ℂ) : Polynomial.eval (C t) P = ∑ i ∈ Finset.range N, C (t ^ i) * P.coeff i := by

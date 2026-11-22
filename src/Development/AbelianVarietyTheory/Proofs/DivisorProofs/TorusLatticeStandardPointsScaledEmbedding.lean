@@ -42,7 +42,7 @@ theorem homL_le {a b : ℕ} :
     intro k
     by_cases hk : k = j
     · subst hk; simp [Submodule.one_eq_range]
-    · simp [Pi.single_apply, hk]
+    · simp [hk]
   have h := hA _ hj
   simp only [Formalism.MainNotions.StandardLatticesGL3.stdL, Submodule.mem_pi, Set.mem_univ, true_implies] at h
   have := h i

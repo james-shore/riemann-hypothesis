@@ -15,15 +15,12 @@ private theorem hasSubst_lemma {σ τ k : Type} [CommRing k] [Finite σ] {a : σ
     (ha : ∀ s, constantCoeff (a s) = 0) : HasSubst a := by
   first
   | exact MvPowerSeries.hasSubst_of_constantCoeff_zero ha
-  | exact MvPowerSeries.HasSubst.of_constantCoeff_zero' ha
-  | exact ⟨fun s => by simp [ha s], fun d => Set.toFinite _⟩
 
 private theorem mvPowerSeries_subst_C {σ τ k : Type} [CommRing k] {a : σ → MvPowerSeries τ k} (hs : HasSubst a) (c : k) :
     subst a (C c : MvPowerSeries σ k) = (C c : MvPowerSeries τ k) := by
   have e : ∀ (ρ : Type), (C c : MvPowerSeries ρ k) = c • (1 : MvPowerSeries ρ k) := fun ρ => by
     first
     | rw [MvPowerSeries.smul_eq_C_mul, mul_one]
-    | simp [MvPowerSeries.smul_eq_C_mul]
   rw [e σ, e τ, ← coe_substAlgHom hs, map_smul, map_one]
 
 theorem const_subst {σ τ k : Type} [CommRing k] [Finite σ] {a : σ → MvPowerSeries τ k}
@@ -49,7 +46,7 @@ theorem sg_const (h : PS k 2 d) (hax : ev (n := 1) ![0, pt k d 0] h = 0) (i : Fi
     constantCoeff (sgOf k h i) = 0 := by
   unfold sgOf
   rw [map_neg, ← coeff_zero_eq_constantCoeff_apply, coeff_ev_zero_right, Finsupp.embDomain_zero, coeff_pderiv]
-  rw [coeff_eq_zero_of_vanish_first_axis h hax _ (fun i' => by simp [Finsupp.single_apply])]
+  rw [coeff_eq_zero_of_vanish_first_axis h hax _ (fun i' => by simp)]
   simp
 
 theorem bE_const (h : PS k 2 d) (hax : ev (n := 1) ![0, pt k d 0] h = 0) : ∀ t, constantCoeff (bE k h t) = 0 := by
@@ -66,7 +63,6 @@ theorem E_liftX (h : PS k 2 d) (hax : ev (n := 1) ![0, pt k d 0] h = 0) (f : PS 
   unfold liftX
   first
   | rw [subst_comp_subst_apply hl hb]
-  | rw [subst_comp_subst_apply hb hl]
   have e : (fun p : Fin 1 × Fin d => subst (bE k h) (X (Sum.inl p.2) : AA k d)) =
       (X : Fin 1 × Fin d → PS k 1 d) := by
     funext p
@@ -78,9 +74,6 @@ theorem E_liftX (h : PS k 2 d) (hax : ev (n := 1) ![0, pt k d 0] h = 0) (f : PS 
   rw [e]
   first
   | (rw [subst_self]; rfl)
-  | exact congrFun subst_self f
-  | simp [subst_self]
-  | (rw [← map_algebraMap_eq_subst_X]; simp)
 
 section Inter
 

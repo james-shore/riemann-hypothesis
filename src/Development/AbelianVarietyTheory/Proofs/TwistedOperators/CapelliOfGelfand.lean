@@ -54,7 +54,7 @@ theorem polyOf_coeff {V : Type} [AddCommGroup V] [Module ℂ V] (d : ℕ) (c : �
   unfold polyOf
   rw [finset_sum_coeff, sum_eq_single d]
   · simp
-  · intro b _ hb; simp [coeff_C_mul_X_pow, hb.symm]
+  · intro b _ hb; simp [hb.symm]
   · intro h; exact absurd (self_mem_range_succ d) h
 
 noncomputable def capQ (m : ℕ) (χ : Fin (m+1) → ℂ) : ℂ[X] := ∏ s, (X + C (χ s - (m : ℂ) / 2))
@@ -110,7 +110,7 @@ theorem main_succ (V : Type) [AddCommGroup V] [Module ℂ V] (m : ℕ)
     simp only [LinearMap.add_apply, Module.End.mul_apply, Module.algebraMap_end_apply, map_add, map_smul, LinearMap.sub_apply, map_sub, smul_eq_mul] at h1
     rw [← polyOf_eval] at h1
     simp only [hP] at h1
-    simp only [eval_mul, eval_neg, eval_pow, eval_C]
+    simp only [eval_mul, eval_C]
     linear_combination h1
   obtain ⟨rs, hrs, hrsE⟩ := GlobalTheory.T.scalar_capelli_truncated_perelomov_popov m N χ
   have hf := GlobalTheory.T.poly_eq_zero_of_newton_recursion m N (gelfVal χ) (P - C (φ v) * capQ m χ) (C (-(-1) ^ N) * Rp - C (φ v) * rs)

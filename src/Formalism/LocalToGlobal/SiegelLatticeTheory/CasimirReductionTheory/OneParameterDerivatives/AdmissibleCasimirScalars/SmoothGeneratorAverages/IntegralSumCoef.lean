@@ -20,7 +20,7 @@ variable {n : ℕ} {ε : Fin n → Bool} {H : Type} [NormedAddCommGroup H] [Inne
 theorem re_coef_ge {σ : Matrix (Fin n) (Fin n) ℂ → (H →L[ℂ] H)} {g : UJ ε} {v : H} (hv : ‖v‖ = 1)
     (h : ‖σ (umat g) v - v‖ ≤ ‖v‖ / 2) : (1 / 2 : ℝ) ≤ (coefOn σ v v g).re := by
   have h1 : coefOn σ v v g = ⟪v, v⟫_ℂ + ⟪v, σ (umat g) v - v⟫_ℂ := by
-    simp [coefOn, inner_sub_right]
+    simp [coefOn]
   have h2 : ‖⟪v, σ (umat g) v - v⟫_ℂ‖ ≤ 1 / 2 := by
     calc _ ≤ ‖v‖ * ‖σ (umat g) v - v‖ := norm_inner_le_norm _ _
       _ ≤ 1 / 2 := by rw [hv] at h ⊢; linarith
@@ -94,7 +94,7 @@ theorem card_le {ι : Type} [Fintype ι] {σ : Matrix (Fin n) (Fin n) ℂ → (H
   let f : UJ ε → ℝ := fun g => (sumCoef σ v g * star (sumCoef σ v g)).re
   have hfint : Integrable f (muG ε) := hint.re
   have hfn : ∀ g, f g = Complex.normSq (sumCoef σ v g) := fun g => by
-    simp [f, Complex.star_def, Complex.mul_conj]
+    simp [f, Complex.mul_conj]
   have hf0 : ∀ g, 0 ≤ f g := fun g => by rw [hfn]; exact Complex.normSq_nonneg _
   have hm0 : 0 ≤ m := by positivity
   have hK' : ∀ g ∈ K, (m / 2) ^ 2 ≤ f g := by

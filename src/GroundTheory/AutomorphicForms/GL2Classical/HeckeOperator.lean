@@ -123,7 +123,7 @@ def classicalUpper (j : ℤ) : GL (Fin 2) ℚ where
   inv_val := by
     have := natCast_ne_zero_rat p
     ext a b
-    fin_cases a <;> fin_cases b <;> simp [Matrix.mul_apply, Fin.sum_univ_two] <;> field_simp <;> ring
+    fin_cases a <;> fin_cases b <;> simp [Matrix.mul_apply, Fin.sum_univ_two] <;> field_simp
 
 theorem coe_classicalUpper (j : ℤ) :
     ((classicalUpper p j : GL (Fin 2) ℚ) : Matrix (Fin 2) (Fin 2) ℚ) = !![1, (j : ℚ); 0, p] := rfl

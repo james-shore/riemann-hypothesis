@@ -11,10 +11,6 @@ theorem norm_isHomogeneous_poly_coords :
           MvPolynomial.eval (fun i => (Module.finBasis K L).repr x i) f := by
   first
   | exact @_root_.GlobalTheory.IdealPowerMembership.main
-  | exact _root_.GlobalTheory.IdealPowerMembership.main
-  | (apply _root_.GlobalTheory.IdealPowerMembership.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.IdealPowerMembership.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.IdealPowerMembership.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.IdealPowerMembership.main ..)
 
 end GlobalTheory

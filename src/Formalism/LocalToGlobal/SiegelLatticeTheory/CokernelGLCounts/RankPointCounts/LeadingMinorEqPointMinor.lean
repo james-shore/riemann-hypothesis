@@ -40,7 +40,6 @@ theorem GPt_junk (D : D7) (u u' : D.what₂.Word) :
   all_goals first
     | rfl
     | (push_cast; rfl)
-    | norm_cast
 
 theorem GPt_ne_of_NGPt {D : D7} (TT : ℕ) (γ : PN.Pts D.host.E D.R.rS) (h : 1 ≤ NGPt D.host.rdE TT γ) :
     GPt TT γ ≠ 0 := by

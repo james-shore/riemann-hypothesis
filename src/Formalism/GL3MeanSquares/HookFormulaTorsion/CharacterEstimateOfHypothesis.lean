@@ -18,7 +18,7 @@ theorem numerical_nonvanishing_bound : Formalism.HermitianLattices.ZeroFreeRegio
     have h1 : ((4:ℝ) ^ (3 / ε)) ^ (ε / 3) ≤ x ^ (ε / 3) :=
       Real.rpow_le_rpow (by positivity) hx4 (by positivity)
     rw [← Real.rpow_mul (by norm_num : (0:ℝ) ≤ 4)] at h1
-    have h3 : 3 / ε * (ε / 3) = 1 := by field_simp <;> ring
+    have h3 : 3 / ε * (ε / 3) = 1 := by field_simp
     rw [h3, Real.rpow_one] at h1
     exact h1
   have hL : 0 < Real.log x := Real.log_pos (by linarith)

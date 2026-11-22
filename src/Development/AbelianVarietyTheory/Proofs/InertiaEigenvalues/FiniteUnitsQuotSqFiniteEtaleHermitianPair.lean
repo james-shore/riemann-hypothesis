@@ -77,7 +77,7 @@ theorem finite_units_quot_sq_normed (F : Type) [NontriviallyNormedField F] [Comp
       rfl
     refine ⟨hsU.unit * bu⁻¹, ?_⟩
     rw [powMonoidHom_apply, mul_pow, inv_pow, hs']
-    simp only [mul_comm, mul_left_comm, mul_assoc, mul_inv_cancel_left, inv_mul_cancel_left, mul_inv_cancel, mul_one]
+    simp only [mul_comm, mul_left_comm, mul_assoc, mul_inv_cancel, mul_one]
   have hfin : (Set.univ : Set (Rˣ ⧸ (powMonoidHom 2 : Rˣ →* Rˣ).range)).Finite :=
     (t.finite_toSet.image f).subset hsurj
   exact Set.finite_univ_iff.mp hfin
@@ -141,7 +141,7 @@ theorem finite_units_quot_sq_reduced (F : Type) [NontriviallyNormedField F] [Com
       apply e.injective
       funext I
       have := congrArg Units.val (hs I)
-      simp only [Units.val_pow_eq_pow_val, Units.coe_map, MonoidHom.coe_coe] at this
+      simp only [Units.val_pow_eq_pow_val, Units.coe_map] at this
       simp [x, this] <;> rfl
     · rintro ⟨w, rfl⟩
       funext I

@@ -14,8 +14,6 @@ theorem alg_eq {K F : Type} [Field K] [NumberField K] [StarRing K] [Field F] [Nu
     (t : 𝓞 F) : algebraMap (𝓞 K) K (algebraMap (𝓞 F) (𝓞 K) t) = algebraMap F K (t : F) := by
   first
     | rfl
-    | exact (IsScalarTower.algebraMap_apply (𝓞 F) (𝓞 K) K t).symm.trans (IsScalarTower.algebraMap_apply (𝓞 F) F K t)
-    | simp
 
 theorem family_meet_holds : FamMeet := by
   intro K F V _ _ _ _ _ _ _ _ _ _ _ hK hF h hs hnd U hUc M hM hMi 𝔭 h𝔭 b a hba π w c τ hg

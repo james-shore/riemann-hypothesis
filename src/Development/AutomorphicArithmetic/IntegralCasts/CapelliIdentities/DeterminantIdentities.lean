@@ -67,7 +67,7 @@ private theorem det_one_sub {n : ℕ} {C A : Type} [CommRing C] [CommRing A] (ψ
   rw [Matrix.charpolyRev, ← coe_eval₂RingHom, RingHom.map_det]
   congr 1
   ext i j
-  by_cases hij : i = j <;> simp [hij, Matrix.one_apply, eval₂_sub, eval₂_mul] <;> ring
+  by_cases hij : i = j <;> simp [hij, eval₂_sub, eval₂_mul] <;> ring
 
 private theorem core2 {n : ℕ} {P A C Γ : Type} [CommRing P] [CommRing A] [CommRing C] [Algebra A C]
     [Group Γ] (φ : P →+* C) (ρ : Γ →* Matrix (Fin n) (Fin n) A)
@@ -168,7 +168,7 @@ private theorem lemA {n : ℕ} {A H G : Type} [CommRing A] [Group H] [Group G] (
     rw [← R.homog]
     congr 1
     ext1
-    simp [Finsupp.mapDomain_smul]
+    simp
   · ext C _ _ x
     change R.D C ((x.mapDomain π).mapDomain s) = _
     rw [dom_dom, h]
@@ -395,7 +395,7 @@ theorem UpperTheory.Reformulated.B.DeterminantIdentities.phiDet :
     change Matrix.det (GDet.repAlg ρ A[X] _) = Matrix.det _
     congr 1
     ext i j : 2
-    by_cases hij : i = j <;> simp [GDet.repAlg, hij, Matrix.charmatrix_apply, Matrix.one_apply]
+    by_cases hij : i = j <;> simp [GDet.repAlg, hij]
   refine ⟨D, ?_, hchi, fun i N U => ?_⟩
   · rw [← hR, ← hD]
     rfl

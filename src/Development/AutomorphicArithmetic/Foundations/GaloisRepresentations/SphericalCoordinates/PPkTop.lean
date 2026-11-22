@@ -49,7 +49,6 @@ theorem UpperTheory.Gal.W2.pkTop_of :
   · rintro N hN ⟨s, hs, hP⟩
     obtain ⟨g, hg⟩ := hOnto p D G L B.β A hm N s hN hs hP
     refine ⟨i g, ?_⟩
-    change M (i.symm (i g)) = N
     rw [i.symm_apply_apply]
     ext x
     rw [hM, hg]

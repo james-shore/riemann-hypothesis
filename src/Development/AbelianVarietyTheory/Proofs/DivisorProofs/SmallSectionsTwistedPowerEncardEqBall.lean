@@ -65,14 +65,14 @@ theorem main : ∀ (k : Type) [CommRing k] (X : Scheme.{0}) [IsIntegral X] (p : 
   have hm := GlobalTheory.T.represents_hermitianLineBundle_pow k X p P a b M m hM
   refine ⟨?_, ?_, ?_⟩
   · refine encard_eq_Bl P hm _ _ (Real.exp_pos _).le fun u => ?_
-    simp only [HermLB.smallSec, Set.mem_setOf_eq]
+    simp only [HermLB.smallSec]
     refine forall_congr' fun σ => forall_congr' fun y => ?_
     have e := nsq_shift_pow M (fun _ => t) (fun _ => rfl) m σ (secVal p σ u) y
     exact (iff_of_eq (congrArg (· ≤ (1 : ℝ)) e)).trans (mul_exp_le_one_iff _ _ _ (by ring))
   · refine encard_eq_Bl P hm _ _ zero_le_one fun u => ?_
     simp only [HermLB.smallSec, Set.mem_setOf_eq, one_pow]
   · refine encard_eq_Bl P hM _ _ (Real.exp_pos _).le fun u => ?_
-    simp only [HermLB.smallSec, Set.mem_setOf_eq]
+    simp only [HermLB.smallSec]
     refine forall_congr' fun σ => forall_congr' fun y => ?_
     have e := HermLB.nsq_shift M (fun _ => t) (fun _ => rfl) (σ := σ) (secVal p σ u) y
     exact (iff_of_eq (congrArg (· ≤ (1 : ℝ)) e)).trans (mul_exp_le_one_iff _ _ _ (by ring))

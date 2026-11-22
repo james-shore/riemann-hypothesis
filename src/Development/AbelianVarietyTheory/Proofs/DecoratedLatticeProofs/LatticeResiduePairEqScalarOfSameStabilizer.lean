@@ -69,7 +69,7 @@ theorem transvection_smul_stdPair : ∀ (k : Type) [Field k] [ValuativeRel k] [T
     show (g⁻¹ : GL n k).val *ᵥ x = _
     rw [hinv, transvection_mulVec']
   rw [Pair.smul_hasVal, hsm, stdPair_hasVal, stdPair_hasVal]
-  have hd : y d = x d := by rw [hyj]; simp [Pi.single_apply, Ne.symm hbd]
+  have hd : y d = x d := by rw [hyj]; simp [Ne.symm hbd]
   have hint : (∀ j, y j ∈ 𝒪[k]) ↔ ∀ j, x j ∈ 𝒪[k] := by
     constructor
     · intro hy j
@@ -107,7 +107,7 @@ theorem transvection_smul_stdPair : ∀ (k : Type) [Field k] [ValuativeRel k] [T
         apply Subtype.ext
         show y i - x i = 0
         rw [hyj]
-        simp [Pi.single_apply, Ne.symm hb]
+        simp [Ne.symm hb]
       rw [this]
       exact zero_mem _
   constructor

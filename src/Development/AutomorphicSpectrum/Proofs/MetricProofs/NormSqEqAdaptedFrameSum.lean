@@ -174,7 +174,7 @@ def FmB : (Ψ → Fin (j + j') → ℂ) →ₗ[ℝ] (Ψ → Fin (j + j') → ℂ
     (fun a b c => by
       simp only [LatEmb.Fm, Pi.add_apply, star_add, add_dotProduct, mul_add, Complex.add_re, ← Finset.sum_add_distrib])
     (fun r a c => by
-      simp only [LatEmb.Fm, Pi.smul_apply, Pi.star_apply, star_smul, star_trivial, smul_dotProduct, mul_smul_comm,
+      simp only [LatEmb.Fm, Pi.smul_apply, star_smul, star_trivial, smul_dotProduct, mul_smul_comm,
         Complex.smul_re, smul_eq_mul, Finset.mul_sum]
       refine Finset.sum_congr rfl fun τ _ => ?_
       ring)

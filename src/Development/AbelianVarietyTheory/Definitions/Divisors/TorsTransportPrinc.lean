@@ -66,7 +66,7 @@ theorem exists_isLatOf (d : ℕ) (δ : K) (ι : K →+* ℂ) (h2 : Module.finran
     exact ⟨by exact_mod_cast hs, by exact_mod_cast ht⟩
   refine ⟨⟨ι (B 0), ι (B 1), hind⟩, ?_⟩
   ext z
-  simp only [SetLike.mem_coe, PeriodPair.mem_lattice, Set.mem_image, FractionalIdeal.mem_coe, FractionalIdeal.mem_one_iff]
+  simp only [SetLike.mem_coe, PeriodPair.mem_lattice, Set.mem_image, FractionalIdeal.mem_one_iff]
   constructor
   · rintro ⟨m, n, rfl⟩
     exact ⟨_, ⟨m * b 0 + n * b 1, rfl⟩, by simp [hB]⟩

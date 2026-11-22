@@ -414,7 +414,7 @@ theorem of_trivial (R : DSRep T) (hker : ∀ x, T.cov x = 1 → R.U.π x = 1) {l
       by_cases hcd : b = c ∧ a = d
       · obtain ⟨rfl, rfl⟩ := hcd
         cases a <;> cases b <;> simp [Formalism.REAL.sgn, hb.1, hb.2.1, Eab]
-      · simp [Eab, Matrix.single_apply, hcd]
+      · simp [Eab, hcd]
     rw [h3, map_smul, LinearMap.smul_apply, map_smul, inner_smul_right] at h2
     simp only [hE, unitOp, Equiv.symm_apply_apply]
     exact h2

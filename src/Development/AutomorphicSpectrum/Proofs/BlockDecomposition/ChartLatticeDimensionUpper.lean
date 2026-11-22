@@ -256,7 +256,7 @@ theorem finrank_chartLatQ_nsmul_add_le : ∀ (K : Type) [Fintype K] (ι : K → 
     rw [← secOver_eq_chartLatQ, ← SegreTwist.proof ℚ K ι Ω y hnz]
     congr 1
     funext k
-    rcases k with k | k <;> simp [pullDeg, baseDeg, Pi.single_apply] <;> ring
+    rcases k with k | k <;> simp [pullDeg, baseDeg] <;> ring
   have hfc : (0 : ℝ) < ((d + 1).factorial : ℝ) := by exact_mod_cast Nat.factorial_pos _
   have hXq : ((f (fun _ => a₀ • pullDeg a + (q : ℤ) • baseDeg (Sum.inl ())) : ℤ) : ℝ) ≤
       (a₀ : ℝ) ^ (d + 1) * ((genDeg (mCoordIdeal y) (d + 1) a : ℝ) + (ε' : ℝ)) := by

@@ -202,7 +202,7 @@ theorem prime_ne_zero_field (hh : IsHorizontal (mCoordIdeal y)) (p : Nat.Primes)
   apply C_prime_notMem hh p
   change _ ∈ RingHom.ker _
   rw [RingHom.mem_ker]
-  simp [ReciprocityTheory.ChartRestriction.G.Geo.mConeMap, h]
+  simp [ReciprocityTheory.ChartRestriction.G.Geo.mConeMap]
   exact (map_natCast (C : Ω →+* MvPolynomial K Ω) (p : ℕ)).symm.trans (by rw [h, map_zero])
 
 variable {Ψ : Type} [Fintype Ψ] [DecidableEq Ψ] {N : ℕ}

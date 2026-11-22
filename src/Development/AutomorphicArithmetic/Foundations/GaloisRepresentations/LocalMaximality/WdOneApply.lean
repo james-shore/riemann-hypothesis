@@ -66,7 +66,7 @@ theorem UpperTheory.Gal.productCup_of_system.pInt_of :
     exact resP_eq_zero ρ _ _
       (fun f hf => GlobalTheory.T.residue_functional_vanishes_on_omega_forms ℂ F d (xv x) hx.pd ρ hρ i _ hI (by simp) f hf) hm
   refine ⟨fun L => ((-1 : ℤ) ^ (d + 1)) • resP (DR ℂ K) ρ (c (uni Finset.univ L)), ?_, ?_⟩
-  · simp only [Lef.omCx, GlobalTheory.PD.cech, GlobalTheory.PD.cechC, Submodule.mem_pi]
+  · simp only [Lef.omCx, GlobalTheory.PD.cech, GlobalTheory.PD.cechC]
     intro L _
     by_cases h0 : c (uni Finset.univ L) = 0
     · simp [h0]

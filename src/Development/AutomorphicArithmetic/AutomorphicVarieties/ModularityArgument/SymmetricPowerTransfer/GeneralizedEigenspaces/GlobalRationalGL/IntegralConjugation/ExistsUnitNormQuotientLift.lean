@@ -155,7 +155,7 @@ private theorem mem_range (g : GL (Fin 2) (Lsq K Δ)) (h1 : ∀ i j, IsIntegral 
 private theorem conj_two {A : Type} [CommRing A] (m : Matrix (Fin 2) (Fin 2) A) :
     !![0, -1; 1, 0] * m * !![0, 1; -1, 0] = !![m 1 1, -m 1 0; -m 0 1, m 0 0] := by
   rw [Matrix.eta_fin_two m]
-  simp [Matrix.mul_fin_two]
+  simp
 
 end H90
 

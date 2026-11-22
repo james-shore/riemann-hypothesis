@@ -24,7 +24,7 @@ private theorem dc_conj {G V : Type} [Group G] [AddCommGroup V] [Module ℂ V] (
   classical
   have hmem : ∀ u : G, u ∈ U.comap (MulAut.conj y⁻¹).toMonoidHom ↔ y⁻¹ * u * y ∈ U := by
     intro u
-    simp [MulAut.conj_apply]
+    simp
   have hea : (MulAut.conj y⁻¹).toMonoidHom (a : G) = a := by
     simp only [MulEquiv.coe_toMonoidHom, MulAut.conj_apply, inv_inv]
     rw [mul_assoc, ← hy, inv_mul_cancel_left]
@@ -47,12 +47,12 @@ private theorem dc_conj {G V : Type} [Group G] [AddCommGroup V] [Module ℂ V] (
     have h1 := congrFun (hmap hfin (fun x => φ (y * x)) hφy) x
     have h2 : ((fun x => φ (y * x)) ∘ (MulAut.conj y⁻¹).toMonoidHom) = fun h => φ (h * y) := by
       funext h
-      simp [MulAut.conj_apply, mul_assoc]
+      simp [mul_assoc]
     rw [h2] at h1
     rw [h1]
     simp only [Function.comp_apply]
     rw [htr]
-    simp [MulAut.conj_apply, mul_assoc]
+    simp [mul_assoc]
   have hay : (a : G) * y⁻¹ = y⁻¹ * a := by
     rw [mul_inv_eq_iff_eq_mul, mul_assoc, ← hy, inv_mul_cancel_left]
   have hc' : ∀ u ∈ U.comap (MulAut.conj y⁻¹).toMonoidHom, ∃ c ∈ U.comap (MulAut.conj y⁻¹).toMonoidHom,

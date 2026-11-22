@@ -70,11 +70,11 @@ theorem sub_sigma_ne_one [CharZero Qp] (e : K₀) : e - PD.σ e ≠ 1 := by
 
 theorem act_mul (κ : G →* Eˣ) (g : G) (x y : E ⊗[Qp] B) :
     actVB PD (chRep κ) g x * actVB PD (chRep κ⁻¹) g y = actVB PD (chRep (1 : G →* Eˣ)) g (x * y) :=
-  by apply _root_.UpperTheory.Reformulated.B.Qh15.act_mul <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.Qh15.act_mul
 
 theorem phi_mul (x y : E ⊗[Qp] B) :
     φVB PD (LL := E) (x * y) = φVB PD (LL := E) x * φVB PD (LL := E) y :=
-  by apply _root_.UpperTheory.Reformulated.B.Qf14.phi_mul <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.Qf14.phi_mul
 
 theorem ctr_act (μ : E →ₗ[Qp] Qp) (g : G) (x : E ⊗[Qp] B) :
     ctr B μ (actVB PD (chRep (1 : G →* Eˣ)) g x) = PD.actB g (ctr B μ x) := by

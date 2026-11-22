@@ -95,7 +95,7 @@ private theorem vmv_mem_pk {X : Spc F E n} {W : Spc F E d} {z : Fin n → AE F E
     · intro a' h1' h2' y hy
       refine AddSubgroup.subset_closure ⟨a * a', at_mulA_pk h1 a', by rw [map_mul]; exact mul_mem h2 h2', x, hx, y, hy, ?_⟩
       ext i j
-      simp [Matrix.vecMulVec_apply, incM, smul_mul_smul_comm]
+      simp [Matrix.vecMulVec_apply, incM]
       rw [mul_comm a a', mul_smul]
     · have e : Matrix.vecMulVec (fun i => a • inclR (F := F) (AF F) (x i)) (0 : Fin d → AE F E) = 0 := by
         ext i j; simp [Matrix.vecMulVec_apply]
@@ -129,7 +129,7 @@ private theorem gam_ind_pk {X : Spc F E n} {W : Spc F E d} {p : Matrix (Fin n) (
       (fun j => sg v 1 • inclR (F := F) (AF F) (y j)) := by
     ext i j
     have e1 : a * sg v 1 = a := by rw [mul_comm]; exact at_self_pk h1
-    simp [Matrix.vecMulVec_apply, incM, smul_mul_smul_comm, e1]
+    simp [Matrix.vecMulVec_apply, incM]
     rw [← mul_smul, mul_comm (sg v 1) a, e1]
   rw [e]
   exact gen _ (AddSubgroup.subset_closure ⟨a, h1, h2, x, hx, rfl⟩) _

@@ -38,10 +38,9 @@ theorem evFr_apply (G : ι → Matrix (Fin n) (Fin n) ℂ) (sh : ι → ℤ) (s 
       MvPolynomial.eval₂ s (fun x : ι × Fin n × Fin n => y.1 x.1 x.2.1 x.2.2) P := by
   first
   | (simp only [evFr, LinearMap.coe_comp, Function.comp_apply, mapS, fnOf, LinearMap.coe_mk,
-      AddHom.coe_mk, Pi.one_apply, Matrix.one_mul, MvPolynomial.eval_map]; rfl)
+      AddHom.coe_mk, Pi.one_apply, Matrix.one_mul, MvPolynomial.eval_map])
   | (simp only [evFr, LinearMap.coe_comp, Function.comp_apply, mapS, fnOf, LinearMap.coe_mk,
       AddHom.coe_mk, Pi.one_apply, Matrix.one_mul, MvPolynomial.eval_map])
-  | simp [evFr, fnOf, mapS, MvPolynomial.eval_map]
 
 theorem evFr_eq_fnOf (G : ι → Matrix (Fin n) (Fin n) ℂ) (sh : ι → ℤ) (s : K →+* ℂ)
     (P : MvPolynomial (ι × Fin n × Fin n) K) : evFr G sh s P = fnOf G sh 1 (MvPolynomial.map s P) := rfl
@@ -70,7 +69,6 @@ theorem exists_spectral (X : Matrix (Fin n) (Fin n) ℂ) (hX : IsUnit X.det) :
   have hinj : Function.Injective X.mulVec := by
     first
     | exact Matrix.mulVec_injective_iff_isUnit.mpr ((Matrix.isUnit_iff_isUnit_det X).mpr hX)
-    | exact (Matrix.mulVec_injective_iff_isUnit).2 ((Matrix.isUnit_iff_isUnit_det X).2 hX)
   have hP : (Xᴴ * X).PosDef := Matrix.PosDef.conjTranspose_mul_self X hinj
   refine ⟨(hH.eigenvectorUnitary : Matrix (Fin n) (Fin n) ℂ), hH.eigenvalues, ?_, ?_,
     fun i => hP.eigenvalues_pos i, ?_⟩
@@ -256,7 +254,7 @@ theorem fnOf_injective (G : ι → Matrix (Fin n) (Fin n) ℂ) (sh : ι → ℤ)
   have h1 := congrFun hP ⟨fun τ => (M τ)⁻¹ * z τ, hy⟩
   have hMz : ∀ τ, M τ * ((M τ)⁻¹ * z τ) = z τ := fun τ => by
     rw [← Matrix.mul_assoc, mul_nonsing_inv _ (hM τ), Matrix.one_mul]
-  simp only [fnOf, LinearMap.coe_mk, AddHom.coe_mk, Pi.zero_apply, hMz] at h1
+  simp only [fnOf, LinearMap.coe_mk, AddHom.coe_mk, hMz] at h1
   rcases mul_eq_zero.mp h1 with h2 | h2
   · exfalso
     rw [Finset.prod_eq_zero_iff] at h2

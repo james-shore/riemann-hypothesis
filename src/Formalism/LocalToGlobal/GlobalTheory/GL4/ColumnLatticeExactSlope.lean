@@ -62,7 +62,7 @@ private theorem hform_crd_lemma (S : HSpace E) (y : S.V) :
   unfold crd
   conv_rhs => rw [← S.frame.sum_equivFun y]
   rw [Formalism.DivisionValues.hform, Matrix.toLinearMapₛₗ₂'_apply]
-  simp only [map_sum, LinearMap.sum_apply, map_smulₛₗ, LinearMap.smul_apply, Finset.smul_sum, Formalism.BasicNotions.HSpace.gram,
+  simp only [map_sum, LinearMap.sum_apply, map_smulₛₗ, LinearMap.smul_apply, Formalism.BasicNotions.HSpace.gram,
     smul_eq_mul, RingHom.id_apply, Finset.mul_sum]
   conv_rhs => rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_

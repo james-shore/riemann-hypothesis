@@ -59,7 +59,7 @@ theorem root_val {Fr : Small.GenFrame Or} {A : Subring RM.Ω} (hG : GoodRing Fr 
       (HodgeLine.isGrNorm_conj Or.𝔐.t Or.𝔐.M _ hν)
     obtain ⟨u', hu', eu'⟩ := hS'.2.2 ch fun k => (map_ne_zero _).2 (hch k)
     rw [CxVal.unique hu' (HodgeLine.valAt_conj hu)] at eu'
-    simp only [Complex.norm_conj, RCLike.norm_conj] at eu'
+    simp only [RCLike.norm_conj] at eu'
     exact mul_left_cancel₀ (zpow_pos hν.pos _).ne' (eu'.trans eu.symm)
 
 theorem norm_alg {I : Type} [Fintype I] (T T₀ h K : I → ℝ) (sg ex n : I → ℤ) (hT : ∀ i, 0 < T i)

@@ -116,7 +116,7 @@ theorem rAug_f_zero (φ : R →+* S) {F : Shv S} {C : Cx S} (ε : sgl F ⟶ C) (
       (show Sec ((restr φ).obj (C.X 0)) U from Sec.map (ε.f 0) (Sec.map (sglι F) a)) := by
   have h : sglι ((restr φ).obj F) ≫ (rAug φ ε).f 0 = (restr φ).map (sglι F ≫ ε.f 0) := by
     set_option backward.isDefEq.respectTransparency false in
-    simp [rAug, sglι, CochainComplex.singleFunctor, CochainComplex.singleFunctors]
+    simp [rAug, sglι]
   have := congrArg (fun m => Sec.map m (show Sec ((restr φ).obj F) U from a)) h
   exact this
 

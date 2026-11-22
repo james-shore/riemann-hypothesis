@@ -156,7 +156,7 @@ theorem tr_snoc {n : ℕ} (h : Pt E n) (t : Eˣ) (s : ℕ+) :
   split_ifs with hi
   · subst hi
     simp
-  · simp [List.getD_eq_getElem?_getD, List.getElem?_append, hi]
+  · simp [List.getD_eq_getElem?_getD, List.getElem?_append]
     split_ifs with hlt
     · rfl
     · have h1 : h.blocks.length < i := lt_of_le_of_ne (not_lt.mp hlt) (Ne.symm hi)
@@ -196,7 +196,7 @@ theorem ptEntryL_eq : ∀ (bs : List (Eˣ × ℕ+)) (a b : ℕ), a < (bs.map (fu
 theorem mat_eq {n : ℕ} (w : Pt E n) :
     w.mat = (pt (tr w).1 (tr w).2).submatrix (finCongr (tr_sum w).symm) (finCongr (tr_sum w).symm) := by
   ext a b
-  simp only [Pt.mat, Matrix.submatrix_apply, pt, tr, finCongr_apply, Fin.val_cast]
+  simp only [Pt.mat, Matrix.submatrix_apply, pt, tr]
   exact ptEntryL_eq w.blocks a b (by rw [w.size]; exact a.2)
 
 theorem det_eq {n : ℕ} (w : Pt E n) : w.mat.det = (pt (tr w).1 (tr w).2).det := by
@@ -514,7 +514,6 @@ theorem mem_O_of_quad (L : LocE F E) (z : E) (t n : 𝒪[F])
   refine ⟨Polynomial.X ^ 2 - Polynomial.C t * Polynomial.X + Polynomial.C n, ?_, ?_⟩
   · first
       | monicity!
-      | monicity
   · simp only [Polynomial.eval₂_add, Polynomial.eval₂_sub, Polynomial.eval₂_mul, Polynomial.eval₂_X_pow,
       Polynomial.eval₂_C, Polynomial.eval₂_X]
     linear_combination h
@@ -913,7 +912,6 @@ theorem datum_of_OK (M : Model F E) (hOK : M.OK) :
   have hart : IsArtinianRing E := by
     first
       | exact IsArtinianRing.of_finite F E
-      | infer_instance
   exact {
     t2 := t2Space_of_model_ok M hOK
     isOpen := hO
@@ -974,7 +972,6 @@ theorem range_le_of_red {n : ℕ} (Z Z' : Matrix (Fin n) (Fin n) A)
   first
     | rw [Matrix.smul_mulVec_assoc]
     | rw [Matrix.smul_mulVec]
-    | rw [Matrix.smul_mulVec_eq_smul_mulVec]
   simp only [Matrix.one_mulVec, Pi.add_apply, Pi.smul_apply, smul_eq_mul]
   linear_combination -(hc i)
 

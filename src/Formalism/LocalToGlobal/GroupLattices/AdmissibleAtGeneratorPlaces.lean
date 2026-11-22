@@ -118,9 +118,6 @@ theorem atG_coreU {Xe : ErrX D} {C1 : ℝ} (hCL : UsedTuplesBoundByConstant D L 
   have he : (0 : ℝ) < D.what₂.places.ramIdx w := by
     first
       | exact_mod_cast D.what₂.places.ramIdx_pos w
-      | exact_mod_cast Nat.pos_of_ne_zero (D.what₂.places.ramIdx_ne_zero w)
-      | exact_mod_cast D.what₂.places.ram_pos w
-      | positivity
   unfold ur
   unfold LiftErrorLocal.vG at hb
   rw [le_div_iff₀ he] at hb

@@ -18,9 +18,7 @@ theorem valR_comp_eq {A : Type} [CommRing A] {X Y : Scheme.{0}} (p : Sp A ⟶ X)
   first
   | exact @_root_.GlobalTheory.ValuationCompositionDivisor.valR_comp
   | exact _root_.GlobalTheory.ValuationCompositionDivisor.valR_comp
-  | (apply _root_.GlobalTheory.ValuationCompositionDivisor.valR_comp <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ValuationCompositionDivisor.valR_comp <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ValuationCompositionDivisor.valR_comp <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.ValuationCompositionDivisor.valR_comp)
   | (intros; exact _root_.GlobalTheory.ValuationCompositionDivisor.valR_comp ..)
 
 theorem valF_eq_valAt' {X : Scheme.{0}} (p : Sp ℂ ⟶ X) (U : X.Opens) (f : Γ(X, U)) :

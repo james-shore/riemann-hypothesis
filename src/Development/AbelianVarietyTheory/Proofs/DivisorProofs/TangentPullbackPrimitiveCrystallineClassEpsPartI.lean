@@ -21,7 +21,7 @@ theorem snd_epsHom {D D' : Type} [CommRing D] [Algebra R D] [CommRing D'] [Algeb
 theorem epsHom_comp_inl {D D' : Type} [CommRing D] [Algebra R D] [CommRing D'] [Algebra R D'] (φ : D →ₐ[R] D') :
     (epsHom φ).comp (TrivSqZeroExt.inlAlgHom R D D) = (TrivSqZeroExt.inlAlgHom R D' D').comp φ := by
   ext r
-  · simp [epsHom, DualNumber.lift_apply_apply]
+  · simp [epsHom]
   · simp [AlgHom.comp_apply, snd_epsHom]
 
 theorem epsHom_comp_epsMap {D D' : Type} [CommRing D] [Algebra R D] [CommRing D'] [Algebra R D'] (φ : D →ₐ[R] D') :
@@ -68,7 +68,7 @@ theorem cohom_sndPull_zero : ∀ (R : Type) [CommRing R] (A B : Over (Sp R)) [Gr
   have s1 := congrArg TrivSqZeroExt.snd e1
   have s2 := congrArg TrivSqZeroExt.snd c1
   have s3 := congrArg TrivSqZeroExt.snd c3
-  simp only [TrivSqZeroExt.snd_add, TrivSqZeroExt.snd_sub, snd_epsHom, AlgHom.coe_coe, TrivSqZeroExt.inlAlgHom_apply, TrivSqZeroExt.snd_inl, zero_add] at s1 s2 s3
+  simp only [TrivSqZeroExt.snd_add, TrivSqZeroExt.snd_sub, snd_epsHom, TrivSqZeroExt.inlAlgHom_apply, TrivSqZeroExt.snd_inl, zero_add] at s1 s2 s3
   simp only [Fn1.add, Fn1.neg, Fn1.zero, sndPull, neg_zero, add_zero, TrivSqZeroExt.snd_add, map_add]
   linear_combination -s1 - s2 - s3
 

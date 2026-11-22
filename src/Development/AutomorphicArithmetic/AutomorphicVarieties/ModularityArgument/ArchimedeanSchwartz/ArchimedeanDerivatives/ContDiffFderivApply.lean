@@ -49,7 +49,7 @@ private theorem rmul_eDir (τ : K →+* ℂ) (a b : Fin n) (z : ℂ) (y : Lie K 
       Matrix.single_apply_same, GlobalTheory.CapAdInv.mul_atEmb]
     rfl
   · rw [Matrix.mul_single_apply_of_ne _ _ _ _ _ hj]
-    simp [Matrix.single_apply, Ne.symm hj]
+    simp [Ne.symm hj]
 
 private theorem map_eDir (L : Lie K n →L[ℝ] ℂ) (τ : K →+* ℂ) (a b : Fin n) (z : ℂ) :
     L (eDir τ a b z) = (z.re : ℂ) * L (eDir τ a b 1) + (z.im : ℂ) * L (eDir τ a b Complex.I) := by

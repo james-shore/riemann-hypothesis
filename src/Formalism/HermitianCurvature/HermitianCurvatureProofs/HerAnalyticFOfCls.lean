@@ -21,7 +21,7 @@ theorem Ts_mem (σ : Site A) (hp : σ.p ∈ 𝒜) (hc : σ.c ∈ 𝒜) (hci : σ
   unfold Ts Formalism.YangianSpanCharacter.T.Tm
   fin_cases i <;> fin_cases j <;>
     simp only [Fin.zero_eta, Fin.mk_one, Matrix.of_apply, Matrix.cons_val', Matrix.cons_val_zero, Matrix.cons_val_one,
-      Matrix.head_cons, Matrix.empty_val', Matrix.cons_val_fin_one, Matrix.head_fin_const]
+      Matrix.empty_val', Matrix.cons_val_fin_one]
   · exact add_mem (algebraMap_mem 𝒜 Y) hp
   · exact neg_mem hc
   · exact hci

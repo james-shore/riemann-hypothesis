@@ -21,7 +21,7 @@ theorem relIndex_eq_of_map {G M : Type*} [Group G] [AddCommGroup M] (H G' : Subg
       (-(⟨φ a, h1 a a.2⟩ : P) + ⟨φ b, h1 b b.2⟩ ∈ N.addSubgroupOf P) := by
     intro a b
     rw [Subgroup.mem_subgroupOf, AddSubgroup.mem_addSubgroupOf]
-    simp only [Subgroup.coe_mul, Subgroup.coe_inv, AddSubgroup.coe_add, AddSubgroup.coe_neg, neg_add_eq_sub]
+    simp only [Subgroup.coe_mul, Subgroup.coe_inv, neg_add_eq_sub]
     exact h3 a a.2 b b.2
   let f : G' ⧸ H.subgroupOf G' → P ⧸ N.addSubgroupOf P :=
     Quotient.map' (fun x : G' => (⟨φ x, h1 x x.2⟩ : P)) (fun a b hab => by
@@ -116,7 +116,7 @@ theorem relIndex_nSub_eq {A₀ B₀ : Submodule (𝓞 K) V}
       have e2 : x⁻¹ ((((y : V →ₗ[K] V) - LinearMap.id) - ((x : V →ₗ[K] V) - LinearMap.id) :
           V →ₗ[K] V) v) =
           (x⁻¹ * y) v - v := by
-        simp only [LinearMap.sub_apply, LinearEquiv.coe_coe, LinearMap.id_apply, sub_sub_sub_cancel_right,
+        simp only [LinearMap.sub_apply, LinearEquiv.coe_coe, sub_sub_sub_cancel_right,
           map_sub, LinearEquiv.mul_apply]
         rw [← LinearEquiv.mul_apply x⁻¹ x, inv_mul_cancel]
         rfl
@@ -155,7 +155,7 @@ theorem relIndex_endL (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF :
     rw [LinearMap.toMatrix_apply b b, hba j, map_smul, h2, map_smul, Finsupp.smul_apply, map_sum,
       Finsupp.finset_sum_apply]
     simp only [map_smul, Basis.repr_self, Finsupp.smul_apply, Finsupp.single_apply, smul_eq_mul, mul_ite,
-      mul_one, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
     field_simp [heK i, hc0K]
   let φA : (V →ₗ[K] V) →+ Matrix (Fin (finrank K V)) (Fin (finrank K V)) K :=
     (LinearMap.toMatrix a a).toLinearMap.toAddMonoidHom

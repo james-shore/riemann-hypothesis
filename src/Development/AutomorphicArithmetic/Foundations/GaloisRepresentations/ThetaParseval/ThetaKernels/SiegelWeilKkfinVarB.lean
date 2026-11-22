@@ -63,7 +63,7 @@ theorem var_span'_k (R : _root_.PositivityTheory.SiegelWeilFormula.RD_k d) (w : 
   set e : ℂ := ((R.ε : ℤ) : ℂ)
   have he : e * e = 1 := by rcases Int.units_eq_one_or R.ε with h | h <;> simp [e, h]
   have hes : star e = e := by simp [e]
-  have hz : star R.ζ * R.ζ = 1 := by rcases R.hζ with ⟨-, h⟩ | ⟨-, h⟩ <;> rw [h] <;> simp [Complex.ext_iff]
+  have hz : star R.ζ * R.ζ = 1 := by rcases R.hζ with ⟨-, h⟩ | ⟨-, h⟩ <;> rw [h] <;> simp
   have hfi : fr * fi = 1 := by simp only [fr, fi]; rw [← Units.val_mul, mul_inv_cancel, Units.val_one]
   have hif : fi * fr = 1 := by simp only [fr, fi]; rw [← Units.val_mul, inv_mul_cancel, Units.val_one]
   set P := (((R.sg w : ℤ) : ℂ) * R.ζ) • (fr.map star * frᵀ)
@@ -94,12 +94,12 @@ theorem var_span'_k (R : _root_.PositivityTheory.SiegelWeilFormula.RD_k d) (w : 
     have hre : (e * trace ((d.cw w X)ᵀ * M)).re = e.re * (trace ((d.cw w X)ᵀ * M)).re := by
       rcases Int.units_eq_one_or R.ε with h | h <;> simp [e, h]
     rw [hre]
-    rcases Int.units_eq_one_or R.ε with h | h <;> simp [e, h] <;> ring
+    rcases Int.units_eq_one_or R.ε with h | h <;> simp [e, h]
   have hM : ∀ (c : ℂ) (x : Matrix (Fin d.m) (Fin d.n) ℂ),
       trace (xᵀ * Matrix.of fun b j => if j = k.2.1 then c * fi k.1 b else 0) = c * (fi * x) k.1 k.2.1 := fun c x => by
     simp only [trace, diag, mul_apply, transpose_apply, of_apply, mul_ite, mul_zero]
     rw [Finset.sum_eq_single k.2.1 (fun j _ hj => by simp [hj]) (by simp)]
-    simp only [if_pos rfl, Finset.mul_sum]
+    simp only [Finset.mul_sum]
     exact Finset.sum_congr rfl fun b _ => by simp only [if_true]; ring
   obtain ⟨Z₁, h1, e1⟩ := key (Matrix.of fun b j => if j = k.2.1 then 1 * fi k.1 b else 0)
   obtain ⟨Z₂, h2, e2⟩ := key (Matrix.of fun b j => if j = k.2.1 then (-Complex.I) * fi k.1 b else 0)

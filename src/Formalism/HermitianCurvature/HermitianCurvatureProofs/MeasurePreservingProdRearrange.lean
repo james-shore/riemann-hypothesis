@@ -63,7 +63,7 @@ theorem muSS_eq (S : B.RealPlaceData k r Wp Wq) (w : Equiv.Perm (Fin (r + 1)))
     have := h3.comp (h2.comp h1)
     simp only [OD.nuR]
     convert this using 1
-    all_goals first | rfl | (funext p; rfl)
+    all_goals first | rfl
   have hB : Measurable (Prod.map
       (Prod.map (id : Mt k r → Mt k r) (fun p : (G.UT (r + 1) → ℂ) × Mt k r =>
         Matrix.of.symm (C2.tauM k r S.z (G.upper p.1) * Matrix.of p.2)))

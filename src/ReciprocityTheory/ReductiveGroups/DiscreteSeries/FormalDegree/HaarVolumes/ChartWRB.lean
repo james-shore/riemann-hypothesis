@@ -26,11 +26,11 @@ def upML : (UCo N × TriCo N) →ₗ[ℝ] Matrix (Fin N) (Fin N) ℂ where
   map_add' p q := by
     ext a b
     simp only [upMat, Prod.snd_add, Pi.add_apply, Matrix.add_apply]
-    split_ifs <;> (try simp) <;> (try ring)
+    split_ifs <;> (try simp)
   map_smul' c p := by
     ext a b
     simp only [upMat, Prod.smul_snd, Pi.smul_apply, RingHom.id_apply, Matrix.smul_apply]
-    split_ifs <;> (try simp [Complex.real_smul]) <;> (try ring)
+    split_ifs <;> (try simp [Complex.real_smul])
 
 section Deriv
 

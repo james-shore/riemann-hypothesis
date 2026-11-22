@@ -80,7 +80,7 @@ theorem GlobalTheory.charPolyRat : ∀ (K : Type) [Field K] (A : AbVar K) (f : E
     rw [h]
     congr 2
     rw [Fin.sum_univ_two]
-    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons, neg_smul, one_smul]
+    simp only [Matrix.cons_val_zero, Matrix.cons_val_one, neg_smul, one_smul]
     rw [sub_eq_add_neg]
     congr 1
     exact zsmul_one (R := End A) n

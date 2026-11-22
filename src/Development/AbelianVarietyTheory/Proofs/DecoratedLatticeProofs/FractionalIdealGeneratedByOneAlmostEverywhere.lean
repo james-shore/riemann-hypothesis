@@ -21,8 +21,8 @@ theorem exists_nat_mem_mul_integral {E : Type} [Field E] [NumberField E]
   have hj0 : j ≠ 0 := by
     intro h; rw [h] at hj'; simp at hj'
     rcases hj' with h1 | h1
-    · first | exact ha0 h1 | exact ha0 h1.symm | exact haE h1 | exact haE h1.symm
-    · first | exact hx0 h1 | exact hx0 h1.symm
+    · first | exact ha0 h1
+    · first | exact hx0 h1
   set Nd := Ideal.absNorm (Ideal.span {a}) with hNd
   set Nj := Ideal.absNorm (Ideal.span {j}) with hNj
   have hNd0 : Nd ≠ 0 := by

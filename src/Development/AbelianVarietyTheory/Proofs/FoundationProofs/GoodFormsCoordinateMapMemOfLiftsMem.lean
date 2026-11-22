@@ -75,7 +75,7 @@ theorem e_j_eOp (hU : R.LUnif) (i : Fin D.R.m) (σ : D.what₂.LL →+* ℂ) (y 
     rw [GlobalTheory.LevelForms.twRep_apply, map_smulₛₗ, map_smul, (hU i σ).2.2, smul_smul, ← map_mul, Units.inv_mul, map_one,
       one_smul]
   rw [GlobalTheory.LevelForms.eOp_eq_sum, map_sum, map_sum]
-  simp only [map_smulₛₗ, map_smul, htw]
+  simp only [map_smulₛₗ, htw]
   refine MultilinearMap.ext fun v => ?_
   simp only [RealDat.eWf, gaL, RealDat.eC, LinearMap.sum_apply, LinearMap.smul_apply, MultilinearMap.sum_apply,
     MultilinearMap.smul_apply, postOn_apply, RingHom.id_apply]

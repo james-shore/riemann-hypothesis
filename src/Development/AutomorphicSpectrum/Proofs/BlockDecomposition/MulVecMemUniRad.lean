@@ -31,7 +31,7 @@ def uniRad (hW : W₁ ≤ W₂) : Subgroup (GL (Fin n) ℂ) where
     have e : a = uOf hW ⟨a.val - 1, ha⟩ := Units.ext (by rw [uOf_val']; simp)
     change (a⁻¹ : GL (Fin n) ℂ).val - 1 ∈ nilrad W₁ W₂
     rw [e, uOf_inv_val]
-    simp only [uOf_val', add_sub_cancel_left]
+    simp only
     rw [show (1 - (a.val - 1) + (a.val - 1) * (a.val - 1) - 1 : Matrix (Fin n) (Fin n) ℂ) =
         -(a.val - 1) + (a.val - 1) * (a.val - 1) by abel]
     exact (nilrad W₁ W₂).add_mem ((nilrad W₁ W₂).neg_mem ha) (GlobalTheory.CompanionTheory.LocVan.nil_mul_mem hW ha ha)

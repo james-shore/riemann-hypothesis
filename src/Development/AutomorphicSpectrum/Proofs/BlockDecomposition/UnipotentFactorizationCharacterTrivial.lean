@@ -19,7 +19,7 @@ theorem unip_cc (n : ℕ) (v : Fin n → k) (r c : Fin n) :
 theorem unip_lc (n : ℕ) (v : Fin n → k) (c : Fin n) :
     (unip k n (Multiplicative.ofAdd v)).val (Fin.last n) (Fin.castSucc c) = 0 := by
   show (1 + colMat k n v) _ _ = _
-  simp [colMat, Matrix.one_apply, Fin.castSucc_ne_last, (Fin.castSucc_ne_last _).symm]
+  simp [colMat, Fin.castSucc_ne_last, (Fin.castSucc_ne_last _).symm]
 
 theorem unip_ll (n : ℕ) (v : Fin n → k) :
     (unip k n (Multiplicative.ofAdd v)).val (Fin.last n) (Fin.last n) = 1 := by
@@ -121,7 +121,7 @@ theorem vec_last (i t : ℕ) (m : Mir k (i + (t + 1))) (d : Fin (t + 1) → k) :
   refine h.trans (Finset.sum_eq_zero fun y _ => ?_)
   have hm := (mem_Mir_iff k (m : GL (Fin (i + (t + 1) + 1)) k)).1 m.2
   rw [hm]
-  simp [eLast, Pi.single_apply, ePG_true_ne_last]
+  simp [eLast, ePG_true_ne_last]
 
 theorem vec_true (i t : ℕ) (h : HPG k i (t + 1)) (d : Fin (t + 1) → k) (y : Fin (t + 1)) :
     ((gEl i t (h : Mir k (i + (t + 1)))⁻¹).val.mulVec (uD i t d)) (Fin.natAdd (i + 1) y) =

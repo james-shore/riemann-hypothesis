@@ -28,7 +28,7 @@ theorem deriv_part (s : ℂ) (m : ℕ) (b : Bool) {ρ : ℕ} (I J : Fin ρ ↪ F
   | C r =>
     simp [phi, del]
   | add f g hf hg =>
-    simp only [map_add, Derivation.leibniz, mul_add, Finset.sum_add_distrib, hf, hg]
+    simp only [map_add, mul_add, Finset.sum_add_distrib, hf, hg]
   | mul_X f pq hf =>
     have e : phi b I J (f * X pq) = phi b I J f * yv b (J pq.1) (I pq.2) := by rw [map_mul, phi_X]
     have hdx : del p q (X pq : Pm (Polynomial ℂ) ρ) = X (pq.1, p) * X (q, pq.2) := by simp [del, mkDerivation_X]
@@ -61,7 +61,7 @@ theorem opH_phi (s : ℂ) (m : ℕ) (b : Bool) {ρ : ℕ} (I J : Fin ρ ↪ Fin 
     opH s m b (I p) (J q) (phi b I J f) = (-(cMn s b)) • phi b I J (opE (alMn m b) p q f) := by
   have h := deriv_part s m b I J p q f
   simp only [opH, LinearMap.add_apply, LinearMap.smul_apply, LinearMap.restrictScalars_apply, LinearMap.mulLeft_apply,
-    LinearMap.sum_apply, LinearMap.comp_apply, LinearMap.coe_restrictScalars, Derivation.coeFn_coe, opE, map_add, map_mul]
+    LinearMap.sum_apply, LinearMap.comp_apply, Derivation.coeFn_coe, opE, map_add, map_mul]
   have hs : (∑ a : Fin n, ∑ d : Fin n, (-(if b = true then Complex.I * s else -(Complex.I * s))) •
       (yv b a (I p) * yv b (J q) d * (pderiv (b, a, d)) (phi b I J f))) =
       (-(if b = true then Complex.I * s else -(Complex.I * s))) • ∑ a : Fin n, ∑ d : Fin n,

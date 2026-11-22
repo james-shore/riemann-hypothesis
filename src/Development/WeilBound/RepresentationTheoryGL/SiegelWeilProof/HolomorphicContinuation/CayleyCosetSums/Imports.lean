@@ -15,8 +15,7 @@ private theorem exists_unitary_mul_blockTriangular_of_inFlagDomain (b : M2 n) (h
   intro h0
   obtain ⟨x, hx0, hx⟩ := Matrix.exists_mulVec_eq_zero_iff.mpr h0
   have hr := congrArg (fun M => star x ⬝ᵥ (M *ᵥ x)) (v_rel b hb)
-  simp only [Matrix.sub_mulVec, ← Matrix.mulVec_mulVec, hx, Matrix.mulVec_zero, dotProduct_sub,
-    dotProduct_zero, Matrix.dotProduct_mulVec, ← Matrix.star_mulVec, star_zero, zero_dotProduct,
+  simp only [Matrix.sub_mulVec, ← Matrix.mulVec_mulVec, hx, Matrix.mulVec_zero, Matrix.dotProduct_mulVec, ← Matrix.star_mulVec, star_zero, zero_dotProduct,
     sub_zero, Matrix.zero_vecMul] at hr
   simp [Matrix.vecMul_smul] at hr
   have h2 : ∑ j, Complex.normSq (x j) = 0 := by

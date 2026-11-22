@@ -11,9 +11,7 @@ theorem exists_finset_detecting_of_finiteDimensional {X : Type} (W : Submodule �
   first
   | exact @_root_.GlobalTheory.FinitePointsDetect.finite_points_detect
   | exact _root_.GlobalTheory.FinitePointsDetect.finite_points_detect
-  | (apply _root_.GlobalTheory.FinitePointsDetect.finite_points_detect <;> assumption)
-  | (intros; apply _root_.GlobalTheory.FinitePointsDetect.finite_points_detect <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.FinitePointsDetect.finite_points_detect <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.FinitePointsDetect.finite_points_detect)
   | (intros; exact _root_.GlobalTheory.FinitePointsDetect.finite_points_detect ..)
 
 theorem exists_interpolation_of_finiteDimensional {X : Type} (W : Submodule ℂ (X → ℂ))

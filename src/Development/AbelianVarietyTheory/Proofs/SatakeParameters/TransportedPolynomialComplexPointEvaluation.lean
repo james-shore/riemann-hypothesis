@@ -62,7 +62,7 @@ theorem transpC_polDY_eval (D : D7) {N N' : ℕ} (hle : N ≤ N') (s : D.what₂
   refine congrArg (fun x => MvPolynomial.eval x Q) ?_
   funext k
   have hk : ((k.2.2 : Fin N) : ℕ) < N' := lt_of_lt_of_le k.2.2.2 hle
-  simp [dfr, Matrix.mul_apply, Finset.mul_sum, hk]
+  simp [Matrix.mul_apply, Finset.mul_sum, hk]
   refine Finset.sum_congr rfl fun b _ => ?_
   rw [mul_assoc, mul_comm (f' k.1 b _)]
   rfl

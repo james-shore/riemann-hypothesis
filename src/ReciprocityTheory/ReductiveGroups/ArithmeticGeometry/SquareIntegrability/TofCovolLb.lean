@@ -48,8 +48,6 @@ theorem tof_covol_lb [IsCMField E] {X : PT E} {DF : ℕ} (P : Par X DF) {I : Sub
       ← Matrix.det_mul, hmat]
     first
       | exact (Int.cast_det Gz).symm
-      | exact (RingHom.map_det (Int.castRingHom ℝ) Gz).symm
-      | simp [Int.cast_det]
   have hGz : Gz.det ≠ 0 := by
     intro h0
     have h00 : ob.toBasis.det u' * ob.toBasis.det a = 0 := by rw [hdetG, h0, Int.cast_zero]

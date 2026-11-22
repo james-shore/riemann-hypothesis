@@ -69,7 +69,7 @@ theorem exists_orthogonalSum_testGrid_of_levelChoiceGrid {D : D7} (A B : GlobalT
     show B.V.hT _ _ = _
     rw [hT_cols, d.gram]
     simp only [GlobalTheory.ChiGrid.antiDiagonalSignGramMatrix]
-    split_ifs <;> first | rfl | (exfalso; omega) | (simp_all [Fin.ext_iff]; omega) | simp_all
+    split_ifs <;> first | rfl | (exfalso; omega)
   ·
     have key : ∀ (x : A.V.V) (t : Fin c → D.host.E),
         B.V.frame.equivFun (d.ι x + ∑ p, t p • B.V.frame.equivFun.symm (fun k => d.a k p)) =

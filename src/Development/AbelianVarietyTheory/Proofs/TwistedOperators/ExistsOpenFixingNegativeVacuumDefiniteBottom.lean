@@ -102,7 +102,7 @@ theorem exists_open_fix_vac_neg : ∀ {D : D7} {T : Type} {L : LevCh D T} {sc : 
   · show GlobalTheory.Member.FinCong (neg A) (N₁ * n.factorial) ((GlobalTheory.Grid.ofSgn true A).symm k)
     have h1 : finHom (neg A) ((GlobalTheory.Grid.ofSgn true A).symm k) = 1 := hk
     intro z hz
-    refine ⟨0, by first | exact zero_mem _ | exact Submodule.zero_mem _ | exact AddSubgroup.zero_mem _ | simp [Formalism.L2.Pj.latHat], ?_⟩
+    refine ⟨0, by first | exact zero_mem _ | simp [Formalism.L2.Pj.latHat], ?_⟩
     rw [h1, Units.val_one, Matrix.one_mulVec, sub_self]
     exact (nsmul_zero _).symm
   · have h1 := hn ((GlobalTheory.Grid.ofSgn true A).symm k) hk hU

@@ -127,6 +127,5 @@ theorem biadditive_first_variable {F be : MvPowerSeries (Fin 2) (K0 p)} (hF : Is
   rw [key]
   first
     | exact equiv_zero_of_integralExp p (integralExp_param_of_equiv_zero p h.add1)
-    | exact equiv_zero_of_integralExp (integralExp_param_of_equiv_zero p h.add1)
 
 end Formalism.MainNotions.FormalGroupSystem.Pf

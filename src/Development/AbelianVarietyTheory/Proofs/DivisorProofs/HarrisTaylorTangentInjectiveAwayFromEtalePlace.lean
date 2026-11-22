@@ -161,7 +161,7 @@ theorem core_inj {p : ℕ} [Fact p.Prime] (D : Datum p) {R : Type} [CommRing R] 
     simp only [map_add, map_mul, map_sub, map_one, Module.End.mul_apply, LinearMap.add_apply, LinearMap.sub_apply,
       Module.End.one_apply, L_int, L_nat, k2] at h
     rw [← hTω, e2, hr2, sub_self] at h
-    simp only [hp, zero_smul, map_zero, zero_add, add_zero] at h
+    simp only [hp, zero_smul, map_zero, add_zero] at h
     exact h.symm
   rw [hv12, z1, z2, add_zero]
 

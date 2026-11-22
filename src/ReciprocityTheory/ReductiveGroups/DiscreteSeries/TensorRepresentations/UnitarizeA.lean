@@ -144,7 +144,7 @@ theorem pr_rt (a b : G → ℂ) (g : G) :
 theorem pr_shift (a b : G → ℂ) (g : G) :
     pr μ (fun x => a (x * g)) b = pr μ a (fun x => b (x * g⁻¹)) := by
   rw [← pr_rt (fun x => a (x * g)) b g⁻¹]
-  simp only [inv_mul_cancel_right, mul_inv_cancel_right]
+  simp only [inv_mul_cancel_right]
 
 end Invariant
 
@@ -212,7 +212,7 @@ theorem small_zero {D : ℂ} {C : ℝ} (h : ∀ t : ℝ, 0 < t → t ≤ 1 → �
   have h2 := h _ ht0 ht1
   have h3 : min 1 (‖D‖ / (2 * C)) * C ≤ ‖D‖ / 2 := by
     calc min 1 (‖D‖ / (2 * C)) * C ≤ ‖D‖ / (2 * C) * C := mul_le_mul_of_nonneg_right ht2 hC.le
-      _ = ‖D‖ / 2 := by field_simp <;> ring
+      _ = ‖D‖ / 2 := by field_simp
   linarith
 
 private theorem negder_lemma {φ : ℝ → G} {a a' : G → ℂ}

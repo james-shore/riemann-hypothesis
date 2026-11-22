@@ -121,7 +121,7 @@ theorem isotropicNormalFormFull_statement : IsotropicNormalFormFull := by
     simp only [yb]
     by_cases hW : m + 1 ≤ p.val ∧ p.val ≤ m + 1 + k
     · have : p ≠ eI k (m + 1) i := by intro h; rw [h] at hW; simp [eI] at hW; omega
-      simp [hW, bvec, Pi.single_apply, this]
+      simp [hW, bvec, this]
     · rw [if_neg hW, zero_add]
       by_cases hX : p.val < m + 1
       · by_cases hpi : p.val = i.val
@@ -130,9 +130,9 @@ theorem isotropicNormalFormFull_statement : IsotropicNormalFormFull := by
         · have hpe : p = eI k (m + 1) ⟨p.val, hX⟩ := by ext; simp [eI]
           have hne : (⟨p.val, hX⟩ : Fin (m + 1)) ≠ i := by intro h; apply hpi; rw [← h]
           have hne2 : p ≠ eI k (m + 1) i := by intro h; apply hpi; rw [h]; simp [eI]
-          rw [hpe, u_X _ hne]; simp [bvec, Pi.single_apply, ← hpe, hne2]
+          rw [hpe, u_X _ hne]; simp [bvec, ← hpe, hne2]
       · have hne2 : p ≠ eI k (m + 1) i := by intro h; apply hX; rw [h]; simp only [eI]; omega
-        rw [u_star p (by omega)]; simp [bvec, Pi.single_apply, hne2]
+        rw [u_star p (by omega)]; simp [bvec, hne2]
   have tau_W : ∀ l : Fin (2 * (m + 1) + k + 1), m + 1 ≤ l.val ∧ l.val ≤ m + 1 + k → WeylGroupFacts.tau k (m + 1) l = l := by
     intro l hl; ext; rw [tau_val]; split_ifs <;> omega
   have tau_notW : ∀ l : Fin (2 * (m + 1) + k + 1), ¬ (m + 1 ≤ l.val ∧ l.val ≤ m + 1 + k) →
@@ -231,7 +231,7 @@ theorem isotropicNormalFormFull_statement : IsotropicNormalFormFull := by
             simp; ring
           · rw [hv, if_neg hpi]
             have h1 : q ≠ esI k (m + 1) ⟨p.val, hp⟩ := by intro h; rw [h] at hW; simp [esI] at hW; omega
-            simp [bvec, Pi.single_apply, h1]
+            simp [bvec, h1]
         · have h0 : yb q = 0 := hyb q (by omega)
           rw [h0, mul_zero]
           split_ifs
@@ -244,10 +244,10 @@ theorem isotropicNormalFormFull_statement : IsotropicNormalFormFull := by
         have : p = eI k (m + 1) i := by ext; simp [eI, hpi]
         simp [bvec, this]
       · have : p ≠ eI k (m + 1) i := by intro h; apply hpi; rw [h]; simp [eI]
-        simp [hpi, bvec, Pi.single_apply, this]
+        simp [hpi, bvec, this]
     · have : p ≠ eI k (m + 1) i := by intro h; apply hp; rw [h]; simp only [eI]; omega
       rw [Finset.sum_eq_zero]
-      · simp [bvec, Pi.single_apply, this]
+      · simp [bvec, this]
       · intro q _
         by_cases hW : m + 1 ≤ q.val ∧ q.val ≤ m + 1 + k
         · rw [NFOne.P_rowWS_colW k (m + 1) (m + 1) V2 p q (by omega) hW.2, zero_mul]

@@ -42,7 +42,7 @@ theorem det_traceGram_blockMatrix {E E' : Type} [Field E] [Field E'] [Algebra E 
     have hmat : LinearMap.toMatrix bt bt ((Matrix.toLin' H).restrictScalars E) = Λ := by
       ext ⟨k, i⟩ ⟨l, j⟩
       simp [LinearMap.toMatrix_apply, bt, Module.Basis.smulTower_apply, Module.Basis.smulTower_repr, hΛ,
-        Algebra.leftMulMatrix_eq_repr_mul, Matrix.mulVec, dotProduct, Pi.single_apply]
+        Algebra.leftMulMatrix_eq_repr_mul]
       rw [mul_comm]
     rw [← hmat, LinearMap.det_toMatrix, LinearMap.det_restrictScalars, LinearMap.det_toLin']
   rw [hM, det_mul, det_mul, det_blockDiagonal, det_blockDiagonal, hΛdet, ← hDC, det_mul]

@@ -35,7 +35,7 @@ theorem flagStep_self {r : ℕ} (b : Fin r → Li) : flagStep Ω b r = Submodule
     rw [← Set.image_univ]
     congr 1
     ext k
-    simp [k.2]
+    simp
   rw [flagStep, this]
 
 theorem spMap_dualMap_id : spMap (dualMap (RingHom.id Ω)) = 𝟙 (Sp (DualNumber Ω)) := by

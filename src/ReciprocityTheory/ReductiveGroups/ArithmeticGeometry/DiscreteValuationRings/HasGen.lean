@@ -91,8 +91,6 @@ lemma HasGen.neg {F : (Y ⟶ X) →₀ ℤ} (hF : HasGen L F) : HasGen L (-F) :=
     have hgg : (LB.LinComb L φ (fun k => -ε k)).g i j = ((LB.LinComb L φ ε).g i j)⁻¹ := by
       first
         | (simp only [LB.LinComb, zpow_neg, Finset.prod_inv_distrib]; rfl)
-        | (simp [LB.LinComb, zpow_neg, Finset.prod_inv_distrib]; rfl)
-        | (unfold LB.LinComb; simp [zpow_neg, Finset.prod_inv_distrib])
     have hij := hg i j
     dsimp only
     rw [hgg]

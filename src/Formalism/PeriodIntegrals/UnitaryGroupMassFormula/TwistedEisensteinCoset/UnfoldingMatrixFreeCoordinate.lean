@@ -29,7 +29,7 @@ theorem gh_decomp {N : ℕ} (v : Fin N → E) : v = ∑ m : Fin N, v m • eN E 
 theorem gh_apply {M N : ℕ} (f : (Fin M → E) →ₗ[E] (Fin N → E)) (v : Fin M → E) (l : Fin N) :
     f v l = ∑ m : Fin M, v m * f (eN E M m.1) l := by
   conv_lhs => rw [gh_decomp v]
-  simp [map_sum, Finset.sum_apply, mul_comm]
+  simp [map_sum, Finset.sum_apply]
 
 theorem gh_atN_add {N : ℕ} (v w : Fin N → E) (i : ℕ) : atN (v + w) i = atN v i + atN w i := by
   unfold atN

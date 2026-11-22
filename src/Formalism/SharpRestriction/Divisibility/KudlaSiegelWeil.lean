@@ -264,7 +264,7 @@ theorem one_mem_of_coprime {R : Type*} [CommRing R] (P : Ideal R) {m n : ℕ} (h
 
 theorem exists_prime_mem {R : Type*} [CommRing R] (P : Ideal R) [hP : P.IsPrime] (n : ℕ) :
     n ≠ 0 → (n : R) ∈ P → ∃ p : ℕ, p.Prime ∧ p ∣ n ∧ (p : R) ∈ P := by
-  first | exact Bl.general_b_fact_right_variant.goal1 .. | (apply Bl.general_b_fact_right_variant.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_right_variant.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_variant.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_right_variant.goal1 <;> assumption) | (apply @Bl.general_b_fact_right_variant.goal1 <;> first | assumption | infer_instance) | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P hP n ‹_› ‹_› | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P hP n ‹_› | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P hP n | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P hP | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› | exact @Bl.general_b_fact_right_variant.goal1 R
+  first | exact Bl.general_b_fact_right_variant.goal1 .. | (apply Bl.general_b_fact_right_variant.goal1) | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P hP n ‹_› ‹_› | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P hP n ‹_› | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P hP n | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P hP | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› P | exact @Bl.general_b_fact_right_variant.goal1 R ‹_› | exact @Bl.general_b_fact_right_variant.goal1 R
 
 theorem not_fixed_condN (D : D7) (w : FinE D) (p : ℕ) (hpp : p.Prime) (hp : p ∣ D.host.condN)
     (hpw : (p : 𝓞 D.host.E) ∈ w.asIdeal) : w.asIdeal.comap (sgO D) ≠ w.asIdeal := by

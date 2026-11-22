@@ -16,7 +16,7 @@ theorem fco_gram (hT : 0 < T) (hT' : 0 < T') (a a' : Fin (r + 1)) :
     hco T' (fco T T' a) (fco T T' a') = if a = Fin.last r ∧ a' = Fin.last r then -((T : ℝ) : ℂ) else 0 := by
   have hs : ((Real.sqrt (T / T') : ℝ) : ℂ) * conj ((Real.sqrt (T / T') : ℝ) : ℂ) = ((T / T' : ℝ) : ℂ) := by
     rw [Complex.conj_ofReal, ← Complex.ofReal_mul, Real.mul_self_sqrt (div_pos hT hT').le]
-  simp only [hco, fco, Pi.zero_apply, map_zero, mul_zero, zero_mul, Finset.sum_const_zero, add_zero, zero_add]
+  simp only [hco, fco, Pi.zero_apply, map_zero, mul_zero, zero_mul, Finset.sum_const_zero, add_zero]
   by_cases ha : a = Fin.last r <;> by_cases ha' : a' = Fin.last r
   · subst ha ha'
     simp only [if_true, and_self]
@@ -43,7 +43,7 @@ theorem dual_coordinates_kronecker (hT : 0 < T) (hT' : 0 < T') (hdet : Zm.det �
   simp only [y0, hco_sum_left, hco_smul_left, fco_xco T T' Zm hT hT' hdet, Matrix.conjTranspose_apply]
   have hu : IsUnit Zm.det := isUnit_iff_ne_zero.mpr hdet
   have h := congrArg (fun M => conj (M b.castSucc c)) (Matrix.nonsing_inv_mul Zm hu)
-  simp only [Matrix.mul_apply, map_sum, map_mul, Matrix.one_apply, Complex.star_def] at h
+  simp only [Matrix.mul_apply, map_sum, map_mul, Matrix.one_apply] at h
   simp only [Complex.star_def]
   rw [h]
   by_cases hc : c = b.castSucc
@@ -62,14 +62,13 @@ theorem xco_ysco (hT : 0 < T) (hT' : 0 < T') (hdet : Zm.det ≠ 0) (hG : 0 < gPo
 theorem ysco_ysco (hT : 0 < T) (hT' : 0 < T') (hdet : Zm.det ≠ 0) (hG : 0 < gPoly (T * T') Zm) (b e : Fin r) :
     hco T' (ysco T T' Zm b) (ysco T T' Zm e) = 0 := by
   have hx : ∀ (c : Fin r) (d : Fin r), hco T' (xco T T' Zm c.castSucc) (y0 T T' Zm d) = if c = d then 1 else 0 := by
-    intro c d; rw [hco_symm, dual_coordinates_kronecker T T' Zm hT hT' hdet]; simp [Fin.castSucc_inj, eq_comm]
+    intro c d; rw [hco_symm, dual_coordinates_kronecker T T' Zm hT hT' hdet]; simp [Fin.castSucc_inj]
   have hy : ∀ (c : Fin r) (d : Fin r), hco T' (y0 T T' Zm d) (xco T T' Zm c.castSucc) = if c = d then 1 else 0 := by
     intro c d; rw [dual_coordinates_kronecker T T' Zm hT hT' hdet]; simp [Fin.castSucc_inj]
   have hxx : ∀ (c d : Fin r), hco T' (xco T T' Zm c.castSucc) (xco T T' Zm d.castSucc) = 0 := by
     intro c d; rw [xco_gram T T' Zm hT hT' hdet hG, Ap_cs]
   simp only [ysco, hco_sub_left, hco_sub_right, hco_smul_left, hco_smul_right, hco_sum_left, hco_sum_right, hx, hy,
-    hxx, mul_zero, Finset.sum_const_zero, mul_ite, mul_one, Finset.sum_ite_eq', Finset.mem_univ, if_true,
-    Finset.sum_ite_eq]
+    hxx, mul_zero, Finset.sum_const_zero, mul_ite, mul_one, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   simp only [sub_zero, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   rw [← hco_symm T' (y0 T T' Zm e) (y0 T T' Zm b)]
   simp only [map_div₀, map_one, map_ofNat]
@@ -88,7 +87,7 @@ theorem cofco_xco (hT : 0 < T) (hT' : 0 < T') (hdet : Zm.det ≠ 0) (b : Fin (r 
 theorem cofco_self (hT : 0 < T) (hT' : 0 < T') :
     hco T' (cofco T T' Zm) (cofco T T' Zm) = -((T : ℝ) : ℂ) * ((Complex.normSq (kap Zm (Fin.last r)) : ℝ) : ℂ) := by
   simp only [cofco, hco_sum_left, hco_sum_right, hco_smul_left, hco_smul_right, fco_gram T T' hT hT']
-  simp only [mul_ite, mul_zero, Finset.sum_ite_irrel, Finset.sum_const_zero]
+  simp only [mul_ite, mul_zero]
   rw [Finset.sum_eq_single (Fin.last r), Finset.sum_eq_single (Fin.last r)]
   · simp only [and_self, if_true, kap, Complex.conj_conj, Complex.normSq_eq_conj_mul_self]; ring
   · intro a _ ha; simp [ha]
@@ -103,20 +102,19 @@ theorem pco_xco (hT : 0 < T) (hT' : 0 < T') (hdet : Zm.det ≠ 0) (hG : 0 < gPol
     mul_zero, Finset.sum_const_zero, sub_zero, ysco_xco T T' Zm hT hT' hdet hG]
   induction d using Fin.lastCases with
   | last =>
-    simp only [Ap_last, if_false]
-    simp only [mul_ite, mul_one, mul_zero, Finset.sum_const_zero, sub_zero]
+    simp only [Ap_last]
+    simp only [mul_ite, mul_one, mul_zero]
     have : ∀ b : Fin r, ¬ (Fin.last r = b.castSucc) := fun b h => Fin.castSucc_ne_last b h.symm
     simp only [this, if_false, Finset.sum_const_zero, sub_zero]
     field_simp; ring
   | cast d =>
-    simp only [Ap_cs', mul_zero, add_zero, mul_ite, mul_one, Fin.castSucc_inj, Finset.sum_ite_eq',
-      Finset.sum_ite_eq, Finset.mem_univ, if_true, sub_self]
+    simp only [Ap_cs', mul_zero, add_zero, mul_ite, mul_one, Fin.castSucc_inj, Finset.sum_ite_eq, Finset.mem_univ, if_true, sub_self]
 
 theorem pco_ysco (hT : 0 < T) (hT' : 0 < T') (hdet : Zm.det ≠ 0) (hG : 0 < gPoly (T * T') Zm) (e : Fin r) :
     hco T' (pco T T' Zm) (ysco T T' Zm e) = 0 := by
   simp only [pco, hco_add_left, hco_sub_left, hco_smul_left, hco_sum_left, xco_ysco T T' Zm hT hT' hdet hG,
     ysco_ysco T T' Zm hT hT' hdet hG, mul_zero, Finset.sum_const_zero, sub_zero, mul_ite, mul_one,
-    Fin.castSucc_inj, Finset.sum_ite_eq, Finset.mem_univ, if_true, if_false, add_zero]
+    Fin.castSucc_inj]
   simp [Fin.castSucc_ne_last, eq_comm]
 
 theorem pco_self (hT : 0 < T) (hT' : 0 < T') (hdet : Zm.det ≠ 0) (hG : 0 < gPoly (T * T') Zm) :
@@ -254,15 +252,14 @@ theorem secM_spec (S : B.RealPlaceData k r Wp Wq) (ν' : Fin (2 * r + k + 1) →
     all_goals try fin_cases i
     all_goals try fin_cases j
     all_goals simp only [hYdef, Yv, uB, Fin.zero_eta, Fin.mk_one, Matrix.cons_val_zero, Matrix.cons_val_one,
-      Matrix.head_cons, hcv]
+      hcv]
     all_goals simp [hxx, hxy, hyx, hyy, hnx, hny, hnn, hxn, hyn, Ap, Fin.castSucc_inj, Fin.castSucc_ne_last,
       h_w_ee hz', h_w_ee hν, h_w_es hz', h_w_es hν, h_ee_w hz', h_ee_w hν, h_es_w hz', h_es_w hν, hzz, hνz,
-      hνν, hzν, hs2]
+      hνν, hzν]
     all_goals first
       | (intro h; exact Fin.castSucc_ne_last _ h.symm)
       | (split_ifs <;> simp_all)
       | (exact_mod_cast hs2.symm)
-      | (simp only [hT'def, ← hs2]; push_cast; ring)
   have h4 : ∀ x, (∀ j, herm (Hpk k r) x (uB S.z' ν' j) = 0) → ∀ i, herm (Hpk k r) x (Y i) = 0 := by
     intro x hx i
     have he : ∀ a, herm (Hpk k r) x (ee k r a) = 0 := fun a => hx (Sum.inl (Sum.inl a))
@@ -306,9 +303,9 @@ theorem secM_spec (S : B.RealPlaceData k r Wp Wq) (ν' : Fin (2 * r + k + 1) →
     rcases cast_or_last a with ha | ⟨a', rfl⟩
     · subst ha
       rw [fvec_lastI, hsq]
-      simp [cvec, fco, Fin.castSucc_ne_last, (Fin.castSucc_ne_last _).symm]
+      simp [cvec, fco, (Fin.castSucc_ne_last _).symm]
     · rw [fvec_cs]
-      simp [cvec, fco, Fin.castSucc_ne_last, Fin.castSucc_inj, Pi.single_apply, ite_smul]
+      simp [cvec, fco, Fin.castSucc_ne_last, Fin.castSucc_inj, ite_smul]
   have hZ : Zhat k r S.z S.z' (m₀ * σ) = Zm := by
     ext a b
     rw [reduced_matrix_of_stabilizer m₀ σ hmU hme μ hμ.ne' hmz a b, hσf, hff, hcv, xco_fco T T' Zm hT hT' hdet]
@@ -356,7 +353,7 @@ theorem secM_spec (S : B.RealPlaceData k r Wp Wq) (ν' : Fin (2 * r + k + 1) →
         rw [nco, smul_smul, div_mul_div_comm, mul_comm (ph Zm), div_self (mul_ne_zero hsG0 hph), one_smul]
       simp only [hddef]
       rw [hn, pco]
-      simp only [neg_smul, neg_div]
+      simp only [neg_smul]
       abel
     have hinv : (m₀ * σ)⁻¹ *ᵥ D.cofL S (m₀ * σ) = cvec k S.z' ν' d := by
       have : (m₀ * σ) *ᵥ cvec k S.z' ν' d = D.cofL S (m₀ * σ) := by
@@ -373,7 +370,7 @@ theorem secM_spec (S : B.RealPlaceData k r Wp Wq) (ν' : Fin (2 * r + k + 1) →
     rw [hph']
     push_cast
     field_simp
-    first | exact hnorm.symm | linear_combination -hnorm | linear_combination (-(((sGT' T T' Zm : ℝ) : ℂ))) * hnorm
+    first | exact hnorm.symm
   ·
     intro u hu
     set v := m₀⁻¹ *ᵥ u with hvdef

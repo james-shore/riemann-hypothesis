@@ -222,7 +222,6 @@ theorem gauss_sign (D : D7) (hG : GaussSign D) {V : Type} [AddCommGroup V] [Modu
   · intro x
     refine ⟨fun c => ex (s * (H x (T c x)).re - (H (C x) (T c x)).im), fun b c => ?_, fun b => ?_⟩
     · rw [← ex_add]
-      congr 1
       simp only [hTa, map_add, Complex.add_im, Complex.add_re]
       ring_nf
     · simp only [ψ, hsm, hcomm, hTH]

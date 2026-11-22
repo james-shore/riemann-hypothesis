@@ -73,7 +73,6 @@ theorem inv_mul_wSer : uPow (-3) * toL (xS W) * toL (wSer W) = 1 := by
     rw [show (-3 + 3 : ℤ) = 0 by norm_num]
     first
       | rfl
-      | simp
   have e2 : toL (wU W) * toL (xS W) = 1 := by
     rw [← map_mul, CurveSer.wU_mul_xS, map_one]
   rw [CurveSer.wSer_eq W, map_mul]

@@ -56,13 +56,11 @@ theorem evR_add (f g : Rul Xo c) {S : Type} [CommRing S] [Algebra c.F S] (y : Fr
     evR Xo c (f + g) y = evR Xo c f y + evR Xo c g y := by
   first
   | exact evalAt_add (K := c.F) (fun S _ _ => FrPt Xo c S) (fun φ y z => FrMap φ y z) f g y
-  | simp [evR, map_add]
 
 theorem evR_smul (a : c.F) (f : Rul Xo c) {S : Type} [CommRing S] [Algebra c.F S] (y : FrPt Xo c S) :
     evR Xo c (a • f) y = algebraMap c.F S a * evR Xo c f y := by
   first
   | exact evalAt_smul (K := c.F) (fun S _ _ => FrPt Xo c S) (fun φ y z => FrMap φ y z) a f y
-  | simp [evR, Algebra.smul_def]
 
 end Formalism.L2.Pj.QAt.LinOfPoly
 

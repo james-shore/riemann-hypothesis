@@ -270,7 +270,7 @@ theorem C_dvd_trace_of_jacobian : ∀ (V : Type) [CommRing V] [IsDomain V] [IsDi
     have : pderiv _ j (MvPowerSeries.map (C : V →+* MvPowerSeries σ V) (φ i) - C (X i))
         = MvPowerSeries.map C (pderiv V j (φ i)) := by
       ext m : 1
-      simp [coeff_pderiv, coeff_C]
+      simp [coeff_pderiv]
     simp only [RingHom.mapMatrix_apply, Matrix.map_apply, Matrix.of_apply]
     rw [this, hθm]
 

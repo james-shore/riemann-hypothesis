@@ -13,4 +13,4 @@ theorem _root_.GlobalTheory.T.eventually_zmodTorsorGaloisProductMap_bijective_co
       letI : Algebra (F.obj j) (F.obj k) := (F.map (f₀ ≫ f)).hom.toAlgebra;
       Function.Bijective (GlobalTheory.TorsorColim.prodMapOf (F.obj k) (F.obj k ⊗[F.obj j] A) q
         (GlobalTheory.TorsorColim.bcAct (F.obj k) actA)) := by
-  first | (exact @GlobalTheory.TorsorColim.eventually_prodMapOf_bijective) | (exact GlobalTheory.TorsorColim.eventually_prodMapOf_bijective) | (intros; apply GlobalTheory.TorsorColim.eventually_prodMapOf_bijective  <;> assumption)
+  first | (exact @GlobalTheory.TorsorColim.eventually_prodMapOf_bijective)

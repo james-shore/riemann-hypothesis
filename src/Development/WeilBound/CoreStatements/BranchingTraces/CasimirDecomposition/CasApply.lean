@@ -76,10 +76,10 @@ theorem L_apply (U : URep k r) (a b : Fin (2 * r + k + 1)) (x : M (vr k r true, 
   simp only [L, h, LinearMap.add_apply, Pi.add_apply, dOp, mAct, LinearMap.compLeft_apply, Function.comp_apply,
     LinearMap.pi_apply, LinearMap.sum_apply, LinearMap.smul_apply, LinearMap.proj_apply, sub_eq_add_neg]
   congr 1
-  rw [Finset.sum_eq_single a (fun d _ hd => by simp [Matrix.single_apply, hd.symm]) (by simp)]
+  rw [Finset.sum_eq_single a (fun d _ hd => by simp [hd.symm]) (by simp)]
   by_cases hc : c = b
   · simp [hc]
-  · simp [Matrix.single_apply, hc, Ne.symm hc]
+  · simp [hc, Ne.symm hc]
 
 theorem cas_apply (U : URep k r) (x : M (vr k r true, U)) (c : Fin (2 * r + k + 1)) :
     cas (vr k r true, U) x c = casR (vr k r true, U) x c - (2 : ℂ) • kOp U x c + ((2 * r + k + 1 : ℕ) : ℂ) • x c := by

@@ -277,7 +277,6 @@ theorem isCx_of_isMul {x : KeyIn R} {n l d : ℕ} {s : Fin x.P.g → RR x n} {z 
     refine h1.symm.trans ?_
     have h2 : valT (T := R) (z a).left (x.P.L.U (ch a)) (fam x s i (ch a)) = 0 := hz.2.1 a i
     rw [valT_eq _ _ (hz.1 a)] at h2
-    beta_reduce
     rw [valT_eq _ _ (hz.1 a), map_mul, h2, zero_mul]
     rfl
 

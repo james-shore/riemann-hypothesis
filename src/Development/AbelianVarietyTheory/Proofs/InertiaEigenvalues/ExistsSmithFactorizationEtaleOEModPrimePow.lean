@@ -66,6 +66,6 @@ theorem main : ∀ (l : ℕ) [Fact l.Prime] (K : FinExt l) (bk : BK K) (d d' n :
   refine ⟨Q * U.submatrix id (fun k => (e k : Fin d')), Uinv.submatrix (fun k => (e k : Fin d')) id,
     U.submatrix id (fun k => (e k : Fin d')), hunit, fun i j => hUi _ _, fun i j => hU _ _, hdiv, ?_⟩
   intro i j
-  simp [Matrix.mul_submatrix_one, Matrix.submatrix]
+  simp [Matrix.submatrix]
 
 end GlobalTheory.SmithQuot

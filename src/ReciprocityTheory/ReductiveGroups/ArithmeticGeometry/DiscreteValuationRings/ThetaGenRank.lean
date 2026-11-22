@@ -35,7 +35,6 @@ private lemma exists_coh_extending_of_mem_wchart (hL : L.IsLB) (φ : K → (Y �
     intro T _ ψ i
     first
     | exact Set.mem_iInter
-    | simp [LB.wchart]
   have hcov : ∀ x : X, ∃ i, x ∈ L.U i := by
     intro x
     have hx : x ∈ (⨆ i, L.U i) := by rw [hL.cover]; trivial
@@ -73,25 +72,17 @@ private lemma sections_eq_of_locally_rs_eq {Z : Scheme.{0}} {W : Z.Opens} (a b :
      have hb := congrArg (fun f => f.hom b) (Z.presheaf.germ_res (homOfLE hV) z hzV)
      have hc := congrArg (Z.presheaf.germ V z hzV).hom he
      exact ha.symm.trans (hc.trans hb))
-  | (choose V hV hzV he using h
-     exact TopCat.Sheaf.eq_of_locally_eq' Z.sheaf (fun z : W => V z.1 z.2) W
-       (fun z => homOfLE (hV z.1 z.2))
-       (by intro z hz; exact TopologicalSpace.Opens.mem_iSup.mpr ⟨⟨z, hz⟩, hzV z hz⟩) a b
-       (fun z => he z.1 z.2))
 
 lemma rs_resTop {Z : Scheme.{0}} {U V : Z.Opens} (h : V ≤ U) (c : Γ(Z, ⊤)) :
     rs h (resTop U c) = resTop V c := by
   first
   | rfl
   | (simp only [rs, resTop]; rw [← RingHom.comp_apply, ← CommRingCat.hom_comp, ← Functor.map_comp]; rfl)
-  | (unfold rs; rw [← RingHom.comp_apply, ← CommRingCat.hom_comp, ← Functor.map_comp]; rfl)
-  | (simp [rs, resTop, ← Functor.map_comp])
 
 private lemma map_mul_rs {Z : Scheme.{0}} {U V : Z.Opens} (h : V ≤ U) (a b : Γ(Z, U)) :
     rs h (a * b) = rs h a * rs h b := by
   first
   | exact map_mul _ a b
-  | simp [rs]
 
 theorem secCorr_scal (hL : L.IsLB) (φ : K → (Y ⟶ X)) (ε : K → ℤ) (φ' : K' → (Y ⟶ X)) (ε' : K' → ℤ)
     {s₁ s₂ : LB.Sec (LB.LinComb L φ ε)} {x₁ x₂ : LB.Sec (LB.LinComb L φ' ε')}
@@ -102,7 +93,6 @@ theorem secCorr_scal (hL : L.IsLB) (φ : K → (Y ⟶ X)) (ε : K → ℤ) (φ' 
     intro z
     first
     | exact Set.mem_iInter.mpr (fun e => e.elim)
-    | simp [LB.wchart]
   have stepA : ∀ j : K → L.ι, LB.Coh L φ j → resTop _ c * s₁.f j = resTop _ d * s₂.f j := by
     intro j hj
     apply sections_eq_of_locally_rs_eq
@@ -112,7 +102,6 @@ theorem secCorr_scal (hL : L.IsLB) (φ : K → (Y ⟶ X)) (ε : K → ℤ) (φ' 
     refine ⟨LB.wchart L φ j ⊓ LB.wchart L φ' j', inf_le_left, ?_, ?_⟩
     · first
       | exact ⟨hz, hzj'⟩
-      | exact TopologicalSpace.Opens.mem_inf.mpr ⟨hz, hzj'⟩
     · have e1 := h1 j j' hj hj' hcomp
       have e2 := h2 j j' hj hj' hcomp
       have e3 := congrArg (rs (inf_le_right : LB.wchart L φ j ⊓ LB.wchart L φ' j' ≤ _)) (hx j')
@@ -131,7 +120,6 @@ theorem secCorr_scal (hL : L.IsLB) (φ : K → (Y ⟶ X)) (ε : K → ℤ) (φ' 
   refine ⟨(LB.LinComb L φ ε).U j ⊓ (LB.LinComb L φ ε).U j'', inf_le_left, ?_, ?_⟩
   · first
     | exact ⟨hz, hz''⟩
-    | exact TopologicalSpace.Opens.mem_inf.mpr ⟨hz, hz''⟩
   · have e1 := s₁.compat j j''
     have e2 := s₂.compat j j''
     have e3 := congrArg (rs (inf_le_right : (LB.LinComb L φ ε).U j ⊓ (LB.LinComb L φ ε).U j'' ≤ _))
@@ -170,21 +158,18 @@ lemma famφB0_one : D.toPre.famφB 0 1 = 𝟙 _ := by
     rw [c_zero D]
     first
     | simp [Hom.one_def]
-    | (rw [Hom.one_def, Hom.one_def, ← Category.assoc]; congr 1)
   show (padd D.toPre.P.A (𝟙 D.toPre.P.A) (toUnit _ ≫ D.toPre.c 0)).left = 𝟙 _
   rw [h1]
   show ((𝟙 D.toPre.P.A) * 1 : D.toPre.P.A ⟶ D.toPre.P.A).left = _
   rw [_root_.mul_one]
   first
   | rfl
-  | simp
 
 lemma famφB0_two : D.toPre.famφB 0 2 = D.toPre.famφB 0 3 := by
   show (toUnit D.toPre.P.A ≫ D.toPre.c 0).left = (toUnit D.toPre.P.A ≫ η[D.toPre.P.A]).left
   rw [c_zero D, Hom.one_def]
   first
   | simp
-  | (congr 1; rw [← Category.assoc]; congr 1)
 
 lemma sameSum_famφB0 : LB.SameSum (D.toPre.famφB 0) (DegPre.famε 1)
     (fun _ : Fin 1 => 𝟙 D.toPre.P.A.left) (fun _ => ((1 : ℕ) : ℤ)) := by

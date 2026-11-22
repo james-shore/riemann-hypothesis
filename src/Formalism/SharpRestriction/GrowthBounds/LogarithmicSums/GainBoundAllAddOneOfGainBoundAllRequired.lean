@@ -86,7 +86,7 @@ theorem shift_le (p y κ A : ℝ) (hp : 2 ≤ p) (hκ : 0 ≤ κ) (hy0 : 0 ≤ y
           intro e he
           have he' : e ≤ n ∧ Odd e := by simpa using he
           obtain ⟨h1, k, rfl⟩ := he'
-          simp only [Finset.coe_range, Set.mem_Iio, Finset.mem_coe, Finset.mem_range]
+          simp only [Finset.coe_range, Set.mem_Iio]
           omega)
         (by
           intro e1 he1 e2 he2 heq

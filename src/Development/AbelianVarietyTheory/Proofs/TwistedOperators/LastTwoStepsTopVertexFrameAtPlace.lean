@@ -58,7 +58,7 @@ theorem topVertexFrame_renumbered_cast (ch : Choice R) (t : T) (w : Pl D.host.E)
     · have := congrFun (congrFun hL r) (Sum.inr 0)
       refine Eq.trans ?_ (this.trans ?_)
       · rfl
-      · simp only [fromCols_apply_inr, of_apply, Matrix.mul_diagonal, Matrix.map_apply, mul_one]
+      · simp only [fromCols_apply_inr, of_apply, Matrix.mul_diagonal, Matrix.map_apply]
         rw [Pi.one_apply, mul_one]
         symm
         show ∑ k : Fin 1, (_ : Kw w) = _

@@ -16,7 +16,6 @@ namespace GlobalTheory.ClassNumHost
 theorem totCx (D : D7) : IsTotallyComplex D.host.E := by
   first
   | exact inferInstance
-  | (haveI : IsCMField D.host.E := D.host.isCMField_hostE; exact inferInstance)
 
 theorem log_hE_le_rd (D : D7) :
     Real.log (Formalism.MainNotions.N.hE D.host : ℝ) ≤ (D.R.f : ℝ) * Real.log D.host.rdE +

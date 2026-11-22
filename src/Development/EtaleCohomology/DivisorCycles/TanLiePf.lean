@@ -13,9 +13,9 @@ theorem DX_comm {C : Type} [Field C] {N : ℕ} (Y Z : Mat C N) :
   apply MvPolynomial.derivation_ext
   intro p
   rw [Derivation.commutator_apply, DX_X, DX_X, DX_X]
-  simp only [map_sum, MvPolynomial.C_mul', map_smul, DX_X, Finset.smul_sum, smul_smul]
+  simp only [map_sum, MvPolynomial.C_mul']
   simp only [Matrix.sub_apply, Matrix.mul_apply, ← Finset.sum_sub_distrib]
-  simp only [sub_smul, Finset.sum_smul, ← Finset.sum_sub_distrib]
+  simp only [sub_smul, Finset.sum_smul]
   rw [Finset.sum_comm]
   apply Finset.sum_congr rfl; intro a _
   rw [Derivation.map_smul, Derivation.map_smul, DX_X, DX_X]

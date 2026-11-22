@@ -40,9 +40,6 @@ lemma contDiff_lead (i : ℕ) : ContDiff ℂ 1 (fun z : Matrix (Fin n) (Fin n) �
     intro a b
     first
     | exact contDiff_apply_apply ℂ ℂ a b
-    | exact contDiff_apply_apply a b
-    | exact ((ContinuousLinearMap.proj b).comp (ContinuousLinearMap.proj a)).contDiff
-    | fun_prop
   unfold lead
   by_cases h : i ≤ n
   · simp only [dif_pos h, Matrix.det_apply, Matrix.submatrix_apply, Units.smul_def, zsmul_eq_mul]
@@ -55,7 +52,6 @@ lemma contDiffAt_phiM (μ : Fin n → ℤ) {z : Matrix (Fin n) (Fin n) ℂ} (hz 
   show ContDiffAt ℂ 1 (fun z => ∏ i : Fin n, lead ((i : ℕ) + 1) z ^ (-(μ i - muNext μ i))) z
   first
   | exact contDiffAt_prod fun i _ => InfKA.contDiffAt_zpow (contDiff_lead _).contDiffAt (hz i) _
-  | exact contDiffAt_finset_prod fun i _ => InfKA.contDiffAt_zpow (contDiff_lead _).contDiffAt (hz i) _
 
 lemma isOpen_omega' : IsOpen (OmegaSet n) := by
   have e : OmegaSet n = ⋂ i : Fin n, {z | lead ((i : ℕ) + 1) z ≠ 0} := by
@@ -64,7 +60,6 @@ lemma isOpen_omega' : IsOpen (OmegaSet n) := by
   rw [e]
   first
   | exact isOpen_iInter_of_finite fun i => isOpen_ne_fun (contDiff_lead _).continuous continuous_const
-  | exact isOpen_iInter fun i => isOpen_ne_fun (contDiff_lead _).continuous continuous_const
 
 lemma continuousOn_fderiv_phiM (μ : Fin n → ℤ) : ContinuousOn (fderiv ℂ (PhiM μ)) (OmegaSet n) := by
   exact ContDiffOn.continuousOn_fderiv_of_isOpen
@@ -76,10 +71,6 @@ lemma continuousOn_phiM (μ : Fin n → ℤ) : ContinuousOn (PhiM μ) (OmegaSet 
 lemma continuous_toMK' : Continuous fun k : KG ε => toMK k := by
   first
     | fun_prop
-    | exact continuous_subtype_val.comp continuous_subtype_val
-    | exact Units.continuous_val.comp (continuous_subtype_val.comp continuous_subtype_val)
-    | exact (continuous_subtype_val.comp continuous_subtype_val).comp continuous_subtype_val
-    | continuity
 
 lemma continuous_toMK_inv : Continuous fun k : KG ε => toMK k⁻¹ := by
   exact continuous_toMK'.comp continuous_inv
@@ -93,17 +84,12 @@ private lemma toMK_conjTranspose_mul_self (k : KG ε) : (toMK k)ᴴ * toMK k = 1
   obtain ⟨hU, -⟩ := h
   first
   | exact Unitary.star_mul_self_of_mem hU
-  | exact (Matrix.mem_unitaryGroup_iff').1 hU
-  | exact hU.1
 
 lemma toMK_inv_eq (k : KG ε) : toMK k⁻¹ = (toMK k)ᴴ := by
   have hu : star (toMK k) * toMK k = 1 := toMK_conjTranspose_mul_self k
   have hv : toMK k * toMK k⁻¹ = 1 := by
     first
     | exact Units.mul_inv _
-    | (simp only [toMK, toM]; simp)
-    | (unfold toMK toM; simp)
-    | (unfold toMK; simp)
   calc toMK k⁻¹ = (star (toMK k) * toMK k) * toMK k⁻¹ := by rw [hu, Matrix.one_mul]
     _ = star (toMK k) * (toMK k * toMK k⁻¹) := by rw [Matrix.mul_assoc]
     _ = (toMK k)ᴴ := by rw [hv, Matrix.mul_one]; rfl
@@ -121,8 +107,6 @@ lemma conj_mem_omega {x : Matrix (Fin n) (Fin n) ℂ} (hx : x.PosDef) (k : KG ε
   rw [dif_pos (show (i : ℕ) + 1 ≤ n from i.isLt)]
   first
   | exact (hP.submatrix (Fin.castLE_injective _)).det_pos.ne'
-  | exact (hP.submatrix (Fin.castLEEmb (show (i : ℕ) + 1 ≤ n from i.isLt))).det_pos.ne'
-  | exact (hP.submatrix _ (Fin.castLE_injective _)).det_pos.ne'
 
 def entryCLM (a b : Fin n) : Matrix (Fin n) (Fin n) ℂ →L[ℂ] ℂ :=
   LinearMap.toContinuousLinearMap
@@ -138,11 +122,11 @@ def DkL (T : KType ε Λ) (μ : Fin n → ℤ) (x : Matrix (Fin n) (Fin n) ℂ) 
         (toMK k⁻¹ * x * toMK k * Y - Y * (toMK k⁻¹ * x * toMK k)) • (T.op k * projW T * T.op k⁻¹) +
       PhiM μ (toMK k⁻¹ * x * toMK k) • (T.op k * (T.dτ Y * projW T - projW T * T.dτ Y) * T.op k⁻¹)
   map_add' Y Y' := by
-    simp only [Matrix.mul_add, Matrix.add_mul, map_add, map_sub, add_mul, mul_add, sub_mul, mul_sub,
+    simp only [map_add, map_sub, add_mul, mul_add, sub_mul, mul_sub,
       add_smul, sub_smul, smul_add, smul_sub]
     abel
   map_smul' c Y := by
-    simp only [Matrix.mul_smul, Matrix.smul_mul, map_smul, map_sub, smul_mul_assoc, mul_smul_comm,
+    simp only [map_smul, map_sub, smul_mul_assoc, mul_smul_comm,
       mul_sub, sub_mul, smul_sub, smul_eq_mul, RingHom.id_apply, smul_add]
     module
 
@@ -161,7 +145,6 @@ def Ek (T : KType ε Λ) (μ : Fin n → ℤ) (x : Matrix (Fin n) (Fin n) ℂ)
 lemma continuous_B (A : Matrix (Fin n) (Fin n) ℂ) : Continuous fun k : KG ε => toMK k⁻¹ * A * toMK k := by
   first
     | exact (continuous_toMK_inv.matrix_mul continuous_const).matrix_mul continuous_toMK'
-    | exact ((continuous_toMK_inv (ε := ε)).mul continuous_const).mul continuous_toMK'
 
 lemma continuous_Gint (T : KType ε Λ) (μ : Fin n → ℤ) {x : Matrix (Fin n) (Fin n) ℂ}
     (hx : x.PosDef) : Continuous (Gint T μ x) := by
@@ -198,9 +181,6 @@ lemma integrable_of_cont [CompactSpace (KG ε)] {E : Type*} [NormedAddCommGroup 
     (hf : Continuous f) : Integrable f (muK ε) := by
   first
     | exact hf.integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace f)
-    | (unfold muK; exact integrableOn_univ.1 (hf.continuousOn.integrableOn_compact isCompact_univ))
-    | (unfold muK; exact hf.integrable_of_hasCompactSupport (HasCompactSupport.of_compactSpace f))
-    | exact integrableOn_univ.1 (hf.continuousOn.integrableOn_compact isCompact_univ)
 
 lemma integral_Ek_inK [CompactSpace (KG ε)] (T : KType ε Λ) (μ : Fin n → ℤ) {x : Matrix (Fin n) (Fin n) ℂ}
     (hx : x.PosDef) (φ : Matrix (Fin n) (Fin n) ℂ →L[ℂ] ℂ) (A : Matrix (Fin n) (Fin n) ℂ)
@@ -229,7 +209,7 @@ lemma integral_Ek_inK [CompactSpace (KG ε)] (T : KType ε Λ) (μ : Fin n → �
     rw [_root_.mul_inv_rev, hmk, hmk, hinv_t, hγ, hBk]
     simp only [Matrix.mul_assoc]
   · simp only [Ek, DkL_apply, hγ0, mul_one, Complex.ofReal_zero, zero_smul, neg_zero, NormedSpace.exp_zero,
-      Matrix.one_mul, Matrix.mul_one, hBk]
+      Matrix.one_mul, hBk]
 
 lemma Ek_decomp (T : KType ε Λ) (μ : Fin n → ℤ) (x : Matrix (Fin n) (Fin n) ℂ)
     (φ : Matrix (Fin n) (Fin n) ℂ →L[ℂ] ℂ) (A P Q : Matrix (Fin n) (Fin n) ℂ) (k : KG ε) :
@@ -242,7 +222,6 @@ lemma Ek_decomp (T : KType ε Λ) (μ : Fin n → ℤ) (x : Matrix (Fin n) (Fin 
   simp only [Ek, h1, map_add, map_smul, smul_eq_mul]
   first
   | module
-  | (simp only [smul_add, add_smul, smul_smul, mul_comm]; abel)
 
 lemma integral_Ek_block [CompactSpace (KG ε)] (T : KType ε Λ) (μ : Fin n → ℤ) {x : Matrix (Fin n) (Fin n) ℂ}
     (hx : x.PosDef) (φ : Matrix (Fin n) (Fin n) ℂ →L[ℂ] ℂ) (A : Matrix (Fin n) (Fin n) ℂ)
@@ -268,23 +247,15 @@ lemma integral_Ek_block [CompactSpace (KG ε)] (T : KType ε Λ) (μ : Fin n →
     · intro a b h
       first
       | simp only [Matrix.smul_apply, Matrix.sub_apply, hM a b h, hMh a b h, sub_zero, smul_zero]
-      | simp [hM a b h, hMh a b h]
     · ext a b
       first
       | (simp [Matrix.conjTranspose_apply]; ring)
-      | (simp [Matrix.conjTranspose_apply, Complex.star_def]; ring)
-      | simp [Matrix.conjTranspose_apply]
-      | simp [Matrix.conjTranspose_apply, Complex.star_def]
     · intro a b h
       first
       | simp only [Matrix.smul_apply, Matrix.add_apply, hM a b h, hMh a b h, add_zero, smul_zero]
-      | simp [hM a b h, hMh a b h]
     · ext a b
       first
-      | (simp [Matrix.conjTranspose_apply, Complex.star_def]; ring)
       | (simp [Matrix.conjTranspose_apply]; ring)
-      | simp [Matrix.conjTranspose_apply, Complex.star_def]
-      | simp [Matrix.conjTranspose_apply]
     · ext a b
       simp only [Matrix.add_apply, Matrix.smul_apply, Matrix.sub_apply, smul_eq_mul]
       linear_combination (M a b + Mᴴ a b) / 2 * Complex.I_sq

@@ -13,4 +13,4 @@ theorem _root_.GlobalTheory.T.adicIntegralTensorBasis_of_trace_mem_eventually : 
       (∀ i, Algebra.trace (v.adicCompletion ℚ) (v.adicCompletion ℚ ⊗[ℚ] L)
           (E * ((1 : v.adicCompletion ℚ) ⊗ₜ[ℚ] bL i)) ∈ v.adicCompletionIntegers ℚ) →
         IsIntB v bL E := by
-  first | (exact @GlobalTheory.LocIntSpan.isIntB_of_trace_mem) | (exact GlobalTheory.LocIntSpan.isIntB_of_trace_mem) | (intros; apply GlobalTheory.LocIntSpan.isIntB_of_trace_mem  <;> assumption)
+  first | (exact @GlobalTheory.LocIntSpan.isIntB_of_trace_mem)

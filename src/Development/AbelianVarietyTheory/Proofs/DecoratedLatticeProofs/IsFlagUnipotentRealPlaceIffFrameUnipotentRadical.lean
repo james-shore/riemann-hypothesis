@@ -153,7 +153,7 @@ theorem perp_mulVec (I : Formalism.MainNotions.S.AutInst) (v : InfinitePlace I.F
   rw [Matrix.map_mul]
   simp only [Matrix.mulVec, dotProduct, Matrix.mul_apply, Formalism.UG.cT, Matrix.map_apply, Matrix.transpose_apply,
     Matrix.of_apply, Finset.mul_sum, Finset.sum_mul, map_mul, starRingEnd_apply, Formalism.MainNotions.BridgeUnipRad.emb_star,
-    Pi.star_apply, star_mul]
+    Pi.star_apply]
   rw [Finset.sum_comm]
   exact Finset.sum_congr rfl fun _ _ => Finset.sum_congr rfl fun _ _ => by ring
 

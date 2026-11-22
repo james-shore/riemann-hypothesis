@@ -40,9 +40,9 @@ theorem yDeg_add (m m' : XY k →₀ ℕ) : yDeg (m + m') = yDeg m + yDeg m' := 
 theorem xDeg_inl (i : Fin k) : xDeg (Finsupp.single (Sum.inl i : XY k) 1) = 1 := by
   simp [xDeg, Finsupp.single_apply]
 theorem yDeg_inl (i : Fin k) : yDeg (Finsupp.single (Sum.inl i : XY k) 1) = 0 := by
-  simp [yDeg, Finsupp.single_apply]
+  simp [yDeg]
 theorem xDeg_inr (i : Fin k) : xDeg (Finsupp.single (Sum.inr i : XY k) 1) = 0 := by
-  simp [xDeg, Finsupp.single_apply]
+  simp [xDeg]
 theorem yDeg_inr (i : Fin k) : yDeg (Finsupp.single (Sum.inr i : XY k) 1) = 1 := by
   simp [yDeg, Finsupp.single_apply]
 
@@ -512,7 +512,6 @@ theorem levelProj_level [CharZero K] (hk : 1 ≤ k) {A B i j : ℕ} (hi : i ≤ 
       Nat.cast_ne_zero.2 (Nat.choose_pos (by omega)).ne'
     rw [hN, Nat.descFactorial_self, Nat.descFactorial_eq_factorial_mul_choose, Nat.cast_mul, Nat.cast_mul]
     field_simp
-    all_goals ring
   · rw [if_neg hij.ne', map_smul]
     have hpow : hXY K k ^ (i - j) * w = hXY K k * (hXY K k ^ (i - j - 1) * w) := by
       rw [← mul_assoc, ← pow_succ', Nat.sub_add_cancel (by omega)]
@@ -582,8 +581,7 @@ theorem card_bideg (k' A B : ℕ) :
   have e := (Equiv.subtypeEquiv (p := fun m : XY (k' + 1) →₀ ℕ => xDeg m = A ∧ yDeg m = B)
       (q := fun c : (Fin (k' + 1) →₀ ℕ) × (Fin (k' + 1) →₀ ℕ) => (∑ i, c.1 i = A) ∧ (∑ i, c.2 i = B))
       Finsupp.sumFinsuppEquivProdFinsupp fun m => by
-        simp [xDeg, yDeg, Finsupp.fst_sumFinsuppEquivProdFinsupp,
-          Finsupp.snd_sumFinsuppEquivProdFinsupp]).trans
+        simp [xDeg, yDeg]).trans
     (Equiv.subtypeProdEquivProd (p := fun x : Fin (k' + 1) →₀ ℕ => ∑ i, x i = A)
       (q := fun y : Fin (k' + 1) →₀ ℕ => ∑ i, y i = B))
   rw [show Nat.card ↥{m : XY (k' + 1) →₀ ℕ | xDeg m = A ∧ yDeg m = B} = _ from Nat.card_congr e,

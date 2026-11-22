@@ -81,9 +81,9 @@ theorem mul_elem_apply (L : Matrix (Fin N) (Fin N) ℂ) (ca cb : Fin N) (t : ℂ
   · by_cases e : b = ca
     · subst e
       simp
-    · simp [e, Matrix.single_apply, Ne.symm e]
+    · simp [e, Ne.symm e]
   · intro c _ hc
-    simp [Matrix.single_apply, Ne.symm hc]
+    simp [Ne.symm hc]
   · simp
 
 variable {j : ℕ}

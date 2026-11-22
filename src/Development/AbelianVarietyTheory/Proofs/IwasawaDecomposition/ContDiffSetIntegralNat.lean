@@ -24,8 +24,6 @@ theorem contDiff_setIntegral_nat {X P E : Type} [TopologicalSpace X] [T2Space X]
   | exact @_root_.GlobalTheory.SetIntegralSmoothness.contDiff_setIntegral
   | exact _root_.GlobalTheory.SetIntegralSmoothness.contDiff_setIntegral
   | (apply _root_.GlobalTheory.SetIntegralSmoothness.contDiff_setIntegral <;> assumption)
-  | (intros; apply _root_.GlobalTheory.SetIntegralSmoothness.contDiff_setIntegral <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.SetIntegralSmoothness.contDiff_setIntegral <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.SetIntegralSmoothness.contDiff_setIntegral ..)
 
 section

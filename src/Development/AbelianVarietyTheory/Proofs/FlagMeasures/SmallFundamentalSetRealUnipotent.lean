@@ -88,7 +88,7 @@ theorem exists_rat (x : I.GA) (g : ℕ) (R : Submodule (𝓞 I.E) (Fin I.n → I
         ← mulVec_mulVec]
       simp only [← Nat.cast_smul_eq_nsmul I.E]
       push_cast
-      match_scalars <;> first | ring1 | field_simp
+      match_scalars <;> first | ring1
   have hN : InNil (starRingEnd I.E) I.J (Submodule.span I.E (R : Set (Fin I.n → I.E)))
       ((2 * g : I.E) • Y₀ + (g : I.E) • Z₀) :=
     nil_add (nil_smul (by simp [map_ofNat]) hY.1) (cen_smul (by simp) hZ.1).1
@@ -110,7 +110,7 @@ theorem exists_rat (x : I.GA) (g : ℕ) (R : Submodule (𝓞 I.E) (Fin I.n → I
     congr 2
     ext i j
     by_cases hij : i = j <;>
-      simp [γ, ex, Matrix.mul_apply, Matrix.one_apply, hij, map_ofNat]
+      simp [γ, ex, Matrix.mul_apply, hij, map_ofNat]
 
 end Point
 

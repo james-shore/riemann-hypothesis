@@ -233,7 +233,7 @@ theorem ntype_core (hcase : Formalism.MainNotions.LiftingTheory.CaseA W) (hl : 5
     funext k
     rcases eq_or_ne k k₀ with rfl | hk
     · simp [lE, pow_add, mul_comm, mul_left_comm]
-    · simp [Pi.single_eq_of_ne hk, hk]
+    · simp [hk]
 
 section Bez
 
@@ -249,7 +249,7 @@ theorem ringData_of_crystalline (hcase : Formalism.MainNotions.LiftingTheory.Cas
   have hE : Formalism.MainNotions.DeltaInvariantLattices.Eat (fun _ => Polynomial.X + Polynomial.C ((PD.p : ℕ) : O)) W.π₀ = W.π₀ + lA W := by
     unfold Formalism.MainNotions.DeltaInvariantLattices.Eat lA
     funext i
-    simp [Polynomial.eval_add, Polynomial.eval_X, Polynomial.eval_C]
+    simp
   refine ⟨h3', ?_, ?_, fun a ha => (h2 a ha).exists⟩
   · obtain ⟨w, hw⟩ := h6; refine ⟨w, ?_⟩; unfold qA; rw [hw, hE]
   · obtain ⟨w, hw⟩ := h7; refine ⟨w, ?_⟩; unfold qA; rw [hw, hE]

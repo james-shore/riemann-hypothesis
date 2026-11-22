@@ -85,7 +85,7 @@ theorem mean_of_hom {G : Type} [Group G] [TopologicalSpace G] [IsTopologicalGrou
   have l1 : ∀ n, ∫ a in 𝓐, φ (f n + a) ∂μ = ∫ a in 𝓐, φ a ∂μ := fun n => by
     rw [← GlobalTheory.MixModel.covolOne_integral_add hμ φ hφ (f n)]
     simp only [add_comm]
-  simp only [l1, hinv, integral_const, smul_eq_mul] at hswap
+  simp only [l1, hinv, integral_const] at hswap
   rw [Measure.real, Measure.real, Measure.restrict_apply_univ, Measure.restrict_apply_univ, hμ.2.2] at hswap
   simpa [mul_comm] using hswap.symm
 
@@ -209,8 +209,8 @@ theorem unit_aux {S R : Type*} [CommRing S] [Ring R] [Algebra S R] (h : S) (hh :
     rw [sub_mul, add_mul, one_mul, hu, smul_mul_assoc, hq, mul_sub, mul_sub, mul_one, mul_smul_comm]
     abel
   have e2 : (1 - u - h • q) * (1 + u - h • q) = 1 := by
-    simp only [sub_mul, add_mul, mul_sub, mul_add, one_mul, mul_one, smul_mul_assoc, mul_smul_comm, huu, huq, hqu,
-      hqq, smul_zero, smul_smul]
+    simp only [sub_mul, mul_sub, mul_add, one_mul, mul_one, smul_mul_assoc, mul_smul_comm, huu, huq, hqu,
+      hqq, smul_zero]
     linear_combination (norm := module) (-1 : S) • hh • q
   rw [e1, mul_assoc, e2, mul_one]
 

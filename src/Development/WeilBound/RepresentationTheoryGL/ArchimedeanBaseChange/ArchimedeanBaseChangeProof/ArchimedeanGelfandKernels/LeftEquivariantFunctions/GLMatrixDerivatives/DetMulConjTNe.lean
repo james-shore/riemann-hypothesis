@@ -77,15 +77,14 @@ theorem derTwo_at (h : CxData lam E Fr ε ι S Γ T) {k : Mat n → (E.V →L[�
     unfold Kf
     rw [Matrix.conjTranspose_mul, conjT_line hX, Matrix.mul_inv_rev, Matrix.mul_inv_rev,
       h.mul _ (inv_mem ht) _ (inv_mem hy)]
-    simp only [hwdef, Matrix.mul_assoc, _root_.mul_assoc]
+    simp only [hwdef, _root_.mul_assoc]
   have h2' := h2.congr_of_eventuallyEq e
   rw [h1.unique h2']
-  simp only [zero_smul, add_zero, inv_one, Matrix.mul_one, Matrix.one_mul, h.one, _root_.one_mul, Matrix.det_one,
+  simp only [zero_smul, add_zero, inv_one, h.one, _root_.one_mul, Matrix.det_one,
     one_pow, inv_one, _root_.mul_one, map_neg, Matrix.mul_neg, Rd]
   have ew : (c : ℂ) * ((y * yᴴ).det ^ n)⁻¹ = wt c y := rfl
   rw [ew]
-  simp only [smul_sub, mul_sub, sub_mul, smul_mul_assoc, mul_smul_comm, smul_neg, mul_neg, neg_mul, smul_add, mul_add,
-    add_mul, _root_.mul_assoc, smul_smul]
+  simp only [smul_sub, mul_sub, sub_mul, smul_mul_assoc, mul_smul_comm, smul_neg, mul_neg, neg_mul, smul_add, _root_.mul_assoc, smul_smul]
   push_cast
   ring_nf
   abel_nf

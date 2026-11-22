@@ -25,8 +25,6 @@ theorem isCMField_of_forall_isConj (K : Type) [Field K] [NumberField K] [IsTotal
   | exact @_root_.GlobalTheory.CMFieldCriterion.isCMField_of_forall_isConj
   | exact _root_.GlobalTheory.CMFieldCriterion.isCMField_of_forall_isConj
   | (apply _root_.GlobalTheory.CMFieldCriterion.isCMField_of_forall_isConj <;> assumption)
-  | (intros; apply _root_.GlobalTheory.CMFieldCriterion.isCMField_of_forall_isConj <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.CMFieldCriterion.isCMField_of_forall_isConj <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.CMFieldCriterion.isCMField_of_forall_isConj ..)
 
 end Crit

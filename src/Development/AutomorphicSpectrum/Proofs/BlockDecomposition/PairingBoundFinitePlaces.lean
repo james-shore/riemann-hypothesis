@@ -12,7 +12,7 @@ theorem updateRow_submatrix_eq {K ι κ : Type} [DecidableEq ι] [DecidableEq κ
   by_cases h : j = k
   · subst h
     simp [Matrix.updateRow_apply, Function.update_self]
-  · simp [Matrix.updateRow_apply, h, Function.update_of_ne h]
+  · simp [Matrix.updateRow_apply, h]
 
 theorem eq_mul_of_det_ne_zero {K ι κ : Type} [Field K] [DecidableEq ι] [Fintype κ] [DecidableEq κ]
     (U : Matrix ι κ K) (s : κ → ι) (hd : (U.submatrix s id).det ≠ 0) :
@@ -92,7 +92,6 @@ theorem pairF_of_mulF : MulF → PairF := by
       simp only [h, norm_zero]
       first
         | exact Real.iSup_const_zero
-        | simp
     have h1 := (hM K ι κ κ U).1 Wᵀ
     have h2 := (hM K ι κ κ U).2.2 (Wᵀ * U)
     rw [h2, hnU, mul_zero] at h1

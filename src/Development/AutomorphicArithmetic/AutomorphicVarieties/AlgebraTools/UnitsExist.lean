@@ -27,11 +27,11 @@ theorem UpperTheory.V.AlgebraTools.units_exist :
   have hb' : ∀ i, T.st (z i) * z i = b i • ep i := by
     intro i
     rw [hstz, hz, ← hb i]
-    simp only [mul_assoc, idem, idem']
+    simp only [mul_assoc, idem']
   have hzst : ∀ i, z i * T.st (z i) = b' i • ep (o i) := by
     intro i
     rw [hstz, hz, ← hb2 i]
-    simp only [mul_assoc, idem, idem']
+    simp only [mul_assoc, idem']
   have hbb : ∀ i, b' i = b i := by
     intro i
     have h := congrArg T.tr (hzst i)

@@ -41,7 +41,6 @@ theorem UpperTheory.V.Z.Kato.Nb.sEsT : UpperTheory.V.Z.Kato.Nb.SEsT := by
       Matrix.SpecialLinearGroup.coe_mul, Matrix.SpecialLinearGroup.coe_inv, Matrix.adjugate_fin_two]
     simp only [Matrix.mul_apply, Fin.sum_univ_two]
     simp
-    push_cast
     generalize (sgD N l q : Matrix (Fin 2) (Fin 2) ℤ) = S at *
     generalize (γ : Matrix (Fin 2) (Fin 2) ℤ) = G at *
     refine ⟨⟨?_, ?_, ?_⟩, ?_⟩

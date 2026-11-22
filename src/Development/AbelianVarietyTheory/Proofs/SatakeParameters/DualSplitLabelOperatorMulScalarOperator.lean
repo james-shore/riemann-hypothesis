@@ -82,7 +82,7 @@ theorem scalar_parts {A B n : Type} [CommRing A] [CommRing B] [Fintype n] [Decid
     by_cases hij : i = j
     · subst hij
       simp
-    · simp [hij, Matrix.one_apply]
+    · simp [hij]
   rw [Matrix.smul_apply, Matrix.smul_apply, smul_eq_mul, smul_eq_mul, mul_assoc, ← h3, ← h3, h8]
 
 end Abstract
@@ -172,7 +172,7 @@ theorem divAt_mul {e : AE D} {V : HSp D} {ϖ : D.host.E} (h0 : ϖ ≠ 0) {z g : 
   refine dv_scalar hz (fun i => ?_) h
   have hi : i.1 < d.length := by rw [hd]; exact i.2
   have gd : (d.map (· - 1)).getD i.1 0 = d.getD i.1 0 - 1 := by
-    simp [List.getD_eq_getElem _ _ hi, hi]
+    simp [hi]
   rw [gd, zpow_sub_one₀ h0, mul_comm, RingHom.map_mul, RingHom.map_mul]
 
 theorem label_shift {n j : ℕ} (hj : j ≤ n) : (dualLab (splitLab n j)).map (· - 1) = splitLab n (n - j) := by
@@ -225,7 +225,7 @@ theorem dual_rel : ∀ {D : D7} (V : HSp D) (P : Pl D.host.E), conjPl P ≠ P �
   have S0 := shift (GlobalTheory.SplitHecke.suppAt_one V)
     (GlobalTheory.SphLabelOps.divAt_one V he.1.1 (GlobalTheory.SphLabelOps.tie_of_isPrimeIdem (Or.inl ⟨he, rfl⟩)) (ϖ : D.host.E))
     (fun γ hγ => by rw [Finset.mem_singleton.1 hγ]; exact GlobalTheory.SplitHecke.suppAt_one V) one
-    (by rw [label_shift_zero]; simp [splitLab, List.pairwise_append, List.pairwise_replicate])
+    (by rw [label_shift_zero]; simp [splitLab, List.pairwise_replicate])
   rw [label_shift_zero] at S0
   have S1 : SphOp V P (dualLab (splitLab V.rank j)) R := sphOp_of he h1 h2
     (by simp [dualLab, splitLab, List.pairwise_append, List.pairwise_replicate]) hα.2.1 hDα r1 r2

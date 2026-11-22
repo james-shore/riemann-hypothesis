@@ -223,7 +223,7 @@ theorem stepDensCptAll_of_levT (hT : Formalism.FourierDecayAlt.P.PTie.LevTranspo
   simp only [shiftV, Function.update]
   split_ifs with hA hB hB
   · subst hB
-    first | (simp only [eq_rec_constant]; done) | (simp only [eq_rec_constant]; rfl) | rfl | simp
+    first | (simp only [eq_rec_constant])
   · exfalso
     apply hB
     apply Fin.ext

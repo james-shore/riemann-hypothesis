@@ -34,7 +34,7 @@ theorem scalar_det_fin_one (g : GL (Fin 1) k) :
   apply Units.ext
   ext i j
   fin_cases i; fin_cases j
-  simp [Matrix.GeneralLinearGroup.scalar, Matrix.det_fin_one]
+  simp [Matrix.GeneralLinearGroup.scalar]
 
 theorem det_scalar_fin_one (z : kˣ) :
     Matrix.GeneralLinearGroup.det (Matrix.GeneralLinearGroup.scalar (Fin 1) z) = z := by
@@ -119,11 +119,11 @@ theorem inSupport_of_KO_eigen (hD : GlobalTheory.Published.DepthZeroJacquetInjec
     have hg : g ∈ S := by
       intro a
       by_cases ha : a = a0
-      · subst ha; simp [g, det_scalar_fin_one, hu]
+      · subst ha; simp [g, hu]
       · simp [g, Pi.mulSingle_eq_of_ne ha]
     have hdet : Matrix.GeneralLinearGroup.det (leviEmb k e g) = u := by
       rw [det_leviEmb, Finset.prod_eq_single a0]
-      · simp [g, det_scalar_fin_one]
+      · simp [g]
       · intro b _ hb; simp [g, Pi.mulSingle_eq_of_ne hb]
       · simp
     have h1 := (hc _ y₀).symm.trans (hy₀θ g hg)

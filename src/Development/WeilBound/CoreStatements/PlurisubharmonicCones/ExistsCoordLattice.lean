@@ -139,7 +139,7 @@ theorem exists_coord_lattice {M : Type} [AddCommGroup M] [Module (𝓞 L) M] [Mo
     LinearMap.range (c • (1 : Matrix (Fin n) (Fin n) (𝓞 L))).mulVecLin with hA
   have hAmem : ∀ w, w ∈ A ↔ ∃ v, c • v = w := by
     intro w
-    simp [hA, Matrix.mulVecLin_apply, Matrix.smul_mulVec, Matrix.one_mulVec]
+    simp [hA]
   have hAE : A ≤ E := by
     intro w hw
     obtain ⟨v, rfl⟩ := (hAmem w).1 hw
@@ -237,7 +237,7 @@ theorem exists_local_frame {M : Type} [AddCommGroup M] [Module (𝓞 L) M] [Modu
     · exact sub_eq_zero.1 h0
     · simp only [sub_smul, Finset.sum_sub_distrib, Matrix.mul_apply, Matrix.of_apply, Matrix.smul_apply,
         Matrix.one_apply, smul_eq_mul, mul_ite, mul_one, mul_zero, ite_smul, zero_smul, Finset.sum_ite_eq,
-        Finset.mem_univ, if_true, Finset.sum_smul, smul_smul]
+        Finset.mem_univ, if_true, Finset.sum_smul]
       rw [sub_eq_zero, Finset.sum_comm]
       calc ∑ k, ∑ l, (T i k * v k l) • x l = ∑ k, T0 i k • (c • y k) := by
             simp only [hy, Finset.smul_sum, smul_smul, hTdef, Matrix.of_apply]
@@ -299,7 +299,7 @@ private theorem exists_logNorms_lemma {L : Type} [Field L] [NumberField L] (B : 
   obtain ⟨r, hr, hz⟩ := RCLike.nonneg_iff_exists_ofReal.1 hnn
   unfold gramDet
   rw [heq, ← hz]
-  simp [RCLike.norm_ofReal, abs_of_nonneg hr]
+  simp [abs_of_nonneg hr]
 
 private theorem exists_logNorms_lemma_2 {L : Type} [Field L] [NumberField L] (B : HermitianBundle.{0} L)
     (F : Submodule (𝓞 L) B.carrier) {n : ℕ} (x : Fin n → B.carrier) (hx : ∀ i, x i ∈ F)

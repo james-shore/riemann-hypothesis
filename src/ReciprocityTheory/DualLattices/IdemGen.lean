@@ -27,8 +27,7 @@ theorem idemGen : IdemGenStatement := by
     apply Matrix.toLin'.injective
     rw [Matrix.toLin'_mul, hLM]
     refine LinearMap.ext fun x => ?_
-    simp only [LinearMap.comp_apply, Matrix.toLin'_apply, L, LinearMap.coe_comp,
-      Function.comp_apply, LinearEquiv.coe_coe]
+    simp only [LinearMap.comp_apply, Matrix.toLin'_apply, L, LinearEquiv.coe_coe]
     congr 1
     apply Subtype.ext
     simp [Matrix.mulVec_mulVec, hP]

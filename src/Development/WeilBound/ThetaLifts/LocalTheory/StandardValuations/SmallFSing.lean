@@ -96,7 +96,7 @@ theorem bigF_std (hϖ : IsUnif ϖ) {e : Fin n → Fin d} {Y : Matrix (Fin n) (Fi
     have h3 : valuation k ((ϖ : k) ^ (-m.1 i)) ≤ 1 := by
       have := (show valuation k _ ≤ 1 from h1.2 i i)
       rw [show (diagGL fun i => ϖ ^ m.1 i)⁻¹ = diagGL fun i => ϖ ^ (-m.1 i) from inv_eq_of_mul_eq_one_right (Units.ext (by
-        simp [diagGL_val, funext_iff, zpow_ne_zero]))] at this
+        simp [diagGL_val, zpow_ne_zero]))] at this
       simpa [diagGL_val] using this
     rw [map_zpow₀, hϖ, zpow_le_one_iff_right_of_lt_one₀ uniformizer_pos uniformizer_lt_one] at h2 h3
     show m.1 i = 0

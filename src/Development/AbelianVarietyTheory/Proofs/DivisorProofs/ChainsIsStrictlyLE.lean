@@ -32,7 +32,6 @@ theorem phi_δ (z : ∀ j : Fin N, Cocycle ((chains (ZMod q)).obj B) (res _ (tw 
       δ n m (∑ j, f j) = ∑ j, δ n m (f j) := fun f => map_sum (AddMonoidHom.mk' (δ n m) (δ_add n m)) f _
   rw [phi_apply, phi_apply, hs]
   refine Finset.sum_congr rfl fun j _ => ?_
-  change _ = δ n m _
   rw [GlobalTheory.T.crossProductTwisted_leibniz_rule V ℓ (twPairI q i ((j : ℕ) : ℤ)) (sub_add_cancel n _)
     (show n - 2 * ((j : ℕ) : ℤ) + 1 = m - 2 * ((j : ℕ) : ℤ) by omega) rfl hnm (by omega) (by omega),
     Cocycle.δ_eq_zero (z j), crossT_zero_right, smul_zero, add_zero]

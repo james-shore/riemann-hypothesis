@@ -36,7 +36,7 @@ theorem qn_pt_step (n : ℕ) (D : Finset (Fin n × Fin n)) (a s : Fin n) (hw : (
           simp [qn_pt, hw, hs]
         · have h1 : (b, c) ≠ (b, s) := by simp [hc]
           have h2 : s ≠ c := fun h => hc h.symm
-          simp [qn_pt, hs, h1, h2, hc]
+          simp [qn_pt, hs, h1, h2]
       · have h1 : (b, c) ≠ (a, s) := by simp [hb]
         simp [qn_pt, h1, hb]
   exact congrArg (fun φ => φ F) h
@@ -95,11 +95,11 @@ theorem qn_prod_pt (n : ℕ) (m : Fin n × Fin n →₀ ℕ) :
     rcases lt_trichotomy a c with hac | hac | hac
     · have h0 : m (a, c) = 0 := h a c hac
       have h1 : ¬ c < a := not_lt.mpr hac.le
-      simp [h0, qn_off, Finsupp.filter_apply, h1]
+      simp [h0, qn_off, h1]
     · subst hac
-      simp [qn_pt, qn_low, qn_off, Finsupp.filter_apply]
+      simp [qn_pt, qn_low, qn_off]
     · have h1 : a ≠ c := ne_of_gt hac
-      simp [qn_pt, qn_low, qn_off, Finsupp.filter_apply, hac, h1]
+      simp [qn_pt, qn_low, qn_off, hac, h1]
   · unfold LowerTri at h
     push Not at h
     obtain ⟨a, c, hac, hne⟩ := h

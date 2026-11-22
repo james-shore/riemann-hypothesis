@@ -146,7 +146,7 @@ theorem cap_succ (p : ℕ) (S : SegData s) (b : SegBlock s r) (i : Fin s) :
         rw [if_pos (show (k : ℕ) < k.val + 1 by omega), if_neg h1, if_pos rfl, zero_add]
       · have h3 : ¬ (k : ℕ) < i.val + 1 := fun h => h2 (Fin.ext (by omega))
         rw [if_neg h3, if_neg h1, if_neg h2, add_zero]
-  simp only [key, Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+  simp only [key, Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   ring
 
 theorem levW (p : ℕ) (S : SegData s) (aTop : Fin s → ℕ) (aPlus : ℕ) (m : ℝ) (b : SegBlock s r)

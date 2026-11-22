@@ -32,9 +32,6 @@ theorem apply_mem_basicOpen_of_mem {V : Type} [CommRing V] {X : Scheme.{0}} (π 
   have h3 := AlgebraicGeometry.basicOpen_eq_of_affine (R := CommRingCat.of V) a
   first
   | (rw [h3] at h2; exact h2)
-  | (unfold Sp at h2; rw [h3] at h2; exact h2)
-  | exact h3 ▸ h2
-  | (unfold Sp at h2; done)
 
 end SecLineGen
 
@@ -57,7 +54,7 @@ theorem sec_generates_of_ne_zero_on_closed_fibre :
     rw [hgc] at h1
     have h2 : a ∉ (IsLocalRing.closedPoint V).asIdeal := (PrimeSpectrum.mem_basicOpen _ _).1 h1
     have hmax : a ∈ IsLocalRing.maximalIdeal V := (IsLocalRing.mem_maximalIdeal a).2 hna
-    first | exact h2 hmax | exact h2 (by simpa using hmax)
+    first | exact h2 hmax
   obtain ⟨u, rfl⟩ := hu
   refine ⟨⟨u, fun j => ha j⟩, ?_⟩
   intro σ

@@ -28,26 +28,26 @@ theorem iso_transl_fst : ∀ (S : Scheme.{0}) (A : Over S) [GrpObj A] [IsCommMon
   have e := (cls_linComb hL _ _ (LB.isLB_linComb hL _ _)).symm.trans ((cls_eq_zero_iff _).2 cube)
   have habc : (lift (fst A A) 1 : G2 A ⟶ G2 A) * (toUnit _ ≫ lift h 1) * lift 1 (snd A A) =
       GlobalTheory.UPel.HT.Hecke.transl (lift h 1 : 𝟙_ (Over S) ⟶ G2 A) := by
-    ext <;> simp [GlobalTheory.UPel.HT.Hecke.transl, MonObj.mul_comp, MonObj.comp_mul]
+    ext <;> simp [GlobalTheory.UPel.HT.Hecke.transl, MonObj.mul_comp]
   have hac : (lift (fst A A) 1 : G2 A ⟶ G2 A) * lift 1 (snd A A) = 𝟙 _ := by
-    ext <;> simp [MonObj.mul_comp, MonObj.comp_mul]
+    ext <;> simp [MonObj.mul_comp]
   have hbc : (toUnit _ ≫ lift h 1 : G2 A ⟶ G2 A) * lift 1 (snd A A) = snd A A ≫ lift (toUnit A ≫ h) (𝟙 A) := by
-    ext <;> simp [MonObj.mul_comp, MonObj.comp_mul]
+    ext <;> simp [MonObj.mul_comp]
   have hab : (lift (fst A A) 1 : G2 A ⟶ G2 A) * (toUnit _ ≫ lift h 1) = (fst A A * (toUnit _ ≫ h)) ≫ lift (𝟙 A) 1 := by
-    ext <;> simp [MonObj.mul_comp, MonObj.comp_mul]
+    ext <;> simp [MonObj.mul_comp]
   have ha : (lift (fst A A) 1 : G2 A ⟶ G2 A) = fst A A ≫ lift (𝟙 A) 1 := by
-    ext <;> simp [MonObj.mul_comp, MonObj.comp_mul]
+    ext <;> simp
   have hb : (toUnit _ ≫ lift h 1 : G2 A ⟶ G2 A) = (toUnit _ ≫ h) ≫ lift (𝟙 A) 1 := by
-    ext <;> simp [MonObj.mul_comp, MonObj.comp_mul]
+    ext <;> simp
   have hc : (lift 1 (snd A A) : G2 A ⟶ G2 A) = snd A A ≫ lift 1 (𝟙 A) := by
-    ext <;> simp [MonObj.mul_comp, MonObj.comp_mul]
+    ext <;> simp
   have h1' : (1 : G2 A ⟶ G2 A) = (1 : G2 A ⟶ A) ≫ lift (𝟙 A) 1 := by
-    ext <;> simp [MonObj.mul_comp, MonObj.comp_mul]
+    ext <;> simp
   simp only [Fin.sum_univ_eight, Matrix.cons_val] at e
   rw [habc, hac, hbc, hab, ha, hb, hc, h1', Over.id_left, pull_id] at e
   simp only [fun g => fac g _ (z _ h1), fun g => fac g _ (z _ h2), fun g => fac g _ (z _ hh)] at e
   have key : pull (GlobalTheory.UPel.HT.Hecke.transl (lift h 1 : 𝟙_ (Over S) ⟶ G2 A)).left (cls L hL) = cls L hL := by
-    simp only [one_smul, neg_smul, smul_zero, neg_zero, add_zero, zero_add] at e
+    simp only [one_smul, neg_smul, smul_zero, add_zero] at e
     exact eq_of_sub_eq_zero ((sub_eq_add_neg _ _).trans e)
   refine (cls_eq_iff hL (pull_isLB hL _)).1 ?_
   rw [cls_pull hL, key]

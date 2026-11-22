@@ -362,7 +362,7 @@ theorem pi_ne_bot {n : ℕ} (hn : 0 < n) (A : Submodule (𝓞 K) V) (hA : A ≠ 
     by_cases hi : i = ⟨0, hn⟩
     · subst hi
       simpa using hxA
-    · simp [Pi.single_apply, hi]
+    · simp [hi]
   rw [h, Submodule.mem_bot] at hmem
   exact hx0 (by simpa using congrFun hmem ⟨0, hn⟩)
 

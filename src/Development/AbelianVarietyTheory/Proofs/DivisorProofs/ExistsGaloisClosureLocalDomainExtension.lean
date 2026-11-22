@@ -24,8 +24,6 @@ theorem exists_galois_embedding (R R' : Type) [CommRing R] [IsDomain R] [CharZer
   | exact @_root_.GlobalTheory.GaloisEmbeddingExistence.exists_galois_embedding
   | exact _root_.GlobalTheory.GaloisEmbeddingExistence.exists_galois_embedding
   | (apply _root_.GlobalTheory.GaloisEmbeddingExistence.exists_galois_embedding <;> assumption)
-  | (intros; apply _root_.GlobalTheory.GaloisEmbeddingExistence.exists_galois_embedding <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.GaloisEmbeddingExistence.exists_galois_embedding <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.GaloisEmbeddingExistence.exists_galois_embedding ..)
 
 end GlobalTheory.GalClosure

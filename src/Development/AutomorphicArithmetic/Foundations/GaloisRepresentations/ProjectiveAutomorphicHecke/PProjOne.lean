@@ -100,7 +100,7 @@ theorem pProjOne_holds : ProjOne.{u} := by
   have hD : D ≤ Ψ.range := by
     apply Algebra.adjoin_le
     rintro _ ⟨j, rfl⟩
-    exact ⟨MonoidAlgebra.of F _ (FreeMonoid.of j), by simp [Ψ, MonoidAlgebra.lift_of]⟩
+    exact ⟨MonoidAlgebra.of F _ (FreeMonoid.of j), by simp [Ψ]⟩
   obtain ⟨t, ht⟩ := hD z.2
   have ht' : MonoidAlgebra.lift F (F × A) (FreeMonoid J) (FreeMonoid.lift gen) t = z := ht
   have hwθ : wop θ t.coeff = (z : F × A).1 := by

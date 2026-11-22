@@ -58,21 +58,21 @@ theorem cayleyIndep : CayleyIndepStatement := by
   rw [hfun]
   refine ⟨⟨hc, hnt, ?_, ?_, ?_, ⟨S0, ?_⟩, fun μ S hS' => hmin μ S ?_⟩, ?_⟩
   · apply ReciprocityTheory.ChartRestriction.DS.Lap.CayleyIndepA.urep_conj
-    all_goals first | assumption | exact hU
+    all_goals first | assumption
   · apply ReciprocityTheory.ChartRestriction.DS.Lap.CayleyIndepA.irred_conj (hirr := hI)
-    all_goals first | assumption | exact hU
+    all_goals first | assumption
   · apply ReciprocityTheory.ChartRestriction.DS.Lap.CayleyIndepA.sqint_conj (hsq := hS)
-    all_goals first | assumption | exact hU
+    all_goals first | assumption
   · rw [ReciprocityTheory.ChartRestriction.DS.Lap.CayleyIndepA.ktype_iff]
     · exact hS0
-    all_goals first | assumption | exact hU
+    all_goals first | assumption
   · rw [ReciprocityTheory.ChartRestriction.DS.Lap.CayleyIndepA.ktype_iff] at hS'
     · exact hS'
-    all_goals first | assumption | exact hU
+    all_goals first | assumption
   · unfold Formalism.MainNotions.S.lowKSub
     refine congrArg sSup (Set.ext fun S => ?_)
     simp only [Set.mem_setOf_eq]
     rw [ReciprocityTheory.ChartRestriction.DS.Lap.CayleyIndepA.ktype_iff]
-    all_goals first | assumption | exact hU
+    all_goals first | assumption
 
 end ReciprocityTheory.ChartRestriction.DS.Lap

@@ -107,7 +107,7 @@ theorem integral_zero {R : Type} [CommRing R] {Z : Scheme.{0}} {B : LB Z} {p : Z
       Weight.chernPart_apply hφ 1 c (measurableSet_singleton y) (Set.singleton_subset_iff.2 hcy), himg]
     simp [GlobalTheory.AlgChart.chernDens_zero, volume_univ_zero]
   rw [hμ, finsum_eq_sum_of_fintype, integral_fintype Integrable.of_finite]
-  simp [Measure.real, Measure.count_singleton]
+  simp [Measure.real]
 
 end ChowFormHeightComparison₂.CF.C
 

@@ -19,8 +19,6 @@ theorem trace_pow_rect {A : Type} [Ring A] [Algebra ℂ A] {n m : ℕ} (E : Fin 
   | exact @_root_.GlobalTheory.TracePowEq.trace_pow_eq
   | exact _root_.GlobalTheory.TracePowEq.trace_pow_eq
   | (apply _root_.GlobalTheory.TracePowEq.trace_pow_eq <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TracePowEq.trace_pow_eq <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TracePowEq.trace_pow_eq <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.TracePowEq.trace_pow_eq ..)
 
 namespace IsoMat

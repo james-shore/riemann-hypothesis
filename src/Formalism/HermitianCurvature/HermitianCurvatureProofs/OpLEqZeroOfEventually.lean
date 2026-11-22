@@ -151,7 +151,7 @@ theorem UUiw_mem {A : Type} [Ring A] [StarRing A] [Algebra ℂ A] [StarModule �
     refine (entSub 𝒜).mul_mem (Formalism.FourierDecayAlt.P5.HerA.ins_mem _ fun i j => ?_) ih
     show io ((Formalism.YangianSpanCharacter.T.Uinv (if l.plus then s else star s) : M2 A) i j) ∈ entSub 𝒜
     apply Formalism.FourierDecayAlt.P5.HerA.io_mem
-    fin_cases i <;> fin_cases j <;> simp [Formalism.YangianSpanCharacter.T.Uinv, 𝒜.one_mem, 𝒜.zero_mem, 𝒜.algebraMap_mem]
+    fin_cases i <;> fin_cases j <;> simp [Formalism.YangianSpanCharacter.T.Uinv, 𝒜.algebraMap_mem]
 
 end Alg
 

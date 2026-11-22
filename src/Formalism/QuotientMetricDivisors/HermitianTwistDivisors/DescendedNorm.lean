@@ -22,15 +22,13 @@ theorem cnorm_nonneg {n : ℕ} (u : Fin n → ℂ) : 0 ≤ Formalism.HermitianLa
 
 theorem cnorm_star {n : ℕ} (u : Fin n → ℂ) : Formalism.HermitianLatticesTheory.cnorm (star u) = Formalism.HermitianLatticesTheory.cnorm u := by
   first
-    | simp [Formalism.HermitianLatticesTheory.cnorm, norm_star]
-    | simp [Formalism.HermitianLatticesTheory.cnorm, Complex.norm_conj]
+    | simp [Formalism.HermitianLatticesTheory.cnorm]
 
 theorem norm_dot_le {n : ℕ} (y w : Fin n → ℂ) :
     ‖y ⬝ᵥ w‖ ≤ Formalism.HermitianLatticesTheory.cnorm y * Formalism.HermitianLatticesTheory.cnorm w := by
   have h1 : ‖y ⬝ᵥ w‖ ≤ ∑ i, ‖y i‖ * ‖w i‖ := by
     first
       | simpa [dotProduct, norm_mul] using norm_sum_le Finset.univ fun i => y i * w i
-      | simpa [Matrix.dotProduct, norm_mul] using norm_sum_le Finset.univ fun i => y i * w i
   exact h1.trans (Real.sum_mul_le_sqrt_mul_sqrt _ _ _)
 
 theorem star_dot_self {n : ℕ} (w : Fin n → ℂ) :
@@ -41,12 +39,9 @@ theorem star_dot_self {n : ℕ} (w : Fin n → ℂ) :
   push_cast
   first
     | simp only [dotProduct, Pi.star_apply]
-    | simp only [Matrix.dotProduct, Pi.star_apply]
   refine Finset.sum_congr rfl fun i _ => ?_
   first
     | exact Complex.conj_mul' (w i)
-    | exact_mod_cast Complex.conj_mul' (w i)
-    | exact RCLike.conj_mul (w i)
 
 theorem opNorm_le_iff {a D : ℕ} (A : Matrix (Fin D) (Fin a) ℂ) (c : ℝ) (hc : 0 ≤ c) :
     ‖LinearMap.toContinuousLinearMap (Matrix.toEuclideanLin A)‖ ≤ c ↔
@@ -57,7 +52,7 @@ theorem opNorm_le_iff {a D : ℕ} (A : Matrix (Fin D) (Fin a) ℂ) (c : ℝ) (hc
         Formalism.HermitianLatticesTheory.cnorm (A.mulVec x) := by
     intro x
     rw [cnorm_eq]
-    simp [Matrix.toEuclideanLin_apply]
+    simp
   constructor
   · intro h x y
     have h2 : Formalism.HermitianLatticesTheory.cnorm (A.mulVec x) ≤ c * Formalism.HermitianLatticesTheory.cnorm x := by
@@ -89,7 +84,6 @@ theorem pairC_eq {K : Type} [Field K] [NumberField K] {a D : ℕ} (v : InfiniteP
     pairC v B x y = y ⬝ᵥ (pmat v B).mulVec x := by
   first
     | simp only [pairC, pmat, dotProduct, Matrix.mulVec, Matrix.of_apply, Finset.mul_sum]
-    | simp only [pairC, pmat, Matrix.dotProduct, Matrix.mulVec, Matrix.of_apply, Finset.mul_sum]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun k _ => Finset.sum_congr rfl fun i _ => ?_
   ring
@@ -167,10 +161,10 @@ theorem operator_norm_dual : OpNormDual := by
 theorem chain_spectrum : ChainSpec := by
   unfold ChainSpec
   refine ⟨fun m C Kj φ => ⟨?_, fun j => ?_⟩, fun R _ m c Kj => ⟨?_, fun j => ?_⟩⟩
-  · first | rfl | simp [chainFun]
-  · first | rfl | simp [chainFun]
-  · first | rfl | simp [chainMat]
-  · first | rfl | simp [chainMat]
+  · first | rfl
+  · first | rfl
+  · first | rfl
+  · first | rfl
 
 namespace OperatorNormFrames
 
@@ -191,13 +185,13 @@ theorem filter_last {m : ℕ} :
     Finset.univ.filter (fun i : Fin m => i.castSucc < Fin.last m) = Finset.univ := by
   first
     | exact Finset.filter_true_of_mem fun i _ => Fin.castSucc_lt_last i
-    | ext i; simp [Fin.castSucc_lt_last]
+    | ext i
 
 theorem filter_zero {m : ℕ} :
     Finset.univ.filter (fun i : Fin m => i.castSucc < (0 : Fin (m + 1))) = ∅ := by
   first
     | exact Finset.filter_false_of_mem fun i _ => Fin.not_lt_zero _
-    | ext i; simp
+    | ext i
 
 end OperatorNormFrames
 
@@ -229,7 +223,6 @@ theorem successive_minimum_log : SminLog := by
     intro p
     first
       | exact Real.log_prod fun j _ => (hlam j p).ne'
-      | exact Real.log_prod _ _ fun j _ => (hlam j p).ne'
   obtain ⟨q, hq0⟩ := exists_minOver (fun p => ∏ j, lam j p)
   have hq : minOver (fun p => ∏ j, lam j p) = ∏ j, lam j q := hq0
   have hmin : ∀ p, ∏ j, lam j q ≤ ∏ j, lam j p := by
@@ -468,7 +461,6 @@ theorem map_mulVec_emb {n : ℕ} (v : InfinitePlace K) (N : Matrix (Fin D) (Fin 
   ext i
   first
     | simp [Matrix.mulVec, dotProduct, map_sum, map_mul]
-    | simp [Matrix.mulVec, Matrix.dotProduct, map_sum, map_mul]
 
 end G
 
@@ -561,7 +553,7 @@ theorem place_bound {K : Type} [Field K] [NumberField K] [StarRing K] {n D a b :
     by_cases h : i = j
     · subst h
       simp
-    · simp [Pi.single_apply, h]
+    · simp [h]
   have heig : ∀ q, ∀ x ∈ Qp q, A *ᵥ (fun i => v.embedding (x i)) =
       ((s q : ℝ) : ℂ) • (GQ *ᵥ (fun i => v.embedding (x i))) := by
     intro q x hx
@@ -592,7 +584,7 @@ theorem place_bound {K : Type} [Field K] [NumberField K] [StarRing K] {n D a b :
           simpa using hx
         · rw [Pi.single_eq_of_ne h]
           exact Submodule.zero_mem _
-      · rw [Finset.sum_eq_single q (fun r _ h => by simp [Pi.single_apply, h])
+      · rw [Finset.sum_eq_single q (fun r _ h => by simp [h])
           (fun h => absurd (Finset.mem_univ q) h)]
         simp
     · exact ⟨0, fun q => Submodule.zero_mem _, by simp⟩
@@ -623,7 +615,7 @@ theorem place_bound {K : Type} [Field K] [NumberField K] [StarRing K] {n D a b :
       by_cases h : j = i
       · subst h
         simp
-      · simp [Pi.single_apply, h]
+      · simp [h]
     obtain ⟨W, hW⟩ : ∃ W : Ix → Fin D → ℂ,
         ∀ q, W q = ∑ i, w i • fun j => v.embedding (f i q j) := ⟨_, fun q => rfl⟩
     have hWsum : ∑ q, W q = w := by
@@ -708,7 +700,7 @@ theorem place_bound {K : Type} [Field K] [NumberField K] [StarRing K] {n D a b :
     unfold nrm
     have e : WithLp.toLp 2 (M *ᵥ u) =
         LinearMap.toContinuousLinearMap (Matrix.toEuclideanLin M) (WithLp.toLp 2 u) := by
-      simp [Matrix.toEuclideanLin_apply]
+      simp
     rw [e]
     exact ContinuousLinearMap.le_opNorm _ _
   have h4 : fnorm (Xb v) ((col.map v.embedding) *ᵥ x) ≤ k * fnorm (Xa v) x := by
@@ -736,7 +728,6 @@ theorem place_bound {K : Type} [Field K] [NumberField K] [StarRing K] {n D a b :
       rwa [Real.sqrt_sq (mul_nonneg hq0 hr.le), Real.sqrt_sq he0] at this
     first
       | exact (le_div_iff₀ hr).mpr h7
-      | exact (le_div_iff hr).mpr h7
   calc ‖pairC v Pt ((col.map v.embedding) *ᵥ x) F‖
       ≤ p * fnorm (Xb v) ((col.map v.embedding) *ᵥ x) * fnorm (X0 v) F := h3
     _ ≤ p * (k * fnorm (Xa v) x) * (fnorm (XE v) y / Real.sqrt smin) :=
@@ -813,7 +804,6 @@ theorem height_constant_first : HeightBoundConstant := by
     have hprod : 0 < ∏ j, kU j v := by
       first
         | exact pos_of_mul_pos_right hnum hpUnn
-        | nlinarith [Finset.prod_nonneg fun j (_ : j ∈ Finset.univ) => hkUnn j]
     have hpUpos : 0 < pU v := by
       rcases lt_or_eq_of_le hpUnn with h | h
       · exact h
@@ -830,7 +820,6 @@ theorem height_constant_first : HeightBoundConstant := by
       symm
       first
         | exact Real.log_prod fun j _ => (pow_pos (hkUpos j) 2).ne'
-        | exact Real.log_prod _ _ fun j _ => (pow_pos (hkUpos j) 2).ne'
     calc Real.log (Formalism.HN.opNormAt (Pi.basisFun K (Fin (c 0))) (Xc 0)
           (Pi.basisFun K (Fin D)).dualBasis (Formalism.HN.dualFrame XE) v B ^ 2)
         ≤ Real.log (pU v ^ 2 * (∏ j, kU j v ^ 2) / (κ v * minOver (fun p => ∏ j, lamL j p v))) := by

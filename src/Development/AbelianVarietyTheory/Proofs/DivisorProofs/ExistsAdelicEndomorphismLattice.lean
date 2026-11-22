@@ -10,4 +10,4 @@ open scoped TensorProduct
 open scoped TensorProduct
 set_option maxHeartbeats 1000000 in
 theorem _root_.GlobalTheory.T.exists_adelic_endomorphism_lattice : ∀ (p : ℕ) [Fact p.Prime] (D : Datum p) (g : ℕ → D.La →+ D.La), (∀ n m : ℕ, 0 < n → 0 < m → (n * m).Coprime p → ∀ x, ∃ z, g (n * m) x = g n x + n • z) → ∃ h₀ : Module.End (AfP p) (AfP p ⊗[ℚ] VQ D), (∀ v ∈ LaHat D, h₀ v ∈ LaHat D) ∧ ∀ n : ℕ, 0 < n → n.Coprime p → ∀ x, ∃ w ∈ LaHat D, h₀ (inAf D x) = inAf D (g n x) + n • w := by
-  first | (exact @GlobalTheory.LKGeo.ModLim.exists_limit) | (exact GlobalTheory.LKGeo.ModLim.exists_limit) | (intros; apply GlobalTheory.LKGeo.ModLim.exists_limit <;> assumption)
+  first | (exact @GlobalTheory.LKGeo.ModLim.exists_limit)

@@ -77,10 +77,10 @@ theorem schur_mul_conjLowUni : ∀ (R : Type) [CommRing R] (m r : ℕ) (g k : Ma
     simp only [Matrix.mul_add, Matrix.mul_assoc, j1, j3]
     abel
   · rw [Scof, Scof, eA, eB, eC, eD, Matrix.mul_inv_rev]
-    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.sub_mul, Matrix.mul_assoc, j1, j3, j4]
+    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_sub, Matrix.mul_assoc, j1, j3, j4]
     abel
   · rw [Xof, Xof, Xof, eB, eD, Matrix.mul_inv_rev]
-    simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_assoc, j4, i4]
+    simp only [Matrix.add_mul, Matrix.mul_assoc, j4]
     abel
 
 end GlobalTheory.SchurExt

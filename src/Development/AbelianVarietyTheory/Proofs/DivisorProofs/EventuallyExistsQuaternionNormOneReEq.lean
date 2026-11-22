@@ -25,7 +25,7 @@ private lemma exists_root_monic_quadratic_henselian {R : Type*} [CommRing R] [Is
     (by simpa only [eval_add, eval_pow, eval_X, eval_mul, eval_C, add_assoc] using h)
     (by
       have : eval a₀ (derivative (X ^ 2 + (C p * X + C q))) = 2 * a₀ + p := by
-        simp [derivative_X_pow]; ring
+        simp; ring
       rw [this]; exact hu.map _)
   exact ⟨a, by simpa only [IsRoot, eval_add, eval_pow, eval_X, eval_mul, eval_C, add_assoc] using ha,
     haa⟩

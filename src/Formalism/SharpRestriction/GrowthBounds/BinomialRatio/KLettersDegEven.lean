@@ -75,7 +75,7 @@ theorem kLetters_deg_odd {s : ℕ} (A0 : ℕ) (A C : Fin s → ℕ) (i : Fin s) 
   have h0 : ¬ (2 * i.val + 1 = 0) := by omega
   have h1 : (2 * i.val + 1 - 1) / 2 < s := by omega
   have h2 : (2 * i.val + 1) % 2 = 1 := by omega
-  simp only [kLetters, Fin.val_mk]
+  simp only [kLetters]
   rw [if_neg h0, dif_pos h1, if_pos h2]
   congr 1
   ext
@@ -88,7 +88,7 @@ theorem kLetters_deg_even {s : ℕ} (A0 : ℕ) (A C : Fin s → ℕ) (i : Fin s)
   have h0 : ¬ (2 * i.val + 2 = 0) := by omega
   have h1 : (2 * i.val + 2 - 1) / 2 < s := by omega
   have h2 : ¬ ((2 * i.val + 2) % 2 = 1) := by omega
-  simp only [kLetters, Fin.val_mk]
+  simp only [kLetters]
   rw [if_neg h0, dif_pos h1, if_neg h2]
   congr 1
   ext

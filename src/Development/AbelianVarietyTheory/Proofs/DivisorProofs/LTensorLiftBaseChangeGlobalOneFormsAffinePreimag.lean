@@ -81,7 +81,7 @@ theorem lTensor_liftSemi_bijective_of_isBaseChange {R R' B B' W W' Ω Ω' : Type
           TensorProduct.assoc_symm_tmul, TensorProduct.lift.tmul, LinearMap.mk₂_apply,
           liftSemi_tmul, LinearMap.lTensor_tmul, LinearEquiv.lTensor_tmul,
           LinearEquiv.restrictScalars_apply, IsBaseChange.equiv_tmul, one_smul, hf, hp, hm,
-          map_smul, smul_assoc]
+          smul_assoc]
   refine ⟨fun x y hxy ↦ ?_, fun q ↦ ?_⟩
   · obtain ⟨x0, rfl⟩ := hΨ x
     obtain ⟨y0, rfl⟩ := hΨ y

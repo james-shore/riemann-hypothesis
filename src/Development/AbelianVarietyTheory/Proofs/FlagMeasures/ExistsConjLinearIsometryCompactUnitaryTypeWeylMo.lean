@@ -64,7 +64,7 @@ def conjL (σ : Type) : MvPolynomial σ ℂ →ₗ⋆[ℂ] MvPolynomial σ ℂ w
   toFun p := MvPolynomial.map (starRingEnd ℂ) p
   map_add' p q := map_add _ p q
   map_smul' c p := by
-    simp only [RingHom.id_apply, smul_eq_C_mul, map_mul, map_C]
+    simp only [smul_eq_C_mul, map_mul, map_C]
 
 theorem conjL_conjL {σ : Type} (p : MvPolynomial σ ℂ) : conjL σ (conjL σ p) = p := by
   show MvPolynomial.map (starRingEnd ℂ) (MvPolynomial.map (starRingEnd ℂ) p) = p

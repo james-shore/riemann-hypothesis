@@ -22,7 +22,7 @@ def basisOfDual (v : ι → M) (c : ι → Dual R M) (h₁ : ∀ i j, c i (v j) 
 
 @[simp] theorem basisOfDual_apply (v : ι → M) (c : ι → Dual R M) (h₁ h₂) (j : ι) :
     basisOfDual v c h₁ h₂ j = v j := by
-  simp [basisOfDual, Fintype.linearCombination_apply, Function.update_apply]
+  simp [basisOfDual, Fintype.linearCombination_apply]
 
 @[simp] theorem basisOfDual_repr (v : ι → M) (c : ι → Dual R M) (h₁ h₂) (x : M) (i : ι) :
     (basisOfDual v c h₁ h₂).repr x i = c i x := by
@@ -164,7 +164,7 @@ def basisStepEquiv (b : Basis (Fin n) R M) (i : Fin n) :
       intro j hj
       rcases (Fin.castSucc_le_castSucc_iff.mp hj).eq_or_lt with rfl | h
       · simp
-      · simp [hx j (Fin.succ_le_castSucc_iff.mpr h), Finsupp.single_apply, h.ne])
+      · simp [hx j (Fin.succ_le_castSucc_iff.mpr h), h.ne])
 
 def ofBasis (b : Basis (Fin n) R M) : FullFlag R M n where
   sub := b.flag

@@ -33,7 +33,7 @@ theorem liftPQ (Z₁ Z₂ : M.Mat (r + 1)) (γ : IsoMbe Z₁.Z Z₂.Z) :
       apply LinearMap.pi_ext
       intro j x
       have h1 : (Pi.single j x : Fin (r + 1) → M.R) = x • Pi.single j 1 := by
-        ext k; by_cases hk : k = j <;> simp [Pi.single_apply, hk]
+        ext k; by_cases hk : k = j <;> simp [hk]
       have h2 : P.mulVec (Pi.single j x) = x • p j := by
         ext i; simp [P, Matrix.mulVec_single, mul_comm]
       simp only [LinearMap.comp_apply, Submodule.mkQ_apply, Matrix.mulVecLin_apply, LinearEquiv.coe_coe]
@@ -107,13 +107,12 @@ theorem liftPQ_inv (Z₁ Z₂ : M.Mat (r + 1)) (γ : IsoMbe Z₁.Z Z₂.Z) (P P'
     simp only [Matrix.of_apply, Fin.lastCases_castSucc, Fin.lastCases_last, mul_zero, add_zero]
     by_cases hj : j = Fin.last r
     · subst hj
-      simp only [if_pos rfl, mul_zero, Finset.sum_const_zero, add_zero]
+      simp only
       rw [Matrix.mul_apply]
       simp [hPe, hP'e, Matrix.one_apply]
     · simp only [if_neg hj]
       have h := congrFun (hc j) i
-      simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Pi.sub_apply, Matrix.mulVec_single,
-        mul_one] at h
+      simp only [Finset.sum_apply, Pi.smul_apply, smul_eq_mul, Pi.sub_apply, Matrix.mulVec_single] at h
       have hcomm : ∑ x : Fin r, Z₁.Z i x.castSucc * c j x = ∑ x : Fin r, c j x * Z₁.Z i x.castSucc :=
         Finset.sum_congr rfl (fun _ _ => mul_comm _ _)
       rw [hcomm, h, Matrix.one_apply, Pi.single_apply]

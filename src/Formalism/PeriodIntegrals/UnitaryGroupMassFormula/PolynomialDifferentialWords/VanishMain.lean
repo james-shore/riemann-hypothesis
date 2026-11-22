@@ -88,11 +88,11 @@ lemma vanish_at {d c : ℕ} (W : Submodule K (Pol K k)) (hW : W ≤ Bihom K k d)
     have hshl : ∀ (t : K) (y : Fin k ⊕ Fin k → K) (j : Fin k),
         shiftPt i0 b t y (Sum.inl j) = y (Sum.inl j) + t * (if j = b then y (Sum.inl i0) else 0) := by
       intro t y j
-      by_cases h : j = b <;> simp [shiftPt, rop_apply, pderiv_X, Pi.single_apply, h] <;> ring
+      by_cases h : j = b <;> simp [shiftPt, rop_apply, pderiv_X, h]
     have hshr : ∀ (t : K) (y : Fin k ⊕ Fin k → K) (j : Fin k),
         shiftPt i0 b t y (Sum.inr j) = y (Sum.inr j) - t * (if j = i0 then y (Sum.inr b) else 0) := by
       intro t y j
-      by_cases h : j = i0 <;> simp [shiftPt, rop_apply, pderiv_X, Pi.single_apply, h] <;> ring
+      by_cases h : j = i0 <;> simp [shiftPt, rop_apply, pderiv_X, h] <;> ring
     obtain ⟨s, hs⟩ : ∃ s : K, s = -(p (Sum.inl b) / p (Sum.inl i0)) := ⟨_, rfl⟩
     have hq0 : shiftPt i0 b s p (Sum.inl i0) = p (Sum.inl i0) := by
       rw [hshl, if_neg hib, mul_zero, add_zero]
@@ -103,9 +103,9 @@ lemma vanish_at {d c : ℕ} (W : Submodule K (Pol K k)) (hW : W ≤ Bihom K k d)
       intro j hj
       rw [hshl, if_neg hj, mul_zero, add_zero]
     have hquad : ∑ i, shiftPt i0 b s p (Sum.inl i) * shiftPt i0 b s p (Sum.inr i) = 0 := by
-      simp only [hshl, hshr, mul_add, add_mul, mul_sub, sub_mul, Finset.sum_add_distrib,
+      simp only [hshl, hshr, add_mul, mul_sub, Finset.sum_add_distrib,
         Finset.sum_sub_distrib, mul_ite, ite_mul, mul_zero, zero_mul, Finset.sum_ite_eq',
-        Finset.mem_univ, if_true, hbi, hib, if_false, hq]
+        Finset.mem_univ, if_true, hib, if_false, hq]
       ring
     have ihq : ∀ g ∈ W, eval (shiftPt i0 b s p) g = 0 := by
       refine ih _ (by rw [hq0]; exact hp0) ?_ hquad
@@ -120,8 +120,8 @@ lemma vanish_at {d c : ℕ} (W : Submodule K (Pol K k)) (hW : W ≤ Bihom K k d)
     have hback : shiftPt i0 b (-s) (shiftPt i0 b s p) = p := by
       funext v
       rcases v with j | j
-      · by_cases h : j = b <;> simp [hshl, h, hib] <;> ring
-      · by_cases h : j = i0 <;> simp [hshr, h, hbi] <;> ring
+      · by_cases h : j = b <;> simp [hshl, h, hib]
+      · by_cases h : j = i0 <;> simp [hshr, h, hbi]
     have hE := expFormula i0 b hib (-s) g
     unfold ExpFormula at hE
     obtain ⟨N, _, hsum⟩ := hE

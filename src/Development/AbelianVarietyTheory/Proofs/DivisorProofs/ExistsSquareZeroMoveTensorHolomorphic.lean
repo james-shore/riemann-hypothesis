@@ -42,9 +42,7 @@ theorem lTensor_leibniz {R S : Type} [CommRing R] [Algebra ℂ R] [CommRing S] [
   first
   | exact @_root_.GlobalTheory.TensorLeibnizRule.lTensor_leibniz
   | exact _root_.GlobalTheory.TensorLeibnizRule.lTensor_leibniz
-  | (apply _root_.GlobalTheory.TensorLeibnizRule.lTensor_leibniz <;> assumption)
-  | (intros; apply _root_.GlobalTheory.TensorLeibnizRule.lTensor_leibniz <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.TensorLeibnizRule.lTensor_leibniz <;> first | assumption | infer_instance)
+  | (apply _root_.GlobalTheory.TensorLeibnizRule.lTensor_leibniz)
   | (intros; exact _root_.GlobalTheory.TensorLeibnizRule.lTensor_leibniz ..)
 
 theorem lTensor_one {R S : Type} [CommRing R] [Algebra ℂ R] [CommRing S] [Algebra ℂ S]

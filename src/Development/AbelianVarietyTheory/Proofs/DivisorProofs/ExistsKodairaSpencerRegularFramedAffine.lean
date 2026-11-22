@@ -95,7 +95,7 @@ theorem exists_der_res {X : Scheme.{0}} (U W : X.affineOpens) (hW : W.1 ≤ U.1)
     { toFun := fun r => TrivSqZeroExt.inl (ρ r) + TrivSqZeroExt.inr (ρ (D r))
       map_one' := by ext <;> simp
       map_zero' := by ext <;> simp
-      map_add' := fun a b => by ext <;> simp <;> ring
+      map_add' := fun a b => by ext <;> simp
       map_mul' := fun a b => by ext <;> simp [Derivation.leibniz] <;> ring }
   letI : Algebra Γ(X, U.1) (DualNumber Γ(X, W.1)) := g.toAlgebra
   let π : DualNumber Γ(X, W.1) →ₐ[Γ(X, U.1)] Γ(X, W.1) :=

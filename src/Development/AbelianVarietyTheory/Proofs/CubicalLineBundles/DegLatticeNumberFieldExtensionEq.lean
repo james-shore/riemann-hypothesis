@@ -166,7 +166,7 @@ private lemma exists_linearForm_vanish_init_eq_one_last {r : ℕ} {v : Fin (r + 
     simp [Module.Basis.span_apply]
   refine ⟨g, fun i => ?_, ?_⟩
   · rw [key]
-    simp [Finsupp.single_apply, Fin.castSucc_ne_last]
+    simp [Fin.castSucc_ne_last]
   · rw [key]
     simp
 

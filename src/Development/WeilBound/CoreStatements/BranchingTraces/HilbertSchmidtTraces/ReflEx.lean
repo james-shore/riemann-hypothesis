@@ -134,9 +134,9 @@ theorem boost : ∀ {n : ℕ} (ε : Fin n → Bool) (z y : Fin n → ℂ), star 
     rw [Matrix.smul_mulVec, hRz, smul_smul, hu2, one_smul]
   · show hs (star u • R) ≤ 16 * ((n : ℝ) + GlobalTheory.CompanionTheory.UnitaryFramesMetricPeriods.nsq y) ^ 2
     have hsu : hs (star u • R) = hs R := by
-      simp [hs, Matrix.smul_apply, norm_mul, norm_star, hu1]
+      simp [hs, Matrix.smul_apply, hu1]
     have hnu : GlobalTheory.CompanionTheory.UnitaryFramesMetricPeriods.nsq (u • y) = GlobalTheory.CompanionTheory.UnitaryFramesMetricPeriods.nsq y := by
-      simp [GlobalTheory.CompanionTheory.UnitaryFramesMetricPeriods.nsq, norm_mul, hu1]
+      simp [GlobalTheory.CompanionTheory.UnitaryFramesMetricPeriods.nsq, hu1]
     have hD := nsq_sub_le_two_mul_add (u • y) z
     rw [hnu, hnz] at hD
     have hD0 := nsq_nonneg_hilbert_schmidt_traces (u • y - z)

@@ -166,7 +166,7 @@ theorem UpperTheory.V.Pa.Lev.freeSummand :
     intro z
     apply ψ.symm.injective
     rw [AlgEquiv.symm_apply_apply]
-    simp [ψ, Ideal.quotientKerAlgEquivOfSurjective_apply]
+    simp [ψ]
   refine ⟨rk, e0.trans (AddEquiv.piCongrRight fun _ => ψ.toRingEquiv.toAddEquiv), fun z m => ?_⟩
   have h1 := he0 (φ z) m (act z m) (hagree z m)
   funext i

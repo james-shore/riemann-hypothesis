@@ -49,6 +49,6 @@ def FibNz {N : S.Opens} (s : LocSec G L N) (W : S.Opens) : Prop :=
       valF y _ (s i) ≠ 0
 
 theorem isLocSec_zero {N : S.Opens} : IsLocSec (0 : LocSec G L N) := fun i j => by
-  simp [Pi.zero_apply, map_zero, mul_zero]
+  simp [map_zero, mul_zero]
 
 end GlobalTheory.UMin.ThBdl

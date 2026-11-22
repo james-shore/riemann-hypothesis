@@ -13,8 +13,6 @@ theorem exists_nsmul_mem_of_span {K V : Type*} [Field K] [NumberField K] [AddCom
   | exact @_root_.GlobalTheory.NatMulIntegerMultiple.main
   | exact _root_.GlobalTheory.NatMulIntegerMultiple.main
   | (apply _root_.GlobalTheory.NatMulIntegerMultiple.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NatMulIntegerMultiple.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NatMulIntegerMultiple.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NatMulIntegerMultiple.main ..)
 
 theorem dgam_pos_and_full : ∀ D : D7, (∀ u, 0 < (D.mem u).C.DGam) ∧

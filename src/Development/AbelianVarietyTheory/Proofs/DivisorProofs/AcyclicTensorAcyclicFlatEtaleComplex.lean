@@ -146,7 +146,7 @@ theorem Tens.d_d (I J : Cx R) (U : Scheme.{0}) (w : ℤ) (x : Tens I J U w) :
       simp only [Tens.of, DirectSum.lof_eq_of] at e e1 e2
       rw [e, map_add, map_zsmul, e1, e2]
       simp only [Sec.map_d_d, TensorProduct.zero_tmul, TensorProduct.tmul_zero, map_zero, zero_add, smul_zero, add_zero,
-        smul_add, Int.negOnePow_succ, Units.val_neg, neg_smul, smul_smul]
+        Int.negOnePow_succ, Units.val_neg, neg_smul]
       simp
     | add y z hy hz => simp only [map_add, hy, hz, add_zero]
   | add x y hx hy => simp only [map_add, hx, hy, add_zero]

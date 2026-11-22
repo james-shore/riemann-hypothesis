@@ -122,7 +122,7 @@ theorem isLocalization_away_of_flat_lift (R B B' B₀ B₀' : Type) [CommRing R]
       rw [map_sub, map_mul, map_pow, map_sum]
       simp_rw [hφs, ← hM]
       rw [show φ (c q) = ∑ j, A q j • y j from hy q, Finset.sum_mul]
-      simp [smul_mul_assoc]
+      simp
     choose n' hn' using fun q => kerI _ (he q)
     obtain ⟨N, hNdef⟩ : ∃ N, N = ∑ q, n' q := ⟨_, rfl⟩
     have hNle : ∀ q, n' q ≤ N := fun q => hNdef ▸

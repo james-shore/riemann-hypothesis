@@ -144,7 +144,7 @@ private theorem iwasawa (O : Subring K) (hO : ∀ x : K, x ∈ O ∨ x⁻¹ ∈ 
       (div_ne_zero (neg_ne_zero.2 hdet) (pow_ne_zero _ h0)), g 0 0 / g 1 0, ⟨_, h1⟩, Or.inl ?_⟩
     apply Units.ext
     ext i j
-    fin_cases i <;> fin_cases j <;> simp [aff, sw, Matrix.mul_apply, Fin.sum_univ_two, Matrix.diagonal_apply] <;> field_simp <;> ring
+    fin_cases i <;> fin_cases j <;> simp [aff, sw, Matrix.mul_apply, Matrix.diagonal_apply] <;> field_simp <;> ring
   · have h0 : g 1 1 ≠ 0 := by
       intro h0
       apply h
@@ -158,7 +158,7 @@ private theorem iwasawa (O : Subring K) (hO : ∀ x : K, x ∈ O ∨ x⁻¹ ∈ 
       (div_ne_zero hdet (pow_ne_zero _ h0)), g 0 1 / g 1 1, ⟨_, h1⟩, Or.inr ?_⟩
     apply Units.ext
     ext i j
-    fin_cases i <;> fin_cases j <;> simp [aff, sw, Matrix.mul_apply, Fin.sum_univ_two, Matrix.diagonal_apply] <;> field_simp <;> ring
+    fin_cases i <;> fin_cases j <;> simp [aff, sw, Matrix.mul_apply, Matrix.diagonal_apply] <;> field_simp <;> ring
 
 variable {V : Type} [AddCommGroup V] [Module ℂ V]
 

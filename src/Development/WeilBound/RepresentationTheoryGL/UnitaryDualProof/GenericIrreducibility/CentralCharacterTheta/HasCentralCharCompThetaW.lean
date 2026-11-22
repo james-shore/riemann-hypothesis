@@ -41,7 +41,7 @@ theorem thetaW_scalar (N : ℕ) (z : kˣ) :
   by_cases hij : i = j
   · subst hij
     simp
-  · simp [Matrix.diagonal_apply, hij, Ne.symm hij]
+  · simp [hij, Ne.symm hij]
 
 theorem hasCentralChar_comp_thetaW {N : ℕ} {V : Type} [AddCommGroup V] [Module ℂ V]
     (π : Representation ℂ (GL (Fin N) k) V) (ω : kˣ →* ℂˣ) (h : HasCentralChar π ω) :

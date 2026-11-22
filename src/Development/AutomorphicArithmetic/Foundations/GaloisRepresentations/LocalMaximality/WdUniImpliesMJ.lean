@@ -14,7 +14,7 @@ private lemma wd_act {ι S E : Type} [LinearOrder ι] [CommRing S] [Algebra ℂ 
       act (wd (fun i => Algebra.lmul ℂ S (u i)) f t) m := by
   rw [wd_at, wd_at, map_sum, LinearMap.sum_apply]
   refine Finset.sum_congr rfl fun i _ => ?_
-  simp [map_zsmul, Module.End.mul_apply]
+  simp [Module.End.mul_apply]
 
 private lemma wd_one {ι E : Type} [LinearOrder ι] [AddCommGroup E] [Module ℂ E]
     (g : E →ₗ[ℂ] E) (b : Finset ι → E) (t : Finset ι) :

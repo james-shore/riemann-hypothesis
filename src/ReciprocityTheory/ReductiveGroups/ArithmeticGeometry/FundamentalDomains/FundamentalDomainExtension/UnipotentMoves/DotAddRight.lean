@@ -47,7 +47,7 @@ lemma dot_adj {m n : ℕ} (A : Matrix (Fin m) (Fin n) ℂ) (a : Fin n → ℂ) (
 
 lemma norm_dot_le {n : ℕ} (u w : Fin n → ℂ) : ‖dot u w‖ ≤ en u * en w := by
   have h : dot u w = inner ℂ (WithLp.toLp 2 w : EuclideanSpace ℂ (Fin n)) (WithLp.toLp 2 u) := by
-    simp only [dot, PiLp.inner_apply, RCLike.inner_apply, PiLp.toLp_apply]
+    simp only [dot, PiLp.inner_apply, RCLike.inner_apply]
   rw [h, en, en, mul_comm]
   exact norm_inner_le_norm _ _
 
@@ -292,7 +292,7 @@ theorem maj_xZ' {x : Frame X.Ψ r} (hx : x ∈ X.dom) (ho : X.IsOrtho x) {ρ : �
   have htopP : top X (X.lowBlock Z τ *ᵥ ext X α) = α := by
     funext a
     simp only [top, mulVec_ext X, Finset.sum_apply, Pi.smul_apply, smul_eq_mul, col, L_pp, mul_ite,
-      mul_one, mul_zero, Finset.sum_ite_eq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
+      mul_one, mul_zero, Finset.sum_ite_eq, Finset.mem_univ, if_true]
   have hbotP : bot X (X.lowBlock Z τ *ᵥ ext X α) = Matrix.of (Z τ) *ᵥ α := by
     rw [mulVec_ext X]
     funext m

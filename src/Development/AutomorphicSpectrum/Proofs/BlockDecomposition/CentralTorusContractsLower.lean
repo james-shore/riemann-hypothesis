@@ -26,7 +26,7 @@ theorem lowC_central_contract : ∀ (k : Type) [Field k] [ValuativeRel k] [Topol
     · refine ⟨y * x, ?_, ?_, ?_⟩
       · exact mul_ne_zero (by rintro rfl; simp at hy0) hx0
       · rw [map_mul, ← hy]; exact mul_lt_of_lt_one_right hy0 hx1
-      · rw [map_mul]; first | exact mul_le_one' hy1 hx1.le | exact mul_le_one₀ hy1 zero_le' hx1.le
+      · rw [map_mul]; first | exact mul_le_one' hy1 hx1.le
     · refine ⟨x, hx0, ?_, hx1.le⟩
       rw [← hy]; exact hx1.trans hy1
   refine ⟨blockScalar hc0 (GlobalTheory.DepthZeroJac.expo s 1), blockScalar_central hc0 _, ?_⟩

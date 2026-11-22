@@ -130,7 +130,7 @@ theorem gtTanR_of_letBC (hG : GlobalFnsSt) {ν : GtPt D₀ (epsR A)} {ν' : GtPt
     ((Category.comp_id _).trans (Category.id_comp _).symm) g₀
   let ρ : Over.mk (𝟙 (Sp A')) ⟶ epsR A' := Over.homMk (spMap (TrivSqZeroExt.fstHom A' A' A').toRingHom) (by
     refine (spMap_comp _ _).symm.trans (Eq.trans (congrArg spMap ?_) (Spec.map_id _))
-    exact RingHom.ext fun x => by simp [TrivSqZeroExt.algebraMap_eq_inl])
+    exact RingHom.ext fun x => by simp)
   have hb : g.b.left ≫ prj p = spMap f ≫ g₀.b.left := (hg 0).1 2
   have b₀ : g.b = 1 := Over.OverMorphism.ext (gp.1.hom_ext (hb.trans (by
     rw [z₁]; exact ((hg 0).1 3).symm)) ((Over.w _).trans (Over.w _).symm))

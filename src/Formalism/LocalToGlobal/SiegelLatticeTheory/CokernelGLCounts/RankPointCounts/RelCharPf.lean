@@ -90,7 +90,7 @@ section Main
 
 theorem lin_bound {ι : Type*} [Fintype ι] [DecidableEq ι] (L : Matrix ι ι ℂ →ₗ[ℂ] ℂ) :
     ∃ K : ℝ, 0 ≤ K ∧ ∀ (B : Matrix ι ι ℂ) (C : ℝ), (∀ i j, ‖B i j‖ ≤ C) → ‖L B‖ ≤ K * C := by
-  first | exact UpperTheory.Reformulated.B.Qj19.lin_bound .. | (apply UpperTheory.Reformulated.B.Qj19.lin_bound <;> assumption) | (intros; apply UpperTheory.Reformulated.B.Qj19.lin_bound <;> assumption) | (apply @UpperTheory.Reformulated.B.Qj19.lin_bound <;> assumption) | (intros; apply @UpperTheory.Reformulated.B.Qj19.lin_bound <;> assumption) | (apply @UpperTheory.Reformulated.B.Qj19.lin_bound <;> first | assumption | infer_instance) | exact @UpperTheory.Reformulated.B.Qj19.lin_bound ι ‹_› ‹_› L | exact @UpperTheory.Reformulated.B.Qj19.lin_bound ι ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qj19.lin_bound ι ‹_› | exact @UpperTheory.Reformulated.B.Qj19.lin_bound ι
+  first | exact UpperTheory.Reformulated.B.Qj19.lin_bound .. | exact @UpperTheory.Reformulated.B.Qj19.lin_bound ι ‹_› ‹_› L | exact @UpperTheory.Reformulated.B.Qj19.lin_bound ι ‹_› ‹_› | exact @UpperTheory.Reformulated.B.Qj19.lin_bound ι ‹_› | exact @UpperTheory.Reformulated.B.Qj19.lin_bound ι
 
 theorem eq_zero_of_nat_mul_le {x K : ℝ} (h : ∀ m : ℕ, 1 ≤ m → |(m : ℝ) * x| ≤ K) : x = 0 := by
   by_contra hx
@@ -240,7 +240,7 @@ theorem lamPat2_holds : LamPat2 := by
       · have : ¬ b.1 < a.1 := fun h => hk ⟨b, h, rfl⟩
         simp only [lvk, Sum.elim_inl] at hl ⊢; omega
       · simp only [lvk, Sum.elim_inl, Sum.elim_inr] at hl ⊢; have := a.2; omega
-      · simp only [lvk, Sum.elim_inl, Sum.elim_inr] at hl ⊢; have := a.2; have := b.2; omega
+      · simp only [lvk, Sum.elim_inr] at hl ⊢; have := a.2; have := b.2; omega
   have e : (Bv X v * A * Bv' X v) *ᵥ nxt (fun b => rv X.B.I v (X.eR b)) (rv X.B.I v (X.zR w)) a =
       Bv X v *ᵥ (A *ᵥ (Bv' X v *ᵥ nxt (fun b => rv X.B.I v (X.eR b)) (rv X.B.I v (X.zR w)) a)) := by
     simp only [Matrix.mulVec_mulVec, Matrix.mul_assoc]

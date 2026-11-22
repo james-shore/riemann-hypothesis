@@ -153,10 +153,10 @@ theorem mainE (Z : Subalgebra k (Matrix (Fin n) (Fin n) k)) (hZ : CR Z) (h0 : dB
   have ht00 : t0 ≠ 0 := by simpa using ht0v
   have hTT : ((1 - e) + t0 • e) * ((1 - e) + t0⁻¹ • e) = 1 := by
     simp only [add_mul, mul_add, Matrix.mul_smul, Matrix.smul_mul, smul_smul, h1e, he1, hee, h11,
-      mul_inv_cancel₀ ht00, inv_mul_cancel₀ ht00, one_smul, smul_zero, add_zero, zero_add, sub_add_cancel]
+      inv_mul_cancel₀ ht00, one_smul, smul_zero, add_zero, zero_add, sub_add_cancel]
   have hTT' : ((1 - e) + t0⁻¹ • e) * ((1 - e) + t0 • e) = 1 := by
     simp only [add_mul, mul_add, Matrix.mul_smul, Matrix.smul_mul, smul_smul, h1e, he1, hee, h11,
-      mul_inv_cancel₀ ht00, inv_mul_cancel₀ ht00, one_smul, smul_zero, add_zero, zero_add, sub_add_cancel]
+      mul_inv_cancel₀ ht00, one_smul, smul_zero, add_zero, zero_add, sub_add_cancel]
   let T : GL (Fin n) k := ⟨(1 - e) + t0 • e, (1 - e) + t0⁻¹ • e, hTT, hTT'⟩
   have hTZ : (1 - e) + t0 • e ∈ Z := Z.add_mem (Z.sub_mem Z.one_mem he) (Z.smul_mem he t0)
   have hT : T ∈ Gs Z e := by

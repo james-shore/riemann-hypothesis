@@ -168,7 +168,7 @@ theorem single_degree_zero (v : V) : DegQ 0 (Pi.single ∅ v : Cq n V) := by
   intro A hA
   by_contra h
   have : A ≠ ∅ := fun h0 => h (by simp [h0])
-  exact hA (by simp [Pi.single_apply, this])
+  exact hA (by simp [this])
 
 theorem eq_single {x : Cq n V} (hx : DegQ 0 x) : x = Pi.single ∅ (x ∅) := by
   funext A
@@ -185,7 +185,7 @@ theorem lift_single (T : V →ₗ[ℂ] W) (v : V) :
   by_cases h : A = ∅
   · subst h
     simp [lift_apply]
-  · simp [lift_apply, Pi.single_apply, h]
+  · simp [lift_apply, h]
 
 theorem lF_single (E1 E2 : Fin n → Fin n → Module.End ℂ V) (s : Bool) (p q : Fin n) (v : V) :
     lFq E1 E2 s p q (Pi.single ∅ v : Cq n V) = Pi.single ∅ (Ts E1 E2 s p q v) := by
@@ -228,7 +228,7 @@ theorem single_one_deg (i : Lt n) (y : V) : DegQ 1 (Pi.single {i} y : Cq n V) :=
   intro A hA
   by_contra h
   have : A ≠ {i} := fun h0 => h (by simp [h0])
-  exact hA (by simp [Pi.single_apply, this])
+  exact hA (by simp [this])
 
 theorem ann_single (k i : Lt n) (y : V) :
     annq k (Pi.single {i} y : Cq n V) = if k = i then Pi.single ∅ y else 0 := by
@@ -238,7 +238,7 @@ theorem ann_single (k i : Lt n) (y : V) :
     rw [if_pos rfl, ann_apply]
     by_cases hA : k ∈ A
     · have : A ≠ ∅ := fun h0 => by simp [h0] at hA
-      simp [hA, Pi.single_apply, this]
+      simp [hA, this]
     · by_cases h0 : A = ∅
       · subst h0
         simp [sgL]
@@ -248,7 +248,7 @@ theorem ann_single (k i : Lt n) (y : V) :
           have := h ▸ mem_insert_of_mem hl
           rw [mem_singleton] at this
           exact hA (this ▸ hl)
-        simp [hA, Pi.single_apply, this, h0]
+        simp [hA, this, h0]
   · rw [if_neg hk, ann_apply]
     by_cases hA : k ∈ A
     · simp [hA]
@@ -256,7 +256,7 @@ theorem ann_single (k i : Lt n) (y : V) :
         intro h
         have := h ▸ mem_insert_self k A
         exact hk (mem_singleton.mp this)
-      simp [hA, Pi.single_apply, this]
+      simp [hA, this]
 
 theorem bd_single (E1 E2 : Fin n → Fin n → Module.End ℂ V) (i : Lt n) (y : V) :
     bdq E1 E2 (Pi.single {i} y : Cq n V) = Pi.single ∅ (Tl E1 E2 i y) := by
@@ -279,7 +279,7 @@ theorem single_one_supp {P : Lt n → Prop} {i : Lt n} (hi : P i) (y : V) : Supp
   · subst h
     rw [mem_singleton.1 hl]
     exact hi
-  · exact absurd (by simp [Pi.single_apply, h]) hA
+  · exact absurd (by simp [h]) hA
 
 theorem gl_of_inj {T : V →ₗ[ℂ] W} (hT : Function.Injective T) {E : Fin n → Fin n → Module.End ℂ V}
     {F : Fin n → Fin n → Module.End ℂ W} (h : ∀ a b y, T (E a b y) = F a b (T y)) (hF : GlRel F) : GlRel E := by

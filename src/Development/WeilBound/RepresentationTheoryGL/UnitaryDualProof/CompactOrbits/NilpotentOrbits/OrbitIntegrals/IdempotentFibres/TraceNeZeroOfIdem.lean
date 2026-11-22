@@ -37,7 +37,7 @@ theorem exists_pow_eq {Z : Subalgebra k (Matrix (Fin n) (Fin n) k)} {c : Matrix 
     intro j x hx
     obtain ⟨y, hy, rfl⟩ := Submodule.mem_map.1 hx
     refine Submodule.mem_map.2 ⟨c * y, Z.mul_mem hc hy, ?_⟩
-    simp [pow_succ, mul_assoc]
+    simp [pow_succ]
   have hex : ∃ j, W (j + 1) = W j := by
     by_contra hne
     push Not at hne

@@ -114,7 +114,7 @@ theorem eq_multiple_of_standard_lattice : ∀ {F : Type} [Field F] [NumberField 
     by_cases ha : a = i₀
     · subst ha
       simp [N, Matrix.mulVec, dotProduct, hcdef]
-    · simp [N, Matrix.mulVec, dotProduct, ha, Pi.single_apply, ← hcdef]
+    · simp [N, Matrix.mulVec, dotProduct, ha, ← hcdef]
       field_simp
       ring
   have hsingle : ∀ j, Pi.single j c ∈ S := by
@@ -150,7 +150,7 @@ theorem eq_multiple_of_standard_lattice : ∀ {F : Type} [Field F] [NumberField 
     · simp only [Pi.smul_apply, Pi.single_eq_same, smul_eq_mul]
       field_simp
     · intro b _ hb
-      simp [Pi.single_apply, Ne.symm hb]
+      simp [Ne.symm hb]
     · simp
   rw [hsum]
   exact S.sum_mem (fun j _ => hO _ (hw j) _ (hsingle j))

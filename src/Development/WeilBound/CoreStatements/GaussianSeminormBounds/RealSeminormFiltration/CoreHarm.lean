@@ -134,11 +134,11 @@ theorem minusPart_second_action_Eab {c d : Ix r s} (h : ¬ sameBlock c d) (g : P
   rw [Finset.sum_eq_single c, Finset.sum_eq_single d]
   · simp [Eab]
   · intro y _ hy
-    simp [Eab, Matrix.single_apply, Ne.symm hy]
+    simp [Eab, Ne.symm hy]
   · simp
   · intro x _ hx
     refine Finset.sum_eq_zero (fun y _ => ?_)
-    simp [Eab, Matrix.single_apply, Ne.symm hx]
+    simp [Eab, Ne.symm hx]
   · simp
 
 def low1 (a b : Ix p q) : Module.End ℂ (Pol p q r s) :=

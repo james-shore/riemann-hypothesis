@@ -44,7 +44,6 @@ theorem continuous_stabAct (g : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1
   unfold stabAct
   first
     | fun_prop
-    | continuity
 
 theorem measurable_stabAct (g : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ) :
     Measurable (fun p : Mt k r × PairSp k r => stabAct g (Matrix.of p.1) p.2) := (continuous_stabAct g).measurable
@@ -54,7 +53,6 @@ theorem measurable_stabAct_inv (g : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k
   have hf : Measurable (fun p : Mt k r × PairSp k r => (minv p.1, p.2)) := by
     first
       | exact (measurable_minv.comp measurable_fst).prodMk measurable_snd
-      | exact (measurable_minv.comp measurable_fst).prod_mk measurable_snd
   exact (measurable_stabAct g).comp hf
 
 theorem measurable_stabAct_one (g a : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ) :
@@ -64,7 +62,6 @@ theorem measurable_stabAct_one (g a : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r +
     unfold stabAct
     first
       | fun_prop
-      | continuity
   exact hc.measurable
 
 private theorem hpk_sq_lemma (k r : ℕ) : Hpk k r * Hpk k r = 1 := by
@@ -76,16 +73,16 @@ private theorem hpk_sq_lemma (k r : ℕ) : Hpk k r * Hpk k r = 1 := by
   · by_cases hij : i = j
     · subst hij
       rw [if_pos rfl]
-      simp only [Hpk, Fin.ext_iff, Fin.val_mk, eq_self_iff_true, and_true]
-      split_ifs <;> first | (exfalso; (try simp only [Fin.val_mk] at *); omega) | (simp_all; done) | norm_num
+      simp only [Hpk, Fin.ext_iff]
+      split_ifs <;> first | (exfalso; (try simp only at *); omega) | (simp_all)
     · rw [if_neg hij]
       rw [Fin.ext_iff] at hij
-      simp only [Hpk, Fin.ext_iff, Fin.val_mk]
-      split_ifs <;> first | (exfalso; (try simp only [Fin.val_mk] at *); omega) | (simp_all; done) | norm_num
+      simp only [Hpk, Fin.ext_iff]
+      split_ifs <;> first | (exfalso; (try simp only at *); omega) | (simp_all)
   · intro l _ hl
     rw [Ne, Fin.ext_iff, Fin.val_mk] at hl
     simp only [Hpk, Fin.ext_iff]
-    split_ifs at * <;> first | (exfalso; (try simp only [Fin.val_mk] at *); omega) | (simp_all; done) | norm_num
+    split_ifs at * <;> first | (exfalso; (try simp only at *); omega) | (simp_all)
   · intro h
     exact absurd (Finset.mem_univ _) h
 
@@ -147,14 +144,12 @@ theorem pairMeas_inv (L : LocBessel k r) [SFinite L.μN]
       unfold lmulM
       first
         | fun_prop
-        | continuity
     exact hc.measurable
   have hp : ∀ s : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ,
       Measurable (Prod.map (id : Mt k r → Mt k r) (lmulM (k := k) (r := r) s)) := by
     intro s
     first
       | exact measurable_id.prodMap (hl s)
-      | exact measurable_id.prod_map (hl s)
   rw [stabAct_eq_map, pairMeas, ← Measure.map_prod_map _ _ (hp a) (hp _),
     ← Measure.map_prod_map _ _ measurable_id (hl a), ← Measure.map_prod_map _ _ measurable_id (hl _),
     Measure.map_id, Measure.map_id, hN a ha.1, hN _ ha.2]

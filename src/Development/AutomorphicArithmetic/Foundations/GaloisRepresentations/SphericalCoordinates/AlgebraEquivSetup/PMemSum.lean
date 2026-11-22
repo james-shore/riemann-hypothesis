@@ -64,7 +64,7 @@ theorem UpperTheory.Gal.W2.Seed.pMemSum :
       intro q
       have e1 : h * (q.out : X) * ((a : X) * g * (b : X)) =
           h * (q.out : X) * (((⟨a, hK0 a.2⟩ : K) : X) * g) * (b : X) := by
-        rw [← mul_assoc (h * (q.out : X))] <;> rfl
+        rw [← mul_assoc (h * (q.out : X))]
       rw [e1, Subgroup.mul_mem_cancel_right _ b.2]
       exact hP ⟨a, hK0 a.2⟩ q g
     · refine ⟨Finset.univ.image (fun q : K ⧸ KM.subgroupOf K => (h * (q.out : X))⁻¹), fun y hy => ?_⟩

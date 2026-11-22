@@ -53,7 +53,7 @@ theorem UpperTheory.V.Z.Sym.Sig.normalG :
     rw [hd, ← map_mul]
     congr 1
     funext i
-    fin_cases i <;> simp [div_eq_mul_inv, mul_comm]
+    fin_cases i <;> simp [div_eq_mul_inv]
   refine ⟨fun g₀ x y z => ?_, fun δ a ha hch => ?_⟩
   · rw [← hprod x y z, ht]
     simp only [map_mul, map_inv, hθ, hΦ]

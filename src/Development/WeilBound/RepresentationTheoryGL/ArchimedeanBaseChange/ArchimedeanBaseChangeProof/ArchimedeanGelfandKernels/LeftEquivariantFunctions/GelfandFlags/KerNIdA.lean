@@ -30,7 +30,7 @@ theorem schatten_two_mul_le (a b : Mat n) : S2 (a * b) ≤ S2 a * S2 b := by
     rw [Matrix.mul_apply]
     calc ‖∑ k, a i k * b k j‖ ^ 2 ≤ (∑ k, ‖a i k‖ * ‖b k j‖) ^ 2 := by
           apply pow_le_pow_left₀ (norm_nonneg _)
-          exact (norm_sum_le _ _).trans (le_of_eq (by simp [norm_mul]))
+          exact (norm_sum_le _ _).trans (le_of_eq (by simp))
       _ ≤ (∑ k, ‖a i k‖ ^ 2) * (∑ k, ‖b k j‖ ^ 2) := Finset.sum_mul_sq_le_sq_mul_sq _ _ _
   calc ∑ i, ∑ j, ‖(a * b) i j‖ ^ 2 ≤ ∑ i, ∑ j, (∑ k, ‖a i k‖ ^ 2) * (∑ k, ‖b k j‖ ^ 2) :=
         Finset.sum_le_sum fun i _ => Finset.sum_le_sum fun j _ => key i j

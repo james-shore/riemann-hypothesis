@@ -104,7 +104,7 @@ theorem dual_bases_colProd : (∀ (N : ℕ) (Y : YoungDiagram) (hY : Y.colLen 0 
       intro i
       rw [(Formalism.GradedWeylDivisibility.fockQPos _ _ _).1, ← fockQRight_apply, map_sub, fockQRight_apply, fockQRight_apply, key,
         ← (Formalism.GradedWeylDivisibility.fockQPos _ _ _).1, hdb]
-      split_ifs with h1 h2 h2 <;> first | rfl | simp | (exact absurd h1.symm h2) | (exact absurd h2.symm h1)
+      split_ifs with h1 h2 h2 <;> first | rfl | simp
     have h0 : Formalism.GradedWeylDivisibility.fockQ (g k - d k) (g k - d k) = 0 := by
       rw [← fockQRight_apply]
       nth_rewrite 2 [← ha]

@@ -71,7 +71,7 @@ theorem line_sum_curve_eq_prod (hP : _root_.GlobalTheory.FunPr.ThetaLocalInputs)
       · refine hlim'.congr' ?_
         filter_upwards [self_mem_nhdsWithin] with t ht
         simp only [s, if_neg (show t ≠ 0 from ht)]
-      · simp only [tendsto_pure_left, s, if_pos rfl]
+      · simp only [tendsto_pure_left, s]
         exact fun _ => mem_of_mem_nhds
     have hk' : Tendsto k (𝓝 0) (𝓝 S') :=
       _root_.GlobalTheory.T.jointly_continuous_archimedean_weil_action hP M ψ χX χW om hψ hG hW (γs i) (hγs i) r hr00 hr s k S' hk hs
@@ -152,5 +152,5 @@ theorem _root_.GlobalTheory.T.line_derivative_additive_in_lines : _root_.GlobalT
     GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.ActsD (GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.evI F) (fun t => om (γ (Multiplicative.ofAdd t), 1)) f f₁ →
     (∀ i, GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.ActsD (GlobalTheory.IndefiniteRowSideFullHecke.WeilTensorModels.evI F) (fun t => om (γs i (Multiplicative.ofAdd t), 1)) f (fs i)) →
     f₁ = (l.map fs).sum := by
-  first | exact @_root_.GlobalTheory.LineAdd.deriv_prod_lines_eq_sum | exact _root_.GlobalTheory.LineAdd.deriv_prod_lines_eq_sum | (intros; apply _root_.GlobalTheory.LineAdd.deriv_prod_lines_eq_sum <;> assumption)
+  first | exact @_root_.GlobalTheory.LineAdd.deriv_prod_lines_eq_sum
 end

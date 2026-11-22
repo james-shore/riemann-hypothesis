@@ -149,8 +149,8 @@ theorem _root_.GlobalTheory.BesselPeriodNonzero.unfold_zero {k r : ℕ} {ε : Fi
     simp only [F, e1, e2]
     unfold _root_.Formalism.FourierDecayAlt.ThreeDimData.beInt
     rw [inner_smul_right, _root_.Formalism.FourierDecayAlt.P.MatrixMultiplicationContinuity.piW_inner hzpos hπ hp.1]
-    simp only [ContinuousLinearMap.smul_apply, inner_smul_right, inner_smul_left, map_mul, Complex.star_def,
-      inner_conj_symm, RCLike.conj_to_real, Complex.conj_conj]
+    simp only [ContinuousLinearMap.smul_apply, inner_smul_right, map_mul, Complex.star_def,
+      inner_conj_symm, Complex.conj_conj]
     ring
   have hL := ((innerSL ℂ (B (R.σ (Matrix.of x) w))).comp
     (ContinuousLinearMap.apply ℂ Wp ξ)).integral_comp_comm hint

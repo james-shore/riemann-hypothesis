@@ -199,7 +199,7 @@ theorem exists_map_two_step (hBZ : BernsteinZelevinskyFiniteness) {D : ℕ} (hD 
         by_cases hi : i = 0
         · subst hi
           simpa [ψ] using hω 0 z v
-        · simp [ψ, Pi.mulSingle_eq_of_ne hi, hi]) y
+        · simp [ψ, hi]) y
     simpa [Fin.prod_univ_two] using h1
   by_cases hsc : ∀ (z : kˣ) v, μ (ψ (GeneralLinearGroup.scalar _ z)) v = (ω 0 z : ℂ) • v
   · have hsub : IsSubquotient (σ 0).π (μ.comp ψ : Representation ℂ (GL (Fin D) k) V) :=

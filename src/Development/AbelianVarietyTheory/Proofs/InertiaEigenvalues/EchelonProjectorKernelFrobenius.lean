@@ -44,7 +44,7 @@ theorem echelon_projector_frobenius (l : ℕ) [Fact l.Prime] (C : Type) [Field C
     refine Submodule.span_induction (p := fun w _ => w i = 0) ?_ ?_ ?_ ?_ hw
     · rintro _ ⟨k, ⟨m, rfl⟩, rfl⟩
       have : i ≠ a m := fun h => hi ⟨m, h.symm⟩
-      simp [e, Pi.single_apply, this]
+      simp [e, this]
     · simp
     · intro x y _ _ hx hy; simp [hx, hy]
     · intro c x _ hx; simp [hx]

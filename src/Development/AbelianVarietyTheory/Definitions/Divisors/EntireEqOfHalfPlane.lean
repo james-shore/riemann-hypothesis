@@ -224,8 +224,6 @@ theorem entire_eq_of_halfPlane {f g : ℂ → ℂ} (hf : Differentiable ℂ f) (
   | exact @_root_.GlobalTheory.EntireFunctionHalfPlane.entire_eq_of_eqOn_halfPlane
   | exact _root_.GlobalTheory.EntireFunctionHalfPlane.entire_eq_of_eqOn_halfPlane
   | (apply _root_.GlobalTheory.EntireFunctionHalfPlane.entire_eq_of_eqOn_halfPlane <;> assumption)
-  | (intros; apply _root_.GlobalTheory.EntireFunctionHalfPlane.entire_eq_of_eqOn_halfPlane <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.EntireFunctionHalfPlane.entire_eq_of_eqOn_halfPlane <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.EntireFunctionHalfPlane.entire_eq_of_eqOn_halfPlane ..)
 
 theorem IsHeckeL.unique {χ : HChar E} {f g : ℂ → ℂ} (hf : IsHeckeL χ f) (hg : IsHeckeL χ g) : f = g :=

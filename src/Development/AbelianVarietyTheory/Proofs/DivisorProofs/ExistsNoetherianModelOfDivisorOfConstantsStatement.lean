@@ -27,4 +27,4 @@ theorem _root_.GlobalTheory.T.exists_noetherian_model_of_divisor_of_constants : 
           (algebraMap (Polynomial T) O).comp (Polynomial.mapRingHom i) ∧
       ∃ (bA cA : Localization.AtPrime QA) (sA : A), sA ≠ 0 ∧ i sA = s ∧
         bA * cA = algebraMap A (Localization.AtPrime QA) sA ∧ jA bA = j b₁ := by
-  first | (exact @GlobalTheory.VertUnitsNoeth.exists_noetherian_model_of_mul_eq) | (exact GlobalTheory.VertUnitsNoeth.exists_noetherian_model_of_mul_eq) | (intros; apply GlobalTheory.VertUnitsNoeth.exists_noetherian_model_of_mul_eq  <;> assumption)
+  first | (exact @GlobalTheory.VertUnitsNoeth.exists_noetherian_model_of_mul_eq)

@@ -68,7 +68,7 @@ theorem one_le_prod_tauE (D : D7) {y : D.host.E} (hy : y ≠ 0) (hi : IsIntegral
 theorem exists_rat (V : HSp D) (γ : GQ V) :
     ∃ δ : GL (Fin V.rank) D.host.E, Formalism.UG.bc (inclR (AF D.host.F)) δ = matHom V (γ : GA D V) := by
   have h1 := γ.2
-  simp only [GQ, HFinIn, HFin, Subgroup.mem_subgroupOf, Subgroup.mem_map] at h1
+  simp only [GQ, HFinIn, HFin] at h1
   obtain ⟨δ, -, hδ⟩ := h1
   exact ⟨δ, hδ⟩
 

@@ -90,7 +90,7 @@ theorem UpperTheory.V.U3.shape_cases :
       fin_cases a <;> fin_cases b <;> first | assumption | (exfalso; revert hab; decide)
     · have hinj : Function.Injective ![ζ, -ζ] := by
         intro i j h
-        fin_cases i <;> fin_cases j <;> simp_all [hne.symm]
+        fin_cases i <;> fin_cases j <;> simp_all
       obtain ⟨S, ⟨j, hj⟩, ⟨i, hi⟩, hS⟩ := exists_coord_of_not_matIrr η.ker _ ![ζ, -ζ] hinj g₁
         (gstar c g₁) hg (hst g₁ hg) (by
           ext i j
@@ -108,7 +108,7 @@ theorem UpperTheory.V.U3.shape_cases :
   right
   have hinj : Function.Injective ![ζ, 0, -ζ] := by
     intro i j h
-    fin_cases i <;> fin_cases j <;> simp_all [hne.symm]
+    fin_cases i <;> fin_cases j <;> simp_all
   obtain ⟨S, ⟨j, hj⟩, ⟨i, hi⟩, hS⟩ := exists_coord_of_not_matIrr η.ker (mats r) _ hinj g₁
     (gstar c g₁) hg (hst g₁ hg) hD hI
   have hS' : ∀ i j, S j → ¬ S i → Z i j := hS

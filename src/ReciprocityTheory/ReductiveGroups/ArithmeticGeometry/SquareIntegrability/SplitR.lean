@@ -79,7 +79,7 @@ theorem rkQP_apply (τ : E →+* ℂ) (v : Vsp dim) (i : Idx dim) :
   obtain ⟨σ, b⟩ := i
   by_cases h : σ = τ
   · subst h
-    simp [rkQ, rkP, EuclideanSpace.single_apply, Sigma.mk.inj_iff]
+    simp [rkQ, rkP]
     rw [Finset.sum_eq_single b]
     · simp
     · intro x _ hx
@@ -90,7 +90,7 @@ theorem rkQP_apply (τ : E →+* ℂ) (v : Vsp dim) (i : Idx dim) :
         exact (eq_of_heq (Sigma.mk.inj_iff.mp h).2).symm
     · intro h
       exact absurd (Finset.mem_univ b) h
-  · simp [rkQ, rkP, EuclideanSpace.single_apply, Sigma.mk.inj_iff, h]
+  · simp [rkQ, rkP, h]
 
 end rk
 

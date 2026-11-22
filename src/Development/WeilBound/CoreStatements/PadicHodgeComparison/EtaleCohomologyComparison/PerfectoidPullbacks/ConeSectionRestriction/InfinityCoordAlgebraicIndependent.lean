@@ -86,7 +86,7 @@ theorem tpow_add' {d : ℕ} (t : Fin d → Rˣ) (m m' : Fin d → ℤ) : tpow t 
 
 theorem tpow_single {d : ℕ} (t : Fin d → Rˣ) (k : Fin d) (z : ℤ) : tpow t (Pi.single k z) = ((t k ^ z : Rˣ) : R) := by
   unfold tpow
-  rw [Fintype.prod_eq_single k (fun j hj => by simp [Pi.single_apply, hj])]
+  rw [Fintype.prod_eq_single k (fun j hj => by simp [hj])]
   simp
 
 theorem tpow_mem {d : ℕ} (t : Fin d → Rˣ) (S : Finset (Fin (d + 1))) {m : Fin d → ℤ} (hm : m ∈ expS S) :
@@ -152,7 +152,7 @@ theorem infinityCoord_monomial_eq (t : Fin (n + 1) → Rˣ) (N : ℕ) (α : Fin 
 theorem infinityCoord_mem_torus (t : Fin (n + 1) → Rˣ) (j : Fin (n + 1)) :
     (u0 t j : R) ∈ torusS K t (Finset.univ.erase 0) := by
   have h := infinityCoord_prod_pow t (Pi.single j 1)
-  rw [Fintype.prod_eq_single j (fun i hi => by simp [Pi.single_apply, hi])] at h
+  rw [Fintype.prod_eq_single j (fun i hi => by simp [hi])] at h
   simp only [Pi.single_eq_same, pow_one] at h
   rw [h]
   exact tpow_mem t _ ((mem_exponentSet_zero_iff _).2 (by rw [sum_u0Exp]; exact neg_nonpos.2 (Nat.cast_nonneg _)))

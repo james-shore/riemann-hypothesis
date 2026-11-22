@@ -552,8 +552,8 @@ theorem disjA (hB : D.BlockOK) {a b : Option (Fin D.T.t)} (hab : a ≠ b) :
     have hv0' : (finPos N (D.T.pos i') : ℕ) = D.T.pos i' := finPos_val (by omega)
     have hv1' : (finPos N (D.T.pos i' + 1) : ℕ) = D.T.pos i' + 1 := finPos_val (by omega)
     rcases hva with ((⟨c, rfl⟩ | ⟨c, rfl⟩) | rfl | rfl) <;> rcases hvb with ((⟨c', h⟩ | ⟨c', h⟩) | h | h) <;>
-      simp only [wA, eA, zA, sA, xiVar, scalZ, scalS, Option.elim, Sum.inl.injEq, Sum.inr.injEq, reduceCtorEq,
-        Prod.mk.injEq, Fin.ext_iff, Fin.val_castSucc, Fin.val_last] at h <;> omega
+      simp only [wA, eA, zA, sA, scalZ, scalS, Option.elim, Sum.inl.injEq, Sum.inr.injEq, reduceCtorEq,
+        Prod.mk.injEq, Fin.ext_iff, Fin.val_castSucc] at h <;> omega
 
 theorem nodupLA : (LA D).Nodup := by
   simp only [LA, List.nodup_cons, List.mem_map, reduceCtorEq, and_false, exists_false, not_false_eq_true,

@@ -236,12 +236,12 @@ theorem mult_fw (θ : InfFam D) (M : DSModel V S) : ∀ F ∈ MultT θ M ∅ 1, 
   induction x using PiTensorProduct.induction_on with
   | smul_tprod r f =>
     rw [map_smul, kap_smul, map_smul, PiTensorProduct.lift.tprod, kap_tprod]
-    simp only [LinearMap.smul_apply, Pi.smul_apply, smul_eq_mul, map_mul, Complex.conj_conj]
+    simp only [Pi.smul_apply, smul_eq_mul, map_mul, Complex.conj_conj]
     rw [hv f (fun i => csm θ M i (f i)) (fun τ => rfl) g]
     rfl
   | add x y hx hy =>
     rw [map_add, map_add, map_add]
-    simp only [Pi.add_apply, LinearMap.add_apply, map_add, hx, hy]
+    simp only [Pi.add_apply, map_add, hx, hy]
 
 theorem mult_bw (θ : InfFam D) (M : DSModel V S) : ∀ F₁ ∈ MultT θ (conjModel M) ∅ 1, ∃ F ∈ MultT θ M ∅ 1,
     ∀ x g, F₁ x g = starRingEnd ℂ (F (kap (csm θ M) x) g) := by
@@ -260,12 +260,12 @@ theorem mult_bw (θ : InfFam D) (M : DSModel V S) : ∀ F₁ ∈ MultT θ (conjM
   induction x using PiTensorProduct.induction_on with
   | smul_tprod r f =>
     rw [map_smul, kap_smul, map_smul, kap_tprod, PiTensorProduct.lift.tprod]
-    simp only [LinearMap.smul_apply, Pi.smul_apply, smul_eq_mul, map_mul, Complex.conj_conj]
+    simp only [Pi.smul_apply, smul_eq_mul, map_mul, Complex.conj_conj]
     rw [hv (fun i => csm θ M i (f i)) f (fun τ => by simp [csm_val]) g]
     simp [PiTensorProduct.lift_symm]
   | add x y hx hy =>
     rw [map_add, map_add, map_add]
-    simp only [Pi.add_apply, LinearMap.add_apply, map_add, hx, hy]
+    simp only [Pi.add_apply, map_add, hx, hy]
 
 theorem modelTr_conjModel (θ : InfFam D) (M : DSModel V S) :
     ModelTr (starRingEnd ℂ) false θ (V := V) (conjModel M) M (kap (csm θ M)) where

@@ -39,7 +39,7 @@ private theorem cw_zero {K : Type} [Field K] (h2 : (2 : K) ≠ 0) (x : GG 3 K) (
   have hs := cw_skew x hx hr X hX
   have e : ∀ i j, (X * x.mat * Jmat K 3) i j = (X * x.mat) i (Fin.rev j) := by
     intro i j
-    fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_three, Jmat] <;> rfl
+    fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_three, Jmat]
   have sk : ∀ i j, (X * x.mat * Jmat K 3) j i = -(X * x.mat * Jmat K 3) i j := by
     intro i j
     have := congrFun (congrFun hs i) j
@@ -95,7 +95,7 @@ theorem UpperTheory.V.Fr.ep_cw :
   · let f : LinearMap.ker (h.ad 0 c - 1) →ₗ[K] K :=
       { toFun := fun v => (((v : adp K 0) : Matrix (Fin 3) (Fin 3) K) * (B.r c).mat) 0 0
         map_add' := by intro v w; simp [Matrix.add_mul]
-        map_smul' := by intro a v; simp [Matrix.smul_mul] }
+        map_smul' := by intro a v; simp }
     have hf : Function.Injective f := by
       rw [← LinearMap.ker_eq_bot, LinearMap.ker_eq_bot']
       intro v hv
@@ -115,7 +115,7 @@ theorem UpperTheory.V.Fr.ep_cw :
       { toFun := fun v => ((((v : adp K 1) : Matrix (Fin 3) (Fin 3) K) * (B.r c).mat) 0 1,
           (((v : adp K 1) : Matrix (Fin 3) (Fin 3) K) * (B.r c).mat) 1 0)
         map_add' := by intro v w; simp [Matrix.add_mul]
-        map_smul' := by intro a v; simp [Matrix.smul_mul] }
+        map_smul' := by intro a v; simp }
     have hf : Function.Injective f := by
       rw [← LinearMap.ker_eq_bot, LinearMap.ker_eq_bot']
       intro v hv

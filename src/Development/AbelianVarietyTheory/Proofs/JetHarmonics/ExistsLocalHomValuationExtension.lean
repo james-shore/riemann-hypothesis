@@ -17,11 +17,6 @@ theorem exists_local_extension_of_integral {A B O C : Type} [CommRing A] [IsDoma
     ∃ ι' : B →+* O, IsLocalHom ι' ∧ ι'.comp φ = ι := by
   first
   | (rename_i h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11 h_12 h_13 h_14 h_21; revert A B O C h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11 h_12 h_13 h_14 v hv φ hφ hint ι h_21 hι; exact @_root_.GlobalTheory.LocalHomExtension.exists_isLocalHom_extension)
-  | exact @_root_.GlobalTheory.LocalHomExtension.exists_isLocalHom_extension
-  | exact _root_.GlobalTheory.LocalHomExtension.exists_isLocalHom_extension
-  | (apply _root_.GlobalTheory.LocalHomExtension.exists_isLocalHom_extension <;> assumption)
-  | (intros; apply _root_.GlobalTheory.LocalHomExtension.exists_isLocalHom_extension <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.LocalHomExtension.exists_isLocalHom_extension <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.LocalHomExtension.exists_isLocalHom_extension ..)
 
 theorem ValExt.exists_local_extension :

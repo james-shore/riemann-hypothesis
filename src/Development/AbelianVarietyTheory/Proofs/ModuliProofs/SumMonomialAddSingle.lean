@@ -34,7 +34,7 @@ theorem eval_eq_of_eventually {r r' : ℕ} (Ψ : MvPolynomial (Fin (r + 1)) ℚ)
     rw [← Polynomial.coe_aeval_eq_eval, MvPolynomial.comp_aeval_apply, MvPolynomial.aeval_eq_eval]
     congr 2
     funext i
-    by_cases hi : i = 0 <;> simp [hi, Pi.single_apply]
+    by_cases hi : i = 0 <;> simp [hi]
   obtain ⟨p, hp⟩ := key Ψ a
   obtain ⟨p', hp'⟩ := key Ψ' a'
   have e : p = p' := by

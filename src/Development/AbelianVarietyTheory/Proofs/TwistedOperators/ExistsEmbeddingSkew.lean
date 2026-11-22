@@ -23,9 +23,6 @@ theorem exists_toLp_ext {G : Type} [MeasurableSpace G] (ν : Measure G) :
       zero_mem' := by
         first
           | exact MemLp.zero
-          | exact MemLp.zero'
-          | exact zero_memLp
-          | simp
       smul_mem' := fun c _ h => h.const_smul c }
   let f : S →ₗ[ℂ] Lp ℂ 2 ν :=
     { toFun := fun φ => MemLp.toLp (φ : G → ℂ) φ.2
@@ -45,7 +42,6 @@ theorem inner_eq {G : Type} [MeasurableSpace G] {ν : Measure G} {f f' : Lp ℂ 
   rw [hg, hg']
   first
     | (rw [RCLike.inner_apply]; try ring)
-    | simp [mul_comm]
 
 variable {D : D7} {θ : InfFam D} {V : HSp D}
 
@@ -62,7 +58,7 @@ theorem conj_mul {G : Type} [TopologicalSpace G] {φ φ' : G → ℂ} (c : Conti
   obtain ⟨B, hB⟩ := b
   obtain ⟨B', hB'⟩ := b'
   refine ⟨(Complex.continuous_conj.comp c).mul c', max B 0 * max B' 0, fun g => ?_⟩
-  calc ‖(starRingEnd ℂ) (φ g) * φ' g‖ = ‖φ g‖ * ‖φ' g‖ := by simp [norm_mul]
+  calc ‖(starRingEnd ℂ) (φ g) * φ' g‖ = ‖φ g‖ * ‖φ' g‖ := by simp
     _ ≤ max B 0 * max B' 0 :=
       mul_le_mul ((hB g).trans (le_max_left _ _)) ((hB' g).trans (le_max_left _ _)) (norm_nonneg _)
         (le_max_right _ _)

@@ -9,4 +9,4 @@ theorem _root_.GlobalTheory.T.etale_atPrime_of_regular_of_isIntegrallyClosedIn :
     (∀ (P' : Ideal R) [P'.IsPrime], P' ≤ P → P'.height ≤ 1 →
       Algebra.Etale (Localization.AtPrime P') (TensorProduct R (Localization.AtPrime P') C)) →
     Algebra.Etale (Localization.AtPrime P) (TensorProduct R (Localization.AtPrime P) C) := by
-  first | (exact @GlobalTheory.PurityLoc.etale_atPrime_of_isIntegrallyClosedIn) | (exact GlobalTheory.PurityLoc.etale_atPrime_of_isIntegrallyClosedIn) | (intros; apply GlobalTheory.PurityLoc.etale_atPrime_of_isIntegrallyClosedIn  <;> assumption)
+  first | (exact @GlobalTheory.PurityLoc.etale_atPrime_of_isIntegrallyClosedIn)

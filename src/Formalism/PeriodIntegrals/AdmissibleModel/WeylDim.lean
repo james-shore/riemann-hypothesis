@@ -128,7 +128,7 @@ def ext {k : ℕ} (μ : Fin (k + 1) → ℤ) (g : Fin k → Fin k → ℕ) : Fin
 
 theorem ext_cc {k : ℕ} (μ : Fin (k + 1) → ℤ) (g : Fin k → Fin k → ℕ) (a t : Fin k) :
     ext μ g a.castSucc t.castSucc = g a t := by
-  simp only [Formalism.L2.G.Model.ext, Fin.lastCases_castSucc, Fin.lastCases_last]
+  simp only [Formalism.L2.G.Model.ext, Fin.lastCases_castSucc]
 
 theorem ext_cl {k : ℕ} (μ : Fin (k + 1) → ℤ) (g : Fin k → Fin k → ℕ) (a : Fin k) :
     ext μ g a.castSucc (Fin.last k) = 0 := by
@@ -140,7 +140,7 @@ theorem ext_lc {k : ℕ} (μ : Fin (k + 1) → ℤ) (g : Fin k → Fin k → ℕ
 
 theorem ext_ll {k : ℕ} (μ : Fin (k + 1) → ℤ) (g : Fin k → Fin k → ℕ) :
     ext μ g (Fin.last k) (Fin.last k) = (μ (Fin.last k)).toNat := by
-  simp only [Formalism.L2.G.Model.ext, Fin.lastCases_castSucc, Fin.lastCases_last]
+  simp only [Formalism.L2.G.Model.ext, Fin.lastCases_last]
 
 theorem ext_sum {k : ℕ} (μ : Fin (k + 1) → ℤ) (hμ : 0 ≤ μ (Fin.last k)) (g : UU k μ) (t : Fin (k + 1)) :
     ((∑ a, ext μ g.1 a t : ℕ) : ℤ) = μ t := by

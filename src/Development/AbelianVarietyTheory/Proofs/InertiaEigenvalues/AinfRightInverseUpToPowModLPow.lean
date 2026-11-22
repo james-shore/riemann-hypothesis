@@ -32,7 +32,7 @@ theorem rinv_mod_pow : ∀ (l : ℕ) [Fact l.Prime] (d d' n M : ℕ) (τ : Ainf 
   let πM := (π.mapMatrix : Matrix (Fin d) (Fin d) (WCb l) →+* Matrix (Fin d) (Fin d) (WCb l ⧸ I))
   have hsm : ∀ {R S : Type} [CommRing R] [CommRing S] (φ : R →+* S) (c : R),
       (φ.mapMatrix : Matrix (Fin d) (Fin d) R →+* Matrix (Fin d) (Fin d) S) (c • 1) = φ c • 1 := by
-    intro R S _ _ φ c; ext i j; by_cases h : i = j <;> simp [Matrix.one_apply, h]
+    intro R S _ _ φ c; ext i j; by_cases h : i = j <;> simp [h]
   set t : WCb l := f τ ^ M with ht
   have hfτ : fW (τ ^ M • 1) = t • 1 := by rw [hsm, map_pow]
 

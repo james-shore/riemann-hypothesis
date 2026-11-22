@@ -186,7 +186,7 @@ theorem exists_open_sub : ∀ (K Ω : Type) [Field Ω] [Field K] [NumberField K]
     have e : (⟨((ι σ ^ k * (j * u) : Dec (F := K) A) : G K Ω), Ine_le_Weil h hgI⟩ : Weil h) =
         σ ^ k * (⟨(j : G K Ω), Ine_le_Weil h (hJI j hj)⟩ * ⟨(u : G K Ω), huW⟩) := by
       apply Subtype.ext
-      simp [Subgroup.coe_zpow, ι]
+      simp [ι]
     have h0 := (deg_eq_zero_iff (σ := ⟨_, Ine_le_Weil h hgI⟩)).mpr hgI
     rw [e, deg_mul, deg_mul, deg_zpow,
       (deg_eq_zero_iff (σ := ⟨_, Ine_le_Weil h (hJI j hj)⟩)).mpr (hJI j hj)] at h0

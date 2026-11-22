@@ -113,7 +113,7 @@ theorem trace_mul_single {m n : ℕ} (M : Matrix (Fin m) (Fin n) (Datum.EAf D)) 
   rw [Matrix.trace, Finset.sum_eq_single a]
   · simp [Matrix.mul_apply, Matrix.single_apply]
   · intro j _ hj
-    simp [Matrix.mul_apply, Matrix.single_apply, Ne.symm hj]
+    simp [Matrix.mul_apply, Ne.symm hj]
   · intro h
     exact absurd (Finset.mem_univ a) h
 

@@ -17,10 +17,10 @@ theorem updateRow_smooth (j : Fin n) (v : Fin n → ℂ) : ContDiff ℝ ∞ (fun
   refine contDiff_pi.2 fun k => ?_
   by_cases hk : k = j
   · subst hk
-    have e : (fun x : Mat n => x.updateRow k v k) = fun _ => v := by funext x; simp [Matrix.updateRow_apply]
+    have e : (fun x : Mat n => x.updateRow k v k) = fun _ => v := by funext x; simp
     rw [e]; exact contDiff_const
   · have e : (fun x : Mat n => x.updateRow j v k) = fun x : Mat n => (x : Fin n → Fin n → ℂ) k := by
-      funext x; simp [Matrix.updateRow_apply, hk]
+      funext x; simp [hk]
     rw [e]; exact contDiff_apply ℝ (Fin n → ℂ) k
 
 theorem adjugate_smooth : ContDiff ℝ ∞ (fun x : Mat n => x.adjugate) := by
@@ -37,7 +37,7 @@ theorem inv_smooth : ContDiffOn ℝ ∞ (fun x : Mat n => x⁻¹) (GLs n) := by
   refine h.congr fun x hx => ?_
   ext i j
   rw [Matrix.inv_def, Ring.inverse_eq_inv]
-  simp [_root_.zpow_neg_one]
+  simp
 
 def cTL : Mat n →L[ℝ] Mat n :=
   LinearMap.toContinuousLinearMap
@@ -184,6 +184,6 @@ theorem rmAnti_of (hT : AtTraceT) (hD : AtDer) : RmAnti := by
   have hB : (Bt lam ^ m).trace = GlobalTheory.Dec.gelfVal (infOf lam false) m • (1 : Matrix (Jd n lam) (Jd n lam) ℂ) :=
     hT n lam hlam m
   rw [hB]
-  simp [Matrix.mul_smul, Matrix.smul_mul]
+  simp
 
 end PositivityTheory.RgBcC.Cxd2

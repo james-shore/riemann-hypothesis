@@ -40,7 +40,7 @@ private theorem aw_conc {Q P I : Cx R} (μ : Pair Q P I) {X : Spc} {m n : ℤ} (
   · rw [term _ _ (by simp) _ _ rfl rfl]
     simp
   · intro i _
-    rw [term _ _ (by simp <;> omega) _ _ rfl rfl, if_neg (by simp <;> omega)]
+    rw [term _ _ (by simp) _ _ rfl rfl, if_neg (by simp <;> omega)]
     simp
 
 end UpperTheory.Kun

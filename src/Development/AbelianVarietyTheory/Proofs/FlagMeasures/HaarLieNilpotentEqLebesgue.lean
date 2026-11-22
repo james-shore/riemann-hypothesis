@@ -94,8 +94,6 @@ theorem pow_upper {m : ℕ} {X : Matrix (Fin m) (Fin m) ℂ} (hX : ∀ i j : Fin
   | exact @_root_.GlobalTheory.StrictUpperNilpotentFlagMeasures.pow_apply_eq_zero_of_strictUpper
   | exact _root_.GlobalTheory.StrictUpperNilpotentFlagMeasures.pow_apply_eq_zero_of_strictUpper
   | (apply _root_.GlobalTheory.StrictUpperNilpotentFlagMeasures.pow_apply_eq_zero_of_strictUpper <;> assumption)
-  | (intros; apply _root_.GlobalTheory.StrictUpperNilpotentFlagMeasures.pow_apply_eq_zero_of_strictUpper <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.StrictUpperNilpotentFlagMeasures.pow_apply_eq_zero_of_strictUpper <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.StrictUpperNilpotentFlagMeasures.pow_apply_eq_zero_of_strictUpper ..)
 
 theorem exp_upper {m : ℕ} {X : Matrix (Fin m) (Fin m) ℂ} (hX : ∀ i j : Fin m, j.val ≤ i.val → X i j = 0) :
@@ -369,7 +367,7 @@ theorem Dm_es (v : EE k r) (a b : Fin r) : Dm k r v (eI k r a) (esI k r b) = ske
     refine Finset.sum_congr rfl fun c _ => ?_
     congr 1
     · by_cases h : a < c
-      · simp [upper, h, Matrix.one_apply, h.ne]
+      · simp [upper, h, h.ne]
       · simp [upper, h, Matrix.one_apply]
     · congr 1
       · unfold skewM

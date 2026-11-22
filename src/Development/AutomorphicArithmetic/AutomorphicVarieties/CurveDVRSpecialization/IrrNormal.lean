@@ -22,7 +22,7 @@ private theorem charpoly_of_basis {κ : Type} [Field κ] {n : ℕ} (M : Matrix (
   rw [LinearMap.toMatrix_apply, Matrix.toLin'_apply, h, Matrix.diagonal_apply]
   by_cases hij : i = j
   · subst hij; simp
-  · simp [hij, Finsupp.single_apply, Ne.symm hij]
+  · simp [hij]
 
 private theorem reduce_roots {κ k B : Type} [Field κ] [Field k] [CommRing B] (j : B →+* κ)
     (hj : Function.Injective j) (φ : B →+* k) :
@@ -107,7 +107,7 @@ theorem UpperTheory.V.Pr.irrNormal :
     have e := (hla i ⟨u, hu⟩).symm.trans (hc u i)
     have e2 := congrArg (fun v => b.repr v (π u i)) e
     have hne' : i ≠ π u i := fun h => hne (by rw [← h]; rfl)
-    simp [Finsupp.single_apply, hne'] at e2
+    simp [hne'] at e2
     exact cne u i e2.symm
   let kap : Fin n → π.ker →* κ := fun i =>
     { toFun := fun h => c h i

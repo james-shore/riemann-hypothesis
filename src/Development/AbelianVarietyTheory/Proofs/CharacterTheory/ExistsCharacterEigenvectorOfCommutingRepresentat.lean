@@ -11,8 +11,6 @@ theorem exists_common_eigenvector_of_commute {L : Type} [Field L] [IsAlgClosed L
   | exact @_root_.GlobalTheory.UnimodularLatticeLemma.main
   | exact _root_.GlobalTheory.UnimodularLatticeLemma.main
   | (apply _root_.GlobalTheory.UnimodularLatticeLemma.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UnimodularLatticeLemma.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UnimodularLatticeLemma.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UnimodularLatticeLemma.main ..)
 
 theorem exists_character_eigenvector_of_commute :

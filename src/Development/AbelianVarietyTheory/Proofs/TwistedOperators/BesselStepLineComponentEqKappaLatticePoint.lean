@@ -23,11 +23,6 @@ theorem star_smul_mem_span : ∀ (D : D7) (n : ℕ) (I J : FractionalIdeal (𝓞
       first
       | exact GlobalTheory.IndefiniteRowSideFullHecke.FlatSpaceComponents.bridge_star_holds D.R D.host a
       | exact Formalism.BasicNotions.Examples₂.star_eq_conj D.host a
-      | (apply D.host.φ₀.injective
-         have h1 : D.host.φ₀ (D.host.conj a) = starRingEnd ℂ (D.host.φ₀ a) := Formalism.HC.HostAx.conjE_apply _ _ _
-         rw [h1]
-         haveI := D.host.isCMField_hostE
-         exact IsCMField.complexEmbedding_complexConj _ _ _)
     rw [e]; exact Formalism.L2.Pj.conj_mem_AAbar D ha
   induction hs using Submodule.span_induction with
   | mem x hx =>

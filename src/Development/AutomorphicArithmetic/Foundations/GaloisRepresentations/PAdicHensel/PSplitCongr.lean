@@ -40,7 +40,6 @@ private theorem splitCore {n : ℕ} {B : Type*} [CommRing B] (s : B →+* B) (e 
       Matrix.mul_one, Matrix.one_mul, hAAi, hee, he'e', hee', he'e, zero_smul, add_zero, zero_add]
     first
       | rw [← add_smul, hsum, one_smul]
-      | rw [add_comm, ← add_smul, hsum, one_smul]
   · have hP : (e • A + e' • (1 : Matrix (Fin n) (Fin n) B)).map s = e' • (Gi * G') + e • 1 := by
       rw [Matrix.map_add _ (map_add s), Matrix.map_smul' _ _ _ (map_mul s),
         Matrix.map_smul' _ _ _ (map_mul s), hA, Matrix.map_one s s.map_zero s.map_one, hse, hse']
@@ -48,7 +47,7 @@ private theorem splitCore {n : ℕ} {B : Type*} [CommRing B] (s : B →+* B) (e 
     simp only [Matrix.transpose_add, Matrix.transpose_smul, Matrix.transpose_one, hAdef,
       Matrix.transpose_transpose, Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul, Matrix.mul_smul,
       smul_add, smul_smul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_assoc, hGiG, hGGi,
-      ← Matrix.mul_assoc Gi G, ← Matrix.mul_assoc G Gi, hee, he'e', hee', he'e, zero_smul,
+      ← Matrix.mul_assoc G Gi, hee, he'e', hee', he'e, zero_smul,
       add_zero, zero_add]
     first
       | rw [← add_smul, hsum, one_smul]

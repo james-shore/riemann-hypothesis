@@ -20,7 +20,7 @@ theorem re_form {n : ℕ} (ε : Fin n → Bool) (x : Fin n → ℂ) :
     (star x ⬝ᵥ (sgnDiag ℂ ε *ᵥ x)).re = ∑ i, (if ε i then 1 else -1) * Complex.normSq (x i) := by
   simp only [sgnDiag, Matrix.mulVec_diagonal, dotProduct, Complex.re_sum, Pi.star_apply]
   refine Finset.sum_congr rfl fun i _ => ?_
-  split_ifs <;> simp [Complex.mul_re, Complex.normSq_apply] <;> ring
+  split_ifs <;> simp [Complex.mul_re, Complex.normSq_apply]
 
 theorem card_neg_le {n : ℕ} (ε ε' : Fin n → Bool) (M : Matrix (Fin n) (Fin n) ℂ)
     (h : Mᴴ * sgnDiag ℂ ε * M = sgnDiag ℂ ε') :
@@ -156,7 +156,7 @@ theorem permGL_diagonal (π : Equiv.Perm (Fin n)) (d : Fin n → A) :
   show ((1 : Matrix (Fin n) (Fin n) A).submatrix id π)ᵀ * Matrix.diagonal d *
     (1 : Matrix (Fin n) (Fin n) A).submatrix id π = _
   ext i j
-  simp [Matrix.mul_apply, Matrix.one_apply, Matrix.diagonal_apply, Matrix.transpose_apply]
+  simp [Matrix.mul_apply, Matrix.one_apply, Matrix.diagonal_apply]
   split_ifs with hij
   · rw [hij]
   · rfl
@@ -204,11 +204,6 @@ theorem stabArch_conj : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Nu
         b⁻¹ * ((b' * P * b⁻¹)⁻¹ * AdelicU.matHom w.Completion σ J k * (b' * P * b⁻¹)) * b⁻¹⁻¹ ∈
           Formalism.UG.UJ (sigR w.Completion σ) 1
      rw [inv_inv, inv_inv, key, mul_mem_cancel_right hP, mul_mem_cancel_left (inv_mem hP)])
-  | (simp only [Subgroup.mem_comap, MonoidHom.coe_comp, Function.comp_apply, MulEquiv.coe_toMonoidHom,
-        MulAut.conj_apply]
-     simp only [map_mul, map_inv, inv_inv]
-     exact (mul_mem_cancel_right hP).symm.trans ((mul_mem_cancel_left (inv_mem hP)).symm.trans
-       (by rw [← key]; exact Iff.rfl)))
 
 end GlobalTheory.MajorantConj
 

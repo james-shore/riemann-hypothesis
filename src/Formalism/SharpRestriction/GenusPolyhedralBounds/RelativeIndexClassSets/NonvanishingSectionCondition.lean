@@ -77,8 +77,6 @@ theorem ekl : ((runOf T S hZ).kl : ℝ) =
   have hd : (Dm D : ℝ) = (T.Dp : ℝ) := by
     first
     | (unfold Dm; exact_mod_cast dm_eq T)
-    | (simp only [Dm]; exact_mod_cast dm_eq T)
-    | exact_mod_cast dm_eq T
   rw [hd]
 
 theorem enV : (D.R.nV : ℝ) = (T.nP : ℝ) + (T.TO : ℝ) * T.nWn := by
@@ -123,7 +121,6 @@ theorem qq_ge (P : ParameterChoice' D L) : ((D.R.k : ℝ) * L.sc.b) ^ 8 ≤ (qq 
   unfold qq
   first
   | (rw [Nat.cast_min]; exact le_min (g_ge P 0) (g_ge P 1))
-  | (push_cast; exact le_min (g_ge P 0) (g_ge P 1))
 
 theorem eRR : WeightFamilies.RRv D 2 = D.host.rdE ^ 2 := by
   unfold WeightFamilies.RRv

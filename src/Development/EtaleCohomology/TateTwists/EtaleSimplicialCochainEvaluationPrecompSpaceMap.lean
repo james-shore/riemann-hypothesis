@@ -23,7 +23,7 @@ variable {R : Type} [CommRing R]
 
 lemma app_add {A B : Shv R} (φ ψ : A ⟶ B) (U : Scheme.{0}) (y : Sec A U) :
     ((φ + ψ).hom.app (op U)).hom y = (φ.hom.app (op U)).hom y + (ψ.hom.app (op U)).hom y := by
-  first | rfl | simp | (change (((sheafToPresheaf _ _).map (φ + ψ)).app (op U)).hom y = _; rw [Functor.map_add]; rfl)
+  first | rfl
 
 noncomputable def evH {E : Spc} {I : Cx R} {n : ℤ} (p : ℕ) (s : ℤ) (h : -(p : ℤ) + n = s) (U : Scheme.{0}) (x : Sx E p U) :
     Cochain ((chains R).obj E) I n →+ Sec (I.X s) U :=

@@ -43,7 +43,7 @@ theorem exists_pow_eq_of_mem {p : ℕ} (hp : Valued.v (p : v.adicCompletion F) <
       have h0 : Ideal.Quotient.mk (maximalIdeal R) (p : R) = 0 :=
         Ideal.Quotient.eq_zero_iff_mem.2 hpm
       rw [map_natCast] at h0
-      simp [derivative_X_pow, h0])
+      simp [h0])
   refine ⟨a, ?_⟩
   have h1 : a ^ (p * e + 1) = c := by
     simpa [IsRoot, sub_eq_zero] using ha

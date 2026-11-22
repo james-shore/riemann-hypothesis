@@ -85,7 +85,7 @@ theorem eq_zero_of_triangular (H : (Fin m → ℤ) → ℕ) (c : (Fin m → ℤ)
 
 theorem monoJ_single (i₀ : Fin m) (k : ℕ) (δ : Fin m → ℂ) : monoJ (Pi.single i₀ (k : ℤ)) δ = δ i₀ ^ k := by
   unfold monoJ
-  rw [Finset.prod_eq_single i₀ (fun j _ hj => by simp [Pi.single_apply, hj]) (by simp)]
+  rw [Finset.prod_eq_single i₀ (fun j _ hj => by simp [hj]) (by simp)]
   simp
 
 theorem dom_single (i₀ : Fin m) (h0 : (i₀ : ℕ) = 0) (k : ℕ) : Dom (Pi.single i₀ (k : ℤ)) := by
@@ -93,7 +93,7 @@ theorem dom_single (i₀ : Fin m) (h0 : (i₀ : ℕ) = 0) (k : ℕ) : Dom (Pi.si
   · simp only [Pi.single_apply]
     have : a ≤ b := hab
     rw [Fin.le_def] at this
-    split_ifs with h1 h2 h2 <;> first | rfl | omega | (subst h2; exfalso; exact h1 (Fin.ext (by omega)))
+    split_ifs with h1 h2 h2 <;> first | rfl | omega
   · simp only [Pi.single_apply]; split_ifs <;> omega
 
 theorem ne_zero_of_symJ (α : Fin m → ℂˣ) (α₀ : Fin m → ℂ) (i₀ : Fin m)

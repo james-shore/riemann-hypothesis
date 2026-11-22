@@ -13,4 +13,4 @@ theorem _root_.PositivityTheory.Mix.T.hermitian_adapted_pair_converse : ∀ (F E
       H.IsAdapted σ B X X₁ j₀ j₁ → IsPair B M₁ χX χW om₁ r₁ s₁ r' s' →
       ∀ e, IsEv B M M₁ H.ι 1 {u | ∃ z, u = Matrix.vecMulVec (incV F H.x) z} e →
       ∀ y : Fin n₁ × Fin d → AF F, (LinearMap.proj y : Fn F n₁ d →ₗ[ℂ] ℂ) ∘ₗ e ∈ (adeleClass F).adm (Fin n × Fin d) := by
-  first | exact @PositivityTheory.ThKF0.hermitian_plane_theta_cusp_integral | exact fun _ => @PositivityTheory.ThKF0.hermitian_plane_theta_cusp_integral | exact PositivityTheory.ThKF0.hermitian_plane_theta_cusp_integral | exact @PositivityTheory.ThKF0.hermitian_plane_theta_cusp_integral trivial
+  first | exact @PositivityTheory.ThKF0.hermitian_plane_theta_cusp_integral

@@ -41,7 +41,7 @@ theorem forms_of_semilinear_at (φ : K →+* K') (e : G ≃* G') (B : BlockDat K
     intro x
     ext i
     simp only [Matrix.mulVec, dotProduct, hCe, Basis.equivFun_symm_apply, hbv, map_sum, map_smul,
-      Basis.equivFun_apply, Finsupp.coe_finset_sum, Finset.sum_apply, Finsupp.smul_apply, Pi.smul_apply,
+      Basis.equivFun_apply, Finset.sum_apply, Pi.smul_apply,
       smul_eq_mul, mul_comm]
   have hL : ∀ f, L f = bv.equivFun.symm (fun k => φ (B.S.basis.equivFun f k)) := by
     intro f
@@ -85,7 +85,7 @@ theorem forms_of_semilinear_at (φ : K →+* K') (e : G ≃* G') (B : BlockDat K
     intro k
     have hs : (Pi.single k 1 : Fin B.S.dim → K') = fun j => φ ((Pi.single k 1 : Fin B.S.dim → K) j) := by
       funext j
-      by_cases h : j = k <;> simp [Pi.single_apply, h]
+      by_cases h : j = k <;> simp [h]
     have hk : (Pi.single k 1 : Fin B.S.dim → K) = B.S.basis.equivFun (B.S.basis k) := by
       funext j
       rw [Basis.equivFun_self, Pi.single_apply]

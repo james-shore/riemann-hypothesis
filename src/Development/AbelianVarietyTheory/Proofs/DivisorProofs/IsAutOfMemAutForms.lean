@@ -61,7 +61,7 @@ theorem mem_center_of_comm (u : GlobalTheory.AutFinLit.Env V)
   intro b
   have hs : Function.Surjective (UniversalEnvelopingAlgebra.mkAlgHom ℂ (GlobalTheory.AutFinLit.LieC V)) := by
     unfold UniversalEnvelopingAlgebra.mkAlgHom
-    first | exact RingCon.mkₐ_surjective _ _ | exact RingCon.mkₐ_surjective _ | exact fun b => Quotient.inductionOn' b fun t => ⟨t, rfl⟩ | exact Quot.mk_surjective
+    first | exact RingCon.mkₐ_surjective _ _ | exact RingCon.mkₐ_surjective _
   obtain ⟨t, rfl⟩ := hs b
   induction t using TensorAlgebra.induction with
   | algebraMap r => rw [AlgHom.commutes]; exact Algebra.commutes r u

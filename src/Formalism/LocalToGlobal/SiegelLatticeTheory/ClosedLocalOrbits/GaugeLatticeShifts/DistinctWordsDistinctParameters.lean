@@ -72,7 +72,7 @@ theorem inner_tens_update (z x : ∀ i, V i) (i : ι) (p : V i) :
   · apply Finset.prod_congr rfl
     intro j hj
     have hji : j ≠ i := by simpa using hj
-    simp [Function.update_apply, hji]
+    simp [hji]
 
 include hin hspan in
 
@@ -155,12 +155,12 @@ theorem commutant_scalar [FiniteDimensional ℂ W] [∀ i, FiniteDimensional ℂ
         funext k
         by_cases hk : k = j
         · subst hk; simp [fill]
-        · simp [fill, Function.update_apply, hk]
+        · simp [fill, hk]
       have hx : Function.update (fill e x t) j (e j) = fill e x (insert j t) := by
         funext k
         by_cases hk : k = j
         · subst hk; simp [fill]
-        · simp [fill, Function.update_apply, hk]
+        · simp [fill, hk]
       have hzj : fill e z t j = z j := by simp [fill, hj]
       have hxj : fill e x t j = x j := by simp [fill, hj]
       rw [hz, hx, hzj, hxj]
@@ -310,7 +310,7 @@ theorem smat_mat (G : Matrix (Fin k) (Fin k) ℂ) (a b : Fin k) :
   rw [← Matrix.mulVec_mulVec] at e
   rw [← e]
   have h2 : (Wm wf)ᴴ * (J * smat J wf G) * Wm wf = G := by
-    simp only [smat, Matrix.mul_add, Matrix.add_mul, Matrix.mul_one, Matrix.one_mul, Matrix.mul_assoc, hO1, hO2]
+    simp only [smat, Matrix.mul_add, Matrix.add_mul, Matrix.mul_one, Matrix.mul_assoc, hO1, hO2]
     abel
   rw [h2]
 
@@ -664,7 +664,7 @@ theorem matW_sAt_self (v : InfinitePlace X.B.I.F) (g : Matrix (Fin D.R.k) (Fin D
 theorem matW_sAt_ne (v w : InfinitePlace X.B.I.F) (hw : w ≠ v) (g : Matrix (Fin D.R.k) (Fin D.R.k) ℂ)
     (hg : gᴴ * g = 1) : matW X.B.I (X.wfr u w) w (sAt X u v g hg) = 1 := by
   ext a b
-  have hw' : sAt X u v g hg w = 1 := by simp [sAt, Function.update_apply, hw]
+  have hw' : sAt X u v g hg w = 1 := by simp [sAt, hw]
   simp only [matW]
   rw [hw']
   exact one_mat _ _ (fun a b => X.wfr_on u w a b) a b
@@ -782,7 +782,7 @@ theorem piU_sAt (v : InfinitePlace X.B.I.F) (g : Matrix (Fin D.R.k) (Fin D.R.k) 
 
 theorem sAt_ne (v w : InfinitePlace X.B.I.F) (hw : w ≠ v) (g : Matrix (Fin D.R.k) (Fin D.R.k) ℂ)
     (hg : gᴴ * g = 1) : sAt X u v g hg w = 1 := by
-  simp [sAt, Function.update_apply, hw]
+  simp [sAt, hw]
 
 end Formalism.L2.SG.Pf.IdBlocks2.Geo
 

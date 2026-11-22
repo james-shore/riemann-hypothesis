@@ -29,8 +29,8 @@ theorem glueMapS_continuous (l : Fin r) (c : Fin r → ℂ) : Continuous (glueMa
       exact (continuous_apply _).comp (continuous_snd.comp continuous_fst)
     · simp only [glue, h, dif_neg, not_false_eq_true, Function.update_apply]
       by_cases hm : m = l
-      · simp only [hm, eq_self_iff_true, if_true, ite_true] <;> fun_prop
-      · simp only [hm, if_false, ite_false] <;> fun_prop
+      · simp only [hm, if_true] <;> fun_prop
+      · simp only [hm, if_false] <;> fun_prop
   · exact continuous_matrix fun i j => by simp only [Matrix.of_apply]; fun_prop
 
 theorem measurableSet_glueMapS_DomR (l : Fin r) (c : Fin r → ℂ) :

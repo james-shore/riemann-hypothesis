@@ -67,7 +67,7 @@ theorem phase_eq : ∀ D : D7, ∃ w : 𝓞 D.host.E, w + GlobalTheory.FinWeil.s
     have hR : GlobalTheory.LatVac.hRat S T X X = n := by
       rw [GlobalTheory.LatVac.hRat, hset.gS, hset.gT, inv_one]
       simp only [Matrix.one_apply, ite_mul, one_mul, zero_mul, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq,
-        Finset.sum_ite_eq', Finset.mem_univ, if_true]
+        Finset.mem_univ, if_true]
       have e : ∀ x, (∑ x_1, ∑ x_2, if x = x_1 then star (X x_2 x_1) * X x_2 x else 0) =
           ∑ x_2, star (X x_2 x) * X x_2 x := fun x => by
         rw [Finset.sum_comm]

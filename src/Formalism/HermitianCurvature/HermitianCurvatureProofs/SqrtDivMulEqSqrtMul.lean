@@ -31,7 +31,6 @@ theorem nk_pos (hdet : Zm.det ≠ 0) : 0 < nk Zm := by
     simp [h] at h2
     first
       | exact hdet h2.symm
-      | exact hdet h2
   exact Finset.sum_pos' (fun i _ => Complex.normSq_nonneg _)
     ⟨b, Finset.mem_univ _, Complex.normSq_pos.mpr hb⟩
 

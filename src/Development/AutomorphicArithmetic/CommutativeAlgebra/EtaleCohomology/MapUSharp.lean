@@ -239,7 +239,6 @@ private theorem wzChart {Y : Scheme.{0}} (hY : AffFin Y) {J : Type} [Finite J] (
   refine ⟨⟨I, B, f⟩, hd, fun s => ⟨U (a s), V (a s), hU _, hV _, hUV _, fun p _ => ?_⟩⟩
   have h2 : PAlg.mapU (f s).hom (e s) = 1 := by
     rw [← hs, mapU_sharp']
-    change (B s).obj.sharp (PAlg.Hom.f (f s).hom (e₀ s)) = 1
     rw [h1 s]
     simp [PAlg.sharp]
   have := hea s (PrimeSpectrum.comap (PAlg.mapU (f s).hom) p) (fun hmem => by

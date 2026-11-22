@@ -40,13 +40,13 @@ theorem main : ∀ (S : Scheme.{0}) (A : Over S) [GrpObj A] [IsCommMonObj A] (Q 
   have C' := (GlobalTheory.CechPic.cls_eq_iff (pull_isLB (LB.isLB_linComb hL' _ _) _) (LB.isLB_linComb hL' _ _)).2 C
   rw [GlobalTheory.CechPic.cls_pull (LB.isLB_linComb hL' _ _), GlobalTheory.CechPic.cls_linComb hL', GlobalTheory.CechPic.cls_linComb hL',
     GlobalTheory.CechPic.cls_pull hQL] at C'
-  simp only [map_sum, map_zsmul, ← GlobalTheory.CechPic.pull_comp, Category.assoc, e₁, e₂] at C'
+  simp only [map_sum, map_zsmul, ← GlobalTheory.CechPic.pull_comp, e₁, e₂] at C'
   unfold diagPow formLB
   refine (GlobalTheory.CechPic.cls_eq_iff (pull_isLB (LB.isLB_linComb hQL _ _) _)
     (pull_isLB (pull_isLB (LB.isLB_linComb hQL _ _) _) _)).1 ?_
   rw [GlobalTheory.CechPic.cls_pull (LB.isLB_linComb hQL _ _), GlobalTheory.CechPic.cls_pull (pull_isLB (LB.isLB_linComb hQL _ _) _),
     GlobalTheory.CechPic.cls_pull (LB.isLB_linComb hQL _ _), GlobalTheory.CechPic.cls_linComb hQL, GlobalTheory.CechPic.cls_linComb hQL]
-  simp only [map_sum, map_zsmul, ← GlobalTheory.CechPic.pull_comp, Category.assoc]
+  simp only [map_sum, map_zsmul, ← GlobalTheory.CechPic.pull_comp]
   exact C'.symm
 
 end GlobalTheory.ElRep

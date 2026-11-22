@@ -36,7 +36,7 @@ theorem satA : ∀ (l : ℕ) [Fact l.Prime] (Γ : Type) [Group Γ] (a m : ℕ) (
       ext i : 1
       by_cases hi : i = k
       · subst hi; simp
-      · simp [Pi.single_apply, hi]
+      · simp [hi]
     | zero => exact ⟨0, Λ.zero_mem, by simp⟩
     | add x y _ _ hx hy =>
       obtain ⟨x', hx', rfl⟩ := hx

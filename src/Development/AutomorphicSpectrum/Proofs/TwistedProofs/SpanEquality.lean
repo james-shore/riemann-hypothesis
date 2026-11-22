@@ -277,15 +277,15 @@ theorem spanEq : SpanEq := by
   have egl : g (Fin.last (N + 1)) = vec3 (0 : L) (0 : Fin N → L) (ϖ ^ (-a)) :=
     vec_ext (by simp [hl0]) (fun j => by simp [hlm]) (by simp [hll])
   have e10 : (1 : Matrix (Fin (N + 2)) (Fin (N + 2)) L) 0 = vec3 (1 : L) (0 : Fin N → L) 0 :=
-    vec_ext (by simp) (fun j => by simp [Matrix.one_apply, (mid_ne_zero j).symm])
-      (by simp [Matrix.one_apply])
+    vec_ext (by simp) (fun j => by simp [(mid_ne_zero j).symm])
+      (by simp)
   have e1m : ∀ k, (1 : Matrix (Fin (N + 2)) (Fin (N + 2)) L) (mid k) =
       vec3 (0 : L) ((1 : Matrix (Fin N) (Fin N) L) k) 0 :=
-    fun k => vec_ext (by simp [Matrix.one_apply, mid_ne_zero])
+    fun k => vec_ext (by simp [mid_ne_zero])
       (fun j => by simp [Matrix.one_apply, mid_injective.eq_iff])
-      (by simp [Matrix.one_apply, mid_ne_last])
+      (by simp [mid_ne_last])
   have e1l : (1 : Matrix (Fin (N + 2)) (Fin (N + 2)) L) (Fin.last (N + 1)) = vec3 (0 : L) (0 : Fin N → L) 1 :=
-    vec_ext (by simp [Matrix.one_apply]) (fun j => by simp [Matrix.one_apply, (mid_ne_last j).symm]) (by simp)
+    vec_ext (by simp) (fun j => by simp [(mid_ne_last j).symm]) (by simp)
   obtain ⟨R, hR⟩ : ∃ R, R = rowLat (1 : Matrix (Fin (N + 2)) (Fin (N + 2)) L) ⊔ rowLat g := ⟨_, rfl⟩
   have r1 : ∀ i, (1 : Matrix (Fin (N + 2)) (Fin (N + 2)) L) i ∈ R :=
     fun i => hR ▸ Submodule.mem_sup_left (row_mem_rowLat _ i)

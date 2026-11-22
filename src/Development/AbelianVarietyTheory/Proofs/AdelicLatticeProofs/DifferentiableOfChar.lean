@@ -20,8 +20,6 @@ theorem differentiable_of_char (χ : ℝ → ℂ) (hc : Continuous χ) (h0 : χ 
   | exact @_root_.GlobalTheory.ContinuousHomDifferentiable.continuous_hom_differentiable
   | exact _root_.GlobalTheory.ContinuousHomDifferentiable.continuous_hom_differentiable
   | (apply _root_.GlobalTheory.ContinuousHomDifferentiable.continuous_hom_differentiable <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ContinuousHomDifferentiable.continuous_hom_differentiable <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ContinuousHomDifferentiable.continuous_hom_differentiable <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ContinuousHomDifferentiable.continuous_hom_differentiable ..)
 
 variable {D : D7}

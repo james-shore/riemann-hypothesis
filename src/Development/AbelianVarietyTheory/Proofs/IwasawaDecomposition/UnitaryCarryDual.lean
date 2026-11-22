@@ -120,7 +120,6 @@ private lemma pairing_mem_intV_of_mem_dualSet (σ : E →ₐ[F] E) (w : HeightOn
     convert h using 2 with j
     rw [map_mul]
     congr 1
-    all_goals (unfold _root_.Formalism.UG.sigR _root_.Formalism.UG.inclE; simp)
   | zero => simp
   | add a b _ _ ha hb =>
     convert add_mem ha hb using 1
@@ -286,8 +285,8 @@ theorem _root_.GlobalTheory.Mem.LevDual.unitary_carry_dual : ∀ (F E : Type) [F
       · intro b _ hb
         by_cases hbl : b = Fin.last m
         · subst hbl
-          simp [c, d, he0_def, Pi.single_apply, Ne.symm hb, Subring.smul_def]
-        · simp [c, d, hbl, Pi.single_apply, Ne.symm hb, Subring.smul_def]
+          simp [c, d, he0_def, Pi.single_apply, Ne.symm hb]
+        · simp [c, d, hbl, Pi.single_apply, Ne.symm hb]
       · intro h
         exact absurd (Finset.mem_univ k) h
     rw [hsum]

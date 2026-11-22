@@ -290,7 +290,7 @@ theorem isKFinCoefH_coefF (L : LocBessel k r) {v v' : L.Hs} (hv : IsKFinHpk (k :
       simp [inner_smul_left, inner_smul_right, mul_comm]
     exact ⟨S, h1, e ▸ S.smul_mem _ h2, h3⟩
   · ext x
-    simp [coefF, inner_smul_right, smul_smul]
+    simp [coefF, smul_smul]
 
 theorem ae_cellData (hk : 1 ≤ k) (L : LocBessel k r) (μG : Measure (Mt k r))
     {μsec : ℂ → Matrix (Fin (k + 1)) (Fin (k + 1)) ℂ} (hsec : IsSection k r L.z L.z' μsec) :

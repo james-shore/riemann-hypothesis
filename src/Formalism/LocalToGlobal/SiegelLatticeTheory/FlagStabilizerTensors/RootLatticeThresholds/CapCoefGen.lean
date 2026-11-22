@@ -33,7 +33,7 @@ theorem conj_star (hQP : Q * P = 1) (hPQ : P * Q = 1) (Z : Matrix (Fin n) (Fin n
   rw [hinv hQP hPQ]
   simp only [Matrix.conjTranspose_mul, Matrix.mul_assoc]
   rw [← Matrix.mul_assoc P Q, hPQ, Matrix.one_mul]
-  simp only [hPQ, Matrix.mul_one]
+  simp only [Matrix.mul_one]
 
 theorem conj_hpart1 (hQP : Q * P = 1) (hPQ : P * Q = 1) (Z : Matrix (Fin n) (Fin n) ℂ) :
     P * Formalism.QuantumDeterminants.hpart1 (Pᴴ * Jm ε * P) Z * Q = S7.cpart1 ε (P * Z * Q) := by
@@ -159,7 +159,7 @@ theorem Ec_eq (c d : Fin n) :
   unfold Ec actM
   refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
   congr 1
-  simp [Matrix.mul_apply, Matrix.single_apply, ite_and, Finset.sum_ite_eq, Finset.sum_ite_eq', ite_mul]
+  simp [Matrix.mul_apply, Matrix.single_apply, ite_and, Finset.sum_ite_eq, ite_mul]
 
 theorem top_cf (hσ : IsURepOn (UJset ε) σ) (hQP : Q * P = 1) (hPQ : P * Q = 1) (a : H) (T : E)
     (x : smD ε σ) (f : Matrix (Fin n) (Fin n) ℂ → E)

@@ -40,7 +40,7 @@ theorem det_updateRow_last_single {R : Type} [CommRing R] (r : ℕ)
     rw [this]
     simp [← two_mul, pow_mul]
   · intro b _ hb
-    simp [Pi.single_apply, hb]
+    simp [hb]
   · simp
 
 theorem det_fromBlocks_rowBlocks {R n : Type} [CommRing R] [Fintype n] [DecidableEq n]

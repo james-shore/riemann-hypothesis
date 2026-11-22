@@ -16,8 +16,7 @@ theorem evD_yMat (v : X.Pl) (s : Fin (X.G.P.n' v)) :
     (yMat X Kc j v s).map (evD X D pos ι hN d f') =
       ((zT X D pos f' (pos ⟨v, s⟩)).map ι).submatrix (Fin.cast hN.2.symm) (Fin.cast hN.2.symm) := by
   ext b t
-  simp only [Matrix.map_apply, yMat, evD, MvPolynomial.eval₂Hom_C, RingHom.coe_comp, Function.comp_apply,
-    MvPolynomial.eval_X, Matrix.submatrix_apply]
+  simp only [Matrix.map_apply, yMat, evD, MvPolynomial.eval₂Hom_C, MvPolynomial.eval_X, Matrix.submatrix_apply]
   rfl
 
 theorem evD_dMat (v : X.Pl) (s : Fin (X.G.P.n' v)) :

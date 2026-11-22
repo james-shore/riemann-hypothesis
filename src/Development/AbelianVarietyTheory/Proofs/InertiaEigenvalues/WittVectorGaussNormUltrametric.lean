@@ -56,8 +56,6 @@ theorem sum_le {ι : Type} (s : Finset ι) (f : ι → R) (c : ℝ) (hc : 0 ≤ 
   | exact @_root_.GlobalTheory.UltrametricSum.ultra_sum_le
   | exact _root_.GlobalTheory.UltrametricSum.ultra_sum_le
   | (apply _root_.GlobalTheory.UltrametricSum.ultra_sum_le <;> assumption)
-  | (intros; apply _root_.GlobalTheory.UltrametricSum.ultra_sum_le <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.UltrametricSum.ultra_sum_le <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.UltrametricSum.ultra_sum_le ..)
 
 include hb h1 hm in

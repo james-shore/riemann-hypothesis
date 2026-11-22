@@ -78,7 +78,6 @@ theorem exists_isImage (γ : GL (Fin I.n) I.E) (hγ : γ ∈ Formalism.UG.UJ (st
     intro e
     first
     | rfl
-    | simp [Formalism.UG.sigR, Formalism.UG.inclE, Formalism.BasicNotions.CMData.sig]
   have hfin : ∃ h : I.Gf, I.fmat h =
       (γ : Matrix (Fin I.n) (Fin I.n) I.E).map (Formalism.UG.inclE (F := I.F) (Af I.F)) := by
     refine ⟨⟨Matrix.GeneralLinearGroup.map (Formalism.UG.inclE (F := I.F) (Af I.F)) γ, ?_⟩, rfl⟩

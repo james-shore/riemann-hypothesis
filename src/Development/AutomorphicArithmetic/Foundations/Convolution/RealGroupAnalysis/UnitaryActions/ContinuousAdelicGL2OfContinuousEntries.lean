@@ -65,7 +65,7 @@ theorem aE_inv (t : (A F)ˣ) : aE t⁻¹ = (aE t)⁻¹ := eq_inv_of_mul_eq_one_l
   refine Units.ext ?_; simp [Matrix.det_fin_two]
 @[simp] theorem det_gl (g : G1 F) : Matrix.GeneralLinearGroup.det (gl g) = 1 := Units.ext g.det_coe
 theorem det_scalar (s : (A F)ˣ) : Matrix.GeneralLinearGroup.det (Matrix.GeneralLinearGroup.scalar (Fin 2) s) = s ^ 2 := by
-  refine Units.ext ?_; simp [Matrix.det_fin_two, pow_two]
+  refine Units.ext ?_; simp [pow_two]
 theorem gl_mul (g h : G1 F) : gl (g * h) = gl g * gl h := map_mul _ _ _
 theorem gl_one : gl (1 : G1 F) = 1 := map_one _
 theorem gl_inv (g : G1 F) : gl g⁻¹ = (gl g)⁻¹ := map_inv _ _
@@ -163,7 +163,7 @@ theorem gl_ratS (γ : Matrix.SpecialLinearGroup (Fin 2) F) : gl (ratS F γ) = ra
 theorem det_ratGL (γ : GL (Fin 2) F) :
     Matrix.GeneralLinearGroup.det (ratGL F 2 γ) = IdeleGroup.diagonal F (Matrix.GeneralLinearGroup.det γ) := by
   refine Units.ext ?_
-  simp [Matrix.det_fin_two, ratGL_apply, coe_diagonal]
+  simp [Matrix.det_fin_two, ratGL_apply]
 theorem nU_rt_mem (b : F) : nU (rt b) ∈ Gam F := ⟨⟨!![1, b; 0, 1], by simp [Matrix.det_fin_two]⟩, by
   apply specialLinear_ext_entries <;> refine (ratS_apply _ _ _).trans ?_ <;> simp⟩
 theorem wW_mem : wW F ∈ Gam F := ⟨⟨!![0, 1; -1, 0], by simp [Matrix.det_fin_two]⟩, by
@@ -190,11 +190,11 @@ theorem cD_diagonal_mem (c : Fˣ) {g : G1 F} (hg : g ∈ Gam F) : cD (IdeleGroup
 theorem exists_ratGL_dM (c : Fˣ) : ∃ γ, ratGL F 2 γ = dM (IdeleGroup.diagonal F c) :=
   ⟨⟨!![1, 0; 0, (c : F)], !![1, 0; 0, ((c⁻¹ : Fˣ) : F)], by ext i j; fin_cases i <;> fin_cases j <;> simp,
     by ext i j; fin_cases i <;> fin_cases j <;> simp⟩, by
-      refine Units.ext ?_; ext i j; fin_cases i <;> fin_cases j <;> simp [ratGL_apply, coe_diagonal]⟩
+      refine Units.ext ?_; ext i j; fin_cases i <;> fin_cases j <;> simp [ratGL_apply]⟩
 theorem exists_ratGL_aE (c : Fˣ) : ∃ γ, ratGL F 2 γ = aE (IdeleGroup.diagonal F c) :=
   ⟨⟨!![(c : F), 0; 0, 1], !![((c⁻¹ : Fˣ) : F), 0; 0, 1], by ext i j; fin_cases i <;> fin_cases j <;> simp,
     by ext i j; fin_cases i <;> fin_cases j <;> simp⟩, by
-      refine Units.ext ?_; ext i j; fin_cases i <;> fin_cases j <;> simp [ratGL_apply, coe_diagonal]⟩
+      refine Units.ext ?_; ext i j; fin_cases i <;> fin_cases j <;> simp [ratGL_apply]⟩
 
 end UpperTheory.ConvolutionTheory.R2
 

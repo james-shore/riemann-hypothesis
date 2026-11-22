@@ -16,7 +16,7 @@ theorem gramR_add_sub {F E : Type} [Field F] [Field E] [Algebra F E] (R : Type) 
     (x W : Fin n → Fin M → R ⊗[F] E) :
     gramR R σ J (x + W) - gramR R σ J x - gramR R σ J W = gramB R σ J x W := by
   funext i j
-  simp [gramR, gramB, hR, Formalism.UG.hform, Matrix.sub_apply, Matrix.add_apply, map_add, add_mul, mul_add,
+  simp [gramR, gramB, hR, Formalism.UG.hform, Matrix.sub_apply, map_add, add_mul, mul_add,
     Finset.sum_add_distrib] <;> ring
 
 theorem gramB_add_right {F E : Type} [Field F] [Field E] [Algebra F E] (R : Type) [CommRing R]

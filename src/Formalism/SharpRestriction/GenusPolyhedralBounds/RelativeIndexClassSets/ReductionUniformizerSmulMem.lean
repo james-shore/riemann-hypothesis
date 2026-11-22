@@ -154,7 +154,6 @@ theorem smul_AAp_mem (hC : Q.InCurve) (e : ℕ) (m m' : PtsG G la → ℕ)
       rw [← WithTop.coe_add]
       refine WithTop.coe_le_coe.2 ?_
       have := h ζ
-      push_cast
       have h2 : ((m' ζ : ℕ) : ℤ) ≤ (m ζ : ℤ) + (e : ℤ) * (ep (unifO X la G.N) ζ : ℤ) := by exact_mod_cast this
       linarith
     · rw [LinearMap.map_smul_of_tower]

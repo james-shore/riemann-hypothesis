@@ -78,7 +78,7 @@ theorem UpperTheory.leraHirsch_chernPowers_on_unitChart :
           congrArg Prod.snd e
         subst e1
         have e3 := congrArg (Um.scale ![(hQ A _ hx).unit⁻¹, 1]) e2
-        rw [um_scale_scale_eq_of_mul_eq_one _ _ (by intro j; fin_cases j <;> simp <;> exact inv_mul_cancel _),
+        rw [um_scale_scale_eq_of_mul_eq_one _ _ (by intro j; fin_cases j <;> simp),
           um_scale_scale_eq_of_mul_eq_one _ _ (by intro j; fin_cases j <;> simp <;> exact inv_mul_cancel _)] at e3
         subst e3
         rfl

@@ -17,9 +17,6 @@ theorem host_star_conj : Formalism.BasicNotions.bridge_star := by
     first
       | exact NumberField.IsCMField.complexEmbedding_complexConj H.φ₀ y
       | exact NumberField.IsCMField.complexEmbedding_complexConj (K := H.E) H.φ₀ y
-      | (show H.φ₀ (NumberField.IsCMField.complexConj H.E y) = _
-         simp)
-      | done
   have h1 : ∀ y, H.φ₀ (H.conj y) = starRingEnd ℂ (H.φ₀ y) :=
     (H.der.conj_iff H.φ₀ H.conj).mpr (by
       unfold Formalism.HC.HostRaw.conj
@@ -44,7 +41,7 @@ theorem hE_crdOf {D : D7} (X : HidaSetting D) (x y : (VS D).V) :
   unfold Formalism.UG.hform
   simp only [map_sum, map_mul, RingEquiv.apply_symm_apply, hs, X.J_eq, LinearMap.map_smulₛₗ,
     LinearMap.sum_apply, LinearMap.smul_apply, map_smul, smul_eq_mul, starRingEnd_apply]
-  simp only [Finset.mul_sum, Finset.sum_mul]
+  simp only [Finset.mul_sum]
   rw [Finset.sum_comm]
   refine Finset.sum_congr rfl (fun i _ => Finset.sum_congr rfl (fun j _ => ?_))
   ring

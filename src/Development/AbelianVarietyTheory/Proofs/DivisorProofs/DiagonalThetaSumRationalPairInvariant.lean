@@ -26,8 +26,7 @@ namespace GlobalTheory.DiagThetaRatInv
 
 theorem dot_elim {R : Type} [CommRing R] {κ : Type} [Fintype κ] (x : κ ⊕ κ → R) (v : κ → R) :
     x ⬝ᵥ Sum.elim v (-v) = ∑ i, (x (Sum.inl i) - x (Sum.inr i)) * v i := by
-  simp only [dotProduct, Fintype.sum_sum_type, Sum.elim_inl, Sum.elim_inr, Pi.neg_apply, mul_neg, sub_mul,
-    Finset.sum_sub_distrib, Finset.sum_neg_distrib, sub_eq_add_neg]
+  simp only [dotProduct, Fintype.sum_sum_type, Sum.elim_inl, Sum.elim_inr, Pi.neg_apply, mul_neg, Finset.sum_neg_distrib, sub_eq_add_neg]
   simp only [add_mul, neg_mul, Finset.sum_add_distrib, Finset.sum_neg_distrib]
 
 theorem schr_diag {R : Type} [CommRing R] [Invertible (2 : R)] (ψ : AddChar R ℂ) {κ : Type} [Fintype κ]

@@ -15,7 +15,7 @@ variable {Γ : Type} [Group Γ] [Fintype Γ]
 theorem eq_sum_single (e : MonoidAlgebra ℂ Γ) : e = ∑ q : Γ, MonoidAlgebra.single q (e.coeff q) := by
   classical
   ext x
-  simp [MonoidAlgebra.coeff_sum, Finset.sum_apply', Finsupp.single_apply]
+  simp [MonoidAlgebra.coeff_sum]
 
 theorem coeff_mul_fin (a b : MonoidAlgebra ℂ Γ) (x : Γ) :
     (a * b).coeff x = ∑ q, a.coeff q * b.coeff (q⁻¹ * x) := by

@@ -90,7 +90,7 @@ private theorem add_mul_mul_conjTranspose_add_eq_of_two_smul {r p q : ℕ} (C : 
     (C * V + C * V) * M * (C * V + C * V)ᴴ = C * N * Cᴴ + C * N * Cᴴ := by
   rw [← key]
   simp only [Matrix.conjTranspose_add, Matrix.conjTranspose_mul, Matrix.add_mul, Matrix.mul_add,
-    Matrix.mul_smul, Matrix.smul_mul, two_smul, Matrix.mul_assoc]
+    two_smul, Matrix.mul_assoc]
 
 theorem signature_of_factor {p q : ℕ} (M W : Matrix (Fin p ⊕ Fin q) (Fin p ⊕ Fin q) ℂ)
     (G₁ : Matrix (Fin p) (Fin p) ℂ) (G₂ : Matrix (Fin q) (Fin q) ℂ) (h₁ : G₁.PosDef) (h₂ : G₂.PosDef)

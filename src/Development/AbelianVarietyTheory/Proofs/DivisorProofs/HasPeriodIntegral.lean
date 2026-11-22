@@ -118,10 +118,6 @@ theorem window_matrices : ∀ (p : ℕ) [Fact p.Prime] (C : Type) [Field C] [IsA
     rw [hχ m' (tb m)] at h1
     have h2 : epsPairing hε G (tb m) (χ m') = tb.equivFun (tb m) m' := (epsEquiv hε).injective h1
     rw [h2, Module.Basis.equivFun_self]
-    all_goals
-      by_cases h : m = m'
-      · subst h; simp
-      · simp [Pi.single_apply, h, Ne.symm h]
   have hQLe : ∀ l, QL μ' ⊤ (e l) := hB.1
   have hDe : ∀ l, DIn (⊤ : Ideal F.B) (e l) := fun l =>
     GlobalTheory.QLogDiff.dIn_of_QL p F.B O F.Q F.θ F.frame d μ' hL ⊤ (e l) (hQLe l)

@@ -131,7 +131,6 @@ theorem eq_smul_indicator_closure {X : Type} [AddCommGroup X] [TopologicalSpace 
     funext x
     first
     | rfl
-    | by_cases hx : x ∈ (H : Set X) <;> simp [hx, LocallyConstant.indicator]
   obtain ⟨c, hc⟩ := huniq _ h1SB (by
       intro s hs Y
       have : (Y + s ∈ (H : Set X) ↔ Y ∈ (H : Set X)) := H.add_mem_cancel_right (hSH hs)

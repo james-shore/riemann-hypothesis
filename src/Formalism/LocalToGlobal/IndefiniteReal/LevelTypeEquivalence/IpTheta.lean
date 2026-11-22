@@ -29,7 +29,6 @@ theorem thetaO_add {f g : WO S T → ℂ} (hf : IsThetaFunO ψ S T f) (hg : IsTh
   · refine ⟨U1 ⊓ U2, ?_, fun u hu hfin => ?_⟩
     · first
       | exact hU1.inter hU2
-      | simpa using hU1.inter hU2
     · have hu' : u ∈ U1 ∧ u ∈ U2 := by simpa using hu
       funext x
       have e1x := congrFun (h1 u hu'.1 hfin) x

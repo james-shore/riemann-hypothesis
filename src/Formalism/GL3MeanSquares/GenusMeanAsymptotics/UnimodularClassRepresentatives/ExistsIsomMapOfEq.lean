@@ -42,7 +42,7 @@ theorem transvEquiv_isom {h : V →ₗ⋆[K] V →ₗ[K] K} (hs : h.IsSymm) (u :
   rw [transvEquiv_apply, transvEquiv_apply]
   have h1 : star (h u v) = h v u := by rw [← starRingEnd_apply]; exact hs.eq u v
   simp only [map_sub, LinearMap.map_smulₛₗ, LinearMap.sub_apply, LinearMap.smul_apply, map_smul, smul_eq_mul,
-    map_mul, starRingEnd_apply, star_mul', h1]
+    map_mul, starRingEnd_apply, h1]
   linear_combination (-(h v u * h u w)) * hξ
 
 end WittTransvections

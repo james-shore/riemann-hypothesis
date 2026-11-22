@@ -26,7 +26,7 @@ theorem repr_bas_mul (S T U : Finset (Fin (n + n))) : ∃ m : ℤ, (bas n).repr 
     rw [e, Units.smul_def, ← Int.cast_smul_eq_zsmul ℂ]
     by_cases hU : S ∪ T = U
     · exact ⟨ε, by simp [hU], fun _ => ⟨h, hU.symm⟩⟩
-    · exact ⟨0, by simp [Finsupp.single_apply, hU], fun h => (h rfl).elim⟩
+    · exact ⟨0, by simp [hU], fun h => (h rfl).elim⟩
   · have := ExteriorAlgebra.basis_mul_of_not_disjoint ((Pi.basisFun ℂ (Fin n ⊕ Fin n)).reindex finSumFinEquiv)
       (Set.powersetCard.ofCard (s := S) rfl) (Set.powersetCard.ofCard (s := T) rfl) h
     have e : bas n S * bas n T = 0 := this
@@ -66,14 +66,14 @@ theorem isType_dz (a : Fin n) : IsType 1 0 (dz a) := fun S hS => by
   rw [dz, ← bas_singleton] at hS
   obtain rfl : {finSumFinEquiv (.inl a)} = S := by
     by_contra h
-    simp [Finsupp.single_apply, h, -finSumFinEquiv_apply_left] at hS
+    simp [h, -finSumFinEquiv_apply_left] at hS
   simp [Finset.filter_singleton]
 
 theorem isType_dzb (a : Fin n) : IsType 0 1 (dzb a) := fun S hS => by
   rw [dzb, ← bas_singleton] at hS
   obtain rfl : {finSumFinEquiv (.inr a)} = S := by
     by_contra h
-    simp [Finsupp.single_apply, h, -finSumFinEquiv_apply_right] at hS
+    simp [h, -finSumFinEquiv_apply_right] at hS
   simp [Finset.filter_singleton]
 
 def IsConj (α β : Alt n) : Prop := ∀ S, (bas n).repr β S = conj ((bas n).repr α S)

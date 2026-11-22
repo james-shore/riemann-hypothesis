@@ -98,7 +98,7 @@ theorem Gen1.cint (L : IsLoc O Δ) {x : Etau K τ} (h : Gen1 O x) {c : (Etau K �
     have hxx : (x - star x) ^ 2 = algebraMap O _ (d : O) := by
       rw [algebraMap_etau (O := O), hd]; ext <;> simp [sq] <;> ring
     have hsu : star (u : Etau K τ) = algebraMap O _ a + algebraMap O _ b * star x := by
-      rw [hu, algebraMap_etau a, algebraMap_etau b]; ext <;> simp <;> ring
+      rw [hu, algebraMap_etau a, algebraMap_etau b]; ext <;> simp
     have hui := u.inv_mul
     set i := ((u⁻¹ : (Etau K τ)ˣ) : Etau K τ)
     have hdi : algebraMap O (Etau K τ) (d : O) * algebraMap O _ ((d⁻¹ : Oˣ) : O) = 1 := by rw [← map_mul, Units.mul_inv, map_one]

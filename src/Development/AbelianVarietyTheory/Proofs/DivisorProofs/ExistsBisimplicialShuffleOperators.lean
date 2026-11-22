@@ -67,11 +67,11 @@ theorem alt_double_sum {M : Type*} [AddCommGroup M] (n : ℕ)
     by_cases h : j < i
     · simp only [h, if_true]
       rw [if_neg (by omega)]
-      simp only [Prod.mk.injEq, and_true, true_and]
+      simp only [Prod.mk.injEq, and_true]
       omega
     · simp only [h, if_false]
       rw [if_pos (by omega)]
-      simp only [Prod.mk.injEq, and_true, true_and]
+      simp only [Prod.mk.injEq, true_and]
       omega
 
 theorem dH_comp_dH (a b x y c d : ℕ) : dH a b x y ≫ dH x y c d = 0 := by
@@ -178,8 +178,8 @@ theorem exists_shuffle : ∃ G : ∀ a b n : ℕ, bo a b ⟶ bo n n, G 0 0 0 = �
       dsimp only
       rw [hid, Category.comp_id]
       obtain ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩ : (a = 0 ∧ b = 1) ∨ (a = 1 ∧ b = 0) := by omega
-      · simp [dT, dH, dV, Finset.sum_range_succ, map_add, map_zsmul, hε]
-      · simp [dT, dH, dV, Finset.sum_range_succ, map_add, map_zsmul, hε]
+      · simp [dT, dH, dV, Finset.sum_range_succ, map_add, hε]
+      · simp [dT, dH, dV, Finset.sum_range_succ, map_add, hε]
     rw [hr, zero_smul, sub_zero]
   | succ n ih =>
     intro hab

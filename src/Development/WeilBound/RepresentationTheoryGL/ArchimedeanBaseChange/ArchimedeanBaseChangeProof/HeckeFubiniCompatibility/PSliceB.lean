@@ -97,7 +97,7 @@ theorem measurePreserving_eqB (μa : Measure (G a)) [SigmaFinite μa] (μb : Mea
     (Measure.pi fun _ : {w : InfinitePlace E // ¬ w = v} => μb) ν
   have h3 := (measurePreserving_funUnique μb {w : InfinitePlace E // w = v}).prod
     (MeasurePreserving.id ((Measure.pi fun _ : {w : InfinitePlace E // ¬ w = v} => μb).prod ν))
-  have he1 := h3.comp (h2.comp (by convert h1 <;> rfl))
+  have he1 := h3.comp (h2.comp (by convert h1))
   have h4 := (MeasurePreserving.id (Measure.pi fun _ : InfinitePlace E => μa)).prod he1
   have h5 := (measurePreserving_prodAssoc (Measure.pi fun _ : InfinitePlace E => μa) μb
     ((Measure.pi fun _ : {w : InfinitePlace E // ¬ w = v} => μb).prod ν)).symm _

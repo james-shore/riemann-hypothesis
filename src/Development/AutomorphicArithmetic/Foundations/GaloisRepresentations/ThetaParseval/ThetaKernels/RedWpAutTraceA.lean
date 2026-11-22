@@ -366,7 +366,6 @@ theorem gauss_mul_integral_A_k (C : _root_.PositivityTheory.ThKW.Ctx_k σ B JS J
     simp only [coe_opFF, _root_.PositivityTheory.ThKW.Trc.right_side_k C halt, _root_.PositivityTheory.ThKW.Trc.left_side_k C hG hR hA ha hb hw halt hbij] at e
     rw [e, ← Summable.tsum_finsetSum, ← tsum_mul_left]
     · refine tsum_congr fun y => ?_
-      beta_reduce
       rw [← Finset.sum_mul, mul_assoc κ]
     · intro i _
       refine Summable.of_norm ((_root_.PositivityTheory.ThKW.Trc.summable_coefQF_k C hG hR hA hpos w (u i)).congr fun y => ?_)

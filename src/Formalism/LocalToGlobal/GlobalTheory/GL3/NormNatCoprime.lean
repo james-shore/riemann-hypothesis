@@ -50,15 +50,12 @@ theorem norm_nat_coprime (p : ℕ) [Fact p.Prime] {s : ℕ} (h : Nat.Coprime s p
     have h1 : ‖((s : ℤ) : ℚ_[p])‖ ≤ 1 := by
       first
         | exact Padic.norm_int_le_one _
-        | exact padicNormE.norm_int_le_one _
     have h2 : ¬ ‖((s : ℤ) : ℚ_[p])‖ < 1 := by
       first
-        | rw [Padic.norm_int_lt_one_iff_dvd]; exact_mod_cast hs
-        | rw [Padic.norm_intCast_lt_one_iff_dvd]; exact_mod_cast hs
+        | rw [Padic.norm_int_lt_one_iff_dvd]
+        | rw [Padic.norm_intCast_lt_one_iff_dvd]
         | rw [Padic.norm_intCast_lt_one_iff]; exact_mod_cast hs
-        | rw [padicNormE.norm_intCast_lt_one_iff_dvd]; exact_mod_cast hs
-        | (intro hlt; apply hs; exact_mod_cast (Padic.norm_int_lt_one_iff_dvd (s : ℤ)).mp hlt)
-        | (intro hlt; apply hs; exact_mod_cast (Padic.norm_intCast_lt_one_iff_dvd (s : ℤ)).mp hlt)
+        | rw [padicNormE.norm_intCast_lt_one_iff_dvd]
     have e : ((s : ℤ) : ℚ_[p]) = (s : ℚ_[p]) := by simp
     rw [← e]
     exact le_antisymm h1 (not_lt.mp h2)
@@ -72,8 +69,6 @@ theorem emb_mem (τ : D.what₂.Tau) (x : D.host.E) : embT D τ x ∈ Qbar := by
     (hx.map (D.host.emb ↑(D.eTau τ)).toRatAlgHom).isAlgebraic
   first
     | exact mem_algebraicClosure_iff.mpr hy
-    | exact IntermediateField.mem_algebraicClosure_iff.mpr hy
-    | exact (mem_algebraicClosure_iff' ).mpr hy.isIntegral
 
 def embQ (τ : D.what₂.Tau) : D.host.E →+* Qbar := (embT D τ).codRestrict Qbar (emb_mem τ)
 
@@ -84,8 +79,6 @@ theorem norm_lam_int {p : ℕ} [Fact p.Prime] (lam : Qbar →+* ℂ_[p]) (τ : D
   have ha : IsIntegral ℤ (algebraMap (𝓞 D.host.E) D.host.E a) := by
     first
       | exact NumberField.RingOfIntegers.isIntegral_coe a
-      | exact a.2
-      | exact isIntegral_algebraMap.tower_top
   obtain ⟨P, hm, hP⟩ := ha
   refine ⟨P, hm, ?_⟩
   have e1 := congrArg (lam.comp (embQ τ)) hP

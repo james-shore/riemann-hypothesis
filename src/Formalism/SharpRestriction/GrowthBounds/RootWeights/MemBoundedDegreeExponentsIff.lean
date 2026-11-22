@@ -268,7 +268,7 @@ theorem asm_prod_eq (p : ℕ) {σ : Type*} [Fintype σ] (t rho : σ → ℕ) (in
     (if inv then (∏ k, cUnit (p ^ (t k + 1)) (e' k) * dUnit (p ^ (t k + 1)) (e' k) (rho k))⁻¹
       else (∏ k, cUnit (p ^ (t k + 1)) (e' k) * dUnit (p ^ (t k + 1)) (e' k) (rho k))) =
     ∏ k, asm_f p t rho inv k (e' k) := by
-  cases inv <;> simp [asm_f, unitFn, Finset.prod_mul_distrib, Finset.prod_inv_distrib, mul_inv] <;> ring
+  cases inv <;> simp [asm_f, unitFn, Finset.prod_mul_distrib, Finset.prod_inv_distrib] <;> ring
 
 private theorem dUnit_lemma (P n : ℕ) : ∀ rho : ℕ,
     dUnit P n rho * ((P * n).factorial : ℚ) * (rho.factorial : ℚ) = ((P * n + rho).factorial : ℚ) := by
@@ -322,7 +322,7 @@ theorem unit_function_mahler_decay_of (D : Formalism.BasicNotions.D7) (h1 : ∀ 
     intro k _
     have hc := h3 p hp ⟨t k, rho k, true, false⟩ (hr k) (e' k)
     have hd := h3 p hp ⟨t k, rho k, false, false⟩ (hr k) (e' k)
-    simp only [unitFn, if_true, if_false, Bool.false_eq_true, ↓reduceIte] at hc hd
+    simp only [unitFn, Bool.false_eq_true, ↓reduceIte] at hc hd
     refine ⟨mul_ne_zero hc.1 hd.1, ?_⟩
     rw [padicValRat.mul hc.1 hd.1, hc.2, hd.2, add_zero]
   · have hf := fun k => asm_f_dec (h1 p hp) (h2 p hp) t rho hr inv k

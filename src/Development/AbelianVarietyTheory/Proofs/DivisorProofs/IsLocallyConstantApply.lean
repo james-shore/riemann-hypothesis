@@ -20,7 +20,7 @@ theorem isLocallyConstant_apply [Algebra.IsAlgebraic K Ω] (k : ℕ) (i : Fin k)
   have hopen : IsOpen {σ : Ω ≃ₐ[K] Ω | (g₀ i)⁻¹ * σ ∈ (IntermediateField.adjoin K {a}).fixingSubgroup} :=
     (IntermediateField.fixingSubgroup_isOpen _).preimage (continuous_const.mul continuous_id)
   have hmem : ∀ᶠ g in nhds g₀, g i ∈ {σ : Ω ≃ₐ[K] Ω | (g₀ i)⁻¹ * σ ∈ (IntermediateField.adjoin K {a}).fixingSubgroup} :=
-    ((continuous_apply i).tendsto g₀).eventually (hopen.mem_nhds (by simp [one_mem]))
+    ((continuous_apply i).tendsto g₀).eventually (hopen.mem_nhds (by simp))
   filter_upwards [hmem] with g hg
   have h1 := (IntermediateField.mem_fixingSubgroup_iff _ _).1 hg a (IntermediateField.mem_adjoin_simple_self K a)
   have h2 := congrArg (g₀ i) h1

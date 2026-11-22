@@ -99,7 +99,7 @@ theorem finiteRing_sq_sub_mul_sq_eq_of_card [TopologicalSpace Γ] [IsTopological
   let Φ : Matrix (Fin a) (Fin a) (PadicAlgCl l) →ₗ[ℚ_[l]] (t → PadicAlgCl l) :=
     { toFun := fun M i => (M * v i).trace
       map_add' := by intro M N; funext i; simp [Matrix.add_mul, Matrix.trace_add]
-      map_smul' := by intro c M; funext i; simp [Matrix.smul_mul, Matrix.trace_smul] }
+      map_smul' := by intro c M; funext i; simp [Matrix.trace_smul] }
   let S : (t → ℚ_[l]) →ₗ[ℚ_[l]] (t → PadicAlgCl l) := Φ ∘ₗ Fintype.linearCombination ℚ_[l] v
   obtain ⟨ε, hε, hball⟩ := exists_ball_sub_image S
   have hl1 : (1 : ℝ) < l := by exact_mod_cast (Fact.out : l.Prime).one_lt

@@ -99,11 +99,6 @@ theorem gauss_of_key {O T F F₁ Ω : Type} [CommRing O] [IsLocalRing O] [CommRi
     GaussAt (algebraMap T F₁) (maximalIdeal T) θ (θ ⁻¹' W) W := by
   first
   | (rename_i h_5 h_6 h_7 h_8 h_9 h_10 h_11 h_12 h_13 h_14 h_15 h_16 h_17 h_18 h_19 h_20 h_21 h_22; revert O T F F₁ Ω h_5 h_6 h_7 h_8 h_9 h_10 h_11 h_12 h_13 h_14 h_15 h_16 h_17 h_18 h_19 h_20 h_21 h_22 hc c₀ θ hcomm π hπ W htors key; exact @_root_.GlobalTheory.VandermondeEmbeddingVanishing.gaussAt)
-  | exact @_root_.GlobalTheory.VandermondeEmbeddingVanishing.gaussAt
-  | exact _root_.GlobalTheory.VandermondeEmbeddingVanishing.gaussAt
-  | (apply _root_.GlobalTheory.VandermondeEmbeddingVanishing.gaussAt <;> assumption)
-  | (intros; apply _root_.GlobalTheory.VandermondeEmbeddingVanishing.gaussAt <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.VandermondeEmbeddingVanishing.gaussAt <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.VandermondeEmbeddingVanishing.gaussAt ..)
 
 theorem sp_comp {A B C : Type} [CommRing A] [CommRing B] [CommRing C] (f : A →+* B) (g : B →+* C) :

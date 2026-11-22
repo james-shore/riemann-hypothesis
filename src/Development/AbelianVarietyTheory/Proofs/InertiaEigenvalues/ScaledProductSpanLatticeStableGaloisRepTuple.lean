@@ -16,7 +16,7 @@ theorem tup_mul_smul {l : ℕ} [Fact l.Prime] {Γ : Type} [Group Γ] {a m : ℕ}
     tup ρs g * (c • x) = c • (tup ρs g * x) := by
   rw [← zOm_smul, ← zOm_smul]
   funext k
-  simp [Pi.mul_apply, Pi.smul_apply, Matrix.mul_smul]
+  simp [Pi.mul_apply, Pi.smul_apply]
 
 theorem stabE : ∀ (l : ℕ) [Fact l.Prime] (Γ : Type) [Group Γ] (a m : ℕ) (ρs : Fin m → (Γ →* GL (Fin a) (Om l))) (t : Fin m → Finset (Matrix (Fin a) (Fin a) (Om l))) (M : ℕ), (∀ k g, ∀ x ∈ t k, ∃ c' : Matrix (Fin a) (Fin a) (Om l) → ℤ_[l], ((ρs k g : GL (Fin a) (Om l)) : Matrix (Fin a) (Fin a) (Om l)) * x = ∑ y ∈ t k, zOm l (c' y) • y) → (∀ g, ∀ x ∈ GlobalTheory.TraceConjugationCover.latL t M, GlobalTheory.TraceConjugationCover.tup ρs g * x ∈ GlobalTheory.TraceConjugationCover.latL t M) ∧ ∀ g, ∀ x ∈ GlobalTheory.TraceConjugationCover.latT ρs t M, GlobalTheory.TraceConjugationCover.tup ρs g * x ∈ GlobalTheory.TraceConjugationCover.latT ρs t M := by
   intro l _ Γ _ a m ρs t M hc
@@ -33,8 +33,8 @@ theorem stabE : ∀ (l : ℕ) [Fact l.Prime] (Γ : Type) [Group Γ] (a m : ℕ) 
             = Pi.single k ((l : Om l) ^ M • (((ρs k g : GL (Fin a) (Om l)) : Matrix (Fin a) (Fin a) (Om l)) * y)) := by
           funext j
           by_cases hj : j = k
-          · subst hj; simp [tup, Matrix.mul_smul]
-          · simp [Pi.single_apply, hj]
+          · subst hj; simp [tup]
+          · simp [hj]
         rw [e1, hc', Finset.smul_sum]
         funext j
         rw [Finset.sum_apply]
@@ -43,7 +43,7 @@ theorem stabE : ∀ (l : ℕ) [Fact l.Prime] (Γ : Type) [Group Γ] (a m : ℕ) 
           simp only [Pi.single_eq_same, Pi.smul_apply]
           refine Finset.sum_congr rfl fun z _ => ?_
           rw [smul_comm ((l : Om l) ^ M) (zOm l (c' z)) z, zOm_smul]
-        · simp [Pi.single_apply, hj]
+        · simp [hj]
       rw [e]
       refine Submodule.sum_mem _ fun z hz => Submodule.smul_mem _ _ (Submodule.subset_span ?_)
       exact Set.mem_iUnion.mpr ⟨k, z, hz, rfl⟩

@@ -16,9 +16,9 @@ theorem hpk_col_esI (a : Fin r) (l : Fin (2 * r + k + 1)) :
   have hl := l.isLt
   unfold Hpk esI
   by_cases hla : l.val = a.val
-  · rw [if_pos (by simp only [Fin.val_mk]; omega), if_pos hla]
-  · rw [if_neg (by simp only [Fin.val_mk]; omega), if_neg (by simp only [Fin.val_mk]; omega),
-      if_neg (by simp only [Fin.ext_iff, Fin.val_mk]; omega), if_neg hla]
+  · rw [if_pos (by simp only; omega), if_pos hla]
+  · rw [if_neg (by simp only; omega), if_neg (by simp only; omega),
+      if_neg (by simp only [Fin.ext_iff]; omega), if_neg hla]
 
 theorem hpk_W_row (w p : Fin (2 * r + k + 1)) (hw : r ≤ w.val ∧ w.val ≤ r + k) :
     Hpk k r w p = if p = w then Hpk k r w w else 0 := by
@@ -74,10 +74,10 @@ theorem unit_a (X : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ)
     intro l
     unfold Hpk eI esI
     simp only [Fin.ext_iff]
-    split_ifs <;> first | rfl | (exfalso; omega) | omega | norm_num | simp_all | (simp_all; omega)
+    split_ifs <;> first | rfl | (exfalso; omega)
   have h := unit_entry X hU (eI k r ⟨a.val + 1, ha⟩) (esI k r a)
   simp only [hcol, hrow, mul_ite, mul_one, mul_zero, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq',
-    Finset.sum_ite_eq, Finset.mem_univ, if_true] at h
+    Finset.mem_univ, if_true] at h
   linear_combination h
 
 theorem unit_w (X : Matrix (Fin (2 * r + k + 1)) (Fin (2 * r + k + 1)) ℂ)

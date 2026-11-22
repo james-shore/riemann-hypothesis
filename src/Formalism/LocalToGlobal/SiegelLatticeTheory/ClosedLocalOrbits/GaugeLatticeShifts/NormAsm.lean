@@ -306,7 +306,7 @@ theorem normExp_abs {τ Rw H K Q1 Q2 R R' : Type} [NormedAddCommGroup H] [InnerP
     rw [hm, ← tsum_const_smul'']
     refine tsum_congr fun t => ?_
     by_cases h1 : t ∈ S <;> by_cases h2 : ιt t = i <;> by_cases h3 : intersection_update_fsHerm_neg_one t = q <;>
-      simp [Set.indicator_apply, hvec t, hio t, h1, h2, h3, @eq_comm _ q (intersection_update_fsHerm_neg_one t)]
+      simp [hvec t, hio t, h1, h2, h3, @eq_comm _ q (intersection_update_fsHerm_neg_one t)]
   have hinner : ∀ i j, inner ℂ (X.vecPart S i) (X.vecPart S j) = ∑ q, (((w q) ^ 2 : ℝ) : ℂ) * G q i j := by
     intro i j
     rw [PiLp.inner_apply]

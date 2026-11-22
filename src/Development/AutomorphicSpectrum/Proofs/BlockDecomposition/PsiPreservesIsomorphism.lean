@@ -62,9 +62,6 @@ theorem twAct_equiv {G M V W : Type} [Group G] [Group M] [AddCommGroup V] [Modul
             MonoidHom.coe_mk, OneHom.coe_mk]
          erw [← Submodule.mapQ_comp, ← Submodule.mapQ_comp]
          exact mapQ_congr _ _ (hfc (s m)) _ _)
-      | (apply Submodule.linearMap_qext
-         ext v
-         simp [F, GlobalTheory.BZMir.twMap, GlobalTheory.BZMir.twAct, hf, hf'])
   exact ⟨⟨⟨F, hcomm⟩, F', fun x => LinearMap.congr_fun hF'F x, fun y => LinearMap.congr_fun hFF' y⟩⟩
 
 theorem giso_psiN : ∀ (k : Type) [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k] (n : ℕ)

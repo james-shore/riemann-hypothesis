@@ -77,7 +77,7 @@ lemma emb_compress {k : ℕ} (hk : k ≤ n) (f : Fin n → ℂ) :
     (emb hk)ᴴ * diagonal f * emb hk = diagonal (fun i => f (Fin.castLE hk i)) := by
   ext i j
   simp only [emb, Matrix.mul_apply, Matrix.conjTranspose_apply, Matrix.of_apply, diagonal_apply]
-  simp [Finset.sum_ite_eq', Finset.sum_ite_eq, (Fin.castLE_injective hk).eq_iff]
+  simp [Finset.sum_ite_eq', (Fin.castLE_injective hk).eq_iff]
   rcases eq_or_ne i j with rfl | h
   · simp
   · simp [h, h.symm]

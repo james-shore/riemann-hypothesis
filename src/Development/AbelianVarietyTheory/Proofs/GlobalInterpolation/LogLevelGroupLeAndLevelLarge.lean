@@ -13,7 +13,7 @@ theorem natCard_GL_zmod_le (r g : ℕ) (hg : 0 < g) :
     Nat.card_le_card_of_injective _ Units.val_injective
   have h2 : Nat.card (Matrix (Fin r) (Fin r) (ZMod g)) = g ^ (r * r) := by
     show Nat.card (Fin r → Fin r → ZMod g) = _
-    simp [Nat.card_fun, pow_mul]
+    simp [pow_mul]
   exact h2 ▸ h1
 
 theorem log_levelGroup_le_and_level_large : ∀ (eps : ℝ) (Fm : FamP eps), (∃ x0 : ℝ, ∀ x ≥ x0, Fm.x1 < x → ∀ i : Fm.Ix x, lam0 (Fm.D x i) ≤ x ^ (15 : ℝ) ∧ 8 * ((Fm.D x i).R.f : ℝ) * ((Fm.D x i).R.r : ℝ) / ((min ((Fm.D x i).host.g 0) ((Fm.D x i).host.g 1) : ℕ) : ℝ) ≤ 1 / 3 ∧ 1 ≤ (Fm.L x i).sc.b) := by

@@ -239,7 +239,7 @@ theorem exists_K (c u : Fin r → EuclideanSpace ℂ (Fin (2 * r + k + 1))) (hc 
     have h2 : inner ℂ (WithLp.toLp 2 (κ *ᵥ Pi.single i 1) : EuclideanSpace ℂ _) (WithLp.toLp 2 (κ *ᵥ Pi.single j 1)) =
         inner ℂ (WithLp.toLp 2 (Pi.single i 1) : EuclideanSpace ℂ _) (WithLp.toLp 2 (Pi.single j 1)) := by
       rw [hκ, hκ, hκi]
-    simp only [EuclideanSpace.inner_eq_star_dotProduct, WithLp.ofLp_toLp, dotProduct] at h2
+    simp only [EuclideanSpace.inner_eq_star_dotProduct, dotProduct] at h2
     simp only [mul_apply, conjTranspose_apply, one_apply]
     convert h2 using 1
     · refine Finset.sum_congr rfl fun m _ => ?_
@@ -272,9 +272,9 @@ theorem iwasawa : ∀ (k r : ℕ), ∀ g ∈ GG k r, ∃ n ∈ Nset k r, ∃ a :
   have hc : Orthonormal ℂ c := by
     rw [orthonormal_iff_ite]
     intro a b
-    simp [c, EuclideanSpace.inner_eq_star_dotProduct, bvec, Pi.single_apply, eI_inj, eq_comm, Pi.star_single]
+    simp [c, EuclideanSpace.inner_eq_star_dotProduct, bvec, Pi.single_apply, eI_inj, Pi.star_single]
   have hgw : ∀ a, Matrix.toEuclideanLin g (w a) = c a := fun a => by
-    simp [w, c, Matrix.toEuclideanLin_apply, Matrix.mul_nonsing_inv _ hgu]
+    simp [w, c, Matrix.mul_nonsing_inv _ hgu]
   have hw : LinearIndependent ℂ w := LinearIndependent.of_comp (Matrix.toEuclideanLin g) (by
     have : (Matrix.toEuclideanLin g) ∘ w = c := funext hgw
     rw [this]; exact hc.linearIndependent)
@@ -282,7 +282,7 @@ theorem iwasawa : ∀ (k r : ℕ), ∀ g ∈ GG k r, ∃ n ∈ Nset k r, ∃ a :
     simp [c, EuclideanSpace.inner_eq_star_dotProduct, bvec, Matrix.toEuclideanLin_apply, Pi.star_single, H_ee]
   have hwi : ∀ a b, inner ℂ (w a) (Matrix.toEuclideanLin (Hpk k r) (w b)) = 0 := fun a b => by
     rw [← hci a b]
-    simp only [w, c, EuclideanSpace.inner_eq_star_dotProduct, Matrix.toEuclideanLin_apply, WithLp.ofLp_toLp]
+    simp only [w, c, EuclideanSpace.inner_eq_star_dotProduct, Matrix.toEuclideanLin_apply]
     rw [dotProduct_comm, star_mulVec, ← dotProduct_mulVec, mulVec_mulVec, mulVec_mulVec, hgi, dotProduct_comm]
   have hspan : ∀ a, gramSchmidtNormed ℂ w a ∈ Submodule.span ℂ (Set.range w) := fun a => by
     rw [← span_gramSchmidt, ← span_gramSchmidtNormed_range]; exact Submodule.subset_span ⟨a, rfl⟩

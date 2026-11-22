@@ -83,7 +83,7 @@ theorem main {O Ω : Type} [CommRing O] [Field Ω] [Algebra O Ω] (R : Subalgebr
     by_cases hpq : p = q
     · subst hpq
       simp
-    · simp [hpq, Pi.single_eq_of_ne (Ne.symm hpq)]
+    · simp [hpq]
   have hcoord : ∀ (a : Fin r → Ω) q, b q ⬝ᵥ (∑ p, a p • d p) = a q := by
     intro a q
     rw [dotProduct_sum]

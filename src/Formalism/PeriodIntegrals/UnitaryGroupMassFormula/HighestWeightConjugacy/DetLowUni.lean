@@ -8,7 +8,7 @@ open Matrix
 namespace PI.UnitaryGroupMassFormula.HwConjInf
 
 def LowUni {n : ℕ} (L : Matrix (Fin n) (Fin n) ℂ) : Prop := by
-  first | exact @Bl.FirstLemmaN.goal1 n L | exact @Bl.FirstLemmaN.goal1 n | exact @Bl.FirstLemmaN.goal1
+  first | exact @Bl.FirstLemmaN.goal1 n L
 
 def UpTri {n : ℕ} (U : Matrix (Fin n) (Fin n) ℂ) : Prop := ∀ i j, j < i → U i j = 0
 

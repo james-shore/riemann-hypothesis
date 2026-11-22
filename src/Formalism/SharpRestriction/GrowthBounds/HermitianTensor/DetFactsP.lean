@@ -71,9 +71,6 @@ theorem numP : NumP := by
   have h2 : (Nat.log p (8 * a + (r + 1)) : ℝ) ≤ Real.logb p ((8 * a + (r + 1) : ℕ) : ℝ) := by
     first
     | exact Real.natLog_le_logb _ _
-    | (have hpow := Nat.pow_log_le_self p (x := 8 * a + (r + 1)) (by omega)
-       rw [Real.le_logb_iff_rpow_le hp1 (by positivity)]
-       exact_mod_cast hpow)
   have h3 : (Nat.log p (ell + r - 1) : ℝ) ≤ Nat.log p (8 * a + (r + 1)) := by exact_mod_cast h1
   have hL : (Nat.log p (ell + r - 1) : ℝ) ≤ Real.logb p ((8 * a + (r + 1) : ℕ) : ℝ) + 1 := by linarith
   push_cast at hL hN

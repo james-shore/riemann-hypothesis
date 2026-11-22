@@ -19,19 +19,19 @@ variable {K K' : Type*} [Field K] [Field K']
 
 theorem addX_map (φ : K →+* K') (x y x₂ y₂ : K) :
     φ (addX x y x₂ y₂) = addX (φ x) (φ y) (φ x₂) (φ y₂) := by
-  simp only [addX, addY, dblX, dblY, map_div₀, map_sub, map_pow, map_mul, map_add, map_neg, map_ofNat]
+  simp only [addX, map_div₀, map_sub, map_pow, map_ofNat]
 
 theorem addY_map (φ : K →+* K') (x y x₂ y₂ : K) :
     φ (addY x y x₂ y₂) = addY (φ x) (φ y) (φ x₂) (φ y₂) := by
-  simp only [addX, addY, dblX, dblY, map_div₀, map_sub, map_pow, map_mul, map_add, map_neg, map_ofNat]
+  simp only [addX, addY, map_div₀, map_sub, map_pow, map_mul, map_ofNat]
 
 theorem dblX_map (φ : K →+* K') (x y g : K) :
     φ (dblX x y g) = dblX (φ x) (φ y) (φ g) := by
-  simp only [addX, addY, dblX, dblY, map_div₀, map_sub, map_pow, map_mul, map_add, map_neg, map_ofNat]
+  simp only [dblX, map_div₀, map_sub, map_pow, map_mul, map_ofNat]
 
 theorem dblY_map (φ : K →+* K') (x y g : K) :
     φ (dblY x y g) = dblY (φ x) (φ y) (φ g) := by
-  simp only [addX, addY, dblX, dblY, map_div₀, map_sub, map_pow, map_mul, map_add, map_neg, map_ofNat]
+  simp only [dblX, dblY, map_div₀, map_sub, map_pow, map_mul, map_ofNat]
 
 end maps
 

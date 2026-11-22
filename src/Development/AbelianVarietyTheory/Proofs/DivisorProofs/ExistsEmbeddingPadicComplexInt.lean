@@ -18,11 +18,6 @@ theorem exists_injective_of_integral {A B O C : Type} [CommRing A] [IsDomain A] 
     ∃ j' : B →+* O, Function.Injective ((algebraMap O C).comp j') := by
   first
   | (rename_i h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11 h_14 h_15; revert A B O C h_4 h_5 h_6 h_7 h_8 h_9 h_10 h_11 v hv h_14 h_15 hφ j hj; exact @_root_.GlobalTheory.InjectiveOfIntegral.exists_injective_of_isIntegral)
-  | exact @_root_.GlobalTheory.InjectiveOfIntegral.exists_injective_of_isIntegral
-  | exact _root_.GlobalTheory.InjectiveOfIntegral.exists_injective_of_isIntegral
-  | (apply _root_.GlobalTheory.InjectiveOfIntegral.exists_injective_of_isIntegral <;> assumption)
-  | (intros; apply _root_.GlobalTheory.InjectiveOfIntegral.exists_injective_of_isIntegral <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.InjectiveOfIntegral.exists_injective_of_isIntegral <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.InjectiveOfIntegral.exists_injective_of_isIntegral ..)
 
 theorem exists_embedding_padicComplexInt :

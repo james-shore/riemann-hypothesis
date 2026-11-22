@@ -75,7 +75,7 @@ theorem exists_rep (φ : (Fin a → Fin n → LL) →ₗ[LL] LL) :
   refine ⟨fun b k => φ (Pi.single b (Pi.single k 1)), fun u => ?_⟩
   have hu : u = ∑ b, ∑ k, u b k • (Pi.single b (Pi.single k 1) : Fin a → Fin n → LL) := by
     funext b' k'
-    simp [Finset.sum_apply, Pi.single_apply, ite_apply, Finset.sum_ite_eq, Finset.sum_ite_eq']
+    simp [Finset.sum_apply, Pi.single_apply, ite_apply, Finset.sum_ite_eq]
   conv_lhs => rw [hu]
   rw [pr_apply]
   simp [map_sum, dotProduct]
@@ -146,8 +146,6 @@ theorem finrank_eq_of_perfect {LL : Type} [Field LL] {V V' : Type} [AddCommGroup
   | exact @_root_.GlobalTheory.NondegenerateFinrank.main
   | exact _root_.GlobalTheory.NondegenerateFinrank.main
   | (apply _root_.GlobalTheory.NondegenerateFinrank.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.NondegenerateFinrank.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.NondegenerateFinrank.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.NondegenerateFinrank.main ..)
 
 set_option maxHeartbeats 1000000 in

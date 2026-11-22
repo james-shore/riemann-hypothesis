@@ -34,7 +34,7 @@ lemma coefX_int (D : Lifts H U X) (hdet : (valM D).det ≠ 0)
   have hfv : f = valM D *ᵥ (algebraMap R C ∘ r) := by
     rw [← hr]
     funext y
-    simp only [Finset.sum_apply, Pi.smul_apply, Matrix.mulVec, dotProduct, valM, Matrix.of_apply,
+    simp only [Finset.sum_apply, Matrix.mulVec, dotProduct, valM, Matrix.of_apply,
       Function.comp_apply, monX, xL, Algebra.smul_def]
     exact Finset.sum_congr rfl fun α _ => mul_comm _ _
   rw [coefX, hfv, Matrix.mulVec_mulVec, Matrix.nonsing_inv_mul _ (isUnit_iff_ne_zero.mpr hdet),

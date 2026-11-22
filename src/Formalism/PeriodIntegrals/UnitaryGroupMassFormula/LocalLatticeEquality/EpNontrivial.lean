@@ -50,7 +50,7 @@ theorem coeff_mem (h2 : Module.finrank F E = 2) (A : LocAt F E sig p) (a : E)
     simp only [Matrix.cons_val_zero, Matrix.cons_val_one] at hx
     have : A.ιE x = A.ιF (B.repr x 0) • (1 : A.Ep) + A.ιF (B.repr x 1) • A.ιE a := by
       conv_lhs => rw [← hx]
-      simp only [map_add, map_mul, map_one, Algebra.smul_def, A.compat, mul_one]
+      simp only [map_add, map_mul, Algebra.smul_def, A.compat, mul_one]
     rw [SetLike.mem_coe, this]
     apply Submodule.add_mem
     · exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨0, rfl⟩)

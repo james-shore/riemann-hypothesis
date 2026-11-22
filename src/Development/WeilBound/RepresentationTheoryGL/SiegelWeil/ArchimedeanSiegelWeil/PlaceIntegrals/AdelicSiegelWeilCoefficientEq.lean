@@ -283,7 +283,7 @@ theorem coefS_pure : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Numbe
     rw [e1, hf, integral_congr_ae (Filter.Eventually.of_forall hpt), he, hprod, hc k]
     push_cast
     rw [Finset.prod_div_distrib]
-    simp only [NNReal.coe_one, Complex.ofReal_one, one_mul, mul_one]
+    simp only [one_mul, mul_one]
     rw [div_mul_div_comm]
   have hint : ∀ B : HermR (AF F) σ n, (intH σ b S).indicator (fun _ => (1 : ℂ)) B =
       (GlobalTheory.CompanionTheory.SiegelND.Coef.intH σ b n S).indicator (fun _ => (1 : ℂ)) (GlobalTheory.CompanionTheory.SiegelND.Coef.hermFin σ B) := by

@@ -27,15 +27,15 @@ theorem csq_dd_pt {E cp cm : Fin n → Fin n → Module.End ℂ W} (hE : IsGlRep
   rw [step, hgl, hcar]
   rcases eq_or_ne i j with h1 | h1 <;> rcases eq_or_ne b a with h2 | h2
   · subst h1; subst h2
-    simp only [eq_self_iff_true, and_self, if_true]
+    simp only [and_self, if_true]
     noncomm_ring
   · subst h1
-    simp only [eq_self_iff_true, if_true, h2, if_false, and_false]
+    simp only [if_true, h2, if_false, and_false]
     noncomm_ring
   · subst h2
-    simp only [eq_self_iff_true, if_true, h1, Ne.symm h1, if_false, false_and]
+    simp only [if_true, h1, Ne.symm h1, if_false, false_and]
     noncomm_ring
-  · simp only [h1, h2, Ne.symm h1, if_false, and_false, false_and]
+  · simp only [h1, h2, Ne.symm h1, if_false, and_false]
     noncomm_ring
 
 theorem dd_add {E cp cm : Fin n → Fin n → Module.End ℂ W} (hE : IsGlRep E) (hC : IsCAR cp cm)

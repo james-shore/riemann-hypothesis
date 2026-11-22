@@ -23,7 +23,6 @@ theorem coordinateChange_comp1_intertwines_action {n : ℕ} (x : O) (a : Pt C n 
   first
   | rfl
   | (congr 1; funext q; simp)
-  | (congr 1; funext q; skip)
 
 theorem addOf_eq' {n : ℕ} (a b : Pt C n dd) : addOf Y.B.G.F a b = addAt Y a b := by
   unfold addAt

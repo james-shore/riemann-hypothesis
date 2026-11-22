@@ -64,7 +64,7 @@ theorem _root_.GlobalTheory.SympDualNbhd.exists_dual_nbhd : ∀ {F : Type} [Fiel
     intro i y hy j
     by_cases hj : j = i
     · subst hj; simpa using hy
-    · simp [Pi.single_apply, hj, hRpos.le]
+    · simp [hj, hRpos.le]
   refine ⟨Y, ?_, Metric.ball 0 (δ / R), Metric.ball_mem_nhds _ (div_pos hδ hRpos), ?_⟩
   · intro w' hw'
     have h1 : ∀ i, ‖w'.1 i‖ < ε := by

@@ -102,7 +102,7 @@ theorem exists_poly_finset [CompactSpace X] [T2Space X] {e : ℕ} (A : FinHolAtl
       funext i
       by_cases h : i = a
       · subst h; simp
-      · simp [hF, Function.update_of_ne h, h]
+      · simp [hF, h]
     have e1 : Function.update F a (Φ a) = F := by
       funext i
       by_cases h : i = a

@@ -39,7 +39,7 @@ end lin
 
 theorem eq_zero_of_im_L (X : PT E) {a : Vsp X.dim} (h : ∀ y ∈ X.L, (Hf y a).im = 0) : a = 0 := by
   have hH : ∀ y, Hf y a = inner ℂ a y := fun y => by
-    simp [Hf, PiLp.inner_apply, mul_comm]
+    simp [Hf, PiLp.inner_apply]
   have hf : (Complex.imLm.comp ((innerₛₗ ℂ a).restrictScalars ℝ) : Vsp X.dim →ₗ[ℝ] ℝ) = 0 :=
     X.b.ext fun i => by
       simpa [← hH] using h (X.b i) (Submodule.subset_span ⟨i, rfl⟩)
@@ -47,9 +47,6 @@ theorem eq_zero_of_im_L (X : PT E) {a : Vsp X.dim} (h : ∀ y ∈ X.L, (Hf y a).
     have := LinearMap.congr_fun hf ((Complex.I : ℂ) • a)
     first
       | exact this
-      | (simp only [LinearMap.comp_apply, LinearMap.restrictScalars_apply, innerₛₗ_apply,
-          LinearMap.zero_apply] at this
-         exact this)
   rw [inner_smul_right, inner_self_eq_norm_sq_to_K] at h0
   have h2 : ‖a‖ ^ 2 = 0 := by
     have h3 : (Complex.I * ((‖a‖ : ℂ) ^ 2)).im = ‖a‖ ^ 2 := by

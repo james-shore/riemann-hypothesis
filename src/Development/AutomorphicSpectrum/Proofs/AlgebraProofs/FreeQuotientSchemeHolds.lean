@@ -34,7 +34,6 @@ theorem FreeQuotientScheme_holds : FreeQuotientScheme := by
     simp only [Category.assoc]
     first
       | exact hpb.lift g₁ g₂ hg ≫= ((Over.w _).trans (Over.w _).symm)
-      | (simp only [Over.w]; try rfl)
   have key : ∀ {Y : Over S} (q : X ⟶ Y), GlobalTheory.CompanionTheory.Hypotheses₂.FreeQuot.IsFppfTorsor G q →
       GlobalTheory.CompanionTheory.Hypotheses₂.FreeQuot.IsFppfQuotient G q ∧ GlobalTheory.CompanionTheory.Hypotheses₂.FreeQuot.IsFppfTorsor G q := fun _ h => ⟨h.isFppfQuotient, h⟩
   refine ⟨Over.mk (EffectiveEpi.desc q₀ X.hom hdesc),

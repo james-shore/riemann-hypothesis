@@ -45,7 +45,7 @@ def cvO (D : D7) (n : ℕ) : (Fin n → D.host.E) →ₛₗ[cO D] (Fin n → D.h
     ext i
     simp only [Pi.smul_apply, cO]
     rw [Algebra.smul_def, Algebra.smul_def]
-    simp only [smul_eq_mul, star_mul', mul_eq_mul_left_iff, map_mul, Pi.smul_apply]
+    simp only [star_mul']
     first
       | exact Or.inl rfl
       | (simp [mul_comm]; exact Or.inl rfl)
@@ -164,7 +164,7 @@ theorem hasSig_map_conj {m a b : ℕ} {M : Matrix (Fin m) (Fin m) ℂ} (h : HasS
     ext i j; simp
   rw [e1, e2, hA, Matrix.fromBlocks_map]
   have e3 : (-1 : Matrix (Fin b) (Fin b) ℂ).map (starRingEnd ℂ) = -1 := by
-    ext i j; by_cases hij : i = j <;> simp [Matrix.one_apply, hij]
+    ext i j; by_cases hij : i = j <;> simp [hij]
   simp [e3]
 
 theorem hasSignature_all (hG : B.IsGood D.sp.cm.sig) {m a b : ℕ} (J : Matrix (Fin m) (Fin m) D.host.E)

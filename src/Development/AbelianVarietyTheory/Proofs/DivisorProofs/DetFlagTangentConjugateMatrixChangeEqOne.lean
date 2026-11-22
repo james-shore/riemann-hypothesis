@@ -28,9 +28,9 @@ theorem ksChg_single_eq_blockDiagonal' {E : Type} [Field E] [NumberField E] [IsC
   by_cases h : τ = τ'
   · subst h
     rw [Matrix.blockDiagonal'_apply_eq]
-    simp [Matrix.kroneckerMap_apply, Pi.single_apply, Sigma.mk.inj_iff, ite_and]
+    simp [Matrix.kroneckerMap_apply, Pi.single_apply, ite_and]
   · rw [Matrix.blockDiagonal'_apply_ne _ _ _ h]
-    simp [Pi.single_apply, Sigma.mk.inj_iff, h]
+    simp [h]
 
 theorem det_ksChg_eq_one : ∀ {E : Type} [Field E] [NumberField E] [IsCMField E] {H : ReciprocityTheory.ChartRestriction.G.Geo.Tor.Host E}
     {Dw : Datum H} (K : Type) [Field K] (g : ∀ σ : E →+* ℂ, Matrix (Fin (Dw.mult σ)) (Fin (Dw.mult σ)) K),

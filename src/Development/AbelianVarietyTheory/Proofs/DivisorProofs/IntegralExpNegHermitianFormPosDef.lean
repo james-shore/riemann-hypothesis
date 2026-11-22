@@ -15,7 +15,7 @@ lemma det_toEuclideanLin {n : ℕ} (C : Matrix (Fin n) (Fin n) ℂ) :
       (EuclideanSpace.basisFun (Fin n) ℂ).toBasis C := by
     ext v i : 2
     simp [Matrix.toLin_apply, Matrix.toEuclideanLin_apply, Matrix.mulVec, dotProduct,
-      EuclideanSpace.single_apply, Pi.single_apply]
+      Pi.single_apply]
   rw [this, LinearMap.det_toLin]
 
 lemma quad_eq {n : ℕ} (H C : Matrix (Fin n) (Fin n) ℂ) (hC : H.transpose = C.conjTranspose * C)

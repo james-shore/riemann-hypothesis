@@ -738,7 +738,7 @@ theorem exists_int_mul_integral (a : E) : ∃ e : ℤ, e ≠ 0 ∧ IsIntegral �
   exact ⟨e, he, by rwa [zsmul_eq_mul] at hea⟩
 
 theorem exists_smul_mem (L : Submodule (𝓞 E) W) (hL : Submodule.span E (L : Set W) = ⊤) (y : W) : ∃ ν : 𝓞 E, ν ≠ 0 ∧ ν • y ∈ L := by
-  first | exact Bl.general_b_fact_third_ter.goal1 .. | (apply Bl.general_b_fact_third_ter.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_third_ter.goal1 <;> assumption) | (apply @Bl.general_b_fact_third_ter.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_third_ter.goal1 <;> assumption) | (apply @Bl.general_b_fact_third_ter.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_third_ter.goal1 .. | (apply Bl.general_b_fact_third_ter.goal1 <;> assumption)
 
 theorem exists_smul_le (L₁ L : Submodule (𝓞 E) W) (h₁ : L₁.FG) (hL : Submodule.span E (L : Set W) = ⊤) :
     ∃ ν : 𝓞 E, ν ≠ 0 ∧ ∀ x ∈ L₁, ν • x ∈ L := by

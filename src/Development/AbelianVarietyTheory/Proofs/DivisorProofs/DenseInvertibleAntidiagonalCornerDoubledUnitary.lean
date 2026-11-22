@@ -30,7 +30,7 @@ theorem det_idem {R : Type} [CommRing R] {e : R} (he : e * e = e) {m : Type} [Fi
   rw [Finset.mul_sum, Finset.mul_sum, ← Finset.sum_add_distrib]
   refine Finset.sum_congr rfl fun τ _ => ?_
   rw [prod_idem he]
-  rcases Int.units_eq_one_or (Equiv.Perm.sign τ) with h | h <;> simp [h] <;> ring
+  rcases Int.units_eq_one_or (Equiv.Perm.sign τ) with h | h <;> simp [h]
 
 theorem isUnit_mix {R : Type} [CommRing R] {e : R} (he : e * e = e) {a b : R} (ha : IsUnit (e * a + (1 - e)))
     (hb : IsUnit b) : IsUnit (e * a + (1 - e) * b) := by
@@ -50,7 +50,7 @@ theorem mix_corner {R : Type} [CommRing R] {n : ℕ} (e : R) (he : e * e = e) (A
     A * (e • G + (1 - e) • 1) * B + A * (e • G + (1 - e) • 1) * D' * (e • y) =
       e • (A * G * B + A * G * D' * y) + (1 - e) • ((2 : R) • (1 : Matrix (Fin n) (Fin n) R)) := by
   simp only [Matrix.mul_add, Matrix.add_mul, Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_one, hAB, hAD,
-    Matrix.zero_mul, smul_zero, add_zero, smul_smul, he, smul_add]
+    smul_zero, add_zero, smul_smul, he, smul_add]
   simp only [Matrix.mul_assoc]
   abel
 

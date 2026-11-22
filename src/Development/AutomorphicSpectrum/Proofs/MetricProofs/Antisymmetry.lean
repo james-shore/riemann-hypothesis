@@ -56,7 +56,7 @@ theorem antisymmetry : Antisymmetry := by
     apply (GlobalTheory.T.weight_transform_injective_linear).2.2 Ψ N
     rw [hS, map_mul, hdeg0]
     congr 1
-    simp [toWt, MvPolynomial.aeval_C, MvPolynomial.algebraMap_eq]
+    simp [toWt, MvPolynomial.algebraMap_eq]
 
   obtain ⟨Cst, hC⟩ := GlobalTheory.T.weighted_polynomial_homogeneous_coeff_bound Ψ N (antisymDegree Ψ N + 1)
   have hhomT : (toWt (Re.PB II)).IsHomogeneous (antisymDegree Ψ N + 1) := by

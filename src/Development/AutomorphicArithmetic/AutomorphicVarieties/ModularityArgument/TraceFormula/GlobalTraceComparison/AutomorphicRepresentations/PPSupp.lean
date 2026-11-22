@@ -56,7 +56,7 @@ private noncomputable def mulL (hc : Measurable c) (hb : ∀ x, |c x| ≤ 1) : L
 
 private theorem mulL_ae (hc : Measurable c) (hb : ∀ x, |c x| ≤ 1) (f : Lp ℂ 2 ν) :
     (mulL c hc hb f : X → ℂ) =ᵐ[ν] fun x => (c x : ℂ) * (f : X → ℂ) x :=
-  by apply _root_.UpperTheory.Reformulated.B.MulLinearAe.mulL_ae <;> assumption
+  by apply _root_.UpperTheory.Reformulated.B.MulLinearAe.mulL_ae
 
 private theorem mulL_inner (hc : Measurable c) (hb : ∀ x, |c x| ≤ 1) (f g : Lp ℂ 2 ν) :
     inner ℂ (mulL c hc hb f) g = inner ℂ f (mulL c hc hb g) := by

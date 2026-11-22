@@ -19,8 +19,6 @@ theorem shuffle_cup1_degree_zero {R : Type} [CommRing R] {C : Type} [Category.{0
     rw [GlobalTheory.CompanionTheory.HopfC.Sh]
     first
     | (rw [Fin.sum_univ_one]; simp)
-    | simp
-    | (ext; simp)
   rw [hsum, AlgHom.toLinearMap_apply, GlobalTheory.CompanionTheory.HopfC.cup1_apply, map_mul,
     GlobalTheory.CompanionTheory.HopfC.bv_pr, GlobalTheory.CompanionTheory.HopfC.bv_pr]
   congr 1
@@ -28,6 +26,6 @@ theorem shuffle_cup1_degree_zero {R : Type} [CommRing R] {C : Type} [Category.{0
     first
     | rfl
     | (refine GlobalTheory.CompanionTheory.HopfC.bv_congr (fun i => ?_) (fun i => ?_) _ <;>
-        fin_cases i <;> first | rfl | decide | exact Subsingleton.elim (α := Fin 1) _ _)
+        fin_cases i <;> first | rfl)
 
 end GlobalTheory.CompanionTheory.HopfC

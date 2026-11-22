@@ -58,7 +58,7 @@ theorem blockGL_finGL {j n : ℕ} (hj : j ≤ n) (k : GL (Fin j) (Af E)) :
   apply Units.ext
   ext a b
   rw [coe_blockGL, blockMat_apply, hf, coe_blockGL, blockMat_apply]
-  split_ifs with h1 h2 h3 <;> simp only [hf, Matrix.one_apply, Fin.ext_iff] <;> split_ifs <;> first | (simp; done) | (exfalso; omega) | (exfalso; simp_all; done) | (simp only [map_zero]; abel)
+  split_ifs with h1 h2 h3 <;> simp only [hf, Matrix.one_apply, Fin.ext_iff] <;> split_ifs <;> first | (simp; done) | (exfalso; omega)
 
 theorem blockGL_mem_KGL (w : HeightOneSpectrum (𝓞 E)) {j n : ℕ} (hj : j ≤ n) {y : GL (Fin j) (w.adicCompletion E)}
     (hy : y ∈ KGL w j) : blockGL hj y ∈ KGL w n := by

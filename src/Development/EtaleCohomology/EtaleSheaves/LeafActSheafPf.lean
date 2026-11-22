@@ -33,7 +33,7 @@ theorem map_smul' {F G : Shv R} (φ : F ⟶ G) {U : Scheme.{0}} (c : ULift.{1} R
 theorem sec_res (M : CommRingCat.{0} ⥤ ModuleCat.{1} (ULift.{1} R)) {V U : Scheme.{0}} (g : V ⟶ U) (x : M.obj Γ(U, ⊤)) :
     Sec.res (F := ofRings R M) g (ofRings.sec M U x) = ofRings.sec M V ((M.map g.appTop).hom x) := by
   have h := congrArg (fun f => f.hom x) ((toSheafify Scheme.etaleTopology.{0} (Scheme.Γ ⋙ M)).naturality g.op)
-  simp only [ModuleCat.hom_comp, LinearMap.comp_apply] at h
+  simp only [ModuleCat.hom_comp] at h
   exact h.symm
 
 theorem loc_and {U : Scheme.{0}} {P Q : ∀ V : Scheme.{0}, (V ⟶ U) → Prop} (hP : Loc U P) (hQ : Loc U Q) :

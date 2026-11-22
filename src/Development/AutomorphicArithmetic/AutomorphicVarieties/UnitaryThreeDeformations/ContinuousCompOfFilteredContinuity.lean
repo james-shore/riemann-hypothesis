@@ -236,7 +236,7 @@ private theorem exists_coc {K Γ : Type} [CommRing K] [Group Γ] (r : Γ →* GG
   · rw [(hd g).2]
     refine Matrix.ext fun a b => ?_
     have : ∀ c, (γ g a c).fst = 0 := hγ g a
-    simp [Matrix.mul_apply, Fin.sum_univ_three, TrivSqZeroExt.algebraMap_eq_inl, this, Matrix.add_mul, mul_comm]
+    simp [Matrix.mul_apply, Fin.sum_univ_three, TrivSqZeroExt.algebraMap_eq_inl, this, Matrix.add_mul]
 
 private theorem cob_lie {K Γ : Type} [CommRing K] [Group Γ] (r : Γ →* GG 3 K) (a : K) (g : Γ) (hg : (r g).right = 1)
     (i j : Fin 3) : (cob r (a • Matrix.diagonal fun i => ((wt1 i : ℤ) : K)) g * (r g).mat) i j =

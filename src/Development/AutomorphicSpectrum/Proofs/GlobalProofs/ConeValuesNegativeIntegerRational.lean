@@ -92,7 +92,7 @@ theorem LineDeg.DL {r : ℕ} {i : Fin r} {d : ℕ} {g : (Fin r → ℕ) → ℂ}
         rw [h3]
         rw [he] at ih
         exact ih.fd_self
-    · have h3 : (c :: cs).count i = cs.count i := by simp [List.count_cons, hc]
+    · have h3 : (c :: cs).count i = cs.count i := by simp [hc]
       rw [h3]
       exact ih.fd_any c
 
@@ -119,8 +119,7 @@ theorem lineDeg_coneTerm (ι : Type) [Fintype ι] (r : ℕ) (a : ι → Fin r �
       Polynomial.eval_mul, Polynomial.eval_C, Polynomial.eval_X]
     refine Finset.prod_congr rfl fun j _ => ?_
     congr 1
-    simp only [c, Pi.add_apply, Pi.smul_apply, smul_eq_mul, Pi.single_apply, Nat.cast_add, Nat.cast_mul,
-      Nat.cast_ite, Nat.cast_one, Nat.cast_zero, mul_ite, mul_one, mul_zero, mul_add, Finset.sum_add_distrib,
+    simp only [c, Pi.add_apply, Pi.smul_apply, smul_eq_mul, Pi.single_apply, Nat.cast_add, Nat.cast_ite, Nat.cast_zero, mul_ite, mul_one, mul_zero, mul_add, Finset.sum_add_distrib,
       Finset.sum_ite_eq', Finset.mem_univ, if_true]
     push_cast
     ring

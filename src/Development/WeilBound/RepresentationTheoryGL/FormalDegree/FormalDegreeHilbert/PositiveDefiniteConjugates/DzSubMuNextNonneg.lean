@@ -58,7 +58,7 @@ theorem dz_sub_muNext_nonneg (i : Fin n) : 0 ≤ Dz n i - muNext (Dz n) i := by
   show (0 : ℤ) ≤ ((n : ℤ) - 1 - ((i : ℕ) : ℤ)) -
     (if h : (i : ℕ) + 1 < n then ((n : ℤ) - 1 - (((⟨(i : ℕ) + 1, h⟩ : Fin n) : ℕ) : ℤ)) else 0)
   split_ifs with h
-  · simp only [Fin.val_mk]
+  · simp only
     omega
   · omega
 

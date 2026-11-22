@@ -95,7 +95,6 @@ private theorem mem_span_image_inf_ker {K F R : Type} [Field K] [NumberField K] 
   choose a ha hag using fun i => (g i).2
   obtain ⟨β, hβint, hβ⟩ := exists_integral_inverse_coefficients (fun i => φ (a i))
   choose ρ hρ using hβint
-  beta_reduce at hρ hβ
   have hρs : ∀ j k, (ρ j k) • a j = (β j * φ (a k)) • a j := by
     intro j k
     rw [← hρ j k, ← algebraMap_smul K (ρ j k) (a j)]

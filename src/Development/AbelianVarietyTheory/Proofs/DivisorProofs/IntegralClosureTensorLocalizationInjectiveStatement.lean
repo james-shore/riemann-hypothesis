@@ -13,4 +13,4 @@ theorem _root_.GlobalTheory.T.integralClosure_tensor_localization_injective' : â
     âˆ€ [IsDomain D] [IsDiscreteValuationRing D] (Q : Ideal (integralClosure D (TensorProduct S D L))) [Q.IsMaximal],
     letI := Localization.AtPrime.algebraOfLiesOver (Q.under (integralClosure S L)) Q
     Function.Injective (algebraMap (Localization.AtPrime (Q.under (integralClosure S L))) (Localization.AtPrime Q)) := by
-  first | (exact @GlobalTheory.integralClosure_tensor_localization_injective) | (exact GlobalTheory.integralClosure_tensor_localization_injective) | (intros; apply GlobalTheory.integralClosure_tensor_localization_injective  <;> assumption)
+  first | (exact @GlobalTheory.integralClosure_tensor_localization_injective)

@@ -48,7 +48,7 @@ theorem mixT_heis_incX {μ : Measure (Mx D ρ S.rank)} {𝓕 : Set (Mx D ρ S.ra
       have h2 : symplOH S T (d.inc0 S w₀) (d.incX S ξ) = 0 := by
         rw [symplOH_skew', d.wittDecomp_sympl_inclIsotropic_inclAnisotropic S ξ w₀, neg_zero]
       have h3 := symplOH_skew' S T (d.incAdj S y) (d.incX S ξ)
-      simp only [GlobalTheory.OrientedHeis.symplOH_add_left, GlobalTheory.OrientedHeis.symplOH_add_right, h1, h2, h3,
+      simp only [GlobalTheory.OrientedHeis.symplOH_add_left, h1, h2, h3,
         symplO_eq_two]
       ring
     · congr 1

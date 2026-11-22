@@ -19,7 +19,7 @@ private theorem R_add_r {K : Type} [Fintype K] (c u v v' : K → ℂ) :
   unfold R
   rw [← Finset.sum_add_distrib]
   refine Finset.sum_congr rfl fun k _ => ?_
-  simp only [Pi.add_apply, map_add, mul_add, add_mul, Complex.add_re]
+  simp only [Pi.add_apply, map_add, mul_add, Complex.add_re]
 
 private theorem R_smul_l {K : Type} [Fintype K] (c u v : K → ℂ) (r : ℝ) :
     R c (r • u) v = r * R c u v := by
@@ -80,7 +80,7 @@ private theorem core1 (hT : TraceType) {E : Type} [Field E] [NumberField E] [IsC
         refine Finset.sum_congr rfl fun k _ => ?_
         simp only [Th_tmul, one_smul, hβ]
       rw [h]
-      simp [Rat.smul_def, zsmul_eq_mul]
+      simp [zsmul_eq_mul]
       ring
 
 theorem UpperTheory.cmField_hermitianForm_baseChange_real_eq_sum :
@@ -101,4 +101,4 @@ theorem UpperTheory.cmField_hermitianForm_baseChange_real_eq_sum :
         rw [TensorProduct.smul_tmul', smul_eq_mul, mul_one]
       rw [LinearMap.BilinForm.baseChange_tmul, e r w, e s w', map_smul, map_smul, R_smul_l, R_smul_r, ← core1 hT A n β hβ w w',
         Rat.smul_def]
-      simp only [mul_comm, mul_left_comm, mul_assoc]
+      simp only [mul_comm, mul_assoc]

@@ -49,7 +49,7 @@ theorem sum_flatWt (τ : Psi H) :
           simp only [conjEmb_conjEmb] at this
           rw [this]
           by_cases e : ρ = conjEmb τ.1
-          · simp [flatWt, parWt, Subtype.ext_iff, e, conjEmb_conjEmb]
+          · simp [flatWt, parWt, e, conjEmb_conjEmb]
           · have : conjEmb ρ ≠ τ.1 := fun e' => e (by rw [← e', conjEmb_conjEmb])
             simp [flatWt, parWt, Subtype.ext_iff, e, this]
       simp only [h2]

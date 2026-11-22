@@ -84,7 +84,7 @@ theorem lowerUnipotent_mul (hn : ρ + p = n) (c c' : Matrix (Fin p) (Fin ρ) R) 
   congr 1
   · simp
   · simp
-  · simp [add_comm]
+  · simp
   · simp
 
 theorem blockMatrix_twist (hn : ρ + p = n) (z z' : Matrix (Fin ρ) (Fin ρ) R) (x η : Matrix (Fin ρ) (Fin p) R)

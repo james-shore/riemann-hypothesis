@@ -164,14 +164,6 @@ theorem split_prime_local_holds : SplitPrimeLoc := by
   | exact h1
   | (rw [← h1, ← HeightOneSpectrum.valuation_of_algebraMap (K := F),
       ← HeightOneSpectrum.valuedAdicCompletion_eq_valuation']; congr 1; exact (map_natCast (algebraMap F (v.adicCompletion F)) p).symm)
-  | (rw [← h1, ← HeightOneSpectrum.valuation_of_algebraMap (K := F),
-      ← HeightOneSpectrum.valuedAdicCompletion_eq_valuation']; congr 1; simp; done)
-  | (rw [← h1, ← HeightOneSpectrum.valuation_of_algebraMap (K := F),
-      ← HeightOneSpectrum.valuedAdicCompletion_eq_valuation']; congr 1; norm_cast; done)
-  | (rw [← h1, ← HeightOneSpectrum.valuation_of_algebraMap (K := F),
-      ← HeightOneSpectrum.valuedAdicCompletion_eq_valuation']; simp; done)
-  | (rw [← h1, ← HeightOneSpectrum.valuation_of_algebraMap (K := F),
-      ← HeightOneSpectrum.valuedAdicCompletion_eq_valuation']; rfl)
 
 end Formalism.L2.SG.Pf.SatGramLoc
 

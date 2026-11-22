@@ -87,7 +87,7 @@ theorem comm_mem {G : Subgroup (SpecialLinearGroup (Fin N) L)} {i j k : Fin N} (
     exact Subtype.ext (m1 hpq x)
   have m : (1 + Matrix.single i k a) * (1 + Matrix.single k j b) * (1 + Matrix.single i k (-a)) *
       (1 + Matrix.single k j (-b)) = (1 + Matrix.single i j (a * b) : Matrix (Fin N) (Fin N) L) := by
-    simp [Matrix.add_mul, Matrix.mul_add, Matrix.single_mul_single_same, Matrix.single_mul_single_of_ne, hik, hkj, hij, hik.symm, hkj.symm, hij.symm]
+    simp [Matrix.add_mul, Matrix.mul_add, Matrix.single_mul_single_same, Matrix.single_mul_single_of_ne, hik.symm, hkj.symm, hij.symm]
     simp only [hn]
     abel
   have hx := G.mul_mem (G.mul_mem (G.mul_mem ha hb) (G.inv_mem ha)) (G.inv_mem hb)
@@ -199,7 +199,7 @@ theorem dens_holds : Dens := by
         simp
       · rw [Pi.mulSingle_eq_of_ne hw, Pi.single_eq_of_ne hw]
         ext a b
-        simp [SpecialLinearGroup.transvection_coe, Matrix.transvection])
+        simp)
     rw [hs]
   rw [dense_iff_closure_eq, ← Subgroup.topologicalClosure_coe, htop, Subgroup.coe_top]
 

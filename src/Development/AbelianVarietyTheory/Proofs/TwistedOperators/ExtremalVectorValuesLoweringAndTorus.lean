@@ -33,7 +33,7 @@ theorem perm_single_perm (hπ : ∀ a, π (π a) = a) (c d : Fin n) :
       Matrix.single (π c) (π d) 1 := by
   ext a b
   simp only [Matrix.mul_apply, Matrix.submatrix_apply, id, Matrix.one_apply, Matrix.single_apply]
-  simp [mul_ite, ite_mul, Finset.sum_ite_eq', Finset.sum_ite_eq, hπ]
+  simp [mul_ite, Finset.sum_ite_eq']
   have key : ∀ x y, x = π y ↔ π x = y := fun x y => ⟨fun h => by rw [h, hπ], fun h => by rw [← h, hπ]⟩
   simp only [ite_and, Finset.sum_ite_eq, Finset.mem_univ, if_true]
   simp only [key d b]
@@ -47,7 +47,7 @@ theorem perm_diag_perm (hπ : ∀ a, π (π a) = a) (t : Fin n → ℂ) :
       Matrix.diagonal (fun a => t (π a)) := by
   ext a b
   simp only [Matrix.mul_apply, Matrix.submatrix_apply, id, Matrix.one_apply, Matrix.diagonal_apply]
-  simp [mul_ite, ite_mul, Finset.sum_ite_eq', Finset.sum_ite_eq, hπ]
+  simp [mul_ite, ite_mul, Finset.sum_ite_eq', hπ]
   split_ifs with h
   · rw [h]
   · rfl

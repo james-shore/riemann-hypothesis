@@ -99,7 +99,7 @@ theorem repr_aeval {F S : Type*} [Field F] [CommRing S] [Algebra F S] (pb : Powe
   · intro b hb hbi
     rw [map_smul, Finsupp.smul_apply, hrep ⟨b, Finset.mem_range.1 hb⟩]
     have hne : (⟨b, Finset.mem_range.1 hb⟩ : Fin pb.dim) ≠ i := fun h => hbi (congrArg Fin.val h)
-    simp [Finsupp.single_apply, hne]
+    simp [hne]
   · intro h
     exact (h (Finset.mem_range.2 i.2)).elim
 

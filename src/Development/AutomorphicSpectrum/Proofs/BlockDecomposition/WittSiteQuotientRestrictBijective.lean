@@ -83,7 +83,6 @@ theorem top_F (m : ℕ) (𝒱 : Set X.Opens) (hU : sSup 𝒱 = ⊤) (c : Wc.Wm l
     obtain ⟨z, rfl⟩ := Ideal.Quotient.mk_surjective y
     first
       | rfl
-      | (simp only [NatTrans.id_app, CategoryTheory.Functor.map_id]; rfl)
   rw [e]
   exact hz.comp t0
 
@@ -121,7 +120,6 @@ theorem main : ∀ {l : ℕ} [Fact l.Prime] {k : Type} [Field k] [CharP k l] [Pe
     obtain ⟨z, rfl⟩ := Ideal.Quotient.mk_surjective y
     first
       | rfl
-      | (simp only [NatTrans.id_app, CategoryTheory.Functor.map_id]; rfl)
   rw [e]
   exact (top_F q ρ m 𝒱 hU _ j).comp ((scQ_bij q ρ m {⊤} c j).comp (top_res q ρ m c j))
 

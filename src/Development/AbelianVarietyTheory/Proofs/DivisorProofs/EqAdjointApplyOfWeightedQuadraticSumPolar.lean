@@ -41,9 +41,9 @@ theorem eq_adjoint_apply_of_qW_polar (W : Matrix (Fin 8) (Fin 8) ℤ) (hW : PosW
     have h1 := h (Pi.single w x)
     have h2 : ∀ a, ∑ b, E a b • (Pi.single w x : Fin 8 → X₀) b = E a w • x := by
       intro a
-      rw [Finset.sum_eq_single w] <;> simp +contextual [Pi.single_apply]
+      rw [Finset.sum_eq_single w] <;> simp +contextual
     have h3 : ∑ u, ∑ v, M u v * β ((Pi.single w x : Fin 8 → X₀) u) (z' v) = ∑ v, M w v * β x (z' v) := by
-      rw [Finset.sum_eq_single w] <;> simp +contextual [Pi.single_apply]
+      rw [Finset.sum_eq_single w] <;> simp +contextual
     simp only [h2, h3, map_zsmul, LinearMap.smul_apply, smul_eq_mul] at h1
     simp only [Matrix.mulVec, dotProduct, Matrix.mul_apply, Matrix.transpose_apply, Finset.sum_mul]
     rw [← h1, Finset.sum_comm]

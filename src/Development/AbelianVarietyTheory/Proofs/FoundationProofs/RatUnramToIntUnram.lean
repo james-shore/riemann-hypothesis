@@ -103,10 +103,10 @@ theorem rat_unram_to_int_unram : ∀ (l : ℕ) [Fact l.Prime] (Ω : Type) [Field
         have hdet := h2 s hs s' hs' i i'
         fin_cases j
         · simp only [Fin.zero_eta, Fin.isValue] at hαu ⊢
-          simp [Pi.single_apply]
+          simp
           linear_combination (-(A s' i' 0 * v 0 + A s' i' 1 * v 1)) * hαu + u * v 1 * hdet
         · simp only [Fin.mk_one, Fin.isValue] at hαu ⊢
-          simp [Pi.single_apply]
+          simp
           linear_combination (-(A s' i' 0 * v 0 + A s' i' 1 * v 1)) * hαu - u * v 0 * hdet
     · push_neg at h1
       refine ⟨0, fun Y v _ hYv => ⟨0, fun _ => zero_mem _, fun s hs => ?_⟩⟩

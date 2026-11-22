@@ -149,7 +149,7 @@ theorem existsUnique_bears (F Ω Ω' : Type) [Field F] [Field Ω] [Algebra F Ω]
     intro q hqf
     have hfq : f (q (IsLocalRing.closedPoint K)) = x (IsLocalRing.closedPoint K) := by
       rw [← hqf]
-      first | rfl | simp
+      first | rfl
     have hsp : ∀ w, q w ⤳ q (IsLocalRing.closedPoint K) :=
       RatModel.specializes_of_range_eq (RatModel.range_eq_singleton q _)
     have hunit : ∀ y : Ω', y ∈ M'.O (q (IsLocalRing.closedPoint K)) →

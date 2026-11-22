@@ -33,7 +33,6 @@ def om1 (la : Wt X.Ψ r) : Fin (Fintype.card X.Ψ) → X.Ψ → ℝ := fun j => 
 theorem basicPeriod_mem (la : Wt X.Ψ r) (j : Fin (Fintype.card X.Ψ)) : om1 X la j ∈ X.periods la := by
   first
     | exact (bas1 X la j).2
-    | exact AddSubgroup.mem_toIntSubmodule.mp (bas1 X la j).2
 
 theorem basicPeriod_linearIndependent (la : Wt X.Ψ r) : LinearIndependent ℝ (om1 X la) := by
   have := (Module.Basis.ofZLatticeBasis ℝ (perL X la) (bas1 X la)).linearIndependent
@@ -81,7 +80,6 @@ theorem omc_li (la la' : Wt X.Ψ r) : LinearIndependent ℝ (omc X la la') := by
   funext j
   first
     | rfl
-    | simp [omc, Units.smul_def]
 
 theorem scaledPeriod_mem_left (la la' : Wt X.Ψ r) (j : Fin (Fintype.card X.Ψ)) : omc X la la' j ∈ X.periods la := by
   show ((X.chiOrd la' * X.chiOrd (la + la') : ℕ) : ℝ) • om1 X la j ∈ X.periods la
@@ -219,9 +217,6 @@ theorem Om_open (ξ : Fin r → E) {x : Frame X.Ψ r} (hx : x ∈ X.dom) (ω : F
     refine Continuous.matrix_det (Continuous.matrix_submatrix ?_ _ _)
     first
       | fun_prop
-      | exact continuous_const.add ((Complex.continuous_ofReal.comp (continuous_const.mul
-          (continuous_finset_sum _ fun j _ => (continuous_apply j).mul continuous_const))).smul
-          continuous_const)
   have hO : Om ξ x ω = ⋂ (τ : X.Ψ), ⋂ (i : Fin (r + 1)), {b | 0 < psgn X.p0 i * (lminor (gram τ.1 X.Gm (mat x τ) +
         ((2 * X.c τ * ∑ j, b j * ω j τ : ℝ) : ℂ) • rk1 X ξ τ (mat x τ)) i).re} := by
     ext b
@@ -255,7 +250,6 @@ private lemma hconj_lemma_25 (τ : X.Ψ) (u v : Fin r → ℂ) :
     rw [← X.Gm_herm a b]
     first
       | simp [cc, IsCMField.complexEmbedding_complexConj]
-      | simp [cc, NumberField.IsCMField.complexEmbedding_complexConj]
   simp only [hermC, map_sum, map_mul, Complex.conj_conj, hG]
   refine Finset.sum_comm.trans ?_
   refine Finset.sum_congr rfl fun a _ => Finset.sum_congr rfl fun b _ => ?_
@@ -266,8 +260,6 @@ private lemma huu_lemma_26 {ξ : Fin r → E} (hξ : herm X.Gm ξ ξ = 0) (τ : 
   have h : τ.1 (herm X.Gm ξ ξ) = hermC τ.1 X.Gm (Data.emb τ.1 ξ) (Data.emb τ.1 ξ) := by
     first
       | simp [herm, hermC, Data.emb, cc, map_sum, map_mul, IsCMField.complexEmbedding_complexConj]
-      | simp [herm, hermC, Data.emb, cc, map_sum, map_mul,
-          NumberField.IsCMField.complexEmbedding_complexConj]
   rw [← h, hξ, map_zero]
 
 private lemma colmul_lemma_27 (A M : Matrix (Fin r) (Fin r) ℂ) (a : Fin r) :
@@ -298,7 +290,7 @@ private lemma gramflow_lemma_29 {ξ : Fin r → E} (hξ : herm X.Gm ξ ξ = 0) (
   rw [colmul_lemma_27, colmul_lemma_27, flowmv_lemma_28, flowmv_lemma_28]
   simp only [hsubl_lemma_21, hsubr_lemma_23, hsmull_lemma_22, hsmulr_lemma_24, hu]
   rw [← hconj_lemma_25 τ (col M b) (Data.emb τ.1 ξ)]
-  simp only [map_mul, Complex.conj_I, Complex.conj_ofReal, Complex.conj_conj]
+  simp only [map_mul, Complex.conj_I, Complex.conj_ofReal]
   have hs : (starRingEnd ℂ) s = s - 2 * I * (s.im : ℂ) := by
     apply Complex.ext <;> simp <;> ring
   rw [hs]

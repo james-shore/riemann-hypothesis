@@ -34,9 +34,9 @@ theorem UpperTheory.Gal.productCup_of_system.dualForm_of :
   let B : (⋀[K]^a Ω[K⁄ℂ]) →ₗ[F] (⋀[K]^(d - a) Ω[K⁄ℂ]) →ₗ[F] F :=
     LinearMap.mk₂ F (fun w y => T ((y : DR ℂ K) * (w : DR ℂ K)))
       (fun w w' y => by simp [mul_add])
-      (fun c w y => by simp [mul_smul_comm])
+      (fun c w y => by simp)
       (fun w y y' => by simp [add_mul])
-      (fun c w y => by simp [smul_mul_assoc])
+      (fun c w y => by simp)
   have hr : Module.finrank F (⋀[K]^a Ω[K⁄ℂ]) = Module.finrank F (⋀[K]^(d - a) Ω[K⁄ℂ]) := by
     rw [← Module.finrank_mul_finrank F K (⋀[K]^a Ω[K⁄ℂ]),
       ← Module.finrank_mul_finrank F K (⋀[K]^(d - a) Ω[K⁄ℂ]), hrk]

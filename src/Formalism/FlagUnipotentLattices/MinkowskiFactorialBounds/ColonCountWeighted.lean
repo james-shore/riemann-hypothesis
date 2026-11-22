@@ -306,7 +306,7 @@ lemma exists_codiff (E : Type) [Field E] [NumberField E] [StarRing E] :
 lemma exists_smul_mem_of_span {E U : Type} [Field E] [NumberField E] [AddCommGroup U] [Module E U]
     [Module (𝓞 E) U] [IsScalarTower (𝓞 E) E U] (N : Submodule (𝓞 E) U)
     (hN : Submodule.span E (N : Set U) = ⊤) (x : U) : ∃ d : 𝓞 E, d ≠ 0 ∧ d • x ∈ N := by
-  first | exact Bl.general_b_fact_second'.goal1 .. | (apply Bl.general_b_fact_second'.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second'.goal1 <;> assumption)
+  first | exact Bl.general_b_fact_second'.goal1 .. | (apply Bl.general_b_fact_second'.goal1 <;> assumption)
 
 lemma exists_int_smul_mem {E U : Type} [Field E] [NumberField E] [AddCommGroup U]
     [Module (𝓞 E) U] (L : Submodule (𝓞 E) U) (x : U) (d : 𝓞 E) (hd : d ≠ 0) (hx : d • x ∈ L) :

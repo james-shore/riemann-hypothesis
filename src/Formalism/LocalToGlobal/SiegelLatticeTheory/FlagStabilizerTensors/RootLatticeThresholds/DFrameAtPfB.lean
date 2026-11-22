@@ -17,7 +17,7 @@ theorem lamS_last (sc : ℝ) : lamS r sc (Fin.last r) = 1 := by
   simp [lamS]
 
 theorem lamS_star (sc : ℝ) (a : Fin (r + 1)) : star (lamS r sc a) = lamS r sc a := by
-  simp [lamS, Complex.star_def, Complex.conj_ofReal]
+  simp [lamS, Complex.conj_ofReal]
 
 theorem lamS_ne {sc : ℝ} (hsc : sc ≠ 0) (a : Fin (r + 1)) : lamS r sc a ≠ 0 := inv_ne_zero (pow_ne_zero _ (Complex.ofReal_ne_zero.mpr hsc))
 
@@ -115,7 +115,7 @@ theorem sum_gram (v : Fin (r + 1) → Fin n → ℂ) (t : ℂ)
   have expand : hJ ε (∑ b, p b • v b) (∑ c, q c • v c) = ∑ b, ∑ c, star (p b) * q c * hJ ε (v b) (v c) := by
     simp only [Formalism.L2.SG.HidaSetting.hJ, star_sum, star_smul, Matrix.mulVec_sum, Matrix.mulVec_smul]
     rw [hL]
-    simp only [hR, smul_dotProduct, dotProduct_smul, smul_eq_mul, Finset.mul_sum]
+    simp only [hR, smul_dotProduct, dotProduct_smul, smul_eq_mul]
     refine Finset.sum_congr rfl (fun b _ => Finset.sum_congr rfl (fun c _ => by ring))
   rw [expand]
   simp only [hv, mul_ite, mul_zero]

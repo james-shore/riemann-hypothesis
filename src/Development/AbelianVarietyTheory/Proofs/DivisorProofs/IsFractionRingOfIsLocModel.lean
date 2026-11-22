@@ -81,11 +81,11 @@ theorem exists_equiv_cons_last {α : Type} (r n : ℕ) (τ : Fin (r + 1) → α)
     refine Fin.addCases (fun i => ?_) (fun m => ?_) j
     · rw [Fin.append_left]
       have : s (Fin.castAdd n i).succ = Fin.castAdd n (Fin.castSucc i) :=
-        Fin.ext (by simp [s] <;> first | omega | (split_ifs <;> omega))
+        Fin.ext (by simp [s])
       rw [this, Fin.append_left]
     · rw [Fin.append_right]
       have : s (Fin.natAdd r m).succ = Fin.natAdd (r + 1) m :=
-        Fin.ext (by simp [s] <;> first | omega | (split_ifs <;> omega))
+        Fin.ext (by simp [s] <;> first | omega)
       rw [this, Fin.append_right]
 
 theorem mapDomain_nonneg {α β : Type} (v : α →₀ ℚ) (hv : ∀ a ∈ v.support, 0 ≤ v a) (f : α → β)

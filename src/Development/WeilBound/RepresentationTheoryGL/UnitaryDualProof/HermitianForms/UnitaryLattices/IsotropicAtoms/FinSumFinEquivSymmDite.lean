@@ -35,7 +35,7 @@ theorem glEmb_val_apply (n : ℕ) (g : GL (Fin n) k) (a b : Fin (n + 1)) :
       else (if a = b then 1 else 0) := by
   show glEmbMat k n (g : Matrix (Fin n) (Fin n) k) a b = _
   induction a using Fin.lastCases <;> induction b using Fin.lastCases <;>
-    simp [glEmbMat, Fin.castSucc_ne_last, (Fin.castSucc_ne_last _).symm]
+    simp [glEmbMat, (Fin.castSucc_ne_last _).symm]
 
 theorem eq_unip_glEmb' {n : ℕ} (p : Mir k n) :
     (p : GL (Fin (n + 1)) k) =
@@ -51,7 +51,7 @@ theorem eq_unip_glEmb' {n : ℕ} (p : Mir k n) :
   | last =>
     rw [hh]
     induction b using Fin.lastCases <;>
-      simp [glEmbMat, colMat, eLast, Fin.castSucc_ne_last, Pi.single_apply]
+      simp [glEmbMat, colMat, eLast, Fin.castSucc_ne_last]
   | cast a =>
     induction b using Fin.lastCases <;>
       simp [glEmbMat, colMat, blockMat, Fin.castSucc_ne_last]

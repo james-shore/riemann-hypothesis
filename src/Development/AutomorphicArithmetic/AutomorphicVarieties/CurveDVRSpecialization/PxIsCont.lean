@@ -31,7 +31,7 @@ private theorem px_chi (ρ : G →* Matrix (Fin n) (Fin n) A) (y : MonoidAlgebra
     | single g r => ext i j : 2; simp [W.GDet.repAlg]
   rw [map_sub, h]
   ext i j : 2
-  by_cases h : i = j <;> simp [W.GDet.repAlg, Matrix.charmatrix_apply, h, Matrix.one_apply]
+  by_cases h : i = j <;> simp [W.GDet.repAlg, h]
 
 private theorem px_tr (hn : n ≠ 0) (ρ : G →* Matrix (Fin n) (Fin n) A) (y : MonoidAlgebra A G) :
     (W.GDet.ofRep ρ).tr y = (MonoidAlgebra.lift A _ G ρ y).trace := by
@@ -94,7 +94,7 @@ private theorem px_coef {O : Type} [CommRing O] [Algebra O A] (B : Subalgebra O 
     unfold Matrix.charpoly
     congr 1
     ext i j : 2
-    by_cases h : i = j <;> simp [φ, Fin.sum_univ_two, Matrix.charmatrix_apply, h, Matrix.one_apply, sub_eq_add_neg]
+    by_cases h : i = j <;> simp [φ, Fin.sum_univ_two, h, sub_eq_add_neg]
   generalize (∑ a : Fin 2, (MvPolynomial.X a : MvPolynomial (Fin 2) A) • (![1, M] a).map (MvPolynomial.C : A →+* MvPolynomial (Fin 2) A)).det = P at h h1
   have h2 : φ P ∈ Polynomial.liftsRing (B.val : B →+* A) := by
     rw [P.as_sum, map_sum]

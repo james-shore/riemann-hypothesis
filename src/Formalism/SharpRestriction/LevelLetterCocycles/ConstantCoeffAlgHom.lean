@@ -15,8 +15,6 @@ theorem coeff_X_pow_mul_lt {n d : ℕ} (h : d < n) (p : PowerSeries O) :
     coeff d (X ^ n * p) = 0 := by
   first
   | rw [PowerSeries.coeff_X_pow_mul', if_neg (not_le.mpr h)]
-  | (rw [mul_comm, PowerSeries.coeff_mul_X_pow', if_neg (not_le.mpr h)])
-  | simp [PowerSeries.coeff_X_pow_mul', not_le.mpr h]
 
 theorem coeff_pow_mul_lt {Y : PowerSeries O} (hY : constantCoeff Y = 0) {n d : ℕ} (h : d < n)
     (p : PowerSeries O) : coeff d (Y ^ n * p) = 0 := by
@@ -44,16 +42,12 @@ theorem algHom_coe (ψ : PowerSeries O →ₐ[O] PowerSeries O) (p : Polynomial 
     congr 1
     first
     | exact ψ.commutes c
-    | (rw [← ψ.commutes c]; rfl)
-    | simp [PowerSeries.algebraMap_eq]
 
 private theorem natDegree_trunc_lt_of_pos (a : PowerSeries O) {N : ℕ} (hN : 0 < N) :
     (trunc N a).natDegree < N := by
   obtain ⟨N', rfl⟩ : ∃ N', N = N' + 1 := ⟨N - 1, by omega⟩
   first
   | exact PowerSeries.natDegree_trunc_lt a N'
-  | exact Nat.lt_succ_of_le (Polynomial.natDegree_le_iff_coeff_eq_zero.mpr fun i hi => by
-      rw [PowerSeries.coeff_trunc, if_neg (by omega)])
 
 private theorem coeff_algHom_eq_sum_range_of_lt (σ : PowerSeries O →ₐ[O] PowerSeries O)
     (hσ : constantCoeff (σ X) = 0) (a : PowerSeries O) {m N : ℕ} (hN : m < N) :
@@ -68,15 +62,11 @@ private theorem coeff_algHom_eq_sum_range_of_lt (σ : PowerSeries O →ₐ[O] Po
   rw [Finset.mem_range] at hi
   first
   | rw [map_smul, smul_eq_mul, PowerSeries.coeff_trunc, if_pos hi]
-  | rw [PowerSeries.coeff_smul, smul_eq_mul, PowerSeries.coeff_trunc, if_pos hi]
-  | simp [PowerSeries.coeff_trunc, hi]
 
 private theorem hasSubst_of_constantCoeff_eq_zero_level_letter_cocycles {Y : PowerSeries O}
     (hY : constantCoeff Y = 0) : PowerSeries.HasSubst Y := by
   first
   | exact PowerSeries.HasSubst.of_constantCoeff_zero' hY
-  | exact PowerSeries.HasSubst.of_constantCoeff_zero hY
-  | exact ⟨1, by rw [pow_one]; exact hY⟩
 
 private theorem coeff_subst_eq_sum_range_of_lt {Y : PowerSeries O} (hY : constantCoeff Y = 0)
     (a : PowerSeries O) {m N : ℕ} (hN : m < N) :
@@ -91,7 +81,6 @@ private theorem coeff_subst_eq_sum_range_of_lt {Y : PowerSeries O} (hY : constan
     rw [h1]
     first
     | exact PowerSeries.subst_X hs
-    | simp [hs]
   have h3 := coeff_algHom_eq_sum_range_of_lt σ (by rw [h2]; exact hY) a hN
   rw [h2, h1] at h3
   exact h3
@@ -129,7 +118,6 @@ theorem subst_sub_subst_dvd {Y Z : PowerSeries O} (hY : constantCoeff Y = 0)
     rw [mul_comm]
     first
     | exact geom_sum₂_mul Y Z n
-    | exact (Commute.all Y Z).geom_sum₂_mul n
   have stab : ∀ q M, q + 2 ≤ M →
       ∑ n ∈ Finset.range M, coeff n a * coeff q (qn Y Z n) =
         ∑ n ∈ Finset.range (q + 2), coeff n a * coeff q (qn Y Z n) := by

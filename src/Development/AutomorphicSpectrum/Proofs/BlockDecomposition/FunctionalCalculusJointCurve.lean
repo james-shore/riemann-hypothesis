@@ -63,7 +63,7 @@ theorem hasFDerivAt_uncurry {h h₀ : ℝ → Mat n → V} {hp : (Bool × Fin n 
     refine ContinuousOn.congr (f := fun z : ℝ × Mat n => y • Function.uncurry h₀ z)
       ((continuousOn_const (c := y)).smul c₀) ?_
     rintro ⟨s, w⟩ -
-    simp [Function.uncurry_def]
+    simp
   have c2 : ContinuousOn (Function.uncurry fun (t : ℝ) (x : Mat n) => fderiv ℝ (h t) x)
       (Set.univ ×ˢ GLs n) := by
     refine continuousOn_clm_apply.2 fun ξ => ?_

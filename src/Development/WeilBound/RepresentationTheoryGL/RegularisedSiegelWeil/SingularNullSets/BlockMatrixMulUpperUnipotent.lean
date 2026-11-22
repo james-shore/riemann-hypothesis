@@ -53,7 +53,7 @@ theorem fact_alg (s : R →+* R) (a β c u ui : Matrix (Fin n) (Fin n) R) (hu1 :
 theorem block_matrix_mul_upper_unipotent (a b c d X : Matrix (Fin n) (Fin n) R) :
     blk4 a b c d * blk4 1 X 0 1 = blk4 a (a * X + b) c (d + c * X) := by
   rw [blk4_mul_blk4]
-  simp only [mul_one, mul_zero, add_zero, zero_add]
+  simp only [mul_one, mul_zero, add_zero]
   rw [add_comm (a * X) b, add_comm (c * X) d]
 
 theorem upper_unipotent_block_inverse (X : Matrix (Fin n) (Fin n) R) : blk4 1 X 0 1 * blk4 1 (-X) 0 1 = 1 := by

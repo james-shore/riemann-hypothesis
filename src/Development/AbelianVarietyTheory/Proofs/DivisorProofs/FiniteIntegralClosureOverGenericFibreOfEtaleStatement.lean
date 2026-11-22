@@ -16,4 +16,4 @@ theorem _root_.GlobalTheory.T.finite_integralClosureOverGenericFibre_of_etale : 
     [Module.Finite (GlobalTheory.LocAcyc.GenFib A R) D] [Algebra.Etale (GlobalTheory.LocAcyc.GenFib A R) D],
     letI := GlobalTheory.KeyOriginNoeth.closureAlg A R D
     Module.Finite R (GlobalTheory.KeyOriginNoeth.closure A R D) := by
-  first | (exact @GlobalTheory.KeyOriginNoeth.finite_closure) | (exact GlobalTheory.KeyOriginNoeth.finite_closure) | (intros; apply GlobalTheory.KeyOriginNoeth.finite_closure <;> assumption)
+  first | (exact @GlobalTheory.KeyOriginNoeth.finite_closure)

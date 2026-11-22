@@ -336,7 +336,7 @@ private theorem coeff_prod_lt (S : Multiset C) (hS : ∀ r ∈ S, 1 < v r) :
     have hpos : 0 < v (h.coeff 0) := pos_iff_ne_zero.mpr h0
     have hc0 : (((r ::ₘ S).map fun r => X - Polynomial.C r).prod).coeff 0 = -r * h.coeff 0 := by
       rw [Multiset.map_cons, Multiset.prod_cons, ← hh, sub_mul]
-      simp [Polynomial.coeff_X_mul_zero]
+      simp
     have hcd : ∀ d, (((r ::ₘ S).map fun r => X - Polynomial.C r).prod).coeff (d + 1) =
         h.coeff d - r * h.coeff (d + 1) := by
       intro d

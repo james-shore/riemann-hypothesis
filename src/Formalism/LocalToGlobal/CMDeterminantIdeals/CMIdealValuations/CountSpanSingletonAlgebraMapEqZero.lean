@@ -100,7 +100,6 @@ lemma algebraMap_int_tower (a : 𝓞 K) :
     algebraMap (𝓞 K1) K1 (algebraMap (𝓞 K) (𝓞 K1) a) = algebraMap K K1 (algebraMap (𝓞 K) K a) := by
   first
   | rfl
-  | rw [← IsScalarTower.algebraMap_apply, ← IsScalarTower.algebraMap_apply]
 
 lemma algebraMap_int_injective : Function.Injective (algebraMap (𝓞 K) (𝓞 K1)) := by
   intro a b h

@@ -28,12 +28,12 @@ lemma rop_rop_X (a b : Fin k) (hab : a ≠ b) (i : Fin k ⊕ Fin k) :
   rcases i with j | j
   · by_cases h : j = b
     · subst h
-      simp [rop_apply, pderiv_X, Pi.single_apply, hab, Ne.symm hab]
-    · simp [rop_apply, pderiv_X, Pi.single_apply, h, Ne.symm h]
+      simp [rop_apply, pderiv_X, hab]
+    · simp [rop_apply, pderiv_X, h]
   · by_cases h : j = a
     · subst h
-      simp [rop_apply, pderiv_X, Pi.single_apply, hab, Ne.symm hab]
-    · simp [rop_apply, pderiv_X, Pi.single_apply, h, Ne.symm h]
+      simp [rop_apply, pderiv_X, Ne.symm hab]
+    · simp [rop_apply, pderiv_X, h]
 
 lemma rop_iter_mul_X (a b : Fin k) (hab : a ≠ b) (g : Pol K k) (i : Fin k ⊕ Fin k) (n : ℕ) :
     (Rop K k a b)^[n + 1] (g * X i) = (Rop K k a b)^[n + 1] g * X i

@@ -94,7 +94,7 @@ theorem consWord_left {V : Type*} {D : ℕ} (I : (Fin (D + 2) → V) → ℝ) (S
   congr 1
   funext j
   simp only [consWord, interp]
-  split_ifs <;> first | rfl | omega | contradiction
+  split_ifs <;> first | rfl | omega
 
 theorem consWord_right {V : Type*} {D : ℕ} (I : (Fin (D + 2) → V) → ℝ) (S : V → Prop)
     (hI : ∀ L : Fin (D + 2) → V, (∀ j, S (L j)) → ∀ σ : Equiv.Perm (Fin (D + 2)), I (L ∘ σ) = I L)
@@ -168,7 +168,7 @@ theorem firstHalf : Inputs → ∀ (II : IntersectionSystem), IsFullIntersection
       congr 1
       funext j
       simp only [interp, mix]
-      split_ifs <;> first | rfl | omega | contradiction
+      split_ifs <;> first | rfl | omega
     have hgk : g k = -2 * II K ι P (d + 2) (mix (2 * k) Xi A) := by
       have e := hP1 (mix (2 * k) Xi A) (mix (2 * k) X₀ A₀) X₁
         (fun j => by unfold mix; split_ifs <;> assumption)

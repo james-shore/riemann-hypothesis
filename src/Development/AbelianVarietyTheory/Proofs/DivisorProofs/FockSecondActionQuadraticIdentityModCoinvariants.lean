@@ -26,7 +26,7 @@ theorem left_expand (hlu : ∀ i j, l i * u j = u j * l i + if i = j then 1 else
     rw [this, h]
     by_cases hab : a = b
     · subst hab; simp [mul_add, add_mul, mul_assoc]
-    · simp [hab, mul_add, add_mul, mul_assoc]
+    · simp [hab, mul_assoc]
   simp only [Finset.sum_mul_sum, h1, Finset.sum_add_distrib, Finset.sum_ite_eq, Finset.mem_univ, if_true,
     Finset.sum_const, Finset.card_univ]
 
@@ -44,7 +44,7 @@ theorem right_expand (hlu : ∀ i j, l i * u j = u j * l i + if i = j then 1 els
     rw [this, h]
     by_cases hdc : d = c
     · subst hdc; simp [mul_add, add_mul, mul_assoc]
-    · simp [hdc, mul_add, add_mul, mul_assoc]
+    · simp [hdc, mul_assoc]
   simp only [Finset.sum_mul, h1, Finset.sum_add_distrib, Finset.sum_ite_eq', Finset.mem_univ, if_true,
     Finset.sum_const, Finset.card_univ]
 
@@ -72,7 +72,7 @@ theorem raiB_comm (l m : Ln P Q R S) : raiB l * raiB m = raiB m * raiB l := by
   · rw [hlm]
   refine LinearMap.ext fun f => ?_
   cases hl : linePos l <;> cases hm : linePos m <;>
-    simp [raiB, hl, hm, MvPolynomial.pderiv_X, Pi.single_apply, hlm, Ne.symm hlm,
+    simp [raiB, hl, hm, MvPolynomial.pderiv_X, hlm, Ne.symm hlm,
       GlobalTheory.FockCasimir.pderiv_pderiv_comm l m, mul_left_comm]
 
 theorem fockSecondAction_matrixUnit_eq (c d : Ix R S) :
@@ -81,7 +81,7 @@ theorem fockSecondAction_matrixUnit_eq (c d : Ix R S) :
   rw [fockAct2_Eab]
   simp only [omE, Finset.sum_add_distrib, Prod.mk.injEq, true_and]
   by_cases hcd : c = d
-  · simp [hcd, Finset.sum_const, Finset.card_univ, ← Nat.cast_smul_eq_nsmul ℂ, smul_smul, div_eq_mul_inv, mul_comm]
+  · simp [hcd, Finset.sum_const, Finset.card_univ, ← Nat.cast_smul_eq_nsmul ℂ, smul_smul, div_eq_mul_inv]
   · simp [hcd]
 
 theorem fockFirstAction_matrixUnit_eq (b a : Ix P Q) :
@@ -90,13 +90,13 @@ theorem fockFirstAction_matrixUnit_eq (b a : Ix P Q) :
   rw [fockAct1_Eab]
   simp only [omE, Finset.sum_add_distrib, Prod.mk.injEq, and_true]
   by_cases hba : b = a
-  · simp [hba, Finset.sum_const, Finset.card_univ, ← Nat.cast_smul_eq_nsmul ℂ, smul_smul, div_eq_mul_inv, mul_comm]
+  · simp [hba, Finset.sum_const, Finset.card_univ, ← Nat.cast_smul_eq_nsmul ℂ, smul_smul, div_eq_mul_inv]
   · simp [hba]
 
 theorem trace_Eab (b a : Ix P Q) : (Eab b a).trace = if b = a then 1 else 0 := by
   by_cases h : b = a
-  · subst h; simp [Eab, Matrix.trace, Matrix.single_apply]
-  · simp [Eab, Matrix.trace, Matrix.single_apply, h]
+  · subst h; simp [Eab, Matrix.trace]
+  · simp [Eab, Matrix.trace, h]
 
 section Alg
 
@@ -107,7 +107,7 @@ theorem sq_shift (X : J → J → A) (k : ℂ) (c e : J) :
       ∑ d, X c d * X d e + (2 * k) • X c e + if c = e then (k * k) • (1 : A) else 0 := by
   simp only [mul_add, add_mul, Finset.sum_add_distrib, ite_mul, mul_ite, zero_mul, mul_zero,
     smul_mul_assoc, one_mul, mul_smul_comm, mul_one, Finset.sum_ite_eq, Finset.sum_ite_eq',
-    Finset.mem_univ, if_true, smul_smul]
+    Finset.mem_univ, if_true]
   by_cases hce : c = e
   · subst hce; simp only [if_true]; module
   · simp only [hce, if_false]; module

@@ -21,8 +21,8 @@ theorem sum_map_filter {β : Type*} (p : β → Prop) [DecidablePred p] (f : β 
   | nil => simp
   | cons a l ih =>
     by_cases hp : p a
-    · simp [List.filter_cons, hp, ih]
-    · simp [List.filter_cons, hp, ih]
+    · simp [hp, ih]
+    · simp [hp, ih]
 
 variable {k : Type} [Field k] [ValuativeRel k] [TopologicalSpace k] [IsNonarchimedeanLocalField k]
 

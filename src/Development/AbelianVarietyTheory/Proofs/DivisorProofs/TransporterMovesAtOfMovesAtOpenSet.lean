@@ -77,7 +77,7 @@ theorem movesAt_of_movesAt_open : ∀ {D : D7} {L : SizeData₂ D} {hT : GatTies
         (m : Matrix (Fin D.R.r) (Fin D.R.r) D.host.E).map τ.1
     rw [hcm, hs, Matrix.map_mul, Matrix.map_mul]
     have hsc : (Matrix.scalar (Fin D.R.r) s).map τ.1 = Matrix.scalar (Fin D.R.r) (τ.1 s) := by
-      ext p q; by_cases hpq : p = q <;> simp [Matrix.scalar_apply, Matrix.diagonal_apply, hpq]
+      ext p q; by_cases hpq : p = q <;> simp [Matrix.scalar_apply, hpq]
     rw [hsc, Matrix.mul_assoc, Matrix.mul_assoc, Matrix.mul_assoc, Matrix.mul_assoc]
     congr 2
     exact (Matrix.scalar_commute _ (fun _ => Commute.all _ _) _).eq

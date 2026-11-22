@@ -28,12 +28,10 @@ theorem sum_finrank_le_finrank_cuspForm (Γ : Subgroup SL(2, ℤ)) (r : ℕ) (s 
     { toFun := fun g => ∑ j, (hcf j (g j)).toCF
       map_add' := by
         intro a b; ext τ
-        simp only [CuspForm.add_apply, happ, IsCF.coe_toCF, Pi.mul_apply, Pi.add_apply, ModularForm.add_apply,
-          add_mul, Finset.sum_add_distrib]
+        simp only [CuspForm.add_apply, happ, IsCF.coe_toCF, Pi.mul_apply, Pi.add_apply, add_mul, Finset.sum_add_distrib]
       map_smul' := by
         intro c a; ext τ
-        simp only [CuspForm.smul_apply, happ, IsCF.coe_toCF, Pi.mul_apply, Pi.smul_apply, ModularForm.smul_apply,
-          RingHom.id_apply, smul_eq_mul, Finset.mul_sum, mul_assoc] }
+        simp only [CuspForm.smul_apply, happ, IsCF.coe_toCF, Pi.mul_apply, Pi.smul_apply, RingHom.id_apply, smul_eq_mul, Finset.mul_sum, mul_assoc] }
   have hinj : Function.Injective L := by
     rw [← LinearMap.ker_eq_bot, LinearMap.ker_eq_bot']
     intro g hg

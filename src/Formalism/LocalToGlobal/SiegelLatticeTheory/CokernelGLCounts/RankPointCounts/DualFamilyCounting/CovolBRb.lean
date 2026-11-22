@@ -27,7 +27,7 @@ theorem memDv (t : D.host.E) :
     t ∈ Dv D ↔ ∀ o : 𝓞 D.host.E, ∃ z : ℤ, Algebra.trace ℚ D.host.E (t * o) = z := by
   have h10 : (1 : FractionalIdeal (𝓞 D.host.E)⁰ D.host.E) ≠ 0 := fun h => by
     have := congrArg (fun I : FractionalIdeal (𝓞 D.host.E)⁰ D.host.E => (1 : D.host.E) ∈ I) h
-    simp [FractionalIdeal.one_mem_one, FractionalIdeal.mem_zero_iff] at this
+    simp [FractionalIdeal.mem_zero_iff] at this
   rw [FractionalIdeal.mem_dual h10]
   simp only [FractionalIdeal.mem_one_iff, forall_exists_index, forall_apply_eq_imp_iff,
     Algebra.traceForm_apply, RingHom.mem_range, eq_intCast]
@@ -130,7 +130,7 @@ theorem Lsharp {z : (VS D).V} (hz : z ∈ Wb X) (hd : ∀ y ∈ X.Lb, ∃ o : �
     obtain ⟨α, β, l, hl, rfl⟩ := decomp X hy
     obtain ⟨o, ho⟩ := hd l hl
     have e : (VS D).hT (∑ c, α c • X.eX c + l + ∑ c, β c • X.fY c) z = (VS D).hT l z := by
-      simp [map_add, map_sum, LinearMap.map_smulₛₗ₂, (hzW _).1, (hzW _).2]
+      simp [map_add, map_sum, (hzW _).1, (hzW _).2]
     rw [Submodule.mem_one]
     exact ⟨o, by rw [e]; exact ho⟩
   obtain ⟨α, β, l, hl, hzeq⟩ := decomp X hzL
@@ -535,7 +535,7 @@ theorem finrank_eq_of_sandwich (A B : Submodule (𝓞 D.host.E) (VS D).V) (hA : 
       LinearMap.codRestrict (A.restrictScalars ℤ) ((c : ℤ) • (B.restrictScalars ℤ).subtype) (fun x => hmem x x.2)
     refine LinearMap.finrank_le_finrank_of_injective (f := f) fun x y hxy => ?_
     have h := congrArg Subtype.val hxy
-    simp only [f, LinearMap.codRestrict_apply, LinearMap.smul_apply, Submodule.coe_subtype] at h
+    simp only [f] at h
     have : (c : ℤ) • ((x : (VS D).V) - y) = 0 := by rw [smul_sub]; exact sub_eq_zero.2 h
     exact Subtype.ext (sub_eq_zero.1 ((smul_eq_zero.1 this).resolve_left (by exact_mod_cast hc)))
 

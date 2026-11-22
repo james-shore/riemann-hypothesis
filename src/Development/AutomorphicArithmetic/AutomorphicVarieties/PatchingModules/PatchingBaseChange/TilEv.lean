@@ -142,14 +142,13 @@ theorem UpperTheory.V.Pa.BC.til_ev :
     induction c using TensorProduct.induction_on with
     | zero => simp
     | tmul o s =>
-      simp [cb, tc, Til.act, TensorProduct.AlgebraTensorModule.cancelBaseChange_tmul]
+      simp [cb, tc, Til.act]
       rw [TensorProduct.comm_tmul, TensorProduct.AlgebraTensorModule.cancelBaseChange_tmul,
         TensorProduct.comm_tmul]
     | add x y hx hy => rw [map_add, TensorProduct.tmul_add, map_add, hx, hy, map_add]
   refine ⟨(TensorProduct.comm R (Til O O' R) M).toAddEquiv.trans
     ((cfe.lTensor M).toAddEquiv.trans (eve.toAddEquiv.trans (AddEquiv.piCongrRight (fun _ => cb)))), ?_⟩
   intro a m k
-  simp only [AddEquiv.trans_apply, LinearEquiv.coe_toAddEquiv, TensorProduct.comm_tmul,
-    LinearEquiv.lTensor_tmul, AddEquiv.piCongrRight_apply]
+  simp only [AddEquiv.trans_apply, LinearEquiv.coe_toAddEquiv, AddEquiv.piCongrRight_apply]
   rw [← hcb]
   rfl

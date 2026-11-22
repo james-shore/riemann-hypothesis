@@ -87,7 +87,7 @@ theorem nonempty_closure_ringHom_of_mul_mem : ∀ (K : Type) [Field K] [CharZero
     refine ⟨IsLocalization.mk' B (⟨(N : K) * s, hS s hs⟩ : O) (⟨(N : O), 1, pow_one _⟩ : Submonoid.powers (N : O)), ?_⟩
     have h1 := congrArg φ (IsLocalization.mk'_spec B (⟨(N : K) * s, hS s hs⟩ : O) (⟨(N : O), 1, pow_one _⟩ : Submonoid.powers (N : O)))
     rw [map_mul, hφa, hφa] at h1
-    simp only [map_natCast] at h1
+    simp only at h1
     exact mul_right_cancel₀ hNK (h1.trans (mul_comm _ _))
   have hψN : IsUnit (ψ (N : O)) := by rw [map_natCast]; exact hu
   let χ : B →+* R := IsLocalization.Away.lift (N : O) hψN

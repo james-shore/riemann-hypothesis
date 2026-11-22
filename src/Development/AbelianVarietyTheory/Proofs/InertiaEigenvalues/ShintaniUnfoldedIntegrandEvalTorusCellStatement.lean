@@ -46,5 +46,3 @@ theorem _root_.GlobalTheory.T.shintani_unfoldedIntegrand_eval_torusCell : ∀ (E
             GlobalTheory.ZEul.uInt φ φ Φ N 0 g * (GlobalTheory.RSJ.detPow E (m + 1) x g : ℂ) := by
   first
   | exact @GlobalTheory.ZEul.uInt_cell_eval
-  | exact GlobalTheory.ZEul.uInt_cell_eval
-  | (intros; apply GlobalTheory.ZEul.uInt_cell_eval <;> assumption)

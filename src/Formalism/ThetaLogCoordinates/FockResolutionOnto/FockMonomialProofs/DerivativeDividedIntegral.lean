@@ -191,11 +191,11 @@ theorem eulL_X (i : Fin (K + 1)) (d : Fin r) :
     rw [Finset.sum_eq_single d]
     · simp [pderiv_X]
     · intro b _ hb
-      simp [pderiv_X, Pi.single_apply, Ne.symm hb]
+      simp [pderiv_X, Ne.symm hb]
     · simp
   · apply Finset.sum_eq_zero
     intro c _
-    simp [pderiv_X, Pi.single_apply, h]
+    simp [pderiv_X, h]
 
 private theorem glAct_X_eq_ite (b : Fin r) (i : Fin (K + 1)) (d : Fin r) :
     glAct p LL K a b (X (i, d)) =
@@ -204,9 +204,9 @@ private theorem glAct_X_eq_ite (b : Fin r) (i : Fin (K + 1)) (d : Fin r) :
       else 0 := by
   unfold glAct
   rw [LinearMap.sum_apply, Finset.sum_eq_single i]
-  · split_ifs <;> simp_all [pderiv_X, Pi.single_apply]
+  · split_ifs <;> simp_all [pderiv_X]
   · intro j _ hj
-    split_ifs <;> simp [pderiv_X, Pi.single_apply, Ne.symm hj]
+    split_ifs <;> simp [pderiv_X, Ne.symm hj]
   · simp
 
 theorem DDop_last (d : Fin r) :
@@ -222,15 +222,15 @@ theorem DDop_vec (i : Fin (K + 1)) (hi : i ≠ Fin.last K) (hv : LL.vec i = true
     DDop p LL Cs a (X (i, d)) = if d ∈ Cs then X (Fin.last K, d) * X (i, a) else 0 := by
   rw [DDop_apply, eulL_X, if_neg hi, mul_zero, zero_add]
   simp only [glAct_X_eq_ite, if_pos (Fin.val_lt_last hi), hv, if_true]
-  simp [mul_ite, Finset.sum_ite_eq, Finset.sum_ite_eq']
+  simp [mul_ite, Finset.sum_ite_eq']
 
 theorem DDop_cov (i : Fin (K + 1)) (hi : i ≠ Fin.last K) (hv : LL.vec i = false) (d : Fin r) :
     DDop p LL Cs a (X (i, d)) = if a = d then -∑ b ∈ Cs, X (Fin.last K, b) * X (i, b) else 0 := by
   rw [DDop_apply, eulL_X, if_neg hi, mul_zero, zero_add]
   simp only [glAct_X_eq_ite, if_pos (Fin.val_lt_last hi), hv, Bool.false_eq_true, if_false]
   split_ifs with h
-  · simp [h, Finset.sum_neg_distrib]
-  · simp [h]
+  · simp [Finset.sum_neg_distrib]
+  · simp
 
 theorem DDop_pair (ha : a ∈ Cs) (i : Fin (K + 1)) (hi : i ≠ Fin.last K) (hv : LL.vec i = false) :
     DDop p LL Cs a (∑ b ∈ Cs, X (Fin.last K, b) * X (i, b)) = 0 := by
@@ -348,7 +348,6 @@ theorem udiv_map (ha : a ∈ Cs) (P : MvPolynomial (Fin (K + 1) × Fin r) ℤ_[p
     ((k.factorial : ℚ_[p]))⁻¹ • ((Uop p LL c Cs a) ^ k) (map (algebraMap ℤ_[p] ℚ_[p]) P) ∈
       IntPol p (Fin (K + 1) × Fin r)) P ?_ ?_ ?_
   · intro z c k
-    beta_reduce
     rw [map_C]
     have hC : (C (algebraMap ℤ_[p] ℚ_[p] z) : MvPolynomial (Fin (K + 1) × Fin r) ℚ_[p]) =
         (algebraMap ℤ_[p] ℚ_[p] z) • (1 : MvPolynomial (Fin (K + 1) × Fin r) ℚ_[p]) := by
@@ -363,11 +362,9 @@ theorem udiv_map (ha : a ∈ Cs) (P : MvPolynomial (Fin (K + 1) × Fin r) ℤ_[p
     rw [hC, map_smul, smul_comm, hT, algebraMap_smul, Int.cast_smul_eq_zsmul]
     exact Submodule.smul_mem _ z (zsmul_mem (FrozenVariableLemmas.intPol_pow p (hX _) k) _)
   · intro P Q hP hQ c k
-    beta_reduce
     rw [map_add, map_add, smul_add]
     exact add_mem (hP c k) (hQ c k)
   · intro P n hP c k
-    beta_reduce
     obtain ⟨j, d⟩ := n
     rw [map_mul, map_X, mul_comm]
     have hF0 : map (algebraMap ℤ_[p] ℚ_[p]) P ∈ IntPol p (Fin (K + 1) × Fin r) := by

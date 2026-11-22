@@ -94,7 +94,7 @@ theorem complete_coords : ∀ (n a : ℕ) (v₀ : ReciprocityTheory.L2DbarEstima
   have hsurj : Function.Surjective D := by
     have := (LinearMap.injective_iff_surjective_of_finrank_eq_finrank
       (f := (D : ReciprocityTheory.L2DbarEstimates.V n →ₗ[ℂ] (Fin n → ℂ)))
-      (by simp [finrank_euclideanSpace_fin])).1 hinj
+      (by simp)).1 hinj
     exact this
   set e : ReciprocityTheory.L2DbarEstimates.V n ≃L[ℂ] (Fin n → ℂ) := ContinuousLinearEquiv.ofBijective D
     (LinearMap.ker_eq_bot.2 hinj) (LinearMap.range_eq_top.2 hsurj) with he

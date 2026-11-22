@@ -104,7 +104,7 @@ theorem UpperTheory.ConvolutionTheory.R2.D.comm :
         exact_mod_cast (idelicNorm_pos (nu F h)).ne'
       push_cast
       field_simp
-  | one => simp [diagonalConj_one]
+  | one => simp
   | mul x y _ _ hx hy =>
     rw [map_mul, diagonalConj_mul, map_mul, ← mul_assoc, hx, mul_assoc, hy, mul_assoc]
   | inv x _ hx =>

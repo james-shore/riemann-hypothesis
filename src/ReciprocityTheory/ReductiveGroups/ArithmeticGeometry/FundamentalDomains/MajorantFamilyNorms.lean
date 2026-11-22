@@ -33,8 +33,6 @@ theorem hsg_of {x : Frame X.Ψ r} (hx : x ∈ X.dom) (τ : X.Ψ) :
   have h1 := (hx τ).2 ⟨i, Nat.lt_succ_of_le h⟩
   first
     | exact h1
-    | (unfold dmin lminor gram gramF famN at h1
-       exact h1)
 
 theorem dmin_eq (x : Frame X.Ψ r) (τ : X.Ψ) (i : Fin (r + 1)) :
     dmin X.Gm x τ i = (gramF τ.1 X.Gm (famN (mat x τ) i (Nat.le_of_lt_succ i.isLt))).det := rfl

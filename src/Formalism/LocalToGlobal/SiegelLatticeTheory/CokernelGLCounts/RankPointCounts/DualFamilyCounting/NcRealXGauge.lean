@@ -25,15 +25,15 @@ theorem realifyE_apply (X : Matrix (Fin m) (Fin m) ℂ) (p : Fin m × Fin m × B
 theorem unrealify_realifyE (X : Matrix (Fin m) (Fin m) ℂ) : unrealify (realifyE X) = X := by
   funext i j
   apply Complex.ext
-  · first | rfl | simp [unrealify, realifyE, realifyFun]
-  · first | rfl | simp [unrealify, realifyE, realifyFun]
+  · first | rfl
+  · first | rfl
 
 theorem realifyE_unrealify (x : EuclideanSpace ℝ (Fin m × Fin m × Bool)) : realifyE (unrealify x) = x := by
   refine PiLp.ext fun p => ?_
   obtain ⟨i, j, b⟩ := p
   cases b
-  · first | rfl | simp [unrealify, realifyE, realifyFun]
-  · first | rfl | simp [unrealify, realifyE, realifyFun]
+  · first | rfl
+  · first | rfl
 
 theorem realifyE_add (X Y : Matrix (Fin m) (Fin m) ℂ) : realifyE (X + Y) = realifyE X + realifyE Y := by
   refine PiLp.ext fun p => ?_

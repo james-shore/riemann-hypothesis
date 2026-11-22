@@ -18,7 +18,7 @@ variable {F : Type} [Field F] [NumberField F] {κ : Type} [Fintype κ]
 def mulC (t : mixedEmbedding.mixedSpace F) : (κ → mixedEmbedding.mixedSpace F) →ₗ[ℝ] (κ → mixedEmbedding.mixedSpace F) where
   toFun x := fun i => t * x i
   map_add' x y := by funext i; simp [mul_add]
-  map_smul' r x := by funext i; simp [mul_smul_comm]
+  map_smul' r x := by funext i; simp
 
 theorem evI_mul' (a b : AF F) : evI F (a * b) = evI F a * evI F b := by
   show InfiniteAdeleRing.ringEquiv_mixedSpace F (a.1 * b.1) =
@@ -131,8 +131,7 @@ theorem piInf_algebraMap {w : InfinitePlace F} (τ : EmbOver E w) (a : AF F) :
     piInf τ (algebraMap (AF F) (AE F E) a) = InfinitePlace.Completion.extensionEmbedding w (a.1 w) := by
   rw [Algebra.TensorProduct.algebraMap_apply]
   show infEmb τ (compInf F E w (a ⊗ₜ[F] (1 : E))) = _
-  simp only [compInf, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, Algebra.TensorProduct.map_tmul, AlgHom.id_apply,
-    infEmb_tmul, map_one, mul_one]
+  simp only [compInf, AlgHom.toRingHom_eq_coe, RingHom.coe_coe, Algebra.TensorProduct.map_tmul, infEmb_tmul, map_one, mul_one]
   rfl
 
 theorem piInf_smul {w : InfinitePlace F} (τ : EmbOver E w) (a : AF F) (z : AE F E) :
@@ -298,7 +297,7 @@ theorem exists_bridge : ∀ (F E : Type) [Field F] [NumberField F] [Field E] [Nu
         (((ε' w : ℤ) : ℂ) * Complex.I) • (θA w * Ψl y w * (θB w)ᵀ)
       generalize Ψl y w = X
       rcases Int.units_eq_one_or (ε w) with h1 | h1 <;> rcases Int.units_eq_one_or (ε' w) with h2 | h2 <;>
-        simp [h1, h2, two_smul, Matrix.mul_neg, Matrix.neg_mul, Matrix.mul_sub, Matrix.sub_mul]
+        simp [h1, h2, two_smul, Matrix.mul_neg, Matrix.neg_mul]
     · show Ψl (J y) w = _
       rw [hΨJ]
       rfl

@@ -78,7 +78,7 @@ theorem levelPrime_window : ∀ (D : D7) (u : D.what₂.Word),
           mul_le_mul_of_nonneg_left (h1.trans hTpow) hdu.le
       _ = Real.exp 1 / (D.mem u).A.GamP ^ 2 * D.what₂.Dstar := by
           rw [← D.Dstar_eq u]
-          first | (field_simp; ring) | field_simp
+          first | (field_simp) | field_simp
   refine ⟨part1, part2, fun L C hR hLC => ?_⟩
   unfold Small
   have hG2 : Real.exp (2 * Real.log (D.mem u).A.GamP) = (D.mem u).A.GamP ^ 2 := by

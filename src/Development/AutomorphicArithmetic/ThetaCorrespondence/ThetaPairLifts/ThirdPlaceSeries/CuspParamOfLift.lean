@@ -89,7 +89,7 @@ theorem exists_isCuspParam_of_liftAt_good_index : ∀ (D : D7) (Rw : RowSide D),
     have gB := (eta_emb _ (hAut.2.1 (GlobalTheory.IndefiniteRowSideFullHecke.CMTypeEmbeddings.embTauBar D τ)).1).2
       (((hAut.2.1 (GlobalTheory.IndefiniteRowSideFullHecke.CMTypeEmbeddings.embTauBar D τ)).2).symm.trans (hL.eta τ).2)
     rw [D.naut.infG_tw _ _ _ _ gA, D.naut.infG_tw _ _ _ _ gB, fA, fB]
-    simp [Multiset.map_map, Function.comp_def]
+    simp [Multiset.map_map]
   refine ⟨D.naut.tw ρ D.naut.etaT, D.naut.csd_tw ρ D.naut.etaT hAut.1.1 (hB1 _ hmemq).2.2, GlobalTheory.RowRegAlg.ralg_of_infG D _ hinf, hsplit,
     fun w hw => ?_, fun w hw hw' => ?_, hinf⟩
   · have hu := (hB5 w hw).1

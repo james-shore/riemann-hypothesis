@@ -223,7 +223,7 @@ variable {V : Type} [AddCommGroup V] [Module K V] [Module (𝓞 K) V] [IsScalarT
 
 theorem lc_exists_smul_mem (M : Submodule (𝓞 K) V) {x : V} (hx : x ∈ Submodule.span K (M : Set V)) :
     ∃ d : 𝓞 K, d ≠ 0 ∧ d • x ∈ M := by
-  first | exact Bl.general_b_fact_second''''''''.goal1 .. | (apply Bl.general_b_fact_second''''''''.goal1 <;> assumption) | (intros; apply Bl.general_b_fact_second''''''''.goal1 <;> assumption) | (apply @Bl.general_b_fact_second''''''''.goal1 <;> assumption) | (intros; apply @Bl.general_b_fact_second''''''''.goal1 <;> assumption) | (apply @Bl.general_b_fact_second''''''''.goal1 <;> first | assumption | infer_instance)
+  first | exact Bl.general_b_fact_second''''''''.goal1 .. | (apply Bl.general_b_fact_second''''''''.goal1 <;> assumption)
 
 end Gen
 

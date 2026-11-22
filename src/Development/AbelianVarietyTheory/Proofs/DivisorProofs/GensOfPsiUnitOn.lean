@@ -199,7 +199,7 @@ theorem gens_fromBase {W R : Type} [CommRing W] [IsDomain W] [CommRing R] [IsDom
       gm (𝟙 (TK V).left) z ⊤ (unitOn (1 : (FractionRing V)ˣ)) = 1 := fun V _ _ z => by
     have e : unitOn (1 : (FractionRing V)ˣ) = 1 := Units.ext (map_one _)
     rw [e]
-    first | exact map_one _ | simp [gm]
+    first | exact map_one _
   obtain ⟨τ₁, hT, hF⟩ := GlobalTheory.USep.tauIn_fromBase_pull W R ρ hρ D₀ D' hD σ 0 Fin.elim0 Fin.elim0 Fin.elim0
     (fun k => k.elim0) (fun a b => ⟨(hσ a b).1, 1, by simp, fun z J hJ => by
       rw [h1, _root_.one_mul]; exact (hσ a b).2 z J hJ⟩) W (RingHom.id W) (fromBase_self D₀ σ fun a b => (hσ a b).1)

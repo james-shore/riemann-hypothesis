@@ -25,7 +25,7 @@ theorem omegaStd_add_nsmul_modEq {h : ℕ} (N : ℕ) (x y b c : Fin h ⊕ Fin h 
   unfold omegaStd
   rw [← Finset.sum_sub_distrib]
   refine Finset.dvd_sum fun i _ => ?_
-  simp only [Pi.add_apply, Pi.smul_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply]
+  simp only [Pi.add_apply, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply]
   exact ⟨-(b (.inl i) * y (.inr i) + x (.inl i) * c (.inr i) + N * b (.inl i) * c (.inr i)) +
     (b (.inr i) * y (.inl i) + x (.inr i) * c (.inl i) + N * b (.inr i) * c (.inl i)), by ring⟩
 
@@ -33,10 +33,10 @@ theorem exists_eq_nsmul_iff {ι : Type*} (N : ℕ) (hN : N ≠ 0) (a : ι → �
     (∃ b, a = N • b) ↔ ∀ j, (N : ℤ) ∣ a j := by
   constructor
   · rintro ⟨b, rfl⟩ j
-    simp [nsmul_eq_mul]
+    simp
   · intro hd
     refine ⟨fun j => a j / N, funext fun j => ?_⟩
-    simp [nsmul_eq_mul, Int.mul_ediv_cancel' (hd j)]
+    simp [Int.mul_ediv_cancel' (hd j)]
 
 theorem symplecticSimilitude_modN : ∀ (h N m : ℕ) (T : (Fin h ⊕ Fin h → ℤ) →ₗ[ℤ] (Fin h ⊕ Fin h → ℤ)), N ≠ 0 →
     m.Coprime N → (∀ x y, omegaStd (T x) (T y) ≡ m * omegaStd x y [ZMOD N]) →

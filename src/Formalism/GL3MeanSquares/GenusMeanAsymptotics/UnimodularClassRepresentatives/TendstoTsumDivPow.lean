@@ -66,7 +66,7 @@ theorem tendsto_tsum_div_pow (μ : Measure E) [μ.IsAddHaarMeasure] {s : Set E} 
       by_cases h : j = i
       · subst h
         simp [e]
-      · simp [e, h, Ne.symm h]
+      · simp [e, h]
     rw [hfun]
   have himg : ∀ n : ℕ, e '' (s ∩ (n : ℝ)⁻¹ • (L : Set E)) =
       e '' s ∩ (n : ℝ)⁻¹ • (Submodule.span ℤ (Set.range (Pi.basisFun ℝ (Module.Free.ChooseBasisIndex ℤ L))) :

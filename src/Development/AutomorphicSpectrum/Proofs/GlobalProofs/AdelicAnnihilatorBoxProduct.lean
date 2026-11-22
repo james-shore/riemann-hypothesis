@@ -32,7 +32,6 @@ private theorem integral_indicator_mul_char_eq_zero {K : Type} [CommRing K] [Mea
       (fun x => (S : Set K).indicator (fun _ => (1 : ℂ)) x * p (x * y)) s]
     congr 1
     funext x
-    beta_reduce
     by_cases hx : x ∈ (S : Set K)
     · have hsx : s + x ∈ (S : Set K) := (S.add_mem_cancel_left hs).mpr hx
       rw [Set.indicator_of_mem hsx, Set.indicator_of_mem hx, add_mul, hadd]

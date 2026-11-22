@@ -182,7 +182,7 @@ theorem exists_type : ∀ (E : Type) [Field E] [NumberField E] (w : HeightOneSpe
       ((hu.unit⁻¹ : (w.adicCompletionIntegers E)ˣ) : w.adicCompletionIntegers E) • vecMulVec wv f
     have hxx : x * x = 0 := by
       simp only [x, Matrix.smul_mul, Matrix.mul_smul, vecMulVec_mul_vecMulVec, hfw, zero_smul]
-      ext i j; simp [vecMulVec_apply]
+      ext i j; simp
     have hyy : (((l : w.adicCompletionIntegers E) ^ m) • x) * (((l : w.adicCompletionIntegers E) ^ m) • x) = 0 := by
       rw [Matrix.smul_mul, Matrix.mul_smul, hxx, smul_zero, smul_zero]
     let h₀ : GL (Fin a) (w.adicCompletionIntegers E) :=
@@ -203,7 +203,7 @@ theorem exists_type : ∀ (E : Type) [Field E] [NumberField E] (w : HeightOneSpe
         refine Matrix.ext fun i j => ?_
         rw [GeneralLinearGroup.map_apply]
         show algebraMap (w.adicCompletionIntegers E) (w.adicCompletion E) ((1 + ((l : w.adicCompletionIntegers E) ^ m) • x) i j) = _
-        by_cases hij : i = j <;> simp [hij, x, p, q, vecMulVec_apply, Matrix.one_apply] <;> ring
+        by_cases hij : i = j <;> simp [hij, x, p, q, vecMulVec_apply] <;> ring
       have hconj : (((g * (e ⟨h₀, hh₀⟩ : K₀.map ι) * g⁻¹ : GL (Fin a) (w.adicCompletion E))) :
           Matrix (Fin a) (Fin a) _) - 1 =
           (g : Matrix (Fin a) (Fin a) _) * vecMulVec p q * ((g⁻¹ : GL _ _) : Matrix _ _ _) := by

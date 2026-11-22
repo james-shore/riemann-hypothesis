@@ -78,7 +78,7 @@ private theorem exists_pow_mul_basis_repr_mem {o Ω : Type} [CommRing o] [Field 
     · by_cases h : q = q'
       · subst h
         simpa using R.one_mem
-      · simp [Pi.single_apply, h]
+      · simp [h]
     · simp [Pi.single_apply]
   choose n₁ hn₁ using hgen
   have h2 : ∀ l l' q' q, ∃ n, f l ^ n * (B l).repr (f l' ^ n₁ l' q' • b l' q') q ∈ R :=
@@ -154,7 +154,7 @@ theorem genDual_span {o Ω : Type} [CommRing o] [Field Ω] [Algebra o Ω] (R₀ 
         · by_cases h : q' = q
           · subst h
             simpa using R₀.one_mem
-          · simp [Pi.single_apply, h]
+          · simp [h]
         · simp [Pi.single_apply]
       choose n₁ hn₁ using hgen
       have hψb : ∀ q, f l ^ Finset.univ.sup n₁ * ψ (b l q) ∈ R := by

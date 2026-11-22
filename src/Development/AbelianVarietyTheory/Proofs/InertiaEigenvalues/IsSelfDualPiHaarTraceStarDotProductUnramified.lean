@@ -94,7 +94,7 @@ theorem dual_intLat (r : ℕ) (ψ : AddChar F ℂ) (hψ : IsStdChar ψ) :
       intro j
       by_cases hj : j = i
       · subst hj; simp [Unram.norm_star (F := F), he]
-      · simp [Pi.single_apply, hj]
+      · simp [hj]
     have := hy _ hx
     rwa [trForm_apply, Pi.star_single, star_star, single_dotProduct] at this
   · intro hy x hx

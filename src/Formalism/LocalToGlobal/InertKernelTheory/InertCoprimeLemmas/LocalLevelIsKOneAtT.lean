@@ -64,7 +64,6 @@ theorem resV_eq_subst [Finite ι] {f : κ → ι} (hf : Function.Injective f) (g
     simp only [resFam_apply hf]
     rw [prod_X_pow_lemma, MvPowerSeries.coeff_monomial, if_pos rfl, smul_eq_mul, mul_one]
   · intro d hd
-    beta_reduce
     by_cases hsub : ↑d.support ⊆ Set.range f
     · obtain ⟨d', rfl⟩ : ∃ d', Finsupp.mapDomain f d' = d :=
         ⟨_, Finsupp.mapDomain_comapDomain f hf d hsub⟩

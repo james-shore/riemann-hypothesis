@@ -289,7 +289,7 @@ theorem elemDeriv_lie_bracket (R : Type*) [CommRing R] (n : ℕ) (i j k l : Fin 
       (if j = k then bmE R n i l else 0) - (if i = l then bmE R n k j else 0) := by
   refine MvPolynomial.derivation_ext fun v => ?_
   rw [Derivation.commutator_apply, Derivation.sub_apply, ite_derivation_apply, ite_derivation_apply]
-  simp only [elemDeriv_X, derivation_apply_ite, map_zero]
+  simp only [elemDeriv_X, derivation_apply_ite]
   by_cases h1 : v.2 = l <;> by_cases h2 : v.2 = j <;> by_cases h3 : j = k <;> by_cases h4 : i = l <;>
     by_cases h5 : v.1 = Fin.last n <;> simp_all
   all_goals (try (intros; simp_all))
@@ -298,7 +298,7 @@ theorem lastRowDeriv_elemDeriv_commute (R : Type*) [CommRing R] (n : ℕ) (l j s
     ⁅bmZ R n l j, bmE R n s t⁆ = 0 := by
   refine MvPolynomial.derivation_ext fun v => ?_
   rw [Derivation.commutator_apply]
-  simp only [elemDeriv_X, lastRowDeriv_X, derivation_apply_ite, map_zero, Derivation.zero_apply]
+  simp only [elemDeriv_X, lastRowDeriv_X, derivation_apply_ite, Derivation.zero_apply]
   by_cases h1 : v.1 = Fin.last n <;> simp [h1]
 
 theorem bmEL_rel (R : Type*) [CommRing R] (n : ℕ) (i j k l : Fin n) :
@@ -331,7 +331,7 @@ theorem bm_ndE_self (R : Type*) [CommRing R] (r n : ℕ) (s : Fin n) : ndE R r n
   by_cases h : v.2 = s
   · subst h
     simp
-  · simp [h, Pi.single_apply, Ne.symm h]
+  · simp [h, Ne.symm h]
 
 theorem bm_ndEul_eq (R : Type*) [CommRing R] (n : ℕ) (s : Fin n) :
     ndEul R (n + 1) n s = bmE R n s s + bmZ R n s s := by
@@ -401,7 +401,7 @@ theorem lastRowDeriv_eq_X_mul_pderiv (R : Type*) [CommRing R] (n : ℕ) (s t : F
     refine MvPolynomial.derivation_ext fun v => ?_
     rw [lastRowDeriv_X, Derivation.smul_apply, pderiv_X, smul_eq_mul]
     obtain ⟨a, b⟩ := v
-    by_cases h1 : b = t <;> by_cases h2 : a = Fin.last n <;> simp [h1, h2, Pi.single_apply]
+    by_cases h1 : b = t <;> by_cases h2 : a = Fin.last n <;> simp [h1, h2]
   rw [this, Derivation.smul_apply, smul_eq_mul]
 
 theorem lastRowDiagDeriv_coeff (R : Type*) [CommRing R] (n : ℕ) (s : Fin n) (F : BP R n)
@@ -589,7 +589,7 @@ theorem bmA_two (c X Y : A) (hX : c * X = X * c) (hY : c * Y = Y * c) (P Q : Pro
         ((if Q then c else 0) - Y) * ((if P then c + 1 else 0) - X) =
       (if P then Y else 0) - (if Q then X else 0) + (X * Y - Y * X) := by
   split_ifs <;>
-    (try simp only [mul_sub, sub_mul, mul_add, add_mul, mul_one, one_mul, mul_zero, zero_mul, sub_zero,
+    (try simp only [mul_sub, sub_mul, mul_add, mul_one, sub_zero,
       zero_sub, neg_mul, mul_neg]) <;>
     (try simp only [← hX, ← hY]) <;> abel
 
@@ -921,8 +921,8 @@ theorem bmC_pderiv_colAddGen_X {R : Type*} [CommRing R] {r n : ℕ} {l j : Fin n
     (v : Fin r × Fin n) :
     pderiv none (colAddGen R l j (X v)) = colAddGen R l j (ndE R r n l j (X v)) := by
   by_cases h : v.2 = j
-  · simp [colAddGen, ndE, mkDerivation_X, h, hlj, Derivation.leibniz, pderiv_X, Pi.single_apply]
-  · simp [colAddGen, ndE, mkDerivation_X, h, pderiv_X, Pi.single_apply]
+  · simp [colAddGen, ndE, mkDerivation_X, h, hlj, Derivation.leibniz, pderiv_X]
+  · simp [colAddGen, ndE, mkDerivation_X, h, pderiv_X]
 
 theorem bmC_pderiv_colAddGen {R : Type*} [CommRing R] {r n : ℕ} {l j : Fin n} (hlj : l ≠ j)
     (g : MvPolynomial (Fin r × Fin n) R) :
@@ -1791,7 +1791,7 @@ theorem bmLift_minor0 (R : Type*) [CommRing R] (n : ℕ) {s : ℕ} (I : Fin s �
 theorem bmF_zmon_single (R : Type*) [CommRing R] (n : ℕ) (t : Fin n) :
     zmon R n (Pi.single t 1) = X (Fin.last n, t) := by
   unfold zmon
-  rw [Finset.prod_eq_single t (fun b _ hb => by simp [Pi.single_apply, hb])
+  rw [Finset.prod_eq_single t (fun b _ hb => by simp [hb])
     (fun h => absurd (Finset.mem_univ t) h)]
   simp
 
@@ -1909,7 +1909,7 @@ theorem bmF_rowAct_emb (R : Type*) [CommRing R] {n : ℕ} (g : Matrix (Fin n) (F
   have : (rowAct R (extM R g)).comp (emb R n) = (emb R n).comp (rowAct R g) := by
     refine MvPolynomial.algHom_ext fun v => ?_
     rw [AlgHom.comp_apply, AlgHom.comp_apply, bmF_emb_X, bmF_rowAct_X_castSucc, rowAction_X_sum]
-    simp [emb, rename_C]
+    simp [emb]
   exact AlgHom.congr_fun this f
 
 theorem bmF_rowAct_var_WH (R : Type*) [CommRing R] {n : ℕ} {B : Type*} [AddCommMonoid B]

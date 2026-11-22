@@ -37,7 +37,7 @@ private theorem T_tensor (h : Fin 4 → FiniteAdeleRing (𝓞 F) F → ℂ) :
   simp only [T, finiteFourier]
   simp_rw [hs]
   rw [integral_const_mul]
-  simp [finiteTensor, Fin.prod_univ_four, finiteFourier]
+  simp [finiteTensor, Fin.prod_univ_four]
   ring
 
 private theorem neg_mem {f : FiniteAdeleRing (𝓞 F) F → ℂ} (hf : f ∈ finiteSchwartzBruhat F) :

@@ -35,7 +35,6 @@ theorem log_norm_integral_formula_unit : PoincareLelongUnitPower := by
   rw [integral_congr_ae hae, integral_add (hI1.const_mul _) hI2]
   first
     | rw [integral_const_mul]
-    | rw [integral_mul_left]
   rw [hE1, hE2, add_zero]
 
 theorem log_norm_integral_formula_snc : PoincareLelongNormalCrossing := by
@@ -71,7 +70,6 @@ theorem log_norm_integral_formula_snc : PoincareLelongNormalCrossing := by
   refine Finset.sum_congr rfl (fun i _ => ?_)
   first
     | rw [integral_const_mul]
-    | rw [integral_mul_left]
   rw [hE i]
 
 end ReciprocityTheory.AnForm.A

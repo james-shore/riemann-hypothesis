@@ -165,7 +165,7 @@ theorem nil_scalar (ψ : End F B) (hσψ : ∀ g, Commute (σ g) ψ) {e : ℕ} (
     W ρW I C ρC f hS hf hsep
   · intro j u
     by_cases hj : j ≤ n
-    · simp only [TU, T', θ', if_pos hj, Module.End.smul_def, Module.End.one_apply, LinearMap.smul_apply]
+    · simp only [TU, T', θ', if_pos hj, Module.End.one_apply, LinearMap.smul_apply]
       rw [map_smul, hiT j hj]
     · simp [TU, T', θ', if_neg hj, LinearMap.baseChange_zero]
   · exact (Commute.one_left _).smul_left _

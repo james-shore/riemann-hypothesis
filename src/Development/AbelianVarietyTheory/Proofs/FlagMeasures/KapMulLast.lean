@@ -58,7 +58,7 @@ theorem sec_mul_neg (hη : η = 1 ∨ η = -1) {β : Fin k → ℂ} (h : nsq β 
         (1 : Matrix (Fin k) (Fin k) ℂ) i l * ((1 : Matrix (Fin k) (Fin k) ℂ) l j - a * (conj (β l) * β j))
         - a * (conj (β i) * β l) * (1 : Matrix (Fin k) (Fin k) ℂ) l j
         + a ^ 2 * conj (β i) * β j * (β l * conj (β l)) := fun l => by ring
-    simp only [Matrix.mul_apply, Fin.sum_univ_castSucc, sec_cc, sec_cl, sec_lc, sec_ll, dd_neg, ← ha, ← hdd, Pi.neg_apply, map_neg, neg_mul_neg, e,
+    simp only [Matrix.mul_apply, Fin.sum_univ_castSucc, sec_cc, sec_cl, sec_lc, dd_neg, ← ha, Pi.neg_apply, map_neg, neg_mul_neg, e,
       Finset.sum_add_distrib, Finset.sum_sub_distrib, ← Finset.mul_sum]
     simp only [Matrix.one_apply, ite_mul, one_mul, zero_mul, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq,
       Finset.sum_ite_eq', Finset.mem_univ, if_true, Fin.castSucc_inj]
@@ -67,7 +67,7 @@ theorem sec_mul_neg (hη : η = 1 ∨ η = -1) {β : Fin k → ℂ} (h : nsq β 
   · have e : ∀ l, ((1 : Matrix (Fin k) (Fin k) ℂ) i l - a * (conj (β i) * β l)) * (η * conj (β l)) =
         (1 : Matrix (Fin k) (Fin k) ℂ) i l * (η * conj (β l)) - a * η * conj (β i) * (β l * conj (β l)) :=
       fun l => by ring
-    simp only [Matrix.mul_apply, Fin.sum_univ_castSucc, sec_cc, sec_cl, sec_lc, sec_ll, dd_neg, ← ha, ← hdd, Pi.neg_apply, map_neg, neg_mul_neg, e,
+    simp only [Matrix.mul_apply, Fin.sum_univ_castSucc, sec_cc, sec_cl, sec_ll, dd_neg, ← ha, ← hdd, Pi.neg_apply, map_neg, neg_mul_neg, e,
       Finset.sum_sub_distrib, ← Finset.mul_sum]
     simp only [Matrix.one_apply, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq,
       Finset.mem_univ, if_true, Fin.castSucc_ne_last, if_false]
@@ -76,14 +76,14 @@ theorem sec_mul_neg (hη : η = 1 ∨ η = -1) {β : Fin k → ℂ} (h : nsq β 
   · have e : ∀ l, β l * ((1 : Matrix (Fin k) (Fin k) ℂ) l j - a * (conj (β l) * β j)) =
         β l * (1 : Matrix (Fin k) (Fin k) ℂ) l j - a * β j * (β l * conj (β l)) :=
       fun l => by ring
-    simp only [Matrix.mul_apply, Fin.sum_univ_castSucc, sec_cc, sec_cl, sec_lc, sec_ll, dd_neg, ← ha, ← hdd, Pi.neg_apply, map_neg, neg_mul_neg, e,
+    simp only [Matrix.mul_apply, Fin.sum_univ_castSucc, sec_cc, sec_lc, sec_ll, dd_neg, ← ha, ← hdd, Pi.neg_apply, map_neg, neg_mul_neg, e,
       Finset.sum_sub_distrib, ← Finset.mul_sum]
     simp only [Matrix.one_apply, mul_ite, mul_one, mul_zero, Finset.sum_ite_eq',
       Finset.mem_univ, if_true, (Fin.castSucc_ne_last _).symm, if_false]
     generalize ∑ j, β j * conj (β j) = n at h3
     linear_combination (β j) * ((a * n - (1 - d)) * h2 + (-a * η) * h3 + (η * (d - 1)) * h4)
   · have e : ∀ l, β l * (η * conj (β l)) = η * (β l * conj (β l)) := fun l => by ring
-    simp only [Matrix.mul_apply, Fin.sum_univ_castSucc, sec_cc, sec_cl, sec_lc, sec_ll, dd_neg, ← ha, ← hdd, Pi.neg_apply, map_neg, neg_mul_neg, e,
+    simp only [Matrix.mul_apply, Fin.sum_univ_castSucc, sec_cl, sec_lc, sec_ll, dd_neg, ← hdd, Pi.neg_apply, map_neg, neg_mul_neg, e,
       ← Finset.mul_sum, Matrix.one_apply_eq]
     linear_combination h3
 

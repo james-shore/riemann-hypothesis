@@ -165,7 +165,7 @@ theorem adLL_top {lev : Fin n → ℕ} {p q : Fin n} (hpq : lev p = lev q) (x : 
     rw [omU, Finset.sum_filter, Fintype.sum_prod_type, Fintype.sum_bool]
     simp [adCL_self]
   unfold adLL
-  simp only [LinearMap.sum_apply, key, Finset.sum_ite_eq', Finset.sum_ite_eq, Finset.mem_univ, if_true]
+  simp only [LinearMap.sum_apply, key, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   rw [← hsum, Finset.sum_smul, ← Finset.sum_filter]
   congr 1
   ext l
@@ -190,7 +190,7 @@ theorem semiCls : SemiCls := by
   rw [FreeAlgebra.lift_ι_apply]
   dsimp only
   rw [if_pos hac]
-  simp only [Bool.false_eq_true, if_false, ite_false]
+  simp only [Bool.false_eq_true, if_false]
   rw [LinearMap.add_apply, liftL_top, adLL_top hac]
   have hk : kA E1 E2 a c v = kF E1 E2 a c v := rfl
   rw [hk, GlobalTheory.CompanionTheory.PairMult.TopK.K_act hl hA hv hac]

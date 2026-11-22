@@ -17,9 +17,6 @@ variable {C : Type} [Field C] (V : VF C)
 theorem valuation_nonneg_iff (a : C) : V.Ge 0 a ↔ 0 ≤ V.v a := by
   first
   | exact Iff.rfl
-  | (simp only [VF.Ge]; done)
-  | (unfold VF.Ge; done)
-  | (simp [VF.Ge])
 
 def Rv : Subring C where
   carrier := {x | V.Ge 0 x}
@@ -63,9 +60,7 @@ theorem mm_max : (mm V).IsMaximal := by
     have hvx : V.v (x : C) = 0 := le_antisymm (not_lt.1 hx') ((valuation_nonneg_iff V x).1 x.2)
     have hy : V.Ge 0 ((x : C)⁻¹) := (valuation_nonneg_iff V _).2 (by
       first
-      | (rw [AddValuation.map_inv, hvx, neg_zero]; done)
-      | (rw [AddValuation.map_inv, hvx, neg_zero]; exact le_rfl)
-      | simp [AddValuation.map_inv, hvx])
+      | (rw [AddValuation.map_inv, hvx, neg_zero]))
     have h1 : (1 : Rv V) = ⟨(x : C)⁻¹, hy⟩ * x := Subtype.ext (by simp [hx0])
     rw [h1]
     exact J.mul_mem_left _ hxJ
@@ -83,8 +78,6 @@ theorem charP_Kr : CharP (Kr V) V.l := by
   rw [SubringClass.coe_natCast, V.4]
   first
   | exact WithTop.coe_lt_coe.2 zero_lt_one
-  | norm_num
-  | simp
 
 variable {V}
 
@@ -139,8 +132,6 @@ theorem fixed_nat (p : ℕ) [hp : Fact p.Prime] [CharP k p] (a : k) (ha : a ^ p 
   have h3 : (insert a (Finset.univ.image φ)).card = p + 1 := by
     first
     | rw [Finset.card_insert_of_notMem hnotin, Finset.card_image_of_injective _ hφ, Finset.card_univ,
-        ZMod.card]
-    | rw [Finset.card_insert_of_not_mem hnotin, Finset.card_image_of_injective _ hφ, Finset.card_univ,
         ZMod.card]
   rw [h3] at h1
   have h2 : (X ^ p - X : k[X]).roots.toFinset.card ≤ p := by

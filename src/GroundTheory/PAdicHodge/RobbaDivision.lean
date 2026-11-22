@@ -446,7 +446,7 @@ theorem weierstrass_division {τ₁ τ₂ : ℝ} (hτ₁ : 0 < τ₁) (hτ : τ�
   set qp := outQuot P H hp
   set rp := outRem P H hp
   have ep : hp = cmul qp P + rp := outDiv_series hτ₂ hs hPH hout hp₂ fun n hn => by
-    simp [hp, trunc, Set.indicator_apply, not_le.2 hn]
+    simp [hp, trunc, not_le.2 hn]
   have qp₂ : ConvergesAt qp τ₂ := convergesAt_outQuot hτ₂ hPH hout hp₂
   have qp_supp : ∀ n, n < 0 → qp n = 0 := fun n hn => outQuot_support n hn
   have qp₁ : ConvergesAt qp τ₁ := qp₂.of_support_ge qp_supp hτ₁ hτ
@@ -467,7 +467,7 @@ theorem weierstrass_division {τ₁ τ₂ : ℝ} (hτ₁ : 0 < τ₁) (hτ : τ�
   set x := outQuot (rev P) (-L) (rev hm)
   set y := outRem (rev P) (-L) (rev hm)
   have ex : rev hm = cmul x (rev P) + y := outDiv_series hτ₁i hrevP hrevPL hrevdom hrm
-    fun n hn => by simp [hm, trunc, Set.indicator_apply, show ¬ (-n < L) by omega]
+    fun n hn => by simp [hm, trunc, show ¬ (-n < L) by omega]
   set qm := rev x
   set rm := rev y
   have em : hm = cmul qm P + rm := by

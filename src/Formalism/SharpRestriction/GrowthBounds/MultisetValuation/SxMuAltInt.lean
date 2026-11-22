@@ -71,9 +71,9 @@ theorem sx_lam_int (vp : K') (hvp : vp ^ (p ^ 2 - 1) = (p : K')) (n : ℕ) :
     · rcases Nat.lt_or_ge j 2 with hj | hj
       · interval_cases j
         · obtain rfl := h1 (by norm_num)
-          simp [hq1, Ne.symm hq1, hp.out.ne_one]
+          simp [Ne.symm hq1]
         · obtain rfl := h1 (by norm_num)
-          simp [hq1, Ne.symm hq1, hp.out.ne_one]
+          simp [hp.out.ne_one]
       · have hn1 : (p ^ 2) ^ j ≠ 1 := fun h => by
           have := hinj (show (p ^ 2) ^ j = (p ^ 2) ^ 0 by rw [h, pow_zero])
           omega
@@ -195,7 +195,7 @@ theorem sx_mu_alt_int (vp : K') (hvp : vp ^ (p ^ 2 - 1) = (p : K')) (μ : PowerS
   choose z hz1 hz2 using sx_lam_int p K' vp hvp
   have hX : PowerSeries.X ∣ μ := PowerSeries.X_dvd_iff.2 h0
   have hl1 : PowerSeries.coeff 1 (lamF p vp) = 1 := by
-    simp [lamF, lgF, Finset.sum_range_succ, Ne.symm hq1, hp.out.ne_one]
+    simp [lamF, lgF, Finset.sum_range_succ, Ne.symm hq1]
   have halt : ∀ m, PowerSeries.coeff m (altF K' p) =
       ((∑ i ∈ range (m + 1), if m = (p ^ 2) ^ i then ((-1 : ℤ)) ^ i else 0 : ℤ) : K') := by
     intro m

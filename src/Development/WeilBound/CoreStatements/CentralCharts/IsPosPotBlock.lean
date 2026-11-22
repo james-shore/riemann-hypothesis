@@ -18,7 +18,7 @@ theorem fs_single_h (k₀ : K) (z : (Σ k, J k) → ℂ) :
   rw [Finset.prod_eq_single k₀]
   · simp [Real.sqrt_eq_rpow]
   · intro k _ hk
-    simp [Pi.single_apply, hk]
+    simp [hk]
   · intro h
     exact absurd (Finset.mem_univ k₀) h
 

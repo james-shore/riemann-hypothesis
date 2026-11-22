@@ -6,10 +6,10 @@ theorem UpperTheory.V.Pa.invEv :
   intro l hl L G G0 h n x hl2 Y _ hT hd
   have hmul : ∀ g g', x.ρX x.Fr (g * g') = x.ρX x.Fr g * x.ρX x.Fr g' := by
     intro g g'
-    simp only [NP.ρX, mat, map_mul, Units.val_mul]
+    simp only [NP.ρX, mat, map_mul]
     exact Matrix.map_mul
   have hone : x.ρX x.Fr 1 = 1 := by
-    simp only [NP.ρX, mat, map_one, Units.val_one]
+    simp only [NP.ρX, mat, map_one]
     exact Matrix.map_one _ (map_zero _) (map_one _)
   have hsurj : Function.Surjective h.p₀ := by
     intro g

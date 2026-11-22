@@ -381,12 +381,6 @@ theorem index_pos (U : Subgroup P) : (0 : ℝ) < (U.index : ℝ) := by
   have hne : U.index ≠ 0 := by
     first
     | exact Subgroup.index_ne_zero_of_finite
-    | exact Subgroup.FiniteIndex.index_ne_zero
-    | (have h := U.card_mul_index
-       have hP : 0 < Nat.card P := Nat.card_pos
-       intro h0
-       rw [h0, mul_zero] at h
-       omega)
   exact_mod_cast Nat.pos_of_ne_zero hne
 
 theorem card_pos (U : Subgroup P) : (0 : ℝ) < (Nat.card U : ℝ) := by
@@ -399,7 +393,6 @@ theorem matLat_one' {d : ℕ} (L : Submodule (𝓞 K) (Fin d → K)) :
   rw [Matrix.mulVecLin_one]
   first
   | exact Submodule.map_id L
-  | (ext x; simp)
 
 theorem local_bound (O : OnObj S P c) (v : HeightOneSpectrum (𝓞 K)) (j : Bs.J) (t : Bs.Tup)
     (hMk : LeafMackey O) (hSup : LeafSup O) (hProj : LeafProj O)
@@ -444,7 +437,6 @@ theorem local_bound (O : OnObj S P c) (v : HeightOneSpectrum (𝓞 K)) (j : Bs.J
     try ring
   first
   | (rw [e]; exact key)
-  | linarith [key, e]
 
 theorem L_eq (O : OnObj S P c) : O.L = O.xe := by
   unfold OnObj.L OnObj.b
@@ -457,8 +449,6 @@ theorem y_bounds (O : OnObj S P c) (hPg : LeafPage O) : 0 ≤ O.y ∧ O.y ≤ 1 
   have h3 : O.f * O.k ≤ (O.f * O.k) ^ 3 := by
     first
     | exact le_self_pow₀ h1 (by norm_num)
-    | exact le_self_pow h1 (by norm_num)
-    | nlinarith [mul_le_mul h1 h1 zero_le_one (by linarith)]
   have hpos : 0 < 4 * (O.f * O.k) ^ 3 := by linarith
   unfold OnObj.y
   constructor
@@ -896,8 +886,6 @@ private theorem exists_place_lemma (p : ℕ) (hp : p.Prime) : ∃ w : HeightOneS
   haveI : Nontrivial (𝓞 K ⧸ Q) := by
     first
     | exact Ideal.Quotient.nontrivial_iff.mpr hQmax.ne_top
-    | exact Ideal.Quotient.nontrivial hQmax.ne_top
-    | exact (Ideal.Quotient.field Q).toNontrivial
   haveI : CharP (𝓞 K ⧸ Q) p := by
     rw [CharP.charP_iff_prime_eq_zero hp]
     have h2 := (Ideal.Quotient.eq_zero_iff_mem).mpr hpQ

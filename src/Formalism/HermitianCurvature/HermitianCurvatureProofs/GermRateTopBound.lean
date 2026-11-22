@@ -31,7 +31,7 @@ theorem germ_sum {E : Type} [Field E] [NumberField E] [IsCMField E] {Wp Wq : Inf
   · unfold mainD
     rw [one_mul, ← Finset.sum_neg_distrib]
     refine Finset.sum_congr rfl fun z hzm => ?_
-    simp only [btOf, if_neg (hz z hzm), one_smul, coJ, ptJ, smul_smul, neg_smul, one_mul]
+    simp only [btOf, if_neg (hz z hzm), coJ, ptJ, smul_smul, neg_smul, one_mul]
 
 end
 

@@ -32,7 +32,6 @@ theorem GlobalTheory.CompanionTheory.Hypotheses₂.Conormal.finite_projective_co
   haveI : IsScalarTower A (A ⧸ I) I.Cotangent := by
     first
     | infer_instance
-    | exact IsScalarTower.of_algebraMap_smul fun _ _ => rfl
   obtain ⟨l, hl⟩ := (Algebra.FormallySmooth.iff_split_injection (R := k) (P := A) (A := A ⧸ I)
     Ideal.Quotient.mk_surjective).mp hQ
   have hsurj : Function.Surjective (algebraMap A (A ⧸ I)) := Ideal.Quotient.mk_surjective
@@ -48,8 +47,6 @@ theorem GlobalTheory.CompanionTheory.Hypotheses₂.Conormal.finite_projective_co
     simp only [LinearMap.comp_apply, LinearMap.id_apply] at h
     first
     | (simp only [s, i, LinearMap.comp_apply, LinearMap.extendScalarsOfSurjective_apply,
-        LinearEquiv.coe_coe, LinearMap.id_apply, h, LinearEquiv.apply_symm_apply]; done)
-    | (show e (l (KaehlerDifferential.kerCotangentToTensor k A (A ⧸ I) (e.symm x))) = x
-       rw [h, LinearEquiv.apply_symm_apply])
+        LinearEquiv.coe_coe, LinearMap.id_apply, h, LinearEquiv.apply_symm_apply])
   refine ⟨Module.Finite.of_surjective s fun x => ⟨i x, ?_⟩, Module.Projective.of_split i s hsi⟩
   simpa only [LinearMap.comp_apply, LinearMap.id_apply] using LinearMap.congr_fun hsi x

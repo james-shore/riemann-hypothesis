@@ -47,7 +47,7 @@ private theorem finrank_skew {K : Type} [Field K] {n : ℕ} (h2 : (2 : K) ≠ 0)
       map_smul' := by
         intro c X
         funext p
-        simp [Matrix.smul_mul]
+        simp
       invFun := fun f => ⟨M f * T, by
         rw [hW, Matrix.mul_assoc, hTS, Matrix.mul_one]
         exact hskew f⟩

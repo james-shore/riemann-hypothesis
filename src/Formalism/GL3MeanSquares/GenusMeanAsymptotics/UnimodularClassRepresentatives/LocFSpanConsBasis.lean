@@ -194,7 +194,7 @@ theorem akCount_split (hK : Formalism.HermitianLatticesTheory.IsCMUnram K) (hF :
       Formalism.HermitianLattices.Ext.L3.PinE.HH (H'.map (Ideal.Quotient.mk (extP K 𝔭 ^ k))) := by
     ext p q
     rcases p with u | i <;> rcases q with u' | j <;>
-      simp [Formalism.HermitianLattices.Ext.L3.PinE.HH, Matrix.one_apply]
+      simp [Formalism.HermitianLattices.Ext.L3.PinE.HH]
 
   have htr : ∀ x : Unit ⊕ Fin (finrank K V') → 𝓞 K ⧸ extP K 𝔭 ^ k,
       star x ⬝ᵥ (Formalism.HermitianLattices.Ext.L3.PinE.HH (H'.map (Ideal.Quotient.mk (extP K 𝔭 ^ k))) *ᵥ x) = 1 →

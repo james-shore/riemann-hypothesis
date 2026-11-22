@@ -26,7 +26,7 @@ private lemma single_vecMul_Hpk_eI (k r : ℕ) (a : Fin r) :
   rw [single_one_vecMul]
   change _root_.Formalism.QuantumDeterminants.Hpk k r (_root_.Formalism.QuantumDeterminants.eI k r a) j = (Pi.single (_root_.Formalism.QuantumDeterminants.esI k r a) (1 : ℂ) : _ → ℂ) j
   unfold _root_.Formalism.QuantumDeterminants.Hpk _root_.Formalism.QuantumDeterminants.eI _root_.Formalism.QuantumDeterminants.esI
-  simp only [Pi.single_apply, Fin.ext_iff, Fin.val_mk]
+  simp only [Pi.single_apply, Fin.ext_iff]
   have ha := a.isLt
   split_ifs <;> first | rfl | (exfalso; omega)
 

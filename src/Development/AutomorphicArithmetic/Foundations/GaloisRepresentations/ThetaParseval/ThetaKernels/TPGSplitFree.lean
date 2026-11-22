@@ -174,7 +174,6 @@ theorem split_formula_k (B : Base F E) (M : Model σ X W) (χX χW : Chr F E) (o
   have hm : ∀ (ψ' : (Fin n × Fin d → Fv F v) → ℂ) y, (LinearMap.funLeft ℂ ℂ (mulH_pk P⁻¹ Q⁻¹) ∘ₗ ι) ψ' y = ι ψ' ((P⁻¹).1 * y * (Q⁻¹).1) := fun _ _ => rfl
   have hy : ι φ'' Y = (LinearMap.funLeft ℂ ℂ (mulH_pk P⁻¹ Q⁻¹) ∘ₗ ι) φ'' (P.1 * Y * Q.1) := by
     rw [hm]
-    congr 1
     simp only [Matrix.mul_assoc, Units.mul_inv, Matrix.mul_one]
     rw [← Matrix.mul_assoc, Units.inv_mul, Matrix.one_mul]
   have c1 : (g₀⁻¹).1 = (P⁻¹).1 * g₁.1ᵀ * P.1 := by rw [cg]; rfl

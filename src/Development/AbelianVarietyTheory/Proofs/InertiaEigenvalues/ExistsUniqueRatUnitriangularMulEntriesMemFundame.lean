@@ -73,7 +73,7 @@ theorem row_exists (w : Matrix (Fin n) (Fin n) (Ad E))
   intro m
   induction m with
   | zero =>
-    exact ⟨Pi.single i 1, fun k hk => by simp [Pi.single_apply, hk.ne], by simp,
+    exact ⟨Pi.single i 1, fun k hk => by simp [hk.ne], by simp,
       fun j _ hj => absurd hj (Nat.not_lt_zero _)⟩
   | succ m ih =>
     obtain ⟨r, h0, h1, h2⟩ := ih
@@ -82,15 +82,15 @@ theorem row_exists (w : Matrix (Fin n) (Fin n) (Ad E))
       obtain ⟨c, hc, -⟩ := GroundTheory.Global.existsUnique_sub_mem_fundamentalSet E
         (∑ k, algebraMap E (Ad E) (r k) * w k jm)
       refine ⟨r - Pi.single jm c, fun k hk => ?_, ?_, fun j hij hj => ?_⟩
-      · simp [h0 k hk, Pi.single_apply, (hk.trans hijm).ne]
-      · simp [h1, Pi.single_apply, hijm.ne]
+      · simp [h0 k hk, (hk.trans hijm).ne]
+      · simp [h1, hijm.ne]
       · have hsum : ∑ k, algebraMap E (Ad E) ((r - Pi.single jm c : Fin n → E) k) * w k j =
             ∑ k, algebraMap E (Ad E) (r k) * w k j - algebraMap E (Ad E) c * w jm j := by
           simp only [Pi.sub_apply, map_sub, sub_mul, Finset.sum_sub_distrib]
           congr 1
           rw [Finset.sum_eq_single jm]
           · simp
-          · intro k _ hk; simp [Pi.single_apply, hk]
+          · intro k _ hk; simp [hk]
           · simp
         rw [hsum]
         rcases Nat.lt_succ_iff_lt_or_eq.1 hj with hj | hj

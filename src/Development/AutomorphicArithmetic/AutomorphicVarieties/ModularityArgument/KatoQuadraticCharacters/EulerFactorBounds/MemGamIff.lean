@@ -126,7 +126,7 @@ private theorem trM_eq [IsAlgClosure ℚ Ω] (X : Tower Ω ε) (l : ℕ) [Fact l
   rw [Matrix.SpecialLinearGroup.coe_mul, ← Tower.act_act Ω ε X l _ _ (by simp) (by simp)]
   congr 1
   funext u
-  simp [Tower.act, sec, mZl, en, Matrix.mulVec, dotProduct, Fin.sum_univ_two]
+  simp [Tower.act, sec, mZl, en]
 
 end UpperTheory.V.Z.Kato.Nb
 

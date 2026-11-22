@@ -308,7 +308,6 @@ theorem rep_of_isDSHpk {ε : Fin (2 * r + k + 1) → Bool} {lam : Fin (2 * r + k
   have hd := (Matrix.isUnit_iff_isUnit_det P).1 hP
   have e : trRep (fun g => σ (P⁻¹ * g * P)) P = σ := funext fun g => by
     unfold trRep
-    congr 1
     simp only [← Matrix.mul_assoc, nonsing_inv_mul _ hd, Matrix.one_mul]
     rw [Matrix.mul_assoc, nonsing_inv_mul _ hd, Matrix.mul_one]
   exact ⟨hc, e ▸ isURepOn_trRep (ε := ε) hP hG hU, e ▸ isIrredOn_trRep (ε := ε) hP hG hI⟩

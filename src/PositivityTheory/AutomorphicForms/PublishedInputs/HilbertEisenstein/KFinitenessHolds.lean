@@ -79,7 +79,7 @@ theorem rels (k : UpperTheory.V.TR.Kinf F 2) (w : InfinitePlace F) :
   have b1 := e _ _ hB 0 0
   have b2 := e _ _ hB 1 1
   have b3 := e _ _ hB 0 1
-  simp [Matrix.mul_apply, Fin.sum_univ_two, Matrix.one_apply] at a1 a2 a3 b1 b2 b3
+  simp [Matrix.mul_apply, Fin.sum_univ_two] at a1 a2 a3 b1 b2 b3
   exact ⟨a1, a2, a3, b1, b2, b3⟩
 
 theorem arch_rot (k : UpperTheory.V.TR.Kinf F 2) (X Y : UpperTheory.V.TR.Rinf F) :

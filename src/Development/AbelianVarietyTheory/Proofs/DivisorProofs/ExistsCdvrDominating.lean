@@ -22,7 +22,6 @@ theorem exists_cdvr_dominating : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLoc
     have hc : IsAdicComplete (IsLocalRing.maximalIdeal (PowerSeries R)) (PowerSeries R) := by
       first
       | infer_instance
-      | (rw [PowerSeries.maximalIdeal_eq_span_X]; infer_instance)
     have hl : IsLocalHom (PowerSeries.C (R := R)) := by
       constructor
       intro a ha

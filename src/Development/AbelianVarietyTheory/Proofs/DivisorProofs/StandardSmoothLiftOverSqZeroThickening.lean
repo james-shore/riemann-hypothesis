@@ -22,7 +22,7 @@ theorem mvPolynomial_map_pderiv_lift {κ R R₀ : Type} [CommRing R] [CommRing R
     congr 1
     by_cases h : i = j
     · subst h; simp
-    · simp [Pi.single_apply, Ne.symm h]
+    · simp [Ne.symm h]
 
 theorem isUnit_of_isUnit_map_of_sqZero_ker {A A₀ : Type} [CommRing A] [CommRing A₀] (p : A →+* A₀)
     (hp : Function.Surjective p) (K : Ideal A) (hK : K ^ 2 = 0) (hker : ∀ a, p a = 0 → a ∈ K)

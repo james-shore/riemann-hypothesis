@@ -310,7 +310,7 @@ theorem exists_diag_riem {U : Formalism.L2.PjFree.Unf Xo c σ r} (hσ : Formalis
   generalize (((2 * ((ρ k τ) (-(U.X k).ξ0)).im : ℝ) : ℂ)) = dd
   clear hsupp key hcol hAv hiso hh hex hper him hD hf hT hder hH hPu
   have hi : ∀ j j' : Fin (Dw.mult τ), W.e.symm ⟨τ, j⟩ = W.e.symm ⟨τ, j'⟩ ↔ j = j' := fun j j' => by simp
-  simp [hermForm, smul_mulVec, sum_dotProduct, dotProduct_sum, star_sum, Pi.single_apply, hi, mul_apply, mul_comm]
+  simp [hermForm, smul_mulVec, dotProduct_sum, star_sum, Pi.single_apply, hi, mul_apply, mul_comm]
 
 end GlobalTheory.HodgeSmooth
 

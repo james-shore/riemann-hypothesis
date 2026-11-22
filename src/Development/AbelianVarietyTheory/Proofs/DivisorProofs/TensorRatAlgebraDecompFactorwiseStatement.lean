@@ -10,4 +10,4 @@ theorem _root_.GlobalTheory.T.tensor_rat_algebra_decomp_factorwise : ∀ (S F B 
       (∀ b : B, Φ ((1 : S) ⊗ₜ[ℚ] b) = fun i => (1 : L i) ⊗ₜ[F] b) ∧
       (∀ z : S ⊗[ℚ] F, Φ (Algebra.TensorProduct.map (AlgHom.id S S) (IsScalarTower.toAlgHom ℚ F B) z) =
         fun i => algebraMap (L i) (L i ⊗[F] B) (ψ z i)) := by
-  first | (exact @GlobalTheory.tensor_decomp_factorwise) | (exact GlobalTheory.tensor_decomp_factorwise) | (intros; apply GlobalTheory.tensor_decomp_factorwise  <;> assumption)
+  first | (exact @GlobalTheory.tensor_decomp_factorwise)

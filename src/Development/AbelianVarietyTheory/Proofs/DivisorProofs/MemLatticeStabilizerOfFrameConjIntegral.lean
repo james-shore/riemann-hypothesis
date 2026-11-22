@@ -90,9 +90,9 @@ theorem mem_KAt_of_frame : ∀ (F E : Type) [Field F] [NumberField F] [Field E] 
     ext i j
     by_cases hij : i = j
     · subst hij
-      simp [Matrix.one_apply, map_sub]
+      simp [map_sub]
       ring
-    · simp [Matrix.one_apply, hij]
+    · simp [hij]
   rw [hm]
   ext i j
   simp only [Matrix.smul_apply, Matrix.map_apply, Matrix.zero_apply]

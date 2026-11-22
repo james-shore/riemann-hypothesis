@@ -196,7 +196,7 @@ theorem isAlgebraic_of_infPart_eq_one : ∀ {D : D7} {θ : InfFam D} {χ : (Form
     exact isAlgebraic_unit_zpow (GlobalTheory.isAlgebraic_embedding_apply _ _) _
   have e2 : χ x ^ (h * m) = χ y ^ m := by
     have := congrArg (fun g => χ g ^ m) e
-    simp only [map_mul, mul_pow, hum u hu, mul_one, hχ.2 k, one_pow, map_pow] at this
+    simp only [map_mul, mul_pow, hum u hu, mul_one, hχ.2 k, map_pow] at this
     rw [pow_mul]
     exact this
   refine IsAlgebraic.of_pow (Nat.mul_pos hh hm) ?_

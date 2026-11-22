@@ -201,8 +201,7 @@ theorem _root_.GlobalTheory.OrbitScalar.exists_smul_of_orbits : ∀ (E : Type) [
             rw [(hb τ).2 k i0 (Fin.lt_def.mpr (Nat.pos_of_ne_zero fun h0 => hk (Fin.ext h0))),
               mul_zero]) (by simp)
         rw [hR] at h
-        simp only [Matrix.mulVec, dotProduct, col, Pi.smul_apply, smul_eq_mul, Matrix.of_apply,
-          Matrix.mul_apply] at h ⊢
+        simp only [Matrix.mulVec, dotProduct, col, Pi.smul_apply, smul_eq_mul] at h ⊢
         rw [h, mul_comm]
         rfl
       rw [hcol]

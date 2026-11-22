@@ -265,7 +265,7 @@ lemma translate_pullbackSection {q n : ℕ} {π : Vsp X.dim →ₗ[ℂ] Vsp X.di
     intro j
     have h := hs.2 (fun _ => π (k j)) (fun _ => hk j) (fun _ => π ((v - k) j))
     have e1 : (fun _ : Fin 1 => π ((v - k) j)) + (fun _ => π (k j)) = (fun _ => π (v j)) := by
-      funext; simp [← map_add]
+      funext; simp
     rw [e1] at h
     simp only [HC, Finset.univ_unique, Finset.sum_singleton, Finset.prod_singleton, hπ.2.2.1,
       pow_one] at h

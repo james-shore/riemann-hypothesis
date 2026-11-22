@@ -60,8 +60,7 @@ private theorem small_lemma_5 (hcont : Continuous (algebraMap ℚ_[l] K)) (y : K
     ∃ N : ℕ, ∀ k ≥ N, algebraMap ℚ_[l] K ((l : ℚ_[l]) ^ k) * y ∈ 𝒪[K] := by
   have h1 : Filter.Tendsto (fun k : ℕ => (l : ℚ_[l]) ^ k) Filter.atTop (nhds 0) :=
     tendsto_pow_atTop_nhds_zero_of_norm_lt_one (by first
-      | exact Padic.norm_p_lt_one
-      | (rw [Padic.norm_p]; exact inv_lt_one_of_one_lt₀ (by exact_mod_cast (Fact.out : l.Prime).one_lt)))
+      | exact Padic.norm_p_lt_one)
   have h2 : Filter.Tendsto (fun k : ℕ => algebraMap ℚ_[l] K ((l : ℚ_[l]) ^ k) * y)
       Filter.atTop (nhds 0) := by
     have := ((hcont.tendsto 0).comp h1).mul_const y
@@ -109,8 +108,7 @@ theorem exists_ne_zero (hcont : Continuous (algebraMap ℚ_[l] K)) : ∃ x : K, 
     exact isCompact_iff_compactSpace.2 h
   obtain ⟨C, hC⟩ := hcpt.exists_bound_of_continuousOn hT.continuousOn
   have hl1 : ‖(l : ℚ_[l])‖ < 1 := (by first
-      | exact Padic.norm_p_lt_one
-      | (rw [Padic.norm_p]; exact inv_lt_one_of_one_lt₀ (by exact_mod_cast (Fact.out : l.Prime).one_lt)))
+      | exact Padic.norm_p_lt_one)
   have hpos : (0 : ℝ) < max C 1 := lt_of_lt_of_le one_pos (le_max_right C 1)
   obtain ⟨n, hn⟩ := exists_pow_lt_of_lt_one (inv_pos.2 hpos) hl1
   refine ⟨algebraMap ℚ_[l] K ((l : ℚ_[l]) ^ n), ?_, fun b => ?_⟩

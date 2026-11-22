@@ -40,7 +40,7 @@ theorem lowerOrder_normal {N : ℕ} (hN : 1 ≤ N) {M : ℕ → Matrix m m F} (h
   top := by
     have h1 : N + 1 ≠ N := by omega
     have h2 : N ≠ 0 := by omega
-    simp [lowerOrder, h1, h2, hM.top]
+    simp [lowerOrder, h2, hM.top]
   small n hn i j := by
     have h1 : n ≠ N := by omega
     have h2 : n + 1 ≠ N := by omega

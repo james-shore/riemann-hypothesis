@@ -271,7 +271,6 @@ theorem UpperTheory.V.Z.Sym.Unl.propEC :
       rw [hfcoef _ hnp]
       linear_combination hs
     · linear_combination hs
-  beta_reduce
   rw [hkey]
   refine small_mul ι hc ?_
   rw [map_neg, norm_neg]

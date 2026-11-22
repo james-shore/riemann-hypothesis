@@ -64,8 +64,7 @@ theorem isCone_pull_of_surjective : ∀ (O : Type) [CommRing O] [IsDedekindDomai
     hsum.trans (Fintype.sum_of_injective t t.injective _ _ (fun j hj => by simp [hout j hj]) fun _ => rfl).symm
   have hvan : ∀ k y, r y = 0 → σ (t k) y y = 0 := fun k y hy => by
     have h1 := LinearMap.congr_fun₂ hsum' y y
-    simp only [LinearMap.sum_apply, LinearMap.smul_apply, toReal_apply, pull_apply, hy, map_zero, LinearMap.zero_apply,
-      Int.cast_zero, smul_zero, smul_eq_mul, mul_zero, Finset.sum_const_zero] at h1
+    simp only [LinearMap.sum_apply, LinearMap.smul_apply, toReal_apply, pull_apply, hy, map_zero, Int.cast_zero, smul_eq_mul, mul_zero, Finset.sum_const_zero] at h1
     have h2 := (Finset.sum_eq_zero_iff_of_nonneg fun k _ => mul_nonneg (hc (t k))
       (by exact_mod_cast hσ.nonneg (t k) y : (0 : ℝ) ≤ (σ (t k) y y : ℝ))).1 h1.symm k (Finset.mem_univ _)
     exact_mod_cast (mul_eq_zero.1 h2).resolve_left (hpos k)

@@ -179,8 +179,8 @@ theorem prodQ_update (Q : Fin n → MvPolynomial ι k) (b0 : Fin n) (y : MvPolyn
   unfold prodQ
   rw [← Finset.mul_prod_erase _ _ (Finset.mem_univ b0)]
   congr 1
-  · simp [Function.update_apply]
-  · exact Finset.prod_congr rfl fun b hb => by simp [Function.update_apply, Finset.ne_of_mem_erase hb]
+  · simp
+  · exact Finset.prod_congr rfl fun b hb => by simp [Finset.ne_of_mem_erase hb]
 
 theorem prodQ_eq (Q : Fin n → MvPolynomial ι k) (b0 : Fin n) :
     prodQ Q = colE b0 (Q b0) * ∏ b ∈ univ.erase b0, colE b (Q b) := by

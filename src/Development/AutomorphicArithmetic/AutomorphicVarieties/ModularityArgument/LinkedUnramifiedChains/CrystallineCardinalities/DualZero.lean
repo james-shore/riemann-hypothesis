@@ -230,7 +230,7 @@ theorem UpperTheory.V.Z.J.dualZero :
     have htheta : ∀ (Y : Matrix (Fin 3) (Fin 3) (Ok l O k)) (i j : Fin 3),
         thetaLie Y i j = -Y j.rev i.rev := by
       intro Y i j
-      fin_cases i <;> fin_cases j <;> simp [thetaLie, Jmat, Matrix.mul_apply, Fin.sum_univ_three] <;> rfl
+      fin_cases i <;> fin_cases j <;> simp [thetaLie, Jmat, Matrix.mul_apply, Fin.sum_univ_three]
     have hc : ∀ Y : Matrix (Fin 3) (Fin 3) (Ok l O k), adK B k F.c Y = thetaLie Y := by
       intro Y
       have h1 : (B.r F.c).left = 1 := Units.ext hB.atc

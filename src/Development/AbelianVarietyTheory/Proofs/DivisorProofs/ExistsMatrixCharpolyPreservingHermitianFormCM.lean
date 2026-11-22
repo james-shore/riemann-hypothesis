@@ -51,7 +51,7 @@ theorem vandermonde_diag_herm {n : ℕ} (A : Matrix (Fin n) (Fin n) ℂ) (l : Fi
             rw [trace_mul_comm, mul_assoc, hVinv', mul_one]
     rw [of_apply, htr, diagonal_pow, diagonal_pow, diagonal_mul_diagonal, trace_diagonal, mul_apply]
     refine Finset.sum_congr rfl fun k _ => ?_
-    simp [V, D', vandermonde_apply, conjTranspose_apply, hconj, inv_pow]
+    simp [V, vandermonde_apply, conjTranspose_apply, hconj, inv_pow]
   · rw [det_mul, det_conjTranspose]
     exact mul_ne_zero (by simpa using hVd) hVd
   · calc Aᴴ * (Vᴴ * V) * A = (V * A)ᴴ * (V * A) := by

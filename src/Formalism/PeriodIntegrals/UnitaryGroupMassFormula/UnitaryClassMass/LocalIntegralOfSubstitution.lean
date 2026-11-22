@@ -21,11 +21,6 @@ theorem local_integral_of_substitution : LocInt := by
       intro x
       first
       | exact HeightOneSpectrum.valuedAdicCompletion_eq_valuation' t x
-      | exact HeightOneSpectrum.valuedAdicCompletion_eq_valuation' x
-      | exact HeightOneSpectrum.valuedAdicCompletion_eq_valuation t x
-      | exact HeightOneSpectrum.valuedAdicCompletion_eq_valuation x
-      | simp [HeightOneSpectrum.valuedAdicCompletion_eq_valuation']
-      | rfl
     have hv : t.valuation F (z / (c : F)) ≤ 1 := by
       rw [HeightOneSpectrum.mem_adicCompletionIntegers] at hu'
       rw [← e]

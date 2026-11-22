@@ -50,7 +50,6 @@ theorem weight_difference_le_ell [CharZero (KK O)] [FiniteDimensional (KK O) V] 
       have h2 := LinearMap.congr_fun h1 w
       first
         | simp only [LinearMap.sub_apply, Module.End.mul_apply] at h2
-        | simp only [LinearMap.sub_apply, LinearMap.mul_apply] at h2
       rw [← h2]
       abel
     have hps : ∀ (r : ℕ) (w : V), E c a (((E c a) ^ r) w) = ((E c a) ^ (r + 1)) w := by
@@ -70,7 +69,7 @@ theorem weight_difference_le_ell [CharZero (KK O)] [FiniteDimensional (KK O) V] 
       congr 1
       have hω : (nu + (j : ℤ) • rootW a c + (r : ℤ) • rootW c a) a -
           (nu + (j : ℤ) • rootW a c + (r : ℤ) • rootW c a) c = (N : ℤ) - 2 * (r : ℤ) := by
-        simp [rootW, Pi.single_apply, hac, Ne.symm hac]
+        simp [rootW, hac, Ne.symm hac]
         omega
       rw [← hω]
       push_cast

@@ -95,7 +95,7 @@ theorem borel_tup : BorelSpace (Fin r → Fin m → AE D) := by
 
 theorem hR_tup (V : HSp D) (x y : Mx D V.rank r) (a b : Fin r) :
     hR (AF D.host.F) D.sp.cm.sig V.gram (fun i => x i a) (fun i => y i b) = GlobalTheory.StdUnn.inner V x y a b := by
-  simp only [hR, Formalism.UG.hform, JR, GlobalTheory.StdUnn.inner, Matrix.mul_apply, Finset.mul_sum, Finset.sum_mul]
+  simp only [hR, Formalism.UG.hform, JR, GlobalTheory.StdUnn.inner, Matrix.mul_apply, Finset.mul_sum]
   refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
   change _ = (cA D (x i a)) * (incA D (V.gram i j) * y j b)
   rw [mul_assoc]

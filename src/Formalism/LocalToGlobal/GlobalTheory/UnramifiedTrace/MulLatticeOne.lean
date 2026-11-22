@@ -15,7 +15,7 @@ theorem mul_lattice_one {E : Type} [Field E] [NumberField E] {n : ℕ} (L : Subm
   · rintro ⟨y, hy, rfl⟩
     simpa [Matrix.one_mulVec] using hy
   · intro hx
-    exact ⟨x, hx, by simp [Matrix.one_mulVec]⟩
+    exact ⟨x, hx, by simp⟩
 
 variable {D : D7} {u : D.what₂.Word}
 

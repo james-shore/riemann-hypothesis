@@ -54,7 +54,7 @@ private theorem eigvec {k : Type} [Field k] (M : GL (Fin 3) k) (X : Matrix (Fin 
   set A := (M : Matrix (Fin 3) (Fin 3) k) * X * ((M⁻¹ : GL (Fin 3) k) : Matrix (Fin 3) (Fin 3) k) with hA
   set Mi := ((M⁻¹ : GL (Fin 3) k) : Matrix (Fin 3) (Fin 3) k)
   have hMi : Mi * (M : Matrix (Fin 3) (Fin 3) k) = 1 := by
-    simp [Mi, ← Units.val_mul]
+    simp [Mi]
   have hXM : X * Mi = Mi * A := by
     rw [hA, ← Matrix.mul_assoc, ← Matrix.mul_assoc, hMi, Matrix.one_mul]
   have hcol : A *ᵥ Pi.single 0 1 = a • Pi.single 0 1 := by

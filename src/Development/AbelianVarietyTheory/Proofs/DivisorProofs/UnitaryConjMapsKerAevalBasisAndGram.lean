@@ -18,8 +18,6 @@ theorem unitary_conj_ker_basis_gram {K : Type} [Field K] (σ : K →+* K) {n : �
   | exact @_root_.GlobalTheory.ConjugateAlgebraLemmas.main
   | exact _root_.GlobalTheory.ConjugateAlgebraLemmas.main
   | (apply _root_.GlobalTheory.ConjugateAlgebraLemmas.main <;> assumption)
-  | (intros; apply _root_.GlobalTheory.ConjugateAlgebraLemmas.main <;> assumption)
-  | (intros; apply @_root_.GlobalTheory.ConjugateAlgebraLemmas.main <;> first | assumption | infer_instance)
   | (intros; exact _root_.GlobalTheory.ConjugateAlgebraLemmas.main ..)
 
 end GlobalTheory

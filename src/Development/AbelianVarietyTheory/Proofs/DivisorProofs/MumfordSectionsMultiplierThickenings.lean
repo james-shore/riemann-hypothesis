@@ -32,8 +32,5 @@ theorem main : ∀ (R : Type) [CommRing R] [IsDomain R] [IsLocalRing R], Base R 
     have hk0 : 0 < k := by omega
     first
       | (rw [Scheme.basicOpen_pow _ _ hk0]; exact hy2 i i' hyW)
-      | (rw [Scheme.basicOpen_pow _ hk0]; exact hy2 i i' hyW)
-      | (rw [Scheme.basicOpen_pow _ _ _ hk0]; exact hy2 i i' hyW)
-      | (simpa [Scheme.basicOpen_pow, hk0] using hy2 i i' hyW)
 
 end GlobalTheory.MumMult

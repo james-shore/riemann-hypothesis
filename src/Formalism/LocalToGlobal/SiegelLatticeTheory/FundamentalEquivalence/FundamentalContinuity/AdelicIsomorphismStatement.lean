@@ -35,7 +35,6 @@ theorem exists_beta : ∃ β : I.E, β ∈ Formalism.UG.intOE I.E ∧ β ∉ Set
   have hle : Module.finrank I.F I.E ≤ 1 := by
     first
       | exact finrank_le_one (1 : I.E) hw
-      | exact Module.finrank_le_one (1 : I.E) hw
   have h2 := I.cm.deg2
   omega
 
@@ -194,7 +193,7 @@ theorem lat_gen (i : Fin I.n) : (Pi.single i (mm I : EAf I) : Fin I.n → EAf I)
     by_cases hk : k = i
     · subst hk
       simp
-    · simp [Pi.single_apply, hk]
+    · simp [hk]
   rw [h]
   exact Submodule.subset_span ⟨⟨_, mm_single I i⟩, rfl⟩
 
@@ -338,7 +337,6 @@ private theorem thetaV_tmul_lemma_2 (v : InfinitePlace I.F) (a : Formalism.MainN
     thetaV I v (a ⊗ₜ[I.F] b) = evV I v a * I.φ v b := by
   first
     | rfl
-    | simp [thetaV]
 
 theorem alg_theta (v : InfinitePlace I.F) (y : TT I) :
     thetaV I v y = evV I v ((alg_B I).repr y 0) + evV I v ((alg_B I).repr y 1) * I.φ v (beta I) := by
@@ -482,7 +480,6 @@ theorem top_place_small (v : HeightOneSpectrum (𝓞 F)) (t : Set (v.adicComplet
   rw [ha']
   first
     | exact WithZero.exp_lt_exp.mpr hK
-    | exact WithZero.coe_lt_coe.mpr (Multiplicative.ofAdd_lt.mpr hK)
 
 theorem top_nhds_basis (U : Set (Af F)) (hU : U ∈ nhds (0 : Af F)) :
     ∃ N : ℕ, 1 ≤ N ∧ ∀ u ∈ Formalism.UG.intAd F, (N : Af F) * u ∈ U := by
@@ -520,7 +517,6 @@ theorem top_nhds_basis (U : Set (Af F)) (hU : U ∈ nhds (0 : Af F)) :
     ext v
     first
       | rfl
-      | simp [x]
   have hxin : x ∈ S.pi t := by
     intro v hv
     apply hK v (x v)
@@ -811,11 +807,9 @@ theorem top_real_bound (v : InfinitePlace I.F) (y : TT I) (i : Fin 2) :
     rw [he]
     first
       | simp [Complex.norm_real]
-      | simp
   have himle : |θ.im| ≤ ‖θ‖ := by
     first
       | exact Complex.abs_im_le_norm θ
-      | exact Complex.abs_im_le_abs θ
   have h1 : ‖e1‖ * |b.im| ≤ ‖θ‖ := by
     rw [hn1, ← abs_mul, ← him]
     exact himle
@@ -962,7 +956,7 @@ def FmInf (v : InfinitePlace I.F) : HAd I →* Formalism.REAL.UJ (I.ε v) :=
       simp [ofHAInf, Pu, Formalism.UG.bc, matHom_apply, Matrix.coe_units_inv])
 
 theorem FmInf_val (v : InfinitePlace I.F) (h : HAd I) : uMat (FmInf I v h) = ofHAInf I h v := by
-  simp [FmInf, Pu, Formalism.UG.bc, matHom_apply, Matrix.coe_units_inv, ofHAInf, MulAut.conj_apply, mul_assoc,
+  simp [FmInf, Pu, Formalism.UG.bc, matHom_apply, Matrix.coe_units_inv, ofHAInf, mul_assoc,
     Formalism.MainNotions.S.uMat]
 
 def FmF : HAd I →* I.Gf :=
@@ -1118,7 +1112,7 @@ theorem Fm_surjective : Function.Surjective (Fm I) := by
           (thetaV I v) = (Z v)ᴴ := by
         rw [← hθ1 v]
         ext a b
-        simp [Formalism.UG.cT, Matrix.conjTranspose_apply, thetaV_sigR, Complex.star_def]
+        simp [Formalism.UG.cT, Matrix.conjTranspose_apply, thetaV_sigR]
       have hJ : (Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.JR (Formalism.MainNotions.GlobalTheoryTheory.GenusMassVolumes.AF I.F) I.J).map (thetaV I v) =
           I.J.map (I.φ v) := by
         ext a b
@@ -1173,7 +1167,6 @@ theorem continuous_bc {R : Type} [CommRing R] [TopologicalSpace R] (f : TT I →
   unfold Formalism.UG.bc
   first
     | exact Continuous.units_map _ hm
-    | exact Units.continuous_map hm
 
 theorem continuous_FmInf (v : InfinitePlace I.F) : Continuous (FmInf I v) := by
   refine continuous_induced_rng.2 ?_
@@ -1244,14 +1237,12 @@ theorem continuous_Fm : Continuous (Fm I) := by
   have h2 := continuous_FmF I
   first
     | exact h1.prodMk h2
-    | exact h1.prod_mk h2
 
 def FmEquiv : HAd I ≃* I.GA := MulEquiv.ofBijective (Fm I) ⟨Fm_injective I, Fm_surjective I⟩
 
 theorem Fm_FmEquiv_symm (x : I.GA) : Fm I ((FmEquiv I).symm x) = x := by
   first
     | exact (FmEquiv I).apply_symm_apply x
-    | exact MulEquiv.ofBijective_apply_symm_apply _ _ x
 
 theorem one_mem_KgS (g : ℕ) : (1 : I.Gf) ∈ KgS I g := by
   refine ⟨?_, fun y _ => ⟨0, zero_mem _, ?_⟩⟩
@@ -1267,7 +1258,6 @@ theorem continuousAt_entry (i j : Fin I.n) :
       (I.P v * uMat (x.1 v) * (I.P v)⁻¹ - 1) i j := by
     intro x v
     rw [← theta_entry]
-    congr 2
     have h1 : uMat (FmInf I v ((FmEquiv I).symm x)) = ofHAInf I ((FmEquiv I).symm x) v := FmInf_val I v _
     have h2 : FmInf I v ((FmEquiv I).symm x) = x.1 v := by
       rw [← Fm_fst, Fm_FmEquiv_symm]
@@ -1276,7 +1266,6 @@ theorem continuousAt_entry (i j : Fin I.n) :
   have hτ : ∀ x : I.GA, tauF I ((hmat I ((FmEquiv I).symm x) - 1) i j) = (I.fmat x.2 - 1) i j := by
     intro x
     rw [← tau_entry]
-    congr 2
     have h2 : FmF I ((FmEquiv I).symm x) = x.2 := by
       rw [← Fm_snd, Fm_FmEquiv_symm]
     rw [← h2, FmF_val, ofHAFin]

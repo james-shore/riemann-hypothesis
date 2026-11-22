@@ -95,7 +95,7 @@ private lemma charpoly_block {κ : Type} [Field κ] (M : Matrix (Fin 3) (Fin 3) 
   obtain ⟨a1, a2, a3, a4⟩ := hb
   rw [sub_eq]
   simp only [Matrix.charpoly, det_fin_three, det_fin_two]
-  simp [charmatrix_apply, *]
+  simp [*]
   ring
 
 private lemma cosetE {G κ : Type} [Group G] [TopologicalSpace G] [IsTopologicalGroup G] [CompactSpace G]

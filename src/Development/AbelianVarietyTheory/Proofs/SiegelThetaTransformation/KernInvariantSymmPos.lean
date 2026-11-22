@@ -262,7 +262,7 @@ theorem sgnM_mul_self : sgnM X * sgnM X = 1 := by
 
 theorem cj_sgnM : cj (-sgnM X) = -sgnM X := by
   ext a b
-  by_cases h : a = b <;> simp [cj, sgnM, diagonal_apply, h]
+  by_cases h : a = b <;> simp [cj, sgnM, h]
 
 variable {X} in
 

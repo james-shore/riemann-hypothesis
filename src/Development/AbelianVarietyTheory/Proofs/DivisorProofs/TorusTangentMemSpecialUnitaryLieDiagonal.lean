@@ -63,8 +63,8 @@ theorem skewHermitian_of_diagonal_imaginary_frame {r : ℕ} (G M Y : Matrix (Fin
     rw [Matrix.mul_add, Matrix.add_mul, e1, e2]
     ext a b
     by_cases h : a = b
-    · subst h; simp [diagonal_apply, hd]; ring
-    · simp [diagonal_apply, h]
+    · subst h; simp [hd]; ring
+    · simp [h]
   have hL : (M⁻¹)ᵀ * Mᵀ = 1 := by rw [← transpose_mul, mul_nonsing_inv _ hu, transpose_one]
   have hR : M.map (starRingEnd ℂ) * (M⁻¹).map (starRingEnd ℂ) = 1 := by
     rw [← Matrix.map_mul, mul_nonsing_inv _ hu, Matrix.map_one _ (map_zero _) (map_one _)]

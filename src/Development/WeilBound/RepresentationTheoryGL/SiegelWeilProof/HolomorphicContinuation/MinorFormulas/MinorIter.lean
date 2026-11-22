@@ -69,7 +69,7 @@ theorem iter : Iter := by
     have h1 : (C r : Pm R ρ) = C r * 1 := (mul_one _).symm
     rw [hc, mul_comm, detE_det_pow_mul, h1, detE_C_mul, core]
     rw [Finset.prod_range_succ, hc]
-    simp only [map_prod, map_sub, map_add, map_natCast]
+    simp only [map_add, map_natCast]
     ring
 
 end PositivityTheory.Rg.Sw.SP.Mi

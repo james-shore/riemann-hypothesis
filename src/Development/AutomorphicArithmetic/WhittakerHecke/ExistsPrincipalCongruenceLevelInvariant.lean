@@ -128,7 +128,6 @@ theorem UpperTheory.exists_principalCongruence_level_invariant :
       rw [e]; exact this
   have hfix : f.1 (g * h * finGL E 2 (l⁻¹ * k * l)) = f.1 (g * h) := congrFun (congrArg Subtype.val hkV) (g * h)
   rw [← hfix, hκk, hh]
-  congr 1
   simp only [map_mul, map_inv, mul_assoc]
   rw [← mul_assoc (finGL E 2 k), ← infGL_comm]
   simp [mul_assoc]

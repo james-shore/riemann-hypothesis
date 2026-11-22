@@ -21,9 +21,6 @@ theorem isSmoothVecU_restrict {H : Type*} [NormedAddCommGroup H] [InnerProductSp
     have e : P w = ⟨w, hw⟩ := by
       first
         | exact Submodule.orthogonalProjectionOnto_mem_subspace_eq_self (⟨w, hw⟩ : S)
-        | exact Submodule.orthogonalProjection_mem_subspace_eq_self (⟨w, hw⟩ : S)
-        | exact (Submodule.orthogonalProjectionOnto_mem_subspace_eq_self (K := S) ⟨w, hw⟩ : _)
-        | (show P ((⟨w, hw⟩ : S) : H) = ⟨w, hw⟩; simp [P])
     rw [e]
   constructor
   · intro h g₀ hg₀

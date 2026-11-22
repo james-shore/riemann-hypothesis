@@ -98,7 +98,7 @@ theorem xiCoef : XiCoef := by
     simp [herm, bvec, dotProduct, Matrix.mulVec, Pi.single_apply]
   rw [h1]
   simp only [Hpk_eI_row, ite_mul, one_mul, zero_mul, Finset.sum_ite_eq', Finset.mem_univ, if_true]
-  simp only [bvec, Matrix.mulVec_single_one, Matrix.transpose_apply]
+  simp only [bvec, Matrix.mulVec_single_one]
   exact level_point_first_lines k r j hj Z τ γ a p
 
 theorem x0_GV (k r j : ℕ) (hj : j + 1 ≤ r) (Z : Matrix (Fin j) (Fin j) ℂ) (τ : ℂ) (γ : B.Mat k (r - (j + 1)))
@@ -119,20 +119,20 @@ theorem xiCoefV : XiCoefV := by
     ext s
     simp only [bvec, Matrix.mulVec_single_one, Matrix.col_apply, Hpk_eI_col, Pi.single_apply]
   rw [hH]
-  simp only [bvec, Matrix.mulVec_single_one, Matrix.col_apply, Matrix.conjTranspose_apply, level_point_first_lines]
+  simp only [bvec, Matrix.mulVec_single_one]
   simp only [Matrix.mulVec, dotProduct]
   simp only [Matrix.col_apply, Matrix.conjTranspose_apply, level_point_first_lines]
   split_ifs with hp
   · rw [Fintype.sum_eq_single ⟨2 * r + k - p.val, by omega⟩]
     · have hH1 : Hpk k r p ⟨2 * r + k - p.val, by omega⟩ = 1 := by
-        rw [Hpk_low _ _ _ _ (by simp only [Fin.val_mk]; omega), if_pos (by simp only [Fin.val_mk]; omega)]
-      rw [hH1, one_mul, dif_pos (by simp only [Fin.val_mk]; omega)]
+        rw [Hpk_low _ _ _ _ (by simp only; omega), if_pos (by simp only; omega)]
+      rw [hH1, one_mul, dif_pos (by simp only; omega)]
       rfl
     · intro s hs
       by_cases h : s.val < j
       · rw [dif_pos h]
         have : Hpk k r p s = 0 := by
-          rw [Hpk_low _ _ _ _ (by omega), if_neg (by intro h'; apply hs; ext; simp only [Fin.val_mk]; omega)]
+          rw [Hpk_low _ _ _ _ (by omega), if_neg (by intro h'; apply hs; ext; simp only; omega)]
         rw [this, zero_mul]
       · rw [dif_neg h, star_zero, mul_zero]
   · refine Finset.sum_eq_zero fun s _ => ?_
