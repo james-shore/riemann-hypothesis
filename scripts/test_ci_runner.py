@@ -178,6 +178,31 @@ class RunnerChecks(unittest.TestCase):
             path.write_text("not a number\n")
             self.assertIsNone(runner.max_map_count(path))
 
+    def test_failed_checks_name_each_unmet_prerequisite_with_its_required_value(self):
+        minimum = runner.MINIMUM_MAX_MAP_COUNT
+        commands = dict.fromkeys(("git", "cc", "python3", "bwrap", "elan"), "/usr/bin/tool")
+
+        def check(**changes):
+            report = {"uid": 1000, "commands": commands, "offline_bwrap": True,
+                      "free_disk_gib": 300.0, "max_map_count": minimum} | changes
+            return runner.failed_checks(report, 250, minimum)
+
+        self.assertEqual(check(), [])
+        self.assertEqual(check(max_map_count=65530),
+                         [f"max_map_count is 65530, need at least {minimum} (sysctl vm.max_map_count, set on the host)"])
+        self.assertEqual(check(max_map_count=None),
+                         [f"max_map_count is unreadable, need at least {minimum} (sysctl vm.max_map_count, set on the host)"])
+        self.assertEqual(check(free_disk_gib=120.5), ["free_disk_gib is 120.5, need at least 250"])
+        self.assertEqual(check(uid=0), ["uid is 0: use a dedicated unprivileged account"])
+        self.assertEqual(check(offline_bwrap=False), ["offline_bwrap probe failed: see bwrap_error"])
+        # A missing bwrap also leaves offline_bwrap false; it is named once, as the missing command.
+        self.assertEqual(check(commands=commands | {"bwrap": None, "elan": None}, offline_bwrap=False),
+                         ["command not found: bwrap", "command not found: elan"])
+        self.assertEqual(len(check(uid=0, free_disk_gib=1, max_map_count=65530)), 3)
+        # Zero minimums switch the threshold checks off, even when the value cannot be read.
+        self.assertEqual(runner.failed_checks(
+            {"uid": 1000, "commands": commands, "offline_bwrap": True, "free_disk_gib": 0.0, "max_map_count": None}, 0, 0), [])
+
     def test_policy_rejects_branch_or_repository_expansion(self):
         with tempfile.TemporaryDirectory() as name:
             path = Path(name) / "policy.json"

@@ -6,8 +6,10 @@ A [Comparator](https://github.com/leanprover/comparator) setup and community bui
 claims a proof of the Riemann Hypothesis, and of GRH for Dirichlet L-functions, announced on
 2026-11-20 at <https://alpo.ge/remark.pdf>.
 
-The submitted Lean source is unmodified. This repository adds Comparator files and cache
-infrastructure:
+The first commit, `40e56bab`, is the submitted Lean source exactly as published. Since then,
+cleanup pull requests have removed 10,724 of its 175,187 files and edited 18; the
+[notes](verification/NOTES.md#source) list them. Check out `40e56bab` for the original. This
+repository also adds Comparator files and cache infrastructure:
 
 | File | What it is |
 |---|---|
@@ -99,4 +101,5 @@ limits of what a passing run shows.
 ## License
 
 The submission belongs to its author and was published without a license. It is mirrored here
-unmodified, for verification only.
+for verification only: unmodified at commit `40e56bab`, and with the changes listed in the
+[notes](verification/NOTES.md#source) since.

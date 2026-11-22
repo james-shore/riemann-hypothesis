@@ -99,6 +99,24 @@ def required_commands():
     return commands
 
 
+def failed_checks(report, minimum_disk_gib, minimum_max_map_count):
+    """Name each unmet prerequisite, with the required value where there is a threshold."""
+    failed = []
+    if report["uid"] == 0:
+        failed.append("uid is 0: use a dedicated unprivileged account")
+    failed += [f"command not found: {name}" for name, path in report["commands"].items() if not path]
+    # A missing bwrap is already named above; report the probe only when it actually ran.
+    if report["commands"].get("bwrap") and not report["offline_bwrap"]:
+        failed.append("offline_bwrap probe failed: see bwrap_error")
+    if report["free_disk_gib"] < minimum_disk_gib:
+        failed.append(f"free_disk_gib is {report['free_disk_gib']}, need at least {minimum_disk_gib}")
+    count = report["max_map_count"]
+    if (count or 0) < minimum_max_map_count:
+        failed.append(f"max_map_count is {'unreadable' if count is None else count}, need at least "
+                      f"{minimum_max_map_count} (sysctl vm.max_map_count, set on the host)")
+    return failed
+
+
 def doctor(args):
     if sys.platform != "linux":
         raise ValueError("Linux is required")
@@ -137,12 +155,12 @@ def doctor(args):
             report["bwrap_error"] = result.stderr.strip()[-2000:]
     else:
         report["offline_bwrap"] = False
-    report["ready"] = (os.getuid() != 0 and all(report["commands"].values()) and report["offline_bwrap"]
-                       and report["free_disk_gib"] >= args.minimum_disk_gib
-                       and (report["max_map_count"] or 0) >= args.minimum_max_map_count)
+    report["failed"] = failed_checks(report, args.minimum_disk_gib, args.minimum_max_map_count)
+    report["ready"] = not report["failed"]
     print(json.dumps(report, indent=2))
     if not report["ready"]:
-        raise ValueError("runner prerequisites failed; no host security settings were changed")
+        reasons = "; ".join(report["failed"])
+        raise ValueError(f"runner prerequisites failed ({reasons}); no host security settings were changed")
 
 
 def install(args):
